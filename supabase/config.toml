@@ -1,0 +1,12 @@
+# Minimalkonfiguration, damit die Supabase-CLI diesen Ordner als Projekt
+# erkennt. Die Verbindung zum Remote-Projekt entsteht nicht hier, sondern
+# ueber `npx supabase link --project-ref <ref>` - der Ref und der Zugriffs-
+# token landen in .supabase/ bzw. im Benutzerprofil und gehoeren nicht ins
+# Repository.
+project_id = "ap1-trainer"
+
+[db]
+# Version der Postgres-Instanz im Supabase-Projekt. Nur fuer `supabase start`
+# (lokale Entwicklung) relevant; fuer `db push` gegen das Remote-Projekt
+# spielt der Wert keine Rolle.
+major_version = 17

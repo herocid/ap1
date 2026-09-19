@@ -51,3 +51,7 @@ env.json
 
 # Leerer Klon des Ziel-Remotes, liegt versehentlich im Projektordner
 ap1/
+
+# Supabase-CLI: lokaler Zustand und verlinktes Projekt
+supabase/.temp/
+supabase/.branches/

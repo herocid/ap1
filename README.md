@@ -18,10 +18,10 @@ flutter pub get
 flutter run -d chrome
 ```
 
-Mit Supabase-Anbindung:
+Mit Supabase-Anbindung (siehe [Supabase einrichten](#supabase-einrichten)):
 
 ```bash
-flutter run -d chrome --dart-define=SUPABASE_URL=https://zcxhrkwbulsedkxcbkkk.supabase.co --dart-define=SUPABASE_ANON_KEY=<dein-anon-key>
+flutter run -d chrome --dart-define-from-file=env.json
 ```
 
 Ohne `SUPABASE_ANON_KEY` startet die App im Offline-Modus: alle 46 Aufgaben
@@ -46,20 +46,70 @@ Auswahl-Algorithmen, Integrität des Aufgabenpools, Onboarding-Flow.
 Die App braucht Supabase nicht, um zu laufen — aber für geräteübergreifenden
 Fortschritt und redaktionell pflegbare Aufgaben.
 
-1. Im Supabase-SQL-Editor **in dieser Reihenfolge** ausführen:
-   - `supabase/migrations/0001_schema.sql` — Tabellen, Sichten, RLS-Policies
-   - `supabase/migrations/0002_seed.sql` — Themen, 46 Aufgaben, Theorie-Snacks
-2. Anon-/Publishable-Key aus *Project Settings → API* holen.
-3. App mit `--dart-define=SUPABASE_ANON_KEY=…` starten.
+Projekt-Ref dieses Setups: `zcxhrkwbulsedkxcbkkk`
 
-`0002_seed.sql` wird **generiert**, nicht von Hand gepflegt:
+### Schritt 1 — Migrationen einspielen
+
+Zwei Wege, beide führen zum selben Ergebnis. Die Migrationen sind
+**idempotent** (`on conflict do update`), ein zweiter Lauf schadet also nicht.
+
+**Weg A — Supabase-CLI (empfohlen, kein Copy-Paste)**
 
 ```bash
-flutter test tool/generate_seed_sql_test.dart
+npx supabase login
 ```
 
-Damit können App-Inhalte und Datenbank nicht auseinanderlaufen. Wer eine
-Aufgabe ändert, ändert sie in Dart und lässt das SQL neu erzeugen.
+```bash
+npx supabase link --project-ref zcxhrkwbulsedkxcbkkk
+```
+
+```bash
+npx supabase db push
+```
+
+`login` öffnet den Browser; `link` fragt nach dem Datenbank-Passwort
+(Dashboard → Project Settings → Database). Beides bleibt in der CLI und
+landet nicht im Repository.
+
+**Weg B — SQL-Editor im Dashboard (ohne Installation)**
+
+Öffne den SQL-Editor und führe **nacheinander** aus:
+
+1. Inhalt von `supabase/migrations/20260919090000_ap1_schema.sql` einfügen, *Run*
+2. Inhalt von `supabase/migrations/20260919090100_ap1_seed.sql` einfügen, *Run*
+
+Die Reihenfolge ist zwingend — der Seed setzt die Tabellen voraus.
+Die zweite Datei ist rund 90 KB groß; der Editor verarbeitet das, braucht
+aber einen Moment.
+
+**Kontrolle** (in beiden Fällen):
+
+```sql
+select topic_id, count(*) from public.ap1_questions group by 1 order by 1;
+```
+
+Erwartet: 9 Themen, zusammen 46 Aufgaben, dazu 11 Zeilen in `ap1_theory`.
+
+### Schritt 2 — Anon-Key eintragen
+
+```bash
+cp env.example.json env.json
+```
+
+Dann in `env.json` den **anon/public**-Key aus
+*Project Settings → API Keys* eintragen — **nicht** den `service_role`-Key,
+der gehört niemals in eine Client-App. `env.json` steht in `.gitignore`.
+
+### Schritt 3 — App mit Backend starten
+
+```bash
+flutter run -d chrome --dart-define-from-file=env.json
+```
+
+In den Einstellungen der App steht dann *„Mit Supabase verbunden"* statt
+*„Offline-Modus"*. Bleibt es beim Offline-Modus, ist der Key leer oder falsch —
+die App fällt in dem Fall bewusst auf die eingebauten Aufgaben zurück, statt
+einen leeren Bildschirm zu zeigen.
 
 ### Datenmodell in Kurzform
 

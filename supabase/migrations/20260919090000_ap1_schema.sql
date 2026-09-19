@@ -3,8 +3,8 @@
 --
 -- Ausfuehren im Supabase SQL Editor (Projekt zcxhrkwbulsedkxcbkkk) in dieser
 -- Reihenfolge:
---   0001_schema.sql   <- diese Datei
---   0002_seed.sql     <- Aufgaben und Theorie
+--   20260919090000_ap1_schema.sql   <- diese Datei
+--   20260919090100_ap1_seed.sql     <- Aufgaben und Theorie
 --
 -- Entwurfsentscheidungen:
 --  * Alle Tabellen mit Praefix ap1_, damit sie in einem geteilten Projekt

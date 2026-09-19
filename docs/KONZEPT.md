@@ -465,15 +465,15 @@ der Unterschied zwischen vertrauenswürdig und peinlich.
 
 ### 4.4 Datenbank
 
-Schema in [`0001_schema.sql`](../supabase/migrations/0001_schema.sql), Inhalte
-in `0002_seed.sql`. Alle Tabellen mit Präfix `ap1_`, damit sie in einem
+Schema in [`..._ap1_schema.sql`](../supabase/migrations/20260919090000_ap1_schema.sql),
+Inhalte in `..._ap1_seed.sql`. Alle Tabellen mit Präfix `ap1_`, damit sie in einem
 geteilten Supabase-Projekt nichts kaputt machen.
 
 Aufgabeninhalte liegen in einer `jsonb`-Spalte `data`. Sechs Aufgabentypen mit
 je eigenem Schema in relationale Tabellen zu pressen, wäre Selbstzweck —
 gelesen wird immer die ganze Aufgabe, nie einzelne Antwortoptionen.
 
-`0002_seed.sql` wird aus den Dart-Daten **generiert**
+Die Seed-Migration wird aus den Dart-Daten **generiert**
 ([`tool/generate_seed_sql_test.dart`](../tool/generate_seed_sql_test.dart)).
 Zwei Quellen für dieselben 46 Aufgaben von Hand zu pflegen, geht garantiert
 schief.

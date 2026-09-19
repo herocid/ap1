@@ -7,9 +7,12 @@
 --
 -- Alle Aufgaben sind eigene Formulierungen im Stil der IHK-AP1,
 -- keine Originalaufgaben (die sind urheberrechtlich geschuetzt).
+--
+-- Kein explizites begin/commit: sowohl der Supabase-SQL-Editor
+-- als auch `supabase db push` fuehren ein Skript bereits in
+-- einer Transaktion aus. Ein eigenes begin; darin erzeugt nur
+-- Warnungen, und ein fruehes commit; bricht die Klammer auf.
 -- ==========================================================================
-
-begin;
 
 -- Themen ----------------------------------------------------
 insert into public.ap1_topics (id, title, blurb, weight, sort_order) values
@@ -1518,8 +1521,6 @@ on conflict (id) do update set
   merksatz = excluded.merksatz,
   read_seconds = excluded.read_seconds,
   sort_order = excluded.sort_order;
-
-commit;
 
 -- Kontrolle:
 --   select topic_id, count(*) from public.ap1_questions group by 1 order by 1;

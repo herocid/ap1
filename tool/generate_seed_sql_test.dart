@@ -1,6 +1,6 @@
 // Generator, kein Test.
 //
-// Erzeugt `supabase/migrations/0002_seed.sql` aus den Dart-Seed-Daten, damit
+// Erzeugt `supabase/migrations/20260919090100_ap1_seed.sql` aus den Dart-Seed-Daten, damit
 // App und Datenbank garantiert dieselben Aufgaben kennen. Der Umweg ueber
 // einen Test ist Absicht: die Seed-Daten haengen an `package:flutter`
 // (Topic.icon), ein reines `dart run` kann sie deshalb nicht laden.
@@ -8,7 +8,8 @@
 // Ausfuehren:
 //   flutter test tool/generate_seed_sql_test.dart
 //
-// Die Datei danach im Supabase SQL Editor ausfuehren - nach 0001_schema.sql.
+// Danach: `npx supabase db push` oder die Datei im Supabase-SQL-Editor
+// ausfuehren - in beiden Faellen nach der Schema-Migration.
 
 import 'dart:convert';
 import 'dart:io';
@@ -26,7 +27,7 @@ String arr(List<String> items) =>
 String jsonb(Map<String, dynamic> data) => "${q(jsonEncode(data))}::jsonb";
 
 void main() {
-  test('erzeugt 0002_seed.sql aus den Dart-Seed-Daten', () {
+  test('erzeugt die Seed-Migration aus den Dart-Seed-Daten', () {
     final b = StringBuffer();
 
     final rule = '-- ${'=' * 74}';
@@ -39,9 +40,12 @@ void main() {
     b.writeln('--');
     b.writeln('-- Alle Aufgaben sind eigene Formulierungen im Stil der IHK-AP1,');
     b.writeln('-- keine Originalaufgaben (die sind urheberrechtlich geschuetzt).');
+    b.writeln('--');
+    b.writeln('-- Kein explizites begin/commit: sowohl der Supabase-SQL-Editor');
+    b.writeln('-- als auch `supabase db push` fuehren ein Skript bereits in');
+    b.writeln('-- einer Transaktion aus. Ein eigenes begin; darin erzeugt nur');
+    b.writeln('-- Warnungen, und ein fruehes commit; bricht die Klammer auf.');
     b.writeln(rule);
-    b.writeln();
-    b.writeln('begin;');
     b.writeln();
 
     // -------------------------------------------------------------- Themen
@@ -123,15 +127,13 @@ void main() {
       b.writeln();
     }
 
-    b.writeln('commit;');
-    b.writeln();
     b.writeln('-- Kontrolle:');
     b.writeln('--   select topic_id, count(*) from public.ap1_questions '
         'group by 1 order by 1;');
     b.writeln('-- erwartet: ${kSeedQuestions.length} Aufgaben, '
         '${Topics.all.length} Themen, ${kSeedTheory.length} Theorie-Snacks.');
 
-    final file = File('supabase/migrations/0002_seed.sql');
+    final file = File('supabase/migrations/20260919090100_ap1_seed.sql');
     file.parent.createSync(recursive: true);
     file.writeAsStringSync(b.toString());
 
