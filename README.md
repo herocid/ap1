@@ -134,6 +134,33 @@ nachträglich zu korrigieren würde die Statistik fälschen.
 
 ---
 
+## Deployment (Vercel)
+
+Vercels Build-Container kennt Flutter nicht, deshalb holt sich
+[`tool/vercel-build.sh`](tool/vercel-build.sh) das SDK selbst und erzeugt
+`build/web`. Gesteuert wird das über [`vercel.json`](vercel.json) — Vercel
+erkennt beides automatisch, es ist keine Einstellung im Dashboard nötig.
+
+Damit die App dort gegen Supabase läuft, unter
+*Project Settings → Environment Variables* setzen:
+
+| Variable | Wert |
+| --- | --- |
+| `SUPABASE_URL` | `https://zcxhrkwbulsedkxcbkkk.supabase.co` |
+| `SUPABASE_ANON_KEY` | der anon/publishable Key |
+
+Fehlt `SUPABASE_ANON_KEY`, wird trotzdem deployt — die App läuft dann im
+Offline-Modus mit den eingebauten Aufgaben.
+
+Der Key ist im ausgelieferten Bundle sichtbar. Das ist bei Client-Apps
+unvermeidbar und genau der Grund, warum der Zugriff über RLS abgesichert ist
+und nicht über die Geheimhaltung des Keys. Der `service_role`-Key darf hier
+niemals stehen.
+
+Der erste Build dauert wegen des Flutter-Clones etwa 3–5 Minuten.
+
+---
+
 ## Projektstruktur
 
 ```

@@ -1,0 +1,12 @@
+# Auf Windows wandelt git Zeilenenden beim Auschecken in CRLF um. Fuer ein
+# Shell-Skript, das spaeter auf einem Linux-Build-Server laeuft, ist das fatal:
+# es scheitert mit "bad interpreter: /usr/bin/env bash^M". Diese Dateitypen
+# bleiben deshalb immer bei LF.
+*.sh  text eol=lf
+*.sql text eol=lf
+
+# Dart und Konfiguration normalisiert git ohnehin; explizit ist es klarer.
+*.dart text
+*.yaml text
+*.json text
+*.md   text
