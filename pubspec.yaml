@@ -39,7 +39,9 @@ dependencies:
   go_router: ^17.5.0
   google_fonts: ^8.2.1
   shared_preferences: ^2.5.5
-  intl: 0.20.2
+  # Nicht exakt pinnen: flutter_localizations schreibt die Version vor und
+  # verlangt je nach SDK-Stand 0.20.2 oder 0.20.3.
+  intl: ^0.20.2
   flutter_localizations:
     sdk: flutter
 

@@ -12,11 +12,15 @@
 #   SUPABASE_ANON_KEY  optional; fehlt er, laeuft die App im Offline-Modus mit
 #                      den eingebauten Aufgaben - das ist ein gueltiger Zustand,
 #                      kein Fehler
-#   FLUTTER_VERSION    optional, Branch oder Tag; Standard: stable
+#   FLUTTER_VERSION    optional, Branch oder Tag; Standard: die unten
+#                      festgenagelte Version
 
 set -euo pipefail
 
-FLUTTER_VERSION="${FLUTTER_VERSION:-stable}"
+# Feste Version statt "stable": sonst baut Vercel irgendwann mit einem SDK,
+# das andere Paketversionen verlangt als pubspec.lock festhaelt - genau
+# daran ist der erste Deploy gescheitert.
+FLUTTER_VERSION="${FLUTTER_VERSION:-3.41.6}"
 FLUTTER_DIR="${FLUTTER_DIR:-$HOME/flutter}"
 
 echo "==> Flutter SDK ($FLUTTER_VERSION) bereitstellen"
