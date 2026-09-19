@@ -152,6 +152,12 @@ Damit die App dort gegen Supabase läuft, unter
 Fehlt `SUPABASE_ANON_KEY`, wird trotzdem deployt — die App läuft dann im
 Offline-Modus mit den eingebauten Aufgaben.
 
+**Aktueller Stand:** Die Live-Seite läuft bewusst im Offline-Modus. Solange es
+keine Registrierung gibt, liegt der Fortschritt ohnehin nur lokal im Browser;
+der einzige Gewinn einer Verbindung wäre, dass Aufgabenänderungen in der
+Datenbank ohne Redeploy erscheinen. Dafür den Key zu veröffentlichen lohnt sich
+noch nicht. Sobald Auth dazukommt, die beiden Variablen setzen.
+
 Der Key ist im ausgelieferten Bundle sichtbar. Das ist bei Client-Apps
 unvermeidbar und genau der Grund, warum der Zugriff über RLS abgesichert ist
 und nicht über die Geheimhaltung des Keys. Der `service_role`-Key darf hier
