@@ -459,7 +459,14 @@ class MetaChip extends StatelessWidget {
             Icon(icon, size: 13, color: fg),
             const SizedBox(width: 4),
           ],
-          Text(label, style: context.text.labelSmall?.copyWith(color: fg)),
+          Flexible(
+            child: Text(
+              label,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: context.text.labelSmall?.copyWith(color: fg),
+            ),
+          ),
         ],
       ),
     );

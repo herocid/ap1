@@ -148,7 +148,15 @@ class _PlanRow extends StatelessWidget {
                 const SizedBox(height: Gap.s),
                 Row(
                   children: [
-                    MetaChip(label: _window, icon: Icons.event_outlined),
+                    // Der Chip ist die unwichtigste Information der Zeile und
+                    // darf deshalb als Einziger schrumpfen - sonst laeuft die
+                    // Zeile auf schmalen Displays ueber.
+                    Flexible(
+                      child: MetaChip(
+                        label: _window,
+                        icon: Icons.event_outlined,
+                      ),
+                    ),
                     const Spacer(),
                     TextButton(
                       onPressed: onTheory,
