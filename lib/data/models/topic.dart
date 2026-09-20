@@ -4,8 +4,8 @@ import 'exam_area.dart';
 
 /// Ein Thema innerhalb eines Katalogbereichs.
 ///
-/// [weight] ist der geschaetzte Anteil an den Punkten der gesamten AP1 - nicht
-/// am Bereich. Die Summe ueber alle Themen ist 1.0, und die Summe der Themen
+/// [weight] ist der geschätzte Anteil an den Punkten der gesamten AP1 - nicht
+/// am Bereich. Die Summe über alle Themen ist 1.0, und die Summe der Themen
 /// eines Bereichs ergibt dessen Bereichsgewicht. Ein Test sichert beides ab.
 @immutable
 class Topic {
@@ -93,7 +93,7 @@ class Topics {
       id: 'projektabschluss',
       areaId: 'a01',
       title: 'Projektabschluss',
-      blurb: 'Abnahme, Abschlussbericht, Lessons Learned, Uebergabe',
+      blurb: 'Abnahme, Abschlussbericht, Lessons Learned, Übergabe',
       icon: Icons.flag_outlined,
       weight: 0.015,
     ),
@@ -126,8 +126,8 @@ class Topics {
     Topic(
       id: 'praesentation',
       areaId: 'a02',
-      title: 'Praesentieren & Beraten',
-      blurb: 'Argumentation, Praesentationstechnik, Quellen, Angebotserstellung',
+      title: 'Präsentieren & Beraten',
+      blurb: 'Argumentation, Präsentationstechnik, Quellen, Angebotserstellung',
       icon: Icons.co_present_outlined,
       weight: 0.020,
     ),
@@ -153,7 +153,7 @@ class Topics {
       id: 'betriebssysteme',
       areaId: 'a03',
       title: 'Betriebssysteme',
-      blurb: 'Prozesse, Dateisysteme, Rechte, Kommandozeile, Haertung',
+      blurb: 'Prozesse, Dateisysteme, Rechte, Kommandozeile, Härtung',
       icon: Icons.terminal_outlined,
       weight: 0.040,
     ),
@@ -187,7 +187,7 @@ class Topics {
       id: 'uml_modellierung',
       areaId: 'a04',
       title: 'UML & Modellierung',
-      blurb: 'Use-Case-, Klassen- und Aktivitaetsdiagramm',
+      blurb: 'Use-Case-, Klassen- und Aktivitätsdiagramm',
       icon: Icons.schema_outlined,
       weight: 0.030,
     ),
@@ -211,7 +211,7 @@ class Topics {
       id: 'datenmodellierung',
       areaId: 'a04',
       title: 'Datenmodellierung',
-      blurb: 'ER-Modell, Beziehungen, Schluessel, Normalisierung',
+      blurb: 'ER-Modell, Beziehungen, Schlüssel, Normalisierung',
       icon: Icons.table_chart_outlined,
       weight: 0.025,
     ),
@@ -227,25 +227,25 @@ class Topics {
       id: 'multimedia_daten',
       areaId: 'a04',
       title: 'Daten & Multimedia',
-      blurb: 'Zeichensaetze, Kompression, Datenmengen und Uebertragungsraten',
+      blurb: 'Zeichensätze, Kompression, Datenmengen und Übertragungsraten',
       icon: Icons.perm_media_outlined,
       weight: 0.025,
     ),
     Topic(
       id: 'ki_grundlagen',
       areaId: 'a04',
-      title: 'KI-Unterstuetzung',
+      title: 'KI-Unterstützung',
       blurb: 'Einsatzfelder, Grenzen, Halluzinationen, Datenschutz bei KI',
       icon: Icons.auto_awesome_outlined,
       weight: 0.020,
     ),
 
-    // ==================================================== 05 Qualitaetssicherung
+    // ==================================================== 05 Qualitätssicherung
     Topic(
       id: 'qualitaetsmanagement',
       areaId: 'a05',
-      title: 'Qualitaetsmanagement',
-      blurb: 'Konstruktive und analytische QS, PDCA, Qualitaetsplanung',
+      title: 'Qualitätsmanagement',
+      blurb: 'Konstruktive und analytische QS, PDCA, Qualitätsplanung',
       icon: Icons.fact_check_outlined,
       weight: 0.030,
     ),
@@ -253,7 +253,7 @@ class Topics {
       id: 'testen',
       areaId: 'a05',
       title: 'Testverfahren',
-      blurb: 'Teststufen, Black-/White-Box, Testfaelle, Testprotokoll',
+      blurb: 'Teststufen, Black-/White-Box, Testfälle, Testprotokoll',
       icon: Icons.bug_report_outlined,
       weight: 0.040,
     ),
@@ -263,15 +263,15 @@ class Topics {
       id: 'schutzziele_bedrohungen',
       areaId: 'a06',
       title: 'Schutzziele & Bedrohungen',
-      blurb: 'Vertraulichkeit, Integritaet, Verfuegbarkeit, Angriffsarten, BSI',
+      blurb: 'Vertraulichkeit, Integrität, Verfügbarkeit, Angriffsarten, BSI',
       icon: Icons.gpp_maybe_outlined,
       weight: 0.035,
     ),
     Topic(
       id: 'sicherheitsmassnahmen',
       areaId: 'a06',
-      title: 'Technische Schutzmassnahmen',
-      blurb: 'Firewall, DMZ, Haertung, WLAN-Sicherheit, Backup, Berechtigungen',
+      title: 'Technische Schutzmaßnahmen',
+      blurb: 'Firewall, DMZ, Härtung, WLAN-Sicherheit, Backup, Berechtigungen',
       icon: Icons.security_outlined,
       weight: 0.030,
     ),
@@ -287,7 +287,7 @@ class Topics {
       id: 'datenschutz',
       areaId: 'a06',
       title: 'Datenschutz & DSGVO',
-      blurb: 'Grundsaetze, Betroffenenrechte, Anonymisierung, Pseudonymisierung',
+      blurb: 'Grundsätze, Betroffenenrechte, Anonymisierung, Pseudonymisierung',
       icon: Icons.privacy_tip_outlined,
       weight: 0.030,
     ),
@@ -296,7 +296,7 @@ class Topics {
     Topic(
       id: 'vertraege',
       areaId: 'a07',
-      title: 'Vertraege & Recht',
+      title: 'Verträge & Recht',
       blurb: 'Kauf-, Werk-, Dienstvertrag, Lizenzen, Urheberrecht',
       icon: Icons.gavel_outlined,
       weight: 0.020,
@@ -312,8 +312,8 @@ class Topics {
     Topic(
       id: 'leistungsstoerungen',
       areaId: 'a07',
-      title: 'Leistungsstoerungen & Abnahme',
-      blurb: 'Verzug, Maengel, Gewaehrleistung, Abnahmeprotokoll, Soll-Ist',
+      title: 'Leistungsstörungen & Abnahme',
+      blurb: 'Verzug, Mängel, Gewährleistung, Abnahmeprotokoll, Soll-Ist',
       icon: Icons.assignment_late_outlined,
       weight: 0.015,
     ),
@@ -321,7 +321,7 @@ class Topics {
       id: 'change_management',
       areaId: 'a07',
       title: 'Change Management',
-      blurb: 'Lewin-Modell, Kaizen, Widerstaende, Change-Prozess',
+      blurb: 'Lewin-Modell, Kaizen, Widerstände, Change-Prozess',
       icon: Icons.published_with_changes_outlined,
       weight: 0.010,
     ),

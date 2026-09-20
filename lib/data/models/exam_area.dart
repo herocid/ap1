@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-/// Die sieben Bereiche des IHK-Pruefungskatalogs fuer die AP1 der IT-Berufe
-/// (2. ueberarbeitete Auflage, erstmals angewendet im Fruehjahr 2025).
+/// Die sieben Bereiche des IHK-Prüfungskatalogs für die AP1 der IT-Berufe
+/// (2. überarbeitete Auflage, erstmals angewendet im Frühjahr 2025).
 ///
 /// Die Bereichsnummern und -namen folgen dem amtlichen Katalog. Die
 /// Feingliederung in Themen darunter ist eine Rekonstruktion: Die exakten
 /// amtlichen Unterkapitel-Titel (01.01, 01.02, ...) sind nicht frei
-/// veroeffentlicht. Sie ist fachlich am Katalog ausgerichtet, aber kein Zitat.
+/// veröffentlicht. Sie ist fachlich am Katalog ausgerichtet, aber kein Zitat.
 @immutable
 class ExamArea {
   const ExamArea({
@@ -26,7 +26,7 @@ class ExamArea {
   final String blurb;
   final IconData icon;
 
-  /// Geschaetzter Anteil an den Punkten der AP1. Summe ueber alle Bereiche = 1.
+  /// Geschätzter Anteil an den Punkten der AP1. Summe über alle Bereiche = 1.
   final double weight;
 }
 
@@ -46,7 +46,7 @@ class ExamAreas {
     id: 'a02',
     number: '02',
     title: 'Kundenbeziehungen & Kommunikation',
-    blurb: 'Gespraechsfuehrung, Team, Verhandlung, Praesentation, Markt',
+    blurb: 'Gesprächsführung, Team, Verhandlung, Präsentation, Markt',
     icon: Icons.forum_outlined,
     weight: 0.13,
   );
@@ -72,8 +72,8 @@ class ExamAreas {
   static const qualitaet = ExamArea(
     id: 'a05',
     number: '05',
-    title: 'Qualitaetssicherung',
-    blurb: 'QS-Massnahmen, PDCA, Testverfahren und Testprotokolle',
+    title: 'Qualitätssicherung',
+    blurb: 'QS-Maßnahmen, PDCA, Testverfahren und Testprotokolle',
     icon: Icons.verified_outlined,
     weight: 0.07,
   );
@@ -82,7 +82,7 @@ class ExamAreas {
     id: 'a06',
     number: '06',
     title: 'IT-Sicherheit & Datenschutz',
-    blurb: 'Schutzziele, Massnahmen, Kryptographie, DSGVO',
+    blurb: 'Schutzziele, Maßnahmen, Kryptographie, DSGVO',
     icon: Icons.shield_outlined,
     weight: 0.12,
   );
@@ -91,7 +91,7 @@ class ExamAreas {
     id: 'a07',
     number: '07',
     title: 'Vertragsmanagement & Service',
-    blurb: 'Vertragsarten, SLA, Leistungsstoerungen, Change Management',
+    blurb: 'Vertragsarten, SLA, Leistungsstörungen, Change Management',
     icon: Icons.handshake_outlined,
     weight: 0.06,
   );

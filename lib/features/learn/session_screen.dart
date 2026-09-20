@@ -12,14 +12,14 @@ import '../../widgets/common.dart';
 import '../../widgets/question_view.dart';
 import 'theory_sheet.dart';
 
-/// Der Aufgaben-Runner - eine Oberflaeche fuer Uebung und Pruefung.
+/// Der Aufgaben-Runner - eine Oberfläche für Übung und Prüfung.
 ///
 /// Der Unterschied ist bewusst sichtbar, aber klein gehalten:
-/// - Uebung: Aktion "Pruefen" -> Feedback und Erklaerung sofort, dann "Weiter".
-///   Zurueckblaettern gibt es nicht; eine beantwortete Aufgabe ist erledigt.
-/// - Pruefung: Countdown in der Kopfzeile, kein "Pruefen", dafuer freie
-///   Navigation, Markieren fuer spaeter und eine Aufgabenuebersicht. Keine
-///   Erklaerungen, keine Farben, kein Hinweis auf richtig oder falsch.
+/// - Übung: Aktion "Prüfen" -> Feedback und Erklärung sofort, dann "Weiter".
+///   Zurückblättern gibt es nicht; eine beantwortete Aufgabe ist erledigt.
+/// - Prüfung: Countdown in der Kopfzeile, kein "Prüfen", dafür freie
+///   Navigation, Markieren für später und eine Aufgabenübersicht. Keine
+///   Erklärungen, keine Farben, kein Hinweis auf richtig oder falsch.
 class SessionScreen extends ConsumerStatefulWidget {
   const SessionScreen({super.key});
 
@@ -70,8 +70,8 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
           s.isExam
               ? 'Die Simulation wird nicht gewertet und der Versuch geht '
                   'verloren.'
-              : 'Bereits gepruefte Aufgaben bleiben in deiner Statistik. '
-                  'Der Rest der Runde verfaellt.',
+              : 'Bereits geprüfte Aufgaben bleiben in deiner Statistik. '
+                  'Der Rest der Runde verfällt.',
         ),
         actions: [
           TextButton(
@@ -157,7 +157,7 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
               IconButton(
                 tooltip: item.flagged
                     ? 'Markierung entfernen'
-                    : 'Fuer spaeter markieren',
+                    : 'Für später markieren',
                 onPressed: controller.toggleFlag,
                 icon: Icon(
                   item.flagged ? Icons.bookmark : Icons.bookmark_outline,
@@ -241,14 +241,14 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
         content: Text(
           open == 0
               ? 'Alle Aufgaben sind bearbeitet. Nach der Abgabe siehst du die '
-                  'Auswertung mit allen Erklaerungen.'
+                  'Auswertung mit allen Erklärungen.'
               : '$open ${open == 1 ? "Aufgabe ist" : "Aufgaben sind"} noch '
-                  'unbeantwortet. Unbeantwortete Aufgaben zaehlen mit 0 Punkten.',
+                  'unbeantwortet. Unbeantwortete Aufgaben zählen mit 0 Punkten.',
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(false),
-            child: const Text('Zurueck'),
+            child: const Text('Zurück'),
           ),
           FilledButton(
             onPressed: () => Navigator.of(ctx).pop(true),
@@ -270,7 +270,7 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Aufgabenuebersicht', style: ctx.text.titleLarge),
+              Text('Aufgabenübersicht', style: ctx.text.titleLarge),
               const SizedBox(height: Gap.xs),
               Text(
                 '${s.answeredCount} von ${s.items.length} bearbeitet',
@@ -461,7 +461,7 @@ class _BottomBar extends StatelessWidget {
                       IconButton.outlined(
                         onPressed: onOverview,
                         icon: const Icon(Icons.grid_view_outlined),
-                        tooltip: 'Uebersicht',
+                        tooltip: 'Übersicht',
                       ),
                       const SizedBox(width: Gap.m),
                       Expanded(
@@ -492,15 +492,15 @@ class _BottomBar extends StatelessWidget {
                                 label: Text(
                                   session.isLast
                                       ? 'Auswertung ansehen'
-                                      : 'Naechste Aufgabe',
+                                      : 'Nächste Aufgabe',
                                 ),
                               )
                             : FilledButton(
                                 onPressed: item.hasAnswer ? onCheck : null,
                                 child: Text(
                                   item.hasAnswer
-                                      ? 'Antwort pruefen'
-                                      : 'Antwort auswaehlen',
+                                      ? 'Antwort prüfen'
+                                      : 'Antwort auswählen',
                                 ),
                               ),
                       ),

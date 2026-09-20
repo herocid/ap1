@@ -12,9 +12,9 @@ import '../data/repositories/local_store.dart';
 import '../data/repositories/question_repository.dart';
 import '../data/seed/seed_data.dart';
 
-/// Wird in `main()` mit der echten Instanz ueberschrieben.
+/// Wird in `main()` mit der echten Instanz überschrieben.
 final localStoreProvider = Provider<LocalStore>((ref) {
-  throw UnimplementedError('localStoreProvider muss ueberschrieben werden');
+  throw UnimplementedError('localStoreProvider muss überschrieben werden');
 });
 
 final questionRepositoryProvider =
@@ -26,7 +26,7 @@ final questionPoolProvider = FutureProvider<List<Question>>((ref) async {
   return ref.read(questionRepositoryProvider).fetchAll();
 });
 
-/// Synchroner Zugriff auf den Pool (Seed als Fallback waehrend des Ladens).
+/// Synchroner Zugriff auf den Pool (Seed als Fallback während des Ladens).
 final questionsProvider = Provider<List<Question>>((ref) {
   return ref.watch(questionPoolProvider).maybeWhen(
         data: (qs) => qs,
@@ -89,7 +89,7 @@ class ProgressNotifier extends StateNotifier<ProgressState> {
 
   final LocalStore _store;
 
-  /// Traegt eine beantwortete Aufgabe ein und aktualisiert Streak und Badges.
+  /// Trägt eine beantwortete Aufgabe ein und aktualisiert Streak und Badges.
   void record(AnswerRecord r) {
     final history = [...state.history, r];
     final streakInfo = _updateStreak(state, r.at);
@@ -105,7 +105,7 @@ class ProgressNotifier extends StateNotifier<ProgressState> {
     _store.writeProgress(state);
   }
 
-  /// Mehrere Antworten auf einmal - so werden Pruefungssimulationen gebucht,
+  /// Mehrere Antworten auf einmal - so werden Prüfungssimulationen gebucht,
   /// damit der Streak nicht pro Aufgabe neu berechnet wird.
   void recordAll(List<AnswerRecord> records) {
     if (records.isEmpty) return;
@@ -131,7 +131,7 @@ class ProgressNotifier extends StateNotifier<ProgressState> {
     _store.writeProgress(state);
   }
 
-  /// Gibt (aktuellerStreak, laengsterStreak) zurueck.
+  /// Gibt (aktuellerStreak, längsterStreak) zurück.
   (int, int) _updateStreak(ProgressState s, DateTime at) {
     final today = DateTime(at.year, at.month, at.day);
     final last = s.lastActiveDay;
@@ -142,8 +142,8 @@ class ProgressNotifier extends StateNotifier<ProgressState> {
 
     final streak = switch (diff) {
       0 => s.streak == 0 ? 1 : s.streak, // heute schon aktiv gewesen
-      1 => s.streak + 1, // gestern aktiv -> Serie laeuft weiter
-      _ => 1, // Luecke -> Serie beginnt neu
+      1 => s.streak + 1, // gestern aktiv -> Serie läuft weiter
+      _ => 1, // Lücke -> Serie beginnt neu
     };
     return (streak, streak > s.longestStreak ? streak : s.longestStreak);
   }
@@ -168,7 +168,7 @@ class ProgressNotifier extends StateNotifier<ProgressState> {
       earned.add(Achievement.allrounder);
     }
 
-    // Fehlerjaeger: Aufgaben, die frueher falsch und spaeter richtig waren.
+    // Fehlerjäger: Aufgaben, die früher falsch und später richtig waren.
     final firstWrong = <String>{};
     final laterRight = <String>{};
     for (final r in s.history) {
@@ -196,7 +196,7 @@ final progressProvider =
   return ProgressNotifier(ref.watch(localStoreProvider));
 });
 
-/// Der Pruefungsreife-Wert (0..100), abgeleitet aus Fortschritt und Poolgroesse.
+/// Der Prüfungsreife-Wert (0..100), abgeleitet aus Fortschritt und Poolgröße.
 final readinessProvider = Provider<int>((ref) {
   final progress = ref.watch(progressProvider);
   final pool = ref.watch(poolSizeProvider);
@@ -219,11 +219,11 @@ final studyPlanProvider = Provider<StudyPlan>((ref) {
 
 // ------------------------------------------------------- Bereichsauswertung
 
-/// Pruefungsreife je Katalogbereich (0..100).
+/// Prüfungsreife je Katalogbereich (0..100).
 ///
 /// Innerhalb eines Bereichs wird auf dessen eigenes Gewicht normiert: Ein
 /// Bereich mit 6 % Punkteanteil kann genauso 100 % erreichen wie einer mit
-/// 22 %. Sonst waeren die kleinen Bereiche optisch immer "schlecht".
+/// 22 %. Sonst wären die kleinen Bereiche optisch immer "schlecht".
 final areaReadinessProvider = Provider<Map<String, int>>((ref) {
   final stats = ref.watch(topicStatsProvider);
   final out = <String, int>{};
@@ -278,7 +278,7 @@ final deckProvider = StateNotifierProvider<DeckNotifier, DeckState>((ref) {
   return DeckNotifier(ref.watch(localStoreProvider));
 });
 
-/// Wie viele Karten heute faellig sind - die Zahl fuers Dashboard.
+/// Wie viele Karten heute fällig sind - die Zahl fürs Dashboard.
 final dueCardsProvider = Provider<int>((ref) {
   final deck = ref.watch(deckProvider);
   return deck.dueCount(ref.watch(flashcardsProvider));

@@ -10,8 +10,8 @@ import 'seed_theory.dart';
 
 /// Der komplette Aufgabenpool der App.
 ///
-/// Diese Liste ist zugleich die Quelle fuer den SQL-Seed in
-/// `supabase/migrations` - beides muss inhaltlich uebereinstimmen, damit die
+/// Diese Liste ist zugleich die Quelle für den SQL-Seed in
+/// `supabase/migrations` - beides muss inhaltlich übereinstimmen, damit die
 /// App offline und online dieselben Aufgaben zeigt.
 final List<Question> kSeedQuestions = [
   ...seedGrundlagen,
@@ -22,8 +22,8 @@ final List<Question> kSeedQuestions = [
 
 final List<TheorySnack> kSeedTheory = seedTheory;
 
-/// Nur die Aufgaben, die nach dem Katalog 2025 noch drankommen koennen.
-/// Alles andere bleibt im Pool, wird aber nie ausgewaehlt.
+/// Nur die Aufgaben, die nach dem Katalog 2025 noch drankommen können.
+/// Alles andere bleibt im Pool, wird aber nie ausgewählt.
 List<Question> get kExamRelevantQuestions =>
     kSeedQuestions.where((q) => q.isExamRelevant).toList(growable: false);
 
@@ -36,8 +36,8 @@ Map<String, int> kCardCountByTopic() {
   return out;
 }
 
-/// Anzahl Aufgaben je Thema - Grundlage fuer die Coverage-Berechnung in der
-/// Pruefungsreife.
+/// Anzahl Aufgaben je Thema - Grundlage für die Coverage-Berechnung in der
+/// Prüfungsreife.
 Map<String, int> kPoolSizeByTopic() {
   final out = <String, int>{};
   for (final q in kExamRelevantQuestions) {

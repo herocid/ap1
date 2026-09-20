@@ -39,23 +39,23 @@ class StudyPlan {
   final int minutesPerDay;
   final List<PlanBlock> blocks;
 
-  /// Die letzten Tage vor der Pruefung sind fuer Wiederholung und
-  /// Simulationen reserviert, nicht fuer neuen Stoff.
+  /// Die letzten Tage vor der Prüfung sind für Wiederholung und
+  /// Simulationen reserviert, nicht für neuen Stoff.
   final int bufferDays;
 
-  /// Ob das Pensum mit der gewaehlten Intensitaet ueberhaupt zu schaffen ist.
+  /// Ob das Pensum mit der gewählten Intensität überhaupt zu schaffen ist.
   final bool feasible;
   final String note;
 }
 
-/// Erzeugt aus Pruefungstermin, Intensitaet und aktuellem Stand einen
+/// Erzeugt aus Prüfungstermin, Intensität und aktuellem Stand einen
 /// konkreten Plan.
 ///
 /// Leitgedanken:
-/// - Reihenfolge nach Dringlichkeit = Pruefungsgewicht x Wissensluecke,
+/// - Reihenfolge nach Dringlichkeit = Prüfungsgewicht x Wissenslücke,
 ///   nicht nach Kapitelnummer.
-/// - Die letzten Tage gehoeren der Wiederholung. Neuer Stoff kurz vor der
-///   Pruefung schadet mehr, als er nuetzt.
+/// - Die letzten Tage gehören der Wiederholung. Neuer Stoff kurz vor der
+///   Prüfung schadet mehr, als er nützt.
 /// - Der Plan sagt ehrlich, wenn die Zeit nicht reicht, statt ein
 ///   unerreichbares Pensum auszuwerfen.
 class StudyPlanner {
@@ -70,7 +70,7 @@ class StudyPlanner {
     final dailyGoal = profile.dailyGoal;
     final stats = progress.topicStats(poolSize);
 
-    // Wiederholungspuffer: 15 % der Zeit, mindestens 2 und hoechstens 10 Tage.
+    // Wiederholungspuffer: 15 % der Zeit, mindestens 2 und höchstens 10 Tage.
     final bufferDays =
         daysLeft <= 3 ? 0 : (daysLeft * 0.15).round().clamp(2, 10);
     final learnDays = math.max(1, daysLeft - bufferDays);
@@ -82,7 +82,7 @@ class StudyPlanner {
       });
 
     // Tage proportional zur Dringlichkeit verteilen, aber jedes Thema bekommt
-    // mindestens einen Tag - sonst faellt bei kurzem Vorlauf die Haelfte weg.
+    // mindestens einen Tag - sonst fällt bei kurzem Vorlauf die Hälfte weg.
     final urgency = <String, double>{
       for (final t in ranked)
         t.id: math.max(
@@ -131,11 +131,11 @@ class StudyPlanner {
       feasible: feasible,
       note: feasible
           ? 'Mit $dailyGoal Aufgaben pro Tag schaffst du den Stoff in '
-              '$learnDays Lerntagen und behaeltst $bufferDays Tage zum '
+              '$learnDays Lerntagen und behältst $bufferDays Tage zum '
               'Wiederholen.'
           : 'Bei $dailyGoal Aufgaben pro Tag reichen die $learnDays Lerntage '
-              'rechnerisch nicht fuer alle $totalTarget offenen Aufgaben. '
-              'Erhoehe die Intensitaet auf etwa '
+              'rechnerisch nicht für alle $totalTarget offenen Aufgaben. '
+              'Erhöhe die Intensität auf etwa '
               '${(totalTarget / learnDays).ceil()} Aufgaben pro Tag - oder '
               'konzentriere dich auf die oberen drei Themen dieser Liste.',
     );

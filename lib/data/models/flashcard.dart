@@ -5,10 +5,10 @@ import 'package:flutter/foundation.dart';
 
 /// Eine Lernkarteikarte.
 ///
-/// Karteikarten sind der Einstieg fuer ein Thema, das man noch gar nicht kennt:
-/// erst die Begriffe sitzen lassen, dann Uebungsaufgaben rechnen. Deshalb sind
+/// Karteikarten sind der Einstieg für ein Thema, das man noch gar nicht kennt:
+/// erst die Begriffe sitzen lassen, dann Übungsaufgaben rechnen. Deshalb sind
 /// sie bewusst kurz - Vorderseite ein Begriff oder eine knappe Frage,
-/// Rueckseite die Antwort in ein bis drei Saetzen.
+/// Rückseite die Antwort in ein bis drei Sätzen.
 @immutable
 class Flashcard {
   const Flashcard({
@@ -23,14 +23,14 @@ class Flashcard {
   final String id;
   final String topicId;
 
-  /// Vorderseite: Begriff, Abkuerzung oder kurze Frage.
+  /// Vorderseite: Begriff, Abkürzung oder kurze Frage.
   final String front;
 
-  /// Rueckseite: die Antwort. Kurz halten - wer eine halbe Seite umdreht,
-  /// kann sich nicht ehrlich selbst einschaetzen.
+  /// Rückseite: die Antwort. Kurz halten - wer eine halbe Seite umdreht,
+  /// kann sich nicht ehrlich selbst einschätzen.
   final String back;
 
-  /// Optionale Eselsbruecke oder Abgrenzung zu einem verwechselbaren Begriff.
+  /// Optionale Eselsbrücke oder Abgrenzung zu einem verwechselbaren Begriff.
   final String? hint;
 
   final List<String> tags;
@@ -54,15 +54,15 @@ class Flashcard {
       );
 }
 
-/// Leitner-Karteikasten mit fuenf Faechern.
+/// Leitner-Karteikasten mit fünf Fächern.
 ///
-/// Gewusst -> die Karte wandert ein Fach weiter und kommt spaeter wieder.
-/// Nicht gewusst -> zurueck in Fach 1, also morgen wieder.
+/// Gewusst -> die Karte wandert ein Fach weiter und kommt später wieder.
+/// Nicht gewusst -> zurück in Fach 1, also morgen wieder.
 ///
-/// Warum Leitner und nicht SM-2: Das Verfahren ist ohne Erklaerung
-/// verstaendlich, und der Lernende sieht an der Fachverteilung koerperlich,
-/// wie der Stapel wandert. SM-2 waere feiner, verlangt aber eine
-/// Selbsteinschaetzung in vier Stufen - genau das koennen Anfaenger in einem
+/// Warum Leitner und nicht SM-2: Das Verfahren ist ohne Erklärung
+/// verständlich, und der Lernende sieht an der Fachverteilung körperlich,
+/// wie der Stapel wandert. SM-2 wäre feiner, verlangt aber eine
+/// Selbsteinschätzung in vier Stufen - genau das können Anfänger in einem
 /// Thema, das sie neu lernen, noch nicht leisten.
 class Leitner {
   const Leitner._();
@@ -75,7 +75,7 @@ class Leitner {
   static int intervalFor(int box) =>
       intervalDays[(box - 1).clamp(0, boxCount - 1)];
 
-  /// Bezeichnung fuer die Oberflaeche.
+  /// Bezeichnung für die Oberfläche.
   static String boxLabel(int box) => switch (box) {
         1 => 'Neu & schwierig',
         2 => 'Wird besser',
@@ -102,7 +102,7 @@ class CardState {
   /// 1 bis 5.
   final int box;
 
-  /// Naechste Wiedervorlage. `null` = noch nie gesehen, also sofort faellig.
+  /// Nächste Wiedervorlage. `null` = noch nie gesehen, also sofort fällig.
   final DateTime? due;
   final DateTime? lastSeen;
   final int timesCorrect;
@@ -117,7 +117,7 @@ class CardState {
     return !d.isAfter(DateTime(n.year, n.month, n.day, 23, 59, 59));
   }
 
-  /// Bewertet eine Antwort und gibt den neuen Stand zurueck.
+  /// Bewertet eine Antwort und gibt den neuen Stand zurück.
   CardState answer({required bool knewIt, DateTime? now}) {
     final n = now ?? DateTime.now();
     final today = DateTime(n.year, n.month, n.day);
@@ -168,7 +168,7 @@ class DeckState {
     return DeckState(cards: next);
   }
 
-  /// Faellige und neue Karten eines Themas - oder aller Themen, wenn
+  /// Fällige und neue Karten eines Themas - oder aller Themen, wenn
   /// [topicIds] leer ist. Reihenfolge: zuerst was schon mal danebenging
   /// (niedriges Fach), dann Neues, dann der Rest.
   List<Flashcard> due(
@@ -185,10 +185,10 @@ class DeckState {
     candidates.sort((a, b) {
       final sa = stateOf(a.id);
       final sb = stateOf(b.id);
-      // Niedrigeres Fach zuerst: was noch wackelt, kommt oefter dran.
+      // Niedrigeres Fach zuerst: was noch wackelt, kommt öfter dran.
       final byBox = sa.box.compareTo(sb.box);
       if (byBox != 0) return byBox;
-      // Danach: laenger ueberfaellig zuerst.
+      // Danach: länger überfällig zuerst.
       final da = sa.due ?? DateTime(2000);
       final db = sb.due ?? DateTime(2000);
       return da.compareTo(db);
@@ -208,7 +208,7 @@ class DeckState {
       .length;
 
   /// 0..1 - wie weit der Kasten insgesamt durchgearbeitet ist. Eine Karte in
-  /// Fach 5 zaehlt voll, eine in Fach 1 fast nichts.
+  /// Fach 5 zählt voll, eine in Fach 1 fast nichts.
   double mastery(List<Flashcard> pool) {
     if (pool.isEmpty) return 0;
     var sum = 0.0;

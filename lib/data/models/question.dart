@@ -4,9 +4,9 @@ import 'netzplan.dart';
 
 /// Aufgabentypen des Trainers.
 ///
-/// Bewusst mehr als nur Multiple Choice: die AP1 prueft Rechnen (Netzplan,
+/// Bewusst mehr als nur Multiple Choice: die AP1 prüft Rechnen (Netzplan,
 /// Nutzwertanalyse), Zuordnen (Lastenheft vs. Pflichtenheft) und Reihenfolgen
-/// (Phasen, Scrum-Events). Wer nur MC uebt, faellt im Ernstfall genau ueber
+/// (Phasen, Scrum-Events). Wer nur MC übt, fällt im Ernstfall genau über
 /// diese Aufgaben.
 enum QuestionKind {
   single('Einfachauswahl'),
@@ -24,12 +24,12 @@ enum QuestionKind {
           orElse: () => QuestionKind.single);
 }
 
-/// Stand einer Aufgabe im Pruefungskatalog.
+/// Stand einer Aufgabe im Prüfungskatalog.
 ///
-/// Der Katalog 2025 hat Themen gestrichen (Vorgehensmodelle ausser Wasserfall
+/// Der Katalog 2025 hat Themen gestrichen (Vorgehensmodelle außer Wasserfall
 /// und Scrum, SQL, RAID, Struktogramm/PAP, Vererbung, SWOT, ISO-Normen ...).
-/// Solche Aufgaben werden nicht geloescht - sie bleiben als Nachschlagewerk
-/// erhalten, fliegen aber aus jeder Auswahl und aus der Pruefungsreife.
+/// Solche Aufgaben werden nicht gelöscht - sie bleiben als Nachschlagewerk
+/// erhalten, fliegen aber aus jeder Auswahl und aus der Prüfungsreife.
 enum CatalogStatus {
   /// Im Katalog ab 2025 enthalten.
   current,
@@ -41,8 +41,8 @@ enum CatalogStatus {
       .firstWhere((e) => e.name == s, orElse: () => CatalogStatus.current);
 }
 
-/// Ergebnis einer Bewertung. [parts] traegt die Detailrueckmeldung, damit die
-/// UI jede Option/Zelle einzeln einfaerben kann.
+/// Ergebnis einer Bewertung. [parts] trägt die Detailrückmeldung, damit die
+/// UI jede Option/Zelle einzeln einfärben kann.
 @immutable
 class GradeResult {
   const GradeResult({
@@ -50,10 +50,10 @@ class GradeResult {
     required this.parts,
   });
 
-  /// 0.0 .. 1.0 - Teilpunkte sind ausdruecklich vorgesehen.
+  /// 0.0 .. 1.0 - Teilpunkte sind ausdrücklich vorgesehen.
   final double score;
 
-  /// Schluessel je nach Aufgabentyp: Option-Index, Item-Index oder "A.faz".
+  /// Schlüssel je nach Aufgabentyp: Option-Index, Item-Index oder "A.faz".
   final Map<String, bool> parts;
 
   bool get isCorrect => score >= 0.9999;
@@ -88,7 +88,7 @@ class Choice {
       {'text': text, 'is_correct': isCorrect, 'rationale': rationale};
 }
 
-/// Ein Zuordnungs-Item ("Die Anforderung X gehoert ins ...").
+/// Ein Zuordnungs-Item ("Die Anforderung X gehört ins ...").
 @immutable
 class MatchItem {
   const MatchItem({
@@ -140,15 +140,15 @@ class Question {
   final String topicId;
   final QuestionKind kind;
 
-  /// Optionaler Fallbeispiel-Kontext, der ueber der Frage steht. In der AP1
-  /// haengen mehrere Aufgaben an einer Situationsbeschreibung.
+  /// Optionaler Fallbeispiel-Kontext, der über der Frage steht. In der AP1
+  /// hängen mehrere Aufgaben an einer Situationsbeschreibung.
   final String? scenario;
   final String prompt;
 
-  /// Die Gesamterklaerung nach dem Antworten (Rechenweg, Merksatz, Abgrenzung).
+  /// Die Gesamterklärung nach dem Antworten (Rechenweg, Merksatz, Abgrenzung).
   final String explanation;
 
-  /// 1 = Grundlagen, 2 = Pruefungsniveau, 3 = anspruchsvoll.
+  /// 1 = Grundlagen, 2 = Prüfungsniveau, 3 = anspruchsvoll.
   final int difficulty;
   final List<String> tags;
   final String? source;
@@ -178,8 +178,8 @@ class Question {
   final List<Activity> activities;
   final List<NodeField> askedFields;
 
-  /// Geschaetzte Bearbeitungszeit - Grundlage fuer das Zeitbudget im
-  /// Pruefungsmodus.
+  /// Geschätzte Bearbeitungszeit - Grundlage für das Zeitbudget im
+  /// Prüfungsmodus.
   int get estimatedSeconds => switch (kind) {
         QuestionKind.single => 55,
         QuestionKind.multiple => 80,
@@ -189,7 +189,7 @@ class Question {
         QuestionKind.netzplan => 60 + activities.length * 35,
       };
 
-  /// Punkte, wie sie die IHK vergeben wuerde - skaliert mit Aufwand.
+  /// Punkte, wie sie die IHK vergeben würde - skaliert mit Aufwand.
   int get points => switch (kind) {
         QuestionKind.single => 2,
         QuestionKind.multiple => 3,
@@ -202,8 +202,8 @@ class Question {
   NetzplanSolution? get netzplanSolution =>
       activities.isEmpty ? null : NetzplanSolver.solve(activities);
 
-  /// Bewertet eine Antwort. [answer] ist typabhaengig:
-  /// - single/multiple: `Set<int>` der gewaehlten Indizes
+  /// Bewertet eine Antwort. [answer] ist typabhängig:
+  /// - single/multiple: `Set<int>` der gewählten Indizes
   /// - numeric: `double`
   /// - ordering: `List<int>` der Original-Indizes in Nutzerreihenfolge
   /// - matching: `Map<int, int>` Item-Index -> Bucket-Index
@@ -225,7 +225,7 @@ class Question {
           if (chosen && !shouldChoose) falseHits++;
         }
         if (totalCorrect == 0) return GradeResult(score: 0, parts: parts);
-        // Falsch angekreuzte Optionen ziehen ab - sonst waere "alles ankreuzen"
+        // Falsch angekreuzte Optionen ziehen ab - sonst wäre "alles ankreuzen"
         // eine Gewinnstrategie.
         final raw = (hits - falseHits) / totalCorrect;
         return GradeResult(score: raw.clamp(0.0, 1.0), parts: parts);

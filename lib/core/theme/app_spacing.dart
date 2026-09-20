@@ -1,4 +1,4 @@
-/// 4pt-Raster. Alle Abstaende im Projekt kommen aus dieser Skala - das ist der
+/// 4pt-Raster. Alle Abstände im Projekt kommen aus dieser Skala - das ist der
 /// billigste Weg zu einem ruhigen Layout, ohne dass irgendwo "mal eben 13px"
 /// landen.
 class Gap {
@@ -21,7 +21,7 @@ class Radii {
   static const double pill = 999;
 }
 
-/// Breakpoints. Die App ist eine Codebase fuer Touch *und* Desktop/Web;
+/// Breakpoints. Die App ist eine Codebase für Touch *und* Desktop/Web;
 /// ab [medium] wechseln Listen auf zweispaltige Layouts und die Navigation
 /// wandert von der BottomBar in eine NavigationRail.
 class Breakpoints {

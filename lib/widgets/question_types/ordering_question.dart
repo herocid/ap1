@@ -7,9 +7,9 @@ import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/question.dart';
 
-/// Reihenfolge-Aufgaben (Phasen, Scrum-Events, Ablaeufe).
+/// Reihenfolge-Aufgaben (Phasen, Scrum-Events, Abläufe).
 ///
-/// Bedienung bewusst doppelt: ziehen am Griff fuer Touch, Pfeiltasten fuer
+/// Bedienung bewusst doppelt: ziehen am Griff für Touch, Pfeiltasten für
 /// Maus und Screenreader. Drag-and-drop allein ist auf dem Desktop fummelig
 /// und mit Tastatur gar nicht bedienbar.
 class OrderingQuestionView extends StatefulWidget {
@@ -68,7 +68,7 @@ class _OrderingQuestionViewState extends State<OrderingQuestionView> {
     // verschiedene Aufgaben unterschiedlich.
     final rnd = math.Random(widget.question.id.hashCode);
     idx.shuffle(rnd);
-    // Eine zufaellig korrekte Startreihenfolge waere ein Geschenk - einmal
+    // Eine zufällig korrekte Startreihenfolge wäre ein Geschenk - einmal
     // rotieren, falls das passiert.
     final isIdentity = List.generate(n, (i) => idx[i] == i).every((e) => e);
     if (isIdentity && n > 1) {

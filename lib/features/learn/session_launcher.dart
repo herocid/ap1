@@ -36,7 +36,7 @@ class SessionLauncher {
     if (questions.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Fuer diese Auswahl gibt es gerade keine Aufgaben.'),
+          content: Text('Für diese Auswahl gibt es gerade keine Aufgaben.'),
         ),
       );
       return;
@@ -46,7 +46,7 @@ class SessionLauncher {
         ? 'Fehlerspeicher'
         : topicId != null
             ? Topics.byId(topicId).title
-            : 'Tagesuebung';
+            : 'Tagesübung';
 
     ref.read(sessionProvider.notifier).start(
           questions: questions,

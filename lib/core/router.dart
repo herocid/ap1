@@ -23,7 +23,7 @@ final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     navigatorKey: _rootKey,
     initialLocation: '/',
-    // Solange das Onboarding nicht durch ist, fuehrt jeder Weg dorthin.
+    // Solange das Onboarding nicht durch ist, führt jeder Weg dorthin.
     redirect: (context, state) {
       final onboarded = ref.read(profileProvider).onboarded;
       final atOnboarding = state.matchedLocation == '/onboarding';
@@ -36,7 +36,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/onboarding',
         builder: (context, state) => const OnboardingScreen(),
       ),
-      // Session, Ergebnis und Simulation liegen ueber der Shell: waehrend
+      // Session, Ergebnis und Simulation liegen über der Shell: während
       // einer Runde soll die Navigationsleiste nicht ablenken.
       GoRoute(
         path: '/session',
@@ -49,7 +49,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const ResultScreen(),
       ),
       GoRoute(
-        path: '/pruefung',
+        path: '/prüfung',
         parentNavigatorKey: _rootKey,
         builder: (context, state) => const ExamIntroScreen(),
       ),
@@ -67,7 +67,7 @@ final routerProvider = Provider<GoRouter>((ref) {
             AreaDetailScreen(areaId: state.pathParameters['areaId']!),
       ),
       GoRoute(
-        path: '/katalog-aenderungen',
+        path: '/katalog-änderungen',
         parentNavigatorKey: _rootKey,
         builder: (context, state) => const CatalogChangesScreen(),
       ),

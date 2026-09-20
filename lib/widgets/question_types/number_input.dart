@@ -8,9 +8,9 @@ import '../../core/theme/app_theme.dart';
 /// Eigenes Ziffernfeld statt der Systemtastatur.
 ///
 /// Grund: Auf dem Handy verdeckt die Systemtastatur bei Netzplan-Aufgaben
-/// genau die Tabelle, in die man gerade eintraegt - und sie liefert je nach
+/// genau die Tabelle, in die man gerade einträgt - und sie liefert je nach
 /// Hersteller mal ein Komma, mal einen Punkt. Das eigene Pad ist flacher,
-/// zeigt nur, was gebraucht wird, und laesst die Aufgabe sichtbar.
+/// zeigt nur, was gebraucht wird, und lässt die Aufgabe sichtbar.
 /// Auf Desktop/Web wird stattdessen direkt getippt.
 class NumericKeypad extends StatelessWidget {
   const NumericKeypad({
@@ -113,8 +113,8 @@ class _Key extends StatelessWidget {
   }
 }
 
-/// Oeffnet das Ziffernfeld als Bottom Sheet und liefert den eingegebenen Wert.
-/// Gibt `null` zurueck, wenn abgebrochen wurde.
+/// Öffnet das Ziffernfeld als Bottom Sheet und liefert den eingegebenen Wert.
+/// Gibt `null` zurück, wenn abgebrochen wurde.
 Future<String?> showNumericKeypad(
   BuildContext context, {
   required String title,

@@ -46,7 +46,7 @@ class AreaDetailScreen extends ConsumerWidget {
                 Text(area.blurb, style: context.text.bodyLarge),
                 const SizedBox(height: Gap.s),
                 Text(
-                  'Geschaetzter Anteil an der AP1: '
+                  'Geschätzter Anteil an der AP1: '
                   '${(area.weight * 100).round()} % der Punkte',
                   style: context.text.labelSmall
                       ?.copyWith(color: context.c.textMuted),
@@ -66,7 +66,7 @@ class AreaDetailScreen extends ConsumerWidget {
                       icon: const Icon(Icons.style_outlined),
                       label: Text(
                         dueHere > 0
-                            ? 'Karteikarten lernen ($dueHere faellig)'
+                            ? 'Karteikarten lernen ($dueHere fällig)'
                             : 'Karteikarten wiederholen',
                       ),
                     ),
@@ -193,7 +193,7 @@ class _TopicTile extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: Gap.l),
                       ),
                       onPressed: onPractice,
-                      child: const Text('Ueben'),
+                      child: const Text('Üben'),
                     ),
                 ],
               ),

@@ -5,7 +5,7 @@ import '../models/profile.dart';
 import '../models/progress.dart';
 
 /// Lokale Persistenz. Die App ist offline-first: alles landet zuerst hier,
-/// die Synchronisation mit Supabase ist ein zusaetzlicher Schritt, kein
+/// die Synchronisation mit Supabase ist ein zusätzlicher Schritt, kein
 /// Voraussetzung. Wer im Zug ohne Netz lernt, verliert nichts.
 class LocalStore {
   LocalStore(this._prefs);

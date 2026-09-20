@@ -6,7 +6,7 @@ import '../../core/theme/app_spacing.dart';
 
 /// Navigationsrahmen.
 ///
-/// Unter 900 px eine BottomBar (Daumen erreicht sie), darueber eine
+/// Unter 900 px eine BottomBar (Daumen erreicht sie), darüber eine
 /// NavigationRail (der Platz ist da, und eine BottomBar auf einem 27-Zoll-
 /// Monitor sieht falsch aus). Vier Ziele - mehr passt weder in die Leiste
 /// noch in den Kopf.

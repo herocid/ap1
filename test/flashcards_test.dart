@@ -7,7 +7,7 @@ void main() {
   final heute = DateTime(2026, 9, 20);
 
   group('Leitner-Boxen', () {
-    test('eine neue Karte ist sofort faellig', () {
+    test('eine neue Karte ist sofort fällig', () {
       const s = CardState(cardId: 'x');
       expect(s.isNew, isTrue);
       expect(s.isDue(heute), isTrue);
@@ -21,7 +21,7 @@ void main() {
       expect(next.timesCorrect, 1);
     });
 
-    test('nicht gewusst wirft die Karte zurueck in Fach 1', () {
+    test('nicht gewusst wirft die Karte zurück in Fach 1', () {
       const s = CardState(cardId: 'x', box: 5);
       final next = s.answer(knewIt: false, now: heute);
       expect(next.box, 1);
@@ -40,13 +40,13 @@ void main() {
       expect(next.due, DateTime(2026, 9, 22));
     });
 
-    test('eine beantwortete Karte ist heute nicht mehr faellig', () {
+    test('eine beantwortete Karte ist heute nicht mehr fällig', () {
       const s = CardState(cardId: 'x');
       final next = s.answer(knewIt: true, now: heute);
       expect(next.isDue(heute), isFalse);
     });
 
-    test('nach Ablauf des Intervalls ist sie wieder faellig', () {
+    test('nach Ablauf des Intervalls ist sie wieder fällig', () {
       const s = CardState(cardId: 'x');
       final next = s.answer(knewIt: true, now: heute);
       // Fach 1 -> 2 bedeutet zwei Tage Wiedervorlage.
@@ -69,7 +69,7 @@ void main() {
       const Flashcard(id: 'c', topicId: 'agil_scrum', front: 'C', back: 'c'),
     ];
 
-    test('alle Karten sind anfangs faellig', () {
+    test('alle Karten sind anfangs fällig', () {
       const deck = DeckState();
       expect(deck.dueCount(cards, now: heute), 3);
     });
@@ -80,7 +80,7 @@ void main() {
       expect(due.map((c) => c.id), ['c']);
     });
 
-    test('niedrige Faecher kommen zuerst', () {
+    test('niedrige Fächer kommen zuerst', () {
       var deck = const DeckState();
       // "a" auf Fach 3 heben, "b" bleibt neu.
       deck = deck.withAnswer('a', true, now: DateTime(2026, 9, 1));
@@ -97,7 +97,7 @@ void main() {
       expect(deck.stateOf('a').isDue(DateTime(2026, 9, 21)), isTrue);
     });
 
-    test('mastery waechst mit dem Fach', () {
+    test('mastery wächst mit dem Fach', () {
       var deck = const DeckState();
       expect(deck.mastery(cards), 0);
       for (var i = 0; i < 4; i++) {
@@ -108,7 +108,7 @@ void main() {
       expect(deck.mastery(cards), 1.0);
     });
 
-    test('JSON-Roundtrip erhaelt den Lernstand', () {
+    test('JSON-Roundtrip erhält den Lernstand', () {
       var deck = const DeckState();
       deck = deck.withAnswer('a', true, now: heute);
       deck = deck.withAnswer('b', false, now: heute);
@@ -120,7 +120,7 @@ void main() {
   });
 
   group('Kartensammlung', () {
-    test('enthaelt Karten', () {
+    test('enthält Karten', () {
       expect(kSeedFlashcards.length, greaterThanOrEqualTo(100));
     });
 
@@ -136,16 +136,16 @@ void main() {
       }
     });
 
-    test('Vorder- und Rueckseite sind gefuellt', () {
+    test('Vorder- und Rückseite sind gefüllt', () {
       for (final c in kSeedFlashcards) {
         expect(c.front.trim(), isNotEmpty, reason: c.id);
         expect(c.back.trim().length, greaterThan(15),
-            reason: '${c.id}: Rueckseite zu duenn');
+            reason: '${c.id}: Rückseite zu dünn');
       }
     });
 
     test('die Vorderseite bleibt kurz', () {
-      // Eine Vorderseite, die laenger ist als ein Satz, ist keine Karteikarte
+      // Eine Vorderseite, die länger ist als ein Satz, ist keine Karteikarte
       // mehr, sondern eine Aufgabe.
       for (final c in kSeedFlashcards) {
         expect(c.front.length, lessThanOrEqualTo(120),
@@ -159,7 +159,7 @@ void main() {
         final n = counts[t.id] ?? 0;
         if (n == 0) continue;
         expect(n, greaterThanOrEqualTo(8),
-            reason: 'Thema ${t.id} hat nur $n Karten - zu wenig fuer einen '
+            reason: 'Thema ${t.id} hat nur $n Karten - zu wenig für einen '
                 'sinnvollen Kasten');
       }
     });

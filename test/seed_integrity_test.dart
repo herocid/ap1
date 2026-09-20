@@ -5,11 +5,11 @@ import 'package:ap1_trainer/data/seed/seed_data.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /// Diese Tests halten den Aufgabenpool sauber. Eine fachlich falsche Aufgabe
-/// faellt in einer Lern-App niemandem auf - eine strukturell kaputte schon,
-/// und zwar dem Nutzer mitten in der Session. Das faengt der Test hier ab.
+/// fällt in einer Lern-App niemandem auf - eine strukturell kaputte schon,
+/// und zwar dem Nutzer mitten in der Session. Das fängt der Test hier ab.
 void main() {
   group('Aufgabenpool', () {
-    test('enthaelt Aufgaben', () {
+    test('enthält Aufgaben', () {
       expect(kSeedQuestions.length, greaterThanOrEqualTo(40));
     });
 
@@ -26,9 +26,9 @@ void main() {
     });
 
     test('ein Thema hat entweder keine oder mindestens drei Aufgaben', () {
-      // Themen ohne Inhalte sind waehrend des Ausbaus erlaubt. Ein Thema mit
-      // ein oder zwei Aufgaben waere aber schlimmer als eines ohne: die
-      // Auswahl wuerde dieselbe Aufgabe staendig wiederholen.
+      // Themen ohne Inhalte sind während des Ausbaus erlaubt. Ein Thema mit
+      // ein oder zwei Aufgaben wäre aber schlimmer als eines ohne: die
+      // Auswahl würde dieselbe Aufgabe ständig wiederholen.
       final pool = kPoolSizeByTopic();
       for (final t in Topics.all) {
         final n = pool[t.id] ?? 0;
@@ -38,7 +38,7 @@ void main() {
       }
     });
 
-    test('gestrichene Aufgaben zaehlen nicht in den Pool', () {
+    test('gestrichene Aufgaben zählen nicht in den Pool', () {
       final removed = kSeedQuestions
           .where((q) => q.catalogStatus == CatalogStatus.removed2025);
       expect(removed, isNotEmpty,
@@ -50,11 +50,11 @@ void main() {
       }
     });
 
-    test('jede Aufgabe hat Fragestellung und Erklaerung', () {
+    test('jede Aufgabe hat Fragestellung und Erklärung', () {
       for (final q in kSeedQuestions) {
         expect(q.prompt.trim(), isNotEmpty, reason: q.id);
         expect(q.explanation.trim().length, greaterThan(40),
-            reason: '${q.id}: Erklaerung zu duenn');
+            reason: '${q.id}: Erklärung zu dünn');
       }
     });
 
@@ -69,16 +69,16 @@ void main() {
               reason: '${q.id}: Einfachauswahl mit $correct richtigen Optionen');
         } else {
           expect(correct, greaterThanOrEqualTo(2),
-              reason: '${q.id}: Mehrfachauswahl mit nur einer Loesung');
+              reason: '${q.id}: Mehrfachauswahl mit nur einer Lösung');
         }
       }
     });
 
-    test('jede Antwortoption hat eine Begruendung', () {
+    test('jede Antwortoption hat eine Begründung', () {
       for (final q in kSeedQuestions) {
         for (final c in q.choices) {
           expect(c.rationale.trim(), isNotEmpty,
-              reason: '${q.id}: Option "${c.text}" ohne Begruendung');
+              reason: '${q.id}: Option "${c.text}" ohne Begründung');
         }
       }
     });
@@ -90,7 +90,7 @@ void main() {
       }
     });
 
-    test('Zuordnungsaufgaben verweisen auf gueltige Kategorien', () {
+    test('Zuordnungsaufgaben verweisen auf gültige Kategorien', () {
       for (final q
           in kSeedQuestions.where((q) => q.kind == QuestionKind.matching)) {
         expect(q.buckets.length, greaterThanOrEqualTo(2), reason: q.id);
@@ -99,7 +99,7 @@ void main() {
           expect(m.bucket, inInclusiveRange(0, q.buckets.length - 1),
               reason: '${q.id}: Item "${m.text}" zeigt ins Leere');
         }
-        // Jede Kategorie sollte mindestens einmal die Loesung sein, sonst ist
+        // Jede Kategorie sollte mindestens einmal die Lösung sein, sonst ist
         // sie nur Dekoration.
         final used = q.matchItems.map((m) => m.bucket).toSet();
         expect(used.length, q.buckets.length,
@@ -112,11 +112,11 @@ void main() {
           in kSeedQuestions.where((q) => q.kind == QuestionKind.ordering)) {
         expect(q.orderedItems.length, greaterThanOrEqualTo(3), reason: q.id);
         expect(q.orderedItems.toSet().length, q.orderedItems.length,
-            reason: '${q.id}: doppelte Eintraege');
+            reason: '${q.id}: doppelte Einträge');
       }
     });
 
-    test('Netzplan-Aufgaben sind loesbar und verweisen auf echte Vorgaenger',
+    test('Netzplan-Aufgaben sind lösbar und verweisen auf echte Vorgänger',
         () {
       for (final q
           in kSeedQuestions.where((q) => q.kind == QuestionKind.netzplan)) {
@@ -138,7 +138,7 @@ void main() {
       }
     });
 
-    test('JSON-Roundtrip erhaelt die Aufgabe', () {
+    test('JSON-Roundtrip erhält die Aufgabe', () {
       for (final q in kSeedQuestions) {
         final back = Question.fromJson(q.toJson());
         expect(back.id, q.id);
@@ -164,7 +164,7 @@ void main() {
       }
     });
 
-    test('jedes Thema mit Aufgaben gehoert zu einem Bereich', () {
+    test('jedes Thema mit Aufgaben gehört zu einem Bereich', () {
       for (final t in Topics.all) {
         expect(ExamAreas.map.containsKey(t.areaId), isTrue,
             reason: 'Thema ${t.id} zeigt auf unbekannten Bereich ${t.areaId}');

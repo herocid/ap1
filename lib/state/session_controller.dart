@@ -23,13 +23,13 @@ class SessionItem {
   /// Rohantwort, Format je nach [QuestionKind] - siehe [Question.grade].
   final Object? answer;
 
-  /// Erst gesetzt, wenn geprueft wurde. Im Pruefungsmodus passiert das
+  /// Erst gesetzt, wenn geprüft wurde. Im Prüfungsmodus passiert das
   /// gesammelt am Ende.
   final GradeResult? grade;
   final bool checked;
   final int seconds;
 
-  /// Im Pruefungsmodus: zum spaeteren Nachsehen markiert.
+  /// Im Prüfungsmodus: zum späteren Nachsehen markiert.
   final bool flagged;
 
   bool get hasAnswer {
@@ -70,7 +70,7 @@ class SessionState {
     this.elapsed = Duration.zero,
     this.finished = false,
     this.topicFilter,
-    this.title = 'Uebung',
+    this.title = 'Übung',
   });
 
   final SessionMode mode;
@@ -78,7 +78,7 @@ class SessionState {
   final int index;
   final DateTime startedAt;
 
-  /// Nur im Pruefungsmodus gesetzt.
+  /// Nur im Prüfungsmodus gesetzt.
   final Duration? limit;
   final Duration elapsed;
   final bool finished;
@@ -132,10 +132,10 @@ class SessionState {
       );
 }
 
-/// Steuert eine laufende Lern- oder Pruefungssession.
+/// Steuert eine laufende Lern- oder Prüfungssession.
 ///
-/// Der Unterschied zwischen Uebung und Pruefung steckt fast vollstaendig in
-/// zwei Stellen: [check] ist im Pruefungsmodus gesperrt, und die Auswertung
+/// Der Unterschied zwischen Übung und Prüfung steckt fast vollständig in
+/// zwei Stellen: [check] ist im Prüfungsmodus gesperrt, und die Auswertung
 /// passiert erst in [finish].
 class SessionController extends StateNotifier<SessionState?> {
   SessionController(this._ref) : super(null);
@@ -148,7 +148,7 @@ class SessionController extends StateNotifier<SessionState?> {
     required SessionMode mode,
     Duration? limit,
     String? topicFilter,
-    String title = 'Uebung',
+    String title = 'Übung',
   }) {
     _timer?.cancel();
     if (questions.isEmpty) return;
@@ -177,7 +177,7 @@ class SessionController extends StateNotifier<SessionState?> {
     final elapsed = s.elapsed + const Duration(seconds: 1);
     state = s.copyWith(items: items, elapsed: elapsed);
 
-    // Zeit abgelaufen: die Simulation endet hart, genau wie im Pruefungsraum.
+    // Zeit abgelaufen: die Simulation endet hart, genau wie im Prüfungsraum.
     if (s.limit != null && elapsed >= s.limit!) {
       finish();
     }
@@ -186,14 +186,14 @@ class SessionController extends StateNotifier<SessionState?> {
   void setAnswer(Object? answer) {
     final s = state;
     if (s == null || s.finished) return;
-    // Nach dem Pruefen ist die Antwort im Uebungsmodus eingefroren.
+    // Nach dem Prüfen ist die Antwort im Übungsmodus eingefroren.
     if (s.current.checked) return;
     final items = [...s.items];
     items[s.index] = items[s.index].copyWith(answer: answer);
     state = s.copyWith(items: items);
   }
 
-  /// Sofortiges Feedback. Im Pruefungsmodus bewusst wirkungslos.
+  /// Sofortiges Feedback. Im Prüfungsmodus bewusst wirkungslos.
   void check() {
     final s = state;
     if (s == null || s.isExam || s.finished) return;
@@ -241,7 +241,7 @@ class SessionController extends StateNotifier<SessionState?> {
     state = s.copyWith(index: i);
   }
 
-  /// Beendet die Session und wertet alles aus, was noch nicht geprueft wurde.
+  /// Beendet die Session und wertet alles aus, was noch nicht geprüft wurde.
   void finish() {
     final s = state;
     if (s == null || s.finished) return;
@@ -258,8 +258,8 @@ class SessionController extends StateNotifier<SessionState?> {
       }
       final grade = item.question.grade(item.answer);
       items.add(item.copyWith(grade: grade, checked: true));
-      // Unbeantwortete Aufgaben zaehlen als Versuch mit 0 Punkten - in der
-      // echten Pruefung gibt es fuer eine leere Zeile auch nichts.
+      // Unbeantwortete Aufgaben zählen als Versuch mit 0 Punkten - in der
+      // echten Prüfung gibt es für eine leere Zeile auch nichts.
       records.add(AnswerRecord(
         questionId: item.question.id,
         topicId: item.question.topicId,

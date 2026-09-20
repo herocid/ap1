@@ -12,7 +12,7 @@ import 'question_types/numeric_question.dart';
 import 'question_types/ordering_question.dart';
 
 /// Rahmen um jede Aufgabe: Szenario, Fragestellung, Eingabebereich und -
-/// nach dem Pruefen - die Erklaerung.
+/// nach dem Prüfen - die Erklärung.
 class QuestionView extends StatelessWidget {
   const QuestionView({
     super.key,
@@ -30,7 +30,7 @@ class QuestionView extends StatelessWidget {
   final bool revealed;
   final GradeResult? grade;
 
-  /// Im Pruefungsmodus waehrend des Laufs aus - die Erklaerung kommt erst in
+  /// Im Prüfungsmodus während des Laufs aus - die Erklärung kommt erst in
   /// der Nachbesprechung.
   final bool showExplanation;
 
@@ -55,7 +55,7 @@ class QuestionView extends StatelessWidget {
               label: switch (question.difficulty) {
                 1 => 'Grundlagen',
                 3 => 'Anspruchsvoll',
-                _ => 'Pruefungsniveau',
+                _ => 'Prüfungsniveau',
               },
               icon: Icons.speed,
             ),
@@ -171,7 +171,7 @@ class _ExplanationBlock extends StatelessWidget {
                 : NoteTone.danger;
 
     final headline = g == null
-        ? 'Erklaerung'
+        ? 'Erklärung'
         : g.isCorrect
             ? 'Richtig'
             : g.isPartial

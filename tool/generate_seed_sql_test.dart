@@ -1,15 +1,15 @@
 // Generator, kein Test.
 //
 // Erzeugt die Seed-Migration aus den Dart-Seed-Daten, damit App und Datenbank
-// garantiert dieselben Inhalte kennen. Der Umweg ueber einen Test ist
-// Absicht: die Seed-Daten haengen an `package:flutter` (Topic.icon), ein
+// garantiert dieselben Inhalte kennen. Der Umweg über einen Test ist
+// Absicht: die Seed-Daten hängen an `package:flutter` (Topic.icon), ein
 // reines `dart run` kann sie deshalb nicht laden.
 //
-// Ausfuehren:
+// Ausführen:
 //   flutter test tool/generate_seed_sql_test.dart
 //
 // Danach: `npx supabase db push` oder die Datei im Supabase-SQL-Editor
-// ausfuehren - in beiden Faellen nach den Schema-Migrationen.
+// ausführen - in beiden Fällen nach den Schema-Migrationen.
 
 import 'dart:convert';
 import 'dart:io';

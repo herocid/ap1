@@ -10,10 +10,10 @@ import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
 
-/// Die sieben Bereiche des Pruefungskatalogs.
+/// Die sieben Bereiche des Prüfungskatalogs.
 ///
 /// Zweistufige Navigation: erst der Bereich, dann das Thema. Eine flache
-/// Liste aus 35 Themen waere auf dem Handy nicht mehr ueberschaubar - und
+/// Liste aus 35 Themen wäre auf dem Handy nicht mehr überschaubar - und
 /// die Katalognummern helfen beim Abgleich mit IHK-Unterlagen.
 class AreasScreen extends ConsumerWidget {
   const AreasScreen({super.key});
@@ -27,11 +27,11 @@ class AreasScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pruefungskatalog'),
+        title: const Text('Prüfungskatalog'),
         actions: [
           IconButton(
             tooltip: 'Was 2025 gestrichen wurde',
-            onPressed: () => context.push('/katalog-aenderungen'),
+            onPressed: () => context.push('/katalog-änderungen'),
             icon: const Icon(Icons.rule_outlined),
           ),
         ],
@@ -72,10 +72,10 @@ class AreasScreen extends ConsumerWidget {
                 ],
                 const SizedBox(height: Gap.l),
                 Text(
-                  'Die Bereichsnummern stammen aus dem Pruefungskatalog. Die '
+                  'Die Bereichsnummern stammen aus dem Prüfungskatalog. Die '
                   'Aufteilung in Themen darunter ist eine fachliche '
                   'Rekonstruktion - die amtlichen Unterkapitel-Titel sind '
-                  'nicht frei veroeffentlicht.',
+                  'nicht frei veröffentlicht.',
                   style: context.text.labelSmall
                       ?.copyWith(color: context.c.textMuted),
                 ),

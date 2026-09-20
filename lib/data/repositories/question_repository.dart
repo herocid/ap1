@@ -10,7 +10,7 @@ abstract class QuestionRepository {
   Future<List<Question>> fetchAll();
 }
 
-/// Die eingebauten Aufgaben. Immer verfuegbar, auch ohne Netz und ohne
+/// Die eingebauten Aufgaben. Immer verfügbar, auch ohne Netz und ohne
 /// Supabase-Konfiguration.
 class SeedQuestionRepository implements QuestionRepository {
   const SeedQuestionRepository();
@@ -19,8 +19,8 @@ class SeedQuestionRepository implements QuestionRepository {
   Future<List<Question>> fetchAll() async => kSeedQuestions;
 }
 
-/// Aufgaben aus Supabase. Faellt bei jedem Fehler auf den Seed zurueck -
-/// eine leere Aufgabenliste waere fuer die App fataler als veraltete Inhalte.
+/// Aufgaben aus Supabase. Fällt bei jedem Fehler auf den Seed zurück -
+/// eine leere Aufgabenliste wäre für die App fataler als veraltete Inhalte.
 class SupabaseQuestionRepository implements QuestionRepository {
   SupabaseQuestionRepository(this._client);
 

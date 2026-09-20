@@ -6,7 +6,7 @@ import '../../data/models/question.dart';
 
 /// Einfach- und Mehrfachauswahl.
 ///
-/// Nach dem Pruefen wird JEDE Option eingefaerbt und mit ihrer Begruendung
+/// Nach dem Prüfen wird JEDE Option eingefärbt und mit ihrer Begründung
 /// versehen - nicht nur die angekreuzte. Das ist der eigentliche Lerneffekt:
 /// zu verstehen, warum die drei anderen Antworten falsch sind.
 class ChoiceQuestionView extends StatelessWidget {
@@ -49,7 +49,7 @@ class ChoiceQuestionView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: Gap.m),
             child: Text(
-              'Mehrere Antworten koennen richtig sein. '
+              'Mehrere Antworten können richtig sein. '
               'Falsch angekreuzte Optionen ziehen Punkte ab.',
               style:
                   context.text.labelSmall?.copyWith(color: context.c.textMuted),

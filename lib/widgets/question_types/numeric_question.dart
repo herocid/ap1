@@ -148,7 +148,7 @@ class _NumericQuestionViewState extends State<NumericQuestionView> {
         const SizedBox(height: Gap.s),
         Text(
           useKeypadLayout(context)
-              ? 'Tippe auf das Feld, um das Ziffernfeld zu oeffnen. '
+              ? 'Tippe auf das Feld, um das Ziffernfeld zu öffnen. '
                   'Dezimaltrennzeichen ist das Komma.'
               : 'Dezimaltrennzeichen ist das Komma.',
           style: context.text.labelSmall?.copyWith(color: c.textMuted),
@@ -167,7 +167,7 @@ class _NumericQuestionViewState extends State<NumericQuestionView> {
               children: [
                 Icon(Icons.check_circle_outline, color: c.success, size: 20),
                 const SizedBox(width: Gap.m),
-                Text('Richtig waere: ', style: context.text.bodyMedium),
+                Text('Richtig wäre: ', style: context.text.bodyMedium),
                 Text(
                   '${_format(q.numericAnswer ?? 0)}${q.unit != null ? ' ${q.unit}' : ''}',
                   style: AppType.numeric(size: 16, color: c.success),

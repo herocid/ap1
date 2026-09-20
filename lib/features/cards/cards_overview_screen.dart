@@ -14,9 +14,9 @@ import 'card_session_screen.dart';
 
 /// Der Karteikasten.
 ///
-/// Zeigt, was heute faellig ist, wie die Karten ueber die fuenf Leitner-Faecher
-/// verteilt sind und wo noch Luecken sind. Von hier aus startet man entweder
-/// alles Faellige oder gezielt einen Bereich.
+/// Zeigt, was heute fällig ist, wie die Karten über die fünf Leitner-Fächer
+/// verteilt sind und wo noch Lücken sind. Von hier aus startet man entweder
+/// alles Fällige oder gezielt einen Bereich.
 class CardsOverviewScreen extends ConsumerWidget {
   const CardsOverviewScreen({super.key});
 
@@ -33,7 +33,7 @@ class CardsOverviewScreen extends ConsumerWidget {
         body: const EmptyState(
           icon: Icons.style_outlined,
           title: 'Noch keine Karten',
-          message: 'Fuer diesen Stand sind noch keine Karteikarten hinterlegt.',
+          message: 'Für diesen Stand sind noch keine Karteikarten hinterlegt.',
         ),
       );
     }
@@ -59,7 +59,7 @@ class CardsOverviewScreen extends ConsumerWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  due == 0 ? 'Heute nichts faellig' : 'Heute faellig',
+                                  due == 0 ? 'Heute nichts fällig' : 'Heute fällig',
                                   style: context.text.titleMedium,
                                 ),
                                 const SizedBox(height: Gap.xs),
@@ -123,7 +123,7 @@ class CardsOverviewScreen extends ConsumerWidget {
                       ),
                       const SizedBox(height: Gap.xs),
                       Text(
-                        'Rechts sitzt es. Was nicht gewusst wird, faellt zurueck '
+                        'Rechts sitzt es. Was nicht gewusst wird, fällt zurück '
                         'in Fach 1.',
                         style: context.text.labelSmall
                             ?.copyWith(color: context.c.textMuted),
@@ -138,7 +138,7 @@ class CardsOverviewScreen extends ConsumerWidget {
                 const SectionHeader(
                   'Nach Bereich lernen',
                   subtitle: 'Gezielt ein Themengebiet durchgehen, '
-                      'auch wenn es noch nicht faellig ist.',
+                      'auch wenn es noch nicht fällig ist.',
                 ),
                 for (final area in ExamAreas.all)
                   _AreaCardRow(area: area, cards: cards, deck: deck),
@@ -297,7 +297,7 @@ class _AreaCardRow extends StatelessWidget {
                             color: context.scheme.primary,
                             borderRadius: BorderRadius.circular(Radii.pill),
                           ),
-                          child: Text('$due faellig',
+                          child: Text('$due fällig',
                               style: context.text.labelSmall?.copyWith(
                                   color: context.scheme.onPrimary)),
                         ),

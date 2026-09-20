@@ -22,9 +22,9 @@ class CardSessionArgs {
 /// Die Karteikarten-Session.
 ///
 /// Ablauf pro Karte: Vorderseite lesen, selbst beantworten, umdrehen, ehrlich
-/// bewerten. Die Selbsteinschaetzung ist bewusst binaer - "wusste ich" oder
-/// "wusste ich nicht". Vier Abstufungen wie bei Anki klingen praeziser,
-/// ueberfordern aber genau die Person, die ein Thema gerade erst lernt.
+/// bewerten. Die Selbsteinschätzung ist bewusst binär - "wusste ich" oder
+/// "wusste ich nicht". Vier Abstufungen wie bei Anki klingen präziser,
+/// überfordern aber genau die Person, die ein Thema gerade erst lernt.
 class CardSessionScreen extends ConsumerStatefulWidget {
   const CardSessionScreen({super.key, required this.args});
 
@@ -73,13 +73,13 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
         appBar: AppBar(title: Text(widget.args.title)),
         body: EmptyState(
           icon: Icons.task_alt,
-          title: 'Nichts faellig',
-          message: 'Fuer diese Auswahl ist heute keine Karte dran. '
+          title: 'Nichts fällig',
+          message: 'Für diese Auswahl ist heute keine Karte dran. '
               'Der Karteikasten legt jede Karte nach dem richtigen Abstand '
               'wieder vor - komm morgen wieder.',
           action: FilledButton(
             onPressed: () => context.pop(),
-            child: const Text('Zurueck'),
+            child: const Text('Zurück'),
           ),
         ),
       );
@@ -265,8 +265,8 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
                   tone: NoteTone.info,
                   child: Text(
                     _missed == 0
-                        ? 'Alle Karten sassen. Sie kommen jetzt in laengeren '
-                            'Abstaenden wieder.'
+                        ? 'Alle Karten saßen. Sie kommen jetzt in längeren '
+                            'Abständen wieder.'
                         : '$_missed ${_missed == 1 ? "Karte liegt" : "Karten liegen"} '
                             'wieder in Fach 1 und kommen morgen erneut dran. '
                             'Genau so soll der Kasten arbeiten.',
@@ -274,7 +274,7 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
                 ),
                 if (_missedCards.isNotEmpty) ...[
                   const SizedBox(height: Gap.xl),
-                  const SectionHeader('Das kam nochmal zurueck'),
+                  const SectionHeader('Das kam nochmal zurück'),
                   for (final c in _missedCards)
                     Padding(
                       padding: const EdgeInsets.only(bottom: Gap.s),
@@ -310,7 +310,7 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
   }
 }
 
-/// Die eigentliche Karte. Vorderseite kurz, Rueckseite erst nach dem Tippen -
+/// Die eigentliche Karte. Vorderseite kurz, Rückseite erst nach dem Tippen -
 /// wer die Antwort schon sieht, lernt nichts.
 class _CardFace extends StatelessWidget {
   const _CardFace({
@@ -358,7 +358,7 @@ class _CardFace extends StatelessWidget {
                   Icon(Icons.touch_app_outlined,
                       size: 16, color: context.c.textMuted),
                   const SizedBox(width: Gap.s),
-                  // Ohne Expanded laeuft der Hinweis auf schmalen Displays
+                  // Ohne Expanded läuft der Hinweis auf schmalen Displays
                   // aus der Karte heraus.
                   Expanded(
                     child: Text(
@@ -374,7 +374,7 @@ class _CardFace extends StatelessWidget {
               Divider(color: context.c.border),
               const SizedBox(height: Gap.l),
               Text(
-                'Rueckseite',
+                'Rückseite',
                 style: context.text.labelSmall
                     ?.copyWith(color: context.c.textMuted),
               ),

@@ -9,13 +9,13 @@ final List<TheorySnack> seedTheory = [
     title: 'Was ein Projekt zum Projekt macht',
     lead:
         'Die DIN 69901 definiert vier Merkmale. Fehlt eines davon, ist es '
-        'Tagesgeschaeft - egal wie aufwendig es sich anfuehlt.',
+        'Tagesgeschäft - egal wie aufwendig es sich anfühlt.',
     points: [
       'Einmaligkeit der Bedingungen in ihrer Gesamtheit',
       'Zielvorgabe mit zeitlicher, finanzieller und personeller Begrenzung',
       'Eigene, projektspezifische Organisation',
-      'Abgrenzung gegenueber anderen Vorhaben',
-      'Nicht enthalten: eine Mindestgroesse oder ein Mindestbudget',
+      'Abgrenzung gegenüber anderen Vorhaben',
+      'Nicht enthalten: eine Mindestgröße oder ein Mindestbudget',
     ],
     merksatz:
         'Einmalig, begrenzt, eigene Organisation, abgegrenzt - vier Haken, '
@@ -27,14 +27,14 @@ final List<TheorySnack> seedTheory = [
     title: 'Drei Organisationsformen in einer Minute',
     lead:
         'Die Frage ist immer dieselbe: Wie viel Macht hat die Projektleitung '
-        'gegenueber der Linie?',
+        'gegenüber der Linie?',
     points: [
-      'Reine Projektorganisation: Team komplett aus der Linie geloest, '
+      'Reine Projektorganisation: Team komplett aus der Linie gelöst, '
           'Projektleitung hat volle Weisungsbefugnis. Schnell, aber teuer und '
-          'nach Projektende gibt es ein Rueckkehrproblem.',
+          'nach Projektende gibt es ein Rückkehrproblem.',
       'Matrix: Weisungsbefugnis geteilt - fachlich beim Projekt, '
           'disziplinarisch in der Linie. Flexibel, aber Dauerkonflikt um '
-          'Prioritaeten.',
+          'Prioritäten.',
       'Stabs-/Einflussorganisation: Projektleitung koordiniert nur, ohne '
           'Weisungsrecht. Billig, aber zahnlos.',
     ],
@@ -47,33 +47,33 @@ final List<TheorySnack> seedTheory = [
     topicId: 'vorgehensmodelle',
     title: 'Vorgehensmodelle im Katalog 2025',
     lead:
-        'Der Pruefungskatalog ab 2025 kennt nur noch zwei Vorgehensmodelle: '
+        'Der Prüfungskatalog ab 2025 kennt nur noch zwei Vorgehensmodelle: '
         'Wasserfall und Scrum. V-Modell, Spiralmodell, XP und Kanban sind '
         'gestrichen.',
     points: [
       'Wasserfall: streng sequenziell, jede Phase endet mit einem '
           'freigegebenen Dokument. Voraussetzung: Anforderungen sind zu '
-          'Projektbeginn vollstaendig bekannt.',
-      'Phasen: Analyse, Entwurf, Implementierung, Test, Einfuehrung und '
+          'Projektbeginn vollständig bekannt.',
+      'Phasen: Analyse, Entwurf, Implementierung, Test, Einführung und '
           'Wartung.',
-      'Staerke: klare Struktur, gute Planbarkeit, feste Kosten und Termine.',
-      'Schwaeche: Fehler aus der Analyse fallen erst im Test auf. Rule of Ten '
-          '- jede spaetere Phase verzehnfacht die Korrekturkosten.',
-      'Scrum als Gegenentwurf: kurze Zyklen, Anforderungen duerfen sich '
-          'zwischen den Sprints aendern.',
+      'Stärke: klare Struktur, gute Planbarkeit, feste Kosten und Termine.',
+      'Schwäche: Fehler aus der Analyse fallen erst im Test auf. Rule of Ten '
+          '- jede spätere Phase verzehnfacht die Korrekturkosten.',
+      'Scrum als Gegenentwurf: kurze Zyklen, Anforderungen dürfen sich '
+          'zwischen den Sprints ändern.',
       'Entscheidungsregel: Anforderungen stabil und vertraglich fix -> '
-          'Wasserfall. Anforderungen unklar oder veraenderlich -> Scrum.',
+          'Wasserfall. Anforderungen unklar oder veränderlich -> Scrum.',
     ],
     merksatz:
-        'Fuer die AP1 ab 2025 reichen zwei Modelle. Wer noch V-Modell und '
-        'Spirale paukt, lernt an der Pruefung vorbei.',
+        'Für die AP1 ab 2025 reichen zwei Modelle. Wer noch V-Modell und '
+        'Spirale paukt, lernt an der Prüfung vorbei.',
   ),
   const TheorySnack(
     id: 'th-scr-1',
     topicId: 'agil_scrum',
     title: 'Scrum auf einer Karte',
     lead:
-        'Drei Verantwortlichkeiten, drei Artefakte, fuenf Events. Mehr steht '
+        'Drei Verantwortlichkeiten, drei Artefakte, fünf Events. Mehr steht '
         'nicht im Scrum Guide.',
     points: [
       'Verantwortlichkeiten: Product Owner (WAS und Reihenfolge), Developers '
@@ -82,7 +82,7 @@ final List<TheorySnack> seedTheory = [
           'Sprint Backlog -> Sprint Goal, Increment -> Definition of Done.',
       'Events: Sprint (Container), Sprint Planning, Daily Scrum, Sprint Review, '
           'Sprint Retrospective. Refinement ist KEIN Event, sondern eine '
-          'laufende Taetigkeit.',
+          'laufende Tätigkeit.',
       'Timeboxen bei Monatssprint: Planning 8 h, Daily 15 min, Review 4 h, '
           'Retrospektive 3 h.',
     ],
@@ -95,20 +95,20 @@ final List<TheorySnack> seedTheory = [
     topicId: 'netzplan',
     title: 'Netzplan: die sechs Werte',
     lead:
-        'Erst alles vorwaerts, dann alles rueckwaerts, dann die Puffer. '
+        'Erst alles vorwärts, dann alles rückwärts, dann die Puffer. '
         'In dieser Reihenfolge, nie gemischt.',
     points: [
-      'Vorwaerts: FAZ = groesster FEZ aller Vorgaenger (Start: 0). '
+      'Vorwärts: FAZ = größter FEZ aller Vorgänger (Start: 0). '
           'FEZ = FAZ + Dauer.',
-      'Projektdauer = groesster FEZ im gesamten Plan.',
-      'Rueckwaerts: SEZ = kleinster SAZ aller Nachfolger (Endvorgang: '
+      'Projektdauer = größter FEZ im gesamten Plan.',
+      'Rückwärts: SEZ = kleinster SAZ aller Nachfolger (Endvorgang: '
           'SEZ = Projektdauer). SAZ = SEZ - Dauer.',
       'Gesamtpuffer GP = SAZ - FAZ = SEZ - FEZ.',
       'Freier Puffer FP = kleinster FAZ der Nachfolger - eigener FEZ.',
-      'Kritischer Pfad = alle Vorgaenge mit GP = 0, zugleich der laengste Weg.',
+      'Kritischer Pfad = alle Vorgänge mit GP = 0, zugleich der längste Weg.',
     ],
     merksatz:
-        'Vorwaerts das MAXIMUM, rueckwaerts das MINIMUM. Wer das vertauscht, '
+        'Vorwärts das MAXIMUM, rückwärts das MINIMUM. Wer das vertauscht, '
         'rechnet den halben Plan falsch.',
   ),
   const TheorySnack(
@@ -119,9 +119,9 @@ final List<TheorySnack> seedTheory = [
         'Beide Puffer sagen, wie viel Luft ein Vorgang hat - aber bis wohin, '
         'ist verschieden.',
     points: [
-      'Gesamtpuffer: Verschiebung ohne das PROJEKTENDE zu gefaehrden. '
-          'Kann aber den Nachfolger nach hinten druecken.',
-      'Freier Puffer: Verschiebung ohne den fruehesten Start des NACHFOLGERS '
+      'Gesamtpuffer: Verschiebung ohne das PROJEKTENDE zu gefährden. '
+          'Kann aber den Nachfolger nach hinten drücken.',
+      'Freier Puffer: Verschiebung ohne den frühesten Start des NACHFOLGERS '
           'anzutasten. Merkt sonst niemand.',
       'Es gilt immer FP <= GP.',
       'Auf dem kritischen Pfad sind beide null.',
@@ -136,19 +136,19 @@ final List<TheorySnack> seedTheory = [
     title: 'Gantt, Meilenstein, MTA',
     lead: 'Mit dem Netzplan rechnet man, mit dem Balkenplan redet man.',
     points: [
-      'Gantt/Balkenplan: massstabsgetreue Zeitachse, auf einen Blick lesbar. '
-          'Abhaengigkeiten und Puffer sind aber nicht direkt ablesbar.',
+      'Gantt/Balkenplan: maßstabsgetreue Zeitachse, auf einen Blick lesbar. '
+          'Abhängigkeiten und Puffer sind aber nicht direkt ablesbar.',
       'Meilenstein: Ereignis mit Dauer null, an dem ein definiertes '
-          'Zwischenergebnis vorliegt. Binaer pruefbar formulieren.',
-      'Meilensteintrendanalyse: geplante Termine ueber Berichtszeitpunkte '
+          'Zwischenergebnis vorliegt. Binär prüfbar formulieren.',
+      'Meilensteintrendanalyse: geplante Termine über Berichtszeitpunkte '
           'auftragen. Waagerecht = im Plan, steigend = Verzug, fallend = '
-          'frueher fertig, Zickzack = unsichere Planung.',
-      'Dauer = Aufwand / (Anzahl Personen x Verfuegbarkeitsgrad). '
+          'früher fertig, Zickzack = unsichere Planung.',
+      'Dauer = Aufwand / (Anzahl Personen x Verfügbarkeitsgrad). '
           'Personentage sind Aufwand, Arbeitstage sind Dauer.',
     ],
     merksatz:
-        'Steigende MTA-Linie heisst spaeter, nicht frueher. Das wird am '
-        'haeufigsten verwechselt.',
+        'Steigende MTA-Linie heißt später, nicht früher. Das wird am '
+        'häufigsten verwechselt.',
   ),
   const TheorySnack(
     id: 'th-lh-1',
@@ -156,14 +156,14 @@ final List<TheorySnack> seedTheory = [
     title: 'Lastenheft vs. Pflichtenheft',
     lead: 'Zwei Dokumente, zwei Absender, zwei Zeitpunkte.',
     points: [
-      'Lastenheft: vom AUFTRAGGEBER, beschreibt das WAS und WOFUER, '
-          'loesungsneutral. Grundlage der Ausschreibung.',
+      'Lastenheft: vom AUFTRAGGEBER, beschreibt das WAS und WOFÜR, '
+          'lösungsneutral. Grundlage der Ausschreibung.',
       'Pflichtenheft: vom AUFTRAGNEHMER, beschreibt das WIE und WOMIT. '
           'Entsteht NACH der Vergabe und wird vom Auftraggeber genehmigt.',
       'Abgenommen wird gegen das Pflichtenheft, nicht gegen das Lastenheft.',
       'Funktional = "Das System tut X". Nicht-funktional = "Das System tut X '
-          'schnell/sicher/verfuegbar/barrierefrei".',
-      'Gute Anforderung: eindeutig, vollstaendig, widerspruchsfrei, pruefbar, '
+          'schnell/sicher/verfügbar/barrierefrei".',
+      'Gute Anforderung: eindeutig, vollständig, widerspruchsfrei, prüfbar, '
           'notwendig, priorisiert (MuSCoW).',
     ],
     merksatz:
@@ -174,26 +174,26 @@ final List<TheorySnack> seedTheory = [
     id: 'th-wi-1',
     topicId: 'pm_wirtschaftlichkeit',
     title: 'Rechnen im PM-Teil',
-    lead: 'Vier Rechnungen decken den Grossteil der Punkte ab.',
+    lead: 'Vier Rechnungen decken den Großteil der Punkte ab.',
     points: [
       'Nutzwertanalyse: je Kriterium Gewicht x Bewertung, dann summieren. '
-          'Gewichte muessen 100 % ergeben.',
-      'Amortisation: Investitionssumme / jaehrlicher Netto-Rueckfluss.',
+          'Gewichte müssen 100 % ergeben.',
+      'Amortisation: Investitionssumme / jährlicher Netto-Rückfluss.',
       'Bezugskalkulation: Listenpreis - Rabatt = Zieleinkaufspreis; '
           '- Skonto = Bareinkaufspreis; + Bezugskosten = Bezugspreis. '
           'Skonto nie vom Listenpreis, Bezugskosten nie vor dem Skonto.',
-      'Risikowert = Eintrittswahrscheinlichkeit x Schadenshoehe.',
-      'TCO = nur Kosten ueber den gesamten Lebenszyklus. Ertraege gehoeren in '
+      'Risikowert = Eintrittswahrscheinlichkeit x Schadenshöhe.',
+      'TCO = nur Kosten über den gesamten Lebenszyklus. Erträge gehören in '
           'die ROI-Rechnung.',
     ],
     merksatz:
         'Bei Prozentaufgaben immer fragen: Prozent WOVON? Das ist der '
-        'haeufigste Punktverlust.',
+        'häufigste Punktverlust.',
   ),
   const TheorySnack(
     id: 'th-qr-1',
     topicId: 'qualitaetsmanagement',
-    title: 'Qualitaet und Risiko',
+    title: 'Qualität und Risiko',
     lead: 'Zwei Sortierungen, die fast jede Aufgabe abdecken.',
     points: [
       'Konstruktive QS = vorher, verhindert Fehler: Standards, Templates, '
@@ -201,7 +201,7 @@ final List<TheorySnack> seedTheory = [
       'Analytische QS = nachher, findet Fehler: Test, Review, Inspektion, '
           'statische Analyse, Audit.',
       'Risikostrategien: Vermeiden (Ursache weg), Vermindern '
-          '(Wahrscheinlichkeit oder Auswirkung runter), Ueberwaelzen '
+          '(Wahrscheinlichkeit oder Auswirkung runter), Überwälzen '
           '(Versicherung, Festpreis), Akzeptieren (bewusst und dokumentiert).',
       'Testfrage Vermeiden vs. Vermindern: Kann das Risiko danach noch '
           'eintreten? Ja -> vermindert. Nein -> vermieden.',
@@ -214,20 +214,20 @@ final List<TheorySnack> seedTheory = [
     id: 'th-ab-1',
     topicId: 'projektabschluss',
     title: 'Projektabschluss richtig',
-    lead: 'Drei Ebenen - die dritte wird am haeufigsten vergessen.',
+    lead: 'Drei Ebenen - die dritte wird am häufigsten vergessen.',
     points: [
-      'Sachlich-technisch: Restarbeiten, Abnahme mit Protokoll, Uebergabe an '
+      'Sachlich-technisch: Restarbeiten, Abnahme mit Protokoll, Übergabe an '
           'den Betrieb.',
-      'Kaufmaennisch: Schlussrechnung, Nachkalkulation, Projekt buchhalterisch '
-          'schliessen.',
-      'Personell: Team aufloesen, Rueckfuehrung in die Linie, Wuerdigung der '
+      'Kaufmännisch: Schlussrechnung, Nachkalkulation, Projekt buchhalterisch '
+          'schließen.',
+      'Personell: Team auflösen, Rückführung in die Linie, Würdigung der '
           'Leistung.',
       'Lessons Learned: zeitnah, ohne Schuldzuweisung, dokumentiert an einem '
           'auffindbaren Ort.',
-      'Reihenfolge: Abnahme vor Uebergabe, Teamaufloesung zuletzt.',
+      'Reihenfolge: Abnahme vor Übergabe, Teamauflösung zuletzt.',
     ],
     merksatz:
-        'Wer das Team vor dem Abschlussbericht aufloest, bekommt keinen '
+        'Wer das Team vor dem Abschlussbericht auflöst, bekommt keinen '
         'brauchbaren Bericht.',
   ),
 ];

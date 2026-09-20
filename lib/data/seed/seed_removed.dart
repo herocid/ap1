@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-/// Ein Thema, das im Pruefungskatalog ab 2025 nicht mehr enthalten ist.
+/// Ein Thema, das im Prüfungskatalog ab 2025 nicht mehr enthalten ist.
 @immutable
 class RemovedTopic {
   const RemovedTopic({
@@ -15,7 +15,7 @@ class RemovedTopic {
   final String note;
 
   /// Wo das Thema trotzdem noch gebraucht wird - damit niemand es voreilig
-  /// aus dem Gedaechtnis loescht.
+  /// aus dem Gedächtnis löscht.
   final String? stillRelevantFor;
 }
 
@@ -31,24 +31,24 @@ const List<RemovedTopic> kRemovedTopics = [
     note:
         'SELECT, JOIN, GROUP BY und Co. sind aus der AP1 verschwunden. '
         'Datenmodellierung (ER-Modell, Beziehungen, Normalisierung) bleibt.',
-    stillRelevantFor: 'AP2 - dort wird SQL weiterhin geprueft.',
+    stillRelevantFor: 'AP2 - dort wird SQL weiterhin geprüft.',
   ),
   RemovedTopic(
-    title: 'Vorgehensmodelle ausser Wasserfall und Scrum',
+    title: 'Vorgehensmodelle außer Wasserfall und Scrum',
     note:
         'V-Modell, Spiralmodell, Extreme Programming und Kanban sind nicht '
         'mehr Teil des Katalogs. Gefordert sind nur noch das Wasserfallmodell '
         'und Scrum.',
     stillRelevantFor:
         'Die Teststufen aus dem V-Modell (Modul-, Integrations-, System-, '
-        'Abnahmetest) bleiben im Bereich Qualitaetssicherung relevant.',
+        'Abnahmetest) bleiben im Bereich Qualitätssicherung relevant.',
   ),
   RemovedTopic(
     title: 'Struktogramm und Programmablaufplan (PAP)',
     note:
         'Die klassischen Ablaufdarstellungen sind gestrichen. Programmlogik '
-        'wird jetzt ueber Pseudocode und das UML-Aktivitaetsdiagramm geprueft.',
-    stillRelevantFor: 'UML-Aktivitaetsdiagramm - neu im Katalog 2025.',
+        'wird jetzt über Pseudocode und das UML-Aktivitätsdiagramm geprüft.',
+    stillRelevantFor: 'UML-Aktivitätsdiagramm - neu im Katalog 2025.',
   ),
   RemovedTopic(
     title: 'Vererbung in der Objektorientierung',
@@ -61,13 +61,13 @@ const List<RemovedTopic> kRemovedTopics = [
     title: 'RAID und SAN',
     note:
         'RAID-Level und Storage Area Networks werden nicht mehr abgefragt. '
-        'NAS wird im Katalog noch erwaehnt.',
+        'NAS wird im Katalog noch erwähnt.',
   ),
   RemovedTopic(
     title: 'LTE und 5G',
     note:
         'Mobilfunkstandards sind gestrichen. Netzwerktechnik konzentriert '
-        'sich auf LAN/WLAN, IPv4/IPv6 und die gaengigen Protokolle.',
+        'sich auf LAN/WLAN, IPv4/IPv6 und die gängigen Protokolle.',
   ),
   RemovedTopic(
     title: 'SWOT-Analyse',
@@ -78,15 +78,15 @@ const List<RemovedTopic> kRemovedTopics = [
   RemovedTopic(
     title: 'ISO-Normen (z. B. ISO 2700x)',
     note:
-        'Normnummern muessen nicht mehr auswendig gelernt werden. Die '
-        'Inhalte dahinter - Schutzziele, Massnahmen, BSI-Grundschutz - sind '
-        'weiterhin Pruefungsstoff.',
+        'Normnummern müssen nicht mehr auswendig gelernt werden. Die '
+        'Inhalte dahinter - Schutzziele, Maßnahmen, BSI-Grundschutz - sind '
+        'weiterhin Prüfungsstoff.',
   ),
   RemovedTopic(
-    title: 'Softwarequalitaetskriterien als eigener Katalog',
+    title: 'Softwarequalitätskriterien als eigener Katalog',
     note:
         'Die Merkmalslisten (z. B. nach ISO 25010) sind als abzufragender '
-        'Katalog gestrichen. Qualitaetssicherung als Vorgehen bleibt.',
+        'Katalog gestrichen. Qualitätssicherung als Vorgehen bleibt.',
   ),
   RemovedTopic(
     title: 'Nicht-relationale Datenbanken',
@@ -96,7 +96,7 @@ const List<RemovedTopic> kRemovedTopics = [
     title: 'Dokumentationsarten',
     note:
         'Benutzer-, Programmier- und Netzwerkdokumentation als eigener '
-        'Pruefungsgegenstand sind gestrichen. Dokumentation im Rahmen von '
+        'Prüfungsgegenstand sind gestrichen. Dokumentation im Rahmen von '
         'Projektabschluss und Abnahme bleibt.',
   ),
 ];
@@ -104,26 +104,26 @@ const List<RemovedTopic> kRemovedTopics = [
 /// Was 2025 neu hinzugekommen ist - der Gegenteil-Blick zur Liste oben.
 const List<RemovedTopic> kAddedTopics = [
   RemovedTopic(
-    title: 'KI-Unterstuetzung und KI-Software',
+    title: 'KI-Unterstützung und KI-Software',
     note:
-        'Einsatzmoeglichkeiten, Grenzen und Risiken von KI-Werkzeugen im '
-        'Arbeitsalltag - einschliesslich Datenschutz und Halluzinationen.',
+        'Einsatzmöglichkeiten, Grenzen und Risiken von KI-Werkzeugen im '
+        'Arbeitsalltag - einschließlich Datenschutz und Halluzinationen.',
   ),
   RemovedTopic(
-    title: 'SMART-Prinzip fuer Projektziele',
+    title: 'SMART-Prinzip für Projektziele',
     note: 'Spezifisch, messbar, attraktiv, realistisch, terminiert.',
   ),
   RemovedTopic(
-    title: 'Schutzziele Vertraulichkeit, Verfuegbarkeit, Integritaet',
-    note: 'Die Schutzziele werden ausdruecklich genannt und abgefragt.',
+    title: 'Schutzziele Vertraulichkeit, Verfügbarkeit, Integrität',
+    note: 'Die Schutzziele werden ausdrücklich genannt und abgefragt.',
   ),
   RemovedTopic(
     title: 'Hashverfahren und Zwei-Faktor-Authentifizierung',
     note: 'Hashes, ihre Eigenschaften und 2FA als Authentifizierungsverfahren.',
   ),
   RemovedTopic(
-    title: 'Haertung von Betriebssystemen',
-    note: 'Angriffsflaeche reduzieren: Dienste abschalten, Rechte begrenzen, '
+    title: 'Härtung von Betriebssystemen',
+    note: 'Angriffsfläche reduzieren: Dienste abschalten, Rechte begrenzen, '
         'Updates einspielen.',
   ),
   RemovedTopic(
@@ -143,27 +143,27 @@ const List<RemovedTopic> kAddedTopics = [
     note: 'Aufbau, Unterschiede, Adressierung und Subnetting.',
   ),
   RemovedTopic(
-    title: 'UML-Aktivitaetsdiagramm',
-    note: 'Ersetzt Struktogramm und PAP als Darstellung von Ablaeufen.',
+    title: 'UML-Aktivitätsdiagramm',
+    note: 'Ersetzt Struktogramm und PAP als Darstellung von Abläufen.',
   ),
   RemovedTopic(
     title: 'Fehlersuche im Code und Schreibtischtest',
     note:
-        'Gegebenen Code Zeile fuer Zeile durchgehen und Fehler finden - ein '
-        'Aufgabentyp, der in der AP1 haeufig vorkommt.',
+        'Gegebenen Code Zeile für Zeile durchgehen und Fehler finden - ein '
+        'Aufgabentyp, der in der AP1 häufig vorkommt.',
   ),
   RemovedTopic(
     title: 'Betroffenenrechte nach DSGVO',
-    note: 'Auskunft, Berichtigung, Loeschung, Einschraenkung, '
-        'Datenuebertragbarkeit, Widerspruch.',
+    note: 'Auskunft, Berichtigung, Löschung, Einschränkung, '
+        'Datenübertragbarkeit, Widerspruch.',
   ),
   RemovedTopic(
     title: 'Anonymisierung und Pseudonymisierung',
-    note: 'Der Unterschied und wann welches Verfahren zulaessig ist.',
+    note: 'Der Unterschied und wann welches Verfahren zulässig ist.',
   ),
   RemovedTopic(
-    title: 'Uebertragungsraten und Datenmengen berechnen',
-    note: 'Bit/Byte, Praefixe, Dauer einer Uebertragung - reine Rechenaufgaben.',
+    title: 'Übertragungsraten und Datenmengen berechnen',
+    note: 'Bit/Byte, Präfixe, Dauer einer Übertragung - reine Rechenaufgaben.',
   ),
   RemovedTopic(
     title: 'HDD und SSD unterscheiden',

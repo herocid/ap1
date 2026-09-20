@@ -3,8 +3,8 @@ import 'package:flutter/foundation.dart';
 /// Ein Theorie-Snack: die kleinste sinnvolle Lerneinheit, bewusst auf
 /// 30-60 Sekunden Lesezeit geschnitten.
 ///
-/// Der Snack steht vor der ersten Aufgabe eines Themas und laesst sich in
-/// jeder Session ueber "Kurz nachlesen" erneut oeffnen. Laenger darf er nicht
+/// Der Snack steht vor der ersten Aufgabe eines Themas und lässt sich in
+/// jeder Session über "Kurz nachlesen" erneut öffnen. Länger darf er nicht
 /// werden - wer in der Bahn drei Bildschirmseiten Theorie sieht, macht die App
 /// zu.
 @immutable
@@ -23,13 +23,13 @@ class TheorySnack {
   final String topicId;
   final String title;
 
-  /// Ein bis zwei Saetze Einstieg.
+  /// Ein bis zwei Sätze Einstieg.
   final String lead;
 
-  /// Die Kernaussagen. Ein Punkt = ein pruefungsrelevanter Fakt.
+  /// Die Kernaussagen. Ein Punkt = ein prüfungsrelevanter Fakt.
   final List<String> points;
 
-  /// Der Satz, der haengen bleiben soll.
+  /// Der Satz, der hängen bleiben soll.
   final String merksatz;
 
   final int readSeconds;

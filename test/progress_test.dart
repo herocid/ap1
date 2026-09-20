@@ -23,12 +23,12 @@ AnswerRecord rec(
 void main() {
   final pool = kPoolSizeByTopic();
 
-  group('Pruefungsreife', () {
+  group('Prüfungsreife', () {
     test('ist ohne Historie null', () {
       expect(const ProgressState().readiness(pool), 0);
     });
 
-    test('bleibt niedrig, wenn nur ein Thema geuebt wurde', () {
+    test('bleibt niedrig, wenn nur ein Thema geübt wurde', () {
       final p = ProgressState(
         history: [
           for (var i = 0; i < 7; i++) rec('np-00$i', 'netzplan', 1.0),
@@ -51,10 +51,10 @@ void main() {
     });
 
     test('deckelt sich beim Gewicht der Themen, die Aufgaben haben', () {
-      // Themen ohne Aufgaben zaehlen als 0 - der Wert soll ehrlich zeigen,
-      // dass ein Teil des Katalogs noch nicht geuebt werden kann. Wer alle
-      // vorhandenen Aufgaben fehlerfrei loest, erreicht deshalb genau den
-      // Gewichtsanteil der befuellten Themen, nicht 100 %.
+      // Themen ohne Aufgaben zählen als 0 - der Wert soll ehrlich zeigen,
+      // dass ein Teil des Katalogs noch nicht geübt werden kann. Wer alle
+      // vorhandenen Aufgaben fehlerfrei löst, erreicht deshalb genau den
+      // Gewichtsanteil der befüllten Themen, nicht 100 %.
       final p = ProgressState(
         history: [
           for (final q in kExamRelevantQuestions) rec(q.id, q.topicId, 1.0),
@@ -67,7 +67,7 @@ void main() {
       expect(p.readiness(pool), closeTo(expectedShare * 100, 1.5));
     });
 
-    test('erreicht 100, wenn jedes Thema vollstaendig sitzt', () {
+    test('erreicht 100, wenn jedes Thema vollständig sitzt', () {
       // Synthetischer Vollausbau: jedes Thema hat Aufgaben und alle sind
       // richtig. Erst dann darf der Indikator 100 zeigen.
       final fullPool = {for (final t in Topics.all) t.id: 2};
@@ -84,7 +84,7 @@ void main() {
   });
 
   group('Themenstatistik', () {
-    test('gewichtet juengere Antworten staerker', () {
+    test('gewichtet jüngere Antworten stärker', () {
       final verbessert = ProgressState(history: [
         rec('a', 'netzplan', 0, daysAgo: 9),
         rec('b', 'netzplan', 0, daysAgo: 8),
@@ -104,7 +104,7 @@ void main() {
       expect(mSchlechter, lessThan(0.5));
     });
 
-    test('Coverage zaehlt nur unterschiedliche Aufgaben', () {
+    test('Coverage zählt nur unterschiedliche Aufgaben', () {
       final p = ProgressState(history: [
         rec('np-001', 'netzplan', 1),
         rec('np-001', 'netzplan', 1),
@@ -118,13 +118,13 @@ void main() {
   });
 
   group('Fehlerspeicher', () {
-    test('enthaelt nur Aufgaben, deren letzter Versuch falsch war', () {
+    test('enthält nur Aufgaben, deren letzter Versuch falsch war', () {
       final p = ProgressState(history: [
         rec('a', 'netzplan', 0, daysAgo: 3),
         rec('a', 'netzplan', 1, daysAgo: 1), // korrigiert
         rec('b', 'agil_scrum', 1, daysAgo: 3),
         rec('b', 'agil_scrum', 0, daysAgo: 1), // wieder falsch
-        rec('c', 'lastenheft', 0.5, daysAgo: 1), // Teilpunkte zaehlen als offen
+        rec('c', 'lastenheft', 0.5, daysAgo: 1), // Teilpunkte zählen als offen
       ]);
       expect(p.openMistakes, {'b', 'c'});
     });
@@ -154,7 +154,7 @@ void main() {
   });
 
   group('QuestionSelector', () {
-    test('liefert die gewuenschte Anzahl', () {
+    test('liefert die gewünschte Anzahl', () {
       final qs = QuestionSelector.forPractice(
         pool: kSeedQuestions,
         progress: const ProgressState(),
@@ -185,7 +185,7 @@ void main() {
       );
       final picked = qs.map((q) => q.id).toSet();
       expect(picked.intersection(wrongIds.toSet()).length, wrongIds.length,
-          reason: 'alle offenen Fehler muessen in den naechsten 8 auftauchen');
+          reason: 'alle offenen Fehler müssen in den nächsten 8 auftauchen');
     });
 
     test('Themenfilter wird eingehalten', () {
@@ -200,7 +200,7 @@ void main() {
       expect(qs.every((q) => q.topicId == 'netzplan'), isTrue);
     });
 
-    test('Pruefungsmix streut ueber mehrere Themen', () {
+    test('Prüfungsmix streut über mehrere Themen', () {
       final qs = QuestionSelector.forExam(
         pool: kSeedQuestions,
         count: 30,

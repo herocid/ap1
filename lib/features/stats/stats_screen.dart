@@ -12,7 +12,7 @@ import '../../state/providers.dart';
 import '../../widgets/common.dart';
 
 /// Statistik. Beantwortet: Bin ich besser geworden, wo stehe ich pro Thema,
-/// und habe ich zuletzt ueberhaupt etwas getan?
+/// und habe ich zuletzt überhaupt etwas getan?
 class StatsScreen extends ConsumerWidget {
   const StatsScreen({super.key});
 
@@ -31,8 +31,8 @@ class StatsScreen extends ConsumerWidget {
           title: 'Noch keine Daten',
           message:
               'Sobald du die erste Runde gespielt hast, entsteht hier deine '
-              'Auswertung: Trefferquote je Thema, Aktivitaet der letzten '
-              'zwei Wochen und der Pruefungsreife-Verlauf.',
+              'Auswertung: Trefferquote je Thema, Aktivität der letzten '
+              'zwei Wochen und der Prüfungsreife-Verlauf.',
         ),
       );
     }
@@ -85,7 +85,7 @@ class StatsScreen extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Fortschritt zum naechsten Level',
+                      Text('Fortschritt zum nächsten Level',
                           style: context.text.titleMedium),
                       const SizedBox(height: Gap.m),
                       ClipRRect(
@@ -142,9 +142,9 @@ class StatsScreen extends ConsumerWidget {
                 const SizedBox(height: Gap.xl),
 
                 SectionHeader(
-                  'Pruefungsreife: $readiness %',
+                  'Prüfungsreife: $readiness %',
                   subtitle:
-                      'Gefuellter Balken = Koennen, senkrechter Strich = wie '
+                      'Gefüllter Balken = Können, senkrechter Strich = wie '
                       'viel des Themas du schon gesehen hast.',
                 ),
                 for (final t in Topics.all) ...[
@@ -286,7 +286,7 @@ class _TopicStatRow extends StatelessWidget {
           const SizedBox(height: Gap.s),
           Text(
             s == null || s.answered == 0
-                ? 'Noch nicht begonnen · $poolSize Aufgaben verfuegbar'
+                ? 'Noch nicht begonnen · $poolSize Aufgaben verfügbar'
                 : 'Trefferquote ${(s.mastery * 100).round()} % · '
                     '${s.distinctQuestions}/$poolSize Aufgaben gesehen · '
                     '${s.answered} Versuche',

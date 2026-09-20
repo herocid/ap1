@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('NetzplanSolver', () {
-    test('Vorwaertsrechnung nimmt das Maximum der Vorgaenger', () {
+    test('Vorwärtsrechnung nimmt das Maximum der Vorgänger', () {
       final sol = NetzplanSolver.solve(const [
         Activity(id: 'A', name: 'A', duration: 4),
         Activity(id: 'B', name: 'B', duration: 3, predecessors: ['A']),
@@ -16,7 +16,7 @@ void main() {
       expect(sol.nodes['A']!.fez, 4);
       expect(sol.nodes['C']!.fez, 10);
       expect(sol.nodes['D']!.fez, 12);
-      // E haengt an C (10) und D (12) -> Maximum, nicht Minimum.
+      // E hängt an C (10) und D (12) -> Maximum, nicht Minimum.
       expect(sol.nodes['E']!.faz, 12);
       expect(sol.projectDuration, 14);
       expect(sol.criticalPath, ['A', 'B', 'D', 'E']);
@@ -33,7 +33,7 @@ void main() {
       ]);
 
       expect(sol.projectDuration, 15);
-      // C hat Luft bis zum Projektende, aber keine gegenueber dem Nachfolger.
+      // C hat Luft bis zum Projektende, aber keine gegenüber dem Nachfolger.
       expect(sol.nodes['C']!.gp, 1);
       expect(sol.nodes['C']!.fp, 0);
       expect(sol.nodes['E']!.gp, 1);
@@ -59,7 +59,7 @@ void main() {
       expect(sol.criticalPath, ['A', 'B', 'D', 'F', 'G']);
     });
 
-    test('GP ist ueber beide Formeln identisch', () {
+    test('GP ist über beide Formeln identisch', () {
       final sol = NetzplanSolver.solve(const [
         Activity(id: 'A', name: 'A', duration: 2),
         Activity(id: 'B', name: 'B', duration: 4, predecessors: ['A']),
@@ -73,12 +73,12 @@ void main() {
         expect(n.gp, n.saz - n.faz);
         expect(n.gp, n.sez - n.fez, reason: 'GP = SEZ - FEZ muss gelten');
         expect(n.fp, lessThanOrEqualTo(n.gp),
-            reason: 'Der freie Puffer ist nie groesser als der Gesamtpuffer');
+            reason: 'Der freie Puffer ist nie größer als der Gesamtpuffer');
       }
       expect(sol.nodes['C']!.gp, 4);
     });
 
-    test('mehrere Startvorgaenge, laengster Weg gewinnt', () {
+    test('mehrere Startvorgänge, längster Weg gewinnt', () {
       final sol = NetzplanSolver.solve(const [
         Activity(id: 'A', name: 'A', duration: 5),
         Activity(id: 'B', name: 'B', duration: 3),

@@ -1,15 +1,15 @@
 -- ============================================================================
--- AP1-Trainer - Erweiterung auf den vollstaendigen Pruefungskatalog 2025
+-- AP1-Trainer - Erweiterung auf den vollständigen Prüfungskatalog 2025
 --
 -- Bringt drei Dinge:
 --   1. Die sieben Katalogbereiche als eigene Tabelle; Themen bekommen eine
 --      Bereichszuordnung.
 --   2. Einen Katalogstatus an den Aufgaben, damit ab 2025 gestrichene Themen
---      erhalten bleiben, aber nie ausgewaehlt werden.
+--      erhalten bleiben, aber nie ausgewählt werden.
 --   3. Lernkarteikarten samt Leitner-Lernstand je Nutzer.
 --
--- Ausfuehren NACH 20260919090000_ap1_schema.sql.
--- Idempotent: mehrfaches Ausfuehren schadet nicht.
+-- Ausführen NACH 20260919090000_ap1_schema.sql.
+-- Idempotent: mehrfaches Ausführen schadet nicht.
 -- ============================================================================
 
 -- ------------------------------------------------------ Katalogbereiche ---
@@ -19,7 +19,7 @@ create table if not exists public.ap1_areas (
   number     text         not null,
   title      text         not null,
   blurb      text         not null default '',
-  -- Geschaetzter Punkteanteil in der AP1; Summe ueber alle Bereiche = 1.
+  -- Geschätzter Punkteanteil in der AP1; Summe über alle Bereiche = 1.
   weight     numeric(4,3) not null check (weight > 0 and weight <= 1),
   sort_order int          not null default 0
 );
@@ -35,7 +35,7 @@ create index if not exists ap1_topics_area_idx on public.ap1_topics (area_id);
 -- ------------------------------------------------------- Katalogstatus ---
 -- 'current'     = im Katalog ab 2025 enthalten
 -- 'removed2025' = gestrichen; bleibt als Nachschlagewerk erhalten, wird aber
---                 nicht mehr in Uebungen oder Simulationen ausgewaehlt
+--                 nicht mehr in Übungen oder Simulationen ausgewählt
 alter table public.ap1_questions
   add column if not exists catalog_status text not null default 'current';
 
@@ -50,8 +50,8 @@ begin
   end if;
 end $$;
 
--- Der Teilindex bedient die haeufigste Abfrage der App: alle aktiven,
--- pruefungsrelevanten Aufgaben.
+-- Der Teilindex bedient die häufigste Abfrage der App: alle aktiven,
+-- prüfungsrelevanten Aufgaben.
 create index if not exists ap1_questions_relevant_idx
   on public.ap1_questions (topic_id)
   where is_active and catalog_status = 'current';
@@ -60,11 +60,11 @@ create index if not exists ap1_questions_relevant_idx
 create table if not exists public.ap1_flashcards (
   id         text primary key,
   topic_id   text        not null references public.ap1_topics(id) on delete cascade,
-  -- Vorderseite: Begriff, Abkuerzung oder kurze Frage.
+  -- Vorderseite: Begriff, Abkürzung oder kurze Frage.
   front      text        not null,
-  -- Rueckseite: die Antwort, bewusst kurz.
+  -- Rückseite: die Antwort, bewusst kurz.
   back       text        not null,
-  -- Optionale Eselsbruecke oder Abgrenzung.
+  -- Optionale Eselsbrücke oder Abgrenzung.
   hint       text,
   tags       text[]      not null default '{}',
   is_active  boolean     not null default true,
@@ -84,7 +84,7 @@ create trigger ap1_flashcards_touch
 -- ------------------------------------------------ Lernstand je Karte ---
 -- Anders als ap1_attempts ist das kein Ereignisprotokoll, sondern der
 -- aktuelle Zustand einer Karte: In welchem Leitner-Fach liegt sie, wann ist
--- sie wieder faellig? Genau ein Datensatz je Nutzer und Karte.
+-- sie wieder fällig? Genau ein Datensatz je Nutzer und Karte.
 create table if not exists public.ap1_card_states (
   user_id       uuid        not null references auth.users(id) on delete cascade,
   card_id       text        not null references public.ap1_flashcards(id) on delete cascade,
@@ -97,7 +97,7 @@ create table if not exists public.ap1_card_states (
   primary key (user_id, card_id)
 );
 
--- Die Abfrage "was ist heute faellig" laeuft ueber genau diese beiden Spalten.
+-- Die Abfrage "was ist heute fällig" läuft über genau diese beiden Spalten.
 create index if not exists ap1_card_states_due_idx
   on public.ap1_card_states (user_id, due_on);
 
@@ -112,7 +112,7 @@ alter table public.ap1_areas       enable row level security;
 alter table public.ap1_flashcards  enable row level security;
 alter table public.ap1_card_states enable row level security;
 
--- Lerninhalte sind oeffentlich lesbar; geschrieben wird nur mit dem
+-- Lerninhalte sind öffentlich lesbar; geschrieben wird nur mit dem
 -- Service-Role-Key aus der Redaktion.
 drop policy if exists ap1_areas_read on public.ap1_areas;
 create policy ap1_areas_read on public.ap1_areas
@@ -122,8 +122,8 @@ drop policy if exists ap1_flashcards_read on public.ap1_flashcards;
 create policy ap1_flashcards_read on public.ap1_flashcards
   for select to anon, authenticated using (is_active);
 
--- Der Lernstand ist persoenlich. Anders als bei ap1_attempts ist hier ein
--- Update ausdruecklich erlaubt - eine Karte wandert ja bei jeder Antwort in
+-- Der Lernstand ist persönlich. Anders als bei ap1_attempts ist hier ein
+-- Update ausdrücklich erlaubt - eine Karte wandert ja bei jeder Antwort in
 -- ein anderes Fach.
 drop policy if exists ap1_card_states_rw on public.ap1_card_states;
 create policy ap1_card_states_rw on public.ap1_card_states
@@ -133,7 +133,7 @@ create policy ap1_card_states_rw on public.ap1_card_states
 
 -- ============================================================== Sichten ===
 
--- Faellige Karten je Nutzer - was die App beim Start des Karteikastens
+-- Fällige Karten je Nutzer - was die App beim Start des Karteikastens
 -- wissen will.
 create or replace view public.ap1_due_cards
 with (security_invoker = true) as

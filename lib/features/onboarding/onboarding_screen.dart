@@ -13,11 +13,11 @@ import '../../widgets/common.dart';
 
 /// Onboarding in vier Schritten.
 ///
-/// Leitgedanke: Nach spaetestens 60 Sekunden muss der erste Nutzen sichtbar
-/// sein. Deshalb wird nur abgefragt, was den Lernplan wirklich veraendert -
-/// Beruf, Pruefungstermin, Zeitbudget. Kein Konto, keine E-Mail, keine
-/// Datenschutzerklaerung vor dem ersten Erfolgserlebnis. Registrieren kann
-/// man spaeter in den Einstellungen, um den Fortschritt zu sichern.
+/// Leitgedanke: Nach spätestens 60 Sekunden muss der erste Nutzen sichtbar
+/// sein. Deshalb wird nur abgefragt, was den Lernplan wirklich verändert -
+/// Beruf, Prüfungstermin, Zeitbudget. Kein Konto, keine E-Mail, keine
+/// Datenschutzerklärung vor dem ersten Erfolgserlebnis. Registrieren kann
+/// man später in den Einstellungen, um den Fortschritt zu sichern.
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -86,7 +86,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                       IconButton(
                         onPressed: () => _go(_step - 1),
                         icon: const Icon(Icons.arrow_back),
-                        tooltip: 'Zurueck',
+                        tooltip: 'Zurück',
                       )
                     else
                       const SizedBox(width: 48),
@@ -203,9 +203,9 @@ class _WelcomeStep extends StatelessWidget {
     return _StepScaffold(
       title: 'AP1 Trainer',
       subtitle:
-          'Alle sieben Bereiche des Pruefungskatalogs ab 2025 - von '
-          'Projektmanagement ueber Netzwerke bis Datenschutz. Mit '
-          'Uebungsaufgaben und Lernkarteikarten.',
+          'Alle sieben Bereiche des Prüfungskatalogs ab 2025 - von '
+          'Projektmanagement über Netzwerke bis Datenschutz. Mit '
+          'Übungsaufgaben und Lernkarteikarten.',
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -220,16 +220,16 @@ class _WelcomeStep extends StatelessWidget {
           const SizedBox(height: Gap.xl),
           const NoteBox(
             tone: NoteTone.info,
-            title: 'Kein Konto noetig',
+            title: 'Kein Konto nötig',
             child: Text(
-              'Dein Fortschritt bleibt zunaechst nur auf diesem Geraet. '
-              'Wenn du ihn spaeter auf mehreren Geraeten brauchst, kannst du '
+              'Dein Fortschritt bleibt zunächst nur auf diesem Gerät. '
+              'Wenn du ihn später auf mehreren Geräten brauchst, kannst du '
               'dich in den Einstellungen registrieren.',
             ),
           ),
           const SizedBox(height: Gap.xl),
           Text(
-            'Die sieben Bereiche des Pruefungskatalogs 2025',
+            'Die sieben Bereiche des Prüfungskatalogs 2025',
             style: context.text.labelSmall?.copyWith(color: context.c.textMuted),
           ),
           const SizedBox(height: Gap.s),
@@ -273,8 +273,8 @@ class _BerufStep extends StatelessWidget {
     return _StepScaffold(
       title: 'Dein Ausbildungsberuf',
       subtitle:
-          'Der Projektmanagement-Teil ist fuer alle IT-Berufe gleich. Wir '
-          'nutzen den Beruf nur, um Beispiele passend zu waehlen.',
+          'Der Projektmanagement-Teil ist für alle IT-Berufe gleich. Wir '
+          'nutzen den Beruf nur, um Beispiele passend zu wählen.',
       child: Column(
         children: [
           for (final b in Beruf.values) ...[
@@ -357,13 +357,13 @@ class _ExamDateStep extends StatelessWidget {
                     if (picked != null) onChanged(picked);
                   },
                   icon: const Icon(Icons.calendar_today_outlined, size: 18),
-                  label: const Text('Datum aendern'),
+                  label: const Text('Datum ändern'),
                 ),
               ],
             ),
           ),
           const SizedBox(height: Gap.xl),
-          Text('Uebliche IHK-Termine',
+          Text('Übliche IHK-Termine',
               style: context.text.labelSmall
                   ?.copyWith(color: context.c.textMuted)),
           const SizedBox(height: Gap.s),
@@ -380,8 +380,8 @@ class _ExamDateStep extends StatelessWidget {
           ),
           const SizedBox(height: Gap.l),
           Text(
-            'Die genauen Termine legt deine IHK fest - pruefe sie im Zweifel '
-            'in deiner Einladung zur Pruefung.',
+            'Die genauen Termine legt deine IHK fest - prüfe sie im Zweifel '
+            'in deiner Einladung zur Prüfung.',
             style:
                 context.text.labelSmall?.copyWith(color: context.c.textMuted),
           ),
@@ -408,8 +408,8 @@ class _IntensityStep extends StatelessWidget {
     return _StepScaffold(
       title: 'Wie viel Zeit hast du?',
       subtitle:
-          'Lieber taeglich 15 Minuten als einmal die Woche zwei Stunden. '
-          'Die Einstellung kannst du jederzeit aendern.',
+          'Lieber täglich 15 Minuten als einmal die Woche zwei Stunden. '
+          'Die Einstellung kannst du jederzeit ändern.',
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -428,10 +428,10 @@ class _IntensityStep extends StatelessWidget {
             tone: NoteTone.success,
             title: 'Dein Plan',
             child: Text(
-              'Bei $daysLeft Tagen bis zur Pruefung und ${value.questionsPerDay} '
+              'Bei $daysLeft Tagen bis zur Prüfung und ${value.questionsPerDay} '
               'Aufgaben pro Tag kommst du auf rund $total bearbeitete Aufgaben. '
-              'Die letzten Tage halten wir fuer Wiederholung und '
-              'Pruefungssimulationen frei.',
+              'Die letzten Tage halten wir für Wiederholung und '
+              'Prüfungssimulationen frei.',
             ),
           ),
         ],

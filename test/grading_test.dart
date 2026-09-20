@@ -68,12 +68,12 @@ void main() {
       numericTolerance: 0.01,
     );
 
-    test('Wert innerhalb der Toleranz zaehlt als richtig', () {
+    test('Wert innerhalb der Toleranz zählt als richtig', () {
       expect(q.grade(3.65).score, 1.0);
       expect(q.grade(3.66).score, 1.0);
     });
 
-    test('Wert ausserhalb der Toleranz zaehlt als falsch', () {
+    test('Wert außerhalb der Toleranz zählt als falsch', () {
       expect(q.grade(3.7).score, 0.0);
     });
   });
@@ -102,7 +102,7 @@ void main() {
       expect(q.grade([3, 2, 1, 0]).score, 0.0);
     });
 
-    test('unvollstaendige Antwort gibt null', () {
+    test('unvollständige Antwort gibt null', () {
       expect(q.grade([0, 1]).score, 0.0);
     });
   });

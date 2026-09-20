@@ -1,13 +1,13 @@
 import '../models/question.dart';
 
-/// Kurzform fuer eine Antwortoption.
+/// Kurzform für eine Antwortoption.
 Choice _c(String text, bool correct, String rationale) =>
     Choice(text: text, isCorrect: correct, rationale: rationale);
 
 /// Projektorganisation, Vorgehensmodelle, agiles Arbeiten.
 ///
 /// Alle Aufgaben sind eigene Formulierungen im Stil der AP1 - keine
-/// Originalaufgaben der IHK (die sind urheberrechtlich geschuetzt).
+/// Originalaufgaben der IHK (die sind urheberrechtlich geschützt).
 final List<Question> seedGrundlagen = [
   // ---------------------------------------------------------------- Organisation
   Question(
@@ -17,26 +17,26 @@ final List<Question> seedGrundlagen = [
     difficulty: 1,
     tags: ['din69901', 'projektbegriff'],
     prompt:
-        'Welche Merkmale muessen nach DIN 69901 erfuellt sein, damit ein Vorhaben '
+        'Welche Merkmale müssen nach DIN 69901 erfüllt sein, damit ein Vorhaben '
         'als Projekt gilt?',
     choices: [
       _c('Einmaligkeit der Bedingungen in ihrer Gesamtheit', true,
-          'Kernmerkmal. Ein Vorhaben, das jeden Monat identisch ablaeuft, ist Tagesgeschaeft - kein Projekt.'),
+          'Kernmerkmal. Ein Vorhaben, das jeden Monat identisch abläuft, ist Tagesgeschäft - kein Projekt.'),
       _c('Zeitliche, finanzielle und personelle Begrenzung', true,
           'Ein Projekt hat einen definierten Anfang und ein definiertes Ende sowie ein festes Budget.'),
       _c('Eine eigene, projektspezifische Organisation', true,
-          'Projektleitung, Team und Entscheidungswege werden eigens fuer das Vorhaben festgelegt.'),
-      _c('Mindestens fuenf beteiligte Mitarbeitende', false,
-          'Falsch. Die DIN nennt keine Mindestgroesse. Auch ein Zwei-Personen-Vorhaben kann ein Projekt sein.'),
+          'Projektleitung, Team und Entscheidungswege werden eigens für das Vorhaben festgelegt.'),
+      _c('Mindestens fünf beteiligte Mitarbeitende', false,
+          'Falsch. Die DIN nennt keine Mindestgröße. Auch ein Zwei-Personen-Vorhaben kann ein Projekt sein.'),
       _c('Ein Budget von mindestens 50.000 Euro', false,
           'Falsch. Es gibt keine Wertgrenze in der Norm. Unternehmen setzen intern manchmal Schwellen - das ist aber keine Definition.'),
-      _c('Abgrenzung gegenueber anderen Vorhaben', true,
+      _c('Abgrenzung gegenüber anderen Vorhaben', true,
           'Das Projekt muss inhaltlich und organisatorisch klar von der Linie und von anderen Projekten trennbar sein.'),
     ],
     explanation:
         'Merksatz: E-Z-O-A - Einmaligkeit, Zielvorgabe mit Begrenzung, eigene '
-        'Organisation, Abgrenzung. Groesse und Budget sind bewusst nicht Teil '
-        'der Definition; sonst waere jede Norm laendes- und branchenabhaengig.',
+        'Organisation, Abgrenzung. Größe und Budget sind bewusst nicht Teil '
+        'der Definition; sonst wäre jede Norm länder- und branchenabhängig.',
   ),
 
   Question(
@@ -50,7 +50,7 @@ final List<Question> seedGrundlagen = [
     buckets: ['Reine Projektorganisation', 'Matrix-Organisation', 'Stabs-/Einflussorganisation'],
     matchItems: const [
       MatchItem(
-        text: 'Mitarbeitende werden vollstaendig aus der Linie herausgeloest.',
+        text: 'Mitarbeitende werden vollständig aus der Linie herausgelöst.',
         bucket: 0,
         rationale: 'Genau das ist das Kennzeichen der reinen (autonomen) Projektorganisation.',
       ),
@@ -67,7 +67,7 @@ final List<Question> seedGrundlagen = [
       MatchItem(
         text: 'Hohes Konfliktpotenzial durch zwei Vorgesetzte pro Person.',
         bucket: 1,
-        rationale: 'Das klassische Matrix-Problem: zwei Chefs, widerspruechliche Prioritaeten.',
+        rationale: 'Das klassische Matrix-Problem: zwei Chefs, widersprüchliche Prioritäten.',
       ),
       MatchItem(
         text: 'Die Projektleitung koordiniert nur und kann keine Anweisungen geben.',
@@ -75,16 +75,16 @@ final List<Question> seedGrundlagen = [
         rationale: 'Die Stabsstelle berichtet und koordiniert, entscheidet aber nicht.',
       ),
       MatchItem(
-        text: 'Geringster organisatorischer Aufwand, dafuer schwache Durchsetzungskraft.',
+        text: 'Geringster organisatorischer Aufwand, dafür schwache Durchsetzungskraft.',
         bucket: 2,
         rationale: 'Vorteil und Nachteil der Einflussorganisation in einem Satz.',
       ),
     ],
     explanation:
-        'Faustregel fuer die Pruefung: Je mehr Macht die Projektleitung hat, '
-        'desto teurer und stoerender ist die Organisationsform fuer die Linie. '
+        'Faustregel für die Prüfung: Je mehr Macht die Projektleitung hat, '
+        'desto teurer und störender ist die Organisationsform für die Linie. '
         'Rein = viel Macht, hoher Aufwand. Stab = wenig Macht, wenig Aufwand. '
-        'Matrix liegt dazwischen und wird am haeufigsten gewaehlt.',
+        'Matrix liegt dazwischen und wird am häufigsten gewählt.',
   ),
 
   Question(
@@ -94,21 +94,21 @@ final List<Question> seedGrundlagen = [
     difficulty: 2,
     tags: ['stakeholder'],
     scenario:
-        'Bei der Einfuehrung eines neuen Ticketsystems hat der Betriebsrat hohen '
+        'Bei der Einführung eines neuen Ticketsystems hat der Betriebsrat hohen '
         'Einfluss auf die Entscheidung, zeigt bislang aber wenig Interesse am '
         'Projekt.',
     prompt:
-        'Welche Strategie sieht die Stakeholder-Matrix (Einfluss/Interesse) fuer '
+        'Welche Strategie sieht die Stakeholder-Matrix (Einfluss/Interesse) für '
         'diese Gruppe vor?',
     choices: [
-      _c('Zufriedenstellen - regelmaessig informieren, aber nicht ueberfrachten', true,
+      _c('Zufriedenstellen - regelmäßig informieren, aber nicht überfrachten', true,
           'Richtig. Hoher Einfluss + geringes Interesse = "keep satisfied". Die Gruppe kann das Projekt kippen, will aber keine Detailflut.'),
       _c('Eng einbinden - in alle Entscheidungen einbeziehen', false,
-          'Das gilt fuer hohen Einfluss UND hohes Interesse. Hier wuerde es den Betriebsrat mit Details ueberfordern und Widerstand erzeugen.'),
+          'Das gilt für hohen Einfluss UND hohes Interesse. Hier würde es den Betriebsrat mit Details überfordern und Widerstand erzeugen.'),
       _c('Beobachten - minimaler Aufwand', false,
-          'Das gilt nur bei geringem Einfluss UND geringem Interesse. Wer den Betriebsrat so behandelt, erlebt spaetestens bei der Mitbestimmung eine Vollbremsung.'),
-      _c('Informieren - ausfuehrlich ueber Fortschritte berichten', false,
-          'Das ist die Strategie fuer geringen Einfluss und hohes Interesse, z. B. interessierte Fachanwender.'),
+          'Das gilt nur bei geringem Einfluss UND geringem Interesse. Wer den Betriebsrat so behandelt, erlebt spätestens bei der Mitbestimmung eine Vollbremsung.'),
+      _c('Informieren - ausführlich über Fortschritte berichten', false,
+          'Das ist die Strategie für geringen Einfluss und hohes Interesse, z. B. interessierte Fachanwender.'),
     ],
     explanation:
         'Die vier Felder der Stakeholder-Matrix:\n'
@@ -116,7 +116,7 @@ final List<Question> seedGrundlagen = [
         '- Einfluss hoch / Interesse niedrig -> zufriedenstellen (keep satisfied)\n'
         '- Einfluss niedrig / Interesse hoch -> informieren (keep informed)\n'
         '- Einfluss niedrig / Interesse niedrig -> beobachten (monitor)\n'
-        'In der Pruefung wird fast immer nach dem Feld "hoher Einfluss, geringes '
+        'In der Prüfung wird fast immer nach dem Feld "hoher Einfluss, geringes '
         'Interesse" gefragt, weil es das unintuitivste ist.',
   ),
 
@@ -126,19 +126,19 @@ final List<Question> seedGrundlagen = [
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['projektauftrag'],
-    prompt: 'Welche Angaben gehoeren zwingend in einen Projektauftrag?',
+    prompt: 'Welche Angaben gehören zwingend in einen Projektauftrag?',
     choices: [
       _c('Projektziel und messbare Abnahmekriterien', true,
-          'Ohne messbares Ziel ist spaeter nicht entscheidbar, ob das Projekt erfolgreich war.'),
+          'Ohne messbares Ziel ist später nicht entscheidbar, ob das Projekt erfolgreich war.'),
       _c('Benannte Projektleitung mit Befugnissen', true,
           'Der Auftrag legitimiert die Projektleitung - sonst hat sie im Unternehmen keinen Stand.'),
       _c('Budget- und Terminrahmen', true,
           'Die beiden Eckpunkte des magischen Dreiecks neben dem Leistungsumfang.'),
-      _c('Vollstaendige technische Systemarchitektur', false,
+      _c('Vollständige technische Systemarchitektur', false,
           'Falsch. Die Architektur entsteht erst in der Planungs-/Entwurfsphase. Im Auftrag steht das WAS, nicht das WIE.'),
       _c('Nicht-Ziele bzw. Abgrenzung des Projektumfangs', true,
-          'Oft unterschaetzt: Was ausdruecklich NICHT Teil des Projekts ist, verhindert spaeteren Scope Creep.'),
-      _c('Der fertige Netzplan aller Vorgaenge', false,
+          'Oft unterschätzt: Was ausdrücklich NICHT Teil des Projekts ist, verhindert späteren Scope Creep.'),
+      _c('Der fertige Netzplan aller Vorgänge', false,
           'Falsch. Der Netzplan ist ein Ergebnis der Planungsphase, nicht Voraussetzung des Auftrags.'),
     ],
     explanation:
@@ -154,24 +154,24 @@ final List<Question> seedGrundlagen = [
     difficulty: 3,
     tags: ['magisches_dreieck'],
     scenario:
-        'Zwei Wochen vor dem Releasetermin faellt auf, dass ein Modul mehr Aufwand '
-        'braucht als geplant. Der Termin ist vertraglich fixiert, zusaetzliches '
+        'Zwei Wochen vor dem Releasetermin fällt auf, dass ein Modul mehr Aufwand '
+        'braucht als geplant. Der Termin ist vertraglich fixiert, zusätzliches '
         'Budget gibt es nicht.',
-    prompt: 'Welche Konsequenz ergibt sich zwangslaeufig aus dem magischen Dreieck?',
+    prompt: 'Welche Konsequenz ergibt sich zwangsläufig aus dem magischen Dreieck?',
     choices: [
       _c('Der Leistungsumfang muss reduziert werden.', true,
-          'Richtig. Zeit und Kosten sind fixiert - im Dreieck bleibt nur die dritte Groesse, der Umfang (Qualitaet/Leistung), als Stellhebel.'),
-      _c('Die Qualitaetssicherung kann entfallen, ohne den Umfang zu aendern.', false,
-          'Das ist keine neutrale Option: QS zu streichen ist selbst eine Reduzierung der Qualitaet - also ebenfalls eine Aenderung der dritten Groesse, nur eine besonders teure.'),
-      _c('Mehr Personal loest das Problem ohne Nebenwirkung.', false,
-          'Erstens kostet mehr Personal Budget (das es nicht gibt), zweitens gilt Brooks Law: zusaetzliche Leute in einem spaeten Projekt verzoegern es zunaechst weiter.'),
+          'Richtig. Zeit und Kosten sind fixiert - im Dreieck bleibt nur die dritte Größe, der Umfang (Qualität/Leistung), als Stellhebel.'),
+      _c('Die Qualitätssicherung kann entfallen, ohne den Umfang zu ändern.', false,
+          'Das ist keine neutrale Option: QS zu streichen ist selbst eine Reduzierung der Qualität - also ebenfalls eine Änderung der dritten Größe, nur eine besonders teure.'),
+      _c('Mehr Personal löst das Problem ohne Nebenwirkung.', false,
+          'Erstens kostet mehr Personal Budget (das es nicht gibt), zweitens gilt Brooks Law: zusätzliche Leute in einem späten Projekt verzögern es zunächst weiter.'),
       _c('Das Projekt muss abgebrochen werden.', false,
-          'Ein Abbruch ist eine mögliche Managemententscheidung, aber nicht die zwangslaeufige Folge des Dreiecks. Gefragt war die logische Konsequenz.'),
+          'Ein Abbruch ist eine mögliche Managemententscheidung, aber nicht die zwangsläufige Folge des Dreiecks. Gefragt war die logische Konsequenz.'),
     ],
     explanation:
-        'Magisches Dreieck: Zeit, Kosten, Leistung/Qualitaet. Sind zwei Groessen '
-        'fixiert, ist die dritte die abhaengige Variable. In Pruefungsaufgaben '
-        'steht die Loesung immer in der Aufgabenstellung: schau, welche zwei '
+        'Magisches Dreieck: Zeit, Kosten, Leistung/Qualität. Sind zwei Größen '
+        'fixiert, ist die dritte die abhängige Variable. In Prüfungsaufgaben '
+        'steht die Lösung immer in der Aufgabenstellung: schau, welche zwei '
         'Ecken als "fest" beschrieben sind.',
   ),
 
@@ -190,12 +190,12 @@ final List<Question> seedGrundlagen = [
       'Entwurf (Design)',
       'Implementierung',
       'Test / Verifikation',
-      'Einfuehrung und Wartung',
+      'Einführung und Wartung',
     ],
     explanation:
-        'Das Wasserfallmodell laeuft streng sequenziell: jede Phase endet mit '
-        'einem freigegebenen Dokument, erst dann startet die naechste. Das ist '
-        'zugleich sein groesster Nachteil - Fehler aus der Analyse fallen erst '
+        'Das Wasserfallmodell läuft streng sequenziell: jede Phase endet mit '
+        'einem freigegebenen Dokument, erst dann startet die nächste. Das ist '
+        'zugleich sein größter Nachteil - Fehler aus der Analyse fallen erst '
         'im Test auf, und dann ist die Korrektur am teuersten.',
   ),
 
@@ -203,23 +203,23 @@ final List<Question> seedGrundlagen = [
     id: 'vor-002',
     topicId: 'vorgehensmodelle',
     // V-Modell ist ab 2025 nicht mehr Teil des AP1-Katalogs. Die Teststufen
-    // selbst bleiben relevant - dafuer gibt es eigene Aufgaben im Thema Testen.
+    // selbst bleiben relevant - dafür gibt es eigene Aufgaben im Thema Testen.
     catalogStatus: CatalogStatus.removed2025,
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['v-modell'],
     prompt:
         'Welcher Testart steht im V-Modell die Phase "Anforderungsdefinition" '
-        'gegenueber?',
+        'gegenüber?',
     choices: [
       _c('Abnahmetest', true,
-          'Richtig. Die oberste linke Ebene (Anforderungen des Auftraggebers) wird gegen die oberste rechte Ebene (Abnahmetest durch den Auftraggeber) geprueft.'),
+          'Richtig. Die oberste linke Ebene (Anforderungen des Auftraggebers) wird gegen die oberste rechte Ebene (Abnahmetest durch den Auftraggeber) geprüft.'),
       _c('Modultest', false,
-          'Der Modul-/Unittest liegt auf der untersten Ebene und prueft gegen die Modulspezifikation bzw. den Feinentwurf.'),
+          'Der Modul-/Unittest liegt auf der untersten Ebene und prüft gegen die Modulspezifikation bzw. den Feinentwurf.'),
       _c('Integrationstest', false,
-          'Der Integrationstest gehoert zum Grobentwurf/Architektur - er prueft das Zusammenspiel der Komponenten.'),
+          'Der Integrationstest gehört zum Grobentwurf/Architektur - er prüft das Zusammenspiel der Komponenten.'),
       _c('Systemtest', false,
-          'Der Systemtest gehoert zur Systemspezifikation, also eine Ebene unterhalb der Anforderungsdefinition. Er prueft in der Testumgebung, der Abnahmetest beim Kunden.'),
+          'Der Systemtest gehört zur Systemspezifikation, also eine Ebene unterhalb der Anforderungsdefinition. Er prüft in der Testumgebung, der Abnahmetest beim Kunden.'),
     ],
     explanation:
         'Die Ebenen des V-Modells von oben nach unten:\n'
@@ -227,8 +227,8 @@ final List<Question> seedGrundlagen = [
         'Systemspezifikation <-> Systemtest\n'
         'Architektur/Grobentwurf <-> Integrationstest\n'
         'Feinentwurf/Modulspez. <-> Modultest (Unittest)\n'
-        'Merkhilfe: gleiche Hoehe im V = zusammengehoeriges Paar. Je hoeher, '
-        'desto naeher am Kunden.',
+        'Merkhilfe: gleiche Höhe im V = zusammengehöriges Paar. Je höher, '
+        'desto näher am Kunden.',
   ),
 
   Question(
@@ -250,7 +250,7 @@ final List<Question> seedGrundlagen = [
       MatchItem(
         text: 'Jeder Entwicklungsstufe ist eine passende Teststufe zugeordnet.',
         bucket: 1,
-        rationale: 'Das ist genau die Erweiterung, die das V-Modell gegenueber dem Wasserfall bringt.',
+        rationale: 'Das ist genau die Erweiterung, die das V-Modell gegenüber dem Wasserfall bringt.',
       ),
       MatchItem(
         text: 'Wiederholte Zyklen mit expliziter Risikoanalyse zu Beginn jedes Zyklus.',
@@ -260,12 +260,12 @@ final List<Question> seedGrundlagen = [
       MatchItem(
         text: 'Lieferung eines nutzbaren Inkrements am Ende jedes Sprints.',
         bucket: 3,
-        rationale: 'Das Increment ist ein Scrum-Artefakt; es muss die Definition of Done erfuellen.',
+        rationale: 'Das Increment ist ein Scrum-Artefakt; es muss die Definition of Done erfüllen.',
       ),
       MatchItem(
-        text: 'Anforderungen muessen zu Projektbeginn vollstaendig bekannt sein.',
+        text: 'Anforderungen müssen zu Projektbeginn vollständig bekannt sein.',
         bucket: 0,
-        rationale: 'Die zentrale Voraussetzung - und Schwaeche - des Wasserfalls.',
+        rationale: 'Die zentrale Voraussetzung - und Schwäche - des Wasserfalls.',
       ),
       MatchItem(
         text: 'Priorisierung der Arbeit erfolgt fortlaufend durch eine Rolle mit Produktverantwortung.',
@@ -274,7 +274,7 @@ final List<Question> seedGrundlagen = [
       ),
     ],
     explanation:
-        'Fuer die Pruefung reicht je ein Erkennungsmerkmal pro Modell: '
+        'Für die Prüfung reicht je ein Erkennungsmerkmal pro Modell: '
         'Wasserfall = sequenziell, V-Modell = Teststufen-Paare, Spiralmodell = '
         'Risikoanalyse pro Zyklus, Scrum = Inkremente in festen Sprints.',
   ),
@@ -286,29 +286,29 @@ final List<Question> seedGrundlagen = [
     difficulty: 2,
     tags: ['agil_vs_klassisch'],
     scenario:
-        'Ein Kunde moechte eine Web-Anwendung, hat aber nur eine grobe Vorstellung '
-        'vom Funktionsumfang und erwartet, dass sich die Anforderungen waehrend '
-        'der Entwicklung noch aendern.',
-    prompt: 'Welche Argumente sprechen hier fuer ein agiles Vorgehen?',
+        'Ein Kunde möchte eine Web-Anwendung, hat aber nur eine grobe Vorstellung '
+        'vom Funktionsumfang und erwartet, dass sich die Anforderungen während '
+        'der Entwicklung noch ändern.',
+    prompt: 'Welche Argumente sprechen hier für ein agiles Vorgehen?',
     choices: [
-      _c('Anforderungen koennen zwischen den Iterationen angepasst werden.', true,
-          'Genau der Fall aus dem Szenario: unklare, veraenderliche Anforderungen sind das Kernargument fuer agil.'),
-      _c('Der Kunde sieht nach jeder Iteration lauffaehige Software.', true,
-          'Frueher Feedback-Zyklus. Fehlannahmen fallen nach Wochen auf, nicht nach Monaten.'),
-      _c('Das Projektbudget laesst sich von Anfang an exakt festschreiben.', false,
-          'Falsch - das ist eine Staerke des klassischen Vorgehens. Agil arbeitet eher mit festem Budget und variablem Umfang.'),
-      _c('Der Dokumentationsaufwand entfaellt vollstaendig.', false,
+      _c('Anforderungen können zwischen den Iterationen angepasst werden.', true,
+          'Genau der Fall aus dem Szenario: unklare, veränderliche Anforderungen sind das Kernargument für agil.'),
+      _c('Der Kunde sieht nach jeder Iteration lauffähige Software.', true,
+          'Früher Feedback-Zyklus. Fehlannahmen fallen nach Wochen auf, nicht nach Monaten.'),
+      _c('Das Projektbudget lässt sich von Anfang an exakt festschreiben.', false,
+          'Falsch - das ist eine Stärke des klassischen Vorgehens. Agil arbeitet eher mit festem Budget und variablem Umfang.'),
+      _c('Der Dokumentationsaufwand entfällt vollständig.', false,
           'Falsch. Das agile Manifest sagt "funktionierende Software MEHR ALS umfassende Dokumentation" - nicht "statt". Dokumentation wird reduziert, nicht abgeschafft.'),
       _c('Das Risiko einer kompletten Fehlentwicklung sinkt.', true,
-          'Durch kurze Zyklen und regelmaessige Abnahme kann man maximal eine Iteration in die falsche Richtung laufen.'),
-      _c('Ein vollstaendiges Pflichtenheft ist zu Projektbeginn erforderlich.', false,
+          'Durch kurze Zyklen und regelmäßige Abnahme kann man maximal eine Iteration in die falsche Richtung laufen.'),
+      _c('Ein vollständiges Pflichtenheft ist zu Projektbeginn erforderlich.', false,
           'Falsch, das ist klassisches Vorgehen. Agil startet mit einem priorisierten Backlog, das sich weiterentwickelt.'),
     ],
     explanation:
         'Entscheidungsregel: Sind die Anforderungen stabil und der Umfang '
-        'vertraglich fix (z. B. Ausschreibung der oeffentlichen Hand), ist '
-        'klassisch richtig. Sind sie unklar oder veraenderlich, ist agil '
-        'richtig. Der haeufigste Fehler in der Pruefung ist die Behauptung, '
+        'vertraglich fix (z. B. Ausschreibung der öffentlichen Hand), ist '
+        'klassisch richtig. Sind sie unklar oder veränderlich, ist agil '
+        'richtig. Der häufigste Fehler in der Prüfung ist die Behauptung, '
         'agil brauche keine Dokumentation.',
   ),
 
@@ -321,19 +321,19 @@ final List<Question> seedGrundlagen = [
     prompt:
         'Warum sind Fehler aus der Analysephase im Wasserfallmodell besonders teuer?',
     choices: [
-      _c('Weil sie erst in der Testphase auffallen und dann alle darauf aufbauenden Phasen korrigiert werden muessen.', true,
+      _c('Weil sie erst in der Testphase auffallen und dann alle darauf aufbauenden Phasen korrigiert werden müssen.', true,
           'Richtig. Der Aufwand zur Fehlerbehebung steigt mit jeder Phase etwa um den Faktor 10 (Rule of Ten).'),
       _c('Weil die Analysephase das teuerste Personal bindet.', false,
           'Die Personalkosten der Analyse sind nicht der Punkt. Entscheidend ist die Fortpflanzung des Fehlers durch alle Folgephasen.'),
       _c('Weil das Wasserfallmodell keine Testphase vorsieht.', false,
           'Sachlich falsch: Test ist eine eigene Phase im Wasserfall. Nur liegt sie eben am Ende.'),
       _c('Weil Analysefehler die Hardwarebeschaffung betreffen.', false,
-          'Das ist ein Spezialfall, keine allgemeine Begruendung.'),
+          'Das ist ein Spezialfall, keine allgemeine Begründung.'),
     ],
     explanation:
         'Rule of Ten: Ein Fehler, der in der Analyse 1 Euro kostet, kostet im '
         'Entwurf 10, in der Implementierung 100 und beim Kunden 1.000 Euro. '
-        'Genau dagegen arbeiten V-Modell (frueh definierte Tests) und agile '
+        'Genau dagegen arbeiten V-Modell (früh definierte Tests) und agile '
         'Modelle (kurze Feedback-Schleifen).',
   ),
 
@@ -344,12 +344,12 @@ final List<Question> seedGrundlagen = [
     kind: QuestionKind.single,
     difficulty: 1,
     tags: ['scrum', 'rollen'],
-    prompt: 'Wer entscheidet in Scrum ueber die Reihenfolge im Product Backlog?',
+    prompt: 'Wer entscheidet in Scrum über die Reihenfolge im Product Backlog?',
     choices: [
       _c('Product Owner', true,
           'Richtig. Der Product Owner verantwortet die Wertmaximierung und damit die Priorisierung. Er darf sich beraten lassen, entscheidet aber allein.'),
       _c('Scrum Master', false,
-          'Der Scrum Master verantwortet die Wirksamkeit von Scrum - er moderiert, raeumt Hindernisse weg und priorisiert gerade nicht.'),
+          'Der Scrum Master verantwortet die Wirksamkeit von Scrum - er moderiert, räumt Hindernisse weg und priorisiert gerade nicht.'),
       _c('Die Developers', false,
           'Die Developers entscheiden, WIE und wie viel sie in einen Sprint nehmen, nicht in welcher Reihenfolge der Product Owner den Wert sieht.'),
       _c('Der Lenkungsausschuss', false,
@@ -372,16 +372,16 @@ final List<Question> seedGrundlagen = [
     orderingHint: 'Vom Sprintbeginn bis zum Sprintende',
     orderedItems: const [
       'Sprint Planning',
-      'Daily Scrum (taeglich)',
+      'Daily Scrum (täglich)',
       'Sprint Review',
       'Sprint Retrospective',
     ],
     explanation:
-        'Der Sprint selbst ist der Container fuer alle anderen Events. '
-        'Wichtig fuer die Pruefung: Das Review kommt VOR der Retrospektive. '
+        'Der Sprint selbst ist der Container für alle anderen Events. '
+        'Wichtig für die Prüfung: Das Review kommt VOR der Retrospektive. '
         'Im Review geht es um das Produkt (mit Stakeholdern), in der '
         'Retrospektive um die Zusammenarbeit (nur das Scrum Team). '
-        'Das Refinement ist kein eigenes Event, sondern eine laufende Taetigkeit.',
+        'Das Refinement ist kein eigenes Event, sondern eine laufende Tätigkeit.',
   ),
 
   Question(
@@ -391,19 +391,19 @@ final List<Question> seedGrundlagen = [
     difficulty: 1,
     tags: ['scrum', 'timebox'],
     prompt:
-        'Wie lang ist die Timebox des Daily Scrum bei einem vierwoechigen Sprint?',
+        'Wie lang ist die Timebox des Daily Scrum bei einem vierwöchigen Sprint?',
     choices: [
       _c('15 Minuten', true,
-          'Richtig. Das Daily ist immer auf 15 Minuten begrenzt - unabhaengig von der Sprintlaenge. Das ist die einzige Timebox, die nicht mitwaechst.'),
+          'Richtig. Das Daily ist immer auf 15 Minuten begrenzt - unabhängig von der Sprintlänge. Das ist die einzige Timebox, die nicht mitwächst.'),
       _c('30 Minuten', false,
           'Nein. Diese Zahl verwechselt man leicht mit der anteiligen Skalierung anderer Events.'),
       _c('1 Stunde', false,
-          'Eine Stunde waere die Groessenordnung einer Retrospektive bei kurzen Sprints, nicht des Dailys.'),
+          'Eine Stunde wäre die Größenordnung einer Retrospektive bei kurzen Sprints, nicht des Dailys.'),
       _c('Vier Stunden', false,
           'Vier Stunden ist die Obergrenze des Sprint Reviews bei einem Monatssprint.'),
     ],
     explanation:
-        'Timeboxen bei einem Monatssprint (kuerzere Sprints -> anteilig kuerzer):\n'
+        'Timeboxen bei einem Monatssprint (kürzere Sprints -> anteilig kürzer):\n'
         '- Sprint Planning: max. 8 Stunden\n'
         '- Daily Scrum: 15 Minuten (immer)\n'
         '- Sprint Review: max. 4 Stunden\n'
@@ -430,7 +430,7 @@ final List<Question> seedGrundlagen = [
       MatchItem(
         text: 'Sprint Goal',
         bucket: 1,
-        rationale: 'Das Sprint Goal ist das eine Ziel des Sprints und gehoert zum Sprint Backlog.',
+        rationale: 'Das Sprint Goal ist das eine Ziel des Sprints und gehört zum Sprint Backlog.',
       ),
       MatchItem(
         text: 'Definition of Done',
@@ -443,20 +443,20 @@ final List<Question> seedGrundlagen = [
         rationale: 'Das ist die Definition des Product Backlogs.',
       ),
       MatchItem(
-        text: 'Auswahl der Items plus Plan zur Umsetzung fuer die kommenden Wochen',
+        text: 'Auswahl der Items plus Plan zur Umsetzung für die kommenden Wochen',
         bucket: 1,
-        rationale: 'Sprint Backlog = Sprint Goal + ausgewaehlte Items + Umsetzungsplan.',
+        rationale: 'Sprint Backlog = Sprint Goal + ausgewählte Items + Umsetzungsplan.',
       ),
       MatchItem(
         text: 'Das konkrete, nutzbare Ergebnis am Ende des Sprints',
         bucket: 2,
-        rationale: 'Das Increment ist das Arbeitsergebnis, das die DoD erfuellt.',
+        rationale: 'Das Increment ist das Arbeitsergebnis, das die DoD erfüllt.',
       ),
     ],
     explanation:
         'Drei Artefakte, drei Commitments: Product Backlog -> Product Goal, '
         'Sprint Backlog -> Sprint Goal, Increment -> Definition of Done. '
-        'Diese Zuordnung wird gern gefragt, weil viele die DoD faelschlich dem '
+        'Diese Zuordnung wird gern gefragt, weil viele die DoD fälschlich dem '
         'Sprint Backlog zuordnen.',
   ),
 
@@ -479,36 +479,36 @@ final List<Question> seedGrundlagen = [
         'Rechenweg:\n'
         '1. Durchschnittliche Velocity = (28 + 32 + 30) / 3 = 30 Story Points/Sprint\n'
         '2. 270 SP / 30 SP je Sprint = 9 Sprints\n'
-        'Waere das Ergebnis krumm (z. B. 9,3), wird aufgerundet - ein halber '
+        'Wäre das Ergebnis krumm (z. B. 9,3), wird aufgerundet - ein halber '
         'Sprint existiert in der Planung nicht. Die Velocity wird immer aus '
-        'abgeschlossenen (Definition of Done erfuellten) Items gebildet, nicht '
+        'abgeschlossenen (Definition of Done erfüllten) Items gebildet, nicht '
         'aus angefangenen.',
   ),
 
   Question(
     id: 'scr-006',
     topicId: 'agil_scrum',
-    // Kanban zaehlt ab 2025 zu den gestrichenen Methoden.
+    // Kanban zählt ab 2025 zu den gestrichenen Methoden.
     catalogStatus: CatalogStatus.removed2025,
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['kanban', 'wip'],
     prompt: 'Wozu dient ein WIP-Limit in Kanban?',
     choices: [
-      _c('Es begrenzt die Anzahl gleichzeitig bearbeiteter Aufgaben und macht Engpaesse sichtbar.', true,
-          'Richtig. Work in Progress zu begrenzen verkuerzt die Durchlaufzeit und zwingt das Team, Aufgaben fertigzustellen, statt neue anzufangen.'),
+      _c('Es begrenzt die Anzahl gleichzeitig bearbeiteter Aufgaben und macht Engpässe sichtbar.', true,
+          'Richtig. Work in Progress zu begrenzen verkürzt die Durchlaufzeit und zwingt das Team, Aufgaben fertigzustellen, statt neue anzufangen.'),
       _c('Es legt fest, wie viele Story Points pro Sprint eingeplant werden.', false,
           'Das ist die Velocity in Scrum. Kanban kennt keine Sprints und keine feste Einplanung.'),
-      _c('Es begrenzt die maximale Teamgroesse.', false,
+      _c('Es begrenzt die maximale Teamgröße.', false,
           'WIP bezieht sich auf Arbeit, nicht auf Personen.'),
       _c('Es definiert, wie lange eine Aufgabe maximal dauern darf.', false,
-          'Das waere eine Timebox bzw. ein Service Level Expectation - nicht das WIP-Limit.'),
+          'Das wäre eine Timebox bzw. ein Service Level Expectation - nicht das WIP-Limit.'),
     ],
     explanation:
         'Kanban-Kernpraktiken: Workflow visualisieren, WIP limitieren, Fluss '
         'steuern, Regeln explizit machen, Feedback etablieren, verbessern. '
         'Hintergrund ist das Littlesche Gesetz: Durchlaufzeit = WIP / Durchsatz. '
-        'Weniger parallele Arbeit bedeutet direkt kuerzere Durchlaufzeiten.',
+        'Weniger parallele Arbeit bedeutet direkt kürzere Durchlaufzeiten.',
   ),
 
   Question(
@@ -518,24 +518,24 @@ final List<Question> seedGrundlagen = [
     difficulty: 3,
     tags: ['scrum', 'user_story'],
     prompt:
-        'Welche Aussagen ueber User Stories und deren Akzeptanzkriterien sind korrekt?',
+        'Welche Aussagen über User Stories und deren Akzeptanzkriterien sind korrekt?',
     choices: [
-      _c('Das Format lautet: Als <Rolle> moechte ich <Ziel>, um <Nutzen>.', true,
-          'Das ist das Standardformat. Der "um ... zu"-Teil ist der wichtigste und wird am haeufigsten weggelassen.'),
-      _c('Akzeptanzkriterien legen fest, wann die Story als erfuellt gilt.', true,
-          'Sie sind storyspezifisch und pruefbar - im Gegensatz zur Definition of Done, die fuer alle Stories gilt.'),
+      _c('Das Format lautet: Als <Rolle> möchte ich <Ziel>, um <Nutzen>.', true,
+          'Das ist das Standardformat. Der "um ... zu"-Teil ist der wichtigste und wird am häufigsten weggelassen.'),
+      _c('Akzeptanzkriterien legen fest, wann die Story als erfüllt gilt.', true,
+          'Sie sind storyspezifisch und prüfbar - im Gegensatz zur Definition of Done, die für alle Stories gilt.'),
       _c('Die Definition of Done ersetzt die Akzeptanzkriterien.', false,
-          'Falsch. Die DoD gilt teamweit fuer JEDES Increment (z. B. Code-Review erfolgt, Tests gruen). Akzeptanzkriterien sind fachlich und gelten nur fuer diese eine Story. Beides muss erfuellt sein.'),
-      _c('Story Points schaetzen den Aufwand relativ, nicht in Stunden.', true,
-          'Relative Schaetzung ist stabiler als absolute: Menschen vergleichen zuverlaessiger, als sie Stunden schaetzen.'),
+          'Falsch. Die DoD gilt teamweit für JEDES Increment (z. B. Code-Review erfolgt, Tests grün). Akzeptanzkriterien sind fachlich und gelten nur für diese eine Story. Beides muss erfüllt sein.'),
+      _c('Story Points schätzen den Aufwand relativ, nicht in Stunden.', true,
+          'Relative Schätzung ist stabiler als absolute: Menschen vergleichen zuverlässiger, als sie Stunden schätzen.'),
       _c('Eine User Story muss immer in einen Sprint passen.', true,
-          'Passt sie nicht, wird sie im Refinement geteilt. Eine zu grosse Story heisst Epic.'),
+          'Passt sie nicht, wird sie im Refinement geteilt. Eine zu große Story heißt Epic.'),
       _c('Der Scrum Master schreibt die User Stories.', false,
-          'Falsch. Verantwortlich fuer das Product Backlog ist der Product Owner; formulieren kann sie jeder im Team.'),
+          'Falsch. Verantwortlich für das Product Backlog ist der Product Owner; formulieren kann sie jeder im Team.'),
     ],
     explanation:
-        'INVEST als Qualitaetscheck fuer Stories: Independent, Negotiable, '
-        'Valuable, Estimable, Small, Testable. Der klassische Pruefungsfallstrick '
+        'INVEST als Qualitätscheck für Stories: Independent, Negotiable, '
+        'Valuable, Estimable, Small, Testable. Der klassische Prüfungsfallstrick '
         'ist die Abgrenzung Akzeptanzkriterien (pro Story, fachlich) gegen '
         'Definition of Done (teamweit, handwerklich).',
   ),

@@ -2,16 +2,16 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-/// IT-Berufe mit gemeinsamer AP1. Der Beruf beeinflusst spaeter die
+/// IT-Berufe mit gemeinsamer AP1. Der Beruf beeinflusst später die
 /// Aufgaben-Auswahl (Fachrichtungs-Tags), nicht aber den PM-Kern - der ist
-/// fuer alle identisch.
+/// für alle identisch.
 enum Beruf {
   fiae('Fachinformatiker/-in Anwendungsentwicklung'),
   fisi('Fachinformatiker/-in Systemintegration'),
   fidv('Fachinformatiker/-in Daten- und Prozessanalyse'),
   fidp('Fachinformatiker/-in Digitale Vernetzung'),
-  kaufIt('Kaufmann/-frau fuer IT-System-Management'),
-  kaufDig('Kaufmann/-frau fuer Digitalisierungsmanagement'),
+  kaufIt('Kaufmann/-frau für IT-System-Management'),
+  kaufDig('Kaufmann/-frau für Digitalisierungsmanagement'),
   itSys('IT-System-Elektroniker/-in');
 
   const Beruf(this.label);
@@ -78,9 +78,9 @@ class UserProfile {
         intensitaet: LernIntensitaet.solide,
       );
 
-  /// Die IHK-Termine fuer AP1 liegen bundeseinheitlich im Fruehjahr (Maerz)
-  /// und Herbst (September). Wir schlagen den naechsten plausiblen Termin vor,
-  /// aendern laesst er sich frei.
+  /// Die IHK-Termine für AP1 liegen bundeseinheitlich im Frühjahr (März)
+  /// und Herbst (September). Wir schlagen den nächsten plausiblen Termin vor,
+  /// ändern lässt er sich frei.
   static DateTime nextIhkDate([DateTime? now]) {
     final n = now ?? DateTime.now();
     final candidates = <DateTime>[
@@ -117,7 +117,7 @@ class UserProfile {
         'display_name': displayName,
         'beruf': beruf.name,
         'exam_date': examDate.toIso8601String(),
-        'intensitaet': intensitaet.name,
+        'intensität': intensitaet.name,
         'theme_mode': themeMode.name,
         'onboarded': onboarded,
         'reminder_hour': reminderHour,
@@ -129,7 +129,7 @@ class UserProfile {
         beruf: Beruf.parse(j['beruf'] as String?),
         examDate: DateTime.tryParse((j['exam_date'] ?? '') as String) ??
             nextIhkDate(),
-        intensitaet: LernIntensitaet.parse(j['intensitaet'] as String?),
+        intensitaet: LernIntensitaet.parse(j['intensität'] as String?),
         themeMode: ThemeMode.values.firstWhere(
           (m) => m.name == j['theme_mode'],
           orElse: () => ThemeMode.system,

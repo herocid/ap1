@@ -82,12 +82,12 @@ class SectionHeader extends StatelessWidget {
   }
 }
 
-/// Der Pruefungsreife-Indikator.
+/// Der Prüfungsreife-Indikator.
 ///
-/// Ein Ring statt eines Balkens, weil er als eigenstaendiges Objekt gelesen
+/// Ein Ring statt eines Balkens, weil er als eigenständiges Objekt gelesen
 /// wird und nicht mit den vielen Fortschrittsbalken der Themenliste
-/// verschwimmt. Die Farbe wechselt in vier Stufen - zusaetzlich steht das
-/// Label darunter, damit die Aussage nicht allein an der Farbe haengt.
+/// verschwimmt. Die Farbe wechselt in vier Stufen - zusätzlich steht das
+/// Label darunter, damit die Aussage nicht allein an der Farbe hängt.
 class ReadinessRing extends StatelessWidget {
   const ReadinessRing({
     super.key,
@@ -190,7 +190,7 @@ class _RingPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..color = color;
 
-    // Offener Ring: 270 Grad, Luecke unten - das liest sich als Skala,
+    // Offener Ring: 270 Grad, Lücke unten - das liest sich als Skala,
     // nicht als Tortendiagramm.
     const start = math.pi * 0.75;
     const sweep = math.pi * 1.5;
@@ -218,7 +218,7 @@ class _RingPainter extends CustomPainter {
       old.progress != progress || old.color != color || old.track != track;
 }
 
-/// Kleine Kennzahl mit Icon - fuer Streak, Level, Tage bis zur Pruefung.
+/// Kleine Kennzahl mit Icon - für Streak, Level, Tage bis zur Prüfung.
 class StatTile extends StatelessWidget {
   const StatTile({
     super.key,
@@ -257,7 +257,7 @@ class StatTile extends StatelessWidget {
   }
 }
 
-/// Fortschrittsbalken je Thema. Zeigt Koennen (gefuellter Balken) und
+/// Fortschrittsbalken je Thema. Zeigt Können (gefüllter Balken) und
 /// Abdeckung (Punkt-Marker) in einem Element.
 class TopicBar extends StatelessWidget {
   const TopicBar({
@@ -324,7 +324,7 @@ class TopicBar extends StatelessWidget {
   }
 }
 
-/// Streak-Anzeige. Bewusst zurueckhaltend: eine Flamme, eine Zahl, fertig.
+/// Streak-Anzeige. Bewusst zurückhaltend: eine Flamme, eine Zahl, fertig.
 class StreakChip extends StatelessWidget {
   const StreakChip({super.key, required this.days, this.activeToday = false});
 
@@ -373,7 +373,7 @@ class StreakChip extends StatelessWidget {
 }
 
 /// Farbig hinterlegter Hinweiskasten. [tone] steuert Farbe UND Icon - die
-/// Aussage haengt nie allein an der Farbe.
+/// Aussage hängt nie allein an der Farbe.
 enum NoteTone { info, success, danger, warn }
 
 class NoteBox extends StatelessWidget {
@@ -435,7 +435,7 @@ class NoteBox extends StatelessWidget {
   }
 }
 
-/// Kleines Label mit Icon fuer Metadaten (Thema, Schwierigkeit, Punkte).
+/// Kleines Label mit Icon für Metadaten (Thema, Schwierigkeit, Punkte).
 class MetaChip extends StatelessWidget {
   const MetaChip({super.key, required this.label, this.icon, this.color});
 
@@ -473,13 +473,13 @@ class MetaChip extends StatelessWidget {
   }
 }
 
-/// Zentriert den Inhalt und begrenzt die Zeilenlaenge. Auf breiten Screens
-/// sonst unlesbar - 70 Zeichen sind die Obergrenze fuer Fliesstext.
+/// Zentriert den Inhalt und begrenzt die Zeilenlänge. Auf breiten Screens
+/// sonst unlesbar - 70 Zeichen sind die Obergrenze für Fließtext.
 ///
-/// [shrinkHeight] ist Pflicht ueberall dort, wo der Elternteil lockere
-/// Hoehen-Constraints vergibt (Scaffold.bottomNavigationBar, Column ohne
-/// Expanded). Ohne das nimmt sich Center die maximal verfuegbare Hoehe und
-/// legt sich ueber den restlichen Bildschirm.
+/// [shrinkHeight] ist Pflicht überall dort, wo der Elternteil lockere
+/// Höhen-Constraints vergibt (Scaffold.bottomNavigationBar, Column ohne
+/// Expanded). Ohne das nimmt sich Center die maximal verfügbare Höhe und
+/// legt sich über den restlichen Bildschirm.
 class ReadableWidth extends StatelessWidget {
   const ReadableWidth({
     super.key,
@@ -504,7 +504,7 @@ class ReadableWidth extends StatelessWidget {
   }
 }
 
-/// Grosse Auswahlkachel fuers Onboarding: Titel, Beschreibung, Haken.
+/// Große Auswahlkachel fürs Onboarding: Titel, Beschreibung, Haken.
 class SelectTile extends StatelessWidget {
   const SelectTile({
     super.key,

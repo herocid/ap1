@@ -11,9 +11,9 @@ import '../../widgets/common.dart';
 import '../learn/session_launcher.dart';
 
 /// Die Startseite. Sie beantwortet in dieser Reihenfolge drei Fragen:
-/// 1. Wo stehe ich? (Pruefungsreife, Tage bis zur Pruefung)
-/// 2. Was ist heute dran? (Tagesziel, eine grosse Schaltflaeche)
-/// 3. Wo hakt es? (Fehlerspeicher, schwaechste Themen)
+/// 1. Wo stehe ich? (Prüfungsreife, Tage bis zur Prüfung)
+/// 2. Was ist heute dran? (Tagesziel, eine große Schaltfläche)
+/// 3. Wo hakt es? (Fehlerspeicher, schwächste Themen)
 ///
 /// Alles andere - Statistik, Einstellungen, komplette Themenliste - liegt
 /// bewusst auf anderen Tabs. Ein Dashboard, das alles zeigt, zeigt nichts.
@@ -65,7 +65,7 @@ class DashboardScreen extends ConsumerWidget {
                               Text(
                                 profile.daysUntilExam >= 0
                                     ? 'Noch ${profile.daysUntilExam} Tage bis zur AP1'
-                                    : 'Pruefungstermin liegt in der Vergangenheit',
+                                    : 'Prüfungstermin liegt in der Vergangenheit',
                                 style: context.text.bodyMedium
                                     ?.copyWith(color: context.c.textMuted),
                               ),
@@ -80,7 +80,7 @@ class DashboardScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: Gap.xl),
 
-                    // ----------------------------------------- Pruefungsreife
+                    // ----------------------------------------- Prüfungsreife
                     AppCard(
                       padding: const EdgeInsets.all(Gap.xl),
                       child: LayoutBuilder(
@@ -93,12 +93,12 @@ class DashboardScreen extends ConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text('Pruefungsreife',
+                              Text('Prüfungsreife',
                                   style: context.text.titleMedium),
                               const SizedBox(height: Gap.xs),
                               Text(
                                 readiness == 0
-                                    ? 'Sobald du die ersten Aufgaben geloest hast, '
+                                    ? 'Sobald du die ersten Aufgaben gelöst hast, '
                                         'siehst du hier, wie weit du bist.'
                                     : 'Gewichtet nach dem Punkteanteil der Themen '
                                         'in der AP1 - nicht nach Anzahl der '
@@ -222,7 +222,7 @@ class DashboardScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: Gap.l),
 
-                    // -------------------------------- Fehlerspeicher + Pruefung
+                    // -------------------------------- Fehlerspeicher + Prüfung
                     Row(
                       children: [
                         Expanded(
@@ -250,8 +250,8 @@ class DashboardScreen extends ConsumerWidget {
                             iconColor: context.scheme.primary,
                             title: 'Karteikarten',
                             subtitle: dueCards == 0
-                                ? 'Nichts faellig'
-                                : '$dueCards faellig',
+                                ? 'Nichts fällig'
+                                : '$dueCards fällig',
                             onTap: () => context.go('/karten'),
                           ),
                         ),
@@ -261,16 +261,16 @@ class DashboardScreen extends ConsumerWidget {
                     SizedBox(
                       width: double.infinity,
                       child: OutlinedButton.icon(
-                        onPressed: () => context.push('/pruefung'),
+                        onPressed: () => context.push('/prüfung'),
                         icon: const Icon(Icons.timer_outlined),
-                        label: const Text('Pruefungssimulation starten'),
+                        label: const Text('Prüfungssimulation starten'),
                       ),
                     ),
                     const SizedBox(height: Gap.xl),
 
                     // --------------------------------------- Heute im Plan
                     SectionHeader(
-                      'Als naechstes dran',
+                      'Als nächstes dran',
                       subtitle: plan.note,
                       action: TextButton(
                         onPressed: () => context.go('/themen'),

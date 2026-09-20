@@ -51,14 +51,14 @@ class SettingsScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: Gap.xl),
 
-                const SectionHeader('Pruefung & Pensum'),
+                const SectionHeader('Prüfung & Pensum'),
                 AppCard(
                   child: Column(
                     children: [
                       ListTile(
                         contentPadding: EdgeInsets.zero,
                         leading: const Icon(Icons.event_outlined),
-                        title: const Text('Pruefungstermin'),
+                        title: const Text('Prüfungstermin'),
                         subtitle: Text(
                           '${DateFormat('d. MMMM yyyy', 'de_DE').format(profile.examDate)} '
                           '· noch ${profile.daysUntilExam} Tage',
@@ -84,7 +84,7 @@ class SettingsScreen extends ConsumerWidget {
                       ListTile(
                         contentPadding: EdgeInsets.zero,
                         leading: const Icon(Icons.speed_outlined),
-                        title: const Text('Lernintensitaet'),
+                        title: const Text('Lernintensität'),
                         subtitle: Text(
                           '${profile.intensitaet.label} · '
                           '${profile.intensitaet.questionsPerDay} Aufgaben, '
@@ -125,9 +125,9 @@ class SettingsScreen extends ConsumerWidget {
                         subtitle: Text(
                           Env.hasSupabase
                               ? 'Aufgaben werden vom Server geladen, '
-                                  'Fortschritt bleibt zusaetzlich lokal.'
-                              : 'Alles laeuft lokal mit den eingebauten '
-                                  'Aufgaben. Fuer die Server-Anbindung '
+                                  'Fortschritt bleibt zusätzlich lokal.'
+                              : 'Alles läuft lokal mit den eingebauten '
+                                  'Aufgaben. Für die Server-Anbindung '
                                   'SUPABASE_ANON_KEY per --dart-define setzen.',
                         ),
                         isThreeLine: true,
@@ -138,12 +138,12 @@ class SettingsScreen extends ConsumerWidget {
                         leading: Icon(Icons.delete_outline,
                             color: context.c.danger),
                         title: Text(
-                          'Fortschritt zuruecksetzen',
+                          'Fortschritt zurücksetzen',
                           style: TextStyle(color: context.c.danger),
                         ),
                         subtitle: Text(
                           '${progress.totalAnswered} beantwortete Aufgaben, '
-                          'Streak und Erfolge werden geloescht.',
+                          'Streak und Erfolge werden gelöscht.',
                         ),
                         onTap: () => _confirmReset(context, ref),
                       ),
@@ -152,21 +152,21 @@ class SettingsScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: Gap.xl),
 
-                const SectionHeader('Ueber die App'),
+                const SectionHeader('Über die App'),
                 const AppCard(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Alle Aufgaben sind eigene Formulierungen im Stil der '
-                        'IHK-Abschlusspruefung Teil 1. Es werden keine '
+                        'IHK-Abschlussprüfung Teil 1. Es werden keine '
                         'Originalaufgaben verwendet - die sind '
-                        'urheberrechtlich geschuetzt.',
+                        'urheberrechtlich geschützt.',
                       ),
                       SizedBox(height: Gap.m),
                       Text(
-                        'Die Angaben zu Gewichtung und Pruefungsterminen sind '
-                        'Schaetzungen zur Lernsteuerung, keine Auskunft deiner '
+                        'Die Angaben zu Gewichtung und Prüfungsterminen sind '
+                        'Schätzungen zur Lernsteuerung, keine Auskunft deiner '
                         'IHK.',
                       ),
                     ],
@@ -190,7 +190,7 @@ class SettingsScreen extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Lernintensitaet', style: ctx.text.titleLarge),
+              Text('Lernintensität', style: ctx.text.titleLarge),
               const SizedBox(height: Gap.l),
               for (final i in LernIntensitaet.values) ...[
                 SelectTile(
@@ -251,10 +251,10 @@ class SettingsScreen extends ConsumerWidget {
     final ok = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Fortschritt wirklich loeschen?'),
+        title: const Text('Fortschritt wirklich löschen?'),
         content: const Text(
           'Historie, Streak, Level und Erfolge werden entfernt. '
-          'Das laesst sich nicht rueckgaengig machen.',
+          'Das lässt sich nicht rückgängig machen.',
         ),
         actions: [
           TextButton(
@@ -266,7 +266,7 @@ class SettingsScreen extends ConsumerWidget {
               backgroundColor: Theme.of(ctx).colorScheme.error,
             ),
             onPressed: () => Navigator.of(ctx).pop(true),
-            child: const Text('Loeschen'),
+            child: const Text('Löschen'),
           ),
         ],
       ),
@@ -275,7 +275,7 @@ class SettingsScreen extends ConsumerWidget {
       ref.read(progressProvider.notifier).reset();
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Fortschritt zurueckgesetzt.')),
+          const SnackBar(content: Text('Fortschritt zurückgesetzt.')),
         );
       }
     }

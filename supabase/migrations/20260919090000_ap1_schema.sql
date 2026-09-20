@@ -1,23 +1,23 @@
 -- ============================================================================
 -- AP1 Projektmanagement-Trainer - Grundschema
 --
--- Ausfuehren im Supabase SQL Editor (Projekt zcxhrkwbulsedkxcbkkk) in dieser
+-- Ausführen im Supabase SQL Editor (Projekt zcxhrkwbulsedkxcbkkk) in dieser
 -- Reihenfolge:
 --   20260919090000_ap1_schema.sql   <- diese Datei
 --   20260919090100_ap1_seed.sql     <- Aufgaben und Theorie
 --
 -- Entwurfsentscheidungen:
---  * Alle Tabellen mit Praefix ap1_, damit sie in einem geteilten Projekt
+--  * Alle Tabellen mit Präfix ap1_, damit sie in einem geteilten Projekt
 --    nicht mit anderen Anwendungen kollidieren.
 --  * Aufgabeninhalte liegen in einer JSONB-Spalte `data`. Sechs Aufgabentypen
---    mit je eigenem Schema in relationale Tabellen zu pressen, waere hier
+--    mit je eigenem Schema in relationale Tabellen zu pressen, wäre hier
 --    reiner Selbstzweck - gelesen wird immer die ganze Aufgabe.
---  * Fortschritt wird als unveraenderliche Ereignisliste (ap1_attempts)
+--  * Fortschritt wird als unveränderliche Ereignisliste (ap1_attempts)
 --    gespeichert. Jede Kennzahl der App - Trefferquote, Streak,
---    Pruefungsreife - laesst sich daraus neu berechnen. Es gibt keinen
+--    Prüfungsreife - lässt sich daraus neu berechnen. Es gibt keinen
 --    zweiten, abweichenden Wahrheitsstand.
---  * RLS ist ueberall aktiv: Aufgaben sind oeffentlich lesbar, persoenliche
---    Daten sieht ausschliesslich der jeweilige Nutzer.
+--  * RLS ist überall aktiv: Aufgaben sind öffentlich lesbar, persönliche
+--    Daten sieht ausschließlich der jeweilige Nutzer.
 -- ============================================================================
 
 -- ---------------------------------------------------------------- Themen ---
@@ -25,7 +25,7 @@ create table if not exists public.ap1_topics (
   id          text primary key,
   title       text        not null,
   blurb       text        not null default '',
-  -- Geschaetzter Anteil an den PM-Punkten der AP1; Summe ueber alle Themen = 1.
+  -- Geschätzter Anteil an den PM-Punkten der AP1; Summe über alle Themen = 1.
   weight      numeric(4,3) not null check (weight > 0 and weight <= 1),
   sort_order  int          not null default 0,
   created_at  timestamptz  not null default now()
@@ -46,7 +46,7 @@ create table if not exists public.ap1_questions (
   difficulty  smallint    not null default 2 check (difficulty between 1 and 3),
   tags        text[]      not null default '{}',
   source      text,
-  -- Typabhaengige Nutzdaten, siehe Question.fromJson in der App:
+  -- Typabhängige Nutzdaten, siehe Question.fromJson in der App:
   --   single/multiple : { "choices": [{text, is_correct, rationale}, ...] }
   --   numeric         : { "answer": 3.65, "tolerance": 0.01, "unit": "Euro" }
   --   ordering        : { "ordered_items": [...], "ordering_hint": "..." }
@@ -98,13 +98,13 @@ create table if not exists public.ap1_profiles (
 );
 
 -- ------------------------------------------------------------- Antworten ---
--- Unveraenderliche Ereignisliste. Nichts wird aktualisiert, nur angehaengt.
+-- Unveränderliche Ereignisliste. Nichts wird aktualisiert, nur angehängt.
 create table if not exists public.ap1_attempts (
   id          bigint generated always as identity primary key,
   user_id     uuid        not null references auth.users(id) on delete cascade,
   question_id text        not null references public.ap1_questions(id) on delete cascade,
   topic_id    text        not null references public.ap1_topics(id) on delete restrict,
-  -- 0.0 bis 1.0 - Teilpunkte sind ausdruecklich vorgesehen.
+  -- 0.0 bis 1.0 - Teilpunkte sind ausdrücklich vorgesehen.
   score       numeric(4,3) not null check (score >= 0 and score <= 1),
   seconds     int         not null default 0 check (seconds >= 0),
   mode        text        not null default 'uebung'
@@ -132,7 +132,7 @@ create table if not exists public.ap1_achievements (
 -- ============================================================== Sichten ===
 
 -- Kennzahlen je Thema und Nutzer. Die App rechnet dasselbe lokal; die Sicht
--- ist fuer Auswertungen und spaetere Server-Funktionen da.
+-- ist für Auswertungen und spätere Server-Funktionen da.
 create or replace view public.ap1_topic_stats
 with (security_invoker = true) as
 select
@@ -166,7 +166,7 @@ alter table public.ap1_profiles     enable row level security;
 alter table public.ap1_attempts     enable row level security;
 alter table public.ap1_achievements enable row level security;
 
--- Lerninhalte darf jeder lesen, auch anonym. Geschrieben wird ausschliesslich
+-- Lerninhalte darf jeder lesen, auch anonym. Geschrieben wird ausschließlich
 -- mit dem Service-Role-Key (Redaktion/Import), deshalb gibt es hier bewusst
 -- KEINE insert/update-Policy.
 drop policy if exists ap1_topics_read on public.ap1_topics;
@@ -181,7 +181,7 @@ drop policy if exists ap1_theory_read on public.ap1_theory;
 create policy ap1_theory_read on public.ap1_theory
   for select to anon, authenticated using (true);
 
--- Persoenliche Daten: strikt auf den eigenen Datensatz begrenzt.
+-- Persönliche Daten: strikt auf den eigenen Datensatz begrenzt.
 drop policy if exists ap1_profiles_rw on public.ap1_profiles;
 create policy ap1_profiles_rw on public.ap1_profiles
   for all to authenticated
@@ -192,8 +192,8 @@ drop policy if exists ap1_attempts_read on public.ap1_attempts;
 create policy ap1_attempts_read on public.ap1_attempts
   for select to authenticated using (auth.uid() = user_id);
 
--- Nur anlegen, nicht aendern: eine bereits gebuchte Antwort nachtraeglich zu
--- korrigieren wuerde die Statistik faelschen.
+-- Nur anlegen, nicht ändern: eine bereits gebuchte Antwort nachträglich zu
+-- korrigieren würde die Statistik fälschen.
 drop policy if exists ap1_attempts_insert on public.ap1_attempts;
 create policy ap1_attempts_insert on public.ap1_attempts
   for insert to authenticated with check (auth.uid() = user_id);

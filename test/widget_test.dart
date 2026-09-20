@@ -32,7 +32,7 @@ void main() {
     expect(find.text('Weiter'), findsOneWidget);
   });
 
-  testWidgets('fuehrt durch das Onboarding bis zum Dashboard', (tester) async {
+  testWidgets('führt durch das Onboarding bis zum Dashboard', (tester) async {
     await pumpApp(tester);
 
     await tester.enterText(find.byType(TextField).first, 'Testuser');
@@ -46,6 +46,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.textContaining('Moin'), findsOneWidget);
-    expect(find.text('Pruefungsreife'), findsOneWidget);
+    expect(find.text('Prüfungsreife'), findsOneWidget);
   });
 }

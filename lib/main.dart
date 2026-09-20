@@ -17,7 +17,7 @@ Future<void> main() async {
   await initializeDateFormatting('de_DE');
 
   // Supabase ist optional. Ohne Anon-Key startet die App im Offline-Modus mit
-  // den eingebauten Aufgaben - das haelt die Einstiegshuerde bei null und
+  // den eingebauten Aufgaben - das hält die Einstiegshürde bei null und
   // macht die App im Flugmodus benutzbar.
   if (Env.hasSupabase) {
     try {

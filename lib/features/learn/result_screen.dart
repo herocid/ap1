@@ -10,7 +10,7 @@ import '../../state/session_controller.dart';
 import '../../widgets/common.dart';
 import '../../widgets/question_view.dart';
 
-/// IHK-Notenschluessel (100-Punkte-Schema).
+/// IHK-Notenschlüssel (100-Punkte-Schema).
 ({String note, String label}) ihkNote(double percent) {
   final p = percent * 100;
   if (p >= 92) return (note: '1', label: 'sehr gut');
@@ -18,13 +18,13 @@ import '../../widgets/question_view.dart';
   if (p >= 67) return (note: '3', label: 'befriedigend');
   if (p >= 50) return (note: '4', label: 'ausreichend');
   if (p >= 30) return (note: '5', label: 'mangelhaft');
-  return (note: '6', label: 'ungenuegend');
+  return (note: '6', label: 'ungenügend');
 }
 
 /// Auswertung nach einer Session.
 ///
 /// Der wichtigste Teil ist nicht die Prozentzahl, sondern die Liste darunter:
-/// jede Aufgabe aufklappbar mit der vollstaendigen Erklaerung. Wer nach der
+/// jede Aufgabe aufklappbar mit der vollständigen Erklärung. Wer nach der
 /// Simulation nur "58 %" sieht, hat nichts gelernt.
 class ResultScreen extends ConsumerWidget {
   const ResultScreen({super.key});
@@ -75,7 +75,7 @@ class ResultScreen extends ConsumerWidget {
           leading: IconButton(
             icon: const Icon(Icons.close),
             onPressed: leave,
-            tooltip: 'Schliessen',
+            tooltip: 'Schließen',
           ),
           title: Text(session.isExam ? 'Auswertung Simulation' : 'Auswertung'),
         ),
@@ -148,13 +148,13 @@ class ResultScreen extends ConsumerWidget {
                                 : NoteTone.warn,
                             child: Text(
                               percent >= 0.5
-                                  ? 'Mit ${(percent * 100).round()} % waerst du '
+                                  ? 'Mit ${(percent * 100).round()} % wärst du '
                                       'bestanden (Note ${note.note}, ${note.label}). '
                                       'Die Punkte holst du jetzt in den Themen '
                                       'unten.'
                                   : 'Unter 50 % gilt als nicht bestanden. Das ist '
-                                      'eine Uebung, kein Urteil - arbeite die '
-                                      'schwaechsten Themen unten der Reihe nach ab.',
+                                      'eine Übung, kein Urteil - arbeite die '
+                                      'schwächsten Themen unten der Reihe nach ab.',
                             ),
                           ),
                         ],
@@ -176,8 +176,8 @@ class ResultScreen extends ConsumerWidget {
                   const SectionHeader(
                     'Alle Aufgaben',
                     subtitle:
-                        'Aufklappen zeigt deine Antwort, die Loesung und die '
-                        'Begruendung.',
+                        'Aufklappen zeigt deine Antwort, die Lösung und die '
+                        'Begründung.',
                   ),
                   for (var i = 0; i < session.items.length; i++) ...[
                     _ReviewTile(index: i, item: session.items[i]),

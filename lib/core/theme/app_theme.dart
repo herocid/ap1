@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 import 'app_spacing.dart';
 
-/// Das Theme ist bewusst leise: wenig Schatten, keine Verlaeufe in der Flaeche,
-/// hoher Textkontrast. Die einzigen kraeftigen Farbflaechen sind Fortschritt,
+/// Das Theme ist bewusst leise: wenig Schatten, keine Verläufe in der Fläche,
+/// hoher Textkontrast. Die einzigen kräftigen Farbflächen sind Fortschritt,
 /// Streak und Feedback - also genau dort, wo die Aufmerksamkeit hin soll.
 class AppTheme {
   const AppTheme._();
@@ -32,9 +32,9 @@ class AppTheme {
     final baseText =
         isDark ? Typography.whiteMountainView : Typography.blackMountainView;
 
-    // Inter fuer die gesamte UI. Zahlenlastige Stellen (Timer, Netzplan)
-    // benutzen zusaetzlich AppType.numeric mit Tabellenziffern, damit beim
-    // Hochzaehlen nichts springt.
+    // Inter für die gesamte UI. Zahlenlastige Stellen (Timer, Netzplan)
+    // benutzen zusätzlich AppType.numeric mit Tabellenziffern, damit beim
+    // Hochzählen nichts springt.
     final textTheme = GoogleFonts.interTextTheme(baseText)
         .apply(bodyColor: scheme.onSurface, displayColor: scheme.onSurface)
         .copyWith(
@@ -223,7 +223,7 @@ class AppTheme {
 class AppType {
   const AppType._();
 
-  /// Tabellenziffern: gleiche Breite pro Ziffer. Pflicht fuer Timer,
+  /// Tabellenziffern: gleiche Breite pro Ziffer. Pflicht für Timer,
   /// Netzplan-Zellen und Prozentanzeigen.
   static TextStyle numeric({
     double size = 16,
@@ -237,7 +237,7 @@ class AppType {
         fontFeatures: const [FontFeature.tabularFigures()],
       );
 
-  /// Monospace fuer Code-nahe Inhalte (z.B. Pseudocode in Aufgaben).
+  /// Monospace für Code-nahe Inhalte (z.B. Pseudocode in Aufgaben).
   static TextStyle mono({double size = 14, Color? color}) =>
       GoogleFonts.jetBrainsMono(fontSize: size, height: 1.5, color: color);
 }

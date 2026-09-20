@@ -4,19 +4,19 @@ import '../../data/models/progress.dart';
 import '../../data/models/question.dart';
 import '../../data/models/topic.dart';
 
-/// Waehlt aus, welche Aufgaben als naechstes drankommen.
+/// Wählt aus, welche Aufgaben als nächstes drankommen.
 ///
-/// Statt Zufall: eine Prioritaetsformel aus drei Bestandteilen -
-/// Fehlerspeicher, Themenschwaeche und Wiederholungsabstand. Ziel ist, dass
-/// die App genau die Aufgaben zeigt, die den Punktestand in der Pruefung am
-/// staerksten bewegen.
+/// Statt Zufall: eine Prioritätsformel aus drei Bestandteilen -
+/// Fehlerspeicher, Themenschwäche und Wiederholungsabstand. Ziel ist, dass
+/// die App genau die Aufgaben zeigt, die den Punktestand in der Prüfung am
+/// stärksten bewegen.
 class QuestionSelector {
   const QuestionSelector._();
 
-  /// Uebungs- und Fokus-Sessions.
+  /// Übungs- und Fokus-Sessions.
   ///
-  /// [topicFilter] beschraenkt auf ein Thema (Fokus-Training aus dem
-  /// Dashboard), [mistakesOnly] zieht ausschliesslich aus dem Fehlerspeicher.
+  /// [topicFilter] beschränkt auf ein Thema (Fokus-Training aus dem
+  /// Dashboard), [mistakesOnly] zieht ausschließlich aus dem Fehlerspeicher.
   static List<Question> forPractice({
     required List<Question> pool,
     required ProgressState progress,
@@ -32,7 +32,7 @@ class QuestionSelector {
     final lastSeen = _lastSeenByQuestion(progress);
 
     var candidates = pool.where((q) {
-      // Ab 2025 gestrichene Aufgaben kommen nie in eine Uebung. Sie bleiben
+      // Ab 2025 gestrichene Aufgaben kommen nie in eine Übung. Sie bleiben
       // nur als Nachschlagewerk im Pool.
       if (!q.isExamRelevant) return false;
       if (topicFilter != null && q.topicId != topicFilter) return false;
@@ -46,11 +46,11 @@ class QuestionSelector {
     final scored = candidates.map((q) {
       var score = 0.0;
 
-      // 1. Fehlerspeicher: zuletzt falsch beantwortet. Staerkster Treiber -
+      // 1. Fehlerspeicher: zuletzt falsch beantwortet. Stärkster Treiber -
       //    was man nicht kann, bringt die meisten Punkte.
       if (mistakes.contains(q.id)) score += 100;
 
-      // 2. Themenschwaeche, gewichtet mit dem Pruefungsanteil des Themas.
+      // 2. Themenschwäche, gewichtet mit dem Prüfungsanteil des Themas.
       //    Ein schwaches Thema mit 18 % Punkteanteil ist dringender als ein
       //    schwaches Thema mit 4 %.
       final st = stats[q.topicId];
@@ -58,19 +58,19 @@ class QuestionSelector {
       final weight = Topics.map[q.topicId]?.weight ?? 0.1;
       score += weakness * weight * 200;
 
-      // 3. Noch nie gesehen: klarer Bonus, damit die Abdeckung waechst.
+      // 3. Noch nie gesehen: klarer Bonus, damit die Abdeckung wächst.
       final seen = lastSeen[q.id];
       if (seen == null) {
         score += 40;
       } else {
-        // 4. Wiederholungsabstand: je laenger her, desto faelliger.
-        //    Deckel bei 30 Tagen, damit alte Aufgaben nicht alles verdraengen.
+        // 4. Wiederholungsabstand: je länger her, desto fälliger.
+        //    Deckel bei 30 Tagen, damit alte Aufgaben nicht alles verdrängen.
         final days = now.difference(seen).inDays.clamp(0, 30);
         score += days * 1.5;
       }
 
-      // 5. Schwierigkeit an das Koennen anpassen: wer im Thema stark ist,
-      //    bekommt haertere Aufgaben.
+      // 5. Schwierigkeit an das Können anpassen: wer im Thema stark ist,
+      //    bekommt härtere Aufgaben.
       final mastery = st?.mastery ?? 0.0;
       final wanted = mastery < 0.4 ? 1 : (mastery < 0.75 ? 2 : 3);
       score -= (q.difficulty - wanted).abs() * 12;
@@ -86,10 +86,10 @@ class QuestionSelector {
     return scored.take(count).map((e) => e.$1).toList();
   }
 
-  /// Aufgabenmix fuer die Pruefungssimulation.
+  /// Aufgabenmix für die Prüfungssimulation.
   ///
-  /// Die Themen werden nach ihrem geschaetzten Punkteanteil in der AP1
-  /// verteilt - nicht nach dem, was der Lernende gern uebt. Genau das
+  /// Die Themen werden nach ihrem geschätzten Punkteanteil in der AP1
+  /// verteilt - nicht nach dem, was der Lernende gern übt. Genau das
   /// unterscheidet die Simulation vom Training.
   static List<Question> forExam({
     required List<Question> pool,
@@ -115,7 +115,7 @@ class QuestionSelector {
       }
     }
 
-    // Zweite Runde: Rundungsreste auffuellen.
+    // Zweite Runde: Rundungsreste auffüllen.
     if (picked.length < count) {
       final rest = relevant.where((q) => !used.contains(q.id)).toList()
         ..shuffle(rnd);
@@ -127,7 +127,7 @@ class QuestionSelector {
 
     final result = picked.take(count).toList()..shuffle(rnd);
 
-    // In der echten Pruefung stehen zusammengehoerige Aufgaben beieinander -
+    // In der echten Prüfung stehen zusammengehörige Aufgaben beieinander -
     // wir gruppieren deshalb nach Thema, damit kein Themen-Pingpong entsteht.
     result.sort((a, b) => a.topicId.compareTo(b.topicId));
     return result;

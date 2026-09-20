@@ -7,7 +7,7 @@ import '../../data/models/question.dart';
 /// Zuordnungsaufgaben (Lastenheft/Pflichtenheft, Risikostrategien, ...).
 ///
 /// Kein Drag-and-drop zwischen Spalten: Das ist auf einem 5-Zoll-Display
-/// unbedienbar, sobald die Texte laenger als drei Woerter sind. Stattdessen
+/// unbedienbar, sobald die Texte länger als drei Wörter sind. Stattdessen
 /// steht unter jeder Aussage eine Reihe antippbarer Zielkategorien - ein Tipp
 /// pro Zuordnung, funktioniert auf Touch und mit der Maus identisch.
 class MatchingQuestionView extends StatelessWidget {

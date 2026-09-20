@@ -10,9 +10,9 @@ import '../../state/providers.dart';
 
 /// Theorie-Snack als Bottom Sheet.
 ///
-/// Warum ein Sheet und kein eigener Screen: Der Snack ist eine Fussnote zur
-/// Aufgabe, kein Kapitel. Man soll ihn ueberfliegen und wieder wegwischen
-/// koennen, ohne den Lernfluss zu verlassen.
+/// Warum ein Sheet und kein eigener Screen: Der Snack ist eine Fußnote zur
+/// Aufgabe, kein Kapitel. Man soll ihn überfliegen und wieder wegwischen
+/// können, ohne den Lernfluss zu verlassen.
 Future<void> showTheorySheet(
   BuildContext context,
   WidgetRef ref, {

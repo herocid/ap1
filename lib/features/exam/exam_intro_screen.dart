@@ -30,14 +30,14 @@ const kExamPresets = <ExamPreset>[
   ExamPreset(
     id: 'kurz',
     title: 'Kurztest',
-    subtitle: 'Fuer zwischendurch - reicht, um Zeitgefuehl aufzubauen.',
+    subtitle: 'Für zwischendurch - reicht, um Zeitgefühl aufzubauen.',
     questions: 10,
     minutes: 20,
   ),
   ExamPreset(
     id: 'halb',
-    title: 'Halbe Pruefung',
-    subtitle: 'Realistischer Ausschnitt, gut fuer die Woche vor der AP1.',
+    title: 'Halbe Prüfung',
+    subtitle: 'Realistischer Ausschnitt, gut für die Woche vor der AP1.',
     questions: 18,
     minutes: 45,
   ),
@@ -50,11 +50,11 @@ const kExamPresets = <ExamPreset>[
   ),
 ];
 
-/// Der Einstieg in die Pruefungssimulation.
+/// Der Einstieg in die Prüfungssimulation.
 ///
-/// Die Regeln stehen bewusst VOR dem Start und nicht als Hinweis waehrend des
-/// Laufs: Wer sich auf Zeitdruck einlaesst, soll wissen, worauf er sich
-/// einlaesst. Danach gibt es keine Erklaerungen mehr bis zur Abgabe.
+/// Die Regeln stehen bewusst VOR dem Start und nicht als Hinweis während des
+/// Laufs: Wer sich auf Zeitdruck einlässt, soll wissen, worauf er sich
+/// einlässt. Danach gibt es keine Erklärungen mehr bis zur Abgabe.
 class ExamIntroScreen extends ConsumerWidget {
   const ExamIntroScreen({super.key});
 
@@ -65,7 +65,7 @@ class ExamIntroScreen extends ConsumerWidget {
     final examRuns = history.where((r) => r.mode == SessionMode.pruefung);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Pruefungssimulation')),
+      appBar: AppBar(title: const Text('Prüfungssimulation')),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(Gap.l, Gap.l, Gap.l, Gap.xxxl),
         children: [
@@ -75,26 +75,26 @@ class ExamIntroScreen extends ConsumerWidget {
               children: [
                 const NoteBox(
                   tone: NoteTone.warn,
-                  title: 'So laeuft die Simulation',
+                  title: 'So läuft die Simulation',
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Der Countdown laeuft durch. Ist er abgelaufen, '
+                      Text('Der Countdown läuft durch. Ist er abgelaufen, '
                           'wird automatisch abgegeben.'),
                       SizedBox(height: Gap.s),
-                      Text('Kein Feedback waehrend des Laufs - du erfaehrst '
+                      Text('Kein Feedback während des Laufs - du erfährst '
                           'erst nach der Abgabe, was richtig war.'),
                       SizedBox(height: Gap.s),
                       Text('Du kannst frei zwischen den Aufgaben springen und '
-                          'unsichere Aufgaben fuer spaeter markieren.'),
+                          'unsichere Aufgaben für später markieren.'),
                       SizedBox(height: Gap.s),
-                      Text('Unbeantwortete Aufgaben zaehlen mit 0 Punkten - '
-                          'genau wie eine leere Zeile im Pruefungsbogen.'),
+                      Text('Unbeantwortete Aufgaben zählen mit 0 Punkten - '
+                          'genau wie eine leere Zeile im Prüfungsbogen.'),
                     ],
                   ),
                 ),
                 const SizedBox(height: Gap.xl),
-                const SectionHeader('Format waehlen'),
+                const SectionHeader('Format wählen'),
                 for (final p in kExamPresets) ...[
                   _PresetCard(
                     preset: p,

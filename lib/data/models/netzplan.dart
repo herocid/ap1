@@ -33,12 +33,12 @@ class Activity {
       };
 }
 
-/// Die sechs Werte, die pro Knoten gefragt werden koennen.
+/// Die sechs Werte, die pro Knoten gefragt werden können.
 enum NodeField {
-  faz('FAZ', 'Fruehester Anfangszeitpunkt'),
-  fez('FEZ', 'Fruehester Endzeitpunkt'),
-  saz('SAZ', 'Spaetester Anfangszeitpunkt'),
-  sez('SEZ', 'Spaetester Endzeitpunkt'),
+  faz('FAZ', 'Frühester Anfangszeitpunkt'),
+  fez('FEZ', 'Frühester Endzeitpunkt'),
+  saz('SAZ', 'Spätester Anfangszeitpunkt'),
+  sez('SEZ', 'Spätester Endzeitpunkt'),
   gp('GP', 'Gesamtpuffer'),
   fp('FP', 'Freier Puffer');
 
@@ -90,16 +90,16 @@ class NetzplanSolution {
   final Map<String, NodeResult> nodes;
   final int projectDuration;
 
-  /// Die kritischen Vorgaenge in topologischer Reihenfolge.
+  /// Die kritischen Vorgänge in topologischer Reihenfolge.
   final List<String> criticalPath;
 }
 
-/// Loest einen Vorgangsknoten-Netzplan per Vorwaerts- und Rueckwaertsrechnung.
+/// Löst einen Vorgangsknoten-Netzplan per Vorwärts- und Rückwärtsrechnung.
 ///
-/// Konvention (wie in der AP1 ueblich, nullbasiert):
+/// Konvention (wie in der AP1 üblich, nullbasiert):
 ///   FAZ(Start) = 0
 ///   FEZ = FAZ + Dauer
-///   FAZ = max(FEZ aller Vorgaenger)
+///   FAZ = max(FEZ aller Vorgänger)
 ///   SEZ(Ende) = Projektdauer,  SEZ = min(SAZ aller Nachfolger)
 ///   SAZ = SEZ - Dauer
 ///   GP  = SAZ - FAZ
@@ -120,7 +120,7 @@ class NetzplanSolver {
 
     final order = _topologicalOrder(activities, successors);
 
-    // Vorwaertsrechnung
+    // Vorwärtsrechnung
     final faz = <String, int>{};
     final fez = <String, int>{};
     for (final id in order) {
@@ -135,13 +135,13 @@ class NetzplanSolver {
     final projectDuration =
         fez.values.isEmpty ? 0 : fez.values.reduce((x, y) => x > y ? x : y);
 
-    // Rueckwaertsrechnung
+    // Rückwärtsrechnung
     final saz = <String, int>{};
     final sez = <String, int>{};
     for (final id in order.reversed) {
       final a = byId[id]!;
       // Bei fehlerhaften Daten (Zyklus) kann ein Nachfolger noch unberechnet
-      // sein - dann zaehlt er als unkritisch, statt die Rechnung abzubrechen.
+      // sein - dann zählt er als unkritisch, statt die Rechnung abzubrechen.
       final succs =
           successors[id]!.where((s) => saz.containsKey(s)).toList();
       sez[id] = succs.isEmpty
@@ -179,8 +179,8 @@ class NetzplanSolver {
   }
 
   /// Kahn-Algorithmus. Bei einem Zyklus (fehlerhafte Aufgabendaten) werden die
-  /// verbleibenden Knoten hinten angehaengt, statt eine Exception zu werfen -
-  /// eine kaputte Aufgabe soll die Lern-Session nicht abschiessen.
+  /// verbleibenden Knoten hinten angehängt, statt eine Exception zu werfen -
+  /// eine kaputte Aufgabe soll die Lern-Session nicht abschießen.
   static List<String> _topologicalOrder(
     List<Activity> activities,
     Map<String, List<String>> successors,

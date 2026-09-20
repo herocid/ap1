@@ -11,8 +11,8 @@ import '../../data/models/question.dart';
 import 'number_input.dart';
 
 const double _nodeW = 178;
-/// Hoehe einer Zellenzeile im Knoten. Muss die Korrekturanzeige nach dem
-/// Pruefen (Eingabe + kleine Musterloesung darunter) aufnehmen.
+/// Höhe einer Zellenzeile im Knoten. Muss die Korrekturanzeige nach dem
+/// Prüfen (Eingabe + kleine Musterlösung darunter) aufnehmen.
 const double _rowH = 40;
 const double _gapX = 54;
 const double _gapY = 22;
@@ -22,13 +22,13 @@ const double _gapY = 22;
 /// Designentscheidungen, die hier den Unterschied machen:
 /// - Der Plan wird automatisch nach topologischen Ebenen angeordnet und die
 ///   Pfeile werden gezeichnet. Der Lernende ordnet nichts an, er RECHNET -
-///   das ist die Faehigkeit, die geprueft wird.
+///   das ist die Fähigkeit, die geprüft wird.
 /// - Nur die gefragten Felder sind Eingabefelder. Was nicht gefragt ist,
 ///   bleibt sichtbar leer, damit die gewohnte Knotenform erhalten bleibt.
 /// - Eingabe: auf dem Handy ein eigenes Ziffernfeld (die Systemtastatur
 ///   verdeckt sonst den halben Plan), auf dem Desktop direktes Tippen mit
-///   Tab-Sprung zur naechsten Zelle.
-/// - Nach dem Pruefen wird jede Zelle einzeln bewertet und der kritische Pfad
+///   Tab-Sprung zur nächsten Zelle.
+/// - Nach dem Prüfen wird jede Zelle einzeln bewertet und der kritische Pfad
 ///   hervorgehoben.
 class NetzplanQuestionView extends StatefulWidget {
   const NetzplanQuestionView({
@@ -95,7 +95,7 @@ class _NetzplanQuestionViewState extends State<NetzplanQuestionView> {
     widget.onChanged(next);
   }
 
-  /// Topologische Ebenen: Ebene 0 = Vorgaenge ohne Vorgaenger.
+  /// Topologische Ebenen: Ebene 0 = Vorgänge ohne Vorgänger.
   Map<String, int> _levels() {
     final acts = widget.question.activities;
     final byId = {for (final a in acts) a.id: a};
@@ -145,8 +145,8 @@ class _NetzplanQuestionViewState extends State<NetzplanQuestionView> {
     final canvasW = (maxLevel + 1) * _nodeW + maxLevel * _gapX;
     final canvasH = maxRows * nodeH + (maxRows - 1) * _gapY;
 
-    // Position jedes Knotens vorab berechnen - dadurch koennen die Pfeile
-    // exakt gezeichnet werden, ohne die Kinder messen zu muessen.
+    // Position jedes Knotens vorab berechnen - dadurch können die Pfeile
+    // exakt gezeichnet werden, ohne die Kinder messen zu müssen.
     final positions = <String, Rect>{};
     for (final entry in columns.entries) {
       final col = entry.key;
@@ -199,8 +199,8 @@ class _NetzplanQuestionViewState extends State<NetzplanQuestionView> {
         _Legend(askedFields: q.askedFields, askedFp: askedFp),
         const SizedBox(height: Gap.m),
         // Der Plan wird fast immer breiter als das Display - horizontal
-        // scrollen ist hier die ehrlichste Loesung. Zoomen waere auf dem
-        // Handy schick, macht die Eingabefelder aber unzuverlaessig treffbar.
+        // scrollen ist hier die ehrlichste Lösung. Zoomen wäre auf dem
+        // Handy schick, macht die Eingabefelder aber unzuverlässig treffbar.
         Scrollbar(
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -644,7 +644,7 @@ class _ActivityTable extends StatelessWidget {
                 ),
                 SizedBox(
                   width: 80,
-                  child: Text('Vorgaenger',
+                  child: Text('Vorgänger',
                       textAlign: TextAlign.right,
                       style: context.text.labelSmall
                           ?.copyWith(color: c.textMuted)),
@@ -747,7 +747,7 @@ class _RulesBox extends StatelessWidget {
     final c = context.c;
     final lines = <String>[
       if (fields.contains(NodeField.faz))
-        'FAZ = groesster FEZ aller Vorgaenger (Startvorgang: 0)',
+        'FAZ = größter FEZ aller Vorgänger (Startvorgang: 0)',
       if (fields.contains(NodeField.fez)) 'FEZ = FAZ + Dauer',
       if (fields.contains(NodeField.sez))
         'SEZ = kleinster SAZ aller Nachfolger (Endvorgang: Projektdauer)',
