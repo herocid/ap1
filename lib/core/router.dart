@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../features/cards/card_session_screen.dart';
+import '../features/cards/cards_overview_screen.dart';
+import '../features/dashboard/area_detail_screen.dart';
+import '../features/dashboard/areas_screen.dart';
 import '../features/dashboard/dashboard_screen.dart';
-import '../features/dashboard/topics_screen.dart';
+import '../features/info/catalog_changes_screen.dart';
 import '../features/exam/exam_intro_screen.dart';
 import '../features/learn/result_screen.dart';
 import '../features/learn/session_screen.dart';
@@ -49,6 +53,24 @@ final routerProvider = Provider<GoRouter>((ref) {
         parentNavigatorKey: _rootKey,
         builder: (context, state) => const ExamIntroScreen(),
       ),
+      GoRoute(
+        path: '/karten-lernen',
+        parentNavigatorKey: _rootKey,
+        builder: (context, state) => CardSessionScreen(
+          args: state.extra as CardSessionArgs? ?? const CardSessionArgs(),
+        ),
+      ),
+      GoRoute(
+        path: '/bereich/:areaId',
+        parentNavigatorKey: _rootKey,
+        builder: (context, state) =>
+            AreaDetailScreen(areaId: state.pathParameters['areaId']!),
+      ),
+      GoRoute(
+        path: '/katalog-aenderungen',
+        parentNavigatorKey: _rootKey,
+        builder: (context, state) => const CatalogChangesScreen(),
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, shell) => AppShell(navigationShell: shell),
         branches: [
@@ -64,7 +86,15 @@ final routerProvider = Provider<GoRouter>((ref) {
             routes: [
               GoRoute(
                 path: '/themen',
-                builder: (context, state) => const TopicsScreen(),
+                builder: (context, state) => const AreasScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/karten',
+                builder: (context, state) => const CardsOverviewScreen(),
               ),
             ],
           ),

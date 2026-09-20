@@ -17,7 +17,8 @@ class AppShell extends StatelessWidget {
 
   static const _destinations = <({IconData icon, IconData active, String label})>[
     (icon: Icons.home_outlined, active: Icons.home, label: 'Start'),
-    (icon: Icons.category_outlined, active: Icons.category, label: 'Themen'),
+    (icon: Icons.category_outlined, active: Icons.category, label: 'Katalog'),
+    (icon: Icons.style_outlined, active: Icons.style, label: 'Karten'),
     (icon: Icons.insights_outlined, active: Icons.insights, label: 'Statistik'),
     (icon: Icons.settings_outlined, active: Icons.settings, label: 'Mehr'),
   ];

@@ -7,7 +7,7 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/profile.dart';
-import '../../data/models/topic.dart';
+import '../../data/models/exam_area.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
 
@@ -201,10 +201,11 @@ class _WelcomeStep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _StepScaffold(
-      title: 'AP1 Projektmanagement',
+      title: 'AP1 Trainer',
       subtitle:
-          'Netzplan, Scrum, Lastenheft und Wirtschaftlichkeit - der Teil der '
-          'Abschlusspruefung Teil 1, an dem die meisten Punkte liegen bleiben.',
+          'Alle sieben Bereiche des Pruefungskatalogs ab 2025 - von '
+          'Projektmanagement ueber Netzwerke bis Datenschutz. Mit '
+          'Uebungsaufgaben und Lernkarteikarten.',
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -227,14 +228,34 @@ class _WelcomeStep extends StatelessWidget {
             ),
           ),
           const SizedBox(height: Gap.xl),
-          Wrap(
-            spacing: Gap.s,
-            runSpacing: Gap.s,
-            children: [
-              for (final t in Topics.all)
-                MetaChip(label: t.title, icon: t.icon),
-            ],
+          Text(
+            'Die sieben Bereiche des Pruefungskatalogs 2025',
+            style: context.text.labelSmall?.copyWith(color: context.c.textMuted),
           ),
+          const SizedBox(height: Gap.s),
+          // Die sieben Bereiche statt aller 35 Themen: Hier soll man den
+          // Umfang erfassen, nicht ein Inhaltsverzeichnis lesen.
+          for (final a in ExamAreas.all)
+            Padding(
+              padding: const EdgeInsets.only(bottom: Gap.xs),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 26,
+                    child: Text(
+                      a.number,
+                      style: context.text.labelSmall
+                          ?.copyWith(color: context.c.textMuted),
+                    ),
+                  ),
+                  Icon(a.icon, size: 16, color: context.scheme.primary),
+                  const SizedBox(width: Gap.s),
+                  Expanded(
+                    child: Text(a.title, style: context.text.bodyMedium),
+                  ),
+                ],
+              ),
+            ),
         ],
       ),
     );

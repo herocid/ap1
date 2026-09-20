@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
-/// Ein Themengebiet der AP1 im Bereich Projektmanagement / Strukturierung.
+import 'exam_area.dart';
+
+/// Ein Thema innerhalb eines Katalogbereichs.
 ///
-/// [weight] ist der geschaetzte Anteil an den PM-Punkten der Pruefung und geht
-/// in die Berechnung der Pruefungsreife ein. Die Summe aller Gewichte ist 1.0.
+/// [weight] ist der geschaetzte Anteil an den Punkten der gesamten AP1 - nicht
+/// am Bereich. Die Summe ueber alle Themen ist 1.0, und die Summe der Themen
+/// eines Bereichs ergibt dessen Bereichsgewicht. Ein Test sichert beides ab.
 @immutable
 class Topic {
   const Topic({
     required this.id,
+    required this.areaId,
     required this.title,
     required this.blurb,
     required this.icon,
@@ -15,83 +19,319 @@ class Topic {
   });
 
   final String id;
+  final String areaId;
   final String title;
   final String blurb;
   final IconData icon;
   final double weight;
+
+  ExamArea get area => ExamAreas.byId(areaId);
 }
 
 class Topics {
   const Topics._();
 
   static const all = <Topic>[
+    // ============================================ 01 Projekte & Projektmanagement
     Topic(
       id: 'projektorganisation',
-      title: 'Projektorganisation & Rollen',
-      blurb: 'Projektarten, Aufbauorganisation, Stakeholder, Projektauftrag',
+      areaId: 'a01',
+      title: 'Projektgrundlagen & Organisation',
+      blurb: 'Projektbegriff, SMART-Ziele, magisches Dreieck, Rollen, Stakeholder',
       icon: Icons.account_tree_outlined,
-      weight: 0.10,
+      weight: 0.035,
     ),
     Topic(
       id: 'vorgehensmodelle',
+      areaId: 'a01',
       title: 'Vorgehensmodelle & Phasen',
-      blurb: 'Wasserfall, V-Modell, Spiralmodell, Phasenabgrenzung',
+      blurb: 'Phasenmodell und Wasserfall - der Katalog 2025 kennt nur noch diese und Scrum',
       icon: Icons.stairs_outlined,
-      weight: 0.12,
+      weight: 0.020,
     ),
     Topic(
       id: 'agil_scrum',
-      title: 'Agile Methoden & Scrum',
-      blurb: 'Rollen, Artefakte, Events, Kanban, agiles Manifest',
+      areaId: 'a01',
+      title: 'Agiles Arbeiten & Scrum',
+      blurb: 'Rollen, Artefakte, Events, agiles Manifest',
       icon: Icons.bolt_outlined,
-      weight: 0.16,
+      weight: 0.040,
     ),
     Topic(
       id: 'netzplan',
+      areaId: 'a01',
       title: 'Netzplantechnik',
       blurb: 'FAZ/FEZ/SAZ/SEZ, Puffer, kritischer Pfad',
       icon: Icons.hub_outlined,
-      weight: 0.18,
+      weight: 0.040,
     ),
     Topic(
       id: 'terminplanung',
-      title: 'Gantt & Meilensteine',
-      blurb: 'Balkenplan, Meilensteintrendanalyse, Ressourcenplanung',
+      areaId: 'a01',
+      title: 'Projektstruktur & Termine',
+      blurb: 'Projektstrukturplan, Gantt, Meilensteine, Ressourcen',
       icon: Icons.view_timeline_outlined,
-      weight: 0.10,
+      weight: 0.025,
     ),
     Topic(
-      id: 'lastenheft',
-      title: 'Lasten- & Pflichtenheft',
-      blurb: 'Anforderungsarten, Abgrenzung, Inhalte, Abnahme',
-      icon: Icons.description_outlined,
-      weight: 0.14,
+      id: 'risikomanagement',
+      areaId: 'a01',
+      title: 'Risikomanagement',
+      blurb: 'Risiken erkennen, bewerten, Strategien, Risikomatrix',
+      icon: Icons.warning_amber_outlined,
+      weight: 0.020,
     ),
     Topic(
-      id: 'wirtschaftlichkeit',
-      title: 'Wirtschaftlichkeit & Nutzwert',
-      blurb: 'Angebotsvergleich, Nutzwertanalyse, Amortisation, TCO',
+      id: 'pm_wirtschaftlichkeit',
+      areaId: 'a01',
+      title: 'Wirtschaftlichkeit von Projekten',
+      blurb: 'Machbarkeit, Make-or-Buy, Kalkulation, Break-Even, TCO',
       icon: Icons.calculate_outlined,
-      weight: 0.10,
+      weight: 0.025,
     ),
     Topic(
-      id: 'qualitaet_risiko',
-      title: 'Qualitaet & Risiko',
-      blurb: 'QS-Massnahmen, Testarten, Risikomatrix, Massnahmenstrategien',
-      icon: Icons.shield_outlined,
-      weight: 0.06,
-    ),
-    Topic(
-      id: 'abschluss',
-      title: 'Abschluss & Kommunikation',
-      blurb: 'Projektabschluss, Doku, Praesentation, Lessons Learned',
+      id: 'projektabschluss',
+      areaId: 'a01',
+      title: 'Projektabschluss',
+      blurb: 'Abnahme, Abschlussbericht, Lessons Learned, Uebergabe',
       icon: Icons.flag_outlined,
-      weight: 0.04,
+      weight: 0.015,
+    ),
+
+    // ====================================== 02 Kundenbeziehungen & Kommunikation
+    Topic(
+      id: 'kommunikation',
+      areaId: 'a02',
+      title: 'Kommunikation & Kundenkontakt',
+      blurb: 'Kommunikationsmodelle, adressatengerecht beraten, Ticketsysteme',
+      icon: Icons.record_voice_over_outlined,
+      weight: 0.035,
+    ),
+    Topic(
+      id: 'teamarbeit',
+      areaId: 'a02',
+      title: 'Teamarbeit & Zusammenarbeit',
+      blurb: 'Tuckman-Phasen, Feedback, Fehlerkultur, Diversity, Konflikte',
+      icon: Icons.groups_outlined,
+      weight: 0.025,
+    ),
+    Topic(
+      id: 'verhandlung',
+      areaId: 'a02',
+      title: 'Verhandeln',
+      blurb: 'Harvard-Konzept, Win-win, Einwandbehandlung',
+      icon: Icons.balance_outlined,
+      weight: 0.020,
+    ),
+    Topic(
+      id: 'praesentation',
+      areaId: 'a02',
+      title: 'Praesentieren & Beraten',
+      blurb: 'Argumentation, Praesentationstechnik, Quellen, Angebotserstellung',
+      icon: Icons.co_present_outlined,
+      weight: 0.020,
+    ),
+    Topic(
+      id: 'markt_marketing',
+      areaId: 'a02',
+      title: 'Markt, Bedarf & Marketing',
+      blurb: 'Marktformen, Bedarfsermittlung, AIDA, ABC-Analyse, Rechtsformen',
+      icon: Icons.storefront_outlined,
+      weight: 0.030,
+    ),
+
+    // ======================================== 03 Informations- & Softwaresysteme
+    Topic(
+      id: 'hardware',
+      areaId: 'a03',
+      title: 'Hardware & Arbeitsplatz',
+      blurb: 'CPU, RAM, HDD vs. SSD, Peripherie, USV, Green IT, Ergonomie',
+      icon: Icons.memory_outlined,
+      weight: 0.040,
+    ),
+    Topic(
+      id: 'betriebssysteme',
+      areaId: 'a03',
+      title: 'Betriebssysteme',
+      blurb: 'Prozesse, Dateisysteme, Rechte, Kommandozeile, Haertung',
+      icon: Icons.terminal_outlined,
+      weight: 0.040,
+    ),
+    Topic(
+      id: 'anwendungssysteme',
+      areaId: 'a03',
+      title: 'Anwendungs- & Softwaresysteme',
+      blurb: 'ERP, SCM, CRM, Social Media, Lizenzmodelle, Standard vs. Individual',
+      icon: Icons.apps_outlined,
+      weight: 0.040,
+    ),
+    Topic(
+      id: 'netzwerke',
+      areaId: 'a03',
+      title: 'Netzwerke & Cloud',
+      blurb: 'OSI, IPv4/IPv6, Subnetting, Protokolle, Virtualisierung, Container',
+      icon: Icons.lan_outlined,
+      weight: 0.060,
+    ),
+
+    // ==================================== 04 Analyse & Entwicklung von Systemen
+    Topic(
+      id: 'anforderungen',
+      areaId: 'a04',
+      title: 'Anforderungen, Lasten- & Pflichtenheft',
+      blurb: 'Anforderungsarten, Erhebung, Abgrenzung, Abnahmekriterien',
+      icon: Icons.description_outlined,
+      weight: 0.035,
+    ),
+    Topic(
+      id: 'uml_modellierung',
+      areaId: 'a04',
+      title: 'UML & Modellierung',
+      blurb: 'Use-Case-, Klassen- und Aktivitaetsdiagramm',
+      icon: Icons.schema_outlined,
+      weight: 0.030,
+    ),
+    Topic(
+      id: 'programmierlogik',
+      areaId: 'a04',
+      title: 'Programmierlogik',
+      blurb: 'Datentypen, Kontrollstrukturen, Pseudocode, Schreibtischtest',
+      icon: Icons.code_outlined,
+      weight: 0.035,
+    ),
+    Topic(
+      id: 'objektorientierung',
+      areaId: 'a04',
+      title: 'Objektorientierung',
+      blurb: 'Klasse, Objekt, Attribut, Methode, Kapselung',
+      icon: Icons.category_outlined,
+      weight: 0.020,
+    ),
+    Topic(
+      id: 'datenmodellierung',
+      areaId: 'a04',
+      title: 'Datenmodellierung',
+      blurb: 'ER-Modell, Beziehungen, Schluessel, Normalisierung',
+      icon: Icons.table_chart_outlined,
+      weight: 0.025,
+    ),
+    Topic(
+      id: 'web_internet',
+      areaId: 'a04',
+      title: 'Web & Internet',
+      blurb: 'URL, HTTP, Ablauf eines Seitenaufrufs, HTML/CSS, Barrierefreiheit',
+      icon: Icons.language_outlined,
+      weight: 0.030,
+    ),
+    Topic(
+      id: 'multimedia_daten',
+      areaId: 'a04',
+      title: 'Daten & Multimedia',
+      blurb: 'Zeichensaetze, Kompression, Datenmengen und Uebertragungsraten',
+      icon: Icons.perm_media_outlined,
+      weight: 0.025,
+    ),
+    Topic(
+      id: 'ki_grundlagen',
+      areaId: 'a04',
+      title: 'KI-Unterstuetzung',
+      blurb: 'Einsatzfelder, Grenzen, Halluzinationen, Datenschutz bei KI',
+      icon: Icons.auto_awesome_outlined,
+      weight: 0.020,
+    ),
+
+    // ==================================================== 05 Qualitaetssicherung
+    Topic(
+      id: 'qualitaetsmanagement',
+      areaId: 'a05',
+      title: 'Qualitaetsmanagement',
+      blurb: 'Konstruktive und analytische QS, PDCA, Qualitaetsplanung',
+      icon: Icons.fact_check_outlined,
+      weight: 0.030,
+    ),
+    Topic(
+      id: 'testen',
+      areaId: 'a05',
+      title: 'Testverfahren',
+      blurb: 'Teststufen, Black-/White-Box, Testfaelle, Testprotokoll',
+      icon: Icons.bug_report_outlined,
+      weight: 0.040,
+    ),
+
+    // ============================================ 06 IT-Sicherheit & Datenschutz
+    Topic(
+      id: 'schutzziele_bedrohungen',
+      areaId: 'a06',
+      title: 'Schutzziele & Bedrohungen',
+      blurb: 'Vertraulichkeit, Integritaet, Verfuegbarkeit, Angriffsarten, BSI',
+      icon: Icons.gpp_maybe_outlined,
+      weight: 0.035,
+    ),
+    Topic(
+      id: 'sicherheitsmassnahmen',
+      areaId: 'a06',
+      title: 'Technische Schutzmassnahmen',
+      blurb: 'Firewall, DMZ, Haertung, WLAN-Sicherheit, Backup, Berechtigungen',
+      icon: Icons.security_outlined,
+      weight: 0.030,
+    ),
+    Topic(
+      id: 'kryptographie_auth',
+      areaId: 'a06',
+      title: 'Kryptographie & Authentifizierung',
+      blurb: 'Symmetrisch/asymmetrisch, Hashverfahren, Zertifikate, 2FA',
+      icon: Icons.key_outlined,
+      weight: 0.025,
+    ),
+    Topic(
+      id: 'datenschutz',
+      areaId: 'a06',
+      title: 'Datenschutz & DSGVO',
+      blurb: 'Grundsaetze, Betroffenenrechte, Anonymisierung, Pseudonymisierung',
+      icon: Icons.privacy_tip_outlined,
+      weight: 0.030,
+    ),
+
+    // ========================================= 07 Vertragsmanagement & Service
+    Topic(
+      id: 'vertraege',
+      areaId: 'a07',
+      title: 'Vertraege & Recht',
+      blurb: 'Kauf-, Werk-, Dienstvertrag, Lizenzen, Urheberrecht',
+      icon: Icons.gavel_outlined,
+      weight: 0.020,
+    ),
+    Topic(
+      id: 'sla_service',
+      areaId: 'a07',
+      title: 'Service & SLA',
+      blurb: 'Service Level Agreements, Support-Level, Eskalation, ITIL',
+      icon: Icons.support_agent_outlined,
+      weight: 0.015,
+    ),
+    Topic(
+      id: 'leistungsstoerungen',
+      areaId: 'a07',
+      title: 'Leistungsstoerungen & Abnahme',
+      blurb: 'Verzug, Maengel, Gewaehrleistung, Abnahmeprotokoll, Soll-Ist',
+      icon: Icons.assignment_late_outlined,
+      weight: 0.015,
+    ),
+    Topic(
+      id: 'change_management',
+      areaId: 'a07',
+      title: 'Change Management',
+      blurb: 'Lewin-Modell, Kaizen, Widerstaende, Change-Prozess',
+      icon: Icons.published_with_changes_outlined,
+      weight: 0.010,
     ),
   ];
 
-  static Topic byId(String id) =>
-      all.firstWhere((t) => t.id == id, orElse: () => all.first);
-
   static final Map<String, Topic> map = {for (final t in all) t.id: t};
+
+  static Topic byId(String id) => map[id] ?? all.first;
+
+  /// Themen eines Bereichs in Katalogreihenfolge.
+  static List<Topic> ofArea(String areaId) =>
+      all.where((t) => t.areaId == areaId).toList(growable: false);
 }

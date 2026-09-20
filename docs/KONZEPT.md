@@ -1,11 +1,31 @@
-# Konzept: AP1-Trainer Projektmanagement
+# Konzept: AP1-Trainer
 
 Konzept und Begründung der Designentscheidungen. Alles hier Beschriebene ist
 im Repository umgesetzt — die Dateiverweise zeigen jeweils auf den Code.
 
 **Positionierung in einem Satz:** Ein Trainer, der nicht Multiple Choice übt,
-sondern die drei Aufgabenformen, an denen in der AP1 tatsächlich Punkte
-liegen bleiben — Netzplan rechnen, Begriffe abgrenzen, Reihenfolgen kennen.
+sondern die Aufgabenformen, an denen in der AP1 tatsächlich Punkte liegen
+bleiben — Netzplan rechnen, Begriffe abgrenzen, Reihenfolgen kennen — und der
+jedes Thema zusätzlich über Karteikarten von null an lernbar macht.
+
+> **Stand der Erweiterung.** Dieses Dokument entstand, als die App nur den
+> Projektmanagement-Teil abdeckte. Inzwischen ist sie auf alle **sieben
+> Bereiche des Prüfungskatalogs 2025** erweitert:
+>
+> - Zweistufige Gliederung: 7 Katalogbereiche → 35 Themen
+>   ([`exam_area.dart`](../lib/data/models/exam_area.dart),
+>   [`topic.dart`](../lib/data/models/topic.dart))
+> - **Lernkarteikarten** mit Leitner-Karteikasten, fünf Fächer, Wiedervorlage
+>   nach 1/2/4/9/18 Tagen
+>   ([`flashcard.dart`](../lib/data/models/flashcard.dart))
+> - **Katalogstatus** an jeder Aufgabe: ab 2025 gestrichene Themen bleiben als
+>   Nachschlagewerk erhalten, fliegen aber aus Auswahl und Prüfungsreife
+> - Eine eigene Seite stellt gestrichene und neue Themen gegenüber
+>   ([`catalog_changes_screen.dart`](../lib/features/info/catalog_changes_screen.dart))
+>
+> Alle Aussagen unten zu Design-System, Gamification, Aufgabentypen,
+> Lernschleife und Technik gelten unverändert. Wo von „neun Themen" die Rede
+> ist, sind es jetzt 35 in sieben Bereichen.
 
 ---
 

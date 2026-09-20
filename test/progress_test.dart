@@ -1,4 +1,5 @@
 import 'package:ap1_trainer/core/util/question_selector.dart';
+import 'package:ap1_trainer/data/models/topic.dart';
 import 'package:ap1_trainer/data/models/progress.dart';
 import 'package:ap1_trainer/data/seed/seed_data.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -43,13 +44,42 @@ void main() {
     test('liegt immer zwischen 0 und 100', () {
       final p = ProgressState(
         history: [
-          for (final q in kSeedQuestions) rec(q.id, q.topicId, 1.0),
+          for (final q in kExamRelevantQuestions) rec(q.id, q.topicId, 1.0),
         ],
       );
-      final r = p.readiness(pool);
-      expect(r, inInclusiveRange(0, 100));
-      expect(r, greaterThan(80),
-          reason: 'Alle Aufgaben fehlerfrei muss hohe Reife ergeben');
+      expect(p.readiness(pool), inInclusiveRange(0, 100));
+    });
+
+    test('deckelt sich beim Gewicht der Themen, die Aufgaben haben', () {
+      // Themen ohne Aufgaben zaehlen als 0 - der Wert soll ehrlich zeigen,
+      // dass ein Teil des Katalogs noch nicht geuebt werden kann. Wer alle
+      // vorhandenen Aufgaben fehlerfrei loest, erreicht deshalb genau den
+      // Gewichtsanteil der befuellten Themen, nicht 100 %.
+      final p = ProgressState(
+        history: [
+          for (final q in kExamRelevantQuestions) rec(q.id, q.topicId, 1.0),
+        ],
+      );
+      final covered = pool.keys.where((id) => (pool[id] ?? 0) > 0);
+      final expectedShare = covered.fold<double>(
+          0, (s, id) => s + (Topics.map[id]?.weight ?? 0));
+
+      expect(p.readiness(pool), closeTo(expectedShare * 100, 1.5));
+    });
+
+    test('erreicht 100, wenn jedes Thema vollstaendig sitzt', () {
+      // Synthetischer Vollausbau: jedes Thema hat Aufgaben und alle sind
+      // richtig. Erst dann darf der Indikator 100 zeigen.
+      final fullPool = {for (final t in Topics.all) t.id: 2};
+      final p = ProgressState(
+        history: [
+          for (final t in Topics.all) ...[
+            rec('${t.id}-a', t.id, 1.0),
+            rec('${t.id}-b', t.id, 1.0),
+          ],
+        ],
+      );
+      expect(p.readiness(fullPool), 100);
     });
   });
 

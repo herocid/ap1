@@ -32,6 +32,9 @@ class QuestionSelector {
     final lastSeen = _lastSeenByQuestion(progress);
 
     var candidates = pool.where((q) {
+      // Ab 2025 gestrichene Aufgaben kommen nie in eine Uebung. Sie bleiben
+      // nur als Nachschlagewerk im Pool.
+      if (!q.isExamRelevant) return false;
       if (topicFilter != null && q.topicId != topicFilter) return false;
       if (mistakesOnly && !mistakes.contains(q.id)) return false;
       return true;
@@ -94,8 +97,9 @@ class QuestionSelector {
     int? seed,
   }) {
     final rnd = math.Random(seed ?? DateTime.now().millisecondsSinceEpoch);
+    final relevant = pool.where((q) => q.isExamRelevant).toList();
     final byTopic = <String, List<Question>>{};
-    for (final q in pool) {
+    for (final q in relevant) {
       byTopic.putIfAbsent(q.topicId, () => []).add(q);
     }
 
@@ -113,7 +117,8 @@ class QuestionSelector {
 
     // Zweite Runde: Rundungsreste auffuellen.
     if (picked.length < count) {
-      final rest = pool.where((q) => !used.contains(q.id)).toList()..shuffle(rnd);
+      final rest = relevant.where((q) => !used.contains(q.id)).toList()
+        ..shuffle(rnd);
       for (final q in rest) {
         if (picked.length >= count) break;
         if (used.add(q.id)) picked.add(q);

@@ -24,6 +24,23 @@ enum QuestionKind {
           orElse: () => QuestionKind.single);
 }
 
+/// Stand einer Aufgabe im Pruefungskatalog.
+///
+/// Der Katalog 2025 hat Themen gestrichen (Vorgehensmodelle ausser Wasserfall
+/// und Scrum, SQL, RAID, Struktogramm/PAP, Vererbung, SWOT, ISO-Normen ...).
+/// Solche Aufgaben werden nicht geloescht - sie bleiben als Nachschlagewerk
+/// erhalten, fliegen aber aus jeder Auswahl und aus der Pruefungsreife.
+enum CatalogStatus {
+  /// Im Katalog ab 2025 enthalten.
+  current,
+
+  /// Ab 2025 nicht mehr Teil der AP1.
+  removed2025;
+
+  static CatalogStatus parse(String? s) => CatalogStatus.values
+      .firstWhere((e) => e.name == s, orElse: () => CatalogStatus.current);
+}
+
 /// Ergebnis einer Bewertung. [parts] traegt die Detailrueckmeldung, damit die
 /// UI jede Option/Zelle einzeln einfaerben kann.
 @immutable
@@ -116,6 +133,7 @@ class Question {
     this.activities = const [],
     this.askedFields = const [],
     this.source,
+    this.catalogStatus = CatalogStatus.current,
   });
 
   final String id;
@@ -134,6 +152,11 @@ class Question {
   final int difficulty;
   final List<String> tags;
   final String? source;
+
+  /// Ob die Aufgabe nach dem Katalog 2025 noch drankommen kann.
+  final CatalogStatus catalogStatus;
+
+  bool get isExamRelevant => catalogStatus == CatalogStatus.current;
 
   // single / multiple
   final List<Choice> choices;
@@ -290,6 +313,7 @@ class Question {
       difficulty: (j['difficulty'] as num?)?.toInt() ?? 2,
       tags: ((j['tags'] as List?) ?? const []).cast<String>().toList(),
       source: j['source'] as String?,
+      catalogStatus: CatalogStatus.parse(j['catalog_status'] as String?),
       choices: ((data['choices'] as List?) ?? const [])
           .map((e) => Choice.fromJson((e as Map).cast<String, dynamic>()))
           .toList(),
@@ -324,6 +348,7 @@ class Question {
         'difficulty': difficulty,
         'tags': tags,
         'source': source,
+        'catalog_status': catalogStatus.name,
         'data': {
           if (choices.isNotEmpty)
             'choices': choices.map((c) => c.toJson()).toList(),

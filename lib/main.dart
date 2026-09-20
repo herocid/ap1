@@ -51,7 +51,7 @@ class Ap1TrainerApp extends ConsumerWidget {
     final themeMode = ref.watch(themeModeProvider);
 
     return MaterialApp.router(
-      title: 'AP1 Projektmanagement',
+      title: 'AP1 Trainer',
       debugShowCheckedModeBanner: false,
       routerConfig: router,
       theme: AppTheme.light(),

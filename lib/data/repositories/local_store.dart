@@ -1,5 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../models/flashcard.dart';
 import '../models/profile.dart';
 import '../models/progress.dart';
 
@@ -14,6 +15,7 @@ class LocalStore {
   static const _kProfile = 'ap1.profile';
   static const _kProgress = 'ap1.progress';
   static const _kSeenTheory = 'ap1.seen_theory';
+  static const _kDeck = 'ap1.deck';
 
   UserProfile? readProfile() {
     final raw = _prefs.getString(_kProfile);
@@ -47,9 +49,22 @@ class LocalStore {
   Future<void> writeSeenTheory(Set<String> ids) =>
       _prefs.setStringList(_kSeenTheory, ids.toList());
 
+  DeckState readDeck() {
+    final raw = _prefs.getString(_kDeck);
+    if (raw == null) return const DeckState();
+    try {
+      return DeckState.decode(raw);
+    } catch (_) {
+      return const DeckState();
+    }
+  }
+
+  Future<void> writeDeck(DeckState d) => _prefs.setString(_kDeck, d.encode());
+
   Future<void> clearAll() async {
     await _prefs.remove(_kProfile);
     await _prefs.remove(_kProgress);
     await _prefs.remove(_kSeenTheory);
+    await _prefs.remove(_kDeck);
   }
 }

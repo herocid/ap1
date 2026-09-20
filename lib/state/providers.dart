@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/util/study_plan.dart';
+import '../data/models/exam_area.dart';
+import '../data/models/flashcard.dart';
 import '../data/models/profile.dart';
 import '../data/models/progress.dart';
 import '../data/models/question.dart';
+import '../data/models/topic.dart';
 import '../data/repositories/local_store.dart';
 import '../data/repositories/question_repository.dart';
 import '../data/seed/seed_data.dart';
@@ -212,6 +215,73 @@ final studyPlanProvider = Provider<StudyPlan>((ref) {
     progress: ref.watch(progressProvider),
     poolSize: ref.watch(poolSizeProvider),
   );
+});
+
+// ------------------------------------------------------- Bereichsauswertung
+
+/// Pruefungsreife je Katalogbereich (0..100).
+///
+/// Innerhalb eines Bereichs wird auf dessen eigenes Gewicht normiert: Ein
+/// Bereich mit 6 % Punkteanteil kann genauso 100 % erreichen wie einer mit
+/// 22 %. Sonst waeren die kleinen Bereiche optisch immer "schlecht".
+final areaReadinessProvider = Provider<Map<String, int>>((ref) {
+  final stats = ref.watch(topicStatsProvider);
+  final out = <String, int>{};
+  for (final area in ExamAreas.all) {
+    final topics = Topics.ofArea(area.id);
+    final total = topics.fold<double>(0, (s, t) => s + t.weight);
+    if (total <= 0) {
+      out[area.id] = 0;
+      continue;
+    }
+    var acc = 0.0;
+    for (final t in topics) {
+      acc += t.weight * (stats[t.id]?.confidence ?? 0);
+    }
+    out[area.id] = ((acc / total) * 100).round().clamp(0, 100);
+  }
+  return out;
+});
+
+// ---------------------------------------------------------- Karteikarten
+
+/// Alle Lernkarteikarten.
+final flashcardsProvider = Provider<List<Flashcard>>((ref) => kSeedFlashcards);
+
+/// Anzahl Karten je Thema.
+final cardCountProvider = Provider<Map<String, int>>((ref) {
+  final out = <String, int>{};
+  for (final c in ref.watch(flashcardsProvider)) {
+    out[c.topicId] = (out[c.topicId] ?? 0) + 1;
+  }
+  return out;
+});
+
+/// Der Karteikasten: welche Karte in welchem Leitner-Fach liegt.
+class DeckNotifier extends StateNotifier<DeckState> {
+  DeckNotifier(this._store) : super(_store.readDeck());
+
+  final LocalStore _store;
+
+  void answer(String cardId, {required bool knewIt}) {
+    state = state.withAnswer(cardId, knewIt);
+    _store.writeDeck(state);
+  }
+
+  void reset() {
+    state = const DeckState();
+    _store.writeDeck(state);
+  }
+}
+
+final deckProvider = StateNotifierProvider<DeckNotifier, DeckState>((ref) {
+  return DeckNotifier(ref.watch(localStoreProvider));
+});
+
+/// Wie viele Karten heute faellig sind - die Zahl fuers Dashboard.
+final dueCardsProvider = Provider<int>((ref) {
+  final deck = ref.watch(deckProvider);
+  return deck.dueCount(ref.watch(flashcardsProvider));
 });
 
 /// Gesehene Theorie-Snacks - steuert, ob vor einer Session der Snack

@@ -9,7 +9,7 @@ final List<Question> seedAnforderungen = [
   // ---------------------------------------------------------- Lastenheft
   Question(
     id: 'lh-001',
-    topicId: 'lastenheft',
+    topicId: 'anforderungen',
     kind: QuestionKind.matching,
     difficulty: 1,
     tags: ['lastenheft', 'pflichtenheft'],
@@ -58,7 +58,7 @@ final List<Question> seedAnforderungen = [
 
   Question(
     id: 'lh-002',
-    topicId: 'lastenheft',
+    topicId: 'anforderungen',
     kind: QuestionKind.matching,
     difficulty: 2,
     tags: ['anforderungsarten'],
@@ -109,7 +109,7 @@ final List<Question> seedAnforderungen = [
 
   Question(
     id: 'lh-003',
-    topicId: 'lastenheft',
+    topicId: 'anforderungen',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['anforderungsqualitaet'],
@@ -137,7 +137,7 @@ final List<Question> seedAnforderungen = [
 
   Question(
     id: 'lh-004',
-    topicId: 'lastenheft',
+    topicId: 'leistungsstoerungen',
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['abnahme'],
@@ -165,7 +165,7 @@ final List<Question> seedAnforderungen = [
 
   Question(
     id: 'lh-005',
-    topicId: 'lastenheft',
+    topicId: 'anforderungen',
     kind: QuestionKind.ordering,
     difficulty: 2,
     tags: ['ablauf'],
@@ -192,7 +192,7 @@ final List<Question> seedAnforderungen = [
 
   Question(
     id: 'lh-006',
-    topicId: 'lastenheft',
+    topicId: 'change_management',
     kind: QuestionKind.single,
     difficulty: 3,
     tags: ['scope_creep'],
@@ -221,7 +221,7 @@ final List<Question> seedAnforderungen = [
   // ------------------------------------------------------ Wirtschaftlichkeit
   Question(
     id: 'wi-001',
-    topicId: 'wirtschaftlichkeit',
+    topicId: 'pm_wirtschaftlichkeit',
     kind: QuestionKind.numeric,
     difficulty: 2,
     tags: ['nutzwertanalyse'],
@@ -252,7 +252,7 @@ final List<Question> seedAnforderungen = [
 
   Question(
     id: 'wi-002',
-    topicId: 'wirtschaftlichkeit',
+    topicId: 'pm_wirtschaftlichkeit',
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['nutzwertanalyse'],
@@ -280,7 +280,7 @@ final List<Question> seedAnforderungen = [
 
   Question(
     id: 'wi-003',
-    topicId: 'wirtschaftlichkeit',
+    topicId: 'pm_wirtschaftlichkeit',
     kind: QuestionKind.numeric,
     difficulty: 2,
     tags: ['amortisation'],
@@ -305,7 +305,7 @@ final List<Question> seedAnforderungen = [
 
   Question(
     id: 'wi-004',
-    topicId: 'wirtschaftlichkeit',
+    topicId: 'pm_wirtschaftlichkeit',
     kind: QuestionKind.numeric,
     difficulty: 3,
     tags: ['angebotsvergleich', 'bezugskalkulation'],
@@ -337,7 +337,7 @@ final List<Question> seedAnforderungen = [
 
   Question(
     id: 'wi-005',
-    topicId: 'wirtschaftlichkeit',
+    topicId: 'pm_wirtschaftlichkeit',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['tco'],
@@ -369,7 +369,7 @@ final List<Question> seedAnforderungen = [
   // --------------------------------------------------------- Qualitaet/Risiko
   Question(
     id: 'qr-001',
-    topicId: 'qualitaet_risiko',
+    topicId: 'risikomanagement',
     kind: QuestionKind.numeric,
     difficulty: 1,
     tags: ['risikobewertung'],
@@ -392,7 +392,7 @@ final List<Question> seedAnforderungen = [
 
   Question(
     id: 'qr-002',
-    topicId: 'qualitaet_risiko',
+    topicId: 'risikomanagement',
     kind: QuestionKind.matching,
     difficulty: 2,
     tags: ['risikostrategien'],
@@ -441,7 +441,7 @@ final List<Question> seedAnforderungen = [
 
   Question(
     id: 'qr-003',
-    topicId: 'qualitaet_risiko',
+    topicId: 'qualitaetsmanagement',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['qualitaetssicherung'],
@@ -475,7 +475,7 @@ final List<Question> seedAnforderungen = [
 
   Question(
     id: 'qr-004',
-    topicId: 'qualitaet_risiko',
+    topicId: 'risikomanagement',
     kind: QuestionKind.single,
     difficulty: 3,
     tags: ['risikomatrix'],
@@ -507,7 +507,7 @@ final List<Question> seedAnforderungen = [
   // --------------------------------------------------------------- Abschluss
   Question(
     id: 'ab-001',
-    topicId: 'abschluss',
+    topicId: 'projektabschluss',
     kind: QuestionKind.single,
     difficulty: 1,
     tags: ['lessons_learned'],
@@ -532,7 +532,7 @@ final List<Question> seedAnforderungen = [
 
   Question(
     id: 'ab-002',
-    topicId: 'abschluss',
+    topicId: 'projektabschluss',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['abschlussbericht'],
@@ -562,7 +562,7 @@ final List<Question> seedAnforderungen = [
 
   Question(
     id: 'ab-003',
-    topicId: 'abschluss',
+    topicId: 'projektabschluss',
     kind: QuestionKind.ordering,
     difficulty: 2,
     tags: ['projektabschluss'],

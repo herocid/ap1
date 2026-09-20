@@ -28,7 +28,7 @@ void main() {
       (tester) async {
     await pumpApp(tester);
 
-    expect(find.text('AP1 Projektmanagement'), findsOneWidget);
+    expect(find.text('AP1 Trainer'), findsOneWidget);
     expect(find.text('Weiter'), findsOneWidget);
   });
 

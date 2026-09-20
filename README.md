@@ -1,13 +1,53 @@
-# AP1 Projektmanagement-Trainer
+# AP1 Trainer
 
-Lern-App für den **Projektmanagement- und Strukturierungsteil der
-IHK-Abschlussprüfung Teil 1** (Fachinformatiker und verwandte IT-Berufe):
-Netzplantechnik, Scrum, Lasten-/Pflichtenheft, Wirtschaftlichkeit,
-Qualitäts- und Risikomanagement.
+Lern-App für die **IHK-Abschlussprüfung Teil 1 der IT-Berufe** — nach dem
+Prüfungskatalog ab 2025 (2. überarbeitete Auflage, erstmals angewendet
+Frühjahr 2025).
+
+Deckt alle **sieben Katalogbereiche** ab, von Projektmanagement über
+Netzwerke und Softwareentwicklung bis IT-Sicherheit, Datenschutz und
+Vertragsrecht. Zwei Lernwege pro Thema: **Karteikarten** (Leitner-System) für
+den Einstieg, **Übungsaufgaben** mit begründetem Feedback für die Vertiefung.
 
 Flutter (Web, Android, iOS aus einer Codebase) + Supabase.
-Läuft **ohne Backend-Konfiguration sofort los** — die Aufgaben sind in der App
+Läuft **ohne Backend-Konfiguration sofort los** — alle Inhalte sind in der App
 eingebaut, Supabase ist ein optionaler Aufsatz.
+
+| Bereich | Themen | Anteil |
+| --- | --- | --- |
+| 01 Projekte & Projektmanagement | 8 | 22 % |
+| 02 Kundenbeziehungen & Kommunikation | 5 | 13 % |
+| 03 Informations- & Softwaresysteme | 4 | 18 % |
+| 04 Analyse & Entwicklung von Systemen | 8 | 22 % |
+| 05 Qualitätssicherung | 2 | 7 % |
+| 06 IT-Sicherheit & Datenschutz | 4 | 12 % |
+| 07 Vertragsmanagement & Service | 4 | 6 % |
+
+Bereichsnummern und -namen folgen dem amtlichen Katalog. Die Aufteilung in
+Themen darunter ist eine fachliche Rekonstruktion — die amtlichen
+Unterkapitel-Titel sind nicht frei veröffentlicht. Die Prozentwerte sind
+geschätzte Punkteanteile zur Lernsteuerung, keine IHK-Angabe.
+
+---
+
+## Was 2025 gestrichen wurde
+
+Der Katalog hat Themen **entfernt**: SQL und Datenbankabfragen (nach AP2
+verschoben), alle Vorgehensmodelle außer Wasserfall und Scrum, Struktogramm
+und PAP, Vererbung, RAID/SAN, LTE/5G, SWOT-Analyse, ISO-Normen,
+nicht-relationale Datenbanken, Dokumentationsarten.
+
+Die App zeigt diese Liste unter *Katalog → Symbol oben rechts* und stellt ihr
+die **neuen** Themen gegenüber (KI-Unterstützung, SMART, Schutzziele,
+Hashverfahren und 2FA, Härtung, Barrierefreiheit, ERP/SCM/CRM, IPv4/IPv6,
+UML-Aktivitätsdiagramm, Schreibtischtest, Betroffenenrechte, Anonymisierung,
+Datenmengen berechnen, HDD vs. SSD).
+
+Aufgaben zu gestrichenen Themen werden nicht gelöscht, sondern mit
+`CatalogStatus.removed2025` markiert: Sie fliegen aus jeder Auswahl und aus
+der Prüfungsreife, bleiben aber als Nachschlagewerk erhalten. Wer mit einem
+Lehrbuch von 2022 lernt, verliert sonst Wochen an Stoff, der nicht mehr
+abgefragt wird.
 
 ---
 
@@ -24,10 +64,10 @@ Mit Supabase-Anbindung (siehe [Supabase einrichten](#supabase-einrichten)):
 flutter run -d chrome --dart-define-from-file=env.json
 ```
 
-Ohne `SUPABASE_ANON_KEY` startet die App im Offline-Modus: alle 46 Aufgaben
-und 11 Theorie-Snacks kommen aus `lib/data/seed/`, der Fortschritt liegt in
-`shared_preferences`. Das ist kein Notbetrieb, sondern der Normalfall für
-Entwicklung, Demo und Flugmodus.
+Ohne `SUPABASE_ANON_KEY` startet die App im Offline-Modus: alle Aufgaben,
+Karteikarten und Theorie-Snacks kommen aus `lib/data/seed/`, der Fortschritt
+liegt in `shared_preferences`. Das ist kein Notbetrieb, sondern der Normalfall
+für Entwicklung, Demo und Flugmodus.
 
 ### Tests
 
@@ -35,9 +75,16 @@ Entwicklung, Demo und Flugmodus.
 flutter test
 ```
 
-53 Tests: Netzplan-Solver (Vorwärts-/Rückwärtsrechnung, GP/FP, kritischer
-Pfad), Bewertungslogik aller sechs Aufgabentypen, Fortschritts- und
-Auswahl-Algorithmen, Integrität des Aufgabenpools, Onboarding-Flow.
+81 Tests: Netzplan-Solver (Vorwärts-/Rückwärtsrechnung, GP/FP, kritischer
+Pfad), Bewertungslogik aller sechs Aufgabentypen, Leitner-Karteikasten,
+Fortschritts- und Auswahl-Algorithmen, Integrität von Aufgabenpool und
+Kartensammlung, Bereichsgewichte, Onboarding-Flow.
+
+Die Integritätstests setzen Qualitätsschwellen durch, die beim Ausbau leicht
+verrutschen: keine Antwortoption ohne Begründung, kein Thema mit ein oder
+zwei Aufgaben (schlimmer als keine — die Auswahl würde sie ständig
+wiederholen), keine doppelten Kartenvorderseiten, Themengewichte je Bereich
+exakt passend.
 
 ---
 
@@ -75,20 +122,31 @@ landet nicht im Repository.
 
 Öffne den SQL-Editor und führe **nacheinander** aus:
 
-1. Inhalt von `supabase/migrations/20260919090000_ap1_schema.sql` einfügen, *Run*
-2. Inhalt von `supabase/migrations/20260919090100_ap1_seed.sql` einfügen, *Run*
+1. `supabase/migrations/20260919090000_ap1_schema.sql` einfügen, *Run*
+2. `supabase/migrations/20260920090000_ap1_katalog2025.sql` einfügen, *Run*
+3. `supabase/migrations/20260920090100_ap1_seed.sql` einfügen, *Run*
 
 Die Reihenfolge ist zwingend — der Seed setzt die Tabellen voraus.
-Die zweite Datei ist rund 90 KB groß; der Editor verarbeitet das, braucht
+Die dritte Datei ist rund 200 KB groß; der Editor verarbeitet das, braucht
 aber einen Moment.
 
 **Kontrolle** (in beiden Fällen):
 
 ```sql
-select topic_id, count(*) from public.ap1_questions group by 1 order by 1;
+select a.number, a.title,
+       count(distinct t.id) as themen,
+       count(distinct q.id) as aufgaben,
+       count(distinct f.id) as karten
+from public.ap1_areas a
+left join public.ap1_topics t on t.area_id = a.id
+left join public.ap1_questions q
+       on q.topic_id = t.id and q.catalog_status = 'current'
+left join public.ap1_flashcards f on f.topic_id = t.id
+group by a.number, a.title order by a.number;
 ```
 
-Erwartet: 9 Themen, zusammen 46 Aufgaben, dazu 11 Zeilen in `ap1_theory`.
+Erwartet: 7 Bereiche, 35 Themen, 65 prüfungsrelevante Aufgaben (68 inklusive
+der gestrichenen) und 112 Karteikarten.
 
 ### Schritt 2 — Anon-Key eintragen
 
@@ -115,8 +173,11 @@ einen leeren Bildschirm zu zeigen.
 
 | Tabelle | Zweck |
 | --- | --- |
-| `ap1_topics` | Themengebiete inkl. geschätztem Punkteanteil (`weight`) |
+| `ap1_areas` | Die sieben Katalogbereiche mit Punkteanteil |
+| `ap1_topics` | Themen mit Bereichszuordnung und Punkteanteil |
 | `ap1_questions` | Aufgaben; typabhängige Nutzdaten in `data jsonb` |
+| `ap1_flashcards` | Lernkarteikarten |
+| `ap1_card_states` | Leitner-Fach und Wiedervorlage je Nutzer und Karte |
 | `ap1_theory` | Theorie-Snacks |
 | `ap1_profiles` | Prüfungstermin, Intensität, Darstellung (1:1 zu `auth.users`) |
 | `ap1_attempts` | **Unveränderliche Ereignisliste** aller Antworten |

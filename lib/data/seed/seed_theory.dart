@@ -45,23 +45,28 @@ final List<TheorySnack> seedTheory = [
   const TheorySnack(
     id: 'th-vor-1',
     topicId: 'vorgehensmodelle',
-    title: 'Wasserfall, V-Modell, Spirale',
-    lead: 'Drei klassische Modelle, drei Erkennungsmerkmale.',
+    title: 'Vorgehensmodelle im Katalog 2025',
+    lead:
+        'Der Pruefungskatalog ab 2025 kennt nur noch zwei Vorgehensmodelle: '
+        'Wasserfall und Scrum. V-Modell, Spiralmodell, XP und Kanban sind '
+        'gestrichen.',
     points: [
-      'Wasserfall: streng sequenziell, jede Phase endet mit einem freigegebenen '
-          'Dokument. Voraussetzung: Anforderungen sind vollstaendig bekannt.',
-      'V-Modell: wie Wasserfall, aber jeder Entwicklungsstufe ist eine '
-          'Teststufe zugeordnet (Anforderung <-> Abnahmetest, '
-          'Systemspez. <-> Systemtest, Architektur <-> Integrationstest, '
-          'Feinentwurf <-> Modultest).',
-      'Spiralmodell: wiederholte Zyklen, jeder beginnt mit einer '
-          'Risikoanalyse. Fuer grosse, riskante Vorhaben.',
-      'Rule of Ten: Ein Fehler kostet in jeder spaeteren Phase etwa das '
-          'Zehnfache.',
+      'Wasserfall: streng sequenziell, jede Phase endet mit einem '
+          'freigegebenen Dokument. Voraussetzung: Anforderungen sind zu '
+          'Projektbeginn vollstaendig bekannt.',
+      'Phasen: Analyse, Entwurf, Implementierung, Test, Einfuehrung und '
+          'Wartung.',
+      'Staerke: klare Struktur, gute Planbarkeit, feste Kosten und Termine.',
+      'Schwaeche: Fehler aus der Analyse fallen erst im Test auf. Rule of Ten '
+          '- jede spaetere Phase verzehnfacht die Korrekturkosten.',
+      'Scrum als Gegenentwurf: kurze Zyklen, Anforderungen duerfen sich '
+          'zwischen den Sprints aendern.',
+      'Entscheidungsregel: Anforderungen stabil und vertraglich fix -> '
+          'Wasserfall. Anforderungen unklar oder veraenderlich -> Scrum.',
     ],
     merksatz:
-        'Gleiche Hoehe im V = zusammengehoeriges Paar. Je hoeher, desto naeher '
-        'am Kunden.',
+        'Fuer die AP1 ab 2025 reichen zwei Modelle. Wer noch V-Modell und '
+        'Spirale paukt, lernt an der Pruefung vorbei.',
   ),
   const TheorySnack(
     id: 'th-scr-1',
@@ -147,7 +152,7 @@ final List<TheorySnack> seedTheory = [
   ),
   const TheorySnack(
     id: 'th-lh-1',
-    topicId: 'lastenheft',
+    topicId: 'anforderungen',
     title: 'Lastenheft vs. Pflichtenheft',
     lead: 'Zwei Dokumente, zwei Absender, zwei Zeitpunkte.',
     points: [
@@ -167,7 +172,7 @@ final List<TheorySnack> seedTheory = [
   ),
   const TheorySnack(
     id: 'th-wi-1',
-    topicId: 'wirtschaftlichkeit',
+    topicId: 'pm_wirtschaftlichkeit',
     title: 'Rechnen im PM-Teil',
     lead: 'Vier Rechnungen decken den Grossteil der Punkte ab.',
     points: [
@@ -187,7 +192,7 @@ final List<TheorySnack> seedTheory = [
   ),
   const TheorySnack(
     id: 'th-qr-1',
-    topicId: 'qualitaet_risiko',
+    topicId: 'qualitaetsmanagement',
     title: 'Qualitaet und Risiko',
     lead: 'Zwei Sortierungen, die fast jede Aufgabe abdecken.',
     points: [
@@ -207,7 +212,7 @@ final List<TheorySnack> seedTheory = [
   ),
   const TheorySnack(
     id: 'th-ab-1',
-    topicId: 'abschluss',
+    topicId: 'projektabschluss',
     title: 'Projektabschluss richtig',
     lead: 'Drei Ebenen - die dritte wird am haeufigsten vergessen.',
     points: [

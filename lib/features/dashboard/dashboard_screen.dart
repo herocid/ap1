@@ -32,6 +32,7 @@ class DashboardScreen extends ConsumerWidget {
     final goal = profile.dailyGoal;
     final goalReached = todayCount >= goal;
     final mistakes = progress.openMistakes.length;
+    final dueCards = ref.watch(dueCardsProvider);
 
     final weakest = [...Topics.all]..sort((a, b) {
         final ca = stats[a.id]?.confidence ?? 0;
@@ -245,14 +246,25 @@ class DashboardScreen extends ConsumerWidget {
                         const SizedBox(width: Gap.m),
                         Expanded(
                           child: _ActionCard(
-                            icon: Icons.timer_outlined,
-                            iconColor: context.c.flame,
-                            title: 'Simulation',
-                            subtitle: 'Unter Zeitdruck',
-                            onTap: () => context.push('/pruefung'),
+                            icon: Icons.style_outlined,
+                            iconColor: context.scheme.primary,
+                            title: 'Karteikarten',
+                            subtitle: dueCards == 0
+                                ? 'Nichts faellig'
+                                : '$dueCards faellig',
+                            onTap: () => context.go('/karten'),
                           ),
                         ),
                       ],
+                    ),
+                    const SizedBox(height: Gap.m),
+                    SizedBox(
+                      width: double.infinity,
+                      child: OutlinedButton.icon(
+                        onPressed: () => context.push('/pruefung'),
+                        icon: const Icon(Icons.timer_outlined),
+                        label: const Text('Pruefungssimulation starten'),
+                      ),
                     ),
                     const SizedBox(height: Gap.xl),
 
@@ -262,7 +274,7 @@ class DashboardScreen extends ConsumerWidget {
                       subtitle: plan.note,
                       action: TextButton(
                         onPressed: () => context.go('/themen'),
-                        child: const Text('Alle'),
+                        child: const Text('Katalog'),
                       ),
                     ),
                     for (final t in weakest.take(3)) ...[
@@ -411,16 +423,4 @@ class _TopicRow extends ConsumerWidget {
       ),
     );
   }
-}
-
-/// Oeffentliche Variante fuer die Themenliste.
-class TopicRowCard extends ConsumerWidget {
-  const TopicRowCard({super.key, required this.topicId, required this.onTap});
-
-  final String topicId;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) =>
-      _TopicRow(topicId: topicId, onTap: onTap);
 }

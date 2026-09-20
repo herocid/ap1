@@ -1,3 +1,4 @@
+import 'package:ap1_trainer/data/models/exam_area.dart';
 import 'package:ap1_trainer/data/models/question.dart';
 import 'package:ap1_trainer/data/models/topic.dart';
 import 'package:ap1_trainer/data/seed/seed_data.dart';
@@ -24,11 +25,28 @@ void main() {
       }
     });
 
-    test('jedes Thema hat mindestens drei Aufgaben', () {
+    test('ein Thema hat entweder keine oder mindestens drei Aufgaben', () {
+      // Themen ohne Inhalte sind waehrend des Ausbaus erlaubt. Ein Thema mit
+      // ein oder zwei Aufgaben waere aber schlimmer als eines ohne: die
+      // Auswahl wuerde dieselbe Aufgabe staendig wiederholen.
       final pool = kPoolSizeByTopic();
       for (final t in Topics.all) {
-        expect(pool[t.id] ?? 0, greaterThanOrEqualTo(3),
-            reason: 'Thema ${t.id} hat zu wenige Aufgaben');
+        final n = pool[t.id] ?? 0;
+        if (n == 0) continue;
+        expect(n, greaterThanOrEqualTo(3),
+            reason: 'Thema ${t.id} hat nur $n Aufgaben');
+      }
+    });
+
+    test('gestrichene Aufgaben zaehlen nicht in den Pool', () {
+      final removed = kSeedQuestions
+          .where((q) => q.catalogStatus == CatalogStatus.removed2025);
+      expect(removed, isNotEmpty,
+          reason: 'Der Katalog 2025 hat Themen gestrichen - das muss sich '
+              'im Pool abbilden');
+      final poolIds = kExamRelevantQuestions.map((q) => q.id).toSet();
+      for (final q in removed) {
+        expect(poolIds.contains(q.id), isFalse, reason: q.id);
       }
     });
 
@@ -139,10 +157,37 @@ void main() {
       expect(sum, closeTo(1.0, 1e-9));
     });
 
-    test('zu jedem Thema gibt es mindestens einen Theorie-Snack', () {
+    test('jeder Theorie-Snack verweist auf ein existierendes Thema', () {
+      for (final s in kSeedTheory) {
+        expect(Topics.map.containsKey(s.topicId), isTrue,
+            reason: '${s.id} nutzt unbekanntes Thema ${s.topicId}');
+      }
+    });
+
+    test('jedes Thema mit Aufgaben gehoert zu einem Bereich', () {
       for (final t in Topics.all) {
-        expect(kSeedTheory.any((s) => s.topicId == t.id), isTrue,
-            reason: 'Thema ${t.id} ohne Theorie-Snack');
+        expect(ExamAreas.map.containsKey(t.areaId), isTrue,
+            reason: 'Thema ${t.id} zeigt auf unbekannten Bereich ${t.areaId}');
+      }
+    });
+
+    test('Bereichsgewichte summieren sich zu 1', () {
+      final sum = ExamAreas.all.fold<double>(0, (s, a) => s + a.weight);
+      expect(sum, closeTo(1.0, 1e-9));
+    });
+
+    test('die Themen eines Bereichs ergeben dessen Bereichsgewicht', () {
+      for (final area in ExamAreas.all) {
+        final sum = Topics.ofArea(area.id).fold<double>(0, (s, t) => s + t.weight);
+        expect(sum, closeTo(area.weight, 1e-9),
+            reason: 'Bereich ${area.number}: Themen ergeben $sum statt '
+                '${area.weight}');
+      }
+    });
+
+    test('jeder Bereich hat mindestens ein Thema', () {
+      for (final area in ExamAreas.all) {
+        expect(Topics.ofArea(area.id), isNotEmpty, reason: area.id);
       }
     });
   });

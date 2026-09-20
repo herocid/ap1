@@ -202,6 +202,9 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'vor-002',
     topicId: 'vorgehensmodelle',
+    // V-Modell ist ab 2025 nicht mehr Teil des AP1-Katalogs. Die Teststufen
+    // selbst bleiben relevant - dafuer gibt es eigene Aufgaben im Thema Testen.
+    catalogStatus: CatalogStatus.removed2025,
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['v-modell'],
@@ -231,6 +234,8 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'vor-003',
     topicId: 'vorgehensmodelle',
+    // Vergleicht Spiralmodell und V-Modell mit - beide ab 2025 gestrichen.
+    catalogStatus: CatalogStatus.removed2025,
     kind: QuestionKind.matching,
     difficulty: 2,
     tags: ['modellvergleich'],
@@ -483,6 +488,8 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'scr-006',
     topicId: 'agil_scrum',
+    // Kanban zaehlt ab 2025 zu den gestrichenen Methoden.
+    catalogStatus: CatalogStatus.removed2025,
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['kanban', 'wip'],
