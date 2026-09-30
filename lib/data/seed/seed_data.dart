@@ -7,6 +7,7 @@ import 'questions/questions_a02_kunden.dart';
 import 'questions/questions_a03_systeme.dart';
 import 'questions/questions_a04_daten.dart';
 import 'questions/questions_a04_entwicklung.dart';
+import 'questions/questions_a05_qualitaet.dart';
 import 'seed_anforderungen.dart';
 import 'seed_grundlagen.dart';
 import 'seed_netzplan.dart';
@@ -28,6 +29,7 @@ final List<Question> kSeedQuestions = [
   ...questionsA03,
   ...questionsA04Entwicklung,
   ...questionsA04Daten,
+  ...questionsA05,
 ];
 
 final List<TheorySnack> kSeedTheory = seedTheory;
