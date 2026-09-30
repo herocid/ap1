@@ -164,7 +164,7 @@ final List<TheorySnack> seedTheory = [
       'Funktional = "Das System tut X". Nicht-funktional = "Das System tut X '
           'schnell/sicher/verfügbar/barrierefrei".',
       'Gute Anforderung: eindeutig, vollständig, widerspruchsfrei, prüfbar, '
-          'notwendig, priorisiert (MuSCoW).',
+          'notwendig, priorisiert (MoSCoW).',
     ],
     merksatz:
         'LAstenheft = Auftraggeber verteilt die Last. PFlichtenheft = '

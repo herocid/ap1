@@ -105,8 +105,9 @@ final List<Question> seedAnforderungen = [
         'TUT etwas" formulieren? Dann funktional. Beschreibt sie eher, WIE GUT '
         'das System etwas tut (schnell, sicher, verfügbar, bedienbar, '
         'wartbar, portabel), dann nicht-funktional. '
-        'Die sechs Qualitätsmerkmale nach ISO 25010 sind eine gute '
-        'Checkliste für nicht-funktionale Anforderungen.',
+        'Die Qualitätsmerkmale von Software - etwa Zuverlässigkeit, '
+        'Benutzbarkeit, Effizienz und Sicherheit - sind eine gute Checkliste '
+        'für nicht-funktionale Anforderungen.',
   ),
 
   Question(
@@ -134,8 +135,8 @@ final List<Question> seedAnforderungen = [
     explanation:
         'Merkhilfe für Anforderungsqualität: eindeutig, vollständig, '
         'widerspruchsfrei, prüfbar, notwendig, verständlich, priorisiert. '
-        'Priorisierung erfolgt oft nach MuSCoW: Must have, Should have, '
-        'Could have, Won t have.',
+        'Priorisierung erfolgt oft nach MoSCoW: Must have, Should have, '
+        'Could have, Won’t have (this time).',
   ),
 
   Question(
@@ -155,7 +156,7 @@ final List<Question> seedAnforderungen = [
       _c('Vollständige Verweigerung der Abnahme bis alle Mängel beseitigt sind.', false,
           'Bei unwesentlichen Mängeln ist die Verweigerung in der Regel unzulässig (vgl. Werkvertragsrecht) und schadet dem Kunden selbst, weil der Nutzen ausbleibt.'),
       _c('Vorbehaltlose Abnahme, die Mängel werden formlos per E-Mail gemeldet.', false,
-          'Gefährlich: Mit der vorbehaltlosen Abnahme verliert der Kunde bei bekannten Mängeln seine Rechte darauf.'),
+          'Gefährlich: Mit der vorbehaltlosen Abnahme verliert der Kunde bei bekannten Mängeln Nacherfüllung, Minderung und Rücktritt - nur Schadensersatz bleibt.'),
       _c('Die Abnahme entfällt, weil die Software bereits läuft.', false,
           'Die Abnahme ist ein formaler Rechtsakt mit erheblichen Folgen (Gefahrübergang, Fälligkeit der Vergütung, Beginn der Gewährleistung). Sie entfällt nicht durch Nutzung - im Gegenteil kann Nutzung als konkludente Abnahme gelten.'),
     ],

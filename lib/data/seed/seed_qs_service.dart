@@ -618,28 +618,44 @@ final List<Question> seedQsService = [
     id: 'ls-002',
     topicId: 'leistungsstoerungen',
     subtopicId: 'ls-maengel',
-    kind: QuestionKind.ordering,
+    kind: QuestionKind.single,
     difficulty: 3,
     tags: ['mängelrechte'],
+    scenario:
+        'Eine Agentur hat für einen Kunden ein Buchungsmodul programmiert '
+        '(Werkvertrag). Nach der Abnahme zeigt sich ein Fehler: Stornierungen '
+        'werden nicht gespeichert.',
     prompt:
-        'In welcher Reihenfolge stehen dem Kunden die Mängelrechte beim '
-        'Werkvertrag üblicherweise zu?',
-    orderingHint: 'Vom vorrangigen zum nachrangigen Recht',
-    orderedItems: const [
-      'Nacherfüllung verlangen (Mangelbeseitigung oder Neuherstellung)',
-      'Nach erfolgloser Fristsetzung: Selbstvornahme und Ersatz der Kosten',
-      'Minderung der Vergütung oder Rücktritt vom Vertrag',
-      'Schadensersatz bzw. Ersatz vergeblicher Aufwendungen',
+        'Was muss der Kunde grundsätzlich tun, bevor er den Fehler von einer '
+        'anderen Firma beheben lässt, die Vergütung mindert oder zurücktritt?',
+    choices: [
+      _c('Der Agentur eine angemessene Frist zur Nacherfüllung setzen', true,
+          'Die Nacherfüllung hat Vorrang. Erst wenn die Frist erfolglos '
+          'verstreicht, stehen Selbstvornahme, Minderung, Rücktritt und '
+          'Schadensersatz offen.'),
+      _c('Nichts - er kann sofort eine andere Firma beauftragen und der '
+          'Agentur die Kosten in Rechnung stellen', false,
+          'Ohne erfolglose Frist zur Nacherfüllung riskiert er, auf den '
+          'Kosten der Selbstvornahme sitzen zu bleiben.'),
+      _c('Erst Selbstvornahme versuchen, danach mindern, zuletzt '
+          'Schadensersatz verlangen', false,
+          'Nach gescheiterter Nacherfüllung gibt es keine feste Reihenfolge: '
+          'Selbstvornahme, Minderung oder Rücktritt und Schadensersatz stehen '
+          'nebeneinander, Schadensersatz lässt sich auch mit dem Rücktritt '
+          'verbinden.'),
+      _c('Die Agentur dreimal schriftlich mahnen', false,
+          'Drei Mahnungen verlangt das Gesetz nicht. Entscheidend ist eine '
+          'Frist zur Nacherfüllung.'),
     ],
     explanation:
-        'Der Vorrang der Nacherfüllung ist das Grundprinzip: Der '
-        'Auftragnehmer bekommt zuerst die Gelegenheit, selbst nachzubessern. '
-        'Erst wenn das scheitert oder eine gesetzte Frist fruchtlos '
-        'verstreicht, stehen die weiteren Rechte offen.\n'
-        'Praktische Konsequenz: Wer sofort mindert oder einen anderen '
-        'Dienstleister beauftragt, ohne eine Frist zur Nacherfüllung zu '
-        'setzen, verliert seine Ansprüche. Deshalb gehört in jede '
-        'Mangelanzeige eine konkrete Frist.',
+        'Beim Werkvertrag hat die Nacherfüllung Vorrang (§ 634 BGB): Der '
+        'Unternehmer darf den Mangel zuerst selbst beseitigen und wählt dabei '
+        'zwischen Nachbesserung und Neuherstellung. Erst nach erfolglosem '
+        'Fristablauf kann der Besteller den Mangel selbst beseitigen lassen '
+        'und Kostenersatz verlangen, die Vergütung mindern oder zurücktreten '
+        '- und zusätzlich Schadensersatz fordern, wenn der Unternehmer den '
+        'Mangel zu vertreten hat. Deshalb gehört in jede Mangelanzeige eine '
+        'konkrete Frist.',
   ),
 
   Question(
@@ -656,7 +672,7 @@ final List<Question> seedQsService = [
       _c('Gegenstand der Abnahme mit Verweis auf das Pflichtenheft', true,
           'Abgenommen wird gegen ein definiertes Soll - der Verweis stellt das her.'),
       _c('Liste der festgestellten Mängel mit Fristen zur Beseitigung', true,
-          'Der wichtigste Teil. Nicht protokollierte Mängel gelten bei vorbehaltloser Abnahme als akzeptiert.'),
+          'Der wichtigste Teil. Wer einen bekannten Mangel bei der Abnahme nicht vorbehält, verliert dafür Nacherfüllung, Selbstvornahme, Rücktritt und Minderung.'),
       _c('Erklärung, ob die Abnahme erfolgt, unter Vorbehalt erfolgt oder verweigert wird',
           true,
           'Diese Erklärung ist der eigentliche Rechtsakt.'),
@@ -672,7 +688,8 @@ final List<Question> seedQsService = [
         'Kunde beweisen, dass ein Mangel schon bei Abnahme vorlag.\n'
         'Deshalb ist das Abnahmeprotokoll kein Formalkram, sondern der '
         'wichtigste Zettel im Projekt. Wer bekannte Mängel nicht '
-        'protokolliert, verliert die Rechte darauf.',
+        'protokolliert, verliert die meisten Rechte darauf - nur ein '
+        'Anspruch auf Schadensersatz bleibt bestehen (§ 640 Abs. 3 BGB).',
   ),
 
   // ============================================== 07.04 Change Management
