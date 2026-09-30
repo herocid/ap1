@@ -31,7 +31,7 @@ class AreasScreen extends ConsumerWidget {
         actions: [
           IconButton(
             tooltip: 'Was 2025 gestrichen wurde',
-            onPressed: () => context.push('/katalog-änderungen'),
+            onPressed: () => context.push('/katalog-aenderungen'),
             icon: const Icon(Icons.rule_outlined),
           ),
         ],
@@ -53,7 +53,8 @@ class AreasScreen extends ConsumerWidget {
                 const SizedBox(height: Gap.xl),
                 const SectionHeader(
                   'Die sieben Bereiche',
-                  subtitle: 'Gliederung und Nummern folgen dem amtlichen '
+                  subtitle:
+                      'Gliederung und Nummern folgen dem amtlichen '
                       'Katalog ab 2025. Der Prozentwert ist dein Stand im '
                       'jeweiligen Bereich.',
                 ),
@@ -61,10 +62,12 @@ class AreasScreen extends ConsumerWidget {
                   _AreaCard(
                     area: area,
                     readiness: areaReadiness[area.id] ?? 0,
-                    questionCount: Topics.ofArea(area.id)
-                        .fold<int>(0, (s, t) => s + (poolSize[t.id] ?? 0)),
-                    cardCount: Topics.ofArea(area.id)
-                        .fold<int>(0, (s, t) => s + (cardCount[t.id] ?? 0)),
+                    questionCount: Topics.ofArea(
+                      area.id,
+                    ).fold<int>(0, (s, t) => s + (poolSize[t.id] ?? 0)),
+                    cardCount: Topics.ofArea(
+                      area.id,
+                    ).fold<int>(0, (s, t) => s + (cardCount[t.id] ?? 0)),
                     topicCount: Topics.ofArea(area.id).length,
                     onTap: () => context.push('/bereich/${area.id}'),
                   ),
@@ -76,8 +79,9 @@ class AreasScreen extends ConsumerWidget {
                   'Aufteilung in Themen darunter ist eine fachliche '
                   'Rekonstruktion - die amtlichen Unterkapitel-Titel sind '
                   'nicht frei veröffentlicht.',
-                  style: context.text.labelSmall
-                      ?.copyWith(color: context.c.textMuted),
+                  style: context.text.labelSmall?.copyWith(
+                    color: context.c.textMuted,
+                  ),
                 ),
               ],
             ),
@@ -147,8 +151,9 @@ class _AreaCard extends StatelessWidget {
                 const SizedBox(height: 2),
                 Text(
                   area.blurb,
-                  style: context.text.bodyMedium
-                      ?.copyWith(color: context.c.textMuted),
+                  style: context.text.bodyMedium?.copyWith(
+                    color: context.c.textMuted,
+                  ),
                 ),
                 const SizedBox(height: Gap.s),
                 TopicBar(confidence: readiness / 100, coverage: 0),
@@ -157,10 +162,7 @@ class _AreaCard extends StatelessWidget {
                   spacing: Gap.s,
                   runSpacing: Gap.xs,
                   children: [
-                    MetaChip(
-                      label: '$topicCount Themen',
-                      icon: Icons.list_alt,
-                    ),
+                    MetaChip(label: '$topicCount Themen', icon: Icons.list_alt),
                     MetaChip(
                       label: '$questionCount Aufgaben',
                       icon: Icons.quiz_outlined,

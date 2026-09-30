@@ -1,4 +1,4 @@
-# AP1 Trainer - Arbeitsanweisungen
+# AP1 Coach - Arbeitsanweisungen
 
 Flutter-Lern-App für die IHK-Abschlussprüfung Teil 1 (IT-Berufe, Katalog 2025).
 Repo: github.com/herocid/ap1, Branch `main`. Konzept: `docs/KONZEPT.md`.
@@ -13,7 +13,7 @@ $env:Path = "C:\Users\Student\develop\flutter\bin;C:\Program Files\Git\cmd;C:\Pr
 ```
 
 - Prüfen: `flutter analyze` und `flutter test` - beides muss vor jedem Commit sauber sein.
-- Web-Vorschau: `.claude/launch.json` (`flutter run -d web-server --web-port 8080`); nach
+- Web-Vorschau: `.claude/launch.json` (Port 8080 bzw. `ap1-coach-web` auf 8092); nach
   Code-Änderungen Server neu starten (kein Hot Reload in der Vorschau).
 - Commits: deutsche Conventional Commits (`feat:`, `fix:`, `content:`), Nachricht mit
   mehreren `-m` übergeben, letzte Zeile `Co-Authored-By: Claude <noreply@anthropic.com>`.
@@ -21,9 +21,20 @@ $env:Path = "C:\Users\Student\develop\flutter\bin;C:\Program Files\Git\cmd;C:\Pr
 
 ## Getroffene Entscheidungen (nicht neu verhandeln)
 
-- Design „modern und ruhig“ (Material 3), Farbwelt **Tinte und Messing** (`lib/core/theme/app_colors.dart`).
-  Kein Violett/Indigo, keine Verläufe, nichts, was nach generischer KI-App aussieht.
+- App-Name **AP1 Coach** (`kAppName` in `lib/widgets/brand.dart`); das Dart-Paket heißt
+  weiter `ap1_trainer`. Logo („A“ als Gipfel mit Fahne) ist gezeichnet (`LogoPainter`),
+  die App-Icons erzeugt `flutter test tool/generate_icons_test.dart`.
+- Farbwelt **IT-Blau und Orange** (`lib/core/theme/app_colors.dart`): Blau `#0B63CE` als
+  Marke, Orange als Komplementärfarbe für Motivation (Streak, Ziel), Google-Grün/-Rot für
+  richtig/falsch, Petrol für Hinweise. Keine Verläufe. Design modern (Material 3);
   Store-Qualität: keine abgeschnittenen Texte, keine Überläufe.
+- Maskottchen **Bit** (`lib/widgets/mascot.dart`), ein kleiner Roboter; führt in der
+  Einführung (`/einfuehrung`) durch die App und gibt auf Start-, Quiz- und Ergebnisseite Tipps.
+- Tabs: Start · Journey (lernen) · Quiz (abgefragt werden) · Karten · Statistik.
+  Routen nur ASCII (`/pruefung`, nicht `/prüfung` - Umlaute brechen im Web).
+- 20 Abzeichen (`Achievement` in `progress.dart`, Auswertung in
+  `lib/core/util/achievements.dart`), stehen oben in der Statistik. Die Namen der ersten
+  sieben Enum-Werte sind gespeichert und dürfen sich nicht ändern.
 - `test/screens_layout_test.dart` rendert alle Screens auf 320/375/412 px mit 100 % und
   130 % Schrift - neue Screens dort eintragen.
 - Offline-first: Inhalte als Dart-Daten im Repo, Nutzerdaten in `hive_ce` (kein Isar).
@@ -77,5 +88,5 @@ Vorlage für Stil und Tiefe: `nuggets_a03_netze.dart`, `cards_a03_systeme.dart`,
 Alle 134 Lektionen haben Lernschritte, Aufgaben und Karten. `test/nuggets_layout_test.dart`
 rendert jeden Lernschritt bei 320 px mit 100 % und 130 % Schrift.
 
-Offen: Redesign der Screens Lernen, Statistik, Aufgabe/Ergebnis; App-Icon und
-Startbildschirm; endgültiger App-Name (der Arbeitstitel „AP1 Trainer“ ist belegt).
+Offen: iOS-Icons ohne Alphakanal für den App Store; Journey-Screen und
+Aufgabenansicht an das neue Kachel-Design (`ActionTile`) angleichen.

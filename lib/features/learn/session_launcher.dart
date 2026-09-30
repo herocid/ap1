@@ -1,9 +1,12 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/util/question_selector.dart';
 import '../../data/models/progress.dart';
+import '../../data/models/question.dart';
 import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../state/session_controller.dart';
@@ -45,14 +48,17 @@ class SessionLauncher {
       return;
     }
 
-    final sessionTitle = title ??
+    final sessionTitle =
+        title ??
         (mistakesOnly
             ? 'Fehlerspeicher'
             : topicId != null
-                ? Topics.byId(topicId).title
-                : 'Tagesübung');
+            ? Topics.byId(topicId).title
+            : 'Tagesübung');
 
-    ref.read(sessionProvider.notifier).start(
+    ref
+        .read(sessionProvider.notifier)
+        .start(
           questions: questions,
           mode: topicId != null || subtopicId != null || mistakesOnly
               ? SessionMode.fokus
@@ -70,12 +76,59 @@ class SessionLauncher {
     );
     if (questions.isEmpty) return;
 
-    ref.read(sessionProvider.notifier).start(
+    ref
+        .read(sessionProvider.notifier)
+        .start(
           questions: questions,
           mode: SessionMode.uebung,
           title: 'Querbeet',
         );
     context.push('/session');
+  }
+
+  /// Kurztest: eine Zufallsaufgabe nach der anderen aus allen Bereichen,
+  /// ohne festes Ende.
+  static void kurztest(BuildContext context, WidgetRef ref) {
+    final pool = ref.read(questionsProvider);
+    final rnd = math.Random();
+    final first = pickRandom(pool, const {}, rnd);
+    if (first == null) return;
+
+    ref
+        .read(sessionProvider.notifier)
+        .start(
+          questions: [first],
+          mode: SessionMode.uebung,
+          title: 'Kurztest',
+          supply: (used) => pickRandom(pool, used, rnd),
+        );
+    context.push('/session');
+  }
+
+  /// Zieht erst ein Thema, dann eine Aufgabe daraus. So kommen kleine
+  /// Themen genauso oft dran wie große. Sind alle Aufgaben einmal
+  /// gelaufen, dürfen sie sich wiederholen.
+  @visibleForTesting
+  static Question? pickRandom(
+    List<Question> pool,
+    Set<String> used,
+    math.Random rnd,
+  ) {
+    final byTopic = <String, List<Question>>{};
+    for (final q in pool.where((q) => q.isExamRelevant)) {
+      byTopic.putIfAbsent(q.topicId, () => []).add(q);
+    }
+    if (byTopic.isEmpty) return null;
+
+    final fresh = {
+      for (final e in byTopic.entries)
+        if (e.value.any((q) => !used.contains(q.id)))
+          e.key: e.value.where((q) => !used.contains(q.id)).toList(),
+    };
+    final source = fresh.isEmpty ? byTopic : fresh;
+    final topics = source.keys.toList();
+    final list = source[topics[rnd.nextInt(topics.length)]]!;
+    return list[rnd.nextInt(list.length)];
   }
 
   static void exam(
@@ -89,7 +142,9 @@ class SessionLauncher {
     final questions = QuestionSelector.forExam(pool: pool, count: count);
     if (questions.isEmpty) return;
 
-    ref.read(sessionProvider.notifier).start(
+    ref
+        .read(sessionProvider.notifier)
+        .start(
           questions: questions,
           mode: SessionMode.pruefung,
           limit: limit,

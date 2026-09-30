@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/util/achievements.dart';
 import '../core/util/study_plan.dart';
 import '../data/models/exam_area.dart';
 import '../data/models/flashcard.dart';
@@ -20,8 +21,9 @@ final localStoreProvider = Provider<LocalStore>((ref) {
   throw UnimplementedError('localStoreProvider muss überschrieben werden');
 });
 
-final questionRepositoryProvider =
-    Provider<QuestionRepository>((ref) => createQuestionRepository());
+final questionRepositoryProvider = Provider<QuestionRepository>(
+  (ref) => createQuestionRepository(),
+);
 
 /// Der Aufgabenpool. Startet sofort mit den Seed-Daten und wird ersetzt,
 /// sobald Supabase geantwortet hat - so gibt es nie einen leeren Bildschirm.
@@ -31,10 +33,9 @@ final questionPoolProvider = FutureProvider<List<Question>>((ref) async {
 
 /// Synchroner Zugriff auf den Pool (Seed als Fallback während des Ladens).
 final questionsProvider = Provider<List<Question>>((ref) {
-  return ref.watch(questionPoolProvider).maybeWhen(
-        data: (qs) => qs,
-        orElse: () => kSeedQuestions,
-      );
+  return ref
+      .watch(questionPoolProvider)
+      .maybeWhen(data: (qs) => qs, orElse: () => kSeedQuestions);
 });
 
 final poolSizeProvider = Provider<Map<String, int>>((ref) {
@@ -49,7 +50,8 @@ final poolSizeProvider = Provider<Map<String, int>>((ref) {
 // ---------------------------------------------------------------- Profil
 
 class ProfileNotifier extends StateNotifier<UserProfile> {
-  ProfileNotifier(this._store) : super(_store.readProfile() ?? UserProfile.initial());
+  ProfileNotifier(this._store)
+    : super(_store.readProfile() ?? UserProfile.initial());
 
   final LocalStore _store;
 
@@ -75,15 +77,19 @@ class ProfileNotifier extends StateNotifier<UserProfile> {
   }
 
   void setThemeMode(ThemeMode m) => update((p) => p.copyWith(themeMode: m));
+
+  void markTutorialSeen() => update((p) => p.copyWith(tutorialSeen: true));
 }
 
-final profileProvider =
-    StateNotifierProvider<ProfileNotifier, UserProfile>((ref) {
+final profileProvider = StateNotifierProvider<ProfileNotifier, UserProfile>((
+  ref,
+) {
   return ProfileNotifier(ref.watch(localStoreProvider));
 });
 
-final themeModeProvider =
-    Provider<ThemeMode>((ref) => ref.watch(profileProvider).themeMode);
+final themeModeProvider = Provider<ThemeMode>(
+  (ref) => ref.watch(profileProvider).themeMode,
+);
 
 // -------------------------------------------------------------- Fortschritt
 
@@ -187,8 +193,8 @@ class ProgressNotifier extends StateNotifier<ProgressState> {
 
     final examRuns = s.history.where((r) => r.mode == SessionMode.pruefung);
     if (examRuns.isNotEmpty) {
-      final avg = examRuns.fold<double>(0, (a, r) => a + r.score) /
-          examRuns.length;
+      final avg =
+          examRuns.fold<double>(0, (a, r) => a + r.score) / examRuns.length;
       if (avg >= 0.5) earned.add(Achievement.simulant);
     }
 
@@ -196,10 +202,11 @@ class ProgressNotifier extends StateNotifier<ProgressState> {
   }
 }
 
-final progressProvider =
-    StateNotifierProvider<ProgressNotifier, ProgressState>((ref) {
-  return ProgressNotifier(ref.watch(localStoreProvider));
-});
+final progressProvider = StateNotifierProvider<ProgressNotifier, ProgressState>(
+  (ref) {
+    return ProgressNotifier(ref.watch(localStoreProvider));
+  },
+);
 
 /// Der Prüfungsreife-Wert (0..100), abgeleitet aus Fortschritt und Poolgröße.
 final readinessProvider = Provider<int>((ref) {
@@ -289,6 +296,16 @@ final dueCardsProvider = Provider<int>((ref) {
   return deck.dueCount(ref.watch(flashcardsProvider));
 });
 
+/// Fällige Wiederholungen - ohne Karten, die noch nie drankamen. „601
+/// fällig“ am ersten Tag wäre zwar technisch richtig, schreckt aber ab.
+final dueReviewsProvider = Provider<int>((ref) {
+  final deck = ref.watch(deckProvider);
+  return ref.watch(flashcardsProvider).where((c) {
+    final s = deck.stateOf(c.id);
+    return !s.isNew && s.isDue();
+  }).length;
+});
+
 // ------------------------------------------------------- Learning Journey
 
 final nuggetsProvider = Provider<List<Nugget>>((ref) => kSeedNuggets);
@@ -324,8 +341,9 @@ class JourneyNotifier extends StateNotifier<Set<String>> {
   }
 }
 
-final journeyProvider =
-    StateNotifierProvider<JourneyNotifier, Set<String>>((ref) {
+final journeyProvider = StateNotifierProvider<JourneyNotifier, Set<String>>((
+  ref,
+) {
   return JourneyNotifier(ref.watch(localStoreProvider));
 });
 
@@ -372,5 +390,22 @@ class SeenTheoryNotifier extends StateNotifier<Set<String>> {
 
 final seenTheoryProvider =
     StateNotifierProvider<SeenTheoryNotifier, Set<String>>((ref) {
-  return SeenTheoryNotifier(ref.watch(localStoreProvider));
+      return SeenTheoryNotifier(ref.watch(localStoreProvider));
+    });
+
+// ------------------------------------------------------------- Abzeichen
+
+/// Stand aller Abzeichen - abgeleitet aus Antworten, Journey und Karten.
+final achievementsProvider = Provider<Map<Achievement, AchievementStatus>>((
+  ref,
+) {
+  return evaluateAchievements(
+    progress: ref.watch(progressProvider),
+    lessonsDone: ref.watch(journeyProvider),
+    lessonCount: ref.watch(lessonsProvider).length,
+    deck: ref.watch(deckProvider),
+    cards: ref.watch(flashcardsProvider),
+    areaReadiness: ref.watch(areaReadinessProvider),
+    poolSize: ref.watch(poolSizeProvider),
+  );
 });

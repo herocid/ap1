@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/env.dart';
@@ -7,7 +8,9 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../data/models/profile.dart';
 import '../../state/providers.dart';
+import '../../widgets/brand.dart';
 import '../../widgets/common.dart';
+import '../../widgets/mascot.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -67,16 +70,20 @@ class SettingsScreen extends ConsumerWidget {
                         onTap: () async {
                           final picked = await showDatePicker(
                             context: context,
-                            initialDate: profile.examDate.isBefore(DateTime.now())
+                            initialDate:
+                                profile.examDate.isBefore(DateTime.now())
                                 ? DateTime.now()
                                 : profile.examDate,
                             firstDate: DateTime.now(),
-                            lastDate:
-                                DateTime.now().add(const Duration(days: 900)),
+                            lastDate: DateTime.now().add(
+                              const Duration(days: 900),
+                            ),
                             locale: const Locale('de', 'DE'),
                           );
                           if (picked != null) {
-                            notifier.update((p) => p.copyWith(examDate: picked));
+                            notifier.update(
+                              (p) => p.copyWith(examDate: picked),
+                            );
                           }
                         },
                       ),
@@ -114,8 +121,12 @@ class SettingsScreen extends ConsumerWidget {
                       ListTile(
                         contentPadding: EdgeInsets.zero,
                         leading: Icon(
-                          Env.hasSupabase ? Icons.cloud_done_outlined : Icons.cloud_off_outlined,
-                          color: Env.hasSupabase ? context.c.success : context.c.textMuted,
+                          Env.hasSupabase
+                              ? Icons.cloud_done_outlined
+                              : Icons.cloud_off_outlined,
+                          color: Env.hasSupabase
+                              ? context.c.success
+                              : context.c.textMuted,
                         ),
                         title: Text(
                           Env.hasSupabase
@@ -125,18 +136,20 @@ class SettingsScreen extends ConsumerWidget {
                         subtitle: Text(
                           Env.hasSupabase
                               ? 'Aufgaben werden vom Server geladen, '
-                                  'Fortschritt bleibt zusätzlich lokal.'
+                                    'Fortschritt bleibt zusätzlich lokal.'
                               : 'Alles läuft lokal mit den eingebauten '
-                                  'Aufgaben. Für die Server-Anbindung '
-                                  'SUPABASE_ANON_KEY per --dart-define setzen.',
+                                    'Aufgaben. Für die Server-Anbindung '
+                                    'SUPABASE_ANON_KEY per --dart-define setzen.',
                         ),
                         isThreeLine: true,
                       ),
                       Divider(color: context.c.border),
                       ListTile(
                         contentPadding: EdgeInsets.zero,
-                        leading: Icon(Icons.delete_outline,
-                            color: context.c.danger),
+                        leading: Icon(
+                          Icons.delete_outline,
+                          color: context.c.danger,
+                        ),
                         title: Text(
                           'Fortschritt zurücksetzen',
                           style: TextStyle(color: context.c.danger),
@@ -153,10 +166,23 @@ class SettingsScreen extends ConsumerWidget {
                 const SizedBox(height: Gap.xl),
 
                 const SectionHeader('Über die App'),
+                AppCard(
+                  padding: EdgeInsets.zero,
+                  child: ListTile(
+                    leading: const Mascot(size: 36),
+                    title: const Text('Einführung ansehen'),
+                    subtitle: const Text('Bit erklärt noch einmal die Tabs'),
+                    trailing: const Icon(Icons.chevron_right),
+                    onTap: () => context.push('/einfuehrung'),
+                  ),
+                ),
+                const SizedBox(height: Gap.s),
                 const AppCard(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      AppWordmark(size: 32),
+                      SizedBox(height: Gap.l),
                       Text(
                         'Alle Aufgaben sind eigene Formulierungen im Stil der '
                         'IHK-Abschlussprüfung Teil 1. Es werden keine '

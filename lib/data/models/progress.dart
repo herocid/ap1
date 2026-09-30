@@ -42,23 +42,25 @@ class AnswerRecord {
   bool get isCorrect => score >= 0.9999;
 
   Map<String, dynamic> toJson() => {
-        'question_id': questionId,
-        'topic_id': topicId,
-        'score': score,
-        'seconds': seconds,
-        'at': at.toIso8601String(),
-        'mode': mode.name,
-      };
+    'question_id': questionId,
+    'topic_id': topicId,
+    'score': score,
+    'seconds': seconds,
+    'at': at.toIso8601String(),
+    'mode': mode.name,
+  };
 
   factory AnswerRecord.fromJson(Map<String, dynamic> j) => AnswerRecord(
-        questionId: j['question_id'] as String,
-        topicId: j['topic_id'] as String,
-        score: (j['score'] as num).toDouble(),
-        seconds: (j['seconds'] as num).toInt(),
-        at: DateTime.parse(j['at'] as String),
-        mode: SessionMode.values
-            .firstWhere((m) => m.name == j['mode'], orElse: () => SessionMode.uebung),
-      );
+    questionId: j['question_id'] as String,
+    topicId: j['topic_id'] as String,
+    score: (j['score'] as num).toDouble(),
+    seconds: (j['seconds'] as num).toInt(),
+    at: DateTime.parse(j['at'] as String),
+    mode: SessionMode.values.firstWhere(
+      (m) => m.name == j['mode'],
+      orElse: () => SessionMode.uebung,
+    ),
+  );
 }
 
 /// Kennzahlen pro Thema, abgeleitet aus der Historie.
@@ -91,18 +93,50 @@ class TopicStat {
 /// Badges sind bewusst an Verhalten gekoppelt, das wirklich zum Bestehen
 /// beiträgt (Dranbleiben, Schwachstellen angehen, Simulation überstehen) -
 /// nicht an reine Nutzungsdauer.
+///
+/// Die Namen der ersten sieben Werte sind gespeichert und dürfen sich nicht
+/// ändern - sonst gingen bereits verdiente Abzeichen verloren.
 enum Achievement {
-  ersterTag('Erster Schritt', 'Erste Session abgeschlossen'),
-  woche('Sieben am Stück', '7 Tage Streak'),
-  netzplanProfi('Netzplan-Profi', '10 Netzplan-Aufgaben fehlerfrei'),
-  fehlerjaeger('Fehlerjäger', '20 früher falsche Aufgaben korrigiert'),
-  simulant('Ernstfall bestanden', 'Prüfungssimulation mit >= 50 % beendet'),
-  allrounder('Allrounder', 'In jedem Thema mindestens 5 Aufgaben'),
-  hundert('Hundert', '100 Aufgaben insgesamt');
+  // Start
+  ersterTag('Erster Schritt', 'Die erste Aufgabe beantwortet', 1),
+  warmgelaufen('Warmgelaufen', '25 Aufgaben beantwortet', 25),
 
-  const Achievement(this.title, this.description);
+  // Journey
+  ersteLektion('Neugierig', 'Die erste Lektion abgeschlossen', 1),
+  wissbegierig('Wissbegierig', '10 Lektionen abgeschlossen', 10),
+  halbzeit('Halbzeit', 'Die Hälfte der Journey geschafft', 67),
+  stoffKomplett(
+    'Stoff komplett',
+    'Alle Lektionen der Journey abgeschlossen',
+    134,
+  ),
+
+  // Dranbleiben
+  dranbleiber('Dranbleiber', '3 Tage am Stück gelernt', 3),
+  woche('Sieben am Stück', '7 Tage am Stück gelernt', 7),
+  eisern('Eiserner Wille', '30 Tage am Stück gelernt', 30),
+  hundert('Hundert', '100 Aufgaben beantwortet', 100),
+  aufgabenprofi('Aufgabenprofi', '500 Aufgaben beantwortet', 500),
+
+  // Können
+  treffsicher('Treffsicher', '10 Aufgaben hintereinander richtig', 10),
+  fehlerjaeger('Fehlerjäger', '20 früher falsche Aufgaben später richtig', 20),
+  netzplanProfi('Netzplan-Profi', '10 Netzplan-Aufgaben fehlerfrei', 10),
+  allrounder('Allrounder', 'In jedem Thema mindestens 5 Aufgaben', 35),
+  bereichsprofi('Bereichsprofi', 'Einen Prüfungsbereich zu 80 % im Griff', 80),
+  kartenstapel('Kartenstapel', '50 Karteikarten gelernt', 50),
+  langzeit('Langzeit-Gedächtnis', '100 Karten in Fach 4 oder 5', 100),
+
+  // Prüfung
+  simulant('Ernstfall bestanden', 'Eine Prüfungssimulation mit mind. 50 %', 50),
+  bestnote('Note 1', 'Eine Prüfungssimulation mit mind. 92 %', 92);
+
+  const Achievement(this.title, this.description, this.target);
   final String title;
   final String description;
+
+  /// Zielwert, an dem das Abzeichen freigeschaltet wird.
+  final int target;
 }
 
 @immutable
@@ -127,9 +161,9 @@ class ProgressState {
   /// fürs Versuchen. Kein XP-Multiplikator für Tempo - das würde zu
   /// Ratewürfeln erziehen.
   int get xp => history.fold<int>(
-        0,
-        (sum, r) => sum + math.max(2, (r.score * 10).round()),
-      );
+    0,
+    (sum, r) => sum + math.max(2, (r.score * 10).round()),
+  );
 
   int get level => math.max(1, (math.sqrt(xp / 45) + 1).floor());
 
@@ -145,10 +179,12 @@ class ProgressState {
   int answeredToday() {
     final now = DateTime.now();
     return history
-        .where((r) =>
-            r.at.year == now.year &&
-            r.at.month == now.month &&
-            r.at.day == now.day)
+        .where(
+          (r) =>
+              r.at.year == now.year &&
+              r.at.month == now.month &&
+              r.at.day == now.day,
+        )
         .length;
   }
 
@@ -247,42 +283,41 @@ class ProgressState {
     int? longestStreak,
     DateTime? lastActiveDay,
     Set<Achievement>? badges,
-  }) =>
-      ProgressState(
-        history: history ?? this.history,
-        streak: streak ?? this.streak,
-        longestStreak: longestStreak ?? this.longestStreak,
-        lastActiveDay: lastActiveDay ?? this.lastActiveDay,
-        badges: badges ?? this.badges,
-      );
+  }) => ProgressState(
+    history: history ?? this.history,
+    streak: streak ?? this.streak,
+    longestStreak: longestStreak ?? this.longestStreak,
+    lastActiveDay: lastActiveDay ?? this.lastActiveDay,
+    badges: badges ?? this.badges,
+  );
 
   /// Alles außer der Historie. Die Historie wird Eintrag für Eintrag
   /// angehängt; nur diese Kennzahlen werden bei jeder Antwort überschrieben.
   Map<String, dynamic> metaToJson() => {
-        'streak': streak,
-        'longest_streak': longestStreak,
-        'last_active_day': lastActiveDay?.toIso8601String(),
-        'badges': badges.map((b) => b.name).toList(),
-      };
+    'streak': streak,
+    'longest_streak': longestStreak,
+    'last_active_day': lastActiveDay?.toIso8601String(),
+    'badges': badges.map((b) => b.name).toList(),
+  };
 
   Map<String, dynamic> toJson() => {
-        'history': history.map((r) => r.toJson()).toList(),
-        ...metaToJson(),
-      };
+    'history': history.map((r) => r.toJson()).toList(),
+    ...metaToJson(),
+  };
 
   factory ProgressState.fromJson(Map<String, dynamic> j) => ProgressState(
-        history: ((j['history'] as List?) ?? const [])
-            .map((e) => AnswerRecord.fromJson((e as Map).cast<String, dynamic>()))
-            .toList(),
-        streak: (j['streak'] as num?)?.toInt() ?? 0,
-        longestStreak: (j['longest_streak'] as num?)?.toInt() ?? 0,
-        lastActiveDay: DateTime.tryParse((j['last_active_day'] ?? '') as String),
-        badges: ((j['badges'] as List?) ?? const [])
-            .cast<String>()
-            .map((s) => Achievement.values.where((b) => b.name == s).firstOrNull)
-            .whereType<Achievement>()
-            .toSet(),
-      );
+    history: ((j['history'] as List?) ?? const [])
+        .map((e) => AnswerRecord.fromJson((e as Map).cast<String, dynamic>()))
+        .toList(),
+    streak: (j['streak'] as num?)?.toInt() ?? 0,
+    longestStreak: (j['longest_streak'] as num?)?.toInt() ?? 0,
+    lastActiveDay: DateTime.tryParse((j['last_active_day'] ?? '') as String),
+    badges: ((j['badges'] as List?) ?? const [])
+        .cast<String>()
+        .map((s) => Achievement.values.where((b) => b.name == s).firstOrNull)
+        .whereType<Achievement>()
+        .toSet(),
+  );
 
   String encode() => jsonEncode(toJson());
   static ProgressState decode(String s) =>

@@ -16,18 +16,25 @@ class AppShell extends StatelessWidget {
 
   final StatefulNavigationShell navigationShell;
 
-  static const _destinations = <({IconData icon, IconData active, String label})>[
-    (icon: Icons.home_outlined, active: Icons.home_rounded, label: 'Start'),
-    (icon: Icons.menu_book_outlined, active: Icons.menu_book, label: 'Lernen'),
-    (icon: Icons.route_outlined, active: Icons.route, label: 'Journey'),
-    (icon: Icons.style_outlined, active: Icons.style, label: 'Karten'),
-    (icon: Icons.insights_outlined, active: Icons.insights, label: 'Statistik'),
-  ];
+  /// Reihenfolge nach dem Lernweg: neuen Stoff lernen (Journey), abfragen
+  /// (Quiz), wiederholen (Karten), Stand ansehen (Statistik).
+  static const _destinations =
+      <({IconData icon, IconData active, String label})>[
+        (icon: Icons.home_outlined, active: Icons.home_rounded, label: 'Start'),
+        (icon: Icons.route_outlined, active: Icons.route, label: 'Journey'),
+        (icon: Icons.quiz_outlined, active: Icons.quiz, label: 'Quiz'),
+        (icon: Icons.style_outlined, active: Icons.style, label: 'Karten'),
+        (
+          icon: Icons.insights_outlined,
+          active: Icons.insights,
+          label: 'Statistik',
+        ),
+      ];
 
   void _onTap(int index) => navigationShell.goBranch(
-        index,
-        initialLocation: index == navigationShell.currentIndex,
-      );
+    index,
+    initialLocation: index == navigationShell.currentIndex,
+  );
 
   @override
   Widget build(BuildContext context) {

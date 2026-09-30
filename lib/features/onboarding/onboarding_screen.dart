@@ -10,6 +10,8 @@ import '../../data/models/profile.dart';
 import '../../data/models/exam_area.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
+import '../../widgets/brand.dart';
+import '../../widgets/mascot.dart';
 
 /// Onboarding in vier Schritten.
 ///
@@ -54,20 +56,24 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 
   void _finish() {
-    ref.read(profileProvider.notifier).completeOnboarding(
+    ref
+        .read(profileProvider.notifier)
+        .completeOnboarding(
           name: _nameController.text.trim(),
           beruf: _beruf,
           examDate: _examDate,
           intensitaet: _intensitaet,
         );
-    context.go('/');
+    context.go('/einfuehrung');
   }
 
   int get _daysLeft {
     final now = DateTime.now();
-    return DateTime(_examDate.year, _examDate.month, _examDate.day)
-        .difference(DateTime(now.year, now.month, now.day))
-        .inDays;
+    return DateTime(
+      _examDate.year,
+      _examDate.month,
+      _examDate.day,
+    ).difference(DateTime(now.year, now.month, now.day)).inDays;
   }
 
   @override
@@ -146,9 +152,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                         ? _finish
                         : () => _go(_step + 1),
                     child: Text(
-                      _step == _stepCount - 1
-                          ? 'Lernplan erstellen'
-                          : 'Weiter',
+                      _step == _stepCount - 1 ? 'Lernplan erstellen' : 'Weiter',
                     ),
                   ),
                 ),
@@ -166,11 +170,13 @@ class _StepScaffold extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.child,
+    this.leading,
   });
 
   final String title;
   final String subtitle;
   final Widget child;
+  final Widget? leading;
 
   @override
   Widget build(BuildContext context) {
@@ -179,6 +185,7 @@ class _StepScaffold extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          if (leading != null) ...[leading!, const SizedBox(height: Gap.xl)],
           Text(title, style: context.text.displaySmall),
           const SizedBox(height: Gap.s),
           Text(
@@ -201,7 +208,15 @@ class _WelcomeStep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _StepScaffold(
-      title: 'AP1 Trainer',
+      leading: const Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          AppLogo(size: 52),
+          Spacer(),
+          Mascot(mood: MascotMood.wave, size: 84),
+        ],
+      ),
+      title: kAppName,
       subtitle:
           'Alle sieben Bereiche des Prüfungskatalogs ab 2025 - von '
           'Projektmanagement über Netzwerke bis Datenschutz. Mit '
@@ -213,8 +228,8 @@ class _WelcomeStep extends StatelessWidget {
             controller: controller,
             textCapitalization: TextCapitalization.words,
             decoration: const InputDecoration(
-              labelText: 'Wie sollen wir dich nennen? (optional)',
-              hintText: 'Vorname',
+              labelText: 'Dein Vorname (optional)',
+              hintText: 'So spricht Bit dich an',
             ),
           ),
           const SizedBox(height: Gap.xl),
@@ -230,7 +245,9 @@ class _WelcomeStep extends StatelessWidget {
           const SizedBox(height: Gap.xl),
           Text(
             'Die sieben Bereiche des Prüfungskatalogs 2025',
-            style: context.text.labelSmall?.copyWith(color: context.c.textMuted),
+            style: context.text.labelSmall?.copyWith(
+              color: context.c.textMuted,
+            ),
           ),
           const SizedBox(height: Gap.s),
           // Die sieben Bereiche statt aller 35 Themen: Hier soll man den
@@ -244,8 +261,9 @@ class _WelcomeStep extends StatelessWidget {
                     width: 26,
                     child: Text(
                       a.number,
-                      style: context.text.labelSmall
-                          ?.copyWith(color: context.c.textMuted),
+                      style: context.text.labelSmall?.copyWith(
+                        color: context.c.textMuted,
+                      ),
                     ),
                   ),
                   Icon(a.icon, size: 16, color: context.scheme.primary),
@@ -326,21 +344,23 @@ class _ExamDateStep extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  fmt.format(value),
-                  style: context.text.titleMedium,
-                ),
+                Text(fmt.format(value), style: context.text.titleMedium),
                 const SizedBox(height: Gap.xs),
                 Row(
                   children: [
-                    Text('$daysLeft',
-                        style: AppType.numeric(
-                            size: 30, color: context.scheme.primary)),
+                    Text(
+                      '$daysLeft',
+                      style: AppType.numeric(
+                        size: 30,
+                        color: context.scheme.primary,
+                      ),
+                    ),
                     const SizedBox(width: Gap.s),
                     Text(
                       daysLeft == 1 ? 'Tag verbleibend' : 'Tage verbleibend',
-                      style: context.text.bodyMedium
-                          ?.copyWith(color: context.c.textMuted),
+                      style: context.text.bodyMedium?.copyWith(
+                        color: context.c.textMuted,
+                      ),
                     ),
                   ],
                 ),
@@ -363,9 +383,12 @@ class _ExamDateStep extends StatelessWidget {
             ),
           ),
           const SizedBox(height: Gap.xl),
-          Text('Übliche IHK-Termine',
-              style: context.text.labelSmall
-                  ?.copyWith(color: context.c.textMuted)),
+          Text(
+            'Übliche IHK-Termine',
+            style: context.text.labelSmall?.copyWith(
+              color: context.c.textMuted,
+            ),
+          ),
           const SizedBox(height: Gap.s),
           Wrap(
             spacing: Gap.s,
@@ -382,8 +405,9 @@ class _ExamDateStep extends StatelessWidget {
           Text(
             'Die genauen Termine legt deine IHK fest - prüfe sie im Zweifel '
             'in deiner Einladung zur Prüfung.',
-            style:
-                context.text.labelSmall?.copyWith(color: context.c.textMuted),
+            style: context.text.labelSmall?.copyWith(
+              color: context.c.textMuted,
+            ),
           ),
         ],
       ),

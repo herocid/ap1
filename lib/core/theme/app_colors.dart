@@ -9,47 +9,48 @@ import 'package:flutter/material.dart';
 class AppColors {
   const AppColors._();
 
-  // Farbwelt "Tinte und Messing": Tintenblau für Aktionen, warmes Papier als
-  // Fläche, Messing als einziger warmer Akzent. Bewusst kein Violett/Indigo -
-  // das ist der Standard-Look generischer KI- und EdTech-Apps.
+  // Farbwelt "IT-Blau und Orange": ein kräftiges Blau wie bei SAP,
+  // Salesforce oder Google als Markenfarbe, dazu Orange als Komplementär-
+  // farbe für alles, was motivieren soll (Streak, Tagesziel, Akzente).
+  // Klare, kühle Flächen - so sehen professionelle IT-Werkzeuge aus.
 
-  // Marke: Tintenblau. Im Dunkelmodus ein gedecktes Stahlblau, weil Tinte
-  // auf dunklem Grund verschwindet.
-  static const brand = Color(0xFF1F2A44);
-  static const brandDark = Color(0xFFA9B9D6);
+  // Marke: IT-Blau. Im Dunkelmodus heller, damit es auf Nachtblau leuchtet.
+  static const brand = Color(0xFF0B63CE);
+  static const brandDark = Color(0xFF6FA8FF);
 
   // Fortschritt / "geschafft".
-  static const success = Color(0xFF2F6B4F);
-  static const successDark = Color(0xFF6FBF93);
+  static const success = Color(0xFF1E8E3E);
+  static const successDark = Color(0xFF5BD17A);
 
-  // Messing: Streak, Tagesziel, kritischer Pfad, Zeitwarnung.
-  static const flame = Color(0xFFA8792A);
-  static const flameDark = Color(0xFFD4A95A);
+  // Orange (Komplementärfarbe): Streak, Tagesziel, kritischer Pfad,
+  // Zeitwarnung. Der Name "flame" ist historisch.
+  static const flame = Color(0xFFD25E0A);
+  static const flameDark = Color(0xFFFFA24D);
 
-  // Ziegelrot für falsche Antworten - deutlich, aber nicht grell.
-  static const danger = Color(0xFFA63D32);
-  static const dangerDark = Color(0xFFE58A7F);
+  // Rot für falsche Antworten.
+  static const danger = Color(0xFFD93025);
+  static const dangerDark = Color(0xFFFF7B72);
 
-  // Schieferblau für Erklärungen und Merksätze.
-  static const info = Color(0xFF2F5D7C);
-  static const infoDark = Color(0xFF8DB3D1);
+  // Petrol für Erklärungen und Merksätze - abgesetzt vom Marken-Blau.
+  static const info = Color(0xFF00897B);
+  static const infoDark = Color(0xFF4DD0C4);
 
-  // Flächen hell: warmes Papier statt kaltem Grauweiß.
-  static const lightBg = Color(0xFFF6F4EF);
-  static const lightSurface = Color(0xFFFFFDF8);
-  static const lightSurfaceAlt = Color(0xFFEEEAE1);
-  static const lightBorder = Color(0xFFE4E0D6);
-  static const lightText = Color(0xFF15181F);
-  static const lightTextMuted = Color(0xFF6B6A63);
+  // Flächen hell: klares, leicht kühles Weiß.
+  static const lightBg = Color(0xFFF3F6FB);
+  static const lightSurface = Color(0xFFFFFFFF);
+  static const lightSurfaceAlt = Color(0xFFE8EEF6);
+  static const lightBorder = Color(0xFFDCE3ED);
+  static const lightText = Color(0xFF0F172A);
+  static const lightTextMuted = Color(0xFF5B6576);
 
-  // Flächen dunkel: warmes Anthrazit, nicht reines Schwarz - sonst
+  // Flächen dunkel: tiefes Nachtblau, nicht reines Schwarz - sonst
   // "schwimmt" Text auf OLED-Displays.
-  static const darkBg = Color(0xFF121211);
-  static const darkSurface = Color(0xFF1A1A19);
-  static const darkSurfaceAlt = Color(0xFF232321);
-  static const darkBorder = Color(0xFF2F2E2B);
-  static const darkText = Color(0xFFF2EFE8);
-  static const darkTextMuted = Color(0xFFA3A097);
+  static const darkBg = Color(0xFF0D1321);
+  static const darkSurface = Color(0xFF151C2C);
+  static const darkSurfaceAlt = Color(0xFF1E2738);
+  static const darkBorder = Color(0xFF2A3447);
+  static const darkText = Color(0xFFEEF2F8);
+  static const darkTextMuted = Color(0xFF9AA6BA);
 }
 
 /// Rollen-basierter Zugriff auf semantische Farben, damit Widgets nicht
@@ -84,13 +85,13 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
 
   static const light = AppSemanticColors(
     success: AppColors.success,
-    successBg: Color(0xFFE6EFE9),
+    successBg: Color(0xFFE6F4EA),
     danger: AppColors.danger,
-    dangerBg: Color(0xFFF6E5E2),
+    dangerBg: Color(0xFFFCE8E6),
     flame: AppColors.flame,
-    flameBg: Color(0xFFF3EAD7),
+    flameBg: Color(0xFFFEEFE3),
     info: AppColors.info,
-    infoBg: Color(0xFFE4ECF2),
+    infoBg: Color(0xFFE0F2F1),
     surfaceAlt: AppColors.lightSurfaceAlt,
     border: AppColors.lightBorder,
     textMuted: AppColors.lightTextMuted,
@@ -98,13 +99,13 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
 
   static const dark = AppSemanticColors(
     success: AppColors.successDark,
-    successBg: Color(0xFF16281F),
+    successBg: Color(0xFF12291B),
     danger: AppColors.dangerDark,
-    dangerBg: Color(0xFF34191A),
+    dangerBg: Color(0xFF3A1714),
     flame: AppColors.flameDark,
-    flameBg: Color(0xFF2E2616),
+    flameBg: Color(0xFF36230F),
     info: AppColors.infoDark,
-    infoBg: Color(0xFF172430),
+    infoBg: Color(0xFF0F2B2A),
     surfaceAlt: AppColors.darkSurfaceAlt,
     border: AppColors.darkBorder,
     textMuted: AppColors.darkTextMuted,

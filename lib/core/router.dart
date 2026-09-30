@@ -14,6 +14,8 @@ import '../features/exam/exam_intro_screen.dart';
 import '../features/learn/result_screen.dart';
 import '../features/learn/session_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
+import '../features/onboarding/tutorial_screen.dart';
+import '../features/quiz/quiz_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../features/shell/app_shell.dart';
 import '../features/stats/stats_screen.dart';
@@ -51,7 +53,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const ResultScreen(),
       ),
       GoRoute(
-        path: '/prüfung',
+        path: '/pruefung',
         parentNavigatorKey: _rootKey,
         builder: (context, state) => const ExamIntroScreen(),
       ),
@@ -69,9 +71,19 @@ final routerProvider = Provider<GoRouter>((ref) {
             AreaDetailScreen(areaId: state.pathParameters['areaId']!),
       ),
       GoRoute(
-        path: '/katalog-änderungen',
+        path: '/katalog-aenderungen',
         parentNavigatorKey: _rootKey,
         builder: (context, state) => const CatalogChangesScreen(),
+      ),
+      GoRoute(
+        path: '/themen',
+        parentNavigatorKey: _rootKey,
+        builder: (context, state) => const AreasScreen(),
+      ),
+      GoRoute(
+        path: '/einfuehrung',
+        parentNavigatorKey: _rootKey,
+        builder: (context, state) => const TutorialScreen(),
       ),
       GoRoute(
         path: '/einstellungen',
@@ -98,16 +110,16 @@ final routerProvider = Provider<GoRouter>((ref) {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: '/themen',
-                builder: (context, state) => const AreasScreen(),
+                path: '/journey',
+                builder: (context, state) => const JourneyScreen(),
               ),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: '/journey',
-                builder: (context, state) => const JourneyScreen(),
+                path: '/quiz',
+                builder: (context, state) => const QuizScreen(),
               ),
             ],
           ),

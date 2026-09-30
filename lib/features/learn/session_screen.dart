@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -38,7 +39,7 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
   }
 
   void _maybeShowTheory(SessionState s) {
-    if (_theoryChecked || s.isExam) return;
+    if (_theoryChecked || s.isExam || s.endless) return;
     _theoryChecked = true;
 
     final topicId = s.items.first.question.topicId;
@@ -60,6 +61,17 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
     );
   }
 
+  /// Kurztest beenden: Wer schon etwas beantwortet hat, sieht seine
+  /// Auswertung - wer gleich wieder geht, landet ohne Umweg auf der Startseite.
+  void _endKurztest(SessionState s, SessionController controller) {
+    if (s.checkedCount == 0) {
+      controller.clear();
+      context.go('/');
+    } else {
+      controller.finish();
+    }
+  }
+
   Future<bool> _confirmLeave(SessionState s) async {
     if (s.finished) return true;
     final leave = await showDialog<bool>(
@@ -69,9 +81,9 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
         content: Text(
           s.isExam
               ? 'Die Simulation wird nicht gewertet und der Versuch geht '
-                  'verloren.'
+                    'verloren.'
               : 'Bereits geprüfte Aufgaben bleiben in deiner Statistik. '
-                  'Der Rest der Runde verfällt.',
+                    'Der Rest der Runde verfällt.',
         ),
         actions: [
           TextButton(
@@ -124,6 +136,10 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
       canPop: false,
       onPopInvokedWithResult: (didPop, _) async {
         if (didPop) return;
+        if (session.endless) {
+          _endKurztest(session, controller);
+          return;
+        }
         if (await _confirmLeave(session)) {
           controller.clear();
           if (context.mounted) context.go('/');
@@ -135,6 +151,10 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
             icon: const Icon(Icons.close),
             tooltip: 'Beenden',
             onPressed: () async {
+              if (session.endless) {
+                _endKurztest(session, controller);
+                return;
+              }
               if (await _confirmLeave(session)) {
                 controller.clear();
                 if (context.mounted) context.go('/');
@@ -146,14 +166,33 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
             children: [
               Text(session.title, style: context.text.titleMedium),
               Text(
-                'Aufgabe ${session.index + 1} von ${session.items.length}',
-                style: context.text.labelSmall
-                    ?.copyWith(color: context.c.textMuted),
+                session.endless
+                    ? 'Frage ${session.index + 1}  ·  '
+                          '${session.correctCount} richtig'
+                    : 'Aufgabe ${session.index + 1} von ${session.items.length}',
+                style: context.text.labelSmall?.copyWith(
+                  color: context.c.textMuted,
+                ),
               ),
             ],
           ),
           actions: [
-            if (session.isExam) ...[
+            if (session.endless) ...[
+              if (session.correctStreak >= 3)
+                Padding(
+                  padding: const EdgeInsets.only(right: Gap.xs),
+                  child: MetaChip(
+                    label: '${session.correctStreak} in Folge',
+                    icon: Icons.local_fire_department,
+                    color: context.c.flame,
+                  ),
+                ),
+              TextButton(
+                onPressed: () => _endKurztest(session, controller),
+                child: const Text('Beenden'),
+              ),
+              const SizedBox(width: Gap.xs),
+            ] else if (session.isExam) ...[
               IconButton(
                 tooltip: item.flagged
                     ? 'Markierung entfernen'
@@ -177,13 +216,21 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
                 icon: const Icon(Icons.menu_book_outlined),
               ),
           ],
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(4),
-            child: LinearProgressIndicator(
-              value: (session.index + 1) / session.items.length,
-              minHeight: 4,
-            ),
-          ),
+          // Der Kurztest hat kein Ende - ein Fortschrittsbalken wäre gelogen.
+          bottom: session.endless
+              ? null
+              : PreferredSize(
+                  preferredSize: const Size.fromHeight(4),
+                  child: TweenAnimationBuilder<double>(
+                    tween: Tween(
+                      end: (session.index + 1) / session.items.length,
+                    ),
+                    duration: const Duration(milliseconds: 350),
+                    curve: Curves.easeOutCubic,
+                    builder: (context, v, _) =>
+                        LinearProgressIndicator(value: v, minHeight: 4),
+                  ),
+                ),
         ),
         body: SafeArea(
           child: ListView(
@@ -191,14 +238,33 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
             padding: const EdgeInsets.fromLTRB(Gap.l, Gap.l, Gap.l, Gap.xxxl),
             children: [
               ReadableWidth(
-                child: QuestionView(
-                  key: ValueKey(item.question.id),
-                  question: item.question,
-                  answer: item.answer,
-                  onChanged: controller.setAnswer,
-                  revealed: item.checked,
-                  grade: item.grade,
-                  showExplanation: !session.isExam,
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 260),
+                  switchInCurve: Curves.easeOutCubic,
+                  switchOutCurve: Curves.easeInCubic,
+                  transitionBuilder: (child, anim) => FadeTransition(
+                    opacity: anim,
+                    child: SlideTransition(
+                      position: Tween(
+                        begin: const Offset(0.04, 0),
+                        end: Offset.zero,
+                      ).animate(anim),
+                      child: child,
+                    ),
+                  ),
+                  layoutBuilder: (current, previous) => Stack(
+                    alignment: Alignment.topCenter,
+                    children: [...previous, ?current],
+                  ),
+                  child: QuestionView(
+                    key: ValueKey('${session.index}-${item.question.id}'),
+                    question: item.question,
+                    answer: item.answer,
+                    onChanged: controller.setAnswer,
+                    revealed: item.checked,
+                    grade: item.grade,
+                    showExplanation: !session.isExam,
+                  ),
                 ),
               ),
             ],
@@ -208,6 +274,12 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
           session: session,
           onCheck: () {
             controller.check();
+            final grade = ref.read(sessionProvider)?.current.grade;
+            if (grade != null) {
+              grade.isCorrect
+                  ? HapticFeedback.lightImpact()
+                  : HapticFeedback.mediumImpact();
+            }
             _scrollToTop();
           },
           onNext: () {
@@ -241,9 +313,9 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
         content: Text(
           open == 0
               ? 'Alle Aufgaben sind bearbeitet. Nach der Abgabe siehst du die '
-                  'Auswertung mit allen Erklärungen.'
+                    'Auswertung mit allen Erklärungen.'
               : '$open ${open == 1 ? "Aufgabe ist" : "Aufgaben sind"} noch '
-                  'unbeantwortet. Unbeantwortete Aufgaben zählen mit 0 Punkten.',
+                    'unbeantwortet. Unbeantwortete Aufgaben zählen mit 0 Punkten.',
         ),
         actions: [
           TextButton(
@@ -274,8 +346,7 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
               const SizedBox(height: Gap.xs),
               Text(
                 '${s.answeredCount} von ${s.items.length} bearbeitet',
-                style:
-                    ctx.text.labelSmall?.copyWith(color: ctx.c.textMuted),
+                style: ctx.text.labelSmall?.copyWith(color: ctx.c.textMuted),
               ),
               const SizedBox(height: Gap.l),
               Wrap(
@@ -322,8 +393,9 @@ class _CountdownBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final warn = remaining.inMinutes < 5;
     final critical = remaining.inMinutes < 1;
-    final color =
-        critical ? context.c.danger : (warn ? context.c.flame : context.c.textMuted);
+    final color = critical
+        ? context.c.danger
+        : (warn ? context.c.flame : context.c.textMuted);
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: Gap.m, vertical: 6),
@@ -331,8 +403,8 @@ class _CountdownBadge extends StatelessWidget {
         color: critical
             ? context.c.dangerBg
             : warn
-                ? context.c.flameBg
-                : context.c.surfaceAlt,
+            ? context.c.flameBg
+            : context.c.surfaceAlt,
         borderRadius: BorderRadius.circular(Radii.pill),
       ),
       child: Row(
@@ -340,8 +412,10 @@ class _CountdownBadge extends StatelessWidget {
         children: [
           Icon(Icons.timer_outlined, size: 15, color: color),
           const SizedBox(width: 5),
-          Text(formatDuration(remaining),
-              style: AppType.numeric(size: 14, color: color)),
+          Text(
+            formatDuration(remaining),
+            style: AppType.numeric(size: 14, color: color),
+          ),
         ],
       ),
     );
@@ -366,8 +440,8 @@ class _OverviewDot extends StatelessWidget {
     final color = item.flagged
         ? context.c.flame
         : item.hasAnswer
-            ? context.scheme.primary
-            : context.c.border;
+        ? context.scheme.primary
+        : context.c.border;
 
     return InkWell(
       onTap: onTap,
@@ -409,9 +483,10 @@ class _LegendDot extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 5),
-        Text(label,
-            style:
-                context.text.labelSmall?.copyWith(color: context.c.textMuted)),
+        Text(
+          label,
+          style: context.text.labelSmall?.copyWith(color: context.c.textMuted),
+        ),
       ],
     );
   }
@@ -483,15 +558,19 @@ class _BottomBar extends StatelessWidget {
                       Expanded(
                         child: item.checked
                             ? FilledButton.icon(
-                                onPressed: session.isLast ? onFinish : onNext,
+                                onPressed: session.isLast && !session.endless
+                                    ? onFinish
+                                    : onNext,
                                 icon: Icon(
-                                  session.isLast
+                                  session.isLast && !session.endless
                                       ? Icons.flag_outlined
                                       : Icons.arrow_forward,
                                 ),
                                 label: Text(
-                                  session.isLast
+                                  session.isLast && !session.endless
                                       ? 'Auswertung ansehen'
+                                      : session.endless
+                                      ? 'Nächste Frage'
                                       : 'Nächste Aufgabe',
                                 ),
                               )

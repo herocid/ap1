@@ -20,38 +20,44 @@ class AppTheme {
   static ThemeData _build(Brightness brightness) {
     final isDark = brightness == Brightness.dark;
 
-    final scheme = ColorScheme.fromSeed(
-      seedColor: AppColors.brand,
-      brightness: brightness,
-    ).copyWith(
-      primary: isDark ? AppColors.brandDark : AppColors.brand,
-      onPrimary: isDark ? const Color(0xFF121826) : Colors.white,
-      // fromSeed leitet Neben- und Containertöne selbst ab - die können
-      // violett-stichig ausfallen (z. B. ausgewählte Chips). Deshalb alles,
-      // was Material-Widgets von selbst benutzen, explizit aus der Palette.
-      primaryContainer:
-          isDark ? const Color(0xFF263047) : const Color(0xFFE3E7EF),
-      onPrimaryContainer: isDark ? AppColors.darkText : AppColors.brand,
-      secondary: isDark ? AppColors.brandDark : AppColors.brand,
-      onSecondary: isDark ? const Color(0xFF121826) : Colors.white,
-      secondaryContainer:
-          isDark ? const Color(0xFF263047) : const Color(0xFFE3E7EF),
-      onSecondaryContainer: isDark ? AppColors.darkText : AppColors.brand,
-      tertiary: isDark ? AppColors.flameDark : AppColors.flame,
-      onTertiary: isDark ? const Color(0xFF1C160B) : Colors.white,
-      surface: isDark ? AppColors.darkSurface : AppColors.lightSurface,
-      onSurface: isDark ? AppColors.darkText : AppColors.lightText,
-      onSurfaceVariant:
-          isDark ? AppColors.darkTextMuted : AppColors.lightTextMuted,
-      surfaceContainerHighest:
-          isDark ? AppColors.darkSurfaceAlt : AppColors.lightSurfaceAlt,
-      error: isDark ? AppColors.dangerDark : AppColors.danger,
-      outline: isDark ? AppColors.darkBorder : AppColors.lightBorder,
-      outlineVariant: isDark ? AppColors.darkBorder : AppColors.lightBorder,
-    );
+    final scheme =
+        ColorScheme.fromSeed(
+          seedColor: AppColors.brand,
+          brightness: brightness,
+        ).copyWith(
+          primary: isDark ? AppColors.brandDark : AppColors.brand,
+          onPrimary: isDark ? const Color(0xFF0A1830) : Colors.white,
+          // fromSeed leitet Neben- und Containertöne selbst ab - die können
+          // stichig ausfallen (z. B. ausgewählte Chips). Deshalb alles,
+          // was Material-Widgets von selbst benutzen, explizit aus der Palette.
+          primaryContainer: isDark
+              ? const Color(0xFF1B3A66)
+              : const Color(0xFFE1ECFB),
+          onPrimaryContainer: isDark ? AppColors.darkText : AppColors.brand,
+          secondary: isDark ? AppColors.brandDark : AppColors.brand,
+          onSecondary: isDark ? const Color(0xFF0A1830) : Colors.white,
+          secondaryContainer: isDark
+              ? const Color(0xFF1B3A66)
+              : const Color(0xFFE1ECFB),
+          onSecondaryContainer: isDark ? AppColors.darkText : AppColors.brand,
+          tertiary: isDark ? AppColors.flameDark : AppColors.flame,
+          onTertiary: isDark ? const Color(0xFF2A1500) : Colors.white,
+          surface: isDark ? AppColors.darkSurface : AppColors.lightSurface,
+          onSurface: isDark ? AppColors.darkText : AppColors.lightText,
+          onSurfaceVariant: isDark
+              ? AppColors.darkTextMuted
+              : AppColors.lightTextMuted,
+          surfaceContainerHighest: isDark
+              ? AppColors.darkSurfaceAlt
+              : AppColors.lightSurfaceAlt,
+          error: isDark ? AppColors.dangerDark : AppColors.danger,
+          outline: isDark ? AppColors.darkBorder : AppColors.lightBorder,
+          outlineVariant: isDark ? AppColors.darkBorder : AppColors.lightBorder,
+        );
 
-    final baseText =
-        isDark ? Typography.whiteMountainView : Typography.blackMountainView;
+    final baseText = isDark
+        ? Typography.whiteMountainView
+        : Typography.blackMountainView;
 
     // Inter für die gesamte UI. Zahlenlastige Stellen (Timer, Netzplan)
     // benutzen zusätzlich AppType.numeric mit Tabellenziffern, damit beim
@@ -125,6 +131,14 @@ class AppTheme {
       scaffoldBackgroundColor: isDark ? AppColors.darkBg : AppColors.lightBg,
       textTheme: textTheme,
       extensions: [isDark ? AppSemanticColors.dark : AppSemanticColors.light],
+      // Ein ruhiger Überblendeffekt auf allen Plattformen statt des
+      // harten Einschiebens von unten (Android) bzw. rechts (Web).
+      pageTransitionsTheme: PageTransitionsTheme(
+        builders: {
+          for (final p in TargetPlatform.values)
+            p: const FadeForwardsPageTransitionsBuilder(),
+        },
+      ),
       appBarTheme: AppBarTheme(
         backgroundColor: isDark ? AppColors.darkBg : AppColors.lightBg,
         surfaceTintColor: Colors.transparent,
@@ -132,8 +146,9 @@ class AppTheme {
         scrolledUnderElevation: 0,
         centerTitle: false,
         titleTextStyle: textTheme.titleLarge,
-        systemOverlayStyle:
-            isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
+        systemOverlayStyle: isDark
+            ? SystemUiOverlayStyle.light
+            : SystemUiOverlayStyle.dark,
       ),
       cardTheme: CardThemeData(
         color: scheme.surface,
@@ -175,8 +190,9 @@ class AppTheme {
       ),
       chipTheme: ChipThemeData(
         side: BorderSide(color: border),
-        backgroundColor:
-            isDark ? AppColors.darkSurfaceAlt : AppColors.lightSurfaceAlt,
+        backgroundColor: isDark
+            ? AppColors.darkSurfaceAlt
+            : AppColors.lightSurfaceAlt,
         labelStyle: textTheme.labelSmall,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Radii.pill),
@@ -203,7 +219,9 @@ class AppTheme {
         ),
       ),
       navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: isDark ? AppColors.darkSurface : AppColors.lightSurface,
+        backgroundColor: isDark
+            ? AppColors.darkSurface
+            : AppColors.lightSurface,
         surfaceTintColor: Colors.transparent,
         indicatorColor: scheme.primaryContainer,
         elevation: 0,
@@ -218,10 +236,13 @@ class AppTheme {
         ),
       ),
       navigationRailTheme: NavigationRailThemeData(
-        backgroundColor: isDark ? AppColors.darkSurface : AppColors.lightSurface,
+        backgroundColor: isDark
+            ? AppColors.darkSurface
+            : AppColors.lightSurface,
         indicatorColor: scheme.primaryContainer,
-        selectedLabelTextStyle:
-            textTheme.labelSmall!.copyWith(color: scheme.primary),
+        selectedLabelTextStyle: textTheme.labelSmall!.copyWith(
+          color: scheme.primary,
+        ),
         unselectedLabelTextStyle: textTheme.labelSmall!.copyWith(
           color: isDark ? AppColors.darkTextMuted : AppColors.lightTextMuted,
         ),
@@ -237,6 +258,14 @@ class AppTheme {
       dialogTheme: DialogThemeData(
         backgroundColor: scheme.surface,
         surfaceTintColor: Colors.transparent,
+        // Etwas breiter und mit knapperem Rand für die Knöpfe: Sonst
+        // rutschen „Weitermachen“ und „Beenden“ auf schmalen Handys
+        // versetzt untereinander.
+        insetPadding: const EdgeInsets.symmetric(
+          horizontal: Gap.l,
+          vertical: Gap.xl,
+        ),
+        actionsPadding: const EdgeInsets.fromLTRB(Gap.l, 0, Gap.l, Gap.l),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Radii.l),
         ),
@@ -248,8 +277,9 @@ class AppTheme {
         ),
       ),
       progressIndicatorTheme: ProgressIndicatorThemeData(
-        linearTrackColor:
-            isDark ? AppColors.darkSurfaceAlt : AppColors.lightSurfaceAlt,
+        linearTrackColor: isDark
+            ? AppColors.darkSurfaceAlt
+            : AppColors.lightSurfaceAlt,
         linearMinHeight: 8,
       ),
     );
@@ -266,20 +296,19 @@ class AppType {
     double size = 16,
     FontWeight weight = FontWeight.w600,
     Color? color,
-  }) =>
-      TextStyle(
-        fontFamily: kFontSans,
-        fontSize: size,
-        fontWeight: weight,
-        color: color,
-        fontFeatures: const [FontFeature.tabularFigures()],
-      );
+  }) => TextStyle(
+    fontFamily: kFontSans,
+    fontSize: size,
+    fontWeight: weight,
+    color: color,
+    fontFeatures: const [FontFeature.tabularFigures()],
+  );
 
   /// Monospace für Code-nahe Inhalte (z.B. Pseudocode in Aufgaben).
   static TextStyle mono({double size = 14, Color? color}) => TextStyle(
-        fontFamily: kFontMono,
-        fontSize: size,
-        height: 1.5,
-        color: color,
-      );
+    fontFamily: kFontMono,
+    fontSize: size,
+    height: 1.5,
+    color: color,
+  );
 }

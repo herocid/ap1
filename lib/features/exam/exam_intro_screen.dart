@@ -29,7 +29,7 @@ class ExamPreset {
 const kExamPresets = <ExamPreset>[
   ExamPreset(
     id: 'kurz',
-    title: 'Kurztest',
+    title: 'Mini-Prüfung',
     subtitle: 'Für zwischendurch - reicht, um Zeitgefühl aufzubauen.',
     questions: 10,
     minutes: 20,
@@ -79,17 +79,25 @@ class ExamIntroScreen extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Der Countdown läuft durch. Ist er abgelaufen, '
-                          'wird automatisch abgegeben.'),
+                      Text(
+                        'Der Countdown läuft durch. Ist er abgelaufen, '
+                        'wird automatisch abgegeben.',
+                      ),
                       SizedBox(height: Gap.s),
-                      Text('Kein Feedback während des Laufs - du erfährst '
-                          'erst nach der Abgabe, was richtig war.'),
+                      Text(
+                        'Kein Feedback während des Laufs - du erfährst '
+                        'erst nach der Abgabe, was richtig war.',
+                      ),
                       SizedBox(height: Gap.s),
-                      Text('Du kannst frei zwischen den Aufgaben springen und '
-                          'unsichere Aufgaben für später markieren.'),
+                      Text(
+                        'Du kannst frei zwischen den Aufgaben springen und '
+                        'unsichere Aufgaben für später markieren.',
+                      ),
                       SizedBox(height: Gap.s),
-                      Text('Unbeantwortete Aufgaben zählen mit 0 Punkten - '
-                          'genau wie eine leere Zeile im Prüfungsbogen.'),
+                      Text(
+                        'Unbeantwortete Aufgaben zählen mit 0 Punkten - '
+                        'genau wie eine leere Zeile im Prüfungsbogen.',
+                      ),
                     ],
                   ),
                 ),
@@ -149,16 +157,18 @@ class _PresetCard extends StatelessWidget {
               Expanded(
                 child: Text(preset.title, style: context.text.titleLarge),
               ),
-              Text('${preset.minutes} Min.',
-                  style: AppType.numeric(
-                      size: 16, color: context.scheme.primary)),
+              Text(
+                '${preset.minutes} Min.',
+                style: AppType.numeric(size: 16, color: context.scheme.primary),
+              ),
             ],
           ),
           const SizedBox(height: Gap.xs),
           Text(
             preset.subtitle,
-            style:
-                context.text.bodyMedium?.copyWith(color: context.c.textMuted),
+            style: context.text.bodyMedium?.copyWith(
+              color: context.c.textMuted,
+            ),
           ),
           const SizedBox(height: Gap.l),
           Wrap(
@@ -204,8 +214,7 @@ class _ExamHistory extends StatelessWidget {
       final key = r.at.toIso8601String().substring(0, 16);
       byRun.putIfAbsent(key, () => []).add(r);
     }
-    final runs = byRun.entries.toList()
-      ..sort((a, b) => b.key.compareTo(a.key));
+    final runs = byRun.entries.toList()..sort((a, b) => b.key.compareTo(a.key));
 
     return Column(
       children: [
@@ -223,9 +232,12 @@ class _ExamHistory extends StatelessWidget {
                       style: context.text.bodyMedium,
                     ),
                   ),
-                  Text('${run.value.length} Aufgaben',
-                      style: context.text.labelSmall
-                          ?.copyWith(color: context.c.textMuted)),
+                  Text(
+                    '${run.value.length} Aufgaben',
+                    style: context.text.labelSmall?.copyWith(
+                      color: context.c.textMuted,
+                    ),
+                  ),
                   const SizedBox(width: Gap.m),
                   Text(
                     '${((run.value.fold<double>(0, (s, r) => s + r.score) / run.value.length) * 100).round()} %',

@@ -9,7 +9,9 @@ import '../../core/theme/app_theme.dart';
 import '../../data/models/progress.dart';
 import '../../data/models/topic.dart';
 import '../../state/providers.dart';
+import '../../widgets/achievement_badge.dart';
 import '../../widgets/common.dart';
+import '../../widgets/mascot.dart';
 
 /// Statistik. Beantwortet: Bin ich besser geworden, wo stehe ich pro Thema,
 /// und habe ich zuletzt überhaupt etwas getan?
@@ -22,17 +24,33 @@ class StatsScreen extends ConsumerWidget {
     final readiness = ref.watch(readinessProvider);
     final stats = ref.watch(topicStatsProvider);
     final poolSize = ref.watch(poolSizeProvider);
+    final achievements = ref.watch(achievementsProvider);
 
+    // Die Erfolge stehen immer ganz oben - auch vor der ersten Aufgabe
+    // zeigen sie, was es zu holen gibt.
     if (progress.history.isEmpty) {
       return Scaffold(
         appBar: AppBar(title: const Text('Statistik')),
-        body: const EmptyState(
-          icon: Icons.insights_outlined,
-          title: 'Noch keine Daten',
-          message:
-              'Sobald du die erste Runde gespielt hast, entsteht hier deine '
-              'Auswertung: Trefferquote je Thema, Aktivität der letzten '
-              'zwei Wochen und der Prüfungsreife-Verlauf.',
+        body: ListView(
+          padding: const EdgeInsets.fromLTRB(Gap.l, 0, Gap.l, Gap.xxxl),
+          children: [
+            ReadableWidth(
+              child: Column(
+                children: [
+                  AchievementsPanel(statuses: achievements),
+                  const SizedBox(height: Gap.xl),
+                  const MascotSays(
+                    mood: MascotMood.think,
+                    title: 'Noch keine Daten',
+                    text:
+                        'Sobald du die erste Runde gespielt hast, siehst du '
+                        'hier deine Trefferquote je Thema, deine Aktivität '
+                        'und deine Prüfungsreife.',
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       );
     }
@@ -49,6 +67,8 @@ class StatsScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                AchievementsPanel(statuses: achievements),
+                const SizedBox(height: Gap.l),
                 Row(
                   children: [
                     Expanded(
@@ -85,8 +105,10 @@ class StatsScreen extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Fortschritt zum nächsten Level',
-                          style: context.text.titleMedium),
+                      Text(
+                        'Fortschritt zum nächsten Level',
+                        style: context.text.titleMedium,
+                      ),
                       const SizedBox(height: Gap.m),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(Radii.pill),
@@ -99,8 +121,9 @@ class StatsScreen extends ConsumerWidget {
                         '${progress.xp - progress.xpForCurrentLevel} von '
                         '${progress.xpForNextLevel - progress.xpForCurrentLevel} XP '
                         'bis Level ${progress.level + 1}',
-                        style: context.text.labelSmall
-                            ?.copyWith(color: context.c.textMuted),
+                        style: context.text.labelSmall?.copyWith(
+                          color: context.c.textMuted,
+                        ),
                       ),
                     ],
                   ),
@@ -112,8 +135,7 @@ class StatsScreen extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Letzte 14 Tage',
-                          style: context.text.titleMedium),
+                      Text('Letzte 14 Tage', style: context.text.titleMedium),
                       const SizedBox(height: Gap.l),
                       SizedBox(
                         height: 92,
@@ -128,12 +150,18 @@ class StatsScreen extends ConsumerWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('vor 14 Tagen',
-                              style: context.text.labelSmall
-                                  ?.copyWith(color: context.c.textMuted)),
-                          Text('heute',
-                              style: context.text.labelSmall
-                                  ?.copyWith(color: context.c.textMuted)),
+                          Text(
+                            'vor 14 Tagen',
+                            style: context.text.labelSmall?.copyWith(
+                              color: context.c.textMuted,
+                            ),
+                          ),
+                          Text(
+                            'heute',
+                            style: context.text.labelSmall?.copyWith(
+                              color: context.c.textMuted,
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -155,20 +183,6 @@ class StatsScreen extends ConsumerWidget {
                   ),
                   const SizedBox(height: Gap.s),
                 ],
-                const SizedBox(height: Gap.xl),
-
-                const SectionHeader('Erfolge'),
-                Wrap(
-                  spacing: Gap.s,
-                  runSpacing: Gap.s,
-                  children: [
-                    for (final a in Achievement.values)
-                      _AchievementChip(
-                        achievement: a,
-                        earned: progress.badges.contains(a),
-                      ),
-                  ],
-                ),
               ],
             ),
           ),
@@ -274,73 +288,26 @@ class _TopicStatRow extends StatelessWidget {
               Expanded(
                 child: Text(topic.title, style: context.text.titleMedium),
               ),
-              Text('${((s?.confidence ?? 0) * 100).round()} %',
-                  style: AppType.numeric(size: 14)),
+              Text(
+                '${((s?.confidence ?? 0) * 100).round()} %',
+                style: AppType.numeric(size: 14),
+              ),
             ],
           ),
           const SizedBox(height: Gap.s),
-          TopicBar(
-            confidence: s?.confidence ?? 0,
-            coverage: s?.coverage ?? 0,
-          ),
+          TopicBar(confidence: s?.confidence ?? 0, coverage: s?.coverage ?? 0),
           const SizedBox(height: Gap.s),
           Text(
             s == null || s.answered == 0
                 ? 'Noch nicht begonnen · $poolSize Aufgaben verfügbar'
                 : 'Trefferquote ${(s.mastery * 100).round()} % · '
-                    '${s.distinctQuestions}/$poolSize Aufgaben gesehen · '
-                    '${s.answered} Versuche',
-            style: context.text.labelSmall?.copyWith(color: context.c.textMuted),
+                      '${s.distinctQuestions}/$poolSize Aufgaben gesehen · '
+                      '${s.answered} Versuche',
+            style: context.text.labelSmall?.copyWith(
+              color: context.c.textMuted,
+            ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _AchievementChip extends StatelessWidget {
-  const _AchievementChip({required this.achievement, required this.earned});
-
-  final Achievement achievement;
-  final bool earned;
-
-  @override
-  Widget build(BuildContext context) {
-    final fg = earned ? context.c.flame : context.c.textMuted;
-    return Tooltip(
-      message: achievement.description,
-      child: Container(
-        padding:
-            const EdgeInsets.symmetric(horizontal: Gap.m, vertical: Gap.s),
-        decoration: BoxDecoration(
-          color: earned ? context.c.flameBg : context.c.surfaceAlt,
-          borderRadius: BorderRadius.circular(Radii.m),
-          border: Border.all(
-            color: earned ? fg.withValues(alpha: 0.4) : context.c.border,
-          ),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              earned ? Icons.emoji_events : Icons.lock_outline,
-              size: 16,
-              color: fg,
-            ),
-            const SizedBox(width: Gap.s),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(achievement.title,
-                    style: context.text.labelLarge
-                        ?.copyWith(fontSize: 13, color: fg)),
-                Text(achievement.description,
-                    style: context.text.labelSmall
-                        ?.copyWith(color: context.c.textMuted)),
-              ],
-            ),
-          ],
-        ),
       ),
     );
   }

@@ -12,6 +12,7 @@ import 'core/router.dart';
 import 'core/theme/app_theme.dart';
 import 'data/repositories/local_store.dart';
 import 'state/providers.dart';
+import 'widgets/brand.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,9 +40,7 @@ Future<void> main() async {
 
   runApp(
     ProviderScope(
-      overrides: [
-        localStoreProvider.overrideWithValue(store),
-      ],
+      overrides: [localStoreProvider.overrideWithValue(store)],
       child: const Ap1TrainerApp(),
     ),
   );
@@ -55,7 +54,9 @@ void _registerFontLicenses() {
       ('Inter', 'assets/fonts/OFL-Inter.txt'),
       ('JetBrains Mono', 'assets/fonts/OFL-JetBrainsMono.txt'),
     ]) {
-      yield LicenseEntryWithLineBreaks([family], await rootBundle.loadString(file));
+      yield LicenseEntryWithLineBreaks([
+        family,
+      ], await rootBundle.loadString(file));
     }
   });
 }
@@ -69,7 +70,7 @@ class Ap1TrainerApp extends ConsumerWidget {
     final themeMode = ref.watch(themeModeProvider);
 
     return MaterialApp.router(
-      title: 'AP1 Trainer',
+      title: kAppName,
       debugShowCheckedModeBanner: false,
       routerConfig: router,
       theme: AppTheme.light(),

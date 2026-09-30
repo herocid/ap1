@@ -17,10 +17,8 @@ enum Beruf {
   const Beruf(this.label);
   final String label;
 
-  static Beruf parse(String? s) => Beruf.values.firstWhere(
-        (b) => b.name == s,
-        orElse: () => Beruf.fiae,
-      );
+  static Beruf parse(String? s) =>
+      Beruf.values.firstWhere((b) => b.name == s, orElse: () => Beruf.fiae);
 }
 
 /// Wie viel Zeit pro Tag realistisch drin ist. Steuert die Tagesdosis im
@@ -36,8 +34,10 @@ enum LernIntensitaet {
   final int minutesPerDay;
   final int questionsPerDay;
 
-  static LernIntensitaet parse(String? s) => LernIntensitaet.values
-      .firstWhere((e) => e.name == s, orElse: () => LernIntensitaet.solide);
+  static LernIntensitaet parse(String? s) => LernIntensitaet.values.firstWhere(
+    (e) => e.name == s,
+    orElse: () => LernIntensitaet.solide,
+  );
 }
 
 @immutable
@@ -51,6 +51,7 @@ class UserProfile {
     this.onboarded = false,
     this.reminderHour = 18,
     this.remindersOn = true,
+    this.tutorialSeen = false,
   });
 
   final String displayName;
@@ -62,6 +63,9 @@ class UserProfile {
   final int reminderHour;
   final bool remindersOn;
 
+  /// Die Einführung nach dem Onboarding wurde gezeigt.
+  final bool tutorialSeen;
+
   int get daysUntilExam {
     final today = DateTime.now();
     final d0 = DateTime(today.year, today.month, today.day);
@@ -72,11 +76,11 @@ class UserProfile {
   int get dailyGoal => intensitaet.questionsPerDay;
 
   static UserProfile initial() => UserProfile(
-        displayName: '',
-        beruf: Beruf.fiae,
-        examDate: nextIhkDate(),
-        intensitaet: LernIntensitaet.solide,
-      );
+    displayName: '',
+    beruf: Beruf.fiae,
+    examDate: nextIhkDate(),
+    intensitaet: LernIntensitaet.solide,
+  );
 
   /// Die IHK-Termine für AP1 liegen bundeseinheitlich im Frühjahr (März)
   /// und Herbst (September). Wir schlagen den nächsten plausiblen Termin vor,
@@ -89,7 +93,10 @@ class UserProfile {
       DateTime(n.year + 1, 3, 4),
       DateTime(n.year + 1, 9, 23),
     ];
-    return candidates.firstWhere((d) => d.isAfter(n), orElse: () => candidates.last);
+    return candidates.firstWhere(
+      (d) => d.isAfter(n),
+      orElse: () => candidates.last,
+    );
   }
 
   UserProfile copyWith({
@@ -101,43 +108,46 @@ class UserProfile {
     bool? onboarded,
     int? reminderHour,
     bool? remindersOn,
-  }) =>
-      UserProfile(
-        displayName: displayName ?? this.displayName,
-        beruf: beruf ?? this.beruf,
-        examDate: examDate ?? this.examDate,
-        intensitaet: intensitaet ?? this.intensitaet,
-        themeMode: themeMode ?? this.themeMode,
-        onboarded: onboarded ?? this.onboarded,
-        reminderHour: reminderHour ?? this.reminderHour,
-        remindersOn: remindersOn ?? this.remindersOn,
-      );
+    bool? tutorialSeen,
+  }) => UserProfile(
+    displayName: displayName ?? this.displayName,
+    beruf: beruf ?? this.beruf,
+    examDate: examDate ?? this.examDate,
+    intensitaet: intensitaet ?? this.intensitaet,
+    themeMode: themeMode ?? this.themeMode,
+    onboarded: onboarded ?? this.onboarded,
+    reminderHour: reminderHour ?? this.reminderHour,
+    remindersOn: remindersOn ?? this.remindersOn,
+    tutorialSeen: tutorialSeen ?? this.tutorialSeen,
+  );
 
   Map<String, dynamic> toJson() => {
-        'display_name': displayName,
-        'beruf': beruf.name,
-        'exam_date': examDate.toIso8601String(),
-        'intensität': intensitaet.name,
-        'theme_mode': themeMode.name,
-        'onboarded': onboarded,
-        'reminder_hour': reminderHour,
-        'reminders_on': remindersOn,
-      };
+    'display_name': displayName,
+    'beruf': beruf.name,
+    'exam_date': examDate.toIso8601String(),
+    'intensität': intensitaet.name,
+    'theme_mode': themeMode.name,
+    'onboarded': onboarded,
+    'reminder_hour': reminderHour,
+    'reminders_on': remindersOn,
+    'tutorial_seen': tutorialSeen,
+  };
 
   factory UserProfile.fromJson(Map<String, dynamic> j) => UserProfile(
-        displayName: (j['display_name'] ?? '') as String,
-        beruf: Beruf.parse(j['beruf'] as String?),
-        examDate: DateTime.tryParse((j['exam_date'] ?? '') as String) ??
-            nextIhkDate(),
-        intensitaet: LernIntensitaet.parse(j['intensität'] as String?),
-        themeMode: ThemeMode.values.firstWhere(
-          (m) => m.name == j['theme_mode'],
-          orElse: () => ThemeMode.system,
-        ),
-        onboarded: j['onboarded'] as bool? ?? false,
-        reminderHour: (j['reminder_hour'] as num?)?.toInt() ?? 18,
-        remindersOn: j['reminders_on'] as bool? ?? true,
-      );
+    displayName: (j['display_name'] ?? '') as String,
+    beruf: Beruf.parse(j['beruf'] as String?),
+    examDate:
+        DateTime.tryParse((j['exam_date'] ?? '') as String) ?? nextIhkDate(),
+    intensitaet: LernIntensitaet.parse(j['intensität'] as String?),
+    themeMode: ThemeMode.values.firstWhere(
+      (m) => m.name == j['theme_mode'],
+      orElse: () => ThemeMode.system,
+    ),
+    onboarded: j['onboarded'] as bool? ?? false,
+    reminderHour: (j['reminder_hour'] as num?)?.toInt() ?? 18,
+    remindersOn: j['reminders_on'] as bool? ?? true,
+    tutorialSeen: j['tutorial_seen'] as bool? ?? false,
+  );
 
   String encode() => jsonEncode(toJson());
   static UserProfile decode(String s) =>

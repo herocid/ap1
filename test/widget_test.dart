@@ -28,15 +28,18 @@ void main() {
     await tester.pump();
   }
 
-  testWidgets('startet im Onboarding, wenn kein Profil vorliegt',
-      (tester) async {
+  testWidgets('startet im Onboarding, wenn kein Profil vorliegt', (
+    tester,
+  ) async {
     await pumpApp(tester);
 
-    expect(find.text('AP1 Trainer'), findsOneWidget);
+    expect(find.text('AP1 Coach'), findsOneWidget);
     expect(find.text('Weiter'), findsOneWidget);
   });
 
-  testWidgets('führt durch das Onboarding bis zum Dashboard', (tester) async {
+  testWidgets('führt durch Onboarding und Einführung zum Dashboard', (
+    tester,
+  ) async {
     await pumpApp(tester);
 
     await tester.enterText(find.byType(TextField).first, 'Testuser');
@@ -49,9 +52,18 @@ void main() {
     await tester.tap(find.text('Lernplan erstellen'));
     await tester.pumpAndSettle();
 
+    // Direkt danach erklärt Bit die Tabs - einmal durchklicken.
+    expect(find.text('Hallo! Ich bin Bit.'), findsOneWidget);
+    for (var i = 0; i < 4; i++) {
+      await tester.tap(find.text('Weiter'));
+      await tester.pumpAndSettle();
+    }
+    await tester.tap(find.text('Los geht’s'));
+    await tester.pumpAndSettle();
+
     expect(find.textContaining('Moin'), findsOneWidget);
     expect(find.text('Heutiges Ziel'), findsOneWidget);
-    expect(find.text('Heute starten'), findsOneWidget);
-    expect(find.text('Querbeet'), findsOneWidget);
+    expect(find.text('Tagesrunde starten'), findsOneWidget);
+    expect(find.text('Kurztest'), findsOneWidget);
   });
 }

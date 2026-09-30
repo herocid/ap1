@@ -7,7 +7,12 @@ import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/topic.dart';
 import '../../state/session_controller.dart';
+import '../../core/util/achievements.dart';
+import '../../data/models/progress.dart';
+import '../../state/providers.dart';
+import '../../widgets/achievement_badge.dart';
 import '../../widgets/common.dart';
+import '../../widgets/mascot.dart';
 import '../../widgets/question_view.dart';
 
 /// IHK-Notenschlüssel (100-Punkte-Schema).
@@ -42,16 +47,26 @@ class ResultScreen extends ConsumerWidget {
           message: 'Beende zuerst eine Lernrunde.',
           action: FilledButton(
             onPressed: () => context.go('/'),
-            child: const Text('Zum Dashboard'),
+            child: const Text('Zur Startseite'),
           ),
         ),
       );
     }
 
+    final achievements = ref.watch(achievementsProvider);
+    final newBadges = [
+      for (final e in achievements.entries)
+        if (e.value.earned && !session.badgesBefore.contains(e.key)) e.key,
+    ];
+
     final percent = session.totalScore;
     final note = ihkNote(percent);
-    final correct = session.items.where((i) => i.grade?.isCorrect == true).length;
-    final partial = session.items.where((i) => i.grade?.isPartial == true).length;
+    final correct = session.items
+        .where((i) => i.grade?.isCorrect == true)
+        .length;
+    final partial = session.items
+        .where((i) => i.grade?.isPartial == true)
+        .length;
     final wrong = session.items.length - correct - partial;
 
     // Themenauswertung dieser Runde (nicht der Gesamtstatistik).
@@ -77,7 +92,13 @@ class ResultScreen extends ConsumerWidget {
             onPressed: leave,
             tooltip: 'Schließen',
           ),
-          title: Text(session.isExam ? 'Auswertung Simulation' : 'Auswertung'),
+          title: Text(
+            session.isExam
+                ? 'Auswertung Simulation'
+                : session.endless
+                ? 'Auswertung Kurztest'
+                : 'Auswertung',
+          ),
         ),
         body: ListView(
           padding: const EdgeInsets.fromLTRB(Gap.l, Gap.l, Gap.l, Gap.xxxl),
@@ -86,6 +107,31 @@ class ResultScreen extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  MascotSays(
+                    mood: percent >= 0.8
+                        ? MascotMood.cheer
+                        : percent >= 0.5
+                        ? MascotMood.happy
+                        : MascotMood.oops,
+                    title: percent >= 0.8
+                        ? 'Stark!'
+                        : percent >= 0.5
+                        ? 'Gut dabei.'
+                        : 'Kein Problem.',
+                    text: percent >= 0.8
+                        ? 'Das sitzt. Genau so geht es in der AP1 weiter.'
+                        : percent >= 0.5
+                        ? 'Die Hälfte hast du sicher. Schau dir unten an, '
+                              'wo die Punkte fehlen.'
+                        : 'Fehler sind hier erwünscht - jede falsche '
+                              'Aufgabe kommt in den Fehlerspeicher und du '
+                              'übst sie gezielt nach.',
+                  ),
+                  const SizedBox(height: Gap.l),
+                  if (newBadges.isNotEmpty) ...[
+                    _NewBadges(badges: newBadges, statuses: achievements),
+                    const SizedBox(height: Gap.l),
+                  ],
                   AppCard(
                     padding: const EdgeInsets.all(Gap.xl),
                     child: Column(
@@ -132,8 +178,9 @@ class ResultScreen extends ConsumerWidget {
                                   const SizedBox(height: Gap.s),
                                   Text(
                                     'Zeit: ${formatDuration(session.elapsed)}',
-                                    style: context.text.labelSmall
-                                        ?.copyWith(color: context.c.textMuted),
+                                    style: context.text.labelSmall?.copyWith(
+                                      color: context.c.textMuted,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -149,12 +196,12 @@ class ResultScreen extends ConsumerWidget {
                             child: Text(
                               percent >= 0.5
                                   ? 'Mit ${(percent * 100).round()} % wärst du '
-                                      'bestanden (Note ${note.note}, ${note.label}). '
-                                      'Die Punkte holst du jetzt in den Themen '
-                                      'unten.'
+                                        'bestanden (Note ${note.note}, ${note.label}). '
+                                        'Die Punkte holst du jetzt in den Themen '
+                                        'unten.'
                                   : 'Unter 50 % gilt als nicht bestanden. Das ist '
-                                      'eine Übung, kein Urteil - arbeite die '
-                                      'schwächsten Themen unten der Reihe nach ab.',
+                                        'eine Übung, kein Urteil - arbeite die '
+                                        'schwächsten Themen unten der Reihe nach ab.',
                             ),
                           ),
                         ],
@@ -165,10 +212,7 @@ class ResultScreen extends ConsumerWidget {
 
                   const SectionHeader('Nach Themen'),
                   for (final e in byTopic.entries) ...[
-                    _TopicResultRow(
-                      topic: Topics.byId(e.key),
-                      items: e.value,
-                    ),
+                    _TopicResultRow(topic: Topics.byId(e.key), items: e.value),
                     const SizedBox(height: Gap.s),
                   ],
                   const SizedBox(height: Gap.xl),
@@ -198,7 +242,7 @@ class ResultScreen extends ConsumerWidget {
                           wrong + partial == 1
                               ? '1 Aufgabe landet im Fehlerspeicher'
                               : '${wrong + partial} Aufgaben landen im '
-                                  'Fehlerspeicher',
+                                    'Fehlerspeicher',
                         ),
                       ),
                     ),
@@ -207,7 +251,7 @@ class ResultScreen extends ConsumerWidget {
                     width: double.infinity,
                     child: OutlinedButton(
                       onPressed: leave,
-                      child: const Text('Zum Dashboard'),
+                      child: const Text('Zur Startseite'),
                     ),
                   ),
                 ],
@@ -243,9 +287,12 @@ class _Tally extends StatelessWidget {
           const SizedBox(width: Gap.s),
           Text('$count', style: AppType.numeric(size: 14, color: color)),
           const SizedBox(width: 4),
-          Text(label,
-              style: context.text.bodyMedium
-                  ?.copyWith(color: context.c.textMuted)),
+          Text(
+            label,
+            style: context.text.bodyMedium?.copyWith(
+              color: context.c.textMuted,
+            ),
+          ),
         ],
       ),
     );
@@ -261,7 +308,9 @@ class _TopicResultRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final earned = items.fold<double>(
-        0, (s, i) => s + (i.grade?.score ?? 0) * i.question.points);
+      0,
+      (s, i) => s + (i.grade?.score ?? 0) * i.question.points,
+    );
     final possible = items.fold<int>(0, (s, i) => s + i.question.points);
     final ratio = possible == 0 ? 0.0 : earned / possible;
 
@@ -278,10 +327,12 @@ class _TopicResultRow extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                        child:
-                            Text(topic.title, style: context.text.titleMedium)),
-                    Text('${(ratio * 100).round()} %',
-                        style: AppType.numeric(size: 13)),
+                      child: Text(topic.title, style: context.text.titleMedium),
+                    ),
+                    Text(
+                      '${(ratio * 100).round()} %',
+                      style: AppType.numeric(size: 13),
+                    ),
                   ],
                 ),
                 const SizedBox(height: Gap.s),
@@ -307,10 +358,10 @@ class _ReviewTile extends StatelessWidget {
     final (color, icon) = g == null
         ? (context.c.textMuted, Icons.help_outline)
         : g.isCorrect
-            ? (context.c.success, Icons.check_circle)
-            : g.isPartial
-                ? (context.c.flame, Icons.adjust)
-                : (context.c.danger, Icons.cancel);
+        ? (context.c.success, Icons.check_circle)
+        : g.isPartial
+        ? (context.c.flame, Icons.adjust)
+        : (context.c.danger, Icons.cancel);
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(Radii.l),
@@ -336,8 +387,9 @@ class _ReviewTile extends StatelessWidget {
               '${Topics.byId(item.question.topicId).title} · '
               '${((g?.score ?? 0) * item.question.points).toStringAsFixed(1).replaceAll('.', ',')}'
               ' von ${item.question.points} Punkten',
-              style: context.text.labelSmall
-                  ?.copyWith(color: context.c.textMuted),
+              style: context.text.labelSmall?.copyWith(
+                color: context.c.textMuted,
+              ),
             ),
             children: [
               QuestionView(
@@ -350,6 +402,70 @@ class _ReviewTile extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// „Neu freigeschaltet“ - die Abzeichen, die in dieser Runde dazukamen.
+class _NewBadges extends StatelessWidget {
+  const _NewBadges({required this.badges, required this.statuses});
+
+  final List<Achievement> badges;
+  final Map<Achievement, AchievementStatus> statuses;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppCard(
+      color: context.c.flameBg,
+      borderColor: context.c.flame.withValues(alpha: 0.35),
+      padding: const EdgeInsets.all(Gap.l),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            badges.length == 1
+                ? 'Neues Abzeichen!'
+                : '${badges.length} neue Abzeichen!',
+            style: context.text.titleMedium?.copyWith(color: context.c.flame),
+          ),
+          const SizedBox(height: Gap.m),
+          for (final b in badges)
+            Padding(
+              padding: const EdgeInsets.only(bottom: Gap.s),
+              child: Row(
+                children: [
+                  TweenAnimationBuilder<double>(
+                    tween: Tween(begin: 0.4, end: 1),
+                    duration: const Duration(milliseconds: 600),
+                    curve: Curves.elasticOut,
+                    builder: (context, s, child) =>
+                        Transform.scale(scale: s, child: child),
+                    child: AchievementMedal(
+                      achievement: b,
+                      status: statuses[b]!,
+                      size: 48,
+                    ),
+                  ),
+                  const SizedBox(width: Gap.m),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(b.title, style: context.text.titleSmall),
+                        Text(
+                          b.description,
+                          style: context.text.bodySmall?.copyWith(
+                            color: context.c.textMuted,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ],
       ),
     );
   }

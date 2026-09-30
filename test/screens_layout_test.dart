@@ -18,10 +18,13 @@ void main() {
 
   setUp(() async {
     store = await HiveLocalStore.open(inMemory: true);
-    await store.writeProfile(UserProfile.initial().copyWith(
-      displayName: 'Marcel',
-      onboarded: true,
-    ));
+    await store.writeProfile(
+      UserProfile.initial().copyWith(
+        displayName: 'Marcel',
+        onboarded: true,
+        tutorialSeen: true,
+      ),
+    );
   });
   tearDown(() => store.close());
 
@@ -29,14 +32,16 @@ void main() {
     '/',
     '/themen',
     '/journey',
+    '/quiz',
+    '/einfuehrung',
     '/lektion/n-vorwaerts',
     '/karten',
     '/statistik',
     '/einstellungen',
-    '/prüfung',
+    '/pruefung',
     '/karten-lernen',
     '/bereich/a01',
-    '/katalog-änderungen',
+    '/katalog-aenderungen',
   ];
 
   // Kleinstes verbreitetes Handy (iPhone SE) und ein typisches Android -
@@ -45,38 +50,39 @@ void main() {
   const textScales = [1.0, 1.3];
 
   for (final scale in textScales) {
-  for (final size in sizes) {
-    for (final route in routes) {
-      testWidgets(
-          '$route bei ${size.width.toInt()}×${size.height.toInt()}, '
-          'Schrift ${(scale * 100).round()} %', (tester) async {
-        tester.view.physicalSize = size * 3;
-        tester.view.devicePixelRatio = 3;
-        tester.platformDispatcher.textScaleFactorTestValue = scale;
-        addTearDown(tester.view.reset);
-        addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+    for (final size in sizes) {
+      for (final route in routes) {
+        testWidgets('$route bei ${size.width.toInt()}×${size.height.toInt()}, '
+            'Schrift ${(scale * 100).round()} %', (tester) async {
+          tester.view.physicalSize = size * 3;
+          tester.view.devicePixelRatio = 3;
+          tester.platformDispatcher.textScaleFactorTestValue = scale;
+          addTearDown(tester.view.reset);
+          addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
 
-        final container = ProviderContainer(
-          overrides: [localStoreProvider.overrideWithValue(store)],
-        );
-        addTearDown(container.dispose);
+          final container = ProviderContainer(
+            overrides: [localStoreProvider.overrideWithValue(store)],
+          );
+          addTearDown(container.dispose);
 
-        await tester.pumpWidget(UncontrolledProviderScope(
-          container: container,
-          child: const Ap1TrainerApp(),
-        ));
-        await tester.pumpAndSettle();
-        // Die App startet immer auf "/". Deren Fehler prüft der Fall "/"
-        // selbst - hier sollen sie den Befund für andere Screens nicht
-        // überdecken.
-        if (route != '/') tester.takeException();
+          await tester.pumpWidget(
+            UncontrolledProviderScope(
+              container: container,
+              child: const Ap1TrainerApp(),
+            ),
+          );
+          await tester.pumpAndSettle();
+          // Die App startet immer auf "/". Deren Fehler prüft der Fall "/"
+          // selbst - hier sollen sie den Befund für andere Screens nicht
+          // überdecken.
+          if (route != '/') tester.takeException();
 
-        container.read(routerProvider).go(route);
-        await tester.pumpAndSettle();
+          container.read(routerProvider).go(route);
+          await tester.pumpAndSettle();
 
-        expect(tester.takeException(), isNull);
-      });
+          expect(tester.takeException(), isNull);
+        });
+      }
     }
-  }
   }
 }

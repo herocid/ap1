@@ -8,7 +8,10 @@ import '../core/theme/app_theme.dart';
 
 /// Standardkarte. Fasst Padding, Rahmen und Radius an einer Stelle zusammen,
 /// damit nicht jeder Screen sein eigenes Container-Rezept erfindet.
-class AppCard extends StatelessWidget {
+///
+/// Antippbare Karten geben beim Drücken minimal nach - das fühlt sich
+/// wertiger an als nur die Ripple-Welle.
+class AppCard extends StatefulWidget {
   const AppCard({
     super.key,
     required this.child,
@@ -25,21 +28,134 @@ class AppCard extends StatelessWidget {
   final Color? borderColor;
 
   @override
+  State<AppCard> createState() => _AppCardState();
+}
+
+class _AppCardState extends State<AppCard> {
+  bool _pressed = false;
+
+  @override
   Widget build(BuildContext context) {
-    final content = Padding(padding: padding, child: child);
-    return Material(
-      color: color ?? Theme.of(context).colorScheme.surface,
+    final content = Padding(padding: widget.padding, child: widget.child);
+    final card = Material(
+      color: widget.color ?? Theme.of(context).colorScheme.surface,
       borderRadius: BorderRadius.circular(Radii.l),
       child: InkWell(
-        onTap: onTap,
+        onTap: widget.onTap,
+        onHighlightChanged: widget.onTap == null
+            ? null
+            : (v) => setState(() => _pressed = v),
         borderRadius: BorderRadius.circular(Radii.l),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(Radii.l),
-            border: Border.all(color: borderColor ?? context.c.border),
+            border: Border.all(color: widget.borderColor ?? context.c.border),
           ),
           child: content,
         ),
+      ),
+    );
+    if (widget.onTap == null) return card;
+    return AnimatedScale(
+      scale: _pressed ? 0.985 : 1,
+      duration: const Duration(milliseconds: 120),
+      curve: Curves.easeOut,
+      child: card,
+    );
+  }
+}
+
+/// Farbton einer [ActionTile]. Jeder Modus hat seine Farbe, damit man ihn
+/// wiedererkennt: Orange für den Kurztest, Petrol für die Prüfung, Grün für
+/// die Karten, Rot für Fehler.
+enum TileTone { brand, flame, success, danger, info }
+
+/// Zeile mit getöntem Symbol, Titel, Untertitel und Pfeil - der Standard für
+/// „hier geht es zu …“. Linksbündig und über die volle Breite, damit auch
+/// lange Texte auf 320 px sauber umbrechen.
+class ActionTile extends StatelessWidget {
+  const ActionTile({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+    this.tone = TileTone.brand,
+    this.badge,
+  });
+
+  final IconData icon;
+  final String title;
+  final String subtitle;
+  final VoidCallback? onTap;
+  final TileTone tone;
+
+  /// Kleine Zahl oder kurzer Hinweis rechts, z. B. „12 fällig“.
+  final String? badge;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.c;
+    final enabled = onTap != null;
+    final (fg, bg) = switch (tone) {
+      TileTone.brand => (context.scheme.primary, c.surfaceAlt),
+      TileTone.flame => (c.flame, c.flameBg),
+      TileTone.success => (c.success, c.successBg),
+      TileTone.danger => (c.danger, c.dangerBg),
+      TileTone.info => (c.info, c.infoBg),
+    };
+
+    return AppCard(
+      onTap: onTap,
+      padding: const EdgeInsets.fromLTRB(Gap.l, Gap.m, Gap.m, Gap.m),
+      child: Row(
+        children: [
+          Container(
+            width: 44,
+            height: 44,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: enabled ? bg : c.surfaceAlt,
+              borderRadius: BorderRadius.circular(Radii.m),
+            ),
+            child: Icon(icon, size: 22, color: enabled ? fg : c.textMuted),
+          ),
+          const SizedBox(width: Gap.m),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: context.text.titleMedium?.copyWith(
+                    color: enabled ? null : c.textMuted,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  subtitle,
+                  style: context.text.bodySmall?.copyWith(color: c.textMuted),
+                ),
+              ],
+            ),
+          ),
+          if (badge != null) ...[
+            const SizedBox(width: Gap.s),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: Gap.s,
+                vertical: 3,
+              ),
+              decoration: BoxDecoration(
+                color: bg,
+                borderRadius: BorderRadius.circular(Radii.pill),
+              ),
+              child: Text(badge!, style: AppType.numeric(size: 12, color: fg)),
+            ),
+          ],
+          const SizedBox(width: Gap.xs),
+          Icon(Icons.chevron_right, color: enabled ? c.textMuted : c.border),
+        ],
       ),
     );
   }
@@ -68,8 +184,9 @@ class SectionHeader extends StatelessWidget {
                   const SizedBox(height: 2),
                   Text(
                     subtitle!,
-                    style: context.text.bodyMedium
-                        ?.copyWith(color: context.c.textMuted),
+                    style: context.text.bodyMedium?.copyWith(
+                      color: context.c.textMuted,
+                    ),
                   ),
                 ],
               ],
@@ -145,14 +262,16 @@ class ReadinessRing extends StatelessWidget {
                   Text(
                     label,
                     textAlign: TextAlign.center,
-                    style: context.text.labelSmall
-                        ?.copyWith(color: context.c.textMuted),
+                    style: context.text.labelSmall?.copyWith(
+                      color: context.c.textMuted,
+                    ),
                   ),
                 if (caption != null)
                   Text(
                     caption!,
-                    style: context.text.labelSmall
-                        ?.copyWith(color: context.c.textMuted),
+                    style: context.text.labelSmall?.copyWith(
+                      color: context.c.textMuted,
+                    ),
                   ),
               ],
             ),
@@ -252,7 +371,9 @@ class StatTile extends StatelessWidget {
             label,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: context.text.labelSmall?.copyWith(color: context.c.textMuted),
+            style: context.text.labelSmall?.copyWith(
+              color: context.c.textMuted,
+            ),
           ),
         ],
       ),
@@ -263,11 +384,7 @@ class StatTile extends StatelessWidget {
 /// Fortschrittsbalken je Thema. Zeigt Können (gefüllter Balken) und
 /// Abdeckung (Punkt-Marker) in einem Element.
 class TopicBar extends StatelessWidget {
-  const TopicBar({
-    super.key,
-    required this.confidence,
-    required this.coverage,
-  });
+  const TopicBar({super.key, required this.confidence, required this.coverage});
 
   final double confidence;
   final double coverage;
@@ -277,10 +394,10 @@ class TopicBar extends StatelessWidget {
     final color = confidence >= 0.75
         ? context.c.success
         : confidence >= 0.45
-            ? context.scheme.primary
-            : confidence > 0
-                ? context.c.flame
-                : context.c.textMuted;
+        ? context.scheme.primary
+        : confidence > 0
+        ? context.c.flame
+        : context.c.textMuted;
 
     return LayoutBuilder(
       builder: (context, box) {
@@ -350,7 +467,9 @@ class StreakChip extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
-            activeToday ? Icons.local_fire_department : Icons.local_fire_department_outlined,
+            activeToday
+                ? Icons.local_fire_department
+                : Icons.local_fire_department_outlined,
             size: 17,
             color: days > 0 ? c.flame : c.textMuted,
           ),
@@ -549,9 +668,11 @@ class SelectTile extends StatelessWidget {
           child: Row(
             children: [
               if (icon != null) ...[
-                Icon(icon,
-                    size: 22,
-                    color: selected ? primary : context.c.textMuted),
+                Icon(
+                  icon,
+                  size: 22,
+                  color: selected ? primary : context.c.textMuted,
+                ),
                 const SizedBox(width: Gap.m),
               ],
               Expanded(
@@ -563,8 +684,9 @@ class SelectTile extends StatelessWidget {
                       const SizedBox(height: 2),
                       Text(
                         subtitle!,
-                        style: context.text.bodyMedium
-                            ?.copyWith(color: context.c.textMuted),
+                        style: context.text.bodyMedium?.copyWith(
+                          color: context.c.textMuted,
+                        ),
                       ),
                     ],
                   ],
@@ -627,13 +749,11 @@ class EmptyState extends StatelessWidget {
           Text(
             message,
             textAlign: TextAlign.center,
-            style:
-                context.text.bodyMedium?.copyWith(color: context.c.textMuted),
+            style: context.text.bodyMedium?.copyWith(
+              color: context.c.textMuted,
+            ),
           ),
-          if (action != null) ...[
-            const SizedBox(height: Gap.xl),
-            action!,
-          ],
+          if (action != null) ...[const SizedBox(height: Gap.xl), action!],
         ],
       ),
     );

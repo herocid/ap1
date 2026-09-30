@@ -48,15 +48,14 @@ class SessionItem {
     bool? checked,
     int? seconds,
     bool? flagged,
-  }) =>
-      SessionItem(
-        question: question,
-        answer: clearAnswer ? null : (answer ?? this.answer),
-        grade: grade ?? this.grade,
-        checked: checked ?? this.checked,
-        seconds: seconds ?? this.seconds,
-        flagged: flagged ?? this.flagged,
-      );
+  }) => SessionItem(
+    question: question,
+    answer: clearAnswer ? null : (answer ?? this.answer),
+    grade: grade ?? this.grade,
+    checked: checked ?? this.checked,
+    seconds: seconds ?? this.seconds,
+    flagged: flagged ?? this.flagged,
+  );
 }
 
 @immutable
@@ -71,6 +70,8 @@ class SessionState {
     this.finished = false,
     this.topicFilter,
     this.title = 'Übung',
+    this.endless = false,
+    this.badgesBefore = const {},
   });
 
   final SessionMode mode;
@@ -85,12 +86,38 @@ class SessionState {
   final String? topicFilter;
   final String title;
 
+  /// Kurztest: Nach jeder Aufgabe kommt eine neue, bis man selbst aufhört.
+  final bool endless;
+
+  /// Abzeichen, die beim Start schon verdient waren - für „Neu
+  /// freigeschaltet“ in der Auswertung.
+  final Set<Achievement> badgesBefore;
+
   SessionItem get current => items[index];
   bool get isLast => index >= items.length - 1;
   bool get isExam => mode == SessionMode.pruefung;
 
-  Duration? get remaining =>
-      limit == null ? null : (limit! - elapsed).isNegative ? Duration.zero : limit! - elapsed;
+  /// Bereits geprüfte Aufgaben - im Kurztest die Zahl der beantworteten.
+  int get checkedCount => items.where((i) => i.checked).length;
+
+  int get correctCount => items.where((i) => i.grade?.isCorrect == true).length;
+
+  /// Richtige Antworten in Folge, von der neuesten Aufgabe rückwärts.
+  int get correctStreak {
+    var n = 0;
+    for (final i in items.reversed) {
+      if (!i.checked) continue;
+      if (i.grade?.isCorrect != true) break;
+      n++;
+    }
+    return n;
+  }
+
+  Duration? get remaining => limit == null
+      ? null
+      : (limit! - elapsed).isNegative
+      ? Duration.zero
+      : limit! - elapsed;
 
   bool get timeIsUp => limit != null && elapsed >= limit!;
 
@@ -108,28 +135,30 @@ class SessionState {
   }
 
   int get earnedPoints => items.fold<int>(
-      0, (s, i) => s + ((i.grade?.score ?? 0) * i.question.points).round());
+    0,
+    (s, i) => s + ((i.grade?.score ?? 0) * i.question.points).round(),
+  );
 
-  int get possiblePoints =>
-      items.fold<int>(0, (s, i) => s + i.question.points);
+  int get possiblePoints => items.fold<int>(0, (s, i) => s + i.question.points);
 
   SessionState copyWith({
     List<SessionItem>? items,
     int? index,
     Duration? elapsed,
     bool? finished,
-  }) =>
-      SessionState(
-        mode: mode,
-        items: items ?? this.items,
-        index: index ?? this.index,
-        startedAt: startedAt,
-        limit: limit,
-        elapsed: elapsed ?? this.elapsed,
-        finished: finished ?? this.finished,
-        topicFilter: topicFilter,
-        title: title,
-      );
+  }) => SessionState(
+    mode: mode,
+    items: items ?? this.items,
+    index: index ?? this.index,
+    startedAt: startedAt,
+    limit: limit,
+    elapsed: elapsed ?? this.elapsed,
+    finished: finished ?? this.finished,
+    topicFilter: topicFilter,
+    title: title,
+    endless: endless,
+    badgesBefore: badgesBefore,
+  );
 }
 
 /// Steuert eine laufende Lern- oder Prüfungssession.
@@ -143,14 +172,20 @@ class SessionController extends StateNotifier<SessionState?> {
   final Ref _ref;
   Timer? _timer;
 
+  /// Liefert im Kurztest die nächste Aufgabe. Bekommt die IDs, die in
+  /// dieser Runde schon dran waren, damit sich nichts zu früh wiederholt.
+  Question? Function(Set<String> used)? _supply;
+
   void start({
     required List<Question> questions,
     required SessionMode mode,
     Duration? limit,
     String? topicFilter,
     String title = 'Übung',
+    Question? Function(Set<String> used)? supply,
   }) {
     _timer?.cancel();
+    _supply = supply;
     if (questions.isEmpty) return;
 
     state = SessionState(
@@ -161,6 +196,11 @@ class SessionController extends StateNotifier<SessionState?> {
       limit: limit,
       topicFilter: topicFilter,
       title: title,
+      endless: supply != null,
+      badgesBefore: {
+        for (final e in _ref.read(achievementsProvider).entries)
+          if (e.value.earned) e.key,
+      },
     );
 
     _timer = Timer.periodic(const Duration(seconds: 1), (_) => _tick());
@@ -171,8 +211,9 @@ class SessionController extends StateNotifier<SessionState?> {
     if (s == null || s.finished) return;
 
     final items = [...s.items];
-    items[s.index] =
-        items[s.index].copyWith(seconds: items[s.index].seconds + 1);
+    items[s.index] = items[s.index].copyWith(
+      seconds: items[s.index].seconds + 1,
+    );
 
     final elapsed = s.elapsed + const Duration(seconds: 1);
     state = s.copyWith(items: items, elapsed: elapsed);
@@ -205,14 +246,18 @@ class SessionController extends StateNotifier<SessionState?> {
     items[s.index] = item.copyWith(grade: grade, checked: true);
     state = s.copyWith(items: items);
 
-    _ref.read(progressProvider.notifier).record(AnswerRecord(
-          questionId: item.question.id,
-          topicId: item.question.topicId,
-          score: grade.score,
-          seconds: item.seconds,
-          at: DateTime.now(),
-          mode: s.mode,
-        ));
+    _ref
+        .read(progressProvider.notifier)
+        .record(
+          AnswerRecord(
+            questionId: item.question.id,
+            topicId: item.question.topicId,
+            score: grade.score,
+            seconds: item.seconds,
+            at: DateTime.now(),
+            mode: s.mode,
+          ),
+        );
   }
 
   void toggleFlag() {
@@ -225,7 +270,22 @@ class SessionController extends StateNotifier<SessionState?> {
 
   void next() {
     final s = state;
-    if (s == null || s.isLast) return;
+    if (s == null) return;
+    if (s.isLast) {
+      // Im Kurztest geht es immer weiter - mit einer neuen Aufgabe.
+      final q = s.endless
+          ? _supply?.call({for (final i in s.items) i.question.id})
+          : null;
+      if (q == null) return;
+      state = s.copyWith(
+        items: [
+          ...s.items,
+          SessionItem(question: q),
+        ],
+        index: s.index + 1,
+      );
+      return;
+    }
     state = s.copyWith(index: s.index + 1);
   }
 
@@ -256,24 +316,34 @@ class SessionController extends StateNotifier<SessionState?> {
         items.add(item);
         continue;
       }
+      // Im Kurztest hört man mitten in einer Aufgabe auf - die offene zählt
+      // nicht als Fehler, sie fällt einfach weg.
+      if (s.endless) continue;
       final grade = item.question.grade(item.answer);
       items.add(item.copyWith(grade: grade, checked: true));
       // Unbeantwortete Aufgaben zählen als Versuch mit 0 Punkten - in der
       // echten Prüfung gibt es für eine leere Zeile auch nichts.
-      records.add(AnswerRecord(
-        questionId: item.question.id,
-        topicId: item.question.topicId,
-        score: grade.score,
-        seconds: item.seconds,
-        at: now,
-        mode: s.mode,
-      ));
+      records.add(
+        AnswerRecord(
+          questionId: item.question.id,
+          topicId: item.question.topicId,
+          score: grade.score,
+          seconds: item.seconds,
+          at: now,
+          mode: s.mode,
+        ),
+      );
     }
 
     if (records.isNotEmpty) {
       _ref.read(progressProvider.notifier).recordAll(records);
     }
-    state = s.copyWith(items: items, finished: true);
+    if (items.isEmpty) {
+      // Kurztest ohne eine einzige beantwortete Aufgabe: nichts auszuwerten.
+      state = null;
+      return;
+    }
+    state = s.copyWith(items: items, index: 0, finished: true);
   }
 
   void clear() {
@@ -288,7 +358,8 @@ class SessionController extends StateNotifier<SessionState?> {
   }
 }
 
-final sessionProvider =
-    StateNotifierProvider<SessionController, SessionState?>((ref) {
-  return SessionController(ref);
-});
+final sessionProvider = StateNotifierProvider<SessionController, SessionState?>(
+  (ref) {
+    return SessionController(ref);
+  },
+);
