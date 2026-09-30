@@ -61,11 +61,19 @@ class NuggetCard extends StatelessWidget {
             children: [
               Icon(icon, size: 15, color: color),
               const SizedBox(width: Gap.s),
-              Text(
-                n.kind.label.toUpperCase(),
-                style: context.text.labelSmall?.copyWith(
-                  color: color,
-                  letterSpacing: 1.1,
+              // Auf 320 px mit großer Systemschrift ist „PRÜFUNGSFALLE“
+              // knapp zu breit - lieber minimal verkleinern als abschneiden.
+              Flexible(
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    n.kind.label.toUpperCase(),
+                    style: context.text.labelSmall?.copyWith(
+                      color: color,
+                      letterSpacing: 1.1,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(width: Gap.s),
