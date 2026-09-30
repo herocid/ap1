@@ -108,7 +108,8 @@ class _FlussLayout extends DiagramLayout {
       final n = nodes[i];
       final g = n.sideGuard;
       if (!stacked) {
-        var rowH = n.shape.height;
+        // Beschriftung neben Start/Ende kann höher sein als der Kreis.
+        var rowH = math.max(n.shape.height, n.outside?.height ?? 0);
         if (n.sideBox != null) rowH = math.max(rowH, n.sideBox!.height);
         if (g != null) rowH = math.max(rowH, 2 * g.height + 8);
         final cy = y + rowH / 2;
@@ -136,13 +137,14 @@ class _FlussLayout extends DiagramLayout {
         }
         y += rowH;
       } else {
+        final rowH = math.max(n.shape.height, n.outside?.height ?? 0);
         n.shape = Rect.fromLTWH(
           cx - n.shape.width / 2,
-          y,
+          y + (rowH - n.shape.height) / 2,
           n.shape.width,
           n.shape.height,
         );
-        y = n.shape.bottom;
+        y += rowH;
         if (parsed.containsKey(i)) {
           // Nach rechts, dann hinunter in den Seitenkasten darunter.
           final cy = n.shape.center.dy;
@@ -237,7 +239,7 @@ class _FlussLayout extends DiagramLayout {
             maxWidth: boxW - 2 * padX,
             align: TextAlign.center,
           );
-          final wave = k.form == FlussForm.dokument ? s.sc(7) : 0;
+          final wave = k.form == FlussForm.dokument ? s.sc(12) : 0;
           n.shape = Rect.fromLTWH(
             0,
             0,
@@ -402,17 +404,17 @@ class _FlussLayout extends DiagramLayout {
           c.drawRRect(rr, fillPaint(s.accentBg));
           c.drawRRect(rr, strokePaint(s.accent, 1.3));
         case FlussForm.dokument:
-          final wave = s.sc(7);
-          final bottom = r.bottom - wave / 2;
+          final wave = s.sc(12);
+          final bottom = r.bottom - wave;
           final path = Path()
             ..moveTo(r.left, r.top)
             ..lineTo(r.right, r.top)
             ..lineTo(r.right, bottom)
             ..cubicTo(
               r.right - r.width * 0.25,
-              bottom - wave * 1.4,
+              bottom - wave,
               r.left + r.width * 0.45,
-              bottom + wave * 1.6,
+              bottom + wave,
               r.left,
               bottom,
             )
@@ -430,7 +432,7 @@ class _FlussLayout extends DiagramLayout {
       }
       final t = n.text;
       if (t != null) {
-        final lift = n.k.form == FlussForm.dokument ? s.sc(7) / 2 : 0;
+        final lift = n.k.form == FlussForm.dokument ? s.sc(12) / 2 : 0;
         t.paint(c, r.center - Offset(t.width / 2, t.height / 2 + lift));
       }
       final o = n.outside;

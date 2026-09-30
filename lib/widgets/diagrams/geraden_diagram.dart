@@ -191,8 +191,21 @@ class _GeradenLayout extends DiagramLayout {
     final colors = s.series;
     for (var i = 0; i < d.geraden.length; i++) {
       final g = d.geraden[i];
-      final a = _pt(0, g.start);
-      final b = _pt(xMax, g.start + g.steigung * xMax);
+      // Strecke rechnerisch auf 0 <= y <= yMax beschneiden (auch fallende
+      // Geraden wie eine Nachfragekurve bleiben in der Zeichenfläche).
+      var lo = 0.0;
+      var hi = xMax;
+      if (g.steigung == 0) {
+        if (g.start < 0 || g.start > yMax) continue;
+      } else {
+        final x0 = -g.start / g.steigung;
+        final x1 = (yMax - g.start) / g.steigung;
+        lo = math.max(lo, math.min(x0, x1));
+        hi = math.min(hi, math.max(x0, x1));
+        if (lo >= hi) continue;
+      }
+      final a = _pt(lo, g.start + g.steigung * lo);
+      final b = _pt(hi, g.start + g.steigung * hi);
       c.drawLine(a, b, strokePaint(colors[i % colors.length], 2.4));
     }
     c.restore();
