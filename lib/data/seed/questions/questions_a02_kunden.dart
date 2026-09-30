@@ -2313,7 +2313,7 @@ final List<Question> questionsA02 = [
     answer: 75,
     unit: '%',
     explanation:
-        'P1: 50.000 / 100.000 = 50 %. P2: 25 %. Kumuliert: 50 % + 25 % = 75 % - beide gehören zur A-Klasse.',
+        'P1: 50.000 / 100.000 = 50 %. P2: 25 %. Kumuliert: 50 % + 25 % = 75 % - bei einer üblichen A-Grenze von 75 bis 80 % gehören beide zur A-Klasse.',
   ),
   reihenfolge(
     'a2-ma-2',

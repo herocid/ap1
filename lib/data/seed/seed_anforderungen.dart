@@ -218,8 +218,8 @@ final List<Question> seedAnforderungen = [
     ],
     explanation:
         'Change-Request-Prozess: Antrag erfassen -> Auswirkung auf Zeit, '
-        'Kosten und Qualität bewerten -> Entscheidung durch den befugten '
-        'Gremium bzw. Auftraggeber -> bei Annahme Planung und Pflichtenheft '
+        'Kosten und Qualität bewerten -> Entscheidung durch das befugte '
+        'Gremium bzw. den Auftraggeber -> bei Annahme Planung und Pflichtenheft '
         'fortschreiben. Der Kern ist Transparenz: Jeder soll sehen, was eine '
         'Änderung kostet.',
   ),

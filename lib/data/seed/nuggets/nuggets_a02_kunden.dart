@@ -3044,7 +3044,7 @@ final List<Nugget> nuggetsA02 = [
       ],
     ],
     points: [
-      'OHG und KG betreiben ein Handelsgewerbe und stehen im Handelsregister.',
+      'OHG und KG betreiben meist ein Handelsgewerbe und werden ins Handelsregister eingetragen.',
       'Kommanditisten haben Kontrollrechte und können außergewöhnlichen Geschäften widersprechen.',
     ],
   ),

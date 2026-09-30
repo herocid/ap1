@@ -173,7 +173,7 @@ final List<Nugget> nuggetsA07 = [
       ['Erklärungsirrtum', '1.000 statt 100 Stück getippt', 'unverzüglich'],
       [
         'Inhaltsirrtum',
-        '„Gros“ bestellt, 100 statt 144 Stück gemeint',
+        '1 „Gros“ bestellt im Glauben, das seien 100 Stück (es sind 144)',
         'unverzüglich',
       ],
       ['Eigenschaftsirrtum', 'Kopie für Original gehalten', 'unverzüglich'],
@@ -421,7 +421,7 @@ final List<Nugget> nuggetsA07 = [
     'n-vy-9',
     'vt-arten',
     'SaaS als Miete: was daraus folgt',
-    'Der Bundesgerichtshof hat die Bereitstellung von Software über das Internet (ASP) als Miete eingeordnet; für SaaS gilt das entsprechend. Der Anbieter muss die Software deshalb während der ganzen Laufzeit nutzbar halten (§ 535 BGB). Fällt sie erheblich aus, mindert sich die Gebühr für diese Zeit automatisch (§ 536 BGB) – der Kunde muss keine Frist setzen.',
+    'Der Bundesgerichtshof hat die Bereitstellung von Software über das Internet (ASP) als Miete eingeordnet; für SaaS gilt das nach herrschender Meinung entsprechend. Der Anbieter muss die Software deshalb während der ganzen Laufzeit nutzbar halten (§ 535 BGB). Fällt sie erheblich aus, mindert sich die Gebühr für diese Zeit automatisch (§ 536 BGB) – der Kunde muss keine Frist setzen.',
     points: [
       'Verfügbarkeit und Reaktionszeiten werden zusätzlich im SLA konkret geregelt',
       'Der Kunde muss einen Ausfall melden, sonst kann er Rechte verlieren (§ 536c BGB)',
@@ -538,7 +538,11 @@ final List<Nugget> nuggetsA07 = [
         'darf weitere Lizenzen vergeben',
         'darf keine weiteren vergeben',
       ],
-      ['Urheber selbst', 'nutzt weiter', 'ausgeschlossen, wenn vereinbart'],
+      [
+        'Urheber selbst',
+        'nutzt weiter',
+        'ausgeschlossen, außer er behält sich die Nutzung vor',
+      ],
       [
         'Beispiel',
         'Office-Lizenz im Büro',
@@ -594,7 +598,7 @@ final List<Nugget> nuggetsA07 = [
     'n-vu-8',
     'vt-urheber',
     'Was Nutzer auch ohne Erlaubnis dürfen',
-    'Wer ein Programm rechtmäßig nutzt, hat einige Rechte, die ihm kein Lizenzvertrag nehmen kann (§§ 69d, 69e UrhG). Alles darüber hinaus braucht die Zustimmung des Rechteinhabers.',
+    'Wer ein Programm rechtmäßig nutzt, hat einige gesetzliche Rechte (§§ 69d, 69e UrhG). Sicherungskopie, Testen und Dekompilieren für Schnittstellen kann ihm kein Lizenzvertrag nehmen (§ 69g Abs. 2). Alles darüber hinaus braucht die Zustimmung des Rechteinhabers.',
     [
       ['Handlung', 'Erlaubt?'],
       ['bestimmungsgemäß nutzen, Fehler berichtigen', 'ja, § 69d Abs. 1'],
@@ -1095,7 +1099,7 @@ final List<Nugget> nuggetsA07 = [
     'n-lt-1',
     'sla-itil',
     'ITIL',
-    'ITIL ist eine Sammlung bewährter Vorgehensweisen (Best Practices) für das IT-Service-Management. Die aktuell gelehrte Fassung ist ITIL 4 (seit 2019). ITIL ist kein Gesetz und keine Software, sondern ein Leitfaden, den Unternehmen an ihre Bedürfnisse anpassen.',
+    'ITIL ist eine Sammlung bewährter Vorgehensweisen (Best Practices) für das IT-Service-Management. Verbreitet und prüfungsrelevant ist ITIL 4 (seit 2019). ITIL ist kein Gesetz und keine Software, sondern ein Leitfaden, den Unternehmen an ihre Bedürfnisse anpassen.',
     points: [
       'Ein Service ermöglicht dem Kunden gewünschte Ergebnisse, ohne dass er bestimmte Kosten und Risiken selbst tragen muss',
       'Wert entsteht gemeinsam mit dem Kunden (Co-Creation)',

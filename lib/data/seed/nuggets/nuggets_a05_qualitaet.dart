@@ -482,7 +482,7 @@ final List<Nugget> nuggetsA05 = [
       [
         'Abnahmetest',
         'Erfüllung der Kundenanforderungen',
-        'Lastenheft, Vertrag',
+        'Abnahmekriterien aus Vertrag und Pflichtenheft',
       ],
     ],
   ),

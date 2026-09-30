@@ -274,7 +274,7 @@ final List<Question> seedQsService = [
     prompt: 'Wie heißt dieses Verfahren?',
     choices: [
       _c('Schreibtischtest', true,
-          'Richtig. Der Code wird ohne Ausführung manuell nachvollzogen - im Katalog 2025 ausdrücklich genannt.'),
+          'Richtig. Der Code wird ohne Ausführung manuell nachvollzogen - ein klassisches Prüfungsthema.'),
       _c('Regressionstest', false,
           'Falsch. Ein Regressionstest prüft nach einer Änderung, ob bisher funktionierende Teile noch laufen.'),
       _c('Integrationstest', false,
@@ -283,7 +283,7 @@ final List<Question> seedQsService = [
           'Falsch. Ein Lasttest prüft das Verhalten unter hoher Beanspruchung.'),
     ],
     explanation:
-        'Der Schreibtischtest (auch Trockentest oder Code-Walkthrough) ist '
+        'Der Schreibtischtest (auch Trockentest) ist '
         'ein statisches Verfahren: Der Code wird gelesen und nachvollzogen, '
         'nicht ausgeführt.\n'
         'Praktisch geht man mit einer Wertetabelle vor - eine Spalte je '
@@ -424,8 +424,8 @@ final List<Question> seedQsService = [
     difficulty: 2,
     tags: ['urheberrecht'],
     scenario:
-        'Eine Auszubildende entwickelt während ihrer Arbeitszeit ein '
-        'Skript, das im Betrieb produktiv eingesetzt wird.',
+        'Eine Auszubildende entwickelt im Rahmen ihrer Aufgaben im Betrieb ein '
+        'Skript, das dort produktiv eingesetzt wird.',
     prompt: 'Wie ist die urheberrechtliche Lage in Deutschland?',
     choices: [
       _c('Die Urheberin bleibt sie selbst, die Nutzungsrechte liegen aber beim Arbeitgeber.',
@@ -462,13 +462,13 @@ final List<Question> seedQsService = [
       _c('Vergütung und Zahlungsbedingungen', true,
           'Höhe, Fälligkeit und Zahlungsziel gehören zwingend hinein.'),
       _c('Termine und Fristen', true,
-          'Ohne Termin gibt es keinen Verzug - und damit keine Handhabe bei Verspätung.'),
+          'Feste Termine machen Verzug eindeutig feststellbar - bei einem Kalendertermin sogar ohne Mahnung.'),
       _c('Regelungen zu Gewährleistung und Haftung', true,
           'Legt fest, wer bei Mängeln und Schäden in welchem Umfang einsteht.'),
       _c('Die Namen aller eingesetzten Entwickler', false,
           'Falsch. Das wäre unpraktikabel - Personal wechselt. Geregelt werden höchstens Qualifikationsanforderungen.'),
       _c('Vereinbarungen zu Datenschutz und Vertraulichkeit', true,
-          'Bei Zugriff auf personenbezogene Daten ist ein Auftragsverarbeitungsvertrag sogar Pflicht.'),
+          'Verarbeitet der Dienstleister personenbezogene Daten im Auftrag, ist ein Auftragsverarbeitungsvertrag sogar Pflicht (Art. 28 DSGVO).'),
     ],
     explanation:
         'Mindestinhalte: Vertragsparteien, Leistungsbeschreibung, Vergütung, '
@@ -542,7 +542,7 @@ final List<Question> seedQsService = [
         '99 % = rund 7,2 Stunden Ausfall im Monat\n'
         '99,5 % = rund 3,6 Stunden\n'
         '99,9 % = rund 43 Minuten\n'
-        'Jede Neun kostet ungefähr den Faktor 10 an Aufwand.',
+        'Jede zusätzliche Neun teilt den erlaubten Ausfall durch zehn.',
   ),
 
   Question(
