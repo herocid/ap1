@@ -9,6 +9,7 @@ import '../../core/theme/app_theme.dart';
 import '../../data/models/netzplan.dart';
 import '../../data/models/question.dart';
 import '../common.dart';
+import '../hyphenation.dart';
 import 'number_input.dart';
 
 const double _nodeW = 178;
@@ -639,6 +640,9 @@ class _EdgePainter extends CustomPainter {
 
 // ------------------------------------------------------------- Beiwerk
 
+/// Die Vorgangsliste. Auf dem Handy als Zeilen statt starrer Spalten: Nummer
+/// links, darunter „Dauer · Vorgänger“ - so passt auch ein langer
+/// Vorgangsname ganz, ohne mitten im Wort umzubrechen.
 class _ActivityTable extends StatelessWidget {
   const _ActivityTable({required this.activities});
 
@@ -654,88 +658,60 @@ class _ActivityTable extends StatelessWidget {
         border: Border.all(color: c.border),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(Gap.m, Gap.s, Gap.m, Gap.xs),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 28,
-                  child: Text(
-                    'Nr',
-                    style: context.text.labelSmall?.copyWith(
-                      color: c.textMuted,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Text(
-                    'Vorgang',
-                    style: context.text.labelSmall?.copyWith(
-                      color: c.textMuted,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 44,
-                  child: Text(
-                    'Dauer',
-                    textAlign: TextAlign.right,
-                    style: context.text.labelSmall?.copyWith(
-                      color: c.textMuted,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 80,
-                  child: Text(
-                    'Vorgänger',
-                    textAlign: TextAlign.right,
-                    style: context.text.labelSmall?.copyWith(
-                      color: c.textMuted,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          for (final a in activities)
+          for (var i = 0; i < activities.length; i++) ...[
+            if (i > 0) Divider(height: 1, color: c.border),
             Padding(
-              padding: const EdgeInsets.fromLTRB(Gap.m, 3, Gap.m, 3),
+              padding: const EdgeInsets.symmetric(
+                horizontal: Gap.m,
+                vertical: Gap.s,
+              ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    width: 28,
+                  Container(
+                    constraints: const BoxConstraints(minWidth: 28),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 6,
+                      vertical: 2,
+                    ),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: context.scheme.primary.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(Radii.s),
+                    ),
                     child: Text(
-                      a.id,
+                      activities[i].id,
                       style: AppType.numeric(
                         size: 13,
                         color: context.scheme.primary,
                       ),
                     ),
                   ),
-                  Expanded(child: Text(a.name, style: context.text.bodyMedium)),
-                  SizedBox(
-                    width: 44,
-                    child: Text(
-                      '${a.duration}',
-                      textAlign: TextAlign.right,
-                      style: AppType.numeric(size: 13),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 80,
-                    child: Text(
-                      a.predecessors.isEmpty ? '–' : a.predecessors.join(', '),
-                      textAlign: TextAlign.right,
-                      style: AppType.numeric(size: 13, color: c.textMuted),
+                  const SizedBox(width: Gap.m),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        HyphenText(
+                          activities[i].name,
+                          style: context.text.bodyMedium,
+                        ),
+                        Text(
+                          'Dauer ${activities[i].duration} · '
+                          '${activities[i].predecessors.isEmpty ? 'kein Vorgänger' : 'nach ${activities[i].predecessors.join(', ')}'}',
+                          style: context.text.labelSmall?.copyWith(
+                            color: c.textMuted,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-          const SizedBox(height: Gap.s),
+          ],
         ],
       ),
     );
@@ -843,25 +819,28 @@ class _SolutionSummary extends StatelessWidget {
         borderRadius: BorderRadius.circular(Radii.m),
         border: Border.all(color: c.border),
       ),
-      child: Row(
+      // Wrap statt fester Spalten: Bei großer Schrift steht der kritische
+      // Pfad unter der Projektdauer.
+      child: Wrap(
+        spacing: Gap.xl,
+        runSpacing: Gap.m,
         children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Projektdauer',
-                  style: context.text.labelSmall?.copyWith(color: c.textMuted),
-                ),
-                Text(
-                  '${solution.projectDuration} Tage',
-                  style: AppType.numeric(size: 18),
-                ),
-              ],
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Projektdauer',
+                style: context.text.labelSmall?.copyWith(color: c.textMuted),
+              ),
+              Text(
+                '${solution.projectDuration} Tage',
+                style: AppType.numeric(size: 18),
+              ),
+            ],
           ),
-          Expanded(
-            flex: 2,
+          ConstrainedBox(
+            constraints: const BoxConstraints(minWidth: 120),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

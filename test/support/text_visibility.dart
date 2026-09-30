@@ -19,12 +19,15 @@ import 'package:flutter_test/flutter_test.dart';
 List<String> findCutTexts(
   WidgetTester tester, {
   bool allowHorizontalScroll = false,
+  bool Function(Widget widget)? skipInside,
 }) {
+  bool skipped(Element e) => skipInside != null && _hasAncestor(e, skipInside);
   final problems = <String>[];
   // Getrennter Text (HyphenText) hat einen eigenen Renderer.
   for (final element in find.byType(HyphenText).evaluate()) {
     final ro = element.renderObject;
     if (ro is! RenderHyphenText || !ro.attached || !ro.hasSize) continue;
+    if (skipped(element)) continue;
     final text = ro.plainText.trim();
     if (text.isEmpty) continue;
     final label = text.length > 70 ? '${text.substring(0, 67)}...' : text;
@@ -46,6 +49,7 @@ List<String> findCutTexts(
     final text = ro.text.toPlainText().trim();
     if (text.isEmpty) continue;
     if (_hasAncestor(element, (w) => w is ClampedText)) continue;
+    if (skipped(element)) continue;
 
     final label = text.length > 70 ? '${text.substring(0, 67)}...' : text;
     final w = ro.size.width;

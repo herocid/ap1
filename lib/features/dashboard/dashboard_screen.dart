@@ -6,10 +6,12 @@ import 'package:intl/intl.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
+import '../../data/models/exam_area.dart';
 import '../../data/models/subtopic.dart';
 import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
+import '../../widgets/hyphenation.dart';
 import '../../widgets/mascot.dart';
 import '../learn/session_launcher.dart';
 
@@ -128,7 +130,10 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(greeting, style: context.text.headlineSmall),
+                              WordSafeText(
+                                greeting,
+                                style: context.text.headlineSmall,
+                              ),
                               const SizedBox(height: 2),
                               Tooltip(
                                 message: DateFormat(
@@ -184,6 +189,10 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                       ],
                     ],
 
+                    // ------------------------- Sessions nach Themengebiet
+                    const SizedBox(height: Gap.xxl),
+                    const _SessionAreas(),
+
                     // ---------------------------------------- Schnellstart
                     const SizedBox(height: Gap.xxl),
                     _SectionTitle(
@@ -204,7 +213,9 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                     ActionTile(
                       icon: Icons.timer_rounded,
                       tone: TileTone.info,
-                      title: 'Prüfungssimulation',
+                      // Zwei Wörter statt eines langen: passt auch auf 320 px
+                      // mit großer Schrift, ohne mitten im Wort umzubrechen.
+                      title: 'Prüfung simulieren',
                       subtitle: 'Mit Zeitlimit, bis zu 90 Minuten',
                       onTap: () => context.push('/pruefung'),
                     ),
@@ -501,12 +512,10 @@ class _JourneyCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 2),
-                    Text(lesson.title, style: context.text.titleMedium),
+                    HyphenText(lesson.title, style: context.text.titleMedium),
                     const SizedBox(height: 2),
                     Text(
                       topic.title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
                       style: context.text.labelSmall?.copyWith(
                         color: context.c.textMuted,
                       ),
@@ -600,6 +609,57 @@ class _ReadinessCard extends StatelessWidget {
           Icon(Icons.chevron_right, color: context.c.textMuted),
         ],
       ),
+    );
+  }
+}
+
+/// „Sessions nach Themengebiet“: die sieben Katalogbereiche mit
+/// Lernfortschritt. Antippen öffnet die Session-Seite des Bereichs, die
+/// Lernen, Karteikarten und Quiz zu einer Lektion verbindet.
+class _SessionAreas extends ConsumerWidget {
+  const _SessionAreas();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final steps = ref.watch(lessonStepsProvider);
+    final done = ref.watch(journeyProvider);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const _SectionTitle('Sessions nach Themengebiet'),
+        Padding(
+          padding: const EdgeInsets.only(bottom: Gap.m),
+          child: Text(
+            'Lernen, Karteikarten und Quiz zu einer Lektion - in einem '
+            'Durchgang.',
+            style: context.text.bodyMedium?.copyWith(
+              color: context.c.textMuted,
+            ),
+          ),
+        ),
+        for (final area in ExamAreas.all) ...[
+          Builder(
+            builder: (context) {
+              final lessons = [
+                for (final t in Topics.ofArea(area.id))
+                  for (final l in Subtopics.ofTopic(t.id))
+                    if (steps.containsKey(l.id)) l,
+              ];
+              final doneHere = lessons.where((l) => done.contains(l.id)).length;
+              return ProgressTile(
+                icon: area.icon,
+                overline: 'BEREICH ${area.number}',
+                title: area.title,
+                progress: lessons.isEmpty ? 0 : doneHere / lessons.length,
+                progressLabel: '$doneHere/${lessons.length}',
+                onTap: () => context.push('/session-bereich/${area.id}'),
+              );
+            },
+          ),
+          const SizedBox(height: Gap.s),
+        ],
+      ],
     );
   }
 }

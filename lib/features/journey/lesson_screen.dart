@@ -11,16 +11,16 @@ import '../../data/models/subtopic.dart';
 import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
-import '../cards/card_session_screen.dart';
-import '../learn/session_launcher.dart';
+import '../../widgets/hyphenation.dart';
 import 'nugget_card.dart';
 
-/// Eine Lektion der Learning Journey.
+/// Eine Lektion der Learning Journey - hier wird nur gelernt.
 ///
-/// Aufbau: Einstieg mit Lernziel, dann die Lernschritte in fester
-/// Reihenfolge, am Ende Abschluss mit Wissenscheck. Geblättert wird
-/// seitlich, damit jeder Schritt für sich steht - wer zurück will, kann
-/// jederzeit zurück.
+/// Aufbau: Einstieg mit Lernziel und Übersicht der Schritte, dann die
+/// Lernschritte in fester Reihenfolge, am Ende eine Zusammenfassung mit den
+/// Merksätzen. Abfragen gibt es hier bewusst nicht - dafür sind Quiz und
+/// Karteikarten da. Geblättert wird seitlich; jeder Schritt steht für sich
+/// und scrollt, wenn er länger ist als der Bildschirm.
 class LessonScreen extends ConsumerStatefulWidget {
   const LessonScreen({super.key, required this.lessonId});
 
@@ -42,8 +42,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
 
   void _go(int page, int pageCount) {
     if (page < 0 || page >= pageCount) return;
-    final instant = MediaQuery.of(context).disableAnimations;
-    if (instant) {
+    if (MediaQuery.of(context).disableAnimations) {
       _pager.jumpToPage(page);
     } else {
       _pager.animateToPage(
@@ -77,6 +76,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     final topic = Topics.byId(lesson.topicId);
     final pageCount = steps.length + 2;
     final isFinish = _page == pageCount - 1;
+    final isStep = _page > 0 && !isFinish;
 
     return CallbackShortcuts(
       bindings: {
@@ -94,31 +94,43 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
               tooltip: 'Lektion verlassen',
               onPressed: () => context.pop(),
             ),
+            titleSpacing: 0,
+            // Kopfzeile: bewusst einzeilig mit „…“ - der volle Titel steht
+            // auf der Einstiegsseite der Lektion.
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                ClampedText(
                   topic.title.toUpperCase(),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                   style: context.text.labelSmall?.copyWith(
                     color: context.c.textMuted,
                     letterSpacing: 1.1,
                   ),
                 ),
-                Text(
-                  lesson.title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: context.text.titleMedium,
-                ),
+                ClampedText(lesson.title, style: context.text.titleMedium),
               ],
             ),
+            actions: [
+              if (isStep)
+                Padding(
+                  padding: const EdgeInsets.only(right: Gap.l),
+                  child: Center(
+                    child: Text(
+                      '$_page/${steps.length}',
+                      semanticsLabel: 'Schritt $_page von ${steps.length}',
+                      style: AppType.numeric(
+                        size: 13,
+                        color: context.c.textMuted,
+                      ),
+                    ),
+                  ),
+                ),
+            ],
             bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(10),
+              preferredSize: const Size.fromHeight(12),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(Gap.l, 0, Gap.l, Gap.s),
-                child: _Segments(count: steps.length, current: _page),
+                child: LessonProgress(count: steps.length, current: _page),
               ),
             ),
           ),
@@ -135,62 +147,106 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
             itemBuilder: (context, p) {
               final Widget child;
               if (p == 0) {
-                child = _Intro(lesson: lesson, topic: topic, steps: steps);
+                child = _Intro(
+                  lesson: lesson,
+                  topic: topic,
+                  steps: steps,
+                  onJump: (i) => _go(i + 1, pageCount),
+                );
               } else if (p == pageCount - 1) {
-                child = _Finish(lesson: lesson);
+                child = _Finish(lesson: lesson, steps: steps);
               } else {
                 child = NuggetCard(nugget: steps[p - 1], showTopic: false);
               }
               return SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(Gap.l, Gap.l, Gap.l, Gap.xxl),
-                child: ReadableWidth(maxWidth: 640, child: child),
+                key: PageStorageKey('lesson-${lesson.id}-$p'),
+                padding: const EdgeInsets.fromLTRB(
+                  Gap.l,
+                  Gap.l,
+                  Gap.l,
+                  Gap.xxl,
+                ),
+                child: ReadableWidth(maxWidth: 680, child: child),
               );
             },
           ),
-          bottomNavigationBar: Container(
-            decoration: BoxDecoration(
-              color: context.scheme.surface,
-              border: Border(top: BorderSide(color: context.c.border)),
-            ),
-            child: SafeArea(
-              top: false,
-              child: Padding(
-                padding: const EdgeInsets.all(Gap.l),
-                child: ReadableWidth(
-                  maxWidth: 640,
-                  shrinkHeight: true,
-                  child: Row(
-                    children: [
-                      if (_page > 0) ...[
-                        Expanded(
-                          child: OutlinedButton(
-                            onPressed: () => _go(_page - 1, pageCount),
-                            child: const Text('Zurück'),
-                          ),
-                        ),
-                        const SizedBox(width: Gap.m),
-                      ],
-                      Expanded(
-                        flex: 2,
-                        child: FilledButton(
-                          onPressed: isFinish
-                              ? () => context.pop()
-                              : () => _go(_page + 1, pageCount),
-                          child: Text(
-                            isFinish
-                                ? 'Fertig'
-                                : _page == 0
-                                    ? 'Los geht\'s'
-                                    : _page == pageCount - 2
-                                        ? 'Lektion abschließen'
-                                        : 'Weiter',
-                          ),
-                        ),
+          bottomNavigationBar: _BottomBar(
+            page: _page,
+            pageCount: pageCount,
+            onBack: () => _go(_page - 1, pageCount),
+            onNext: isFinish
+                ? () => context.pop()
+                : () => _go(_page + 1, pageCount),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _BottomBar extends StatelessWidget {
+  const _BottomBar({
+    required this.page,
+    required this.pageCount,
+    required this.onBack,
+    required this.onNext,
+  });
+
+  final int page;
+  final int pageCount;
+  final VoidCallback onBack;
+  final VoidCallback onNext;
+
+  @override
+  Widget build(BuildContext context) {
+    final label = page == pageCount - 1
+        ? 'Fertig'
+        : page == 0
+        ? 'Los geht’s'
+        : page == pageCount - 2
+        ? 'Lektion abschließen'
+        : 'Weiter';
+
+    return Container(
+      decoration: BoxDecoration(
+        color: context.scheme.surface,
+        border: Border(top: BorderSide(color: context.c.border)),
+      ),
+      child: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(Gap.l, Gap.m, Gap.l, Gap.m),
+          child: ReadableWidth(
+            maxWidth: 680,
+            shrinkHeight: true,
+            child: Row(
+              children: [
+                // Zurück als Symbol: So bleibt dem Hauptknopf auch auf
+                // 320 px mit großer Schrift genug Platz für seine
+                // Beschriftung.
+                if (page > 0) ...[
+                  IconButton.outlined(
+                    onPressed: onBack,
+                    tooltip: 'Zurück',
+                    iconSize: 22,
+                    style: IconButton.styleFrom(
+                      minimumSize: const Size(52, 52),
+                      side: BorderSide(color: context.c.border),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(Radii.m),
                       ),
-                    ],
+                    ),
+                    icon: const Icon(Icons.arrow_back_rounded),
+                  ),
+                  const SizedBox(width: Gap.m),
+                ],
+                Expanded(
+                  child: FilledButton(
+                    onPressed: onNext,
+                    child: Text(label, textAlign: TextAlign.center),
                   ),
                 ),
-              ),
+              ],
             ),
           ),
         ),
@@ -199,229 +255,337 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
   }
 }
 
-/// Fortschritt als Segmente wie bei Stories - man sieht, wie viele Schritte
-/// noch kommen, ohne eine Zahl lesen zu müssen.
-class _Segments extends StatelessWidget {
-  const _Segments({required this.count, required this.current});
+/// Fortschritt einer Lektion.
+///
+/// Bis 16 Schritte als Segmente wie bei Stories - man sieht, wie viele noch
+/// kommen, ohne eine Zahl lesen zu müssen. Darüber würden die Segmente zu
+/// Strichen; dann ein durchgehender Balken.
+class LessonProgress extends StatelessWidget {
+  const LessonProgress({super.key, required this.count, required this.current});
 
   final int count;
 
   /// 0 = Einstieg, 1..count = Schritte, count+1 = Abschluss.
   final int current;
 
+  static const maxSegments = 16;
+
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        for (var i = 0; i < count; i++) ...[
-          if (i > 0) const SizedBox(width: 4),
-          Expanded(
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 250),
-              height: 4,
-              decoration: BoxDecoration(
-                color: i < current ? context.c.flame : context.c.surfaceAlt,
-                borderRadius: BorderRadius.circular(Radii.pill),
+    final c = context.c;
+    final done = current.clamp(0, count);
+    final Widget bar;
+    if (count <= maxSegments) {
+      bar = Row(
+        children: [
+          for (var i = 0; i < count; i++) ...[
+            if (i > 0) SizedBox(width: count > 10 ? 3 : 4),
+            Expanded(
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 250),
+                height: 4,
+                decoration: BoxDecoration(
+                  color: i < done ? c.flame : c.surfaceAlt,
+                  borderRadius: BorderRadius.circular(Radii.pill),
+                ),
               ),
             ),
-          ),
+          ],
         ],
-      ],
+      );
+    } else {
+      bar = ClipRRect(
+        borderRadius: BorderRadius.circular(Radii.pill),
+        child: TweenAnimationBuilder<double>(
+          tween: Tween(end: count == 0 ? 0 : done / count),
+          duration: const Duration(milliseconds: 250),
+          builder: (context, v, _) => LinearProgressIndicator(
+            value: v,
+            minHeight: 4,
+            color: c.flame,
+            backgroundColor: c.surfaceAlt,
+          ),
+        ),
+      );
+    }
+    return Semantics(
+      label: 'Lernfortschritt',
+      value: '$done von $count Schritten',
+      child: ExcludeSemantics(child: bar),
     );
   }
 }
 
 class _Intro extends StatelessWidget {
-  const _Intro({required this.lesson, required this.topic, required this.steps});
+  const _Intro({
+    required this.lesson,
+    required this.topic,
+    required this.steps,
+    required this.onJump,
+  });
 
   final Subtopic lesson;
   final Topic topic;
   final List<Nugget> steps;
+  final ValueChanged<int> onJump;
 
   @override
   Widget build(BuildContext context) {
     final lessons = Subtopics.ofTopic(topic.id);
     final index = lessons.indexWhere((l) => l.id == lesson.id) + 1;
-    final minutes = (steps.length * 0.75).ceil().clamp(1, 60);
+    final minutes = (steps.length * 0.9).ceil().clamp(1, 90);
+    final examples = steps.where((s) => s.kind == NuggetKind.beispiel).length;
+    final sketches = steps.where((s) => s.diagram != null).length;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'LEKTION $index VON ${lessons.length}',
+          '${topic.title} · Lektion $index von ${lessons.length}'.toUpperCase(),
           style: context.text.labelSmall?.copyWith(
             color: context.c.textMuted,
-            letterSpacing: 1.2,
+            letterSpacing: 1.1,
           ),
         ),
         const SizedBox(height: Gap.s),
-        Text(lesson.title, style: context.text.headlineSmall),
-        const SizedBox(height: Gap.l),
-        NoteBox(
-          title: 'Lernziel',
-          child: Text(lesson.goal),
-        ),
-        const SizedBox(height: Gap.xl),
-        Text(
-          '${steps.length} Lernschritte  ·  etwa $minutes '
-          '${minutes == 1 ? "Minute" : "Minuten"}',
-          style: context.text.labelLarge,
-        ),
+        HyphenText(lesson.title, style: context.text.headlineSmall),
         const SizedBox(height: Gap.m),
-        for (var i = 0; i < steps.length; i++)
-          Padding(
-            padding: const EdgeInsets.only(bottom: Gap.s),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: 26,
-                  child: Text(
-                    '${i + 1}',
-                    style: AppType.numeric(size: 13, color: context.c.textMuted),
+        Wrap(
+          spacing: Gap.s,
+          runSpacing: Gap.s,
+          children: [
+            MetaChip(
+              icon: Icons.layers_outlined,
+              label: '${steps.length} Lernschritte',
+            ),
+            MetaChip(icon: Icons.schedule, label: 'ca. $minutes Min.'),
+            if (examples > 0)
+              MetaChip(
+                icon: Icons.calculate_outlined,
+                label: examples == 1
+                    ? '1 Rechenbeispiel'
+                    : '$examples Beispiele',
+              ),
+            if (sketches > 0)
+              MetaChip(
+                icon: Icons.schema_outlined,
+                label: sketches == 1 ? '1 Skizze' : '$sketches Skizzen',
+              ),
+          ],
+        ),
+        const SizedBox(height: Gap.l),
+        NoteBox(title: 'Lernziel', child: HyphenText(lesson.goal)),
+        const SizedBox(height: Gap.xl),
+        Text('Das erwartet dich', style: context.text.titleMedium),
+        const SizedBox(height: Gap.s),
+        AppCard(
+          padding: const EdgeInsets.symmetric(vertical: Gap.xs),
+          child: Column(
+            children: [
+              for (var i = 0; i < steps.length; i++) ...[
+                if (i > 0)
+                  Divider(
+                    height: 1,
+                    indent: Gap.l + 32,
+                    color: context.c.border,
                   ),
-                ),
-                Expanded(
-                  child: Text(steps[i].title, style: context.text.bodyMedium),
+                _StepRow(
+                  number: i + 1,
+                  nugget: steps[i],
+                  onTap: () => onJump(i),
                 ),
               ],
-            ),
+            ],
           ),
+        ),
       ],
     );
   }
 }
 
+/// Eine Zeile der Schrittübersicht - antippen springt direkt dorthin.
+class _StepRow extends StatelessWidget {
+  const _StepRow({
+    required this.number,
+    required this.nugget,
+    required this.onTap,
+  });
+
+  final int number;
+  final Nugget nugget;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final (icon, color) = nuggetStyle(context, nugget.kind);
+    return InkWell(
+      onTap: onTap,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minHeight: 48),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: Gap.l,
+            vertical: Gap.s + 2,
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: 32,
+                height: 32,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: color.withValues(alpha: 0.12),
+                  borderRadius: BorderRadius.circular(Radii.s),
+                ),
+                child: Icon(icon, size: 17, color: color),
+              ),
+              const SizedBox(width: Gap.m),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '$number · ${nugget.kind.label}',
+                      style: context.text.labelSmall?.copyWith(
+                        color: context.c.textMuted,
+                      ),
+                    ),
+                    HyphenText(nugget.title, style: context.text.bodyMedium),
+                  ],
+                ),
+              ),
+              Icon(Icons.chevron_right, size: 20, color: context.c.textMuted),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Abschluss: Glückwunsch, das Wichtigste in Kürze und die nächste
+/// Lektion. Kein Quiz, keine Karten - die Journey ist zum Lernen da.
 class _Finish extends ConsumerWidget {
-  const _Finish({required this.lesson});
+  const _Finish({required this.lesson, required this.steps});
+
   final Subtopic lesson;
+  final List<Nugget> steps;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final questions = ref.watch(questionCountBySubtopicProvider)[lesson.id] ?? 0;
-    final topicQuestions = ref.watch(poolSizeProvider)[lesson.topicId] ?? 0;
-    final cards = ref.watch(cardCountBySubtopicProvider)[lesson.id] ?? 0;
     final lessons = ref.watch(lessonsProvider);
+    final done = ref.watch(journeyProvider);
     final i = lessons.indexWhere((l) => l.id == lesson.id);
     final following = i >= 0 && i + 1 < lessons.length ? lessons[i + 1] : null;
+    final doneCount = lessons.where((l) => done.contains(l.id)).length;
+    final c = context.c;
+
+    // Die Merksätze der Lektion - zum Abschluss noch einmal am Stück.
+    final keyPoints = <String>[
+      for (final s in steps)
+        if (s.merksatz != null)
+          s.merksatz!
+        else if (s.kind == NuggetKind.merksatz)
+          s.body,
+    ];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(Icons.task_alt_rounded, size: 40, color: context.c.success),
-        const SizedBox(height: Gap.m),
-        Text('Lektion geschafft', style: context.text.headlineSmall),
-        const SizedBox(height: Gap.xs),
-        Text(
-          'Festige das Gelernte jetzt, solange es frisch ist - das bringt '
-          'mehr als eine weitere Lektion.',
-          style: context.text.bodyMedium?.copyWith(color: context.c.textMuted),
-        ),
-        const SizedBox(height: Gap.xl),
-        if (questions > 0 || topicQuestions > 0)
-          _FinishAction(
-            icon: Icons.quiz_outlined,
-            title: 'Wissen prüfen',
-            subtitle: questions > 0
-                ? '$questions ${questions == 1 ? "Aufgabe" : "Aufgaben"} zu dieser Lektion'
-                : '$topicQuestions Aufgaben zum ganzen Thema',
-            primary: true,
-            onTap: () => questions > 0
-                ? SessionLauncher.practice(
-                    context,
-                    ref,
-                    subtopicId: lesson.id,
-                    title: lesson.title,
-                    count: questions.clamp(1, 10),
-                  )
-                : SessionLauncher.practice(context, ref,
-                    topicId: lesson.topicId),
-          ),
-        if (cards > 0) ...[
-          const SizedBox(height: Gap.m),
-          _FinishAction(
-            icon: Icons.style_outlined,
-            title: 'Karteikarten',
-            subtitle: '$cards ${cards == 1 ? "Karte" : "Karten"} zu dieser Lektion',
-            onTap: () => context.push(
-              '/karten-lernen',
-              extra: CardSessionArgs(
-                subtopicIds: {lesson.id},
-                title: lesson.title,
-                includeNotDue: true,
+        Row(
+          children: [
+            Container(
+              width: 52,
+              height: 52,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: c.successBg,
+                shape: BoxShape.circle,
               ),
+              child: Icon(Icons.task_alt_rounded, size: 30, color: c.success),
+            ),
+            const SizedBox(width: Gap.l),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Lektion geschafft', style: context.text.headlineSmall),
+                  const SizedBox(height: 2),
+                  Text(
+                    '${steps.length} Lernschritte · '
+                    '$doneCount von ${lessons.length} Lektionen erledigt',
+                    style: context.text.bodyMedium?.copyWith(
+                      color: c.textMuted,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        if (keyPoints.isNotEmpty) ...[
+          const SizedBox(height: Gap.xl),
+          AppCard(
+            color: c.flameBg,
+            borderColor: c.flame.withValues(alpha: 0.35),
+            padding: const EdgeInsets.all(Gap.l),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Icon(Icons.push_pin_outlined, size: 18, color: c.flame),
+                    const SizedBox(width: Gap.s),
+                    Expanded(
+                      child: Text(
+                        'Das Wichtigste in Kürze',
+                        style: context.text.titleMedium,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: Gap.m),
+                for (final p in keyPoints)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: Gap.s),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 3),
+                          child: Icon(
+                            Icons.check_rounded,
+                            size: 18,
+                            color: c.flame,
+                          ),
+                        ),
+                        const SizedBox(width: Gap.s),
+                        Expanded(
+                          child: HyphenText(p, style: context.text.bodyMedium),
+                        ),
+                      ],
+                    ),
+                  ),
+              ],
             ),
           ),
         ],
         if (following != null) ...[
-          const SizedBox(height: Gap.m),
-          _FinishAction(
+          const SizedBox(height: Gap.xl),
+          ActionTile(
             icon: Icons.arrow_forward_rounded,
             title: 'Nächste Lektion',
             subtitle: following.title,
             onTap: () => context.pushReplacement('/lektion/${following.id}'),
           ),
+        ] else ...[
+          const SizedBox(height: Gap.xl),
+          const NoteBox(
+            tone: NoteTone.success,
+            child: Text('Das war die letzte Lektion der Journey.'),
+          ),
         ],
       ],
-    );
-  }
-}
-
-class _FinishAction extends StatelessWidget {
-  const _FinishAction({
-    required this.icon,
-    required this.title,
-    required this.subtitle,
-    required this.onTap,
-    this.primary = false,
-  });
-
-  final IconData icon;
-  final String title;
-  final String subtitle;
-  final VoidCallback onTap;
-  final bool primary;
-
-  @override
-  Widget build(BuildContext context) {
-    return AppCard(
-      onTap: onTap,
-      borderColor: primary ? context.scheme.primary.withValues(alpha: 0.5) : null,
-      padding: const EdgeInsets.all(Gap.l),
-      child: Row(
-        children: [
-          Container(
-            width: 40,
-            height: 40,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: primary ? context.scheme.primary : context.c.surfaceAlt,
-              borderRadius: BorderRadius.circular(Radii.m),
-            ),
-            child: Icon(
-              icon,
-              size: 20,
-              color: primary ? context.scheme.onPrimary : context.scheme.primary,
-            ),
-          ),
-          const SizedBox(width: Gap.m),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: context.text.titleMedium),
-                const SizedBox(height: 2),
-                Text(
-                  subtitle,
-                  style: context.text.labelSmall
-                      ?.copyWith(color: context.c.textMuted),
-                ),
-              ],
-            ),
-          ),
-          Icon(Icons.chevron_right, color: context.c.textMuted),
-        ],
-      ),
     );
   }
 }

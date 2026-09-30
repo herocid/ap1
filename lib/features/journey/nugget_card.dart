@@ -639,7 +639,11 @@ class CodeBlock extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, box) {
         final inner = box.maxWidth - _padL - _padR;
-        final base = AppType.mono(size: _base, color: context.scheme.onSurface);
+        // Ohne Laufweite aus dem Theme - sonst stimmt die Messung nicht.
+        final base = AppType.mono(
+          size: _base,
+          color: context.scheme.onSurface,
+        ).copyWith(letterSpacing: 0);
 
         final baseSpace = (TextPainter(
           text: TextSpan(text: ' ', style: base),
@@ -648,30 +652,49 @@ class CodeBlock extends StatelessWidget {
         )..layout()).width;
 
         // Ganze Zeilen bzw. (mit [words]) Einrückung plus längstes Wort.
-        double widest(bool words) {
+        double measure(String s, TextStyle style) {
+          final tp = TextPainter(
+            text: TextSpan(text: s, style: style),
+            textDirection: TextDirection.ltr,
+            textScaler: scaler,
+          )..layout();
+          final w = tp.width;
+          tp.dispose();
+          return w;
+        }
+
+        double widest(bool words, double scale) {
+          final style = base.copyWith(fontSize: _base * scale);
           var m = 0.0;
           for (final l in lines) {
             final t = l.trimLeft();
-            final tp = TextPainter(
-              text: TextSpan(text: words ? _breakable(t) : l, style: base),
-              textDirection: TextDirection.ltr,
-              textScaler: scaler,
-            )..layout();
-            final indent = (l.length - t.length) * baseSpace;
-            m = math.max(m, words ? tp.minIntrinsicWidth + indent : tp.width);
-            tp.dispose();
+            if (!words) {
+              m = math.max(m, measure(l, style));
+              continue;
+            }
+            final indent = (l.length - t.length) * baseSpace * scale;
+            for (final piece in _pieces(t)) {
+              m = math.max(m, indent + measure(piece, style));
+            }
           }
           return m;
         }
 
+        // Schrift so weit verkleinern, dass die längste Zeile passt - oder,
+        // wenn das unter 60 % ginge, wenigstens das längste Wort. Mehrmals
+        // nachmessen: Laufweiten skalieren nicht exakt linear.
         var scale = 1.0;
-        final longestLine = widest(false);
-        if (longestLine > inner) {
-          scale = (inner - 2) / longestLine;
-          if (scale < _minScale) {
-            final longestWord = widest(true);
-            scale = ((inner - 2) / longestWord).clamp(_minScale, 1.0);
+        var words = false;
+        for (var i = 0; i < 4; i++) {
+          final w = widest(words, scale);
+          if (w <= inner - 1) break;
+          final next = scale * (inner - 2) / w;
+          if (!words && next < _minScale) {
+            words = true;
+            continue;
           }
+          scale = math.max(_minScale, next);
+          if (scale == _minScale) break;
         }
         final style = base.copyWith(fontSize: _base * scale);
         final space = (TextPainter(
@@ -722,6 +745,12 @@ class CodeBlock extends StatelessWidget {
       },
     );
   }
+
+  /// Nicht umbrechbare Stücke einer Zeile (zwischen Leerzeichen und den
+  /// Umbruchstellen aus [_breakable]).
+  static Iterable<String> _pieces(String line) => _breakable(
+    line,
+  ).split(RegExp('[\\s$kZeroWidthSpace]')).where((p) => p.isNotEmpty);
 
   /// Unsichtbare Umbruchstellen nach `.`, `(`, `,` und `/` in langen
   /// Ausdrücken wie `kunde.istStammkunde()`.
