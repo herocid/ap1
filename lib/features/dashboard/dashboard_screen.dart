@@ -6,12 +6,11 @@ import 'package:intl/intl.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
-import '../../core/util/feed_order.dart';
 import '../../data/models/progress.dart';
+import '../../data/models/subtopic.dart';
 import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
-import '../feed/nugget_card.dart';
 import '../learn/session_launcher.dart';
 
 /// Die Startseite. Reihenfolge nach Wichtigkeit:
@@ -30,7 +29,9 @@ class DashboardScreen extends ConsumerWidget {
     final stats = ref.watch(topicStatsProvider);
     final poolSize = ref.watch(poolSizeProvider);
     final plan = ref.watch(studyPlanProvider);
-    final nuggets = ref.watch(nuggetsProvider);
+    final nextLesson = ref.watch(nextLessonProvider);
+    final lessonCount = ref.watch(lessonsProvider).length;
+    final lessonsDone = ref.watch(journeyProvider).length;
 
     final todayCount = progress.answeredToday();
     final mistakes = progress.openMistakes.length;
@@ -44,10 +45,6 @@ class DashboardScreen extends ConsumerWidget {
             t.weight * (1 - (stats[t.id]?.confidence ?? 0));
         return urgency(b).compareTo(urgency(a));
       });
-
-    final feedPreview = nuggets.isEmpty
-        ? null
-        : FeedOrder.round(nuggets, seed: FeedOrder.daySeed()).first;
 
     final greeting = profile.displayName.isEmpty
         ? 'Moin'
@@ -168,23 +165,23 @@ class DashboardScreen extends ConsumerWidget {
                       onTap: () => context.go('/statistik'),
                     ),
 
-                    // --------------------------------------------- Feed
-                    if (feedPreview != null) ...[
+                    // ---------------------------------- Learning Journey
+                    if (nextLesson != null) ...[
                       const SizedBox(height: Gap.xxl),
                       Row(
                         children: [
-                          const Expanded(child: _Overline('Aus dem Feed')),
+                          const Expanded(child: _Overline('Learning Journey')),
                           TextButton(
-                            onPressed: () => context.go('/feed'),
-                            child: const Text('Feed öffnen'),
+                            onPressed: () => context.go('/journey'),
+                            child: const Text('Übersicht'),
                           ),
                         ],
                       ),
                       const SizedBox(height: Gap.xs),
-                      NuggetCard(
-                        nugget: feedPreview,
-                        compact: true,
-                        onTap: () => context.go('/feed'),
+                      _JourneyCard(
+                        lesson: nextLesson,
+                        done: lessonsDone,
+                        total: lessonCount,
                       ),
                     ],
 
@@ -502,6 +499,66 @@ class _ModeTile extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// Die nächste offene Lektion - der Einstieg in neuen Stoff.
+class _JourneyCard extends StatelessWidget {
+  const _JourneyCard({
+    required this.lesson,
+    required this.done,
+    required this.total,
+  });
+
+  final Subtopic lesson;
+  final int done;
+  final int total;
+
+  @override
+  Widget build(BuildContext context) {
+    final topic = Topics.byId(lesson.topicId);
+    return AppCard(
+      onTap: () => context.push('/lektion/${lesson.id}'),
+      padding: const EdgeInsets.all(Gap.l),
+      child: Row(
+        children: [
+          Container(
+            width: 44,
+            height: 44,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: context.c.flameBg,
+              borderRadius: BorderRadius.circular(Radii.m),
+            ),
+            child: Icon(Icons.route_outlined, size: 22, color: context.c.flame),
+          ),
+          const SizedBox(width: Gap.m),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  done == 0 ? 'Erste Lektion' : 'Weiter mit',
+                  style: context.text.labelSmall
+                      ?.copyWith(color: context.c.textMuted),
+                ),
+                const SizedBox(height: 2),
+                Text(lesson.title, style: context.text.titleMedium),
+                const SizedBox(height: 2),
+                Text(
+                  '${topic.title}  ·  $done / $total Lektionen',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: context.text.labelSmall
+                      ?.copyWith(color: context.c.textMuted),
+                ),
+              ],
+            ),
+          ),
+          Icon(Icons.chevron_right, color: context.c.textMuted),
+        ],
       ),
     );
   }

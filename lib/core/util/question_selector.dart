@@ -23,6 +23,7 @@ class QuestionSelector {
     required Map<String, int> poolSize,
     int count = 10,
     String? topicFilter,
+    String? subtopicFilter,
     bool mistakesOnly = false,
     int? seed,
   }) {
@@ -36,6 +37,9 @@ class QuestionSelector {
       // nur als Nachschlagewerk im Pool.
       if (!q.isExamRelevant) return false;
       if (topicFilter != null && q.topicId != topicFilter) return false;
+      if (subtopicFilter != null && q.subtopicId != subtopicFilter) {
+        return false;
+      }
       if (mistakesOnly && !mistakes.contains(q.id)) return false;
       return true;
     }).toList();

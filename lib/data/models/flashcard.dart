@@ -16,12 +16,16 @@ class Flashcard {
     required this.topicId,
     required this.front,
     required this.back,
+    this.subtopicId,
     this.hint,
     this.tags = const [],
   });
 
   final String id;
   final String topicId;
+
+  /// Lektion der Learning Journey, zu der die Karte gehört.
+  final String? subtopicId;
 
   /// Vorderseite: Begriff, Abkürzung oder kurze Frage.
   final String front;
@@ -38,6 +42,7 @@ class Flashcard {
   Map<String, dynamic> toJson() => {
         'id': id,
         'topic_id': topicId,
+        if (subtopicId != null) 'subtopic_id': subtopicId,
         'front': front,
         'back': back,
         'hint': hint,
@@ -47,6 +52,7 @@ class Flashcard {
   factory Flashcard.fromJson(Map<String, dynamic> j) => Flashcard(
         id: j['id'].toString(),
         topicId: j['topic_id'] as String,
+        subtopicId: j['subtopic_id'] as String?,
         front: j['front'] as String,
         back: j['back'] as String,
         hint: j['hint'] as String?,
@@ -174,11 +180,14 @@ class DeckState {
   List<Flashcard> due(
     List<Flashcard> pool, {
     Set<String> topicIds = const {},
+    Set<String> subtopicIds = const {},
     int limit = 20,
     DateTime? now,
   }) {
     final candidates = pool
         .where((c) => topicIds.isEmpty || topicIds.contains(c.topicId))
+        .where((c) =>
+            subtopicIds.isEmpty || subtopicIds.contains(c.subtopicId))
         .where((c) => stateOf(c.id).isDue(now))
         .toList();
 

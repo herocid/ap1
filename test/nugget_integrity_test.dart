@@ -1,4 +1,5 @@
 import 'package:ap1_trainer/data/models/nugget.dart';
+import 'package:ap1_trainer/data/models/subtopic.dart';
 import 'package:ap1_trainer/data/models/topic.dart';
 import 'package:ap1_trainer/data/seed/nuggets/nuggets_data.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -15,6 +16,45 @@ void main() {
     for (final n in nuggets) {
       expect(Topics.map.containsKey(n.topicId), isTrue,
           reason: '${n.id}: unbekanntes Thema ${n.topicId}');
+    }
+  });
+
+  test('jedes Nugget gehört zu einer Lektion desselben Themas', () {
+    for (final n in nuggets) {
+      final s = Subtopics.byId(n.subtopicId);
+      expect(s, isNotNull, reason: '${n.id}: unbekannte Lektion ${n.subtopicId}');
+      expect(s!.topicId, n.topicId,
+          reason: '${n.id}: Lektion ${s.id} gehört zu ${s.topicId}');
+    }
+  });
+
+  test('die Lernschritte einer Lektion stehen am Stück', () {
+    // Sonst wäre die Reihenfolge innerhalb einer Lektion davon abhängig,
+    // in welcher Datei ein Schritt zufällig steht.
+    final seen = <String>{};
+    String? current;
+    for (final n in nuggets) {
+      if (n.subtopicId != current) {
+        expect(seen.add(n.subtopicId), isTrue,
+            reason: 'Lektion ${n.subtopicId} ist über die Liste verstreut');
+        current = n.subtopicId;
+      }
+    }
+  });
+
+  test('Lektions-IDs und -Titel sind eindeutig, Lernziele formuliert', () {
+    final ids = Subtopics.all.map((s) => s.id).toList();
+    expect(ids.toSet().length, ids.length);
+    for (final s in Subtopics.all) {
+      expect(Topics.map.containsKey(s.topicId), isTrue, reason: s.id);
+      expect(s.goal.startsWith('Du '), isTrue, reason: '${s.id}: Lernziel');
+    }
+  });
+
+  test('jedes Thema hat mindestens zwei Lektionen', () {
+    for (final t in Topics.all) {
+      expect(Subtopics.ofTopic(t.id).length, greaterThanOrEqualTo(2),
+          reason: t.id);
     }
   });
 

@@ -6,6 +6,7 @@ const List<Nugget> nuggetsA01 = [
   Nugget(
     id: 'n-netzplan-formeln',
     topicId: 'netzplan',
+    subtopicId: 'n-vorwaerts',
     kind: NuggetKind.formel,
     title: 'Netzplan: die sechs Formeln',
     body:
@@ -21,6 +22,7 @@ const List<Nugget> nuggetsA01 = [
   Nugget(
     id: 'n-netzplan-puffer-falle',
     topicId: 'netzplan',
+    subtopicId: 'n-puffer',
     kind: NuggetKind.fehlerfalle,
     title: 'Gesamtpuffer ist nicht freier Puffer',
     body:
@@ -34,6 +36,7 @@ const List<Nugget> nuggetsA01 = [
   Nugget(
     id: 'n-netzplan-kritischer-pfad',
     topicId: 'netzplan',
+    subtopicId: 'n-kritisch',
     kind: NuggetKind.konzept,
     title: 'Der kritische Pfad',
     body:
@@ -50,6 +53,7 @@ const List<Nugget> nuggetsA01 = [
   Nugget(
     id: 'n-org-formen',
     topicId: 'projektorganisation',
+    subtopicId: 'p-organisation',
     kind: NuggetKind.vergleich,
     title: 'Drei Formen der Projektorganisation',
     body:
@@ -64,6 +68,7 @@ const List<Nugget> nuggetsA01 = [
   Nugget(
     id: 'n-org-magisches-dreieck',
     topicId: 'projektorganisation',
+    subtopicId: 'p-ziele',
     kind: NuggetKind.konzept,
     title: 'Das magische Dreieck',
     body:
@@ -77,6 +82,7 @@ const List<Nugget> nuggetsA01 = [
   Nugget(
     id: 'n-org-smart',
     topicId: 'projektorganisation',
+    subtopicId: 'p-ziele',
     kind: NuggetKind.merksatz,
     title: 'SMART formulierte Ziele',
     body: 'Ein Projektziel ist erst prüfbar, wenn alle fünf Kriterien erfüllt sind.',
@@ -95,6 +101,7 @@ const List<Nugget> nuggetsA01 = [
   Nugget(
     id: 'n-vorgehen-wasserfall-scrum',
     topicId: 'vorgehensmodelle',
+    subtopicId: 'v-auswahl',
     kind: NuggetKind.vergleich,
     title: 'Wasserfall oder Scrum?',
     body:
@@ -112,6 +119,7 @@ const List<Nugget> nuggetsA01 = [
   Nugget(
     id: 'n-scrum-rollen',
     topicId: 'agil_scrum',
+    subtopicId: 's-rollen',
     kind: NuggetKind.vergleich,
     title: 'Die drei Verantwortlichkeiten in Scrum',
     body:
@@ -127,6 +135,7 @@ const List<Nugget> nuggetsA01 = [
   Nugget(
     id: 'n-scrum-events',
     topicId: 'agil_scrum',
+    subtopicId: 's-events',
     kind: NuggetKind.ablauf,
     title: 'Ein Sprint von innen',
     body:
@@ -144,6 +153,7 @@ const List<Nugget> nuggetsA01 = [
   Nugget(
     id: 'n-wirtschaft-break-even',
     topicId: 'pm_wirtschaftlichkeit',
+    subtopicId: 'w-breakeven',
     kind: NuggetKind.formel,
     title: 'Break-even-Menge berechnen',
     body:
@@ -157,6 +167,7 @@ const List<Nugget> nuggetsA01 = [
   Nugget(
     id: 'n-risiko-bewertung',
     topicId: 'risikomanagement',
+    subtopicId: 'r-bewertung',
     kind: NuggetKind.formel,
     title: 'Risiken bewerten und behandeln',
     body:

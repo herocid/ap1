@@ -15,10 +15,20 @@ import '../../widgets/common.dart';
 
 /// Parameter einer Karteikarten-Runde.
 class CardSessionArgs {
-  const CardSessionArgs({this.topicIds = const {}, this.title = 'Karteikarten'});
+  const CardSessionArgs({
+    this.topicIds = const {},
+    this.subtopicIds = const {},
+    this.title = 'Karteikarten',
+    this.includeNotDue = false,
+  });
 
   final Set<String> topicIds;
+  final Set<String> subtopicIds;
   final String title;
+
+  /// Direkt nach einer Lektion sollen deren Karten drankommen, auch wenn sie
+  /// laut Karteikasten erst später fällig wären.
+  final bool includeNotDue;
 }
 
 /// Die Karteikarten-Session.
@@ -49,7 +59,20 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
     super.initState();
     final deck = ref.read(deckProvider);
     final pool = ref.read(flashcardsProvider);
-    _cards = deck.due(pool, topicIds: widget.args.topicIds, limit: 20);
+    final a = widget.args;
+    _cards = a.includeNotDue
+        ? pool
+            .where((c) => a.topicIds.isEmpty || a.topicIds.contains(c.topicId))
+            .where((c) =>
+                a.subtopicIds.isEmpty || a.subtopicIds.contains(c.subtopicId))
+            .take(30)
+            .toList()
+        : deck.due(
+            pool,
+            topicIds: a.topicIds,
+            subtopicIds: a.subtopicIds,
+            limit: 20,
+          );
   }
 
   void _answer(bool knewIt) {

@@ -33,6 +33,10 @@ abstract interface class LocalStore {
   Set<String> readSeenTheory();
   Future<void> writeSeenTheory(Set<String> ids);
 
+  /// Abgeschlossene Lektionen der Learning Journey (Unterthema-IDs).
+  Set<String> readJourney();
+  Future<void> writeJourney(Set<String> doneLessons);
+
   DeckState readDeck();
   Future<void> writeCardState(CardState s);
   Future<void> clearDeck();
@@ -64,6 +68,7 @@ class HiveLocalStore implements LocalStore {
   static const _kProfile = 'profile';
   static const _kProgressMeta = 'progress_meta';
   static const _kSeenTheory = 'seen_theory';
+  static const _kJourney = 'journey_done';
 
   /// Öffnet die Boxen. [inMemory] ist für Tests: nichts wird auf die Platte
   /// geschrieben, und jeder Test beginnt leer, sofern er die Boxen vorher
@@ -159,6 +164,23 @@ class HiveLocalStore implements LocalStore {
   @override
   Future<void> writeSeenTheory(Set<String> ids) =>
       _meta.put(_kSeenTheory, jsonEncode(ids.toList()));
+
+  // ---------------------------------------------------------------- Journey
+
+  @override
+  Set<String> readJourney() {
+    final raw = _meta.get(_kJourney);
+    if (raw == null) return {};
+    try {
+      return (jsonDecode(raw) as List).cast<String>().toSet();
+    } catch (_) {
+      return {};
+    }
+  }
+
+  @override
+  Future<void> writeJourney(Set<String> doneLessons) =>
+      _meta.put(_kJourney, jsonEncode(doneLessons.toList()));
 
   // --------------------------------------------------------- Karteikasten
 

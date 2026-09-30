@@ -17,6 +17,8 @@ class SessionLauncher {
     BuildContext context,
     WidgetRef ref, {
     String? topicId,
+    String? subtopicId,
+    String? title,
     bool mistakesOnly = false,
     int count = 10,
   }) {
@@ -30,6 +32,7 @@ class SessionLauncher {
       poolSize: poolSize,
       count: count,
       topicFilter: topicId,
+      subtopicFilter: subtopicId,
       mistakesOnly: mistakesOnly,
     );
 
@@ -42,19 +45,20 @@ class SessionLauncher {
       return;
     }
 
-    final title = mistakesOnly
-        ? 'Fehlerspeicher'
-        : topicId != null
-            ? Topics.byId(topicId).title
-            : 'Tagesübung';
+    final sessionTitle = title ??
+        (mistakesOnly
+            ? 'Fehlerspeicher'
+            : topicId != null
+                ? Topics.byId(topicId).title
+                : 'Tagesübung');
 
     ref.read(sessionProvider.notifier).start(
           questions: questions,
-          mode: topicId != null || mistakesOnly
+          mode: topicId != null || subtopicId != null || mistakesOnly
               ? SessionMode.fokus
               : SessionMode.uebung,
           topicFilter: topicId,
-          title: title,
+          title: sessionTitle,
         );
     context.push('/session');
   }

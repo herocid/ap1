@@ -119,6 +119,7 @@ class Question {
     required this.kind,
     required this.prompt,
     required this.explanation,
+    this.subtopicId,
     this.scenario,
     this.difficulty = 2,
     this.tags = const [],
@@ -138,6 +139,9 @@ class Question {
 
   final String id;
   final String topicId;
+
+  /// Lektion der Learning Journey, deren Wissenscheck diese Aufgabe ist.
+  final String? subtopicId;
   final QuestionKind kind;
 
   /// Optionaler Fallbeispiel-Kontext, der über der Frage steht. In der AP1
@@ -306,6 +310,7 @@ class Question {
     return Question(
       id: j['id'].toString(),
       topicId: j['topic_id'] as String,
+      subtopicId: j['subtopic_id'] as String?,
       kind: QuestionKind.parse(j['kind'] as String),
       scenario: j['scenario'] as String?,
       prompt: j['prompt'] as String,
@@ -341,6 +346,7 @@ class Question {
   Map<String, dynamic> toJson() => {
         'id': id,
         'topic_id': topicId,
+        if (subtopicId != null) 'subtopic_id': subtopicId,
         'kind': kind.name,
         'scenario': scenario,
         'prompt': prompt,

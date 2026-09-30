@@ -29,10 +29,14 @@ class NuggetCard extends StatelessWidget {
     this.action,
     this.compact = false,
     this.onTap,
+    this.showTopic = true,
   });
 
   final Nugget nugget;
   final VoidCallback? onTap;
+
+  /// In einer Lektion steht das Thema schon in der Kopfzeile.
+  final bool showTopic;
 
   /// Optionale Schaltfläche am Kartenende, z. B. "Thema üben".
   final Widget? action;
@@ -65,15 +69,17 @@ class NuggetCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: Gap.s),
-              Flexible(
-                child: Text(
-                  '·  ${topic.title}',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: context.text.labelSmall
-                      ?.copyWith(color: context.c.textMuted),
+              if (showTopic)
+                Flexible(
+                  child: Text(
+                    '·  ${topic.title}',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: context.text.labelSmall?.copyWith(
+                      color: context.c.textMuted,
+                    ),
+                  ),
                 ),
-              ),
             ],
           ),
           const SizedBox(height: Gap.m),
@@ -83,8 +89,9 @@ class NuggetCard extends StatelessWidget {
             n.body,
             maxLines: compact ? 3 : null,
             overflow: compact ? TextOverflow.ellipsis : null,
-            style: context.text.bodyMedium
-                ?.copyWith(color: context.c.textMuted),
+            style: context.text.bodyMedium?.copyWith(
+              color: context.c.textMuted,
+            ),
           ),
           if (!compact) ...[
             if (n.code != null) ...[
@@ -238,8 +245,9 @@ class _NuggetTable extends StatelessWidget {
                       child: Text(
                         r[i],
                         style: i == 0
-                            ? context.text.bodyMedium
-                                ?.copyWith(fontWeight: FontWeight.w600)
+                            ? context.text.bodyMedium?.copyWith(
+                                fontWeight: FontWeight.w600,
+                              )
                             : context.text.bodyMedium,
                       ),
                     ),

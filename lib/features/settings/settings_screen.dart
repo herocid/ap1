@@ -253,7 +253,8 @@ class SettingsScreen extends ConsumerWidget {
       builder: (ctx) => AlertDialog(
         title: const Text('Fortschritt wirklich löschen?'),
         content: const Text(
-          'Historie, Streak, Level und Erfolge werden entfernt. '
+          'Historie, Streak, Level, Erfolge, Karteikasten und der '
+          'Fortschritt der Learning Journey werden entfernt. '
           'Das lässt sich nicht rückgängig machen.',
         ),
         actions: [
@@ -273,6 +274,8 @@ class SettingsScreen extends ConsumerWidget {
     );
     if (ok == true) {
       ref.read(progressProvider.notifier).reset();
+      ref.read(deckProvider.notifier).reset();
+      ref.read(journeyProvider.notifier).reset();
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Fortschritt zurückgesetzt.')),

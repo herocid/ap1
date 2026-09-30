@@ -1,7 +1,5 @@
 import 'package:flutter/foundation.dart';
 
-import 'theory.dart';
-
 /// Art eines Feed-Beitrags. Bestimmt Symbol, Farbe und Aufbau der Karte.
 enum NuggetKind {
   /// Ein Begriff oder Konzept in wenigen Sätzen.
@@ -26,17 +24,19 @@ enum NuggetKind {
   final String label;
 }
 
-/// Ein Beitrag im Lern-Feed: in 20-40 Sekunden erfassbar, ohne Vorwissen
-/// aus einer vorherigen Karte.
+/// Ein Lernschritt der Learning Journey, in 20-60 Sekunden erfassbar.
 ///
-/// Nur [title] und [body] sind Pflicht; die übrigen Felder sind je nach
-/// [kind] gefüllt. Eine Karte zeigt, was vorhanden ist, statt je Art eigene
-/// Klassen zu erzwingen - das hält das Schreiben neuer Beiträge einfach.
+/// Die Lernschritte einer Lektion ([subtopicId]) bauen in Listenreihenfolge
+/// aufeinander auf: Einstieg, Details, Rechenweg oder Beispiel, Prüfungsfalle,
+/// Merksatz. Nur [title] und [body] sind Pflicht; die übrigen Felder sind je
+/// nach [kind] gefüllt. Eine Karte zeigt, was vorhanden ist, statt je Art
+/// eigene Klassen zu erzwingen - das hält das Schreiben neuer Schritte einfach.
 @immutable
 class Nugget {
   const Nugget({
     required this.id,
     required this.topicId,
+    required this.subtopicId,
     required this.kind,
     required this.title,
     required this.body,
@@ -49,6 +49,9 @@ class Nugget {
 
   final String id;
   final String topicId;
+
+  /// Die Lektion, zu der dieser Schritt gehört.
+  final String subtopicId;
   final NuggetKind kind;
   final String title;
   final String body;
@@ -65,21 +68,10 @@ class Nugget {
   final String? merksatz;
   final List<String> tags;
 
-  /// Theorie-Snacks erscheinen ebenfalls im Feed, ohne doppelt gepflegt zu
-  /// werden.
-  factory Nugget.fromTheory(TheorySnack s) => Nugget(
-        id: 'feed-${s.id}',
-        topicId: s.topicId,
-        kind: NuggetKind.konzept,
-        title: s.title,
-        body: s.lead,
-        points: s.points,
-        merksatz: s.merksatz,
-      );
-
   Map<String, dynamic> toJson() => {
         'id': id,
         'topic_id': topicId,
+        'subtopic_id': subtopicId,
         'kind': kind.name,
         'title': title,
         'body': body,
@@ -93,6 +85,7 @@ class Nugget {
   factory Nugget.fromJson(Map<String, dynamic> j) => Nugget(
         id: j['id'] as String,
         topicId: j['topic_id'] as String,
+        subtopicId: j['subtopic_id'] as String,
         kind: NuggetKind.values.firstWhere(
           (k) => k.name == j['kind'],
           orElse: () => NuggetKind.konzept,

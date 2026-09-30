@@ -8,6 +8,7 @@ import '../data/models/nugget.dart';
 import '../data/models/profile.dart';
 import '../data/models/progress.dart';
 import '../data/models/question.dart';
+import '../data/models/subtopic.dart';
 import '../data/models/topic.dart';
 import '../data/repositories/local_store.dart';
 import '../data/repositories/question_repository.dart';
@@ -288,9 +289,74 @@ final dueCardsProvider = Provider<int>((ref) {
   return deck.dueCount(ref.watch(flashcardsProvider));
 });
 
-// --------------------------------------------------------------- Lern-Feed
+// ------------------------------------------------------- Learning Journey
 
 final nuggetsProvider = Provider<List<Nugget>>((ref) => kSeedNuggets);
+
+/// Lernschritte je Lektion, in Lernreihenfolge.
+final lessonStepsProvider = Provider<Map<String, List<Nugget>>>((ref) {
+  final out = <String, List<Nugget>>{};
+  for (final n in ref.watch(nuggetsProvider)) {
+    out.putIfAbsent(n.subtopicId, () => []).add(n);
+  }
+  return out;
+});
+
+/// Lektionen, für die es Lernschritte gibt - in Journey-Reihenfolge.
+final lessonsProvider = Provider<List<Subtopic>>((ref) {
+  final steps = ref.watch(lessonStepsProvider);
+  return Subtopics.all.where((s) => steps.containsKey(s.id)).toList();
+});
+
+class JourneyNotifier extends StateNotifier<Set<String>> {
+  JourneyNotifier(this._store) : super(_store.readJourney());
+  final LocalStore _store;
+
+  void complete(String lessonId) {
+    if (state.contains(lessonId)) return;
+    state = {...state, lessonId};
+    _store.writeJourney(state);
+  }
+
+  void reset() {
+    state = {};
+    _store.writeJourney(state);
+  }
+}
+
+final journeyProvider =
+    StateNotifierProvider<JourneyNotifier, Set<String>>((ref) {
+  return JourneyNotifier(ref.watch(localStoreProvider));
+});
+
+/// Die erste noch offene Lektion in Lernreihenfolge - oder null, wenn alles
+/// geschafft ist.
+final nextLessonProvider = Provider<Subtopic?>((ref) {
+  final done = ref.watch(journeyProvider);
+  return ref
+      .watch(lessonsProvider)
+      .where((s) => !done.contains(s.id))
+      .firstOrNull;
+});
+
+/// Aufgaben je Lektion - für den Wissenscheck am Ende einer Lektion.
+final questionCountBySubtopicProvider = Provider<Map<String, int>>((ref) {
+  final out = <String, int>{};
+  for (final q in ref.watch(questionsProvider)) {
+    final s = q.subtopicId;
+    if (s != null && q.isExamRelevant) out[s] = (out[s] ?? 0) + 1;
+  }
+  return out;
+});
+
+final cardCountBySubtopicProvider = Provider<Map<String, int>>((ref) {
+  final out = <String, int>{};
+  for (final c in ref.watch(flashcardsProvider)) {
+    final s = c.subtopicId;
+    if (s != null) out[s] = (out[s] ?? 0) + 1;
+  }
+  return out;
+});
 
 /// Gesehene Theorie-Snacks - steuert, ob vor einer Session der Snack
 /// automatisch aufgeht.

@@ -7,7 +7,8 @@ import '../features/cards/cards_overview_screen.dart';
 import '../features/dashboard/area_detail_screen.dart';
 import '../features/dashboard/areas_screen.dart';
 import '../features/dashboard/dashboard_screen.dart';
-import '../features/feed/feed_screen.dart';
+import '../features/journey/journey_screen.dart';
+import '../features/journey/lesson_screen.dart';
 import '../features/info/catalog_changes_screen.dart';
 import '../features/exam/exam_intro_screen.dart';
 import '../features/learn/result_screen.dart';
@@ -77,6 +78,12 @@ final routerProvider = Provider<GoRouter>((ref) {
         parentNavigatorKey: _rootKey,
         builder: (context, state) => const SettingsScreen(),
       ),
+      GoRoute(
+        path: '/lektion/:id',
+        parentNavigatorKey: _rootKey,
+        builder: (context, state) =>
+            LessonScreen(lessonId: state.pathParameters['id']!),
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, shell) => AppShell(navigationShell: shell),
         branches: [
@@ -99,8 +106,8 @@ final routerProvider = Provider<GoRouter>((ref) {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: '/feed',
-                builder: (context, state) => const FeedScreen(),
+                path: '/journey',
+                builder: (context, state) => const JourneyScreen(),
               ),
             ],
           ),

@@ -41,29 +41,37 @@ class QuestionView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Wrap(
-          spacing: Gap.s,
-          runSpacing: Gap.s,
+        // Eine ruhige Überzeile statt vier Chips: Die Frage soll das
+        // Auffälligste auf dem Bildschirm sein, nicht ihre Metadaten.
+        Row(
           children: [
-            MetaChip(
-              label: topic.title,
-              icon: topic.icon,
-              color: context.scheme.primary,
-            ),
-            MetaChip(label: question.kind.label),
-            MetaChip(
-              label: switch (question.difficulty) {
-                1 => 'Grundlagen',
-                3 => 'Anspruchsvoll',
-                _ => 'Prüfungsniveau',
-              },
-              icon: Icons.speed,
-            ),
-            MetaChip(
-              label: '${question.points} ${question.points == 1 ? "Punkt" : "Punkte"}',
-              icon: Icons.star_outline,
+            Icon(topic.icon, size: 15, color: context.scheme.primary),
+            const SizedBox(width: Gap.s),
+            Expanded(
+              child: Text(
+                topic.title.toUpperCase(),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: context.text.labelSmall?.copyWith(
+                  color: context.scheme.primary,
+                  letterSpacing: 1.1,
+                ),
+              ),
             ),
           ],
+        ),
+        const SizedBox(height: Gap.xs),
+        Text(
+          [
+            question.kind.label,
+            switch (question.difficulty) {
+              1 => 'Grundlagen',
+              3 => 'Anspruchsvoll',
+              _ => 'Prüfungsniveau',
+            },
+            '${question.points} ${question.points == 1 ? "Punkt" : "Punkte"}',
+          ].join('  ·  '),
+          style: context.text.labelSmall?.copyWith(color: context.c.textMuted),
         ),
         const SizedBox(height: Gap.l),
         if (question.scenario != null) ...[
@@ -73,17 +81,17 @@ class QuestionView extends StatelessWidget {
             decoration: BoxDecoration(
               color: context.c.surfaceAlt,
               borderRadius: BorderRadius.circular(Radii.m),
-              border: Border(
-                left: BorderSide(color: context.scheme.primary, width: 3),
-              ),
+              border: Border.all(color: context.c.border),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Situation',
-                  style: context.text.labelSmall
-                      ?.copyWith(color: context.c.textMuted),
+                  'SITUATION',
+                  style: context.text.labelSmall?.copyWith(
+                    color: context.c.textMuted,
+                    letterSpacing: 1.1,
+                  ),
                 ),
                 const SizedBox(height: Gap.xs),
                 Text(question.scenario!, style: context.text.bodyMedium),

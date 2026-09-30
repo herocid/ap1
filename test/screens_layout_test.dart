@@ -28,7 +28,8 @@ void main() {
   const routes = [
     '/',
     '/themen',
-    '/feed',
+    '/journey',
+    '/lektion/n-vorwaerts',
     '/karten',
     '/statistik',
     '/einstellungen',

@@ -56,6 +56,14 @@ void main() {
     });
   });
 
+  group('Learning Journey', () {
+    test('merkt sich abgeschlossene Lektionen', () async {
+      expect(store.readJourney(), isEmpty);
+      await store.writeJourney({'n-grundlagen', 'n-vorwaerts'});
+      expect(store.readJourney(), {'n-grundlagen', 'n-vorwaerts'});
+    });
+  });
+
   group('Karteikasten', () {
     test('speichert jede Karte einzeln', () async {
       final a = const CardState(cardId: 'c1').answer(knewIt: true);
