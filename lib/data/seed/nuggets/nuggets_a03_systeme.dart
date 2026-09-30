@@ -1,0 +1,302 @@
+import '../../models/nugget.dart';
+import '../builders.dart';
+
+/// Lernschritte Bereich 03, Teil 1: Hardware, Arbeitsplatz und
+/// Betriebssysteme.
+final List<Nugget> nuggetsA03Systeme = [
+  // ======================================================= Komponenten eines PCs
+  ablauf('n-hk-1', 'h-komponenten', 'Das EVA-Prinzip',
+      'Jeder Computer arbeitet nach demselben Grundmuster.',
+      [
+        'Eingabe - Tastatur, Maus, Scanner, Netzwerk',
+        'Verarbeitung - Prozessor und Arbeitsspeicher',
+        'Ausgabe - Bildschirm, Drucker, Lautsprecher',
+      ],
+      merksatz: 'Dazu kommt die Speicherung: SSD oder Festplatte bewahren Daten dauerhaft auf.'),
+  vergleich('n-hk-2', 'h-komponenten', 'Die wichtigsten Komponenten',
+      'Jede Komponente hat Kennzahlen, auf die es beim Kauf ankommt.',
+      [
+        ['Komponente', 'Aufgabe', 'Kennzahlen'],
+        ['Prozessor (CPU)', 'führt Befehle aus', 'Kerne, Threads, Takt, Cache'],
+        ['Arbeitsspeicher (RAM)', 'hält laufende Programme und Daten', 'Kapazität, Generation (DDR4/DDR5), Takt'],
+        ['Mainboard', 'verbindet alle Komponenten', 'Sockel, Chipsatz, Steckplätze'],
+        ['Grafik (GPU)', 'berechnet die Bildausgabe', 'integriert oder dediziert, Grafikspeicher'],
+        ['Netzteil', 'versorgt alles mit Strom', 'Leistung in Watt, Effizienz'],
+      ]),
+  konzept('n-hk-3', 'h-komponenten', 'Arbeitsspeicher ist flüchtig',
+      'Der Arbeitsspeicher verliert seinen Inhalt, sobald der Strom weg ist. Reicht er nicht aus, lagert das Betriebssystem Daten auf die SSD aus - das ist um ein Vielfaches langsamer. Zu wenig RAM ist deshalb eine häufige Ursache für träge Rechner.'),
+  konzept('n-hk-4', 'h-komponenten', 'BIOS und UEFI',
+      'Die Firmware auf dem Mainboard startet den Rechner, prüft die Hardware und lädt das Betriebssystem. UEFI ist der moderne Nachfolger des BIOS: Es unterstützt große Festplatten mit GPT, eine grafische Oberfläche und Secure Boot, das nur signierte Bootloader startet.'),
+  falle('n-hk-5', 'h-komponenten', 'Passt der Prozessor?',
+      'Ein Prozessor passt nur in ein Mainboard mit dem passenden Sockel und Chipsatz. Auch der Arbeitsspeicher muss zur unterstützten Generation passen - DDR5-Module lassen sich nicht in DDR4-Steckplätze setzen.'),
+
+  // ======================================================= Speicher: HDD und SSD
+  vergleich('n-hs-1', 'h-speicher', 'HDD oder SSD?',
+      'Die beiden Technologien unterscheiden sich grundlegend.',
+      [
+        ['', 'HDD (Festplatte)', 'SSD'],
+        ['Technik', 'rotierende Magnetscheiben', 'Flash-Speicher ohne bewegliche Teile'],
+        ['Geschwindigkeit', 'langsamer, hohe Zugriffszeit', 'deutlich schneller'],
+        ['Preis pro Gigabyte', 'günstiger', 'teurer'],
+        ['Stoßfestigkeit', 'empfindlich', 'robust'],
+        ['Einsatz', 'große Datenarchive, Backups', 'Betriebssystem, Programme, Laptops'],
+      ]),
+  vergleich('n-hs-2', 'h-speicher', 'SATA oder NVMe?',
+      'Auch SSDs sind nicht gleich schnell - es kommt auf die Anbindung an.',
+      [
+        ['Anbindung', 'Übertragung', 'Typisch'],
+        ['SATA', 'bis ca. 600 MB/s', '2,5-Zoll-SSD, ältere Systeme'],
+        ['NVMe über PCIe', 'mehrere GB/s', 'M.2-SSD in aktuellen Rechnern'],
+      ]),
+  vergleich('n-hs-3', 'h-speicher', 'Dezimal oder binär?',
+      'Hersteller rechnen mit Zehnerpotenzen, Betriebssysteme oft mit Zweierpotenzen.',
+      [
+        ['Präfix', 'Wert', 'Präfix', 'Wert'],
+        ['Kilobyte (kB)', '1.000 Byte', 'Kibibyte (KiB)', '1.024 Byte'],
+        ['Megabyte (MB)', '1.000² Byte', 'Mebibyte (MiB)', '1.024² Byte'],
+        ['Gigabyte (GB)', '1.000³ Byte', 'Gibibyte (GiB)', '1.024³ Byte'],
+        ['Terabyte (TB)', '1.000⁴ Byte', 'Tebibyte (TiB)', '1.024⁴ Byte'],
+      ]),
+  formel('n-hs-4', 'h-speicher', 'Wo sind die Gigabytes hin?',
+      'Eine 1-TB-SSD zeigt unter Windows nur rund 931 „GB“ an. Es fehlt nichts - Windows rechnet in GiB, beschriftet aber mit GB.',
+      '1 TB = 1.000.000.000.000 Byte\n'
+          '1 GiB = 1.024³ Byte = 1.073.741.824 Byte\n'
+          '1 TB / 1 GiB ≈ 931,3 GiB'),
+  falle('n-hs-5', 'h-speicher', 'SSDs verschleißen',
+      'Flash-Zellen vertragen nur eine begrenzte Zahl von Schreibvorgängen. Hersteller geben die Haltbarkeit als TBW (Terabytes Written) an. Für Büro-PCs reicht das meist viele Jahre, für schreibintensive Server muss man es einplanen.'),
+
+  // ============================================ Schnittstellen und Peripherie
+  vergleich('n-hi-1', 'h-schnittstellen', 'USB-Generationen',
+      'Die Namen haben sich mehrfach geändert - entscheidend ist die Datenrate.',
+      [
+        ['Standard', 'max. Datenrate'],
+        ['USB 2.0', '480 Mbit/s'],
+        ['USB 3.2 Gen 1 (früher USB 3.0)', '5 Gbit/s'],
+        ['USB 3.2 Gen 2', '10 Gbit/s'],
+        ['USB 3.2 Gen 2x2', '20 Gbit/s'],
+        ['USB4', 'bis 40 Gbit/s'],
+      ]),
+  falle('n-hi-2', 'h-schnittstellen', 'USB-C ist kein Tempo',
+      'USB-C beschreibt nur die Form des Steckers. Über einen USB-C-Anschluss kann USB 2.0 mit 480 Mbit/s laufen oder USB4 mit 40 Gbit/s. Welche Geschwindigkeit möglich ist, steht im Datenblatt - nicht auf dem Stecker.'),
+  vergleich('n-hi-3', 'h-schnittstellen', 'Bildschirmanschlüsse',
+      'Für aktuelle Monitore sind digitale Anschlüsse Standard.',
+      [
+        ['Anschluss', 'Signal', 'Hinweis'],
+        ['HDMI', 'digital, Bild und Ton', 'Standard bei Fernsehern und Beamern'],
+        ['DisplayPort', 'digital, Bild und Ton', 'verbreitet bei PC-Monitoren, hohe Bildraten'],
+        ['VGA', 'analog', 'veraltet, schlechtere Bildqualität'],
+      ]),
+  konzept('n-hi-4', 'h-schnittstellen', 'Monitore vergleichen',
+      'Diese Kennzahlen stehen in jedem Datenblatt.',
+      points: [
+        'Auflösung: Full HD 1920 × 1080, WQHD 2560 × 1440, 4K 3840 × 2160 Pixel',
+        'Diagonale in Zoll (1 Zoll = 2,54 cm)',
+        'Bildwiederholrate in Hz - wichtig für flüssige Bewegungen',
+        'Reaktionszeit in ms',
+        'Panel: IPS für gute Farben und Blickwinkel, TN günstig und schnell, VA mit hohem Kontrast',
+      ]),
+  vergleich('n-hi-5', 'h-schnittstellen', 'Laser oder Tinte?',
+      'Die Wahl hängt vom Einsatz ab.',
+      [
+        ['', 'Laserdrucker', 'Tintenstrahldrucker'],
+        ['Stärke', 'schnell, günstig bei viel Text', 'gute Fotos, günstiges Gerät'],
+        ['Verbrauchsmaterial', 'Toner', 'Tintenpatronen'],
+        ['Passt zu', 'Büro mit hohem Druckvolumen', 'wenig drucken, Fotos'],
+      ]),
+
+  // =================================================== USV und Stromversorgung
+  konzept('n-hu-1', 'h-usv', 'Wozu eine USV?',
+      'Eine unterbrechungsfreie Stromversorgung überbrückt Stromausfälle mit einem Akku und glättet Störungen im Netz. Server und Netzwerktechnik laufen weiter - lange genug, um sie geordnet herunterzufahren.',
+      points: [
+        'Stromausfall',
+        'Unter- und Überspannung',
+        'kurze Spannungsspitzen',
+        'Frequenzschwankungen',
+      ]),
+  vergleich('n-hu-2', 'h-usv', 'Drei USV-Typen',
+      'Die Typen unterscheiden sich darin, wie gut sie schützen.',
+      [
+        ['Typ', 'Arbeitsweise', 'Schutz'],
+        ['Offline (Standby)', 'schaltet erst bei Ausfall auf Akku um', 'Grundschutz, kurze Umschaltzeit'],
+        ['Line-Interactive', 'regelt zusätzlich Spannungsschwankungen aus', 'mittlerer Schutz'],
+        ['Online (Doppelwandler)', 'versorgt die Last dauerhaft über den Wechselrichter', 'bester Schutz, keine Umschaltzeit'],
+      ]),
+  formel('n-hu-3', 'h-usv', 'Eine USV dimensionieren',
+      'Die Leistung wird in Watt (Wirkleistung) und VA (Scheinleistung) angegeben. Beide hängen über den Leistungsfaktor zusammen.',
+      'Wirkleistung (W) = Scheinleistung (VA) × Leistungsfaktor\n'
+          'benötigte VA = Summe Watt × Reserve / Leistungsfaktor',
+      merksatz: 'Beispiel: 450 W Last, 25 % Reserve, Faktor 0,9 -> 450 × 1,25 / 0,9 = 625 VA.'),
+  konzept('n-hu-4', 'h-usv', 'Die Überbrückungszeit',
+      'Die Überbrückungszeit gibt an, wie lange der Akku die angeschlossene Last versorgen kann. Sie muss mindestens so lang sein, dass alle Systeme sauber herunterfahren - idealerweise automatisch über eine Software, die die USV auslöst.'),
+  falle('n-hu-5', 'h-usv', 'Watt ist nicht VA',
+      'Eine USV mit „1000 VA“ liefert bei einem Leistungsfaktor von 0,6 nur 600 Watt. Wer Watt der Geräte und VA der USV direkt vergleicht, kauft ein zu kleines Gerät.'),
+
+  // ======================================================= Green IT und Ergonomie
+  konzept('n-ha-1', 'h-arbeitsplatz', 'Green IT',
+      'Green IT verringert den Ressourcen- und Energieverbrauch der IT über den gesamten Lebenszyklus.',
+      points: [
+        'energieeffiziente Geräte, z. B. mit Energieeffizienzlabel',
+        'Stromsparmodi und automatisches Abschalten',
+        'Server virtualisieren und konsolidieren',
+        'Geräte lange nutzen und reparieren',
+        'Altgeräte fachgerecht recyceln',
+      ]),
+  formel('n-ha-2', 'h-arbeitsplatz', 'Energiekosten berechnen',
+      'Die Leistung in Watt mal Betriebsstunden ergibt den Verbrauch.',
+      'Verbrauch in kWh = Leistung in W × Stunden / 1.000\n'
+          'Kosten = Verbrauch in kWh × Preis pro kWh',
+      merksatz: 'Beispiel: 60 W × 8 h × 220 Tage = 105,6 kWh. Bei 0,30 €/kWh: 31,68 € pro Jahr.'),
+  konzept('n-ha-3', 'h-arbeitsplatz', 'Der ergonomische Bildschirmarbeitsplatz',
+      'Die Arbeitsstättenverordnung regelt die Anforderungen an Bildschirmarbeitsplätze.',
+      points: [
+        'Oberkante des Monitors auf oder leicht unter Augenhöhe',
+        'Sehabstand etwa eine Armlänge (rund 50-70 cm)',
+        'Monitor seitlich zum Fenster, ohne Blendung und Spiegelungen',
+        'höhenverstellbarer Stuhl, Füße flach auf dem Boden',
+        'regelmäßige Pausen oder Tätigkeitswechsel',
+      ]),
+  falle('n-ha-4', 'h-arbeitsplatz', 'Standby frisst Strom',
+      'Geräte im Standby verbrauchen weiter Strom - bei vielen Arbeitsplätzen und 24 Stunden am Tag summiert sich das. Schaltbare Steckdosenleisten oder zeitgesteuertes Abschalten sparen hier echtes Geld.'),
+
+  // ============================================= Aufgaben eines Betriebssystems
+  vergleich('n-ba-1', 'b-aufgaben', 'Was ein Betriebssystem leistet',
+      'Das Betriebssystem vermittelt zwischen Hardware und Anwendungen.',
+      [
+        ['Aufgabe', 'Bedeutung'],
+        ['Prozessverwaltung', 'verteilt Rechenzeit an laufende Programme'],
+        ['Speicherverwaltung', 'teilt den Arbeitsspeicher zu, lagert bei Bedarf aus'],
+        ['Dateiverwaltung', 'organisiert Dateien und Ordner im Dateisystem'],
+        ['Geräteverwaltung', 'steuert Hardware über Treiber'],
+        ['Benutzerverwaltung', 'Konten, Anmeldung und Rechte'],
+        ['Benutzerschnittstelle', 'grafische Oberfläche oder Kommandozeile'],
+      ]),
+  vergleich('n-ba-2', 'b-aufgaben', 'Prozess und Thread',
+      'Beide Begriffe tauchen im Task-Manager auf.',
+      [
+        ['Begriff', 'Bedeutung'],
+        ['Prozess', 'ein laufendes Programm mit eigenem Speicherbereich'],
+        ['Thread', 'ein Ausführungsstrang innerhalb eines Prozesses; teilt dessen Speicher'],
+      ]),
+  konzept('n-ba-3', 'b-aufgaben', 'Kernel und Treiber',
+      'Der Kernel ist der Kern des Betriebssystems: Er hat vollen Zugriff auf die Hardware. Anwendungen laufen mit eingeschränkten Rechten und fragen den Kernel über Schnittstellen an. Treiber übersetzen zwischen Kernel und einem bestimmten Gerät.'),
+  konzept('n-ba-4', 'b-aufgaben', 'Multitasking',
+      'Ein Prozessorkern kann zu jedem Zeitpunkt nur einen Thread ausführen. Das Betriebssystem wechselt aber so schnell zwischen den Programmen, dass sie gleichzeitig zu laufen scheinen. Mehrere Kerne ermöglichen echte Parallelität.'),
+
+  // ============================================================== Dateisysteme
+  vergleich('n-bd-1', 'b-dateisysteme', 'Dateisysteme im Vergleich',
+      'Das Dateisystem legt fest, wie Daten auf einem Datenträger organisiert werden.',
+      [
+        ['Dateisystem', 'Typischer Einsatz', 'Besonderheit'],
+        ['NTFS', 'Windows-Systemlaufwerk', 'Rechte, Journaling, Verschlüsselung'],
+        ['FAT32', 'ältere USB-Sticks, Kameras', 'maximale Dateigröße 4 GB, keine Rechte'],
+        ['exFAT', 'USB-Sticks, SD-Karten', 'große Dateien, gut kompatibel, keine Rechte'],
+        ['ext4', 'Linux', 'Rechte, Journaling'],
+        ['APFS', 'macOS', 'für SSDs optimiert'],
+      ]),
+  konzept('n-bd-2', 'b-dateisysteme', 'Journaling',
+      'Ein Journaling-Dateisystem protokolliert geplante Änderungen, bevor es sie ausführt. Stürzt der Rechner mitten im Schreiben ab, lässt sich das Dateisystem anhand des Journals schnell in einen konsistenten Zustand bringen.'),
+  vergleich('n-bd-3', 'b-dateisysteme', 'MBR oder GPT?',
+      'Vor dem Dateisystem kommt die Partitionstabelle.',
+      [
+        ['', 'MBR', 'GPT'],
+        ['max. Datenträgergröße', '2 TiB', 'praktisch unbegrenzt'],
+        ['Partitionen', '4 primäre', 'unter Windows bis zu 128'],
+        ['Firmware', 'BIOS', 'UEFI'],
+      ]),
+  falle('n-bd-4', 'b-dateisysteme', 'Die 4-GB-Grenze',
+      'Auf einen FAT32-Stick passt keine einzelne Datei über 4 GB - egal wie viel Platz frei ist. Wer ein großes Image oder Video kopieren will, formatiert den Stick mit exFAT oder NTFS.'),
+
+  // ======================================================== Benutzer und Rechte
+  konzept('n-br-1', 'b-rechte', 'Das Minimalprinzip',
+      'Jeder Benutzer erhält nur die Rechte, die er für seine Aufgabe braucht - nicht mehr. Rechte werden an Gruppen vergeben, nicht an einzelne Personen: Wechselt jemand die Abteilung, wechselt er nur die Gruppe.'),
+  formel('n-br-2', 'b-rechte', 'Linux-Rechte lesen',
+      'Unter Linux gibt es drei Rechte für drei Benutzerklassen: Besitzer, Gruppe und alle anderen.',
+      'r = lesen      = 4\n'
+          'w = schreiben  = 2\n'
+          'x = ausführen  = 1\n'
+          '\n'
+          'chmod 750 datei  ->  rwx r-x ---\n'
+          '                     7   5   0',
+      merksatz: 'Pro Stelle wird addiert: 7 = 4 + 2 + 1, 5 = 4 + 1, 0 = keine Rechte.'),
+  vergleich('n-br-3', 'b-rechte', 'NTFS-Berechtigungen',
+      'Windows kennt abgestufte Standardberechtigungen.',
+      [
+        ['Berechtigung', 'erlaubt'],
+        ['Lesen', 'Dateien öffnen und anzeigen'],
+        ['Lesen, Ausführen', 'zusätzlich Programme starten'],
+        ['Ändern', 'zusätzlich bearbeiten und löschen'],
+        ['Vollzugriff', 'zusätzlich Berechtigungen ändern und Besitz übernehmen'],
+      ]),
+  falle('n-br-4', 'b-rechte', 'Freigabe- und NTFS-Rechte',
+      'Greift man über das Netzwerk auf einen Ordner zu, gelten Freigabe- und NTFS-Rechte gleichzeitig. Wirksam ist immer die strengere von beiden. Wer nur eine Seite freigibt, wundert sich, warum der Zugriff trotzdem scheitert.'),
+  konzept('n-br-5', 'b-rechte', 'Admin nur zum Administrieren',
+      'Auch Administratoren arbeiten im Alltag mit einem normalen Konto und wechseln nur für Verwaltungsaufgaben die Rechte - unter Linux mit sudo, unter Windows über die Benutzerkontensteuerung. So richtet Schadsoftware im Alltagskonto weniger Schaden an.'),
+
+  // ============================================================== Kommandozeile
+  vergleich('n-bc-1', 'b-cli', 'Dateien und Ordner',
+      'Die wichtigsten Befehle für die tägliche Arbeit.',
+      [
+        ['Aufgabe', 'Windows (cmd)', 'Linux'],
+        ['Inhalt anzeigen', 'dir', 'ls'],
+        ['Ordner wechseln', 'cd', 'cd'],
+        ['Kopieren', 'copy', 'cp'],
+        ['Verschieben', 'move', 'mv'],
+        ['Löschen', 'del', 'rm'],
+        ['Ordner anlegen', 'mkdir', 'mkdir'],
+        ['Datei ausgeben', 'type', 'cat'],
+      ]),
+  vergleich('n-bc-2', 'b-cli', 'Netzwerk-Diagnose',
+      'Mit diesen Befehlen findet man die meisten Netzwerkfehler.',
+      [
+        ['Aufgabe', 'Windows', 'Linux'],
+        ['IP-Konfiguration anzeigen', 'ipconfig', 'ip a'],
+        ['Erreichbarkeit prüfen', 'ping', 'ping'],
+        ['Weg der Pakete verfolgen', 'tracert', 'traceroute'],
+        ['Namen auflösen', 'nslookup', 'nslookup oder dig'],
+        ['offene Verbindungen', 'netstat', 'ss oder netstat'],
+      ]),
+  ablauf('n-bc-3', 'b-cli', 'Netzwerkfehler systematisch eingrenzen',
+      'Geprüft wird von innen nach außen - so zeigt der erste Fehlschlag, wo das Problem liegt.',
+      [
+        'ipconfig / ip a: Hat der Rechner eine gültige IP-Adresse?',
+        'ping auf das Standardgateway: Ist das lokale Netz erreichbar?',
+        'ping auf eine externe IP-Adresse: Funktioniert das Routing ins Internet?',
+        'ping auf einen Namen bzw. nslookup: Funktioniert die Namensauflösung (DNS)?',
+      ]),
+  konzept('n-bc-4', 'b-cli', 'Weitere Linux-Befehle',
+      'Diese Befehle kommen in Prüfungen regelmäßig vor.',
+      points: [
+        'pwd - aktuelles Verzeichnis anzeigen',
+        'grep - Text in Dateien suchen',
+        'chmod / chown - Rechte bzw. Besitzer ändern',
+        'sudo - Befehl mit Administratorrechten ausführen',
+        'ps / top - laufende Prozesse anzeigen',
+        'man - Hilfe zu einem Befehl',
+      ]),
+  falle('n-bc-5', 'b-cli', 'Ping heißt nicht Internet',
+      'Wenn ping auf 8.8.8.8 klappt, aber nicht auf google.de, funktioniert das Netzwerk - nur die Namensauflösung ist gestört. Wer hier den Router neu startet, sucht an der falschen Stelle.'),
+
+  // ========================================================= Updates und Härtung
+  konzept('n-bh-1', 'b-haertung', 'Was Härtung bedeutet',
+      'Härtung macht ein System widerstandsfähiger, indem die Angriffsfläche verkleinert wird: Was nicht vorhanden ist, kann nicht angegriffen werden.',
+      points: [
+        'nicht benötigte Dienste und Programme entfernen',
+        'Standardpasswörter und Standardkonten ändern oder deaktivieren',
+        'Updates zeitnah einspielen',
+        'Firewall aktivieren, nur nötige Ports öffnen',
+        'Administratorrechte einschränken',
+        'Datenträger verschlüsseln, z. B. mit BitLocker oder LUKS',
+      ]),
+  ablauf('n-bh-2', 'b-haertung', 'Patchmanagement',
+      'Updates werden in Unternehmen nicht einfach auf alle Rechner verteilt.',
+      [
+        'Verfügbare Updates erfassen und nach Kritikalität bewerten',
+        'Auf Testsystemen prüfen',
+        'Schrittweise verteilen',
+        'Erfolg kontrollieren und dokumentieren',
+      ]),
+  konzept('n-bh-3', 'b-haertung', 'Zero-Day-Lücken',
+      'Eine Zero-Day-Lücke ist eine Schwachstelle, für die es noch kein Update gibt - der Hersteller hatte „null Tage“ Zeit zu reagieren. Hier helfen nur Härtung, eingeschränkte Rechte und Überwachung, bis ein Patch erscheint.'),
+  falle('n-bh-4', 'b-haertung', 'Updates auf später verschieben',
+      'Viele erfolgreiche Angriffe nutzen Lücken, für die längst ein Patch existiert. Sicherheitsupdates wochenlang aufzuschieben ist eines der größten Risiken in kleinen Unternehmen.'),
+];
