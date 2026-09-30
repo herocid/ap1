@@ -3,6 +3,8 @@ import 'cards_a01_journey.dart';
 import 'cards_a01_projekte.dart';
 import 'cards_a02_kunden.dart';
 import 'cards_a03_systeme.dart';
+import 'cards_a04_daten.dart';
+import 'cards_a04_entwicklung.dart';
 
 /// Alle Lernkarteikarten der App.
 ///
@@ -13,4 +15,6 @@ final List<Flashcard> kSeedFlashcards = [
   ...cardsA01Journey,
   ...cardsA02,
   ...cardsA03,
+  ...cardsA04Entwicklung,
+  ...cardsA04Daten,
 ];

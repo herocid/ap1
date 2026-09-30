@@ -69,12 +69,12 @@ Vorlage für Stil und Tiefe: `nuggets_a03_netze.dart`, `cards_a03_systeme.dart`,
 | 01 Projekte & Projektmanagement (31 Lektionen) | fertig |
 | 02 Kundenbeziehungen & Kommunikation (16) | fertig |
 | 03 Informations- & Softwaresysteme (20) | fertig |
-| 04 Analyse & Entwicklung von Systemen (30) | offen |
+| 04 Analyse & Entwicklung von Systemen (30) | fertig |
 | 05 Qualitätssicherung (7) | offen |
 | 06 IT-Sicherheit & Datenschutz (18) | offen |
 | 07 Vertragsmanagement & Service (12) | offen |
 
-In 04 (Anforderungen `lh-*`), 05 (`qm-*`, `te-*`) und 07 (`ve-*`, `sl-*`, `ls-*`, `cm-*`)
+In 05 (`qm-*`, `te-*`) und 07 (`ve-*`, `sl-*`, `ls-*`, `cm-*`)
 gibt es bereits Aufgaben mit `subtopicId` - vor dem Schreiben per Grep zählen und nur
 ergänzen, was zur Vollständigkeit fehlt.
 
