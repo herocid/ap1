@@ -44,22 +44,40 @@ void main() {
     b.writeln('-- der IHK-AP1, keine Originalaufgaben (urheberrechtlich');
     b.writeln('-- geschuetzt).');
     b.writeln('--');
-    b.writeln('-- Kein explizites begin/commit: sowohl der Supabase-SQL-Editor');
+    b.writeln(
+      '-- Kein explizites begin/commit: sowohl der Supabase-SQL-Editor',
+    );
     b.writeln('-- als auch `supabase db push` fuehren ein Skript bereits in');
     b.writeln('-- einer Transaktion aus.');
     b.writeln(rule);
     b.writeln();
 
+    // ------------------------------------------ Lektion (Learning Journey)
+    // Steht hier statt in einer Schema-Migration, damit das Skript auch auf
+    // einer Datenbank läuft, die schon vor der Journey eingerichtet wurde.
+    b.writeln('-- Lektion der Learning Journey ------------------------------');
+    for (final table in ['ap1_questions', 'ap1_flashcards']) {
+      b.writeln(
+        'alter table public.$table '
+        'add column if not exists subtopic_id text;',
+      );
+    }
+    b.writeln();
+
     // ------------------------------------------------------- Bereiche
     b.writeln('-- Katalogbereiche -------------------------------------------');
-    b.writeln('insert into public.ap1_areas '
-        '(id, number, title, blurb, weight, sort_order) values');
-    b.writeln([
-      for (var i = 0; i < ExamAreas.all.length; i++)
-        '  (${q(ExamAreas.all[i].id)}, ${q(ExamAreas.all[i].number)}, '
-            '${q(ExamAreas.all[i].title)}, ${q(ExamAreas.all[i].blurb)}, '
-            '${ExamAreas.all[i].weight.toStringAsFixed(3)}, $i)',
-    ].join(',\n'));
+    b.writeln(
+      'insert into public.ap1_areas '
+      '(id, number, title, blurb, weight, sort_order) values',
+    );
+    b.writeln(
+      [
+        for (var i = 0; i < ExamAreas.all.length; i++)
+          '  (${q(ExamAreas.all[i].id)}, ${q(ExamAreas.all[i].number)}, '
+              '${q(ExamAreas.all[i].title)}, ${q(ExamAreas.all[i].blurb)}, '
+              '${ExamAreas.all[i].weight.toStringAsFixed(3)}, $i)',
+      ].join(',\n'),
+    );
     b.writeln('on conflict (id) do update set');
     b.writeln('  number = excluded.number,');
     b.writeln('  title = excluded.title,');
@@ -70,14 +88,18 @@ void main() {
 
     // --------------------------------------------------------- Themen
     b.writeln('-- Themen ----------------------------------------------------');
-    b.writeln('insert into public.ap1_topics '
-        '(id, area_id, title, blurb, weight, sort_order) values');
-    b.writeln([
-      for (var i = 0; i < Topics.all.length; i++)
-        '  (${q(Topics.all[i].id)}, ${q(Topics.all[i].areaId)}, '
-            '${q(Topics.all[i].title)}, ${q(Topics.all[i].blurb)}, '
-            '${Topics.all[i].weight.toStringAsFixed(3)}, $i)',
-    ].join(',\n'));
+    b.writeln(
+      'insert into public.ap1_topics '
+      '(id, area_id, title, blurb, weight, sort_order) values',
+    );
+    b.writeln(
+      [
+        for (var i = 0; i < Topics.all.length; i++)
+          '  (${q(Topics.all[i].id)}, ${q(Topics.all[i].areaId)}, '
+              '${q(Topics.all[i].title)}, ${q(Topics.all[i].blurb)}, '
+              '${Topics.all[i].weight.toStringAsFixed(3)}, $i)',
+      ].join(',\n'),
+    );
     b.writeln('on conflict (id) do update set');
     b.writeln('  area_id = excluded.area_id,');
     b.writeln('  title = excluded.title,');
@@ -89,14 +111,16 @@ void main() {
     // ------------------------------------------------------- Aufgaben
     b.writeln('-- Aufgaben --------------------------------------------------');
     for (final question in kSeedQuestions) {
-      final data =
-          (question.toJson()['data'] as Map).cast<String, dynamic>();
+      final data = (question.toJson()['data'] as Map).cast<String, dynamic>();
       b.writeln('insert into public.ap1_questions');
-      b.writeln('  (id, topic_id, kind, scenario, prompt, explanation, '
-          'difficulty, tags, source, data, catalog_status)');
+      b.writeln(
+        '  (id, topic_id, subtopic_id, kind, scenario, prompt, '
+        'explanation, difficulty, tags, source, data, catalog_status)',
+      );
       b.writeln('values (');
       b.writeln('  ${q(question.id)},');
       b.writeln('  ${q(question.topicId)},');
+      b.writeln('  ${q(question.subtopicId)},');
       b.writeln('  ${q(question.kind.name)},');
       b.writeln('  ${q(question.scenario)},');
       b.writeln('  ${q(question.prompt)},');
@@ -109,6 +133,7 @@ void main() {
       b.writeln(')');
       b.writeln('on conflict (id) do update set');
       b.writeln('  topic_id = excluded.topic_id,');
+      b.writeln('  subtopic_id = excluded.subtopic_id,');
       b.writeln('  kind = excluded.kind,');
       b.writeln('  scenario = excluded.scenario,');
       b.writeln('  prompt = excluded.prompt,');
@@ -126,11 +151,17 @@ void main() {
     for (var i = 0; i < kSeedFlashcards.length; i++) {
       final c = kSeedFlashcards[i];
       b.writeln('insert into public.ap1_flashcards');
-      b.writeln('  (id, topic_id, front, back, hint, tags, sort_order)');
-      b.writeln('values (${q(c.id)}, ${q(c.topicId)}, ${q(c.front)}, '
-          '${q(c.back)}, ${q(c.hint)}, ${arr(c.tags)}, $i)');
+      b.writeln(
+        '  (id, topic_id, subtopic_id, front, back, hint, tags, '
+        'sort_order)',
+      );
+      b.writeln(
+        'values (${q(c.id)}, ${q(c.topicId)}, ${q(c.subtopicId)}, '
+        '${q(c.front)}, ${q(c.back)}, ${q(c.hint)}, ${arr(c.tags)}, $i)',
+      );
       b.writeln('on conflict (id) do update set');
       b.writeln('  topic_id = excluded.topic_id,');
+      b.writeln('  subtopic_id = excluded.subtopic_id,');
       b.writeln('  front = excluded.front,');
       b.writeln('  back = excluded.back,');
       b.writeln('  hint = excluded.hint,');
@@ -145,11 +176,15 @@ void main() {
     for (var i = 0; i < kSeedTheory.length; i++) {
       final s = kSeedTheory[i];
       b.writeln('insert into public.ap1_theory');
-      b.writeln('  (id, topic_id, title, lead, points, merksatz, '
-          'read_seconds, sort_order)');
-      b.writeln('values (${q(s.id)}, ${q(s.topicId)}, ${q(s.title)}, '
-          '${q(s.lead)}, ${arr(s.points)}, ${q(s.merksatz)}, '
-          '${s.readSeconds}, $i)');
+      b.writeln(
+        '  (id, topic_id, title, lead, points, merksatz, '
+        'read_seconds, sort_order)',
+      );
+      b.writeln(
+        'values (${q(s.id)}, ${q(s.topicId)}, ${q(s.title)}, '
+        '${q(s.lead)}, ${arr(s.points)}, ${q(s.merksatz)}, '
+        '${s.readSeconds}, $i)',
+      );
       b.writeln('on conflict (id) do update set');
       b.writeln('  topic_id = excluded.topic_id,');
       b.writeln('  title = excluded.title,');
@@ -162,14 +197,18 @@ void main() {
     }
 
     b.writeln('-- Kontrolle:');
-    b.writeln('--   select count(*) from public.ap1_questions '
-        "where catalog_status = 'current';");
-    b.writeln('-- erwartet: ${ExamAreas.all.length} Bereiche, '
-        '${Topics.all.length} Themen, '
-        '${kExamRelevantQuestions.length} aktive Aufgaben '
-        '(${kSeedQuestions.length} gesamt), '
-        '${kSeedFlashcards.length} Karten, '
-        '${kSeedTheory.length} Theorie-Snacks.');
+    b.writeln(
+      '--   select count(*) from public.ap1_questions '
+      "where catalog_status = 'current';",
+    );
+    b.writeln(
+      '-- erwartet: ${ExamAreas.all.length} Bereiche, '
+      '${Topics.all.length} Themen, '
+      '${kExamRelevantQuestions.length} aktive Aufgaben '
+      '(${kSeedQuestions.length} gesamt), '
+      '${kSeedFlashcards.length} Karten, '
+      '${kSeedTheory.length} Theorie-Snacks.',
+    );
 
     final file = File(_outPath);
     file.parent.createSync(recursive: true);
@@ -177,15 +216,23 @@ void main() {
 
     final sql = file.readAsStringSync();
     for (final question in kSeedQuestions) {
-      expect("'${question.id}'".allMatches(sql), isNotEmpty,
-          reason: '${question.id} fehlt im erzeugten SQL');
+      expect(
+        "'${question.id}'".allMatches(sql),
+        isNotEmpty,
+        reason: '${question.id} fehlt im erzeugten SQL',
+      );
     }
     for (final c in kSeedFlashcards) {
-      expect("'${c.id}'".allMatches(sql), isNotEmpty,
-          reason: '${c.id} fehlt im erzeugten SQL');
+      expect(
+        "'${c.id}'".allMatches(sql),
+        isNotEmpty,
+        reason: '${c.id} fehlt im erzeugten SQL',
+      );
     }
     // ignore: avoid_print
-    print('geschrieben: $_outPath (${kSeedQuestions.length} Aufgaben, '
-        '${kSeedFlashcards.length} Karten, ${kSeedTheory.length} Snacks)');
+    print(
+      'geschrieben: $_outPath (${kSeedQuestions.length} Aufgaben, '
+      '${kSeedFlashcards.length} Karten, ${kSeedTheory.length} Snacks)',
+    );
   });
 }

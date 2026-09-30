@@ -29,21 +29,46 @@ class SupabaseQuestionRepository implements QuestionRepository {
   @override
   Future<List<Question>> fetchAll() async {
     try {
-      final rows = await _client
-          .from('ap1_questions')
-          .select()
-          .eq('is_active', true)
-          .order('id');
-      final parsed = (rows as List)
-          .map((r) => Question.fromJson((r as Map).cast<String, dynamic>()))
-          .toList();
-      if (parsed.isEmpty) return kSeedQuestions;
-      return parsed;
+      final rows = await _client.from('ap1_questions').select().order('id');
+      final merged = mergeWithSeed(
+        (rows as List).map((r) => (r as Map).cast<String, dynamic>()),
+        kSeedQuestions,
+      );
+      return merged.isEmpty ? kSeedQuestions : merged;
     } catch (e) {
       debugPrint('Supabase-Abruf fehlgeschlagen, nutze Seed-Daten: $e');
       return kSeedQuestions;
     }
   }
+}
+
+/// Führt die Aufgaben aus der Datenbank mit dem eingebauten Seed zusammen.
+///
+/// - Datenbankzeilen haben Vorrang, deaktivierte (`is_active = false`)
+///   bleiben ausgeblendet - auch wenn der Seed sie noch kennt.
+/// - Aufgaben, die nur der Seed kennt, kommen dazu. Sonst fehlen neue
+///   Inhalte, bis jemand die Seed-Migration einspielt.
+/// - Kennt die Datenbank die Lektion einer Aufgabe nicht, kommt sie aus dem
+///   Seed. Ohne sie fände der Wissenscheck einer Lektion keine Aufgaben.
+@visibleForTesting
+List<Question> mergeWithSeed(
+  Iterable<Map<String, dynamic>> rows,
+  List<Question> seed,
+) {
+  final seedById = {for (final q in seed) q.id: q};
+  final inDb = <String>{};
+  final out = <Question>[];
+  for (final row in rows) {
+    final id = row['id'].toString();
+    inDb.add(id);
+    if (row['is_active'] == false) continue;
+    final json = Map<String, dynamic>.of(row);
+    json['subtopic_id'] ??= seedById[id]?.subtopicId;
+    out.add(Question.fromJson(json));
+  }
+  if (out.isEmpty) return out;
+  out.addAll(seed.where((q) => !inDb.contains(q.id)));
+  return out;
 }
 
 QuestionRepository createQuestionRepository() {

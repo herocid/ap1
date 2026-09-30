@@ -14,6 +14,10 @@
 -- einer Transaktion aus.
 -- ==========================================================================
 
+-- Lektion der Learning Journey ------------------------------
+alter table public.ap1_questions add column if not exists subtopic_id text;
+alter table public.ap1_flashcards add column if not exists subtopic_id text;
+
 -- Katalogbereiche -------------------------------------------
 insert into public.ap1_areas (id, number, title, blurb, weight, sort_order) values
   ('a01', '01', 'Projekte & Projektmanagement', 'Ziele, Vorgehensmodelle, Termin- und Kostenplanung, Risiken', 0.220, 0),
@@ -76,10 +80,11 @@ on conflict (id) do update set
 
 -- Aufgaben --------------------------------------------------
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'org-001',
   'projektorganisation',
+  'p-begriff',
   'multiple',
   null,
   'Welche Merkmale müssen nach DIN 69901 erfüllt sein, damit ein Vorhaben als Projekt gilt?',
@@ -92,6 +97,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -103,10 +109,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'org-002',
   'projektorganisation',
+  'p-organisation',
   'matching',
   null,
   'Ordne die Aussagen der passenden Form der Projektorganisation zu.',
@@ -119,6 +126,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -130,10 +138,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'org-003',
   'projektorganisation',
+  'p-stakeholder',
   'single',
   'Bei der Einführung eines neuen Ticketsystems hat der Betriebsrat hohen Einfluss auf die Entscheidung, zeigt bislang aber wenig Interesse am Projekt.',
   'Welche Strategie sieht die Stakeholder-Matrix (Einfluss/Interesse) für diese Gruppe vor?',
@@ -151,6 +160,7 @@ In der Prüfung wird fast immer nach dem Feld "hoher Einfluss, geringes Interess
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -162,10 +172,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'org-004',
   'projektorganisation',
+  'p-ziele',
   'multiple',
   null,
   'Welche Angaben gehören zwingend in einen Projektauftrag?',
@@ -178,6 +189,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -189,10 +201,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'org-005',
   'projektorganisation',
+  'p-ziele',
   'single',
   'Zwei Wochen vor dem Releasetermin fällt auf, dass ein Modul mehr Aufwand braucht als geplant. Der Termin ist vertraglich fixiert, zusätzliches Budget gibt es nicht.',
   'Welche Konsequenz ergibt sich zwangsläufig aus dem magischen Dreieck?',
@@ -205,6 +218,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -216,10 +230,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'vor-001',
   'vorgehensmodelle',
+  'v-wasserfall',
   'ordering',
   null,
   'Bringe die Phasen des Wasserfallmodells in die richtige Reihenfolge.',
@@ -232,6 +247,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -243,10 +259,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'vor-002',
   'vorgehensmodelle',
+  null,
   'single',
   null,
   'Welcher Testart steht im V-Modell die Phase "Anforderungsdefinition" gegenüber?',
@@ -264,6 +281,7 @@ Merkhilfe: gleiche Höhe im V = zusammengehöriges Paar. Je höher, desto näher
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -275,10 +293,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'vor-003',
   'vorgehensmodelle',
+  null,
   'matching',
   null,
   'Ordne jede Aussage dem Vorgehensmodell zu, das sie am besten beschreibt.',
@@ -291,6 +310,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -302,10 +322,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'vor-004',
   'vorgehensmodelle',
+  'v-auswahl',
   'multiple',
   'Ein Kunde möchte eine Web-Anwendung, hat aber nur eine grobe Vorstellung vom Funktionsumfang und erwartet, dass sich die Anforderungen während der Entwicklung noch ändern.',
   'Welche Argumente sprechen hier für ein agiles Vorgehen?',
@@ -318,6 +339,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -329,10 +351,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'vor-005',
   'vorgehensmodelle',
+  'v-wasserfall',
   'single',
   null,
   'Warum sind Fehler aus der Analysephase im Wasserfallmodell besonders teuer?',
@@ -345,6 +368,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -356,10 +380,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'scr-001',
   'agil_scrum',
+  's-rollen',
   'single',
   null,
   'Wer entscheidet in Scrum über die Reihenfolge im Product Backlog?',
@@ -372,6 +397,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -383,10 +409,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'scr-002',
   'agil_scrum',
+  's-events',
   'ordering',
   null,
   'Bringe die Scrum-Events in die Reihenfolge, in der sie innerhalb eines Sprints stattfinden.',
@@ -399,6 +426,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -410,10 +438,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'scr-003',
   'agil_scrum',
+  's-events',
   'single',
   null,
   'Wie lang ist die Timebox des Daily Scrum bei einem vierwöchigen Sprint?',
@@ -431,6 +460,7 @@ Merkhilfe 8-4-3 und das Daily als Konstante.',
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -442,10 +472,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'scr-004',
   'agil_scrum',
+  's-artefakte',
   'matching',
   null,
   'Jedes Scrum-Artefakt hat ein "Commitment", das ihm Transparenz gibt. Ordne richtig zu.',
@@ -458,6 +489,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -469,10 +501,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'scr-005',
   'agil_scrum',
+  's-stories',
   'numeric',
   'Ein Scrum-Team hat in den letzten drei Sprints 28, 32 und 30 Story Points abgeschlossen. Im Product Backlog liegen noch 270 Story Points.',
   'Wie viele weitere Sprints braucht das Team voraussichtlich? Runde auf volle Sprints auf.',
@@ -488,6 +521,7 @@ Wäre das Ergebnis krumm (z. B. 9,3), wird aufgerundet - ein halber Sprint exist
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -499,10 +533,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'scr-006',
   'agil_scrum',
+  null,
   'single',
   null,
   'Wozu dient ein WIP-Limit in Kanban?',
@@ -515,6 +550,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -526,10 +562,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'scr-007',
   'agil_scrum',
+  's-stories',
   'multiple',
   null,
   'Welche Aussagen über User Stories und deren Akzeptanzkriterien sind korrekt?',
@@ -542,6 +579,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -553,10 +591,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'np-001',
   'netzplan',
+  'n-vorwaerts',
   'netzplan',
   'Für die Einführung eines Ticketsystems wurden folgende Vorgänge geplant. Alle Zeiten in Arbeitstagen.',
   'Führe die Vorwärtsrechnung durch: trage FAZ und FEZ für jeden Vorgang ein.',
@@ -577,6 +616,7 @@ Der häufigste Fehler: bei E den kleineren Wert nehmen. Bei mehreren Vorgängern
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -588,10 +628,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'np-002',
   'netzplan',
+  'n-puffer',
   'netzplan',
   'Migration eines Warenwirtschaftssystems. Dauer in Arbeitstagen.',
   'Berechne den kompletten Netzplan: FAZ, FEZ, SAZ, SEZ sowie Gesamt- und freien Puffer.',
@@ -615,6 +656,7 @@ Der Lerneffekt steckt in Vorgang C: GP = 1, aber FP = 0. Man kann C zwar um eine
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -626,10 +668,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'np-003',
   'netzplan',
+  'n-puffer',
   'numeric',
   'Gegeben ist folgender Netzplan (Dauer in Tagen):
 A: 2 Tage, kein Vorgänger
@@ -655,6 +698,7 @@ Gegenprobe über die andere Formel: GP = SEZ - FEZ = 9 - 5 = 4. Stimmen beide We
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -666,10 +710,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'np-004',
   'netzplan',
+  'n-puffer',
   'single',
   null,
   'Was sagt der freie Puffer (FP) eines Vorgangs aus?',
@@ -684,6 +729,7 @@ Es gilt immer FP <= GP. Auf dem kritischen Pfad sind beide 0. Ein Vorgang mit GP
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -695,10 +741,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'np-005',
   'netzplan',
+  'n-kritisch',
   'multiple',
   null,
   'Welche Aussagen über den kritischen Pfad sind richtig?',
@@ -711,6 +758,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -722,10 +770,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'np-006',
   'netzplan',
+  'n-kritisch',
   'netzplan',
   'Aufbau eines neuen Serverraums, sieben Vorgänge, Dauer in Arbeitstagen.',
   'Ermittle für jeden Vorgang den Gesamtpuffer und den freien Puffer.',
@@ -746,6 +795,7 @@ Vorgang E hat mit 5 Tagen den größten Spielraum - hier kann man ohne Risiko Pe
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -757,10 +807,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'np-007',
   'netzplan',
+  'n-vorwaerts',
   'numeric',
   'A: 5 Tage, kein Vorgänger
 B: 3 Tage, kein Vorgänger
@@ -782,6 +833,7 @@ Kontrolle über die Vorwärtsrechnung: C startet bei max(5, 3) = 5, endet bei 9.
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -793,10 +845,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'tp-001',
   'terminplanung',
+  't-gantt',
   'single',
   null,
   'Welchen Vorteil hat ein Netzplan gegenüber einem einfachen Balkenplan (Gantt-Diagramm)?',
@@ -809,6 +862,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -820,10 +874,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'tp-002',
   'terminplanung',
+  't-gantt',
   'single',
   null,
   'Was kennzeichnet einen Meilenstein in der Projektplanung?',
@@ -836,6 +891,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -847,10 +903,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'tp-003',
   'terminplanung',
+  't-gantt',
   'multiple',
   null,
   'Ein Meilensteintrendanalyse-Diagramm zeigt für einen Meilenstein eine nach oben steigende Linie. Welche Schlüsse sind zulässig?',
@@ -863,6 +920,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -874,10 +932,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'tp-004',
   'terminplanung',
+  't-ressourcen',
   'numeric',
   'Für ein Arbeitspaket sind 120 Personentage veranschlagt. Es stehen 4 Entwickler zur Verfügung, die jedoch nur zu 75 % für das Projekt verfügbar sind (der Rest geht in Support und Linientätigkeit).',
   'Wie viele Arbeitstage dauert das Arbeitspaket? Runde auf volle Tage auf.',
@@ -894,6 +953,7 @@ Typischer Fehler: 120 / 4 = 30 Tage - die Verfügbarkeit wird vergessen. In Prü
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -905,10 +965,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'lh-001',
   'anforderungen',
+  'af-dokumente',
   'matching',
   null,
   'Ordne jede Aussage dem richtigen Dokument zu. (Nach DIN 69901-5)',
@@ -921,6 +982,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -932,10 +994,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'lh-002',
   'anforderungen',
+  'af-arten',
   'matching',
   null,
   'Handelt es sich um eine funktionale oder eine nicht-funktionale Anforderung?',
@@ -948,6 +1011,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -959,10 +1023,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'lh-003',
   'anforderungen',
+  'af-erhebung',
   'multiple',
   null,
   'Was zeichnet eine gut formulierte Anforderung aus?',
@@ -975,6 +1040,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -986,10 +1052,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'lh-004',
   'leistungsstoerungen',
+  'ls-abnahme',
   'single',
   'Ein Dienstleister liefert eine Software aus. Bei der Abnahme stellt der Kunde zwei kleinere Mängel fest, die den Betrieb nicht verhindern.',
   'Was ist die übliche und rechtlich sinnvolle Vorgehensweise?',
@@ -1002,6 +1069,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1013,10 +1081,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'lh-005',
   'anforderungen',
+  'af-dokumente',
   'ordering',
   null,
   'Bringe die Schritte einer klassischen Fremdvergabe in die richtige Reihenfolge.',
@@ -1029,6 +1098,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1040,10 +1110,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'lh-006',
   'change_management',
+  null,
   'single',
   'Während der Realisierung bittet die Fachabteilung den Entwickler mehrfach direkt um "kleine Zusatzfunktionen". Der Termin ist unverändert.',
   'Wie sollte die Projektleitung darauf reagieren?',
@@ -1056,6 +1127,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1067,10 +1139,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'wi-001',
   'pm_wirtschaftlichkeit',
+  'w-nutzwert',
   'numeric',
   'Nutzwertanalyse für ein Ticketsystem. Bewertungsskala 1 (schlecht) bis 5 (sehr gut).
 
@@ -1096,6 +1169,7 @@ Kontrolle: Die Gewichtungen müssen in Summe 100 % ergeben, sonst ist das Ergebn
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1107,10 +1181,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'wi-002',
   'pm_wirtschaftlichkeit',
+  'w-nutzwert',
   'single',
   null,
   'Wozu dient die Nutzwertanalyse?',
@@ -1124,6 +1199,7 @@ Schwäche, nach der gern gefragt wird: Gewichtung und Bewertung sind subjektiv. 
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1135,10 +1211,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'wi-003',
   'pm_wirtschaftlichkeit',
+  'w-breakeven',
   'numeric',
   'Eine Virtualisierungslösung kostet einmalig 48.000 Euro. Dadurch sinken die laufenden Kosten um 15.000 Euro pro Jahr.',
   'Nach wie vielen Jahren ist die Investition amortisiert? (Eine Nachkommastelle)',
@@ -1154,6 +1231,7 @@ In Worten: nach rund 3 Jahren und 2-3 Monaten hat sich die Anschaffung bezahlt g
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1165,10 +1243,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'wi-004',
   'pm_wirtschaftlichkeit',
+  'w-kalkulation',
   'numeric',
   'Ein Angebot für Netzwerk-Hardware:
 Listeneinkaufspreis: 12.000,00 Euro
@@ -1194,6 +1273,7 @@ Zwei klassische Fehler: (1) Skonto vom Listenpreis statt vom Zieleinkaufspreis r
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1205,10 +1285,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'wi-005',
   'pm_wirtschaftlichkeit',
+  'w-makeorbuy',
   'multiple',
   null,
   'Welche Positionen gehören in eine TCO-Betrachtung (Total Cost of Ownership) für eine Serverbeschaffung?',
@@ -1221,6 +1302,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1232,10 +1314,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'qr-001',
   'risikomanagement',
+  'r-bewertung',
   'numeric',
   'Für das Risiko "Ausfall des Hauptlieferanten" wurde eine Eintrittswahrscheinlichkeit von 20 % und eine Schadenshöhe von 80.000 Euro geschätzt.',
   'Wie hoch ist der Risikowert (Erwartungswert) in Euro?',
@@ -1251,6 +1334,7 @@ Der Risikowert ist die Obergrenze für sinnvolle Gegenmaßnahmen: Eine Maßnahme
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1262,10 +1346,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'qr-002',
   'risikomanagement',
+  'r-strategien',
   'matching',
   null,
   'Ordne jede Maßnahme der passenden Risikostrategie zu.',
@@ -1279,6 +1364,7 @@ Der häufigste Fehler ist die Verwechslung von Vermeiden und Vermindern. Testfra
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1290,10 +1376,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'qr-003',
   'qualitaetsmanagement',
+  'qm-grundlagen',
   'multiple',
   null,
   'Welche der folgenden Maßnahmen sind KONSTRUKTIVE Qualitätssicherungsmaßnahmen?',
@@ -1307,6 +1394,7 @@ Grenzfall, der gern gefragt wird: Ein Linter ist konstruktiv, wenn er beim Schre
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1318,10 +1406,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'qr-004',
   'risikomanagement',
+  'r-strategien',
   'single',
   'In der Risikomatrix liegt Risiko X bei geringer Eintrittswahrscheinlichkeit, aber existenzbedrohender Schadenshöhe (z. B. vollständiger Datenverlust ohne Backup).',
   'Wie ist mit einem solchen Risiko umzugehen?',
@@ -1334,6 +1423,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1345,10 +1435,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'ab-001',
   'projektabschluss',
+  'a-lessons',
   'single',
   null,
   'Was ist das Ziel einer Lessons-Learned-Sitzung?',
@@ -1361,6 +1452,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1372,10 +1464,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'ab-002',
   'projektabschluss',
+  'a-bericht',
   'multiple',
   null,
   'Was gehört in einen Projektabschlussbericht?',
@@ -1388,6 +1481,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1399,10 +1493,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'ab-003',
   'projektabschluss',
+  'a-abnahme',
   'ordering',
   null,
   'Bringe die Schritte des Projektabschlusses in eine sinnvolle Reihenfolge.',
@@ -1415,6 +1510,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1426,10 +1522,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'qm-001',
   'qualitaetsmanagement',
+  'qm-pdca',
   'ordering',
   null,
   'Bringe die Phasen des PDCA-Zyklus in die richtige Reihenfolge.',
@@ -1444,6 +1541,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1455,10 +1553,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'qm-002',
   'qualitaetsmanagement',
+  'qm-grundlagen',
   'single',
   null,
   'Was bedeutet Qualität im Sinne des Qualitätsmanagements?',
@@ -1471,6 +1570,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1482,10 +1582,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'qm-003',
   'qualitaetsmanagement',
+  'qm-grundlagen',
   'matching',
   null,
   'Ordne die Maßnahmen der konstruktiven oder analytischen Qualitätssicherung zu.',
@@ -1499,6 +1600,7 @@ Merksatz: Der Test findet den Fehler, der Standard verhindert ihn. Wirtschaftlic
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1510,10 +1612,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'qm-004',
   'qualitaetsmanagement',
+  'qm-grundlagen',
   'multiple',
   'Ein Team startet ein Projekt und legt seine Qualitätsziele fest.',
   'Welche Festlegungen gehören in die Qualitätsplanung?',
@@ -1527,6 +1630,7 @@ Der häufigste Fehler in der Praxis ist, Qualitätsziele nur qualitativ zu formu
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1538,10 +1642,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'te-001',
   'testen',
+  'ts-stufen',
   'ordering',
   null,
   'Bringe die Teststufen in die Reihenfolge, in der sie üblicherweise durchlaufen werden.',
@@ -1559,6 +1664,7 @@ Systemtest und Abnahmetest werden gern verwechselt: der Systemtest ist Sache des
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1570,10 +1676,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'te-002',
   'testen',
+  'ts-verfahren',
   'matching',
   null,
   'Black-Box- oder White-Box-Test?',
@@ -1588,6 +1695,7 @@ Faustregel für die Prüfung: Steht "kennt den Code nicht" oder "gegen die Anfor
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1599,10 +1707,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'te-003',
   'testen',
+  'ts-protokoll',
   'multiple',
   null,
   'Was gehört in einen vollständigen Testfall?',
@@ -1616,6 +1725,7 @@ Der häufigste Fehler in Prüfungsaufgaben: das Soll-Ergebnis vergessen. Ein Tes
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1627,10 +1737,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'te-004',
   'testen',
+  'ts-verfahren',
   'single',
   'Eine Entwicklerin geht einen fremden Algorithmus Zeile für Zeile auf Papier durch und notiert nach jeder Anweisung die aktuellen Variablenwerte.',
   'Wie heißt dieses Verfahren?',
@@ -1644,6 +1755,7 @@ Praktisch geht man mit einer Wertetabelle vor - eine Spalte je Variable, eine Ze
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1655,10 +1767,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'te-005',
   'testen',
+  'ts-stufen',
   'single',
   'Nach der Korrektur eines Fehlers im Rechnungsmodul funktioniert plötzlich der Export nicht mehr, der vorher lief.',
   'Welche Testart hätte das verhindern können?',
@@ -1672,6 +1785,7 @@ Genau deshalb lohnt sich Testautomatisierung: Manuell wiederholt niemand hundert
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1683,10 +1797,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   've-001',
   'vertraege',
+  'vt-arten',
   'matching',
   null,
   'Ordne die Beschreibung der passenden Vertragsart zu.',
@@ -1703,6 +1818,7 @@ Für die Prüfung wichtig: Die Bezeichnung im Vertrag entscheidet nicht - maßge
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1714,10 +1830,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   've-002',
   'vertraege',
+  'vt-urheber',
   'multiple',
   null,
   'Welche Aussagen zu Softwarelizenzen sind richtig?',
@@ -1735,6 +1852,7 @@ Lizenzmodelle nach Zählweise: pro Gerät, pro benanntem Nutzer, pro gleichzeiti
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1746,10 +1864,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   've-003',
   'vertraege',
+  'vt-urheber',
   'single',
   'Eine Auszubildende entwickelt während ihrer Arbeitszeit ein Skript, das im Betrieb produktiv eingesetzt wird.',
   'Wie ist die urheberrechtliche Lage in Deutschland?',
@@ -1763,6 +1882,7 @@ Was übertragen wird, sind NUTZUNGSRECHTE: einfach (mehrere dürfen nutzen) oder
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1774,10 +1894,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   've-004',
   'vertraege',
+  'vt-arten',
   'multiple',
   null,
   'Was sollte ein IT-Dienstleistungsvertrag mindestens regeln?',
@@ -1791,6 +1912,7 @@ Die Mitwirkungspflichten werden am häufigsten vergessen und führen am häufigs
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1802,10 +1924,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'sl-001',
   'sla_service',
+  'sla-inhalte',
   'multiple',
   null,
   'Was regelt ein Service Level Agreement (SLA)?',
@@ -1823,6 +1946,7 @@ Typische Prüfungsfalle: "Reaktionszeit 1 Stunde" bedeutet NICHT, dass das Probl
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1834,10 +1958,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'sl-002',
   'sla_service',
+  'sla-inhalte',
   'numeric',
   'Ein SLA sichert eine Verfügbarkeit von 99,5 % zu. Die vereinbarte Servicezeit beträgt 24 Stunden an 30 Tagen im Monat.',
   'Wie viele Minuten Ausfall sind in diesem Monat höchstens zulässig?',
@@ -1859,6 +1984,7 @@ Jede Neun kostet ungefähr den Faktor 10 an Aufwand.',
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1870,10 +1996,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'sl-003',
   'sla_service',
+  'sla-support',
   'single',
   'Ein Anwender meldet, dass sein Drucker nicht mehr reagiert. Der Mitarbeiter am Telefon nimmt die Störung auf, prüft die Standardlösungen und kann sie nicht beheben.',
   'Was passiert als Nächstes im mehrstufigen Support?',
@@ -1890,6 +2017,7 @@ Wichtig für die Prüfung: Das Ticket bleibt beim Eskalieren bestehen und wander
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1901,10 +2029,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'ls-001',
   'leistungsstoerungen',
+  'ls-verzug',
   'single',
   'Ein Lieferant hat eine Serverlieferung für den 1. Oktober fest zugesagt. Am 10. Oktober ist nichts geliefert.',
   'Welche Voraussetzung für Lieferverzug ist hier erfüllt?',
@@ -1919,6 +2048,7 @@ Beim ZAHLUNGSverzug gilt zusätzlich: Spätestens 30 Tage nach Zugang einer Rech
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1930,10 +2060,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'ls-002',
   'leistungsstoerungen',
+  'ls-maengel',
   'single',
   'Eine Agentur hat für einen Kunden ein Buchungsmodul programmiert (Werkvertrag). Nach der Abnahme zeigt sich ein Fehler: Stornierungen werden nicht gespeichert.',
   'Was muss der Kunde grundsätzlich tun, bevor er den Fehler von einer anderen Firma beheben lässt, die Vergütung mindert oder zurücktritt?',
@@ -1946,6 +2077,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1957,10 +2089,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'ls-003',
   'leistungsstoerungen',
+  'ls-abnahme',
   'multiple',
   null,
   'Was gehört in ein Abnahmeprotokoll?',
@@ -1974,6 +2107,7 @@ Deshalb ist das Abnahmeprotokoll kein Formalkram, sondern der wichtigste Zettel 
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -1985,10 +2119,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'cm-001',
   'change_management',
+  'cm-lewin',
   'ordering',
   null,
   'Bringe die drei Phasen des Lewin-Modells in die richtige Reihenfolge.',
@@ -2004,6 +2139,7 @@ In der Change-Phase sinkt die Leistung typischerweise vorübergehend ab - das is
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2015,10 +2151,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'cm-002',
   'change_management',
+  'cm-widerstand',
   'multiple',
   'Bei der Einführung eines neuen Ticketsystems weigern sich mehrere erfahrene Mitarbeitende, das System zu nutzen.',
   'Welche Maßnahmen sind geeignet, den Widerstand abzubauen?',
@@ -2036,6 +2173,7 @@ Anordnung und Sanktion sind das letzte Mittel, nicht das erste.',
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2047,10 +2185,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'cm-003',
   'change_management',
+  'cm-kaizen',
   'single',
   null,
   'Was kennzeichnet Kaizen bzw. den kontinuierlichen Verbesserungsprozess?',
@@ -2065,6 +2204,7 @@ Abgrenzung für die Prüfung: Kaizen = viele kleine Schritte, evolutionär. Reen
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2076,10 +2216,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-pb-1',
   'projektorganisation',
+  'p-begriff',
   'single',
   null,
   'Welches Vorhaben ist ein Projekt?',
@@ -2092,6 +2233,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2103,10 +2245,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-pb-2',
   'projektorganisation',
+  'p-begriff',
   'multiple',
   null,
   'Welche Aussagen über Projekte sind richtig?',
@@ -2119,6 +2262,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2130,10 +2274,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-pz-1',
   'projektorganisation',
+  'p-ziele',
   'single',
   null,
   'Welches Ziel ist SMART formuliert?',
@@ -2146,6 +2291,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2157,10 +2303,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-po-1',
   'projektorganisation',
+  'p-organisation',
   'single',
   'Ein Unternehmen führt ein neues ERP-System ein. Das Projekt dauert 18 Monate, hat hohe strategische Bedeutung, und das Team arbeitet in Vollzeit daran.',
   'Welche Form der Projektorganisation passt am besten?',
@@ -2173,6 +2320,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2184,10 +2332,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-po-2',
   'projektorganisation',
+  'p-organisation',
   'multiple',
   null,
   'Welche Aussagen treffen auf die Matrix-Projektorganisation zu?',
@@ -2200,6 +2349,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2211,10 +2361,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-pr-1',
   'projektorganisation',
+  'p-rollen',
   'matching',
   null,
   'Ordne jede Aufgabe der zuständigen Rolle zu.',
@@ -2227,6 +2378,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2238,10 +2390,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-pr-2',
   'projektorganisation',
+  'p-rollen',
   'single',
   'Mitten im Projekt stellt die Projektleiterin fest, dass das Budget um 20 % überschritten wird, wenn der vereinbarte Umfang geliefert werden soll.',
   'Wie geht sie richtig vor?',
@@ -2254,6 +2407,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2265,10 +2419,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-pr-3',
   'projektorganisation',
+  'p-rollen',
   'multiple',
   null,
   'Was gehört typischerweise in ein Kick-off-Meeting?',
@@ -2281,6 +2436,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2292,10 +2448,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-ps-1',
   'projektorganisation',
+  'p-stakeholder',
   'matching',
   null,
   'Ordne jeder Gruppe die passende Strategie der Stakeholder-Matrix zu.',
@@ -2308,6 +2465,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2319,10 +2477,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-ps-2',
   'projektorganisation',
+  'p-stakeholder',
   'ordering',
   null,
   'Bringe die Schritte der Stakeholderanalyse in die richtige Reihenfolge.',
@@ -2335,6 +2494,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2346,10 +2506,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-vp-1',
   'vorgehensmodelle',
+  'v-phasen',
   'ordering',
   null,
   'Bringe die Projektphasen nach DIN 69901 in die richtige Reihenfolge.',
@@ -2362,6 +2523,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2373,10 +2535,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-vp-2',
   'vorgehensmodelle',
+  'v-phasen',
   'matching',
   null,
   'In welcher Phase entsteht das jeweilige Ergebnis?',
@@ -2389,6 +2552,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2400,10 +2564,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-vp-3',
   'vorgehensmodelle',
+  'v-phasen',
   'single',
   null,
   'In welcher Phase wird der Projektstrukturplan erstellt?',
@@ -2416,6 +2581,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2427,10 +2593,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-vw-1',
   'vorgehensmodelle',
+  'v-wasserfall',
   'multiple',
   null,
   'Welche Aussagen treffen auf das Wasserfallmodell zu?',
@@ -2443,6 +2610,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2454,10 +2622,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-va-1',
   'vorgehensmodelle',
+  'v-auswahl',
   'single',
   'Ein Start-up entwickelt eine App. Welche Funktionen die Nutzer wirklich brauchen, soll sich erst durch Rückmeldungen zu frühen Versionen zeigen.',
   'Welches Vorgehen passt?',
@@ -2470,6 +2639,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2481,10 +2651,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-va-2',
   'vorgehensmodelle',
+  'v-auswahl',
   'single',
   'Für eine Behörde soll ein Formular nach genau festgelegten gesetzlichen Vorgaben digitalisiert werden. Anforderungen, Festpreis und Termin stehen vertraglich fest.',
   'Welches Vorgehensmodell passt?',
@@ -2497,6 +2668,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2508,10 +2680,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-sm-1',
   'agil_scrum',
+  's-manifest',
   'single',
   null,
   'Welcher Satz steht so im agilen Manifest?',
@@ -2524,6 +2697,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2535,10 +2709,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-sm-2',
   'agil_scrum',
+  's-manifest',
   'multiple',
   null,
   'Welche Aussagen entsprechen den Prinzipien des agilen Manifests?',
@@ -2551,6 +2726,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2562,10 +2738,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-sm-3',
   'agil_scrum',
+  's-manifest',
   'single',
   'Ein Kollege sagt: „Agil heißt, wir dokumentieren nichts mehr.“',
   'Wie ist die Aussage einzuordnen?',
@@ -2578,6 +2755,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2589,10 +2767,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-sr-1',
   'agil_scrum',
+  's-rollen',
   'matching',
   null,
   'Wer ist in Scrum dafür verantwortlich?',
@@ -2605,6 +2784,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2616,10 +2796,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-sr-2',
   'agil_scrum',
+  's-rollen',
   'single',
   null,
   'Wie groß ist ein Scrum Team laut Scrum Guide in der Regel?',
@@ -2632,6 +2813,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2643,10 +2825,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-sa-1',
   'agil_scrum',
+  's-artefakte',
   'single',
   null,
   'Welches Commitment gehört zum Sprint Backlog?',
@@ -2659,6 +2842,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2670,10 +2854,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-sa-2',
   'agil_scrum',
+  's-artefakte',
   'multiple',
   null,
   'Welche Aussagen zur Definition of Done sind richtig?',
@@ -2686,6 +2871,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2697,10 +2883,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-se-1',
   'agil_scrum',
+  's-events',
   'matching',
   null,
   'Ordne jede Beschreibung dem passenden Event zu.',
@@ -2713,6 +2900,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2724,10 +2912,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-st-1',
   'agil_scrum',
+  's-stories',
   'single',
   null,
   'Welche User Story ist korrekt formuliert?',
@@ -2740,6 +2929,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2751,10 +2941,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-ng-1',
   'netzplan',
+  'n-grundlagen',
   'single',
   null,
   'Welche Anordnungsbeziehung ist in Netzplänen der Normalfall?',
@@ -2767,6 +2958,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2778,10 +2970,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-ng-2',
   'netzplan',
+  'n-grundlagen',
   'multiple',
   null,
   'Welche Angaben stehen in einem vollständig berechneten Vorgangsknoten?',
@@ -2794,6 +2987,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2805,10 +2999,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-ng-3',
   'netzplan',
+  'n-grundlagen',
   'ordering',
   null,
   'Bringe die Arbeitsschritte der Netzplantechnik in die richtige Reihenfolge.',
@@ -2821,6 +3016,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2832,10 +3028,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-nv-1',
   'netzplan',
+  'n-vorwaerts',
   'numeric',
   'Vorgänge (Dauer in Tagen):
 A: 5 Tage, Startvorgang
@@ -2855,6 +3052,7 @@ Wer 10 einträgt, lässt E starten, obwohl C noch läuft.',
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2866,10 +3064,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-nr-1',
   'netzplan',
+  'n-rueckwaerts',
   'numeric',
   'Vorgänge (Dauer in Tagen):
 A: 5 Tage, Startvorgang
@@ -2889,6 +3088,7 @@ D: SEZ = SAZ von E = 11, SAZ = 11 - 2 = 9.',
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2900,10 +3100,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-nr-2',
   'netzplan',
+  'n-rueckwaerts',
   'numeric',
   'Vorgänge (Dauer in Tagen):
 A: 5 Tage, Startvorgang
@@ -2923,6 +3124,7 @@ Das Minimum, weil C als eiligster Nachfolger pünktlich starten muss.',
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2934,10 +3136,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-nr-3',
   'netzplan',
+  'n-rueckwaerts',
   'single',
   null,
   'Womit beginnt die Rückwärtsrechnung beim letzten Vorgang, wenn kein Endtermin vorgegeben ist?',
@@ -2950,6 +3153,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2961,10 +3165,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-nk-1',
   'netzplan',
+  'n-kritisch',
   'single',
   'Vorgänge (Dauer in Tagen):
 A: 5 Tage, Startvorgang
@@ -2982,6 +3187,7 @@ E: 4 Tage, nach C und D',
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -2993,10 +3199,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-tp-1',
   'terminplanung',
+  't-psp',
   'single',
   null,
   'Was enthält ein Projektstrukturplan NICHT?',
@@ -3009,6 +3216,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3020,10 +3228,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-tp-2',
   'terminplanung',
+  't-psp',
   'matching',
   null,
   'Nach welchem Prinzip ist der jeweilige PSP gegliedert?',
@@ -3036,6 +3245,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3047,10 +3257,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-tp-3',
   'terminplanung',
+  't-psp',
   'multiple',
   null,
   'Welche Eigenschaften hat ein gutes Arbeitspaket?',
@@ -3063,6 +3274,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3074,10 +3286,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-tr-1',
   'terminplanung',
+  't-ressourcen',
   'numeric',
   null,
   'Ein Arbeitspaket hat einen Aufwand von 24 Personentagen. Zwei Mitarbeiter arbeiten zu je 60 % daran. Wie viele Arbeitstage dauert es?',
@@ -3090,6 +3303,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3101,10 +3315,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-tr-2',
   'terminplanung',
+  't-ressourcen',
   'single',
   null,
   'Was beschreibt der Aufwand eines Arbeitspakets?',
@@ -3117,6 +3332,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3128,10 +3344,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-rp-1',
   'risikomanagement',
+  'r-prozess',
   'ordering',
   null,
   'Bringe die Schritte des Risikomanagements in die richtige Reihenfolge.',
@@ -3144,6 +3361,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3155,10 +3373,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-rp-2',
   'risikomanagement',
+  'r-prozess',
   'single',
   null,
   'Welche Situation beschreibt ein Risiko und kein Problem?',
@@ -3171,6 +3390,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3182,10 +3402,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-rp-3',
   'risikomanagement',
+  'r-prozess',
   'multiple',
   null,
   'Was gehört in ein Risikoregister?',
@@ -3198,6 +3419,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3209,10 +3431,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-rb-1',
   'risikomanagement',
+  'r-bewertung',
   'numeric',
   null,
   'Ein Risiko tritt mit 25 % Wahrscheinlichkeit ein und verursacht dann 36.000 € Schaden. Wie hoch ist der Risikowert?',
@@ -3225,6 +3448,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3236,10 +3460,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-rb-2',
   'risikomanagement',
+  'r-bewertung',
   'single',
   'R1: 10 % Wahrscheinlichkeit, 80.000 € Schaden
 R2: 40 % Wahrscheinlichkeit, 15.000 € Schaden
@@ -3254,6 +3479,7 @@ R3: 60 % Wahrscheinlichkeit, 5.000 € Schaden',
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3265,10 +3491,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-rs-1',
   'risikomanagement',
+  'r-strategien',
   'single',
   'Das Team verzichtet auf ein neues, noch unerprobtes Framework und nutzt stattdessen das bewährte.',
   'Welche Risikostrategie wird angewendet?',
@@ -3281,6 +3508,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3292,10 +3520,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-wk-1',
   'pm_wirtschaftlichkeit',
+  'w-kalkulation',
   'numeric',
   null,
   'Ein Mitarbeiter kostet das Unternehmen 54.000 € pro Jahr und hat 1.350 produktive Stunden. Wie hoch ist sein Stundensatz?',
@@ -3308,6 +3537,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3319,10 +3549,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-wk-2',
   'pm_wirtschaftlichkeit',
+  'w-kalkulation',
   'numeric',
   null,
   'Listenpreis 2.500 €, 8 % Rabatt, 3 % Skonto, 45 € Bezugskosten. Wie hoch ist der Bezugspreis? (zwei Nachkommastellen)',
@@ -3338,6 +3569,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3349,10 +3581,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-wn-1',
   'pm_wirtschaftlichkeit',
+  'w-nutzwert',
   'multiple',
   null,
   'Welche Fehler machen eine Nutzwertanalyse ungültig?',
@@ -3365,6 +3598,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3376,10 +3610,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-wm-1',
   'pm_wirtschaftlichkeit',
+  'w-makeorbuy',
   'multiple',
   null,
   'Welche Argumente sprechen für eine Eigenentwicklung (Make)?',
@@ -3392,6 +3627,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3403,10 +3639,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-wm-2',
   'pm_wirtschaftlichkeit',
+  'w-makeorbuy',
   'numeric',
   null,
   'Eine Softwarelösung kostet 12.000 € in der Anschaffung. Pro Jahr fallen 3.000 € für Wartung und Lizenzen an. Wie hoch sind die Gesamtkosten (TCO) bei vier Jahren Nutzung?',
@@ -3419,6 +3656,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3430,10 +3668,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-wb-1',
   'pm_wirtschaftlichkeit',
+  'w-breakeven',
   'numeric',
   null,
   'Ein Produkt kostet 120 €, die variablen Stückkosten betragen 70 €, die Fixkosten 25.000 €. Ab welcher Menge ist die Gewinnschwelle erreicht?',
@@ -3446,6 +3685,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3457,10 +3697,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-wb-2',
   'pm_wirtschaftlichkeit',
+  'w-breakeven',
   'numeric',
   null,
   'Eine Investition kostet 30.000 €. Sie spart jährlich 9.000 €, verursacht aber 1.500 € laufende Kosten pro Jahr. Nach wie vielen Jahren ist sie amortisiert? (eine Nachkommastelle)',
@@ -3473,6 +3714,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3484,10 +3726,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-aa-1',
   'projektabschluss',
+  'a-abnahme',
   'single',
   null,
   'Wogegen prüft der Auftraggeber das Ergebnis bei der Abnahme?',
@@ -3500,6 +3743,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3511,10 +3755,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-aa-2',
   'projektabschluss',
+  'a-abnahme',
   'matching',
   null,
   'Zu welcher Ebene des Projektabschlusses gehört die Tätigkeit?',
@@ -3527,6 +3772,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3538,10 +3784,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-ab-1',
   'projektabschluss',
+  'a-bericht',
   'numeric',
   null,
   'Geplant waren Kosten von 60.000 €, tatsächlich angefallen sind 69.000 €. Wie groß ist die Abweichung in Prozent?',
@@ -3554,6 +3801,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3565,10 +3813,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-ab-2',
   'projektabschluss',
+  'a-bericht',
   'single',
   null,
   'Was macht einen Soll-Ist-Vergleich im Abschlussbericht wirklich wertvoll?',
@@ -3581,6 +3830,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3592,10 +3842,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-al-1',
   'projektabschluss',
+  'a-lessons',
   'single',
   'Zu Beginn des Lessons-Learned-Workshops sagt die Teamleiterin: „Heute klären wir, wer an der Verspätung schuld war.“',
   'Was ist daran problematisch?',
@@ -3608,6 +3859,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3619,10 +3871,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a1-al-2',
   'projektabschluss',
+  'a-lessons',
   'ordering',
   null,
   'Bringe die Schritte eines Lessons-Learned-Workshops in die richtige Reihenfolge.',
@@ -3635,6 +3888,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3646,10 +3900,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-km-1',
   'kommunikation',
+  'k-modelle',
   'matching',
   'Ein Kunde sagt am Telefon: „Das Update hat schon wieder alles kaputt gemacht.“',
   'Ordne jede Deutung der passenden Seite der Nachricht zu.',
@@ -3662,6 +3917,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3673,10 +3929,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-km-2',
   'kommunikation',
+  'k-modelle',
   'single',
   null,
   'Was besagt das Axiom „Man kann nicht nicht kommunizieren“?',
@@ -3689,6 +3946,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3700,10 +3958,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-km-3',
   'kommunikation',
+  'k-modelle',
   'single',
   'Ein Administrator erklärt einer Sachbearbeiterin: „Ihr DNS-Resolver liefert NXDOMAIN.“ Sie versteht nichts.',
   'Welche Ursache beschreibt das Sender-Empfänger-Modell?',
@@ -3716,6 +3975,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3727,10 +3987,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-kg-1',
   'kommunikation',
+  'k-gespraech',
   'matching',
   null,
   'Um welche Frageart handelt es sich?',
@@ -3743,6 +4004,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3754,10 +4016,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-kg-2',
   'kommunikation',
+  'k-gespraech',
   'single',
   'Eine Kundin schildert aufgebracht ein Problem mit ihrer Buchhaltungssoftware.',
   'Welche Reaktion entspricht dem aktiven Zuhören?',
@@ -3770,6 +4033,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3781,10 +4045,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-kg-3',
   'kommunikation',
+  'k-gespraech',
   'ordering',
   null,
   'Bringe die Phasen eines Beratungsgesprächs in eine sinnvolle Reihenfolge.',
@@ -3797,6 +4062,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3808,10 +4074,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-kk-1',
   'kommunikation',
+  'k-kunde',
   'ordering',
   null,
   'Bringe die Bearbeitungsschritte eines Tickets in die richtige Reihenfolge.',
@@ -3824,6 +4091,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3835,10 +4103,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-kk-2',
   'kommunikation',
+  'k-kunde',
   'single',
   null,
   'Welches Ticket hat die höchste Priorität?',
@@ -3851,6 +4120,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3862,10 +4132,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-kk-3',
   'kommunikation',
+  'k-kunde',
   'single',
   'Die Geschäftsführerin eines Kunden fragt, warum eine Firewall angeschafft werden soll.',
   'Welche Antwort ist adressatengerecht?',
@@ -3878,6 +4149,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3889,10 +4161,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-tt-1',
   'teamarbeit',
+  'te-phasen',
   'ordering',
   null,
   'Bringe die Teamphasen nach Tuckman in die richtige Reihenfolge.',
@@ -3905,6 +4178,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3916,10 +4190,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-tt-2',
   'teamarbeit',
+  'te-phasen',
   'single',
   'Im neuen Projektteam gibt es ständig Diskussionen darüber, wer welche Aufgaben übernimmt und wessen Vorschlag umgesetzt wird.',
   'In welcher Phase befindet sich das Team?',
@@ -3932,6 +4207,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3943,10 +4219,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-tt-3',
   'teamarbeit',
+  'te-phasen',
   'single',
   null,
   'Was hilft einem Team in der Norming-Phase am meisten?',
@@ -3959,6 +4236,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3970,10 +4248,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-tf-1',
   'teamarbeit',
+  'te-feedback',
   'single',
   null,
   'Welche Aussage entspricht den Feedbackregeln?',
@@ -3986,6 +4265,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -3997,10 +4277,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-tf-2',
   'teamarbeit',
+  'te-feedback',
   'multiple',
   null,
   'Wie verhält man sich richtig, wenn man Feedback erhält?',
@@ -4013,6 +4294,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4024,10 +4306,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-tf-3',
   'teamarbeit',
+  'te-feedback',
   'single',
   null,
   'Welchen Bereich des Johari-Fensters verkleinert Feedback?',
@@ -4040,6 +4323,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4051,10 +4335,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-tk-1',
   'teamarbeit',
+  'te-konflikte',
   'matching',
   null,
   'Um welche Konfliktart handelt es sich?',
@@ -4067,6 +4352,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4078,10 +4364,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-tk-2',
   'teamarbeit',
+  'te-konflikte',
   'single',
   null,
   'Welche Konfliktlösung ist am nachhaltigsten?',
@@ -4094,6 +4381,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4105,10 +4393,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-tk-3',
   'teamarbeit',
+  'te-konflikte',
   'single',
   null,
   'Was regelt das Allgemeine Gleichbehandlungsgesetz (AGG)?',
@@ -4121,6 +4410,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4132,10 +4422,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-vh-1',
   'verhandlung',
+  've-harvard',
   'multiple',
   null,
   'Welche Grundsätze gehören zum Harvard-Konzept?',
@@ -4148,6 +4439,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4159,10 +4451,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-vh-2',
   'verhandlung',
+  've-harvard',
   'single',
   'Ein Kunde fordert: „Die Software muss bis Freitag komplett fertig sein.“ Auf Nachfrage erfährt der Projektleiter, dass am Montag eine Messe beginnt, auf der die Software gezeigt werden soll.',
   'Wie geht man nach dem Harvard-Konzept vor?',
@@ -4175,6 +4468,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4186,10 +4480,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-vh-3',
   'verhandlung',
+  've-harvard',
   'single',
   null,
   'Wozu dient die BATNA in einer Verhandlung?',
@@ -4202,6 +4497,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4213,10 +4509,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-ve-1',
   'verhandlung',
+  've-einwaende',
   'matching',
   null,
   'Welche Methode der Einwandbehandlung wird angewendet?',
@@ -4229,6 +4526,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4240,10 +4538,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-ve-2',
   'verhandlung',
+  've-einwaende',
   'single',
   null,
   'Welche Aussage folgt der Nutzenargumentation?',
@@ -4256,6 +4555,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4267,10 +4567,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-ve-3',
   'verhandlung',
+  've-einwaende',
   'single',
   'Am Ende einer Präsentation sagt der Kunde: „Ich muss noch mal drüber schlafen.“ Vorher war er begeistert.',
   'Wie reagiert man am besten?',
@@ -4283,6 +4584,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4294,10 +4596,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-pp-1',
   'praesentation',
+  'pr-praesentation',
   'matching',
   null,
   'Welche Diagrammart eignet sich am besten?',
@@ -4310,6 +4613,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4321,10 +4625,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-pp-2',
   'praesentation',
+  'pr-praesentation',
   'multiple',
   null,
   'Welche Regeln gelten für gute Präsentationsfolien?',
@@ -4337,6 +4642,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4348,10 +4654,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-pp-3',
   'praesentation',
+  'pr-praesentation',
   'single',
   null,
   'Womit beginnt die Vorbereitung einer Präsentation?',
@@ -4364,6 +4671,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4375,10 +4683,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-pq-1',
   'praesentation',
+  'pr-quellen',
   'matching',
   null,
   'Primär- oder Sekundärquelle?',
@@ -4391,6 +4700,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4402,10 +4712,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-pq-2',
   'praesentation',
+  'pr-quellen',
   'multiple',
   null,
   'Nach welchen Kriterien bewertet man eine Informationsquelle?',
@@ -4418,6 +4729,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4429,10 +4741,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-pq-3',
   'praesentation',
+  'pr-quellen',
   'single',
   null,
   'Wie geht man mit einer Antwort eines KI-Chatbots für eine Präsentation um?',
@@ -4445,6 +4758,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4456,10 +4770,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-pa-1',
   'praesentation',
+  'pr-angebot',
   'single',
   null,
   'Welche Aussage über Anfrage und Angebot ist richtig?',
@@ -4472,6 +4787,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4483,10 +4799,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-pa-2',
   'praesentation',
+  'pr-angebot',
   'single',
   'Ein Händler schickt per E-Mail ein Angebot ohne Frist. Der Kunde antwortet erst nach sechs Wochen mit einer Bestellung.',
   'Ist der Händler noch gebunden?',
@@ -4499,6 +4816,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4510,10 +4828,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-pa-3',
   'praesentation',
+  'pr-angebot',
   'multiple',
   null,
   'Was gehört in ein vollständiges Angebot?',
@@ -4526,6 +4845,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4537,10 +4857,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-mm-1',
   'markt_marketing',
+  'm-markt',
   'matching',
   null,
   'Welche Marktform liegt vor? (jeweils viele Nachfrager)',
@@ -4553,6 +4874,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4564,10 +4886,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-mm-2',
   'markt_marketing',
+  'm-markt',
   'single',
   null,
   'In welcher Marktform hat der Anbieter die größte Macht über den Preis?',
@@ -4580,6 +4903,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4591,10 +4915,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-mm-3',
   'markt_marketing',
+  'm-markt',
   'single',
   null,
   'Eine Behörde ist der einzige Abnehmer eines speziellen Verwaltungssystems, das viele Firmen entwickeln könnten. Welche Marktform liegt vor?',
@@ -4607,6 +4932,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4618,10 +4944,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-mb-1',
   'markt_marketing',
+  'm-bedarf',
   'ordering',
   null,
   'Bringe die Begriffe in die richtige Reihenfolge - vom ersten Gefühl bis zum Kauf.',
@@ -4634,6 +4961,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4645,10 +4973,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-mb-2',
   'markt_marketing',
+  'm-bedarf',
   'single',
   null,
   'Welche Stufe der Maslow-Pyramide spricht ein sicherer, unbefristeter Arbeitsvertrag an?',
@@ -4661,6 +4990,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4672,10 +5002,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-mb-3',
   'markt_marketing',
+  'm-bedarf',
   'single',
   'Ein Kleinbetrieb mit drei Arbeitsplätzen wünscht sich einen großen Rack-Server, „weil das professionell ist“. Gespeichert werden sollen nur Office-Dateien.',
   'Wie berät man richtig?',
@@ -4688,6 +5019,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4699,10 +5031,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-mk-1',
   'markt_marketing',
+  'm-marketing',
   'matching',
   null,
   'Zu welchem Instrument des Marketing-Mix gehört die Maßnahme?',
@@ -4715,6 +5048,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4726,10 +5060,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-mk-2',
   'markt_marketing',
+  'm-marketing',
   'ordering',
   null,
   'Bringe die Stufen der AIDA-Formel in die richtige Reihenfolge.',
@@ -4742,6 +5077,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4753,10 +5089,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-mk-3',
   'markt_marketing',
+  'm-marketing',
   'single',
   null,
   'Welches Element einer Werbeanzeige gehört zur Stufe „Action“?',
@@ -4769,6 +5106,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4780,10 +5118,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-ma-1',
   'markt_marketing',
+  'm-abc',
   'numeric',
   'Jahresumsatz je Produkt (gesamt 100.000 €):
 P1: 50.000 €
@@ -4801,6 +5140,7 @@ P5: 5.000 €',
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4812,10 +5152,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-ma-2',
   'markt_marketing',
+  'm-abc',
   'ordering',
   null,
   'Bringe die Schritte der ABC-Analyse in die richtige Reihenfolge.',
@@ -4828,6 +5169,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4839,10 +5181,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-ma-3',
   'markt_marketing',
+  'm-abc',
   'single',
   null,
   'Was ist typisch für C-Kunden?',
@@ -4855,6 +5198,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4866,10 +5210,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-mr-1',
   'markt_marketing',
+  'm-rechtsformen',
   'matching',
   null,
   'Ordne die Aussage der passenden Rechtsform zu.',
@@ -4882,6 +5227,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4893,10 +5239,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-mr-2',
   'markt_marketing',
+  'm-rechtsformen',
   'single',
   'Zwei Auszubildende wollen nebenbei einen kleinen IT-Service gründen. Sie haben kaum Startkapital, wollen aber nicht mit ihrem Privatvermögen haften.',
   'Welche Rechtsform passt?',
@@ -4909,6 +5256,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4920,10 +5268,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a2-mr-3',
   'markt_marketing',
+  'm-rechtsformen',
   'single',
   null,
   'Womit haften die Gesellschafter einer GmbH für Schulden der Gesellschaft?',
@@ -4936,6 +5285,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4947,10 +5297,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-hk-1',
   'hardware',
+  'h-komponenten',
   'matching',
   null,
   'Ordne jedes Gerät dem passenden Teil des EVA-Prinzips zu.',
@@ -4963,6 +5314,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -4974,10 +5326,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-hk-2',
   'hardware',
+  'h-komponenten',
   'single',
   'Ein Büro-PC wird zäh, sobald mehrere Programme offen sind. Die Festplattenaktivität ist dabei dauerhaft hoch.',
   'Welche Aufrüstung hilft am wahrscheinlichsten?',
@@ -4990,6 +5343,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5001,10 +5355,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-hk-3',
   'hardware',
+  'h-komponenten',
   'multiple',
   null,
   'Welche Aussagen zu UEFI sind richtig?',
@@ -5017,6 +5372,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5028,10 +5384,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-hs-1',
   'hardware',
+  'h-speicher',
   'numeric',
   null,
   'Eine SSD hat laut Hersteller 500 GB. Wie viele GiB zeigt das Betriebssystem an? (auf eine Nachkommastelle)',
@@ -5044,6 +5401,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5055,10 +5413,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-hs-2',
   'hardware',
+  'h-speicher',
   'single',
   'Für ein Außendienst-Notebook soll ein neuer Datenträger gewählt werden.',
   'Welcher Datenträger passt am besten?',
@@ -5071,6 +5430,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5082,10 +5442,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-hs-3',
   'hardware',
+  'h-speicher',
   'multiple',
   null,
   'Welche Aussagen zum Vergleich HDD und SSD sind richtig?',
@@ -5098,6 +5459,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5109,10 +5471,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-hi-1',
   'hardware',
+  'h-schnittstellen',
   'single',
   null,
   'Welche Aussage zu USB-C ist richtig?',
@@ -5125,6 +5488,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5136,10 +5500,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-hi-2',
   'hardware',
+  'h-schnittstellen',
   'matching',
   null,
   'Ordne die maximale Datenrate zu.',
@@ -5152,6 +5517,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5163,10 +5529,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-hi-3',
   'hardware',
+  'h-schnittstellen',
   'single',
   'Eine Kanzlei druckt täglich mehrere hundert Seiten Text in Schwarzweiß.',
   'Welches Gerät ist am wirtschaftlichsten?',
@@ -5179,6 +5546,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5190,10 +5558,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-hu-1',
   'hardware',
+  'h-usv',
   'numeric',
   null,
   'Die angeschlossenen Geräte benötigen zusammen 540 W. Geplant werden 20 % Reserve, der Leistungsfaktor der USV beträgt 0,9. Wie viel VA muss die USV mindestens haben?',
@@ -5206,6 +5575,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5217,10 +5587,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-hu-2',
   'hardware',
+  'h-usv',
   'single',
   null,
   'Welcher USV-Typ bietet den besten Schutz ohne jede Umschaltzeit?',
@@ -5233,6 +5604,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5244,10 +5616,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-hu-3',
   'hardware',
+  'h-usv',
   'single',
   null,
   'Wie lang muss die Überbrückungszeit einer USV für einen Server mindestens sein?',
@@ -5260,6 +5633,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5271,10 +5645,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-ha-1',
   'hardware',
+  'h-arbeitsplatz',
   'numeric',
   null,
   'Ein Monitor verbraucht 25 W und läuft 10 Stunden am Tag an 250 Tagen im Jahr. Strom kostet 0,32 € pro kWh. Wie hoch sind die jährlichen Stromkosten?',
@@ -5287,6 +5662,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5298,10 +5674,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-ha-2',
   'hardware',
+  'h-arbeitsplatz',
   'multiple',
   null,
   'Welche Maßnahmen gehören zu Green IT?',
@@ -5314,6 +5691,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5325,10 +5703,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-ha-3',
   'hardware',
+  'h-arbeitsplatz',
   'single',
   null,
   'Wie wird ein Bildschirm ergonomisch aufgestellt?',
@@ -5341,6 +5720,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5352,10 +5732,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-ba-1',
   'betriebssysteme',
+  'b-aufgaben',
   'matching',
   null,
   'Welche Aufgabe des Betriebssystems ist gemeint?',
@@ -5368,6 +5749,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5379,10 +5761,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-ba-2',
   'betriebssysteme',
+  'b-aufgaben',
   'single',
   null,
   'Was unterscheidet einen Thread von einem Prozess?',
@@ -5395,6 +5778,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5406,10 +5790,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-ba-3',
   'betriebssysteme',
+  'b-aufgaben',
   'single',
   null,
   'Welche Aufgabe hat ein Gerätetreiber?',
@@ -5422,6 +5807,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5433,10 +5819,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-bd-1',
   'betriebssysteme',
+  'b-dateisysteme',
   'single',
   'Ein 6 GB großes Video soll auf einen USB-Stick kopiert werden, der an Windows- und Mac-Rechnern funktionieren muss. Der Stick ist mit FAT32 formatiert, der Kopiervorgang bricht ab.',
   'Welches Dateisystem sollte gewählt werden?',
@@ -5449,6 +5836,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5460,10 +5848,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-bd-2',
   'betriebssysteme',
+  'b-dateisysteme',
   'matching',
   null,
   'Welches Dateisystem passt zum Einsatz?',
@@ -5476,6 +5865,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5487,10 +5877,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-bd-3',
   'betriebssysteme',
+  'b-dateisysteme',
   'single',
   null,
   'Welchen Vorteil bietet ein Journaling-Dateisystem?',
@@ -5503,6 +5894,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5514,10 +5906,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-br-1',
   'betriebssysteme',
+  'b-rechte',
   'single',
   null,
   'Welche Rechte ergibt chmod 754 für eine Datei?',
@@ -5530,6 +5923,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5541,10 +5935,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-br-2',
   'betriebssysteme',
+  'b-rechte',
   'single',
   'Eine neue Mitarbeiterin in der Buchhaltung soll auf den Ordner „Rechnungen“ zugreifen können.',
   'Wie vergibt man die Rechte am besten?',
@@ -5557,6 +5952,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5568,10 +5964,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-br-3',
   'betriebssysteme',
+  'b-rechte',
   'single',
   'Auf einen Ordner gilt die Freigabeberechtigung „Lesen“ und die NTFS-Berechtigung „Ändern“.',
   'Welche Rechte hat ein Benutzer beim Zugriff über das Netzwerk?',
@@ -5584,6 +5981,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5595,10 +5993,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-bc-1',
   'betriebssysteme',
+  'b-cli',
   'matching',
   null,
   'Ordne jedem Windows-Befehl das Linux-Gegenstück zu.',
@@ -5611,6 +6010,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5622,10 +6022,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-bc-2',
   'betriebssysteme',
+  'b-cli',
   'single',
   'ping 8.8.8.8 funktioniert, ping www.beispiel.de meldet „Host nicht gefunden“.',
   'Wo liegt das Problem am wahrscheinlichsten?',
@@ -5638,6 +6039,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5649,10 +6051,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-bc-3',
   'betriebssysteme',
+  'b-cli',
   'ordering',
   null,
   'In welcher Reihenfolge grenzt man einen Netzwerkfehler von innen nach außen ein?',
@@ -5665,6 +6068,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5676,10 +6080,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-bh-1',
   'betriebssysteme',
+  'b-haertung',
   'multiple',
   null,
   'Welche Maßnahmen gehören zur Härtung eines Servers?',
@@ -5692,6 +6097,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5703,10 +6109,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-bh-2',
   'betriebssysteme',
+  'b-haertung',
   'single',
   null,
   'Was ist eine Zero-Day-Lücke?',
@@ -5719,6 +6126,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5730,10 +6138,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-bh-3',
   'betriebssysteme',
+  'b-haertung',
   'ordering',
   null,
   'Bringe die Schritte des Patchmanagements in die richtige Reihenfolge.',
@@ -5746,6 +6155,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5757,10 +6167,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-au-1',
   'anwendungssysteme',
+  'an-unternehmen',
   'matching',
   null,
   'Welches System unterstützt die Aufgabe am besten?',
@@ -5773,6 +6184,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5784,10 +6196,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-au-2',
   'anwendungssysteme',
+  'an-unternehmen',
   'single',
   null,
   'Welcher Vorteil ergibt sich aus der gemeinsamen Datenbank eines ERP-Systems?',
@@ -5800,6 +6213,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5811,10 +6225,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-au-3',
   'anwendungssysteme',
+  'an-unternehmen',
   'single',
   null,
   'Wofür steht die Abkürzung CRM?',
@@ -5827,6 +6242,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5838,10 +6254,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-as-1',
   'anwendungssysteme',
+  'an-software',
   'multiple',
   null,
   'Welche Vorteile hat Standardsoftware gegenüber Individualsoftware?',
@@ -5854,6 +6271,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5865,10 +6283,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-as-2',
   'anwendungssysteme',
+  'an-software',
   'single',
   null,
   'Was versteht man unter Customizing?',
@@ -5881,6 +6300,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5892,10 +6312,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-as-3',
   'anwendungssysteme',
+  'an-software',
   'single',
   'Eine Zahnarztpraxis sucht Software für Terminplanung, Patientenakte und Abrechnung mit den Krankenkassen.',
   'Welche Art Software liegt nahe?',
@@ -5908,6 +6329,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5919,10 +6341,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-al-1',
   'anwendungssysteme',
+  'an-lizenzen',
   'matching',
   null,
   'Ordne die Beschreibung der Lizenzart zu.',
@@ -5935,6 +6358,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5946,10 +6370,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-al-2',
   'anwendungssysteme',
+  'an-lizenzen',
   'single',
   'Eine Firma baut eine unter der GPL lizenzierte Bibliothek in ihr Produkt ein, verändert sie und verkauft das Produkt.',
   'Was ist die Folge?',
@@ -5962,6 +6387,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -5973,10 +6399,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-al-3',
   'anwendungssysteme',
+  'an-lizenzen',
   'single',
   'In einem Callcenter arbeiten 60 Beschäftigte im Schichtbetrieb, höchstens 20 sind gleichzeitig angemeldet.',
   'Welches Lizenzmodell ist am günstigsten?',
@@ -5989,6 +6416,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6000,10 +6428,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-ak-1',
   'anwendungssysteme',
+  'an-kollaboration',
   'matching',
   null,
   'Synchrone oder asynchrone Zusammenarbeit?',
@@ -6016,6 +6445,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6027,10 +6457,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-ak-2',
   'anwendungssysteme',
+  'an-kollaboration',
   'single',
   'Ein Team möchte Kundendaten in einem kostenlosen Online-Whiteboard sammeln, das ein Mitarbeiter privat registriert hat.',
   'Was ist problematisch?',
@@ -6043,6 +6474,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6054,10 +6486,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-ak-3',
   'anwendungssysteme',
+  'an-kollaboration',
   'single',
   null,
   'Wozu dient eine Social-Media-Richtlinie im Unternehmen?',
@@ -6070,6 +6503,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6081,10 +6515,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-no-1',
   'netzwerke',
+  'nw-modelle',
   'matching',
   null,
   'Auf welcher OSI-Schicht arbeitet das Gerät bzw. Protokoll?',
@@ -6097,6 +6532,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6108,10 +6544,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-no-2',
   'netzwerke',
+  'nw-modelle',
   'ordering',
   null,
   'Bringe die OSI-Schichten in die richtige Reihenfolge - von Schicht 1 nach 7.',
@@ -6124,6 +6561,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6135,10 +6573,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-no-3',
   'netzwerke',
+  'nw-modelle',
   'single',
   null,
   'Warum nutzt Videotelefonie meist UDP statt TCP?',
@@ -6151,6 +6590,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6162,10 +6602,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-ng-1',
   'netzwerke',
+  'nw-geraete',
   'single',
   null,
   'Welches Gerät verbindet zwei verschiedene IP-Netze miteinander?',
@@ -6178,6 +6619,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6189,10 +6631,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-ng-2',
   'netzwerke',
+  'nw-geraete',
   'single',
   'In einer Produktionshalle soll eine Netzwerkverbindung direkt neben starken Elektromotoren verlegt werden.',
   'Welches Übertragungsmedium ist am besten geeignet?',
@@ -6205,6 +6648,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6216,10 +6660,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-ng-3',
   'netzwerke',
+  'nw-geraete',
   'multiple',
   null,
   'Welche Aussagen zu VLANs sind richtig?',
@@ -6232,6 +6677,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6243,10 +6689,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-n4-1',
   'netzwerke',
+  'nw-ipv4',
   'numeric',
   null,
   'Wie viele nutzbare Hostadressen hat ein Netz mit dem Präfix /27?',
@@ -6259,6 +6706,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6270,10 +6718,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-n4-2',
   'netzwerke',
+  'nw-ipv4',
   'single',
   null,
   'Welche Broadcastadresse hat das Netz, in dem 172.16.5.200/26 liegt?',
@@ -6286,6 +6735,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6297,10 +6747,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-n4-3',
   'netzwerke',
+  'nw-ipv4',
   'single',
   null,
   'Welche Adresse ist eine private IPv4-Adresse?',
@@ -6313,6 +6764,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6324,10 +6776,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-n4-4',
   'netzwerke',
+  'nw-ipv4',
   'numeric',
   null,
   'Das Netz 10.0.0.0/24 soll in Subnetze mit mindestens 50 nutzbaren Hosts aufgeteilt werden - so viele wie möglich. Wie viele Subnetze entstehen?',
@@ -6340,6 +6793,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6351,10 +6805,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-n6-1',
   'netzwerke',
+  'nw-ipv6',
   'single',
   null,
   'Wie lautet die kürzestmögliche Schreibweise von 2001:0db8:0000:0000:0000:0001:0000:0abc?',
@@ -6367,6 +6822,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6378,10 +6834,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-n6-2',
   'netzwerke',
+  'nw-ipv6',
   'matching',
   null,
   'Um welchen Adresstyp handelt es sich?',
@@ -6394,6 +6851,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6405,10 +6863,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-n6-3',
   'netzwerke',
+  'nw-ipv6',
   'single',
   null,
   'Wie viele Bit hat eine IPv6-Adresse?',
@@ -6421,6 +6880,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6432,10 +6892,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-nd-1',
   'netzwerke',
+  'nw-dienste',
   'ordering',
   null,
   'Bringe die Schritte der DHCP-Adressvergabe in die richtige Reihenfolge.',
@@ -6448,6 +6909,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6459,10 +6921,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-nd-2',
   'netzwerke',
+  'nw-dienste',
   'matching',
   null,
   'Ordne jedem Dienst seinen Standardport zu.',
@@ -6475,6 +6938,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6486,10 +6950,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-nd-3',
   'netzwerke',
+  'nw-dienste',
   'single',
   null,
   'Welcher DNS-Eintrag gibt an, welcher Server die E-Mails einer Domain annimmt?',
@@ -6502,6 +6967,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6513,10 +6979,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-nd-4',
   'netzwerke',
+  'nw-dienste',
   'single',
   null,
   'Welche Angaben erhält ein Client typischerweise per DHCP?',
@@ -6529,6 +6996,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6540,10 +7008,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-nc-1',
   'netzwerke',
+  'nw-cloud',
   'matching',
   null,
   'Welches Servicemodell liegt vor?',
@@ -6556,6 +7025,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6567,10 +7037,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-nc-2',
   'netzwerke',
+  'nw-cloud',
   'single',
   null,
   'Was unterscheidet einen Container von einer virtuellen Maschine?',
@@ -6583,6 +7054,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6594,10 +7066,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a3-nc-3',
   'netzwerke',
+  'nw-cloud',
   'single',
   null,
   'Welcher Hypervisor läuft direkt auf der Hardware (Typ 1)?',
@@ -6610,6 +7083,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6621,10 +7095,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ld-1',
   'anforderungen',
+  'af-dokumente',
   'single',
   'Eine Arztpraxis beschreibt schriftlich: „Patientinnen und Patienten sollen Termine online buchen können.“ Ein Dienstleister antwortet mit einem Dokument, das eine Webanwendung mit REST-Anbindung an die Praxissoftware und einen Testplan beschreibt.',
   'Um welches Dokument handelt es sich bei der Antwort des Dienstleisters?',
@@ -6637,6 +7112,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6648,10 +7124,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ld-2',
   'anforderungen',
+  'af-dokumente',
   'multiple',
   null,
   'Welche Inhalte kommen typischerweise erst im Pflichtenheft hinzu?',
@@ -6664,6 +7141,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6675,10 +7153,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-fa-1',
   'anforderungen',
+  'af-arten',
   'single',
   'Für die neue Ticket-App des IT-Supports liegen vier Anforderungen vor.',
   'Welche Anforderung ist funktional?',
@@ -6691,6 +7170,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6702,10 +7182,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-fa-2',
   'anforderungen',
+  'af-arten',
   'multiple',
   null,
   'Welche Anforderungen an einen Webshop sind nicht-funktional?',
@@ -6718,6 +7199,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6729,10 +7211,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-fe-1',
   'anforderungen',
+  'af-erhebung',
   'matching',
   null,
   'Welche Erhebungstechnik passt jeweils am besten?',
@@ -6745,6 +7228,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6756,10 +7240,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-fe-2',
   'anforderungen',
+  'af-erhebung',
   'single',
   'Im Projekt „Kundenportal“ wird die Anforderung „Anmeldung per Fingerabdruck“ nach MoSCoW als „Won’t have“ eingestuft.',
   'Was bedeutet das?',
@@ -6772,6 +7257,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6783,10 +7269,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-uu-1',
   'uml_modellierung',
+  'u-usecase',
   'single',
   'Im Webshop kann ein Kunde beim Anwendungsfall „Bestellung aufgeben“ optional einen Gutschein einlösen.',
   'Wie wird „Gutschein einlösen“ korrekt modelliert?',
@@ -6799,6 +7286,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6810,10 +7298,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-uu-2',
   'uml_modellierung',
+  'u-usecase',
   'matching',
   'Modelliert wird die Online-Terminbuchung einer Arztpraxis.',
   'Ist das Element ein Akteur oder ein Anwendungsfall?',
@@ -6826,6 +7315,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6837,10 +7327,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-uu-3',
   'uml_modellierung',
+  'u-usecase',
   'multiple',
   null,
   'Welche Aussagen zum Anwendungsfalldiagramm sind richtig?',
@@ -6853,6 +7344,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6864,10 +7356,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-uk-1',
   'uml_modellierung',
+  'u-klassen',
   'single',
   'Im Klassendiagramm steht: Kunde 1 --- 0..* Bestellung',
   'Welche Aussage ist richtig?',
@@ -6880,6 +7373,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6891,10 +7385,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-uk-2',
   'uml_modellierung',
+  'u-klassen',
   'matching',
   null,
   'Aggregation oder Komposition?',
@@ -6907,6 +7402,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6918,10 +7414,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-uk-3',
   'uml_modellierung',
+  'u-klassen',
   'multiple',
   'In der Klasse Konto steht der Eintrag: - kontoNr: String',
   'Welche Aussagen treffen zu?',
@@ -6934,6 +7431,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6945,10 +7443,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ua-1',
   'uml_modellierung',
+  'u-aktivitaet',
   'matching',
   null,
   'Welches Element ist gemeint?',
@@ -6961,6 +7460,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6972,10 +7472,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ua-2',
   'uml_modellierung',
+  'u-aktivitaet',
   'single',
   'Nach der Entscheidung „Bestellwert prüfen“ stehen an den Kanten die Guards [Betrag > 500] und [Betrag < 500].',
   'Was ist an dieser Modellierung falsch?',
@@ -6988,6 +7489,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -6999,10 +7501,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ua-3',
   'uml_modellierung',
+  'u-aktivitaet',
   'single',
   'Nach dem Zahlungseingang verpackt das Lager die Ware, gleichzeitig bucht die Buchhaltung die Zahlung. Versendet werden darf erst, wenn beides erledigt ist.',
   'Welches Element steht direkt vor der Aktion „Paket versenden“?',
@@ -7015,6 +7518,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7026,10 +7530,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-pd-1',
   'programmierlogik',
+  'pl-datentypen',
   'matching',
   null,
   'Welcher Datentyp passt am besten?',
@@ -7042,6 +7547,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7053,10 +7559,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-pd-2',
   'programmierlogik',
+  'pl-datentypen',
   'numeric',
   null,
   'Welches ist der größte Wert, den eine vorzeichenbehaftete Ganzzahl mit 16 Bit speichern kann?',
@@ -7069,6 +7576,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7080,10 +7588,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-pd-3',
   'programmierlogik',
+  'pl-datentypen',
   'numeric',
   'int a = 17;
 int b = 5;
@@ -7098,6 +7607,7 @@ double c = a / b;',
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7109,10 +7619,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-pd-4',
   'programmierlogik',
+  'pl-datentypen',
   'single',
   'In einer Buchhaltungssoftware sollen Rechnungsbeträge exakt auf den Cent gespeichert und summiert werden.',
   'Welche Lösung ist am besten geeignet?',
@@ -7125,6 +7636,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7136,10 +7648,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-pk-1',
   'programmierlogik',
+  'pl-kontrollstrukturen',
   'numeric',
   'for (int i = 2; i <= 20; i += 3) {
   ausgabe(i);
@@ -7154,6 +7667,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7165,10 +7679,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-pk-2',
   'programmierlogik',
+  'pl-kontrollstrukturen',
   'single',
   'Eine Kasse soll die PIN abfragen und die Abfrage so lange wiederholen, bis die PIN korrekt ist. Die erste Abfrage erfolgt in jedem Fall.',
   'Welche Schleife passt am besten?',
@@ -7181,6 +7696,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7192,10 +7708,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-pk-3',
   'programmierlogik',
+  'pl-kontrollstrukturen',
   'matching',
   null,
   'Welche Kontrollstruktur passt?',
@@ -7208,6 +7725,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7219,10 +7737,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-pk-4',
   'programmierlogik',
+  'pl-kontrollstrukturen',
   'single',
   'int x = 10;
 do {
@@ -7238,6 +7757,7 @@ do {
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7249,10 +7769,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-pc-1',
   'programmierlogik',
+  'pl-pseudocode',
   'numeric',
   'werte ← [7, 3, 8, 2]
 summe ← 0
@@ -7272,6 +7793,7 @@ AUSGABE summe',
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7283,10 +7805,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-pc-2',
   'programmierlogik',
+  'pl-pseudocode',
   'ordering',
   null,
   'Bringe die Zeilen des Algorithmus zur Bestimmung des Maximums in die richtige Reihenfolge.',
@@ -7299,6 +7822,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7310,10 +7834,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-pc-3',
   'programmierlogik',
+  'pl-pseudocode',
   'single',
   'Ein Algorithmus soll die höchste Temperatur einer Winterwoche finden: [-5, -2, -8, -4, -6, -3, -7]. Er beginnt mit max ← 0 und gibt 0 aus.',
   'Wie lässt sich der Fehler beheben?',
@@ -7326,6 +7851,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7337,10 +7863,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-pt-1',
   'programmierlogik',
+  'pl-schreibtischtest',
   'numeric',
   'a ← 2
 b ← 20
@@ -7358,6 +7885,7 @@ ENDE SOLANGE',
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7369,10 +7897,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-pt-2',
   'programmierlogik',
+  'pl-schreibtischtest',
   'numeric',
   'x ← 0
 FÜR i VON 1 BIS 6
@@ -7392,6 +7921,7 @@ ENDE FÜR',
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7403,10 +7933,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-pt-3',
   'programmierlogik',
+  'pl-schreibtischtest',
   'single',
   'a ← 4
 b ← 9
@@ -7422,6 +7953,7 @@ b ← a',
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7433,10 +7965,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-og-1',
   'objektorientierung',
+  'oo-grundbegriffe',
   'matching',
   'Ein Ticketsystem für den IT-Support wird objektorientiert entwickelt.',
   'Ordne jeden Begriff zu.',
@@ -7449,6 +7982,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7460,10 +7994,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-og-2',
   'objektorientierung',
+  'oo-grundbegriffe',
   'single',
   null,
   'Was versteht man unter dem Zustand eines Objekts?',
@@ -7476,6 +8011,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7487,10 +8023,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-og-3',
   'objektorientierung',
+  'oo-grundbegriffe',
   'multiple',
   null,
   'Welche Aussagen sind richtig?',
@@ -7503,6 +8040,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7514,10 +8052,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ok-1',
   'objektorientierung',
+  'oo-kapselung',
   'single',
   'Die Klasse Artikel hat das Attribut private int bestand sowie public getBestand() und setBestand(int b). In der Klasse Lager steht: Artikel a = new Artikel();',
   'Welche Anweisung in der Klasse Lager führt zu einem Compilerfehler?',
@@ -7530,6 +8069,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7541,10 +8081,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ok-2',
   'objektorientierung',
+  'oo-kapselung',
   'numeric',
   'Der Setter setBestand(int b) übernimmt den Wert nur, wenn b >= 0 ist.
 
@@ -7562,6 +8103,7 @@ a.setBestand(a.getBestand() + 5);',
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7573,10 +8115,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ok-3',
   'objektorientierung',
+  'oo-kapselung',
   'multiple',
   null,
   'Welche Vorteile bietet die Kapselung?',
@@ -7589,6 +8132,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7600,10 +8144,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ok-4',
   'objektorientierung',
+  'oo-kapselung',
   'matching',
   null,
   'Ordne das UML-Zeichen der Sichtbarkeit zu.',
@@ -7616,6 +8161,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7627,10 +8173,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-oc-1',
   'objektorientierung',
+  'oo-konstruktor',
   'multiple',
   null,
   'Welche Aussagen zum Konstruktor sind richtig?',
@@ -7643,6 +8190,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7654,10 +8202,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-oc-2',
   'objektorientierung',
+  'oo-konstruktor',
   'single',
   'Die Klasse Kunde hat bereits die Konstruktoren Kunde(String name) und Kunde(String name, int nr).',
   'Welcher weitere Konstruktor kann NICHT ergänzt werden?',
@@ -7670,6 +8219,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7681,10 +8231,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-oc-3',
   'objektorientierung',
+  'oo-konstruktor',
   'numeric',
   'Punktekonto a = new Punktekonto(100);
 Punktekonto b = a;
@@ -7701,6 +8252,7 @@ c.gutschreiben(20);',
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7712,10 +8264,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-de-1',
   'datenmodellierung',
+  'dm-erm',
   'matching',
   'Ein Webshop-Datenmodell: Kunden mit E-Mail-Adresse bestellen Artikel mit Preis. Lieferanten liefern Artikel.',
   'Ordne jeden Begriff dem passenden Element des ER-Modells zu.',
@@ -7728,6 +8281,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7739,10 +8293,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-de-2',
   'datenmodellierung',
+  'dm-erm',
   'single',
   null,
   'Welche Angabe beschreibt eine Entität?',
@@ -7755,6 +8310,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7766,10 +8322,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-de-3',
   'datenmodellierung',
+  'dm-erm',
   'single',
   null,
   'Mit welchem Symbol wird in der Chen-Notation eine Beziehung dargestellt?',
@@ -7782,6 +8339,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7793,10 +8351,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-de-4',
   'datenmodellierung',
+  'dm-erm',
   'multiple',
   'Eine Arztpraxis will speichern: Patienten mit Name und Geburtsdatum, Ärztinnen und Ärzte mit Fachrichtung sowie Krankenkassen mit Name und Kassennummer. Jeder Patient ist bei einer Krankenkasse versichert.',
   'Welche Begriffe werden im ER-Modell zu Entitätstypen?',
@@ -7809,6 +8368,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7820,10 +8380,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-dk-1',
   'datenmodellierung',
+  'dm-kardinalitaet',
   'matching',
   null,
   'Welche Kardinalität liegt vor?',
@@ -7836,6 +8397,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7847,10 +8409,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-dk-2',
   'datenmodellierung',
+  'dm-kardinalitaet',
   'single',
   'Eine Bestellung kann viele Artikel enthalten, ein Artikel kann in vielen Bestellungen vorkommen.',
   'Wie wird diese Beziehung im relationalen Modell umgesetzt?',
@@ -7863,6 +8426,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7874,10 +8438,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-dk-3',
   'datenmodellierung',
+  'dm-kardinalitaet',
   'single',
   null,
   'Zwischen Abteilung und Mitarbeiter besteht eine 1:n-Beziehung. Wo wird der Fremdschlüssel angelegt?',
@@ -7890,6 +8455,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7901,10 +8467,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-dk-4',
   'datenmodellierung',
+  'dm-kardinalitaet',
   'numeric',
   'Ein Datenmodell hat die Entitätstypen Kunde, Bestellung und Artikel. Kunde - Bestellung ist 1:n, Bestellung - Artikel ist n:m.',
   'Wie viele Tabellen entstehen im relationalen Modell mindestens?',
@@ -7917,6 +8484,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7928,10 +8496,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-dl-1',
   'datenmodellierung',
+  'dm-schluessel',
   'multiple',
   null,
   'Welche Aussagen zum Primärschlüssel sind richtig?',
@@ -7944,6 +8513,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7955,10 +8525,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-dl-2',
   'datenmodellierung',
+  'dm-schluessel',
   'single',
   'Ein Sportverein speichert Mitglieder mit Vorname, Nachname, Geburtsdatum und E-Mail-Adresse.',
   'Welcher Primärschlüssel ist am besten geeignet?',
@@ -7971,6 +8542,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -7982,10 +8554,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-dl-3',
   'datenmodellierung',
+  'dm-schluessel',
   'single',
   'Die Tabelle Bestellung hat den Fremdschlüssel KundenNr, der auf die Tabelle Kunde verweist. Referenzielle Integrität ist aktiv, eine Löschweitergabe ist nicht eingerichtet.',
   'Was passiert, wenn Kunde 10457 gelöscht werden soll, zu dem noch Bestellungen existieren?',
@@ -7998,6 +8571,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8009,10 +8583,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-dl-4',
   'datenmodellierung',
+  'dm-schluessel',
   'matching',
   'Tabellen: Kunde (KundenNr, Name) und Bestellung (BestellNr, Datum, KundenNr). Der Primärschlüssel ist jeweils die erste Spalte.',
   'Welche Rolle hat die jeweilige Spalte?',
@@ -8025,6 +8600,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8036,10 +8612,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-dn-1',
   'datenmodellierung',
+  'dm-normalisierung',
   'matching',
   'Ein Webshop speichert Bestellungen, Kunden und Artikel in einer einzigen Tabelle.',
   'Welche Anomalie liegt vor?',
@@ -8052,6 +8629,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8063,10 +8641,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-dn-2',
   'datenmodellierung',
+  'dm-normalisierung',
   'single',
   'Eine Tabelle Bestellposition hat den Primärschlüssel (BestellNr, ArtikelNr). Alle Werte sind atomar. Die Spalte Artikelbezeichnung hängt nur von der ArtikelNr ab.',
   'Welche Normalform erfüllt die Tabelle höchstens?',
@@ -8079,6 +8658,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8090,10 +8670,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-dn-3',
   'datenmodellierung',
+  'dm-normalisierung',
   'single',
   'Tabelle Mitarbeiter (PersNr, Name, AbtNr, AbtName) mit dem Primärschlüssel PersNr. Alle Werte sind atomar.',
   'Was verletzt hier die 3NF?',
@@ -8106,6 +8687,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8117,10 +8699,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-dn-4',
   'datenmodellierung',
+  'dm-normalisierung',
   'matching',
   'Die Tabelle (BestellNr, ArtikelNr, Menge, Datum, KundenNr, Kundenname, Artikelbezeichnung, Preis) wird in die 3NF gebracht. Preis ist der Listenpreis des Artikels.',
   'In welcher Tabelle landet das Attribut?',
@@ -8133,6 +8716,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8144,10 +8728,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wu-1',
   'web_internet',
+  'wi-url',
   'matching',
   'URL: https://portal.example.org:8080/kunden/profil?id=42#adresse',
   'Ordne jeden Teil der URL seiner Bezeichnung zu.',
@@ -8160,6 +8745,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8171,10 +8757,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wu-2',
   'web_internet',
+  'wi-url',
   'single',
   null,
   'Welchen Port verwendet der Browser für https://example.com/login?',
@@ -8187,6 +8774,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8198,10 +8786,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wu-3',
   'web_internet',
+  'wi-url',
   'single',
   'URL: https://shop.example.com/suche?q=maus#treffer',
   'Welcher Teil wird nicht an den Server übertragen?',
@@ -8214,6 +8803,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8225,10 +8815,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wu-4',
   'web_internet',
+  'wi-url',
   'multiple',
   'URL: https://intranet.firma.example/hilfe?thema=vpn&sprache=de',
   'Welche Aussagen sind richtig?',
@@ -8241,6 +8832,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8252,10 +8844,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wh-1',
   'web_internet',
+  'wi-http',
   'matching',
   null,
   'Ordne jeden Statuscode seiner Klasse zu.',
@@ -8268,6 +8861,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8279,10 +8873,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wh-2',
   'web_internet',
+  'wi-http',
   'single',
   'Ein Azubi ist im Intranet angemeldet und ruft eine Seite der Personalabteilung auf, für die er keine Berechtigung hat.',
   'Welchen Statuscode liefert der Server korrekterweise?',
@@ -8295,6 +8890,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8306,10 +8902,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wh-3',
   'web_internet',
+  'wi-http',
   'matching',
   'Eine Webshop-Schnittstelle arbeitet mit den HTTP-Methoden nach ihrer üblichen Bedeutung.',
   'Welche Methode passt zur Aktion?',
@@ -8322,6 +8919,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8333,10 +8931,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wh-4',
   'web_internet',
+  'wi-http',
   'multiple',
   null,
   'Welche Aussagen zu HTTP und HTTPS sind richtig?',
@@ -8349,6 +8948,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8360,10 +8960,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wa-1',
   'web_internet',
+  'wi-aufruf',
   'ordering',
   null,
   'Bringe die Schritte beim Aufruf von https://shop.example.com in die richtige Reihenfolge.',
@@ -8376,6 +8977,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8387,10 +8989,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wa-2',
   'web_internet',
+  'wi-aufruf',
   'ordering',
   null,
   'In welcher Reihenfolge laufen die Nachrichten beim TCP-Verbindungsaufbau?',
@@ -8403,6 +9006,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8414,10 +9018,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wa-3',
   'web_internet',
+  'wi-aufruf',
   'single',
   null,
   'Welche Aufgabe hat DNS beim Aufruf einer Webseite?',
@@ -8430,6 +9035,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8441,10 +9047,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wa-4',
   'web_internet',
+  'wi-aufruf',
   'single',
   'Ein Kunde meldet: Der Browser zeigt beim Aufruf des Webshops „Server nicht gefunden“. Über die IP-Adresse ist der Server erreichbar.',
   'Welcher Schritt schlägt am wahrscheinlichsten fehl?',
@@ -8457,6 +9064,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8468,10 +9076,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wt-1',
   'web_internet',
+  'wi-html',
   'matching',
   null,
   'Welche Technik ist für die Aufgabe zuständig?',
@@ -8484,6 +9093,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8495,10 +9105,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wt-2',
   'web_internet',
+  'wi-html',
   'single',
   null,
   'Welcher CSS-Selektor wählt alle Elemente mit class="preis"?',
@@ -8511,6 +9122,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8522,10 +9134,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wt-3',
   'web_internet',
+  'wi-html',
   'multiple',
   null,
   'Welche HTML-Tags sind semantisch, sagen also etwas über die Rolle des Inhalts aus?',
@@ -8538,6 +9151,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8549,10 +9163,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wt-4',
   'web_internet',
+  'wi-html',
   'single',
   null,
   'Wozu dient eine Media Query in CSS?',
@@ -8565,6 +9180,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8576,10 +9192,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wf-1',
   'web_internet',
+  'wi-barrierefrei',
   'matching',
   null,
   'Zu welchem WCAG-Prinzip gehört die Maßnahme?',
@@ -8592,6 +9209,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8603,10 +9221,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wf-2',
   'web_internet',
+  'wi-barrierefrei',
   'single',
   'Ein Onlineshop mit 40 Beschäftigten verkauft Elektronik an Privatkunden in Deutschland.',
   'Welche Vorschrift verpflichtet ihn, den Shop barrierefrei zu gestalten?',
@@ -8619,6 +9238,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8630,10 +9250,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wf-3',
   'web_internet',
+  'wi-barrierefrei',
   'multiple',
   null,
   'Welche Maßnahmen verbessern die Barrierefreiheit einer Website?',
@@ -8646,6 +9267,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8657,10 +9279,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-wf-4',
   'web_internet',
+  'wi-barrierefrei',
   'single',
   null,
   'Welcher Alt-Text ist für eine rein dekorative Trennlinie richtig?',
@@ -8673,6 +9296,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8684,10 +9308,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-mz-1',
   'multimedia_daten',
+  'md-zahlensysteme',
   'numeric',
   null,
   'Wandle die Binärzahl 1011 0110 in eine Dezimalzahl um.',
@@ -8700,6 +9325,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8711,10 +9337,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-mz-2',
   'multimedia_daten',
+  'md-zahlensysteme',
   'numeric',
   null,
   'Wandle die Hexadezimalzahl 1A3 in eine Dezimalzahl um.',
@@ -8727,6 +9354,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8738,10 +9366,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-mz-3',
   'multimedia_daten',
+  'md-zahlensysteme',
   'single',
   null,
   'Welche Hexadezimalzahl entspricht der Dezimalzahl 200?',
@@ -8754,6 +9383,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8765,10 +9395,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-mz-4',
   'multimedia_daten',
+  'md-zahlensysteme',
   'single',
   null,
   'Welche Binärzahl entspricht der Dezimalzahl 45?',
@@ -8781,6 +9412,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8792,10 +9424,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-mc-1',
   'multimedia_daten',
+  'md-zeichen',
   'numeric',
   null,
   'Wie viele Byte belegt das Wort „Straße“ in UTF-8?',
@@ -8808,6 +9441,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8819,10 +9453,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-mc-2',
   'multimedia_daten',
+  'md-zeichen',
   'single',
   null,
   'Wie viele Zeichen umfasst der ASCII-Zeichensatz?',
@@ -8835,6 +9470,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8846,10 +9482,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-mc-3',
   'multimedia_daten',
+  'md-zeichen',
   'single',
   'Im Kundenportal steht statt „Müller“ plötzlich „MÃ¼ller“.',
   'Was ist die wahrscheinlichste Ursache?',
@@ -8862,6 +9499,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8873,10 +9511,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-mc-4',
   'multimedia_daten',
+  'md-zeichen',
   'multiple',
   null,
   'Welche Aussagen zu UTF-8 sind richtig?',
@@ -8889,6 +9528,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8900,10 +9540,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-md-1',
   'multimedia_daten',
+  'md-datenmengen',
   'numeric',
   'Eine Kamera nimmt Bilder mit 4.000 × 3.000 Pixeln und 24 Bit Farbtiefe auf.',
   'Wie groß ist ein unkomprimiertes Bild in MB? (1 MB = 1.000.000 Byte)',
@@ -8916,6 +9557,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8927,10 +9569,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-md-2',
   'multimedia_daten',
+  'md-datenmengen',
   'numeric',
   'Ein Musikstück dauert 3 Minuten und liegt in CD-Qualität vor: 44,1 kHz Abtastrate, 16 Bit, Stereo, unkomprimiert.',
   'Wie groß ist die Datei in MB? (1 MB = 1.000.000 Byte, auf zwei Nachkommastellen)',
@@ -8943,6 +9586,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8954,10 +9598,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-md-3',
   'multimedia_daten',
+  'md-datenmengen',
   'numeric',
   'Ein Video mit 1280 × 720 Pixeln, 24 Bit Farbtiefe und 25 Bildern pro Sekunde dauert 10 Sekunden. Ton und Kompression bleiben unberücksichtigt.',
   'Wie groß ist das Video in MB? (1 MB = 1.000.000 Byte, auf eine Nachkommastelle)',
@@ -8970,6 +9615,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -8981,10 +9627,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-md-4',
   'multimedia_daten',
+  'md-datenmengen',
   'numeric',
   'Ein Bild hat 1.024 × 768 Pixel und 8 Bit Farbtiefe (256 Farben).',
   'Wie groß ist es unkomprimiert in KiB? (1 KiB = 1.024 Byte)',
@@ -8997,6 +9644,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9008,10 +9656,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-mu-1',
   'multimedia_daten',
+  'md-uebertragung',
   'numeric',
   'Eine 2,4 GB große Datei (1 GB = 1.000.000.000 Byte) wird über eine Leitung mit 100 Mbit/s (1 Mbit = 1.000.000 Bit) geladen. Overhead bleibt unberücksichtigt.',
   'Wie viele Sekunden dauert der Download?',
@@ -9024,6 +9673,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9035,10 +9685,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-mu-2',
   'multimedia_daten',
+  'md-uebertragung',
   'numeric',
   'Ein Anschluss hat 250 Mbit/s Download und 40 Mbit/s Upload. Ein Backup von 1,5 GB (1 GB = 1.000.000.000 Byte) wird in die Cloud hochgeladen. Overhead bleibt unberücksichtigt.',
   'Wie viele Minuten dauert der Upload?',
@@ -9051,6 +9702,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9062,10 +9714,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-mu-3',
   'multimedia_daten',
+  'md-uebertragung',
   'numeric',
   'Eine 900-MB-Datei (1 MB = 1.000.000 Byte) wird mit 60 Mbit/s übertragen. Durch Protokoll-Overhead steigt die zu übertragende Datenmenge um 10 %.',
   'Wie viele Sekunden dauert die Übertragung?',
@@ -9078,6 +9731,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9089,10 +9743,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-mu-4',
   'multimedia_daten',
+  'md-uebertragung',
   'single',
   'Ein Kollege rechnet: „500 MB bei 50 Mbit/s dauern 500 / 50 = 10 Sekunden.“',
   'Was ist an der Rechnung falsch?',
@@ -9105,6 +9760,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9116,10 +9772,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-mx-1',
   'multimedia_daten',
+  'md-kompression',
   'matching',
   null,
   'Arbeitet das Format verlustfrei oder verlustbehaftet?',
@@ -9132,6 +9789,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9143,10 +9801,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-mx-2',
   'multimedia_daten',
+  'md-kompression',
   'single',
   null,
   'Wie lautet die Lauflängenkodierung von AAAABBBCCD, wenn jede Folge als Anzahl und dann Zeichen geschrieben wird?',
@@ -9159,6 +9818,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9170,10 +9830,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-mx-3',
   'multimedia_daten',
+  'md-kompression',
   'numeric',
   'Ein Foto ist unkomprimiert 36 MB groß, als JPEG nur noch 3 MB.',
   'Um wie viel Prozent wurde die Dateigröße verringert? (auf eine Nachkommastelle)',
@@ -9186,6 +9847,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9197,10 +9859,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-mx-4',
   'multimedia_daten',
+  'md-kompression',
   'single',
   'Ein Firmenlogo soll auf der Website, auf Visitenkarten und auf einer großen Messewand gestochen scharf erscheinen.',
   'Welches Format ist am besten geeignet?',
@@ -9213,6 +9876,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9224,10 +9888,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ig-1',
   'ki_grundlagen',
+  'ki-grundlagen',
   'matching',
   null,
   'Welche Art des maschinellen Lernens liegt vor?',
@@ -9240,6 +9905,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9251,10 +9917,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ig-2',
   'ki_grundlagen',
+  'ki-grundlagen',
   'single',
   null,
   'Wie erzeugt ein großes Sprachmodell (LLM) seine Antwort?',
@@ -9267,6 +9934,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9278,10 +9946,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ig-3',
   'ki_grundlagen',
+  'ki-grundlagen',
   'multiple',
   null,
   'Welche Aussagen sind richtig?',
@@ -9294,6 +9963,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9305,10 +9975,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ig-4',
   'ki_grundlagen',
+  'ki-grundlagen',
   'single',
   null,
   'Was ist im Zusammenhang mit Sprachmodellen ein Token?',
@@ -9321,6 +9992,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9332,10 +10004,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ie-1',
   'ki_grundlagen',
+  'ki-einsatz',
   'matching',
   null,
   'Welcher Prompt-Baustein ist das?',
@@ -9348,6 +10021,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9359,10 +10033,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ie-2',
   'ki_grundlagen',
+  'ki-einsatz',
   'multiple',
   null,
   'Wofür eignet sich ein KI-Werkzeug im IT-Support gut?',
@@ -9375,6 +10050,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9386,10 +10062,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ie-3',
   'ki_grundlagen',
+  'ki-einsatz',
   'ordering',
   null,
   'Bringe die Schritte beim Arbeiten mit einem KI-Assistenten in eine sinnvolle Reihenfolge.',
@@ -9402,6 +10079,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9413,10 +10091,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ie-4',
   'ki_grundlagen',
+  'ki-einsatz',
   'single',
   'Ein KI-Assistent liefert eine Funktion, die auf Anhieb fehlerfrei kompiliert.',
   'Was ist der richtige nächste Schritt?',
@@ -9429,6 +10108,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9440,10 +10120,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ir-1',
   'ki_grundlagen',
+  'ki-grenzen',
   'matching',
   null,
   'In welche Risikostufe der EU-KI-Verordnung fällt das System?',
@@ -9456,6 +10137,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9467,10 +10149,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ir-2',
   'ki_grundlagen',
+  'ki-grenzen',
   'single',
   null,
   'Was ist eine Halluzination eines KI-Modells?',
@@ -9483,6 +10166,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9494,10 +10178,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ir-3',
   'ki_grundlagen',
+  'ki-grenzen',
   'multiple',
   'Ein Mitarbeiter will eine Kundenbeschwerde mit einem öffentlichen KI-Chatbot beantworten lassen.',
   'Welche Vorgehensweisen sind richtig?',
@@ -9510,6 +10195,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9521,10 +10207,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a4-ir-4',
   'ki_grundlagen',
+  'ki-grenzen',
   'single',
   null,
   'Was sieht die EU-KI-Verordnung für einen Chatbot im Kundenservice (begrenztes Risiko) vor?',
@@ -9537,6 +10224,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9548,10 +10236,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-qg-1',
   'qualitaetsmanagement',
+  'qm-grundlagen',
   'matching',
   null,
   'Ordne die Prüfverfahren der statischen oder der dynamischen Prüfung zu.',
@@ -9564,6 +10253,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9575,10 +10265,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-qe-1',
   'qualitaetsmanagement',
+  'qm-merkmale',
   'matching',
   'Für eine neue Rechnungssoftware wurden Anforderungen gesammelt.',
   'Ordne jede Anforderung dem Qualitätsmerkmal zu, das sie konkretisiert.',
@@ -9591,6 +10282,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9602,10 +10294,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-qe-2',
   'qualitaetsmanagement',
+  'qm-merkmale',
   'single',
   'Eine Zeiterfassungs-App berechnet die Arbeitszeiten stets korrekt. Sie stürzt aber etwa zweimal pro Woche ab, und ungespeicherte Eingaben gehen verloren.',
   'Welches Qualitätsmerkmal ist vor allem verletzt?',
@@ -9618,6 +10311,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9629,10 +10323,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-qe-3',
   'qualitaetsmanagement',
+  'qm-merkmale',
   'single',
   null,
   'Welche Anforderung an einen Webshop ist messbar und damit prüfbar formuliert?',
@@ -9645,6 +10340,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9656,10 +10352,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-qp-1',
   'qualitaetsmanagement',
+  'qm-pdca',
   'matching',
   'Eine Arztpraxis will die Wartezeit am Telefon senken und geht nach dem PDCA-Zyklus vor.',
   'Ordne jeden Schritt der passenden Phase zu.',
@@ -9672,6 +10369,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9683,10 +10381,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-qp-2',
   'qualitaetsmanagement',
+  'qm-pdca',
   'single',
   'Ein Service-Desk hat ein Self-Service-Portal im Pilotbereich getestet. Im Check zeigt sich: Der Anteil der Passwort-Tickets sank nur von 30 % auf 25 %, Ziel waren unter 15 %.',
   'Was ist in der Phase Act jetzt richtig?',
@@ -9699,6 +10398,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9710,10 +10410,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-ss-1',
   'testen',
+  'ts-stufen',
   'single',
   'Das Bestellmodul eines Webshops soll getestet werden. Es ruft den Zahlungsdienst auf, der aber erst in drei Wochen fertig ist.',
   'Womit wird der fehlende Zahlungsdienst im Test ersetzt?',
@@ -9726,6 +10427,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9737,10 +10439,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-ss-2',
   'testen',
+  'ts-stufen',
   'matching',
   null,
   'Ordne jede Situation der passenden Teststufe zu.',
@@ -9753,6 +10456,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9764,10 +10468,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-sv-1',
   'testen',
+  'ts-verfahren',
   'numeric',
   'Eine Funktion berechnet den Endpreis im Webshop. Die beiden Bedingungen sind voneinander unabhängig.
 rabatt = 0
@@ -9792,6 +10497,7 @@ Also 2 Testfälle. Für Anweisungsüberdeckung genügt schon Testfall 1. Alle 4 
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9803,10 +10509,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-sv-2',
   'testen',
+  'ts-verfahren',
   'multiple',
   null,
   'Welche Aussagen zu manuellen und automatisierten Tests sind richtig?',
@@ -9819,6 +10526,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9830,10 +10538,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-sf-1',
   'testen',
+  'ts-testfaelle',
   'single',
   'Ein Passwort muss 8 bis 64 Zeichen lang sein. Getestet wird nur die Länge.',
   'Welche Passwortlängen decken alle Äquivalenzklassen mit je einem Repräsentanten ab?',
@@ -9846,6 +10555,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9857,10 +10567,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-sf-2',
   'testen',
+  'ts-testfaelle',
   'numeric',
   'In einem Webshop ist die Bestellmenge eine ganze Zahl. Erlaubt sind 1 bis 100 Stück: 1 bis 9 ohne Rabatt, 10 bis 49 mit 5 %, 50 bis 100 mit 10 %. Mengen unter 1 und über 100 werden abgelehnt.',
   'Für die Grenzwertanalyse werden an jedem Übergang zwischen zwei benachbarten Klassen die beiden Werte direkt links und rechts des Übergangs getestet. Wie viele verschiedene Testwerte ergeben sich?',
@@ -9878,6 +10589,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9889,10 +10601,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-sf-3',
   'testen',
+  'ts-testfaelle',
   'matching',
   'Im Webshop sind Bestellmengen von 1 bis 99 Stück als ganze Zahl erlaubt.',
   'Gehört die eingegebene Menge zu einer gültigen oder einer ungültigen Äquivalenzklasse?',
@@ -9905,6 +10618,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9916,10 +10630,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-sf-4',
   'testen',
+  'ts-testfaelle',
   'multiple',
   null,
   'Welche Aussagen zu Äquivalenzklassen und Grenzwertanalyse sind richtig?',
@@ -9932,6 +10647,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9943,10 +10659,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-sp-1',
   'testen',
+  'ts-protokoll',
   'matching',
   null,
   'Gehört die Angabe in das Testkonzept (vor dem Test) oder in das Testprotokoll (bei der Durchführung)?',
@@ -9959,6 +10676,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9970,10 +10688,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-sp-2',
   'testen',
+  'ts-protokoll',
   'ordering',
   null,
   'Bringe die Schritte der Fehlerbehandlung in die richtige Reihenfolge.',
@@ -9986,6 +10705,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -9997,10 +10717,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a5-sp-3',
   'testen',
+  'ts-protokoll',
   'single',
   'Im Testprotokoll steht zu TF-017: Eingabe Bestellmenge 100, Soll „Meldung: Höchstens 99 Stück“, Ist „Bestellung angelegt“. Die Entwicklung meldet den Fehler als behoben.',
   'Was ist der nächste Testschritt?',
@@ -10013,6 +10734,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10024,10 +10746,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-zz-1',
   'schutzziele_bedrohungen',
+  'sz-schutzziele',
   'matching',
   null,
   'Welches Schutzziel ist durch den Vorfall verletzt?',
@@ -10040,6 +10763,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10051,10 +10775,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-zz-2',
   'schutzziele_bedrohungen',
+  'sz-schutzziele',
   'numeric',
   'Ein Hosting-Anbieter garantiert im Vertrag eine Verfügbarkeit von 99,5 % bei Betrieb rund um die Uhr an 365 Tagen.',
   'Wie viele Stunden darf der Dienst pro Jahr höchstens ausfallen? (auf eine Nachkommastelle)',
@@ -10067,6 +10792,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10078,10 +10804,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-zz-3',
   'schutzziele_bedrohungen',
+  'sz-schutzziele',
   'single',
   'Ein Kunde behauptet, er habe eine Online-Bestellung über 12.000 € nie abgeschickt.',
   'Welches Schutzziel soll genau diesen Fall verhindern?',
@@ -10094,6 +10821,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10105,10 +10833,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-zz-4',
   'schutzziele_bedrohungen',
+  'sz-schutzziele',
   'multiple',
   null,
   'Welche Maßnahmen dienen in erster Linie der Verfügbarkeit?',
@@ -10121,6 +10850,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10132,10 +10862,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-zm-1',
   'schutzziele_bedrohungen',
+  'sz-schadsoftware',
   'matching',
   null,
   'Welche Art von Schadsoftware wird beschrieben?',
@@ -10148,6 +10879,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10159,10 +10891,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-zm-2',
   'schutzziele_bedrohungen',
+  'sz-schadsoftware',
   'single',
   'Nach dem Öffnen eines Mail-Anhangs lassen sich die Dateien auf dem Netzlaufwerk nicht mehr öffnen. Sie tragen die Endung .locked, und eine Textdatei fordert eine Zahlung in Bitcoin.',
   'Welche Art von Schadsoftware ist am Werk?',
@@ -10175,6 +10908,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10186,10 +10920,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-zm-3',
   'schutzziele_bedrohungen',
+  'sz-schadsoftware',
   'single',
   'Eine Kollegin bemerkt, dass auf ihrem PC gerade Dateien umbenannt und unlesbar werden.',
   'Was sollte sie als Erstes tun?',
@@ -10202,6 +10937,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10213,10 +10949,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-zm-4',
   'schutzziele_bedrohungen',
+  'sz-schadsoftware',
   'multiple',
   null,
   'Welche Aussagen sind richtig?',
@@ -10229,6 +10966,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10240,10 +10978,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-za-1',
   'schutzziele_bedrohungen',
+  'sz-angriffe',
   'matching',
   null,
   'Welcher Angriff wird beschrieben?',
@@ -10256,6 +10995,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10267,10 +11007,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-za-2',
   'schutzziele_bedrohungen',
+  'sz-angriffe',
   'multiple',
   'Eine Mail von service@sparkasse-kontosicherheit.info beginnt mit „Sehr geehrter Kunde“ und droht: „Ihr Konto wird in 24 Stunden gesperrt.“ Der Link zeigt „www.sparkasse.de“ an, führt beim Überfahren mit der Maus aber zu einer ganz anderen Adresse. Dort sollen die Online-Banking-Zugangsdaten eingegeben werden. Die Mail trägt das Logo der Sparkasse.',
   'Welche Merkmale weisen auf Phishing hin?',
@@ -10283,6 +11024,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10294,10 +11036,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-za-3',
   'schutzziele_bedrohungen',
+  'sz-angriffe',
   'single',
   'Im offenen WLAN eines Cafés leitet ein Angreifer den Datenverkehr der anderen Gäste unbemerkt über seinen Laptop und liest mit.',
   'Um welchen Angriff handelt es sich?',
@@ -10310,6 +11053,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10321,10 +11065,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-za-4',
   'schutzziele_bedrohungen',
+  'sz-angriffe',
   'single',
   null,
   'Welche Maßnahme schützt ein Anmeldeportal wirksam gegen Brute-Force-Angriffe?',
@@ -10337,6 +11082,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10348,10 +11094,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-zb-1',
   'schutzziele_bedrohungen',
+  'sz-schutzbedarf',
   'single',
   'Auf einem Server laufen drei Anwendungen. Ihr Schutzbedarf für die Vertraulichkeit: Wiki „normal“, Personalverwaltung „hoch“, Kantinenplan „normal“. Kumulations- und Verteilungseffekt spielen keine Rolle.',
   'Welchen Schutzbedarf hat der Server für die Vertraulichkeit?',
@@ -10364,6 +11111,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10375,10 +11123,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-zb-2',
   'schutzziele_bedrohungen',
+  'sz-schutzbedarf',
   'matching',
   null,
   'Welche Regel der Schutzbedarfsfeststellung wird angewendet?',
@@ -10391,6 +11140,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10402,10 +11152,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-zb-3',
   'schutzziele_bedrohungen',
+  'sz-schutzbedarf',
   'ordering',
   null,
   'In welcher Reihenfolge wird der Schutzbedarf nach BSI vererbt?',
@@ -10418,6 +11169,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10429,10 +11181,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-zb-4',
   'schutzziele_bedrohungen',
+  'sz-schutzbedarf',
   'multiple',
   null,
   'Welche der folgenden sind Schadensszenarien, die das BSI für die Schutzbedarfsfeststellung vorsieht?',
@@ -10445,6 +11198,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10456,10 +11210,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-yf-1',
   'sicherheitsmassnahmen',
+  'sm-firewall',
   'single',
   'Das Regelwerk der Firewall (von oben nach unten): 1. Quelle LAN, Ziel any, Port 443, allow. 2. Quelle LAN, Ziel any, Port 53, allow. 3. Quelle any, Ziel any, Port any, deny. Ein PC im LAN ruft eine Webseite über HTTP auf Port 80 auf.',
   'Was passiert mit der Verbindung?',
@@ -10472,6 +11227,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10483,10 +11239,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-yf-2',
   'sicherheitsmassnahmen',
+  'sm-firewall',
   'single',
   null,
   'Welche Firewall kann den Inhalt von HTTP-Verbindungen prüfen und z. B. Schadcode in einer Webseite erkennen?',
@@ -10499,6 +11256,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10510,10 +11268,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-yf-3',
   'sicherheitsmassnahmen',
+  'sm-firewall',
   'matching',
   'Ein Online-Händler baut ein Netz mit zweistufiger DMZ auf.',
   'Wo befindet sich das jeweilige System?',
@@ -10526,6 +11285,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10537,10 +11297,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-yf-4',
   'sicherheitsmassnahmen',
+  'sm-firewall',
   'multiple',
   null,
   'Welche Aussagen sind richtig?',
@@ -10553,6 +11314,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10564,10 +11326,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-yb-1',
   'sicherheitsmassnahmen',
+  'sm-backup',
   'numeric',
   'Sonntags läuft eine Vollsicherung mit 500 GB. Von Montag bis Freitag folgt jeden Abend eine differenzielle Sicherung. Täglich werden 20 GB jeweils anderer Dateien geändert.',
   'Wie viel GB belegen die differenziellen Sicherungen von Montag bis Freitag zusammen?',
@@ -10580,6 +11343,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10591,10 +11355,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-yb-2',
   'sicherheitsmassnahmen',
+  'sm-backup',
   'numeric',
   'Sonntags läuft eine Vollsicherung, von Montag bis Freitag jeden Abend eine inkrementelle Sicherung, jede auf ein eigenes Band. Am Donnerstagmittag fällt der Server aus.',
   'Wie viele Bänder werden benötigt, um den letzten gesicherten Stand wiederherzustellen?',
@@ -10607,6 +11372,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10618,10 +11384,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-yb-3',
   'sicherheitsmassnahmen',
+  'sm-backup',
   'single',
   null,
   'Welcher Aufbau erfüllt die 3-2-1-Regel?',
@@ -10634,6 +11401,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10645,10 +11413,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-yb-4',
   'sicherheitsmassnahmen',
+  'sm-backup',
   'single',
   'Die Geschäftsführung legt fest: Bei einem Ausfall dürfen höchstens 4 Stunden Arbeit verloren gehen.',
   'Welche Kennzahl wird damit festgelegt?',
@@ -10661,6 +11430,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10672,10 +11442,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-yw-1',
   'sicherheitsmassnahmen',
+  'sm-wlan',
   'single',
   'Der neue Router einer Arztpraxis bietet WEP, WPA2 mit TKIP, WPA2 mit AES und WPA3-Personal an. Alle Geräte der Praxis unterstützen WPA3.',
   'Welche Einstellung entspricht dem aktuellen Stand der Technik?',
@@ -10688,6 +11459,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10699,10 +11471,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-yw-2',
   'sicherheitsmassnahmen',
+  'sm-wlan',
   'multiple',
   null,
   'Welche Maßnahmen erhöhen die Sicherheit eines WLANs wirksam?',
@@ -10715,6 +11488,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10726,10 +11500,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-yw-3',
   'sicherheitsmassnahmen',
+  'sm-wlan',
   'matching',
   null,
   'Welche Rolle bei der Anmeldung nach 802.1X hat das jeweilige Gerät?',
@@ -10742,6 +11517,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10753,10 +11529,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-yw-4',
   'sicherheitsmassnahmen',
+  'sm-wlan',
   'numeric',
   'Die WPS-PIN hat 8 Ziffern, die letzte ist eine Prüfziffer. Der Router bestätigt die ersten 4 Ziffern und die restlichen 3 frei wählbaren Ziffern getrennt.',
   'Wie viele Versuche braucht ein Angreifer höchstens, um die PIN zu ermitteln?',
@@ -10769,6 +11546,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10780,10 +11558,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-yz-1',
   'sicherheitsmassnahmen',
+  'sm-zugriff',
   'matching',
   null,
   'Um welche Art der Kontrolle handelt es sich?',
@@ -10796,6 +11575,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10807,10 +11587,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-yz-2',
   'sicherheitsmassnahmen',
+  'sm-zugriff',
   'single',
   'Die Rechte werden rollenbasiert vergeben. Ein Azubi wechselt vom Vertrieb in die Buchhaltung.',
   'Was ist richtig?',
@@ -10823,6 +11604,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10834,10 +11616,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-yz-3',
   'sicherheitsmassnahmen',
+  'sm-zugriff',
   'multiple',
   'Ein neuer Webserver soll vor der Inbetriebnahme gehärtet werden.',
   'Welche Maßnahmen gehören zur Härtung?',
@@ -10850,6 +11633,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10861,10 +11645,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-yz-4',
   'sicherheitsmassnahmen',
+  'sm-zugriff',
   'single',
   null,
   'Warum sollen Administratorinnen und Administratoren für E-Mail und Internet ein normales Benutzerkonto verwenden?',
@@ -10877,6 +11662,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10888,10 +11674,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-cs-1',
   'kryptographie_auth',
+  'kr-symmetrisch',
   'numeric',
   'In einer Abteilung sollen 20 Mitarbeitende paarweise vertraulich miteinander kommunizieren können. Eingesetzt wird ein rein symmetrisches Verfahren.',
   'Wie viele verschiedene Schlüssel werden insgesamt benötigt?',
@@ -10904,6 +11691,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10915,10 +11703,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-cs-2',
   'kryptographie_auth',
+  'kr-symmetrisch',
   'single',
   null,
   'Welches Verfahren ist ein symmetrisches Verschlüsselungsverfahren?',
@@ -10931,6 +11720,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10942,10 +11732,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-cs-3',
   'kryptographie_auth',
+  'kr-symmetrisch',
   'multiple',
   null,
   'Welche Aussagen zur symmetrischen Verschlüsselung sind richtig?',
@@ -10958,6 +11749,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10969,10 +11761,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-cs-4',
   'kryptographie_auth',
+  'kr-symmetrisch',
   'single',
   'Ein Azubi soll einer Kundin eine mit AES verschlüsselte ZIP-Datei per E-Mail schicken.',
   'Wie übermittelt er das Passwort am sichersten?',
@@ -10985,6 +11778,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -10996,10 +11790,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-ca-1',
   'kryptographie_auth',
+  'kr-asymmetrisch',
   'single',
   'Anna will Ben eine vertrauliche Nachricht schicken. Beide haben ein asymmetrisches Schlüsselpaar.',
   'Mit welchem Schlüssel verschlüsselt Anna die Nachricht?',
@@ -11012,6 +11807,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11023,10 +11819,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-ca-2',
   'kryptographie_auth',
+  'kr-asymmetrisch',
   'matching',
   null,
   'Welcher Schlüssel wird für den jeweiligen Schritt benutzt?',
@@ -11039,6 +11836,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11050,10 +11848,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-ca-3',
   'kryptographie_auth',
+  'kr-asymmetrisch',
   'numeric',
   '50 Personen wollen untereinander vertraulich kommunizieren und nutzen dazu ein asymmetrisches Verfahren.',
   'Wie viele Schlüssel gibt es insgesamt (öffentliche und private zusammen)?',
@@ -11066,6 +11865,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11077,10 +11877,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-ca-4',
   'kryptographie_auth',
+  'kr-asymmetrisch',
   'multiple',
   null,
   'Welche Aussagen zur digitalen Signatur sind richtig?',
@@ -11093,6 +11894,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11104,10 +11906,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-ch-1',
   'kryptographie_auth',
+  'kr-hybrid',
   'single',
   null,
   'Warum verschlüsselt TLS die Nutzdaten symmetrisch und nicht asymmetrisch?',
@@ -11120,6 +11923,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11131,10 +11935,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-ch-2',
   'kryptographie_auth',
+  'kr-hybrid',
   'ordering',
   null,
   'Bringe die Schritte beim Aufbau einer HTTPS-Verbindung (vereinfacht) in die richtige Reihenfolge.',
@@ -11147,6 +11952,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11158,10 +11964,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-ch-3',
   'kryptographie_auth',
+  'kr-hybrid',
   'multiple',
   null,
   'Welche Angaben enthält ein X.509-Serverzertifikat?',
@@ -11174,6 +11981,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11185,10 +11993,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-ch-4',
   'kryptographie_auth',
+  'kr-hybrid',
   'single',
   'Ein Azubi ruft https://intranet.firma.example auf. Der Browser warnt. Das Zertifikat ist noch ein Jahr gültig, von einer bekannten CA signiert, nicht gesperrt und auf den Namen www.firma.example ausgestellt.',
   'Welche Prüfung schlägt fehl?',
@@ -11201,6 +12010,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11212,10 +12022,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-cx-1',
   'kryptographie_auth',
+  'kr-hash',
   'numeric',
   null,
   'Ein SHA-512-Hashwert wird hexadezimal dargestellt. Aus wie vielen Zeichen besteht er?',
@@ -11228,6 +12039,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11239,10 +12051,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-cx-2',
   'kryptographie_auth',
+  'kr-hash',
   'multiple',
   null,
   'Welche Eigenschaften hat eine kryptographische Hashfunktion?',
@@ -11255,6 +12068,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11266,10 +12080,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-cx-3',
   'kryptographie_auth',
+  'kr-hash',
   'single',
   'Für einen neuen Kundenbereich im Webshop soll festgelegt werden, wie Passwörter in der Datenbank gespeichert werden.',
   'Welche Lösung ist richtig?',
@@ -11282,6 +12097,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11293,10 +12109,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-cx-4',
   'kryptographie_auth',
+  'kr-hash',
   'single',
   'Eine Administratorin lädt ein Installationspaket herunter. Der SHA-256-Wert, den sie selbst berechnet, weicht vom Wert auf der Herstellerseite ab.',
   'Was bedeutet das?',
@@ -11309,6 +12126,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11320,10 +12138,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-cz-1',
   'kryptographie_auth',
+  'kr-auth',
   'multiple',
   null,
   'Welche Kombinationen sind eine echte Zwei-Faktor-Authentifizierung?',
@@ -11336,6 +12155,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11347,10 +12167,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-cz-2',
   'kryptographie_auth',
+  'kr-auth',
   'matching',
   null,
   'Ordne jeden Nachweis seiner Faktorkategorie zu.',
@@ -11363,6 +12184,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11374,10 +12196,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-cz-3',
   'kryptographie_auth',
+  'kr-auth',
   'numeric',
   null,
   'Ein Passwort besteht aus genau 4 Zeichen. Erlaubt sind die 26 Kleinbuchstaben und die 10 Ziffern. Wie viele verschiedene Passwörter sind möglich?',
@@ -11390,6 +12213,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11401,10 +12225,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-cz-4',
   'kryptographie_auth',
+  'kr-auth',
   'single',
   null,
   'Welche Regel entspricht den aktuellen Empfehlungen des BSI?',
@@ -11417,6 +12242,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11428,10 +12254,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xg-1',
   'datenschutz',
+  'ds-grundlagen',
   'multiple',
   null,
   'Welche Daten sind personenbezogen im Sinne der DSGVO?',
@@ -11444,6 +12271,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11455,10 +12283,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xg-2',
   'datenschutz',
+  'ds-grundlagen',
   'matching',
   null,
   'Ordne die Daten richtig ein.',
@@ -11471,6 +12300,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11482,10 +12312,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xg-3',
   'datenschutz',
+  'ds-grundlagen',
   'single',
   'Eine Arztpraxis lässt ihre Patientenverwaltung von einem externen Rechenzentrum betreiben. Das Rechenzentrum nutzt die Daten nur nach Vorgabe der Praxis.',
   'Welche Rolle hat das Rechenzentrum nach der DSGVO?',
@@ -11498,6 +12329,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11509,10 +12341,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xg-4',
   'datenschutz',
+  'ds-grundlagen',
   'single',
   null,
   'Wessen Daten schützt die DSGVO?',
@@ -11525,6 +12358,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11536,10 +12370,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xs-1',
   'datenschutz',
+  'ds-grundsaetze',
   'matching',
   null,
   'Gegen welchen Grundsatz verstößt jeder Fall am deutlichsten?',
@@ -11552,6 +12387,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11563,10 +12399,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xs-2',
   'datenschutz',
+  'ds-grundsaetze',
   'single',
   'Ein Webshop speichert die Lieferadresse, um eine Bestellung auszuliefern.',
   'Auf welche Rechtsgrundlage stützt sich diese Verarbeitung?',
@@ -11579,6 +12416,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11590,10 +12428,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xs-3',
   'datenschutz',
+  'ds-grundsaetze',
   'multiple',
   null,
   'Welche Aussagen zur Einwilligung sind richtig?',
@@ -11606,6 +12445,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11617,10 +12457,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xs-4',
   'datenschutz',
+  'ds-grundsaetze',
   'single',
   'Bei einer Prüfung verlangt die Aufsichtsbehörde von einem Unternehmen Belege, dass es die DSGVO einhält, etwa ein Verzeichnis der Verarbeitungstätigkeiten.',
   'Welcher Grundsatz steht dahinter?',
@@ -11633,6 +12474,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11644,10 +12486,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xr-1',
   'datenschutz',
+  'ds-rechte',
   'matching',
   null,
   'Welches Recht macht die Person jeweils geltend?',
@@ -11660,6 +12503,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11671,10 +12515,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xr-2',
   'datenschutz',
+  'ds-rechte',
   'numeric',
   null,
   'Eine Auskunftsanfrage ist sehr umfangreich. Der Verantwortliche verlängert die Frist ordnungsgemäß. Wie viele Monate hat er ab Eingang höchstens Zeit?',
@@ -11687,6 +12532,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11698,10 +12544,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xr-3',
   'datenschutz',
+  'ds-rechte',
   'single',
   'Ein Kunde verlangt, dass ein Onlineshop alle seine Daten löscht. Für seine Bestellungen liegen Rechnungen vor, die gesetzlich aufbewahrt werden müssen.',
   'Wie geht der Shop richtig vor?',
@@ -11714,6 +12561,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11725,10 +12573,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xr-4',
   'datenschutz',
+  'ds-rechte',
   'single',
   'Eine Kundin bestreitet, dass ihr gespeicherter Kontostand richtig ist. Die Prüfung dauert einige Tage.',
   'Welches Recht kann sie für diese Zeit geltend machen?',
@@ -11741,6 +12590,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11752,10 +12602,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xa-1',
   'datenschutz',
+  'ds-anonym',
   'matching',
   null,
   'Ist das Ergebnis anonym oder pseudonym?',
@@ -11768,6 +12619,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11779,10 +12631,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xa-2',
   'datenschutz',
+  'ds-anonym',
   'single',
   null,
   'Welche rechtliche Folge hat eine Pseudonymisierung?',
@@ -11795,6 +12648,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11806,10 +12660,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xa-3',
   'datenschutz',
+  'ds-anonym',
   'multiple',
   null,
   'Welche Verfahren dienen der Anonymisierung?',
@@ -11822,6 +12677,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11833,10 +12689,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xa-4',
   'datenschutz',
+  'ds-anonym',
   'single',
   'Die Personalabteilung gibt eine Tabelle mit dem Durchschnittsgehalt je Abteilung weiter. Namen enthält sie nicht. Die Abteilung „Recht“ hat nur eine Mitarbeiterin.',
   'Warum ist die Tabelle nicht vollständig anonym?',
@@ -11849,6 +12706,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11860,10 +12718,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xt-1',
   'datenschutz',
+  'ds-tom',
   'matching',
   null,
   'Ordne jede Maßnahme dem klassischen Kontrollziel zu.',
@@ -11876,6 +12735,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11887,10 +12747,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xt-2',
   'datenschutz',
+  'ds-tom',
   'matching',
   null,
   'Ist die Maßnahme technisch oder organisatorisch?',
@@ -11903,6 +12764,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11914,10 +12776,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xt-3',
   'datenschutz',
+  'ds-tom',
   'single',
   'Ein Softwarehaus betreibt eine Cloud-Lösung für mehrere Arztpraxen. Jede Praxis darf nur ihre eigenen Patientendaten sehen, die Daten liegen in getrennten Mandanten.',
   'Welches klassische Kontrollziel wird damit vor allem umgesetzt?',
@@ -11930,6 +12793,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11941,10 +12805,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a6-xt-4',
   'datenschutz',
+  'ds-tom',
   'multiple',
   null,
   'Was nennt Art. 32 DSGVO als Teil angemessener Sicherheitsmaßnahmen?',
@@ -11957,6 +12822,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11968,10 +12834,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-vz-1',
   'vertraege',
+  'vt-zustandekommen',
   'single',
   'Ein Systemhaus verschickt seinen Frühjahrskatalog mit Preisen an alle Kunden. Eine Arztpraxis bestellt daraufhin per E-Mail drei Notebooks zum Katalogpreis. Das Systemhaus bestätigt den Auftrag am nächsten Tag.',
   'Welche Erklärung ist hier der Antrag?',
@@ -11984,6 +12851,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -11995,10 +12863,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-vz-2',
   'vertraege',
+  'vt-zustandekommen',
   'matching',
   'Ein IT-Händler hat einer Kanzlei am 2. Mai ein schriftliches Angebot über zehn Monitore gemacht, gültig bis 16. Mai.',
   'Ordne jede Erklärung ihrer rechtlichen Wirkung zu.',
@@ -12011,6 +12880,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12022,10 +12892,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-vz-3',
   'vertraege',
+  'vt-zustandekommen',
   'multiple',
   null,
   'Welche Aussagen zur Geschäftsfähigkeit sind richtig?',
@@ -12038,6 +12909,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12049,10 +12921,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-vy-1',
   'vertraege',
+  'vt-arten',
   'matching',
   null,
   'Ordne jede Vereinbarung der passenden Vertragsart zu.',
@@ -12065,6 +12938,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12076,10 +12950,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-vy-2',
   'vertraege',
+  'vt-arten',
   'single',
   'Ein Softwarehaus bucht eine freiberufliche Entwicklerin: „Unterstützung des Entwicklungsteams, 40 Stunden pro Woche, Abrechnung nach geleisteten Stunden.“ Ein bestimmtes Ergebnis wird nicht vereinbart.',
   'Welche Vertragsart liegt vor?',
@@ -12092,6 +12967,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12103,10 +12979,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-vu-1',
   'vertraege',
+  'vt-urheber',
   'multiple',
   null,
   'Welche Aussagen zum Urheberrecht an Software sind richtig?',
@@ -12119,6 +12996,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12130,10 +13008,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-vu-2',
   'vertraege',
+  'vt-urheber',
   'single',
   'Eine Agentur entwickelt für einen Webshop-Betreiber eine Rabattsoftware. Im Vertrag erhält der Kunde ein ausschließliches, zeitlich und räumlich unbeschränktes Nutzungsrecht. Ein Jahr später möchte die Agentur dieselbe Software an einen Konkurrenten des Kunden lizenzieren.',
   'Wie ist die Lage?',
@@ -12146,6 +13025,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12157,10 +13037,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-li-1',
   'sla_service',
+  'sla-inhalte',
   'numeric',
   'Ein SLA für ein Warenwirtschaftssystem legt die Servicezeit auf Montag bis Freitag, 8 bis 18 Uhr fest. Zugesichert sind 99 % Verfügbarkeit, bezogen auf die Servicezeit eines Monats. Der betrachtete Monat hat 22 Arbeitstage.',
   'Wie viele Minuten Ausfall sind innerhalb der Servicezeit in diesem Monat höchstens zulässig?',
@@ -12173,6 +13054,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12184,10 +13066,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-li-2',
   'sla_service',
+  'sla-inhalte',
   'single',
   'Ein SLA sieht eine Servicezeit von Montag bis Freitag, 8 bis 18 Uhr vor und eine Reaktionszeit von 2 Stunden. Die Reaktionszeit zählt nur innerhalb der Servicezeit. Eine Störung wird am Freitag um 17:30 Uhr gemeldet.',
   'Bis wann muss der Dienstleister spätestens reagieren?',
@@ -12200,6 +13083,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12211,10 +13095,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-ls-1',
   'sla_service',
+  'sla-support',
   'numeric',
   null,
   'Der Service Desk hat im Quartal 1.500 Tickets erfasst. 1.020 davon wurden im 1st Level gelöst, ohne weitergegeben zu werden. Wie hoch ist die First Level Resolution Rate?',
@@ -12227,6 +13112,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12238,10 +13124,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-ls-2',
   'sla_service',
+  'sla-support',
   'matching',
   null,
   'Handelt es sich um eine funktionale oder eine hierarchische Eskalation?',
@@ -12254,6 +13141,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12265,10 +13153,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-ls-3',
   'sla_service',
+  'sla-support',
   'single',
   null,
   'Welches Ticket erhält nach der Prioritätsmatrix (Auswirkung × Dringlichkeit) die höchste Priorität?',
@@ -12281,6 +13170,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12292,10 +13182,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-lt-1',
   'sla_service',
+  'sla-itil',
   'matching',
   null,
   'Ordne jeden Vorgang dem passenden ITIL-Begriff zu.',
@@ -12308,6 +13199,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12319,10 +13211,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-lt-2',
   'sla_service',
+  'sla-itil',
   'multiple',
   null,
   'Welche Aussagen zu den ITIL-Prozessen sind richtig?',
@@ -12335,6 +13228,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12346,10 +13240,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-lt-3',
   'sla_service',
+  'sla-itil',
   'ordering',
   'Die Scanner-App im Lager stürzt mehrmals täglich ab.',
   'Bringe die Schritte in die richtige Reihenfolge.',
@@ -12362,6 +13257,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12373,10 +13269,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-gv-1',
   'leistungsstoerungen',
+  'ls-verzug',
   'numeric',
   'Ein Systemhaus hat einem Handwerksbetrieb eine Rechnung über 8.000 € gestellt. Beide sind Unternehmen, kein Verbraucher ist beteiligt. Der Betrieb ist 146 Tage im Zahlungsverzug. Der Basiszinssatz beträgt in dieser Aufgabe 1,5 %.',
   'Wie hoch sind die Verzugszinsen ohne die Pauschale? (Zins = Betrag × Satz × Tage / 365, auf Cent runden)',
@@ -12389,6 +13286,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12400,10 +13298,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-gv-2',
   'leistungsstoerungen',
+  'ls-verzug',
   'single',
   'Ein Händler sollte am 15. März 20 Notebooks liefern. Der Termin ist verstrichen, es handelt sich nicht um ein Fixgeschäft, und der Händler hat die Lieferung nicht verweigert. Der Käufer möchte die Geräte nun woanders kaufen.',
   'Was muss der Käufer grundsätzlich tun, bevor er vom Vertrag zurücktreten kann?',
@@ -12416,6 +13315,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12427,10 +13327,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-gv-3',
   'leistungsstoerungen',
+  'ls-verzug',
   'multiple',
   null,
   'Welche Aussagen zum Zahlungsverzug sind richtig?',
@@ -12443,6 +13344,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12454,10 +13356,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-gm-1',
   'leistungsstoerungen',
+  'ls-maengel',
   'matching',
   null,
   'Ordne jeden Mangel nach seiner Erkennbarkeit ein.',
@@ -12470,6 +13373,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12481,10 +13385,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-gm-2',
   'leistungsstoerungen',
+  'ls-maengel',
   'single',
   'Eine Privatkundin kauft bei einem Händler ein neues Notebook. Nach drei Monaten fällt die Tastatur aus. Der Mangel war schon bei Übergabe angelegt.',
   'Was kann sie vom Händler zuerst verlangen?',
@@ -12497,6 +13402,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12508,10 +13414,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-gm-3',
   'leistungsstoerungen',
+  'ls-maengel',
   'multiple',
   null,
   'Welche Aussagen zu Gewährleistung und Garantie sind richtig?',
@@ -12524,6 +13431,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12535,10 +13443,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-ga-1',
   'leistungsstoerungen',
+  'ls-abnahme',
   'single',
   'Eine Agentur hat einem Großhändler ein Kundenportal fertiggestellt. Sie fordert ihn schriftlich auf, das Portal innerhalb von 14 Tagen abzunehmen. Der Großhändler reagiert nicht und nennt keinen Mangel.',
   'Welche Folge hat das nach Ablauf der Frist?',
@@ -12551,6 +13460,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12562,10 +13472,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-ga-2',
   'leistungsstoerungen',
+  'ls-abnahme',
   'multiple',
   null,
   'Welche Rechtsfolgen hat die Abnahme beim Werkvertrag?',
@@ -12578,6 +13489,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12589,10 +13501,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-cl-1',
   'change_management',
+  'cm-lewin',
   'matching',
   'Ein IT-Dienstleister ersetzt seine Support-Postfächer durch ein Ticketsystem.',
   'Ordne jede Maßnahme der passenden Phase nach Lewin zu.',
@@ -12605,6 +13518,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12616,10 +13530,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-cl-2',
   'change_management',
+  'cm-lewin',
   'single',
   'Ein neues CRM wurde mit guten Schulungen eingeführt. Zwei Monate später pflegen viele Mitarbeitende ihre Kundendaten wieder in privaten Excel-Listen. Die Listen waren nie abgeschafft worden.',
   'Welche Phase nach Lewin wurde vernachlässigt?',
@@ -12632,6 +13547,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12643,10 +13559,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-cw-1',
   'change_management',
+  'cm-widerstand',
   'matching',
   null,
   'Welche Ursache steckt hinter der Aussage?',
@@ -12659,6 +13576,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12670,10 +13588,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-cw-2',
   'change_management',
+  'cm-widerstand',
   'single',
   null,
   'Welches Verhalten ist ein Beispiel für verdeckten Widerstand?',
@@ -12686,6 +13605,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12697,10 +13617,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-ck-1',
   'change_management',
+  'cm-kaizen',
   'matching',
   null,
   'Ist die Maßnahme eher Kaizen (KVP) oder Business Process Reengineering?',
@@ -12713,6 +13634,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12724,10 +13646,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_questions
-  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+  (id, topic_id, subtopic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
 values (
   'a7-ck-2',
   'change_management',
+  'cm-kaizen',
   'ordering',
   'Im Service Desk dauert das Anlegen neuer Benutzerkonten zu lange.',
   'Bringe die Schritte des PDCA-Zyklus in die richtige Reihenfolge.',
@@ -12740,6 +13663,7 @@ values (
 )
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   kind = excluded.kind,
   scenario = excluded.scenario,
   prompt = excluded.prompt,
@@ -12752,10 +13676,11 @@ on conflict (id) do update set
 
 -- Karteikarten ----------------------------------------------
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-org-01', 'projektorganisation', 'Projekt (DIN 69901)', 'Vorhaben mit Einmaligkeit der Bedingungen, zeitlicher/finanzieller/personeller Begrenzung, eigener Organisation und Abgrenzung gegenüber anderen Vorhaben.', 'Vier Haken: einmalig, begrenzt, eigene Organisation, abgegrenzt. Keine Mindestgröße, kein Mindestbudget.', '{}', 0)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-org-01', 'projektorganisation', 'p-begriff', 'Projekt (DIN 69901)', 'Vorhaben mit Einmaligkeit der Bedingungen, zeitlicher/finanzieller/personeller Begrenzung, eigener Organisation und Abgrenzung gegenüber anderen Vorhaben.', 'Vier Haken: einmalig, begrenzt, eigene Organisation, abgegrenzt. Keine Mindestgröße, kein Mindestbudget.', '{}', 0)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12764,10 +13689,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-org-02', 'projektorganisation', 'Magisches Dreieck', 'Zeit, Kosten und Leistung/Qualität. Sind zwei Größen fixiert, ist die dritte die abhängige Variable.', 'In Prüfungsaufgaben steht die Lösung in der Angabe: Welche zwei Ecken werden als fest beschrieben?', '{}', 1)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-org-02', 'projektorganisation', 'p-ziele', 'Magisches Dreieck', 'Zeit, Kosten und Leistung/Qualität. Sind zwei Größen fixiert, ist die dritte die abhängige Variable.', 'In Prüfungsaufgaben steht die Lösung in der Angabe: Welche zwei Ecken werden als fest beschrieben?', '{}', 1)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12776,10 +13702,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-org-03', 'projektorganisation', 'SMART-Ziele', 'Spezifisch, Messbar, Attraktiv (akzeptiert), Realistisch, Terminiert.', 'Neu im Katalog 2025. "Die Software soll besser werden" ist kein SMARTes Ziel - es fehlt alles außer S.', '{}', 2)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-org-03', 'projektorganisation', 'p-ziele', 'SMART-Ziele', 'Spezifisch, Messbar, Attraktiv (akzeptiert), Realistisch, Terminiert.', 'Neu im Katalog 2025. "Die Software soll besser werden" ist kein SMARTes Ziel - es fehlt alles außer S.', '{}', 2)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12788,10 +13715,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-org-04', 'projektorganisation', 'Reine Projektorganisation', 'Das Team wird vollständig aus der Linie herausgelöst. Die Projektleitung hat fachliche UND disziplinarische Weisungsbefugnis.', 'Viel Macht, viel Aufwand - und nach Projektende ein Rückkehrproblem.', '{}', 3)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-org-04', 'projektorganisation', 'p-organisation', 'Reine Projektorganisation', 'Das Team wird vollständig aus der Linie herausgelöst. Die Projektleitung hat fachliche UND disziplinarische Weisungsbefugnis.', 'Viel Macht, viel Aufwand - und nach Projektende ein Rückkehrproblem.', '{}', 3)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12800,10 +13728,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-org-05', 'projektorganisation', 'Matrix-Organisation', 'Weisungsbefugnis geteilt: fachlich beim Projekt, disziplinarisch in der Linie.', 'Der Normalfall - und die Dauerquelle von Prioritätenkonflikten, weil jeder zwei Chefs hat.', '{}', 4)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-org-05', 'projektorganisation', 'p-organisation', 'Matrix-Organisation', 'Weisungsbefugnis geteilt: fachlich beim Projekt, disziplinarisch in der Linie.', 'Der Normalfall - und die Dauerquelle von Prioritätenkonflikten, weil jeder zwei Chefs hat.', '{}', 4)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12812,10 +13741,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-org-06', 'projektorganisation', 'Stabs-/Einflussorganisation', 'Die Projektleitung koordiniert und berichtet, hat aber kein Weisungsrecht.', 'Billig und zahnlos - das Gegenstück zur reinen Projektorganisation.', '{}', 5)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-org-06', 'projektorganisation', 'p-organisation', 'Stabs-/Einflussorganisation', 'Die Projektleitung koordiniert und berichtet, hat aber kein Weisungsrecht.', 'Billig und zahnlos - das Gegenstück zur reinen Projektorganisation.', '{}', 5)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12824,10 +13754,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-org-07', 'projektorganisation', 'Stakeholder', 'Alle Personen und Gruppen, die vom Projekt betroffen sind oder es beeinflussen können - intern wie extern.', 'Betriebsrat, Kunden, Lieferanten, Fachabteilungen, Behörden.', '{}', 6)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-org-07', 'projektorganisation', 'p-stakeholder', 'Stakeholder', 'Alle Personen und Gruppen, die vom Projekt betroffen sind oder es beeinflussen können - intern wie extern.', 'Betriebsrat, Kunden, Lieferanten, Fachabteilungen, Behörden.', '{}', 6)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12836,10 +13767,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-org-08', 'projektorganisation', 'Stakeholder-Matrix: hoher Einfluss, geringes Interesse', 'Strategie "zufriedenstellen": regelmäßig informieren, aber nicht mit Details überfrachten.', 'Das unintuitivste Feld - und deshalb das am häufigsten gefragte.', '{}', 7)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-org-08', 'projektorganisation', 'p-stakeholder', 'Stakeholder-Matrix: hoher Einfluss, geringes Interesse', 'Strategie "zufriedenstellen": regelmäßig informieren, aber nicht mit Details überfrachten.', 'Das unintuitivste Feld - und deshalb das am häufigsten gefragte.', '{}', 7)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12848,10 +13780,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-org-09', 'projektorganisation', 'Stakeholder-Matrix: die vier Felder', 'Einfluss+Interesse hoch = eng einbinden. Einfluss hoch/Interesse niedrig = zufriedenstellen. Einfluss niedrig/Interesse hoch = informieren. Beides niedrig = beobachten.', null, '{}', 8)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-org-09', 'projektorganisation', 'p-stakeholder', 'Stakeholder-Matrix: die vier Felder', 'Einfluss+Interesse hoch = eng einbinden. Einfluss hoch/Interesse niedrig = zufriedenstellen. Einfluss niedrig/Interesse hoch = informieren. Beides niedrig = beobachten.', null, '{}', 8)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12860,10 +13793,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-org-10', 'projektorganisation', 'Projektauftrag', 'Die Geburtsurkunde des Projekts: Ziel, Nicht-Ziele, Termin- und Budgetrahmen, benannte Projektleitung mit Befugnissen, Abnahmekriterien.', 'Kein Netzplan und keine Architektur - das ist Detailplanung und kommt danach.', '{}', 9)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-org-10', 'projektorganisation', 'p-ziele', 'Projektauftrag', 'Die Geburtsurkunde des Projekts: Ziel, Nicht-Ziele, Termin- und Budgetrahmen, benannte Projektleitung mit Befugnissen, Abnahmekriterien.', 'Kein Netzplan und keine Architektur - das ist Detailplanung und kommt danach.', '{}', 9)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12872,10 +13806,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-org-11', 'projektorganisation', 'Nicht-Ziele im Projektauftrag', 'Ausdrückliche Festlegung, was NICHT zum Projektumfang gehört.', 'Der billigste Schutz gegen Scope Creep - und der am häufigsten vergessene Abschnitt.', '{}', 10)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-org-11', 'projektorganisation', 'p-ziele', 'Nicht-Ziele im Projektauftrag', 'Ausdrückliche Festlegung, was NICHT zum Projektumfang gehört.', 'Der billigste Schutz gegen Scope Creep - und der am häufigsten vergessene Abschnitt.', '{}', 10)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12884,10 +13819,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-org-12', 'projektorganisation', 'Kick-off-Meeting', 'Startveranstaltung eines Projekts: Ziele, Rollen, Vorgehen und Spielregeln werden allen Beteiligten gemeinsam vorgestellt.', 'Zweck ist gemeinsames Verständnis, nicht Detailplanung.', '{}', 11)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-org-12', 'projektorganisation', 'p-rollen', 'Kick-off-Meeting', 'Startveranstaltung eines Projekts: Ziele, Rollen, Vorgehen und Spielregeln werden allen Beteiligten gemeinsam vorgestellt.', 'Zweck ist gemeinsames Verständnis, nicht Detailplanung.', '{}', 11)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12896,10 +13832,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-org-13', 'projektorganisation', 'Meilenstein', 'Ereignis mit der Dauer null, an dem ein definiertes Zwischenergebnis vorliegt. Verbraucht weder Zeit noch Ressourcen.', 'Binär prüfbar formulieren: "Pflichtenheft unterzeichnet", nicht "Konzept weitgehend fertig".', '{}', 12)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-org-13', 'projektorganisation', 'p-ziele', 'Meilenstein', 'Ereignis mit der Dauer null, an dem ein definiertes Zwischenergebnis vorliegt. Verbraucht weder Zeit noch Ressourcen.', 'Binär prüfbar formulieren: "Pflichtenheft unterzeichnet", nicht "Konzept weitgehend fertig".', '{}', 12)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12908,10 +13845,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-org-14', 'projektorganisation', 'Lenkungsausschuss', 'Entscheidungsgremium oberhalb der Projektleitung: gibt Budget frei, entscheidet über Change Requests und Eskalationen.', 'In Scrum nicht vorgesehen - dort entscheidet der Product Owner über Inhalte.', '{}', 13)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-org-14', 'projektorganisation', 'p-rollen', 'Lenkungsausschuss', 'Entscheidungsgremium oberhalb der Projektleitung: gibt Budget frei, entscheidet über Change Requests und Eskalationen.', 'In Scrum nicht vorgesehen - dort entscheidet der Product Owner über Inhalte.', '{}', 13)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12920,10 +13858,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-org-15', 'projektorganisation', 'Aufgaben der Projektleitung', 'Planen, steuern, kontrollieren, Team führen, Stakeholder informieren, Risiken managen, Abweichungen melden.', 'Nicht: selbst programmieren. Die Projektleitung verantwortet das Wie-Viel und Wann, nicht die Umsetzung.', '{}', 14)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-org-15', 'projektorganisation', 'p-rollen', 'Aufgaben der Projektleitung', 'Planen, steuern, kontrollieren, Team führen, Stakeholder informieren, Risiken managen, Abweichungen melden.', 'Nicht: selbst programmieren. Die Projektleitung verantwortet das Wie-Viel und Wann, nicht die Umsetzung.', '{}', 14)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12932,10 +13871,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-vor-01', 'vorgehensmodelle', 'Vorgehensmodelle im Katalog 2025', 'Nur noch Wasserfallmodell und Scrum. V-Modell, Spiralmodell, XP und Kanban sind gestrichen.', 'Wer noch V-Modell paukt, lernt an der AP1 vorbei.', '{}', 15)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-vor-01', 'vorgehensmodelle', 'v-auswahl', 'Vorgehensmodelle im Katalog 2025', 'Nur noch Wasserfallmodell und Scrum. V-Modell, Spiralmodell, XP und Kanban sind gestrichen.', 'Wer noch V-Modell paukt, lernt an der AP1 vorbei.', '{}', 15)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12944,10 +13884,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-vor-02', 'vorgehensmodelle', 'Wasserfallmodell', 'Streng sequenzielles Vorgehen: jede Phase endet mit einem freigegebenen Dokument, erst dann startet die nächste.', 'Voraussetzung: Anforderungen sind zu Projektbeginn vollständig bekannt.', '{}', 16)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-vor-02', 'vorgehensmodelle', 'v-wasserfall', 'Wasserfallmodell', 'Streng sequenzielles Vorgehen: jede Phase endet mit einem freigegebenen Dokument, erst dann startet die nächste.', 'Voraussetzung: Anforderungen sind zu Projektbeginn vollständig bekannt.', '{}', 16)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12956,10 +13897,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-vor-03', 'vorgehensmodelle', 'Phasen des Wasserfallmodells', 'Analyse/Anforderungsdefinition, Entwurf, Implementierung, Test, Einführung und Wartung.', null, '{}', 17)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-vor-03', 'vorgehensmodelle', 'v-wasserfall', 'Phasen des Wasserfallmodells', 'Analyse/Anforderungsdefinition, Entwurf, Implementierung, Test, Einführung und Wartung.', null, '{}', 17)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12968,10 +13910,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-vor-04', 'vorgehensmodelle', 'Rule of Ten', 'Die Kosten der Fehlerbehebung verzehnfachen sich mit jeder Phase, in der der Fehler unentdeckt bleibt.', 'Analyse 1 Euro, Entwurf 10, Implementierung 100, beim Kunden 1.000.', '{}', 18)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-vor-04', 'vorgehensmodelle', 'v-wasserfall', 'Rule of Ten', 'Die Kosten der Fehlerbehebung verzehnfachen sich mit jeder Phase, in der der Fehler unentdeckt bleibt.', 'Analyse 1 Euro, Entwurf 10, Implementierung 100, beim Kunden 1.000.', '{}', 18)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12980,10 +13923,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-vor-05', 'vorgehensmodelle', 'Größter Nachteil des Wasserfalls', 'Fehler aus der Analyse fallen erst im Test auf - dann müssen alle darauf aufbauenden Phasen korrigiert werden.', null, '{}', 19)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-vor-05', 'vorgehensmodelle', 'v-wasserfall', 'Größter Nachteil des Wasserfalls', 'Fehler aus der Analyse fallen erst im Test auf - dann müssen alle darauf aufbauenden Phasen korrigiert werden.', null, '{}', 19)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -12992,10 +13936,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-vor-06', 'vorgehensmodelle', 'Vorteile des Wasserfalls', 'Klare Struktur, gute Planbarkeit, feste Kosten und Termine, einfache Fortschrittskontrolle, vollständige Dokumentation.', null, '{}', 20)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-vor-06', 'vorgehensmodelle', 'v-wasserfall', 'Vorteile des Wasserfalls', 'Klare Struktur, gute Planbarkeit, feste Kosten und Termine, einfache Fortschrittskontrolle, vollständige Dokumentation.', null, '{}', 20)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13004,10 +13949,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-vor-07', 'vorgehensmodelle', 'Wann Wasserfall, wann agil?', 'Anforderungen stabil und vertraglich fixiert -> Wasserfall. Anforderungen unklar oder veränderlich -> agil.', 'Öffentliche Ausschreibung = Wasserfall. Produktentwicklung mit unklarem Zielbild = Scrum.', '{}', 21)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-vor-07', 'vorgehensmodelle', 'v-auswahl', 'Wann Wasserfall, wann agil?', 'Anforderungen stabil und vertraglich fixiert -> Wasserfall. Anforderungen unklar oder veränderlich -> agil.', 'Öffentliche Ausschreibung = Wasserfall. Produktentwicklung mit unklarem Zielbild = Scrum.', '{}', 21)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13016,10 +13962,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-vor-08', 'vorgehensmodelle', 'Phasenmodell (4 Phasen)', 'Initiierung, Planung, Durchführung/Steuerung, Abschluss.', 'Gilt modellunabhängig für jedes Projekt - auch für ein agiles.', '{}', 22)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-vor-08', 'vorgehensmodelle', 'v-phasen', 'Phasenmodell (4 Phasen)', 'Initiierung, Planung, Durchführung/Steuerung, Abschluss.', 'Gilt modellunabhängig für jedes Projekt - auch für ein agiles.', '{}', 22)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13028,10 +13975,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-vor-09', 'vorgehensmodelle', 'Iterativ-inkrementell', 'Iterativ = in wiederholten Durchläufen verfeinern. Inkrementell = in auslieferbaren Teilstücken wachsen.', 'Scrum ist beides. Der Unterschied wird gern verwechselt.', '{}', 23)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-vor-09', 'vorgehensmodelle', 'v-auswahl', 'Iterativ-inkrementell', 'Iterativ = in wiederholten Durchläufen verfeinern. Inkrementell = in auslieferbaren Teilstücken wachsen.', 'Scrum ist beides. Der Unterschied wird gern verwechselt.', '{}', 23)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13040,10 +13988,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-vor-10', 'vorgehensmodelle', 'Agiles Manifest: die vier Werte', 'Individuen und Interaktionen MEHR ALS Prozesse und Werkzeuge; funktionierende Software MEHR ALS umfassende Dokumentation; Zusammenarbeit mit dem Kunden MEHR ALS Vertragsverhandlung; Reagieren auf Veränderung MEHR ALS Befolgen eines Plans.', '"Mehr als", nicht "statt". Agil heißt nicht dokumentationsfrei - das ist der häufigste Prüfungsfehler.', '{}', 24)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-vor-10', 'vorgehensmodelle', 'v-auswahl', 'Agiles Manifest: die vier Werte', 'Individuen und Interaktionen MEHR ALS Prozesse und Werkzeuge; funktionierende Software MEHR ALS umfassende Dokumentation; Zusammenarbeit mit dem Kunden MEHR ALS Vertragsverhandlung; Reagieren auf Veränderung MEHR ALS Befolgen eines Plans.', '"Mehr als", nicht "statt". Agil heißt nicht dokumentationsfrei - das ist der häufigste Prüfungsfehler.', '{}', 24)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13052,10 +14001,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-vor-11', 'vorgehensmodelle', 'Lastenheft im Wasserfall', 'Entsteht in der Analysephase und ist Grundlage der Ausschreibung. Danach folgt das Pflichtenheft des Auftragnehmers.', null, '{}', 25)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-vor-11', 'vorgehensmodelle', 'v-wasserfall', 'Lastenheft im Wasserfall', 'Entsteht in der Analysephase und ist Grundlage der Ausschreibung. Danach folgt das Pflichtenheft des Auftragnehmers.', null, '{}', 25)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13064,10 +14014,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-vor-12', 'vorgehensmodelle', 'Warum Phasen mit Dokumenten enden', 'Das Dokument ist das prüfbare Ergebnis und die Freigabegrundlage. Ohne Freigabe kein Phasenübergang - so entsteht Verbindlichkeit.', null, '{}', 26)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-vor-12', 'vorgehensmodelle', 'v-phasen', 'Warum Phasen mit Dokumenten enden', 'Das Dokument ist das prüfbare Ergebnis und die Freigabegrundlage. Ohne Freigabe kein Phasenübergang - so entsteht Verbindlichkeit.', null, '{}', 26)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13076,10 +14027,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-scr-01', 'agil_scrum', 'Scrum: die drei Verantwortlichkeiten', 'Product Owner, Scrum Master, Developers.', 'Product Owner = WAS und in welcher Reihenfolge. Developers = WIE und wie viel. Scrum Master = DASS es funktioniert.', '{}', 27)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-scr-01', 'agil_scrum', 's-rollen', 'Scrum: die drei Verantwortlichkeiten', 'Product Owner, Scrum Master, Developers.', 'Product Owner = WAS und in welcher Reihenfolge. Developers = WIE und wie viel. Scrum Master = DASS es funktioniert.', '{}', 27)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13088,10 +14040,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-scr-02', 'agil_scrum', 'Product Owner', 'Verantwortet die Wertmaximierung des Produkts und die Reihenfolge im Product Backlog. Entscheidet allein über die Priorisierung.', 'Darf sich beraten lassen - aber niemand priorisiert gegen ihn.', '{}', 28)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-scr-02', 'agil_scrum', 's-rollen', 'Product Owner', 'Verantwortet die Wertmaximierung des Produkts und die Reihenfolge im Product Backlog. Entscheidet allein über die Priorisierung.', 'Darf sich beraten lassen - aber niemand priorisiert gegen ihn.', '{}', 28)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13100,10 +14053,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-scr-03', 'agil_scrum', 'Scrum Master', 'Verantwortet die Wirksamkeit von Scrum: moderiert Events, räumt Hindernisse weg, coacht Team und Organisation.', 'Kein Projektleiter, kein Vorgesetzter, priorisiert nichts.', '{}', 29)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-scr-03', 'agil_scrum', 's-rollen', 'Scrum Master', 'Verantwortet die Wirksamkeit von Scrum: moderiert Events, räumt Hindernisse weg, coacht Team und Organisation.', 'Kein Projektleiter, kein Vorgesetzter, priorisiert nichts.', '{}', 29)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13112,10 +14066,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-scr-04', 'agil_scrum', 'Developers', 'Erstellen das Increment. Entscheiden, WIE gearbeitet wird und wie viel in den Sprint passt.', null, '{}', 30)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-scr-04', 'agil_scrum', 's-rollen', 'Developers', 'Erstellen das Increment. Entscheiden, WIE gearbeitet wird und wie viel in den Sprint passt.', null, '{}', 30)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13124,10 +14079,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-scr-05', 'agil_scrum', 'Die drei Scrum-Artefakte', 'Product Backlog, Sprint Backlog, Increment.', null, '{}', 31)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-scr-05', 'agil_scrum', 's-artefakte', 'Die drei Scrum-Artefakte', 'Product Backlog, Sprint Backlog, Increment.', null, '{}', 31)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13136,10 +14092,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-scr-06', 'agil_scrum', 'Commitments der Artefakte', 'Product Backlog -> Product Goal. Sprint Backlog -> Sprint Goal. Increment -> Definition of Done.', 'Wird gern gefragt, weil viele die DoD fälschlich dem Sprint Backlog zuordnen.', '{}', 32)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-scr-06', 'agil_scrum', 's-artefakte', 'Commitments der Artefakte', 'Product Backlog -> Product Goal. Sprint Backlog -> Sprint Goal. Increment -> Definition of Done.', 'Wird gern gefragt, weil viele die DoD fälschlich dem Sprint Backlog zuordnen.', '{}', 32)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13148,10 +14105,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-scr-07', 'agil_scrum', 'Die fünf Scrum-Events', 'Sprint (Container), Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective.', 'Refinement ist KEIN Event, sondern eine laufende Tätigkeit.', '{}', 33)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-scr-07', 'agil_scrum', 's-events', 'Die fünf Scrum-Events', 'Sprint (Container), Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective.', 'Refinement ist KEIN Event, sondern eine laufende Tätigkeit.', '{}', 33)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13160,10 +14118,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-scr-08', 'agil_scrum', 'Timeboxen bei einem Monatssprint', 'Sprint Planning max. 8 h, Daily Scrum 15 min, Sprint Review max. 4 h, Retrospective max. 3 h.', 'Merkhilfe 8-4-3 und das Daily als Konstante - es bleibt immer 15 Minuten.', '{}', 34)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-scr-08', 'agil_scrum', 's-events', 'Timeboxen bei einem Monatssprint', 'Sprint Planning max. 8 h, Daily Scrum 15 min, Sprint Review max. 4 h, Retrospective max. 3 h.', 'Merkhilfe 8-4-3 und das Daily als Konstante - es bleibt immer 15 Minuten.', '{}', 34)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13172,10 +14131,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-scr-09', 'agil_scrum', 'Review vs. Retrospective', 'Review = das Produkt, mit Stakeholdern. Retrospective = die Zusammenarbeit, nur das Scrum Team. Das Review kommt zuerst.', null, '{}', 35)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-scr-09', 'agil_scrum', 's-events', 'Review vs. Retrospective', 'Review = das Produkt, mit Stakeholdern. Retrospective = die Zusammenarbeit, nur das Scrum Team. Das Review kommt zuerst.', null, '{}', 35)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13184,10 +14144,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-scr-10', 'agil_scrum', 'Definition of Done', 'Teamweit gültige Checkliste, wann ein Increment wirklich fertig und potenziell auslieferbar ist.', 'Gilt für JEDE Story. Nicht verwechseln mit Akzeptanzkriterien, die pro Story gelten.', '{}', 36)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-scr-10', 'agil_scrum', 's-artefakte', 'Definition of Done', 'Teamweit gültige Checkliste, wann ein Increment wirklich fertig und potenziell auslieferbar ist.', 'Gilt für JEDE Story. Nicht verwechseln mit Akzeptanzkriterien, die pro Story gelten.', '{}', 36)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13196,10 +14157,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-scr-11', 'agil_scrum', 'Akzeptanzkriterien', 'Fachliche, prüfbare Bedingungen einer einzelnen User Story.', 'Story-spezifisch. Die Definition of Done ist handwerklich und teamweit - beides muss erfüllt sein.', '{}', 37)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-scr-11', 'agil_scrum', 's-stories', 'Akzeptanzkriterien', 'Fachliche, prüfbare Bedingungen einer einzelnen User Story.', 'Story-spezifisch. Die Definition of Done ist handwerklich und teamweit - beides muss erfüllt sein.', '{}', 37)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13208,10 +14170,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-scr-12', 'agil_scrum', 'User-Story-Format', 'Als <Rolle> möchte ich <Ziel>, um <Nutzen>.', 'Der "um ... zu"-Teil ist der wichtigste - und der am häufigsten weggelassene.', '{}', 38)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-scr-12', 'agil_scrum', 's-stories', 'User-Story-Format', 'Als <Rolle> möchte ich <Ziel>, um <Nutzen>.', 'Der "um ... zu"-Teil ist der wichtigste - und der am häufigsten weggelassene.', '{}', 38)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13220,10 +14183,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-scr-13', 'agil_scrum', 'INVEST', 'Independent, Negotiable, Valuable, Estimable, Small, Testable - Qualitätscheck für User Stories.', null, '{}', 39)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-scr-13', 'agil_scrum', 's-stories', 'INVEST', 'Independent, Negotiable, Valuable, Estimable, Small, Testable - Qualitätscheck für User Stories.', null, '{}', 39)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13232,10 +14196,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-scr-14', 'agil_scrum', 'Story Points', 'Relative Aufwandsschätzung statt Stunden. Menschen vergleichen zuverlässiger, als sie absolute Zeiten schätzen.', null, '{}', 40)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-scr-14', 'agil_scrum', 's-stories', 'Story Points', 'Relative Aufwandsschätzung statt Stunden. Menschen vergleichen zuverlässiger, als sie absolute Zeiten schätzen.', null, '{}', 40)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13244,10 +14209,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-scr-15', 'agil_scrum', 'Velocity', 'Durchschnittlich pro Sprint abgeschlossene Story Points. Nur fertige (DoD erfüllte) Items zählen.', 'Restaufwand / Velocity = verbleibende Sprints, immer aufgerundet.', '{}', 41)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-scr-15', 'agil_scrum', 's-stories', 'Velocity', 'Durchschnittlich pro Sprint abgeschlossene Story Points. Nur fertige (DoD erfüllte) Items zählen.', 'Restaufwand / Velocity = verbleibende Sprints, immer aufgerundet.', '{}', 41)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13256,10 +14222,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-scr-16', 'agil_scrum', 'Epic', 'Eine User Story, die zu groß für einen Sprint ist. Wird im Refinement in kleinere Stories geteilt.', null, '{}', 42)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-scr-16', 'agil_scrum', 's-stories', 'Epic', 'Eine User Story, die zu groß für einen Sprint ist. Wird im Refinement in kleinere Stories geteilt.', null, '{}', 42)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13268,10 +14235,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-np-01', 'netzplan', 'FAZ', 'Frühester Anfangszeitpunkt = größter FEZ aller Vorgänger. Startvorgang: 0.', 'Vorwärts immer das MAXIMUM - der Vorgang startet erst, wenn der letzte Vorgänger fertig ist.', '{}', 43)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-np-01', 'netzplan', 'n-vorwaerts', 'FAZ', 'Frühester Anfangszeitpunkt = größter FEZ aller Vorgänger. Startvorgang: 0.', 'Vorwärts immer das MAXIMUM - der Vorgang startet erst, wenn der letzte Vorgänger fertig ist.', '{}', 43)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13280,10 +14248,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-np-02', 'netzplan', 'FEZ', 'Frühester Endzeitpunkt = FAZ + Dauer.', null, '{}', 44)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-np-02', 'netzplan', 'n-vorwaerts', 'FEZ', 'Frühester Endzeitpunkt = FAZ + Dauer.', null, '{}', 44)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13292,10 +14261,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-np-03', 'netzplan', 'SEZ', 'Spätester Endzeitpunkt = kleinster SAZ aller Nachfolger. Endvorgang: SEZ = Projektdauer.', 'Rückwärts immer das MINIMUM.', '{}', 45)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-np-03', 'netzplan', 'n-rueckwaerts', 'SEZ', 'Spätester Endzeitpunkt = kleinster SAZ aller Nachfolger. Endvorgang: SEZ = Projektdauer.', 'Rückwärts immer das MINIMUM.', '{}', 45)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13304,10 +14274,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-np-04', 'netzplan', 'SAZ', 'Spätester Anfangszeitpunkt = SEZ - Dauer.', null, '{}', 46)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-np-04', 'netzplan', 'n-rueckwaerts', 'SAZ', 'Spätester Anfangszeitpunkt = SEZ - Dauer.', null, '{}', 46)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13316,10 +14287,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-np-05', 'netzplan', 'Gesamtpuffer GP', 'GP = SAZ - FAZ = SEZ - FEZ. Zeit, um die ein Vorgang verschoben werden kann, ohne das Projektende zu gefährden.', 'Stimmen beide Formeln nicht überein, steckt ein Rechenfehler in der Rückwärtsrechnung.', '{}', 47)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-np-05', 'netzplan', 'n-puffer', 'Gesamtpuffer GP', 'GP = SAZ - FAZ = SEZ - FEZ. Zeit, um die ein Vorgang verschoben werden kann, ohne das Projektende zu gefährden.', 'Stimmen beide Formeln nicht überein, steckt ein Rechenfehler in der Rückwärtsrechnung.', '{}', 47)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13328,10 +14300,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-np-06', 'netzplan', 'Freier Puffer FP', 'FP = kleinster FAZ der Nachfolger - eigener FEZ. Verschiebung, ohne den frühesten Start des Nachfolgers anzutasten.', 'GP schaut aufs Projektende, FP schaut auf den Nachbarn. Es gilt immer FP <= GP.', '{}', 48)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-np-06', 'netzplan', 'n-puffer', 'Freier Puffer FP', 'FP = kleinster FAZ der Nachfolger - eigener FEZ. Verschiebung, ohne den frühesten Start des Nachfolgers anzutasten.', 'GP schaut aufs Projektende, FP schaut auf den Nachbarn. Es gilt immer FP <= GP.', '{}', 48)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13340,10 +14313,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-np-07', 'netzplan', 'Kritischer Pfad', 'Der längste Weg durch den Netzplan. Alle Vorgänge darauf haben Gesamtpuffer 0.', 'Verzögerung dort schlägt eins zu eins aufs Projektende durch.', '{}', 49)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-np-07', 'netzplan', 'n-kritisch', 'Kritischer Pfad', 'Der längste Weg durch den Netzplan. Alle Vorgänge darauf haben Gesamtpuffer 0.', 'Verzögerung dort schlägt eins zu eins aufs Projektende durch.', '{}', 49)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13352,10 +14326,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-np-08', 'netzplan', 'Kann es mehrere kritische Pfade geben?', 'Ja. Mehrere gleich lange Wege sind alle kritisch - das Projekt ist dann besonders anfällig.', null, '{}', 50)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-np-08', 'netzplan', 'n-kritisch', 'Kann es mehrere kritische Pfade geben?', 'Ja. Mehrere gleich lange Wege sind alle kritisch - das Projekt ist dann besonders anfällig.', null, '{}', 50)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13364,10 +14339,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-np-09', 'netzplan', 'Projektdauer im Netzplan', 'Der größte FEZ im gesamten Plan - gleichbedeutend mit der Länge des kritischen Pfads.', null, '{}', 51)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-np-09', 'netzplan', 'n-vorwaerts', 'Projektdauer im Netzplan', 'Der größte FEZ im gesamten Plan - gleichbedeutend mit der Länge des kritischen Pfads.', null, '{}', 51)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13376,10 +14352,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-np-10', 'netzplan', 'Reihenfolge der Netzplanrechnung', 'Erst komplett vorwärts (FAZ/FEZ), dann komplett rückwärts (SEZ/SAZ), dann die Puffer. Nie mischen.', null, '{}', 52)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-np-10', 'netzplan', 'n-grundlagen', 'Reihenfolge der Netzplanrechnung', 'Erst komplett vorwärts (FAZ/FEZ), dann komplett rückwärts (SEZ/SAZ), dann die Puffer. Nie mischen.', null, '{}', 52)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13388,10 +14365,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-np-11', 'netzplan', 'GP > 0 und FP = 0 - was heißt das?', 'Der Vorgang hat Luft bis zum Projektende, nimmt sie aber vollständig dem Nachfolger weg.', 'Der Lieblingsfall der Prüfer, weil er den Unterschied der Puffer erzwingt.', '{}', 53)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-np-11', 'netzplan', 'n-puffer', 'GP > 0 und FP = 0 - was heißt das?', 'Der Vorgang hat Luft bis zum Projektende, nimmt sie aber vollständig dem Nachfolger weg.', 'Der Lieblingsfall der Prüfer, weil er den Unterschied der Puffer erzwingt.', '{}', 53)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13400,10 +14378,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-np-12', 'netzplan', 'Vorgangsknoten-Netzplan (MPM)', 'Vorgänge stehen in den Knoten, Pfeile zeigen die Abhängigkeiten. Das in der AP1 übliche Verfahren.', null, '{}', 54)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-np-12', 'netzplan', 'n-grundlagen', 'Vorgangsknoten-Netzplan (MPM)', 'Vorgänge stehen in den Knoten, Pfeile zeigen die Abhängigkeiten. Das in der AP1 übliche Verfahren.', null, '{}', 54)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13412,10 +14391,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-np-13', 'netzplan', 'Vorgang auf dem kritischen Pfad verkürzen', 'Verkürzt das Projekt - aber nur so lange, bis ein anderer Weg kritisch wird. Danach verpufft die Verkürzung.', 'Nach jedem Schritt neu rechnen: der kritische Pfad wandert.', '{}', 55)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-np-13', 'netzplan', 'n-kritisch', 'Vorgang auf dem kritischen Pfad verkürzen', 'Verkürzt das Projekt - aber nur so lange, bis ein anderer Weg kritisch wird. Danach verpufft die Verkürzung.', 'Nach jedem Schritt neu rechnen: der kritische Pfad wandert.', '{}', 55)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13424,10 +14404,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-np-14', 'netzplan', 'Wo Ressourcen hingehören', 'Zuerst auf den kritischen Pfad. Vorgänge mit hohem Puffer können warten oder Personal abgeben.', null, '{}', 56)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-np-14', 'netzplan', 'n-kritisch', 'Wo Ressourcen hingehören', 'Zuerst auf den kritischen Pfad. Vorgänge mit hohem Puffer können warten oder Personal abgeben.', null, '{}', 56)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13436,10 +14417,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-np-15', 'netzplan', 'Netzplan vs. Balkenplan', 'Netzplan = Rechenmodell, macht Puffer und kritischen Pfad berechenbar. Balkenplan = Kommunikationsmittel, maßstabsgetreu und ohne Erklärung lesbar.', 'Mit dem Netzplan rechnen, mit dem Gantt reden.', '{}', 57)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-np-15', 'netzplan', 'n-grundlagen', 'Netzplan vs. Balkenplan', 'Netzplan = Rechenmodell, macht Puffer und kritischen Pfad berechenbar. Balkenplan = Kommunikationsmittel, maßstabsgetreu und ohne Erklärung lesbar.', 'Mit dem Netzplan rechnen, mit dem Gantt reden.', '{}', 57)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13448,10 +14430,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-tp-01', 'terminplanung', 'Projektstrukturplan (PSP)', 'Zerlegung des Projekts in Teilprojekte, Arbeitspakete und Vorgänge - die Grundlage jeder weiteren Planung.', 'Beantwortet das WAS, noch nicht das WANN.', '{}', 58)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-tp-01', 'terminplanung', 't-psp', 'Projektstrukturplan (PSP)', 'Zerlegung des Projekts in Teilprojekte, Arbeitspakete und Vorgänge - die Grundlage jeder weiteren Planung.', 'Beantwortet das WAS, noch nicht das WANN.', '{}', 58)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13460,10 +14443,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-tp-02', 'terminplanung', 'Arbeitspaket', 'Kleinste Einheit des PSP: klar abgrenzbar, einer Person zuordenbar, mit eigenem Ergebnis, Aufwand und Termin.', null, '{}', 59)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-tp-02', 'terminplanung', 't-psp', 'Arbeitspaket', 'Kleinste Einheit des PSP: klar abgrenzbar, einer Person zuordenbar, mit eigenem Ergebnis, Aufwand und Termin.', null, '{}', 59)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13472,10 +14456,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-tp-03', 'terminplanung', 'Gantt-Diagramm', 'Balkenplan mit maßstabsgetreuer Zeitachse. Auf einen Blick lesbar, zeigt Abhängigkeiten und Puffer aber nicht direkt.', null, '{}', 60)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-tp-03', 'terminplanung', 't-gantt', 'Gantt-Diagramm', 'Balkenplan mit maßstabsgetreuer Zeitachse. Auf einen Blick lesbar, zeigt Abhängigkeiten und Puffer aber nicht direkt.', null, '{}', 60)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13484,10 +14469,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-tp-04', 'terminplanung', 'Meilensteintrendanalyse (MTA)', 'Trägt die geplanten Meilensteintermine über die Berichtszeitpunkte auf.', 'Waagerecht = im Plan. Steigend = Verzug. Fallend = früher fertig. Zickzack = unsichere Planung.', '{}', 61)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-tp-04', 'terminplanung', 't-gantt', 'Meilensteintrendanalyse (MTA)', 'Trägt die geplanten Meilensteintermine über die Berichtszeitpunkte auf.', 'Waagerecht = im Plan. Steigend = Verzug. Fallend = früher fertig. Zickzack = unsichere Planung.', '{}', 61)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13496,10 +14482,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-tp-05', 'terminplanung', 'Steigende MTA-Linie', 'Der Meilenstein verschiebt sich immer weiter nach hinten - Verzug.', 'Wird oft falsch herum gelesen. Steigend = später, nicht früher.', '{}', 62)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-tp-05', 'terminplanung', 't-gantt', 'Steigende MTA-Linie', 'Der Meilenstein verschiebt sich immer weiter nach hinten - Verzug.', 'Wird oft falsch herum gelesen. Steigend = später, nicht früher.', '{}', 62)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13508,10 +14495,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-tp-06', 'terminplanung', 'Personentag vs. Arbeitstag', 'Personentag = Aufwand (wie viel Arbeit). Arbeitstag = Dauer (wie lange es dauert).', 'Die beiden zu verwechseln kostet in der Klausur sofort Punkte.', '{}', 63)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-tp-06', 'terminplanung', 't-ressourcen', 'Personentag vs. Arbeitstag', 'Personentag = Aufwand (wie viel Arbeit). Arbeitstag = Dauer (wie lange es dauert).', 'Die beiden zu verwechseln kostet in der Klausur sofort Punkte.', '{}', 63)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13520,10 +14508,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-tp-07', 'terminplanung', 'Dauer aus Aufwand berechnen', 'Dauer = Aufwand / (Anzahl Personen x Verfügbarkeitsgrad).', '120 PT bei 4 Leuten zu 75 % sind nicht 30, sondern 40 Tage.', '{}', 64)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-tp-07', 'terminplanung', 't-ressourcen', 'Dauer aus Aufwand berechnen', 'Dauer = Aufwand / (Anzahl Personen x Verfügbarkeitsgrad).', '120 PT bei 4 Leuten zu 75 % sind nicht 30, sondern 40 Tage.', '{}', 64)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13532,10 +14521,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-tp-08', 'terminplanung', 'Verfügbarkeitsgrad', 'Anteil der Arbeitszeit, der tatsächlich dem Projekt zur Verfügung steht - der Rest geht in Linie, Support, Urlaub.', 'In Prüfungsaufgaben fast immer der eigentliche Prüfpunkt.', '{}', 65)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-tp-08', 'terminplanung', 't-ressourcen', 'Verfügbarkeitsgrad', 'Anteil der Arbeitszeit, der tatsächlich dem Projekt zur Verfügung steht - der Rest geht in Linie, Support, Urlaub.', 'In Prüfungsaufgaben fast immer der eigentliche Prüfpunkt.', '{}', 65)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13544,10 +14534,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-tp-09', 'terminplanung', 'Brooks Law', 'Zusätzliches Personal in einem verspäteten Projekt verzögert es zunächst weiter - Einarbeitung und Kommunikation kosten Zeit.', null, '{}', 66)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-tp-09', 'terminplanung', 't-ressourcen', 'Brooks Law', 'Zusätzliches Personal in einem verspäteten Projekt verzögert es zunächst weiter - Einarbeitung und Kommunikation kosten Zeit.', null, '{}', 66)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13556,10 +14547,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-tp-10', 'terminplanung', 'Vorwärts- vs. Rückwärtsterminierung', 'Vorwärts: vom Starttermin aus rechnen, Ergebnis ist das frühestmögliche Ende. Rückwärts: vom Endtermin aus rechnen, Ergebnis ist der spätestmögliche Start.', null, '{}', 67)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-tp-10', 'terminplanung', 't-gantt', 'Vorwärts- vs. Rückwärtsterminierung', 'Vorwärts: vom Starttermin aus rechnen, Ergebnis ist das frühestmögliche Ende. Rückwärts: vom Endtermin aus rechnen, Ergebnis ist der spätestmögliche Start.', null, '{}', 67)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13568,10 +14560,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-tp-11', 'terminplanung', 'Pufferzeit sinnvoll einsetzen', 'Puffer werden berechnet, nicht erfunden. Eine zusätzliche Sicherheitsreserve ist etwas anderes als der Puffer aus dem Netzplan.', null, '{}', 68)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-tp-11', 'terminplanung', 't-ressourcen', 'Pufferzeit sinnvoll einsetzen', 'Puffer werden berechnet, nicht erfunden. Eine zusätzliche Sicherheitsreserve ist etwas anderes als der Puffer aus dem Netzplan.', null, '{}', 68)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13580,10 +14573,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-tp-12', 'terminplanung', 'Ressourcenhistogramm', 'Stellt die Auslastung einer Ressource über die Zeit dar - macht Überlastspitzen sichtbar.', null, '{}', 69)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-tp-12', 'terminplanung', 't-ressourcen', 'Ressourcenhistogramm', 'Stellt die Auslastung einer Ressource über die Zeit dar - macht Überlastspitzen sichtbar.', null, '{}', 69)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13592,10 +14586,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-tp-13', 'terminplanung', 'Gut formulierter Meilenstein', 'Binär prüfbar: erreicht oder nicht. "Abnahmeprotokoll unterzeichnet" statt "Testphase fast fertig".', null, '{}', 70)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-tp-13', 'terminplanung', 't-gantt', 'Gut formulierter Meilenstein', 'Binär prüfbar: erreicht oder nicht. "Abnahmeprotokoll unterzeichnet" statt "Testphase fast fertig".', null, '{}', 70)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13604,10 +14599,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-tp-14', 'terminplanung', 'Soll-Ist-Vergleich', 'Gegenüberstellung von geplanten und tatsächlichen Werten bei Terminen, Kosten und Leistung - Grundlage jeder Steuerung.', null, '{}', 71)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-tp-14', 'terminplanung', 't-gantt', 'Soll-Ist-Vergleich', 'Gegenüberstellung von geplanten und tatsächlichen Werten bei Terminen, Kosten und Leistung - Grundlage jeder Steuerung.', null, '{}', 71)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13616,10 +14612,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ri-01', 'risikomanagement', 'Risikowert (Erwartungswert)', 'Risikowert = Eintrittswahrscheinlichkeit x Schadenshöhe.', '20 % x 80.000 Euro = 16.000 Euro. Das ist zugleich die Obergrenze für sinnvolle Gegenmaßnahmen.', '{}', 72)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ri-01', 'risikomanagement', 'r-bewertung', 'Risikowert (Erwartungswert)', 'Risikowert = Eintrittswahrscheinlichkeit x Schadenshöhe.', '20 % x 80.000 Euro = 16.000 Euro. Das ist zugleich die Obergrenze für sinnvolle Gegenmaßnahmen.', '{}', 72)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13628,10 +14625,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ri-02', 'risikomanagement', 'Die vier Risikostrategien', 'Vermeiden, Vermindern, Überwälzen, Akzeptieren.', null, '{}', 73)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ri-02', 'risikomanagement', 'r-strategien', 'Die vier Risikostrategien', 'Vermeiden, Vermindern, Überwälzen, Akzeptieren.', null, '{}', 73)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13640,10 +14638,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ri-03', 'risikomanagement', 'Risiko vermeiden', 'Die Ursache wird beseitigt, das Risiko kann danach nicht mehr eintreten.', 'Beispiel: auf eine unausgereifte Technologie verzichten.', '{}', 74)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ri-03', 'risikomanagement', 'r-strategien', 'Risiko vermeiden', 'Die Ursache wird beseitigt, das Risiko kann danach nicht mehr eintreten.', 'Beispiel: auf eine unausgereifte Technologie verzichten.', '{}', 74)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13652,10 +14651,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ri-04', 'risikomanagement', 'Risiko vermindern', 'Eintrittswahrscheinlichkeit oder Auswirkung werden reduziert - das Risiko bleibt aber bestehen.', 'Testfrage: Kann es danach noch eintreten? Ja -> vermindert. Nein -> vermieden.', '{}', 75)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ri-04', 'risikomanagement', 'r-strategien', 'Risiko vermindern', 'Eintrittswahrscheinlichkeit oder Auswirkung werden reduziert - das Risiko bleibt aber bestehen.', 'Testfrage: Kann es danach noch eintreten? Ja -> vermindert. Nein -> vermieden.', '{}', 75)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13664,10 +14664,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ri-05', 'risikomanagement', 'Risiko überwälzen', 'Ein Dritter trägt das Risiko: Versicherung, Festpreisvertrag, Auslagerung an einen Dienstleister.', null, '{}', 76)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ri-05', 'risikomanagement', 'r-strategien', 'Risiko überwälzen', 'Ein Dritter trägt das Risiko: Versicherung, Festpreisvertrag, Auslagerung an einen Dienstleister.', null, '{}', 76)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13676,10 +14677,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ri-06', 'risikomanagement', 'Risiko akzeptieren', 'Das Restrisiko wird bewusst getragen und dokumentiert - legitim bei kleinem Schadenspotenzial.', 'Entscheidend ist "bewusst und dokumentiert", nicht "ignoriert".', '{}', 77)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ri-06', 'risikomanagement', 'r-strategien', 'Risiko akzeptieren', 'Das Restrisiko wird bewusst getragen und dokumentiert - legitim bei kleinem Schadenspotenzial.', 'Entscheidend ist "bewusst und dokumentiert", nicht "ignoriert".', '{}', 77)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13688,10 +14690,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ri-07', 'risikomanagement', 'Risikomatrix', 'Portfolio aus Eintrittswahrscheinlichkeit und Auswirkung. Je weiter rechts oben, desto dringender.', null, '{}', 78)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ri-07', 'risikomanagement', 'r-bewertung', 'Risikomatrix', 'Portfolio aus Eintrittswahrscheinlichkeit und Auswirkung. Je weiter rechts oben, desto dringender.', null, '{}', 78)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13700,10 +14703,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ri-08', 'risikomanagement', 'Schwäche der Risikomatrix', 'Sie behandelt "oft, aber harmlos" und "selten, aber katastrophal" gleich, wenn das Produkt gleich ist.', 'Deshalb gibt es Backups, obwohl Totalausfälle selten sind.', '{}', 79)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ri-08', 'risikomanagement', 'r-bewertung', 'Schwäche der Risikomatrix', 'Sie behandelt "oft, aber harmlos" und "selten, aber katastrophal" gleich, wenn das Produkt gleich ist.', 'Deshalb gibt es Backups, obwohl Totalausfälle selten sind.', '{}', 79)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13712,10 +14716,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ri-09', 'risikomanagement', 'Existenzbedrohendes Risiko', 'Muss unabhängig von der Wahrscheinlichkeit behandelt werden - ein Schaden, den man nicht überlebt, darf nicht eintreten.', null, '{}', 80)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ri-09', 'risikomanagement', 'r-strategien', 'Existenzbedrohendes Risiko', 'Muss unabhängig von der Wahrscheinlichkeit behandelt werden - ein Schaden, den man nicht überlebt, darf nicht eintreten.', null, '{}', 80)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13724,10 +14729,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ri-10', 'risikomanagement', 'Risikoregister', 'Verzeichnis aller identifizierten Risiken mit Bewertung, Maßnahme und verantwortlicher Person.', 'Hinein gehören ALLE identifizierten Risiken - erst die Bewertung entscheidet über Maßnahmen.', '{}', 81)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ri-10', 'risikomanagement', 'r-prozess', 'Risikoregister', 'Verzeichnis aller identifizierten Risiken mit Bewertung, Maßnahme und verantwortlicher Person.', 'Hinein gehören ALLE identifizierten Risiken - erst die Bewertung entscheidet über Maßnahmen.', '{}', 81)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13736,10 +14742,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ri-11', 'risikomanagement', 'Restrisiko', 'Das Risiko, das nach allen Maßnahmen übrig bleibt. Es wird bewusst getragen und dokumentiert.', null, '{}', 82)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ri-11', 'risikomanagement', 'r-strategien', 'Restrisiko', 'Das Risiko, das nach allen Maßnahmen übrig bleibt. Es wird bewusst getragen und dokumentiert.', null, '{}', 82)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13748,10 +14755,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ri-12', 'risikomanagement', 'Schritte des Risikomanagements', 'Identifizieren, bewerten, Maßnahmen festlegen, überwachen - laufend, nicht einmalig zu Projektbeginn.', null, '{}', 83)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ri-12', 'risikomanagement', 'r-prozess', 'Schritte des Risikomanagements', 'Identifizieren, bewerten, Maßnahmen festlegen, überwachen - laufend, nicht einmalig zu Projektbeginn.', null, '{}', 83)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13760,10 +14768,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ri-13', 'risikomanagement', 'Risiko vs. Problem', 'Ein Risiko kann eintreten (Zukunft, Wahrscheinlichkeit). Ein Problem ist bereits eingetreten (Gegenwart, Maßnahme nötig).', null, '{}', 84)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ri-13', 'risikomanagement', 'r-prozess', 'Risiko vs. Problem', 'Ein Risiko kann eintreten (Zukunft, Wahrscheinlichkeit). Ein Problem ist bereits eingetreten (Gegenwart, Maßnahme nötig).', null, '{}', 84)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13772,10 +14781,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-wi-01', 'pm_wirtschaftlichkeit', 'Nutzwertanalyse', 'Vergleicht Alternativen anhand gewichteter, auch nicht-monetärer Kriterien. Teilnutzwert = Gewicht x Bewertung, Summe = Gesamtnutzwert.', 'Gewichte müssen zusammen 100 % ergeben. Kriterien VOR dem Blick auf die Angebote festlegen.', '{}', 85)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-wi-01', 'pm_wirtschaftlichkeit', 'w-nutzwert', 'Nutzwertanalyse', 'Vergleicht Alternativen anhand gewichteter, auch nicht-monetärer Kriterien. Teilnutzwert = Gewicht x Bewertung, Summe = Gesamtnutzwert.', 'Gewichte müssen zusammen 100 % ergeben. Kriterien VOR dem Blick auf die Angebote festlegen.', '{}', 85)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13784,10 +14794,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-wi-02', 'pm_wirtschaftlichkeit', 'Schwäche der Nutzwertanalyse', 'Gewichtung und Bewertung sind subjektiv - wer das Wunschergebnis kennt, kann es über die Gewichte herbeiführen.', null, '{}', 86)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-wi-02', 'pm_wirtschaftlichkeit', 'w-nutzwert', 'Schwäche der Nutzwertanalyse', 'Gewichtung und Bewertung sind subjektiv - wer das Wunschergebnis kennt, kann es über die Gewichte herbeiführen.', null, '{}', 86)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13796,10 +14807,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-wi-03', 'pm_wirtschaftlichkeit', 'Amortisationsdauer', 'Investitionssumme / jährlicher Netto-Rückfluss.', 'Netto heißt: Einsparung minus neue laufende Kosten.', '{}', 87)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-wi-03', 'pm_wirtschaftlichkeit', 'w-breakeven', 'Amortisationsdauer', 'Investitionssumme / jährlicher Netto-Rückfluss.', 'Netto heißt: Einsparung minus neue laufende Kosten.', '{}', 87)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13808,10 +14820,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-wi-04', 'pm_wirtschaftlichkeit', 'Bezugskalkulation', 'Listeneinkaufspreis - Rabatt = Zieleinkaufspreis; - Skonto = Bareinkaufspreis; + Bezugskosten = Bezugspreis.', 'Skonto nie vom Listenpreis. Bezugskosten nie vor dem Skonto - auf Fracht gibt es kein Skonto.', '{}', 88)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-wi-04', 'pm_wirtschaftlichkeit', 'w-kalkulation', 'Bezugskalkulation', 'Listeneinkaufspreis - Rabatt = Zieleinkaufspreis; - Skonto = Bareinkaufspreis; + Bezugskosten = Bezugspreis.', 'Skonto nie vom Listenpreis. Bezugskosten nie vor dem Skonto - auf Fracht gibt es kein Skonto.', '{}', 88)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13820,10 +14833,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-wi-05', 'pm_wirtschaftlichkeit', 'TCO', 'Total Cost of Ownership: alle Kosten über den gesamten Lebenszyklus - Anschaffung, Betrieb, Wartung, Schulung, Außerbetriebnahme.', 'Nur Kosten, keine Erträge. Erträge gehören in die ROI-Rechnung.', '{}', 89)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-wi-05', 'pm_wirtschaftlichkeit', 'w-makeorbuy', 'TCO', 'Total Cost of Ownership: alle Kosten über den gesamten Lebenszyklus - Anschaffung, Betrieb, Wartung, Schulung, Außerbetriebnahme.', 'Nur Kosten, keine Erträge. Erträge gehören in die ROI-Rechnung.', '{}', 89)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13832,10 +14846,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-wi-06', 'pm_wirtschaftlichkeit', 'Break-Even-Point', 'Die Absatzmenge, bei der Erlöse und Gesamtkosten gleich sind. Menge = Fixkosten / (Preis - variable Stückkosten).', 'Der Nenner heißt Deckungsbeitrag pro Stück.', '{}', 90)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-wi-06', 'pm_wirtschaftlichkeit', 'w-breakeven', 'Break-Even-Point', 'Die Absatzmenge, bei der Erlöse und Gesamtkosten gleich sind. Menge = Fixkosten / (Preis - variable Stückkosten).', 'Der Nenner heißt Deckungsbeitrag pro Stück.', '{}', 90)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13844,10 +14859,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-wi-07', 'pm_wirtschaftlichkeit', 'Deckungsbeitrag', 'Preis minus variable Kosten. Der Betrag, der zur Deckung der Fixkosten beiträgt.', null, '{}', 91)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-wi-07', 'pm_wirtschaftlichkeit', 'w-breakeven', 'Deckungsbeitrag', 'Preis minus variable Kosten. Der Betrag, der zur Deckung der Fixkosten beiträgt.', null, '{}', 91)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13856,10 +14872,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-wi-08', 'pm_wirtschaftlichkeit', 'Fixkosten vs. variable Kosten', 'Fixkosten fallen unabhängig von der Menge an (Miete, Gehälter). Variable Kosten wachsen mit der Menge (Material, Lizenzen pro Nutzer).', null, '{}', 92)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-wi-08', 'pm_wirtschaftlichkeit', 'w-kalkulation', 'Fixkosten vs. variable Kosten', 'Fixkosten fallen unabhängig von der Menge an (Miete, Gehälter). Variable Kosten wachsen mit der Menge (Material, Lizenzen pro Nutzer).', null, '{}', 92)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13868,10 +14885,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-wi-09', 'pm_wirtschaftlichkeit', 'Make-or-Buy', 'Entscheidung zwischen Eigenfertigung und Fremdbezug - anhand von Kosten, Know-how, Kapazität, Abhängigkeit und strategischer Bedeutung.', 'Nicht nur rechnen: Kern-Know-how gibt man nicht aus der Hand, auch wenn extern billiger wäre.', '{}', 93)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-wi-09', 'pm_wirtschaftlichkeit', 'w-makeorbuy', 'Make-or-Buy', 'Entscheidung zwischen Eigenfertigung und Fremdbezug - anhand von Kosten, Know-how, Kapazität, Abhängigkeit und strategischer Bedeutung.', 'Nicht nur rechnen: Kern-Know-how gibt man nicht aus der Hand, auch wenn extern billiger wäre.', '{}', 93)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13880,10 +14898,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-wi-10', 'pm_wirtschaftlichkeit', 'Effektivität vs. Effizienz', 'Effektivität = die richtigen Dinge tun (Wirksamkeit). Effizienz = die Dinge richtig tun (Wirtschaftlichkeit).', 'Effektiv ohne effizient ist teuer. Effizient ohne effektiv ist sinnlos.', '{}', 94)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-wi-10', 'pm_wirtschaftlichkeit', 'w-kalkulation', 'Effektivität vs. Effizienz', 'Effektivität = die richtigen Dinge tun (Wirksamkeit). Effizienz = die Dinge richtig tun (Wirtschaftlichkeit).', 'Effektiv ohne effizient ist teuer. Effizient ohne effektiv ist sinnlos.', '{}', 94)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13892,10 +14911,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-wi-11', 'pm_wirtschaftlichkeit', 'Stundensatz berechnen', '(Personalkosten + anteilige Gemeinkosten + Gewinnaufschlag) / produktive Stunden.', 'Produktive Stunden, nicht Anwesenheitsstunden - Urlaub, Krankheit und interne Zeiten gehen ab.', '{}', 95)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-wi-11', 'pm_wirtschaftlichkeit', 'w-kalkulation', 'Stundensatz berechnen', '(Personalkosten + anteilige Gemeinkosten + Gewinnaufschlag) / produktive Stunden.', 'Produktive Stunden, nicht Anwesenheitsstunden - Urlaub, Krankheit und interne Zeiten gehen ab.', '{}', 95)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13904,10 +14924,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-wi-12', 'pm_wirtschaftlichkeit', 'Vor- und Nachkalkulation', 'Vorkalkulation schätzt vor dem Projekt, Nachkalkulation vergleicht danach Ist mit Soll.', 'Ohne Nachkalkulation schätzt man beim nächsten Mal genauso falsch.', '{}', 96)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-wi-12', 'pm_wirtschaftlichkeit', 'w-kalkulation', 'Vor- und Nachkalkulation', 'Vorkalkulation schätzt vor dem Projekt, Nachkalkulation vergleicht danach Ist mit Soll.', 'Ohne Nachkalkulation schätzt man beim nächsten Mal genauso falsch.', '{}', 96)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13916,10 +14937,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-wi-13', 'pm_wirtschaftlichkeit', 'Machbarkeitsanalyse', 'Prüft vor Projektstart technische, wirtschaftliche, rechtliche, organisatorische und terminliche Realisierbarkeit.', null, '{}', 97)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-wi-13', 'pm_wirtschaftlichkeit', 'w-makeorbuy', 'Machbarkeitsanalyse', 'Prüft vor Projektstart technische, wirtschaftliche, rechtliche, organisatorische und terminliche Realisierbarkeit.', null, '{}', 97)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13928,10 +14950,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-wi-14', 'pm_wirtschaftlichkeit', 'Wirtschaftlichkeit', 'Verhältnis von Ertrag zu Aufwand. Ein Projekt ist wirtschaftlich, wenn der Nutzen die Kosten übersteigt.', null, '{}', 98)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-wi-14', 'pm_wirtschaftlichkeit', 'w-kalkulation', 'Wirtschaftlichkeit', 'Verhältnis von Ertrag zu Aufwand. Ein Projekt ist wirtschaftlich, wenn der Nutzen die Kosten übersteigt.', null, '{}', 98)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13940,10 +14963,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-wi-15', 'pm_wirtschaftlichkeit', 'Gemeinkosten', 'Kosten, die sich einem einzelnen Projekt nicht direkt zurechnen lassen (Miete, Verwaltung, IT). Sie werden über Zuschlagssätze verteilt.', null, '{}', 99)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-wi-15', 'pm_wirtschaftlichkeit', 'w-kalkulation', 'Gemeinkosten', 'Kosten, die sich einem einzelnen Projekt nicht direkt zurechnen lassen (Miete, Verwaltung, IT). Sie werden über Zuschlagssätze verteilt.', null, '{}', 99)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13952,10 +14976,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ab-01', 'projektabschluss', 'Die drei Ebenen des Projektabschlusses', 'Sachlich-technisch (Abnahme, Übergabe), kaufmännisch (Schlussrechnung, Nachkalkulation), personell (Teamauflösung, Würdigung).', 'Die personelle Ebene wird am häufigsten vergessen - und ist die, an die sich das Team am längsten erinnert.', '{}', 100)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ab-01', 'projektabschluss', 'a-abnahme', 'Die drei Ebenen des Projektabschlusses', 'Sachlich-technisch (Abnahme, Übergabe), kaufmännisch (Schlussrechnung, Nachkalkulation), personell (Teamauflösung, Würdigung).', 'Die personelle Ebene wird am häufigsten vergessen - und ist die, an die sich das Team am längsten erinnert.', '{}', 100)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13964,10 +14989,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ab-02', 'projektabschluss', 'Lessons Learned', 'Systematische Sicherung der Erfahrungen, damit künftige Projekte davon profitieren.', 'Zeitnah, ohne Schuldzuweisung, dokumentiert an einem auffindbaren Ort - sonst wertlos.', '{}', 101)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ab-02', 'projektabschluss', 'a-lessons', 'Lessons Learned', 'Systematische Sicherung der Erfahrungen, damit künftige Projekte davon profitieren.', 'Zeitnah, ohne Schuldzuweisung, dokumentiert an einem auffindbaren Ort - sonst wertlos.', '{}', 101)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13976,10 +15002,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ab-03', 'projektabschluss', 'Reihenfolge beim Abschluss', 'Restarbeiten, Abnahme, Übergabe an den Betrieb, Abschlussbericht, Lessons Learned, Teamauflösung.', 'Abnahme VOR Übergabe. Teamauflösung ZULETZT - vorher braucht man die Leute noch.', '{}', 102)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ab-03', 'projektabschluss', 'a-abnahme', 'Reihenfolge beim Abschluss', 'Restarbeiten, Abnahme, Übergabe an den Betrieb, Abschlussbericht, Lessons Learned, Teamauflösung.', 'Abnahme VOR Übergabe. Teamauflösung ZULETZT - vorher braucht man die Leute noch.', '{}', 102)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -13988,10 +15015,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ab-04', 'projektabschluss', 'Inhalt des Projektabschlussberichts', 'Soll-Ist-Vergleich von Terminen, Kosten und Leistung, Zielerreichungsgrad, offene Punkte und Restrisiken, Lessons Learned, Übergabe.', 'Nicht der Quellcode - der gehört in die Versionsverwaltung, der Bericht verweist darauf.', '{}', 103)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ab-04', 'projektabschluss', 'a-bericht', 'Inhalt des Projektabschlussberichts', 'Soll-Ist-Vergleich von Terminen, Kosten und Leistung, Zielerreichungsgrad, offene Punkte und Restrisiken, Lessons Learned, Übergabe.', 'Nicht der Quellcode - der gehört in die Versionsverwaltung, der Bericht verweist darauf.', '{}', 103)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14000,10 +15028,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ab-05', 'projektabschluss', 'Zielerreichungsgrad', 'Gemessen wird gegen den Projektauftrag - nicht gegen das, was unterwegs daraus geworden ist.', null, '{}', 104)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ab-05', 'projektabschluss', 'a-bericht', 'Zielerreichungsgrad', 'Gemessen wird gegen den Projektauftrag - nicht gegen das, was unterwegs daraus geworden ist.', null, '{}', 104)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14012,10 +15041,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ab-06', 'projektabschluss', 'Übergabe an den Betrieb', 'Benannte Verantwortliche, Betriebsdokumentation, Schulung und vereinbarter Support. Sonst bleibt das Projektteam ewig zuständig.', null, '{}', 105)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ab-06', 'projektabschluss', 'a-abnahme', 'Übergabe an den Betrieb', 'Benannte Verantwortliche, Betriebsdokumentation, Schulung und vereinbarter Support. Sonst bleibt das Projektteam ewig zuständig.', null, '{}', 105)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14024,10 +15054,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ab-07', 'projektabschluss', 'Nachkalkulation', 'Gegenüberstellung der geplanten und tatsächlichen Kosten nach Projektende - Grundlage besserer Schätzungen.', null, '{}', 106)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ab-07', 'projektabschluss', 'a-bericht', 'Nachkalkulation', 'Gegenüberstellung der geplanten und tatsächlichen Kosten nach Projektende - Grundlage besserer Schätzungen.', null, '{}', 106)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14036,10 +15067,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ab-08', 'projektabschluss', 'Warum Lessons Learned ohne Schuldzuweisung', 'Sobald Schuldzuweisungen drohen, sagt niemand mehr, was wirklich schieflief - und die Sitzung ist wertlos.', null, '{}', 107)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ab-08', 'projektabschluss', 'a-lessons', 'Warum Lessons Learned ohne Schuldzuweisung', 'Sobald Schuldzuweisungen drohen, sagt niemand mehr, was wirklich schieflief - und die Sitzung ist wertlos.', null, '{}', 107)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14048,10 +15080,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ab-09', 'projektabschluss', 'Projektabschluss trotz Abbruch', 'Auch ein abgebrochenes Projekt wird formal abgeschlossen: Ergebnisse sichern, Kosten abrechnen, Erfahrungen dokumentieren.', null, '{}', 108)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ab-09', 'projektabschluss', 'a-bericht', 'Projektabschluss trotz Abbruch', 'Auch ein abgebrochenes Projekt wird formal abgeschlossen: Ergebnisse sichern, Kosten abrechnen, Erfahrungen dokumentieren.', null, '{}', 108)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14060,10 +15093,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ab-10', 'projektabschluss', 'Restarbeiten', 'Offene Punkte, die den Projektabschluss nicht verhindern, aber benannt und jemandem übergeben werden müssen.', null, '{}', 109)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ab-10', 'projektabschluss', 'a-abnahme', 'Restarbeiten', 'Offene Punkte, die den Projektabschluss nicht verhindern, aber benannt und jemandem übergeben werden müssen.', null, '{}', 109)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14072,10 +15106,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ab-11', 'projektabschluss', 'Teamauflösung', 'Rückführung in die Linie, Feedback und Würdigung der Leistung - erst nach Bericht und Lessons Learned.', null, '{}', 110)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ab-11', 'projektabschluss', 'a-abnahme', 'Teamauflösung', 'Rückführung in die Linie, Feedback und Würdigung der Leistung - erst nach Bericht und Lessons Learned.', null, '{}', 110)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14084,10 +15119,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('c-ab-12', 'projektabschluss', 'Projektdokumentation zum Abschluss', 'Zusammenführung aller Ergebnisdokumente an einem Ort, damit Betrieb und Folgeprojekte darauf zugreifen können.', null, '{}', 111)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('c-ab-12', 'projektabschluss', 'a-bericht', 'Projektdokumentation zum Abschluss', 'Zusammenführung aller Ergebnisdokumente an einem Ort, damit Betrieb und Folgeprojekte darauf zugreifen können.', null, '{}', 111)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14096,10 +15132,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pb-1', 'projektorganisation', 'Vier Merkmale eines Projekts', 'Einmaligkeit, Zielvorgabe, Begrenzung (Zeit, Budget, Personal), eigene Projektorganisation.', 'Fehlt eines davon, ist es eine Linienaufgabe.', '{}', 112)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pb-1', 'projektorganisation', 'p-begriff', 'Vier Merkmale eines Projekts', 'Einmaligkeit, Zielvorgabe, Begrenzung (Zeit, Budget, Personal), eigene Projektorganisation.', 'Fehlt eines davon, ist es eine Linienaufgabe.', '{}', 112)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14108,10 +15145,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pb-2', 'projektorganisation', 'Linienaufgabe', 'Wiederkehrende Tätigkeit, die in der bestehenden Aufbauorganisation erledigt wird - zum Beispiel täglicher Support oder monatliches Patchen.', null, '{}', 113)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pb-2', 'projektorganisation', 'p-begriff', 'Linienaufgabe', 'Wiederkehrende Tätigkeit, die in der bestehenden Aufbauorganisation erledigt wird - zum Beispiel täglicher Support oder monatliches Patchen.', null, '{}', 113)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14120,10 +15158,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pb-3', 'projektorganisation', 'Ist Größe ein Projektmerkmal?', 'Nein. Weder Budget noch Teamgröße entscheiden, sondern Einmaligkeit und Begrenzung.', 'Ein zweiwöchiges, einmaliges Vorhaben kann ein Projekt sein.', '{}', 114)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pb-3', 'projektorganisation', 'p-begriff', 'Ist Größe ein Projektmerkmal?', 'Nein. Weder Budget noch Teamgröße entscheiden, sondern Einmaligkeit und Begrenzung.', 'Ein zweiwöchiges, einmaliges Vorhaben kann ein Projekt sein.', '{}', 114)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14132,10 +15171,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-po-1', 'projektorganisation', 'Fachliche vs. disziplinarische Weisung', 'Fachlich: was und wie gearbeitet wird. Disziplinarisch: Urlaub, Beurteilung, Gehalt, Abmahnung.', null, '{}', 115)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-po-1', 'projektorganisation', 'p-organisation', 'Fachliche vs. disziplinarische Weisung', 'Fachlich: was und wie gearbeitet wird. Disziplinarisch: Urlaub, Beurteilung, Gehalt, Abmahnung.', null, '{}', 115)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14144,10 +15184,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pr-1', 'projektorganisation', 'Kernaufgaben der Projektleitung', 'Planen, organisieren, steuern und kontrollieren, berichten.', 'Sie führt das Projekt innerhalb des Auftrags - den Auftrag selbst ändert der Auftraggeber.', '{}', 116)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pr-1', 'projektorganisation', 'p-rollen', 'Kernaufgaben der Projektleitung', 'Planen, organisieren, steuern und kontrollieren, berichten.', 'Sie führt das Projekt innerhalb des Auftrags - den Auftrag selbst ändert der Auftraggeber.', '{}', 116)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14156,10 +15197,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ps-1', 'projektorganisation', 'Schritte der Stakeholderanalyse', 'Identifizieren, Einfluss und Interesse einschätzen, in die Matrix einordnen, Maßnahmen festlegen und umsetzen.', null, '{}', 117)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ps-1', 'projektorganisation', 'p-stakeholder', 'Schritte der Stakeholderanalyse', 'Identifizieren, Einfluss und Interesse einschätzen, in die Matrix einordnen, Maßnahmen festlegen und umsetzen.', null, '{}', 117)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14168,10 +15210,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vp-1', 'vorgehensmodelle', 'Phasen nach DIN 69901', 'Initialisierung, Definition, Planung, Steuerung, Abschluss.', null, '{}', 118)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vp-1', 'vorgehensmodelle', 'v-phasen', 'Phasen nach DIN 69901', 'Initialisierung, Definition, Planung, Steuerung, Abschluss.', null, '{}', 118)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14180,10 +15223,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vp-2', 'vorgehensmodelle', 'Ergebnis der Initialisierung', 'Ein vom Auftraggeber unterschriebener Projektauftrag und eine benannte Projektleitung.', null, '{}', 119)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vp-2', 'vorgehensmodelle', 'v-phasen', 'Ergebnis der Initialisierung', 'Ein vom Auftraggeber unterschriebener Projektauftrag und eine benannte Projektleitung.', null, '{}', 119)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14192,10 +15236,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sm-1', 'agil_scrum', 'Agiles Manifest - Entstehung', '2001 von 17 Softwareentwicklern verfasst - als Antwort auf schwerfällige, dokumentlastige Vorgehensweisen.', null, '{}', 120)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sm-1', 'agil_scrum', 's-manifest', 'Agiles Manifest - Entstehung', '2001 von 17 Softwareentwicklern verfasst - als Antwort auf schwerfällige, dokumentlastige Vorgehensweisen.', null, '{}', 120)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14204,10 +15249,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sm-2', 'agil_scrum', 'Individuen und Interaktionen ...', '... sind wichtiger als Prozesse und Werkzeuge.', null, '{}', 121)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sm-2', 'agil_scrum', 's-manifest', 'Individuen und Interaktionen ...', '... sind wichtiger als Prozesse und Werkzeuge.', null, '{}', 121)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14216,10 +15262,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sm-3', 'agil_scrum', 'Reagieren auf Veränderung ...', '... ist wichtiger als das Befolgen eines Plans.', 'Pläne bleiben wichtig - sie werden nur angepasst, wenn sich die Lage ändert.', '{}', 122)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sm-3', 'agil_scrum', 's-manifest', 'Reagieren auf Veränderung ...', '... ist wichtiger als das Befolgen eines Plans.', 'Pläne bleiben wichtig - sie werden nur angepasst, wenn sich die Lage ändert.', '{}', 122)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14228,10 +15275,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sm-4', 'agil_scrum', 'Wichtigstes Fortschrittsmaß (agil)', 'Funktionierende Software.', 'Nicht erledigte Aufgaben oder geschriebene Dokumente.', '{}', 123)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sm-4', 'agil_scrum', 's-manifest', 'Wichtigstes Fortschrittsmaß (agil)', 'Funktionierende Software.', 'Nicht erledigte Aufgaben oder geschriebene Dokumente.', '{}', 123)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14240,10 +15288,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sa-1', 'agil_scrum', 'Produktziel', 'Beschreibt den künftigen Zustand des Produkts. Es ist das Commitment des Product Backlogs und gibt allen Einträgen eine Richtung.', null, '{}', 124)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sa-1', 'agil_scrum', 's-artefakte', 'Produktziel', 'Beschreibt den künftigen Zustand des Produkts. Es ist das Commitment des Product Backlogs und gibt allen Einträgen eine Richtung.', null, '{}', 124)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14252,10 +15301,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-se-1', 'agil_scrum', 'Sprint', 'Fester Zeitraum von höchstens einem Monat, in dem ein nutzbares Increment entsteht. Er ist der Rahmen für alle anderen Events.', null, '{}', 125)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-se-1', 'agil_scrum', 's-events', 'Sprint', 'Fester Zeitraum von höchstens einem Monat, in dem ein nutzbares Increment entsteht. Er ist der Rahmen für alle anderen Events.', null, '{}', 125)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14264,10 +15314,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ng-1', 'netzplan', 'Normalfolge', 'Ende-Anfang-Beziehung: Der Nachfolger beginnt, wenn der Vorgänger beendet ist. Der Standardfall in der AP1.', null, '{}', 126)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ng-1', 'netzplan', 'n-grundlagen', 'Normalfolge', 'Ende-Anfang-Beziehung: Der Nachfolger beginnt, wenn der Vorgänger beendet ist. Der Standardfall in der AP1.', null, '{}', 126)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14276,10 +15327,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-nv-1', 'netzplan', 'FAZ bei mehreren Vorgängern', 'Der größte FEZ aller Vorgänger.', 'Der Vorgang muss warten, bis der letzte Vorgänger fertig ist.', '{}', 127)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-nv-1', 'netzplan', 'n-vorwaerts', 'FAZ bei mehreren Vorgängern', 'Der größte FEZ aller Vorgänger.', 'Der Vorgang muss warten, bis der letzte Vorgänger fertig ist.', '{}', 127)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14288,10 +15340,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-nr-1', 'netzplan', 'SEZ bei mehreren Nachfolgern', 'Der kleinste SAZ aller Nachfolger.', 'Der eiligste Nachfolger bestimmt, wann der Vorgang spätestens fertig sein muss.', '{}', 128)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-nr-1', 'netzplan', 'n-rueckwaerts', 'SEZ bei mehreren Nachfolgern', 'Der kleinste SAZ aller Nachfolger.', 'Der eiligste Nachfolger bestimmt, wann der Vorgang spätestens fertig sein muss.', '{}', 128)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14300,10 +15353,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-nr-2', 'netzplan', 'Startwert der Rückwärtsrechnung', 'Beim letzten Vorgang gilt SEZ = FEZ, also die Projektdauer - sofern kein fester Endtermin vorgegeben ist.', null, '{}', 129)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-nr-2', 'netzplan', 'n-rueckwaerts', 'Startwert der Rückwärtsrechnung', 'Beim letzten Vorgang gilt SEZ = FEZ, also die Projektdauer - sofern kein fester Endtermin vorgegeben ist.', null, '{}', 129)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14312,10 +15366,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-np-1', 'netzplan', 'Formel freier Puffer', 'FP = kleinster FAZ der Nachfolger - FEZ des Vorgangs.', null, '{}', 130)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-np-1', 'netzplan', 'n-puffer', 'Formel freier Puffer', 'FP = kleinster FAZ der Nachfolger - FEZ des Vorgangs.', null, '{}', 130)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14324,10 +15379,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-tp-1', 'terminplanung', 'Gliederungsarten des PSP', 'Objektorientiert (Bestandteile), funktionsorientiert (Tätigkeiten), phasenorientiert (Projektphasen) - oder gemischt.', null, '{}', 131)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-tp-1', 'terminplanung', 't-psp', 'Gliederungsarten des PSP', 'Objektorientiert (Bestandteile), funktionsorientiert (Tätigkeiten), phasenorientiert (Projektphasen) - oder gemischt.', null, '{}', 131)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14336,10 +15392,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-tp-2', 'terminplanung', 'Was der PSP nicht zeigt', 'Reihenfolge, Abhängigkeiten und Termine. Die kommen erst im Netzplan bzw. Gantt-Diagramm dazu.', null, '{}', 132)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-tp-2', 'terminplanung', 't-psp', 'Was der PSP nicht zeigt', 'Reihenfolge, Abhängigkeiten und Termine. Die kommen erst im Netzplan bzw. Gantt-Diagramm dazu.', null, '{}', 132)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14348,10 +15405,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-rp-1', 'risikomanagement', 'Risiken identifizieren - Methoden', 'Brainstorming, Checklisten, Lessons Learned früherer Projekte, Befragung von Fachleuten.', null, '{}', 133)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-rp-1', 'risikomanagement', 'r-prozess', 'Risiken identifizieren - Methoden', 'Brainstorming, Checklisten, Lessons Learned früherer Projekte, Befragung von Fachleuten.', null, '{}', 133)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14360,10 +15418,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-rb-1', 'risikomanagement', 'Priorisierung von Risiken', 'Nach Risikowert absteigend - existenzbedrohende Risiken zusätzlich immer gesondert behandeln.', null, '{}', 134)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-rb-1', 'risikomanagement', 'r-bewertung', 'Priorisierung von Risiken', 'Nach Risikowert absteigend - existenzbedrohende Risiken zusätzlich immer gesondert behandeln.', null, '{}', 134)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14372,10 +15431,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wn-1', 'pm_wirtschaftlichkeit', 'Schritte der Nutzwertanalyse', 'Kriterien festlegen, gewichten (Summe 100 %), bewerten, Punkte × Gewicht, addieren, höchsten Nutzwert wählen.', null, '{}', 135)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wn-1', 'pm_wirtschaftlichkeit', 'w-nutzwert', 'Schritte der Nutzwertanalyse', 'Kriterien festlegen, gewichten (Summe 100 %), bewerten, Punkte × Gewicht, addieren, höchsten Nutzwert wählen.', null, '{}', 135)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14384,10 +15444,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wn-2', 'pm_wirtschaftlichkeit', 'K.-o.-Kriterium', 'Mussanforderung, die jede Alternative erfüllen muss. Wer sie verfehlt, scheidet vor der Nutzwertberechnung aus.', null, '{}', 136)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wn-2', 'pm_wirtschaftlichkeit', 'w-nutzwert', 'K.-o.-Kriterium', 'Mussanforderung, die jede Alternative erfüllen muss. Wer sie verfehlt, scheidet vor der Nutzwertberechnung aus.', null, '{}', 136)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14396,10 +15457,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wm-1', 'pm_wirtschaftlichkeit', 'Make vs. Buy - Kernargumente', 'Make: passgenau, Know-how bleibt im Haus. Buy: schnell verfügbar, geringere Entwicklungskosten, aber Abhängigkeit vom Anbieter.', null, '{}', 137)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wm-1', 'pm_wirtschaftlichkeit', 'w-makeorbuy', 'Make vs. Buy - Kernargumente', 'Make: passgenau, Know-how bleibt im Haus. Buy: schnell verfügbar, geringere Entwicklungskosten, aber Abhängigkeit vom Anbieter.', null, '{}', 137)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14408,10 +15470,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wb-1', 'pm_wirtschaftlichkeit', 'Amortisation mit laufenden Kosten', 'Amortisationsdauer = Investition / (Einsparung - laufende Kosten) pro Jahr.', null, '{}', 138)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wb-1', 'pm_wirtschaftlichkeit', 'w-breakeven', 'Amortisation mit laufenden Kosten', 'Amortisationsdauer = Investition / (Einsparung - laufende Kosten) pro Jahr.', null, '{}', 138)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14420,10 +15483,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-al-1', 'projektabschluss', 'Lessons Learned bei Projektabbruch?', 'Ja - gerade abgebrochene Projekte liefern die wertvollsten Erkenntnisse.', null, '{}', 139)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-al-1', 'projektabschluss', 'a-lessons', 'Lessons Learned bei Projektabbruch?', 'Ja - gerade abgebrochene Projekte liefern die wertvollsten Erkenntnisse.', null, '{}', 139)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14432,10 +15496,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-al-2', 'projektabschluss', 'Ablauf eines Lessons-Learned-Workshops', 'Vorbereiten, sammeln (gut/schlecht), Ursachen analysieren, Empfehlungen ableiten, dokumentieren und zugänglich machen.', null, '{}', 140)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-al-2', 'projektabschluss', 'a-lessons', 'Ablauf eines Lessons-Learned-Workshops', 'Vorbereiten, sammeln (gut/schlecht), Ursachen analysieren, Empfehlungen ableiten, dokumentieren und zugänglich machen.', null, '{}', 140)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14444,10 +15509,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-km-1', 'kommunikation', 'Sender-Empfänger-Modell', 'Sender verschlüsselt, Kanal überträgt, Empfänger entschlüsselt. Verständigung klappt nur mit gemeinsamem Zeichenvorrat und ohne zu starke Störungen.', null, '{}', 141)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-km-1', 'kommunikation', 'k-modelle', 'Sender-Empfänger-Modell', 'Sender verschlüsselt, Kanal überträgt, Empfänger entschlüsselt. Verständigung klappt nur mit gemeinsamem Zeichenvorrat und ohne zu starke Störungen.', null, '{}', 141)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14456,10 +15522,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-km-2', 'kommunikation', 'Vier Seiten einer Nachricht (Schulz von Thun)', 'Sachinhalt, Selbstoffenbarung, Beziehung, Appell.', 'Der Empfänger entscheidet, mit welchem Ohr er hört.', '{}', 142)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-km-2', 'kommunikation', 'k-modelle', 'Vier Seiten einer Nachricht (Schulz von Thun)', 'Sachinhalt, Selbstoffenbarung, Beziehung, Appell.', 'Der Empfänger entscheidet, mit welchem Ohr er hört.', '{}', 142)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14468,10 +15535,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-km-3', 'kommunikation', 'Man kann nicht nicht kommunizieren', 'Erstes Axiom nach Watzlawick: Auch Schweigen und Körpersprache senden Botschaften.', null, '{}', 143)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-km-3', 'kommunikation', 'k-modelle', 'Man kann nicht nicht kommunizieren', 'Erstes Axiom nach Watzlawick: Auch Schweigen und Körpersprache senden Botschaften.', null, '{}', 143)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14480,10 +15548,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-km-4', 'kommunikation', 'Verbal, paraverbal, nonverbal', 'Verbal: Worte. Paraverbal: Tonfall, Tempo, Lautstärke. Nonverbal: Mimik, Gestik, Haltung.', null, '{}', 144)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-km-4', 'kommunikation', 'k-modelle', 'Verbal, paraverbal, nonverbal', 'Verbal: Worte. Paraverbal: Tonfall, Tempo, Lautstärke. Nonverbal: Mimik, Gestik, Haltung.', null, '{}', 144)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14492,10 +15561,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-km-5', 'kommunikation', 'Inhalts- und Beziehungsaspekt', 'Jede Nachricht hat beide. Die Beziehung bestimmt, wie der Inhalt verstanden wird.', null, '{}', 145)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-km-5', 'kommunikation', 'k-modelle', 'Inhalts- und Beziehungsaspekt', 'Jede Nachricht hat beide. Die Beziehung bestimmt, wie der Inhalt verstanden wird.', null, '{}', 145)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14504,10 +15574,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-kg-1', 'kommunikation', 'Aktives Zuhören', 'Paraphrasieren, nachfragen, Gefühle ansprechen, zusammenfassen.', null, '{}', 146)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-kg-1', 'kommunikation', 'k-gespraech', 'Aktives Zuhören', 'Paraphrasieren, nachfragen, Gefühle ansprechen, zusammenfassen.', null, '{}', 146)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14516,10 +15587,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-kg-2', 'kommunikation', 'Offene Frage', 'W-Frage, die eine ausführliche Antwort ermöglicht: „Wie gehen Sie heute vor?“', 'Zum Informationen sammeln - vor allem am Gesprächsanfang.', '{}', 147)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-kg-2', 'kommunikation', 'k-gespraech', 'Offene Frage', 'W-Frage, die eine ausführliche Antwort ermöglicht: „Wie gehen Sie heute vor?“', 'Zum Informationen sammeln - vor allem am Gesprächsanfang.', '{}', 147)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14528,10 +15600,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-kg-3', 'kommunikation', 'Geschlossene Frage', 'Frage, die mit Ja oder Nein beantwortet wird. Klärt Fakten und präzisiert.', null, '{}', 148)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-kg-3', 'kommunikation', 'k-gespraech', 'Geschlossene Frage', 'Frage, die mit Ja oder Nein beantwortet wird. Klärt Fakten und präzisiert.', null, '{}', 148)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14540,10 +15613,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-kg-4', 'kommunikation', 'Suggestivfrage', 'Frage, die die Antwort vorgibt: „Sie wollen doch sicher ...?“ - manipulativ, im Kundengespräch vermeiden.', null, '{}', 149)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-kg-4', 'kommunikation', 'k-gespraech', 'Suggestivfrage', 'Frage, die die Antwort vorgibt: „Sie wollen doch sicher ...?“ - manipulativ, im Kundengespräch vermeiden.', null, '{}', 149)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14552,10 +15626,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-kg-5', 'kommunikation', 'Ich-Botschaft', 'Beschreibt die eigene Wahrnehmung statt den anderen anzugreifen: „Ich brauche die Fehlermeldung, um ...“', null, '{}', 150)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-kg-5', 'kommunikation', 'k-gespraech', 'Ich-Botschaft', 'Beschreibt die eigene Wahrnehmung statt den anderen anzugreifen: „Ich brauche die Fehlermeldung, um ...“', null, '{}', 150)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14564,10 +15639,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-kk-1', 'kommunikation', 'Adressatengerecht', 'Sprache, Detailtiefe und Beispiele an Vorwissen und Interessen des Gegenübers anpassen.', null, '{}', 151)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-kk-1', 'kommunikation', 'k-kunde', 'Adressatengerecht', 'Sprache, Detailtiefe und Beispiele an Vorwissen und Interessen des Gegenübers anpassen.', null, '{}', 151)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14576,10 +15652,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-kk-2', 'kommunikation', 'Lebenszyklus eines Tickets', 'Erfassen, kategorisieren, priorisieren, bearbeiten bzw. weiterleiten, Lösung dokumentieren, schließen.', null, '{}', 152)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-kk-2', 'kommunikation', 'k-kunde', 'Lebenszyklus eines Tickets', 'Erfassen, kategorisieren, priorisieren, bearbeiten bzw. weiterleiten, Lösung dokumentieren, schließen.', null, '{}', 152)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14588,10 +15665,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-kk-3', 'kommunikation', 'Priorität eines Tickets', 'Ergibt sich aus Dringlichkeit und Auswirkung - wie eilig ist es und wie viele sind betroffen?', null, '{}', 153)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-kk-3', 'kommunikation', 'k-kunde', 'Priorität eines Tickets', 'Ergibt sich aus Dringlichkeit und Auswirkung - wie eilig ist es und wie viele sind betroffen?', null, '{}', 153)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14600,10 +15678,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-kk-4', 'kommunikation', 'Umgang mit Beschwerden', 'Zuhören, ruhig bleiben, Verständnis zeigen, konkrete Lösung anbieten, nachfassen.', null, '{}', 154)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-kk-4', 'kommunikation', 'k-kunde', 'Umgang mit Beschwerden', 'Zuhören, ruhig bleiben, Verständnis zeigen, konkrete Lösung anbieten, nachfassen.', null, '{}', 154)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14612,10 +15691,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-tt-1', 'teamarbeit', 'Teamphasen nach Tuckman', 'Forming, Storming, Norming, Performing - ergänzt um Adjourning.', null, '{}', 155)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-tt-1', 'teamarbeit', 'te-phasen', 'Teamphasen nach Tuckman', 'Forming, Storming, Norming, Performing - ergänzt um Adjourning.', null, '{}', 155)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14624,10 +15704,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-tt-2', 'teamarbeit', 'Storming', 'Konfliktphase: Rollen und Einfluss werden ausgehandelt. Normal und nötig - Konflikte moderieren, nicht unterdrücken.', null, '{}', 156)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-tt-2', 'teamarbeit', 'te-phasen', 'Storming', 'Konfliktphase: Rollen und Einfluss werden ausgehandelt. Normal und nötig - Konflikte moderieren, nicht unterdrücken.', null, '{}', 156)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14636,10 +15717,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-tt-3', 'teamarbeit', 'Norming', 'Das Team einigt sich auf Regeln, Abläufe und Umgangsformen.', null, '{}', 157)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-tt-3', 'teamarbeit', 'te-phasen', 'Norming', 'Das Team einigt sich auf Regeln, Abläufe und Umgangsformen.', null, '{}', 157)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14648,10 +15730,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-tt-4', 'teamarbeit', 'Performing', 'Das Team arbeitet selbstständig und effektiv an der Aufgabe. Führung lässt Freiraum.', null, '{}', 158)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-tt-4', 'teamarbeit', 'te-phasen', 'Performing', 'Das Team arbeitet selbstständig und effektiv an der Aufgabe. Führung lässt Freiraum.', null, '{}', 158)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14660,10 +15743,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-tf-1', 'teamarbeit', 'Johari-Fenster: blinder Fleck', 'Was andere an mir sehen, ich selbst aber nicht. Feedback verkleinert ihn.', null, '{}', 159)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-tf-1', 'teamarbeit', 'te-feedback', 'Johari-Fenster: blinder Fleck', 'Was andere an mir sehen, ich selbst aber nicht. Feedback verkleinert ihn.', null, '{}', 159)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14672,10 +15756,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-tf-2', 'teamarbeit', 'Regeln für gutes Feedback', 'Ich-Botschaft, konkret, beschreibend statt bewertend, zeitnah, mit Verbesserungsvorschlag.', null, '{}', 160)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-tf-2', 'teamarbeit', 'te-feedback', 'Regeln für gutes Feedback', 'Ich-Botschaft, konkret, beschreibend statt bewertend, zeitnah, mit Verbesserungsvorschlag.', null, '{}', 160)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14684,10 +15769,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-tf-3', 'teamarbeit', 'Feedback annehmen', 'Zuhören, nicht rechtfertigen, nachfragen, bedanken.', null, '{}', 161)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-tf-3', 'teamarbeit', 'te-feedback', 'Feedback annehmen', 'Zuhören, nicht rechtfertigen, nachfragen, bedanken.', null, '{}', 161)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14696,10 +15782,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-tf-4', 'teamarbeit', 'Gute Fehlerkultur', 'Fehler werden offen angesprochen und als Lernchance genutzt - ohne Angst vor Strafe.', null, '{}', 162)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-tf-4', 'teamarbeit', 'te-feedback', 'Gute Fehlerkultur', 'Fehler werden offen angesprochen und als Lernchance genutzt - ohne Angst vor Strafe.', null, '{}', 162)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14708,10 +15795,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-tk-1', 'teamarbeit', 'Sachkonflikt vs. Beziehungskonflikt', 'Sachkonflikt: Streit um Wege oder Methoden. Beziehungskonflikt: gestörtes Verhältnis zwischen Personen.', null, '{}', 163)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-tk-1', 'teamarbeit', 'te-konflikte', 'Sachkonflikt vs. Beziehungskonflikt', 'Sachkonflikt: Streit um Wege oder Methoden. Beziehungskonflikt: gestörtes Verhältnis zwischen Personen.', null, '{}', 163)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14720,10 +15808,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-tk-2', 'teamarbeit', 'Konsens', 'Gemeinsam erarbeitete Lösung, bei der beide Seiten gewinnen - die nachhaltigste Konfliktlösung.', null, '{}', 164)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-tk-2', 'teamarbeit', 'te-konflikte', 'Konsens', 'Gemeinsam erarbeitete Lösung, bei der beide Seiten gewinnen - die nachhaltigste Konfliktlösung.', null, '{}', 164)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14732,10 +15821,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-tk-3', 'teamarbeit', 'Eskalationsstufen nach Glasl', 'Neun Stufen in drei Phasen: win-win, win-lose, lose-lose.', null, '{}', 165)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-tk-3', 'teamarbeit', 'te-konflikte', 'Eskalationsstufen nach Glasl', 'Neun Stufen in drei Phasen: win-win, win-lose, lose-lose.', null, '{}', 165)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14744,10 +15834,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-tk-4', 'teamarbeit', 'AGG', 'Allgemeines Gleichbehandlungsgesetz: verbietet Benachteiligung u. a. wegen Herkunft, Geschlecht, Religion, Behinderung, Alter oder sexueller Identität.', null, '{}', 166)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-tk-4', 'teamarbeit', 'te-konflikte', 'AGG', 'Allgemeines Gleichbehandlungsgesetz: verbietet Benachteiligung u. a. wegen Herkunft, Geschlecht, Religion, Behinderung, Alter oder sexueller Identität.', null, '{}', 166)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14756,10 +15847,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vh-1', 'verhandlung', 'Die vier Prinzipien des Harvard-Konzepts', 'Menschen und Probleme trennen, Interessen statt Positionen, Optionen zum beiderseitigen Vorteil, neutrale Beurteilungskriterien.', null, '{}', 167)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vh-1', 'verhandlung', 've-harvard', 'Die vier Prinzipien des Harvard-Konzepts', 'Menschen und Probleme trennen, Interessen statt Positionen, Optionen zum beiderseitigen Vorteil, neutrale Beurteilungskriterien.', null, '{}', 167)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14768,10 +15860,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vh-2', 'verhandlung', 'Position vs. Interesse', 'Position: die Forderung. Interesse: der Grund dahinter. Verhandelt wird über Interessen.', null, '{}', 168)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vh-2', 'verhandlung', 've-harvard', 'Position vs. Interesse', 'Position: die Forderung. Interesse: der Grund dahinter. Verhandelt wird über Interessen.', null, '{}', 168)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14780,10 +15873,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vh-3', 'verhandlung', 'BATNA', 'Beste Alternative zur Verhandlungslösung - zeigt, ab wann ein Angebot schlechter ist als keine Einigung.', null, '{}', 169)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vh-3', 'verhandlung', 've-harvard', 'BATNA', 'Beste Alternative zur Verhandlungslösung - zeigt, ab wann ein Angebot schlechter ist als keine Einigung.', null, '{}', 169)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14792,10 +15886,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vh-4', 'verhandlung', 'Neutrale Beurteilungskriterien', 'Objektive Maßstäbe wie Marktpreise, Normen oder Gutachten - statt Druck und Willkür.', null, '{}', 170)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vh-4', 'verhandlung', 've-harvard', 'Neutrale Beurteilungskriterien', 'Objektive Maßstäbe wie Marktpreise, Normen oder Gutachten - statt Druck und Willkür.', null, '{}', 170)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14804,10 +15899,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ve-1', 'verhandlung', 'Nutzenargumentation', 'Vom Merkmal über den Vorteil zum konkreten Nutzen für den Kunden argumentieren.', null, '{}', 171)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ve-1', 'verhandlung', 've-einwaende', 'Nutzenargumentation', 'Vom Merkmal über den Vorteil zum konkreten Nutzen für den Kunden argumentieren.', null, '{}', 171)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14816,10 +15912,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ve-2', 'verhandlung', 'Ja-aber-Methode', 'Dem Einwand zunächst zustimmen, dann um ein Gegenargument ergänzen.', null, '{}', 172)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ve-2', 'verhandlung', 've-einwaende', 'Ja-aber-Methode', 'Dem Einwand zunächst zustimmen, dann um ein Gegenargument ergänzen.', null, '{}', 172)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14828,10 +15925,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ve-3', 'verhandlung', 'Bumerang-Methode', 'Den Einwand selbst als Argument für das Produkt nutzen.', null, '{}', 173)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ve-3', 'verhandlung', 've-einwaende', 'Bumerang-Methode', 'Den Einwand selbst als Argument für das Produkt nutzen.', null, '{}', 173)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14840,10 +15938,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ve-4', 'verhandlung', 'Einwand vs. Vorwand', 'Einwand: echter Zweifel, sachlich ausräumen. Vorwand: vorgeschobener Grund, per Rückfrage den wahren Grund finden.', null, '{}', 174)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ve-4', 'verhandlung', 've-einwaende', 'Einwand vs. Vorwand', 'Einwand: echter Zweifel, sachlich ausräumen. Vorwand: vorgeschobener Grund, per Rückfrage den wahren Grund finden.', null, '{}', 174)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14852,10 +15951,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pp-1', 'praesentation', 'Aufbau einer Präsentation', 'Einleitung (Aufmerksamkeit, Thema), Hauptteil (Inhalte, Belege), Schluss (Zusammenfassung, Handlungsaufforderung).', null, '{}', 175)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pp-1', 'praesentation', 'pr-praesentation', 'Aufbau einer Präsentation', 'Einleitung (Aufmerksamkeit, Thema), Hauptteil (Inhalte, Belege), Schluss (Zusammenfassung, Handlungsaufforderung).', null, '{}', 175)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14864,10 +15964,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pp-2', 'praesentation', 'Balkendiagramm', 'Zeigt Vergleiche - zum Beispiel die Kosten mehrerer Angebote.', null, '{}', 176)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pp-2', 'praesentation', 'pr-praesentation', 'Balkendiagramm', 'Zeigt Vergleiche - zum Beispiel die Kosten mehrerer Angebote.', null, '{}', 176)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14876,10 +15977,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pp-3', 'praesentation', 'Liniendiagramm', 'Zeigt Entwicklungen über die Zeit - zum Beispiel Ticketzahlen pro Monat.', null, '{}', 177)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pp-3', 'praesentation', 'pr-praesentation', 'Liniendiagramm', 'Zeigt Entwicklungen über die Zeit - zum Beispiel Ticketzahlen pro Monat.', null, '{}', 177)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14888,10 +15990,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pp-4', 'praesentation', 'Kreisdiagramm', 'Zeigt Anteile an einem Ganzen - die Teile ergeben 100 %.', null, '{}', 178)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pp-4', 'praesentation', 'pr-praesentation', 'Kreisdiagramm', 'Zeigt Anteile an einem Ganzen - die Teile ergeben 100 %.', null, '{}', 178)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14900,10 +16003,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pq-1', 'praesentation', 'Primärquelle', 'Originalinformation, z. B. Herstellerdokumentation, Gesetzestext, eigene Messung.', null, '{}', 179)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pq-1', 'praesentation', 'pr-quellen', 'Primärquelle', 'Originalinformation, z. B. Herstellerdokumentation, Gesetzestext, eigene Messung.', null, '{}', 179)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14912,10 +16016,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pq-2', 'praesentation', 'Sekundärquelle', 'Aufbereitete Information aus zweiter Hand, z. B. Fachartikel, Lexikon, Forum.', null, '{}', 180)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pq-2', 'praesentation', 'pr-quellen', 'Sekundärquelle', 'Aufbereitete Information aus zweiter Hand, z. B. Fachartikel, Lexikon, Forum.', null, '{}', 180)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14924,10 +16029,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pq-3', 'praesentation', 'Kriterien für Quellen', 'Aktualität, Urheber, Objektivität, Nachprüfbarkeit, Relevanz.', null, '{}', 181)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pq-3', 'praesentation', 'pr-quellen', 'Kriterien für Quellen', 'Aktualität, Urheber, Objektivität, Nachprüfbarkeit, Relevanz.', null, '{}', 181)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14936,10 +16042,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pq-4', 'praesentation', 'KI-Antworten als Quelle?', 'Nein. Sie können erfunden sein und müssen an einer Primärquelle überprüft werden.', null, '{}', 182)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pq-4', 'praesentation', 'pr-quellen', 'KI-Antworten als Quelle?', 'Nein. Sie können erfunden sein und müssen an einer Primärquelle überprüft werden.', null, '{}', 182)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14948,10 +16055,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pa-1', 'praesentation', 'Anfrage', 'Unverbindliche Erkundigung nach Leistung, Preis und Bedingungen.', null, '{}', 183)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pa-1', 'praesentation', 'pr-angebot', 'Anfrage', 'Unverbindliche Erkundigung nach Leistung, Preis und Bedingungen.', null, '{}', 183)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14960,10 +16068,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pa-2', 'praesentation', 'Angebot', 'Verbindliche Willenserklärung. Wird es rechtzeitig und unverändert angenommen, entsteht ein Vertrag.', null, '{}', 184)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pa-2', 'praesentation', 'pr-angebot', 'Angebot', 'Verbindliche Willenserklärung. Wird es rechtzeitig und unverändert angenommen, entsteht ein Vertrag.', null, '{}', 184)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14972,10 +16081,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pa-3', 'praesentation', 'Freizeichnungsklausel', 'Schränkt die Bindung eines Angebots ein, z. B. „freibleibend“ oder „solange der Vorrat reicht“.', null, '{}', 185)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pa-3', 'praesentation', 'pr-angebot', 'Freizeichnungsklausel', 'Schränkt die Bindung eines Angebots ein, z. B. „freibleibend“ oder „solange der Vorrat reicht“.', null, '{}', 185)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14984,10 +16094,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pa-4', 'praesentation', 'Ist ein Katalog ein Angebot?', 'Nein - eine Aufforderung an die Allgemeinheit, selbst ein Angebot abzugeben.', null, '{}', 186)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pa-4', 'praesentation', 'pr-angebot', 'Ist ein Katalog ein Angebot?', 'Nein - eine Aufforderung an die Allgemeinheit, selbst ein Angebot abzugeben.', null, '{}', 186)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -14996,10 +16107,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mm-1', 'markt_marketing', 'Polypol', 'Viele Anbieter, viele Nachfrager - der Wettbewerb bestimmt den Preis.', null, '{}', 187)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mm-1', 'markt_marketing', 'm-markt', 'Polypol', 'Viele Anbieter, viele Nachfrager - der Wettbewerb bestimmt den Preis.', null, '{}', 187)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15008,10 +16120,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mm-2', 'markt_marketing', 'Oligopol', 'Wenige Anbieter, viele Nachfrager - z. B. große Cloud-Anbieter.', null, '{}', 188)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mm-2', 'markt_marketing', 'm-markt', 'Oligopol', 'Wenige Anbieter, viele Nachfrager - z. B. große Cloud-Anbieter.', null, '{}', 188)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15020,10 +16133,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mm-3', 'markt_marketing', 'Monopol', 'Ein Anbieter, viele Nachfrager - der Anbieter hat große Macht über den Preis.', null, '{}', 189)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mm-3', 'markt_marketing', 'm-markt', 'Monopol', 'Ein Anbieter, viele Nachfrager - der Anbieter hat große Macht über den Preis.', null, '{}', 189)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15032,10 +16146,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mm-4', 'markt_marketing', 'Nachfragemonopol', 'Viele Anbieter, aber nur ein Nachfrager - etwa eine Behörde, die ein Spezialsystem ausschreibt.', null, '{}', 190)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mm-4', 'markt_marketing', 'm-markt', 'Nachfragemonopol', 'Viele Anbieter, aber nur ein Nachfrager - etwa eine Behörde, die ein Spezialsystem ausschreibt.', null, '{}', 190)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15044,10 +16159,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mb-1', 'markt_marketing', 'Bedürfnis - Bedarf - Nachfrage', 'Bedürfnis: empfundener Mangel. Bedarf: Bedürfnis mit Kaufkraft. Nachfrage: Bedarf, der am Markt wirksam wird.', null, '{}', 191)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mb-1', 'markt_marketing', 'm-bedarf', 'Bedürfnis - Bedarf - Nachfrage', 'Bedürfnis: empfundener Mangel. Bedarf: Bedürfnis mit Kaufkraft. Nachfrage: Bedarf, der am Markt wirksam wird.', null, '{}', 191)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15056,10 +16172,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mb-2', 'markt_marketing', 'Maslow-Pyramide', 'Von unten: Grundbedürfnisse, Sicherheit, soziale Bedürfnisse, Wertschätzung, Selbstverwirklichung.', null, '{}', 192)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mb-2', 'markt_marketing', 'm-bedarf', 'Maslow-Pyramide', 'Von unten: Grundbedürfnisse, Sicherheit, soziale Bedürfnisse, Wertschätzung, Selbstverwirklichung.', null, '{}', 192)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15068,10 +16185,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mb-3', 'markt_marketing', 'Methoden der Bedarfsermittlung', 'Gespräch mit offenen Fragen, Ist-Analyse, Beobachtung, Fragebogen.', null, '{}', 193)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mb-3', 'markt_marketing', 'm-bedarf', 'Methoden der Bedarfsermittlung', 'Gespräch mit offenen Fragen, Ist-Analyse, Beobachtung, Fragebogen.', null, '{}', 193)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15080,10 +16198,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mb-4', 'markt_marketing', 'Wunsch vs. Bedarf', 'Gute Beratung klärt den tatsächlichen Bedarf, statt jeden Wunsch zu erfüllen.', null, '{}', 194)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mb-4', 'markt_marketing', 'm-bedarf', 'Wunsch vs. Bedarf', 'Gute Beratung klärt den tatsächlichen Bedarf, statt jeden Wunsch zu erfüllen.', null, '{}', 194)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15092,10 +16211,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mk-1', 'markt_marketing', 'Die 4 P des Marketing-Mix', 'Product, Price, Place, Promotion - Produkt-, Preis-, Distributions- und Kommunikationspolitik.', null, '{}', 195)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mk-1', 'markt_marketing', 'm-marketing', 'Die 4 P des Marketing-Mix', 'Product, Price, Place, Promotion - Produkt-, Preis-, Distributions- und Kommunikationspolitik.', null, '{}', 195)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15104,10 +16224,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mk-2', 'markt_marketing', 'AIDA', 'Attention, Interest, Desire, Action - Stufen der Werbewirkung.', null, '{}', 196)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mk-2', 'markt_marketing', 'm-marketing', 'AIDA', 'Attention, Interest, Desire, Action - Stufen der Werbewirkung.', null, '{}', 196)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15116,10 +16237,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mk-3', 'markt_marketing', 'Distributionspolitik', 'Regelt, wie das Produkt zum Kunden kommt: Onlineshop, Fachhandel, Direktvertrieb.', null, '{}', 197)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mk-3', 'markt_marketing', 'm-marketing', 'Distributionspolitik', 'Regelt, wie das Produkt zum Kunden kommt: Onlineshop, Fachhandel, Direktvertrieb.', null, '{}', 197)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15128,10 +16250,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mk-4', 'markt_marketing', 'Rabattaktion - welches Instrument?', 'Preispolitik. Die Anzeige, die darauf hinweist, ist Kommunikationspolitik.', null, '{}', 198)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mk-4', 'markt_marketing', 'm-marketing', 'Rabattaktion - welches Instrument?', 'Preispolitik. Die Anzeige, die darauf hinweist, ist Kommunikationspolitik.', null, '{}', 198)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15140,10 +16263,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ma-1', 'markt_marketing', 'ABC-Analyse - Zweck', 'Objekte nach Bedeutung in drei Klassen teilen, um Aufwand gezielt einzusetzen.', null, '{}', 199)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ma-1', 'markt_marketing', 'm-abc', 'ABC-Analyse - Zweck', 'Objekte nach Bedeutung in drei Klassen teilen, um Aufwand gezielt einzusetzen.', null, '{}', 199)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15152,10 +16276,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ma-2', 'markt_marketing', 'A-Klasse', 'Wenige Objekte mit dem größten Wertanteil, oft 70-80 %.', null, '{}', 200)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ma-2', 'markt_marketing', 'm-abc', 'A-Klasse', 'Wenige Objekte mit dem größten Wertanteil, oft 70-80 %.', null, '{}', 200)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15164,10 +16289,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ma-3', 'markt_marketing', 'C-Klasse', 'Viele Objekte mit geringem Wertanteil, oft nur 5-10 %.', null, '{}', 201)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ma-3', 'markt_marketing', 'm-abc', 'C-Klasse', 'Viele Objekte mit geringem Wertanteil, oft nur 5-10 %.', null, '{}', 201)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15176,10 +16302,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ma-4', 'markt_marketing', 'Schritte der ABC-Analyse', 'Werte ermitteln, absteigend sortieren, Anteile berechnen, kumulieren, Klassen zuordnen.', null, '{}', 202)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ma-4', 'markt_marketing', 'm-abc', 'Schritte der ABC-Analyse', 'Werte ermitteln, absteigend sortieren, Anteile berechnen, kumulieren, Klassen zuordnen.', null, '{}', 202)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15188,10 +16315,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mr-1', 'markt_marketing', 'GmbH', 'Kapitalgesellschaft, 25.000 € Stammkapital, Haftung mit dem Gesellschaftsvermögen.', null, '{}', 203)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mr-1', 'markt_marketing', 'm-rechtsformen', 'GmbH', 'Kapitalgesellschaft, 25.000 € Stammkapital, Haftung mit dem Gesellschaftsvermögen.', null, '{}', 203)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15200,10 +16328,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mr-2', 'markt_marketing', 'AG', 'Kapitalgesellschaft, 50.000 € Grundkapital, Organe: Vorstand, Aufsichtsrat, Hauptversammlung.', null, '{}', 204)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mr-2', 'markt_marketing', 'm-rechtsformen', 'AG', 'Kapitalgesellschaft, 50.000 € Grundkapital, Organe: Vorstand, Aufsichtsrat, Hauptversammlung.', null, '{}', 204)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15212,10 +16341,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mr-3', 'markt_marketing', 'KG', 'Komplementär haftet unbeschränkt, Kommanditist nur mit seiner Einlage.', null, '{}', 205)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mr-3', 'markt_marketing', 'm-rechtsformen', 'KG', 'Komplementär haftet unbeschränkt, Kommanditist nur mit seiner Einlage.', null, '{}', 205)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15224,10 +16354,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mr-4', 'markt_marketing', 'UG (haftungsbeschränkt)', 'GmbH mit Stammkapital ab 1 €. Ein Viertel des Jahresüberschusses muss angespart werden.', null, '{}', 206)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mr-4', 'markt_marketing', 'm-rechtsformen', 'UG (haftungsbeschränkt)', 'GmbH mit Stammkapital ab 1 €. Ein Viertel des Jahresüberschusses muss angespart werden.', null, '{}', 206)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15236,10 +16367,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mr-5', 'markt_marketing', 'OHG', 'Personengesellschaft, alle Gesellschafter haften unbeschränkt mit ihrem Privatvermögen.', null, '{}', 207)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mr-5', 'markt_marketing', 'm-rechtsformen', 'OHG', 'Personengesellschaft, alle Gesellschafter haften unbeschränkt mit ihrem Privatvermögen.', null, '{}', 207)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15248,10 +16380,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hk-1', 'hardware', 'EVA-Prinzip', 'Eingabe, Verarbeitung, Ausgabe - ergänzt um die Speicherung.', null, '{}', 208)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hk-1', 'hardware', 'h-komponenten', 'EVA-Prinzip', 'Eingabe, Verarbeitung, Ausgabe - ergänzt um die Speicherung.', null, '{}', 208)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15260,10 +16393,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hk-2', 'hardware', 'Kennzahlen einer CPU', 'Anzahl Kerne und Threads, Taktfrequenz, Cache-Größe.', null, '{}', 209)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hk-2', 'hardware', 'h-komponenten', 'Kennzahlen einer CPU', 'Anzahl Kerne und Threads, Taktfrequenz, Cache-Größe.', null, '{}', 209)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15272,10 +16406,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hk-3', 'hardware', 'Warum ist RAM flüchtig?', 'Er verliert seinen Inhalt ohne Strom. Dauerhaft gespeichert wird auf SSD oder Festplatte.', null, '{}', 210)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hk-3', 'hardware', 'h-komponenten', 'Warum ist RAM flüchtig?', 'Er verliert seinen Inhalt ohne Strom. Dauerhaft gespeichert wird auf SSD oder Festplatte.', null, '{}', 210)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15284,10 +16419,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hk-4', 'hardware', 'UEFI', 'Moderne Firmware als Nachfolger des BIOS: unterstützt GPT, große Datenträger und Secure Boot.', null, '{}', 211)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hk-4', 'hardware', 'h-komponenten', 'UEFI', 'Moderne Firmware als Nachfolger des BIOS: unterstützt GPT, große Datenträger und Secure Boot.', null, '{}', 211)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15296,10 +16432,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hk-5', 'hardware', 'Sockel', 'Steckplatz für den Prozessor auf dem Mainboard - CPU und Sockel müssen zusammenpassen.', null, '{}', 212)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hk-5', 'hardware', 'h-komponenten', 'Sockel', 'Steckplatz für den Prozessor auf dem Mainboard - CPU und Sockel müssen zusammenpassen.', null, '{}', 212)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15308,10 +16445,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hs-1', 'hardware', 'SSD vs. HDD', 'SSD: Flash, schnell, robust, teurer pro GB. HDD: Magnetscheiben, langsamer, günstiger pro GB.', null, '{}', 213)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hs-1', 'hardware', 'h-speicher', 'SSD vs. HDD', 'SSD: Flash, schnell, robust, teurer pro GB. HDD: Magnetscheiben, langsamer, günstiger pro GB.', null, '{}', 213)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15320,10 +16458,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hs-2', 'hardware', 'NVMe', 'Protokoll für SSDs über PCIe - mehrere GB/s, deutlich schneller als SATA (ca. 600 MB/s).', null, '{}', 214)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hs-2', 'hardware', 'h-speicher', 'NVMe', 'Protokoll für SSDs über PCIe - mehrere GB/s, deutlich schneller als SATA (ca. 600 MB/s).', null, '{}', 214)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15332,10 +16471,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hs-3', 'hardware', 'GB vs. GiB', 'GB: 1.000³ Byte (dezimal). GiB: 1.024³ Byte (binär).', 'Darum zeigt eine 1-TB-Platte unter Windows rund 931 „GB“.', '{}', 215)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hs-3', 'hardware', 'h-speicher', 'GB vs. GiB', 'GB: 1.000³ Byte (dezimal). GiB: 1.024³ Byte (binär).', 'Darum zeigt eine 1-TB-Platte unter Windows rund 931 „GB“.', '{}', 215)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15344,10 +16484,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hs-4', 'hardware', 'TBW', 'Terabytes Written - wie viele Daten eine SSD laut Hersteller insgesamt schreiben kann.', null, '{}', 216)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hs-4', 'hardware', 'h-speicher', 'TBW', 'Terabytes Written - wie viele Daten eine SSD laut Hersteller insgesamt schreiben kann.', null, '{}', 216)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15356,10 +16497,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hi-1', 'hardware', 'USB 3.2 Gen 1', '5 Gbit/s - früher USB 3.0 genannt.', null, '{}', 217)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hi-1', 'hardware', 'h-schnittstellen', 'USB 3.2 Gen 1', '5 Gbit/s - früher USB 3.0 genannt.', null, '{}', 217)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15368,10 +16510,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hi-2', 'hardware', 'USB-C', 'Eine Steckerform, keine Geschwindigkeit. Dahinter kann USB 2.0 bis USB4 stecken.', null, '{}', 218)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hi-2', 'hardware', 'h-schnittstellen', 'USB-C', 'Eine Steckerform, keine Geschwindigkeit. Dahinter kann USB 2.0 bis USB4 stecken.', null, '{}', 218)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15380,10 +16523,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hi-3', 'hardware', 'DisplayPort vs. VGA', 'DisplayPort: digital, Bild und Ton. VGA: analog, veraltet.', null, '{}', 219)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hi-3', 'hardware', 'h-schnittstellen', 'DisplayPort vs. VGA', 'DisplayPort: digital, Bild und Ton. VGA: analog, veraltet.', null, '{}', 219)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15392,10 +16536,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hi-4', 'hardware', 'IPS-Panel', 'Gute Farbwiedergabe und stabile Blickwinkel - verbreitet bei Büro- und Grafikmonitoren.', null, '{}', 220)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hi-4', 'hardware', 'h-schnittstellen', 'IPS-Panel', 'Gute Farbwiedergabe und stabile Blickwinkel - verbreitet bei Büro- und Grafikmonitoren.', null, '{}', 220)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15404,10 +16549,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hi-5', 'hardware', 'Full HD / WQHD / 4K', '1920 × 1080 / 2560 × 1440 / 3840 × 2160 Pixel.', null, '{}', 221)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hi-5', 'hardware', 'h-schnittstellen', 'Full HD / WQHD / 4K', '1920 × 1080 / 2560 × 1440 / 3840 × 2160 Pixel.', null, '{}', 221)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15416,10 +16562,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hu-1', 'hardware', 'Online-USV (Doppelwandler)', 'Versorgt die Last dauerhaft über den Wechselrichter - keine Umschaltzeit, bester Schutz.', null, '{}', 222)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hu-1', 'hardware', 'h-usv', 'Online-USV (Doppelwandler)', 'Versorgt die Last dauerhaft über den Wechselrichter - keine Umschaltzeit, bester Schutz.', null, '{}', 222)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15428,10 +16575,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hu-2', 'hardware', 'Offline-USV', 'Schaltet erst bei Stromausfall auf den Akku um - günstiger Grundschutz.', null, '{}', 223)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hu-2', 'hardware', 'h-usv', 'Offline-USV', 'Schaltet erst bei Stromausfall auf den Akku um - günstiger Grundschutz.', null, '{}', 223)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15440,10 +16588,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hu-3', 'hardware', 'Watt und VA', 'Watt = VA × Leistungsfaktor. Eine 1000-VA-USV mit Faktor 0,6 liefert nur 600 W.', null, '{}', 224)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hu-3', 'hardware', 'h-usv', 'Watt und VA', 'Watt = VA × Leistungsfaktor. Eine 1000-VA-USV mit Faktor 0,6 liefert nur 600 W.', null, '{}', 224)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15452,10 +16601,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-hu-4', 'hardware', 'Überbrückungszeit', 'Wie lange der Akku die Last versorgt - mindestens lang genug für ein geordnetes Herunterfahren.', null, '{}', 225)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-hu-4', 'hardware', 'h-usv', 'Überbrückungszeit', 'Wie lange der Akku die Last versorgt - mindestens lang genug für ein geordnetes Herunterfahren.', null, '{}', 225)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15464,10 +16614,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ha-1', 'hardware', 'Green IT - Maßnahmen', 'Energieeffiziente Geräte, Stromsparmodi, Virtualisierung, lange Nutzung, fachgerechtes Recycling.', null, '{}', 226)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ha-1', 'hardware', 'h-arbeitsplatz', 'Green IT - Maßnahmen', 'Energieeffiziente Geräte, Stromsparmodi, Virtualisierung, lange Nutzung, fachgerechtes Recycling.', null, '{}', 226)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15476,10 +16627,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ha-2', 'hardware', 'Energiekosten', 'kWh = Watt × Stunden / 1.000. Kosten = kWh × Preis pro kWh.', null, '{}', 227)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ha-2', 'hardware', 'h-arbeitsplatz', 'Energiekosten', 'kWh = Watt × Stunden / 1.000. Kosten = kWh × Preis pro kWh.', null, '{}', 227)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15488,10 +16640,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ha-3', 'hardware', 'Monitorposition', 'Oberkante auf oder leicht unter Augenhöhe, etwa eine Armlänge entfernt, seitlich zum Fenster.', null, '{}', 228)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ha-3', 'hardware', 'h-arbeitsplatz', 'Monitorposition', 'Oberkante auf oder leicht unter Augenhöhe, etwa eine Armlänge entfernt, seitlich zum Fenster.', null, '{}', 228)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15500,10 +16653,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ha-4', 'hardware', 'Rechtsgrundlage Bildschirmarbeit', 'Arbeitsstättenverordnung (ArbStättV), Anhang zu Bildschirmarbeitsplätzen.', null, '{}', 229)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ha-4', 'hardware', 'h-arbeitsplatz', 'Rechtsgrundlage Bildschirmarbeit', 'Arbeitsstättenverordnung (ArbStättV), Anhang zu Bildschirmarbeitsplätzen.', null, '{}', 229)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15512,10 +16666,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ba-1', 'betriebssysteme', 'Aufgaben eines Betriebssystems', 'Prozess-, Speicher-, Datei-, Geräte- und Benutzerverwaltung sowie Benutzerschnittstelle.', null, '{}', 230)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ba-1', 'betriebssysteme', 'b-aufgaben', 'Aufgaben eines Betriebssystems', 'Prozess-, Speicher-, Datei-, Geräte- und Benutzerverwaltung sowie Benutzerschnittstelle.', null, '{}', 230)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15524,10 +16679,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ba-2', 'betriebssysteme', 'Prozess vs. Thread', 'Prozess: laufendes Programm mit eigenem Speicher. Thread: Ausführungsstrang in einem Prozess.', null, '{}', 231)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ba-2', 'betriebssysteme', 'b-aufgaben', 'Prozess vs. Thread', 'Prozess: laufendes Programm mit eigenem Speicher. Thread: Ausführungsstrang in einem Prozess.', null, '{}', 231)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15536,10 +16692,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ba-3', 'betriebssysteme', 'Kernel', 'Kern des Betriebssystems mit vollem Hardwarezugriff.', null, '{}', 232)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ba-3', 'betriebssysteme', 'b-aufgaben', 'Kernel', 'Kern des Betriebssystems mit vollem Hardwarezugriff.', null, '{}', 232)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15548,10 +16705,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ba-4', 'betriebssysteme', 'Treiber', 'Software, die zwischen Betriebssystem und einem bestimmten Gerät übersetzt.', null, '{}', 233)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ba-4', 'betriebssysteme', 'b-aufgaben', 'Treiber', 'Software, die zwischen Betriebssystem und einem bestimmten Gerät übersetzt.', null, '{}', 233)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15560,10 +16718,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-bd-1', 'betriebssysteme', 'NTFS', 'Windows-Dateisystem mit Rechten, Journaling und Verschlüsselung.', null, '{}', 234)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-bd-1', 'betriebssysteme', 'b-dateisysteme', 'NTFS', 'Windows-Dateisystem mit Rechten, Journaling und Verschlüsselung.', null, '{}', 234)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15572,10 +16731,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-bd-2', 'betriebssysteme', 'FAT32 - größte Datei', '4 GB. Keine Rechteverwaltung.', null, '{}', 235)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-bd-2', 'betriebssysteme', 'b-dateisysteme', 'FAT32 - größte Datei', '4 GB. Keine Rechteverwaltung.', null, '{}', 235)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15584,10 +16744,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-bd-3', 'betriebssysteme', 'exFAT', 'Für USB-Sticks und SD-Karten: große Dateien, gute Kompatibilität, keine Rechte.', null, '{}', 236)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-bd-3', 'betriebssysteme', 'b-dateisysteme', 'exFAT', 'Für USB-Sticks und SD-Karten: große Dateien, gute Kompatibilität, keine Rechte.', null, '{}', 236)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15596,10 +16757,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-bd-4', 'betriebssysteme', 'GPT vs. MBR', 'GPT: große Datenträger, viele Partitionen, UEFI. MBR: max. 2 TiB, 4 primäre Partitionen.', null, '{}', 237)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-bd-4', 'betriebssysteme', 'b-dateisysteme', 'GPT vs. MBR', 'GPT: große Datenträger, viele Partitionen, UEFI. MBR: max. 2 TiB, 4 primäre Partitionen.', null, '{}', 237)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15608,10 +16770,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-br-1', 'betriebssysteme', 'Minimalprinzip', 'Jeder bekommt nur die Rechte, die er für seine Aufgabe braucht.', null, '{}', 238)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-br-1', 'betriebssysteme', 'b-rechte', 'Minimalprinzip', 'Jeder bekommt nur die Rechte, die er für seine Aufgabe braucht.', null, '{}', 238)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15620,10 +16783,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-br-2', 'betriebssysteme', 'chmod 640', 'rw- r-- --- : Besitzer lesen und schreiben, Gruppe lesen, andere nichts.', null, '{}', 239)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-br-2', 'betriebssysteme', 'b-rechte', 'chmod 640', 'rw- r-- --- : Besitzer lesen und schreiben, Gruppe lesen, andere nichts.', null, '{}', 239)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15632,10 +16796,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-br-3', 'betriebssysteme', 'Werte der Linux-Rechte', 'r = 4, w = 2, x = 1. Pro Benutzerklasse addiert.', null, '{}', 240)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-br-3', 'betriebssysteme', 'b-rechte', 'Werte der Linux-Rechte', 'r = 4, w = 2, x = 1. Pro Benutzerklasse addiert.', null, '{}', 240)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15644,10 +16809,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-br-4', 'betriebssysteme', 'Freigabe- und NTFS-Rechte', 'Beide gelten beim Netzzugriff - wirksam ist die strengere.', null, '{}', 241)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-br-4', 'betriebssysteme', 'b-rechte', 'Freigabe- und NTFS-Rechte', 'Beide gelten beim Netzzugriff - wirksam ist die strengere.', null, '{}', 241)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15656,10 +16822,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-bc-1', 'betriebssysteme', 'Windows ipconfig - Linux?', 'ip a (früher ifconfig).', null, '{}', 242)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-bc-1', 'betriebssysteme', 'b-cli', 'Windows ipconfig - Linux?', 'ip a (früher ifconfig).', null, '{}', 242)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15668,10 +16835,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-bc-2', 'betriebssysteme', 'tracert / traceroute', 'Zeigt den Weg der Pakete über die einzelnen Router bis zum Ziel.', null, '{}', 243)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-bc-2', 'betriebssysteme', 'b-cli', 'tracert / traceroute', 'Zeigt den Weg der Pakete über die einzelnen Router bis zum Ziel.', null, '{}', 243)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15680,10 +16848,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-bc-3', 'betriebssysteme', 'nslookup', 'Fragt einen DNS-Server nach der Adresse zu einem Namen - prüft die Namensauflösung.', null, '{}', 244)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-bc-3', 'betriebssysteme', 'b-cli', 'nslookup', 'Fragt einen DNS-Server nach der Adresse zu einem Namen - prüft die Namensauflösung.', null, '{}', 244)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15692,10 +16861,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-bc-4', 'betriebssysteme', 'sudo', 'Führt unter Linux einen einzelnen Befehl mit Administratorrechten aus.', null, '{}', 245)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-bc-4', 'betriebssysteme', 'b-cli', 'sudo', 'Führt unter Linux einen einzelnen Befehl mit Administratorrechten aus.', null, '{}', 245)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15704,10 +16874,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-bc-5', 'betriebssysteme', 'grep', 'Durchsucht Dateien oder Ausgaben nach einem Text.', null, '{}', 246)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-bc-5', 'betriebssysteme', 'b-cli', 'grep', 'Durchsucht Dateien oder Ausgaben nach einem Text.', null, '{}', 246)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15716,10 +16887,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-bh-1', 'betriebssysteme', 'Härtung', 'Angriffsfläche verkleinern: unnötige Dienste entfernen, Standardpasswörter ändern, Updates, Firewall, Rechte beschränken.', null, '{}', 247)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-bh-1', 'betriebssysteme', 'b-haertung', 'Härtung', 'Angriffsfläche verkleinern: unnötige Dienste entfernen, Standardpasswörter ändern, Updates, Firewall, Rechte beschränken.', null, '{}', 247)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15728,10 +16900,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-bh-2', 'betriebssysteme', 'Zero-Day', 'Schwachstelle, für die es noch kein Update gibt.', null, '{}', 248)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-bh-2', 'betriebssysteme', 'b-haertung', 'Zero-Day', 'Schwachstelle, für die es noch kein Update gibt.', null, '{}', 248)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15740,10 +16913,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-bh-3', 'betriebssysteme', 'Patchmanagement', 'Updates erfassen, bewerten, testen, verteilen, kontrollieren, dokumentieren.', null, '{}', 249)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-bh-3', 'betriebssysteme', 'b-haertung', 'Patchmanagement', 'Updates erfassen, bewerten, testen, verteilen, kontrollieren, dokumentieren.', null, '{}', 249)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15752,10 +16926,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-bh-4', 'betriebssysteme', 'Datenträgerverschlüsselung', 'Schützt Daten bei Verlust oder Diebstahl des Geräts, z. B. BitLocker (Windows) oder LUKS (Linux).', null, '{}', 250)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-bh-4', 'betriebssysteme', 'b-haertung', 'Datenträgerverschlüsselung', 'Schützt Daten bei Verlust oder Diebstahl des Geräts, z. B. BitLocker (Windows) oder LUKS (Linux).', null, '{}', 250)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15764,10 +16939,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-au-1', 'anwendungssysteme', 'ERP', 'Enterprise Resource Planning: integriert alle Unternehmensbereiche mit gemeinsamer Datenbank.', null, '{}', 251)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-au-1', 'anwendungssysteme', 'an-unternehmen', 'ERP', 'Enterprise Resource Planning: integriert alle Unternehmensbereiche mit gemeinsamer Datenbank.', null, '{}', 251)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15776,10 +16952,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-au-2', 'anwendungssysteme', 'SCM', 'Supply Chain Management: steuert die Lieferkette von Lieferanten über Beschaffung bis zur Logistik.', null, '{}', 252)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-au-2', 'anwendungssysteme', 'an-unternehmen', 'SCM', 'Supply Chain Management: steuert die Lieferkette von Lieferanten über Beschaffung bis zur Logistik.', null, '{}', 252)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15788,10 +16965,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-au-3', 'anwendungssysteme', 'CRM', 'Customer Relationship Management: bündelt alle Kundenkontakte, Vertrieb, Marketing und Service.', null, '{}', 253)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-au-3', 'anwendungssysteme', 'an-unternehmen', 'CRM', 'Customer Relationship Management: bündelt alle Kundenkontakte, Vertrieb, Marketing und Service.', null, '{}', 253)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15800,10 +16978,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-au-4', 'anwendungssysteme', 'Vorteil einer gemeinsamen Datenbank', 'Keine doppelte Datenhaltung - alle Bereiche arbeiten mit denselben, aktuellen Daten.', null, '{}', 254)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-au-4', 'anwendungssysteme', 'an-unternehmen', 'Vorteil einer gemeinsamen Datenbank', 'Keine doppelte Datenhaltung - alle Bereiche arbeiten mit denselben, aktuellen Daten.', null, '{}', 254)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15812,10 +16991,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-as-1', 'anwendungssysteme', 'Standardsoftware', 'Für viele Kunden entwickelt: günstig, sofort verfügbar, aber nicht maßgeschneidert.', null, '{}', 255)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-as-1', 'anwendungssysteme', 'an-software', 'Standardsoftware', 'Für viele Kunden entwickelt: günstig, sofort verfügbar, aber nicht maßgeschneidert.', null, '{}', 255)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15824,10 +17004,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-as-2', 'anwendungssysteme', 'Individualsoftware', 'Für einen Kunden entwickelt: passgenau, aber teuer und erst nach Entwicklung verfügbar.', null, '{}', 256)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-as-2', 'anwendungssysteme', 'an-software', 'Individualsoftware', 'Für einen Kunden entwickelt: passgenau, aber teuer und erst nach Entwicklung verfügbar.', null, '{}', 256)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15836,10 +17017,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-as-3', 'anwendungssysteme', 'Customizing', 'Anpassen von Standardsoftware über Einstellungen - ohne den Programmcode zu ändern.', null, '{}', 257)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-as-3', 'anwendungssysteme', 'an-software', 'Customizing', 'Anpassen von Standardsoftware über Einstellungen - ohne den Programmcode zu ändern.', null, '{}', 257)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15848,10 +17030,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-as-4', 'anwendungssysteme', 'Branchensoftware', 'Standardsoftware, die auf die Bedürfnisse einer bestimmten Branche zugeschnitten ist.', null, '{}', 258)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-as-4', 'anwendungssysteme', 'an-software', 'Branchensoftware', 'Standardsoftware, die auf die Bedürfnisse einer bestimmten Branche zugeschnitten ist.', null, '{}', 258)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15860,10 +17043,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-al-3', 'anwendungssysteme', 'GPL', 'Copyleft-Lizenz: Veränderte Versionen dürfen nur unter der GPL weitergegeben werden.', null, '{}', 259)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-al-3', 'anwendungssysteme', 'an-lizenzen', 'GPL', 'Copyleft-Lizenz: Veränderte Versionen dürfen nur unter der GPL weitergegeben werden.', null, '{}', 259)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15872,10 +17056,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-al-4', 'anwendungssysteme', 'MIT-Lizenz', 'Freizügige Open-Source-Lizenz: Nutzung auch in geschlossener Software, Lizenzhinweis nötig.', null, '{}', 260)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-al-4', 'anwendungssysteme', 'an-lizenzen', 'MIT-Lizenz', 'Freizügige Open-Source-Lizenz: Nutzung auch in geschlossener Software, Lizenzhinweis nötig.', null, '{}', 260)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15884,10 +17069,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-al-5', 'anwendungssysteme', 'Freeware vs. Open Source', 'Freeware ist kostenlos, der Quellcode aber geschlossen. Open Source legt den Quellcode offen.', null, '{}', 261)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-al-5', 'anwendungssysteme', 'an-lizenzen', 'Freeware vs. Open Source', 'Freeware ist kostenlos, der Quellcode aber geschlossen. Open Source legt den Quellcode offen.', null, '{}', 261)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15896,10 +17082,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-al-6', 'anwendungssysteme', 'OEM-Lizenz', 'An ein bestimmtes Gerät gebunden und mit ihm verkauft.', null, '{}', 262)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-al-6', 'anwendungssysteme', 'an-lizenzen', 'OEM-Lizenz', 'An ein bestimmtes Gerät gebunden und mit ihm verkauft.', null, '{}', 262)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15908,10 +17095,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ak-1', 'anwendungssysteme', 'Synchrone Kommunikation', 'Alle sind gleichzeitig dabei - Videokonferenz, Telefon, Live-Chat.', null, '{}', 263)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ak-1', 'anwendungssysteme', 'an-kollaboration', 'Synchrone Kommunikation', 'Alle sind gleichzeitig dabei - Videokonferenz, Telefon, Live-Chat.', null, '{}', 263)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15920,10 +17108,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ak-2', 'anwendungssysteme', 'Asynchrone Kommunikation', 'Zeitversetzt - E-Mail, Wiki, Ticketsystem, gemeinsame Dokumente.', null, '{}', 264)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ak-2', 'anwendungssysteme', 'an-kollaboration', 'Asynchrone Kommunikation', 'Zeitversetzt - E-Mail, Wiki, Ticketsystem, gemeinsame Dokumente.', null, '{}', 264)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15932,10 +17121,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ak-3', 'anwendungssysteme', 'Social-Media-Richtlinie', 'Regelt, wer im Namen des Unternehmens postet und was vertraulich bleibt.', null, '{}', 265)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ak-3', 'anwendungssysteme', 'an-kollaboration', 'Social-Media-Richtlinie', 'Regelt, wer im Namen des Unternehmens postet und was vertraulich bleibt.', null, '{}', 265)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15944,10 +17134,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ak-4', 'anwendungssysteme', 'Auftragsverarbeitungsvertrag', 'Pflicht, wenn ein Dienstleister personenbezogene Daten im Auftrag verarbeitet - auch bei Cloud-Werkzeugen.', null, '{}', 266)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ak-4', 'anwendungssysteme', 'an-kollaboration', 'Auftragsverarbeitungsvertrag', 'Pflicht, wenn ein Dienstleister personenbezogene Daten im Auftrag verarbeitet - auch bei Cloud-Werkzeugen.', null, '{}', 266)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15956,10 +17147,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-no-1', 'netzwerke', 'OSI-Schichten von 7 nach 1', 'Anwendung, Darstellung, Sitzung, Transport, Vermittlung, Sicherung, Bitübertragung.', null, '{}', 267)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-no-1', 'netzwerke', 'nw-modelle', 'OSI-Schichten von 7 nach 1', 'Anwendung, Darstellung, Sitzung, Transport, Vermittlung, Sicherung, Bitübertragung.', null, '{}', 267)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15968,10 +17160,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-no-2', 'netzwerke', 'OSI-Schicht eines Switches', 'Schicht 2 (Sicherung) - arbeitet mit MAC-Adressen.', null, '{}', 268)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-no-2', 'netzwerke', 'nw-modelle', 'OSI-Schicht eines Switches', 'Schicht 2 (Sicherung) - arbeitet mit MAC-Adressen.', null, '{}', 268)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15980,10 +17173,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-no-3', 'netzwerke', 'OSI-Schicht eines Routers', 'Schicht 3 (Vermittlung) - arbeitet mit IP-Adressen.', null, '{}', 269)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-no-3', 'netzwerke', 'nw-modelle', 'OSI-Schicht eines Routers', 'Schicht 3 (Vermittlung) - arbeitet mit IP-Adressen.', null, '{}', 269)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -15992,10 +17186,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-no-4', 'netzwerke', 'TCP vs. UDP', 'TCP: verbindungsorientiert, zuverlässig. UDP: verbindungslos, schnell, ohne Garantie.', null, '{}', 270)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-no-4', 'netzwerke', 'nw-modelle', 'TCP vs. UDP', 'TCP: verbindungsorientiert, zuverlässig. UDP: verbindungslos, schnell, ohne Garantie.', null, '{}', 270)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16004,10 +17199,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-no-5', 'netzwerke', 'Kapselung', 'Jede Schicht fügt beim Senden ihre Steuerinformationen hinzu: Segment, Paket, Frame, Bits.', null, '{}', 271)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-no-5', 'netzwerke', 'nw-modelle', 'Kapselung', 'Jede Schicht fügt beim Senden ihre Steuerinformationen hinzu: Segment, Paket, Frame, Bits.', null, '{}', 271)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16016,10 +17212,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ng-2', 'netzwerke', 'Switch vs. Hub', 'Switch leitet gezielt per MAC-Adresstabelle weiter, Hub sendet an alle.', null, '{}', 272)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ng-2', 'netzwerke', 'nw-geraete', 'Switch vs. Hub', 'Switch leitet gezielt per MAC-Adresstabelle weiter, Hub sendet an alle.', null, '{}', 272)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16028,10 +17225,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ng-3', 'netzwerke', 'Access Point', 'Bindet WLAN-Geräte in das kabelgebundene Netz ein.', null, '{}', 273)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ng-3', 'netzwerke', 'nw-geraete', 'Access Point', 'Bindet WLAN-Geräte in das kabelgebundene Netz ein.', null, '{}', 273)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16040,10 +17238,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ng-4', 'netzwerke', 'Cat 6A', 'Twisted-Pair-Kabel für 10 Gbit/s bis 100 m.', null, '{}', 274)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ng-4', 'netzwerke', 'nw-geraete', 'Cat 6A', 'Twisted-Pair-Kabel für 10 Gbit/s bis 100 m.', null, '{}', 274)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16052,10 +17251,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ng-5', 'netzwerke', 'VLAN', 'Logische Aufteilung eines physischen Switches in getrennte Netze.', null, '{}', 275)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ng-5', 'netzwerke', 'nw-geraete', 'VLAN', 'Logische Aufteilung eines physischen Switches in getrennte Netze.', null, '{}', 275)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16064,10 +17264,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-n4-1', 'netzwerke', 'Private IPv4-Bereiche', '10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16.', null, '{}', 276)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-n4-1', 'netzwerke', 'nw-ipv4', 'Private IPv4-Bereiche', '10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16.', null, '{}', 276)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16076,10 +17277,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-n4-2', 'netzwerke', 'Nutzbare Hosts', '2^(32 - Präfix) - 2. Netz- und Broadcastadresse sind nicht vergebbar.', null, '{}', 277)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-n4-2', 'netzwerke', 'nw-ipv4', 'Nutzbare Hosts', '2^(32 - Präfix) - 2. Netz- und Broadcastadresse sind nicht vergebbar.', null, '{}', 277)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16088,10 +17290,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-n4-3', 'netzwerke', '/26 als Maske', '255.255.255.192 - Blockgröße 64, 62 nutzbare Hosts.', null, '{}', 278)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-n4-3', 'netzwerke', 'nw-ipv4', '/26 als Maske', '255.255.255.192 - Blockgröße 64, 62 nutzbare Hosts.', null, '{}', 278)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16100,10 +17303,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-n4-4', 'netzwerke', 'APIPA', '169.254.x.x - selbst vergebene Adresse, wenn kein DHCP-Server antwortet.', null, '{}', 279)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-n4-4', 'netzwerke', 'nw-ipv4', 'APIPA', '169.254.x.x - selbst vergebene Adresse, wenn kein DHCP-Server antwortet.', null, '{}', 279)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16112,10 +17316,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-n4-5', 'netzwerke', '/30', '255.255.255.252 - 2 nutzbare Hosts, typisch für Punkt-zu-Punkt-Verbindungen.', null, '{}', 280)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-n4-5', 'netzwerke', 'nw-ipv4', '/30', '255.255.255.252 - 2 nutzbare Hosts, typisch für Punkt-zu-Punkt-Verbindungen.', null, '{}', 280)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16124,10 +17329,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-n6-1', 'netzwerke', 'Länge einer IPv6-Adresse', '128 Bit, acht Blöcke zu je 16 Bit in Hexadezimal.', null, '{}', 281)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-n6-1', 'netzwerke', 'nw-ipv6', 'Länge einer IPv6-Adresse', '128 Bit, acht Blöcke zu je 16 Bit in Hexadezimal.', null, '{}', 281)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16136,10 +17342,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-n6-2', 'netzwerke', 'Regeln zum Kürzen', 'Führende Nullen je Block weglassen. Eine Folge von Null-Blöcken einmal durch :: ersetzen.', null, '{}', 282)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-n6-2', 'netzwerke', 'nw-ipv6', 'Regeln zum Kürzen', 'Führende Nullen je Block weglassen. Eine Folge von Null-Blöcken einmal durch :: ersetzen.', null, '{}', 282)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16148,10 +17355,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-n6-3', 'netzwerke', 'fe80::/10', 'Link-Local - nur im eigenen Netzsegment gültig.', null, '{}', 283)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-n6-3', 'netzwerke', 'nw-ipv6', 'fe80::/10', 'Link-Local - nur im eigenen Netzsegment gültig.', null, '{}', 283)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16160,10 +17368,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-n6-4', 'netzwerke', '::1', 'Loopback - der eigene Rechner, wie 127.0.0.1 bei IPv4.', null, '{}', 284)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-n6-4', 'netzwerke', 'nw-ipv6', '::1', 'Loopback - der eigene Rechner, wie 127.0.0.1 bei IPv4.', null, '{}', 284)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16172,10 +17381,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-n6-5', 'netzwerke', 'Broadcast in IPv6?', 'Gibt es nicht - Multicast übernimmt die Aufgabe.', null, '{}', 285)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-n6-5', 'netzwerke', 'nw-ipv6', 'Broadcast in IPv6?', 'Gibt es nicht - Multicast übernimmt die Aufgabe.', null, '{}', 285)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16184,10 +17394,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-nd-1', 'netzwerke', 'DHCP - DORA', 'Discover, Offer, Request, Acknowledge.', null, '{}', 286)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-nd-1', 'netzwerke', 'nw-dienste', 'DHCP - DORA', 'Discover, Offer, Request, Acknowledge.', null, '{}', 286)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16196,10 +17407,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-nd-2', 'netzwerke', 'DNS-Eintrag MX', 'Nennt den Mailserver einer Domain.', null, '{}', 287)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-nd-2', 'netzwerke', 'nw-dienste', 'DNS-Eintrag MX', 'Nennt den Mailserver einer Domain.', null, '{}', 287)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16208,10 +17420,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-nd-3', 'netzwerke', 'HTTPS-Port', '443 - verschlüsselte Webseiten. Unverschlüsseltes HTTP nutzt Port 80.', null, '{}', 288)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-nd-3', 'netzwerke', 'nw-dienste', 'HTTPS-Port', '443 - verschlüsselte Webseiten. Unverschlüsseltes HTTP nutzt Port 80.', null, '{}', 288)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16220,10 +17433,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-nd-4', 'netzwerke', 'SSH-Port', '22 - verschlüsselte Fernwartung, ersetzt das unsichere Telnet (Port 23).', null, '{}', 289)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-nd-4', 'netzwerke', 'nw-dienste', 'SSH-Port', '22 - verschlüsselte Fernwartung, ersetzt das unsichere Telnet (Port 23).', null, '{}', 289)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16232,10 +17446,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-nd-5', 'netzwerke', 'IMAP vs. POP3', 'IMAP: Mails bleiben auf dem Server, synchron auf mehreren Geräten. POP3: Mails werden meist heruntergeladen.', null, '{}', 290)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-nd-5', 'netzwerke', 'nw-dienste', 'IMAP vs. POP3', 'IMAP: Mails bleiben auf dem Server, synchron auf mehreren Geräten. POP3: Mails werden meist heruntergeladen.', null, '{}', 290)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16244,10 +17459,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-nc-1', 'netzwerke', 'IaaS', 'Infrastructure as a Service: virtuelle Server, Speicher und Netz mieten.', null, '{}', 291)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-nc-1', 'netzwerke', 'nw-cloud', 'IaaS', 'Infrastructure as a Service: virtuelle Server, Speicher und Netz mieten.', null, '{}', 291)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16256,10 +17472,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-nc-2', 'netzwerke', 'PaaS', 'Platform as a Service: Laufzeitumgebung und Dienste, ohne Server selbst zu verwalten.', null, '{}', 292)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-nc-2', 'netzwerke', 'nw-cloud', 'PaaS', 'Platform as a Service: Laufzeitumgebung und Dienste, ohne Server selbst zu verwalten.', null, '{}', 292)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16268,10 +17485,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-nc-3', 'netzwerke', 'SaaS', 'Software as a Service: fertige Anwendung im Browser, z. B. Office online.', null, '{}', 293)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-nc-3', 'netzwerke', 'nw-cloud', 'SaaS', 'Software as a Service: fertige Anwendung im Browser, z. B. Office online.', null, '{}', 293)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16280,10 +17498,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-nc-4', 'netzwerke', 'Hypervisor Typ 1', 'Läuft direkt auf der Hardware, z. B. VMware ESXi, Hyper-V, KVM.', null, '{}', 294)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-nc-4', 'netzwerke', 'nw-cloud', 'Hypervisor Typ 1', 'Läuft direkt auf der Hardware, z. B. VMware ESXi, Hyper-V, KVM.', null, '{}', 294)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16292,10 +17511,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-nc-5', 'netzwerke', 'Container vs. VM', 'Container teilen den Kernel des Hosts und starten in Sekunden. VMs haben ein eigenes Betriebssystem.', null, '{}', 295)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-nc-5', 'netzwerke', 'nw-cloud', 'Container vs. VM', 'Container teilen den Kernel des Hosts und starten in Sekunden. VMs haben ein eigenes Betriebssystem.', null, '{}', 295)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16304,10 +17524,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ld-1', 'anforderungen', 'Lastenheft', 'Vom Auftraggeber erstellt: beschreibt lösungsneutral, was und wofür gebraucht wird.', null, '{}', 296)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ld-1', 'anforderungen', 'af-dokumente', 'Lastenheft', 'Vom Auftraggeber erstellt: beschreibt lösungsneutral, was und wofür gebraucht wird.', null, '{}', 296)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16316,10 +17537,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ld-2', 'anforderungen', 'Pflichtenheft', 'Vom Auftragnehmer erstellt: beschreibt, wie und womit die Anforderungen umgesetzt werden.', null, '{}', 297)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ld-2', 'anforderungen', 'af-dokumente', 'Pflichtenheft', 'Vom Auftragnehmer erstellt: beschreibt, wie und womit die Anforderungen umgesetzt werden.', null, '{}', 297)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16328,10 +17550,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ld-3', 'anforderungen', 'Wogegen wird abgenommen?', 'Gegen das vom Auftraggeber genehmigte Pflichtenheft.', null, '{}', 298)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ld-3', 'anforderungen', 'af-dokumente', 'Wogegen wird abgenommen?', 'Gegen das vom Auftraggeber genehmigte Pflichtenheft.', null, '{}', 298)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16340,10 +17563,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ld-4', 'anforderungen', 'Wann entsteht das Pflichtenheft?', 'Nach der Vergabe - erst dann steht fest, welcher Auftragnehmer es schreibt.', null, '{}', 299)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ld-4', 'anforderungen', 'af-dokumente', 'Wann entsteht das Pflichtenheft?', 'Nach der Vergabe - erst dann steht fest, welcher Auftragnehmer es schreibt.', null, '{}', 299)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16352,10 +17576,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-fa-1', 'anforderungen', 'Funktionale Anforderung', 'Beschreibt, was das System tut, z. B. „Rechnung als PDF erzeugen“.', null, '{}', 300)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-fa-1', 'anforderungen', 'af-arten', 'Funktionale Anforderung', 'Beschreibt, was das System tut, z. B. „Rechnung als PDF erzeugen“.', null, '{}', 300)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16364,10 +17589,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-fa-2', 'anforderungen', 'Nicht-funktionale Anforderung', 'Beschreibt, wie gut oder unter welchen Bedingungen das System arbeitet, z. B. Antwortzeit, Verfügbarkeit.', null, '{}', 301)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-fa-2', 'anforderungen', 'af-arten', 'Nicht-funktionale Anforderung', 'Beschreibt, wie gut oder unter welchen Bedingungen das System arbeitet, z. B. Antwortzeit, Verfügbarkeit.', null, '{}', 301)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16376,10 +17602,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-fa-3', 'anforderungen', 'Beispiele nicht-funktional', 'Leistung, Zuverlässigkeit, Benutzbarkeit, Sicherheit, Wartbarkeit, Übertragbarkeit, Randbedingungen.', null, '{}', 302)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-fa-3', 'anforderungen', 'af-arten', 'Beispiele nicht-funktional', 'Leistung, Zuverlässigkeit, Benutzbarkeit, Sicherheit, Wartbarkeit, Übertragbarkeit, Randbedingungen.', null, '{}', 302)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16388,10 +17615,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-fa-4', 'anforderungen', '„Das System soll schnell sein.“', 'Nicht prüfbar. Besser: „95 % der Anfragen in höchstens 2 Sekunden.“', null, '{}', 303)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-fa-4', 'anforderungen', 'af-arten', '„Das System soll schnell sein.“', 'Nicht prüfbar. Besser: „95 % der Anfragen in höchstens 2 Sekunden.“', null, '{}', 303)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16400,10 +17628,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-fe-1', 'anforderungen', 'Interview', 'Einzelgespräch mit Rückfragen - viel Tiefe, aber zeitaufwendig und nur für wenige Personen.', null, '{}', 304)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-fe-1', 'anforderungen', 'af-erhebung', 'Interview', 'Einzelgespräch mit Rückfragen - viel Tiefe, aber zeitaufwendig und nur für wenige Personen.', null, '{}', 304)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16412,10 +17641,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-fe-2', 'anforderungen', 'Fragebogen', 'Erreicht viele Personen und ist gut auswertbar, erlaubt aber keine Rückfragen.', null, '{}', 305)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-fe-2', 'anforderungen', 'af-erhebung', 'Fragebogen', 'Erreicht viele Personen und ist gut auswertbar, erlaubt aber keine Rückfragen.', null, '{}', 305)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16424,10 +17654,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-fe-3', 'anforderungen', 'Beobachtung', 'Zeigt echte Arbeitsabläufe und unbewusste Handgriffe, die im Gespräch nicht genannt werden.', null, '{}', 306)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-fe-3', 'anforderungen', 'af-erhebung', 'Beobachtung', 'Zeigt echte Arbeitsabläufe und unbewusste Handgriffe, die im Gespräch nicht genannt werden.', null, '{}', 306)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16436,10 +17667,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-fe-4', 'anforderungen', 'MoSCoW', 'Must have, Should have, Could have, Won’t have (this time) - Priorisierung von Anforderungen.', null, '{}', 307)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-fe-4', 'anforderungen', 'af-erhebung', 'MoSCoW', 'Must have, Should have, Could have, Won’t have (this time) - Priorisierung von Anforderungen.', null, '{}', 307)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16448,10 +17680,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-fe-5', 'anforderungen', 'Merkmale guter Anforderungen', 'Eindeutig, vollständig, widerspruchsfrei, prüfbar, notwendig, realisierbar.', null, '{}', 308)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-fe-5', 'anforderungen', 'af-erhebung', 'Merkmale guter Anforderungen', 'Eindeutig, vollständig, widerspruchsfrei, prüfbar, notwendig, realisierbar.', null, '{}', 308)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16460,10 +17693,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-uu-1', 'uml_modellierung', 'Akteur', 'Rolle oder externes System außerhalb der Systemgrenze, das mit dem System interagiert.', null, '{}', 309)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-uu-1', 'uml_modellierung', 'u-usecase', 'Akteur', 'Rolle oder externes System außerhalb der Systemgrenze, das mit dem System interagiert.', null, '{}', 309)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16472,10 +17706,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-uu-2', 'uml_modellierung', 'Systemgrenze', 'Rechteck mit Systemnamen, das alle Anwendungsfälle umschließt. Akteure stehen außerhalb.', null, '{}', 310)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-uu-2', 'uml_modellierung', 'u-usecase', 'Systemgrenze', 'Rechteck mit Systemnamen, das alle Anwendungsfälle umschließt. Akteure stehen außerhalb.', null, '{}', 310)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16484,10 +17719,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-uu-3', 'uml_modellierung', '«include»', 'Der eingebundene Fall wird immer ausgeführt. Pfeil vom Basisfall zum inkludierten Fall.', null, '{}', 311)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-uu-3', 'uml_modellierung', 'u-usecase', '«include»', 'Der eingebundene Fall wird immer ausgeführt. Pfeil vom Basisfall zum inkludierten Fall.', null, '{}', 311)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16496,10 +17732,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-uu-4', 'uml_modellierung', '«extend»', 'Erweitert den Basisfall nur unter einer Bedingung. Pfeil vom erweiternden Fall zum Basisfall.', null, '{}', 312)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-uu-4', 'uml_modellierung', 'u-usecase', '«extend»', 'Erweitert den Basisfall nur unter einer Bedingung. Pfeil vom erweiternden Fall zum Basisfall.', null, '{}', 312)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16508,10 +17745,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-uk-1', 'uml_modellierung', 'Sichtbarkeiten in UML', '+ public, - private, # protected, ~ package.', null, '{}', 313)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-uk-1', 'uml_modellierung', 'u-klassen', 'Sichtbarkeiten in UML', '+ public, - private, # protected, ~ package.', null, '{}', 313)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16520,10 +17758,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-uk-2', 'uml_modellierung', 'Multiplizität 1..*', 'Mindestens ein Objekt, nach oben offen.', null, '{}', 314)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-uk-2', 'uml_modellierung', 'u-klassen', 'Multiplizität 1..*', 'Mindestens ein Objekt, nach oben offen.', null, '{}', 314)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16532,10 +17771,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-uk-3', 'uml_modellierung', 'Aggregation', 'Leere Raute am Ganzen - das Teil kann ohne das Ganze existieren (Abteilung - Mitarbeiter).', null, '{}', 315)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-uk-3', 'uml_modellierung', 'u-klassen', 'Aggregation', 'Leere Raute am Ganzen - das Teil kann ohne das Ganze existieren (Abteilung - Mitarbeiter).', null, '{}', 315)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16544,10 +17784,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-uk-4', 'uml_modellierung', 'Komposition', 'Gefüllte Raute am Ganzen - das Teil existiert nur mit dem Ganzen (Rechnung - Position).', null, '{}', 316)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-uk-4', 'uml_modellierung', 'u-klassen', 'Komposition', 'Gefüllte Raute am Ganzen - das Teil existiert nur mit dem Ganzen (Rechnung - Position).', null, '{}', 316)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16556,10 +17797,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-uk-5', 'uml_modellierung', 'Aufbau einer Klasse', 'Drei Abschnitte: Klassenname, Attribute, Methoden.', null, '{}', 317)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-uk-5', 'uml_modellierung', 'u-klassen', 'Aufbau einer Klasse', 'Drei Abschnitte: Klassenname, Attribute, Methoden.', null, '{}', 317)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16568,10 +17810,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ua-1', 'uml_modellierung', 'Start- und Endknoten', 'Start: gefüllter Kreis. Ende: gefüllter Kreis mit Ring.', null, '{}', 318)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ua-1', 'uml_modellierung', 'u-aktivitaet', 'Start- und Endknoten', 'Start: gefüllter Kreis. Ende: gefüllter Kreis mit Ring.', null, '{}', 318)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16580,10 +17823,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ua-2', 'uml_modellierung', 'Entscheidung', 'Raute mit einem Eingang und mehreren Ausgängen - genau ein Weg, gesteuert über Guards [ ].', null, '{}', 319)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ua-2', 'uml_modellierung', 'u-aktivitaet', 'Entscheidung', 'Raute mit einem Eingang und mehreren Ausgängen - genau ein Weg, gesteuert über Guards [ ].', null, '{}', 319)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16592,10 +17836,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ua-3', 'uml_modellierung', 'Gabelung und Vereinigung', 'Balken: Fork startet parallele Wege, Join wartet, bis alle angekommen sind.', null, '{}', 320)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ua-3', 'uml_modellierung', 'u-aktivitaet', 'Gabelung und Vereinigung', 'Balken: Fork startet parallele Wege, Join wartet, bis alle angekommen sind.', null, '{}', 320)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16604,10 +17849,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ua-4', 'uml_modellierung', 'Swimlane', 'Aktivitätsbereich je Rolle oder Abteilung - zeigt, wer eine Aktion ausführt.', null, '{}', 321)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ua-4', 'uml_modellierung', 'u-aktivitaet', 'Swimlane', 'Aktivitätsbereich je Rolle oder Abteilung - zeigt, wer eine Aktion ausführt.', null, '{}', 321)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16616,10 +17862,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pd-1', 'programmierlogik', 'Wertebereich 8 Bit mit Vorzeichen', '-128 bis 127, insgesamt 2^8 = 256 Werte.', null, '{}', 322)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pd-1', 'programmierlogik', 'pl-datentypen', 'Wertebereich 8 Bit mit Vorzeichen', '-128 bis 127, insgesamt 2^8 = 256 Werte.', null, '{}', 322)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16628,10 +17875,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pd-2', 'programmierlogik', 'Datentyp für eine PLZ', 'String - keine Rechnung, und die führende Null bleibt erhalten.', null, '{}', 323)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pd-2', 'programmierlogik', 'pl-datentypen', 'Datentyp für eine PLZ', 'String - keine Rechnung, und die führende Null bleibt erhalten.', null, '{}', 323)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16640,10 +17888,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pd-3', 'programmierlogik', 'Cast', 'Ausdrückliche Typumwandlung, z. B. (int) 9.99 ergibt 9 - abgeschnitten, nicht gerundet.', null, '{}', 324)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pd-3', 'programmierlogik', 'pl-datentypen', 'Cast', 'Ausdrückliche Typumwandlung, z. B. (int) 9.99 ergibt 9 - abgeschnitten, nicht gerundet.', null, '{}', 324)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16652,10 +17901,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pd-4', 'programmierlogik', 'Geldbeträge speichern', 'Nicht als float/double. Besser Dezimaltyp (BigDecimal) oder ganze Cent als Ganzzahl.', null, '{}', 325)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pd-4', 'programmierlogik', 'pl-datentypen', 'Geldbeträge speichern', 'Nicht als float/double. Besser Dezimaltyp (BigDecimal) oder ganze Cent als Ganzzahl.', null, '{}', 325)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16664,10 +17914,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pd-5', 'programmierlogik', 'char vs. String', 'char: genau ein Zeichen wie ''A''. String: Zeichenkette beliebiger Länge.', null, '{}', 326)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pd-5', 'programmierlogik', 'pl-datentypen', 'char vs. String', 'char: genau ein Zeichen wie ''A''. String: Zeichenkette beliebiger Länge.', null, '{}', 326)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16676,10 +17927,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pk-1', 'programmierlogik', 'Kopfgesteuerte Schleife', 'Prüft vor jedem Durchlauf (while) - läuft eventuell gar nicht.', null, '{}', 327)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pk-1', 'programmierlogik', 'pl-kontrollstrukturen', 'Kopfgesteuerte Schleife', 'Prüft vor jedem Durchlauf (while) - läuft eventuell gar nicht.', null, '{}', 327)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16688,10 +17940,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pk-2', 'programmierlogik', 'Fußgesteuerte Schleife', 'Prüft nach jedem Durchlauf (do-while) - läuft mindestens einmal.', null, '{}', 328)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pk-2', 'programmierlogik', 'pl-kontrollstrukturen', 'Fußgesteuerte Schleife', 'Prüft nach jedem Durchlauf (do-while) - läuft mindestens einmal.', null, '{}', 328)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16700,10 +17953,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pk-3', 'programmierlogik', 'switch / case', 'Mehrfachauswahl anhand eines Wertes. In Java beendet break den jeweiligen Fall.', null, '{}', 329)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pk-3', 'programmierlogik', 'pl-kontrollstrukturen', 'switch / case', 'Mehrfachauswahl anhand eines Wertes. In Java beendet break den jeweiligen Fall.', null, '{}', 329)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16712,10 +17966,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pk-4', 'programmierlogik', 'Endlosschleife', 'Die Bedingung wird nie falsch, z. B. weil der Zähler im Rumpf nicht verändert wird.', null, '{}', 330)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pk-4', 'programmierlogik', 'pl-kontrollstrukturen', 'Endlosschleife', 'Die Bedingung wird nie falsch, z. B. weil der Zähler im Rumpf nicht verändert wird.', null, '{}', 330)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16724,10 +17979,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pc-1', 'programmierlogik', 'x ← 5', 'Zuweisung: Die Variable x erhält den Wert 5.', null, '{}', 331)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pc-1', 'programmierlogik', 'pl-pseudocode', 'x ← 5', 'Zuweisung: Die Variable x erhält den Wert 5.', null, '{}', 331)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16736,10 +17992,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pc-2', 'programmierlogik', 'Indizes bei n Elementen', 'Beginnt der Index bei 0, laufen die Indizes von 0 bis n - 1.', null, '{}', 332)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pc-2', 'programmierlogik', 'pl-pseudocode', 'Indizes bei n Elementen', 'Beginnt der Index bei 0, laufen die Indizes von 0 bis n - 1.', null, '{}', 332)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16748,10 +18005,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pc-3', 'programmierlogik', 'Startwert beim Maximum', 'Das erste Element des Arrays - nicht 0, sonst scheitert es an negativen Werten.', null, '{}', 333)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pc-3', 'programmierlogik', 'pl-pseudocode', 'Startwert beim Maximum', 'Das erste Element des Arrays - nicht 0, sonst scheitert es an negativen Werten.', null, '{}', 333)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16760,10 +18018,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pc-4', 'programmierlogik', 'Lineare Suche', 'Durchläuft die Liste von vorn, bis der Wert gefunden ist. Nicht gefunden: -1.', null, '{}', 334)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pc-4', 'programmierlogik', 'pl-pseudocode', 'Lineare Suche', 'Durchläuft die Liste von vorn, bis der Wert gefunden ist. Nicht gefunden: -1.', null, '{}', 334)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16772,10 +18031,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pt-1', 'programmierlogik', 'Schreibtischtest', 'Algorithmus gedanklich ausführen und alle Variablenwerte Schritt für Schritt notieren.', null, '{}', 335)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pt-1', 'programmierlogik', 'pl-schreibtischtest', 'Schreibtischtest', 'Algorithmus gedanklich ausführen und alle Variablenwerte Schritt für Schritt notieren.', null, '{}', 335)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16784,10 +18044,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pt-2', 'programmierlogik', 'Trace-Tabelle', 'Tabelle mit einer Spalte je Variable und einer Zeile je Änderung.', null, '{}', 336)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pt-2', 'programmierlogik', 'pl-schreibtischtest', 'Trace-Tabelle', 'Tabelle mit einer Spalte je Variable und einer Zeile je Änderung.', null, '{}', 336)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16796,10 +18057,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pt-3', 'programmierlogik', 'Werte tauschen', 'Nur mit Hilfsvariable: hilf ← a, a ← b, b ← hilf.', null, '{}', 337)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pt-3', 'programmierlogik', 'pl-schreibtischtest', 'Werte tauschen', 'Nur mit Hilfsvariable: hilf ← a, a ← b, b ← hilf.', null, '{}', 337)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16808,10 +18070,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-pt-4', 'programmierlogik', 'Wann ist eine SOLANGE-Schleife zu Ende?', 'Sobald die Bedingung vor einem Durchlauf mit den aktuellen Werten falsch ist.', null, '{}', 338)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-pt-4', 'programmierlogik', 'pl-schreibtischtest', 'Wann ist eine SOLANGE-Schleife zu Ende?', 'Sobald die Bedingung vor einem Durchlauf mit den aktuellen Werten falsch ist.', null, '{}', 338)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16820,10 +18083,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-og-1', 'objektorientierung', 'Klasse', 'Bauplan, der Attribute und Methoden für alle Objekte dieser Art festlegt.', null, '{}', 339)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-og-1', 'objektorientierung', 'oo-grundbegriffe', 'Klasse', 'Bauplan, der Attribute und Methoden für alle Objekte dieser Art festlegt.', null, '{}', 339)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16832,10 +18096,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-og-2', 'objektorientierung', 'Objekt', 'Konkretes Exemplar (Instanz) einer Klasse mit eigenen Attributwerten.', null, '{}', 340)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-og-2', 'objektorientierung', 'oo-grundbegriffe', 'Objekt', 'Konkretes Exemplar (Instanz) einer Klasse mit eigenen Attributwerten.', null, '{}', 340)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16844,10 +18109,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-og-3', 'objektorientierung', 'Zustand eines Objekts', 'Die aktuellen Werte seiner Attribute.', null, '{}', 341)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-og-3', 'objektorientierung', 'oo-grundbegriffe', 'Zustand eines Objekts', 'Die aktuellen Werte seiner Attribute.', null, '{}', 341)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16856,10 +18122,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-og-4', 'objektorientierung', 'Identität eines Objekts', 'Jedes Objekt ist eigenständig - auch bei gleichen Attributwerten.', null, '{}', 342)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-og-4', 'objektorientierung', 'oo-grundbegriffe', 'Identität eines Objekts', 'Jedes Objekt ist eigenständig - auch bei gleichen Attributwerten.', null, '{}', 342)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16868,10 +18135,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ok-1', 'objektorientierung', 'Kapselung', 'Daten sind private und nur über öffentliche Methoden erreichbar (Geheimnisprinzip).', null, '{}', 343)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ok-1', 'objektorientierung', 'oo-kapselung', 'Kapselung', 'Daten sind private und nur über öffentliche Methoden erreichbar (Geheimnisprinzip).', null, '{}', 343)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16880,10 +18148,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ok-2', 'objektorientierung', 'Getter', 'Öffentliche Methode, die den Wert eines privaten Attributs zurückgibt.', null, '{}', 344)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ok-2', 'objektorientierung', 'oo-kapselung', 'Getter', 'Öffentliche Methode, die den Wert eines privaten Attributs zurückgibt.', null, '{}', 344)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16892,10 +18161,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ok-3', 'objektorientierung', 'Setter', 'Öffentliche Methode, die ein privates Attribut ändert - idealerweise nach einer Prüfung.', null, '{}', 345)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ok-3', 'objektorientierung', 'oo-kapselung', 'Setter', 'Öffentliche Methode, die ein privates Attribut ändert - idealerweise nach einer Prüfung.', null, '{}', 345)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16904,10 +18174,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ok-4', 'objektorientierung', 'Warum Attribute private?', 'Damit niemand ungültige Werte setzt und das Innenleben änderbar bleibt.', null, '{}', 346)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ok-4', 'objektorientierung', 'oo-kapselung', 'Warum Attribute private?', 'Damit niemand ungültige Werte setzt und das Innenleben änderbar bleibt.', null, '{}', 346)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16916,10 +18187,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-oc-1', 'objektorientierung', 'Konstruktor', 'Wird bei new aufgerufen, initialisiert die Attribute. Name wie die Klasse, kein Rückgabetyp.', null, '{}', 347)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-oc-1', 'objektorientierung', 'oo-konstruktor', 'Konstruktor', 'Wird bei new aufgerufen, initialisiert die Attribute. Name wie die Klasse, kein Rückgabetyp.', null, '{}', 347)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16928,10 +18200,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-oc-2', 'objektorientierung', 'Überladen', 'Mehrere Konstruktoren mit gleichem Namen, aber unterschiedlicher Parameterliste.', null, '{}', 348)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-oc-2', 'objektorientierung', 'oo-konstruktor', 'Überladen', 'Mehrere Konstruktoren mit gleichem Namen, aber unterschiedlicher Parameterliste.', null, '{}', 348)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16940,10 +18213,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-oc-3', 'objektorientierung', 'Referenz', 'Verweis auf ein Objekt. b = a kopiert nur den Verweis, nicht das Objekt.', null, '{}', 349)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-oc-3', 'objektorientierung', 'oo-konstruktor', 'Referenz', 'Verweis auf ein Objekt. b = a kopiert nur den Verweis, nicht das Objekt.', null, '{}', 349)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16952,10 +18226,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-oc-4', 'objektorientierung', 'Nachricht', 'Aufruf einer Methode eines anderen Objekts, z. B. lager.reservieren(artikel, 2).', null, '{}', 350)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-oc-4', 'objektorientierung', 'oo-konstruktor', 'Nachricht', 'Aufruf einer Methode eines anderen Objekts, z. B. lager.reservieren(artikel, 2).', null, '{}', 350)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16964,10 +18239,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-oc-5', 'objektorientierung', 'Standardkonstruktor', 'Parameterloser Konstruktor, den Java nur anlegt, wenn die Klasse keinen eigenen hat.', null, '{}', 351)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-oc-5', 'objektorientierung', 'oo-konstruktor', 'Standardkonstruktor', 'Parameterloser Konstruktor, den Java nur anlegt, wenn die Klasse keinen eigenen hat.', null, '{}', 351)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16976,10 +18252,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-de-1', 'datenmodellierung', 'Entität vs. Entitätstyp', 'Entität: ein einzelnes Objekt (Kundin Yilmaz). Entitätstyp: die Zusammenfassung gleichartiger Entitäten (Kunde).', null, '{}', 352)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-de-1', 'datenmodellierung', 'dm-erm', 'Entität vs. Entitätstyp', 'Entität: ein einzelnes Objekt (Kundin Yilmaz). Entitätstyp: die Zusammenfassung gleichartiger Entitäten (Kunde).', null, '{}', 352)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -16988,10 +18265,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-de-2', 'datenmodellierung', 'Attribut', 'Eigenschaft eines Entitätstyps, z. B. Name oder E-Mail eines Kunden.', null, '{}', 353)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-de-2', 'datenmodellierung', 'dm-erm', 'Attribut', 'Eigenschaft eines Entitätstyps, z. B. Name oder E-Mail eines Kunden.', null, '{}', 353)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17000,10 +18278,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-de-3', 'datenmodellierung', 'Chen-Notation: Symbole', 'Rechteck = Entitätstyp, Raute = Beziehung, Ellipse = Attribut, unterstrichen = Schlüsselattribut.', null, '{}', 354)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-de-3', 'datenmodellierung', 'dm-erm', 'Chen-Notation: Symbole', 'Rechteck = Entitätstyp, Raute = Beziehung, Ellipse = Attribut, unterstrichen = Schlüsselattribut.', null, '{}', 354)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17012,10 +18291,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-de-4', 'datenmodellierung', 'Kann eine Beziehung Attribute haben?', 'Ja - z. B. „Menge“ an der Beziehung Bestellung „enthält“ Artikel.', null, '{}', 355)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-de-4', 'datenmodellierung', 'dm-erm', 'Kann eine Beziehung Attribute haben?', 'Ja - z. B. „Menge“ an der Beziehung Bestellung „enthält“ Artikel.', null, '{}', 355)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17024,10 +18304,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-dk-1', 'datenmodellierung', '1:n - Beispiel', 'Abteilung - Mitarbeiter: Eine Abteilung hat viele Mitarbeiter, jeder gehört zu genau einer Abteilung.', null, '{}', 356)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-dk-1', 'datenmodellierung', 'dm-kardinalitaet', '1:n - Beispiel', 'Abteilung - Mitarbeiter: Eine Abteilung hat viele Mitarbeiter, jeder gehört zu genau einer Abteilung.', null, '{}', 356)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17036,10 +18317,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-dk-2', 'datenmodellierung', 'n:m auflösen', 'Über eine Zwischentabelle mit den Primärschlüsseln beider Seiten als Fremdschlüssel -> zwei 1:n-Beziehungen.', null, '{}', 357)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-dk-2', 'datenmodellierung', 'dm-kardinalitaet', 'n:m auflösen', 'Über eine Zwischentabelle mit den Primärschlüsseln beider Seiten als Fremdschlüssel -> zwei 1:n-Beziehungen.', null, '{}', 357)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17048,10 +18330,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-dk-3', 'datenmodellierung', 'Fremdschlüssel bei 1:n', 'Kommt in die Tabelle der n-Seite, z. B. AbteilungsNr in Mitarbeiter.', null, '{}', 358)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-dk-3', 'datenmodellierung', 'dm-kardinalitaet', 'Fremdschlüssel bei 1:n', 'Kommt in die Tabelle der n-Seite, z. B. AbteilungsNr in Mitarbeiter.', null, '{}', 358)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17060,10 +18343,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-dk-4', 'datenmodellierung', 'Min-Max (0,n)', 'Die Entität nimmt mindestens 0-mal (optional) und höchstens beliebig oft an der Beziehung teil.', null, '{}', 359)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-dk-4', 'datenmodellierung', 'dm-kardinalitaet', 'Min-Max (0,n)', 'Die Entität nimmt mindestens 0-mal (optional) und höchstens beliebig oft an der Beziehung teil.', null, '{}', 359)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17072,10 +18356,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-dl-1', 'datenmodellierung', 'Primärschlüssel', 'Identifiziert jeden Datensatz eindeutig, darf nie leer sein und sollte sich nicht ändern.', null, '{}', 360)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-dl-1', 'datenmodellierung', 'dm-schluessel', 'Primärschlüssel', 'Identifiziert jeden Datensatz eindeutig, darf nie leer sein und sollte sich nicht ändern.', null, '{}', 360)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17084,10 +18369,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-dl-2', 'datenmodellierung', 'Fremdschlüssel', 'Spalte, die auf den Primärschlüssel einer anderen Tabelle verweist - darf sich wiederholen.', null, '{}', 361)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-dl-2', 'datenmodellierung', 'dm-schluessel', 'Fremdschlüssel', 'Spalte, die auf den Primärschlüssel einer anderen Tabelle verweist - darf sich wiederholen.', null, '{}', 361)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17096,10 +18382,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-dl-3', 'datenmodellierung', 'Surrogatschlüssel', 'Künstlicher Schlüssel ohne fachliche Bedeutung, vom System vergeben, z. B. fortlaufende KundenNr.', null, '{}', 362)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-dl-3', 'datenmodellierung', 'dm-schluessel', 'Surrogatschlüssel', 'Künstlicher Schlüssel ohne fachliche Bedeutung, vom System vergeben, z. B. fortlaufende KundenNr.', null, '{}', 362)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17108,10 +18395,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-dl-4', 'datenmodellierung', 'Referenzielle Integrität', 'Jeder Fremdschlüsselwert muss als Primärschlüssel in der referenzierten Tabelle existieren.', null, '{}', 363)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-dl-4', 'datenmodellierung', 'dm-schluessel', 'Referenzielle Integrität', 'Jeder Fremdschlüsselwert muss als Primärschlüssel in der referenzierten Tabelle existieren.', null, '{}', 363)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17120,10 +18408,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-dl-5', 'datenmodellierung', 'Zusammengesetzter Schlüssel', 'Primärschlüssel aus mehreren Spalten, z. B. BestellNr + ArtikelNr in Bestellposition.', null, '{}', 364)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-dl-5', 'datenmodellierung', 'dm-schluessel', 'Zusammengesetzter Schlüssel', 'Primärschlüssel aus mehreren Spalten, z. B. BestellNr + ArtikelNr in Bestellposition.', null, '{}', 364)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17132,10 +18421,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-dn-1', 'datenmodellierung', '1NF', 'Alle Attributwerte sind atomar, es gibt keine Wiederholungsgruppen.', null, '{}', 365)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-dn-1', 'datenmodellierung', 'dm-normalisierung', '1NF', 'Alle Attributwerte sind atomar, es gibt keine Wiederholungsgruppen.', null, '{}', 365)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17144,10 +18434,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-dn-2', 'datenmodellierung', '2NF', '1NF und jedes Nichtschlüsselattribut hängt vom gesamten Primärschlüssel ab, nicht nur von einem Teil.', null, '{}', 366)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-dn-2', 'datenmodellierung', 'dm-normalisierung', '2NF', '1NF und jedes Nichtschlüsselattribut hängt vom gesamten Primärschlüssel ab, nicht nur von einem Teil.', null, '{}', 366)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17156,10 +18447,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-dn-3', 'datenmodellierung', '3NF', '2NF und kein Nichtschlüsselattribut hängt transitiv (über ein anderes Nichtschlüsselattribut) vom Schlüssel ab.', null, '{}', 367)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-dn-3', 'datenmodellierung', 'dm-normalisierung', '3NF', '2NF und kein Nichtschlüsselattribut hängt transitiv (über ein anderes Nichtschlüsselattribut) vom Schlüssel ab.', null, '{}', 367)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17168,10 +18460,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-dn-4', 'datenmodellierung', 'Die drei Anomalien', 'Einfüge-, Änderungs- und Löschanomalie - Folgen von Redundanz in nicht normalisierten Tabellen.', null, '{}', 368)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-dn-4', 'datenmodellierung', 'dm-normalisierung', 'Die drei Anomalien', 'Einfüge-, Änderungs- und Löschanomalie - Folgen von Redundanz in nicht normalisierten Tabellen.', null, '{}', 368)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17180,10 +18473,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wu-1', 'web_internet', 'Reihenfolge der URL-Teile', 'Schema :// Host : Port / Pfad ? Query # Fragment', null, '{}', 369)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wu-1', 'web_internet', 'wi-url', 'Reihenfolge der URL-Teile', 'Schema :// Host : Port / Pfad ? Query # Fragment', null, '{}', 369)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17192,10 +18486,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wu-2', 'web_internet', 'Standardports', 'http: 80, https: 443, ftp: 21.', null, '{}', 370)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wu-2', 'web_internet', 'wi-url', 'Standardports', 'http: 80, https: 443, ftp: 21.', null, '{}', 370)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17204,10 +18499,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wu-3', 'web_internet', 'Fragment (#)', 'Sprungmarke innerhalb der Seite - wird nicht an den Server übertragen.', null, '{}', 371)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wu-3', 'web_internet', 'wi-url', 'Fragment (#)', 'Sprungmarke innerhalb der Seite - wird nicht an den Server übertragen.', null, '{}', 371)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17216,10 +18512,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wu-4', 'web_internet', 'Query (?)', 'Parameter für den Server als Schlüssel=Wert-Paare, getrennt mit &, z. B. ?farbe=rot&seite=2.', null, '{}', 372)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wu-4', 'web_internet', 'wi-url', 'Query (?)', 'Parameter für den Server als Schlüssel=Wert-Paare, getrennt mit &, z. B. ?farbe=rot&seite=2.', null, '{}', 372)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17228,10 +18525,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wh-1', 'web_internet', 'GET, POST, PUT, DELETE', 'Abrufen, Daten senden/Neues anlegen, Ressource ersetzen, Ressource löschen.', null, '{}', 373)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wh-1', 'web_internet', 'wi-http', 'GET, POST, PUT, DELETE', 'Abrufen, Daten senden/Neues anlegen, Ressource ersetzen, Ressource löschen.', null, '{}', 373)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17240,10 +18538,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wh-2', 'web_internet', 'Statuscode-Klassen', '1xx Information, 2xx Erfolg, 3xx Umleitung, 4xx Client-Fehler, 5xx Server-Fehler.', null, '{}', 374)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wh-2', 'web_internet', 'wi-http', 'Statuscode-Klassen', '1xx Information, 2xx Erfolg, 3xx Umleitung, 4xx Client-Fehler, 5xx Server-Fehler.', null, '{}', 374)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17252,10 +18551,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wh-3', 'web_internet', '401 vs. 403', '401: nicht (erfolgreich) angemeldet. 403: angemeldet bzw. bekannt, aber kein Zugriff erlaubt.', null, '{}', 375)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wh-3', 'web_internet', 'wi-http', '401 vs. 403', '401: nicht (erfolgreich) angemeldet. 403: angemeldet bzw. bekannt, aber kein Zugriff erlaubt.', null, '{}', 375)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17264,10 +18564,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wh-4', 'web_internet', 'Zustandslos', 'Jede HTTP-Anfrage steht für sich. Sitzungen werden z. B. über Cookies mit Sitzungs-ID gehalten.', null, '{}', 376)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wh-4', 'web_internet', 'wi-http', 'Zustandslos', 'Jede HTTP-Anfrage steht für sich. Sitzungen werden z. B. über Cookies mit Sitzungs-ID gehalten.', null, '{}', 376)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17276,10 +18577,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wh-5', 'web_internet', 'HTTPS', 'HTTP über eine mit TLS verschlüsselte Verbindung, Standardport 443.', null, '{}', 377)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wh-5', 'web_internet', 'wi-http', 'HTTPS', 'HTTP über eine mit TLS verschlüsselte Verbindung, Standardport 443.', null, '{}', 377)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17288,10 +18590,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wa-1', 'web_internet', 'Ablauf Seitenaufruf', 'URL -> DNS -> TCP-Handshake -> TLS-Handshake -> HTTP-Request -> Response -> Rendern und Nachladen.', null, '{}', 378)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wa-1', 'web_internet', 'wi-aufruf', 'Ablauf Seitenaufruf', 'URL -> DNS -> TCP-Handshake -> TLS-Handshake -> HTTP-Request -> Response -> Rendern und Nachladen.', null, '{}', 378)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17300,10 +18603,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wa-2', 'web_internet', '3-Way-Handshake', 'SYN (Client) -> SYN-ACK (Server) -> ACK (Client). Danach steht die TCP-Verbindung.', null, '{}', 379)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wa-2', 'web_internet', 'wi-aufruf', '3-Way-Handshake', 'SYN (Client) -> SYN-ACK (Server) -> ACK (Client). Danach steht die TCP-Verbindung.', null, '{}', 379)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17312,10 +18616,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wa-3', 'web_internet', 'Aufgabe von DNS', 'Übersetzt einen Hostnamen in die zugehörige IP-Adresse.', null, '{}', 380)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wa-3', 'web_internet', 'wi-aufruf', 'Aufgabe von DNS', 'Übersetzt einen Hostnamen in die zugehörige IP-Adresse.', null, '{}', 380)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17324,10 +18629,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wa-4', 'web_internet', 'TLS-Handshake', 'Server weist sich per Zertifikat aus, beide Seiten handeln einen Sitzungsschlüssel aus.', null, '{}', 381)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wa-4', 'web_internet', 'wi-aufruf', 'TLS-Handshake', 'Server weist sich per Zertifikat aus, beide Seiten handeln einen Sitzungsschlüssel aus.', null, '{}', 381)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17336,10 +18642,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wt-1', 'web_internet', 'HTML, CSS, JavaScript', 'HTML: Struktur und Bedeutung. CSS: Gestaltung. JavaScript: Verhalten.', null, '{}', 382)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wt-1', 'web_internet', 'wi-html', 'HTML, CSS, JavaScript', 'HTML: Struktur und Bedeutung. CSS: Gestaltung. JavaScript: Verhalten.', null, '{}', 382)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17348,10 +18655,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wt-2', 'web_internet', 'Aufbau einer CSS-Regel', 'Selektor { Eigenschaft: Wert; } - z. B. h1 { color: navy; }', null, '{}', 383)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wt-2', 'web_internet', 'wi-html', 'Aufbau einer CSS-Regel', 'Selektor { Eigenschaft: Wert; } - z. B. h1 { color: navy; }', null, '{}', 383)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17360,10 +18668,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wt-3', 'web_internet', 'Klasse vs. ID', 'Klasse (.name) beliebig oft pro Seite, ID (#name) genau einmal pro Seite.', null, '{}', 384)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wt-3', 'web_internet', 'wi-html', 'Klasse vs. ID', 'Klasse (.name) beliebig oft pro Seite, ID (#name) genau einmal pro Seite.', null, '{}', 384)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17372,10 +18681,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wt-4', 'web_internet', 'Media Query', 'CSS-Regel mit Bedingung, z. B. @media (max-width: 600px) - Grundlage für responsives Design.', null, '{}', 385)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wt-4', 'web_internet', 'wi-html', 'Media Query', 'CSS-Regel mit Bedingung, z. B. @media (max-width: 600px) - Grundlage für responsives Design.', null, '{}', 385)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17384,10 +18694,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wf-1', 'web_internet', 'WCAG-Prinzipien', 'Wahrnehmbar, bedienbar, verständlich, robust.', null, '{}', 386)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wf-1', 'web_internet', 'wi-barrierefrei', 'WCAG-Prinzipien', 'Wahrnehmbar, bedienbar, verständlich, robust.', null, '{}', 386)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17396,10 +18707,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wf-2', 'web_internet', 'BITV 2.0', 'Verordnung zur Barrierefreiheit von Websites und Apps öffentlicher Stellen des Bundes.', null, '{}', 387)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wf-2', 'web_internet', 'wi-barrierefrei', 'BITV 2.0', 'Verordnung zur Barrierefreiheit von Websites und Apps öffentlicher Stellen des Bundes.', null, '{}', 387)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17408,10 +18720,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wf-3', 'web_internet', 'BFSG', 'Barrierefreiheitsstärkungsgesetz: seit 28.06.2025 Pflicht für viele Produkte und Dienste privater Anbieter, z. B. Online-Shops.', null, '{}', 388)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wf-3', 'web_internet', 'wi-barrierefrei', 'BFSG', 'Barrierefreiheitsstärkungsgesetz: seit 28.06.2025 Pflicht für viele Produkte und Dienste privater Anbieter, z. B. Online-Shops.', null, '{}', 388)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17420,10 +18733,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wf-4', 'web_internet', 'Alt-Text', 'Textalternative für Bilder. Beschreibt Inhalt oder Zweck; dekorative Bilder bekommen alt="".', null, '{}', 389)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wf-4', 'web_internet', 'wi-barrierefrei', 'Alt-Text', 'Textalternative für Bilder. Beschreibt Inhalt oder Zweck; dekorative Bilder bekommen alt="".', null, '{}', 389)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17432,10 +18746,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-wf-5', 'web_internet', 'Mindestkontrast (WCAG AA)', '4,5:1 für normalen Text, 3:1 für großen Text.', null, '{}', 390)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-wf-5', 'web_internet', 'wi-barrierefrei', 'Mindestkontrast (WCAG AA)', '4,5:1 für normalen Text, 3:1 für großen Text.', null, '{}', 390)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17444,10 +18759,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mz-1', 'multimedia_daten', 'Stellenwerte eines Bytes', '128, 64, 32, 16, 8, 4, 2, 1 - von links nach rechts.', null, '{}', 391)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mz-1', 'multimedia_daten', 'md-zahlensysteme', 'Stellenwerte eines Bytes', '128, 64, 32, 16, 8, 4, 2, 1 - von links nach rechts.', null, '{}', 391)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17456,10 +18772,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mz-2', 'multimedia_daten', 'Nibble-Trick', 'Je 4 Bit ergeben eine Hex-Ziffer: 1001 1100 = 9C.', null, '{}', 392)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mz-2', 'multimedia_daten', 'md-zahlensysteme', 'Nibble-Trick', 'Je 4 Bit ergeben eine Hex-Ziffer: 1001 1100 = 9C.', null, '{}', 392)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17468,10 +18785,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mz-3', 'multimedia_daten', 'Hex-Ziffern A bis F', 'A = 10, B = 11, C = 12, D = 13, E = 14, F = 15.', null, '{}', 393)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mz-3', 'multimedia_daten', 'md-zahlensysteme', 'Hex-Ziffern A bis F', 'A = 10, B = 11, C = 12, D = 13, E = 14, F = 15.', null, '{}', 393)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17480,10 +18798,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mz-4', 'multimedia_daten', 'Divisionsrestverfahren', 'Wiederholt durch die Basis teilen, Reste von unten nach oben lesen.', null, '{}', 394)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mz-4', 'multimedia_daten', 'md-zahlensysteme', 'Divisionsrestverfahren', 'Wiederholt durch die Basis teilen, Reste von unten nach oben lesen.', null, '{}', 394)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17492,10 +18811,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mc-1', 'multimedia_daten', 'ASCII', '7 Bit, 128 Zeichen - ohne Umlaute. „A“ = 65, „a“ = 97, „0“ = 48.', null, '{}', 395)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mc-1', 'multimedia_daten', 'md-zeichen', 'ASCII', '7 Bit, 128 Zeichen - ohne Umlaute. „A“ = 65, „a“ = 97, „0“ = 48.', null, '{}', 395)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17504,10 +18824,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mc-2', 'multimedia_daten', 'UTF-8', 'Kodierung für Unicode mit 1 bis 4 Byte je Zeichen, ASCII-kompatibel. Umlaute: 2 Byte, €: 3 Byte.', null, '{}', 396)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mc-2', 'multimedia_daten', 'md-zeichen', 'UTF-8', 'Kodierung für Unicode mit 1 bis 4 Byte je Zeichen, ASCII-kompatibel. Umlaute: 2 Byte, €: 3 Byte.', null, '{}', 396)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17516,10 +18837,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mc-3', 'multimedia_daten', 'Unicode-Codepoint', 'Eindeutige Nummer eines Zeichens, geschrieben als U+hex, z. B. ä = U+00E4.', null, '{}', 397)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mc-3', 'multimedia_daten', 'md-zeichen', 'Unicode-Codepoint', 'Eindeutige Nummer eines Zeichens, geschrieben als U+hex, z. B. ä = U+00E4.', null, '{}', 397)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17528,10 +18850,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mc-4', 'multimedia_daten', 'Mojibake', 'Zeichensalat durch falsch interpretierte Kodierung, z. B. UTF-8 als Latin-1: „Ã¼“ statt „ü“.', null, '{}', 398)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mc-4', 'multimedia_daten', 'md-zeichen', 'Mojibake', 'Zeichensalat durch falsch interpretierte Kodierung, z. B. UTF-8 als Latin-1: „Ã¼“ statt „ü“.', null, '{}', 398)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17540,10 +18863,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-md-1', 'multimedia_daten', 'Datenmenge Bild', 'Breite × Höhe × Farbtiefe (Bit), durch 8 für Byte.', null, '{}', 399)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-md-1', 'multimedia_daten', 'md-datenmengen', 'Datenmenge Bild', 'Breite × Höhe × Farbtiefe (Bit), durch 8 für Byte.', null, '{}', 399)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17552,10 +18876,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-md-2', 'multimedia_daten', 'Datenmenge Audio', 'Abtastrate × Bittiefe × Kanäle × Sekunden (Bit).', null, '{}', 400)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-md-2', 'multimedia_daten', 'md-datenmengen', 'Datenmenge Audio', 'Abtastrate × Bittiefe × Kanäle × Sekunden (Bit).', null, '{}', 400)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17564,10 +18889,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-md-3', 'multimedia_daten', 'Datenmenge Video (unkomprimiert)', 'Breite × Höhe × Farbtiefe × Bilder pro Sekunde × Sekunden (Bit).', null, '{}', 401)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-md-3', 'multimedia_daten', 'md-datenmengen', 'Datenmenge Video (unkomprimiert)', 'Breite × Höhe × Farbtiefe × Bilder pro Sekunde × Sekunden (Bit).', null, '{}', 401)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17576,10 +18902,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-md-4', 'multimedia_daten', 'kB vs. KiB', '1 kB = 1.000 Byte (dezimal), 1 KiB = 1.024 Byte (binär).', null, '{}', 402)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-md-4', 'multimedia_daten', 'md-datenmengen', 'kB vs. KiB', '1 kB = 1.000 Byte (dezimal), 1 KiB = 1.024 Byte (binär).', null, '{}', 402)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17588,10 +18915,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mu-1', 'multimedia_daten', 'Übertragungsdauer', 'Dauer = Datenmenge in Bit / Datenrate in Bit pro Sekunde.', null, '{}', 403)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mu-1', 'multimedia_daten', 'md-uebertragung', 'Übertragungsdauer', 'Dauer = Datenmenge in Bit / Datenrate in Bit pro Sekunde.', null, '{}', 403)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17600,10 +18928,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mu-2', 'multimedia_daten', '1 Mbit/s', '1.000.000 Bit pro Sekunde - Datenraten werden dezimal angegeben.', null, '{}', 404)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mu-2', 'multimedia_daten', 'md-uebertragung', '1 Mbit/s', '1.000.000 Bit pro Sekunde - Datenraten werden dezimal angegeben.', null, '{}', 404)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17612,10 +18941,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mu-3', 'multimedia_daten', 'MB -> Mbit', 'Mal 8: 500 MB = 4.000 Mbit.', null, '{}', 405)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mu-3', 'multimedia_daten', 'md-uebertragung', 'MB -> Mbit', 'Mal 8: 500 MB = 4.000 Mbit.', null, '{}', 405)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17624,10 +18954,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mu-4', 'multimedia_daten', 'Upload vs. Download', 'Beim Hochladen, z. B. Cloud-Backup, zählt die meist kleinere Upload-Rate.', null, '{}', 406)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mu-4', 'multimedia_daten', 'md-uebertragung', 'Upload vs. Download', 'Beim Hochladen, z. B. Cloud-Backup, zählt die meist kleinere Upload-Rate.', null, '{}', 406)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17636,10 +18967,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mx-1', 'multimedia_daten', 'Verlustfreie Formate', 'ZIP, PNG, FLAC - das Original lässt sich exakt wiederherstellen.', null, '{}', 407)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mx-1', 'multimedia_daten', 'md-kompression', 'Verlustfreie Formate', 'ZIP, PNG, FLAC - das Original lässt sich exakt wiederherstellen.', null, '{}', 407)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17648,10 +18980,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mx-2', 'multimedia_daten', 'Verlustbehaftete Formate', 'JPEG, MP3, AAC, H.264, H.265 - Details werden dauerhaft weggelassen.', null, '{}', 408)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mx-2', 'multimedia_daten', 'md-kompression', 'Verlustbehaftete Formate', 'JPEG, MP3, AAC, H.264, H.265 - Details werden dauerhaft weggelassen.', null, '{}', 408)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17660,10 +18993,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mx-3', 'multimedia_daten', 'RLE', 'Lauflängenkodierung: Folgen gleicher Zeichen als Anzahl + Zeichen, z. B. AAAAA -> 5A.', null, '{}', 409)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mx-3', 'multimedia_daten', 'md-kompression', 'RLE', 'Lauflängenkodierung: Folgen gleicher Zeichen als Anzahl + Zeichen, z. B. AAAAA -> 5A.', null, '{}', 409)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17672,10 +19006,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-mx-4', 'multimedia_daten', 'SVG', 'Vektorformat: beliebig skalierbar ohne Qualitätsverlust - ideal für Logos und Icons.', null, '{}', 410)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-mx-4', 'multimedia_daten', 'md-kompression', 'SVG', 'Vektorformat: beliebig skalierbar ohne Qualitätsverlust - ideal für Logos und Icons.', null, '{}', 410)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17684,10 +19019,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ig-1', 'ki_grundlagen', 'Schwache vs. starke KI', 'Schwach: löst bestimmte Aufgaben (alle heutigen Systeme). Stark: allgemeine, menschenähnliche Intelligenz - gibt es bisher nicht.', null, '{}', 411)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ig-1', 'ki_grundlagen', 'ki-grundlagen', 'Schwache vs. starke KI', 'Schwach: löst bestimmte Aufgaben (alle heutigen Systeme). Stark: allgemeine, menschenähnliche Intelligenz - gibt es bisher nicht.', null, '{}', 411)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17696,10 +19032,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ig-2', 'ki_grundlagen', 'Überwachtes Lernen', 'Lernen aus Beispielen mit bekannter richtiger Antwort (Label), z. B. markierte Spam-Mails.', null, '{}', 412)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ig-2', 'ki_grundlagen', 'ki-grundlagen', 'Überwachtes Lernen', 'Lernen aus Beispielen mit bekannter richtiger Antwort (Label), z. B. markierte Spam-Mails.', null, '{}', 412)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17708,10 +19045,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ig-3', 'ki_grundlagen', 'Deep Learning', 'Maschinelles Lernen mit neuronalen Netzen aus vielen verborgenen Schichten.', null, '{}', 413)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ig-3', 'ki_grundlagen', 'ki-grundlagen', 'Deep Learning', 'Maschinelles Lernen mit neuronalen Netzen aus vielen verborgenen Schichten.', null, '{}', 413)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17720,10 +19058,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ig-4', 'ki_grundlagen', 'LLM', 'Großes Sprachmodell: sagt auf Basis von Trainingsdaten das jeweils nächste Token vorher.', null, '{}', 414)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ig-4', 'ki_grundlagen', 'ki-grundlagen', 'LLM', 'Großes Sprachmodell: sagt auf Basis von Trainingsdaten das jeweils nächste Token vorher.', null, '{}', 414)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17732,10 +19071,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ie-1', 'ki_grundlagen', 'Bausteine eines Prompts', 'Rolle, Kontext, Aufgabe, Format - und bei Bedarf Beispiele.', null, '{}', 415)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ie-1', 'ki_grundlagen', 'ki-einsatz', 'Bausteine eines Prompts', 'Rolle, Kontext, Aufgabe, Format - und bei Bedarf Beispiele.', null, '{}', 415)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17744,10 +19084,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ie-2', 'ki_grundlagen', 'Typische Einsatzfelder', 'Code-Assistenz, Support-Chatbot, Texte zusammenfassen, Tickets klassifizieren.', null, '{}', 416)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ie-2', 'ki_grundlagen', 'ki-einsatz', 'Typische Einsatzfelder', 'Code-Assistenz, Support-Chatbot, Texte zusammenfassen, Tickets klassifizieren.', null, '{}', 416)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17756,10 +19097,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ie-3', 'ki_grundlagen', 'KI-Ergebnis prüfen', 'Lesen, verstehen, testen - die Verantwortung bleibt beim Menschen.', null, '{}', 417)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ie-3', 'ki_grundlagen', 'ki-einsatz', 'KI-Ergebnis prüfen', 'Lesen, verstehen, testen - die Verantwortung bleibt beim Menschen.', null, '{}', 417)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17768,10 +19110,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ie-4', 'ki_grundlagen', 'Wann besser keine KI?', 'Bei Aufgaben mit festen Regeln, z. B. Rechnungsbeträge - ein normales Programm ist zuverlässiger.', null, '{}', 418)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ie-4', 'ki_grundlagen', 'ki-einsatz', 'Wann besser keine KI?', 'Bei Aufgaben mit festen Regeln, z. B. Rechnungsbeträge - ein normales Programm ist zuverlässiger.', null, '{}', 418)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17780,10 +19123,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ir-1', 'ki_grundlagen', 'Halluzination', 'Überzeugend formulierte, aber falsche oder erfundene Ausgabe eines KI-Modells.', null, '{}', 419)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ir-1', 'ki_grundlagen', 'ki-grenzen', 'Halluzination', 'Überzeugend formulierte, aber falsche oder erfundene Ausgabe eines KI-Modells.', null, '{}', 419)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17792,10 +19136,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ir-2', 'ki_grundlagen', 'Bias', 'Verzerrung: Das Modell übernimmt Ungleichgewichte aus seinen Trainingsdaten.', null, '{}', 420)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ir-2', 'ki_grundlagen', 'ki-grenzen', 'Bias', 'Verzerrung: Das Modell übernimmt Ungleichgewichte aus seinen Trainingsdaten.', null, '{}', 420)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17804,10 +19149,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ir-3', 'ki_grundlagen', 'AI Act - Risikostufen', 'Unannehmbar (verboten), hoch (strenge Pflichten), begrenzt (Transparenz), minimal (keine besonderen Pflichten).', null, '{}', 421)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ir-3', 'ki_grundlagen', 'ki-grenzen', 'AI Act - Risikostufen', 'Unannehmbar (verboten), hoch (strenge Pflichten), begrenzt (Transparenz), minimal (keine besonderen Pflichten).', null, '{}', 421)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17816,10 +19162,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ir-4', 'ki_grundlagen', 'Datenschutz bei KI-Tools', 'Keine personenbezogenen oder vertraulichen Daten in öffentliche, nicht freigegebene Tools eingeben.', null, '{}', 422)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ir-4', 'ki_grundlagen', 'ki-grenzen', 'Datenschutz bei KI-Tools', 'Keine personenbezogenen oder vertraulichen Daten in öffentliche, nicht freigegebene Tools eingeben.', null, '{}', 422)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17828,10 +19175,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-qg-1', 'qualitaetsmanagement', 'Qualität', 'Grad, in dem ein Produkt die vereinbarten Anforderungen erfüllt.', null, '{}', 423)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-qg-1', 'qualitaetsmanagement', 'qm-grundlagen', 'Qualität', 'Grad, in dem ein Produkt die vereinbarten Anforderungen erfüllt.', null, '{}', 423)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17840,10 +19188,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-qg-2', 'qualitaetsmanagement', 'Konstruktive vs. analytische QS', 'Konstruktiv verhindert Fehler (Styleguide, Schulung). Analytisch findet Fehler (Test, Review).', null, '{}', 424)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-qg-2', 'qualitaetsmanagement', 'qm-grundlagen', 'Konstruktive vs. analytische QS', 'Konstruktiv verhindert Fehler (Styleguide, Schulung). Analytisch findet Fehler (Test, Review).', null, '{}', 424)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17852,10 +19201,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-qg-3', 'qualitaetsmanagement', 'Statische vs. dynamische Prüfung', 'Statisch: ohne Ausführung (Review, Inspektion, Codeanalyse). Dynamisch: Programm wird ausgeführt (Test).', null, '{}', 425)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-qg-3', 'qualitaetsmanagement', 'qm-grundlagen', 'Statische vs. dynamische Prüfung', 'Statisch: ohne Ausführung (Review, Inspektion, Codeanalyse). Dynamisch: Programm wird ausgeführt (Test).', null, '{}', 425)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17864,10 +19214,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-qg-4', 'qualitaetsmanagement', 'Walkthrough vs. Inspektion', 'Walkthrough: informell, der Autor führt durch. Inspektion: formal mit Moderator, Rollen, Checkliste und Protokoll.', null, '{}', 426)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-qg-4', 'qualitaetsmanagement', 'qm-grundlagen', 'Walkthrough vs. Inspektion', 'Walkthrough: informell, der Autor führt durch. Inspektion: formal mit Moderator, Rollen, Checkliste und Protokoll.', null, '{}', 426)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17876,10 +19227,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-qg-5', 'qualitaetsmanagement', 'Zehnerregel', 'Fehlerkosten verzehnfachen sich grob mit jeder Phase, die ein Fehler unentdeckt bleibt.', null, '{}', 427)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-qg-5', 'qualitaetsmanagement', 'qm-grundlagen', 'Zehnerregel', 'Fehlerkosten verzehnfachen sich grob mit jeder Phase, die ein Fehler unentdeckt bleibt.', null, '{}', 427)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17888,10 +19240,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-qe-1', 'qualitaetsmanagement', 'Zuverlässigkeit', 'Die Software läuft stabil, verträgt Störungen und ist verfügbar, wenn sie gebraucht wird.', null, '{}', 428)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-qe-1', 'qualitaetsmanagement', 'qm-merkmale', 'Zuverlässigkeit', 'Die Software läuft stabil, verträgt Störungen und ist verfügbar, wenn sie gebraucht wird.', null, '{}', 428)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17900,10 +19253,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-qe-2', 'qualitaetsmanagement', 'Benutzbarkeit', 'Wie leicht die Software zu erlernen und zu bedienen ist.', null, '{}', 429)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-qe-2', 'qualitaetsmanagement', 'qm-merkmale', 'Benutzbarkeit', 'Wie leicht die Software zu erlernen und zu bedienen ist.', null, '{}', 429)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17912,10 +19266,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-qe-3', 'qualitaetsmanagement', 'Effizienz', 'Zeitverhalten und Ressourcenverbrauch, z. B. Antwortzeit oder Speicherbedarf.', null, '{}', 430)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-qe-3', 'qualitaetsmanagement', 'qm-merkmale', 'Effizienz', 'Zeitverhalten und Ressourcenverbrauch, z. B. Antwortzeit oder Speicherbedarf.', null, '{}', 430)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17924,10 +19279,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-qe-4', 'qualitaetsmanagement', 'Wartbarkeit vs. Übertragbarkeit', 'Wartbarkeit: leicht zu ändern und zu korrigieren. Übertragbarkeit: läuft auch in anderer Umgebung.', null, '{}', 431)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-qe-4', 'qualitaetsmanagement', 'qm-merkmale', 'Wartbarkeit vs. Übertragbarkeit', 'Wartbarkeit: leicht zu ändern und zu korrigieren. Übertragbarkeit: läuft auch in anderer Umgebung.', null, '{}', 431)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17936,10 +19292,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-qe-5', 'qualitaetsmanagement', 'Messbare Anforderung', 'Merkmal, Messgröße, Zielwert und Bedingung - z. B. max. 2 s bei 200 Nutzern.', null, '{}', 432)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-qe-5', 'qualitaetsmanagement', 'qm-merkmale', 'Messbare Anforderung', 'Merkmal, Messgröße, Zielwert und Bedingung - z. B. max. 2 s bei 200 Nutzern.', null, '{}', 432)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17948,10 +19305,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-qp-1', 'qualitaetsmanagement', 'PDCA', 'Plan, Do, Check, Act - der Deming-Kreis für schrittweise Verbesserung.', null, '{}', 433)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-qp-1', 'qualitaetsmanagement', 'qm-pdca', 'PDCA', 'Plan, Do, Check, Act - der Deming-Kreis für schrittweise Verbesserung.', null, '{}', 433)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17960,10 +19318,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-qp-2', 'qualitaetsmanagement', 'Was passiert in „Do“?', 'Die geplante Maßnahme wird im kleinen Rahmen erprobt, etwa als Pilot.', null, '{}', 434)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-qp-2', 'qualitaetsmanagement', 'qm-pdca', 'Was passiert in „Do“?', 'Die geplante Maßnahme wird im kleinen Rahmen erprobt, etwa als Pilot.', null, '{}', 434)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17972,10 +19331,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-qp-3', 'qualitaetsmanagement', 'Was passiert in „Act“?', 'Bei Erfolg wird die Maßnahme zum Standard, sonst angepasst. Danach beginnt der nächste Zyklus.', null, '{}', 435)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-qp-3', 'qualitaetsmanagement', 'qm-pdca', 'Was passiert in „Act“?', 'Bei Erfolg wird die Maßnahme zum Standard, sonst angepasst. Danach beginnt der nächste Zyklus.', null, '{}', 435)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17984,10 +19344,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-qp-4', 'qualitaetsmanagement', 'KVP', 'Kontinuierlicher Verbesserungsprozess: viele kleine, stetige Verbesserungen unter Beteiligung der Mitarbeitenden.', null, '{}', 436)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-qp-4', 'qualitaetsmanagement', 'qm-pdca', 'KVP', 'Kontinuierlicher Verbesserungsprozess: viele kleine, stetige Verbesserungen unter Beteiligung der Mitarbeitenden.', null, '{}', 436)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -17996,10 +19357,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ss-1', 'testen', 'Die vier Teststufen', 'Komponententest, Integrationstest, Systemtest, Abnahmetest.', null, '{}', 437)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ss-1', 'testen', 'ts-stufen', 'Die vier Teststufen', 'Komponententest, Integrationstest, Systemtest, Abnahmetest.', null, '{}', 437)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18008,10 +19370,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ss-2', 'testen', 'Integrationstest', 'Prüft die Schnittstellen und das Zusammenspiel mehrerer Komponenten.', null, '{}', 438)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ss-2', 'testen', 'ts-stufen', 'Integrationstest', 'Prüft die Schnittstellen und das Zusammenspiel mehrerer Komponenten.', null, '{}', 438)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18020,10 +19383,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ss-3', 'testen', 'Systemtest vs. Abnahmetest', 'Systemtest: Auftragnehmer prüft gegen die Spezifikation. Abnahmetest: Auftraggeber prüft gegen seine Anforderungen.', null, '{}', 439)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ss-3', 'testen', 'ts-stufen', 'Systemtest vs. Abnahmetest', 'Systemtest: Auftragnehmer prüft gegen die Spezifikation. Abnahmetest: Auftraggeber prüft gegen seine Anforderungen.', null, '{}', 439)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18032,10 +19396,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ss-4', 'testen', 'Stub vs. Testtreiber', 'Stub ersetzt eine aufgerufene Komponente. Testtreiber ersetzt den Aufrufer.', null, '{}', 440)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ss-4', 'testen', 'ts-stufen', 'Stub vs. Testtreiber', 'Stub ersetzt eine aufgerufene Komponente. Testtreiber ersetzt den Aufrufer.', null, '{}', 440)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18044,10 +19409,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ss-5', 'testen', 'Regressionstest', 'Wiederholt bestandene Tests nach einer Änderung, um Nebenwirkungen zu finden.', null, '{}', 441)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ss-5', 'testen', 'ts-stufen', 'Regressionstest', 'Wiederholt bestandene Tests nach einer Änderung, um Nebenwirkungen zu finden.', null, '{}', 441)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18056,10 +19422,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sv-1', 'testen', 'Black-Box-Test', 'Testfälle aus der Spezifikation, ohne Kenntnis des Codes.', null, '{}', 442)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sv-1', 'testen', 'ts-verfahren', 'Black-Box-Test', 'Testfälle aus der Spezifikation, ohne Kenntnis des Codes.', null, '{}', 442)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18068,10 +19435,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sv-2', 'testen', 'White-Box-Test', 'Testfälle aus der Codestruktur, gemessen mit Überdeckungsmaßen.', null, '{}', 443)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sv-2', 'testen', 'ts-verfahren', 'White-Box-Test', 'Testfälle aus der Codestruktur, gemessen mit Überdeckungsmaßen.', null, '{}', 443)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18080,10 +19448,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sv-3', 'testen', 'Anweisungs- vs. Zweigüberdeckung', 'Anweisung: jede Anweisung einmal ausgeführt. Zweig: jeder Zweig einmal, auch leere Nein-Zweige.', null, '{}', 444)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sv-3', 'testen', 'ts-verfahren', 'Anweisungs- vs. Zweigüberdeckung', 'Anweisung: jede Anweisung einmal ausgeführt. Zweig: jeder Zweig einmal, auch leere Nein-Zweige.', null, '{}', 444)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18092,10 +19461,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sv-4', 'testen', 'Grey-Box-Test', 'Test gegen die Spezifikation mit Teilwissen über den inneren Aufbau.', null, '{}', 445)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sv-4', 'testen', 'ts-verfahren', 'Grey-Box-Test', 'Test gegen die Spezifikation mit Teilwissen über den inneren Aufbau.', null, '{}', 445)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18104,10 +19474,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sv-5', 'testen', 'Wann automatisieren?', 'Wenn Tests oft wiederholt werden, etwa als Regressionstest nach jeder Änderung.', null, '{}', 446)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sv-5', 'testen', 'ts-verfahren', 'Wann automatisieren?', 'Wenn Tests oft wiederholt werden, etwa als Regressionstest nach jeder Änderung.', null, '{}', 446)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18116,10 +19487,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sf-1', 'testen', 'Äquivalenzklasse', 'Menge von Eingaben, bei denen sich das Programm laut Spezifikation gleich verhält.', null, '{}', 447)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sf-1', 'testen', 'ts-testfaelle', 'Äquivalenzklasse', 'Menge von Eingaben, bei denen sich das Programm laut Spezifikation gleich verhält.', null, '{}', 447)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18128,10 +19500,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sf-2', 'testen', 'Grenzwertanalyse', 'Testet gezielt an den Klassengrenzen: den Grenzwert und seine direkten Nachbarn.', null, '{}', 448)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sf-2', 'testen', 'ts-testfaelle', 'Grenzwertanalyse', 'Testet gezielt an den Klassengrenzen: den Grenzwert und seine direkten Nachbarn.', null, '{}', 448)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18140,10 +19513,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sf-3', 'testen', 'Grenzwerte für 1 bis 99', 'Grenzwert und Nachbar außerhalb: 0, 1, 99, 100.', 'Mit Nachbarn innerhalb zusätzlich 2 und 98.', '{}', 449)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sf-3', 'testen', 'ts-testfaelle', 'Grenzwerte für 1 bis 99', 'Grenzwert und Nachbar außerhalb: 0, 1, 99, 100.', 'Mit Nachbarn innerhalb zusätzlich 2 und 98.', '{}', 449)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18152,10 +19526,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sf-4', 'testen', 'Bestandteile eines Testfalls', 'Kennung, Vorbedingung, Eingabe, erwartetes Ergebnis.', null, '{}', 450)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sf-4', 'testen', 'ts-testfaelle', 'Bestandteile eines Testfalls', 'Kennung, Vorbedingung, Eingabe, erwartetes Ergebnis.', null, '{}', 450)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18164,10 +19539,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sf-5', 'testen', 'Ungültige Klassen kombinieren?', 'Nein - je ungültige Klasse ein eigener Testfall, sonst verdeckt ein Fehler den anderen.', null, '{}', 451)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sf-5', 'testen', 'ts-testfaelle', 'Ungültige Klassen kombinieren?', 'Nein - je ungültige Klasse ein eigener Testfall, sonst verdeckt ein Fehler den anderen.', null, '{}', 451)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18176,10 +19552,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sp-1', 'testen', 'Inhalt eines Testkonzepts', 'Ziele, Umfang, Testobjekte, Ressourcen, Termine und Endekriterien.', null, '{}', 452)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sp-1', 'testen', 'ts-protokoll', 'Inhalt eines Testkonzepts', 'Ziele, Umfang, Testobjekte, Ressourcen, Termine und Endekriterien.', null, '{}', 452)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18188,10 +19565,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sp-2', 'testen', 'Endekriterium', 'Vorab festgelegte, messbare Bedingung, wann der Test abgeschlossen ist.', null, '{}', 453)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sp-2', 'testen', 'ts-protokoll', 'Endekriterium', 'Vorab festgelegte, messbare Bedingung, wann der Test abgeschlossen ist.', null, '{}', 453)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18200,10 +19578,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sp-3', 'testen', 'Felder im Testprotokoll', 'Testfall-ID, Datum, Tester, Eingabe, Soll, Ist, Ergebnis, Abweichung.', null, '{}', 454)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sp-3', 'testen', 'ts-protokoll', 'Felder im Testprotokoll', 'Testfall-ID, Datum, Tester, Eingabe, Soll, Ist, Ergebnis, Abweichung.', null, '{}', 454)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18212,10 +19591,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sp-4', 'testen', 'Nachtest vs. Regressionstest', 'Nachtest prüft die Korrektur selbst. Regressionstest prüft, ob sie anderes beschädigt hat.', null, '{}', 455)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sp-4', 'testen', 'ts-protokoll', 'Nachtest vs. Regressionstest', 'Nachtest prüft die Korrektur selbst. Regressionstest prüft, ob sie anderes beschädigt hat.', null, '{}', 455)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18224,10 +19604,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-sp-5', 'testen', 'Fehlerklasse vs. Priorität', 'Klasse: wie schwer der Fehler wiegt. Priorität: wie dringend er behoben wird.', null, '{}', 456)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-sp-5', 'testen', 'ts-protokoll', 'Fehlerklasse vs. Priorität', 'Klasse: wie schwer der Fehler wiegt. Priorität: wie dringend er behoben wird.', null, '{}', 456)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18236,10 +19617,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-zz-1', 'schutzziele_bedrohungen', 'Vertraulichkeit', 'Nur befugte Personen können die Daten lesen.', null, '{}', 457)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-zz-1', 'schutzziele_bedrohungen', 'sz-schutzziele', 'Vertraulichkeit', 'Nur befugte Personen können die Daten lesen.', null, '{}', 457)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18248,10 +19630,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-zz-2', 'schutzziele_bedrohungen', 'Integrität', 'Daten sind korrekt und unverändert - Änderungen werden bemerkt.', null, '{}', 458)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-zz-2', 'schutzziele_bedrohungen', 'sz-schutzziele', 'Integrität', 'Daten sind korrekt und unverändert - Änderungen werden bemerkt.', null, '{}', 458)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18260,10 +19643,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-zz-3', 'schutzziele_bedrohungen', 'Verfügbarkeit', 'Systeme und Daten sind nutzbar, wenn sie gebraucht werden.', null, '{}', 459)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-zz-3', 'schutzziele_bedrohungen', 'sz-schutzziele', 'Verfügbarkeit', 'Systeme und Daten sind nutzbar, wenn sie gebraucht werden.', null, '{}', 459)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18272,10 +19656,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-zz-4', 'schutzziele_bedrohungen', 'Authentizität vs. Verbindlichkeit', 'Authentizität: Echtheit und Herkunft sind prüfbar. Verbindlichkeit: Eine Handlung kann nicht abgestritten werden.', null, '{}', 460)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-zz-4', 'schutzziele_bedrohungen', 'sz-schutzziele', 'Authentizität vs. Verbindlichkeit', 'Authentizität: Echtheit und Herkunft sind prüfbar. Verbindlichkeit: Eine Handlung kann nicht abgestritten werden.', null, '{}', 460)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18284,10 +19669,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-zz-5', 'schutzziele_bedrohungen', '99,9 % Verfügbarkeit (24/7)', '0,001 × 8.760 h = 8,76 h Ausfall pro Jahr erlaubt.', null, '{}', 461)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-zz-5', 'schutzziele_bedrohungen', 'sz-schutzziele', '99,9 % Verfügbarkeit (24/7)', '0,001 × 8.760 h = 8,76 h Ausfall pro Jahr erlaubt.', null, '{}', 461)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18296,10 +19682,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-zm-1', 'schutzziele_bedrohungen', 'Virus', 'Hängt sich an eine Wirtsdatei und wird aktiv, wenn diese ausgeführt wird.', null, '{}', 462)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-zm-1', 'schutzziele_bedrohungen', 'sz-schadsoftware', 'Virus', 'Hängt sich an eine Wirtsdatei und wird aktiv, wenn diese ausgeführt wird.', null, '{}', 462)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18308,10 +19695,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-zm-2', 'schutzziele_bedrohungen', 'Wurm', 'Verbreitet sich selbstständig über das Netz, meist über Sicherheitslücken - ohne Wirtsdatei.', null, '{}', 463)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-zm-2', 'schutzziele_bedrohungen', 'sz-schadsoftware', 'Wurm', 'Verbreitet sich selbstständig über das Netz, meist über Sicherheitslücken - ohne Wirtsdatei.', null, '{}', 463)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18320,10 +19708,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-zm-3', 'schutzziele_bedrohungen', 'Trojaner', 'Als nützliches Programm getarnt, wird vom Nutzer selbst installiert und verbreitet sich nicht selbst.', null, '{}', 464)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-zm-3', 'schutzziele_bedrohungen', 'sz-schadsoftware', 'Trojaner', 'Als nützliches Programm getarnt, wird vom Nutzer selbst installiert und verbreitet sich nicht selbst.', null, '{}', 464)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18332,10 +19721,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-zm-4', 'schutzziele_bedrohungen', 'Ransomware', 'Verschlüsselt Daten und fordert Lösegeld für die Entschlüsselung.', null, '{}', 465)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-zm-4', 'schutzziele_bedrohungen', 'sz-schadsoftware', 'Ransomware', 'Verschlüsselt Daten und fordert Lösegeld für die Entschlüsselung.', null, '{}', 465)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18344,10 +19734,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-zm-5', 'schutzziele_bedrohungen', 'Rootkit und Botnetz', 'Rootkit: versteckt Schadsoftware tief im System. Botnetz: viele ferngesteuerte Rechner, z. B. für DDoS.', null, '{}', 466)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-zm-5', 'schutzziele_bedrohungen', 'sz-schadsoftware', 'Rootkit und Botnetz', 'Rootkit: versteckt Schadsoftware tief im System. Botnetz: viele ferngesteuerte Rechner, z. B. für DDoS.', null, '{}', 466)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18356,10 +19747,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-za-1', 'schutzziele_bedrohungen', 'Social Engineering', 'Manipulation von Menschen statt Angriff auf Technik - über Hilfsbereitschaft, Autorität, Zeitdruck oder Neugier.', null, '{}', 467)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-za-1', 'schutzziele_bedrohungen', 'sz-angriffe', 'Social Engineering', 'Manipulation von Menschen statt Angriff auf Technik - über Hilfsbereitschaft, Autorität, Zeitdruck oder Neugier.', null, '{}', 467)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18368,10 +19760,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-za-2', 'schutzziele_bedrohungen', 'Spear-Phishing', 'Gezielt auf eine Person oder Firma zugeschnittene Phishing-Nachricht.', null, '{}', 468)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-za-2', 'schutzziele_bedrohungen', 'sz-angriffe', 'Spear-Phishing', 'Gezielt auf eine Person oder Firma zugeschnittene Phishing-Nachricht.', null, '{}', 468)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18380,10 +19773,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-za-3', 'schutzziele_bedrohungen', 'CEO-Fraud', 'Angebliche Geschäftsführung fordert eine eilige, vertrauliche Überweisung.', 'Schutz: Vier-Augen-Prinzip und Rückruf über bekannte Nummer.', '{}', 469)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-za-3', 'schutzziele_bedrohungen', 'sz-angriffe', 'CEO-Fraud', 'Angebliche Geschäftsführung fordert eine eilige, vertrauliche Überweisung.', 'Schutz: Vier-Augen-Prinzip und Rückruf über bekannte Nummer.', '{}', 469)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18392,10 +19786,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-za-4', 'schutzziele_bedrohungen', 'DoS vs. DDoS', 'DoS: Überlastung eines Dienstes aus einer Quelle. DDoS: aus vielen Quellen, meist einem Botnetz.', null, '{}', 470)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-za-4', 'schutzziele_bedrohungen', 'sz-angriffe', 'DoS vs. DDoS', 'DoS: Überlastung eines Dienstes aus einer Quelle. DDoS: aus vielen Quellen, meist einem Botnetz.', null, '{}', 470)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18404,10 +19799,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-za-5', 'schutzziele_bedrohungen', 'Man-in-the-Middle', 'Angreifer schaltet sich unbemerkt zwischen zwei Partner und kann mitlesen oder verändern.', null, '{}', 471)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-za-5', 'schutzziele_bedrohungen', 'sz-angriffe', 'Man-in-the-Middle', 'Angreifer schaltet sich unbemerkt zwischen zwei Partner und kann mitlesen oder verändern.', null, '{}', 471)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18416,10 +19812,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-zb-1', 'schutzziele_bedrohungen', 'Schutzbedarfskategorien (BSI)', 'normal: begrenzt, überschaubar. hoch: beträchtlich. sehr hoch: existenziell bedrohlich.', null, '{}', 472)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-zb-1', 'schutzziele_bedrohungen', 'sz-schutzbedarf', 'Schutzbedarfskategorien (BSI)', 'normal: begrenzt, überschaubar. hoch: beträchtlich. sehr hoch: existenziell bedrohlich.', null, '{}', 472)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18428,10 +19825,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-zb-2', 'schutzziele_bedrohungen', 'Maximumprinzip', 'Der höchste Schutzbedarf der Anwendungen gilt für das ganze System.', null, '{}', 473)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-zb-2', 'schutzziele_bedrohungen', 'sz-schutzbedarf', 'Maximumprinzip', 'Der höchste Schutzbedarf der Anwendungen gilt für das ganze System.', null, '{}', 473)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18440,10 +19838,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-zb-3', 'schutzziele_bedrohungen', 'Kumulationseffekt', 'Viele kleine Schäden summieren sich - der Schutzbedarf des Systems steigt.', null, '{}', 474)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-zb-3', 'schutzziele_bedrohungen', 'sz-schutzbedarf', 'Kumulationseffekt', 'Viele kleine Schäden summieren sich - der Schutzbedarf des Systems steigt.', null, '{}', 474)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18452,10 +19851,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-zb-4', 'schutzziele_bedrohungen', 'Verteilungseffekt', 'Eine Anwendung läuft redundant auf mehreren Systemen - ein einzelnes System kann niedriger eingestuft werden.', null, '{}', 475)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-zb-4', 'schutzziele_bedrohungen', 'sz-schutzbedarf', 'Verteilungseffekt', 'Eine Anwendung läuft redundant auf mehreren Systemen - ein einzelnes System kann niedriger eingestuft werden.', null, '{}', 475)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18464,10 +19864,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-zb-5', 'schutzziele_bedrohungen', 'Vererbung des Schutzbedarfs', 'Geschäftsprozess -> Anwendung -> IT-System -> Raum.', null, '{}', 476)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-zb-5', 'schutzziele_bedrohungen', 'sz-schutzbedarf', 'Vererbung des Schutzbedarfs', 'Geschäftsprozess -> Anwendung -> IT-System -> Raum.', null, '{}', 476)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18476,10 +19877,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yf-1', 'sicherheitsmassnahmen', 'Paketfilter (zustandslos)', 'Prüft jedes Paket einzeln nach IP-Adressen, Ports und Protokoll (Schicht 3 und 4).', null, '{}', 477)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yf-1', 'sicherheitsmassnahmen', 'sm-firewall', 'Paketfilter (zustandslos)', 'Prüft jedes Paket einzeln nach IP-Adressen, Ports und Protokoll (Schicht 3 und 4).', null, '{}', 477)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18488,10 +19890,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yf-2', 'sicherheitsmassnahmen', 'Stateful Inspection', 'Merkt sich Verbindungen und lässt passende Antwortpakete automatisch durch.', null, '{}', 478)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yf-2', 'sicherheitsmassnahmen', 'sm-firewall', 'Stateful Inspection', 'Merkt sich Verbindungen und lässt passende Antwortpakete automatisch durch.', null, '{}', 478)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18500,10 +19903,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yf-3', 'sicherheitsmassnahmen', 'Application-Level-Gateway', 'Proxy, der Inhalte des Anwendungsprotokolls prüft (Schicht 7).', null, '{}', 479)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yf-3', 'sicherheitsmassnahmen', 'sm-firewall', 'Application-Level-Gateway', 'Proxy, der Inhalte des Anwendungsprotokolls prüft (Schicht 7).', null, '{}', 479)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18512,10 +19916,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yf-4', 'sicherheitsmassnahmen', 'DMZ', 'Eigenes Netzsegment für aus dem Internet erreichbare Server, getrennt vom internen LAN.', null, '{}', 480)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yf-4', 'sicherheitsmassnahmen', 'sm-firewall', 'DMZ', 'Eigenes Netzsegment für aus dem Internet erreichbare Server, getrennt vom internen LAN.', null, '{}', 480)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18524,10 +19929,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yf-5', 'sicherheitsmassnahmen', 'Default Deny', 'Letzte Regel: Alles, was nicht ausdrücklich erlaubt ist, wird verworfen.', null, '{}', 481)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yf-5', 'sicherheitsmassnahmen', 'sm-firewall', 'Default Deny', 'Letzte Regel: Alles, was nicht ausdrücklich erlaubt ist, wird verworfen.', null, '{}', 481)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18536,10 +19942,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yb-1', 'sicherheitsmassnahmen', 'Inkrementelle Sicherung', 'Sichert Änderungen seit der letzten Sicherung jeder Art. Restore: Voll + alle Inkremente.', null, '{}', 482)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yb-1', 'sicherheitsmassnahmen', 'sm-backup', 'Inkrementelle Sicherung', 'Sichert Änderungen seit der letzten Sicherung jeder Art. Restore: Voll + alle Inkremente.', null, '{}', 482)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18548,10 +19955,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yb-2', 'sicherheitsmassnahmen', 'Differenzielle Sicherung', 'Sichert Änderungen seit der letzten Vollsicherung. Restore: Voll + letzte differenzielle.', null, '{}', 483)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yb-2', 'sicherheitsmassnahmen', 'sm-backup', 'Differenzielle Sicherung', 'Sichert Änderungen seit der letzten Vollsicherung. Restore: Voll + letzte differenzielle.', null, '{}', 483)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18560,10 +19968,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yb-3', 'sicherheitsmassnahmen', '3-2-1-Regel', '3 Kopien, 2 verschiedene Speichermedien, 1 Kopie außer Haus.', null, '{}', 484)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yb-3', 'sicherheitsmassnahmen', 'sm-backup', '3-2-1-Regel', '3 Kopien, 2 verschiedene Speichermedien, 1 Kopie außer Haus.', null, '{}', 484)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18572,10 +19981,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yb-4', 'sicherheitsmassnahmen', 'Großvater-Vater-Sohn', 'Generationenprinzip: tägliche (Sohn), wöchentliche (Vater) und monatliche (Großvater) Sicherungen.', null, '{}', 485)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yb-4', 'sicherheitsmassnahmen', 'sm-backup', 'Großvater-Vater-Sohn', 'Generationenprinzip: tägliche (Sohn), wöchentliche (Vater) und monatliche (Großvater) Sicherungen.', null, '{}', 485)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18584,10 +19994,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yb-5', 'sicherheitsmassnahmen', 'RPO vs. RTO', 'RPO: maximal hinnehmbarer Datenverlust. RTO: maximale Zeit bis zum Wiederanlauf.', null, '{}', 486)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yb-5', 'sicherheitsmassnahmen', 'sm-backup', 'RPO vs. RTO', 'RPO: maximal hinnehmbarer Datenverlust. RTO: maximale Zeit bis zum Wiederanlauf.', null, '{}', 486)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18596,10 +20007,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yw-1', 'sicherheitsmassnahmen', 'WEP, WPA/TKIP', 'Veraltet und unsicher - nicht mehr verwenden.', null, '{}', 487)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yw-1', 'sicherheitsmassnahmen', 'sm-wlan', 'WEP, WPA/TKIP', 'Veraltet und unsicher - nicht mehr verwenden.', null, '{}', 487)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18608,10 +20020,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yw-2', 'sicherheitsmassnahmen', 'WPA3-Personal', 'Anmeldung mit SAE - verhindert Offline-Wörterbuchangriffe auf das WLAN-Passwort.', null, '{}', 488)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yw-2', 'sicherheitsmassnahmen', 'sm-wlan', 'WPA3-Personal', 'Anmeldung mit SAE - verhindert Offline-Wörterbuchangriffe auf das WLAN-Passwort.', null, '{}', 488)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18620,10 +20033,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yw-3', 'sicherheitsmassnahmen', '802.1X', 'Portbasierte Anmeldung: Supplicant, Authenticator (Access Point) und RADIUS-Server.', null, '{}', 489)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yw-3', 'sicherheitsmassnahmen', 'sm-wlan', '802.1X', 'Portbasierte Anmeldung: Supplicant, Authenticator (Access Point) und RADIUS-Server.', null, '{}', 489)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18632,10 +20046,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yw-4', 'sicherheitsmassnahmen', 'Warum WPS abschalten?', 'Die PIN wird in zwei Hälften geprüft - höchstens 11.000 Versuche genügen.', null, '{}', 490)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yw-4', 'sicherheitsmassnahmen', 'sm-wlan', 'Warum WPS abschalten?', 'Die PIN wird in zwei Hälften geprüft - höchstens 11.000 Versuche genügen.', null, '{}', 490)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18644,10 +20059,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yw-5', 'sicherheitsmassnahmen', 'Gastnetz', 'Eigenes WLAN, meist eigenes VLAN, nur mit Internetzugang - getrennt vom internen Netz.', null, '{}', 491)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yw-5', 'sicherheitsmassnahmen', 'sm-wlan', 'Gastnetz', 'Eigenes WLAN, meist eigenes VLAN, nur mit Internetzugang - getrennt vom internen Netz.', null, '{}', 491)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18656,10 +20072,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yz-1', 'sicherheitsmassnahmen', 'Zutritt / Zugang / Zugriff', 'Zutritt: Räume. Zugang: IT-Systeme. Zugriff: bestimmte Daten und Funktionen.', null, '{}', 492)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yz-1', 'sicherheitsmassnahmen', 'sm-zugriff', 'Zutritt / Zugang / Zugriff', 'Zutritt: Räume. Zugang: IT-Systeme. Zugriff: bestimmte Daten und Funktionen.', null, '{}', 492)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18668,10 +20085,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yz-2', 'sicherheitsmassnahmen', 'Minimalprinzip', 'Jedes Konto erhält nur die Rechte, die es für seine Aufgabe braucht (Least Privilege).', null, '{}', 493)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yz-2', 'sicherheitsmassnahmen', 'sm-zugriff', 'Minimalprinzip', 'Jedes Konto erhält nur die Rechte, die es für seine Aufgabe braucht (Least Privilege).', null, '{}', 493)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18680,10 +20098,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yz-3', 'sicherheitsmassnahmen', 'Need-to-know', 'Jede Person erhält nur die Informationen, die sie für ihre Aufgabe braucht.', null, '{}', 494)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yz-3', 'sicherheitsmassnahmen', 'sm-zugriff', 'Need-to-know', 'Jede Person erhält nur die Informationen, die sie für ihre Aufgabe braucht.', null, '{}', 494)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18692,10 +20111,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yz-4', 'sicherheitsmassnahmen', 'RBAC', 'Rollenbasierte Rechtevergabe: Rechte hängen an Rollen, Personen erhalten Rollen.', null, '{}', 495)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yz-4', 'sicherheitsmassnahmen', 'sm-zugriff', 'RBAC', 'Rollenbasierte Rechtevergabe: Rechte hängen an Rollen, Personen erhalten Rollen.', null, '{}', 495)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18704,10 +20124,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-yz-5', 'sicherheitsmassnahmen', 'Härtung', 'Angriffsfläche verkleinern: unnötige Dienste und Ports aus, Standardpasswörter ändern, Updates einspielen.', null, '{}', 496)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-yz-5', 'sicherheitsmassnahmen', 'sm-zugriff', 'Härtung', 'Angriffsfläche verkleinern: unnötige Dienste und Ports aus, Standardpasswörter ändern, Updates einspielen.', null, '{}', 496)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18716,10 +20137,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cs-1', 'kryptographie_auth', 'Symmetrische Verschlüsselung', 'Sender und Empfänger nutzen denselben geheimen Schlüssel zum Ver- und Entschlüsseln.', null, '{}', 497)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cs-1', 'kryptographie_auth', 'kr-symmetrisch', 'Symmetrische Verschlüsselung', 'Sender und Empfänger nutzen denselben geheimen Schlüssel zum Ver- und Entschlüsseln.', null, '{}', 497)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18728,10 +20150,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cs-2', 'kryptographie_auth', 'AES - Schlüssellängen', '128, 192 oder 256 Bit. AES ist der aktuelle Standard für symmetrische Verschlüsselung.', null, '{}', 498)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cs-2', 'kryptographie_auth', 'kr-symmetrisch', 'AES - Schlüssellängen', '128, 192 oder 256 Bit. AES ist der aktuelle Standard für symmetrische Verschlüsselung.', null, '{}', 498)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18740,10 +20163,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cs-3', 'kryptographie_auth', 'Schlüssel bei n Personen (symm.)', 'n × (n - 1) / 2 - bei 10 Personen also 45 Schlüssel.', null, '{}', 499)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cs-3', 'kryptographie_auth', 'kr-symmetrisch', 'Schlüssel bei n Personen (symm.)', 'n × (n - 1) / 2 - bei 10 Personen also 45 Schlüssel.', null, '{}', 499)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18752,10 +20176,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cs-4', 'kryptographie_auth', 'Schlüsselaustauschproblem', 'Der gemeinsame Schlüssel muss vorab auf einem sicheren Weg zum Gegenüber gelangen.', null, '{}', 500)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cs-4', 'kryptographie_auth', 'kr-symmetrisch', 'Schlüsselaustauschproblem', 'Der gemeinsame Schlüssel muss vorab auf einem sicheren Weg zum Gegenüber gelangen.', null, '{}', 500)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18764,10 +20189,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cs-5', 'kryptographie_auth', 'Warum ist DES veraltet?', 'Sein Schlüssel hat nur 56 Bit und lässt sich heute durch Ausprobieren knacken.', null, '{}', 501)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cs-5', 'kryptographie_auth', 'kr-symmetrisch', 'Warum ist DES veraltet?', 'Sein Schlüssel hat nur 56 Bit und lässt sich heute durch Ausprobieren knacken.', null, '{}', 501)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18776,10 +20202,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ca-1', 'kryptographie_auth', 'Vertraulich an Anna senden', 'Mit Annas öffentlichem Schlüssel verschlüsseln - nur Annas privater Schlüssel entschlüsselt.', null, '{}', 502)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ca-1', 'kryptographie_auth', 'kr-asymmetrisch', 'Vertraulich an Anna senden', 'Mit Annas öffentlichem Schlüssel verschlüsseln - nur Annas privater Schlüssel entschlüsselt.', null, '{}', 502)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18788,10 +20215,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ca-2', 'kryptographie_auth', 'Digitale Signatur erstellen', 'Hashwert des Dokuments mit dem eigenen privaten Schlüssel signieren.', null, '{}', 503)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ca-2', 'kryptographie_auth', 'kr-asymmetrisch', 'Digitale Signatur erstellen', 'Hashwert des Dokuments mit dem eigenen privaten Schlüssel signieren.', null, '{}', 503)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18800,10 +20228,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ca-3', 'kryptographie_auth', 'Digitale Signatur prüfen', 'Mit dem öffentlichen Schlüssel des Absenders prüfen und den Hashwert vergleichen.', null, '{}', 504)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ca-3', 'kryptographie_auth', 'kr-asymmetrisch', 'Digitale Signatur prüfen', 'Mit dem öffentlichen Schlüssel des Absenders prüfen und den Hashwert vergleichen.', null, '{}', 504)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18812,10 +20241,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ca-4', 'kryptographie_auth', 'Schlüssel bei n Personen (asymm.)', '2 × n - jede Person hat genau ein Schlüsselpaar.', null, '{}', 505)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ca-4', 'kryptographie_auth', 'kr-asymmetrisch', 'Schlüssel bei n Personen (asymm.)', '2 × n - jede Person hat genau ein Schlüsselpaar.', null, '{}', 505)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18824,10 +20254,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ca-5', 'kryptographie_auth', 'RSA und ECC', 'Asymmetrische Verfahren. ECC erreicht dieselbe Sicherheit mit deutlich kürzeren Schlüsseln.', null, '{}', 506)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ca-5', 'kryptographie_auth', 'kr-asymmetrisch', 'RSA und ECC', 'Asymmetrische Verfahren. ECC erreicht dieselbe Sicherheit mit deutlich kürzeren Schlüsseln.', null, '{}', 506)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18836,10 +20267,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ch-1', 'kryptographie_auth', 'Hybride Verschlüsselung', 'Daten symmetrisch mit Sitzungsschlüssel, Schlüsselaustausch und Echtheitsnachweis asymmetrisch.', null, '{}', 507)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ch-1', 'kryptographie_auth', 'kr-hybrid', 'Hybride Verschlüsselung', 'Daten symmetrisch mit Sitzungsschlüssel, Schlüsselaustausch und Echtheitsnachweis asymmetrisch.', null, '{}', 507)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18848,10 +20280,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ch-2', 'kryptographie_auth', 'Sitzungsschlüssel bei TLS 1.3', 'Wird per Diffie-Hellman (ECDHE) ausgehandelt, nicht mit RSA verschlüsselt übertragen.', null, '{}', 508)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ch-2', 'kryptographie_auth', 'kr-hybrid', 'Sitzungsschlüssel bei TLS 1.3', 'Wird per Diffie-Hellman (ECDHE) ausgehandelt, nicht mit RSA verschlüsselt übertragen.', null, '{}', 508)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18860,10 +20293,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ch-3', 'kryptographie_auth', 'Inhalt eines X.509-Zertifikats', 'Inhaber, öffentlicher Schlüssel, Aussteller, Gültigkeitszeitraum, Seriennummer, Signatur der CA.', 'Der private Schlüssel steht nie im Zertifikat.', '{}', 509)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ch-3', 'kryptographie_auth', 'kr-hybrid', 'Inhalt eines X.509-Zertifikats', 'Inhaber, öffentlicher Schlüssel, Aussteller, Gültigkeitszeitraum, Seriennummer, Signatur der CA.', 'Der private Schlüssel steht nie im Zertifikat.', '{}', 509)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18872,10 +20306,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ch-4', 'kryptographie_auth', 'Certificate Authority (CA)', 'Zertifizierungsstelle, die mit ihrer Signatur bestätigt, dass ein öffentlicher Schlüssel zu einem Namen gehört.', null, '{}', 510)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ch-4', 'kryptographie_auth', 'kr-hybrid', 'Certificate Authority (CA)', 'Zertifizierungsstelle, die mit ihrer Signatur bestätigt, dass ein öffentlicher Schlüssel zu einem Namen gehört.', null, '{}', 510)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18884,10 +20319,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ch-5', 'kryptographie_auth', 'S/MIME vs. PGP', 'Beide sichern E-Mails. S/MIME vertraut CAs, PGP dem Web of Trust.', null, '{}', 511)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ch-5', 'kryptographie_auth', 'kr-hybrid', 'S/MIME vs. PGP', 'Beide sichern E-Mails. S/MIME vertraut CAs, PGP dem Web of Trust.', null, '{}', 511)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18896,10 +20332,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cx-1', 'kryptographie_auth', 'Eigenschaften einer Hashfunktion', 'Einwegfunktion, feste Länge, Lawineneffekt, Kollisionsresistenz.', null, '{}', 512)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cx-1', 'kryptographie_auth', 'kr-hash', 'Eigenschaften einer Hashfunktion', 'Einwegfunktion, feste Länge, Lawineneffekt, Kollisionsresistenz.', null, '{}', 512)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18908,10 +20345,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cx-2', 'kryptographie_auth', 'SHA-256 in Hex', '256 Bit / 4 Bit je Zeichen = 64 Hexadezimalzeichen.', null, '{}', 513)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cx-2', 'kryptographie_auth', 'kr-hash', 'SHA-256 in Hex', '256 Bit / 4 Bit je Zeichen = 64 Hexadezimalzeichen.', null, '{}', 513)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18920,10 +20358,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cx-3', 'kryptographie_auth', 'Salt', 'Zufallswert je Konto, der vor dem Hashen an das Passwort gehängt wird - gleiche Passwörter ergeben so verschiedene Hashes.', null, '{}', 514)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cx-3', 'kryptographie_auth', 'kr-hash', 'Salt', 'Zufallswert je Konto, der vor dem Hashen an das Passwort gehängt wird - gleiche Passwörter ergeben so verschiedene Hashes.', null, '{}', 514)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18932,10 +20371,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cx-4', 'kryptographie_auth', 'Passwort-Hashverfahren', 'Bewusst langsame Verfahren wie Argon2 oder bcrypt, nicht einfaches SHA-256.', null, '{}', 515)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cx-4', 'kryptographie_auth', 'kr-hash', 'Passwort-Hashverfahren', 'Bewusst langsame Verfahren wie Argon2 oder bcrypt, nicht einfaches SHA-256.', null, '{}', 515)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18944,10 +20384,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cx-5', 'kryptographie_auth', 'Veraltete Hashverfahren', 'MD5 und SHA-1 - für beide wurden Kollisionen gefunden.', null, '{}', 516)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cx-5', 'kryptographie_auth', 'kr-hash', 'Veraltete Hashverfahren', 'MD5 und SHA-1 - für beide wurden Kollisionen gefunden.', null, '{}', 516)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18956,10 +20397,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cz-1', 'kryptographie_auth', 'Die drei Schritte beim Login', 'Identifikation: Wer bist du? Authentifizierung: Beweise es! Autorisierung: Was darfst du?', null, '{}', 517)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cz-1', 'kryptographie_auth', 'kr-auth', 'Die drei Schritte beim Login', 'Identifikation: Wer bist du? Authentifizierung: Beweise es! Autorisierung: Was darfst du?', null, '{}', 517)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18968,10 +20410,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cz-2', 'kryptographie_auth', 'Die drei Faktorkategorien', 'Wissen (Passwort), Besitz (Smartphone, Token), Inhärenz (Fingerabdruck).', null, '{}', 518)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cz-2', 'kryptographie_auth', 'kr-auth', 'Die drei Faktorkategorien', 'Wissen (Passwort), Besitz (Smartphone, Token), Inhärenz (Fingerabdruck).', null, '{}', 518)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18980,10 +20423,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cz-3', 'kryptographie_auth', 'Echte 2FA', 'Zwei Faktoren aus zwei verschiedenen Kategorien, z. B. Passwort und Code vom Smartphone.', null, '{}', 519)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cz-3', 'kryptographie_auth', 'kr-auth', 'Echte 2FA', 'Zwei Faktoren aus zwei verschiedenen Kategorien, z. B. Passwort und Code vom Smartphone.', null, '{}', 519)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -18992,10 +20436,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cz-4', 'kryptographie_auth', 'TOTP', 'Zeitbasiertes Einmalpasswort aus gemeinsamem Geheimnis und Uhrzeit, meist 30 Sekunden gültig.', null, '{}', 520)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cz-4', 'kryptographie_auth', 'kr-auth', 'TOTP', 'Zeitbasiertes Einmalpasswort aus gemeinsamem Geheimnis und Uhrzeit, meist 30 Sekunden gültig.', null, '{}', 520)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19004,10 +20449,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cz-5', 'kryptographie_auth', 'Passkey', 'FIDO2-Anmeldung per Schlüsselpaar. Der private Schlüssel bleibt auf dem Gerät - phishingresistent.', null, '{}', 521)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cz-5', 'kryptographie_auth', 'kr-auth', 'Passkey', 'FIDO2-Anmeldung per Schlüsselpaar. Der private Schlüssel bleibt auf dem Gerät - phishingresistent.', null, '{}', 521)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19016,10 +20462,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xg-1', 'datenschutz', 'Personenbezogene Daten (Art. 4)', 'Alle Informationen über eine identifizierte oder identifizierbare natürliche Person.', null, '{}', 522)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xg-1', 'datenschutz', 'ds-grundlagen', 'Personenbezogene Daten (Art. 4)', 'Alle Informationen über eine identifizierte oder identifizierbare natürliche Person.', null, '{}', 522)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19028,10 +20475,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xg-2', 'datenschutz', 'Besondere Kategorien (Art. 9)', 'Gesundheit, ethnische Herkunft, Religion, politische Meinung, Gewerkschaft, genetische und biometrische Daten, Sexualleben.', null, '{}', 523)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xg-2', 'datenschutz', 'ds-grundlagen', 'Besondere Kategorien (Art. 9)', 'Gesundheit, ethnische Herkunft, Religion, politische Meinung, Gewerkschaft, genetische und biometrische Daten, Sexualleben.', null, '{}', 523)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19040,10 +20488,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xg-3', 'datenschutz', 'Verantwortlicher', 'Entscheidet allein oder gemeinsam mit anderen über Zwecke und Mittel der Verarbeitung.', null, '{}', 524)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xg-3', 'datenschutz', 'ds-grundlagen', 'Verantwortlicher', 'Entscheidet allein oder gemeinsam mit anderen über Zwecke und Mittel der Verarbeitung.', null, '{}', 524)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19052,10 +20501,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xg-4', 'datenschutz', 'Auftragsverarbeiter', 'Verarbeitet Daten im Auftrag und nach Weisung des Verantwortlichen, z. B. ein Hoster.', null, '{}', 525)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xg-4', 'datenschutz', 'ds-grundlagen', 'Auftragsverarbeiter', 'Verarbeitet Daten im Auftrag und nach Weisung des Verantwortlichen, z. B. ein Hoster.', null, '{}', 525)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19064,10 +20514,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xg-5', 'datenschutz', 'Ist eine IP-Adresse personenbezogen?', 'In der Regel ja - sie lässt sich mit Zusatzwissen einem Anschluss und damit einer Person zuordnen.', null, '{}', 526)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xg-5', 'datenschutz', 'ds-grundlagen', 'Ist eine IP-Adresse personenbezogen?', 'In der Regel ja - sie lässt sich mit Zusatzwissen einem Anschluss und damit einer Person zuordnen.', null, '{}', 526)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19076,10 +20527,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xs-1', 'datenschutz', 'Zweckbindung', 'Daten nur für festgelegte, eindeutige Zwecke erheben und nicht zweckfremd weiterverarbeiten.', null, '{}', 527)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xs-1', 'datenschutz', 'ds-grundsaetze', 'Zweckbindung', 'Daten nur für festgelegte, eindeutige Zwecke erheben und nicht zweckfremd weiterverarbeiten.', null, '{}', 527)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19088,10 +20540,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xs-2', 'datenschutz', 'Datenminimierung', 'Nur so viele Daten erheben, wie für den Zweck nötig sind.', null, '{}', 528)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xs-2', 'datenschutz', 'ds-grundsaetze', 'Datenminimierung', 'Nur so viele Daten erheben, wie für den Zweck nötig sind.', null, '{}', 528)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19100,10 +20553,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xs-3', 'datenschutz', 'Rechenschaftspflicht', 'Der Verantwortliche muss die Einhaltung der Grundsätze nachweisen können.', null, '{}', 529)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xs-3', 'datenschutz', 'ds-grundsaetze', 'Rechenschaftspflicht', 'Der Verantwortliche muss die Einhaltung der Grundsätze nachweisen können.', null, '{}', 529)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19112,10 +20566,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xs-4', 'datenschutz', 'Rechtsgrundlagen nach Art. 6', 'Einwilligung, Vertrag, rechtliche Verpflichtung, lebenswichtige Interessen, öffentliche Aufgabe, berechtigtes Interesse.', null, '{}', 530)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xs-4', 'datenschutz', 'ds-grundsaetze', 'Rechtsgrundlagen nach Art. 6', 'Einwilligung, Vertrag, rechtliche Verpflichtung, lebenswichtige Interessen, öffentliche Aufgabe, berechtigtes Interesse.', null, '{}', 530)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19124,10 +20579,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xs-5', 'datenschutz', 'Anforderungen an eine Einwilligung', 'Freiwillig, informiert, eindeutig und jederzeit widerrufbar.', null, '{}', 531)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xs-5', 'datenschutz', 'ds-grundsaetze', 'Anforderungen an eine Einwilligung', 'Freiwillig, informiert, eindeutig und jederzeit widerrufbar.', null, '{}', 531)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19136,10 +20592,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xr-1', 'datenschutz', 'Art. 15 DSGVO', 'Auskunftsrecht: welche Daten, zu welchem Zweck, an wen, wie lange - mit Kopie.', null, '{}', 532)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xr-1', 'datenschutz', 'ds-rechte', 'Art. 15 DSGVO', 'Auskunftsrecht: welche Daten, zu welchem Zweck, an wen, wie lange - mit Kopie.', null, '{}', 532)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19148,10 +20605,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xr-2', 'datenschutz', 'Art. 17 DSGVO', 'Recht auf Löschung („Recht auf Vergessenwerden“), begrenzt z. B. durch Aufbewahrungspflichten.', null, '{}', 533)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xr-2', 'datenschutz', 'ds-rechte', 'Art. 17 DSGVO', 'Recht auf Löschung („Recht auf Vergessenwerden“), begrenzt z. B. durch Aufbewahrungspflichten.', null, '{}', 533)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19160,10 +20618,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xr-3', 'datenschutz', 'Art. 20 DSGVO', 'Datenübertragbarkeit: eigene Daten strukturiert und maschinenlesbar erhalten.', null, '{}', 534)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xr-3', 'datenschutz', 'ds-rechte', 'Art. 20 DSGVO', 'Datenübertragbarkeit: eigene Daten strukturiert und maschinenlesbar erhalten.', null, '{}', 534)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19172,10 +20631,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xr-4', 'datenschutz', 'Antwortfrist bei Anfragen', 'Unverzüglich, spätestens nach einem Monat - in komplexen Fällen um zwei Monate verlängerbar.', null, '{}', 535)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xr-4', 'datenschutz', 'ds-rechte', 'Antwortfrist bei Anfragen', 'Unverzüglich, spätestens nach einem Monat - in komplexen Fällen um zwei Monate verlängerbar.', null, '{}', 535)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19184,10 +20644,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xr-5', 'datenschutz', 'Art. 77 DSGVO', 'Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde.', null, '{}', 536)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xr-5', 'datenschutz', 'ds-rechte', 'Art. 77 DSGVO', 'Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde.', null, '{}', 536)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19196,10 +20657,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xa-1', 'datenschutz', 'Anonymisierung', 'Personenbezug ist dauerhaft nicht mehr herstellbar - die DSGVO gilt nicht mehr.', null, '{}', 537)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xa-1', 'datenschutz', 'ds-anonym', 'Anonymisierung', 'Personenbezug ist dauerhaft nicht mehr herstellbar - die DSGVO gilt nicht mehr.', null, '{}', 537)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19208,10 +20670,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xa-2', 'datenschutz', 'Pseudonymisierung', 'Name durch Kennzeichen ersetzt, Zuordnung mit getrennt aufbewahrtem Zusatzwissen möglich - DSGVO gilt weiter.', null, '{}', 538)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xa-2', 'datenschutz', 'ds-anonym', 'Pseudonymisierung', 'Name durch Kennzeichen ersetzt, Zuordnung mit getrennt aufbewahrtem Zusatzwissen möglich - DSGVO gilt weiter.', null, '{}', 538)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19220,10 +20683,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xa-3', 'datenschutz', 'Generalisierung', 'Werte vergröbern, z. B. Alter 34 -> „30 bis 39“ oder PLZ 10115 -> „10xxx“.', null, '{}', 539)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xa-3', 'datenschutz', 'ds-anonym', 'Generalisierung', 'Werte vergröbern, z. B. Alter 34 -> „30 bis 39“ oder PLZ 10115 -> „10xxx“.', null, '{}', 539)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19232,10 +20696,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xa-4', 'datenschutz', 'Aggregation', 'Einzelwerte zu Summen oder Durchschnitten zusammenfassen, z. B. Gehalt je Abteilung.', null, '{}', 540)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xa-4', 'datenschutz', 'ds-anonym', 'Aggregation', 'Einzelwerte zu Summen oder Durchschnitten zusammenfassen, z. B. Gehalt je Abteilung.', null, '{}', 540)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19244,10 +20709,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xt-1', 'datenschutz', 'TOM', 'Technische und organisatorische Maßnahmen nach Art. 32 DSGVO zum Schutz personenbezogener Daten.', null, '{}', 541)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xt-1', 'datenschutz', 'ds-tom', 'TOM', 'Technische und organisatorische Maßnahmen nach Art. 32 DSGVO zum Schutz personenbezogener Daten.', null, '{}', 541)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19256,10 +20722,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xt-2', 'datenschutz', 'Zutritt / Zugang / Zugriff', 'Zutritt: Räume. Zugang: IT-Systeme. Zugriff: Daten und Berechtigungen.', null, '{}', 542)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xt-2', 'datenschutz', 'ds-tom', 'Zutritt / Zugang / Zugriff', 'Zutritt: Räume. Zugang: IT-Systeme. Zugriff: Daten und Berechtigungen.', null, '{}', 542)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19268,10 +20735,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xt-3', 'datenschutz', 'Eingabekontrolle', 'Nachvollziehen, wer wann welche Daten eingegeben, geändert oder gelöscht hat - z. B. per Protokoll.', null, '{}', 543)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xt-3', 'datenschutz', 'ds-tom', 'Eingabekontrolle', 'Nachvollziehen, wer wann welche Daten eingegeben, geändert oder gelöscht hat - z. B. per Protokoll.', null, '{}', 543)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19280,10 +20748,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xt-4', 'datenschutz', 'Trennungsgebot', 'Zu verschiedenen Zwecken erhobene Daten getrennt verarbeiten, z. B. Mandantentrennung.', null, '{}', 544)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xt-4', 'datenschutz', 'ds-tom', 'Trennungsgebot', 'Zu verschiedenen Zwecken erhobene Daten getrennt verarbeiten, z. B. Mandantentrennung.', null, '{}', 544)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19292,10 +20761,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-xt-5', 'datenschutz', 'Technisch vs. organisatorisch', 'Technisch: von der Technik durchgesetzt (Firewall). Organisatorisch: Regeln für Menschen (Schulung).', null, '{}', 545)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-xt-5', 'datenschutz', 'ds-tom', 'Technisch vs. organisatorisch', 'Technisch: von der Technik durchgesetzt (Firewall). Organisatorisch: Regeln für Menschen (Schulung).', null, '{}', 545)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19304,10 +20774,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vz-1', 'vertraege', 'Wie entsteht ein Vertrag?', 'Durch zwei übereinstimmende Willenserklärungen: Antrag und Annahme.', null, '{}', 546)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vz-1', 'vertraege', 'vt-zustandekommen', 'Wie entsteht ein Vertrag?', 'Durch zwei übereinstimmende Willenserklärungen: Antrag und Annahme.', null, '{}', 546)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19316,10 +20787,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vz-2', 'vertraege', 'Invitatio ad offerendum', 'Aufforderung zur Abgabe eines Antrags, z. B. Katalog, Werbung, Webshop - noch kein Antrag.', null, '{}', 547)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vz-2', 'vertraege', 'vt-zustandekommen', 'Invitatio ad offerendum', 'Aufforderung zur Abgabe eines Antrags, z. B. Katalog, Werbung, Webshop - noch kein Antrag.', null, '{}', 547)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19328,10 +20800,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vz-3', 'vertraege', 'Verspätete oder geänderte Annahme', 'Gilt als neuer Antrag - die andere Seite kann ihn annehmen oder ablehnen.', null, '{}', 548)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vz-3', 'vertraege', 'vt-zustandekommen', 'Verspätete oder geänderte Annahme', 'Gilt als neuer Antrag - die andere Seite kann ihn annehmen oder ablehnen.', null, '{}', 548)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19340,10 +20813,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vz-4', 'vertraege', 'Stufen der Geschäftsfähigkeit', 'Unter 7: geschäftsunfähig. 7 bis 17: beschränkt geschäftsfähig. Ab 18: voll geschäftsfähig.', null, '{}', 549)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vz-4', 'vertraege', 'vt-zustandekommen', 'Stufen der Geschäftsfähigkeit', 'Unter 7: geschäftsunfähig. 7 bis 17: beschränkt geschäftsfähig. Ab 18: voll geschäftsfähig.', null, '{}', 549)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19352,10 +20826,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vz-5', 'vertraege', 'Taschengeldparagraf', 'Beschränkt Geschäftsfähige schließen wirksam Verträge, die sie mit ihnen frei überlassenen Mitteln bewirken.', null, '{}', 550)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vz-5', 'vertraege', 'vt-zustandekommen', 'Taschengeldparagraf', 'Beschränkt Geschäftsfähige schließen wirksam Verträge, die sie mit ihnen frei überlassenen Mitteln bewirken.', null, '{}', 550)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19364,10 +20839,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vy-1', 'vertraege', 'Werkvertrag', 'Geschuldet wird ein Erfolg. Es gibt eine Abnahme, danach wird die Vergütung fällig.', 'IT-Beispiel: Individualsoftware', '{}', 551)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vy-1', 'vertraege', 'vt-arten', 'Werkvertrag', 'Geschuldet wird ein Erfolg. Es gibt eine Abnahme, danach wird die Vergütung fällig.', 'IT-Beispiel: Individualsoftware', '{}', 551)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19376,10 +20852,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vy-2', 'vertraege', 'Dienstvertrag', 'Geschuldet wird die Tätigkeit, kein Ergebnis. Keine Abnahme, Vergütung nach Aufwand.', 'IT-Beispiel: Support oder Beratung nach Stunden', '{}', 552)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vy-2', 'vertraege', 'vt-arten', 'Dienstvertrag', 'Geschuldet wird die Tätigkeit, kein Ergebnis. Keine Abnahme, Vergütung nach Aufwand.', 'IT-Beispiel: Support oder Beratung nach Stunden', '{}', 552)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19388,10 +20865,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vy-3', 'vertraege', 'Mietvertrag', 'Gebrauchsüberlassung auf Zeit gegen Entgelt - typische Einordnung für SaaS und Cloud-Dienste.', null, '{}', 553)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vy-3', 'vertraege', 'vt-arten', 'Mietvertrag', 'Gebrauchsüberlassung auf Zeit gegen Entgelt - typische Einordnung für SaaS und Cloud-Dienste.', null, '{}', 553)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19400,10 +20878,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vy-4', 'vertraege', 'Werklieferungsvertrag', 'Herstellung und Lieferung einer beweglichen Sache - es gilt Kaufrecht.', null, '{}', 554)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vy-4', 'vertraege', 'vt-arten', 'Werklieferungsvertrag', 'Herstellung und Lieferung einer beweglichen Sache - es gilt Kaufrecht.', null, '{}', 554)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19412,10 +20891,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vy-5', 'vertraege', 'Leasing', 'Gebrauchsüberlassung gegen Leasingraten, der Leasinggeber finanziert. Im Kern wie Miete behandelt.', null, '{}', 555)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vy-5', 'vertraege', 'vt-arten', 'Leasing', 'Gebrauchsüberlassung gegen Leasingraten, der Leasinggeber finanziert. Im Kern wie Miete behandelt.', null, '{}', 555)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19424,10 +20904,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vu-1', 'vertraege', 'Wann entsteht Urheberrecht?', 'Automatisch mit der Schöpfung des Werks - ohne Anmeldung oder Vermerk.', null, '{}', 556)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vu-1', 'vertraege', 'vt-urheber', 'Wann entsteht Urheberrecht?', 'Automatisch mit der Schöpfung des Werks - ohne Anmeldung oder Vermerk.', null, '{}', 556)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19436,10 +20917,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vu-2', 'vertraege', 'Ist das Urheberrecht übertragbar?', 'Nein, nur vererbbar. Übertragen werden Nutzungsrechte (Lizenzen).', null, '{}', 557)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vu-2', 'vertraege', 'vt-urheber', 'Ist das Urheberrecht übertragbar?', 'Nein, nur vererbbar. Übertragen werden Nutzungsrechte (Lizenzen).', null, '{}', 557)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19448,10 +20930,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vu-3', 'vertraege', 'Einfaches Nutzungsrecht', 'Erlaubt die Nutzung neben anderen Berechtigten - der Rechteinhaber darf weitere Lizenzen vergeben.', null, '{}', 558)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vu-3', 'vertraege', 'vt-urheber', 'Einfaches Nutzungsrecht', 'Erlaubt die Nutzung neben anderen Berechtigten - der Rechteinhaber darf weitere Lizenzen vergeben.', null, '{}', 558)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19460,10 +20943,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vu-4', 'vertraege', 'Software von Angestellten', 'Urheber bleibt die Person, die vermögensrechtlichen Befugnisse liegen beim Arbeitgeber (§ 69b UrhG).', null, '{}', 559)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vu-4', 'vertraege', 'vt-urheber', 'Software von Angestellten', 'Urheber bleibt die Person, die vermögensrechtlichen Befugnisse liegen beim Arbeitgeber (§ 69b UrhG).', null, '{}', 559)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19472,10 +20956,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-vu-5', 'vertraege', 'Schutzdauer Urheberrecht', '70 Jahre nach dem Tod des Urhebers.', null, '{}', 560)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-vu-5', 'vertraege', 'vt-urheber', 'Schutzdauer Urheberrecht', '70 Jahre nach dem Tod des Urhebers.', null, '{}', 560)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19484,10 +20969,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-li-1', 'sla_service', 'SLA', 'Service Level Agreement - vereinbart messbare Servicequalität zwischen Dienstleister und Kunde.', null, '{}', 561)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-li-1', 'sla_service', 'sla-inhalte', 'SLA', 'Service Level Agreement - vereinbart messbare Servicequalität zwischen Dienstleister und Kunde.', null, '{}', 561)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19496,10 +20982,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-li-2', 'sla_service', 'Reaktionszeit', 'Zeit bis zur ersten qualifizierten Rückmeldung - nicht bis zur Lösung.', null, '{}', 562)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-li-2', 'sla_service', 'sla-inhalte', 'Reaktionszeit', 'Zeit bis zur ersten qualifizierten Rückmeldung - nicht bis zur Lösung.', null, '{}', 562)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19508,10 +20995,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-li-3', 'sla_service', 'Erlaubter Ausfall', 'Servicezeit × (100 % - Verfügbarkeit). 24/7, ein Jahr, 99,9 %: 8.760 h × 0,001 = 8,76 h.', null, '{}', 563)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-li-3', 'sla_service', 'sla-inhalte', 'Erlaubter Ausfall', 'Servicezeit × (100 % - Verfügbarkeit). 24/7, ein Jahr, 99,9 %: 8.760 h × 0,001 = 8,76 h.', null, '{}', 563)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19520,10 +21008,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-li-4', 'sla_service', 'Pönale', 'Vertragsstrafe oder Gutschrift, wenn der Dienstleister die vereinbarten Service Levels verfehlt.', null, '{}', 564)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-li-4', 'sla_service', 'sla-inhalte', 'Pönale', 'Vertragsstrafe oder Gutschrift, wenn der Dienstleister die vereinbarten Service Levels verfehlt.', null, '{}', 564)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19532,10 +21021,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ls-1', 'sla_service', 'Single Point of Contact', 'Der Service Desk als einzige zentrale Anlaufstelle für alle Anfragen der Anwender.', null, '{}', 565)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ls-1', 'sla_service', 'sla-support', 'Single Point of Contact', 'Der Service Desk als einzige zentrale Anlaufstelle für alle Anfragen der Anwender.', null, '{}', 565)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19544,10 +21034,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ls-2', 'sla_service', '1st, 2nd, 3rd Level', '1st: Service Desk, Standardfälle. 2nd: Fachspezialisten. 3rd: Hersteller oder Entwicklung.', null, '{}', 566)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ls-2', 'sla_service', 'sla-support', '1st, 2nd, 3rd Level', '1st: Service Desk, Standardfälle. 2nd: Fachspezialisten. 3rd: Hersteller oder Entwicklung.', null, '{}', 566)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19556,10 +21047,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ls-3', 'sla_service', 'Funktional vs. hierarchisch', 'Funktionale Eskalation: an mehr Fachwissen. Hierarchische Eskalation: an die Führungsebene.', null, '{}', 567)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ls-3', 'sla_service', 'sla-support', 'Funktional vs. hierarchisch', 'Funktionale Eskalation: an mehr Fachwissen. Hierarchische Eskalation: an die Führungsebene.', null, '{}', 567)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19568,10 +21060,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ls-4', 'sla_service', 'Priorität eines Tickets', 'Ergibt sich aus Auswirkung (wie viele betroffen) und Dringlichkeit (wie eilig).', null, '{}', 568)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ls-4', 'sla_service', 'sla-support', 'Priorität eines Tickets', 'Ergibt sich aus Auswirkung (wie viele betroffen) und Dringlichkeit (wie eilig).', null, '{}', 568)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19580,10 +21073,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ls-5', 'sla_service', 'First Level Resolution Rate', 'Anteil der Tickets, die der 1st Level ohne Weitergabe löst, in Prozent aller Tickets.', null, '{}', 569)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ls-5', 'sla_service', 'sla-support', 'First Level Resolution Rate', 'Anteil der Tickets, die der 1st Level ohne Weitergabe löst, in Prozent aller Tickets.', null, '{}', 569)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19592,10 +21086,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-lt-1', 'sla_service', 'Incident', 'Ungeplante Störung eines Service. Ziel: Service so schnell wie möglich wiederherstellen.', null, '{}', 570)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-lt-1', 'sla_service', 'sla-itil', 'Incident', 'Ungeplante Störung eines Service. Ziel: Service so schnell wie möglich wiederherstellen.', null, '{}', 570)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19604,10 +21099,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-lt-2', 'sla_service', 'Problem', 'Die unbekannte Ursache eines oder mehrerer Incidents. Ziel: Ursache finden und beseitigen.', null, '{}', 571)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-lt-2', 'sla_service', 'sla-itil', 'Problem', 'Die unbekannte Ursache eines oder mehrerer Incidents. Ziel: Ursache finden und beseitigen.', null, '{}', 571)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19616,10 +21112,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-lt-3', 'sla_service', 'Known Error', 'Problem, dessen Ursache bekannt und dokumentiert ist, meist mit Workaround.', null, '{}', 572)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-lt-3', 'sla_service', 'sla-itil', 'Known Error', 'Problem, dessen Ursache bekannt und dokumentiert ist, meist mit Workaround.', null, '{}', 572)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19628,10 +21125,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-lt-4', 'sla_service', 'Standard Change', 'Häufige Änderung mit geringem Risiko, die vorab genehmigt ist.', null, '{}', 573)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-lt-4', 'sla_service', 'sla-itil', 'Standard Change', 'Häufige Änderung mit geringem Risiko, die vorab genehmigt ist.', null, '{}', 573)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19640,10 +21138,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-lt-5', 'sla_service', 'Service Request', 'Standardanfrage eines Anwenders ohne Störung, z. B. Passwort zurücksetzen.', null, '{}', 574)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-lt-5', 'sla_service', 'sla-itil', 'Service Request', 'Standardanfrage eines Anwenders ohne Störung, z. B. Passwort zurücksetzen.', null, '{}', 574)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19652,10 +21151,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-gv-1', 'leistungsstoerungen', 'Voraussetzungen Lieferungsverzug', 'Fälligkeit, Mahnung (entbehrlich bei Kalendertermin), Verschulden des Lieferanten.', null, '{}', 575)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-gv-1', 'leistungsstoerungen', 'ls-verzug', 'Voraussetzungen Lieferungsverzug', 'Fälligkeit, Mahnung (entbehrlich bei Kalendertermin), Verschulden des Lieferanten.', null, '{}', 575)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19664,10 +21164,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-gv-2', 'leistungsstoerungen', 'Rechte ohne Nachfrist', 'Auf Lieferung bestehen und Ersatz des Verzugsschadens verlangen.', null, '{}', 576)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-gv-2', 'leistungsstoerungen', 'ls-verzug', 'Rechte ohne Nachfrist', 'Auf Lieferung bestehen und Ersatz des Verzugsschadens verlangen.', null, '{}', 576)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19676,10 +21177,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-gv-3', 'leistungsstoerungen', 'Rechte nach Nachfrist', 'Rücktritt vom Vertrag und/oder Schadensersatz statt der Leistung.', null, '{}', 577)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-gv-3', 'leistungsstoerungen', 'ls-verzug', 'Rechte nach Nachfrist', 'Rücktritt vom Vertrag und/oder Schadensersatz statt der Leistung.', null, '{}', 577)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19688,10 +21190,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-gv-4', 'leistungsstoerungen', 'Verzugszinssatz', 'Mit Verbraucher: Basiszins + 5 Prozentpunkte. Nur Unternehmen: Basiszins + 9 Prozentpunkte.', 'Unter Unternehmen zusätzlich 40 € Pauschale', '{}', 578)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-gv-4', 'leistungsstoerungen', 'ls-verzug', 'Verzugszinssatz', 'Mit Verbraucher: Basiszins + 5 Prozentpunkte. Nur Unternehmen: Basiszins + 9 Prozentpunkte.', 'Unter Unternehmen zusätzlich 40 € Pauschale', '{}', 578)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19700,10 +21203,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-gv-5', 'leistungsstoerungen', 'Zahlungsverzug ohne Mahnung', 'Spätestens 30 Tage nach Fälligkeit und Zugang der Rechnung - bei Verbrauchern nur mit Hinweis darauf.', null, '{}', 579)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-gv-5', 'leistungsstoerungen', 'ls-verzug', 'Zahlungsverzug ohne Mahnung', 'Spätestens 30 Tage nach Fälligkeit und Zugang der Rechnung - bei Verbrauchern nur mit Hinweis darauf.', null, '{}', 579)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19712,10 +21216,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-gm-1', 'leistungsstoerungen', 'Vorrangiges Recht bei Mängeln', 'Nacherfüllung: Nachbesserung oder Ersatzlieferung - beim Kauf wählt der Käufer.', null, '{}', 580)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-gm-1', 'leistungsstoerungen', 'ls-maengel', 'Vorrangiges Recht bei Mängeln', 'Nacherfüllung: Nachbesserung oder Ersatzlieferung - beim Kauf wählt der Käufer.', null, '{}', 580)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19724,10 +21229,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-gm-2', 'leistungsstoerungen', 'Nachrangige Rechte', 'Rücktritt, Minderung, Schadensersatz - in der Regel erst nach erfolgloser Frist zur Nacherfüllung.', null, '{}', 581)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-gm-2', 'leistungsstoerungen', 'ls-maengel', 'Nachrangige Rechte', 'Rücktritt, Minderung, Schadensersatz - in der Regel erst nach erfolgloser Frist zur Nacherfüllung.', null, '{}', 581)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19736,10 +21242,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-gm-3', 'leistungsstoerungen', 'Gewährleistungsfrist Kauf', '2 Jahre ab Übergabe bei neuen Sachen.', null, '{}', 582)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-gm-3', 'leistungsstoerungen', 'ls-maengel', 'Gewährleistungsfrist Kauf', '2 Jahre ab Übergabe bei neuen Sachen.', null, '{}', 582)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19748,10 +21255,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-gm-4', 'leistungsstoerungen', 'Beweislastumkehr', 'Beim Verbrauchsgüterkauf: Zeigt sich ein Mangel im ersten Jahr, wird vermutet, dass er schon bei Übergabe vorlag.', null, '{}', 583)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-gm-4', 'leistungsstoerungen', 'ls-maengel', 'Beweislastumkehr', 'Beim Verbrauchsgüterkauf: Zeigt sich ein Mangel im ersten Jahr, wird vermutet, dass er schon bei Übergabe vorlag.', null, '{}', 583)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19760,10 +21268,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-gm-5', 'leistungsstoerungen', 'Rügepflicht § 377 HGB', 'Beim Kauf unter Kaufleuten Ware unverzüglich prüfen und Mängel unverzüglich rügen.', null, '{}', 584)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-gm-5', 'leistungsstoerungen', 'ls-maengel', 'Rügepflicht § 377 HGB', 'Beim Kauf unter Kaufleuten Ware unverzüglich prüfen und Mängel unverzüglich rügen.', null, '{}', 584)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19772,10 +21281,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ga-1', 'leistungsstoerungen', 'Folgen der Abnahme', 'Vergütung fällig, Gefahrübergang, Verjährung beginnt, Beweislast geht auf den Besteller über.', null, '{}', 585)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ga-1', 'leistungsstoerungen', 'ls-abnahme', 'Folgen der Abnahme', 'Vergütung fällig, Gefahrübergang, Verjährung beginnt, Beweislast geht auf den Besteller über.', null, '{}', 585)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19784,10 +21294,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ga-2', 'leistungsstoerungen', 'Fiktive Abnahme', 'Werk gilt als abgenommen, wenn der Besteller eine gesetzte Frist verstreichen lässt, ohne einen Mangel zu nennen.', null, '{}', 586)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ga-2', 'leistungsstoerungen', 'ls-abnahme', 'Fiktive Abnahme', 'Werk gilt als abgenommen, wenn der Besteller eine gesetzte Frist verstreichen lässt, ohne einen Mangel zu nennen.', null, '{}', 586)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19796,10 +21307,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ga-3', 'leistungsstoerungen', 'Abnahme unter Vorbehalt', 'Abnahme mit protokollierten Mängeln - die Rechte zu diesen Mängeln bleiben erhalten.', null, '{}', 587)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ga-3', 'leistungsstoerungen', 'ls-abnahme', 'Abnahme unter Vorbehalt', 'Abnahme mit protokollierten Mängeln - die Rechte zu diesen Mängeln bleiben erhalten.', null, '{}', 587)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19808,10 +21320,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ga-4', 'leistungsstoerungen', 'Unwesentlicher Mangel', 'Berechtigt nicht zur Verweigerung der Abnahme - er wird protokolliert und nachgebessert.', null, '{}', 588)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ga-4', 'leistungsstoerungen', 'ls-abnahme', 'Unwesentlicher Mangel', 'Berechtigt nicht zur Verweigerung der Abnahme - er wird protokolliert und nachgebessert.', null, '{}', 588)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19820,10 +21333,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cl-1', 'change_management', 'Phasen nach Lewin', 'Unfreezing (Auftauen), Moving (Verändern), Refreezing (Einfrieren).', null, '{}', 589)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cl-1', 'change_management', 'cm-lewin', 'Phasen nach Lewin', 'Unfreezing (Auftauen), Moving (Verändern), Refreezing (Einfrieren).', null, '{}', 589)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19832,10 +21346,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cl-2', 'change_management', 'Unfreezing', 'Bereitschaft schaffen: informieren, Dringlichkeit zeigen, Betroffene beteiligen.', null, '{}', 590)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cl-2', 'change_management', 'cm-lewin', 'Unfreezing', 'Bereitschaft schaffen: informieren, Dringlichkeit zeigen, Betroffene beteiligen.', null, '{}', 590)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19844,10 +21359,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cl-3', 'change_management', 'Moving', 'Das Neue umsetzen: schulen, pilotieren, eng begleiten.', null, '{}', 591)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cl-3', 'change_management', 'cm-lewin', 'Moving', 'Das Neue umsetzen: schulen, pilotieren, eng begleiten.', null, '{}', 591)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19856,10 +21372,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cl-4', 'change_management', 'Refreezing', 'Das Neue verankern: Standards festlegen, Altes abschalten, Erfolge sichtbar machen.', null, '{}', 592)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cl-4', 'change_management', 'cm-lewin', 'Refreezing', 'Das Neue verankern: Standards festlegen, Altes abschalten, Erfolge sichtbar machen.', null, '{}', 592)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19868,10 +21385,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cw-1', 'change_management', 'Ursachen von Widerstand', 'Nicht wissen, nicht können, nicht wollen, nicht dürfen.', null, '{}', 593)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cw-1', 'change_management', 'cm-widerstand', 'Ursachen von Widerstand', 'Nicht wissen, nicht können, nicht wollen, nicht dürfen.', null, '{}', 593)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19880,10 +21398,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cw-2', 'change_management', 'Antwort auf „nicht können“', 'Schulen und begleiten - die Fähigkeit fehlt, nicht der Wille.', null, '{}', 594)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cw-2', 'change_management', 'cm-widerstand', 'Antwort auf „nicht können“', 'Schulen und begleiten - die Fähigkeit fehlt, nicht der Wille.', null, '{}', 594)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19892,10 +21411,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cw-3', 'change_management', 'Verdeckter Widerstand', 'Nicht offen ausgesprochen, z. B. Verzögern, Gerüchte, Dienst nach Vorschrift.', null, '{}', 595)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cw-3', 'change_management', 'cm-widerstand', 'Verdeckter Widerstand', 'Nicht offen ausgesprochen, z. B. Verzögern, Gerüchte, Dienst nach Vorschrift.', null, '{}', 595)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19904,10 +21424,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-cw-4', 'change_management', 'Wirksamste Gegenmaßnahme', 'Betroffene frühzeitig beteiligen - wer mitgestaltet, blockiert selten.', null, '{}', 596)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-cw-4', 'change_management', 'cm-widerstand', 'Wirksamste Gegenmaßnahme', 'Betroffene frühzeitig beteiligen - wer mitgestaltet, blockiert selten.', null, '{}', 596)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19916,10 +21437,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ck-1', 'change_management', 'Kaizen / KVP', 'Kontinuierliche Verbesserung in kleinen Schritten, getragen von allen Mitarbeitenden.', null, '{}', 597)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ck-1', 'change_management', 'cm-kaizen', 'Kaizen / KVP', 'Kontinuierliche Verbesserung in kleinen Schritten, getragen von allen Mitarbeitenden.', null, '{}', 597)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19928,10 +21450,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ck-2', 'change_management', 'Muda', 'Japanisch für Verschwendung: Aufwand ohne Wert für die Kundschaft, z. B. Wartezeit, Nacharbeit.', null, '{}', 598)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ck-2', 'change_management', 'cm-kaizen', 'Muda', 'Japanisch für Verschwendung: Aufwand ohne Wert für die Kundschaft, z. B. Wartezeit, Nacharbeit.', null, '{}', 598)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19940,10 +21463,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ck-3', 'change_management', 'PDCA', 'Plan, Do, Check, Act - der Zyklus, mit dem jeder KVP-Schritt durchlaufen wird.', null, '{}', 599)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ck-3', 'change_management', 'cm-kaizen', 'PDCA', 'Plan, Do, Check, Act - der Zyklus, mit dem jeder KVP-Schritt durchlaufen wird.', null, '{}', 599)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
@@ -19952,10 +21476,11 @@ on conflict (id) do update set
   is_active = true;
 
 insert into public.ap1_flashcards
-  (id, topic_id, front, back, hint, tags, sort_order)
-values ('k-ck-4', 'change_management', 'Business Process Reengineering', 'Radikale, grundlegende Neugestaltung von Prozessen - Gegenentwurf zu Kaizen.', null, '{}', 600)
+  (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
+values ('k-ck-4', 'change_management', 'cm-kaizen', 'Business Process Reengineering', 'Radikale, grundlegende Neugestaltung von Prozessen - Gegenentwurf zu Kaizen.', null, '{}', 600)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
+  subtopic_id = excluded.subtopic_id,
   front = excluded.front,
   back = excluded.back,
   hint = excluded.hint,
