@@ -71,7 +71,7 @@ Vorlage für Stil und Tiefe: `nuggets_a03_netze.dart`, `cards_a03_systeme.dart`,
 | 03 Informations- & Softwaresysteme (20) | fertig |
 | 04 Analyse & Entwicklung von Systemen (30) | fertig |
 | 05 Qualitätssicherung (7) | fertig |
-| 06 IT-Sicherheit & Datenschutz (18) | offen |
+| 06 IT-Sicherheit & Datenschutz (18) | fertig |
 | 07 Vertragsmanagement & Service (12) | offen |
 
 In 07 (`ve-*`, `sl-*`, `ls-*`, `cm-*`)

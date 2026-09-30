@@ -6,6 +6,8 @@ import 'cards_a03_systeme.dart';
 import 'cards_a04_daten.dart';
 import 'cards_a04_entwicklung.dart';
 import 'cards_a05_qualitaet.dart';
+import 'cards_a06_krypto.dart';
+import 'cards_a06_sicherheit.dart';
 
 /// Alle Lernkarteikarten der App.
 ///
@@ -19,4 +21,6 @@ final List<Flashcard> kSeedFlashcards = [
   ...cardsA04Entwicklung,
   ...cardsA04Daten,
   ...cardsA05,
+  ...cardsA06Sicherheit,
+  ...cardsA06Krypto,
 ];
