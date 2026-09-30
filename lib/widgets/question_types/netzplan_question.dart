@@ -8,13 +8,19 @@ import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/netzplan.dart';
 import '../../data/models/question.dart';
+import '../common.dart';
+import '../hyphenation.dart';
 import 'number_input.dart';
 
 const double _nodeW = 178;
+
 /// Höhe einer Zellenzeile im Knoten. Muss die Korrekturanzeige nach dem
 /// Prüfen (Eingabe + kleine Musterlösung darunter) aufnehmen.
 const double _rowH = 40;
 const double _gapX = 54;
+
+/// Höhe des Mittelteils (Nummer und zweizeiliger Vorgangsname).
+const double _nameH = 56;
 const double _gapY = 22;
 
 /// Interaktiver Vorgangsknoten-Netzplan.
@@ -137,10 +143,18 @@ class _NetzplanQuestionViewState extends State<NetzplanQuestionView> {
       columns.putIfAbsent(levels[a.id] ?? 0, () => []).add(a);
     }
     final maxLevel = columns.keys.fold<int>(0, math.max);
-    final maxRows = columns.values.fold<int>(0, (m, l) => math.max(m, l.length));
+    final maxRows = columns.values.fold<int>(
+      0,
+      (m, l) => math.max(m, l.length),
+    );
 
     final askedFp = q.askedFields.contains(NodeField.fp);
-    final nodeH = askedFp ? 166.0 : 124.0;
+    // Mit großer Systemschrift wachsen die Knoten mit - sonst werden die
+    // Zahlen und der Vorgangsname unten abgeschnitten.
+    final grow = math.max(1.0, MediaQuery.textScalerOf(context).scale(10) / 10);
+    final rowH = _rowH * grow;
+    final nameH = _nameH * grow;
+    final nodeH = 2 * rowH + nameH + 2 + (askedFp ? rowH + 1 : 0);
 
     final canvasW = (maxLevel + 1) * _nodeW + maxLevel * _gapX;
     final canvasH = maxRows * nodeH + (maxRows - 1) * _gapY;
@@ -229,13 +243,15 @@ class _NetzplanQuestionViewState extends State<NetzplanQuestionView> {
                       width: _nodeW,
                       height: nodeH,
                       child: _NetzNode(
+                        rowH: rowH,
                         activity: a,
                         result: solution.nodes[a.id]!,
                         askedFields: q.askedFields,
                         values: _values,
                         revealed: widget.revealed,
                         parts: widget.grade?.parts ?? const {},
-                        highlightCritical: widget.revealed &&
+                        highlightCritical:
+                            widget.revealed &&
                             _showPath &&
                             solution.nodes[a.id]!.isCritical,
                         controllerFor: _controllerFor,
@@ -260,6 +276,7 @@ class _NetzplanQuestionViewState extends State<NetzplanQuestionView> {
 
 class _NetzNode extends StatelessWidget {
   const _NetzNode({
+    required this.rowH,
     required this.activity,
     required this.result,
     required this.askedFields,
@@ -280,6 +297,7 @@ class _NetzNode extends StatelessWidget {
   final bool highlightCritical;
   final TextEditingController Function(String) controllerFor;
   final void Function(String, int?) onValue;
+  final double rowH;
 
   @override
   Widget build(BuildContext context) {
@@ -318,13 +336,20 @@ class _NetzNode extends StatelessWidget {
                       color: context.scheme.primary,
                     ),
                   ),
-                  Text(
-                    activity.name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                    style: context.text.labelSmall
-                        ?.copyWith(color: c.textMuted, letterSpacing: 0),
+                  // Der volle Name steht in der Tabelle über dem Plan; im
+                  // Knoten reichen zwei Zeilen, der Rest per Tooltip.
+                  Tooltip(
+                    message: activity.name,
+                    child: ClampedText(
+                      activity.name,
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
+                      style: context.text.labelSmall?.copyWith(
+                        color: c.textMuted,
+                        letterSpacing: 0,
+                        height: 1.2,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -347,7 +372,7 @@ class _NetzNode extends StatelessWidget {
 
   Widget _row(BuildContext context, List<Widget> children) {
     return SizedBox(
-      height: _rowH,
+      height: rowH,
       child: Row(
         children: [
           for (var i = 0; i < children.length; i++) ...[
@@ -360,8 +385,12 @@ class _NetzNode extends StatelessWidget {
     );
   }
 
-  Widget _staticCell(BuildContext context, String text, String label,
-      {bool emphasize = false}) {
+  Widget _staticCell(
+    BuildContext context,
+    String text,
+    String label, {
+    bool emphasize = false,
+  }) {
     return Container(
       alignment: Alignment.center,
       color: emphasize ? context.c.surfaceAlt : null,
@@ -471,8 +500,10 @@ class _EditableCell extends StatelessWidget {
           children: [
             Text(
               value?.toString() ?? '–',
-              style: AppType.numeric(size: 13.5, color: fg)
-                  .copyWith(height: 1.15),
+              style: AppType.numeric(
+                size: 13.5,
+                color: fg,
+              ).copyWith(height: 1.15),
             ),
             if (isCorrect != true)
               Text(
@@ -499,8 +530,9 @@ class _EditableCell extends StatelessWidget {
             child: value == null
                 ? Text(
                     field.short,
-                    style: context.text.labelSmall
-                        ?.copyWith(color: c.textMuted.withValues(alpha: 0.75)),
+                    style: context.text.labelSmall?.copyWith(
+                      color: c.textMuted.withValues(alpha: 0.75),
+                    ),
                   )
                 : Text('$value', style: AppType.numeric(size: 14, color: fg)),
           ),
@@ -515,14 +547,17 @@ class _EditableCell extends StatelessWidget {
         textAlign: TextAlign.center,
         style: AppType.numeric(size: 14),
         keyboardType: TextInputType.number,
-        inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9\-]'))],
+        inputFormatters: [
+          FilteringTextInputFormatter.allow(RegExp(r'[0-9\-]')),
+        ],
         onChanged: (s) => onValue(cellKey, int.tryParse(s)),
         decoration: InputDecoration(
           isDense: true,
           filled: false,
           hintText: field.short,
-          hintStyle: context.text.labelSmall
-              ?.copyWith(color: c.textMuted.withValues(alpha: 0.6)),
+          hintStyle: context.text.labelSmall?.copyWith(
+            color: c.textMuted.withValues(alpha: 0.6),
+          ),
           contentPadding: const EdgeInsets.symmetric(vertical: 6),
           border: InputBorder.none,
           enabledBorder: InputBorder.none,
@@ -563,7 +598,8 @@ class _EdgePainter extends CustomPainter {
         final from = positions[p];
         if (from == null) continue;
 
-        final isCritical = highlightCritical &&
+        final isCritical =
+            highlightCritical &&
             criticalPath.contains(p) &&
             criticalPath.contains(a.id);
 
@@ -604,6 +640,9 @@ class _EdgePainter extends CustomPainter {
 
 // ------------------------------------------------------------- Beiwerk
 
+/// Die Vorgangsliste. Auf dem Handy als Zeilen statt starrer Spalten: Nummer
+/// links, darunter „Dauer · Vorgänger“ - so passt auch ein langer
+/// Vorgangsname ganz, ohne mitten im Wort umzubrechen.
 class _ActivityTable extends StatelessWidget {
   const _ActivityTable({required this.activities});
 
@@ -619,74 +658,60 @@ class _ActivityTable extends StatelessWidget {
         border: Border.all(color: c.border),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(Gap.m, Gap.s, Gap.m, Gap.xs),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 28,
-                  child: Text('Nr',
-                      style: context.text.labelSmall
-                          ?.copyWith(color: c.textMuted)),
-                ),
-                Expanded(
-                  child: Text('Vorgang',
-                      style: context.text.labelSmall
-                          ?.copyWith(color: c.textMuted)),
-                ),
-                SizedBox(
-                  width: 44,
-                  child: Text('Dauer',
-                      textAlign: TextAlign.right,
-                      style: context.text.labelSmall
-                          ?.copyWith(color: c.textMuted)),
-                ),
-                SizedBox(
-                  width: 80,
-                  child: Text('Vorgänger',
-                      textAlign: TextAlign.right,
-                      style: context.text.labelSmall
-                          ?.copyWith(color: c.textMuted)),
-                ),
-              ],
-            ),
-          ),
-          for (final a in activities)
+          for (var i = 0; i < activities.length; i++) ...[
+            if (i > 0) Divider(height: 1, color: c.border),
             Padding(
-              padding: const EdgeInsets.fromLTRB(Gap.m, 3, Gap.m, 3),
+              padding: const EdgeInsets.symmetric(
+                horizontal: Gap.m,
+                vertical: Gap.s,
+              ),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    width: 28,
-                    child: Text(a.id,
-                        style: AppType.numeric(
-                            size: 13, color: context.scheme.primary)),
-                  ),
-                  Expanded(
-                    child: Text(a.name,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: context.text.bodyMedium),
-                  ),
-                  SizedBox(
-                    width: 44,
-                    child: Text('${a.duration}',
-                        textAlign: TextAlign.right,
-                        style: AppType.numeric(size: 13)),
-                  ),
-                  SizedBox(
-                    width: 80,
+                  Container(
+                    constraints: const BoxConstraints(minWidth: 28),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 6,
+                      vertical: 2,
+                    ),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: context.scheme.primary.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(Radii.s),
+                    ),
                     child: Text(
-                      a.predecessors.isEmpty ? '–' : a.predecessors.join(', '),
-                      textAlign: TextAlign.right,
-                      style: AppType.numeric(size: 13, color: c.textMuted),
+                      activities[i].id,
+                      style: AppType.numeric(
+                        size: 13,
+                        color: context.scheme.primary,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: Gap.m),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        HyphenText(
+                          activities[i].name,
+                          style: context.text.bodyMedium,
+                        ),
+                        Text(
+                          'Dauer ${activities[i].duration} · '
+                          '${activities[i].predecessors.isEmpty ? 'kein Vorgänger' : 'nach ${activities[i].predecessors.join(', ')}'}',
+                          style: context.text.labelSmall?.copyWith(
+                            color: c.textMuted,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-          const SizedBox(height: Gap.s),
+          ],
         ],
       ),
     );
@@ -794,30 +819,39 @@ class _SolutionSummary extends StatelessWidget {
         borderRadius: BorderRadius.circular(Radii.m),
         border: Border.all(color: c.border),
       ),
-      child: Row(
+      // Wrap statt fester Spalten: Bei großer Schrift steht der kritische
+      // Pfad unter der Projektdauer.
+      child: Wrap(
+        spacing: Gap.xl,
+        runSpacing: Gap.m,
         children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Projektdauer',
-                    style:
-                        context.text.labelSmall?.copyWith(color: c.textMuted)),
-                Text('${solution.projectDuration} Tage',
-                    style: AppType.numeric(size: 18)),
-              ],
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Projektdauer',
+                style: context.text.labelSmall?.copyWith(color: c.textMuted),
+              ),
+              Text(
+                '${solution.projectDuration} Tage',
+                style: AppType.numeric(size: 18),
+              ),
+            ],
           ),
-          Expanded(
-            flex: 2,
+          ConstrainedBox(
+            constraints: const BoxConstraints(minWidth: 120),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Kritischer Pfad',
-                    style:
-                        context.text.labelSmall?.copyWith(color: c.textMuted)),
-                Text(solution.criticalPath.join(' – '),
-                    style: AppType.numeric(size: 18, color: c.flame)),
+                Text(
+                  'Kritischer Pfad',
+                  style: context.text.labelSmall?.copyWith(color: c.textMuted),
+                ),
+                Text(
+                  solution.criticalPath.join(' – '),
+                  style: AppType.numeric(size: 18, color: c.flame),
+                ),
               ],
             ),
           ),
@@ -858,8 +892,7 @@ class _ToolChip extends StatelessWidget {
             children: [
               Icon(icon, size: 15, color: fg),
               const SizedBox(width: 5),
-              Text(label,
-                  style: context.text.labelSmall?.copyWith(color: fg)),
+              Text(label, style: context.text.labelSmall?.copyWith(color: fg)),
             ],
           ),
         ),

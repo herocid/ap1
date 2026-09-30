@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../features/cards/card_session_screen.dart';
 import '../features/cards/cards_overview_screen.dart';
 import '../features/dashboard/area_detail_screen.dart';
+import '../features/dashboard/area_session_screen.dart';
 import '../features/dashboard/areas_screen.dart';
 import '../features/dashboard/dashboard_screen.dart';
 import '../features/journey/journey_screen.dart';
@@ -69,6 +70,13 @@ final routerProvider = Provider<GoRouter>((ref) {
         parentNavigatorKey: _rootKey,
         builder: (context, state) =>
             AreaDetailScreen(areaId: state.pathParameters['areaId']!),
+      ),
+      // Session zu einem Themengebiet: Lernen, Karteikarten, Quiz.
+      GoRoute(
+        path: '/session-bereich/:areaId',
+        parentNavigatorKey: _rootKey,
+        builder: (context, state) =>
+            AreaSessionScreen(areaId: state.pathParameters['areaId']!),
       ),
       GoRoute(
         path: '/katalog-aenderungen',

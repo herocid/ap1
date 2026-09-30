@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../data/models/question.dart';
+import '../hyphenation.dart';
 
 /// Einfach- und Mehrfachauswahl.
 ///
@@ -51,8 +52,9 @@ class ChoiceQuestionView extends StatelessWidget {
             child: Text(
               'Mehrere Antworten können richtig sein. '
               'Falsch angekreuzte Optionen ziehen Punkte ab.',
-              style:
-                  context.text.labelSmall?.copyWith(color: context.c.textMuted),
+              style: context.text.labelSmall?.copyWith(
+                color: context.c.textMuted,
+              ),
             ),
           ),
         for (var i = 0; i < question.choices.length; i++) ...[
@@ -152,7 +154,10 @@ class _ChoiceRow extends StatelessWidget {
                   ),
                   const SizedBox(width: Gap.m),
                   Expanded(
-                    child: Text(choice.text, style: context.text.bodyLarge),
+                    child: HyphenText(
+                      choice.text,
+                      style: context.text.bodyLarge,
+                    ),
                   ),
                 ],
               ),
@@ -160,7 +165,7 @@ class _ChoiceRow extends StatelessWidget {
                 const SizedBox(height: Gap.m),
                 Padding(
                   padding: const EdgeInsets.only(left: 40),
-                  child: Text(
+                  child: HyphenText(
                     choice.rationale,
                     style: context.text.bodyMedium?.copyWith(
                       color: choice.isCorrect || selected
@@ -212,7 +217,10 @@ class _Marker extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: shape,
         color: selected ? accent : Colors.transparent,
-        border: Border.all(color: selected ? accent : context.c.border, width: 1.6),
+        border: Border.all(
+          color: selected ? accent : context.c.border,
+          width: 1.6,
+        ),
       ),
       child: Text(
         letter,

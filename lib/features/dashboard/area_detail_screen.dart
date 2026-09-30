@@ -9,6 +9,7 @@ import '../../data/models/exam_area.dart';
 import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
+import '../../widgets/hyphenation.dart';
 import '../cards/card_session_screen.dart';
 import '../learn/session_launcher.dart';
 import '../learn/theory_sheet.dart';
@@ -30,12 +31,15 @@ class AreaDetailScreen extends ConsumerWidget {
     final allCards = ref.watch(flashcardsProvider);
 
     final areaTopicIds = topics.map((t) => t.id).toSet();
-    final areaCards =
-        allCards.where((c) => areaTopicIds.contains(c.topicId)).toList();
+    final areaCards = allCards
+        .where((c) => areaTopicIds.contains(c.topicId))
+        .toList();
     final dueHere = deck.dueCount(areaCards);
 
     return Scaffold(
-      appBar: AppBar(title: Text('${area.number} ${area.title}')),
+      // Kurzer Titel oben, der volle Bereichsname steht darunter im Inhalt -
+      // in der Kopfzeile würde er auf schmalen Handys gekürzt.
+      appBar: AppBar(title: Text('Bereich ${area.number}')),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(Gap.l, 0, Gap.l, Gap.xxxl),
         children: [
@@ -43,13 +47,16 @@ class AreaDetailScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(area.blurb, style: context.text.bodyLarge),
+                HyphenText(area.title, style: context.text.headlineSmall),
+                const SizedBox(height: Gap.xs),
+                HyphenText(area.blurb, style: context.text.bodyLarge),
                 const SizedBox(height: Gap.s),
                 Text(
                   'Geschätzter Anteil an der AP1: '
                   '${(area.weight * 100).round()} % der Punkte',
-                  style: context.text.labelSmall
-                      ?.copyWith(color: context.c.textMuted),
+                  style: context.text.labelSmall?.copyWith(
+                    color: context.c.textMuted,
+                  ),
                 ),
                 const SizedBox(height: Gap.l),
                 if (areaCards.isNotEmpty)
@@ -85,10 +92,7 @@ class AreaDetailScreen extends ConsumerWidget {
                         SessionLauncher.practice(context, ref, topicId: t.id),
                     onCards: () => context.push(
                       '/karten-lernen',
-                      extra: CardSessionArgs(
-                        topicIds: {t.id},
-                        title: t.title,
-                      ),
+                      extra: CardSessionArgs(topicIds: {t.id}, title: t.title),
                     ),
                     onTheory: () =>
                         showTheorySheet(context, ref, topicId: t.id),
@@ -141,25 +145,28 @@ class _TopicTile extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(topic.icon, size: 20, color: context.scheme.primary),
+                TileIcon(icon: topic.icon, enabled: hasContent),
                 const SizedBox(width: Gap.m),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(topic.title, style: context.text.titleMedium),
+                      HyphenText(topic.title, style: context.text.titleMedium),
                       const SizedBox(height: 2),
-                      Text(
+                      HyphenText(
                         topic.blurb,
-                        style: context.text.bodyMedium
-                            ?.copyWith(color: context.c.textMuted),
+                        style: context.text.bodyMedium?.copyWith(
+                          color: context.c.textMuted,
+                        ),
                       ),
                     ],
                   ),
                 ),
                 if (hasContent)
-                  Text('${(confidence * 100).round()} %',
-                      style: AppType.numeric(size: 13)),
+                  Text(
+                    '${(confidence * 100).round()} %',
+                    style: AppType.numeric(size: 13),
+                  ),
               ],
             ),
             const SizedBox(height: Gap.s),
@@ -168,46 +175,50 @@ class _TopicTile extends StatelessWidget {
               const SizedBox(height: Gap.s),
               Text(
                 '$seen von $questions Aufgaben gesehen · $cards Karten',
-                style: context.text.labelSmall
-                    ?.copyWith(color: context.c.textMuted),
+                style: context.text.labelSmall?.copyWith(
+                  color: context.c.textMuted,
+                ),
               ),
               const SizedBox(height: Gap.s),
               // Karten und Üben teilen sich die Restbreite - mit festen
               // Breiten lief die Zeile auf schmalen Handys über.
-              Row(
+              // Die Knöpfe rutschen bei wenig Platz in die nächste Zeile,
+              // statt ihre Beschriftung zu zerhacken.
+              Wrap(
+                spacing: Gap.s,
+                runSpacing: Gap.s,
                 children: [
-                  TextButton(onPressed: onTheory, child: const Text('Theorie')),
-                  const SizedBox(width: Gap.s),
+                  TextButton.icon(
+                    onPressed: onTheory,
+                    icon: const Icon(Icons.menu_book_outlined, size: 18),
+                    label: const Text('Theorie'),
+                  ),
                   if (cards > 0)
-                    Expanded(
-                      child: OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          minimumSize: const Size(0, 40),
-                          padding: const EdgeInsets.symmetric(horizontal: Gap.s),
-                        ),
-                        onPressed: onCards,
-                        child: const Text('Karten'),
+                    OutlinedButton.icon(
+                      style: OutlinedButton.styleFrom(
+                        minimumSize: const Size(0, 48),
                       ),
+                      onPressed: onCards,
+                      icon: const Icon(Icons.style_outlined, size: 18),
+                      label: const Text('Karten'),
                     ),
-                  if (cards > 0 && questions > 0) const SizedBox(width: Gap.s),
                   if (questions > 0)
-                    Expanded(
-                      child: FilledButton(
-                        style: FilledButton.styleFrom(
-                          minimumSize: const Size(0, 40),
-                          padding: const EdgeInsets.symmetric(horizontal: Gap.s),
-                        ),
-                        onPressed: onPractice,
-                        child: const Text('Üben'),
+                    FilledButton.icon(
+                      style: FilledButton.styleFrom(
+                        minimumSize: const Size(0, 48),
                       ),
+                      onPressed: onPractice,
+                      icon: const Icon(Icons.quiz_outlined, size: 18),
+                      label: const Text('Üben'),
                     ),
                 ],
               ),
             ] else
               Text(
                 'Inhalte folgen.',
-                style: context.text.labelSmall
-                    ?.copyWith(color: context.c.textMuted),
+                style: context.text.labelSmall?.copyWith(
+                  color: context.c.textMuted,
+                ),
               ),
           ],
         ),

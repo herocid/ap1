@@ -47,7 +47,7 @@ class ResultScreen extends ConsumerWidget {
           message: 'Beende zuerst eine Lernrunde.',
           action: FilledButton(
             onPressed: () => context.go('/'),
-            child: const Text('Zur Startseite'),
+            child: const Text('Fertig'),
           ),
         ),
       );
@@ -75,9 +75,15 @@ class ResultScreen extends ConsumerWidget {
       byTopic.putIfAbsent(i.question.topicId, () => []).add(i);
     }
 
+    // Zurück dorthin, wo die Runde gestartet wurde - Startseite, Quiz,
+    // Prüfung oder die Session eines Themengebiets.
     void leave() {
       ref.read(sessionProvider.notifier).clear();
-      context.go('/');
+      if (context.canPop()) {
+        context.pop();
+      } else {
+        context.go('/');
+      }
     }
 
     return PopScope(
@@ -233,10 +239,7 @@ class ResultScreen extends ConsumerWidget {
                     SizedBox(
                       width: double.infinity,
                       child: FilledButton.icon(
-                        onPressed: () {
-                          ref.read(sessionProvider.notifier).clear();
-                          context.go('/');
-                        },
+                        onPressed: leave,
                         icon: const Icon(Icons.replay),
                         label: Text(
                           wrong + partial == 1
@@ -251,7 +254,7 @@ class ResultScreen extends ConsumerWidget {
                     width: double.infinity,
                     child: OutlinedButton(
                       onPressed: leave,
-                      child: const Text('Zur Startseite'),
+                      child: const Text('Fertig'),
                     ),
                   ),
                 ],
@@ -377,10 +380,10 @@ class _ReviewTile extends StatelessWidget {
             tilePadding: const EdgeInsets.symmetric(horizontal: Gap.l),
             childrenPadding: const EdgeInsets.fromLTRB(Gap.l, 0, Gap.l, Gap.l),
             leading: Icon(icon, color: color),
-            title: Text(
+            // Vorschau - aufgeklappt steht die ganze Aufgabe darunter.
+            title: ClampedText(
               '${index + 1}. ${item.question.prompt}',
               maxLines: 2,
-              overflow: TextOverflow.ellipsis,
               style: context.text.bodyLarge,
             ),
             subtitle: Text(

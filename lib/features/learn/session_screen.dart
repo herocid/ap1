@@ -66,9 +66,18 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
   void _endKurztest(SessionState s, SessionController controller) {
     if (s.checkedCount == 0) {
       controller.clear();
-      context.go('/');
+      _leave();
     } else {
       controller.finish();
+    }
+  }
+
+  /// Zurück dorthin, wo die Runde gestartet wurde.
+  void _leave() {
+    if (context.canPop()) {
+      context.pop();
+    } else {
+      context.go('/');
     }
   }
 
@@ -142,7 +151,7 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
         }
         if (await _confirmLeave(session)) {
           controller.clear();
-          if (context.mounted) context.go('/');
+          if (context.mounted) _leave();
         }
       },
       child: Scaffold(
@@ -157,14 +166,14 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
               }
               if (await _confirmLeave(session)) {
                 controller.clear();
-                if (context.mounted) context.go('/');
+                if (context.mounted) _leave();
               }
             },
           ),
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(session.title, style: context.text.titleMedium),
+              ClampedText(session.title, style: context.text.titleMedium),
               Text(
                 session.endless
                     ? 'Frage ${session.index + 1}  ·  '

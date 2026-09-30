@@ -6,6 +6,7 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/question.dart';
+import '../hyphenation.dart';
 
 /// Reihenfolge-Aufgaben (Phasen, Scrum-Events, Abläufe).
 ///
@@ -59,7 +60,8 @@ class _OrderingQuestionViewState extends State<OrderingQuestionView> {
 
   List<int> _initialOrder() {
     final existing = widget.answer as List<int>?;
-    if (existing != null && existing.length == widget.question.orderedItems.length) {
+    if (existing != null &&
+        existing.length == widget.question.orderedItems.length) {
       return List<int>.from(existing);
     }
     final n = widget.question.orderedItems.length;
@@ -104,8 +106,9 @@ class _OrderingQuestionViewState extends State<OrderingQuestionView> {
             padding: const EdgeInsets.only(bottom: Gap.m),
             child: Text(
               widget.question.orderingHint!,
-              style:
-                  context.text.labelSmall?.copyWith(color: context.c.textMuted),
+              style: context.text.labelSmall?.copyWith(
+                color: context.c.textMuted,
+              ),
             ),
           ),
         ReorderableListView.builder(
@@ -129,7 +132,9 @@ class _OrderingQuestionViewState extends State<OrderingQuestionView> {
                 revealed: widget.revealed,
                 correctHere: originalIndex == position,
                 correctPosition: originalIndex + 1,
-                onUp: position == 0 ? null : () => _move(position, position - 1),
+                onUp: position == 0
+                    ? null
+                    : () => _move(position, position - 1),
                 onDown: position == _order.length - 1
                     ? null
                     : () => _move(position, position + 1),
@@ -167,13 +172,13 @@ class _OrderRow extends StatelessWidget {
     final bg = !revealed
         ? context.scheme.surface
         : correctHere
-            ? c.successBg
-            : c.dangerBg;
+        ? c.successBg
+        : c.dangerBg;
     final border = !revealed
         ? c.border
         : correctHere
-            ? c.success
-            : c.danger;
+        ? c.success
+        : c.danger;
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: Gap.m, vertical: Gap.m),
@@ -195,7 +200,7 @@ class _OrderRow extends StatelessWidget {
             child: Text('${position + 1}', style: AppType.numeric(size: 13)),
           ),
           const SizedBox(width: Gap.m),
-          Expanded(child: Text(text, style: context.text.bodyMedium)),
+          Expanded(child: HyphenText(text, style: context.text.bodyMedium)),
           if (revealed) ...[
             if (correctHere)
               Icon(Icons.check_circle, size: 20, color: c.success)

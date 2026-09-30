@@ -9,6 +9,7 @@ import '../../data/models/exam_area.dart';
 import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
+import '../../widgets/hyphenation.dart';
 
 /// Die sieben Bereiche des Prüfungskatalogs.
 ///
@@ -117,39 +118,31 @@ class _AreaCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 44,
-            height: 44,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: context.c.surfaceAlt,
-              borderRadius: BorderRadius.circular(Radii.m),
-            ),
-            child: Icon(area.icon, size: 22, color: context.scheme.primary),
-          ),
+          TileIcon(icon: area.icon),
           const SizedBox(width: Gap.m),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Nummer und Stand in der Überzeile - so hat der Titel die
+                // volle Breite und muss nicht mitten im Wort umbrechen.
                 Row(
                   children: [
-                    Text(
-                      area.number,
-                      style: AppType.numeric(
-                        size: 13,
-                        color: context.c.textMuted,
+                    Expanded(
+                      child: Text(
+                        'BEREICH ${area.number}',
+                        style: context.text.labelSmall?.copyWith(
+                          color: context.c.textMuted,
+                          letterSpacing: 1,
+                        ),
                       ),
                     ),
-                    const SizedBox(width: Gap.s),
-                    Expanded(
-                      child: Text(area.title, style: context.text.titleMedium),
-                    ),
-                    Text('$readiness %', style: AppType.numeric(size: 14)),
+                    Text('$readiness %', style: AppType.numeric(size: 13)),
                   ],
                 ),
+                HyphenText(area.title, style: context.text.titleMedium),
                 const SizedBox(height: 2),
-                Text(
+                HyphenText(
                   area.blurb,
                   style: context.text.bodyMedium?.copyWith(
                     color: context.c.textMuted,
