@@ -10,6 +10,7 @@ import 'questions/questions_a04_entwicklung.dart';
 import 'questions/questions_a05_qualitaet.dart';
 import 'questions/questions_a06_krypto.dart';
 import 'questions/questions_a06_sicherheit.dart';
+import 'questions/questions_a07_vertraege.dart';
 import 'seed_anforderungen.dart';
 import 'seed_grundlagen.dart';
 import 'seed_netzplan.dart';
@@ -34,6 +35,7 @@ final List<Question> kSeedQuestions = [
   ...questionsA05,
   ...questionsA06Sicherheit,
   ...questionsA06Krypto,
+  ...questionsA07,
 ];
 
 final List<TheorySnack> kSeedTheory = seedTheory;

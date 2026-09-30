@@ -9,6 +9,7 @@ import 'nuggets_a04_entwicklung.dart';
 import 'nuggets_a05_qualitaet.dart';
 import 'nuggets_a06_krypto.dart';
 import 'nuggets_a06_sicherheit.dart';
+import 'nuggets_a07_vertraege.dart';
 
 /// Alle Lernschritte der Learning Journey. Die Reihenfolge innerhalb einer
 /// Lektion ist die Listenreihenfolge.
@@ -23,4 +24,5 @@ final List<Nugget> kSeedNuggets = [
   ...nuggetsA05,
   ...nuggetsA06Sicherheit,
   ...nuggetsA06Krypto,
+  ...nuggetsA07,
 ];

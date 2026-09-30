@@ -72,11 +72,10 @@ Vorlage für Stil und Tiefe: `nuggets_a03_netze.dart`, `cards_a03_systeme.dart`,
 | 04 Analyse & Entwicklung von Systemen (30) | fertig |
 | 05 Qualitätssicherung (7) | fertig |
 | 06 IT-Sicherheit & Datenschutz (18) | fertig |
-| 07 Vertragsmanagement & Service (12) | offen |
+| 07 Vertragsmanagement & Service (12) | fertig |
 
-In 07 (`ve-*`, `sl-*`, `ls-*`, `cm-*`)
-gibt es bereits Aufgaben mit `subtopicId` - vor dem Schreiben per Grep zählen und nur
-ergänzen, was zur Vollständigkeit fehlt.
+Alle 134 Lektionen haben Lernschritte, Aufgaben und Karten. `test/nuggets_layout_test.dart`
+rendert jeden Lernschritt bei 320 px mit 100 % und 130 % Schrift.
 
-Danach offen: Redesign der Screens Lernen, Statistik, Aufgabe/Ergebnis; App-Icon und
+Offen: Redesign der Screens Lernen, Statistik, Aufgabe/Ergebnis; App-Icon und
 Startbildschirm; endgültiger App-Name (der Arbeitstitel „AP1 Trainer“ ist belegt).
