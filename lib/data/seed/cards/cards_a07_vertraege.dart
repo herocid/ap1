@@ -158,7 +158,7 @@ final List<Flashcard> cardsA07 = [
     'k-vu-6',
     'vt-urheber',
     'Ausschließliches Nutzungsrecht',
-    'Nur der Inhaber darf nutzen; weitere Lizenzen sind ausgeschlossen, auf Wunsch sogar für den Urheber selbst.',
+    'Nur der Inhaber darf nutzen; weitere Lizenzen sind ausgeschlossen - grundsätzlich sogar für den Urheber selbst, wenn er sich die Nutzung nicht vorbehält (§ 31 Abs. 3 UrhG).',
   ),
   karte(
     'k-vu-7',

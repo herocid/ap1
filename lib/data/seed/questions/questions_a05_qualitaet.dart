@@ -828,7 +828,7 @@ final List<Question> questionsA05 = [
         'Man muss die Schleifen im Code kennen.',
       ),
       zu(
-        'Abnahmetest des Fachbereichs anhand des Lastenhefts',
+        'Abnahmetest des Fachbereichs anhand der vereinbarten Anforderungen',
         0,
         'Der Fachbereich prüft von außen gegen Anforderungen.',
       ),
