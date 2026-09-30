@@ -92,13 +92,13 @@ class _NumericQuestionViewState extends State<NumericQuestionView> {
     final fieldColor = !widget.revealed
         ? context.scheme.surface
         : correct
-            ? c.successBg
-            : c.dangerBg;
+        ? c.successBg
+        : c.dangerBg;
     final borderColor = !widget.revealed
         ? c.border
         : correct
-            ? c.success
-            : c.danger;
+        ? c.success
+        : c.danger;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,8 +128,9 @@ class _NumericQuestionViewState extends State<NumericQuestionView> {
                       hintText: '0',
                       fillColor: fieldColor,
                       suffixText: q.unit,
-                      suffixStyle: context.text.bodyMedium
-                          ?.copyWith(color: c.textMuted),
+                      suffixStyle: context.text.bodyMedium?.copyWith(
+                        color: c.textMuted,
+                      ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(Radii.m),
                         borderSide: BorderSide(color: borderColor, width: 1.6),
@@ -149,7 +150,7 @@ class _NumericQuestionViewState extends State<NumericQuestionView> {
         Text(
           useKeypadLayout(context)
               ? 'Tippe auf das Feld, um das Ziffernfeld zu öffnen. '
-                  'Dezimaltrennzeichen ist das Komma.'
+                    'Dezimaltrennzeichen ist das Komma.'
               : 'Dezimaltrennzeichen ist das Komma.',
           style: context.text.labelSmall?.copyWith(color: c.textMuted),
         ),
@@ -167,10 +168,21 @@ class _NumericQuestionViewState extends State<NumericQuestionView> {
               children: [
                 Icon(Icons.check_circle_outline, color: c.success, size: 20),
                 const SizedBox(width: Gap.m),
-                Text('Richtig wäre: ', style: context.text.bodyMedium),
-                Text(
-                  '${_format(q.numericAnswer ?? 0)}${q.unit != null ? ' ${q.unit}' : ''}',
-                  style: AppType.numeric(size: 16, color: c.success),
+                Expanded(
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        const TextSpan(text: 'Richtig wäre: '),
+                        TextSpan(
+                          text:
+                              '${_format(q.numericAnswer ?? 0)}'
+                              '${q.unit != null ? ' ${q.unit}' : ''}',
+                          style: AppType.numeric(size: 16, color: c.success),
+                        ),
+                      ],
+                    ),
+                    style: context.text.bodyMedium,
+                  ),
                 ),
               ],
             ),

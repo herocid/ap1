@@ -760,6 +760,38 @@ class EmptyState extends StatelessWidget {
   }
 }
 
+/// Bewusst gekürzter Text mit Auslassungszeichen („…“), z. B. in einer
+/// Kopfzeile oder einer Vorschau, deren voller Text an anderer Stelle steht.
+///
+/// Überall sonst wird Text nie gekürzt - die Layout-Tests prüfen das und
+/// lassen nur Texte in [ClampedText] als Ausnahme durch. Wer hier etwas
+/// einträgt, entscheidet sich also ausdrücklich fürs Kürzen.
+class ClampedText extends StatelessWidget {
+  const ClampedText(
+    this.text, {
+    super.key,
+    this.style,
+    this.maxLines = 1,
+    this.textAlign,
+  });
+
+  final String text;
+  final TextStyle? style;
+  final int maxLines;
+  final TextAlign? textAlign;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: style,
+      maxLines: maxLines,
+      textAlign: textAlign,
+      overflow: TextOverflow.ellipsis,
+    );
+  }
+}
+
 String formatDuration(Duration d) {
   final m = d.inMinutes.remainder(60).toString().padLeft(2, '0');
   final s = d.inSeconds.remainder(60).toString().padLeft(2, '0');

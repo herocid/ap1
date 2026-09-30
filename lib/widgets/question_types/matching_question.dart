@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../data/models/question.dart';
+import '../hyphenation.dart';
 
 /// Zuordnungsaufgaben (Lastenheft/Pflichtenheft, Risikostrategien, ...).
 ///
@@ -57,7 +58,7 @@ class MatchingQuestionView extends StatelessWidget {
                 revealed
                     ? 'Auswertung: pro richtiger Zuordnung gibt es Teilpunkte.'
                     : 'Tippe unter jeder Aussage die passende Kategorie an. '
-                        '($assigned von $total zugeordnet)',
+                          '($assigned von $total zugeordnet)',
                 style: context.text.labelSmall?.copyWith(color: c.textMuted),
               ),
             ),
@@ -102,13 +103,13 @@ class _MatchRow extends StatelessWidget {
     final border = !revealed
         ? c.border
         : isCorrect
-            ? c.success
-            : c.danger;
+        ? c.success
+        : c.danger;
     final bg = !revealed
         ? context.scheme.surface
         : isCorrect
-            ? c.successBg
-            : c.dangerBg;
+        ? c.successBg
+        : c.dangerBg;
 
     return Container(
       padding: const EdgeInsets.all(Gap.l),
@@ -124,7 +125,7 @@ class _MatchRow extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: Text(item.text, style: context.text.bodyLarge),
+                child: HyphenText(item.text, style: context.text.bodyLarge),
               ),
               if (revealed) ...[
                 const SizedBox(width: Gap.s),
@@ -154,7 +155,7 @@ class _MatchRow extends StatelessWidget {
           ),
           if (revealed && item.rationale.isNotEmpty) ...[
             const SizedBox(height: Gap.m),
-            Text(
+            HyphenText(
               item.rationale,
               style: context.text.bodyMedium?.copyWith(
                 color: isCorrect ? c.success : c.textMuted,
@@ -214,7 +215,10 @@ class _BucketChip extends StatelessWidget {
         borderRadius: BorderRadius.circular(Radii.pill),
         child: Container(
           constraints: const BoxConstraints(minHeight: 40),
-          padding: const EdgeInsets.symmetric(horizontal: Gap.l, vertical: Gap.s),
+          padding: const EdgeInsets.symmetric(
+            horizontal: Gap.l,
+            vertical: Gap.s,
+          ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(Radii.pill),
             border: Border.all(color: border, width: 1.4),
@@ -228,7 +232,10 @@ class _BucketChip extends StatelessWidget {
               ],
               Text(
                 label,
-                style: context.text.labelLarge?.copyWith(fontSize: 13.5, color: fg),
+                style: context.text.labelLarge?.copyWith(
+                  fontSize: 13.5,
+                  color: fg,
+                ),
               ),
             ],
           ),

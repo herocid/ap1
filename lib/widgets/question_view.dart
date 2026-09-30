@@ -6,6 +6,7 @@ import '../data/models/question.dart';
 import '../data/models/topic.dart';
 import 'common.dart';
 import 'diagrams/diagram_view.dart';
+import 'hyphenation.dart';
 import 'question_types/choice_question.dart';
 import 'question_types/matching_question.dart';
 import 'question_types/netzplan_question.dart';
@@ -51,8 +52,6 @@ class QuestionView extends StatelessWidget {
             Expanded(
               child: Text(
                 topic.title.toUpperCase(),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
                 style: context.text.labelSmall?.copyWith(
                   color: context.scheme.primary,
                   letterSpacing: 1.1,
@@ -95,7 +94,7 @@ class QuestionView extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: Gap.xs),
-                Text(question.scenario!, style: context.text.bodyMedium),
+                HyphenText(question.scenario!, style: context.text.bodyMedium),
               ],
             ),
           ),
@@ -105,7 +104,7 @@ class QuestionView extends StatelessWidget {
           DiagramView(question.diagram!),
           const SizedBox(height: Gap.l),
         ],
-        Text(question.prompt, style: context.text.titleLarge),
+        HyphenText(question.prompt, style: context.text.titleLarge),
         const SizedBox(height: Gap.xl),
         _body(context),
         if (revealed && showExplanation) ...[
@@ -194,7 +193,11 @@ class _ExplanationBlock extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        NoteBox(tone: tone, title: headline, child: Text(question.explanation)),
+        NoteBox(
+          tone: tone,
+          title: headline,
+          child: HyphenText(question.explanation),
+        ),
         if (question.tags.isNotEmpty) ...[
           const SizedBox(height: Gap.m),
           Wrap(
