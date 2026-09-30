@@ -14,7 +14,14 @@ $env:Path = "C:\Users\Student\develop\flutter\bin;C:\Program Files\Git\cmd;C:\Pr
 
 - Prüfen: `flutter analyze` und `flutter test` - beides muss vor jedem Commit sauber sein.
 - Web-Vorschau: `.claude/launch.json` (Port 8080 bzw. `ap1-coach-web` auf 8092); nach
-  Code-Änderungen Server neu starten (kein Hot Reload in der Vorschau).
+  Code-Änderungen Server neu starten (kein Hot Reload in der Vorschau). Der Debug-Loader
+  bleibt öfter beim Laden hängen - zuverlässiger: `flutter build web --release`, dann
+  `ap1-coach-release` (statisch auf 8093; nach neuem Build Service Worker/Cache leeren).
+- Seed-Migration `supabase/migrations/20260920090100_ap1_seed.sql` wird nicht von Hand
+  bearbeitet, sondern nach Inhaltsänderungen mit `flutter test tool/generate_seed_sql_test.dart`
+  neu erzeugt.
+- `dart format` nur auf geänderte Dateien anwenden, nie auf ganz `lib/` - sonst entsteht ein
+  riesiger Diff in den Inhaltsdateien.
 - Commits: deutsche Conventional Commits (`feat:`, `fix:`, `content:`), Nachricht mit
   mehreren `-m` übergeben, letzte Zeile `Co-Authored-By: Claude <noreply@anthropic.com>`.
 - **Pushen nur nach Rückfrage** - `main` wird von Vercel direkt live deployt.
