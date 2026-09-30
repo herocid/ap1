@@ -7,6 +7,7 @@ import '../../core/theme/app_spacing.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
 import '../../widgets/mascot.dart';
+import '../shell/app_shell.dart';
 
 /// Einführung nach dem Onboarding: Bit erklärt in fünf Karten, wofür jeder
 /// Tab da ist.
@@ -82,7 +83,8 @@ class _TutorialScreenState extends ConsumerState<TutorialScreen> {
                                   onPressed: _done,
                                   style: TextButton.styleFrom(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: Gap.m),
+                                      horizontal: Gap.m,
+                                    ),
                                     minimumSize: const Size(0, 40),
                                   ),
                                   child: const Text('Überspringen'),
@@ -296,69 +298,19 @@ class _NameTag extends StatelessWidget {
   }
 }
 
-/// Nachbau der Navigationsleiste mit einem hervorgehobenen Tab.
+/// Die echte Reiterleiste als Vorschau, mit dem gemeinten Reiter aktiv -
+/// so sieht sie in der Einführung genau so aus wie danach in der App.
 class _NavPreview extends StatelessWidget {
   const _NavPreview({required this.active});
 
   final int active;
 
-  static const _items = [
-    (Icons.home_rounded, 'Start'),
-    (Icons.route, 'Journey'),
-    (Icons.quiz, 'Quiz'),
-    (Icons.style, 'Karten'),
-    (Icons.insights, 'Statistik'),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return AppCard(
-      padding: const EdgeInsets.symmetric(vertical: Gap.m, horizontal: Gap.xs),
-      child: Row(
-        children: [
-          for (var i = 0; i < _items.length; i++)
-            Expanded(
-              child: Column(
-                children: [
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 250),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: Gap.m,
-                      vertical: 4,
-                    ),
-                    decoration: BoxDecoration(
-                      color: i == active
-                          ? context.scheme.primaryContainer
-                          : Colors.transparent,
-                      borderRadius: BorderRadius.circular(Radii.pill),
-                    ),
-                    child: Icon(
-                      _items[i].$1,
-                      size: 20,
-                      color: i == active
-                          ? context.scheme.primary
-                          : context.c.textMuted.withValues(alpha: 0.6),
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      _items[i].$2,
-                      style: context.text.labelSmall?.copyWith(
-                        color: i == active
-                            ? context.scheme.primary
-                            : context.c.textMuted.withValues(alpha: 0.6),
-                        fontWeight: i == active
-                            ? FontWeight.w700
-                            : FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-        ],
+    return ExcludeSemantics(
+      child: AppCard(
+        padding: const EdgeInsets.symmetric(horizontal: Gap.xs),
+        child: AppNavigationBar(selectedIndex: active, framed: false),
       ),
     );
   }

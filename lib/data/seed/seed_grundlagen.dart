@@ -341,7 +341,8 @@ final List<Question> seedGrundlagen = [
     explanation:
         'Rule of Ten: Ein Fehler, der in der Analyse 1 Euro kostet, kostet im '
         'Entwurf 10, in der Implementierung 100 und beim Kunden 1.000 Euro. '
-        'Genau dagegen arbeiten V-Modell (früh definierte Tests) und agile '
+        'Genau dagegen arbeiten früh geplante Tests (z. B. Testfälle schon '
+        'aus dem Pflichtenheft) und agile '
         'Modelle (kurze Feedback-Schleifen).',
   ),
 
