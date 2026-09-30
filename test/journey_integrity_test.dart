@@ -2,6 +2,7 @@ import 'package:ap1_trainer/data/models/nugget.dart';
 import 'package:ap1_trainer/data/models/subtopic.dart';
 import 'package:ap1_trainer/data/models/topic.dart';
 import 'package:ap1_trainer/data/seed/nuggets/nuggets_data.dart';
+import 'package:ap1_trainer/data/seed/seed_data.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -48,6 +49,51 @@ void main() {
     for (final s in Subtopics.all) {
       expect(Topics.map.containsKey(s.topicId), isTrue, reason: s.id);
       expect(s.goal.startsWith('Du '), isTrue, reason: '${s.id}: Lernziel');
+    }
+  });
+
+  test('Aufgaben und Karten mit Lektion passen zu ihrem Thema', () {
+    for (final q in kSeedQuestions.where((q) => q.subtopicId != null)) {
+      final s = Subtopics.byId(q.subtopicId);
+      expect(s, isNotNull, reason: '${q.id}: unbekannte Lektion');
+      expect(s!.topicId, q.topicId, reason: '${q.id}: Lektion aus anderem Thema');
+    }
+    for (final c in kSeedFlashcards.where((c) => c.subtopicId != null)) {
+      final s = Subtopics.byId(c.subtopicId);
+      expect(s, isNotNull, reason: '${c.id}: unbekannte Lektion');
+      expect(s!.topicId, c.topicId, reason: '${c.id}: Lektion aus anderem Thema');
+    }
+  });
+
+  test('gestrichene Aufgaben gehören zu keiner Lektion', () {
+    for (final q in kSeedQuestions.where((q) => !q.isExamRelevant)) {
+      expect(q.subtopicId, isNull,
+          reason: '${q.id} ist ab 2025 gestrichen und darf nicht im Wissenscheck landen');
+    }
+  });
+
+  // Die Vollständigkeitsregel: Jede Lektion, die in der Journey erscheint,
+  // hat genug Lernschritte, Aufgaben für den Wissenscheck und Karteikarten.
+  final lessons = nuggets.map((n) => n.subtopicId).toSet();
+
+  test('jede Lektion hat mindestens vier Lernschritte', () {
+    for (final id in lessons) {
+      final n = nuggets.where((x) => x.subtopicId == id).length;
+      expect(n, greaterThanOrEqualTo(4), reason: 'Lektion $id: $n Lernschritte');
+    }
+  });
+
+  test('jede Lektion hat mindestens drei Aufgaben', () {
+    for (final id in lessons) {
+      final n = kExamRelevantQuestions.where((q) => q.subtopicId == id).length;
+      expect(n, greaterThanOrEqualTo(3), reason: 'Lektion $id: $n Aufgaben');
+    }
+  });
+
+  test('jede Lektion hat mindestens vier Karteikarten', () {
+    for (final id in lessons) {
+      final n = kSeedFlashcards.where((c) => c.subtopicId == id).length;
+      expect(n, greaterThanOrEqualTo(4), reason: 'Lektion $id: $n Karten');
     }
   });
 

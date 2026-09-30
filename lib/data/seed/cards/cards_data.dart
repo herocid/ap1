@@ -1,4 +1,5 @@
 import '../../models/flashcard.dart';
+import 'cards_a01_journey.dart';
 import 'cards_a01_projekte.dart';
 
 /// Alle Lernkarteikarten der App.
@@ -7,4 +8,5 @@ import 'cards_a01_projekte.dart';
 /// eine Ergänzung eines Bereichs nicht die ganze Sammlung anfasst.
 final List<Flashcard> kSeedFlashcards = [
   ...cardsA01,
+  ...cardsA01Journey,
 ];

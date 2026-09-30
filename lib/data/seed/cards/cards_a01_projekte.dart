@@ -7,7 +7,60 @@ Flashcard _f(
   String back, [
   String? hint,
 ]) =>
-    Flashcard(id: id, topicId: topicId, front: front, back: back, hint: hint);
+    Flashcard(
+      id: id,
+      topicId: topicId,
+      subtopicId: _lesson[id],
+      front: front,
+      back: back,
+      hint: hint,
+    );
+
+/// Karte -> Lektion der Learning Journey.
+const Map<String, String> _lesson = {
+  'c-org-01': 'p-begriff', 'c-org-02': 'p-ziele', 'c-org-03': 'p-ziele',
+  'c-org-04': 'p-organisation', 'c-org-05': 'p-organisation',
+  'c-org-06': 'p-organisation', 'c-org-07': 'p-stakeholder',
+  'c-org-08': 'p-stakeholder', 'c-org-09': 'p-stakeholder',
+  'c-org-10': 'p-ziele', 'c-org-11': 'p-ziele', 'c-org-12': 'p-rollen',
+  'c-org-13': 'p-ziele', 'c-org-14': 'p-rollen', 'c-org-15': 'p-rollen',
+  'c-vor-01': 'v-auswahl', 'c-vor-02': 'v-wasserfall', 'c-vor-03': 'v-wasserfall',
+  'c-vor-04': 'v-wasserfall', 'c-vor-05': 'v-wasserfall',
+  'c-vor-06': 'v-wasserfall', 'c-vor-07': 'v-auswahl', 'c-vor-08': 'v-phasen',
+  'c-vor-09': 'v-auswahl', 'c-vor-10': 'v-auswahl', 'c-vor-11': 'v-wasserfall',
+  'c-vor-12': 'v-phasen',
+  'c-scr-01': 's-rollen', 'c-scr-02': 's-rollen', 'c-scr-03': 's-rollen',
+  'c-scr-04': 's-rollen', 'c-scr-05': 's-artefakte', 'c-scr-06': 's-artefakte',
+  'c-scr-07': 's-events', 'c-scr-08': 's-events', 'c-scr-09': 's-events',
+  'c-scr-10': 's-artefakte', 'c-scr-11': 's-stories', 'c-scr-12': 's-stories',
+  'c-scr-13': 's-stories', 'c-scr-14': 's-stories', 'c-scr-15': 's-stories',
+  'c-scr-16': 's-stories',
+  'c-np-01': 'n-vorwaerts', 'c-np-02': 'n-vorwaerts', 'c-np-03': 'n-rueckwaerts',
+  'c-np-04': 'n-rueckwaerts', 'c-np-05': 'n-puffer', 'c-np-06': 'n-puffer',
+  'c-np-07': 'n-kritisch', 'c-np-08': 'n-kritisch', 'c-np-09': 'n-vorwaerts',
+  'c-np-10': 'n-grundlagen', 'c-np-11': 'n-puffer', 'c-np-12': 'n-grundlagen',
+  'c-np-13': 'n-kritisch', 'c-np-14': 'n-kritisch', 'c-np-15': 'n-grundlagen',
+  'c-tp-01': 't-psp', 'c-tp-02': 't-psp', 'c-tp-03': 't-gantt',
+  'c-tp-04': 't-gantt', 'c-tp-05': 't-gantt', 'c-tp-06': 't-ressourcen',
+  'c-tp-07': 't-ressourcen', 'c-tp-08': 't-ressourcen', 'c-tp-09': 't-ressourcen',
+  'c-tp-10': 't-gantt', 'c-tp-11': 't-ressourcen', 'c-tp-12': 't-ressourcen',
+  'c-tp-13': 't-gantt', 'c-tp-14': 't-gantt',
+  'c-ri-01': 'r-bewertung', 'c-ri-02': 'r-strategien', 'c-ri-03': 'r-strategien',
+  'c-ri-04': 'r-strategien', 'c-ri-05': 'r-strategien', 'c-ri-06': 'r-strategien',
+  'c-ri-07': 'r-bewertung', 'c-ri-08': 'r-bewertung', 'c-ri-09': 'r-strategien',
+  'c-ri-10': 'r-prozess', 'c-ri-11': 'r-strategien', 'c-ri-12': 'r-prozess',
+  'c-ri-13': 'r-prozess',
+  'c-wi-01': 'w-nutzwert', 'c-wi-02': 'w-nutzwert', 'c-wi-03': 'w-breakeven',
+  'c-wi-04': 'w-kalkulation', 'c-wi-05': 'w-makeorbuy', 'c-wi-06': 'w-breakeven',
+  'c-wi-07': 'w-breakeven', 'c-wi-08': 'w-kalkulation', 'c-wi-09': 'w-makeorbuy',
+  'c-wi-10': 'w-kalkulation', 'c-wi-11': 'w-kalkulation',
+  'c-wi-12': 'w-kalkulation', 'c-wi-13': 'w-makeorbuy', 'c-wi-14': 'w-kalkulation',
+  'c-wi-15': 'w-kalkulation',
+  'c-ab-01': 'a-abnahme', 'c-ab-02': 'a-lessons', 'c-ab-03': 'a-abnahme',
+  'c-ab-04': 'a-bericht', 'c-ab-05': 'a-bericht', 'c-ab-06': 'a-abnahme',
+  'c-ab-07': 'a-bericht', 'c-ab-08': 'a-lessons', 'c-ab-09': 'a-bericht',
+  'c-ab-10': 'a-abnahme', 'c-ab-11': 'a-abnahme', 'c-ab-12': 'a-bericht',
+};
 
 /// Karteikarten zu Bereich 01 - Projekte & Projektmanagement.
 final List<Flashcard> cardsA01 = [

@@ -10,6 +10,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'qm-001',
     topicId: 'qualitaetsmanagement',
+    subtopicId: 'qm-pdca',
     kind: QuestionKind.ordering,
     difficulty: 1,
     tags: ['pdca'],
@@ -34,6 +35,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'qm-002',
     topicId: 'qualitaetsmanagement',
+    subtopicId: 'qm-grundlagen',
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['qualitätsbegriff'],
@@ -61,6 +63,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'qm-003',
     topicId: 'qualitaetsmanagement',
+    subtopicId: 'qm-grundlagen',
     kind: QuestionKind.matching,
     difficulty: 2,
     tags: ['qs_maßnahmen'],
@@ -112,6 +115,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'qm-004',
     topicId: 'qualitaetsmanagement',
+    subtopicId: 'qm-grundlagen',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['qualitätsplanung'],
@@ -145,6 +149,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'te-001',
     topicId: 'testen',
+    subtopicId: 'ts-stufen',
     kind: QuestionKind.ordering,
     difficulty: 2,
     tags: ['teststufen'],
@@ -174,6 +179,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'te-002',
     topicId: 'testen',
+    subtopicId: 'ts-verfahren',
     kind: QuestionKind.matching,
     difficulty: 2,
     tags: ['blackbox', 'whitebox'],
@@ -225,6 +231,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'te-003',
     topicId: 'testen',
+    subtopicId: 'ts-protokoll',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['testfall', 'testprotokoll'],
@@ -256,6 +263,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'te-004',
     topicId: 'testen',
+    subtopicId: 'ts-verfahren',
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['schreibtischtest'],
@@ -287,6 +295,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'te-005',
     topicId: 'testen',
+    subtopicId: 'ts-stufen',
     kind: QuestionKind.single,
     difficulty: 3,
     tags: ['regressionstest'],
@@ -317,6 +326,7 @@ final List<Question> seedQsService = [
   Question(
     id: 've-001',
     topicId: 'vertraege',
+    subtopicId: 'vt-arten',
     kind: QuestionKind.matching,
     difficulty: 2,
     tags: ['vertragsarten'],
@@ -370,6 +380,7 @@ final List<Question> seedQsService = [
   Question(
     id: 've-002',
     topicId: 'vertraege',
+    subtopicId: 'vt-urheber',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['lizenzen'],
@@ -408,6 +419,7 @@ final List<Question> seedQsService = [
   Question(
     id: 've-003',
     topicId: 'vertraege',
+    subtopicId: 'vt-urheber',
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['urheberrecht'],
@@ -439,6 +451,7 @@ final List<Question> seedQsService = [
   Question(
     id: 've-004',
     topicId: 'vertraege',
+    subtopicId: 'vt-arten',
     kind: QuestionKind.multiple,
     difficulty: 1,
     tags: ['vertragsbestandteile'],
@@ -472,6 +485,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'sl-001',
     topicId: 'sla_service',
+    subtopicId: 'sla-inhalte',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['sla'],
@@ -507,6 +521,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'sl-002',
     topicId: 'sla_service',
+    subtopicId: 'sla-inhalte',
     kind: QuestionKind.numeric,
     difficulty: 3,
     tags: ['verfügbarkeit'],
@@ -533,6 +548,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'sl-003',
     topicId: 'sla_service',
+    subtopicId: 'sla-support',
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['support_level'],
@@ -568,6 +584,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'ls-001',
     topicId: 'leistungsstoerungen',
+    subtopicId: 'ls-verzug',
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['verzug'],
@@ -600,6 +617,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'ls-002',
     topicId: 'leistungsstoerungen',
+    subtopicId: 'ls-maengel',
     kind: QuestionKind.ordering,
     difficulty: 3,
     tags: ['mängelrechte'],
@@ -627,6 +645,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'ls-003',
     topicId: 'leistungsstoerungen',
+    subtopicId: 'ls-abnahme',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['abnahmeprotokoll'],
@@ -660,6 +679,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'cm-001',
     topicId: 'change_management',
+    subtopicId: 'cm-lewin',
     kind: QuestionKind.ordering,
     difficulty: 2,
     tags: ['lewin'],
@@ -685,6 +705,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'cm-002',
     topicId: 'change_management',
+    subtopicId: 'cm-widerstand',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['widerstand'],
@@ -722,6 +743,7 @@ final List<Question> seedQsService = [
   Question(
     id: 'cm-003',
     topicId: 'change_management',
+    subtopicId: 'cm-kaizen',
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['kaizen'],

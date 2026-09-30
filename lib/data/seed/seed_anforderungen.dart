@@ -10,6 +10,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'lh-001',
     topicId: 'anforderungen',
+    subtopicId: 'af-dokumente',
     kind: QuestionKind.matching,
     difficulty: 1,
     tags: ['lastenheft', 'pflichtenheft'],
@@ -59,6 +60,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'lh-002',
     topicId: 'anforderungen',
+    subtopicId: 'af-arten',
     kind: QuestionKind.matching,
     difficulty: 2,
     tags: ['anforderungsarten'],
@@ -110,6 +112,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'lh-003',
     topicId: 'anforderungen',
+    subtopicId: 'af-erhebung',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['anforderungsqualität'],
@@ -138,6 +141,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'lh-004',
     topicId: 'leistungsstoerungen',
+    subtopicId: 'ls-abnahme',
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['abnahme'],
@@ -166,6 +170,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'lh-005',
     topicId: 'anforderungen',
+    subtopicId: 'af-dokumente',
     kind: QuestionKind.ordering,
     difficulty: 2,
     tags: ['ablauf'],
@@ -222,6 +227,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'wi-001',
     topicId: 'pm_wirtschaftlichkeit',
+    subtopicId: 'w-nutzwert',
     kind: QuestionKind.numeric,
     difficulty: 2,
     tags: ['nutzwertanalyse'],
@@ -253,6 +259,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'wi-002',
     topicId: 'pm_wirtschaftlichkeit',
+    subtopicId: 'w-nutzwert',
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['nutzwertanalyse'],
@@ -281,6 +288,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'wi-003',
     topicId: 'pm_wirtschaftlichkeit',
+    subtopicId: 'w-breakeven',
     kind: QuestionKind.numeric,
     difficulty: 2,
     tags: ['amortisation'],
@@ -306,6 +314,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'wi-004',
     topicId: 'pm_wirtschaftlichkeit',
+    subtopicId: 'w-kalkulation',
     kind: QuestionKind.numeric,
     difficulty: 3,
     tags: ['angebotsvergleich', 'bezugskalkulation'],
@@ -338,6 +347,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'wi-005',
     topicId: 'pm_wirtschaftlichkeit',
+    subtopicId: 'w-makeorbuy',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['tco'],
@@ -370,6 +380,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'qr-001',
     topicId: 'risikomanagement',
+    subtopicId: 'r-bewertung',
     kind: QuestionKind.numeric,
     difficulty: 1,
     tags: ['risikobewertung'],
@@ -393,6 +404,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'qr-002',
     topicId: 'risikomanagement',
+    subtopicId: 'r-strategien',
     kind: QuestionKind.matching,
     difficulty: 2,
     tags: ['risikostrategien'],
@@ -442,6 +454,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'qr-003',
     topicId: 'qualitaetsmanagement',
+    subtopicId: 'qm-grundlagen',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['qualitätssicherung'],
@@ -476,6 +489,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'qr-004',
     topicId: 'risikomanagement',
+    subtopicId: 'r-strategien',
     kind: QuestionKind.single,
     difficulty: 3,
     tags: ['risikomatrix'],
@@ -508,6 +522,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'ab-001',
     topicId: 'projektabschluss',
+    subtopicId: 'a-lessons',
     kind: QuestionKind.single,
     difficulty: 1,
     tags: ['lessons_learned'],
@@ -533,6 +548,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'ab-002',
     topicId: 'projektabschluss',
+    subtopicId: 'a-bericht',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['abschlussbericht'],
@@ -563,6 +579,7 @@ final List<Question> seedAnforderungen = [
   Question(
     id: 'ab-003',
     topicId: 'projektabschluss',
+    subtopicId: 'a-abnahme',
     kind: QuestionKind.ordering,
     difficulty: 2,
     tags: ['projektabschluss'],

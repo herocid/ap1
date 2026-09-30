@@ -14,6 +14,7 @@ final List<Question> seedNetzplan = [
   Question(
     id: 'np-001',
     topicId: 'netzplan',
+    subtopicId: 'n-vorwaerts',
     kind: QuestionKind.netzplan,
     difficulty: 1,
     tags: ['vorwärtsrechnung'],
@@ -47,6 +48,7 @@ final List<Question> seedNetzplan = [
   Question(
     id: 'np-002',
     topicId: 'netzplan',
+    subtopicId: 'n-puffer',
     kind: QuestionKind.netzplan,
     difficulty: 2,
     tags: ['vollständig', 'puffer'],
@@ -91,6 +93,7 @@ final List<Question> seedNetzplan = [
   Question(
     id: 'np-003',
     topicId: 'netzplan',
+    subtopicId: 'n-puffer',
     kind: QuestionKind.numeric,
     difficulty: 2,
     tags: ['gesamtpuffer'],
@@ -120,6 +123,7 @@ final List<Question> seedNetzplan = [
   Question(
     id: 'np-004',
     topicId: 'netzplan',
+    subtopicId: 'n-puffer',
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['puffer', 'definition'],
@@ -146,6 +150,7 @@ final List<Question> seedNetzplan = [
   Question(
     id: 'np-005',
     topicId: 'netzplan',
+    subtopicId: 'n-kritisch',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['kritischer_pfad'],
@@ -175,6 +180,7 @@ final List<Question> seedNetzplan = [
   Question(
     id: 'np-006',
     topicId: 'netzplan',
+    subtopicId: 'n-kritisch',
     kind: QuestionKind.netzplan,
     difficulty: 3,
     tags: ['puffer', 'kritischer_pfad'],
@@ -208,6 +214,7 @@ final List<Question> seedNetzplan = [
   Question(
     id: 'np-007',
     topicId: 'netzplan',
+    subtopicId: 'n-vorwaerts',
     kind: QuestionKind.numeric,
     difficulty: 1,
     tags: ['projektdauer'],
@@ -236,6 +243,7 @@ final List<Question> seedNetzplan = [
   Question(
     id: 'tp-001',
     topicId: 'terminplanung',
+    subtopicId: 't-gantt',
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['gantt'],
@@ -262,6 +270,7 @@ final List<Question> seedNetzplan = [
   Question(
     id: 'tp-002',
     topicId: 'terminplanung',
+    subtopicId: 't-gantt',
     kind: QuestionKind.single,
     difficulty: 1,
     tags: ['meilenstein'],
@@ -289,6 +298,7 @@ final List<Question> seedNetzplan = [
   Question(
     id: 'tp-003',
     topicId: 'terminplanung',
+    subtopicId: 't-gantt',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['mta'],
@@ -317,6 +327,7 @@ final List<Question> seedNetzplan = [
   Question(
     id: 'tp-004',
     topicId: 'terminplanung',
+    subtopicId: 't-ressourcen',
     kind: QuestionKind.numeric,
     difficulty: 3,
     tags: ['ressourcenplanung'],

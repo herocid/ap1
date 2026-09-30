@@ -13,6 +13,7 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'org-001',
     topicId: 'projektorganisation',
+    subtopicId: 'p-begriff',
     kind: QuestionKind.multiple,
     difficulty: 1,
     tags: ['din69901', 'projektbegriff'],
@@ -42,6 +43,7 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'org-002',
     topicId: 'projektorganisation',
+    subtopicId: 'p-organisation',
     kind: QuestionKind.matching,
     difficulty: 2,
     tags: ['aufbauorganisation'],
@@ -90,6 +92,7 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'org-003',
     topicId: 'projektorganisation',
+    subtopicId: 'p-stakeholder',
     kind: QuestionKind.single,
     difficulty: 2,
     tags: ['stakeholder'],
@@ -123,6 +126,7 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'org-004',
     topicId: 'projektorganisation',
+    subtopicId: 'p-ziele',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['projektauftrag'],
@@ -150,6 +154,7 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'org-005',
     topicId: 'projektorganisation',
+    subtopicId: 'p-ziele',
     kind: QuestionKind.single,
     difficulty: 3,
     tags: ['magisches_dreieck'],
@@ -179,6 +184,7 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'vor-001',
     topicId: 'vorgehensmodelle',
+    subtopicId: 'v-wasserfall',
     kind: QuestionKind.ordering,
     difficulty: 1,
     tags: ['wasserfall'],
@@ -282,6 +288,7 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'vor-004',
     topicId: 'vorgehensmodelle',
+    subtopicId: 'v-auswahl',
     kind: QuestionKind.multiple,
     difficulty: 2,
     tags: ['agil_vs_klassisch'],
@@ -315,6 +322,7 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'vor-005',
     topicId: 'vorgehensmodelle',
+    subtopicId: 'v-wasserfall',
     kind: QuestionKind.single,
     difficulty: 3,
     tags: ['wasserfall', 'fehlerkosten'],
@@ -341,6 +349,7 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'scr-001',
     topicId: 'agil_scrum',
+    subtopicId: 's-rollen',
     kind: QuestionKind.single,
     difficulty: 1,
     tags: ['scrum', 'rollen'],
@@ -363,6 +372,7 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'scr-002',
     topicId: 'agil_scrum',
+    subtopicId: 's-events',
     kind: QuestionKind.ordering,
     difficulty: 2,
     tags: ['scrum', 'events'],
@@ -387,6 +397,7 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'scr-003',
     topicId: 'agil_scrum',
+    subtopicId: 's-events',
     kind: QuestionKind.single,
     difficulty: 1,
     tags: ['scrum', 'timebox'],
@@ -414,6 +425,7 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'scr-004',
     topicId: 'agil_scrum',
+    subtopicId: 's-artefakte',
     kind: QuestionKind.matching,
     difficulty: 3,
     tags: ['scrum', 'artefakte'],
@@ -463,6 +475,7 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'scr-005',
     topicId: 'agil_scrum',
+    subtopicId: 's-stories',
     kind: QuestionKind.numeric,
     difficulty: 2,
     tags: ['scrum', 'velocity'],
@@ -514,6 +527,7 @@ final List<Question> seedGrundlagen = [
   Question(
     id: 'scr-007',
     topicId: 'agil_scrum',
+    subtopicId: 's-stories',
     kind: QuestionKind.multiple,
     difficulty: 3,
     tags: ['scrum', 'user_story'],

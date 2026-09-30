@@ -1,0 +1,368 @@
+import '../../models/nugget.dart';
+import '../builders.dart';
+
+/// Lernschritte Bereich 01, Teil 2: Struktur und Termine, Risiken,
+/// Wirtschaftlichkeit, Abschluss.
+final List<Nugget> nuggetsA01Planung = [
+  // ========================================================= Projektstrukturplan
+  konzept('n-tp-1', 't-psp', 'Der Projektstrukturplan',
+      'Der Projektstrukturplan (PSP) gliedert das gesamte Projekt hierarchisch in Teilprojekte, Teilaufgaben und Arbeitspakete. Er ist die Grundlage aller weiteren Pläne: Ohne vollständige Aufgabenliste lassen sich weder Termine noch Kosten planen.'),
+  vergleich('n-tp-2', 't-psp', 'Drei Arten zu gliedern',
+      'Gegliedert wird nach dem, was im Projekt am besten trennt. Mischformen sind üblich.',
+      [
+        ['Gliederung', 'Frage', 'Beispiel'],
+        ['objektorientiert', 'Woraus besteht das Ergebnis?', 'Server, Clients, Netzwerk, Software'],
+        ['funktionsorientiert', 'Welche Tätigkeiten fallen an?', 'Beschaffen, Installieren, Testen, Schulen'],
+        ['phasenorientiert', 'In welcher Phase passiert es?', 'Analyse, Entwurf, Umsetzung, Einführung'],
+      ]),
+  konzept('n-tp-3', 't-psp', 'Das Arbeitspaket',
+      'Das Arbeitspaket ist die kleinste Einheit im PSP. Es wird nicht weiter zerlegt und muss eindeutig beschreibbar sein.',
+      points: [
+        'klar abgegrenztes, prüfbares Ergebnis',
+        'eine verantwortliche Person',
+        'schätzbarer Aufwand und schätzbare Dauer',
+        'zuordenbare Kosten',
+      ]),
+  falle('n-tp-4', 't-psp', 'Der PSP kennt keine Reihenfolge',
+      'Ein Projektstrukturplan zeigt, WAS zu tun ist - nicht wann und in welcher Reihenfolge. Termine und Abhängigkeiten kommen erst im Netzplan oder Gantt-Diagramm dazu.'),
+  ablauf('n-tp-5', 't-psp', 'Vom PSP zum Terminplan',
+      'Der PSP steht am Anfang einer Planungskette.',
+      [
+        'Projektstrukturplan mit allen Arbeitspaketen',
+        'Aufwand und Dauer je Arbeitspaket schätzen',
+        'Abhängigkeiten zwischen den Paketen festlegen',
+        'Netzplan rechnen: Dauer, Puffer, kritischer Pfad',
+        'Gantt-Diagramm für die Kommunikation erstellen',
+      ],
+      merksatz: 'Der PSP beantwortet WAS, der Netzplan WANN und in welcher Reihenfolge.'),
+
+  // ================================================ Gantt-Diagramm und Meilensteine
+  konzept('n-tg-1', 't-gantt', 'Das Gantt-Diagramm',
+      'Im Gantt-Diagramm (Balkenplan) ist jeder Vorgang ein Balken auf einer Zeitachse. Lage und Länge des Balkens zeigen Start, Ende und Dauer. Es ist leicht verständlich und deshalb das Standardwerkzeug, um Terminpläne mit Stakeholdern zu besprechen.'),
+  vergleich('n-tg-2', 't-gantt', 'Gantt oder Netzplan?',
+      'Beide Darstellungen ergänzen sich.',
+      [
+        ['', 'Gantt-Diagramm', 'Netzplan'],
+        ['Stärke', 'anschaulich, Zeitbezug auf einen Blick', 'Abhängigkeiten, Puffer, kritischer Pfad'],
+        ['Schwäche', 'Abhängigkeiten und Puffer kaum erkennbar', 'ohne Zeitachse weniger anschaulich'],
+        ['Einsatz', 'Kommunikation, Statusberichte', 'Berechnung und Planung'],
+      ]),
+  konzept('n-tg-3', 't-gantt', 'Meilensteine',
+      'Ein Meilenstein ist ein Ereignis mit der Dauer 0, das ein wichtiges Zwischenergebnis markiert - oft das Ende einer Phase. An Meilensteinen wird entschieden, ob das Projekt wie geplant weiterläuft.',
+      points: [
+        'Gut: „Pflichtenheft vom Kunden freigegeben“ - prüfbar',
+        'Schlecht: „Pflichtenheft schreiben“ - das ist eine Tätigkeit',
+      ]),
+  konzept('n-tg-4', 't-gantt', 'Die Meilensteintrendanalyse',
+      'Die Meilensteintrendanalyse (MTA) trägt zu jedem Berichtszeitpunkt ein, wann ein Meilenstein voraussichtlich erreicht wird. Der Verlauf der Linie zeigt den Trend.',
+      points: [
+        'waagerecht: Termin hält',
+        'steigend: Termin verschiebt sich nach hinten',
+        'fallend: Meilenstein wird früher erreicht',
+      ]),
+  falle('n-tg-5', 't-gantt', 'Ein Meilenstein ist keine Aufgabe',
+      'Meilensteine haben keine Dauer und verbrauchen keine Ressourcen. Wer „Test durchführen“ als Meilenstein einträgt, verwechselt ihn mit einem Vorgang. Richtig wäre „Test abgeschlossen, Protokoll liegt vor“.'),
+
+  // ================================================== Ressourcen und Aufwand
+  vergleich('n-tr-1', 't-ressourcen', 'Aufwand oder Dauer?',
+      'Die beiden Begriffe werden im Alltag vermischt, in der Prüfung aber streng getrennt.',
+      [
+        ['Begriff', 'Bedeutung', 'Einheit'],
+        ['Aufwand', 'Menge an Arbeit', 'Personentage (PT)'],
+        ['Dauer', 'Zeitspanne im Kalender', 'Arbeitstage (AT)'],
+      ]),
+  formel('n-tr-2', 't-ressourcen', 'Dauer aus Aufwand berechnen',
+      'Wie lange ein Arbeitspaket dauert, hängt davon ab, wie viele Personen wie viel ihrer Zeit einbringen.',
+      'Dauer = Aufwand / (Anzahl Personen × Verfügbarkeit)',
+      merksatz: 'Beispiel: 30 PT, 3 Personen zu 50 % -> 30 / (3 × 0,5) = 20 Arbeitstage.'),
+  konzept('n-tr-3', 't-ressourcen', 'Überlastung erkennen',
+      'Ein Ressourcenhistogramm zeigt, wie stark eine Person oder ein Team in jedem Zeitabschnitt eingeplant ist. Liegt ein Balken über der verfügbaren Kapazität, ist die Planung so nicht umsetzbar.',
+      points: [
+        'Vorgänge innerhalb ihres Puffers verschieben (Kapazitätsausgleich)',
+        'Zusätzliche Kapazität beschaffen',
+        'Termin oder Umfang anpassen',
+      ]),
+  falle('n-tr-4', 't-ressourcen', 'Mehr Leute, schneller fertig?',
+      'Nicht unbedingt. Neue Teammitglieder müssen eingearbeitet werden, und mit jeder Person wächst der Abstimmungsaufwand. Das Brookssche Gesetz besagt sogar: Zusätzliches Personal macht ein verspätetes Softwareprojekt noch später.'),
+  merke('n-tr-5', 't-ressourcen', 'Merksatz',
+      'Die Einheiten verraten die Bedeutung.',
+      satz: 'Personentage beschreiben Arbeit, Arbeitstage beschreiben Zeit.'),
+
+  // ======================================= Der Risikomanagement-Prozess
+  vergleich('n-rp-1', 'r-prozess', 'Risiko oder Problem?',
+      'Risikomanagement beschäftigt sich mit dem, was noch nicht passiert ist.',
+      [
+        ['Begriff', 'Bedeutung', 'Beispiel'],
+        ['Risiko', 'mögliches künftiges Ereignis mit negativer Wirkung', 'Der Lieferant könnte zu spät liefern.'],
+        ['Problem', 'bereits eingetreten', 'Der Lieferant hat zu spät geliefert.'],
+      ]),
+  ablauf('n-rp-2', 'r-prozess', 'Die vier Schritte',
+      'Risikomanagement ist ein Kreislauf, der das ganze Projekt begleitet.',
+      [
+        'Identifizieren - welche Risiken gibt es?',
+        'Bewerten - wie wahrscheinlich, wie schwer?',
+        'Maßnahmen planen - welche Strategie?',
+        'Überwachen - haben sich Risiken verändert? Sind neue dazugekommen?',
+      ]),
+  konzept('n-rp-3', 'r-prozess', 'Risiken finden',
+      'Kein Verfahren findet alle Risiken - deshalb kombiniert man mehrere.',
+      points: [
+        'Brainstorming im Team',
+        'Checklisten aus früheren Projekten',
+        'Lessons Learned vergangener Projekte',
+        'Befragung von Fachleuten',
+      ]),
+  konzept('n-rp-4', 'r-prozess', 'Das Risikoregister',
+      'Alle erkannten Risiken werden in einer Liste gesammelt und laufend gepflegt.',
+      points: [
+        'Beschreibung und Ursache',
+        'Eintrittswahrscheinlichkeit und Schadenshöhe',
+        'Risikowert',
+        'Maßnahme und verantwortliche Person',
+        'aktueller Status',
+      ]),
+  falle('n-rp-5', 'r-prozess', 'Einmal ist nicht genug',
+      'Risikomanagement ist kein Pflichtpunkt beim Projektstart. Risiken ändern sich, neue kommen hinzu, alte entfallen. Ohne regelmäßige Überprüfung ist das Register nach wenigen Wochen veraltet.'),
+
+  // =========================================================== Risiken bewerten
+  formel('n-rb-1', 'r-bewertung', 'Der Risikowert',
+      'Um Risiken vergleichbar zu machen, verrechnet man Wahrscheinlichkeit und Schaden.',
+      'Risikowert = Eintrittswahrscheinlichkeit × Schadenshöhe',
+      merksatz: 'Beispiel: 20 % × 50.000 € = 10.000 € Risikowert.'),
+  konzept('n-rb-2', 'r-bewertung', 'Die Risikomatrix',
+      'Die Matrix ordnet Risiken nach Wahrscheinlichkeit und Auswirkung in Felder ein - meist grün, gelb und rot. So erkennt man auf einen Blick, wo zuerst gehandelt werden muss.'),
+  vergleich('n-rb-3', 'r-bewertung', 'Beispiel: drei Risiken im Vergleich',
+      'Der Risikowert bestimmt die Reihenfolge der Bearbeitung.',
+      [
+        ['Risiko', 'Wahrscheinlichkeit', 'Schaden', 'Risikowert'],
+        ['Serverausfall', '10 %', '80.000 €', '8.000 €'],
+        ['Lieferverzug', '40 %', '15.000 €', '6.000 €'],
+        ['Schlüsselperson fällt aus', '5 %', '40.000 €', '2.000 €'],
+      ]),
+  falle('n-rb-4', 'r-bewertung', 'Die Schwäche der Rechnung',
+      'Ein sehr seltenes, aber existenzbedrohendes Risiko bekommt rechnerisch einen kleinen Wert: 1 % × 5 Mio. € ergibt 50.000 €. Trotzdem darf es nicht einfach hingenommen werden - Risiken, die das Unternehmen gefährden, brauchen immer eine Maßnahme.'),
+  merke('n-rb-5', 'r-bewertung', 'Merksatz',
+      'Zahlen helfen beim Sortieren, nicht beim Wegsehen.',
+      satz: 'Erst nach Risikowert priorisieren, dann existenzbedrohende Risiken gesondert prüfen.'),
+
+  // =========================================================== Risikostrategien
+  vergleich('n-rs-1', 'r-strategien', 'Die vier Strategien',
+      'Für jedes Risiko wird eine Strategie gewählt.',
+      [
+        ['Strategie', 'Idee', 'Beispiel'],
+        ['Vermeiden', 'Ursache beseitigen oder auf die riskante Tätigkeit verzichten', 'keine unerprobte Technik einsetzen'],
+        ['Vermindern', 'Wahrscheinlichkeit oder Schaden senken', 'Backup, Schulung, Prototyp'],
+        ['Übertragen', 'finanzielle Folgen auf Dritte verlagern', 'Versicherung, Festpreis mit Dienstleister'],
+        ['Akzeptieren', 'bewusst tragen, ggf. mit Rücklage', 'geringes Risiko mit kleinem Schaden'],
+      ]),
+  konzept('n-rs-2', 'r-strategien', 'Welche Strategie wann?',
+      'Die Strategie richtet sich nach der Einordnung in der Risikomatrix.',
+      points: [
+        'Rotes Feld: vermeiden oder deutlich vermindern',
+        'Gelbes Feld: vermindern oder übertragen',
+        'Grünes Feld: meist akzeptieren und beobachten',
+      ]),
+  konzept('n-rs-3', 'r-strategien', 'Das Restrisiko',
+      'Kaum eine Maßnahme beseitigt ein Risiko vollständig. Was danach übrig bleibt, ist das Restrisiko. Es wird erneut bewertet und entweder akzeptiert oder mit einer weiteren Maßnahme behandelt.'),
+  falle('n-rs-4', 'r-strategien', 'Übertragen heißt nicht beseitigen',
+      'Eine Versicherung verhindert keinen Serverausfall - sie bezahlt nur den Schaden. Das Ereignis kann trotzdem eintreten, mit allen Folgen für den Zeitplan.'),
+  merke('n-rs-5', 'r-strategien', 'Merksatz',
+      'Geprüft wird von der wirksamsten zur schwächsten Strategie.',
+      satz: 'Vermeiden, vermindern, übertragen, akzeptieren - in dieser Reihenfolge prüfen.'),
+
+  // ============================================== Projektkosten kalkulieren
+  konzept('n-wk-1', 'w-kalkulation', 'Woraus Projektkosten bestehen',
+      'In IT-Projekten sind die Personalkosten meist der größte Posten.',
+      points: [
+        'Personalkosten - interne Arbeitszeit',
+        'Sachkosten - Hardware, Lizenzen, Material',
+        'Fremdleistungen - externe Dienstleister',
+        'Gemeinkosten - anteilige Kosten für Räume, Verwaltung, Infrastruktur',
+      ]),
+  formel('n-wk-2', 'w-kalkulation', 'Personalkosten berechnen',
+      'Ein Stundensatz verteilt die Jahreskosten einer Person auf ihre produktiven Stunden.',
+      'Stundensatz = Personalkosten pro Jahr / produktive Stunden pro Jahr\n'
+          'Personalkosten im Projekt = Stunden × Stundensatz',
+      merksatz: 'Beispiel: 60.000 € / 1.500 h = 40 €/h. 120 Projektstunden kosten 4.800 €.'),
+  vergleich('n-wk-3', 'w-kalkulation', 'Fixe und variable Kosten',
+      'Die Unterscheidung ist die Grundlage für Break-even-Rechnungen.',
+      [
+        ['Kostenart', 'Verhalten', 'Beispiel'],
+        ['fix', 'unabhängig von der Menge', 'Miete, Lizenzpauschale, Gehälter'],
+        ['variabel', 'steigt mit der Menge', 'Material je Gerät, Versand, Provision'],
+      ]),
+  formel('n-wk-4', 'w-kalkulation', 'Die Bezugskalkulation',
+      'Beim Vergleich von Lieferantenangeboten zählt nicht der Listenpreis, sondern der Bezugspreis.',
+      '  Listenpreis\n'
+          '- Rabatt\n'
+          '= Zieleinkaufspreis\n'
+          '- Skonto\n'
+          '= Bareinkaufspreis\n'
+          '+ Bezugskosten (Fracht, Verpackung)\n'
+          '= Bezugspreis',
+      merksatz: 'Beispiel: 1.000 € - 10 % = 900 €, - 2 % Skonto = 882 €, + 20 € Fracht = 902 €.'),
+  falle('n-wk-5', 'w-kalkulation', 'Skonto auf den richtigen Betrag',
+      'Skonto wird vom Zieleinkaufspreis abgezogen, also nach dem Rabatt - nicht vom Listenpreis. Wer beide Prozentsätze vom Listenpreis rechnet, kommt zu einem zu niedrigen Ergebnis.'),
+  konzept('n-wk-6', 'w-kalkulation', 'Vor-, Mit- und Nachkalkulation',
+      'Kalkuliert wird nicht nur einmal.',
+      points: [
+        'Vorkalkulation: vor dem Projekt, Grundlage für Angebot und Budget',
+        'Mitkalkulation: während des Projekts, laufender Soll-Ist-Vergleich',
+        'Nachkalkulation: nach dem Projekt, Abgleich mit den echten Kosten',
+      ]),
+
+  // ============================================================ Nutzwertanalyse
+  konzept('n-wn-1', 'w-nutzwert', 'Wozu eine Nutzwertanalyse?',
+      'Nicht alles lässt sich in Euro ausdrücken: Bedienbarkeit, Support oder Zukunftssicherheit zum Beispiel. Die Nutzwertanalyse macht solche qualitativen Kriterien mit Punkten und Gewichten vergleichbar.'),
+  ablauf('n-wn-2', 'w-nutzwert', 'Die Schritte',
+      'Das Verfahren ist immer gleich.',
+      [
+        'Kriterien festlegen',
+        'Kriterien gewichten - die Gewichte ergeben zusammen 100 %',
+        'Jede Alternative je Kriterium mit Punkten bewerten',
+        'Punkte mit dem Gewicht multiplizieren',
+        'Teilnutzwerte je Alternative addieren',
+        'Die Alternative mit dem höchsten Nutzwert wählen',
+      ]),
+  formel('n-wn-3', 'w-nutzwert', 'Die Rechnung',
+      'Beispiel: Preis 40 %, Support 35 %, Bedienung 25 %. Anbieter A erhält 8, 6 und 9 Punkte.',
+      'Nutzwert = Σ (Gewicht × Punkte)\n'
+          'A = 0,40 × 8 + 0,35 × 6 + 0,25 × 9\n'
+          '  = 3,20 + 2,10 + 2,25 = 7,55'),
+  falle('n-wn-4', 'w-nutzwert', 'Typische Fehler',
+      'Wo in der Prüfung Punkte verloren gehen.',
+      points: [
+        'Gewichte ergeben nicht 100 %',
+        'Punkte ohne Gewichtung addiert',
+        'K.-o.-Kriterien übersehen: Erfüllt ein Anbieter eine Mussanforderung nicht, fällt er vorher heraus - egal wie hoch sein Nutzwert wäre',
+      ]),
+  merke('n-wn-5', 'w-nutzwert', 'Die Grenze des Verfahrens',
+      'Gewichte und Punkte sind subjektiv - wer sie festlegt, beeinflusst das Ergebnis.',
+      satz: 'Die Nutzwertanalyse macht eine Entscheidung nachvollziehbar, nicht objektiv.'),
+
+  // ================================================================== Make or Buy
+  konzept('n-wm-1', 'w-makeorbuy', 'Die Frage',
+      'Soll eine Lösung selbst entwickelt (make) oder am Markt eingekauft werden (buy)? Die Entscheidung hängt nicht nur am Preis.'),
+  vergleich('n-wm-2', 'w-makeorbuy', 'Make oder Buy im Vergleich',
+      'Beide Wege haben typische Vor- und Nachteile.',
+      [
+        ['', 'Make (selbst entwickeln)', 'Buy (einkaufen)'],
+        ['Passgenauigkeit', 'exakt auf den Bedarf zugeschnitten', 'Standard, ggf. Anpassung nötig'],
+        ['Zeit bis zum Einsatz', 'lang', 'kurz'],
+        ['Know-how', 'bleibt im Unternehmen', 'Abhängigkeit vom Anbieter'],
+        ['Kosten', 'hohe Entwicklungskosten', 'Lizenz- und Wartungskosten'],
+      ]),
+  konzept('n-wm-3', 'w-makeorbuy', 'Total Cost of Ownership',
+      'Die TCO betrachtet alle Kosten über die gesamte Nutzungsdauer - nicht nur den Kaufpreis.',
+      points: [
+        'Anschaffung und Einrichtung',
+        'Betrieb: Strom, Wartung, Lizenzen',
+        'Support und Personal',
+        'Schulung',
+        'Entsorgung bzw. Ablösung',
+      ]),
+  konzept('n-wm-4', 'w-makeorbuy', 'Die Machbarkeitsanalyse',
+      'Bevor ein Weg gewählt wird, prüft man, ob er überhaupt gangbar ist.',
+      points: [
+        'technisch - lässt es sich umsetzen?',
+        'wirtschaftlich - lohnt es sich?',
+        'rechtlich - ist es erlaubt, z. B. Datenschutz und Lizenzen?',
+        'organisatorisch - passt es zu Abläufen und Personal?',
+        'zeitlich - ist es rechtzeitig fertig?',
+      ]),
+  falle('n-wm-5', 'w-makeorbuy', 'Buy ist nicht automatisch billiger',
+      'Ein niedriger Kaufpreis täuscht, wenn hohe jährliche Lizenzgebühren, teure Anpassungen oder Schulungen folgen. Erst die Betrachtung über die ganze Nutzungsdauer zeigt, welcher Weg wirklich günstiger ist.'),
+
+  // ===================================================== Break-even und Amortisation
+  konzept('n-wb-1', 'w-breakeven', 'Die Gewinnschwelle',
+      'Der Break-even-Point ist die Menge, ab der die Erlöse alle Kosten decken. Darunter macht man Verlust, darüber Gewinn.'),
+  formel('n-wb-2', 'w-breakeven', 'Break-even-Menge',
+      'Jedes verkaufte Stück trägt seinen Deckungsbeitrag zu den Fixkosten bei.',
+      'Deckungsbeitrag je Stück = Preis - variable Stückkosten\n'
+          'Break-even-Menge = Fixkosten / Deckungsbeitrag je Stück',
+      merksatz: 'Beispiel: Preis 50 €, variable Kosten 30 € -> DB 20 €. Fixkosten 10.000 € -> 500 Stück.'),
+  formel('n-wb-3', 'w-breakeven', 'Amortisationsdauer',
+      'Die Amortisationsdauer gibt an, nach wie vielen Jahren eine Investition durch Einsparungen wieder hereingeholt ist.',
+      'Amortisationsdauer = Investition / jährlicher Rückfluss\n'
+          'jährlicher Rückfluss = Einsparung - laufende Kosten',
+      merksatz: 'Beispiel: 24.000 € Investition, 10.000 € Einsparung, 2.000 € laufende Kosten -> 24.000 / 8.000 = 3 Jahre.'),
+  falle('n-wb-4', 'w-breakeven', 'Laufende Kosten vergessen',
+      'Die Einsparung allein ist nicht der Rückfluss. Wer die laufenden Kosten der neuen Lösung nicht abzieht, rechnet die Amortisationsdauer zu kurz.'),
+  merke('n-wb-5', 'w-breakeven', 'Merksatz',
+      'Beide Rechnungen folgen demselben Muster.',
+      satz: 'Was einmal anfällt, geteilt durch das, was regelmäßig zurückfließt.'),
+
+  // ============================================================ Abnahme und Übergabe
+  konzept('n-aa-1', 'a-abnahme', 'Drei Ebenen des Abschlusses',
+      'Ein Projekt ist erst abgeschlossen, wenn alle drei Ebenen erledigt sind.',
+      points: [
+        'Sachlich: Ergebnis abnehmen und an den Betrieb übergeben',
+        'Wirtschaftlich: Nachkalkulation, Rechnungen, Budget schließen',
+        'Personell: Team auflösen, Leistungen würdigen, Rückkehr in die Linie',
+      ]),
+  ablauf('n-aa-2', 'a-abnahme', 'Der Ablauf',
+      'Eine sinnvolle Reihenfolge für den Abschluss.',
+      [
+        'Abnahme des Ergebnisses durch den Auftraggeber',
+        'Übergabe an den Betrieb mit Dokumentation und Schulung',
+        'Nachkalkulation und Abschlussbericht',
+        'Lessons-Learned-Workshop',
+        'Auflösung des Projektteams',
+      ]),
+  konzept('n-aa-3', 'a-abnahme', 'Die Abnahme',
+      'Bei der Abnahme prüft der Auftraggeber das Ergebnis gegen die vereinbarten Kriterien, meist aus dem Pflichtenheft. Das Ergebnis hält ein Abnahmeprotokoll fest.',
+      points: [
+        'geprüfte Leistungen und Testergebnisse',
+        'festgestellte Mängel mit Frist zur Behebung',
+        'Entscheidung: abgenommen, unter Vorbehalt abgenommen oder verweigert',
+        'Unterschriften beider Seiten',
+      ]),
+  konzept('n-aa-4', 'a-abnahme', 'Übergabe an den Betrieb',
+      'Nach dem Projekt muss jemand die Lösung betreiben. Damit das funktioniert, braucht der Betrieb Dokumentation, eine Schulung und klare Zuständigkeiten für den Support.'),
+  falle('n-aa-5', 'a-abnahme', 'Mängel nicht festhalten',
+      'Kleine Mängel, die bei der Abnahme bekannt sind, gehören ins Protokoll - sonst lässt sich später nicht mehr belegen, dass sie schon bei Übergabe bestanden.'),
+
+  // ====================================================== Abschlussbericht und Soll-Ist
+  konzept('n-ab-1', 'a-bericht', 'Der Abschlussbericht',
+      'Der Abschlussbericht fasst das Projekt für Auftraggeber und Lenkungsausschuss zusammen.',
+      points: [
+        'erreichte und nicht erreichte Ziele',
+        'Soll-Ist-Vergleich von Terminen, Kosten und Umfang',
+        'Begründung der Abweichungen',
+        'offene Punkte und Empfehlungen',
+      ]),
+  vergleich('n-ab-2', 'a-bericht', 'Ein Soll-Ist-Vergleich',
+      'Beispiel für die Einführung eines Ticketsystems.',
+      [
+        ['Größe', 'Soll', 'Ist', 'Abweichung'],
+        ['Kosten', '40.000 €', '46.000 €', '+15 %'],
+        ['Dauer', '12 Wochen', '14 Wochen', '+2 Wochen'],
+        ['Umfang', '8 Module', '8 Module', 'keine'],
+      ]),
+  formel('n-ab-3', 'a-bericht', 'Abweichung in Prozent',
+      'So wird die Abweichung aus dem Beispiel berechnet.',
+      'Abweichung in % = (Ist - Soll) / Soll × 100\n'
+          '(46.000 - 40.000) / 40.000 × 100 = 15 %'),
+  falle('n-ab-4', 'a-bericht', 'Nur Zahlen, keine Gründe',
+      'Eine Abweichung ohne Begründung hilft niemandem. Wertvoll wird der Bericht erst, wenn er erklärt, warum die Kosten gestiegen sind - etwa durch eine nachträglich beauftragte Schnittstelle.'),
+
+  // ============================================================== Lessons Learned
+  konzept('n-al-1', 'a-lessons', 'Wozu Lessons Learned?',
+      'Aus Erfahrungen soll Wissen für künftige Projekte werden. Ohne diesen Schritt wiederholt die nächste Projektgruppe dieselben Fehler.'),
+  ablauf('n-al-2', 'a-lessons', 'Ein Lessons-Learned-Workshop',
+      'So läuft der Workshop üblicherweise ab.',
+      [
+        'Vorbereiten - Beteiligte einladen, Projektdaten bereitlegen',
+        'Sammeln - was lief gut, was lief schlecht?',
+        'Ursachen analysieren',
+        'Empfehlungen für künftige Projekte ableiten',
+        'Dokumentieren und für andere zugänglich ablegen',
+      ]),
+  falle('n-al-3', 'a-lessons', 'Keine Schuldfrage',
+      'Geht es um Schuld, schweigen die Beteiligten - und die wichtigsten Erkenntnisse gehen verloren. Lessons Learned fragen nach Ursachen und Verbesserungen, nicht nach Verantwortlichen.'),
+  konzept('n-al-4', 'a-lessons', 'Auch bei Abbruch',
+      'Gerade abgebrochene Projekte liefern die wertvollsten Erkenntnisse. Auch sie brauchen einen geordneten Abschluss mit Bericht und Lessons Learned.'),
+  merke('n-al-5', 'a-lessons', 'Merksatz',
+      'Der Aufwand lohnt sich nur, wenn die Erkenntnisse beim nächsten Projekt ankommen.',
+      satz: 'Lessons Learned machen aus Erfahrung Wissen - für das nächste Projekt, nicht für das Protokoll.'),
+];

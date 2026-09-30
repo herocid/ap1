@@ -2,6 +2,7 @@ export 'cards/cards_data.dart' show kSeedFlashcards;
 import '../models/question.dart';
 import '../models/theory.dart';
 import 'cards/cards_data.dart';
+import 'questions/questions_a01_journey.dart';
 import 'seed_anforderungen.dart';
 import 'seed_grundlagen.dart';
 import 'seed_netzplan.dart';
@@ -18,6 +19,7 @@ final List<Question> kSeedQuestions = [
   ...seedNetzplan,
   ...seedAnforderungen,
   ...seedQsService,
+  ...questionsA01Journey,
 ];
 
 final List<TheorySnack> kSeedTheory = seedTheory;
