@@ -70,9 +70,100 @@ class _AppCardState extends State<AppCard> {
 /// die Karten, Rot für Fehler.
 enum TileTone { brand, flame, success, danger, info }
 
+extension TileToneColors on TileTone {
+  /// Vordergrund- und Flächenfarbe des Tons.
+  (Color fg, Color bg) colors(BuildContext context) {
+    final c = context.c;
+    return switch (this) {
+      TileTone.brand => (
+        context.scheme.primary,
+        context.scheme.primaryContainer,
+      ),
+      TileTone.flame => (c.flame, c.flameBg),
+      TileTone.success => (c.success, c.successBg),
+      TileTone.danger => (c.danger, c.dangerBg),
+      TileTone.info => (c.info, c.infoBg),
+    };
+  }
+}
+
+/// Getöntes Symbol-Quadrat am Anfang einer Kachel.
+///
+/// Eine Größe für alle Kacheln der App ([size] 44, Symbol 22, Radius
+/// [Radii.m]) - so stehen Symbole in Listen exakt übereinander und die Texte
+/// daneben beginnen auf derselben Linie.
+class TileIcon extends StatelessWidget {
+  const TileIcon({
+    super.key,
+    required this.icon,
+    this.tone = TileTone.brand,
+    this.enabled = true,
+    this.size = kTileIconSize,
+  });
+
+  static const double kTileIconSize = 44;
+
+  final IconData icon;
+  final TileTone tone;
+  final bool enabled;
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    final (fg, bg) = tone.colors(context);
+    return Container(
+      width: size,
+      height: size,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: enabled ? bg : context.c.surfaceAlt,
+        borderRadius: BorderRadius.circular(Radii.m),
+      ),
+      child: Icon(
+        icon,
+        size: size / 2,
+        color: enabled ? fg : context.c.textMuted,
+      ),
+    );
+  }
+}
+
+/// Kleine runde Zahl-/Hinweismarke, z. B. „12 fällig“.
+class CountBadge extends StatelessWidget {
+  const CountBadge({
+    super.key,
+    required this.label,
+    this.tone = TileTone.brand,
+  });
+
+  final String label;
+  final TileTone tone;
+
+  @override
+  Widget build(BuildContext context) {
+    final (fg, bg) = tone.colors(context);
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: Gap.s, vertical: 3),
+      decoration: BoxDecoration(
+        color: bg,
+        borderRadius: BorderRadius.circular(Radii.pill),
+      ),
+      child: Text(
+        label,
+        maxLines: 1,
+        softWrap: false,
+        style: AppType.numeric(size: 12, color: fg),
+      ),
+    );
+  }
+}
+
 /// Zeile mit getöntem Symbol, Titel, Untertitel und Pfeil - der Standard für
 /// „hier geht es zu …“. Linksbündig und über die volle Breite, damit auch
 /// lange Texte auf 320 px sauber umbrechen.
+///
+/// Symbol, Pfeil und Marke sind vertikal auf den Textblock zentriert; der
+/// Text bricht um statt abgeschnitten zu werden.
 class ActionTile extends StatelessWidget {
   const ActionTile({
     super.key,
@@ -97,68 +188,319 @@ class ActionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = context.c;
     final enabled = onTap != null;
-    final (fg, bg) = switch (tone) {
-      TileTone.brand => (context.scheme.primary, c.surfaceAlt),
-      TileTone.flame => (c.flame, c.flameBg),
-      TileTone.success => (c.success, c.successBg),
-      TileTone.danger => (c.danger, c.dangerBg),
-      TileTone.info => (c.info, c.infoBg),
-    };
 
+    return Semantics(
+      button: enabled,
+      enabled: enabled,
+      child: AppCard(
+        onTap: onTap,
+        padding: const EdgeInsets.fromLTRB(Gap.l, Gap.m, Gap.m, Gap.m),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: TileIcon.kTileIconSize),
+          child: Row(
+            children: [
+              TileIcon(icon: icon, tone: tone, enabled: enabled),
+              const SizedBox(width: Gap.m),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      title,
+                      style: context.text.titleMedium?.copyWith(
+                        color: enabled ? null : c.textMuted,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitle,
+                      style: context.text.bodySmall?.copyWith(
+                        color: c.textMuted,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              if (badge != null) ...[
+                const SizedBox(width: Gap.s),
+                CountBadge(label: badge!, tone: tone),
+              ],
+              const SizedBox(width: Gap.xs),
+              Icon(
+                Icons.chevron_right,
+                color: enabled ? c.textMuted : c.border,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Kachel mit Fortschrittsbalken - für Bereiche und Themen in Quiz,
+/// Karteikasten und Statistik. Gleicher Aufbau wie [ActionTile] (Symbol 44,
+/// Innenabstände, Pfeil), damit Listen aus beiden Kachelarten ruhig wirken.
+class ProgressTile extends StatelessWidget {
+  const ProgressTile({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.progress,
+    this.overline,
+    this.caption,
+    this.coverage = 0,
+    this.progressLabel,
+    this.badge,
+    this.tone = TileTone.brand,
+    this.onTap,
+    this.enabled = true,
+  });
+
+  final IconData icon;
+  final String title;
+
+  /// Kleine Zeile über dem Titel, z. B. „BEREICH 01“.
+  final String? overline;
+
+  /// Zeile unter dem Balken, z. B. „142 Karten“.
+  final String? caption;
+
+  /// 0..1 - gefüllter Balken ([TopicBar]).
+  final double progress;
+
+  /// 0..1 - Strichmarke für die Abdeckung, 0 = keine.
+  final double coverage;
+
+  /// Text rechts neben dem Balken; Standard: Prozentwert.
+  final String? progressLabel;
+
+  /// Marke rechts, z. B. „12 fällig“.
+  final String? badge;
+  final TileTone tone;
+  final VoidCallback? onTap;
+  final bool enabled;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.c;
     return AppCard(
       onTap: onTap,
-      padding: const EdgeInsets.fromLTRB(Gap.l, Gap.m, Gap.m, Gap.m),
+      padding: EdgeInsets.fromLTRB(
+        Gap.l,
+        Gap.m,
+        onTap == null ? Gap.l : Gap.m,
+        Gap.m,
+      ),
       child: Row(
         children: [
-          Container(
-            width: 44,
-            height: 44,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: enabled ? bg : c.surfaceAlt,
-              borderRadius: BorderRadius.circular(Radii.m),
-            ),
-            child: Icon(icon, size: 22, color: enabled ? fg : c.textMuted),
-          ),
+          TileIcon(icon: icon, tone: tone, enabled: enabled),
           const SizedBox(width: Gap.m),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                if (overline != null)
+                  Text(
+                    overline!,
+                    style: context.text.labelSmall?.copyWith(
+                      color: c.textMuted,
+                      letterSpacing: 1,
+                    ),
+                  ),
+                WordSafeText(
                   title,
-                  style: context.text.titleMedium?.copyWith(
+                  style: context.text.titleSmall?.copyWith(
                     color: enabled ? null : c.textMuted,
                   ),
                 ),
-                const SizedBox(height: 2),
-                Text(
-                  subtitle,
-                  style: context.text.bodySmall?.copyWith(color: c.textMuted),
+                const SizedBox(height: Gap.s),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TopicBar(confidence: progress, coverage: coverage),
+                    ),
+                    const SizedBox(width: Gap.s),
+                    Text(
+                      progressLabel ?? '${(progress * 100).round()} %',
+                      style: AppType.numeric(size: 12, color: c.textMuted),
+                    ),
+                  ],
                 ),
+                // Marke in der Zeile unter dem Balken statt rechts - rechts
+                // würde sie dem Titel auf 320 px die halbe Breite nehmen.
+                if (caption != null || badge != null) ...[
+                  const SizedBox(height: Gap.xs),
+                  Wrap(
+                    spacing: Gap.s,
+                    runSpacing: Gap.xs,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      if (caption != null)
+                        Text(
+                          caption!,
+                          style: context.text.labelSmall?.copyWith(
+                            color: c.textMuted,
+                          ),
+                        ),
+                      if (badge != null) CountBadge(label: badge!, tone: tone),
+                    ],
+                  ),
+                ],
               ],
             ),
           ),
-          if (badge != null) ...[
-            const SizedBox(width: Gap.s),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: Gap.s,
-                vertical: 3,
-              ),
-              decoration: BoxDecoration(
-                color: bg,
-                borderRadius: BorderRadius.circular(Radii.pill),
-              ),
-              child: Text(badge!, style: AppType.numeric(size: 12, color: fg)),
-            ),
+          if (onTap != null) ...[
+            const SizedBox(width: Gap.xs),
+            Icon(Icons.chevron_right, color: c.textMuted),
           ],
-          const SizedBox(width: Gap.xs),
-          Icon(Icons.chevron_right, color: enabled ? c.textMuted : c.border),
         ],
       ),
     );
   }
+}
+
+/// Zwei Knöpfe nebeneinander, die auf schmalen Bildschirmen oder mit großer
+/// Schrift untereinander rutschen, statt ihre Beschriftung zu zerhacken.
+///
+/// [labels] sind die Beschriftungen beider Knöpfe - daran misst das Widget,
+/// ob nebeneinander genug Platz ist. [withIcons] rechnet Platz für ein
+/// führendes Symbol ein.
+class ButtonPair extends StatelessWidget {
+  const ButtonPair({
+    super.key,
+    required this.start,
+    required this.end,
+    required this.labels,
+    this.withIcons = true,
+  });
+
+  final Widget start;
+  final Widget end;
+  final List<String> labels;
+  final bool withIcons;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, box) {
+        final style = context.text.labelLarge!;
+        final scaler = MediaQuery.textScalerOf(context);
+        var widest = 0.0;
+        for (final l in labels) {
+          widest = math.max(widest, measureTextWidth(l, style, scaler));
+        }
+        // Innenabstand links/rechts (je Gap.l), Symbol (18) + Abstand (8),
+        // dazu etwas Luft für Rundungen.
+        final needed = widest + 2 * Gap.l + (withIcons ? 26 : 0) + Gap.s;
+        final fits = (box.maxWidth - Gap.m) / 2 >= needed;
+        if (fits) {
+          return Row(
+            children: [
+              Expanded(child: start),
+              const SizedBox(width: Gap.m),
+              Expanded(child: end),
+            ],
+          );
+        }
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            start,
+            const SizedBox(height: Gap.s),
+            end,
+          ],
+        );
+      },
+    );
+  }
+}
+
+/// Text, der nie mitten im Wort umbricht.
+///
+/// Flutter trennt ein Wort, das nicht in die Zeile passt, einfach an
+/// irgendeinem Buchstaben („Kundenbeziehung-en“) - ohne Trennstrich. Für
+/// Titel in schmalen Kacheln (320 px, 130 % Schrift) wird die Schrift
+/// deshalb gerade so weit verkleinert, dass das längste Wort passt. Nicht
+/// innerhalb von IntrinsicHeight/IntrinsicWidth verwenden (LayoutBuilder).
+class WordSafeText extends StatelessWidget {
+  const WordSafeText(this.text, {super.key, this.style, this.textAlign});
+
+  final String text;
+  final TextStyle? style;
+  final TextAlign? textAlign;
+
+  static List<String> words(String text) => text
+      .replaceAll('-', '- ')
+      .split(RegExp(r'\s+'))
+      .where((w) => w.isNotEmpty)
+      .toList();
+
+  @override
+  Widget build(BuildContext context) {
+    final effective = DefaultTextStyle.of(context).style.merge(style);
+    return LayoutBuilder(
+      builder: (context, box) => Text(
+        text,
+        textAlign: textAlign,
+        style: effective,
+        textScaler: box.maxWidth.isFinite
+            ? fittingTextScaler(
+                context,
+                texts: words(text),
+                style: effective,
+                maxWidth: box.maxWidth,
+              )
+            : null,
+      ),
+    );
+  }
+}
+
+/// Breite eines einzeiligen Texts in Pixeln.
+double measureTextWidth(String text, TextStyle style, TextScaler scaler) {
+  final tp = TextPainter(
+    text: TextSpan(text: text, style: style),
+    textDirection: TextDirection.ltr,
+    textScaler: scaler,
+    maxLines: 1,
+  )..layout();
+  final w = tp.width;
+  tp.dispose();
+  return w;
+}
+
+/// Ein gemeinsamer [TextScaler], mit dem jeder Text aus [texts] einzeilig in
+/// [maxWidth] passt.
+///
+/// Für Reihen gleichartiger Beschriftungen (Reiterleiste, Abzeichen): Statt
+/// jedes zu lange Label einzeln zu verkleinern - dann stehen fünf Schrift-
+/// größen nebeneinander - werden alle gleich groß gesetzt. Die Schrift folgt
+/// der Systemeinstellung bis [maxScale] und wird nur so weit reduziert, wie
+/// es der längste Text verlangt.
+TextScaler fittingTextScaler(
+  BuildContext context, {
+  required Iterable<String> texts,
+  required TextStyle style,
+  required double maxWidth,
+  double maxScale = 2,
+}) {
+  final fontSize = style.fontSize ?? 14;
+  var scaler = MediaQuery.textScalerOf(context).clamp(maxScaleFactor: maxScale);
+  for (var i = 0; i < 8; i++) {
+    var widest = 0.0;
+    for (final t in texts) {
+      widest = math.max(widest, measureTextWidth(t, style, scaler));
+    }
+    if (widest <= maxWidth || widest == 0) return scaler;
+    // Letter-Spacing skaliert nicht mit - deshalb iterativ und mit etwas
+    // Reserve nachregeln.
+    final factor = scaler.scale(fontSize) / fontSize;
+    scaler = TextScaler.linear(factor * maxWidth / widest * 0.99);
+  }
+  return scaler;
 }
 
 class SectionHeader extends StatelessWidget {
@@ -359,26 +701,99 @@ class StatTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = color ?? context.scheme.primary;
     return AppCard(
-      padding: const EdgeInsets.symmetric(horizontal: Gap.m, vertical: Gap.m),
+      padding: const EdgeInsets.all(Gap.m),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(icon, size: 20, color: c),
           const SizedBox(height: Gap.s),
-          Text(value, style: AppType.numeric(size: 20, color: c)),
+          // Zahlen dürfen minimal kleiner werden („Lv. 12“ in einer
+          // Drittel-Kachel bei 130 % Schrift), aber nie abgeschnitten.
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.centerLeft,
+            child: Text(
+              value,
+              maxLines: 1,
+              style: AppType.numeric(
+                size: 20,
+                weight: FontWeight.w700,
+                color: c,
+              ),
+            ),
+          ),
+          const SizedBox(height: 2),
           Text(
             label,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: context.text.labelSmall?.copyWith(
-              color: context.c.textMuted,
-            ),
+            textScaler: _StatLabelScale.maybeOf(context),
+            style: StatTile._labelStyle(context),
           ),
         ],
       ),
     );
   }
+
+  static TextStyle _labelStyle(BuildContext context) =>
+      context.text.labelSmall!.copyWith(color: context.c.textMuted);
+}
+
+/// Kennzahl-Kacheln nebeneinander, alle gleich hoch - auch wenn ein Label
+/// umbricht.
+///
+/// Mehrere Wörter eines Labels dürfen umbrechen, ein einzelnes Wort wird
+/// nie mitten im Wort getrennt („Aufgabe-n“): Passt das längste Wort nicht
+/// in eine Kachel, werden die Labels aller Kacheln gemeinsam etwas kleiner.
+class StatTileRow extends StatelessWidget {
+  const StatTileRow({super.key, required this.children});
+
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, box) {
+        final n = children.length;
+        final inner = (box.maxWidth - Gap.s * (n - 1)) / n - 2 * Gap.m - 2;
+        final words = [
+          for (final c in children)
+            if (c is StatTile) ...c.label.split(' '),
+        ];
+        final scaler = fittingTextScaler(
+          context,
+          texts: words,
+          style: StatTile._labelStyle(context),
+          maxWidth: inner,
+        );
+        return _StatLabelScale(
+          scaler: scaler,
+          child: IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                for (var i = 0; i < n; i++) ...[
+                  if (i > 0) const SizedBox(width: Gap.s),
+                  Expanded(child: children[i]),
+                ],
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _StatLabelScale extends InheritedWidget {
+  const _StatLabelScale({required this.scaler, required super.child});
+
+  final TextScaler scaler;
+
+  static TextScaler? maybeOf(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<_StatLabelScale>()?.scaler;
+
+  @override
+  bool updateShouldNotify(_StatLabelScale old) => old.scaler != scaler;
 }
 
 /// Fortschrittsbalken je Thema. Zeigt Können (gefüllter Balken) und
@@ -510,6 +925,14 @@ class NoteBox extends StatelessWidget {
   final NoteTone tone;
   final String? title;
 
+  double _firstLineHeight(BuildContext context) {
+    final style = title != null
+        ? context.text.titleMedium!
+        : context.text.bodyMedium!;
+    return MediaQuery.textScalerOf(context).scale(style.fontSize ?? 14) *
+        (style.height ?? 1.2);
+  }
+
   @override
   Widget build(BuildContext context) {
     final c = context.c;
@@ -531,7 +954,14 @@ class NoteBox extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, size: 20, color: fg),
+          // Symbol mittig auf die erste Textzeile (Titel oder Text) - auch
+          // bei großer Systemschrift.
+          Padding(
+            padding: EdgeInsets.only(
+              top: math.max(0, (_firstLineHeight(context) - 20) / 2),
+            ),
+            child: Icon(icon, size: 20, color: fg),
+          ),
           const SizedBox(width: Gap.m),
           Expanded(
             child: Column(
@@ -656,8 +1086,11 @@ class SelectTile extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(Radii.m),
-        child: Container(
-          padding: const EdgeInsets.all(Gap.l),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 160),
+          // Der dickere Rahmen im ausgewählten Zustand wird vom Innenabstand
+          // abgezogen - sonst springt der Inhalt beim Antippen um 1 px.
+          padding: EdgeInsets.all(selected ? Gap.l - 1 : Gap.l),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(Radii.m),
             border: Border.all(
@@ -742,9 +1175,22 @@ class EmptyState extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 44, color: context.c.textMuted),
+          Container(
+            width: 88,
+            height: 88,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: context.scheme.primaryContainer,
+              shape: BoxShape.circle,
+            ),
+            child: Icon(icon, size: 40, color: context.scheme.primary),
+          ),
           const SizedBox(height: Gap.l),
-          Text(title, style: context.text.titleMedium),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: context.text.titleLarge,
+          ),
           const SizedBox(height: Gap.s),
           Text(
             message,
