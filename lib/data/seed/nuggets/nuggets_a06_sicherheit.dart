@@ -1439,8 +1439,8 @@ final List<Nugget> nuggetsA06Sicherheit = [
         NetzKnoten('sw', 'Switch', NetzTyp.switch_, 2, 2.4),
         NetzKnoten('srv', 'Praxisserver', NetzTyp.server, 0.6, 3.8),
         NetzKnoten('ap', 'Access Point', NetzTyp.accessPoint, 3.4, 3.6),
-        NetzKnoten('nb', 'Praxis-Notebook', NetzTyp.laptop, 1.8, 5.3),
-        NetzKnoten('gast', 'Gast-Handy', NetzTyp.smartphone, 3.5, 5.3),
+        NetzKnoten('nb', 'Praxis-Notebook', NetzTyp.laptop, 1.0, 5.6),
+        NetzKnoten('gast', 'Gast-Handy', NetzTyp.smartphone, 3.5, 5.6),
       ],
       verbindungen: [
         NetzVerbindung('inet', 'fw'),
@@ -1448,11 +1448,11 @@ final List<Nugget> nuggetsA06Sicherheit = [
         NetzVerbindung('sw', 'srv'),
         NetzVerbindung('sw', 'ap', label: 'VLAN 10 + 20'),
         NetzVerbindung('ap', 'nb', label: 'SSID Praxis', funk: true),
-        NetzVerbindung('ap', 'gast', label: 'SSID Gast', funk: true),
+        NetzVerbindung('ap', 'gast', funk: true),
       ],
       zonen: [
         NetzZone('VLAN 10 intern', 0, 3.2, 2.6, 6),
-        NetzZone('VLAN 20 Gäste', 2.8, 4.7, 4, 6),
+        NetzZone('VLAN 20 Gäste', 2.8, 5.0, 4, 6),
       ],
     ),
     points: [

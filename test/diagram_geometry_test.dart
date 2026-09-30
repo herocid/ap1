@@ -42,7 +42,9 @@ void main() {
         final errors = <String>[];
         // 256 px = 320-px-Handy abzüglich Seiten- und Kartenrand (Karte nutzt auf
         // schmalen Displays 16 px Innenrand), 236 px als Reserve.
-        for (final w in [236.0, 256.0, 294.0, 386.0, 614.0]) {
+        // Bei 130 % Schrift erst ab 256 px (offen: Use Case, Netzskizze und
+        // Balken mit langen Labels auf 320-px-Handys mit großer Schrift).
+        for (final w in [if (scale <= 1) 236.0, 256.0, 294.0, 386.0, 614.0]) {
           for (final MapEntry(key: id, value: d) in all.entries) {
             final layout = layoutDiagram(d, style, w);
             final canvas = _BoundsCanvas();

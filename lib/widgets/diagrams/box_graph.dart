@@ -204,7 +204,14 @@ class BoxGraph {
               4;
     final colMax = math.max(s.sc(120), maxW - lanesW - 2);
     final sizes = [for (var i = 0; i < count; i++) measure(i, colMax)];
-    final colW = sizes.fold<double>(0, (m, z) => math.max(m, z.width));
+    // Die Spalte ist mindestens so breit wie die breiteste Raute auf einer
+    // direkten Kante - sonst ragt sie bei schmalen Kästen links hinaus.
+    final colW = math.max(
+      sizes.fold<double>(0, (m, z) => math.max(m, z.width)),
+      direct.values
+          .where((e) => e.middleOnLine)
+          .fold<double>(0, (m, e) => math.max(m, e.middle.width)),
+    );
     final cx = colW / 2;
 
     // Senkrechte Abstände.

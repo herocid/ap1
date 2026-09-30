@@ -61,7 +61,9 @@ class _BalkenLayout extends DiagramLayout {
     final trackX0 = inline ? labelNatural + 12 : 0.0;
     final trackX1 = inline ? maxW - valueW - 10 : maxW;
     final trackW = trackX1 - trackX0;
-    final tickLabelW = s.text(formatZahl(scaleMax), tickStyle).width + 14;
+    // Großzügiger Abstand: Die äußeren Zahlen werden an den Rand geschoben
+    // und dürfen dabei nicht in ihre Nachbarn rutschen.
+    final tickLabelW = s.text(formatZahl(scaleMax), tickStyle).width * 1.5 + 16;
     final step = niceStep(
       scaleMax,
       math.max(1, (trackW / tickLabelW).floor().clamp(1, 5)),
@@ -83,16 +85,31 @@ class _BalkenLayout extends DiagramLayout {
         rows.add(row);
         y += rowH + s.sc(12);
       } else {
+        // Passt die Bezeichnung nicht neben den Wert, steht der Wert in
+        // einer eigenen Zeile darunter - sonst würde die Bezeichnung in eine
+        // zu schmale Spalte gequetscht und überlappt den Wert.
+        final natural = s.text(b.label, labelStyle(b)).width;
+        final stacked = natural + valueTp.width + 10 > maxW;
         final lbl = s.text(
           b.label,
           labelStyle(b),
-          maxWidth: maxW - valueW - 10,
+          maxWidth: stacked ? maxW : maxW - valueTp.width - 10,
         );
-        final head = math.max(lbl.height, valueTp.height);
-        final row = _Row(b, lbl, valueTp)
-          ..labelPos = Offset(0, y + head - lbl.height)
-          ..valuePos = Offset(maxW - valueTp.width, y + head - valueTp.height)
-          ..track = Rect.fromLTWH(0, y + head + 5, maxW, barH);
+        final double head;
+        final row = _Row(b, lbl, valueTp);
+        if (stacked) {
+          head = lbl.height + 2 + valueTp.height;
+          row
+            ..labelPos = Offset(0, y)
+            ..valuePos = Offset(0, y + lbl.height + 2);
+        } else {
+          head = math.max(lbl.height, valueTp.height);
+          row
+            ..labelPos = Offset(0, y + head - lbl.height)
+            ..valuePos =
+                Offset(maxW - valueTp.width, y + head - valueTp.height);
+        }
+        row.track = Rect.fromLTWH(0, y + head + 5, maxW, barH);
         rows.add(row);
         y += head + 5 + barH + s.sc(14);
       }
