@@ -256,12 +256,18 @@ class ProgressState {
         badges: badges ?? this.badges,
       );
 
-  Map<String, dynamic> toJson() => {
-        'history': history.map((r) => r.toJson()).toList(),
+  /// Alles außer der Historie. Die Historie wird Eintrag für Eintrag
+  /// angehängt; nur diese Kennzahlen werden bei jeder Antwort überschrieben.
+  Map<String, dynamic> metaToJson() => {
         'streak': streak,
         'longest_streak': longestStreak,
         'last_active_day': lastActiveDay?.toIso8601String(),
         'badges': badges.map((b) => b.name).toList(),
+      };
+
+  Map<String, dynamic> toJson() => {
+        'history': history.map((r) => r.toJson()).toList(),
+        ...metaToJson(),
       };
 
   factory ProgressState.fromJson(Map<String, dynamic> j) => ProgressState(

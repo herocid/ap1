@@ -438,8 +438,8 @@ auf iOS).
 | State | `flutter_riverpod` | compile-sicher, testbar ohne Widget-Baum |
 | Navigation | `go_router` | deklarativ, Deep Links, Web-URLs umsonst |
 | Backend | `supabase_flutter` | Auth + Postgres + Realtime |
-| Lokal | `shared_preferences` | reicht für Profil und Historie |
-| Schrift | `google_fonts` | Inter und JetBrains Mono |
+| Lokal | `hive_ce` | Antworten werden einzeln angehängt statt die ganze Historie neu zu schreiben; läuft nativ und im Web (IndexedDB), ohne Code-Generator |
+| Schrift | Inter, JetBrains Mono als Assets | in der App gebündelt statt zur Laufzeit von Google geladen - sonst ist die App offline nicht vollständig |
 | i18n | `intl` | deutsche Datums- und Zahlenformate |
 
 Bewusst **kein** Code-Generator (`freezed`, `json_serializable`,

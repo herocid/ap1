@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
 import 'app_spacing.dart';
+
+/// Familiennamen aus pubspec.yaml. Die Dateien liegen in assets/fonts.
+const String kFontSans = 'Inter';
+const String kFontMono = 'JetBrainsMono';
 
 /// Das Theme ist bewusst leise: wenig Schatten, keine Verläufe in der Fläche,
 /// hoher Textkontrast. Die einzigen kräftigen Farbflächen sind Fortschritt,
@@ -35,44 +38,59 @@ class AppTheme {
     // Inter für die gesamte UI. Zahlenlastige Stellen (Timer, Netzplan)
     // benutzen zusätzlich AppType.numeric mit Tabellenziffern, damit beim
     // Hochzählen nichts springt.
-    final textTheme = GoogleFonts.interTextTheme(baseText)
-        .apply(bodyColor: scheme.onSurface, displayColor: scheme.onSurface)
+    final textTheme = baseText
+        .apply(
+          fontFamily: kFontSans,
+          bodyColor: scheme.onSurface,
+          displayColor: scheme.onSurface,
+        )
         .copyWith(
-          displaySmall: GoogleFonts.inter(
+          displaySmall: TextStyle(
+            fontFamily: kFontSans,
             fontSize: 34,
             fontWeight: FontWeight.w700,
             letterSpacing: -0.8,
             color: scheme.onSurface,
           ),
-          headlineSmall: GoogleFonts.inter(
+          headlineSmall: TextStyle(
+            fontFamily: kFontSans,
             fontSize: 24,
             fontWeight: FontWeight.w700,
             letterSpacing: -0.4,
             color: scheme.onSurface,
           ),
-          titleLarge: GoogleFonts.inter(
+          titleLarge: TextStyle(
+            fontFamily: kFontSans,
             fontSize: 20,
             fontWeight: FontWeight.w600,
             letterSpacing: -0.2,
             color: scheme.onSurface,
           ),
-          titleMedium: GoogleFonts.inter(
+          titleMedium: TextStyle(
+            fontFamily: kFontSans,
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: scheme.onSurface,
           ),
-          bodyLarge: GoogleFonts.inter(
+          bodyLarge: TextStyle(
+            fontFamily: kFontSans,
             fontSize: 16,
             height: 1.55,
             color: scheme.onSurface,
           ),
-          bodyMedium: GoogleFonts.inter(
+          bodyMedium: TextStyle(
+            fontFamily: kFontSans,
             fontSize: 14.5,
             height: 1.55,
             color: scheme.onSurface,
           ),
-          labelLarge: GoogleFonts.inter(fontSize: 15, fontWeight: FontWeight.w600),
-          labelSmall: GoogleFonts.inter(
+          labelLarge: const TextStyle(
+            fontFamily: kFontSans,
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+          ),
+          labelSmall: const TextStyle(
+            fontFamily: kFontSans,
             fontSize: 11.5,
             fontWeight: FontWeight.w600,
             letterSpacing: 0.4,
@@ -83,6 +101,7 @@ class AppTheme {
 
     return ThemeData(
       useMaterial3: true,
+      fontFamily: kFontSans,
       brightness: brightness,
       colorScheme: scheme,
       scaffoldBackgroundColor: isDark ? AppColors.darkBg : AppColors.lightBg,
@@ -230,7 +249,8 @@ class AppType {
     FontWeight weight = FontWeight.w600,
     Color? color,
   }) =>
-      GoogleFonts.inter(
+      TextStyle(
+        fontFamily: kFontSans,
         fontSize: size,
         fontWeight: weight,
         color: color,
@@ -238,6 +258,10 @@ class AppType {
       );
 
   /// Monospace für Code-nahe Inhalte (z.B. Pseudocode in Aufgaben).
-  static TextStyle mono({double size = 14, Color? color}) =>
-      GoogleFonts.jetBrainsMono(fontSize: size, height: 1.5, color: color);
+  static TextStyle mono({double size = 14, Color? color}) => TextStyle(
+        fontFamily: kFontMono,
+        fontSize: size,
+        height: 1.5,
+        color: color,
+      );
 }

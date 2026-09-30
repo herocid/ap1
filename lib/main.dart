@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -30,16 +32,32 @@ Future<void> main() async {
     }
   }
 
-  final prefs = await SharedPreferences.getInstance();
+  _registerFontLicenses();
+
+  final store = await HiveLocalStore.open();
+  await store.migrateFrom(await SharedPreferences.getInstance());
 
   runApp(
     ProviderScope(
       overrides: [
-        localStoreProvider.overrideWithValue(LocalStore(prefs)),
+        localStoreProvider.overrideWithValue(store),
       ],
       child: const Ap1TrainerApp(),
     ),
   );
+}
+
+/// Die Open Font License verlangt, dass der Lizenztext mit der App
+/// ausgeliefert wird. So erscheint er in der Lizenzübersicht.
+void _registerFontLicenses() {
+  LicenseRegistry.addLicense(() async* {
+    for (final (family, file) in const [
+      ('Inter', 'assets/fonts/OFL-Inter.txt'),
+      ('JetBrains Mono', 'assets/fonts/OFL-JetBrainsMono.txt'),
+    ]) {
+      yield LicenseEntryWithLineBreaks([family], await rootBundle.loadString(file));
+    }
+  });
 }
 
 class Ap1TrainerApp extends ConsumerWidget {

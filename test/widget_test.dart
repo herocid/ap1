@@ -5,19 +5,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
+  late HiveLocalStore store;
+
   setUpAll(() async {
     await initializeDateFormatting('de_DE');
   });
 
+  // Außerhalb von testWidgets öffnen: dort läuft eine simulierte Uhr, in der
+  // die asynchrone Box-Initialisierung nicht fertig würde.
+  setUp(() async => store = await HiveLocalStore.open(inMemory: true));
+  tearDown(() => store.close());
+
   Future<void> pumpApp(WidgetTester tester) async {
-    SharedPreferences.setMockInitialValues({});
-    final prefs = await SharedPreferences.getInstance();
     await tester.pumpWidget(
       ProviderScope(
-        overrides: [localStoreProvider.overrideWithValue(LocalStore(prefs))],
+        overrides: [localStoreProvider.overrideWithValue(store)],
         child: const Ap1TrainerApp(),
       ),
     );

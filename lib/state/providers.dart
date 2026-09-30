@@ -4,12 +4,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/util/study_plan.dart';
 import '../data/models/exam_area.dart';
 import '../data/models/flashcard.dart';
+import '../data/models/nugget.dart';
 import '../data/models/profile.dart';
 import '../data/models/progress.dart';
 import '../data/models/question.dart';
 import '../data/models/topic.dart';
 import '../data/repositories/local_store.dart';
 import '../data/repositories/question_repository.dart';
+import '../data/seed/nuggets/nuggets_data.dart';
 import '../data/seed/seed_data.dart';
 
 /// Wird in `main()` mit der echten Instanz überschrieben.
@@ -102,7 +104,8 @@ class ProgressNotifier extends StateNotifier<ProgressState> {
     );
     next = next.copyWith(badges: _evaluateBadges(next));
     state = next;
-    _store.writeProgress(state);
+    _store.appendAnswers([r]);
+    _store.writeProgressMeta(next);
   }
 
   /// Mehrere Antworten auf einmal - so werden Prüfungssimulationen gebucht,
@@ -123,12 +126,13 @@ class ProgressNotifier extends StateNotifier<ProgressState> {
     );
     next = next.copyWith(badges: _evaluateBadges(next));
     state = next;
-    _store.writeProgress(state);
+    _store.appendAnswers(records);
+    _store.writeProgressMeta(next);
   }
 
   void reset() {
     state = const ProgressState();
-    _store.writeProgress(state);
+    _store.clearProgress();
   }
 
   /// Gibt (aktuellerStreak, längsterStreak) zurück.
@@ -265,12 +269,12 @@ class DeckNotifier extends StateNotifier<DeckState> {
 
   void answer(String cardId, {required bool knewIt}) {
     state = state.withAnswer(cardId, knewIt);
-    _store.writeDeck(state);
+    _store.writeCardState(state.stateOf(cardId));
   }
 
   void reset() {
     state = const DeckState();
-    _store.writeDeck(state);
+    _store.clearDeck();
   }
 }
 
@@ -283,6 +287,10 @@ final dueCardsProvider = Provider<int>((ref) {
   final deck = ref.watch(deckProvider);
   return deck.dueCount(ref.watch(flashcardsProvider));
 });
+
+// --------------------------------------------------------------- Lern-Feed
+
+final nuggetsProvider = Provider<List<Nugget>>((ref) => kSeedNuggets);
 
 /// Gesehene Theorie-Snacks - steuert, ob vor einer Session der Snack
 /// automatisch aufgeht.

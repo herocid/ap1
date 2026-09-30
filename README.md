@@ -66,7 +66,7 @@ flutter run -d chrome --dart-define-from-file=env.json
 
 Ohne `SUPABASE_ANON_KEY` startet die App im Offline-Modus: alle Aufgaben,
 Karteikarten und Theorie-Snacks kommen aus `lib/data/seed/`, der Fortschritt
-liegt in `shared_preferences`. Das ist kein Notbetrieb, sondern der Normalfall
+liegt in einer lokalen Datenbank (`hive_ce`, im Web IndexedDB). Das ist kein Notbetrieb, sondern der Normalfall
 für Entwicklung, Demo und Flugmodus.
 
 ### Tests
