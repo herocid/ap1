@@ -15,17 +15,27 @@ void main() {
 
   test('jedes Nugget gehört zu einem existierenden Thema', () {
     for (final n in nuggets) {
-      expect(Topics.map.containsKey(n.topicId), isTrue,
-          reason: '${n.id}: unbekanntes Thema ${n.topicId}');
+      expect(
+        Topics.map.containsKey(n.topicId),
+        isTrue,
+        reason: '${n.id}: unbekanntes Thema ${n.topicId}',
+      );
     }
   });
 
   test('jedes Nugget gehört zu einer Lektion desselben Themas', () {
     for (final n in nuggets) {
       final s = Subtopics.byId(n.subtopicId);
-      expect(s, isNotNull, reason: '${n.id}: unbekannte Lektion ${n.subtopicId}');
-      expect(s!.topicId, n.topicId,
-          reason: '${n.id}: Lektion ${s.id} gehört zu ${s.topicId}');
+      expect(
+        s,
+        isNotNull,
+        reason: '${n.id}: unbekannte Lektion ${n.subtopicId}',
+      );
+      expect(
+        s!.topicId,
+        n.topicId,
+        reason: '${n.id}: Lektion ${s.id} gehört zu ${s.topicId}',
+      );
     }
   });
 
@@ -36,8 +46,11 @@ void main() {
     String? current;
     for (final n in nuggets) {
       if (n.subtopicId != current) {
-        expect(seen.add(n.subtopicId), isTrue,
-            reason: 'Lektion ${n.subtopicId} ist über die Liste verstreut');
+        expect(
+          seen.add(n.subtopicId),
+          isTrue,
+          reason: 'Lektion ${n.subtopicId} ist über die Liste verstreut',
+        );
         current = n.subtopicId;
       }
     }
@@ -56,19 +69,31 @@ void main() {
     for (final q in kSeedQuestions.where((q) => q.subtopicId != null)) {
       final s = Subtopics.byId(q.subtopicId);
       expect(s, isNotNull, reason: '${q.id}: unbekannte Lektion');
-      expect(s!.topicId, q.topicId, reason: '${q.id}: Lektion aus anderem Thema');
+      expect(
+        s!.topicId,
+        q.topicId,
+        reason: '${q.id}: Lektion aus anderem Thema',
+      );
     }
     for (final c in kSeedFlashcards.where((c) => c.subtopicId != null)) {
       final s = Subtopics.byId(c.subtopicId);
       expect(s, isNotNull, reason: '${c.id}: unbekannte Lektion');
-      expect(s!.topicId, c.topicId, reason: '${c.id}: Lektion aus anderem Thema');
+      expect(
+        s!.topicId,
+        c.topicId,
+        reason: '${c.id}: Lektion aus anderem Thema',
+      );
     }
   });
 
   test('gestrichene Aufgaben gehören zu keiner Lektion', () {
     for (final q in kSeedQuestions.where((q) => !q.isExamRelevant)) {
-      expect(q.subtopicId, isNull,
-          reason: '${q.id} ist ab 2025 gestrichen und darf nicht im Wissenscheck landen');
+      expect(
+        q.subtopicId,
+        isNull,
+        reason:
+            '${q.id} ist ab 2025 gestrichen und darf nicht im Wissenscheck landen',
+      );
     }
   });
 
@@ -79,7 +104,11 @@ void main() {
   test('jede Lektion hat mindestens vier Lernschritte', () {
     for (final id in lessons) {
       final n = nuggets.where((x) => x.subtopicId == id).length;
-      expect(n, greaterThanOrEqualTo(4), reason: 'Lektion $id: $n Lernschritte');
+      expect(
+        n,
+        greaterThanOrEqualTo(4),
+        reason: 'Lektion $id: $n Lernschritte',
+      );
     }
   });
 
@@ -99,8 +128,11 @@ void main() {
 
   test('jedes Thema hat mindestens zwei Lektionen', () {
     for (final t in Topics.all) {
-      expect(Subtopics.ofTopic(t.id).length, greaterThanOrEqualTo(2),
-          reason: t.id);
+      expect(
+        Subtopics.ofTopic(t.id).length,
+        greaterThanOrEqualTo(2),
+        reason: t.id,
+      );
     }
   });
 
@@ -117,13 +149,36 @@ void main() {
         case NuggetKind.vergleich:
           expect(n.table, isNotNull, reason: '${n.id}: Vergleich ohne Tabelle');
         case NuggetKind.ablauf:
-          expect(n.points.length, greaterThanOrEqualTo(2),
-              reason: '${n.id}: Ablauf mit weniger als zwei Schritten');
+          expect(
+            n.points.length,
+            greaterThanOrEqualTo(2),
+            reason: '${n.id}: Ablauf mit weniger als zwei Schritten',
+          );
         case NuggetKind.formel:
           expect(n.code, isNotNull, reason: '${n.id}: Formel ohne Formel');
         case NuggetKind.merksatz:
-          expect(n.merksatz != null || n.points.isNotEmpty, isTrue,
-              reason: '${n.id}: Merksatz ohne Merksatz oder Punkte');
+          expect(
+            n.merksatz != null || n.points.isNotEmpty,
+            isTrue,
+            reason: '${n.id}: Merksatz ohne Merksatz oder Punkte',
+          );
+        case NuggetKind.beispiel:
+          expect(
+            n.points.length,
+            greaterThanOrEqualTo(2),
+            reason: '${n.id}: Beispiel ohne Lösungsweg',
+          );
+          expect(
+            n.ergebnis?.trim(),
+            isNotEmpty,
+            reason: '${n.id}: Beispiel ohne Ergebnis',
+          );
+        case NuggetKind.skizze:
+          expect(
+            n.diagram,
+            isNotNull,
+            reason: '${n.id}: Skizze ohne Zeichnung',
+          );
         case NuggetKind.konzept:
         case NuggetKind.fehlerfalle:
           break;
@@ -136,8 +191,11 @@ void main() {
       final t = n.table!;
       expect(t.length, greaterThanOrEqualTo(2), reason: n.id);
       for (final row in t) {
-        expect(row.length, t.first.length,
-            reason: '${n.id}: Zeile "${row.first}" hat falsche Spaltenzahl');
+        expect(
+          row.length,
+          t.first.length,
+          reason: '${n.id}: Zeile "${row.first}" hat falsche Spaltenzahl',
+        );
       }
     }
   });

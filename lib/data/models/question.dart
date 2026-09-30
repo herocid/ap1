@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+import 'diagram.dart';
 import 'netzplan.dart';
 
 /// Aufgabentypen des Trainers.
@@ -19,9 +20,10 @@ enum QuestionKind {
   const QuestionKind(this.label);
   final String label;
 
-  static QuestionKind parse(String s) =>
-      QuestionKind.values.firstWhere((k) => k.name == s,
-          orElse: () => QuestionKind.single);
+  static QuestionKind parse(String s) => QuestionKind.values.firstWhere(
+    (k) => k.name == s,
+    orElse: () => QuestionKind.single,
+  );
 }
 
 /// Stand einer Aufgabe im Prüfungskatalog.
@@ -37,18 +39,17 @@ enum CatalogStatus {
   /// Ab 2025 nicht mehr Teil der AP1.
   removed2025;
 
-  static CatalogStatus parse(String? s) => CatalogStatus.values
-      .firstWhere((e) => e.name == s, orElse: () => CatalogStatus.current);
+  static CatalogStatus parse(String? s) => CatalogStatus.values.firstWhere(
+    (e) => e.name == s,
+    orElse: () => CatalogStatus.current,
+  );
 }
 
 /// Ergebnis einer Bewertung. [parts] trägt die Detailrückmeldung, damit die
 /// UI jede Option/Zelle einzeln einfärben kann.
 @immutable
 class GradeResult {
-  const GradeResult({
-    required this.score,
-    required this.parts,
-  });
+  const GradeResult({required this.score, required this.parts});
 
   /// 0.0 .. 1.0 - Teilpunkte sind ausdrücklich vorgesehen.
   final double score;
@@ -79,13 +80,16 @@ class Choice {
   final String rationale;
 
   factory Choice.fromJson(Map<String, dynamic> j) => Choice(
-        text: j['text'] as String,
-        isCorrect: j['is_correct'] as bool? ?? false,
-        rationale: (j['rationale'] ?? '') as String,
-      );
+    text: j['text'] as String,
+    isCorrect: j['is_correct'] as bool? ?? false,
+    rationale: (j['rationale'] ?? '') as String,
+  );
 
-  Map<String, dynamic> toJson() =>
-      {'text': text, 'is_correct': isCorrect, 'rationale': rationale};
+  Map<String, dynamic> toJson() => {
+    'text': text,
+    'is_correct': isCorrect,
+    'rationale': rationale,
+  };
 }
 
 /// Ein Zuordnungs-Item ("Die Anforderung X gehört ins ...").
@@ -102,13 +106,16 @@ class MatchItem {
   final String rationale;
 
   factory MatchItem.fromJson(Map<String, dynamic> j) => MatchItem(
-        text: j['text'] as String,
-        bucket: (j['bucket'] as num).toInt(),
-        rationale: (j['rationale'] ?? '') as String,
-      );
+    text: j['text'] as String,
+    bucket: (j['bucket'] as num).toInt(),
+    rationale: (j['rationale'] ?? '') as String,
+  );
 
-  Map<String, dynamic> toJson() =>
-      {'text': text, 'bucket': bucket, 'rationale': rationale};
+  Map<String, dynamic> toJson() => {
+    'text': text,
+    'bucket': bucket,
+    'rationale': rationale,
+  };
 }
 
 @immutable
@@ -121,6 +128,7 @@ class Question {
     required this.explanation,
     this.subtopicId,
     this.scenario,
+    this.diagram,
     this.difficulty = 2,
     this.tags = const [],
     this.choices = const [],
@@ -147,6 +155,10 @@ class Question {
   /// Optionaler Fallbeispiel-Kontext, der über der Frage steht. In der AP1
   /// hängen mehrere Aufgaben an einer Situationsbeschreibung.
   final String? scenario;
+
+  /// Zeichnung zur Aufgabe (z. B. ein Klassendiagramm, das gelesen werden
+  /// muss). Steht zwischen Situation und Frage.
+  final Diagram? diagram;
   final String prompt;
 
   /// Die Gesamterklärung nach dem Antworten (Rechenweg, Merksatz, Abgrenzung).
@@ -185,23 +197,23 @@ class Question {
   /// Geschätzte Bearbeitungszeit - Grundlage für das Zeitbudget im
   /// Prüfungsmodus.
   int get estimatedSeconds => switch (kind) {
-        QuestionKind.single => 55,
-        QuestionKind.multiple => 80,
-        QuestionKind.numeric => 110,
-        QuestionKind.ordering => 75,
-        QuestionKind.matching => 95,
-        QuestionKind.netzplan => 60 + activities.length * 35,
-      };
+    QuestionKind.single => 55,
+    QuestionKind.multiple => 80,
+    QuestionKind.numeric => 110,
+    QuestionKind.ordering => 75,
+    QuestionKind.matching => 95,
+    QuestionKind.netzplan => 60 + activities.length * 35,
+  };
 
   /// Punkte, wie sie die IHK vergeben würde - skaliert mit Aufwand.
   int get points => switch (kind) {
-        QuestionKind.single => 2,
-        QuestionKind.multiple => 3,
-        QuestionKind.numeric => 3,
-        QuestionKind.ordering => 3,
-        QuestionKind.matching => 4,
-        QuestionKind.netzplan => 6,
-      };
+    QuestionKind.single => 2,
+    QuestionKind.multiple => 3,
+    QuestionKind.numeric => 3,
+    QuestionKind.ordering => 3,
+    QuestionKind.matching => 4,
+    QuestionKind.netzplan => 6,
+  };
 
   NetzplanSolution? get netzplanSolution =>
       activities.isEmpty ? null : NetzplanSolver.solve(activities);
@@ -298,10 +310,7 @@ class Question {
             if (ok) hits++;
           }
         }
-        return GradeResult(
-          score: total == 0 ? 0 : hits / total,
-          parts: parts,
-        );
+        return GradeResult(score: total == 0 ? 0 : hits / total, parts: parts);
     }
   }
 
@@ -313,6 +322,9 @@ class Question {
       subtopicId: j['subtopic_id'] as String?,
       kind: QuestionKind.parse(j['kind'] as String),
       scenario: j['scenario'] as String?,
+      diagram: Diagram.fromJson(
+        (data['diagram'] as Map?)?.cast<String, dynamic>(),
+      ),
       prompt: j['prompt'] as String,
       explanation: (j['explanation'] ?? '') as String,
       difficulty: (j['difficulty'] as num?)?.toInt() ?? 2,
@@ -325,8 +337,9 @@ class Question {
       numericAnswer: (data['answer'] as num?)?.toDouble(),
       numericTolerance: (data['tolerance'] as num?)?.toDouble() ?? 0,
       unit: data['unit'] as String?,
-      orderedItems:
-          ((data['ordered_items'] as List?) ?? const []).cast<String>().toList(),
+      orderedItems: ((data['ordered_items'] as List?) ?? const [])
+          .cast<String>()
+          .toList(),
       orderingHint: data['ordering_hint'] as String?,
       buckets: ((data['buckets'] as List?) ?? const []).cast<String>().toList(),
       matchItems: ((data['match_items'] as List?) ?? const [])
@@ -337,39 +350,44 @@ class Question {
           .toList(),
       askedFields: ((data['asked_fields'] as List?) ?? const [])
           .cast<String>()
-          .map((s) => NodeField.values.firstWhere((f) => f.name == s,
-              orElse: () => NodeField.faz))
+          .map(
+            (s) => NodeField.values.firstWhere(
+              (f) => f.name == s,
+              orElse: () => NodeField.faz,
+            ),
+          )
           .toList(),
     );
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'topic_id': topicId,
-        if (subtopicId != null) 'subtopic_id': subtopicId,
-        'kind': kind.name,
-        'scenario': scenario,
-        'prompt': prompt,
-        'explanation': explanation,
-        'difficulty': difficulty,
-        'tags': tags,
-        'source': source,
-        'catalog_status': catalogStatus.name,
-        'data': {
-          if (choices.isNotEmpty)
-            'choices': choices.map((c) => c.toJson()).toList(),
-          if (numericAnswer != null) 'answer': numericAnswer,
-          if (numericAnswer != null) 'tolerance': numericTolerance,
-          if (unit != null) 'unit': unit,
-          if (orderedItems.isNotEmpty) 'ordered_items': orderedItems,
-          if (orderingHint != null) 'ordering_hint': orderingHint,
-          if (buckets.isNotEmpty) 'buckets': buckets,
-          if (matchItems.isNotEmpty)
-            'match_items': matchItems.map((m) => m.toJson()).toList(),
-          if (activities.isNotEmpty)
-            'activities': activities.map((a) => a.toJson()).toList(),
-          if (askedFields.isNotEmpty)
-            'asked_fields': askedFields.map((f) => f.name).toList(),
-        },
-      };
+    'id': id,
+    'topic_id': topicId,
+    if (subtopicId != null) 'subtopic_id': subtopicId,
+    'kind': kind.name,
+    'scenario': scenario,
+    'prompt': prompt,
+    'explanation': explanation,
+    'difficulty': difficulty,
+    'tags': tags,
+    'source': source,
+    'catalog_status': catalogStatus.name,
+    'data': {
+      if (diagram != null) 'diagram': diagram!.toJson(),
+      if (choices.isNotEmpty)
+        'choices': choices.map((c) => c.toJson()).toList(),
+      if (numericAnswer != null) 'answer': numericAnswer,
+      if (numericAnswer != null) 'tolerance': numericTolerance,
+      if (unit != null) 'unit': unit,
+      if (orderedItems.isNotEmpty) 'ordered_items': orderedItems,
+      if (orderingHint != null) 'ordering_hint': orderingHint,
+      if (buckets.isNotEmpty) 'buckets': buckets,
+      if (matchItems.isNotEmpty)
+        'match_items': matchItems.map((m) => m.toJson()).toList(),
+      if (activities.isNotEmpty)
+        'activities': activities.map((a) => a.toJson()).toList(),
+      if (askedFields.isNotEmpty)
+        'asked_fields': askedFields.map((f) => f.name).toList(),
+    },
+  };
 }

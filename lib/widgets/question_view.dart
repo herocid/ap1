@@ -5,6 +5,7 @@ import '../core/theme/app_spacing.dart';
 import '../data/models/question.dart';
 import '../data/models/topic.dart';
 import 'common.dart';
+import 'diagrams/diagram_view.dart';
 import 'question_types/choice_question.dart';
 import 'question_types/matching_question.dart';
 import 'question_types/netzplan_question.dart';
@@ -100,6 +101,10 @@ class QuestionView extends StatelessWidget {
           ),
           const SizedBox(height: Gap.l),
         ],
+        if (question.diagram != null) ...[
+          DiagramView(question.diagram!),
+          const SizedBox(height: Gap.l),
+        ],
         Text(question.prompt, style: context.text.titleLarge),
         const SizedBox(height: Gap.xl),
         _body(context),
@@ -173,35 +178,29 @@ class _ExplanationBlock extends StatelessWidget {
     final tone = g == null
         ? NoteTone.info
         : g.isCorrect
-            ? NoteTone.success
-            : g.isPartial
-                ? NoteTone.warn
-                : NoteTone.danger;
+        ? NoteTone.success
+        : g.isPartial
+        ? NoteTone.warn
+        : NoteTone.danger;
 
     final headline = g == null
         ? 'Erklärung'
         : g.isCorrect
-            ? 'Richtig'
-            : g.isPartial
-                ? 'Teilweise richtig – ${(g.score * 100).round()} %'
-                : 'Leider falsch';
+        ? 'Richtig'
+        : g.isPartial
+        ? 'Teilweise richtig – ${(g.score * 100).round()} %'
+        : 'Leider falsch';
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        NoteBox(
-          tone: tone,
-          title: headline,
-          child: Text(question.explanation),
-        ),
+        NoteBox(tone: tone, title: headline, child: Text(question.explanation)),
         if (question.tags.isNotEmpty) ...[
           const SizedBox(height: Gap.m),
           Wrap(
             spacing: Gap.s,
             runSpacing: Gap.s,
-            children: [
-              for (final t in question.tags) MetaChip(label: '#$t'),
-            ],
+            children: [for (final t in question.tags) MetaChip(label: '#$t')],
           ),
         ],
       ],

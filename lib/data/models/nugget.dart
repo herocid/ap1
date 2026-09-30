@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 
+import 'diagram.dart';
+
 /// Art eines Feed-Beitrags. Bestimmt Symbol, Farbe und Aufbau der Karte.
 enum NuggetKind {
   /// Ein Begriff oder Konzept in wenigen Sätzen.
@@ -18,7 +20,13 @@ enum NuggetKind {
   merksatz('Merksatz'),
 
   /// Was in der Prüfung typischerweise falsch gemacht wird.
-  fehlerfalle('Prüfungsfalle');
+  fehlerfalle('Prüfungsfalle'),
+
+  /// Durchgerechnetes Beispiel: Aufgabe, Lösungsschritte, Ergebnis.
+  beispiel('Beispiel'),
+
+  /// Eine Zeichnung ([Nugget.diagram]) mit kurzer Erläuterung.
+  skizze('Skizze');
 
   const NuggetKind(this.label);
   final String label;
@@ -44,6 +52,8 @@ class Nugget {
     this.table,
     this.code,
     this.merksatz,
+    this.diagram,
+    this.ergebnis,
     this.tags = const [],
   });
 
@@ -66,38 +76,48 @@ class Nugget {
   final String? code;
 
   final String? merksatz;
+
+  /// Zeichnung - bei [NuggetKind.skizze] Pflicht, sonst optional.
+  final Diagram? diagram;
+
+  /// Hervorgehobenes Ergebnis eines [NuggetKind.beispiel].
+  final String? ergebnis;
   final List<String> tags;
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'topic_id': topicId,
-        'subtopic_id': subtopicId,
-        'kind': kind.name,
-        'title': title,
-        'body': body,
-        if (points.isNotEmpty) 'points': points,
-        if (table != null) 'table': table,
-        if (code != null) 'code': code,
-        if (merksatz != null) 'merksatz': merksatz,
-        if (tags.isNotEmpty) 'tags': tags,
-      };
+    'id': id,
+    'topic_id': topicId,
+    'subtopic_id': subtopicId,
+    'kind': kind.name,
+    'title': title,
+    'body': body,
+    if (points.isNotEmpty) 'points': points,
+    if (table != null) 'table': table,
+    if (code != null) 'code': code,
+    if (merksatz != null) 'merksatz': merksatz,
+    if (diagram != null) 'diagram': diagram!.toJson(),
+    if (ergebnis != null) 'ergebnis': ergebnis,
+    if (tags.isNotEmpty) 'tags': tags,
+  };
 
   factory Nugget.fromJson(Map<String, dynamic> j) => Nugget(
-        id: j['id'] as String,
-        topicId: j['topic_id'] as String,
-        subtopicId: j['subtopic_id'] as String,
-        kind: NuggetKind.values.firstWhere(
-          (k) => k.name == j['kind'],
-          orElse: () => NuggetKind.konzept,
-        ),
-        title: j['title'] as String,
-        body: j['body'] as String,
-        points: ((j['points'] as List?) ?? const []).cast<String>().toList(),
-        table: (j['table'] as List?)
-            ?.map((row) => (row as List).cast<String>().toList())
-            .toList(),
-        code: j['code'] as String?,
-        merksatz: j['merksatz'] as String?,
-        tags: ((j['tags'] as List?) ?? const []).cast<String>().toList(),
-      );
+    id: j['id'] as String,
+    topicId: j['topic_id'] as String,
+    subtopicId: j['subtopic_id'] as String,
+    kind: NuggetKind.values.firstWhere(
+      (k) => k.name == j['kind'],
+      orElse: () => NuggetKind.konzept,
+    ),
+    title: j['title'] as String,
+    body: j['body'] as String,
+    points: ((j['points'] as List?) ?? const []).cast<String>().toList(),
+    table: (j['table'] as List?)
+        ?.map((row) => (row as List).cast<String>().toList())
+        .toList(),
+    code: j['code'] as String?,
+    merksatz: j['merksatz'] as String?,
+    diagram: Diagram.fromJson((j['diagram'] as Map?)?.cast<String, dynamic>()),
+    ergebnis: j['ergebnis'] as String?,
+    tags: ((j['tags'] as List?) ?? const []).cast<String>().toList(),
+  );
 }

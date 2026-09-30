@@ -3,6 +3,7 @@ import '../models/question.dart';
 import '../models/theory.dart';
 import 'cards/cards_data.dart';
 import 'questions/questions_a01_journey.dart';
+import 'questions/questions_a01_planung.dart';
 import 'questions/questions_a02_kunden.dart';
 import 'questions/questions_a03_systeme.dart';
 import 'questions/questions_a04_daten.dart';
@@ -28,6 +29,7 @@ final List<Question> kSeedQuestions = [
   ...seedAnforderungen,
   ...seedQsService,
   ...questionsA01Journey,
+  ...questionsA01Planung,
   ...questionsA02,
   ...questionsA03,
   ...questionsA04Entwicklung,

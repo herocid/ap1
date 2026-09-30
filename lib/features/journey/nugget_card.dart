@@ -6,6 +6,7 @@ import '../../core/theme/app_theme.dart';
 import '../../data/models/nugget.dart';
 import '../../data/models/topic.dart';
 import '../../widgets/common.dart';
+import '../../widgets/diagrams/diagram_view.dart';
 
 /// Symbol und Farbe je Beitragsart. Farbe ist sparsam: nur die Überzeile
 /// trägt sie, der Rest der Karte bleibt neutral.
@@ -18,6 +19,8 @@ import '../../widgets/common.dart';
     NuggetKind.formel => (Icons.functions, context.scheme.primary),
     NuggetKind.merksatz => (Icons.push_pin_outlined, c.flame),
     NuggetKind.fehlerfalle => (Icons.report_outlined, c.danger),
+    NuggetKind.beispiel => (Icons.calculate_outlined, c.success),
+    NuggetKind.skizze => (Icons.schema_outlined, c.info),
   };
 }
 
@@ -102,19 +105,37 @@ class NuggetCard extends StatelessWidget {
             ),
           ),
           if (!compact) ...[
-            if (n.code != null) ...[
+            if (n.diagram != null) ...[
               const SizedBox(height: Gap.l),
-              _CodeBlock(n.code!),
+              DiagramView(n.diagram!),
             ],
             if (n.table != null) ...[
               const SizedBox(height: Gap.l),
               _NuggetTable(n.table!),
             ],
+            if (n.code != null) ...[
+              const SizedBox(height: Gap.l),
+              _CodeBlock(n.code!),
+            ],
             if (n.points.isNotEmpty) ...[
               const SizedBox(height: Gap.l),
-              n.kind == NuggetKind.ablauf
+              if (n.kind == NuggetKind.beispiel) ...[
+                Text(
+                  'LÖSUNGSWEG',
+                  style: context.text.labelSmall?.copyWith(
+                    color: context.c.textMuted,
+                    letterSpacing: 1.1,
+                  ),
+                ),
+                const SizedBox(height: Gap.s),
+              ],
+              n.kind == NuggetKind.ablauf || n.kind == NuggetKind.beispiel
                   ? _Steps(n.points)
                   : _Bullets(n.points),
+            ],
+            if (n.ergebnis != null) ...[
+              const SizedBox(height: Gap.s),
+              _Ergebnis(n.ergebnis!),
             ],
             if (n.merksatz != null) ...[
               const SizedBox(height: Gap.l),
@@ -299,6 +320,41 @@ class _CodeBlock extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Text(code, style: AppType.mono(size: 13)),
+      ),
+    );
+  }
+}
+
+class _Ergebnis extends StatelessWidget {
+  const _Ergebnis(this.text);
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.c;
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(Gap.l),
+      decoration: BoxDecoration(
+        color: c.successBg,
+        borderRadius: BorderRadius.circular(Radii.m),
+        border: Border.all(color: c.success.withValues(alpha: 0.35)),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(Icons.check_circle_outline, size: 17, color: c.success),
+          const SizedBox(width: Gap.m),
+          Expanded(
+            child: Text(
+              text,
+              style: context.text.bodyMedium?.copyWith(
+                fontWeight: FontWeight.w700,
+                color: context.scheme.onSurface,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
