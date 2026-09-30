@@ -62,11 +62,16 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
     final a = widget.args;
     _cards = a.includeNotDue
         ? pool
-            .where((c) => a.topicIds.isEmpty || a.topicIds.contains(c.topicId))
-            .where((c) =>
-                a.subtopicIds.isEmpty || a.subtopicIds.contains(c.subtopicId))
-            .take(30)
-            .toList()
+              .where(
+                (c) => a.topicIds.isEmpty || a.topicIds.contains(c.topicId),
+              )
+              .where(
+                (c) =>
+                    a.subtopicIds.isEmpty ||
+                    a.subtopicIds.contains(c.subtopicId),
+              )
+              .take(30)
+              .toList()
         : deck.due(
             pool,
             topicIds: a.topicIds,
@@ -99,7 +104,8 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
         body: EmptyState(
           icon: Icons.task_alt,
           title: 'Nichts fällig',
-          message: 'Für diese Auswahl ist heute keine Karte dran. '
+          message:
+              'Für diese Auswahl ist heute keine Karte dran. '
               'Der Karteikasten legt jede Karte nach dem richtigen Abstand '
               'wieder vor - komm morgen wieder.',
           action: FilledButton(
@@ -129,8 +135,9 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
             Text(widget.args.title, style: context.text.titleMedium),
             Text(
               'Karte ${_index + 1} von ${_cards.length}',
-              style:
-                  context.text.labelSmall?.copyWith(color: context.c.textMuted),
+              style: context.text.labelSmall?.copyWith(
+                color: context.c.textMuted,
+              ),
             ),
           ],
         ),
@@ -185,43 +192,45 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
             child: ReadableWidth(
               maxWidth: 640,
               shrinkHeight: true,
-              child: _revealed
-                  ? Row(
-                      children: [
-                        Expanded(
-                          child: OutlinedButton.icon(
-                            onPressed: () => _answer(false),
-                            style: OutlinedButton.styleFrom(
-                              foregroundColor: context.c.danger,
-                              side: BorderSide(
-                                color: context.c.danger.withValues(alpha: 0.5),
-                              ),
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 200),
+                child: _revealed
+                    // Auf 320 px mit großer Schrift passen beide Knöpfe nicht
+                    // nebeneinander - dann untereinander statt „Wusst-e ich“.
+                    ? ButtonPair(
+                        key: const ValueKey('bewerten'),
+                        labels: const ['Nochmal', 'Wusste ich'],
+                        start: OutlinedButton.icon(
+                          onPressed: () => _answer(false),
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: context.c.danger,
+                            side: BorderSide(
+                              color: context.c.danger.withValues(alpha: 0.5),
                             ),
-                            icon: const Icon(Icons.refresh),
-                            label: const Text('Nochmal'),
                           ),
+                          icon: const Icon(Icons.refresh),
+                          label: const Text('Nochmal', maxLines: 1),
                         ),
-                        const SizedBox(width: Gap.m),
-                        Expanded(
-                          child: FilledButton.icon(
-                            onPressed: () => _answer(true),
-                            style: FilledButton.styleFrom(
-                              backgroundColor: context.c.success,
-                            ),
-                            icon: const Icon(Icons.check),
-                            label: const Text('Wusste ich'),
+                        end: FilledButton.icon(
+                          onPressed: () => _answer(true),
+                          style: FilledButton.styleFrom(
+                            backgroundColor: context.c.success,
+                            foregroundColor: context.scheme.onPrimary,
                           ),
+                          icon: const Icon(Icons.check),
+                          label: const Text('Wusste ich', maxLines: 1),
                         ),
-                      ],
-                    )
-                  : SizedBox(
-                      width: double.infinity,
-                      child: FilledButton.icon(
-                        onPressed: () => setState(() => _revealed = true),
-                        icon: const Icon(Icons.flip_to_back),
-                        label: const Text('Umdrehen'),
+                      )
+                    : SizedBox(
+                        key: const ValueKey('umdrehen'),
+                        width: double.infinity,
+                        child: FilledButton.icon(
+                          onPressed: () => setState(() => _revealed = true),
+                          icon: const Icon(Icons.flip_to_back),
+                          label: const Text('Umdrehen'),
+                        ),
                       ),
-                    ),
+              ),
             ),
           ),
         ),
@@ -249,42 +258,45 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Ring oben, Zahlen darunter: nebeneinander lief „12 nochmal“
+                // auf 320 px mit großer Schrift aus der Karte.
                 AppCard(
                   padding: const EdgeInsets.all(Gap.xl),
-                  child: Row(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      ReadinessRing(
-                        value: (quote * 100).round(),
-                        label: 'gewusst',
-                        size: 120,
-                      ),
-                      const SizedBox(width: Gap.xl),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('$total Karten bearbeitet',
-                                style: context.text.titleMedium),
-                            const SizedBox(height: Gap.s),
-                            Row(children: [
-                              Icon(Icons.check_circle,
-                                  size: 15, color: context.c.success),
-                              const SizedBox(width: Gap.s),
-                              Text('$_knew gewusst',
-                                  style: context.text.bodyMedium),
-                            ]),
-                            Row(children: [
-                              Icon(Icons.refresh,
-                                  size: 15, color: context.c.danger),
-                              const SizedBox(width: Gap.s),
-                              Text('$_missed nochmal',
-                                  style: context.text.bodyMedium),
-                            ]),
-                          ],
+                      Center(
+                        child: ReadinessRing(
+                          value: (quote * 100).round(),
+                          label: 'gewusst',
+                          size: 132,
                         ),
+                      ),
+                      const SizedBox(height: Gap.m),
+                      Text(
+                        '$total ${total == 1 ? 'Karte' : 'Karten'} bearbeitet',
+                        textAlign: TextAlign.center,
+                        style: context.text.titleMedium,
                       ),
                     ],
                   ),
+                ),
+                const SizedBox(height: Gap.s),
+                StatTileRow(
+                  children: [
+                    StatTile(
+                      icon: Icons.check_circle,
+                      value: '$_knew',
+                      label: 'gewusst',
+                      color: context.c.success,
+                    ),
+                    StatTile(
+                      icon: Icons.refresh,
+                      value: '$_missed',
+                      label: 'nochmal',
+                      color: context.c.danger,
+                    ),
+                  ],
                 ),
                 const SizedBox(height: Gap.l),
                 NoteBox(
@@ -292,10 +304,10 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
                   child: Text(
                     _missed == 0
                         ? 'Alle Karten saßen. Sie kommen jetzt in längeren '
-                            'Abständen wieder.'
+                              'Abständen wieder.'
                         : '$_missed ${_missed == 1 ? "Karte liegt" : "Karten liegen"} '
-                            'wieder in Fach 1 und kommen morgen erneut dran. '
-                            'Genau so soll der Kasten arbeiten.',
+                              'wieder in Fach 1 und kommen morgen erneut dran. '
+                              'Genau so soll der Kasten arbeiten.',
                   ),
                 ),
                 if (_missedCards.isNotEmpty) ...[
@@ -311,9 +323,12 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
                           children: [
                             Text(c.front, style: context.text.titleMedium),
                             const SizedBox(height: Gap.xs),
-                            Text(c.back,
-                                style: context.text.bodyMedium?.copyWith(
-                                    color: context.c.textMuted)),
+                            Text(
+                              c.back,
+                              style: context.text.bodyMedium?.copyWith(
+                                color: context.c.textMuted,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -365,8 +380,10 @@ class _FlipCardState extends State<_FlipCard>
     duration: const Duration(milliseconds: 520),
     value: widget.revealed ? 1 : 0,
   );
-  late final Animation<double> _turn =
-      CurvedAnimation(parent: _ctrl, curve: Curves.easeInOutCubic);
+  late final Animation<double> _turn = CurvedAnimation(
+    parent: _ctrl,
+    curve: Curves.easeInOutCubic,
+  );
 
   @override
   void didUpdateWidget(_FlipCard old) {
@@ -436,10 +453,17 @@ class _Face extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screen = MediaQuery.sizeOf(context);
+    // Die Karte soll wie eine Karte wirken (Mindesthöhe nach Bildschirm),
+    // wächst aber mit langen Rückseiten beliebig mit - die Seite scrollt,
+    // nichts wird abgeschnitten. Auf schmalen Handys etwas weniger Rand,
+    // damit mehr Text in die Zeile passt.
     return Container(
       width: double.infinity,
-      constraints: const BoxConstraints(minHeight: 260),
-      padding: const EdgeInsets.all(Gap.xl),
+      constraints: BoxConstraints(
+        minHeight: (screen.height * 0.36).clamp(220.0, 340.0),
+      ),
+      padding: EdgeInsets.all(screen.width < 360 ? Gap.l : Gap.xl),
       decoration: BoxDecoration(
         color: context.scheme.surface,
         borderRadius: BorderRadius.circular(Radii.xl),
@@ -463,8 +487,10 @@ class _FaceLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text.toUpperCase(),
-      style: context.text.labelSmall
-          ?.copyWith(color: context.c.textMuted, letterSpacing: 1.3),
+      style: context.text.labelSmall?.copyWith(
+        color: context.c.textMuted,
+        letterSpacing: 1.3,
+      ),
     );
   }
 }
@@ -483,22 +509,37 @@ class _CardFront extends StatelessWidget {
           const _FaceLabel('Frage'),
           const SizedBox(height: Gap.m),
           Text(card.front, style: context.text.headlineSmall),
-          const SizedBox(height: Gap.xxl),
-          Row(
-            children: [
-              Icon(Icons.touch_app_outlined,
-                  size: 16, color: context.c.textMuted),
-              const SizedBox(width: Gap.s),
-              // Ohne Expanded läuft der Hinweis auf schmalen Displays aus der
-              // Karte heraus.
-              Expanded(
-                child: Text(
-                  'Erst selbst beantworten, dann antippen zum Umdrehen',
-                  style: context.text.labelSmall
-                      ?.copyWith(color: context.c.textMuted),
+          const SizedBox(height: Gap.xl),
+          // Hinweis als dezente Pille. Flexible statt fester Breite: auf
+          // schmalen Displays bricht der Text um statt aus der Karte zu laufen.
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: Gap.m,
+              vertical: Gap.s,
+            ),
+            decoration: BoxDecoration(
+              color: context.c.surfaceAlt,
+              borderRadius: BorderRadius.circular(Radii.m),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.touch_app_outlined,
+                  size: 16,
+                  color: context.c.textMuted,
                 ),
-              ),
-            ],
+                const SizedBox(width: Gap.s),
+                Flexible(
+                  child: Text(
+                    'Erst selbst beantworten, dann antippen zum Umdrehen',
+                    style: context.text.labelSmall?.copyWith(
+                      color: context.c.textMuted,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -522,8 +563,9 @@ class _CardBack extends StatelessWidget {
           const SizedBox(height: Gap.s),
           Text(
             card.front,
-            style: context.text.titleMedium
-                ?.copyWith(color: context.c.textMuted),
+            style: context.text.titleSmall?.copyWith(
+              color: context.c.textMuted,
+            ),
           ),
           const SizedBox(height: Gap.m),
           Divider(color: context.c.border),
@@ -531,29 +573,7 @@ class _CardBack extends StatelessWidget {
           Text(card.back, style: context.text.bodyLarge),
           if (card.hint != null) ...[
             const SizedBox(height: Gap.l),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(Gap.m),
-              decoration: BoxDecoration(
-                color: context.c.infoBg,
-                borderRadius: BorderRadius.circular(Radii.m),
-                border: Border.all(color: context.c.info.withValues(alpha: 0.3)),
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Icon(Icons.lightbulb_outline, size: 17, color: context.c.info),
-                  const SizedBox(width: Gap.m),
-                  Expanded(
-                    child: Text(
-                      card.hint!,
-                      style: context.text.bodyMedium
-                          ?.copyWith(color: context.c.info),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            NoteBox(tone: NoteTone.info, child: Text(card.hint!)),
           ],
         ],
       ),
@@ -574,7 +594,7 @@ class _BoxBadge extends StatelessWidget {
       message: isNew
           ? 'Diese Karte siehst du zum ersten Mal'
           : '${Leitner.boxLabel(box)} - Wiedervorlage nach '
-              '${Leitner.intervalFor(box)} Tagen',
+                '${Leitner.intervalFor(box)} Tagen',
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: Gap.m, vertical: 6),
         decoration: BoxDecoration(

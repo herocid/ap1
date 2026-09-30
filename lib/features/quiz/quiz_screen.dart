@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
-import '../../core/theme/app_theme.dart';
 import '../../data/models/exam_area.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
@@ -44,16 +43,15 @@ class QuizScreen extends ConsumerWidget {
 
                 // ------------------------------------------ Kurztest
                 AppCard(
-                  padding: const EdgeInsets.all(Gap.xl),
+                  padding: const EdgeInsets.all(Gap.l),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
-                          _IconBadge(
+                          const TileIcon(
                             icon: Icons.bolt_rounded,
-                            color: context.c.flame,
-                            background: context.c.flameBg,
+                            tone: TileTone.flame,
                           ),
                           const SizedBox(width: Gap.m),
                           Expanded(
@@ -64,9 +62,10 @@ class QuizScreen extends ConsumerWidget {
                                   'Kurztest',
                                   style: context.text.titleLarge,
                                 ),
+                                const SizedBox(height: 2),
                                 Text(
                                   'Endlos, alle Bereiche gemischt',
-                                  style: context.text.labelSmall?.copyWith(
+                                  style: context.text.bodySmall?.copyWith(
                                     color: context.c.textMuted,
                                   ),
                                 ),
@@ -140,9 +139,11 @@ class QuizScreen extends ConsumerWidget {
                   ),
                 ),
                 for (final area in ExamAreas.all) ...[
-                  _AreaRow(
-                    area: area,
-                    readiness: areaReadiness[area.id] ?? 0,
+                  ProgressTile(
+                    icon: area.icon,
+                    overline: 'BEREICH ${area.number}',
+                    title: area.title,
+                    progress: (areaReadiness[area.id] ?? 0) / 100,
                     onTap: () => context.push('/bereich/${area.id}'),
                   ),
                   const SizedBox(height: Gap.s),
@@ -150,100 +151,6 @@ class QuizScreen extends ConsumerWidget {
               ],
             ),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class _IconBadge extends StatelessWidget {
-  const _IconBadge({
-    required this.icon,
-    required this.color,
-    required this.background,
-  });
-
-  final IconData icon;
-  final Color color;
-  final Color background;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 44,
-      height: 44,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: background,
-        borderRadius: BorderRadius.circular(Radii.m),
-      ),
-      child: Icon(icon, size: 24, color: color),
-    );
-  }
-}
-
-class _AreaRow extends StatelessWidget {
-  const _AreaRow({
-    required this.area,
-    required this.readiness,
-    required this.onTap,
-  });
-
-  final ExamArea area;
-  final int readiness;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return AppCard(
-      onTap: onTap,
-      padding: const EdgeInsets.fromLTRB(Gap.l, Gap.m, Gap.m, Gap.m),
-      child: Row(
-        children: [
-          Container(
-            width: 44,
-            height: 44,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: context.c.surfaceAlt,
-              borderRadius: BorderRadius.circular(Radii.m),
-            ),
-            child: Icon(area.icon, size: 22, color: context.scheme.primary),
-          ),
-          const SizedBox(width: Gap.m),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'BEREICH ${area.number}',
-                  style: context.text.labelSmall?.copyWith(
-                    color: context.c.textMuted,
-                    letterSpacing: 1,
-                  ),
-                ),
-                Text(area.title, style: context.text.titleSmall),
-                const SizedBox(height: Gap.s),
-                Row(
-                  children: [
-                    Expanded(
-                      child: TopicBar(confidence: readiness / 100, coverage: 0),
-                    ),
-                    const SizedBox(width: Gap.s),
-                    Text(
-                      '$readiness %',
-                      style: AppType.numeric(
-                        size: 12,
-                        color: context.c.textMuted,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(width: Gap.xs),
-          Icon(Icons.chevron_right, color: context.c.textMuted),
         ],
       ),
     );

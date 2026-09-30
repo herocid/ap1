@@ -69,39 +69,33 @@ class StatsScreen extends ConsumerWidget {
               children: [
                 AchievementsPanel(statuses: achievements),
                 const SizedBox(height: Gap.l),
-                Row(
+                StatTileRow(
                   children: [
-                    Expanded(
-                      child: StatTile(
-                        icon: Icons.local_fire_department,
-                        value: '${progress.streak}',
-                        label: 'Tage Streak',
-                        color: context.c.flame,
-                      ),
+                    StatTile(
+                      icon: Icons.local_fire_department,
+                      value: '${progress.streak}',
+                      label: progress.streak == 1
+                          ? 'Tag Streak'
+                          : 'Tage Streak',
+                      color: context.c.flame,
                     ),
-                    const SizedBox(width: Gap.s),
-                    Expanded(
-                      child: StatTile(
-                        icon: Icons.military_tech_outlined,
-                        value: 'Lv. ${progress.level}',
-                        label: '${progress.xp} XP',
-                      ),
+                    StatTile(
+                      icon: Icons.military_tech_outlined,
+                      value: 'Lv. ${progress.level}',
+                      label: '${progress.xp} XP',
                     ),
-                    const SizedBox(width: Gap.s),
-                    Expanded(
-                      child: StatTile(
-                        icon: Icons.checklist_rtl,
-                        value: '${progress.totalAnswered}',
-                        label: 'Aufgaben',
-                        color: context.c.success,
-                      ),
+                    StatTile(
+                      icon: Icons.checklist_rtl,
+                      value: '${progress.totalAnswered}',
+                      label: 'Aufgaben',
+                      color: context.c.success,
                     ),
                   ],
                 ),
                 const SizedBox(height: Gap.l),
 
                 AppCard(
-                  padding: const EdgeInsets.all(Gap.xl),
+                  padding: const EdgeInsets.all(Gap.l),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -131,7 +125,7 @@ class StatsScreen extends ConsumerWidget {
                 const SizedBox(height: Gap.l),
 
                 AppCard(
-                  padding: const EdgeInsets.all(Gap.xl),
+                  padding: const EdgeInsets.all(Gap.l),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -276,39 +270,20 @@ class _TopicStatRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = stat;
-    return AppCard(
-      padding: const EdgeInsets.all(Gap.l),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Icon(topic.icon, size: 18, color: context.scheme.primary),
-              const SizedBox(width: Gap.s),
-              Expanded(
-                child: Text(topic.title, style: context.text.titleMedium),
-              ),
-              Text(
-                '${((s?.confidence ?? 0) * 100).round()} %',
-                style: AppType.numeric(size: 14),
-              ),
-            ],
-          ),
-          const SizedBox(height: Gap.s),
-          TopicBar(confidence: s?.confidence ?? 0, coverage: s?.coverage ?? 0),
-          const SizedBox(height: Gap.s),
-          Text(
-            s == null || s.answered == 0
-                ? 'Noch nicht begonnen · $poolSize Aufgaben verfügbar'
-                : 'Trefferquote ${(s.mastery * 100).round()} % · '
-                      '${s.distinctQuestions}/$poolSize Aufgaben gesehen · '
-                      '${s.answered} Versuche',
-            style: context.text.labelSmall?.copyWith(
-              color: context.c.textMuted,
-            ),
-          ),
-        ],
-      ),
+    final started = s != null && s.answered > 0;
+    // Aufbau wie die Bereichskacheln im Quiz: Symbol links, Titel über die
+    // volle Breite (lange Wörter wie „Risikomanagement“ brachen neben dem
+    // Prozentwert mitten im Wort), darunter Balken mit Prozentwert.
+    return ProgressTile(
+      icon: topic.icon,
+      title: topic.title,
+      progress: s?.confidence ?? 0,
+      coverage: s?.coverage ?? 0,
+      caption: started
+          ? 'Trefferquote ${(s.mastery * 100).round()} % · '
+                '${s.distinctQuestions}/$poolSize gesehen · '
+                '${s.answered} Versuche'
+          : 'Noch nicht begonnen · $poolSize Aufgaben',
     );
   }
 }
