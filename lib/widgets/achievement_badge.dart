@@ -7,6 +7,7 @@ import '../core/theme/app_spacing.dart';
 import '../core/theme/app_theme.dart';
 import '../core/util/achievements.dart';
 import '../data/models/progress.dart';
+import 'common.dart';
 
 /// Farben der Abzeichen. Kräftige IT-Farben (Blau, Orange, Grün, Rot,
 /// Petrol, Gold) - keine Verläufe. Auf hellem wie dunklem Grund lesbar, weil das
@@ -247,6 +248,21 @@ class _AchievementsPanelState extends State<AchievementsPanel> {
                   : (box.maxWidth >= 400 ? 4 : 3);
               final cell = box.maxWidth / cols;
               final shown = _expanded ? list : list.take(cols * 2);
+              // Eine Schriftgröße für alle Abzeichen: Passt das längste
+              // Wort („Warmgelaufen“) nicht in eine Zelle, werden alle
+              // Namen gemeinsam etwas kleiner - statt einzelne zu stauchen.
+              final scaler = fittingTextScaler(
+                context,
+                texts: [
+                  for (final e in list)
+                    ...e.key.title
+                        .replaceAll('-', '- ')
+                        .split(' ')
+                        .where((w) => w.isNotEmpty),
+                ],
+                style: _BadgeCell.labelStyle(context, earned: true),
+                maxWidth: cell - 8,
+              );
               return AnimatedSize(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeOutCubic,
@@ -257,7 +273,11 @@ class _AchievementsPanelState extends State<AchievementsPanel> {
                     for (final e in shown)
                       SizedBox(
                         width: cell,
-                        child: _BadgeCell(achievement: e.key, status: e.value),
+                        child: _BadgeCell(
+                          achievement: e.key,
+                          status: e.value,
+                          textScaler: scaler,
+                        ),
                       ),
                   ],
                 ),
@@ -282,48 +302,50 @@ class _AchievementsPanelState extends State<AchievementsPanel> {
 }
 
 class _BadgeCell extends StatelessWidget {
-  const _BadgeCell({required this.achievement, required this.status});
+  const _BadgeCell({
+    required this.achievement,
+    required this.status,
+    required this.textScaler,
+  });
 
   final Achievement achievement;
   final AchievementStatus status;
+  final TextScaler textScaler;
+
+  static TextStyle labelStyle(BuildContext context, {required bool earned}) =>
+      context.text.labelSmall!.copyWith(
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.1,
+        color: earned ? null : context.c.textMuted,
+      );
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(Radii.m),
-      onTap: () => _showDetails(context),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-        child: Column(
-          children: [
-            AchievementMedal(achievement: achievement, status: status),
-            const SizedBox(height: Gap.xs),
-            // Mehrere Wörter dürfen umbrechen, ein einzelnes langes Wort
-            // („Warmgelaufen“) wird lieber minimal kleiner als zerhackt.
-            _label(context),
-          ],
+    return Semantics(
+      button: true,
+      label:
+          '${achievement.title}, '
+          '${status.earned ? 'freigeschaltet' : 'noch offen'}',
+      excludeSemantics: true,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(Radii.m),
+        onTap: () => _showDetails(context),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+          child: Column(
+            children: [
+              AchievementMedal(achievement: achievement, status: status),
+              const SizedBox(height: Gap.s),
+              Text(
+                achievement.title,
+                textAlign: TextAlign.center,
+                textScaler: textScaler,
+                style: labelStyle(context, earned: status.earned),
+              ),
+            ],
+          ),
         ),
       ),
-    );
-  }
-
-  Widget _label(BuildContext context) {
-    final style = context.text.labelSmall?.copyWith(
-      fontWeight: FontWeight.w600,
-      color: status.earned ? null : context.c.textMuted,
-    );
-    final title = achievement.title;
-    if (title.contains(' ') || title.contains('-')) {
-      return Text(
-        title,
-        textAlign: TextAlign.center,
-        maxLines: 2,
-        style: style,
-      );
-    }
-    return FittedBox(
-      fit: BoxFit.scaleDown,
-      child: Text(title, maxLines: 1, style: style),
     );
   }
 

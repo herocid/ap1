@@ -18,13 +18,15 @@ class AppColors {
   static const brand = Color(0xFF0B63CE);
   static const brandDark = Color(0xFF6FA8FF);
 
-  // Fortschritt / "geschafft".
-  static const success = Color(0xFF1E8E3E);
+  // Fortschritt / "geschafft". Google-Grün 700 - die hellere 600er-Stufe
+  // erreicht auf Weiß nur 4,2:1, zu wenig für Text (WCAG AA verlangt 4,5:1).
+  static const success = Color(0xFF188038);
   static const successDark = Color(0xFF5BD17A);
 
   // Orange (Komplementärfarbe): Streak, Tagesziel, kritischer Pfad,
-  // Zeitwarnung. Der Name "flame" ist historisch.
-  static const flame = Color(0xFFD25E0A);
+  // Zeitwarnung. Der Name "flame" ist historisch. Eine Spur tiefer als ein
+  // reines Signalorange, damit orange Schrift auf Weiß 4,5:1 schafft.
+  static const flame = Color(0xFFC2560A);
   static const flameDark = Color(0xFFFFA24D);
 
   // Rot für falsche Antworten.
@@ -32,7 +34,8 @@ class AppColors {
   static const dangerDark = Color(0xFFFF7B72);
 
   // Petrol für Erklärungen und Merksätze - abgesetzt vom Marken-Blau.
-  static const info = Color(0xFF00897B);
+  // Teal 700: Hinweistext auf Weiß und auf dem Petrol-Hintergrund >= 4,5:1.
+  static const info = Color(0xFF00796B);
   static const infoDark = Color(0xFF4DD0C4);
 
   // Flächen hell: klares, leicht kühles Weiß.

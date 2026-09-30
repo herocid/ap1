@@ -93,6 +93,16 @@ class AppTheme {
           titleMedium: TextStyle(
             fontFamily: kFontSans,
             fontSize: 16,
+            height: 1.35,
+            fontWeight: FontWeight.w600,
+            color: scheme.onSurface,
+          ),
+          // Bisher kam titleSmall/bodySmall aus der Material-Typografie
+          // (Roboto-Metriken, w500) - jetzt passend zur restlichen Skala.
+          titleSmall: TextStyle(
+            fontFamily: kFontSans,
+            fontSize: 14.5,
+            height: 1.35,
             fontWeight: FontWeight.w600,
             color: scheme.onSurface,
           ),
@@ -106,6 +116,12 @@ class AppTheme {
             fontFamily: kFontSans,
             fontSize: 14.5,
             height: 1.55,
+            color: scheme.onSurface,
+          ),
+          bodySmall: TextStyle(
+            fontFamily: kFontSans,
+            fontSize: 13,
+            height: 1.4,
             color: scheme.onSurface,
           ),
           labelLarge: const TextStyle(
@@ -164,7 +180,7 @@ class AppTheme {
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
           minimumSize: const Size(0, 52),
-          padding: const EdgeInsets.symmetric(horizontal: Gap.xl),
+          padding: const EdgeInsets.symmetric(horizontal: Gap.l),
           textStyle: textTheme.labelLarge,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(Radii.m),
@@ -174,7 +190,7 @@ class AppTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           minimumSize: const Size(0, 52),
-          padding: const EdgeInsets.symmetric(horizontal: Gap.xl),
+          padding: const EdgeInsets.symmetric(horizontal: Gap.l),
           textStyle: textTheme.labelLarge,
           side: BorderSide(color: border),
           shape: RoundedRectangleBorder(
@@ -225,13 +241,14 @@ class AppTheme {
         surfaceTintColor: Colors.transparent,
         indicatorColor: scheme.primaryContainer,
         elevation: 0,
-        height: 68,
+        height: 80,
         labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         labelTextStyle: WidgetStateProperty.resolveWith(
-          (states) => textTheme.labelSmall!.copyWith(
+          (states) => AppType.navLabel(
+            selected: states.contains(WidgetState.selected),
             color: states.contains(WidgetState.selected)
                 ? scheme.primary
-                : (isDark ? AppColors.darkTextMuted : AppColors.lightTextMuted),
+                : scheme.onSurfaceVariant,
           ),
         ),
       ),
@@ -240,11 +257,20 @@ class AppTheme {
             ? AppColors.darkSurface
             : AppColors.lightSurface,
         indicatorColor: scheme.primaryContainer,
-        selectedLabelTextStyle: textTheme.labelSmall!.copyWith(
+        minWidth: 88,
+        groupAlignment: -1,
+        selectedIconTheme: IconThemeData(color: scheme.primary, size: 24),
+        unselectedIconTheme: IconThemeData(
+          color: scheme.onSurfaceVariant,
+          size: 24,
+        ),
+        selectedLabelTextStyle: AppType.navLabel(
+          selected: true,
           color: scheme.primary,
         ),
-        unselectedLabelTextStyle: textTheme.labelSmall!.copyWith(
-          color: isDark ? AppColors.darkTextMuted : AppColors.lightTextMuted,
+        unselectedLabelTextStyle: AppType.navLabel(
+          selected: false,
+          color: scheme.onSurfaceVariant,
         ),
       ),
       bottomSheetTheme: BottomSheetThemeData(
@@ -303,6 +329,19 @@ class AppType {
     color: color,
     fontFeatures: const [FontFeature.tabularFigures()],
   );
+
+  /// Beschriftung der Reiterleiste und der NavigationRail. Ohne die
+  /// Sperrung von labelSmall - die kostet in fünf Reitern auf 320 px genau
+  /// die Pixel, die „Statistik“ zum Atmen braucht.
+  static TextStyle navLabel({required bool selected, Color? color}) =>
+      TextStyle(
+        fontFamily: kFontSans,
+        fontSize: 12,
+        height: 16 / 12,
+        letterSpacing: 0.1,
+        fontWeight: selected ? FontWeight.w700 : FontWeight.w600,
+        color: color,
+      );
 
   /// Monospace für Code-nahe Inhalte (z.B. Pseudocode in Aufgaben).
   static TextStyle mono({double size = 14, Color? color}) => TextStyle(

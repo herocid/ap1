@@ -79,24 +79,30 @@ class ExamIntroScreen extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Der Countdown läuft durch. Ist er abgelaufen, '
-                        'wird automatisch abgegeben.',
+                      _Rule(
+                        icon: Icons.timer_outlined,
+                        text:
+                            'Der Countdown läuft durch. Ist er abgelaufen, '
+                            'wird automatisch abgegeben.',
                       ),
-                      SizedBox(height: Gap.s),
-                      Text(
-                        'Kein Feedback während des Laufs - du erfährst '
-                        'erst nach der Abgabe, was richtig war.',
+                      _Rule(
+                        icon: Icons.visibility_off_outlined,
+                        text:
+                            'Kein Feedback während des Laufs - du erfährst '
+                            'erst nach der Abgabe, was richtig war.',
                       ),
-                      SizedBox(height: Gap.s),
-                      Text(
-                        'Du kannst frei zwischen den Aufgaben springen und '
-                        'unsichere Aufgaben für später markieren.',
+                      _Rule(
+                        icon: Icons.flag_outlined,
+                        text:
+                            'Du kannst frei zwischen den Aufgaben springen und '
+                            'unsichere Aufgaben für später markieren.',
                       ),
-                      SizedBox(height: Gap.s),
-                      Text(
-                        'Unbeantwortete Aufgaben zählen mit 0 Punkten - '
-                        'genau wie eine leere Zeile im Prüfungsbogen.',
+                      _Rule(
+                        icon: Icons.remove_circle_outline,
+                        text:
+                            'Unbeantwortete Aufgaben zählen mit 0 Punkten - '
+                            'genau wie eine leere Zeile im Prüfungsbogen.',
+                        last: true,
                       ),
                     ],
                   ),
@@ -148,7 +154,7 @@ class _PresetCard extends StatelessWidget {
     final perQuestion = (preset.minutes * 60 / count).round();
 
     return AppCard(
-      padding: const EdgeInsets.all(Gap.xl),
+      padding: const EdgeInsets.all(Gap.l),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -248,6 +254,40 @@ class _ExamHistory extends StatelessWidget {
             ),
           ),
       ],
+    );
+  }
+}
+
+/// Eine Regel der Simulation mit eigenem Symbol - vier Absätze Fließtext
+/// liest vor dem Start niemand, vier kurze Punkte schon.
+class _Rule extends StatelessWidget {
+  const _Rule({required this.icon, required this.text, this.last = false});
+
+  final IconData icon;
+  final String text;
+  final bool last;
+
+  @override
+  Widget build(BuildContext context) {
+    final body = context.text.bodyMedium!;
+    final line =
+        MediaQuery.textScalerOf(context).scale(body.fontSize!) *
+        (body.height ?? 1.2);
+    return Padding(
+      padding: EdgeInsets.only(bottom: last ? 0 : Gap.s),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            // Symbol auf die Mitte der ersten Textzeile setzen - auch bei
+            // großer Systemschrift, deshalb aus der echten Zeilenhöhe.
+            padding: EdgeInsets.only(top: (line - 16).clamp(0, 99) / 2),
+            child: Icon(icon, size: 16, color: context.c.textMuted),
+          ),
+          const SizedBox(width: Gap.s),
+          Expanded(child: Text(text)),
+        ],
+      ),
     );
   }
 }

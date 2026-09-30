@@ -48,43 +48,48 @@ class CardsOverviewScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppCard(
-                  padding: const EdgeInsets.all(Gap.xl),
+                  padding: const EdgeInsets.all(Gap.l),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      // Zahl und Aussage in einer Zeile, Erklärung darunter
+                      // über die volle Breite - die Zahl rechts neben dem
+                      // Text quetschte ihn auf 320 px auf vier Zeilen.
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  due == 0 ? 'Heute nichts fällig' : 'Heute fällig',
-                                  style: context.text.titleMedium,
-                                ),
-                                const SizedBox(height: Gap.xs),
-                                Text(
-                                  due == 0
-                                      ? 'Der Kasten legt jede Karte nach dem '
-                                          'passenden Abstand wieder vor.'
-                                      : 'Karten, die heute wiederholt werden '
-                                          'sollten.',
-                                  style: context.text.bodyMedium
-                                      ?.copyWith(color: context.c.textMuted),
-                                ),
-                              ],
-                            ),
-                          ),
                           Text(
                             '$due',
                             style: AppType.numeric(
                               size: 34,
+                              weight: FontWeight.w700,
                               color: due == 0
                                   ? context.c.success
                                   : context.scheme.primary,
                             ),
                           ),
+                          const SizedBox(width: Gap.m),
+                          Expanded(
+                            child: Text(
+                              due == 0
+                                  ? 'Heute nichts fällig'
+                                  : due == 1
+                                  ? 'Karte heute fällig'
+                                  : 'Karten heute fällig',
+                              style: context.text.titleMedium,
+                            ),
+                          ),
                         ],
+                      ),
+                      const SizedBox(height: Gap.xs),
+                      Text(
+                        due == 0
+                            ? 'Der Kasten legt jede Karte nach dem passenden '
+                                  'Abstand wieder vor.'
+                            : 'Diese Karten sollten heute wiederholt werden.',
+                        style: context.text.bodyMedium?.copyWith(
+                          color: context.c.textMuted,
+                        ),
                       ),
                       const SizedBox(height: Gap.l),
                       SizedBox(
@@ -107,26 +112,32 @@ class CardsOverviewScreen extends ConsumerWidget {
                 const SizedBox(height: Gap.l),
 
                 AppCard(
-                  padding: const EdgeInsets.all(Gap.xl),
+                  padding: const EdgeInsets.all(Gap.l),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
                           Expanded(
-                            child: Text('Verteilung im Kasten',
-                                style: context.text.titleMedium),
+                            child: Text(
+                              'Verteilung im Kasten',
+                              style: context.text.titleMedium,
+                            ),
                           ),
-                          Text('${(mastery * 100).round()} %',
-                              style: AppType.numeric(size: 15)),
+                          const SizedBox(width: Gap.s),
+                          CountBadge(
+                            label: '${(mastery * 100).round()} % sicher',
+                            tone: TileTone.success,
+                          ),
                         ],
                       ),
                       const SizedBox(height: Gap.xs),
                       Text(
                         'Rechts sitzt es. Was nicht gewusst wird, fällt zurück '
                         'in Fach 1.',
-                        style: context.text.labelSmall
-                            ?.copyWith(color: context.c.textMuted),
+                        style: context.text.bodySmall?.copyWith(
+                          color: context.c.textMuted,
+                        ),
                       ),
                       const SizedBox(height: Gap.l),
                       _BoxChart(cards: cards, deck: deck),
@@ -137,7 +148,8 @@ class CardsOverviewScreen extends ConsumerWidget {
 
                 const SectionHeader(
                   'Nach Bereich lernen',
-                  subtitle: 'Gezielt ein Themengebiet durchgehen, '
+                  subtitle:
+                      'Gezielt ein Themengebiet durchgehen, '
                       'auch wenn es noch nicht fällig ist.',
                 ),
                 for (final area in ExamAreas.all)
@@ -176,26 +188,31 @@ class _BoxChart extends StatelessWidget {
     final max = [untouched, ...counts].fold<int>(1, (m, v) => v > m ? v : m);
 
     Widget bar(String label, int value, Color color) => Expanded(
-          child: Column(
-            children: [
-              Text('$value',
-                  style: AppType.numeric(size: 12, color: context.c.textMuted)),
-              const SizedBox(height: 4),
-              Container(
-                height: 70 * (value / max).clamp(0.06, 1.0),
-                decoration: BoxDecoration(
-                  color: color,
-                  borderRadius: BorderRadius.circular(4),
-                ),
-              ),
-              const SizedBox(height: Gap.s),
-              Text(label,
-                  textAlign: TextAlign.center,
-                  style: context.text.labelSmall
-                      ?.copyWith(color: context.c.textMuted)),
-            ],
+      child: Column(
+        children: [
+          Text(
+            '$value',
+            style: AppType.numeric(size: 12, color: context.c.textMuted),
           ),
-        );
+          const SizedBox(height: 4),
+          Container(
+            height: 70 * (value / max).clamp(0.06, 1.0),
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
+          const SizedBox(height: Gap.s),
+          Text(
+            label,
+            textAlign: TextAlign.center,
+            style: context.text.labelSmall?.copyWith(
+              color: context.c.textMuted,
+            ),
+          ),
+        ],
+      ),
+    );
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -233,87 +250,28 @@ class _AreaCardRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final topicIds = Topics.ofArea(area.id).map((t) => t.id).toSet();
-    final areaCards =
-        cards.where((c) => topicIds.contains(c.topicId)).toList();
-
-    if (areaCards.isEmpty) {
-      return Padding(
-        padding: const EdgeInsets.only(bottom: Gap.s),
-        child: Opacity(
-          opacity: 0.5,
-          child: AppCard(
-            padding: const EdgeInsets.all(Gap.l),
-            child: Row(
-              children: [
-                Icon(area.icon, size: 20, color: context.c.textMuted),
-                const SizedBox(width: Gap.m),
-                Expanded(
-                  child: Text('${area.number} ${area.title}',
-                      style: context.text.titleMedium),
-                ),
-                Text('folgt',
-                    style: context.text.labelSmall
-                        ?.copyWith(color: context.c.textMuted)),
-              ],
-            ),
-          ),
-        ),
-      );
-    }
+    final areaCards = cards.where((c) => topicIds.contains(c.topicId)).toList();
 
     final due = deck.dueCount(areaCards);
-    final mastery = deck.mastery(areaCards);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: Gap.s),
-      child: AppCard(
-        padding: const EdgeInsets.all(Gap.l),
-        onTap: () => context.push(
-          '/karten-lernen',
-          extra: CardSessionArgs(
-            topicIds: topicIds,
-            title: area.title,
-          ),
-        ),
-        child: Row(
-          children: [
-            Icon(area.icon, size: 20, color: context.scheme.primary),
-            const SizedBox(width: Gap.m),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text('${area.number} ${area.title}',
-                            style: context.text.titleMedium),
-                      ),
-                      if (due > 0)
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 2),
-                          decoration: BoxDecoration(
-                            color: context.scheme.primary,
-                            borderRadius: BorderRadius.circular(Radii.pill),
-                          ),
-                          child: Text('$due fällig',
-                              style: context.text.labelSmall?.copyWith(
-                                  color: context.scheme.onPrimary)),
-                        ),
-                    ],
-                  ),
-                  const SizedBox(height: 2),
-                  Text('${areaCards.length} Karten',
-                      style: context.text.labelSmall
-                          ?.copyWith(color: context.c.textMuted)),
-                  const SizedBox(height: Gap.s),
-                  TopicBar(confidence: mastery, coverage: 0),
-                ],
+      child: ProgressTile(
+        icon: area.icon,
+        overline: 'BEREICH ${area.number}',
+        title: area.title,
+        enabled: areaCards.isNotEmpty,
+        progress: areaCards.isEmpty ? 0 : deck.mastery(areaCards),
+        caption: areaCards.isEmpty
+            ? 'Karten folgen'
+            : '${areaCards.length} Karten',
+        badge: due > 0 ? '$due fällig' : null,
+        onTap: areaCards.isEmpty
+            ? null
+            : () => context.push(
+                '/karten-lernen',
+                extra: CardSessionArgs(topicIds: topicIds, title: area.title),
               ),
-            ),
-          ],
-        ),
       ),
     );
   }
