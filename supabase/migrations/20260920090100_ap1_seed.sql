@@ -939,7 +939,7 @@ values (
   'matching',
   null,
   'Handelt es sich um eine funktionale oder eine nicht-funktionale Anforderung?',
-  'Testfrage zur Abgrenzung: Kann man die Anforderung als "Das System TUT etwas" formulieren? Dann funktional. Beschreibt sie eher, WIE GUT das System etwas tut (schnell, sicher, verfügbar, bedienbar, wartbar, portabel), dann nicht-funktional. Die sechs Qualitätsmerkmale nach ISO 25010 sind eine gute Checkliste für nicht-funktionale Anforderungen.',
+  'Testfrage zur Abgrenzung: Kann man die Anforderung als "Das System TUT etwas" formulieren? Dann funktional. Beschreibt sie eher, WIE GUT das System etwas tut (schnell, sicher, verfügbar, bedienbar, wartbar, portabel), dann nicht-funktional. Die Qualitätsmerkmale von Software - etwa Zuverlässigkeit, Benutzbarkeit, Effizienz und Sicherheit - sind eine gute Checkliste für nicht-funktionale Anforderungen.',
   2,
   ARRAY['anforderungsarten']::text[],
   null,
@@ -966,7 +966,7 @@ values (
   'multiple',
   null,
   'Was zeichnet eine gut formulierte Anforderung aus?',
-  'Merkhilfe für Anforderungsqualität: eindeutig, vollständig, widerspruchsfrei, prüfbar, notwendig, verständlich, priorisiert. Priorisierung erfolgt oft nach MuSCoW: Must have, Should have, Could have, Won t have.',
+  'Merkhilfe für Anforderungsqualität: eindeutig, vollständig, widerspruchsfrei, prüfbar, notwendig, verständlich, priorisiert. Priorisierung erfolgt oft nach MoSCoW: Must have, Should have, Could have, Won’t have (this time).',
   2,
   ARRAY['anforderungsqualität']::text[],
   null,
@@ -997,7 +997,7 @@ values (
   2,
   ARRAY['abnahme']::text[],
   null,
-  '{"choices":[{"text":"Abnahme unter Vorbehalt: Mängel werden protokolliert und mit Frist zur Beseitigung vereinbart.","is_correct":true,"rationale":"Richtig. Die Abnahme unter Vorbehalt hält die Mängelrechte aufrecht und blockiert trotzdem nicht den Produktivstart."},{"text":"Vollständige Verweigerung der Abnahme bis alle Mängel beseitigt sind.","is_correct":false,"rationale":"Bei unwesentlichen Mängeln ist die Verweigerung in der Regel unzulässig (vgl. Werkvertragsrecht) und schadet dem Kunden selbst, weil der Nutzen ausbleibt."},{"text":"Vorbehaltlose Abnahme, die Mängel werden formlos per E-Mail gemeldet.","is_correct":false,"rationale":"Gefährlich: Mit der vorbehaltlosen Abnahme verliert der Kunde bei bekannten Mängeln seine Rechte darauf."},{"text":"Die Abnahme entfällt, weil die Software bereits läuft.","is_correct":false,"rationale":"Die Abnahme ist ein formaler Rechtsakt mit erheblichen Folgen (Gefahrübergang, Fälligkeit der Vergütung, Beginn der Gewährleistung). Sie entfällt nicht durch Nutzung - im Gegenteil kann Nutzung als konkludente Abnahme gelten."}]}'::jsonb,
+  '{"choices":[{"text":"Abnahme unter Vorbehalt: Mängel werden protokolliert und mit Frist zur Beseitigung vereinbart.","is_correct":true,"rationale":"Richtig. Die Abnahme unter Vorbehalt hält die Mängelrechte aufrecht und blockiert trotzdem nicht den Produktivstart."},{"text":"Vollständige Verweigerung der Abnahme bis alle Mängel beseitigt sind.","is_correct":false,"rationale":"Bei unwesentlichen Mängeln ist die Verweigerung in der Regel unzulässig (vgl. Werkvertragsrecht) und schadet dem Kunden selbst, weil der Nutzen ausbleibt."},{"text":"Vorbehaltlose Abnahme, die Mängel werden formlos per E-Mail gemeldet.","is_correct":false,"rationale":"Gefährlich: Mit der vorbehaltlosen Abnahme verliert der Kunde bei bekannten Mängeln Nacherfüllung, Minderung und Rücktritt - nur Schadensersatz bleibt."},{"text":"Die Abnahme entfällt, weil die Software bereits läuft.","is_correct":false,"rationale":"Die Abnahme ist ein formaler Rechtsakt mit erheblichen Folgen (Gefahrübergang, Fälligkeit der Vergütung, Beginn der Gewährleistung). Sie entfällt nicht durch Nutzung - im Gegenteil kann Nutzung als konkludente Abnahme gelten."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1934,15 +1934,14 @@ insert into public.ap1_questions
 values (
   'ls-002',
   'leistungsstoerungen',
-  'ordering',
-  null,
-  'In welcher Reihenfolge stehen dem Kunden die Mängelrechte beim Werkvertrag üblicherweise zu?',
-  'Der Vorrang der Nacherfüllung ist das Grundprinzip: Der Auftragnehmer bekommt zuerst die Gelegenheit, selbst nachzubessern. Erst wenn das scheitert oder eine gesetzte Frist fruchtlos verstreicht, stehen die weiteren Rechte offen.
-Praktische Konsequenz: Wer sofort mindert oder einen anderen Dienstleister beauftragt, ohne eine Frist zur Nacherfüllung zu setzen, verliert seine Ansprüche. Deshalb gehört in jede Mangelanzeige eine konkrete Frist.',
+  'single',
+  'Eine Agentur hat für einen Kunden ein Buchungsmodul programmiert (Werkvertrag). Nach der Abnahme zeigt sich ein Fehler: Stornierungen werden nicht gespeichert.',
+  'Was muss der Kunde grundsätzlich tun, bevor er den Fehler von einer anderen Firma beheben lässt, die Vergütung mindert oder zurücktritt?',
+  'Beim Werkvertrag hat die Nacherfüllung Vorrang (§ 634 BGB): Der Unternehmer darf den Mangel zuerst selbst beseitigen und wählt dabei zwischen Nachbesserung und Neuherstellung. Erst nach erfolglosem Fristablauf kann der Besteller den Mangel selbst beseitigen lassen und Kostenersatz verlangen, die Vergütung mindern oder zurücktreten - und zusätzlich Schadensersatz fordern, wenn der Unternehmer den Mangel zu vertreten hat. Deshalb gehört in jede Mangelanzeige eine konkrete Frist.',
   3,
   ARRAY['mängelrechte']::text[],
   null,
-  '{"ordered_items":["Nacherfüllung verlangen (Mangelbeseitigung oder Neuherstellung)","Nach erfolgloser Fristsetzung: Selbstvornahme und Ersatz der Kosten","Minderung der Vergütung oder Rücktritt vom Vertrag","Schadensersatz bzw. Ersatz vergeblicher Aufwendungen"],"ordering_hint":"Vom vorrangigen zum nachrangigen Recht"}'::jsonb,
+  '{"choices":[{"text":"Der Agentur eine angemessene Frist zur Nacherfüllung setzen","is_correct":true,"rationale":"Die Nacherfüllung hat Vorrang. Erst wenn die Frist erfolglos verstreicht, stehen Selbstvornahme, Minderung, Rücktritt und Schadensersatz offen."},{"text":"Nichts - er kann sofort eine andere Firma beauftragen und der Agentur die Kosten in Rechnung stellen","is_correct":false,"rationale":"Ohne erfolglose Frist zur Nacherfüllung riskiert er, auf den Kosten der Selbstvornahme sitzen zu bleiben."},{"text":"Erst Selbstvornahme versuchen, danach mindern, zuletzt Schadensersatz verlangen","is_correct":false,"rationale":"Nach gescheiterter Nacherfüllung gibt es keine feste Reihenfolge: Selbstvornahme, Minderung oder Rücktritt und Schadensersatz stehen nebeneinander, Schadensersatz lässt sich auch mit dem Rücktritt verbinden."},{"text":"Die Agentur dreimal schriftlich mahnen","is_correct":false,"rationale":"Drei Mahnungen verlangt das Gesetz nicht. Entscheidend ist eine Frist zur Nacherfüllung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1966,11 +1965,11 @@ values (
   null,
   'Was gehört in ein Abnahmeprotokoll?',
   'An der Abnahme hängen vier Rechtsfolgen: Fälligkeit der Vergütung, Gefahrübergang, Beginn der Verjährungsfrist für Mängelansprüche und die Umkehr der Beweislast - danach muss der Kunde beweisen, dass ein Mangel schon bei Abnahme vorlag.
-Deshalb ist das Abnahmeprotokoll kein Formalkram, sondern der wichtigste Zettel im Projekt. Wer bekannte Mängel nicht protokolliert, verliert die Rechte darauf.',
+Deshalb ist das Abnahmeprotokoll kein Formalkram, sondern der wichtigste Zettel im Projekt. Wer bekannte Mängel nicht protokolliert, verliert die meisten Rechte darauf - nur ein Anspruch auf Schadensersatz bleibt bestehen (§ 640 Abs. 3 BGB).',
   2,
   ARRAY['abnahmeprotokoll']::text[],
   null,
-  '{"choices":[{"text":"Datum, Ort und die anwesenden Personen beider Seiten","is_correct":true,"rationale":"Ohne Beteiligte und Datum ist das Protokoll als Nachweis wertlos."},{"text":"Gegenstand der Abnahme mit Verweis auf das Pflichtenheft","is_correct":true,"rationale":"Abgenommen wird gegen ein definiertes Soll - der Verweis stellt das her."},{"text":"Liste der festgestellten Mängel mit Fristen zur Beseitigung","is_correct":true,"rationale":"Der wichtigste Teil. Nicht protokollierte Mängel gelten bei vorbehaltloser Abnahme als akzeptiert."},{"text":"Erklärung, ob die Abnahme erfolgt, unter Vorbehalt erfolgt oder verweigert wird","is_correct":true,"rationale":"Diese Erklärung ist der eigentliche Rechtsakt."},{"text":"Unterschriften beider Vertragsparteien","is_correct":true,"rationale":"Erst die Unterschriften machen das Protokoll zum Nachweis."},{"text":"Die interne Kalkulation des Auftragnehmers","is_correct":false,"rationale":"Falsch. Die Kalkulation ist ein Geschäftsgeheimnis des Auftragnehmers und hat im Protokoll nichts zu suchen."}]}'::jsonb,
+  '{"choices":[{"text":"Datum, Ort und die anwesenden Personen beider Seiten","is_correct":true,"rationale":"Ohne Beteiligte und Datum ist das Protokoll als Nachweis wertlos."},{"text":"Gegenstand der Abnahme mit Verweis auf das Pflichtenheft","is_correct":true,"rationale":"Abgenommen wird gegen ein definiertes Soll - der Verweis stellt das her."},{"text":"Liste der festgestellten Mängel mit Fristen zur Beseitigung","is_correct":true,"rationale":"Der wichtigste Teil. Wer einen bekannten Mangel bei der Abnahme nicht vorbehält, verliert dafür Nacherfüllung, Selbstvornahme, Rücktritt und Minderung."},{"text":"Erklärung, ob die Abnahme erfolgt, unter Vorbehalt erfolgt oder verweigert wird","is_correct":true,"rationale":"Diese Erklärung ist der eigentliche Rechtsakt."},{"text":"Unterschriften beider Vertragsparteien","is_correct":true,"rationale":"Erst die Unterschriften machen das Protokoll zum Nachweis."},{"text":"Die interne Kalkulation des Auftragnehmers","is_correct":false,"rationale":"Falsch. Die Kalkulation ist ein Geschäftsgeheimnis des Auftragnehmers und hat im Protokoll nichts zu suchen."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -2062,6 +2061,10681 @@ Abgrenzung für die Prüfung: Kaizen = viele kleine Schritte, evolutionär. Reen
   ARRAY['kaizen']::text[],
   null,
   '{"choices":[{"text":"Laufende Verbesserung in vielen kleinen Schritten, getragen von allen Mitarbeitenden","is_correct":true,"rationale":"Richtig. Die Summe vieler kleiner Schritte, nicht der eine große Wurf."},{"text":"Einmalige, grundlegende Neugestaltung der Geschäftsprozesse","is_correct":false,"rationale":"Das ist Business Process Reengineering - der radikale Gegenentwurf zu Kaizen."},{"text":"Verbesserung ausschließlich durch die Führungsebene","is_correct":false,"rationale":"Falsch. Kaizen lebt davon, dass Verbesserungsvorschläge von denen kommen, die die Arbeit täglich machen."},{"text":"Ein Verfahren zur Fehlersuche im Quellcode","is_correct":false,"rationale":"Falsch. Kaizen ist eine Haltung zur Prozessverbesserung, kein Testverfahren."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-pb-1',
+  'projektorganisation',
+  'single',
+  null,
+  'Welches Vorhaben ist ein Projekt?',
+  'Ein Projekt ist einmalig, zielgerichtet und zeitlich wie finanziell begrenzt. Alle anderen Beispiele wiederholen sich oder laufen dauerhaft - sie gehören zum Tagesgeschäft.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die erstmalige Einführung eines Ticketsystems bis Ende Juni mit festem Budget","is_correct":true,"rationale":"Einmalig, mit Ziel, Termin und Budget - alle Merkmale eines Projekts sind erfüllt."},{"text":"Das wöchentliche Prüfen der Datensicherung","is_correct":false,"rationale":"Wiederkehrende Routine in der Linie - kein einmaliges Vorhaben."},{"text":"Die monatliche Gehaltsabrechnung","is_correct":false,"rationale":"Eine klassische Linienaufgabe mit eingespieltem Ablauf."},{"text":"Der laufende Betrieb des Mailservers","is_correct":false,"rationale":"Eine Daueraufgabe ohne festes Ende."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-pb-2',
+  'projektorganisation',
+  'multiple',
+  null,
+  'Welche Aussagen über Projekte sind richtig?',
+  'Projekte sind einmalig und begrenzt, haben eine eigene Organisation und tragen wegen ihrer Neuartigkeit mehr Risiko. Eine Mindestgröße gibt es nicht.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ein Projekt hat einen festgelegten Anfang und ein festgelegtes Ende.","is_correct":true,"rationale":"Die zeitliche Begrenzung gehört zu den Kernmerkmalen."},{"text":"Projekte haben meist eine eigene, zeitlich begrenzte Organisation.","is_correct":true,"rationale":"Rollen wie Projektleitung und Projektteam bestehen nur für die Projektdauer."},{"text":"Ein Vorhaben ist erst ab einem Budget von 10.000 € ein Projekt.","is_correct":false,"rationale":"Größe und Budget sind keine Merkmale - entscheidend ist die Einmaligkeit."},{"text":"Projekte wiederholen sich regelmäßig in gleicher Form.","is_correct":false,"rationale":"Das beschreibt eine Linienaufgabe."},{"text":"Projekte bergen durch ihre Neuartigkeit höhere Risiken als Routineaufgaben.","is_correct":true,"rationale":"Weil Erfahrungswerte fehlen, ist die Unsicherheit größer."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-pz-1',
+  'projektorganisation',
+  'single',
+  null,
+  'Welches Ziel ist SMART formuliert?',
+  'SMART heißt spezifisch, messbar, attraktiv bzw. akzeptiert, realistisch und terminiert. Nur das erste Ziel lässt sich am Stichtag eindeutig prüfen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Bis 31.03. sind alle 40 Arbeitsplätze auf Windows 11 umgestellt, kein Arbeitsplatz fällt dabei länger als zwei Stunden aus.","is_correct":true,"rationale":"Spezifisch, messbar (40 Plätze, 2 Stunden), realistisch und mit Termin."},{"text":"Die IT soll moderner werden.","is_correct":false,"rationale":"Weder spezifisch noch messbar noch terminiert."},{"text":"Möglichst bald sollen alle Rechner schneller laufen.","is_correct":false,"rationale":"„Möglichst bald“ ist kein Termin, „schneller“ keine Messgröße."},{"text":"Ab sofort gilt 100 % Verfügbarkeit für alle Systeme.","is_correct":false,"rationale":"Nicht realistisch - keine IT erreicht dauerhaft 100 %."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-po-1',
+  'projektorganisation',
+  'single',
+  'Ein Unternehmen führt ein neues ERP-System ein. Das Projekt dauert 18 Monate, hat hohe strategische Bedeutung, und das Team arbeitet in Vollzeit daran.',
+  'Welche Form der Projektorganisation passt am besten?',
+  'Je größer, länger und bedeutender ein Projekt ist, desto eher lohnt sich die reine Projektorganisation mit voller Weisungsbefugnis der Projektleitung.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Reine Projektorganisation","is_correct":true,"rationale":"Lang, groß, strategisch und in Vollzeit: Genau dafür wird das Team aus der Linie herausgelöst."},{"text":"Matrix-Organisation","is_correct":false,"rationale":"Passt, wenn Mitarbeitende nur teilweise im Projekt sind - hier arbeiten sie in Vollzeit daran."},{"text":"Stabs-/Einflussorganisation","is_correct":false,"rationale":"Zu schwach: Die Projektleitung könnte in einem so großen Projekt nichts durchsetzen."},{"text":"Linienorganisation","is_correct":false,"rationale":"Das ist keine Form der Projektorganisation, sondern die normale Aufbauorganisation."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-po-2',
+  'projektorganisation',
+  'multiple',
+  null,
+  'Welche Aussagen treffen auf die Matrix-Projektorganisation zu?',
+  'In der Matrix ist die Weisungsbefugnis geteilt: fachlich beim Projekt, disziplinarisch in der Linie. Das nutzt Ressourcen flexibel, erzeugt aber Prioritätenkonflikte.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Projektleitung hat fachliche Weisungsbefugnis.","is_correct":true,"rationale":"Sie bestimmt, was und wie im Projekt gearbeitet wird."},{"text":"Mitarbeitende haben zwei Vorgesetzte - im Projekt und in der Linie.","is_correct":true,"rationale":"Das ist das Kennzeichen der Matrix."},{"text":"Die Projektleitung entscheidet über Urlaub und Gehalt der Teammitglieder.","is_correct":false,"rationale":"Das ist disziplinarische Weisung - sie bleibt in der Matrix bei der Linie."},{"text":"Es kann zu Konflikten um Prioritäten kommen.","is_correct":true,"rationale":"Wenn Linie und Projekt gleichzeitig Zeit beanspruchen, entsteht Konfliktpotenzial."},{"text":"Das Team wird für die Projektdauer vollständig aus der Linie herausgelöst.","is_correct":false,"rationale":"Das beschreibt die reine Projektorganisation."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-pr-1',
+  'projektorganisation',
+  'matching',
+  null,
+  'Ordne jede Aufgabe der zuständigen Rolle zu.',
+  'Der Auftraggeber beauftragt, finanziert und nimmt ab. Der Lenkungsausschuss entscheidet über Änderungen des Rahmens. Die Projektleitung plant, steuert und berichtet, das Team setzt um.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Auftraggeber","Lenkungsausschuss","Projektleitung","Projektteam"],"match_items":[{"text":"Gibt das Projekt in Auftrag und stellt das Budget bereit","bucket":0,"rationale":""},{"text":"Entscheidet nach einer Eskalation über eine Budgeterhöhung","bucket":1,"rationale":""},{"text":"Erstellt den Terminplan und verfolgt den Fortschritt","bucket":2,"rationale":""},{"text":"Setzt ein Arbeitspaket um","bucket":3,"rationale":""},{"text":"Nimmt das Ergebnis am Projektende ab","bucket":0,"rationale":""},{"text":"Schreibt den monatlichen Statusbericht","bucket":2,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-pr-2',
+  'projektorganisation',
+  'single',
+  'Mitten im Projekt stellt die Projektleiterin fest, dass das Budget um 20 % überschritten wird, wenn der vereinbarte Umfang geliefert werden soll.',
+  'Wie geht sie richtig vor?',
+  'Die Projektleitung steuert innerhalb des Auftrags. Droht der Rahmen gesprengt zu werden, muss sie frühzeitig eskalieren und eine Entscheidung herbeiführen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sie eskaliert an den Lenkungsausschuss, der über Budget oder Umfang entscheidet.","is_correct":true,"rationale":"Budget und Umfang sind Teil des Auftrags - darüber entscheidet das Gremium, nicht die Projektleitung."},{"text":"Sie streicht eigenständig zwei Funktionen.","is_correct":false,"rationale":"Damit ändert sie den Auftrag, ohne dazu befugt zu sein."},{"text":"Sie überzieht das Budget, weil der Umfang vereinbart ist.","is_correct":false,"rationale":"Eine Überschreitung ohne Freigabe ist ebenfalls eine Änderung des Auftrags."},{"text":"Sie wartet bis zum Projektende und erklärt die Abweichung im Abschlussbericht.","is_correct":false,"rationale":"Je später ein Problem gemeldet wird, desto weniger Handlungsspielraum bleibt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-pr-3',
+  'projektorganisation',
+  'multiple',
+  null,
+  'Was gehört typischerweise in ein Kick-off-Meeting?',
+  'Das Kick-off ist der offizielle Start mit allen Beteiligten. Es schafft ein gemeinsames Verständnis von Zielen, Rollen und Zusammenarbeit.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ziele und Nicht-Ziele des Projekts vorstellen","is_correct":true,"rationale":"Das gemeinsame Verständnis der Ziele ist der wichtigste Zweck des Kick-offs."},{"text":"Rollen und Zuständigkeiten klären","is_correct":true,"rationale":"Jede Person muss wissen, wer wofür verantwortlich ist."},{"text":"Kommunikationswege und Spielregeln vereinbaren","is_correct":true,"rationale":"Zum Beispiel Termine für Statusmeetings und Kanäle für Rückfragen."},{"text":"Das Projektergebnis abnehmen","is_correct":false,"rationale":"Die Abnahme steht am Ende des Projekts, nicht am Anfang."},{"text":"Detaillierte Code-Reviews durchführen","is_correct":false,"rationale":"Zum Projektstart gibt es noch keinen Code - und Reviews sind keine Aufgabe des Kick-offs."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-ps-1',
+  'projektorganisation',
+  'matching',
+  null,
+  'Ordne jeder Gruppe die passende Strategie der Stakeholder-Matrix zu.',
+  'Hoch/hoch: eng einbinden. Hoch/gering: zufriedenstellen. Gering/hoch: informieren. Gering/gering: beobachten. Der Betriebsrat ist das klassische Beispiel für „zufriedenstellen“.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["eng einbinden","zufriedenstellen","informieren","beobachten"],"match_items":[{"text":"Geschäftsführung: hoher Einfluss, großes Interesse","bucket":0,"rationale":""},{"text":"Betriebsrat: hoher Einfluss, zunächst geringes Interesse","bucket":1,"rationale":""},{"text":"Anwender der Buchhaltung: geringer Einfluss, großes Interesse","bucket":2,"rationale":""},{"text":"Reinigungsdienst: geringer Einfluss, geringes Interesse","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-ps-2',
+  'projektorganisation',
+  'ordering',
+  null,
+  'Bringe die Schritte der Stakeholderanalyse in die richtige Reihenfolge.',
+  'Erst muss klar sein, wer betroffen ist. Dann wird eingeschätzt und eingeordnet, zuletzt werden daraus Maßnahmen abgeleitet - und die Analyse wird im Projektverlauf aktualisiert.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Stakeholder identifizieren","Einfluss, Interesse und Einstellung einschätzen","In die Stakeholder-Matrix einordnen","Maßnahmen festlegen und umsetzen"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-vp-1',
+  'vorgehensmodelle',
+  'ordering',
+  null,
+  'Bringe die Projektphasen nach DIN 69901 in die richtige Reihenfolge.',
+  'Erst wird das Projekt beauftragt (Initialisierung), dann geklärt, was genau entstehen soll (Definition), dann geplant, umgesetzt und gesteuert, zuletzt abgeschlossen.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Initialisierung","Definition","Planung","Steuerung","Abschluss"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-vp-2',
+  'vorgehensmodelle',
+  'matching',
+  null,
+  'In welcher Phase entsteht das jeweilige Ergebnis?',
+  'Initialisierung: Auftrag. Definition: Ziele, Anforderungen, Machbarkeit. Planung: Struktur, Termine, Kosten. Abschluss: Bericht und Lessons Learned.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Initialisierung","Definition","Planung","Abschluss"],"match_items":[{"text":"Der Projektauftrag wird unterschrieben","bucket":0,"rationale":""},{"text":"Das Lastenheft wird erstellt","bucket":1,"rationale":""},{"text":"Projektstrukturplan und Terminplan entstehen","bucket":2,"rationale":""},{"text":"Der Lessons-Learned-Workshop findet statt","bucket":3,"rationale":""},{"text":"Die Machbarkeit wird bewertet","bucket":1,"rationale":""},{"text":"Der Abschlussbericht wird geschrieben","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-vp-3',
+  'vorgehensmodelle',
+  'single',
+  null,
+  'In welcher Phase wird der Projektstrukturplan erstellt?',
+  'Die Planung beginnt mit dem Projektstrukturplan. Aus ihm entstehen Termin-, Ressourcen- und Kostenplan.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Planung","is_correct":true,"rationale":"Der PSP ist die Grundlage aller weiteren Pläne und entsteht zu Beginn der Planung."},{"text":"Definition","is_correct":false,"rationale":"Hier werden Ziele und Anforderungen geklärt - noch nicht die Arbeitsstruktur."},{"text":"Initialisierung","is_correct":false,"rationale":"Hier geht es um die Idee und den Projektauftrag."},{"text":"Steuerung","is_correct":false,"rationale":"In der Steuerung wird der Plan umgesetzt und überwacht, nicht erst erstellt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-vw-1',
+  'vorgehensmodelle',
+  'multiple',
+  null,
+  'Welche Aussagen treffen auf das Wasserfallmodell zu?',
+  'Der Wasserfall ist sequenziell und dokumentgetrieben. Er spielt seine Stärken bei klaren, stabilen Anforderungen aus.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Phasen laufen nacheinander ab.","is_correct":true,"rationale":"Das ist das Grundprinzip des Modells."},{"text":"Jede Phase endet mit einem dokumentierten, freigegebenen Ergebnis.","is_correct":true,"rationale":"Erst dann beginnt die nächste Phase."},{"text":"Der Kunde erhält nach jeder Phase lauffähige Teilergebnisse.","is_correct":false,"rationale":"Lauffähige Software gibt es erst am Ende - Zwischenergebnisse sind Dokumente."},{"text":"Es eignet sich für Festpreisprojekte mit klaren Anforderungen.","is_correct":true,"rationale":"Stabile Anforderungen lassen sich vorab vollständig planen und kalkulieren."},{"text":"Anforderungen werden während der Implementierung laufend neu priorisiert.","is_correct":false,"rationale":"Das ist typisch für Scrum, nicht für den Wasserfall."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-va-1',
+  'vorgehensmodelle',
+  'single',
+  'Ein Start-up entwickelt eine App. Welche Funktionen die Nutzer wirklich brauchen, soll sich erst durch Rückmeldungen zu frühen Versionen zeigen.',
+  'Welches Vorgehen passt?',
+  'Wenn sich Anforderungen erst im Lauf des Projekts herausbilden, braucht es kurze Zyklen mit nutzbaren Zwischenergebnissen - also Scrum.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Scrum","is_correct":true,"rationale":"Unklare Anforderungen und frühe Rückmeldungen sind genau die Stärke von Scrum."},{"text":"Wasserfall","is_correct":false,"rationale":"Setzt voraus, dass die Anforderungen zu Beginn feststehen - das ist hier nicht der Fall."},{"text":"Erst alle Anforderungen vollständig klären, dann entscheiden","is_correct":false,"rationale":"Genau das ist hier nicht möglich: Die Anforderungen ergeben sich erst aus der Nutzung."},{"text":"Wasserfall, weil so eine vollständige Dokumentation entsteht","is_correct":false,"rationale":"Dokumentation ist kein Grund, wenn das Produkt dabei an den Nutzern vorbeigeht."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-va-2',
+  'vorgehensmodelle',
+  'single',
+  'Für eine Behörde soll ein Formular nach genau festgelegten gesetzlichen Vorgaben digitalisiert werden. Anforderungen, Festpreis und Termin stehen vertraglich fest.',
+  'Welches Vorgehensmodell passt?',
+  'Bei klaren, stabilen Anforderungen und vertraglich fixiertem Rahmen ist der Wasserfall die naheliegende Wahl.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Wasserfall","is_correct":true,"rationale":"Stabile Anforderungen, Festpreis und fester Termin sprechen für ein vollständig geplantes Vorgehen."},{"text":"Scrum","is_correct":false,"rationale":"Scrum spielt seine Stärken bei sich ändernden Anforderungen aus - die gibt es hier nicht."},{"text":"Scrum, weil agile Methoden immer schneller sind","is_correct":false,"rationale":"Agil ist nicht automatisch schneller, sondern flexibler."},{"text":"Kanban","is_correct":false,"rationale":"Kanban ist eine Methode zur Visualisierung von Arbeit und seit dem Katalog 2025 kein Prüfungsthema der AP1 mehr."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-sm-1',
+  'agil_scrum',
+  'single',
+  null,
+  'Welcher Satz steht so im agilen Manifest?',
+  'Die vier Werte: Individuen und Interaktionen, funktionierende Software, Zusammenarbeit mit dem Kunden und Reagieren auf Veränderung sind wichtiger als die jeweilige rechte Seite.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Funktionierende Software ist wichtiger als umfassende Dokumentation.","is_correct":true,"rationale":"Das ist einer der vier Werte."},{"text":"Umfassende Dokumentation ist wichtiger als funktionierende Software.","is_correct":false,"rationale":"Genau umgekehrt."},{"text":"Befolgen eines Plans ist wichtiger als Reagieren auf Veränderung.","is_correct":false,"rationale":"Umgekehrt: Reagieren auf Veränderung steht vorn."},{"text":"Prozesse und Werkzeuge sind wichtiger als Individuen und Interaktionen.","is_correct":false,"rationale":"Umgekehrt: Menschen und Zusammenarbeit stehen vorn."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-sm-2',
+  'agil_scrum',
+  'multiple',
+  null,
+  'Welche Aussagen entsprechen den Prinzipien des agilen Manifests?',
+  'Die Prinzipien betonen frühe Auslieferung, Offenheit für Änderungen, enge Zusammenarbeit und regelmäßige Verbesserung.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Anforderungsänderungen sind auch spät in der Entwicklung willkommen.","is_correct":true,"rationale":"Eines der zwölf Prinzipien."},{"text":"Funktionierende Software ist das wichtigste Fortschrittsmaß.","is_correct":true,"rationale":"Eines der zwölf Prinzipien."},{"text":"Der Kunde wird nur zu Projektbeginn und bei der Abnahme einbezogen.","is_correct":false,"rationale":"Agil heißt laufende Zusammenarbeit mit dem Kunden."},{"text":"Das Team reflektiert regelmäßig, wie es effektiver werden kann.","is_correct":true,"rationale":"Eines der zwölf Prinzipien."},{"text":"Dokumentation ist nicht erlaubt.","is_correct":false,"rationale":"Dokumentation ist wichtig - funktionierende Software nur wichtiger."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-sm-3',
+  'agil_scrum',
+  'single',
+  'Ein Kollege sagt: „Agil heißt, wir dokumentieren nichts mehr.“',
+  'Wie ist die Aussage einzuordnen?',
+  'Links vor rechts, nicht links statt rechts: Agilität verschiebt Schwerpunkte, sie schafft nichts ab.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Falsch - Dokumentation bleibt wichtig, funktionierende Software ist nur wichtiger.","is_correct":true,"rationale":"Das Manifest bewertet die rechte Seite ausdrücklich als wertvoll."},{"text":"Richtig, so steht es im agilen Manifest.","is_correct":false,"rationale":"Das Manifest verbietet keine Dokumentation."},{"text":"Richtig, Scrum verbietet Dokumentation.","is_correct":false,"rationale":"Scrum kennt sogar dokumentierte Artefakte wie Backlogs und die Definition of Done."},{"text":"Falsch - agile Teams müssen mehr dokumentieren als Wasserfall-Teams.","is_correct":false,"rationale":"Das sagt das Manifest nicht; es setzt nur andere Schwerpunkte."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-sr-1',
+  'agil_scrum',
+  'matching',
+  null,
+  'Wer ist in Scrum dafür verantwortlich?',
+  'Der Product Owner verantwortet den Wert und das Backlog, der Scrum Master die Wirksamkeit des Teams, die Developers das nutzbare Increment in der vereinbarten Qualität.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Product Owner","Scrum Master","Developers"],"match_items":[{"text":"Das Product Backlog ordnen","bucket":0,"rationale":""},{"text":"Ein Hindernis beseitigen, das das Team blockiert","bucket":1,"rationale":""},{"text":"Den Plan für den Sprint im Sprint Backlog erstellen","bucket":2,"rationale":""},{"text":"Das Produktziel formulieren","bucket":0,"rationale":""},{"text":"Das Team in Scrum coachen","bucket":1,"rationale":""},{"text":"Die Definition of Done beim Increment einhalten","bucket":2,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-sr-2',
+  'agil_scrum',
+  'single',
+  null,
+  'Wie groß ist ein Scrum Team laut Scrum Guide in der Regel?',
+  'Ein Scrum Team umfasst typischerweise zehn oder weniger Personen. Kleine Teams kommunizieren besser und sind produktiver.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"10 oder weniger Personen","is_correct":true,"rationale":"So steht es im Scrum Guide: klein genug, um wendig zu bleiben."},{"text":"Genau 7 Developers","is_correct":false,"rationale":"Eine feste Zahl gibt es nicht."},{"text":"Mindestens 12 Personen","is_correct":false,"rationale":"Größere Teams sollen sich eher in mehrere Scrum Teams aufteilen."},{"text":"Beliebig groß, solange es einen Product Owner gibt","is_correct":false,"rationale":"Die Teamgröße ist ausdrücklich begrenzt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-sa-1',
+  'agil_scrum',
+  'single',
+  null,
+  'Welches Commitment gehört zum Sprint Backlog?',
+  'Product Backlog - Produktziel, Sprint Backlog - Sprintziel, Increment - Definition of Done.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sprintziel","is_correct":true,"rationale":"Das Sprintziel gibt dem Sprint Backlog seine Richtung."},{"text":"Produktziel","is_correct":false,"rationale":"Das gehört zum Product Backlog."},{"text":"Definition of Done","is_correct":false,"rationale":"Die gehört zum Increment."},{"text":"Velocity","is_correct":false,"rationale":"Die Velocity ist eine Messgröße, kein Commitment."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-sa-2',
+  'agil_scrum',
+  'multiple',
+  null,
+  'Welche Aussagen zur Definition of Done sind richtig?',
+  'Die Definition of Done ist der Qualitätsmaßstab für alle Einträge. Nur was sie erfüllt, gehört zum Increment.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sie gilt für alle Einträge im Product Backlog.","is_correct":true,"rationale":"Sie ist ein gemeinsamer Qualitätsmaßstab."},{"text":"Einträge, die sie nicht erfüllen, werden im Sprint Review nicht als fertig vorgestellt.","is_correct":true,"rationale":"Sie gehen zurück ins Product Backlog."},{"text":"Sie wird für jede User Story neu festgelegt.","is_correct":false,"rationale":"Das beschreibt Akzeptanzkriterien."},{"text":"Sie legt fest, welche Stories im nächsten Sprint drankommen.","is_correct":false,"rationale":"Das wird im Sprint Planning entschieden."},{"text":"Sie schafft ein gemeinsames Verständnis davon, wann Arbeit fertig ist.","is_correct":true,"rationale":"Genau dafür ist sie da."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-se-1',
+  'agil_scrum',
+  'matching',
+  null,
+  'Ordne jede Beschreibung dem passenden Event zu.',
+  'Planning: was und wie. Daily: nächste 24 Stunden. Review: Produkt mit Stakeholdern. Retrospektive: Zusammenarbeit im Team.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Sprint Planning","Daily Scrum","Sprint Review","Sprint Retrospective"],"match_items":[{"text":"Das Sprintziel wird festgelegt","bucket":0,"rationale":""},{"text":"Die Developers planen die nächsten 24 Stunden","bucket":1,"rationale":""},{"text":"Stakeholder sehen das Increment und geben Rückmeldung","bucket":2,"rationale":""},{"text":"Das Team überlegt, wie es seine Zusammenarbeit verbessern kann","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-st-1',
+  'agil_scrum',
+  'single',
+  null,
+  'Welche User Story ist korrekt formuliert?',
+  'Eine User Story folgt dem Muster: Als <Rolle> möchte ich <Ziel>, damit <Nutzen>.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Als Vertriebsmitarbeiter möchte ich Kunden nach Postleitzahl filtern, damit ich Besuche besser planen kann.","is_correct":true,"rationale":"Rolle, Ziel und Nutzen sind genannt."},{"text":"Das System muss eine MySQL-Datenbank verwenden.","is_correct":false,"rationale":"Eine technische Vorgabe ohne Rolle und Nutzen - keine User Story."},{"text":"Als Entwickler möchte ich eine Klasse KundenDAO anlegen.","is_correct":false,"rationale":"Beschreibt eine Umsetzung, keinen Nutzen für Anwender."},{"text":"Filterfunktion für Kunden einbauen.","is_correct":false,"rationale":"Rolle und Nutzen fehlen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-ng-1',
+  'netzplan',
+  'single',
+  null,
+  'Welche Anordnungsbeziehung ist in Netzplänen der Normalfall?',
+  'In AP1-Netzplänen ist praktisch immer die Normalfolge gemeint.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Normalfolge (Ende-Anfang)","is_correct":true,"rationale":"Der Nachfolger beginnt, wenn der Vorgänger beendet ist."},{"text":"Anfangsfolge (Anfang-Anfang)","is_correct":false,"rationale":"Kommt vor, ist aber nicht der Standard."},{"text":"Endfolge (Ende-Ende)","is_correct":false,"rationale":"Kommt vor, ist aber nicht der Standard."},{"text":"Sprungfolge (Anfang-Ende)","is_correct":false,"rationale":"Selten und in der AP1 kaum relevant."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-ng-2',
+  'netzplan',
+  'multiple',
+  null,
+  'Welche Angaben stehen in einem vollständig berechneten Vorgangsknoten?',
+  'Ein Vorgangsknoten enthält Nummer, Bezeichnung, Dauer, die vier Zeitpunkte und die beiden Puffer.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Frühester Anfang und frühestes Ende (FAZ, FEZ)","is_correct":true,"rationale":"Ergebnis der Vorwärtsrechnung."},{"text":"Spätester Anfang und spätestes Ende (SAZ, SEZ)","is_correct":true,"rationale":"Ergebnis der Rückwärtsrechnung."},{"text":"Gesamtpuffer und freier Puffer (GP, FP)","is_correct":true,"rationale":"Werden aus den Zeitpunkten berechnet."},{"text":"Stundensatz der bearbeitenden Person","is_correct":false,"rationale":"Kosten gehören in die Kostenplanung, nicht in den Knoten."},{"text":"Kundenzufriedenheit","is_correct":false,"rationale":"Keine Größe der Terminplanung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-ng-3',
+  'netzplan',
+  'ordering',
+  null,
+  'Bringe die Arbeitsschritte der Netzplantechnik in die richtige Reihenfolge.',
+  'Erst die Struktur, dann die Zeitrechnung in beide Richtungen, zuletzt die Auswertung.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Vorgänge und Dauern auflisten","Vorgänger festlegen","Knoten anordnen und verbinden","Vorwärtsrechnung durchführen","Rückwärtsrechnung durchführen","Puffer und kritischen Pfad ermitteln"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-nv-1',
+  'netzplan',
+  'numeric',
+  'Vorgänge (Dauer in Tagen):
+A: 5 Tage, Startvorgang
+B: 3 Tage, nach A
+C: 6 Tage, nach A
+D: 2 Tage, nach B
+E: 4 Tage, nach C und D',
+  'Wie groß ist der FAZ von Vorgang E?',
+  'A: 0/5. B: 5/8. C: 5/11. D: 8/10.
+E hat zwei Vorgänger: FAZ = max(FEZ C = 11; FEZ D = 10) = 11.
+Wer 10 einträgt, lässt E starten, obwohl C noch läuft.',
+  2,
+  '{}',
+  null,
+  '{"answer":11.0,"tolerance":0.0,"unit":"Tage"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-nr-1',
+  'netzplan',
+  'numeric',
+  'Vorgänge (Dauer in Tagen):
+A: 5 Tage, Startvorgang
+B: 3 Tage, nach A
+C: 6 Tage, nach A
+D: 2 Tage, nach B
+E: 4 Tage, nach C und D',
+  'Wie groß ist der SAZ von Vorgang D?',
+  'Vorwärts: E endet bei 15 - das ist die Projektdauer.
+E: SEZ 15, SAZ 15 - 4 = 11.
+D: SEZ = SAZ von E = 11, SAZ = 11 - 2 = 9.',
+  2,
+  '{}',
+  null,
+  '{"answer":9.0,"tolerance":0.0,"unit":"Tage"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-nr-2',
+  'netzplan',
+  'numeric',
+  'Vorgänge (Dauer in Tagen):
+A: 5 Tage, Startvorgang
+B: 3 Tage, nach A
+C: 6 Tage, nach A
+D: 2 Tage, nach B
+E: 4 Tage, nach C und D',
+  'Wie groß ist der SEZ von Vorgang A?',
+  'Rückwärts: E 11/15, D 9/11, C 5/11, B: SEZ = SAZ D = 9, SAZ 6.
+A hat zwei Nachfolger: SEZ = min(SAZ B = 6; SAZ C = 5) = 5.
+Das Minimum, weil C als eiligster Nachfolger pünktlich starten muss.',
+  2,
+  '{}',
+  null,
+  '{"answer":5.0,"tolerance":0.0,"unit":"Tage"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-nr-3',
+  'netzplan',
+  'single',
+  null,
+  'Womit beginnt die Rückwärtsrechnung beim letzten Vorgang, wenn kein Endtermin vorgegeben ist?',
+  'Ohne vorgegebenen Endtermin ist die Projektdauer aus der Vorwärtsrechnung das späteste Ende.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"SEZ = FEZ des letzten Vorgangs","is_correct":true,"rationale":"Die errechnete Projektdauer wird zum spätesten Ende."},{"text":"SEZ = 0","is_correct":false,"rationale":"Mit 0 beginnt die Vorwärtsrechnung, nicht die Rückwärtsrechnung."},{"text":"SEZ = FAZ des letzten Vorgangs","is_correct":false,"rationale":"Das wäre der Anfang, nicht das Ende des Vorgangs."},{"text":"SEZ = Summe aller Vorgangsdauern","is_correct":false,"rationale":"Parallele Vorgänge würden dann doppelt gezählt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-nk-1',
+  'netzplan',
+  'single',
+  'Vorgänge (Dauer in Tagen):
+A: 5 Tage, Startvorgang
+B: 3 Tage, nach A
+C: 6 Tage, nach A
+D: 2 Tage, nach B
+E: 4 Tage, nach C und D',
+  'Welcher Weg ist der kritische Pfad?',
+  'GP = SAZ - FAZ: A 0, B 1, C 0, D 1, E 0. Der kritische Pfad verbindet alle Vorgänge ohne Puffer: A - C - E mit 15 Tagen Projektdauer.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"A - C - E","is_correct":true,"rationale":"A, C und E haben einen Gesamtpuffer von 0. Länge 5 + 6 + 4 = 15 Tage."},{"text":"A - B - D - E","is_correct":false,"rationale":"Dieser Weg dauert nur 14 Tage - B und D haben je einen Tag Puffer."},{"text":"A - B - C","is_correct":false,"rationale":"B und C liegen nicht hintereinander, sondern parallel."},{"text":"Es gibt keinen kritischen Pfad","is_correct":false,"rationale":"Jeder Netzplan hat mindestens einen kritischen Pfad."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-tp-1',
+  'terminplanung',
+  'single',
+  null,
+  'Was enthält ein Projektstrukturplan NICHT?',
+  'Der PSP zeigt, WAS zu tun ist - nicht WANN und in welcher Reihenfolge.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die zeitliche Reihenfolge der Arbeitspakete","is_correct":true,"rationale":"Reihenfolge und Termine kommen erst im Netzplan oder Gantt-Diagramm dazu."},{"text":"Teilaufgaben","is_correct":false,"rationale":"Die gehören in die mittleren Ebenen des PSP."},{"text":"Arbeitspakete","is_correct":false,"rationale":"Die unterste Ebene des PSP."},{"text":"Die Gliederung des Gesamtprojekts","is_correct":false,"rationale":"Genau das ist der PSP."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-tp-2',
+  'terminplanung',
+  'matching',
+  null,
+  'Nach welchem Prinzip ist der jeweilige PSP gegliedert?',
+  'Objektorientiert: Bestandteile des Ergebnisses. Funktionsorientiert: Tätigkeiten. Phasenorientiert: Projektphasen.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["objektorientiert","funktionsorientiert","phasenorientiert"],"match_items":[{"text":"Server - Clients - Netzwerk","bucket":0,"rationale":""},{"text":"Beschaffen - Installieren - Testen","bucket":1,"rationale":""},{"text":"Analyse - Entwurf - Umsetzung - Einführung","bucket":2,"rationale":""},{"text":"Hardware - Software - Dokumentation","bucket":0,"rationale":""},{"text":"Planen - Programmieren - Schulen","bucket":1,"rationale":""},{"text":"Konzeptphase - Realisierungsphase - Betriebsphase","bucket":2,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-tp-3',
+  'terminplanung',
+  'multiple',
+  null,
+  'Welche Eigenschaften hat ein gutes Arbeitspaket?',
+  'Das Arbeitspaket ist die kleinste, eindeutig verantwortete und schätzbare Einheit im PSP.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ein eindeutig abgegrenztes, prüfbares Ergebnis","is_correct":true,"rationale":"Sonst lässt sich nicht feststellen, wann es fertig ist."},{"text":"Genau eine verantwortliche Person","is_correct":true,"rationale":"Geteilte Verantwortung heißt oft: niemand fühlt sich zuständig."},{"text":"Ein schätzbarer Aufwand","is_correct":true,"rationale":"Nur so lassen sich Termine und Kosten planen."},{"text":"Es umfasst mindestens drei Monate Arbeit","is_correct":false,"rationale":"Arbeitspakete sollen überschaubar sein, nicht möglichst groß."},{"text":"Es wird im PSP in weitere Arbeitspakete zerlegt","is_correct":false,"rationale":"Das Arbeitspaket ist die unterste Ebene - es wird nicht weiter zerlegt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-tr-1',
+  'terminplanung',
+  'numeric',
+  null,
+  'Ein Arbeitspaket hat einen Aufwand von 24 Personentagen. Zwei Mitarbeiter arbeiten zu je 60 % daran. Wie viele Arbeitstage dauert es?',
+  'Dauer = Aufwand / (Personen × Verfügbarkeit) = 24 / (2 × 0,6) = 24 / 1,2 = 20 Arbeitstage.',
+  2,
+  '{}',
+  null,
+  '{"answer":20.0,"tolerance":0.0,"unit":"Arbeitstage"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-tr-2',
+  'terminplanung',
+  'single',
+  null,
+  'Was beschreibt der Aufwand eines Arbeitspakets?',
+  'Aufwand = Arbeitsmenge (PT), Dauer = Kalenderzeit (AT). Mehr Personen senken die Dauer, nicht den Aufwand.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Menge an Arbeit, zum Beispiel in Personentagen","is_correct":true,"rationale":"Aufwand misst Arbeit, nicht Zeit."},{"text":"Die Zeitspanne im Kalender","is_correct":false,"rationale":"Das ist die Dauer."},{"text":"Die Kosten des Arbeitspakets","is_correct":false,"rationale":"Kosten ergeben sich erst aus Aufwand mal Stundensatz."},{"text":"Die Anzahl der beteiligten Personen","is_correct":false,"rationale":"Die beeinflusst die Dauer, nicht den Aufwand."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-rp-1',
+  'risikomanagement',
+  'ordering',
+  null,
+  'Bringe die Schritte des Risikomanagements in die richtige Reihenfolge.',
+  'Ein Kreislauf: Nach dem Überwachen beginnt die Identifikation neuer Risiken von vorn.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Risiken identifizieren","Risiken bewerten","Maßnahmen planen","Risiken überwachen"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-rp-2',
+  'risikomanagement',
+  'single',
+  null,
+  'Welche Situation beschreibt ein Risiko und kein Problem?',
+  'Ein Risiko liegt in der Zukunft und kann eintreten. Ein Problem ist bereits eingetreten.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Der einzige Datenbankexperte könnte während der Migration krank werden.","is_correct":true,"rationale":"Ein mögliches künftiges Ereignis - also ein Risiko."},{"text":"Der Server ist gestern ausgefallen.","is_correct":false,"rationale":"Bereits eingetreten - ein Problem."},{"text":"Die Lieferung kam drei Tage zu spät.","is_correct":false,"rationale":"Bereits eingetreten - ein Problem."},{"text":"Das Budget ist bereits um 10 % überschritten.","is_correct":false,"rationale":"Bereits eingetreten - ein Problem."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-rp-3',
+  'risikomanagement',
+  'multiple',
+  null,
+  'Was gehört in ein Risikoregister?',
+  'Das Register dokumentiert jedes Risiko mit Bewertung, Maßnahme, Verantwortlichem und Status.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Beschreibung und Ursache des Risikos","is_correct":true,"rationale":"Grundlage jedes Eintrags."},{"text":"Eintrittswahrscheinlichkeit und Schadenshöhe","is_correct":true,"rationale":"Grundlage der Bewertung."},{"text":"Maßnahme und verantwortliche Person","is_correct":true,"rationale":"Ohne Verantwortlichen passiert nichts."},{"text":"Die Gehaltsliste des Teams","is_correct":false,"rationale":"Gehört nicht in das Risikoregister."},{"text":"Der Quellcode des Projekts","is_correct":false,"rationale":"Gehört ins Versionsverwaltungssystem."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-rb-1',
+  'risikomanagement',
+  'numeric',
+  null,
+  'Ein Risiko tritt mit 25 % Wahrscheinlichkeit ein und verursacht dann 36.000 € Schaden. Wie hoch ist der Risikowert?',
+  'Risikowert = Wahrscheinlichkeit × Schaden = 0,25 × 36.000 € = 9.000 €.',
+  2,
+  '{}',
+  null,
+  '{"answer":9000.0,"tolerance":0.0,"unit":"€"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-rb-2',
+  'risikomanagement',
+  'single',
+  'R1: 10 % Wahrscheinlichkeit, 80.000 € Schaden
+R2: 40 % Wahrscheinlichkeit, 15.000 € Schaden
+R3: 60 % Wahrscheinlichkeit, 5.000 € Schaden',
+  'Welches Risiko sollte zuerst behandelt werden?',
+  'Priorisiert wird nach dem Risikowert, nicht nach der Wahrscheinlichkeit allein: R1 8.000 €, R2 6.000 €, R3 3.000 €.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"R1","is_correct":true,"rationale":"Höchster Risikowert: 0,10 × 80.000 € = 8.000 €."},{"text":"R2","is_correct":false,"rationale":"Risikowert 6.000 € - an zweiter Stelle."},{"text":"R3","is_correct":false,"rationale":"Zwar am wahrscheinlichsten, aber nur 3.000 € Risikowert."},{"text":"Alle drei gleichzeitig, weil sie gleich wichtig sind","is_correct":false,"rationale":"Die Risikowerte unterscheiden sich deutlich."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-rs-1',
+  'risikomanagement',
+  'single',
+  'Das Team verzichtet auf ein neues, noch unerprobtes Framework und nutzt stattdessen das bewährte.',
+  'Welche Risikostrategie wird angewendet?',
+  'Wer auf die risikobehaftete Tätigkeit ganz verzichtet, vermeidet das Risiko.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Vermeiden","is_correct":true,"rationale":"Die riskante Ursache wird nicht eingegangen."},{"text":"Vermindern","is_correct":false,"rationale":"Dann würde man das neue Framework nutzen, aber z. B. mit Schulung absichern."},{"text":"Übertragen","is_correct":false,"rationale":"Dabei würden die Folgen auf Dritte verlagert."},{"text":"Akzeptieren","is_correct":false,"rationale":"Dann würde man das Framework bewusst trotz Risiko einsetzen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-wk-1',
+  'pm_wirtschaftlichkeit',
+  'numeric',
+  null,
+  'Ein Mitarbeiter kostet das Unternehmen 54.000 € pro Jahr und hat 1.350 produktive Stunden. Wie hoch ist sein Stundensatz?',
+  'Stundensatz = Jahreskosten / produktive Stunden = 54.000 € / 1.350 h = 40 €/h.',
+  2,
+  '{}',
+  null,
+  '{"answer":40.0,"tolerance":0.0,"unit":"€/h"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-wk-2',
+  'pm_wirtschaftlichkeit',
+  'numeric',
+  null,
+  'Listenpreis 2.500 €, 8 % Rabatt, 3 % Skonto, 45 € Bezugskosten. Wie hoch ist der Bezugspreis? (zwei Nachkommastellen)',
+  'Listenpreis 2.500,00 €
+- 8 % Rabatt = 200,00 € -> Zieleinkaufspreis 2.300,00 €
+- 3 % Skonto vom Zieleinkaufspreis = 69,00 € -> Bareinkaufspreis 2.231,00 €
++ Bezugskosten 45,00 € -> Bezugspreis 2.276,00 €',
+  2,
+  '{}',
+  null,
+  '{"answer":2276.0,"tolerance":0.01,"unit":"€"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-wn-1',
+  'pm_wirtschaftlichkeit',
+  'multiple',
+  null,
+  'Welche Fehler machen eine Nutzwertanalyse ungültig?',
+  'Gewichte summieren sich zu 100 %, Punkte werden mit dem Gewicht multipliziert, Muss-Kriterien werden vorab geprüft.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Gewichte ergeben zusammen 120 %","is_correct":true,"rationale":"Die Gewichte müssen genau 100 % ergeben."},{"text":"Die Punkte werden ohne Gewichtung addiert","is_correct":true,"rationale":"Dann hätten alle Kriterien dasselbe Gewicht."},{"text":"Die Kriterien sind unterschiedlich gewichtet","is_correct":false,"rationale":"Das ist der Sinn der Gewichtung."},{"text":"Es werden mehr als zwei Alternativen verglichen","is_correct":false,"rationale":"Beliebig viele Alternativen sind möglich."},{"text":"Ein Anbieter verfehlt ein Muss-Kriterium und wird trotzdem gewählt","is_correct":true,"rationale":"Muss-Kriterien sind K.-o.-Kriterien und werden vorab geprüft."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-wm-1',
+  'pm_wirtschaftlichkeit',
+  'multiple',
+  null,
+  'Welche Argumente sprechen für eine Eigenentwicklung (Make)?',
+  'Make punktet mit Passgenauigkeit, Know-how und Unabhängigkeit; Buy mit Geschwindigkeit und geringeren Entwicklungskosten.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Lösung passt genau zu den eigenen Abläufen","is_correct":true,"rationale":"Maßgeschneidert statt Standard."},{"text":"Das Know-how bleibt im Unternehmen","is_correct":true,"rationale":"Man versteht und beherrscht die eigene Lösung."},{"text":"Die Lösung ist sofort verfügbar","is_correct":false,"rationale":"Das spricht für den Kauf."},{"text":"Es gibt keine Abhängigkeit von einem Anbieter","is_correct":true,"rationale":"Kein Risiko, dass ein Anbieter Preise erhöht oder das Produkt einstellt."},{"text":"Die Entwicklungskosten sind gering","is_correct":false,"rationale":"Eigenentwicklung ist meist teuer - das spricht eher für Buy."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-wm-2',
+  'pm_wirtschaftlichkeit',
+  'numeric',
+  null,
+  'Eine Softwarelösung kostet 12.000 € in der Anschaffung. Pro Jahr fallen 3.000 € für Wartung und Lizenzen an. Wie hoch sind die Gesamtkosten (TCO) bei vier Jahren Nutzung?',
+  'TCO = Anschaffung + laufende Kosten über die Nutzungsdauer = 12.000 € + 4 × 3.000 € = 24.000 €.',
+  2,
+  '{}',
+  null,
+  '{"answer":24000.0,"tolerance":0.0,"unit":"€"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-wb-1',
+  'pm_wirtschaftlichkeit',
+  'numeric',
+  null,
+  'Ein Produkt kostet 120 €, die variablen Stückkosten betragen 70 €, die Fixkosten 25.000 €. Ab welcher Menge ist die Gewinnschwelle erreicht?',
+  'Deckungsbeitrag = 120 € - 70 € = 50 €. Break-even-Menge = 25.000 € / 50 € = 500 Stück.',
+  2,
+  '{}',
+  null,
+  '{"answer":500.0,"tolerance":0.0,"unit":"Stück"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-wb-2',
+  'pm_wirtschaftlichkeit',
+  'numeric',
+  null,
+  'Eine Investition kostet 30.000 €. Sie spart jährlich 9.000 €, verursacht aber 1.500 € laufende Kosten pro Jahr. Nach wie vielen Jahren ist sie amortisiert? (eine Nachkommastelle)',
+  'Rückfluss pro Jahr = 9.000 € - 1.500 € = 7.500 €. Amortisationsdauer = 30.000 € / 7.500 € = 4,0 Jahre.',
+  2,
+  '{}',
+  null,
+  '{"answer":4.0,"tolerance":0.05,"unit":"Jahre"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-aa-1',
+  'projektabschluss',
+  'single',
+  null,
+  'Wogegen prüft der Auftraggeber das Ergebnis bei der Abnahme?',
+  'Abgenommen wird gegen vereinbarte Kriterien. Deshalb müssen Anforderungen und Abnahmekriterien vorher prüfbar formuliert sein.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Gegen die vereinbarten Anforderungen und Abnahmekriterien, z. B. aus dem Pflichtenheft","is_correct":true,"rationale":"Nur was vereinbart war, kann eingefordert werden."},{"text":"Gegen die Erwartungen von Anwendern, die im Projekt nicht beteiligt waren","is_correct":false,"rationale":"Nicht vereinbarte Erwartungen sind kein Maßstab der Abnahme."},{"text":"Gegen das verbrauchte Budget","is_correct":false,"rationale":"Das Budget ist Teil der Nachkalkulation, nicht der Abnahme."},{"text":"Gegen die Zahl der geleisteten Arbeitsstunden","is_correct":false,"rationale":"Aufwand sagt nichts über die Qualität des Ergebnisses."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-aa-2',
+  'projektabschluss',
+  'matching',
+  null,
+  'Zu welcher Ebene des Projektabschlusses gehört die Tätigkeit?',
+  'Sachlich: Ergebnis. Wirtschaftlich: Kosten und Budget. Personell: Team und Menschen.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["sachlich","wirtschaftlich","personell"],"match_items":[{"text":"Übergabe an den IT-Betrieb","bucket":0,"rationale":""},{"text":"Nachkalkulation erstellen","bucket":1,"rationale":""},{"text":"Teammitglieder kehren in ihre Abteilungen zurück","bucket":2,"rationale":""},{"text":"Abnahme durch den Auftraggeber","bucket":0,"rationale":""},{"text":"Offene Rechnungen begleichen","bucket":1,"rationale":""},{"text":"Leistungen des Teams würdigen","bucket":2,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-ab-1',
+  'projektabschluss',
+  'numeric',
+  null,
+  'Geplant waren Kosten von 60.000 €, tatsächlich angefallen sind 69.000 €. Wie groß ist die Abweichung in Prozent?',
+  'Abweichung = (Ist - Soll) / Soll × 100 = (69.000 - 60.000) / 60.000 × 100 = 15 %.',
+  2,
+  '{}',
+  null,
+  '{"answer":15.0,"tolerance":0.0,"unit":"%"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-ab-2',
+  'projektabschluss',
+  'single',
+  null,
+  'Was macht einen Soll-Ist-Vergleich im Abschlussbericht wirklich wertvoll?',
+  'Ein Soll-Ist-Vergleich nennt Abweichungen und erklärt, wie sie entstanden sind.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Abweichungen werden begründet","is_correct":true,"rationale":"Erst die Ursachen machen den Vergleich für künftige Projekte nützlich."},{"text":"Er enthält möglichst viele Kennzahlen","is_correct":false,"rationale":"Menge ersetzt keine Erklärung."},{"text":"Er benennt die Schuldigen für Verzögerungen","is_correct":false,"rationale":"Schuldzuweisungen verhindern offene Aufarbeitung."},{"text":"Er zeigt nur positive Abweichungen","is_correct":false,"rationale":"Ein beschönigter Bericht ist wertlos."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-al-1',
+  'projektabschluss',
+  'single',
+  'Zu Beginn des Lessons-Learned-Workshops sagt die Teamleiterin: „Heute klären wir, wer an der Verspätung schuld war.“',
+  'Was ist daran problematisch?',
+  'Lessons Learned fragen nach Ursachen und Verbesserungen, nicht nach Schuldigen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Schuldzuweisungen verhindern offene Beiträge - es geht um Ursachen und Verbesserungen.","is_correct":true,"rationale":"Wer Angst vor Schuld hat, schweigt - und die wichtigsten Erkenntnisse gehen verloren."},{"text":"Nichts, Verantwortliche müssen benannt werden.","is_correct":false,"rationale":"Genau das macht den Workshop wertlos."},{"text":"Lessons Learned finden nur bei erfolgreichen Projekten statt.","is_correct":false,"rationale":"Gerade gescheiterte Projekte sind lehrreich."},{"text":"Die Teamleiterin darf am Workshop nicht teilnehmen.","is_correct":false,"rationale":"Ihre Teilnahme ist nicht das Problem."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a1-al-2',
+  'projektabschluss',
+  'ordering',
+  null,
+  'Bringe die Schritte eines Lessons-Learned-Workshops in die richtige Reihenfolge.',
+  'Aus gesammelten Erfahrungen werden über die Ursachenanalyse konkrete Empfehlungen - und die müssen für andere auffindbar abgelegt werden.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Vorbereiten","Erfahrungen sammeln","Ursachen analysieren","Empfehlungen ableiten","Dokumentieren und zugänglich machen"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-km-1',
+  'kommunikation',
+  'matching',
+  'Ein Kunde sagt am Telefon: „Das Update hat schon wieder alles kaputt gemacht.“',
+  'Ordne jede Deutung der passenden Seite der Nachricht zu.',
+  'Nach Schulz von Thun sendet jede Nachricht vier Botschaften: Sache, Selbstoffenbarung, Beziehung und Appell. Im Support hilft es, vor allem den Sachinhalt und den Appell zu hören.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Sachinhalt","Selbstoffenbarung","Beziehung","Appell"],"match_items":[{"text":"Nach dem Update funktioniert etwas nicht.","bucket":0,"rationale":""},{"text":"Ich bin frustriert.","bucket":1,"rationale":""},{"text":"Ihr liefert schlechte Arbeit.","bucket":2,"rationale":""},{"text":"Macht das Update rückgängig!","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-km-2',
+  'kommunikation',
+  'single',
+  null,
+  'Was besagt das Axiom „Man kann nicht nicht kommunizieren“?',
+  'Watzlawicks erstes Axiom: Jedes Verhalten ist Kommunikation. Wer im Kundentermin auf sein Handy schaut, sendet eine Botschaft - auch ohne ein Wort.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Auch Schweigen oder Körpersprache senden eine Botschaft.","is_correct":true,"rationale":"Jedes Verhalten in Anwesenheit anderer hat Mitteilungscharakter."},{"text":"Man muss in jedem Gespräch etwas sagen.","is_correct":false,"rationale":"Das Axiom ist keine Verhaltensregel."},{"text":"Schriftliche Kommunikation zählt nicht.","is_correct":false,"rationale":"Auch sie ist Kommunikation."},{"text":"Kommunikation gelingt nur mit gemeinsamem Zeichenvorrat.","is_correct":false,"rationale":"Das stammt aus dem Sender-Empfänger-Modell."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-km-3',
+  'kommunikation',
+  'single',
+  'Ein Administrator erklärt einer Sachbearbeiterin: „Ihr DNS-Resolver liefert NXDOMAIN.“ Sie versteht nichts.',
+  'Welche Ursache beschreibt das Sender-Empfänger-Modell?',
+  'Verständigung setzt einen gemeinsamen Zeichenvorrat voraus. Fachsprache gegenüber Laien verletzt genau diese Bedingung.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sender und Empfänger haben keinen gemeinsamen Zeichenvorrat.","is_correct":true,"rationale":"Die Fachbegriffe sind der Empfängerin unbekannt - die Nachricht kann nicht entschlüsselt werden."},{"text":"Der Kanal ist gestört.","is_correct":false,"rationale":"Die Worte kommen an, sie werden nur nicht verstanden."},{"text":"Die Empfängerin hört nur mit dem Beziehungsohr.","is_correct":false,"rationale":"Das ist eine Deutung nach Schulz von Thun, hier fehlt schlicht das Fachwissen."},{"text":"Die Botschaft ist nonverbal.","is_correct":false,"rationale":"Sie ist verbal - nur unverständlich."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-kg-1',
+  'kommunikation',
+  'matching',
+  null,
+  'Um welche Frageart handelt es sich?',
+  'Offene Fragen sammeln Informationen, geschlossene klären Fakten, Alternativfragen führen zur Entscheidung. Suggestivfragen geben die Antwort vor und wirken manipulativ.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["offen","geschlossen","Alternativfrage","Suggestivfrage"],"match_items":[{"text":"Wie läuft die Rechnungsprüfung bei Ihnen heute ab?","bucket":0,"rationale":""},{"text":"Haben Sie den Rechner schon neu gestartet?","bucket":1,"rationale":""},{"text":"Soll ich morgens oder nachmittags vorbeikommen?","bucket":2,"rationale":""},{"text":"Sie möchten doch sicher auch das Wartungspaket?","bucket":3,"rationale":""},{"text":"Welche Probleme treten dabei auf?","bucket":0,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-kg-2',
+  'kommunikation',
+  'single',
+  'Eine Kundin schildert aufgebracht ein Problem mit ihrer Buchhaltungssoftware.',
+  'Welche Reaktion entspricht dem aktiven Zuhören?',
+  'Aktives Zuhören heißt: das Gesagte mit eigenen Worten wiedergeben, Gefühle anerkennen und Verständnis sichern.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"„Wenn ich Sie richtig verstehe, bricht der Export seit gestern ab - und das bremst Ihren Monatsabschluss.“","is_correct":true,"rationale":"Paraphrasieren und die Auswirkung ansprechen zeigt Verständnis und sichert das Verstehen."},{"text":"„Das kann eigentlich nicht sein, bei anderen Kunden läuft es.“","is_correct":false,"rationale":"Widerspricht und stellt die Kundin in Frage."},{"text":"„Haben Sie das Handbuch gelesen?“","is_correct":false,"rationale":"Wirkt belehrend und blockiert das Gespräch."},{"text":"„Beruhigen Sie sich erst einmal.“","is_correct":false,"rationale":"Übergeht das Anliegen und verstärkt oft den Ärger."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-kg-3',
+  'kommunikation',
+  'ordering',
+  null,
+  'Bringe die Phasen eines Beratungsgesprächs in eine sinnvolle Reihenfolge.',
+  'Erst verstehen, dann lösen: Wer vor der Bedarfsermittlung eine Lösung anbietet, rät nur.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Begrüßung und Gesprächsziel klären","Bedarf mit offenen Fragen ermitteln","Verständnis durch Zusammenfassen sichern","Lösung vorschlagen und mit dem Nutzen begründen","Nächste Schritte vereinbaren"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-kk-1',
+  'kommunikation',
+  'ordering',
+  null,
+  'Bringe die Bearbeitungsschritte eines Tickets in die richtige Reihenfolge.',
+  'Erst vollständig erfassen und einordnen, dann bearbeiten. Geschlossen wird erst, wenn die Lösung dokumentiert und vom Kunden bestätigt ist.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Anfrage erfassen","Kategorisieren","Priorisieren","Bearbeiten oder weiterleiten","Lösung dokumentieren und bestätigen lassen","Ticket schließen"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-kk-2',
+  'kommunikation',
+  'single',
+  null,
+  'Welches Ticket hat die höchste Priorität?',
+  'Die Priorität ergibt sich aus Dringlichkeit und Auswirkung. Ein Ausfall, der alle betrifft, hat Vorrang.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Der Mailserver ist für das ganze Unternehmen ausgefallen.","is_correct":true,"rationale":"Hohe Dringlichkeit und sehr große Auswirkung."},{"text":"Ein Drucker in der Buchhaltung druckt blass.","is_correct":false,"rationale":"Wenige Betroffene, Arbeit ist möglich."},{"text":"Eine Mitarbeiterin wünscht sich einen zweiten Monitor.","is_correct":false,"rationale":"Ein Wunsch ohne Störung."},{"text":"Ein Passwort läuft in zwei Wochen ab.","is_correct":false,"rationale":"Nicht dringlich."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-kk-3',
+  'kommunikation',
+  'single',
+  'Die Geschäftsführerin eines Kunden fragt, warum eine Firewall angeschafft werden soll.',
+  'Welche Antwort ist adressatengerecht?',
+  'Entscheider brauchen Nutzen, Risiken und Kosten - keine Technikdetails. Adressatengerecht heißt, die Sprache an das Gegenüber anzupassen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"„Sie schützt Ihr Firmennetz vor Angriffen aus dem Internet und verringert das Risiko teurer Ausfälle.“","is_correct":true,"rationale":"Nennt Nutzen und Wirkung in ihrer Sprache."},{"text":"„Weil sie stateful Packet Inspection auf Layer 4 macht.“","is_correct":false,"rationale":"Technisch richtig, für die Geschäftsführung aber unverständlich."},{"text":"„Weil man das heute eben so macht.“","is_correct":false,"rationale":"Keine Begründung."},{"text":"„Das würde zu lange dauern, das zu erklären.“","is_correct":false,"rationale":"Verweigert die Beratung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-tt-1',
+  'teamarbeit',
+  'ordering',
+  null,
+  'Bringe die Teamphasen nach Tuckman in die richtige Reihenfolge.',
+  'Orientierung, Konflikt, Regeln, Leistung, Auflösung.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Forming","Storming","Norming","Performing","Adjourning"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-tt-2',
+  'teamarbeit',
+  'single',
+  'Im neuen Projektteam gibt es ständig Diskussionen darüber, wer welche Aufgaben übernimmt und wessen Vorschlag umgesetzt wird.',
+  'In welcher Phase befindet sich das Team?',
+  'Offene Auseinandersetzungen über Rollen und Macht kennzeichnen die Storming-Phase.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Storming","is_correct":true,"rationale":"Rollen und Einfluss werden ausgehandelt - typisch für die Konfliktphase."},{"text":"Forming","is_correct":false,"rationale":"Da wäre das Team noch vorsichtig und höflich."},{"text":"Norming","is_correct":false,"rationale":"Da hätte man sich bereits auf Regeln geeinigt."},{"text":"Performing","is_correct":false,"rationale":"Da würde das Team konfliktarm und effektiv arbeiten."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-tt-3',
+  'teamarbeit',
+  'single',
+  null,
+  'Was hilft einem Team in der Norming-Phase am meisten?',
+  'In der Norming-Phase entstehen Regeln und Abläufe. Wer sie festhält, stabilisiert das Team.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Gemeinsam vereinbarte Regeln festhalten","is_correct":true,"rationale":"In dieser Phase einigt sich das Team auf seinen Umgang."},{"text":"Möglichst viel Freiraum ohne jede Absprache","is_correct":false,"rationale":"Das passt zur Performing-Phase."},{"text":"Konflikte unterdrücken","is_correct":false,"rationale":"Unterdrückte Konflikte brechen später wieder auf."},{"text":"Das Team neu zusammensetzen","is_correct":false,"rationale":"Das würde es in frühere Phasen zurückwerfen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-tf-1',
+  'teamarbeit',
+  'single',
+  null,
+  'Welche Aussage entspricht den Feedbackregeln?',
+  'Gutes Feedback beschreibt ein konkretes Verhalten zeitnah aus der eigenen Wahrnehmung.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"„Mir ist aufgefallen, dass im Testprotokoll gestern drei Testfälle fehlten.“","is_correct":true,"rationale":"Konkret, zeitnah, beschreibend und als Ich-Botschaft."},{"text":"„Du arbeitest immer schlampig.“","is_correct":false,"rationale":"Pauschal, bewertend und als Du-Botschaft."},{"text":"„Irgendwas stimmt mit deinen Tests nicht.“","is_correct":false,"rationale":"Unkonkret - der andere weiß nicht, was er ändern soll."},{"text":"„Das hätte ich dir schon vor drei Monaten sagen sollen.“","is_correct":false,"rationale":"Nicht zeitnah."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-tf-2',
+  'teamarbeit',
+  'multiple',
+  null,
+  'Wie verhält man sich richtig, wenn man Feedback erhält?',
+  'Wer Feedback annimmt, hört zu, fragt nach und entscheidet danach selbst, was er umsetzt.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Zuhören und ausreden lassen","is_correct":true,"rationale":"Nur so kommt die Rückmeldung vollständig an."},{"text":"Bei Unklarheit nachfragen","is_correct":true,"rationale":"Hilft, das Feedback richtig zu verstehen."},{"text":"Sich sofort rechtfertigen","is_correct":false,"rationale":"Blockiert das Gespräch und die eigene Entwicklung."},{"text":"Sich bedanken","is_correct":true,"rationale":"Feedback ist ein Geschenk - auch wenn es unbequem ist."},{"text":"Mit Gegenkritik antworten","is_correct":false,"rationale":"Macht aus dem Feedback einen Streit."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-tf-3',
+  'teamarbeit',
+  'single',
+  null,
+  'Welchen Bereich des Johari-Fensters verkleinert Feedback?',
+  'Feedback macht bewusst, wie man auf andere wirkt - der blinde Fleck schrumpft.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Den blinden Fleck","is_correct":true,"rationale":"Das, was andere an mir wahrnehmen, ich selbst aber nicht."},{"text":"Den öffentlichen Bereich","is_correct":false,"rationale":"Der wird durch Feedback eher größer."},{"text":"Den geheimen Bereich","is_correct":false,"rationale":"Der verkleinert sich, wenn ich selbst etwas preisgebe."},{"text":"Den unbekannten Bereich","is_correct":false,"rationale":"Den kennen weder ich noch andere."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-tk-1',
+  'teamarbeit',
+  'matching',
+  null,
+  'Um welche Konfliktart handelt es sich?',
+  'Sachkonflikt: Methoden. Beziehungskonflikt: Personen. Verteilungskonflikt: knappe Ressourcen. Rollenkonflikt: widersprüchliche Erwartungen an eine Person.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Sachkonflikt","Beziehungskonflikt","Verteilungskonflikt","Rollenkonflikt"],"match_items":[{"text":"Zwei Entwickler streiten, ob React oder Vue eingesetzt wird.","bucket":0,"rationale":""},{"text":"Zwei Kollegen gehen sich seit einer Kränkung aus dem Weg.","bucket":1,"rationale":""},{"text":"Zwei Teams beanspruchen dasselbe Testsystem.","bucket":2,"rationale":""},{"text":"Ein Mitarbeiter soll gleichzeitig im Projekt und in der Linie Vollzeit leisten.","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-tk-2',
+  'teamarbeit',
+  'single',
+  null,
+  'Welche Konfliktlösung ist am nachhaltigsten?',
+  'Beim Konsens werden die Interessen beider Seiten erfüllt - der Konflikt ist wirklich gelöst.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Konsens","is_correct":true,"rationale":"Beide erarbeiten eine gemeinsame Lösung und gewinnen."},{"text":"Kompromiss","is_correct":false,"rationale":"Beide geben nach - oft bleibt auf beiden Seiten Unzufriedenheit."},{"text":"Durchsetzen","is_correct":false,"rationale":"Es gibt einen Verlierer, der Konflikt schwelt weiter."},{"text":"Flucht","is_correct":false,"rationale":"Der Konflikt bleibt ungelöst."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-tk-3',
+  'teamarbeit',
+  'single',
+  null,
+  'Was regelt das Allgemeine Gleichbehandlungsgesetz (AGG)?',
+  'Das AGG schützt vor Diskriminierung - etwa bei Einstellung, Bezahlung und Beförderung.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Es verbietet Benachteiligung u. a. wegen Herkunft, Geschlecht, Religion, Behinderung, Alter oder sexueller Identität.","is_correct":true,"rationale":"Das ist der Kern des AGG."},{"text":"Es schreibt vor, dass alle Beschäftigten gleich viel verdienen.","is_correct":false,"rationale":"Das regelt es nicht."},{"text":"Es regelt die Mitbestimmung des Betriebsrats.","is_correct":false,"rationale":"Das regelt das Betriebsverfassungsgesetz."},{"text":"Es legt fest, wie Konflikte im Team gelöst werden.","is_correct":false,"rationale":"Das AGG betrifft Diskriminierung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-vh-1',
+  'verhandlung',
+  'multiple',
+  null,
+  'Welche Grundsätze gehören zum Harvard-Konzept?',
+  'Die vier Prinzipien: Menschen und Probleme trennen, Interessen statt Positionen, Optionen zum beiderseitigen Vorteil, neutrale Kriterien.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Menschen und Probleme getrennt behandeln","is_correct":true,"rationale":"Erstes Prinzip."},{"text":"Interessen statt Positionen in den Mittelpunkt stellen","is_correct":true,"rationale":"Zweites Prinzip."},{"text":"Neutrale Beurteilungskriterien verwenden","is_correct":true,"rationale":"Viertes Prinzip."},{"text":"Möglichst hoch einsteigen, um Spielraum zu haben","is_correct":false,"rationale":"Das ist klassisches Feilschen um Positionen."},{"text":"Die eigene Position nie ändern","is_correct":false,"rationale":"Widerspricht der Suche nach Optionen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-vh-2',
+  'verhandlung',
+  'single',
+  'Ein Kunde fordert: „Die Software muss bis Freitag komplett fertig sein.“ Auf Nachfrage erfährt der Projektleiter, dass am Montag eine Messe beginnt, auf der die Software gezeigt werden soll.',
+  'Wie geht man nach dem Harvard-Konzept vor?',
+  'Hinter der Position („bis Freitag fertig“) steht ein Interesse („Messe am Montag“). Wer das Interesse bedient, findet oft eine bessere Lösung für beide.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Eine vorführbare Demo-Version bis Freitag vorschlagen, die fertige Software folgt später.","is_correct":true,"rationale":"Erfüllt das eigentliche Interesse (Präsentation auf der Messe) und entlastet den Termin."},{"text":"Auf der ursprünglichen Planung bestehen.","is_correct":false,"rationale":"Ignoriert das Interesse des Kunden."},{"text":"Zusagen, obwohl es nicht zu schaffen ist.","is_correct":false,"rationale":"Löst das Problem nicht, sondern verschiebt es."},{"text":"Den Preis erhöhen, damit der Kunde zurückweicht.","is_correct":false,"rationale":"Druck statt Lösung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-vh-3',
+  'verhandlung',
+  'single',
+  null,
+  'Wozu dient die BATNA in einer Verhandlung?',
+  'Wer seine beste Alternative kennt, lässt sich nicht zu einer schlechten Einigung drängen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sie zeigt, ab wann ein Angebot schlechter ist als keine Einigung.","is_correct":true,"rationale":"Die beste Alternative zur Verhandlungslösung ist die Untergrenze."},{"text":"Sie ist der höchste Preis, den man verlangen darf.","is_correct":false,"rationale":"Sie beschreibt eine Alternative, keinen Preis."},{"text":"Sie ist eine Liste aller Forderungen.","is_correct":false,"rationale":"Das wären Positionen."},{"text":"Sie ist ein Vertragsmuster.","is_correct":false,"rationale":"Sie ist kein Dokument."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-ve-1',
+  'verhandlung',
+  'matching',
+  null,
+  'Welche Methode der Einwandbehandlung wird angewendet?',
+  'Ja-aber: zustimmen und ergänzen. Bumerang: Einwand wird zum Argument. Rückfrage: Hintergrund klären. Referenz: auf zufriedene Kunden verweisen.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Ja-aber","Bumerang","Rückfrage","Referenz"],"match_items":[{"text":"„Ja, der Preis ist höher - dafür ist die Wartung drei Jahre inklusive.“","bucket":0,"rationale":""},{"text":"„Gerade weil Ihr Team klein ist, entlastet das System es spürbar.“","bucket":1,"rationale":""},{"text":"„Was genau erscheint Ihnen zu kompliziert?“","bucket":2,"rationale":""},{"text":"„Ein Betrieb Ihrer Größe nutzt es seit zwei Jahren erfolgreich.“","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-ve-2',
+  'verhandlung',
+  'single',
+  null,
+  'Welche Aussage folgt der Nutzenargumentation?',
+  'Kunden kaufen Nutzen, nicht Technik. Überzeugend ist die Kette Merkmal - Vorteil - Nutzen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"„Dank der SSD startet der Rechner in Sekunden - Ihre Mitarbeitenden verlieren morgens keine Zeit.“","is_correct":true,"rationale":"Vom Merkmal über den Vorteil zum Nutzen für den Kunden."},{"text":"„Der Rechner hat eine SSD mit 1 TB.“","is_correct":false,"rationale":"Nennt nur das Merkmal."},{"text":"„Das ist unser beliebtestes Modell.“","is_correct":false,"rationale":"Kein konkreter Nutzen."},{"text":"„Die SSD ist technisch sehr modern.“","is_correct":false,"rationale":"Ein Vorteil ohne Bezug zum Kunden."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-ve-3',
+  'verhandlung',
+  'single',
+  'Am Ende einer Präsentation sagt der Kunde: „Ich muss noch mal drüber schlafen.“ Vorher war er begeistert.',
+  'Wie reagiert man am besten?',
+  'Unkonkrete Aussagen nach vorheriger Zustimmung sind oft Vorwände. Eine offene Rückfrage bringt den echten Einwand ans Licht.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Mit einer Rückfrage den eigentlichen Grund herausfinden","is_correct":true,"rationale":"Es könnte ein Vorwand sein - die Rückfrage deckt den wahren Grund auf."},{"text":"Sofort einen Rabatt anbieten","is_correct":false,"rationale":"Setzt voraus, dass es am Preis liegt - vielleicht zu Unrecht."},{"text":"Das Gespräch beenden","is_correct":false,"rationale":"Verschenkt die Chance, einen echten Einwand zu klären."},{"text":"Dem Kunden widersprechen","is_correct":false,"rationale":"Erzeugt Abwehr."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-pp-1',
+  'praesentation',
+  'matching',
+  null,
+  'Welche Diagrammart eignet sich am besten?',
+  'Balken vergleichen, Linien zeigen Entwicklungen, Kreise zeigen Anteile an einem Ganzen.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Balkendiagramm","Liniendiagramm","Kreisdiagramm"],"match_items":[{"text":"Kosten dreier Angebote vergleichen","bucket":0,"rationale":""},{"text":"Entwicklung der Ticketzahlen über zwölf Monate","bucket":1,"rationale":""},{"text":"Anteil der Betriebssysteme im Unternehmen","bucket":2,"rationale":""},{"text":"Umsatz je Abteilung gegenüberstellen","bucket":0,"rationale":""},{"text":"Verlauf der Serverauslastung über einen Tag","bucket":1,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-pp-2',
+  'praesentation',
+  'multiple',
+  null,
+  'Welche Regeln gelten für gute Präsentationsfolien?',
+  'Gute Folien sind knapp, einheitlich und visuell - der Vortrag liefert die Erklärung.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Eine Kernaussage pro Folie","is_correct":true,"rationale":"Hält die Aufmerksamkeit auf dem Wesentlichen."},{"text":"Wenig Text, große Schrift","is_correct":true,"rationale":"Folien sollen unterstützen, nicht vorgelesen werden."},{"text":"Möglichst vollständige Sätze, damit nichts vergessen wird","is_correct":false,"rationale":"Dann lesen die Zuhörer, statt zuzuhören."},{"text":"Diagramme statt Zahlenkolonnen","is_correct":true,"rationale":"Grafiken erfasst man schneller."},{"text":"Jede Folie mit anderem Design","is_correct":false,"rationale":"Wirkt unruhig und unprofessionell."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-pp-3',
+  'praesentation',
+  'single',
+  null,
+  'Womit beginnt die Vorbereitung einer Präsentation?',
+  'Erst klären, was die Zuhörer danach wissen oder tun sollen und was sie mitbringen - dann Inhalte, Gliederung und Folien.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Mit dem Ziel und der Zielgruppe","is_correct":true,"rationale":"Ohne Ziel und Zielgruppe lassen sich Inhalte nicht sinnvoll auswählen."},{"text":"Mit dem Folien-Design","is_correct":false,"rationale":"Das ist der letzte Schritt."},{"text":"Mit dem Üben des Vortrags","is_correct":false,"rationale":"Geübt wird, wenn die Inhalte stehen."},{"text":"Mit der Auswahl der Schriftart","is_correct":false,"rationale":"Nebensache."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-pq-1',
+  'praesentation',
+  'matching',
+  null,
+  'Primär- oder Sekundärquelle?',
+  'Primärquellen liefern Originalinformation, Sekundärquellen bereiten sie auf - und können dabei Fehler einbauen.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Primärquelle","Sekundärquelle"],"match_items":[{"text":"Offizielles Datenblatt des Herstellers","bucket":0,"rationale":""},{"text":"Beitrag in einem IT-Forum","bucket":1,"rationale":""},{"text":"Text der DSGVO","bucket":0,"rationale":""},{"text":"Zusammenfassung der DSGVO in einem Blog","bucket":1,"rationale":""},{"text":"Eigene Messung der Übertragungsrate","bucket":0,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-pq-2',
+  'praesentation',
+  'multiple',
+  null,
+  'Nach welchen Kriterien bewertet man eine Informationsquelle?',
+  'Aktualität, Urheber, Objektivität, Nachprüfbarkeit und Relevanz entscheiden über die Qualität einer Quelle.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Aktualität","is_correct":true,"rationale":"Gerade in der IT veralten Informationen schnell."},{"text":"Urheber und Kompetenz","is_correct":true,"rationale":"Wer steht hinter der Information?"},{"text":"Objektivität","is_correct":true,"rationale":"Verfolgt der Autor ein Verkaufsinteresse?"},{"text":"Anzahl der Bilder","is_correct":false,"rationale":"Kein Qualitätsmerkmal."},{"text":"Länge des Textes","is_correct":false,"rationale":"Länge sagt nichts über Richtigkeit."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-pq-3',
+  'praesentation',
+  'single',
+  null,
+  'Wie geht man mit einer Antwort eines KI-Chatbots für eine Präsentation um?',
+  'KI kann bei der Recherche helfen, ersetzt aber keine Quelle. Aussagen müssen belegt werden.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Wichtige Aussagen an einer Primärquelle überprüfen","is_correct":true,"rationale":"KI-Antworten können plausibel klingen und trotzdem falsch sein."},{"text":"Direkt übernehmen, weil KI keine Fehler macht","is_correct":false,"rationale":"KI-Modelle können Fakten erfinden."},{"text":"Als Primärquelle zitieren","is_correct":false,"rationale":"Ein Chatbot ist keine Primärquelle."},{"text":"Gar nicht verwenden, weil KI verboten ist","is_correct":false,"rationale":"Der Einsatz ist erlaubt, die Prüfung notwendig."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-pa-1',
+  'praesentation',
+  'single',
+  null,
+  'Welche Aussage über Anfrage und Angebot ist richtig?',
+  'Anfrage: unverbindlich. Angebot: verbindlich, sofern es nicht durch eine Freizeichnungsklausel eingeschränkt ist.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Anfrage ist unverbindlich, das Angebot bindet den Anbieter.","is_correct":true,"rationale":"Wer anfragt, muss nicht kaufen. Wer anbietet, muss liefern, wenn rechtzeitig angenommen wird."},{"text":"Beide sind rechtlich unverbindlich.","is_correct":false,"rationale":"Das Angebot ist eine verbindliche Willenserklärung."},{"text":"Die Anfrage bindet den Kunden zur Abnahme.","is_correct":false,"rationale":"Eine Anfrage verpflichtet zu nichts."},{"text":"Ein Angebot bindet nur, wenn es notariell beurkundet ist.","is_correct":false,"rationale":"Eine besondere Form ist bei IT-Angeboten nicht nötig."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-pa-2',
+  'praesentation',
+  'single',
+  'Ein Händler schickt per E-Mail ein Angebot ohne Frist. Der Kunde antwortet erst nach sechs Wochen mit einer Bestellung.',
+  'Ist der Händler noch gebunden?',
+  'Ohne Frist bindet ein Angebot unter Abwesenden nur für die übliche Antwortzeit. Eine verspätete Annahme gilt als neues Angebot.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Nein - unter Abwesenden bindet ein Angebot nur so lange, wie unter normalen Umständen mit einer Antwort zu rechnen ist.","is_correct":true,"rationale":"Sechs Wochen sind deutlich zu lang - die Bestellung ist ein neues Angebot des Kunden."},{"text":"Ja - Angebote gelten unbegrenzt.","is_correct":false,"rationale":"Ohne Frist gilt die übliche Antwortzeit."},{"text":"Ja - E-Mail-Angebote gelten immer drei Monate.","is_correct":false,"rationale":"Eine solche Regel gibt es nicht."},{"text":"Nein - E-Mail-Angebote sind nie verbindlich.","is_correct":false,"rationale":"Auch E-Mail-Angebote binden."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-pa-3',
+  'praesentation',
+  'multiple',
+  null,
+  'Was gehört in ein vollständiges Angebot?',
+  'Ein Angebot beschreibt Leistung, Preis, Zahlungs- und Lieferbedingungen sowie Gewährleistung und Gültigkeit.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Art, Güte und Menge der Leistung","is_correct":true,"rationale":"Beschreibt, was genau geliefert wird."},{"text":"Preis und Zahlungsbedingungen","is_correct":true,"rationale":"Ohne Preis kein Angebot."},{"text":"Lieferzeit und Lieferbedingungen","is_correct":true,"rationale":"Regelt wann und wie geliefert wird."},{"text":"Die private Telefonnummer des Geschäftsführers","is_correct":false,"rationale":"Gehört nicht ins Angebot."},{"text":"Die Gewinnmarge des Anbieters","is_correct":false,"rationale":"Interne Kalkulation bleibt intern."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-mm-1',
+  'markt_marketing',
+  'matching',
+  null,
+  'Welche Marktform liegt vor? (jeweils viele Nachfrager)',
+  'Polypol: viele Anbieter. Oligopol: wenige. Monopol: einer.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Polypol","Oligopol","Monopol"],"match_items":[{"text":"Hunderte IT-Dienstleister bieten in einer Region Support an.","bucket":0,"rationale":""},{"text":"Drei große Anbieter teilen sich den Markt für Cloud-Infrastruktur.","bucket":1,"rationale":""},{"text":"Nur ein Anbieter vertreibt eine vorgeschriebene Fachsoftware.","bucket":2,"rationale":""},{"text":"Viele Onlinehändler verkaufen dieselben USB-Sticks.","bucket":0,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-mm-2',
+  'markt_marketing',
+  'single',
+  null,
+  'In welcher Marktform hat der Anbieter die größte Macht über den Preis?',
+  'Je weniger Anbieter, desto größer ihre Preismacht - am größten im Monopol.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Monopol","is_correct":true,"rationale":"Ohne Konkurrenz ist der Preis nur durch die Zahlungsbereitschaft begrenzt."},{"text":"Polypol","is_correct":false,"rationale":"Hier bestimmt der Wettbewerb den Preis."},{"text":"Oligopol","is_correct":false,"rationale":"Die Macht ist groß, aber zwischen wenigen verteilt."},{"text":"In allen gleich","is_correct":false,"rationale":"Die Zahl der Anbieter macht den Unterschied."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-mm-3',
+  'markt_marketing',
+  'single',
+  null,
+  'Eine Behörde ist der einzige Abnehmer eines speziellen Verwaltungssystems, das viele Firmen entwickeln könnten. Welche Marktform liegt vor?',
+  'Marktformen gibt es auf beiden Seiten. Ein einziger Nachfrager bildet ein Nachfragemonopol.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Nachfragemonopol","is_correct":true,"rationale":"Viele Anbieter, ein einziger Nachfrager."},{"text":"Angebotsmonopol","is_correct":false,"rationale":"Dann gäbe es nur einen Anbieter."},{"text":"Polypol","is_correct":false,"rationale":"Dafür bräuchte es viele Nachfrager."},{"text":"Oligopol","is_correct":false,"rationale":"Das beschreibt wenige Anbieter."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-mb-1',
+  'markt_marketing',
+  'ordering',
+  null,
+  'Bringe die Begriffe in die richtige Reihenfolge - vom ersten Gefühl bis zum Kauf.',
+  'Bedürfnis (Mangel), Bedarf (Bedürfnis mit Kaufkraft), Nachfrage (am Markt wirksamer Bedarf).',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Bedürfnis","Bedarf","Nachfrage"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-mb-2',
+  'markt_marketing',
+  'single',
+  null,
+  'Welche Stufe der Maslow-Pyramide spricht ein sicherer, unbefristeter Arbeitsvertrag an?',
+  'Die Pyramide von unten: Grundbedürfnisse, Sicherheit, soziale Bedürfnisse, Wertschätzung, Selbstverwirklichung.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sicherheitsbedürfnisse","is_correct":true,"rationale":"Stufe 2: Absicherung und Planbarkeit."},{"text":"Grundbedürfnisse","is_correct":false,"rationale":"Stufe 1: Essen, Schlaf, Wohnung."},{"text":"Soziale Bedürfnisse","is_correct":false,"rationale":"Stufe 3: Zugehörigkeit."},{"text":"Selbstverwirklichung","is_correct":false,"rationale":"Stufe 5: persönliche Entfaltung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-mb-3',
+  'markt_marketing',
+  'single',
+  'Ein Kleinbetrieb mit drei Arbeitsplätzen wünscht sich einen großen Rack-Server, „weil das professionell ist“. Gespeichert werden sollen nur Office-Dateien.',
+  'Wie berät man richtig?',
+  'Wunsch ist nicht Bedarf. Wer den echten Bedarf ermittelt, spart dem Kunden Geld und gewinnt Vertrauen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Den tatsächlichen Bedarf klären und eine passende Lösung wie ein NAS empfehlen","is_correct":true,"rationale":"Gute Beratung orientiert sich am Bedarf, nicht am Wunsch."},{"text":"Den Server liefern - der Kunde hat es so gewollt","is_correct":false,"rationale":"Überdimensioniert und teuer ohne Nutzen."},{"text":"Den Auftrag ablehnen","is_correct":false,"rationale":"Verschenkt eine sinnvolle Lösung."},{"text":"Zwei Server empfehlen, um auf der sicheren Seite zu sein","is_correct":false,"rationale":"Noch weiter vom Bedarf entfernt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-mk-1',
+  'markt_marketing',
+  'matching',
+  null,
+  'Zu welchem Instrument des Marketing-Mix gehört die Maßnahme?',
+  'Produkt: was angeboten wird. Preis: zu welchen Konditionen. Distribution: über welchen Weg. Kommunikation: wie es bekannt wird.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Produktpolitik","Preispolitik","Distributionspolitik","Kommunikationspolitik"],"match_items":[{"text":"Drei Jahre Vor-Ort-Garantie ins Angebot aufnehmen","bucket":0,"rationale":""},{"text":"10 % Frühbucherrabatt gewähren","bucket":1,"rationale":""},{"text":"Die Software zusätzlich über einen Onlineshop vertreiben","bucket":2,"rationale":""},{"text":"Einen Stand auf einer IT-Messe betreiben","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-mk-2',
+  'markt_marketing',
+  'ordering',
+  null,
+  'Bringe die Stufen der AIDA-Formel in die richtige Reihenfolge.',
+  'Aufmerksamkeit wecken, Interesse erzeugen, Wunsch auslösen, zum Handeln bewegen.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Attention","Interest","Desire","Action"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-mk-3',
+  'markt_marketing',
+  'single',
+  null,
+  'Welches Element einer Werbeanzeige gehört zur Stufe „Action“?',
+  'Action ist die Aufforderung zum Handeln - kaufen, testen, anrufen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"„Jetzt 30 Tage kostenlos testen“","is_correct":true,"rationale":"Eine konkrete Handlungsaufforderung."},{"text":"Eine auffällige Überschrift","is_correct":false,"rationale":"Das ist Attention."},{"text":"Zahlen zu Datenverlusten im Mittelstand","is_correct":false,"rationale":"Das weckt Interest."},{"text":"Die Beschreibung, wie bequem die Lösung ist","is_correct":false,"rationale":"Das erzeugt Desire."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-ma-1',
+  'markt_marketing',
+  'numeric',
+  'Jahresumsatz je Produkt (gesamt 100.000 €):
+P1: 50.000 €
+P2: 25.000 €
+P3: 12.000 €
+P4: 8.000 €
+P5: 5.000 €',
+  'Wie groß ist der kumulierte Umsatzanteil von P1 und P2 in Prozent?',
+  'P1: 50.000 / 100.000 = 50 %. P2: 25 %. Kumuliert: 50 % + 25 % = 75 % - beide gehören zur A-Klasse.',
+  2,
+  '{}',
+  null,
+  '{"answer":75.0,"tolerance":0.0,"unit":"%"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-ma-2',
+  'markt_marketing',
+  'ordering',
+  null,
+  'Bringe die Schritte der ABC-Analyse in die richtige Reihenfolge.',
+  'Ohne Sortierung und Kumulierung lassen sich die Klassengrenzen nicht ziehen.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Wert je Objekt ermitteln","Nach Wert absteigend sortieren","Anteil am Gesamtwert berechnen","Anteile kumulieren","Klassen A, B und C zuordnen"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-ma-3',
+  'markt_marketing',
+  'single',
+  null,
+  'Was ist typisch für C-Kunden?',
+  'A: wenige Objekte, großer Wert. C: viele Objekte, kleiner Wert - effizient betreuen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Viele Kunden mit geringem Umsatzanteil","is_correct":true,"rationale":"Die C-Klasse umfasst die Masse mit wenig Wertbeitrag."},{"text":"Wenige Kunden mit dem größten Umsatzanteil","is_correct":false,"rationale":"Das sind A-Kunden."},{"text":"Kunden, die besonders intensiv betreut werden müssen","is_correct":false,"rationale":"Intensive Betreuung lohnt sich vor allem bei A-Kunden."},{"text":"Kunden, die man sofort kündigen sollte","is_correct":false,"rationale":"Auch C-Kunden tragen zum Umsatz bei - sie werden nur effizienter betreut."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-mr-1',
+  'markt_marketing',
+  'matching',
+  null,
+  'Ordne die Aussage der passenden Rechtsform zu.',
+  'GmbH: Stammkapital 25.000 €. AG: drei Organe. KG: Komplementär und Kommanditist. Einzelunternehmen: Inhaber haftet allein und voll.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["GmbH","AG","KG","Einzelunternehmen"],"match_items":[{"text":"25.000 € Stammkapital, Haftung mit dem Gesellschaftsvermögen","bucket":0,"rationale":""},{"text":"Organe sind Vorstand, Aufsichtsrat und Hauptversammlung","bucket":1,"rationale":""},{"text":"Ein Gesellschafter haftet unbeschränkt, ein anderer nur mit seiner Einlage","bucket":2,"rationale":""},{"text":"Eine Person entscheidet allein und haftet unbeschränkt","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-mr-2',
+  'markt_marketing',
+  'single',
+  'Zwei Auszubildende wollen nebenbei einen kleinen IT-Service gründen. Sie haben kaum Startkapital, wollen aber nicht mit ihrem Privatvermögen haften.',
+  'Welche Rechtsform passt?',
+  'Die UG verbindet Haftungsbeschränkung mit minimalem Startkapital. Sie muss dafür Gewinne ansparen, bis 25.000 € erreicht sind.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"UG (haftungsbeschränkt)","is_correct":true,"rationale":"Haftungsbeschränkt wie eine GmbH, aber schon ab 1 € Stammkapital."},{"text":"GbR","is_correct":false,"rationale":"Die Gesellschafter haften unbeschränkt mit ihrem Privatvermögen."},{"text":"AG","is_correct":false,"rationale":"Braucht 50.000 € Grundkapital und ist sehr aufwendig."},{"text":"OHG","is_correct":false,"rationale":"Alle Gesellschafter haften unbeschränkt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a2-mr-3',
+  'markt_marketing',
+  'single',
+  null,
+  'Womit haften die Gesellschafter einer GmbH für Schulden der Gesellschaft?',
+  'Bei Kapitalgesellschaften haftet das Gesellschaftsvermögen. Gesellschafter riskieren ihre Einlage - außer sie haben sich zusätzlich persönlich verbürgt.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Nur mit ihrer Einlage - die GmbH haftet mit ihrem Gesellschaftsvermögen","is_correct":true,"rationale":"Das Privatvermögen der Gesellschafter ist grundsätzlich geschützt."},{"text":"Unbeschränkt mit ihrem Privatvermögen","is_correct":false,"rationale":"Das gilt bei Personengesellschaften wie OHG oder GbR."},{"text":"Gar nicht - eine GmbH haftet nie","is_correct":false,"rationale":"Die GmbH haftet - aber mit ihrem eigenen Vermögen."},{"text":"Nur mit dem Geschäftsführergehalt","is_correct":false,"rationale":"Eine solche Regel gibt es nicht."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-hk-1',
+  'hardware',
+  'matching',
+  null,
+  'Ordne jedes Gerät dem passenden Teil des EVA-Prinzips zu.',
+  'Eingabegeräte liefern Daten, der Prozessor verarbeitet sie, Ausgabegeräte geben das Ergebnis aus.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Eingabe","Verarbeitung","Ausgabe"],"match_items":[{"text":"Tastatur","bucket":0,"rationale":""},{"text":"Prozessor","bucket":1,"rationale":""},{"text":"Monitor","bucket":2,"rationale":""},{"text":"Scanner","bucket":0,"rationale":""},{"text":"Drucker","bucket":2,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-hk-2',
+  'hardware',
+  'single',
+  'Ein Büro-PC wird zäh, sobald mehrere Programme offen sind. Die Festplattenaktivität ist dabei dauerhaft hoch.',
+  'Welche Aufrüstung hilft am wahrscheinlichsten?',
+  'Zu wenig RAM führt zu Auslagerung. Dann arbeitet der Datenträger ständig, und alles wird träge.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Mehr Arbeitsspeicher","is_correct":true,"rationale":"Reicht der RAM nicht, lagert das System auf den Datenträger aus - das erklärt die Dauerlast."},{"text":"Eine bessere Grafikkarte","is_correct":false,"rationale":"Die Grafik spielt bei Büroarbeit kaum eine Rolle."},{"text":"Ein größerer Monitor","is_correct":false,"rationale":"Ändert nichts an der Rechenleistung."},{"text":"Ein stärkeres Netzteil","is_correct":false,"rationale":"Die Stromversorgung ist nicht der Engpass."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-hk-3',
+  'hardware',
+  'multiple',
+  null,
+  'Welche Aussagen zu UEFI sind richtig?',
+  'UEFI ist moderne Firmware: große Datenträger, grafische Oberfläche, Secure Boot.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Es ist der Nachfolger des klassischen BIOS.","is_correct":true,"rationale":"UEFI hat das BIOS weitgehend abgelöst."},{"text":"Es unterstützt GPT-Datenträger über 2 TiB.","is_correct":true,"rationale":"Das klassische BIOS mit MBR ist auf 2 TiB begrenzt."},{"text":"Secure Boot startet nur signierte Bootloader.","is_correct":true,"rationale":"Das erschwert Schadsoftware, die sich vor dem Betriebssystem einnistet."},{"text":"UEFI ist ein Betriebssystem.","is_correct":false,"rationale":"Es ist Firmware, die das Betriebssystem startet."},{"text":"UEFI speichert alle Nutzerdaten.","is_correct":false,"rationale":"Nutzerdaten liegen auf dem Datenträger."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-hs-1',
+  'hardware',
+  'numeric',
+  null,
+  'Eine SSD hat laut Hersteller 500 GB. Wie viele GiB zeigt das Betriebssystem an? (auf eine Nachkommastelle)',
+  '500 GB = 500 × 10⁹ Byte. 1 GiB = 1.024³ = 1.073.741.824 Byte. 500.000.000.000 / 1.073.741.824 ≈ 465,7 GiB.',
+  2,
+  '{}',
+  null,
+  '{"answer":465.7,"tolerance":0.05,"unit":"GiB"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-hs-2',
+  'hardware',
+  'single',
+  'Für ein Außendienst-Notebook soll ein neuer Datenträger gewählt werden.',
+  'Welcher Datenträger passt am besten?',
+  'SSDs haben keine beweglichen Teile. Für Notebooks sind sie wegen Tempo, Robustheit und Stromverbrauch Standard.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"NVMe-SSD","is_correct":true,"rationale":"Schnell, stoßfest und stromsparend - ideal für ein mobiles Gerät."},{"text":"3,5-Zoll-HDD","is_correct":false,"rationale":"Passt nicht ins Notebook, ist stoßempfindlich und langsam."},{"text":"Bandlaufwerk","is_correct":false,"rationale":"Für Archivierung, nicht für den Arbeitsbetrieb."},{"text":"USB-Stick als Systemlaufwerk","is_correct":false,"rationale":"Zu langsam und unzuverlässig als Hauptdatenträger."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-hs-3',
+  'hardware',
+  'multiple',
+  null,
+  'Welche Aussagen zum Vergleich HDD und SSD sind richtig?',
+  'SSD: schnell, robust, begrenzte Schreibzyklen. HDD: günstig pro GB, mechanisch empfindlich.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die SSD hat eine deutlich geringere Zugriffszeit.","is_correct":true,"rationale":"Kein Lesekopf muss sich bewegen."},{"text":"Die HDD ist pro Gigabyte günstiger.","is_correct":true,"rationale":"Deshalb eignet sie sich für große Archive."},{"text":"Die HDD ist unempfindlicher gegen Stöße.","is_correct":false,"rationale":"Umgekehrt - die Mechanik der HDD ist stoßempfindlich."},{"text":"SSDs vertragen nur eine begrenzte Menge an Schreibvorgängen.","is_correct":true,"rationale":"Angegeben als TBW."},{"text":"Eine SATA-SSD ist schneller als eine NVMe-SSD.","is_correct":false,"rationale":"NVMe über PCIe ist deutlich schneller."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-hi-1',
+  'hardware',
+  'single',
+  null,
+  'Welche Aussage zu USB-C ist richtig?',
+  'Stecker und Standard sind zwei Paar Schuhe - die Datenrate steht im Datenblatt.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"USB-C beschreibt nur die Steckerform - die Geschwindigkeit hängt vom unterstützten Standard ab.","is_correct":true,"rationale":"Über USB-C kann USB 2.0 ebenso laufen wie USB4."},{"text":"USB-C überträgt immer mit 40 Gbit/s.","is_correct":false,"rationale":"Das kann nur USB4 bzw. Thunderbolt."},{"text":"USB-C ist ein anderer Name für USB 3.0.","is_correct":false,"rationale":"USB 3.0 heißt heute USB 3.2 Gen 1 und ist ein Standard, keine Steckerform."},{"text":"USB-C kann keinen Strom übertragen.","is_correct":false,"rationale":"USB-C unterstützt sogar hohe Ladeleistungen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-hi-2',
+  'hardware',
+  'matching',
+  null,
+  'Ordne die maximale Datenrate zu.',
+  'USB 2.0: 480 Mbit/s. USB 3.2 Gen 1: 5 Gbit/s. Gen 2: 10 Gbit/s. USB4: bis 40 Gbit/s.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["480 Mbit/s","5 Gbit/s","10 Gbit/s","40 Gbit/s"],"match_items":[{"text":"USB 2.0","bucket":0,"rationale":""},{"text":"USB 3.2 Gen 1","bucket":1,"rationale":""},{"text":"USB 3.2 Gen 2","bucket":2,"rationale":""},{"text":"USB4","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-hi-3',
+  'hardware',
+  'single',
+  'Eine Kanzlei druckt täglich mehrere hundert Seiten Text in Schwarzweiß.',
+  'Welches Gerät ist am wirtschaftlichsten?',
+  'Bei hohem Textvolumen sind Laserdrucker wegen der niedrigen Seitenkosten die erste Wahl.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Monochrom-Laserdrucker","is_correct":true,"rationale":"Günstige Kosten pro Seite und hohe Geschwindigkeit bei viel Text."},{"text":"Fotodrucker mit sechs Tintenfarben","is_correct":false,"rationale":"Für Fotos gebaut, bei Text teuer pro Seite."},{"text":"Tintenstrahl-Multifunktionsgerät für den Heimgebrauch","is_correct":false,"rationale":"Für geringe Druckvolumen ausgelegt."},{"text":"Nadeldrucker","is_correct":false,"rationale":"Nur noch für Durchschläge relevant, laut und langsam."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-hu-1',
+  'hardware',
+  'numeric',
+  null,
+  'Die angeschlossenen Geräte benötigen zusammen 540 W. Geplant werden 20 % Reserve, der Leistungsfaktor der USV beträgt 0,9. Wie viel VA muss die USV mindestens haben?',
+  '540 W × 1,2 = 648 W. Scheinleistung = 648 W / 0,9 = 720 VA.',
+  2,
+  '{}',
+  null,
+  '{"answer":720.0,"tolerance":0.0,"unit":"VA"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-hu-2',
+  'hardware',
+  'single',
+  null,
+  'Welcher USV-Typ bietet den besten Schutz ohne jede Umschaltzeit?',
+  'Die Online-USV bietet den höchsten Schutz, kostet aber mehr und hat höhere Verluste.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Online-USV (Doppelwandler)","is_correct":true,"rationale":"Die Last hängt dauerhaft am Wechselrichter - ein Ausfall wird nicht einmal bemerkt."},{"text":"Offline-USV","is_correct":false,"rationale":"Sie schaltet erst bei Ausfall um - mit kurzer Umschaltzeit."},{"text":"Line-Interactive-USV","is_correct":false,"rationale":"Sie regelt Schwankungen aus, schaltet bei Ausfall aber ebenfalls um."},{"text":"Überspannungsschutz-Steckdosenleiste","is_correct":false,"rationale":"Das ist keine USV - sie hat keinen Akku."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-hu-3',
+  'hardware',
+  'single',
+  null,
+  'Wie lang muss die Überbrückungszeit einer USV für einen Server mindestens sein?',
+  'Die USV soll den Betrieb überbrücken, bis alle Systeme sauber herunterfahren - idealerweise automatisch ausgelöst.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Lang genug, um den Server geordnet herunterzufahren","is_correct":true,"rationale":"Das verhindert Datenverlust und beschädigte Dateisysteme."},{"text":"Mindestens 24 Stunden","is_correct":false,"rationale":"Das wäre für eine USV unüblich und sehr teuer."},{"text":"Wenige Millisekunden","is_correct":false,"rationale":"Das reicht nur zum Überbrücken einer Umschaltung."},{"text":"Egal, Hauptsache sie hat einen Akku","is_correct":false,"rationale":"Eine zu kurze Zeit schützt nicht vor Datenverlust."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-ha-1',
+  'hardware',
+  'numeric',
+  null,
+  'Ein Monitor verbraucht 25 W und läuft 10 Stunden am Tag an 250 Tagen im Jahr. Strom kostet 0,32 € pro kWh. Wie hoch sind die jährlichen Stromkosten?',
+  '25 W × 10 h × 250 = 62.500 Wh = 62,5 kWh. 62,5 kWh × 0,32 € = 20,00 €.',
+  2,
+  '{}',
+  null,
+  '{"answer":20.0,"tolerance":0.01,"unit":"€"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-ha-2',
+  'hardware',
+  'multiple',
+  null,
+  'Welche Maßnahmen gehören zu Green IT?',
+  'Green IT senkt Energie- und Ressourcenverbrauch über den gesamten Lebenszyklus.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Server virtualisieren und konsolidieren","is_correct":true,"rationale":"Weniger physische Server brauchen weniger Energie."},{"text":"Geräte automatisch in den Energiesparmodus versetzen","is_correct":true,"rationale":"Senkt den Verbrauch in Pausen."},{"text":"Altgeräte fachgerecht recyceln","is_correct":true,"rationale":"Schont Ressourcen und Umwelt."},{"text":"Alle Geräte jedes Jahr ersetzen","is_correct":false,"rationale":"Die Herstellung verbraucht viel Energie - lange Nutzung ist nachhaltiger."},{"text":"Bildschirmschoner mit Animation dauerhaft laufen lassen","is_correct":false,"rationale":"Verbraucht unnötig Strom."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-ha-3',
+  'hardware',
+  'single',
+  null,
+  'Wie wird ein Bildschirm ergonomisch aufgestellt?',
+  'Die Arbeitsstättenverordnung verlangt blendfreie Bildschirmarbeitsplätze mit ergonomischer Aufstellung.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Oberkante auf oder leicht unter Augenhöhe, seitlich zum Fenster","is_correct":true,"rationale":"Entspannte Kopfhaltung und keine Blendung."},{"text":"Direkt vor dem Fenster mit Blick nach draußen","is_correct":false,"rationale":"Führt zu Blendung durch das Gegenlicht."},{"text":"Deutlich über Augenhöhe","is_correct":false,"rationale":"Führt zu Nackenverspannungen."},{"text":"Mit dem Rücken zum Fenster","is_correct":false,"rationale":"Führt zu Spiegelungen auf dem Bildschirm."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-ba-1',
+  'betriebssysteme',
+  'matching',
+  null,
+  'Welche Aufgabe des Betriebssystems ist gemeint?',
+  'Das Betriebssystem verwaltet Prozesse, Speicher, Geräte, Dateien und Benutzer.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Prozessverwaltung","Speicherverwaltung","Geräteverwaltung","Benutzerverwaltung"],"match_items":[{"text":"Rechenzeit wird zwischen laufenden Programmen verteilt","bucket":0,"rationale":""},{"text":"Bei zu wenig RAM wird auf den Datenträger ausgelagert","bucket":1,"rationale":""},{"text":"Ein Treiber steuert den neuen Drucker an","bucket":2,"rationale":""},{"text":"Nur angemeldete Konten erhalten Zugriff","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-ba-2',
+  'betriebssysteme',
+  'single',
+  null,
+  'Was unterscheidet einen Thread von einem Prozess?',
+  'Prozess: laufendes Programm mit eigenem Speicherbereich. Thread: Ausführungsstrang innerhalb eines Prozesses.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ein Thread läuft innerhalb eines Prozesses und teilt dessen Speicher.","is_correct":true,"rationale":"Mehrere Threads eines Programms arbeiten auf denselben Daten."},{"text":"Ein Thread ist ein eigenständiges Programm mit eigenem Speicher.","is_correct":false,"rationale":"Das beschreibt einen Prozess."},{"text":"Threads gibt es nur unter Linux.","is_correct":false,"rationale":"Alle modernen Betriebssysteme kennen Threads."},{"text":"Ein Thread ist ein Hardwarebauteil.","is_correct":false,"rationale":"Ein Thread ist ein Konzept der Software."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-ba-3',
+  'betriebssysteme',
+  'single',
+  null,
+  'Welche Aufgabe hat ein Gerätetreiber?',
+  'Treiber sind die Brücke zwischen dem allgemeinen Betriebssystem und einem konkreten Gerät.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Er übersetzt zwischen Betriebssystem und einer bestimmten Hardware.","is_correct":true,"rationale":"Ohne Treiber kann das System das Gerät nicht ansprechen."},{"text":"Er schützt den Rechner vor Viren.","is_correct":false,"rationale":"Das ist Aufgabe von Sicherheitssoftware."},{"text":"Er verwaltet Benutzerkonten.","is_correct":false,"rationale":"Das ist Benutzerverwaltung."},{"text":"Er ersetzt das BIOS.","is_correct":false,"rationale":"Treiber laufen im Betriebssystem, nicht in der Firmware."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-bd-1',
+  'betriebssysteme',
+  'single',
+  'Ein 6 GB großes Video soll auf einen USB-Stick kopiert werden, der an Windows- und Mac-Rechnern funktionieren muss. Der Stick ist mit FAT32 formatiert, der Kopiervorgang bricht ab.',
+  'Welches Dateisystem sollte gewählt werden?',
+  'exFAT ist das Dateisystem für Wechseldatenträger mit großen Dateien und breiter Kompatibilität.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"exFAT","is_correct":true,"rationale":"Unterstützt große Dateien und ist unter Windows und macOS lesbar und schreibbar."},{"text":"FAT32","is_correct":false,"rationale":"Dateien über 4 GB sind nicht möglich - genau daran scheitert der Vorgang."},{"text":"ext4","is_correct":false,"rationale":"Wird von Windows und macOS nicht direkt unterstützt."},{"text":"NTFS","is_correct":false,"rationale":"macOS kann NTFS standardmäßig nur lesen, nicht beschreiben."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-bd-2',
+  'betriebssysteme',
+  'matching',
+  null,
+  'Welches Dateisystem passt zum Einsatz?',
+  'NTFS für Windows mit Rechten, ext4 für Linux, exFAT für austauschbare Datenträger.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["NTFS","ext4","exFAT"],"match_items":[{"text":"Systemlaufwerk eines Windows-Servers mit Berechtigungen","bucket":0,"rationale":""},{"text":"Systempartition eines Linux-Servers","bucket":1,"rationale":""},{"text":"SD-Karte einer Kamera mit großen Videodateien","bucket":2,"rationale":""},{"text":"Dateiserver-Freigabe mit NTFS-Rechten","bucket":0,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-bd-3',
+  'betriebssysteme',
+  'single',
+  null,
+  'Welchen Vorteil bietet ein Journaling-Dateisystem?',
+  'Journaling protokolliert geplante Änderungen und beschleunigt so die Wiederherstellung nach Abstürzen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Nach einem Absturz lässt es sich schnell in einen konsistenten Zustand bringen.","is_correct":true,"rationale":"Das Journal zeigt, welche Änderungen unvollständig waren."},{"text":"Es komprimiert alle Dateien automatisch.","is_correct":false,"rationale":"Das ist eine andere Funktion."},{"text":"Es verschlüsselt alle Daten.","is_correct":false,"rationale":"Journaling ist keine Verschlüsselung."},{"text":"Es verhindert jeden Datenverlust.","is_correct":false,"rationale":"Es schützt die Struktur, nicht unbedingt jede gerade geschriebene Datei."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-br-1',
+  'betriebssysteme',
+  'single',
+  null,
+  'Welche Rechte ergibt chmod 754 für eine Datei?',
+  'r = 4, w = 2, x = 1. 7 = 4+2+1, 5 = 4+1, 4 = 4.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"rwxr-xr--","is_correct":true,"rationale":"7 = rwx (Besitzer), 5 = r-x (Gruppe), 4 = r-- (andere)."},{"text":"rwxrw-r--","is_correct":false,"rationale":"6 wäre rw- - hier steht aber 5."},{"text":"rw-r-xr--","is_correct":false,"rationale":"Der Besitzer hat mit 7 auch das Ausführungsrecht."},{"text":"rwxr-x---","is_correct":false,"rationale":"Das wäre 750."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-br-2',
+  'betriebssysteme',
+  'single',
+  'Eine neue Mitarbeiterin in der Buchhaltung soll auf den Ordner „Rechnungen“ zugreifen können.',
+  'Wie vergibt man die Rechte am besten?',
+  'Minimalprinzip und Gruppenrechte: Jede Person bekommt über ihre Rolle genau die Rechte, die sie braucht.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sie wird Mitglied der Gruppe Buchhaltung, die die nötigen Rechte hat.","is_correct":true,"rationale":"Rechte an Gruppen erleichtern Verwaltung und Kontrolle."},{"text":"Sie erhält Vollzugriff direkt auf den Ordner.","is_correct":false,"rationale":"Mehr Rechte als nötig und schwer nachzuhalten."},{"text":"Sie bekommt das Administratorkonto.","is_correct":false,"rationale":"Verstößt grob gegen das Minimalprinzip."},{"text":"Sie nutzt das Konto ihrer Vorgängerin.","is_correct":false,"rationale":"Geteilte Konten machen Handlungen nicht mehr zuordenbar."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-br-3',
+  'betriebssysteme',
+  'single',
+  'Auf einen Ordner gilt die Freigabeberechtigung „Lesen“ und die NTFS-Berechtigung „Ändern“.',
+  'Welche Rechte hat ein Benutzer beim Zugriff über das Netzwerk?',
+  'Freigabe- und NTFS-Rechte werden kombiniert - wirksam ist immer die restriktivere Berechtigung.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Lesen","is_correct":true,"rationale":"Beim Netzzugriff gilt die strengere der beiden Berechtigungen."},{"text":"Ändern","is_correct":false,"rationale":"Das gilt nur bei lokalem Zugriff."},{"text":"Vollzugriff","is_correct":false,"rationale":"Keine der beiden Berechtigungen gewährt Vollzugriff."},{"text":"Kein Zugriff","is_correct":false,"rationale":"Beide Berechtigungen erlauben mindestens Lesen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-bc-1',
+  'betriebssysteme',
+  'matching',
+  null,
+  'Ordne jedem Windows-Befehl das Linux-Gegenstück zu.',
+  'dir - ls, copy - cp, ipconfig - ip a, tracert - traceroute.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["ls","cp","ip a","traceroute"],"match_items":[{"text":"dir","bucket":0,"rationale":""},{"text":"copy","bucket":1,"rationale":""},{"text":"ipconfig","bucket":2,"rationale":""},{"text":"tracert","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-bc-2',
+  'betriebssysteme',
+  'single',
+  'ping 8.8.8.8 funktioniert, ping www.beispiel.de meldet „Host nicht gefunden“.',
+  'Wo liegt das Problem am wahrscheinlichsten?',
+  'IP-Adressen erreichbar, Namen nicht: Das ist das Muster eines DNS-Problems - prüfbar mit nslookup.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Bei der Namensauflösung (DNS)","is_correct":true,"rationale":"Die Verbindung ins Internet steht - nur Namen werden nicht in Adressen übersetzt."},{"text":"Beim Netzwerkkabel","is_correct":false,"rationale":"Dann würde auch der Ping auf die IP-Adresse scheitern."},{"text":"Beim Standardgateway","is_correct":false,"rationale":"Ohne Gateway wäre auch 8.8.8.8 nicht erreichbar."},{"text":"Beim DHCP-Server","is_correct":false,"rationale":"Der Rechner hat offensichtlich eine funktionierende Adresse."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-bc-3',
+  'betriebssysteme',
+  'ordering',
+  null,
+  'In welcher Reihenfolge grenzt man einen Netzwerkfehler von innen nach außen ein?',
+  'Erst die eigene Konfiguration, dann das lokale Netz, dann das Routing ins Internet, zuletzt die Namensauflösung.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["ipconfig: eigene IP-Konfiguration prüfen","ping auf das Standardgateway","ping auf eine externe IP-Adresse","nslookup bzw. ping auf einen Namen"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-bh-1',
+  'betriebssysteme',
+  'multiple',
+  null,
+  'Welche Maßnahmen gehören zur Härtung eines Servers?',
+  'Härtung verkleinert die Angriffsfläche: weniger Dienste, sichere Zugänge, aktuelle Software, restriktive Rechte.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Nicht benötigte Dienste deaktivieren","is_correct":true,"rationale":"Jeder laufende Dienst ist ein mögliches Angriffsziel."},{"text":"Standardpasswörter ändern","is_correct":true,"rationale":"Standardpasswörter sind öffentlich bekannt."},{"text":"Sicherheitsupdates zeitnah einspielen","is_correct":true,"rationale":"Schließt bekannte Lücken."},{"text":"Alle Ports in der Firewall öffnen, um Probleme zu vermeiden","is_correct":false,"rationale":"Genau das vergrößert die Angriffsfläche."},{"text":"Allen Benutzern Administratorrechte geben","is_correct":false,"rationale":"Verstößt gegen das Minimalprinzip."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-bh-2',
+  'betriebssysteme',
+  'single',
+  null,
+  'Was ist eine Zero-Day-Lücke?',
+  'Gegen Zero-Day-Lücken helfen nur Härtung, Rechtebeschränkung und Überwachung, bis ein Patch erscheint.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Eine Schwachstelle, für die es noch kein Update gibt","is_correct":true,"rationale":"Der Hersteller hatte „null Tage“ Zeit zu reagieren."},{"text":"Ein Fehler, der am ersten Tag nach der Installation auftritt","is_correct":false,"rationale":"Mit der Installation hat der Begriff nichts zu tun."},{"text":"Ein Update, das keine Änderungen enthält","is_correct":false,"rationale":"Falsch."},{"text":"Eine Lücke, die bereits geschlossen ist","is_correct":false,"rationale":"Dann wäre sie nicht mehr Zero-Day."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-bh-3',
+  'betriebssysteme',
+  'ordering',
+  null,
+  'Bringe die Schritte des Patchmanagements in die richtige Reihenfolge.',
+  'Getestet wird vor der Verteilung - ein fehlerhaftes Update kann sonst alle Systeme gleichzeitig lahmlegen.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Updates erfassen und bewerten","Auf Testsystemen prüfen","Schrittweise verteilen","Erfolg kontrollieren und dokumentieren"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-au-1',
+  'anwendungssysteme',
+  'matching',
+  null,
+  'Welches System unterstützt die Aufgabe am besten?',
+  'ERP: gesamtes Unternehmen. SCM: Lieferkette. CRM: Kundenbeziehungen.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["ERP","SCM","CRM"],"match_items":[{"text":"Finanzbuchhaltung, Lager und Personal auf einer gemeinsamen Datenbasis","bucket":0,"rationale":""},{"text":"Liefermengen mit Zulieferern abstimmen","bucket":1,"rationale":""},{"text":"Die Historie aller Gespräche mit einem Kunden einsehen","bucket":2,"rationale":""},{"text":"Vertriebschancen und Angebote verfolgen","bucket":2,"rationale":""},{"text":"Transportwege und Lagerbestände entlang der Lieferkette planen","bucket":1,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-au-2',
+  'anwendungssysteme',
+  'single',
+  null,
+  'Welcher Vorteil ergibt sich aus der gemeinsamen Datenbank eines ERP-Systems?',
+  'ERP integriert die Unternehmensbereiche: Eine Buchung im Einkauf ist sofort im Lager und in der Buchhaltung sichtbar.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Alle Abteilungen arbeiten mit denselben aktuellen Daten, doppelte Erfassung entfällt.","is_correct":true,"rationale":"Das ist der Kern der Integration."},{"text":"Jede Abteilung kann ihre Daten unabhängig verändern.","is_correct":false,"rationale":"Genau das soll vermieden werden."},{"text":"Das System braucht keine Datensicherung.","is_correct":false,"rationale":"Gerade zentrale Daten müssen gesichert werden."},{"text":"Es sind keine Benutzerrechte nötig.","is_correct":false,"rationale":"Rechte sind bei zentralen Daten besonders wichtig."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-au-3',
+  'anwendungssysteme',
+  'single',
+  null,
+  'Wofür steht die Abkürzung CRM?',
+  'CRM = Customer Relationship Management: alle Kontakte, Vertriebs- und Serviceinformationen zu Kunden an einem Ort.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Customer Relationship Management","is_correct":true,"rationale":"Verwaltung der Kundenbeziehungen."},{"text":"Central Resource Management","is_correct":false,"rationale":"Keine gängige Bezeichnung."},{"text":"Customer Resource Monitoring","is_correct":false,"rationale":"Keine gängige Bezeichnung."},{"text":"Company Risk Management","is_correct":false,"rationale":"Das wäre Risikomanagement."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-as-1',
+  'anwendungssysteme',
+  'multiple',
+  null,
+  'Welche Vorteile hat Standardsoftware gegenüber Individualsoftware?',
+  'Standardsoftware: günstig, schnell verfügbar, gepflegt. Individualsoftware: passgenau, aber teuer und langsam verfügbar.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sie ist sofort verfügbar.","is_correct":true,"rationale":"Keine Entwicklungszeit."},{"text":"Sie ist meist günstiger.","is_correct":true,"rationale":"Die Entwicklungskosten verteilen sich auf viele Kunden."},{"text":"Der Hersteller entwickelt sie weiter.","is_correct":true,"rationale":"Updates und neue Funktionen kommen vom Hersteller."},{"text":"Sie passt immer exakt zu den eigenen Abläufen.","is_correct":false,"rationale":"Oft müssen Abläufe oder Einstellungen angepasst werden."},{"text":"Man besitzt den Quellcode.","is_correct":false,"rationale":"Das ist bei Standardsoftware in der Regel nicht der Fall."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-as-2',
+  'anwendungssysteme',
+  'single',
+  null,
+  'Was versteht man unter Customizing?',
+  'Customizing nutzt die vom Hersteller vorgesehenen Anpassungsmöglichkeiten.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Anpassen von Standardsoftware über Einstellungen, ohne den Programmcode zu ändern","is_correct":true,"rationale":"Bleibt bei Updates erhalten."},{"text":"Neuentwicklung einer Software für einen Kunden","is_correct":false,"rationale":"Das ist Individualentwicklung."},{"text":"Verkauf von Software an Kunden","is_correct":false,"rationale":"Das ist Vertrieb."},{"text":"Deinstallation nicht benötigter Programme","is_correct":false,"rationale":"Das ist Teil der Härtung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-as-3',
+  'anwendungssysteme',
+  'single',
+  'Eine Zahnarztpraxis sucht Software für Terminplanung, Patientenakte und Abrechnung mit den Krankenkassen.',
+  'Welche Art Software liegt nahe?',
+  'Branchensoftware verbindet den Preisvorteil von Standardsoftware mit branchenspezifischen Funktionen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Branchensoftware für Zahnarztpraxen","is_correct":true,"rationale":"Auf genau diese Abläufe und Vorgaben zugeschnitten."},{"text":"Eine Individualentwicklung","is_correct":false,"rationale":"Für einen Standardbedarf unnötig teuer."},{"text":"Ein allgemeines Tabellenkalkulationsprogramm","is_correct":false,"rationale":"Deckt Abrechnung und Akten nicht rechtssicher ab."},{"text":"Ein Grafikprogramm","is_correct":false,"rationale":"Passt nicht zum Bedarf."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-al-1',
+  'anwendungssysteme',
+  'matching',
+  null,
+  'Ordne die Beschreibung der Lizenzart zu.',
+  'Entscheidend sind Kosten und Zugang zum Quellcode - die beiden Merkmale sind unabhängig voneinander.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Open Source","Freeware","Shareware","proprietär"],"match_items":[{"text":"Quellcode offen, darf verändert und weitergegeben werden","bucket":0,"rationale":""},{"text":"Kostenlos, aber Quellcode geschlossen","bucket":1,"rationale":""},{"text":"Zum Testen kostenlos, danach kostenpflichtig","bucket":2,"rationale":""},{"text":"Quellcode geheim, Nutzung gegen Lizenzgebühr","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-al-2',
+  'anwendungssysteme',
+  'single',
+  'Eine Firma baut eine unter der GPL lizenzierte Bibliothek in ihr Produkt ein, verändert sie und verkauft das Produkt.',
+  'Was ist die Folge?',
+  'Copyleft bedeutet: Wer GPL-Code verändert weitergibt, muss seine Änderungen ebenfalls unter der GPL veröffentlichen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Der Quellcode der veränderten Fassung muss unter der GPL offengelegt werden.","is_correct":true,"rationale":"Das verlangt das Copyleft der GPL."},{"text":"Nichts - Open Source darf beliebig genutzt werden.","is_correct":false,"rationale":"Auch Open-Source-Lizenzen stellen Bedingungen."},{"text":"Der Verkauf ist grundsätzlich verboten.","is_correct":false,"rationale":"Verkaufen ist erlaubt, nur unter den Bedingungen der GPL."},{"text":"Es muss eine Gebühr an die Entwickler gezahlt werden.","is_correct":false,"rationale":"Die GPL verlangt keine Gebühr."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-al-3',
+  'anwendungssysteme',
+  'single',
+  'In einem Callcenter arbeiten 60 Beschäftigte im Schichtbetrieb, höchstens 20 sind gleichzeitig angemeldet.',
+  'Welches Lizenzmodell ist am günstigsten?',
+  'Wenn viele Personen nie gleichzeitig arbeiten, sind Concurrent-User-Lizenzen oft deutlich günstiger.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Concurrent User - gezählt werden gleichzeitige Anmeldungen","is_correct":true,"rationale":"Es reichen 20 Lizenzen."},{"text":"Named User - jede berechtigte Person braucht eine Lizenz","is_correct":false,"rationale":"Dafür wären 60 Lizenzen nötig."},{"text":"OEM-Lizenz","is_correct":false,"rationale":"Ist an ein Gerät gebunden und passt nicht zum Schichtbetrieb."},{"text":"Einzelplatzlizenz pro Rechner mit Lizenz für alle 60 Personen","is_correct":false,"rationale":"Unnötig viele Lizenzen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-ak-1',
+  'anwendungssysteme',
+  'matching',
+  null,
+  'Synchrone oder asynchrone Zusammenarbeit?',
+  'Synchron heißt gleichzeitig, asynchron zeitversetzt.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["synchron","asynchron"],"match_items":[{"text":"Videokonferenz","bucket":0,"rationale":""},{"text":"E-Mail","bucket":1,"rationale":""},{"text":"Wiki","bucket":1,"rationale":""},{"text":"Telefonat","bucket":0,"rationale":""},{"text":"Kommentar in einem Ticket","bucket":1,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-ak-2',
+  'anwendungssysteme',
+  'single',
+  'Ein Team möchte Kundendaten in einem kostenlosen Online-Whiteboard sammeln, das ein Mitarbeiter privat registriert hat.',
+  'Was ist problematisch?',
+  'Personenbezogene Daten in Cloud-Werkzeugen brauchen einen Vertrag zur Auftragsverarbeitung und einen geprüften Anbieter.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Für personenbezogene Daten fehlt ein Vertrag zur Auftragsverarbeitung, und der Speicherort ist ungeklärt.","is_correct":true,"rationale":"Die DSGVO verlangt geregelte Verarbeitung durch Dienstleister."},{"text":"Online-Whiteboards dürfen grundsätzlich nicht genutzt werden.","is_correct":false,"rationale":"Sie sind erlaubt - mit geregeltem Vertrag."},{"text":"Nichts, solange das Tool kostenlos ist.","is_correct":false,"rationale":"Kosten ändern nichts an den Datenschutzpflichten."},{"text":"Nur die Farbe der Notizen ist nicht einheitlich.","is_correct":false,"rationale":"Kein Datenschutzproblem."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-ak-3',
+  'anwendungssysteme',
+  'single',
+  null,
+  'Wozu dient eine Social-Media-Richtlinie im Unternehmen?',
+  'Eine Richtlinie gibt Sicherheit im Umgang mit sozialen Medien und schützt vor Reputationsschäden.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sie regelt, wer im Namen des Unternehmens postet und welche Informationen vertraulich bleiben.","is_correct":true,"rationale":"Schützt Ruf und Geschäftsgeheimnisse."},{"text":"Sie verbietet Beschäftigten jede private Nutzung sozialer Netzwerke.","is_correct":false,"rationale":"Privates Verhalten regelt sie höchstens in Bezug auf das Unternehmen."},{"text":"Sie legt die Farben des Firmenlogos fest.","is_correct":false,"rationale":"Das ist das Corporate Design."},{"text":"Sie ersetzt die Datenschutzerklärung.","is_correct":false,"rationale":"Die ist gesetzlich separat vorgeschrieben."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-no-1',
+  'netzwerke',
+  'matching',
+  null,
+  'Auf welcher OSI-Schicht arbeitet das Gerät bzw. Protokoll?',
+  'Switch: Sicherung (MAC). Router und IP: Vermittlung. TCP/UDP: Transport. HTTP: Anwendung.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Schicht 2","Schicht 3","Schicht 4","Schicht 7"],"match_items":[{"text":"Switch","bucket":0,"rationale":""},{"text":"Router","bucket":1,"rationale":""},{"text":"TCP","bucket":2,"rationale":""},{"text":"HTTP","bucket":3,"rationale":""},{"text":"IP","bucket":1,"rationale":""},{"text":"UDP","bucket":2,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-no-2',
+  'netzwerke',
+  'ordering',
+  null,
+  'Bringe die OSI-Schichten in die richtige Reihenfolge - von Schicht 1 nach 7.',
+  'Von unten nach oben: Bitübertragung, Sicherung, Vermittlung, Transport, Sitzung, Darstellung, Anwendung.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Bitübertragung","Sicherung","Vermittlung","Transport","Sitzung","Darstellung","Anwendung"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-no-3',
+  'netzwerke',
+  'single',
+  null,
+  'Warum nutzt Videotelefonie meist UDP statt TCP?',
+  'Bei Echtzeitanwendungen zählt geringe Verzögerung mehr als Vollständigkeit - deshalb UDP.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Verzögerungen durch erneutes Senden stören mehr als ein verlorenes Datenpaket.","is_correct":true,"rationale":"Ein kurzer Aussetzer ist besser als ein ruckelnder, verzögerter Anruf."},{"text":"UDP ist sicherer verschlüsselt.","is_correct":false,"rationale":"UDP verschlüsselt nicht."},{"text":"TCP kann keine Audiodaten übertragen.","is_correct":false,"rationale":"TCP kann alle Daten übertragen."},{"text":"UDP garantiert die Reihenfolge der Pakete.","is_correct":false,"rationale":"Das tut TCP, nicht UDP."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-ng-1',
+  'netzwerke',
+  'single',
+  null,
+  'Welches Gerät verbindet zwei verschiedene IP-Netze miteinander?',
+  'Zwischen Netzen vermittelt der Router, innerhalb eines Netzes der Switch.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Router","is_correct":true,"rationale":"Er arbeitet auf Schicht 3 und leitet anhand von IP-Adressen zwischen Netzen weiter."},{"text":"Switch","is_correct":false,"rationale":"Er verbindet Geräte innerhalb eines Netzes anhand der MAC-Adresse."},{"text":"Hub","is_correct":false,"rationale":"Er verteilt Signale an alle Anschlüsse eines Netzes."},{"text":"Access Point","is_correct":false,"rationale":"Er verbindet WLAN-Geräte mit dem kabelgebundenen Netz."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-ng-2',
+  'netzwerke',
+  'single',
+  'In einer Produktionshalle soll eine Netzwerkverbindung direkt neben starken Elektromotoren verlegt werden.',
+  'Welches Übertragungsmedium ist am besten geeignet?',
+  'Wo elektromagnetische Störungen drohen, ist Glasfaser die sichere Wahl.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Glasfaser","is_correct":true,"rationale":"Überträgt Licht und ist unempfindlich gegen elektromagnetische Störungen."},{"text":"Ungeschirmtes Cat-5e-Kabel","is_correct":false,"rationale":"Störanfällig in der Nähe starker Motoren."},{"text":"WLAN","is_correct":false,"rationale":"Kann durch Metall und Störquellen stark beeinträchtigt werden."},{"text":"Koaxialkabel eines alten Busnetzes","is_correct":false,"rationale":"Veraltet und für heutige Netze ungeeignet."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-ng-3',
+  'netzwerke',
+  'multiple',
+  null,
+  'Welche Aussagen zu VLANs sind richtig?',
+  'VLANs trennen Netze logisch auf gemeinsamer Hardware - Kommunikation zwischen ihnen läuft über Routing.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sie teilen einen physischen Switch in logisch getrennte Netze.","is_correct":true,"rationale":"Das ist der Zweck von VLANs."},{"text":"Sie können Gäste-WLAN und Firmennetz voneinander trennen.","is_correct":true,"rationale":"Ein typischer Einsatzzweck."},{"text":"Für jedes VLAN wird ein eigener physischer Switch benötigt.","is_correct":false,"rationale":"Genau das ersparen VLANs."},{"text":"Zwischen VLANs muss geroutet werden.","is_correct":true,"rationale":"Geräte in verschiedenen VLANs erreichen sich nur über einen Router bzw. Layer-3-Switch."},{"text":"VLANs erhöhen automatisch die Übertragungsgeschwindigkeit.","is_correct":false,"rationale":"Sie trennen Netze, sie beschleunigen sie nicht."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-n4-1',
+  'netzwerke',
+  'numeric',
+  null,
+  'Wie viele nutzbare Hostadressen hat ein Netz mit dem Präfix /27?',
+  '32 - 27 = 5 Hostbits. 2⁵ = 32 Adressen, abzüglich Netz- und Broadcastadresse = 30 Hosts.',
+  2,
+  '{}',
+  null,
+  '{"answer":30.0,"tolerance":0.0,"unit":"Hosts"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-n4-2',
+  'netzwerke',
+  'single',
+  null,
+  'Welche Broadcastadresse hat das Netz, in dem 172.16.5.200/26 liegt?',
+  '/26 = Blockgröße 64. Netze: .0, .64, .128, .192. 200 liegt ab .192 - Netzadresse .192, Broadcast .255.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"172.16.5.255","is_correct":true,"rationale":"Blockgröße 64: Das Netz beginnt bei .192, der nächste Block wäre .256 - Broadcast ist .255."},{"text":"172.16.5.191","is_correct":false,"rationale":"Das ist der Broadcast des vorherigen Blocks (.128 bis .191)."},{"text":"172.16.5.192","is_correct":false,"rationale":"Das ist die Netzadresse."},{"text":"172.16.255.255","is_correct":false,"rationale":"Das wäre der Broadcast eines /16-Netzes."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-n4-3',
+  'netzwerke',
+  'single',
+  null,
+  'Welche Adresse ist eine private IPv4-Adresse?',
+  'Private Bereiche: 10.0.0.0/8, 172.16.0.0/12 (bis 172.31.x.x), 192.168.0.0/16.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"172.20.10.5","is_correct":true,"rationale":"Liegt im privaten Bereich 172.16.0.0 bis 172.31.255.255."},{"text":"172.32.1.1","is_correct":false,"rationale":"Liegt knapp außerhalb von 172.16.0.0/12."},{"text":"8.8.8.8","is_correct":false,"rationale":"Öffentliche Adresse."},{"text":"169.254.3.4","is_correct":false,"rationale":"APIPA-Adresse - nicht privat im Sinne von RFC 1918, sondern selbst vergeben."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-n4-4',
+  'netzwerke',
+  'numeric',
+  null,
+  'Das Netz 10.0.0.0/24 soll in Subnetze mit mindestens 50 nutzbaren Hosts aufgeteilt werden - so viele wie möglich. Wie viele Subnetze entstehen?',
+  '50 Hosts brauchen 6 Hostbits (2⁶ - 2 = 62). Präfix: 32 - 6 = /26. Aus /24 werden 2² = 4 Subnetze mit je 62 Hosts.',
+  2,
+  '{}',
+  null,
+  '{"answer":4.0,"tolerance":0.0,"unit":"Subnetze"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-n6-1',
+  'netzwerke',
+  'single',
+  null,
+  'Wie lautet die kürzestmögliche Schreibweise von 2001:0db8:0000:0000:0000:0001:0000:0abc?',
+  'Zwei Regeln: führende Nullen je Block weglassen und genau eine Folge von Null-Blöcken durch :: ersetzen. Am kürzesten wird es, wenn man die längste Folge ersetzt.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"2001:db8::1:0:abc","is_correct":true,"rationale":"Führende Nullen entfernt, die längste Null-Folge (drei Blöcke) durch :: ersetzt."},{"text":"2001:db8::1::abc","is_correct":false,"rationale":":: darf nur einmal vorkommen - sonst ist die Adresse mehrdeutig und damit ungültig."},{"text":"2001:db8:0:0:0:1::abc","is_correct":false,"rationale":"Gültig, aber länger: Hier ersetzt :: nur einen einzelnen Null-Block statt der längsten Folge."},{"text":"21:db8::1:0:abc","is_correct":false,"rationale":"Nur führende Nullen dürfen entfallen - aus 2001 wird nicht 21."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-n6-2',
+  'netzwerke',
+  'matching',
+  null,
+  'Um welchen Adresstyp handelt es sich?',
+  'fe80:: Link-Local, 2000::/3 Global Unicast, ::1 Loopback, ff00::/8 Multicast.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Link-Local","Global Unicast","Loopback","Multicast"],"match_items":[{"text":"fe80::1a2b:3c4d","bucket":0,"rationale":""},{"text":"2a00:1450:4001::200e","bucket":1,"rationale":""},{"text":"::1","bucket":2,"rationale":""},{"text":"ff02::1","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-n6-3',
+  'netzwerke',
+  'single',
+  null,
+  'Wie viele Bit hat eine IPv6-Adresse?',
+  'IPv6 nutzt 128 Bit - typischerweise 64 Bit Präfix und 64 Bit Interface-ID.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"128","is_correct":true,"rationale":"Acht Blöcke zu je 16 Bit."},{"text":"32","is_correct":false,"rationale":"Das ist IPv4."},{"text":"64","is_correct":false,"rationale":"Das ist die übliche Länge von Präfix bzw. Interface-ID."},{"text":"48","is_correct":false,"rationale":"Das ist die Länge einer MAC-Adresse."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-nd-1',
+  'netzwerke',
+  'ordering',
+  null,
+  'Bringe die Schritte der DHCP-Adressvergabe in die richtige Reihenfolge.',
+  'DORA: Der Client sucht, der Server bietet an, der Client fordert an, der Server bestätigt.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Discover","Offer","Request","Acknowledge"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-nd-2',
+  'netzwerke',
+  'matching',
+  null,
+  'Ordne jedem Dienst seinen Standardport zu.',
+  'SSH 22, DNS 53, HTTPS 443, RDP 3389. Diese Ports tauchen in Firewall-Aufgaben regelmäßig auf.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["22","53","443","3389"],"match_items":[{"text":"SSH","bucket":0,"rationale":""},{"text":"DNS","bucket":1,"rationale":""},{"text":"HTTPS","bucket":2,"rationale":""},{"text":"Windows-Remotedesktop (RDP)","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-nd-3',
+  'netzwerke',
+  'single',
+  null,
+  'Welcher DNS-Eintrag gibt an, welcher Server die E-Mails einer Domain annimmt?',
+  'Der MX-Eintrag nennt den zuständigen Mailserver einer Domain.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"MX","is_correct":true,"rationale":"Mail Exchanger."},{"text":"A","is_correct":false,"rationale":"Ordnet einem Namen eine IPv4-Adresse zu."},{"text":"CNAME","is_correct":false,"rationale":"Verweist als Alias auf einen anderen Namen."},{"text":"PTR","is_correct":false,"rationale":"Löst eine Adresse in einen Namen auf."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-nd-4',
+  'netzwerke',
+  'single',
+  null,
+  'Welche Angaben erhält ein Client typischerweise per DHCP?',
+  'DHCP verteilt die Netzwerkkonfiguration automatisch - befristet über eine Lease.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"IP-Adresse, Subnetzmaske, Standardgateway und DNS-Server","is_correct":true,"rationale":"Alles, was für die Kommunikation im Netz und ins Internet nötig ist."},{"text":"Nur die MAC-Adresse","is_correct":false,"rationale":"Die MAC-Adresse ist fest in der Netzwerkkarte hinterlegt."},{"text":"Benutzername und Passwort","is_correct":false,"rationale":"Das ist keine DHCP-Aufgabe."},{"text":"Die Lizenzschlüssel der installierten Software","is_correct":false,"rationale":"Hat mit DHCP nichts zu tun."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-nc-1',
+  'netzwerke',
+  'matching',
+  null,
+  'Welches Servicemodell liegt vor?',
+  'IaaS: Infrastruktur. PaaS: Plattform. SaaS: fertige Anwendung.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["IaaS","PaaS","SaaS"],"match_items":[{"text":"Eine virtuelle Maschine mieten und selbst das Betriebssystem pflegen","bucket":0,"rationale":""},{"text":"Eigene Web-App hochladen, die Laufzeitumgebung stellt der Anbieter","bucket":1,"rationale":""},{"text":"Office-Programme im Browser nutzen","bucket":2,"rationale":""},{"text":"Speicherplatz und virtuelle Netze buchen","bucket":0,"rationale":""},{"text":"Ein CRM-System als Online-Dienst abonnieren","bucket":2,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-nc-2',
+  'netzwerke',
+  'single',
+  null,
+  'Was unterscheidet einen Container von einer virtuellen Maschine?',
+  'VMs virtualisieren Hardware mit eigenem Betriebssystem, Container virtualisieren auf Betriebssystemebene.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Container teilen den Kernel des Host-Betriebssystems und starten in Sekunden.","is_correct":true,"rationale":"Sie sind dadurch leichtgewichtig."},{"text":"Container enthalten ein komplettes eigenes Betriebssystem.","is_correct":false,"rationale":"Das beschreibt eine VM."},{"text":"Container brauchen immer einen Typ-1-Hypervisor.","is_correct":false,"rationale":"Container laufen auf einer Container-Engine im Betriebssystem."},{"text":"Container sind stärker isoliert als VMs.","is_correct":false,"rationale":"VMs sind stärker isoliert."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a3-nc-3',
+  'netzwerke',
+  'single',
+  null,
+  'Welcher Hypervisor läuft direkt auf der Hardware (Typ 1)?',
+  'Typ 1: direkt auf der Hardware (ESXi, Hyper-V, KVM). Typ 2: auf einem Betriebssystem (VirtualBox, Workstation).',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"VMware ESXi","is_correct":true,"rationale":"Ein Bare-Metal-Hypervisor."},{"text":"VirtualBox","is_correct":false,"rationale":"Läuft als Programm auf einem Betriebssystem - Typ 2."},{"text":"VMware Workstation","is_correct":false,"rationale":"Typ 2."},{"text":"Docker","is_correct":false,"rationale":"Eine Container-Engine, kein Hypervisor."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ld-1',
+  'anforderungen',
+  'single',
+  'Eine Arztpraxis beschreibt schriftlich: „Patientinnen und Patienten sollen Termine online buchen können.“ Ein Dienstleister antwortet mit einem Dokument, das eine Webanwendung mit REST-Anbindung an die Praxissoftware und einen Testplan beschreibt.',
+  'Um welches Dokument handelt es sich bei der Antwort des Dienstleisters?',
+  'Die Praxis hat als Auftraggeber das Lastenheft (Was?) geliefert. Die technische Lösung mit Architektur, Schnittstelle und Testplan (Wie?) ist das Pflichtenheft des Auftragnehmers.',
+  1,
+  '{}',
+  null,
+  '{"choices":[{"text":"Pflichtenheft","is_correct":true,"rationale":"Der Auftragnehmer beschreibt, wie und womit er die Anforderungen umsetzt."},{"text":"Lastenheft","is_correct":false,"rationale":"Das Lastenheft schreibt der Auftraggeber - hier die Praxis mit ihrer Beschreibung."},{"text":"Abnahmeprotokoll","is_correct":false,"rationale":"Das entsteht erst am Ende, wenn das fertige Ergebnis geprüft wird."},{"text":"Projektauftrag","is_correct":false,"rationale":"Er gibt ein Projekt intern frei und beschreibt keine technische Lösung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ld-2',
+  'anforderungen',
+  'multiple',
+  null,
+  'Welche Inhalte kommen typischerweise erst im Pflichtenheft hinzu?',
+  'Das Lastenheft enthält Ausgangslage, Ziele und Anforderungen. Das Pflichtenheft übernimmt sie und ergänzt das Lösungskonzept: Technologien, Architektur, Schnittstellen und Abnahmekriterien.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die eingesetzten Technologien","is_correct":true,"rationale":"Womit umgesetzt wird, entscheidet der Auftragnehmer."},{"text":"Die Systemarchitektur und Schnittstellen","is_correct":true,"rationale":"Das ist das technische Wie der Lösung."},{"text":"Konkrete Testfälle für die Abnahme","is_correct":true,"rationale":"Sie machen die Anforderungen prüfbar."},{"text":"Die Ziele des Auftraggebers","is_correct":false,"rationale":"Die stehen schon im Lastenheft - dort beginnt alles."},{"text":"Die Beschreibung der Ausgangssituation","is_correct":false,"rationale":"Sie gehört ins Lastenheft, das der Auftraggeber schreibt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-fa-1',
+  'anforderungen',
+  'single',
+  'Für die neue Ticket-App des IT-Supports liegen vier Anforderungen vor.',
+  'Welche Anforderung ist funktional?',
+  'Funktional ist, was das System tut (Screenshot anhängen). Verfügbarkeit, Plattform und Antwortzeit beschreiben, wie gut oder unter welchen Bedingungen es arbeitet.',
+  1,
+  '{}',
+  null,
+  '{"choices":[{"text":"Mitarbeitende können einem Ticket einen Screenshot anhängen.","is_correct":true,"rationale":"Das beschreibt eine Tätigkeit des Systems."},{"text":"Die App ist zu 99,5 % im Jahr verfügbar.","is_correct":false,"rationale":"Verfügbarkeit ist eine Qualitätseigenschaft."},{"text":"Die App läuft auf Android ab Version 12.","is_correct":false,"rationale":"Das ist eine Randbedingung zur Plattform."},{"text":"Die Ticketliste lädt in höchstens 2 Sekunden.","is_correct":false,"rationale":"Das beschreibt, wie schnell - also nicht-funktional."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-fa-2',
+  'anforderungen',
+  'multiple',
+  null,
+  'Welche Anforderungen an einen Webshop sind nicht-funktional?',
+  'Nicht-funktional sind Qualitätsmerkmale und Randbedingungen wie Barrierefreiheit, Leistung und Speicherort. Stornieren und Mails versenden sind Funktionen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Seiten erfüllen die Vorgaben zur Barrierefreiheit.","is_correct":true,"rationale":"Benutzbarkeit ist eine Qualitätsanforderung."},{"text":"Der Shop verkraftet 500 gleichzeitige Nutzer ohne Leistungseinbruch.","is_correct":true,"rationale":"Leistung und Belastbarkeit sind nicht-funktional."},{"text":"Personenbezogene Daten werden nur auf Servern in der EU gespeichert.","is_correct":true,"rationale":"Eine Randbedingung aus dem Datenschutz."},{"text":"Kunden können eine Bestellung innerhalb von 14 Tagen stornieren.","is_correct":false,"rationale":"Stornieren ist eine Funktion des Systems."},{"text":"Der Shop versendet nach der Bestellung eine Bestätigungsmail.","is_correct":false,"rationale":"Auch das ist eine Tätigkeit des Systems - funktional."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-fe-1',
+  'anforderungen',
+  'matching',
+  null,
+  'Welche Erhebungstechnik passt jeweils am besten?',
+  'Interview: Tiefe mit Rückfragen. Fragebogen: viele Personen. Beobachtung: unbewusste Abläufe. Workshop: mehrere Gruppen einigen sich. Dokumentenanalyse: vorhandene Unterlagen auswerten.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Interview","Fragebogen","Beobachtung","Workshop","Dokumentenanalyse"],"match_items":[{"text":"Die Praxisleitung soll ausführlich zu ihren Zielen befragt werden, mit Rückfragen.","bucket":0,"rationale":""},{"text":"300 Mitarbeitende in allen Filialen sollen ihre Wünsche an die Kassensoftware angeben.","bucket":1,"rationale":""},{"text":"Es soll sichtbar werden, welche Handgriffe das Lager mit dem Handscanner unbewusst ausführt.","bucket":2,"rationale":""},{"text":"Vertrieb, Lager und Buchhaltung haben widersprüchliche Wünsche, die gemeinsam geklärt werden sollen.","bucket":3,"rationale":""},{"text":"Die Papierformulare und das Handbuch der Altsoftware werden systematisch ausgewertet.","bucket":4,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-fe-2',
+  'anforderungen',
+  'single',
+  'Im Projekt „Kundenportal“ wird die Anforderung „Anmeldung per Fingerabdruck“ nach MoSCoW als „Won’t have“ eingestuft.',
+  'Was bedeutet das?',
+  'MoSCoW: Must have (unverzichtbar), Should have (wichtig), Could have (wenn Zeit bleibt), Won’t have this time (diesmal bewusst nicht, aber vorgemerkt).',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sie wird in diesem Release bewusst nicht umgesetzt, bleibt aber dokumentiert.","is_correct":true,"rationale":"Won’t have heißt „this time“ - später ist sie wieder möglich."},{"text":"Sie wird endgültig gestrichen und aus der Dokumentation entfernt.","is_correct":false,"rationale":"Sie bleibt ausdrücklich erfasst, nur nicht für diesen Stand."},{"text":"Sie wird umgesetzt, falls am Ende noch Zeit bleibt.","is_correct":false,"rationale":"Das beschreibt „Could have“."},{"text":"Sie ist wichtig, aber nicht kritisch für den Start.","is_correct":false,"rationale":"Das beschreibt „Should have“."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-uu-1',
+  'uml_modellierung',
+  'single',
+  'Im Webshop kann ein Kunde beim Anwendungsfall „Bestellung aufgeben“ optional einen Gutschein einlösen.',
+  'Wie wird „Gutschein einlösen“ korrekt modelliert?',
+  '«extend» steht für eine Erweiterung, die nur unter einer Bedingung stattfindet. Der gestrichelte Pfeil geht vom erweiternden Fall zum Basisfall, der auch ohne ihn vollständig ist.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"«extend»-Pfeil von „Gutschein einlösen“ zu „Bestellung aufgeben“","is_correct":true,"rationale":"Optionale Erweiterung, der Pfeil zeigt auf den Basisfall."},{"text":"«extend»-Pfeil von „Bestellung aufgeben“ zu „Gutschein einlösen“","is_correct":false,"rationale":"Die Richtung ist vertauscht - bei extend zeigt der Pfeil zum Basisfall."},{"text":"«include»-Pfeil von „Bestellung aufgeben“ zu „Gutschein einlösen“","is_correct":false,"rationale":"include hieße, dass bei jeder Bestellung ein Gutschein eingelöst wird."},{"text":"Assoziation zwischen dem Akteur Gutschein und der Bestellung","is_correct":false,"rationale":"Ein Gutschein ist kein Akteur, sondern ein Objekt im Ablauf."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-uu-2',
+  'uml_modellierung',
+  'matching',
+  'Modelliert wird die Online-Terminbuchung einer Arztpraxis.',
+  'Ist das Element ein Akteur oder ein Anwendungsfall?',
+  'Akteure sind Rollen oder externe Systeme außerhalb der Systemgrenze. Anwendungsfälle sind Leistungen des Systems, benannt mit Objekt und Verb.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Akteur","Anwendungsfall"],"match_items":[{"text":"Patientin oder Patient","bucket":0,"rationale":""},{"text":"Termin buchen","bucket":1,"rationale":""},{"text":"Medizinische Fachangestellte","bucket":0,"rationale":""},{"text":"Externer SMS-Dienst für Terminerinnerungen","bucket":0,"rationale":"Auch ein externes System kann Akteur sein."},{"text":"Termin absagen","bucket":1,"rationale":""},{"text":"Freie Termine anzeigen","bucket":1,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-uu-3',
+  'uml_modellierung',
+  'multiple',
+  null,
+  'Welche Aussagen zum Anwendungsfalldiagramm sind richtig?',
+  'Das Anwendungsfalldiagramm zeigt, wer welche Leistung des Systems nutzt - keine Reihenfolge. include ist Pflichtbestandteil, extend eine bedingte Erweiterung mit Pfeil zum Basisfall.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Akteure stehen außerhalb der Systemgrenze.","is_correct":true,"rationale":"Sie nutzen das System, gehören aber nicht dazu."},{"text":"Ein inkludierter Anwendungsfall wird bei jeder Ausführung des Basisfalls mit ausgeführt.","is_correct":true,"rationale":"Genau das bedeutet «include»."},{"text":"Ein Akteur beschreibt eine Rolle, keine bestimmte Person.","is_correct":true,"rationale":"Also „Kundin“ statt „Frau Meier“."},{"text":"Das Diagramm zeigt, in welcher Reihenfolge die Anwendungsfälle ablaufen.","is_correct":false,"rationale":"Abläufe zeigt das Aktivitätsdiagramm."},{"text":"Der «extend»-Pfeil zeigt vom Basisfall zur Erweiterung.","is_correct":false,"rationale":"Umgekehrt: von der Erweiterung zum Basisfall."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-uk-1',
+  'uml_modellierung',
+  'single',
+  'Im Klassendiagramm steht: Kunde 1 --- 0..* Bestellung',
+  'Welche Aussage ist richtig?',
+  'Gelesen wird über die Linie hinweg: Von einem Kunden aus sieht man 0..* Bestellungen, von einer Bestellung aus genau 1 Kunden.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ein Kunde hat beliebig viele Bestellungen, jede Bestellung gehört zu genau einem Kunden.","is_correct":true,"rationale":"Die Multiplizität steht am Ende, über das sie etwas aussagt."},{"text":"Ein Kunde hat genau eine Bestellung.","is_correct":false,"rationale":"Die 1 steht beim Kunden und sagt, zu wie vielen Kunden eine Bestellung gehört."},{"text":"Eine Bestellung kann zu mehreren Kunden gehören.","is_correct":false,"rationale":"Beim Kunden steht 1 - also genau ein Kunde je Bestellung."},{"text":"Ein Kunde muss mindestens eine Bestellung haben.","is_correct":false,"rationale":"Das wäre 1..*. Bei 0..* sind auch null Bestellungen erlaubt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-uk-2',
+  'uml_modellierung',
+  'matching',
+  null,
+  'Aggregation oder Komposition?',
+  'Komposition (gefüllte Raute): Das Teil lebt und stirbt mit dem Ganzen. Aggregation (leere Raute): Das Teil kann auch ohne das Ganze existieren.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Aggregation","Komposition"],"match_items":[{"text":"Rechnung - Rechnungsposition","bucket":1,"rationale":"Positionen gibt es nicht ohne ihre Rechnung."},{"text":"Abteilung - Mitarbeiter","bucket":0,"rationale":"Mitarbeitende bleiben, wenn die Abteilung aufgelöst wird."},{"text":"Bestellung - Bestellposition","bucket":1,"rationale":"Eine Bestellposition existiert nur als Teil ihrer Bestellung."},{"text":"Playlist - Song","bucket":0,"rationale":"Der Song existiert weiter, wenn die Playlist gelöscht wird."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-uk-3',
+  'uml_modellierung',
+  'multiple',
+  'In der Klasse Konto steht der Eintrag: - kontoNr: String',
+  'Welche Aussagen treffen zu?',
+  'Schreibweise im Klassendiagramm: Sichtbarkeit, Name, Doppelpunkt, Datentyp. „-“ bedeutet private, also nur innerhalb der Klasse Konto zugreifbar.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Es handelt sich um ein Attribut.","is_correct":true,"rationale":"Ohne Klammern und im mittleren Abschnitt - ein Attribut."},{"text":"Das Attribut ist private.","is_correct":true,"rationale":"Das Minuszeichen steht für private."},{"text":"Der Datentyp ist String.","is_correct":true,"rationale":"Der Typ steht hinter dem Doppelpunkt."},{"text":"Es handelt sich um eine Methode.","is_correct":false,"rationale":"Methoden haben Klammern, z. B. getKontoNr(): String."},{"text":"Andere Klassen dürfen direkt darauf zugreifen.","is_correct":false,"rationale":"Das wäre public (+)."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ua-1',
+  'uml_modellierung',
+  'matching',
+  null,
+  'Welches Element ist gemeint?',
+  'Start: gefüllter Kreis. Entscheidung: Raute mit Guards, genau ein Weg. Gabelung: Balken, alle Wege parallel. Vereinigung: Balken, wartet auf alle eingehenden Wege.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Startknoten","Entscheidung","Gabelung (Fork)","Vereinigung (Join)"],"match_items":[{"text":"Gefüllter schwarzer Kreis, an dem der Ablauf beginnt","bucket":0,"rationale":""},{"text":"Raute mit Bedingungen in eckigen Klammern an den ausgehenden Kanten","bucket":1,"rationale":""},{"text":"Balken, der einen Fluss in mehrere parallele Flüsse aufteilt","bucket":2,"rationale":""},{"text":"Balken, der wartet, bis alle eingehenden Flüsse angekommen sind","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ua-2',
+  'uml_modellierung',
+  'single',
+  'Nach der Entscheidung „Bestellwert prüfen“ stehen an den Kanten die Guards [Betrag > 500] und [Betrag < 500].',
+  'Was ist an dieser Modellierung falsch?',
+  'Guards müssen sich gegenseitig ausschließen und vollständig sein. Richtig wäre z. B. [Betrag > 500] und [Betrag <= 500] oder ein [else]-Zweig.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ein Betrag von genau 500 wird von keinem Guard abgedeckt.","is_correct":true,"rationale":"Die Guards müssen zusammen alle Fälle abdecken."},{"text":"Guards dürfen keine Vergleichsoperatoren enthalten.","is_correct":false,"rationale":"Vergleiche sind in Guards üblich."},{"text":"Die Guards schließen sich nicht gegenseitig aus.","is_correct":false,"rationale":"Doch - kein Betrag ist zugleich größer und kleiner als 500."},{"text":"Guards gehören in die Raute, nicht an die Kanten.","is_correct":false,"rationale":"Guards stehen an den ausgehenden Kanten."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ua-3',
+  'uml_modellierung',
+  'single',
+  'Nach dem Zahlungseingang verpackt das Lager die Ware, gleichzeitig bucht die Buchhaltung die Zahlung. Versendet werden darf erst, wenn beides erledigt ist.',
+  'Welches Element steht direkt vor der Aktion „Paket versenden“?',
+  'Parallele Wege werden mit einer Gabelung gestartet und mit einer Vereinigung zusammengeführt. Erst wenn alle eingehenden Flüsse angekommen sind, geht es weiter.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Vereinigung (Join-Balken)","is_correct":true,"rationale":"Sie wartet, bis beide parallelen Wege abgeschlossen sind."},{"text":"Zusammenführung (Raute)","is_correct":false,"rationale":"Sie lässt den Ablauf schon beim ersten ankommenden Weg weiterlaufen."},{"text":"Gabelung (Fork-Balken)","is_correct":false,"rationale":"Die Gabelung startet parallele Wege, sie führt sie nicht zusammen."},{"text":"Endknoten","is_correct":false,"rationale":"Nach dem Endknoten gibt es keine weiteren Aktionen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-pd-1',
+  'programmierlogik',
+  'matching',
+  null,
+  'Welcher Datentyp passt am besten?',
+  'Ganze Stückzahlen: int. Kommazahlen: double. Ja/Nein: boolean. Ein einzelnes Zeichen: char. PLZ und Telefonnummer: String, weil nicht gerechnet wird und führende Nullen und Sonderzeichen erhalten bleiben müssen.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["int","double","boolean","char","String"],"match_items":[{"text":"Anzahl der Artikel im Warenkorb","bucket":0,"rationale":""},{"text":"Durchschnittliche Bearbeitungszeit in Stunden, z. B. 2,75","bucket":1,"rationale":""},{"text":"Newsletter abonniert: ja oder nein","bucket":2,"rationale":""},{"text":"Trennzeichen einer CSV-Datei, z. B. ;","bucket":3,"rationale":""},{"text":"Postleitzahl 01067","bucket":4,"rationale":"Führende Null, keine Rechnung - also Text."},{"text":"Telefonnummer +49 351 123456","bucket":4,"rationale":"Enthält + und Leerzeichen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-pd-2',
+  'programmierlogik',
+  'numeric',
+  null,
+  'Welches ist der größte Wert, den eine vorzeichenbehaftete Ganzzahl mit 16 Bit speichern kann?',
+  'Mit Vorzeichen reicht der Bereich von -2^(n-1) bis 2^(n-1) - 1. Bei n = 16: 2^15 = 32.768, also größter Wert 32.768 - 1 = 32.767. Der Bereich ist -32.768 bis 32.767, zusammen 2^16 = 65.536 Werte.',
+  2,
+  '{}',
+  null,
+  '{"answer":32767.0,"tolerance":0.0}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-pd-3',
+  'programmierlogik',
+  'numeric',
+  'int a = 17;
+int b = 5;
+double c = a / b;',
+  'Welchen Wert hat c nach Ausführung dieses Java-Codes?',
+  'a und b sind beide int, deshalb rechnet Java eine Ganzzahldivision: 17 / 5 = 3 Rest 2, der Rest fällt weg. Erst danach wird 3 in double umgewandelt: c = 3.0. Für 3.4 müsste man vorher casten, z. B. (double) a / b.',
+  3,
+  '{}',
+  null,
+  '{"answer":3.0,"tolerance":0.0}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-pd-4',
+  'programmierlogik',
+  'single',
+  'In einer Buchhaltungssoftware sollen Rechnungsbeträge exakt auf den Cent gespeichert und summiert werden.',
+  'Welche Lösung ist am besten geeignet?',
+  'float und double speichern Zahlen binär, viele Centbeträge sind dort nur Näherungen. Bei Summen über viele Buchungen entstehen so Rundungsfehler. Dezimaltypen oder Cent-Ganzzahlen rechnen exakt.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ein Dezimaltyp wie BigDecimal oder ganze Cent als Ganzzahl","is_correct":true,"rationale":"Beides rechnet exakt ohne Rundungsfehler."},{"text":"double","is_correct":false,"rationale":"Gleitkommazahlen stellen viele Dezimalbrüche nur näherungsweise dar - 0.1 + 0.2 ist nicht exakt 0.3."},{"text":"String","is_correct":false,"rationale":"Mit Text kann man nicht direkt rechnen."},{"text":"float","is_correct":false,"rationale":"Noch ungenauer als double - gleiches Problem."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-pk-1',
+  'programmierlogik',
+  'numeric',
+  'for (int i = 2; i <= 20; i += 3) {
+  ausgabe(i);
+}',
+  'Wie oft wird der Schleifenrumpf ausgeführt?',
+  'i nimmt die Werte 2, 5, 8, 11, 14, 17, 20 an - das sind 7 Werte. Danach wäre i = 23, und 23 <= 20 ist falsch. Kontrolle: (20 - 2) / 3 + 1 = 6 + 1 = 7.',
+  2,
+  '{}',
+  null,
+  '{"answer":7.0,"tolerance":0.0,"unit":"Durchläufe"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-pk-2',
+  'programmierlogik',
+  'single',
+  'Eine Kasse soll die PIN abfragen und die Abfrage so lange wiederholen, bis die PIN korrekt ist. Die erste Abfrage erfolgt in jedem Fall.',
+  'Welche Schleife passt am besten?',
+  'Wenn der Rumpf mindestens einmal laufen muss und erst danach über die Wiederholung entschieden wird, ist die fußgesteuerte Schleife die passende Wahl.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Fußgesteuerte Schleife (do-while)","is_correct":true,"rationale":"Sie läuft mindestens einmal und prüft danach."},{"text":"Zählschleife (for)","is_correct":false,"rationale":"Die Anzahl der Versuche ist vorher nicht bekannt."},{"text":"switch / case","is_correct":false,"rationale":"Das ist eine Verzweigung, keine Wiederholung."},{"text":"Einseitige Verzweigung (if)","is_correct":false,"rationale":"Sie fragt höchstens einmal ab und wiederholt nichts."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-pk-3',
+  'programmierlogik',
+  'matching',
+  null,
+  'Welche Kontrollstruktur passt?',
+  'Eine einmalige Bedingung ist eine Verzweigung. Kann der Rumpf null Mal laufen: kopfgesteuert. Muss er mindestens einmal laufen: fußgesteuert. Steht die Anzahl fest: Zählschleife.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Verzweigung","Kopfgesteuerte Schleife","Fußgesteuerte Schleife","Zählschleife"],"match_items":[{"text":"Ab 50 € Bestellwert entfallen die Versandkosten.","bucket":0,"rationale":""},{"text":"Eine Datei zeilenweise lesen, solange noch Zeilen da sind - sie kann auch leer sein.","bucket":1,"rationale":""},{"text":"Ein Menü anzeigen und die Auswahl lesen, bis „Beenden“ gewählt wird.","bucket":2,"rationale":""},{"text":"Die 12 Monatsumsätze eines Jahres addieren.","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-pk-4',
+  'programmierlogik',
+  'single',
+  'int x = 10;
+do {
+  x = x + 5;
+} while (x < 10);',
+  'Wie oft wird der Schleifenrumpf ausgeführt?',
+  'Fußgesteuert heißt: erst ausführen, dann prüfen. Der Rumpf läuft einmal (x = 15), danach ist x < 10 falsch und die Schleife endet.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Genau einmal","is_correct":true,"rationale":"do-while führt den Rumpf zuerst aus: x wird 15, dann ist 15 < 10 falsch."},{"text":"Gar nicht","is_correct":false,"rationale":"Das gälte für eine while-Schleife, weil 10 < 10 schon zu Beginn falsch ist."},{"text":"Zweimal","is_correct":false,"rationale":"Nach dem ersten Durchlauf ist die Bedingung bereits falsch."},{"text":"Endlos","is_correct":false,"rationale":"x wächst, die Bedingung wird nach dem ersten Durchlauf falsch."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-pc-1',
+  'programmierlogik',
+  'numeric',
+  'werte ← [7, 3, 8, 2]
+summe ← 0
+FÜR i VON 0 BIS 3
+  WENN werte[i] > 4 DANN
+    summe ← summe + werte[i]
+  ENDE WENN
+ENDE FÜR
+AUSGABE summe',
+  'Welchen Wert gibt der Algorithmus aus?',
+  'i = 0: 7 > 4, summe = 7. i = 1: 3 > 4 falsch, summe bleibt 7. i = 2: 8 > 4, summe = 15. i = 3: 2 > 4 falsch, summe bleibt 15. Ausgabe: 15.',
+  2,
+  '{}',
+  null,
+  '{"answer":15.0,"tolerance":0.0}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-pc-2',
+  'programmierlogik',
+  'ordering',
+  null,
+  'Bringe die Zeilen des Algorithmus zur Bestimmung des Maximums in die richtige Reihenfolge.',
+  'Zuerst wird max mit dem ersten Element belegt. Die Schleife vergleicht jedes weitere Element und übernimmt größere Werte. Die Verzweigung wird vor der Schleife geschlossen, ausgegeben wird nach der Schleife.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["max ← zahlen[0]","FÜR i VON 1 BIS n - 1","WENN zahlen[i] > max DANN","max ← zahlen[i]","ENDE WENN","ENDE FÜR","AUSGABE max"],"ordering_hint":"Von der ersten bis zur letzten Zeile"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-pc-3',
+  'programmierlogik',
+  'single',
+  'Ein Algorithmus soll die höchste Temperatur einer Winterwoche finden: [-5, -2, -8, -4, -6, -3, -7]. Er beginnt mit max ← 0 und gibt 0 aus.',
+  'Wie lässt sich der Fehler beheben?',
+  'Kein Wert der Liste ist größer als 0, also wird max nie überschrieben. Startet max mit dem ersten Element, liefert der Algorithmus für jede Liste das richtige Maximum, hier -2.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"max mit dem ersten Element der Liste initialisieren","is_correct":true,"rationale":"Dann ist max von Anfang an ein echter Wert der Liste, hier -5, und am Ende -2."},{"text":"Den Vergleich > durch < ersetzen","is_correct":false,"rationale":"Dann würde das Minimum gesucht."},{"text":"Die Schleife bei Index 1 statt 0 beginnen","is_correct":false,"rationale":"Solange max mit 0 startet, bleibt das Ergebnis 0."},{"text":"max mit 100 initialisieren","is_correct":false,"rationale":"Dann wäre das Ergebnis 100 - noch weiter daneben."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-pt-1',
+  'programmierlogik',
+  'numeric',
+  'a ← 2
+b ← 20
+SOLANGE b > a
+  a ← a + 3
+  b ← b - 1
+ENDE SOLANGE',
+  'Welchen Wert hat a nach Ablauf des Algorithmus?',
+  'Trace (a, b): Start (2, 20). 20 > 2: (5, 19). 19 > 5: (8, 18). 18 > 8: (11, 17). 17 > 11: (14, 16). 16 > 14: (17, 15). Jetzt ist 15 > 17 falsch - Ende nach 5 Durchläufen. a = 17.',
+  2,
+  '{}',
+  null,
+  '{"answer":17.0,"tolerance":0.0}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-pt-2',
+  'programmierlogik',
+  'numeric',
+  'x ← 0
+FÜR i VON 1 BIS 6
+  WENN i MOD 2 = 0 DANN
+    x ← x + i
+  SONST
+    x ← x - 1
+  ENDE WENN
+ENDE FÜR',
+  'Welchen Wert hat x nach Ablauf? (MOD liefert den Rest der ganzzahligen Division.)',
+  'i = 1 (ungerade): x = -1. i = 2 (gerade): x = -1 + 2 = 1. i = 3: x = 0. i = 4: x = 4. i = 5: x = 3. i = 6: x = 9. Kontrolle: gerade Zahlen 2 + 4 + 6 = 12, drei ungerade je -1 = -3, 12 - 3 = 9.',
+  3,
+  '{}',
+  null,
+  '{"answer":9.0,"tolerance":0.0}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-pt-3',
+  'programmierlogik',
+  'single',
+  'a ← 4
+b ← 9
+a ← b
+b ← a',
+  'Welche Werte haben a und b am Ende?',
+  'Jede Zuweisung nutzt den aktuellen Wert. Nach a ← b ist die 4 verloren. Ein echter Tausch braucht eine Hilfsvariable: hilf ← a, a ← b, b ← hilf.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"a = 9, b = 9","is_correct":true,"rationale":"a ← b macht a zu 9, danach übernimmt b den neuen Wert von a, also ebenfalls 9."},{"text":"a = 9, b = 4","is_correct":false,"rationale":"Das wäre ein Tausch - dafür fehlt die Hilfsvariable."},{"text":"a = 4, b = 4","is_correct":false,"rationale":"Die erste Zuweisung überschreibt a mit 9."},{"text":"a = 4, b = 9","is_correct":false,"rationale":"Die Zuweisungen verändern die Werte, sie bleiben nicht gleich."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-og-1',
+  'objektorientierung',
+  'matching',
+  'Ein Ticketsystem für den IT-Support wird objektorientiert entwickelt.',
+  'Ordne jeden Begriff zu.',
+  'Die Klasse beschreibt alle Tickets, ein Objekt ist ein bestimmtes Ticket. Attribute sind Eigenschaften wie prioritaet und erstelltAm, Methoden Fähigkeiten wie eskalieren().',
+  1,
+  '{}',
+  null,
+  '{"buckets":["Klasse","Objekt","Attribut","Methode"],"match_items":[{"text":"Ticket","bucket":0,"rationale":"Der Bauplan für alle Tickets."},{"text":"Das Ticket Nr. 4711 von Frau Kaya","bucket":1,"rationale":"Ein konkretes Exemplar."},{"text":"prioritaet","bucket":2,"rationale":""},{"text":"eskalieren()","bucket":3,"rationale":""},{"text":"erstelltAm","bucket":2,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-og-2',
+  'objektorientierung',
+  'single',
+  null,
+  'Was versteht man unter dem Zustand eines Objekts?',
+  'Ein Objekt hat Zustand (Attributwerte), Verhalten (Methoden) und Identität (es ist eigenständig, auch bei gleichen Werten).',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die aktuellen Werte seiner Attribute","is_correct":true,"rationale":"Ändert sich ein Attributwert, ändert sich der Zustand."},{"text":"Die Methoden seiner Klasse","is_correct":false,"rationale":"Methoden beschreiben das Verhalten."},{"text":"Seine eindeutige Identität","is_correct":false,"rationale":"Die Identität bleibt gleich, auch wenn sich der Zustand ändert."},{"text":"Den Namen seiner Klasse","is_correct":false,"rationale":"Der Klassenname beschreibt die Art, nicht den Zustand."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-og-3',
+  'objektorientierung',
+  'multiple',
+  null,
+  'Welche Aussagen sind richtig?',
+  'Klasse = Bauplan, Objekt = Exemplar mit eigenem Zustand und eigener Identität. Methoden beschreiben das Verhalten und ändern den Zustand genau des Objekts, auf dem sie aufgerufen werden.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Aus einer Klasse können beliebig viele Objekte erzeugt werden.","is_correct":true,"rationale":"Die Klasse ist der Bauplan für alle."},{"text":"Zwei Objekte mit gleichen Attributwerten sind trotzdem verschiedene Objekte.","is_correct":true,"rationale":"Jedes Objekt hat seine eigene Identität."},{"text":"Methoden beschreiben das Verhalten von Objekten.","is_correct":true,"rationale":"Sie legen fest, was ein Objekt kann."},{"text":"Wird Ticket 4711 geschlossen, sind auch alle anderen Tickets geschlossen.","is_correct":false,"rationale":"Jedes Objekt hat seinen eigenen Zustand."},{"text":"Ein Objekt ist der Bauplan, aus dem Klassen entstehen.","is_correct":false,"rationale":"Umgekehrt: Aus der Klasse entstehen Objekte."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ok-1',
+  'objektorientierung',
+  'single',
+  'Die Klasse Artikel hat das Attribut private int bestand sowie public getBestand() und setBestand(int b). In der Klasse Lager steht: Artikel a = new Artikel();',
+  'Welche Anweisung in der Klasse Lager führt zu einem Compilerfehler?',
+  'Private Attribute sind nur in der eigenen Klasse sichtbar. Von außen läuft der Zugriff über die öffentlichen Getter und Setter.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"a.bestand = 50;","is_correct":true,"rationale":"bestand ist private und nur innerhalb von Artikel zugreifbar."},{"text":"a.setBestand(50);","is_correct":false,"rationale":"Der Setter ist public und darf aufgerufen werden."},{"text":"int x = a.getBestand();","is_correct":false,"rationale":"Der Getter ist public."},{"text":"a.setBestand(a.getBestand() + 1);","is_correct":false,"rationale":"Beide Methoden sind public."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ok-2',
+  'objektorientierung',
+  'numeric',
+  'Der Setter setBestand(int b) übernimmt den Wert nur, wenn b >= 0 ist.
+
+Artikel a = new Artikel();
+a.setBestand(30);
+a.setBestand(-10);
+a.setBestand(a.getBestand() + 5);',
+  'Welchen Wert hat bestand am Ende?',
+  'setBestand(30): gültig, bestand = 30. setBestand(-10): -10 >= 0 ist falsch, bestand bleibt 30. setBestand(30 + 5): gültig, bestand = 35.',
+  2,
+  '{}',
+  null,
+  '{"answer":35.0,"tolerance":0.0,"unit":"Stück"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ok-3',
+  'objektorientierung',
+  'multiple',
+  null,
+  'Welche Vorteile bietet die Kapselung?',
+  'Kapselung schützt Daten vor falscher Verwendung, macht Klassen unabhängig voneinander änderbar und legt eine klare Schnittstelle fest.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ungültige Werte lassen sich im Setter abfangen.","is_correct":true,"rationale":"Nur die Klasse selbst ändert ihre Daten - nach ihren Regeln."},{"text":"Die interne Darstellung kann sich ändern, ohne dass aufrufender Code angepasst werden muss.","is_correct":true,"rationale":"Andere Klassen kennen nur die Schnittstelle."},{"text":"Die Klasse hat eine klar definierte Schnittstelle.","is_correct":true,"rationale":"Die öffentlichen Methoden legen fest, was von außen möglich ist."},{"text":"Das Programm läuft dadurch schneller.","is_correct":false,"rationale":"Kapselung dient der Struktur und Sicherheit im Code, nicht der Geschwindigkeit."},{"text":"Private Attribute werden automatisch verschlüsselt gespeichert.","is_correct":false,"rationale":"private regelt nur den Zugriff im Code, es verschlüsselt nichts."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ok-4',
+  'objektorientierung',
+  'matching',
+  null,
+  'Ordne das UML-Zeichen der Sichtbarkeit zu.',
+  'Im Klassendiagramm: + public (von überall), - private (nur die Klasse), # protected (Klasse und Unterklassen), ~ package (selbes Paket).',
+  1,
+  '{}',
+  null,
+  '{"buckets":["public","private","protected","package"],"match_items":[{"text":"+","bucket":0,"rationale":""},{"text":"-","bucket":1,"rationale":""},{"text":"#","bucket":2,"rationale":""},{"text":"~","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-oc-1',
+  'objektorientierung',
+  'multiple',
+  null,
+  'Welche Aussagen zum Konstruktor sind richtig?',
+  'Der Konstruktor trägt den Klassennamen, hat keinen Rückgabetyp, wird bei new aufgerufen und kann überladen werden.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Er heißt genau wie die Klasse.","is_correct":true,"rationale":"Daran erkennt der Compiler den Konstruktor."},{"text":"Er hat keinen Rückgabetyp.","is_correct":true,"rationale":"Nicht einmal void."},{"text":"Er wird beim Erzeugen eines Objekts mit new aufgerufen.","is_correct":true,"rationale":"Er setzt dabei die Startwerte."},{"text":"Er muss mit void deklariert werden.","is_correct":false,"rationale":"Mit void wäre er eine gewöhnliche Methode."},{"text":"Eine Klasse darf höchstens einen Konstruktor haben.","is_correct":false,"rationale":"Konstruktoren lassen sich überladen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-oc-2',
+  'objektorientierung',
+  'single',
+  'Die Klasse Kunde hat bereits die Konstruktoren Kunde(String name) und Kunde(String name, int nr).',
+  'Welcher weitere Konstruktor kann NICHT ergänzt werden?',
+  'Beim Überladen müssen sich die Parameterlisten in Anzahl, Typen oder Reihenfolge der Typen unterscheiden. Parameternamen zählen nicht.',
+  3,
+  '{}',
+  null,
+  '{"choices":[{"text":"Kunde(String vorname)","is_correct":true,"rationale":"Gleiche Parameterliste wie Kunde(String name) - nur der Parametername unterscheidet sich."},{"text":"Kunde()","is_correct":false,"rationale":"Keine Parameter - diese Liste gibt es noch nicht."},{"text":"Kunde(int nr)","is_correct":false,"rationale":"Ein int-Parameter ist eine neue Parameterliste."},{"text":"Kunde(int nr, String name)","is_correct":false,"rationale":"Andere Reihenfolge der Typen - erlaubt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-oc-3',
+  'objektorientierung',
+  'numeric',
+  'Punktekonto a = new Punktekonto(100);
+Punktekonto b = a;
+b.gutschreiben(50);
+Punktekonto c = new Punktekonto(100);
+c.gutschreiben(20);',
+  'Welchen Wert liefert danach a.getPunkte()? Der Konstruktor setzt den Startwert, gutschreiben addiert.',
+  'b = a kopiert nur die Referenz: a und b zeigen auf dasselbe Objekt. 100 + 50 = 150. c ist ein eigenes Objekt mit new, seine 120 Punkte berühren a nicht. a.getPunkte() liefert 150.',
+  2,
+  '{}',
+  null,
+  '{"answer":150.0,"tolerance":0.0,"unit":"Punkte"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-de-1',
+  'datenmodellierung',
+  'matching',
+  'Ein Webshop-Datenmodell: Kunden mit E-Mail-Adresse bestellen Artikel mit Preis. Lieferanten liefern Artikel.',
+  'Ordne jeden Begriff dem passenden Element des ER-Modells zu.',
+  'Substantive, zu denen eigene Daten gespeichert werden, sind Entitätstypen. Beschreibende Angaben sind Attribute, Verben zwischen Entitätstypen sind Beziehungen.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Entitätstyp","Attribut","Beziehung"],"match_items":[{"text":"Kunde","bucket":0,"rationale":""},{"text":"Artikel","bucket":0,"rationale":""},{"text":"Lieferant","bucket":0,"rationale":""},{"text":"E-Mail-Adresse","bucket":1,"rationale":""},{"text":"Preis","bucket":1,"rationale":""},{"text":"bestellt","bucket":2,"rationale":""},{"text":"liefert","bucket":2,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-de-2',
+  'datenmodellierung',
+  'single',
+  null,
+  'Welche Angabe beschreibt eine Entität?',
+  'Entität = konkretes Exemplar, Entitätstyp = Menge gleichartiger Entitäten, Attribut = Eigenschaft, Beziehung = Verbindung.',
+  1,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Kundin Frau Yilmaz mit der Kundennummer 10457","is_correct":true,"rationale":"Ein einzelnes, unterscheidbares Objekt ist eine Entität."},{"text":"Der Kunde als allgemeiner Typ","is_correct":false,"rationale":"Das ist ein Entitätstyp - die Zusammenfassung gleichartiger Entitäten."},{"text":"Die Eigenschaft Postleitzahl","is_correct":false,"rationale":"Das ist ein Attribut."},{"text":"Die Verbindung „kauft“ zwischen Kunde und Artikel","is_correct":false,"rationale":"Das ist eine Beziehung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-de-3',
+  'datenmodellierung',
+  'single',
+  null,
+  'Mit welchem Symbol wird in der Chen-Notation eine Beziehung dargestellt?',
+  'Chen-Notation: Rechteck = Entitätstyp, Raute = Beziehung, Ellipse = Attribut, Unterstreichung = Schlüsselattribut.',
+  1,
+  '{}',
+  null,
+  '{"choices":[{"text":"Raute","is_correct":true,"rationale":"Beziehungen wie „bestellt“ stehen in einer Raute zwischen den Entitätstypen."},{"text":"Rechteck","is_correct":false,"rationale":"Das Rechteck steht für einen Entitätstyp."},{"text":"Ellipse","is_correct":false,"rationale":"Die Ellipse steht für ein Attribut."},{"text":"Unterstrichener Text","is_correct":false,"rationale":"So wird ein Schlüsselattribut gekennzeichnet."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-de-4',
+  'datenmodellierung',
+  'multiple',
+  'Eine Arztpraxis will speichern: Patienten mit Name und Geburtsdatum, Ärztinnen und Ärzte mit Fachrichtung sowie Krankenkassen mit Name und Kassennummer. Jeder Patient ist bei einer Krankenkasse versichert.',
+  'Welche Begriffe werden im ER-Modell zu Entitätstypen?',
+  'Entitätstypen sind Dinge mit eigenen Eigenschaften: Patient, Arzt, Krankenkasse. Fachrichtung ist ein Attribut, „ist versichert bei“ eine Beziehung.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Patient","is_correct":true,"rationale":"Zu Patienten werden eigene Daten gespeichert."},{"text":"Arzt","is_correct":true,"rationale":"Zu Ärztinnen und Ärzten wird die Fachrichtung gespeichert."},{"text":"Krankenkasse","is_correct":true,"rationale":"Die Kasse hat eigene Attribute wie Name und Kassennummer."},{"text":"Fachrichtung","is_correct":false,"rationale":"Eine Eigenschaft des Arztes - also ein Attribut."},{"text":"ist versichert bei","is_correct":false,"rationale":"Das verbindet Patient und Krankenkasse - eine Beziehung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-dk-1',
+  'datenmodellierung',
+  'matching',
+  null,
+  'Welche Kardinalität liegt vor?',
+  'Immer beide Richtungen lesen: höchstens einer auf beiden Seiten = 1:1, einer auf einer Seite und viele auf der anderen = 1:n, viele auf beiden Seiten = n:m.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["1:1","1:n","n:m"],"match_items":[{"text":"Mitarbeiter - Dienstwagen (jeder hat höchstens einen Wagen, jeder Wagen gehört einer Person)","bucket":0,"rationale":""},{"text":"Abteilung - Mitarbeiter (jeder arbeitet in genau einer Abteilung)","bucket":1,"rationale":""},{"text":"Kunde - Rechnung (jede Rechnung geht an genau einen Kunden)","bucket":1,"rationale":""},{"text":"Schüler - Kurs (jeder belegt mehrere Kurse, jeder Kurs hat mehrere Schüler)","bucket":2,"rationale":""},{"text":"Bestellung - Artikel (eine Bestellung enthält viele Artikel, ein Artikel steckt in vielen Bestellungen)","bucket":2,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-dk-2',
+  'datenmodellierung',
+  'single',
+  'Eine Bestellung kann viele Artikel enthalten, ein Artikel kann in vielen Bestellungen vorkommen.',
+  'Wie wird diese Beziehung im relationalen Modell umgesetzt?',
+  'Eine n:m-Beziehung braucht eine Zwischentabelle. Ihr Primärschlüssel besteht meist aus den beiden Fremdschlüsseln, dazu kommen Attribute der Beziehung wie die Menge.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Mit einer Zwischentabelle Bestellposition, die BestellNr und ArtikelNr als Fremdschlüssel enthält","is_correct":true,"rationale":"So wird n:m in zwei 1:n-Beziehungen aufgelöst."},{"text":"Die Tabelle Artikel bekommt die Spalte BestellNr","is_correct":false,"rationale":"Dann könnte jeder Artikel nur zu einer Bestellung gehören - das wäre 1:n."},{"text":"Die Tabelle Bestellung bekommt die Spalten Artikel1, Artikel2 und Artikel3","is_correct":false,"rationale":"Wiederholungsgruppen verletzen die 1NF und begrenzen die Anzahl der Artikel."},{"text":"Beide Tabellen werden zu einer Tabelle zusammengelegt","is_correct":false,"rationale":"Das erzeugt Redundanz und Anomalien."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-dk-3',
+  'datenmodellierung',
+  'single',
+  null,
+  'Zwischen Abteilung und Mitarbeiter besteht eine 1:n-Beziehung. Wo wird der Fremdschlüssel angelegt?',
+  'Bei 1:n wandert der Primärschlüssel der 1-Seite als Fremdschlüssel in die Tabelle der n-Seite.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"In der Tabelle Mitarbeiter als Spalte AbteilungsNr","is_correct":true,"rationale":"Der Fremdschlüssel kommt auf die n-Seite - jeder Mitarbeiter verweist auf seine eine Abteilung."},{"text":"In der Tabelle Abteilung als Spalte MitarbeiterNr","is_correct":false,"rationale":"Eine Abteilung hat viele Mitarbeiter - eine einzelne Spalte kann sie nicht alle aufnehmen."},{"text":"In beiden Tabellen","is_correct":false,"rationale":"Das wäre redundant und könnte widersprüchlich werden."},{"text":"In einer zusätzlichen Zwischentabelle","is_correct":false,"rationale":"Eine Zwischentabelle ist nur bei n:m nötig."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-dk-4',
+  'datenmodellierung',
+  'numeric',
+  'Ein Datenmodell hat die Entitätstypen Kunde, Bestellung und Artikel. Kunde - Bestellung ist 1:n, Bestellung - Artikel ist n:m.',
+  'Wie viele Tabellen entstehen im relationalen Modell mindestens?',
+  'Jeder Entitätstyp wird eine Tabelle: 3. Die 1:n-Beziehung braucht keine eigene Tabelle (Fremdschlüssel KundenNr in Bestellung). Die n:m-Beziehung braucht eine Zwischentabelle: 3 + 1 = 4.',
+  2,
+  '{}',
+  null,
+  '{"answer":4.0,"tolerance":0.0,"unit":"Tabellen"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-dl-1',
+  'datenmodellierung',
+  'multiple',
+  null,
+  'Welche Aussagen zum Primärschlüssel sind richtig?',
+  'Ein Primärschlüssel ist eindeutig, nie leer und möglichst stabil. Er darf zusammengesetzt oder künstlich sein und wird von Fremdschlüsseln referenziert.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sein Wert ist innerhalb der Tabelle eindeutig.","is_correct":true,"rationale":"Nur so lässt sich jeder Datensatz sicher ansprechen."},{"text":"Er darf nicht leer sein.","is_correct":true,"rationale":"Ein leerer Wert könnte keinen Datensatz identifizieren."},{"text":"Er kann aus mehreren Spalten zusammengesetzt sein.","is_correct":true,"rationale":"Etwa BestellNr + ArtikelNr in einer Bestellposition."},{"text":"Er muss eine fachliche Bedeutung haben.","is_correct":false,"rationale":"Künstliche Schlüssel ohne Bedeutung sind sogar oft die bessere Wahl."},{"text":"Er darf in keiner anderen Tabelle vorkommen.","is_correct":false,"rationale":"Als Fremdschlüssel taucht er gerade in anderen Tabellen auf."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-dl-2',
+  'datenmodellierung',
+  'single',
+  'Ein Sportverein speichert Mitglieder mit Vorname, Nachname, Geburtsdatum und E-Mail-Adresse.',
+  'Welcher Primärschlüssel ist am besten geeignet?',
+  'Fehlt ein stabiles, eindeutiges fachliches Merkmal, nimmt man einen künstlichen Schlüssel (Surrogatschlüssel).',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Eine vom System vergebene Mitgliedsnummer","is_correct":true,"rationale":"Ein künstlicher Schlüssel ist garantiert eindeutig und ändert sich nie."},{"text":"Der Nachname","is_correct":false,"rationale":"Mehrere Mitglieder können denselben Nachnamen haben."},{"text":"Die E-Mail-Adresse","is_correct":false,"rationale":"Sie kann sich ändern, fehlen oder von mehreren Personen geteilt werden."},{"text":"Vorname und Nachname zusammen","is_correct":false,"rationale":"Auch diese Kombination ist nicht sicher eindeutig."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-dl-3',
+  'datenmodellierung',
+  'single',
+  'Die Tabelle Bestellung hat den Fremdschlüssel KundenNr, der auf die Tabelle Kunde verweist. Referenzielle Integrität ist aktiv, eine Löschweitergabe ist nicht eingerichtet.',
+  'Was passiert, wenn Kunde 10457 gelöscht werden soll, zu dem noch Bestellungen existieren?',
+  'Referenzielle Integrität: Jeder Fremdschlüssel verweist auf einen existierenden Primärschlüssel. Ohne Löschweitergabe wird das Löschen eines noch referenzierten Datensatzes verhindert.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Das Löschen wird abgelehnt.","is_correct":true,"rationale":"Sonst würden Bestellungen auf einen nicht vorhandenen Kunden verweisen."},{"text":"Der Kunde wird gelöscht, die Bestellungen behalten die KundenNr 10457.","is_correct":false,"rationale":"Das wären verwaiste Datensätze - genau das verhindert die referenzielle Integrität."},{"text":"Die Bestellungen werden automatisch mitgelöscht.","is_correct":false,"rationale":"Das geschieht nur mit eingerichteter Löschweitergabe (Kaskade)."},{"text":"Die KundenNr wird an einen anderen Kunden neu vergeben.","is_correct":false,"rationale":"Schlüsselwerte werden nicht automatisch umverteilt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-dl-4',
+  'datenmodellierung',
+  'matching',
+  'Tabellen: Kunde (KundenNr, Name) und Bestellung (BestellNr, Datum, KundenNr). Der Primärschlüssel ist jeweils die erste Spalte.',
+  'Welche Rolle hat die jeweilige Spalte?',
+  'Dieselbe Spalte KundenNr ist in Kunde Primärschlüssel und in Bestellung Fremdschlüssel. Datum und Name sind beschreibende Nichtschlüsselattribute.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Primärschlüssel","Fremdschlüssel","Nichtschlüsselattribut"],"match_items":[{"text":"KundenNr in Kunde","bucket":0,"rationale":""},{"text":"BestellNr in Bestellung","bucket":0,"rationale":""},{"text":"KundenNr in Bestellung","bucket":1,"rationale":""},{"text":"Datum in Bestellung","bucket":2,"rationale":""},{"text":"Name in Kunde","bucket":2,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-dn-1',
+  'datenmodellierung',
+  'matching',
+  'Ein Webshop speichert Bestellungen, Kunden und Artikel in einer einzigen Tabelle.',
+  'Welche Anomalie liegt vor?',
+  'Einfügeanomalie: Daten lassen sich nicht unabhängig erfassen. Änderungsanomalie: redundante Kopien werden widersprüchlich. Löschanomalie: Beim Löschen gehen andere Informationen mit verloren.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Einfügeanomalie","Änderungsanomalie","Löschanomalie"],"match_items":[{"text":"Ein neuer Artikel lässt sich erst speichern, wenn ihn jemand bestellt hat","bucket":0,"rationale":""},{"text":"Ein neuer Kunde ohne Bestellung kann nicht angelegt werden","bucket":0,"rationale":""},{"text":"Nach einem Umzug steht bei derselben Kundin in einigen Zeilen noch der alte Ort","bucket":1,"rationale":""},{"text":"Mit der einzigen Bestellung eines Kunden verschwinden auch seine Adressdaten","bucket":2,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-dn-2',
+  'datenmodellierung',
+  'single',
+  'Eine Tabelle Bestellposition hat den Primärschlüssel (BestellNr, ArtikelNr). Alle Werte sind atomar. Die Spalte Artikelbezeichnung hängt nur von der ArtikelNr ab.',
+  'Welche Normalform erfüllt die Tabelle höchstens?',
+  'Eine partielle Abhängigkeit von einem Teil eines zusammengesetzten Schlüssels verletzt die 2NF. Lösung: Artikelbezeichnung in eine eigene Tabelle Artikel auslagern.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"1NF","is_correct":true,"rationale":"Die Werte sind atomar, aber Artikelbezeichnung hängt nur von einem Teil des Schlüssels ab - das verletzt die 2NF."},{"text":"2NF","is_correct":false,"rationale":"Die 2NF verlangt volle Abhängigkeit vom ganzen Schlüssel."},{"text":"3NF","is_correct":false,"rationale":"Die 3NF setzt die 2NF voraus."},{"text":"Keine Normalform","is_correct":false,"rationale":"Atomare Werte erfüllen bereits die 1NF."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-dn-3',
+  'datenmodellierung',
+  'single',
+  'Tabelle Mitarbeiter (PersNr, Name, AbtNr, AbtName) mit dem Primärschlüssel PersNr. Alle Werte sind atomar.',
+  'Was verletzt hier die 3NF?',
+  'Die 3NF verbietet transitive Abhängigkeiten. AbtName wird in eine Tabelle Abteilung (AbtNr, AbtName) ausgelagert, AbtNr bleibt als Fremdschlüssel in Mitarbeiter.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"AbtName hängt über AbtNr von PersNr ab.","is_correct":true,"rationale":"Das ist eine transitive Abhängigkeit: PersNr -> AbtNr -> AbtName."},{"text":"Name hängt von PersNr ab.","is_correct":false,"rationale":"Eine direkte Abhängigkeit vom Schlüssel ist erwünscht."},{"text":"Der Primärschlüssel besteht nur aus einer Spalte.","is_correct":false,"rationale":"Das ist erlaubt und sogar üblich."},{"text":"AbtNr ist kein Teil des Primärschlüssels.","is_correct":false,"rationale":"Als Fremdschlüssel auf die Abteilung ist AbtNr genau richtig."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-dn-4',
+  'datenmodellierung',
+  'matching',
+  'Die Tabelle (BestellNr, ArtikelNr, Menge, Datum, KundenNr, Kundenname, Artikelbezeichnung, Preis) wird in die 3NF gebracht. Preis ist der Listenpreis des Artikels.',
+  'In welcher Tabelle landet das Attribut?',
+  'Kundenname hängt von KundenNr ab (Kunde), Datum nur von BestellNr (Bestellung), Bezeichnung und Listenpreis nur von ArtikelNr (Artikel). Die Menge hängt von BestellNr und ArtikelNr gemeinsam ab (Bestellposition).',
+  3,
+  '{}',
+  null,
+  '{"buckets":["Kunde","Bestellung","Artikel","Bestellposition"],"match_items":[{"text":"Kundenname","bucket":0,"rationale":""},{"text":"Datum","bucket":1,"rationale":""},{"text":"Artikelbezeichnung","bucket":2,"rationale":""},{"text":"Preis","bucket":2,"rationale":""},{"text":"Menge","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wu-1',
+  'web_internet',
+  'matching',
+  'URL: https://portal.example.org:8080/kunden/profil?id=42#adresse',
+  'Ordne jeden Teil der URL seiner Bezeichnung zu.',
+  'Schema vor ://, Host bis zum Doppelpunkt, Port danach, Pfad ab /, Query hinter ?, Fragment hinter #.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Schema","Host","Port","Pfad","Query","Fragment"],"match_items":[{"text":"https","bucket":0,"rationale":""},{"text":"portal.example.org","bucket":1,"rationale":""},{"text":"8080","bucket":2,"rationale":""},{"text":"/kunden/profil","bucket":3,"rationale":""},{"text":"id=42","bucket":4,"rationale":""},{"text":"adresse","bucket":5,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wu-2',
+  'web_internet',
+  'single',
+  null,
+  'Welchen Port verwendet der Browser für https://example.com/login?',
+  'Fehlt der Port, nimmt der Browser den Standardport des Schemas: http 80, https 443.',
+  1,
+  '{}',
+  null,
+  '{"choices":[{"text":"443","is_correct":true,"rationale":"Ohne Portangabe gilt der Standardport von https."},{"text":"80","is_correct":false,"rationale":"Das ist der Standardport von http."},{"text":"8080","is_correct":false,"rationale":"Ein üblicher Alternativport, muss aber ausdrücklich angegeben werden."},{"text":"21","is_correct":false,"rationale":"Das ist der Standardport von FTP."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wu-3',
+  'web_internet',
+  'single',
+  'URL: https://shop.example.com/suche?q=maus#treffer',
+  'Welcher Teil wird nicht an den Server übertragen?',
+  'Alles hinter # bleibt im Browser. Parameter für den Server gehören in die Query hinter ?.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"#treffer","is_correct":true,"rationale":"Das Fragment wertet nur der Browser aus, um an eine Stelle der Seite zu springen."},{"text":"?q=maus","is_correct":false,"rationale":"Die Query wird mitgeschickt - der Server braucht den Suchbegriff."},{"text":"/suche","is_correct":false,"rationale":"Der Pfad sagt dem Server, welche Ressource gewünscht ist."},{"text":"shop.example.com","is_correct":false,"rationale":"Der Host wird zum Verbindungsaufbau und im Host-Header gebraucht."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wu-4',
+  'web_internet',
+  'multiple',
+  'URL: https://intranet.firma.example/hilfe?thema=vpn&sprache=de',
+  'Welche Aussagen sind richtig?',
+  'Host = intranet.firma.example (Subdomain, Domain, TLD). Pfad /hilfe, Query mit zwei Parametern, Standardport 443.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Top-Level-Domain ist example.","is_correct":true,"rationale":"Die TLD ist der letzte Teil des Hostnamens."},{"text":"intranet ist eine Subdomain.","is_correct":true,"rationale":"Sie steht links vor der Domain firma."},{"text":"Die Query enthält zwei Parameter.","is_correct":true,"rationale":"thema=vpn und sprache=de, getrennt durch &."},{"text":"Der Port ist 80.","is_correct":false,"rationale":"Bei https ohne Angabe gilt Port 443."},{"text":"hilfe ist ein Fragment.","is_correct":false,"rationale":"hilfe ist der Pfad - ein Fragment stünde hinter #."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wh-1',
+  'web_internet',
+  'matching',
+  null,
+  'Ordne jeden Statuscode seiner Klasse zu.',
+  'Die erste Ziffer bestimmt die Klasse: 2 Erfolg, 3 Umleitung, 4 Fehler in der Anfrage, 5 Fehler beim Server.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Erfolg (2xx)","Umleitung (3xx)","Client-Fehler (4xx)","Server-Fehler (5xx)"],"match_items":[{"text":"201 Created","bucket":0,"rationale":""},{"text":"301 Moved Permanently","bucket":1,"rationale":""},{"text":"304 Not Modified","bucket":1,"rationale":""},{"text":"401 Unauthorized","bucket":2,"rationale":""},{"text":"404 Not Found","bucket":2,"rationale":""},{"text":"503 Service Unavailable","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wh-2',
+  'web_internet',
+  'single',
+  'Ein Azubi ist im Intranet angemeldet und ruft eine Seite der Personalabteilung auf, für die er keine Berechtigung hat.',
+  'Welchen Statuscode liefert der Server korrekterweise?',
+  '401 = Anmeldung fehlt oder ist fehlgeschlagen. 403 = angemeldet, aber ohne Berechtigung.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"403 Forbidden","is_correct":true,"rationale":"Der Nutzer ist bekannt, der Zugriff wird aber verweigert."},{"text":"401 Unauthorized","is_correct":false,"rationale":"Das gilt, wenn keine oder eine fehlgeschlagene Anmeldung vorliegt."},{"text":"404 Not Found","is_correct":false,"rationale":"Die Seite existiert ja - sie ist nur gesperrt."},{"text":"500 Internal Server Error","is_correct":false,"rationale":"Der Server arbeitet korrekt, es gibt keinen Programmfehler."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wh-3',
+  'web_internet',
+  'matching',
+  'Eine Webshop-Schnittstelle arbeitet mit den HTTP-Methoden nach ihrer üblichen Bedeutung.',
+  'Welche Methode passt zur Aktion?',
+  'GET liest, POST legt Neues an bzw. sendet Daten, PUT ersetzt eine Ressource unter bekannter Adresse, DELETE löscht sie.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["GET","POST","PUT","DELETE"],"match_items":[{"text":"Produktliste abrufen","bucket":0,"rationale":""},{"text":"Eine neue Bestellung anlegen","bucket":1,"rationale":""},{"text":"Den Kundendatensatz 42 vollständig ersetzen","bucket":2,"rationale":""},{"text":"Die gespeicherte Adresse 7 entfernen","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wh-4',
+  'web_internet',
+  'multiple',
+  null,
+  'Welche Aussagen zu HTTP und HTTPS sind richtig?',
+  'HTTP ist zustandslos, HTTPS verschlüsselt über TLS auf Port 443. Cookies liegen im Browser, 5xx meldet Fehler auf dem Server.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"HTTP ist zustandslos.","is_correct":true,"rationale":"Jede Anfrage steht für sich - Sitzungen entstehen erst durch Cookies oder Tokens."},{"text":"HTTPS ist HTTP über eine TLS-verschlüsselte Verbindung.","is_correct":true,"rationale":"Das Protokoll bleibt HTTP, nur der Transport ist gesichert."},{"text":"Der Standardport von HTTPS ist 443.","is_correct":true,"rationale":"HTTP ohne Verschlüsselung nutzt Port 80."},{"text":"Cookies werden nur auf dem Server gespeichert.","is_correct":false,"rationale":"Cookies speichert der Browser und schickt sie bei Anfragen mit."},{"text":"Ein 5xx-Code bedeutet, dass die Adresse falsch eingegeben wurde.","is_correct":false,"rationale":"Eine falsche Adresse führt zu 404, einem Client-Fehler."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wa-1',
+  'web_internet',
+  'ordering',
+  null,
+  'Bringe die Schritte beim Aufruf von https://shop.example.com in die richtige Reihenfolge.',
+  'Erst wird die IP-Adresse ermittelt (DNS), dann die Verbindung aufgebaut (TCP) und gesichert (TLS). Danach laufen Anfrage und Antwort (HTTP), zuletzt stellt der Browser die Seite dar.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["URL in die Adresszeile eingeben","DNS-Auflösung des Hostnamens","TCP-Verbindung per 3-Way-Handshake","TLS-Handshake","HTTP-Request senden","HTTP-Response empfangen","Seite rendern und Ressourcen nachladen"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wa-2',
+  'web_internet',
+  'ordering',
+  null,
+  'In welcher Reihenfolge laufen die Nachrichten beim TCP-Verbindungsaufbau?',
+  'Beim 3-Way-Handshake fragt der Client an (SYN), der Server bestätigt und fragt zurück (SYN-ACK), der Client bestätigt (ACK).',
+  1,
+  '{}',
+  null,
+  '{"ordered_items":["SYN vom Client","SYN-ACK vom Server","ACK vom Client"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wa-3',
+  'web_internet',
+  'single',
+  null,
+  'Welche Aufgabe hat DNS beim Aufruf einer Webseite?',
+  'DNS ist das Telefonbuch des Internets: Name rein, IP-Adresse raus. Die Inhalte kommen danach per HTTP.',
+  1,
+  '{}',
+  null,
+  '{"choices":[{"text":"Es übersetzt den Hostnamen in eine IP-Adresse.","is_correct":true,"rationale":"Ohne IP-Adresse kann der Browser keine Verbindung aufbauen."},{"text":"Es verschlüsselt die Verbindung.","is_correct":false,"rationale":"Das ist Aufgabe von TLS."},{"text":"Es liefert die HTML-Seite aus.","is_correct":false,"rationale":"Das macht der Webserver per HTTP."},{"text":"Es vergibt dem Client eine IP-Adresse.","is_correct":false,"rationale":"Das ist Aufgabe von DHCP."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wa-4',
+  'web_internet',
+  'single',
+  'Ein Kunde meldet: Der Browser zeigt beim Aufruf des Webshops „Server nicht gefunden“. Über die IP-Adresse ist der Server erreichbar.',
+  'Welcher Schritt schlägt am wahrscheinlichsten fehl?',
+  'Funktioniert der Zugriff per IP-Adresse, aber nicht per Name, liegt das Problem bei der Namensauflösung (DNS).',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die DNS-Auflösung","is_correct":true,"rationale":"Der Server funktioniert, nur der Name lässt sich nicht in die IP-Adresse übersetzen."},{"text":"Der TLS-Handshake","is_correct":false,"rationale":"Ein TLS-Fehler führt zu einer Zertifikatswarnung, nicht zu „Server nicht gefunden“."},{"text":"Die HTTP-Response mit 404","is_correct":false,"rationale":"Dann hätte der Server geantwortet - er wurde aber gar nicht gefunden."},{"text":"Das Rendern der Seite","is_correct":false,"rationale":"Dazu müsste die Seite bereits geladen sein."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wt-1',
+  'web_internet',
+  'matching',
+  null,
+  'Welche Technik ist für die Aufgabe zuständig?',
+  'HTML legt Struktur und Bedeutung fest, CSS die Gestaltung, JavaScript das Verhalten der Seite.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["HTML","CSS","JavaScript"],"match_items":[{"text":"Einen Text als Hauptüberschrift auszeichnen","bucket":0,"rationale":""},{"text":"Einen Link auf die Kontaktseite setzen","bucket":0,"rationale":""},{"text":"Die Schriftfarbe aller Links festlegen","bucket":1,"rationale":""},{"text":"Abstände zwischen Absätzen festlegen","bucket":1,"rationale":""},{"text":"Nach dem Scrollen weitere Artikel vom Server nachladen","bucket":2,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wt-2',
+  'web_internet',
+  'single',
+  null,
+  'Welcher CSS-Selektor wählt alle Elemente mit class="preis"?',
+  'Klassen werden mit Punkt (.preis), IDs mit Raute (#preis) und Elemente mit ihrem Namen (h1) ausgewählt.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":".preis","is_correct":true,"rationale":"Der Punkt kennzeichnet einen Klassenselektor."},{"text":"#preis","is_correct":false,"rationale":"Die Raute wählt das Element mit id=\"preis\"."},{"text":"preis","is_correct":false,"rationale":"Ohne Zeichen davor wäre das ein Elementselektor für ein Tag namens preis."},{"text":"<preis>","is_correct":false,"rationale":"Das ist keine CSS-Syntax, sondern sieht aus wie ein HTML-Tag."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wt-3',
+  'web_internet',
+  'multiple',
+  null,
+  'Welche HTML-Tags sind semantisch, sagen also etwas über die Rolle des Inhalts aus?',
+  'Semantische Tags wie header, nav, main, article und footer beschreiben die Rolle eines Bereichs. div und span gliedern nur, ohne Bedeutung.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"<nav>","is_correct":true,"rationale":"Kennzeichnet einen Navigationsbereich."},{"text":"<main>","is_correct":true,"rationale":"Kennzeichnet den Hauptinhalt der Seite."},{"text":"<footer>","is_correct":true,"rationale":"Kennzeichnet den Fußbereich."},{"text":"<div>","is_correct":false,"rationale":"Ein neutraler Container ohne Bedeutung."},{"text":"<span>","is_correct":false,"rationale":"Ein neutraler Inline-Container ohne Bedeutung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wt-4',
+  'web_internet',
+  'single',
+  null,
+  'Wozu dient eine Media Query in CSS?',
+  'Mit @media (max-width: 600px) { … } gelten Regeln nur auf schmalen Bildschirmen - so passt sich das Layout an.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"CSS-Regeln nur unter Bedingungen anwenden, etwa bei schmalen Bildschirmen","is_correct":true,"rationale":"Das ist die Grundlage für responsives Design."},{"text":"Daten aus einer Datenbank abfragen","is_correct":false,"rationale":"CSS kann keine Datenbanken abfragen."},{"text":"Videos und Audio in die Seite einbinden","is_correct":false,"rationale":"Dafür gibt es die HTML-Elemente video und audio."},{"text":"Die Seite bei Suchmaschinen anmelden","is_correct":false,"rationale":"Das hat mit CSS nichts zu tun."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wf-1',
+  'web_internet',
+  'matching',
+  null,
+  'Zu welchem WCAG-Prinzip gehört die Maßnahme?',
+  'Wahrnehmbar: Inhalte über mehr als einen Sinn. Bedienbar: ohne Maus nutzbar. Verständlich: klare Sprache und Hilfen. Robust: technisch sauber für Hilfsmittel.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["wahrnehmbar","bedienbar","verständlich","robust"],"match_items":[{"text":"Videos haben Untertitel","bucket":0,"rationale":""},{"text":"Bilder haben aussagekräftige Alt-Texte","bucket":0,"rationale":""},{"text":"Das Menü ist vollständig per Tastatur nutzbar","bucket":1,"rationale":""},{"text":"Die Fehlermeldung nennt das falsche Feld und wie es richtig geht","bucket":2,"rationale":""},{"text":"Sauberes, valides HTML, das Screenreader zuverlässig auswerten","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wf-2',
+  'web_internet',
+  'single',
+  'Ein Onlineshop mit 40 Beschäftigten verkauft Elektronik an Privatkunden in Deutschland.',
+  'Welche Vorschrift verpflichtet ihn, den Shop barrierefrei zu gestalten?',
+  'Seit dem 28.06.2025 verpflichtet das BFSG viele private Anbieter, etwa von Online-Shops, zur Barrierefreiheit. Mit 40 Beschäftigten greift die Ausnahme für Kleinstunternehmen nicht.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Das Barrierefreiheitsstärkungsgesetz (BFSG)","is_correct":true,"rationale":"Es gilt seit 28.06.2025 auch für Online-Shops privater Anbieter."},{"text":"Die BITV 2.0","is_correct":false,"rationale":"Sie gilt für öffentliche Stellen des Bundes, nicht für private Shops."},{"text":"Die DSGVO","is_correct":false,"rationale":"Sie regelt den Datenschutz, nicht die Barrierefreiheit."},{"text":"Die Arbeitsstättenverordnung","is_correct":false,"rationale":"Sie regelt Arbeitsplätze im Betrieb, nicht Webangebote für Kunden."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wf-3',
+  'web_internet',
+  'multiple',
+  null,
+  'Welche Maßnahmen verbessern die Barrierefreiheit einer Website?',
+  'Barrierefreiheit heißt: Inhalte mit mehreren Sinnen erfassbar, ohne Maus bedienbar und gut lesbar. Information nie nur über Farbe oder als Bild vermitteln.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Aussagekräftige Alt-Texte für inhaltliche Bilder","is_correct":true,"rationale":"Screenreader lesen den Alt-Text vor."},{"text":"Ein deutlich sichtbarer Tastaturfokus","is_correct":true,"rationale":"Wer ohne Maus arbeitet, sieht so, wo er sich befindet."},{"text":"Mindestens 4,5:1 Kontrast bei normalem Text","is_correct":true,"rationale":"Das verlangt die WCAG-Stufe AA."},{"text":"Pflichtfelder nur rot markieren","is_correct":false,"rationale":"Menschen mit Farbsehschwäche erkennen die Markierung nicht."},{"text":"Texte als Bild einbinden, damit die Schrift überall gleich aussieht","is_correct":false,"rationale":"Screenreader können Bildtext nicht lesen, beim Vergrößern wird er unscharf."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-wf-4',
+  'web_internet',
+  'single',
+  null,
+  'Welcher Alt-Text ist für eine rein dekorative Trennlinie richtig?',
+  'Inhaltliche Bilder brauchen einen beschreibenden Alt-Text, dekorative Bilder ein leeres alt="", damit Hilfsmittel sie überspringen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"alt=\"\" (leer)","is_correct":true,"rationale":"Ein leerer Alt-Text sagt dem Screenreader: überspringen."},{"text":"alt=\"Bild\"","is_correct":false,"rationale":"Das stört beim Vorlesen und liefert keine Information."},{"text":"alt=\"trennlinie_final_v2.png\"","is_correct":false,"rationale":"Dateinamen helfen niemandem."},{"text":"Gar kein alt-Attribut","is_correct":false,"rationale":"Dann lesen manche Screenreader den Dateinamen vor."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-mz-1',
+  'multimedia_daten',
+  'numeric',
+  null,
+  'Wandle die Binärzahl 1011 0110 in eine Dezimalzahl um.',
+  'Stellenwerte 128 64 32 16 8 4 2 1, Bits 1 0 1 1 0 1 1 0. Summe der Stellen mit 1: 128 + 32 + 16 + 4 + 2 = 182.',
+  2,
+  '{}',
+  null,
+  '{"answer":182.0,"tolerance":0.0}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-mz-2',
+  'multimedia_daten',
+  'numeric',
+  null,
+  'Wandle die Hexadezimalzahl 1A3 in eine Dezimalzahl um.',
+  'Stellenwerte 256, 16, 1. A = 10. 1 × 256 + 10 × 16 + 3 × 1 = 256 + 160 + 3 = 419.',
+  2,
+  '{}',
+  null,
+  '{"answer":419.0,"tolerance":0.0}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-mz-3',
+  'multimedia_daten',
+  'single',
+  null,
+  'Welche Hexadezimalzahl entspricht der Dezimalzahl 200?',
+  'Divisionsrestverfahren mit 16: 200 : 16 = 12 Rest 8, 12 : 16 = 0 Rest 12 (C). Von unten gelesen: C8.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"C8","is_correct":true,"rationale":"200 : 16 = 12 Rest 8, 12 = C. Probe: 12 × 16 + 8 = 200."},{"text":"8C","is_correct":false,"rationale":"Ziffern vertauscht: 8 × 16 + 12 = 140."},{"text":"D0","is_correct":false,"rationale":"D0 = 13 × 16 = 208."},{"text":"128","is_correct":false,"rationale":"Hexadezimal gelesen: 1 × 256 + 2 × 16 + 8 = 296."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-mz-4',
+  'multimedia_daten',
+  'single',
+  null,
+  'Welche Binärzahl entspricht der Dezimalzahl 45?',
+  '45 : 2 = 22 Rest 1, 22 : 2 = 11 Rest 0, 11 : 2 = 5 Rest 1, 5 : 2 = 2 Rest 1, 2 : 2 = 1 Rest 0, 1 : 2 = 0 Rest 1. Von unten gelesen: 101101, als Byte 0010 1101.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"0010 1101","is_correct":true,"rationale":"32 + 8 + 4 + 1 = 45."},{"text":"0010 1011","is_correct":false,"rationale":"Das ergibt 32 + 8 + 2 + 1 = 43."},{"text":"1011 0100","is_correct":false,"rationale":"Die richtige Folge rückwärts gelesen - das ergibt 180."},{"text":"0011 1101","is_correct":false,"rationale":"Das ergibt 32 + 16 + 8 + 4 + 1 = 61."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-mc-1',
+  'multimedia_daten',
+  'numeric',
+  null,
+  'Wie viele Byte belegt das Wort „Straße“ in UTF-8?',
+  'S, t, r, a, e sind ASCII-Zeichen mit je 1 Byte: 5 Byte. ß liegt außerhalb von ASCII und braucht 2 Byte. 5 + 2 = 7 Byte.',
+  2,
+  '{}',
+  null,
+  '{"answer":7.0,"tolerance":0.0,"unit":"Byte"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-mc-2',
+  'multimedia_daten',
+  'single',
+  null,
+  'Wie viele Zeichen umfasst der ASCII-Zeichensatz?',
+  'ASCII ist ein 7-Bit-Code mit 128 Zeichen: Steuerzeichen, Ziffern, englische Buchstaben und Satzzeichen, aber keine Umlaute.',
+  1,
+  '{}',
+  null,
+  '{"choices":[{"text":"128","is_correct":true,"rationale":"ASCII nutzt 7 Bit: 2⁷ = 128 Zeichen (Werte 0 bis 127)."},{"text":"256","is_correct":false,"rationale":"Das sind 8 Bit - etwa ISO 8859-1 (Latin-1)."},{"text":"65.536","is_correct":false,"rationale":"Das wären 16 Bit."},{"text":"127","is_correct":false,"rationale":"Die Werte reichen von 0 bis 127 - das sind 128 Zeichen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-mc-3',
+  'multimedia_daten',
+  'single',
+  'Im Kundenportal steht statt „Müller“ plötzlich „MÃ¼ller“.',
+  'Was ist die wahrscheinlichste Ursache?',
+  'Mojibake entsteht, wenn Bytes mit einer anderen Kodierung gelesen werden, als geschrieben wurde. Abhilfe: durchgängig UTF-8 festlegen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"UTF-8-kodierter Text wird als ISO 8859-1 (Latin-1) gelesen","is_correct":true,"rationale":"Das ü besteht in UTF-8 aus 2 Byte, die in Latin-1 als zwei einzelne Zeichen erscheinen."},{"text":"Die Daten wurden durch Schadsoftware beschädigt","is_correct":false,"rationale":"Das Muster ist typisch für eine falsche Kodierung, nicht für Beschädigung."},{"text":"Die Schriftart enthält kein ü","is_correct":false,"rationale":"Dann erschiene meist ein Ersatzzeichen, nicht zwei andere Zeichen."},{"text":"ASCII-Text wird als UTF-8 gelesen","is_correct":false,"rationale":"ASCII ist in UTF-8 enthalten und hat gar kein ü."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-mc-4',
+  'multimedia_daten',
+  'multiple',
+  null,
+  'Welche Aussagen zu UTF-8 sind richtig?',
+  'Unicode legt die Codepoints fest, UTF-8 speichert sie mit 1 bis 4 Byte und ist abwärtskompatibel zu ASCII.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ein Zeichen belegt 1 bis 4 Byte.","is_correct":true,"rationale":"UTF-8 ist eine Kodierung mit variabler Länge."},{"text":"Die ersten 128 Zeichen sind identisch mit ASCII.","is_correct":true,"rationale":"Reiner ASCII-Text ist daher gültiges UTF-8."},{"text":"Alle Unicode-Zeichen lassen sich darstellen.","is_correct":true,"rationale":"UTF-8 kann jeden Codepoint kodieren."},{"text":"Jedes Zeichen belegt genau 2 Byte.","is_correct":false,"rationale":"ASCII-Zeichen brauchen nur 1 Byte, andere bis zu 4."},{"text":"UTF-8 ist ein eigener Zeichensatz neben Unicode.","is_correct":false,"rationale":"UTF-8 ist eine Kodierung für Unicode."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-md-1',
+  'multimedia_daten',
+  'numeric',
+  'Eine Kamera nimmt Bilder mit 4.000 × 3.000 Pixeln und 24 Bit Farbtiefe auf.',
+  'Wie groß ist ein unkomprimiertes Bild in MB? (1 MB = 1.000.000 Byte)',
+  '4.000 × 3.000 = 12.000.000 Pixel. 24 Bit = 3 Byte pro Pixel. 12.000.000 × 3 = 36.000.000 Byte = 36 MB.',
+  2,
+  '{}',
+  null,
+  '{"answer":36.0,"tolerance":0.0,"unit":"MB"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-md-2',
+  'multimedia_daten',
+  'numeric',
+  'Ein Musikstück dauert 3 Minuten und liegt in CD-Qualität vor: 44,1 kHz Abtastrate, 16 Bit, Stereo, unkomprimiert.',
+  'Wie groß ist die Datei in MB? (1 MB = 1.000.000 Byte, auf zwei Nachkommastellen)',
+  '44.100 × 16 × 2 × 180 s = 254.016.000 Bit. / 8 = 31.752.000 Byte = 31,752 MB ≈ 31,75 MB.',
+  2,
+  '{}',
+  null,
+  '{"answer":31.75,"tolerance":0.01,"unit":"MB"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-md-3',
+  'multimedia_daten',
+  'numeric',
+  'Ein Video mit 1280 × 720 Pixeln, 24 Bit Farbtiefe und 25 Bildern pro Sekunde dauert 10 Sekunden. Ton und Kompression bleiben unberücksichtigt.',
+  'Wie groß ist das Video in MB? (1 MB = 1.000.000 Byte, auf eine Nachkommastelle)',
+  '1280 × 720 = 921.600 Pixel × 3 Byte = 2.764.800 Byte pro Bild. × 25 Bilder × 10 s = 691.200.000 Byte = 691,2 MB.',
+  3,
+  '{}',
+  null,
+  '{"answer":691.2,"tolerance":0.05,"unit":"MB"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-md-4',
+  'multimedia_daten',
+  'numeric',
+  'Ein Bild hat 1.024 × 768 Pixel und 8 Bit Farbtiefe (256 Farben).',
+  'Wie groß ist es unkomprimiert in KiB? (1 KiB = 1.024 Byte)',
+  '1.024 × 768 = 786.432 Pixel. 8 Bit = 1 Byte pro Pixel: 786.432 Byte. 786.432 / 1.024 = 768 KiB.',
+  2,
+  '{}',
+  null,
+  '{"answer":768.0,"tolerance":0.0,"unit":"KiB"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-mu-1',
+  'multimedia_daten',
+  'numeric',
+  'Eine 2,4 GB große Datei (1 GB = 1.000.000.000 Byte) wird über eine Leitung mit 100 Mbit/s (1 Mbit = 1.000.000 Bit) geladen. Overhead bleibt unberücksichtigt.',
+  'Wie viele Sekunden dauert der Download?',
+  '2,4 GB × 8 = 19,2 Gbit = 19.200 Mbit. 19.200 Mbit / 100 Mbit/s = 192 s.',
+  2,
+  '{}',
+  null,
+  '{"answer":192.0,"tolerance":0.0,"unit":"s"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-mu-2',
+  'multimedia_daten',
+  'numeric',
+  'Ein Anschluss hat 250 Mbit/s Download und 40 Mbit/s Upload. Ein Backup von 1,5 GB (1 GB = 1.000.000.000 Byte) wird in die Cloud hochgeladen. Overhead bleibt unberücksichtigt.',
+  'Wie viele Minuten dauert der Upload?',
+  'Beim Hochladen zählt die Upload-Rate. 1,5 GB × 8 = 12 Gbit = 12.000 Mbit. 12.000 / 40 Mbit/s = 300 s = 5 min.',
+  2,
+  '{}',
+  null,
+  '{"answer":5.0,"tolerance":0.0,"unit":"min"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-mu-3',
+  'multimedia_daten',
+  'numeric',
+  'Eine 900-MB-Datei (1 MB = 1.000.000 Byte) wird mit 60 Mbit/s übertragen. Durch Protokoll-Overhead steigt die zu übertragende Datenmenge um 10 %.',
+  'Wie viele Sekunden dauert die Übertragung?',
+  '900 MB × 8 = 7.200 Mbit. Mit 10 % Overhead: 7.200 × 1,1 = 7.920 Mbit. 7.920 Mbit / 60 Mbit/s = 132 s.',
+  3,
+  '{}',
+  null,
+  '{"answer":132.0,"tolerance":0.0,"unit":"s"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-mu-4',
+  'multimedia_daten',
+  'single',
+  'Ein Kollege rechnet: „500 MB bei 50 Mbit/s dauern 500 / 50 = 10 Sekunden.“',
+  'Was ist an der Rechnung falsch?',
+  'Dauer = Datenmenge in Bit / Datenrate in Bit/s. 1 Byte = 8 Bit - ohne diese Umrechnung ist das Ergebnis um den Faktor 8 zu klein.',
+  1,
+  '{}',
+  null,
+  '{"choices":[{"text":"Megabyte wurden nicht in Megabit umgerechnet - richtig sind 80 s.","is_correct":true,"rationale":"500 MB × 8 = 4.000 Mbit, 4.000 / 50 = 80 s."},{"text":"Nichts, 10 Sekunden stimmen.","is_correct":false,"rationale":"Die Datenrate ist in Bit, die Dateigröße in Byte angegeben."},{"text":"Er hätte mit 1.024 statt mit 1.000 rechnen müssen.","is_correct":false,"rationale":"Der Fehler ist der fehlende Faktor 8, nicht die Präfixbasis."},{"text":"Die Datenrate ist in Byte pro Sekunde angegeben, die Rechnung passt also.","is_correct":false,"rationale":"Mbit/s steht für Megabit pro Sekunde."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-mx-1',
+  'multimedia_daten',
+  'matching',
+  null,
+  'Arbeitet das Format verlustfrei oder verlustbehaftet?',
+  'PNG, FLAC und ZIP stellen das Original exakt wieder her. JPEG, MP3, AAC und H.265 lassen Details weg, die kaum wahrgenommen werden.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["verlustfrei","verlustbehaftet"],"match_items":[{"text":"PNG","bucket":0,"rationale":""},{"text":"FLAC","bucket":0,"rationale":""},{"text":"ZIP","bucket":0,"rationale":""},{"text":"JPEG","bucket":1,"rationale":""},{"text":"MP3","bucket":1,"rationale":""},{"text":"AAC","bucket":1,"rationale":""},{"text":"H.265","bucket":1,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-mx-2',
+  'multimedia_daten',
+  'single',
+  null,
+  'Wie lautet die Lauflängenkodierung von AAAABBBCCD, wenn jede Folge als Anzahl und dann Zeichen geschrieben wird?',
+  'RLE fasst Folgen gleicher Zeichen zusammen: AAAA -> 4A, BBB -> 3B, CC -> 2C, D -> 1D. Aus 10 Zeichen werden 8.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"4A3B2C1D","is_correct":true,"rationale":"4 × A, 3 × B, 2 × C, 1 × D - jeweils Anzahl vor dem Zeichen."},{"text":"A4B3C2D1","is_correct":false,"rationale":"Hier steht das Zeichen vor der Anzahl - verlangt ist die umgekehrte Schreibweise."},{"text":"4A3B2C2D","is_correct":false,"rationale":"D kommt nur einmal vor."},{"text":"10ABCD","is_correct":false,"rationale":"RLE zählt jede Folge gleicher Zeichen einzeln, nicht die Gesamtlänge."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-mx-3',
+  'multimedia_daten',
+  'numeric',
+  'Ein Foto ist unkomprimiert 36 MB groß, als JPEG nur noch 3 MB.',
+  'Um wie viel Prozent wurde die Dateigröße verringert? (auf eine Nachkommastelle)',
+  'Einsparung = (1 - 3 / 36) × 100 % = (1 - 0,0833) × 100 % ≈ 91,7 %. Der Kompressionsfaktor wäre 36 / 3 = 12.',
+  2,
+  '{}',
+  null,
+  '{"answer":91.7,"tolerance":0.05,"unit":"%"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-mx-4',
+  'multimedia_daten',
+  'single',
+  'Ein Firmenlogo soll auf der Website, auf Visitenkarten und auf einer großen Messewand gestochen scharf erscheinen.',
+  'Welches Format ist am besten geeignet?',
+  'Logos, Icons und Diagramme gehören in ein Vektorformat wie SVG. Rasterformate eignen sich für Fotos.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"SVG","is_correct":true,"rationale":"Als Vektorgrafik lässt sich das Logo ohne Qualitätsverlust beliebig skalieren."},{"text":"JPEG","is_correct":false,"rationale":"Rasterformat mit Artefakten an harten Kanten - beim Vergrößern pixelig."},{"text":"PNG","is_correct":false,"rationale":"Verlustfrei, aber ein Rasterformat - bei starker Vergrößerung pixelig."},{"text":"BMP","is_correct":false,"rationale":"Unkomprimiertes Rasterformat, groß und nicht skalierbar."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ig-1',
+  'ki_grundlagen',
+  'matching',
+  null,
+  'Welche Art des maschinellen Lernens liegt vor?',
+  'Überwacht: Trainingsdaten mit richtiger Antwort. Unüberwacht: Muster in Daten ohne Label finden. Bestärkend: Lernen durch Belohnung für gute Aktionen.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["überwacht","unüberwacht","bestärkend"],"match_items":[{"text":"Ein Spamfilter lernt aus E-Mails, die als Spam oder kein Spam markiert sind","bucket":0,"rationale":""},{"text":"Ein Modell lernt aus Tickets mit bekannter Kategorie, neue Tickets einzuordnen","bucket":0,"rationale":""},{"text":"Kunden werden ohne Vorgaben nach ähnlichem Kaufverhalten gruppiert","bucket":1,"rationale":""},{"text":"Ein Roboterarm erhält Punkte, wenn er ein Teil richtig greift","bucket":2,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ig-2',
+  'ki_grundlagen',
+  'single',
+  null,
+  'Wie erzeugt ein großes Sprachmodell (LLM) seine Antwort?',
+  'Ein LLM zerlegt Text in Tokens und berechnet Schritt für Schritt Wahrscheinlichkeiten für das nächste Token. Deshalb klingt die Antwort flüssig, ist aber nicht automatisch richtig.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Es sagt Token für Token das jeweils wahrscheinliche nächste Token vorher.","is_correct":true,"rationale":"Das ist das Grundprinzip generativer Sprachmodelle."},{"text":"Es schlägt die Antwort in einer Datenbank mit geprüften Fakten nach.","is_correct":false,"rationale":"Ein LLM erzeugt Text aus gelernten Wahrscheinlichkeiten, nicht aus einer Faktendatenbank."},{"text":"Es kopiert passende Textstellen aus dem Internet.","is_correct":false,"rationale":"Das Modell erzeugt neuen Text, statt Fundstellen zu kopieren."},{"text":"Es arbeitet fest programmierte Wenn-dann-Regeln ab.","is_correct":false,"rationale":"Das beschreibt regelbasierte Systeme - ein LLM hat sein Verhalten aus Daten gelernt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ig-3',
+  'ki_grundlagen',
+  'multiple',
+  null,
+  'Welche Aussagen sind richtig?',
+  'KI umfasst Machine Learning, Machine Learning umfasst Deep Learning. Heutige Systeme sind schwache KI, gelernt wird durch Anpassen von Gewichten.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Deep Learning ist ein Teilgebiet des Machine Learning.","is_correct":true,"rationale":"Es nutzt neuronale Netze mit vielen Schichten."},{"text":"Heutige KI-Systeme gelten als schwache KI.","is_correct":true,"rationale":"Sie sind auf Aufgabenfelder spezialisiert."},{"text":"Beim Training werden die Gewichte eines neuronalen Netzes angepasst.","is_correct":true,"rationale":"So lernt das Netz aus den Trainingsdaten."},{"text":"Heutige Chatbots sind starke KI mit menschenähnlichem Verständnis.","is_correct":false,"rationale":"Starke KI gibt es bisher nicht."},{"text":"Unüberwachtes Lernen braucht Daten mit richtigen Antworten.","is_correct":false,"rationale":"Das gilt für überwachtes Lernen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ig-4',
+  'ki_grundlagen',
+  'single',
+  null,
+  'Was ist im Zusammenhang mit Sprachmodellen ein Token?',
+  'Tokens sind die Einheiten, in denen ein Sprachmodell Text liest und erzeugt. Auch Längenbegrenzungen und Kosten werden oft in Tokens gerechnet.',
+  1,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ein Textbaustein - Wort, Wortteil oder Satzzeichen -, den das Modell verarbeitet","is_correct":true,"rationale":"Sprachmodelle zerlegen jeden Text in solche Bausteine."},{"text":"Ein Passwort für den Zugang zum Modell","is_correct":false,"rationale":"Zugangsschlüssel heißen API-Schlüssel und sind hier nicht gemeint."},{"text":"Ein einzelnes Neuron im Netz","is_correct":false,"rationale":"Neuronen sind Bausteine des Netzes, nicht des Textes."},{"text":"Ein Trainingsdatensatz mit Label","is_correct":false,"rationale":"Das ist ein Beispiel für überwachtes Lernen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ie-1',
+  'ki_grundlagen',
+  'matching',
+  null,
+  'Welcher Prompt-Baustein ist das?',
+  'Die Rolle gibt die Perspektive vor, der Kontext die Situation, die Aufgabe das Ziel und das Format die Form der Antwort.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Rolle","Kontext","Aufgabe","Format"],"match_items":[{"text":"Du bist eine erfahrene Netzwerkadministratorin.","bucket":0,"rationale":""},{"text":"Unser Büro hat 25 Arbeitsplätze und zwei VLANs.","bucket":1,"rationale":""},{"text":"Schlage eine Namenskonvention für die Geräte vor.","bucket":2,"rationale":""},{"text":"Antworte als Tabelle mit höchstens zehn Zeilen.","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ie-2',
+  'ki_grundlagen',
+  'multiple',
+  null,
+  'Wofür eignet sich ein KI-Werkzeug im IT-Support gut?',
+  'KI hilft bei Text und Mustern: Zusammenfassen, Klassifizieren, Entwerfen. Verbindliches und exakt Berechenbares gehört nicht ungeprüft in die Hand eines Sprachmodells.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Einen langen Ticketverlauf zusammenfassen","is_correct":true,"rationale":"Zusammenfassen ist eine Stärke von Sprachmodellen."},{"text":"Neue Tickets nach Kategorie vorsortieren","is_correct":true,"rationale":"Klassifikation spart Zeit bei der Verteilung."},{"text":"Einen Antwortentwurf für eine Kundenmail erstellen","is_correct":true,"rationale":"Der Entwurf wird vor dem Versand geprüft."},{"text":"Verbindliche Vertragszusagen ohne Kontrolle an Kunden senden","is_correct":false,"rationale":"Falsche Zusagen können rechtliche Folgen haben - ein Mensch muss prüfen."},{"text":"Rechnungsbeträge exakt berechnen statt mit der Buchhaltungssoftware","is_correct":false,"rationale":"Für feste Rechenregeln ist ein normales Programm zuverlässiger."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ie-3',
+  'ki_grundlagen',
+  'ordering',
+  null,
+  'Bringe die Schritte beim Arbeiten mit einem KI-Assistenten in eine sinnvolle Reihenfolge.',
+  'Gute Ergebnisse entstehen iterativ: klar fragen, Antwort prüfen, nachbessern - und erst das geprüfte Ergebnis verwenden.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Aufgabe klären und Prompt mit Kontext formulieren","Antwort erzeugen lassen","Ergebnis fachlich prüfen und testen","Prompt nachschärfen oder Ergebnis korrigieren","Geprüftes Ergebnis einsetzen"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ie-4',
+  'ki_grundlagen',
+  'single',
+  'Ein KI-Assistent liefert eine Funktion, die auf Anhieb fehlerfrei kompiliert.',
+  'Was ist der richtige nächste Schritt?',
+  'KI-Ergebnisse werden wie fremder Code behandelt: lesen, verstehen, testen. Die Verantwortung bleibt beim Menschen.',
+  1,
+  '{}',
+  null,
+  '{"choices":[{"text":"Den Code lesen und mit Tests und Grenzfällen prüfen","is_correct":true,"rationale":"Kompilieren heißt nur: syntaktisch korrekt - nicht fachlich richtig oder sicher."},{"text":"Den Code direkt in die Produktivumgebung übernehmen","is_correct":false,"rationale":"Ungetesteter Code kann Fehler und Sicherheitslücken enthalten."},{"text":"Den Assistenten fragen, ob der Code richtig ist, und bei „Ja“ übernehmen","is_correct":false,"rationale":"Die Selbstauskunft des Modells ersetzt keine Prüfung."},{"text":"Den Code verwerfen, weil KI-Code grundsätzlich unbrauchbar ist","is_correct":false,"rationale":"Das ist überzogen - geprüft kann er sehr hilfreich sein."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ir-1',
+  'ki_grundlagen',
+  'matching',
+  null,
+  'In welche Risikostufe der EU-KI-Verordnung fällt das System?',
+  'Unannehmbar: verboten. Hoch: strenge Pflichten wie Risikomanagement und menschliche Aufsicht. Begrenzt: Transparenzpflicht. Minimal: keine besonderen Pflichten.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["unannehmbares Risiko","hohes Risiko","begrenztes Risiko","minimales Risiko"],"match_items":[{"text":"Social Scoring von Menschen","bucket":0,"rationale":""},{"text":"KI sortiert Bewerbungen vor","bucket":1,"rationale":""},{"text":"KI prüft die Kreditwürdigkeit von Privatpersonen","bucket":1,"rationale":""},{"text":"Chatbot im Kundenservice","bucket":2,"rationale":""},{"text":"Spamfilter im Mailprogramm","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ir-2',
+  'ki_grundlagen',
+  'single',
+  null,
+  'Was ist eine Halluzination eines KI-Modells?',
+  'Halluzinationen sind gefährlich, weil sie flüssig und plausibel klingen. Fakten, Quellen und Zahlen aus KI-Antworten immer prüfen.',
+  1,
+  '{}',
+  null,
+  '{"choices":[{"text":"Eine überzeugend klingende, aber falsche oder erfundene Ausgabe","is_correct":true,"rationale":"Das Modell erzeugt wahrscheinlichen, nicht geprüften Text."},{"text":"Eine absichtliche Lüge des Modells","is_correct":false,"rationale":"Ein Modell hat keine Absicht - es berechnet Wahrscheinlichkeiten."},{"text":"Ein Absturz des Modells","is_correct":false,"rationale":"Bei einer Halluzination läuft das Modell normal und antwortet."},{"text":"Die Weigerung, eine Frage zu beantworten","is_correct":false,"rationale":"Das ist eine Ablehnung, keine Halluzination."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ir-3',
+  'ki_grundlagen',
+  'multiple',
+  'Ein Mitarbeiter will eine Kundenbeschwerde mit einem öffentlichen KI-Chatbot beantworten lassen.',
+  'Welche Vorgehensweisen sind richtig?',
+  'Beim KI-Einsatz gilt die DSGVO: keine personenbezogenen oder vertraulichen Daten in öffentliche Tools. Ergebnisse werden immer geprüft.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Vorher klären, ob das Werkzeug im Unternehmen erlaubt ist","is_correct":true,"rationale":"Viele Unternehmen regeln den KI-Einsatz in einer Richtlinie."},{"text":"Name, Adresse und Kundennummer vor der Eingabe entfernen","is_correct":true,"rationale":"Personenbezogene Daten gehören nicht in öffentliche Tools."},{"text":"Den Antwortentwurf vor dem Versand fachlich prüfen","is_correct":true,"rationale":"Die Antwort kann falsche Aussagen oder Zusagen enthalten."},{"text":"Die komplette Kundenakte hochladen, damit die Antwort genauer wird","is_correct":false,"rationale":"Das wäre eine unzulässige Weitergabe personenbezogener und vertraulicher Daten."},{"text":"Die Antwort ungelesen versenden, weil der Chatbot höflich formuliert","is_correct":false,"rationale":"Höflichkeit sagt nichts über die Richtigkeit."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a4-ir-4',
+  'ki_grundlagen',
+  'single',
+  null,
+  'Was sieht die EU-KI-Verordnung für einen Chatbot im Kundenservice (begrenztes Risiko) vor?',
+  'Der AI Act regelt risikobasiert: Je höher das Risiko, desto strenger die Pflichten. Chatbots müssen sich als KI zu erkennen geben.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Nutzer müssen erkennen können, dass sie mit einer KI kommunizieren.","is_correct":true,"rationale":"Für begrenztes Risiko gelten vor allem Transparenzpflichten."},{"text":"Der Chatbot ist verboten.","is_correct":false,"rationale":"Verboten sind nur Systeme mit unannehmbarem Risiko wie Social Scoring."},{"text":"Es gelten dieselben strengen Pflichten wie für Hochrisiko-KI.","is_correct":false,"rationale":"Diese gelten etwa für Bewerberauswahl oder Kreditprüfung."},{"text":"Es gelten keinerlei Pflichten.","is_correct":false,"rationale":"Das gilt für minimales Risiko, etwa Spamfilter."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-qg-1',
+  'qualitaetsmanagement',
+  'matching',
+  null,
+  'Ordne die Prüfverfahren der statischen oder der dynamischen Prüfung zu.',
+  'Statische Prüfungen untersuchen ein Ergebnis, ohne es auszuführen - das geht auch mit Anforderungen und Entwürfen, lange bevor Code existiert. Dynamische Prüfungen, also Tests, führen das Programm aus.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Statisch (ohne Ausführung)","Dynamisch (mit Ausführung)"],"match_items":[{"text":"Inspektion eines Entwurfsdokuments mit Checkliste","bucket":0,"rationale":"Ein Dokument wird gelesen und geprüft, nichts wird ausgeführt."},{"text":"Walkthrough, bei dem die Autorin ihren Code dem Team erklärt","bucket":0,"rationale":"Der Code wird gemeinsam gelesen, nicht gestartet."},{"text":"Ein Analysewerkzeug meldet eine nie genutzte Variable","bucket":0,"rationale":"Statische Codeanalyse untersucht den Quelltext ohne Ausführung."},{"text":"Unit-Test, der eine Funktion mit Testdaten aufruft","bucket":1,"rationale":"Die Funktion wird tatsächlich ausgeführt."},{"text":"Lasttest mit 1.000 simulierten Nutzern","bucket":1,"rationale":"Das laufende System wird unter Last beobachtet."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-qe-1',
+  'qualitaetsmanagement',
+  'matching',
+  'Für eine neue Rechnungssoftware wurden Anforderungen gesammelt.',
+  'Ordne jede Anforderung dem Qualitätsmerkmal zu, das sie konkretisiert.',
+  'Jede Anforderung wird über ihre Leitfrage eingeordnet: Wie schnell und sparsam (Effizienz)? Wie leicht zu bedienen (Benutzbarkeit)? Wie leicht zu ändern (Wartbarkeit)? Läuft sie anderswo (Übertragbarkeit)? Ist sie geschützt (Sicherheit)?',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Effizienz","Benutzbarkeit","Wartbarkeit","Übertragbarkeit","Sicherheit"],"match_items":[{"text":"Eine Rechnung wird in höchstens 1 s als PDF erzeugt.","bucket":0,"rationale":"Antwortzeit gehört zum Zeitverhalten, also zur Effizienz."},{"text":"Neue Mitarbeitende erfassen nach 15 Minuten Einweisung eine Rechnung ohne Hilfe.","bucket":1,"rationale":"Erlernbarkeit ist ein Teil der Benutzbarkeit."},{"text":"Ein neues Zahlungsverfahren lässt sich ergänzen, ohne bestehende Module zu ändern.","bucket":2,"rationale":"Änderbarkeit ist ein Teil der Wartbarkeit."},{"text":"Die Software läuft ohne Anpassung unter Windows und macOS.","bucket":3,"rationale":"Betrieb in einer anderen Umgebung ist Übertragbarkeit."},{"text":"Nur die Rolle Buchhaltung darf Rechnungen stornieren.","bucket":4,"rationale":"Schutz vor unbefugten Aktionen ist Sicherheit."},{"text":"Bei 50 gleichzeitigen Nutzern belegt der Server höchstens 4 GB RAM.","bucket":0,"rationale":"Ressourcenverbrauch gehört ebenfalls zur Effizienz."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-qe-2',
+  'qualitaetsmanagement',
+  'single',
+  'Eine Zeiterfassungs-App berechnet die Arbeitszeiten stets korrekt. Sie stürzt aber etwa zweimal pro Woche ab, und ungespeicherte Eingaben gehen verloren.',
+  'Welches Qualitätsmerkmal ist vor allem verletzt?',
+  'Funktionalität fragt, ob die Software das Richtige tut. Zuverlässigkeit fragt, ob sie das dauerhaft und stabil tut. Korrekte Ergebnisse bei häufigen Abstürzen sind ein Zuverlässigkeitsproblem.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Zuverlässigkeit","is_correct":true,"rationale":"Abstürze und Datenverlust zeigen, dass die App nicht stabil läuft."},{"text":"Funktionalität","is_correct":false,"rationale":"Die Berechnungen sind korrekt - die App tut das Richtige, nur nicht beständig."},{"text":"Übertragbarkeit","is_correct":false,"rationale":"Es geht nicht um den Betrieb in einer anderen Umgebung."},{"text":"Wartbarkeit","is_correct":false,"rationale":"Wartbarkeit betrifft die Änderbarkeit des Codes, nicht das Verhalten im Betrieb."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-qe-3',
+  'qualitaetsmanagement',
+  'single',
+  null,
+  'Welche Anforderung an einen Webshop ist messbar und damit prüfbar formuliert?',
+  'Eine prüfbare Anforderung nennt Merkmal, Messgröße, Zielwert und Bedingung. Nur dann lässt sich später im Test entscheiden, ob die Qualität erreicht ist.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Produktseite lädt bei 500 gleichzeitigen Nutzern in höchstens 2 Sekunden.","is_correct":true,"rationale":"Messgröße, Zielwert und Bedingung sind genannt - ein Test kann eindeutig bestehen oder scheitern."},{"text":"Der Shop soll möglichst schnell sein.","is_correct":false,"rationale":"„Möglichst schnell“ hat keinen Zielwert, jeder Test wäre Ansichtssache."},{"text":"Die Bedienung soll intuitiv und modern wirken.","is_correct":false,"rationale":"„Intuitiv“ und „modern“ sind Empfindungen, keine Messgrößen."},{"text":"Der Shop soll auch bei vielen Besuchern stabil laufen.","is_correct":false,"rationale":"Wie viele Besucher und was „stabil“ heißt, bleibt offen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-qp-1',
+  'qualitaetsmanagement',
+  'matching',
+  'Eine Arztpraxis will die Wartezeit am Telefon senken und geht nach dem PDCA-Zyklus vor.',
+  'Ordne jeden Schritt der passenden Phase zu.',
+  'Plan: analysieren, Ziel setzen, Maßnahme planen. Do: im Kleinen erproben. Check: Ergebnis gegen das Ziel prüfen. Act: bei Erfolg standardisieren, sonst nachbessern - dann beginnt der nächste Zyklus.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Plan","Do","Check","Act"],"match_items":[{"text":"Ziel festlegen: Wartezeit unter 2 Minuten, Maßnahme: Online-Terminbuchung","bucket":0,"rationale":"Ziel mit Kennzahl und geplante Maßnahme gehören in die Planung."},{"text":"Online-Terminbuchung vier Wochen lang für Kontrolltermine anbieten","bucket":1,"rationale":"Die Maßnahme wird im begrenzten Rahmen erprobt."},{"text":"Gemessene Wartezeiten mit dem Ziel vergleichen","bucket":2,"rationale":"Soll-Ist-Vergleich ist die Aufgabe von Check."},{"text":"Online-Buchung für alle Terminarten freigeben","bucket":3,"rationale":"Nach erfolgreichem Check wird die Maßnahme zum Standard."},{"text":"Ursachen für lange Wartezeiten aus der Anrufstatistik ermitteln","bucket":0,"rationale":"Die Analyse des Problems ist Teil der Planung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-qp-2',
+  'qualitaetsmanagement',
+  'single',
+  'Ein Service-Desk hat ein Self-Service-Portal im Pilotbereich getestet. Im Check zeigt sich: Der Anteil der Passwort-Tickets sank nur von 30 % auf 25 %, Ziel waren unter 15 %.',
+  'Was ist in der Phase Act jetzt richtig?',
+  'Act hat zwei Ausgänge: Ziel erreicht -> Maßnahme wird Standard. Ziel verfehlt -> Ursachen klären, Maßnahme anpassen, neuer Zyklus. Genau dieses Weiterdrehen macht PDCA zum Werkzeug des KVP.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ursachen analysieren, die Maßnahme anpassen und einen neuen Zyklus starten","is_correct":true,"rationale":"Das Ziel ist verfehlt - also wird nachgebessert und erneut erprobt."},{"text":"Das Portal sofort für alle Abteilungen einführen","is_correct":false,"rationale":"Eine Maßnahme, die ihr Ziel verfehlt hat, wird nicht zum Standard gemacht."},{"text":"Den Zyklus beenden, weil die Maßnahme gescheitert ist","is_correct":false,"rationale":"PDCA endet nicht, ein verfehltes Ziel ist Anlass für den nächsten Durchlauf."},{"text":"Das Ziel nachträglich auf 25 % senken","is_correct":false,"rationale":"Das Ziel an das Ergebnis anzupassen verbessert nichts, es verschleiert nur das Problem."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-ss-1',
+  'testen',
+  'single',
+  'Das Bestellmodul eines Webshops soll getestet werden. Es ruft den Zahlungsdienst auf, der aber erst in drei Wochen fertig ist.',
+  'Womit wird der fehlende Zahlungsdienst im Test ersetzt?',
+  'Stub und Testtreiber sind Platzhalter. Der Stub wird vom Testobjekt aufgerufen und ersetzt eine noch fehlende Komponente darunter. Der Testtreiber ruft das Testobjekt auf und ersetzt den fehlenden Aufrufer darüber.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Mit einem Stub, der feste Antworten wie „Zahlung erfolgreich“ liefert","is_correct":true,"rationale":"Der Stub ersetzt eine Komponente, die vom Testobjekt aufgerufen wird."},{"text":"Mit einem Testtreiber","is_correct":false,"rationale":"Ein Testtreiber ersetzt den Aufrufer des Testobjekts, nicht die aufgerufene Komponente."},{"text":"Mit einem Regressionstest","is_correct":false,"rationale":"Das ist eine Testart, kein Platzhalter für fehlende Komponenten."},{"text":"Gar nicht - das Modul kann erst nach Fertigstellung aller Teile getestet werden","is_correct":false,"rationale":"Genau dafür gibt es Platzhalter: Komponenten lassen sich früh und isoliert testen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-ss-2',
+  'testen',
+  'matching',
+  null,
+  'Ordne jede Situation der passenden Teststufe zu.',
+  'Der Prüfgegenstand wächst von Stufe zu Stufe: einzelne Komponente, Schnittstellen, Gesamtsystem, Abnahme durch den Auftraggeber. Entscheidend für die Abnahme ist, dass der Kunde selbst über die Annahme entscheidet.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Komponententest","Integrationstest","Systemtest","Abnahmetest"],"match_items":[{"text":"Ein Entwickler prüft seine Funktion zur Berechnung der Mehrwertsteuer.","bucket":0,"rationale":"Eine einzelne Funktion wird isoliert geprüft."},{"text":"Es wird geprüft, ob der Warenkorb die Daten korrekt an das Bestellmodul übergibt.","bucket":1,"rationale":"Im Fokus steht die Schnittstelle zwischen zwei Komponenten."},{"text":"Das Testteam prüft den kompletten Shop in der Testumgebung gegen das Pflichtenheft.","bucket":2,"rationale":"Gesamtsystem gegen die Spezifikation, in der Verantwortung des Auftragnehmers."},{"text":"Die Kundin prüft den Shop mit echten Artikeldaten und entscheidet über die Annahme.","bucket":3,"rationale":"Der Auftraggeber prüft und entscheidet - das ist die Abnahme."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-sv-1',
+  'testen',
+  'numeric',
+  'Eine Funktion berechnet den Endpreis im Webshop. Die beiden Bedingungen sind voneinander unabhängig.
+rabatt = 0
+versand = 5
+WENN betrag > 100 DANN
+  rabatt = 5
+ENDE WENN
+WENN express = wahr DANN
+  versand = versand + 8
+ENDE WENN
+preis = betrag - rabatt + versand',
+  'Wie viele Testfälle braucht man mindestens für eine vollständige Zweigüberdeckung?',
+  'Zweigüberdeckung heißt: Jeder Ja- und jeder Nein-Zweig wird mindestens einmal durchlaufen. Das sind 4 Zweige, aber ein Testfall deckt je Bedingung einen Zweig ab.
+Testfall 1: betrag = 150, express = wahr -> beide Ja-Zweige.
+Testfall 2: betrag = 50, express = falsch -> beide Nein-Zweige.
+Also 2 Testfälle. Für Anweisungsüberdeckung genügt schon Testfall 1. Alle 4 Kombinationen wären erst für eine Pfadüberdeckung nötig.',
+  3,
+  '{}',
+  null,
+  '{"answer":2.0,"tolerance":0.0,"unit":"Testfälle"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-sv-2',
+  'testen',
+  'multiple',
+  null,
+  'Welche Aussagen zu manuellen und automatisierten Tests sind richtig?',
+  'Automatisierung rechnet sich über die Wiederholung: hoher Aufwand beim Erstellen, danach fast kostenlos. Manuelle Tests sind stark, wo menschliches Urteil gefragt ist, etwa bei Bedienbarkeit oder beim freien Erkunden.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Automatisierte Tests lohnen sich besonders für Regressionstests nach jeder Änderung.","is_correct":true,"rationale":"Sie laufen beliebig oft ohne zusätzlichen Personalaufwand."},{"text":"Die Bedienbarkeit einer Oberfläche wird sinnvoll mit echten Nutzern manuell getestet.","is_correct":true,"rationale":"Ob etwas verständlich ist, kann nur ein Mensch beurteilen."},{"text":"Automatisierte Tests verursachen vor allem beim Erstellen und Pflegen Aufwand.","is_correct":true,"rationale":"Die Ausführung selbst kostet danach kaum noch Zeit."},{"text":"Automatisierte Tests machen manuelle Tests vollständig überflüssig.","is_correct":false,"rationale":"Erkundende Tests und Usability-Tests bleiben Menschenarbeit."},{"text":"Ein einmaliger Test, der nie wiederholt wird, sollte immer automatisiert werden.","is_correct":false,"rationale":"Der Aufwand für die Automatisierung lohnt sich erst durch häufige Wiederholung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-sf-1',
+  'testen',
+  'single',
+  'Ein Passwort muss 8 bis 64 Zeichen lang sein. Getestet wird nur die Länge.',
+  'Welche Passwortlängen decken alle Äquivalenzklassen mit je einem Repräsentanten ab?',
+  'Es gibt drei Klassen: ungültig (unter 8), gültig (8 bis 64) und ungültig (über 64). Jede braucht einen Vertreter. Die Werte an den Grenzen sind Sache der Grenzwertanalyse - hier reicht je Klasse ein beliebiger Wert.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"5, 20 und 70 Zeichen","is_correct":true,"rationale":"Je ein Vertreter für „zu kurz“, „gültig“ und „zu lang“."},{"text":"7, 8 und 64 Zeichen","is_correct":false,"rationale":"Die ungültige Klasse „länger als 64“ fehlt."},{"text":"20, 30 und 40 Zeichen","is_correct":false,"rationale":"Alle drei liegen in derselben gültigen Klasse."},{"text":"8, 64 und 65 Zeichen","is_correct":false,"rationale":"Die ungültige Klasse „kürzer als 8“ fehlt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-sf-2',
+  'testen',
+  'numeric',
+  'In einem Webshop ist die Bestellmenge eine ganze Zahl. Erlaubt sind 1 bis 100 Stück: 1 bis 9 ohne Rabatt, 10 bis 49 mit 5 %, 50 bis 100 mit 10 %. Mengen unter 1 und über 100 werden abgelehnt.',
+  'Für die Grenzwertanalyse werden an jedem Übergang zwischen zwei benachbarten Klassen die beiden Werte direkt links und rechts des Übergangs getestet. Wie viele verschiedene Testwerte ergeben sich?',
+  'Klassen: unter 1 | 1 bis 9 | 10 bis 49 | 50 bis 100 | über 100. Das ergibt 4 Übergänge mit je 2 Werten:
+- zwischen ungültig und 1 bis 9: 0 und 1
+- zwischen 1 bis 9 und 10 bis 49: 9 und 10
+- zwischen 10 bis 49 und 50 bis 100: 49 und 50
+- zwischen 50 bis 100 und ungültig: 100 und 101
+4 × 2 = 8 verschiedene Testwerte.',
+  3,
+  '{}',
+  null,
+  '{"answer":8.0,"tolerance":0.0,"unit":"Testwerte"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-sf-3',
+  'testen',
+  'matching',
+  'Im Webshop sind Bestellmengen von 1 bis 99 Stück als ganze Zahl erlaubt.',
+  'Gehört die eingegebene Menge zu einer gültigen oder einer ungültigen Äquivalenzklasse?',
+  'Gültig ist nur der Bereich 1 bis 99, die Grenzen eingeschlossen. Ungültige Klassen sind „zu klein“, „zu groß“ und „keine Zahl“. Grenzwerte wie 1 und 99 gehören zur gültigen Klasse, ihre Nachbarn 0 und 100 zur ungültigen.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Gültige Klasse","Ungültige Klasse"],"match_items":[{"text":"1","bucket":0,"rationale":"Untere Grenze, liegt noch im erlaubten Bereich."},{"text":"99","bucket":0,"rationale":"Obere Grenze, liegt noch im erlaubten Bereich."},{"text":"0","bucket":1,"rationale":"Kleiner als 1."},{"text":"100","bucket":1,"rationale":"Größer als 99."},{"text":"„zwei“","bucket":1,"rationale":"Keine Zahl - eine eigene ungültige Klasse."},{"text":"-5","bucket":1,"rationale":"Negative Mengen liegen unter der Untergrenze."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-sf-4',
+  'testen',
+  'multiple',
+  null,
+  'Welche Aussagen zu Äquivalenzklassen und Grenzwertanalyse sind richtig?',
+  'Äquivalenzklassen und Grenzwertanalyse sind Black-Box-Verfahren und ergänzen sich: Die Klassen sorgen dafür, dass jeder Fall einmal vorkommt, die Grenzwerte prüfen gezielt die Ränder, an denen Programmierfehler besonders häufig sind.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Aus jeder Äquivalenzklasse genügt ein Repräsentant.","is_correct":true,"rationale":"Laut Spezifikation verhält sich das Programm für alle Werte einer Klasse gleich."},{"text":"Für jede ungültige Klasse wird ein eigener Testfall gebildet.","is_correct":true,"rationale":"Kombinierte ungültige Werte können sich gegenseitig verdecken."},{"text":"Die Grenzwertanalyse ergänzt die Äquivalenzklassen um Werte an den Klassengrenzen.","is_correct":true,"rationale":"An den Rändern entstehen typische Fehler wie > statt >=."},{"text":"Äquivalenzklassen werden aus dem Quellcode abgeleitet.","is_correct":false,"rationale":"Sie stammen aus der Spezifikation - es ist ein Black-Box-Verfahren."},{"text":"Ungültige Klassen müssen nicht getestet werden, weil der Nutzer sie nicht eingeben soll.","is_correct":false,"rationale":"Gerade falsche Eingaben muss das Programm sauber abweisen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-sp-1',
+  'testen',
+  'matching',
+  null,
+  'Gehört die Angabe in das Testkonzept (vor dem Test) oder in das Testprotokoll (bei der Durchführung)?',
+  'Das Testkonzept plant: Ziele, Umfang, Testobjekte, Ressourcen, Termine und Endekriterien. Das Testprotokoll dokumentiert die Durchführung: wer, wann, welche Eingabe, Soll, Ist, Ergebnis und Abweichung.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Testkonzept","Testprotokoll"],"match_items":[{"text":"Endekriterien für den Testabschluss","bucket":0,"rationale":"Wann Schluss ist, muss vor dem Test feststehen."},{"text":"Benötigte Testumgebung und Testdaten","bucket":0,"rationale":"Ressourcen werden vorab geplant."},{"text":"Testobjekte und Testumfang","bucket":0,"rationale":"Was geprüft wird, legt die Planung fest."},{"text":"Tatsächliches Ergebnis (Ist-Ergebnis)","bucket":1,"rationale":"Das Ist entsteht erst bei der Durchführung."},{"text":"Datum und Name der Testerin","bucket":1,"rationale":"Wer wann getestet hat, wird bei der Durchführung notiert."},{"text":"Festgestellte Abweichung vom Soll","bucket":1,"rationale":"Abweichungen zeigen sich erst beim Ausführen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-sp-2',
+  'testen',
+  'ordering',
+  null,
+  'Bringe die Schritte der Fehlerbehandlung in die richtige Reihenfolge.',
+  'Erst wird die Abweichung dokumentiert und als Fehler mit Klasse und Priorität gemeldet. Nach der Korrektur bestätigt der Nachtest die Behebung, der Regressionstest schließt Nebenwirkungen aus. Erst dann wird die Meldung geschlossen.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Abweichung zwischen Soll und Ist im Testprotokoll festhalten","Fehlermeldung mit Fehlerklasse und Priorität erfassen","Fehler durch die Entwicklung beheben","Nachtest des fehlgeschlagenen Testfalls","Regressionstest der übrigen Funktionen","Fehlermeldung schließen"],"ordering_hint":"Beginne mit der Beobachtung im Test"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a5-sp-3',
+  'testen',
+  'single',
+  'Im Testprotokoll steht zu TF-017: Eingabe Bestellmenge 100, Soll „Meldung: Höchstens 99 Stück“, Ist „Bestellung angelegt“. Die Entwicklung meldet den Fehler als behoben.',
+  'Was ist der nächste Testschritt?',
+  'Nach jeder Fehlerbehebung folgt der Nachtest: Der fehlgeschlagene Testfall wird mit denselben Daten wiederholt. Besteht er, prüft ein Regressionstest, ob die Korrektur Nebenwirkungen hat.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"TF-017 mit denselben Eingaben erneut ausführen (Nachtest)","is_correct":true,"rationale":"Nur so wird bestätigt, dass genau dieser Fehler wirklich behoben ist."},{"text":"TF-017 als bestanden eintragen, weil die Entwicklung die Behebung gemeldet hat","is_correct":false,"rationale":"Ein Testergebnis beruht auf Durchführung, nicht auf einer Meldung."},{"text":"Sofort den Abnahmetest mit dem Kunden starten","is_correct":false,"rationale":"Vorher muss feststehen, dass die Korrektur wirkt und nichts anderes beschädigt hat."},{"text":"Das Soll-Ergebnis von TF-017 an das Ist-Ergebnis anpassen","is_correct":false,"rationale":"Das Soll kommt aus der Spezifikation und wird nicht an das Programm angepasst."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-zz-1',
+  'schutzziele_bedrohungen',
+  'matching',
+  null,
+  'Welches Schutzziel ist durch den Vorfall verletzt?',
+  'Gesehen -> Vertraulichkeit, verändert -> Integrität, nicht erreichbar -> Verfügbarkeit.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Vertraulichkeit","Integrität","Verfügbarkeit"],"match_items":[{"text":"Ein Azubi öffnet die Gehaltsliste in einem für alle freigegebenen Ordner","bucket":0,"rationale":"Unbefugte Einsicht - die Daten selbst bleiben unverändert und verfügbar."},{"text":"Ein Angreifer ändert die IBAN in einer Rechnungsvorlage","bucket":1,"rationale":"Die Daten wurden unbemerkt verfälscht."},{"text":"Der Webshop ist nach einem Stromausfall drei Stunden nicht erreichbar","bucket":2,"rationale":"Der Dienst ist nicht nutzbar, als er gebraucht wird."},{"text":"Ein Übertragungsfehler verfälscht Messwerte in der Datenbank","bucket":1,"rationale":"Die Daten sind nicht mehr korrekt - auch ohne Angreifer ist die Integrität verletzt."},{"text":"Ein Mitarbeiter fotografiert Kundendaten vom Bildschirm und verkauft sie","bucket":0,"rationale":"Die Daten gelangen an Unbefugte."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-zz-2',
+  'schutzziele_bedrohungen',
+  'numeric',
+  'Ein Hosting-Anbieter garantiert im Vertrag eine Verfügbarkeit von 99,5 % bei Betrieb rund um die Uhr an 365 Tagen.',
+  'Wie viele Stunden darf der Dienst pro Jahr höchstens ausfallen? (auf eine Nachkommastelle)',
+  'Stunden pro Jahr: 365 × 24 h = 8.760 h. Erlaubter Ausfall: 100 % - 99,5 % = 0,5 % = 0,005. 0,005 × 8.760 h = 43,8 h.',
+  2,
+  '{}',
+  null,
+  '{"answer":43.8,"tolerance":0.05,"unit":"h"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-zz-3',
+  'schutzziele_bedrohungen',
+  'single',
+  'Ein Kunde behauptet, er habe eine Online-Bestellung über 12.000 € nie abgeschickt.',
+  'Welches Schutzziel soll genau diesen Fall verhindern?',
+  'Verbindlichkeit bedeutet, dass eine Person eine Handlung nicht abstreiten kann. Technisch wird das mit digitalen Signaturen und Protokollen erreicht.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Verbindlichkeit (Nichtabstreitbarkeit)","is_correct":true,"rationale":"Sie stellt sicher, dass eine Handlung später nicht geleugnet werden kann, etwa durch eine digitale Signatur."},{"text":"Vertraulichkeit","is_correct":false,"rationale":"Sie schützt vor unbefugtem Mitlesen, nicht vor dem Abstreiten einer Handlung."},{"text":"Verfügbarkeit","is_correct":false,"rationale":"Sie betrifft die Erreichbarkeit des Shops, nicht den Nachweis der Bestellung."},{"text":"Integrität","is_correct":false,"rationale":"Sie schützt die Bestelldaten vor Veränderung, beweist aber nicht, wer die Bestellung abgegeben hat."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-zz-4',
+  'schutzziele_bedrohungen',
+  'multiple',
+  null,
+  'Welche Maßnahmen dienen in erster Linie der Verfügbarkeit?',
+  'Verfügbarkeit sichern Redundanz, Stromversorgung und Datensicherung. Verschlüsselung dient der Vertraulichkeit, Hashwerte der Integrität.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Unterbrechungsfreie Stromversorgung (USV) für den Server","is_correct":true,"rationale":"Überbrückt Stromausfälle und hält den Dienst am Laufen."},{"text":"Zweite Internetleitung eines anderen Providers","is_correct":true,"rationale":"Fällt eine Leitung aus, bleibt der Zugang über die andere bestehen."},{"text":"Regelmäßige Datensicherung","is_correct":true,"rationale":"Nach Datenverlust lassen sich die Daten wieder nutzbar machen."},{"text":"Verschlüsselung der Notebook-Festplatten","is_correct":false,"rationale":"Schützt die Vertraulichkeit bei Diebstahl, nicht die Verfügbarkeit."},{"text":"Prüfsumme (Hashwert) für einen Download","is_correct":false,"rationale":"Macht Veränderungen sichtbar und dient damit der Integrität."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-zm-1',
+  'schutzziele_bedrohungen',
+  'matching',
+  null,
+  'Welche Art von Schadsoftware wird beschrieben?',
+  'Virus: braucht eine Wirtsdatei. Wurm: verbreitet sich selbstständig über das Netz. Trojaner: tarnt sich als nützliches Programm.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Virus","Wurm","Trojaner"],"match_items":[{"text":"Hängt sich an eine ausführbare Datei und wird aktiv, wenn diese gestartet wird","bucket":0,"rationale":"Die Wirtsdatei ist das Kennzeichen des Virus."},{"text":"Nutzt eine Lücke in einem Netzwerkdienst und befällt selbstständig weitere Rechner","bucket":1,"rationale":"Selbstständige Verbreitung über das Netz kennzeichnet den Wurm."},{"text":"Kostenloses PDF-Werkzeug, das nach der Installation heimlich eine Hintertür öffnet","bucket":2,"rationale":"Getarnt als nützliches Programm und vom Nutzer selbst installiert."},{"text":"Verbreitet sich ohne jedes Zutun der Nutzer im gesamten Firmennetz","bucket":1,"rationale":"Kein Wirt, keine Nutzeraktion - ein Wurm."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-zm-2',
+  'schutzziele_bedrohungen',
+  'single',
+  'Nach dem Öffnen eines Mail-Anhangs lassen sich die Dateien auf dem Netzlaufwerk nicht mehr öffnen. Sie tragen die Endung .locked, und eine Textdatei fordert eine Zahlung in Bitcoin.',
+  'Welche Art von Schadsoftware ist am Werk?',
+  'Verschlüsselte Dateien und eine Lösegeldforderung sind das typische Bild eines Ransomware-Angriffs.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ransomware","is_correct":true,"rationale":"Sie verschlüsselt Daten und erpresst Lösegeld für die Entschlüsselung."},{"text":"Adware","is_correct":false,"rationale":"Adware blendet Werbung ein, verschlüsselt aber keine Dateien."},{"text":"Keylogger","is_correct":false,"rationale":"Ein Keylogger zeichnet heimlich Tastatureingaben auf und macht sich nicht durch Erpressung bemerkbar."},{"text":"Rootkit","is_correct":false,"rationale":"Ein Rootkit versteckt Schadsoftware im System, statt offen Lösegeld zu fordern."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-zm-3',
+  'schutzziele_bedrohungen',
+  'single',
+  'Eine Kollegin bemerkt, dass auf ihrem PC gerade Dateien umbenannt und unlesbar werden.',
+  'Was sollte sie als Erstes tun?',
+  'Bei Ransomware zählt jede Minute: Netzverbindung trennen, damit sich die Verschlüsselung nicht ausbreitet, und den Vorfall sofort melden.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Den PC vom Netz trennen und sofort die IT informieren","is_correct":true,"rationale":"So kann die Ransomware keine weiteren Netzlaufwerke und Rechner erreichen, und die IT kann reagieren."},{"text":"Das geforderte Lösegeld zahlen, damit es schnell weitergeht","is_correct":false,"rationale":"Eine Zahlung garantiert keine Entschlüsselung und finanziert weitere Angriffe."},{"text":"Den PC neu starten und weiterarbeiten","is_correct":false,"rationale":"Die Schadsoftware bleibt aktiv und verschlüsselt weiter."},{"text":"Die noch lesbaren Dateien per Mail an Kollegen schicken","is_correct":false,"rationale":"Das kann die Schadsoftware weiterverbreiten und hält den Angriff nicht auf."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-zm-4',
+  'schutzziele_bedrohungen',
+  'multiple',
+  null,
+  'Welche Aussagen sind richtig?',
+  'Botnetz: ferngesteuerte Rechner. Rootkit: Tarnung im System. Keylogger: Tastaturmitschnitt. Adware und Virus sind falsch beschrieben.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ein Botnetz besteht aus vielen ferngesteuerten Rechnern, die z. B. für DDoS-Angriffe genutzt werden.","is_correct":true,"rationale":"Die Rechner werden unbemerkt über einen Steuerserver kontrolliert."},{"text":"Ein Rootkit verbirgt Schadsoftware vor Betriebssystem und Virenscanner.","is_correct":true,"rationale":"Deshalb ist es besonders schwer zu entdecken."},{"text":"Ein Keylogger kann Passwörter abgreifen, indem er Tastatureingaben aufzeichnet.","is_correct":true,"rationale":"Genau das ist seine Schadfunktion."},{"text":"Adware verschlüsselt Daten und fordert Lösegeld.","is_correct":false,"rationale":"Das beschreibt Ransomware - Adware blendet Werbung ein."},{"text":"Ein Virus verbreitet sich ohne Wirtsdatei selbstständig über das Netz.","is_correct":false,"rationale":"Das beschreibt einen Wurm - ein Virus braucht eine Wirtsdatei."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-za-1',
+  'schutzziele_bedrohungen',
+  'matching',
+  null,
+  'Welcher Angriff wird beschrieben?',
+  'Vishing nutzt das Telefon, Tailgating die Tür, CEO-Fraud die Autorität der Chefin oder des Chefs. DDoS ist ein technischer Angriff auf die Verfügbarkeit.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Vishing","Tailgating","CEO-Fraud","DDoS"],"match_items":[{"text":"Ein angeblicher Support-Mitarbeiter ruft an und verlangt Fernzugriff auf den PC","bucket":0,"rationale":"Social Engineering per Telefon."},{"text":"Eine Person mit Kartons in den Händen folgt Mitarbeitenden durch die gesicherte Tür","bucket":1,"rationale":"Sie nutzt die Zutrittsberechtigung anderer aus."},{"text":"Der angebliche Geschäftsführer fordert per Mail eine eilige, vertrauliche Überweisung","bucket":2,"rationale":"Autorität, Zeitdruck und Geheimhaltung - typisch für CEO-Fraud."},{"text":"Tausende gekaperte Rechner legen den Webshop mit Anfragen lahm","bucket":3,"rationale":"Überlastung aus vielen Quellen, meist einem Botnetz."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-za-2',
+  'schutzziele_bedrohungen',
+  'multiple',
+  'Eine Mail von service@sparkasse-kontosicherheit.info beginnt mit „Sehr geehrter Kunde“ und droht: „Ihr Konto wird in 24 Stunden gesperrt.“ Der Link zeigt „www.sparkasse.de“ an, führt beim Überfahren mit der Maus aber zu einer ganz anderen Adresse. Dort sollen die Online-Banking-Zugangsdaten eingegeben werden. Die Mail trägt das Logo der Sparkasse.',
+  'Welche Merkmale weisen auf Phishing hin?',
+  'Typische Merkmale: fremde Absenderdomain, Druck und Drohung, abweichendes Linkziel und die Bitte um Zugangsdaten. Ein Logo sagt nichts über die Echtheit.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Absenderdomain gehört nicht der Bank","is_correct":true,"rationale":"Angreifer registrieren ähnlich klingende Domains."},{"text":"Die Drohung mit einer kurzen Frist","is_correct":true,"rationale":"Zeitdruck soll unüberlegtes Handeln auslösen."},{"text":"Das Linkziel weicht vom angezeigten Linktext ab","is_correct":true,"rationale":"Der sichtbare Text lässt sich beliebig wählen, entscheidend ist das Ziel."},{"text":"Die Aufforderung, Zugangsdaten einzugeben","is_correct":true,"rationale":"Banken fragen Zugangsdaten nie per Mail-Link ab."},{"text":"Das Logo der Sparkasse in der Mail","is_correct":false,"rationale":"Logos lassen sich beliebig kopieren - sie sind weder ein Beleg für Echtheit noch ein Warnsignal."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-za-3',
+  'schutzziele_bedrohungen',
+  'single',
+  'Im offenen WLAN eines Cafés leitet ein Angreifer den Datenverkehr der anderen Gäste unbemerkt über seinen Laptop und liest mit.',
+  'Um welchen Angriff handelt es sich?',
+  'Beim Man-in-the-Middle-Angriff schaltet sich der Angreifer zwischen zwei Kommunikationspartner. Schutz bietet eine Ende-zu-Ende-Verschlüsselung wie TLS mit Zertifikatsprüfung.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Man-in-the-Middle","is_correct":true,"rationale":"Der Angreifer sitzt unbemerkt zwischen den Gästen und dem Internet."},{"text":"Denial of Service","is_correct":false,"rationale":"DoS legt einen Dienst lahm, hier wird aber mitgelesen."},{"text":"Brute Force","is_correct":false,"rationale":"Dabei werden Passwörter durchprobiert, nicht Verbindungen umgeleitet."},{"text":"Tailgating","is_correct":false,"rationale":"Tailgating ist das Mitgehen durch eine gesicherte Tür."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-za-4',
+  'schutzziele_bedrohungen',
+  'single',
+  null,
+  'Welche Maßnahme schützt ein Anmeldeportal wirksam gegen Brute-Force-Angriffe?',
+  'Brute Force probiert systematisch Kombinationen. Sperren oder Verzögerungen nach Fehlversuchen und lange Passwörter machen den Angriff unwirtschaftlich.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Nach mehreren Fehlversuchen das Konto vorübergehend sperren oder Wartezeiten erzwingen","is_correct":true,"rationale":"Das macht das massenhafte Durchprobieren praktisch unmöglich."},{"text":"Passwörter auf höchstens 8 Zeichen begrenzen","is_correct":false,"rationale":"Kurze Passwörter verkleinern den Suchraum und erleichtern den Angriff."},{"text":"In der Fehlermeldung angeben, ob Benutzername oder Passwort falsch war","is_correct":false,"rationale":"Der Angreifer erfährt so, welche Benutzernamen existieren."},{"text":"Die Anmeldeseite über HTTP statt HTTPS ausliefern","is_correct":false,"rationale":"Das ermöglicht zusätzlich das Mitlesen der Zugangsdaten."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-zb-1',
+  'schutzziele_bedrohungen',
+  'single',
+  'Auf einem Server laufen drei Anwendungen. Ihr Schutzbedarf für die Vertraulichkeit: Wiki „normal“, Personalverwaltung „hoch“, Kantinenplan „normal“. Kumulations- und Verteilungseffekt spielen keine Rolle.',
+  'Welchen Schutzbedarf hat der Server für die Vertraulichkeit?',
+  'Maximumprinzip: Das IT-System erbt den höchsten Schutzbedarf der Anwendungen, die darauf laufen - hier „hoch“ von der Personalverwaltung.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"hoch","is_correct":true,"rationale":"Nach dem Maximumprinzip bestimmt die Anwendung mit dem höchsten Schutzbedarf den Wert."},{"text":"normal","is_correct":false,"rationale":"Die Mehrheit zählt nicht - sonst wären die Personaldaten unzureichend geschützt."},{"text":"sehr hoch","is_correct":false,"rationale":"Keine Anwendung hat „sehr hoch“, und ein Kumulationseffekt liegt laut Aufgabe nicht vor."},{"text":"zwischen normal und hoch","is_correct":false,"rationale":"Es gibt keine Zwischenstufen und keinen Durchschnitt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-zb-2',
+  'schutzziele_bedrohungen',
+  'matching',
+  null,
+  'Welche Regel der Schutzbedarfsfeststellung wird angewendet?',
+  'Maximumprinzip: höchster Wert gilt. Kumulation: viele kleine Schäden erhöhen den Schutzbedarf. Verteilung: Redundanz kann ihn für ein einzelnes System senken.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Maximumprinzip","Kumulationseffekt","Verteilungseffekt"],"match_items":[{"text":"Auf dem Dateiserver liegen Projektdaten (normal) und Personalakten (hoch) - er wird mit „hoch“ eingestuft","bucket":0,"rationale":"Der höchste Einzelwert gilt."},{"text":"Ein Virtualisierungshost trägt 30 VMs mit jeweils „normal“ - weil ein Ausfall alle trifft, wird er mit „hoch“ eingestuft","bucket":1,"rationale":"Viele kleine Schäden summieren sich zu einem großen."},{"text":"Der Webshop (Verfügbarkeit „hoch“) läuft auf drei redundanten Servern - ein einzelner Server wird mit „normal“ eingestuft","bucket":2,"rationale":"Fällt ein Server aus, übernehmen die anderen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-zb-3',
+  'schutzziele_bedrohungen',
+  'ordering',
+  null,
+  'In welcher Reihenfolge wird der Schutzbedarf nach BSI vererbt?',
+  'Der Schutzbedarf wird von den Geschäftsprozessen über die Anwendungen auf die IT-Systeme übertragen, auf denen sie laufen, und von dort auf die Räume, in denen die Systeme stehen.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Geschäftsprozess","Anwendung","IT-System","Raum"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-zb-4',
+  'schutzziele_bedrohungen',
+  'multiple',
+  null,
+  'Welche der folgenden sind Schadensszenarien, die das BSI für die Schutzbedarfsfeststellung vorsieht?',
+  'Das BSI nennt sechs Schadensszenarien, darunter Rechtsverstöße, Beeinträchtigung der Unversehrtheit, negative Innen- oder Außenwirkung und finanzielle Auswirkungen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Verstoß gegen Gesetze, Vorschriften oder Verträge","is_correct":true,"rationale":"Etwa ein Datenschutzverstoß mit Bußgeld."},{"text":"Beeinträchtigung der persönlichen Unversehrtheit","is_correct":true,"rationale":"Etwa wenn ein Ausfall die Gesundheit von Menschen gefährdet."},{"text":"Negative Innen- oder Außenwirkung","is_correct":true,"rationale":"Etwa ein Imageschaden nach einem öffentlich gewordenen Vorfall."},{"text":"Finanzielle Auswirkungen","is_correct":true,"rationale":"Etwa Umsatzausfall oder Schadenersatz."},{"text":"Hohe Anschaffungskosten für eine Schutzmaßnahme","is_correct":false,"rationale":"Das sind Kosten der Absicherung, kein Schaden durch einen Vorfall."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-yf-1',
+  'sicherheitsmassnahmen',
+  'single',
+  'Das Regelwerk der Firewall (von oben nach unten): 1. Quelle LAN, Ziel any, Port 443, allow. 2. Quelle LAN, Ziel any, Port 53, allow. 3. Quelle any, Ziel any, Port any, deny. Ein PC im LAN ruft eine Webseite über HTTP auf Port 80 auf.',
+  'Was passiert mit der Verbindung?',
+  'Die Firewall prüft von oben nach unten, die erste passende Regel entscheidet. Für Port 80 passt erst Regel 3 (Default Deny).',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sie wird durch Regel 3 verworfen.","is_correct":true,"rationale":"Regel 1 und 2 passen nicht zu Port 80, also greift die abschließende Sperrregel."},{"text":"Sie wird durch Regel 1 erlaubt.","is_correct":false,"rationale":"Regel 1 gilt nur für Port 443 (HTTPS), nicht für Port 80."},{"text":"Sie wird durch Regel 2 erlaubt.","is_correct":false,"rationale":"Port 53 ist DNS, nicht HTTP."},{"text":"Sie wird erlaubt, weil sie aus dem LAN kommt.","is_correct":false,"rationale":"Die Herkunft allein genügt nicht - auch Port und Protokoll müssen zu einer Regel passen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-yf-2',
+  'sicherheitsmassnahmen',
+  'single',
+  null,
+  'Welche Firewall kann den Inhalt von HTTP-Verbindungen prüfen und z. B. Schadcode in einer Webseite erkennen?',
+  'Nur ein Application-Level-Gateway (bzw. eine NGFW mit Anwendungserkennung) prüft Inhalte. Paketfilter und Stateful Inspection arbeiten auf Schicht 3 und 4.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Application-Level-Gateway (Proxy)","is_correct":true,"rationale":"Es arbeitet auf Schicht 7 und sieht die Inhalte des Anwendungsprotokolls."},{"text":"Zustandsloser Paketfilter","is_correct":false,"rationale":"Er prüft nur Adressen, Ports und Protokoll im Paketkopf."},{"text":"Stateful-Inspection-Firewall","is_correct":false,"rationale":"Sie kennt zusätzlich den Verbindungszustand, prüft aber keine Inhalte."},{"text":"Switch mit VLANs","is_correct":false,"rationale":"Ein Switch trennt Netze, ist aber keine inhaltsprüfende Firewall."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-yf-3',
+  'sicherheitsmassnahmen',
+  'matching',
+  'Ein Online-Händler baut ein Netz mit zweistufiger DMZ auf.',
+  'Wo befindet sich das jeweilige System?',
+  'In die DMZ gehören nur Server, die aus dem Internet erreichbar sein müssen. Schützenswerte Daten und Arbeitsplätze stehen im internen LAN.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Internet","DMZ","internes LAN"],"match_items":[{"text":"Rechner der Kundschaft, die im Webshop einkauft","bucket":0,"rationale":"Die Kundschaft greift von außen zu."},{"text":"Öffentlich erreichbarer Webserver des Shops","bucket":1,"rationale":"Er muss aus dem Internet erreichbar sein, soll aber vom LAN getrennt stehen."},{"text":"Mailserver, der Mails aus dem Internet annimmt","bucket":1,"rationale":"Auch er ist von außen erreichbar."},{"text":"Datenbankserver mit Kundendaten und Zahlungsinformationen","bucket":2,"rationale":"Schützenswerte Daten gehören hinter die innere Firewall."},{"text":"Arbeitsplatz-PCs der Buchhaltung","bucket":2,"rationale":"Interne Arbeitsplätze haben in der DMZ nichts verloren."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-yf-4',
+  'sicherheitsmassnahmen',
+  'multiple',
+  null,
+  'Welche Aussagen sind richtig?',
+  'Paketfilter und Stateful Inspection prüfen Kopfdaten, nur Proxys und NGFW prüfen Inhalte. Eine zweistufige DMZ hat zwei Firewalls, Personal Firewalls ergänzen den Schutz.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ein zustandsloser Paketfilter prüft jedes Paket einzeln nach Adressen, Ports und Protokoll.","is_correct":true,"rationale":"Er kennt keinen Zusammenhang zwischen Paketen."},{"text":"Stateful Inspection lässt Antworten zu einer erlaubten ausgehenden Verbindung automatisch zurück.","is_correct":true,"rationale":"Dafür führt sie eine Tabelle der offenen Verbindungen."},{"text":"Eine zweistufige DMZ nutzt zwei Firewalls.","is_correct":true,"rationale":"Eine vor und eine hinter der DMZ."},{"text":"Ein Paketfilter erkennt Schadcode im Inhalt einer Webseite.","is_correct":false,"rationale":"Er sieht nur den Paketkopf, keine Inhalte."},{"text":"Eine Personal Firewall macht eine Netzwerk-Firewall überflüssig.","is_correct":false,"rationale":"Sie schützt nur das einzelne Gerät und ergänzt die Netzwerk-Firewall."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-yb-1',
+  'sicherheitsmassnahmen',
+  'numeric',
+  'Sonntags läuft eine Vollsicherung mit 500 GB. Von Montag bis Freitag folgt jeden Abend eine differenzielle Sicherung. Täglich werden 20 GB jeweils anderer Dateien geändert.',
+  'Wie viel GB belegen die differenziellen Sicherungen von Montag bis Freitag zusammen?',
+  'Die differenzielle Sicherung enthält alle Änderungen seit der Vollsicherung: Mo 20 GB, Di 40 GB, Mi 60 GB, Do 80 GB, Fr 100 GB. Summe: 20 + 40 + 60 + 80 + 100 = 300 GB.',
+  2,
+  '{}',
+  null,
+  '{"answer":300.0,"tolerance":0.0,"unit":"GB"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-yb-2',
+  'sicherheitsmassnahmen',
+  'numeric',
+  'Sonntags läuft eine Vollsicherung, von Montag bis Freitag jeden Abend eine inkrementelle Sicherung, jede auf ein eigenes Band. Am Donnerstagmittag fällt der Server aus.',
+  'Wie viele Bänder werden benötigt, um den letzten gesicherten Stand wiederherzustellen?',
+  'Letzte Sicherung war Mittwochabend. Benötigt werden die Vollsicherung vom Sonntag und alle Inkremente seitdem: Montag, Dienstag, Mittwoch. 1 + 3 = 4 Bänder.',
+  2,
+  '{}',
+  null,
+  '{"answer":4.0,"tolerance":0.0,"unit":"Bänder"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-yb-3',
+  'sicherheitsmassnahmen',
+  'single',
+  null,
+  'Welcher Aufbau erfüllt die 3-2-1-Regel?',
+  '3-2-1: drei Kopien der Daten, auf zwei verschiedenen Speichermedien, eine davon außer Haus.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Originaldaten auf dem Server, eine Sicherung auf Band, eine zweite verschlüsselt in der Cloud","is_correct":true,"rationale":"Drei Kopien, mehrere verschiedene Medien, eine Kopie außer Haus."},{"text":"Originaldaten auf dem Server und zwei Sicherungen auf einem NAS im selben Serverraum","is_correct":false,"rationale":"Keine Kopie außer Haus - ein Brand vernichtet alles."},{"text":"Originaldaten auf dem Server, je eine Sicherung auf Band und auf USB-Platte - beide im Serverschrank","is_correct":false,"rationale":"Drei Kopien auf zwei Medien, aber keine außer Haus - ein Brand vernichtet alles."},{"text":"Originaldaten auf dem Server und eine Sicherung in der Cloud","is_correct":false,"rationale":"Das sind nur zwei statt drei Kopien."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-yb-4',
+  'sicherheitsmassnahmen',
+  'single',
+  'Die Geschäftsführung legt fest: Bei einem Ausfall dürfen höchstens 4 Stunden Arbeit verloren gehen.',
+  'Welche Kennzahl wird damit festgelegt?',
+  'RPO: Wie viel Datenverlust ist hinnehmbar? Daraus folgt der Sicherungsabstand. RTO: Wie lange darf die Wiederherstellung dauern?',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Recovery Point Objective (RPO)","is_correct":true,"rationale":"Das RPO beschreibt den maximal hinnehmbaren Datenverlust - hier müsste mindestens alle 4 Stunden gesichert werden."},{"text":"Recovery Time Objective (RTO)","is_correct":false,"rationale":"Das RTO beschreibt, wie schnell der Betrieb wieder laufen muss, nicht wie viele Daten verloren gehen dürfen."},{"text":"Verfügbarkeit in Prozent","is_correct":false,"rationale":"Sie beschreibt den Anteil der Betriebszeit, nicht den Datenverlust."},{"text":"Generationenprinzip","is_correct":false,"rationale":"Es regelt die Aufbewahrung der Sicherungen, keinen Zeitraum für Datenverlust."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-yw-1',
+  'sicherheitsmassnahmen',
+  'single',
+  'Der neue Router einer Arztpraxis bietet WEP, WPA2 mit TKIP, WPA2 mit AES und WPA3-Personal an. Alle Geräte der Praxis unterstützen WPA3.',
+  'Welche Einstellung entspricht dem aktuellen Stand der Technik?',
+  'Stand der Technik ist WPA3. Wo Altgeräte es nicht können, ist WPA2 mit AES das Minimum. WEP und TKIP sind tabu.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"WPA3-Personal","is_correct":true,"rationale":"Aktuellster Standard, schützt dank SAE vor Offline-Wörterbuchangriffen."},{"text":"WPA2 mit AES","is_correct":false,"rationale":"Gilt als Minimum, ist aber nicht der aktuelle Stand, wenn alle Geräte WPA3 können."},{"text":"WPA2 mit TKIP","is_correct":false,"rationale":"TKIP ist veraltet und gilt als unsicher."},{"text":"WEP","is_correct":false,"rationale":"WEP ist seit Jahren gebrochen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-yw-2',
+  'sicherheitsmassnahmen',
+  'multiple',
+  null,
+  'Welche Maßnahmen erhöhen die Sicherheit eines WLANs wirksam?',
+  'Wirksam sind starke Verschlüsselung mit langem Passwort, abgeschaltetes WPS und ein getrenntes Gastnetz. Versteckte SSID und MAC-Filter bringen kaum Sicherheit.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"WPS im Router deaktivieren","is_correct":true,"rationale":"Die WPS-PIN lässt sich in kurzer Zeit per Brute Force knacken."},{"text":"Ein eigenes Gastnetz einrichten","is_correct":true,"rationale":"Besuchergeräte bleiben vom internen Netz getrennt."},{"text":"Ein langes, zufälliges WLAN-Passwort verwenden","is_correct":true,"rationale":"Erschwert Wörterbuch- und Brute-Force-Angriffe."},{"text":"Die SSID verstecken","is_correct":false,"rationale":"Die SSID taucht trotzdem in den Funkpaketen auf und ist leicht zu ermitteln."},{"text":"Sich allein auf einen MAC-Filter verlassen","is_correct":false,"rationale":"MAC-Adressen lassen sich mitlesen und fälschen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-yw-3',
+  'sicherheitsmassnahmen',
+  'matching',
+  null,
+  'Welche Rolle bei der Anmeldung nach 802.1X hat das jeweilige Gerät?',
+  'Supplicant: Endgerät. Authenticator: Access Point oder Switch. Authentication Server: meist ein RADIUS-Server.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Supplicant","Authenticator","Authentication Server"],"match_items":[{"text":"Notebook einer Mitarbeiterin","bucket":0,"rationale":"Das Endgerät, das Zugang möchte."},{"text":"Access Point im Großraumbüro","bucket":1,"rationale":"Er vermittelt die Anmeldung und gibt den Zugang frei."},{"text":"RADIUS-Server im Rechenzentrum","bucket":2,"rationale":"Er prüft die Zugangsdaten und entscheidet."},{"text":"Firmen-Smartphone mit Gerätezertifikat","bucket":0,"rationale":"Auch das Smartphone ist ein Endgerät."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-yw-4',
+  'sicherheitsmassnahmen',
+  'numeric',
+  'Die WPS-PIN hat 8 Ziffern, die letzte ist eine Prüfziffer. Der Router bestätigt die ersten 4 Ziffern und die restlichen 3 frei wählbaren Ziffern getrennt.',
+  'Wie viele Versuche braucht ein Angreifer höchstens, um die PIN zu ermitteln?',
+  'Erste Hälfte: 4 Ziffern -> 10⁴ = 10.000 Möglichkeiten. Zweite Hälfte: 3 Ziffern -> 10³ = 1.000 Möglichkeiten. Weil getrennt geprüft wird, werden die Werte addiert: 10.000 + 1.000 = 11.000 Versuche.',
+  2,
+  '{}',
+  null,
+  '{"answer":11000.0,"tolerance":0.0,"unit":"Versuche"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-yz-1',
+  'sicherheitsmassnahmen',
+  'matching',
+  null,
+  'Um welche Art der Kontrolle handelt es sich?',
+  'Zutritt: Räume und Gebäude. Zugang: Nutzung von IT-Systemen. Zugriff: Rechte auf bestimmte Daten und Funktionen.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Zutritt","Zugang","Zugriff"],"match_items":[{"text":"Chipkartenleser an der Tür zum Serverraum","bucket":0,"rationale":"Schützt einen Raum."},{"text":"Anmeldung am Notebook mit Passwort und Fingerabdruck","bucket":1,"rationale":"Schützt die Nutzung des IT-Systems."},{"text":"Nur die Personalabteilung darf den Ordner „Gehälter“ öffnen","bucket":2,"rationale":"Regelt Rechte auf bestimmte Daten."},{"text":"Besuchende werden am Empfang registriert und begleitet","bucket":0,"rationale":"Kontrolliert das Betreten des Gebäudes."},{"text":"Leserecht, aber kein Schreibrecht auf die Preisliste","bucket":2,"rationale":"Regelt, was mit bestimmten Daten erlaubt ist."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-yz-2',
+  'sicherheitsmassnahmen',
+  'single',
+  'Die Rechte werden rollenbasiert vergeben. Ein Azubi wechselt vom Vertrieb in die Buchhaltung.',
+  'Was ist richtig?',
+  'Bei einem Abteilungswechsel werden alte Rollen entzogen und neue zugeordnet. So bleibt das Minimalprinzip gewahrt.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Rolle „Vertrieb“ entziehen und Rolle „Buchhaltung“ zuordnen","is_correct":true,"rationale":"So hat er genau die Rechte, die er für die neue Aufgabe braucht."},{"text":"Rolle „Buchhaltung“ zusätzlich zuordnen und „Vertrieb“ behalten","is_correct":false,"rationale":"Rechte würden sich anhäufen - ein Verstoß gegen das Minimalprinzip."},{"text":"Ihm Administratorrechte geben, damit er überall Zugriff hat","is_correct":false,"rationale":"Weit mehr Rechte als nötig und ein hohes Risiko."},{"text":"Ihn vorerst das Konto einer Kollegin aus der Buchhaltung mitbenutzen lassen","is_correct":false,"rationale":"Geteilte Konten verhindern Nachvollziehbarkeit und verletzen die Zugangskontrolle."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-yz-3',
+  'sicherheitsmassnahmen',
+  'multiple',
+  'Ein neuer Webserver soll vor der Inbetriebnahme gehärtet werden.',
+  'Welche Maßnahmen gehören zur Härtung?',
+  'Härtung verkleinert die Angriffsfläche: Unnötiges abschalten, Standardzugänge ändern, Updates einspielen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Nicht benötigte Dienste wie FTP und Telnet deaktivieren","is_correct":true,"rationale":"Was nicht läuft, kann nicht angegriffen werden."},{"text":"Das Standardpasswort des Administratorkontos ändern","is_correct":true,"rationale":"Standardpasswörter stehen öffentlich in Handbüchern."},{"text":"Alle verfügbaren Sicherheitsupdates einspielen","is_correct":true,"rationale":"Updates schließen bekannte Lücken."},{"text":"Alle Ports öffnen, damit später keine Dienste blockiert werden","is_correct":false,"rationale":"Das vergrößert die Angriffsfläche - das Gegenteil von Härtung."},{"text":"Das Administratorkonto für die tägliche Arbeit nutzen","is_correct":false,"rationale":"Alltagsarbeit gehört in ein Konto ohne Adminrechte."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-yz-4',
+  'sicherheitsmassnahmen',
+  'single',
+  null,
+  'Warum sollen Administratorinnen und Administratoren für E-Mail und Internet ein normales Benutzerkonto verwenden?',
+  'Getrennte Konten setzen das Minimalprinzip um: Admin-Rechte nur für Verwaltungsaufgaben, der Alltag läuft ohne erhöhte Rechte.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Weil Schadcode aus einem Anhang oder einer Webseite sonst mit vollen Administratorrechten läuft","is_correct":true,"rationale":"Mit eingeschränkten Rechten kann Schadsoftware deutlich weniger anrichten."},{"text":"Weil Administratorkonten keine E-Mails empfangen können","is_correct":false,"rationale":"Technisch ist das möglich - es ist nur riskant."},{"text":"Weil Administratorkonten kein Passwort benötigen","is_correct":false,"rationale":"Gerade Administratorkonten brauchen besonders starke Anmeldeverfahren."},{"text":"Weil das Programm sonst langsamer läuft","is_correct":false,"rationale":"Die Geschwindigkeit hängt nicht von den Kontorechten ab."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-cs-1',
+  'kryptographie_auth',
+  'numeric',
+  'In einer Abteilung sollen 20 Mitarbeitende paarweise vertraulich miteinander kommunizieren können. Eingesetzt wird ein rein symmetrisches Verfahren.',
+  'Wie viele verschiedene Schlüssel werden insgesamt benötigt?',
+  'Jedes Paar braucht einen eigenen Schlüssel: n × (n - 1) / 2 = 20 × 19 / 2 = 380 / 2 = 190 Schlüssel.',
+  2,
+  '{}',
+  null,
+  '{"answer":190.0,"tolerance":0.0,"unit":"Schlüssel"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-cs-2',
+  'kryptographie_auth',
+  'single',
+  null,
+  'Welches Verfahren ist ein symmetrisches Verschlüsselungsverfahren?',
+  'AES ist symmetrisch, RSA und ECC sind asymmetrisch, SHA-256 ist ein Hashverfahren ohne Schlüssel.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"AES","is_correct":true,"rationale":"AES nutzt denselben Schlüssel zum Ver- und Entschlüsseln und ist der aktuelle Standard."},{"text":"RSA","is_correct":false,"rationale":"RSA ist asymmetrisch und arbeitet mit einem Schlüsselpaar."},{"text":"SHA-256","is_correct":false,"rationale":"SHA-256 ist eine Hashfunktion und verschlüsselt nicht."},{"text":"ECC","is_correct":false,"rationale":"ECC (elliptische Kurven) gehört zu den asymmetrischen Verfahren."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-cs-3',
+  'kryptographie_auth',
+  'multiple',
+  null,
+  'Welche Aussagen zur symmetrischen Verschlüsselung sind richtig?',
+  'Symmetrisch heißt: ein gemeinsamer Schlüssel, sehr schnell, aber mit dem Problem, ihn sicher zu übergeben.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sie ist deutlich schneller als asymmetrische Verschlüsselung.","is_correct":true,"rationale":"Deshalb werden große Datenmengen immer symmetrisch verschlüsselt."},{"text":"Der Schlüssel muss vorab sicher ausgetauscht werden.","is_correct":true,"rationale":"Das ist das Schlüsselaustauschproblem."},{"text":"AES kann mit einem 256-Bit-Schlüssel arbeiten.","is_correct":true,"rationale":"AES erlaubt 128, 192 und 256 Bit."},{"text":"DES gilt heute noch als sicher.","is_correct":false,"rationale":"Der 56-Bit-Schlüssel von DES lässt sich durch Ausprobieren knacken."},{"text":"Jede Person braucht einen öffentlichen und einen privaten Schlüssel.","is_correct":false,"rationale":"Das beschreibt asymmetrische Verfahren."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-cs-4',
+  'kryptographie_auth',
+  'single',
+  'Ein Azubi soll einer Kundin eine mit AES verschlüsselte ZIP-Datei per E-Mail schicken.',
+  'Wie übermittelt er das Passwort am sichersten?',
+  'Das Schlüsselaustauschproblem löst man ohne Kryptographie nur über einen zweiten, unabhängigen Kanal.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Über einen anderen Kanal, z. B. telefonisch","is_correct":true,"rationale":"Wer die E-Mail mitliest, kennt dann das Passwort noch nicht."},{"text":"Im Text derselben E-Mail","is_correct":false,"rationale":"Wer die E-Mail abfängt, hat Datei und Passwort zugleich."},{"text":"Im Dateinamen der ZIP-Datei","is_correct":false,"rationale":"Der Dateiname ist für jeden sichtbar, der die Mail sieht."},{"text":"In einer zweiten E-Mail direkt danach","is_correct":false,"rationale":"Beide Mails laufen über denselben Kanal und können gemeinsam mitgelesen werden."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-ca-1',
+  'kryptographie_auth',
+  'single',
+  'Anna will Ben eine vertrauliche Nachricht schicken. Beide haben ein asymmetrisches Schlüsselpaar.',
+  'Mit welchem Schlüssel verschlüsselt Anna die Nachricht?',
+  'Für Vertraulichkeit wird immer mit dem öffentlichen Schlüssel des Empfängers verschlüsselt und mit dessen privatem Schlüssel entschlüsselt.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Mit Bens öffentlichem Schlüssel","is_correct":true,"rationale":"Dann kann nur Ben sie mit seinem privaten Schlüssel entschlüsseln."},{"text":"Mit Annas privatem Schlüssel","is_correct":false,"rationale":"Das wäre eine Signatur - jeder könnte sie mit Annas öffentlichem Schlüssel lesen."},{"text":"Mit Annas öffentlichem Schlüssel","is_correct":false,"rationale":"Dann könnte nur Anna selbst die Nachricht entschlüsseln."},{"text":"Mit Bens privatem Schlüssel","is_correct":false,"rationale":"Den kennt nur Ben - Anna hat ihn nicht."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-ca-2',
+  'kryptographie_auth',
+  'matching',
+  null,
+  'Welcher Schlüssel wird für den jeweiligen Schritt benutzt?',
+  'Verschlüsseln: öffentlich beim Empfänger, entschlüsseln mit dessen privatem Schlüssel. Signieren: privat beim Absender, prüfen mit dessen öffentlichem Schlüssel.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["öffentlicher Schlüssel des Absenders","privater Schlüssel des Absenders","öffentlicher Schlüssel des Empfängers","privater Schlüssel des Empfängers"],"match_items":[{"text":"Signatur prüfen","bucket":0,"rationale":""},{"text":"Signatur erstellen","bucket":1,"rationale":""},{"text":"Nachricht verschlüsseln","bucket":2,"rationale":""},{"text":"Nachricht entschlüsseln","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-ca-3',
+  'kryptographie_auth',
+  'numeric',
+  '50 Personen wollen untereinander vertraulich kommunizieren und nutzen dazu ein asymmetrisches Verfahren.',
+  'Wie viele Schlüssel gibt es insgesamt (öffentliche und private zusammen)?',
+  'Jede Person hat ein Schlüsselpaar: 2 × n = 2 × 50 = 100 Schlüssel. Symmetrisch wären es 50 × 49 / 2 = 1.225.',
+  2,
+  '{}',
+  null,
+  '{"answer":100.0,"tolerance":0.0,"unit":"Schlüssel"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-ca-4',
+  'kryptographie_auth',
+  'multiple',
+  null,
+  'Welche Aussagen zur digitalen Signatur sind richtig?',
+  'Eine Signatur sichert Integrität und Authentizität, aber keine Vertraulichkeit. Signiert wird privat, geprüft öffentlich.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sie weist nach, dass die Nachricht nicht verändert wurde.","is_correct":true,"rationale":"Jede Änderung führt zu einem anderen Hashwert - der Vergleich schlägt fehl."},{"text":"Sie weist nach, wer die Nachricht signiert hat.","is_correct":true,"rationale":"Nur der Besitzer des privaten Schlüssels kann eine passende Signatur erzeugen."},{"text":"Sie wird mit dem privaten Schlüssel des Absenders erstellt.","is_correct":true,"rationale":"Geprüft wird mit dem zugehörigen öffentlichen Schlüssel."},{"text":"Sie macht den Inhalt der Nachricht vertraulich.","is_correct":false,"rationale":"Die Nachricht selbst bleibt lesbar. Für Vertraulichkeit muss zusätzlich verschlüsselt werden."},{"text":"Zum Prüfen braucht der Empfänger den privaten Schlüssel des Absenders.","is_correct":false,"rationale":"Der private Schlüssel verlässt nie den Absender - geprüft wird mit dem öffentlichen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-ch-1',
+  'kryptographie_auth',
+  'single',
+  null,
+  'Warum verschlüsselt TLS die Nutzdaten symmetrisch und nicht asymmetrisch?',
+  'Hybrid heißt: Asymmetrisch werden Server authentifiziert und Schlüssel vereinbart, die eigentlichen Daten laufen schnell symmetrisch verschlüsselt.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Symmetrische Verfahren sind viel schneller - asymmetrische dienen nur Schlüsselaustausch und Echtheitsnachweis.","is_correct":true,"rationale":"So verbindet das Hybridverfahren das Tempo der symmetrischen mit den Vorteilen der asymmetrischen Verfahren."},{"text":"Asymmetrische Verfahren gelten als unsicher.","is_correct":false,"rationale":"RSA und ECC sind sicher, aber zu langsam für große Datenmengen."},{"text":"Symmetrische Verfahren brauchen keinen Schlüssel.","is_correct":false,"rationale":"Sie brauchen einen gemeinsamen Schlüssel - den Sitzungsschlüssel."},{"text":"Browser können keine asymmetrischen Verfahren ausführen.","is_correct":false,"rationale":"Browser nutzen sie im Handshake ständig, etwa beim Prüfen von Signaturen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-ch-2',
+  'kryptographie_auth',
+  'ordering',
+  null,
+  'Bringe die Schritte beim Aufbau einer HTTPS-Verbindung (vereinfacht) in die richtige Reihenfolge.',
+  'Erst verständigen sich beide über die Verfahren, dann weist sich der Server mit seinem Zertifikat aus. Erst nach erfolgreicher Prüfung fließen die Nutzdaten verschlüsselt.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Browser sendet Client Hello","Server antwortet mit Server Hello","Server sendet sein Zertifikat","Browser prüft das Zertifikat","Nutzdaten werden symmetrisch verschlüsselt übertragen"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-ch-3',
+  'kryptographie_auth',
+  'multiple',
+  null,
+  'Welche Angaben enthält ein X.509-Serverzertifikat?',
+  'Ein Zertifikat enthält u. a. Inhaber, öffentlichen Schlüssel, Aussteller, Gültigkeit, Seriennummer und die Signatur der CA - nie den privaten Schlüssel.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Den öffentlichen Schlüssel des Servers","is_correct":true,"rationale":"Genau diesen Schlüssel bestätigt das Zertifikat."},{"text":"Den Aussteller (die CA)","is_correct":true,"rationale":"Über ihn wird die Vertrauenskette geprüft."},{"text":"Den Gültigkeitszeitraum","is_correct":true,"rationale":"Außerhalb davon warnt der Browser."},{"text":"Den privaten Schlüssel des Servers","is_correct":false,"rationale":"Der private Schlüssel bleibt geheim auf dem Server und steht nie im Zertifikat."},{"text":"Das Administratorpasswort des Servers","is_correct":false,"rationale":"Passwörter haben in einem öffentlichen Zertifikat nichts zu suchen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-ch-4',
+  'kryptographie_auth',
+  'single',
+  'Ein Azubi ruft https://intranet.firma.example auf. Der Browser warnt. Das Zertifikat ist noch ein Jahr gültig, von einer bekannten CA signiert, nicht gesperrt und auf den Namen www.firma.example ausgestellt.',
+  'Welche Prüfung schlägt fehl?',
+  'Der Browser prüft Gültigkeit, Aussteller, Sperrstatus und Namen. Hier stimmt nur der Name nicht mit der Adresse überein.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Der Name im Zertifikat passt nicht zur aufgerufenen Adresse.","is_correct":true,"rationale":"Das Zertifikat gilt für www.firma.example, nicht für intranet.firma.example."},{"text":"Der Gültigkeitszeitraum ist überschritten.","is_correct":false,"rationale":"Laut Aufgabe ist das Zertifikat noch ein Jahr gültig."},{"text":"Der Aussteller ist nicht vertrauenswürdig.","is_correct":false,"rationale":"Es wurde von einer bekannten CA signiert."},{"text":"Das Zertifikat wurde widerrufen.","is_correct":false,"rationale":"Laut Aufgabe ist es nicht gesperrt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-cx-1',
+  'kryptographie_auth',
+  'numeric',
+  null,
+  'Ein SHA-512-Hashwert wird hexadezimal dargestellt. Aus wie vielen Zeichen besteht er?',
+  'Ein Hex-Zeichen stellt 4 Bit dar. 512 Bit / 4 Bit je Zeichen = 128 Zeichen.',
+  2,
+  '{}',
+  null,
+  '{"answer":128.0,"tolerance":0.0,"unit":"Zeichen"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-cx-2',
+  'kryptographie_auth',
+  'multiple',
+  null,
+  'Welche Eigenschaften hat eine kryptographische Hashfunktion?',
+  'Kryptographische Hashfunktionen sind Einwegfunktionen mit fester Ausgabelänge, Lawineneffekt und Kollisionsresistenz.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Der Hashwert hat immer dieselbe Länge.","is_correct":true,"rationale":"Egal ob die Eingabe 1 Byte oder 10 GB groß ist."},{"text":"Aus dem Hashwert lässt sich die Eingabe nicht berechnen.","is_correct":true,"rationale":"Sie ist eine Einwegfunktion."},{"text":"Eine winzige Änderung der Eingabe ergibt einen völlig anderen Hashwert.","is_correct":true,"rationale":"Das ist der Lawineneffekt."},{"text":"Mit dem richtigen Schlüssel lässt sich der Hashwert zurückrechnen.","is_correct":false,"rationale":"Hashfunktionen haben keinen Schlüssel und sind nicht umkehrbar."},{"text":"Je größer die Datei, desto länger der Hashwert.","is_correct":false,"rationale":"Die Länge ist fest, z. B. 256 Bit bei SHA-256."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-cx-3',
+  'kryptographie_auth',
+  'single',
+  'Für einen neuen Kundenbereich im Webshop soll festgelegt werden, wie Passwörter in der Datenbank gespeichert werden.',
+  'Welche Lösung ist richtig?',
+  'Passwörter werden nicht verschlüsselt, sondern mit Salt und einem bewusst langsamen Verfahren wie Argon2 oder bcrypt gehasht.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Mit Argon2 und einem zufälligen Salt je Konto hashen","is_correct":true,"rationale":"Salt verhindert vorberechnete Tabellen, das langsame Verfahren bremst massenhaftes Ausprobieren."},{"text":"Mit AES verschlüsseln","is_correct":false,"rationale":"Verschlüsseltes lässt sich mit dem Schlüssel zurückholen - wird er gestohlen, liegen alle Passwörter offen."},{"text":"Mit MD5 hashen","is_correct":false,"rationale":"MD5 ist veraltet und extrem schnell zu berechnen."},{"text":"Mit SHA-256 ohne Salt hashen","is_correct":false,"rationale":"Gleiche Passwörter ergeben gleiche Hashes, und SHA-256 ist für Passwörter zu schnell."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-cx-4',
+  'kryptographie_auth',
+  'single',
+  'Eine Administratorin lädt ein Installationspaket herunter. Der SHA-256-Wert, den sie selbst berechnet, weicht vom Wert auf der Herstellerseite ab.',
+  'Was bedeutet das?',
+  'Hashwerte prüfen die Integrität: Stimmen sie nicht überein, sind die Daten nicht dieselben wie beim Hersteller.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Datei wurde verändert oder beschädigt und darf nicht installiert werden.","is_correct":true,"rationale":"Schon ein einziges abweichendes Bit ergibt einen völlig anderen Hashwert."},{"text":"Hashwerte weichen immer leicht ab, das ist normal.","is_correct":false,"rationale":"Gleiche Daten ergeben immer exakt denselben Hashwert."},{"text":"Die Datei ist verschlüsselt und muss erst entschlüsselt werden.","is_correct":false,"rationale":"Ein Hashwert sagt nichts über Verschlüsselung aus."},{"text":"Die Datei ist in Ordnung, nur größer als erwartet.","is_correct":false,"rationale":"Die Größe beeinflusst die Länge des Hashwerts nicht - abweichende Werte heißen abweichende Daten."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-cz-1',
+  'kryptographie_auth',
+  'multiple',
+  null,
+  'Welche Kombinationen sind eine echte Zwei-Faktor-Authentifizierung?',
+  '2FA verlangt zwei Faktoren aus verschiedenen Kategorien: Wissen, Besitz oder Inhärenz. Zweimal Wissen zählt nicht.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Passwort und Code aus einer Authenticator-App","is_correct":true,"rationale":"Wissen und Besitz (Smartphone)."},{"text":"Chipkarte und PIN","is_correct":true,"rationale":"Besitz und Wissen."},{"text":"Fingerabdruck und Passwort","is_correct":true,"rationale":"Inhärenz und Wissen."},{"text":"Passwort und Sicherheitsfrage","is_correct":false,"rationale":"Beides ist Wissen - nur eine Kategorie."},{"text":"PIN und Passwort","is_correct":false,"rationale":"Beides ist Wissen - nur eine Kategorie."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-cz-2',
+  'kryptographie_auth',
+  'matching',
+  null,
+  'Ordne jeden Nachweis seiner Faktorkategorie zu.',
+  'Wissen ist etwas, das man weiß, Besitz etwas, das man hat, Inhärenz ein körperliches Merkmal.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Wissen","Besitz","Inhärenz"],"match_items":[{"text":"PIN","bucket":0,"rationale":""},{"text":"Passphrase","bucket":0,"rationale":""},{"text":"Hardware-Sicherheitsschlüssel","bucket":1,"rationale":""},{"text":"Smartcard","bucket":1,"rationale":""},{"text":"Gesichtserkennung","bucket":2,"rationale":""},{"text":"Iris-Scan","bucket":2,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-cz-3',
+  'kryptographie_auth',
+  'numeric',
+  null,
+  'Ein Passwort besteht aus genau 4 Zeichen. Erlaubt sind die 26 Kleinbuchstaben und die 10 Ziffern. Wie viele verschiedene Passwörter sind möglich?',
+  'Zeichenvorrat: 26 + 10 = 36. Kombinationen = 36^4 = 36 × 36 × 36 × 36 = 1.296 × 1.296 = 1.679.616.',
+  2,
+  '{}',
+  null,
+  '{"answer":1679616.0,"tolerance":0.0,"unit":"Kombinationen"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-cz-4',
+  'kryptographie_auth',
+  'single',
+  null,
+  'Welche Regel entspricht den aktuellen Empfehlungen des BSI?',
+  'Heute gilt: lang vor kompliziert, für jeden Dienst ein eigenes Passwort (Passwortmanager), Wechsel nur bei Anlass, zusätzlich MFA.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Lieber eine lange Passphrase und das Passwort nur bei Verdacht auf Kompromittierung ändern","is_correct":true,"rationale":"Das BSI empfiehlt keinen anlasslosen Zwangswechsel mehr, Länge bringt viel Sicherheit."},{"text":"Passwörter alle 90 Tage zwangsweise wechseln","is_correct":false,"rationale":"Anlassloser Wechsel führt zu schwachen, abgewandelten Passwörtern und wird nicht mehr empfohlen."},{"text":"Ein einziges starkes Passwort für alle Dienste nutzen","is_correct":false,"rationale":"Wird ein Dienst gehackt, sind alle anderen Konten mitbetroffen."},{"text":"Acht Zeichen reichen immer, wenn ein Sonderzeichen dabei ist","is_correct":false,"rationale":"Kurze Passwörter bleiben auch mit Sonderzeichen angreifbar - Länge wirkt stärker."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xg-1',
+  'datenschutz',
+  'multiple',
+  null,
+  'Welche Daten sind personenbezogen im Sinne der DSGVO?',
+  'Personenbezogen ist jede Information über eine identifizierte oder identifizierbare natürliche Person - auch über Kennungen wie IP-Adresse oder Kennzeichen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die E-Mail-Adresse max.mueller@firma.example","is_correct":true,"rationale":"Sie ist einer bestimmten Person zugeordnet."},{"text":"Die IP-Adresse eines Website-Besuchers","is_correct":true,"rationale":"Mit Zusatzwissen, etwa vom Provider, lässt sie sich einem Anschluss und einer Person zuordnen."},{"text":"Das Kfz-Kennzeichen eines Dienstwagens, den eine Mitarbeiterin fährt","is_correct":true,"rationale":"Über das Kennzeichen und den Fahrtenplan ist die Person identifizierbar."},{"text":"Der Jahresumsatz einer GmbH","is_correct":false,"rationale":"Er betrifft eine juristische Person, keine natürliche."},{"text":"Die Durchschnittstemperatur im Serverraum","is_correct":false,"rationale":"Sie hat keinen Bezug zu einer Person."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xg-2',
+  'datenschutz',
+  'matching',
+  null,
+  'Ordne die Daten richtig ein.',
+  'Gesundheit und Gewerkschaft gehören zu Art. 9. Adresse und Telefonnummer sind personenbezogen, Firmendaten und reine Summen nicht.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["besondere Kategorie (Art. 9)","personenbezogen, nicht besonders","nicht personenbezogen"],"match_items":[{"text":"Krankschreibung eines Mitarbeiters","bucket":0,"rationale":""},{"text":"Gewerkschaftsmitgliedschaft einer Kollegin","bucket":0,"rationale":""},{"text":"Privatadresse einer Kundin","bucket":1,"rationale":""},{"text":"Handynummer eines Kunden","bucket":1,"rationale":""},{"text":"Handelsregisternummer einer GmbH","bucket":2,"rationale":""},{"text":"Gesamtzahl aller Website-Aufrufe pro Tag","bucket":2,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xg-3',
+  'datenschutz',
+  'single',
+  'Eine Arztpraxis lässt ihre Patientenverwaltung von einem externen Rechenzentrum betreiben. Das Rechenzentrum nutzt die Daten nur nach Vorgabe der Praxis.',
+  'Welche Rolle hat das Rechenzentrum nach der DSGVO?',
+  'Wer im Auftrag und nach Weisung verarbeitet, ist Auftragsverarbeiter. Dafür ist ein Vertrag zur Auftragsverarbeitung nötig.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Auftragsverarbeiter","is_correct":true,"rationale":"Es verarbeitet Daten im Auftrag und nach Weisung der Praxis."},{"text":"Verantwortlicher","is_correct":false,"rationale":"Über Zweck und Mittel entscheidet die Praxis, nicht das Rechenzentrum."},{"text":"Betroffene Person","is_correct":false,"rationale":"Betroffen sind die Patientinnen und Patienten."},{"text":"Aufsichtsbehörde","is_correct":false,"rationale":"Das ist die staatliche Datenschutzbehörde."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xg-4',
+  'datenschutz',
+  'single',
+  null,
+  'Wessen Daten schützt die DSGVO?',
+  'Die DSGVO schützt natürliche Personen - unabhängig davon, ob sie Kunden, Beschäftigte oder Bewerbende sind.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Daten natürlicher Personen","is_correct":true,"rationale":"Sie bezieht sich auf Informationen über identifizierte oder identifizierbare Menschen."},{"text":"Die Daten juristischer Personen wie GmbHs","is_correct":false,"rationale":"Firmendaten fallen nicht unter die DSGVO."},{"text":"Nur die Daten von Kunden","is_correct":false,"rationale":"Auch Beschäftigte, Bewerber und Lieferantenkontakte sind geschützt."},{"text":"Nur Daten, die auf Papier vorliegen","is_correct":false,"rationale":"Die DSGVO gilt gerade auch für elektronische Verarbeitung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xs-1',
+  'datenschutz',
+  'matching',
+  null,
+  'Gegen welchen Grundsatz verstößt jeder Fall am deutlichsten?',
+  'Zweckfremde Nutzung verletzt die Zweckbindung, unnötige Pflichtfelder die Datenminimierung, zu langes Aufbewahren die Speicherbegrenzung, veraltete Daten die Richtigkeit.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Zweckbindung","Datenminimierung","Speicherbegrenzung","Richtigkeit"],"match_items":[{"text":"Für den Versand erhobene Adressen werden an einen Werbepartner verkauft.","bucket":0,"rationale":""},{"text":"Ein Newsletter-Formular verlangt Geburtsdatum und Telefonnummer als Pflichtfelder.","bucket":1,"rationale":""},{"text":"Unterlagen abgelehnter Bewerbender liegen seit fünf Jahren im Ordner.","bucket":2,"rationale":""},{"text":"Ein Kunde meldet seinen Umzug, im System bleibt die alte Adresse stehen.","bucket":3,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xs-2',
+  'datenschutz',
+  'single',
+  'Ein Webshop speichert die Lieferadresse, um eine Bestellung auszuliefern.',
+  'Auf welche Rechtsgrundlage stützt sich diese Verarbeitung?',
+  'Daten, die zur Erfüllung eines Vertrags nötig sind, dürfen nach Art. 6 Abs. 1 lit. b DSGVO ohne Einwilligung verarbeitet werden.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Erfüllung eines Vertrags","is_correct":true,"rationale":"Ohne Adresse kann die Bestellung nicht geliefert werden."},{"text":"Einwilligung","is_correct":false,"rationale":"Eine Einwilligung ist nicht nötig, wenn die Daten zur Vertragserfüllung erforderlich sind."},{"text":"Lebenswichtige Interessen","is_correct":false,"rationale":"Die gelten nur, wenn es um Leben oder Gesundheit geht."},{"text":"Öffentliche Aufgabe","is_correct":false,"rationale":"Ein Webshop nimmt keine hoheitliche Aufgabe wahr."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xs-3',
+  'datenschutz',
+  'multiple',
+  null,
+  'Welche Aussagen zur Einwilligung sind richtig?',
+  'Eine wirksame Einwilligung ist freiwillig, informiert, eindeutig und jederzeit für die Zukunft widerrufbar.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sie muss freiwillig erteilt werden.","is_correct":true,"rationale":"Wer keine echte Wahl hat, willigt nicht wirksam ein."},{"text":"Sie kann jederzeit widerrufen werden.","is_correct":true,"rationale":"Der Widerruf muss so einfach sein wie die Erteilung."},{"text":"Die Person muss wissen, worin sie einwilligt.","is_correct":true,"rationale":"Eine Einwilligung muss informiert sein."},{"text":"Ein vorangekreuztes Häkchen genügt.","is_correct":false,"rationale":"Stillschweigen oder vorausgefüllte Kästchen sind keine eindeutige Einwilligung."},{"text":"Ein Widerruf macht die bisherige Verarbeitung rückwirkend rechtswidrig.","is_correct":false,"rationale":"Der Widerruf wirkt nur für die Zukunft."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xs-4',
+  'datenschutz',
+  'single',
+  'Bei einer Prüfung verlangt die Aufsichtsbehörde von einem Unternehmen Belege, dass es die DSGVO einhält, etwa ein Verzeichnis der Verarbeitungstätigkeiten.',
+  'Welcher Grundsatz steht dahinter?',
+  'Die Rechenschaftspflicht (Art. 5 Abs. 2) verlangt, dass der Verantwortliche die Einhaltung aller Grundsätze belegen kann.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Rechenschaftspflicht","is_correct":true,"rationale":"Der Verantwortliche muss die Einhaltung der Grundsätze nachweisen können."},{"text":"Datenminimierung","is_correct":false,"rationale":"Sie betrifft den Umfang der erhobenen Daten, nicht den Nachweis."},{"text":"Zweckbindung","is_correct":false,"rationale":"Sie regelt, wofür Daten genutzt werden dürfen."},{"text":"Speicherbegrenzung","is_correct":false,"rationale":"Sie regelt, wie lange Daten gespeichert werden dürfen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xr-1',
+  'datenschutz',
+  'matching',
+  null,
+  'Welches Recht macht die Person jeweils geltend?',
+  'Auskunft Art. 15, Berichtigung Art. 16, Löschung Art. 17, Datenübertragbarkeit Art. 20, Widerspruch gegen Direktwerbung Art. 21.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Auskunft","Berichtigung","Löschung","Datenübertragbarkeit","Widerspruch"],"match_items":[{"text":"„Welche Daten haben Sie über mich gespeichert?“","bucket":0,"rationale":""},{"text":"„Meine Hausnummer ist falsch hinterlegt.“","bucket":1,"rationale":""},{"text":"„Entfernen Sie mein Konto und alle meine Daten.“","bucket":2,"rationale":""},{"text":"„Schicken Sie mir meine Trainingsdaten als CSV, ich wechsle den Anbieter.“","bucket":3,"rationale":""},{"text":"„Ich möchte keine Werbung mehr per Post von Ihnen.“","bucket":4,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xr-2',
+  'datenschutz',
+  'numeric',
+  null,
+  'Eine Auskunftsanfrage ist sehr umfangreich. Der Verantwortliche verlängert die Frist ordnungsgemäß. Wie viele Monate hat er ab Eingang höchstens Zeit?',
+  'Grundfrist 1 Monat, Verlängerung um bis zu 2 Monate: 1 + 2 = 3 Monate. Die Verlängerung muss innerhalb des ersten Monats begründet mitgeteilt werden.',
+  1,
+  '{}',
+  null,
+  '{"answer":3.0,"tolerance":0.0,"unit":"Monate"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xr-3',
+  'datenschutz',
+  'single',
+  'Ein Kunde verlangt, dass ein Onlineshop alle seine Daten löscht. Für seine Bestellungen liegen Rechnungen vor, die gesetzlich aufbewahrt werden müssen.',
+  'Wie geht der Shop richtig vor?',
+  'Das Recht auf Löschung hat Grenzen: Gesetzlich aufzubewahrende Daten werden gesperrt, alles andere wird gelöscht.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Rechnungsdaten sperren und nach Ablauf der Frist löschen, alle übrigen Daten sofort löschen und den Kunden informieren","is_correct":true,"rationale":"Aufbewahrungspflichten gehen vor, alles andere muss gelöscht werden."},{"text":"Alle Daten sofort löschen, auch die Rechnungen","is_correct":false,"rationale":"Damit verstieße der Shop gegen gesetzliche Aufbewahrungspflichten."},{"text":"Die Löschung ablehnen, weil Rechnungen existieren","is_correct":false,"rationale":"Nur die aufbewahrungspflichtigen Daten sind ausgenommen, nicht alle."},{"text":"Das Kundenkonto deaktivieren, aber alle Daten weiter nutzen","is_correct":false,"rationale":"Eine Weiternutzung ohne Rechtsgrundlage verstößt gegen die DSGVO."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xr-4',
+  'datenschutz',
+  'single',
+  'Eine Kundin bestreitet, dass ihr gespeicherter Kontostand richtig ist. Die Prüfung dauert einige Tage.',
+  'Welches Recht kann sie für diese Zeit geltend machen?',
+  'Art. 18 erlaubt die Einschränkung, solange die Richtigkeit bestritten wird und der Verantwortliche sie prüft.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Einschränkung der Verarbeitung","is_correct":true,"rationale":"Die Daten bleiben gespeichert, dürfen aber bis zur Klärung nicht weiter genutzt werden."},{"text":"Datenübertragbarkeit","is_correct":false,"rationale":"Die dient dem Anbieterwechsel, nicht der Klärung strittiger Daten."},{"text":"Beschwerde bei der Aufsichtsbehörde","is_correct":false,"rationale":"Möglich, aber sie stoppt die Nutzung der Daten während der Prüfung nicht."},{"text":"Information bei der Erhebung","is_correct":false,"rationale":"Die Pflicht zur Information betrifft den Zeitpunkt der Erhebung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xa-1',
+  'datenschutz',
+  'matching',
+  null,
+  'Ist das Ergebnis anonym oder pseudonym?',
+  'Summen und Durchschnitte großer Gruppen sind anonym. Wo eine Liste oder das Nachrechnen eines Hashs zur Person führt, bleibt es pseudonym.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["anonym","pseudonym"],"match_items":[{"text":"Veröffentlichte Zahl der Bestellungen je Bundesland","bucket":0,"rationale":""},{"text":"Durchschnittsalter aller 500 Teilnehmenden einer Umfrage","bucket":0,"rationale":""},{"text":"Name durch Kundennummer ersetzt, Zuordnungsliste liegt in der Buchhaltung","bucket":1,"rationale":""},{"text":"E-Mail-Adresse durch ihren SHA-256-Hashwert ersetzt","bucket":1,"rationale":""},{"text":"Studiendaten mit Probandencode, Namensliste beim Studienleiter","bucket":1,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xa-2',
+  'datenschutz',
+  'single',
+  null,
+  'Welche rechtliche Folge hat eine Pseudonymisierung?',
+  'Pseudonymisierung senkt das Risiko und ist eine Schutzmaßnahme, hebt den Personenbezug aber nicht auf.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Daten bleiben personenbezogen, die DSGVO gilt weiter.","is_correct":true,"rationale":"Mit dem Zusatzwissen lässt sich die Person bestimmen."},{"text":"Die DSGVO gilt nicht mehr.","is_correct":false,"rationale":"Das gilt nur für anonyme Daten."},{"text":"Die Daten dürfen ohne Rechtsgrundlage weitergegeben werden.","is_correct":false,"rationale":"Auch pseudonyme Daten brauchen eine Rechtsgrundlage."},{"text":"Die Daten werden automatisch zu besonderen Kategorien nach Art. 9.","is_correct":false,"rationale":"Pseudonymisierung ändert die Art der Daten nicht."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xa-3',
+  'datenschutz',
+  'multiple',
+  null,
+  'Welche Verfahren dienen der Anonymisierung?',
+  'Anonymisieren heißt, den Personenbezug dauerhaft zu zerstören, etwa durch Aggregation oder Generalisierung. Ein Ersatzkennzeichen reicht dafür nicht.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Aggregieren, z. B. Durchschnittswerte je Abteilung","is_correct":true,"rationale":"Einzelwerte verschwinden in der Summe."},{"text":"Generalisieren, z. B. Altersgruppen statt Geburtsdatum","is_correct":true,"rationale":"Werte werden so grob, dass sie keine Person mehr bestimmen."},{"text":"Namen durch Personalnummern ersetzen","is_correct":false,"rationale":"Über die Personalnummer ist die Person weiterhin bestimmbar - das ist Pseudonymisierung."},{"text":"E-Mail-Adressen durch ihren Hashwert ersetzen","is_correct":false,"rationale":"Der Hash lässt sich aus bekannten Adressen nachrechnen - das bleibt pseudonym."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xa-4',
+  'datenschutz',
+  'single',
+  'Die Personalabteilung gibt eine Tabelle mit dem Durchschnittsgehalt je Abteilung weiter. Namen enthält sie nicht. Die Abteilung „Recht“ hat nur eine Mitarbeiterin.',
+  'Warum ist die Tabelle nicht vollständig anonym?',
+  'Aggregation schützt nur, wenn die Gruppen groß genug sind. Kleine Gruppen müssen zusammengefasst werden.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Der Durchschnitt der Abteilung „Recht“ ist genau das Gehalt der einen Mitarbeiterin.","is_correct":true,"rationale":"Bei einer Gruppe aus einer Person verrät der Durchschnitt den Einzelwert."},{"text":"Weil Gehälter immer besondere Kategorien nach Art. 9 sind","is_correct":false,"rationale":"Gehälter gehören nicht zu Art. 9."},{"text":"Weil Durchschnittswerte grundsätzlich personenbezogen sind","is_correct":false,"rationale":"Durchschnitte großer Gruppen sind anonym."},{"text":"Weil keine Zuordnungstabelle getrennt aufbewahrt wird","is_correct":false,"rationale":"Eine Zuordnungstabelle gehört zur Pseudonymisierung, nicht zur Anonymisierung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xt-1',
+  'datenschutz',
+  'matching',
+  null,
+  'Ordne jede Maßnahme dem klassischen Kontrollziel zu.',
+  'Zutritt: Räume. Zugang: Systeme. Zugriff: Daten. Weitergabe: Übertragung. Eingabe: Nachvollziehbarkeit von Änderungen. Verfügbarkeit: Schutz vor Verlust.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Zutrittskontrolle","Zugangskontrolle","Zugriffskontrolle","Weitergabekontrolle","Eingabekontrolle","Verfügbarkeitskontrolle"],"match_items":[{"text":"Chipkartenleser an der Tür zum Serverraum","bucket":0,"rationale":""},{"text":"Anmeldung am Notebook mit Passwort und zweitem Faktor","bucket":1,"rationale":""},{"text":"Nur die Personalabteilung darf Personalakten lesen","bucket":2,"rationale":""},{"text":"E-Mails mit Patientendaten werden mit S/MIME verschlüsselt","bucket":3,"rationale":""},{"text":"Jede Änderung an einer Patientenakte wird mit Name und Uhrzeit protokolliert","bucket":4,"rationale":""},{"text":"Tägliches Backup auf ein ausgelagertes System","bucket":5,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xt-2',
+  'datenschutz',
+  'matching',
+  null,
+  'Ist die Maßnahme technisch oder organisatorisch?',
+  'Technische Maßnahmen setzt die Technik selbst durch. Organisatorische Maßnahmen sind Regeln und Abläufe, die Menschen einhalten.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["technisch","organisatorisch"],"match_items":[{"text":"Firewall","bucket":0,"rationale":""},{"text":"Festplattenverschlüsselung","bucket":0,"rationale":""},{"text":"Alarmanlage","bucket":0,"rationale":""},{"text":"Datenschutzschulung","bucket":1,"rationale":""},{"text":"Besucherbuch am Empfang","bucket":1,"rationale":""},{"text":"Vier-Augen-Prinzip bei Überweisungen","bucket":1,"rationale":""}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xt-3',
+  'datenschutz',
+  'single',
+  'Ein Softwarehaus betreibt eine Cloud-Lösung für mehrere Arztpraxen. Jede Praxis darf nur ihre eigenen Patientendaten sehen, die Daten liegen in getrennten Mandanten.',
+  'Welches klassische Kontrollziel wird damit vor allem umgesetzt?',
+  'Mandantentrennung ist das typische Beispiel für das Trennungsgebot aus der klassischen Gliederung der Kontrollziele.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Trennungsgebot","is_correct":true,"rationale":"Daten, die zu verschiedenen Zwecken erhoben wurden, werden getrennt verarbeitet."},{"text":"Zutrittskontrolle","is_correct":false,"rationale":"Sie betrifft den physischen Zutritt zu Räumen."},{"text":"Verfügbarkeitskontrolle","is_correct":false,"rationale":"Sie schützt vor Verlust, etwa durch Backups."},{"text":"Eingabekontrolle","is_correct":false,"rationale":"Sie macht nachvollziehbar, wer Daten geändert hat."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a6-xt-4',
+  'datenschutz',
+  'multiple',
+  null,
+  'Was nennt Art. 32 DSGVO als Teil angemessener Sicherheitsmaßnahmen?',
+  'Art. 32 fordert risikoangemessene TOM: u. a. Pseudonymisierung, Verschlüsselung, dauerhafte Sicherheit der Systeme, schnelle Wiederherstellung und regelmäßige Überprüfung.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Pseudonymisierung und Verschlüsselung","is_correct":true,"rationale":"Beides wird ausdrücklich als Beispiel genannt."},{"text":"Vertraulichkeit, Integrität, Verfügbarkeit und Belastbarkeit der Systeme","is_correct":true,"rationale":"Sie sollen auf Dauer sichergestellt werden."},{"text":"Regelmäßige Überprüfung der Wirksamkeit der Maßnahmen","is_correct":true,"rationale":"Maßnahmen müssen überprüft, bewertet und evaluiert werden."},{"text":"Verschlüsselung aller Daten ohne Ausnahme, unabhängig vom Risiko","is_correct":false,"rationale":"Art. 32 verlangt risikoangemessene Maßnahmen, keine starre Pflicht."},{"text":"Veröffentlichung aller Sicherheitsmaßnahmen im Internet","is_correct":false,"rationale":"Das fordert die DSGVO nicht - es würde Angreifern eher helfen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-vz-1',
+  'vertraege',
+  'single',
+  'Ein Systemhaus verschickt seinen Frühjahrskatalog mit Preisen an alle Kunden. Eine Arztpraxis bestellt daraufhin per E-Mail drei Notebooks zum Katalogpreis. Das Systemhaus bestätigt den Auftrag am nächsten Tag.',
+  'Welche Erklärung ist hier der Antrag?',
+  'Katalog = Aufforderung zum Antrag. Bestellung = Antrag. Auftragsbestätigung = Annahme. Mit der Annahme ist der Kaufvertrag geschlossen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Bestellung der Arztpraxis","is_correct":true,"rationale":"Der Katalog richtet sich an alle und ist nur eine Aufforderung zum Antrag. Den ersten verbindlichen Schritt macht die Praxis mit ihrer Bestellung."},{"text":"Der Katalog des Systemhauses","is_correct":false,"rationale":"Ein Katalog richtet sich an einen unbestimmten Personenkreis - er ist eine invitatio ad offerendum, kein Antrag."},{"text":"Die Auftragsbestätigung des Systemhauses","is_correct":false,"rationale":"Sie ist die Annahme des Antrags. Mit ihr kommt der Vertrag zustande."},{"text":"Es gibt keinen Antrag, weil nichts unterschrieben wurde","is_correct":false,"rationale":"Kaufverträge sind grundsätzlich formfrei, eine E-Mail genügt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-vz-2',
+  'vertraege',
+  'matching',
+  'Ein IT-Händler hat einer Kanzlei am 2. Mai ein schriftliches Angebot über zehn Monitore gemacht, gültig bis 16. Mai.',
+  'Ordne jede Erklärung ihrer rechtlichen Wirkung zu.',
+  'Ein Vertrag entsteht nur, wenn die Annahme rechtzeitig kommt und dem Antrag genau entspricht. Verspätete oder geänderte Annahmen sind neue Anträge. Anfragen und Werbung binden niemanden.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Antrag","Annahme","weder Antrag noch Annahme"],"match_items":[{"text":"Das Angebot des Händlers vom 2. Mai","bucket":0,"rationale":"Richtet sich an eine bestimmte Person und ist verbindlich."},{"text":"Die Kanzlei bestellt am 10. Mai zu genau den Angebotsbedingungen.","bucket":1,"rationale":"Rechtzeitig und inhaltlich deckungsgleich - der Vertrag kommt zustande."},{"text":"Die Kanzlei bestellt am 20. Mai zu den Angebotsbedingungen.","bucket":0,"rationale":"Die Frist ist abgelaufen. Eine verspätete Annahme gilt als neuer Antrag."},{"text":"Die Kanzlei bestellt am 10. Mai, verlangt aber 10 % Rabatt.","bucket":0,"rationale":"Eine abgeänderte Annahme gilt als Ablehnung verbunden mit einem neuen Antrag."},{"text":"Die Kanzlei fragt vorher an, was 27-Zoll-Monitore kosten.","bucket":2,"rationale":"Eine Anfrage ist unverbindlich."},{"text":"Der Händler wirbt in einer Fachzeitschrift für Monitore.","bucket":2,"rationale":"Werbung ist nur eine Aufforderung zum Antrag."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-vz-3',
+  'vertraege',
+  'multiple',
+  null,
+  'Welche Aussagen zur Geschäftsfähigkeit sind richtig?',
+  'Unter 7 Jahren: geschäftsunfähig. 7 bis 17 Jahre: beschränkt geschäftsfähig, Verträge brauchen die Zustimmung der Eltern - außer beim Taschengeldparagrafen. Ab 18: voll geschäftsfähig.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ein 6-jähriges Kind kann keine wirksamen Willenserklärungen abgeben.","is_correct":true,"rationale":"Unter 7 Jahren ist man geschäftsunfähig - die Erklärung ist nichtig."},{"text":"Eine 15-Jährige kauft von ihrem Taschengeld bar eine Maus für 20 €. Der Kauf ist wirksam.","is_correct":true,"rationale":"Taschengeldparagraf: Sie bewirkt die Leistung mit Mitteln, die ihr zur freien Verfügung überlassen wurden."},{"text":"Ein 17-Jähriger schließt ohne Zustimmung der Eltern einen Handyvertrag über 24 Monate. Der Vertrag ist schwebend unwirksam.","is_correct":true,"rationale":"Er ist beschränkt geschäftsfähig. Erst die Genehmigung der Eltern macht den Vertrag wirksam."},{"text":"Ab 16 Jahren ist man voll geschäftsfähig.","is_correct":false,"rationale":"Volle Geschäftsfähigkeit beginnt mit 18 Jahren."},{"text":"Ein Vertrag ist nur wirksam, wenn er schriftlich geschlossen wird.","is_correct":false,"rationale":"Verträge sind grundsätzlich formfrei, nur für einzelne Fälle schreibt das Gesetz eine Form vor."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-vy-1',
+  'vertraege',
+  'matching',
+  null,
+  'Ordne jede Vereinbarung der passenden Vertragsart zu.',
+  'Eigentum oder dauerhafte Überlassung -> Kauf. Erfolg geschuldet -> Werk. Tätigkeit geschuldet -> Dienst. Gebrauch auf Zeit gegen Entgelt -> Miete.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Kaufvertrag","Werkvertrag","Dienstvertrag","Mietvertrag"],"match_items":[{"text":"Ein Büro kauft zehn Drucker.","bucket":0,"rationale":"Übergabe und Eigentum an Sachen gegen Kaufpreis."},{"text":"Eine Agentur programmiert zum Festpreis eine individuelle App für die Lagerverwaltung.","bucket":1,"rationale":"Geschuldet ist ein funktionierendes Ergebnis."},{"text":"Ein Administrator unterstützt stundenweise den Support, abgerechnet nach Aufwand.","bucket":2,"rationale":"Geschuldet ist die Tätigkeit, kein bestimmtes Ergebnis."},{"text":"Ein CRM wird als SaaS für 49 € pro Nutzer und Monat genutzt.","bucket":3,"rationale":"Nutzung auf Zeit gegen Entgelt - typischerweise Miete."},{"text":"Ein Webshop-Betreiber nutzt 12 Monate lang einen Server im Rechenzentrum gegen Monatsgebühr.","bucket":3,"rationale":"Gebrauchsüberlassung auf Zeit."},{"text":"Ein Unternehmen erwirbt Standardsoftware mit unbefristeter Lizenz gegen Einmalzahlung.","bucket":0,"rationale":"Dauerhafte Überlassung gegen Einmalzahlung wird wie ein Kauf behandelt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-vy-2',
+  'vertraege',
+  'single',
+  'Ein Softwarehaus bucht eine freiberufliche Entwicklerin: „Unterstützung des Entwicklungsteams, 40 Stunden pro Woche, Abrechnung nach geleisteten Stunden.“ Ein bestimmtes Ergebnis wird nicht vereinbart.',
+  'Welche Vertragsart liegt vor?',
+  'Entscheidend ist, was geschuldet wird: Hier nur die Arbeitsleistung, kein Ergebnis. Deshalb Dienstvertrag - ohne Abnahme, vergütet nach Stunden.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Dienstvertrag","is_correct":true,"rationale":"Geschuldet ist das Tätigwerden, bezahlt wird nach Aufwand."},{"text":"Werkvertrag","is_correct":false,"rationale":"Dafür müsste ein bestimmter Erfolg, etwa ein fertiges Modul, geschuldet sein."},{"text":"Werklieferungsvertrag","is_correct":false,"rationale":"Er betrifft die Herstellung und Lieferung beweglicher Sachen."},{"text":"Kaufvertrag","is_correct":false,"rationale":"Es wird keine Sache übereignet."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-vu-1',
+  'vertraege',
+  'multiple',
+  null,
+  'Welche Aussagen zum Urheberrecht an Software sind richtig?',
+  'Urheberrecht entsteht automatisch, bleibt beim Menschen, der das Werk geschaffen hat, und endet 70 Jahre nach dessen Tod. Weitergegeben werden nur Nutzungsrechte.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Der Schutz entsteht automatisch mit der Schöpfung des Programms.","is_correct":true,"rationale":"Eine Anmeldung oder ein Copyright-Vermerk ist nicht nötig."},{"text":"Der Schutz endet 70 Jahre nach dem Tod des Urhebers.","is_correct":true,"rationale":"Das ist die gesetzliche Schutzdauer."},{"text":"Nutzungsrechte können zeitlich, räumlich und inhaltlich beschränkt werden.","is_correct":true,"rationale":"Zum Beispiel eine Lizenz für drei Jahre, nur in Deutschland, nur für interne Zwecke."},{"text":"Software ist nur geschützt, wenn sie beim Patentamt angemeldet wurde.","is_correct":false,"rationale":"Das Urheberrecht braucht keine Anmeldung. Patente sind etwas anderes."},{"text":"Der Urheber kann sein Urheberrecht an einen Käufer verkaufen.","is_correct":false,"rationale":"Das Urheberrecht ist nicht übertragbar, nur vererbbar. Verkauft werden Nutzungsrechte."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-vu-2',
+  'vertraege',
+  'single',
+  'Eine Agentur entwickelt für einen Webshop-Betreiber eine Rabattsoftware. Im Vertrag erhält der Kunde ein ausschließliches, zeitlich und räumlich unbeschränktes Nutzungsrecht. Ein Jahr später möchte die Agentur dieselbe Software an einen Konkurrenten des Kunden lizenzieren.',
+  'Wie ist die Lage?',
+  'Einfaches Nutzungsrecht: Der Rechteinhaber darf weitere Lizenzen vergeben. Ausschließliches Nutzungsrecht: Nur der Inhaber nutzt, weitere Lizenzen sind ausgeschlossen. Das Urheberrecht selbst wechselt nie.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Das ist unzulässig, weil das ausschließliche Nutzungsrecht jede Nutzung durch andere ausschließt.","is_correct":true,"rationale":"Ein ausschließliches Nutzungsrecht erlaubt nur dem Inhaber die Nutzung und schließt die Vergabe weiterer Lizenzen aus."},{"text":"Das ist zulässig, weil die Urheber bei der Agentur arbeiten.","is_correct":false,"rationale":"Wer Urheber ist, ändert nichts daran, dass das ausschließliche Nutzungsrecht beim Kunden liegt."},{"text":"Das ist unzulässig, weil der Kunde durch den Vertrag Urheber geworden ist.","is_correct":false,"rationale":"Die Begründung stimmt nicht: Das Urheberrecht ist nicht übertragbar, der Kunde hat nur ein Nutzungsrecht."},{"text":"Das ist zulässig, weil nach einem Jahr alle Nutzungsrechte automatisch erlöschen.","is_correct":false,"rationale":"Das Nutzungsrecht ist zeitlich unbeschränkt vereinbart."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-li-1',
+  'sla_service',
+  'numeric',
+  'Ein SLA für ein Warenwirtschaftssystem legt die Servicezeit auf Montag bis Freitag, 8 bis 18 Uhr fest. Zugesichert sind 99 % Verfügbarkeit, bezogen auf die Servicezeit eines Monats. Der betrachtete Monat hat 22 Arbeitstage.',
+  'Wie viele Minuten Ausfall sind innerhalb der Servicezeit in diesem Monat höchstens zulässig?',
+  'Servicezeit = 22 Tage × 10 h = 220 h. Erlaubter Ausfall = 220 h × (100 % - 99 %) = 220 h × 0,01 = 2,2 h. 2,2 h × 60 = 132 Minuten.',
+  2,
+  '{}',
+  null,
+  '{"answer":132.0,"tolerance":0.0,"unit":"Minuten"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-li-2',
+  'sla_service',
+  'single',
+  'Ein SLA sieht eine Servicezeit von Montag bis Freitag, 8 bis 18 Uhr vor und eine Reaktionszeit von 2 Stunden. Die Reaktionszeit zählt nur innerhalb der Servicezeit. Eine Störung wird am Freitag um 17:30 Uhr gemeldet.',
+  'Bis wann muss der Dienstleister spätestens reagieren?',
+  'Reaktionszeit wird nur in der Servicezeit gezählt: Freitag 17:30 bis 18:00 = 30 min, Rest 120 - 30 = 90 min ab Montag 8:00 -> Montag 9:30 Uhr.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Montag, 9:30 Uhr","is_correct":true,"rationale":"Am Freitag laufen 30 Minuten bis 18 Uhr, die restlichen 90 Minuten ab Montag 8 Uhr."},{"text":"Freitag, 19:30 Uhr","is_correct":false,"rationale":"Nach 18 Uhr läuft die Uhr nicht weiter - dann ist keine Servicezeit."},{"text":"Montag, 10:00 Uhr","is_correct":false,"rationale":"Dabei wären die 30 Minuten vom Freitag nicht angerechnet."},{"text":"Samstag, 9:30 Uhr","is_correct":false,"rationale":"Samstag gehört nicht zur Servicezeit."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-ls-1',
+  'sla_service',
+  'numeric',
+  null,
+  'Der Service Desk hat im Quartal 1.500 Tickets erfasst. 1.020 davon wurden im 1st Level gelöst, ohne weitergegeben zu werden. Wie hoch ist die First Level Resolution Rate?',
+  'FLRR = im 1st Level gelöste Tickets / alle Tickets × 100 % = 1.020 / 1.500 × 100 % = 0,68 × 100 % = 68 %.',
+  2,
+  '{}',
+  null,
+  '{"answer":68.0,"tolerance":0.0,"unit":"%"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-ls-2',
+  'sla_service',
+  'matching',
+  null,
+  'Handelt es sich um eine funktionale oder eine hierarchische Eskalation?',
+  'Funktional heißt: an ein höheres Support-Level mit mehr Fachwissen. Hierarchisch heißt: an die Führungsebene, die entscheiden und Ressourcen bereitstellen kann.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["funktionale Eskalation","hierarchische Eskalation"],"match_items":[{"text":"Der 1st Level gibt ein Datenbankproblem an den Datenbankspezialisten im 2nd Level.","bucket":0,"rationale":"Weitergabe an mehr Fachwissen."},{"text":"Die Teamleitung wird informiert, weil die Lösungszeit für ein Ticket der Priorität 1 überschritten zu werden droht.","bucket":1,"rationale":"Die Führungsebene wird eingeschaltet."},{"text":"Der 2nd Level meldet einen reproduzierbaren Programmfehler an den Hersteller.","bucket":0,"rationale":"Der Hersteller ist der 3rd Level - mehr Fachwissen zum Produkt."},{"text":"Die IT-Leitung stellt für einen Großausfall zusätzliche Techniker ab.","bucket":1,"rationale":"Entscheidung über Ressourcen durch die Führung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-ls-3',
+  'sla_service',
+  'single',
+  null,
+  'Welches Ticket erhält nach der Prioritätsmatrix (Auswirkung × Dringlichkeit) die höchste Priorität?',
+  'Priorität ergibt sich aus Auswirkung (wie viele sind betroffen) und Dringlichkeit (wie schnell muss es gehen). Nur der Webshop-Ausfall ist in beiden Dimensionen hoch.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Der Webshop ist während der Geschäftszeit für alle Kunden nicht erreichbar.","is_correct":true,"rationale":"Viele Betroffene (hohe Auswirkung) und jede Minute kostet Umsatz (hohe Dringlichkeit)."},{"text":"Ein Mitarbeiter wünscht sich ein anderes Hintergrundbild.","is_correct":false,"rationale":"Geringe Auswirkung, keine Dringlichkeit - zudem keine Störung."},{"text":"Die Druckfunktion eines Arbeitsplatzes fällt aus, ein funktionierender Drucker steht im Nebenraum.","is_correct":false,"rationale":"Ein Nutzer betroffen, und es gibt eine Ausweichmöglichkeit."},{"text":"Für nächsten Monat soll ein Konto für eine neue Auszubildende angelegt werden.","is_correct":false,"rationale":"Eine planbare Standardanfrage ohne Eile."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-lt-1',
+  'sla_service',
+  'matching',
+  null,
+  'Ordne jeden Vorgang dem passenden ITIL-Begriff zu.',
+  'Incident = Störung, schnell wiederherstellen. Problem = Ursache finden. Change = kontrollierte Änderung. Service Request = Standardanfrage ohne Störung.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Incident","Problem","Change","Service Request"],"match_items":[{"text":"Der Mailserver ist ausgefallen, niemand kann E-Mails senden.","bucket":0,"rationale":"Eine akute Störung, die schnell behoben werden muss."},{"text":"Der Mailserver fällt seit Wochen jeden Montag aus, die Ursache soll gefunden werden.","bucket":1,"rationale":"Ursachenforschung für wiederkehrende Störungen."},{"text":"Die Firewall soll eine neue Regel für den Webshop erhalten.","bucket":2,"rationale":"Eine geplante Änderung an der Infrastruktur."},{"text":"Eine neue Mitarbeiterin benötigt ein Benutzerkonto.","bucket":3,"rationale":"Standardanfrage, nichts ist kaputt."},{"text":"Ein Anwender hat sein Passwort vergessen und braucht ein neues.","bucket":3,"rationale":"Klassischer Service Request."},{"text":"Die Buchhaltungssoftware startet bei einer Nutzerin nicht mehr.","bucket":0,"rationale":"Ein Service funktioniert nicht wie vorgesehen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-lt-2',
+  'sla_service',
+  'multiple',
+  null,
+  'Welche Aussagen zu den ITIL-Prozessen sind richtig?',
+  'Incident Management stellt wieder her, Problem Management beseitigt Ursachen, Change Management steuert Änderungen je nach Risiko als Standard, Normal oder Emergency Change.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ziel des Incident Managements ist, den Service so schnell wie möglich wiederherzustellen - auch per Workaround.","is_correct":true,"rationale":"Die Ursachenanalyse ist nicht seine Aufgabe."},{"text":"Ein Known Error ist ein Problem, dessen Ursache bekannt und dokumentiert ist.","is_correct":true,"rationale":"Meist wird zusätzlich ein Workaround festgehalten."},{"text":"Ein Standard Change ist vorab genehmigt, weil er häufig vorkommt und wenig Risiko birgt.","is_correct":true,"rationale":"Zum Beispiel die Einrichtung eines Standard-Arbeitsplatzes."},{"text":"Ein Incident darf erst geschlossen werden, wenn seine Ursache gefunden ist.","is_correct":false,"rationale":"Sobald der Service wieder läuft, ist der Incident gelöst. Die Ursache sucht das Problem Management."},{"text":"Ein Emergency Change wird ohne jede Genehmigung und Dokumentation umgesetzt.","is_correct":false,"rationale":"Auch Notfall-Changes werden genehmigt - beschleunigt, etwa durch ein Notfall-CAB - und dokumentiert."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-lt-3',
+  'sla_service',
+  'ordering',
+  'Die Scanner-App im Lager stürzt mehrmals täglich ab.',
+  'Bringe die Schritte in die richtige Reihenfolge.',
+  'Erst wird der Betrieb wiederhergestellt (Incident), dann die Ursache gesucht (Problem, Known Error), zuletzt die dauerhafte Lösung kontrolliert eingeführt (Change).',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Anwender melden den Absturz, der Service Desk stellt den Betrieb per Neustart wieder her","Wegen gehäufter gleichartiger Störungen wird ein Problem eröffnet","Die Ursache wird gefunden und als Known Error mit Workaround dokumentiert","Die dauerhafte Lösung wird als Change bewertet und genehmigt","Der Change wird umgesetzt und das Problem geschlossen"]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-gv-1',
+  'leistungsstoerungen',
+  'numeric',
+  'Ein Systemhaus hat einem Handwerksbetrieb eine Rechnung über 8.000 € gestellt. Beide sind Unternehmen, kein Verbraucher ist beteiligt. Der Betrieb ist 146 Tage im Zahlungsverzug. Der Basiszinssatz beträgt in dieser Aufgabe 1,5 %.',
+  'Wie hoch sind die Verzugszinsen ohne die Pauschale? (Zins = Betrag × Satz × Tage / 365, auf Cent runden)',
+  'Zinssatz unter Unternehmen = 1,5 % + 9 Prozentpunkte = 10,5 %. Zins = 8.000 € × 0,105 × 146 / 365 = 840 € × 0,4 = 336,00 €. Die 40 € Pauschale kommen gesondert hinzu.',
+  2,
+  '{}',
+  null,
+  '{"answer":336.0,"tolerance":0.01,"unit":"€"}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-gv-2',
+  'leistungsstoerungen',
+  'single',
+  'Ein Händler sollte am 15. März 20 Notebooks liefern. Der Termin ist verstrichen, es handelt sich nicht um ein Fixgeschäft, und der Händler hat die Lieferung nicht verweigert. Der Käufer möchte die Geräte nun woanders kaufen.',
+  'Was muss der Käufer grundsätzlich tun, bevor er vom Vertrag zurücktreten kann?',
+  'Beim Lieferungsverzug kann der Käufer zunächst Lieferung und Ersatz des Verzugsschadens verlangen. Rücktritt und Schadensersatz statt der Leistung setzen grundsätzlich eine erfolglos verstrichene angemessene Nachfrist voraus.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Dem Händler eine angemessene Nachfrist zur Lieferung setzen","is_correct":true,"rationale":"Erst wenn die Nachfrist erfolglos verstreicht, ist der Rücktritt möglich."},{"text":"Sofort zurücktreten, weil der Termin verstrichen ist","is_correct":false,"rationale":"Ohne Nachfrist geht das nur in Ausnahmefällen, etwa beim Fixgeschäft."},{"text":"Den Händler dreimal schriftlich mahnen","is_correct":false,"rationale":"Drei Mahnungen sind ein Mythos. Für den Rücktritt kommt es auf die Nachfrist an."},{"text":"30 Tage abwarten","is_correct":false,"rationale":"Die 30-Tage-Regel betrifft den Zahlungsverzug, nicht die Lieferung."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-gv-3',
+  'leistungsstoerungen',
+  'multiple',
+  null,
+  'Welche Aussagen zum Zahlungsverzug sind richtig?',
+  'Verzugszins: 5 Prozentpunkte über Basiszins, wenn ein Verbraucher beteiligt ist, 9 Prozentpunkte nur unter Unternehmen plus 40 € Pauschale. Ohne Mahnung tritt Verzug spätestens 30 Tage nach Fälligkeit und Rechnungszugang ein.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Sind nur Unternehmen beteiligt, beträgt der Verzugszins 9 Prozentpunkte über dem Basiszinssatz.","is_correct":true,"rationale":"Das ist der gesetzliche Satz für Geschäfte ohne Verbraucherbeteiligung."},{"text":"Unter Unternehmen kann der Gläubiger zusätzlich eine Pauschale von 40 € verlangen.","is_correct":true,"rationale":"Die Pauschale steht neben den Verzugszinsen."},{"text":"Ein Verbraucher kommt ohne Mahnung 30 Tage nach Fälligkeit und Zugang der Rechnung nur in Verzug, wenn die Rechnung darauf hinweist.","is_correct":true,"rationale":"Ohne diesen Hinweis braucht es bei Verbrauchern eine Mahnung."},{"text":"Ist ein Verbraucher beteiligt, beträgt der Verzugszins ebenfalls 9 Prozentpunkte über dem Basiszinssatz.","is_correct":false,"rationale":"Mit Verbraucherbeteiligung sind es 5 Prozentpunkte."},{"text":"Zahlungsverzug tritt erst nach der dritten Mahnung ein.","is_correct":false,"rationale":"Eine einzige Mahnung genügt, in manchen Fällen ist gar keine nötig."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-gm-1',
+  'leistungsstoerungen',
+  'matching',
+  null,
+  'Ordne jeden Mangel nach seiner Erkennbarkeit ein.',
+  'Offen: sofort erkennbar. Versteckt: zeigt sich erst später. Arglistig verschwiegen: Der Verkäufer kannte den Mangel und hat ihn bewusst nicht offengelegt.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["offener Mangel","versteckter Mangel","arglistig verschwiegener Mangel"],"match_items":[{"text":"Ein gelieferter Monitor hat einen deutlich sichtbaren Kratzer im Display.","bucket":0,"rationale":"Bei der Prüfung sofort erkennbar."},{"text":"Die SSD eines neuen Servers fällt nach drei Monaten wegen eines Fertigungsfehlers aus.","bucket":1,"rationale":"Der Fehler zeigt sich erst im Betrieb."},{"text":"Ein Händler verkauft ein Notebook als neu, obwohl er weiß, dass es ein reparierter Rückläufer ist.","bucket":2,"rationale":"Der Verkäufer kannte den Mangel und hat ihn verschwiegen."},{"text":"Der Akku eines Tablets hält nach sechs Wochen nur noch 20 Minuten, weil die Zellen fehlerhaft sind.","bucket":1,"rationale":"Bei Übergabe nicht erkennbar."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-gm-2',
+  'leistungsstoerungen',
+  'single',
+  'Eine Privatkundin kauft bei einem Händler ein neues Notebook. Nach drei Monaten fällt die Tastatur aus. Der Mangel war schon bei Übergabe angelegt.',
+  'Was kann sie vom Händler zuerst verlangen?',
+  'Reihenfolge der Käuferrechte: zuerst Nacherfüllung (Nachbesserung oder Ersatzlieferung, Wahl beim Käufer). Scheitert sie, folgen Rücktritt oder Minderung, bei Verschulden zusätzlich Schadensersatz.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Nacherfüllung - nach ihrer Wahl Reparatur oder ein neues Gerät","is_correct":true,"rationale":"Beim Kaufvertrag hat die Nacherfüllung Vorrang, und grundsätzlich wählt der Käufer die Art."},{"text":"Sofort den vollen Kaufpreis zurück","is_correct":false,"rationale":"Rücktritt ist nachrangig und setzt grundsätzlich eine gescheiterte Nacherfüllung voraus."},{"text":"Nacherfüllung - die Art bestimmt der Händler","is_correct":false,"rationale":"Beim Kauf wählt der Käufer. Beim Werkvertrag wählt dagegen der Unternehmer."},{"text":"Nichts, sie muss sich an den Hersteller wenden","is_correct":false,"rationale":"Die Gewährleistung richtet sich gegen den Verkäufer, nicht gegen den Hersteller."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-gm-3',
+  'leistungsstoerungen',
+  'multiple',
+  null,
+  'Welche Aussagen zu Gewährleistung und Garantie sind richtig?',
+  'Gewährleistung ist gesetzlich, richtet sich gegen den Verkäufer und läuft bei neuen Sachen 2 Jahre. Die Garantie ist freiwillig. Beim Handelskauf gilt die unverzügliche Rügepflicht nach § 377 HGB.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Beim Kauf einer neuen Sache beträgt die Gewährleistungsfrist 2 Jahre.","is_correct":true,"rationale":"Sie beginnt mit der Übergabe."},{"text":"Eine Garantie ist ein freiwilliges Versprechen, meist des Herstellers.","is_correct":true,"rationale":"Sie gilt zusätzlich zur gesetzlichen Gewährleistung."},{"text":"Beim Verbrauchsgüterkauf wird bei Mängeln im ersten Jahr vermutet, dass sie schon bei Übergabe vorlagen.","is_correct":true,"rationale":"Das ist die Beweislastumkehr, seit 2022 ein Jahr."},{"text":"Endet eine einjährige Herstellergarantie, enden auch die Gewährleistungsrechte gegen den Händler.","is_correct":false,"rationale":"Garantie und Gewährleistung sind unabhängig. Die Gewährleistung läuft weiter."},{"text":"Unter Kaufleuten kann ein offener Mangel auch nach Monaten noch ohne Nachteil gerügt werden.","is_correct":false,"rationale":"Unter Kaufleuten muss unverzüglich gerügt werden, sonst gilt die Ware als genehmigt."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-ga-1',
+  'leistungsstoerungen',
+  'single',
+  'Eine Agentur hat einem Großhändler ein Kundenportal fertiggestellt. Sie fordert ihn schriftlich auf, das Portal innerhalb von 14 Tagen abzunehmen. Der Großhändler reagiert nicht und nennt keinen Mangel.',
+  'Welche Folge hat das nach Ablauf der Frist?',
+  'Setzt der Unternehmer nach Fertigstellung eine angemessene Frist und verweigert der Besteller die Abnahme nicht unter Angabe mindestens eines Mangels, gilt das Werk als abgenommen (§ 640 Abs. 2 BGB). Die Vergütung wird damit fällig.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Das Werk gilt als abgenommen.","is_correct":true,"rationale":"Fiktive Abnahme: Frist gesetzt und nicht unter Angabe eines Mangels verweigert."},{"text":"Ohne Unterschrift unter ein Protokoll gibt es keine Abnahme.","is_correct":false,"rationale":"Die Abnahme kann auch fingiert werden - eine Unterschrift ist nicht zwingend."},{"text":"Der Vertrag ist aufgelöst.","is_correct":false,"rationale":"Schweigen löst keinen Vertrag auf."},{"text":"Die Agentur muss so lange neue Fristen setzen, bis der Kunde antwortet.","is_correct":false,"rationale":"Das Gesetz schützt den Unternehmer gerade vor dieser Hängepartie."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-ga-2',
+  'leistungsstoerungen',
+  'multiple',
+  null,
+  'Welche Rechtsfolgen hat die Abnahme beim Werkvertrag?',
+  'Die Abnahme bewirkt Fälligkeit der Vergütung, Gefahrübergang, Beginn der Verjährung und die Umkehr der Beweislast zulasten des Bestellers.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Die Vergütung wird fällig.","is_correct":true,"rationale":"Vor der Abnahme muss der Besteller grundsätzlich nicht zahlen."},{"text":"Die Verjährungsfrist für Mängelansprüche beginnt.","is_correct":true,"rationale":"Sie läuft ab der Abnahme."},{"text":"Die Gefahr geht auf den Besteller über.","is_correct":true,"rationale":"Wird das Werk danach zufällig zerstört, trägt der Besteller das Risiko."},{"text":"Alle Mängelrechte des Bestellers enden.","is_correct":false,"rationale":"Die Mängelrechte bestehen bis zur Verjährung weiter."},{"text":"Der Unternehmer muss ab jetzt beweisen, dass das Werk mangelfrei ist.","is_correct":false,"rationale":"Umgekehrt: Nach der Abnahme muss der Besteller einen Mangel beweisen."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-cl-1',
+  'change_management',
+  'matching',
+  'Ein IT-Dienstleister ersetzt seine Support-Postfächer durch ein Ticketsystem.',
+  'Ordne jede Maßnahme der passenden Phase nach Lewin zu.',
+  'Unfreezing schafft Einsicht und Bereitschaft, Moving setzt das Neue um, Refreezing macht es zum dauerhaften Standard.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Unfreezing","Moving","Refreezing"],"match_items":[{"text":"Im Kick-off zeigt die Leitung, wie viele Anfragen in den Postfächern liegen geblieben sind.","bucket":0,"rationale":"Macht den Veränderungsbedarf sichtbar."},{"text":"Das Team wird nach seinen Anforderungen an das neue System gefragt.","bucket":0,"rationale":"Beteiligung schafft Bereitschaft."},{"text":"Alle Mitarbeitenden werden am Ticketsystem geschult.","bucket":1,"rationale":"Das Neue wird umgesetzt."},{"text":"Zwei Key-User testen das System vier Wochen im Pilotbetrieb.","bucket":1,"rationale":"Erprobung während der Umstellung."},{"text":"Die alten Postfächer werden abgeschaltet und der neue Ablauf in die Arbeitsanweisung aufgenommen.","bucket":2,"rationale":"Der neue Zustand wird verankert."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-cl-2',
+  'change_management',
+  'single',
+  'Ein neues CRM wurde mit guten Schulungen eingeführt. Zwei Monate später pflegen viele Mitarbeitende ihre Kundendaten wieder in privaten Excel-Listen. Die Listen waren nie abgeschafft worden.',
+  'Welche Phase nach Lewin wurde vernachlässigt?',
+  'Ohne Refreezing fällt eine Organisation in alte Gewohnheiten zurück. Typische Maßnahmen: Altes abschalten, Standards festschreiben, Erfolge sichtbar machen.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Refreezing","is_correct":true,"rationale":"Der neue Zustand wurde nicht verankert - das Alte blieb verfügbar, deshalb kehren alle zurück."},{"text":"Unfreezing","is_correct":false,"rationale":"Die Einführung hat stattgefunden. Das Problem ist der Rückfall danach."},{"text":"Moving","is_correct":false,"rationale":"Die Umsetzung mit Schulungen lief laut Szenario gut."},{"text":"Keine - Rückfälle sind nach Lewin unvermeidlich","is_correct":false,"rationale":"Gerade das Refreezing soll Rückfälle verhindern."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-cw-1',
+  'change_management',
+  'matching',
+  null,
+  'Welche Ursache steckt hinter der Aussage?',
+  'Nicht wissen -> informieren. Nicht können -> schulen. Nicht wollen -> beteiligen, Vorteile zeigen. Nicht dürfen -> Befugnisse und Rahmen klären.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["nicht wissen","nicht können","nicht wollen","nicht dürfen"],"match_items":[{"text":"„Mir hat niemand erklärt, warum wir überhaupt wechseln.“","bucket":0,"rationale":"Es fehlt Information."},{"text":"„Ich finde mich in der neuen Oberfläche einfach nicht zurecht.“","bucket":1,"rationale":"Es fehlen Fähigkeiten - Schulung hilft."},{"text":"„Meine Excel-Liste gebe ich nicht auf, egal was das neue System kann.“","bucket":2,"rationale":"Es fehlt die Bereitschaft."},{"text":"„Ich würde Tickets gern selbst schließen, habe aber keine Berechtigung dazu.“","bucket":3,"rationale":"Es fehlt die Befugnis."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-cw-2',
+  'change_management',
+  'single',
+  null,
+  'Welches Verhalten ist ein Beispiel für verdeckten Widerstand?',
+  'Offener Widerstand wird ausgesprochen, verdeckter zeigt sich indirekt: Verzögern, Dienst nach Vorschrift, Gerüchte. Verdeckter Widerstand ist schwerer zu erkennen und deshalb gefährlicher.',
+  2,
+  '{}',
+  null,
+  '{"choices":[{"text":"Ein Mitarbeiter stimmt in Besprechungen zu, verschleppt aber seit Wochen ohne Begründung die Datenmigration.","is_correct":true,"rationale":"Der Widerstand wird nicht ausgesprochen, sondern zeigt sich im Verzögern."},{"text":"Eine Mitarbeiterin widerspricht in der Teambesprechung deutlich dem Zeitplan.","is_correct":false,"rationale":"Das ist offener Widerstand - er ist sichtbar und lässt sich ansprechen."},{"text":"Ein Team schreibt eine Beschwerde über die Einführung an die Geschäftsleitung.","is_correct":false,"rationale":"Auch das ist offen geäußerter Widerstand."},{"text":"Ein Auszubildender fragt nach zusätzlichen Schulungsterminen.","is_correct":false,"rationale":"Das ist kein Widerstand, sondern Lernbereitschaft."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-ck-1',
+  'change_management',
+  'matching',
+  null,
+  'Ist die Maßnahme eher Kaizen (KVP) oder Business Process Reengineering?',
+  'Kaizen: viele kleine, stetige Verbesserungen von allen Mitarbeitenden. Reengineering: radikale, grundlegende Neugestaltung, meist von oben angestoßen.',
+  2,
+  '{}',
+  null,
+  '{"buckets":["Kaizen / KVP","Business Process Reengineering"],"match_items":[{"text":"Der Service Desk verkürzt die Bearbeitungszeit mit neuen Textbausteinen.","bucket":0,"rationale":"Kleine Verbesserung aus dem Team heraus."},{"text":"Die gesamte Auftragsabwicklung wird von Grund auf neu gestaltet.","bucket":1,"rationale":"Radikaler Neuentwurf eines Prozesses."},{"text":"Eine Auszubildende schlägt vor, Lieferscheine direkt beim Wareneingang zu scannen. Das Team probiert es aus.","bucket":0,"rationale":"Vorschlag von der Basis, kleiner Schritt."},{"text":"Alle Abteilungen werden aufgelöst und entlang der Kundenprozesse neu organisiert.","bucket":1,"rationale":"Grundlegender, einmaliger Umbruch."}]}'::jsonb,
+  'current'
+)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  kind = excluded.kind,
+  scenario = excluded.scenario,
+  prompt = excluded.prompt,
+  explanation = excluded.explanation,
+  difficulty = excluded.difficulty,
+  tags = excluded.tags,
+  data = excluded.data,
+  catalog_status = excluded.catalog_status,
+  is_active = true;
+
+insert into public.ap1_questions
+  (id, topic_id, kind, scenario, prompt, explanation, difficulty, tags, source, data, catalog_status)
+values (
+  'a7-ck-2',
+  'change_management',
+  'ordering',
+  'Im Service Desk dauert das Anlegen neuer Benutzerkonten zu lange.',
+  'Bringe die Schritte des PDCA-Zyklus in die richtige Reihenfolge.',
+  'Plan: Ursache und Ziel festlegen. Do: im kleinen Rahmen ausprobieren. Check: Ergebnis messen. Act: Erfolgreiches standardisieren und weiter verbessern.',
+  2,
+  '{}',
+  null,
+  '{"ordered_items":["Ursache analysieren und als Ziel ein Formular mit Vorlage festlegen","Die Vorlage vier Wochen im Team ausprobieren","Messen, ob die Bearbeitungszeit gesunken ist","Die Vorlage zum Standard machen und den nächsten Zyklus beginnen"],"ordering_hint":"Plan, Do, Check, Act"}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -3421,6 +14095,5874 @@ on conflict (id) do update set
   sort_order = excluded.sort_order,
   is_active = true;
 
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pb-1', 'projektorganisation', 'Vier Merkmale eines Projekts', 'Einmaligkeit, Zielvorgabe, Begrenzung (Zeit, Budget, Personal), eigene Projektorganisation.', 'Fehlt eines davon, ist es eine Linienaufgabe.', '{}', 112)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pb-2', 'projektorganisation', 'Linienaufgabe', 'Wiederkehrende Tätigkeit, die in der bestehenden Aufbauorganisation erledigt wird - zum Beispiel täglicher Support oder monatliches Patchen.', null, '{}', 113)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pb-3', 'projektorganisation', 'Ist Größe ein Projektmerkmal?', 'Nein. Weder Budget noch Teamgröße entscheiden, sondern Einmaligkeit und Begrenzung.', 'Ein zweiwöchiges, einmaliges Vorhaben kann ein Projekt sein.', '{}', 114)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-po-1', 'projektorganisation', 'Fachliche vs. disziplinarische Weisung', 'Fachlich: was und wie gearbeitet wird. Disziplinarisch: Urlaub, Beurteilung, Gehalt, Abmahnung.', null, '{}', 115)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pr-1', 'projektorganisation', 'Kernaufgaben der Projektleitung', 'Planen, organisieren, steuern und kontrollieren, berichten.', 'Sie führt das Projekt innerhalb des Auftrags - den Auftrag selbst ändert der Auftraggeber.', '{}', 116)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ps-1', 'projektorganisation', 'Schritte der Stakeholderanalyse', 'Identifizieren, Einfluss und Interesse einschätzen, in die Matrix einordnen, Maßnahmen festlegen und umsetzen.', null, '{}', 117)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vp-1', 'vorgehensmodelle', 'Phasen nach DIN 69901', 'Initialisierung, Definition, Planung, Steuerung, Abschluss.', null, '{}', 118)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vp-2', 'vorgehensmodelle', 'Ergebnis der Initialisierung', 'Ein vom Auftraggeber unterschriebener Projektauftrag und eine benannte Projektleitung.', null, '{}', 119)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sm-1', 'agil_scrum', 'Agiles Manifest - Entstehung', '2001 von 17 Softwareentwicklern verfasst - als Antwort auf schwerfällige, dokumentlastige Vorgehensweisen.', null, '{}', 120)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sm-2', 'agil_scrum', 'Individuen und Interaktionen ...', '... sind wichtiger als Prozesse und Werkzeuge.', null, '{}', 121)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sm-3', 'agil_scrum', 'Reagieren auf Veränderung ...', '... ist wichtiger als das Befolgen eines Plans.', 'Pläne bleiben wichtig - sie werden nur angepasst, wenn sich die Lage ändert.', '{}', 122)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sm-4', 'agil_scrum', 'Wichtigstes Fortschrittsmaß (agil)', 'Funktionierende Software.', 'Nicht erledigte Aufgaben oder geschriebene Dokumente.', '{}', 123)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sa-1', 'agil_scrum', 'Produktziel', 'Beschreibt den künftigen Zustand des Produkts. Es ist das Commitment des Product Backlogs und gibt allen Einträgen eine Richtung.', null, '{}', 124)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-se-1', 'agil_scrum', 'Sprint', 'Fester Zeitraum von höchstens einem Monat, in dem ein nutzbares Increment entsteht. Er ist der Rahmen für alle anderen Events.', null, '{}', 125)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ng-1', 'netzplan', 'Normalfolge', 'Ende-Anfang-Beziehung: Der Nachfolger beginnt, wenn der Vorgänger beendet ist. Der Standardfall in der AP1.', null, '{}', 126)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-nv-1', 'netzplan', 'FAZ bei mehreren Vorgängern', 'Der größte FEZ aller Vorgänger.', 'Der Vorgang muss warten, bis der letzte Vorgänger fertig ist.', '{}', 127)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-nr-1', 'netzplan', 'SEZ bei mehreren Nachfolgern', 'Der kleinste SAZ aller Nachfolger.', 'Der eiligste Nachfolger bestimmt, wann der Vorgang spätestens fertig sein muss.', '{}', 128)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-nr-2', 'netzplan', 'Startwert der Rückwärtsrechnung', 'Beim letzten Vorgang gilt SEZ = FEZ, also die Projektdauer - sofern kein fester Endtermin vorgegeben ist.', null, '{}', 129)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-np-1', 'netzplan', 'Formel freier Puffer', 'FP = kleinster FAZ der Nachfolger - FEZ des Vorgangs.', null, '{}', 130)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-tp-1', 'terminplanung', 'Gliederungsarten des PSP', 'Objektorientiert (Bestandteile), funktionsorientiert (Tätigkeiten), phasenorientiert (Projektphasen) - oder gemischt.', null, '{}', 131)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-tp-2', 'terminplanung', 'Was der PSP nicht zeigt', 'Reihenfolge, Abhängigkeiten und Termine. Die kommen erst im Netzplan bzw. Gantt-Diagramm dazu.', null, '{}', 132)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-rp-1', 'risikomanagement', 'Risiken identifizieren - Methoden', 'Brainstorming, Checklisten, Lessons Learned früherer Projekte, Befragung von Fachleuten.', null, '{}', 133)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-rb-1', 'risikomanagement', 'Priorisierung von Risiken', 'Nach Risikowert absteigend - existenzbedrohende Risiken zusätzlich immer gesondert behandeln.', null, '{}', 134)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wn-1', 'pm_wirtschaftlichkeit', 'Schritte der Nutzwertanalyse', 'Kriterien festlegen, gewichten (Summe 100 %), bewerten, Punkte × Gewicht, addieren, höchsten Nutzwert wählen.', null, '{}', 135)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wn-2', 'pm_wirtschaftlichkeit', 'K.-o.-Kriterium', 'Mussanforderung, die jede Alternative erfüllen muss. Wer sie verfehlt, scheidet vor der Nutzwertberechnung aus.', null, '{}', 136)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wm-1', 'pm_wirtschaftlichkeit', 'Make vs. Buy - Kernargumente', 'Make: passgenau, Know-how bleibt im Haus. Buy: schnell verfügbar, geringere Entwicklungskosten, aber Abhängigkeit vom Anbieter.', null, '{}', 137)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wb-1', 'pm_wirtschaftlichkeit', 'Amortisation mit laufenden Kosten', 'Amortisationsdauer = Investition / (Einsparung - laufende Kosten) pro Jahr.', null, '{}', 138)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-al-1', 'projektabschluss', 'Lessons Learned bei Projektabbruch?', 'Ja - gerade abgebrochene Projekte liefern die wertvollsten Erkenntnisse.', null, '{}', 139)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-al-2', 'projektabschluss', 'Ablauf eines Lessons-Learned-Workshops', 'Vorbereiten, sammeln (gut/schlecht), Ursachen analysieren, Empfehlungen ableiten, dokumentieren und zugänglich machen.', null, '{}', 140)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-km-1', 'kommunikation', 'Sender-Empfänger-Modell', 'Sender verschlüsselt, Kanal überträgt, Empfänger entschlüsselt. Verständigung klappt nur mit gemeinsamem Zeichenvorrat und ohne zu starke Störungen.', null, '{}', 141)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-km-2', 'kommunikation', 'Vier Seiten einer Nachricht (Schulz von Thun)', 'Sachinhalt, Selbstoffenbarung, Beziehung, Appell.', 'Der Empfänger entscheidet, mit welchem Ohr er hört.', '{}', 142)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-km-3', 'kommunikation', 'Man kann nicht nicht kommunizieren', 'Erstes Axiom nach Watzlawick: Auch Schweigen und Körpersprache senden Botschaften.', null, '{}', 143)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-km-4', 'kommunikation', 'Verbal, paraverbal, nonverbal', 'Verbal: Worte. Paraverbal: Tonfall, Tempo, Lautstärke. Nonverbal: Mimik, Gestik, Haltung.', null, '{}', 144)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-km-5', 'kommunikation', 'Inhalts- und Beziehungsaspekt', 'Jede Nachricht hat beide. Die Beziehung bestimmt, wie der Inhalt verstanden wird.', null, '{}', 145)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-kg-1', 'kommunikation', 'Aktives Zuhören', 'Paraphrasieren, nachfragen, Gefühle ansprechen, zusammenfassen.', null, '{}', 146)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-kg-2', 'kommunikation', 'Offene Frage', 'W-Frage, die eine ausführliche Antwort ermöglicht: „Wie gehen Sie heute vor?“', 'Zum Informationen sammeln - vor allem am Gesprächsanfang.', '{}', 147)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-kg-3', 'kommunikation', 'Geschlossene Frage', 'Frage, die mit Ja oder Nein beantwortet wird. Klärt Fakten und präzisiert.', null, '{}', 148)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-kg-4', 'kommunikation', 'Suggestivfrage', 'Frage, die die Antwort vorgibt: „Sie wollen doch sicher ...?“ - manipulativ, im Kundengespräch vermeiden.', null, '{}', 149)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-kg-5', 'kommunikation', 'Ich-Botschaft', 'Beschreibt die eigene Wahrnehmung statt den anderen anzugreifen: „Ich brauche die Fehlermeldung, um ...“', null, '{}', 150)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-kk-1', 'kommunikation', 'Adressatengerecht', 'Sprache, Detailtiefe und Beispiele an Vorwissen und Interessen des Gegenübers anpassen.', null, '{}', 151)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-kk-2', 'kommunikation', 'Lebenszyklus eines Tickets', 'Erfassen, kategorisieren, priorisieren, bearbeiten bzw. weiterleiten, Lösung dokumentieren, schließen.', null, '{}', 152)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-kk-3', 'kommunikation', 'Priorität eines Tickets', 'Ergibt sich aus Dringlichkeit und Auswirkung - wie eilig ist es und wie viele sind betroffen?', null, '{}', 153)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-kk-4', 'kommunikation', 'Umgang mit Beschwerden', 'Zuhören, ruhig bleiben, Verständnis zeigen, konkrete Lösung anbieten, nachfassen.', null, '{}', 154)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-tt-1', 'teamarbeit', 'Teamphasen nach Tuckman', 'Forming, Storming, Norming, Performing - ergänzt um Adjourning.', null, '{}', 155)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-tt-2', 'teamarbeit', 'Storming', 'Konfliktphase: Rollen und Einfluss werden ausgehandelt. Normal und nötig - Konflikte moderieren, nicht unterdrücken.', null, '{}', 156)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-tt-3', 'teamarbeit', 'Norming', 'Das Team einigt sich auf Regeln, Abläufe und Umgangsformen.', null, '{}', 157)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-tt-4', 'teamarbeit', 'Performing', 'Das Team arbeitet selbstständig und effektiv an der Aufgabe. Führung lässt Freiraum.', null, '{}', 158)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-tf-1', 'teamarbeit', 'Johari-Fenster: blinder Fleck', 'Was andere an mir sehen, ich selbst aber nicht. Feedback verkleinert ihn.', null, '{}', 159)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-tf-2', 'teamarbeit', 'Regeln für gutes Feedback', 'Ich-Botschaft, konkret, beschreibend statt bewertend, zeitnah, mit Verbesserungsvorschlag.', null, '{}', 160)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-tf-3', 'teamarbeit', 'Feedback annehmen', 'Zuhören, nicht rechtfertigen, nachfragen, bedanken.', null, '{}', 161)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-tf-4', 'teamarbeit', 'Gute Fehlerkultur', 'Fehler werden offen angesprochen und als Lernchance genutzt - ohne Angst vor Strafe.', null, '{}', 162)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-tk-1', 'teamarbeit', 'Sachkonflikt vs. Beziehungskonflikt', 'Sachkonflikt: Streit um Wege oder Methoden. Beziehungskonflikt: gestörtes Verhältnis zwischen Personen.', null, '{}', 163)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-tk-2', 'teamarbeit', 'Konsens', 'Gemeinsam erarbeitete Lösung, bei der beide Seiten gewinnen - die nachhaltigste Konfliktlösung.', null, '{}', 164)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-tk-3', 'teamarbeit', 'Eskalationsstufen nach Glasl', 'Neun Stufen in drei Phasen: win-win, win-lose, lose-lose.', null, '{}', 165)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-tk-4', 'teamarbeit', 'AGG', 'Allgemeines Gleichbehandlungsgesetz: verbietet Benachteiligung u. a. wegen Herkunft, Geschlecht, Religion, Behinderung, Alter oder sexueller Identität.', null, '{}', 166)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vh-1', 'verhandlung', 'Die vier Prinzipien des Harvard-Konzepts', 'Menschen und Probleme trennen, Interessen statt Positionen, Optionen zum beiderseitigen Vorteil, neutrale Beurteilungskriterien.', null, '{}', 167)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vh-2', 'verhandlung', 'Position vs. Interesse', 'Position: die Forderung. Interesse: der Grund dahinter. Verhandelt wird über Interessen.', null, '{}', 168)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vh-3', 'verhandlung', 'BATNA', 'Beste Alternative zur Verhandlungslösung - zeigt, ab wann ein Angebot schlechter ist als keine Einigung.', null, '{}', 169)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vh-4', 'verhandlung', 'Neutrale Beurteilungskriterien', 'Objektive Maßstäbe wie Marktpreise, Normen oder Gutachten - statt Druck und Willkür.', null, '{}', 170)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ve-1', 'verhandlung', 'Nutzenargumentation', 'Vom Merkmal über den Vorteil zum konkreten Nutzen für den Kunden argumentieren.', null, '{}', 171)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ve-2', 'verhandlung', 'Ja-aber-Methode', 'Dem Einwand zunächst zustimmen, dann um ein Gegenargument ergänzen.', null, '{}', 172)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ve-3', 'verhandlung', 'Bumerang-Methode', 'Den Einwand selbst als Argument für das Produkt nutzen.', null, '{}', 173)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ve-4', 'verhandlung', 'Einwand vs. Vorwand', 'Einwand: echter Zweifel, sachlich ausräumen. Vorwand: vorgeschobener Grund, per Rückfrage den wahren Grund finden.', null, '{}', 174)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pp-1', 'praesentation', 'Aufbau einer Präsentation', 'Einleitung (Aufmerksamkeit, Thema), Hauptteil (Inhalte, Belege), Schluss (Zusammenfassung, Handlungsaufforderung).', null, '{}', 175)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pp-2', 'praesentation', 'Balkendiagramm', 'Zeigt Vergleiche - zum Beispiel die Kosten mehrerer Angebote.', null, '{}', 176)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pp-3', 'praesentation', 'Liniendiagramm', 'Zeigt Entwicklungen über die Zeit - zum Beispiel Ticketzahlen pro Monat.', null, '{}', 177)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pp-4', 'praesentation', 'Kreisdiagramm', 'Zeigt Anteile an einem Ganzen - die Teile ergeben 100 %.', null, '{}', 178)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pq-1', 'praesentation', 'Primärquelle', 'Originalinformation, z. B. Herstellerdokumentation, Gesetzestext, eigene Messung.', null, '{}', 179)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pq-2', 'praesentation', 'Sekundärquelle', 'Aufbereitete Information aus zweiter Hand, z. B. Fachartikel, Lexikon, Forum.', null, '{}', 180)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pq-3', 'praesentation', 'Kriterien für Quellen', 'Aktualität, Urheber, Objektivität, Nachprüfbarkeit, Relevanz.', null, '{}', 181)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pq-4', 'praesentation', 'KI-Antworten als Quelle?', 'Nein. Sie können erfunden sein und müssen an einer Primärquelle überprüft werden.', null, '{}', 182)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pa-1', 'praesentation', 'Anfrage', 'Unverbindliche Erkundigung nach Leistung, Preis und Bedingungen.', null, '{}', 183)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pa-2', 'praesentation', 'Angebot', 'Verbindliche Willenserklärung. Wird es rechtzeitig und unverändert angenommen, entsteht ein Vertrag.', null, '{}', 184)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pa-3', 'praesentation', 'Freizeichnungsklausel', 'Schränkt die Bindung eines Angebots ein, z. B. „freibleibend“ oder „solange der Vorrat reicht“.', null, '{}', 185)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pa-4', 'praesentation', 'Ist ein Katalog ein Angebot?', 'Nein - eine Aufforderung an die Allgemeinheit, selbst ein Angebot abzugeben.', null, '{}', 186)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mm-1', 'markt_marketing', 'Polypol', 'Viele Anbieter, viele Nachfrager - der Wettbewerb bestimmt den Preis.', null, '{}', 187)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mm-2', 'markt_marketing', 'Oligopol', 'Wenige Anbieter, viele Nachfrager - z. B. große Cloud-Anbieter.', null, '{}', 188)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mm-3', 'markt_marketing', 'Monopol', 'Ein Anbieter, viele Nachfrager - der Anbieter hat große Macht über den Preis.', null, '{}', 189)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mm-4', 'markt_marketing', 'Nachfragemonopol', 'Viele Anbieter, aber nur ein Nachfrager - etwa eine Behörde, die ein Spezialsystem ausschreibt.', null, '{}', 190)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mb-1', 'markt_marketing', 'Bedürfnis - Bedarf - Nachfrage', 'Bedürfnis: empfundener Mangel. Bedarf: Bedürfnis mit Kaufkraft. Nachfrage: Bedarf, der am Markt wirksam wird.', null, '{}', 191)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mb-2', 'markt_marketing', 'Maslow-Pyramide', 'Von unten: Grundbedürfnisse, Sicherheit, soziale Bedürfnisse, Wertschätzung, Selbstverwirklichung.', null, '{}', 192)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mb-3', 'markt_marketing', 'Methoden der Bedarfsermittlung', 'Gespräch mit offenen Fragen, Ist-Analyse, Beobachtung, Fragebogen.', null, '{}', 193)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mb-4', 'markt_marketing', 'Wunsch vs. Bedarf', 'Gute Beratung klärt den tatsächlichen Bedarf, statt jeden Wunsch zu erfüllen.', null, '{}', 194)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mk-1', 'markt_marketing', 'Die 4 P des Marketing-Mix', 'Product, Price, Place, Promotion - Produkt-, Preis-, Distributions- und Kommunikationspolitik.', null, '{}', 195)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mk-2', 'markt_marketing', 'AIDA', 'Attention, Interest, Desire, Action - Stufen der Werbewirkung.', null, '{}', 196)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mk-3', 'markt_marketing', 'Distributionspolitik', 'Regelt, wie das Produkt zum Kunden kommt: Onlineshop, Fachhandel, Direktvertrieb.', null, '{}', 197)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mk-4', 'markt_marketing', 'Rabattaktion - welches Instrument?', 'Preispolitik. Die Anzeige, die darauf hinweist, ist Kommunikationspolitik.', null, '{}', 198)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ma-1', 'markt_marketing', 'ABC-Analyse - Zweck', 'Objekte nach Bedeutung in drei Klassen teilen, um Aufwand gezielt einzusetzen.', null, '{}', 199)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ma-2', 'markt_marketing', 'A-Klasse', 'Wenige Objekte mit dem größten Wertanteil, oft 70-80 %.', null, '{}', 200)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ma-3', 'markt_marketing', 'C-Klasse', 'Viele Objekte mit geringem Wertanteil, oft nur 5-10 %.', null, '{}', 201)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ma-4', 'markt_marketing', 'Schritte der ABC-Analyse', 'Werte ermitteln, absteigend sortieren, Anteile berechnen, kumulieren, Klassen zuordnen.', null, '{}', 202)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mr-1', 'markt_marketing', 'GmbH', 'Kapitalgesellschaft, 25.000 € Stammkapital, Haftung mit dem Gesellschaftsvermögen.', null, '{}', 203)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mr-2', 'markt_marketing', 'AG', 'Kapitalgesellschaft, 50.000 € Grundkapital, Organe: Vorstand, Aufsichtsrat, Hauptversammlung.', null, '{}', 204)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mr-3', 'markt_marketing', 'KG', 'Komplementär haftet unbeschränkt, Kommanditist nur mit seiner Einlage.', null, '{}', 205)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mr-4', 'markt_marketing', 'UG (haftungsbeschränkt)', 'GmbH mit Stammkapital ab 1 €. Ein Viertel des Jahresüberschusses muss angespart werden.', null, '{}', 206)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mr-5', 'markt_marketing', 'OHG', 'Personengesellschaft, alle Gesellschafter haften unbeschränkt mit ihrem Privatvermögen.', null, '{}', 207)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hk-1', 'hardware', 'EVA-Prinzip', 'Eingabe, Verarbeitung, Ausgabe - ergänzt um die Speicherung.', null, '{}', 208)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hk-2', 'hardware', 'Kennzahlen einer CPU', 'Anzahl Kerne und Threads, Taktfrequenz, Cache-Größe.', null, '{}', 209)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hk-3', 'hardware', 'Warum ist RAM flüchtig?', 'Er verliert seinen Inhalt ohne Strom. Dauerhaft gespeichert wird auf SSD oder Festplatte.', null, '{}', 210)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hk-4', 'hardware', 'UEFI', 'Moderne Firmware als Nachfolger des BIOS: unterstützt GPT, große Datenträger und Secure Boot.', null, '{}', 211)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hk-5', 'hardware', 'Sockel', 'Steckplatz für den Prozessor auf dem Mainboard - CPU und Sockel müssen zusammenpassen.', null, '{}', 212)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hs-1', 'hardware', 'SSD vs. HDD', 'SSD: Flash, schnell, robust, teurer pro GB. HDD: Magnetscheiben, langsamer, günstiger pro GB.', null, '{}', 213)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hs-2', 'hardware', 'NVMe', 'Protokoll für SSDs über PCIe - mehrere GB/s, deutlich schneller als SATA (ca. 600 MB/s).', null, '{}', 214)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hs-3', 'hardware', 'GB vs. GiB', 'GB: 1.000³ Byte (dezimal). GiB: 1.024³ Byte (binär).', 'Darum zeigt eine 1-TB-Platte unter Windows rund 931 „GB“.', '{}', 215)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hs-4', 'hardware', 'TBW', 'Terabytes Written - wie viele Daten eine SSD laut Hersteller insgesamt schreiben kann.', null, '{}', 216)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hi-1', 'hardware', 'USB 3.2 Gen 1', '5 Gbit/s - früher USB 3.0 genannt.', null, '{}', 217)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hi-2', 'hardware', 'USB-C', 'Eine Steckerform, keine Geschwindigkeit. Dahinter kann USB 2.0 bis USB4 stecken.', null, '{}', 218)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hi-3', 'hardware', 'DisplayPort vs. VGA', 'DisplayPort: digital, Bild und Ton. VGA: analog, veraltet.', null, '{}', 219)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hi-4', 'hardware', 'IPS-Panel', 'Gute Farbwiedergabe und stabile Blickwinkel - verbreitet bei Büro- und Grafikmonitoren.', null, '{}', 220)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hi-5', 'hardware', 'Full HD / WQHD / 4K', '1920 × 1080 / 2560 × 1440 / 3840 × 2160 Pixel.', null, '{}', 221)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hu-1', 'hardware', 'Online-USV (Doppelwandler)', 'Versorgt die Last dauerhaft über den Wechselrichter - keine Umschaltzeit, bester Schutz.', null, '{}', 222)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hu-2', 'hardware', 'Offline-USV', 'Schaltet erst bei Stromausfall auf den Akku um - günstiger Grundschutz.', null, '{}', 223)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hu-3', 'hardware', 'Watt und VA', 'Watt = VA × Leistungsfaktor. Eine 1000-VA-USV mit Faktor 0,6 liefert nur 600 W.', null, '{}', 224)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-hu-4', 'hardware', 'Überbrückungszeit', 'Wie lange der Akku die Last versorgt - mindestens lang genug für ein geordnetes Herunterfahren.', null, '{}', 225)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ha-1', 'hardware', 'Green IT - Maßnahmen', 'Energieeffiziente Geräte, Stromsparmodi, Virtualisierung, lange Nutzung, fachgerechtes Recycling.', null, '{}', 226)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ha-2', 'hardware', 'Energiekosten', 'kWh = Watt × Stunden / 1.000. Kosten = kWh × Preis pro kWh.', null, '{}', 227)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ha-3', 'hardware', 'Monitorposition', 'Oberkante auf oder leicht unter Augenhöhe, etwa eine Armlänge entfernt, seitlich zum Fenster.', null, '{}', 228)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ha-4', 'hardware', 'Rechtsgrundlage Bildschirmarbeit', 'Arbeitsstättenverordnung (ArbStättV), Anhang zu Bildschirmarbeitsplätzen.', null, '{}', 229)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ba-1', 'betriebssysteme', 'Aufgaben eines Betriebssystems', 'Prozess-, Speicher-, Datei-, Geräte- und Benutzerverwaltung sowie Benutzerschnittstelle.', null, '{}', 230)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ba-2', 'betriebssysteme', 'Prozess vs. Thread', 'Prozess: laufendes Programm mit eigenem Speicher. Thread: Ausführungsstrang in einem Prozess.', null, '{}', 231)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ba-3', 'betriebssysteme', 'Kernel', 'Kern des Betriebssystems mit vollem Hardwarezugriff.', null, '{}', 232)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ba-4', 'betriebssysteme', 'Treiber', 'Software, die zwischen Betriebssystem und einem bestimmten Gerät übersetzt.', null, '{}', 233)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-bd-1', 'betriebssysteme', 'NTFS', 'Windows-Dateisystem mit Rechten, Journaling und Verschlüsselung.', null, '{}', 234)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-bd-2', 'betriebssysteme', 'FAT32 - größte Datei', '4 GB. Keine Rechteverwaltung.', null, '{}', 235)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-bd-3', 'betriebssysteme', 'exFAT', 'Für USB-Sticks und SD-Karten: große Dateien, gute Kompatibilität, keine Rechte.', null, '{}', 236)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-bd-4', 'betriebssysteme', 'GPT vs. MBR', 'GPT: große Datenträger, viele Partitionen, UEFI. MBR: max. 2 TiB, 4 primäre Partitionen.', null, '{}', 237)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-br-1', 'betriebssysteme', 'Minimalprinzip', 'Jeder bekommt nur die Rechte, die er für seine Aufgabe braucht.', null, '{}', 238)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-br-2', 'betriebssysteme', 'chmod 640', 'rw- r-- --- : Besitzer lesen und schreiben, Gruppe lesen, andere nichts.', null, '{}', 239)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-br-3', 'betriebssysteme', 'Werte der Linux-Rechte', 'r = 4, w = 2, x = 1. Pro Benutzerklasse addiert.', null, '{}', 240)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-br-4', 'betriebssysteme', 'Freigabe- und NTFS-Rechte', 'Beide gelten beim Netzzugriff - wirksam ist die strengere.', null, '{}', 241)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-bc-1', 'betriebssysteme', 'Windows ipconfig - Linux?', 'ip a (früher ifconfig).', null, '{}', 242)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-bc-2', 'betriebssysteme', 'tracert / traceroute', 'Zeigt den Weg der Pakete über die einzelnen Router bis zum Ziel.', null, '{}', 243)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-bc-3', 'betriebssysteme', 'nslookup', 'Fragt einen DNS-Server nach der Adresse zu einem Namen - prüft die Namensauflösung.', null, '{}', 244)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-bc-4', 'betriebssysteme', 'sudo', 'Führt unter Linux einen einzelnen Befehl mit Administratorrechten aus.', null, '{}', 245)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-bc-5', 'betriebssysteme', 'grep', 'Durchsucht Dateien oder Ausgaben nach einem Text.', null, '{}', 246)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-bh-1', 'betriebssysteme', 'Härtung', 'Angriffsfläche verkleinern: unnötige Dienste entfernen, Standardpasswörter ändern, Updates, Firewall, Rechte beschränken.', null, '{}', 247)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-bh-2', 'betriebssysteme', 'Zero-Day', 'Schwachstelle, für die es noch kein Update gibt.', null, '{}', 248)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-bh-3', 'betriebssysteme', 'Patchmanagement', 'Updates erfassen, bewerten, testen, verteilen, kontrollieren, dokumentieren.', null, '{}', 249)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-bh-4', 'betriebssysteme', 'Datenträgerverschlüsselung', 'Schützt Daten bei Verlust oder Diebstahl des Geräts, z. B. BitLocker (Windows) oder LUKS (Linux).', null, '{}', 250)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-au-1', 'anwendungssysteme', 'ERP', 'Enterprise Resource Planning: integriert alle Unternehmensbereiche mit gemeinsamer Datenbank.', null, '{}', 251)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-au-2', 'anwendungssysteme', 'SCM', 'Supply Chain Management: steuert die Lieferkette von Lieferanten über Beschaffung bis zur Logistik.', null, '{}', 252)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-au-3', 'anwendungssysteme', 'CRM', 'Customer Relationship Management: bündelt alle Kundenkontakte, Vertrieb, Marketing und Service.', null, '{}', 253)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-au-4', 'anwendungssysteme', 'Vorteil einer gemeinsamen Datenbank', 'Keine doppelte Datenhaltung - alle Bereiche arbeiten mit denselben, aktuellen Daten.', null, '{}', 254)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-as-1', 'anwendungssysteme', 'Standardsoftware', 'Für viele Kunden entwickelt: günstig, sofort verfügbar, aber nicht maßgeschneidert.', null, '{}', 255)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-as-2', 'anwendungssysteme', 'Individualsoftware', 'Für einen Kunden entwickelt: passgenau, aber teuer und erst nach Entwicklung verfügbar.', null, '{}', 256)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-as-3', 'anwendungssysteme', 'Customizing', 'Anpassen von Standardsoftware über Einstellungen - ohne den Programmcode zu ändern.', null, '{}', 257)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-as-4', 'anwendungssysteme', 'Branchensoftware', 'Standardsoftware, die auf die Bedürfnisse einer bestimmten Branche zugeschnitten ist.', null, '{}', 258)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-al-3', 'anwendungssysteme', 'GPL', 'Copyleft-Lizenz: Veränderte Versionen dürfen nur unter der GPL weitergegeben werden.', null, '{}', 259)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-al-4', 'anwendungssysteme', 'MIT-Lizenz', 'Freizügige Open-Source-Lizenz: Nutzung auch in geschlossener Software, Lizenzhinweis nötig.', null, '{}', 260)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-al-5', 'anwendungssysteme', 'Freeware vs. Open Source', 'Freeware ist kostenlos, der Quellcode aber geschlossen. Open Source legt den Quellcode offen.', null, '{}', 261)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-al-6', 'anwendungssysteme', 'OEM-Lizenz', 'An ein bestimmtes Gerät gebunden und mit ihm verkauft.', null, '{}', 262)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ak-1', 'anwendungssysteme', 'Synchrone Kommunikation', 'Alle sind gleichzeitig dabei - Videokonferenz, Telefon, Live-Chat.', null, '{}', 263)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ak-2', 'anwendungssysteme', 'Asynchrone Kommunikation', 'Zeitversetzt - E-Mail, Wiki, Ticketsystem, gemeinsame Dokumente.', null, '{}', 264)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ak-3', 'anwendungssysteme', 'Social-Media-Richtlinie', 'Regelt, wer im Namen des Unternehmens postet und was vertraulich bleibt.', null, '{}', 265)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ak-4', 'anwendungssysteme', 'Auftragsverarbeitungsvertrag', 'Pflicht, wenn ein Dienstleister personenbezogene Daten im Auftrag verarbeitet - auch bei Cloud-Werkzeugen.', null, '{}', 266)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-no-1', 'netzwerke', 'OSI-Schichten von 7 nach 1', 'Anwendung, Darstellung, Sitzung, Transport, Vermittlung, Sicherung, Bitübertragung.', null, '{}', 267)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-no-2', 'netzwerke', 'OSI-Schicht eines Switches', 'Schicht 2 (Sicherung) - arbeitet mit MAC-Adressen.', null, '{}', 268)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-no-3', 'netzwerke', 'OSI-Schicht eines Routers', 'Schicht 3 (Vermittlung) - arbeitet mit IP-Adressen.', null, '{}', 269)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-no-4', 'netzwerke', 'TCP vs. UDP', 'TCP: verbindungsorientiert, zuverlässig. UDP: verbindungslos, schnell, ohne Garantie.', null, '{}', 270)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-no-5', 'netzwerke', 'Kapselung', 'Jede Schicht fügt beim Senden ihre Steuerinformationen hinzu: Segment, Paket, Frame, Bits.', null, '{}', 271)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ng-2', 'netzwerke', 'Switch vs. Hub', 'Switch leitet gezielt per MAC-Adresstabelle weiter, Hub sendet an alle.', null, '{}', 272)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ng-3', 'netzwerke', 'Access Point', 'Bindet WLAN-Geräte in das kabelgebundene Netz ein.', null, '{}', 273)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ng-4', 'netzwerke', 'Cat 6A', 'Twisted-Pair-Kabel für 10 Gbit/s bis 100 m.', null, '{}', 274)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ng-5', 'netzwerke', 'VLAN', 'Logische Aufteilung eines physischen Switches in getrennte Netze.', null, '{}', 275)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-n4-1', 'netzwerke', 'Private IPv4-Bereiche', '10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16.', null, '{}', 276)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-n4-2', 'netzwerke', 'Nutzbare Hosts', '2^(32 - Präfix) - 2. Netz- und Broadcastadresse sind nicht vergebbar.', null, '{}', 277)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-n4-3', 'netzwerke', '/26 als Maske', '255.255.255.192 - Blockgröße 64, 62 nutzbare Hosts.', null, '{}', 278)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-n4-4', 'netzwerke', 'APIPA', '169.254.x.x - selbst vergebene Adresse, wenn kein DHCP-Server antwortet.', null, '{}', 279)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-n4-5', 'netzwerke', '/30', '255.255.255.252 - 2 nutzbare Hosts, typisch für Punkt-zu-Punkt-Verbindungen.', null, '{}', 280)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-n6-1', 'netzwerke', 'Länge einer IPv6-Adresse', '128 Bit, acht Blöcke zu je 16 Bit in Hexadezimal.', null, '{}', 281)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-n6-2', 'netzwerke', 'Regeln zum Kürzen', 'Führende Nullen je Block weglassen. Eine Folge von Null-Blöcken einmal durch :: ersetzen.', null, '{}', 282)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-n6-3', 'netzwerke', 'fe80::/10', 'Link-Local - nur im eigenen Netzsegment gültig.', null, '{}', 283)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-n6-4', 'netzwerke', '::1', 'Loopback - der eigene Rechner, wie 127.0.0.1 bei IPv4.', null, '{}', 284)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-n6-5', 'netzwerke', 'Broadcast in IPv6?', 'Gibt es nicht - Multicast übernimmt die Aufgabe.', null, '{}', 285)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-nd-1', 'netzwerke', 'DHCP - DORA', 'Discover, Offer, Request, Acknowledge.', null, '{}', 286)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-nd-2', 'netzwerke', 'DNS-Eintrag MX', 'Nennt den Mailserver einer Domain.', null, '{}', 287)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-nd-3', 'netzwerke', 'HTTPS-Port', '443 - verschlüsselte Webseiten. Unverschlüsseltes HTTP nutzt Port 80.', null, '{}', 288)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-nd-4', 'netzwerke', 'SSH-Port', '22 - verschlüsselte Fernwartung, ersetzt das unsichere Telnet (Port 23).', null, '{}', 289)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-nd-5', 'netzwerke', 'IMAP vs. POP3', 'IMAP: Mails bleiben auf dem Server, synchron auf mehreren Geräten. POP3: Mails werden meist heruntergeladen.', null, '{}', 290)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-nc-1', 'netzwerke', 'IaaS', 'Infrastructure as a Service: virtuelle Server, Speicher und Netz mieten.', null, '{}', 291)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-nc-2', 'netzwerke', 'PaaS', 'Platform as a Service: Laufzeitumgebung und Dienste, ohne Server selbst zu verwalten.', null, '{}', 292)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-nc-3', 'netzwerke', 'SaaS', 'Software as a Service: fertige Anwendung im Browser, z. B. Office online.', null, '{}', 293)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-nc-4', 'netzwerke', 'Hypervisor Typ 1', 'Läuft direkt auf der Hardware, z. B. VMware ESXi, Hyper-V, KVM.', null, '{}', 294)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-nc-5', 'netzwerke', 'Container vs. VM', 'Container teilen den Kernel des Hosts und starten in Sekunden. VMs haben ein eigenes Betriebssystem.', null, '{}', 295)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ld-1', 'anforderungen', 'Lastenheft', 'Vom Auftraggeber erstellt: beschreibt lösungsneutral, was und wofür gebraucht wird.', null, '{}', 296)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ld-2', 'anforderungen', 'Pflichtenheft', 'Vom Auftragnehmer erstellt: beschreibt, wie und womit die Anforderungen umgesetzt werden.', null, '{}', 297)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ld-3', 'anforderungen', 'Wogegen wird abgenommen?', 'Gegen das vom Auftraggeber genehmigte Pflichtenheft.', null, '{}', 298)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ld-4', 'anforderungen', 'Wann entsteht das Pflichtenheft?', 'Nach der Vergabe - erst dann steht fest, welcher Auftragnehmer es schreibt.', null, '{}', 299)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-fa-1', 'anforderungen', 'Funktionale Anforderung', 'Beschreibt, was das System tut, z. B. „Rechnung als PDF erzeugen“.', null, '{}', 300)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-fa-2', 'anforderungen', 'Nicht-funktionale Anforderung', 'Beschreibt, wie gut oder unter welchen Bedingungen das System arbeitet, z. B. Antwortzeit, Verfügbarkeit.', null, '{}', 301)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-fa-3', 'anforderungen', 'Beispiele nicht-funktional', 'Leistung, Zuverlässigkeit, Benutzbarkeit, Sicherheit, Wartbarkeit, Übertragbarkeit, Randbedingungen.', null, '{}', 302)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-fa-4', 'anforderungen', '„Das System soll schnell sein.“', 'Nicht prüfbar. Besser: „95 % der Anfragen in höchstens 2 Sekunden.“', null, '{}', 303)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-fe-1', 'anforderungen', 'Interview', 'Einzelgespräch mit Rückfragen - viel Tiefe, aber zeitaufwendig und nur für wenige Personen.', null, '{}', 304)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-fe-2', 'anforderungen', 'Fragebogen', 'Erreicht viele Personen und ist gut auswertbar, erlaubt aber keine Rückfragen.', null, '{}', 305)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-fe-3', 'anforderungen', 'Beobachtung', 'Zeigt echte Arbeitsabläufe und unbewusste Handgriffe, die im Gespräch nicht genannt werden.', null, '{}', 306)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-fe-4', 'anforderungen', 'MoSCoW', 'Must have, Should have, Could have, Won’t have (this time) - Priorisierung von Anforderungen.', null, '{}', 307)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-fe-5', 'anforderungen', 'Merkmale guter Anforderungen', 'Eindeutig, vollständig, widerspruchsfrei, prüfbar, notwendig, realisierbar.', null, '{}', 308)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-uu-1', 'uml_modellierung', 'Akteur', 'Rolle oder externes System außerhalb der Systemgrenze, das mit dem System interagiert.', null, '{}', 309)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-uu-2', 'uml_modellierung', 'Systemgrenze', 'Rechteck mit Systemnamen, das alle Anwendungsfälle umschließt. Akteure stehen außerhalb.', null, '{}', 310)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-uu-3', 'uml_modellierung', '«include»', 'Der eingebundene Fall wird immer ausgeführt. Pfeil vom Basisfall zum inkludierten Fall.', null, '{}', 311)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-uu-4', 'uml_modellierung', '«extend»', 'Erweitert den Basisfall nur unter einer Bedingung. Pfeil vom erweiternden Fall zum Basisfall.', null, '{}', 312)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-uk-1', 'uml_modellierung', 'Sichtbarkeiten in UML', '+ public, - private, # protected, ~ package.', null, '{}', 313)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-uk-2', 'uml_modellierung', 'Multiplizität 1..*', 'Mindestens ein Objekt, nach oben offen.', null, '{}', 314)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-uk-3', 'uml_modellierung', 'Aggregation', 'Leere Raute am Ganzen - das Teil kann ohne das Ganze existieren (Abteilung - Mitarbeiter).', null, '{}', 315)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-uk-4', 'uml_modellierung', 'Komposition', 'Gefüllte Raute am Ganzen - das Teil existiert nur mit dem Ganzen (Rechnung - Position).', null, '{}', 316)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-uk-5', 'uml_modellierung', 'Aufbau einer Klasse', 'Drei Abschnitte: Klassenname, Attribute, Methoden.', null, '{}', 317)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ua-1', 'uml_modellierung', 'Start- und Endknoten', 'Start: gefüllter Kreis. Ende: gefüllter Kreis mit Ring.', null, '{}', 318)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ua-2', 'uml_modellierung', 'Entscheidung', 'Raute mit einem Eingang und mehreren Ausgängen - genau ein Weg, gesteuert über Guards [ ].', null, '{}', 319)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ua-3', 'uml_modellierung', 'Gabelung und Vereinigung', 'Balken: Fork startet parallele Wege, Join wartet, bis alle angekommen sind.', null, '{}', 320)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ua-4', 'uml_modellierung', 'Swimlane', 'Aktivitätsbereich je Rolle oder Abteilung - zeigt, wer eine Aktion ausführt.', null, '{}', 321)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pd-1', 'programmierlogik', 'Wertebereich 8 Bit mit Vorzeichen', '-128 bis 127, insgesamt 2^8 = 256 Werte.', null, '{}', 322)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pd-2', 'programmierlogik', 'Datentyp für eine PLZ', 'String - keine Rechnung, und die führende Null bleibt erhalten.', null, '{}', 323)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pd-3', 'programmierlogik', 'Cast', 'Ausdrückliche Typumwandlung, z. B. (int) 9.99 ergibt 9 - abgeschnitten, nicht gerundet.', null, '{}', 324)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pd-4', 'programmierlogik', 'Geldbeträge speichern', 'Nicht als float/double. Besser Dezimaltyp (BigDecimal) oder ganze Cent als Ganzzahl.', null, '{}', 325)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pd-5', 'programmierlogik', 'char vs. String', 'char: genau ein Zeichen wie ''A''. String: Zeichenkette beliebiger Länge.', null, '{}', 326)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pk-1', 'programmierlogik', 'Kopfgesteuerte Schleife', 'Prüft vor jedem Durchlauf (while) - läuft eventuell gar nicht.', null, '{}', 327)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pk-2', 'programmierlogik', 'Fußgesteuerte Schleife', 'Prüft nach jedem Durchlauf (do-while) - läuft mindestens einmal.', null, '{}', 328)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pk-3', 'programmierlogik', 'switch / case', 'Mehrfachauswahl anhand eines Wertes. In Java beendet break den jeweiligen Fall.', null, '{}', 329)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pk-4', 'programmierlogik', 'Endlosschleife', 'Die Bedingung wird nie falsch, z. B. weil der Zähler im Rumpf nicht verändert wird.', null, '{}', 330)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pc-1', 'programmierlogik', 'x ← 5', 'Zuweisung: Die Variable x erhält den Wert 5.', null, '{}', 331)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pc-2', 'programmierlogik', 'Indizes bei n Elementen', 'Beginnt der Index bei 0, laufen die Indizes von 0 bis n - 1.', null, '{}', 332)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pc-3', 'programmierlogik', 'Startwert beim Maximum', 'Das erste Element des Arrays - nicht 0, sonst scheitert es an negativen Werten.', null, '{}', 333)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pc-4', 'programmierlogik', 'Lineare Suche', 'Durchläuft die Liste von vorn, bis der Wert gefunden ist. Nicht gefunden: -1.', null, '{}', 334)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pt-1', 'programmierlogik', 'Schreibtischtest', 'Algorithmus gedanklich ausführen und alle Variablenwerte Schritt für Schritt notieren.', null, '{}', 335)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pt-2', 'programmierlogik', 'Trace-Tabelle', 'Tabelle mit einer Spalte je Variable und einer Zeile je Änderung.', null, '{}', 336)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pt-3', 'programmierlogik', 'Werte tauschen', 'Nur mit Hilfsvariable: hilf ← a, a ← b, b ← hilf.', null, '{}', 337)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-pt-4', 'programmierlogik', 'Wann ist eine SOLANGE-Schleife zu Ende?', 'Sobald die Bedingung vor einem Durchlauf mit den aktuellen Werten falsch ist.', null, '{}', 338)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-og-1', 'objektorientierung', 'Klasse', 'Bauplan, der Attribute und Methoden für alle Objekte dieser Art festlegt.', null, '{}', 339)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-og-2', 'objektorientierung', 'Objekt', 'Konkretes Exemplar (Instanz) einer Klasse mit eigenen Attributwerten.', null, '{}', 340)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-og-3', 'objektorientierung', 'Zustand eines Objekts', 'Die aktuellen Werte seiner Attribute.', null, '{}', 341)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-og-4', 'objektorientierung', 'Identität eines Objekts', 'Jedes Objekt ist eigenständig - auch bei gleichen Attributwerten.', null, '{}', 342)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ok-1', 'objektorientierung', 'Kapselung', 'Daten sind private und nur über öffentliche Methoden erreichbar (Geheimnisprinzip).', null, '{}', 343)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ok-2', 'objektorientierung', 'Getter', 'Öffentliche Methode, die den Wert eines privaten Attributs zurückgibt.', null, '{}', 344)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ok-3', 'objektorientierung', 'Setter', 'Öffentliche Methode, die ein privates Attribut ändert - idealerweise nach einer Prüfung.', null, '{}', 345)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ok-4', 'objektorientierung', 'Warum Attribute private?', 'Damit niemand ungültige Werte setzt und das Innenleben änderbar bleibt.', null, '{}', 346)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-oc-1', 'objektorientierung', 'Konstruktor', 'Wird bei new aufgerufen, initialisiert die Attribute. Name wie die Klasse, kein Rückgabetyp.', null, '{}', 347)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-oc-2', 'objektorientierung', 'Überladen', 'Mehrere Konstruktoren mit gleichem Namen, aber unterschiedlicher Parameterliste.', null, '{}', 348)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-oc-3', 'objektorientierung', 'Referenz', 'Verweis auf ein Objekt. b = a kopiert nur den Verweis, nicht das Objekt.', null, '{}', 349)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-oc-4', 'objektorientierung', 'Nachricht', 'Aufruf einer Methode eines anderen Objekts, z. B. lager.reservieren(artikel, 2).', null, '{}', 350)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-oc-5', 'objektorientierung', 'Standardkonstruktor', 'Parameterloser Konstruktor, den Java nur anlegt, wenn die Klasse keinen eigenen hat.', null, '{}', 351)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-de-1', 'datenmodellierung', 'Entität vs. Entitätstyp', 'Entität: ein einzelnes Objekt (Kundin Yilmaz). Entitätstyp: die Zusammenfassung gleichartiger Entitäten (Kunde).', null, '{}', 352)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-de-2', 'datenmodellierung', 'Attribut', 'Eigenschaft eines Entitätstyps, z. B. Name oder E-Mail eines Kunden.', null, '{}', 353)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-de-3', 'datenmodellierung', 'Chen-Notation: Symbole', 'Rechteck = Entitätstyp, Raute = Beziehung, Ellipse = Attribut, unterstrichen = Schlüsselattribut.', null, '{}', 354)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-de-4', 'datenmodellierung', 'Kann eine Beziehung Attribute haben?', 'Ja - z. B. „Menge“ an der Beziehung Bestellung „enthält“ Artikel.', null, '{}', 355)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-dk-1', 'datenmodellierung', '1:n - Beispiel', 'Abteilung - Mitarbeiter: Eine Abteilung hat viele Mitarbeiter, jeder gehört zu genau einer Abteilung.', null, '{}', 356)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-dk-2', 'datenmodellierung', 'n:m auflösen', 'Über eine Zwischentabelle mit den Primärschlüsseln beider Seiten als Fremdschlüssel -> zwei 1:n-Beziehungen.', null, '{}', 357)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-dk-3', 'datenmodellierung', 'Fremdschlüssel bei 1:n', 'Kommt in die Tabelle der n-Seite, z. B. AbteilungsNr in Mitarbeiter.', null, '{}', 358)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-dk-4', 'datenmodellierung', 'Min-Max (0,n)', 'Die Entität nimmt mindestens 0-mal (optional) und höchstens beliebig oft an der Beziehung teil.', null, '{}', 359)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-dl-1', 'datenmodellierung', 'Primärschlüssel', 'Identifiziert jeden Datensatz eindeutig, darf nie leer sein und sollte sich nicht ändern.', null, '{}', 360)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-dl-2', 'datenmodellierung', 'Fremdschlüssel', 'Spalte, die auf den Primärschlüssel einer anderen Tabelle verweist - darf sich wiederholen.', null, '{}', 361)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-dl-3', 'datenmodellierung', 'Surrogatschlüssel', 'Künstlicher Schlüssel ohne fachliche Bedeutung, vom System vergeben, z. B. fortlaufende KundenNr.', null, '{}', 362)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-dl-4', 'datenmodellierung', 'Referenzielle Integrität', 'Jeder Fremdschlüsselwert muss als Primärschlüssel in der referenzierten Tabelle existieren.', null, '{}', 363)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-dl-5', 'datenmodellierung', 'Zusammengesetzter Schlüssel', 'Primärschlüssel aus mehreren Spalten, z. B. BestellNr + ArtikelNr in Bestellposition.', null, '{}', 364)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-dn-1', 'datenmodellierung', '1NF', 'Alle Attributwerte sind atomar, es gibt keine Wiederholungsgruppen.', null, '{}', 365)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-dn-2', 'datenmodellierung', '2NF', '1NF und jedes Nichtschlüsselattribut hängt vom gesamten Primärschlüssel ab, nicht nur von einem Teil.', null, '{}', 366)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-dn-3', 'datenmodellierung', '3NF', '2NF und kein Nichtschlüsselattribut hängt transitiv (über ein anderes Nichtschlüsselattribut) vom Schlüssel ab.', null, '{}', 367)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-dn-4', 'datenmodellierung', 'Die drei Anomalien', 'Einfüge-, Änderungs- und Löschanomalie - Folgen von Redundanz in nicht normalisierten Tabellen.', null, '{}', 368)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wu-1', 'web_internet', 'Reihenfolge der URL-Teile', 'Schema :// Host : Port / Pfad ? Query # Fragment', null, '{}', 369)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wu-2', 'web_internet', 'Standardports', 'http: 80, https: 443, ftp: 21.', null, '{}', 370)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wu-3', 'web_internet', 'Fragment (#)', 'Sprungmarke innerhalb der Seite - wird nicht an den Server übertragen.', null, '{}', 371)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wu-4', 'web_internet', 'Query (?)', 'Parameter für den Server als Schlüssel=Wert-Paare, getrennt mit &, z. B. ?farbe=rot&seite=2.', null, '{}', 372)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wh-1', 'web_internet', 'GET, POST, PUT, DELETE', 'Abrufen, Daten senden/Neues anlegen, Ressource ersetzen, Ressource löschen.', null, '{}', 373)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wh-2', 'web_internet', 'Statuscode-Klassen', '1xx Information, 2xx Erfolg, 3xx Umleitung, 4xx Client-Fehler, 5xx Server-Fehler.', null, '{}', 374)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wh-3', 'web_internet', '401 vs. 403', '401: nicht (erfolgreich) angemeldet. 403: angemeldet bzw. bekannt, aber kein Zugriff erlaubt.', null, '{}', 375)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wh-4', 'web_internet', 'Zustandslos', 'Jede HTTP-Anfrage steht für sich. Sitzungen werden z. B. über Cookies mit Sitzungs-ID gehalten.', null, '{}', 376)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wh-5', 'web_internet', 'HTTPS', 'HTTP über eine mit TLS verschlüsselte Verbindung, Standardport 443.', null, '{}', 377)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wa-1', 'web_internet', 'Ablauf Seitenaufruf', 'URL -> DNS -> TCP-Handshake -> TLS-Handshake -> HTTP-Request -> Response -> Rendern und Nachladen.', null, '{}', 378)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wa-2', 'web_internet', '3-Way-Handshake', 'SYN (Client) -> SYN-ACK (Server) -> ACK (Client). Danach steht die TCP-Verbindung.', null, '{}', 379)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wa-3', 'web_internet', 'Aufgabe von DNS', 'Übersetzt einen Hostnamen in die zugehörige IP-Adresse.', null, '{}', 380)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wa-4', 'web_internet', 'TLS-Handshake', 'Server weist sich per Zertifikat aus, beide Seiten handeln einen Sitzungsschlüssel aus.', null, '{}', 381)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wt-1', 'web_internet', 'HTML, CSS, JavaScript', 'HTML: Struktur und Bedeutung. CSS: Gestaltung. JavaScript: Verhalten.', null, '{}', 382)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wt-2', 'web_internet', 'Aufbau einer CSS-Regel', 'Selektor { Eigenschaft: Wert; } - z. B. h1 { color: navy; }', null, '{}', 383)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wt-3', 'web_internet', 'Klasse vs. ID', 'Klasse (.name) beliebig oft pro Seite, ID (#name) genau einmal pro Seite.', null, '{}', 384)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wt-4', 'web_internet', 'Media Query', 'CSS-Regel mit Bedingung, z. B. @media (max-width: 600px) - Grundlage für responsives Design.', null, '{}', 385)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wf-1', 'web_internet', 'WCAG-Prinzipien', 'Wahrnehmbar, bedienbar, verständlich, robust.', null, '{}', 386)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wf-2', 'web_internet', 'BITV 2.0', 'Verordnung zur Barrierefreiheit von Websites und Apps öffentlicher Stellen des Bundes.', null, '{}', 387)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wf-3', 'web_internet', 'BFSG', 'Barrierefreiheitsstärkungsgesetz: seit 28.06.2025 Pflicht für viele Produkte und Dienste privater Anbieter, z. B. Online-Shops.', null, '{}', 388)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wf-4', 'web_internet', 'Alt-Text', 'Textalternative für Bilder. Beschreibt Inhalt oder Zweck; dekorative Bilder bekommen alt="".', null, '{}', 389)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-wf-5', 'web_internet', 'Mindestkontrast (WCAG AA)', '4,5:1 für normalen Text, 3:1 für großen Text.', null, '{}', 390)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mz-1', 'multimedia_daten', 'Stellenwerte eines Bytes', '128, 64, 32, 16, 8, 4, 2, 1 - von links nach rechts.', null, '{}', 391)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mz-2', 'multimedia_daten', 'Nibble-Trick', 'Je 4 Bit ergeben eine Hex-Ziffer: 1001 1100 = 9C.', null, '{}', 392)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mz-3', 'multimedia_daten', 'Hex-Ziffern A bis F', 'A = 10, B = 11, C = 12, D = 13, E = 14, F = 15.', null, '{}', 393)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mz-4', 'multimedia_daten', 'Divisionsrestverfahren', 'Wiederholt durch die Basis teilen, Reste von unten nach oben lesen.', null, '{}', 394)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mc-1', 'multimedia_daten', 'ASCII', '7 Bit, 128 Zeichen - ohne Umlaute. „A“ = 65, „a“ = 97, „0“ = 48.', null, '{}', 395)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mc-2', 'multimedia_daten', 'UTF-8', 'Kodierung für Unicode mit 1 bis 4 Byte je Zeichen, ASCII-kompatibel. Umlaute: 2 Byte, €: 3 Byte.', null, '{}', 396)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mc-3', 'multimedia_daten', 'Unicode-Codepoint', 'Eindeutige Nummer eines Zeichens, geschrieben als U+hex, z. B. ä = U+00E4.', null, '{}', 397)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mc-4', 'multimedia_daten', 'Mojibake', 'Zeichensalat durch falsch interpretierte Kodierung, z. B. UTF-8 als Latin-1: „Ã¼“ statt „ü“.', null, '{}', 398)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-md-1', 'multimedia_daten', 'Datenmenge Bild', 'Breite × Höhe × Farbtiefe (Bit), durch 8 für Byte.', null, '{}', 399)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-md-2', 'multimedia_daten', 'Datenmenge Audio', 'Abtastrate × Bittiefe × Kanäle × Sekunden (Bit).', null, '{}', 400)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-md-3', 'multimedia_daten', 'Datenmenge Video (unkomprimiert)', 'Breite × Höhe × Farbtiefe × Bilder pro Sekunde × Sekunden (Bit).', null, '{}', 401)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-md-4', 'multimedia_daten', 'kB vs. KiB', '1 kB = 1.000 Byte (dezimal), 1 KiB = 1.024 Byte (binär).', null, '{}', 402)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mu-1', 'multimedia_daten', 'Übertragungsdauer', 'Dauer = Datenmenge in Bit / Datenrate in Bit pro Sekunde.', null, '{}', 403)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mu-2', 'multimedia_daten', '1 Mbit/s', '1.000.000 Bit pro Sekunde - Datenraten werden dezimal angegeben.', null, '{}', 404)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mu-3', 'multimedia_daten', 'MB -> Mbit', 'Mal 8: 500 MB = 4.000 Mbit.', null, '{}', 405)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mu-4', 'multimedia_daten', 'Upload vs. Download', 'Beim Hochladen, z. B. Cloud-Backup, zählt die meist kleinere Upload-Rate.', null, '{}', 406)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mx-1', 'multimedia_daten', 'Verlustfreie Formate', 'ZIP, PNG, FLAC - das Original lässt sich exakt wiederherstellen.', null, '{}', 407)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mx-2', 'multimedia_daten', 'Verlustbehaftete Formate', 'JPEG, MP3, AAC, H.264, H.265 - Details werden dauerhaft weggelassen.', null, '{}', 408)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mx-3', 'multimedia_daten', 'RLE', 'Lauflängenkodierung: Folgen gleicher Zeichen als Anzahl + Zeichen, z. B. AAAAA -> 5A.', null, '{}', 409)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-mx-4', 'multimedia_daten', 'SVG', 'Vektorformat: beliebig skalierbar ohne Qualitätsverlust - ideal für Logos und Icons.', null, '{}', 410)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ig-1', 'ki_grundlagen', 'Schwache vs. starke KI', 'Schwach: löst bestimmte Aufgaben (alle heutigen Systeme). Stark: allgemeine, menschenähnliche Intelligenz - gibt es bisher nicht.', null, '{}', 411)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ig-2', 'ki_grundlagen', 'Überwachtes Lernen', 'Lernen aus Beispielen mit bekannter richtiger Antwort (Label), z. B. markierte Spam-Mails.', null, '{}', 412)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ig-3', 'ki_grundlagen', 'Deep Learning', 'Maschinelles Lernen mit neuronalen Netzen aus vielen verborgenen Schichten.', null, '{}', 413)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ig-4', 'ki_grundlagen', 'LLM', 'Großes Sprachmodell: sagt auf Basis von Trainingsdaten das jeweils nächste Token vorher.', null, '{}', 414)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ie-1', 'ki_grundlagen', 'Bausteine eines Prompts', 'Rolle, Kontext, Aufgabe, Format - und bei Bedarf Beispiele.', null, '{}', 415)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ie-2', 'ki_grundlagen', 'Typische Einsatzfelder', 'Code-Assistenz, Support-Chatbot, Texte zusammenfassen, Tickets klassifizieren.', null, '{}', 416)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ie-3', 'ki_grundlagen', 'KI-Ergebnis prüfen', 'Lesen, verstehen, testen - die Verantwortung bleibt beim Menschen.', null, '{}', 417)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ie-4', 'ki_grundlagen', 'Wann besser keine KI?', 'Bei Aufgaben mit festen Regeln, z. B. Rechnungsbeträge - ein normales Programm ist zuverlässiger.', null, '{}', 418)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ir-1', 'ki_grundlagen', 'Halluzination', 'Überzeugend formulierte, aber falsche oder erfundene Ausgabe eines KI-Modells.', null, '{}', 419)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ir-2', 'ki_grundlagen', 'Bias', 'Verzerrung: Das Modell übernimmt Ungleichgewichte aus seinen Trainingsdaten.', null, '{}', 420)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ir-3', 'ki_grundlagen', 'AI Act - Risikostufen', 'Unannehmbar (verboten), hoch (strenge Pflichten), begrenzt (Transparenz), minimal (keine besonderen Pflichten).', null, '{}', 421)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ir-4', 'ki_grundlagen', 'Datenschutz bei KI-Tools', 'Keine personenbezogenen oder vertraulichen Daten in öffentliche, nicht freigegebene Tools eingeben.', null, '{}', 422)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-qg-1', 'qualitaetsmanagement', 'Qualität', 'Grad, in dem ein Produkt die vereinbarten Anforderungen erfüllt.', null, '{}', 423)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-qg-2', 'qualitaetsmanagement', 'Konstruktive vs. analytische QS', 'Konstruktiv verhindert Fehler (Styleguide, Schulung). Analytisch findet Fehler (Test, Review).', null, '{}', 424)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-qg-3', 'qualitaetsmanagement', 'Statische vs. dynamische Prüfung', 'Statisch: ohne Ausführung (Review, Inspektion, Codeanalyse). Dynamisch: Programm wird ausgeführt (Test).', null, '{}', 425)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-qg-4', 'qualitaetsmanagement', 'Walkthrough vs. Inspektion', 'Walkthrough: informell, der Autor führt durch. Inspektion: formal mit Moderator, Rollen, Checkliste und Protokoll.', null, '{}', 426)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-qg-5', 'qualitaetsmanagement', 'Zehnerregel', 'Fehlerkosten verzehnfachen sich grob mit jeder Phase, die ein Fehler unentdeckt bleibt.', null, '{}', 427)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-qe-1', 'qualitaetsmanagement', 'Zuverlässigkeit', 'Die Software läuft stabil, verträgt Störungen und ist verfügbar, wenn sie gebraucht wird.', null, '{}', 428)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-qe-2', 'qualitaetsmanagement', 'Benutzbarkeit', 'Wie leicht die Software zu erlernen und zu bedienen ist.', null, '{}', 429)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-qe-3', 'qualitaetsmanagement', 'Effizienz', 'Zeitverhalten und Ressourcenverbrauch, z. B. Antwortzeit oder Speicherbedarf.', null, '{}', 430)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-qe-4', 'qualitaetsmanagement', 'Wartbarkeit vs. Übertragbarkeit', 'Wartbarkeit: leicht zu ändern und zu korrigieren. Übertragbarkeit: läuft auch in anderer Umgebung.', null, '{}', 431)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-qe-5', 'qualitaetsmanagement', 'Messbare Anforderung', 'Merkmal, Messgröße, Zielwert und Bedingung - z. B. max. 2 s bei 200 Nutzern.', null, '{}', 432)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-qp-1', 'qualitaetsmanagement', 'PDCA', 'Plan, Do, Check, Act - der Deming-Kreis für schrittweise Verbesserung.', null, '{}', 433)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-qp-2', 'qualitaetsmanagement', 'Was passiert in „Do“?', 'Die geplante Maßnahme wird im kleinen Rahmen erprobt, etwa als Pilot.', null, '{}', 434)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-qp-3', 'qualitaetsmanagement', 'Was passiert in „Act“?', 'Bei Erfolg wird die Maßnahme zum Standard, sonst angepasst. Danach beginnt der nächste Zyklus.', null, '{}', 435)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-qp-4', 'qualitaetsmanagement', 'KVP', 'Kontinuierlicher Verbesserungsprozess: viele kleine, stetige Verbesserungen unter Beteiligung der Mitarbeitenden.', null, '{}', 436)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ss-1', 'testen', 'Die vier Teststufen', 'Komponententest, Integrationstest, Systemtest, Abnahmetest.', null, '{}', 437)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ss-2', 'testen', 'Integrationstest', 'Prüft die Schnittstellen und das Zusammenspiel mehrerer Komponenten.', null, '{}', 438)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ss-3', 'testen', 'Systemtest vs. Abnahmetest', 'Systemtest: Auftragnehmer prüft gegen die Spezifikation. Abnahmetest: Auftraggeber prüft gegen seine Anforderungen.', null, '{}', 439)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ss-4', 'testen', 'Stub vs. Testtreiber', 'Stub ersetzt eine aufgerufene Komponente. Testtreiber ersetzt den Aufrufer.', null, '{}', 440)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ss-5', 'testen', 'Regressionstest', 'Wiederholt bestandene Tests nach einer Änderung, um Nebenwirkungen zu finden.', null, '{}', 441)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sv-1', 'testen', 'Black-Box-Test', 'Testfälle aus der Spezifikation, ohne Kenntnis des Codes.', null, '{}', 442)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sv-2', 'testen', 'White-Box-Test', 'Testfälle aus der Codestruktur, gemessen mit Überdeckungsmaßen.', null, '{}', 443)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sv-3', 'testen', 'Anweisungs- vs. Zweigüberdeckung', 'Anweisung: jede Anweisung einmal ausgeführt. Zweig: jeder Zweig einmal, auch leere Nein-Zweige.', null, '{}', 444)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sv-4', 'testen', 'Grey-Box-Test', 'Test gegen die Spezifikation mit Teilwissen über den inneren Aufbau.', null, '{}', 445)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sv-5', 'testen', 'Wann automatisieren?', 'Wenn Tests oft wiederholt werden, etwa als Regressionstest nach jeder Änderung.', null, '{}', 446)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sf-1', 'testen', 'Äquivalenzklasse', 'Menge von Eingaben, bei denen sich das Programm laut Spezifikation gleich verhält.', null, '{}', 447)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sf-2', 'testen', 'Grenzwertanalyse', 'Testet gezielt an den Klassengrenzen: den Grenzwert und seine direkten Nachbarn.', null, '{}', 448)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sf-3', 'testen', 'Grenzwerte für 1 bis 99', 'Grenzwert und Nachbar außerhalb: 0, 1, 99, 100.', 'Mit Nachbarn innerhalb zusätzlich 2 und 98.', '{}', 449)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sf-4', 'testen', 'Bestandteile eines Testfalls', 'Kennung, Vorbedingung, Eingabe, erwartetes Ergebnis.', null, '{}', 450)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sf-5', 'testen', 'Ungültige Klassen kombinieren?', 'Nein - je ungültige Klasse ein eigener Testfall, sonst verdeckt ein Fehler den anderen.', null, '{}', 451)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sp-1', 'testen', 'Inhalt eines Testkonzepts', 'Ziele, Umfang, Testobjekte, Ressourcen, Termine und Endekriterien.', null, '{}', 452)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sp-2', 'testen', 'Endekriterium', 'Vorab festgelegte, messbare Bedingung, wann der Test abgeschlossen ist.', null, '{}', 453)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sp-3', 'testen', 'Felder im Testprotokoll', 'Testfall-ID, Datum, Tester, Eingabe, Soll, Ist, Ergebnis, Abweichung.', null, '{}', 454)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sp-4', 'testen', 'Nachtest vs. Regressionstest', 'Nachtest prüft die Korrektur selbst. Regressionstest prüft, ob sie anderes beschädigt hat.', null, '{}', 455)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-sp-5', 'testen', 'Fehlerklasse vs. Priorität', 'Klasse: wie schwer der Fehler wiegt. Priorität: wie dringend er behoben wird.', null, '{}', 456)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-zz-1', 'schutzziele_bedrohungen', 'Vertraulichkeit', 'Nur befugte Personen können die Daten lesen.', null, '{}', 457)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-zz-2', 'schutzziele_bedrohungen', 'Integrität', 'Daten sind korrekt und unverändert - Änderungen werden bemerkt.', null, '{}', 458)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-zz-3', 'schutzziele_bedrohungen', 'Verfügbarkeit', 'Systeme und Daten sind nutzbar, wenn sie gebraucht werden.', null, '{}', 459)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-zz-4', 'schutzziele_bedrohungen', 'Authentizität vs. Verbindlichkeit', 'Authentizität: Echtheit und Herkunft sind prüfbar. Verbindlichkeit: Eine Handlung kann nicht abgestritten werden.', null, '{}', 460)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-zz-5', 'schutzziele_bedrohungen', '99,9 % Verfügbarkeit (24/7)', '0,001 × 8.760 h = 8,76 h Ausfall pro Jahr erlaubt.', null, '{}', 461)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-zm-1', 'schutzziele_bedrohungen', 'Virus', 'Hängt sich an eine Wirtsdatei und wird aktiv, wenn diese ausgeführt wird.', null, '{}', 462)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-zm-2', 'schutzziele_bedrohungen', 'Wurm', 'Verbreitet sich selbstständig über das Netz, meist über Sicherheitslücken - ohne Wirtsdatei.', null, '{}', 463)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-zm-3', 'schutzziele_bedrohungen', 'Trojaner', 'Als nützliches Programm getarnt, wird vom Nutzer selbst installiert und verbreitet sich nicht selbst.', null, '{}', 464)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-zm-4', 'schutzziele_bedrohungen', 'Ransomware', 'Verschlüsselt Daten und fordert Lösegeld für die Entschlüsselung.', null, '{}', 465)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-zm-5', 'schutzziele_bedrohungen', 'Rootkit und Botnetz', 'Rootkit: versteckt Schadsoftware tief im System. Botnetz: viele ferngesteuerte Rechner, z. B. für DDoS.', null, '{}', 466)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-za-1', 'schutzziele_bedrohungen', 'Social Engineering', 'Manipulation von Menschen statt Angriff auf Technik - über Hilfsbereitschaft, Autorität, Zeitdruck oder Neugier.', null, '{}', 467)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-za-2', 'schutzziele_bedrohungen', 'Spear-Phishing', 'Gezielt auf eine Person oder Firma zugeschnittene Phishing-Nachricht.', null, '{}', 468)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-za-3', 'schutzziele_bedrohungen', 'CEO-Fraud', 'Angebliche Geschäftsführung fordert eine eilige, vertrauliche Überweisung.', 'Schutz: Vier-Augen-Prinzip und Rückruf über bekannte Nummer.', '{}', 469)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-za-4', 'schutzziele_bedrohungen', 'DoS vs. DDoS', 'DoS: Überlastung eines Dienstes aus einer Quelle. DDoS: aus vielen Quellen, meist einem Botnetz.', null, '{}', 470)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-za-5', 'schutzziele_bedrohungen', 'Man-in-the-Middle', 'Angreifer schaltet sich unbemerkt zwischen zwei Partner und kann mitlesen oder verändern.', null, '{}', 471)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-zb-1', 'schutzziele_bedrohungen', 'Schutzbedarfskategorien (BSI)', 'normal: begrenzt, überschaubar. hoch: beträchtlich. sehr hoch: existenziell bedrohlich.', null, '{}', 472)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-zb-2', 'schutzziele_bedrohungen', 'Maximumprinzip', 'Der höchste Schutzbedarf der Anwendungen gilt für das ganze System.', null, '{}', 473)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-zb-3', 'schutzziele_bedrohungen', 'Kumulationseffekt', 'Viele kleine Schäden summieren sich - der Schutzbedarf des Systems steigt.', null, '{}', 474)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-zb-4', 'schutzziele_bedrohungen', 'Verteilungseffekt', 'Eine Anwendung läuft redundant auf mehreren Systemen - ein einzelnes System kann niedriger eingestuft werden.', null, '{}', 475)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-zb-5', 'schutzziele_bedrohungen', 'Vererbung des Schutzbedarfs', 'Geschäftsprozess -> Anwendung -> IT-System -> Raum.', null, '{}', 476)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yf-1', 'sicherheitsmassnahmen', 'Paketfilter (zustandslos)', 'Prüft jedes Paket einzeln nach IP-Adressen, Ports und Protokoll (Schicht 3 und 4).', null, '{}', 477)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yf-2', 'sicherheitsmassnahmen', 'Stateful Inspection', 'Merkt sich Verbindungen und lässt passende Antwortpakete automatisch durch.', null, '{}', 478)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yf-3', 'sicherheitsmassnahmen', 'Application-Level-Gateway', 'Proxy, der Inhalte des Anwendungsprotokolls prüft (Schicht 7).', null, '{}', 479)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yf-4', 'sicherheitsmassnahmen', 'DMZ', 'Eigenes Netzsegment für aus dem Internet erreichbare Server, getrennt vom internen LAN.', null, '{}', 480)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yf-5', 'sicherheitsmassnahmen', 'Default Deny', 'Letzte Regel: Alles, was nicht ausdrücklich erlaubt ist, wird verworfen.', null, '{}', 481)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yb-1', 'sicherheitsmassnahmen', 'Inkrementelle Sicherung', 'Sichert Änderungen seit der letzten Sicherung jeder Art. Restore: Voll + alle Inkremente.', null, '{}', 482)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yb-2', 'sicherheitsmassnahmen', 'Differenzielle Sicherung', 'Sichert Änderungen seit der letzten Vollsicherung. Restore: Voll + letzte differenzielle.', null, '{}', 483)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yb-3', 'sicherheitsmassnahmen', '3-2-1-Regel', '3 Kopien, 2 verschiedene Speichermedien, 1 Kopie außer Haus.', null, '{}', 484)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yb-4', 'sicherheitsmassnahmen', 'Großvater-Vater-Sohn', 'Generationenprinzip: tägliche (Sohn), wöchentliche (Vater) und monatliche (Großvater) Sicherungen.', null, '{}', 485)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yb-5', 'sicherheitsmassnahmen', 'RPO vs. RTO', 'RPO: maximal hinnehmbarer Datenverlust. RTO: maximale Zeit bis zum Wiederanlauf.', null, '{}', 486)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yw-1', 'sicherheitsmassnahmen', 'WEP, WPA/TKIP', 'Veraltet und unsicher - nicht mehr verwenden.', null, '{}', 487)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yw-2', 'sicherheitsmassnahmen', 'WPA3-Personal', 'Anmeldung mit SAE - verhindert Offline-Wörterbuchangriffe auf das WLAN-Passwort.', null, '{}', 488)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yw-3', 'sicherheitsmassnahmen', '802.1X', 'Portbasierte Anmeldung: Supplicant, Authenticator (Access Point) und RADIUS-Server.', null, '{}', 489)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yw-4', 'sicherheitsmassnahmen', 'Warum WPS abschalten?', 'Die PIN wird in zwei Hälften geprüft - höchstens 11.000 Versuche genügen.', null, '{}', 490)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yw-5', 'sicherheitsmassnahmen', 'Gastnetz', 'Eigenes WLAN, meist eigenes VLAN, nur mit Internetzugang - getrennt vom internen Netz.', null, '{}', 491)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yz-1', 'sicherheitsmassnahmen', 'Zutritt / Zugang / Zugriff', 'Zutritt: Räume. Zugang: IT-Systeme. Zugriff: bestimmte Daten und Funktionen.', null, '{}', 492)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yz-2', 'sicherheitsmassnahmen', 'Minimalprinzip', 'Jedes Konto erhält nur die Rechte, die es für seine Aufgabe braucht (Least Privilege).', null, '{}', 493)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yz-3', 'sicherheitsmassnahmen', 'Need-to-know', 'Jede Person erhält nur die Informationen, die sie für ihre Aufgabe braucht.', null, '{}', 494)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yz-4', 'sicherheitsmassnahmen', 'RBAC', 'Rollenbasierte Rechtevergabe: Rechte hängen an Rollen, Personen erhalten Rollen.', null, '{}', 495)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-yz-5', 'sicherheitsmassnahmen', 'Härtung', 'Angriffsfläche verkleinern: unnötige Dienste und Ports aus, Standardpasswörter ändern, Updates einspielen.', null, '{}', 496)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cs-1', 'kryptographie_auth', 'Symmetrische Verschlüsselung', 'Sender und Empfänger nutzen denselben geheimen Schlüssel zum Ver- und Entschlüsseln.', null, '{}', 497)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cs-2', 'kryptographie_auth', 'AES - Schlüssellängen', '128, 192 oder 256 Bit. AES ist der aktuelle Standard für symmetrische Verschlüsselung.', null, '{}', 498)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cs-3', 'kryptographie_auth', 'Schlüssel bei n Personen (symm.)', 'n × (n - 1) / 2 - bei 10 Personen also 45 Schlüssel.', null, '{}', 499)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cs-4', 'kryptographie_auth', 'Schlüsselaustauschproblem', 'Der gemeinsame Schlüssel muss vorab auf einem sicheren Weg zum Gegenüber gelangen.', null, '{}', 500)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cs-5', 'kryptographie_auth', 'Warum ist DES veraltet?', 'Sein Schlüssel hat nur 56 Bit und lässt sich heute durch Ausprobieren knacken.', null, '{}', 501)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ca-1', 'kryptographie_auth', 'Vertraulich an Anna senden', 'Mit Annas öffentlichem Schlüssel verschlüsseln - nur Annas privater Schlüssel entschlüsselt.', null, '{}', 502)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ca-2', 'kryptographie_auth', 'Digitale Signatur erstellen', 'Hashwert des Dokuments mit dem eigenen privaten Schlüssel signieren.', null, '{}', 503)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ca-3', 'kryptographie_auth', 'Digitale Signatur prüfen', 'Mit dem öffentlichen Schlüssel des Absenders prüfen und den Hashwert vergleichen.', null, '{}', 504)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ca-4', 'kryptographie_auth', 'Schlüssel bei n Personen (asymm.)', '2 × n - jede Person hat genau ein Schlüsselpaar.', null, '{}', 505)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ca-5', 'kryptographie_auth', 'RSA und ECC', 'Asymmetrische Verfahren. ECC erreicht dieselbe Sicherheit mit deutlich kürzeren Schlüsseln.', null, '{}', 506)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ch-1', 'kryptographie_auth', 'Hybride Verschlüsselung', 'Daten symmetrisch mit Sitzungsschlüssel, Schlüsselaustausch und Echtheitsnachweis asymmetrisch.', null, '{}', 507)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ch-2', 'kryptographie_auth', 'Sitzungsschlüssel bei TLS 1.3', 'Wird per Diffie-Hellman (ECDHE) ausgehandelt, nicht mit RSA verschlüsselt übertragen.', null, '{}', 508)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ch-3', 'kryptographie_auth', 'Inhalt eines X.509-Zertifikats', 'Inhaber, öffentlicher Schlüssel, Aussteller, Gültigkeitszeitraum, Seriennummer, Signatur der CA.', 'Der private Schlüssel steht nie im Zertifikat.', '{}', 509)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ch-4', 'kryptographie_auth', 'Certificate Authority (CA)', 'Zertifizierungsstelle, die mit ihrer Signatur bestätigt, dass ein öffentlicher Schlüssel zu einem Namen gehört.', null, '{}', 510)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ch-5', 'kryptographie_auth', 'S/MIME vs. PGP', 'Beide sichern E-Mails. S/MIME vertraut CAs, PGP dem Web of Trust.', null, '{}', 511)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cx-1', 'kryptographie_auth', 'Eigenschaften einer Hashfunktion', 'Einwegfunktion, feste Länge, Lawineneffekt, Kollisionsresistenz.', null, '{}', 512)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cx-2', 'kryptographie_auth', 'SHA-256 in Hex', '256 Bit / 4 Bit je Zeichen = 64 Hexadezimalzeichen.', null, '{}', 513)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cx-3', 'kryptographie_auth', 'Salt', 'Zufallswert je Konto, der vor dem Hashen an das Passwort gehängt wird - gleiche Passwörter ergeben so verschiedene Hashes.', null, '{}', 514)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cx-4', 'kryptographie_auth', 'Passwort-Hashverfahren', 'Bewusst langsame Verfahren wie Argon2 oder bcrypt, nicht einfaches SHA-256.', null, '{}', 515)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cx-5', 'kryptographie_auth', 'Veraltete Hashverfahren', 'MD5 und SHA-1 - für beide wurden Kollisionen gefunden.', null, '{}', 516)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cz-1', 'kryptographie_auth', 'Die drei Schritte beim Login', 'Identifikation: Wer bist du? Authentifizierung: Beweise es! Autorisierung: Was darfst du?', null, '{}', 517)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cz-2', 'kryptographie_auth', 'Die drei Faktorkategorien', 'Wissen (Passwort), Besitz (Smartphone, Token), Inhärenz (Fingerabdruck).', null, '{}', 518)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cz-3', 'kryptographie_auth', 'Echte 2FA', 'Zwei Faktoren aus zwei verschiedenen Kategorien, z. B. Passwort und Code vom Smartphone.', null, '{}', 519)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cz-4', 'kryptographie_auth', 'TOTP', 'Zeitbasiertes Einmalpasswort aus gemeinsamem Geheimnis und Uhrzeit, meist 30 Sekunden gültig.', null, '{}', 520)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cz-5', 'kryptographie_auth', 'Passkey', 'FIDO2-Anmeldung per Schlüsselpaar. Der private Schlüssel bleibt auf dem Gerät - phishingresistent.', null, '{}', 521)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xg-1', 'datenschutz', 'Personenbezogene Daten (Art. 4)', 'Alle Informationen über eine identifizierte oder identifizierbare natürliche Person.', null, '{}', 522)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xg-2', 'datenschutz', 'Besondere Kategorien (Art. 9)', 'Gesundheit, ethnische Herkunft, Religion, politische Meinung, Gewerkschaft, genetische und biometrische Daten, Sexualleben.', null, '{}', 523)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xg-3', 'datenschutz', 'Verantwortlicher', 'Entscheidet allein oder gemeinsam mit anderen über Zwecke und Mittel der Verarbeitung.', null, '{}', 524)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xg-4', 'datenschutz', 'Auftragsverarbeiter', 'Verarbeitet Daten im Auftrag und nach Weisung des Verantwortlichen, z. B. ein Hoster.', null, '{}', 525)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xg-5', 'datenschutz', 'Ist eine IP-Adresse personenbezogen?', 'In der Regel ja - sie lässt sich mit Zusatzwissen einem Anschluss und damit einer Person zuordnen.', null, '{}', 526)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xs-1', 'datenschutz', 'Zweckbindung', 'Daten nur für festgelegte, eindeutige Zwecke erheben und nicht zweckfremd weiterverarbeiten.', null, '{}', 527)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xs-2', 'datenschutz', 'Datenminimierung', 'Nur so viele Daten erheben, wie für den Zweck nötig sind.', null, '{}', 528)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xs-3', 'datenschutz', 'Rechenschaftspflicht', 'Der Verantwortliche muss die Einhaltung der Grundsätze nachweisen können.', null, '{}', 529)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xs-4', 'datenschutz', 'Rechtsgrundlagen nach Art. 6', 'Einwilligung, Vertrag, rechtliche Verpflichtung, lebenswichtige Interessen, öffentliche Aufgabe, berechtigtes Interesse.', null, '{}', 530)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xs-5', 'datenschutz', 'Anforderungen an eine Einwilligung', 'Freiwillig, informiert, eindeutig und jederzeit widerrufbar.', null, '{}', 531)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xr-1', 'datenschutz', 'Art. 15 DSGVO', 'Auskunftsrecht: welche Daten, zu welchem Zweck, an wen, wie lange - mit Kopie.', null, '{}', 532)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xr-2', 'datenschutz', 'Art. 17 DSGVO', 'Recht auf Löschung („Recht auf Vergessenwerden“), begrenzt z. B. durch Aufbewahrungspflichten.', null, '{}', 533)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xr-3', 'datenschutz', 'Art. 20 DSGVO', 'Datenübertragbarkeit: eigene Daten strukturiert und maschinenlesbar erhalten.', null, '{}', 534)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xr-4', 'datenschutz', 'Antwortfrist bei Anfragen', 'Unverzüglich, spätestens nach einem Monat - in komplexen Fällen um zwei Monate verlängerbar.', null, '{}', 535)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xr-5', 'datenschutz', 'Art. 77 DSGVO', 'Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde.', null, '{}', 536)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xa-1', 'datenschutz', 'Anonymisierung', 'Personenbezug ist dauerhaft nicht mehr herstellbar - die DSGVO gilt nicht mehr.', null, '{}', 537)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xa-2', 'datenschutz', 'Pseudonymisierung', 'Name durch Kennzeichen ersetzt, Zuordnung mit getrennt aufbewahrtem Zusatzwissen möglich - DSGVO gilt weiter.', null, '{}', 538)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xa-3', 'datenschutz', 'Generalisierung', 'Werte vergröbern, z. B. Alter 34 -> „30 bis 39“ oder PLZ 10115 -> „10xxx“.', null, '{}', 539)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xa-4', 'datenschutz', 'Aggregation', 'Einzelwerte zu Summen oder Durchschnitten zusammenfassen, z. B. Gehalt je Abteilung.', null, '{}', 540)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xt-1', 'datenschutz', 'TOM', 'Technische und organisatorische Maßnahmen nach Art. 32 DSGVO zum Schutz personenbezogener Daten.', null, '{}', 541)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xt-2', 'datenschutz', 'Zutritt / Zugang / Zugriff', 'Zutritt: Räume. Zugang: IT-Systeme. Zugriff: Daten und Berechtigungen.', null, '{}', 542)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xt-3', 'datenschutz', 'Eingabekontrolle', 'Nachvollziehen, wer wann welche Daten eingegeben, geändert oder gelöscht hat - z. B. per Protokoll.', null, '{}', 543)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xt-4', 'datenschutz', 'Trennungsgebot', 'Zu verschiedenen Zwecken erhobene Daten getrennt verarbeiten, z. B. Mandantentrennung.', null, '{}', 544)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-xt-5', 'datenschutz', 'Technisch vs. organisatorisch', 'Technisch: von der Technik durchgesetzt (Firewall). Organisatorisch: Regeln für Menschen (Schulung).', null, '{}', 545)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vz-1', 'vertraege', 'Wie entsteht ein Vertrag?', 'Durch zwei übereinstimmende Willenserklärungen: Antrag und Annahme.', null, '{}', 546)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vz-2', 'vertraege', 'Invitatio ad offerendum', 'Aufforderung zur Abgabe eines Antrags, z. B. Katalog, Werbung, Webshop - noch kein Antrag.', null, '{}', 547)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vz-3', 'vertraege', 'Verspätete oder geänderte Annahme', 'Gilt als neuer Antrag - die andere Seite kann ihn annehmen oder ablehnen.', null, '{}', 548)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vz-4', 'vertraege', 'Stufen der Geschäftsfähigkeit', 'Unter 7: geschäftsunfähig. 7 bis 17: beschränkt geschäftsfähig. Ab 18: voll geschäftsfähig.', null, '{}', 549)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vz-5', 'vertraege', 'Taschengeldparagraf', 'Beschränkt Geschäftsfähige schließen wirksam Verträge, die sie mit ihnen frei überlassenen Mitteln bewirken.', null, '{}', 550)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vy-1', 'vertraege', 'Werkvertrag', 'Geschuldet wird ein Erfolg. Es gibt eine Abnahme, danach wird die Vergütung fällig.', 'IT-Beispiel: Individualsoftware', '{}', 551)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vy-2', 'vertraege', 'Dienstvertrag', 'Geschuldet wird die Tätigkeit, kein Ergebnis. Keine Abnahme, Vergütung nach Aufwand.', 'IT-Beispiel: Support oder Beratung nach Stunden', '{}', 552)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vy-3', 'vertraege', 'Mietvertrag', 'Gebrauchsüberlassung auf Zeit gegen Entgelt - typische Einordnung für SaaS und Cloud-Dienste.', null, '{}', 553)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vy-4', 'vertraege', 'Werklieferungsvertrag', 'Herstellung und Lieferung einer beweglichen Sache - es gilt Kaufrecht.', null, '{}', 554)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vy-5', 'vertraege', 'Leasing', 'Gebrauchsüberlassung gegen Leasingraten, der Leasinggeber finanziert. Im Kern wie Miete behandelt.', null, '{}', 555)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vu-1', 'vertraege', 'Wann entsteht Urheberrecht?', 'Automatisch mit der Schöpfung des Werks - ohne Anmeldung oder Vermerk.', null, '{}', 556)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vu-2', 'vertraege', 'Ist das Urheberrecht übertragbar?', 'Nein, nur vererbbar. Übertragen werden Nutzungsrechte (Lizenzen).', null, '{}', 557)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vu-3', 'vertraege', 'Einfaches Nutzungsrecht', 'Erlaubt die Nutzung neben anderen Berechtigten - der Rechteinhaber darf weitere Lizenzen vergeben.', null, '{}', 558)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vu-4', 'vertraege', 'Software von Angestellten', 'Urheber bleibt die Person, die vermögensrechtlichen Befugnisse liegen beim Arbeitgeber (§ 69b UrhG).', null, '{}', 559)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-vu-5', 'vertraege', 'Schutzdauer Urheberrecht', '70 Jahre nach dem Tod des Urhebers.', null, '{}', 560)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-li-1', 'sla_service', 'SLA', 'Service Level Agreement - vereinbart messbare Servicequalität zwischen Dienstleister und Kunde.', null, '{}', 561)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-li-2', 'sla_service', 'Reaktionszeit', 'Zeit bis zur ersten qualifizierten Rückmeldung - nicht bis zur Lösung.', null, '{}', 562)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-li-3', 'sla_service', 'Erlaubter Ausfall', 'Servicezeit × (100 % - Verfügbarkeit). 24/7, ein Jahr, 99,9 %: 8.760 h × 0,001 = 8,76 h.', null, '{}', 563)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-li-4', 'sla_service', 'Pönale', 'Vertragsstrafe oder Gutschrift, wenn der Dienstleister die vereinbarten Service Levels verfehlt.', null, '{}', 564)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ls-1', 'sla_service', 'Single Point of Contact', 'Der Service Desk als einzige zentrale Anlaufstelle für alle Anfragen der Anwender.', null, '{}', 565)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ls-2', 'sla_service', '1st, 2nd, 3rd Level', '1st: Service Desk, Standardfälle. 2nd: Fachspezialisten. 3rd: Hersteller oder Entwicklung.', null, '{}', 566)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ls-3', 'sla_service', 'Funktional vs. hierarchisch', 'Funktionale Eskalation: an mehr Fachwissen. Hierarchische Eskalation: an die Führungsebene.', null, '{}', 567)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ls-4', 'sla_service', 'Priorität eines Tickets', 'Ergibt sich aus Auswirkung (wie viele betroffen) und Dringlichkeit (wie eilig).', null, '{}', 568)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ls-5', 'sla_service', 'First Level Resolution Rate', 'Anteil der Tickets, die der 1st Level ohne Weitergabe löst, in Prozent aller Tickets.', null, '{}', 569)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-lt-1', 'sla_service', 'Incident', 'Ungeplante Störung eines Service. Ziel: Service so schnell wie möglich wiederherstellen.', null, '{}', 570)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-lt-2', 'sla_service', 'Problem', 'Die unbekannte Ursache eines oder mehrerer Incidents. Ziel: Ursache finden und beseitigen.', null, '{}', 571)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-lt-3', 'sla_service', 'Known Error', 'Problem, dessen Ursache bekannt und dokumentiert ist, meist mit Workaround.', null, '{}', 572)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-lt-4', 'sla_service', 'Standard Change', 'Häufige Änderung mit geringem Risiko, die vorab genehmigt ist.', null, '{}', 573)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-lt-5', 'sla_service', 'Service Request', 'Standardanfrage eines Anwenders ohne Störung, z. B. Passwort zurücksetzen.', null, '{}', 574)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-gv-1', 'leistungsstoerungen', 'Voraussetzungen Lieferungsverzug', 'Fälligkeit, Mahnung (entbehrlich bei Kalendertermin), Verschulden des Lieferanten.', null, '{}', 575)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-gv-2', 'leistungsstoerungen', 'Rechte ohne Nachfrist', 'Auf Lieferung bestehen und Ersatz des Verzugsschadens verlangen.', null, '{}', 576)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-gv-3', 'leistungsstoerungen', 'Rechte nach Nachfrist', 'Rücktritt vom Vertrag und/oder Schadensersatz statt der Leistung.', null, '{}', 577)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-gv-4', 'leistungsstoerungen', 'Verzugszinssatz', 'Mit Verbraucher: Basiszins + 5 Prozentpunkte. Nur Unternehmen: Basiszins + 9 Prozentpunkte.', 'Unter Unternehmen zusätzlich 40 € Pauschale', '{}', 578)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-gv-5', 'leistungsstoerungen', 'Zahlungsverzug ohne Mahnung', 'Spätestens 30 Tage nach Fälligkeit und Zugang der Rechnung - bei Verbrauchern nur mit Hinweis darauf.', null, '{}', 579)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-gm-1', 'leistungsstoerungen', 'Vorrangiges Recht bei Mängeln', 'Nacherfüllung: Nachbesserung oder Ersatzlieferung - beim Kauf wählt der Käufer.', null, '{}', 580)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-gm-2', 'leistungsstoerungen', 'Nachrangige Rechte', 'Rücktritt, Minderung, Schadensersatz - in der Regel erst nach erfolgloser Frist zur Nacherfüllung.', null, '{}', 581)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-gm-3', 'leistungsstoerungen', 'Gewährleistungsfrist Kauf', '2 Jahre ab Übergabe bei neuen Sachen.', null, '{}', 582)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-gm-4', 'leistungsstoerungen', 'Beweislastumkehr', 'Beim Verbrauchsgüterkauf: Zeigt sich ein Mangel im ersten Jahr, wird vermutet, dass er schon bei Übergabe vorlag.', null, '{}', 583)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-gm-5', 'leistungsstoerungen', 'Rügepflicht § 377 HGB', 'Beim Kauf unter Kaufleuten Ware unverzüglich prüfen und Mängel unverzüglich rügen.', null, '{}', 584)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ga-1', 'leistungsstoerungen', 'Folgen der Abnahme', 'Vergütung fällig, Gefahrübergang, Verjährung beginnt, Beweislast geht auf den Besteller über.', null, '{}', 585)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ga-2', 'leistungsstoerungen', 'Fiktive Abnahme', 'Werk gilt als abgenommen, wenn der Besteller eine gesetzte Frist verstreichen lässt, ohne einen Mangel zu nennen.', null, '{}', 586)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ga-3', 'leistungsstoerungen', 'Abnahme unter Vorbehalt', 'Abnahme mit protokollierten Mängeln - die Rechte zu diesen Mängeln bleiben erhalten.', null, '{}', 587)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ga-4', 'leistungsstoerungen', 'Unwesentlicher Mangel', 'Berechtigt nicht zur Verweigerung der Abnahme - er wird protokolliert und nachgebessert.', null, '{}', 588)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cl-1', 'change_management', 'Phasen nach Lewin', 'Unfreezing (Auftauen), Moving (Verändern), Refreezing (Einfrieren).', null, '{}', 589)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cl-2', 'change_management', 'Unfreezing', 'Bereitschaft schaffen: informieren, Dringlichkeit zeigen, Betroffene beteiligen.', null, '{}', 590)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cl-3', 'change_management', 'Moving', 'Das Neue umsetzen: schulen, pilotieren, eng begleiten.', null, '{}', 591)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cl-4', 'change_management', 'Refreezing', 'Das Neue verankern: Standards festlegen, Altes abschalten, Erfolge sichtbar machen.', null, '{}', 592)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cw-1', 'change_management', 'Ursachen von Widerstand', 'Nicht wissen, nicht können, nicht wollen, nicht dürfen.', null, '{}', 593)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cw-2', 'change_management', 'Antwort auf „nicht können“', 'Schulen und begleiten - die Fähigkeit fehlt, nicht der Wille.', null, '{}', 594)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cw-3', 'change_management', 'Verdeckter Widerstand', 'Nicht offen ausgesprochen, z. B. Verzögern, Gerüchte, Dienst nach Vorschrift.', null, '{}', 595)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-cw-4', 'change_management', 'Wirksamste Gegenmaßnahme', 'Betroffene frühzeitig beteiligen - wer mitgestaltet, blockiert selten.', null, '{}', 596)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ck-1', 'change_management', 'Kaizen / KVP', 'Kontinuierliche Verbesserung in kleinen Schritten, getragen von allen Mitarbeitenden.', null, '{}', 597)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ck-2', 'change_management', 'Muda', 'Japanisch für Verschwendung: Aufwand ohne Wert für die Kundschaft, z. B. Wartezeit, Nacharbeit.', null, '{}', 598)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ck-3', 'change_management', 'PDCA', 'Plan, Do, Check, Act - der Zyklus, mit dem jeder KVP-Schritt durchlaufen wird.', null, '{}', 599)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
+insert into public.ap1_flashcards
+  (id, topic_id, front, back, hint, tags, sort_order)
+values ('k-ck-4', 'change_management', 'Business Process Reengineering', 'Radikale, grundlegende Neugestaltung von Prozessen - Gegenentwurf zu Kaizen.', null, '{}', 600)
+on conflict (id) do update set
+  topic_id = excluded.topic_id,
+  front = excluded.front,
+  back = excluded.back,
+  hint = excluded.hint,
+  tags = excluded.tags,
+  sort_order = excluded.sort_order,
+  is_active = true;
+
 -- Theorie-Snacks --------------------------------------------
 insert into public.ap1_theory
   (id, topic_id, title, lead, points, merksatz, read_seconds, sort_order)
@@ -3508,7 +20050,7 @@ on conflict (id) do update set
 
 insert into public.ap1_theory
   (id, topic_id, title, lead, points, merksatz, read_seconds, sort_order)
-values ('th-lh-1', 'anforderungen', 'Lastenheft vs. Pflichtenheft', 'Zwei Dokumente, zwei Absender, zwei Zeitpunkte.', ARRAY['Lastenheft: vom AUFTRAGGEBER, beschreibt das WAS und WOFÜR, lösungsneutral. Grundlage der Ausschreibung.', 'Pflichtenheft: vom AUFTRAGNEHMER, beschreibt das WIE und WOMIT. Entsteht NACH der Vergabe und wird vom Auftraggeber genehmigt.', 'Abgenommen wird gegen das Pflichtenheft, nicht gegen das Lastenheft.', 'Funktional = "Das System tut X". Nicht-funktional = "Das System tut X schnell/sicher/verfügbar/barrierefrei".', 'Gute Anforderung: eindeutig, vollständig, widerspruchsfrei, prüfbar, notwendig, priorisiert (MuSCoW).']::text[], 'LAstenheft = Auftraggeber verteilt die Last. PFlichtenheft = Auftragnehmer nennt seine Pflicht.', 45, 7)
+values ('th-lh-1', 'anforderungen', 'Lastenheft vs. Pflichtenheft', 'Zwei Dokumente, zwei Absender, zwei Zeitpunkte.', ARRAY['Lastenheft: vom AUFTRAGGEBER, beschreibt das WAS und WOFÜR, lösungsneutral. Grundlage der Ausschreibung.', 'Pflichtenheft: vom AUFTRAGNEHMER, beschreibt das WIE und WOMIT. Entsteht NACH der Vergabe und wird vom Auftraggeber genehmigt.', 'Abgenommen wird gegen das Pflichtenheft, nicht gegen das Lastenheft.', 'Funktional = "Das System tut X". Nicht-funktional = "Das System tut X schnell/sicher/verfügbar/barrierefrei".', 'Gute Anforderung: eindeutig, vollständig, widerspruchsfrei, prüfbar, notwendig, priorisiert (MoSCoW).']::text[], 'LAstenheft = Auftraggeber verteilt die Last. PFlichtenheft = Auftragnehmer nennt seine Pflicht.', 45, 7)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   title = excluded.title,
@@ -3556,4 +20098,4 @@ on conflict (id) do update set
 
 -- Kontrolle:
 --   select count(*) from public.ap1_questions where catalog_status = 'current';
--- erwartet: 7 Bereiche, 35 Themen, 65 aktive Aufgaben (68 gesamt), 112 Karten, 11 Theorie-Snacks.
+-- erwartet: 7 Bereiche, 35 Themen, 457 aktive Aufgaben (460 gesamt), 601 Karten, 11 Theorie-Snacks.
