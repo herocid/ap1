@@ -9,8 +9,8 @@ final List<Flashcard> cardsA01Journey = [
   karte(
     'k-pb-1',
     'p-begriff',
-    'Vier Merkmale eines Projekts',
-    'Einmaligkeit, Zielvorgabe, Begrenzung (Zeit, Budget, Personal), eigene Projektorganisation.',
+    'Merkmale eines Projekts (DIN 69901)',
+    'Einmaligkeit der Bedingungen, erkennbar an: Zielvorgabe, Begrenzung (Zeit, Budget, Personal), Abgrenzung gegenüber anderen Vorhaben, eigene Projektorganisation.',
     'Fehlt eines davon, ist es eine Linienaufgabe.',
   ),
   karte(

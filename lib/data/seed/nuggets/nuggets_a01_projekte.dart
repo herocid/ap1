@@ -895,7 +895,7 @@ final List<Nugget> nuggetsA01 = [
       FlussKnoten('Initialisierung', pfeil: 'M1 Auftrag erteilt'),
       FlussKnoten('Definition', pfeil: 'M2 Anforderungen frei'),
       FlussKnoten('Planung', pfeil: 'M3 Plan freigegeben'),
-      FlussKnoten('Steuerung', pfeil: 'M4 Abnahme erfolgt'),
+      FlussKnoten('Steuerung', pfeil: 'M4 Ergebnis fertiggestellt'),
       FlussKnoten('Abschluss'),
     ]),
   ),
@@ -1837,7 +1837,7 @@ final List<Nugget> nuggetsA01 = [
     'n-se-10',
     's-events',
     'Das Daily ist kein Statusbericht',
-    'Im Daily Scrum berichten die Developers nicht an eine Führungskraft. Sie prüfen gemeinsam den Fortschritt zum Sprintziel und planen die nächsten 24 Stunden - wer zuhört, redet nicht mit.',
+    'Im Daily Scrum berichten die Developers nicht an eine Führungskraft. Sie prüfen gemeinsam den Fortschritt zum Sprintziel und planen die nächsten 24 Stunden - wer nur zuhört, hält sich zurück.',
   ),
   falle(
     'n-se-11',
@@ -2094,7 +2094,7 @@ final List<Nugget> nuggetsA01 = [
     points: [
       'Pfeile laufen von links nach rechts und nie im Kreis - keine Schleifen.',
       'Nur direkte Vorgänger eintragen: Folgt D auf B und B auf A, braucht D keinen Pfeil von A.',
-      'Jeder Vorgang außer dem Startvorgang hat mindestens einen Vorgänger.',
+      'Jeder Vorgang außer den Startvorgängen hat mindestens einen Vorgänger.',
       'Übersichtlich ist ein gemeinsamer Start- und ein gemeinsamer Endvorgang.',
     ],
   ),
