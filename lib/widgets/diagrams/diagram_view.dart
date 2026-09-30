@@ -3,11 +3,30 @@ import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../data/models/diagram.dart';
+import 'balken_diagram.dart';
+import 'baum_diagram.dart';
+import 'bit_diagram.dart';
+import 'diagram_canvas.dart';
+import 'diagram_description.dart';
+import 'diagram_style.dart';
+import 'erm_diagram.dart';
+import 'fluss_diagram.dart';
+import 'gantt_diagram.dart';
+import 'geraden_diagram.dart';
+import 'klassen_diagram.dart';
+import 'netz_diagram.dart';
+import 'netzplan_diagram.dart';
+import 'quadranten_diagram.dart';
+import 'sequenz_diagram.dart';
+import 'stapel_diagram.dart';
+import 'usecase_diagram.dart';
 
 /// Zeichnet ein [Diagram] in der verfügbaren Breite.
 ///
-/// Vorläufige, schlichte Umsetzung: Schichten, Abläufe und Bäume als
-/// Kästen, alle übrigen Arten als strukturierte Textfassung.
+/// Jede Art hat ein eigenes Layout, das Texte mit der Schriftgröße des
+/// Geräts misst und sich an die Breite anpasst (umbrechen, umstellen,
+/// erst zuletzt seitlich scrollen). Für Screenreader gibt es eine
+/// vollständige Textfassung.
 class DiagramView extends StatelessWidget {
   const DiagramView(this.diagram, {super.key});
 
@@ -15,109 +34,50 @@ class DiagramView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final d = diagram;
-    final Widget child = switch (d) {
-      StapelDiagramm() => Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          for (final e in d.ebenen)
-            _Box(e.detail == null ? e.label : '${e.label}\n${e.detail}'),
-        ],
-      ),
-      FlussDiagramm() => Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          for (var i = 0; i < d.knoten.length; i++) ...[
-            if (i > 0) Icon(Icons.arrow_downward, color: context.c.textMuted),
-            _Box(
-              d.knoten[i].seitlich == null
-                  ? d.knoten[i].label
-                  : '${d.knoten[i].label}\n→ ${d.knoten[i].seitlich}',
-            ),
-          ],
-        ],
-      ),
-      BaumDiagramm() => _Tree(d.wurzel, 0),
-      _ => _Box(_describe(d)),
-    };
-    return child;
-  }
-
-  static String _describe(Diagram d) => switch (d) {
-    SequenzDiagramm() =>
-      d.nachrichten
-          .map(
-            (n) => '${d.teilnehmer[n.von]} → ${d.teilnehmer[n.an]}: ${n.text}',
-          )
-          .join('\n'),
-    QuadrantenDiagramm() =>
-      '${d.yAchse} ↑ / ${d.xAchse} →\n'
-          'oben links: ${d.obenLinks.titel}\n'
-          'oben rechts: ${d.obenRechts.titel}\n'
-          'unten links: ${d.untenLinks.titel}\n'
-          'unten rechts: ${d.untenRechts.titel}',
-    BalkenDiagramm() => d.balken.map((b) => '${b.label}: ${b.wert}').join('\n'),
-    GanttDiagramm() =>
-      d.vorgaenge.map((v) => '${v.label}: ${v.start} + ${v.dauer}').join('\n'),
-    GeradenDiagramm() =>
-      d.geraden
-          .map((g) => '${g.label}: ${g.start} + ${g.steigung} · x')
-          .join('\n'),
-    KlassenDiagramm() =>
-      d.klassen
-          .map((k) => [k.name, ...k.attribute, ...k.methoden].join('\n'))
-          .join('\n\n'),
-    ErmDiagramm() =>
-      d.beziehungen
-          .map((b) => '${b.a} (${b.kardA}) – ${b.name} – (${b.kardB}) ${b.b}')
-          .join('\n'),
-    UseCaseDiagramm() => '${d.system}\n${d.faelle.join('\n')}',
-    NetzSkizze() => d.knoten.map((k) => k.label).join(', '),
-    BitDiagramm() => d.zeilen.map((z) => '${z.label}: ${z.bits}').join('\n'),
-    NetzplanDiagramm() =>
-      d.vorgaenge.map((v) => '${v.id} ${v.name} (${v.duration})').join('\n'),
-    NetzplanLegende() => 'FAZ | Dauer | FEZ\nVorgang\nSAZ | GP | SEZ',
-    _ => '',
-  };
-}
-
-class _Box extends StatelessWidget {
-  const _Box(this.text);
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 2),
-      padding: const EdgeInsets.all(Gap.m),
-      decoration: BoxDecoration(
-        color: context.c.surfaceAlt,
-        borderRadius: BorderRadius.circular(Radii.m),
-        border: Border.all(color: context.c.border),
-      ),
-      child: Text(text, style: context.text.bodyMedium),
-    );
-  }
-}
-
-class _Tree extends StatelessWidget {
-  const _Tree(this.node, this.depth);
-  final BaumKnoten node;
-  final int depth;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: depth == 0 ? 0 : Gap.l),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          _Box(
-            node.detail == null ? node.label : '${node.label} (${node.detail})',
-          ),
-          for (final k in node.kinder) _Tree(k, depth + 1),
-        ],
+    return Semantics(
+      container: true,
+      image: true,
+      label: describeDiagram(diagram),
+      child: ExcludeSemantics(
+        child: LayoutBuilder(
+          builder: (context, box) {
+            final pad = box.maxWidth >= 320 ? Gap.m : Gap.s;
+            return Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(pad),
+              decoration: BoxDecoration(
+                color: context.scheme.surface,
+                borderRadius: BorderRadius.circular(Radii.m),
+                border: Border.all(color: context.c.border),
+              ),
+              child: DiagramCanvas(
+                source: diagram,
+                layout: (s, w) => layoutDiagram(diagram, s, w),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
 }
+
+/// Legt [d] für die Breite [w] aus (ohne Widget - auch für Tests, die die
+/// Geometrie prüfen).
+DiagramLayout layoutDiagram(Diagram d, DiagramStyle s, double w) => switch (d) {
+  StapelDiagramm() => layoutStapel(d, s, w),
+  FlussDiagramm() => layoutFluss(d, s, w),
+  BaumDiagramm() => layoutBaum(d, s, w),
+  SequenzDiagramm() => layoutSequenz(d, s, w),
+  QuadrantenDiagramm() => layoutQuadranten(d, s, w),
+  BalkenDiagramm() => layoutBalken(d, s, w),
+  GanttDiagramm() => layoutGantt(d, s, w),
+  GeradenDiagramm() => layoutGeraden(d, s, w),
+  KlassenDiagramm() => layoutKlassen(d, s, w),
+  ErmDiagramm() => layoutErm(d, s, w),
+  UseCaseDiagramm() => layoutUseCase(d, s, w),
+  NetzSkizze() => layoutNetz(d, s, w),
+  BitDiagramm() => layoutBits(d, s, w),
+  NetzplanDiagramm() => layoutNetzplan(d, s, w),
+  NetzplanLegende() => layoutNetzplanLegende(s, w),
+};
