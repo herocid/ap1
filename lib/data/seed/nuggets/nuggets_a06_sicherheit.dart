@@ -645,7 +645,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
       'IT-Grundschutz-Kompendium: Bausteine wie „Server“, „WLAN-Betrieb“ oder „Datensicherungskonzept“ mit konkreten Anforderungen',
       'BSI-Standard 200-1: Managementsystem für Informationssicherheit (ISMS)',
       'BSI-Standard 200-2: die IT-Grundschutz-Methodik (das Vorgehen)',
-      'BSI-Standard 200-3: Risikoanalyse, BSI-Standard 200-4: Notfallmanagement',
+      'BSI-Standard 200-3: Risikoanalyse, BSI-Standard 200-4: Notfallmanagement (Business Continuity Management)',
     ],
   ),
   vergleich(

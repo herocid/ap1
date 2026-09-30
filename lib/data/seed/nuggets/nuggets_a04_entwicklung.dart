@@ -1331,7 +1331,7 @@ int f = (int) 3.99;''',
     'n-pk-7',
     'pl-kontrollstrukturen',
     'Mehrstufige Verzweigung',
-    'Bei Bereichen prüft man von oben nach unten. Sobald eine Bedingung zutrifft, wird nur dieser Zweig ausgeführt. Mit 72 Punkten ist die erste Bedingung falsch, die zweite wahr: Ausgabe „gut“.',
+    'Bei Bereichen prüft man von oben nach unten. Sobald eine Bedingung zutrifft, wird nur dieser Zweig ausgeführt. Mit 85 Punkten ist die erste Bedingung falsch, die zweite wahr: Ausgabe „gut“. Mit 72 Punkten wäre erst die dritte Bedingung wahr: „befriedigend“.',
     '''WENN punkte >= 92 DANN
   note ← "sehr gut"
 SONST WENN punkte >= 81 DANN
