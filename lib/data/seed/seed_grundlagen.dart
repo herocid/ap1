@@ -35,9 +35,9 @@ final List<Question> seedGrundlagen = [
           'Das Projekt muss inhaltlich und organisatorisch klar von der Linie und von anderen Projekten trennbar sein.'),
     ],
     explanation:
-        'Merksatz: E-Z-O-A - Einmaligkeit, Zielvorgabe mit Begrenzung, eigene '
-        'Organisation, Abgrenzung. Größe und Budget sind bewusst nicht Teil '
-        'der Definition; sonst wäre jede Norm länder- und branchenabhängig.',
+        'Merksatz: Einmaligkeit der Bedingungen, erkennbar an Zielvorgabe, '
+        'Begrenzung, Abgrenzung und eigener Organisation. Größe und Budget '
+        'sind nicht Teil der Definition.',
   ),
 
   Question(
@@ -340,7 +340,8 @@ final List<Question> seedGrundlagen = [
     ],
     explanation:
         'Rule of Ten: Ein Fehler, der in der Analyse 1 Euro kostet, kostet im '
-        'Entwurf 10, in der Implementierung 100 und beim Kunden 1.000 Euro. '
+        'Entwurf 10, in der Implementierung 100, im Test 1.000 und beim Kunden '
+        '10.000 Euro. '
         'Genau dagegen arbeiten früh geplante Tests (z. B. Testfälle schon '
         'aus dem Pflichtenheft) und agile '
         'Modelle (kurze Feedback-Schleifen).',
@@ -448,7 +449,7 @@ final List<Question> seedGrundlagen = [
       MatchItem(
         text: 'Definition of Done',
         bucket: 2,
-        rationale: 'Die DoD beschreibt, wann ein Increment wirklich fertig - also potenziell auslieferbar - ist.',
+        rationale: 'Die DoD beschreibt, wann ein Increment wirklich fertig - also nutzbar - ist.',
       ),
       MatchItem(
         text: 'Geordnete Liste aller bekannten Anforderungen an das Produkt',

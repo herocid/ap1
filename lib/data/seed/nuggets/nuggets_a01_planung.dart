@@ -298,7 +298,7 @@ final List<Nugget> nuggetsA01Planung = [
       [
         'Sprungfolge (AE)',
         'Anfang A -> Ende B',
-        'Altsystem läuft, bis das neue startet',
+        'Altsystem (B) läuft, bis das neue System (A) startet',
       ],
     ],
     points: [
