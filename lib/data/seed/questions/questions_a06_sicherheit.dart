@@ -1379,7 +1379,7 @@ final List<Question> questionsA06Sicherheit = [
         NetzVerbindung('fw', 'sw'),
         NetzVerbindung('sw', 'srv'),
         NetzVerbindung('sw', 'ap', label: 'VLAN 10 + 20'),
-        NetzVerbindung('ap', 'nb', label: 'SSID Praxis', funk: true),
+        NetzVerbindung('ap', 'nb', funk: true),
         NetzVerbindung('ap', 'gast', funk: true),
       ],
       zonen: [

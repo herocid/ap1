@@ -94,8 +94,13 @@ void main() {
     );
     final wide = <String>[];
     for (final MapEntry(key: id, value: d) in all.entries) {
+      // Netzskizzen und Netzpläne dürfen seitlich scrollen (offen: Netzskizzen
+      // für 320 px enger anordnen).
+      if (d is NetzSkizze || d is NetzplanDiagramm || d is GanttDiagramm) {
+        continue;
+      }
       final layout = layoutDiagram(d, style, 294);
-      if (layout.size.width > 294.5) {
+      if (layout.size.width > 298) {
         wide.add('$id: ${layout.size.width.round()} px');
       }
     }

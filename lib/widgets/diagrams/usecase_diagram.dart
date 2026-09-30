@@ -255,7 +255,11 @@ class _UseCaseLayout extends DiagramLayout {
     }
     casesRight = right;
     right += reserve;
-    boxRight = math.max(maxW, right + pad);
+    // Ein langes Einzelwort im Systemnamen kann breiter als maxW sein.
+    boxRight = math.max(
+      math.max(maxW, right + pad),
+      boxX + title.width + 2 * pad + 1,
+    );
     boxBottom = contentBottom + pad;
     size = Size(boxRight, math.max(boxBottom, actorsBottom) + 1);
   }

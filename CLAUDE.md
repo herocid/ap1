@@ -37,8 +37,12 @@ $env:Path = "C:\Users\Student\develop\flutter\bin;C:\Program Files\Git\cmd;C:\Pr
   Store-Qualität: keine abgeschnittenen Texte, keine Überläufe.
 - Maskottchen **Bit** (`lib/widgets/mascot.dart`), ein kleiner Roboter; führt in der
   Einführung (`/einfuehrung`) durch die App und gibt auf Start-, Quiz- und Ergebnisseite Tipps.
-- Tabs: Start · Journey (lernen) · Quiz (abgefragt werden) · Karten · Statistik.
-  Routen nur ASCII (`/pruefung`, nicht `/prüfung` - Umlaute brechen im Web).
+- Tabs: Start · Journey (lernen) · Quiz (abgefragt werden) · Karten · Statistik - kein
+  sechster Reiter. Routen nur ASCII (`/pruefung`, nicht `/prüfung` - Umlaute brechen im Web).
+- **Journey, Karteikarten und Quiz sind getrennt.** Die Journey lehrt allein alles (kein
+  Wissenscheck am Lektionsende, keine Verweise auf Quiz/Karten). Karten = auffrischen,
+  Quiz/Prüfung = abfragen. Verbunden werden die drei nur in den **Sessions nach
+  Themengebiet** auf der Startseite (`/session-bereich/:areaId`: Lernen -> Karten -> Quiz).
 - 20 Abzeichen (`Achievement` in `progress.dart`, Auswertung in
   `lib/core/util/achievements.dart`), stehen oben in der Statistik. Die Namen der ersten
   sieben Enum-Werte sind gespeichert und dürfen sich nicht ändern.
@@ -58,8 +62,12 @@ $env:Path = "C:\Users\Student\develop\flutter\bin;C:\Program Files\Git\cmd;C:\Pr
 (`lib/data/models/subtopic.dart`, Reihenfolge = Lernreihenfolge).
 
 Inhalte je Bereich in drei Dateien, gebaut mit den Helfern aus `lib/data/seed/builders.dart`
-(`konzept`, `vergleich`, `ablauf`, `formel`, `merke`, `falle`, `karte`, `einfach`,
-`mehrfach`, `rechnen`, `reihenfolge`, `zuordnen`, `ja`, `nein`, `zu`):
+(`konzept`, `vergleich`, `ablauf`, `formel`, `beispiel`, `skizze`, `merke`, `falle`, `karte`,
+`einfach`, `mehrfach`, `rechnen`, `reihenfolge`, `zuordnen`, `netzplanAufgabe`, `ja`, `nein`, `zu`).
+`beispiel` = durchgerechnetes Beispiel (Aufgabe, Lösungsweg, Ergebnis); `skizze` bzw. der
+Parameter `skizze:` = Zeichnung aus `lib/data/models/diagram.dart` (15 Arten, gezeichnet in
+`lib/widgets/diagrams/`, Stimmigkeit prüft `test/diagram_test.dart`, Geometrie
+`test/diagram_geometry_test.dart`):
 
 - `lib/data/seed/nuggets/nuggets_aNN_*.dart` -> in `nuggets_data.dart` registrieren
 - `lib/data/seed/cards/cards_aNN_*.dart` -> in `cards_data.dart` registrieren
@@ -95,6 +103,11 @@ Vorlage für Stil und Tiefe: `nuggets_a03_netze.dart`, `cards_a03_systeme.dart`,
 Alle 134 Lektionen haben Lernschritte, Aufgaben und Karten. `test/nuggets_layout_test.dart`
 rendert jeden Lernschritt bei 320 px mit 100 % und 130 % Schrift.
 
+Stand 01.10.2026: Journey vertieft auf rund 1.560 Lernschritte (10-15 je Lektion, über
+200 Zeichnungen und Rechenbeispiele), rund 1.040 Aufgaben und 1.020 Karten; von
+Prüf-Agenten nachgerechnet. Zielgröße je Lektion: 8-14 Lernschritte, mind. 6 Aufgaben,
+mind. 6 Karten (Test erzwingt weiter nur 4/3/4).
+
 ## Offen (Stand 30.09.2026)
 
 Store-Vorbereitung (Nutzer legt die Konten bei Google/Apple selbst an):
@@ -107,8 +120,17 @@ Store-Vorbereitung (Nutzer legt die Konten bei Google/Apple selbst an):
   Screenshots. Name „AP1 Coach“ in Stores und DPMA/EUIPO auf Verfügbarkeit prüfen.
 
 App:
-- Journey-Screen und Aufgabenansicht an das neue Kachel-Design (`ActionTile`) angleichen.
+- Aufgabenansicht an das Kachel-Design (`ActionTile`, `TileIcon`) angleichen.
+- Netzplan-Aufgabe läuft bei 320 px/130 % um 14 px über; Reihenfolge-Aufgaben lassen dem
+  Text wenig Breite.
+- Zeichnungen auf 320-px-Handys mit 130 % Schrift (Use Case, Netzskizze, Balken mit langen
+  Labels) - Geometrietest prüft bei 130 % erst ab 256 px; 11 Netzskizzen scrollen unter
+  ca. 340 px seitlich (Knoten enger setzen), lange Gantt-Diagramme ebenfalls.
 - Echte Push-Erinnerungen (Einstellung existiert, Benachrichtigung fehlt).
-- Dunkelmodus mit der neuen Farbwelt durchsehen.
+- Dunkelmodus der Screens aus Journey/Start/Aufgaben durchsehen.
+- Katalogthemen ohne eigene Lektion prüfen (von den Inhalts-Agenten gemeldet):
+  Sortier-/Suchalgorithmen, Sequenz-/Zustandsdiagramm, IEEE 754, JSON/XML/CSV,
+  strukturierte Verkabelung, MDM/BYOD, ISMS/Notfallmanagement, E-Mail-Sicherheit, NIS2,
+  Unternehmensziele, betriebliche Aufbauorganisation, Aufwandsschätzung.
 - Supabase-Projekt ist pausiert; die Live-App nutzt es nicht (kein Anon-Key in Vercel).
   Nach dem Fortsetzen die Seed-Datei einmal im SQL-Editor ausführen.

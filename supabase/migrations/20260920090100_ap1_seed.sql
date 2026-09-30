@@ -88,7 +88,7 @@ values (
   'multiple',
   null,
   'Welche Merkmale müssen nach DIN 69901 erfüllt sein, damit ein Vorhaben als Projekt gilt?',
-  'Merksatz: E-Z-O-A - Einmaligkeit, Zielvorgabe mit Begrenzung, eigene Organisation, Abgrenzung. Größe und Budget sind bewusst nicht Teil der Definition; sonst wäre jede Norm länder- und branchenabhängig.',
+  'Merksatz: Einmaligkeit der Bedingungen, erkennbar an Zielvorgabe, Begrenzung, Abgrenzung und eigener Organisation. Größe und Budget sind nicht Teil der Definition.',
   1,
   ARRAY['din69901', 'projektbegriff']::text[],
   null,
@@ -359,7 +359,7 @@ values (
   'single',
   null,
   'Warum sind Fehler aus der Analysephase im Wasserfallmodell besonders teuer?',
-  'Rule of Ten: Ein Fehler, der in der Analyse 1 Euro kostet, kostet im Entwurf 10, in der Implementierung 100 und beim Kunden 1.000 Euro. Genau dagegen arbeiten früh geplante Tests (z. B. Testfälle schon aus dem Pflichtenheft) und agile Modelle (kurze Feedback-Schleifen).',
+  'Rule of Ten: Ein Fehler, der in der Analyse 1 Euro kostet, kostet im Entwurf 10, in der Implementierung 100, im Test 1.000 und beim Kunden 10.000 Euro. Genau dagegen arbeiten früh geplante Tests (z. B. Testfälle schon aus dem Pflichtenheft) und agile Modelle (kurze Feedback-Schleifen).',
   3,
   ARRAY['wasserfall', 'fehlerkosten']::text[],
   null,
@@ -484,7 +484,7 @@ values (
   3,
   ARRAY['scrum', 'artefakte']::text[],
   null,
-  '{"buckets":["Product Backlog","Sprint Backlog","Increment"],"match_items":[{"text":"Product Goal","bucket":0,"rationale":"Das Product Goal ist das langfristige Ziel, auf das das Product Backlog einzahlt."},{"text":"Sprint Goal","bucket":1,"rationale":"Das Sprint Goal ist das eine Ziel des Sprints und gehört zum Sprint Backlog."},{"text":"Definition of Done","bucket":2,"rationale":"Die DoD beschreibt, wann ein Increment wirklich fertig - also potenziell auslieferbar - ist."},{"text":"Geordnete Liste aller bekannten Anforderungen an das Produkt","bucket":0,"rationale":"Das ist die Definition des Product Backlogs."},{"text":"Auswahl der Items plus Plan zur Umsetzung für die kommenden Wochen","bucket":1,"rationale":"Sprint Backlog = Sprint Goal + ausgewählte Items + Umsetzungsplan."},{"text":"Das konkrete, nutzbare Ergebnis am Ende des Sprints","bucket":2,"rationale":"Das Increment ist das Arbeitsergebnis, das die DoD erfüllt."}]}'::jsonb,
+  '{"buckets":["Product Backlog","Sprint Backlog","Increment"],"match_items":[{"text":"Product Goal","bucket":0,"rationale":"Das Product Goal ist das langfristige Ziel, auf das das Product Backlog einzahlt."},{"text":"Sprint Goal","bucket":1,"rationale":"Das Sprint Goal ist das eine Ziel des Sprints und gehört zum Sprint Backlog."},{"text":"Definition of Done","bucket":2,"rationale":"Die DoD beschreibt, wann ein Increment wirklich fertig - also nutzbar - ist."},{"text":"Geordnete Liste aller bekannten Anforderungen an das Produkt","bucket":0,"rationale":"Das ist die Definition des Product Backlogs."},{"text":"Auswahl der Items plus Plan zur Umsetzung für die kommenden Wochen","bucket":1,"rationale":"Sprint Backlog = Sprint Goal + ausgewählte Items + Umsetzungsplan."},{"text":"Das konkrete, nutzbare Ergebnis am Ende des Sprints","bucket":2,"rationale":"Das Increment ist das Arbeitsergebnis, das die DoD erfüllt."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -18408,7 +18408,7 @@ values (
   2,
   '{}',
   null,
-  '{"ordered_items":["Startknoten","Karte einstecken","PIN eingeben","Entscheidung [PIN korrekt?]","Betrag wählen","Karte ausgeben","Geld ausgeben","Endknoten"]}'::jsonb,
+  '{"ordered_items":["Startknoten","Karte einstecken","PIN eingeben","Entscheidung „PIN korrekt?“","Betrag wählen","Karte ausgeben","Geld ausgeben","Endknoten"]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -27281,7 +27281,7 @@ values (
   2,
   '{}',
   null,
-  '{"diagram":{"type":"netz","knoten":[{"id":"inet","label":"Internet","typ":"internet","x":2.0,"y":0.0},{"id":"fw","label":"Router/Firewall","typ":"firewall","x":2.0,"y":1.2},{"id":"sw","label":"Switch","typ":"switch_","x":2.0,"y":2.4},{"id":"srv","label":"Praxisserver","typ":"server","x":0.6,"y":3.8},{"id":"ap","label":"Access Point","typ":"accessPoint","x":3.4,"y":3.6},{"id":"nb","label":"Praxis-Notebook","typ":"laptop","x":1.8,"y":5.3},{"id":"gast","label":"Gast-Handy","typ":"smartphone","x":3.5,"y":5.3}],"verbindungen":[{"a":"inet","b":"fw"},{"a":"fw","b":"sw"},{"a":"sw","b":"srv"},{"a":"sw","b":"ap","label":"VLAN 10 + 20"},{"a":"ap","b":"nb","label":"SSID Praxis","funk":true},{"a":"ap","b":"gast","label":"SSID Gast","funk":true}],"zonen":[{"label":"VLAN 10 intern","x0":0.0,"y0":3.2,"x1":2.6,"y1":6.0},{"label":"VLAN 20 Gäste","x0":2.8,"y0":4.7,"x1":4.0,"y1":6.0}]},"choices":[{"text":"VLAN 20 -> Internet erlauben, VLAN 20 -> VLAN 10 verbieten","is_correct":true,"rationale":"Gäste kommen ins Internet, aber nie an den Praxisserver."},{"text":"VLAN 20 -> VLAN 10 erlauben, damit Gäste drucken können","is_correct":false,"rationale":"Damit stünde das interne Netz mit den Patientendaten für fremde Geräte offen."},{"text":"VLAN 20 komplett sperren, auch ins Internet","is_correct":false,"rationale":"Dann wäre das Gastnetz nutzlos."},{"text":"Keine Regel nötig, weil die SSIDs verschieden heißen","is_correct":false,"rationale":"Erst die Firewall-Regel zwischen den VLANs trennt die Netze wirksam."}]}'::jsonb,
+  '{"diagram":{"type":"netz","knoten":[{"id":"inet","label":"Internet","typ":"internet","x":2.0,"y":0.0},{"id":"fw","label":"Router/Firewall","typ":"firewall","x":2.0,"y":1.2},{"id":"sw","label":"Switch","typ":"switch_","x":2.0,"y":2.4},{"id":"srv","label":"Praxisserver","typ":"server","x":0.6,"y":3.8},{"id":"ap","label":"Access Point","typ":"accessPoint","x":3.4,"y":3.6},{"id":"nb","label":"Praxis-Notebook","typ":"laptop","x":1.0,"y":5.6},{"id":"gast","label":"Gast-Handy","typ":"smartphone","x":3.5,"y":5.6}],"verbindungen":[{"a":"inet","b":"fw"},{"a":"fw","b":"sw"},{"a":"sw","b":"srv"},{"a":"sw","b":"ap","label":"VLAN 10 + 20"},{"a":"ap","b":"nb","funk":true},{"a":"ap","b":"gast","funk":true}],"zonen":[{"label":"VLAN 10 intern","x0":0.0,"y0":3.2,"x1":2.6,"y1":6.0},{"label":"VLAN 20 Gäste","x0":2.8,"y0":5.0,"x1":4.0,"y1":6.0}]},"choices":[{"text":"VLAN 20 -> Internet erlauben, VLAN 20 -> VLAN 10 verbieten","is_correct":true,"rationale":"Gäste kommen ins Internet, aber nie an den Praxisserver."},{"text":"VLAN 20 -> VLAN 10 erlauben, damit Gäste drucken können","is_correct":false,"rationale":"Damit stünde das interne Netz mit den Patientendaten für fremde Geräte offen."},{"text":"VLAN 20 komplett sperren, auch ins Internet","is_correct":false,"rationale":"Dann wäre das Gastnetz nutzlos."},{"text":"Keine Regel nötig, weil die SSIDs verschieden heißen","is_correct":false,"rationale":"Erst die Firewall-Regel zwischen den VLANs trennt die Netze wirksam."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -32230,7 +32230,7 @@ on conflict (id) do update set
 -- Karteikarten ----------------------------------------------
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-org-01', 'projektorganisation', 'p-begriff', 'Projekt (DIN 69901)', 'Vorhaben mit Einmaligkeit der Bedingungen, zeitlicher/finanzieller/personeller Begrenzung, eigener Organisation und Abgrenzung gegenüber anderen Vorhaben.', 'Vier Haken: einmalig, begrenzt, eigene Organisation, abgegrenzt. Keine Mindestgröße, kein Mindestbudget.', '{}', 0)
+values ('c-org-01', 'projektorganisation', 'p-begriff', 'Projekt (DIN 69901)', 'Vorhaben mit Einmaligkeit der Bedingungen: Zielvorgabe, zeitliche/finanzielle/personelle Begrenzung, Abgrenzung gegenüber anderen Vorhaben und eigene Organisation.', 'Die Haken: einmalig, zielgerichtet, begrenzt, abgegrenzt, eigene Organisation. Keine Mindestgröße, kein Mindestbudget.', '{}', 0)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -32464,7 +32464,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-vor-04', 'vorgehensmodelle', 'v-wasserfall', 'Rule of Ten', 'Die Kosten der Fehlerbehebung verzehnfachen sich mit jeder Phase, in der der Fehler unentdeckt bleibt.', 'Analyse 1 Euro, Entwurf 10, Implementierung 100, beim Kunden 1.000.', '{}', 18)
+values ('c-vor-04', 'vorgehensmodelle', 'v-wasserfall', 'Rule of Ten', 'Die Kosten der Fehlerbehebung verzehnfachen sich mit jeder Phase, in der der Fehler unentdeckt bleibt.', 'Analyse 1 Euro, Entwurf 10, Implementierung 100, Test 1.000, beim Kunden 10.000.', '{}', 18)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -32984,7 +32984,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-tp-01', 'terminplanung', 't-psp', 'Projektstrukturplan (PSP)', 'Zerlegung des Projekts in Teilprojekte, Arbeitspakete und Vorgänge - die Grundlage jeder weiteren Planung.', 'Beantwortet das WAS, noch nicht das WANN.', '{}', 58)
+values ('c-tp-01', 'terminplanung', 't-psp', 'Projektstrukturplan (PSP)', 'Hierarchische Zerlegung des Projekts in Teilaufgaben und Arbeitspakete - die Grundlage jeder weiteren Planung.', 'Beantwortet das WAS, noch nicht das WANN.', '{}', 58)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -33023,7 +33023,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-tp-04', 'terminplanung', 't-gantt', 'Meilensteintrendanalyse (MTA)', 'Trägt die geplanten Meilensteintermine über die Berichtszeitpunkte auf.', 'Waagerecht = im Plan. Steigend = Verzug. Fallend = früher fertig. Zickzack = unsichere Planung.', '{}', 61)
+values ('c-tp-04', 'terminplanung', 't-gantt', 'Meilensteintrendanalyse (MTA)', 'Trägt die prognostizierten Meilensteintermine über die Berichtszeitpunkte auf.', 'Waagerecht = im Plan. Steigend = Verzug. Fallend = früher fertig. Zickzack = unsichere Planung.', '{}', 61)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -33166,7 +33166,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-ri-01', 'risikomanagement', 'r-bewertung', 'Risikowert (Erwartungswert)', 'Risikowert = Eintrittswahrscheinlichkeit x Schadenshöhe.', '20 % x 80.000 Euro = 16.000 Euro. Das ist zugleich die Obergrenze für sinnvolle Gegenmaßnahmen.', '{}', 72)
+values ('c-ri-01', 'risikomanagement', 'r-bewertung', 'Risikowert (Erwartungswert)', 'Risikowert = Eintrittswahrscheinlichkeit x Schadenshöhe.', '20 % x 80.000 Euro = 16.000 Euro. Eine Maßnahme lohnt sich wirtschaftlich, wenn sie den Risikowert stärker senkt, als sie kostet.', '{}', 72)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -33218,7 +33218,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-ri-05', 'risikomanagement', 'r-strategien', 'Risiko überwälzen', 'Ein Dritter trägt das Risiko: Versicherung, Festpreisvertrag, Auslagerung an einen Dienstleister.', null, '{}', 76)
+values ('c-ri-05', 'risikomanagement', 'r-strategien', 'Risiko überwälzen', 'Ein Dritter trägt die finanziellen Folgen: Versicherung, Festpreisvertrag, Auslagerung an einen Dienstleister. Das Ereignis kann weiterhin eintreten.', null, '{}', 76)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -33465,7 +33465,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-wi-11', 'pm_wirtschaftlichkeit', 'w-kalkulation', 'Stundensatz berechnen', '(Personalkosten + anteilige Gemeinkosten + Gewinnaufschlag) / produktive Stunden.', 'Produktive Stunden, nicht Anwesenheitsstunden - Urlaub, Krankheit und interne Zeiten gehen ab.', '{}', 95)
+values ('c-wi-11', 'pm_wirtschaftlichkeit', 'w-kalkulation', 'Stundensatz berechnen', 'Personalkosten pro Jahr / produktive Stunden pro Jahr. Gemeinkosten und Gewinn kommen erst in der Angebotskalkulation als Zuschläge dazu - nicht doppelt rechnen.', 'Produktive Stunden, nicht Anwesenheitsstunden - Urlaub, Krankheit und interne Zeiten gehen ab.', '{}', 95)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -33686,7 +33686,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-pb-1', 'projektorganisation', 'p-begriff', 'Vier Merkmale eines Projekts', 'Einmaligkeit, Zielvorgabe, Begrenzung (Zeit, Budget, Personal), eigene Projektorganisation.', 'Fehlt eines davon, ist es eine Linienaufgabe.', '{}', 112)
+values ('k-pb-1', 'projektorganisation', 'p-begriff', 'Merkmale eines Projekts (DIN 69901)', 'Einmaligkeit der Bedingungen, erkennbar an: Zielvorgabe, Begrenzung (Zeit, Budget, Personal), Abgrenzung gegenüber anderen Vorhaben, eigene Projektorganisation.', 'Fehlt eines davon, ist es eine Linienaufgabe.', '{}', 112)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -44190,7 +44190,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-xg-2', 'datenschutz', 'ds-grundlagen', 'Besondere Kategorien (Art. 9)', 'Gesundheit, ethnische Herkunft, Religion, politische Meinung, Gewerkschaft, genetische und biometrische Daten, Sexualleben.', null, '{}', 920)
+values ('k-xg-2', 'datenschutz', 'ds-grundlagen', 'Besondere Kategorien (Art. 9)', 'Gesundheit, ethnische Herkunft, Religion, politische Meinung, Gewerkschaft, genetische Daten, Biometrie zur Identifizierung, Sexualleben.', null, '{}', 920)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
