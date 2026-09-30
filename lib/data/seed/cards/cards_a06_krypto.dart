@@ -265,7 +265,7 @@ final List<Flashcard> cardsA06Krypto = [
     'k-xg-2',
     'ds-grundlagen',
     'Besondere Kategorien (Art. 9)',
-    'Gesundheit, ethnische Herkunft, Religion, politische Meinung, Gewerkschaft, genetische und biometrische Daten, Sexualleben.',
+    'Gesundheit, ethnische Herkunft, Religion, politische Meinung, Gewerkschaft, genetische Daten, Biometrie zur Identifizierung, Sexualleben.',
   ),
   karte(
     'k-xg-3',

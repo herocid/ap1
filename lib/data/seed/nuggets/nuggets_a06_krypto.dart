@@ -364,7 +364,7 @@ final List<Nugget> nuggetsA06Krypto = [
       [
         Nachricht(0, 1, 'Client Hello + DH-Anteil'),
         Nachricht(1, 0, 'Server Hello + DH-Anteil', antwort: true),
-        Nachricht(1, 0, 'Zertifikat + Signatur', antwort: true),
+        Nachricht(1, 0, 'Zertifikat + Signatur + Finished', antwort: true),
         Nachricht(0, 1, 'Finished'),
         Nachricht(0, 1, 'Daten (AES)'),
         Nachricht(1, 0, 'Daten (AES)', antwort: true),
@@ -1003,7 +1003,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'Der Datenschutzbeauftragte (DSB) berät das Unternehmen und überwacht die Einhaltung des Datenschutzes. Er kann intern (Beschäftigter) oder extern (Dienstleister) sein, arbeitet weisungsfrei und darf wegen seiner Aufgabe nicht benachteiligt werden.',
     points: [
       'Pflicht nach § 38 BDSG: in der Regel mindestens 20 Personen ständig mit der automatisierten Verarbeitung personenbezogener Daten beschäftigt',
-      'unabhängig von der Zahl: wenn eine Datenschutz-Folgenabschätzung nötig ist oder die Kerntätigkeit umfangreich besondere Kategorien bzw. Überwachung betrifft (Art. 37)',
+      'unabhängig von der Zahl: wenn eine Datenschutz-Folgenabschätzung nötig ist (§ 38 BDSG) oder die Kerntätigkeit umfangreich besondere Kategorien bzw. Überwachung betrifft (Art. 37 DSGVO)',
       'Aufgaben (Art. 39): unterrichten und beraten, Einhaltung überwachen, Schulungen, Anlaufstelle für die Aufsichtsbehörde',
     ],
   ),

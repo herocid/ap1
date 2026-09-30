@@ -1086,7 +1086,7 @@ final List<Question> questionsA04Entwicklung = [
       'Startknoten',
       'Karte einstecken',
       'PIN eingeben',
-      'Entscheidung [PIN korrekt?]',
+      'Entscheidung „PIN korrekt?“',
       'Betrag wählen',
       'Karte ausgeben',
       'Geld ausgeben',
