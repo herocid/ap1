@@ -103,12 +103,14 @@ class ReadinessRing extends StatelessWidget {
   final String? caption;
   final double size;
 
+  /// Bewusst kein Rot am unteren Ende: Wer gerade anfängt, ist nicht
+  /// "im Fehler", sondern am Anfang. Rot bleibt falschen Antworten
+  /// vorbehalten.
   Color _colorFor(BuildContext context) {
     final c = context.c;
     if (value >= 80) return c.success;
     if (value >= 60) return context.scheme.primary;
-    if (value >= 35) return c.flame;
-    return c.danger;
+    return c.flame;
   }
 
   @override
@@ -139,12 +141,13 @@ class ReadinessRing extends StatelessWidget {
                     color: color,
                   ),
                 ),
-                Text(
-                  label,
-                  textAlign: TextAlign.center,
-                  style: context.text.labelSmall
-                      ?.copyWith(color: context.c.textMuted),
-                ),
+                if (label.isNotEmpty)
+                  Text(
+                    label,
+                    textAlign: TextAlign.center,
+                    style: context.text.labelSmall
+                        ?.copyWith(color: context.c.textMuted),
+                  ),
                 if (caption != null)
                   Text(
                     caption!,
@@ -597,30 +600,41 @@ class EmptyState extends StatelessWidget {
   final String message;
   final Widget? action;
 
+  /// Zentriert, scrollt aber, wenn der Platz nicht reicht - auf kleinen
+  /// Handys mit großer Systemschrift lief der Text sonst unten heraus.
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(Gap.xl),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 44, color: context.c.textMuted),
-            const SizedBox(height: Gap.l),
-            Text(title, style: context.text.titleMedium),
-            const SizedBox(height: Gap.s),
-            Text(
-              message,
-              textAlign: TextAlign.center,
-              style:
-                  context.text.bodyMedium?.copyWith(color: context.c.textMuted),
-            ),
-            if (action != null) ...[
-              const SizedBox(height: Gap.xl),
-              action!,
-            ],
-          ],
+    return LayoutBuilder(
+      builder: (context, box) => SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: box.maxHeight),
+          child: Center(child: _content(context)),
         ),
+      ),
+    );
+  }
+
+  Widget _content(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(Gap.xl),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 44, color: context.c.textMuted),
+          const SizedBox(height: Gap.l),
+          Text(title, style: context.text.titleMedium),
+          const SizedBox(height: Gap.s),
+          Text(
+            message,
+            textAlign: TextAlign.center,
+            style:
+                context.text.bodyMedium?.copyWith(color: context.c.textMuted),
+          ),
+          if (action != null) ...[
+            const SizedBox(height: Gap.xl),
+            action!,
+          ],
+        ],
       ),
     );
   }

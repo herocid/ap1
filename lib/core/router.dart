@@ -7,6 +7,7 @@ import '../features/cards/cards_overview_screen.dart';
 import '../features/dashboard/area_detail_screen.dart';
 import '../features/dashboard/areas_screen.dart';
 import '../features/dashboard/dashboard_screen.dart';
+import '../features/feed/feed_screen.dart';
 import '../features/info/catalog_changes_screen.dart';
 import '../features/exam/exam_intro_screen.dart';
 import '../features/learn/result_screen.dart';
@@ -71,6 +72,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         parentNavigatorKey: _rootKey,
         builder: (context, state) => const CatalogChangesScreen(),
       ),
+      GoRoute(
+        path: '/einstellungen',
+        parentNavigatorKey: _rootKey,
+        builder: (context, state) => const SettingsScreen(),
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, shell) => AppShell(navigationShell: shell),
         branches: [
@@ -93,6 +99,14 @@ final routerProvider = Provider<GoRouter>((ref) {
           StatefulShellBranch(
             routes: [
               GoRoute(
+                path: '/feed',
+                builder: (context, state) => const FeedScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
                 path: '/karten',
                 builder: (context, state) => const CardsOverviewScreen(),
               ),
@@ -103,14 +117,6 @@ final routerProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: '/statistik',
                 builder: (context, state) => const StatsScreen(),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: '/einstellungen',
-                builder: (context, state) => const SettingsScreen(),
               ),
             ],
           ),

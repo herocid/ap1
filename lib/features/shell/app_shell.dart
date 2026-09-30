@@ -8,19 +8,20 @@ import '../../core/theme/app_spacing.dart';
 ///
 /// Unter 900 px eine BottomBar (Daumen erreicht sie), darüber eine
 /// NavigationRail (der Platz ist da, und eine BottomBar auf einem 27-Zoll-
-/// Monitor sieht falsch aus). Vier Ziele - mehr passt weder in die Leiste
-/// noch in den Kopf.
+/// Monitor sieht falsch aus). Fünf Ziele sind die Obergrenze; die
+/// Einstellungen liegen deshalb als Symbol auf der Startseite statt in der
+/// Leiste.
 class AppShell extends StatelessWidget {
   const AppShell({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
 
   static const _destinations = <({IconData icon, IconData active, String label})>[
-    (icon: Icons.home_outlined, active: Icons.home, label: 'Start'),
-    (icon: Icons.category_outlined, active: Icons.category, label: 'Katalog'),
+    (icon: Icons.home_outlined, active: Icons.home_rounded, label: 'Start'),
+    (icon: Icons.menu_book_outlined, active: Icons.menu_book, label: 'Lernen'),
+    (icon: Icons.dynamic_feed_outlined, active: Icons.dynamic_feed, label: 'Feed'),
     (icon: Icons.style_outlined, active: Icons.style, label: 'Karten'),
     (icon: Icons.insights_outlined, active: Icons.insights, label: 'Statistik'),
-    (icon: Icons.settings_outlined, active: Icons.settings, label: 'Mehr'),
   ];
 
   void _onTap(int index) => navigationShell.goBranch(

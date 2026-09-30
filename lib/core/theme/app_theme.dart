@@ -25,10 +25,28 @@ class AppTheme {
       brightness: brightness,
     ).copyWith(
       primary: isDark ? AppColors.brandDark : AppColors.brand,
-      onPrimary: isDark ? const Color(0xFF17172A) : Colors.white,
+      onPrimary: isDark ? const Color(0xFF121826) : Colors.white,
+      // fromSeed leitet Neben- und Containertöne selbst ab - die können
+      // violett-stichig ausfallen (z. B. ausgewählte Chips). Deshalb alles,
+      // was Material-Widgets von selbst benutzen, explizit aus der Palette.
+      primaryContainer:
+          isDark ? const Color(0xFF263047) : const Color(0xFFE3E7EF),
+      onPrimaryContainer: isDark ? AppColors.darkText : AppColors.brand,
+      secondary: isDark ? AppColors.brandDark : AppColors.brand,
+      onSecondary: isDark ? const Color(0xFF121826) : Colors.white,
+      secondaryContainer:
+          isDark ? const Color(0xFF263047) : const Color(0xFFE3E7EF),
+      onSecondaryContainer: isDark ? AppColors.darkText : AppColors.brand,
+      tertiary: isDark ? AppColors.flameDark : AppColors.flame,
+      onTertiary: isDark ? const Color(0xFF1C160B) : Colors.white,
       surface: isDark ? AppColors.darkSurface : AppColors.lightSurface,
       onSurface: isDark ? AppColors.darkText : AppColors.lightText,
+      onSurfaceVariant:
+          isDark ? AppColors.darkTextMuted : AppColors.lightTextMuted,
+      surfaceContainerHighest:
+          isDark ? AppColors.darkSurfaceAlt : AppColors.lightSurfaceAlt,
       error: isDark ? AppColors.dangerDark : AppColors.danger,
+      outline: isDark ? AppColors.darkBorder : AppColors.lightBorder,
       outlineVariant: isDark ? AppColors.darkBorder : AppColors.lightBorder,
     );
 
@@ -187,7 +205,7 @@ class AppTheme {
       navigationBarTheme: NavigationBarThemeData(
         backgroundColor: isDark ? AppColors.darkSurface : AppColors.lightSurface,
         surfaceTintColor: Colors.transparent,
-        indicatorColor: scheme.primary.withValues(alpha: 0.16),
+        indicatorColor: scheme.primaryContainer,
         elevation: 0,
         height: 68,
         labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
@@ -201,7 +219,7 @@ class AppTheme {
       ),
       navigationRailTheme: NavigationRailThemeData(
         backgroundColor: isDark ? AppColors.darkSurface : AppColors.lightSurface,
-        indicatorColor: scheme.primary.withValues(alpha: 0.16),
+        indicatorColor: scheme.primaryContainer,
         selectedLabelTextStyle:
             textTheme.labelSmall!.copyWith(color: scheme.primary),
         unselectedLabelTextStyle: textTheme.labelSmall!.copyWith(

@@ -273,8 +273,8 @@ class _BerufStep extends StatelessWidget {
     return _StepScaffold(
       title: 'Dein Ausbildungsberuf',
       subtitle:
-          'Der Projektmanagement-Teil ist für alle IT-Berufe gleich. Wir '
-          'nutzen den Beruf nur, um Beispiele passend zu wählen.',
+          'Die AP1 ist für alle IT-Berufe gleich. Wir nutzen den Beruf nur, '
+          'um Beispiele passend zu wählen.',
       child: Column(
         children: [
           for (final b in Beruf.values) ...[

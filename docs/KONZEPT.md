@@ -49,23 +49,30 @@ Bett benutzt. Drei Konsequenzen:
 
 Token in [`lib/core/theme/app_colors.dart`](../lib/core/theme/app_colors.dart).
 
+Farbwelt **„Tinte und Messing"**:
+
 | Rolle | Hell | Dunkel | Wofür |
 | --- | --- | --- | --- |
-| Marke | `#5A4FCF` | `#8B83F0` | Primäraktion, aktiver Zustand, Fokus |
-| Erfolg | `#15803D` | `#4ADE80` | richtige Antwort, Ziel erreicht |
-| Streak | `#EA580C` | `#FB923C` | Serie, kritischer Pfad, Zeitwarnung |
-| Fehler | `#BE123C` | `#FB7185` | falsche Antwort |
-| Hinweis | `#0E7490` | `#22D3EE` | Erklärungen, Merksätze |
-| Hintergrund | `#F7F7FB` | `#0E0E13` | Seitenfläche |
-| Karte | `#FFFFFF` | `#17171F` | erhöhte Fläche |
+| Marke (Tinte) | `#1F2A44` | `#A9B9D6` | Primäraktion, aktiver Zustand, Fokus |
+| Erfolg | `#2F6B4F` | `#6FBF93` | richtige Antwort, Ziel erreicht |
+| Messing | `#A8792A` | `#D4A95A` | Streak, Tagesziel, kritischer Pfad, Zeitwarnung |
+| Fehler | `#A63D32` | `#E58A7F` | falsche Antwort |
+| Hinweis | `#2F5D7C` | `#8DB3D1` | Erklärungen, Merksätze |
+| Hintergrund | `#F6F4EF` | `#121211` | Seitenfläche |
+| Karte | `#FFFDF8` | `#1A1A19` | erhöhte Fläche |
 
 Drei bewusste Entscheidungen:
 
-- **Indigo-Violett statt des üblichen EdTech-Blaus.** Gesättigtes Blau wirkt
-  bei 40 Minuten Bildschirmzeit hart; das Violett ist ruhiger und hebt sich
-  von der Konkurrenz ab.
-- **Dunkelmodus ist nicht schwarz, sondern `#0E0E13`.** Auf OLED „schwimmt"
-  weißer Text auf reinem Schwarz sichtbar.
+- **Tintenblau und Messing statt Violett.** Indigo-Violett mit Verläufen ist
+  der Standard-Look generischer KI- und EdTech-Apps. Tinte auf warmem Papier
+  mit einem einzigen warmen Akzent wirkt wertiger, ruhiger und eigenständig.
+  Neben- und Containertöne von Material werden explizit gesetzt, damit
+  `ColorScheme.fromSeed` keine violetten Töne einschleust.
+- **Kein Rot für niedrige Prüfungsreife.** Wer anfängt, ist nicht „im
+  Fehler". Rot bleibt falschen Antworten vorbehalten; die Reife läuft von
+  Messing über Tinte zu Grün.
+- **Dunkelmodus ist nicht schwarz, sondern warmes Anthrazit `#121211`.** Auf
+  OLED „schwimmt" weißer Text auf reinem Schwarz sichtbar.
 - **Semantik nie nur über Farbe.** Jede Rückmeldung trägt zusätzlich ein
   Icon (Haken / Kreuz / Ziel) und einen Text. Rot-Grün-Schwäche betrifft
   etwa 8 % der männlichen Azubis — in einer Zielgruppe, die überwiegend

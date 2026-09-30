@@ -50,6 +50,8 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.textContaining('Moin'), findsOneWidget);
-    expect(find.text('Prüfungsreife'), findsOneWidget);
+    expect(find.text('Heutiges Ziel'), findsOneWidget);
+    expect(find.text('Heute starten'), findsOneWidget);
+    expect(find.text('Querbeet'), findsOneWidget);
   });
 }

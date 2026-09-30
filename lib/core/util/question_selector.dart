@@ -86,6 +86,40 @@ class QuestionSelector {
     return scored.take(count).map((e) => e.$1).toList();
   }
 
+  /// Querbeet: bunt gemischt über alle Themen, bewusst ohne Gewichtung nach
+  /// Schwächen. Die Themen werden reihum gezogen, damit nicht zufällig fünf
+  /// Aufgaben aus demselben Thema hintereinander kommen.
+  static List<Question> forMix({
+    required List<Question> pool,
+    int count = 15,
+    int? seed,
+  }) {
+    final rnd = math.Random(seed ?? DateTime.now().millisecondsSinceEpoch);
+    final byTopic = <String, List<Question>>{};
+    for (final q in pool.where((q) => q.isExamRelevant)) {
+      byTopic.putIfAbsent(q.topicId, () => []).add(q);
+    }
+    for (final list in byTopic.values) {
+      list.shuffle(rnd);
+    }
+    final topics = byTopic.keys.toList()..shuffle(rnd);
+
+    final picked = <Question>[];
+    for (var round = 0; picked.length < count; round++) {
+      var any = false;
+      for (final t in topics) {
+        final list = byTopic[t]!;
+        if (round < list.length) {
+          picked.add(list[round]);
+          any = true;
+          if (picked.length >= count) break;
+        }
+      }
+      if (!any) break;
+    }
+    return picked;
+  }
+
   /// Aufgabenmix für die Prüfungssimulation.
   ///
   /// Die Themen werden nach ihrem geschätzten Punkteanteil in der AP1

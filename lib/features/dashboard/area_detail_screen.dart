@@ -172,28 +172,34 @@ class _TopicTile extends StatelessWidget {
                     ?.copyWith(color: context.c.textMuted),
               ),
               const SizedBox(height: Gap.s),
+              // Karten und Üben teilen sich die Restbreite - mit festen
+              // Breiten lief die Zeile auf schmalen Handys über.
               Row(
                 children: [
                   TextButton(onPressed: onTheory, child: const Text('Theorie')),
-                  const Spacer(),
+                  const SizedBox(width: Gap.s),
                   if (cards > 0)
-                    OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        minimumSize: const Size(0, 38),
-                        padding: const EdgeInsets.symmetric(horizontal: Gap.m),
+                    Expanded(
+                      child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          minimumSize: const Size(0, 40),
+                          padding: const EdgeInsets.symmetric(horizontal: Gap.s),
+                        ),
+                        onPressed: onCards,
+                        child: const Text('Karten'),
                       ),
-                      onPressed: onCards,
-                      child: const Text('Karten'),
                     ),
                   if (cards > 0 && questions > 0) const SizedBox(width: Gap.s),
                   if (questions > 0)
-                    FilledButton(
-                      style: FilledButton.styleFrom(
-                        minimumSize: const Size(0, 38),
-                        padding: const EdgeInsets.symmetric(horizontal: Gap.l),
+                    Expanded(
+                      child: FilledButton(
+                        style: FilledButton.styleFrom(
+                          minimumSize: const Size(0, 40),
+                          padding: const EdgeInsets.symmetric(horizontal: Gap.s),
+                        ),
+                        onPressed: onPractice,
+                        child: const Text('Üben'),
                       ),
-                      onPressed: onPractice,
-                      child: const Text('Üben'),
                     ),
                 ],
               ),

@@ -144,7 +144,7 @@ class StudyPlanner {
   static String _reasonFor(Topic t, TopicStat? st) {
     final weightPct = (t.weight * 100).round();
     if (st == null || st.answered == 0) {
-      return 'Noch nicht begonnen, rund $weightPct % der PM-Punkte.';
+      return 'Noch nicht begonnen, rund $weightPct % der AP1-Punkte.';
     }
     if (st.mastery < 0.5) {
       return 'Trefferquote erst ${(st.mastery * 100).round()} % bei '

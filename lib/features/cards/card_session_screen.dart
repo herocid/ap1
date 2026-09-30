@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -136,7 +138,8 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
                     color: context.scheme.primary,
                   ),
                   const SizedBox(height: Gap.l),
-                  _CardFace(
+                  _FlipCard(
+                    key: ValueKey(card.id),
                     card: card,
                     revealed: _revealed,
                     onTap: () => setState(() => _revealed = true),
@@ -310,10 +313,15 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
   }
 }
 
-/// Die eigentliche Karte. Vorderseite kurz, Rückseite erst nach dem Tippen -
-/// wer die Antwort schon sieht, lernt nichts.
-class _CardFace extends StatelessWidget {
-  const _CardFace({
+/// Die Karte mit echter 3D-Drehung um die Hochachse.
+///
+/// Vorderseite zuerst, Rückseite erst nach dem Tippen - wer die Antwort
+/// schon sieht, lernt nichts. Bei "Animationen reduzieren" springt sie
+/// direkt um. Der Schlüssel je Karte sorgt dafür, dass jede neue Karte
+/// wieder mit der Vorderseite beginnt.
+class _FlipCard extends StatefulWidget {
+  const _FlipCard({
+    super.key,
     required this.card,
     required this.revealed,
     required this.onTap,
@@ -324,93 +332,207 @@ class _CardFace extends StatelessWidget {
   final VoidCallback onTap;
 
   @override
+  State<_FlipCard> createState() => _FlipCardState();
+}
+
+class _FlipCardState extends State<_FlipCard>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _ctrl = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 520),
+    value: widget.revealed ? 1 : 0,
+  );
+  late final Animation<double> _turn =
+      CurvedAnimation(parent: _ctrl, curve: Curves.easeInOutCubic);
+
+  @override
+  void didUpdateWidget(_FlipCard old) {
+    super.didUpdateWidget(old);
+    if (widget.revealed && !old.revealed) {
+      if (MediaQuery.of(context).disableAnimations) {
+        _ctrl.value = 1;
+      } else {
+        _ctrl.forward();
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: revealed ? null : onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        width: double.infinity,
-        constraints: const BoxConstraints(minHeight: 220),
-        padding: const EdgeInsets.all(Gap.xl),
-        decoration: BoxDecoration(
-          color: context.scheme.surface,
-          borderRadius: BorderRadius.circular(Radii.l),
-          border: Border.all(
-            color: revealed ? context.scheme.primary : context.c.border,
-            width: revealed ? 2 : 1,
+    return Semantics(
+      button: !widget.revealed,
+      label: widget.revealed ? null : 'Karte umdrehen',
+      child: GestureDetector(
+        onTap: widget.revealed ? null : widget.onTap,
+        child: AnimatedSize(
+          duration: const Duration(milliseconds: 260),
+          curve: Curves.easeOutCubic,
+          alignment: Alignment.topCenter,
+          child: AnimatedBuilder(
+            animation: _turn,
+            builder: (context, _) {
+              final angle = _turn.value * math.pi;
+              final back = angle > math.pi / 2;
+              final face = back
+                  ? _CardBack(card: widget.card)
+                  : _CardFront(card: widget.card);
+              return Transform(
+                alignment: Alignment.center,
+                // setEntry(3, 2, …) erzeugt die Perspektive; ohne sie wirkt
+                // die Drehung wie ein flaches Zusammenstauchen.
+                transform: Matrix4.identity()
+                  ..setEntry(3, 2, 0.0012)
+                  ..rotateY(angle),
+                child: back
+                    ? Transform(
+                        alignment: Alignment.center,
+                        transform: Matrix4.rotationY(math.pi),
+                        child: face,
+                      )
+                    : face,
+              );
+            },
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              'Vorderseite',
-              style:
-                  context.text.labelSmall?.copyWith(color: context.c.textMuted),
-            ),
-            const SizedBox(height: Gap.s),
-            Text(card.front, style: context.text.headlineSmall),
-            if (!revealed) ...[
-              const SizedBox(height: Gap.xl),
-              Row(
+      ),
+    );
+  }
+}
+
+class _Face extends StatelessWidget {
+  const _Face({required this.child, this.accent = false});
+
+  final Widget child;
+  final bool accent;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      constraints: const BoxConstraints(minHeight: 260),
+      padding: const EdgeInsets.all(Gap.xl),
+      decoration: BoxDecoration(
+        color: context.scheme.surface,
+        borderRadius: BorderRadius.circular(Radii.xl),
+        border: Border.all(
+          color: accent
+              ? context.scheme.primary.withValues(alpha: 0.55)
+              : context.c.border,
+          width: accent ? 1.5 : 1,
+        ),
+      ),
+      child: child,
+    );
+  }
+}
+
+class _FaceLabel extends StatelessWidget {
+  const _FaceLabel(this.text);
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text.toUpperCase(),
+      style: context.text.labelSmall
+          ?.copyWith(color: context.c.textMuted, letterSpacing: 1.3),
+    );
+  }
+}
+
+class _CardFront extends StatelessWidget {
+  const _CardFront({required this.card});
+  final Flashcard card;
+
+  @override
+  Widget build(BuildContext context) {
+    return _Face(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const _FaceLabel('Frage'),
+          const SizedBox(height: Gap.m),
+          Text(card.front, style: context.text.headlineSmall),
+          const SizedBox(height: Gap.xxl),
+          Row(
+            children: [
+              Icon(Icons.touch_app_outlined,
+                  size: 16, color: context.c.textMuted),
+              const SizedBox(width: Gap.s),
+              // Ohne Expanded läuft der Hinweis auf schmalen Displays aus der
+              // Karte heraus.
+              Expanded(
+                child: Text(
+                  'Erst selbst beantworten, dann antippen zum Umdrehen',
+                  style: context.text.labelSmall
+                      ?.copyWith(color: context.c.textMuted),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _CardBack extends StatelessWidget {
+  const _CardBack({required this.card});
+  final Flashcard card;
+
+  @override
+  Widget build(BuildContext context) {
+    return _Face(
+      accent: true,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const _FaceLabel('Antwort'),
+          const SizedBox(height: Gap.s),
+          Text(
+            card.front,
+            style: context.text.titleMedium
+                ?.copyWith(color: context.c.textMuted),
+          ),
+          const SizedBox(height: Gap.m),
+          Divider(color: context.c.border),
+          const SizedBox(height: Gap.m),
+          Text(card.back, style: context.text.bodyLarge),
+          if (card.hint != null) ...[
+            const SizedBox(height: Gap.l),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(Gap.m),
+              decoration: BoxDecoration(
+                color: context.c.infoBg,
+                borderRadius: BorderRadius.circular(Radii.m),
+                border: Border.all(color: context.c.info.withValues(alpha: 0.3)),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.touch_app_outlined,
-                      size: 16, color: context.c.textMuted),
-                  const SizedBox(width: Gap.s),
-                  // Ohne Expanded läuft der Hinweis auf schmalen Displays
-                  // aus der Karte heraus.
+                  Icon(Icons.lightbulb_outline, size: 17, color: context.c.info),
+                  const SizedBox(width: Gap.m),
                   Expanded(
                     child: Text(
-                      'Erst selbst beantworten, dann tippen zum Umdrehen',
-                      style: context.text.labelSmall
-                          ?.copyWith(color: context.c.textMuted),
+                      card.hint!,
+                      style: context.text.bodyMedium
+                          ?.copyWith(color: context.c.info),
                     ),
                   ),
                 ],
               ),
-            ] else ...[
-              const SizedBox(height: Gap.l),
-              Divider(color: context.c.border),
-              const SizedBox(height: Gap.l),
-              Text(
-                'Rückseite',
-                style: context.text.labelSmall
-                    ?.copyWith(color: context.c.textMuted),
-              ),
-              const SizedBox(height: Gap.s),
-              Text(card.back, style: context.text.bodyLarge),
-              if (card.hint != null) ...[
-                const SizedBox(height: Gap.l),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(Gap.m),
-                  decoration: BoxDecoration(
-                    color: context.c.infoBg,
-                    borderRadius: BorderRadius.circular(Radii.m),
-                    border:
-                        Border.all(color: context.c.info.withValues(alpha: 0.3)),
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(Icons.lightbulb_outline,
-                          size: 17, color: context.c.info),
-                      const SizedBox(width: Gap.m),
-                      Expanded(
-                        child: Text(
-                          card.hint!,
-                          style: context.text.bodyMedium
-                              ?.copyWith(color: context.c.info),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ],
+            ),
           ],
-        ),
+        ],
       ),
     );
   }

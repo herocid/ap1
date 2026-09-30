@@ -59,6 +59,21 @@ class SessionLauncher {
     context.push('/session');
   }
 
+  static void querbeet(BuildContext context, WidgetRef ref, {int count = 15}) {
+    final questions = QuestionSelector.forMix(
+      pool: ref.read(questionsProvider),
+      count: count,
+    );
+    if (questions.isEmpty) return;
+
+    ref.read(sessionProvider.notifier).start(
+          questions: questions,
+          mode: SessionMode.uebung,
+          title: 'Querbeet',
+        );
+    context.push('/session');
+  }
+
   static void exam(
     BuildContext context,
     WidgetRef ref, {
