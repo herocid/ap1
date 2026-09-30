@@ -88,5 +88,20 @@ Vorlage für Stil und Tiefe: `nuggets_a03_netze.dart`, `cards_a03_systeme.dart`,
 Alle 134 Lektionen haben Lernschritte, Aufgaben und Karten. `test/nuggets_layout_test.dart`
 rendert jeden Lernschritt bei 320 px mit 100 % und 130 % Schrift.
 
-Offen: iOS-Icons ohne Alphakanal für den App Store; Journey-Screen und
-Aufgabenansicht an das neue Kachel-Design (`ActionTile`) angleichen.
+## Offen (Stand 30.09.2026)
+
+Store-Vorbereitung (Nutzer legt die Konten bei Google/Apple selbst an):
+- Android: Release-Signatur einrichten (build.gradle signiert Release noch mit Debug-Key),
+  `flutter build appbundle`. Neue Play-Privatkonten brauchen 14 Tage geschlossenen Test
+  mit mind. 12 Testern.
+- iOS: Icons ohne Alphakanal erzeugen (`tool/generate_icons_test.dart`), Build über
+  Codemagic (Nutzer arbeitet unter Windows, kein Mac), dann TestFlight und Review.
+- Datenschutzerklärung und Impressum (Stores verlangen eine Datenschutz-URL), Store-Texte,
+  Screenshots. Name „AP1 Coach“ in Stores und DPMA/EUIPO auf Verfügbarkeit prüfen.
+
+App:
+- Journey-Screen und Aufgabenansicht an das neue Kachel-Design (`ActionTile`) angleichen.
+- Echte Push-Erinnerungen (Einstellung existiert, Benachrichtigung fehlt).
+- Dunkelmodus mit der neuen Farbwelt durchsehen.
+- Supabase-Projekt ist pausiert; die Live-App nutzt es nicht (kein Anon-Key in Vercel).
+  Nach dem Fortsetzen die Seed-Datei einmal im SQL-Editor ausführen.
