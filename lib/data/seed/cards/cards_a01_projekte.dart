@@ -171,7 +171,7 @@ final List<Flashcard> cardsA01 = [
   _f('c-scr-09', 'agil_scrum', 'Review vs. Retrospective',
       'Review = das Produkt, mit Stakeholdern. Retrospective = die Zusammenarbeit, nur das Scrum Team. Das Review kommt zuerst.'),
   _f('c-scr-10', 'agil_scrum', 'Definition of Done',
-      'Teamweit gültige Checkliste, wann ein Increment wirklich fertig und potenziell auslieferbar ist.',
+      'Teamweit gültige Checkliste, wann ein Increment wirklich fertig ist - laut Scrum Guide 2020 ein nutzbares Increment, das die Qualitätsanforderungen erfüllt.',
       'Gilt für JEDE Story. Nicht verwechseln mit Akzeptanzkriterien, die pro Story gelten.'),
   _f('c-scr-11', 'agil_scrum', 'Akzeptanzkriterien',
       'Fachliche, prüfbare Bedingungen einer einzelnen User Story.',
