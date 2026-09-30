@@ -860,7 +860,7 @@ final List<Nugget> nuggetsA03Systeme = [
     points: [
       'Arbeitsschutzgesetz: Gefährdungsbeurteilung ist Pflicht des Arbeitgebers',
       'Technische Regeln für Arbeitsstätten (ASR) nennen konkrete Werte, etwa für Licht und Temperatur',
-      'Beschäftigte können eine Untersuchung der Augen verlangen; eine nötige Bildschirmbrille zahlt der Arbeitgeber',
+      'Der Arbeitgeber muss eine Untersuchung der Augen anbieten; eine nötige Bildschirmbrille bezahlt er',
     ],
   ),
   vergleich(

@@ -1,4 +1,4 @@
-﻿import '../../models/nugget.dart';
+import '../../models/nugget.dart';
 import '../builders.dart';
 
 /// Lernschritte Bereich 03, Teil 2: Anwendungssysteme, Netzwerke und Cloud.
