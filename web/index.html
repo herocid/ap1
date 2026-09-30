@@ -18,21 +18,59 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="AP1 Coach - Lern-App für die IHK-Abschlussprüfung Teil 1 der IT-Berufe.">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="ap1_trainer">
+  <meta name="apple-mobile-web-app-title" content="AP1 Coach">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>AP1 Trainer</title>
+  <title>AP1 Coach</title>
   <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0B63CE">
+  <style>
+    html, body { margin: 0; height: 100%; background: #F3F6FB; }
+    @media (prefers-color-scheme: dark) { html, body { background: #0D1321; } }
+    #splash { position: fixed; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 18px;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+    #splash svg { width: 88px; height: 88px;
+      animation: pop .6s cubic-bezier(.2, .9, .3, 1.2) both; }
+    #splash span { font-size: 20px; font-weight: 700; color: #0B63CE; }
+    #splash span b { color: #D25E0A; }
+    @media (prefers-color-scheme: dark) {
+      #splash span { color: #EEF2F8; }
+      #splash span b { color: #FFA24D; }
+    }
+    @keyframes pop {
+      from { transform: scale(.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
 </head>
 <body>
+  <!-- Startbildschirm, bis Flutter das erste Bild gezeichnet hat. -->
+  <div id="splash" aria-label="AP1 Coach wird geladen">
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <rect width="100" height="100" rx="24" fill="#0B63CE"/>
+      <path d="M25 78 L50 33 L75 78" fill="none" stroke="#FFFFFF"
+            stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M39 62 H61" stroke="#FFA24D" stroke-width="8" stroke-linecap="round"/>
+      <path d="M50 31 V13" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+      <path d="M51 12 L67 17.5 L51 23 Z" fill="#FFA24D"/>
+    </svg>
+    <span>AP1 <b>Coach</b></span>
+  </div>
+  <script>
+    window.addEventListener("flutter-first-frame", function () {
+      var s = document.getElementById("splash");
+      if (s) s.remove();
+    });
+  </script>
   <!--
     You can customize the "flutter_bootstrap.js" script.
     This is useful to provide a custom configuration to the Flutter loader
