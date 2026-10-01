@@ -11,7 +11,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Ein Systemhaus beschafft für eine Steuerkanzlei 18 Notebooks. In der Akte liegt der Schriftverkehr mit dem Lieferanten.',
     prompt:
-        'Ordnen Sie jedem Vorgang seine rechtliche Bedeutung zu und geben Sie an, mit welchem Vorgang der Kaufvertrag zustande kommt.',
+        'Ordne jedem Vorgang seine rechtliche Bedeutung zu und gib an, mit welchem Vorgang der Kaufvertrag zustande kommt.',
     zeilen: [
       ['Datum', 'Vorgang', 'Rechtliche Bedeutung'],
       [
@@ -70,7 +70,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Ein Vertriebsmitarbeiter vertippt sich im Angebot beim Preis. Die Auszubildende meint: „Dann ist der Vertrag doch sowieso nichtig.“',
     prompt:
-        'Erläutern Sie den Unterschied zwischen einem nichtigen und einem anfechtbaren Rechtsgeschäft und nennen Sie je ein Beispiel.',
+        'Erläutere den Unterschied zwischen einem nichtigen und einem anfechtbaren Rechtsgeschäft und nenne je ein Beispiel.',
     kriterien: [
       krit(
         'Nichtig: von Anfang an unwirksam, ohne dass jemand etwas erklären muss',
@@ -124,7 +124,7 @@ final List<Question> ihkA07 = [
   lueckentext(
     'i7-vz-3',
     'vt-zustandekommen',
-    prompt: 'Ergänzen Sie den Text zum Vertragsschluss mit den Begriffen.',
+    prompt: 'Ergänze den Text zum Vertragsschluss mit den Begriffen.',
     text:
         'Ein Vertrag kommt durch zwei übereinstimmende {0} zustande. Die erste heißt {1}, die zweite {2}. Kataloge, Schaufensterauslagen und Webshops richten sich an die Allgemeinheit und sind nur eine {3}. Wer verspätet oder mit Änderungen zusagt, gibt rechtlich ein neues {4} ab. Kaufverträge über bewegliche Sachen sind {5}, sie können also auch mündlich geschlossen werden.',
     luecken: [
@@ -147,7 +147,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Ein Systemhaus möchte wissen, an welche seiner Erklärungen es rechtlich gebunden ist.',
     prompt:
-        'Markieren Sie alle Erklärungen, an die das Systemhaus rechtlich gebunden ist.',
+        'Markiere alle Erklärungen, an die das Systemhaus rechtlich gebunden ist.',
     zeilen: [
       nein(
         'Werbeflyer „Notebooks ab 599 €“ an alle Haushalte',
@@ -186,7 +186,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Eine Agentur stellt ihre IT neu auf und schließt dafür mehrere Verträge.',
     prompt:
-        'Ordnen Sie jedem Sachverhalt die Vertragsart und die Vorschrift des BGB zu.',
+        'Ordne jedem Sachverhalt die Vertragsart und die Vorschrift des BGB zu.',
     zeilen: [
       ['Sachverhalt', 'Vertragsart', 'BGB'],
       [
@@ -225,7 +225,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Ein Handelsunternehmen lässt von einem Softwarehaus ein Kundenportal entwickeln. Das Softwarehaus schlägt vor, „nach Aufwand“ auf Stundenbasis abzurechnen.',
     prompt:
-        'Erläutern Sie zwei Unterschiede zwischen Werkvertrag und Dienstvertrag.',
+        'Erläutere zwei Unterschiede zwischen Werkvertrag und Dienstvertrag.',
     kriterien: [
       krit(
         'Geschuldet: beim Werkvertrag ein Erfolg (fertiges Werk), beim Dienstvertrag nur die Tätigkeit',
@@ -269,7 +269,7 @@ final List<Question> ihkA07 = [
   paare(
     'i7-vy-3',
     'vt-arten',
-    prompt: 'Verbinden Sie jede Vertragsart mit der Hauptpflicht.',
+    prompt: 'Verbinde jede Vertragsart mit der Hauptpflicht.',
     paare: [
       paar('Kaufvertrag', 'Sache übergeben, Eigentum verschaffen'),
       paar('Mietvertrag', 'Gebrauch auf Zeit gegen Entgelt gewähren'),
@@ -288,7 +288,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Für ein Softwareprojekt liegen Klauseln aus zwei verschiedenen Vertragsentwürfen vor.',
     prompt:
-        'Markieren Sie alle Klauseln, die für einen Werkvertrag kennzeichnend sind.',
+        'Markiere alle Klauseln, die für einen Werkvertrag kennzeichnend sind.',
     zeilen: [
       ja(
         'Der Auftragnehmer schuldet eine lauffähige Lagerverwaltung gemäß Pflichtenheft.',
@@ -325,7 +325,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Für 18 Notebooks liegen zwei Angebote vor: Kauf zu 1.150 € je Gerät oder Leasing über 36 Monate zu 36 € je Gerät und Monat. Am Ende der Laufzeit gehen die Leasinggeräte zurück.',
     prompt:
-        'Berechnen Sie, um wie viel Euro das Leasing über die gesamte Laufzeit teurer ist als der Kauf.',
+        'Berechne, um wie viel Euro das Leasing über die gesamte Laufzeit teurer ist als der Kauf.',
     answer: 2628,
     unit: '€',
     explanation:
@@ -349,7 +349,7 @@ final List<Question> ihkA07 = [
         '   the software.\n'
         '5. The licence is valid for 12 months and ends automatically\n'
         '   unless it is renewed.',
-    prompt: 'Markieren Sie alles, was nach diesem Auszug zulässig ist.',
+    prompt: 'Markiere alles, was nach diesem Auszug zulässig ist.',
     zeilen: [
       ja(
         'Die Agentur installiert die Software auf 18 Arbeitsplätzen.',
@@ -387,7 +387,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Eine Agentur hat 30 Mitarbeitende und 24 PCs. Messungen zeigen, dass höchstens 12 Personen gleichzeitig mit der Projektsoftware arbeiten. Der Hersteller bietet drei Lizenzmodelle an.',
     prompt:
-        'Ermitteln Sie je Modell die Anzahl der benötigten Lizenzen und die Jahreskosten.',
+        'Ermittle je Modell die Anzahl der benötigten Lizenzen und die Jahreskosten.',
     zeilen: [
       ['Lizenzmodell', 'Preis je Lizenz und Jahr', 'Anzahl', 'Jahreskosten'],
       [
@@ -419,7 +419,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Ein angestellter Entwickler eines Systemhauses hat während der Arbeitszeit im Auftrag seines Arbeitgebers ein Inventarisierungstool geschrieben. Er kündigt und will das Tool künftig selbst an Kunden verkaufen.',
     prompt:
-        'Erläutern Sie, wem das Urheberrecht und wem die Nutzungsrechte an dem Tool zustehen, und beurteilen Sie das Vorhaben des Entwicklers.',
+        'Erläutere, wem das Urheberrecht und wem die Nutzungsrechte an dem Tool zustehen, und beurteile das Vorhaben des Entwicklers.',
     kriterien: [
       krit(
         'Urheber ist und bleibt der Entwickler als natürliche Person; das Urheberrecht ist nicht übertragbar',
@@ -467,7 +467,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Eine Agentur vergleicht für ihr neues Ticketsystem ein Open-Source-Produkt mit einem proprietären Produkt.',
     prompt:
-        'Nennen Sie je zwei Vorteile von Open-Source-Software und von proprietärer Software.',
+        'Nenne je zwei Vorteile von Open-Source-Software und von proprietärer Software.',
     kriterien: [
       krit(
         'Open Source: keine Lizenzkosten',
@@ -536,7 +536,7 @@ final List<Question> ihkA07 = [
         'All times are measured within service hours only.\n'
         'Scheduled maintenance: Saturdays, announced 5 days\n'
         '  in advance; not counted as downtime',
-    prompt: 'Werten Sie den Auszug aus und ergänzen Sie die Tabelle.',
+    prompt: 'Werte den Auszug aus und ergänze die Tabelle.',
     zeilen: [
       ['Frage', 'Antwort'],
       [
@@ -583,7 +583,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Ein Systemhaus vergleicht vier SLA-Angebote. Die Verfügbarkeit bezieht sich jeweils auf die Servicezeit eines Monats.',
     prompt:
-        'Berechnen Sie für jedes Angebot die höchstens zulässige Ausfallzeit in Minuten.',
+        'Berechne für jedes Angebot die höchstens zulässige Ausfallzeit in Minuten.',
     zeilen: [
       ['Verfügbarkeit', 'Servicezeit im Monat', 'Zulässiger Ausfall'],
       [
@@ -617,7 +617,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Ein Handelsunternehmen lagert den Betrieb seines Webshops an einen Dienstleister aus und will die Servicequalität vertraglich absichern.',
     prompt:
-        'Nennen Sie fünf Inhalte, die das Service Level Agreement regeln sollte.',
+        'Nenne fünf Inhalte, die das Service Level Agreement regeln sollte.',
     kriterien: [
       krit(
         'Beschreibung des Service (Leistungsumfang)',
@@ -684,7 +684,7 @@ final List<Question> ihkA07 = [
     'sla-inhalte',
     scenario:
         'Ein Dienstleister legt den Entwurf eines SLA vor. Mehrere Regelungen sind so formuliert, dass sie sich später nicht prüfen lassen.',
-    prompt: 'Markieren Sie alle Regelungen, die nicht messbar formuliert sind.',
+    prompt: 'Markiere alle Regelungen, die nicht messbar formuliert sind.',
     zeilen: [
       ja(
         'Der Dienst steht dem Kunden möglichst durchgehend zur Verfügung.',
@@ -720,7 +720,7 @@ final List<Question> ihkA07 = [
     'sla-inhalte',
     scenario:
         'Der Hosting-Vertrag eines Webshops sichert 99,5 % Verfügbarkeit im Monat bei 24/7-Betrieb zu. Im April (30 Tage) gab es zwei Ausfälle von 3 Stunden und von 4,2 Stunden.',
-    prompt: 'Berechnen Sie Schritt für Schritt die erreichte Verfügbarkeit.',
+    prompt: 'Berechne Schritt für Schritt die erreichte Verfügbarkeit.',
     text:
         'Servicezeit im April: {0} h\n'
         'Ausfallzeit gesamt: {1} h\n'
@@ -747,7 +747,7 @@ final List<Question> ihkA07 = [
   paare(
     'i7-ls-1',
     'sla-support',
-    prompt: 'Verbinden Sie jedes Support-Level mit seiner Aufgabe.',
+    prompt: 'Verbinde jedes Support-Level mit seiner Aufgabe.',
     paare: [
       paar('Level 0', 'Selbsthilfe über FAQ und Portal'),
       paar('1st Level', 'Tickets annehmen, Standardfälle lösen'),
@@ -770,7 +770,7 @@ final List<Question> ihkA07 = [
       ['niedrig', 'P3', 'P4', 'P5'],
     ],
     prompt:
-        'Bestimmen Sie für jedes Ticket Auswirkung, Dringlichkeit und Priorität.',
+        'Bestimme für jedes Ticket Auswirkung, Dringlichkeit und Priorität.',
     zeilen: [
       ['Ticket', 'Auswirkung', 'Dringlichkeit', 'Priorität'],
       [
@@ -808,7 +808,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Im Service Desk eines Systemhauses bleibt ein Ticket der Priorität 1 liegen, weil dem 1st Level das Fachwissen fehlt und die Lösungszeit abzulaufen droht.',
     prompt:
-        'Erläutern Sie den Unterschied zwischen funktionaler und hierarchischer Eskalation.',
+        'Erläutere den Unterschied zwischen funktionaler und hierarchischer Eskalation.',
     kriterien: [
       krit(
         'Funktionale Eskalation: Weitergabe an ein höheres Support-Level bzw. an Spezialisten mit mehr Fachwissen',
@@ -851,7 +851,7 @@ final List<Question> ihkA07 = [
       ['im 1st Level gelöst', '780'],
       ['in der Lösungszeit gelöst', '1.080'],
     ],
-    prompt: 'Berechnen Sie die Kennzahlen des Service Desks.',
+    prompt: 'Berechne die Kennzahlen des Service Desks.',
     text:
         'Erstlösungsquote: {0} %\n'
         'SLA-Erfüllungsquote: {1} %\n'
@@ -873,7 +873,7 @@ final List<Question> ihkA07 = [
     'sla-support',
     scenario: 'Der Verlauf eines Tickets im Service Desk wird ausgewertet.',
     prompt:
-        'Markieren Sie alle Einträge, die gegen die Regeln eines mehrstufigen Supports verstoßen.',
+        'Markiere alle Einträge, die gegen die Regeln eines mehrstufigen Supports verstoßen.',
     zeilen: [
       nein(
         '09:02 Ticket angelegt, Kategorie Netzwerk, Priorität 2',
@@ -912,7 +912,7 @@ final List<Question> ihkA07 = [
     'sla-itil',
     scenario:
         'In der IT-Abteilung eines Onlinehändlers gehen an einem Tag vier Vorgänge ein.',
-    prompt: 'Ordnen Sie jedem Vorgang den ITIL-Begriff und das Ziel zu.',
+    prompt: 'Ordne jedem Vorgang den ITIL-Begriff und das Ziel zu.',
     zeilen: [
       ['Vorgang', 'ITIL-Begriff', 'Ziel'],
       [
@@ -962,7 +962,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Die Scanner-App im Lager stürzt mehrmals täglich ab. Der Service Desk startet sie jedes Mal neu. Die Lagerleitung fragt, warum „die IT das Problem nicht endlich löst“.',
     prompt:
-        'Erläutern Sie den Unterschied zwischen Incident Management und Problem Management.',
+        'Erläutere den Unterschied zwischen Incident Management und Problem Management.',
     kriterien: [
       krit(
         'Incident Management stellt den Service so schnell wie möglich wieder her, auch mit einem Workaround',
@@ -998,7 +998,7 @@ final List<Question> ihkA07 = [
     'sla-itil',
     scenario:
         'Die Firewall eines Unternehmens soll durch ein neues Modell ersetzt werden (Normal Change).',
-    prompt: 'Bringen Sie die Schritte des Change in die richtige Reihenfolge.',
+    prompt: 'Bringe die Schritte des Change in die richtige Reihenfolge.',
     items: [
       'Change-Antrag (Request for Change) erfassen',
       'Auswirkungen und Risiken bewerten',
@@ -1016,7 +1016,7 @@ final List<Question> ihkA07 = [
     'sla-itil',
     scenario:
         'Der Mailserver einer Agentur hängt sich immer wieder auf. Die Administratoren stellen fest, dass ein fehlerhaftes Update die Ursache ist, und spielen in der Nacht zum Samstag einen Patch ein.',
-    prompt: 'Ergänzen Sie den Text mit den passenden ITIL-Begriffen.',
+    prompt: 'Ergänze den Text mit den passenden ITIL-Begriffen.',
     text:
         'Jeder einzelne Ausfall des Mailservers ist ein {0}. Der Neustart, der den Betrieb vorläufig sichert, ist ein {1}. Die Suche nach der Ursache der gehäuften Ausfälle ist Aufgabe des {2}. Die erkannte und dokumentierte Ursache heißt {3}. Das geplante Einspielen des Patches ist ein {4}.',
     luecken: [
@@ -1036,7 +1036,7 @@ final List<Question> ihkA07 = [
   lueckentext(
     'i7-gv-1',
     'ls-verzug',
-    prompt: 'Ergänzen Sie das Prüfschema für den Lieferungsverzug.',
+    prompt: 'Ergänze das Prüfschema für den Lieferungsverzug.',
     text:
         'Lieferungsverzug setzt voraus: Die Leistung ist {0}, der Schuldner liefert trotz {1} nicht, und er hat die Verspätung zu {2}. Die Mahnung ist entbehrlich, wenn der Liefertermin nach dem {3} bestimmt ist oder der Schuldner die Lieferung ernsthaft und endgültig {4}. Will der Käufer vom Vertrag zurücktreten, muss er grundsätzlich zuerst eine angemessene {5} setzen.',
     luecken: [
@@ -1068,7 +1068,7 @@ final List<Question> ihkA07 = [
         'Kind regards\n'
         'NordBit Distribution',
     prompt:
-        'Erläutern Sie anhand der E-Mail, ob sich der Distributor im Lieferungsverzug befindet, und beschreiben Sie zwei Rechte des Systemhauses.',
+        'Erläutere anhand der E-Mail, ob sich der Distributor im Lieferungsverzug befindet, und beschreibe zwei Rechte des Systemhauses.',
     kriterien: [
       krit(
         'Verzug liegt vor: Der Termin 2. März ist nach dem Kalender bestimmt, eine Mahnung ist deshalb nicht nötig',
@@ -1131,8 +1131,8 @@ final List<Question> ihkA07 = [
     'i7-gv-3',
     'ls-verzug',
     scenario:
-        'Ein Systemhaus hat einem Handwerksbetrieb 7.300 € in Rechnung gestellt. Der Betrieb ist seit 60 Tagen im Zahlungsverzug. Nehmen Sie für diese Aufgabe einen Basiszinssatz von 2 % an und rechnen Sie mit 365 Tagen im Jahr.',
-    prompt: 'Berechnen Sie die Forderungen aus dem Zahlungsverzug.',
+        'Ein Systemhaus hat einem Handwerksbetrieb 7.300 € in Rechnung gestellt. Der Betrieb ist seit 60 Tagen im Zahlungsverzug. Nimm für diese Aufgabe einen Basiszinssatz von 2 % an und rechne mit 365 Tagen im Jahr.',
+    prompt: 'Berechne die Forderungen aus dem Zahlungsverzug.',
     text:
         'Aufschlag unter Unternehmen: {0} Prozentpunkte\n'
         'Verzugszinssatz: {1} %\n'
@@ -1159,7 +1159,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Ein Handwerksbetrieb (Unternehmer) hat eine Rechnung über 4.800 € nicht bezahlt. Im Vertrag ist als Zahlungstermin der 16. Mai vereinbart, heute ist der 30. Mai. Ein Auszubildender hat eine Mahnung entworfen.',
     prompt:
-        'Markieren Sie alle Sätze der Mahnung, die fachlich falsch oder ungeeignet sind.',
+        'Markiere alle Sätze der Mahnung, die fachlich falsch oder ungeeignet sind.',
     zeilen: [
       nein(
         'Zu unserer Rechnung Nr. 2291 über 4.800,00 € konnten wir noch keinen Zahlungseingang feststellen.',
@@ -1195,7 +1195,7 @@ final List<Question> ihkA07 = [
     'ls-verzug',
     scenario:
         'Ein Kunde zahlt eine fällige Rechnung nicht. Das Systemhaus will die Forderung durchsetzen.',
-    prompt: 'Bringen Sie die Schritte in die übliche Reihenfolge.',
+    prompt: 'Bringe die Schritte in die übliche Reihenfolge.',
     items: [
       'Freundliche Zahlungserinnerung schicken',
       'Mahnung mit konkreter Zahlungsfrist schicken',
@@ -1214,7 +1214,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Fünf Lieferungen sind nicht zum erwarteten Zeitpunkt eingetroffen.',
     prompt:
-        'Entscheiden Sie für jeden Fall, ob der Lieferant ohne Mahnung in Verzug gerät.',
+        'Entscheide für jeden Fall, ob der Lieferant ohne Mahnung in Verzug gerät.',
     zeilen: [
       ['Fall', 'Beurteilung'],
       [
@@ -1268,8 +1268,7 @@ final List<Question> ihkA07 = [
   paare(
     'i7-gm-1',
     'ls-maengel',
-    prompt:
-        'Verbinden Sie jedes Recht des Käufers mit der passenden Voraussetzung.',
+    prompt: 'Verbinde jedes Recht des Käufers mit der passenden Voraussetzung.',
     paare: [
       paar('Nacherfüllung', 'Mangel bei Übergabe - mehr nicht'),
       paar('Rücktritt', 'Frist erfolglos, Mangel nicht unerheblich'),
@@ -1287,7 +1286,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Ein Handelsunternehmen hat bei einem Lieferanten 20 Notebooks gekauft. Bei der Wareneingangsprüfung zeigen drei Geräte Pixelfehler im Display.',
     prompt:
-        'Nennen Sie vier Rechte, die einem Käufer bei einem Sachmangel nach § 437 BGB zustehen können.',
+        'Nenne vier Rechte, die einem Käufer bei einem Sachmangel nach § 437 BGB zustehen können.',
     kriterien: [
       krit(
         'Nacherfüllung: Nachbesserung (Reparatur)',
@@ -1342,7 +1341,7 @@ final List<Question> ihkA07 = [
   tabelle(
     'i7-gm-3',
     'ls-maengel',
-    prompt: 'Ordnen Sie jedem Sachverhalt die richtige Frist zu.',
+    prompt: 'Ordne jedem Sachverhalt die richtige Frist zu.',
     zeilen: [
       ['Sachverhalt', 'Frist'],
       [
@@ -1387,7 +1386,7 @@ final List<Question> ihkA07 = [
     'ls-maengel',
     scenario:
         'Ein Büro hat einen Farblaserdrucker zum Sonderpreis von 1.800 € gekauft. Ein Mangel lässt sich nicht beheben. Ohne Mangel wäre der Drucker 2.000 € wert, mit Mangel 1.500 €. Der Käufer mindert.',
-    prompt: 'Berechnen Sie die Minderung nach § 441 Abs. 3 BGB.',
+    prompt: 'Berechne die Minderung nach § 441 Abs. 3 BGB.',
     text:
         'Wertverhältnis (mit Mangel / ohne Mangel): {0}\n'
         'Geminderter Kaufpreis: {1} €\n'
@@ -1408,7 +1407,7 @@ final List<Question> ihkA07 = [
     scenario:
         'In der Reklamationsabteilung eines IT-Händlers gehen sechs Meldungen ein.',
     prompt:
-        'Markieren Sie alle Fälle, in denen ein Sachmangel im Sinne des § 434 BGB vorliegt.',
+        'Markiere alle Fälle, in denen ein Sachmangel im Sinne des § 434 BGB vorliegt.',
     zeilen: [
       ja(
         'Ein Notebook hat 8 GB statt der vereinbarten 16 GB Arbeitsspeicher.',
@@ -1446,7 +1445,7 @@ final List<Question> ihkA07 = [
     'ls-abnahme',
     scenario:
         'Bei der Abnahme eines Kundenportals werden vier Mängel festgestellt. Der Vertrag kennt drei Mängelklassen: betriebsverhindernd (Abnahme wird verweigert), betriebsbehindernd (Abnahme wird in der Regel verweigert) und leicht (Abnahme unter Vorbehalt).',
-    prompt: 'Ordnen Sie jedem Mangel die Mängelklasse zu.',
+    prompt: 'Ordne jedem Mangel die Mängelklasse zu.',
     zeilen: [
       ['Festgestellter Mangel', 'Mängelklasse'],
       [
@@ -1489,7 +1488,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Bei der Abnahme einer Lagerverwaltungssoftware fällt dem Kunden auf, dass der Etikettendruck fehlerhaft ist. Der Projektleiter des Auftragnehmers sagt: „Das beheben wir nächste Woche, unterschreiben Sie ruhig schon einmal.“',
     prompt:
-        'Beschreiben Sie zwei Gründe, warum der Kunde den Mangel mit einer Frist in das Abnahmeprotokoll aufnehmen lassen sollte.',
+        'Beschreibe zwei Gründe, warum der Kunde den Mangel mit einer Frist in das Abnahmeprotokoll aufnehmen lassen sollte.',
     kriterien: [
       krit(
         'Wer ein Werk trotz bekanntem Mangel ohne Vorbehalt abnimmt, verliert dafür Nacherfüllung, Selbstvornahme, Rücktritt und Minderung (§ 640 Abs. 3 BGB)',
@@ -1534,7 +1533,7 @@ final List<Question> ihkA07 = [
     'ls-abnahme',
     scenario:
         'Eine Agentur hat für einen Geschäftskunden einen Webshop fertiggestellt. Der Kunde reagiert nicht auf die Bitte um Abnahme.',
-    prompt: 'Ergänzen Sie den Text zur fiktiven Abnahme.',
+    prompt: 'Ergänze den Text zur fiktiven Abnahme.',
     text:
         'Die Agentur setzt dem Kunden nach der {0} des Werks eine angemessene {1} zur Abnahme. Verweigert der Kunde die Abnahme bis dahin nicht unter Angabe mindestens eines {2}, gilt das Werk als {3}. Damit wird die {4} fällig, und die {5} für Mängel liegt nun beim Kunden.',
     luecken: [
@@ -1556,7 +1555,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Ein Großhändler testet ein neues Bestellportal gegen das Pflichtenheft. Das Testprotokoll enthält sechs Abweichungen.',
     prompt:
-        'Markieren Sie alle Abweichungen, die als wesentliche Mängel die Verweigerung der Abnahme rechtfertigen.',
+        'Markiere alle Abweichungen, die als wesentliche Mängel die Verweigerung der Abnahme rechtfertigen.',
     zeilen: [
       ja(
         'Bestellungen über 1.000 € werden nicht gespeichert.',
@@ -1593,7 +1592,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Für eine Individualsoftware ist ein Festpreis von 36.000 € vereinbart. 30 % wurden als Abschlag bei Auftragserteilung gezahlt. Die Software wird unter Vorbehalt abgenommen; die Beseitigung des vorbehaltenen Mangels kostet voraussichtlich 600 €. Der Besteller hält das Doppelte dieser Kosten zurück.',
     prompt:
-        'Berechnen Sie den Betrag, den der Besteller bei der Abnahme zahlen muss.',
+        'Berechne den Betrag, den der Besteller bei der Abnahme zahlen muss.',
     answer: 24000,
     unit: '€',
     explanation:
@@ -1608,7 +1607,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Ein Logistikunternehmen ersetzt Kommissionierlisten auf Papier durch Handscanner.',
     prompt:
-        'Bringen Sie die Maßnahmen in die Reihenfolge, die dem Modell von Lewin entspricht.',
+        'Bringe die Maßnahmen in die Reihenfolge, die dem Modell von Lewin entspricht.',
     items: [
       'Die Geschäftsführung erklärt in einer Versammlung, warum die Papierlisten abgelöst werden.',
       'Die Schichten benennen Key-User, die ihre Anforderungen einbringen.',
@@ -1626,7 +1625,7 @@ final List<Question> ihkA07 = [
     scenario:
         'In der Phase des Veränderns muss entschieden werden, wie ein neues System in Betrieb geht.',
     prompt:
-        'Ordnen Sie jeder Einführungsstrategie das Vorgehen und den typischen Nachteil zu.',
+        'Ordne jeder Einführungsstrategie das Vorgehen und den typischen Nachteil zu.',
     zeilen: [
       ['Strategie', 'Vorgehen', 'Typischer Nachteil'],
       [
@@ -1692,7 +1691,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Ein Handelsunternehmen ersetzt sein Warenwirtschaftssystem. Zur Wahl stehen die Sofortumstellung zum Monatsersten und ein vierwöchiger Parallelbetrieb.',
     prompt:
-        'Nennen Sie je einen Vorteil und einen Nachteil der Sofortumstellung und des Parallelbetriebs.',
+        'Nenne je einen Vorteil und einen Nachteil der Sofortumstellung und des Parallelbetriebs.',
     kriterien: [
       krit(
         'Sofortumstellung, Vorteil: kurze Umstellung, keine Doppelarbeit, geringe Kosten',
@@ -1758,8 +1757,7 @@ final List<Question> ihkA07 = [
         'spot. Once the new system is live, switch off the old\n'
         'one and update the work instructions - otherwise staff\n'
         'will quietly slide back into old habits.',
-    prompt:
-        'Ordnen Sie die im Text genannten Maßnahmen den Phasen nach Lewin zu.',
+    prompt: 'Ordne die im Text genannten Maßnahmen den Phasen nach Lewin zu.',
     buckets: ['Unfreezing', 'Moving', 'Refreezing'],
     items: [
       zu(
@@ -1803,7 +1801,7 @@ final List<Question> ihkA07 = [
     'cm-lewin',
     scenario:
         'Ein Unternehmen plant einen vierwöchigen Parallelbetrieb. In dieser Zeit pflegen 12 Mitarbeitende die Daten doppelt und brauchen dafür je 5 Stunden zusätzlich pro Woche (38 € je Stunde). Die Lizenz des alten Systems kostet für den zusätzlichen Monat 900 €.',
-    prompt: 'Berechnen Sie die Mehrkosten des Parallelbetriebs.',
+    prompt: 'Berechne die Mehrkosten des Parallelbetriebs.',
     answer: 10020,
     unit: '€',
     explanation:
@@ -1818,7 +1816,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Ein Logistikunternehmen stellt die Disposition von Excel-Listen auf eine neue Tourenplanungssoftware um. Mehrere langjährige Disponenten äußern Bedenken.',
     prompt:
-        'Beschreiben Sie drei Maßnahmen, mit denen das Unternehmen die Akzeptanz der neuen Software fördern kann.',
+        'Beschreibe drei Maßnahmen, mit denen das Unternehmen die Akzeptanz der neuen Software fördern kann.',
     kriterien: [
       krit(
         'Frühzeitig und offen informieren: Gründe, Ziele und Zeitplan erklären',
@@ -1898,7 +1896,7 @@ final List<Question> ihkA07 = [
     scenario:
         'In einer Schichtbesprechung wird die Einführung von Handscannern im Lager vorgestellt.',
     prompt:
-        'Markieren Sie alle Reaktionen, die auf Widerstand gegen die Veränderung hindeuten.',
+        'Markiere alle Reaktionen, die auf Widerstand gegen die Veränderung hindeuten.',
     zeilen: [
       ja(
         '„Das haben wir schon immer mit Listen gemacht, und es hat funktioniert.“',
@@ -1933,7 +1931,7 @@ final List<Question> ihkA07 = [
     'i7-cw-3',
     'cm-widerstand',
     prompt:
-        'Verbinden Sie jede Strategie im Umgang mit Widerstand mit der Lage, in der sie passt.',
+        'Verbinde jede Strategie im Umgang mit Widerstand mit der Lage, in der sie passt.',
     paare: [
       paar('Information', 'Widerstand aus Unwissen'),
       paar('Beteiligung', 'Betroffene haben wichtiges Wissen'),
@@ -1951,7 +1949,7 @@ final List<Question> ihkA07 = [
     scenario:
         'Ein Handelsunternehmen digitalisiert die Rechnungsprüfung: Eingangsrechnungen werden künftig automatisch erfasst und geprüft. Die Sachbearbeitung reagiert zurückhaltend.',
     prompt:
-        'Nennen Sie drei Gründe, aus denen Beschäftigte der Digitalisierung ihres Arbeitsplatzes ablehnend gegenüberstehen können.',
+        'Nenne drei Gründe, aus denen Beschäftigte der Digitalisierung ihres Arbeitsplatzes ablehnend gegenüberstehen können.',
     kriterien: [
       krit(
         'Angst um den Arbeitsplatz',
@@ -2012,7 +2010,7 @@ final List<Question> ihkA07 = [
     'cm-kaizen',
     scenario:
         'Im Service Desk werden zu viele Tickets falsch kategorisiert. Das Team geht das im Rahmen des KVP an.',
-    prompt: 'Ordnen Sie jede Tätigkeit der Phase des PDCA-Zyklus zu.',
+    prompt: 'Ordne jede Tätigkeit der Phase des PDCA-Zyklus zu.',
     zeilen: [
       ['Tätigkeit', 'Phase'],
       [
@@ -2046,7 +2044,7 @@ final List<Question> ihkA07 = [
     'cm-kaizen',
     scenario:
         'Die IT-Leitung eines Handelsunternehmens möchte in ihrer Abteilung einen kontinuierlichen Verbesserungsprozess (KVP) einführen.',
-    prompt: 'Nennen Sie vier Merkmale eines KVP.',
+    prompt: 'Nenne vier Merkmale eines KVP.',
     kriterien: [
       krit(
         'Verbesserung in vielen kleinen Schritten',
@@ -2101,7 +2099,7 @@ final List<Question> ihkA07 = [
     'cm-kaizen',
     scenario:
         'Im Service Desk fallen 1.500 Tickets im Monat an. Vor dem KVP-Workshop wurden 14 % falsch kategorisiert, danach noch 6 %. Jedes falsch kategorisierte Ticket verursacht 8 Minuten Nacharbeit. Eine Arbeitsstunde kostet 45 €.',
-    prompt: 'Berechnen Sie die monatliche Einsparung.',
+    prompt: 'Berechne die monatliche Einsparung.',
     text:
         'Falsch kategorisierte Tickets vorher: {0}\n'
         'Falsch kategorisierte Tickets nachher: {1}\n'
@@ -2123,7 +2121,7 @@ final List<Question> ihkA07 = [
     'cm-kaizen',
     scenario:
         'In einem Kaizen-Workshop wird der Ablauf „neues Benutzerkonto anlegen“ Schritt für Schritt aufgeschrieben.',
-    prompt: 'Markieren Sie alle Schritte, die Verschwendung (Muda) darstellen.',
+    prompt: 'Markiere alle Schritte, die Verschwendung (Muda) darstellen.',
     zeilen: [
       nein(
         'Die Fachabteilung füllt den Antrag im Portal aus.',

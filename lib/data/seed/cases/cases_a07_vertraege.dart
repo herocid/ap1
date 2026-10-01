@@ -13,7 +13,7 @@ final List<ExamCase> casesA07 = [
     bereich: 'a07',
     titel: 'Notebooks für die Kanzlei: Kaufvertrag, Lieferverzug, Einführung',
     situation:
-        'Für die Steuerkanzlei Albers & Partner hat die Kessler & Brandt IT-Systemhaus GmbH bei einem Distributor 18 Notebooks bestellt. Die Kanzlei zieht am 9. März in die neuen Räume und will dann sofort mit den neuen Geräten arbeiten. Mit dem Umzug führt die Kanzlei außerdem eine digitale Aktenverwaltung ein, die die Papierakten ablöst. Sie bearbeiten den Vorgang im Team Kundenprojekte.',
+        'Für die Steuerkanzlei Albers & Partner hat die Kessler & Brandt IT-Systemhaus GmbH bei einem Distributor 18 Notebooks bestellt. Die Kanzlei zieht am 9. März in die neuen Räume und will dann sofort mit den neuen Geräten arbeiten. Mit dem Umzug führt die Kanzlei außerdem eine digitale Aktenverwaltung ein, die die Papierakten ablöst. Du bearbeitest den Vorgang im Team Kundenprojekte.',
     teile: [
       freitext(
         'f-a07-systemhaus-a',
@@ -26,7 +26,7 @@ final List<ExamCase> casesA07 = [
           ['13.02.', 'Auftragsbestätigung, Liefertermin 2. März'],
         ],
         prompt:
-            'Erläutern Sie, an welchem Tag der Kaufvertrag mit dem Distributor zustande gekommen ist.',
+            'Erläutere, an welchem Tag der Kaufvertrag mit dem Distributor zustande gekommen ist.',
         kriterien: [
           krit(
             'Der Vertrag ist am 12.02. zustande gekommen',
@@ -53,7 +53,7 @@ final List<ExamCase> casesA07 = [
         'f-a07-systemhaus-b',
         'vt-arten',
         prompt:
-            'Nennen Sie drei Inhalte, die in einem Kaufvertrag über die Notebooks geregelt sein sollten.',
+            'Nenne drei Inhalte, die in einem Kaufvertrag über die Notebooks geregelt sein sollten.',
         kriterien: [
           krit(
             'Kaufgegenstand (Art, Modell, Ausstattung)',
@@ -108,7 +108,7 @@ final List<ExamCase> casesA07 = [
         scenario:
             'Am 6. März sind die Notebooks noch nicht eingetroffen. Der Distributor nennt als Grund einen Engpass bei seinem Vorlieferanten.',
         prompt:
-            'Prüfen Sie, ob sich der Distributor im Lieferungsverzug befindet. Ergänzen Sie dazu den Text.',
+            'Prüfe, ob sich der Distributor im Lieferungsverzug befindet. Ergänze dazu den Text.',
         text:
             'Die Lieferung ist seit dem 2. März {0}. Weil der Liefertermin nach dem {1} bestimmt ist, ist eine {2} nicht erforderlich. Den Engpass beim Vorlieferanten hat der Distributor zu {3}. Der Distributor befindet sich also im Verzug.',
         luecken: [
@@ -126,7 +126,7 @@ final List<ExamCase> casesA07 = [
         'f-a07-systemhaus-d',
         'ls-verzug',
         prompt:
-            'Beschreiben Sie zwei Rechte, die Kessler & Brandt wegen des Lieferungsverzugs gegenüber dem Distributor zustehen.',
+            'Beschreibe zwei Rechte, die Kessler & Brandt wegen des Lieferungsverzugs gegenüber dem Distributor zustehen.',
         kriterien: [
           krit(
             'Auf der Lieferung bestehen und Ersatz des Verzögerungsschadens verlangen, z. B. Kosten für Leihgeräte',
@@ -167,7 +167,7 @@ final List<ExamCase> casesA07 = [
         scenario:
             'Damit die Kanzlei pünktlich starten kann, mietet Kessler & Brandt 18 Leihgeräte zu 9 € je Gerät und Tag. Die bestellten Notebooks treffen 12 Tage nach dem Start der Miete ein.',
         prompt:
-            'Berechnen Sie den Verzögerungsschaden, den Kessler & Brandt vom Distributor ersetzt verlangen kann.',
+            'Berechne den Verzögerungsschaden, den Kessler & Brandt vom Distributor ersetzt verlangen kann.',
         answer: 1944,
         unit: '€',
         explanation:
@@ -179,7 +179,7 @@ final List<ExamCase> casesA07 = [
         'sla-inhalte',
         scenario:
             'Für den laufenden Betrieb schließt die Kanzlei mit Kessler & Brandt einen Wartungsvertrag: Servicezeit Montag bis Freitag von 8 bis 18 Uhr, Verfügbarkeit des Dateiservers 99 % der Servicezeit je Monat. Im ersten Monat mit 21 Arbeitstagen fällt der Server innerhalb der Servicezeit insgesamt 4,2 Stunden aus.',
-        prompt: 'Ermitteln Sie die Kennzahlen für diesen Monat.',
+        prompt: 'Ermittle die Kennzahlen für diesen Monat.',
         zeilen: [
           ['Kennzahl', 'Wert'],
           [
@@ -220,7 +220,7 @@ final List<ExamCase> casesA07 = [
             'worked for years should be changed, and some suspect\n'
             'that the system will be used to monitor their work.',
         prompt:
-            'Benennen Sie drei Gründe für Widerstand gegen neue Software, die der Text anführt.',
+            'Benenne drei Gründe für Widerstand gegen neue Software, die der Text anführt.',
         kriterien: [
           krit(
             'Angst, den Arbeitsplatz durch Automatisierung zu verlieren',
@@ -268,7 +268,7 @@ final List<ExamCase> casesA07 = [
         scenario:
             'Die Kanzlei überlegt, Papierakte und digitale Akte drei Monate lang parallel zu führen, statt zum Umzugstermin sofort umzustellen.',
         prompt:
-            'Beschreiben Sie einen Nachteil des Parallelbetriebs gegenüber der Sofortumstellung.',
+            'Beschreibe einen Nachteil des Parallelbetriebs gegenüber der Sofortumstellung.',
         kriterien: [
           krit(
             'Doppelte Arbeit: Jeder Vorgang muss in beiden Systemen gepflegt werden, das belastet die Beschäftigten',
@@ -314,13 +314,13 @@ final List<ExamCase> casesA07 = [
     bereich: 'a07',
     titel: 'Kassensysteme für Göttingen: Mangel, Zahlungsverzug, Akzeptanz',
     situation:
-        'Für die neue Filiale in Göttingen hat die Grünwerk Gartenbedarf GmbH bei einem Fachhändler sechs Kassensysteme mit Handscanner gekauft. Bei der Anlieferung stellt die IT-Abteilung fest, dass zwei Scanner keine Barcodes lesen. Das neue Kassensystem soll später auch in den drei bestehenden Filialen die alten Kassen ablösen. Sie unterstützen die IT-Abteilung bei der Abwicklung.',
+        'Für die neue Filiale in Göttingen hat die Grünwerk Gartenbedarf GmbH bei einem Fachhändler sechs Kassensysteme mit Handscanner gekauft. Bei der Anlieferung stellt die IT-Abteilung fest, dass zwei Scanner keine Barcodes lesen. Das neue Kassensystem soll später auch in den drei bestehenden Filialen die alten Kassen ablösen. Du unterstützt die IT-Abteilung bei der Abwicklung.',
     teile: [
       reihenfolge(
         'f-a07-handel-a',
         'ls-maengel',
         prompt:
-            'Bringen Sie das Vorgehen der Grünwerk GmbH gegenüber dem Fachhändler in die richtige Reihenfolge.',
+            'Bringe das Vorgehen der Grünwerk GmbH gegenüber dem Fachhändler in die richtige Reihenfolge.',
         items: [
           'Kassensysteme bei der Anlieferung unverzüglich prüfen',
           'Mangel dem Fachhändler unverzüglich anzeigen (rügen)',
@@ -335,7 +335,7 @@ final List<ExamCase> casesA07 = [
         'f-a07-handel-b',
         'ls-maengel',
         prompt:
-            'Nennen Sie die beiden Arten der Nacherfüllung und geben Sie an, wer beim Kaufvertrag zwischen ihnen wählt.',
+            'Nenne die beiden Arten der Nacherfüllung und gib an, wer beim Kaufvertrag zwischen ihnen wählt.',
         kriterien: [
           krit(
             'Nachbesserung (Beseitigung des Mangels, Reparatur)',
@@ -372,7 +372,7 @@ final List<ExamCase> casesA07 = [
         scenario:
             'Der Fachhändler kann die beiden Scanner auch im zweiten Versuch nicht instand setzen. Grünwerk behält die Kassen und mindert den Kaufpreis. Je Kassensystem wurden 1.500 € gezahlt. Ohne Mangel ist ein System 1.600 € wert, mit dem Mangel 1.200 €.',
         prompt:
-            'Berechnen Sie die Minderung für die beiden mangelhaften Kassensysteme.',
+            'Berechne die Minderung für die beiden mangelhaften Kassensysteme.',
         text:
             'Wertverhältnis (mit Mangel / ohne Mangel): {0}\n'
             'Geminderter Preis je Kassensystem: {1} €\n'
@@ -395,7 +395,7 @@ final List<ExamCase> casesA07 = [
         scenario:
             'Ein Softwarehaus soll eine Schnittstelle zwischen dem Kassensystem und dem Webshop programmieren. Es bietet einen Vertrag „nach Aufwand“ oder einen Vertrag zum Festpreis mit Abnahme an.',
         prompt:
-            'Begründen Sie, ob für Grünwerk ein Dienstvertrag oder ein Werkvertrag geeigneter ist.',
+            'Begründe, ob für Grünwerk ein Dienstvertrag oder ein Werkvertrag geeigneter ist.',
         kriterien: [
           krit(
             'Empfehlung: Werkvertrag',
@@ -427,9 +427,9 @@ final List<ExamCase> casesA07 = [
         'f-a07-handel-e',
         'ls-verzug',
         scenario:
-            'Ein Gartenbaubetrieb (Unternehmer) hat bei Grünwerk Ware für 5.840 € bezogen und zahlt 45 Tage nach Eintritt des Verzugs. Nehmen Sie einen Basiszinssatz von 2 % an und rechnen Sie mit 365 Tagen im Jahr.',
+            'Ein Gartenbaubetrieb (Unternehmer) hat bei Grünwerk Ware für 5.840 € bezogen und zahlt 45 Tage nach Eintritt des Verzugs. Nimm einen Basiszinssatz von 2 % an und rechne mit 365 Tagen im Jahr.',
         prompt:
-            'Berechnen Sie die Ansprüche der Grünwerk GmbH aus dem Zahlungsverzug.',
+            'Berechne die Ansprüche der Grünwerk GmbH aus dem Zahlungsverzug.',
         zeilen: [
           ['Größe', 'Wert'],
           [
@@ -469,7 +469,7 @@ final List<ExamCase> casesA07 = [
         scenario:
             'In den drei bestehenden Filialen arbeitet das Verkaufspersonal seit zwölf Jahren mit den alten Kassen. Die Ankündigung des neuen Systems stößt auf Skepsis.',
         prompt:
-            'Nennen Sie drei Bedenken, die das Verkaufspersonal gegen das neue Kassensystem haben könnte.',
+            'Nenne drei Bedenken, die das Verkaufspersonal gegen das neue Kassensystem haben könnte.',
         kriterien: [
           krit(
             'Sorge, die neue Kasse nicht sicher bedienen zu können',
@@ -517,7 +517,7 @@ final List<ExamCase> casesA07 = [
         'f-a07-handel-g',
         'cm-widerstand',
         prompt:
-            'Beschreiben Sie zwei Maßnahmen, mit denen die IT-Abteilung diesen Bedenken begegnen kann.',
+            'Beschreibe zwei Maßnahmen, mit denen die IT-Abteilung diesen Bedenken begegnen kann.',
         kriterien: [
           krit(
             'Frühzeitig informieren: Gründe, Zeitplan und Nutzen des neuen Systems erklären',
@@ -573,7 +573,7 @@ final List<ExamCase> casesA07 = [
         'cm-lewin',
         scenario:
             'Das neue Kassensystem läuft zunächst nur in der Filiale Göttingen. Die drei anderen Filialen folgen erst ein Vierteljahr später.',
-        prompt: 'Erläutern Sie einen Vorteil dieses Vorgehens (Pilotbetrieb).',
+        prompt: 'Erläutere einen Vorteil dieses Vorgehens (Pilotbetrieb).',
         kriterien: [
           krit(
             'Fehler und Störungen treffen nur eine Filiale; das Risiko für das Gesamtunternehmen ist begrenzt',
@@ -618,13 +618,13 @@ final List<ExamCase> casesA07 = [
     bereich: 'a07',
     titel: 'Ticketsystem aus der Cloud: Verträge, SLA und Akzeptanz',
     situation:
-        'Die Pixelhafen Medien GmbH löst das gemeinsame E-Mail-Postfach für Kundenanfragen durch ein Ticketsystem ab, das ein Anbieter als Cloud-Dienst für alle 30 Mitarbeitenden bereitstellt. Ein Softwarehaus programmiert dazu eine Schnittstelle zur Zeiterfassung der Agentur. Einige Projektleiter möchten Kundenanfragen lieber weiter per E-Mail bearbeiten. Sie unterstützen die beiden Administratoren bei der Einführung.',
+        'Die Pixelhafen Medien GmbH löst das gemeinsame E-Mail-Postfach für Kundenanfragen durch ein Ticketsystem ab, das ein Anbieter als Cloud-Dienst für alle 30 Mitarbeitenden bereitstellt. Ein Softwarehaus programmiert dazu eine Schnittstelle zur Zeiterfassung der Agentur. Einige Projektleiter möchten Kundenanfragen lieber weiter per E-Mail bearbeiten. Du unterstützt die beiden Administratoren bei der Einführung.',
     teile: [
       tabelle(
         'f-a07-agentur-a',
         'vt-arten',
         prompt:
-            'Ordnen Sie den drei Vereinbarungen die Vertragsart und die Vorschrift des BGB zu.',
+            'Ordne den drei Vereinbarungen die Vertragsart und die Vorschrift des BGB zu.',
         zeilen: [
           ['Vereinbarung', 'Vertragsart', 'BGB'],
           [
@@ -672,7 +672,7 @@ final List<ExamCase> casesA07 = [
             'below the agreed availability, the customer receives\n'
             'a credit of 10 % of the monthly fee.',
         prompt:
-            'Werten Sie den Auszug aus und berechnen Sie die Gutschrift. Die Monatsgebühr beträgt 30 × 12 € = 360 €.',
+            'Werte den Auszug aus und berechne die Gutschrift. Die Monatsgebühr beträgt 30 × 12 € = 360 €.',
         text:
             'Minuten des Monats: {0}\n'
             'Zulässiger Ausfall: {1} min\n'
@@ -694,7 +694,7 @@ final List<ExamCase> casesA07 = [
         'f-a07-agentur-c',
         'sla-inhalte',
         prompt:
-            'Nennen Sie drei weitere Inhalte, die neben der Verfügbarkeit im Service Level Agreement geregelt sein sollten.',
+            'Nenne drei weitere Inhalte, die neben der Verfügbarkeit im Service Level Agreement geregelt sein sollten.',
         kriterien: [
           krit(
             'Reaktionszeit bei Störungen',
@@ -750,7 +750,7 @@ final List<ExamCase> casesA07 = [
         scenario:
             'Das Softwarehaus meldet die Schnittstelle als fertig. Die Administratoren testen sie und wollen sie abnehmen.',
         prompt:
-            'Nennen Sie drei Rechtsfolgen, die die Abnahme der Schnittstelle auslöst.',
+            'Nenne drei Rechtsfolgen, die die Abnahme der Schnittstelle auslöst.',
         kriterien: [
           krit(
             'Die Vergütung wird fällig',
@@ -787,9 +787,9 @@ final List<ExamCase> casesA07 = [
         'f-a07-agentur-e',
         'cm-widerstand',
         scenario:
-            'In der Teamrunde stellt die Geschäftsführung das Ticketsystem vor. Sie notieren die Reaktionen.',
+            'In der Teamrunde stellt die Geschäftsführung das Ticketsystem vor. Du notierst die Reaktionen.',
         prompt:
-            'Markieren Sie alle Reaktionen, die auf Widerstand gegen die Einführung hindeuten.',
+            'Markiere alle Reaktionen, die auf Widerstand gegen die Einführung hindeuten.',
         zeilen: [
           ja(
             '„Meine Kunden schreiben mir direkt, das hat immer funktioniert.“',
@@ -824,7 +824,7 @@ final List<ExamCase> casesA07 = [
         'f-a07-agentur-f',
         'cm-widerstand',
         prompt:
-            'Beschreiben Sie zwei Maßnahmen, mit denen die Agentur die Akzeptanz des Ticketsystems fördern kann.',
+            'Beschreibe zwei Maßnahmen, mit denen die Agentur die Akzeptanz des Ticketsystems fördern kann.',
         kriterien: [
           krit(
             'Früh informieren: zeigen, wie viele Anfragen im Postfach untergehen und was das Ticketsystem verbessert',
@@ -883,7 +883,7 @@ final List<ExamCase> casesA07 = [
         'f-a07-agentur-g',
         'cm-widerstand',
         prompt:
-            'Erläutern Sie einen Vorteil, den das Ticketsystem den skeptischen Projektleitern im Arbeitsalltag bringt.',
+            'Erläutere einen Vorteil, den das Ticketsystem den skeptischen Projektleitern im Arbeitsalltag bringt.',
         kriterien: [
           krit(
             'Keine Anfrage geht verloren: Jede Anfrage hat einen Status und eine zuständige Person',
@@ -934,7 +934,7 @@ final List<ExamCase> casesA07 = [
         'f-a07-logistik-a',
         'ls-verzug',
         prompt:
-            'Prüfen Sie, ob sich der Händler am 20. April im Lieferungsverzug befindet. Begründen Sie Ihr Ergebnis.',
+            'Prüfe, ob sich der Händler am 20. April im Lieferungsverzug befindet. Begründe dein Ergebnis.',
         kriterien: [
           krit(
             'Die Lieferung ist seit dem 15. April fällig und nicht erfolgt',
@@ -972,8 +972,7 @@ final List<ExamCase> casesA07 = [
         'ls-verzug',
         scenario:
             'Die IT-Abteilung will sich notfalls vom Vertrag lösen und die Scanner woanders beschaffen.',
-        prompt:
-            'Bringen Sie die Schritte in die rechtlich richtige Reihenfolge.',
+        prompt: 'Bringe die Schritte in die rechtlich richtige Reihenfolge.',
         items: [
           'Dem Händler eine angemessene Nachfrist zur Lieferung setzen',
           'Die Nachfrist verstreicht, ohne dass geliefert wird',
@@ -990,7 +989,7 @@ final List<ExamCase> casesA07 = [
         scenario:
             'Nach erfolgloser Nachfrist kauft Elbtal Logistik die 60 Scanner bei einem anderen Händler zu je 410 €. Für die Expresslieferung fallen zusätzlich 240 € an.',
         prompt:
-            'Berechnen Sie den Schaden, den Elbtal Logistik vom ersten Händler als Schadensersatz statt der Leistung verlangen kann.',
+            'Berechne den Schaden, den Elbtal Logistik vom ersten Händler als Schadensersatz statt der Leistung verlangen kann.',
         answer: 2040,
         unit: '€',
         explanation:
@@ -1009,7 +1008,7 @@ final List<ExamCase> casesA07 = [
           ['niedrig', 'P3: 4 h', 'P4: 8 h', 'P5: 24 h'],
         ],
         prompt:
-            'Bestimmen Sie für jede Störung die Priorität und die Reaktionszeit laut Matrix.',
+            'Bestimme für jede Störung die Priorität und die Reaktionszeit laut Matrix.',
         zeilen: [
           ['Störung', 'Priorität', 'Reaktionszeit'],
           [
@@ -1047,7 +1046,7 @@ final List<ExamCase> casesA07 = [
             'department or site first; the lessons learned there are\n'
             'used before it is rolled out to the rest of the company.',
         prompt:
-            'Benennen Sie die drei Einführungsstrategien, die der Text beschreibt.',
+            'Benenne die drei Einführungsstrategien, die der Text beschreibt.',
         kriterien: [
           krit(
             'Sofortumstellung zu einem Stichtag (direct cutover)',
@@ -1083,7 +1082,7 @@ final List<ExamCase> casesA07 = [
         'f-a07-logistik-f',
         'cm-lewin',
         prompt:
-            'Beschreiben Sie einen Nachteil der Sofortumstellung für den Dreischichtbetrieb im Lager.',
+            'Beschreibe einen Nachteil der Sofortumstellung für den Dreischichtbetrieb im Lager.',
         kriterien: [
           krit(
             'Störungen des neuen Systems treffen den Betrieb sofort und vollständig; ohne Rückfall auf die Papierlisten steht die Kommissionierung',
@@ -1119,7 +1118,7 @@ final List<ExamCase> casesA07 = [
         scenario:
             'Der Betriebsrat berichtet, dass viele Lagerbeschäftigte die Scanner skeptisch sehen.',
         prompt:
-            'Nennen Sie drei Gründe für die Vorbehalte der Lagerbeschäftigten gegen die Handscanner.',
+            'Nenne drei Gründe für die Vorbehalte der Lagerbeschäftigten gegen die Handscanner.',
         kriterien: [
           krit(
             'Angst vor Überwachung: Die Scanner erfassen, wer wie schnell arbeitet',
@@ -1162,7 +1161,7 @@ final List<ExamCase> casesA07 = [
         'f-a07-logistik-h',
         'cm-widerstand',
         prompt:
-            'Erläutern Sie eine Maßnahme, mit der die IT-Abteilung die Akzeptanz fördern kann und die den Dreischichtbetrieb berücksichtigt.',
+            'Erläutere eine Maßnahme, mit der die IT-Abteilung die Akzeptanz fördern kann und die den Dreischichtbetrieb berücksichtigt.',
         kriterien: [
           krit(
             'Schulungen in jeder Schicht anbieten, damit alle Beschäftigten während ihrer Arbeitszeit geschult werden',

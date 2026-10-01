@@ -34,7 +34,7 @@ final List<ExamCase> casesA04Daten = [
             'storage space and prevents\n'
             'contradictory data.',
         prompt:
-            'Beschreiben Sie auf Deutsch anhand des Textes die Aufgabe des Primärschlüssels und einen Vorteil verknüpfter Tabellen.',
+            'Beschreibe auf Deutsch anhand des Textes die Aufgabe des Primärschlüssels und einen Vorteil verknüpfter Tabellen.',
         kriterien: [
           krit(
             'Primärschlüssel: Spalte, deren Wert genau einen Datensatz einer Tabelle identifiziert.',
@@ -94,7 +94,7 @@ final List<ExamCase> casesA04Daten = [
           ],
         ),
         prompt:
-            'Ergänzen Sie das ER-Modell: Ordnen Sie jedes Attribut dem Element zu, an dem es eingetragen wird.',
+            'Ergänze das ER-Modell: Ordne jedes Attribut dem Element zu, an dem es eingetragen wird.',
         buckets: ['Mitarbeiter', 'Gerät', 'Lieferant', 'Beziehung „nutzt“'],
         items: [
           zu('Inventarnummer', 1, 'Kennzeichnet genau ein Gerät.'),
@@ -124,8 +124,7 @@ final List<ExamCase> casesA04Daten = [
         'dm-kardinalitaet',
         scenario:
             'Es gelten weiter die Regeln der Geräteverwaltung: Ein Mitarbeiter nutzt mehrere Geräte, ein Gerät kann von mehreren Mitarbeitern genutzt werden. Jedes Gerät stammt von genau einem Lieferanten, ein Lieferant liefert viele Geräte.',
-        prompt:
-            'Ergänzen Sie die Kardinalitäten und die Folge für die Tabellen.',
+        prompt: 'Ergänze die Kardinalitäten und die Folge für die Tabellen.',
         text:
             'Mitarbeiter - Gerät: {0}\n'
             'Gerät - Lieferant: {1}\n'
@@ -151,8 +150,7 @@ final List<ExamCase> casesA04Daten = [
         'dm-schluessel',
         scenario:
             'Für die drei Entitätstypen Mitarbeiter, Gerät und Lieferant sind die Primärschlüssel festzulegen.',
-        prompt:
-            'Markieren Sie alle Attribute, die sich als Primärschlüssel eignen.',
+        prompt: 'Markiere alle Attribute, die sich als Primärschlüssel eignen.',
         zeilen: [
           ja(
             'Personalnummer',
@@ -180,8 +178,7 @@ final List<ExamCase> casesA04Daten = [
         'md-datenmengen',
         scenario:
             'Die Kanzlei scannt Belege an 4 Scanplätzen. An jedem Platz werden 8 Stunden am Tag im Durchschnitt 9 Belege pro Stunde gescannt. Ein Scan ist 310 kB groß (1 kB = 1.000 Byte, 1 KiB = 1.024 Byte).',
-        prompt:
-            'Ermitteln Sie den Speicherbedarf pro Tag. Runden Sie auf volle KiB auf.',
+        prompt: 'Ermittle den Speicherbedarf pro Tag. Runde auf volle KiB auf.',
         text:
             'Belege pro Tag: {0}\n'
             'Speicherbedarf pro Tag in KiB: {1}',
@@ -199,7 +196,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Pro Tag fallen 87.188 KiB an gescannten Belegen an. Die Kanzlei arbeitet an 250 Tagen im Jahr. Das Archivsystem verringert den Speicherbedarf durch Kompression um 35 %.',
         prompt:
-            'Ermitteln Sie den Jahresbedarf. Runden Sie das Endergebnis auf zwei Nachkommastellen.',
+            'Ermittle den Jahresbedarf. Runde das Endergebnis auf zwei Nachkommastellen.',
         text:
             'Speicherbedarf pro Jahr in KiB: {0}\n'
             'Jahresbedarf in GiB mit Kompression: {1}',
@@ -222,7 +219,7 @@ final List<ExamCase> casesA04Daten = [
         'md-datenmengen',
         scenario:
             'Die Kanzlei bucht für das Belegarchiv 14 GiB Speicher bei einem Rechenzentrum. Speicher gibt es nur in Paketen zu je 4 GiB; ein Paket kostet 16 € pro Jahr. Der gebuchte Speicher bleibt über die Laufzeit gleich.',
-        prompt: 'Ermitteln Sie die Speicherkosten für 6 Jahre.',
+        prompt: 'Ermittle die Speicherkosten für 6 Jahre.',
         answer: 384,
         unit: '€',
         explanation:
@@ -236,7 +233,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Bisher tippen Mitarbeitende der Kanzlei Rechnungsdaten wie Datum, Betrag und Absender von Hand aus den gescannten Belegen ab. Künftig soll eine KI diese Daten automatisch erkennen und den passenden Mandanten vorschlagen.',
         prompt:
-            'Beschreiben Sie zwei Argumente, die für die KI-gestützte Belegerfassung sprechen.',
+            'Beschreibe zwei Argumente, die für die KI-gestützte Belegerfassung sprechen.',
         kriterien: [
           krit(
             'Zeitersparnis: Das Abtippen entfällt, Belege werden schneller verarbeitet.',
@@ -303,7 +300,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Die Filialseiten mit Öffnungszeiten und Angeboten sind bisher statisch. Die Geschäftsleitung fragt, was eine dynamische Website davon unterscheidet.',
         prompt:
-            'Erläutern Sie den Unterschied zwischen einer statischen und einer dynamischen Website.',
+            'Erläutere den Unterschied zwischen einer statischen und einer dynamischen Website.',
         kriterien: [
           krit(
             'Statisch: fertige Dateien auf dem Server, jeder Besucher sieht denselben Inhalt.',
@@ -339,7 +336,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Für die dynamischen Filialseiten muss ein Programm auf dem Webserver laufen.',
         prompt:
-            'Nennen Sie drei Programmiersprachen, mit denen dynamische Webinhalte erzeugt werden können.',
+            'Nenne drei Programmiersprachen, mit denen dynamische Webinhalte erzeugt werden können.',
         kriterien: [
           krit(
             'PHP als Sprache für dynamische Webinhalte',
@@ -379,7 +376,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Die neue Filialseite ist unter dieser Adresse erreichbar: https://www.gruenwerk.example/filialen/goettingen?tag=samstag#anfahrt',
         prompt:
-            'Tragen Sie die Bestandteile der URL ein. Geben Sie beim Port den Wert an, den der Browser verwendet.',
+            'Trage die Bestandteile der URL ein. Gib beim Port den Wert an, den der Browser verwendet.',
         zeilen: [
           ['Bestandteil', 'Wert'],
           [
@@ -419,7 +416,7 @@ final List<ExamCase> casesA04Daten = [
           ['A11', 'Harke', 'Hortex', '0561 5550120'],
           ['A12', 'Gießkanne', 'Hortex', '0561 5550120'],
         ],
-        prompt: 'Erklären Sie anhand der Tabelle den Begriff Redundanz.',
+        prompt: 'Erkläre anhand der Tabelle den Begriff Redundanz.',
         kriterien: [
           krit(
             'Dieselbe Information (Name und Telefonnummer des Lieferanten) ist mehrfach gespeichert.',
@@ -440,7 +437,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'In der Bestandstabelle der Filialen stehen Name und Telefonnummer des Lieferanten Hortex in jeder seiner drei Artikelzeilen.',
         prompt:
-            'Beschreiben Sie ein Problem, das durch diese redundante Speicherung entstehen kann.',
+            'Beschreibe ein Problem, das durch diese redundante Speicherung entstehen kann.',
         kriterien: [
           krit(
             'Inkonsistenz: Wird die Telefonnummer nur in einer Zeile geändert, widersprechen sich die Daten (Änderungsanomalie).',
@@ -480,7 +477,7 @@ final List<ExamCase> casesA04Daten = [
         'dm-kardinalitaet',
         scenario:
             'Im Webshop enthält eine Bestellung viele Artikel, und ein Artikel kommt in vielen Bestellungen vor. Zu jedem bestellten Artikel wird die Menge gespeichert. Vorhanden sind die Tabellen Bestellung (BestellNr, Datum) und Artikel (ArtikelNr, Bezeichnung, Preis).',
-        prompt: 'Ergänzen Sie die Umsetzung im relationalen Modell.',
+        prompt: 'Ergänze die Umsetzung im relationalen Modell.',
         text:
             'Die Beziehung zwischen Bestellung und Artikel hat die Kardinalität {0}. '
             'Sie wird durch eine {1} namens Bestellposition aufgelöst. '
@@ -505,7 +502,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Für 1.800 Artikel werden je 4 Fotos aufgenommen, zusammen 7.200 Fotos. Die Kamera liefert 6.000 × 4.000 Pixel mit 24 Bit Farbtiefe. Als JPEG gespeichert verringert sich die Größe eines Fotos um 90 %. Die Fotos werden aus Göttingen über einen Anschluss mit 40 Mbit/s im Upload in die Zentrale übertragen. Es gilt 1 MB = 1.000.000 Byte, 1 GB = 1.000 MB.',
         prompt:
-            'Berechnen Sie Speicherbedarf und Übertragungsdauer. Runden Sie die Dauer auf eine Nachkommastelle.',
+            'Berechne Speicherbedarf und Übertragungsdauer. Runde die Dauer auf eine Nachkommastelle.',
         text:
             'Ein Foto unkomprimiert in MB: {0}\n'
             'Ein Foto als JPEG in MB: {1}\n'
@@ -541,8 +538,7 @@ final List<ExamCase> casesA04Daten = [
             'important, because old\n'
             'versions are a common target\n'
             'for attackers.',
-        prompt:
-            'Markieren Sie alle Aussagen, die sich dem Text entnehmen lassen.',
+        prompt: 'Markiere alle Aussagen, die sich dem Text entnehmen lassen.',
         zeilen: [
           ja(
             'Beschäftigte können Texte und Bilder ohne Programmierkenntnisse ändern.',
@@ -592,7 +588,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Eine Kundenanfrage durchläuft im Support fünf Schritte. Für den ersten Schritt ist als Muster eingetragen, wie KI unterstützen kann.',
         prompt:
-            'Wählen Sie für die Schritte 2 bis 5 jeweils die passende Möglichkeit der KI-Unterstützung.',
+            'Wähle für die Schritte 2 bis 5 jeweils die passende Möglichkeit der KI-Unterstützung.',
         zeilen: [
           ['Prozessschritt', 'KI-Unterstützung'],
           [
@@ -638,7 +634,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Zwei Beschäftigte im Support befürchten, der KI-Assistent mache ihre Arbeit überflüssig.',
         prompt:
-            'Erläutern Sie einen Vorteil, den der KI-Assistent für die Beschäftigten im Support hat.',
+            'Erläutere einen Vorteil, den der KI-Assistent für die Beschäftigten im Support hat.',
         kriterien: [
           krit(
             'Entlastung von Routinearbeit (Sortieren, Zusammenfassen) - mehr Zeit für anspruchsvolle Anfragen.',
@@ -687,8 +683,7 @@ final List<ExamCase> casesA04Daten = [
           ['Schulung', '3 Stunden je Nutzer'],
           ['Entgangener Umsatz', '60 € je Stunde'],
         ],
-        prompt:
-            'Errechnen Sie die Gesamtkosten des KI-Assistenten im ersten Jahr.',
+        prompt: 'Errechne die Gesamtkosten des KI-Assistenten im ersten Jahr.',
         answer: 8700,
         unit: '€',
         explanation:
@@ -701,7 +696,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Der KI-Assistent wird von einem externen Anbieter als Cloud-Dienst betrieben. Die Tickets enthalten Namen, E-Mail-Adressen und teils Zugangsdaten der Kunden.',
         prompt:
-            'Beschreiben Sie zwei Risiken, die beim Einsatz des KI-Assistenten zu beachten sind.',
+            'Beschreibe zwei Risiken, die beim Einsatz des KI-Assistenten zu beachten sind.',
         kriterien: [
           krit(
             'Datenschutz und Vertraulichkeit: Personenbezogene Daten und Zugangsdaten gelangen zum externen Anbieter.',
@@ -770,7 +765,7 @@ final List<ExamCase> casesA04Daten = [
             ErmBeziehung('Mitarbeiter', 'bearbeitet', 'Ticket', '?', '?'),
           ],
         ),
-        prompt: 'Ergänzen Sie die Kardinalitäten im ER-Modell.',
+        prompt: 'Ergänze die Kardinalitäten im ER-Modell.',
         text:
             'Kunde - Ticket: {0}\n'
             'Mitarbeiter - Ticket: {1}\n'
@@ -793,7 +788,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Im Ticketsystem eröffnen Kunden Tickets, Mitarbeiter bearbeiten sie. Zu jeder Bearbeitung eines Tickets durch einen Mitarbeiter wird die aufgewendete Zeit erfasst.',
         prompt:
-            'Ordnen Sie jedes Attribut dem Element des ER-Modells zu, an dem es eingetragen wird.',
+            'Ordne jedes Attribut dem Element des ER-Modells zu, an dem es eingetragen wird.',
         buckets: ['Kunde', 'Ticket', 'Mitarbeiter', 'Beziehung „bearbeitet“'],
         items: [
           zu('Betreff', 1, 'Eigenschaft des Tickets.'),
@@ -834,7 +829,7 @@ final List<ExamCase> casesA04Daten = [
             'be removed before data is\n'
             'used for training.',
         prompt:
-            'Beschreiben Sie auf Deutsch anhand des Textes, welche Aufgabe der KI-Assistent übernimmt und welche Aufgabe bei den Beschäftigten bleibt.',
+            'Beschreibe auf Deutsch anhand des Textes, welche Aufgabe der KI-Assistent übernimmt und welche Aufgabe bei den Beschäftigten bleibt.',
         kriterien: [
           krit(
             'Assistent: liest jedes neue Ticket und schlägt Kategorie und Priorität vor.',
@@ -904,7 +899,7 @@ final List<ExamCase> casesA04Daten = [
             'Night vision:  up to 30 m\n'
             'Storage:       no local\n'
             '               storage',
-        prompt: 'Entnehmen Sie dem Datenblatt die folgenden Werte.',
+        prompt: 'Entnimm dem Datenblatt die folgenden Werte.',
         zeilen: [
           ['Merkmal', 'Wert'],
           ['Bilder pro Sekunde', zahl(12)],
@@ -922,7 +917,7 @@ final List<ExamCase> casesA04Daten = [
         'md-uebertragung',
         scenario:
             'Laut Datenblatt liefert eine Kamera 3.840 × 2.160 Pixel mit 24 Bit Farbtiefe und 12 Bildern pro Sekunde. Der Codec verringert den Datenstrom auf 1 % der unkomprimierten Datenrate. Es gilt 1 Mbit = 1.000.000 Bit.',
-        prompt: 'Berechnen Sie die Datenrate des Videostreams einer Kamera.',
+        prompt: 'Berechne die Datenrate des Videostreams einer Kamera.',
         text:
             'Unkomprimiert in Mbit/s (eine Nachkommastelle): {0}\n'
             'Komprimiert in Mbit/s (auf volle Mbit/s aufrunden): {1}',
@@ -943,9 +938,8 @@ final List<ExamCase> casesA04Daten = [
         'f-a04d-logistik-c',
         'md-datenmengen',
         scenario:
-            'Die Aufnahmen aller 10 Kameras sollen 96 Stunden lang gespeichert werden. Rechnen Sie mit der in der vorigen Teilaufgabe ermittelten Datenrate je Kamera; falls Sie dort kein Ergebnis haben, rechnen Sie mit 26 Mbit/s. Es gilt 1 TiB = 1.024⁴ Byte.',
-        prompt:
-            'Berechnen Sie den Speicherbedarf. Runden Sie auf volle TiB auf.',
+            'Die Aufnahmen aller 10 Kameras sollen 96 Stunden lang gespeichert werden. Rechne mit der in der vorigen Teilaufgabe ermittelten Datenrate je Kamera; falls du dort kein Ergebnis hast, rechne mit 26 Mbit/s. Es gilt 1 TiB = 1.024⁴ Byte.',
+        prompt: 'Berechne den Speicherbedarf. Runde auf volle TiB auf.',
         text:
             'Datenrate aller 10 Kameras in Mbit/s: {0}\n'
             'Speicherbedarf für 96 Stunden in TiB: {1}',
@@ -979,7 +973,7 @@ final List<ExamCase> casesA04Daten = [
           ],
         ),
         prompt:
-            'Ergänzen Sie das ER-Diagramm: Ordnen Sie jedes Attribut dem richtigen Element zu.',
+            'Ergänze das ER-Diagramm: Ordne jedes Attribut dem richtigen Element zu.',
         buckets: ['Kamera', 'Lagerzone', 'Beziehung „erfasst“'],
         items: [
           zu('IP-Adresse', 0, 'Eigenschaft der Kamera.'),
@@ -1010,7 +1004,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Eine Kamera (KameraNr, Modell, IP-Adresse) erfasst mehrere Lagerzonen (ZonenNr, Bezeichnung, Fläche); eine Lagerzone wird von mehreren Kameras erfasst.',
         prompt:
-            'Ergänzen Sie Kardinalität und Schlüssel für das ER-Diagramm und seine Umsetzung in Tabellen.',
+            'Ergänze Kardinalität und Schlüssel für das ER-Diagramm und seine Umsetzung in Tabellen.',
         text:
             'Kardinalität der Beziehung „erfasst“: {0}\n'
             'Primärschlüssel von Kamera: {1}\n'
@@ -1032,7 +1026,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Die Kameras an den Rampen erfassen ankommende LKW. Die Disposition möchte die Bilder nutzen, um den Lieferverkehr besser zu steuern.',
         prompt:
-            'Erläutern Sie eine Möglichkeit, wie die Videoerfassung mit Hilfe von KI den Lieferverkehr unterstützen kann.',
+            'Erläutere eine Möglichkeit, wie die Videoerfassung mit Hilfe von KI den Lieferverkehr unterstützen kann.',
         kriterien: [
           krit(
             'Die KI erkennt ankommende LKW bzw. deren Kennzeichen automatisch in den Bildern.',
@@ -1080,7 +1074,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Die KI zur Kennzeichenerkennung wurde nur mit Bildern bei Tageslicht trainiert. Die Halle wird aber im Dreischichtbetrieb rund um die Uhr angefahren.',
         prompt:
-            'Beschreiben Sie ein Risiko, das sich daraus für den Einsatz der KI ergibt.',
+            'Beschreibe ein Risiko, das sich daraus für den Einsatz der KI ergibt.',
         kriterien: [
           krit(
             'Bei Dunkelheit, Regen oder verschmutzten Kennzeichen erkennt die KI falsch oder gar nicht, weil solche Bilder im Training fehlten.',
@@ -1130,7 +1124,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Bisher gleichen Sachbearbeiter jeden Lieferschein von Hand mit der Bestellung ab. Eine KI soll die gescannten Lieferscheine auslesen und Abweichungen melden.',
         prompt:
-            'Beschreiben Sie zwei Argumente, die für die KI-gestützte Prüfung der Lieferscheine sprechen.',
+            'Beschreibe zwei Argumente, die für die KI-gestützte Prüfung der Lieferscheine sprechen.',
         kriterien: [
           krit(
             'Zeitersparnis: Lieferscheine werden in Sekunden geprüft, der Wareneingang wird schneller gebucht.',
@@ -1174,8 +1168,7 @@ final List<ExamCase> casesA04Daten = [
         'md-datenmengen',
         scenario:
             'Im Wareneingang fallen rund um die Uhr durchschnittlich 35 Lieferscheine pro Stunde an. Ein Scan ist 180 kB groß (1 kB = 1.000 Byte, 1 KiB = 1.024 Byte).',
-        prompt:
-            'Ermitteln Sie den Speicherbedarf pro Tag. Runden Sie auf ganze KiB.',
+        prompt: 'Ermittle den Speicherbedarf pro Tag. Runde auf ganze KiB.',
         text:
             'Lieferscheine pro Tag: {0}\n'
             'Speicherbedarf pro Tag in KiB: {1}',
@@ -1193,7 +1186,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Pro Tag fallen 147.656 KiB an. Das Archiv verringert den Speicherbedarf durch Kompression um 40 %. Ein Jahr hat 365 Tage.',
         prompt:
-            'Ermitteln Sie den Jahresbedarf. Runden Sie das Endergebnis auf zwei Nachkommastellen.',
+            'Ermittle den Jahresbedarf. Runde das Endergebnis auf zwei Nachkommastellen.',
         text:
             'Speicherbedarf pro Jahr in KiB: {0}\n'
             'Jahresbedarf in GiB mit Kompression: {1}',
@@ -1216,7 +1209,7 @@ final List<ExamCase> casesA04Daten = [
         'md-datenmengen',
         scenario:
             'Für das Archiv werden 35 GiB bei einem Cloud-Anbieter gebucht. Speicher gibt es nur in Paketen zu je 10 GiB; ein Paket kostet 14 € pro Monat.',
-        prompt: 'Ermitteln Sie die Speicherkosten für 12 Monate.',
+        prompt: 'Ermittle die Speicherkosten für 12 Monate.',
         answer: 672,
         unit: '€',
         explanation:
@@ -1244,7 +1237,7 @@ final List<ExamCase> casesA04Daten = [
             'separate table solves this\n'
             'problem.',
         prompt:
-            'Erklären Sie auf Deutsch anhand des Textes den Begriff Redundanz und beschreiben Sie das Problem, das dadurch entsteht. Geben Sie außerdem die im Text genannte Lösung an.',
+            'Erkläre auf Deutsch anhand des Textes den Begriff Redundanz und beschreibe das Problem, das dadurch entsteht. Gib außerdem die im Text genannte Lösung an.',
         kriterien: [
           krit(
             'Redundanz: Dieselbe Information ist mehrfach gespeichert (die Lieferantenadresse in jeder Lieferzeile).',
@@ -1291,7 +1284,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Ein Lieferschein enthält mehrere Artikel, ein Artikel kommt auf vielen Lieferscheinen vor. Im ER-Modell gibt es die Entitätstypen Lieferschein und Artikel sowie die Beziehung „enthält“.',
         prompt:
-            'Geben Sie für jedes Attribut an, wo es im ER-Modell eingetragen wird.',
+            'Gib für jedes Attribut an, wo es im ER-Modell eingetragen wird.',
         zeilen: [
           ['Attribut', 'gehört zu'],
           [
@@ -1329,7 +1322,7 @@ final List<ExamCase> casesA04Daten = [
         'dm-schluessel',
         scenario:
             'Das ER-Modell aus Lieferschein (LieferscheinNr, Lieferdatum) und Artikel (ArtikelNr, Bezeichnung) mit der Beziehung „enthält“ wird in Tabellen umgesetzt. Die Zwischentabelle heißt Lieferposition.',
-        prompt: 'Ergänzen Sie Kardinalität und Schlüssel.',
+        prompt: 'Ergänze Kardinalität und Schlüssel.',
         text:
             'Kardinalität Lieferschein - Artikel: {0}\n'
             'Primärschlüssel von Lieferschein: {1}\n'
@@ -1353,7 +1346,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Die gescannten Lieferscheine müssen als Nachweis mehrere Jahre aufbewahrt werden. Ein Kollege schlägt vor, sie zum Platzsparen stark verlustbehaftet zu komprimieren.',
         prompt:
-            'Erläutern Sie, warum für die Lieferscheine eine verlustfreie Kompression gewählt werden sollte.',
+            'Erläutere, warum für die Lieferscheine eine verlustfreie Kompression gewählt werden sollte.',
         kriterien: [
           krit(
             'Verlustfrei: Das Original lässt sich exakt wiederherstellen; verlustbehaftet gehen Details unwiederbringlich verloren.',
@@ -1403,7 +1396,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Das Portal ist ausschließlich über HTTPS erreichbar. Ein Partner der Kanzlei fragt, was das den Mandanten bringt.',
         prompt:
-            'Beschreiben Sie zwei Vorteile von HTTPS gegenüber HTTP für das Mandantenportal.',
+            'Beschreibe zwei Vorteile von HTTPS gegenüber HTTP für das Mandantenportal.',
         kriterien: [
           krit(
             'Vertraulichkeit: Anmeldedaten und Dokumente werden verschlüsselt übertragen und können nicht mitgelesen werden.',
@@ -1443,7 +1436,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Im Test ruft eine Mandantin die Adresse https://portal.albers.example/dokumente zum ersten Mal auf.',
         prompt:
-            'Bringen Sie die Schritte bis zur angezeigten Seite in die richtige Reihenfolge.',
+            'Bringe die Schritte bis zur angezeigten Seite in die richtige Reihenfolge.',
         items: [
           'DNS-Auflösung von portal.albers.example',
           'TCP-Verbindung zum Server auf Port 443',
@@ -1461,7 +1454,7 @@ final List<ExamCase> casesA04Daten = [
         'wi-http',
         scenario:
             'Im Testprotokoll des Portals sind drei Situationen beschrieben, in denen der Server mit einem Fehlercode antwortet.',
-        prompt: 'Wählen Sie den HTTP-Statuscode, der zur Situation passt.',
+        prompt: 'Wähle den HTTP-Statuscode, der zur Situation passt.',
         zeilen: [
           ['Situation', 'Statuscode'],
           [
@@ -1486,7 +1479,7 @@ final List<ExamCase> casesA04Daten = [
         'wi-html',
         scenario:
             'Die Anmeldeseite des Portals wird fehlerhaft angezeigt. Du prüfst den HTML-Quelltext des Formulars.',
-        prompt: 'Markieren Sie alle Zeilen, die einen Syntaxfehler enthalten.',
+        prompt: 'Markiere alle Zeilen, die einen Syntaxfehler enthalten.',
         zeilen: [
           nein('<form action="/login" method="post">', 'Korrektes Start-Tag.'),
           ja(
@@ -1519,7 +1512,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Unter den Mandanten sind auch ältere und sehbehinderte Menschen. Das Portal soll deshalb barrierefrei bedienbar sein.',
         prompt:
-            'Beschreiben Sie zwei Maßnahmen, mit denen das Portal barrierefrei gestaltet wird.',
+            'Beschreibe zwei Maßnahmen, mit denen das Portal barrierefrei gestaltet wird.',
         kriterien: [
           krit(
             'Alle Funktionen per Tastatur bedienbar, mit sichtbarem Fokus.',
@@ -1569,7 +1562,7 @@ final List<ExamCase> casesA04Daten = [
         scenario:
             'Ein Mandant lädt zum Jahresabschluss ein Paket mit 850 MB (1 MB = 1.000.000 Byte) hoch. Sein Anschluss bietet 100 Mbit/s im Download und 20 Mbit/s im Upload. Durch Protokoll-Overhead steigt die zu übertragende Datenmenge um 5 %.',
         prompt:
-            'Berechnen Sie die Dauer des Uploads. Runden Sie das Endergebnis auf zwei Nachkommastellen.',
+            'Berechne die Dauer des Uploads. Runde das Endergebnis auf zwei Nachkommastellen.',
         text:
             'Datenmenge in Mbit: {0}\n'
             'Datenmenge mit Overhead in Mbit: {1}\n'
@@ -1603,7 +1596,7 @@ final List<ExamCase> casesA04Daten = [
             'by combining small script\n'
             'files into one.',
         prompt:
-            'Nennen Sie auf Deutsch die drei Maßnahmen, die der Text empfiehlt. Geben Sie außerdem an, welches Beispiel der Text für selten geänderte Dateien nennt.',
+            'Nenne auf Deutsch die drei Maßnahmen, die der Text empfiehlt. Gib außerdem an, welches Beispiel der Text für selten geänderte Dateien nennt.',
         kriterien: [
           krit(
             'Bilder und Dokumente vor dem Senden komprimieren',

@@ -29,7 +29,7 @@ final List<Question> ihkA06 = [
     'sz-schutzziele',
     scenario:
         'Die Steuerkanzlei Albers & Partner lässt ihr Sicherheitskonzept überarbeiten. Im Entwurf steht zu jedem Schutzziel eine Maßnahme.',
-    prompt: 'Ordnen Sie jedem Schutzziel die passende Maßnahme zu.',
+    prompt: 'Ordne jedem Schutzziel die passende Maßnahme zu.',
     paare: [
       paar('Vertraulichkeit', 'Festplatten der Notebooks verschlüsseln'),
       paar('Integrität', 'Hashwert eines Downloads vergleichen'),
@@ -47,7 +47,7 @@ final List<Question> ihkA06 = [
     scenario:
         'In einer Arztpraxis ist nach einem Festplattendefekt das Terminsystem einen Tag lang ausgefallen. Außerdem hat eine Aushilfe eine Patientenliste an eine falsche E-Mail-Adresse geschickt.',
     prompt:
-        'Nennen Sie die drei Grundschutzziele der Informationssicherheit und geben Sie zu jedem eine Maßnahme an, die es unterstützt. (6 P.)',
+        'Nenne die drei Grundschutzziele der Informationssicherheit und gib zu jedem eine Maßnahme an, die es unterstützt. (6 P.)',
     kriterien: [
       krit(
         'Vertraulichkeit mit Maßnahme, z. B. Verschlüsselung, Zugriffsrechte, Schulung zum E-Mail-Versand',
@@ -87,7 +87,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Ein Hosting-Anbieter bietet drei Tarife mit unterschiedlicher zugesicherter Verfügbarkeit an. Gerechnet wird mit 8.760 Stunden je Jahr und einem Monat mit 30 Tagen (43.200 Minuten).',
     prompt:
-        'Berechnen Sie die höchstens zulässige Ausfallzeit je Tarif und ergänzen Sie die Tabelle.',
+        'Berechne die höchstens zulässige Ausfallzeit je Tarif und ergänze die Tabelle.',
     zeilen: [
       ['Verfügbarkeit', 'Ausfall je Jahr (h)', 'Ausfall je Monat (min)'],
       ['99 %', '87,6', '432'],
@@ -112,7 +112,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Die IT-Abteilung der Elbtal Logistik AG führt eine Liste der Sicherheitsvorfälle des letzten Quartals.',
     prompt:
-        'Markieren Sie alle Vorfälle, bei denen die Integrität von Daten verletzt wurde.',
+        'Markiere alle Vorfälle, bei denen die Integrität von Daten verletzt wurde.',
     zeilen: [
       ja(
         'Ein Skript überschreibt Lagerbestände mit falschen Mengen',
@@ -149,8 +149,8 @@ final List<Question> ihkA06 = [
     'i6-zm-1',
     'sz-schadsoftware',
     scenario:
-        'Für eine Schulung der Mitarbeitenden bereiten Sie eine Übersicht über Arten von Schadsoftware vor.',
-    prompt: 'Ergänzen Sie die Übersicht mit den passenden Fachbegriffen.',
+        'Für eine Schulung der Mitarbeitenden bereitest du eine Übersicht über Arten von Schadsoftware vor.',
+    prompt: 'Ergänze die Übersicht mit den passenden Fachbegriffen.',
     text:
         'Ein {0} hängt sich an eine Wirtsdatei und wird erst aktiv, wenn diese ausgeführt wird. Ein {1} verbreitet sich selbstständig über das Netzwerk. Ein {2} gibt sich als nützliches Programm aus und enthält eine versteckte Schadfunktion. {3} verschlüsselt Daten und verlangt Lösegeld.',
     luecken: [
@@ -169,8 +169,7 @@ final List<Question> ihkA06 = [
     'sz-schadsoftware',
     scenario:
         'In der Grünwerk Gartenbedarf GmbH wurden auf mehreren Kassen-PCs seit Monaten keine Updates für Betriebssystem und Kassensoftware eingespielt.',
-    prompt:
-        'Beschreiben Sie zwei mögliche Folgen fehlender Softwareupdates. (4 P.)',
+    prompt: 'Beschreibe zwei mögliche Folgen fehlender Softwareupdates. (4 P.)',
     kriterien: [
       krit(
         'Bekannte Sicherheitslücken bleiben offen und können von Angreifern oder Schadsoftware ausgenutzt werden',
@@ -225,7 +224,7 @@ final List<Question> ihkA06 = [
     code:
         'SECURITY ADVISORY 2026-014\n\nA ransomware group is actively exploiting a flaw in\nversion 7.2 of our backup agent. We strongly recommend\nthat you install patch 7.2.4 without delay. Until the\npatch is applied, block TCP port 9401 at your firewall.\nKeep at least one backup copy offline so that it cannot\nbe encrypted. Finally, review the agent log files for\nlogins from unknown addresses.',
     prompt:
-        'Welche Maßnahmen empfiehlt der Hersteller im Text? Wählen Sie alle zutreffenden aus.',
+        'Welche Maßnahmen empfiehlt der Hersteller im Text? Wähle alle zutreffenden aus.',
     choices: [
       ja(
         'Den Patch 7.2.4 umgehend installieren',
@@ -267,7 +266,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Auf dem PC einer Sachbearbeiterin erscheint eine Lösegeldforderung, mehrere Dateien auf dem Netzlaufwerk lassen sich nicht mehr öffnen.',
     prompt:
-        'Bringen Sie die Schritte der Vorfallsbehandlung in eine sinnvolle Reihenfolge.',
+        'Bringe die Schritte der Vorfallsbehandlung in eine sinnvolle Reihenfolge.',
     items: [
       'Betroffenen PC sofort vom Netzwerk trennen',
       'Vorfall an die IT bzw. die verantwortliche Stelle melden',
@@ -288,9 +287,9 @@ final List<Question> ihkA06 = [
     'i6-za-1',
     'sz-angriffe',
     scenario:
-        'Eine Mitarbeiterin aus dem Einkauf der Grünwerk Gartenbedarf GmbH leitet Ihnen eine E-Mail weiter, die ihr merkwürdig vorkommt. Das Unternehmen ist Kunde der Nordbank.',
+        'Eine Mitarbeiterin aus dem Einkauf der Grünwerk Gartenbedarf GmbH leitet dir eine E-Mail weiter, die ihr merkwürdig vorkommt. Das Unternehmen ist Kunde der Nordbank.',
     prompt:
-        'Markieren Sie alle Zeilen der E-Mail, die auf einen Phishing-Versuch hindeuten.',
+        'Markiere alle Zeilen der E-Mail, die auf einen Phishing-Versuch hindeuten.',
     zeilen: [
       ja(
         'Von: Nordbank Service <sicherheit@n0rdbank-kunden.example>',
@@ -328,8 +327,7 @@ final List<Question> ihkA06 = [
   paare(
     'i6-za-2',
     'sz-angriffe',
-    prompt:
-        'Ordnen Sie jedem Angriff die Gegenmaßnahme zu, die am besten hilft.',
+    prompt: 'Ordne jedem Angriff die Gegenmaßnahme zu, die am besten hilft.',
     paare: [
       paar('Phishing', 'Mitarbeitende regelmäßig sensibilisieren'),
       paar('Brute-Force-Angriff', 'Konto nach Fehlversuchen sperren'),
@@ -347,7 +345,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Die Elbtal Logistik AG hat zehn Handscanner über einen unbekannten Onlinehändler bestellt. Bei der Lieferung sind die Siegel einiger Kartons aufgebrochen.',
     prompt:
-        'Beschreiben Sie ein Risiko, das von manipulierten Geräten in der Lieferkette ausgeht, und nennen Sie zwei Maßnahmen, mit denen sich das Unternehmen schützt. (4 P.)',
+        'Beschreibe ein Risiko, das von manipulierten Geräten in der Lieferkette ausgeht, und nenne zwei Maßnahmen, mit denen sich das Unternehmen schützt. (4 P.)',
     kriterien: [
       krit(
         'Risiko: unbemerkt eingebaute Hintertür oder Abhörfunktion - Daten werden ausgelesen oder das Gerät wird ferngesteuert',
@@ -417,7 +415,7 @@ final List<Question> ihkA06 = [
       ['sehr hoch', 'Daten unter Berufsgeheimnis', 'Ausfall höchstens 1 h'],
     ],
     prompt:
-        'Ergänzen Sie für jedes System den Schutzbedarf nach den Regeln der Kanzlei.',
+        'Ergänze für jedes System den Schutzbedarf nach den Regeln der Kanzlei.',
     zeilen: [
       ['System', 'Vertraulichkeit', 'Verfügbarkeit'],
       [
@@ -445,7 +443,7 @@ final List<Question> ihkA06 = [
     'sz-schutzbedarf',
     scenario:
         'Auf einem Server laufen drei Anwendungen: die Zeiterfassung (Schutzbedarf normal), die Lohnabrechnung (hoch) und das Intranet (normal).',
-    prompt: 'Ergänzen Sie die Aussagen zur Vererbung des Schutzbedarfs.',
+    prompt: 'Ergänze die Aussagen zur Vererbung des Schutzbedarfs.',
     text:
         'Der Server erhält nach dem {0} den Schutzbedarf {1}, weil die Anwendung mit dem höchsten Bedarf maßgeblich ist. Laufen sehr viele Anwendungen mit normalem Bedarf auf einem Server, kann sein Bedarf durch den {2} steigen, weil ein Ausfall alle zugleich trifft. Ist eine Anwendung auf mehrere redundante Server verteilt, kann der Bedarf des einzelnen Servers durch den {3} sinken.',
     luecken: [
@@ -464,7 +462,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Bei der Schutzbedarfsfeststellung nach BSI wird für jedes Schutzziel gefragt: „Was wäre, wenn …?“ Dafür gibt das BSI Schadensszenarien vor.',
     prompt:
-        'Nennen Sie drei Schadensszenarien, die bei der Schutzbedarfsfeststellung betrachtet werden. (3 P.)',
+        'Nenne drei Schadensszenarien, die bei der Schutzbedarfsfeststellung betrachtet werden. (3 P.)',
     kriterien: [
       krit(
         'Verstoß gegen Gesetze, Vorschriften oder Verträge',
@@ -520,7 +518,7 @@ final List<Question> ihkA06 = [
     'sm-firewall',
     scenario:
         'Die Pixelhafen Medien GmbH betreibt einen Webserver in der DMZ. Vorgaben: Aus dem Internet ist nur HTTPS zum Webserver erlaubt. Die Administratoren warten den Webserver vom LAN aus per SSH. Alles andere wird verworfen.',
-    prompt: 'Ergänzen Sie das Regelwerk der Firewall.',
+    prompt: 'Ergänze das Regelwerk der Firewall.',
     zeilen: [
       ['Quelle', 'Ziel', 'Port', 'Aktion'],
       [
@@ -563,8 +561,8 @@ final List<Question> ihkA06 = [
     'sm-firewall',
     mono: true,
     scenario:
-        'Sicherheitsrichtlinie: Aus dem Internet ist nur HTTPS zum Webserver in der DMZ erlaubt. Aus dem Internet und aus der DMZ dürfen keine Verbindungen ins LAN aufgebaut werden. Bei der Prüfung der Firewall finden Sie folgendes Regelwerk.',
-    prompt: 'Markieren Sie alle Regeln, die gegen die Richtlinie verstoßen.',
+        'Sicherheitsrichtlinie: Aus dem Internet ist nur HTTPS zum Webserver in der DMZ erlaubt. Aus dem Internet und aus der DMZ dürfen keine Verbindungen ins LAN aufgebaut werden. Bei der Prüfung der Firewall findest du folgendes Regelwerk.',
+    prompt: 'Markiere alle Regeln, die gegen die Richtlinie verstoßen.',
     zeilen: [
       nein(
         '1 ALLOW Internet -> DMZ-Web  tcp/443',
@@ -619,7 +617,7 @@ final List<Question> ihkA06 = [
         NetzZone('LAN', 2.7, 2.7, 4, 5.7),
       ],
     ),
-    prompt: 'Erläutern Sie den Zweck einer DMZ. (4 P.)',
+    prompt: 'Erläutere den Zweck einer DMZ. (4 P.)',
     kriterien: [
       krit(
         'Aus dem Internet erreichbare Server stehen in einer eigenen Netzzone, getrennt vom internen Netz',
@@ -663,7 +661,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Am Sonntag läuft eine Vollsicherung mit 200 GB. Von Montag bis Donnerstag werden täglich 10 GB jeweils anderer Dateien geändert und abends gesichert. Verglichen werden zwei Verfahren. Am Freitagmorgen fällt der Server aus.',
     prompt:
-        'Ergänzen Sie die Größe der täglichen Sicherung in GB und die Anzahl der Sicherungen, die für die Wiederherstellung nötig sind.',
+        'Ergänze die Größe der täglichen Sicherung in GB und die Anzahl der Sicherungen, die für die Wiederherstellung nötig sind.',
     zeilen: [
       ['Tag', 'differenziell', 'inkrementell'],
       ['Montag', '10', '10'],
@@ -694,7 +692,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Die Pixelhafen Medien GmbH sichert ihre Projektdaten bisher jede Nacht vollständig. Das dauert inzwischen zu lange. Zur Wahl stehen eine differenzielle und eine inkrementelle Sicherung an den Werktagen.',
     prompt:
-        'Beschreiben Sie zwei Unterschiede zwischen differenzieller und inkrementeller Sicherung. (4 P.)',
+        'Beschreibe zwei Unterschiede zwischen differenzieller und inkrementeller Sicherung. (4 P.)',
     kriterien: [
       krit(
         'Umfang: differenziell sichert alle Änderungen seit der letzten Vollsicherung, inkrementell nur die Änderungen seit der letzten Sicherung',
@@ -741,7 +739,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Ein Sicherungsplan sieht vor: jeden Sonntag eine Vollsicherung mit 400 GB, an den übrigen sechs Tagen je eine inkrementelle Sicherung mit 15 GB. Alle Sicherungen werden vier Wochen lang aufbewahrt.',
     prompt:
-        'Berechnen Sie, wie viel Speicherplatz für die Sicherungen von vier Wochen mindestens bereitstehen muss.',
+        'Berechne, wie viel Speicherplatz für die Sicherungen von vier Wochen mindestens bereitstehen muss.',
     answer: 1960,
     unit: 'GB',
     explanation:
@@ -751,7 +749,7 @@ final List<Question> ihkA06 = [
   paare(
     'i6-yb-4',
     'sm-backup',
-    prompt: 'Ordnen Sie jedem Begriff der Datensicherung die Erklärung zu.',
+    prompt: 'Ordne jedem Begriff der Datensicherung die Erklärung zu.',
     paare: [
       paar('RPO', 'Höchster tragbarer Datenverlust als Zeitraum'),
       paar('RTO', 'Höchste tragbare Dauer bis zum Wiederanlauf'),
@@ -776,8 +774,8 @@ final List<Question> ihkA06 = [
     'sm-wlan',
     mono: true,
     scenario:
-        'In der neuen Filiale der Grünwerk Gartenbedarf GmbH hat ein Dienstleister einen Access Point eingerichtet. Sie prüfen die Konfiguration.',
-    prompt: 'Markieren Sie alle unsicheren Einstellungen.',
+        'In der neuen Filiale der Grünwerk Gartenbedarf GmbH hat ein Dienstleister einen Access Point eingerichtet. Du prüfst die Konfiguration.',
+    prompt: 'Markiere alle unsicheren Einstellungen.',
     zeilen: [
       nein(
         'SSID:           Filiale-Buero',
@@ -824,7 +822,7 @@ final List<Question> ihkA06 = [
     code:
         'WIRELESS NETWORK POLICY (excerpt)\n\n1. All access points must use WPA3 or, where older\n   devices require it, WPA2 with AES.\n2. Guests are only allowed to connect to the separate\n   guest network, which has no access to internal servers.\n3. The default administrator password of every access\n   point must be changed before it goes into service.\n4. WPS must be switched off on all devices.\n5. Firmware updates have to be installed within 14 days\n   after release.',
     prompt:
-        'Nennen Sie vier Vorgaben, die die Richtlinie für den Betrieb der Access Points macht. Antworten Sie auf Deutsch. (4 P.)',
+        'Nenne vier Vorgaben, die die Richtlinie für den Betrieb der Access Points macht. Antworte auf Deutsch. (4 P.)',
     kriterien: [
       krit(
         'Verschlüsselung mit WPA3, ersatzweise WPA2 mit AES',
@@ -863,8 +861,8 @@ final List<Question> ihkA06 = [
     'i6-yw-3',
     'sm-wlan',
     scenario:
-        'Für ein Angebot an die Steuerkanzlei Albers & Partner beschreiben Sie die Absicherung des neuen WLAN.',
-    prompt: 'Ergänzen Sie den Text.',
+        'Für ein Angebot an die Steuerkanzlei Albers & Partner beschreibst du die Absicherung des neuen WLAN.',
+    prompt: 'Ergänze den Text.',
     text:
         'Im Modus „Personal“ melden sich alle Geräte mit demselben {0} an. WPA3 ersetzt dessen Aushandlung durch das Verfahren {1} und schützt so vor Wörterbuchangriffen auf mitgeschnittene Anmeldungen. Für die Kanzlei empfehlen wir den Modus {2}: Jede Person meldet sich nach dem Standard {3} mit eigenen Zugangsdaten an, die ein {4}-Server prüft. Scheidet jemand aus, wird nur dieses eine Konto gesperrt.',
     luecken: [
@@ -886,7 +884,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Die Elbtal Logistik AG nimmt zwölf Netzwerkkameras in Betrieb. Ab Werk sind alle mit dem Benutzer „admin“ und dem Passwort „admin“ eingerichtet. Ein Kollege meint, das könne im internen Netz so bleiben.',
     prompt:
-        'Erläutern Sie zwei Risiken, die von unveränderten Standardpasswörtern ausgehen. (4 P.)',
+        'Erläutere zwei Risiken, die von unveränderten Standardpasswörtern ausgehen. (4 P.)',
     kriterien: [
       krit(
         'Standardpasswörter sind öffentlich bekannt (Handbuch, Listen im Internet) und bei allen Geräten der Baureihe gleich',
@@ -927,9 +925,9 @@ final List<Question> ihkA06 = [
     'sm-zugriff',
     mono: true,
     scenario:
-        'Die Pixelhafen Medien GmbH mietet einen Linux-Server für Kundenprojekte. Vor der Inbetriebnahme prüfen Sie den Zustand des Systems.',
+        'Die Pixelhafen Medien GmbH mietet einen Linux-Server für Kundenprojekte. Vor der Inbetriebnahme prüfst du den Zustand des Systems.',
     prompt:
-        'Markieren Sie alle Einträge, die bei der Härtung des Servers geändert werden müssen.',
+        'Markiere alle Einträge, die bei der Härtung des Servers geändert werden müssen.',
     zeilen: [
       ja(
         'telnet:  aktiv (Port 23)',
@@ -969,7 +967,7 @@ final List<Question> ihkA06 = [
     'sm-zugriff',
     scenario:
         'In der Steuerkanzlei Albers & Partner gilt das Minimalprinzip. Die Lohnsachbearbeitung pflegt die Dateien im Ordner „Lohn“. Briefvorlagen im Ordner „Vorlagen“ werden von allen genutzt, aber nur von der Kanzleileitung geändert. Auszubildende arbeiten nicht an Lohnmandaten.',
-    prompt: 'Ergänzen Sie die Berechtigungsmatrix.',
+    prompt: 'Ergänze die Berechtigungsmatrix.',
     zeilen: [
       ['Ordner', 'Lohnsachbearbeitung', 'Auszubildende'],
       [
@@ -1007,7 +1005,7 @@ final List<Question> ihkA06 = [
     code:
         'SECURE SETUP - QUICK GUIDE\n\nBefore you connect the device to your network:\n- Replace the factory password with a strong, unique one.\n- Disable all services you do not need, e.g. FTP and Telnet.\n- Create a separate user account for daily work; use the\n  administrator account for configuration only.\n- Enable automatic security updates.\n- Turn on the audit log to record every login attempt.',
     prompt:
-        'Welche Maßnahmen nennt die Anleitung? Wählen Sie alle zutreffenden aus.',
+        'Welche Maßnahmen nennt die Anleitung? Wähle alle zutreffenden aus.',
     choices: [
       ja(
         'Das Werkspasswort durch ein starkes, einzigartiges Passwort ersetzen',
@@ -1047,8 +1045,7 @@ final List<Question> ihkA06 = [
     'kr-symmetrisch',
     scenario:
         'In einem Team soll jede Person mit jeder anderen vertraulich kommunizieren können. Verglichen wird die Zahl der nötigen Schlüssel: symmetrisch braucht jedes Paar einen eigenen Schlüssel, n × (n - 1) / 2; asymmetrisch hat jede Person ein Schlüsselpaar, 2 × n.',
-    prompt:
-        'Berechnen Sie die Anzahl der Schlüssel und ergänzen Sie die Tabelle.',
+    prompt: 'Berechne die Anzahl der Schlüssel und ergänze die Tabelle.',
     zeilen: [
       ['Personen', 'symmetrisch', 'asymmetrisch'],
       ['4', '6', '8'],
@@ -1072,7 +1069,7 @@ final List<Question> ihkA06 = [
     'kr-symmetrisch',
     scenario:
         'Die Grünwerk Gartenbedarf GmbH verschlüsselt die Festplatten der neuen Notebooks mit AES-256.',
-    prompt: 'Ergänzen Sie die Beschreibung des Verfahrens.',
+    prompt: 'Ergänze die Beschreibung des Verfahrens.',
     text:
         'AES ist ein {0} Verfahren: Zum Ver- und Entschlüsseln dient {1} Schlüssel. Es arbeitet sehr {2} und eignet sich deshalb für große Datenmengen. Die Angabe 256 nennt die {3} in Bit. Schwierig ist bei solchen Verfahren der sichere {4}, wenn zwei Parteien über ein unsicheres Netz kommunizieren.',
     luecken: [
@@ -1092,7 +1089,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Die Pixelhafen Medien GmbH schickt einem Kunden ein mit AES verschlüsseltes ZIP-Archiv per E-Mail. Das Passwort steht in derselben E-Mail.',
     prompt:
-        'Beschreiben Sie das Problem dieses Vorgehens und nennen Sie eine geeignete Lösung. (3 P.)',
+        'Beschreibe das Problem dieses Vorgehens und nenne eine geeignete Lösung. (3 P.)',
     kriterien: [
       krit(
         'Problem: Beide Seiten brauchen denselben geheimen Schlüssel. Wer die E-Mail abfängt, erhält Geheimtext und Schlüssel zugleich und kann alles lesen',
@@ -1129,7 +1126,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Ein veraltetes Verfahren nutzt Schlüssel mit 40 Bit Länge. Ein Angreifer kann 2^30 Schlüssel (rund 1 Milliarde) je Sekunde durchprobieren.',
     prompt:
-        'Berechnen Sie, nach wie vielen Sekunden der Angreifer spätestens alle möglichen Schlüssel getestet hat.',
+        'Berechne, nach wie vielen Sekunden der Angreifer spätestens alle möglichen Schlüssel getestet hat.',
     answer: 1024,
     unit: 's',
     explanation:
@@ -1151,7 +1148,7 @@ final List<Question> ihkA06 = [
       ],
     ),
     prompt:
-        'Bringen Sie die Schritte der asymmetrischen Verschlüsselung in die richtige Reihenfolge.',
+        'Bringe die Schritte der asymmetrischen Verschlüsselung in die richtige Reihenfolge.',
     items: [
       'Der Mandant erzeugt ein Schlüsselpaar',
       'Der Mandant stellt der Kanzlei seinen öffentlichen Schlüssel bereit',
@@ -1176,7 +1173,7 @@ final List<Question> ihkA06 = [
       ],
     ),
     prompt:
-        'Wählen Sie für jeden Schritt den richtigen Schlüssel bzw. das erreichte Schutzziel.',
+        'Wähle für jeden Schritt den richtigen Schlüssel bzw. das erreichte Schutzziel.',
     text:
         'Frau Albers verschlüsselt die Nachricht mit dem Schlüssel {0}. Herr Yilmaz entschlüsselt sie mit dem Schlüssel {1}. Geheim bleiben muss dabei nur der Schlüssel {2}. Erreicht wird das Schutzziel {3}.',
     luecken: [
@@ -1209,7 +1206,7 @@ final List<Question> ihkA06 = [
       ],
     ),
     prompt:
-        'Bringen Sie die Schritte beim Erstellen und Prüfen der digitalen Signatur in die richtige Reihenfolge.',
+        'Bringe die Schritte beim Erstellen und Prüfen der digitalen Signatur in die richtige Reihenfolge.',
     items: [
       'Der Einkauf bildet den Hashwert der Bestellung',
       'Der Einkauf verschlüsselt den Hashwert mit seinem privaten Schlüssel - das ist die Signatur',
@@ -1227,7 +1224,7 @@ final List<Question> ihkA06 = [
     scenario:
         'In der Prüfung wird das Public-Key-Verfahren in zwei Varianten gefragt: verschlüsseln und signieren. Die Verwechslung der Schlüssel ist der häufigste Fehler.',
     prompt:
-        'Ergänzen Sie, welchen Schlüssel der Sender und welchen der Empfänger jeweils benutzt.',
+        'Ergänze, welchen Schlüssel der Sender und welchen der Empfänger jeweils benutzt.',
     zeilen: [
       ['Vorgang', 'Sender nutzt', 'Empfänger nutzt'],
       [
@@ -1258,7 +1255,7 @@ final List<Question> ihkA06 = [
       ],
     ),
     prompt:
-        'Beschreiben Sie anhand der Skizze, wie die digitale Signatur erstellt und wie sie geprüft wird. (4 P.)',
+        'Beschreibe anhand der Skizze, wie die digitale Signatur erstellt und wie sie geprüft wird. (4 P.)',
     kriterien: [
       krit(
         'Erstellen: Aus dem Auftrag wird ein Hashwert gebildet und mit dem privaten Schlüssel des Absenders verschlüsselt; Auftrag und Signatur werden gesendet',
@@ -1291,7 +1288,7 @@ final List<Question> ihkA06 = [
     'kr-asymmetrisch',
     scenario:
         'Ein Auszubildender hat für die Berufsschule aufgeschrieben, wie Anna und Ben mit einem Public-Key-Verfahren arbeiten. Einige Sätze enthalten Fehler.',
-    prompt: 'Markieren Sie alle fehlerhaften Aussagen.',
+    prompt: 'Markiere alle fehlerhaften Aussagen.',
     zeilen: [
       nein(
         'Anna verschlüsselt die Nachricht an Ben mit Bens öffentlichem Schlüssel.',
@@ -1337,7 +1334,7 @@ final List<Question> ihkA06 = [
         Nachricht(0, 1, 'Datei (verschlüsselt)'),
       ],
     ),
-    prompt: 'Ergänzen Sie die Beschreibung des hybriden Verfahrens.',
+    prompt: 'Ergänze die Beschreibung des hybriden Verfahrens.',
     text:
         'Die Agentur erzeugt einen zufälligen {0} und verschlüsselt damit die Datei {1}, zum Beispiel mit AES. Den Sitzungsschlüssel selbst verschlüsselt sie {2} mit dem Schlüssel {3}. Der Kunde entschlüsselt zuerst den Sitzungsschlüssel mit dem Schlüssel {4} und damit anschließend die Datei.',
     luecken: [
@@ -1357,7 +1354,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Beim Aufruf des Webshops der Grünwerk Gartenbedarf GmbH über HTTPS kommen ein asymmetrisches und ein symmetrisches Verfahren zum Einsatz.',
     prompt:
-        'Erläutern Sie, warum hybride Verfahren beide Verschlüsselungsarten kombinieren. (4 P.)',
+        'Erläutere, warum hybride Verfahren beide Verschlüsselungsarten kombinieren. (4 P.)',
     kriterien: [
       krit(
         'Symmetrische Verfahren sind schnell und eignen sich für große Datenmengen, haben aber das Problem des Schlüsselaustauschs',
@@ -1392,8 +1389,8 @@ final List<Question> ihkA06 = [
     'kr-hybrid',
     mono: true,
     scenario:
-        'Am 01.10.2026 ruft ein Mandant das Portal https://portal.albers-partner.example auf. Der Browser zeigt eine Zertifikatswarnung. Sie sehen sich die Zertifikatsdaten an.',
-    prompt: 'Markieren Sie die Angaben, die die Warnung auslösen.',
+        'Am 01.10.2026 ruft ein Mandant das Portal https://portal.albers-partner.example auf. Der Browser zeigt eine Zertifikatswarnung. Du siehst dir die Zertifikatsdaten an.',
+    prompt: 'Markiere die Angaben, die die Warnung auslösen.',
     zeilen: [
       nein(
         'Ausgestellt für: portal.albers-partner.example',
@@ -1427,7 +1424,7 @@ final List<Question> ihkA06 = [
   tabelle(
     'i6-ch-4',
     'kr-hybrid',
-    prompt: 'Ergänzen Sie den Vergleich der beiden Verschlüsselungsarten.',
+    prompt: 'Ergänze den Vergleich der beiden Verschlüsselungsarten.',
     zeilen: [
       ['Merkmal', 'symmetrisch', 'asymmetrisch'],
       [
@@ -1456,13 +1453,13 @@ final List<Question> ihkA06 = [
     'i6-cx-1',
     'kr-hash',
     scenario:
-        'Für die Access Points der Steuerkanzlei laden Sie eine neue Firmware von der Website des Herstellers. Neben dem Download steht ein Hashwert.',
+        'Für die Access Points der Steuerkanzlei lädst du eine neue Firmware von der Website des Herstellers. Neben dem Download steht ein Hashwert.',
     table: [
       ['Datei', 'SHA-256'],
       ['ap-firmware-4.2.bin', '7c1e09ab…52d4f0e3'],
     ],
     prompt:
-        'Erläutern Sie den Zweck des angegebenen Hashwerts und wie Sie ihn verwenden. (4 P.)',
+        'Erläutere den Zweck des angegebenen Hashwerts und wie du ihn verwendest. (4 P.)',
     kriterien: [
       krit(
         'Zweck: Integrität prüfen - die Datei ist vollständig und wurde weder beim Übertragen beschädigt noch manipuliert',
@@ -1495,8 +1492,7 @@ final List<Question> ihkA06 = [
   lueckentext(
     'i6-cx-2',
     'kr-hash',
-    prompt:
-        'Ergänzen Sie die Eigenschaften einer kryptographischen Hashfunktion.',
+    prompt: 'Ergänze die Eigenschaften einer kryptographischen Hashfunktion.',
     text:
         'Eine Hashfunktion bildet Eingaben beliebiger Länge auf einen Wert {0} Länge ab. Sie ist eine {1}: Aus dem Hashwert lässt sich die Eingabe nicht zurückrechnen. Ändert sich nur ein Bit der Eingabe, ändert sich der Hashwert {2}. Haben zwei verschiedene Eingaben denselben Hashwert, spricht man von einer {3}. SHA-256 liefert {4} Bit, das sind {5} Hexadezimalzeichen.',
     luecken: [
@@ -1516,8 +1512,8 @@ final List<Question> ihkA06 = [
     'kr-hash',
     mono: true,
     scenario:
-        'Vor der Installation vergleichen Sie die veröffentlichten Hashwerte (soll) mit den selbst berechneten (ist). Zur Übersicht sind nur die ersten acht Stellen angegeben.',
-    prompt: 'Markieren Sie die Dateien, die nicht installiert werden dürfen.',
+        'Vor der Installation vergleichst du die veröffentlichten Hashwerte (soll) mit den selbst berechneten (ist). Zur Übersicht sind nur die ersten acht Stellen angegeben.',
+    prompt: 'Markiere die Dateien, die nicht installiert werden dürfen.',
     zeilen: [
       nein(
         'treiber.zip   soll 3fa94c1e  ist 3fa94c1e',
@@ -1548,8 +1544,8 @@ final List<Question> ihkA06 = [
     'i6-cx-4',
     'kr-hash',
     scenario:
-        'Bei einer Überprüfung der eingesetzten Verfahren ordnen Sie Hashfunktionen nach ihrem Einsatzzweck.',
-    prompt: 'Ordnen Sie jedes Verfahren richtig ein.',
+        'Bei einer Überprüfung der eingesetzten Verfahren ordnest du Hashfunktionen nach ihrem Einsatzzweck.',
+    prompt: 'Ordne jedes Verfahren richtig ein.',
     buckets: [
       'veraltet, nicht mehr verwenden',
       'aktuell für Integritätsprüfung',
@@ -1571,9 +1567,9 @@ final List<Question> ihkA06 = [
     'i6-cx-5',
     'kr-hash',
     scenario:
-        'Bei der Prüfung einer älteren Webanwendung der Pixelhafen Medien GmbH stellen Sie fest, dass die Passwörter der Kunden im Klartext in der Datenbank stehen.',
+        'Bei der Prüfung einer älteren Webanwendung der Pixelhafen Medien GmbH stellst du fest, dass die Passwörter der Kunden im Klartext in der Datenbank stehen.',
     prompt:
-        'Beschreiben Sie zwei Maßnahmen, mit denen Passwörter sicher gespeichert werden. (4 P.)',
+        'Beschreibe zwei Maßnahmen, mit denen Passwörter sicher gespeichert werden. (4 P.)',
     kriterien: [
       krit(
         'Nur den Hashwert des Passworts speichern; bei der Anmeldung wird die Eingabe gehasht und verglichen',
@@ -1610,8 +1606,7 @@ final List<Question> ihkA06 = [
     'kr-auth',
     scenario:
         'Für die Anmeldung an den Kassen der neuen Filiale vergleicht die Grünwerk Gartenbedarf GmbH drei Arten von Authentifizierungsfaktoren.',
-    prompt:
-        'Ergänzen Sie zu jedem Faktor ein Beispiel und ein typisches Risiko.',
+    prompt: 'Ergänze zu jedem Faktor ein Beispiel und ein typisches Risiko.',
     zeilen: [
       ['Faktor', 'Beispiel', 'Risiko'],
       [
@@ -1649,7 +1644,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Die Elbtal Logistik AG überlegt, wie die Anmeldung an den Handscannern aussehen soll. Verglichen wird, wie viele Kombinationen ein Angreifer höchstens durchprobieren müsste.',
     prompt:
-        'Berechnen Sie die Anzahl der möglichen Kombinationen und ergänzen Sie die Tabelle. Geben Sie die Zahlen ohne Tausenderpunkt ein.',
+        'Berechne die Anzahl der möglichen Kombinationen und ergänze die Tabelle. Gib die Zahlen ohne Tausenderpunkt ein.',
     zeilen: [
       ['Regel', 'Rechnung', 'Kombinationen'],
       ['PIN, 4 Ziffern', '10^4', '10.000'],
@@ -1667,7 +1662,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Die 20 Beschäftigten der Grünwerk Gartenbedarf GmbH, die mobil arbeiten, melden sich am VPN bisher nur mit Benutzername und Passwort an. Die IT-Abteilung will eine Zwei-Faktor-Authentifizierung einführen.',
     prompt:
-        'Erläutern Sie, warum eine Zwei-Faktor-Authentifizierung besser schützt als ein Passwort allein. (4 P.)',
+        'Erläutere, warum eine Zwei-Faktor-Authentifizierung besser schützt als ein Passwort allein. (4 P.)',
     kriterien: [
       krit(
         'Es werden zwei Nachweise aus verschiedenen Kategorien verlangt (Wissen, Besitz, Biometrie)',
@@ -1705,7 +1700,7 @@ final List<Question> ihkA06 = [
     code:
         'PASSWORD POLICY (excerpt)\n\nPasswords must be at least 14 characters long. A password\nmust not be reused for any other service. Passwords are\nonly changed if there is a suspicion that they have been\ncompromised. All employees have to store their passwords\nin the password manager provided by the company. Access\nfrom outside the office additionally requires a one-time\ncode from the authenticator app.',
     prompt:
-        'Welche Vorgaben macht die Richtlinie? Wählen Sie alle zutreffenden aus.',
+        'Welche Vorgaben macht die Richtlinie? Wähle alle zutreffenden aus.',
     choices: [
       ja('Mindestens 14 Zeichen Länge', '„at least 14 characters long“'),
       ja(
@@ -1753,7 +1748,7 @@ final List<Question> ihkA06 = [
         Nachricht(1, 0, 'Zugang', antwort: true),
       ],
     ),
-    prompt: 'Ergänzen Sie die Beschreibung des Verfahrens.',
+    prompt: 'Ergänze die Beschreibung des Verfahrens.',
     text:
         'Bei der Einrichtung tauschen Portal und App per QR-Code ein gemeinsames {0} aus. Daraus und aus der aktuellen {1} berechnen beide denselben Code, der nur etwa {2} Sekunden gilt. Das Passwort gehört zur Faktorkategorie {3}, das Smartphone mit der App zur Kategorie {4}.',
     luecken: [
@@ -1773,8 +1768,7 @@ final List<Question> ihkA06 = [
     mono: true,
     scenario:
         'Passwortrichtlinie der Kanzlei Albers & Partner: mindestens 12 Zeichen; der Name der Kanzlei oder der eigene Benutzername darf nicht vorkommen; keine reinen Zahlen- oder Tastaturfolgen. Frau Albers (Benutzername m.albers) schlägt fünf Passwörter vor.',
-    prompt:
-        'Markieren Sie alle Vorschläge, die gegen die Richtlinie verstoßen.',
+    prompt: 'Markiere alle Vorschläge, die gegen die Richtlinie verstoßen.',
     zeilen: [
       ja('Sommer2026!', 'Nur 11 Zeichen - zu kurz.'),
       ja('Albers&Partner2026', 'Enthält den Namen der Kanzlei.'),
@@ -1797,7 +1791,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Die Personalabteilung der Elbtal Logistik AG führt zu jeder beschäftigten Person eine digitale Personalakte. Für besondere Kategorien personenbezogener Daten (Art. 9 DSGVO) sollen strengere Zugriffsregeln gelten.',
     prompt:
-        'Markieren Sie alle Einträge, die zu den besonderen Kategorien personenbezogener Daten gehören.',
+        'Markiere alle Einträge, die zu den besonderen Kategorien personenbezogener Daten gehören.',
     zeilen: [
       nein(
         'Privatanschrift',
@@ -1836,7 +1830,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Die Kessler & Brandt IT-Systemhaus GmbH wartet die Server der Steuerkanzlei Albers & Partner. Dabei können Techniker Mandantendaten einsehen. Die Kanzlei verlangt deshalb besonders strenge Schutzmaßnahmen.',
     prompt:
-        'Nennen Sie zwei rechtliche Grundlagen, aus denen sich die erhöhten Anforderungen an den Schutz der Mandantendaten ergeben. (2 P.)',
+        'Nenne zwei rechtliche Grundlagen, aus denen sich die erhöhten Anforderungen an den Schutz der Mandantendaten ergeben. (2 P.)',
     kriterien: [
       krit(
         'Datenschutz-Grundverordnung (DSGVO)',
@@ -1874,7 +1868,7 @@ final List<Question> ihkA06 = [
     'ds-grundlagen',
     scenario:
         'Die Steuerkanzlei Albers & Partner verarbeitet Daten ihrer Mandanten und Beschäftigten. Das Systemhaus betreut die Server per Fernwartung, ein Rechenzentrum speichert die verschlüsselten Sicherungen.',
-    prompt: 'Ordnen Sie jedem Beteiligten seine Rolle nach der DSGVO zu.',
+    prompt: 'Ordne jedem Beteiligten seine Rolle nach der DSGVO zu.',
     buckets: ['Verantwortlicher', 'Auftragsverarbeiter', 'Betroffene Person'],
     items: [
       zu(
@@ -1910,7 +1904,7 @@ final List<Question> ihkA06 = [
   lueckentext(
     'i6-xg-4',
     'ds-grundlagen',
-    prompt: 'Ergänzen Sie die Begriffsbestimmung der DSGVO.',
+    prompt: 'Ergänze die Begriffsbestimmung der DSGVO.',
     text:
         'Personenbezogene Daten sind alle Informationen, die sich auf eine identifizierte oder {0} {1} Person beziehen. Daten über eine GmbH fallen deshalb {2} unter die DSGVO. Eine Kundennummer ist {3}, weil sie sich über die Kundendatei einem Menschen zuordnen lässt. Wer über Zwecke und Mittel der Verarbeitung entscheidet, heißt {4}.',
     luecken: [
@@ -1933,7 +1927,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Die Grünwerk Gartenbedarf GmbH will ihre Lohnabrechnung an einen externen Dienstleister auslagern. Dieser erhält dafür Zugriff auf die Personaldaten.',
     prompt:
-        'Nennen Sie den Vertrag, der dafür nach der DSGVO geschlossen werden muss, und zwei Punkte, die darin zu regeln sind. (3 P.)',
+        'Nenne den Vertrag, der dafür nach der DSGVO geschlossen werden muss, und zwei Punkte, die darin zu regeln sind. (3 P.)',
     kriterien: [
       krit(
         'Vertrag zur Auftragsverarbeitung (AV-Vertrag) nach Art. 28 DSGVO',
@@ -1984,7 +1978,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Im Webshop der Grünwerk Gartenbedarf GmbH geben Kundinnen und Kunden bei einer Bestellung Name, Lieferanschrift und E-Mail-Adresse an. Ein Kollege meint, dafür müsse jeder Kunde erst ein Einwilligungsformular ankreuzen.',
     prompt:
-        'Benennen Sie die Rechtsgrundlage, auf die sich diese Verarbeitung stützt, und begründen Sie Ihre Antwort. (3 P.)',
+        'Benenne die Rechtsgrundlage, auf die sich diese Verarbeitung stützt, und begründe deine Antwort. (3 P.)',
     kriterien: [
       krit(
         'Rechtsgrundlage: Erfüllung eines Vertrags (Art. 6 Abs. 1 lit. b DSGVO)',
@@ -2014,7 +2008,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Die Elbtal Logistik AG will die Laderampen und das Hoftor der neuen Lagerhalle mit Kameras überwachen, um Diebstähle aufzuklären.',
     prompt:
-        'Nennen Sie drei Pflichten, die das Unternehmen bei der Videoüberwachung aus Sicht des Datenschutzes einhalten muss. (3 P.)',
+        'Nenne drei Pflichten, die das Unternehmen bei der Videoüberwachung aus Sicht des Datenschutzes einhalten muss. (3 P.)',
     kriterien: [
       krit(
         'Auf die Überwachung deutlich hinweisen (Schild mit Verantwortlichem und Zweck)',
@@ -2087,7 +2081,7 @@ final List<Question> ihkA06 = [
     'i6-xs-3',
     'ds-grundsaetze',
     prompt:
-        'Ordnen Sie jedem Grundsatz der Verarbeitung (Art. 5 DSGVO) das passende Beispiel zu.',
+        'Ordne jedem Grundsatz der Verarbeitung (Art. 5 DSGVO) das passende Beispiel zu.',
     paare: [
       paar('Zweckbindung', 'Bestelldaten nicht für fremde Werbung nutzen'),
       paar('Datenminimierung', 'Newsletter fragt nur die E-Mail-Adresse ab'),
@@ -2107,7 +2101,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Ein Kunde der Grünwerk Gartenbedarf GmbH verlangt per E-Mail, dass „alle seine Daten sofort gelöscht“ werden. Er hat ein Kundenkonto, den Newsletter abonniert und im Vorjahr zwei Bestellungen aufgegeben, zu denen Rechnungen vorliegen.',
     prompt:
-        'Erläutern Sie, wie das Unternehmen auf das Verlangen reagieren muss. (4 P.)',
+        'Erläutere, wie das Unternehmen auf das Verlangen reagieren muss. (4 P.)',
     kriterien: [
       krit(
         'Daten ohne weiteren Zweck (Kundenkonto, Newsletter-Anmeldung) werden gelöscht - Recht auf Löschung nach Art. 17 DSGVO',
@@ -2155,7 +2149,7 @@ final List<Question> ihkA06 = [
     'ds-rechte',
     scenario:
         'Bei der Pixelhafen Medien GmbH geht ein Auskunftsersuchen eines ehemaligen Kunden ein.',
-    prompt: 'Ergänzen Sie die Regeln für die Bearbeitung.',
+    prompt: 'Ergänze die Regeln für die Bearbeitung.',
     text:
         'Das Recht auf Auskunft steht in Art. {0} DSGVO. Die Auskunft muss unverzüglich erteilt werden, spätestens innerhalb {1} nach Eingang. Bei besonders umfangreichen Anfragen kann die Frist um weitere {2} verlängert werden. Die Auskunft ist grundsätzlich {3}. Vor der Auskunft muss die {4} des Antragstellers geprüft werden, damit keine Daten an Unbefugte gehen.',
     luecken: [
@@ -2179,7 +2173,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Ein früherer Bewerber verlangt von der Elbtal Logistik AG Auskunft über die zu ihm gespeicherten Daten.',
     prompt:
-        'Bringen Sie die Schritte der Bearbeitung in eine sinnvolle Reihenfolge.',
+        'Bringe die Schritte der Bearbeitung in eine sinnvolle Reihenfolge.',
     items: [
       'Eingang des Ersuchens festhalten und Frist notieren',
       'Identität des Antragstellers prüfen',
@@ -2195,7 +2189,7 @@ final List<Question> ihkA06 = [
   paare(
     'i6-xr-4',
     'ds-rechte',
-    prompt: 'Ordnen Sie jedem Betroffenenrecht die passende Beschreibung zu.',
+    prompt: 'Ordne jedem Betroffenenrecht die passende Beschreibung zu.',
     paare: [
       paar('Auskunft (Art. 15)', 'Erfahren, welche Daten gespeichert sind'),
       paar('Berichtigung (Art. 16)', 'Falsche Daten korrigieren lassen'),
@@ -2215,7 +2209,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Die Grünwerk Gartenbedarf GmbH will Bestelldaten des Webshops an ein Marktforschungsinstitut geben. Das Institut soll keine Person mehr bestimmen können.',
     prompt:
-        'Markieren Sie alle Felder, die vor der Weitergabe entfernt werden müssen.',
+        'Markiere alle Felder, die vor der Weitergabe entfernt werden müssen.',
     zeilen: [
       ja('Vor- und Nachname', 'Identifiziert die Person unmittelbar.'),
       nein(
@@ -2245,7 +2239,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Für Tests des neuen Ticketsystems will die Pixelhafen Medien GmbH echte Kundendaten verwenden. Der Datenschutzbeauftragte verlangt, sie vorher zu anonymisieren oder wenigstens zu pseudonymisieren.',
     prompt:
-        'Erläutern Sie den Unterschied zwischen Anonymisierung und Pseudonymisierung und die jeweilige Folge für die Anwendung der DSGVO. (4 P.)',
+        'Erläutere den Unterschied zwischen Anonymisierung und Pseudonymisierung und die jeweilige Folge für die Anwendung der DSGVO. (4 P.)',
     kriterien: [
       krit(
         'Anonymisierung: Der Personenbezug wird dauerhaft entfernt und lässt sich nicht wiederherstellen - die DSGVO gilt für diese Daten nicht mehr',
@@ -2281,7 +2275,7 @@ final List<Question> ihkA06 = [
     'ds-anonym',
     scenario:
         'Eine Krankenkasse wertet Abrechnungsdaten aus. Im ersten Schritt ersetzt sie die Versichertennummer durch eine zufällige Kennung und bewahrt die Zuordnungsliste getrennt auf. Für den Jahresbericht bildet sie später nur noch Summen je Altersgruppe und Region.',
-    prompt: 'Ergänzen Sie die Einordnung der beiden Schritte.',
+    prompt: 'Ergänze die Einordnung der beiden Schritte.',
     text:
         'Der erste Schritt ist eine {0}: Mit der Zuordnungsliste lässt sich jede Kennung wieder einer Person zuordnen, die Daten bleiben {1}. Die Liste muss deshalb {2} von den Daten aufbewahrt werden. Die Summen je Altersgruppe und Region sind {3}, sofern jede Gruppe genügend Personen enthält. Für sie gilt die DSGVO {4}.',
     luecken: [
@@ -2301,9 +2295,9 @@ final List<Question> ihkA06 = [
     'i6-xt-1',
     'ds-tom',
     scenario:
-        'Für das Verzeichnis der technischen und organisatorischen Maßnahmen der Steuerkanzlei Albers & Partner ordnen Sie vorhandene Maßnahmen ein.',
+        'Für das Verzeichnis der technischen und organisatorischen Maßnahmen der Steuerkanzlei Albers & Partner ordnest du vorhandene Maßnahmen ein.',
     prompt:
-        'Ergänzen Sie für jede Maßnahme die Art und das Kontrollziel, dem sie vor allem dient.',
+        'Ergänze für jede Maßnahme die Art und das Kontrollziel, dem sie vor allem dient.',
     zeilen: [
       ['Maßnahme', 'Art', 'Kontrollziel'],
       [
@@ -2337,7 +2331,7 @@ final List<Question> ihkA06 = [
     scenario:
         'Einem Mitarbeiter der Steuerkanzlei Albers & Partner wird im Zug das Notebook gestohlen. Auf der unverschlüsselten Festplatte liegen Steuerunterlagen von rund 40 Mandanten.',
     prompt:
-        'Beschreiben Sie zwei Pflichten, die die Kanzlei nach der DSGVO nun erfüllen muss. (4 P.)',
+        'Beschreibe zwei Pflichten, die die Kanzlei nach der DSGVO nun erfüllen muss. (4 P.)',
     kriterien: [
       krit(
         'Meldung an die zuständige Datenschutz-Aufsichtsbehörde - unverzüglich, möglichst binnen 72 Stunden (Art. 33 DSGVO)',
@@ -2381,7 +2375,7 @@ final List<Question> ihkA06 = [
   paare(
     'i6-xt-3',
     'ds-tom',
-    prompt: 'Ordnen Sie jedem Kontrollziel die passende Beschreibung zu.',
+    prompt: 'Ordne jedem Kontrollziel die passende Beschreibung zu.',
     paare: [
       paar('Zutrittskontrolle', 'Unbefugte kommen nicht in die Räume'),
       paar('Zugangskontrolle', 'Unbefugte können Systeme nicht nutzen'),
@@ -2401,7 +2395,7 @@ final List<Question> ihkA06 = [
     code:
         'INCIDENT RESPONSE POLICY (excerpt)\n\nAny employee who notices a possible data breach must\nreport it to the IT service desk immediately. The affected\ndevice has to be disconnected from the network, but it\nmust not be switched off. The service desk informs the\ndata protection officer within one hour. All steps taken\nare recorded in the incident log.',
     prompt:
-        'Nennen Sie vier Schritte, die die Richtlinie bei einem möglichen Datenschutzvorfall verlangt. Antworten Sie auf Deutsch. (4 P.)',
+        'Nenne vier Schritte, die die Richtlinie bei einem möglichen Datenschutzvorfall verlangt. Antworte auf Deutsch. (4 P.)',
     kriterien: [
       krit(
         'Vorfall sofort dem IT-Servicedesk melden',
@@ -2460,8 +2454,8 @@ final List<Question> ihkA06 = [
     'i6-xt-5',
     'ds-tom',
     scenario:
-        'Bei einer Begehung des Serverraums der Pixelhafen Medien GmbH notieren Sie Ihre Beobachtungen.',
-    prompt: 'Markieren Sie alle Beobachtungen, die einen Mangel darstellen.',
+        'Bei einer Begehung des Serverraums der Pixelhafen Medien GmbH notierst du deine Beobachtungen.',
+    prompt: 'Markiere alle Beobachtungen, die einen Mangel darstellen.',
     zeilen: [
       ja(
         'Die Tür wird tagsüber mit einem Keil offen gehalten',
