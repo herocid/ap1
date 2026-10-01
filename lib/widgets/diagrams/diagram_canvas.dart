@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import 'diagram_style.dart';
@@ -93,4 +95,35 @@ class _LayoutPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_LayoutPainter old) => !identical(old.layout, layout);
+}
+
+/// Verkleinert [inner] gleichmäßig auf die Breite [maxWidth], falls es
+/// breiter ist - statt seitlich zu scrollen. Der Faktor bleibt mindestens
+/// [minScale], damit die Beschriftung lesbar bleibt (darunter scrollt die
+/// Zeichnung doch).
+DiagramLayout fitToWidth(
+  DiagramLayout inner,
+  double maxWidth, {
+  double minScale = 0.5,
+}) {
+  final w = inner.size.width;
+  if (w <= maxWidth + 0.5 || w <= 0) return inner;
+  return _ScaledLayout(inner, math.max(minScale, maxWidth / w));
+}
+
+class _ScaledLayout extends DiagramLayout {
+  _ScaledLayout(this.inner, this.factor);
+  final DiagramLayout inner;
+  final double factor;
+
+  @override
+  Size get size => inner.size * factor;
+
+  @override
+  void paint(Canvas canvas) {
+    canvas.save();
+    canvas.scale(factor);
+    inner.paint(canvas);
+    canvas.restore();
+  }
 }

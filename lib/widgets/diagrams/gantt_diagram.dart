@@ -10,7 +10,7 @@ import 'legend.dart';
 /// Gantt-Diagramm: Vorgänge links, Zeitachse oben mit durchnummerierten
 /// Zeitabschnitten, kritische Vorgänge orange, Meilensteine als Raute.
 DiagramLayout layoutGantt(GanttDiagramm d, DiagramStyle s, double w) =>
-    _GanttLayout(d, s, w);
+    fitToWidth(_GanttLayout(d, s, w), w, minScale: 0.75);
 
 class _GanttLayout extends DiagramLayout {
   _GanttLayout(this.d, this.s, double maxW) {
@@ -51,7 +51,7 @@ class _GanttLayout extends DiagramLayout {
     labelW = stacked ? maxW : sideLabelW;
     timeX = stacked ? einheit.width + 8 : labelW + 10;
     var unitW = (maxW - timeX - rightPad) / units;
-    unitW = math.max(unitW, s.sc(8));
+    unitW = math.max(unitW, 3.0);
     this.unitW = unitW;
     width = math.max(maxW, timeX + unitW * units + rightPad);
 

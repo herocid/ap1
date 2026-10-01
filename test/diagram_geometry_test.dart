@@ -42,10 +42,16 @@ void main() {
         final errors = <String>[];
         // 256 px = 320-px-Handy abzüglich Seiten- und Kartenrand (Karte nutzt auf
         // schmalen Displays 16 px Innenrand), 236 px als Reserve.
-        // Bei 130 % Schrift erst ab 256 px (offen: Use Case, Netzskizze und
-        // Balken mit langen Labels auf 320-px-Handys mit großer Schrift).
-        for (final w in [if (scale <= 1) 236.0, 256.0, 294.0, 386.0, 614.0]) {
+        // Bei 130 % Schrift gilt die Reserve von 236 px nur für Netzskizzen
+        // und Gantt (die sich notfalls verkleinern), alle anderen ab 256 px.
+        for (final w in [236.0, 256.0, 294.0, 386.0, 614.0]) {
           for (final MapEntry(key: id, value: d) in all.entries) {
+            if (scale > 1 &&
+                w < 256 &&
+                d is! NetzSkizze &&
+                d is! GanttDiagramm) {
+              continue;
+            }
             final layout = layoutDiagram(d, style, w);
             final canvas = _BoundsCanvas();
             layout.paint(canvas);
@@ -94,14 +100,33 @@ void main() {
     );
     final wide = <String>[];
     for (final MapEntry(key: id, value: d) in all.entries) {
-      // Netzskizzen und Netzpläne dürfen seitlich scrollen (offen: Netzskizzen
-      // für 320 px enger anordnen).
-      if (d is NetzSkizze || d is NetzplanDiagramm || d is GanttDiagramm) {
-        continue;
-      }
+      if (d is NetzplanDiagramm) continue;
       final layout = layoutDiagram(d, style, 294);
       if (layout.size.width > 298) {
         wide.add('$id: ${layout.size.width.round()} px');
+      }
+    }
+    expect(wide, isEmpty, reason: wide.join('\n'));
+  });
+
+  test('Netzskizzen und Gantt passen auf 320-px-Handys auch bei 130 %', () {
+    // 256 px = 320 px abzüglich Seiten- und Kartenrand.
+    final wide = <String>[];
+    for (final scale in [1.0, 1.3]) {
+      final style = DiagramStyle.fromTheme(
+        AppTheme.light(),
+        TextScaler.linear(scale),
+      );
+      for (final MapEntry(key: id, value: d) in all.entries) {
+        if (d is! NetzSkizze && d is! GanttDiagramm) continue;
+        for (final w in [236.0, 256.0]) {
+          final layout = layoutDiagram(d, style, w);
+          if (layout.size.width > w + 0.5) {
+            wide.add(
+              '$id @${w.round()} x$scale: ${layout.size.width.round()} px',
+            );
+          }
+        }
       }
     }
     expect(wide, isEmpty, reason: wide.join('\n'));
@@ -131,6 +156,9 @@ class _BoundsCanvas implements Canvas {
 
   @override
   void translate(double dx, double dy) => _m.translateByDouble(dx, dy, 0, 1);
+
+  @override
+  void scale(double sx, [double? sy]) => _m.scaleByDouble(sx, sy ?? sx, 1, 1);
 
   @override
   void rotate(double radians) => _m.rotateZ(radians);

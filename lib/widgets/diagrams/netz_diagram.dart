@@ -11,7 +11,7 @@ import 'netz_icons.dart';
 /// Kabel durchgezogen, Funk gestrichelt, Zonen (DMZ, LAN, VLAN) als
 /// gestrichelte Rahmen mit Titel auf der Rahmenlinie.
 DiagramLayout layoutNetz(NetzSkizze d, DiagramStyle s, double w) =>
-    _NetzLayout(d, s, w);
+    fitToWidth(_NetzLayout(d, s, w), w);
 
 class _N {
   _N(this.k, this.label);
