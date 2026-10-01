@@ -578,6 +578,87 @@ final List<Nugget> nuggetsA03Systeme = [
       'KVM-Switch: ein Satz Tastatur, Monitor und Maus für mehrere Rechner',
     ],
   ),
+  konzept(
+    'n-hi-15',
+    'h-schnittstellen',
+    'Daisy Chaining: Monitore in Reihe',
+    'Beim Daisy Chaining hängen mehrere Monitore hintereinander an einem einzigen Bildausgang des PCs. Das Signal läuft vom PC zum ersten Monitor und von dessen Ausgang weiter zum nächsten. Die Technik dahinter heißt Multi-Stream Transport (MST). Sie gehört zu DisplayPort ab Version 1.2; auch Thunderbolt kann Monitore verketten.',
+    table: [
+      ['Voraussetzung', 'Warum'],
+      [
+        'PC-Ausgang mit MST',
+        'DisplayPort oder Thunderbolt - HDMI kann keine Kette',
+      ],
+      [
+        'Monitor mit DP-Ausgang',
+        'reicht das Signal weiter; der letzte braucht keinen',
+      ],
+      [
+        'genug Bandbreite',
+        'alle Bilder teilen sich die Datenrate des einen Ausgangs',
+      ],
+    ],
+    points: [
+      'Vorteil: weniger Kabel zum PC, aufgeräumter Arbeitsplatz, ein Ausgang genügt',
+      'MST muss oft erst im Menü des Monitors eingeschaltet werden',
+      'Verkabelung: PC-Ausgang -> Monitor 1 IN, Monitor 1 OUT -> Monitor 2 IN und so weiter',
+    ],
+  ),
+  beispiel(
+    'n-hi-16',
+    'h-schnittstellen',
+    'Reicht ein Ausgang für drei Monitore?',
+    'Drei Full-HD-Monitore (1920 × 1080, 60 Hz, 24 Bit) sollen als Kette an einem DisplayPort-1.4-Ausgang (32,4 Gbit/s) laufen. Reicht die Datenrate für die unkomprimierten Bilder?',
+    schritte: [
+      'ein Monitor: 1920 × 1080 × 24 Bit × 60 = 2.985.984.000 Bit/s ≈ 2,99 Gbit/s',
+      'drei Monitore: 3 × 2,99 Gbit/s ≈ 8,96 Gbit/s',
+      'Vergleich: 8,96 Gbit/s liegt deutlich unter 32,4 Gbit/s',
+      'Zusätzlich prüfen: PC-Ausgang und die ersten beiden Monitore müssen MST unterstützen',
+    ],
+    ergebnis:
+        'rund 9 Gbit/s - die Kette passt an einen DisplayPort-1.4-Ausgang',
+  ),
+  vergleich(
+    'n-hi-17',
+    'h-schnittstellen',
+    'Anschlüsse am Gerät erkennen',
+    'Auf der Rückseite eines PCs sitzt das I/O-Panel mit allen Buchsen. In der Prüfung werden solche Buchsen als Bild gezeigt - du musst sie benennen und ihren Zweck kennen.',
+    [
+      ['Anschluss', 'Merkmal', 'Zweck'],
+      ['RJ45', 'achtpolig, Rastnase', 'Netzwerkkabel (LAN)'],
+      ['USB-A', 'flach, rechteckig', 'Maus, Tastatur, Stick'],
+      ['USB-C', 'klein, oval, verdrehsicher', 'Daten, Bild, Strom'],
+      ['HDMI', 'flach, zwei schräge Ecken', 'Bild und Ton'],
+      ['DisplayPort', 'eine schräge Ecke', 'Bild, Ton, Monitorkette'],
+      ['Klinke 3,5 mm', 'rund', 'Headset, Lautsprecher'],
+      ['Kaltgerätebuchse', 'drei flache Stifte', 'Netzkabel 230 V'],
+    ],
+    points: [
+      'Die Kaltgerätebuchse (IEC C14) sitzt am Netzteil von PC, Monitor oder Drucker - hier steckt das Stromkabel',
+      'Thunderbolt nutzt die USB-C-Buchse und ist mit einem Blitz gekennzeichnet',
+    ],
+  ),
+  beispiel(
+    'n-hi-18',
+    'h-schnittstellen',
+    'Reicht der Strom am USB-Port?',
+    'Ein Kartenleser wird mit einem Netzteil 9 V / 2 A geliefert. Er soll stattdessen über USB (5 V) versorgt werden. Welchen Strom müsste der USB-Port liefern? Es gilt P = U × I.',
+    table: [
+      ['Anschluss', 'Strom bei 5 V', 'Leistung'],
+      ['USB 2.0 Typ A', '0,5 A', '2,5 W'],
+      ['USB 3.x Typ A', '0,9 A', '4,5 W'],
+      ['USB-C', 'bis 3 A', '15 W'],
+      ['USB Power Delivery', 'höhere Spannung', 'bis 100 W, neu bis 240 W'],
+    ],
+    schritte: [
+      'Leistung des Geräts: P = U × I = 9 V × 2 A = 18 W',
+      'Strom bei 5 V: I = P / U = 18 W / 5 V = 3,6 A',
+      'Vergleich: Ein USB-A-Port liefert 0,5 bzw. 0,9 A, USB-C ohne Power Delivery bis 3 A',
+      'Folge: Der Port würde überlastet, das Gerät liefe instabil oder gar nicht',
+    ],
+    ergebnis:
+        '3,6 A - das schafft ein normaler USB-Port nicht, also Netzteil nutzen',
+  ),
   falle(
     'n-hi-13',
     'h-schnittstellen',
@@ -747,6 +828,43 @@ final List<Nugget> nuggetsA03Systeme = [
       'regelmäßige Selbsttests und Überwachung per Software',
       'für lange Ausfälle: zusätzlich ein Notstromaggregat',
     ],
+  ),
+  formel(
+    'n-hu-14',
+    'h-usv',
+    'Elektrische Leistung: P = U × I',
+    'Die Leistung eines Geräts ergibt sich aus Spannung mal Stromstärke. Die Formel steht in der Prüfung meist dabei - umstellen musst du sie selbst. Auf dem Typenschild eines Netzteils stehen Spannung und Strom, etwa „20 V / 4,5 A“.',
+    'P (W) = U (V) × I (A)\n'
+        'I (A) = P (W) / U (V)\n'
+        'U (V) = P (W) / I (A)\n'
+        '1 A   = 1.000 mA',
+    points: [
+      'Netzspannung in Deutschland: 230 V',
+      'Eine mit 16 A abgesicherte Steckdose liefert höchstens 230 V × 16 A = 3.680 W',
+      'Netzteil 20 V / 4,5 A: P = 20 V × 4,5 A = 90 W',
+    ],
+    merksatz:
+        'Gleiche Leistung bei kleinerer Spannung heißt größerer Strom: 12 W sind bei 24 V nur 0,5 A, bei 5 V aber 2,4 A.',
+  ),
+  beispiel(
+    'n-hu-15',
+    'h-usv',
+    'Hält die Steckdosenleiste das aus?',
+    'Auf einer Steckdosenleiste steht „max. 16 A / 230 V“. Angeschlossen werden sollen die Geräte aus der Tabelle. Ist das zulässig?',
+    table: [
+      ['Gerät', 'Anzahl', 'Leistung'],
+      ['PC mit Monitor', '2', 'je 300 W'],
+      ['Laserdrucker', '1', '1.100 W'],
+      ['Heizlüfter', '1', '2.000 W'],
+    ],
+    schritte: [
+      'Höchstleistung der Leiste: P = U × I = 230 V × 16 A = 3.680 W',
+      'Summe der Geräte: 2 × 300 W + 1.100 W + 2.000 W = 3.700 W',
+      'Strom der Geräte: I = P / U = 3.700 W / 230 V ≈ 16,09 A',
+      'Vergleich: 16,09 A liegt über 16 A - die Leiste wäre überlastet',
+    ],
+    ergebnis:
+        'nicht zulässig: 3.700 W bzw. 16,09 A überschreiten 3.680 W bzw. 16 A',
   ),
   falle(
     'n-hu-11',
@@ -1584,6 +1702,53 @@ final List<Nugget> nuggetsA03Systeme = [
       ),
       FlussKnoten('Netzwerk in Ordnung', form: FlussForm.ende),
     ]),
+  ),
+  beispiel(
+    'n-bc-14',
+    'b-cli',
+    'Eine Ping-Ausgabe lesen',
+    'Das Bild einer Netzwerkkamera ruckelt. Ein ping auf die Kamera im eigenen LAN liefert die folgende Ausgabe. Welche Werte sind auffällig, und was folgt daraus?',
+    code:
+        'ping 192.168.10.50\n'
+        'Antwort: Zeit=3ms TTL=64\n'
+        'Zeitüberschreitung der Anforderung.\n'
+        'Antwort: Zeit=480ms TTL=64\n'
+        'Antwort: Zeit=5ms TTL=64\n'
+        'Gesendet = 4, Empfangen = 3,\n'
+        'Verloren = 1 (25% Verlust)\n'
+        'Minimum = 3ms, Maximum = 480ms,\n'
+        'Mittelwert = 162ms',
+    schritte: [
+      'Paketverlust: 1 von 4 Anfragen blieb unbeantwortet - 25 % statt 0 %',
+      'Antwortzeit: Im LAN sind wenige Millisekunden normal, 480 ms ist ein Ausreißer',
+      'Mittelwert: (3 + 480 + 5) / 3 ≈ 162 ms - gemittelt wird nur über die Antworten',
+      'Folgen: ruckelndes oder einfrierendes Bild, Zeitüberschreitungen, Verbindungsabbrüche',
+      'Mögliche Ursachen: defektes Kabel oder Stecker, schwaches WLAN, überlastete Leitung',
+    ],
+    ergebnis:
+        'auffällig sind 25 % Verlust und 480 ms Maximum - die Verbindung zur Kamera ist gestört',
+  ),
+  vergleich(
+    'n-bc-15',
+    'b-cli',
+    'Kennwerte einer Ping-Ausgabe',
+    'ping schickt kleine Testpakete (ICMP) an ein Ziel und misst, ob und wie schnell die Antwort zurückkommt. Diese Werte liest du aus der Ausgabe.',
+    [
+      ['Wert', 'Bedeutung', 'auffällig, wenn'],
+      ['Zeit (Latenz)', 'Laufzeit hin und zurück', 'im LAN mehr als wenige ms'],
+      ['Verlust', 'Anteil ohne Antwort', 'größer als 0 %'],
+      [
+        'Zeitüberschreitung',
+        'keine Antwort in der Wartezeit',
+        'sie überhaupt auftritt',
+      ],
+      ['Min / Max', 'kleinste und größte Zeit', 'beide weit auseinanderliegen'],
+      ['TTL', 'restliche Router-Sprünge', '- (sinkt je Router um 1)'],
+    ],
+    points: [
+      'Stark schwankende Zeiten (Jitter) stören vor allem Sprache und Video',
+      'Hohe Latenz und Paketverlust führen zu Ruckeln, Wartezeiten und abgebrochenen Verbindungen',
+    ],
   ),
   falle(
     'n-bc-10',
