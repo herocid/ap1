@@ -38,7 +38,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 6,
         explanation:
-            'Bei Tempo ist der größte Wert der beste, bei Wartung und Preis der kleinste. Scannen: C 3, B 2, A 1. Wartung: B 3, A 2, C 1. Preis: A 3, C 2, B 1. Summen: A 7, B 9, C 8 - gewählt wird Gerät B.',
+            'Bei Tempo ist der größte Wert der beste, bei Wartung und Preis der kleinste. Scannen: C 3, B 2, A 1. Wartung: B 3, A 2, C 1. Preis: A 3, C 2, B 1. Summen: A 7, B 9, C 8. Gewählt wird Gerät B.',
       ),
       rechnen(
         'f-a03h-systemhaus-b',
@@ -376,7 +376,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 3,
         loesung:
-            'Dual Stack: Arbeitsplätze, Router und - soweit möglich - Server erhalten sowohl eine IPv4- als auch eine IPv6-Adresse. Die Kanzleisoftware wird weiter über IPv4 angesprochen, Ziele mit IPv6 über IPv6. Alternativ Tunneling: IPv6-Pakete werden in IPv4-Pakete verpackt und am Tunnelende wieder ausgepackt.',
+            'Dual Stack: Arbeitsplätze, Router und, soweit möglich, Server erhalten sowohl eine IPv4- als auch eine IPv6-Adresse. Die Kanzleisoftware wird weiter über IPv4 angesprochen, Ziele mit IPv6 über IPv6. Alternativ Tunneling: IPv6-Pakete werden in IPv4-Pakete verpackt und am Tunnelende wieder ausgepackt.',
         explanation:
             'Bewertung: Eine erläuterte Möglichkeit ergibt 3 Punkte (Dual Stack oder Tunneling).',
       ),
@@ -1104,7 +1104,7 @@ final List<ExamCase> casesA03 = [
           ),
         ],
         loesung:
-            'Der Bildausgang des PCs - DisplayPort oder Thunderbolt - und alle Monitore der Kette bis auf den letzten müssen Multi-Stream Transport (MST) unterstützen. Nur dann lassen sich mehrere Bildsignale über ein Kabel übertragen und von Monitor zu Monitor weiterreichen.',
+            'Der Bildausgang des PCs (DisplayPort oder Thunderbolt) und alle Monitore der Kette bis auf den letzten müssen Multi-Stream Transport (MST) unterstützen. Nur dann lassen sich mehrere Bildsignale über ein Kabel übertragen und von Monitor zu Monitor weiterreichen.',
         punkte: 3,
         explanation:
             'Bewertung: je 1 Punkt für MST, den Ausgang des PCs und die Monitore, zusammen 3 Punkte.',
@@ -1314,7 +1314,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 5,
         explanation:
-            'Maske 255.255.255.224 = /27, Blockgröße 256 - 224 = 32, 30 nutzbare Adressen. Blöcke: 64, 96, 128 - die 108 liegt im Block 96 bis 127. Netz 10.30.5.96, Broadcast 10.30.5.127, letzte nutzbare Adresse 10.30.5.126. Je Wert 1 Punkt.',
+            'Maske 255.255.255.224 = /27, Blockgröße 256 - 224 = 32, 30 nutzbare Adressen. Blöcke: 64, 96, 128; die 108 liegt im Block 96 bis 127. Netz 10.30.5.96, Broadcast 10.30.5.127, letzte nutzbare Adresse 10.30.5.126. Je Wert 1 Punkt.',
       ),
       freitext(
         'f-a03n-agentur-d',

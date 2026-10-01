@@ -12,7 +12,7 @@ final List<Nugget> nuggetsA02 = [
     points: [
       'Sender: hat eine Idee und will sie mitteilen',
       'Codieren: die Idee in Zeichen fassen (Worte, Gesten, Bilder)',
-      'Kanal: der Weg der Nachricht - Gespräch, Telefon, E-Mail, Chat',
+      'Kanal: der Weg der Nachricht (Gespräch, Telefon, E-Mail, Chat)',
       'Decodieren: der Empfänger deutet die Zeichen',
       'Rückmeldung (Feedback): zeigt dem Sender, was angekommen ist',
     ],
@@ -135,7 +135,7 @@ final List<Nugget> nuggetsA02 = [
       [
         '3. Interpunktion',
         'Jeder sieht den Auslöser beim anderen.',
-        '„Ich schweige, weil du nörgelst.“ - „Ich nörgle, weil du schweigst.“',
+        '„Ich schweige, weil du nörgelst.“ Darauf: „Ich nörgle, weil du schweigst.“',
       ],
       [
         '4. digital und analog',
@@ -256,7 +256,7 @@ final List<Nugget> nuggetsA02 = [
       'Anliegen erzählen lassen: „Wie läuft das heute bei Ihnen ab?“',
       'Probleme und Wünsche herausarbeiten: Was kostet Zeit oder Geld?',
       'Rahmenbedingungen klären: Budget, Termin, Nutzerzahl, Schnittstellen.',
-      'Zusammenfassen: „Sie brauchen also ... - stimmt das so?“',
+      'Zusammenfassen: „Sie brauchen also ..., stimmt das so?“',
       'Ergebnis schriftlich festhalten, als Grundlage für das Angebot.',
     ],
   ),
@@ -769,7 +769,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tt-11',
     'te-phasen',
     'Vier oder fünf Phasen?',
-    'Tuckmans ursprüngliches Modell von 1965 hat vier Phasen, Adjourning kam 1977 dazu. Fragt eine Aufgabe nach dem Ende eines Projektteams - Übergabe, Abschied, Auflösung -, ist Adjourning gemeint, nicht Performing.',
+    'Tuckmans ursprüngliches Modell von 1965 hat vier Phasen, Adjourning kam 1977 dazu. Fragt eine Aufgabe nach dem Ende eines Projektteams (Übergabe, Abschied, Auflösung), ist Adjourning gemeint, nicht Performing.',
   ),
   merke(
     'n-tt-12',
@@ -847,9 +847,9 @@ final List<Nugget> nuggetsA02 = [
     'Feedback in drei Schritten',
     'Die WWW-Methode gibt Feedback eine klare Form: Wahrnehmung, Wirkung, Wunsch, jeweils als Ich-Botschaft.',
     [
-      'Wahrnehmung: Was habe ich konkret beobachtet? - ohne Bewertung',
+      'Wahrnehmung: Was habe ich konkret beobachtet? Ohne Bewertung',
       'Wirkung: Was hat das bei mir ausgelöst oder bewirkt?',
-      'Wunsch: Was wünsche ich mir künftig? - konkret und erfüllbar',
+      'Wunsch: Was wünsche ich mir künftig? Konkret und erfüllbar',
     ],
   ),
   beispiel(
@@ -1620,7 +1620,7 @@ final List<Nugget> nuggetsA02 = [
       'Kein Liniendiagramm: Es gibt keine zeitliche Entwicklung.',
       'Achse bei 0 beginnen lassen, Achsen beschriften und das günstigste Angebot hervorheben.',
     ],
-    ergebnis: 'Balkendiagramm mit Achse ab 0 - Angebot A ist am günstigsten.',
+    ergebnis: 'Balkendiagramm mit Achse ab 0: Angebot A ist am günstigsten.',
   ),
   konzept(
     'n-pp-8',
@@ -1701,7 +1701,7 @@ final List<Nugget> nuggetsA02 = [
     'n-pp-13',
     'pr-praesentation',
     'Irreführende Diagramme',
-    'Beginnt die Achse bei 7.900 € statt bei 0, wirkt der Balken für 8.075 € doppelt so lang wie der für 7.988 € - obwohl nur 87 € dazwischen liegen. Auch fehlende Einheiten, unbeschriftete Achsen oder 3D-Effekte verzerren die Aussage.',
+    'Beginnt die Achse bei 7.900 € statt bei 0, wirkt der Balken für 8.075 € doppelt so lang wie der für 7.988 €, obwohl nur 87 € dazwischen liegen. Auch fehlende Einheiten, unbeschriftete Achsen oder 3D-Effekte verzerren die Aussage.',
     points: [
       'Achsen bei 0 beginnen und beschriften, Einheit und Quelle angeben',
     ],
@@ -2184,7 +2184,7 @@ final List<Nugget> nuggetsA02 = [
     'Eine E-Rechnung ist kein eingescanntes Blatt und kein einfaches PDF, sondern ein strukturierter Datensatz, den die Buchhaltungssoftware automatisch einlesen kann. Seit dem 1. Januar 2025 müssen Unternehmen in Deutschland E-Rechnungen von anderen inländischen Unternehmen empfangen können.',
     points: [
       'Formate: XRechnung (reine XML-Datei) und ZUGFeRD (PDF mit eingebetteter XML-Datei)',
-      'Für das Ausstellen gelten Übergangsfristen: Bis Ende 2026 sind Papierrechnungen und - mit Zustimmung des Empfängers - PDF-Rechnungen noch erlaubt, für Unternehmen mit bis zu 800.000 € Vorjahresumsatz bis Ende 2027.',
+      'Für das Ausstellen gelten Übergangsfristen: Bis Ende 2026 sind Papierrechnungen und, mit Zustimmung des Empfängers, PDF-Rechnungen noch erlaubt, für Unternehmen mit bis zu 800.000 € Vorjahresumsatz bis Ende 2027.',
       'Rechnungen an Privatkunden sind von der Pflicht nicht betroffen.',
       'Vorteile: kein Abtippen, weniger Fehler, schnellere Bearbeitung, keine Kosten für Papier und Porto, leichtes Archivieren und Wiederfinden',
       'Nachteile: Kosten für Software und Einführung, Schulungsaufwand, Abhängigkeit von einer sicheren IT',
@@ -3198,7 +3198,7 @@ final List<Nugget> nuggetsA02 = [
       'Hat die UG ihr Stammkapital auf 25.000 € erhöht, entfällt die Pflicht. Sie darf dann als GmbH firmieren.',
     ],
     ergebnis:
-        'Rücklage: 3.000 € - für eine Ausschüttung an die Gründer bleiben höchstens 9.000 €.',
+        'Rücklage: 3.000 €. Für eine Ausschüttung an die Gründer bleiben höchstens 9.000 €.',
   ),
   beispiel(
     'n-mr-10',

@@ -908,7 +908,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pk-19',
     'pl-kontrollstrukturen',
     'Wie übersetzt du WIEDERHOLE … BIS x > 100 nach Java?',
-    'do { … } while (x <= 100); - die Abbruchbedingung wird zur Laufbedingung umgekehrt.',
+    'Die Abbruchbedingung wird zur Laufbedingung umgekehrt: do { … } while (x <= 100);',
   ),
   karte(
     'k-pk-20',

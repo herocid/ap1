@@ -320,7 +320,7 @@ final List<Nugget> nuggetsA03Netze = [
       'Individual, Wartung: 3.000 € × 5 = 15.000 €',
       'Individual gesamt: 45.000 € + 15.000 € = 60.000 €',
     ],
-    ergebnis: 'Standard 32.000 €, Individual 60.000 € - Differenz 28.000 €',
+    ergebnis: 'Standard 32.000 €, Individual 60.000 €, Differenz 28.000 €',
   ),
   beispiel(
     'n-as-8',
@@ -498,8 +498,8 @@ final List<Nugget> nuggetsA03Netze = [
     'Named oder Concurrent User?',
     'In einem Callcenter arbeiten 60 Beschäftigte in Schichten, höchstens 20 sind gleichzeitig angemeldet. Eine Named-User-Lizenz kostet 150 € je Person, eine Concurrent-User-Lizenz 400 € je gleichzeitigem Zugang. Was ist günstiger?',
     schritte: [
-      'Named User: jede berechtigte Person zählt - 60 × 150 € = 9.000 €',
-      'Concurrent User: nur gleichzeitige Zugänge zählen - 20 × 400 € = 8.000 €',
+      'Named User: jede berechtigte Person zählt: 60 × 150 € = 9.000 €',
+      'Concurrent User: nur gleichzeitige Zugänge zählen: 20 × 400 € = 8.000 €',
       'Differenz: 9.000 € - 8.000 € = 1.000 €',
     ],
     ergebnis: 'Concurrent User ist 1.000 € günstiger',
@@ -786,10 +786,10 @@ final List<Nugget> nuggetsA03Netze = [
     'Eselsbrücken',
     'Die Anfangsbuchstaben der Schichten ergeben Merksätze: auf Deutsch von oben, auf Englisch von unten.',
     points: [
-      'von 1 nach 7: Please Do Not Throw Sausage Pizza Away - Physical, Data Link, Network, Transport, Session, Presentation, Application',
+      'von 1 nach 7: Please Do Not Throw Sausage Pizza Away: Physical, Data Link, Network, Transport, Session, Presentation, Application',
     ],
     satz:
-        'Alle Deutschen Studenten Trinken Verschiedene Sorten Bier - Anwendung, Darstellung, Sitzung, Transport, Vermittlung, Sicherung, Bitübertragung.',
+        'Alle Deutschen Studenten Trinken Verschiedene Sorten Bier: Anwendung, Darstellung, Sitzung, Transport, Vermittlung, Sicherung, Bitübertragung.',
   ),
   skizze(
     'n-no-5',
@@ -1132,7 +1132,7 @@ final List<Nugget> nuggetsA03Netze = [
       ['Störungen', 'viele (Bluetooth, Nachbarn)', 'weniger'],
     ],
     points: [
-      'Verschlüsselung: WPA3 oder mindestens WPA2 - WEP und WPA gelten als unsicher',
+      'Verschlüsselung: WPA3 oder mindestens WPA2, denn WEP und WPA gelten als unsicher',
       'Gäste kommen in ein eigenes WLAN mit eigenem VLAN',
       'Im Unternehmen: Anmeldung pro Person mit WPA2/WPA3-Enterprise (802.1X)',
     ],
@@ -1276,7 +1276,7 @@ final List<Nugget> nuggetsA03Netze = [
       BitZeile('Maske /24', '11111111.11111111.11111111.00000000', netz: 24),
     ], legende: 'markiert = Netzanteil, Rest = Hostanteil'),
     points: [
-      '/24 entspricht 255.255.255.0 - das Präfix ist die Anzahl der Einsen in der Maske (CIDR-Schreibweise)',
+      '/24 entspricht 255.255.255.0. Das Präfix ist die Anzahl der Einsen in der Maske (CIDR-Schreibweise)',
       '2³² ≈ 4,3 Milliarden mögliche Adressen',
     ],
   ),
@@ -1409,7 +1409,7 @@ final List<Nugget> nuggetsA03Netze = [
     schritte: [
       '/20: 16 Bit sind die Oktette 1 und 2, dazu 4 Bit im dritten Oktett',
       'Maske: 255.255.240.0, Blockgröße im dritten Oktett: 256 - 240 = 16',
-      'Blöcke im dritten Oktett: 0, 16, 32, 48 ... - 45 liegt im Block 32 bis 47',
+      'Blöcke im dritten Oktett: 0, 16, 32, 48 ...; 45 liegt im Block 32 bis 47',
       'Netzadresse: 172.16.32.0, Broadcast: 172.16.47.255',
       'Hosts: 172.16.32.1 bis 172.16.47.254, 2¹² - 2 = 4.094',
     ],
@@ -1433,7 +1433,7 @@ final List<Nugget> nuggetsA03Netze = [
     'Ein Netz in gleich große Subnetze teilen',
     'Das Netz 192.168.50.0/24 soll in 6 gleich große Subnetze für sechs Abteilungen geteilt werden. Welches Präfix entsteht, und wie lauten die Subnetze?',
     schritte: [
-      'Benötigt: 6 Subnetze - 2² = 4 reicht nicht, 2³ = 8 reicht: 3 Bit leihen',
+      'Benötigt: 6 Subnetze. 2² = 4 reicht nicht, 2³ = 8 reicht: 3 Bit leihen',
       'neues Präfix: 24 + 3 = /27, Maske 255.255.255.224',
       'Blockgröße: 256 - 224 = 32, Hosts je Netz: 2⁵ - 2 = 30',
       'Es entstehen 8 Subnetze, 2 bleiben als Reserve',
@@ -1458,8 +1458,8 @@ final List<Nugget> nuggetsA03Netze = [
     'Eine Abteilung braucht 100 Adressen für ihre Geräte. Welches ist das kleinste passende Subnetz?',
     schritte: [
       'Gesucht: das kleinste n mit 2ⁿ - 2 ≥ 100',
-      'n = 6: 64 - 2 = 62 - zu wenig',
-      'n = 7: 128 - 2 = 126 - reicht',
+      'n = 6: 64 - 2 = 62, zu wenig',
+      'n = 7: 128 - 2 = 126, reicht',
       'Präfix: 32 - 7 = /25, Maske 255.255.255.128',
     ],
     ergebnis: '/25 mit 126 nutzbaren Adressen',
@@ -1549,7 +1549,7 @@ final List<Nugget> nuggetsA03Netze = [
     'Die Kürzungsregeln',
     'Zwei Regeln machen lange Adressen lesbar. Du darfst beide kombinieren.',
     [
-      'Regel 1: Führende Nullen in jedem Block dürfen entfallen - 0db8 wird db8, 0042 wird 42, 0000 wird 0',
+      'Regel 1: Führende Nullen in jedem Block dürfen entfallen: 0db8 wird db8, 0042 wird 42, 0000 wird 0',
       'Regel 2: Eine zusammenhängende Folge von Null-Blöcken darf durch :: ersetzt werden, aber nur ein einziges Mal',
       'Gibt es mehrere Folgen, ersetzt man die längste; bei gleicher Länge die erste',
     ],
@@ -1607,7 +1607,7 @@ final List<Nugget> nuggetsA03Netze = [
       ['Interface-ID', '64', 'das Gerät im Netz'],
     ],
     points: [
-      'Zusammen: 2001:db8:a0b:12::1/64 - Präfix 2001:db8:a0b:12, Interface-ID ::1',
+      'Zusammen: 2001:db8:a0b:12::1/64 (Präfix 2001:db8:a0b:12, Interface-ID ::1)',
     ],
   ),
   beispiel(

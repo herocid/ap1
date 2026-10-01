@@ -2108,7 +2108,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-ig-21',
     'ki-grundlagen',
     'Was ist generative KI?',
-    'KI, die neue Inhalte wie Text, Bild oder Code erzeugt, statt nur einzuordnen - z. B. große Sprachmodelle.',
+    'KI, die neue Inhalte wie Text, Bild oder Code erzeugt, statt nur einzuordnen, z. B. große Sprachmodelle.',
   ),
   karte(
     'k-ig-22',

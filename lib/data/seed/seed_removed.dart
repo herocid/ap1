@@ -31,7 +31,7 @@ const List<RemovedTopic> kRemovedTopics = [
     note:
         'SELECT, JOIN, GROUP BY und Co. sind aus der AP1 verschwunden. '
         'Datenmodellierung (ER-Modell, Beziehungen, Normalisierung) bleibt.',
-    stillRelevantFor: 'AP2 - dort wird SQL weiterhin geprüft.',
+    stillRelevantFor: 'AP2, dort wird SQL weiterhin geprüft.',
   ),
   RemovedTopic(
     title: 'Vorgehensmodelle außer Wasserfall und Scrum',
@@ -48,7 +48,7 @@ const List<RemovedTopic> kRemovedTopics = [
     note:
         'Die klassischen Ablaufdarstellungen sind gestrichen. Programmlogik '
         'wird jetzt über Pseudocode und das UML-Aktivitätsdiagramm geprüft.',
-    stillRelevantFor: 'UML-Aktivitätsdiagramm - neu im Katalog 2025.',
+    stillRelevantFor: 'UML-Aktivitätsdiagramm, neu im Katalog 2025.',
   ),
   RemovedTopic(
     title: 'Vererbung in der Objektorientierung',
@@ -73,13 +73,13 @@ const List<RemovedTopic> kRemovedTopics = [
     title: 'SWOT-Analyse',
     note:
         'Die SWOT-Matrix ist raus. Nutzwertanalyse, ABC-Analyse und '
-        'Angebotsvergleich bleiben - genau diese werden gerechnet.',
+        'Angebotsvergleich bleiben, und genau diese werden gerechnet.',
   ),
   RemovedTopic(
     title: 'ISO-Normen (z. B. ISO 2700x)',
     note:
         'Normnummern müssen nicht mehr auswendig gelernt werden. Die '
-        'Inhalte dahinter - Schutzziele, Maßnahmen, BSI-Grundschutz - sind '
+        'Inhalte dahinter (Schutzziele, Maßnahmen, BSI-Grundschutz) sind '
         'weiterhin Prüfungsstoff.',
   ),
   RemovedTopic(
@@ -107,7 +107,7 @@ const List<RemovedTopic> kAddedTopics = [
     title: 'KI-Unterstützung und KI-Software',
     note:
         'Einsatzmöglichkeiten, Grenzen und Risiken von KI-Werkzeugen im '
-        'Arbeitsalltag - einschließlich Datenschutz und Halluzinationen.',
+        'Arbeitsalltag, einschließlich Datenschutz und Halluzinationen.',
   ),
   RemovedTopic(
     title: 'SMART-Prinzip für Projektziele',
@@ -123,7 +123,8 @@ const List<RemovedTopic> kAddedTopics = [
   ),
   RemovedTopic(
     title: 'Härtung von Betriebssystemen',
-    note: 'Angriffsfläche reduzieren: Dienste abschalten, Rechte begrenzen, '
+    note:
+        'Angriffsfläche reduzieren: Dienste abschalten, Rechte begrenzen, '
         'Updates einspielen.',
   ),
   RemovedTopic(
@@ -149,12 +150,13 @@ const List<RemovedTopic> kAddedTopics = [
   RemovedTopic(
     title: 'Fehlersuche im Code und Schreibtischtest',
     note:
-        'Gegebenen Code Zeile für Zeile durchgehen und Fehler finden - ein '
+        'Gegebenen Code Zeile für Zeile durchgehen und Fehler finden, ein '
         'Aufgabentyp, der in der AP1 häufig vorkommt.',
   ),
   RemovedTopic(
     title: 'Betroffenenrechte nach DSGVO',
-    note: 'Auskunft, Berichtigung, Löschung, Einschränkung, '
+    note:
+        'Auskunft, Berichtigung, Löschung, Einschränkung, '
         'Datenübertragbarkeit, Widerspruch.',
   ),
   RemovedTopic(
@@ -163,7 +165,7 @@ const List<RemovedTopic> kAddedTopics = [
   ),
   RemovedTopic(
     title: 'Übertragungsraten und Datenmengen berechnen',
-    note: 'Bit/Byte, Präfixe, Dauer einer Übertragung - reine Rechenaufgaben.',
+    note: 'Bit/Byte, Präfixe, Dauer einer Übertragung: reine Rechenaufgaben.',
   ),
   RemovedTopic(
     title: 'HDD und SSD unterscheiden',

@@ -39,7 +39,7 @@ final List<Flashcard> cardsA02 = [
     'k-km-7',
     'k-modelle',
     'Was meint Watzlawick mit Interpunktion?',
-    'Jeder sieht den Auslöser eines Streits beim anderen: „Ich schweige, weil du nörgelst.“ - „Ich nörgle, weil du schweigst.“',
+    'Jeder sieht den Auslöser eines Streits beim anderen: „Ich schweige, weil du nörgelst.“ Darauf: „Ich nörgle, weil du schweigst.“',
   ),
   karte(
     'k-km-8',
@@ -285,7 +285,7 @@ final List<Flashcard> cardsA02 = [
     'k-tt-1',
     'te-phasen',
     'Welche Teamphasen beschreibt Tuckman?',
-    'Forming, Storming, Norming, Performing - 1977 um Adjourning ergänzt.',
+    'Forming, Storming, Norming, Performing; 1977 um Adjourning ergänzt.',
     'Kennenlernen, streiten, Regeln finden, leisten, auseinandergehen.',
   ),
   karte(
@@ -877,7 +877,7 @@ final List<Flashcard> cardsA02 = [
     'k-ve-19',
     've-einwaende',
     'Wie lässt du einen Preis von 89 € im Monat kleiner wirken?',
-    'Auf kleine Einheiten umrechnen: 89 € × 12 / 365 ≈ 2,93 € - „knapp 3 € pro Tag“.',
+    'Auf kleine Einheiten umrechnen: 89 € × 12 / 365 ≈ 2,93 €, also „knapp 3 € pro Tag“.',
   ),
 
   // Präsentation
@@ -1127,7 +1127,7 @@ final List<Flashcard> cardsA02 = [
     'k-pq-19',
     'pr-quellen',
     'Welche Quelle nutzt du für das Support-Ende eines Betriebssystems?',
-    'Die Herstellerseite - Primärquelle, laufend gepflegt. Ein alter Forenbeitrag ist allenfalls ein Hinweis zum Weitersuchen.',
+    'Die Herstellerseite, denn sie ist Primärquelle und wird laufend gepflegt. Ein alter Forenbeitrag ist allenfalls ein Hinweis zum Weitersuchen.',
   ),
   karte(
     'k-pq-20',
@@ -1579,13 +1579,13 @@ final List<Flashcard> cardsA02 = [
     'k-mk-1',
     'm-marketing',
     'Was sind die 4 P des Marketing-Mix?',
-    'Product, Price, Place, Promotion - Produkt-, Preis-, Distributions- und Kommunikationspolitik.',
+    'Product, Price, Place, Promotion: Produkt-, Preis-, Distributions- und Kommunikationspolitik.',
   ),
   karte(
     'k-mk-2',
     'm-marketing',
     'Wofür steht die AIDA-Formel?',
-    'Attention, Interest, Desire, Action - Aufmerksamkeit, Interesse, Kaufwunsch, Handlung.',
+    'Attention, Interest, Desire, Action: Aufmerksamkeit, Interesse, Kaufwunsch, Handlung.',
   ),
   karte(
     'k-mk-3',
@@ -1845,7 +1845,7 @@ final List<Flashcard> cardsA02 = [
     'k-ma-14',
     'm-abc',
     'Warum sind 800 Kabel à 2 € trotz der größten Stückzahl C-Artikel?',
-    '800 × 2 € = 1.600 € - ihr Wert ist gering. Entscheidend ist der Wert, nicht die Stückzahl.',
+    '800 × 2 € = 1.600 €. Ihr Wert ist gering. Entscheidend ist der Wert, nicht die Stückzahl.',
   ),
   karte(
     'k-ma-15',
@@ -1968,7 +1968,7 @@ final List<Flashcard> cardsA02 = [
     'k-mr-15',
     'm-rechtsformen',
     'Eine UG erzielt 12.000 € Jahresüberschuss (kein Verlustvortrag). Wie hoch ist die Pflicht-Rücklage?',
-    '12.000 € × 25 % = 3.000 € - höchstens 9.000 € dürfen ausgeschüttet werden.',
+    '12.000 € × 25 % = 3.000 €. Höchstens 9.000 € dürfen ausgeschüttet werden.',
   ),
   karte(
     'k-mr-16',

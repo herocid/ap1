@@ -149,7 +149,7 @@ final List<Question> questionsA07 = [
       ),
       nein(
         'Ja, weil der im Shop angezeigte Preis verbindlich ist.',
-        'Webshop-Seiten richten sich an alle und sind keine Anträge – der Shop muss nicht zu jedem angezeigten Preis verkaufen.',
+        'Webshop-Seiten richten sich an alle und sind keine Anträge. Der Shop muss nicht zu jedem angezeigten Preis verkaufen.',
       ),
       nein(
         'Ja, weil jede Bestätigungs-E-Mail eine Annahme ist.',
@@ -178,7 +178,7 @@ final List<Question> questionsA07 = [
       zu(
         'Ein Kunde kauft Monitore und stellt später fest, dass er sie gar nicht braucht.',
         2,
-        'Motivirrtum – kein Anfechtungsgrund, der Vertrag bleibt wirksam.',
+        'Motivirrtum: kein Anfechtungsgrund, der Vertrag bleibt wirksam.',
       ),
       zu(
         'Ein Systemhaus hat intern falsch kalkuliert und merkt, dass der vereinbarte Preis zu niedrig ist.',
@@ -188,17 +188,17 @@ final List<Question> questionsA07 = [
       zu(
         'Ein 6-jähriges Kind kauft ein Videospiel für 60 €.',
         0,
-        'Unter 7 Jahren geschäftsunfähig – die Erklärung ist nichtig (§ 105 BGB).',
+        'Unter 7 Jahren geschäftsunfähig, deshalb ist die Erklärung ist nichtig (§ 105 BGB).',
       ),
       zu(
         'Ein Verkäufer verschweigt bewusst einen reparierten Wasserschaden am Server.',
         1,
-        'Arglistige Täuschung nach § 123 BGB – anfechtbar innerhalb eines Jahres ab Entdeckung.',
+        'Arglistige Täuschung nach § 123 BGB: anfechtbar innerhalb eines Jahres ab Entdeckung.',
       ),
       zu(
         'Ein Händler tippt im Angebot 1.000 statt 100 Stück.',
         1,
-        'Erklärungsirrtum nach § 119 Abs. 1 BGB – unverzüglich anfechtbar.',
+        'Erklärungsirrtum nach § 119 Abs. 1 BGB: unverzüglich anfechtbar.',
       ),
     ],
     explanation:
@@ -246,7 +246,7 @@ final List<Question> questionsA07 = [
     'a7-vz-7',
     'vt-zustandekommen',
     scenario:
-        'Ein Systemhaus hat einer Kanzlei per E-Mail 50 Switches zu je 129 € angeboten – gemeint waren 219 €, der Vertriebsmitarbeiter hat Ziffern vertauscht. Die Kanzlei nimmt sofort an. Der Fehler fällt dem Systemhaus zwei Tage später auf.',
+        'Ein Systemhaus hat einer Kanzlei per E-Mail 50 Switches zu je 129 € angeboten. Gemeint waren 219 €, der Vertriebsmitarbeiter hat Ziffern vertauscht. Die Kanzlei nimmt sofort an. Der Fehler fällt dem Systemhaus zwei Tage später auf.',
     prompt: 'Was sollte das Systemhaus tun?',
     choices: [
       ja(
@@ -254,7 +254,7 @@ final List<Question> questionsA07 = [
         'Ein Zahlendreher ist ein Erklärungsirrtum (§ 119 Abs. 1 BGB). Angefochten werden muss ohne schuldhaftes Zögern (§ 121 BGB).',
       ),
       nein(
-        'Nichts – der Vertrag ist wegen des falschen Preises automatisch nichtig',
+        'Nichts. Der Vertrag ist wegen des falschen Preises automatisch nichtig',
         'Ein Irrtum macht den Vertrag nur anfechtbar. Ohne Anfechtung bleibt er wirksam.',
       ),
       nein(
@@ -263,7 +263,7 @@ final List<Question> questionsA07 = [
       ),
       nein(
         'Den Vertrag innerhalb von 14 Tagen widerrufen',
-        'Ein Widerrufsrecht hat nur der Verbraucher im Fernabsatz – nicht der verkaufende Unternehmer.',
+        'Ein Widerrufsrecht hat nur der Verbraucher im Fernabsatz, nicht der verkaufende Unternehmer.',
       ),
     ],
     explanation:
@@ -295,7 +295,7 @@ final List<Question> questionsA07 = [
       ),
       nein(
         'Mit dem Angebot des Händlers',
-        'Ein Angebot allein ist nur der Antrag – es braucht immer eine Annahme.',
+        'Ein Angebot allein ist nur der Antrag; es braucht immer eine Annahme.',
       ),
       nein(
         'Es kommt kein Vertrag zustande, weil die Frist abgelaufen ist.',
@@ -382,24 +382,24 @@ final List<Question> questionsA07 = [
         'Welche Vertragsart liegt typischerweise vor, und was folgt daraus für die Monatsgebühr?',
     choices: [
       ja(
-        'Mietvertrag – die Gebühr mindert sich für die Ausfallzeit kraft Gesetzes.',
+        'Mietvertrag: Die Gebühr mindert sich für die Ausfallzeit kraft Gesetzes.',
         'SaaS ist Gebrauchsüberlassung auf Zeit. Bei einem erheblichen Mangel der Mietsache mindert sich die Miete automatisch (§ 536 BGB).',
       ),
       nein(
-        'Kaufvertrag – das Autohaus muss erst Nacherfüllung verlangen.',
+        'Kaufvertrag: Das Autohaus muss erst Nacherfüllung verlangen.',
         'Es wird nichts dauerhaft übereignet, sondern Nutzung auf Zeit gewährt.',
       ),
       nein(
-        'Werkvertrag – das Autohaus muss die Software erneut abnehmen.',
+        'Werkvertrag: Das Autohaus muss die Software erneut abnehmen.',
         'Geschuldet ist nicht die Herstellung eines Werks, sondern die laufende Bereitstellung.',
       ),
       nein(
-        'Dienstvertrag – die Gebühr ist voll zu zahlen, weil nur eine Tätigkeit geschuldet ist.',
+        'Dienstvertrag: Die Gebühr ist voll zu zahlen, weil nur eine Tätigkeit geschuldet ist.',
         'Der Anbieter schuldet die nutzbare Bereitstellung der Software, nicht bloß ein Bemühen.',
       ),
     ],
     explanation:
-        'Software as a Service wird als Miete eingeordnet (§ 535 BGB). Der Anbieter muss die Software während der Laufzeit gebrauchstauglich halten. Fällt sie erheblich aus, ist der Kunde für diese Zeit ganz oder teilweise von der Miete befreit (§ 536 BGB) – er muss den Ausfall aber melden.',
+        'Software as a Service wird als Miete eingeordnet (§ 535 BGB). Der Anbieter muss die Software während der Laufzeit gebrauchstauglich halten. Fällt sie erheblich aus, ist der Kunde für diese Zeit ganz oder teilweise von der Miete befreit (§ 536 BGB); er muss den Ausfall aber melden.',
     difficulty: 2,
   ),
   lueckentext(
@@ -414,10 +414,11 @@ final List<Question> questionsA07 = [
         'Kaufpreis',
       ], 'Kennzeichen des Werkvertrags (§ 631 BGB).'),
       wahl('Abnahme', ['Bestellung', 'Lieferung der Rechnung'], '§ 641 BGB.'),
-      wahl('Unternehmer', [
-        'Besteller',
-        'Gutachter',
-      ], '§ 635 BGB, also anders als beim Kauf, wo der Käufer wählt.'),
+      wahl(
+        'Unternehmer',
+        ['Besteller', 'Gutachter'],
+        '§ 635 BGB, also anders als beim Kauf, wo der Käufer wählt.',
+      ),
       wahl('Dienstvertrag', ['Kaufvertrag', 'Mietvertrag']),
       wahl('Kaufrecht', [
         'Mietrecht',
@@ -452,12 +453,12 @@ final List<Question> questionsA07 = [
       zu(
         'Eine Leasinggesellschaft kauft 40 Notebooks und überlässt sie 36 Monate gegen monatliche Raten.',
         3,
-        'Finanzierte Gebrauchsüberlassung – im Kern wie Miete behandelt.',
+        'Finanzierte Gebrauchsüberlassung, im Kern wie Miete behandelt.',
       ),
       zu(
         'Ein Kollege überlässt einem anderen unentgeltlich für eine Woche sein Messgerät.',
         0,
-        'Unentgeltlich, auf Zeit – Leihe.',
+        'Unentgeltlich, auf Zeit: Leihe.',
       ),
     ],
     explanation:
@@ -472,7 +473,7 @@ final List<Question> questionsA07 = [
     prompt: 'Wer ist Eigentümer und wer ist Besitzer des Servers?',
     choices: [
       ja(
-        'Eigentümer: Systemhaus – Besitzer: Kunde',
+        'Eigentümer: Systemhaus; Besitzer: Kunde',
         'Unter Eigentumsvorbehalt geht das Eigentum erst mit vollständiger Zahlung über (§ 449 BGB). Die tatsächliche Herrschaft hat der Kunde.',
       ),
       nein(
@@ -480,7 +481,7 @@ final List<Question> questionsA07 = [
         'Das Eigentum wechselt wegen des Vorbehalts erst nach vollständiger Zahlung.',
       ),
       nein(
-        'Eigentümer: Kunde – Besitzer: Systemhaus',
+        'Eigentümer: Kunde; Besitzer: Systemhaus',
         'Umgekehrt: Das Systemhaus hat den Server nicht mehr in seiner Gewalt.',
       ),
       nein(
@@ -489,7 +490,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Besitz ist die tatsächliche Herrschaft, Eigentum die rechtliche. Beim Eigentumsvorbehalt übergibt der Verkäufer die Sache, bleibt aber bis zur vollständigen Zahlung Eigentümer – und kann sie bei Zahlungsausfall nach Rücktritt zurückverlangen.',
+        'Besitz ist die tatsächliche Herrschaft, Eigentum die rechtliche. Beim Eigentumsvorbehalt übergibt der Verkäufer die Sache, bleibt aber bis zur vollständigen Zahlung Eigentümer und kann sie bei Zahlungsausfall nach Rücktritt zurückverlangen.',
     difficulty: 1,
   ),
 
@@ -558,7 +559,7 @@ final List<Question> questionsA07 = [
     prompt: 'Welche Aussage trifft zu?',
     choices: [
       ja(
-        'Das Softwarehaus erhält nur die Nutzungsrechte, die der Vertragszweck erfordert – es sollte sie ausdrücklich regeln.',
+        'Das Softwarehaus erhält nur die Nutzungsrechte, die der Vertragszweck erfordert. Es sollte sie ausdrücklich regeln.',
         'Zweckübertragungslehre (§ 31 Abs. 5 UrhG): Nicht genannte Rechte gelten nur im Umfang des Vertragszwecks als eingeräumt.',
       ),
       nein(
@@ -608,7 +609,7 @@ final List<Question> questionsA07 = [
       zu(
         'Eine Sicherungskopie anlegen, die für die weitere Nutzung erforderlich ist',
         0,
-        '§ 69d Abs. 2 UrhG – kann vertraglich nicht untersagt werden.',
+        '§ 69d Abs. 2 UrhG: kann vertraglich nicht untersagt werden.',
       ),
       zu(
         'Kopien des Programms an Kunden weitergeben',
@@ -639,7 +640,7 @@ final List<Question> questionsA07 = [
       ),
       nein(
         'Ein SaaS-Abonnement darf an einen Dritten weiterverkauft werden, weil sich das Recht erschöpft hat.',
-        'Bei Miete und Abo wird keine Kopie verkauft – es gibt nichts, was sich erschöpfen könnte.',
+        'Bei Miete und Abo wird keine Kopie verkauft, also gibt es nichts, was sich erschöpfen könnte.',
       ),
       nein(
         'Wer eine gebrauchte Lizenz kauft, wird Urheber des Programms.',
@@ -658,7 +659,7 @@ final List<Question> questionsA07 = [
     prompt: 'Kann das Start-up urheberrechtlich dagegen vorgehen?',
     choices: [
       ja(
-        'Nein, Ideen und Grundsätze sind nicht geschützt – nur ihre konkrete Umsetzung im Code.',
+        'Nein, Ideen und Grundsätze sind nicht geschützt, nur ihre konkrete Umsetzung im Code.',
         '§ 69a Abs. 2 UrhG: Ideen und Grundsätze, auch von Schnittstellen, sind frei.',
       ),
       nein(
@@ -675,7 +676,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Das Urheberrecht schützt Computerprogramme in ihrer konkreten Ausdrucksform – Quellcode, Maschinencode, Entwurfsmaterial. Die zugrunde liegende Idee bleibt frei. Wer Code nicht kopiert, sondern selbst schreibt, verletzt kein Urheberrecht.',
+        'Das Urheberrecht schützt Computerprogramme in ihrer konkreten Ausdrucksform: Quellcode, Maschinencode, Entwurfsmaterial. Die zugrunde liegende Idee bleibt frei. Wer Code nicht kopiert, sondern selbst schreibt, verletzt kein Urheberrecht.',
     difficulty: 2,
   ),
 
@@ -778,7 +779,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Beide Zeiten beginnen mit der Meldung um 9:00 Uhr. Reaktionszeit bis 10:00 Uhr – Rückruf um 9:40 Uhr, eingehalten. Lösungszeit bis 13:00 Uhr – behoben um 14:30 Uhr, um 1,5 h überschritten.',
+        'Beide Zeiten beginnen mit der Meldung um 9:00 Uhr. Reaktionszeit bis 10:00 Uhr: Rückruf um 9:40 Uhr, eingehalten. Lösungszeit bis 13:00 Uhr: behoben um 14:30 Uhr, um 1,5 h überschritten.',
     difficulty: 1,
   ),
   rechnen(
@@ -918,7 +919,7 @@ final List<Question> questionsA07 = [
       ),
       nein(
         'P2',
-        'P2 wäre hoch × mittel oder mittel × hoch – dafür fehlt die Dringlichkeit.',
+        'P2 wäre hoch × mittel oder mittel × hoch; dafür fehlt die Dringlichkeit.',
       ),
       nein(
         'P3',
@@ -942,13 +943,13 @@ final List<Question> questionsA07 = [
     items: [
       'Anruf entgegennehmen und Ticket anlegen',
       'Kategorie und Priorität festlegen',
-      'Bekannte Standardlösungen prüfen – ohne Erfolg',
+      'Bekannte Standardlösungen prüfen, ohne Erfolg',
       'Funktionale Eskalation an den 2nd Level mit dokumentiertem Ticket',
       'Lösung umsetzen und im Ticket dokumentieren',
       'Lösung von der Anwenderin bestätigen lassen und Ticket schließen',
     ],
     explanation:
-        'Erfassen, kategorisieren und priorisieren macht der 1st Level. Kann er nicht lösen, eskaliert er funktional – das Ticket bleibt offen und behält seine Historie. Geschlossen wird erst nach bestätigter Lösung.',
+        'Erfassen, kategorisieren und priorisieren macht der 1st Level. Kann er nicht lösen, eskaliert er funktional. Das Ticket bleibt offen und behält seine Historie. Geschlossen wird erst nach bestätigter Lösung.',
     difficulty: 1,
   ),
   zuordnen(
@@ -1127,7 +1128,7 @@ final List<Question> questionsA07 = [
       zu(
         'Sofort einen Sicherheitspatch für eine aktiv ausgenutzte Lücke einspielen',
         2,
-        'Muss sofort passieren – beschleunigte Genehmigung.',
+        'Muss sofort passieren, also beschleunigte Genehmigung.',
       ),
       zu(
         'Ein Standard-Notebook für eine neue Mitarbeiterin nach Checkliste einrichten',
@@ -1142,7 +1143,7 @@ final List<Question> questionsA07 = [
       zu(
         'Das ERP-System auf einen neuen Datenbankserver migrieren',
         1,
-        'Geplant, riskant – muss einzeln bewertet und genehmigt werden.',
+        'Geplant, riskant: muss einzeln bewertet und genehmigt werden.',
       ),
       zu(
         'Die monatlich freigegebenen Updates der Virenschutz-Signaturen einspielen',
@@ -1192,12 +1193,12 @@ final List<Question> questionsA07 = [
     prompt: 'Wie ist die Meldung nach ITIL einzuordnen?',
     choices: [
       ja(
-        'Als Event – eine bedeutsame Zustandsänderung, aber noch keine Störung',
+        'Als Event, also eine bedeutsame Zustandsänderung, aber noch keine Störung',
         'Der Service ist nicht unterbrochen oder beeinträchtigt, also liegt kein Incident vor.',
       ),
       nein(
         'Als Incident der Priorität 1',
-        'Ein Incident setzt eine Unterbrechung oder Qualitätsminderung voraus – die gibt es hier nicht.',
+        'Ein Incident setzt eine Unterbrechung oder Qualitätsminderung voraus, und die gibt es hier nicht.',
       ),
       nein(
         'Als Problem, weil die Ursache unbekannt ist',
@@ -1334,7 +1335,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Ohne Nachfrist bleibt der Vertrag bestehen: Der Käufer kann Lieferung und Ersatz des Verzögerungsschadens verlangen. Erst nach erfolgloser Nachfrist kann er sich vom Vertrag lösen – durch Rücktritt und/oder Schadensersatz statt der Leistung.',
+        'Ohne Nachfrist bleibt der Vertrag bestehen: Der Käufer kann Lieferung und Ersatz des Verzögerungsschadens verlangen. Erst nach erfolgloser Nachfrist kann er sich vom Vertrag lösen, durch Rücktritt und/oder Schadensersatz statt der Leistung.',
     difficulty: 2,
   ),
   rechnen(
@@ -1402,7 +1403,7 @@ final List<Question> questionsA07 = [
       ),
       nein(
         'Der Händler ist im Lieferungsverzug.',
-        'Er hat pünktlich und ordnungsgemäß angeboten – die Störung liegt beim Kunden.',
+        'Er hat pünktlich und ordnungsgemäß angeboten; die Störung liegt beim Kunden.',
       ),
       nein(
         'Der Händler haftet voll, weil ihm der Server noch gehört.',
@@ -1414,7 +1415,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Annahmeverzug (§§ 293 ff. BGB): Der Gläubiger nimmt die ordnungsgemäß angebotene Leistung nicht an – Verschulden ist nicht nötig. Folgen: Haftungsmilderung auf Vorsatz und grobe Fahrlässigkeit, Ersatz von Mehraufwendungen, unter Kaufleuten Selbsthilfeverkauf. Der Kunde muss trotzdem zahlen.',
+        'Annahmeverzug (§§ 293 ff. BGB): Der Gläubiger nimmt die ordnungsgemäß angebotene Leistung nicht an. Verschulden ist nicht nötig. Folgen: Haftungsmilderung auf Vorsatz und grobe Fahrlässigkeit, Ersatz von Mehraufwendungen, unter Kaufleuten Selbsthilfeverkauf. Der Kunde muss trotzdem zahlen.',
     difficulty: 3,
   ),
 
@@ -1547,7 +1548,7 @@ final List<Question> questionsA07 = [
       zu(
         'Eine Office-Suite wird mit einem gefälschten Lizenzschlüssel verkauft.',
         3,
-        'Der Rechteinhaber kann die Nutzung untersagen – Recht eines Dritten.',
+        'Der Rechteinhaber kann die Nutzung untersagen: Recht eines Dritten.',
       ),
       zu(
         'Ein Notebook hat 8 statt der vereinbarten 16 GB RAM.',
@@ -1567,7 +1568,7 @@ final List<Question> questionsA07 = [
       zu(
         'Beworben sind 10 Stunden Akkulaufzeit, tatsächlich sind es 3.',
         0,
-        'Die Sache hält nicht, was die Werbung verspricht – objektive Anforderung verfehlt.',
+        'Die Sache hält nicht, was die Werbung verspricht: objektive Anforderung verfehlt.',
       ),
       zu('Statt 10 Switches werden 8 geliefert.', 2, 'Zu geringe Menge.'),
     ],
@@ -1588,7 +1589,7 @@ final List<Question> questionsA07 = [
       'Rücktritt oder Minderung erklären, bei Verschulden zusätzlich Schadensersatz',
     ],
     explanation:
-        'Unter Kaufleuten gilt die Rügepflicht nach § 377 HGB. Dann hat die Nacherfüllung Vorrang; nach dem zweiten erfolglosen Versuch gilt sie als fehlgeschlagen (§ 440 BGB). Erst danach kommen Rücktritt oder Minderung und – bei Verschulden – Schadensersatz.',
+        'Unter Kaufleuten gilt die Rügepflicht nach § 377 HGB. Dann hat die Nacherfüllung Vorrang; nach dem zweiten erfolglosen Versuch gilt sie als fehlgeschlagen (§ 440 BGB). Erst danach kommen Rücktritt oder Minderung und, bei Verschulden, Schadensersatz.',
     difficulty: 1,
   ),
   mehrfach(
@@ -1620,7 +1621,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Verbrauchsgüterkauf: 2 Jahre Gewährleistung, Beweislastumkehr im ersten Jahr, Update-Pflicht bei digitalen Elementen, kein Ausschluss per AGB. Eine Herstellergarantie ist freiwillig und kommt zusätzlich hinzu – sie verkürzt die Gewährleistung nicht.',
+        'Verbrauchsgüterkauf: 2 Jahre Gewährleistung, Beweislastumkehr im ersten Jahr, Update-Pflicht bei digitalen Elementen, kein Ausschluss per AGB. Eine Herstellergarantie ist freiwillig und kommt zusätzlich hinzu und verkürzt die Gewährleistung nicht.',
     difficulty: 2,
   ),
   einfach(
@@ -1640,7 +1641,7 @@ final List<Question> questionsA07 = [
       ),
       nein(
         'Keines, weil der Mangel geringfügig ist',
-        'Auch ein kleiner Mangel ist ein Mangel – nur der Rücktritt ist ausgeschlossen.',
+        'Auch ein kleiner Mangel ist ein Mangel, nur der Rücktritt ist ausgeschlossen.',
       ),
       nein(
         'Nur Ansprüche aus der Herstellergarantie',
@@ -1648,7 +1649,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Nach gescheiterter Nacherfüllung kann der Käufer zurücktreten oder mindern. Der Rücktritt setzt aber einen nicht unerheblichen Mangel voraus. Bei einem kleinen Kratzer bleibt deshalb die Minderung – der Preis sinkt im Verhältnis zum Wertverlust.',
+        'Nach gescheiterter Nacherfüllung kann der Käufer zurücktreten oder mindern. Der Rücktritt setzt aber einen nicht unerheblichen Mangel voraus. Bei einem kleinen Kratzer bleibt deshalb die Minderung: Der Preis sinkt im Verhältnis zum Wertverlust.',
     difficulty: 3,
   ),
 
@@ -1716,7 +1717,7 @@ final List<Question> questionsA07 = [
     prompt: 'Wie ist die Lage?',
     choices: [
       ja(
-        'Die Verweigerung ist unzulässig – wegen unwesentlicher Mängel darf die Abnahme nicht verweigert werden.',
+        'Die Verweigerung ist unzulässig, denn wegen unwesentlicher Mängel darf die Abnahme nicht verweigert werden.',
         '§ 640 Abs. 1 Satz 2 BGB. Der Farbfehler wird unter Vorbehalt protokolliert und nachgebessert.',
       ),
       nein(
@@ -1725,11 +1726,11 @@ final List<Question> questionsA07 = [
       ),
       nein(
         'Eine Abnahme ist gar nicht nötig, weil es ein Dienstvertrag ist.',
-        'Geschuldet ist eine fertige App, also ein Erfolg – Werkvertrag mit Abnahme.',
+        'Geschuldet ist eine fertige App, also ein Erfolg: Werkvertrag mit Abnahme.',
       ),
       nein(
         'Die Agentur muss den gesamten Preis erstatten.',
-        'Dafür gibt es keinerlei Grundlage – das Werk ist im Wesentlichen vertragsgemäß.',
+        'Dafür gibt es keinerlei Grundlage, denn das Werk ist im Wesentlichen vertragsgemäß.',
       ),
     ],
     explanation:
@@ -1750,7 +1751,7 @@ final List<Question> questionsA07 = [
       zu(
         'Der Kunde lässt eine gesetzte Abnahmefrist verstreichen, ohne einen Mangel zu nennen.',
         2,
-        '§ 640 Abs. 2 BGB – das Werk gilt als abgenommen.',
+        '§ 640 Abs. 2 BGB: Das Werk gilt als abgenommen.',
       ),
       zu(
         'Der Kunde nutzt die Software nach der Testphase monatelang produktiv und zahlt ohne Beanstandung.',
@@ -1781,7 +1782,7 @@ final List<Question> questionsA07 = [
       'Protokoll von beiden Seiten unterschreiben lassen',
     ],
     explanation:
-        'Getestet wird gegen die vorher vereinbarten Kriterien. Die Mängel werden protokolliert, bevor die Erklärung abgegeben wird – nur so bleiben die Rechte an bekannten Mängeln erhalten. Die Unterschriften machen das Protokoll zum Beweis.',
+        'Getestet wird gegen die vorher vereinbarten Kriterien. Die Mängel werden protokolliert, bevor die Erklärung abgegeben wird. Nur so bleiben die Rechte an bekannten Mängeln erhalten. Die Unterschriften machen das Protokoll zum Beweis.',
     difficulty: 1,
   ),
   rechnen(
@@ -1817,7 +1818,7 @@ final List<Question> questionsA07 = [
         'Das ist bei Werkverträgen üblich, beim Kauf nicht vorgesehen.',
       ),
       nein(
-        'Nichts – beim Kaufvertrag gibt es keine Pflicht zur Abnahme',
+        'Nichts, denn beim Kaufvertrag gibt es keine Pflicht zur Abnahme',
         'Doch: § 433 Abs. 2 BGB verpflichtet den Käufer, die Sache abzunehmen.',
       ),
     ],
@@ -1898,7 +1899,7 @@ final List<Question> questionsA07 = [
     choices: [
       ja(
         'Unfreezing',
-        'Der Veränderungsbedarf wird sichtbar gemacht und die Betroffenen werden beteiligt – das schafft Bereitschaft.',
+        'Der Veränderungsbedarf wird sichtbar gemacht und die Betroffenen werden beteiligt. Das schafft Bereitschaft.',
       ),
       nein(
         'Moving',
@@ -1906,10 +1907,10 @@ final List<Question> questionsA07 = [
       ),
       nein(
         'Refreezing',
-        'Hier wird das Neue verankert – das System ist aber noch gar nicht eingeführt.',
+        'Hier wird das Neue verankert; das System ist aber noch gar nicht eingeführt.',
       ),
       nein(
-        'Keiner – Lewins Modell betrifft nur technische Änderungen',
+        'Keiner, denn Lewins Modell betrifft nur technische Änderungen',
         'Lewins Modell beschreibt gerade die organisatorische und menschliche Seite von Veränderungen.',
       ),
     ],
@@ -1942,7 +1943,7 @@ final List<Question> questionsA07 = [
       ),
       nein(
         'Den Starttermin ohne Ankündigung vorziehen',
-        'Das erhöht Unsicherheit und Zeitdruck – also die hemmenden Kräfte.',
+        'Das erhöht Unsicherheit und Zeitdruck, also die hemmenden Kräfte.',
       ),
     ],
     explanation:
@@ -2184,7 +2185,7 @@ final List<Question> questionsA07 = [
     choices: [
       ja(
         'Offen informieren und verhandeln: neue Aufgabe, Weiterbildung, Zusage zur Weiterbeschäftigung',
-        'Er verliert tatsächlich etwas – dann helfen Information und ein fairer Ausgleich.',
+        'Er verliert tatsächlich etwas. Dann helfen Information und ein fairer Ausgleich.',
       ),
       nein(
         'Die Automatisierung bis zum Start geheim halten',

@@ -80,7 +80,7 @@ final List<Flashcard> cardsA03 = [
     'k-hk-5',
     'h-komponenten',
     'Was ist der Sockel auf dem Mainboard?',
-    'Der Steckplatz für den Prozessor, z. B. AM5 oder LGA1700 - CPU und Sockel müssen zusammenpassen.',
+    'Der Steckplatz für den Prozessor, z. B. AM5 oder LGA1700. CPU und Sockel müssen zusammenpassen.',
   ),
   karte(
     'k-hk-26',
@@ -951,7 +951,7 @@ final List<Flashcard> cardsA03 = [
     'k-bd-13',
     'b-dateisysteme',
     'Du bist in /home/anna. Wohin zeigt ../ben/notizen.txt?',
-    'Auf /home/ben/notizen.txt - .. führt eine Ebene nach oben.',
+    'Auf /home/ben/notizen.txt, denn .. führt eine Ebene nach oben.',
   ),
   karte(
     'k-bd-1',
@@ -963,7 +963,7 @@ final List<Flashcard> cardsA03 = [
     'k-bd-15',
     'b-dateisysteme',
     'Welches Dateisystem nutzt Linux standardmäßig?',
-    'ext4 - mit Rechten und Journaling; Windows kann es ohne Zusatzsoftware nicht lesen.',
+    'ext4, mit Rechten und Journaling; Windows kann es ohne Zusatzsoftware nicht lesen.',
   ),
   karte(
     'k-bd-16',
@@ -1103,7 +1103,7 @@ final List<Flashcard> cardsA03 = [
     'k-br-3',
     'b-rechte',
     'Welche Zahlenwerte haben r, w und x unter Linux?',
-    'r = 4, w = 2, x = 1 - pro Benutzerklasse (Besitzer, Gruppe, andere) addiert.',
+    'r = 4, w = 2, x = 1, pro Benutzerklasse (Besitzer, Gruppe, andere) addiert.',
   ),
   karte(
     'k-br-2',
@@ -1521,7 +1521,7 @@ final List<Flashcard> cardsA03 = [
     'k-bh-11',
     'b-haertung',
     'Seit wann erhält Windows 10 regulär keine Updates mehr?',
-    'Seit dem 14. Oktober 2025 - übergangsweise nur gegen Gebühr (ESU).',
+    'Seit dem 14. Oktober 2025. Übergangsweise gibt es sie nur gegen Gebühr (ESU).',
   ),
   karte(
     'k-bh-12',
@@ -1875,7 +1875,7 @@ final List<Flashcard> cardsA03 = [
     'k-al-22',
     'an-lizenzen',
     '60 Nutzer, max. 20 gleichzeitig: Named 150 €/Person oder Concurrent 400 €/Zugang?',
-    'Named: 60 × 150 € = 9.000 €. Concurrent: 20 × 400 € = 8.000 € - Concurrent ist 1.000 € günstiger.',
+    'Named: 60 × 150 € = 9.000 €. Concurrent: 20 × 400 € = 8.000 €. Concurrent ist 1.000 € günstiger.',
   ),
   karte(
     'k-al-18',
@@ -1967,7 +1967,7 @@ final List<Flashcard> cardsA03 = [
     'k-ak-2',
     'an-kollaboration',
     'Was ist asynchrone Kommunikation? Nenne Beispiele.',
-    'Zeitversetzt - E-Mail, Wiki, Ticketsystem, gemeinsame Dokumente.',
+    'Zeitversetzt: E-Mail, Wiki, Ticketsystem, gemeinsame Dokumente.',
   ),
   karte(
     'k-ak-8',
@@ -2095,7 +2095,7 @@ final List<Flashcard> cardsA03 = [
     'k-no-10',
     'nw-modelle',
     'Warum nutzt man Schichtenmodelle in der Netzwerktechnik?',
-    'Jede Schicht hat eine klare Aufgabe - Kabel, Geräte und Programme lassen sich austauschen, ohne alles neu zu bauen.',
+    'Jede Schicht hat eine klare Aufgabe. So lassen sich Kabel, Geräte und Programme austauschen, ohne alles neu zu bauen.',
   ),
   karte(
     'k-no-1',
@@ -2217,7 +2217,7 @@ final List<Flashcard> cardsA03 = [
     'k-no-9',
     'nw-modelle',
     'Welcher Portbereich gehört zu den Well-known Ports?',
-    '0 bis 1.023 - Standarddienste wie SSH (22), HTTP (80), HTTPS (443).',
+    '0 bis 1.023: Standarddienste wie SSH (22), HTTP (80), HTTPS (443).',
   ),
   karte(
     'k-no-22',
@@ -2285,7 +2285,7 @@ final List<Flashcard> cardsA03 = [
     'k-ng-11',
     'nw-geraete',
     'Auf welcher Schicht arbeiten Hub und Repeater?',
-    'Schicht 1 - sie verstärken bzw. verteilen nur Signale an alle Ports.',
+    'Schicht 1, denn sie verstärken bzw. verteilen nur Signale an alle Ports.',
   ),
   karte(
     'k-ng-2',
@@ -2333,7 +2333,7 @@ final List<Flashcard> cardsA03 = [
     'k-ng-57',
     'nw-geraete',
     'Auf welchen Schichten arbeitet eine Firewall?',
-    'Je nach Art auf Schicht 3 bis 7 - sie filtert den Verkehr nach Regeln.',
+    'Je nach Art auf Schicht 3 bis 7. Sie filtert den Verkehr nach Regeln.',
   ),
   karte(
     'k-ng-56',
@@ -2393,7 +2393,7 @@ final List<Flashcard> cardsA03 = [
     'k-ng-25',
     'nw-geraete',
     'Wie heißt der Stecker für Twisted-Pair-Netzwerkkabel?',
-    'RJ45 - achtpolig mit Rastnase.',
+    'RJ45, achtpolig mit Rastnase.',
   ),
   karte(
     'k-ng-26',
@@ -2507,7 +2507,7 @@ final List<Flashcard> cardsA03 = [
     'k-ng-47',
     'nw-geraete',
     'Welche WLAN-Verschlüsselung ist heute Stand der Technik?',
-    'WPA3, mindestens WPA2 - WEP und WPA gelten als unsicher.',
+    'WPA3, mindestens WPA2, denn WEP und WPA gelten als unsicher.',
   ),
   karte(
     'k-ng-48',
@@ -2599,7 +2599,7 @@ final List<Flashcard> cardsA03 = [
     'k-n4-15',
     'nw-ipv4',
     'Welche Werte kann ein Oktett einer Subnetzmaske annehmen?',
-    '0, 128, 192, 224, 240, 248, 252, 254, 255 - Einsen werden von links aufgefüllt.',
+    '0, 128, 192, 224, 240, 248, 252, 254, 255. Einsen werden von links aufgefüllt.',
   ),
   karte(
     'k-n4-18',
@@ -2611,31 +2611,31 @@ final List<Flashcard> cardsA03 = [
     'k-n4-16',
     'nw-ipv4',
     'Wie lautet die Maske zu /25, und wie viele Hosts hat das Netz?',
-    '255.255.255.128 - Blockgröße 128, 126 nutzbare Hosts.',
+    '255.255.255.128 (Blockgröße 128, 126 nutzbare Hosts).',
   ),
   karte(
     'k-n4-3',
     'nw-ipv4',
     'Wie lautet die Maske zu /26, und wie viele Hosts hat das Netz?',
-    '255.255.255.192 - Blockgröße 64, 62 nutzbare Hosts.',
+    '255.255.255.192 (Blockgröße 64, 62 nutzbare Hosts).',
   ),
   karte(
     'k-n4-7',
     'nw-ipv4',
     'Wie lautet die Maske zu /27, und wie viele Hosts hat das Netz?',
-    '255.255.255.224 - Blockgröße 32, 30 nutzbare Hosts.',
+    '255.255.255.224 (Blockgröße 32, 30 nutzbare Hosts).',
   ),
   karte(
     'k-n4-9',
     'nw-ipv4',
     'Wie lautet die Maske zu /28, und wie viele Hosts hat das Netz?',
-    '255.255.255.240 - Blockgröße 16, 14 nutzbare Hosts.',
+    '255.255.255.240 (Blockgröße 16, 14 nutzbare Hosts).',
   ),
   karte(
     'k-n4-17',
     'nw-ipv4',
     'Wie lautet die Maske zu /29, und wie viele Hosts hat das Netz?',
-    '255.255.255.248 - Blockgröße 8, 6 nutzbare Hosts.',
+    '255.255.255.248 (Blockgröße 8, 6 nutzbare Hosts).',
   ),
   karte(
     'k-n4-5',
@@ -2647,7 +2647,7 @@ final List<Flashcard> cardsA03 = [
     'k-n4-19',
     'nw-ipv4',
     'Welche Maske gehört zu /20?',
-    '255.255.240.0 - Blockgröße 16 im dritten Oktett.',
+    '255.255.240.0 (Blockgröße 16 im dritten Oktett).',
   ),
   karte(
     'k-n4-2',
@@ -2689,19 +2689,19 @@ final List<Flashcard> cardsA03 = [
     'k-n4-31',
     'nw-ipv4',
     'Wie lautet die letzte nutzbare Adresse im Netz 192.168.1.128/26?',
-    'Block .128 bis .191, Broadcast .191 - letzter Host 192.168.1.190.',
+    'Block .128 bis .191, Broadcast .191, letzter Host 192.168.1.190.',
   ),
   karte(
     'k-n4-32',
     'nw-ipv4',
     'Wie lautet die erste nutzbare Adresse im Netz 10.0.0.32/27?',
-    '10.0.0.33 - Netzadresse .32, Broadcast .63.',
+    '10.0.0.33 (Netzadresse .32, Broadcast .63).',
   ),
   karte(
     'k-n4-21',
     'nw-ipv4',
     'Welche Netzadresse hat 172.16.45.200/20?',
-    '172.16.32.0 - Block 16 im 3. Oktett, 45 liegt in 32-47; Broadcast 172.16.47.255.',
+    '172.16.32.0: Block 16 im 3. Oktett, 45 liegt in 32-47; Broadcast 172.16.47.255.',
   ),
   karte(
     'k-n4-22',
@@ -2713,7 +2713,7 @@ final List<Flashcard> cardsA03 = [
     'k-n4-39',
     'nw-ipv4',
     'Wie lautet die Broadcastadresse von 10.10.10.0/23?',
-    '10.10.11.255 - /23 fasst im 3. Oktett zwei Blöcke zusammen (10 und 11).',
+    '10.10.11.255, denn /23 fasst im 3. Oktett zwei Blöcke zusammen (10 und 11).',
   ),
   karte(
     'k-n4-23',
@@ -2749,13 +2749,13 @@ final List<Flashcard> cardsA03 = [
     'k-n4-37',
     'nw-ipv4',
     'VLSM in 192.168.1.0/24: 100, 50 und 20 Hosts plus Router-Link. Welche Netze?',
-    '.0/25, .128/26, .192/27 und .224/30 - .228 bis .255 bleiben frei.',
+    '.0/25, .128/26, .192/27 und .224/30; .228 bis .255 bleiben frei.',
   ),
   karte(
     'k-n4-28',
     'nw-ipv4',
     'PC 192.168.10.77/26 will 192.168.10.130 erreichen. Direkt oder über das Gateway?',
-    'Über das Gateway: .77 liegt in .64-.127, .130 in .128-.191 - verschiedene Netze.',
+    'Über das Gateway: .77 liegt in .64-.127, .130 in .128-.191, also verschiedene Netze.',
   ),
   karte(
     'k-n4-29',
@@ -2841,13 +2841,13 @@ final List<Flashcard> cardsA03 = [
     'k-n6-13',
     'nw-ipv6',
     'Kürze 2001:0db8:0000:0000:0001:0000:0000:0000 so weit wie möglich.',
-    '2001:db8:0:0:1:: - die längere Null-Folge (drei Blöcke) wird zu ::.',
+    '2001:db8:0:0:1:: (die längere Null-Folge aus drei Blöcken wird zu ::).',
   ),
   karte(
     'k-n6-14',
     'nw-ipv6',
     'Schreibe fe80::1:2 vollständig aus.',
-    'fe80:0000:0000:0000:0000:0000:0001:0002 - :: steht für 8 - 3 = 5 Null-Blöcke.',
+    'fe80:0000:0000:0000:0000:0000:0001:0002, denn :: steht für 8 - 3 = 5 Null-Blöcke.',
   ),
   karte(
     'k-n6-18',
@@ -2871,7 +2871,7 @@ final List<Flashcard> cardsA03 = [
     'k-n6-21',
     'nw-ipv6',
     'Woran erkennst du eine Global-Unicast-Adresse?',
-    'Bereich 2000::/3 - sie beginnt mit 2 oder 3 und ist weltweit erreichbar.',
+    'Bereich 2000::/3. Sie beginnt mit 2 oder 3 und ist weltweit erreichbar.',
   ),
   karte(
     'k-n6-3',
@@ -2895,7 +2895,7 @@ final List<Flashcard> cardsA03 = [
     'k-n6-22',
     'nw-ipv6',
     'Welcher Bereich ist für IPv6-Multicast reserviert?',
-    'ff00::/8 - die Adressen beginnen mit ff.',
+    'ff00::/8. Die Adressen beginnen mit ff.',
   ),
   karte(
     'k-n6-23',
@@ -3035,7 +3035,7 @@ final List<Flashcard> cardsA03 = [
     'k-nd-14',
     'nw-dienste',
     'Welchen Port nutzt DNS?',
-    '53 - meist UDP, bei großen Antworten und Zonentransfers TCP.',
+    '53, meist UDP, bei großen Antworten und Zonentransfers TCP.',
   ),
   karte(
     'k-nd-15',
@@ -3089,7 +3089,7 @@ final List<Flashcard> cardsA03 = [
     'k-nd-21',
     'nw-dienste',
     'Welchen Port nutzt Telnet, und warum ist es unsicher?',
-    '23 - überträgt alles, auch Passwörter, im Klartext; durch SSH ersetzen.',
+    '23. Telnet überträgt alles, auch Passwörter, im Klartext; durch SSH ersetzen.',
   ),
   karte(
     'k-nd-38',
@@ -3101,7 +3101,7 @@ final List<Flashcard> cardsA03 = [
     'k-nd-39',
     'nw-dienste',
     'Welche SNMP-Version solltest du einsetzen?',
-    'SNMPv3 - v1 und v2c übertragen den Community-String im Klartext.',
+    'SNMPv3, denn v1 und v2c übertragen den Community-String im Klartext.',
   ),
   karte(
     'k-nd-1',
@@ -3343,7 +3343,7 @@ final List<Flashcard> cardsA03 = [
     'k-nc-17',
     'nw-cloud',
     'Eigener Server 6.000 € + 1.800 €/Jahr oder Cloud-VM 290 €/Monat: Was ist über 3 Jahre günstiger?',
-    'Eigen: 6.000 € + 3 × 1.800 € = 11.400 €. Cloud: 290 € × 36 = 10.440 € - die Cloud ist 960 € günstiger.',
+    'Eigen: 6.000 € + 3 × 1.800 € = 11.400 €. Cloud: 290 € × 36 = 10.440 €. Die Cloud ist 960 € günstiger.',
   ),
   karte(
     'k-nc-18',

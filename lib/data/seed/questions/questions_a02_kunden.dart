@@ -1006,7 +1006,7 @@ final List<Question> questionsA02 = [
     choices: [
       ja(
         'win-lose: Eine Seite will gewinnen, die andere soll verlieren.',
-        'Drohstrategien sind Stufe 6 - die letzte Stufe der win-lose-Phase.',
+        'Drohstrategien sind Stufe 6, die letzte Stufe der win-lose-Phase.',
       ),
       nein(
         'win-win: Beide können noch gewinnen.',
@@ -1417,7 +1417,7 @@ final List<Question> questionsA02 = [
         'Ja-aber: zustimmen und ein Gegenargument ergänzen.',
       ),
       ja(
-        '„Auf den Tag gerechnet sind das knapp 3 € - weniger, als ein verlorener Auftrag kostet.“',
+        '„Auf den Tag gerechnet sind das knapp 3 €, also weniger, als ein verlorener Auftrag kostet.“',
         'Den Preis auf kleine Einheiten umrechnen und mit dem Nutzen verbinden.',
       ),
       nein(
@@ -2147,7 +2147,7 @@ final List<Question> questionsA02 = [
       ),
       nein(
         'Die Auswertung eines Branchenberichts',
-        'Vorhandene Daten - Sekundärforschung.',
+        'Vorhandene Daten: Sekundärforschung.',
       ),
       nein(
         'Zahlen des Statistischen Bundesamts',

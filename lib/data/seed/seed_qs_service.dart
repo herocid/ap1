@@ -18,10 +18,10 @@ final List<Question> seedQsService = [
     prompt: 'Bringe die Phasen des PDCA-Zyklus in die richtige Reihenfolge.',
     orderingHint: 'Beginne mit der Planung',
     orderedItems: const [
-      'Plan - Ziel festlegen und Maßnahme planen',
-      'Do - Maßnahme im Kleinen ausprobieren',
-      'Check - Ergebnis mit dem Ziel vergleichen',
-      'Act - bei Erfolg zum Standard machen, sonst nachbessern',
+      'Plan: Ziel festlegen und Maßnahme planen',
+      'Do: Maßnahme im Kleinen ausprobieren',
+      'Check: Ergebnis mit dem Ziel vergleichen',
+      'Act: bei Erfolg zum Standard machen, sonst nachbessern',
     ],
     explanation:
         'Der PDCA-Zyklus (auch Deming-Kreis) ist das Grundmuster jeder '
@@ -29,7 +29,7 @@ final List<Question> seedQsService = [
         'verstanden:\n'
         '- "Do" heißt ausprobieren im kleinen Rahmen, nicht flächendeckend '
         'ausrollen. Das Ausrollen passiert erst in "Act".\n'
-        '- Der Zyklus endet nicht, sondern beginnt von vorn - deshalb Kreis '
+        '- Der Zyklus endet nicht, sondern beginnt von vorn, deshalb Kreis '
         'und nicht Liste.',
   ),
 
@@ -55,7 +55,7 @@ final List<Question> seedQsService = [
         'Qualität = Erfüllungsgrad der Anforderungen. Daraus folgt eine '
         'praktische Konsequenz: Ohne prüfbar formulierte Anforderungen kann '
         'man Qualität gar nicht feststellen. Deshalb hängen '
-        'Anforderungsanalyse und Qualitätssicherung unmittelbar zusammen - '
+        'Anforderungsanalyse und Qualitätssicherung unmittelbar zusammen, '
         'und deshalb ist eine unprüfbare Anforderung wie "benutzerfreundlich" '
         'ein Qualitätsproblem, bevor die erste Zeile Code geschrieben ist. '
         'Ein Produkt, das mehr kann als gefordert, hat nicht mehr Qualität, '
@@ -82,7 +82,7 @@ final List<Question> seedQsService = [
       MatchItem(
         text: 'Code-Review eines fertigen Moduls',
         bucket: 1,
-        rationale: 'Ein bereits erstelltes Artefakt wird geprüft - also analytisch.',
+        rationale: 'Ein bereits erstelltes Artefakt wird geprüft, also analytisch.',
       ),
       MatchItem(
         text: 'Schulung der Entwickler vor Projektbeginn',
@@ -102,7 +102,7 @@ final List<Question> seedQsService = [
       MatchItem(
         text: 'Abnahmetest durch den Auftraggeber',
         bucket: 1,
-        rationale: 'Prüfung des fertigen Produkts - analytisch.',
+        rationale: 'Prüfung des fertigen Produkts, also analytisch.',
       ),
     ],
     explanation:
@@ -110,8 +110,8 @@ final List<Question> seedQsService = [
         'Methoden, Werkzeuge, Schulung, Templates). ANALYTISCH = nachher, '
         'findet Fehler (Test, Review, Inspektion, Audit).\n'
         'Merksatz: Der Test findet den Fehler, der Standard verhindert ihn. '
-        'Wirtschaftlich ist konstruktive QS fast immer überlegen - siehe '
-        'Rule of Ten.',
+        'Wirtschaftlich ist konstruktive QS fast immer überlegen (siehe '
+        'Rule of Ten).',
   ),
 
   freitext(
@@ -166,10 +166,10 @@ final List<Question> seedQsService = [
         'durchlaufen werden.',
     orderingHint: 'Vom kleinsten Prüfgegenstand zum größten',
     orderedItems: const [
-      'Modultest (Unittest) - einzelne Funktion oder Klasse',
-      'Integrationstest - Zusammenspiel mehrerer Komponenten',
-      'Systemtest - das komplette System in der Testumgebung',
-      'Abnahmetest - das System beim Auftraggeber',
+      'Modultest (Unittest): einzelne Funktion oder Klasse',
+      'Integrationstest: Zusammenspiel mehrerer Komponenten',
+      'Systemtest: das komplette System in der Testumgebung',
+      'Abnahmetest: das System beim Auftraggeber',
     ],
     explanation:
         'Die vier Teststufen bauen aufeinander auf: Je höher die Stufe, '
@@ -202,7 +202,7 @@ final List<Question> seedQsService = [
       MatchItem(
         text: 'Die Testfälle werden so gewählt, dass jeder Programmzweig einmal durchlaufen wird.',
         bucket: 1,
-        rationale: 'Zweigabdeckung setzt Kenntnis des Codes voraus - also White-Box.',
+        rationale: 'Zweigabdeckung setzt Kenntnis des Codes voraus, also White-Box.',
       ),
       MatchItem(
         text: 'Grundlage sind ausschließlich die Anforderungen aus dem Pflichtenheft.',
@@ -246,7 +246,7 @@ final List<Question> seedQsService = [
         'Ein Testfall braucht eine eindeutige {0}, damit sich ein Fehler '
         'später zuordnen lässt. Die {1} beschreibt den Ausgangszustand. '
         'Dazu kommen konkrete {2} und das {3}, an dem der Test gemessen '
-        'wird. Nach der Durchführung wird das {4} eingetragen - zusammen '
+        'wird. Nach der Durchführung wird das {4} eingetragen, zusammen '
         'mit dem Urteil bestanden oder nicht bestanden.',
     luecken: [
       wort(['Kennung'], 'Testfall-Nummer oder -Bezeichnung.'),
@@ -258,7 +258,7 @@ final List<Question> seedQsService = [
     wortbank: ['Fehlerursache', 'Entwicklername', 'Behebungsdauer'],
     explanation:
         'Ein Testfall besteht aus: Kennung, Vorbedingung, Eingabe, erwartetes '
-        'Ergebnis - und nach der Durchführung zusätzlich dem tatsächlichen '
+        'Ergebnis und nach der Durchführung zusätzlich dem tatsächlichen '
         'Ergebnis sowie dem Urteil bestanden/nicht bestanden. Erst das '
         'zusammen ergibt das Testprotokoll.\n'
         'Nicht hinein gehören der Name eines "Schuldigen" oder die Dauer der '
@@ -281,7 +281,7 @@ final List<Question> seedQsService = [
     prompt: 'Wie heißt dieses Verfahren?',
     choices: [
       _c('Schreibtischtest', true,
-          'Richtig. Der Code wird ohne Ausführung manuell nachvollzogen - ein klassisches Prüfungsthema.'),
+          'Richtig. Der Code wird ohne Ausführung manuell nachvollzogen, ein klassisches Prüfungsthema.'),
       _c('Regressionstest', false,
           'Falsch. Ein Regressionstest prüft nach einer Änderung, ob bisher funktionierende Teile noch laufen.'),
       _c('Integrationstest', false,
@@ -293,7 +293,7 @@ final List<Question> seedQsService = [
         'Der Schreibtischtest (auch Trockentest) ist '
         'ein statisches Verfahren: Der Code wird gelesen und nachvollzogen, '
         'nicht ausgeführt.\n'
-        'Praktisch geht man mit einer Wertetabelle vor - eine Spalte je '
+        'Praktisch geht man mit einer Wertetabelle vor: eine Spalte je '
         'Variable, eine Zeile je Durchlauf. Genau diese Tabelle verlangt die '
         'AP1 häufig als Lösung. Wer sie sauber führt, findet den Fehler '
         'fast von selbst; wer im Kopf rechnet, verrechnet sich.',
@@ -314,7 +314,7 @@ final List<Question> seedQsService = [
       _c('Regressionstest', true,
           'Richtig. Der Regressionstest wiederholt bereits bestandene Tests, um genau solche Nebenwirkungen zu entdecken.'),
       _c('Abnahmetest', false,
-          'Der Abnahmetest findet am Ende beim Kunden statt - dann ist der Schaden schon da.'),
+          'Der Abnahmetest findet am Ende beim Kunden statt. Dann ist der Schaden schon da.'),
       _c('Lasttest', false,
           'Ein Lasttest prüft Verhalten unter Last, nicht die fachliche Korrektheit nach Änderungen.'),
       _c('Usability-Test', false,
@@ -358,7 +358,7 @@ final List<Question> seedQsService = [
       MatchItem(
         text: 'Die Vergütung wird mit der Abnahme fällig.',
         bucket: 1,
-        rationale: 'Typisch für den Werkvertrag - ohne Abnahme keine Fälligkeit.',
+        rationale: 'Typisch für den Werkvertrag: ohne Abnahme keine Fälligkeit.',
       ),
       MatchItem(
         text: 'Ein externer Administrator wird stundenweise für Support bereitgestellt.',
@@ -381,7 +381,7 @@ final List<Question> seedQsService = [
         '- Kaufvertrag: Übereignung einer Sache, etwa Standardsoftware auf '
         'Datenträger oder Hardware.\n'
         'Für die Prüfung wichtig: Die Bezeichnung im Vertrag entscheidet '
-        'nicht - maßgeblich ist, was tatsächlich geschuldet wird.',
+        'nicht. Maßgeblich ist, was tatsächlich geschuldet wird.',
   ),
 
   paare(
@@ -424,7 +424,7 @@ final List<Question> seedQsService = [
     choices: [
       _c('Die Urheberin bleibt sie selbst, die Nutzungsrechte liegen aber beim Arbeitgeber.',
           true,
-          'Richtig. Das Urheberrecht ist in Deutschland nicht übertragbar; übertragen werden nur Nutzungsrechte - bei Arbeitnehmern regelmäßig automatisch an den Arbeitgeber.'),
+          'Richtig. Das Urheberrecht ist in Deutschland nicht übertragbar; übertragen werden nur Nutzungsrechte, bei Arbeitnehmern regelmäßig automatisch an den Arbeitgeber.'),
       _c('Der Arbeitgeber wird automatisch Urheber der Software.', false,
           'Falsch. Urheber kann nur eine natürliche Person sein, und das Urheberrecht selbst ist nicht übertragbar.'),
       _c('Die Auszubildende kann die Nutzung jederzeit untersagen.', false,
@@ -435,7 +435,7 @@ final List<Question> seedQsService = [
     explanation:
         'Kern des deutschen Urheberrechts: Urheber ist immer die natürliche '
         'Person, die das Werk geschaffen hat. Dieses Recht kann man weder '
-        'verkaufen noch verschenken - nur vererben.\n'
+        'verkaufen noch verschenken, nur vererben.\n'
         'Was übertragen wird, sind NUTZUNGSRECHTE: einfach (mehrere dürfen '
         'nutzen) oder ausschließlich (nur einer). Bei Software, die in '
         'Erfüllung des Arbeitsvertrags entsteht, erhält der Arbeitgeber '
@@ -478,11 +478,11 @@ final List<Question> seedQsService = [
         'Vertraulichkeit, Laufzeit und Kündigung.',
     explanation:
         'Je Nennung 1 Punkt, höchstens 5 Punkte. Nicht geregelt werden die '
-        'Namen einzelner Entwickler - Personal wechselt.\n'
+        'Namen einzelner Entwickler, denn Personal wechselt.\n'
         'Die Mitwirkungspflichten werden am häufigsten vergessen und führen '
         'am häufigsten zu Streit: Wenn der Auftraggeber Testdaten oder '
         'Ansprechpartner nicht liefert, kann der Auftragnehmer den Termin '
-        'nicht halten - ohne Regelung steht dann Aussage gegen Aussage. '
+        'nicht halten. Ohne Regelung steht dann Aussage gegen Aussage. '
         'Verarbeitet der Dienstleister personenbezogene Daten im Auftrag, '
         'ist ein Auftragsverarbeitungsvertrag Pflicht (Art. 28 DSGVO).',
     punkte: 5,
@@ -535,7 +535,7 @@ final List<Question> seedQsService = [
         '1. Servicezeit im Monat = 30 Tage x 24 h x 60 min = 43.200 Minuten\n'
         '2. Zulässige Ausfallquote = 100 % - 99,5 % = 0,5 % = 0,005\n'
         '3. Erlaubter Ausfall = 43.200 x 0,005 = 216 Minuten (3,6 Stunden)\n\n'
-        'Merke die Größenordnungen - danach wird gern gefragt:\n'
+        'Merke die Größenordnungen, denn danach wird gern gefragt:\n'
         '99 % = rund 7,2 Stunden Ausfall im Monat\n'
         '99,5 % = rund 3,6 Stunden\n'
         '99,9 % = rund 43 Minuten\n'
@@ -558,7 +558,7 @@ final List<Question> seedQsService = [
       _c('Eskalation an den 2nd-Level-Support mit dokumentiertem Ticket', true,
           'Richtig. Der 1st Level nimmt auf, klassifiziert und löst Standardfälle; alles andere geht dokumentiert weiter nach oben.'),
       _c('Das Ticket wird geschlossen, der Anwender meldet sich neu.', false,
-          'Falsch. Ein ungelöstes Ticket wird nie geschlossen - der Vorgang und seine Historie müssen erhalten bleiben.'),
+          'Falsch. Ein ungelöstes Ticket wird nie geschlossen. Der Vorgang und seine Historie müssen erhalten bleiben.'),
       _c('Direkte Weitergabe an den Hersteller (3rd Level).', false,
           'Falsch. Die Stufen werden der Reihe nach durchlaufen. Der 3rd Level ist der Hersteller bzw. die Entwicklung und wird erst eingeschaltet, wenn der 2nd Level nicht weiterkommt.'),
       _c('Der Anwender erhält Administratorrechte, um es selbst zu lösen.', false,
@@ -573,7 +573,7 @@ final List<Question> seedQsService = [
         'selbst.\n'
         'Wichtig für die Prüfung: Das Ticket bleibt beim Eskalieren '
         'bestehen und wandert mit seiner kompletten Historie. Der Anwender '
-        'behält einen Ansprechpartner - das nennt sich '
+        'behält einen Ansprechpartner. Das nennt sich '
         'Ownership-Prinzip.',
   ),
 
@@ -611,7 +611,7 @@ final List<Question> seedQsService = [
         'Schuldner die Leistung ernsthaft und endgültig verweigert. Drei '
         'Mahnungen sind ein Mythos aus der Praxis.\n'
         'Beim ZAHLUNGSverzug gilt zusätzlich: Spätestens 30 Tage nach '
-        'Zugang einer Rechnung tritt Verzug auch ohne Mahnung ein - bei '
+        'Zugang einer Rechnung tritt Verzug auch ohne Mahnung ein, bei '
         'Verbrauchern nur, wenn darauf hingewiesen wurde.',
     punkte: 3,
   ),
@@ -635,7 +635,7 @@ final List<Question> seedQsService = [
           'Die Nacherfüllung hat Vorrang. Erst wenn die Frist erfolglos '
           'verstreicht, stehen Selbstvornahme, Minderung, Rücktritt und '
           'Schadensersatz offen.'),
-      _c('Nichts - er kann sofort eine andere Firma beauftragen und der '
+      _c('Nichts. Er kann sofort eine andere Firma beauftragen und der '
           'Agentur die Kosten in Rechnung stellen', false,
           'Ohne erfolglose Frist zur Nacherfüllung riskiert er, auf den '
           'Kosten der Selbstvornahme sitzen zu bleiben.'),
@@ -676,7 +676,7 @@ final List<Question> seedQsService = [
       nein('Abnahme am 14. Juni im Lager des Auftraggebers; anwesend: die Projektleiter beider Seiten',
           'Datum, Ort und Beteiligte gehören hinein.'),
       nein('Gegenstand: Lagerverwaltungssoftware gemäß Pflichtenheft Version 2.1',
-          'Abgenommen wird gegen ein definiertes Soll - der Verweis stellt das her.'),
+          'Abgenommen wird gegen ein definiertes Soll, und der Verweis stellt das her.'),
       ja('Mangel: Etikettendruck fehlerhaft. Wird bei Gelegenheit behoben.',
           'Es fehlt eine Frist zur Beseitigung.'),
       ja('Erklärung: Die Abnahme erfolgt ohne Vorbehalt.',
@@ -696,7 +696,7 @@ final List<Question> seedQsService = [
         'An der Abnahme hängen vier Rechtsfolgen: Fälligkeit der '
         'Vergütung, Gefahrübergang, Beginn der Verjährungsfrist für '
         'Mängelansprüche und die Umkehr der Beweislast. Wer bekannte Mängel '
-        'nicht vorbehält, verliert die meisten Rechte darauf - nur ein '
+        'nicht vorbehält, verliert die meisten Rechte darauf. Nur ein '
         'Anspruch auf Schadensersatz bleibt bestehen (§ 640 Abs. 3 BGB).',
   ),
 
@@ -711,20 +711,20 @@ final List<Question> seedQsService = [
     prompt: 'Bringe die drei Phasen des Lewin-Modells in die richtige Reihenfolge.',
     orderingHint: 'Von der Vorbereitung zur Verankerung',
     orderedItems: const [
-      'Unfreeze - Auftauen: Veränderungsbedarf verdeutlichen, Widerstände ansprechen',
-      'Change - Verändern: neue Abläufe einführen und begleiten',
-      'Refreeze - Einfrieren: den neuen Zustand stabilisieren und zum Standard machen',
+      'Unfreeze (Auftauen): Veränderungsbedarf verdeutlichen, Widerstände ansprechen',
+      'Change (Verändern): neue Abläufe einführen und begleiten',
+      'Refreeze (Einfrieren): den neuen Zustand stabilisieren und zum Standard machen',
     ],
     explanation:
         'Lewins Modell erklärt, warum Veränderungen scheitern: Meist wird '
         'die erste oder die letzte Phase übersprungen.\n'
-        '- Ohne "Unfreeze" fehlt die Einsicht, dass sich etwas ändern muss - '
+        '- Ohne "Unfreeze" fehlt die Einsicht, dass sich etwas ändern muss; '
         'die Betroffenen halten am Alten fest.\n'
         '- Ohne "Refreeze" fällt die Organisation nach einigen Wochen in '
         'alte Gewohnheiten zurück, weil der neue Zustand nie verankert '
         'wurde.\n'
         'In der Change-Phase sinkt die Leistung typischerweise vorübergehend '
-        'ab - das ist normal und kein Zeichen des Scheiterns.',
+        'ab. Das ist normal und kein Zeichen des Scheiterns.',
   ),
 
   freitext(
@@ -763,7 +763,7 @@ final List<Question> seedQsService = [
         '- "Ich verstehe es nicht" -> informieren, Nutzen erklären.\n'
         '- "Ich kann es nicht" -> schulen, begleiten.\n'
         '- "Ich will es nicht" -> beteiligen, Bedenken ernst nehmen.\n'
-        'Anordnung und Sanktion sind das letzte Mittel, nicht das erste - '
+        'Anordnung und Sanktion sind das letzte Mittel, nicht das erste, denn '
         'Druck erzeugt Scheinanpassung. Auch das alte System ohne '
         'Vorbereitung abzuschalten verfestigt die Ablehnung.',
     punkte: 4,
@@ -785,7 +785,7 @@ final List<Question> seedQsService = [
       wort(['kleinen'], 'Die Summe vieler kleiner Schritte, nicht der eine große Wurf.'),
       wort(['allen'], 'Vorschläge kommen von denen, die die Arbeit täglich machen.'),
       wort(['PDCA-Zyklus'], 'Plan, Do, Check, Act.'),
-      wort(['Reengineering'], 'Business Process Reengineering - revolutionär statt evolutionär.'),
+      wort(['Reengineering'], 'Business Process Reengineering: revolutionär statt evolutionär.'),
     ],
     wortbank: ['großen', 'Führungskräften', 'Netzplan', 'Schlechteren'],
     explanation:

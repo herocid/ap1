@@ -564,11 +564,11 @@ final List<Question> ihkA02 = [
       ),
       ja(
         'Es bilden sich zwei Lager, die jeweils ihr eigenes Konzept durchsetzen wollen.',
-        'Cliquenbildung und Streit um Ideen - Storming.',
+        'Cliquenbildung und Streit um Ideen: Storming.',
       ),
       nein(
         'Jeder kennt seine Aufgabe, Probleme löst das Team selbstständig.',
-        'Eingespielte Zusammenarbeit - Performing.',
+        'Eingespielte Zusammenarbeit: Performing.',
       ),
     ],
     explanation:
@@ -1366,7 +1366,7 @@ final List<Question> ihkA02 = [
       ),
       ja(
         'Pos. 2: 6 Dockingstation × 139,00 € = 834,00 €, USt 19 %',
-        'Bestellt wurde zu 129,00 € - der Einzelpreis ist 10,00 € zu hoch.',
+        'Bestellt wurde zu 129,00 €. Der Einzelpreis ist 10,00 € zu hoch.',
       ),
       ja(
         'Pos. 3: 15 HDMI-Kabel 2 m × 7,50 € = 112,50 €, USt 19 %',

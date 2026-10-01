@@ -8,7 +8,7 @@ final List<Nugget> nuggetsA07 = [
     'n-vz-1',
     'vt-zustandekommen',
     'Rechtsgeschäft und Willenserklärung',
-    'Ein Rechtsgeschäft löst eine gewollte Rechtsfolge aus, etwa einen Kauf oder eine Kündigung. Es besteht aus einer oder mehreren Willenserklärungen. Eine Willenserklärung ist die Äußerung eines Willens, der unmittelbar auf eine Rechtsfolge zielt – zum Beispiel „Ich bestelle drei Notebooks“.',
+    'Ein Rechtsgeschäft löst eine gewollte Rechtsfolge aus, etwa einen Kauf oder eine Kündigung. Es besteht aus einer oder mehreren Willenserklärungen. Eine Willenserklärung ist die Äußerung eines Willens, der unmittelbar auf eine Rechtsfolge zielt, zum Beispiel „Ich bestelle drei Notebooks“.',
     points: [
       'Ausdrücklich: mündlich, schriftlich, per E-Mail oder per Klick im Webshop',
       'Durch schlüssiges Handeln (konkludent): Ware an der Kasse aufs Band legen',
@@ -30,7 +30,7 @@ final List<Nugget> nuggetsA07 = [
     'n-vz-2',
     'vt-zustandekommen',
     'Antrag und Annahme',
-    'Ein Vertrag entsteht durch zwei übereinstimmende Willenserklärungen: den Antrag (§ 145 BGB) und die Annahme. Den Antrag kann jede Seite machen – der Verkäufer mit einem verbindlichen Angebot oder der Kunde mit einer Bestellung.',
+    'Ein Vertrag entsteht durch zwei übereinstimmende Willenserklärungen: den Antrag (§ 145 BGB) und die Annahme. Den Antrag kann jede Seite machen: der Verkäufer mit einem verbindlichen Angebot oder der Kunde mit einer Bestellung.',
     points: [
       'Weg 1: Angebot des Händlers (Antrag) + Bestellung des Kunden (Annahme)',
       'Weg 2: Bestellung ohne vorheriges Angebot (Antrag) + Auftragsbestätigung oder sofortige Lieferung (Annahme)',
@@ -58,7 +58,7 @@ final List<Nugget> nuggetsA07 = [
     'n-vz-4',
     'vt-zustandekommen',
     'Wie lange bindet ein Angebot?',
-    'Wer ein Angebot macht, ist daran gebunden – aber nicht unbegrenzt. Beispiel: Ein Systemhaus schickt einer Arztpraxis am Montag per E-Mail ein Angebot über drei Notebooks.',
+    'Wer ein Angebot macht, ist daran gebunden, aber nicht unbegrenzt. Beispiel: Ein Systemhaus schickt einer Arztpraxis am Montag per E-Mail ein Angebot über drei Notebooks.',
     [
       'Unter Anwesenden (auch am Telefon): Annahme nur sofort möglich (§ 147 Abs. 1 BGB)',
       'Unter Abwesenden (Brief, E-Mail): bis eine Antwort unter regelmäßigen Umständen zu erwarten ist (§ 147 Abs. 2)',
@@ -91,7 +91,7 @@ final List<Nugget> nuggetsA07 = [
     'n-vz-6',
     'vt-zustandekommen',
     'Prüfschema: Ist ein Vertrag entstanden?',
-    'Mit diesem Schema prüfst du jeden Fall in der gleichen Reihenfolge. Scheitert eine Frage, entsteht kein Vertrag – aus der Antwort wird aber ein neuer Antrag, den die andere Seite annehmen kann.',
+    'Mit diesem Schema prüfst du jeden Fall in der gleichen Reihenfolge. Scheitert eine Frage, entsteht kein Vertrag. Aus der Antwort wird aber ein neuer Antrag, den die andere Seite annehmen kann.',
     FlussDiagramm([
       FlussKnoten(
         'Antrag an bestimmte Person?',
@@ -120,10 +120,10 @@ final List<Nugget> nuggetsA07 = [
     'Rechtsfall: Monitore für die Kanzlei',
     'Ein Systemhaus mailt einer Kanzlei am 3. März ein Angebot: 5 Monitore zu je 240 €, gültig bis 17. März. Die Kanzlei antwortet am 12. März: „Wir nehmen 5 Monitore zu je 220 €.“ Das Systemhaus reagiert nicht. Ist ein Kaufvertrag zustande gekommen?',
     schritte: [
-      'Antrag: Angebot an eine bestimmte Kanzlei mit Ware, Menge und Preis – bindend bis 17. März (§ 148 BGB)',
+      'Antrag: Angebot an eine bestimmte Kanzlei mit Ware, Menge und Preis, bindend bis 17. März (§ 148 BGB)',
       'Antwort vom 12. März: rechtzeitig, aber mit anderem Preis',
       'Eine abgeänderte Annahme gilt als Ablehnung, verbunden mit einem neuen Antrag (§ 150 Abs. 2 BGB)',
-      'Das Systemhaus schweigt auf den neuen Antrag – Schweigen ist keine Annahme',
+      'Das Systemhaus schweigt auf den neuen Antrag, und Schweigen ist keine Annahme',
     ],
     ergebnis:
         'Kein Vertrag. Die Kanzlei hat nur einen neuen Antrag über 220 € je Monitor gemacht.',
@@ -132,7 +132,7 @@ final List<Nugget> nuggetsA07 = [
     'n-vz-8',
     'vt-zustandekommen',
     'Geschäftsfähigkeit',
-    'Wirksam Verträge schließen kann nur, wer geschäftsfähig ist. Die Stufe richtet sich nach dem Alter. Rechtsfähig – also Träger von Rechten und Pflichten – ist dagegen jeder Mensch schon ab der Geburt.',
+    'Wirksam Verträge schließen kann nur, wer geschäftsfähig ist. Die Stufe richtet sich nach dem Alter. Rechtsfähig (also Träger von Rechten und Pflichten) ist dagegen jeder Mensch schon ab der Geburt.',
     [
       ['Alter', 'Stufe', 'Folge'],
       ['unter 7', 'geschäftsunfähig', 'Erklärung nichtig (§ 105)'],
@@ -143,14 +143,14 @@ final List<Nugget> nuggetsA07 = [
       'Ohne Zustimmung geschlossen: schwebend unwirksam, bis die Eltern genehmigen oder ablehnen (§ 108 BGB)',
       'Zustimmungsfrei: Geschäfte, die nur einen rechtlichen Vorteil bringen, z. B. ein Geschenk annehmen (§ 107)',
       'Taschengeldparagraf (§ 110): wirksam, wenn mit frei überlassenen Mitteln vollständig bezahlt wird',
-      'Ein Ratenkauf fällt nicht unter § 110 – er ist erst mit der letzten Rate bezahlt',
+      'Ein Ratenkauf fällt nicht unter § 110, denn er ist erst mit der letzten Rate bezahlt',
     ],
   ),
   vergleich(
     'n-vz-9',
     'vt-zustandekommen',
     'Nichtig oder anfechtbar?',
-    'Ein fehlerhaftes Rechtsgeschäft ist entweder von Anfang an nichtig oder nur anfechtbar. Ein anfechtbares Geschäft gilt zunächst – erst wenn die betroffene Seite die Anfechtung erklärt, wird es rückwirkend nichtig (§ 142 BGB).',
+    'Ein fehlerhaftes Rechtsgeschäft ist entweder von Anfang an nichtig oder nur anfechtbar. Ein anfechtbares Geschäft gilt zunächst. Erst wenn die betroffene Seite die Anfechtung erklärt, wird es rückwirkend nichtig (§ 142 BGB).',
     [
       ['', 'Nichtig', 'Anfechtbar'],
       ['gilt', 'nie wirksam', 'wirksam bis zur Anfechtung'],
@@ -198,7 +198,7 @@ final List<Nugget> nuggetsA07 = [
     'n-vz-11',
     'vt-zustandekommen',
     'Formvorschriften',
-    'Verträge sind grundsätzlich formfrei – ein Handschlag, ein Telefonat oder eine E-Mail genügt. Nur wo das Gesetz eine Form verlangt, ist sie Pflicht. Fehlt sie, ist das Geschäft nichtig (§ 125 BGB).',
+    'Verträge sind grundsätzlich formfrei: Ein Handschlag, ein Telefonat oder eine E-Mail genügt. Nur wo das Gesetz eine Form verlangt, ist sie Pflicht. Fehlt sie, ist das Geschäft nichtig (§ 125 BGB).',
     [
       ['Form', 'Merkmal', 'Beispiel'],
       ['formfrei', 'Regelfall', 'Kauf eines Notebooks'],
@@ -215,7 +215,7 @@ final List<Nugget> nuggetsA07 = [
       ['notarielle Beurkundung', 'Notar beurkundet', 'Grundstückskauf'],
     ],
     merksatz:
-        'In der Praxis werden IT-Verträge trotzdem schriftlich geschlossen – als Beweis, was vereinbart wurde.',
+        'In der Praxis werden IT-Verträge trotzdem schriftlich geschlossen, als Beweis, was vereinbart wurde.',
   ),
   konzept(
     'n-vz-12',
@@ -226,7 +226,7 @@ final List<Nugget> nuggetsA07 = [
       'Individuell ausgehandelte Absprachen haben Vorrang (§ 305b)',
       'Überraschende Klauseln werden nicht Vertragsbestandteil; Unklarheiten gehen zulasten des Verwenders (§ 305c)',
       'Unangemessen benachteiligende Klauseln sind unwirksam (§§ 307–309), z. B. ein Ausschluss der Gewährleistung für neue Waren gegenüber Verbrauchern',
-      'Ist eine Klausel unwirksam, bleibt der Vertrag bestehen – statt der Klausel gilt das Gesetz (§ 306)',
+      'Ist eine Klausel unwirksam, bleibt der Vertrag bestehen; statt der Klausel gilt das Gesetz (§ 306)',
     ],
   ),
   falle(
@@ -235,7 +235,7 @@ final List<Nugget> nuggetsA07 = [
     'Freibleibend, Schweigen, Widerruf',
     'Mit „freibleibend“ oder „solange Vorrat reicht“ schränkt der Anbietende seine Bindung ein. Schweigen auf einen Antrag ist grundsätzlich keine Annahme. Ausnahme unter Kaufleuten: Wer einem kaufmännischen Bestätigungsschreiben nicht unverzüglich widerspricht, muss dessen Inhalt gegen sich gelten lassen.',
     points: [
-      'Verbraucher können Fernabsatzverträge (Webshop, Telefon) in der Regel 14 Tage ohne Grund widerrufen (§§ 312g, 355 BGB) – das ist ein eigenes Recht, keine Anfechtung',
+      'Verbraucher können Fernabsatzverträge (Webshop, Telefon) in der Regel 14 Tage ohne Grund widerrufen (§§ 312g, 355 BGB). Das ist ein eigenes Recht, keine Anfechtung',
       'Wer Verbrauchern unbestellte Ware schickt, hat keinen Anspruch auf Bezahlung (§ 241a BGB)',
       'Unternehmer untereinander haben kein gesetzliches Widerrufsrecht',
     ],
@@ -260,7 +260,7 @@ final List<Nugget> nuggetsA07 = [
     'n-vy-1',
     'vt-arten',
     'Erfolg oder Tätigkeit?',
-    'Die wichtigste Frage bei IT-Verträgen lautet: Was genau wird geschuldet? Beim Werkvertrag ein Erfolg, etwa eine funktionierende Software. Beim Dienstvertrag nur das Tätigwerden, etwa Beratungsstunden – ein bestimmtes Ergebnis ist nicht versprochen.',
+    'Die wichtigste Frage bei IT-Verträgen lautet: Was genau wird geschuldet? Beim Werkvertrag ein Erfolg, etwa eine funktionierende Software. Beim Dienstvertrag nur das Tätigwerden, etwa Beratungsstunden. Ein bestimmtes Ergebnis ist nicht versprochen.',
     points: [
       'Die Vertragsart entscheidet, ob es eine Abnahme gibt, wann bezahlt wird und welche Rechte bei Fehlern bestehen',
       'Das BGB regelt die typischen Verträge im Besonderen Schuldrecht (§§ 433 ff.)',
@@ -327,7 +327,7 @@ final List<Nugget> nuggetsA07 = [
       ],
     ],
     merksatz:
-        'Miete kostet, Leihe ist gratis – beide überlassen eine Sache nur auf Zeit.',
+        'Miete kostet, Leihe ist gratis. Beide überlassen eine Sache nur auf Zeit.',
   ),
   vergleich(
     'n-vy-4',
@@ -350,8 +350,8 @@ final List<Nugget> nuggetsA07 = [
     points: [
       'Besitz = tatsächliche Herrschaft (wer das Notebook hat); Eigentum = rechtliche Herrschaft (wem es gehört)',
       'Unter Eigentumsvorbehalt bleibt der Verkäufer Eigentümer, bis vollständig bezahlt ist (§ 449 BGB)',
-      'Verbrauchsgüterkauf: Unternehmer verkauft an Verbraucher – mit besonderem Schutz',
-      'Handelskauf: zwischen Kaufleuten – mit Rügepflicht (§ 377 HGB)',
+      'Verbrauchsgüterkauf: Unternehmer verkauft an Verbraucher, mit besonderem Schutz',
+      'Handelskauf: zwischen Kaufleuten, mit Rügepflicht (§ 377 HGB)',
       'Bürgerlicher Kauf: Privatperson verkauft an Privatperson',
     ],
   ),
@@ -398,13 +398,13 @@ final List<Nugget> nuggetsA07 = [
       'Kontrolle: Werk = Erfolg + Abnahme, Dienst = Tätigkeit ohne Abnahme',
     ],
     ergebnis:
-        'Kauf, Werk, Dienst – entscheidend ist jeweils, was geschuldet wird.',
+        'Kauf, Werk, Dienst: Entscheidend ist jeweils, was geschuldet wird.',
   ),
   vergleich(
     'n-vy-8',
     'vt-arten',
     'Typische IT-Leistungen zugeordnet',
-    'Diese Zuordnungen kommen in Prüfungen immer wieder vor. Gemischte Verträge sind häufig – dann gilt für jeden Teil das passende Recht.',
+    'Diese Zuordnungen kommen in Prüfungen immer wieder vor. Gemischte Verträge sind häufig. Dann gilt für jeden Teil das passende Recht.',
     [
       ['Leistung', 'Vertragsart'],
       ['Hardware kaufen', 'Kauf'],
@@ -421,7 +421,7 @@ final List<Nugget> nuggetsA07 = [
     'n-vy-9',
     'vt-arten',
     'SaaS als Miete: was daraus folgt',
-    'Der Bundesgerichtshof hat die Bereitstellung von Software über das Internet (ASP) als Miete eingeordnet; für SaaS gilt das nach herrschender Meinung entsprechend. Der Anbieter muss die Software deshalb während der ganzen Laufzeit nutzbar halten (§ 535 BGB). Fällt sie erheblich aus, mindert sich die Gebühr für diese Zeit automatisch (§ 536 BGB) – der Kunde muss keine Frist setzen.',
+    'Der Bundesgerichtshof hat die Bereitstellung von Software über das Internet (ASP) als Miete eingeordnet; für SaaS gilt das nach herrschender Meinung entsprechend. Der Anbieter muss die Software deshalb während der ganzen Laufzeit nutzbar halten (§ 535 BGB). Fällt sie erheblich aus, mindert sich die Gebühr für diese Zeit automatisch (§ 536 BGB), und der Kunde muss keine Frist setzen.',
     points: [
       'Verfügbarkeit und Reaktionszeiten werden zusätzlich im SLA konkret geregelt',
       'Der Kunde muss einen Ausfall melden, sonst kann er Rechte verlieren (§ 536c BGB)',
@@ -432,11 +432,11 @@ final List<Nugget> nuggetsA07 = [
     'n-vy-10',
     'vt-arten',
     'Leasing und Werklieferung',
-    'Leasing ist im BGB nicht eigens geregelt und wird im Kern wie Miete behandelt: Die Leasinggesellschaft kauft das Gerät und überlässt es gegen monatliche Raten. Beim Werklieferungsvertrag stellt der Unternehmer eine bewegliche Sache her und liefert sie – dafür gilt Kaufrecht (§ 650 BGB).',
+    'Leasing ist im BGB nicht eigens geregelt und wird im Kern wie Miete behandelt: Die Leasinggesellschaft kauft das Gerät und überlässt es gegen monatliche Raten. Beim Werklieferungsvertrag stellt der Unternehmer eine bewegliche Sache her und liefert sie; dafür gilt Kaufrecht (§ 650 BGB).',
     points: [
       'Leasing: Die Liquidität bleibt erhalten, Geräte werden nach der Laufzeit erneuert',
       'Mängelrechte gegen den Händler tritt die Leasinggesellschaft meist an den Leasingnehmer ab',
-      'Werklieferung: Serverschrank nach Maß, Spezialgehäuse – Kaufrecht, obwohl hergestellt wird',
+      'Werklieferung: Serverschrank nach Maß, Spezialgehäuse: Kaufrecht, obwohl hergestellt wird',
     ],
   ),
   konzept(
@@ -461,7 +461,7 @@ final List<Nugget> nuggetsA07 = [
     'Steht „Dienstleistungsvertrag“ über einem Vertrag, in dem eine fertige App geschuldet wird, ist es trotzdem ein Werkvertrag. Maßgeblich ist der Inhalt, nicht die Überschrift. Genauso ist ein „Softwarekauf“ als Abo mit monatlicher Gebühr in Wahrheit Miete.',
     points: [
       'Werklieferungsvertrag: Für herzustellende bewegliche Sachen gilt Kaufrecht',
-      '„Abnahme“ beim Kauf heißt nur Entgegennahme der Ware – die Billigung als vertragsgemäß gibt es nur beim Werkvertrag',
+      '„Abnahme“ beim Kauf heißt nur Entgegennahme der Ware. Die Billigung als vertragsgemäß gibt es nur beim Werkvertrag',
     ],
   ),
   merke(
@@ -484,21 +484,21 @@ final List<Nugget> nuggetsA07 = [
     'n-vu-1',
     'vt-urheber',
     'Software ist urheberrechtlich geschützt',
-    'Computerprogramme sind nach §§ 69a ff. UrhG geschützt – in jeder Form: Quellcode, Maschinencode und Entwurfsmaterial. Der Schutz entsteht automatisch mit der Schöpfung, ohne Anmeldung und ohne ©-Vermerk.',
+    'Computerprogramme sind nach §§ 69a ff. UrhG geschützt, und zwar in jeder Form: Quellcode, Maschinencode und Entwurfsmaterial. Der Schutz entsteht automatisch mit der Schöpfung, ohne Anmeldung und ohne ©-Vermerk.',
     points: [
-      'Voraussetzung: eine eigene geistige Schöpfung – besondere Qualität oder Ästhetik ist nicht nötig (§ 69a Abs. 3)',
+      'Voraussetzung: eine eigene geistige Schöpfung; besondere Qualität oder Ästhetik ist nicht nötig (§ 69a Abs. 3)',
       'Nicht geschützt sind Ideen und Grundsätze, auch die einer Schnittstelle (§ 69a Abs. 2)',
-      'Die Idee „Terminbuchung per Chatbot“ ist frei – der konkrete Code ist geschützt',
+      'Die Idee „Terminbuchung per Chatbot“ ist frei; der konkrete Code ist geschützt',
     ],
   ),
   konzept(
     'n-vu-2',
     'vt-urheber',
     'Urheber ist immer ein Mensch',
-    'Urheber ist, wer das Werk geschaffen hat (§ 7 UrhG) – immer eine natürliche Person, nie eine Firma. Das Urheberrecht selbst ist nicht übertragbar, nur vererbbar (§§ 28, 29 UrhG). Es erlischt 70 Jahre nach dem Tod des Urhebers (§ 64 UrhG).',
+    'Urheber ist, wer das Werk geschaffen hat (§ 7 UrhG), immer eine natürliche Person, nie eine Firma. Das Urheberrecht selbst ist nicht übertragbar, nur vererbbar (§§ 28, 29 UrhG). Es erlischt 70 Jahre nach dem Tod des Urhebers (§ 64 UrhG).',
     points: [
       'Mehrere Entwickler ohne trennbare Anteile sind Miturheber (§ 8)',
-      'Übertragen werden nur Nutzungsrechte – eine Lizenz ist die Einräumung solcher Rechte',
+      'Übertragen werden nur Nutzungsrechte. Eine Lizenz ist die Einräumung solcher Rechte',
     ],
   ),
   skizze(
@@ -522,7 +522,7 @@ final List<Nugget> nuggetsA07 = [
       ]),
     ),
     points: [
-      'Jede Installation ist eine Vervielfältigung – deshalb braucht man dafür ein Nutzungsrecht',
+      'Jede Installation ist eine Vervielfältigung, deshalb braucht man dafür ein Nutzungsrecht',
     ],
   ),
   vergleich(
@@ -576,7 +576,7 @@ final List<Nugget> nuggetsA07 = [
       'Entsteht das Programm in Erfüllung seiner Aufgaben, darf allein der Arbeitgeber alle vermögensrechtlichen Befugnisse ausüben (§ 69b UrhG)',
       'Der Arbeitgeber darf das Tool nutzen, ändern, verkaufen und lizenzieren',
       'Der Entwickler darf es nicht selbst verwerten oder weiterverkaufen',
-      'Für Freiberufler und Agenturen gilt § 69b nicht – dort regelt allein der Vertrag die Rechte',
+      'Für Freiberufler und Agenturen gilt § 69b nicht. Dort regelt allein der Vertrag die Rechte',
     ],
   ),
   beispiel(
@@ -613,11 +613,11 @@ final List<Nugget> nuggetsA07 = [
     'n-vu-9',
     'vt-urheber',
     'Lizenz statt Eigentum',
-    'Wer Software „kauft“, erwirbt ein Nutzungsrecht am Programm – nicht das Programm selbst. Wurde eine Programmkopie mit Zustimmung des Rechteinhabers in der EU verkauft, darf genau diese Kopie weiterverkauft werden (Erschöpfung, § 69c Nr. 3 UrhG).',
+    'Wer Software „kauft“, erwirbt ein Nutzungsrecht am Programm, nicht das Programm selbst. Wurde eine Programmkopie mit Zustimmung des Rechteinhabers in der EU verkauft, darf genau diese Kopie weiterverkauft werden (Erschöpfung, § 69c Nr. 3 UrhG).',
     points: [
       'Das gilt nach dem EuGH (UsedSoft, 2012) auch für per Download gekaufte Dauerlizenzen',
       'Voraussetzung: Der Verkäufer macht seine eigene Kopie unbrauchbar',
-      'Keine Erschöpfung bei Miete und Abo (SaaS) – hier wird nichts verkauft',
+      'Keine Erschöpfung bei Miete und Abo (SaaS), denn hier wird nichts verkauft',
       'Kostenlos heißt nicht frei: Auch Freeware und Open Source haben Lizenzbedingungen, etwa die Copyleft-Pflicht der GPL',
     ],
   ),
@@ -638,14 +638,14 @@ final List<Nugget> nuggetsA07 = [
       ['Dauer', '70 J. nach Tod', 'max. 20 Jahre', '10 J., verlängerbar'],
     ],
     points: [
-      'Software „als solche“ ist nicht patentierbar (§ 1 Abs. 3 PatG) – nur technische Erfindungen, in denen Software steckt',
+      'Software „als solche“ ist nicht patentierbar (§ 1 Abs. 3 PatG), nur technische Erfindungen, in denen Software steckt',
     ],
   ),
   falle(
     'n-vu-11',
     'vt-urheber',
     'Was eine Lizenz erlaubt',
-    'Maßgeblich sind die Lizenzbedingungen: Anzahl der Geräte oder Nutzer, Laufzeit, gewerbliche Nutzung. Eine Sicherungskopie darf anfertigen, wer zur Nutzung berechtigt ist, soweit sie für die künftige Nutzung erforderlich ist – weitergeben darf man sie nicht.',
+    'Maßgeblich sind die Lizenzbedingungen: Anzahl der Geräte oder Nutzer, Laufzeit, gewerbliche Nutzung. Eine Sicherungskopie darf anfertigen, wer zur Nutzung berechtigt ist, soweit sie für die künftige Nutzung erforderlich ist. Weitergeben darf man sie nicht.',
     points: [
       'Eine Lizenz für 5 Arbeitsplätze erlaubt keine sechste Installation',
       'Verstöße: Anspruch auf Unterlassung und Schadensersatz (§ 97 UrhG), unerlaubte Verwertung ist strafbar (§ 106 UrhG)',
@@ -664,7 +664,7 @@ final List<Nugget> nuggetsA07 = [
       'Einfach = neben anderen, ausschließlich = allein',
     ],
     satz:
-        'Das Urheberrecht bleibt beim Menschen – übertragen werden nur Nutzungsrechte.',
+        'Das Urheberrecht bleibt beim Menschen; übertragen werden nur Nutzungsrechte.',
   ),
 
   // ================================================ Service Level Agreements
@@ -692,7 +692,7 @@ final List<Nugget> nuggetsA07 = [
     ],
     points: ['OLA = Operational Level Agreement, UC = Underpinning Contract'],
     merksatz:
-        'Die Zeiten in OLA und UC müssen kürzer sein als im SLA – sonst ist das SLA nicht zu halten.',
+        'Die Zeiten in OLA und UC müssen kürzer sein als im SLA, sonst ist das SLA nicht zu halten.',
   ),
   konzept(
     'n-li-3',
@@ -765,15 +765,15 @@ final List<Nugget> nuggetsA07 = [
       'Servicezeit: 30 × 24 h = 720 h = 43.200 min',
       'Ausfall gesamt: 95 + 49 = 144 min',
       'V = (43.200 − 144) / 43.200 × 100 % = 43.056 / 43.200 × 100 % ≈ 99,67 %',
-      'Gegenprobe: erlaubt wären 43.200 min × 0,001 = 43,2 min – ausgefallen sind 144 min',
+      'Gegenprobe: erlaubt wären 43.200 min × 0,001 = 43,2 min; ausgefallen sind 144 min',
     ],
-    ergebnis: 'Verfügbarkeit rund 99,67 % – das SLA mit 99,9 % ist verfehlt.',
+    ergebnis: 'Verfügbarkeit rund 99,67 %; das SLA mit 99,9 % ist verfehlt.',
   ),
   skizze(
     'n-li-8',
     'sla-inhalte',
     'Jede Neun zählt',
-    'Jede zusätzliche Neun hinter dem Komma teilt die erlaubte Ausfallzeit durch zehn – und macht den Betrieb deutlich teurer. Das Diagramm zeigt den erlaubten Ausfall pro Jahr bei 24/7-Betrieb (8.760 h).',
+    'Jede zusätzliche Neun hinter dem Komma teilt die erlaubte Ausfallzeit durch zehn und macht den Betrieb deutlich teurer. Das Diagramm zeigt den erlaubten Ausfall pro Jahr bei 24/7-Betrieb (8.760 h).',
     BalkenDiagramm([
       Balken('99 %', 87.6),
       Balken('99,5 %', 43.8),
@@ -825,7 +825,7 @@ final List<Nugget> nuggetsA07 = [
     'Reaktions- und Lösungszeit in der Servicezeit',
     'Servicezeit Montag bis Freitag, 8 bis 18 Uhr. Für Priorität 2 gelten 2 h Reaktionszeit und 8 h Lösungszeit, gezählt nur in der Servicezeit. Eine Störung wird am Donnerstag um 16:00 Uhr gemeldet.',
     schritte: [
-      'Reaktion: 16:00 + 2 h = 18:00 Uhr – liegt noch in der Servicezeit',
+      'Reaktion: 16:00 + 2 h = 18:00 Uhr, liegt noch in der Servicezeit',
       'Lösung: Donnerstag 16 bis 18 Uhr = 2 h verbraucht, 6 h bleiben',
       'Die Uhr steht bis Freitag 8:00 Uhr',
       'Freitag 8:00 + 6 h = 14:00 Uhr',
@@ -840,7 +840,7 @@ final List<Nugget> nuggetsA07 = [
     schritte: [
       'Unterschreitung: 99,5 % − 99,26 % = 0,24 Prozentpunkte',
       'Angefangene 0,1-Schritte: 0,1 + 0,1 + angefangene 0,04 -> 3 Schritte',
-      'Gutschrift: 3 × 5 % = 15 % – unter der Obergrenze von 25 %',
+      'Gutschrift: 3 × 5 % = 15 %, unter der Obergrenze von 25 %',
       'Betrag: 4.000 € × 0,15 = 600 €',
     ],
     ergebnis: 'Pönale bzw. Gutschrift: 600 €',
@@ -853,7 +853,7 @@ final List<Nugget> nuggetsA07 = [
     points: [
       'Wartungsfenster ausdrücklich regeln, sonst zählen sie als Ausfall',
       'Prozent und Prozentpunkte nicht verwechseln: 99,9 % statt 99,5 % sind 0,4 Prozentpunkte mehr',
-      'Beim Rechnen die Servicezeit nehmen, nicht die Kalenderzeit – außer bei 24/7',
+      'Beim Rechnen die Servicezeit nehmen, nicht die Kalenderzeit, außer bei 24/7',
     ],
   ),
   merke(
@@ -869,7 +869,7 @@ final List<Nugget> nuggetsA07 = [
       'intern durch OLAs, extern durch UCs abgesichert',
     ],
     satz:
-        'Reaktionszeit ist nicht Lösungszeit – und Verfügbarkeit gilt nur für die Servicezeit.',
+        'Reaktionszeit ist nicht Lösungszeit, und Verfügbarkeit gilt nur für die Servicezeit.',
   ),
 
   // ============================================ Support-Level und Eskalation
@@ -877,7 +877,7 @@ final List<Nugget> nuggetsA07 = [
     'n-ls-1',
     'sla-support',
     'Der Service Desk',
-    'Der Service Desk ist die zentrale Anlaufstelle für alle Anfragen und Störungen – der Single Point of Contact (SPOC). Anwender müssen nicht wissen, wer intern zuständig ist. Jede Meldung wird als Ticket erfasst, damit nichts verloren geht und die Bearbeitung nachvollziehbar bleibt.',
+    'Der Service Desk ist die zentrale Anlaufstelle für alle Anfragen und Störungen, der Single Point of Contact (SPOC). Anwender müssen nicht wissen, wer intern zuständig ist. Jede Meldung wird als Ticket erfasst, damit nichts verloren geht und die Bearbeitung nachvollziehbar bleibt.',
     points: [
       'Meldungen annehmen und erfassen',
       'kategorisieren und priorisieren',
@@ -923,7 +923,7 @@ final List<Nugget> nuggetsA07 = [
     'n-ls-4',
     'sla-support',
     'Wer macht was?',
-    'Die Stufen unterscheiden sich in Aufgabe und Wissen. Ziel ist, möglichst viele Fälle weit unten zu lösen – das ist schnell und günstig.',
+    'Die Stufen unterscheiden sich in Aufgabe und Wissen. Ziel ist, möglichst viele Fälle weit unten zu lösen, denn das ist schnell und günstig.',
     [
       ['Level', 'Wer', 'Aufgabe'],
       ['Level 0', 'Anwender selbst', 'Portal, FAQ, Passwort-Reset'],
@@ -1035,7 +1035,7 @@ final List<Nugget> nuggetsA07 = [
       FlussKnoten('IT-Leitung und Kunde', seitlich: 'SLA verletzt'),
     ]),
     points: [
-      'Die Zeitschwellen sind Beispielwerte – sie stehen im jeweiligen SLA',
+      'Die Zeitschwellen sind Beispielwerte; sie stehen im jeweiligen SLA',
       'Das Ticketsystem überwacht die Fristen und löst die Eskalation aus',
     ],
   ),
@@ -1073,10 +1073,10 @@ final List<Nugget> nuggetsA07 = [
     'n-ls-13',
     'sla-support',
     'Ownership statt Ticket-Pingpong',
-    'Beim Eskalieren wird das Ticket nicht geschlossen und neu angelegt – es wandert mit seiner kompletten Historie weiter. Der Service Desk bleibt für den Anwender Ansprechpartner (Ownership) und informiert ihn über den Stand.',
+    'Beim Eskalieren wird das Ticket nicht geschlossen und neu angelegt. Es wandert mit seiner kompletten Historie weiter. Der Service Desk bleibt für den Anwender Ansprechpartner (Ownership) und informiert ihn über den Stand.',
     points: [
-      'Der 3rd Level wird nicht direkt vom Anwender angerufen – die Stufen werden der Reihe nach durchlaufen',
-      'Ein neues Passwort ist keine Störung, sondern eine Standardanfrage – sie bekommt keine hohe Priorität',
+      'Der 3rd Level wird nicht direkt vom Anwender angerufen; die Stufen werden der Reihe nach durchlaufen',
+      'Ein neues Passwort ist keine Störung, sondern eine Standardanfrage und bekommt keine hohe Priorität',
     ],
   ),
   merke(
@@ -1140,7 +1140,7 @@ final List<Nugget> nuggetsA07 = [
     'n-lt-4',
     'sla-itil',
     'Die sieben Leitprinzipien',
-    'Die Leitprinzipien von ITIL 4 sind Empfehlungen, die in jeder Situation gelten – vom kleinen Service Desk bis zum großen Rechenzentrum.',
+    'Die Leitprinzipien von ITIL 4 sind Empfehlungen, die in jeder Situation gelten, vom kleinen Service Desk bis zum großen Rechenzentrum.',
     points: [
       'Fokus auf Wert',
       'Beginne, wo du stehst',
@@ -1195,7 +1195,7 @@ final List<Nugget> nuggetsA07 = [
     'n-lt-7',
     'sla-itil',
     'Der Incident-Prozess',
-    'Ziel des Incident Managements ist, den Service so schnell wie möglich wiederherzustellen – notfalls mit einem Workaround. Die Ursachensuche ist nicht seine Aufgabe.',
+    'Ziel des Incident Managements ist, den Service so schnell wie möglich wiederherzustellen, notfalls mit einem Workaround. Die Ursachensuche ist nicht seine Aufgabe.',
     FlussDiagramm([
       FlussKnoten('Erkennen und erfassen', form: FlussForm.start),
       FlussKnoten('Kategorisieren'),
@@ -1220,7 +1220,7 @@ final List<Nugget> nuggetsA07 = [
     'Vom Incident zum Change',
     'Die Praktiken greifen ineinander. Beispiel: Im Warenlager stürzt die Scanner-App mehrmals täglich ab.',
     [
-      'Incident: Der Service Desk startet die App neu – Workaround, die Arbeit geht weiter',
+      'Incident: Der Service Desk startet die App neu: ein Workaround, die Arbeit geht weiter',
       'Häufen sich gleiche Incidents, wird ein Problem eröffnet',
       'Problem Management findet die Ursache: ein Speicherleck nach dem letzten Update',
       'Ursache und Workaround werden als Known Error dokumentiert',
@@ -1265,7 +1265,7 @@ final List<Nugget> nuggetsA07 = [
     'n-lt-11',
     'sla-itil',
     'Meldungen zuordnen',
-    'Beim Service Desk eines Autohauses gehen vier Meldungen ein: (1) Die Werkstattsoftware startet an keinem PC. (2) Seit Wochen stürzt sie jeden Montag ab – die Ursache soll gefunden werden. (3) Ein neuer Azubi braucht ein Benutzerkonto. (4) Der Mailserver soll auf eine neue Version aktualisiert werden.',
+    'Beim Service Desk eines Autohauses gehen vier Meldungen ein: (1) Die Werkstattsoftware startet an keinem PC. (2) Seit Wochen stürzt sie jeden Montag ab; die Ursache soll gefunden werden. (3) Ein neuer Azubi braucht ein Benutzerkonto. (4) Der Mailserver soll auf eine neue Version aktualisiert werden.',
     schritte: [
       '(1) Der Service ist gestört -> Incident, hohe Priorität, sofort wiederherstellen',
       '(2) Ursache wiederkehrender Störungen gesucht -> Problem',
@@ -1278,9 +1278,9 @@ final List<Nugget> nuggetsA07 = [
     'n-lt-12',
     'sla-itil',
     'Incident ist nicht Problem',
-    'Ein Incident ist erledigt, sobald der Service wieder läuft – auch wenn die Ursache unbekannt bleibt. Die Ursachensuche ist Aufgabe des Problem Managements. Und ein neues Passwort ist kein Incident, sondern ein Service Request, denn kaputt ist ja nichts.',
+    'Ein Incident ist erledigt, sobald der Service wieder läuft, auch wenn die Ursache unbekannt bleibt. Die Ursachensuche ist Aufgabe des Problem Managements. Und ein neues Passwort ist kein Incident, sondern ein Service Request, denn kaputt ist ja nichts.',
     points: [
-      'Ein Event ist nur eine bedeutsame Zustandsänderung, z. B. Festplatte zu 80 % voll – noch keine Störung',
+      'Ein Event ist nur eine bedeutsame Zustandsänderung, z. B. Festplatte zu 80 % voll, noch keine Störung',
       'Auch ein Emergency Change wird genehmigt und dokumentiert, nur schneller',
     ],
   ),
@@ -1288,7 +1288,7 @@ final List<Nugget> nuggetsA07 = [
     'n-lt-13',
     'sla-itil',
     'ITIL in einem Satz',
-    'Merke dir die Kernbegriffe als Kette: Störung, Ursache, Änderung – daneben die Standardanfrage.',
+    'Merke dir die Kernbegriffe als Kette: Störung, Ursache, Änderung, daneben die Standardanfrage.',
     points: [
       'Service Value Chain: Plan, Improve, Engage, Design & Transition, Obtain/Build, Deliver & Support',
       'Vier Dimensionen, sieben Leitprinzipien',
@@ -1330,9 +1330,9 @@ final List<Nugget> nuggetsA07 = [
     'Prüfe die Voraussetzungen der Reihe nach. Beispiel: Ein Händler soll 20 Notebooks für neue Azubis liefern, die Lieferung bleibt aus.',
     [
       'Fälligkeit: Der vereinbarte Liefertermin ist erreicht',
-      'Mahnung: Der Käufer fordert die Lieferung eindeutig ein – formfrei, eine Mahnung genügt',
+      'Mahnung: Der Käufer fordert die Lieferung eindeutig ein, formfrei, eine Mahnung genügt',
       'Mahnung entbehrlich (§ 286 Abs. 2): Termin nach dem Kalender bestimmt („am 15.03.“, „14 Tage nach Abruf“), ernsthafte Leistungsverweigerung oder besondere Eilbedürftigkeit',
-      'Vertretenmüssen: Der Lieferer hat die Verspätung verschuldet – das wird vermutet, er muss sich entlasten (§ 286 Abs. 4)',
+      'Vertretenmüssen: Der Lieferer hat die Verspätung verschuldet. Das wird vermutet, er muss sich entlasten (§ 286 Abs. 4)',
     ],
   ),
   skizze(
@@ -1390,7 +1390,7 @@ final List<Nugget> nuggetsA07 = [
     'n-gv-7',
     'ls-verzug',
     'Das Fixgeschäft',
-    'Ist ein Termin so wichtig, dass der Vertrag mit ihm „stehen oder fallen“ soll, liegt ein Fixgeschäft vor – erkennbar an Formulierungen wie „fix“ oder „genau am“. Dann braucht der Käufer keine Nachfrist.',
+    'Ist ein Termin so wichtig, dass der Vertrag mit ihm „stehen oder fallen“ soll, liegt ein Fixgeschäft vor, erkennbar an Formulierungen wie „fix“ oder „genau am“. Dann braucht der Käufer keine Nachfrist.',
     [
       ['Art', 'Merkmal', 'Folge'],
       [
@@ -1436,7 +1436,7 @@ final List<Nugget> nuggetsA07 = [
         'Zins = Betrag × Satz × Tage / 365',
     points: [
       'Die 40 € Pauschale gibt es nur, wenn der Schuldner kein Verbraucher ist (§ 288 Abs. 5)',
-      'Manche Prüfungsaufgaben rechnen mit 360 Tagen (Bankjahr) – nimm immer, was die Aufgabe vorgibt',
+      'Manche Prüfungsaufgaben rechnen mit 360 Tagen (Bankjahr). Nimm immer, was die Aufgabe vorgibt',
     ],
   ),
   skizze(
@@ -1487,7 +1487,7 @@ final List<Nugget> nuggetsA07 = [
     'n-gv-13',
     'ls-verzug',
     'Prozent oder Prozentpunkte?',
-    'Verzugszinsen liegen 5 bzw. 9 Prozentpunkte über dem Basiszinssatz. Bei 2 % Basiszins sind das 7 % bzw. 11 % – nicht 2 % × 1,05. Die drei Mahnungen, die man aus dem Alltag kennt, brauchst du übrigens nicht – eine einzige genügt.',
+    'Verzugszinsen liegen 5 bzw. 9 Prozentpunkte über dem Basiszinssatz. Bei 2 % Basiszins sind das 7 % bzw. 11 %, nicht 2 % × 1,05. Die drei Mahnungen, die man aus dem Alltag kennt, brauchst du übrigens nicht, denn eine einzige genügt.',
     points: [
       'Ein Zahlungsziel, das der Verkäufer nur einseitig auf die Rechnung schreibt, ersetzt keine Mahnung',
       'Die 30-Tage-Regel gilt nur für Geldforderungen, nicht für den Lieferungsverzug',
@@ -1513,9 +1513,9 @@ final List<Nugget> nuggetsA07 = [
     'n-gm-1',
     'ls-maengel',
     'Wann ist eine Sache mangelhaft?',
-    'Seit 2022 ist eine Sache nur mangelfrei, wenn sie bei Gefahrübergang drei Anforderungen erfüllt (§ 434 BGB): die vereinbarten (subjektiven), die üblichen (objektiven) und – falls sie montiert wird – die Montageanforderungen. Gefahrübergang ist in der Regel die Übergabe.',
+    'Seit 2022 ist eine Sache nur mangelfrei, wenn sie bei Gefahrübergang drei Anforderungen erfüllt (§ 434 BGB): die vereinbarten (subjektiven), die üblichen (objektiven) und, falls sie montiert wird, die Montageanforderungen. Gefahrübergang ist in der Regel die Übergabe.',
     points: [
-      'Subjektiv: vereinbarte Beschaffenheit – das Gesetz nennt ausdrücklich Art, Menge, Qualität, Funktionalität, Kompatibilität und Interoperabilität',
+      'Subjektiv: vereinbarte Beschaffenheit. Das Gesetz nennt ausdrücklich Art, Menge, Qualität, Funktionalität, Kompatibilität und Interoperabilität',
       'Objektiv: eignet sich für die gewöhnliche Verwendung, hat die übliche Beschaffenheit, hält, was die Werbung verspricht',
       'Montage: fachgerecht montiert, Anleitung korrekt',
       'Rechtsmangel (§ 435): Dritte haben Rechte an der Sache, z. B. Software ohne gültige Lizenz',
@@ -1554,7 +1554,7 @@ final List<Nugget> nuggetsA07 = [
       ],
     ],
     merksatz:
-        'Private Käufer und Verbraucher trifft keine Rügepflicht – sie haben die volle Gewährleistungsfrist.',
+        'Private Käufer und Verbraucher trifft keine Rügepflicht; sie haben die volle Gewährleistungsfrist.',
   ),
   skizze(
     'n-gm-4',
@@ -1595,7 +1595,7 @@ final List<Nugget> nuggetsA07 = [
     ],
     points: [
       'Die Nacherfüllung gilt nach dem zweiten erfolglosen Versuch als fehlgeschlagen (§ 440 BGB)',
-      'Die Kosten der Nacherfüllung – Transport, Arbeit, Material – trägt der Verkäufer (§ 439 Abs. 2)',
+      'Die Kosten der Nacherfüllung (Transport, Arbeit, Material) trägt der Verkäufer (§ 439 Abs. 2)',
       'Rücktritt oder Minderung: Der Käufer muss sich für eines entscheiden',
     ],
   ),
@@ -1624,7 +1624,7 @@ final List<Nugget> nuggetsA07 = [
       'Verhältnis: 1.000 € / 1.500 € = 2/3',
       'Geminderter Preis: 1.200 € × 2/3 = 800 €',
       'Minderungsbetrag: 1.200 € − 800 € = 400 €',
-      'Nicht einfach 1.500 € − 1.000 € = 500 € abziehen – es zählt das Verhältnis',
+      'Nicht einfach 1.500 € − 1.000 € = 500 € abziehen, denn es zählt das Verhältnis',
     ],
     ergebnis: 'Das Büro zahlt 800 € und erhält 400 € zurück.',
   ),
@@ -1652,14 +1652,14 @@ final List<Nugget> nuggetsA07 = [
     points: [
       'Die Gewährleistungsfrist beginnt mit der Ablieferung (§ 438 BGB)',
       'Gebrauchte Sachen: gegenüber Verbrauchern auf 1 Jahr verkürzbar',
-      'Unter Unternehmen kann die Gewährleistung vertraglich beschränkt werden – nie bei Arglist',
+      'Unter Unternehmen kann die Gewährleistung vertraglich beschränkt werden, aber nie bei Arglist',
     ],
   ),
   skizze(
     'n-gm-9',
     'ls-maengel',
     'Fristen beim Verbrauchsgüterkauf',
-    'Beim Verbrauchsgüterkauf (Unternehmer verkauft an Verbraucher) wird vermutet, dass ein Mangel, der sich im ersten Jahr zeigt, schon bei Übergabe vorlag (§ 477 BGB, seit 2022; vorher 6 Monate). Danach muss der Kunde das beweisen – die Gewährleistung läuft trotzdem zwei Jahre.',
+    'Beim Verbrauchsgüterkauf (Unternehmer verkauft an Verbraucher) wird vermutet, dass ein Mangel, der sich im ersten Jahr zeigt, schon bei Übergabe vorlag (§ 477 BGB, seit 2022; vorher 6 Monate). Danach muss der Kunde das beweisen; die Gewährleistung läuft trotzdem zwei Jahre.',
     GanttDiagramm([
       GanttVorgang('Gewährleistung', 0, 24),
       GanttVorgang('Beweislastumkehr', 0, 12, kritisch: true),
@@ -1675,7 +1675,7 @@ final List<Nugget> nuggetsA07 = [
       'Verbrauchsgüterkauf: Händler (Unternehmer) verkauft an eine Verbraucherin',
       'Gewährleistung 2 Jahre ab Übergabe -> nach 14 Monaten noch nicht abgelaufen',
       'Beweislastumkehr nur im ersten Jahr -> jetzt muss die Kundin beweisen, dass der Fehler schon bei Übergabe angelegt war, z. B. per Gutachten',
-      'Die Herstellergarantie ist unabhängig davon – ihr Ablauf ändert an der Gewährleistung nichts',
+      'Die Herstellergarantie ist unabhängig davon; ihr Ablauf ändert an der Gewährleistung nichts',
       'Anspruchsgegner ist der Händler, nicht der Hersteller',
     ],
     ergebnis:
@@ -1685,7 +1685,7 @@ final List<Nugget> nuggetsA07 = [
     'n-gm-11',
     'ls-maengel',
     'Mängelrechte bei Kauf und Werk',
-    'Beim Werkvertrag, etwa bei Individualsoftware, gelten ähnliche Rechte (§ 634 BGB) – mit drei wichtigen Unterschieden.',
+    'Beim Werkvertrag, etwa bei Individualsoftware, gelten ähnliche Rechte (§ 634 BGB), mit drei wichtigen Unterschieden.',
     [
       ['', 'Kaufvertrag', 'Werkvertrag'],
       ['Art der Nacherfüllung wählt', 'Käufer', 'Unternehmer'],
@@ -1700,11 +1700,11 @@ final List<Nugget> nuggetsA07 = [
     'n-gm-12',
     'ls-maengel',
     'Typische Fehler bei Mängeln',
-    'Der Mangel muss bei Übergabe vorliegen – Schäden durch falsche Bedienung sind kein Mangel. Ansprechpartner ist der Verkäufer, nicht der Hersteller. Und wer sofort zurücktreten will, muss meist erst Nacherfüllung verlangen.',
+    'Der Mangel muss bei Übergabe vorliegen. Schäden durch falsche Bedienung sind kein Mangel. Ansprechpartner ist der Verkäufer, nicht der Hersteller. Und wer sofort zurücktreten will, muss meist erst Nacherfüllung verlangen.',
     points: [
-      'Bei einem unerheblichen Mangel ist der Rücktritt ausgeschlossen – mindern darf der Käufer trotzdem (§ 323 Abs. 5, § 441 BGB)',
+      'Bei einem unerheblichen Mangel ist der Rücktritt ausgeschlossen, mindern darf der Käufer trotzdem (§ 323 Abs. 5, § 441 BGB)',
       'Waren mit digitalen Elementen, z. B. Smartphones: Der Verkäufer muss Verbrauchern Sicherheitsupdates für einen angemessenen Zeitraum sicherstellen (§ 475b BGB)',
-      'Gewährleistung ist nicht Garantie – das Ende der Garantie beendet die Gewährleistung nicht',
+      'Gewährleistung ist nicht Garantie: Das Ende der Garantie beendet die Gewährleistung nicht',
     ],
   ),
   merke(
@@ -1713,13 +1713,13 @@ final List<Nugget> nuggetsA07 = [
     'Mängel auf einen Blick',
     'Bei jedem Mangelfall stellst du dieselben Fragen: Welcher Mangel, wer ist Vertragspartner, welche Frist läuft, welches Recht kommt zuerst?',
     points: [
-      'Sachmangel: subjektiv, objektiv, Montage – Rechtsmangel: Rechte Dritter',
+      'Sachmangel: subjektiv, objektiv, Montage; Rechtsmangel: Rechte Dritter',
       'Unter Kaufleuten: unverzüglich prüfen und rügen',
       'Gewährleistung 2 Jahre, Beweislastumkehr 1 Jahr (Verbrauchsgüterkauf)',
       'Minderung nach Verhältnis, nicht nach Differenz',
     ],
     satz:
-        'Erst Nacherfüllung, dann Rücktritt oder Minderung – Schadensersatz nur bei Verschulden.',
+        'Erst Nacherfüllung, dann Rücktritt oder Minderung, Schadensersatz nur bei Verschulden.',
   ),
 
   // =================================================== Abnahme und Protokoll
@@ -1727,10 +1727,10 @@ final List<Nugget> nuggetsA07 = [
     'n-ga-1',
     'ls-abnahme',
     'Was ist die Abnahme?',
-    'Beim Werkvertrag erklärt der Besteller mit der Abnahme, dass er das Werk als im Wesentlichen vertragsgemäß anerkennt – etwa eine fertig programmierte Software. Er ist dazu verpflichtet, wenn das Werk vertragsgemäß hergestellt ist (§ 640 Abs. 1 BGB). Wegen unwesentlicher Mängel darf er die Abnahme nicht verweigern.',
+    'Beim Werkvertrag erklärt der Besteller mit der Abnahme, dass er das Werk als im Wesentlichen vertragsgemäß anerkennt, etwa eine fertig programmierte Software. Er ist dazu verpflichtet, wenn das Werk vertragsgemäß hergestellt ist (§ 640 Abs. 1 BGB). Wegen unwesentlicher Mängel darf er die Abnahme nicht verweigern.',
     points: [
       'Die Abnahme ist der wichtigste Zeitpunkt im Werkvertrag',
-      'Beim Dienstvertrag gibt es keine Abnahme – bezahlt wird die Tätigkeit',
+      'Beim Dienstvertrag gibt es keine Abnahme, bezahlt wird die Tätigkeit',
     ],
   ),
   vergleich(
@@ -1772,10 +1772,10 @@ final List<Nugget> nuggetsA07 = [
     'n-ga-4',
     'ls-abnahme',
     'Abnahmekriterien vorher festlegen',
-    'Woran das Werk gemessen wird, gehört schon ins Pflichtenheft bzw. in den Vertrag – messbar formuliert, etwa „Suchergebnis in unter 2 Sekunden bei 100 gleichzeitigen Nutzern“. Ohne Kriterien entsteht Streit darüber, ob das Werk vertragsgemäß ist.',
+    'Woran das Werk gemessen wird, gehört schon ins Pflichtenheft bzw. in den Vertrag, messbar formuliert, etwa „Suchergebnis in unter 2 Sekunden bei 100 gleichzeitigen Nutzern“. Ohne Kriterien entsteht Streit darüber, ob das Werk vertragsgemäß ist.',
     points: [
       'Abnahmetest mit echten Geschäftsfällen in produktionsnaher Umgebung',
-      'Testfälle und Testdaten stellt häufig der Kunde – das ist eine Mitwirkungspflicht',
+      'Testfälle und Testdaten stellt häufig der Kunde; das ist eine Mitwirkungspflicht',
       'Abnahmekriterien = die vereinbarten Anforderungen, nicht spätere Wünsche',
     ],
   ),
@@ -1795,7 +1795,7 @@ final List<Nugget> nuggetsA07 = [
     'n-ga-6',
     'ls-abnahme',
     'Abnehmen oder verweigern?',
-    'Nach dem Abnahmetest entscheidet der Besteller. Ein wesentlicher Mangel berechtigt zur Verweigerung, ein unwesentlicher nicht – er wird als Vorbehalt protokolliert.',
+    'Nach dem Abnahmetest entscheidet der Besteller. Ein wesentlicher Mangel berechtigt zur Verweigerung, ein unwesentlicher nicht. Er wird als Vorbehalt protokolliert.',
     FlussDiagramm([
       FlussKnoten('Werk fertiggestellt', form: FlussForm.start),
       FlussKnoten('Abnahmetest gegen Pflichtenheft'),
@@ -1836,7 +1836,7 @@ final List<Nugget> nuggetsA07 = [
       'Der Unternehmer setzt nach Fertigstellung eine angemessene Frist zur Abnahme',
       'Der Besteller verweigert die Abnahme nicht innerhalb der Frist unter Angabe mindestens eines Mangels',
       'Bei Verbrauchern nur, wenn sie mit der Aufforderung in Textform auf diese Folge hingewiesen wurden',
-      'Folge: Das Werk gilt als abgenommen – mit allen Wirkungen der Abnahme',
+      'Folge: Das Werk gilt als abgenommen, mit allen Wirkungen der Abnahme',
     ],
   ),
   beispiel(
@@ -1852,7 +1852,7 @@ final List<Nugget> nuggetsA07 = [
       'Bis zur Beseitigung darf er einen angemessenen Teil zurückhalten, in der Regel das Doppelte der Kosten: 2 × 150 € = 300 € (§ 641 Abs. 3)',
     ],
     ergebnis:
-        'Abnahme am 9. Juni unter Vorbehalt – 23.700 € sofort, 300 € nach Beseitigung des Tippfehlers.',
+        'Abnahme am 9. Juni unter Vorbehalt: 23.700 € sofort, 300 € nach Beseitigung des Tippfehlers.',
   ),
   vergleich(
     'n-ga-10',
@@ -1873,7 +1873,7 @@ final List<Nugget> nuggetsA07 = [
     'n-ga-11',
     'ls-abnahme',
     'Abnahme ohne Unterschrift',
-    'Wer ein Werk nach einer angemessenen Prüfzeit produktiv nutzt und vorbehaltlos bezahlt, kann es konkludent abgenommen haben – auch ganz ohne Protokoll. Und wer ein Werk trotz bekannter Mängel ohne Vorbehalt abnimmt, verliert für diese Mängel Nacherfüllung, Selbstvornahme, Rücktritt und Minderung. Nur der Schadensersatz bleibt (§ 640 Abs. 3 BGB).',
+    'Wer ein Werk nach einer angemessenen Prüfzeit produktiv nutzt und vorbehaltlos bezahlt, kann es konkludent abgenommen haben, auch ganz ohne Protokoll. Und wer ein Werk trotz bekannter Mängel ohne Vorbehalt abnimmt, verliert für diese Mängel Nacherfüllung, Selbstvornahme, Rücktritt und Minderung. Nur der Schadensersatz bleibt (§ 640 Abs. 3 BGB).',
     points: [
       'Rüge Mängel immer schriftlich, bevor du produktiv gehst',
       'Trag bekannte Mängel ins Abnahmeprotokoll ein',
@@ -1890,7 +1890,7 @@ final List<Nugget> nuggetsA07 = [
       'Arten: ausdrücklich, konkludent, fiktiv, Teilabnahme',
     ],
     satz:
-        'Bekannte Mängel gehören ins Abnahmeprotokoll – sonst sind die Rechte darauf weitgehend weg.',
+        'Bekannte Mängel gehören ins Abnahmeprotokoll, sonst sind die Rechte darauf weitgehend weg.',
   ),
 
   // ================================================== Veränderung nach Lewin
@@ -1898,7 +1898,7 @@ final List<Nugget> nuggetsA07 = [
     'n-cl-1',
     'cm-lewin',
     'Change Management',
-    'Change Management steuert Veränderungen in Organisationen so, dass die Betroffenen sie mittragen – etwa die Einführung eines neuen ERP-Systems oder eines Ticketsystems. Nicht verwechseln mit dem Change nach ITIL: Der meint eine einzelne technische Änderung.',
+    'Change Management steuert Veränderungen in Organisationen so, dass die Betroffenen sie mittragen, etwa die Einführung eines neuen ERP-Systems oder eines Ticketsystems. Nicht verwechseln mit dem Change nach ITIL: Der meint eine einzelne technische Änderung.',
     points: [
       'Auslöser: neue Technik, Kundenanforderungen, Gesetze, Wettbewerb, Kostendruck',
       'Erfolgsfaktoren: klares Ziel, offene Kommunikation, Beteiligung, Qualifizierung',
@@ -1940,7 +1940,7 @@ final List<Nugget> nuggetsA07 = [
     'n-cl-4',
     'cm-lewin',
     'Die Kraftfeldanalyse',
-    'Lewin sieht jeden Zustand als Gleichgewicht zwischen treibenden und hemmenden Kräften. Wer etwas verändern will, stärkt die treibenden Kräfte oder baut – meist wirksamer – die hemmenden ab. Ein Beispiel ist die Einführung eines Ticketsystems.',
+    'Lewin sieht jeden Zustand als Gleichgewicht zwischen treibenden und hemmenden Kräften. Wer etwas verändern will, stärkt die treibenden Kräfte oder baut, meist wirksamer, die hemmenden ab. Ein Beispiel ist die Einführung eines Ticketsystems.',
     [
       ['treibende Kräfte', 'hemmende Kräfte'],
       ['Postfächer laufen über', 'Gewohnheit: „ging doch immer“'],
@@ -1948,7 +1948,7 @@ final List<Nugget> nuggetsA07 = [
       ['keine Kennzahlen', 'keine Zeit für Schulungen'],
     ],
     merksatz:
-        'Mehr Druck von der treibenden Seite erzeugt oft mehr Gegendruck – Hemmnisse abbauen wirkt nachhaltiger.',
+        'Mehr Druck von der treibenden Seite erzeugt oft mehr Gegendruck. Hemmnisse abbauen wirkt nachhaltiger.',
   ),
   konzept(
     'n-cl-5',
@@ -2068,7 +2068,7 @@ final List<Nugget> nuggetsA07 = [
     'Die vergessenen Phasen',
     'Veränderungen scheitern meist nicht in der Umsetzung, sondern am Anfang oder am Ende. Ohne Auftauen fehlt die Einsicht, ohne Einfrieren kehren alle nach wenigen Wochen zu alten Gewohnheiten zurück.',
     points: [
-      'In der Phase des Veränderns sinkt die Leistung oft vorübergehend – das ist normal, kein Zeichen des Scheiterns',
+      'In der Phase des Veränderns sinkt die Leistung oft vorübergehend. Das ist normal und kein Zeichen des Scheiterns',
       'Bleibt das alte System verfügbar, ist Refreezing kaum möglich',
     ],
   ),
@@ -2078,9 +2078,9 @@ final List<Nugget> nuggetsA07 = [
     'Lewin in einem Satz',
     'Die Reihenfolge ist fest und lässt sich nicht abkürzen.',
     points: [
-      'Unfreezing: Warum? – informieren, beteiligen',
-      'Moving: Wie? – schulen, pilotieren, begleiten',
-      'Refreezing: Dauerhaft! – Standards, Altes abschalten',
+      'Unfreezing: Warum? Informieren, beteiligen',
+      'Moving: Wie? Schulen, pilotieren, begleiten',
+      'Refreezing: Dauerhaft! Standards, Altes abschalten',
     ],
     satz:
         'Erst lockern, dann formen, dann festigen: Unfreezing, Moving, Refreezing.',
@@ -2142,7 +2142,7 @@ final List<Nugget> nuggetsA07 = [
     'n-cw-5',
     'cm-widerstand',
     'Offen oder verdeckt?',
-    'Widerstand zeigt sich nicht immer offen. Verdeckter Widerstand ist schwerer zu erkennen und deshalb gefährlicher – er fällt oft erst auf, wenn Termine platzen.',
+    'Widerstand zeigt sich nicht immer offen. Verdeckter Widerstand ist schwerer zu erkennen und deshalb gefährlicher, denn er fällt oft erst auf, wenn Termine platzen.',
     [
       ['', 'aktiv', 'passiv'],
       ['offen', 'Widerspruch, Beschwerden', 'Schweigen, Rückzug'],
@@ -2157,7 +2157,7 @@ final List<Nugget> nuggetsA07 = [
     'n-cw-6',
     'cm-widerstand',
     'Die Veränderungskurve',
-    'Nach Richard K. Streich durchlaufen Betroffene sieben Phasen. Die selbst wahrgenommene Kompetenz steigt in der Verneinung kurz an, sackt dann ab und erreicht in der emotionalen Akzeptanz ihren Tiefpunkt – das „Tal der Tränen“. Erst mit dem Ausprobieren steigt sie wieder.',
+    'Nach Richard K. Streich durchlaufen Betroffene sieben Phasen. Die selbst wahrgenommene Kompetenz steigt in der Verneinung kurz an, sackt dann ab und erreicht in der emotionalen Akzeptanz ihren Tiefpunkt, das „Tal der Tränen“. Erst mit dem Ausprobieren steigt sie wieder.',
     BalkenDiagramm(
       [
         Balken('1 Schock', 40),
@@ -2206,13 +2206,13 @@ final List<Nugget> nuggetsA07 = [
     'Bei der Einführung eines neuen ERP-Systems sagt eine erfahrene Sachbearbeiterin: „Die alten Masken kenne ich blind, im neuen System brauche ich für jede Buchung doppelt so lange.“ Seit Wochen erfasst sie Aufträge stillschweigend weiter auf Papier.',
     schritte: [
       'Symptom: Sie umgeht das System ohne Ankündigung -> verdeckter, passiver Widerstand',
-      'Ihre Aussage zeigt die Ursache: nicht können – ihr fehlt die Routine',
+      'Ihre Aussage zeigt die Ursache: nicht können, denn ihr fehlt die Routine',
       'Ihr Frust passt zur Phase der Einsicht bzw. Akzeptanz auf der Veränderungskurve',
       'Passend: Einzelschulung, Übersicht der Tastenkürzel, Key-User als Ansprechpartner, Zeit zum Üben',
-      'Unpassend: Abmahnung oder Druck – das erzeugt nur Scheinanpassung',
+      'Unpassend: Abmahnung oder Druck, denn das erzeugt nur Scheinanpassung',
     ],
     ergebnis:
-        'Ursache „nicht können“ – Antwort: gezielt qualifizieren und begleiten.',
+        'Ursache „nicht können“. Antwort: gezielt qualifizieren und begleiten.',
   ),
   falle(
     'n-cw-10',
@@ -2220,7 +2220,7 @@ final List<Nugget> nuggetsA07 = [
     'Druck ist die schlechteste Antwort',
     'Wer Widerstand mit Anweisungen und Sanktionen bricht, erzeugt oft nur Scheinanpassung: Das neue System wird pro forma genutzt, die Arbeit läuft daneben weiter. Beteiligung wirkt nachhaltiger, weil Betroffene zu Mitgestaltenden werden.',
     points: [
-      'Schweigen ist keine Zustimmung – oft ist es verdeckter Widerstand',
+      'Schweigen ist keine Zustimmung; oft ist es verdeckter Widerstand',
       'Eine Schulung hilft nicht, wenn die Ursache „nicht wollen“ oder „nicht dürfen“ ist',
     ],
   ),
@@ -2235,7 +2235,7 @@ final List<Nugget> nuggetsA07 = [
       'Tiefpunkt der Kurve: emotionale Akzeptanz',
     ],
     satz:
-        'Erst die Ursache klären – nicht wissen, nicht können, nicht wollen, nicht dürfen –, dann gezielt handeln.',
+        'Erst die Ursache klären (nicht wissen, nicht können, nicht wollen, nicht dürfen), dann gezielt handeln.',
   ),
 
   // ========================================================= Kaizen und KVP
@@ -2268,7 +2268,7 @@ final List<Nugget> nuggetsA07 = [
     'n-ck-3',
     'cm-kaizen',
     'Der PDCA-Zyklus',
-    'Jeder einzelne Verbesserungsschritt läuft im PDCA-Zyklus, auch Deming-Kreis genannt. Nach „Act“ beginnt der nächste Zyklus – auf dem neuen, höheren Standard.',
+    'Jeder einzelne Verbesserungsschritt läuft im PDCA-Zyklus, auch Deming-Kreis genannt. Nach „Act“ beginnt der nächste Zyklus, auf dem neuen, höheren Standard.',
     FlussDiagramm(
       [
         FlussKnoten('Plan: analysieren, planen'),
@@ -2292,9 +2292,9 @@ final List<Nugget> nuggetsA07 = [
     'PDCA im Service Desk',
     'Beispiel: Im Service Desk dauert das Anlegen neuer Benutzerkonten zu lange.',
     [
-      'Plan: Ursache analysieren – Daten werden dreimal abgetippt; Ziel: Formular mit Vorlage',
+      'Plan: Ursache analysieren: Daten werden dreimal abgetippt; Ziel: Formular mit Vorlage',
       'Do: Die Vorlage vier Wochen im Team testen',
-      'Check: Messen – Bearbeitung sinkt von 20 auf 8 Minuten',
+      'Check: Messen. Bearbeitung sinkt von 20 auf 8 Minuten',
       'Act: Die Vorlage wird Standard, dann beginnt der nächste Zyklus',
     ],
   ),
@@ -2331,7 +2331,7 @@ final List<Nugget> nuggetsA07 = [
     'n-ck-7',
     'cm-kaizen',
     '5S: Ordnung am Arbeitsplatz',
-    'Die 5S-Methode schafft einen aufgeräumten, standardisierten Arbeitsplatz als Grundlage für Verbesserungen – auch digital.',
+    'Die 5S-Methode schafft einen aufgeräumten, standardisierten Arbeitsplatz als Grundlage für Verbesserungen, auch digital.',
     [
       ['S', 'Bedeutung', 'IT-Beispiel'],
       ['Seiri', 'Sortieren', 'Unnötiges aussortieren'],
@@ -2347,11 +2347,11 @@ final List<Nugget> nuggetsA07 = [
     'Ursachen finden: fünfmal „Warum?“',
     'Kaizen sucht die Grundursache, nicht das Symptom. Die 5-Why-Methode fragt so lange „Warum?“, bis die eigentliche Ursache auf dem Tisch liegt. Beispiel: Das Anlegen eines Benutzerkontos dauert 20 Minuten.',
     points: [
-      'Warum? – Die Daten werden abgetippt',
-      'Warum? – Die Personalabteilung schickt ein eingescanntes PDF',
-      'Warum? – Es gibt kein digitales Formular',
-      'Warum? – Niemand hat es je angefragt',
-      'Warum? – Der Zeitverlust war nicht sichtbar -> Maßnahme: Formular einführen, Zeiten messen',
+      'Warum? Die Daten werden abgetippt',
+      'Warum? Die Personalabteilung schickt ein eingescanntes PDF',
+      'Warum? Es gibt kein digitales Formular',
+      'Warum? Niemand hat es je angefragt',
+      'Warum? Der Zeitverlust war nicht sichtbar -> Maßnahme: Formular einführen, Zeiten messen',
     ],
   ),
   vergleich(
@@ -2371,11 +2371,11 @@ final List<Nugget> nuggetsA07 = [
     'n-ck-10',
     'cm-kaizen',
     'Gemba und Standards',
-    'Kaizen setzt am Ort des Geschehens an – japanisch Gemba. Verbesserungen entstehen dort, wo die Arbeit gemacht wird, nicht im Besprechungsraum. Jede erfolgreiche Verbesserung wird zum neuen Standard; ohne Standard gibt es keinen Ausgangspunkt für den nächsten Schritt.',
+    'Kaizen setzt am Ort des Geschehens an, japanisch Gemba. Verbesserungen entstehen dort, wo die Arbeit gemacht wird, nicht im Besprechungsraum. Jede erfolgreiche Verbesserung wird zum neuen Standard; ohne Standard gibt es keinen Ausgangspunkt für den nächsten Schritt.',
     points: [
       'Führungskräfte gehen an den Arbeitsplatz und schauen zu',
       'Standards schriftlich festhalten, z. B. im Handbuch oder als Vorlage',
-      'Kennzahlen vorher und nachher messen – sonst ist der Erfolg nicht belegt',
+      'Kennzahlen vorher und nachher messen, sonst ist der Erfolg nicht belegt',
     ],
   ),
   falle(

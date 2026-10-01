@@ -1435,7 +1435,7 @@ do {
     'Endlosschleifen und fehlendes break',
     'Wird die Bedingung einer Schleife nie falsch, läuft sie endlos. Typisch, wenn der Zähler im Rumpf nicht verändert wird. Bei switch/case in Java und C fehlt oft das break: Dann laufen auch die folgenden Fälle mit ab.',
     points: [
-      'while (i < 10) { summe += i; } - i ändert sich nie',
+      'while (i < 10) { summe += i; }: i ändert sich nie',
       'Grenzen prüfen: < und <= unterscheiden sich um genau einen Durchlauf',
     ],
   ),

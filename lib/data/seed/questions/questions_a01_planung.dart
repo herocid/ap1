@@ -225,7 +225,7 @@ final List<Question> questionsA01Planung = [
     choices: [
       ja(
         'B, 1 Tag',
-        'B endet bei 4, D beginnt erst bei 5 - B darf 1 Tag später fertig werden.',
+        'B endet bei 4, D beginnt erst bei 5. B darf 1 Tag später fertig werden.',
       ),
       nein(
         'B, 2 Tage',

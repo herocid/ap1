@@ -1312,7 +1312,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'Eine Textdatei ist 10.000 Byte groß, die Clustergröße beträgt 4 KiB. Wie viel Platz belegt sie tatsächlich?',
     schritte: [
       'Clustergröße: 4 KiB = 4.096 Byte',
-      'benötigte Cluster: 10.000 / 4.096 ≈ 2,44 - angefangene Cluster zählen voll, also 3',
+      'benötigte Cluster: 10.000 / 4.096 ≈ 2,44; angefangene Cluster zählen voll, also 3',
       'belegt: 3 × 4.096 Byte = 12.288 Byte',
       'Verschnitt: 12.288 Byte - 10.000 Byte = 2.288 Byte',
     ],
@@ -1458,7 +1458,7 @@ final List<Nugget> nuggetsA03Systeme = [
       'alle anderen: --- = 0',
     ],
     ergebnis:
-        'chmod 750 - Anna alles, Buchhaltung lesen und ausführen, andere nichts',
+        'chmod 750: Anna alles, Buchhaltung lesen und ausführen, andere nichts',
   ),
   konzept(
     'n-br-9',
@@ -1527,7 +1527,7 @@ final List<Nugget> nuggetsA03Systeme = [
     points: [
       'Authentifizierung: wer? Autorisierung: was?',
       'Rechte an Gruppen, nicht an Personen und nach dem Minimalprinzip',
-      'Linux: r = 4, w = 2, x = 1 - je für Besitzer, Gruppe, andere',
+      'Linux: r = 4, w = 2, x = 1, je für Besitzer, Gruppe, andere',
       'Netzwerkzugriff: die strengere aus Freigabe und NTFS gilt',
       'Verweigern schlägt Zulassen',
     ],
@@ -1717,7 +1717,7 @@ final List<Nugget> nuggetsA03Systeme = [
         'Minimum = 3ms, Maximum = 480ms,\n'
         'Mittelwert = 162ms',
     schritte: [
-      'Paketverlust: 1 von 4 Anfragen blieb unbeantwortet - 25 % statt 0 %',
+      'Paketverlust: 1 von 4 Anfragen blieb unbeantwortet, also 25 % statt 0 %',
       'Antwortzeit: Im LAN sind wenige Millisekunden normal, 480 ms ist ein Ausreißer',
       'Mittelwert: (3 + 480 + 5) / 3 ≈ 162 ms; gemittelt wird nur über die Antworten',
       'Folgen: ruckelndes oder einfrierendes Bild, Zeitüberschreitungen, Verbindungsabbrüche',

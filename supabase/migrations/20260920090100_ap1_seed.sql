@@ -977,7 +977,7 @@ values (
   1,
   ARRAY['lastenheft', 'pflichtenheft']::text[],
   null,
-  '{"buckets":["Lastenheft","Pflichtenheft"],"match_items":[{"text":"Wird vom Auftraggeber erstellt.","bucket":0,"rationale":"Merksatz: Der Auftraggeber lädt dem Auftragnehmer die Last auf."},{"text":"Wird vom Auftragnehmer erstellt.","bucket":1,"rationale":"Der Auftragnehmer beschreibt, wie er die Pflicht erfüllt."},{"text":"Beschreibt das WAS und WOFÜR - die Gesamtheit der Anforderungen.","bucket":0,"rationale":"Das Lastenheft ist bewusst lösungsneutral formuliert."},{"text":"Beschreibt das WIE und WOMIT - die konkrete technische Umsetzung.","bucket":1,"rationale":"Erst im Pflichtenheft werden Technologien, Schnittstellen und Architektur festgelegt."},{"text":"Ist Grundlage für die Ausschreibung und den Angebotsvergleich.","bucket":0,"rationale":"Alle Anbieter bekommen dasselbe Lastenheft - nur so sind Angebote vergleichbar."},{"text":"Wird vom Auftraggeber genehmigt und ist Grundlage der Abnahme.","bucket":1,"rationale":"Das genehmigte Pflichtenheft ist der vertragliche Maßstab, gegen den abgenommen wird."}]}'::jsonb,
+  '{"buckets":["Lastenheft","Pflichtenheft"],"match_items":[{"text":"Wird vom Auftraggeber erstellt.","bucket":0,"rationale":"Merksatz: Der Auftraggeber lädt dem Auftragnehmer die Last auf."},{"text":"Wird vom Auftragnehmer erstellt.","bucket":1,"rationale":"Der Auftragnehmer beschreibt, wie er die Pflicht erfüllt."},{"text":"Beschreibt das WAS und WOFÜR, also die Gesamtheit der Anforderungen.","bucket":0,"rationale":"Das Lastenheft ist bewusst lösungsneutral formuliert."},{"text":"Beschreibt das WIE und WOMIT, also die konkrete technische Umsetzung.","bucket":1,"rationale":"Erst im Pflichtenheft werden Technologien, Schnittstellen und Architektur festgelegt."},{"text":"Ist Grundlage für die Ausschreibung und den Angebotsvergleich.","bucket":0,"rationale":"Alle Anbieter bekommen dasselbe Lastenheft, denn nur so sind Angebote vergleichbar."},{"text":"Wird vom Auftraggeber genehmigt und ist Grundlage der Abnahme.","bucket":1,"rationale":"Das genehmigte Pflichtenheft ist der vertragliche Maßstab, gegen den abgenommen wird."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1002,11 +1002,11 @@ values (
   'matching',
   null,
   'Handelt es sich um eine funktionale oder eine nicht-funktionale Anforderung?',
-  'Testfrage zur Abgrenzung: Kann man die Anforderung als "Das System TUT etwas" formulieren? Dann funktional. Beschreibt sie eher, WIE GUT das System etwas tut (schnell, sicher, verfügbar, bedienbar, wartbar, portabel), dann nicht-funktional. Die Qualitätsmerkmale von Software - etwa Zuverlässigkeit, Benutzbarkeit, Effizienz und Sicherheit - sind eine gute Checkliste für nicht-funktionale Anforderungen.',
+  'Testfrage zur Abgrenzung: Kann man die Anforderung als "Das System TUT etwas" formulieren? Dann funktional. Beschreibt sie eher, WIE GUT das System etwas tut (schnell, sicher, verfügbar, bedienbar, wartbar, portabel), dann nicht-funktional. Die Qualitätsmerkmale von Software (etwa Zuverlässigkeit, Benutzbarkeit, Effizienz und Sicherheit) sind eine gute Checkliste für nicht-funktionale Anforderungen.',
   2,
   ARRAY['anforderungsarten']::text[],
   null,
-  '{"buckets":["Funktional","Nicht-funktional"],"match_items":[{"text":"Das System muss Rechnungen als PDF exportieren können.","bucket":0,"rationale":"Eine konkrete Fähigkeit des Systems - also funktional."},{"text":"Die Suchanfrage muss in unter 2 Sekunden beantwortet werden.","bucket":1,"rationale":"Performance ist eine Qualitätseigenschaft, kein Funktionsumfang."},{"text":"Benutzer müssen sich mit Zwei-Faktor-Authentifizierung anmelden können.","bucket":0,"rationale":"Die Anmeldung mit 2FA ist eine Funktion, die das System bereitstellen muss."},{"text":"Die Anwendung muss zu 99,5 % im Jahr verfügbar sein.","bucket":1,"rationale":"Verfügbarkeit ist eine klassische nicht-funktionale Anforderung."},{"text":"Die Oberfläche muss der BITV 2.0 für Barrierefreiheit entsprechen.","bucket":1,"rationale":"Eine Randbedingung bzw. Qualitätsanforderung - sie beschreibt keine einzelne Funktion."},{"text":"Administratoren können Benutzerkonten sperren und entsperren.","bucket":0,"rationale":"Wieder eine konkrete Fähigkeit - funktional."}]}'::jsonb,
+  '{"buckets":["Funktional","Nicht-funktional"],"match_items":[{"text":"Das System muss Rechnungen als PDF exportieren können.","bucket":0,"rationale":"Eine konkrete Fähigkeit des Systems, also funktional."},{"text":"Die Suchanfrage muss in unter 2 Sekunden beantwortet werden.","bucket":1,"rationale":"Performance ist eine Qualitätseigenschaft, kein Funktionsumfang."},{"text":"Benutzer müssen sich mit Zwei-Faktor-Authentifizierung anmelden können.","bucket":0,"rationale":"Die Anmeldung mit 2FA ist eine Funktion, die das System bereitstellen muss."},{"text":"Die Anwendung muss zu 99,5 % im Jahr verfügbar sein.","bucket":1,"rationale":"Verfügbarkeit ist eine klassische nicht-funktionale Anforderung."},{"text":"Die Oberfläche muss der BITV 2.0 für Barrierefreiheit entsprechen.","bucket":1,"rationale":"Eine Randbedingung bzw. Qualitätsanforderung, denn sie beschreibt keine einzelne Funktion."},{"text":"Administratoren können Benutzerkonten sperren und entsperren.","bucket":0,"rationale":"Wieder eine konkrete Fähigkeit, also funktional."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1031,11 +1031,11 @@ values (
   'marking',
   'Der Entwurf eines Lastenhefts für ein Ticketsystem enthält die folgenden Anforderungen.',
   'Markiere alle Anforderungen, die NICHT gut formuliert sind.',
-  'Merkhilfe für Anforderungsqualität: eindeutig, vollständig, widerspruchsfrei, prüfbar, notwendig, verständlich, priorisiert. Eine vorweggenommene Lösung schließt bessere Alternativen aus, und Vagheit ist keine Flexibilität - die erreicht man über Prioritäten. Priorisierung erfolgt oft nach MoSCoW: Must have, Should have, Could have, Won’t have (this time).',
+  'Merkhilfe für Anforderungsqualität: eindeutig, vollständig, widerspruchsfrei, prüfbar, notwendig, verständlich, priorisiert. Eine vorweggenommene Lösung schließt bessere Alternativen aus, und Vagheit ist keine Flexibilität; die erreicht man über Prioritäten. Priorisierung erfolgt oft nach MoSCoW: Must have, Should have, Could have, Won’t have (this time).',
   2,
   ARRAY['anforderungsqualität']::text[],
   null,
-  '{"choices":[{"text":"Das System soll benutzerfreundlich sein.","is_correct":true,"rationale":"Nicht prüfbar - niemand kann entscheiden, ob das erfüllt ist."},{"text":"Die Suche liefert bei 10.000 Tickets ein Ergebnis in höchstens 2 Sekunden.","is_correct":false,"rationale":"Eindeutig und messbar."},{"text":"Das System muss schnell reagieren.","is_correct":true,"rationale":"Ohne Messwert mehrdeutig - \"schnell\" versteht jeder anders."},{"text":"Tickets können als PDF exportiert werden.","is_correct":false,"rationale":"Eine klare, prüfbare Fähigkeit des Systems."},{"text":"Das System wird mit MySQL 8 und PHP umgesetzt.","is_correct":true,"rationale":"Nimmt die technische Lösung vorweg. Das WIE gehört ins Pflichtenheft."},{"text":"Jeder Nutzer sieht alle Tickets. Kundentickets sieht nur das zuständige Team.","is_correct":true,"rationale":"Die beiden Sätze widersprechen sich."},{"text":"Nach fünf Fehlversuchen wird das Benutzerkonto für 15 Minuten gesperrt.","is_correct":false,"rationale":"Vollständig, eindeutig und testbar."}]}'::jsonb,
+  '{"choices":[{"text":"Das System soll benutzerfreundlich sein.","is_correct":true,"rationale":"Nicht prüfbar: Niemand kann entscheiden, ob das erfüllt ist."},{"text":"Die Suche liefert bei 10.000 Tickets ein Ergebnis in höchstens 2 Sekunden.","is_correct":false,"rationale":"Eindeutig und messbar."},{"text":"Das System muss schnell reagieren.","is_correct":true,"rationale":"Ohne Messwert mehrdeutig, denn \"schnell\" versteht jeder anders."},{"text":"Tickets können als PDF exportiert werden.","is_correct":false,"rationale":"Eine klare, prüfbare Fähigkeit des Systems."},{"text":"Das System wird mit MySQL 8 und PHP umgesetzt.","is_correct":true,"rationale":"Nimmt die technische Lösung vorweg. Das WIE gehört ins Pflichtenheft."},{"text":"Jeder Nutzer sieht alle Tickets. Kundentickets sieht nur das zuständige Team.","is_correct":true,"rationale":"Die beiden Sätze widersprechen sich."},{"text":"Nach fünf Fehlversuchen wird das Benutzerkonto für 15 Minuten gesperrt.","is_correct":false,"rationale":"Vollständig, eindeutig und testbar."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1064,7 +1064,7 @@ values (
   2,
   ARRAY['abnahme']::text[],
   null,
-  '{"choices":[{"text":"Abnahme unter Vorbehalt: Mängel werden protokolliert und mit Frist zur Beseitigung vereinbart.","is_correct":true,"rationale":"Richtig. Die Abnahme unter Vorbehalt hält die Mängelrechte aufrecht und blockiert trotzdem nicht den Produktivstart."},{"text":"Vollständige Verweigerung der Abnahme bis alle Mängel beseitigt sind.","is_correct":false,"rationale":"Bei unwesentlichen Mängeln ist die Verweigerung in der Regel unzulässig (vgl. Werkvertragsrecht) und schadet dem Kunden selbst, weil der Nutzen ausbleibt."},{"text":"Vorbehaltlose Abnahme, die Mängel werden formlos per E-Mail gemeldet.","is_correct":false,"rationale":"Gefährlich: Mit der vorbehaltlosen Abnahme verliert der Kunde bei bekannten Mängeln Nacherfüllung, Minderung und Rücktritt - nur Schadensersatz bleibt."},{"text":"Die Abnahme entfällt, weil die Software bereits läuft.","is_correct":false,"rationale":"Die Abnahme ist ein formaler Rechtsakt mit erheblichen Folgen (Gefahrübergang, Fälligkeit der Vergütung, Beginn der Gewährleistung). Sie entfällt nicht durch Nutzung - im Gegenteil kann Nutzung als konkludente Abnahme gelten."}]}'::jsonb,
+  '{"choices":[{"text":"Abnahme unter Vorbehalt: Mängel werden protokolliert und mit Frist zur Beseitigung vereinbart.","is_correct":true,"rationale":"Richtig. Die Abnahme unter Vorbehalt hält die Mängelrechte aufrecht und blockiert trotzdem nicht den Produktivstart."},{"text":"Vollständige Verweigerung der Abnahme bis alle Mängel beseitigt sind.","is_correct":false,"rationale":"Bei unwesentlichen Mängeln ist die Verweigerung in der Regel unzulässig (vgl. Werkvertragsrecht) und schadet dem Kunden selbst, weil der Nutzen ausbleibt."},{"text":"Vorbehaltlose Abnahme, die Mängel werden formlos per E-Mail gemeldet.","is_correct":false,"rationale":"Gefährlich: Mit der vorbehaltlosen Abnahme verliert der Kunde bei bekannten Mängeln Nacherfüllung, Minderung und Rücktritt. Nur Schadensersatz bleibt."},{"text":"Die Abnahme entfällt, weil die Software bereits läuft.","is_correct":false,"rationale":"Die Abnahme ist ein formaler Rechtsakt mit erheblichen Folgen (Gefahrübergang, Fälligkeit der Vergütung, Beginn der Gewährleistung). Sie entfällt nicht durch Nutzung. Im Gegenteil kann Nutzung als konkludente Abnahme gelten."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1089,7 +1089,7 @@ values (
   'ordering',
   null,
   'Bringe die Schritte einer klassischen Fremdvergabe in die richtige Reihenfolge.',
-  'Die zwei Stellen, an denen in der Prüfung gern getauscht wird: (1) Das Pflichtenheft kommt NACH der Vergabe - vorher weiß man ja gar nicht, wer es schreibt. (2) Abgenommen wird gegen das Pflichtenheft, nicht gegen das Lastenheft, weil nur das Pflichtenheft die prüfbare Konkretisierung enthält.',
+  'Die zwei Stellen, an denen in der Prüfung gern getauscht wird: (1) Das Pflichtenheft kommt NACH der Vergabe, denn vorher weiß man ja gar nicht, wer es schreibt. (2) Abgenommen wird gegen das Pflichtenheft, nicht gegen das Lastenheft, weil nur das Pflichtenheft die prüfbare Konkretisierung enthält.',
   2,
   ARRAY['ablauf']::text[],
   null,
@@ -1122,7 +1122,7 @@ values (
   3,
   ARRAY['scope_creep']::text[],
   null,
-  '{"choices":[{"text":"Jede Änderung über einen definierten Change-Request-Prozess mit Aufwands- und Terminbewertung führen.","is_correct":true,"rationale":"Richtig. Änderungen sind nicht verboten - sie müssen nur bewertet und entschieden werden, statt still im Hintergrund zu passieren."},{"text":"Die Zusatzwünsche ablehnen, weil das Pflichtenheft unterschrieben ist.","is_correct":false,"rationale":"Pauschale Ablehnung ist praxisfern und beschädigt die Zusammenarbeit. Anforderungen ändern sich - das Problem ist der unkontrollierte Weg, nicht die Änderung selbst."},{"text":"Die Wünsche kurzfristig mit umsetzen, solange sie klein sind.","is_correct":false,"rationale":"Genau so entsteht Scope Creep: viele kleine, nie bewertete Erweiterungen sprengen am Ende Termin und Budget, und niemand kann hinterher sagen, warum."},{"text":"Die Entscheidung dem Entwickler überlassen, der den Aufwand am besten einschätzen kann.","is_correct":false,"rationale":"Der Entwickler kann den Aufwand schätzen, aber nicht über Umfang, Budget und Termin entscheiden. Das ist eine Projektleitungs- bzw. Auftraggeberentscheidung."}]}'::jsonb,
+  '{"choices":[{"text":"Jede Änderung über einen definierten Change-Request-Prozess mit Aufwands- und Terminbewertung führen.","is_correct":true,"rationale":"Richtig. Änderungen sind nicht verboten. Sie müssen nur bewertet und entschieden werden, statt still im Hintergrund zu passieren."},{"text":"Die Zusatzwünsche ablehnen, weil das Pflichtenheft unterschrieben ist.","is_correct":false,"rationale":"Pauschale Ablehnung ist praxisfern und beschädigt die Zusammenarbeit. Anforderungen ändern sich. Das Problem ist der unkontrollierte Weg, nicht die Änderung selbst."},{"text":"Die Wünsche kurzfristig mit umsetzen, solange sie klein sind.","is_correct":false,"rationale":"Genau so entsteht Scope Creep: viele kleine, nie bewertete Erweiterungen sprengen am Ende Termin und Budget, und niemand kann hinterher sagen, warum."},{"text":"Die Entscheidung dem Entwickler überlassen, der den Aufwand am besten einschätzen kann.","is_correct":false,"rationale":"Der Entwickler kann den Aufwand schätzen, aber nicht über Umfang, Budget und Termin entscheiden. Das ist eine Projektleitungs- bzw. Auftraggeberentscheidung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1147,13 +1147,13 @@ values (
   'numeric',
   'Nutzwertanalyse für ein Ticketsystem. Bewertungsskala 1 (schlecht) bis 5 (sehr gut).
 
-Kriterium (Gewichtung) - Bewertung Anbieter B:
-Funktionsumfang (40 %) - 4
-Bedienbarkeit (25 %) - 3
-Support (20 %) - 5
-Preis (15 %) - 2',
+Kriterium (Gewichtung): Bewertung Anbieter B
+Funktionsumfang (40 %): 4
+Bedienbarkeit (25 %): 3
+Support (20 %): 5
+Preis (15 %): 2',
   'Wie hoch ist der Gesamtnutzwert von Anbieter B? (Zwei Nachkommastellen)',
-  'Rechenweg - jedes Kriterium: Gewichtung x Bewertung, dann summieren:
+  'Rechenweg für jedes Kriterium: Gewichtung x Bewertung, dann summieren:
 Funktionsumfang: 0,40 x 4 = 1,60
 Bedienbarkeit:   0,25 x 3 = 0,75
 Support:         0,20 x 5 = 1,00
@@ -1190,7 +1190,7 @@ values (
   'Für ein neues Ticketsystem liegen drei Angebote vor. Neben dem Preis sollen Bedienbarkeit, Support und Zukunftssicherheit in die Entscheidung einfließen.',
   'Bringe die Schritte der Nutzwertanalyse in die richtige Reihenfolge.',
   'Die Nutzwertanalyse vergleicht Alternativen anhand mehrerer, unterschiedlich gewichteter und teils nicht monetärer Kriterien. Ablauf: 1. Kriterien festlegen, 2. gewichten (Summe 100 %), 3. Alternativen je Kriterium bewerten, 4. Teilnutzwerte = Gewicht x Bewertung, 5. aufsummieren, 6. höchster Nutzwert gewinnt.
-Schwäche, nach der gern gefragt wird: Gewichtung und Bewertung sind subjektiv. Wer das Ergebnis vorher kennt, kann es über die Gewichtung herbeiführen - deshalb Kriterien VOR dem Blick auf die Angebote festlegen.',
+Schwäche, nach der gern gefragt wird: Gewichtung und Bewertung sind subjektiv. Wer das Ergebnis vorher kennt, kann es über die Gewichtung herbeiführen. Deshalb Kriterien VOR dem Blick auf die Angebote festlegen.',
   2,
   ARRAY['nutzwertanalyse']::text[],
   null,
@@ -1222,7 +1222,7 @@ values (
   'Amortisationsdauer = Investitionssumme / jährlicher Rückfluss
 = 48.000 Euro / 15.000 Euro pro Jahr = 3,2 Jahre
 
-In Worten: nach rund 3 Jahren und 2-3 Monaten hat sich die Anschaffung bezahlt gemacht. Achtung bei Aufgaben, in denen zusätzlich laufende Kosten der neuen Lösung genannt werden - dann muss man erst den NETTO-Rückfluss bilden (Einsparung minus neue laufende Kosten) und erst damit rechnen.',
+In Worten: nach rund 3 Jahren und 2-3 Monaten hat sich die Anschaffung bezahlt gemacht. Achtung bei Aufgaben, in denen zusätzlich laufende Kosten der neuen Lösung genannt werden. Dann muss man erst den NETTO-Rückfluss bilden (Einsparung minus neue laufende Kosten) und erst damit rechnen.',
   2,
   ARRAY['amortisation']::text[],
   null,
@@ -1255,7 +1255,7 @@ Rabatt: 15 %
 Skonto: 2 % bei Zahlung innerhalb von 10 Tagen
 Bezugskosten (Fracht, Versicherung): 250,00 Euro',
   'Wie hoch ist der Bezugspreis (Einstandspreis) bei Skontoausnutzung? (in Euro, zwei Nachkommastellen)',
-  'Bezugskalkulation - immer in dieser Reihenfolge:
+  'Bezugskalkulation, immer in dieser Reihenfolge:
 Listeneinkaufspreis            12.000,00
 - Rabatt 15 %                 - 1.800,00
 = Zieleinkaufspreis            10.200,00
@@ -1264,7 +1264,7 @@ Listeneinkaufspreis            12.000,00
 + Bezugskosten                +   250,00
 = Bezugspreis/Einstandspreis   10.246,00 Euro
 
-Zwei klassische Fehler: (1) Skonto vom Listenpreis statt vom Zieleinkaufspreis rechnen, (2) die Bezugskosten vor dem Skontoabzug addieren - auf Fracht gibt es kein Skonto.',
+Zwei klassische Fehler: (1) Skonto vom Listenpreis statt vom Zieleinkaufspreis rechnen, (2) die Bezugskosten vor dem Skontoabzug addieren, denn auf Fracht gibt es kein Skonto.',
   3,
   ARRAY['angebotsvergleich', 'bezugskalkulation']::text[],
   null,
@@ -1297,7 +1297,7 @@ values (
   2,
   ARRAY['tco']::text[],
   null,
-  '{"buckets":["Anschaffung","Laufender Betrieb","Außerbetriebnahme","Kein Teil der TCO"],"match_items":[{"text":"Strom- und Klimatisierungskosten","bucket":1,"rationale":"Laufende Betriebskosten sind bei Servern oft höher als der Kaufpreis."},{"text":"Kaufpreis der Hardware","bucket":0,"rationale":"Der offensichtliche Teil - meist der kleinere."},{"text":"Umsatz, der mit dem neuen System erzielt wird","bucket":3,"rationale":"TCO betrachtet ausschließlich Kosten. Erträge gehören in eine ROI-Rechnung."},{"text":"Jährliche Lizenz- und Wartungsverträge","bucket":1,"rationale":"Wiederkehrende Kosten, die sich über fünf Jahre erheblich summieren."},{"text":"Datenmigration auf das Nachfolgesystem und Entsorgung","bucket":2,"rationale":"Der oft vergessene letzte Lebenszyklusabschnitt."},{"text":"Installation und Einrichtung im Serverraum","bucket":0,"rationale":"Einmalige Kosten bei der Beschaffung."}]}'::jsonb,
+  '{"buckets":["Anschaffung","Laufender Betrieb","Außerbetriebnahme","Kein Teil der TCO"],"match_items":[{"text":"Strom- und Klimatisierungskosten","bucket":1,"rationale":"Laufende Betriebskosten sind bei Servern oft höher als der Kaufpreis."},{"text":"Kaufpreis der Hardware","bucket":0,"rationale":"Der offensichtliche Teil, meist der kleinere."},{"text":"Umsatz, der mit dem neuen System erzielt wird","bucket":3,"rationale":"TCO betrachtet ausschließlich Kosten. Erträge gehören in eine ROI-Rechnung."},{"text":"Jährliche Lizenz- und Wartungsverträge","bucket":1,"rationale":"Wiederkehrende Kosten, die sich über fünf Jahre erheblich summieren."},{"text":"Datenmigration auf das Nachfolgesystem und Entsorgung","bucket":2,"rationale":"Der oft vergessene letzte Lebenszyklusabschnitt."},{"text":"Installation und Einrichtung im Serverraum","bucket":0,"rationale":"Einmalige Kosten bei der Beschaffung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1359,7 +1359,7 @@ Der häufigste Fehler ist die Verwechslung von Vermeiden und Vermindern. Testfra
   2,
   ARRAY['risikostrategien']::text[],
   null,
-  '{"buckets":["Vermeiden","Vermindern","Überwälzen","Akzeptieren"],"match_items":[{"text":"Auf den Einsatz einer unausgereiften Technologie wird verzichtet.","bucket":0,"rationale":"Die Ursache wird komplett beseitigt - die Eintrittswahrscheinlichkeit sinkt auf null."},{"text":"Zusätzliche Code-Reviews und automatisierte Tests werden eingeführt.","bucket":1,"rationale":"Die Eintrittswahrscheinlichkeit sinkt, das Risiko bleibt aber grundsätzlich bestehen."},{"text":"Eine Betriebshaftpflichtversicherung wird abgeschlossen.","bucket":2,"rationale":"Der finanzielle Schaden geht auf einen Dritten über - klassisches Überwälzen."},{"text":"Die Entwicklung wird an einen Dienstleister mit Festpreis vergeben.","bucket":2,"rationale":"Das Kostenrisiko trägt beim Festpreis der Auftragnehmer."},{"text":"Ein Restrisiko mit sehr geringem Schadenswert wird bewusst in Kauf genommen und dokumentiert.","bucket":3,"rationale":"Akzeptieren ist eine legitime Strategie - entscheidend ist, dass es bewusst und dokumentiert geschieht."},{"text":"Ein Backup-Rechenzentrum wird bereitgehalten, um die Ausfalldauer zu begrenzen.","bucket":1,"rationale":"Die Auswirkung wird reduziert. Das Risiko selbst bleibt bestehen - also Vermindern, nicht Vermeiden."}]}'::jsonb,
+  '{"buckets":["Vermeiden","Vermindern","Überwälzen","Akzeptieren"],"match_items":[{"text":"Auf den Einsatz einer unausgereiften Technologie wird verzichtet.","bucket":0,"rationale":"Die Ursache wird komplett beseitigt; die Eintrittswahrscheinlichkeit sinkt auf null."},{"text":"Zusätzliche Code-Reviews und automatisierte Tests werden eingeführt.","bucket":1,"rationale":"Die Eintrittswahrscheinlichkeit sinkt, das Risiko bleibt aber grundsätzlich bestehen."},{"text":"Eine Betriebshaftpflichtversicherung wird abgeschlossen.","bucket":2,"rationale":"Der finanzielle Schaden geht auf einen Dritten über, also klassisches Überwälzen."},{"text":"Die Entwicklung wird an einen Dienstleister mit Festpreis vergeben.","bucket":2,"rationale":"Das Kostenrisiko trägt beim Festpreis der Auftragnehmer."},{"text":"Ein Restrisiko mit sehr geringem Schadenswert wird bewusst in Kauf genommen und dokumentiert.","bucket":3,"rationale":"Akzeptieren ist eine legitime Strategie. Entscheidend ist, dass es bewusst und dokumentiert geschieht."},{"text":"Ein Backup-Rechenzentrum wird bereitgehalten, um die Ausfalldauer zu begrenzen.","bucket":1,"rationale":"Die Auswirkung wird reduziert. Das Risiko selbst bleibt bestehen, also Vermindern, nicht Vermeiden."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1385,11 +1385,11 @@ values (
   'Ein Softwareteam listet auf, was es für die Qualität seiner Anwendung tut.',
   'Ordne jede Maßnahme ein.',
   'Einfache Trennlinie: KONSTRUKTIV = vorher, verhindert Fehler (Standards, Methoden, Werkzeuge, Schulung, Templates). ANALYTISCH = nachher, findet Fehler (Test, Review, Inspektion, statische Analyse, Audit).
-Grenzfall, der gern gefragt wird: Ein Linter ist konstruktiv, wenn er beim Schreiben eingreift, und analytisch, wenn er im Nachhinein über fertigen Code läuft. In der Prüfung zählt die Einordnung als Werkzeugvorgabe - also konstruktiv.',
+Grenzfall, der gern gefragt wird: Ein Linter ist konstruktiv, wenn er beim Schreiben eingreift, und analytisch, wenn er im Nachhinein über fertigen Code läuft. In der Prüfung zählt die Einordnung als Werkzeugvorgabe, also konstruktiv.',
   2,
   ARRAY['qualitätssicherung']::text[],
   null,
-  '{"points":3,"grid":[[{"text":"Maßnahme"},{"text":"Einordnung"}],[{"text":"Verbindliche Coding-Standards und Styleguides"},{"gap":{"answers":["konstruktiv"],"options":["konstruktiv","analytisch","keine QS-Maßnahme"],"rationale":"Verhindert Fehler von vornherein."}}],[{"text":"Modul- und Integrationstests"},{"gap":{"answers":["analytisch"],"options":["analytisch","konstruktiv","keine QS-Maßnahme"],"rationale":"Tests finden vorhandene Fehler, sie verhindern sie nicht."}}],[{"text":"Schulung der Entwickler vor Projektbeginn"},{"gap":{"answers":["konstruktiv"],"options":["konstruktiv","analytisch","keine QS-Maßnahme"],"rationale":"Qualifikation ist eine klassische vorbeugende Maßnahme."}}],[{"text":"Code-Review nach Fertigstellung eines Moduls"},{"gap":{"answers":["analytisch"],"options":["analytisch","konstruktiv","keine QS-Maßnahme"],"rationale":"Ein bereits erstelltes Artefakt wird geprüft."}}],[{"text":"Einsatz erprobter Frameworks und Entwurfsmuster"},{"gap":{"answers":["konstruktiv"],"options":["konstruktiv","analytisch","keine QS-Maßnahme"],"rationale":"Das Rad nicht neu erfinden heißt, dessen Fehler nicht neu zu machen."}}],[{"text":"Überstunden in der Woche vor dem Release anordnen"},{"gap":{"answers":["keine QS-Maßnahme"],"options":["keine QS-Maßnahme","konstruktiv","analytisch"],"rationale":"Mehr Arbeitszeit verhindert und findet keine Fehler - unter Zeitdruck entstehen eher neue."}}]]}'::jsonb,
+  '{"points":3,"grid":[[{"text":"Maßnahme"},{"text":"Einordnung"}],[{"text":"Verbindliche Coding-Standards und Styleguides"},{"gap":{"answers":["konstruktiv"],"options":["konstruktiv","analytisch","keine QS-Maßnahme"],"rationale":"Verhindert Fehler von vornherein."}}],[{"text":"Modul- und Integrationstests"},{"gap":{"answers":["analytisch"],"options":["analytisch","konstruktiv","keine QS-Maßnahme"],"rationale":"Tests finden vorhandene Fehler, sie verhindern sie nicht."}}],[{"text":"Schulung der Entwickler vor Projektbeginn"},{"gap":{"answers":["konstruktiv"],"options":["konstruktiv","analytisch","keine QS-Maßnahme"],"rationale":"Qualifikation ist eine klassische vorbeugende Maßnahme."}}],[{"text":"Code-Review nach Fertigstellung eines Moduls"},{"gap":{"answers":["analytisch"],"options":["analytisch","konstruktiv","keine QS-Maßnahme"],"rationale":"Ein bereits erstelltes Artefakt wird geprüft."}}],[{"text":"Einsatz erprobter Frameworks und Entwurfsmuster"},{"gap":{"answers":["konstruktiv"],"options":["konstruktiv","analytisch","keine QS-Maßnahme"],"rationale":"Das Rad nicht neu erfinden heißt, dessen Fehler nicht neu zu machen."}}],[{"text":"Überstunden in der Woche vor dem Release anordnen"},{"gap":{"answers":["keine QS-Maßnahme"],"options":["keine QS-Maßnahme","konstruktiv","analytisch"],"rationale":"Mehr Arbeitszeit verhindert und findet keine Fehler. Unter Zeitdruck entstehen eher neue."}}]]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1418,7 +1418,7 @@ values (
   3,
   ARRAY['risikomatrix']::text[],
   null,
-  '{"choices":[{"text":"Es muss trotz geringer Wahrscheinlichkeit behandelt werden, weil der Schaden untragbar wäre.","is_correct":true,"rationale":"Richtig. Bei existenzbedrohenden Schäden greift die reine Erwartungswertlogik nicht mehr - ein Schaden, den man nicht überlebt, darf nicht eintreten."},{"text":"Es kann akzeptiert werden, weil der Risikowert rechnerisch niedrig ist.","is_correct":false,"rationale":"Genau der Denkfehler. Ein rechnerisch kleiner Erwartungswert hilft nicht, wenn der Einzelfall das Unternehmen beendet."},{"text":"Es ist nachrangig gegenüber Risiken mit mittlerer Wahrscheinlichkeit und mittlerem Schaden.","is_correct":false,"rationale":"Falsch. Bei gleicher Rechengröße hat das Risiko mit dem katastrophalen Schadenspotenzial Vorrang."},{"text":"Es gehört nicht in das Risikoregister, weil es unwahrscheinlich ist.","is_correct":false,"rationale":"Ins Register gehören alle identifizierten Risiken. Erst die Bewertung entscheidet über Maßnahmen."}]}'::jsonb,
+  '{"choices":[{"text":"Es muss trotz geringer Wahrscheinlichkeit behandelt werden, weil der Schaden untragbar wäre.","is_correct":true,"rationale":"Richtig. Bei existenzbedrohenden Schäden greift die reine Erwartungswertlogik nicht mehr. Ein Schaden, den man nicht überlebt, darf nicht eintreten."},{"text":"Es kann akzeptiert werden, weil der Risikowert rechnerisch niedrig ist.","is_correct":false,"rationale":"Genau der Denkfehler. Ein rechnerisch kleiner Erwartungswert hilft nicht, wenn der Einzelfall das Unternehmen beendet."},{"text":"Es ist nachrangig gegenüber Risiken mit mittlerer Wahrscheinlichkeit und mittlerem Schaden.","is_correct":false,"rationale":"Falsch. Bei gleicher Rechengröße hat das Risiko mit dem katastrophalen Schadenspotenzial Vorrang."},{"text":"Es gehört nicht in das Risikoregister, weil es unwahrscheinlich ist.","is_correct":false,"rationale":"Ins Register gehören alle identifizierten Risiken. Erst die Bewertung entscheidet über Maßnahmen."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1447,7 +1447,7 @@ values (
   1,
   ARRAY['lessons_learned']::text[],
   null,
-  '{"choices":[{"text":"Erfahrungen systematisch sichern, damit künftige Projekte davon profitieren.","is_correct":true,"rationale":"Richtig. Der Wert entsteht erst dadurch, dass die Erkenntnisse dokumentiert und in der Organisation verfügbar gemacht werden."},{"text":"Die Verantwortlichen für Fehler im Projekt benennen.","is_correct":false,"rationale":"Genau das Gegenteil. Sobald Schuldzuweisungen drohen, sagt niemand mehr, was wirklich schieflief - und die Sitzung ist wertlos."},{"text":"Die Abnahme des Projektergebnisses durch den Kunden.","is_correct":false,"rationale":"Die Abnahme ist ein eigener, vorgelagerter Schritt."},{"text":"Die Schlussrechnung für den Kunden erstellen.","is_correct":false,"rationale":"Das ist kaufmännischer Projektabschluss, nicht Erfahrungssicherung."}]}'::jsonb,
+  '{"choices":[{"text":"Erfahrungen systematisch sichern, damit künftige Projekte davon profitieren.","is_correct":true,"rationale":"Richtig. Der Wert entsteht erst dadurch, dass die Erkenntnisse dokumentiert und in der Organisation verfügbar gemacht werden."},{"text":"Die Verantwortlichen für Fehler im Projekt benennen.","is_correct":false,"rationale":"Genau das Gegenteil. Sobald Schuldzuweisungen drohen, sagt niemand mehr, was wirklich schieflief, und die Sitzung ist wertlos."},{"text":"Die Abnahme des Projektergebnisses durch den Kunden.","is_correct":false,"rationale":"Die Abnahme ist ein eigener, vorgelagerter Schritt."},{"text":"Die Schlussrechnung für den Kunden erstellen.","is_correct":false,"rationale":"Das ist kaufmännischer Projektabschluss, nicht Erfahrungssicherung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1473,7 +1473,7 @@ values (
   'Ein Projekt zur Einführung eines Ticketsystems ist abgenommen. Die Projektleitung schreibt den Projektabschlussbericht.',
   'Nenne vier Inhalte eines Projektabschlussberichts.',
   'Je Nennung 1 Punkt, höchstens 4 Punkte. Der Quellcode gehört nicht in den Bericht, sondern ins Versionsverwaltungssystem.
-Der Projektabschluss hat drei Ebenen: sachlich-technisch (Abnahme, Übergabe an den Betrieb, Restarbeiten), kaufmännisch (Schlussrechnung, Nachkalkulation, Projekt schließen) und personell (Teamauflösung, Rückführung in die Linie, Würdigung). Die personelle Ebene wird am häufigsten vergessen - und ist die, an die sich das Team am längsten erinnert.',
+Der Projektabschluss hat drei Ebenen: sachlich-technisch (Abnahme, Übergabe an den Betrieb, Restarbeiten), kaufmännisch (Schlussrechnung, Nachkalkulation, Projekt schließen) und personell (Teamauflösung, Rückführung in die Linie, Würdigung). Die personelle Ebene wird am häufigsten vergessen und ist die, an die sich das Team am längsten erinnert.',
   2,
   ARRAY['abschlussbericht']::text[],
   null,
@@ -1502,7 +1502,7 @@ values (
   'ordering',
   null,
   'Bringe die Schritte des Projektabschlusses in eine sinnvolle Reihenfolge.',
-  'Zwei Stellen, an denen gern getauscht wird: Die Abnahme kommt VOR der Übergabe an den Betrieb - man übergibt nichts, was der Kunde nicht angenommen hat. Und die Teamauflösung kommt ZULETZT, weil man für Bericht und Lessons Learned die Leute noch braucht. Wer das Team vorher auflöst, bekommt weder das eine noch das andere in brauchbarer Qualität.',
+  'Zwei Stellen, an denen gern getauscht wird: Die Abnahme kommt VOR der Übergabe an den Betrieb, denn man übergibt nichts, was der Kunde nicht angenommen hat. Und die Teamauflösung kommt ZULETZT, weil man für Bericht und Lessons Learned die Leute noch braucht. Wer das Team vorher auflöst, bekommt weder das eine noch das andere in brauchbarer Qualität.',
   2,
   ARRAY['projektabschluss']::text[],
   null,
@@ -1533,11 +1533,11 @@ values (
   'Bringe die Phasen des PDCA-Zyklus in die richtige Reihenfolge.',
   'Der PDCA-Zyklus (auch Deming-Kreis) ist das Grundmuster jeder kontinuierlichen Verbesserung. Zwei Punkte werden gern falsch verstanden:
 - "Do" heißt ausprobieren im kleinen Rahmen, nicht flächendeckend ausrollen. Das Ausrollen passiert erst in "Act".
-- Der Zyklus endet nicht, sondern beginnt von vorn - deshalb Kreis und nicht Liste.',
+- Der Zyklus endet nicht, sondern beginnt von vorn, deshalb Kreis und nicht Liste.',
   1,
   ARRAY['pdca']::text[],
   null,
-  '{"ordered_items":["Plan - Ziel festlegen und Maßnahme planen","Do - Maßnahme im Kleinen ausprobieren","Check - Ergebnis mit dem Ziel vergleichen","Act - bei Erfolg zum Standard machen, sonst nachbessern"],"ordering_hint":"Beginne mit der Planung"}'::jsonb,
+  '{"ordered_items":["Plan: Ziel festlegen und Maßnahme planen","Do: Maßnahme im Kleinen ausprobieren","Check: Ergebnis mit dem Ziel vergleichen","Act: bei Erfolg zum Standard machen, sonst nachbessern"],"ordering_hint":"Beginne mit der Planung"}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1562,7 +1562,7 @@ values (
   'cloze',
   null,
   'Ergänze die Aussagen zum Qualitätsbegriff.',
-  'Qualität = Erfüllungsgrad der Anforderungen. Daraus folgt eine praktische Konsequenz: Ohne prüfbar formulierte Anforderungen kann man Qualität gar nicht feststellen. Deshalb hängen Anforderungsanalyse und Qualitätssicherung unmittelbar zusammen - und deshalb ist eine unprüfbare Anforderung wie "benutzerfreundlich" ein Qualitätsproblem, bevor die erste Zeile Code geschrieben ist. Ein Produkt, das mehr kann als gefordert, hat nicht mehr Qualität, sondern verschwendet Budget.',
+  'Qualität = Erfüllungsgrad der Anforderungen. Daraus folgt eine praktische Konsequenz: Ohne prüfbar formulierte Anforderungen kann man Qualität gar nicht feststellen. Deshalb hängen Anforderungsanalyse und Qualitätssicherung unmittelbar zusammen, und deshalb ist eine unprüfbare Anforderung wie "benutzerfreundlich" ein Qualitätsproblem, bevor die erste Zeile Code geschrieben ist. Ein Produkt, das mehr kann als gefordert, hat nicht mehr Qualität, sondern verschwendet Budget.',
   2,
   ARRAY['qualitätsbegriff']::text[],
   null,
@@ -1592,11 +1592,11 @@ values (
   null,
   'Ordne die Maßnahmen der konstruktiven oder analytischen Qualitätssicherung zu.',
   'Trennlinie: KONSTRUKTIV = vorher, verhindert Fehler (Standards, Methoden, Werkzeuge, Schulung, Templates). ANALYTISCH = nachher, findet Fehler (Test, Review, Inspektion, Audit).
-Merksatz: Der Test findet den Fehler, der Standard verhindert ihn. Wirtschaftlich ist konstruktive QS fast immer überlegen - siehe Rule of Ten.',
+Merksatz: Der Test findet den Fehler, der Standard verhindert ihn. Wirtschaftlich ist konstruktive QS fast immer überlegen (siehe Rule of Ten).',
   2,
   ARRAY['qs_maßnahmen']::text[],
   null,
-  '{"buckets":["Konstruktiv (verhindert Fehler)","Analytisch (findet Fehler)"],"match_items":[{"text":"Verbindlicher Styleguide für die Programmierung","bucket":0,"rationale":"Eine Vorgabe, die bestimmte Fehler gar nicht erst entstehen lässt."},{"text":"Code-Review eines fertigen Moduls","bucket":1,"rationale":"Ein bereits erstelltes Artefakt wird geprüft - also analytisch."},{"text":"Schulung der Entwickler vor Projektbeginn","bucket":0,"rationale":"Qualifikation ist eine klassische vorbeugende Maßnahme."},{"text":"Automatisierter Unit-Test in der Build-Pipeline","bucket":1,"rationale":"Tests finden vorhandene Fehler, sie verhindern sie nicht."},{"text":"Einsatz eines erprobten Frameworks statt Eigenentwicklung","bucket":0,"rationale":"Das Rad nicht neu erfinden heißt, dessen Fehler nicht neu zu machen."},{"text":"Abnahmetest durch den Auftraggeber","bucket":1,"rationale":"Prüfung des fertigen Produkts - analytisch."}]}'::jsonb,
+  '{"buckets":["Konstruktiv (verhindert Fehler)","Analytisch (findet Fehler)"],"match_items":[{"text":"Verbindlicher Styleguide für die Programmierung","bucket":0,"rationale":"Eine Vorgabe, die bestimmte Fehler gar nicht erst entstehen lässt."},{"text":"Code-Review eines fertigen Moduls","bucket":1,"rationale":"Ein bereits erstelltes Artefakt wird geprüft, also analytisch."},{"text":"Schulung der Entwickler vor Projektbeginn","bucket":0,"rationale":"Qualifikation ist eine klassische vorbeugende Maßnahme."},{"text":"Automatisierter Unit-Test in der Build-Pipeline","bucket":1,"rationale":"Tests finden vorhandene Fehler, sie verhindern sie nicht."},{"text":"Einsatz eines erprobten Frameworks statt Eigenentwicklung","bucket":0,"rationale":"Das Rad nicht neu erfinden heißt, dessen Fehler nicht neu zu machen."},{"text":"Abnahmetest durch den Auftraggeber","bucket":1,"rationale":"Prüfung des fertigen Produkts, also analytisch."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1660,7 +1660,7 @@ Systemtest und Abnahmetest werden gern verwechselt: der Systemtest ist Sache des
   2,
   ARRAY['teststufen']::text[],
   null,
-  '{"ordered_items":["Modultest (Unittest) - einzelne Funktion oder Klasse","Integrationstest - Zusammenspiel mehrerer Komponenten","Systemtest - das komplette System in der Testumgebung","Abnahmetest - das System beim Auftraggeber"],"ordering_hint":"Vom kleinsten Prüfgegenstand zum größten"}'::jsonb,
+  '{"ordered_items":["Modultest (Unittest): einzelne Funktion oder Klasse","Integrationstest: Zusammenspiel mehrerer Komponenten","Systemtest: das komplette System in der Testumgebung","Abnahmetest: das System beim Auftraggeber"],"ordering_hint":"Vom kleinsten Prüfgegenstand zum größten"}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1691,7 +1691,7 @@ Faustregel für die Prüfung: Steht "kennt den Code nicht" oder "gegen die Anfor
   2,
   ARRAY['blackbox', 'whitebox']::text[],
   null,
-  '{"buckets":["Black-Box","White-Box"],"match_items":[{"text":"Der Tester kennt den Quellcode nicht und prüft nur Eingabe und Ausgabe.","bucket":0,"rationale":"Genau die Definition: die innere Struktur bleibt eine schwarze Kiste."},{"text":"Die Testfälle werden so gewählt, dass jeder Programmzweig einmal durchlaufen wird.","bucket":1,"rationale":"Zweigabdeckung setzt Kenntnis des Codes voraus - also White-Box."},{"text":"Grundlage sind ausschließlich die Anforderungen aus dem Pflichtenheft.","bucket":0,"rationale":"Anforderungsbasiertes Testen ohne Blick in den Code."},{"text":"Der Entwickler prüft seine eigene Schleifenlogik mit Grenzwerten für den Zähler.","bucket":1,"rationale":"Die Logik im Inneren wird gezielt adressiert."},{"text":"Der Abnahmetest durch den Fachbereich.","bucket":0,"rationale":"Der Fachbereich testet fachlich gegen die Anforderungen, nicht gegen den Code."},{"text":"Code-Coverage wird als Kennzahl erhoben.","bucket":1,"rationale":"Überdeckungsmaße beziehen sich zwangsläufig auf den Quellcode."}]}'::jsonb,
+  '{"buckets":["Black-Box","White-Box"],"match_items":[{"text":"Der Tester kennt den Quellcode nicht und prüft nur Eingabe und Ausgabe.","bucket":0,"rationale":"Genau die Definition: die innere Struktur bleibt eine schwarze Kiste."},{"text":"Die Testfälle werden so gewählt, dass jeder Programmzweig einmal durchlaufen wird.","bucket":1,"rationale":"Zweigabdeckung setzt Kenntnis des Codes voraus, also White-Box."},{"text":"Grundlage sind ausschließlich die Anforderungen aus dem Pflichtenheft.","bucket":0,"rationale":"Anforderungsbasiertes Testen ohne Blick in den Code."},{"text":"Der Entwickler prüft seine eigene Schleifenlogik mit Grenzwerten für den Zähler.","bucket":1,"rationale":"Die Logik im Inneren wird gezielt adressiert."},{"text":"Der Abnahmetest durch den Fachbereich.","bucket":0,"rationale":"Der Fachbereich testet fachlich gegen die Anforderungen, nicht gegen den Code."},{"text":"Code-Coverage wird als Kennzahl erhoben.","bucket":1,"rationale":"Überdeckungsmaße beziehen sich zwangsläufig auf den Quellcode."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1716,12 +1716,12 @@ values (
   'cloze',
   null,
   'Ergänze die Bestandteile eines vollständigen Testfalls.',
-  'Ein Testfall besteht aus: Kennung, Vorbedingung, Eingabe, erwartetes Ergebnis - und nach der Durchführung zusätzlich dem tatsächlichen Ergebnis sowie dem Urteil bestanden/nicht bestanden. Erst das zusammen ergibt das Testprotokoll.
+  'Ein Testfall besteht aus: Kennung, Vorbedingung, Eingabe, erwartetes Ergebnis und nach der Durchführung zusätzlich dem tatsächlichen Ergebnis sowie dem Urteil bestanden/nicht bestanden. Erst das zusammen ergibt das Testprotokoll.
 Nicht hinein gehören der Name eines "Schuldigen" oder die Dauer der Fehlerbehebung. Der häufigste Fehler in Prüfungsaufgaben: das Soll-Ergebnis vergessen. Ein Test ohne Soll-Ergebnis kann nicht fehlschlagen und ist damit wertlos.',
   2,
   ARRAY['testfall', 'testprotokoll']::text[],
   null,
-  '{"cloze_text":"Ein Testfall braucht eine eindeutige {0}, damit sich ein Fehler später zuordnen lässt. Die {1} beschreibt den Ausgangszustand. Dazu kommen konkrete {2} und das {3}, an dem der Test gemessen wird. Nach der Durchführung wird das {4} eingetragen - zusammen mit dem Urteil bestanden oder nicht bestanden.","gaps":[{"answers":["Kennung"],"rationale":"Testfall-Nummer oder -Bezeichnung."},{"answers":["Vorbedingung"],"rationale":"Ohne definierten Startzustand ist der Test nicht reproduzierbar."},{"answers":["Eingabedaten"],"rationale":"\"Irgendeine gültige Eingabe\" ist kein Testfall."},{"answers":["Soll-Ergebnis"],"rationale":"Ohne erwartetes Ergebnis kann ein Test nicht fehlschlagen."},{"answers":["Ist-Ergebnis"],"rationale":"Das tatsächliche Ergebnis der Durchführung."}],"word_bank":["Fehlerursache","Entwicklername","Behebungsdauer"]}'::jsonb,
+  '{"cloze_text":"Ein Testfall braucht eine eindeutige {0}, damit sich ein Fehler später zuordnen lässt. Die {1} beschreibt den Ausgangszustand. Dazu kommen konkrete {2} und das {3}, an dem der Test gemessen wird. Nach der Durchführung wird das {4} eingetragen, zusammen mit dem Urteil bestanden oder nicht bestanden.","gaps":[{"answers":["Kennung"],"rationale":"Testfall-Nummer oder -Bezeichnung."},{"answers":["Vorbedingung"],"rationale":"Ohne definierten Startzustand ist der Test nicht reproduzierbar."},{"answers":["Eingabedaten"],"rationale":"\"Irgendeine gültige Eingabe\" ist kein Testfall."},{"answers":["Soll-Ergebnis"],"rationale":"Ohne erwartetes Ergebnis kann ein Test nicht fehlschlagen."},{"answers":["Ist-Ergebnis"],"rationale":"Das tatsächliche Ergebnis der Durchführung."}],"word_bank":["Fehlerursache","Entwicklername","Behebungsdauer"]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1747,11 +1747,11 @@ values (
   'Eine Entwicklerin geht einen fremden Algorithmus Zeile für Zeile auf Papier durch und notiert nach jeder Anweisung die aktuellen Variablenwerte.',
   'Wie heißt dieses Verfahren?',
   'Der Schreibtischtest (auch Trockentest) ist ein statisches Verfahren: Der Code wird gelesen und nachvollzogen, nicht ausgeführt.
-Praktisch geht man mit einer Wertetabelle vor - eine Spalte je Variable, eine Zeile je Durchlauf. Genau diese Tabelle verlangt die AP1 häufig als Lösung. Wer sie sauber führt, findet den Fehler fast von selbst; wer im Kopf rechnet, verrechnet sich.',
+Praktisch geht man mit einer Wertetabelle vor: eine Spalte je Variable, eine Zeile je Durchlauf. Genau diese Tabelle verlangt die AP1 häufig als Lösung. Wer sie sauber führt, findet den Fehler fast von selbst; wer im Kopf rechnet, verrechnet sich.',
   2,
   ARRAY['schreibtischtest']::text[],
   null,
-  '{"choices":[{"text":"Schreibtischtest","is_correct":true,"rationale":"Richtig. Der Code wird ohne Ausführung manuell nachvollzogen - ein klassisches Prüfungsthema."},{"text":"Regressionstest","is_correct":false,"rationale":"Falsch. Ein Regressionstest prüft nach einer Änderung, ob bisher funktionierende Teile noch laufen."},{"text":"Integrationstest","is_correct":false,"rationale":"Falsch. Der Integrationstest prüft das Zusammenspiel mehrerer Komponenten, nicht eine einzelne Anweisungsfolge."},{"text":"Lasttest","is_correct":false,"rationale":"Falsch. Ein Lasttest prüft das Verhalten unter hoher Beanspruchung."}]}'::jsonb,
+  '{"choices":[{"text":"Schreibtischtest","is_correct":true,"rationale":"Richtig. Der Code wird ohne Ausführung manuell nachvollzogen, ein klassisches Prüfungsthema."},{"text":"Regressionstest","is_correct":false,"rationale":"Falsch. Ein Regressionstest prüft nach einer Änderung, ob bisher funktionierende Teile noch laufen."},{"text":"Integrationstest","is_correct":false,"rationale":"Falsch. Der Integrationstest prüft das Zusammenspiel mehrerer Komponenten, nicht eine einzelne Anweisungsfolge."},{"text":"Lasttest","is_correct":false,"rationale":"Falsch. Ein Lasttest prüft das Verhalten unter hoher Beanspruchung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1781,7 +1781,7 @@ Genau deshalb lohnt sich Testautomatisierung: Manuell wiederholt niemand hundert
   3,
   ARRAY['regressionstest']::text[],
   null,
-  '{"choices":[{"text":"Regressionstest","is_correct":true,"rationale":"Richtig. Der Regressionstest wiederholt bereits bestandene Tests, um genau solche Nebenwirkungen zu entdecken."},{"text":"Abnahmetest","is_correct":false,"rationale":"Der Abnahmetest findet am Ende beim Kunden statt - dann ist der Schaden schon da."},{"text":"Lasttest","is_correct":false,"rationale":"Ein Lasttest prüft Verhalten unter Last, nicht die fachliche Korrektheit nach Änderungen."},{"text":"Usability-Test","is_correct":false,"rationale":"Der prüft die Bedienbarkeit, nicht die Funktion."}]}'::jsonb,
+  '{"choices":[{"text":"Regressionstest","is_correct":true,"rationale":"Richtig. Der Regressionstest wiederholt bereits bestandene Tests, um genau solche Nebenwirkungen zu entdecken."},{"text":"Abnahmetest","is_correct":false,"rationale":"Der Abnahmetest findet am Ende beim Kunden statt. Dann ist der Schaden schon da."},{"text":"Lasttest","is_correct":false,"rationale":"Ein Lasttest prüft Verhalten unter Last, nicht die fachliche Korrektheit nach Änderungen."},{"text":"Usability-Test","is_correct":false,"rationale":"Der prüft die Bedienbarkeit, nicht die Funktion."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1810,11 +1810,11 @@ values (
 - Werkvertrag: Erfolg. Es gibt eine Abnahme, und erst danach wird gezahlt. Typisch für Individualsoftware und Projekte mit Festpreis.
 - Dienstvertrag: Tätigkeit. Bezahlt wird nach Aufwand, es gibt keine Abnahme. Typisch für Beratung, Support und Zeitverträge.
 - Kaufvertrag: Übereignung einer Sache, etwa Standardsoftware auf Datenträger oder Hardware.
-Für die Prüfung wichtig: Die Bezeichnung im Vertrag entscheidet nicht - maßgeblich ist, was tatsächlich geschuldet wird.',
+Für die Prüfung wichtig: Die Bezeichnung im Vertrag entscheidet nicht. Maßgeblich ist, was tatsächlich geschuldet wird.',
   2,
   ARRAY['vertragsarten']::text[],
   null,
-  '{"buckets":["Kaufvertrag","Werkvertrag","Dienstvertrag"],"match_items":[{"text":"Geschuldet wird ein konkreter Erfolg, zum Beispiel eine fertige, abnahmefähige Software.","bucket":1,"rationale":"Erfolg geschuldet = Werkvertrag. Deshalb gibt es hier eine Abnahme."},{"text":"Geschuldet wird die Tätigkeit als solche, nicht ein bestimmtes Ergebnis.","bucket":2,"rationale":"Dienstvertrag: bezahlt wird die geleistete Arbeit, etwa bei Beratung oder Personalgestellung."},{"text":"Übereignung einer Sache gegen Zahlung des Kaufpreises.","bucket":0,"rationale":"Der klassische Kaufvertrag, zum Beispiel beim Hardwareeinkauf."},{"text":"Die Vergütung wird mit der Abnahme fällig.","bucket":1,"rationale":"Typisch für den Werkvertrag - ohne Abnahme keine Fälligkeit."},{"text":"Ein externer Administrator wird stundenweise für Support bereitgestellt.","bucket":2,"rationale":"Bereitgestellt wird Arbeitszeit, kein definiertes Werk."},{"text":"Gewährleistung richtet sich nach dem Zustand der gelieferten Sache bei Gefahrübergang.","bucket":0,"rationale":"Sachmangelhaftung des Kaufrechts."}]}'::jsonb,
+  '{"buckets":["Kaufvertrag","Werkvertrag","Dienstvertrag"],"match_items":[{"text":"Geschuldet wird ein konkreter Erfolg, zum Beispiel eine fertige, abnahmefähige Software.","bucket":1,"rationale":"Erfolg geschuldet = Werkvertrag. Deshalb gibt es hier eine Abnahme."},{"text":"Geschuldet wird die Tätigkeit als solche, nicht ein bestimmtes Ergebnis.","bucket":2,"rationale":"Dienstvertrag: bezahlt wird die geleistete Arbeit, etwa bei Beratung oder Personalgestellung."},{"text":"Übereignung einer Sache gegen Zahlung des Kaufpreises.","bucket":0,"rationale":"Der klassische Kaufvertrag, zum Beispiel beim Hardwareeinkauf."},{"text":"Die Vergütung wird mit der Abnahme fällig.","bucket":1,"rationale":"Typisch für den Werkvertrag: ohne Abnahme keine Fälligkeit."},{"text":"Ein externer Administrator wird stundenweise für Support bereitgestellt.","bucket":2,"rationale":"Bereitgestellt wird Arbeitszeit, kein definiertes Werk."},{"text":"Gewährleistung richtet sich nach dem Zustand der gelieferten Sache bei Gefahrübergang.","bucket":0,"rationale":"Sachmangelhaftung des Kaufrechts."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1873,12 +1873,12 @@ values (
   'single',
   'Eine Auszubildende entwickelt im Rahmen ihrer Aufgaben im Betrieb ein Skript, das dort produktiv eingesetzt wird.',
   'Wie ist die urheberrechtliche Lage in Deutschland?',
-  'Kern des deutschen Urheberrechts: Urheber ist immer die natürliche Person, die das Werk geschaffen hat. Dieses Recht kann man weder verkaufen noch verschenken - nur vererben.
+  'Kern des deutschen Urheberrechts: Urheber ist immer die natürliche Person, die das Werk geschaffen hat. Dieses Recht kann man weder verkaufen noch verschenken, nur vererben.
 Was übertragen wird, sind NUTZUNGSRECHTE: einfach (mehrere dürfen nutzen) oder ausschließlich (nur einer). Bei Software, die in Erfüllung des Arbeitsvertrags entsteht, erhält der Arbeitgeber die ausschließlichen Nutzungsrechte.',
   2,
   ARRAY['urheberrecht']::text[],
   null,
-  '{"choices":[{"text":"Die Urheberin bleibt sie selbst, die Nutzungsrechte liegen aber beim Arbeitgeber.","is_correct":true,"rationale":"Richtig. Das Urheberrecht ist in Deutschland nicht übertragbar; übertragen werden nur Nutzungsrechte - bei Arbeitnehmern regelmäßig automatisch an den Arbeitgeber."},{"text":"Der Arbeitgeber wird automatisch Urheber der Software.","is_correct":false,"rationale":"Falsch. Urheber kann nur eine natürliche Person sein, und das Urheberrecht selbst ist nicht übertragbar."},{"text":"Die Auszubildende kann die Nutzung jederzeit untersagen.","is_correct":false,"rationale":"Falsch. Für im Arbeitsverhältnis geschaffene Software erwirbt der Arbeitgeber die Nutzungsrechte."},{"text":"Software ist urheberrechtlich nicht geschützt, nur patentierbar.","is_correct":false,"rationale":"Falsch. Computerprogramme sind ausdrücklich urheberrechtlich geschützt. Reine Software ist in Europa umgekehrt kaum patentierbar."}]}'::jsonb,
+  '{"choices":[{"text":"Die Urheberin bleibt sie selbst, die Nutzungsrechte liegen aber beim Arbeitgeber.","is_correct":true,"rationale":"Richtig. Das Urheberrecht ist in Deutschland nicht übertragbar; übertragen werden nur Nutzungsrechte, bei Arbeitnehmern regelmäßig automatisch an den Arbeitgeber."},{"text":"Der Arbeitgeber wird automatisch Urheber der Software.","is_correct":false,"rationale":"Falsch. Urheber kann nur eine natürliche Person sein, und das Urheberrecht selbst ist nicht übertragbar."},{"text":"Die Auszubildende kann die Nutzung jederzeit untersagen.","is_correct":false,"rationale":"Falsch. Für im Arbeitsverhältnis geschaffene Software erwirbt der Arbeitgeber die Nutzungsrechte."},{"text":"Software ist urheberrechtlich nicht geschützt, nur patentierbar.","is_correct":false,"rationale":"Falsch. Computerprogramme sind ausdrücklich urheberrechtlich geschützt. Reine Software ist in Europa umgekehrt kaum patentierbar."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1903,8 +1903,8 @@ values (
   'open',
   'Ein Unternehmen beauftragt ein Systemhaus mit der Betreuung seiner IT. Der Vertrag soll spätere Streitigkeiten vermeiden.',
   'Nenne fünf Punkte, die ein IT-Dienstleistungsvertrag mindestens regeln sollte.',
-  'Je Nennung 1 Punkt, höchstens 5 Punkte. Nicht geregelt werden die Namen einzelner Entwickler - Personal wechselt.
-Die Mitwirkungspflichten werden am häufigsten vergessen und führen am häufigsten zu Streit: Wenn der Auftraggeber Testdaten oder Ansprechpartner nicht liefert, kann der Auftragnehmer den Termin nicht halten - ohne Regelung steht dann Aussage gegen Aussage. Verarbeitet der Dienstleister personenbezogene Daten im Auftrag, ist ein Auftragsverarbeitungsvertrag Pflicht (Art. 28 DSGVO).',
+  'Je Nennung 1 Punkt, höchstens 5 Punkte. Nicht geregelt werden die Namen einzelner Entwickler, denn Personal wechselt.
+Die Mitwirkungspflichten werden am häufigsten vergessen und führen am häufigsten zu Streit: Wenn der Auftraggeber Testdaten oder Ansprechpartner nicht liefert, kann der Auftragnehmer den Termin nicht halten. Ohne Regelung steht dann Aussage gegen Aussage. Verarbeitet der Dienstleister personenbezogene Daten im Auftrag, ist ein Auftragsverarbeitungsvertrag Pflicht (Art. 28 DSGVO).',
   1,
   ARRAY['vertragsbestandteile']::text[],
   null,
@@ -1972,7 +1972,7 @@ values (
 2. Zulässige Ausfallquote = 100 % - 99,5 % = 0,5 % = 0,005
 3. Erlaubter Ausfall = 43.200 x 0,005 = 216 Minuten (3,6 Stunden)
 
-Merke die Größenordnungen - danach wird gern gefragt:
+Merke die Größenordnungen, denn danach wird gern gefragt:
 99 % = rund 7,2 Stunden Ausfall im Monat
 99,5 % = rund 3,6 Stunden
 99,9 % = rund 43 Minuten
@@ -2009,11 +2009,11 @@ values (
 - 1st Level: Annahme, Klassifizierung, Lösung bekannter Standardfälle. Ziel ist eine hohe Erstlösungsquote.
 - 2nd Level: Fachspezialisten mit tieferem Systemwissen.
 - 3rd Level: Hersteller oder Entwicklung, bei Fehlern im Produkt selbst.
-Wichtig für die Prüfung: Das Ticket bleibt beim Eskalieren bestehen und wandert mit seiner kompletten Historie. Der Anwender behält einen Ansprechpartner - das nennt sich Ownership-Prinzip.',
+Wichtig für die Prüfung: Das Ticket bleibt beim Eskalieren bestehen und wandert mit seiner kompletten Historie. Der Anwender behält einen Ansprechpartner. Das nennt sich Ownership-Prinzip.',
   2,
   ARRAY['support_level']::text[],
   null,
-  '{"choices":[{"text":"Eskalation an den 2nd-Level-Support mit dokumentiertem Ticket","is_correct":true,"rationale":"Richtig. Der 1st Level nimmt auf, klassifiziert und löst Standardfälle; alles andere geht dokumentiert weiter nach oben."},{"text":"Das Ticket wird geschlossen, der Anwender meldet sich neu.","is_correct":false,"rationale":"Falsch. Ein ungelöstes Ticket wird nie geschlossen - der Vorgang und seine Historie müssen erhalten bleiben."},{"text":"Direkte Weitergabe an den Hersteller (3rd Level).","is_correct":false,"rationale":"Falsch. Die Stufen werden der Reihe nach durchlaufen. Der 3rd Level ist der Hersteller bzw. die Entwicklung und wird erst eingeschaltet, wenn der 2nd Level nicht weiterkommt."},{"text":"Der Anwender erhält Administratorrechte, um es selbst zu lösen.","is_correct":false,"rationale":"Falsch und sicherheitstechnisch fatal. Rechteausweitung ist keine Supportmaßnahme."}]}'::jsonb,
+  '{"choices":[{"text":"Eskalation an den 2nd-Level-Support mit dokumentiertem Ticket","is_correct":true,"rationale":"Richtig. Der 1st Level nimmt auf, klassifiziert und löst Standardfälle; alles andere geht dokumentiert weiter nach oben."},{"text":"Das Ticket wird geschlossen, der Anwender meldet sich neu.","is_correct":false,"rationale":"Falsch. Ein ungelöstes Ticket wird nie geschlossen. Der Vorgang und seine Historie müssen erhalten bleiben."},{"text":"Direkte Weitergabe an den Hersteller (3rd Level).","is_correct":false,"rationale":"Falsch. Die Stufen werden der Reihe nach durchlaufen. Der 3rd Level ist der Hersteller bzw. die Entwicklung und wird erst eingeschaltet, wenn der 2nd Level nicht weiterkommt."},{"text":"Der Anwender erhält Administratorrechte, um es selbst zu lösen.","is_correct":false,"rationale":"Falsch und sicherheitstechnisch fatal. Rechteausweitung ist keine Supportmaßnahme."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -2040,7 +2040,7 @@ values (
   'Erläutere, ob sich der Lieferant im Lieferungsverzug befindet.',
   'Je Aussage 1 Punkt. Verzug setzt voraus: fällige Leistung, Nichtleistung, Verschulden des Schuldners und grundsätzlich eine Mahnung.
 Die Mahnung entfällt unter anderem, wenn ein Termin nach dem Kalender bestimmt ist ("Lieferung am 1. Oktober") oder wenn der Schuldner die Leistung ernsthaft und endgültig verweigert. Drei Mahnungen sind ein Mythos aus der Praxis.
-Beim ZAHLUNGSverzug gilt zusätzlich: Spätestens 30 Tage nach Zugang einer Rechnung tritt Verzug auch ohne Mahnung ein - bei Verbrauchern nur, wenn darauf hingewiesen wurde.',
+Beim ZAHLUNGSverzug gilt zusätzlich: Spätestens 30 Tage nach Zugang einer Rechnung tritt Verzug auch ohne Mahnung ein, bei Verbrauchern nur, wenn darauf hingewiesen wurde.',
   2,
   ARRAY['verzug']::text[],
   null,
@@ -2073,7 +2073,7 @@ values (
   3,
   ARRAY['mängelrechte']::text[],
   null,
-  '{"choices":[{"text":"Der Agentur eine angemessene Frist zur Nacherfüllung setzen","is_correct":true,"rationale":"Die Nacherfüllung hat Vorrang. Erst wenn die Frist erfolglos verstreicht, stehen Selbstvornahme, Minderung, Rücktritt und Schadensersatz offen."},{"text":"Nichts - er kann sofort eine andere Firma beauftragen und der Agentur die Kosten in Rechnung stellen","is_correct":false,"rationale":"Ohne erfolglose Frist zur Nacherfüllung riskiert er, auf den Kosten der Selbstvornahme sitzen zu bleiben."},{"text":"Erst Selbstvornahme versuchen, danach mindern, zuletzt Schadensersatz verlangen","is_correct":false,"rationale":"Nach gescheiterter Nacherfüllung gibt es keine feste Reihenfolge: Selbstvornahme, Minderung oder Rücktritt und Schadensersatz stehen nebeneinander, Schadensersatz lässt sich auch mit dem Rücktritt verbinden."},{"text":"Die Agentur dreimal schriftlich mahnen","is_correct":false,"rationale":"Drei Mahnungen verlangt das Gesetz nicht. Entscheidend ist eine Frist zur Nacherfüllung."}]}'::jsonb,
+  '{"choices":[{"text":"Der Agentur eine angemessene Frist zur Nacherfüllung setzen","is_correct":true,"rationale":"Die Nacherfüllung hat Vorrang. Erst wenn die Frist erfolglos verstreicht, stehen Selbstvornahme, Minderung, Rücktritt und Schadensersatz offen."},{"text":"Nichts. Er kann sofort eine andere Firma beauftragen und der Agentur die Kosten in Rechnung stellen","is_correct":false,"rationale":"Ohne erfolglose Frist zur Nacherfüllung riskiert er, auf den Kosten der Selbstvornahme sitzen zu bleiben."},{"text":"Erst Selbstvornahme versuchen, danach mindern, zuletzt Schadensersatz verlangen","is_correct":false,"rationale":"Nach gescheiterter Nacherfüllung gibt es keine feste Reihenfolge: Selbstvornahme, Minderung oder Rücktritt und Schadensersatz stehen nebeneinander, Schadensersatz lässt sich auch mit dem Rücktritt verbinden."},{"text":"Die Agentur dreimal schriftlich mahnen","is_correct":false,"rationale":"Drei Mahnungen verlangt das Gesetz nicht. Entscheidend ist eine Frist zur Nacherfüllung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -2099,11 +2099,11 @@ values (
   'Bei der Abnahme einer Lagerverwaltungssoftware zeigt sich, dass der Etikettendruck fehlerhaft ist. Ein Auszubildender hat das Abnahmeprotokoll entworfen.',
   'Markiere alle Einträge, die so nicht in das Protokoll gehören oder unvollständig sind.',
   'In das Protokoll gehören: Datum, Ort, Beteiligte, Gegenstand mit Verweis auf das Pflichtenheft, Mängel mit Fristen, die Erklärung (abgenommen, unter Vorbehalt, verweigert) und die Unterschriften beider Seiten.
-An der Abnahme hängen vier Rechtsfolgen: Fälligkeit der Vergütung, Gefahrübergang, Beginn der Verjährungsfrist für Mängelansprüche und die Umkehr der Beweislast. Wer bekannte Mängel nicht vorbehält, verliert die meisten Rechte darauf - nur ein Anspruch auf Schadensersatz bleibt bestehen (§ 640 Abs. 3 BGB).',
+An der Abnahme hängen vier Rechtsfolgen: Fälligkeit der Vergütung, Gefahrübergang, Beginn der Verjährungsfrist für Mängelansprüche und die Umkehr der Beweislast. Wer bekannte Mängel nicht vorbehält, verliert die meisten Rechte darauf. Nur ein Anspruch auf Schadensersatz bleibt bestehen (§ 640 Abs. 3 BGB).',
   2,
   ARRAY['abnahmeprotokoll']::text[],
   null,
-  '{"choices":[{"text":"Abnahme am 14. Juni im Lager des Auftraggebers; anwesend: die Projektleiter beider Seiten","is_correct":false,"rationale":"Datum, Ort und Beteiligte gehören hinein."},{"text":"Gegenstand: Lagerverwaltungssoftware gemäß Pflichtenheft Version 2.1","is_correct":false,"rationale":"Abgenommen wird gegen ein definiertes Soll - der Verweis stellt das her."},{"text":"Mangel: Etikettendruck fehlerhaft. Wird bei Gelegenheit behoben.","is_correct":true,"rationale":"Es fehlt eine Frist zur Beseitigung."},{"text":"Erklärung: Die Abnahme erfolgt ohne Vorbehalt.","is_correct":true,"rationale":"Bei einem bekannten Mangel muss der Vorbehalt erklärt werden, sonst gehen Nacherfüllung, Selbstvornahme, Rücktritt und Minderung dafür verloren (§ 640 Abs. 3 BGB)."},{"text":"Interne Kalkulation des Auftragnehmers: 310 Stunden zu 62 €","is_correct":true,"rationale":"Die Kalkulation ist ein Geschäftsgeheimnis und hat im Protokoll nichts zu suchen."},{"text":"Geprüft wurden die 24 Testfälle des Abnahmetestplans, 23 davon bestanden.","is_correct":false,"rationale":"Das Ergebnis des Abnahmetests gehört ins Protokoll."},{"text":"Unterschrift: nur Auftragnehmer","is_correct":true,"rationale":"Erst die Unterschriften beider Vertragsparteien machen das Protokoll zum Nachweis."}]}'::jsonb,
+  '{"choices":[{"text":"Abnahme am 14. Juni im Lager des Auftraggebers; anwesend: die Projektleiter beider Seiten","is_correct":false,"rationale":"Datum, Ort und Beteiligte gehören hinein."},{"text":"Gegenstand: Lagerverwaltungssoftware gemäß Pflichtenheft Version 2.1","is_correct":false,"rationale":"Abgenommen wird gegen ein definiertes Soll, und der Verweis stellt das her."},{"text":"Mangel: Etikettendruck fehlerhaft. Wird bei Gelegenheit behoben.","is_correct":true,"rationale":"Es fehlt eine Frist zur Beseitigung."},{"text":"Erklärung: Die Abnahme erfolgt ohne Vorbehalt.","is_correct":true,"rationale":"Bei einem bekannten Mangel muss der Vorbehalt erklärt werden, sonst gehen Nacherfüllung, Selbstvornahme, Rücktritt und Minderung dafür verloren (§ 640 Abs. 3 BGB)."},{"text":"Interne Kalkulation des Auftragnehmers: 310 Stunden zu 62 €","is_correct":true,"rationale":"Die Kalkulation ist ein Geschäftsgeheimnis und hat im Protokoll nichts zu suchen."},{"text":"Geprüft wurden die 24 Testfälle des Abnahmetestplans, 23 davon bestanden.","is_correct":false,"rationale":"Das Ergebnis des Abnahmetests gehört ins Protokoll."},{"text":"Unterschrift: nur Auftragnehmer","is_correct":true,"rationale":"Erst die Unterschriften beider Vertragsparteien machen das Protokoll zum Nachweis."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -2129,13 +2129,13 @@ values (
   null,
   'Bringe die drei Phasen des Lewin-Modells in die richtige Reihenfolge.',
   'Lewins Modell erklärt, warum Veränderungen scheitern: Meist wird die erste oder die letzte Phase übersprungen.
-- Ohne "Unfreeze" fehlt die Einsicht, dass sich etwas ändern muss - die Betroffenen halten am Alten fest.
+- Ohne "Unfreeze" fehlt die Einsicht, dass sich etwas ändern muss; die Betroffenen halten am Alten fest.
 - Ohne "Refreeze" fällt die Organisation nach einigen Wochen in alte Gewohnheiten zurück, weil der neue Zustand nie verankert wurde.
-In der Change-Phase sinkt die Leistung typischerweise vorübergehend ab - das ist normal und kein Zeichen des Scheiterns.',
+In der Change-Phase sinkt die Leistung typischerweise vorübergehend ab. Das ist normal und kein Zeichen des Scheiterns.',
   2,
   ARRAY['lewin']::text[],
   null,
-  '{"ordered_items":["Unfreeze - Auftauen: Veränderungsbedarf verdeutlichen, Widerstände ansprechen","Change - Verändern: neue Abläufe einführen und begleiten","Refreeze - Einfrieren: den neuen Zustand stabilisieren und zum Standard machen"],"ordering_hint":"Von der Vorbereitung zur Verankerung"}'::jsonb,
+  '{"ordered_items":["Unfreeze (Auftauen): Veränderungsbedarf verdeutlichen, Widerstände ansprechen","Change (Verändern): neue Abläufe einführen und begleiten","Refreeze (Einfrieren): den neuen Zustand stabilisieren und zum Standard machen"],"ordering_hint":"Von der Vorbereitung zur Verankerung"}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -2165,7 +2165,7 @@ Die drei typischen Ursachen und ihre Gegenmittel:
 - "Ich verstehe es nicht" -> informieren, Nutzen erklären.
 - "Ich kann es nicht" -> schulen, begleiten.
 - "Ich will es nicht" -> beteiligen, Bedenken ernst nehmen.
-Anordnung und Sanktion sind das letzte Mittel, nicht das erste - Druck erzeugt Scheinanpassung. Auch das alte System ohne Vorbereitung abzuschalten verfestigt die Ablehnung.',
+Anordnung und Sanktion sind das letzte Mittel, nicht das erste, denn Druck erzeugt Scheinanpassung. Auch das alte System ohne Vorbereitung abzuschalten verfestigt die Ablehnung.',
   2,
   ARRAY['widerstand']::text[],
   null,
@@ -2200,7 +2200,7 @@ Abgrenzung für die Prüfung: Kaizen = viele kleine Schritte, evolutionär. Reen
   2,
   ARRAY['kaizen']::text[],
   null,
-  '{"cloze_text":"Kaizen bedeutet „Veränderung zum {0}“. Verbessert wird in vielen {1} Schritten, getragen von {2} Mitarbeitenden. Jeder einzelne Schritt durchläuft den {3}. Das Gegenstück, die einmalige radikale Neugestaltung eines Prozesses, heißt {4}.","gaps":[{"answers":["Besseren"]},{"answers":["kleinen"],"rationale":"Die Summe vieler kleiner Schritte, nicht der eine große Wurf."},{"answers":["allen"],"rationale":"Vorschläge kommen von denen, die die Arbeit täglich machen."},{"answers":["PDCA-Zyklus"],"rationale":"Plan, Do, Check, Act."},{"answers":["Reengineering"],"rationale":"Business Process Reengineering - revolutionär statt evolutionär."}],"word_bank":["großen","Führungskräften","Netzplan","Schlechteren"]}'::jsonb,
+  '{"cloze_text":"Kaizen bedeutet „Veränderung zum {0}“. Verbessert wird in vielen {1} Schritten, getragen von {2} Mitarbeitenden. Jeder einzelne Schritt durchläuft den {3}. Das Gegenstück, die einmalige radikale Neugestaltung eines Prozesses, heißt {4}.","gaps":[{"answers":["Besseren"]},{"answers":["kleinen"],"rationale":"Die Summe vieler kleiner Schritte, nicht der eine große Wurf."},{"answers":["allen"],"rationale":"Vorschläge kommen von denen, die die Arbeit täglich machen."},{"answers":["PDCA-Zyklus"],"rationale":"Plan, Do, Check, Act."},{"answers":["Reengineering"],"rationale":"Business Process Reengineering: revolutionär statt evolutionär."}],"word_bank":["großen","Führungskräften","Netzplan","Schlechteren"]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -2548,7 +2548,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Scope Creep - ausdrücklich formulierte Nicht-Ziele im Projektauftrag","is_correct":true,"rationale":"Der Umfang wächst schleichend ohne mehr Zeit und Budget. Nicht-Ziele machen klar, was nicht dazugehört."},{"text":"Gold Plating - mehr Tests einplanen","is_correct":false,"rationale":"Gold Plating heißt, das Team baut von sich aus Extras ein. Hier kommt der Wunsch von außen."},{"text":"Brooks’ Law - zusätzliches Personal einstellen","is_correct":false,"rationale":"Brooks’ Law beschreibt, dass zusätzliches Personal ein verspätetes Projekt weiter verzögert. Das passt nicht zur Situation."},{"text":"Kritischer Pfad - einen Netzplan erstellen","is_correct":false,"rationale":"Der Netzplan hilft bei Terminen, verhindert aber keine Umfangsausweitung."}]}'::jsonb,
+  '{"choices":[{"text":"Scope Creep: ausdrücklich formulierte Nicht-Ziele im Projektauftrag","is_correct":true,"rationale":"Der Umfang wächst schleichend ohne mehr Zeit und Budget. Nicht-Ziele machen klar, was nicht dazugehört."},{"text":"Gold Plating: mehr Tests einplanen","is_correct":false,"rationale":"Gold Plating heißt, das Team baut von sich aus Extras ein. Hier kommt der Wunsch von außen."},{"text":"Brooks’ Law: zusätzliches Personal einstellen","is_correct":false,"rationale":"Brooks’ Law beschreibt, dass zusätzliches Personal ein verspätetes Projekt weiter verzögert. Das passt nicht zur Situation."},{"text":"Kritischer Pfad: einen Netzplan erstellen","is_correct":false,"rationale":"Der Netzplan hilft bei Terminen, verhindert aber keine Umfangsausweitung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -6051,7 +6051,7 @@ values (
   2,
   '{}',
   null,
-  '{"diagram":{"type":"gantt","vorgaenge":[{"label":"A Umzug planen","start":0,"dauer":2,"kritisch":true},{"label":"B Rack aufbauen","start":2,"dauer":2},{"label":"C Daten sichern","start":2,"dauer":3,"kritisch":true},{"label":"D Server umziehen","start":5,"dauer":2,"kritisch":true},{"label":"E Test","start":7,"dauer":1,"kritisch":true},{"label":"Server live","start":8,"dauer":0,"kritisch":true}],"einheit":"Tag"},"choices":[{"text":"B, 1 Tag","is_correct":true,"rationale":"B endet bei 4, D beginnt erst bei 5 - B darf 1 Tag später fertig werden."},{"text":"B, 2 Tage","is_correct":false,"rationale":"D startet bei 5, B endet bei 4: der Abstand ist 1 Tag, nicht 2."},{"text":"C, 1 Tag","is_correct":false,"rationale":"C endet genau bei 5, wenn D beginnt, also C liegt auf dem kritischen Pfad."},{"text":"Kein Vorgang hat Puffer","is_correct":false,"rationale":"B endet vor dem Start seines Nachfolgers D."}]}'::jsonb,
+  '{"diagram":{"type":"gantt","vorgaenge":[{"label":"A Umzug planen","start":0,"dauer":2,"kritisch":true},{"label":"B Rack aufbauen","start":2,"dauer":2},{"label":"C Daten sichern","start":2,"dauer":3,"kritisch":true},{"label":"D Server umziehen","start":5,"dauer":2,"kritisch":true},{"label":"E Test","start":7,"dauer":1,"kritisch":true},{"label":"Server live","start":8,"dauer":0,"kritisch":true}],"einheit":"Tag"},"choices":[{"text":"B, 1 Tag","is_correct":true,"rationale":"B endet bei 4, D beginnt erst bei 5. B darf 1 Tag später fertig werden."},{"text":"B, 2 Tage","is_correct":false,"rationale":"D startet bei 5, B endet bei 4: der Abstand ist 1 Tag, nicht 2."},{"text":"C, 1 Tag","is_correct":false,"rationale":"C endet genau bei 5, wenn D beginnt, also C liegt auf dem kritischen Pfad."},{"text":"Kein Vorgang hat Puffer","is_correct":false,"rationale":"B endet vor dem Start seines Nachfolgers D."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -9609,7 +9609,7 @@ values (
   3,
   '{}',
   null,
-  '{"choices":[{"text":"win-lose: Eine Seite will gewinnen, die andere soll verlieren.","is_correct":true,"rationale":"Drohstrategien sind Stufe 6 - die letzte Stufe der win-lose-Phase."},{"text":"win-win: Beide können noch gewinnen.","is_correct":false,"rationale":"Die win-win-Phase umfasst Stufe 1 bis 3, dort wird noch über die Sache gestritten."},{"text":"lose-lose: Beide nehmen eigenen Schaden in Kauf.","is_correct":false,"rationale":"Das beginnt erst mit Stufe 7, wenn gezielt geschadet wird, auch um den Preis eigener Verluste."},{"text":"Konsens: Beide erarbeiten eine gemeinsame Lösung.","is_correct":false,"rationale":"Konsens ist eine Lösungsform, keine Eskalationsphase."}]}'::jsonb,
+  '{"choices":[{"text":"win-lose: Eine Seite will gewinnen, die andere soll verlieren.","is_correct":true,"rationale":"Drohstrategien sind Stufe 6, die letzte Stufe der win-lose-Phase."},{"text":"win-win: Beide können noch gewinnen.","is_correct":false,"rationale":"Die win-win-Phase umfasst Stufe 1 bis 3, dort wird noch über die Sache gestritten."},{"text":"lose-lose: Beide nehmen eigenen Schaden in Kauf.","is_correct":false,"rationale":"Das beginnt erst mit Stufe 7, wenn gezielt geschadet wird, auch um den Preis eigener Verluste."},{"text":"Konsens: Beide erarbeiten eine gemeinsame Lösung.","is_correct":false,"rationale":"Konsens ist eine Lösungsform, keine Eskalationsphase."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -10073,7 +10073,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"„Zu teuer im Vergleich wozu?“","is_correct":true,"rationale":"Eine Rückfrage klärt, woran die Kundin den Preis misst."},{"text":"„Ja, der Preis ist höher als eine USB-Festplatte. Dafür läuft die Sicherung automatisch und außer Haus.“","is_correct":true,"rationale":"Ja-aber: zustimmen und ein Gegenargument ergänzen."},{"text":"„Auf den Tag gerechnet sind das knapp 3 € - weniger, als ein verlorener Auftrag kostet.“","is_correct":true,"rationale":"Den Preis auf kleine Einheiten umrechnen und mit dem Nutzen verbinden."},{"text":"„Da irren Sie sich, das ist ein fairer Preis.“","is_correct":false,"rationale":"Direkter Widerspruch erzeugt Abwehr."},{"text":"Sofort 20 % Rabatt anbieten, ohne nachzufragen","is_correct":false,"rationale":"Ohne Rückfrage weißt du nicht, ob es wirklich am Preis liegt, und verschenkst Marge."}]}'::jsonb,
+  '{"choices":[{"text":"„Zu teuer im Vergleich wozu?“","is_correct":true,"rationale":"Eine Rückfrage klärt, woran die Kundin den Preis misst."},{"text":"„Ja, der Preis ist höher als eine USB-Festplatte. Dafür läuft die Sicherung automatisch und außer Haus.“","is_correct":true,"rationale":"Ja-aber: zustimmen und ein Gegenargument ergänzen."},{"text":"„Auf den Tag gerechnet sind das knapp 3 €, also weniger, als ein verlorener Auftrag kostet.“","is_correct":true,"rationale":"Den Preis auf kleine Einheiten umrechnen und mit dem Nutzen verbinden."},{"text":"„Da irren Sie sich, das ist ein fairer Preis.“","is_correct":false,"rationale":"Direkter Widerspruch erzeugt Abwehr."},{"text":"Sofort 20 % Rabatt anbieten, ohne nachzufragen","is_correct":false,"rationale":"Ohne Rückfrage weißt du nicht, ob es wirklich am Preis liegt, und verschenkst Marge."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -10945,7 +10945,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Eine Online-Umfrage unter den eigenen Kunden","is_correct":true,"rationale":"Die Daten werden neu und selbst erhoben."},{"text":"Die Auswertung eines Branchenberichts","is_correct":false,"rationale":"Vorhandene Daten - Sekundärforschung."},{"text":"Zahlen des Statistischen Bundesamts","is_correct":false,"rationale":"Amtliche Statistik ist eine Sekundärquelle."},{"text":"Die Analyse der eigenen Umsatzstatistik","is_correct":false,"rationale":"Auch interne, bereits vorhandene Daten gehören zur Sekundärforschung."}]}'::jsonb,
+  '{"choices":[{"text":"Eine Online-Umfrage unter den eigenen Kunden","is_correct":true,"rationale":"Die Daten werden neu und selbst erhoben."},{"text":"Die Auswertung eines Branchenberichts","is_correct":false,"rationale":"Vorhandene Daten: Sekundärforschung."},{"text":"Zahlen des Statistischen Bundesamts","is_correct":false,"rationale":"Amtliche Statistik ist eine Sekundärquelle."},{"text":"Die Analyse der eigenen Umsatzstatistik","is_correct":false,"rationale":"Auch interne, bereits vorhandene Daten gehören zur Sekundärforschung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -13533,7 +13533,7 @@ values (
   'numeric',
   'Eine Datei ist 18.000 Byte groß. Das Dateisystem arbeitet mit einer Clustergröße von 4 KiB.',
   'Wie viele Byte belegt die Datei auf dem Datenträger?',
-  '4 KiB = 4.096 Byte. 18.000 / 4.096 ≈ 4,39 - angefangene Cluster zählen voll, also 5 Cluster. 5 × 4.096 = 20.480 Byte.',
+  '4 KiB = 4.096 Byte. 18.000 / 4.096 ≈ 4,39; angefangene Cluster zählen voll, also 5 Cluster. 5 × 4.096 = 20.480 Byte.',
   2,
   '{}',
   null,
@@ -13566,7 +13566,7 @@ values (
   1,
   '{}',
   null,
-  '{"choices":[{"text":"/home/ben/projekt","is_correct":true,"rationale":"„..“ führt eine Ebene nach oben nach /home, von dort nach ben/projekt."},{"text":"/home/anna/ben/projekt","is_correct":false,"rationale":"Das wäre der relative Pfad ohne „..“."},{"text":"/ben/projekt","is_correct":false,"rationale":"Das wäre ein absoluter Pfad ab der Wurzel."},{"text":"/home/anna/../projekt","is_correct":false,"rationale":"Kein gültiges Ergebnis - „..“ wird aufgelöst, und ben fehlt."}]}'::jsonb,
+  '{"choices":[{"text":"/home/ben/projekt","is_correct":true,"rationale":"„..“ führt eine Ebene nach oben nach /home, von dort nach ben/projekt."},{"text":"/home/anna/ben/projekt","is_correct":false,"rationale":"Das wäre der relative Pfad ohne „..“."},{"text":"/ben/projekt","is_correct":false,"rationale":"Das wäre ein absoluter Pfad ab der Wurzel."},{"text":"/home/anna/../projekt","is_correct":false,"rationale":"Kein gültiges Ergebnis, denn „..“ wird aufgelöst, und ben fehlt."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -15969,7 +15969,7 @@ values (
   'cloze',
   'Ein Server hat die Adresse 172.16.5.200/26.',
   'Ermittle Netz- und Broadcastadresse seines Subnetzes.',
-  '/26 = Blockgröße 64. Netze: .0, .64, .128, .192. 200 liegt ab .192 - Netzadresse .192, Broadcast .255.',
+  '/26 = Blockgröße 64. Netze: .0, .64, .128, .192. 200 liegt ab .192: Netzadresse .192, Broadcast .255.',
   2,
   '{}',
   null,
@@ -16056,7 +16056,7 @@ values (
   'cloze',
   'Ein Drucker hat die Adresse 10.20.30.140/27.',
   'Ermittle Netz- und Broadcastadresse seines Subnetzes.',
-  '/27 = 255.255.255.224, Blockgröße 256 - 224 = 32. 140 / 32 = 4,375 - der Block beginnt bei 4 × 32 = 128. Netz .128, Broadcast .159.',
+  '/27 = 255.255.255.224, Blockgröße 256 - 224 = 32. 140 / 32 = 4,375, der Block beginnt bei 4 × 32 = 128. Netz .128, Broadcast .159.',
   2,
   '{}',
   null,
@@ -16118,7 +16118,7 @@ values (
   3,
   '{}',
   null,
-  '{"choices":[{"text":"10.1.79.255","is_correct":true,"rationale":"/21: Blockgröße 8 im dritten Oktett. 77 liegt im Block 72 bis 79."},{"text":"10.1.77.255","is_correct":false,"rationale":"Das wäre richtig bei /24 - hier umfasst das Netz acht Werte im dritten Oktett."},{"text":"10.1.72.255","is_correct":false,"rationale":"Das Netz endet nicht bei 72, sondern bei 79."},{"text":"10.1.80.255","is_correct":false,"rationale":"80 gehört bereits zum nächsten Block."}]}'::jsonb,
+  '{"choices":[{"text":"10.1.79.255","is_correct":true,"rationale":"/21: Blockgröße 8 im dritten Oktett. 77 liegt im Block 72 bis 79."},{"text":"10.1.77.255","is_correct":false,"rationale":"Das wäre richtig bei /24. Hier umfasst das Netz acht Werte im dritten Oktett."},{"text":"10.1.72.255","is_correct":false,"rationale":"Das Netz endet nicht bei 72, sondern bei 79."},{"text":"10.1.80.255","is_correct":false,"rationale":"80 gehört bereits zum nächsten Block."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -16230,7 +16230,7 @@ values (
   'single',
   'Ein PC hat die Adresse 192.168.1.35/28, der Netzwerkdrucker 192.168.1.50/28. Der PC erreicht den Drucker nur, wenn das Standardgateway funktioniert.',
   'Woran liegt das?',
-  'Bei /28 beträgt die Blockgröße 16. PC (.35) liegt in .32 bis .47, der Drucker (.50) in .48 bis .63 - zwei Netze, also Weg über das Gateway.',
+  'Bei /28 beträgt die Blockgröße 16. PC (.35) liegt in .32 bis .47, der Drucker (.50) in .48 bis .63. Das sind zwei Netze, also Weg über das Gateway.',
   3,
   '{}',
   null,
@@ -16520,7 +16520,7 @@ values (
   'numeric',
   null,
   'Für wie viele Null-Blöcke steht :: in der Adresse fe80::1:2?',
-  'Eine IPv6-Adresse hat 8 Blöcke. Vorhanden sind fe80, 1 und 2 - also 3. Der Doppelpunkt ersetzt 8 - 3 = 5 Null-Blöcke.',
+  'Eine IPv6-Adresse hat 8 Blöcke. Vorhanden sind fe80, 1 und 2, also 3. Der Doppelpunkt ersetzt 8 - 3 = 5 Null-Blöcke.',
   1,
   '{}',
   null,
@@ -16752,7 +16752,7 @@ values (
   'matching',
   null,
   'Ordne jedem Dienst seinen Standardport zu.',
-  'SMTP 25 (Einlieferung durch Clients 587), NTP 123 über UDP, IMAPS 993 und POP3S 995 - die verschlüsselten Varianten von IMAP (143) und POP3 (110).',
+  'SMTP 25 (Einlieferung durch Clients 587), NTP 123 über UDP, IMAPS 993 und POP3S 995 als verschlüsselte Varianten von IMAP (143) und POP3 (110).',
   2,
   '{}',
   null,
@@ -29826,7 +29826,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Nein. Die Artikelseite ist nur eine Aufforderung zum Antrag, und die Eingangsbestätigung ist noch keine Annahme.","is_correct":true,"rationale":"Der Kunde hat den Antrag gemacht. Die E-Mail bestätigt nur den Zugang der Bestellung, eine Annahme steht noch aus."},{"text":"Ja, weil der im Shop angezeigte Preis verbindlich ist.","is_correct":false,"rationale":"Webshop-Seiten richten sich an alle und sind keine Anträge – der Shop muss nicht zu jedem angezeigten Preis verkaufen."},{"text":"Ja, weil jede Bestätigungs-E-Mail eine Annahme ist.","is_correct":false,"rationale":"Entscheidend ist der Wortlaut: „Bestellung erhalten“ bestätigt nur den Eingang, „Wir nehmen an“ wäre eine Annahme."},{"text":"Nein, weil Verträge im Internet schriftlich geschlossen werden müssen.","is_correct":false,"rationale":"Kaufverträge sind formfrei, auch im Internet genügt ein Klick."}]}'::jsonb,
+  '{"choices":[{"text":"Nein. Die Artikelseite ist nur eine Aufforderung zum Antrag, und die Eingangsbestätigung ist noch keine Annahme.","is_correct":true,"rationale":"Der Kunde hat den Antrag gemacht. Die E-Mail bestätigt nur den Zugang der Bestellung, eine Annahme steht noch aus."},{"text":"Ja, weil der im Shop angezeigte Preis verbindlich ist.","is_correct":false,"rationale":"Webshop-Seiten richten sich an alle und sind keine Anträge. Der Shop muss nicht zu jedem angezeigten Preis verkaufen."},{"text":"Ja, weil jede Bestätigungs-E-Mail eine Annahme ist.","is_correct":false,"rationale":"Entscheidend ist der Wortlaut: „Bestellung erhalten“ bestätigt nur den Eingang, „Wir nehmen an“ wäre eine Annahme."},{"text":"Nein, weil Verträge im Internet schriftlich geschlossen werden müssen.","is_correct":false,"rationale":"Kaufverträge sind formfrei, auch im Internet genügt ein Klick."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -29855,7 +29855,7 @@ values (
   2,
   '{}',
   null,
-  '{"buckets":["nichtig","anfechtbar","wirksam"],"match_items":[{"text":"Zwei Personen verkaufen ein Grundstück per Handschlag, ohne Notar.","bucket":0,"rationale":"Die gesetzlich vorgeschriebene notarielle Form fehlt (§ 125 BGB)."},{"text":"Ein Kunde kauft Monitore und stellt später fest, dass er sie gar nicht braucht.","bucket":2,"rationale":"Motivirrtum – kein Anfechtungsgrund, der Vertrag bleibt wirksam."},{"text":"Ein Systemhaus hat intern falsch kalkuliert und merkt, dass der vereinbarte Preis zu niedrig ist.","bucket":2,"rationale":"Ein interner Kalkulationsirrtum ist ein Motivirrtum und berechtigt nicht zur Anfechtung."},{"text":"Ein 6-jähriges Kind kauft ein Videospiel für 60 €.","bucket":0,"rationale":"Unter 7 Jahren geschäftsunfähig – die Erklärung ist nichtig (§ 105 BGB)."},{"text":"Ein Verkäufer verschweigt bewusst einen reparierten Wasserschaden am Server.","bucket":1,"rationale":"Arglistige Täuschung nach § 123 BGB – anfechtbar innerhalb eines Jahres ab Entdeckung."},{"text":"Ein Händler tippt im Angebot 1.000 statt 100 Stück.","bucket":1,"rationale":"Erklärungsirrtum nach § 119 Abs. 1 BGB – unverzüglich anfechtbar."}]}'::jsonb,
+  '{"buckets":["nichtig","anfechtbar","wirksam"],"match_items":[{"text":"Zwei Personen verkaufen ein Grundstück per Handschlag, ohne Notar.","bucket":0,"rationale":"Die gesetzlich vorgeschriebene notarielle Form fehlt (§ 125 BGB)."},{"text":"Ein Kunde kauft Monitore und stellt später fest, dass er sie gar nicht braucht.","bucket":2,"rationale":"Motivirrtum: kein Anfechtungsgrund, der Vertrag bleibt wirksam."},{"text":"Ein Systemhaus hat intern falsch kalkuliert und merkt, dass der vereinbarte Preis zu niedrig ist.","bucket":2,"rationale":"Ein interner Kalkulationsirrtum ist ein Motivirrtum und berechtigt nicht zur Anfechtung."},{"text":"Ein 6-jähriges Kind kauft ein Videospiel für 60 €.","bucket":0,"rationale":"Unter 7 Jahren geschäftsunfähig, deshalb ist die Erklärung ist nichtig (§ 105 BGB)."},{"text":"Ein Verkäufer verschweigt bewusst einen reparierten Wasserschaden am Server.","bucket":1,"rationale":"Arglistige Täuschung nach § 123 BGB: anfechtbar innerhalb eines Jahres ab Entdeckung."},{"text":"Ein Händler tippt im Angebot 1.000 statt 100 Stück.","bucket":1,"rationale":"Erklärungsirrtum nach § 119 Abs. 1 BGB: unverzüglich anfechtbar."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -29907,13 +29907,13 @@ values (
   'vertraege',
   'vt-zustandekommen',
   'single',
-  'Ein Systemhaus hat einer Kanzlei per E-Mail 50 Switches zu je 129 € angeboten – gemeint waren 219 €, der Vertriebsmitarbeiter hat Ziffern vertauscht. Die Kanzlei nimmt sofort an. Der Fehler fällt dem Systemhaus zwei Tage später auf.',
+  'Ein Systemhaus hat einer Kanzlei per E-Mail 50 Switches zu je 129 € angeboten. Gemeint waren 219 €, der Vertriebsmitarbeiter hat Ziffern vertauscht. Die Kanzlei nimmt sofort an. Der Fehler fällt dem Systemhaus zwei Tage später auf.',
   'Was sollte das Systemhaus tun?',
   'Bei einem Erklärungsirrtum ist der Vertrag wirksam, aber anfechtbar. Die Anfechtung muss unverzüglich nach Entdeckung erklärt werden; danach ist der Vertrag rückwirkend nichtig. Das Systemhaus muss der Kanzlei dann den Vertrauensschaden ersetzen (§ 122 BGB).',
   3,
   '{}',
   null,
-  '{"choices":[{"text":"Unverzüglich die Anfechtung wegen Erklärungsirrtums erklären","is_correct":true,"rationale":"Ein Zahlendreher ist ein Erklärungsirrtum (§ 119 Abs. 1 BGB). Angefochten werden muss ohne schuldhaftes Zögern (§ 121 BGB)."},{"text":"Nichts – der Vertrag ist wegen des falschen Preises automatisch nichtig","is_correct":false,"rationale":"Ein Irrtum macht den Vertrag nur anfechtbar. Ohne Anfechtung bleibt er wirksam."},{"text":"Sich ein Jahr Zeit lassen und dann anfechten","is_correct":false,"rationale":"Die Jahresfrist gilt nur bei arglistiger Täuschung und Drohung."},{"text":"Den Vertrag innerhalb von 14 Tagen widerrufen","is_correct":false,"rationale":"Ein Widerrufsrecht hat nur der Verbraucher im Fernabsatz – nicht der verkaufende Unternehmer."}]}'::jsonb,
+  '{"choices":[{"text":"Unverzüglich die Anfechtung wegen Erklärungsirrtums erklären","is_correct":true,"rationale":"Ein Zahlendreher ist ein Erklärungsirrtum (§ 119 Abs. 1 BGB). Angefochten werden muss ohne schuldhaftes Zögern (§ 121 BGB)."},{"text":"Nichts. Der Vertrag ist wegen des falschen Preises automatisch nichtig","is_correct":false,"rationale":"Ein Irrtum macht den Vertrag nur anfechtbar. Ohne Anfechtung bleibt er wirksam."},{"text":"Sich ein Jahr Zeit lassen und dann anfechten","is_correct":false,"rationale":"Die Jahresfrist gilt nur bei arglistiger Täuschung und Drohung."},{"text":"Den Vertrag innerhalb von 14 Tagen widerrufen","is_correct":false,"rationale":"Ein Widerrufsrecht hat nur der Verbraucher im Fernabsatz, nicht der verkaufende Unternehmer."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -29942,7 +29942,7 @@ values (
   2,
   '{}',
   null,
-  '{"diagram":{"type":"sequenz","teilnehmer":["Kunde","Händler"],"nachrichten":[{"von":1,"an":0,"text":"Angebot, gültig bis 30.04."},{"von":0,"an":1,"text":"Bestellung am 05.05."},{"von":1,"an":0,"text":"Auftragsbestätigung","antwort":true}]},"choices":[{"text":"Mit der Auftragsbestätigung des Händlers","is_correct":true,"rationale":"Die Bestellung kam nach Fristablauf und ist deshalb ein neuer Antrag. Den nimmt der Händler mit der Auftragsbestätigung an."},{"text":"Mit der Bestellung des Kunden","is_correct":false,"rationale":"Sie wäre nur bei rechtzeitigem Eingang eine Annahme gewesen. Nach dem 30.04. ist sie ein neuer Antrag (§ 150 Abs. 1 BGB)."},{"text":"Mit dem Angebot des Händlers","is_correct":false,"rationale":"Ein Angebot allein ist nur der Antrag – es braucht immer eine Annahme."},{"text":"Es kommt kein Vertrag zustande, weil die Frist abgelaufen ist.","is_correct":false,"rationale":"Der Fristablauf beendet nur die Bindung an das erste Angebot. Der neue Antrag kann trotzdem angenommen werden."}]}'::jsonb,
+  '{"diagram":{"type":"sequenz","teilnehmer":["Kunde","Händler"],"nachrichten":[{"von":1,"an":0,"text":"Angebot, gültig bis 30.04."},{"von":0,"an":1,"text":"Bestellung am 05.05."},{"von":1,"an":0,"text":"Auftragsbestätigung","antwort":true}]},"choices":[{"text":"Mit der Auftragsbestätigung des Händlers","is_correct":true,"rationale":"Die Bestellung kam nach Fristablauf und ist deshalb ein neuer Antrag. Den nimmt der Händler mit der Auftragsbestätigung an."},{"text":"Mit der Bestellung des Kunden","is_correct":false,"rationale":"Sie wäre nur bei rechtzeitigem Eingang eine Annahme gewesen. Nach dem 30.04. ist sie ein neuer Antrag (§ 150 Abs. 1 BGB)."},{"text":"Mit dem Angebot des Händlers","is_correct":false,"rationale":"Ein Angebot allein ist nur der Antrag; es braucht immer eine Annahme."},{"text":"Es kommt kein Vertrag zustande, weil die Frist abgelaufen ist.","is_correct":false,"rationale":"Der Fristablauf beendet nur die Bindung an das erste Angebot. Der neue Antrag kann trotzdem angenommen werden."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -30025,11 +30025,11 @@ values (
   'single',
   'Ein Autohaus nutzt eine Online-Terminbuchung als SaaS für 79 € im Monat. Wegen eines Fehlers beim Anbieter ist die Anwendung drei Tage lang nicht erreichbar.',
   'Welche Vertragsart liegt typischerweise vor, und was folgt daraus für die Monatsgebühr?',
-  'Software as a Service wird als Miete eingeordnet (§ 535 BGB). Der Anbieter muss die Software während der Laufzeit gebrauchstauglich halten. Fällt sie erheblich aus, ist der Kunde für diese Zeit ganz oder teilweise von der Miete befreit (§ 536 BGB) – er muss den Ausfall aber melden.',
+  'Software as a Service wird als Miete eingeordnet (§ 535 BGB). Der Anbieter muss die Software während der Laufzeit gebrauchstauglich halten. Fällt sie erheblich aus, ist der Kunde für diese Zeit ganz oder teilweise von der Miete befreit (§ 536 BGB); er muss den Ausfall aber melden.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Mietvertrag – die Gebühr mindert sich für die Ausfallzeit kraft Gesetzes.","is_correct":true,"rationale":"SaaS ist Gebrauchsüberlassung auf Zeit. Bei einem erheblichen Mangel der Mietsache mindert sich die Miete automatisch (§ 536 BGB)."},{"text":"Kaufvertrag – das Autohaus muss erst Nacherfüllung verlangen.","is_correct":false,"rationale":"Es wird nichts dauerhaft übereignet, sondern Nutzung auf Zeit gewährt."},{"text":"Werkvertrag – das Autohaus muss die Software erneut abnehmen.","is_correct":false,"rationale":"Geschuldet ist nicht die Herstellung eines Werks, sondern die laufende Bereitstellung."},{"text":"Dienstvertrag – die Gebühr ist voll zu zahlen, weil nur eine Tätigkeit geschuldet ist.","is_correct":false,"rationale":"Der Anbieter schuldet die nutzbare Bereitstellung der Software, nicht bloß ein Bemühen."}]}'::jsonb,
+  '{"choices":[{"text":"Mietvertrag: Die Gebühr mindert sich für die Ausfallzeit kraft Gesetzes.","is_correct":true,"rationale":"SaaS ist Gebrauchsüberlassung auf Zeit. Bei einem erheblichen Mangel der Mietsache mindert sich die Miete automatisch (§ 536 BGB)."},{"text":"Kaufvertrag: Das Autohaus muss erst Nacherfüllung verlangen.","is_correct":false,"rationale":"Es wird nichts dauerhaft übereignet, sondern Nutzung auf Zeit gewährt."},{"text":"Werkvertrag: Das Autohaus muss die Software erneut abnehmen.","is_correct":false,"rationale":"Geschuldet ist nicht die Herstellung eines Werks, sondern die laufende Bereitstellung."},{"text":"Dienstvertrag: Die Gebühr ist voll zu zahlen, weil nur eine Tätigkeit geschuldet ist.","is_correct":false,"rationale":"Der Anbieter schuldet die nutzbare Bereitstellung der Software, nicht bloß ein Bemühen."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -30087,7 +30087,7 @@ values (
   2,
   '{}',
   null,
-  '{"buckets":["Leihe","Pacht","Darlehen","Leasing"],"match_items":[{"text":"Ein Händler überlässt einer Schule kostenlos für vier Wochen einen Beamer.","bucket":0,"rationale":"Unentgeltliche Gebrauchsüberlassung auf Zeit (§ 598 BGB)."},{"text":"Ein Betreiber übernimmt die Betriebskantine samt Ausstattung gegen Entgelt und behält die Einnahmen.","bucket":1,"rationale":"Gebrauch plus Fruchtziehung, also Erträge (§ 581 BGB)."},{"text":"Eine Bank stellt 50.000 € für neue Server bereit, zurückzuzahlen mit Zinsen.","bucket":2,"rationale":"Geld auf Zeit gegen Zins (§ 488 BGB)."},{"text":"Eine Leasinggesellschaft kauft 40 Notebooks und überlässt sie 36 Monate gegen monatliche Raten.","bucket":3,"rationale":"Finanzierte Gebrauchsüberlassung – im Kern wie Miete behandelt."},{"text":"Ein Kollege überlässt einem anderen unentgeltlich für eine Woche sein Messgerät.","bucket":0,"rationale":"Unentgeltlich, auf Zeit – Leihe."}]}'::jsonb,
+  '{"buckets":["Leihe","Pacht","Darlehen","Leasing"],"match_items":[{"text":"Ein Händler überlässt einer Schule kostenlos für vier Wochen einen Beamer.","bucket":0,"rationale":"Unentgeltliche Gebrauchsüberlassung auf Zeit (§ 598 BGB)."},{"text":"Ein Betreiber übernimmt die Betriebskantine samt Ausstattung gegen Entgelt und behält die Einnahmen.","bucket":1,"rationale":"Gebrauch plus Fruchtziehung, also Erträge (§ 581 BGB)."},{"text":"Eine Bank stellt 50.000 € für neue Server bereit, zurückzuzahlen mit Zinsen.","bucket":2,"rationale":"Geld auf Zeit gegen Zins (§ 488 BGB)."},{"text":"Eine Leasinggesellschaft kauft 40 Notebooks und überlässt sie 36 Monate gegen monatliche Raten.","bucket":3,"rationale":"Finanzierte Gebrauchsüberlassung, im Kern wie Miete behandelt."},{"text":"Ein Kollege überlässt einem anderen unentgeltlich für eine Woche sein Messgerät.","bucket":0,"rationale":"Unentgeltlich, auf Zeit: Leihe."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -30112,11 +30112,11 @@ values (
   'single',
   'Ein Systemhaus liefert einem Kunden einen Server unter Eigentumsvorbehalt. Der Server steht beim Kunden im Rechenzentrum, bezahlt ist erst die Hälfte des Kaufpreises.',
   'Wer ist Eigentümer und wer ist Besitzer des Servers?',
-  'Besitz ist die tatsächliche Herrschaft, Eigentum die rechtliche. Beim Eigentumsvorbehalt übergibt der Verkäufer die Sache, bleibt aber bis zur vollständigen Zahlung Eigentümer – und kann sie bei Zahlungsausfall nach Rücktritt zurückverlangen.',
+  'Besitz ist die tatsächliche Herrschaft, Eigentum die rechtliche. Beim Eigentumsvorbehalt übergibt der Verkäufer die Sache, bleibt aber bis zur vollständigen Zahlung Eigentümer und kann sie bei Zahlungsausfall nach Rücktritt zurückverlangen.',
   1,
   '{}',
   null,
-  '{"choices":[{"text":"Eigentümer: Systemhaus – Besitzer: Kunde","is_correct":true,"rationale":"Unter Eigentumsvorbehalt geht das Eigentum erst mit vollständiger Zahlung über (§ 449 BGB). Die tatsächliche Herrschaft hat der Kunde."},{"text":"Eigentümer und Besitzer: Kunde","is_correct":false,"rationale":"Das Eigentum wechselt wegen des Vorbehalts erst nach vollständiger Zahlung."},{"text":"Eigentümer: Kunde – Besitzer: Systemhaus","is_correct":false,"rationale":"Umgekehrt: Das Systemhaus hat den Server nicht mehr in seiner Gewalt."},{"text":"Beide sind je zur Hälfte Eigentümer.","is_correct":false,"rationale":"Eine Teilzahlung führt nicht zu anteiligem Eigentum."}]}'::jsonb,
+  '{"choices":[{"text":"Eigentümer: Systemhaus; Besitzer: Kunde","is_correct":true,"rationale":"Unter Eigentumsvorbehalt geht das Eigentum erst mit vollständiger Zahlung über (§ 449 BGB). Die tatsächliche Herrschaft hat der Kunde."},{"text":"Eigentümer und Besitzer: Kunde","is_correct":false,"rationale":"Das Eigentum wechselt wegen des Vorbehalts erst nach vollständiger Zahlung."},{"text":"Eigentümer: Kunde; Besitzer: Systemhaus","is_correct":false,"rationale":"Umgekehrt: Das Systemhaus hat den Server nicht mehr in seiner Gewalt."},{"text":"Beide sind je zur Hälfte Eigentümer.","is_correct":false,"rationale":"Eine Teilzahlung führt nicht zu anteiligem Eigentum."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -30203,7 +30203,7 @@ values (
   3,
   '{}',
   null,
-  '{"choices":[{"text":"Das Softwarehaus erhält nur die Nutzungsrechte, die der Vertragszweck erfordert – es sollte sie ausdrücklich regeln.","is_correct":true,"rationale":"Zweckübertragungslehre (§ 31 Abs. 5 UrhG): Nicht genannte Rechte gelten nur im Umfang des Vertragszwecks als eingeräumt."},{"text":"Das Softwarehaus erhält automatisch alle Verwertungsrechte, wie bei einem Angestellten.","is_correct":false,"rationale":"§ 69b UrhG gilt nur für Arbeitnehmer, nicht für Freiberufler."},{"text":"Das Softwarehaus wird Urheber, weil es das Plug-in bezahlt hat.","is_correct":false,"rationale":"Urheber ist immer der Mensch, der das Werk geschaffen hat."},{"text":"Das Plug-in ist nicht geschützt, weil kein ©-Vermerk angebracht ist.","is_correct":false,"rationale":"Der Schutz entsteht automatisch mit der Schöpfung."}]}'::jsonb,
+  '{"choices":[{"text":"Das Softwarehaus erhält nur die Nutzungsrechte, die der Vertragszweck erfordert. Es sollte sie ausdrücklich regeln.","is_correct":true,"rationale":"Zweckübertragungslehre (§ 31 Abs. 5 UrhG): Nicht genannte Rechte gelten nur im Umfang des Vertragszwecks als eingeräumt."},{"text":"Das Softwarehaus erhält automatisch alle Verwertungsrechte, wie bei einem Angestellten.","is_correct":false,"rationale":"§ 69b UrhG gilt nur für Arbeitnehmer, nicht für Freiberufler."},{"text":"Das Softwarehaus wird Urheber, weil es das Plug-in bezahlt hat.","is_correct":false,"rationale":"Urheber ist immer der Mensch, der das Werk geschaffen hat."},{"text":"Das Plug-in ist nicht geschützt, weil kein ©-Vermerk angebracht ist.","is_correct":false,"rationale":"Der Schutz entsteht automatisch mit der Schöpfung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -30232,7 +30232,7 @@ values (
   2,
   '{}',
   null,
-  '{"buckets":["ohne Zustimmung erlaubt","nur mit Zustimmung oder Lizenz"],"match_items":[{"text":"Einen Fehler beheben, der die bestimmungsgemäße Nutzung verhindert, wenn der Vertrag nichts anderes regelt","bucket":0,"rationale":"§ 69d Abs. 1 UrhG erlaubt die Fehlerberichtigung."},{"text":"Den Quellcode ändern und die neue Version verkaufen","bucket":1,"rationale":"Bearbeitung und Verbreitung brauchen die Zustimmung."},{"text":"Das Programm beobachten und testen, um seine Funktionsweise zu verstehen","bucket":0,"rationale":"§ 69d Abs. 3 UrhG."},{"text":"Das Programm auf 12 statt der lizenzierten 10 Rechner installieren","bucket":1,"rationale":"Jede Installation ist eine Vervielfältigung und braucht ein Nutzungsrecht."},{"text":"Eine Sicherungskopie anlegen, die für die weitere Nutzung erforderlich ist","bucket":0,"rationale":"§ 69d Abs. 2 UrhG – kann vertraglich nicht untersagt werden."},{"text":"Kopien des Programms an Kunden weitergeben","bucket":1,"rationale":"Verbreitung ist dem Rechteinhaber vorbehalten (§ 69c UrhG)."}]}'::jsonb,
+  '{"buckets":["ohne Zustimmung erlaubt","nur mit Zustimmung oder Lizenz"],"match_items":[{"text":"Einen Fehler beheben, der die bestimmungsgemäße Nutzung verhindert, wenn der Vertrag nichts anderes regelt","bucket":0,"rationale":"§ 69d Abs. 1 UrhG erlaubt die Fehlerberichtigung."},{"text":"Den Quellcode ändern und die neue Version verkaufen","bucket":1,"rationale":"Bearbeitung und Verbreitung brauchen die Zustimmung."},{"text":"Das Programm beobachten und testen, um seine Funktionsweise zu verstehen","bucket":0,"rationale":"§ 69d Abs. 3 UrhG."},{"text":"Das Programm auf 12 statt der lizenzierten 10 Rechner installieren","bucket":1,"rationale":"Jede Installation ist eine Vervielfältigung und braucht ein Nutzungsrecht."},{"text":"Eine Sicherungskopie anlegen, die für die weitere Nutzung erforderlich ist","bucket":0,"rationale":"§ 69d Abs. 2 UrhG: kann vertraglich nicht untersagt werden."},{"text":"Kopien des Programms an Kunden weitergeben","bucket":1,"rationale":"Verbreitung ist dem Rechteinhaber vorbehalten (§ 69c UrhG)."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -30261,7 +30261,7 @@ values (
   3,
   '{}',
   null,
-  '{"choices":[{"text":"Eine mit Zustimmung des Rechteinhabers in der EU verkaufte Programmkopie darf grundsätzlich weiterverkauft werden.","is_correct":true,"rationale":"Erschöpfungsgrundsatz nach § 69c Nr. 3 UrhG."},{"text":"Das gilt nach dem EuGH auch für per Download gekaufte, unbefristete Lizenzen.","is_correct":true,"rationale":"Urteil UsedSoft (2012)."},{"text":"Der Verkäufer muss seine eigene Kopie unbrauchbar machen.","is_correct":true,"rationale":"Sonst würde die Software vervielfältigt statt weitergegeben."},{"text":"Ein SaaS-Abonnement darf an einen Dritten weiterverkauft werden, weil sich das Recht erschöpft hat.","is_correct":false,"rationale":"Bei Miete und Abo wird keine Kopie verkauft – es gibt nichts, was sich erschöpfen könnte."},{"text":"Wer eine gebrauchte Lizenz kauft, wird Urheber des Programms.","is_correct":false,"rationale":"Er erwirbt nur ein Nutzungsrecht. Urheber bleibt der Entwickler."}]}'::jsonb,
+  '{"choices":[{"text":"Eine mit Zustimmung des Rechteinhabers in der EU verkaufte Programmkopie darf grundsätzlich weiterverkauft werden.","is_correct":true,"rationale":"Erschöpfungsgrundsatz nach § 69c Nr. 3 UrhG."},{"text":"Das gilt nach dem EuGH auch für per Download gekaufte, unbefristete Lizenzen.","is_correct":true,"rationale":"Urteil UsedSoft (2012)."},{"text":"Der Verkäufer muss seine eigene Kopie unbrauchbar machen.","is_correct":true,"rationale":"Sonst würde die Software vervielfältigt statt weitergegeben."},{"text":"Ein SaaS-Abonnement darf an einen Dritten weiterverkauft werden, weil sich das Recht erschöpft hat.","is_correct":false,"rationale":"Bei Miete und Abo wird keine Kopie verkauft, also gibt es nichts, was sich erschöpfen könnte."},{"text":"Wer eine gebrauchte Lizenz kauft, wird Urheber des Programms.","is_correct":false,"rationale":"Er erwirbt nur ein Nutzungsrecht. Urheber bleibt der Entwickler."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -30286,11 +30286,11 @@ values (
   'single',
   'Ein Start-up hat eine App entwickelt, mit der Kunden per Chatbot Termine buchen. Ein Konkurrent bringt eine App mit derselben Idee heraus; den Code hat er komplett selbst geschrieben.',
   'Kann das Start-up urheberrechtlich dagegen vorgehen?',
-  'Das Urheberrecht schützt Computerprogramme in ihrer konkreten Ausdrucksform – Quellcode, Maschinencode, Entwurfsmaterial. Die zugrunde liegende Idee bleibt frei. Wer Code nicht kopiert, sondern selbst schreibt, verletzt kein Urheberrecht.',
+  'Das Urheberrecht schützt Computerprogramme in ihrer konkreten Ausdrucksform: Quellcode, Maschinencode, Entwurfsmaterial. Die zugrunde liegende Idee bleibt frei. Wer Code nicht kopiert, sondern selbst schreibt, verletzt kein Urheberrecht.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Nein, Ideen und Grundsätze sind nicht geschützt – nur ihre konkrete Umsetzung im Code.","is_correct":true,"rationale":"§ 69a Abs. 2 UrhG: Ideen und Grundsätze, auch von Schnittstellen, sind frei."},{"text":"Ja, weil das Start-up die Idee zuerst hatte.","is_correct":false,"rationale":"Zeitlicher Vorrang schützt keine Idee."},{"text":"Ja, das Urheberrecht schützt jede App mit gleicher Funktion 70 Jahre lang.","is_correct":false,"rationale":"Geschützt ist das konkrete Programm, nicht die Funktion."},{"text":"Ja, sobald das Start-up die App beim Patentamt anmeldet, gilt das Urheberrecht rückwirkend.","is_correct":false,"rationale":"Das Urheberrecht hat mit dem Patentamt nichts zu tun, und Software als solche ist nicht patentierbar."}]}'::jsonb,
+  '{"choices":[{"text":"Nein, Ideen und Grundsätze sind nicht geschützt, nur ihre konkrete Umsetzung im Code.","is_correct":true,"rationale":"§ 69a Abs. 2 UrhG: Ideen und Grundsätze, auch von Schnittstellen, sind frei."},{"text":"Ja, weil das Start-up die Idee zuerst hatte.","is_correct":false,"rationale":"Zeitlicher Vorrang schützt keine Idee."},{"text":"Ja, das Urheberrecht schützt jede App mit gleicher Funktion 70 Jahre lang.","is_correct":false,"rationale":"Geschützt ist das konkrete Programm, nicht die Funktion."},{"text":"Ja, sobald das Start-up die App beim Patentamt anmeldet, gilt das Urheberrecht rückwirkend.","is_correct":false,"rationale":"Das Urheberrecht hat mit dem Patentamt nichts zu tun, und Software als solche ist nicht patentierbar."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -30460,7 +30460,7 @@ values (
   'single',
   'Ein SLA mit 24/7-Servicezeit legt für Priorität 1 fest: Reaktionszeit 1 Stunde, Lösungszeit 4 Stunden. Eine Störung wird um 9:00 Uhr gemeldet. Um 9:40 Uhr ruft ein Techniker zurück und beginnt mit der Analyse; um 14:30 Uhr ist der Fehler behoben.',
   'Wie ist die Einhaltung des SLA zu bewerten?',
-  'Beide Zeiten beginnen mit der Meldung um 9:00 Uhr. Reaktionszeit bis 10:00 Uhr – Rückruf um 9:40 Uhr, eingehalten. Lösungszeit bis 13:00 Uhr – behoben um 14:30 Uhr, um 1,5 h überschritten.',
+  'Beide Zeiten beginnen mit der Meldung um 9:00 Uhr. Reaktionszeit bis 10:00 Uhr: Rückruf um 9:40 Uhr, eingehalten. Lösungszeit bis 13:00 Uhr: behoben um 14:30 Uhr, um 1,5 h überschritten.',
   1,
   '{}',
   null,
@@ -30638,7 +30638,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"P4","is_correct":true,"rationale":"Eine Abteilung ist betroffen (Auswirkung mittel), es gibt eine Ausweichmöglichkeit und keine Eile (Dringlichkeit niedrig) -> mittel × niedrig = P4."},{"text":"P2","is_correct":false,"rationale":"P2 wäre hoch × mittel oder mittel × hoch – dafür fehlt die Dringlichkeit."},{"text":"P3","is_correct":false,"rationale":"P3 wäre mittel × mittel. Durch den Ausweichdrucker ist die Dringlichkeit aber niedrig."},{"text":"P5","is_correct":false,"rationale":"P5 wäre niedrig × niedrig. Mit 15 Personen ist mehr als ein Einzelner betroffen."}]}'::jsonb,
+  '{"choices":[{"text":"P4","is_correct":true,"rationale":"Eine Abteilung ist betroffen (Auswirkung mittel), es gibt eine Ausweichmöglichkeit und keine Eile (Dringlichkeit niedrig) -> mittel × niedrig = P4."},{"text":"P2","is_correct":false,"rationale":"P2 wäre hoch × mittel oder mittel × hoch; dafür fehlt die Dringlichkeit."},{"text":"P3","is_correct":false,"rationale":"P3 wäre mittel × mittel. Durch den Ausweichdrucker ist die Dringlichkeit aber niedrig."},{"text":"P5","is_correct":false,"rationale":"P5 wäre niedrig × niedrig. Mit 15 Personen ist mehr als ein Einzelner betroffen."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -30663,11 +30663,11 @@ values (
   'ordering',
   'Eine Anwenderin ruft beim Service Desk an: Ihr ERP-Client meldet beim Start einen Datenbankfehler.',
   'Bringe die Bearbeitung des Tickets in die richtige Reihenfolge.',
-  'Erfassen, kategorisieren und priorisieren macht der 1st Level. Kann er nicht lösen, eskaliert er funktional – das Ticket bleibt offen und behält seine Historie. Geschlossen wird erst nach bestätigter Lösung.',
+  'Erfassen, kategorisieren und priorisieren macht der 1st Level. Kann er nicht lösen, eskaliert er funktional. Das Ticket bleibt offen und behält seine Historie. Geschlossen wird erst nach bestätigter Lösung.',
   1,
   '{}',
   null,
-  '{"ordered_items":["Anruf entgegennehmen und Ticket anlegen","Kategorie und Priorität festlegen","Bekannte Standardlösungen prüfen – ohne Erfolg","Funktionale Eskalation an den 2nd Level mit dokumentiertem Ticket","Lösung umsetzen und im Ticket dokumentieren","Lösung von der Anwenderin bestätigen lassen und Ticket schließen"]}'::jsonb,
+  '{"ordered_items":["Anruf entgegennehmen und Ticket anlegen","Kategorie und Priorität festlegen","Bekannte Standardlösungen prüfen, ohne Erfolg","Funktionale Eskalation an den 2nd Level mit dokumentiertem Ticket","Lösung umsetzen und im Ticket dokumentieren","Lösung von der Anwenderin bestätigen lassen und Ticket schließen"]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -30899,7 +30899,7 @@ values (
   2,
   '{}',
   null,
-  '{"buckets":["Standard Change","Normal Change","Emergency Change"],"match_items":[{"text":"Sofort einen Sicherheitspatch für eine aktiv ausgenutzte Lücke einspielen","bucket":2,"rationale":"Muss sofort passieren – beschleunigte Genehmigung."},{"text":"Ein Standard-Notebook für eine neue Mitarbeiterin nach Checkliste einrichten","bucket":0,"rationale":"Häufig, risikoarm, vorab genehmigt."},{"text":"Eine neue Firewall-Architektur einführen","bucket":1,"rationale":"Größere geplante Änderung mit Bewertung."},{"text":"Das ERP-System auf einen neuen Datenbankserver migrieren","bucket":1,"rationale":"Geplant, riskant – muss einzeln bewertet und genehmigt werden."},{"text":"Die monatlich freigegebenen Updates der Virenschutz-Signaturen einspielen","bucket":0,"rationale":"Wiederkehrend und vorab freigegeben."}]}'::jsonb,
+  '{"buckets":["Standard Change","Normal Change","Emergency Change"],"match_items":[{"text":"Sofort einen Sicherheitspatch für eine aktiv ausgenutzte Lücke einspielen","bucket":2,"rationale":"Muss sofort passieren, also beschleunigte Genehmigung."},{"text":"Ein Standard-Notebook für eine neue Mitarbeiterin nach Checkliste einrichten","bucket":0,"rationale":"Häufig, risikoarm, vorab genehmigt."},{"text":"Eine neue Firewall-Architektur einführen","bucket":1,"rationale":"Größere geplante Änderung mit Bewertung."},{"text":"Das ERP-System auf einen neuen Datenbankserver migrieren","bucket":1,"rationale":"Geplant, riskant: muss einzeln bewertet und genehmigt werden."},{"text":"Die monatlich freigegebenen Updates der Virenschutz-Signaturen einspielen","bucket":0,"rationale":"Wiederkehrend und vorab freigegeben."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -30957,7 +30957,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Als Event – eine bedeutsame Zustandsänderung, aber noch keine Störung","is_correct":true,"rationale":"Der Service ist nicht unterbrochen oder beeinträchtigt, also liegt kein Incident vor."},{"text":"Als Incident der Priorität 1","is_correct":false,"rationale":"Ein Incident setzt eine Unterbrechung oder Qualitätsminderung voraus – die gibt es hier nicht."},{"text":"Als Problem, weil die Ursache unbekannt ist","is_correct":false,"rationale":"Ein Problem ist die Ursache von Incidents. Hier gibt es noch keinen Incident."},{"text":"Als Emergency Change","is_correct":false,"rationale":"Es ist keine Änderung, sondern eine Meldung des Monitorings."}]}'::jsonb,
+  '{"choices":[{"text":"Als Event, also eine bedeutsame Zustandsänderung, aber noch keine Störung","is_correct":true,"rationale":"Der Service ist nicht unterbrochen oder beeinträchtigt, also liegt kein Incident vor."},{"text":"Als Incident der Priorität 1","is_correct":false,"rationale":"Ein Incident setzt eine Unterbrechung oder Qualitätsminderung voraus, und die gibt es hier nicht."},{"text":"Als Problem, weil die Ursache unbekannt ist","is_correct":false,"rationale":"Ein Problem ist die Ursache von Incidents. Hier gibt es noch keinen Incident."},{"text":"Als Emergency Change","is_correct":false,"rationale":"Es ist keine Änderung, sondern eine Meldung des Monitorings."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -31069,7 +31069,7 @@ values (
   'matching',
   'Ein Lieferant ist mit der Lieferung von Netzwerkkomponenten in Verzug. Er hat die Verspätung verschuldet.',
   'Welche Rechte hat der Käufer sofort, welche erst nach einer erfolglosen Nachfrist?',
-  'Ohne Nachfrist bleibt der Vertrag bestehen: Der Käufer kann Lieferung und Ersatz des Verzögerungsschadens verlangen. Erst nach erfolgloser Nachfrist kann er sich vom Vertrag lösen – durch Rücktritt und/oder Schadensersatz statt der Leistung.',
+  'Ohne Nachfrist bleibt der Vertrag bestehen: Der Käufer kann Lieferung und Ersatz des Verzögerungsschadens verlangen. Erst nach erfolgloser Nachfrist kann er sich vom Vertrag lösen, durch Rücktritt und/oder Schadensersatz statt der Leistung.',
   2,
   '{}',
   null,
@@ -31185,11 +31185,11 @@ values (
   'single',
   'Ein Händler bringt am vereinbarten Tag einen Server zum Kunden. Der Kunde verweigert grundlos die Annahme. Auf dem Rücktransport wird der Server durch eine leichte Unachtsamkeit des Fahrers beschädigt.',
   'Wie ist die Rechtslage?',
-  'Annahmeverzug (§§ 293 ff. BGB): Der Gläubiger nimmt die ordnungsgemäß angebotene Leistung nicht an – Verschulden ist nicht nötig. Folgen: Haftungsmilderung auf Vorsatz und grobe Fahrlässigkeit, Ersatz von Mehraufwendungen, unter Kaufleuten Selbsthilfeverkauf. Der Kunde muss trotzdem zahlen.',
+  'Annahmeverzug (§§ 293 ff. BGB): Der Gläubiger nimmt die ordnungsgemäß angebotene Leistung nicht an. Verschulden ist nicht nötig. Folgen: Haftungsmilderung auf Vorsatz und grobe Fahrlässigkeit, Ersatz von Mehraufwendungen, unter Kaufleuten Selbsthilfeverkauf. Der Kunde muss trotzdem zahlen.',
   3,
   '{}',
   null,
-  '{"choices":[{"text":"Der Kunde ist im Annahmeverzug; der Händler haftet nur noch für Vorsatz und grobe Fahrlässigkeit, also nicht für diesen Schaden.","is_correct":true,"rationale":"§ 300 Abs. 1 BGB mildert die Haftung des Verkäufers während des Annahmeverzugs."},{"text":"Der Händler ist im Lieferungsverzug.","is_correct":false,"rationale":"Er hat pünktlich und ordnungsgemäß angeboten – die Störung liegt beim Kunden."},{"text":"Der Händler haftet voll, weil ihm der Server noch gehört.","is_correct":false,"rationale":"Während des Annahmeverzugs haftet er für leichte Fahrlässigkeit gerade nicht."},{"text":"Annahmeverzug liegt nur vor, wenn der Kunde die Verweigerung verschuldet hat.","is_correct":false,"rationale":"Annahmeverzug setzt kein Verschulden voraus."}]}'::jsonb,
+  '{"choices":[{"text":"Der Kunde ist im Annahmeverzug; der Händler haftet nur noch für Vorsatz und grobe Fahrlässigkeit, also nicht für diesen Schaden.","is_correct":true,"rationale":"§ 300 Abs. 1 BGB mildert die Haftung des Verkäufers während des Annahmeverzugs."},{"text":"Der Händler ist im Lieferungsverzug.","is_correct":false,"rationale":"Er hat pünktlich und ordnungsgemäß angeboten; die Störung liegt beim Kunden."},{"text":"Der Händler haftet voll, weil ihm der Server noch gehört.","is_correct":false,"rationale":"Während des Annahmeverzugs haftet er für leichte Fahrlässigkeit gerade nicht."},{"text":"Annahmeverzug liegt nur vor, wenn der Kunde die Verweigerung verschuldet hat.","is_correct":false,"rationale":"Annahmeverzug setzt kein Verschulden voraus."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -31334,7 +31334,7 @@ values (
   2,
   '{}',
   null,
-  '{"buckets":["Sachmangel (Beschaffenheit)","Montagemangel","Falsch- oder Zuweniglieferung","Rechtsmangel"],"match_items":[{"text":"Eine Office-Suite wird mit einem gefälschten Lizenzschlüssel verkauft.","bucket":3,"rationale":"Der Rechteinhaber kann die Nutzung untersagen – Recht eines Dritten."},{"text":"Ein Notebook hat 8 statt der vereinbarten 16 GB RAM.","bucket":0,"rationale":"Die vereinbarte Beschaffenheit fehlt."},{"text":"Statt Druckermodell A wird Modell B geliefert.","bucket":2,"rationale":"Eine andere als die geschuldete Sache."},{"text":"Der Techniker des Verkäufers baut die Netzwerkkarte falsch ein, der Server startet nicht.","bucket":1,"rationale":"Unsachgemäße Montage durch den Verkäufer."},{"text":"Beworben sind 10 Stunden Akkulaufzeit, tatsächlich sind es 3.","bucket":0,"rationale":"Die Sache hält nicht, was die Werbung verspricht – objektive Anforderung verfehlt."},{"text":"Statt 10 Switches werden 8 geliefert.","bucket":2,"rationale":"Zu geringe Menge."}]}'::jsonb,
+  '{"buckets":["Sachmangel (Beschaffenheit)","Montagemangel","Falsch- oder Zuweniglieferung","Rechtsmangel"],"match_items":[{"text":"Eine Office-Suite wird mit einem gefälschten Lizenzschlüssel verkauft.","bucket":3,"rationale":"Der Rechteinhaber kann die Nutzung untersagen: Recht eines Dritten."},{"text":"Ein Notebook hat 8 statt der vereinbarten 16 GB RAM.","bucket":0,"rationale":"Die vereinbarte Beschaffenheit fehlt."},{"text":"Statt Druckermodell A wird Modell B geliefert.","bucket":2,"rationale":"Eine andere als die geschuldete Sache."},{"text":"Der Techniker des Verkäufers baut die Netzwerkkarte falsch ein, der Server startet nicht.","bucket":1,"rationale":"Unsachgemäße Montage durch den Verkäufer."},{"text":"Beworben sind 10 Stunden Akkulaufzeit, tatsächlich sind es 3.","bucket":0,"rationale":"Die Sache hält nicht, was die Werbung verspricht: objektive Anforderung verfehlt."},{"text":"Statt 10 Switches werden 8 geliefert.","bucket":2,"rationale":"Zu geringe Menge."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -31359,7 +31359,7 @@ values (
   'ordering',
   'Ein Unternehmen hat bei einem Händler zehn Dockingstationen gekauft. Bei der Eingangsprüfung stellt es fest, dass zwei davon keinen Monitor ansteuern.',
   'Bringe das Vorgehen des Käufers in die richtige Reihenfolge.',
-  'Unter Kaufleuten gilt die Rügepflicht nach § 377 HGB. Dann hat die Nacherfüllung Vorrang; nach dem zweiten erfolglosen Versuch gilt sie als fehlgeschlagen (§ 440 BGB). Erst danach kommen Rücktritt oder Minderung und – bei Verschulden – Schadensersatz.',
+  'Unter Kaufleuten gilt die Rügepflicht nach § 377 HGB. Dann hat die Nacherfüllung Vorrang; nach dem zweiten erfolglosen Versuch gilt sie als fehlgeschlagen (§ 440 BGB). Erst danach kommen Rücktritt oder Minderung und, bei Verschulden, Schadensersatz.',
   1,
   '{}',
   null,
@@ -31388,7 +31388,7 @@ values (
   'multiple',
   'Eine Privatperson kauft bei einem Elektronikhändler ein neues Smartphone.',
   'Welche Aussagen sind richtig?',
-  'Verbrauchsgüterkauf: 2 Jahre Gewährleistung, Beweislastumkehr im ersten Jahr, Update-Pflicht bei digitalen Elementen, kein Ausschluss per AGB. Eine Herstellergarantie ist freiwillig und kommt zusätzlich hinzu – sie verkürzt die Gewährleistung nicht.',
+  'Verbrauchsgüterkauf: 2 Jahre Gewährleistung, Beweislastumkehr im ersten Jahr, Update-Pflicht bei digitalen Elementen, kein Ausschluss per AGB. Eine Herstellergarantie ist freiwillig und kommt zusätzlich hinzu und verkürzt die Gewährleistung nicht.',
   2,
   '{}',
   null,
@@ -31417,11 +31417,11 @@ values (
   'single',
   'Ein neuer Monitor für 400 € hat einen kaum sichtbaren Kratzer am Standfuß. Die Nachbesserung ist zweimal gescheitert.',
   'Welches Recht steht dem Käufer jetzt zu?',
-  'Nach gescheiterter Nacherfüllung kann der Käufer zurücktreten oder mindern. Der Rücktritt setzt aber einen nicht unerheblichen Mangel voraus. Bei einem kleinen Kratzer bleibt deshalb die Minderung – der Preis sinkt im Verhältnis zum Wertverlust.',
+  'Nach gescheiterter Nacherfüllung kann der Käufer zurücktreten oder mindern. Der Rücktritt setzt aber einen nicht unerheblichen Mangel voraus. Bei einem kleinen Kratzer bleibt deshalb die Minderung: Der Preis sinkt im Verhältnis zum Wertverlust.',
   3,
   '{}',
   null,
-  '{"choices":[{"text":"Minderung des Kaufpreises","is_correct":true,"rationale":"Minderung ist auch bei einem unerheblichen Mangel möglich (§ 441 Abs. 1 BGB)."},{"text":"Rücktritt vom Vertrag","is_correct":false,"rationale":"Bei einem unerheblichen Mangel ist der Rücktritt ausgeschlossen (§ 323 Abs. 5 BGB)."},{"text":"Keines, weil der Mangel geringfügig ist","is_correct":false,"rationale":"Auch ein kleiner Mangel ist ein Mangel – nur der Rücktritt ist ausgeschlossen."},{"text":"Nur Ansprüche aus der Herstellergarantie","is_correct":false,"rationale":"Die gesetzliche Gewährleistung gegen den Verkäufer besteht unabhängig von einer Garantie."}]}'::jsonb,
+  '{"choices":[{"text":"Minderung des Kaufpreises","is_correct":true,"rationale":"Minderung ist auch bei einem unerheblichen Mangel möglich (§ 441 Abs. 1 BGB)."},{"text":"Rücktritt vom Vertrag","is_correct":false,"rationale":"Bei einem unerheblichen Mangel ist der Rücktritt ausgeschlossen (§ 323 Abs. 5 BGB)."},{"text":"Keines, weil der Mangel geringfügig ist","is_correct":false,"rationale":"Auch ein kleiner Mangel ist ein Mangel, nur der Rücktritt ist ausgeschlossen."},{"text":"Nur Ansprüche aus der Herstellergarantie","is_correct":false,"rationale":"Die gesetzliche Gewährleistung gegen den Verkäufer besteht unabhängig von einer Garantie."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -31508,7 +31508,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Die Verweigerung ist unzulässig – wegen unwesentlicher Mängel darf die Abnahme nicht verweigert werden.","is_correct":true,"rationale":"§ 640 Abs. 1 Satz 2 BGB. Der Farbfehler wird unter Vorbehalt protokolliert und nachgebessert."},{"text":"Die Verweigerung ist zulässig, weil jeder Mangel die Abnahme verhindert.","is_correct":false,"rationale":"Nur wesentliche Mängel berechtigen zur Verweigerung."},{"text":"Eine Abnahme ist gar nicht nötig, weil es ein Dienstvertrag ist.","is_correct":false,"rationale":"Geschuldet ist eine fertige App, also ein Erfolg – Werkvertrag mit Abnahme."},{"text":"Die Agentur muss den gesamten Preis erstatten.","is_correct":false,"rationale":"Dafür gibt es keinerlei Grundlage – das Werk ist im Wesentlichen vertragsgemäß."}]}'::jsonb,
+  '{"choices":[{"text":"Die Verweigerung ist unzulässig, denn wegen unwesentlicher Mängel darf die Abnahme nicht verweigert werden.","is_correct":true,"rationale":"§ 640 Abs. 1 Satz 2 BGB. Der Farbfehler wird unter Vorbehalt protokolliert und nachgebessert."},{"text":"Die Verweigerung ist zulässig, weil jeder Mangel die Abnahme verhindert.","is_correct":false,"rationale":"Nur wesentliche Mängel berechtigen zur Verweigerung."},{"text":"Eine Abnahme ist gar nicht nötig, weil es ein Dienstvertrag ist.","is_correct":false,"rationale":"Geschuldet ist eine fertige App, also ein Erfolg: Werkvertrag mit Abnahme."},{"text":"Die Agentur muss den gesamten Preis erstatten.","is_correct":false,"rationale":"Dafür gibt es keinerlei Grundlage, denn das Werk ist im Wesentlichen vertragsgemäß."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -31537,7 +31537,7 @@ values (
   2,
   '{}',
   null,
-  '{"buckets":["ausdrücklich","konkludent","fiktiv"],"match_items":[{"text":"Beide Seiten unterschreiben ein Abnahmeprotokoll.","bucket":0,"rationale":"Förmliche Abnahme."},{"text":"Der Kunde lässt eine gesetzte Abnahmefrist verstreichen, ohne einen Mangel zu nennen.","bucket":2,"rationale":"§ 640 Abs. 2 BGB – das Werk gilt als abgenommen."},{"text":"Der Kunde nutzt die Software nach der Testphase monatelang produktiv und zahlt ohne Beanstandung.","bucket":1,"rationale":"Billigung durch schlüssiges Verhalten."},{"text":"Der Projektleiter des Kunden schreibt: „Wir nehmen das System hiermit ab.“","bucket":0,"rationale":"Eine ausdrückliche Erklärung, auch per E-Mail."}]}'::jsonb,
+  '{"buckets":["ausdrücklich","konkludent","fiktiv"],"match_items":[{"text":"Beide Seiten unterschreiben ein Abnahmeprotokoll.","bucket":0,"rationale":"Förmliche Abnahme."},{"text":"Der Kunde lässt eine gesetzte Abnahmefrist verstreichen, ohne einen Mangel zu nennen.","bucket":2,"rationale":"§ 640 Abs. 2 BGB: Das Werk gilt als abgenommen."},{"text":"Der Kunde nutzt die Software nach der Testphase monatelang produktiv und zahlt ohne Beanstandung.","bucket":1,"rationale":"Billigung durch schlüssiges Verhalten."},{"text":"Der Projektleiter des Kunden schreibt: „Wir nehmen das System hiermit ab.“","bucket":0,"rationale":"Eine ausdrückliche Erklärung, auch per E-Mail."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -31562,7 +31562,7 @@ values (
   'ordering',
   'Eine Agentur hat für einen Großhändler ein Kundenportal fertiggestellt.',
   'Bringe die Schritte der Abnahme in die richtige Reihenfolge.',
-  'Getestet wird gegen die vorher vereinbarten Kriterien. Die Mängel werden protokolliert, bevor die Erklärung abgegeben wird – nur so bleiben die Rechte an bekannten Mängeln erhalten. Die Unterschriften machen das Protokoll zum Beweis.',
+  'Getestet wird gegen die vorher vereinbarten Kriterien. Die Mängel werden protokolliert, bevor die Erklärung abgegeben wird. Nur so bleiben die Rechte an bekannten Mängeln erhalten. Die Unterschriften machen das Protokoll zum Beweis.',
   1,
   '{}',
   null,
@@ -31624,7 +31624,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Die Monitore körperlich entgegenzunehmen","is_correct":true,"rationale":"Beim Kauf heißt Abnahme nur Entgegennahme der Ware."},{"text":"Die Monitore als vertragsgemäß zu billigen; erst dann wird der Kaufpreis fällig","is_correct":false,"rationale":"Das beschreibt die Abnahme beim Werkvertrag (§ 640 BGB)."},{"text":"Ein Abnahmeprotokoll mit Mängelklassen zu erstellen","is_correct":false,"rationale":"Das ist bei Werkverträgen üblich, beim Kauf nicht vorgesehen."},{"text":"Nichts – beim Kaufvertrag gibt es keine Pflicht zur Abnahme","is_correct":false,"rationale":"Doch: § 433 Abs. 2 BGB verpflichtet den Käufer, die Sache abzunehmen."}]}'::jsonb,
+  '{"choices":[{"text":"Die Monitore körperlich entgegenzunehmen","is_correct":true,"rationale":"Beim Kauf heißt Abnahme nur Entgegennahme der Ware."},{"text":"Die Monitore als vertragsgemäß zu billigen; erst dann wird der Kaufpreis fällig","is_correct":false,"rationale":"Das beschreibt die Abnahme beim Werkvertrag (§ 640 BGB)."},{"text":"Ein Abnahmeprotokoll mit Mängelklassen zu erstellen","is_correct":false,"rationale":"Das ist bei Werkverträgen üblich, beim Kauf nicht vorgesehen."},{"text":"Nichts, denn beim Kaufvertrag gibt es keine Pflicht zur Abnahme","is_correct":false,"rationale":"Doch: § 433 Abs. 2 BGB verpflichtet den Käufer, die Sache abzunehmen."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -31711,7 +31711,7 @@ values (
   1,
   '{}',
   null,
-  '{"choices":[{"text":"Unfreezing","is_correct":true,"rationale":"Der Veränderungsbedarf wird sichtbar gemacht und die Betroffenen werden beteiligt – das schafft Bereitschaft."},{"text":"Moving","is_correct":false,"rationale":"In dieser Phase wird das Neue bereits eingeführt, etwa durch Schulungen und Pilotbetrieb."},{"text":"Refreezing","is_correct":false,"rationale":"Hier wird das Neue verankert – das System ist aber noch gar nicht eingeführt."},{"text":"Keiner – Lewins Modell betrifft nur technische Änderungen","is_correct":false,"rationale":"Lewins Modell beschreibt gerade die organisatorische und menschliche Seite von Veränderungen."}]}'::jsonb,
+  '{"choices":[{"text":"Unfreezing","is_correct":true,"rationale":"Der Veränderungsbedarf wird sichtbar gemacht und die Betroffenen werden beteiligt. Das schafft Bereitschaft."},{"text":"Moving","is_correct":false,"rationale":"In dieser Phase wird das Neue bereits eingeführt, etwa durch Schulungen und Pilotbetrieb."},{"text":"Refreezing","is_correct":false,"rationale":"Hier wird das Neue verankert; das System ist aber noch gar nicht eingeführt."},{"text":"Keiner, denn Lewins Modell betrifft nur technische Änderungen","is_correct":false,"rationale":"Lewins Modell beschreibt gerade die organisatorische und menschliche Seite von Veränderungen."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -31740,7 +31740,7 @@ values (
   3,
   '{}',
   null,
-  '{"choices":[{"text":"Schulungen gegen die Unsicherheit im Umgang mit dem neuen System","is_correct":true,"rationale":"Setzt direkt an der Unsicherheit an."},{"text":"Mit dem Betriebsrat vereinbaren, dass die Daten nicht zur individuellen Leistungskontrolle genutzt werden","is_correct":true,"rationale":"Nimmt die Angst vor Kontrolle."},{"text":"Im Arbeitsplan Zeit für die Umstellung einplanen","is_correct":true,"rationale":"Beseitigt den Zeitmangel."},{"text":"Die Zahl unbeantworteter Anfragen im Intranet veröffentlichen","is_correct":false,"rationale":"Das stärkt eine treibende Kraft, baut aber keine hemmende ab."},{"text":"Den Starttermin ohne Ankündigung vorziehen","is_correct":false,"rationale":"Das erhöht Unsicherheit und Zeitdruck – also die hemmenden Kräfte."}]}'::jsonb,
+  '{"choices":[{"text":"Schulungen gegen die Unsicherheit im Umgang mit dem neuen System","is_correct":true,"rationale":"Setzt direkt an der Unsicherheit an."},{"text":"Mit dem Betriebsrat vereinbaren, dass die Daten nicht zur individuellen Leistungskontrolle genutzt werden","is_correct":true,"rationale":"Nimmt die Angst vor Kontrolle."},{"text":"Im Arbeitsplan Zeit für die Umstellung einplanen","is_correct":true,"rationale":"Beseitigt den Zeitmangel."},{"text":"Die Zahl unbeantworteter Anfragen im Intranet veröffentlichen","is_correct":false,"rationale":"Das stärkt eine treibende Kraft, baut aber keine hemmende ab."},{"text":"Den Starttermin ohne Ankündigung vorziehen","is_correct":false,"rationale":"Das erhöht Unsicherheit und Zeitdruck, also die hemmenden Kräfte."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -32001,7 +32001,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Offen informieren und verhandeln: neue Aufgabe, Weiterbildung, Zusage zur Weiterbeschäftigung","is_correct":true,"rationale":"Er verliert tatsächlich etwas – dann helfen Information und ein fairer Ausgleich."},{"text":"Die Automatisierung bis zum Start geheim halten","is_correct":false,"rationale":"Das verstärkt Misstrauen und Gerüchte."},{"text":"Ihn per Anweisung zur Mitarbeit verpflichten","is_correct":false,"rationale":"Druck löst die Angst nicht und erzeugt Scheinanpassung."},{"text":"Nur eine Schulung zum neuen System anbieten","is_correct":false,"rationale":"Das Problem ist nicht fehlendes Können, sondern die Sorge um den Arbeitsplatz."}]}'::jsonb,
+  '{"choices":[{"text":"Offen informieren und verhandeln: neue Aufgabe, Weiterbildung, Zusage zur Weiterbeschäftigung","is_correct":true,"rationale":"Er verliert tatsächlich etwas. Dann helfen Information und ein fairer Ausgleich."},{"text":"Die Automatisierung bis zum Start geheim halten","is_correct":false,"rationale":"Das verstärkt Misstrauen und Gerüchte."},{"text":"Ihn per Anweisung zur Mitarbeit verpflichten","is_correct":false,"rationale":"Druck löst die Angst nicht und erzeugt Scheinanpassung."},{"text":"Nur eine Schulung zum neuen System anbieten","is_correct":false,"rationale":"Das Problem ist nicht fehlendes Können, sondern die Sorge um den Arbeitsplatz."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -35995,7 +35995,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Zwei Kollegen diskutieren lautstark, wer die Netzplanung leiten darf.","is_correct":true,"rationale":"Machtkampf um Rollen: typisch für Storming."},{"text":"Beim ersten Treffen stellen sich alle vor und bleiben zurückhaltend.","is_correct":false,"rationale":"Höflich und abwartend. Das ist Forming."},{"text":"Die vorgeschlagene Aufgabenverteilung wird offen infrage gestellt.","is_correct":true,"rationale":"Zuständigkeiten werden ausgehandelt: Storming."},{"text":"Das Team einigt sich auf feste Regeln für die Dokumentation.","is_correct":false,"rationale":"Gemeinsame Regeln entstehen im Norming."},{"text":"Es bilden sich zwei Lager, die jeweils ihr eigenes Konzept durchsetzen wollen.","is_correct":true,"rationale":"Cliquenbildung und Streit um Ideen - Storming."},{"text":"Jeder kennt seine Aufgabe, Probleme löst das Team selbstständig.","is_correct":false,"rationale":"Eingespielte Zusammenarbeit - Performing."}]}'::jsonb,
+  '{"choices":[{"text":"Zwei Kollegen diskutieren lautstark, wer die Netzplanung leiten darf.","is_correct":true,"rationale":"Machtkampf um Rollen: typisch für Storming."},{"text":"Beim ersten Treffen stellen sich alle vor und bleiben zurückhaltend.","is_correct":false,"rationale":"Höflich und abwartend. Das ist Forming."},{"text":"Die vorgeschlagene Aufgabenverteilung wird offen infrage gestellt.","is_correct":true,"rationale":"Zuständigkeiten werden ausgehandelt: Storming."},{"text":"Das Team einigt sich auf feste Regeln für die Dokumentation.","is_correct":false,"rationale":"Gemeinsame Regeln entstehen im Norming."},{"text":"Es bilden sich zwei Lager, die jeweils ihr eigenes Konzept durchsetzen wollen.","is_correct":true,"rationale":"Cliquenbildung und Streit um Ideen: Storming."},{"text":"Jeder kennt seine Aufgabe, Probleme löst das Team selbstständig.","is_correct":false,"rationale":"Eingespielte Zusammenarbeit: Performing."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -36546,7 +36546,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Pos. 1: 6 Monitor 27 Zoll × 189,00 € = 1.134,00 €, USt 19 %","is_correct":false,"rationale":"Menge, Einzelpreis und Steuersatz stimmen mit der Bestellung überein."},{"text":"Pos. 2: 6 Dockingstation × 139,00 € = 834,00 €, USt 19 %","is_correct":true,"rationale":"Bestellt wurde zu 129,00 € - der Einzelpreis ist 10,00 € zu hoch."},{"text":"Pos. 3: 15 HDMI-Kabel 2 m × 7,50 € = 112,50 €, USt 19 %","is_correct":true,"rationale":"Bestellt und geliefert wurden 12 Stück, berechnet werden 15."},{"text":"Pos. 4: 2 Fachbuch Netzwerktechnik × 40,00 € = 80,00 €, USt 19 %","is_correct":true,"rationale":"Für Bücher gilt der ermäßigte Steuersatz von 7 %."},{"text":"Pos. 5: Versand frei Haus = 0,00 €","is_correct":false,"rationale":"Frei Haus war vereinbart. Es dürfen keine Versandkosten anfallen."}],"table":[["Bestellung","Menge","Einzelpreis netto","USt"],["Monitor 27 Zoll","6","189,00 €","19 %"],["Dockingstation","6","129,00 €","19 %"],["HDMI-Kabel 2 m","12","7,50 €","19 %"],["Fachbuch Netzwerktechnik","2","40,00 €","7 %"]]}'::jsonb,
+  '{"choices":[{"text":"Pos. 1: 6 Monitor 27 Zoll × 189,00 € = 1.134,00 €, USt 19 %","is_correct":false,"rationale":"Menge, Einzelpreis und Steuersatz stimmen mit der Bestellung überein."},{"text":"Pos. 2: 6 Dockingstation × 139,00 € = 834,00 €, USt 19 %","is_correct":true,"rationale":"Bestellt wurde zu 129,00 €. Der Einzelpreis ist 10,00 € zu hoch."},{"text":"Pos. 3: 15 HDMI-Kabel 2 m × 7,50 € = 112,50 €, USt 19 %","is_correct":true,"rationale":"Bestellt und geliefert wurden 12 Stück, berechnet werden 15."},{"text":"Pos. 4: 2 Fachbuch Netzwerktechnik × 40,00 € = 80,00 €, USt 19 %","is_correct":true,"rationale":"Für Bücher gilt der ermäßigte Steuersatz von 7 %."},{"text":"Pos. 5: Versand frei Haus = 0,00 €","is_correct":false,"rationale":"Frei Haus war vereinbart. Es dürfen keine Versandkosten anfallen."}],"table":[["Bestellung","Menge","Einzelpreis netto","USt"],["Monitor 27 Zoll","6","189,00 €","19 %"],["Dockingstation","6","129,00 €","19 %"],["HDMI-Kabel 2 m","12","7,50 €","19 %"],["Fachbuch Netzwerktechnik","2","40,00 €","7 %"]]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -38224,11 +38224,11 @@ values (
   'cloze',
   'Eine Datei ist 10.000 Byte groß. Das Dateisystem arbeitet mit einer Clustergröße von 4 KiB (4.096 Byte).',
   'Ermittle die Werte.',
-  '10.000 / 4.096 ≈ 2,44 - angefangene Cluster zählen voll, also 3 Cluster. Belegt: 3 × 4.096 = 12.288 Byte. Verschnitt: 12.288 - 10.000 = 2.288 Byte.',
+  '10.000 / 4.096 ≈ 2,44; angefangene Cluster zählen voll, also 3 Cluster. Belegt: 3 × 4.096 = 12.288 Byte. Verschnitt: 12.288 - 10.000 = 2.288 Byte.',
   2,
   '{}',
   null,
-  '{"points":3,"cloze_text":"Benötigte Cluster: {0}\nBelegter Platz: {1} Byte\nUngenutzter Rest (Verschnitt): {2} Byte","gaps":[{"answers":["3"],"numeric":true,"rationale":"10.000 / 4.096 ≈ 2,44 - aufrunden"},{"answers":["12288"],"numeric":true,"rationale":"3 × 4.096"},{"answers":["2288"],"numeric":true,"rationale":"12.288 - 10.000"}]}'::jsonb,
+  '{"points":3,"cloze_text":"Benötigte Cluster: {0}\nBelegter Platz: {1} Byte\nUngenutzter Rest (Verschnitt): {2} Byte","gaps":[{"answers":["3"],"numeric":true,"rationale":"10.000 / 4.096 ≈ 2,44, aufrunden"},{"answers":["12288"],"numeric":true,"rationale":"3 × 4.096"},{"answers":["2288"],"numeric":true,"rationale":"12.288 - 10.000"}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -38804,7 +38804,7 @@ values (
   'numeric',
   'Eine Individualsoftware kostet einmalig 42.000 € und danach 4.000 € Wartung pro Jahr. Eine vergleichbare Standardsoftware kostet 9.600 € Miete pro Jahr.',
   'Ermittle, nach wie vielen vollen Jahren die Individualsoftware erstmals insgesamt günstiger ist.',
-  'Gleichstand: 42.000 + 4.000 × n = 9.600 × n, also 42.000 = 5.600 × n und n = 7,5. Nach 7 Jahren: 70.000 € gegen 67.200 € - noch teurer. Nach 8 Jahren: 74.000 € gegen 76.800 € - erstmals günstiger.',
+  'Gleichstand: 42.000 + 4.000 × n = 9.600 × n, also 42.000 = 5.600 × n und n = 7,5. Nach 7 Jahren: 70.000 € gegen 67.200 €, also noch teurer. Nach 8 Jahren: 74.000 € gegen 76.800 €, also erstmals günstiger.',
   3,
   '{}',
   null,
@@ -38862,7 +38862,7 @@ values (
   'table',
   'Eine Planungssoftware soll von 40 Beschäftigten genutzt werden, davon arbeiten höchstens 15 gleichzeitig damit. Installiert wird sie auf 25 PCs. Der Hersteller bietet drei Lizenzmodelle an.',
   'Ermittle je Modell die Anzahl der benötigten Lizenzen und die Kosten.',
-  'Named User: jede berechtigte Person - 40 × 120 € = 4.800 €. Concurrent User: gleichzeitige Nutzung - 15 × 290 € = 4.350 €. Gerätelizenz: je PC - 25 × 180 € = 4.500 €. Am günstigsten ist hier Concurrent User.',
+  'Named User: jede berechtigte Person: 40 × 120 € = 4.800 €. Concurrent User: gleichzeitige Nutzung: 15 × 290 € = 4.350 €. Gerätelizenz: je PC: 25 × 180 € = 4.500 €. Am günstigsten ist hier Concurrent User.',
   2,
   '{}',
   null,
@@ -39069,7 +39069,7 @@ values (
   2,
   '{}',
   null,
-  '{"pairs":[{"left":"Hub, Repeater","right":"Schicht 1 - Bitübertragung"},{"left":"Switch","right":"Schicht 2 - Sicherung"},{"left":"Router","right":"Schicht 3 - Vermittlung"},{"left":"Paketfilter mit Portregeln","right":"Schicht 4 - Transport"},{"left":"Proxy für Webseiten","right":"Schicht 7 - Anwendung"}]}'::jsonb,
+  '{"pairs":[{"left":"Hub, Repeater","right":"Schicht 1 (Bitübertragung)"},{"left":"Switch","right":"Schicht 2 (Sicherung)"},{"left":"Router","right":"Schicht 3 (Vermittlung)"},{"left":"Paketfilter mit Portregeln","right":"Schicht 4 (Transport)"},{"left":"Proxy für Webseiten","right":"Schicht 7 (Anwendung)"}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -39156,7 +39156,7 @@ values (
   1,
   '{}',
   null,
-  '{"choices":[{"text":"HTTPS","is_correct":true,"rationale":"Überträgt Webseiten - Anwendungsschicht."},{"text":"TCP","is_correct":false,"rationale":"Transportschicht."},{"text":"DNS","is_correct":true,"rationale":"Namensauflösung - Anwendungsschicht."},{"text":"IP","is_correct":false,"rationale":"Vermittlungsschicht."},{"text":"SMTP","is_correct":true,"rationale":"E-Mail-Versand - Anwendungsschicht."},{"text":"Ethernet","is_correct":false,"rationale":"Sicherungs- und Bitübertragungsschicht."},{"text":"UDP","is_correct":false,"rationale":"Transportschicht."}]}'::jsonb,
+  '{"choices":[{"text":"HTTPS","is_correct":true,"rationale":"Überträgt Webseiten, also Anwendungsschicht."},{"text":"TCP","is_correct":false,"rationale":"Transportschicht."},{"text":"DNS","is_correct":true,"rationale":"Namensauflösung, also Anwendungsschicht."},{"text":"IP","is_correct":false,"rationale":"Vermittlungsschicht."},{"text":"SMTP","is_correct":true,"rationale":"E-Mail-Versand, also Anwendungsschicht."},{"text":"Ethernet","is_correct":false,"rationale":"Sicherungs- und Bitübertragungsschicht."},{"text":"UDP","is_correct":false,"rationale":"Transportschicht."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -39181,7 +39181,7 @@ values (
   'numeric',
   'An den folgenden Switch sollen 4 Kameras mit je 12 W und 3 Access Points mit je 21 W angeschlossen werden.',
   'Berechne, wie viel Watt des PoE-Budgets nach dem Anschluss aller Geräte noch frei sind.',
-  'Kameras: 4 × 12 W = 48 W. Access Points: 3 × 21 W = 63 W. Summe: 111 W. Das Gesamtbudget („Total PoE budget“) beträgt 120 W - frei bleiben 120 W - 111 W = 9 W. Je Port sind 30 W erlaubt, das reicht für jedes Gerät.',
+  'Kameras: 4 × 12 W = 48 W. Access Points: 3 × 21 W = 63 W. Summe: 111 W. Das Gesamtbudget („Total PoE budget“) beträgt 120 W, frei bleiben 120 W - 111 W = 9 W. Je Port sind 30 W erlaubt, das reicht für jedes Gerät.',
   2,
   ARRAY['englisch', 'datenblatt']::text[],
   null,
@@ -39210,7 +39210,7 @@ values (
   'table',
   'Für mehrere Geräte soll der kleinste PoE-Standard bestimmt werden, der die benötigte Leistung liefert.',
   'Wähle zu jedem Gerät den kleinsten ausreichenden Standard.',
-  '6 W und 12 W liegen unter 15,4 W - 802.3af genügt. 22 W übersteigt 15,4 W, passt aber in 30 W - 802.3at. 55 W braucht 802.3bt.',
+  '6 W und 12 W liegen unter 15,4 W: 802.3af genügt. 22 W übersteigt 15,4 W, passt aber in 30 W: 802.3at. 55 W braucht 802.3bt.',
   2,
   '{}',
   null,
@@ -39297,7 +39297,7 @@ values (
   'cloze',
   'Für den Neubau eines Bürogebäudes wird die Netzwerkverkabelung geplant.',
   'Vervollständige die Aussagen zur strukturierten Verkabelung.',
-  'Primär: zwischen Gebäuden (Glasfaser). Sekundär: zwischen den Etagen. Tertiär: vom Etagenverteiler bis zur Dose - 90 m fest verlegt, mit Patchkabeln zusammen höchstens 100 m.',
+  'Primär: zwischen Gebäuden (Glasfaser). Sekundär: zwischen den Etagen. Tertiär: vom Etagenverteiler bis zur Dose: 90 m fest verlegt, mit Patchkabeln zusammen höchstens 100 m.',
   2,
   '{}',
   null,
@@ -39326,7 +39326,7 @@ values (
   'cloze',
   'Ein Drucker hat die Adresse 192.168.20.77/26. Für die Dokumentation wird der Steckbrief seines Subnetzes gebraucht.',
   'Ermittle die Werte des Subnetzes.',
-  '/26: Maske 255.255.255.192, Blockgröße 256 - 192 = 64, 2⁶ - 2 = 62 Hosts. Blöcke: 0, 64, 128, 192 - die 77 liegt im Block 64 bis 127. Netz .64, Broadcast .127, Hosts .65 bis .126.',
+  '/26: Maske 255.255.255.192, Blockgröße 256 - 192 = 64, 2⁶ - 2 = 62 Hosts. Blöcke: 0, 64, 128, 192; die 77 liegt im Block 64 bis 127. Netz .64, Broadcast .127, Hosts .65 bis .126.',
   2,
   ARRAY['subnetting']::text[],
   null,
@@ -39649,7 +39649,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Adresslänge: 32 Bit bei IPv4, 128 Bit bei IPv6 - viel größerer Adressraum","points":2,"keywords":["32 Bit","128 Bit","Adressraum","mehr Adressen"]},{"text":"Schreibweise: dezimal mit Punkten gegenüber hexadezimal mit Doppelpunkten","points":2,"keywords":["hexadezimal","dezimal","Doppelpunkt","Schreibweise"]},{"text":"Konfiguration: von Hand oder DHCP gegenüber Selbstkonfiguration (SLAAC)","points":2,"keywords":["SLAAC","Autokonfiguration","Selbstkonfiguration"]},{"text":"IPv6 kennt keinen Broadcast und braucht kein NAT; statt ARP gibt es NDP","points":2,"keywords":["Broadcast","NAT","NDP","ARP","Multicast"]}],"sample_solution":"IPv4-Adressen sind 32 Bit lang und werden dezimal mit Punkten geschrieben, IPv6-Adressen 128 Bit lang und hexadezimal mit Doppelpunkten. Der Adressraum ist dadurch um ein Vielfaches größer. IPv6-Geräte können sich per SLAAC selbst konfigurieren; Broadcast und NAT entfallen."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Adresslänge: 32 Bit bei IPv4, 128 Bit bei IPv6, also viel größerer Adressraum","points":2,"keywords":["32 Bit","128 Bit","Adressraum","mehr Adressen"]},{"text":"Schreibweise: dezimal mit Punkten gegenüber hexadezimal mit Doppelpunkten","points":2,"keywords":["hexadezimal","dezimal","Doppelpunkt","Schreibweise"]},{"text":"Konfiguration: von Hand oder DHCP gegenüber Selbstkonfiguration (SLAAC)","points":2,"keywords":["SLAAC","Autokonfiguration","Selbstkonfiguration"]},{"text":"IPv6 kennt keinen Broadcast und braucht kein NAT; statt ARP gibt es NDP","points":2,"keywords":["Broadcast","NAT","NDP","ARP","Multicast"]}],"sample_solution":"IPv4-Adressen sind 32 Bit lang und werden dezimal mit Punkten geschrieben, IPv6-Adressen 128 Bit lang und hexadezimal mit Doppelpunkten. Der Adressraum ist dadurch um ein Vielfaches größer. IPv6-Geräte können sich per SLAAC selbst konfigurieren; Broadcast und NAT entfallen."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -42755,7 +42755,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":5,"grid":[[{"text":"Code"},{"text":"Bedeutung"},{"text":"Ursache liegt"}],[{"text":"200"},{"gap":{"answers":["Anfrage erfolgreich"],"options":["Anfrage erfolgreich","Seite nicht gefunden","dauerhaft umgezogen"]}},{"text":"nirgends - kein Fehler"}],[{"text":"301"},{"gap":{"answers":["dauerhaft umgezogen"],"options":["dauerhaft umgezogen","Zugriff verweigert","interner Serverfehler"]}},{"text":"nirgends - Umleitung"}],[{"text":"403"},{"gap":{"answers":["Zugriff verweigert"],"options":["Zugriff verweigert","Seite nicht gefunden","Dienst nicht verfügbar"]}},{"gap":{"answers":["bei der Anfrage (Client)"],"options":["bei der Anfrage (Client)","beim Server","beim DNS"]}}],[{"text":"404"},{"gap":{"answers":["Seite nicht gefunden"],"options":["Seite nicht gefunden","Zugriff verweigert","Anfrage erfolgreich"]}},{"gap":{"answers":["bei der Anfrage (Client)"],"options":["bei der Anfrage (Client)","beim Server","beim DNS"]}}],[{"text":"500"},{"gap":{"answers":["interner Serverfehler"],"options":["interner Serverfehler","Seite nicht gefunden","dauerhaft umgezogen"]}},{"gap":{"answers":["beim Server"],"options":["beim Server","bei der Anfrage (Client)","beim DNS"]}}],[{"text":"503"},{"gap":{"answers":["Dienst nicht verfügbar"],"options":["Dienst nicht verfügbar","Zugriff verweigert","Anfrage erfolgreich"]}},{"gap":{"answers":["beim Server"],"options":["beim Server","bei der Anfrage (Client)","beim DNS"]}}]]}'::jsonb,
+  '{"points":5,"grid":[[{"text":"Code"},{"text":"Bedeutung"},{"text":"Ursache liegt"}],[{"text":"200"},{"gap":{"answers":["Anfrage erfolgreich"],"options":["Anfrage erfolgreich","Seite nicht gefunden","dauerhaft umgezogen"]}},{"text":"nirgends (kein Fehler)"}],[{"text":"301"},{"gap":{"answers":["dauerhaft umgezogen"],"options":["dauerhaft umgezogen","Zugriff verweigert","interner Serverfehler"]}},{"text":"nirgends (Umleitung)"}],[{"text":"403"},{"gap":{"answers":["Zugriff verweigert"],"options":["Zugriff verweigert","Seite nicht gefunden","Dienst nicht verfügbar"]}},{"gap":{"answers":["bei der Anfrage (Client)"],"options":["bei der Anfrage (Client)","beim Server","beim DNS"]}}],[{"text":"404"},{"gap":{"answers":["Seite nicht gefunden"],"options":["Seite nicht gefunden","Zugriff verweigert","Anfrage erfolgreich"]}},{"gap":{"answers":["bei der Anfrage (Client)"],"options":["bei der Anfrage (Client)","beim Server","beim DNS"]}}],[{"text":"500"},{"gap":{"answers":["interner Serverfehler"],"options":["interner Serverfehler","Seite nicht gefunden","dauerhaft umgezogen"]}},{"gap":{"answers":["beim Server"],"options":["beim Server","bei der Anfrage (Client)","beim DNS"]}}],[{"text":"503"},{"gap":{"answers":["Dienst nicht verfügbar"],"options":["Dienst nicht verfügbar","Zugriff verweigert","Anfrage erfolgreich"]}},{"gap":{"answers":["beim Server"],"options":["beim Server","bei der Anfrage (Client)","beim DNS"]}}]]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -44823,7 +44823,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"TF1: Eingabe 18 - Soll: angenommen","is_correct":false,"rationale":"18 ist die untere Grenze und gültig."},{"text":"TF2: Eingabe 17 - Soll: angenommen","is_correct":true,"rationale":"17 liegt unter der Grenze und muss abgelehnt werden."},{"text":"TF3: Eingabe 67 - Soll: abgelehnt","is_correct":true,"rationale":"67 ist die obere Grenze und noch gültig."},{"text":"TF4: Eingabe 68 - Soll: abgelehnt","is_correct":false,"rationale":"68 liegt über der Grenze. Richtig."},{"text":"TF5: Eingabe „abc“ - Soll: Fehlermeldung","is_correct":false,"rationale":"Ein sinnvoller Negativtest für nicht numerische Eingaben."},{"text":"TF6: Eingabe 40 - Soll: nicht angegeben","is_correct":true,"rationale":"Ohne erwartetes Ergebnis lässt sich nicht entscheiden, ob der Test bestanden ist."}],"points":3}'::jsonb,
+  '{"choices":[{"text":"TF1: Eingabe 18, Soll: angenommen","is_correct":false,"rationale":"18 ist die untere Grenze und gültig."},{"text":"TF2: Eingabe 17, Soll: angenommen","is_correct":true,"rationale":"17 liegt unter der Grenze und muss abgelehnt werden."},{"text":"TF3: Eingabe 67, Soll: abgelehnt","is_correct":true,"rationale":"67 ist die obere Grenze und noch gültig."},{"text":"TF4: Eingabe 68, Soll: abgelehnt","is_correct":false,"rationale":"68 liegt über der Grenze. Richtig."},{"text":"TF5: Eingabe „abc“, Soll: Fehlermeldung","is_correct":false,"rationale":"Ein sinnvoller Negativtest für nicht numerische Eingaben."},{"text":"TF6: Eingabe 40, Soll: nicht angegeben","is_correct":true,"rationale":"Ohne erwartetes Ergebnis lässt sich nicht entscheiden, ob der Test bestanden ist."}],"points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -44939,7 +44939,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"F-11: Tippfehler im Menüpunkt „Einstelungen“ - kosmetisch","is_correct":false,"rationale":"Ein optischer Mangel ohne Einfluss auf die Funktion."},{"text":"F-12: Beim Speichern gehen Kundendaten verloren - kosmetisch","is_correct":true,"rationale":"Datenverlust ist ein kritischer Fehler."},{"text":"F-13: Export gelingt nur über einen Umweg - schwer","is_correct":false,"rationale":"Funktion gestört, Umgehung möglich: schwer."},{"text":"F-14: Logo um zwei Pixel verschoben - kritisch","is_correct":true,"rationale":"Ein optischer Mangel ist kosmetisch."},{"text":"F-15: Anwendung stürzt beim Start ab - kritisch","is_correct":false,"rationale":"Ein Absturz ist kritisch."},{"text":"F-16: Bestellen ist ohne Umgehung unmöglich - schwer","is_correct":true,"rationale":"Hauptfunktion ohne Umgehung blockiert: kritisch."}],"points":3}'::jsonb,
+  '{"choices":[{"text":"F-11: Tippfehler im Menüpunkt „Einstelungen“: kosmetisch","is_correct":false,"rationale":"Ein optischer Mangel ohne Einfluss auf die Funktion."},{"text":"F-12: Beim Speichern gehen Kundendaten verloren: kosmetisch","is_correct":true,"rationale":"Datenverlust ist ein kritischer Fehler."},{"text":"F-13: Export gelingt nur über einen Umweg: schwer","is_correct":false,"rationale":"Funktion gestört, Umgehung möglich: schwer."},{"text":"F-14: Logo um zwei Pixel verschoben: kritisch","is_correct":true,"rationale":"Ein optischer Mangel ist kosmetisch."},{"text":"F-15: Anwendung stürzt beim Start ab: kritisch","is_correct":false,"rationale":"Ein Absturz ist kritisch."},{"text":"F-16: Bestellen ist ohne Umgehung unmöglich: schwer","is_correct":true,"rationale":"Hauptfunktion ohne Umgehung blockiert: kritisch."}],"points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -51086,7 +51086,7 @@ values (
   'table',
   'Die Geräte werden mit einer Entscheidungsmatrix verglichen: Je Kriterium erhält das beste Gerät Rang 3, das schlechteste Rang 1. Das Gerät mit der höchsten Summe wird gewählt.',
   'Vervollständige die Entscheidungsmatrix und bilde die Summen.',
-  'Bei Tempo ist der größte Wert der beste, bei Wartung und Preis der kleinste. Scannen: C 3, B 2, A 1. Wartung: B 3, A 2, C 1. Preis: A 3, C 2, B 1. Summen: A 7, B 9, C 8 - gewählt wird Gerät B.',
+  'Bei Tempo ist der größte Wert der beste, bei Wartung und Preis der kleinste. Scannen: C 3, B 2, A 1. Wartung: B 3, A 2, C 1. Preis: A 3, C 2, B 1. Summen: A 7, B 9, C 8. Gewählt wird Gerät B.',
   2,
   '{}',
   null,
@@ -51380,7 +51380,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a03n-systemhaus","points":3,"criteria":[{"text":"Dual Stack: Geräte und Router erhalten eine IPv4- und eine IPv6-Adresse und nutzen je nach Ziel das passende Protokoll","points":3,"keywords":["Dual Stack","Dual-Stack","beide Adressen","beide Protokolle","parallel"]},{"text":"Tunneling: IPv6-Pakete werden in IPv4-Pakete gekapselt und durch das IPv4-Netz transportiert (z. B. 6to4)","points":3,"keywords":["Tunnel","Tunneling","6to4","gekapselt","verpackt"]}],"sample_solution":"Dual Stack: Arbeitsplätze, Router und - soweit möglich - Server erhalten sowohl eine IPv4- als auch eine IPv6-Adresse. Die Kanzleisoftware wird weiter über IPv4 angesprochen, Ziele mit IPv6 über IPv6. Alternativ Tunneling: IPv6-Pakete werden in IPv4-Pakete verpackt und am Tunnelende wieder ausgepackt."}'::jsonb,
+  '{"case_id":"f-a03n-systemhaus","points":3,"criteria":[{"text":"Dual Stack: Geräte und Router erhalten eine IPv4- und eine IPv6-Adresse und nutzen je nach Ziel das passende Protokoll","points":3,"keywords":["Dual Stack","Dual-Stack","beide Adressen","beide Protokolle","parallel"]},{"text":"Tunneling: IPv6-Pakete werden in IPv4-Pakete gekapselt und durch das IPv4-Netz transportiert (z. B. 6to4)","points":3,"keywords":["Tunnel","Tunneling","6to4","gekapselt","verpackt"]}],"sample_solution":"Dual Stack: Arbeitsplätze, Router und, soweit möglich, Server erhalten sowohl eine IPv4- als auch eine IPv6-Adresse. Die Kanzleisoftware wird weiter über IPv4 angesprochen, Ziele mit IPv6 über IPv6. Alternativ Tunneling: IPv6-Pakete werden in IPv4-Pakete verpackt und am Tunnelende wieder ausgepackt."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -52047,7 +52047,7 @@ values (
   2,
   ARRAY['englisch']::text[],
   null,
-  '{"code":"Daisy chaining lets you connect several\nmonitors in a row using a single video\noutput of your PC. The PC output and\nevery monitor in the chain except the\nlast one must support Multi-Stream\nTransport (MST). Use DisplayPort or\nThunderbolt connections.","case_id":"f-a03h-agentur","points":3,"criteria":[{"text":"Multi-Stream Transport (MST) muss unterstützt werden","points":1,"keywords":["MST","Multi-Stream","Multi Stream Transport"]},{"text":"vom Bildausgang des PCs (DisplayPort oder Thunderbolt)","points":1,"keywords":["Ausgang des PC","DisplayPort","Thunderbolt","PC"]},{"text":"und von allen Monitoren der Kette außer dem letzten","points":1,"keywords":["Monitore","Monitor","außer dem letzten"]}],"sample_solution":"Der Bildausgang des PCs - DisplayPort oder Thunderbolt - und alle Monitore der Kette bis auf den letzten müssen Multi-Stream Transport (MST) unterstützen. Nur dann lassen sich mehrere Bildsignale über ein Kabel übertragen und von Monitor zu Monitor weiterreichen."}'::jsonb,
+  '{"code":"Daisy chaining lets you connect several\nmonitors in a row using a single video\noutput of your PC. The PC output and\nevery monitor in the chain except the\nlast one must support Multi-Stream\nTransport (MST). Use DisplayPort or\nThunderbolt connections.","case_id":"f-a03h-agentur","points":3,"criteria":[{"text":"Multi-Stream Transport (MST) muss unterstützt werden","points":1,"keywords":["MST","Multi-Stream","Multi Stream Transport"]},{"text":"vom Bildausgang des PCs (DisplayPort oder Thunderbolt)","points":1,"keywords":["Ausgang des PC","DisplayPort","Thunderbolt","PC"]},{"text":"und von allen Monitoren der Kette außer dem letzten","points":1,"keywords":["Monitore","Monitor","außer dem letzten"]}],"sample_solution":"Der Bildausgang des PCs (DisplayPort oder Thunderbolt) und alle Monitore der Kette bis auf den letzten müssen Multi-Stream Transport (MST) unterstützen. Nur dann lassen sich mehrere Bildsignale über ein Kabel übertragen und von Monitor zu Monitor weiterreichen."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -52246,7 +52246,7 @@ values (
   'cloze',
   'ipconfig /all zeigt am Support-PC die folgende Ausgabe.',
   'Ermittle aus der Ausgabe die Werte des Subnetzes.',
-  'Maske 255.255.255.224 = /27, Blockgröße 256 - 224 = 32, 30 nutzbare Adressen. Blöcke: 64, 96, 128 - die 108 liegt im Block 96 bis 127. Netz 10.30.5.96, Broadcast 10.30.5.127, letzte nutzbare Adresse 10.30.5.126. Je Wert 1 Punkt.',
+  'Maske 255.255.255.224 = /27, Blockgröße 256 - 224 = 32, 30 nutzbare Adressen. Blöcke: 64, 96, 128; die 108 liegt im Block 96 bis 127. Netz 10.30.5.96, Broadcast 10.30.5.127, letzte nutzbare Adresse 10.30.5.126. Je Wert 1 Punkt.',
   2,
   '{}',
   null,
@@ -64943,7 +64943,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-km-7', 'kommunikation', 'k-modelle', 'Was meint Watzlawick mit Interpunktion?', 'Jeder sieht den Auslöser eines Streits beim anderen: „Ich schweige, weil du nörgelst.“ - „Ich nörgle, weil du schweigst.“', null, '{}', 546)
+values ('k-km-7', 'kommunikation', 'k-modelle', 'Was meint Watzlawick mit Interpunktion?', 'Jeder sieht den Auslöser eines Streits beim anderen: „Ich schweige, weil du nörgelst.“ Darauf: „Ich nörgle, weil du schweigst.“', null, '{}', 546)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -65463,7 +65463,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-tt-1', 'teamarbeit', 'te-phasen', 'Welche Teamphasen beschreibt Tuckman?', 'Forming, Storming, Norming, Performing - 1977 um Adjourning ergänzt.', 'Kennenlernen, streiten, Regeln finden, leisten, auseinandergehen.', '{}', 586)
+values ('k-tt-1', 'teamarbeit', 'te-phasen', 'Welche Teamphasen beschreibt Tuckman?', 'Forming, Storming, Norming, Performing; 1977 um Adjourning ergänzt.', 'Kennenlernen, streiten, Regeln finden, leisten, auseinandergehen.', '{}', 586)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -66724,7 +66724,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ve-19', 'verhandlung', 've-einwaende', 'Wie lässt du einen Preis von 89 € im Monat kleiner wirken?', 'Auf kleine Einheiten umrechnen: 89 € × 12 / 365 ≈ 2,93 € - „knapp 3 € pro Tag“.', null, '{}', 683)
+values ('k-ve-19', 'verhandlung', 've-einwaende', 'Wie lässt du einen Preis von 89 € im Monat kleiner wirken?', 'Auf kleine Einheiten umrechnen: 89 € × 12 / 365 ≈ 2,93 €, also „knapp 3 € pro Tag“.', null, '{}', 683)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -67257,7 +67257,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-pq-19', 'praesentation', 'pr-quellen', 'Welche Quelle nutzt du für das Support-Ende eines Betriebssystems?', 'Die Herstellerseite - Primärquelle, laufend gepflegt. Ein alter Forenbeitrag ist allenfalls ein Hinweis zum Weitersuchen.', null, '{}', 724)
+values ('k-pq-19', 'praesentation', 'pr-quellen', 'Welche Quelle nutzt du für das Support-Ende eines Betriebssystems?', 'Die Herstellerseite, denn sie ist Primärquelle und wird laufend gepflegt. Ein alter Forenbeitrag ist allenfalls ein Hinweis zum Weitersuchen.', null, '{}', 724)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -68219,7 +68219,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mk-1', 'markt_marketing', 'm-marketing', 'Was sind die 4 P des Marketing-Mix?', 'Product, Price, Place, Promotion - Produkt-, Preis-, Distributions- und Kommunikationspolitik.', null, '{}', 798)
+values ('k-mk-1', 'markt_marketing', 'm-marketing', 'Was sind die 4 P des Marketing-Mix?', 'Product, Price, Place, Promotion: Produkt-, Preis-, Distributions- und Kommunikationspolitik.', null, '{}', 798)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -68232,7 +68232,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mk-2', 'markt_marketing', 'm-marketing', 'Wofür steht die AIDA-Formel?', 'Attention, Interest, Desire, Action - Aufmerksamkeit, Interesse, Kaufwunsch, Handlung.', null, '{}', 799)
+values ('k-mk-2', 'markt_marketing', 'm-marketing', 'Wofür steht die AIDA-Formel?', 'Attention, Interest, Desire, Action: Aufmerksamkeit, Interesse, Kaufwunsch, Handlung.', null, '{}', 799)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -68791,7 +68791,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ma-14', 'markt_marketing', 'm-abc', 'Warum sind 800 Kabel à 2 € trotz der größten Stückzahl C-Artikel?', '800 × 2 € = 1.600 € - ihr Wert ist gering. Entscheidend ist der Wert, nicht die Stückzahl.', null, '{}', 842)
+values ('k-ma-14', 'markt_marketing', 'm-abc', 'Warum sind 800 Kabel à 2 € trotz der größten Stückzahl C-Artikel?', '800 × 2 € = 1.600 €. Ihr Wert ist gering. Entscheidend ist der Wert, nicht die Stückzahl.', null, '{}', 842)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -69051,7 +69051,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mr-15', 'markt_marketing', 'm-rechtsformen', 'Eine UG erzielt 12.000 € Jahresüberschuss (kein Verlustvortrag). Wie hoch ist die Pflicht-Rücklage?', '12.000 € × 25 % = 3.000 € - höchstens 9.000 € dürfen ausgeschüttet werden.', null, '{}', 862)
+values ('k-mr-15', 'markt_marketing', 'm-rechtsformen', 'Eine UG erzielt 12.000 € Jahresüberschuss (kein Verlustvortrag). Wie hoch ist die Pflicht-Rücklage?', '12.000 € × 25 % = 3.000 €. Höchstens 9.000 € dürfen ausgeschüttet werden.', null, '{}', 862)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -69402,7 +69402,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-hk-5', 'hardware', 'h-komponenten', 'Was ist der Sockel auf dem Mainboard?', 'Der Steckplatz für den Prozessor, z. B. AM5 oder LGA1700 - CPU und Sockel müssen zusammenpassen.', null, '{}', 889)
+values ('k-hk-5', 'hardware', 'h-komponenten', 'Was ist der Sockel auf dem Mainboard?', 'Der Steckplatz für den Prozessor, z. B. AM5 oder LGA1700. CPU und Sockel müssen zusammenpassen.', null, '{}', 889)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -71261,7 +71261,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-bd-13', 'betriebssysteme', 'b-dateisysteme', 'Du bist in /home/anna. Wohin zeigt ../ben/notizen.txt?', 'Auf /home/ben/notizen.txt - .. führt eine Ebene nach oben.', null, '{}', 1032)
+values ('k-bd-13', 'betriebssysteme', 'b-dateisysteme', 'Du bist in /home/anna. Wohin zeigt ../ben/notizen.txt?', 'Auf /home/ben/notizen.txt, denn .. führt eine Ebene nach oben.', null, '{}', 1032)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -71287,7 +71287,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-bd-15', 'betriebssysteme', 'b-dateisysteme', 'Welches Dateisystem nutzt Linux standardmäßig?', 'ext4 - mit Rechten und Journaling; Windows kann es ohne Zusatzsoftware nicht lesen.', null, '{}', 1034)
+values ('k-bd-15', 'betriebssysteme', 'b-dateisysteme', 'Welches Dateisystem nutzt Linux standardmäßig?', 'ext4, mit Rechten und Journaling; Windows kann es ohne Zusatzsoftware nicht lesen.', null, '{}', 1034)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -71586,7 +71586,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-br-3', 'betriebssysteme', 'b-rechte', 'Welche Zahlenwerte haben r, w und x unter Linux?', 'r = 4, w = 2, x = 1 - pro Benutzerklasse (Besitzer, Gruppe, andere) addiert.', null, '{}', 1057)
+values ('k-br-3', 'betriebssysteme', 'b-rechte', 'Welche Zahlenwerte haben r, w und x unter Linux?', 'r = 4, w = 2, x = 1, pro Benutzerklasse (Besitzer, Gruppe, andere) addiert.', null, '{}', 1057)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -72483,7 +72483,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-bh-11', 'betriebssysteme', 'b-haertung', 'Seit wann erhält Windows 10 regulär keine Updates mehr?', 'Seit dem 14. Oktober 2025 - übergangsweise nur gegen Gebühr (ESU).', null, '{}', 1126)
+values ('k-bh-11', 'betriebssysteme', 'b-haertung', 'Seit wann erhält Windows 10 regulär keine Updates mehr?', 'Seit dem 14. Oktober 2025. Übergangsweise gibt es sie nur gegen Gebühr (ESU).', null, '{}', 1126)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -73237,7 +73237,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-al-22', 'anwendungssysteme', 'an-lizenzen', '60 Nutzer, max. 20 gleichzeitig: Named 150 €/Person oder Concurrent 400 €/Zugang?', 'Named: 60 × 150 € = 9.000 €. Concurrent: 20 × 400 € = 8.000 € - Concurrent ist 1.000 € günstiger.', null, '{}', 1184)
+values ('k-al-22', 'anwendungssysteme', 'an-lizenzen', '60 Nutzer, max. 20 gleichzeitig: Named 150 €/Person oder Concurrent 400 €/Zugang?', 'Named: 60 × 150 € = 9.000 €. Concurrent: 20 × 400 € = 8.000 €. Concurrent ist 1.000 € günstiger.', null, '{}', 1184)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -73432,7 +73432,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ak-2', 'anwendungssysteme', 'an-kollaboration', 'Was ist asynchrone Kommunikation? Nenne Beispiele.', 'Zeitversetzt - E-Mail, Wiki, Ticketsystem, gemeinsame Dokumente.', null, '{}', 1199)
+values ('k-ak-2', 'anwendungssysteme', 'an-kollaboration', 'Was ist asynchrone Kommunikation? Nenne Beispiele.', 'Zeitversetzt: E-Mail, Wiki, Ticketsystem, gemeinsame Dokumente.', null, '{}', 1199)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -73705,7 +73705,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-no-10', 'netzwerke', 'nw-modelle', 'Warum nutzt man Schichtenmodelle in der Netzwerktechnik?', 'Jede Schicht hat eine klare Aufgabe - Kabel, Geräte und Programme lassen sich austauschen, ohne alles neu zu bauen.', null, '{}', 1220)
+values ('k-no-10', 'netzwerke', 'nw-modelle', 'Warum nutzt man Schichtenmodelle in der Netzwerktechnik?', 'Jede Schicht hat eine klare Aufgabe. So lassen sich Kabel, Geräte und Programme austauschen, ohne alles neu zu bauen.', null, '{}', 1220)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -73965,7 +73965,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-no-9', 'netzwerke', 'nw-modelle', 'Welcher Portbereich gehört zu den Well-known Ports?', '0 bis 1.023 - Standarddienste wie SSH (22), HTTP (80), HTTPS (443).', null, '{}', 1240)
+values ('k-no-9', 'netzwerke', 'nw-modelle', 'Welcher Portbereich gehört zu den Well-known Ports?', '0 bis 1.023: Standarddienste wie SSH (22), HTTP (80), HTTPS (443).', null, '{}', 1240)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74108,7 +74108,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ng-11', 'netzwerke', 'nw-geraete', 'Auf welcher Schicht arbeiten Hub und Repeater?', 'Schicht 1 - sie verstärken bzw. verteilen nur Signale an alle Ports.', null, '{}', 1251)
+values ('k-ng-11', 'netzwerke', 'nw-geraete', 'Auf welcher Schicht arbeiten Hub und Repeater?', 'Schicht 1, denn sie verstärken bzw. verteilen nur Signale an alle Ports.', null, '{}', 1251)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74212,7 +74212,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ng-57', 'netzwerke', 'nw-geraete', 'Auf welchen Schichten arbeitet eine Firewall?', 'Je nach Art auf Schicht 3 bis 7 - sie filtert den Verkehr nach Regeln.', null, '{}', 1259)
+values ('k-ng-57', 'netzwerke', 'nw-geraete', 'Auf welchen Schichten arbeitet eine Firewall?', 'Je nach Art auf Schicht 3 bis 7. Sie filtert den Verkehr nach Regeln.', null, '{}', 1259)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74342,7 +74342,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ng-25', 'netzwerke', 'nw-geraete', 'Wie heißt der Stecker für Twisted-Pair-Netzwerkkabel?', 'RJ45 - achtpolig mit Rastnase.', null, '{}', 1269)
+values ('k-ng-25', 'netzwerke', 'nw-geraete', 'Wie heißt der Stecker für Twisted-Pair-Netzwerkkabel?', 'RJ45, achtpolig mit Rastnase.', null, '{}', 1269)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74589,7 +74589,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ng-47', 'netzwerke', 'nw-geraete', 'Welche WLAN-Verschlüsselung ist heute Stand der Technik?', 'WPA3, mindestens WPA2 - WEP und WPA gelten als unsicher.', null, '{}', 1288)
+values ('k-ng-47', 'netzwerke', 'nw-geraete', 'Welche WLAN-Verschlüsselung ist heute Stand der Technik?', 'WPA3, mindestens WPA2, denn WEP und WPA gelten als unsicher.', null, '{}', 1288)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74784,7 +74784,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n4-15', 'netzwerke', 'nw-ipv4', 'Welche Werte kann ein Oktett einer Subnetzmaske annehmen?', '0, 128, 192, 224, 240, 248, 252, 254, 255 - Einsen werden von links aufgefüllt.', null, '{}', 1303)
+values ('k-n4-15', 'netzwerke', 'nw-ipv4', 'Welche Werte kann ein Oktett einer Subnetzmaske annehmen?', '0, 128, 192, 224, 240, 248, 252, 254, 255. Einsen werden von links aufgefüllt.', null, '{}', 1303)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74810,7 +74810,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n4-16', 'netzwerke', 'nw-ipv4', 'Wie lautet die Maske zu /25, und wie viele Hosts hat das Netz?', '255.255.255.128 - Blockgröße 128, 126 nutzbare Hosts.', null, '{}', 1305)
+values ('k-n4-16', 'netzwerke', 'nw-ipv4', 'Wie lautet die Maske zu /25, und wie viele Hosts hat das Netz?', '255.255.255.128 (Blockgröße 128, 126 nutzbare Hosts).', null, '{}', 1305)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74823,7 +74823,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n4-3', 'netzwerke', 'nw-ipv4', 'Wie lautet die Maske zu /26, und wie viele Hosts hat das Netz?', '255.255.255.192 - Blockgröße 64, 62 nutzbare Hosts.', null, '{}', 1306)
+values ('k-n4-3', 'netzwerke', 'nw-ipv4', 'Wie lautet die Maske zu /26, und wie viele Hosts hat das Netz?', '255.255.255.192 (Blockgröße 64, 62 nutzbare Hosts).', null, '{}', 1306)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74836,7 +74836,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n4-7', 'netzwerke', 'nw-ipv4', 'Wie lautet die Maske zu /27, und wie viele Hosts hat das Netz?', '255.255.255.224 - Blockgröße 32, 30 nutzbare Hosts.', null, '{}', 1307)
+values ('k-n4-7', 'netzwerke', 'nw-ipv4', 'Wie lautet die Maske zu /27, und wie viele Hosts hat das Netz?', '255.255.255.224 (Blockgröße 32, 30 nutzbare Hosts).', null, '{}', 1307)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74849,7 +74849,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n4-9', 'netzwerke', 'nw-ipv4', 'Wie lautet die Maske zu /28, und wie viele Hosts hat das Netz?', '255.255.255.240 - Blockgröße 16, 14 nutzbare Hosts.', null, '{}', 1308)
+values ('k-n4-9', 'netzwerke', 'nw-ipv4', 'Wie lautet die Maske zu /28, und wie viele Hosts hat das Netz?', '255.255.255.240 (Blockgröße 16, 14 nutzbare Hosts).', null, '{}', 1308)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74862,7 +74862,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n4-17', 'netzwerke', 'nw-ipv4', 'Wie lautet die Maske zu /29, und wie viele Hosts hat das Netz?', '255.255.255.248 - Blockgröße 8, 6 nutzbare Hosts.', null, '{}', 1309)
+values ('k-n4-17', 'netzwerke', 'nw-ipv4', 'Wie lautet die Maske zu /29, und wie viele Hosts hat das Netz?', '255.255.255.248 (Blockgröße 8, 6 nutzbare Hosts).', null, '{}', 1309)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74888,7 +74888,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n4-19', 'netzwerke', 'nw-ipv4', 'Welche Maske gehört zu /20?', '255.255.240.0 - Blockgröße 16 im dritten Oktett.', null, '{}', 1311)
+values ('k-n4-19', 'netzwerke', 'nw-ipv4', 'Welche Maske gehört zu /20?', '255.255.240.0 (Blockgröße 16 im dritten Oktett).', null, '{}', 1311)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74979,7 +74979,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n4-31', 'netzwerke', 'nw-ipv4', 'Wie lautet die letzte nutzbare Adresse im Netz 192.168.1.128/26?', 'Block .128 bis .191, Broadcast .191 - letzter Host 192.168.1.190.', null, '{}', 1318)
+values ('k-n4-31', 'netzwerke', 'nw-ipv4', 'Wie lautet die letzte nutzbare Adresse im Netz 192.168.1.128/26?', 'Block .128 bis .191, Broadcast .191, letzter Host 192.168.1.190.', null, '{}', 1318)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74992,7 +74992,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n4-32', 'netzwerke', 'nw-ipv4', 'Wie lautet die erste nutzbare Adresse im Netz 10.0.0.32/27?', '10.0.0.33 - Netzadresse .32, Broadcast .63.', null, '{}', 1319)
+values ('k-n4-32', 'netzwerke', 'nw-ipv4', 'Wie lautet die erste nutzbare Adresse im Netz 10.0.0.32/27?', '10.0.0.33 (Netzadresse .32, Broadcast .63).', null, '{}', 1319)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -75005,7 +75005,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n4-21', 'netzwerke', 'nw-ipv4', 'Welche Netzadresse hat 172.16.45.200/20?', '172.16.32.0 - Block 16 im 3. Oktett, 45 liegt in 32-47; Broadcast 172.16.47.255.', null, '{}', 1320)
+values ('k-n4-21', 'netzwerke', 'nw-ipv4', 'Welche Netzadresse hat 172.16.45.200/20?', '172.16.32.0: Block 16 im 3. Oktett, 45 liegt in 32-47; Broadcast 172.16.47.255.', null, '{}', 1320)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -75031,7 +75031,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n4-39', 'netzwerke', 'nw-ipv4', 'Wie lautet die Broadcastadresse von 10.10.10.0/23?', '10.10.11.255 - /23 fasst im 3. Oktett zwei Blöcke zusammen (10 und 11).', null, '{}', 1322)
+values ('k-n4-39', 'netzwerke', 'nw-ipv4', 'Wie lautet die Broadcastadresse von 10.10.10.0/23?', '10.10.11.255, denn /23 fasst im 3. Oktett zwei Blöcke zusammen (10 und 11).', null, '{}', 1322)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -75109,7 +75109,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n4-37', 'netzwerke', 'nw-ipv4', 'VLSM in 192.168.1.0/24: 100, 50 und 20 Hosts plus Router-Link. Welche Netze?', '.0/25, .128/26, .192/27 und .224/30 - .228 bis .255 bleiben frei.', null, '{}', 1328)
+values ('k-n4-37', 'netzwerke', 'nw-ipv4', 'VLSM in 192.168.1.0/24: 100, 50 und 20 Hosts plus Router-Link. Welche Netze?', '.0/25, .128/26, .192/27 und .224/30; .228 bis .255 bleiben frei.', null, '{}', 1328)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -75122,7 +75122,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n4-28', 'netzwerke', 'nw-ipv4', 'PC 192.168.10.77/26 will 192.168.10.130 erreichen. Direkt oder über das Gateway?', 'Über das Gateway: .77 liegt in .64-.127, .130 in .128-.191 - verschiedene Netze.', null, '{}', 1329)
+values ('k-n4-28', 'netzwerke', 'nw-ipv4', 'PC 192.168.10.77/26 will 192.168.10.130 erreichen. Direkt oder über das Gateway?', 'Über das Gateway: .77 liegt in .64-.127, .130 in .128-.191, also verschiedene Netze.', null, '{}', 1329)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -75304,7 +75304,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n6-13', 'netzwerke', 'nw-ipv6', 'Kürze 2001:0db8:0000:0000:0001:0000:0000:0000 so weit wie möglich.', '2001:db8:0:0:1:: - die längere Null-Folge (drei Blöcke) wird zu ::.', null, '{}', 1343)
+values ('k-n6-13', 'netzwerke', 'nw-ipv6', 'Kürze 2001:0db8:0000:0000:0001:0000:0000:0000 so weit wie möglich.', '2001:db8:0:0:1:: (die längere Null-Folge aus drei Blöcken wird zu ::).', null, '{}', 1343)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -75317,7 +75317,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n6-14', 'netzwerke', 'nw-ipv6', 'Schreibe fe80::1:2 vollständig aus.', 'fe80:0000:0000:0000:0000:0000:0001:0002 - :: steht für 8 - 3 = 5 Null-Blöcke.', null, '{}', 1344)
+values ('k-n6-14', 'netzwerke', 'nw-ipv6', 'Schreibe fe80::1:2 vollständig aus.', 'fe80:0000:0000:0000:0000:0000:0001:0002, denn :: steht für 8 - 3 = 5 Null-Blöcke.', null, '{}', 1344)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -75369,7 +75369,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n6-21', 'netzwerke', 'nw-ipv6', 'Woran erkennst du eine Global-Unicast-Adresse?', 'Bereich 2000::/3 - sie beginnt mit 2 oder 3 und ist weltweit erreichbar.', null, '{}', 1348)
+values ('k-n6-21', 'netzwerke', 'nw-ipv6', 'Woran erkennst du eine Global-Unicast-Adresse?', 'Bereich 2000::/3. Sie beginnt mit 2 oder 3 und ist weltweit erreichbar.', null, '{}', 1348)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -75421,7 +75421,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n6-22', 'netzwerke', 'nw-ipv6', 'Welcher Bereich ist für IPv6-Multicast reserviert?', 'ff00::/8 - die Adressen beginnen mit ff.', null, '{}', 1352)
+values ('k-n6-22', 'netzwerke', 'nw-ipv6', 'Welcher Bereich ist für IPv6-Multicast reserviert?', 'ff00::/8. Die Adressen beginnen mit ff.', null, '{}', 1352)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -75720,7 +75720,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-nd-14', 'netzwerke', 'nw-dienste', 'Welchen Port nutzt DNS?', '53 - meist UDP, bei großen Antworten und Zonentransfers TCP.', null, '{}', 1375)
+values ('k-nd-14', 'netzwerke', 'nw-dienste', 'Welchen Port nutzt DNS?', '53, meist UDP, bei großen Antworten und Zonentransfers TCP.', null, '{}', 1375)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -75837,7 +75837,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-nd-21', 'netzwerke', 'nw-dienste', 'Welchen Port nutzt Telnet, und warum ist es unsicher?', '23 - überträgt alles, auch Passwörter, im Klartext; durch SSH ersetzen.', null, '{}', 1384)
+values ('k-nd-21', 'netzwerke', 'nw-dienste', 'Welchen Port nutzt Telnet, und warum ist es unsicher?', '23. Telnet überträgt alles, auch Passwörter, im Klartext; durch SSH ersetzen.', null, '{}', 1384)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -75863,7 +75863,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-nd-39', 'netzwerke', 'nw-dienste', 'Welche SNMP-Version solltest du einsetzen?', 'SNMPv3 - v1 und v2c übertragen den Community-String im Klartext.', null, '{}', 1386)
+values ('k-nd-39', 'netzwerke', 'nw-dienste', 'Welche SNMP-Version solltest du einsetzen?', 'SNMPv3, denn v1 und v2c übertragen den Community-String im Klartext.', null, '{}', 1386)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -76383,7 +76383,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-nc-17', 'netzwerke', 'nw-cloud', 'Eigener Server 6.000 € + 1.800 €/Jahr oder Cloud-VM 290 €/Monat: Was ist über 3 Jahre günstiger?', 'Eigen: 6.000 € + 3 × 1.800 € = 11.400 €. Cloud: 290 € × 36 = 10.440 € - die Cloud ist 960 € günstiger.', null, '{}', 1426)
+values ('k-nc-17', 'netzwerke', 'nw-cloud', 'Eigener Server 6.000 € + 1.800 €/Jahr oder Cloud-VM 290 €/Monat: Was ist über 3 Jahre günstiger?', 'Eigen: 6.000 € + 3 × 1.800 € = 11.400 €. Cloud: 290 € × 36 = 10.440 €. Die Cloud ist 960 € günstiger.', null, '{}', 1426)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -78515,7 +78515,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-pk-19', 'programmierlogik', 'pl-kontrollstrukturen', 'Wie übersetzt du WIEDERHOLE … BIS x > 100 nach Java?', 'do { … } while (x <= 100); - die Abbruchbedingung wird zur Laufbedingung umgekehrt.', null, '{}', 1590)
+values ('k-pk-19', 'programmierlogik', 'pl-kontrollstrukturen', 'Wie übersetzt du WIEDERHOLE … BIS x > 100 nach Java?', 'Die Abbruchbedingung wird zur Laufbedingung umgekehrt: do { … } while (x <= 100);', null, '{}', 1590)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -84274,7 +84274,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ig-21', 'ki_grundlagen', 'ki-grundlagen', 'Was ist generative KI?', 'KI, die neue Inhalte wie Text, Bild oder Code erzeugt, statt nur einzuordnen - z. B. große Sprachmodelle.', null, '{}', 2033)
+values ('k-ig-21', 'ki_grundlagen', 'ki-grundlagen', 'Was ist generative KI?', 'KI, die neue Inhalte wie Text, Bild oder Code erzeugt, statt nur einzuordnen, z. B. große Sprachmodelle.', null, '{}', 2033)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,

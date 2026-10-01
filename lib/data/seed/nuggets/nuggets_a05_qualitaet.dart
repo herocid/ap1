@@ -413,7 +413,7 @@ final List<Nugget> nuggetsA05 = [
     'n-qp-11',
     'qm-pdca',
     'Prozent oder Prozentpunkte?',
-    'Sinkt ein Anteil von 30 % auf 12 %, ist er um 18 Prozentpunkte gesunken - aber um 60 Prozent. Beide Aussagen stimmen, meinen aber Verschiedenes. Gib im Check deshalb genau an, welche Größe gemeint ist.',
+    'Sinkt ein Anteil von 30 % auf 12 %, ist er um 18 Prozentpunkte gesunken, aber um 60 Prozent. Beide Aussagen stimmen, meinen aber Verschiedenes. Gib im Check deshalb genau an, welche Größe gemeint ist.',
   ),
   merke(
     'n-qp-12',

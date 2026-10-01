@@ -1045,7 +1045,7 @@ final List<Question> ihkA04Daten = [
           'Seite nicht gefunden',
           'dauerhaft umgezogen',
         ]),
-        'nirgends - kein Fehler',
+        'nirgends (kein Fehler)',
       ],
       [
         '301',
@@ -1053,7 +1053,7 @@ final List<Question> ihkA04Daten = [
           'Zugriff verweigert',
           'interner Serverfehler',
         ]),
-        'nirgends - Umleitung',
+        'nirgends (Umleitung)',
       ],
       [
         '403',

@@ -30,19 +30,19 @@ final List<Question> seedAnforderungen = [
         rationale: 'Der Auftragnehmer beschreibt, wie er die Pflicht erfüllt.',
       ),
       MatchItem(
-        text: 'Beschreibt das WAS und WOFÜR - die Gesamtheit der Anforderungen.',
+        text: 'Beschreibt das WAS und WOFÜR, also die Gesamtheit der Anforderungen.',
         bucket: 0,
         rationale: 'Das Lastenheft ist bewusst lösungsneutral formuliert.',
       ),
       MatchItem(
-        text: 'Beschreibt das WIE und WOMIT - die konkrete technische Umsetzung.',
+        text: 'Beschreibt das WIE und WOMIT, also die konkrete technische Umsetzung.',
         bucket: 1,
         rationale: 'Erst im Pflichtenheft werden Technologien, Schnittstellen und Architektur festgelegt.',
       ),
       MatchItem(
         text: 'Ist Grundlage für die Ausschreibung und den Angebotsvergleich.',
         bucket: 0,
-        rationale: 'Alle Anbieter bekommen dasselbe Lastenheft - nur so sind Angebote vergleichbar.',
+        rationale: 'Alle Anbieter bekommen dasselbe Lastenheft, denn nur so sind Angebote vergleichbar.',
       ),
       MatchItem(
         text: 'Wird vom Auftraggeber genehmigt und ist Grundlage der Abnahme.',
@@ -73,7 +73,7 @@ final List<Question> seedAnforderungen = [
       MatchItem(
         text: 'Das System muss Rechnungen als PDF exportieren können.',
         bucket: 0,
-        rationale: 'Eine konkrete Fähigkeit des Systems - also funktional.',
+        rationale: 'Eine konkrete Fähigkeit des Systems, also funktional.',
       ),
       MatchItem(
         text: 'Die Suchanfrage muss in unter 2 Sekunden beantwortet werden.',
@@ -93,12 +93,12 @@ final List<Question> seedAnforderungen = [
       MatchItem(
         text: 'Die Oberfläche muss der BITV 2.0 für Barrierefreiheit entsprechen.',
         bucket: 1,
-        rationale: 'Eine Randbedingung bzw. Qualitätsanforderung - sie beschreibt keine einzelne Funktion.',
+        rationale: 'Eine Randbedingung bzw. Qualitätsanforderung, denn sie beschreibt keine einzelne Funktion.',
       ),
       MatchItem(
         text: 'Administratoren können Benutzerkonten sperren und entsperren.',
         bucket: 0,
-        rationale: 'Wieder eine konkrete Fähigkeit - funktional.',
+        rationale: 'Wieder eine konkrete Fähigkeit, also funktional.',
       ),
     ],
     explanation:
@@ -106,8 +106,8 @@ final List<Question> seedAnforderungen = [
         'TUT etwas" formulieren? Dann funktional. Beschreibt sie eher, WIE GUT '
         'das System etwas tut (schnell, sicher, verfügbar, bedienbar, '
         'wartbar, portabel), dann nicht-funktional. '
-        'Die Qualitätsmerkmale von Software - etwa Zuverlässigkeit, '
-        'Benutzbarkeit, Effizienz und Sicherheit - sind eine gute Checkliste '
+        'Die Qualitätsmerkmale von Software (etwa Zuverlässigkeit, '
+        'Benutzbarkeit, Effizienz und Sicherheit) sind eine gute Checkliste '
         'für nicht-funktionale Anforderungen.',
   ),
 
@@ -123,11 +123,11 @@ final List<Question> seedAnforderungen = [
         'Markiere alle Anforderungen, die NICHT gut formuliert sind.',
     zeilen: [
       ja('Das System soll benutzerfreundlich sein.',
-          'Nicht prüfbar - niemand kann entscheiden, ob das erfüllt ist.'),
+          'Nicht prüfbar: Niemand kann entscheiden, ob das erfüllt ist.'),
       nein('Die Suche liefert bei 10.000 Tickets ein Ergebnis in höchstens 2 Sekunden.',
           'Eindeutig und messbar.'),
       ja('Das System muss schnell reagieren.',
-          'Ohne Messwert mehrdeutig - "schnell" versteht jeder anders.'),
+          'Ohne Messwert mehrdeutig, denn "schnell" versteht jeder anders.'),
       nein('Tickets können als PDF exportiert werden.',
           'Eine klare, prüfbare Fähigkeit des Systems.'),
       ja('Das System wird mit MySQL 8 und PHP umgesetzt.',
@@ -141,7 +141,7 @@ final List<Question> seedAnforderungen = [
         'Merkhilfe für Anforderungsqualität: eindeutig, vollständig, '
         'widerspruchsfrei, prüfbar, notwendig, verständlich, priorisiert. '
         'Eine vorweggenommene Lösung schließt bessere Alternativen aus, und '
-        'Vagheit ist keine Flexibilität - die erreicht man über Prioritäten. '
+        'Vagheit ist keine Flexibilität; die erreicht man über Prioritäten. '
         'Priorisierung erfolgt oft nach MoSCoW: Must have, Should have, '
         'Could have, Won’t have (this time).',
   ),
@@ -163,9 +163,9 @@ final List<Question> seedAnforderungen = [
       _c('Vollständige Verweigerung der Abnahme bis alle Mängel beseitigt sind.', false,
           'Bei unwesentlichen Mängeln ist die Verweigerung in der Regel unzulässig (vgl. Werkvertragsrecht) und schadet dem Kunden selbst, weil der Nutzen ausbleibt.'),
       _c('Vorbehaltlose Abnahme, die Mängel werden formlos per E-Mail gemeldet.', false,
-          'Gefährlich: Mit der vorbehaltlosen Abnahme verliert der Kunde bei bekannten Mängeln Nacherfüllung, Minderung und Rücktritt - nur Schadensersatz bleibt.'),
+          'Gefährlich: Mit der vorbehaltlosen Abnahme verliert der Kunde bei bekannten Mängeln Nacherfüllung, Minderung und Rücktritt. Nur Schadensersatz bleibt.'),
       _c('Die Abnahme entfällt, weil die Software bereits läuft.', false,
-          'Die Abnahme ist ein formaler Rechtsakt mit erheblichen Folgen (Gefahrübergang, Fälligkeit der Vergütung, Beginn der Gewährleistung). Sie entfällt nicht durch Nutzung - im Gegenteil kann Nutzung als konkludente Abnahme gelten.'),
+          'Die Abnahme ist ein formaler Rechtsakt mit erheblichen Folgen (Gefahrübergang, Fälligkeit der Vergütung, Beginn der Gewährleistung). Sie entfällt nicht durch Nutzung. Im Gegenteil kann Nutzung als konkludente Abnahme gelten.'),
     ],
     explanation:
         'Was an der Abnahme hängt: Fälligkeit der Vergütung, Gefahrübergang, '
@@ -197,7 +197,7 @@ final List<Question> seedAnforderungen = [
     ],
     explanation:
         'Die zwei Stellen, an denen in der Prüfung gern getauscht wird: '
-        '(1) Das Pflichtenheft kommt NACH der Vergabe - vorher weiß man ja '
+        '(1) Das Pflichtenheft kommt NACH der Vergabe, denn vorher weiß man ja '
         'gar nicht, wer es schreibt. (2) Abgenommen wird gegen das '
         'Pflichtenheft, nicht gegen das Lastenheft, weil nur das '
         'Pflichtenheft die prüfbare Konkretisierung enthält.',
@@ -215,9 +215,9 @@ final List<Question> seedAnforderungen = [
     prompt: 'Wie sollte die Projektleitung darauf reagieren?',
     choices: [
       _c('Jede Änderung über einen definierten Change-Request-Prozess mit Aufwands- und Terminbewertung führen.', true,
-          'Richtig. Änderungen sind nicht verboten - sie müssen nur bewertet und entschieden werden, statt still im Hintergrund zu passieren.'),
+          'Richtig. Änderungen sind nicht verboten. Sie müssen nur bewertet und entschieden werden, statt still im Hintergrund zu passieren.'),
       _c('Die Zusatzwünsche ablehnen, weil das Pflichtenheft unterschrieben ist.', false,
-          'Pauschale Ablehnung ist praxisfern und beschädigt die Zusammenarbeit. Anforderungen ändern sich - das Problem ist der unkontrollierte Weg, nicht die Änderung selbst.'),
+          'Pauschale Ablehnung ist praxisfern und beschädigt die Zusammenarbeit. Anforderungen ändern sich. Das Problem ist der unkontrollierte Weg, nicht die Änderung selbst.'),
       _c('Die Wünsche kurzfristig mit umsetzen, solange sie klein sind.', false,
           'Genau so entsteht Scope Creep: viele kleine, nie bewertete Erweiterungen sprengen am Ende Termin und Budget, und niemand kann hinterher sagen, warum.'),
       _c('Die Entscheidung dem Entwickler überlassen, der den Aufwand am besten einschätzen kann.', false,
@@ -242,18 +242,18 @@ final List<Question> seedAnforderungen = [
     scenario:
         'Nutzwertanalyse für ein Ticketsystem. Bewertungsskala 1 (schlecht) bis '
         '5 (sehr gut).\n\n'
-        'Kriterium (Gewichtung) - Bewertung Anbieter B:\n'
-        'Funktionsumfang (40 %) - 4\n'
-        'Bedienbarkeit (25 %) - 3\n'
-        'Support (20 %) - 5\n'
-        'Preis (15 %) - 2',
+        'Kriterium (Gewichtung): Bewertung Anbieter B\n'
+        'Funktionsumfang (40 %): 4\n'
+        'Bedienbarkeit (25 %): 3\n'
+        'Support (20 %): 5\n'
+        'Preis (15 %): 2',
     prompt:
         'Wie hoch ist der Gesamtnutzwert von Anbieter B? '
         '(Zwei Nachkommastellen)',
     numericAnswer: 3.65,
     numericTolerance: 0.01,
     explanation:
-        'Rechenweg - jedes Kriterium: Gewichtung x Bewertung, dann summieren:\n'
+        'Rechenweg für jedes Kriterium: Gewichtung x Bewertung, dann summieren:\n'
         'Funktionsumfang: 0,40 x 4 = 1,60\n'
         'Bedienbarkeit:   0,25 x 3 = 0,75\n'
         'Support:         0,20 x 5 = 1,00\n'
@@ -292,7 +292,7 @@ final List<Question> seedAnforderungen = [
         '6. höchster Nutzwert gewinnt.\n'
         'Schwäche, nach der gern gefragt wird: Gewichtung und Bewertung sind '
         'subjektiv. Wer das Ergebnis vorher kennt, kann es über die '
-        'Gewichtung herbeiführen - deshalb Kriterien VOR dem Blick auf die '
+        'Gewichtung herbeiführen. Deshalb Kriterien VOR dem Blick auf die '
         'Angebote festlegen.',
   ),
 
@@ -317,7 +317,7 @@ final List<Question> seedAnforderungen = [
         '= 48.000 Euro / 15.000 Euro pro Jahr = 3,2 Jahre\n\n'
         'In Worten: nach rund 3 Jahren und 2-3 Monaten hat sich die Anschaffung '
         'bezahlt gemacht. Achtung bei Aufgaben, in denen zusätzlich laufende '
-        'Kosten der neuen Lösung genannt werden - dann muss man erst den '
+        'Kosten der neuen Lösung genannt werden. Dann muss man erst den '
         'NETTO-Rückfluss bilden (Einsparung minus neue laufende Kosten) und '
         'erst damit rechnen.',
   ),
@@ -342,7 +342,7 @@ final List<Question> seedAnforderungen = [
     numericTolerance: 0.5,
     unit: 'Euro',
     explanation:
-        'Bezugskalkulation - immer in dieser Reihenfolge:\n'
+        'Bezugskalkulation, immer in dieser Reihenfolge:\n'
         'Listeneinkaufspreis            12.000,00\n'
         '- Rabatt 15 %                 - 1.800,00\n'
         '= Zieleinkaufspreis            10.200,00\n'
@@ -352,7 +352,7 @@ final List<Question> seedAnforderungen = [
         '= Bezugspreis/Einstandspreis   10.246,00 Euro\n\n'
         'Zwei klassische Fehler: (1) Skonto vom Listenpreis statt vom '
         'Zieleinkaufspreis rechnen, (2) die Bezugskosten vor dem Skontoabzug '
-        'addieren - auf Fracht gibt es kein Skonto.',
+        'addieren, denn auf Fracht gibt es kein Skonto.',
   ),
 
   zuordnen(
@@ -369,7 +369,7 @@ final List<Question> seedAnforderungen = [
       zu('Strom- und Klimatisierungskosten', 1,
           'Laufende Betriebskosten sind bei Servern oft höher als der Kaufpreis.'),
       zu('Kaufpreis der Hardware', 0,
-          'Der offensichtliche Teil - meist der kleinere.'),
+          'Der offensichtliche Teil, meist der kleinere.'),
       zu('Umsatz, der mit dem neuen System erzielt wird', 3,
           'TCO betrachtet ausschließlich Kosten. Erträge gehören in eine ROI-Rechnung.'),
       zu('Jährliche Lizenz- und Wartungsverträge', 1,
@@ -425,7 +425,7 @@ final List<Question> seedAnforderungen = [
       MatchItem(
         text: 'Auf den Einsatz einer unausgereiften Technologie wird verzichtet.',
         bucket: 0,
-        rationale: 'Die Ursache wird komplett beseitigt - die Eintrittswahrscheinlichkeit sinkt auf null.',
+        rationale: 'Die Ursache wird komplett beseitigt; die Eintrittswahrscheinlichkeit sinkt auf null.',
       ),
       MatchItem(
         text: 'Zusätzliche Code-Reviews und automatisierte Tests werden eingeführt.',
@@ -435,7 +435,7 @@ final List<Question> seedAnforderungen = [
       MatchItem(
         text: 'Eine Betriebshaftpflichtversicherung wird abgeschlossen.',
         bucket: 2,
-        rationale: 'Der finanzielle Schaden geht auf einen Dritten über - klassisches Überwälzen.',
+        rationale: 'Der finanzielle Schaden geht auf einen Dritten über, also klassisches Überwälzen.',
       ),
       MatchItem(
         text: 'Die Entwicklung wird an einen Dienstleister mit Festpreis vergeben.',
@@ -445,12 +445,12 @@ final List<Question> seedAnforderungen = [
       MatchItem(
         text: 'Ein Restrisiko mit sehr geringem Schadenswert wird bewusst in Kauf genommen und dokumentiert.',
         bucket: 3,
-        rationale: 'Akzeptieren ist eine legitime Strategie - entscheidend ist, dass es bewusst und dokumentiert geschieht.',
+        rationale: 'Akzeptieren ist eine legitime Strategie. Entscheidend ist, dass es bewusst und dokumentiert geschieht.',
       ),
       MatchItem(
         text: 'Ein Backup-Rechenzentrum wird bereitgehalten, um die Ausfalldauer zu begrenzen.',
         bucket: 1,
-        rationale: 'Die Auswirkung wird reduziert. Das Risiko selbst bleibt bestehen - also Vermindern, nicht Vermeiden.',
+        rationale: 'Die Auswirkung wird reduziert. Das Risiko selbst bleibt bestehen, also Vermindern, nicht Vermeiden.',
       ),
     ],
     explanation:
@@ -501,7 +501,7 @@ final List<Question> seedAnforderungen = [
       [
         'Überstunden in der Woche vor dem Release anordnen',
         wahl('keine QS-Maßnahme', ['konstruktiv', 'analytisch'],
-            'Mehr Arbeitszeit verhindert und findet keine Fehler - unter Zeitdruck entstehen eher neue.'),
+            'Mehr Arbeitszeit verhindert und findet keine Fehler. Unter Zeitdruck entstehen eher neue.'),
       ],
     ],
     explanation:
@@ -512,7 +512,7 @@ final List<Question> seedAnforderungen = [
         'Grenzfall, der gern gefragt wird: Ein Linter ist konstruktiv, wenn er '
         'beim Schreiben eingreift, und analytisch, wenn er im Nachhinein über '
         'fertigen Code läuft. In der Prüfung zählt die Einordnung als '
-        'Werkzeugvorgabe - also konstruktiv.',
+        'Werkzeugvorgabe, also konstruktiv.',
     punkte: 3,
   ),
 
@@ -530,7 +530,7 @@ final List<Question> seedAnforderungen = [
     prompt: 'Wie ist mit einem solchen Risiko umzugehen?',
     choices: [
       _c('Es muss trotz geringer Wahrscheinlichkeit behandelt werden, weil der Schaden untragbar wäre.', true,
-          'Richtig. Bei existenzbedrohenden Schäden greift die reine Erwartungswertlogik nicht mehr - ein Schaden, den man nicht überlebt, darf nicht eintreten.'),
+          'Richtig. Bei existenzbedrohenden Schäden greift die reine Erwartungswertlogik nicht mehr. Ein Schaden, den man nicht überlebt, darf nicht eintreten.'),
       _c('Es kann akzeptiert werden, weil der Risikowert rechnerisch niedrig ist.', false,
           'Genau der Denkfehler. Ein rechnerisch kleiner Erwartungswert hilft nicht, wenn der Einzelfall das Unternehmen beendet.'),
       _c('Es ist nachrangig gegenüber Risiken mit mittlerer Wahrscheinlichkeit und mittlerem Schaden.', false,
@@ -561,7 +561,7 @@ final List<Question> seedAnforderungen = [
       _c('Erfahrungen systematisch sichern, damit künftige Projekte davon profitieren.', true,
           'Richtig. Der Wert entsteht erst dadurch, dass die Erkenntnisse dokumentiert und in der Organisation verfügbar gemacht werden.'),
       _c('Die Verantwortlichen für Fehler im Projekt benennen.', false,
-          'Genau das Gegenteil. Sobald Schuldzuweisungen drohen, sagt niemand mehr, was wirklich schieflief - und die Sitzung ist wertlos.'),
+          'Genau das Gegenteil. Sobald Schuldzuweisungen drohen, sagt niemand mehr, was wirklich schieflief, und die Sitzung ist wertlos.'),
       _c('Die Abnahme des Projektergebnisses durch den Kunden.', false,
           'Die Abnahme ist ein eigener, vorgelagerter Schritt.'),
       _c('Die Schlussrechnung für den Kunden erstellen.', false,
@@ -610,7 +610,7 @@ final List<Question> seedAnforderungen = [
         'Übergabe an den Betrieb, Restarbeiten), kaufmännisch '
         '(Schlussrechnung, Nachkalkulation, Projekt schließen) und personell '
         '(Teamauflösung, Rückführung in die Linie, Würdigung). '
-        'Die personelle Ebene wird am häufigsten vergessen - und ist die, an '
+        'Die personelle Ebene wird am häufigsten vergessen und ist die, an '
         'die sich das Team am längsten erinnert.',
     punkte: 4,
   ),
@@ -634,7 +634,7 @@ final List<Question> seedAnforderungen = [
     ],
     explanation:
         'Zwei Stellen, an denen gern getauscht wird: Die Abnahme kommt VOR der '
-        'Übergabe an den Betrieb - man übergibt nichts, was der Kunde nicht '
+        'Übergabe an den Betrieb, denn man übergibt nichts, was der Kunde nicht '
         'angenommen hat. Und die Teamauflösung kommt ZULETZT, weil man für '
         'Bericht und Lessons Learned die Leute noch braucht. Wer das Team '
         'vorher auflöst, bekommt weder das eine noch das andere in '

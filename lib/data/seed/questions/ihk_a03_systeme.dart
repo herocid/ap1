@@ -992,13 +992,13 @@ final List<Question> ihkA03 = [
         'Belegter Platz: {1} Byte\n'
         'Ungenutzter Rest (Verschnitt): {2} Byte',
     luecken: [
-      zahl(3, rationale: '10.000 / 4.096 ≈ 2,44 - aufrunden'),
+      zahl(3, rationale: '10.000 / 4.096 ≈ 2,44, aufrunden'),
       zahl(12288, rationale: '3 × 4.096'),
       zahl(2288, rationale: '12.288 - 10.000'),
     ],
     punkte: 3,
     explanation:
-        '10.000 / 4.096 ≈ 2,44 - angefangene Cluster zählen voll, also 3 Cluster. Belegt: 3 × 4.096 = 12.288 Byte. Verschnitt: 12.288 - 10.000 = 2.288 Byte.',
+        '10.000 / 4.096 ≈ 2,44; angefangene Cluster zählen voll, also 3 Cluster. Belegt: 3 × 4.096 = 12.288 Byte. Verschnitt: 12.288 - 10.000 = 2.288 Byte.',
   ),
   paare(
     'i3-bd-4',
@@ -1645,7 +1645,7 @@ final List<Question> ihkA03 = [
     unit: 'Jahre',
     punkte: 4,
     explanation:
-        'Gleichstand: 42.000 + 4.000 × n = 9.600 × n, also 42.000 = 5.600 × n und n = 7,5. Nach 7 Jahren: 70.000 € gegen 67.200 € - noch teurer. Nach 8 Jahren: 74.000 € gegen 76.800 € - erstmals günstiger.',
+        'Gleichstand: 42.000 + 4.000 × n = 9.600 × n, also 42.000 = 5.600 × n und n = 7,5. Nach 7 Jahren: 70.000 € gegen 67.200 €, also noch teurer. Nach 8 Jahren: 74.000 € gegen 76.800 €, also erstmals günstiger.',
     difficulty: 3,
   ),
   paare(
@@ -1687,7 +1687,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 6,
     explanation:
-        'Named User: jede berechtigte Person - 40 × 120 € = 4.800 €. Concurrent User: gleichzeitige Nutzung - 15 × 290 € = 4.350 €. Gerätelizenz: je PC - 25 × 180 € = 4.500 €. Am günstigsten ist hier Concurrent User.',
+        'Named User: jede berechtigte Person: 40 × 120 € = 4.800 €. Concurrent User: gleichzeitige Nutzung: 15 × 290 € = 4.350 €. Gerätelizenz: je PC: 25 × 180 € = 4.500 €. Am günstigsten ist hier Concurrent User.',
   ),
   freitext(
     'i3-al-2',
@@ -1912,11 +1912,11 @@ final List<Question> ihkA03 = [
     scenario: 'Im Netzwerkschrank eines Kunden stehen verschiedene Geräte.',
     prompt: 'Ordne jedem Gerät die OSI-Schicht zu, auf der es arbeitet.',
     paare: [
-      paar('Hub, Repeater', 'Schicht 1 - Bitübertragung'),
-      paar('Switch', 'Schicht 2 - Sicherung'),
-      paar('Router', 'Schicht 3 - Vermittlung'),
-      paar('Paketfilter mit Portregeln', 'Schicht 4 - Transport'),
-      paar('Proxy für Webseiten', 'Schicht 7 - Anwendung'),
+      paar('Hub, Repeater', 'Schicht 1 (Bitübertragung)'),
+      paar('Switch', 'Schicht 2 (Sicherung)'),
+      paar('Router', 'Schicht 3 (Vermittlung)'),
+      paar('Paketfilter mit Portregeln', 'Schicht 4 (Transport)'),
+      paar('Proxy für Webseiten', 'Schicht 7 (Anwendung)'),
     ],
     explanation:
         'Hub und Repeater verstärken nur Signale (1), der Switch arbeitet mit MAC-Adressen (2), der Router mit IP-Adressen (3). Portregeln betreffen die Transportschicht (4), ein Web-Proxy versteht das Anwendungsprotokoll (7).',
@@ -2006,11 +2006,11 @@ final List<Question> ihkA03 = [
         'In einem Mitschnitt des Netzverkehrs tauchen verschiedene Protokolle auf.',
     prompt: 'Markiere alle Protokolle, die zur Anwendungsschicht gehören.',
     zeilen: [
-      ja('HTTPS', 'Überträgt Webseiten - Anwendungsschicht.'),
+      ja('HTTPS', 'Überträgt Webseiten, also Anwendungsschicht.'),
       nein('TCP', 'Transportschicht.'),
-      ja('DNS', 'Namensauflösung - Anwendungsschicht.'),
+      ja('DNS', 'Namensauflösung, also Anwendungsschicht.'),
       nein('IP', 'Vermittlungsschicht.'),
-      ja('SMTP', 'E-Mail-Versand - Anwendungsschicht.'),
+      ja('SMTP', 'E-Mail-Versand, also Anwendungsschicht.'),
       nein('Ethernet', 'Sicherungs- und Bitübertragungsschicht.'),
       nein('UDP', 'Transportschicht.'),
     ],
@@ -2037,7 +2037,7 @@ final List<Question> ihkA03 = [
     unit: 'W',
     punkte: 3,
     explanation:
-        'Kameras: 4 × 12 W = 48 W. Access Points: 3 × 21 W = 63 W. Summe: 111 W. Das Gesamtbudget („Total PoE budget“) beträgt 120 W - frei bleiben 120 W - 111 W = 9 W. Je Port sind 30 W erlaubt, das reicht für jedes Gerät.',
+        'Kameras: 4 × 12 W = 48 W. Access Points: 3 × 21 W = 63 W. Summe: 111 W. Das Gesamtbudget („Total PoE budget“) beträgt 120 W, frei bleiben 120 W - 111 W = 9 W. Je Port sind 30 W erlaubt, das reicht für jedes Gerät.',
     tags: ['englisch', 'datenblatt'],
   ),
   tabelle(
@@ -2077,7 +2077,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     explanation:
-        '6 W und 12 W liegen unter 15,4 W - 802.3af genügt. 22 W übersteigt 15,4 W, passt aber in 30 W - 802.3at. 55 W braucht 802.3bt.',
+        '6 W und 12 W liegen unter 15,4 W: 802.3af genügt. 22 W übersteigt 15,4 W, passt aber in 30 W: 802.3at. 55 W braucht 802.3bt.',
   ),
   freitext(
     'i3-ng-3',
@@ -2165,7 +2165,7 @@ final List<Question> ihkA03 = [
     wortbank: ['55 m', 'Server', 'Router'],
     punkte: 4,
     explanation:
-        'Primär: zwischen Gebäuden (Glasfaser). Sekundär: zwischen den Etagen. Tertiär: vom Etagenverteiler bis zur Dose - 90 m fest verlegt, mit Patchkabeln zusammen höchstens 100 m.',
+        'Primär: zwischen Gebäuden (Glasfaser). Sekundär: zwischen den Etagen. Tertiär: vom Etagenverteiler bis zur Dose: 90 m fest verlegt, mit Patchkabeln zusammen höchstens 100 m.',
   ),
 
   // =========================================================== IPv4 und Subnetting
@@ -2192,7 +2192,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 6,
     explanation:
-        '/26: Maske 255.255.255.192, Blockgröße 256 - 192 = 64, 2⁶ - 2 = 62 Hosts. Blöcke: 0, 64, 128, 192 - die 77 liegt im Block 64 bis 127. Netz .64, Broadcast .127, Hosts .65 bis .126.',
+        '/26: Maske 255.255.255.192, Blockgröße 256 - 192 = 64, 2⁶ - 2 = 62 Hosts. Blöcke: 0, 64, 128, 192; die 77 liegt im Block 64 bis 127. Netz .64, Broadcast .127, Hosts .65 bis .126.',
     tags: ['subnetting'],
   ),
   lueckentext(
@@ -2517,7 +2517,7 @@ final List<Question> ihkA03 = [
     prompt: 'Beschreibe zwei Unterschiede zwischen IPv4 und IPv6.',
     kriterien: [
       krit(
-        'Adresslänge: 32 Bit bei IPv4, 128 Bit bei IPv6 - viel größerer Adressraum',
+        'Adresslänge: 32 Bit bei IPv4, 128 Bit bei IPv6, also viel größerer Adressraum',
         punkte: 2,
         stichwoerter: ['32 Bit', '128 Bit', 'Adressraum', 'mehr Adressen'],
       ),

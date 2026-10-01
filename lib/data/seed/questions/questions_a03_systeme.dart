@@ -1052,7 +1052,7 @@ final List<Question> questionsA03 = [
     answer: 20480,
     unit: 'Byte',
     explanation:
-        '4 KiB = 4.096 Byte. 18.000 / 4.096 ≈ 4,39 - angefangene Cluster zählen voll, also 5 Cluster. 5 × 4.096 = 20.480 Byte.',
+        '4 KiB = 4.096 Byte. 18.000 / 4.096 ≈ 4,39; angefangene Cluster zählen voll, also 5 Cluster. 5 × 4.096 = 20.480 Byte.',
   ),
   einfach(
     'a3-bd-5',
@@ -1069,7 +1069,7 @@ final List<Question> questionsA03 = [
       nein('/ben/projekt', 'Das wäre ein absoluter Pfad ab der Wurzel.'),
       nein(
         '/home/anna/../projekt',
-        'Kein gültiges Ergebnis - „..“ wird aufgelöst, und ben fehlt.',
+        'Kein gültiges Ergebnis, denn „..“ wird aufgelöst, und ben fehlt.',
       ),
     ],
     explanation:
@@ -2784,7 +2784,7 @@ final List<Question> questionsA03 = [
       wort(['172.16.5.255'], 'der nächste Block begänne bei .256'),
     ],
     explanation:
-        '/26 = Blockgröße 64. Netze: .0, .64, .128, .192. 200 liegt ab .192 - Netzadresse .192, Broadcast .255.',
+        '/26 = Blockgröße 64. Netze: .0, .64, .128, .192. 200 liegt ab .192: Netzadresse .192, Broadcast .255.',
   ),
   einfach(
     'a3-n4-3',
@@ -2828,7 +2828,7 @@ final List<Question> questionsA03 = [
       wort(['10.20.30.159'], 'eine Adresse vor dem nächsten Block .160'),
     ],
     explanation:
-        '/27 = 255.255.255.224, Blockgröße 256 - 224 = 32. 140 / 32 = 4,375 - der Block beginnt bei 4 × 32 = 128. Netz .128, Broadcast .159.',
+        '/27 = 255.255.255.224, Blockgröße 256 - 224 = 32. 140 / 32 = 4,375, der Block beginnt bei 4 × 32 = 128. Netz .128, Broadcast .159.',
   ),
   rechnen(
     'a3-n4-6',
@@ -2851,7 +2851,7 @@ final List<Question> questionsA03 = [
       ),
       nein(
         '10.1.77.255',
-        'Das wäre richtig bei /24 - hier umfasst das Netz acht Werte im dritten Oktett.',
+        'Das wäre richtig bei /24. Hier umfasst das Netz acht Werte im dritten Oktett.',
       ),
       nein('10.1.72.255', 'Das Netz endet nicht bei 72, sondern bei 79.'),
       nein('10.1.80.255', '80 gehört bereits zum nächsten Block.'),
@@ -2923,7 +2923,7 @@ final List<Question> questionsA03 = [
       nein('Die Maske /28 erlaubt nur 2 Hosts.', '/28 hat 14 nutzbare Hosts.'),
     ],
     explanation:
-        'Bei /28 beträgt die Blockgröße 16. PC (.35) liegt in .32 bis .47, der Drucker (.50) in .48 bis .63 - zwei Netze, also Weg über das Gateway.',
+        'Bei /28 beträgt die Blockgröße 16. PC (.35) liegt in .32 bis .47, der Drucker (.50) in .48 bis .63. Das sind zwei Netze, also Weg über das Gateway.',
     difficulty: 3,
   ),
   rechnen(
@@ -3083,7 +3083,7 @@ final List<Question> questionsA03 = [
     answer: 5,
     unit: 'Blöcke',
     explanation:
-        'Eine IPv6-Adresse hat 8 Blöcke. Vorhanden sind fe80, 1 und 2 - also 3. Der Doppelpunkt ersetzt 8 - 3 = 5 Null-Blöcke.',
+        'Eine IPv6-Adresse hat 8 Blöcke. Vorhanden sind fe80, 1 und 2, also 3. Der Doppelpunkt ersetzt 8 - 3 = 5 Null-Blöcke.',
     difficulty: 1,
   ),
   einfach(
@@ -3223,7 +3223,7 @@ final List<Question> questionsA03 = [
       zu('SMTP zwischen Mailservern', 0),
     ],
     explanation:
-        'SMTP 25 (Einlieferung durch Clients 587), NTP 123 über UDP, IMAPS 993 und POP3S 995 - die verschlüsselten Varianten von IMAP (143) und POP3 (110).',
+        'SMTP 25 (Einlieferung durch Clients 587), NTP 123 über UDP, IMAPS 993 und POP3S 995 als verschlüsselte Varianten von IMAP (143) und POP3 (110).',
   ),
   einfach(
     'a3-nd-6',

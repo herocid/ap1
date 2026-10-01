@@ -398,19 +398,19 @@ final List<Question> questionsA01Journey = [
     prompt: 'Wie heißt die Gefahr, und was beugt ihr vor?',
     choices: [
       ja(
-        'Scope Creep - ausdrücklich formulierte Nicht-Ziele im Projektauftrag',
+        'Scope Creep: ausdrücklich formulierte Nicht-Ziele im Projektauftrag',
         'Der Umfang wächst schleichend ohne mehr Zeit und Budget. Nicht-Ziele machen klar, was nicht dazugehört.',
       ),
       nein(
-        'Gold Plating - mehr Tests einplanen',
+        'Gold Plating: mehr Tests einplanen',
         'Gold Plating heißt, das Team baut von sich aus Extras ein. Hier kommt der Wunsch von außen.',
       ),
       nein(
-        'Brooks’ Law - zusätzliches Personal einstellen',
+        'Brooks’ Law: zusätzliches Personal einstellen',
         'Brooks’ Law beschreibt, dass zusätzliches Personal ein verspätetes Projekt weiter verzögert. Das passt nicht zur Situation.',
       ),
       nein(
-        'Kritischer Pfad - einen Netzplan erstellen',
+        'Kritischer Pfad: einen Netzplan erstellen',
         'Der Netzplan hilft bei Terminen, verhindert aber keine Umfangsausweitung.',
       ),
     ],

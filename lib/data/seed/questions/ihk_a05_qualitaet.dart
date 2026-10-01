@@ -591,27 +591,27 @@ final List<Question> ihkA05 = [
     punkte: 3,
     zeilen: [
       nein(
-        'TF1: Eingabe 18 - Soll: angenommen',
+        'TF1: Eingabe 18, Soll: angenommen',
         '18 ist die untere Grenze und gültig.',
       ),
       ja(
-        'TF2: Eingabe 17 - Soll: angenommen',
+        'TF2: Eingabe 17, Soll: angenommen',
         '17 liegt unter der Grenze und muss abgelehnt werden.',
       ),
       ja(
-        'TF3: Eingabe 67 - Soll: abgelehnt',
+        'TF3: Eingabe 67, Soll: abgelehnt',
         '67 ist die obere Grenze und noch gültig.',
       ),
       nein(
-        'TF4: Eingabe 68 - Soll: abgelehnt',
+        'TF4: Eingabe 68, Soll: abgelehnt',
         '68 liegt über der Grenze. Richtig.',
       ),
       nein(
-        'TF5: Eingabe „abc“ - Soll: Fehlermeldung',
+        'TF5: Eingabe „abc“, Soll: Fehlermeldung',
         'Ein sinnvoller Negativtest für nicht numerische Eingaben.',
       ),
       ja(
-        'TF6: Eingabe 40 - Soll: nicht angegeben',
+        'TF6: Eingabe 40, Soll: nicht angegeben',
         'Ohne erwartetes Ergebnis lässt sich nicht entscheiden, ob der Test bestanden ist.',
       ),
     ],
@@ -732,27 +732,27 @@ final List<Question> ihkA05 = [
     punkte: 3,
     zeilen: [
       nein(
-        'F-11: Tippfehler im Menüpunkt „Einstelungen“ - kosmetisch',
+        'F-11: Tippfehler im Menüpunkt „Einstelungen“: kosmetisch',
         'Ein optischer Mangel ohne Einfluss auf die Funktion.',
       ),
       ja(
-        'F-12: Beim Speichern gehen Kundendaten verloren - kosmetisch',
+        'F-12: Beim Speichern gehen Kundendaten verloren: kosmetisch',
         'Datenverlust ist ein kritischer Fehler.',
       ),
       nein(
-        'F-13: Export gelingt nur über einen Umweg - schwer',
+        'F-13: Export gelingt nur über einen Umweg: schwer',
         'Funktion gestört, Umgehung möglich: schwer.',
       ),
       ja(
-        'F-14: Logo um zwei Pixel verschoben - kritisch',
+        'F-14: Logo um zwei Pixel verschoben: kritisch',
         'Ein optischer Mangel ist kosmetisch.',
       ),
       nein(
-        'F-15: Anwendung stürzt beim Start ab - kritisch',
+        'F-15: Anwendung stürzt beim Start ab: kritisch',
         'Ein Absturz ist kritisch.',
       ),
       ja(
-        'F-16: Bestellen ist ohne Umgehung unmöglich - schwer',
+        'F-16: Bestellen ist ohne Umgehung unmöglich: schwer',
         'Hauptfunktion ohne Umgehung blockiert: kritisch.',
       ),
     ],

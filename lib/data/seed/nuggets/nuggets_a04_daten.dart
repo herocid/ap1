@@ -1552,7 +1552,7 @@ final List<Nugget> nuggetsA04Daten = [
     points: [
       'Grundgerüst: DOCTYPE, html, head, body',
       'Element = Start-Tag + Inhalt + End-Tag, Attribute als name="wert"',
-      'CSS: Selektor { Eigenschaft: Wert; } - Element, .klasse, #id',
+      'CSS: Selektor { Eigenschaft: Wert; } mit Selektoren wie Element, .klasse, #id',
     ],
     satz:
         'HTML sagt, was etwas ist. CSS sagt, wie es aussieht. JavaScript sagt, was es tut.',
