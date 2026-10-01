@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/env.dart';
+import '../../core/notifications/reminder_service.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../data/models/profile.dart';
@@ -97,6 +98,10 @@ class SettingsScreen extends ConsumerWidget {
                     ),
                   ],
                 ),
+                const SizedBox(height: Gap.xl),
+
+                const SectionHeader('Erinnerung'),
+                const _ReminderGroup(),
                 const SizedBox(height: Gap.xl),
 
                 const SectionHeader('Daten'),
@@ -279,6 +284,106 @@ class SettingsScreen extends ConsumerWidget {
         );
       }
     }
+  }
+}
+
+/// Tägliche Lern-Erinnerung: Schalter und Uhrzeit. Beim Einschalten wird
+/// die Berechtigung angefragt; abgelehnt bleibt der Schalter aus.
+class _ReminderGroup extends ConsumerWidget {
+  const _ReminderGroup();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final profile = ref.watch(profileProvider);
+    final notifier = ref.read(profileProvider.notifier);
+    final on = profile.remindersOn;
+    final hour = '${profile.reminderHour.toString().padLeft(2, '0')}:00 Uhr';
+
+    Future<void> toggle(bool value) async {
+      if (value && ReminderService.supported) {
+        final ok = await ReminderService.instance.requestPermission();
+        if (!ok) {
+          notifier.update((p) => p.copyWith(remindersOn: false));
+          if (context.mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                  'Ohne Erlaubnis für Mitteilungen kann Bit dich nicht '
+                  'erinnern. Du kannst sie in den Systemeinstellungen '
+                  'erlauben.',
+                ),
+              ),
+            );
+          }
+          return;
+        }
+      }
+      notifier.update((p) => p.copyWith(remindersOn: value));
+    }
+
+    return _SettingsGroup(
+      children: [
+        MergeSemantics(
+          child: InkWell(
+            onTap: () => toggle(!on),
+            borderRadius: BorderRadius.circular(Radii.l),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(Gap.l, Gap.m, Gap.m, Gap.m),
+              child: Row(
+                children: [
+                  const TileIcon(
+                    icon: Icons.notifications_active_outlined,
+                    tone: TileTone.flame,
+                  ),
+                  const SizedBox(width: Gap.m),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        WordSafeText(
+                          'Tägliche Erinnerung',
+                          style: context.text.titleSmall,
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          ReminderService.supported
+                              ? (on
+                                    ? 'Bit meldet sich, wenn dein Tagesziel '
+                                          'noch offen ist.'
+                                    : 'Aus')
+                              : 'Nur in der App für Android und iOS.',
+                          style: context.text.bodySmall?.copyWith(
+                            color: context.c.textMuted,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: Gap.xs),
+                  Switch(value: on, onChanged: toggle),
+                ],
+              ),
+            ),
+          ),
+        ),
+        if (on)
+          _SettingsRow(
+            icon: Icons.schedule_outlined,
+            title: 'Uhrzeit',
+            subtitle: hour,
+            onTap: () async {
+              final picked = await showTimePicker(
+                context: context,
+                initialTime: TimeOfDay(hour: profile.reminderHour, minute: 0),
+                helpText: 'Erinnerung um (volle Stunde)',
+              );
+              if (picked != null) {
+                notifier.update((p) => p.copyWith(reminderHour: picked.hour));
+              }
+            },
+          ),
+      ],
+    );
   }
 }
 

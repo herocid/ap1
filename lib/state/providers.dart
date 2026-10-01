@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/notifications/reminder_plan.dart';
 import '../core/util/achievements.dart';
 import '../core/util/exam_composer.dart';
 import '../core/util/mistake_tracker.dart';
@@ -572,5 +573,23 @@ final achievementsProvider = Provider<Map<Achievement, AchievementStatus>>((
     cards: ref.watch(flashcardsProvider),
     areaReadiness: ref.watch(areaReadinessProvider),
     poolSize: ref.watch(poolSizeProvider),
+  );
+});
+
+/// Geplante Lern-Erinnerungen der nächsten Tage. Ändert sich mit Profil,
+/// Fortschritt und Karteikasten; `main.dart` reicht den Plan an den
+/// `ReminderService` weiter (heute entfällt, sobald das Tagesziel erreicht ist).
+final reminderPlanProvider = Provider<List<PlannedReminder>>((ref) {
+  final profile = ref.watch(profileProvider);
+  final progress = ref.watch(progressProvider);
+  return ReminderPlanner.plan(
+    now: DateTime.now(),
+    enabled: profile.remindersOn,
+    hour: profile.reminderHour,
+    goalReachedToday: progress.answeredToday() >= profile.dailyGoal,
+    streak: progress.streak,
+    lastActiveDay: progress.lastActiveDay,
+    dueCards: ref.watch(dueReviewsProvider),
+    minutesPerDay: profile.intensitaet.minutesPerDay,
   );
 });
