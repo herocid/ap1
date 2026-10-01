@@ -566,7 +566,7 @@ class _Finish extends ConsumerWidget {
         BitTip(
           BitSpot.lesson,
           title: following == null
-              ? 'Journey komplett - Wahnsinn!'
+              ? 'Journey komplett. Wahnsinn!'
               : 'Stark, Lektion geschafft!',
           mood: MascotMood.cheer,
         ),

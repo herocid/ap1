@@ -226,7 +226,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                       tone: TileTone.flame,
                       title: 'Kurztest',
                       subtitle:
-                          'Zufallsfragen aus allen Bereichen - '
+                          'Zufallsfragen aus allen Bereichen, '
                           'aufhören, wann du willst',
                       onTap: () => SessionLauncher.kurztest(context, ref),
                     ),
@@ -283,7 +283,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         mood: MascotMood.wave,
         title: 'Los geht’s!',
         text:
-            'Fang mit der ersten Lektion an - danach weißt du, wie '
+            'Fang mit der ersten Lektion an. Danach weißt du, wie '
             'hier alles funktioniert.',
       );
     }
@@ -301,7 +301,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         mood: MascotMood.think,
         title: 'Karten sind fällig',
         text:
-            '$dueCards Karteikarten wollen heute wiederholt werden - das '
+            '$dueCards Karteikarten wollen heute wiederholt werden. Das '
             'dauert nur ein paar Minuten.',
       );
     }
@@ -659,7 +659,7 @@ class _SessionAreas extends ConsumerWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: Gap.m),
           child: Text(
-            'Lernen, Karteikarten und Quiz zu einer Lektion - in einem '
+            'Lernen, Karteikarten und Quiz zu einer Lektion in einem '
             'Durchgang.',
             style: context.text.bodyMedium?.copyWith(
               color: context.c.textMuted,

@@ -143,7 +143,7 @@ class _TutorialScreenState extends ConsumerState<TutorialScreen> {
           'der AP1 auswendig. Ab heute bin ich dein Coach.',
       points: [
         'Ich sage dir jeden Tag, was als Nächstes dran ist.',
-        'Ich gebe dir überall Tipps - tipp mich an, dann kommt der nächste.',
+        'Ich gebe dir überall Tipps. Tipp mich an, dann kommt der nächste.',
         'Und wenn etwas nicht klappt, üben wir es einfach noch einmal.',
       ],
     ),
@@ -152,7 +152,7 @@ class _TutorialScreenState extends ConsumerState<TutorialScreen> {
       tab: 0,
       title: 'Start: Dein Tag auf einen Blick',
       speech:
-          'Auf der Startseite steht immer, was jetzt am meisten bringt - '
+          'Auf der Startseite steht immer, was jetzt am meisten bringt: '
           'ein Tipp von mir und ein großer Knopf.',
       points: [
         'Tagesziel: eine gemischte Runde, erst Fehler, dann Schwächen',
@@ -165,7 +165,7 @@ class _TutorialScreenState extends ConsumerState<TutorialScreen> {
       tab: 1,
       title: 'Journey: Neues lernen',
       speech:
-          'In der Journey bringe ich dir den kompletten Stoff bei - in '
+          'In der Journey bringe ich dir den kompletten Stoff bei, in '
           '$lessons kurzen Lektionen, eine nach der anderen.',
       points: const [
         'Erst die Idee, dann ein Beispiel, dann die Prüfungsfalle',
@@ -178,7 +178,7 @@ class _TutorialScreenState extends ConsumerState<TutorialScreen> {
       tab: 2,
       title: 'Quiz: Abgefragt werden',
       speech:
-          'Im Quiz erkläre ich nichts - hier frage ich dich ab, in den '
+          'Im Quiz erkläre ich nichts. Hier frage ich dich ab, in den '
           'Aufgabenformaten der echten IHK-Prüfung.',
       points: [
         'Kurztest: Zufallsfragen, bis du aufhörst',
@@ -195,7 +195,7 @@ class _TutorialScreenState extends ConsumerState<TutorialScreen> {
           'Unternehmen, vier Fallaufgaben, 90 Minuten.',
       points: [
         'Je Aufgabe 25 Punkte, zusammen 100',
-        'Freitext mit Bewertung nach Kriterien - wie bei der IHK',
+        'Freitext mit Bewertung nach Kriterien wie bei der IHK',
         'Am Ende deine Note nach dem IHK-Schlüssel',
       ],
     ),
@@ -230,7 +230,7 @@ class _TutorialScreenState extends ConsumerState<TutorialScreen> {
       title: 'Statistik: Was sitzt, was hakt',
       speech:
           'In der Statistik siehst du, wie du bei Karten und Quiz '
-          'abschneidest - und welche Themen noch Arbeit brauchen.',
+          'abschneidest und welche Themen noch Arbeit brauchen.',
       points: [
         'Problemthemen antippen startet die passende Übung',
         'Dein Fortschritt in der Journey',

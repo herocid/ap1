@@ -157,7 +157,7 @@ class SettingsScreen extends ConsumerWidget {
                       Text(
                         'Alle Aufgaben sind eigene Formulierungen im Stil der '
                         'IHK-Abschlussprüfung Teil 1. Es werden keine '
-                        'Originalaufgaben verwendet - die sind '
+                        'Originalaufgaben verwendet, denn die sind '
                         'urheberrechtlich geschützt.',
                       ),
                       SizedBox(height: Gap.m),
@@ -279,7 +279,7 @@ class SettingsScreen extends ConsumerWidget {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Alles zurückgesetzt - auf einen frischen Start!'),
+            content: Text('Alles zurückgesetzt. Auf einen frischen Start!'),
           ),
         );
       }

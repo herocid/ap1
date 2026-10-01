@@ -45,7 +45,7 @@ class CatalogChangesScreen extends StatelessWidget {
               icon: Icons.add_circle_outline,
               intro:
                   'Diese Themen sind neu im Katalog. In älteren Lehrbüchern '
-                  'fehlen sie oft komplett - hier lohnt sich besondere '
+                  'fehlen sie oft komplett. Hier lohnt sich besondere '
                   'Aufmerksamkeit.',
             ),
           ],

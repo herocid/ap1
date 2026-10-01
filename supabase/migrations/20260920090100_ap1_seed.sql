@@ -37,7 +37,7 @@ on conflict (id) do update set
 -- Themen ----------------------------------------------------
 insert into public.ap1_topics (id, area_id, title, blurb, weight, sort_order) values
   ('projektorganisation', 'a01', 'Projektgrundlagen & Organisation', 'Projektbegriff, SMART-Ziele, magisches Dreieck, Rollen, Stakeholder', 0.035, 0),
-  ('vorgehensmodelle', 'a01', 'Vorgehensmodelle & Phasen', 'Phasenmodell und Wasserfall - der Katalog 2025 kennt nur noch diese und Scrum', 0.020, 1),
+  ('vorgehensmodelle', 'a01', 'Vorgehensmodelle & Phasen', 'Phasenmodell und Wasserfall. Der Katalog 2025 kennt nur noch diese und Scrum', 0.020, 1),
   ('agil_scrum', 'a01', 'Agiles Arbeiten & Scrum', 'Rollen, Artefakte, Events, agiles Manifest', 0.040, 2),
   ('netzplan', 'a01', 'Netzplantechnik', 'FAZ/FEZ/SAZ/SEZ, Puffer, kritischer Pfad', 0.040, 3),
   ('terminplanung', 'a01', 'Projektstruktur & Termine', 'Projektstrukturplan, Gantt, Meilensteine, Ressourcen', 0.025, 4),
@@ -95845,7 +95845,7 @@ on conflict (id) do update set
 -- Theorie-Snacks --------------------------------------------
 insert into public.ap1_theory
   (id, topic_id, title, lead, points, merksatz, read_seconds, sort_order)
-values ('th-org-1', 'projektorganisation', 'Was ein Projekt zum Projekt macht', 'Die DIN 69901 definiert vier Merkmale. Fehlt eines davon, ist es Tagesgeschäft - egal wie aufwendig es sich anfühlt.', ARRAY['Einmaligkeit der Bedingungen in ihrer Gesamtheit', 'Zielvorgabe mit zeitlicher, finanzieller und personeller Begrenzung', 'Eigene, projektspezifische Organisation', 'Abgrenzung gegenüber anderen Vorhaben', 'Nicht enthalten: eine Mindestgröße oder ein Mindestbudget']::text[], 'Einmalig, begrenzt, eigene Organisation, abgegrenzt - vier Haken, sonst kein Projekt.', 45, 0)
+values ('th-org-1', 'projektorganisation', 'Was ein Projekt zum Projekt macht', 'Die DIN 69901 definiert vier Merkmale. Fehlt eines davon, ist es Tagesgeschäft, egal wie aufwendig es sich anfühlt.', ARRAY['Einmaligkeit der Bedingungen in ihrer Gesamtheit', 'Zielvorgabe mit zeitlicher, finanzieller und personeller Begrenzung', 'Eigene, projektspezifische Organisation', 'Abgrenzung gegenüber anderen Vorhaben', 'Nicht enthalten: eine Mindestgröße oder ein Mindestbudget']::text[], 'Einmalig, begrenzt, eigene Organisation, abgegrenzt: vier Haken, sonst kein Projekt.', 45, 0)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   title = excluded.title,
@@ -95857,7 +95857,7 @@ on conflict (id) do update set
 
 insert into public.ap1_theory
   (id, topic_id, title, lead, points, merksatz, read_seconds, sort_order)
-values ('th-org-2', 'projektorganisation', 'Drei Organisationsformen in einer Minute', 'Die Frage ist immer dieselbe: Wie viel Macht hat die Projektleitung gegenüber der Linie?', ARRAY['Reine Projektorganisation: Team komplett aus der Linie gelöst, Projektleitung hat volle Weisungsbefugnis. Schnell, aber teuer und nach Projektende gibt es ein Rückkehrproblem.', 'Matrix: Weisungsbefugnis geteilt - fachlich beim Projekt, disziplinarisch in der Linie. Flexibel, aber Dauerkonflikt um Prioritäten.', 'Stabs-/Einflussorganisation: Projektleitung koordiniert nur, ohne Weisungsrecht. Billig, aber zahnlos.']::text[], 'Viel Macht = viel Aufwand. Die Matrix ist der Kompromiss - und deshalb der Normalfall.', 45, 1)
+values ('th-org-2', 'projektorganisation', 'Drei Organisationsformen in einer Minute', 'Die Frage ist immer dieselbe: Wie viel Macht hat die Projektleitung gegenüber der Linie?', ARRAY['Reine Projektorganisation: Team komplett aus der Linie gelöst, Projektleitung hat volle Weisungsbefugnis. Schnell, aber teuer und nach Projektende gibt es ein Rückkehrproblem.', 'Matrix: Weisungsbefugnis geteilt (fachlich beim Projekt, disziplinarisch in der Linie). Flexibel, aber Dauerkonflikt um Prioritäten.', 'Stabs-/Einflussorganisation: Projektleitung koordiniert nur, ohne Weisungsrecht. Billig, aber zahnlos.']::text[], 'Viel Macht = viel Aufwand. Die Matrix ist der Kompromiss und deshalb der Normalfall.', 45, 1)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   title = excluded.title,
@@ -95869,7 +95869,7 @@ on conflict (id) do update set
 
 insert into public.ap1_theory
   (id, topic_id, title, lead, points, merksatz, read_seconds, sort_order)
-values ('th-vor-1', 'vorgehensmodelle', 'Vorgehensmodelle im Katalog 2025', 'Der Prüfungskatalog ab 2025 kennt nur noch zwei Vorgehensmodelle: Wasserfall und Scrum. V-Modell, Spiralmodell, XP und Kanban sind gestrichen.', ARRAY['Wasserfall: streng sequenziell, jede Phase endet mit einem freigegebenen Dokument. Voraussetzung: Anforderungen sind zu Projektbeginn vollständig bekannt.', 'Phasen: Analyse, Entwurf, Implementierung, Test, Einführung und Wartung.', 'Stärke: klare Struktur, gute Planbarkeit, feste Kosten und Termine.', 'Schwäche: Fehler aus der Analyse fallen erst im Test auf. Rule of Ten - jede spätere Phase verzehnfacht die Korrekturkosten.', 'Scrum als Gegenentwurf: kurze Zyklen, Anforderungen dürfen sich zwischen den Sprints ändern.', 'Entscheidungsregel: Anforderungen stabil und vertraglich fix -> Wasserfall. Anforderungen unklar oder veränderlich -> Scrum.']::text[], 'Für die AP1 ab 2025 reichen zwei Modelle. Wer noch V-Modell und Spirale paukt, lernt an der Prüfung vorbei.', 45, 2)
+values ('th-vor-1', 'vorgehensmodelle', 'Vorgehensmodelle im Katalog 2025', 'Der Prüfungskatalog ab 2025 kennt nur noch zwei Vorgehensmodelle: Wasserfall und Scrum. V-Modell, Spiralmodell, XP und Kanban sind gestrichen.', ARRAY['Wasserfall: streng sequenziell, jede Phase endet mit einem freigegebenen Dokument. Voraussetzung: Anforderungen sind zu Projektbeginn vollständig bekannt.', 'Phasen: Analyse, Entwurf, Implementierung, Test, Einführung und Wartung.', 'Stärke: klare Struktur, gute Planbarkeit, feste Kosten und Termine.', 'Schwäche: Fehler aus der Analyse fallen erst im Test auf. Rule of Ten: Jede spätere Phase verzehnfacht die Korrekturkosten.', 'Scrum als Gegenentwurf: kurze Zyklen, Anforderungen dürfen sich zwischen den Sprints ändern.', 'Entscheidungsregel: Anforderungen stabil und vertraglich fix -> Wasserfall. Anforderungen unklar oder veränderlich -> Scrum.']::text[], 'Für die AP1 ab 2025 reichen zwei Modelle. Wer noch V-Modell und Spirale paukt, lernt an der Prüfung vorbei.', 45, 2)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   title = excluded.title,
@@ -95905,7 +95905,7 @@ on conflict (id) do update set
 
 insert into public.ap1_theory
   (id, topic_id, title, lead, points, merksatz, read_seconds, sort_order)
-values ('th-np-2', 'netzplan', 'GP oder FP? Der Unterschied in 20 Sekunden', 'Beide Puffer sagen, wie viel Luft ein Vorgang hat - aber bis wohin, ist verschieden.', ARRAY['Gesamtpuffer: Verschiebung ohne das PROJEKTENDE zu gefährden. Kann aber den Nachfolger nach hinten drücken.', 'Freier Puffer: Verschiebung ohne den frühesten Start des NACHFOLGERS anzutasten. Merkt sonst niemand.', 'Es gilt immer FP <= GP.', 'Auf dem kritischen Pfad sind beide null.', 'Typischer Fall: GP = 2, FP = 0. Luft bis zum Projektende vorhanden - aber nur, indem man sie dem Nachfolger wegnimmt.']::text[], 'GP schaut aufs Projektende, FP schaut auf den Nachbarn.', 45, 5)
+values ('th-np-2', 'netzplan', 'GP oder FP? Der Unterschied in 20 Sekunden', 'Beide Puffer sagen, wie viel Luft ein Vorgang hat. Bis wohin, ist aber verschieden.', ARRAY['Gesamtpuffer: Verschiebung ohne das PROJEKTENDE zu gefährden. Kann aber den Nachfolger nach hinten drücken.', 'Freier Puffer: Verschiebung ohne den frühesten Start des NACHFOLGERS anzutasten. Merkt sonst niemand.', 'Es gilt immer FP <= GP.', 'Auf dem kritischen Pfad sind beide null.', 'Typischer Fall: GP = 2, FP = 0. Luft bis zum Projektende vorhanden, aber nur, indem man sie dem Nachfolger wegnimmt.']::text[], 'GP schaut aufs Projektende, FP schaut auf den Nachbarn.', 45, 5)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   title = excluded.title,
@@ -95965,7 +95965,7 @@ on conflict (id) do update set
 
 insert into public.ap1_theory
   (id, topic_id, title, lead, points, merksatz, read_seconds, sort_order)
-values ('th-ab-1', 'projektabschluss', 'Projektabschluss richtig', 'Drei Ebenen - die dritte wird am häufigsten vergessen.', ARRAY['Sachlich-technisch: Restarbeiten, Abnahme mit Protokoll, Übergabe an den Betrieb.', 'Kaufmännisch: Schlussrechnung, Nachkalkulation, Projekt buchhalterisch schließen.', 'Personell: Team auflösen, Rückführung in die Linie, Würdigung der Leistung.', 'Lessons Learned: zeitnah, ohne Schuldzuweisung, dokumentiert an einem auffindbaren Ort.', 'Reihenfolge: Abnahme vor Übergabe, Teamauflösung zuletzt.']::text[], 'Wer das Team vor dem Abschlussbericht auflöst, bekommt keinen brauchbaren Bericht.', 45, 10)
+values ('th-ab-1', 'projektabschluss', 'Projektabschluss richtig', 'Drei Ebenen, und die dritte wird am häufigsten vergessen.', ARRAY['Sachlich-technisch: Restarbeiten, Abnahme mit Protokoll, Übergabe an den Betrieb.', 'Kaufmännisch: Schlussrechnung, Nachkalkulation, Projekt buchhalterisch schließen.', 'Personell: Team auflösen, Rückführung in die Linie, Würdigung der Leistung.', 'Lessons Learned: zeitnah, ohne Schuldzuweisung, dokumentiert an einem auffindbaren Ort.', 'Reihenfolge: Abnahme vor Übergabe, Teamauflösung zuletzt.']::text[], 'Wer das Team vor dem Abschlussbericht auflöst, bekommt keinen brauchbaren Bericht.', 45, 10)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   title = excluded.title,

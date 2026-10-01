@@ -149,14 +149,14 @@ class CardsOverviewScreen extends ConsumerWidget {
                 const SectionHeader(
                   'Schnell lernen',
                   subtitle:
-                      'Was nicht sitzt, kommt in derselben Runde wieder - '
+                      'Was nicht sitzt, kommt in derselben Runde wieder, '
                       'bis du es weißt.',
                 ),
                 ActionTile(
                   icon: Icons.shuffle,
                   title: 'Zufallsmix',
                   subtitle:
-                      '20 Karten quer durch alle Themen - Unsicheres '
+                      '20 Karten quer durch alle Themen, Unsicheres '
                       'bevorzugt. Trainiert das Umschalten wie in der Prüfung.',
                   onTap: () => CardLaunch.randomMix(context, ref),
                 ),
@@ -165,7 +165,7 @@ class CardsOverviewScreen extends ConsumerWidget {
                   icon: Icons.tune,
                   title: 'Themen auswählen',
                   subtitle:
-                      'Bereiche oder einzelne Themen wählen - als kurze '
+                      'Bereiche oder einzelne Themen wählen, als kurze '
                       'Runde oder als Durchlauf.',
                   onTap: () => context.push('/karten-auswahl'),
                 ),
@@ -263,7 +263,7 @@ class CardsOverviewScreen extends ConsumerWidget {
     int weak,
   ) {
     if (deck.cards.isEmpty) {
-      return 'Lies die Frage, antworte im Kopf, dreh dann um - und sei ehrlich '
+      return 'Lies die Frage, antworte im Kopf, dreh dann um. Und sei ehrlich '
           'zu dir. Was du nicht weißt, kommt gleich nochmal.';
     }
     if (reviews > 0) {
@@ -346,7 +346,7 @@ class _RunCard extends ConsumerWidget {
           ] else
             Text(
               'Alle ${cards.length} Karten liegen im Pool. Was du weißt, '
-              'fliegt raus - was nicht sitzt, kommt wieder, bis du alles '
+              'fliegt raus. Was nicht sitzt, kommt wieder, bis du alles '
               'kannst. Du kannst jederzeit pausieren.',
               style: context.text.bodyMedium?.copyWith(
                 color: context.c.textMuted,

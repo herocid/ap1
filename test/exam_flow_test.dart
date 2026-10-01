@@ -94,7 +94,7 @@ void main() {
     await frames(tester, 15);
     expect(container.read(sessionProvider)!.elapsed, Duration.zero);
 
-    await tapText(tester, 'Beginnen - die Zeit läuft');
+    await tapText(tester, 'Beginnen (die Zeit läuft)');
     await frames(tester, 15);
     s = container.read(sessionProvider)!;
     expect(s.begun, isTrue);
@@ -169,7 +169,7 @@ void main() {
     await tapText(tester, 'Halbe Prüfung starten');
     expect(container.read(sessionProvider)!.possiblePoints, 50);
     expect(container.read(sessionProvider)!.limit, const Duration(minutes: 45));
-    await tapText(tester, 'Beginnen - die Zeit läuft');
+    await tapText(tester, 'Beginnen (die Zeit läuft)');
     await tester.tap(find.byIcon(Icons.close));
     await frames(tester);
     expect(find.text('Prüfung abbrechen?'), findsOneWidget);
@@ -193,7 +193,7 @@ void main() {
     expect(s.paper!.tasks, hasLength(4));
     expect(s.items.length, 32);
     expect(hyphenText('Gemischte Prüfungsaufgaben'), findsOneWidget);
-    await tapText(tester, 'Beginnen - die Zeit läuft');
+    await tapText(tester, 'Beginnen (die Zeit läuft)');
     expect(find.text('Aufgabe 1 · a)'), findsOneWidget);
 
     container.read(sessionProvider.notifier).clear();

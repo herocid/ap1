@@ -58,7 +58,7 @@ class SessionLauncher {
         SnackBar(
           content: Text(
             mistakesOnly && mistakes.open.isNotEmpty
-                ? 'Für heute erledigt - die Fehler kommen an einem anderen '
+                ? 'Für heute erledigt. Die Fehler kommen an einem anderen '
                       'Tag noch einmal.'
                 : 'Für diese Auswahl gibt es gerade keine Aufgaben.',
           ),

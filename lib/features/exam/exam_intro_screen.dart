@@ -57,7 +57,7 @@ class ExamIntroScreen extends ConsumerWidget {
                       _Rule(
                         icon: Icons.timer_outlined,
                         text:
-                            'Die Zeit läuft durch - knapp eine Minute je '
+                            'Die Zeit läuft durch. Rechne mit knapp einer Minute je '
                             'Punkt. Am Ende wird automatisch abgegeben.',
                       ),
                       _Rule(
@@ -97,7 +97,7 @@ class ExamIntroScreen extends ConsumerWidget {
                     child: Text(
                       'Die Fallaufgaben mit durchgängigem Unternehmen sind '
                       'noch in Arbeit. Bis dahin besteht die Simulation aus '
-                      'gemischten Einzelaufgaben - die Punktzahl kann '
+                      'gemischten Einzelaufgaben. Die Punktzahl kann '
                       'abweichen, die Note wird hochgerechnet.',
                     ),
                   ),

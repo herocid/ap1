@@ -41,7 +41,7 @@ class QuizScreen extends ConsumerWidget {
                 const MascotSays(
                   mood: MascotMood.think,
                   text:
-                      'Hier wirst du abgefragt - so gemischt wie in der '
+                      'Hier wirst du abgefragt, so gemischt wie in der '
                       'Prüfung: rechnen, Tabellen füllen, formulieren. '
                       'Ankreuzen ist nur ein kleiner Teil.',
                 ),
@@ -58,7 +58,7 @@ class QuizScreen extends ConsumerWidget {
                   tone: TileTone.brand,
                   title: 'Schwächen-Training',
                   subtitle:
-                      '10 gemischte Aufgaben - dort, wo dir die meisten '
+                      '10 gemischte Aufgaben, und zwar dort, wo dir die meisten '
                       'Punkte fehlen',
                   onTap: () => SessionLauncher.weakness(context, ref),
                 ),
@@ -70,7 +70,7 @@ class QuizScreen extends ConsumerWidget {
                   subtitle: mistakes.open.isEmpty
                       ? 'Aktuell ist nichts offen'
                       : mistakes.due.isEmpty
-                      ? 'Für heute erledigt - sie kommen an einem anderen '
+                      ? 'Für heute erledigt. Sie kommen an einem anderen '
                             'Tag noch einmal'
                       : 'Erledigt ist ein Fehler erst, wenn er an zwei Tagen '
                             'richtig war',
@@ -89,7 +89,7 @@ class QuizScreen extends ConsumerWidget {
                   tone: TileTone.flame,
                   title: 'Kurztest',
                   subtitle:
-                      'Endlos, alle Bereiche gemischt - aufhören kannst du '
+                      'Endlos, alle Bereiche gemischt. Aufhören kannst du '
                       'jederzeit',
                   onTap: () => SessionLauncher.kurztest(context, ref),
                 ),
@@ -104,7 +104,7 @@ class QuizScreen extends ConsumerWidget {
                   // Schrift auf 320 px nicht in eine Zeile.
                   title: 'Prüfung simulieren',
                   subtitle:
-                      '4 Aufgaben, 100 Punkte, 90 Minuten - oder die halbe '
+                      '4 Aufgaben, 100 Punkte, 90 Minuten, oder die halbe '
                       'Prüfung',
                   onTap: () => context.push('/pruefung'),
                 ),
@@ -221,7 +221,7 @@ class _DailyCard extends ConsumerWidget {
             HyphenText(task.title, style: context.text.titleMedium),
             const SizedBox(height: 2),
             HyphenText(
-              '${paper!.company?.name ?? ''} - eine Situation, '
+              '${paper!.company?.name ?? ''}: eine Situation, '
               'Teilaufgaben a), b), c) … und die Musterlösung danach.',
               style: context.text.bodyMedium?.copyWith(
                 color: context.c.textMuted,
@@ -235,7 +235,7 @@ class _DailyCard extends ConsumerWidget {
                   const SizedBox(width: Gap.s),
                   Expanded(
                     child: Text(
-                      'Heute erledigt - morgen gibt es eine neue.',
+                      'Heute erledigt. Morgen gibt es eine neue.',
                       style: context.text.bodyMedium?.copyWith(
                         color: context.c.success,
                       ),

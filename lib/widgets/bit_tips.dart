@@ -20,26 +20,26 @@ class BitTips {
           'nicht erklären kannst, hast du noch nicht verstanden.',
       'Die Lektionen bauen aufeinander auf. Wenn etwas hakt, lohnt ein Blick '
           'in die Lektion davor.',
-      'Rechenbeispiele nicht nur lesen - Zahlen abdecken und selbst rechnen. '
+      'Rechenbeispiele nicht nur lesen. Deck die Zahlen ab und rechne selbst. '
           'Genau das verlangt die Prüfung.',
-      'Angefangen und unterbrochen? Ich merke mir den Schritt - du machst '
+      'Angefangen und unterbrochen? Ich merke mir den Schritt, und du machst '
           'genau da weiter.',
     ],
     BitSpot.lesson: [
       'Direkt nach der Lektion vergisst du am schnellsten. Ein paar Karten '
           'zum Thema heute Abend wirken Wunder.',
-      'Lies „Das Wichtigste in Kürze“ morgen noch einmal - 30 Sekunden, die '
+      'Lies „Das Wichtigste in Kürze“ morgen noch einmal. Das sind 30 Sekunden, die '
           'sich lohnen.',
       'Erklär die Merksätze jemandem. Wer lehrt, lernt doppelt.',
     ],
     BitSpot.cards: [
-      'Erst im Kopf antworten, dann umdrehen. Wer nur liest, erkennt wieder - '
-          'wer abruft, lernt.',
-      'Sei ehrlich bei „Wusste ich“. Halb gewusst ist nicht gewusst - die '
+      'Erst im Kopf antworten, dann umdrehen. Wer nur liest, erkennt nur wieder. '
+          'Wer abruft, lernt.',
+      'Sei ehrlich bei „Wusste ich“. Halb gewusst ist nicht gewusst, die '
           'Karte kommt dann einfach öfter.',
       'Lieber jeden Tag zehn Minuten als einmal in der Woche eine Stunde. '
           'Abstand ist der Trick beim Behalten.',
-      'Gemischte Themen fühlen sich schwerer an - und bleiben genau deshalb '
+      'Gemischte Themen fühlen sich schwerer an, bleiben aber genau deshalb '
           'länger hängen.',
     ],
     BitSpot.picker: [
@@ -51,7 +51,7 @@ class BitTips {
     BitSpot.exam: [
       'Lies zuerst alle vier Aufgaben, dann fang mit der leichtesten an. So '
           'sicherst du früh Punkte.',
-      'Schreib bei Rechnungen immer den Rechenweg auf - die IHK vergibt '
+      'Schreib bei Rechnungen immer den Rechenweg auf, denn die IHK vergibt '
           'Teilpunkte auch bei falschem Ergebnis.',
       'Achte auf die Operatoren: „Nenne“ heißt Stichworte, „Erläutere“ heißt '
           'ganze Sätze mit Begründung.',
@@ -65,7 +65,7 @@ class BitTips {
           'meisten zusätzlichen Punkte.',
     ],
     BitSpot.session: [
-      'Lernen, Karten, Quiz - in dieser Reihenfolge. Erst verstehen, dann '
+      'Lernen, Karten, Quiz, und zwar in dieser Reihenfolge. Erst verstehen, dann '
           'festigen, dann prüfen.',
       'Eine Session dauert etwa 15 Minuten. Perfekt für die Pause oder die '
           'Bahnfahrt.',
@@ -73,7 +73,7 @@ class BitTips {
     BitSpot.quiz: [
       'Falsch beantwortete Aufgaben landen im Fehlerspeicher und kommen an '
           'einem anderen Tag wieder.',
-      'Lies die Erklärung auch bei richtigen Antworten - oft steckt ein '
+      'Lies die Erklärung auch bei richtigen Antworten. Oft steckt ein '
           'Detail drin, das in der Prüfung gefragt wird.',
     ],
   };

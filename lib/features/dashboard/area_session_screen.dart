@@ -296,7 +296,7 @@ class _AreaSessionScreenState extends ConsumerState<AreaSessionScreen> {
                     Padding(
                       padding: const EdgeInsets.only(bottom: Gap.s),
                       child: Text(
-                        'Diese Lektion hast du schon gelernt - die Session '
+                        'Diese Lektion hast du schon gelernt. Die Session '
                         'wiederholt sie.',
                         style: context.text.bodyMedium?.copyWith(
                           color: context.c.textMuted,

@@ -60,7 +60,7 @@ class _ExamRunScreenState extends ConsumerState<ExamRunScreen> {
         title: Text(s.isExam ? 'Prüfung abbrechen?' : 'Aufgabe abbrechen?'),
         content: Text(
           s.reviewing
-              ? 'Ohne die Selbstbewertung gibt es keine Auswertung - der '
+              ? 'Ohne die Selbstbewertung gibt es keine Auswertung, der '
                     'Versuch wird nicht gewertet.'
               : s.isExam
               ? 'Die Simulation wird nicht gewertet und der Versuch geht '
@@ -344,7 +344,7 @@ class _Cover extends StatelessWidget {
                 const NoteBox(
                   title: 'Wie in der Prüfung',
                   child: Text(
-                    'Erlaubt ist nur ein Taschenrechner. Stichworte genügen - '
+                    'Erlaubt ist nur ein Taschenrechner. Stichworte genügen, '
                     'ganze Sätze bringen keine Zusatzpunkte. Die Reihenfolge '
                     'bestimmst du selbst; rechne mit knapp einer Minute je '
                     'Punkt.',
@@ -360,7 +360,7 @@ class _Cover extends StatelessWidget {
           onPressed: onBegin,
           icon: const Icon(Icons.play_arrow_rounded),
           label: Text(
-            minutes != null ? 'Beginnen - die Zeit läuft' : 'Beginnen',
+            minutes != null ? 'Beginnen (die Zeit läuft)' : 'Beginnen',
           ),
         ),
       ),
@@ -981,7 +981,7 @@ class _SelfReview extends StatelessWidget {
                       tone: NoteTone.warn,
                       title: 'Zeit abgelaufen',
                       child: Text(
-                        'Die Prüfung wurde automatisch abgegeben - wie im '
+                        'Die Prüfung wurde automatisch abgegeben, wie im '
                         'Prüfungsraum, wenn die Aufsicht einsammelt.',
                       ),
                     ),

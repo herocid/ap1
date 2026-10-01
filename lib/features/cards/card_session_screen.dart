@@ -234,8 +234,8 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
               Expanded(
                 child: Text(
                   streak >= 10
-                      ? '10 gewusst in Folge - du bist richtig drin!'
-                      : '5 gewusst in Folge - weiter so!',
+                      ? '10 gewusst in Folge, du bist richtig drin!'
+                      : '5 gewusst in Folge. Weiter so!',
                 ),
               ),
             ],
@@ -263,7 +263,7 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
     CardMode.lesson => 'Für diese Auswahl gibt es keine Karten.',
     CardMode.due =>
       'Für diese Auswahl ist heute keine Karte dran. Der Karteikasten '
-          'legt jede Karte nach dem richtigen Abstand wieder vor - komm '
+          'legt jede Karte nach dem richtigen Abstand wieder vor. Komm '
           'morgen wieder oder starte einen Durchlauf.',
   };
 
@@ -483,8 +483,8 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
             'mit Wiederholungen im passenden Abstand frisch.';
       }
       return 'Dein Durchlauf ist gespeichert. Noch ${run.remainingCount} '
-          '${run.remainingCount == 1 ? 'Karte ist' : 'Karten sind'} offen - '
-          'mach weiter, wann du willst. Was danebenging, kommt zuerst.';
+          '${run.remainingCount == 1 ? 'Karte ist' : 'Karten sind'} offen. '
+          'Mach weiter, wann du willst. Was danebenging, kommt zuerst.';
     }
     final missed = _missedCards.length;
     if (missed == 0) {
@@ -492,8 +492,8 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
           'längeren Abständen wieder.';
     }
     return '$missed ${missed == 1 ? 'Karte liegt' : 'Karten liegen'} wieder '
-        'in Fach 1 und ${missed == 1 ? 'kommt' : 'kommen'} morgen erneut dran '
-        '- auch wenn du sie hier nachgelernt hast. Genau so festigt sich '
+        'in Fach 1 und ${missed == 1 ? 'kommt' : 'kommen'} morgen erneut dran, '
+        'auch wenn du sie hier nachgelernt hast. Genau so festigt sich '
         'Wissen: abrufen, vergessen, wieder abrufen.';
   }
 
@@ -898,7 +898,7 @@ class _BoxBadge extends StatelessWidget {
     return Tooltip(
       message: isNew
           ? 'Diese Karte siehst du zum ersten Mal'
-          : '${Leitner.boxLabel(box)} - Wiedervorlage nach '
+          : '${Leitner.boxLabel(box)}, Wiedervorlage nach '
                 '${Leitner.intervalFor(box)} Tagen',
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: Gap.m, vertical: 6),

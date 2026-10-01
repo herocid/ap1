@@ -150,7 +150,7 @@ class _ResultScreenState extends ConsumerState<ResultScreen> {
                         ? 'Die Hälfte hast du sicher. Schau dir unten an, '
                               'wo die Punkte fehlen.'
                         : 'Fehler gehören zum Lernen. Was heute danebenging, '
-                              'kommt in der Fehler-Wiederholung wieder - bis '
+                              'kommt in der Fehler-Wiederholung wieder, bis '
                               'es an zwei Tagen sitzt.',
                   ),
                   const SizedBox(height: Gap.l),
@@ -332,7 +332,7 @@ class _PracticeResult extends StatelessWidget {
         if (weakFormats.isNotEmpty) ...[
           const SectionHeader(
             'Hier fehlen die meisten Punkte',
-            subtitle: 'Nach Antwortformat - das kommt im Training wieder.',
+            subtitle: 'Nach Antwortformat. Das kommt im Training wieder.',
           ),
           for (final e in weakFormats.take(2)) ...[
             ScoreRow(

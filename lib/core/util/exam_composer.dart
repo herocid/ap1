@@ -45,7 +45,7 @@ const kExamVariants = <ExamVariant>[
   ExamVariant(
     id: 'halb',
     title: 'Halbe Prüfung',
-    subtitle: 'Zwei Aufgaben - gut für einen Abend in der Woche.',
+    subtitle: 'Zwei Aufgaben, gut für einen Abend in der Woche.',
     tasks: 2,
     minutes: 45,
   ),

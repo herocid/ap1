@@ -128,15 +128,15 @@ class ReminderPlanner {
   }
 
   static String _streakText(int s) => s == 1
-      ? 'Deine Serie hat begonnen - heute machst du Tag 2 daraus!'
-      : 'Deine Serie läuft seit $s Tagen - heute nicht abreißen lassen!';
+      ? 'Deine Serie hat begonnen. Heute machst du Tag 2 daraus!'
+      : 'Deine Serie läuft seit $s Tagen. Lass sie heute nicht abreißen!';
 
   static String _cardsText(int n) => n == 1
-      ? '1 Karte ist fällig - schnell auffrischen, bevor sie verblasst.'
-      : '$n Karten sind fällig - kurz auffrischen, dann sitzen sie.';
+      ? '1 Karte ist fällig. Schnell auffrischen, bevor sie verblasst.'
+      : '$n Karten sind fällig. Kurz auffrischen, dann sitzen sie.';
 
   static List<String> _general(int minutes) => [
-    'Zeit für deine $minutes Minuten - ich hab schon was vorbereitet.',
+    'Zeit für deine $minutes Minuten. Ich hab schon was vorbereitet.',
     'Kleine Runde, großer Effekt: Lass uns ein paar Aufgaben machen.',
     'Die AP1 rückt näher. Ein Schritt heute zählt mehr als drei morgen.',
     'Bereit für eine Lektion? Ich warte schon auf dich.',

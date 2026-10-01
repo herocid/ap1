@@ -138,11 +138,11 @@ class _ExamResultViewState extends State<ExamResultView> {
                   child: Text(
                     [
                       if (passed)
-                        'Bestanden ist ab 50 von 100 Punkten - das hast du '
+                        'Bestanden ist ab 50 von 100 Punkten, und das hast du '
                             'geschafft (Note ${note.note}, ${note.label}).'
                       else
                         'Bestanden ist ab 50 von 100 Punkten. Das hier ist '
-                            'eine Übung, kein Urteil - unten siehst du, wo '
+                            'eine Übung, kein Urteil. Unten siehst du, wo '
                             'die Punkte liegen geblieben sind.',
                       if (!full)
                         'Die Note ist auf 100 Punkte hochgerechnet '
@@ -167,13 +167,13 @@ class _ExamResultViewState extends State<ExamResultView> {
 
         const SectionHeader(
           'Nach Antwortformat',
-          subtitle: 'Wo die Punkte verloren gehen - oben fehlt am meisten.',
+          subtitle: 'Wo die Punkte verloren gehen (oben fehlt am meisten).',
         ),
         if (weakest != null) ...[
           NoteBox(
             tone: NoteTone.info,
             child: Text(
-              'Die meisten Punkte fehlen ${weakest.key.where} - dort hast '
+              'Die meisten Punkte fehlen ${weakest.key.where}. Dort hast '
               'du ${formatPoints(weakest.value.lost)} von '
               '${weakest.value.possible} P. liegen gelassen.',
             ),

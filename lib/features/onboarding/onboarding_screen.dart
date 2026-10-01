@@ -230,7 +230,7 @@ class _WelcomeStep extends StatelessWidget {
       ),
       title: kAppName,
       subtitle:
-          'Alle sieben Bereiche des Prüfungskatalogs ab 2025 - von '
+          'Alle sieben Bereiche des Prüfungskatalogs ab 2025, von '
           'Projektmanagement über Netzwerke bis Datenschutz. Mit '
           'Übungsaufgaben und Lernkarteikarten.',
       child: Column(
@@ -415,7 +415,7 @@ class _ExamDateStep extends StatelessWidget {
           ),
           const SizedBox(height: Gap.l),
           Text(
-            'Die genauen Termine legt deine IHK fest - prüfe sie im Zweifel '
+            'Die genauen Termine legt deine IHK fest. Prüfe sie im Zweifel '
             'in deiner Einladung zur Prüfung.',
             style: context.text.labelSmall?.copyWith(
               color: context.c.textMuted,

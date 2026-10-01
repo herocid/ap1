@@ -55,7 +55,7 @@ class StatsScreen extends ConsumerWidget {
             title: 'Dein größter Hebel',
             text:
                 '„${problems.first.topic.title}“ hakt noch am meisten. '
-                'Tipp das Thema bei den Problemthemen an - ich stelle dir '
+                'Tipp das Thema bei den Problemthemen an, dann stelle ich dir '
                 'die passende Übung zusammen.',
           )
         : (
@@ -151,7 +151,7 @@ class _QuizPanel extends ConsumerWidget {
             tone: NoteTone.info,
             child: Text(
               'Noch keine Quizrunde gespielt. Starte im Tab „Quiz“ einen '
-              'Kurztest - nach zehn Aufgaben siehst du hier deine Stärken.',
+              'Kurztest. Nach zehn Aufgaben siehst du hier deine Stärken.',
             ),
           )
         else ...[
@@ -341,7 +341,7 @@ class _ProblemTopicsPanel extends ConsumerWidget {
         const SectionHeader(
           'Problemthemen',
           subtitle:
-              'Aus deinen Quizrunden und Karten - antippen startet die '
+              'Aus deinen Quizrunden und Karten. Antippen startet die '
               'passende Übung.',
         ),
         if (problems.isEmpty)
@@ -349,7 +349,7 @@ class _ProblemTopicsPanel extends ConsumerWidget {
             tone: NoteTone.info,
             child: Text(
               'Noch keine Problemthemen. Ein Thema landet hier, wenn du '
-              'darin unter 70 % liegst - ab drei Antworten oder Karten.',
+              'darin unter 70 % liegst (ab drei Antworten oder Karten).',
             ),
           )
         else
@@ -434,7 +434,7 @@ class _JourneyPanel extends ConsumerWidget {
             tone: TileTone.flame,
             title: open.title,
             subtitle:
-                'Angefangen - weiter bei Schritt ${inProgress!.page} von '
+                'Angefangen, weiter bei Schritt ${inProgress!.page} von '
                 '${steps[open.id]?.length ?? 0}',
             onTap: () => context.push('/lektion/${open.id}'),
           ),

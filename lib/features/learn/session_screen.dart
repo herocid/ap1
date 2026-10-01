@@ -326,9 +326,9 @@ class _Feedback extends StatelessWidget {
   final int streak;
 
   static const _comfort = [
-    'Kein Problem - genau so lernt man. Lies die Erklärung, die Aufgabe kommt wieder.',
+    'Kein Problem, genau so lernt man. Lies die Erklärung, die Aufgabe kommt wieder.',
     'Fehler sind Lernstoff. Schau dir die Erklärung in Ruhe an.',
-    'Nicht schlimm - beim nächsten Mal sitzt es.',
+    'Nicht schlimm, beim nächsten Mal sitzt es.',
     'Dranbleiben! Die Erklärung unten zeigt, worauf es ankommt.',
   ];
 
@@ -339,9 +339,9 @@ class _Feedback extends StatelessWidget {
     if (g == null || item.isOpen) return null;
     if (g.isCorrect) {
       return switch (streak) {
-        3 => (MascotMood.cheer, '3 in Folge - du bist im Flow!'),
-        5 => (MascotMood.cheer, '5 in Folge - stark, weiter so!'),
-        10 => (MascotMood.cheer, '10 in Folge - das ist Prüfungsniveau!'),
+        3 => (MascotMood.cheer, '3 in Folge, du bist im Flow!'),
+        5 => (MascotMood.cheer, '5 in Folge. Stark, weiter so!'),
+        10 => (MascotMood.cheer, '10 in Folge, das ist Prüfungsniveau!'),
         _ => null,
       };
     }
@@ -416,7 +416,7 @@ class _Feedback extends StatelessWidget {
               const SizedBox(height: Gap.xs),
               Text(
                 'Vergleiche mit der Musterlösung und hake ab, was wirklich '
-                'in deiner Antwort stand - danach richten sich die Punkte.',
+                'in deiner Antwort stand. Danach richten sich die Punkte.',
                 style: context.text.bodySmall,
               ),
             ] else if (item.retry && g?.isCorrect == true) ...[
@@ -455,7 +455,7 @@ class _RetryNote extends StatelessWidget {
         const SizedBox(width: Gap.s),
         Expanded(
           child: Text(
-            'Zweiter Anlauf - die Aufgabe ging vorhin daneben.',
+            'Zweiter Anlauf, die Aufgabe ging vorhin daneben.',
             style: context.text.labelSmall?.copyWith(color: context.c.flame),
           ),
         ),

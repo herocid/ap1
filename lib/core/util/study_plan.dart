@@ -136,7 +136,7 @@ class StudyPlanner {
           : 'Bei $dailyGoal Aufgaben pro Tag reichen die $learnDays Lerntage '
               'rechnerisch nicht für alle $totalTarget offenen Aufgaben. '
               'Erhöhe die Intensität auf etwa '
-              '${(totalTarget / learnDays).ceil()} Aufgaben pro Tag - oder '
+              '${(totalTarget / learnDays).ceil()} Aufgaben pro Tag oder '
               'konzentriere dich auf die oberen drei Themen dieser Liste.',
     );
   }
@@ -154,6 +154,6 @@ class StudyPlanner {
       return 'Sitzt gut, aber erst ${(st.coverage * 100).round()} % der '
           'Aufgaben gesehen.';
     }
-    return 'Stabil - hier reicht Wiederholung.';
+    return 'Stabil, hier reicht Wiederholung.';
   }
 }

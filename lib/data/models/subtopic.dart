@@ -64,9 +64,9 @@ class Subtopics {
     Subtopic(id: 'n-grundlagen', topicId: 'netzplan', title: 'Aufbau eines Netzplans',
         goal: 'Du liest einen Vorgangsknoten und kennst die Anordnungsbeziehungen.'),
     Subtopic(id: 'n-vorwaerts', topicId: 'netzplan', title: 'Vorwärtsrechnung',
-        goal: 'Du berechnest FAZ und FEZ für jeden Vorgang - auch bei mehreren Vorgängern.'),
+        goal: 'Du berechnest FAZ und FEZ für jeden Vorgang, auch bei mehreren Vorgängern.'),
     Subtopic(id: 'n-rueckwaerts', topicId: 'netzplan', title: 'Rückwärtsrechnung',
-        goal: 'Du berechnest SEZ und SAZ vom Projektende aus - auch bei mehreren Nachfolgern.'),
+        goal: 'Du berechnest SEZ und SAZ vom Projektende aus, auch bei mehreren Nachfolgern.'),
     Subtopic(id: 'n-puffer', topicId: 'netzplan', title: 'Gesamtpuffer und freier Puffer',
         goal: 'Du berechnest GP und FP und erklärst den Unterschied an einem Beispiel.'),
     Subtopic(id: 'n-kritisch', topicId: 'netzplan', title: 'Der kritische Pfad',
@@ -268,7 +268,7 @@ class Subtopics {
         goal: 'Du unterscheidest verlustfreie und verlustbehaftete Verfahren.'),
 
     // KI-Unterstützung
-    Subtopic(id: 'ki-grundlagen', topicId: 'ki_grundlagen', title: 'Was KI ist - und was nicht',
+    Subtopic(id: 'ki-grundlagen', topicId: 'ki_grundlagen', title: 'Was KI ist und was nicht',
         goal: 'Du erklärst Grundbegriffe wie Machine Learning, Training und Sprachmodell.'),
     Subtopic(id: 'ki-einsatz', topicId: 'ki_grundlagen', title: 'KI im Arbeitsalltag',
         goal: 'Du nennst sinnvolle Einsatzfelder und formulierst gute Prompts.'),

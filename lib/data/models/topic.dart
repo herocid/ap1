@@ -45,7 +45,7 @@ class Topics {
       id: 'vorgehensmodelle',
       areaId: 'a01',
       title: 'Vorgehensmodelle & Phasen',
-      blurb: 'Phasenmodell und Wasserfall - der Katalog 2025 kennt nur noch diese und Scrum',
+      blurb: 'Phasenmodell und Wasserfall. Der Katalog 2025 kennt nur noch diese und Scrum',
       icon: Icons.stairs_outlined,
       weight: 0.020,
     ),

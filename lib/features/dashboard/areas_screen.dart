@@ -81,7 +81,7 @@ class AreasScreen extends ConsumerWidget {
                 Text(
                   'Die Bereichsnummern stammen aus dem Prüfungskatalog. Die '
                   'Aufteilung in Themen darunter ist eine fachliche '
-                  'Rekonstruktion - die amtlichen Unterkapitel-Titel sind '
+                  'Rekonstruktion, denn die amtlichen Unterkapitel-Titel sind '
                   'nicht frei veröffentlicht.',
                   style: context.text.labelSmall?.copyWith(
                     color: context.c.textMuted,

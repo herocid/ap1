@@ -9,7 +9,7 @@ final List<TheorySnack> seedTheory = [
     title: 'Was ein Projekt zum Projekt macht',
     lead:
         'Die DIN 69901 definiert vier Merkmale. Fehlt eines davon, ist es '
-        'Tagesgeschäft - egal wie aufwendig es sich anfühlt.',
+        'Tagesgeschäft, egal wie aufwendig es sich anfühlt.',
     points: [
       'Einmaligkeit der Bedingungen in ihrer Gesamtheit',
       'Zielvorgabe mit zeitlicher, finanzieller und personeller Begrenzung',
@@ -18,7 +18,7 @@ final List<TheorySnack> seedTheory = [
       'Nicht enthalten: eine Mindestgröße oder ein Mindestbudget',
     ],
     merksatz:
-        'Einmalig, begrenzt, eigene Organisation, abgegrenzt - vier Haken, '
+        'Einmalig, begrenzt, eigene Organisation, abgegrenzt: vier Haken, '
         'sonst kein Projekt.',
   ),
   const TheorySnack(
@@ -32,14 +32,14 @@ final List<TheorySnack> seedTheory = [
       'Reine Projektorganisation: Team komplett aus der Linie gelöst, '
           'Projektleitung hat volle Weisungsbefugnis. Schnell, aber teuer und '
           'nach Projektende gibt es ein Rückkehrproblem.',
-      'Matrix: Weisungsbefugnis geteilt - fachlich beim Projekt, '
-          'disziplinarisch in der Linie. Flexibel, aber Dauerkonflikt um '
+      'Matrix: Weisungsbefugnis geteilt (fachlich beim Projekt, '
+          'disziplinarisch in der Linie). Flexibel, aber Dauerkonflikt um '
           'Prioritäten.',
       'Stabs-/Einflussorganisation: Projektleitung koordiniert nur, ohne '
           'Weisungsrecht. Billig, aber zahnlos.',
     ],
     merksatz:
-        'Viel Macht = viel Aufwand. Die Matrix ist der Kompromiss - und '
+        'Viel Macht = viel Aufwand. Die Matrix ist der Kompromiss und '
         'deshalb der Normalfall.',
   ),
   const TheorySnack(
@@ -57,8 +57,8 @@ final List<TheorySnack> seedTheory = [
       'Phasen: Analyse, Entwurf, Implementierung, Test, Einführung und '
           'Wartung.',
       'Stärke: klare Struktur, gute Planbarkeit, feste Kosten und Termine.',
-      'Schwäche: Fehler aus der Analyse fallen erst im Test auf. Rule of Ten '
-          '- jede spätere Phase verzehnfacht die Korrekturkosten.',
+      'Schwäche: Fehler aus der Analyse fallen erst im Test auf. Rule of Ten: '
+          'Jede spätere Phase verzehnfacht die Korrekturkosten.',
       'Scrum als Gegenentwurf: kurze Zyklen, Anforderungen dürfen sich '
           'zwischen den Sprints ändern.',
       'Entscheidungsregel: Anforderungen stabil und vertraglich fix -> '
@@ -116,8 +116,8 @@ final List<TheorySnack> seedTheory = [
     topicId: 'netzplan',
     title: 'GP oder FP? Der Unterschied in 20 Sekunden',
     lead:
-        'Beide Puffer sagen, wie viel Luft ein Vorgang hat - aber bis wohin, '
-        'ist verschieden.',
+        'Beide Puffer sagen, wie viel Luft ein Vorgang hat. Bis wohin, '
+        'ist aber verschieden.',
     points: [
       'Gesamtpuffer: Verschiebung ohne das PROJEKTENDE zu gefährden. '
           'Kann aber den Nachfolger nach hinten drücken.',
@@ -125,7 +125,7 @@ final List<TheorySnack> seedTheory = [
           'anzutasten. Merkt sonst niemand.',
       'Es gilt immer FP <= GP.',
       'Auf dem kritischen Pfad sind beide null.',
-      'Typischer Fall: GP = 2, FP = 0. Luft bis zum Projektende vorhanden - '
+      'Typischer Fall: GP = 2, FP = 0. Luft bis zum Projektende vorhanden, '
           'aber nur, indem man sie dem Nachfolger wegnimmt.',
     ],
     merksatz: 'GP schaut aufs Projektende, FP schaut auf den Nachbarn.',
@@ -214,7 +214,7 @@ final List<TheorySnack> seedTheory = [
     id: 'th-ab-1',
     topicId: 'projektabschluss',
     title: 'Projektabschluss richtig',
-    lead: 'Drei Ebenen - die dritte wird am häufigsten vergessen.',
+    lead: 'Drei Ebenen, und die dritte wird am häufigsten vergessen.',
     points: [
       'Sachlich-technisch: Restarbeiten, Abnahme mit Protokoll, Übergabe an '
           'den Betrieb.',

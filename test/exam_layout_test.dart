@@ -136,7 +136,7 @@ void main() {
           await tapText(tester, 'Volle Prüfung starten');
           await check(tester, 'pruefung_deckblatt_$tag');
 
-          await tapText(tester, 'Beginnen - die Zeit läuft');
+          await tapText(tester, 'Beginnen (die Zeit läuft)');
           await check(tester, 'pruefung_aufgabe_a_$tag');
 
           // Antworten geben, markieren, weiterblättern.
