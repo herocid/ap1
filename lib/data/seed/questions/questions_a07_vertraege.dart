@@ -76,34 +76,64 @@ final List<Question> questionsA07 = [
     explanation:
         'Ein Vertrag entsteht nur, wenn die Annahme rechtzeitig kommt und dem Antrag genau entspricht. Verspätete oder geänderte Annahmen sind neue Anträge. Anfragen und Werbung binden niemanden.',
   ),
-  mehrfach(
+  tabelle(
     'a7-vz-3',
     'vt-zustandekommen',
-    prompt: 'Welche Aussagen zur Geschäftsfähigkeit sind richtig?',
-    choices: [
-      ja(
-        'Ein 6-jähriges Kind kann keine wirksamen Willenserklärungen abgeben.',
-        'Unter 7 Jahren ist man geschäftsunfähig - die Erklärung ist nichtig.',
-      ),
-      ja(
-        'Eine 15-Jährige kauft von ihrem Taschengeld bar eine Maus für 20 €. Der Kauf ist wirksam.',
-        'Taschengeldparagraf: Sie bewirkt die Leistung mit Mitteln, die ihr zur freien Verfügung überlassen wurden.',
-      ),
-      ja(
-        'Ein 17-Jähriger schließt ohne Zustimmung der Eltern einen Handyvertrag über 24 Monate. Der Vertrag ist schwebend unwirksam.',
-        'Er ist beschränkt geschäftsfähig. Erst die Genehmigung der Eltern macht den Vertrag wirksam.',
-      ),
-      nein(
-        'Ab 16 Jahren ist man voll geschäftsfähig.',
-        'Volle Geschäftsfähigkeit beginnt mit 18 Jahren.',
-      ),
-      nein(
-        'Ein Vertrag ist nur wirksam, wenn er schriftlich geschlossen wird.',
-        'Verträge sind grundsätzlich formfrei, nur für einzelne Fälle schreibt das Gesetz eine Form vor.',
-      ),
+    prompt:
+        'Bestimme für jeden Fall die Geschäftsfähigkeit und die Wirksamkeit des Geschäfts.',
+    zeilen: [
+      ['Fall', 'Geschäftsfähigkeit', 'Das Geschäft ist'],
+      [
+        'Ein 6-jähriges Kind kauft ein Videospiel für 60 €.',
+        wahl('geschäftsunfähig', [
+          'beschränkt geschäftsfähig',
+          'voll geschäftsfähig',
+        ], 'Unter 7 Jahren ist man geschäftsunfähig.'),
+        wahl(
+          'nichtig',
+          ['wirksam', 'schwebend unwirksam'],
+          'Die Willenserklärung eines Geschäftsunfähigen ist nichtig (§ 105 BGB).',
+        ),
+      ],
+      [
+        'Eine 15-Jährige kauft von ihrem Taschengeld bar eine Maus für 20 €.',
+        wahl('beschränkt geschäftsfähig', [
+          'geschäftsunfähig',
+          'voll geschäftsfähig',
+        ], 'Von 7 bis 17 Jahren.'),
+        wahl(
+          'wirksam',
+          ['nichtig', 'schwebend unwirksam'],
+          'Taschengeldparagraf (§ 110 BGB): mit eigenen Mitteln sofort bezahlt.',
+        ),
+      ],
+      [
+        'Ein 17-Jähriger schließt ohne Wissen der Eltern einen Handyvertrag über 24 Monate.',
+        wahl('beschränkt geschäftsfähig', [
+          'geschäftsunfähig',
+          'voll geschäftsfähig',
+        ], 'Von 7 bis 17 Jahren.'),
+        wahl(
+          'schwebend unwirksam',
+          ['wirksam', 'nichtig'],
+          'Erst die Genehmigung der Eltern macht den Vertrag wirksam (§ 108 BGB).',
+        ),
+      ],
+      [
+        'Eine 19-jährige Auszubildende least ein Notebook.',
+        wahl('voll geschäftsfähig', [
+          'geschäftsunfähig',
+          'beschränkt geschäftsfähig',
+        ], 'Ab 18 Jahren.'),
+        wahl('wirksam', [
+          'nichtig',
+          'schwebend unwirksam',
+        ], 'Volljährige schließen Verträge ohne Zustimmung anderer.'),
+      ],
     ],
     explanation:
-        'Unter 7 Jahren: geschäftsunfähig. 7 bis 17 Jahre: beschränkt geschäftsfähig, Verträge brauchen die Zustimmung der Eltern - außer beim Taschengeldparagrafen. Ab 18: voll geschäftsfähig.',
+        'Unter 7 Jahren: geschäftsunfähig, Erklärungen sind nichtig. 7 bis 17 Jahre: beschränkt geschäftsfähig, Verträge sind bis zur Genehmigung der Eltern schwebend unwirksam - außer beim Taschengeldparagrafen. Ab 18: voll geschäftsfähig.',
+    punkte: 4,
   ),
 
   einfach(
@@ -141,24 +171,9 @@ final List<Question> questionsA07 = [
     buckets: ['nichtig', 'anfechtbar', 'wirksam'],
     items: [
       zu(
-        'Ein 6-jähriges Kind kauft ein Videospiel für 60 €.',
-        0,
-        'Unter 7 Jahren geschäftsunfähig – die Erklärung ist nichtig (§ 105 BGB).',
-      ),
-      zu(
         'Zwei Personen verkaufen ein Grundstück per Handschlag, ohne Notar.',
         0,
         'Die gesetzlich vorgeschriebene notarielle Form fehlt (§ 125 BGB).',
-      ),
-      zu(
-        'Ein Händler tippt im Angebot 1.000 statt 100 Stück.',
-        1,
-        'Erklärungsirrtum nach § 119 Abs. 1 BGB – unverzüglich anfechtbar.',
-      ),
-      zu(
-        'Ein Verkäufer verschweigt bewusst einen reparierten Wasserschaden am Server.',
-        1,
-        'Arglistige Täuschung nach § 123 BGB – anfechtbar innerhalb eines Jahres ab Entdeckung.',
       ),
       zu(
         'Ein Kunde kauft Monitore und stellt später fest, dass er sie gar nicht braucht.',
@@ -170,40 +185,61 @@ final List<Question> questionsA07 = [
         2,
         'Ein interner Kalkulationsirrtum ist ein Motivirrtum und berechtigt nicht zur Anfechtung.',
       ),
+      zu(
+        'Ein 6-jähriges Kind kauft ein Videospiel für 60 €.',
+        0,
+        'Unter 7 Jahren geschäftsunfähig – die Erklärung ist nichtig (§ 105 BGB).',
+      ),
+      zu(
+        'Ein Verkäufer verschweigt bewusst einen reparierten Wasserschaden am Server.',
+        1,
+        'Arglistige Täuschung nach § 123 BGB – anfechtbar innerhalb eines Jahres ab Entdeckung.',
+      ),
+      zu(
+        'Ein Händler tippt im Angebot 1.000 statt 100 Stück.',
+        1,
+        'Erklärungsirrtum nach § 119 Abs. 1 BGB – unverzüglich anfechtbar.',
+      ),
     ],
     explanation:
         'Nichtig: Geschäftsunfähigkeit, fehlende Form, Schein- und Scherzgeschäft, Gesetzes- oder Sittenverstoß. Anfechtbar: Erklärungs-, Inhalts- und Eigenschaftsirrtum, Täuschung, Drohung. Wer sich nur über seine Beweggründe irrt, bleibt an den Vertrag gebunden.',
     difficulty: 2,
   ),
-  mehrfach(
+  markieren(
     'a7-vz-6',
     'vt-zustandekommen',
+    scenario:
+        'Ein Onlinehändler verkauft Hardware an Verbraucher. Seine Allgemeinen Geschäftsbedingungen (AGB) enthalten unter anderem die folgenden Klauseln.',
     prompt:
-        'Welche Aussagen zu Allgemeinen Geschäftsbedingungen (AGB) sind richtig?',
-    choices: [
+        'Markiere alle Klauseln, die gegenüber Verbrauchern unwirksam sind.',
+    zeilen: [
       ja(
-        'Individuell ausgehandelte Absprachen haben Vorrang vor AGB.',
-        'So steht es in § 305b BGB.',
-      ),
-      ja(
-        'Überraschende Klauseln, mit denen der Kunde nicht rechnen musste, werden nicht Vertragsbestandteil.',
-        '§ 305c BGB schützt vor versteckten Klauseln.',
-      ),
-      ja(
-        'Ist eine Klausel unwirksam, bleibt der übrige Vertrag bestehen; statt der Klausel gilt das Gesetz.',
-        'Das regelt § 306 BGB.',
+        '§ 3 Die Gewährleistung für Neuware ist ausgeschlossen.',
+        'Beim Verbrauchsgüterkauf ist die Gewährleistung für neue Sachen zwingend.',
       ),
       nein(
-        'AGB gelten gegenüber Verbrauchern automatisch, auch ohne Hinweis bei Vertragsschluss.',
-        'Nötig sind ein ausdrücklicher Hinweis und die zumutbare Möglichkeit, sie zur Kenntnis zu nehmen (§ 305 Abs. 2 BGB).',
+        '§ 4 Der Kaufpreis ist innerhalb von 14 Tagen nach Erhalt der Rechnung zu zahlen.',
+        'Ein übliches Zahlungsziel benachteiligt niemanden unangemessen.',
+      ),
+      ja(
+        '§ 5 (im Abschnitt „Versand“) Mit der Bestellung wird der Kunde Mitglied im kostenpflichtigen Premium-Club.',
+        'Überraschende Klausel - sie wird nicht Vertragsbestandteil (§ 305c BGB).',
       ),
       nein(
-        'Ein Händler kann gegenüber Verbrauchern die Gewährleistung für neue Waren per AGB vollständig ausschließen.',
-        'Solche Klauseln sind unwirksam – die Gewährleistung beim Verbrauchsgüterkauf ist zwingend.',
+        '§ 6 Die Ware bleibt bis zur vollständigen Bezahlung Eigentum des Verkäufers.',
+        'Der Eigentumsvorbehalt ist üblich und zulässig (§ 449 BGB).',
+      ),
+      ja(
+        '§ 7 Der Verkäufer haftet nicht für Schäden, auch nicht bei Vorsatz und grober Fahrlässigkeit.',
+        'Ein solcher Haftungsausschluss ist in AGB unwirksam (§ 309 Nr. 7 BGB).',
+      ),
+      nein(
+        '§ 8 Der Versand innerhalb Deutschlands kostet 4,90 €.',
+        'Klare Preisangabe, mit der jeder Kunde rechnet.',
       ),
     ],
     explanation:
-        'AGB sind vorformulierte Bedingungen für viele Verträge. Sie werden nur einbezogen, wenn darauf hingewiesen wurde, und unterliegen einer Inhaltskontrolle: Individualabreden gehen vor, überraschende und unangemessene Klauseln sind unwirksam, der Rest des Vertrags bleibt bestehen.',
+        'AGB unterliegen einer Inhaltskontrolle: Überraschende Klauseln werden nicht Vertragsbestandteil, unangemessene sind unwirksam. Der übrige Vertrag bleibt bestehen; statt der unwirksamen Klausel gilt das Gesetz (§ 306 BGB). Individuell ausgehandelte Absprachen gehen AGB immer vor (§ 305b BGB).',
     difficulty: 2,
   ),
   einfach(
@@ -366,31 +402,27 @@ final List<Question> questionsA07 = [
         'Software as a Service wird als Miete eingeordnet (§ 535 BGB). Der Anbieter muss die Software während der Laufzeit gebrauchstauglich halten. Fällt sie erheblich aus, ist der Kunde für diese Zeit ganz oder teilweise von der Miete befreit (§ 536 BGB) – er muss den Ausfall aber melden.',
     difficulty: 2,
   ),
-  mehrfach(
+  lueckentext(
     'a7-vy-4',
     'vt-arten',
-    prompt: 'Welche Aussagen zum Werkvertrag sind richtig?',
-    choices: [
-      ja(
-        'Geschuldet ist ein Erfolg, zum Beispiel eine lauffähige Software.',
-        'Das ist das Kennzeichen des Werkvertrags (§ 631 BGB).',
-      ),
-      ja(
-        'Die Vergütung wird grundsätzlich mit der Abnahme fällig.',
-        'So regelt es § 641 BGB.',
-      ),
-      ja(
-        'Bei Mängeln entscheidet der Unternehmer, ob er nachbessert oder neu herstellt.',
-        '§ 635 BGB – anders als beim Kauf, wo der Käufer wählt.',
-      ),
-      nein(
-        'Der Auftragnehmer wird nach Stunden bezahlt, egal ob das Ergebnis funktioniert.',
-        'Das beschreibt den Dienstvertrag, bei dem nur die Tätigkeit geschuldet ist.',
-      ),
-      nein(
-        'Für die Herstellung beweglicher Sachen gilt ausschließlich Werkvertragsrecht.',
-        'Für herzustellende bewegliche Sachen gilt nach § 650 BGB Kaufrecht (Werklieferungsvertrag).',
-      ),
+    prompt: 'Ergänze die Aussagen zum Werkvertrag.',
+    text:
+        'Beim Werkvertrag schuldet der Unternehmer einen {0}, zum Beispiel eine lauffähige Software. Die Vergütung wird grundsätzlich mit der {1} fällig. Bei Mängeln entscheidet der {2}, ob nachgebessert oder neu hergestellt wird. Wird nur die Tätigkeit geschuldet, liegt ein {3} vor. Für die Herstellung und Lieferung beweglicher Sachen gilt {4}.',
+    luecken: [
+      wahl('Erfolg', [
+        'Arbeitseinsatz',
+        'Kaufpreis',
+      ], 'Kennzeichen des Werkvertrags (§ 631 BGB).'),
+      wahl('Abnahme', ['Bestellung', 'Lieferung der Rechnung'], '§ 641 BGB.'),
+      wahl('Unternehmer', [
+        'Besteller',
+        'Gutachter',
+      ], '§ 635 BGB - anders als beim Kauf, wo der Käufer wählt.'),
+      wahl('Dienstvertrag', ['Kaufvertrag', 'Mietvertrag']),
+      wahl('Kaufrecht', [
+        'Mietrecht',
+        'Dienstvertragsrecht',
+      ], 'Werklieferungsvertrag nach § 650 BGB.'),
     ],
     explanation:
         'Werkvertrag: Erfolg geschuldet, Abnahme, Vergütung bei Abnahme, Nacherfüllung nach Wahl des Unternehmers. Wird nur Tätigkeit geschuldet, ist es ein Dienstvertrag; wird eine bewegliche Sache hergestellt und geliefert, gilt Kaufrecht.',
@@ -462,30 +494,29 @@ final List<Question> questionsA07 = [
   ),
 
   // ================================================ Urheberrecht und Lizenzen
-  mehrfach(
+  lueckentext(
     'a7-vu-1',
     'vt-urheber',
-    prompt: 'Welche Aussagen zum Urheberrecht an Software sind richtig?',
-    choices: [
-      ja(
-        'Der Schutz entsteht automatisch mit der Schöpfung des Programms.',
-        'Eine Anmeldung oder ein Copyright-Vermerk ist nicht nötig.',
+    prompt: 'Ergänze die Aussagen zum Urheberrecht an Software.',
+    text:
+        'Der Schutz eines Programms entsteht {0}. Er endet {1} Jahre nach dem Tod des Urhebers. Das Urheberrecht selbst ist {2}. An andere weitergegeben werden {3}; sie können zeitlich, räumlich und inhaltlich {4} werden.',
+    luecken: [
+      wahl(
+        'automatisch mit der Schöpfung',
+        ['mit der Anmeldung beim Patentamt', 'mit dem ©-Vermerk'],
+        'Eine Anmeldung oder ein Vermerk ist nicht nötig.',
       ),
-      ja(
-        'Der Schutz endet 70 Jahre nach dem Tod des Urhebers.',
-        'Das ist die gesetzliche Schutzdauer.',
+      wahl('70', ['20', '50'], 'Gesetzliche Schutzdauer (§ 64 UrhG).'),
+      wahl(
+        'nicht übertragbar, nur vererbbar',
+        ['frei verkäuflich', 'auf 10 Jahre befristet'],
+        'Urheber bleibt der Mensch, der das Werk geschaffen hat.',
       ),
-      ja(
-        'Nutzungsrechte können zeitlich, räumlich und inhaltlich beschränkt werden.',
-        'Zum Beispiel eine Lizenz für drei Jahre, nur in Deutschland, nur für interne Zwecke.',
-      ),
-      nein(
-        'Software ist nur geschützt, wenn sie beim Patentamt angemeldet wurde.',
-        'Das Urheberrecht braucht keine Anmeldung. Patente sind etwas anderes.',
-      ),
-      nein(
-        'Der Urheber kann sein Urheberrecht an einen Käufer verkaufen.',
-        'Das Urheberrecht ist nicht übertragbar, nur vererbbar. Verkauft werden Nutzungsrechte.',
+      wahl('Nutzungsrechte', ['Patente', 'Markenrechte']),
+      wahl(
+        'beschränkt',
+        ['vererbt', 'angemeldet'],
+        'Zum Beispiel drei Jahre, nur in Deutschland, nur für interne Zwecke.',
       ),
     ],
     explanation:
@@ -555,9 +586,14 @@ final List<Question> questionsA07 = [
     buckets: ['ohne Zustimmung erlaubt', 'nur mit Zustimmung oder Lizenz'],
     items: [
       zu(
-        'Eine Sicherungskopie anlegen, die für die weitere Nutzung erforderlich ist',
+        'Einen Fehler beheben, der die bestimmungsgemäße Nutzung verhindert, wenn der Vertrag nichts anderes regelt',
         0,
-        '§ 69d Abs. 2 UrhG – kann vertraglich nicht untersagt werden.',
+        '§ 69d Abs. 1 UrhG erlaubt die Fehlerberichtigung.',
+      ),
+      zu(
+        'Den Quellcode ändern und die neue Version verkaufen',
+        1,
+        'Bearbeitung und Verbreitung brauchen die Zustimmung.',
       ),
       zu(
         'Das Programm beobachten und testen, um seine Funktionsweise zu verstehen',
@@ -565,24 +601,19 @@ final List<Question> questionsA07 = [
         '§ 69d Abs. 3 UrhG.',
       ),
       zu(
-        'Einen Fehler beheben, der die bestimmungsgemäße Nutzung verhindert, wenn der Vertrag nichts anderes regelt',
-        0,
-        '§ 69d Abs. 1 UrhG erlaubt die Fehlerberichtigung.',
-      ),
-      zu(
         'Das Programm auf 12 statt der lizenzierten 10 Rechner installieren',
         1,
         'Jede Installation ist eine Vervielfältigung und braucht ein Nutzungsrecht.',
       ),
       zu(
+        'Eine Sicherungskopie anlegen, die für die weitere Nutzung erforderlich ist',
+        0,
+        '§ 69d Abs. 2 UrhG – kann vertraglich nicht untersagt werden.',
+      ),
+      zu(
         'Kopien des Programms an Kunden weitergeben',
         1,
         'Verbreitung ist dem Rechteinhaber vorbehalten (§ 69c UrhG).',
-      ),
-      zu(
-        'Den Quellcode ändern und die neue Version verkaufen',
-        1,
-        'Bearbeitung und Verbreitung brauchen die Zustimmung.',
       ),
     ],
     explanation:
@@ -770,14 +801,9 @@ final List<Question> questionsA07 = [
     buckets: ['SLA', 'OLA', 'UC'],
     items: [
       zu(
-        'Der Dienstleister sichert dem Kunden 99,9 % Verfügbarkeit des Webshops zu.',
-        0,
-        'Vereinbarung mit dem Kunden.',
-      ),
-      zu(
-        'Der Kunde erhält monatlich einen Bericht über die erreichten Reaktionszeiten.',
-        0,
-        'Reporting an den Kunden ist Teil des SLA.',
+        'Der Hardware-Hersteller tauscht defekte Serverteile innerhalb von 4 Stunden.',
+        2,
+        'Vertrag mit einem externen Lieferanten.',
       ),
       zu(
         'Das interne Netzwerkteam sagt dem Service Desk zu, P1-Tickets in 15 Minuten zu übernehmen.',
@@ -787,17 +813,22 @@ final List<Question> questionsA07 = [
       zu(
         'Die Datenbank-Admins sagen dem Betriebsteam zu, Backups täglich bis 6 Uhr abzuschließen.',
         1,
-        'Ebenfalls intern.',
-      ),
-      zu(
-        'Der Hardware-Hersteller tauscht defekte Serverteile innerhalb von 4 Stunden.',
-        2,
-        'Vertrag mit einem externen Lieferanten.',
+        'Interne Vereinbarung zwischen zwei Teams des Dienstleisters.',
       ),
       zu(
         'Der Internetprovider garantiert dem Dienstleister 99,95 % Verfügbarkeit der Anbindung.',
         2,
-        'Ebenfalls ein externer Zuliefervertrag.',
+        'Vertrag mit einem externen Zulieferer.',
+      ),
+      zu(
+        'Der Kunde erhält monatlich einen Bericht über die erreichten Reaktionszeiten.',
+        0,
+        'Reporting an den Kunden ist Teil des SLA.',
+      ),
+      zu(
+        'Der Dienstleister sichert dem Kunden 99,9 % Verfügbarkeit des Webshops zu.',
+        0,
+        'Vereinbarung mit dem Kunden.',
       ),
     ],
     explanation:
@@ -927,6 +958,21 @@ final List<Question> questionsA07 = [
     buckets: ['Level 0', '1st Level', '2nd Level', '3rd Level'],
     items: [
       zu(
+        'Der Softwarehersteller behebt einen Programmfehler mit einem Patch.',
+        3,
+        'Änderung am Produkt selbst.',
+      ),
+      zu(
+        'Der Service Desk löst ein bekanntes Druckerproblem per Anleitung am Telefon.',
+        1,
+        'Standardfall mit bekannter Lösung.',
+      ),
+      zu(
+        'Ein Netzwerkadministrator untersucht Paketverluste zwischen zwei Standorten.',
+        2,
+        'Spezialwissen im eigenen Haus.',
+      ),
+      zu(
         'Ein Anwender setzt sein Passwort im Self-Service-Portal selbst zurück.',
         0,
         'Selbsthilfe ohne Service Desk.',
@@ -937,24 +983,9 @@ final List<Question> questionsA07 = [
         'Wissensdatenbank für Anwender.',
       ),
       zu(
-        'Der Service Desk löst ein bekanntes Druckerproblem per Anleitung am Telefon.',
-        1,
-        'Standardfall mit bekannter Lösung.',
-      ),
-      zu(
         'Ein Datenbankspezialist analysiert langsame Abfragen im ERP-System.',
         2,
         'Tiefes Fachwissen nötig.',
-      ),
-      zu(
-        'Ein Netzwerkadministrator untersucht Paketverluste zwischen zwei Standorten.',
-        2,
-        'Spezialwissen im eigenen Haus.',
-      ),
-      zu(
-        'Der Softwarehersteller behebt einen Programmfehler mit einem Patch.',
-        3,
-        'Änderung am Produkt selbst.',
       ),
     ],
     explanation:
@@ -973,34 +1004,19 @@ final List<Question> questionsA07 = [
         'SLA-Quote = fristgerecht gelöste Tickets / alle Tickets × 100 % = 592 / 640 × 100 % = 0,925 × 100 % = 92,5 %.',
     difficulty: 1,
   ),
-  mehrfach(
+  paare(
     'a7-ls-8',
     'sla-support',
-    prompt: 'Welche Aussagen zu Supportarten und Service Desk sind richtig?',
-    choices: [
-      ja(
-        'Remote-Support spart Anfahrtswege, braucht aber eine Netzverbindung und die Zustimmung des Anwenders.',
-        'Fernwartung greift auf fremde Rechner zu – das muss der Anwender erlauben.',
-      ),
-      ja(
-        'Ein Self-Service-Portal entlastet den 1st Level bei Standardanfragen.',
-        'Passwort-Reset und FAQ lösen viele Fälle ohne Personal.',
-      ),
-      ja(
-        'Vor-Ort-Support ist bei defekter Hardware oft unvermeidbar.',
-        'Ein Netzteil lässt sich nicht aus der Ferne tauschen.',
-      ),
-      nein(
-        'Beim Eskalieren wird das Ticket geschlossen und im 2nd Level neu angelegt.',
-        'Das Ticket bleibt offen und wandert mit seiner Historie weiter.',
-      ),
-      nein(
-        'Follow the Sun bedeutet, dass Support nur tagsüber angeboten wird.',
-        'Teams in mehreren Zeitzonen übergeben Tickets – so entsteht 24/7-Support.',
-      ),
+    prompt: 'Verbinde jede Supportform mit ihrem Kennzeichen.',
+    paare: [
+      paar('Self-Service-Portal', 'entlastet den 1st Level bei Standardfällen'),
+      paar('Remote-Support', 'spart Anfahrt, braucht Zustimmung'),
+      paar('Vor-Ort-Support', 'nötig, wenn Hardware getauscht wird'),
+      paar('Follow the Sun', '24/7 durch Teams in mehreren Zeitzonen'),
+      paar('Telefon-Hotline', 'schnelle persönliche Klärung'),
     ],
     explanation:
-        'Die Supportkanäle haben verschiedene Stärken: Self-Service für Standardfälle, Telefon und Chat für schnelle Hilfe, Remote für Softwareprobleme, Vor-Ort für Hardware. Unabhängig vom Kanal bleibt das Ticket bis zur bestätigten Lösung offen.',
+        'Die Supportkanäle haben verschiedene Stärken: Self-Service für Standardfälle, Telefon und Chat für schnelle Hilfe, Remote für Softwareprobleme (nur mit Zustimmung des Anwenders), Vor-Ort für Hardware. Follow the Sun heißt, dass Teams in mehreren Zeitzonen Tickets übergeben - so entsteht Support rund um die Uhr.',
     difficulty: 2,
   ),
 
@@ -1045,34 +1061,20 @@ final List<Question> questionsA07 = [
     explanation:
         'Incident = Störung, schnell wiederherstellen. Problem = Ursache finden. Change = kontrollierte Änderung. Service Request = Standardanfrage ohne Störung.',
   ),
-  mehrfach(
+  paare(
     'a7-lt-2',
     'sla-itil',
-    prompt: 'Welche Aussagen zu den ITIL-Prozessen sind richtig?',
-    choices: [
-      ja(
-        'Ziel des Incident Managements ist, den Service so schnell wie möglich wiederherzustellen - auch per Workaround.',
-        'Die Ursachenanalyse ist nicht seine Aufgabe.',
-      ),
-      ja(
-        'Ein Known Error ist ein Problem, dessen Ursache bekannt und dokumentiert ist.',
-        'Meist wird zusätzlich ein Workaround festgehalten.',
-      ),
-      ja(
-        'Ein Standard Change ist vorab genehmigt, weil er häufig vorkommt und wenig Risiko birgt.',
-        'Zum Beispiel die Einrichtung eines Standard-Arbeitsplatzes.',
-      ),
-      nein(
-        'Ein Incident darf erst geschlossen werden, wenn seine Ursache gefunden ist.',
-        'Sobald der Service wieder läuft, ist der Incident gelöst. Die Ursache sucht das Problem Management.',
-      ),
-      nein(
-        'Ein Emergency Change wird ohne jede Genehmigung und Dokumentation umgesetzt.',
-        'Auch Notfall-Changes werden genehmigt - beschleunigt, etwa durch ein Notfall-CAB - und dokumentiert.',
-      ),
+    prompt: 'Verbinde jeden ITIL-Begriff mit seiner Bedeutung.',
+    paare: [
+      paar('Incident', 'Störung - Service schnell wiederherstellen'),
+      paar('Problem', 'Ursache hinter Störungen'),
+      paar('Known Error', 'Problem mit bekannter, dokumentierter Ursache'),
+      paar('Workaround', 'vorläufige Umgehung ohne Ursachenbehebung'),
+      paar('Standard Change', 'häufig, risikoarm, vorab genehmigt'),
+      paar('Emergency Change', 'dringend, beschleunigt genehmigt'),
     ],
     explanation:
-        'Incident Management stellt wieder her, Problem Management beseitigt Ursachen, Change Management steuert Änderungen je nach Risiko als Standard, Normal oder Emergency Change.',
+        'Incident Management stellt wieder her, Problem Management beseitigt Ursachen, Change Management steuert Änderungen je nach Risiko als Standard, Normal oder Emergency Change. Auch ein Emergency Change wird genehmigt und dokumentiert - nur schneller.',
   ),
   reihenfolge(
     'a7-lt-3',
@@ -1123,19 +1125,14 @@ final List<Question> questionsA07 = [
     buckets: ['Standard Change', 'Normal Change', 'Emergency Change'],
     items: [
       zu(
+        'Sofort einen Sicherheitspatch für eine aktiv ausgenutzte Lücke einspielen',
+        2,
+        'Muss sofort passieren – beschleunigte Genehmigung.',
+      ),
+      zu(
         'Ein Standard-Notebook für eine neue Mitarbeiterin nach Checkliste einrichten',
         0,
         'Häufig, risikoarm, vorab genehmigt.',
-      ),
-      zu(
-        'Die monatlich freigegebenen Updates der Virenschutz-Signaturen einspielen',
-        0,
-        'Wiederkehrend und vorab freigegeben.',
-      ),
-      zu(
-        'Das ERP-System auf einen neuen Datenbankserver migrieren',
-        1,
-        'Geplant, riskant – muss einzeln bewertet und genehmigt werden.',
       ),
       zu(
         'Eine neue Firewall-Architektur einführen',
@@ -1143,9 +1140,14 @@ final List<Question> questionsA07 = [
         'Größere geplante Änderung mit Bewertung.',
       ),
       zu(
-        'Sofort einen Sicherheitspatch für eine aktiv ausgenutzte Lücke einspielen',
-        2,
-        'Muss sofort passieren – beschleunigte Genehmigung.',
+        'Das ERP-System auf einen neuen Datenbankserver migrieren',
+        1,
+        'Geplant, riskant – muss einzeln bewertet und genehmigt werden.',
+      ),
+      zu(
+        'Die monatlich freigegebenen Updates der Virenschutz-Signaturen einspielen',
+        0,
+        'Wiederkehrend und vorab freigegeben.',
       ),
     ],
     explanation:
@@ -1253,34 +1255,52 @@ final List<Question> questionsA07 = [
     explanation:
         'Beim Lieferungsverzug kann der Käufer zunächst Lieferung und Ersatz des Verzugsschadens verlangen. Rücktritt und Schadensersatz statt der Leistung setzen grundsätzlich eine erfolglos verstrichene angemessene Nachfrist voraus.',
   ),
-  mehrfach(
+  tabelle(
     'a7-gv-3',
     'ls-verzug',
-    prompt: 'Welche Aussagen zum Zahlungsverzug sind richtig?',
-    choices: [
-      ja(
-        'Sind nur Unternehmen beteiligt, beträgt der Verzugszins 9 Prozentpunkte über dem Basiszinssatz.',
-        'Das ist der gesetzliche Satz für Geschäfte ohne Verbraucherbeteiligung.',
-      ),
-      ja(
-        'Unter Unternehmen kann der Gläubiger zusätzlich eine Pauschale von 40 € verlangen.',
-        'Die Pauschale steht neben den Verzugszinsen.',
-      ),
-      ja(
-        'Ein Verbraucher kommt ohne Mahnung 30 Tage nach Fälligkeit und Zugang der Rechnung nur in Verzug, wenn die Rechnung darauf hinweist.',
-        'Ohne diesen Hinweis braucht es bei Verbrauchern eine Mahnung.',
-      ),
-      nein(
-        'Ist ein Verbraucher beteiligt, beträgt der Verzugszins ebenfalls 9 Prozentpunkte über dem Basiszinssatz.',
-        'Mit Verbraucherbeteiligung sind es 5 Prozentpunkte.',
-      ),
-      nein(
-        'Zahlungsverzug tritt erst nach der dritten Mahnung ein.',
-        'Eine einzige Mahnung genügt, in manchen Fällen ist gar keine nötig.',
-      ),
+    scenario: 'Drei Schuldner sind mit einer Rechnung im Zahlungsverzug.',
+    prompt:
+        'Gib für jeden Fall den gesetzlichen Aufschlag auf den Basiszinssatz an und ob die Pauschale von 40 € verlangt werden kann.',
+    zeilen: [
+      ['Fall', 'Aufschlag', '40-€-Pauschale'],
+      [
+        'Ein Handwerksbetrieb zahlt die Rechnung eines Systemhauses nicht.',
+        wahl('9 Prozentpunkte', [
+          '5 Prozentpunkte',
+          '12 Prozentpunkte',
+        ], 'Kein Verbraucher beteiligt (§ 288 Abs. 2 BGB).'),
+        wahl('ja', [
+          'nein',
+          'nur nach der dritten Mahnung',
+        ], 'Der Schuldner ist kein Verbraucher (§ 288 Abs. 5 BGB).'),
+      ],
+      [
+        'Eine Privatkundin zahlt die Rechnung eines Computerladens nicht.',
+        wahl('5 Prozentpunkte', [
+          '9 Prozentpunkte',
+          '12 Prozentpunkte',
+        ], 'Ein Verbraucher ist beteiligt (§ 288 Abs. 1 BGB).'),
+        wahl('nein', [
+          'ja',
+          'nur nach der dritten Mahnung',
+        ], 'Gegenüber Verbrauchern gibt es keine Pauschale.'),
+      ],
+      [
+        'Eine Stadtverwaltung zahlt die Rechnung eines Softwarehauses nicht.',
+        wahl(
+          '9 Prozentpunkte',
+          ['5 Prozentpunkte', '12 Prozentpunkte'],
+          'Auch ein öffentlicher Auftraggeber ist kein Verbraucher.',
+        ),
+        wahl('ja', [
+          'nein',
+          'nur nach der dritten Mahnung',
+        ], 'Der Schuldner ist kein Verbraucher.'),
+      ],
     ],
     explanation:
-        'Verzugszins: 5 Prozentpunkte über Basiszins, wenn ein Verbraucher beteiligt ist, 9 Prozentpunkte nur unter Unternehmen plus 40 € Pauschale. Ohne Mahnung tritt Verzug spätestens 30 Tage nach Fälligkeit und Rechnungszugang ein.',
+        'Verzugszins: 5 Prozentpunkte über Basiszins, wenn ein Verbraucher beteiligt ist, 9 Prozentpunkte, wenn kein Verbraucher beteiligt ist. Die Pauschale von 40 € gibt es nur, wenn der Schuldner kein Verbraucher ist. Drei Mahnungen verlangt das Gesetz nirgends.',
+    punkte: 3,
   ),
 
   zuordnen(
@@ -1298,9 +1318,9 @@ final List<Question> questionsA07 = [
         'Der Erfüllungsanspruch besteht ohnehin.',
       ),
       zu(
-        'Ersatz des Verzögerungsschadens, z. B. Kosten für Leihgeräte',
-        0,
-        'Setzt Verzug und Verschulden voraus, aber keine Nachfrist.',
+        'Schadensersatz statt der Leistung, z. B. Mehrkosten eines Deckungskaufs',
+        1,
+        '§ 281 BGB verlangt ebenfalls eine erfolglose Nachfrist.',
       ),
       zu(
         'Vom Vertrag zurücktreten',
@@ -1308,9 +1328,9 @@ final List<Question> questionsA07 = [
         '§ 323 BGB verlangt grundsätzlich eine erfolglose Nachfrist.',
       ),
       zu(
-        'Schadensersatz statt der Leistung, z. B. Mehrkosten eines Deckungskaufs',
-        1,
-        '§ 281 BGB verlangt ebenfalls eine erfolglose Nachfrist.',
+        'Ersatz des Verzögerungsschadens, z. B. Kosten für Leihgeräte',
+        0,
+        'Setzt Verzug und Verschulden voraus, aber keine Nachfrist.',
       ),
     ],
     explanation:
@@ -1460,34 +1480,45 @@ final List<Question> questionsA07 = [
     explanation:
         'Reihenfolge der Käuferrechte: zuerst Nacherfüllung (Nachbesserung oder Ersatzlieferung, Wahl beim Käufer). Scheitert sie, folgen Rücktritt oder Minderung, bei Verschulden zusätzlich Schadensersatz.',
   ),
-  mehrfach(
+  zuordnen(
     'a7-gm-3',
     'ls-maengel',
-    prompt: 'Welche Aussagen zu Gewährleistung und Garantie sind richtig?',
-    choices: [
-      ja(
-        'Beim Kauf einer neuen Sache beträgt die Gewährleistungsfrist 2 Jahre.',
-        'Sie beginnt mit der Übergabe.',
+    prompt: 'Gehört das Merkmal zur Gewährleistung oder zur Garantie?',
+    buckets: ['Gewährleistung', 'Garantie'],
+    items: [
+      zu(
+        'Freiwilliges Versprechen, meist des Herstellers',
+        1,
+        'Niemand ist verpflichtet, eine Garantie zu geben.',
       ),
-      ja(
-        'Eine Garantie ist ein freiwilliges Versprechen, meist des Herstellers.',
-        'Sie gilt zusätzlich zur gesetzlichen Gewährleistung.',
+      zu(
+        'Gesetzlich vorgeschrieben',
+        0,
+        'Die Mängelhaftung des Verkäufers folgt aus dem BGB.',
       ),
-      ja(
-        'Beim Verbrauchsgüterkauf wird bei Mängeln im ersten Jahr vermutet, dass sie schon bei Übergabe vorlagen.',
-        'Das ist die Beweislastumkehr, seit 2022 ein Jahr.',
+      zu(
+        'Richtet sich gegen den Verkäufer',
+        0,
+        'Vertragspartner ist der Händler, nicht der Hersteller.',
       ),
-      nein(
-        'Endet eine einjährige Herstellergarantie, enden auch die Gewährleistungsrechte gegen den Händler.',
-        'Garantie und Gewährleistung sind unabhängig. Die Gewährleistung läuft weiter.',
+      zu(
+        'Dauer und Umfang legt der Geber selbst fest',
+        1,
+        'Etwa „3 Jahre auf den Akku“.',
       ),
-      nein(
-        'Unter Kaufleuten kann ein offener Mangel auch nach Monaten noch ohne Nachteil gerügt werden.',
-        'Unter Kaufleuten muss unverzüglich gerügt werden, sonst gilt die Ware als genehmigt.',
+      zu(
+        'Beträgt bei neuen Sachen 2 Jahre ab Übergabe',
+        0,
+        '§ 438 Abs. 1 Nr. 3 BGB.',
+      ),
+      zu(
+        'Ihr Ablauf lässt die Rechte gegen den Händler unberührt',
+        1,
+        'Endet die Garantie, läuft die Gewährleistung unabhängig davon weiter.',
       ),
     ],
     explanation:
-        'Gewährleistung ist gesetzlich, richtet sich gegen den Verkäufer und läuft bei neuen Sachen 2 Jahre. Die Garantie ist freiwillig. Beim Handelskauf gilt die unverzügliche Rügepflicht nach § 377 HGB.',
+        'Gewährleistung ist gesetzlich, richtet sich gegen den Verkäufer und läuft bei neuen Sachen 2 Jahre. Die Garantie ist freiwillig und kommt zusätzlich hinzu. Beim Handelskauf gilt außerdem die unverzügliche Rügepflicht nach § 377 HGB.',
   ),
 
   rechnen(
@@ -1514,31 +1545,31 @@ final List<Question> questionsA07 = [
     ],
     items: [
       zu(
+        'Eine Office-Suite wird mit einem gefälschten Lizenzschlüssel verkauft.',
+        3,
+        'Der Rechteinhaber kann die Nutzung untersagen – Recht eines Dritten.',
+      ),
+      zu(
         'Ein Notebook hat 8 statt der vereinbarten 16 GB RAM.',
         0,
         'Die vereinbarte Beschaffenheit fehlt.',
       ),
-      zu(
-        'Beworben sind 10 Stunden Akkulaufzeit, tatsächlich sind es 3.',
-        0,
-        'Die Sache hält nicht, was die Werbung verspricht – objektive Anforderung verfehlt.',
-      ),
-      zu(
-        'Der Techniker des Verkäufers baut die Netzwerkkarte falsch ein, der Server startet nicht.',
-        1,
-        'Unsachgemäße Montage durch den Verkäufer.',
-      ),
-      zu('Statt 10 Switches werden 8 geliefert.', 2, 'Zu geringe Menge.'),
       zu(
         'Statt Druckermodell A wird Modell B geliefert.',
         2,
         'Eine andere als die geschuldete Sache.',
       ),
       zu(
-        'Eine Office-Suite wird mit einem gefälschten Lizenzschlüssel verkauft.',
-        3,
-        'Der Rechteinhaber kann die Nutzung untersagen – Recht eines Dritten.',
+        'Der Techniker des Verkäufers baut die Netzwerkkarte falsch ein, der Server startet nicht.',
+        1,
+        'Unsachgemäße Montage durch den Verkäufer.',
       ),
+      zu(
+        'Beworben sind 10 Stunden Akkulaufzeit, tatsächlich sind es 3.',
+        0,
+        'Die Sache hält nicht, was die Werbung verspricht – objektive Anforderung verfehlt.',
+      ),
+      zu('Statt 10 Switches werden 8 geliefert.', 2, 'Zu geringe Menge.'),
     ],
     explanation:
         'Sachmangel: vereinbarte oder übliche Beschaffenheit fehlt (§ 434 BGB). Montagemangel: fehlerhafte Montage oder Montageanleitung. Falsch- und Zuweniglieferung stehen einem Sachmangel gleich. Rechtsmangel: Dritte haben Rechte an der Sache (§ 435 BGB).',
@@ -1646,34 +1677,35 @@ final List<Question> questionsA07 = [
     explanation:
         'Setzt der Unternehmer nach Fertigstellung eine angemessene Frist und verweigert der Besteller die Abnahme nicht unter Angabe mindestens eines Mangels, gilt das Werk als abgenommen (§ 640 Abs. 2 BGB). Die Vergütung wird damit fällig.',
   ),
-  mehrfach(
+  freitext(
     'a7-ga-2',
     'ls-abnahme',
-    prompt: 'Welche Rechtsfolgen hat die Abnahme beim Werkvertrag?',
-    choices: [
-      ja(
-        'Die Vergütung wird fällig.',
-        'Vor der Abnahme muss der Besteller grundsätzlich nicht zahlen.',
+    scenario:
+        'Ein Softwarehaus hat ein Kundenportal fertiggestellt. Der Auftraggeber unterschreibt das Abnahmeprotokoll.',
+    prompt: 'Nenne drei Rechtsfolgen der Abnahme beim Werkvertrag.',
+    kriterien: [
+      krit(
+        'Die Vergütung wird fällig',
+        stichwoerter: ['Vergütung', 'fällig', 'Zahlung', 'Werklohn'],
       ),
-      ja(
-        'Die Verjährungsfrist für Mängelansprüche beginnt.',
-        'Sie läuft ab der Abnahme.',
+      krit(
+        'Die Verjährungsfrist für Mängelansprüche beginnt',
+        stichwoerter: ['Verjährung', 'Gewährleistungsfrist', 'Frist beginnt'],
       ),
-      ja(
-        'Die Gefahr geht auf den Besteller über.',
-        'Wird das Werk danach zufällig zerstört, trägt der Besteller das Risiko.',
+      krit(
+        'Die Gefahr geht auf den Besteller über',
+        stichwoerter: ['Gefahrübergang', 'Gefahr', 'Risiko geht über'],
       ),
-      nein(
-        'Alle Mängelrechte des Bestellers enden.',
-        'Die Mängelrechte bestehen bis zur Verjährung weiter.',
-      ),
-      nein(
-        'Der Unternehmer muss ab jetzt beweisen, dass das Werk mangelfrei ist.',
-        'Umgekehrt: Nach der Abnahme muss der Besteller einen Mangel beweisen.',
+      krit(
+        'Die Beweislast kehrt sich um: Der Besteller muss Mängel beweisen',
+        stichwoerter: ['Beweislast', 'beweisen', 'Nachweis'],
       ),
     ],
+    loesung:
+        'Die Vergütung wird fällig, die Verjährungsfrist für Mängelansprüche beginnt, die Gefahr geht auf den Besteller über, und die Beweislast kehrt sich um - nach der Abnahme muss der Besteller beweisen, dass ein Mangel vorliegt.',
     explanation:
-        'Die Abnahme bewirkt Fälligkeit der Vergütung, Gefahrübergang, Beginn der Verjährung und die Umkehr der Beweislast zulasten des Bestellers.',
+        'Je Nennung 1 Punkt, höchstens 3 Punkte. Die Mängelrechte selbst enden mit der Abnahme nicht - sie bestehen bis zur Verjährung weiter.',
+    punkte: 3,
   ),
 
   einfach(
@@ -1716,9 +1748,9 @@ final List<Question> questionsA07 = [
         'Förmliche Abnahme.',
       ),
       zu(
-        'Der Projektleiter des Kunden schreibt: „Wir nehmen das System hiermit ab.“',
-        0,
-        'Eine ausdrückliche Erklärung, auch per E-Mail.',
+        'Der Kunde lässt eine gesetzte Abnahmefrist verstreichen, ohne einen Mangel zu nennen.',
+        2,
+        '§ 640 Abs. 2 BGB – das Werk gilt als abgenommen.',
       ),
       zu(
         'Der Kunde nutzt die Software nach der Testphase monatelang produktiv und zahlt ohne Beanstandung.',
@@ -1726,9 +1758,9 @@ final List<Question> questionsA07 = [
         'Billigung durch schlüssiges Verhalten.',
       ),
       zu(
-        'Der Kunde lässt eine gesetzte Abnahmefrist verstreichen, ohne einen Mangel zu nennen.',
-        2,
-        '§ 640 Abs. 2 BGB – das Werk gilt als abgenommen.',
+        'Der Projektleiter des Kunden schreibt: „Wir nehmen das System hiermit ab.“',
+        0,
+        'Eine ausdrückliche Erklärung, auch per E-Mail.',
       ),
     ],
     explanation:
@@ -1804,9 +1836,19 @@ final List<Question> questionsA07 = [
     buckets: ['Unfreezing', 'Moving', 'Refreezing'],
     items: [
       zu(
+        'Zwei Key-User testen das System vier Wochen im Pilotbetrieb.',
+        1,
+        'Erprobung während der Umstellung.',
+      ),
+      zu(
         'Im Kick-off zeigt die Leitung, wie viele Anfragen in den Postfächern liegen geblieben sind.',
         0,
         'Macht den Veränderungsbedarf sichtbar.',
+      ),
+      zu(
+        'Die alten Postfächer werden abgeschaltet und der neue Ablauf in die Arbeitsanweisung aufgenommen.',
+        2,
+        'Der neue Zustand wird verankert.',
       ),
       zu(
         'Das Team wird nach seinen Anforderungen an das neue System gefragt.',
@@ -1817,16 +1859,6 @@ final List<Question> questionsA07 = [
         'Alle Mitarbeitenden werden am Ticketsystem geschult.',
         1,
         'Das Neue wird umgesetzt.',
-      ),
-      zu(
-        'Zwei Key-User testen das System vier Wochen im Pilotbetrieb.',
-        1,
-        'Erprobung während der Umstellung.',
-      ),
-      zu(
-        'Die alten Postfächer werden abgeschaltet und der neue Ablauf in die Arbeitsanweisung aufgenommen.',
-        2,
-        'Der neue Zustand wird verankert.',
       ),
     ],
     explanation:
@@ -1923,49 +1955,36 @@ final List<Question> questionsA07 = [
     prompt: 'Ordne die Schritte nach Kotter der passenden Phase nach Lewin zu.',
     buckets: ['Unfreezing', 'Moving', 'Refreezing'],
     items: [
-      zu('Ein Gefühl der Dringlichkeit erzeugen', 0, 'Kotter Schritt 1.'),
       zu(
         'Eine Vision entwickeln und kommunizieren',
         0,
         'Kotter Schritte 3 und 4.',
       ),
-      zu('Hindernisse beseitigen', 1, 'Kotter Schritt 5.'),
-      zu('Schnelle Erfolge sichtbar machen', 1, 'Kotter Schritt 6.'),
       zu(
         'Neue Verhaltensweisen in der Unternehmenskultur verankern',
         2,
         'Kotter Schritt 8.',
       ),
+      zu('Schnelle Erfolge sichtbar machen', 1, 'Kotter Schritt 6.'),
+      zu('Ein Gefühl der Dringlichkeit erzeugen', 0, 'Kotter Schritt 1.'),
+      zu('Hindernisse beseitigen', 1, 'Kotter Schritt 5.'),
     ],
     explanation:
         'Kotters acht Schritte verfeinern Lewin: Schritte 1 bis 4 (Dringlichkeit, Führungskoalition, Vision, Kommunikation) entsprechen dem Unfreezing, 5 bis 7 (Hindernisse beseitigen, schnelle Erfolge, Erfolge ausbauen) dem Moving, Schritt 8 (Verankerung) dem Refreezing.',
     difficulty: 2,
   ),
-  einfach(
+  paare(
     'a7-cl-6',
     'cm-lewin',
-    prompt:
-        'Wie heißen Mitarbeitende, die ein neues System früh im Pilotbetrieb testen und danach ihre Kolleginnen und Kollegen unterstützen?',
-    choices: [
-      ja(
-        'Key-User bzw. Multiplikatoren',
-        'Sie tragen Wissen und Akzeptanz ins Team.',
-      ),
-      nein(
-        'Sponsoren',
-        'Der Sponsor ist die Führungskraft, die Ziel und Ressourcen vorgibt.',
-      ),
-      nein(
-        'Change Advisory Board',
-        'Das CAB bewertet technische Changes nach ITIL.',
-      ),
-      nein(
-        'Betriebsrat',
-        'Der Betriebsrat vertritt die Beschäftigten und hat Mitbestimmungsrechte, testet aber keine Systeme.',
-      ),
+    prompt: 'Verbinde jede Rolle im Veränderungsprozess mit ihrer Aufgabe.',
+    paare: [
+      paar('Sponsor', 'gibt Ziel und Ressourcen vor'),
+      paar('Change Manager', 'plant und steuert die Veränderung'),
+      paar('Key-User', 'testet früh, unterstützt die Kollegen'),
+      paar('Betriebsrat', 'bestimmt bei Überwachungstechnik mit'),
     ],
     explanation:
-        'Key-User sind wichtige Helfer in der Moving-Phase: Sie kennen den Arbeitsalltag, geben früh Rückmeldung und beantworten später Fragen im Team – das senkt Widerstände und entlastet den Support.',
+        'Der Sponsor ist die Führungskraft hinter der Veränderung, der Change Manager steuert sie. Key-User bzw. Multiplikatoren tragen Wissen und Akzeptanz ins Team. Der Betriebsrat bestimmt mit, wenn ein System Leistung oder Verhalten überwachen kann (§ 87 Abs. 1 Nr. 6 BetrVG).',
     difficulty: 1,
   ),
   einfach(
@@ -2015,14 +2034,14 @@ final List<Question> questionsA07 = [
         'Es fehlen Fähigkeiten - Schulung hilft.',
       ),
       zu(
-        '„Meine Excel-Liste gebe ich nicht auf, egal was das neue System kann.“',
-        2,
-        'Es fehlt die Bereitschaft.',
-      ),
-      zu(
         '„Ich würde Tickets gern selbst schließen, habe aber keine Berechtigung dazu.“',
         3,
         'Es fehlt die Befugnis.',
+      ),
+      zu(
+        '„Meine Excel-Liste gebe ich nicht auf, egal was das neue System kann.“',
+        2,
+        'Es fehlt die Bereitschaft.',
       ),
     ],
     explanation:
@@ -2063,11 +2082,6 @@ final List<Question> questionsA07 = [
     buckets: ['Widerspruch', 'Ausweichen', 'Aufregung', 'Lustlosigkeit'],
     items: [
       zu(
-        '„Das ist doch völliger Unsinn, der alte Prozess war viel besser!“',
-        0,
-        'Verbal und aktiv: offener Gegenangriff.',
-      ),
-      zu(
         'In Besprechungen wechselt ein Kollege jedes Mal das Thema, wenn es um das CRM geht.',
         1,
         'Verbal und passiv: Ablenken, Bagatellisieren.',
@@ -2082,66 +2096,83 @@ final List<Question> questionsA07 = [
         3,
         'Nonverbal und passiv: Rückzug, innere Kündigung.',
       ),
+      zu(
+        '„Das ist doch völliger Unsinn, der alte Prozess war viel besser!“',
+        0,
+        'Verbal und aktiv: offener Gegenangriff.',
+      ),
     ],
     explanation:
         'Doppler und Lauterburg ordnen Widerstand nach verbal/nonverbal und aktiv/passiv: Widerspruch (verbal, aktiv), Ausweichen (verbal, passiv), Aufregung (nonverbal, aktiv), Lustlosigkeit (nonverbal, passiv).',
     difficulty: 2,
   ),
-  einfach(
+  reihenfolge(
     'a7-cw-4',
     'cm-widerstand',
     prompt:
-        'In welcher Phase der Veränderungskurve nach Streich ist die selbst wahrgenommene Kompetenz am niedrigsten?',
-    choices: [
-      ja(
-        'Emotionale Akzeptanz',
-        'Das „Tal der Tränen“: Die Notwendigkeit ist erkannt, das Alte losgelassen, das Neue noch nicht beherrscht.',
-      ),
-      nein(
-        'Verneinung',
-        'In der Verneinung steigt die wahrgenommene Kompetenz kurz an – man hält am Bewährten fest.',
-      ),
-      nein(
-        'Schock',
-        'Die Kompetenz sinkt zwar, der Tiefpunkt kommt aber später.',
-      ),
-      nein(
-        'Integration',
-        'Hier ist die Kompetenz am höchsten – das Neue ist selbstverständlich.',
-      ),
+        'Bringe die sieben Phasen der Veränderungskurve nach Streich in die richtige Reihenfolge.',
+    items: [
+      'Schock',
+      'Verneinung',
+      'Rationale Einsicht',
+      'Emotionale Akzeptanz („Tal der Tränen“)',
+      'Ausprobieren',
+      'Erkenntnis',
+      'Integration',
     ],
     explanation:
         'Die sieben Phasen: Schock, Verneinung, rationale Einsicht, emotionale Akzeptanz, Ausprobieren, Erkenntnis, Integration. Die wahrgenommene Kompetenz erreicht bei der emotionalen Akzeptanz ihren Tiefpunkt und steigt mit dem Ausprobieren wieder.',
     difficulty: 2,
   ),
-  mehrfach(
+  tabelle(
     'a7-cw-5',
     'cm-widerstand',
-    prompt: 'Welche Aussagen zum Umgang mit Widerstand sind richtig?',
-    choices: [
-      ja(
-        'Widerstand enthält eine Botschaft, etwa über fehlende Information, Fähigkeit oder Beteiligung.',
-        'Einer der Grundsätze nach Doppler und Lauterburg.',
-      ),
-      ja(
-        'Verdeckter Widerstand ist schwerer zu erkennen als offener.',
-        'Er zeigt sich indirekt, etwa durch Verzögern.',
-      ),
-      ja(
-        'Wer Widerstand übergeht, riskiert Blockaden.',
-        'Unbeachteter Widerstand verschwindet nicht, er geht in den Untergrund.',
-      ),
-      nein(
-        'Widerstand zeigt, dass die Veränderung falsch ist, und sollte zum sofortigen Abbruch führen.',
-        'Widerstand ist normal und kein Beweis für eine falsche Entscheidung.',
-      ),
-      nein(
-        'Anordnung und Sanktion sind die wirksamste erste Maßnahme.',
-        'Druck erzeugt Scheinanpassung – er ist das letzte Mittel, nicht das erste.',
-      ),
+    scenario:
+        'Bei der Einführung eines neuen ERP-Systems äußern sich vier Mitarbeitende.',
+    prompt:
+        'Bestimme zu jeder Aussage die Ursache des Widerstands und die passende Maßnahme.',
+    zeilen: [
+      ['Aussage', 'Ursache', 'Passende Maßnahme'],
+      [
+        '„Ich komme mit den neuen Masken einfach nicht zurecht.“',
+        wahl('nicht können', ['nicht wissen', 'nicht wollen', 'nicht dürfen']),
+        wahl('schulen und begleiten', [
+          'Gründe und Nutzen erklären',
+          'beteiligen, Bedenken ernst nehmen',
+          'Befugnisse klären',
+        ]),
+      ],
+      [
+        '„Warum wir umstellen, hat uns keiner gesagt.“',
+        wahl('nicht wissen', ['nicht können', 'nicht wollen', 'nicht dürfen']),
+        wahl('Gründe und Nutzen erklären', [
+          'schulen und begleiten',
+          'beteiligen, Bedenken ernst nehmen',
+          'Befugnisse klären',
+        ]),
+      ],
+      [
+        '„Ich würde Aufträge gern selbst freigeben, mir fehlt aber die Berechtigung.“',
+        wahl('nicht dürfen', ['nicht wissen', 'nicht können', 'nicht wollen']),
+        wahl('Befugnisse klären', [
+          'Gründe und Nutzen erklären',
+          'schulen und begleiten',
+          'beteiligen, Bedenken ernst nehmen',
+        ]),
+      ],
+      [
+        '„Das alte System gebe ich nicht her, egal was das neue kann.“',
+        wahl('nicht wollen', ['nicht wissen', 'nicht können', 'nicht dürfen']),
+        wahl('beteiligen, Bedenken ernst nehmen', [
+          'Gründe und Nutzen erklären',
+          'schulen und begleiten',
+          'Befugnisse klären',
+        ]),
+      ],
     ],
     explanation:
-        'Widerstand gehört zu jeder Veränderung. Er ist ein Signal, das man entschlüsseln muss: Nicht wissen, nicht können, nicht wollen oder nicht dürfen? Mit dem Widerstand zu arbeiten statt gegen ihn wirkt nachhaltiger als Druck.',
+        'Widerstand ist ein Signal, das man entschlüsseln muss: Nicht wissen -> informieren. Nicht können -> schulen. Nicht wollen -> beteiligen, Vorteile zeigen. Nicht dürfen -> Befugnisse und Rahmen klären. Anordnung und Sanktion sind das letzte Mittel.',
+    punkte: 4,
     difficulty: 1,
   ),
   einfach(
@@ -2228,14 +2259,14 @@ final List<Question> questionsA07 = [
     buckets: ['Wartezeit', 'Fehler', 'Überproduktion', 'Bewegung'],
     items: [
       zu(
-        'Ein Techniker wartet zwei Tage auf die Freigabe einer Bestellung.',
-        0,
-        'Stillstand ohne Wertschöpfung.',
-      ),
-      zu(
         'Ein falsch eingerichtetes Benutzerkonto muss komplett neu angelegt werden.',
         1,
         'Nacharbeit wegen eines Fehlers.',
+      ),
+      zu(
+        'Ein Admin sucht Zugangsdaten in fünf verschiedenen Tools zusammen.',
+        3,
+        'Unnötige Such- und Laufwege, übertragen auf die digitale Arbeit.',
       ),
       zu(
         'Das Team entwickelt Funktionen, die kein Kunde bestellt hat und niemand nutzt.',
@@ -2243,9 +2274,9 @@ final List<Question> questionsA07 = [
         'Mehr produziert als gebraucht.',
       ),
       zu(
-        'Ein Admin sucht Zugangsdaten in fünf verschiedenen Tools zusammen.',
-        3,
-        'Unnötige Such- und Laufwege, übertragen auf die digitale Arbeit.',
+        'Ein Techniker wartet zwei Tage auf die Freigabe einer Bestellung.',
+        0,
+        'Stillstand ohne Wertschöpfung.',
       ),
     ],
     explanation:
@@ -2264,51 +2295,62 @@ final List<Question> questionsA07 = [
         'Ersparnis je Ticket = 18 min − 12 min = 6 min. Pro Monat = 900 × 6 min = 5.400 min. In Stunden: 5.400 / 60 = 90 h.',
     difficulty: 1,
   ),
-  mehrfach(
+  tabelle(
     'a7-ck-5',
     'cm-kaizen',
-    prompt: 'Welche Aussagen zu Kaizen und KVP sind richtig?',
-    choices: [
-      ja(
-        'Verbesserungen werden im PDCA-Zyklus geplant, erprobt, geprüft und standardisiert.',
-        'PDCA ist das Werkzeug für jeden einzelnen Verbesserungsschritt.',
-      ),
-      ja(
-        'Nach „Act“ beginnt ein neuer Zyklus auf dem erreichten Standard.',
-        'KVP hat kein Ende.',
-      ),
-      ja(
-        'Verbesserungsvorschläge kommen vor allem von den Mitarbeitenden, die die Arbeit täglich machen.',
-        'Kaizen setzt am Ort des Geschehens an (Gemba).',
-      ),
-      nein(
-        'Kaizen endet, sobald die Zielkennzahl einmal erreicht ist.',
-        'Dann wäre es ein Projekt – KVP läuft ständig weiter.',
-      ),
-      nein(
-        'Bei Kaizen gestaltet eine externe Beratung die Prozesse radikal neu.',
-        'Das beschreibt Business Process Reengineering.',
-      ),
+    prompt:
+        'Vergleiche Kaizen (KVP) und Business Process Reengineering anhand der Merkmale.',
+    zeilen: [
+      ['Merkmal', 'Kaizen / KVP', 'Reengineering'],
+      [
+        'Umfang der Änderung',
+        wahl('viele kleine Schritte', [
+          'radikaler Neuentwurf',
+          'keine Änderung',
+        ]),
+        wahl('radikaler Neuentwurf', [
+          'viele kleine Schritte',
+          'keine Änderung',
+        ]),
+      ],
+      [
+        'Wer treibt die Änderung?',
+        wahl('alle Mitarbeitenden', [
+          'vor allem Leitung und Berater',
+          'allein der Kunde',
+        ]),
+        wahl('vor allem Leitung und Berater', [
+          'alle Mitarbeitenden',
+          'allein der Kunde',
+        ]),
+      ],
+      [
+        'Zeitlicher Verlauf',
+        wahl('ständig, ohne Endpunkt', [
+          'einmaliger großer Schnitt',
+          'nur nach Störungen',
+        ]),
+        wahl('einmaliger großer Schnitt', [
+          'ständig, ohne Endpunkt',
+          'nur nach Störungen',
+        ]),
+      ],
     ],
     explanation:
-        'Kaizen bzw. KVP bedeutet ständige Verbesserung in kleinen Schritten durch alle Mitarbeitenden. Jeder Schritt läuft im PDCA-Zyklus, jede erfolgreiche Verbesserung wird Standard und Ausgangspunkt für den nächsten Zyklus.',
+        'Kaizen bzw. KVP bedeutet ständige Verbesserung in kleinen Schritten durch alle Mitarbeitenden; jeder Schritt läuft im PDCA-Zyklus und wird zum neuen Standard. Business Process Reengineering gestaltet einen Prozess einmalig und radikal neu, meist von oben angestoßen.',
+    punkte: 3,
     difficulty: 1,
   ),
-  einfach(
+  paare(
     'a7-ck-6',
     'cm-kaizen',
-    prompt: 'Wofür steht „Seiketsu“ in der 5S-Methode?',
-    choices: [
-      ja(
-        'Standardisieren – die neue Ordnung als verbindliche Regel festlegen',
-        'Das vierte S macht das Erreichte zum Standard.',
-      ),
-      nein('Sortieren – Unnötiges entfernen', 'Das ist Seiri, das erste S.'),
-      nein('Sauber halten', 'Das ist Seiso, das dritte S.'),
-      nein(
-        'Selbstdisziplin – Regeln dauerhaft einhalten',
-        'Das ist Shitsuke, das fünfte S.',
-      ),
+    prompt: 'Verbinde jeden Schritt der 5S-Methode mit seiner Bedeutung.',
+    paare: [
+      paar('Seiri', 'Sortieren - Unnötiges entfernen'),
+      paar('Seiton', 'Systematisch ordnen'),
+      paar('Seiso', 'Sauber halten'),
+      paar('Seiketsu', 'Standardisieren'),
+      paar('Shitsuke', 'Selbstdisziplin - Regeln einhalten'),
     ],
     explanation:
         '5S: Seiri (Sortieren), Seiton (Systematisch ordnen), Seiso (Sauber halten), Seiketsu (Standardisieren), Shitsuke (Selbstdisziplin). Die Methode schafft geordnete, standardisierte Arbeitsplätze als Grundlage für Kaizen.',
@@ -2322,9 +2364,9 @@ final List<Question> questionsA07 = [
     buckets: ['KVP', 'betriebliches Vorschlagswesen'],
     items: [
       zu(
-        'Ein Team verbessert laufend die Abläufe im eigenen Bereich.',
-        0,
-        'Teamarbeit, eigener Bereich, ständig.',
+        'Für angenommene Vorschläge gibt es eine Prämie.',
+        1,
+        'Typischer Anreiz im Vorschlagswesen.',
       ),
       zu(
         'Verbesserung ist Teil der täglichen Arbeit.',
@@ -2337,9 +2379,9 @@ final List<Question> questionsA07 = [
         'Einzelvorschlag, auch für fremde Bereiche.',
       ),
       zu(
-        'Für angenommene Vorschläge gibt es eine Prämie.',
-        1,
-        'Typischer Anreiz im Vorschlagswesen.',
+        'Ein Team verbessert laufend die Abläufe im eigenen Bereich.',
+        0,
+        'Teamarbeit, eigener Bereich, ständig.',
       ),
     ],
     explanation:

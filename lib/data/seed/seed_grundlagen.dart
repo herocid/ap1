@@ -1,4 +1,5 @@
 import '../models/question.dart';
+import 'builders.dart';
 
 /// Kurzform für eine Antwortoption.
 Choice _c(String text, bool correct, String rationale) =>
@@ -10,34 +11,34 @@ Choice _c(String text, bool correct, String rationale) =>
 /// Originalaufgaben der IHK (die sind urheberrechtlich geschützt).
 final List<Question> seedGrundlagen = [
   // ---------------------------------------------------------------- Organisation
-  Question(
-    id: 'org-001',
-    topicId: 'projektorganisation',
-    subtopicId: 'p-begriff',
-    kind: QuestionKind.multiple,
+  markieren(
+    'org-001',
+    'p-begriff',
     difficulty: 1,
     tags: ['din69901', 'projektbegriff'],
+    scenario: 'In der IT-Abteilung eines Unternehmens stehen sechs Vorhaben an.',
     prompt:
-        'Welche Merkmale müssen nach DIN 69901 erfüllt sein, damit ein Vorhaben '
-        'als Projekt gilt?',
-    choices: [
-      _c('Einmaligkeit der Bedingungen in ihrer Gesamtheit', true,
-          'Kernmerkmal. Ein Vorhaben, das jeden Monat identisch abläuft, ist Tagesgeschäft - kein Projekt.'),
-      _c('Zeitliche, finanzielle und personelle Begrenzung', true,
-          'Ein Projekt hat einen definierten Anfang und ein definiertes Ende sowie ein festes Budget.'),
-      _c('Eine eigene, projektspezifische Organisation', true,
-          'Projektleitung, Team und Entscheidungswege werden eigens für das Vorhaben festgelegt.'),
-      _c('Mindestens fünf beteiligte Mitarbeitende', false,
-          'Falsch. Die DIN nennt keine Mindestgröße. Auch ein Zwei-Personen-Vorhaben kann ein Projekt sein.'),
-      _c('Ein Budget von mindestens 50.000 Euro', false,
-          'Falsch. Es gibt keine Wertgrenze in der Norm. Unternehmen setzen intern manchmal Schwellen - das ist aber keine Definition.'),
-      _c('Abgrenzung gegenüber anderen Vorhaben', true,
-          'Das Projekt muss inhaltlich und organisatorisch klar von der Linie und von anderen Projekten trennbar sein.'),
+        'Markiere alle Vorhaben, die nach DIN 69901 ein Projekt sind.',
+    zeilen: [
+      ja('Einführung eines neuen ERP-Systems bis Jahresende, mit eigenem Team und Budget',
+          'Einmalig, mit Ziel, begrenzt und mit eigener Organisation.'),
+      nein('Tägliche Datensicherung der Server',
+          'Wiederkehrende Routine - Tagesgeschäft.'),
+      ja('Umzug des Rechenzentrums in ein neues Gebäude',
+          'Einmaliges Vorhaben mit klarem Anfang und Ende.'),
+      nein('Monatliche Lohnabrechnung',
+          'Läuft jeden Monat identisch ab.'),
+      ja('Entwicklung einer Kunden-App für einen Auftraggeber zum Festpreis',
+          'Zielvorgabe, Begrenzung von Zeit und Kosten, Abgrenzung von anderen Vorhaben.'),
+      nein('Laufender Betrieb des Service Desks',
+          'Daueraufgabe der Linie ohne definiertes Ende.'),
     ],
     explanation:
         'Merksatz: Einmaligkeit der Bedingungen, erkennbar an Zielvorgabe, '
-        'Begrenzung, Abgrenzung und eigener Organisation. Größe und Budget '
-        'sind nicht Teil der Definition.',
+        'Begrenzung (zeitlich, finanziell, personell), Abgrenzung gegenüber '
+        'anderen Vorhaben und eigener Organisation. Größe und Budget '
+        'sind nicht Teil der Definition - auch ein Zwei-Personen-Vorhaben '
+        'kann ein Projekt sein.',
   ),
 
   Question(
@@ -123,32 +124,40 @@ final List<Question> seedGrundlagen = [
         'Interesse" gefragt, weil es das unintuitivste ist.',
   ),
 
-  Question(
-    id: 'org-004',
-    topicId: 'projektorganisation',
-    subtopicId: 'p-ziele',
-    kind: QuestionKind.multiple,
+  freitext(
+    'org-004',
+    'p-ziele',
     difficulty: 2,
     tags: ['projektauftrag'],
-    prompt: 'Welche Angaben gehören zwingend in einen Projektauftrag?',
-    choices: [
-      _c('Projektziel und messbare Abnahmekriterien', true,
-          'Ohne messbares Ziel ist später nicht entscheidbar, ob das Projekt erfolgreich war.'),
-      _c('Benannte Projektleitung mit Befugnissen', true,
-          'Der Auftrag legitimiert die Projektleitung - sonst hat sie im Unternehmen keinen Stand.'),
-      _c('Budget- und Terminrahmen', true,
-          'Die beiden Eckpunkte des magischen Dreiecks neben dem Leistungsumfang.'),
-      _c('Vollständige technische Systemarchitektur', false,
-          'Falsch. Die Architektur entsteht erst in der Planungs-/Entwurfsphase. Im Auftrag steht das WAS, nicht das WIE.'),
-      _c('Nicht-Ziele bzw. Abgrenzung des Projektumfangs', true,
-          'Oft unterschätzt: Was ausdrücklich NICHT Teil des Projekts ist, verhindert späteren Scope Creep.'),
-      _c('Der fertige Netzplan aller Vorgänge', false,
-          'Falsch. Der Netzplan ist ein Ergebnis der Planungsphase, nicht Voraussetzung des Auftrags.'),
+    scenario:
+        'Die Geschäftsführung beauftragt die IT-Abteilung, ein neues '
+        'Ticketsystem einzuführen. Dafür wird ein Projektauftrag geschrieben.',
+    prompt: 'Nenne vier Angaben, die in einen Projektauftrag gehören.',
+    kriterien: [
+      krit('Projektziel mit messbaren Abnahmekriterien',
+          stichwoerter: ['Projektziel', 'Ziel', 'Abnahmekriterien']),
+      krit('Benannte Projektleitung mit ihren Befugnissen',
+          stichwoerter: ['Projektleitung', 'Projektleiter', 'Befugnisse']),
+      krit('Budgetrahmen',
+          stichwoerter: ['Budget', 'Kostenrahmen', 'Kosten']),
+      krit('Terminrahmen',
+          stichwoerter: ['Termin', 'Zeitrahmen', 'Endtermin', 'Meilensteine']),
+      krit('Nicht-Ziele bzw. Abgrenzung des Projektumfangs',
+          stichwoerter: ['Nicht-Ziele', 'Abgrenzung', 'Umfang']),
+      krit('Auftraggeber und Beteiligte',
+          stichwoerter: ['Auftraggeber', 'Beteiligte', 'Team']),
     ],
+    loesung:
+        'Projektziel mit messbaren Abnahmekriterien, benannte Projektleitung '
+        'mit Befugnissen, Budgetrahmen, Terminrahmen, Nicht-Ziele bzw. '
+        'Abgrenzung des Umfangs, Auftraggeber.',
     explanation:
-        'Der Projektauftrag ist die Geburtsurkunde des Projekts: Ziel, Nicht-Ziel, '
+        'Je Nennung 1 Punkt, höchstens 4 Punkte. Der Projektauftrag ist die '
+        'Geburtsurkunde des Projekts: Ziel, Nicht-Ziel, '
         'Rahmen (Zeit/Budget), Verantwortliche. Alles, was Detailplanung ist '
-        '(Netzplan, Architektur, Arbeitspakete), kommt danach.',
+        '(Netzplan, Architektur, Arbeitspakete), kommt danach und gehört '
+        'nicht in den Auftrag.',
+    punkte: 4,
   ),
 
   Question(
@@ -348,27 +357,23 @@ final List<Question> seedGrundlagen = [
   ),
 
   // ------------------------------------------------------------------ Scrum
-  Question(
-    id: 'scr-001',
-    topicId: 'agil_scrum',
-    subtopicId: 's-rollen',
-    kind: QuestionKind.single,
+  paare(
+    'scr-001',
+    's-rollen',
     difficulty: 1,
     tags: ['scrum', 'rollen'],
-    prompt: 'Wer entscheidet in Scrum über die Reihenfolge im Product Backlog?',
-    choices: [
-      _c('Product Owner', true,
-          'Richtig. Der Product Owner verantwortet die Wertmaximierung und damit die Priorisierung. Er darf sich beraten lassen, entscheidet aber allein.'),
-      _c('Scrum Master', false,
-          'Der Scrum Master verantwortet die Wirksamkeit von Scrum - er moderiert, räumt Hindernisse weg und priorisiert gerade nicht.'),
-      _c('Die Developers', false,
-          'Die Developers entscheiden, WIE und wie viel sie in einen Sprint nehmen, nicht in welcher Reihenfolge der Product Owner den Wert sieht.'),
-      _c('Der Lenkungsausschuss', false,
-          'Ein Lenkungsausschuss ist ein Gremium des klassischen Projektmanagements und in Scrum nicht vorgesehen.'),
+    prompt: 'Verbinde jede Scrum-Rolle mit ihrer Verantwortung.',
+    paare: [
+      paar('Product Owner', 'ordnet das Product Backlog nach Wert'),
+      paar('Scrum Master', 'sorgt dafür, dass Scrum funktioniert'),
+      paar('Developers', 'entscheiden, wie und wie viel umgesetzt wird'),
     ],
     explanation:
         'Kurzformel: Product Owner = WAS und in welcher Reihenfolge. '
-        'Developers = WIE und wie viel. Scrum Master = DASS es funktioniert.',
+        'Developers = WIE und wie viel. Scrum Master = DASS es funktioniert. '
+        'Der Product Owner darf sich beraten lassen, entscheidet über die '
+        'Reihenfolge im Product Backlog aber allein. Ein Lenkungsausschuss '
+        'ist in Scrum nicht vorgesehen.',
   ),
 
   Question(
@@ -396,24 +401,32 @@ final List<Question> seedGrundlagen = [
         'Das Refinement ist kein eigenes Event, sondern eine laufende Tätigkeit.',
   ),
 
-  Question(
-    id: 'scr-003',
-    topicId: 'agil_scrum',
-    subtopicId: 's-events',
-    kind: QuestionKind.single,
+  tabelle(
+    'scr-003',
+    's-events',
     difficulty: 1,
     tags: ['scrum', 'timebox'],
-    prompt:
-        'Wie lang ist die Timebox des Daily Scrum bei einem vierwöchigen Sprint?',
-    choices: [
-      _c('15 Minuten', true,
-          'Richtig. Das Daily ist immer auf 15 Minuten begrenzt - unabhängig von der Sprintlänge. Das ist die einzige Timebox, die nicht mitwächst.'),
-      _c('30 Minuten', false,
-          'Nein. Diese Zahl verwechselt man leicht mit der anteiligen Skalierung anderer Events.'),
-      _c('1 Stunde', false,
-          'Eine Stunde wäre die Größenordnung einer Retrospektive bei kurzen Sprints, nicht des Dailys.'),
-      _c('Vier Stunden', false,
-          'Vier Stunden ist die Obergrenze des Sprint Reviews bei einem Monatssprint.'),
+    scenario: 'Ein Scrum-Team arbeitet in vierwöchigen Sprints.',
+    prompt: 'Gib für jedes Event die Timebox an.',
+    zeilen: [
+      ['Event', 'Timebox'],
+      [
+        'Sprint Planning',
+        wahl('höchstens 8 Stunden', ['15 Minuten', 'höchstens 3 Stunden', 'höchstens 4 Stunden']),
+      ],
+      [
+        'Daily Scrum',
+        wahl('15 Minuten', ['30 Minuten', '1 Stunde', 'höchstens 4 Stunden'],
+            'Die einzige Timebox, die nicht mit der Sprintlänge wächst.'),
+      ],
+      [
+        'Sprint Review',
+        wahl('höchstens 4 Stunden', ['15 Minuten', 'höchstens 3 Stunden', 'höchstens 8 Stunden']),
+      ],
+      [
+        'Sprint Retrospective',
+        wahl('höchstens 3 Stunden', ['15 Minuten', 'höchstens 4 Stunden', 'höchstens 8 Stunden']),
+      ],
     ],
     explanation:
         'Timeboxen bei einem Monatssprint (kürzere Sprints -> anteilig kürzer):\n'
@@ -422,6 +435,7 @@ final List<Question> seedGrundlagen = [
         '- Sprint Review: max. 4 Stunden\n'
         '- Sprint Retrospective: max. 3 Stunden\n'
         'Merkhilfe 8-4-3 und das Daily als Konstante.',
+    punkte: 2,
   ),
 
   Question(

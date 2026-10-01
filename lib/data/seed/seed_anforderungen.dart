@@ -1,4 +1,5 @@
 import '../models/question.dart';
+import 'builders.dart';
 
 Choice _c(String text, bool correct, String rationale) =>
     Choice(text: text, isCorrect: correct, rationale: rationale);
@@ -110,31 +111,37 @@ final List<Question> seedAnforderungen = [
         'für nicht-funktionale Anforderungen.',
   ),
 
-  Question(
-    id: 'lh-003',
-    topicId: 'anforderungen',
-    subtopicId: 'af-erhebung',
-    kind: QuestionKind.multiple,
+  markieren(
+    'lh-003',
+    'af-erhebung',
     difficulty: 2,
     tags: ['anforderungsqualität'],
-    prompt: 'Was zeichnet eine gut formulierte Anforderung aus?',
-    choices: [
-      _c('Sie ist eindeutig und lässt nur eine Interpretation zu.', true,
-          'Mehrdeutigkeit ist die Hauptursache für Streit bei der Abnahme.'),
-      _c('Sie ist überprüfbar bzw. testbar.', true,
-          'Wenn niemand entscheiden kann, ob sie erfüllt ist, ist sie wertlos.'),
-      _c('Sie ist vollständig - es fehlen keine notwendigen Angaben.', true,
-          'Klassisches Kriterium aus der Anforderungsanalyse.'),
-      _c('Sie enthält bereits die technische Lösung.', false,
-          'Falsch, zumindest im Lastenheft. Eine vorweggenommene Lösung schließt bessere Alternativen aus. Das WIE gehört ins Pflichtenheft.'),
-      _c('Sie ist mit anderen Anforderungen widerspruchsfrei.', true,
-          'Widersprüche fallen sonst erst in der Umsetzung auf - dann ist die Korrektur teuer.'),
-      _c('Sie ist möglichst allgemein gehalten, um flexibel zu bleiben.', false,
-          'Falsch. "Das System soll benutzerfreundlich sein" ist nicht flexibel, sondern unprüfbar. Flexibilität erreicht man über Prioritäten, nicht über Vagheit.'),
+    scenario:
+        'Der Entwurf eines Lastenhefts für ein Ticketsystem enthält die '
+        'folgenden Anforderungen.',
+    prompt:
+        'Markiere alle Anforderungen, die NICHT gut formuliert sind.',
+    zeilen: [
+      ja('Das System soll benutzerfreundlich sein.',
+          'Nicht prüfbar - niemand kann entscheiden, ob das erfüllt ist.'),
+      nein('Die Suche liefert bei 10.000 Tickets ein Ergebnis in höchstens 2 Sekunden.',
+          'Eindeutig und messbar.'),
+      ja('Das System muss schnell reagieren.',
+          'Ohne Messwert mehrdeutig - "schnell" versteht jeder anders.'),
+      nein('Tickets können als PDF exportiert werden.',
+          'Eine klare, prüfbare Fähigkeit des Systems.'),
+      ja('Das System wird mit MySQL 8 und PHP umgesetzt.',
+          'Nimmt die technische Lösung vorweg. Das WIE gehört ins Pflichtenheft.'),
+      ja('Jeder Nutzer sieht alle Tickets. Kundentickets sieht nur das zuständige Team.',
+          'Die beiden Sätze widersprechen sich.'),
+      nein('Nach fünf Fehlversuchen wird das Benutzerkonto für 15 Minuten gesperrt.',
+          'Vollständig, eindeutig und testbar.'),
     ],
     explanation:
         'Merkhilfe für Anforderungsqualität: eindeutig, vollständig, '
         'widerspruchsfrei, prüfbar, notwendig, verständlich, priorisiert. '
+        'Eine vorweggenommene Lösung schließt bessere Alternativen aus, und '
+        'Vagheit ist keine Flexibilität - die erreicht man über Prioritäten. '
         'Priorisierung erfolgt oft nach MoSCoW: Must have, Should have, '
         'Could have, Won’t have (this time).',
   ),
@@ -257,26 +264,29 @@ final List<Question> seedAnforderungen = [
         'Maximum der Skala (hier 5) liegen.',
   ),
 
-  Question(
-    id: 'wi-002',
-    topicId: 'pm_wirtschaftlichkeit',
-    subtopicId: 'w-nutzwert',
-    kind: QuestionKind.single,
+  reihenfolge(
+    'wi-002',
+    'w-nutzwert',
     difficulty: 2,
     tags: ['nutzwertanalyse'],
-    prompt: 'Wozu dient die Nutzwertanalyse?',
-    choices: [
-      _c('Zum Vergleich von Alternativen anhand mehrerer, unterschiedlich gewichteter und teils nicht monetärer Kriterien.', true,
-          'Richtig. Ihre Stärke ist, dass sie weiche Faktoren wie Bedienbarkeit oder Zukunftssicherheit vergleichbar macht.'),
-      _c('Zur Berechnung des exakten Return on Investment.', false,
-          'Der ROI ist eine rein monetäre Kennzahl. Die Nutzwertanalyse liefert dimensionslose Punkte, keine Euro.'),
-      _c('Zur Ermittlung der Projektdauer.', false,
-          'Das leistet die Netzplantechnik.'),
-      _c('Zur rechtssicheren Dokumentation gegenüber dem Auftraggeber.', false,
-          'Sie kann eine Entscheidung nachvollziehbar machen, ist aber kein Rechtsdokument.'),
+    scenario:
+        'Für ein neues Ticketsystem liegen drei Angebote vor. Neben dem Preis '
+        'sollen Bedienbarkeit, Support und Zukunftssicherheit in die '
+        'Entscheidung einfließen.',
+    prompt: 'Bringe die Schritte der Nutzwertanalyse in die richtige Reihenfolge.',
+    hint: 'Vom Kriterium zur Entscheidung',
+    items: [
+      'Bewertungskriterien festlegen',
+      'Kriterien gewichten (Summe 100 %)',
+      'Alternativen je Kriterium mit Punkten bewerten',
+      'Teilnutzwerte berechnen: Gewicht x Bewertung',
+      'Teilnutzwerte je Alternative aufsummieren',
+      'Alternative mit dem höchsten Nutzwert wählen',
     ],
     explanation:
-        'Ablauf der Nutzwertanalyse: 1. Kriterien festlegen, 2. gewichten '
+        'Die Nutzwertanalyse vergleicht Alternativen anhand mehrerer, '
+        'unterschiedlich gewichteter und teils nicht monetärer Kriterien. '
+        'Ablauf: 1. Kriterien festlegen, 2. gewichten '
         '(Summe 100 %), 3. Alternativen je Kriterium bewerten, '
         '4. Teilnutzwerte = Gewicht x Bewertung, 5. aufsummieren, '
         '6. höchster Nutzwert gewinnt.\n'
@@ -345,29 +355,29 @@ final List<Question> seedAnforderungen = [
         'addieren - auf Fracht gibt es kein Skonto.',
   ),
 
-  Question(
-    id: 'wi-005',
-    topicId: 'pm_wirtschaftlichkeit',
-    subtopicId: 'w-makeorbuy',
-    kind: QuestionKind.multiple,
+  zuordnen(
+    'wi-005',
+    'w-makeorbuy',
     difficulty: 2,
     tags: ['tco'],
-    prompt:
-        'Welche Positionen gehören in eine TCO-Betrachtung (Total Cost of '
-        'Ownership) für eine Serverbeschaffung?',
-    choices: [
-      _c('Anschaffungskosten der Hardware', true,
-          'Die direkten Anschaffungskosten sind der offensichtliche Teil - meist der kleinere.'),
-      _c('Strom- und Klimatisierungskosten über die Nutzungsdauer', true,
+    scenario:
+        'Für eine Serverbeschaffung wird eine TCO-Betrachtung (Total Cost of '
+        'Ownership) aufgestellt.',
+    prompt: 'Ordne jede Position dem Abschnitt der TCO-Betrachtung zu.',
+    buckets: ['Anschaffung', 'Laufender Betrieb', 'Außerbetriebnahme', 'Kein Teil der TCO'],
+    items: [
+      zu('Strom- und Klimatisierungskosten', 1,
           'Laufende Betriebskosten sind bei Servern oft höher als der Kaufpreis.'),
-      _c('Lizenz- und Wartungsverträge', true,
-          'Wiederkehrende Kosten, die sich über 5 Jahre erheblich summieren.'),
-      _c('Schulungsaufwand für die Administratoren', true,
-          'Auch indirekte Personalkosten gehören dazu - das unterscheidet TCO vom reinen Anschaffungspreis.'),
-      _c('Der Umsatz, der mit dem neuen System erzielt wird', false,
-          'Falsch. TCO betrachtet ausschließlich die KOSTEN. Erträge gehören in eine Wirtschaftlichkeits- oder ROI-Rechnung.'),
-      _c('Entsorgungs- und Migrationskosten am Ende der Nutzungsdauer', true,
-          'Der oft vergessene letzte Lebenszyklusabschnitt gehört ausdrücklich dazu.'),
+      zu('Kaufpreis der Hardware', 0,
+          'Der offensichtliche Teil - meist der kleinere.'),
+      zu('Umsatz, der mit dem neuen System erzielt wird', 3,
+          'TCO betrachtet ausschließlich Kosten. Erträge gehören in eine ROI-Rechnung.'),
+      zu('Jährliche Lizenz- und Wartungsverträge', 1,
+          'Wiederkehrende Kosten, die sich über fünf Jahre erheblich summieren.'),
+      zu('Datenmigration auf das Nachfolgesystem und Entsorgung', 2,
+          'Der oft vergessene letzte Lebenszyklusabschnitt.'),
+      zu('Installation und Einrichtung im Serverraum', 0,
+          'Einmalige Kosten bei der Beschaffung.'),
     ],
     explanation:
         'TCO betrachtet den gesamten Lebenszyklus: Beschaffung, Betrieb, '
@@ -452,29 +462,47 @@ final List<Question> seedAnforderungen = [
         'eintreten? Ja -> Vermindern. Nein -> Vermeiden.',
   ),
 
-  Question(
-    id: 'qr-003',
-    topicId: 'qualitaetsmanagement',
-    subtopicId: 'qm-grundlagen',
-    kind: QuestionKind.multiple,
+  tabelle(
+    'qr-003',
+    'qm-grundlagen',
     difficulty: 2,
     tags: ['qualitätssicherung'],
-    prompt:
-        'Welche der folgenden Maßnahmen sind KONSTRUKTIVE '
-        'Qualitätssicherungsmaßnahmen?',
-    choices: [
-      _c('Verbindliche Coding-Standards und Styleguides', true,
-          'Konstruktiv: Sie verhindern Fehler von vornherein, statt sie hinterher zu finden.'),
-      _c('Einsatz erprobter Frameworks und Entwurfsmuster', true,
-          'Ebenfalls vorbeugend - das Rad nicht neu erfinden heißt, dessen Fehler nicht neu zu machen.'),
-      _c('Schulung der Entwickler vor Projektbeginn', true,
-          'Qualifikation ist eine klassische konstruktive Maßnahme.'),
-      _c('Durchführung von Modul- und Integrationstests', false,
-          'Das ist ANALYTISCHE QS: Tests finden vorhandene Fehler, sie verhindern sie nicht.'),
-      _c('Code-Review nach Fertigstellung eines Moduls', false,
-          'Ebenfalls analytisch - es wird ein bereits erstelltes Artefakt geprüft.'),
-      _c('Einsatz einer einheitlichen Entwicklungsumgebung mit Linter-Konfiguration', true,
-          'Vorbeugend: Der Linter verhindert bestimmte Fehlerklassen schon beim Tippen.'),
+    scenario:
+        'Ein Softwareteam listet auf, was es für die Qualität seiner '
+        'Anwendung tut.',
+    prompt: 'Ordne jede Maßnahme ein.',
+    zeilen: [
+      ['Maßnahme', 'Einordnung'],
+      [
+        'Verbindliche Coding-Standards und Styleguides',
+        wahl('konstruktiv', ['analytisch', 'keine QS-Maßnahme'],
+            'Verhindert Fehler von vornherein.'),
+      ],
+      [
+        'Modul- und Integrationstests',
+        wahl('analytisch', ['konstruktiv', 'keine QS-Maßnahme'],
+            'Tests finden vorhandene Fehler, sie verhindern sie nicht.'),
+      ],
+      [
+        'Schulung der Entwickler vor Projektbeginn',
+        wahl('konstruktiv', ['analytisch', 'keine QS-Maßnahme'],
+            'Qualifikation ist eine klassische vorbeugende Maßnahme.'),
+      ],
+      [
+        'Code-Review nach Fertigstellung eines Moduls',
+        wahl('analytisch', ['konstruktiv', 'keine QS-Maßnahme'],
+            'Ein bereits erstelltes Artefakt wird geprüft.'),
+      ],
+      [
+        'Einsatz erprobter Frameworks und Entwurfsmuster',
+        wahl('konstruktiv', ['analytisch', 'keine QS-Maßnahme'],
+            'Das Rad nicht neu erfinden heißt, dessen Fehler nicht neu zu machen.'),
+      ],
+      [
+        'Überstunden in der Woche vor dem Release anordnen',
+        wahl('keine QS-Maßnahme', ['konstruktiv', 'analytisch'],
+            'Mehr Arbeitszeit verhindert und findet keine Fehler - unter Zeitdruck entstehen eher neue.'),
+      ],
     ],
     explanation:
         'Einfache Trennlinie: KONSTRUKTIV = vorher, verhindert Fehler '
@@ -485,6 +513,7 @@ final List<Question> seedAnforderungen = [
         'beim Schreiben eingreift, und analytisch, wenn er im Nachhinein über '
         'fertigen Code läuft. In der Prüfung zählt die Einordnung als '
         'Werkzeugvorgabe - also konstruktiv.',
+    punkte: 3,
   ),
 
   Question(
@@ -546,35 +575,44 @@ final List<Question> seedAnforderungen = [
         'verlorene Zeit.',
   ),
 
-  Question(
-    id: 'ab-002',
-    topicId: 'projektabschluss',
-    subtopicId: 'a-bericht',
-    kind: QuestionKind.multiple,
+  freitext(
+    'ab-002',
+    'a-bericht',
     difficulty: 2,
     tags: ['abschlussbericht'],
-    prompt: 'Was gehört in einen Projektabschlussbericht?',
-    choices: [
-      _c('Soll-Ist-Vergleich von Terminen, Kosten und Leistungsumfang', true,
-          'Der Kern des Berichts: Was war geplant, was ist herausgekommen, warum die Abweichung?'),
-      _c('Zielerreichungsgrad bezogen auf den Projektauftrag', true,
-          'Gemessen wird gegen das, was im Auftrag stand - nicht gegen das, was unterwegs daraus wurde.'),
-      _c('Lessons Learned und Verbesserungsvorschläge', true,
-          'Die Erfahrungssicherung gehört in den Bericht, nicht nur ins Sitzungsprotokoll.'),
-      _c('Übergabe an Betrieb bzw. Linie mit benannten Verantwortlichen', true,
-          'Ohne klare Übergabe bleibt das Projektteam ewig zuständig - ein häufiger Praxisfehler.'),
-      _c('Der vollständige Quellcode der Anwendung', false,
-          'Falsch. Der Code gehört ins Versionsverwaltungssystem, nicht in den Bericht. Der Bericht verweist darauf.'),
-      _c('Offene Punkte und Restrisiken', true,
-          'Was nicht erledigt wurde, muss benannt und an jemanden übergeben werden.'),
+    scenario:
+        'Ein Projekt zur Einführung eines Ticketsystems ist abgenommen. Die '
+        'Projektleitung schreibt den Projektabschlussbericht.',
+    prompt: 'Nenne vier Inhalte eines Projektabschlussberichts.',
+    kriterien: [
+      krit('Soll-Ist-Vergleich von Terminen, Kosten und Leistungsumfang',
+          stichwoerter: ['Soll-Ist', 'Vergleich', 'Abweichungen', 'Kosten', 'Termine']),
+      krit('Zielerreichungsgrad bezogen auf den Projektauftrag',
+          stichwoerter: ['Zielerreichung', 'Ziele erreicht', 'Projektauftrag']),
+      krit('Lessons Learned und Verbesserungsvorschläge',
+          stichwoerter: ['Lessons Learned', 'Erfahrungen', 'Verbesserungsvorschläge']),
+      krit('Übergabe an Betrieb bzw. Linie mit benannten Verantwortlichen',
+          stichwoerter: ['Übergabe', 'Betrieb', 'Linie', 'Verantwortliche']),
+      krit('Offene Punkte und Restrisiken',
+          stichwoerter: ['offene Punkte', 'Restarbeiten', 'Restrisiken']),
+      krit('Kurzbeschreibung von Projektverlauf und Ergebnis',
+          stichwoerter: ['Projektverlauf', 'Ergebnis', 'Zusammenfassung']),
     ],
+    loesung:
+        'Soll-Ist-Vergleich von Terminen, Kosten und Leistungsumfang, '
+        'Zielerreichungsgrad bezogen auf den Projektauftrag, Lessons Learned '
+        'und Verbesserungsvorschläge, Übergabe an den Betrieb mit benannten '
+        'Verantwortlichen, offene Punkte und Restrisiken.',
     explanation:
+        'Je Nennung 1 Punkt, höchstens 4 Punkte. Der Quellcode gehört nicht '
+        'in den Bericht, sondern ins Versionsverwaltungssystem.\n'
         'Der Projektabschluss hat drei Ebenen: sachlich-technisch (Abnahme, '
         'Übergabe an den Betrieb, Restarbeiten), kaufmännisch '
         '(Schlussrechnung, Nachkalkulation, Projekt schließen) und personell '
         '(Teamauflösung, Rückführung in die Linie, Würdigung). '
         'Die personelle Ebene wird am häufigsten vergessen - und ist die, an '
         'die sich das Team am längsten erinnert.',
+    punkte: 4,
   ),
 
   Question(

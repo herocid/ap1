@@ -1,4 +1,5 @@
 import '../models/question.dart';
+import 'builders.dart';
 
 Choice _c(String text, bool correct, String rationale) =>
     Choice(text: text, isCorrect: correct, rationale: rationale);
@@ -32,32 +33,33 @@ final List<Question> seedQsService = [
         'und nicht Liste.',
   ),
 
-  Question(
-    id: 'qm-002',
-    topicId: 'qualitaetsmanagement',
-    subtopicId: 'qm-grundlagen',
-    kind: QuestionKind.single,
+  lueckentext(
+    'qm-002',
+    'qm-grundlagen',
     difficulty: 2,
     tags: ['qualitätsbegriff'],
-    prompt: 'Was bedeutet Qualität im Sinne des Qualitätsmanagements?',
-    choices: [
-      _c('Der Grad, in dem ein Produkt die festgelegten Anforderungen erfüllt.',
-          true,
-          'Richtig. Qualität ist relativ zu den vereinbarten Anforderungen - nicht absolut.'),
-      _c('Die technisch bestmögliche Ausführung eines Produkts.', false,
-          'Falsch. Das wäre Perfektion. Ein Produkt, das teurer ist als gefordert, hat nicht mehr Qualität, sondern verschwendet Budget.'),
-      _c('Die Abwesenheit jeglicher Fehler.', false,
-          'Falsch. Nullfehler ist ein Ziel, keine Definition. Auch ein Produkt mit bekannten, akzeptierten Restmängeln kann die Anforderungen erfüllen.'),
-      _c('Die Zufriedenheit der Entwickler mit dem Ergebnis.', false,
-          'Falsch. Maßstab ist die Anforderung des Kunden, nicht das Empfinden des Teams.'),
+    prompt: 'Ergänze die Aussagen zum Qualitätsbegriff.',
+    text:
+        'Qualität ist der {0}, in dem ein Produkt die festgelegten {1} '
+        'erfüllt. Maßstab ist der {2}, nicht das Empfinden des '
+        'Entwicklerteams. Feststellen lässt sich Qualität deshalb nur, wenn '
+        'die Anforderungen {3} formuliert sind.',
+    luecken: [
+      wort(['Grad'], 'Qualität ist relativ, nicht absolut.'),
+      wort(['Anforderungen'], 'Nicht die technisch bestmögliche Ausführung zählt.'),
+      wort(['Kunde'], 'Seine Anforderungen sind der Maßstab.'),
+      wort(['prüfbar'], '"Benutzerfreundlich" allein lässt sich nicht prüfen.'),
     ],
+    wortbank: ['Preis', 'Fehler', 'Hersteller', 'allgemein'],
     explanation:
         'Qualität = Erfüllungsgrad der Anforderungen. Daraus folgt eine '
         'praktische Konsequenz: Ohne prüfbar formulierte Anforderungen kann '
         'man Qualität gar nicht feststellen. Deshalb hängen '
         'Anforderungsanalyse und Qualitätssicherung unmittelbar zusammen - '
         'und deshalb ist eine unprüfbare Anforderung wie "benutzerfreundlich" '
-        'ein Qualitätsproblem, bevor die erste Zeile Code geschrieben ist.',
+        'ein Qualitätsproblem, bevor die erste Zeile Code geschrieben ist. '
+        'Ein Produkt, das mehr kann als gefordert, hat nicht mehr Qualität, '
+        'sondern verschwendet Budget.',
   ),
 
   Question(
@@ -112,37 +114,43 @@ final List<Question> seedQsService = [
         'Rule of Ten.',
   ),
 
-  Question(
-    id: 'qm-004',
-    topicId: 'qualitaetsmanagement',
-    subtopicId: 'qm-grundlagen',
-    kind: QuestionKind.multiple,
+  freitext(
+    'qm-004',
+    'qm-grundlagen',
     difficulty: 2,
     tags: ['qualitätsplanung'],
     scenario:
         'Ein Team startet ein Projekt und legt seine Qualitätsziele fest.',
-    prompt: 'Welche Festlegungen gehören in die Qualitätsplanung?',
-    choices: [
-      _c('Welche Qualitätsmerkmale gemessen werden und mit welchem Zielwert',
-          true,
-          'Ohne Zielwert ist später nicht entscheidbar, ob die Qualität erreicht wurde.'),
-      _c('Welche Prüfmaßnahmen wann durchgeführt werden', true,
-          'Der Prüfplan legt fest, an welchen Punkten geprüft wird - sonst prüft am Ende niemand.'),
-      _c('Wer für die Qualitätssicherung verantwortlich ist', true,
-          'Ohne benannte Verantwortung wird QS die Aufgabe, die jeder für die anderen für zuständig hält.'),
-      _c('Die konkrete Anzahl der zu erwartenden Fehler', false,
-          'Falsch. Eine Fehlerzahl lässt sich nicht sinnvoll im Voraus festlegen. Man plant Maßnahmen und Schwellwerte, keine Fehlerquoten als Ziel.'),
-      _c('Die Definition of Done bzw. die Abnahmekriterien', true,
-          'Die Festlegung, wann etwas fertig ist, ist der Kern der Qualitätsplanung.'),
-      _c('Der vollständige Quellcode der Testfälle', false,
-          'Falsch. Testfälle entstehen später in der Umsetzung. Geplant wird, DASS und WIE getestet wird.'),
+    prompt: 'Nenne vier Festlegungen, die in die Qualitätsplanung gehören.',
+    kriterien: [
+      krit('Qualitätsmerkmale, die gemessen werden, mit ihren Zielwerten',
+          stichwoerter: ['Qualitätsmerkmale', 'Zielwert', 'Kennzahl', 'Messgröße']),
+      krit('Prüfmaßnahmen und ihre Zeitpunkte (Prüfplan)',
+          stichwoerter: ['Prüfmaßnahmen', 'Prüfplan', 'Tests', 'Reviews', 'wann geprüft']),
+      krit('Verantwortliche für die Qualitätssicherung',
+          stichwoerter: ['Verantwortliche', 'Verantwortung', 'zuständig', 'wer']),
+      krit('Abnahmekriterien bzw. Definition of Done',
+          stichwoerter: ['Abnahmekriterien', 'Definition of Done', 'fertig']),
+      krit('Standards, Methoden und Werkzeuge',
+          stichwoerter: ['Standards', 'Methoden', 'Werkzeuge', 'Richtlinien']),
+      krit('Dokumentation der Prüfergebnisse',
+          stichwoerter: ['Dokumentation', 'Protokoll', 'Nachweis']),
     ],
+    loesung:
+        'Welche Qualitätsmerkmale mit welchem Zielwert gemessen werden, '
+        'welche Prüfmaßnahmen wann stattfinden (Prüfplan), wer für die '
+        'Qualitätssicherung verantwortlich ist und wann etwas als fertig gilt '
+        '(Abnahmekriterien bzw. Definition of Done). Dazu: Standards und '
+        'Werkzeuge, Dokumentation der Prüfergebnisse.',
     explanation:
-        'Qualitätsplanung beantwortet vier Fragen: Was wird gemessen? Welcher '
-        'Zielwert gilt? Wann und wie wird geprüft? Wer ist verantwortlich?\n'
-        'Der häufigste Fehler in der Praxis ist, Qualitätsziele nur '
-        'qualitativ zu formulieren ("hohe Performance"). Ohne Zahl ist das '
-        'keine Planung, sondern ein Wunsch.',
+        'Je Nennung 1 Punkt, höchstens 4 Punkte. Qualitätsplanung '
+        'beantwortet vier Fragen: Was wird gemessen? Welcher Zielwert gilt? '
+        'Wann und wie wird geprüft? Wer ist verantwortlich?\n'
+        'Nicht geplant werden eine Anzahl erwarteter Fehler oder der Code '
+        'der Testfälle. Der häufigste Fehler in der Praxis ist, '
+        'Qualitätsziele nur qualitativ zu formulieren ("hohe Performance"). '
+        'Ohne Zahl ist das keine Planung, sondern ein Wunsch.',
+    punkte: 4,
   ),
 
   // =========================================================== 05.02 Testen
@@ -228,36 +236,35 @@ final List<Question> seedQsService = [
         '"Pfad", "Coverage" oder "Schleifenlogik", ist es White-Box.',
   ),
 
-  Question(
-    id: 'te-003',
-    topicId: 'testen',
-    subtopicId: 'ts-protokoll',
-    kind: QuestionKind.multiple,
+  lueckentext(
+    'te-003',
+    'ts-protokoll',
     difficulty: 2,
     tags: ['testfall', 'testprotokoll'],
-    prompt: 'Was gehört in einen vollständigen Testfall?',
-    choices: [
-      _c('Eindeutige Testfall-Nummer oder -Bezeichnung', true,
-          'Ohne Kennung lässt sich ein Fehler später nicht dem Testfall zuordnen.'),
-      _c('Vorbedingung bzw. Ausgangszustand', true,
-          'Ein Testfall ist nur reproduzierbar, wenn der Startzustand definiert ist.'),
-      _c('Konkrete Eingabedaten', true,
-          '"Irgendeine gültige Eingabe" ist kein Testfall, sondern eine Absichtserklärung.'),
-      _c('Das erwartete Ergebnis (Soll-Ergebnis)', true,
-          'Der wichtigste Teil. Ohne Soll-Ergebnis kann niemand entscheiden, ob der Test bestanden ist.'),
-      _c('Der Name des Entwicklers, der den Fehler verursacht hat', false,
-          'Falsch - und schädlich. Testfälle dienen der Fehlersuche, nicht der Schuldzuweisung.'),
-      _c('Die geschätzte Dauer der Fehlerbehebung', false,
-          'Falsch. Das ist eine Planungsgröße für die Korrektur, kein Bestandteil des Testfalls.'),
+    prompt: 'Ergänze die Bestandteile eines vollständigen Testfalls.',
+    text:
+        'Ein Testfall braucht eine eindeutige {0}, damit sich ein Fehler '
+        'später zuordnen lässt. Die {1} beschreibt den Ausgangszustand. '
+        'Dazu kommen konkrete {2} und das {3}, an dem der Test gemessen '
+        'wird. Nach der Durchführung wird das {4} eingetragen - zusammen '
+        'mit dem Urteil bestanden oder nicht bestanden.',
+    luecken: [
+      wort(['Kennung'], 'Testfall-Nummer oder -Bezeichnung.'),
+      wort(['Vorbedingung'], 'Ohne definierten Startzustand ist der Test nicht reproduzierbar.'),
+      wort(['Eingabedaten'], '"Irgendeine gültige Eingabe" ist kein Testfall.'),
+      wort(['Soll-Ergebnis'], 'Ohne erwartetes Ergebnis kann ein Test nicht fehlschlagen.'),
+      wort(['Ist-Ergebnis'], 'Das tatsächliche Ergebnis der Durchführung.'),
     ],
+    wortbank: ['Fehlerursache', 'Entwicklername', 'Behebungsdauer'],
     explanation:
         'Ein Testfall besteht aus: Kennung, Vorbedingung, Eingabe, erwartetes '
         'Ergebnis - und nach der Durchführung zusätzlich dem tatsächlichen '
         'Ergebnis sowie dem Urteil bestanden/nicht bestanden. Erst das '
         'zusammen ergibt das Testprotokoll.\n'
-        'Der häufigste Fehler in Prüfungsaufgaben: das Soll-Ergebnis '
-        'vergessen. Ein Test ohne Soll-Ergebnis kann nicht fehlschlagen und '
-        'ist damit wertlos.',
+        'Nicht hinein gehören der Name eines "Schuldigen" oder die Dauer der '
+        'Fehlerbehebung. Der häufigste Fehler in Prüfungsaufgaben: das '
+        'Soll-Ergebnis vergessen. Ein Test ohne Soll-Ergebnis kann nicht '
+        'fehlschlagen und ist damit wertlos.',
   ),
 
   Question(
@@ -377,33 +384,19 @@ final List<Question> seedQsService = [
         'nicht - maßgeblich ist, was tatsächlich geschuldet wird.',
   ),
 
-  Question(
-    id: 've-002',
-    topicId: 'vertraege',
-    subtopicId: 'vt-urheber',
-    kind: QuestionKind.multiple,
+  paare(
+    've-002',
+    'vt-urheber',
     difficulty: 2,
     tags: ['lizenzen'],
-    prompt: 'Welche Aussagen zu Softwarelizenzen sind richtig?',
-    choices: [
-      _c('Eine Einzelplatzlizenz berechtigt zur Installation auf einem bestimmten Arbeitsplatz.',
-          true,
-          'Die klassische Form - gebunden an ein Gerät oder einen benannten Nutzer.'),
-      _c('Bei einer Concurrent-User-Lizenz zählt die Zahl der gleichzeitigen Nutzer.',
-          true,
-          'Nicht die Zahl der installierten Kopien, sondern die gleichzeitige Nutzung ist begrenzt.'),
-      _c('Open-Source-Software darf immer kostenlos und uneingeschränkt kommerziell genutzt werden.',
-          false,
-          'Falsch. Open Source heißt offener Quellcode, nicht bedingungslos frei. Copyleft-Lizenzen wie die GPL verpflichten dazu, Änderungen unter derselben Lizenz weiterzugeben.'),
-      _c('Bei einem Software-Abonnement (SaaS) erwirbt man Nutzungsrechte auf Zeit, kein Eigentum.',
-          true,
-          'Läuft das Abo aus, endet das Nutzungsrecht - ein wesentlicher Unterschied zum Kauf.'),
-      _c('Eine Volumenlizenz ist immer günstiger als der Einzelkauf derselben Stückzahl.',
-          false,
-          'In der Regel ja, aber "immer" ist falsch. Volumenlizenzen haben Mindestabnahmen und Laufzeiten, die sich bei kleinen Stückzahlen nicht rechnen.'),
-      _c('Freeware ist kostenlos, der Quellcode ist aber nicht zwingend offen.',
-          true,
-          'Genau der Unterschied zu Open Source: kostenlos sagt nichts über den Quellcode.'),
+    prompt: 'Verbinde jedes Lizenzmodell mit seinem Kennzeichen.',
+    paare: [
+      paar('Einzelplatzlizenz', 'an ein Gerät oder einen Nutzer gebunden'),
+      paar('Concurrent-User-Lizenz', 'begrenzt die gleichzeitigen Nutzer'),
+      paar('Volumenlizenz', 'viele Lizenzen in einem Vertrag'),
+      paar('Software-Abonnement (SaaS)', 'Nutzungsrecht nur für die Laufzeit'),
+      paar('Freeware', 'kostenlos, Quellcode meist geschlossen'),
+      paar('Copyleft-Lizenz (z. B. GPL)', 'Änderungen unter gleicher Lizenz weitergeben'),
     ],
     explanation:
         'Vier Begriffe sauber trennen:\n'
@@ -413,7 +406,8 @@ final List<Question> seedQsService = [
         '- SaaS/Abo: Nutzungsrecht auf Zeit, Betrieb beim Anbieter.\n'
         'Lizenzmodelle nach Zählweise: pro Gerät, pro benanntem Nutzer, '
         'pro gleichzeitigem Nutzer (concurrent), pro CPU/Core, '
-        'nutzungsabhängig.',
+        'nutzungsabhängig. Volumenlizenzen sind meist, aber nicht immer '
+        'günstiger als der Einzelkauf.',
   ),
 
   Question(
@@ -448,63 +442,65 @@ final List<Question> seedQsService = [
         'die ausschließlichen Nutzungsrechte.',
   ),
 
-  Question(
-    id: 've-004',
-    topicId: 'vertraege',
-    subtopicId: 'vt-arten',
-    kind: QuestionKind.multiple,
+  freitext(
+    've-004',
+    'vt-arten',
     difficulty: 1,
     tags: ['vertragsbestandteile'],
-    prompt: 'Was sollte ein IT-Dienstleistungsvertrag mindestens regeln?',
-    choices: [
-      _c('Leistungsbeschreibung bzw. Verweis auf das Pflichtenheft', true,
-          'Ohne beschriebene Leistung lässt sich später nicht feststellen, ob erfüllt wurde.'),
-      _c('Vergütung und Zahlungsbedingungen', true,
-          'Höhe, Fälligkeit und Zahlungsziel gehören zwingend hinein.'),
-      _c('Termine und Fristen', true,
-          'Feste Termine machen Verzug eindeutig feststellbar - bei einem Kalendertermin sogar ohne Mahnung.'),
-      _c('Regelungen zu Gewährleistung und Haftung', true,
-          'Legt fest, wer bei Mängeln und Schäden in welchem Umfang einsteht.'),
-      _c('Die Namen aller eingesetzten Entwickler', false,
-          'Falsch. Das wäre unpraktikabel - Personal wechselt. Geregelt werden höchstens Qualifikationsanforderungen.'),
-      _c('Vereinbarungen zu Datenschutz und Vertraulichkeit', true,
-          'Verarbeitet der Dienstleister personenbezogene Daten im Auftrag, ist ein Auftragsverarbeitungsvertrag sogar Pflicht (Art. 28 DSGVO).'),
+    scenario:
+        'Ein Unternehmen beauftragt ein Systemhaus mit der Betreuung seiner '
+        'IT. Der Vertrag soll spätere Streitigkeiten vermeiden.',
+    prompt:
+        'Nenne fünf Punkte, die ein IT-Dienstleistungsvertrag mindestens '
+        'regeln sollte.',
+    kriterien: [
+      krit('Leistungsbeschreibung bzw. Verweis auf das Pflichtenheft',
+          stichwoerter: ['Leistungsbeschreibung', 'Leistung', 'Pflichtenheft', 'Umfang']),
+      krit('Vergütung und Zahlungsbedingungen',
+          stichwoerter: ['Vergütung', 'Preis', 'Zahlungsbedingungen', 'Zahlungsziel']),
+      krit('Termine und Fristen',
+          stichwoerter: ['Termine', 'Fristen', 'Liefertermin', 'Zeitplan']),
+      krit('Gewährleistung und Haftung',
+          stichwoerter: ['Gewährleistung', 'Haftung', 'Mängel']),
+      krit('Datenschutz und Vertraulichkeit',
+          stichwoerter: ['Datenschutz', 'Vertraulichkeit', 'Geheimhaltung', 'Auftragsverarbeitung']),
+      krit('Mitwirkungspflichten des Auftraggebers',
+          stichwoerter: ['Mitwirkung', 'Mitwirkungspflichten', 'Ansprechpartner']),
+      krit('Abnahme der Leistung',
+          stichwoerter: ['Abnahme', 'Abnahmekriterien', 'Abnahmetest']),
+      krit('Laufzeit und Kündigung',
+          stichwoerter: ['Laufzeit', 'Kündigung', 'Vertragsdauer']),
     ],
+    loesung:
+        'Vertragsparteien, Leistungsbeschreibung, Vergütung und '
+        'Zahlungsbedingungen, Termine und Fristen, Mitwirkungspflichten des '
+        'Auftraggebers, Abnahme, Gewährleistung und Haftung, Datenschutz und '
+        'Vertraulichkeit, Laufzeit und Kündigung.',
     explanation:
-        'Mindestinhalte: Vertragsparteien, Leistungsbeschreibung, Vergütung, '
-        'Termine, Mitwirkungspflichten des Auftraggebers, Abnahme, '
-        'Gewährleistung, Haftung, Datenschutz/Geheimhaltung, Laufzeit und '
-        'Kündigung.\n'
+        'Je Nennung 1 Punkt, höchstens 5 Punkte. Nicht geregelt werden die '
+        'Namen einzelner Entwickler - Personal wechselt.\n'
         'Die Mitwirkungspflichten werden am häufigsten vergessen und führen '
         'am häufigsten zu Streit: Wenn der Auftraggeber Testdaten oder '
         'Ansprechpartner nicht liefert, kann der Auftragnehmer den Termin '
-        'nicht halten - ohne Regelung steht dann Aussage gegen Aussage.',
+        'nicht halten - ohne Regelung steht dann Aussage gegen Aussage. '
+        'Verarbeitet der Dienstleister personenbezogene Daten im Auftrag, '
+        'ist ein Auftragsverarbeitungsvertrag Pflicht (Art. 28 DSGVO).',
+    punkte: 5,
   ),
 
   // ======================================================= 07.02 Service/SLA
-  Question(
-    id: 'sl-001',
-    topicId: 'sla_service',
-    subtopicId: 'sla-inhalte',
-    kind: QuestionKind.multiple,
+  paare(
+    'sl-001',
+    'sla-inhalte',
     difficulty: 2,
     tags: ['sla'],
-    prompt: 'Was regelt ein Service Level Agreement (SLA)?',
-    choices: [
-      _c('Verfügbarkeit des Dienstes, meist als Prozentwert pro Zeitraum',
-          true,
-          'Die zentrale Kennzahl, zum Beispiel 99,5 % im Monat.'),
-      _c('Reaktionszeit - wie schnell auf eine Störung reagiert wird', true,
-          'Reaktionszeit ist die Zeit bis zur ersten Rückmeldung, nicht bis zur Lösung.'),
-      _c('Wiederherstellungszeit - wie schnell die Störung behoben sein muss',
-          true,
-          'Die zweite Zeitgröße. Reaktions- und Wiederherstellungszeit werden ständig verwechselt.'),
-      _c('Servicezeiten, in denen die vereinbarten Werte gelten', true,
-          'Ein SLA mit 15 Minuten Reaktionszeit ist wertlos, wenn unklar bleibt, ob das auch sonntags um 3 Uhr gilt.'),
-      _c('Den Quellcode der betriebenen Anwendung', false,
-          'Falsch. Quellcode-Fragen regelt gegebenenfalls ein Hinterlegungsvertrag (Escrow), nicht das SLA.'),
-      _c('Folgen bei Nichteinhaltung, etwa Vergütungsminderung', true,
-          'Ohne Konsequenz ist ein SLA eine Absichtserklärung.'),
+    prompt: 'Verbinde jede Größe eines SLA mit ihrer Bedeutung.',
+    paare: [
+      paar('Servicezeit', 'wann der Service erbracht wird'),
+      paar('Verfügbarkeit', 'Anteil der Servicezeit ohne Störung'),
+      paar('Reaktionszeit', 'Zeit bis zur ersten Rückmeldung'),
+      paar('Wiederherstellungszeit', 'Zeit bis die Störung behoben ist'),
+      paar('Vertragsstrafe', 'Folge, wenn Werte verfehlt werden'),
     ],
     explanation:
         'Ein SLA macht Servicequalität messbar und einklagbar. Die vier '
@@ -515,7 +511,8 @@ final List<Question> seedQsService = [
         '- Reaktionszeit: bis zur ersten qualifizierten Rückmeldung.\n'
         '- Wiederherstellungszeit: bis die Störung behoben ist.\n'
         'Typische Prüfungsfalle: "Reaktionszeit 1 Stunde" bedeutet NICHT, '
-        'dass das Problem nach einer Stunde gelöst ist.',
+        'dass das Problem nach einer Stunde gelöst ist. Ohne Folgen bei '
+        'Nichteinhaltung bleibt ein SLA eine Absichtserklärung.',
   ),
 
   Question(
@@ -581,37 +578,42 @@ final List<Question> seedQsService = [
   ),
 
   // ============================================= 07.03 Leistungsstörungen
-  Question(
-    id: 'ls-001',
-    topicId: 'leistungsstoerungen',
-    subtopicId: 'ls-verzug',
-    kind: QuestionKind.single,
+  freitext(
+    'ls-001',
+    'ls-verzug',
     difficulty: 2,
     tags: ['verzug'],
     scenario:
         'Ein Lieferant hat eine Serverlieferung für den 1. Oktober fest '
-        'zugesagt. Am 10. Oktober ist nichts geliefert.',
-    prompt: 'Welche Voraussetzung für Lieferverzug ist hier erfüllt?',
-    choices: [
-      _c('Die Leistung ist fällig und der Termin kalendermäßig bestimmt - es braucht keine Mahnung.',
-          true,
-          'Richtig. Bei einem kalendermäßig festgelegten Termin tritt Verzug automatisch mit Fristablauf ein.'),
-      _c('Verzug tritt erst ein, wenn der Kunde dreimal gemahnt hat.', false,
-          'Falsch. Drei Mahnungen sind ein Mythos aus der Praxis, keine Rechtsvoraussetzung.'),
-      _c('Verzug setzt immer eine schriftliche Mahnung voraus.', false,
-          'Falsch. Eine Mahnung ist nur nötig, wenn kein kalendermäßig bestimmter Termin vereinbart wurde.'),
-      _c('Verzug tritt automatisch 30 Tage nach Vertragsschluss ein.', false,
-          'Die 30-Tage-Regel gilt für den Zahlungsverzug nach Rechnungszugang, nicht für Lieferverzug.'),
+        'zugesagt. Am 10. Oktober ist nichts geliefert. Der Kunde hat bisher '
+        'nicht gemahnt.',
+    prompt:
+        'Erläutere, ob sich der Lieferant im Lieferungsverzug befindet.',
+    kriterien: [
+      krit('Die Lieferung ist seit dem 1. Oktober fällig und nicht erfolgt',
+          stichwoerter: ['fällig', 'Fälligkeit', 'nicht geliefert']),
+      krit('Eine Mahnung ist nicht nötig, weil der Termin nach dem Kalender bestimmt ist',
+          stichwoerter: ['Kalender', 'keine Mahnung', 'ohne Mahnung', 'fester Termin', 'entbehrlich']),
+      krit('Der Lieferant hat die Verspätung zu vertreten - er ist also in Verzug',
+          stichwoerter: ['vertreten', 'Verschulden', 'in Verzug']),
     ],
+    loesung:
+        'Ja. Die Lieferung war am 1. Oktober fällig und ist ausgeblieben. '
+        'Weil der Termin nach dem Kalender bestimmt ist, tritt der Verzug '
+        'ohne Mahnung ein. Das Verschulden des Lieferanten wird vermutet. Er '
+        'ist seit dem 2. Oktober in Verzug.',
     explanation:
-        'Verzug setzt voraus: fällige Leistung, Nichtleistung, Verschulden '
-        'des Schuldners und grundsätzlich eine Mahnung.\n'
+        'Je Aussage 1 Punkt. Verzug setzt voraus: fällige Leistung, '
+        'Nichtleistung, Verschulden des Schuldners und grundsätzlich eine '
+        'Mahnung.\n'
         'Die Mahnung entfällt unter anderem, wenn ein Termin nach dem '
         'Kalender bestimmt ist ("Lieferung am 1. Oktober") oder wenn der '
-        'Schuldner die Leistung ernsthaft und endgültig verweigert.\n'
+        'Schuldner die Leistung ernsthaft und endgültig verweigert. Drei '
+        'Mahnungen sind ein Mythos aus der Praxis.\n'
         'Beim ZAHLUNGSverzug gilt zusätzlich: Spätestens 30 Tage nach '
         'Zugang einer Rechnung tritt Verzug auch ohne Mahnung ein - bei '
         'Verbrauchern nur, wenn darauf hingewiesen wurde.',
+    punkte: 3,
   ),
 
   Question(
@@ -658,37 +660,43 @@ final List<Question> seedQsService = [
         'konkrete Frist.',
   ),
 
-  Question(
-    id: 'ls-003',
-    topicId: 'leistungsstoerungen',
-    subtopicId: 'ls-abnahme',
-    kind: QuestionKind.multiple,
+  markieren(
+    'ls-003',
+    'ls-abnahme',
     difficulty: 2,
     tags: ['abnahmeprotokoll'],
-    prompt: 'Was gehört in ein Abnahmeprotokoll?',
-    choices: [
-      _c('Datum, Ort und die anwesenden Personen beider Seiten', true,
-          'Ohne Beteiligte und Datum ist das Protokoll als Nachweis wertlos.'),
-      _c('Gegenstand der Abnahme mit Verweis auf das Pflichtenheft', true,
+    scenario:
+        'Bei der Abnahme einer Lagerverwaltungssoftware zeigt sich, dass der '
+        'Etikettendruck fehlerhaft ist. Ein Auszubildender hat das '
+        'Abnahmeprotokoll entworfen.',
+    prompt:
+        'Markiere alle Einträge, die so nicht in das Protokoll gehören oder '
+        'unvollständig sind.',
+    zeilen: [
+      nein('Abnahme am 14. Juni im Lager des Auftraggebers; anwesend: die Projektleiter beider Seiten',
+          'Datum, Ort und Beteiligte gehören hinein.'),
+      nein('Gegenstand: Lagerverwaltungssoftware gemäß Pflichtenheft Version 2.1',
           'Abgenommen wird gegen ein definiertes Soll - der Verweis stellt das her.'),
-      _c('Liste der festgestellten Mängel mit Fristen zur Beseitigung', true,
-          'Der wichtigste Teil. Wer einen bekannten Mangel bei der Abnahme nicht vorbehält, verliert dafür Nacherfüllung, Selbstvornahme, Rücktritt und Minderung.'),
-      _c('Erklärung, ob die Abnahme erfolgt, unter Vorbehalt erfolgt oder verweigert wird',
-          true,
-          'Diese Erklärung ist der eigentliche Rechtsakt.'),
-      _c('Unterschriften beider Vertragsparteien', true,
-          'Erst die Unterschriften machen das Protokoll zum Nachweis.'),
-      _c('Die interne Kalkulation des Auftragnehmers', false,
-          'Falsch. Die Kalkulation ist ein Geschäftsgeheimnis des Auftragnehmers und hat im Protokoll nichts zu suchen.'),
+      ja('Mangel: Etikettendruck fehlerhaft. Wird bei Gelegenheit behoben.',
+          'Es fehlt eine Frist zur Beseitigung.'),
+      ja('Erklärung: Die Abnahme erfolgt ohne Vorbehalt.',
+          'Bei einem bekannten Mangel muss der Vorbehalt erklärt werden, sonst gehen Nacherfüllung, Selbstvornahme, Rücktritt und Minderung dafür verloren (§ 640 Abs. 3 BGB).'),
+      ja('Interne Kalkulation des Auftragnehmers: 310 Stunden zu 62 €',
+          'Die Kalkulation ist ein Geschäftsgeheimnis und hat im Protokoll nichts zu suchen.'),
+      nein('Geprüft wurden die 24 Testfälle des Abnahmetestplans, 23 davon bestanden.',
+          'Das Ergebnis des Abnahmetests gehört ins Protokoll.'),
+      ja('Unterschrift: nur Auftragnehmer',
+          'Erst die Unterschriften beider Vertragsparteien machen das Protokoll zum Nachweis.'),
     ],
     explanation:
+        'In das Protokoll gehören: Datum, Ort, Beteiligte, Gegenstand mit '
+        'Verweis auf das Pflichtenheft, Mängel mit Fristen, die Erklärung '
+        '(abgenommen, unter Vorbehalt, verweigert) und die Unterschriften '
+        'beider Seiten.\n'
         'An der Abnahme hängen vier Rechtsfolgen: Fälligkeit der '
         'Vergütung, Gefahrübergang, Beginn der Verjährungsfrist für '
-        'Mängelansprüche und die Umkehr der Beweislast - danach muss der '
-        'Kunde beweisen, dass ein Mangel schon bei Abnahme vorlag.\n'
-        'Deshalb ist das Abnahmeprotokoll kein Formalkram, sondern der '
-        'wichtigste Zettel im Projekt. Wer bekannte Mängel nicht '
-        'protokolliert, verliert die meisten Rechte darauf - nur ein '
+        'Mängelansprüche und die Umkehr der Beweislast. Wer bekannte Mängel '
+        'nicht vorbehält, verliert die meisten Rechte darauf - nur ein '
         'Anspruch auf Schadensersatz bleibt bestehen (§ 640 Abs. 3 BGB).',
   ),
 
@@ -719,63 +727,67 @@ final List<Question> seedQsService = [
         'ab - das ist normal und kein Zeichen des Scheiterns.',
   ),
 
-  Question(
-    id: 'cm-002',
-    topicId: 'change_management',
-    subtopicId: 'cm-widerstand',
-    kind: QuestionKind.multiple,
+  freitext(
+    'cm-002',
+    'cm-widerstand',
     difficulty: 2,
     tags: ['widerstand'],
     scenario:
         'Bei der Einführung eines neuen Ticketsystems weigern sich mehrere '
         'erfahrene Mitarbeitende, das System zu nutzen.',
-    prompt: 'Welche Maßnahmen sind geeignet, den Widerstand abzubauen?',
-    choices: [
-      _c('Die Betroffenen frühzeitig einbeziehen und ihre Erfahrung in die Gestaltung einfließen lassen',
-          true,
-          'Beteiligung ist die wirksamste Maßnahme - wer mitgestaltet hat, blockiert selten.'),
-      _c('Den Nutzen für die tägliche Arbeit konkret und nachvollziehbar erklären',
-          true,
-          'Widerstand entsteht oft aus fehlendem Sinn, nicht aus Bequemlichkeit.'),
-      _c('Schulungen und eine Begleitung in der Umstellungsphase anbieten', true,
-          'Ein Teil des Widerstands ist schlicht Unsicherheit im Umgang mit dem Neuen.'),
-      _c('Die Nutzung per Anweisung durchsetzen und Verstöße sanktionieren',
-          false,
-          'Falsch als erste Maßnahme. Druck erzeugt Scheinanpassung: Das System wird formal benutzt und die eigentliche Arbeit läuft weiter daneben.'),
-      _c('Erfahrene Mitarbeitende als Multiplikatoren gewinnen', true,
-          'Wer die Skeptiker zu Vorbildern macht, dreht den Widerstand in Unterstützung.'),
-      _c('Das alte System sofort abschalten, um Ausweichen zu verhindern', false,
-          'Falsch als alleinige Maßnahme. Ein harter Schnitt ohne Vorbereitung erzeugt Chaos und verfestigt die Ablehnung.'),
+    prompt: 'Nenne vier Maßnahmen, die geeignet sind, den Widerstand abzubauen.',
+    kriterien: [
+      krit('Betroffene frühzeitig einbeziehen und ihre Erfahrung in die Gestaltung einfließen lassen',
+          stichwoerter: ['einbeziehen', 'beteiligen', 'mitgestalten', 'Erfahrung nutzen']),
+      krit('Den Nutzen für die tägliche Arbeit konkret erklären',
+          stichwoerter: ['Nutzen', 'erklären', 'informieren', 'Vorteile']),
+      krit('Schulungen anbieten',
+          stichwoerter: ['Schulung', 'schulen', 'Training']),
+      krit('In der Umstellungsphase begleiten und Ansprechpartner benennen',
+          stichwoerter: ['begleiten', 'Ansprechpartner', 'Unterstützung', 'Support']),
+      krit('Erfahrene Mitarbeitende als Multiplikatoren bzw. Key-User gewinnen',
+          stichwoerter: ['Multiplikator', 'Key-User', 'Vorbild']),
+      krit('Erste Erfolge sichtbar machen',
+          stichwoerter: ['Erfolge', 'sichtbar', 'Kennzahlen']),
     ],
+    loesung:
+        'Die Betroffenen früh einbeziehen, den Nutzen für die tägliche '
+        'Arbeit erklären, schulen, in der Umstellungsphase begleiten und '
+        'erfahrene Mitarbeitende als Multiplikatoren gewinnen. Später: '
+        'Erfolge sichtbar machen.',
     explanation:
-        'Widerstand ist kein Defekt der Mitarbeitenden, sondern eine '
-        'Information: Er zeigt, dass Sinn, Können oder Beteiligung fehlen.\n'
+        'Je Nennung 1 Punkt, höchstens 4 Punkte. Widerstand ist kein Defekt '
+        'der Mitarbeitenden, sondern eine Information: Er zeigt, dass Sinn, '
+        'Können oder Beteiligung fehlen.\n'
         'Die drei typischen Ursachen und ihre Gegenmittel:\n'
         '- "Ich verstehe es nicht" -> informieren, Nutzen erklären.\n'
         '- "Ich kann es nicht" -> schulen, begleiten.\n'
         '- "Ich will es nicht" -> beteiligen, Bedenken ernst nehmen.\n'
-        'Anordnung und Sanktion sind das letzte Mittel, nicht das erste.',
+        'Anordnung und Sanktion sind das letzte Mittel, nicht das erste - '
+        'Druck erzeugt Scheinanpassung. Auch das alte System ohne '
+        'Vorbereitung abzuschalten verfestigt die Ablehnung.',
+    punkte: 4,
   ),
 
-  Question(
-    id: 'cm-003',
-    topicId: 'change_management',
-    subtopicId: 'cm-kaizen',
-    kind: QuestionKind.single,
+  lueckentext(
+    'cm-003',
+    'cm-kaizen',
     difficulty: 2,
     tags: ['kaizen'],
-    prompt: 'Was kennzeichnet Kaizen bzw. den kontinuierlichen Verbesserungsprozess?',
-    choices: [
-      _c('Laufende Verbesserung in vielen kleinen Schritten, getragen von allen Mitarbeitenden',
-          true,
-          'Richtig. Die Summe vieler kleiner Schritte, nicht der eine große Wurf.'),
-      _c('Einmalige, grundlegende Neugestaltung der Geschäftsprozesse', false,
-          'Das ist Business Process Reengineering - der radikale Gegenentwurf zu Kaizen.'),
-      _c('Verbesserung ausschließlich durch die Führungsebene', false,
-          'Falsch. Kaizen lebt davon, dass Verbesserungsvorschläge von denen kommen, die die Arbeit täglich machen.'),
-      _c('Ein Verfahren zur Fehlersuche im Quellcode', false,
-          'Falsch. Kaizen ist eine Haltung zur Prozessverbesserung, kein Testverfahren.'),
+    prompt: 'Ergänze die Aussagen zu Kaizen und KVP.',
+    text:
+        'Kaizen bedeutet „Veränderung zum {0}“. Verbessert wird in vielen '
+        '{1} Schritten, getragen von {2} Mitarbeitenden. Jeder einzelne '
+        'Schritt durchläuft den {3}. Das Gegenstück, die einmalige radikale '
+        'Neugestaltung eines Prozesses, heißt {4}.',
+    luecken: [
+      wort(['Besseren']),
+      wort(['kleinen'], 'Die Summe vieler kleiner Schritte, nicht der eine große Wurf.'),
+      wort(['allen'], 'Vorschläge kommen von denen, die die Arbeit täglich machen.'),
+      wort(['PDCA-Zyklus'], 'Plan, Do, Check, Act.'),
+      wort(['Reengineering'], 'Business Process Reengineering - revolutionär statt evolutionär.'),
     ],
+    wortbank: ['großen', 'Führungskräften', 'Netzplan', 'Schlechteren'],
     explanation:
         'Kaizen (japanisch: Veränderung zum Besseren) steht für den '
         'kontinuierlichen Verbesserungsprozess (KVP). Kernideen: kleine '
