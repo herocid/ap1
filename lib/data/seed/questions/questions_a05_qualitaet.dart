@@ -89,79 +89,82 @@ final List<Question> questionsA05 = [
         '5.000 € × 10 = 50.000 € (3 Phasen später)\n'
         'Kurz: 50 € × 10³ = 50.000 €.',
   ),
-  einfach(
+  reihenfolge(
     'a5-qg-4',
     'qm-grundlagen',
-    prompt: 'Welche Review-Art ist am stärksten formalisiert?',
-    choices: [
-      ja(
-        'Inspektion',
-        'Mit Moderator, festen Rollen, Checkliste und Protokoll.',
-      ),
-      nein('Walkthrough', 'Der Autor führt informell durch sein Ergebnis.'),
-      nein(
-        'Informelles Review',
-        'Eine Kollegin liest gegen - ohne feste Regeln und Protokoll.',
-      ),
-      nein(
-        'Schreibtischtest',
-        'Eine gedankliche Programmausführung, kein Review im Team.',
-      ),
+    scenario:
+        'Ein Softwarehaus will Reviews einführen und vergleicht vier Review-Arten.',
+    prompt:
+        'Ordnen Sie die Review-Arten von der am wenigsten bis zur am stärksten formalisierten.',
+    items: [
+      'Informelles Review',
+      'Walkthrough',
+      'Technisches Review',
+      'Inspektion',
     ],
+    hint: 'Beginne mit dem formlosen Gegenlesen',
     explanation:
         'Reviews reichen vom informellen Gegenlesen über Walkthrough und technisches Review bis zur Inspektion - der formalsten Form mit Moderator, Rollen, Checklisten und Protokoll.',
   ),
-  einfach(
+  markieren(
     'a5-qg-5',
     'qm-grundlagen',
-    prompt: 'Welche Maßnahme gehört zur konstruktiven Qualitätssicherung?',
-    choices: [
-      ja(
-        'Verbindliche Namenskonventionen für Variablen und Klassen einführen',
-        'Sie beugen Fehlern und Unklarheiten vor, bevor Code entsteht.',
-      ),
+    scenario: 'Im Qualitätsplan eines Webprojekts stehen sechs Maßnahmen.',
+    prompt: 'Markieren Sie alle Maßnahmen der analytischen Qualitätssicherung.',
+    zeilen: [
       nein(
-        'Eine Code-Inspektion nach Fertigstellung des Moduls',
+        'Verbindliche Namenskonventionen für Variablen und Klassen',
+        'Konstruktiv: Sie beugen Fehlern vor, bevor Code entsteht.',
+      ),
+      ja(
+        'Code-Inspektion nach Fertigstellung des Moduls',
         'Analytisch: Ein fertiges Ergebnis wird geprüft.',
       ),
-      nein(
-        'Ein Lasttest mit 1.000 simulierten Nutzern',
+      ja(
+        'Lasttest mit 1.000 simulierten Nutzern',
         'Analytisch und dynamisch: Das System wird ausgeführt.',
       ),
       nein(
-        'Der Abnahmetest durch den Kunden',
+        'Schulung zum sicheren Programmieren',
+        'Konstruktiv: Fehler sollen gar nicht erst entstehen.',
+      ),
+      ja(
+        'Abnahmetest durch den Kunden',
         'Analytisch: Es wird geprüft, nicht vorgebeugt.',
+      ),
+      nein(
+        'Dokumentvorlage für Pflichtenhefte',
+        'Konstruktiv: Die Vorlage verhindert Lücken von vornherein.',
       ),
     ],
     difficulty: 1,
     explanation:
         'Konstruktive QS verhindert Fehler (Richtlinien, Vorlagen, Schulung, Werkzeuge). Analytische QS findet Fehler in fertigen Ergebnissen (Reviews, Inspektionen, Tests).',
   ),
-  mehrfach(
+  lueckentext(
     'a5-qg-6',
     'qm-grundlagen',
-    prompt: 'Welche Aussagen zur Qualitätssicherung sind richtig?',
-    choices: [
-      ja(
-        'Tests können das Vorhandensein von Fehlern zeigen, nicht ihre Abwesenheit.',
-        'Kein Test deckt alle Eingaben ab - fehlerfrei lässt sich nicht beweisen.',
-      ),
-      ja(
-        'Anforderungen lassen sich prüfen, bevor Code existiert.',
-        'Reviews von Dokumenten sind statische Prüfungen.',
-      ),
-      ja(
-        'Je später ein Fehler gefunden wird, desto teurer ist seine Behebung.',
-        'Das beschreibt die Zehnerregel.',
-      ),
-      nein(
-        'Ein bestandener Systemtest beweist, dass die Software fehlerfrei ist.',
-        'Er zeigt nur, dass die geprüften Fälle funktionieren.',
-      ),
-      nein(
-        'Statische Prüfungen setzen lauffähigen Code voraus.',
-        'Statisch heißt gerade: ohne Ausführung.',
-      ),
+    scenario:
+        'Im Qualitätshandbuch stehen drei Grundsätze der Qualitätssicherung.',
+    prompt: 'Vervollständigen Sie die Grundsätze.',
+    text:
+        'Tests können die {0} von Fehlern zeigen, aber nicht ihre {1}.\n'
+        'Je {2} ein Fehler gefunden wird, desto teurer ist seine Behebung.\n'
+        'Statische Prüfungen kommen {3} lauffähigen Code aus.',
+    luecken: [
+      wahl('Anwesenheit', [
+        'Abwesenheit',
+        'Ursache',
+      ], 'Ein Test kann Fehler nachweisen.'),
+      wahl('Abwesenheit', [
+        'Anwesenheit',
+        'Häufigkeit',
+      ], 'Fehlerfreiheit lässt sich nicht beweisen.'),
+      wahl('später', ['früher', 'häufiger'], 'Das beschreibt die Zehnerregel.'),
+      wahl('ohne', [
+        'nur mit',
+        'erst nach',
+      ], 'Statisch heißt gerade: ohne Ausführung.'),
     ],
     explanation:
         'Qualität entsteht nicht durch eine Endkontrolle: Konstruktive Maßnahmen und frühe statische Prüfungen sparen die teuren späten Fehler. Tests zeigen Fehler, beweisen aber nie Fehlerfreiheit.',
@@ -326,26 +329,42 @@ final List<Question> questionsA05 = [
     explanation:
         'Die Teilmerkmale helfen bei der Zuordnung: Zuverlässigkeit (Reife, Verfügbarkeit, Fehlertoleranz, Wiederherstellbarkeit), Wartbarkeit (Modularität, Analysierbarkeit, Änderbarkeit, Testbarkeit), Kompatibilität (Interoperabilität, Koexistenz).',
   ),
-  einfach(
+  zuordnen(
     'a5-qe-6',
     'qm-merkmale',
-    prompt: 'Welche Anforderung ist nicht funktional?',
-    choices: [
-      ja(
+    scenario: 'Im Lastenheft eines Webshops stehen sechs Anforderungen.',
+    prompt: 'Ist die Anforderung funktional oder nicht funktional?',
+    buckets: ['funktional', 'nicht funktional'],
+    items: [
+      zu(
         'Die Suche liefert Ergebnisse in höchstens 2 Sekunden.',
+        1,
         'Sie beschreibt, WIE GUT das System arbeitet (Effizienz).',
       ),
-      nein(
+      zu(
         'Kunden können Artikel in den Warenkorb legen.',
+        0,
         'Eine Funktion - WAS das System tut.',
       ),
-      nein(
+      zu(
+        'Der Shop ist zu 99,5 % im Monat erreichbar.',
+        1,
+        'Verfügbarkeit ist eine Qualitätseigenschaft.',
+      ),
+      zu(
         'Das System erstellt monatlich eine Umsatzstatistik.',
+        0,
         'Eine Funktion des Systems.',
       ),
-      nein(
+      zu(
         'Kunden können ihr Passwort selbst zurücksetzen.',
+        0,
         'Auch das ist eine Funktion.',
+      ),
+      zu(
+        'Neue Kunden bestellen ohne Anleitung in unter 3 Minuten.',
+        1,
+        'Erlernbarkeit gehört zur Benutzbarkeit.',
       ),
     ],
     difficulty: 1,
@@ -461,32 +480,50 @@ final List<Question> questionsA05 = [
         'Differenz: 30 % - 10 % = 20 Prozentpunkte\n'
         'Relativ wäre das ein Rückgang um 20 / 30 ≈ 66,7 Prozent - Prozentpunkte und Prozent nicht verwechseln.',
   ),
-  einfach(
+  freitext(
     'a5-qp-4',
     'qm-pdca',
-    prompt:
-        'Welche Aussage zum kontinuierlichen Verbesserungsprozess (KVP) ist richtig?',
-    choices: [
-      ja(
-        'Viele kleine Verbesserungen, an denen die Mitarbeitenden beteiligt sind und die fortlaufend weitergehen.',
-        'Genau das kennzeichnet KVP (Kaizen).',
+    scenario:
+        'Die IT-Abteilung eines Großhändlers führt einen kontinuierlichen Verbesserungsprozess (KVP) ein. Die Geschäftsführung fragt, was ihn von einem einmaligen Reorganisationsprojekt unterscheidet.',
+    prompt: 'Beschreiben Sie zwei Merkmale des KVP. (4 P.)',
+    punkte: 4,
+    kriterien: [
+      krit(
+        'Viele kleine Verbesserungsschritte statt eines großen Umbruchs',
+        punkte: 2,
+        stichwoerter: [
+          'kleine Schritte',
+          'schrittweise',
+          'kleine Verbesserungen',
+        ],
       ),
-      nein(
-        'Eine einmalige große Umstrukturierung durch externe Berater.',
-        'Das wäre eine Innovation oder ein Reorganisationsprojekt.',
+      krit(
+        'Er läuft fortlaufend weiter - nach jedem Zyklus beginnt der nächste.',
+        punkte: 2,
+        stichwoerter: [
+          'fortlaufend',
+          'dauerhaft',
+          'ständig',
+          'endet nicht',
+          'nächster Zyklus',
+        ],
       ),
-      nein(
-        'Er endet, sobald ein Ziel erreicht ist.',
-        'Nach Act beginnt der nächste Zyklus.',
+      krit(
+        'Die Mitarbeitenden sind beteiligt, weil sie die Schwachstellen im Alltag kennen.',
+        punkte: 2,
+        stichwoerter: ['Mitarbeitende', 'Mitarbeiter', 'beteiligt', 'alle'],
       ),
-      nein(
-        'Er ist allein Aufgabe der Geschäftsführung.',
-        'Gerade die Mitarbeitenden kennen die Schwachstellen im Alltag.',
+      krit(
+        'Werkzeug ist der PDCA-Zyklus mit messbaren Zielen.',
+        punkte: 2,
+        stichwoerter: ['PDCA', 'messbar', 'Kennzahl'],
       ),
     ],
+    loesung:
+        'KVP setzt auf viele kleine Verbesserungen statt auf einen großen Umbruch, und er endet nie: Nach jedem PDCA-Zyklus beginnt der nächste. Beteiligt sind die Mitarbeitenden selbst, weil sie die Schwachstellen ihres Alltags am besten kennen.',
     difficulty: 1,
     explanation:
-        'KVP setzt auf stetige kleine Schritte statt seltener großer Sprünge. Sein Werkzeug ist der PDCA-Zyklus, der nach jedem Act von vorn beginnt.',
+        'Je Merkmal 2 Punkte, höchstens 4. KVP setzt auf stetige kleine Schritte statt seltener großer Sprünge. Sein Werkzeug ist der PDCA-Zyklus, der nach jedem Act von vorn beginnt.',
   ),
   reihenfolge(
     'a5-qp-5',
@@ -503,22 +540,23 @@ final List<Question> questionsA05 = [
     explanation:
         'Plan: analysieren, Ziel setzen, Maßnahme planen. Do: im Kleinen erproben. Check: Ergebnis gegen das Ziel messen. Act: bei Erfolg zum Standard machen.',
   ),
-  einfach(
+  lueckentext(
     'a5-qp-6',
     'qm-pdca',
-    prompt:
-        'In welcher Phase des PDCA-Zyklus wird eine Ursachenanalyse, etwa mit der 5-Why-Methode, typischerweise eingesetzt?',
-    choices: [
-      ja(
-        'Plan',
-        'Bevor eine Maßnahme geplant wird, muss die Ursache des Problems klar sein.',
-      ),
-      nein('Do', 'In Do wird die bereits geplante Maßnahme erprobt.'),
-      nein(
+    scenario:
+        'Ein Service-Desk bekommt immer wieder Tickets zu abgelaufenen Zertifikaten. Das Team will die 5-Why-Methode einsetzen.',
+    prompt: 'Ordnen Sie die Methode in den PDCA-Zyklus ein.',
+    text:
+        'Die 5-Why-Methode gehört in die Phase {0}.\n'
+        'Dort wird die {1} des Problems geklärt, bevor eine {2} geplant wird.',
+    luecken: [
+      wahl('Plan', [
+        'Do',
         'Check',
-        'In Check wird das Ergebnis gemessen, nicht die Ursache gesucht.',
-      ),
-      nein('Act', 'In Act wird standardisiert oder nachgebessert.'),
+        'Act',
+      ], 'Die Analyse steht am Anfang des Zyklus.'),
+      wahl('Ursache', ['Schuldfrage', 'Abnahme']),
+      wahl('Maßnahme', ['Abnahme', 'Rechnung']),
     ],
     explanation:
         'Plan umfasst Problemanalyse, Ursachenanalyse, Zielsetzung mit Kennzahl und Maßnahmenplanung. Wer die Ursache nicht kennt, plant leicht die falsche Maßnahme.',
@@ -619,79 +657,86 @@ final List<Question> questionsA05 = [
     explanation:
         'Testarten beschreiben, worauf geprüft wird: Last (erwartete Höchstlast), Stress (über der Grenze), Regression (Nebenwirkungen nach Änderungen), Usability (Bedienbarkeit). Sie kommen auf verschiedenen Teststufen vor.',
   ),
-  einfach(
+  lueckentext(
     'a5-ss-4',
     'ts-stufen',
     scenario:
-        'Bei der Top-down-Integration wird zuerst die Benutzeroberfläche mit der Geschäftslogik verbunden. Die Datenbankschicht darunter ist noch nicht fertig.',
-    prompt: 'Was wird für die fehlende Datenbankschicht benötigt?',
-    choices: [
-      ja(
-        'Stubs, die die Aufrufe mit festen Testdaten beantworten',
-        'Stubs ersetzen aufgerufene Komponenten unterhalb des Testobjekts.',
-      ),
-      nein(
+        'Eine dreischichtige Anwendung (Oberfläche, Geschäftslogik, Datenbankschicht) wird schrittweise integriert. Noch fehlende Schichten werden durch Platzhalter ersetzt.',
+    prompt: 'Vervollständigen Sie die Regeln zu Stub und Testtreiber.',
+    text:
+        'Bei der Top-down-Integration fehlen zunächst die {0} Schichten; sie werden durch {1} ersetzt.\n'
+        'Bei der Bottom-up-Integration fehlen zunächst die {2} Schichten; sie werden durch {3} ersetzt.',
+    luecken: [
+      wahl('unteren', ['oberen', 'externen']),
+      wahl('Stubs', [
         'Testtreiber',
-        'Treiber ersetzen fehlende Aufrufer oberhalb - das braucht die Bottom-up-Integration.',
-      ),
-      nein(
-        'Ein Betatest',
-        'Ein Betatest ist ein Test mit externen Anwendern, kein Platzhalter.',
-      ),
-      nein(
-        'Nichts - Top-down kommt ohne Platzhalter aus',
-        'Ohne Ersatz für die untere Schicht wäre kein Test möglich.',
-      ),
+        'Betatests',
+      ], 'Stubs ersetzen aufgerufene Komponenten.'),
+      wahl('oberen', ['unteren', 'externen']),
+      wahl('Testtreiber', [
+        'Stubs',
+        'Betatests',
+      ], 'Treiber ersetzen fehlende Aufrufer.'),
     ],
     explanation:
         'Top-down integriert von oben nach unten und braucht Stubs für die noch fehlenden unteren Teile. Bottom-up integriert von unten nach oben und braucht Treiber, die die fehlenden oberen Teile ersetzen.',
   ),
-  einfach(
+  lueckentext(
     'a5-ss-5',
     'ts-stufen',
     scenario:
-        'Ein Softwarehersteller gibt eine Vorabversion an ausgewählte Kunden. Diese nutzen sie in ihrer eigenen Umgebung und melden Fehler zurück.',
-    prompt: 'Um welchen Test handelt es sich?',
-    choices: [
-      ja('Betatest', 'Externe Anwender testen in ihrer eigenen Umgebung.'),
-      nein(
-        'Alphatest',
-        'Der Alphatest findet mit Anwendern beim Hersteller statt.',
-      ),
-      nein(
-        'Komponententest',
-        'Den führen Entwickler an einzelnen Modulen durch.',
-      ),
-      nein('Integrationstest', 'Er prüft Schnittstellen zwischen Komponenten.'),
+        'Ein Softwarehersteller lässt eine neue Version vor der Freigabe von echten Anwendern testen.',
+    prompt: 'Vervollständigen Sie den Text zu Alpha- und Betatest.',
+    text:
+        'Beim {0} testen Anwender beim Hersteller.\n'
+        'Beim {1} testen ausgewählte Kunden in ihrer eigenen Umgebung und melden Fehler zurück.\n'
+        'Beide Tests finden {2} der Freigabe statt.',
+    luecken: [
+      wahl('Alphatest', ['Betatest', 'Komponententest']),
+      wahl('Betatest', ['Alphatest', 'Integrationstest']),
+      wahl('vor', ['nach', 'anstelle']),
     ],
     difficulty: 1,
     explanation:
         'Alpha- und Betatest sind Tests mit echten Anwendern vor der Freigabe. Beim Alphatest kommen die Anwender zum Hersteller, beim Betatest testen sie in ihrer eigenen Umgebung.',
   ),
-  mehrfach(
+  zuordnen(
     'a5-ss-6',
     'ts-stufen',
-    prompt: 'Welche Aussagen zum Systemtest sind richtig?',
-    choices: [
-      ja(
-        'Er prüft das Gesamtsystem gegen die Spezifikation, etwa das Pflichtenheft.',
-        'Grundlage ist die Spezifikation.',
-      ),
-      ja(
-        'Er läuft in einer möglichst produktionsnahen Testumgebung.',
-        'So zeigen sich Fehler, die erst im Zusammenspiel auftreten.',
-      ),
-      ja(
-        'Er liegt in der Verantwortung des Auftragnehmers.',
-        'Der Auftragnehmer weist nach, dass er die Spezifikation erfüllt.',
-      ),
-      nein(
-        'In ihm entscheidet der Kunde über die Annahme des Ergebnisses.',
+    scenario:
+        'Ein Softwarehaus liefert ein Kundenportal aus. Im Testkonzept sollen Systemtest und Abnahmetest sauber getrennt werden.',
+    prompt: 'Gehört die Aussage zum Systemtest oder zum Abnahmetest?',
+    buckets: ['Systemtest', 'Abnahmetest'],
+    items: [
+      zu(
+        'Der Auftraggeber entscheidet über die Annahme des Ergebnisses.',
+        1,
         'Das geschieht im Abnahmetest.',
       ),
-      nein(
-        'Er prüft einzelne Funktionen isoliert vom Rest.',
-        'Das ist der Komponententest.',
+      zu(
+        'Er liegt in der Verantwortung des Auftragnehmers.',
+        0,
+        'Der Auftragnehmer weist nach, dass er die Spezifikation erfüllt.',
+      ),
+      zu(
+        'Geprüft wird das Gesamtsystem gegen das Pflichtenheft.',
+        0,
+        'Grundlage ist die Spezifikation.',
+      ),
+      zu(
+        'Anwender arbeiten mit echten Geschäftsfällen.',
+        1,
+        'Der Kunde prüft gegen seinen tatsächlichen Bedarf.',
+      ),
+      zu(
+        'Das Testteam prüft in einer produktionsnahen Testumgebung.',
+        0,
+        'So zeigen sich Fehler, die erst im Zusammenspiel auftreten.',
+      ),
+      zu(
+        'Maßstab sind die vereinbarten Abnahmekriterien.',
+        1,
+        'Sie wurden vorab zwischen den Vertragspartnern festgelegt.',
       ),
     ],
     explanation:
@@ -724,31 +769,44 @@ final List<Question> questionsA05 = [
         'Testfall 2: betrag = 50, express = falsch -> beide Nein-Zweige.\n'
         'Also 2 Testfälle. Für Anweisungsüberdeckung genügt schon Testfall 1. Alle 4 Kombinationen wären erst für eine Pfadüberdeckung nötig.',
   ),
-  mehrfach(
+  zuordnen(
     'a5-sv-2',
     'ts-verfahren',
+    scenario:
+        'Ein Team plant, welche Tests eines Webshops automatisiert werden und welche weiter von Hand laufen.',
     prompt:
-        'Welche Aussagen zu manuellen und automatisierten Tests sind richtig?',
-    choices: [
-      ja(
-        'Automatisierte Tests lohnen sich besonders für Regressionstests nach jeder Änderung.',
-        'Sie laufen beliebig oft ohne zusätzlichen Personalaufwand.',
+        'Sollte der Test eher automatisiert oder eher manuell durchgeführt werden?',
+    buckets: ['eher automatisieren', 'eher manuell'],
+    items: [
+      zu(
+        'Regressionstest nach jeder Änderung',
+        0,
+        'Läuft beliebig oft ohne zusätzlichen Personalaufwand.',
       ),
-      ja(
-        'Die Bedienbarkeit einer Oberfläche wird sinnvoll mit echten Nutzern manuell getestet.',
+      zu(
+        'Usability-Test der neuen Bestellstrecke',
+        1,
         'Ob etwas verständlich ist, kann nur ein Mensch beurteilen.',
       ),
-      ja(
-        'Automatisierte Tests verursachen vor allem beim Erstellen und Pflegen Aufwand.',
-        'Die Ausführung selbst kostet danach kaum noch Zeit.',
+      zu(
+        'Unit-Tests der Preisberechnung',
+        0,
+        'Viele feste Eingaben mit festem Soll - ideal für Automatisierung.',
       ),
-      nein(
-        'Automatisierte Tests machen manuelle Tests vollständig überflüssig.',
-        'Erkundende Tests und Usability-Tests bleiben Menschenarbeit.',
+      zu(
+        'Einmaliger Test einer Sonderaktion, die nie wiederkehrt',
+        1,
+        'Der Aufwand der Automatisierung lohnt sich erst durch Wiederholung.',
       ),
-      nein(
-        'Ein einmaliger Test, der nie wiederholt wird, sollte immer automatisiert werden.',
-        'Der Aufwand für die Automatisierung lohnt sich erst durch häufige Wiederholung.',
+      zu(
+        'Lasttest mit 1.000 gleichzeitigen Nutzern',
+        0,
+        'So viele Nutzer lassen sich nur mit Werkzeugen simulieren.',
+      ),
+      zu(
+        'Freies Erkunden einer neuen Oberfläche',
+        1,
+        'Erkundendes Testen lebt von menschlicher Neugier.',
       ),
     ],
     explanation:
@@ -921,32 +979,36 @@ final List<Question> questionsA05 = [
     explanation:
         'Gültig ist nur der Bereich 1 bis 99, die Grenzen eingeschlossen. Ungültige Klassen sind „zu klein“, „zu groß“ und „keine Zahl“. Grenzwerte wie 1 und 99 gehören zur gültigen Klasse, ihre Nachbarn 0 und 100 zur ungültigen.',
   ),
-  mehrfach(
+  lueckentext(
     'a5-sf-4',
     'ts-testfaelle',
-    prompt:
-        'Welche Aussagen zu Äquivalenzklassen und Grenzwertanalyse sind richtig?',
-    choices: [
-      ja(
-        'Aus jeder Äquivalenzklasse genügt ein Repräsentant.',
-        'Laut Spezifikation verhält sich das Programm für alle Werte einer Klasse gleich.',
+    scenario:
+        'Eine Auszubildende fasst die Regeln für Äquivalenzklassen und Grenzwertanalyse zusammen.',
+    prompt: 'Vervollständigen Sie die Regeln.',
+    text:
+        'Aus jeder Äquivalenzklasse genügt {0}.\n'
+        'Für jede ungültige Klasse wird {1} gebildet.\n'
+        'Die Grenzwertanalyse prüft zusätzlich die {2} der Klassen.\n'
+        'Beide Verfahren gehören zum {3}.',
+    luecken: [
+      wahl(
+        'ein Repräsentant',
+        ['jeder einzelne Wert', 'kein Wert'],
+        'Alle Werte einer Klasse verhalten sich laut Spezifikation gleich.',
       ),
-      ja(
-        'Für jede ungültige Klasse wird ein eigener Testfall gebildet.',
+      wahl(
+        'ein eigener Testfall',
+        ['kein Testfall', 'ein gemeinsamer Testfall'],
         'Kombinierte ungültige Werte können sich gegenseitig verdecken.',
       ),
-      ja(
-        'Die Grenzwertanalyse ergänzt die Äquivalenzklassen um Werte an den Klassengrenzen.',
-        'An den Rändern entstehen typische Fehler wie > statt >=.',
-      ),
-      nein(
-        'Äquivalenzklassen werden aus dem Quellcode abgeleitet.',
-        'Sie stammen aus der Spezifikation - es ist ein Black-Box-Verfahren.',
-      ),
-      nein(
-        'Ungültige Klassen müssen nicht getestet werden, weil der Nutzer sie nicht eingeben soll.',
-        'Gerade falsche Eingaben muss das Programm sauber abweisen.',
-      ),
+      wahl('Ränder', [
+        'Mittelwerte',
+        'Repräsentanten',
+      ], 'An den Rändern entstehen Fehler wie > statt >=.'),
+      wahl('Black-Box-Test', [
+        'White-Box-Test',
+        'Regressionstest',
+      ], 'Grundlage ist die Spezifikation, nicht der Code.'),
     ],
     explanation:
         'Äquivalenzklassen und Grenzwertanalyse sind Black-Box-Verfahren und ergänzen sich: Die Klassen sorgen dafür, dass jeder Fall einmal vorkommt, die Grenzwerte prüfen gezielt die Ränder, an denen Programmierfehler besonders häufig sind.',
@@ -1160,34 +1222,43 @@ final List<Question> questionsA05 = [
     explanation:
         'Endekriterien werden vor dem Test messbar festgelegt und gelten gemeinsam. Solange ein kritischer Fehler offen ist, ist der Test nicht beendet - erst Korrektur, dann Nachtest und Regressionstest.',
   ),
-  mehrfach(
+  freitext(
     'a5-sp-6',
     'ts-protokoll',
-    prompt: 'Was gehört in eine gute Fehlermeldung (Bug-Report)?',
-    choices: [
-      ja(
-        'Die Schritte, mit denen sich der Fehler nachstellen lässt',
-        'Ohne sie kann die Entwicklung den Fehler oft nicht finden.',
+    scenario:
+        'Im Systemtest eines Kundenportals stürzt der PDF-Export ab. Der Tester soll den Fehler so melden, dass die Entwicklung ihn ohne Rückfrage nachstellen kann.',
+    prompt: 'Nennen Sie vier Angaben einer guten Fehlermeldung. (4 P.)',
+    punkte: 4,
+    kriterien: [
+      krit(
+        'Kennung und aussagekräftiger Titel',
+        stichwoerter: ['Kennung', 'Titel', 'Nummer', 'Bezeichnung'],
       ),
-      ja(
+      krit(
+        'Schritte, mit denen sich der Fehler nachstellen lässt',
+        stichwoerter: ['Schritte', 'nachstellen', 'reproduzieren', 'Ablauf'],
+      ),
+      krit(
         'Soll- und Ist-Ergebnis',
-        'Zeigt, worin die Abweichung genau besteht.',
+        stichwoerter: ['Soll', 'Ist-Ergebnis', 'erwartet', 'tatsächlich'],
       ),
-      ja(
+      krit(
         'Testumgebung und Softwareversion',
-        'Viele Fehler treten nur in bestimmten Umgebungen auf.',
+        stichwoerter: ['Umgebung', 'Version', 'Browser', 'Betriebssystem'],
       ),
-      ja(
+      krit(
         'Fehlerklasse und Priorität',
-        'Steuern, wie schnell der Fehler bearbeitet wird.',
+        stichwoerter: ['Fehlerklasse', 'Priorität', 'Schwere'],
       ),
-      nein(
-        'Den Namen des Entwicklers, der den Fehler verursacht hat',
-        'Schuldzuweisungen gehören nicht in eine Fehlermeldung.',
+      krit(
+        'Status, Datum und Name des Testers',
+        stichwoerter: ['Status', 'Datum', 'Tester'],
       ),
     ],
+    loesung:
+        'Kennung und Titel, die Schritte zum Nachstellen, Soll- und Ist-Ergebnis sowie Testumgebung und Softwareversion. Dazu kommen Fehlerklasse, Priorität und Status.',
     explanation:
-        'Eine Fehlermeldung muss so genau sein, dass die Entwicklung den Fehler nachstellen kann: ID und Titel, Schritte, Soll und Ist, Umgebung und Version, Fehlerklasse und Priorität, Status.',
+        'Je Nennung 1 Punkt, höchstens 4. Schuldzuweisungen gehören nicht hinein. Eine Fehlermeldung muss so genau sein, dass die Entwicklung den Fehler nachstellen kann: ID und Titel, Schritte, Soll und Ist, Umgebung und Version, Fehlerklasse und Priorität, Status.',
   ),
   reihenfolge(
     'a5-sp-7',
