@@ -10,6 +10,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'core/env.dart';
 import 'core/router.dart';
 import 'core/theme/app_theme.dart';
+import 'data/models/profile.dart';
 import 'data/repositories/local_store.dart';
 import 'state/providers.dart';
 import 'widgets/brand.dart';
@@ -37,6 +38,7 @@ Future<void> main() async {
 
   final store = await HiveLocalStore.open();
   await store.migrateFrom(await SharedPreferences.getInstance());
+  await resetOutdatedData(store);
 
   runApp(
     ProviderScope(
@@ -44,6 +46,18 @@ Future<void> main() async {
       child: const Ap1TrainerApp(),
     ),
   );
+}
+
+/// Einmaliger Reset: Stammen die Daten auf diesem Gerät aus einem älteren
+/// Datenstand ([UserProfile.kIntroVersion]), wird alles gelöscht - Profil,
+/// Fortschritt, Karteikasten, Durchlauf, Lesezeichen. Danach startet die
+/// App mit Begrüßung und Einführung wie beim ersten Öffnen. Neue Nutzer
+/// (noch kein Profil) sind nicht betroffen.
+Future<void> resetOutdatedData(LocalStore store) async {
+  final p = store.readProfile();
+  if (p != null && p.introVersion < UserProfile.kIntroVersion) {
+    await store.clearAll();
+  }
 }
 
 /// Die Open Font License verlangt, dass der Lizenztext mit der App

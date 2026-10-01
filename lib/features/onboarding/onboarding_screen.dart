@@ -38,6 +38,18 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
   static const _stepCount = 4;
 
+  /// Wer schon einmal eingerichtet hat (z. B. nach einer neuen Einführung),
+  /// findet seine Angaben vorausgefüllt vor.
+  @override
+  void initState() {
+    super.initState();
+    final p = ref.read(profileProvider);
+    _nameController.text = p.displayName;
+    _beruf = p.beruf;
+    _intensitaet = p.intensitaet;
+    if (p.examDate.isAfter(DateTime.now())) _examDate = p.examDate;
+  }
+
   @override
   void dispose() {
     _pageController.dispose();

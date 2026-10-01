@@ -52,7 +52,14 @@ class UserProfile {
     this.reminderHour = 18,
     this.remindersOn = true,
     this.tutorialSeen = false,
+    this.introVersion = UserProfile.kIntroVersion,
   });
+
+  /// Datenstand der App. Wird er erhöht, löscht die App beim nächsten Start
+  /// einmalig alle lokalen Daten von Geräten mit älterem Stand (siehe
+  /// `main.dart`) - alle erleben Begrüßung und Einführung wie neu.
+  /// Stand 2: Reset nach der Testphase (Oktober 2026).
+  static const int kIntroVersion = 2;
 
   final String displayName;
   final Beruf beruf;
@@ -65,6 +72,9 @@ class UserProfile {
 
   /// Die Einführung nach dem Onboarding wurde gezeigt.
   final bool tutorialSeen;
+
+  /// Mit welchem [kIntroVersion] Onboarding und Einführung zuletzt liefen.
+  final int introVersion;
 
   int get daysUntilExam {
     final today = DateTime.now();
@@ -109,6 +119,7 @@ class UserProfile {
     int? reminderHour,
     bool? remindersOn,
     bool? tutorialSeen,
+    int? introVersion,
   }) => UserProfile(
     displayName: displayName ?? this.displayName,
     beruf: beruf ?? this.beruf,
@@ -119,6 +130,7 @@ class UserProfile {
     reminderHour: reminderHour ?? this.reminderHour,
     remindersOn: remindersOn ?? this.remindersOn,
     tutorialSeen: tutorialSeen ?? this.tutorialSeen,
+    introVersion: introVersion ?? this.introVersion,
   );
 
   Map<String, dynamic> toJson() => {
@@ -131,6 +143,7 @@ class UserProfile {
     'reminder_hour': reminderHour,
     'reminders_on': remindersOn,
     'tutorial_seen': tutorialSeen,
+    'intro_version': introVersion,
   };
 
   factory UserProfile.fromJson(Map<String, dynamic> j) => UserProfile(
@@ -147,6 +160,8 @@ class UserProfile {
     reminderHour: (j['reminder_hour'] as num?)?.toInt() ?? 18,
     remindersOn: j['reminders_on'] as bool? ?? true,
     tutorialSeen: j['tutorial_seen'] as bool? ?? false,
+    // Profile von vor der Versionierung gelten als Stand 1.
+    introVersion: (j['intro_version'] as num?)?.toInt() ?? 1,
   );
 
   String encode() => jsonEncode(toJson());
