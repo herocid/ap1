@@ -196,12 +196,8 @@ class ProgressNotifier extends StateNotifier<ProgressState> {
     }
     if (laterRight.length >= 20) earned.add(Achievement.fehlerjaeger);
 
-    final examRuns = s.history.where((r) => r.mode == SessionMode.pruefung);
-    if (examRuns.isNotEmpty) {
-      final avg =
-          examRuns.fold<double>(0, (a, r) => a + r.score) / examRuns.length;
-      if (avg >= 0.5) earned.add(Achievement.simulant);
-    }
+    // „Ernstfall bestanden“ und „Note 1“ wertet [evaluateAchievements] aus
+    // den Prüfungspunkten aus - nur volle Simulationen zählen.
 
     return earned;
   }
@@ -573,6 +569,7 @@ final achievementsProvider = Provider<Map<Achievement, AchievementStatus>>((
     cards: ref.watch(flashcardsProvider),
     areaReadiness: ref.watch(areaReadinessProvider),
     poolSize: ref.watch(poolSizeProvider),
+    pointsById: {for (final q in ref.watch(questionsProvider)) q.id: q.points},
   );
 });
 

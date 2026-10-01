@@ -40,6 +40,7 @@ class QuestionView extends StatefulWidget {
     this.grade,
     this.showExplanation = true,
     this.showCaseContext = true,
+    this.showPoints = true,
     this.shuffleSeed,
   });
 
@@ -56,6 +57,10 @@ class QuestionView extends StatefulWidget {
   /// Ausgangssituation der Fallaufgabe über der Aufgabe zeigen. Die
   /// Prüfungssimulation stellt sie selbst dar und schaltet das ab.
   final bool showCaseContext;
+
+  /// Punkte neben der Fragestellung zeigen. Der Prüfungslauf hat sie schon
+  /// in seiner Kopfzeile und schaltet das ab.
+  final bool showPoints;
 
   /// Zufallswert für die Reihenfolge in der Anzeige, z. B. einer je
   /// Durchgang. Jede Aufgabe mischt damit anders (die Aufgaben-ID geht mit
@@ -147,8 +152,10 @@ class _QuestionViewState extends State<QuestionView> {
                 ],
               ),
             ),
-            const SizedBox(width: Gap.s),
-            PointsBadge(question.points),
+            if (widget.showPoints) ...[
+              const SizedBox(width: Gap.s),
+              PointsBadge(question.points),
+            ],
           ],
         ),
         gap,

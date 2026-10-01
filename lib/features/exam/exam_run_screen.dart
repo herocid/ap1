@@ -566,6 +566,8 @@ class _Run extends StatelessWidget {
                     showExplanation: false,
                     shuffleSeed: QuestionHost.seedFor(session.startedAt, q),
                     showCaseContext: false,
+                    // Die Punkte stehen schon in der Kopfzeile.
+                    showPoints: false,
                   ),
                 ],
               ),
