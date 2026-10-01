@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../core/theme/app_colors.dart';
 import '../core/theme/app_spacing.dart';
 import '../core/theme/app_theme.dart';
+import 'hyphenation.dart';
 
 /// Standardkarte. Fasst Padding, Rahmen und Radius an einer Stelle zusammen,
 /// damit nicht jeder Screen sein eigenes Container-Rezept erfindet.
@@ -968,7 +969,7 @@ class NoteBox extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 if (title != null) ...[
-                  Text(
+                  HyphenText(
                     title!,
                     style: context.text.titleMedium?.copyWith(color: fg),
                   ),
