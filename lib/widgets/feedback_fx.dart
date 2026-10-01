@@ -113,7 +113,7 @@ class AnimatedCount extends StatelessWidget {
   Widget build(BuildContext context) {
     if (_reduced(context)) return Text('${value.round()}$suffix', style: style);
     return TweenAnimationBuilder<double>(
-      tween: Tween(end: value.toDouble()),
+      tween: Tween(begin: 0, end: value.toDouble()),
       duration: duration,
       curve: Curves.easeOutCubic,
       builder: (context, v, _) => Text('${v.round()}$suffix', style: style),
