@@ -25,11 +25,22 @@ class AppShell extends StatelessWidget {
   /// Reihenfolge nach dem Lernweg: neuen Stoff lernen (Journey), abfragen
   /// (Quiz), wiederholen (Karten), Stand ansehen (Statistik).
   static const destinations = <AppDestination>[
-    (icon: Icons.home_outlined, active: Icons.home_rounded, label: 'Start'),
-    (icon: Icons.route_outlined, active: Icons.route, label: 'Journey'),
-    (icon: Icons.quiz_outlined, active: Icons.quiz, label: 'Quiz'),
-    (icon: Icons.style_outlined, active: Icons.style, label: 'Karten'),
-    (icon: Icons.insights_outlined, active: Icons.insights, label: 'Statistik'),
+    // Aktiver Reiter: dasselbe Symbol, hervorgehoben durch Pille und Farbe.
+    // Die gefüllten Varianten fehlten im Web-Build (Icon-Tree-Shaking) - das
+    // Symbol verschwand genau dann, wenn der Reiter aktiv war.
+    (icon: Icons.home_outlined, active: Icons.home_outlined, label: 'Start'),
+    (
+      icon: Icons.route_outlined,
+      active: Icons.route_outlined,
+      label: 'Journey',
+    ),
+    (icon: Icons.quiz_outlined, active: Icons.quiz_outlined, label: 'Quiz'),
+    (icon: Icons.style_outlined, active: Icons.style_outlined, label: 'Karten'),
+    (
+      icon: Icons.insights_outlined,
+      active: Icons.insights_outlined,
+      label: 'Statistik',
+    ),
   ];
 
   void _onTap(int index) => navigationShell.goBranch(
@@ -256,17 +267,29 @@ class _NavItemState extends State<_NavItem> {
                     ),
                     child: const SizedBox.expand(),
                   ),
-                AnimatedSwitcher(
-                  duration: duration,
-                  child: Icon(
+                // In der Vorschau (Einführung, ohne onTap) ohne Überblendung:
+                // Auf einer Seite, die gerade ins Bild wischt, steht der
+                // Ticker still - das Symbol blieb dann unsichtbar.
+                if (widget.onTap == null)
+                  Icon(
                     selected
                         ? widget.destination.active
                         : widget.destination.icon,
-                    key: ValueKey(selected),
                     size: 24,
                     color: fg,
+                  )
+                else
+                  AnimatedSwitcher(
+                    duration: duration,
+                    child: Icon(
+                      selected
+                          ? widget.destination.active
+                          : widget.destination.icon,
+                      key: ValueKey(selected),
+                      size: 24,
+                      color: fg,
+                    ),
                   ),
-                ),
               ],
             ),
           ),
