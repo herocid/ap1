@@ -138,9 +138,54 @@ class Criterion {
   /// erkennt (Vorschlag für die Selbstbewertung; ein Treffer genügt).
   final List<String> keywords;
 
+  /// Tolerant gegenüber Wortformen ("verschlüsselt" trifft "Verschlüsselung")
+  /// und einzelnen Tippfehlern. Bleibt ein Vorschlag - die Bewertung macht
+  /// der Prüfling anhand der Musterlösung selbst.
   bool foundIn(String answer) {
     final n = normalizeAnswer(answer);
-    return keywords.any((k) => n.contains(normalizeAnswer(k)));
+    if (n.isEmpty) return false;
+    final words = n.split(RegExp(r'[^a-z0-9]+')).where((w) => w.isNotEmpty);
+    return keywords.any((k) {
+      final key = normalizeAnswer(k);
+      if (key.isEmpty) return false;
+      if (n.contains(key)) return true;
+      // Jedes Wort des Stichworts muss sich in der Antwort wiederfinden.
+      final tokens = key
+          .split(RegExp(r'[^a-z0-9]+'))
+          .where((t) => t.isNotEmpty);
+      return tokens.every((t) => words.any((w) => _similar(w, t)));
+    });
+  }
+
+  static bool _similar(String word, String token) {
+    if (word == token) return true;
+    // Kurze Wörter und Zahlen (TCP, 443, /24) nur exakt.
+    if (token.length < 5 || word.length < 4) return false;
+    final stem = token.substring(0, (token.length * 0.7).ceil().clamp(4, 99));
+    if (word.startsWith(stem)) return true;
+    return (word.length - token.length).abs() <= 1 &&
+        _distance(word, token) <= 1;
+  }
+
+  /// Levenshtein-Abstand, abgebrochen sobald er 1 übersteigt.
+  static int _distance(String a, String b) {
+    var prev = List<int>.generate(b.length + 1, (i) => i);
+    for (var i = 1; i <= a.length; i++) {
+      final cur = List<int>.filled(b.length + 1, 0)..[0] = i;
+      var best = cur[0];
+      for (var j = 1; j <= b.length; j++) {
+        final cost = a[i - 1] == b[j - 1] ? 0 : 1;
+        cur[j] = [
+          prev[j] + 1,
+          cur[j - 1] + 1,
+          prev[j - 1] + cost,
+        ].reduce((x, y) => x < y ? x : y);
+        if (cur[j] < best) best = cur[j];
+      }
+      if (best > 1) return 2;
+      prev = cur;
+    }
+    return prev[b.length];
   }
 
   Map<String, dynamic> toJson() => {
