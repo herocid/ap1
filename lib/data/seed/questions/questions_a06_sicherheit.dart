@@ -80,34 +80,45 @@ final List<Question> questionsA06Sicherheit = [
     explanation:
         'Verbindlichkeit bedeutet, dass eine Person eine Handlung nicht abstreiten kann. Technisch wird das mit digitalen Signaturen und Protokollen erreicht.',
   ),
-  mehrfach(
+  markieren(
     'a6-zz-4',
     'sz-schutzziele',
-    prompt: 'Welche Maßnahmen dienen in erster Linie der Verfügbarkeit?',
-    choices: [
+    scenario:
+        'Ein Rechenzentrum listet in seinem Sicherheitskonzept folgende Maßnahmen auf.',
+    prompt:
+        'Markiere alle Maßnahmen, die in erster Linie der Verfügbarkeit dienen.',
+    zeilen: [
       ja(
-        'Unterbrechungsfreie Stromversorgung (USV) für den Server',
-        'Überbrückt Stromausfälle und hält den Dienst am Laufen.',
-      ),
-      ja(
-        'Zweite Internetleitung eines anderen Providers',
-        'Fällt eine Leitung aus, bleibt der Zugang über die andere bestehen.',
-      ),
-      ja(
-        'Regelmäßige Datensicherung',
-        'Nach Datenverlust lassen sich die Daten wieder nutzbar machen.',
+        'Unterbrechungsfreie Stromversorgung (USV)',
+        'Überbrückt Stromausfälle - die Systeme bleiben erreichbar.',
       ),
       nein(
-        'Verschlüsselung der Notebook-Festplatten',
-        'Schützt die Vertraulichkeit bei Diebstahl, nicht die Verfügbarkeit.',
+        'Verschlüsselung der Festplatten',
+        'Schützt vor unbefugtem Lesen - Vertraulichkeit.',
+      ),
+      ja(
+        'Zweite Internetleitung über einen anderen Anbieter',
+        'Redundanz: Fällt eine Leitung aus, übernimmt die andere.',
+      ),
+      ja(
+        'Tägliche Datensicherung mit Wiederherstellungstest',
+        'Nach einem Datenverlust sind die Daten schnell wieder nutzbar.',
       ),
       nein(
-        'Prüfsumme (Hashwert) für einen Download',
-        'Macht Veränderungen sichtbar und dient damit der Integrität.',
+        'Digitale Signatur für ausgehende Rechnungen',
+        'Sichert Integrität und Authentizität.',
+      ),
+      nein(
+        'Zugriffsrechte nach dem Minimalprinzip',
+        'Begrenzt, wer Daten sehen und ändern darf - vor allem Vertraulichkeit.',
+      ),
+      ja(
+        'Klimaanlage mit Ersatzgerät im Serverraum',
+        'Verhindert Ausfälle durch Überhitzung.',
       ),
     ],
     explanation:
-        'Verfügbarkeit sichern Redundanz, Stromversorgung und Datensicherung. Verschlüsselung dient der Vertraulichkeit, Hashwerte der Integrität.',
+        'Verfügbarkeit sichern alle Maßnahmen, die Ausfälle verhindern oder verkürzen: USV, redundante Leitungen und Geräte, Klimatisierung, Datensicherung. Verschlüsselung und Zugriffsrechte dienen der Vertraulichkeit, Signaturen der Integrität.',
   ),
   rechnen(
     'a6-zz-5',
@@ -264,34 +275,21 @@ final List<Question> questionsA06Sicherheit = [
     explanation:
         'Bei Ransomware zählt jede Minute: Netzverbindung trennen, damit sich die Verschlüsselung nicht ausbreitet, und den Vorfall sofort melden.',
   ),
-  mehrfach(
+  lueckentext(
     'a6-zm-4',
     'sz-schadsoftware',
-    prompt: 'Welche Aussagen sind richtig?',
-    choices: [
-      ja(
-        'Ein Botnetz besteht aus vielen ferngesteuerten Rechnern, die z. B. für DDoS-Angriffe genutzt werden.',
-        'Die Rechner werden unbemerkt über einen Steuerserver kontrolliert.',
-      ),
-      ja(
-        'Ein Rootkit verbirgt Schadsoftware vor Betriebssystem und Virenscanner.',
-        'Deshalb ist es besonders schwer zu entdecken.',
-      ),
-      ja(
-        'Ein Keylogger kann Passwörter abgreifen, indem er Tastatureingaben aufzeichnet.',
-        'Genau das ist seine Schadfunktion.',
-      ),
-      nein(
-        'Adware verschlüsselt Daten und fordert Lösegeld.',
-        'Das beschreibt Ransomware - Adware blendet Werbung ein.',
-      ),
-      nein(
-        'Ein Virus verbreitet sich ohne Wirtsdatei selbstständig über das Netz.',
-        'Das beschreibt einen Wurm - ein Virus braucht eine Wirtsdatei.',
-      ),
+    prompt: 'Ergänze die Aussagen zum Schutz vor Schadsoftware.',
+    text:
+        'Ein Virenscanner erkennt bekannte Schadsoftware an ihrer {0}. Noch unbekannte Schädlinge versucht er über die {1} zu erkennen, also an verdächtigem Verhalten. Damit die Erkennung aktuell bleibt, müssen die Signaturen {2} aktualisiert werden. Gegen das Ausnutzen bekannter Sicherheitslücken helfen vor allem zeitnahe {3}. Den Schaden durch Ransomware begrenzt eine {4}, die vom Netz getrennt aufbewahrt wird.',
+    luecken: [
+      wahl('Signatur', ['Dateigröße', 'IP-Adresse']),
+      wahl('Heuristik', ['Signatur', 'Verschlüsselung']),
+      wahl('mehrmals täglich', ['einmal im Jahr', 'nur nach einem Befall']),
+      wahl('Updates', ['Neustarts', 'Passwortwechsel']),
+      wahl('Datensicherung', ['Firewall-Regel', 'Bildschirmsperre']),
     ],
     explanation:
-        'Botnetz: ferngesteuerte Rechner. Rootkit: Tarnung im System. Keylogger: Tastaturmitschnitt. Adware und Virus sind falsch beschrieben.',
+        'Signaturen erkennen bekannte Schadsoftware, die Heuristik (Verhaltensanalyse) auch unbekannte. Beides ersetzt keine Updates: Sie schließen die Lücken, über die Würmer und Exploits eindringen. Gegen Ransomware hilft am Ende nur eine getrennt aufbewahrte Sicherung.',
   ),
   einfach(
     'a6-zm-5',
@@ -386,31 +384,42 @@ final List<Question> questionsA06Sicherheit = [
     explanation:
         'Ransomware erpresst, Spyware späht Daten aus, ein Keylogger zeichnet Eingaben auf, ein Bot wird ferngesteuert und ist Teil eines Botnetzes.',
   ),
-  einfach(
+  freitext(
     'a6-zm-8',
     'sz-schadsoftware',
-    prompt: 'Was ist eine Zero-Day-Lücke?',
-    choices: [
-      ja(
-        'Eine Sicherheitslücke, die dem Hersteller noch unbekannt ist oder für die es noch kein Update gibt',
-        'Der Hersteller hatte „null Tage“ Zeit, sie zu schließen - Angreifer nutzen sie schon aus.',
+    scenario:
+        'In den Nachrichten heißt es, Angreifer nutzten eine „Zero-Day-Lücke“ in einem verbreiteten Browser aus.',
+    prompt:
+        'Erläutere, was eine Zero-Day-Lücke ist und warum sie besonders gefährlich ist. (4 P.)',
+    kriterien: [
+      krit(
+        'Eine Sicherheitslücke, die dem Hersteller noch nicht bekannt ist oder für die es noch kein Update gibt',
+        punkte: 2,
+        stichwoerter: [
+          'noch kein Update',
+          'kein Patch',
+          'Hersteller nicht bekannt',
+          'unbekannt',
+          'noch nicht behoben',
+        ],
       ),
-      nein(
-        'Eine Lücke, die am Tag der Installation automatisch geschlossen wird',
-        'Das Gegenteil: Für eine Zero-Day-Lücke gibt es gerade noch keinen Patch.',
-      ),
-      nein(
-        'Ein Virus, der sich nach null Tagen selbst löscht',
-        'Zero-Day beschreibt eine Lücke, keine Art von Schadsoftware.',
-      ),
-      nein(
-        'Eine Lücke, die nur am ersten Tag des Monats angreifbar ist',
-        'Der Name hat nichts mit einem Datum zu tun.',
+      krit(
+        'Gefährlich, weil sich niemand durch Updates schützen kann und Virenscanner den Angriff meist noch nicht erkennen',
+        punkte: 2,
+        stichwoerter: [
+          'kein Schutz',
+          'nicht schützen',
+          'Virenscanner erkennt',
+          'keine Signatur',
+          'schutzlos',
+        ],
       ),
     ],
-    difficulty: 1,
+    loesung:
+        'Eine Zero-Day-Lücke ist eine Sicherheitslücke, die dem Hersteller noch nicht bekannt ist oder für die es noch kein Update gibt - er hatte „null Tage“ Zeit, sie zu schließen. Sie ist besonders gefährlich, weil sich selbst sorgfältig gepflegte Systeme nicht durch Updates schützen können und Virenscanner den Angriff mangels Signatur meist nicht erkennen.',
     explanation:
-        'Eine Zero-Day-Lücke ist noch nicht geschlossen. Dagegen helfen nur Schutz in mehreren Schichten, minimale Rechte und Verhaltenserkennung, bis ein Update erscheint.',
+        '2 Punkte für die Erklärung des Begriffs, 2 Punkte für die Gefahr. Schutz bieten dann nur weitere Ebenen: Minimalprinzip, Netzsegmentierung, Verhaltensanalyse und Datensicherung.',
+    difficulty: 1,
   ),
 
   // ======================================================= Angriffe und Social Engineering
@@ -502,31 +511,56 @@ final List<Question> questionsA06Sicherheit = [
     explanation:
         'Beim Man-in-the-Middle-Angriff schaltet sich der Angreifer zwischen zwei Kommunikationspartner. Schutz bietet eine Ende-zu-Ende-Verschlüsselung wie TLS mit Zertifikatsprüfung.',
   ),
-  einfach(
+  freitext(
     'a6-za-4',
     'sz-angriffe',
+    scenario:
+        'Das Protokoll eines Kundenportals zeigt mehrere tausend fehlgeschlagene Anmeldungen je Stunde auf dasselbe Benutzerkonto.',
     prompt:
-        'Welche Maßnahme schützt ein Anmeldeportal wirksam gegen Brute-Force-Angriffe?',
-    choices: [
-      ja(
-        'Nach mehreren Fehlversuchen das Konto vorübergehend sperren oder Wartezeiten erzwingen',
-        'Das macht das massenhafte Durchprobieren praktisch unmöglich.',
+        'Nenne drei Maßnahmen, die das Anmeldeportal gegen Brute-Force-Angriffe schützen. (3 P.)',
+    kriterien: [
+      krit(
+        'Konto nach wenigen Fehlversuchen zeitweise sperren',
+        stichwoerter: ['Kontosperre', 'sperren', 'Fehlversuche', 'Sperrung'],
       ),
-      nein(
-        'Passwörter auf höchstens 8 Zeichen begrenzen',
-        'Kurze Passwörter verkleinern den Suchraum und erleichtern den Angriff.',
+      krit(
+        'Wartezeit nach jedem Fehlversuch verlängern',
+        stichwoerter: ['Wartezeit', 'Verzögerung', 'verzögern', 'Zeitsperre'],
       ),
-      nein(
-        'In der Fehlermeldung angeben, ob Benutzername oder Passwort falsch war',
-        'Der Angreifer erfährt so, welche Benutzernamen existieren.',
+      krit(
+        'Zwei-Faktor-Authentifizierung verlangen',
+        stichwoerter: [
+          'Zwei-Faktor',
+          '2FA',
+          'MFA',
+          'zweiter Faktor',
+          'Einmalcode',
+        ],
       ),
-      nein(
-        'Die Anmeldeseite über HTTP statt HTTPS ausliefern',
-        'Das ermöglicht zusätzlich das Mitlesen der Zugangsdaten.',
+      krit(
+        'Lange Passwörter vorschreiben',
+        stichwoerter: [
+          'lange Passwörter',
+          'Passwortlänge',
+          'Passwortrichtlinie',
+          'Mindestlänge',
+        ],
+      ),
+      krit(
+        'CAPTCHA einsetzen oder auffällige IP-Adressen sperren',
+        stichwoerter: [
+          'CAPTCHA',
+          'IP-Adresse sperren',
+          'IP sperren',
+          'Rate Limiting',
+        ],
       ),
     ],
+    punkte: 3,
+    loesung:
+        'Wirksam sind: das Konto nach wenigen Fehlversuchen zeitweise sperren, die Wartezeit nach jedem Fehlversuch verlängern, eine Zwei-Faktor-Authentifizierung verlangen, lange Passwörter vorschreiben und automatisierte Anfragen durch CAPTCHAs oder das Sperren auffälliger IP-Adressen bremsen.',
     explanation:
-        'Brute Force probiert systematisch Kombinationen. Sperren oder Verzögerungen nach Fehlversuchen und lange Passwörter machen den Angriff unwirtschaftlich.',
+        'Je Nennung 1 Punkt, höchstens 3 Punkte. Alle Maßnahmen bremsen das massenhafte Durchprobieren oder machen ein erratenes Passwort allein wertlos.',
   ),
   einfach(
     'a6-za-5',
@@ -781,22 +815,15 @@ final List<Question> questionsA06Sicherheit = [
     explanation:
         'Erst wird erfasst, was es gibt (Strukturanalyse), dann wie schutzbedürftig es ist. Danach werden passende Bausteine gewählt (Modellierung), der Ist-Zustand geprüft (Check) und für Objekte mit hohem oder sehr hohem Schutzbedarf eine Risikoanalyse ergänzt.',
   ),
-  einfach(
+  paare(
     'a6-zb-7',
     'sz-schutzbedarf',
     prompt:
-        'Wie beschreibt das BSI die Schadensauswirkungen der Schutzbedarfskategorie „sehr hoch“?',
-    choices: [
-      ja(
-        'Existenziell bedrohlich, katastrophales Ausmaß',
-        'So beschreibt das BSI die höchste Kategorie.',
-      ),
-      nein('Begrenzt und überschaubar', 'Das ist die Kategorie „normal“.'),
-      nein('Beträchtlich', 'Das ist die Kategorie „hoch“.'),
-      nein(
-        'Kein Schaden zu erwarten',
-        'Eine solche Kategorie gibt es nicht - die niedrigste ist „normal“.',
-      ),
+        'Ordne jeder Schutzbedarfskategorie des BSI die Beschreibung der Schadensauswirkungen zu.',
+    paare: [
+      paar('normal', 'begrenzt und überschaubar'),
+      paar('hoch', 'beträchtlich'),
+      paar('sehr hoch', 'existenziell bedrohlich, katastrophal'),
     ],
     difficulty: 1,
     explanation:
@@ -828,31 +855,18 @@ final List<Question> questionsA06Sicherheit = [
     explanation:
         'Die Firewall prüft von oben nach unten, die erste passende Regel entscheidet. Für Port 80 passt erst Regel 3 (Default Deny).',
   ),
-  einfach(
+  paare(
     'a6-yf-2',
     'sm-firewall',
-    prompt:
-        'Welche Firewall kann den Inhalt von HTTP-Verbindungen prüfen und z. B. Schadcode in einer Webseite erkennen?',
-    choices: [
-      ja(
-        'Application-Level-Gateway (Proxy)',
-        'Es arbeitet auf Schicht 7 und sieht die Inhalte des Anwendungsprotokolls.',
-      ),
-      nein(
-        'Zustandsloser Paketfilter',
-        'Er prüft nur Adressen, Ports und Protokoll im Paketkopf.',
-      ),
-      nein(
-        'Stateful-Inspection-Firewall',
-        'Sie kennt zusätzlich den Verbindungszustand, prüft aber keine Inhalte.',
-      ),
-      nein(
-        'Switch mit VLANs',
-        'Ein Switch trennt Netze, ist aber keine inhaltsprüfende Firewall.',
-      ),
+    prompt: 'Ordne jeder Firewall-Art ihr Merkmal zu.',
+    paare: [
+      paar('Paketfilter', 'prüft nur Adressen und Ports je Paket'),
+      paar('Stateful Inspection', 'merkt sich den Zustand jeder Verbindung'),
+      paar('Application-Firewall', 'prüft auch den Inhalt, z. B. von HTTP'),
+      paar('Personal Firewall', 'läuft als Software auf dem Endgerät'),
     ],
     explanation:
-        'Nur ein Application-Level-Gateway (bzw. eine NGFW mit Anwendungserkennung) prüft Inhalte. Paketfilter und Stateful Inspection arbeiten auf Schicht 3 und 4.',
+        'Der Paketfilter entscheidet je Paket nach Adresse und Port. Stateful Inspection kennt zusätzlich den Verbindungszustand und lässt Antworten automatisch zu. Eine Application-Firewall (Proxy, Schicht 7) versteht das Anwendungsprotokoll und kann Schadcode im Inhalt erkennen. Die Personal Firewall schützt den einzelnen Rechner.',
   ),
   zuordnen(
     'a6-yf-3',
@@ -890,34 +904,21 @@ final List<Question> questionsA06Sicherheit = [
     explanation:
         'In die DMZ gehören nur Server, die aus dem Internet erreichbar sein müssen. Schützenswerte Daten und Arbeitsplätze stehen im internen LAN.',
   ),
-  mehrfach(
+  lueckentext(
     'a6-yf-4',
     'sm-firewall',
-    prompt: 'Welche Aussagen sind richtig?',
-    choices: [
-      ja(
-        'Ein zustandsloser Paketfilter prüft jedes Paket einzeln nach Adressen, Ports und Protokoll.',
-        'Er kennt keinen Zusammenhang zwischen Paketen.',
-      ),
-      ja(
-        'Stateful Inspection lässt Antworten zu einer erlaubten ausgehenden Verbindung automatisch zurück.',
-        'Dafür führt sie eine Tabelle der offenen Verbindungen.',
-      ),
-      ja(
-        'Eine zweistufige DMZ nutzt zwei Firewalls.',
-        'Eine vor und eine hinter der DMZ.',
-      ),
-      nein(
-        'Ein Paketfilter erkennt Schadcode im Inhalt einer Webseite.',
-        'Er sieht nur den Paketkopf, keine Inhalte.',
-      ),
-      nein(
-        'Eine Personal Firewall macht eine Netzwerk-Firewall überflüssig.',
-        'Sie schützt nur das einzelne Gerät und ergänzt die Netzwerk-Firewall.',
-      ),
+    prompt: 'Ergänze die Aussagen zu Firewalls.',
+    text:
+        'Ein Regelwerk wird von oben nach unten abgearbeitet; es gilt die {0} passende Regel. Am Ende steht die Regel „alles {1}“ - dieses Prinzip heißt {2}. Eine Stateful-Firewall lässt Antwortpakete zu einer erlaubten Verbindung {3} durch. Server, die aus dem Internet erreichbar sein müssen, stehen in der {4}.',
+    luecken: [
+      wahl('erste', ['letzte', 'strengste']),
+      wahl('verwerfen', ['erlauben', 'protokollieren']),
+      wahl('Default Deny', ['Default Allow', 'Minimalprinzip']),
+      wahl('automatisch', ['nie', 'nur mit eigener Regel']),
+      wahl('DMZ', ['LAN', 'VPN']),
     ],
     explanation:
-        'Paketfilter und Stateful Inspection prüfen Kopfdaten, nur Proxys und NGFW prüfen Inhalte. Eine zweistufige DMZ hat zwei Firewalls, Personal Firewalls ergänzen den Schutz.',
+        'Regeln werden der Reihe nach geprüft, die erste passende entscheidet. Was keine Regel erlaubt, wird verworfen (Default Deny). Eine Stateful-Firewall merkt sich Verbindungen und lässt die Antworten ohne eigene Regel zurück. Öffentliche Server gehören in die DMZ.',
   ),
   einfach(
     'a6-yf-5',
@@ -1081,30 +1082,22 @@ final List<Question> questionsA06Sicherheit = [
     explanation:
         'Letzte Sicherung war Mittwochabend. Benötigt werden die Vollsicherung vom Sonntag und alle Inkremente seitdem: Montag, Dienstag, Mittwoch. 1 + 3 = 4 Bänder.',
   ),
-  einfach(
+  lueckentext(
     'a6-yb-3',
     'sm-backup',
-    prompt: 'Welcher Aufbau erfüllt die 3-2-1-Regel?',
-    choices: [
-      ja(
-        'Originaldaten auf dem Server, eine Sicherung auf Band, eine zweite verschlüsselt in der Cloud',
-        'Drei Kopien, mehrere verschiedene Medien, eine Kopie außer Haus.',
-      ),
-      nein(
-        'Originaldaten auf dem Server und zwei Sicherungen auf einem NAS im selben Serverraum',
-        'Keine Kopie außer Haus - ein Brand vernichtet alles.',
-      ),
-      nein(
-        'Originaldaten auf dem Server, je eine Sicherung auf Band und auf USB-Platte - beide im Serverschrank',
-        'Drei Kopien auf zwei Medien, aber keine außer Haus - ein Brand vernichtet alles.',
-      ),
-      nein(
-        'Originaldaten auf dem Server und eine Sicherung in der Cloud',
-        'Das sind nur zwei statt drei Kopien.',
-      ),
+    scenario:
+        'Ein Büro bewahrt seine Daten auf dem Server, auf einem NAS im selben Raum und zusätzlich verschlüsselt bei einem Cloud-Anbieter auf.',
+    prompt: 'Ergänze die 3-2-1-Regel.',
+    text:
+        'Von wichtigen Daten gibt es mindestens {0} Kopien, gespeichert auf {1} verschiedenen Arten von Speichermedien; mindestens {2} Kopie liegt außer Haus. Im Beispiel erfüllt die Kopie {3} die Forderung „außer Haus“.',
+    luecken: [
+      zahl(3),
+      zahl(2),
+      zahl(1),
+      wahl('beim Cloud-Anbieter', ['auf dem NAS', 'auf dem Server']),
     ],
     explanation:
-        '3-2-1: drei Kopien der Daten, auf zwei verschiedenen Speichermedien, eine davon außer Haus.',
+        '3-2-1-Regel: 3 Kopien (Original eingeschlossen), 2 verschiedene Medienarten, 1 Kopie an einem anderen Ort. Das NAS im selben Raum schützt nicht vor Brand oder Einbruch - das leistet nur die Kopie beim Cloud-Anbieter.',
   ),
   einfach(
     'a6-yb-4',
@@ -1158,58 +1151,59 @@ final List<Question> questionsA06Sicherheit = [
     explanation:
         'Benötigt werden die Vollsicherung und die letzte differenzielle Sicherung (Freitag). Diese enthält alle Änderungen seit Sonntag: 5 Tage × 12 GB = 60 GB. Zusammen: 300 GB + 60 GB = 360 GB.',
   ),
-  einfach(
+  paare(
     'a6-yb-7',
     'sm-backup',
     prompt:
-        'Wie heißt im Generationenprinzip die monatliche Sicherung, die am längsten aufbewahrt wird?',
-    choices: [
-      ja(
-        'Großvater',
-        'Großväter sind die Monatssicherungen mit der längsten Aufbewahrung.',
-      ),
-      nein('Vater', 'Väter sind die Wochensicherungen.'),
-      nein(
-        'Sohn',
-        'Söhne sind die Tagessicherungen, die am schnellsten überschrieben werden.',
-      ),
-      nein(
-        'Enkel',
-        'Einen Enkel gibt es im Großvater-Vater-Sohn-Prinzip nicht.',
-      ),
+        'Ordne den Generationen im Großvater-Vater-Sohn-Prinzip die Sicherung zu.',
+    paare: [
+      paar('Sohn', 'Tagessicherung, wird am schnellsten überschrieben'),
+      paar('Vater', 'Wochensicherung'),
+      paar('Großvater', 'Monatssicherung, wird am längsten aufbewahrt'),
     ],
     difficulty: 1,
     explanation:
         'Großvater-Vater-Sohn: tägliche Sicherungen (Sohn) werden schnell überschrieben, wöchentliche (Vater) länger und monatliche (Großvater) am längsten aufbewahrt.',
   ),
-  mehrfach(
+  tabelle(
     'a6-yb-8',
     'sm-backup',
-    prompt: 'Welche Aussagen zur Datensicherung sind richtig?',
-    choices: [
-      ja(
-        'Die differenzielle Sicherung setzt das Archivbit nicht zurück.',
-        'Deshalb enthält jede differenzielle Sicherung alle Änderungen seit der letzten Vollsicherung.',
-      ),
-      ja(
-        'Für eine Wiederherstellung aus inkrementellen Sicherungen braucht man die Vollsicherung und alle Inkremente seitdem.',
-        'Jedes Inkrement enthält nur die Änderungen eines Zeitraums.',
-      ),
-      ja(
-        'Regelmäßige Restore-Tests gehören zu jedem Sicherungskonzept.',
-        'Nur ein Test zeigt, ob sich die Sicherung wirklich zurückspielen lässt.',
-      ),
-      nein(
-        'Ein synchronisierter Cloud-Ordner ersetzt eine Datensicherung.',
-        'Er übernimmt auch Löschungen und Verschlüsselungen sofort und bewahrt keine alten Stände.',
-      ),
-      nein(
-        'Bei differenzieller Sicherung wird von Tag zu Tag weniger gesichert.',
-        'Umgekehrt: Die differenzielle Sicherung wächst bis zur nächsten Vollsicherung täglich.',
-      ),
+    prompt: 'Ergänze den Vergleich der drei Sicherungsarten.',
+    zeilen: [
+      ['Merkmal', 'voll', 'differenziell', 'inkrementell'],
+      [
+        'Gesichert wird',
+        'alles',
+        wahl('Änderungen seit der letzten Vollsicherung', [
+          'Änderungen seit der letzten Sicherung',
+          'alles',
+        ]),
+        wahl('Änderungen seit der letzten Sicherung', [
+          'Änderungen seit der letzten Vollsicherung',
+          'alles',
+        ]),
+      ],
+      [
+        'Speicherbedarf',
+        'am größten',
+        wahl('wächst täglich', ['am größten', 'am kleinsten']),
+        wahl('am kleinsten', ['am größten', 'wächst täglich']),
+      ],
+      [
+        'Zur Wiederherstellung nötig',
+        'nur die Vollsicherung',
+        wahl('Voll + letzte Sicherung', [
+          'Voll + alle Sicherungen',
+          'nur die letzte Sicherung',
+        ]),
+        wahl('Voll + alle Sicherungen', [
+          'Voll + letzte Sicherung',
+          'nur die letzte Sicherung',
+        ]),
+      ],
     ],
     explanation:
-        'Differenziell: Archivbit bleibt, Sicherung wächst, Restore mit Voll + letzter Differenz. Inkrementell: Restore mit Voll + allen Inkrementen. Synchronisation ist kein Backup, und jedes Backup muss getestet werden.',
+        'Differenziell: alle Änderungen seit der letzten Vollsicherung, wächst täglich, Wiederherstellung mit Voll + letzter Differenz. Inkrementell: nur Änderungen seit der letzten Sicherung, kleinster Speicherbedarf, Wiederherstellung mit Voll + allen Inkrementen in der richtigen Reihenfolge.',
   ),
 
   // ================================================================ Sicheres WLAN
@@ -1234,34 +1228,60 @@ final List<Question> questionsA06Sicherheit = [
     explanation:
         'Stand der Technik ist WPA3. Wo Altgeräte es nicht können, ist WPA2 mit AES das Minimum. WEP und TKIP sind tabu.',
   ),
-  mehrfach(
+  freitext(
     'a6-yw-2',
     'sm-wlan',
-    prompt: 'Welche Maßnahmen erhöhen die Sicherheit eines WLANs wirksam?',
-    choices: [
-      ja(
-        'WPS im Router deaktivieren',
-        'Die WPS-PIN lässt sich in kurzer Zeit per Brute Force knacken.',
+    scenario:
+        'Eine Arztpraxis betreibt ein WLAN für die Praxisgeräte und möchte Patienten im Wartezimmer Internet anbieten.',
+    prompt:
+        'Nenne vier Maßnahmen, die die Sicherheit des WLAN wirksam erhöhen. (4 P.)',
+    kriterien: [
+      krit(
+        'Aktuelle Verschlüsselung einsetzen: WPA3, mindestens WPA2 mit AES',
+        stichwoerter: ['WPA3', 'WPA2', 'Verschlüsselung', 'AES'],
       ),
-      ja(
-        'Ein eigenes Gastnetz einrichten',
-        'Besuchergeräte bleiben vom internen Netz getrennt.',
+      krit(
+        'Langen, zufälligen WLAN-Schlüssel verwenden',
+        stichwoerter: [
+          'langer Schlüssel',
+          'langes Passwort',
+          'starkes Passwort',
+          'sicheres Passwort',
+          'Passphrase',
+        ],
       ),
-      ja(
-        'Ein langes, zufälliges WLAN-Passwort verwenden',
-        'Erschwert Wörterbuch- und Brute-Force-Angriffe.',
+      krit(
+        'WPS abschalten',
+        stichwoerter: ['WPS', 'abschalten', 'deaktivieren'],
       ),
-      nein(
-        'Die SSID verstecken',
-        'Die SSID taucht trotzdem in den Funkpaketen auf und ist leicht zu ermitteln.',
+      krit(
+        'Getrenntes Gastnetz ohne Zugriff auf das Praxisnetz einrichten',
+        stichwoerter: ['Gastnetz', 'Gast-WLAN', 'getrennt', 'VLAN'],
       ),
-      nein(
-        'Sich allein auf einen MAC-Filter verlassen',
-        'MAC-Adressen lassen sich mitlesen und fälschen.',
+      krit(
+        'Standardpasswort des Access Points ändern und Firmware aktuell halten',
+        stichwoerter: [
+          'Standardpasswort',
+          'Firmware',
+          'Update',
+          'Admin-Passwort',
+        ],
+      ),
+      krit(
+        'Im Unternehmen: Anmeldung je Person über WPA-Enterprise (802.1X, RADIUS)',
+        stichwoerter: [
+          'Enterprise',
+          '802.1X',
+          'RADIUS',
+          'persönliche Zugangsdaten',
+        ],
       ),
     ],
+    punkte: 4,
+    loesung:
+        'Wirksam sind: WPA3 (mindestens WPA2 mit AES), ein langer zufälliger Schlüssel, abgeschaltetes WPS, ein getrenntes Gastnetz ohne Zugriff auf das interne Netz, ein geändertes Administratorpasswort und aktuelle Firmware. Das Verstecken der SSID und MAC-Filter bringen dagegen kaum Sicherheit.',
     explanation:
-        'Wirksam sind starke Verschlüsselung mit langem Passwort, abgeschaltetes WPS und ein getrenntes Gastnetz. Versteckte SSID und MAC-Filter bringen kaum Sicherheit.',
+        'Je Nennung 1 Punkt, höchstens 4 Punkte. Nicht gewertet werden Scheinmaßnahmen wie das Verstecken der SSID oder ein MAC-Filter - beides lässt sich leicht umgehen.',
   ),
   zuordnen(
     'a6-yw-3',
@@ -1330,34 +1350,19 @@ final List<Question> questionsA06Sicherheit = [
     explanation:
         'WPA-Personal nutzt ein gemeinsames Passwort, das nur durch Ändern auf allen Geräten widerrufen werden kann. WPA-Enterprise prüft über 802.1X und RADIUS persönliche Zugangsdaten - ein einzelnes Konto lässt sich sperren.',
   ),
-  mehrfach(
+  paare(
     'a6-yw-6',
     'sm-wlan',
-    prompt: 'Welche Vorteile bietet WPA3-Personal gegenüber WPA2-Personal?',
-    choices: [
-      ja(
-        'Ein mitgeschnittener Anmeldevorgang erlaubt kein Offline-Durchprobieren des Passworts.',
-        'Das Verfahren SAE verlangt für jeden Rateversuch eine echte Anmeldung.',
-      ),
-      ja(
-        'Forward Secrecy: Früher mitgeschnittener Verkehr bleibt geschützt, auch wenn das Passwort später bekannt wird.',
-        'Jede Sitzung bekommt eigene Schlüssel.',
-      ),
-      ja(
-        'Verwaltungspakete sind geschützt, gefälschte Abmeldepakete wirken nicht.',
-        'Protected Management Frames sind bei WPA3 Pflicht.',
-      ),
-      nein(
-        'Es wird gar kein Passwort mehr benötigt.',
-        'WPA3-Personal nutzt weiterhin ein Passwort, nur sicherer.',
-      ),
-      nein(
-        'Auch alte WEP-Geräte können sich damit verbinden.',
-        'WEP-Geräte unterstützen WPA3 nicht - WEP ist gebrochen und gehört ausgemustert.',
-      ),
+    prompt: 'Ordne jedem WLAN-Sicherheitsstandard die Bewertung zu.',
+    paare: [
+      paar('WEP', 'gebrochen, in Minuten zu knacken'),
+      paar('WPA mit TKIP', 'veraltet, nicht mehr einsetzen'),
+      paar('WPA2-Personal', 'gemeinsamer Schlüssel mit AES, noch verbreitet'),
+      paar('WPA3-Personal', 'SAE schützt vor Offline-Wörterbuchangriffen'),
+      paar('WPA3-Enterprise', 'Anmeldung je Person über RADIUS'),
     ],
     explanation:
-        'WPA3-Personal ersetzt den angreifbaren Handshake durch SAE, bietet Forward Secrecy und schützt Verwaltungspakete. Ein Passwort ist weiterhin nötig, es sollte lang und zufällig sein.',
+        'WEP und WPA/TKIP sind unsicher. WPA2-Personal mit AES gilt bei starkem Schlüssel noch als brauchbar. WPA3-Personal ersetzt die Aushandlung durch SAE: Mitgeschnittene Anmeldungen lassen sich nicht mehr offline durchprobieren, und alte Mitschnitte bleiben auch bei bekanntem Passwort geschützt. Enterprise meldet jede Person einzeln über einen RADIUS-Server an.',
   ),
   einfach(
     'a6-yw-7',
@@ -1500,31 +1505,40 @@ final List<Question> questionsA06Sicherheit = [
     explanation:
         'Härtung verkleinert die Angriffsfläche: Unnötiges abschalten, Standardzugänge ändern, Updates einspielen.',
   ),
-  einfach(
+  freitext(
     'a6-yz-4',
     'sm-zugriff',
+    scenario:
+        'Ein Administrator liest E-Mails und surft im Internet, während er mit seinem Administratorkonto angemeldet ist.',
     prompt:
-        'Warum sollen Administratorinnen und Administratoren für E-Mail und Internet ein normales Benutzerkonto verwenden?',
-    choices: [
-      ja(
-        'Weil Schadcode aus einem Anhang oder einer Webseite sonst mit vollen Administratorrechten läuft',
-        'Mit eingeschränkten Rechten kann Schadsoftware deutlich weniger anrichten.',
+        'Erläutere, warum für E-Mail und Internet ein normales Benutzerkonto verwendet werden soll. (3 P.)',
+    kriterien: [
+      krit(
+        'Schadsoftware aus einem Anhang oder von einer Webseite läuft mit den Rechten des angemeldeten Kontos',
+        punkte: 2,
+        stichwoerter: [
+          'Rechten des Kontos',
+          'mit den Rechten',
+          'Schadsoftware',
+          'Malware',
+          'Adminrechte',
+        ],
       ),
-      nein(
-        'Weil Administratorkonten keine E-Mails empfangen können',
-        'Technisch ist das möglich - es ist nur riskant.',
-      ),
-      nein(
-        'Weil Administratorkonten kein Passwort benötigen',
-        'Gerade Administratorkonten brauchen besonders starke Anmeldeverfahren.',
-      ),
-      nein(
-        'Weil das Programm sonst langsamer läuft',
-        'Die Geschwindigkeit hängt nicht von den Kontorechten ab.',
+      krit(
+        'Mit einem normalen Konto bleibt der Schaden begrenzt - mit Administratorrechten wäre das ganze System oder Netz betroffen',
+        stichwoerter: [
+          'Schaden begrenzt',
+          'ganzes System',
+          'systemweit',
+          'gesamtes Netz',
+          'begrenzen',
+        ],
       ),
     ],
+    loesung:
+        'Schadsoftware, die über einen E-Mail-Anhang oder eine präparierte Webseite gestartet wird, läuft mit den Rechten des angemeldeten Kontos. Ist das ein Administratorkonto, kann sie sich im ganzen System einnisten, Schutzprogramme abschalten und weitere Rechner angreifen. Mit einem normalen Benutzerkonto bleibt der Schaden auf dessen Rechte begrenzt (Minimalprinzip).',
     explanation:
-        'Getrennte Konten setzen das Minimalprinzip um: Admin-Rechte nur für Verwaltungsaufgaben, der Alltag läuft ohne erhöhte Rechte.',
+        '2 Punkte für den Grund (Schadsoftware erbt die Rechte des Kontos), 1 Punkt für die Folge (Schaden bleibt begrenzt). Das ist das Minimalprinzip, angewendet auf Administratoren.',
   ),
   einfach(
     'a6-yz-5',
@@ -1584,33 +1598,40 @@ final List<Question> questionsA06Sicherheit = [
     explanation:
         'DAC: Besitzer vergibt Rechte. MAC: System erzwingt Sicherheitsstufen. RBAC: Rechte hängen an Rollen - das übliche Modell in Unternehmen.',
   ),
-  mehrfach(
+  markieren(
     'a6-yz-7',
     'sm-zugriff',
-    prompt: 'Welche Maßnahmen setzen das Minimalprinzip (Least Privilege) um?',
-    choices: [
-      ja(
-        'Der Vertrieb erhält auf die Preisliste nur Leserecht.',
+    scenario:
+        'Bei einer Überprüfung der Benutzerverwaltung eines Handelsunternehmens fallen folgende Punkte auf.',
+    prompt:
+        'Markiere alle Punkte, die gegen das Minimalprinzip (Least Privilege) verstoßen.',
+    zeilen: [
+      nein(
+        'Der Vertrieb hat auf die Preisliste nur Leserecht.',
         'Mehr als Lesen braucht der Vertrieb für seine Aufgabe nicht.',
       ),
       ja(
+        'Alle Azubis haben Adminrechte, damit sie Software selbst installieren können.',
+        'Weit mehr Rechte als nötig - und eine offene Tür für Schadsoftware.',
+      ),
+      nein(
         'Administratoren nutzen für E-Mail und Internet ein normales Konto.',
         'Adminrechte gibt es nur für Verwaltungsaufgaben.',
       ),
       ja(
-        'Beim Abteilungswechsel wird die alte Rolle entzogen.',
-        'So sammeln sich keine überflüssigen Rechte an.',
-      ),
-      nein(
-        'Alle Azubis erhalten Adminrechte, damit sie Software selbst installieren können.',
-        'Das gibt weit mehr Rechte als nötig und öffnet Schadsoftware die Tür.',
-      ),
-      nein(
-        'Die Abteilung nutzt ein gemeinsames Konto mit allen Rechten.',
+        'Die Buchhaltung nutzt ein gemeinsames Konto mit allen Rechten.',
         'Geteilte Konten bündeln Rechte und machen Aktionen unzurechenbar.',
+      ),
+      ja(
+        'Eine Mitarbeiterin hat nach dem Wechsel in den Einkauf weiter Zugriff auf die Personalakten.',
+        'Rechte der alten Rolle müssen entzogen werden.',
+      ),
+      nein(
+        'Das Konto eines ausgeschiedenen Mitarbeiters wurde am letzten Arbeitstag gesperrt.',
+        'Nicht mehr benötigte Konten werden sofort gesperrt.',
       ),
     ],
     explanation:
-        'Minimalprinzip: Jedes Konto bekommt nur die Rechte, die es für seine Aufgabe braucht - und verliert sie, sobald die Aufgabe entfällt.',
+        'Minimalprinzip: Jedes Konto bekommt nur die Rechte, die es für seine Aufgabe braucht - und verliert sie, sobald die Aufgabe entfällt. Verstöße sind pauschale Adminrechte, geteilte Konten mit allen Rechten und mitgeschleppte Rechte nach einem Abteilungswechsel.',
   ),
 ];
