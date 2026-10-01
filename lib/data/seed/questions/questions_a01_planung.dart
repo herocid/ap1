@@ -16,7 +16,7 @@ final List<Question> questionsA01Planung = [
         'Im Projekthandbuch eines Systemhauses soll der Projektstrukturplan (PSP) in wenigen Sätzen erklärt werden.',
     prompt: 'Vervollständige den Text mit den passenden Begriffen.',
     text:
-        'Der PSP zeigt, {0} im Projekt zu tun ist - aber nicht, {1} es erledigt wird.\n'
+        'Der PSP zeigt, {0} im Projekt zu tun ist, aber nicht, {1} es erledigt wird.\n'
         'Seine unterste Ebene bilden die {2}.\n'
         'Reihenfolge und Abhängigkeiten zeigt erst der {3}.',
     luecken: [
@@ -27,7 +27,7 @@ final List<Question> questionsA01Planung = [
     ],
     wortbank: ['Meilensteine', 'Lastenheft', 'warum'],
     explanation:
-        'Der PSP zeigt, WAS zu tun ist - nicht WANN und in welcher Reihenfolge. Seine unterste Ebene sind die Arbeitspakete; Reihenfolge und Termine kommen erst im Netzplan oder Gantt-Diagramm dazu.',
+        'Der PSP zeigt, WAS zu tun ist, nicht WANN und in welcher Reihenfolge. Seine unterste Ebene sind die Arbeitspakete; Reihenfolge und Termine kommen erst im Netzplan oder Gantt-Diagramm dazu.',
   ),
   zuordnen(
     'a1-tp-2',
@@ -82,7 +82,7 @@ final List<Question> questionsA01Planung = [
         stichwoerter: ['Aufwand', 'schätzbar', 'geschätzt'],
       ),
       krit(
-        'Überschaubare Größe - es wird im PSP nicht weiter zerlegt',
+        'Überschaubare Größe: Es wird im PSP nicht weiter zerlegt',
         stichwoerter: [
           'überschaubar',
           'nicht weiter zerlegt',
@@ -116,7 +116,7 @@ final List<Question> questionsA01Planung = [
       ),
       nein(
         'zeitorientiert',
-        'Diese Gliederungsart gibt es nicht - der PSP enthält keine Zeitangaben.',
+        'Diese Gliederungsart gibt es nicht. Der PSP enthält keine Zeitangaben.',
       ),
     ],
     difficulty: 1,
@@ -134,7 +134,7 @@ final List<Question> questionsA01Planung = [
       nein('3.2', 'Das wäre das zweite Element unter Teilaufgabe 3.'),
       nein(
         '2.0.3',
-        'Jede Ebene bekommt genau eine Stelle - eine Null dazwischen gibt es nicht.',
+        'Jede Ebene bekommt genau eine Stelle. Eine Null dazwischen gibt es nicht.',
       ),
       nein('3', 'Das wäre eine eigene Teilaufgabe auf Ebene 1.'),
     ],
@@ -233,7 +233,7 @@ final List<Question> questionsA01Planung = [
       ),
       nein(
         'C, 1 Tag',
-        'C endet genau bei 5, wenn D beginnt - C liegt auf dem kritischen Pfad.',
+        'C endet genau bei 5, wenn D beginnt, also C liegt auf dem kritischen Pfad.',
       ),
       nein(
         'Kein Vorgang hat Puffer',
@@ -252,14 +252,14 @@ final List<Question> questionsA01Planung = [
     zeilen: [
       ja(
         'Pflichtenheft vom Kunden unterschrieben',
-        'Ein prüfbares Ereignis ohne Dauer - erreicht oder nicht.',
+        'Ein prüfbares Ereignis ohne Dauer: Erreicht oder nicht.',
       ),
       nein(
         'Pflichtenheft erstellen',
         'Das ist eine Tätigkeit mit Dauer, also ein Vorgang.',
       ),
       ja('Abnahmetest bestanden', 'Ein abgeschlossenes, prüfbares Ergebnis.'),
-      nein('Testphase', 'Eine Phase hat eine Dauer - ein Meilenstein nicht.'),
+      nein('Testphase', 'Eine Phase hat eine Dauer, ein Meilenstein nicht.'),
       ja(
         'Hardware vollständig geliefert',
         'Ein eindeutig feststellbares Ereignis.',
@@ -322,11 +322,11 @@ final List<Question> questionsA01Planung = [
     choices: [
       ja(
         'Die Prognosen waren unsicher, die Planung hat stark geschwankt.',
-        'Ein Zickzack zeigt instabile Schätzungen - ein Warnsignal für die Planungsqualität.',
+        'Ein Zickzack zeigt instabile Schätzungen, also ein Warnsignal für die Planungsqualität.',
       ),
       nein(
         'Das Projekt war gut geplant, weil der Termin am Ende stimmt.',
-        'Der Endtermin passt zufällig - die Schwankungen zeigen unzuverlässige Prognosen.',
+        'Der Endtermin passt zufällig, aber die Schwankungen zeigen unzuverlässige Prognosen.',
       ),
       nein(
         'Der Meilenstein wurde mehrfach erreicht.',
@@ -367,7 +367,7 @@ final List<Question> questionsA01Planung = [
         'A endet bei 0 + 4 = 4, B bei 0 + 6 = 6.\n'
         'C startet beim späteren Ende seiner Vorgänger, also bei 6, und endet bei 6 + 3 = 9.\n'
         'D startet bei 9 und endet bei 9 + 2 = 11.\n'
-        'Typischer Fehler: C schon bei 4 starten lassen - dann wäre B noch nicht fertig.',
+        'Typischer Fehler: C schon bei 4 starten lassen. Dann wäre B noch nicht fertig.',
   ),
 
   // ================================================== Ressourcen und Aufwand
@@ -458,19 +458,19 @@ final List<Question> questionsA01Planung = [
       ),
       ja(
         'Für KW 12 externe Unterstützung einkaufen',
-        'Zusätzliche Kapazität löst den Engpass - kostet aber Geld.',
+        'Zusätzliche Kapazität löst den Engpass, aber kostet aber Geld.',
       ),
       nein(
         'Die Überlast ignorieren, weil sie nur eine Woche dauert',
-        'Eine Planung über 100 % ist nicht umsetzbar - der Verzug kommt sicher.',
+        'Eine Planung über 100 % ist nicht umsetzbar. Der Verzug kommt sicher.',
       ),
       nein(
         'Einen kritischen Vorgang nach hinten schieben, ohne den Endtermin zu ändern',
-        'Kritische Vorgänge haben keinen Puffer - jede Verschiebung verschiebt das Projektende.',
+        'Kritische Vorgänge haben keinen Puffer: Jede Verschiebung verschiebt das Projektende.',
       ),
     ],
     explanation:
-        'Zuerst werden Lösungen genutzt, die weder Geld noch Termin kosten (Verschieben im Puffer, Umverteilen). Danach folgen zusätzliche Kapazität oder - in Absprache mit dem Auftraggeber - Termin- oder Umfangsänderungen.',
+        'Zuerst werden Lösungen genutzt, die weder Geld noch Termin kosten (Verschieben im Puffer, Umverteilen). Danach folgen zusätzliche Kapazität oder (in Absprache mit dem Auftraggeber) Termin- oder Umfangsänderungen.',
   ),
   einfach(
     'a1-tr-7',
@@ -485,7 +485,7 @@ final List<Question> questionsA01Planung = [
       ),
       nein(
         'Der Verzug ist sofort aufgeholt.',
-        'Neue Leute brauchen Einarbeitung - oft durch die erfahrenen Entwickler.',
+        'Neue Leute brauchen Einarbeitung, oft durch die erfahrenen Entwickler.',
       ),
       nein(
         'Der Aufwand in Personentagen sinkt.',
@@ -525,31 +525,31 @@ final List<Question> questionsA01Planung = [
     zeilen: [
       nein(
         'Der einzige Datenbankexperte könnte während der Migration krank werden.',
-        'Ein mögliches künftiges Ereignis - also ein Risiko.',
+        'Ein mögliches künftiges Ereignis, also ein Risiko.',
       ),
       ja(
         'Die Lizenzschlüssel wurden nicht geliefert.',
-        'Bereits eingetreten - ein Problem.',
+        'Bereits eingetreten, also ein Problem.',
       ),
       nein(
         'Die Schnittstelle zum ERP-System ist möglicherweise inkompatibel.',
-        'Noch ungewiss - ein Risiko.',
+        'Noch ungewiss, also ein Risiko.',
       ),
       ja(
         'Zwei Entwickler sind seit Montag krank.',
-        'Bereits eingetreten - ein Problem.',
+        'Bereits eingetreten, also ein Problem.',
       ),
       ja(
         'Das Budget ist bereits um 10 % überschritten.',
-        'Bereits eingetreten - ein Problem.',
+        'Bereits eingetreten, also ein Problem.',
       ),
       nein(
         'Die Fachabteilung könnte die Schulung absagen.',
-        'Kann eintreten, muss aber nicht - ein Risiko.',
+        'Kann eintreten, muss aber nicht, also ein Risiko.',
       ),
     ],
     explanation:
-        'Ein Risiko liegt in der Zukunft und kann eintreten. Ein Problem ist bereits eingetreten - es gehört in die Problembehandlung, nicht ins Risikoregister.',
+        'Ein Risiko liegt in der Zukunft und kann eintreten. Ein Problem ist bereits eingetreten. Es gehört in die Problembehandlung, nicht ins Risikoregister.',
   ),
   freitext(
     'a1-rp-3',
@@ -636,7 +636,7 @@ final List<Question> questionsA01Planung = [
       ),
     ],
     explanation:
-        'Wer Risiken nach Arten sammelt - technisch, personell, wirtschaftlich, organisatorisch, terminlich, rechtlich -, übersieht weniger. Eingeordnet wird nach der Ursache bzw. dem Hauptbereich der Gefährdung.',
+        'Wer Risiken nach Arten sammelt (technisch, personell, wirtschaftlich, organisatorisch, terminlich, rechtlich), übersieht weniger. Eingeordnet wird nach der Ursache bzw. dem Hauptbereich der Gefährdung.',
   ),
   einfach(
     'a1-rp-5',
@@ -646,11 +646,11 @@ final List<Question> questionsA01Planung = [
     choices: [
       ja(
         'Weil nur ein Admin die Firewall kennt, könnte bei seinem Ausfall die Umstellung stocken, sodass sich der Go-live verschiebt.',
-        'Ursache, Ereignis und Auswirkung sind genannt - das Risiko lässt sich bewerten und gezielt behandeln.',
+        'Ursache, Ereignis und Auswirkung sind genannt: Das Risiko lässt sich bewerten und gezielt behandeln.',
       ),
       nein(
         'Das Projekt könnte scheitern.',
-        'Viel zu ungenau - daraus lässt sich keine Maßnahme ableiten.',
+        'Viel zu ungenau: Daraus lässt sich keine Maßnahme ableiten.',
       ),
       nein(
         'Der Admin ist krank.',
@@ -728,7 +728,7 @@ final List<Question> questionsA01Planung = [
       ),
     ],
     loesung:
-        'Ein Frühwarnindikator ist ein beobachtbares Anzeichen dafür, dass ein Risiko wahrscheinlicher wird. So kann die vorbereitete Maßnahme rechtzeitig gestartet werden. Beispiel: Der Lieferant bestätigt den Liefertermin nicht - Hinweis auf drohenden Lieferverzug.',
+        'Ein Frühwarnindikator ist ein beobachtbares Anzeichen dafür, dass ein Risiko wahrscheinlicher wird. So kann die vorbereitete Maßnahme rechtzeitig gestartet werden. Beispiel: Der Lieferant bestätigt den Liefertermin nicht: Hinweis auf drohenden Lieferverzug.',
     explanation:
         'Zweck 2 Punkte, Beispiel 1 Punkt. Beim Überwachen beobachtet der Risikoeigner die Frühwarnindikatoren; schlagen sie an, wird die geplante Maßnahme ausgelöst.',
   ),
@@ -754,7 +754,7 @@ final List<Question> questionsA01Planung = [
     prompt: 'Welches Risiko sollte zuerst behandelt werden?',
     choices: [
       ja('R1', 'Höchster Risikowert: 0,10 × 80.000 € = 8.000 €.'),
-      nein('R2', 'Risikowert 6.000 € - an zweiter Stelle.'),
+      nein('R2', 'Risikowert 6.000 €, also an zweiter Stelle.'),
       nein('R3', 'Zwar am wahrscheinlichsten, aber nur 3.000 € Risikowert.'),
       nein(
         'Alle drei gleichzeitig, weil sie gleich wichtig sind',
@@ -776,7 +776,7 @@ final List<Question> questionsA01Planung = [
     explanation:
         'Wahrscheinlichkeit hoch = 3, Auswirkung mittel = 2.\n'
         'Risikokennzahl = 3 × 2 = 6.\n'
-        'Mit 6 liegt das Risiko im roten Bereich (6 bis 9) - es braucht sofort eine Maßnahme.',
+        'Mit 6 liegt das Risiko im roten Bereich (6 bis 9): Es braucht sofort eine Maßnahme.',
   ),
   rechnen(
     'a1-rb-4',
@@ -836,7 +836,7 @@ final List<Question> questionsA01Planung = [
       ),
       nein(
         'B hat den höheren Risikowert.',
-        '0,02 × 100.000 € = 2.000 € - genau wie A.',
+        '0,02 × 100.000 € = 2.000 €, also genau wie A.',
       ),
       nein(
         'Beide können ignoriert werden, weil ihr Risikowert klein ist.',
@@ -845,7 +845,7 @@ final List<Question> questionsA01Planung = [
     ],
     difficulty: 3,
     explanation:
-        'A: 0,50 × 4.000 € = 2.000 €. B: 0,02 × 100.000 € = 2.000 €. Die Rechnung macht beide gleich - hier zeigt sich die Schwäche des Risikowerts: Seltene, aber schwere Risiken muss man gesondert betrachten.',
+        'A: 0,50 × 4.000 € = 2.000 €. B: 0,02 × 100.000 € = 2.000 €. Die Rechnung macht beide gleich: Hier zeigt sich die Schwäche des Risikowerts: Seltene, aber schwere Risiken muss man gesondert betrachten.',
   ),
   rechnen(
     'a1-rb-7',
@@ -861,7 +861,7 @@ final List<Question> questionsA01Planung = [
         'R1: 0,15 × 20.000 € = 3.000 €\n'
         'R2: 0,05 × 90.000 € = 4.500 €\n'
         'R3: 0,30 × 8.000 € = 2.400 €\n'
-        'Größter Wert: R2 mit 4.500 € - obwohl es das unwahrscheinlichste Risiko ist.',
+        'Größter Wert: R2 mit 4.500 €, obwohl es das unwahrscheinlichste Risiko ist.',
   ),
 
   // =========================================================== Risikostrategien
@@ -970,7 +970,7 @@ final List<Question> questionsA01Planung = [
     punkte: 4,
     kriterien: [
       krit(
-        'Die Versicherung verhindert den Schaden nicht - das Ereignis kann mit gleicher Wahrscheinlichkeit eintreten.',
+        'Die Versicherung verhindert den Schaden nicht. Das Ereignis kann mit gleicher Wahrscheinlichkeit eintreten.',
         punkte: 2,
         stichwoerter: [
           'verhindert nicht',
@@ -996,9 +996,9 @@ final List<Question> questionsA01Planung = [
       ),
     ],
     loesung:
-        'Die Versicherung ersetzt nur den finanziellen Schaden - der Transportschaden selbst kann genauso wahrscheinlich eintreten wie vorher. Tritt er ein, verzögert sich das Projekt trotzdem, weil die Server neu beschafft werden müssen.',
+        'Die Versicherung ersetzt nur den finanziellen Schaden. Der Transportschaden selbst kann genauso wahrscheinlich eintreten wie vorher. Tritt er ein, verzögert sich das Projekt trotzdem, weil die Server neu beschafft werden müssen.',
     explanation:
-        'Je Grund 2 Punkte, höchstens 4. Übertragen verlagert den finanziellen Schaden, nicht das Ereignis - deshalb kombiniert man Übertragen oft mit Vermindern.',
+        'Je Grund 2 Punkte, höchstens 4. Übertragen verlagert den finanziellen Schaden, nicht das Ereignis. Deshalb kombiniert man Übertragen oft mit Vermindern.',
   ),
   zuordnen(
     'a1-rs-6',
@@ -1120,7 +1120,7 @@ final List<Question> questionsA01Planung = [
         'A: 4.800 € - 5 % (240 €) = 4.560 €; - 2 % Skonto (91,20 €) = 4.468,80 €; + 0 € = 4.468,80 €\n'
         'B: 4.600 € - 3 % Skonto (138 €) = 4.462,00 €; + 80 € = 4.542,00 €\n'
         'A ist günstiger: 4.542,00 € - 4.468,80 € = 73,20 €.\n'
-        'Obwohl B den niedrigeren Listenpreis hat, gewinnt A - erst der Bezugspreis zeigt das.',
+        'Obwohl B den niedrigeren Listenpreis hat, gewinnt A. Erst der Bezugspreis zeigt das.',
   ),
   zuordnen(
     'a1-wk-6',
@@ -1210,7 +1210,7 @@ final List<Question> questionsA01Planung = [
       ),
     ],
     explanation:
-        'Gewichte summieren sich zu 100 %, Punkte werden mit dem Gewicht multipliziert, Muss-Kriterien werden vorab geprüft. Auf der Punkteskala ist höher immer besser - auch beim Preis.',
+        'Gewichte summieren sich zu 100 %, Punkte werden mit dem Gewicht multipliziert, Muss-Kriterien werden vorab geprüft. Auf der Punkteskala ist höher immer besser, auch beim Preis.',
   ),
   rechnen(
     'a1-wn-2',
@@ -1244,7 +1244,7 @@ final List<Question> questionsA01Planung = [
       nein('Q mit 7,10 Punkten', 'Q erreicht 7,10, liegt damit aber hinter P.'),
       nein(
         'Q, weil er bei der Sicherheit mit dem höchsten Gewicht vorn liegt',
-        'Das stärkste Kriterium allein entscheidet nicht - es zählt die Summe.',
+        'Das stärkste Kriterium allein entscheidet nicht. Es zählt die Summe.',
       ),
       nein(
         'Beide liegen gleichauf',
@@ -1280,7 +1280,7 @@ final List<Question> questionsA01Planung = [
       'Alternative mit dem höchsten Nutzwert wählen',
     ],
     explanation:
-        'Kriterien und Gewichte stehen fest, bevor bewertet wird - sonst ließe sich das Ergebnis über die Gewichte steuern. Danach folgen Punkte, Teilnutzwerte, Summe und Entscheidung.',
+        'Kriterien und Gewichte stehen fest, bevor bewertet wird, sonst ließe sich das Ergebnis über die Gewichte steuern. Danach folgen Punkte, Teilnutzwerte, Summe und Entscheidung.',
   ),
   einfach(
     'a1-wn-6',
@@ -1306,11 +1306,11 @@ final List<Question> questionsA01Planung = [
       ),
       nein(
         'Keiner, die Analyse muss neu gemacht werden',
-        'Zwei Anbieter erfüllen das Muss-Kriterium - die Entscheidung ist möglich.',
+        'Zwei Anbieter erfüllen das Muss-Kriterium, also die Entscheidung ist möglich.',
       ),
     ],
     explanation:
-        'Muss-Kriterien werden vorab als K.-o.-Kriterien geprüft. Wer sie verfehlt, scheidet aus - egal wie hoch sein Nutzwert wäre. Unter den übrigen gewinnt der höchste Nutzwert.',
+        'Muss-Kriterien werden vorab als K.-o.-Kriterien geprüft. Wer sie verfehlt, scheidet aus, egal wie hoch sein Nutzwert wäre. Unter den übrigen gewinnt der höchste Nutzwert.',
   ),
 
   // ================================================================== Make or Buy
@@ -1524,7 +1524,7 @@ final List<Question> questionsA01Planung = [
     explanation:
         'Deckungsbeitrag: 90 € - 30 € = 60 €\n'
         'Break-even-Menge: 20.000 € / 60 € = 333,33 Stück\n'
-        'Mit 333 Stück fehlen noch 20 €; erst ab 334 Stück sind die Kosten gedeckt - also aufrunden.',
+        'Mit 333 Stück fehlen noch 20 €; erst ab 334 Stück sind die Kosten gedeckt, also aufrunden.',
   ),
   rechnen(
     'a1-wb-4',
@@ -1598,7 +1598,7 @@ final List<Question> questionsA01Planung = [
       ),
       nein(
         'Die waagerechte Gerade zeigt die variablen Kosten.',
-        'Waagerecht verlaufen die Fixkosten - sie hängen nicht von der Menge ab.',
+        'Waagerecht verlaufen die Fixkosten: Sie hängen nicht von der Menge ab.',
       ),
     ],
     explanation:
@@ -1616,7 +1616,7 @@ final List<Question> questionsA01Planung = [
     punkte: 4,
     kriterien: [
       krit(
-        'Abgenommen wird gegen das Vereinbarte - nur was vereinbart ist, kann der Auftraggeber einfordern.',
+        'Abgenommen wird gegen das Vereinbarte: Nur was vereinbart ist, kann der Auftraggeber einfordern.',
         punkte: 2,
         stichwoerter: ['vereinbart', 'einfordern', 'Maßstab', 'Pflichtenheft'],
       ),
@@ -1632,7 +1632,7 @@ final List<Question> questionsA01Planung = [
       ),
     ],
     loesung:
-        'Bei der Abnahme wird das Ergebnis gegen die vereinbarten Anforderungen geprüft. „Schnell“ hat keinen Zielwert - ob das Kriterium erfüllt ist, bleibt Ansichtssache. Mit „Antwortzeit höchstens 2 s“ lässt sich eindeutig entscheiden, und Streit bei der Abnahme wird vermieden.',
+        'Bei der Abnahme wird das Ergebnis gegen die vereinbarten Anforderungen geprüft. „Schnell“ hat keinen Zielwert. Ob das Kriterium erfüllt ist, bleibt Ansichtssache. Mit „Antwortzeit höchstens 2 s“ lässt sich eindeutig entscheiden, und Streit bei der Abnahme wird vermieden.',
     explanation:
         'Je Grund 2 Punkte, höchstens 4. Abgenommen wird gegen vereinbarte Kriterien. Deshalb müssen Anforderungen und Abnahmekriterien vorher prüfbar formuliert sein.',
   ),
@@ -1683,7 +1683,7 @@ final List<Question> questionsA01Planung = [
       ),
       nein(
         'Der Auftragnehmer haftet ab sofort für keine Mängel mehr.',
-        'Mängelansprüche bestehen weiter - nur die Verjährung beginnt.',
+        'Mängelansprüche bestehen weiter. Nur die Verjährung beginnt.',
       ),
       nein(
         'Das Projektteam ist automatisch aufgelöst.',
@@ -1719,7 +1719,7 @@ final List<Question> questionsA01Planung = [
       ),
     ],
     explanation:
-        'Wesentliche Mängel berechtigen zur Verweigerung, unwesentliche nicht. Bekannte Mängel werden im Abnahmeprotokoll mit Frist zur Behebung festgehalten - sonst sind sie später schwer durchzusetzen.',
+        'Wesentliche Mängel berechtigen zur Verweigerung, unwesentliche nicht. Bekannte Mängel werden im Abnahmeprotokoll mit Frist zur Behebung festgehalten, sonst sind sie später schwer durchzusetzen.',
   ),
   freitext(
     'a1-aa-5',
@@ -1858,7 +1858,7 @@ final List<Question> questionsA01Planung = [
       ], 'Erst die Ursachen helfen künftigen Projekten.'),
     ],
     explanation:
-        'Abweichung = Ist - Soll, relativ bezogen auf das Soll. Ein Soll-Ist-Vergleich nennt Abweichungen und erklärt, wie sie entstanden sind - erst die Ursachen machen ihn für künftige Projekte nützlich.',
+        'Abweichung = Ist - Soll, relativ bezogen auf das Soll. Ein Soll-Ist-Vergleich nennt Abweichungen und erklärt, wie sie entstanden sind. Erst die Ursachen machen ihn für künftige Projekte nützlich.',
   ),
   rechnen(
     'a1-ab-3',
@@ -1915,7 +1915,7 @@ final List<Question> questionsA01Planung = [
       ),
       nein(
         '+10 %, das Budget wurde überschritten',
-        'Das Ist liegt unter dem Soll - eine Unterschreitung.',
+        'Das Ist liegt unter dem Soll, also eine Unterschreitung.',
       ),
       nein('+5.000 €', 'Ist minus Soll ergibt -5.000 €.'),
     ],
@@ -1971,8 +1971,8 @@ final List<Question> questionsA01Planung = [
     prompt: 'Was ist daran problematisch?',
     choices: [
       ja(
-        'Schuldzuweisungen verhindern offene Beiträge - es geht um Ursachen und Verbesserungen.',
-        'Wer Angst vor Schuld hat, schweigt - und die wichtigsten Erkenntnisse gehen verloren.',
+        'Schuldzuweisungen verhindern offene Beiträge. Es geht um Ursachen und Verbesserungen.',
+        'Wer Angst vor Schuld hat, schweigt und die wichtigsten Erkenntnisse gehen verloren.',
       ),
       nein(
         'Nichts, Verantwortliche müssen benannt werden.',
@@ -2003,7 +2003,7 @@ final List<Question> questionsA01Planung = [
       'Dokumentieren und zugänglich machen',
     ],
     explanation:
-        'Aus gesammelten Erfahrungen werden über die Ursachenanalyse konkrete Empfehlungen - und die müssen für andere auffindbar abgelegt werden.',
+        'Aus gesammelten Erfahrungen werden über die Ursachenanalyse konkrete Empfehlungen und die müssen für andere auffindbar abgelegt werden.',
   ),
   zuordnen(
     'a1-al-3',
@@ -2026,7 +2026,7 @@ final List<Question> questionsA01Planung = [
       zu(
         'Anforderungen nur mündlich abstimmen',
         1,
-        'Führte zu Streit über den Umfang - abschaffen.',
+        'Führte zu Streit über den Umfang, also abschaffen.',
       ),
       zu(
         'Wochenendarbeit als Standardlösung bei Verzug',
@@ -2036,12 +2036,12 @@ final List<Question> questionsA01Planung = [
       zu(
         'Tägliche 15-Minuten-Abstimmung im Team',
         2,
-        'Hat sich bewährt - beibehalten.',
+        'Hat sich bewährt, also beibehalten.',
       ),
       zu(
         'Gemeinsame Aufgabenliste im Wiki',
         2,
-        'Hat allen Überblick gegeben - beibehalten.',
+        'Hat allen Überblick gegeben, also beibehalten.',
       ),
     ],
     explanation:
@@ -2055,19 +2055,19 @@ final List<Question> questionsA01Planung = [
     prompt: 'Markiere alle brauchbar formulierten Lessons.',
     zeilen: [
       ja(
-        'Die Firewall-Freigabe dauerte 10 Tage und verzögerte den Go-live - Freigaben künftig beim Projektstart beantragen.',
-        'Situation, Ursache und konkrete Empfehlung - ein fremdes Team kann danach handeln.',
+        'Die Firewall-Freigabe dauerte 10 Tage und verzögerte den Go-live: Freigaben künftig beim Projektstart beantragen.',
+        'Situation, Ursache und konkrete Empfehlung: Ein fremdes Team kann danach handeln.',
       ),
       nein(
         'Die Kommunikation muss besser werden.',
-        'Zu vage - niemand weiß, was konkret zu tun ist.',
+        'Zu vage: Niemand weiß, was konkret zu tun ist.',
       ),
       nein(
         'Herr Meier hat die Freigabe zu spät beantragt.',
         'Eine Schuldzuweisung, keine Lesson.',
       ),
       ja(
-        'Testdaten fehlten bis Woche 6, weil niemand zuständig war - künftig im Kick-off eine verantwortliche Person benennen.',
+        'Testdaten fehlten bis Woche 6, weil niemand zuständig war: künftig im Kick-off eine verantwortliche Person benennen.',
         'Ursache und Empfehlung sind klar benannt.',
       ),
       nein(
@@ -2075,7 +2075,7 @@ final List<Question> questionsA01Planung = [
         'Daraus folgt keine übertragbare Erkenntnis.',
       ),
       ja(
-        'Die tägliche 15-Minuten-Abstimmung hat Rückfragen früh geklärt - beibehalten.',
+        'Die tägliche 15-Minuten-Abstimmung hat Rückfragen früh geklärt, also beibehalten.',
         'Auch Erfolge gehören dazu, mit klarer Empfehlung.',
       ),
     ],

@@ -12,7 +12,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-tp-1',
     't-psp',
     'Nach welchen Prinzipien kannst du einen PSP gliedern?',
-    'Objektorientiert (Bestandteile), funktionsorientiert (Tätigkeiten), phasenorientiert (Projektphasen) - oder gemischt.',
+    'Objektorientiert (Bestandteile), funktionsorientiert (Tätigkeiten), phasenorientiert (Projektphasen), oder gemischt.',
   ),
   karte(
     'k-tp-2',
@@ -24,13 +24,13 @@ final List<Flashcard> cardsA01Planung = [
     'k-tp-3',
     't-psp',
     'Was besagt die 100-%-Regel im PSP?',
-    'Die Elemente einer Ebene decken zusammen genau den Umfang des übergeordneten Elements ab - nichts fehlt, nichts doppelt.',
+    'Die Elemente einer Ebene decken zusammen genau den Umfang des übergeordneten Elements ab. Nichts fehlt, nichts doppelt.',
   ),
   karte(
     'k-tp-4',
     't-psp',
     'Was bedeutet der PSP-Code 2.1.3?',
-    'Teilaufgabe 2, darin Teilaufgabe 1, darin Arbeitspaket 3 - also ein Element auf Ebene 3.',
+    'Teilaufgabe 2, darin Teilaufgabe 1, darin Arbeitspaket 3: also ein Element auf Ebene 3.',
   ),
   karte(
     'k-tp-5',
@@ -116,7 +116,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-tg-1',
     't-gantt',
     'Was bedeutet die Normalfolge (Ende-Anfang)?',
-    'Der Nachfolger beginnt, wenn der Vorgänger endet - die Standardbeziehung im Netzplan und Gantt-Diagramm.',
+    'Der Nachfolger beginnt, wenn der Vorgänger endet. Das ist die Standardbeziehung im Netzplan und Gantt-Diagramm.',
   ),
   karte(
     'k-tg-2',
@@ -128,7 +128,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-tg-3',
     't-gantt',
     'Woran erkennst du in der MTA, dass ein Meilenstein erreicht ist?',
-    'Seine Linie trifft die Diagonale - Berichtszeitpunkt und prognostizierter Termin sind dann gleich.',
+    'Seine Linie trifft die Diagonale: Berichtszeitpunkt und prognostizierter Termin sind dann gleich.',
   ),
   karte(
     'k-tg-4',
@@ -146,19 +146,19 @@ final List<Flashcard> cardsA01Planung = [
     'k-tg-6',
     't-gantt',
     'Ein Vorgang startet zum Zeitpunkt 3 und dauert 5 Tage. Wann endet er?',
-    'Bei 3 + 5 = 8, nicht bei 7 - der Start ist ein Zeitpunkt (nach Tag 3).',
+    'Bei 3 + 5 = 8, nicht bei 7. Der Start ist ein Zeitpunkt (nach Tag 3).',
   ),
   karte(
     'k-tg-7',
     't-gantt',
     'Was bedeutet eine waagerechte Linie in der MTA?',
-    'Der Meilensteintermin hält - die Prognose ändert sich nicht.',
+    'Der Meilensteintermin hält: Die Prognose ändert sich nicht.',
   ),
   karte(
     'k-tg-8',
     't-gantt',
     'Was bedeutet ein Zickzack-Verlauf in der MTA?',
-    'Eine unsichere, schwankende Planung - die Prognosen ändern sich ständig.',
+    'Eine unsichere, schwankende Planung: Die Prognosen ändern sich ständig.',
   ),
   karte(
     'k-tg-9',
@@ -188,7 +188,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-tg-13',
     't-gantt',
     'Formuliere „Pflichtenheft schreiben“ als Meilenstein.',
-    '„Pflichtenheft vom Kunden freigegeben“ - ein prüfbares Ereignis statt einer Tätigkeit.',
+    '„Pflichtenheft vom Kunden freigegeben“ ist ein prüfbares Ereignis statt einer Tätigkeit.',
   ),
 
   // Ressourcen und Aufwand
@@ -203,19 +203,19 @@ final List<Flashcard> cardsA01Planung = [
     'k-tr-2',
     't-ressourcen',
     'Wie berechnest du die benötigte Personenzahl?',
-    'Personen = Aufwand / (Dauer × Verfügbarkeit) - immer aufrunden.',
+    'Personen = Aufwand / (Dauer × Verfügbarkeit). Immer aufrunden.',
   ),
   karte(
     'k-tr-3',
     't-ressourcen',
     'Wie ermittelst du die Nettokapazität?',
-    'Arbeitstage minus Urlaub, Krankheit, Schulung - dann mal Verfügbarkeitsgrad. Ergebnis in Personentagen.',
+    'Arbeitstage minus Urlaub, Krankheit, Schulung. Dann mal Verfügbarkeitsgrad. Ergebnis in Personentagen.',
   ),
   karte(
     'k-tr-4',
     't-ressourcen',
     'Wie gleichst du eine Überlastung von Ressourcen aus?',
-    'Vorgänge im Puffer verschieben, Arbeit umverteilen, Überstunden, Zusatzkapazität - zuletzt Termin oder Umfang ändern.',
+    'Vorgänge im Puffer verschieben, Arbeit umverteilen, Überstunden, Zusatzkapazität; zuletzt Termin oder Umfang ändern.',
   ),
   karte(
     'k-tr-5',
@@ -245,7 +245,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-tr-9',
     't-ressourcen',
     '20 Arbeitstage, davon 5 Urlaub, Verfügbarkeit 80 %. Wie viele PT bringt die Person ein?',
-    '(20 - 5) × 0,8 = 12 PT - erst den Urlaub abziehen, dann multiplizieren.',
+    '(20 - 5) × 0,8 = 12 PT. Erst den Urlaub abziehen, dann multiplizieren.',
   ),
   karte(
     'k-tr-10',
@@ -257,7 +257,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-tr-11',
     't-ressourcen',
     'Die Rechnung ergibt 4,2 benötigte Personen. Wie viele planst du ein?',
-    '5 Personen - immer aufrunden, sonst wird der Termin nicht gehalten.',
+    '5 Personen. Immer aufrunden, sonst wird der Termin nicht gehalten.',
   ),
   karte(
     'k-tr-16',
@@ -275,7 +275,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-tr-18',
     't-ressourcen',
     'Kapazität 40 h pro Woche, in KW 2 sind 56 h verplant. Wie groß ist die Überlast?',
-    '56 h - 40 h = 16 Stunden - Arbeit im Puffer verschieben oder umverteilen.',
+    '56 h - 40 h = 16 Stunden: Arbeit im Puffer verschieben oder umverteilen.',
   ),
 
   // Der Risikomanagement-Prozess
@@ -301,7 +301,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-rp-4',
     'r-prozess',
     'Was ist ein Frühwarnindikator?',
-    'Beobachtbares Zeichen, dass ein Risiko wahrscheinlicher wird - z. B. Lieferant bestätigt den Termin nicht.',
+    'Beobachtbares Zeichen, dass ein Risiko wahrscheinlicher wird, z. B. Lieferant bestätigt den Termin nicht.',
   ),
   karte(
     'k-rp-5',
@@ -313,7 +313,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-rp-6',
     'r-prozess',
     'Was ist ein Risiko im Projekt?',
-    'Ein mögliches künftiges Ereignis, das Leistung, Zeit oder Kosten gefährdet - beschrieben durch Eintrittswahrscheinlichkeit und Auswirkung.',
+    'Ein mögliches künftiges Ereignis, das Leistung, Zeit oder Kosten gefährdet, beschrieben durch Eintrittswahrscheinlichkeit und Auswirkung.',
   ),
   karte(
     'k-rp-7',
@@ -324,7 +324,7 @@ final List<Flashcard> cardsA01Planung = [
   karte(
     'k-rp-8',
     'r-prozess',
-    '„Der Server ist ausgefallen.“ - Risiko oder Problem?',
+    '„Der Server ist ausgefallen.“: Risiko oder Problem?',
     'Ein Problem: bereits eingetreten, es wird sofort gelöst, nicht bewertet. Risiken stehen in der Möglichkeitsform.',
   ),
   karte(
@@ -337,7 +337,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-rp-10',
     'r-prozess',
     'Warum ist „Das Projekt könnte scheitern“ keine brauchbare Risikobeschreibung?',
-    'Ursache und Auswirkung fehlen - daraus lässt sich keine Maßnahme ableiten.',
+    'Ursache und Auswirkung fehlen. Daraus lässt sich keine Maßnahme ableiten.',
   ),
   karte(
     'k-rp-11',
@@ -355,7 +355,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-rp-13',
     'r-prozess',
     'Was passiert, wenn ein Risiko eintritt?',
-    'Es wird zum Problem - dann greift die vorbereitete Notfallmaßnahme.',
+    'Es wird zum Problem. Dann greift die vorbereitete Notfallmaßnahme.',
   ),
   karte(
     'k-rp-14',
@@ -369,7 +369,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-rb-1',
     'r-bewertung',
     'Wie priorisierst du Risiken?',
-    'Nach Risikowert absteigend - existenzbedrohende Risiken zusätzlich immer gesondert behandeln.',
+    'Nach Risikowert absteigend. Existenzbedrohende Risiken zusätzlich immer gesondert behandeln.',
   ),
   karte(
     'k-rb-2',
@@ -399,13 +399,13 @@ final List<Flashcard> cardsA01Planung = [
     'k-rb-6',
     'r-bewertung',
     'R1: 10 % × 80.000 €, R2: 40 % × 15.000 €. Welches Risiko hat Vorrang?',
-    'R1 mit 8.000 € vor R2 mit 6.000 € - es zählt das Produkt, nicht die Wahrscheinlichkeit allein.',
+    'R1 mit 8.000 € vor R2 mit 6.000 €. Es zählt das Produkt, nicht die Wahrscheinlichkeit allein.',
   ),
   karte(
     'k-rb-7',
     'r-bewertung',
     'Wahrscheinlichkeit mittel (2), Auswirkung hoch (3): Kennzahl und Farbe?',
-    '2 × 3 = 6 - rot, es muss sofort eine Maßnahme geplant werden.',
+    '2 × 3 = 6: rot, es muss sofort eine Maßnahme geplant werden.',
   ),
   karte(
     'k-rb-8',
@@ -435,13 +435,13 @@ final List<Flashcard> cardsA01Planung = [
     'k-rb-12',
     'r-bewertung',
     'Wie deutest du einen Risikowert von 10.000 €?',
-    'Als Erwartungswert: Über viele gleichartige Projekte kostet das Risiko im Schnitt 10.000 € - kein sicherer Schaden.',
+    'Als Erwartungswert: Über viele gleichartige Projekte kostet das Risiko im Schnitt 10.000 €, aber kein sicherer Schaden.',
   ),
   karte(
     'k-rb-13',
     'r-bewertung',
     'Was prüfst du zuerst bei einer vorgegebenen Risikomatrix?',
-    'Welche Achse was zeigt - nicht jede Vorlage hat die Wahrscheinlichkeit waagerecht.',
+    'Welche Achse was zeigt: Nicht jede Vorlage hat die Wahrscheinlichkeit waagerecht.',
   ),
 
   // Risikostrategien
@@ -461,7 +461,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-rs-3',
     'r-strategien',
     'Wie berechnest du das Restrisiko?',
-    'Neue Wahrscheinlichkeit × neue Schadenshöhe nach allen Maßnahmen - danach neu einstufen.',
+    'Neue Wahrscheinlichkeit × neue Schadenshöhe nach allen Maßnahmen. Danach neu einstufen.',
   ),
   karte(
     'k-rs-4',
@@ -529,7 +529,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-wk-4',
     'w-kalkulation',
     'Wie vergleichst du Lieferantenangebote quantitativ?',
-    'Für jedes Angebot den Bezugspreis berechnen - erst Rabatt, Skonto und Bezugskosten zeigen, welches wirklich günstiger ist.',
+    'Für jedes Angebot den Bezugspreis berechnen. Erst Rabatt, Skonto und Bezugskosten zeigen, welches wirklich günstiger ist.',
   ),
   karte(
     'k-wk-5',
@@ -601,7 +601,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-wk-16',
     'w-kalkulation',
     'Aus welchen Kostenarten setzen sich Projektkosten zusammen?',
-    'Personalkosten, Sachkosten, Fremdleistungen und Gemeinkosten - meist sind die Personalkosten der größte Posten.',
+    'Personalkosten, Sachkosten, Fremdleistungen und Gemeinkosten. Meist sind die Personalkosten der größte Posten.',
   ),
 
   // Nutzwertanalyse
@@ -651,7 +651,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-wn-8',
     'w-nutzwert',
     'Wie vergibst du beim Kriterium Preis die Punkte?',
-    'Günstig bekommt viele Punkte - auf der Skala ist ein höherer Wert immer besser.',
+    'Günstig bekommt viele Punkte, denn auf der Skala ist ein höherer Wert immer besser.',
   ),
   karte(
     'k-wn-9',
@@ -756,7 +756,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-wm-10',
     'w-makeorbuy',
     'Wann spricht die Kernkompetenz für Make?',
-    'Wenn die Lösung ein Wettbewerbsvorteil ist - Kern-Know-how gibt man nicht aus der Hand.',
+    'Wenn die Lösung ein Wettbewerbsvorteil ist. Kern-Know-how gibt man nicht aus der Hand.',
   ),
   karte(
     'k-wm-11',
@@ -861,7 +861,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-wb-13',
     'w-breakeven',
     'Was sagt eine kurze Amortisationsdauer aus?',
-    'Die Investition ist schnell zurückgeflossen - das Risiko der Investition ist geringer.',
+    'Die Investition ist schnell zurückgeflossen. Das Risiko der Investition ist geringer.',
   ),
   karte(
     'k-wb-14',
@@ -885,7 +885,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-wb-17',
     'w-breakeven',
     'Wie berechnest du den Erlös?',
-    'Preis × verkaufte Menge - auch Umsatz genannt.',
+    'Preis × verkaufte Menge, auch Umsatz genannt.',
   ),
 
   // Abnahme und Übergabe
@@ -899,7 +899,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-aa-2',
     'a-abnahme',
     'Wie gehst du bei der Abnahme mit einem unwesentlichen Mangel um?',
-    'Kein Grund zur Verweigerung - abnehmen und den Mangel mit Frist ins Protokoll aufnehmen (Vorbehalt).',
+    'Kein Grund zur Verweigerung: Abnehmen und den Mangel mit Frist ins Protokoll aufnehmen (Vorbehalt).',
   ),
   karte(
     'k-aa-3',
@@ -923,7 +923,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-aa-6',
     'a-abnahme',
     'Gegen welchen Maßstab wird bei der Abnahme geprüft?',
-    'Gegen die vereinbarten Abnahmekriterien, meist aus dem Pflichtenheft - nicht gegen spätere Wünsche.',
+    'Gegen die vereinbarten Abnahmekriterien, meist aus dem Pflichtenheft, nicht gegen spätere Wünsche.',
   ),
   karte(
     'k-aa-7',
@@ -947,13 +947,13 @@ final List<Flashcard> cardsA01Planung = [
     'k-aa-10',
     'a-abnahme',
     'Welcher Paragraph regelt die Abnahme beim Werkvertrag?',
-    '§ 640 BGB - der Besteller ist verpflichtet, das vertragsgemäß hergestellte Werk abzunehmen.',
+    '§ 640 BGB: der Besteller ist verpflichtet, das vertragsgemäß hergestellte Werk abzunehmen.',
   ),
   karte(
     'k-aa-11',
     'a-abnahme',
     'Was ist ein Pilotbetrieb?',
-    'Ein Bereich startet komplett mit dem neuen System, die anderen folgen nach der Auswertung - ein Test unter Echtbedingungen.',
+    'Ein Bereich startet komplett mit dem neuen System, die anderen folgen nach der Auswertung, also ein Test unter Echtbedingungen.',
   ),
   karte(
     'k-aa-12',
@@ -979,7 +979,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-ab-1',
     'a-bericht',
     'Wie berechnest du die relative Abweichung?',
-    '(Ist - Soll) / Soll × 100 % - Bezugsgröße ist immer das Soll.',
+    '(Ist - Soll) / Soll × 100 %. Bezugsgröße ist immer das Soll.',
   ),
   karte(
     'k-ab-2',
@@ -997,7 +997,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-ab-4',
     'a-bericht',
     'Welche drei Größen vergleicht der Soll-Ist-Vergleich im Abschlussbericht?',
-    'Leistung (Umfang, Qualität), Zeit (Termine) und Kosten (Budget) - die Ecken des magischen Dreiecks.',
+    'Leistung (Umfang, Qualität), Zeit (Termine) und Kosten (Budget), also die Ecken des magischen Dreiecks.',
   ),
   karte(
     'k-ab-5',
@@ -1015,7 +1015,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-ab-7',
     'a-bericht',
     'Welche Leitfragen beantwortet der Abschlussbericht?',
-    'Was sollte erreicht werden, was wurde erreicht - und warum weicht beides voneinander ab?',
+    'Was sollte erreicht werden, was wurde erreicht und warum weicht beides voneinander ab?',
   ),
   karte(
     'k-ab-8',
@@ -1027,7 +1027,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-ab-9',
     'a-bericht',
     'Was bedeutet eine negative Kostenabweichung?',
-    'Es wurde weniger ausgegeben als geplant - das Budget wurde unterschritten.',
+    'Es wurde weniger ausgegeben als geplant, also das Budget wurde unterschritten.',
   ),
   karte(
     'k-ab-10',
@@ -1071,7 +1071,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-ll-2',
     'a-lessons',
     'Was macht eine gute Lesson aus?',
-    'Situation, Ursache und konkrete Empfehlung - verständlich für ein fremdes Team, ohne Schuldzuweisung.',
+    'Situation, Ursache und konkrete Empfehlung, verständlich für ein fremdes Team, ohne Schuldzuweisung.',
   ),
   karte(
     'k-ll-3',
@@ -1095,7 +1095,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-ll-6',
     'a-lessons',
     'Warum werden bei Lessons Learned auch Erfolge gesammelt?',
-    'Erfolgreiche Lösungen sind genauso übertragbar - sonst muss das nächste Team sie neu erfinden.',
+    'Erfolgreiche Lösungen sind genauso übertragbar, sonst muss das nächste Team sie neu erfinden.',
   ),
   karte(
     'k-ll-7',

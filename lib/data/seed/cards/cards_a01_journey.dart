@@ -17,7 +17,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-pb-2',
     'p-begriff',
     'Was ist eine Linienaufgabe?',
-    'Wiederkehrende Tätigkeit, die in der bestehenden Aufbauorganisation erledigt wird - zum Beispiel täglicher Support oder monatliches Patchen.',
+    'Wiederkehrende Tätigkeit, die in der bestehenden Aufbauorganisation erledigt wird, zum Beispiel täglicher Support oder monatliches Patchen.',
   ),
   karte(
     'k-pb-3',
@@ -48,7 +48,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-pb-7',
     'p-begriff',
     'Nenne typische Gründe, warum IT-Projekte scheitern.',
-    'Unklare Ziele, fehlende Unterstützung der Leitung, schlechte Kommunikation, unrealistische Planung - dazu Scope Creep und unbehandelte Risiken.',
+    'Unklare Ziele, fehlende Unterstützung der Leitung, schlechte Kommunikation, unrealistische Planung. Dazu Scope Creep und unbehandelte Risiken.',
   ),
   karte(
     'k-pb-8',
@@ -104,7 +104,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-pz-1',
     'p-ziele',
     'Welche drei Zielarten unterscheidest du bei Projektzielen?',
-    'Sachziel (Leistung und Qualität), Terminziel, Kostenziel - die drei Ecken des magischen Dreiecks.',
+    'Sachziel (Leistung und Qualität), Terminziel, Kostenziel: Die drei Ecken des magischen Dreiecks.',
   ),
   karte(
     'k-pz-2',
@@ -161,7 +161,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-pz-10',
     'p-ziele',
     'Warum heißt das magische Dreieck „magisch“?',
-    'Weil sich Leistung, Zeit und Kosten nicht alle gleichzeitig optimieren lassen - ändert sich eine Ecke, muss eine andere nachgeben.',
+    'Weil sich Leistung, Zeit und Kosten nicht alle gleichzeitig optimieren lassen. Ändert sich eine Ecke, muss eine andere nachgeben.',
   ),
   karte(
     'k-pz-11',
@@ -179,7 +179,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-pz-13',
     'p-ziele',
     'Wofür steht das „A“ in SMART, und warum ist es wichtig?',
-    'Attraktiv bzw. akzeptiert: Die Beteiligten tragen das Ziel mit - sonst fehlt der Wille, es zu erreichen.',
+    'Attraktiv bzw. akzeptiert: Die Beteiligten tragen das Ziel mit. Sonst fehlt der Wille, es zu erreichen.',
   ),
 
   // Organisationsformen
@@ -241,13 +241,13 @@ final List<Flashcard> cardsA01Journey = [
     'k-po-10',
     'p-organisation',
     'Warum passt ein abteilungsübergreifendes Projekt schlecht in die reine Linienorganisation?',
-    'Es braucht Leute aus mehreren Abteilungen zugleich - in der Linie ist unklar, wer sie für das Projekt führt.',
+    'Es braucht Leute aus mehreren Abteilungen zugleich. In der Linie ist unklar, wer sie für das Projekt führt.',
   ),
   karte(
     'k-po-11',
     'p-organisation',
     'Ist „Urlaub genehmigen“ eine fachliche oder eine disziplinarische Weisung?',
-    'Disziplinarisch - wie Beurteilung, Gehalt und Abmahnung. Fachlich sind Aufgaben, Termine und Qualität.',
+    'Disziplinarisch: wie Beurteilung, Gehalt und Abmahnung. Fachlich sind Aufgaben, Termine und Qualität.',
   ),
   karte(
     'k-po-12',
@@ -268,7 +268,7 @@ final List<Flashcard> cardsA01Journey = [
     'p-rollen',
     'Nenne die Kernaufgaben der Projektleitung.',
     'Planen, organisieren, steuern und kontrollieren, berichten.',
-    'Sie führt das Projekt innerhalb des Auftrags - den Auftrag selbst ändert der Auftraggeber.',
+    'Sie führt das Projekt innerhalb des Auftrags. Den Auftrag selbst ändert der Auftraggeber.',
   ),
   karte(
     'k-pr-2',
@@ -335,7 +335,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-pr-12',
     'p-rollen',
     'Was gehört in einen Statusbericht?',
-    'Soll-Ist-Vergleich (Termine, Kosten, Leistung), erledigte und nächste Schritte, Risiken und Entscheidungsbedarf - oft mit Ampel.',
+    'Soll-Ist-Vergleich (Termine, Kosten, Leistung), erledigte und nächste Schritte, Risiken und Entscheidungsbedarf. Oft mit Ampel.',
   ),
   karte(
     'k-pr-13',
@@ -353,7 +353,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-pr-15',
     'p-rollen',
     'Wann sollte die Projektleitung eskalieren?',
-    'Früh, sobald Budget, Termin oder Umfang zu platzen drohen - nicht erst im Abschlussbericht.',
+    'Früh, sobald Budget, Termin oder Umfang zu platzen drohen, nicht erst im Abschlussbericht.',
   ),
 
   // Stakeholder
@@ -373,7 +373,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-ps-3',
     'p-stakeholder',
     'Was legt ein Kommunikationsplan fest?',
-    'Wer welche Information wann und auf welchem Weg erhält - abgeleitet aus der Stakeholderanalyse.',
+    'Wer welche Information wann und auf welchem Weg erhält, abgeleitet aus der Stakeholderanalyse.',
   ),
   karte(
     'k-ps-4',
@@ -416,13 +416,13 @@ final List<Flashcard> cardsA01Journey = [
     'k-ps-10',
     'p-stakeholder',
     'Betriebsrat: Einfluss 4, Interesse 2 (ab 3 gilt hoch). Wie ordnest du ihn ein?',
-    'Zufriedenstellen: hoher Einfluss, geringes Interesse - kurz und regelmäßig informieren, vor Entscheidungen abstimmen.',
+    'Zufriedenstellen: hoher Einfluss, geringes Interesse: Kurz und regelmäßig informieren, vor Entscheidungen abstimmen.',
   ),
   karte(
     'k-ps-11',
     'p-stakeholder',
     'Wie gehst du mit Gegnern des Projekts um?',
-    'Nicht ignorieren: Einwände früh anhören und Betroffene beteiligen - so werden Gegner oft zu Befürwortern.',
+    'Nicht ignorieren: Einwände früh anhören und Betroffene beteiligen. So werden Gegner oft zu Befürwortern.',
   ),
   karte(
     'k-ps-12',
@@ -484,7 +484,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-vp-9',
     'v-phasen',
     'In welcher Projektphase entsteht der Projektstrukturplan?',
-    'In der Planungsphase - zusammen mit Terminplan, Ressourcen-, Kosten- und Risikoplanung.',
+    'In der Planungsphase, zusammen mit Terminplan, Ressourcen-, Kosten- und Risikoplanung.',
   ),
   karte(
     'k-vp-10',
@@ -508,12 +508,12 @@ final List<Flashcard> cardsA01Journey = [
     'k-vp-13',
     'v-phasen',
     'Nenne zwei Vorteile einer Gliederung des Projekts in Phasen.',
-    'Überschaubare Abschnitte, prüfbare Zwischenergebnisse und Entscheidungspunkte - Fehlentwicklungen fallen früh auf.',
+    'Überschaubare Abschnitte, prüfbare Zwischenergebnisse und Entscheidungspunkte: Fehlentwicklungen fallen früh auf.',
   ),
   karte(
     'k-vp-14',
     'v-phasen',
-    '„Access Points montieren, wöchentlich Soll und Ist vergleichen“ - welche Phase?',
+    '„Access Points montieren, wöchentlich Soll und Ist vergleichen“: welche Phase?',
     'Steuerung: Die Umsetzung läuft, der Fortschritt wird überwacht.',
   ),
 
@@ -522,7 +522,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-vw-1',
     'v-wasserfall',
     'Was unterscheidet Lastenheft und Pflichtenheft?',
-    'Lastenheft: vom Auftraggeber - WAS und WOFÜR. Pflichtenheft: vom Auftragnehmer - WIE und WOMIT.',
+    'Lastenheft: vom Auftraggeber: WAS und WOFÜR. Pflichtenheft: vom Auftragnehmer: WIE und WOMIT.',
   ),
   karte(
     'k-vw-2',
@@ -546,7 +546,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-vw-5',
     'v-wasserfall',
     'Ein Analysefehler kostet sofort 100 €. Was kostet er nach der Rule of Ten im Test?',
-    '100 € × 10 × 10 × 10 = 100.000 € - drei Phasen später das Tausendfache.',
+    '100 € × 10 × 10 × 10 = 100.000 €, also drei Phasen später das Tausendfache.',
   ),
   karte(
     'k-vw-6',
@@ -558,13 +558,13 @@ final List<Flashcard> cardsA01Journey = [
     'k-vw-7',
     'v-wasserfall',
     'Was prüft die Testphase im Wasserfall, wenn Module schon getestet sind?',
-    'Das Zusammenspiel und das Gesamtsystem gegen die Anforderungen - genau dort fallen Analysefehler erst auf.',
+    'Das Zusammenspiel und das Gesamtsystem gegen die Anforderungen. Genau dort fallen Analysefehler erst auf.',
   ),
   karte(
     'k-vw-8',
     'v-wasserfall',
     'Wann sieht der Kunde im Wasserfall das Ergebnis?',
-    'Erst am Projektende - ein Nachteil, weil Missverständnisse spät auffallen.',
+    'Erst am Projektende. Das ist ein Nachteil, weil Missverständnisse spät auffallen.',
   ),
   karte(
     'k-vw-9',
@@ -632,7 +632,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-va-8',
     'v-auswahl',
     'Nenne ein Beispiel für inkrementelles Vorgehen.',
-    'Webshop: Sprint 1 liefert die Produktliste, Sprint 2 den Warenkorb - das Produkt wächst Stück für Stück.',
+    'Webshop: Sprint 1 liefert die Produktliste, Sprint 2 den Warenkorb: Das Produkt wächst Stück für Stück.',
   ),
   karte(
     'k-va-9',
@@ -664,7 +664,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-sm-1',
     's-manifest',
     'Wann und warum entstand das agile Manifest?',
-    '2001, verfasst von 17 Softwareentwicklern - als Antwort auf schwerfällige, dokumentlastige Vorgehensweisen.',
+    '2001, verfasst von 17 Softwareentwicklern, als Antwort auf schwerfällige, dokumentlastige Vorgehensweisen.',
   ),
   karte(
     'k-sm-2',
@@ -677,7 +677,7 @@ final List<Flashcard> cardsA01Journey = [
     's-manifest',
     'Reagieren auf Veränderung ...',
     '... ist wichtiger als das Befolgen eines Plans.',
-    'Pläne bleiben wichtig - sie werden nur angepasst, wenn sich die Lage ändert.',
+    'Pläne bleiben wichtig. Sie werden nur angepasst, wenn sich die Lage ändert.',
   ),
   karte(
     'k-sm-4',
@@ -696,7 +696,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-sm-6',
     's-manifest',
     'Was meint das agile Prinzip „nachhaltiges Tempo“?',
-    'Alle Beteiligten sollen ein gleichmäßiges Tempo auf Dauer halten können - keine Dauerüberstunden.',
+    'Alle Beteiligten sollen ein gleichmäßiges Tempo auf Dauer halten können, also keine Dauerüberstunden.',
   ),
   karte(
     'k-sm-7',
@@ -714,7 +714,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-sm-9',
     's-manifest',
     'Wie steht das agile Manifest zu späten Anforderungsänderungen?',
-    'Sie sind willkommen - auch spät in der Entwicklung, wenn sie dem Kunden einen Vorteil bringen.',
+    'Sie sind willkommen, auch spät in der Entwicklung, wenn sie dem Kunden einen Vorteil bringen.',
   ),
   karte(
     'k-sm-10',
@@ -726,7 +726,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-sm-11',
     's-manifest',
     'Wie oft soll laut agilem Manifest Software geliefert werden?',
-    'Regelmäßig, alle paar Wochen oder Monate - je kürzer der Abstand, desto besser.',
+    'Regelmäßig, alle paar Wochen oder Monate. Je kürzer der Abstand, desto besser.',
   ),
   karte(
     'k-sm-12',
@@ -756,7 +756,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-sm-16',
     's-manifest',
     'Was meint das agile Prinzip „Einfachheit“?',
-    'Die Kunst, die Menge nicht getaner Arbeit zu maximieren - also Arbeit vermeiden, die nicht nötig ist.',
+    'Die Kunst, die Menge nicht getaner Arbeit zu maximieren, also Arbeit vermeiden, die nicht nötig ist.',
   ),
   karte(
     'k-sm-17',
@@ -801,13 +801,13 @@ final List<Flashcard> cardsA01Journey = [
     'k-sr-6',
     's-rollen',
     'Wer gehört in Scrum zu den Developers?',
-    'Alle, die im Sprint am Increment arbeiten - auch Tester, Designer oder Administratoren, nicht nur Programmierer.',
+    'Alle, die im Sprint am Increment arbeiten, auch Tester, Designer oder Administratoren, nicht nur Programmierer.',
   ),
   karte(
     'k-sr-7',
     's-rollen',
     'Wer erstellt in Scrum den Plan für den Sprint?',
-    'Die Developers - sie erstellen das Sprint Backlog und passen es täglich an.',
+    'Die Developers: Sie erstellen das Sprint Backlog und passen es täglich an.',
   ),
   karte(
     'k-sr-8',
@@ -843,7 +843,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-sr-13',
     's-rollen',
     'Welcher Scrum-Wert steht für „Arbeit und Probleme offen ansprechen“?',
-    'Offenheit - einer der fünf Scrum-Werte.',
+    'Offenheit ist einer der fünf Scrum-Werte.',
   ),
   karte(
     'k-sr-14',
@@ -900,7 +900,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-sa-7',
     's-artefakte',
     'Wer verantwortet das Product Backlog?',
-    'Der Product Owner - er pflegt es und ordnet die Einträge nach Wert.',
+    'Der Product Owner: Er pflegt es und ordnet die Einträge nach Wert.',
   ),
   karte(
     'k-sa-8',
@@ -962,7 +962,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-se-3',
     's-events',
     'Wer darf einen Sprint abbrechen?',
-    'Nur der Product Owner - wenn das Sprintziel hinfällig geworden ist.',
+    'Nur der Product Owner, und zwar wenn das Sprintziel hinfällig geworden ist.',
   ),
   karte(
     'k-se-4',
@@ -1004,7 +1004,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-se-10',
     's-events',
     'Was betrachtet das Scrum Team in der Sprint Retrospective?',
-    'Personen, Zusammenarbeit, Prozesse, Werkzeuge und die Definition of Done - mit dem Ziel konkreter Verbesserungen.',
+    'Personen, Zusammenarbeit, Prozesse, Werkzeuge und die Definition of Done, mit dem Ziel konkreter Verbesserungen.',
   ),
   karte(
     'k-se-11',
@@ -1103,7 +1103,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-st-10',
     's-stories',
     'Was fassen Story Points zusammen?',
-    'Umfang, Komplexität und Unsicherheit einer Story - relativ zu einer bekannten Referenz-Story.',
+    'Umfang, Komplexität und Unsicherheit einer Story, gemessen relativ zu einer bekannten Referenz-Story.',
   ),
   karte(
     'k-st-11',
@@ -1291,7 +1291,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-nv-11',
     'n-vorwaerts',
     'Was passiert, wenn du am Zusammenfluss den kleineren FEZ nimmst?',
-    'Der Vorgang beginnt, obwohl ein Vorgänger noch läuft - alle folgenden Werte und die Projektdauer werden zu klein.',
+    'Der Vorgang beginnt, obwohl ein Vorgänger noch läuft. Alle folgenden Werte und die Projektdauer werden zu klein.',
   ),
   karte(
     'k-nv-12',
@@ -1318,7 +1318,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-nr-2',
     'n-rueckwaerts',
     'Mit welchem Wert startet die Rückwärtsrechnung?',
-    'Beim letzten Vorgang gilt SEZ = FEZ, also die Projektdauer - sofern kein fester Endtermin vorgegeben ist.',
+    'Beim letzten Vorgang gilt SEZ = FEZ, also die Projektdauer, sofern kein fester Endtermin vorgegeben ist.',
   ),
   karte(
     'k-nr-3',
@@ -1342,7 +1342,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-nr-6',
     'n-rueckwaerts',
     'Wann beginnst du mit der Rückwärtsrechnung?',
-    'Erst nach der kompletten Vorwärtsrechnung - dann vom Endvorgang zum Startvorgang.',
+    'Erst nach der kompletten Vorwärtsrechnung, und dann vom Endvorgang zum Startvorgang.',
   ),
   karte(
     'k-nr-7',
@@ -1451,7 +1451,7 @@ final List<Flashcard> cardsA01Journey = [
   karte(
     'k-np-11',
     'n-puffer',
-    'Mit welchem Wert des Nachfolgers rechnest du den freien Puffer - FAZ oder SAZ?',
+    'Mit welchem Wert des Nachfolgers rechnest du den freien Puffer: FAZ oder SAZ?',
     'Mit dem FAZ. Den SAZ des Nachfolgers zu nehmen ist ein typischer Fehler.',
   ),
   karte(
@@ -1478,19 +1478,19 @@ final List<Flashcard> cardsA01Journey = [
     'k-nk-1',
     'n-kritisch',
     'Was unterscheidet Crashing und Fast Tracking?',
-    'Crashing: mehr Ressourcen auf kritische Vorgänge - kostet Geld. Fast Tracking: kritische Vorgänge teilweise parallel - erhöht das Risiko.',
+    'Crashing: mehr Ressourcen auf kritische Vorgänge: Kostet Geld. Fast Tracking: kritische Vorgänge teilweise parallel: Erhöht das Risiko.',
   ),
   karte(
     'k-nk-2',
     'n-kritisch',
     'Wie findest du den kritischen Pfad per Wegvergleich?',
-    'Die Dauern aller Wege vom Start- zum Endvorgang addieren - der längste Weg ist kritisch.',
+    'Die Dauern aller Wege vom Start- zum Endvorgang addieren. Der längste Weg ist kritisch.',
   ),
   karte(
     'k-nk-3',
     'n-kritisch',
     'Wodurch wird ein Vorgang kritisch?',
-    'Durch einen Gesamtpuffer von 0 - nicht durch eine lange Dauer. Ein langer Vorgang kann viel Puffer haben.',
+    'Durch einen Gesamtpuffer von 0, nicht durch eine lange Dauer. Ein langer Vorgang kann viel Puffer haben.',
   ),
   karte(
     'k-nk-4',
@@ -1502,7 +1502,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-nk-5',
     'n-kritisch',
     'Was bewirkt es, einen unkritischen Vorgang zu beschleunigen?',
-    'Nichts für das Projektende - nur sein Puffer wird größer.',
+    'Nichts für das Projektende. Nur sein Puffer wird größer.',
   ),
   karte(
     'k-nk-6',
@@ -1532,7 +1532,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-nk-10',
     'n-kritisch',
     'Welche Risiken behandelst du in der Terminplanung zuerst?',
-    'Risiken auf dem kritischen Pfad - jede Verzögerung dort verschiebt das Projektende.',
+    'Risiken auf dem kritischen Pfad, denn jede Verzögerung dort verschiebt das Projektende.',
   ),
   karte(
     'k-nk-11',

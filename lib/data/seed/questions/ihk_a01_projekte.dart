@@ -108,7 +108,7 @@ final List<Question> ihkA01Projekte = [
     zeilen: [
       ja(
         'Eine solche Umstellung hat das Autohaus noch nie durchgeführt.',
-        'Einmaligkeit bzw. Neuartigkeit - das Kernmerkmal eines Projekts.',
+        'Einmaligkeit bzw. Neuartigkeit, also das Kernmerkmal eines Projekts.',
       ),
       nein(
         'Die Telefonanlage wird an jedem Werktag von 7 bis 18 Uhr genutzt.',
@@ -116,7 +116,7 @@ final List<Question> ihkA01Projekte = [
       ),
       ja(
         'Am 30.09. müssen alle 42 Nebenstellen umgestellt sein.',
-        'Klares Ziel mit festem Endtermin - zeitliche Begrenzung.',
+        'Klares Ziel mit festem Endtermin, also zeitliche Begrenzung.',
       ),
       ja(
         'Für das Vorhaben stehen 18.000 € und 25 Personentage bereit.',
@@ -124,7 +124,7 @@ final List<Question> ihkA01Projekte = [
       ),
       nein(
         'Der Support setzt jede Woche vergessene Mailbox-PINs zurück.',
-        'Wiederkehrende Routine - eine Linienaufgabe.',
+        'Wiederkehrende Routine, also eine Linienaufgabe.',
       ),
       ja(
         'IT, Verkauf und Werkstatt bilden für die Dauer der Umstellung ein eigenes Team mit Projektleiterin.',
@@ -233,7 +233,7 @@ final List<Question> ihkA01Projekte = [
       ],
     ],
     explanation:
-        'Die Softwareeinführung und der Serverraum-Umzug sind einmalig und haben einen Endtermin - Projekte. Backup-Kontrolle und Gerätebetreuung wiederholen sich bzw. laufen dauerhaft - Linienaufgaben. Ein Meilenstein ist ein Zeitpunkt, kein Vorhaben.',
+        'Die Softwareeinführung und der Serverraum-Umzug sind einmalig und haben einen Endtermin, also Projekte. Backup-Kontrolle und Gerätebetreuung wiederholen sich bzw. laufen dauerhaft, also Linienaufgaben. Ein Meilenstein ist ein Zeitpunkt, kein Vorhaben.',
     punkte: 4,
     difficulty: 1,
   ),
@@ -311,7 +311,7 @@ final List<Question> ihkA01Projekte = [
       ),
     ],
     explanation:
-        'Leistung, Zeit und Kosten hängen zusammen: Wächst die Leistung, muss eine andere Ecke nachgeben - mehr Kosten oder ein späterer Termin. Sonst sinkt die Qualität. Gegen Scope Creep helfen Nicht-Ziele und ein formales Änderungsverfahren.',
+        'Leistung, Zeit und Kosten hängen zusammen: Wächst die Leistung, muss eine andere Ecke nachgeben: Mehr Kosten oder ein späterer Termin. Sonst sinkt die Qualität. Gegen Scope Creep helfen Nicht-Ziele und ein formales Änderungsverfahren.',
     punkte: 5,
   ),
   rechnen(
@@ -351,7 +351,7 @@ final List<Question> ihkA01Projekte = [
       ),
       nein(
         'Wir führen eine Bestell-App ein.',
-        'Eine Maßnahme - sie beschreibt den Weg, keinen prüfbaren Zustand.',
+        'Eine Maßnahme: Sie beschreibt den Weg, keinen prüfbaren Zustand.',
       ),
       nein(
         'Die Lieferanten sollen möglichst bald angebunden sein.',
@@ -382,7 +382,7 @@ final List<Question> ihkA01Projekte = [
     kriterien: [
       krit('Matrix-Projektorganisation', stichwoerter: ['Matrix']),
       krit(
-        'Die Fachleute arbeiten nur anteilig (40 %) mit und bleiben in ihren Abteilungen - das Team wird nicht aus der Linie herausgelöst.',
+        'Die Fachleute arbeiten nur anteilig (40 %) mit und bleiben in ihren Abteilungen: Das Team wird nicht aus der Linie herausgelöst.',
         punkte: 2,
         stichwoerter: [
           'anteilig',
@@ -415,7 +415,7 @@ final List<Question> ihkA01Projekte = [
       ),
     ],
     loesung:
-        'Es passt die Matrix-Projektorganisation. Die sechs Fachleute arbeiten nur zu 40 % mit und bleiben in ihren Abteilungen; eine reine Projektorganisation, die sie ganz herauslöst, wäre zu aufwendig. Zugleich braucht die Projektleiterin fachliche Weisungsbefugnis, um Aufgaben und Termine verbindlich vorzugeben - die hätte sie in der Stabs-/Einflussorganisation nicht.',
+        'Es passt die Matrix-Projektorganisation. Die sechs Fachleute arbeiten nur zu 40 % mit und bleiben in ihren Abteilungen; eine reine Projektorganisation, die sie ganz herauslöst, wäre zu aufwendig. Zugleich braucht die Projektleiterin fachliche Weisungsbefugnis, um Aufgaben und Termine verbindlich vorzugeben. Die hätte sie in der Stabs-/Einflussorganisation nicht.',
     explanation:
         '1 Punkt für die Organisationsform, je Argument 2 Punkte, höchstens 5 Punkte. In der Matrix führt die Projektleitung fachlich, die Linie disziplinarisch.',
     punkte: 5,
@@ -445,7 +445,7 @@ final List<Question> ihkA01Projekte = [
     'i1-po-3',
     'p-organisation',
     scenario:
-        'Die Nordfracht AG wickelt mehrere Projekte gleichzeitig ab - jedes in der Form, die zu ihm passt.',
+        'Die Nordfracht AG wickelt mehrere Projekte gleichzeitig ab, und zwar jedes in der Form, die zu ihm passt.',
     prompt:
         'Ordne jeder Beschreibung die passende Form der Projektorganisation zu.',
     buckets: [
@@ -457,12 +457,12 @@ final List<Question> ihkA01Projekte = [
       zu(
         'Vier Kolleginnen überarbeiten in fünf Wochen nebenbei die Vorlagen im Intranet; ein Koordinator hält die Fäden zusammen.',
         2,
-        'Klein, kurz, nebenbei - eine koordinierende Stelle ohne Weisungsbefugnis genügt.',
+        'Klein, kurz, nebenbei: Eine koordinierende Stelle ohne Weisungsbefugnis genügt.',
       ),
       zu(
         'Zwölf Beschäftigte werden für zwei Jahre freigestellt, um ein neues Rechenzentrum aufzubauen.',
         0,
-        'Groß, lang, in Vollzeit - das Team wird aus der Linie herausgelöst.',
+        'Groß, lang, in Vollzeit: Das Team wird aus der Linie herausgelöst.',
       ),
       zu(
         'Eine Netzwerkadministratorin arbeitet zu 30 % im Projekt „WLAN-Ausbau“ und zu 70 % weiter im Betrieb.',
@@ -477,7 +477,7 @@ final List<Question> ihkA01Projekte = [
       zu(
         'Die Projektleitung kann nur empfehlen; entschieden wird in den Fachabteilungen.',
         2,
-        'Keine Weisungsbefugnis - Kennzeichen der Einflussorganisation.',
+        'Keine Weisungsbefugnis. Das ist ein Kennzeichen der Einflussorganisation.',
       ),
       zu(
         'Über die Arbeitsinhalte bestimmt die Projektleitung, über Gehalt und Urlaub der Abteilungsleiter.',
@@ -497,7 +497,7 @@ final List<Question> ihkA01Projekte = [
     prompt: 'Nenne zwei Vorteile und zwei Nachteile dieser Organisationsform.',
     kriterien: [
       krit(
-        'Vorteil: klare Zuständigkeit - die Projektleitung hat die volle Weisungsbefugnis',
+        'Vorteil: klare Zuständigkeit: Die Projektleitung hat die volle Weisungsbefugnis',
         stichwoerter: [
           'Weisungsbefugnis',
           'klare Zuständigkeit',
@@ -536,7 +536,7 @@ final List<Question> ihkA01Projekte = [
         ],
       ),
       krit(
-        'Nachteil: Rückkehrproblem - nach Projektende müssen alle wieder in die Linie eingegliedert werden',
+        'Nachteil: Rückkehrproblem: Nach Projektende müssen alle wieder in die Linie eingegliedert werden',
         stichwoerter: [
           'Rückkehr',
           'Wiedereingliederung',
@@ -546,7 +546,7 @@ final List<Question> ihkA01Projekte = [
         ],
       ),
       krit(
-        'Nachteil: schwankende Auslastung - Spezialisten sind zeitweise nicht voll beschäftigt',
+        'Nachteil: schwankende Auslastung: Spezialisten sind zeitweise nicht voll beschäftigt',
         stichwoerter: [
           'Auslastung',
           'Leerlauf',
@@ -651,7 +651,7 @@ final List<Question> ihkA01Projekte = [
     zeilen: [
       ja(
         'Das Budget um 6.000 € erhöhen, weil zusätzliche Access Points nötig sind',
-        'Das Budget gehört zum Projektrahmen - darüber entscheidet der Lenkungsausschuss.',
+        'Das Budget gehört zum Projektrahmen. Darüber entscheidet der Lenkungsausschuss.',
       ),
       nein(
         'Die Reihenfolge zweier Arbeitspakete tauschen, ohne dass sich der Endtermin ändert',
@@ -679,7 +679,7 @@ final List<Question> ihkA01Projekte = [
       ),
     ],
     explanation:
-        'Die Projektleitung plant und steuert innerhalb des Auftrags. Budget, Endtermin und Umfang bilden den Rahmen - Änderungen daran entscheidet der Lenkungsausschuss; die Abnahme erklärt der Auftraggeber.',
+        'Die Projektleitung plant und steuert innerhalb des Auftrags. Budget, Endtermin und Umfang bilden den Rahmen. Änderungen daran entscheidet der Lenkungsausschuss; die Abnahme erklärt der Auftraggeber.',
     punkte: 4,
   ),
 
@@ -900,7 +900,7 @@ final List<Question> ihkA01Projekte = [
     loesung:
         'Die Projektleitung informiert früh und offen über Ziele, Nutzen und Zeitplan, etwa in einer Infoveranstaltung. Sie beteiligt die Monteure, zum Beispiel als Testnutzer in einer Pilotphase, und berücksichtigt deren Rückmeldungen. Schulungen und eine feste Ansprechperson nehmen die Sorge, die App sei zu kompliziert; eine Regelung mit dem Betriebsrat schließt Leistungskontrolle aus.',
     explanation:
-        'Je Maßnahme 2 Punkte (Maßnahme und kurze Ausführung), höchstens 4 Punkte. Grundsatz: Betroffene zu Beteiligten machen - geringer Einfluss, hohes Interesse heißt mindestens „informieren“.',
+        'Je Maßnahme 2 Punkte (Maßnahme und kurze Ausführung), höchstens 4 Punkte. Grundsatz: Betroffene zu Beteiligten machen. Geringer Einfluss, hohes Interesse heißt mindestens „informieren“.',
     punkte: 4,
   ),
 
@@ -1000,7 +1000,7 @@ final List<Question> ihkA01Projekte = [
     loesung:
         'In der Abschlussphase nimmt der Auftraggeber das Ergebnis ab, die Projektleitung schreibt den Abschlussbericht und das Team hält seine Erfahrungen in einem Lessons-Learned-Workshop fest. Außerdem wird das Ergebnis mit Dokumentation an den Betrieb übergeben und das Projektteam aufgelöst.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 3 Punkte. Der Abschluss ist eine eigene Phase nach DIN 69901 - ohne Abnahme und Auswertung ist ein Projekt nicht beendet.',
+        'Je Nennung 1 Punkt, höchstens 3 Punkte. Der Abschluss ist eine eigene Phase nach DIN 69901. Ohne Abnahme und Auswertung ist ein Projekt nicht beendet.',
     punkte: 3,
     difficulty: 1,
   ),
@@ -1055,7 +1055,7 @@ final List<Question> ihkA01Projekte = [
       ),
     ],
     loesung:
-        'Das Lastenheft schreibt der Auftraggeber. Es beschreibt, was das System leisten soll und wofür - also die Anforderungen. Das Pflichtenheft schreibt der Auftragnehmer. Es beschreibt, wie und womit er die Anforderungen umsetzt, und wird vom Auftraggeber freigegeben.',
+        'Das Lastenheft schreibt der Auftraggeber. Es beschreibt, was das System leisten soll und wofür, also die Anforderungen. Das Pflichtenheft schreibt der Auftragnehmer. Es beschreibt, wie und womit er die Anforderungen umsetzt, und wird vom Auftraggeber freigegeben.',
     explanation:
         'Je Aspekt 1 Punkt: Verfasser und Inhalt des Lastenhefts, Verfasser und Inhalt des Pflichtenhefts. Merkhilfe: Lastenheft = Was und Wofür, Pflichtenheft = Wie und Womit.',
     punkte: 4,
@@ -1102,7 +1102,7 @@ final List<Question> ihkA01Projekte = [
       ),
       ja(
         'Der Kunde erhält alle zwei Wochen ein lauffähiges Teilprodukt und priorisiert danach neu.',
-        'Das ist das Vorgehen von Scrum - im Wasserfall gibt es lauffähige Software erst am Ende.',
+        'Das ist das Vorgehen von Scrum. Im Wasserfall gibt es lauffähige Software erst am Ende.',
       ),
       nein(
         'Am Ende der Testphase steht ein Testprotokoll.',
@@ -1125,7 +1125,7 @@ final List<Question> ihkA01Projekte = [
     kriterien: [
       krit('Vorgehensmodell: Scrum', stichwoerter: ['Scrum', 'agil']),
       krit(
-        'Die Anforderungen sind unklar und werden sich ändern - in Scrum wird das Product Backlog laufend neu geordnet.',
+        'Die Anforderungen sind unklar und werden sich ändern. In Scrum wird das Product Backlog laufend neu geordnet.',
         punkte: 2,
         stichwoerter: [
           'unklar',
@@ -1169,9 +1169,9 @@ final List<Question> ihkA01Projekte = [
       ),
     ],
     loesung:
-        'Scrum. Die Anforderungen sind erst grob bekannt und werden sich durch das Ausprobieren ändern; ein Pflichtenheft für den Wasserfall lässt sich so nicht schreiben. Die Vertriebsmitarbeiterin kann alle zwei Wochen Rückmeldung geben - das passt zu zweiwöchigen Sprints mit Sprint Review. Außerdem liefert jeder Sprint ein nutzbares Increment, sodass erste Funktionen früh online gehen.',
+        'Scrum. Die Anforderungen sind erst grob bekannt und werden sich durch das Ausprobieren ändern; ein Pflichtenheft für den Wasserfall lässt sich so nicht schreiben. Die Vertriebsmitarbeiterin kann alle zwei Wochen Rückmeldung geben. Das passt zu zweiwöchigen Sprints mit Sprint Review. Außerdem liefert jeder Sprint ein nutzbares Increment, sodass erste Funktionen früh online gehen.',
     explanation:
-        '1 Punkt für das Modell, je Argument 2 Punkte, höchstens 5 Punkte. Gewertet werden nur Argumente aus der Situation - „Scrum ist schneller“ oder „moderner“ zählt nicht.',
+        '1 Punkt für das Modell, je Argument 2 Punkte, höchstens 5 Punkte. Gewertet werden nur Argumente aus der Situation. „Scrum ist schneller“ oder „moderner“ zählt nicht.',
     punkte: 5,
   ),
   tabelle(
@@ -1273,7 +1273,7 @@ final List<Question> ihkA01Projekte = [
       ),
     ],
     loesung:
-        'Für den Wasserfall spricht: Die Anforderungen liegen vollständig vor und der Umfang ändert sich nicht. Der Kunde verlangt einen Festpreis und einen festen Liefertermin (30. November). Seine Geschäftsleitung will die vollständige Entwurfsdokumentation vor Entwicklungsbeginn, und seine Mitarbeitenden stehen nicht für regelmäßige Treffen bereit - Sprint Reviews wären also kaum möglich.',
+        'Für den Wasserfall spricht: Die Anforderungen liegen vollständig vor und der Umfang ändert sich nicht. Der Kunde verlangt einen Festpreis und einen festen Liefertermin (30. November). Seine Geschäftsleitung will die vollständige Entwurfsdokumentation vor Entwicklungsbeginn, und seine Mitarbeitenden stehen nicht für regelmäßige Treffen bereit. Sprint Reviews wären also kaum möglich.',
     explanation:
         'Je Nennung 1 Punkt, höchstens 3 Punkte. Stabile Anforderungen, Festpreis, Dokumentationspflicht und ein kaum verfügbarer Kunde sind die klassischen Argumente für den Wasserfall.',
     punkte: 3,
@@ -1298,7 +1298,7 @@ final List<Question> ihkA01Projekte = [
       ),
       ja(
         'Requirements are frozen after the first week; later changes are rejected.',
-        'Widerspricht „Reagieren auf Veränderung“ - Änderungen sind auch spät willkommen.',
+        'Widerspricht „Reagieren auf Veränderung“: Änderungen sind auch spät willkommen.',
       ),
       nein(
         'Our customer sees the product every two weeks and gives feedback.',
@@ -1318,7 +1318,7 @@ final List<Question> ihkA01Projekte = [
       ),
     ],
     explanation:
-        'Das Manifest verlangt frühe und regelmäßige Lieferung, Offenheit für Änderungen und funktionierende Software als Fortschrittsmaß. Dokumentation ist nicht verboten - links vor rechts, nicht links statt rechts.',
+        'Das Manifest verlangt frühe und regelmäßige Lieferung, Offenheit für Änderungen und funktionierende Software als Fortschrittsmaß. Dokumentation ist nicht verboten: Links vor rechts, nicht links statt rechts.',
     punkte: 3,
   ),
   paare(
@@ -1371,7 +1371,7 @@ final List<Question> ihkA01Projekte = [
     loesung:
         'Individuen und Interaktionen sind wichtiger als Prozesse und Werkzeuge. Funktionierende Software ist wichtiger als umfassende Dokumentation. Zusammenarbeit mit dem Kunden ist wichtiger als Vertragsverhandlung. Reagieren auf Veränderung ist wichtiger als das Befolgen eines Plans.',
     explanation:
-        'Je Wert 1 Punkt. Die rechte Seite bleibt wertvoll - die linke wird nur höher geschätzt. Das Manifest von 2001 umfasst vier Werte und zwölf Prinzipien.',
+        'Je Wert 1 Punkt. Die rechte Seite bleibt wertvoll. Die linke wird nur höher geschätzt. Das Manifest von 2001 umfasst vier Werte und zwölf Prinzipien.',
     punkte: 4,
     difficulty: 1,
   ),
@@ -1425,7 +1425,7 @@ final List<Question> ihkA01Projekte = [
       ],
     ],
     explanation:
-        'Maria ordnet das Product Backlog nach Wert - Product Owner. Tom sorgt für wirksame Events und beseitigt Hindernisse (impediments) - Scrum Master. Ali, Jana und Chen bauen das Produkt, planen ihren Sprint selbst und halten die Definition of Done ein - Developers.',
+        'Maria ordnet das Product Backlog nach Wert, also Product Owner. Tom sorgt für wirksame Events und beseitigt Hindernisse (impediments), also Scrum Master. Ali, Jana und Chen bauen das Produkt, planen ihren Sprint selbst und halten die Definition of Done ein, also Developers.',
     punkte: 3,
   ),
   freitext(
@@ -1472,7 +1472,7 @@ final List<Question> ihkA01Projekte = [
       ),
     ],
     loesung:
-        'Frau Demir formuliert das Produktziel und macht es dem Team und den Stakeholdern verständlich. Sie pflegt das Product Backlog und ordnet seine Einträge nach ihrem Wert - sie entscheidet also, was als Nächstes gebaut wird. Dabei vertritt sie die Interessen der Stakeholder.',
+        'Frau Demir formuliert das Produktziel und macht es dem Team und den Stakeholdern verständlich. Sie pflegt das Product Backlog und ordnet seine Einträge nach ihrem Wert. Sie entscheidet also, was als Nächstes gebaut wird. Dabei vertritt sie die Interessen der Stakeholder.',
     explanation:
         'Je Aufgabe 2 Punkte, höchstens 4 Punkte. Der Product Owner ist eine Person, kein Gremium, und verantwortet den Wert des Produkts.',
     punkte: 4,
@@ -1536,7 +1536,7 @@ final List<Question> ihkA01Projekte = [
       zu(
         'Fertig getestete und geprüfte Kursbuchung',
         2,
-        'Erfüllt die Definition of Done - Teil des Increments.',
+        'Erfüllt die Definition of Done, also Teil des Increments.',
       ),
       zu(
         'Aufgabe „Datenbankfeld für Kursleiter anlegen“ für diesen Sprint',
@@ -1556,7 +1556,7 @@ final List<Question> ihkA01Projekte = [
       zu(
         'Stornofunktion, die alle Tests bestanden hat und dokumentiert ist',
         2,
-        'Nutzbar und „done“ - gehört zum Increment.',
+        'Nutzbar und „done“, also gehört zum Increment.',
       ),
     ],
     explanation:
@@ -1567,7 +1567,7 @@ final List<Question> ihkA01Projekte = [
     'i1-sa-2',
     's-artefakte',
     scenario:
-        'Im Sprint Review der Kletterhallen-App fragt die Hallenleitung: „Ihr redet von Akzeptanzkriterien und von der Definition of Done - ist das nicht dasselbe?“',
+        'Im Sprint Review der Kletterhallen-App fragt die Hallenleitung: „Ihr redet von Akzeptanzkriterien und von der Definition of Done: Ist das nicht dasselbe?“',
     prompt:
         'Erläutere den Unterschied zwischen der Definition of Done und Akzeptanzkriterien.',
     kriterien: [
@@ -1633,13 +1633,13 @@ final List<Question> ihkA01Projekte = [
     zeilen: [
       ja('Kurs buchen', 'Review, Tests und Dokumentation sind erfüllt.'),
       ja('Kurs stornieren', 'Alle drei Punkte der Definition of Done erfüllt.'),
-      nein('Warteliste', 'Zwei Tests schlagen fehl - nicht „done“.'),
+      nein('Warteliste', 'Zwei Tests schlagen fehl, also nicht „done“.'),
       nein('Gutschein einlösen', 'Das Code-Review fehlt.'),
       nein('Profilbild ändern', 'Die Dokumentation ist nicht aktualisiert.'),
       ja('Lastschrift', 'Alle drei Punkte der Definition of Done erfüllt.'),
     ],
     explanation:
-        'Zum Increment gehört nur, was die Definition of Done vollständig erfüllt. Die drei unfertigen Stories gehen zurück ins Product Backlog und zählen nicht zur Velocity - „fast fertig“ gibt es nicht.',
+        'Zum Increment gehört nur, was die Definition of Done vollständig erfüllt. Die drei unfertigen Stories gehen zurück ins Product Backlog und zählen nicht zur Velocity. „Fast fertig“ gibt es nicht.',
     punkte: 3,
   ),
 
@@ -1700,7 +1700,7 @@ final List<Question> ihkA01Projekte = [
         '                       customers',
     prompt: 'Prüfe den Kalender am Scrum Guide und ergänze die Auswertung.',
     text:
-        'Das Sprint Planning dauert {0} Stunden - bei anteiliger Umrechnung ist das für einen 2-Wochen-Sprint zulässig. Das Daily Scrum überschreitet seine Timebox um {1} Minuten. Außerdem ist es kein {2} an eine Führungskraft, sondern ein Event der Developers. Die Retrospektive liegt hier {3} dem Sprint Review; richtig ist die Reihenfolge erst {4}, dann Retrospektive.',
+        'Das Sprint Planning dauert {0} Stunden. Bei anteiliger Umrechnung ist das für einen 2-Wochen-Sprint zulässig. Das Daily Scrum überschreitet seine Timebox um {1} Minuten. Außerdem ist es kein {2} an eine Führungskraft, sondern ein Event der Developers. Die Retrospektive liegt hier {3} dem Sprint Review; richtig ist die Reihenfolge erst {4}, dann Retrospektive.',
     luecken: [
       zahl(4, rationale: '09:00 bis 13:00 Uhr.'),
       zahl(15, rationale: '30 Minuten geplant, 15 Minuten erlaubt.'),
@@ -1709,7 +1709,7 @@ final List<Question> ihkA01Projekte = [
       wahl('Review', ['Planning', 'Daily Scrum']),
     ],
     explanation:
-        'Planning: 8 h × 0,5 = 4 h - passt. Daily: 30 min geplant, 15 min erlaubt, also 15 min zu lang; es dient den Developers, nicht dem Bericht an Vorgesetzte. Die Retrospektive ist das letzte Event des Sprints und folgt auf das Review.',
+        'Planning: 8 h × 0,5 = 4 h, das passt. Daily: 30 min geplant, 15 min erlaubt, also 15 min zu lang; es dient den Developers, nicht dem Bericht an Vorgesetzte. Die Retrospektive ist das letzte Event des Sprints und folgt auf das Review.',
     punkte: 5,
   ),
   reihenfolge(
@@ -1768,7 +1768,7 @@ final List<Question> ihkA01Projekte = [
       ),
     ],
     loesung:
-        'Im Sprint Review prüfen Scrum Team und Stakeholder gemeinsam das Produkt, also das Increment, und beraten die nächsten Schritte. In der Retrospektive spricht nur das Scrum Team über seine Zusammenarbeit - Abläufe, Werkzeuge, Miteinander - und vereinbart Verbesserungen. Wegen der unterschiedlichen Themen und Teilnehmer bleiben es zwei Events.',
+        'Im Sprint Review prüfen Scrum Team und Stakeholder gemeinsam das Produkt, also das Increment, und beraten die nächsten Schritte. In der Retrospektive spricht nur das Scrum Team über seine Zusammenarbeit (Abläufe, Werkzeuge, Miteinander) und vereinbart Verbesserungen. Wegen der unterschiedlichen Themen und Teilnehmer bleiben es zwei Events.',
     explanation:
         'Je Aspekt 1 Punkt: Thema und Teilnehmer des Reviews, Thema und Teilnehmer der Retrospektive. Kurz: Review = Produkt mit Stakeholdern, Retrospektive = Zusammenarbeit im Team.',
     punkte: 4,
@@ -1914,7 +1914,7 @@ final List<Question> ihkA01Projekte = [
       ],
     ],
     explanation:
-        'B und C folgen beide auf A (Verzweigung). D braucht nur die geplanten Kabelwege (C). E wartet auf B und D (Zusammenführung). In die Liste gehören nur direkte Vorgänger - A oder C bei E einzutragen wäre überflüssig.',
+        'B und C folgen beide auf A (Verzweigung). D braucht nur die geplanten Kabelwege (C). E wartet auf B und D (Zusammenführung). In die Liste gehören nur direkte Vorgänger. A oder C bei E einzutragen wäre überflüssig.',
     punkte: 5,
   ),
   markieren(
@@ -1935,7 +1935,7 @@ final List<Question> ihkA01Projekte = [
         'Markiere alle Aussagen, die einen Fehler der Liste zutreffend beschreiben.',
     zeilen: [
       ja(
-        'C und E verweisen gegenseitig aufeinander - eine Schleife, die sich nicht berechnen lässt.',
+        'C und E verweisen gegenseitig aufeinander: Eine Schleife, die sich nicht berechnen lässt.',
         'C wartet auf E, E wartet auf C: Keiner von beiden könnte je beginnen.',
       ),
       nein(
@@ -2041,7 +2041,7 @@ final List<Question> ihkA01Projekte = [
         'FAZ = größter FEZ der Vorgänger, FEZ = FAZ + Dauer.\n'
         'A 0/2, B 2/7, C 2/5, D 7/9, E 5/8.\n'
         'F hat zwei Vorgänger: FAZ = max(FEZ D 9; FEZ E 8) = 9, FEZ = 12.\n'
-        'G 12/14 - die Projektdauer beträgt 14 Arbeitstage.',
+        'G 12/14: die Projektdauer beträgt 14 Arbeitstage.',
     punkte: 6,
   ),
   netzplanAufgabe(
@@ -2084,7 +2084,7 @@ final List<Question> ihkA01Projekte = [
         'Rechne nach und markiere die Vorgänge mit fehlerhaftem FAZ oder FEZ.',
     mono: true,
     zeilen: [
-      nein('A  FAZ 0   FEZ 3', 'Startvorgang: 0 + 3 = 3 - richtig.'),
+      nein('A  FAZ 0   FEZ 3', 'Startvorgang: 0 + 3 = 3, also richtig.'),
       nein('B  FAZ 3   FEZ 5', 'FAZ = FEZ von A = 3, FEZ = 3 + 2 = 5.'),
       nein('C  FAZ 3   FEZ 8', 'FAZ = FEZ von A = 3, FEZ = 3 + 5 = 8.'),
       ja(
@@ -2097,7 +2097,7 @@ final List<Question> ihkA01Projekte = [
       ),
       nein(
         'F  FAZ 10  FEZ 13',
-        'max(FEZ D 9; FEZ E 10) = 10, FEZ = 10 + 3 = 13 - richtig.',
+        'max(FEZ D 9; FEZ E 10) = 10, FEZ = 10 + 3 = 13, also richtig.',
       ),
       ja('G  FAZ 13  FEZ 13', 'Die Dauer fehlt: FEZ = 13 + 1 = 14.'),
     ],
@@ -2112,7 +2112,7 @@ final List<Question> ihkA01Projekte = [
     scenario:
         'Die Stadtbücherei Lindau bekommt ein neues Kassensystem (Dauer in Arbeitstagen, Start bei 0):\n'
         'A Bestellung auslösen: 2, Startvorgang\n'
-        'B Kasse montieren: 3, nach A - zwischen A und B liegen 6 Tage Lieferzeit\n'
+        'B Kasse montieren: 3, nach A; zwischen A und B liegen 6 Tage Lieferzeit\n'
         'C Artikeldaten aufbereiten: 5, nach A (ohne Wartezeit)\n'
         'D Inbetriebnahme: 2, nach B und C',
     prompt: 'Berechne das früheste Ende (FEZ) der Inbetriebnahme.',
@@ -2154,7 +2154,7 @@ final List<Question> ihkA01Projekte = [
         'F: 13 / 13 - 2 = 11\n'
         'D: SEZ 11, SAZ 7 · E: SEZ 11, SAZ 7\n'
         'B: SEZ = SAZ D = 7, SAZ 2 · C: SEZ = SAZ E = 7, SAZ 4\n'
-        'A: SEZ = min(SAZ B 2; SAZ C 4) = 2, SAZ 0 - die Probe stimmt.',
+        'A: SEZ = min(SAZ B 2; SAZ C 4) = 2, SAZ 0: Die Probe stimmt.',
     punkte: 6,
   ),
   netzplanAufgabe(
@@ -2173,7 +2173,7 @@ final List<Question> ihkA01Projekte = [
         'E: SEZ = SAZ F = 12, SAZ 12 - 3 = 9\n'
         'B: SEZ = SAZ D = 7, SAZ 7 - 4 = 3\n'
         'C: SEZ = SAZ E = 9, SAZ 9 - 2 = 7\n'
-        'A: SEZ = min(SAZ B 3; SAZ C 7) = 3, SAZ 3 - 3 = 0 - die Probe stimmt.',
+        'A: SEZ = min(SAZ B 3; SAZ C 7) = 3, SAZ 3 - 3 = 0: Die Probe stimmt.',
     punkte: 6,
     difficulty: 2,
   ),

@@ -76,11 +76,11 @@ final List<Question> questionsA01Journey = [
     choices: [
       ja(
         'Die erstmalige Einführung eines Ticketsystems bis Ende Juni mit festem Budget',
-        'Einmalig, mit Ziel, Termin und Budget - alle Merkmale eines Projekts sind erfüllt.',
+        'Einmalig, mit Ziel, Termin und Budget: Alle Merkmale eines Projekts sind erfüllt.',
       ),
       nein(
         'Das wöchentliche Prüfen der Datensicherung',
-        'Wiederkehrende Routine in der Linie - kein einmaliges Vorhaben.',
+        'Wiederkehrende Routine in der Linie, also kein einmaliges Vorhaben.',
       ),
       nein(
         'Die monatliche Gehaltsabrechnung',
@@ -92,7 +92,7 @@ final List<Question> questionsA01Journey = [
       ),
     ],
     explanation:
-        'Ein Projekt ist einmalig, zielgerichtet und zeitlich wie finanziell begrenzt. Alle anderen Beispiele wiederholen sich oder laufen dauerhaft - sie gehören zum Tagesgeschäft.',
+        'Ein Projekt ist einmalig, zielgerichtet und zeitlich wie finanziell begrenzt. Alle anderen Beispiele wiederholen sich oder laufen dauerhaft. Sie gehören zum Tagesgeschäft.',
   ),
   lueckentext(
     'a1-pb-2',
@@ -152,7 +152,7 @@ final List<Question> questionsA01Journey = [
       ),
     ],
     explanation:
-        'Projekte sind einmalig, zielgerichtet und begrenzt. Wiederkehrende oder dauerhafte Tätigkeiten sind Linienaufgaben - auch wenn sie umfangreich sind.',
+        'Projekte sind einmalig, zielgerichtet und begrenzt. Wiederkehrende oder dauerhafte Tätigkeiten sind Linienaufgaben, auch wenn sie umfangreich sind.',
     difficulty: 1,
   ),
   einfach(
@@ -163,19 +163,19 @@ final List<Question> questionsA01Journey = [
     prompt: 'Wie ist die Aussage nach DIN 69901 zu bewerten?',
     choices: [
       ja(
-        'Falsch - die Grenze ist eine interne Regel; nach der Norm entscheidet die Einmaligkeit der Bedingungen, nicht das Budget.',
+        'Falsch. Die Grenze ist eine interne Regel; nach der Norm entscheidet die Einmaligkeit der Bedingungen, nicht das Budget.',
         'Die DIN 69901 kennt keine Wertgrenze. Unternehmen dürfen intern Schwellen festlegen, das ändert aber nichts am Projektbegriff.',
       ),
       nein(
-        'Richtig - die DIN 69901 schreibt ein Mindestbudget von 20.000 € vor.',
+        'Richtig. Die DIN 69901 schreibt ein Mindestbudget von 20.000 € vor.',
         'Eine solche Grenze gibt es in der Norm nicht.',
       ),
       nein(
-        'Richtig - kleine Vorhaben sind immer Linienaufgaben.',
+        'Richtig. Kleine Vorhaben sind immer Linienaufgaben.',
         'Auch ein kleines, einmaliges Vorhaben mit Ziel und Begrenzung ist ein Projekt.',
       ),
       nein(
-        'Falsch - Projekte beginnen erst ab 50.000 €.',
+        'Falsch. Projekte beginnen erst ab 50.000 €.',
         'Auch diese Grenze ist frei erfunden; Größe ist kein Projektmerkmal.',
       ),
     ],
@@ -203,7 +203,7 @@ final List<Question> questionsA01Journey = [
       nein('Laufende Wartung der Drucker', 'Daueraufgabe ohne Ende.'),
       ja(
         'Dreimonatiger Test von Tablets für die mobile Pflegedokumentation',
-        'Auch ein Pilotversuch ist einmalig und begrenzt - also ein Projekt.',
+        'Auch ein Pilotversuch ist einmalig und begrenzt, also ein Projekt.',
       ),
     ],
     explanation:
@@ -225,7 +225,7 @@ final List<Question> questionsA01Journey = [
       wahl('Projektteams', ['Lenkungsausschusses', 'Auftraggebers']),
     ],
     explanation:
-        'Projektmanagement umfasst alles, was ein Projekt führt: planen, organisieren, steuern, kontrollieren und kommunizieren - von der Initiierung bis zum Abschluss. Die Projektarbeit selbst leistet das Team.',
+        'Projektmanagement umfasst alles, was ein Projekt führt: planen, organisieren, steuern, kontrollieren und kommunizieren, von der Initiierung bis zum Abschluss. Die Projektarbeit selbst leistet das Team.',
     difficulty: 1,
   ),
 
@@ -249,7 +249,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Ab sofort gilt 100 % Verfügbarkeit für alle Systeme.',
-        'Nicht realistisch - keine IT erreicht dauerhaft 100 %.',
+        'Nicht realistisch: Keine IT erreicht dauerhaft 100 %.',
       ),
     ],
     explanation:
@@ -303,10 +303,10 @@ final List<Question> questionsA01Journey = [
     choices: [
       ja(
         'Die Kosten steigen, zum Beispiel für zusätzliches Personal oder Überstunden.',
-        'Mehr Leistung bei festem Termin geht nur mit mehr Ressourcen - also höheren Kosten.',
+        'Mehr Leistung bei festem Termin geht nur mit mehr Ressourcen, also höheren Kosten.',
       ),
       nein(
-        'Nichts - zusätzliche Funktionen verändern das Dreieck nicht.',
+        'Nichts: Zusätzliche Funktionen verändern das Dreieck nicht.',
         'Mehr Funktionen sind mehr Leistung; eine andere Ecke muss nachgeben.',
       ),
       nein(
@@ -315,7 +315,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Der Termin verschiebt sich automatisch.',
-        'Der Termin ist laut Aufgabe fest - er ist gerade nicht der Stellhebel.',
+        'Der Termin ist laut Aufgabe fest. Er ist gerade nicht der Stellhebel.',
       ),
     ],
     explanation:
@@ -332,7 +332,7 @@ final List<Question> questionsA01Journey = [
       zu(
         'Zwei Monate früher fertig werden - Projektkosten um 10 % senken',
         0,
-        'Früher fertig werden braucht meist mehr Personal oder Überstunden - das erschwert das Sparziel.',
+        'Früher fertig werden braucht meist mehr Personal oder Überstunden, und das erschwert das Sparziel.',
       ),
       zu(
         'Anwender früh schulen - weniger Supportanfragen nach dem Start',
@@ -372,7 +372,7 @@ final List<Question> questionsA01Journey = [
     choices: [
       ja(
         'Messbar',
-        '„Deutlich“ ist keine Kennzahl - es fehlt ein Messwert wie eine Note oder ein Prozentsatz.',
+        '„Deutlich“ ist keine Kennzahl. Es fehlt ein Messwert wie eine Note oder ein Prozentsatz.',
       ),
       ja(
         'Terminiert',
@@ -380,11 +380,11 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Attraktiv / akzeptiert',
-        'Ob das Ziel mitgetragen wird, lässt sich aus der Formulierung nicht ablesen - bessere Kundenzufriedenheit ist grundsätzlich gewünscht.',
+        'Ob das Ziel mitgetragen wird, lässt sich aus der Formulierung nicht ablesen. Bessere Kundenzufriedenheit ist grundsätzlich gewünscht.',
       ),
       nein(
         'Es beschreibt eine Maßnahme statt eines Zustands.',
-        'Kein SMART-Kriterium - und das Ziel beschreibt tatsächlich einen gewünschten Zustand.',
+        'Kein SMART-Kriterium und das Ziel beschreibt tatsächlich einen gewünschten Zustand.',
       ),
     ],
     explanation:
@@ -407,7 +407,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Brooks’ Law - zusätzliches Personal einstellen',
-        'Brooks’ Law beschreibt, dass zusätzliches Personal ein verspätetes Projekt weiter verzögert - passt nicht zur Situation.',
+        'Brooks’ Law beschreibt, dass zusätzliches Personal ein verspätetes Projekt weiter verzögert. Das passt nicht zur Situation.',
       ),
       nein(
         'Kritischer Pfad - einen Netzplan erstellen',
@@ -432,7 +432,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Matrix-Organisation',
-        'Passt, wenn Mitarbeitende nur teilweise im Projekt sind - hier arbeiten sie in Vollzeit daran.',
+        'Passt, wenn Mitarbeitende nur teilweise im Projekt sind. Hier arbeiten sie in Vollzeit daran.',
       ),
       nein(
         'Stabs-/Einflussorganisation',
@@ -476,7 +476,7 @@ final List<Question> questionsA01Journey = [
       ],
     ],
     explanation:
-        'Rein: volle Befugnis, das Team wird herausgelöst. Matrix: Die Projektleitung führt fachlich, die Linie disziplinarisch; die Mitarbeitenden haben zwei Vorgesetzte und arbeiten anteilig mit - das nutzt Ressourcen flexibel, erzeugt aber Prioritätenkonflikte. Stab/Einfluss: keine Weisungsbefugnis, alle bleiben in der Linie.',
+        'Rein: volle Befugnis, das Team wird herausgelöst. Matrix: Die Projektleitung führt fachlich, die Linie disziplinarisch; die Mitarbeitenden haben zwei Vorgesetzte und arbeiten anteilig mit. Das nutzt Ressourcen flexibel, erzeugt aber Prioritätenkonflikte. Stab/Einfluss: keine Weisungsbefugnis, alle bleiben in der Linie.',
   ),
   einfach(
     'a1-po-3',
@@ -500,7 +500,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Matrix-Organisation',
-        'Die Matrix zeigt sich als Kreuzung von Abteilungen und Projekten - jede Person hätte zwei Vorgesetzte.',
+        'Die Matrix zeigt sich als Kreuzung von Abteilungen und Projekten: Jede Person hätte zwei Vorgesetzte.',
       ),
       nein(
         'Lenkungsausschuss',
@@ -519,7 +519,7 @@ final List<Question> questionsA01Journey = [
     choices: [
       ja(
         'Ihr Linienvorgesetzter',
-        'Urlaub ist eine disziplinarische Angelegenheit - die bleibt in der Matrix bei der Linie. Sinnvollerweise stimmt er sich mit der Projektleitung ab.',
+        'Urlaub ist eine disziplinarische Angelegenheit, und die bleibt in der Matrix bei der Linie. Sinnvollerweise stimmt er sich mit der Projektleitung ab.',
       ),
       nein(
         'Die Projektleitung',
@@ -591,7 +591,7 @@ final List<Question> questionsA01Journey = [
     choices: [
       ja(
         'Stabs-/Einflussorganisation',
-        'Klein, kurz, risikoarm und nebenbei - eine koordinierende Projektleitung genügt.',
+        'Klein, kurz, risikoarm und nebenbei: Eine koordinierende Projektleitung genügt.',
       ),
       nein(
         'Reine Projektorganisation',
@@ -641,7 +641,7 @@ final List<Question> questionsA01Journey = [
     choices: [
       ja(
         'Sie eskaliert an den Lenkungsausschuss, der über Budget oder Umfang entscheidet.',
-        'Budget und Umfang sind Teil des Auftrags - darüber entscheidet das Gremium, nicht die Projektleitung.',
+        'Budget und Umfang sind Teil des Auftrags. Darüber entscheidet das Gremium, nicht die Projektleitung.',
       ),
       nein(
         'Sie streicht eigenständig zwei Funktionen.',
@@ -682,7 +682,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Detaillierte Code-Reviews durchführen',
-        'Zum Projektstart gibt es noch keinen Code - und Reviews sind keine Aufgabe des Kick-offs.',
+        'Zum Projektstart gibt es noch keinen Code und Reviews sind keine Aufgabe des Kick-offs.',
       ),
     ],
     explanation:
@@ -695,10 +695,10 @@ final List<Question> questionsA01Journey = [
         'In der RACI-Matrix eines Projekts steht in jeder Zeile eine Aufgabe und in jeder Spalte eine Rolle. In den Zellen stehen die Buchstaben R, A, C und I.',
     prompt: 'Verbinde jeden Buchstaben mit seiner Bedeutung.',
     paare: [
-      paar('R - Responsible', 'führt die Aufgabe durch'),
-      paar('A - Accountable', 'verantwortet und entscheidet'),
-      paar('C - Consulted', 'wird vorher befragt'),
-      paar('I - Informed', 'wird informiert'),
+      paar('R (Responsible)', 'führt die Aufgabe durch'),
+      paar('A (Accountable)', 'verantwortet und entscheidet'),
+      paar('C (Consulted)', 'wird vorher befragt'),
+      paar('I (Informed)', 'wird informiert'),
     ],
     explanation:
         'RACI: R = Responsible (führt durch), A = Accountable (verantwortet, entscheidet; genau eine Person je Aufgabe), C = Consulted (wird gefragt), I = Informed (wird informiert). Steht bei „Abnahme des Systems“ beim Auftraggeber ein A, verantwortet und entscheidet er die Abnahme.',
@@ -717,7 +717,7 @@ final List<Question> questionsA01Journey = [
       'Geschäftsführung entscheidet über Fortsetzung oder Abbruch',
     ],
     explanation:
-        'Probleme werden auf der niedrigsten Ebene gelöst, die dazu befugt ist. Erst wenn die Befugnis nicht reicht, geht die Entscheidung eine Stufe höher - bis im Extremfall über Fortsetzung oder Abbruch entschieden wird.',
+        'Probleme werden auf der niedrigsten Ebene gelöst, die dazu befugt ist. Erst wenn die Befugnis nicht reicht, geht die Entscheidung eine Stufe höher, bis im Extremfall über Fortsetzung oder Abbruch entschieden wird.',
     difficulty: 1,
   ),
   zuordnen(
@@ -736,12 +736,12 @@ final List<Question> questionsA01Journey = [
       zu(
         'Alle Arbeitspakete liegen im Zeitplan.',
         0,
-        'Im Plan - keine Maßnahme nötig.',
+        'Im Plan: Keine Maßnahme nötig.',
       ),
       zu(
         'Das Budget wird um 20 % überschritten, wenn der vereinbarte Umfang geliefert wird.',
         2,
-        'Der Kostenrahmen ist gefährdet - der Lenkungsausschuss muss entscheiden.',
+        'Der Kostenrahmen ist gefährdet: Der Lenkungsausschuss muss entscheiden.',
       ),
       zu(
         'Eine Entwicklerin fällt eine Woche aus; die Projektleitung verteilt ihre Aufgaben im Team um.',
@@ -751,9 +751,9 @@ final List<Question> questionsA01Journey = [
       zu(
         'Der Endtermin ist ohne zusätzliches Personal nicht mehr zu halten.',
         2,
-        'Der Terminrahmen ist gefährdet - es braucht eine Entscheidung von oben.',
+        'Der Terminrahmen ist gefährdet: Es braucht eine Entscheidung von oben.',
       ),
-      zu('Die Kosten liegen 1 % unter dem Plan.', 0, 'Im Plan - grün.'),
+      zu('Die Kosten liegen 1 % unter dem Plan.', 0, 'Im Plan, also grün.'),
     ],
     explanation:
         'Die Ampel im Statusbericht: grün = im Plan, gelb = Abweichung, die die Projektleitung selbst steuert, rot = Rahmen gefährdet, Entscheidung des Lenkungsausschusses nötig. Rot ist ein Warnsignal, kein automatischer Abbruch.',
@@ -826,12 +826,12 @@ final List<Question> questionsA01Journey = [
     prompt: 'Gegen welches Prinzip verstößt diese Regelung?',
     choices: [
       ja(
-        'Kongruenzprinzip - Aufgabe, Kompetenz und Verantwortung müssen übereinstimmen',
+        'Kongruenzprinzip: Aufgabe, Kompetenz und Verantwortung müssen übereinstimmen',
         'Wer Verantwortung trägt, braucht die passenden Befugnisse.',
       ),
       nein(
         'Minimalprinzip',
-        'Ein Grundsatz der Wirtschaftlichkeit - hat mit Rollen nichts zu tun.',
+        'Ein Grundsatz der Wirtschaftlichkeit. Er hat mit Rollen nichts zu tun.',
       ),
       nein(
         'Prinzip der Einmaligkeit',
@@ -875,7 +875,7 @@ final List<Question> questionsA01Journey = [
       'Maßnahmen festlegen und umsetzen',
     ],
     explanation:
-        'Erst muss klar sein, wer betroffen ist. Dann wird eingeschätzt und eingeordnet, zuletzt werden daraus Maßnahmen abgeleitet - und die Analyse wird im Projektverlauf aktualisiert.',
+        'Erst muss klar sein, wer betroffen ist. Dann wird eingeschätzt und eingeordnet, zuletzt werden daraus Maßnahmen abgeleitet und die Analyse wird im Projektverlauf aktualisiert.',
   ),
   freitext(
     'a1-ps-3',
@@ -939,7 +939,7 @@ final List<Question> questionsA01Journey = [
       zu(
         'Der Betriebsrat',
         0,
-        'Er vertritt die eigenen Beschäftigten - ein interner Stakeholder.',
+        'Er vertritt die eigenen Beschäftigten, also ein interner Stakeholder.',
       ),
       zu('Der Hosting-Dienstleister', 1, 'Ein externer Vertragspartner.'),
       zu(
@@ -970,19 +970,19 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Er muss jede Softwarebeschaffung genehmigen.',
-        'Zu weit gefasst - sein Mitbestimmungsrecht hängt an der Überwachungsmöglichkeit.',
+        'Zu weit gefasst: Sein Mitbestimmungsrecht hängt an der Überwachungsmöglichkeit.',
       ),
       nein(
         'Er ist grundsätzlich Auftraggeber aller IT-Projekte.',
         'Der Betriebsrat vertritt die Beschäftigten, er beauftragt keine Projekte.',
       ),
       nein(
-        'Nur aus Höflichkeit - rechtlich spielt er keine Rolle.',
+        'Nur aus Höflichkeit: Rechtlich spielt er keine Rolle.',
         'Falsch: Er hat hier ein gesetzliches Mitbestimmungsrecht.',
       ),
     ],
     explanation:
-        'Systeme, die Leistungs- oder Verhaltensdaten erfassen, sind mitbestimmungspflichtig. Wird der Betriebsrat zu spät beteiligt, kann er die Einführung stoppen - deshalb gehört er früh in die Stakeholderanalyse.',
+        'Systeme, die Leistungs- oder Verhaltensdaten erfassen, sind mitbestimmungspflichtig. Wird der Betriebsrat zu spät beteiligt, kann er die Einführung stoppen. Deshalb gehört er früh in die Stakeholderanalyse.',
     difficulty: 3,
   ),
   zuordnen(
@@ -1013,7 +1013,7 @@ final List<Question> questionsA01Journey = [
     'p-stakeholder',
     prompt: 'Vervollständige die Beschreibung des Kommunikationsplans.',
     text:
-        'Der Kommunikationsplan folgt aus der {0}. Er legt fest, welcher {1} welche {2} zu welchem {3} und über welches {4} erhält - zum Beispiel: Lenkungsausschuss, Statusbericht, monatlich, Sitzung.',
+        'Der Kommunikationsplan folgt aus der {0}. Er legt fest, welcher {1} welche {2} zu welchem {3} und über welches {4} erhält, zum Beispiel: Lenkungsausschuss, Statusbericht, monatlich, Sitzung.',
     luecken: [
       wort(['Stakeholderanalyse'], 'Sie zeigt, wer was wissen muss.'),
       wort(['Empfänger'], 'Zum Beispiel der Lenkungsausschuss.'),
@@ -1023,7 +1023,7 @@ final List<Question> questionsA01Journey = [
     ],
     wortbank: ['Netzplan', 'Risikoanalyse', 'Gehalt', 'Vorgang'],
     explanation:
-        'Der Kommunikationsplan übersetzt die Stakeholderanalyse in konkrete Maßnahmen: Empfänger, Inhalt, Zeitpunkt bzw. Rhythmus und Medium - etwa „Lenkungsausschuss, Statusbericht, monatlich, Sitzung“.',
+        'Der Kommunikationsplan übersetzt die Stakeholderanalyse in konkrete Maßnahmen: Empfänger, Inhalt, Zeitpunkt bzw. Rhythmus und Medium, etwa „Lenkungsausschuss, Statusbericht, monatlich, Sitzung“.',
     difficulty: 1,
   ),
 
@@ -1187,7 +1187,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Der Kunde erhält nach jeder Phase lauffähige Teilergebnisse.',
-        'Lauffähige Software gibt es erst am Ende - Zwischenergebnisse sind Dokumente.',
+        'Lauffähige Software gibt es erst am Ende. Zwischenergebnisse sind Dokumente.',
       ),
       ja(
         'Es eignet sich für Festpreisprojekte mit klaren Anforderungen.',
@@ -1205,7 +1205,7 @@ final List<Question> questionsA01Journey = [
     'a1-vw-2',
     'v-wasserfall',
     scenario:
-        'Ein Fehler in der Anforderungsanalyse ließe sich dort für 50 € beheben. Er wird aber erst in der Testphase entdeckt - drei Phasen später (Entwurf, Implementierung, Test).',
+        'Ein Fehler in der Anforderungsanalyse ließe sich dort für 50 € beheben. Er wird aber erst in der Testphase entdeckt, also drei Phasen später (Entwurf, Implementierung, Test).',
     prompt: 'Was kostet die Behebung nach der Faustregel „Rule of Ten“?',
     answer: 50000,
     unit: '€',
@@ -1305,7 +1305,7 @@ final List<Question> questionsA01Journey = [
     prompt: 'Nenne drei Nachteile des Wasserfallmodells.',
     kriterien: [
       krit(
-        'Der Kunde sieht lauffähige Software erst spät - Zwischenergebnisse sind Dokumente.',
+        'Der Kunde sieht lauffähige Software erst spät. Zwischenergebnisse sind Dokumente.',
         stichwoerter: ['erst spät', 'erst am Ende', 'lauffähig', 'spät'],
       ),
       krit(
@@ -1328,7 +1328,7 @@ final List<Question> questionsA01Journey = [
         ],
       ),
       krit(
-        'Rückmeldung des Kunden kommt spät - Gefahr, am Bedarf vorbeizuentwickeln.',
+        'Rückmeldung des Kunden kommt spät: Gefahr, am Bedarf vorbeizuentwickeln.',
         stichwoerter: ['Rückmeldung', 'Feedback', 'am Bedarf vorbei', 'Kunde'],
       ),
       krit(
@@ -1339,7 +1339,7 @@ final List<Question> questionsA01Journey = [
     loesung:
         'Der Kunde sieht lauffähige Software erst am Ende. Späte Änderungen sind teuer, weil alle abgeschlossenen Phasen nachgearbeitet werden müssen. Fehler aus der Analyse fallen oft erst im Test auf.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 3 Punkte. Die Stärken des Wasserfalls - Planbarkeit, Dokumentation, klare Struktur - erkauft man mit wenig Flexibilität. „Keine Dokumentation“ oder „nicht planbar“ wären falsch.',
+        'Je Nennung 1 Punkt, höchstens 3 Punkte. Die Stärken des Wasserfalls (Planbarkeit, Dokumentation, klare Struktur) erkauft man mit wenig Flexibilität. „Keine Dokumentation“ oder „nicht planbar“ wären falsch.',
     punkte: 3,
   ),
 
@@ -1357,7 +1357,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Wasserfall',
-        'Setzt voraus, dass die Anforderungen zu Beginn feststehen - das ist hier nicht der Fall.',
+        'Setzt voraus, dass die Anforderungen zu Beginn feststehen. Das ist hier nicht der Fall.',
       ),
       nein(
         'Erst alle Anforderungen vollständig klären, dann entscheiden',
@@ -1369,7 +1369,7 @@ final List<Question> questionsA01Journey = [
       ),
     ],
     explanation:
-        'Wenn sich Anforderungen erst im Lauf des Projekts herausbilden, braucht es kurze Zyklen mit nutzbaren Zwischenergebnissen - also Scrum.',
+        'Wenn sich Anforderungen erst im Lauf des Projekts herausbilden, braucht es kurze Zyklen mit nutzbaren Zwischenergebnissen, also Scrum.',
   ),
   einfach(
     'a1-va-2',
@@ -1384,7 +1384,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Scrum',
-        'Scrum spielt seine Stärken bei sich ändernden Anforderungen aus - die gibt es hier nicht.',
+        'Scrum spielt seine Stärken bei sich ändernden Anforderungen aus. Die gibt es hier nicht.',
       ),
       nein(
         'Scrum, weil agile Methoden immer schneller sind',
@@ -1440,7 +1440,7 @@ final List<Question> questionsA01Journey = [
       ],
     ],
     explanation:
-        'Scrum dreht das Dreieck um: Zeit (Sprints) und Kosten (Team) stehen fest, der Umfang ergibt sich. Wird es eng, fallen die am wenigsten wertvollen Einträge weg - nicht der Termin. Im Wasserfall ist der Umfang fest; Zeit und Kosten werden geschätzt und geben bei Engpässen nach.',
+        'Scrum dreht das Dreieck um: Zeit (Sprints) und Kosten (Team) stehen fest, der Umfang ergibt sich. Wird es eng, fallen die am wenigsten wertvollen Einträge weg, nicht der Termin. Im Wasserfall ist der Umfang fest; Zeit und Kosten werden geschätzt und geben bei Engpässen nach.',
   ),
   zuordnen(
     'a1-va-4',
@@ -1547,7 +1547,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'In Scrum muss nichts dokumentiert werden.',
-        'Auch Scrum dokumentiert - nur nicht alles im Voraus.',
+        'Auch Scrum dokumentiert, nur nicht alles im Voraus.',
       ),
     ],
     explanation:
@@ -1592,7 +1592,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Dokumentation ist nicht erlaubt.',
-        'Dokumentation ist wichtig - funktionierende Software nur wichtiger.',
+        'Dokumentation ist wichtig, funktionierende Software nur wichtiger.',
       ),
     ],
     explanation:
@@ -1605,7 +1605,7 @@ final List<Question> questionsA01Journey = [
     prompt: 'Wie ist die Aussage einzuordnen?',
     choices: [
       ja(
-        'Falsch - Dokumentation bleibt wichtig, funktionierende Software ist nur wichtiger.',
+        'Falsch. Dokumentation bleibt wichtig, funktionierende Software ist nur wichtiger.',
         'Das Manifest bewertet die rechte Seite ausdrücklich als wertvoll.',
       ),
       nein(
@@ -1617,7 +1617,7 @@ final List<Question> questionsA01Journey = [
         'Scrum kennt sogar dokumentierte Artefakte wie Backlogs und die Definition of Done.',
       ),
       nein(
-        'Falsch - agile Teams müssen mehr dokumentieren als Wasserfall-Teams.',
+        'Falsch. Agile Teams müssen mehr dokumentieren als Wasserfall-Teams.',
         'Das sagt das Manifest nicht; es setzt nur andere Schwerpunkte.',
       ),
     ],
@@ -1679,7 +1679,7 @@ final List<Question> questionsA01Journey = [
       zahl(12),
     ],
     explanation:
-        'Das agile Manifest entstand 2001 als Antwort auf schwerfällige, dokumentlastige Vorgehensweisen. 17 Softwareentwickler formulierten vier Werte und zwölf Prinzipien - Werte und Prinzipien, keine konkrete Methode.',
+        'Das agile Manifest entstand 2001 als Antwort auf schwerfällige, dokumentlastige Vorgehensweisen. 17 Softwareentwickler formulierten vier Werte und zwölf Prinzipien: Werte und Prinzipien, keine konkrete Methode.',
   ),
   einfach(
     'a1-sm-7',
@@ -1707,7 +1707,7 @@ final List<Question> questionsA01Journey = [
       ),
     ],
     explanation:
-        'Das achte Prinzip fordert ein gleichmäßiges, dauerhaft haltbares Tempo. Dauerhafte Überlastung führt zu Fehlern und Ausfällen - agile Teams planen deshalb mit ihrer realistischen Kapazität.',
+        'Das achte Prinzip fordert ein gleichmäßiges, dauerhaft haltbares Tempo. Dauerhafte Überlastung führt zu Fehlern und Ausfällen. Agile Teams planen deshalb mit ihrer realistischen Kapazität.',
     difficulty: 3,
   ),
   einfach(
@@ -1725,7 +1725,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Das agile Manifest schreibt Sprints von zwei Wochen vor.',
-        'Das Manifest nennt keine Sprints - die kommen aus Scrum.',
+        'Das Manifest nennt keine Sprints. Die kommen aus Scrum.',
       ),
       nein(
         'Scrum ist älter als das agile Manifest und widerspricht ihm.',
@@ -1767,7 +1767,7 @@ final List<Question> questionsA01Journey = [
       wahl('Hierarchien', ['Timeboxen', 'Artefakte']),
     ],
     explanation:
-        'Ein Scrum Team besteht aus einem Product Owner, einem Scrum Master und Developers. Es umfasst typischerweise zehn oder weniger Personen - kleine Teams kommunizieren besser. Unterteams und Hierarchien gibt es nicht.',
+        'Ein Scrum Team besteht aus einem Product Owner, einem Scrum Master und Developers. Es umfasst typischerweise zehn oder weniger Personen. Kleine Teams kommunizieren besser. Unterteams und Hierarchien gibt es nicht.',
   ),
   einfach(
     'a1-sr-3',
@@ -1782,7 +1782,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Die Developers bauen die Funktion sofort ein.',
-        'Dann würde jemand außerhalb des Teams den Sprint steuern - das gefährdet das Sprintziel.',
+        'Dann würde jemand außerhalb des Teams den Sprint steuern. Das gefährdet das Sprintziel.',
       ),
       nein(
         'Der Scrum Master entscheidet über die Priorität.',
@@ -1823,7 +1823,7 @@ final List<Question> questionsA01Journey = [
       ),
     ],
     explanation:
-        'Der Scrum Master verantwortet die Wirksamkeit des Scrum Teams. Er dient dem Team, dem Product Owner und der Organisation - er verteilt aber keine Arbeit und entscheidet nicht über Inhalte.',
+        'Der Scrum Master verantwortet die Wirksamkeit des Scrum Teams. Er dient dem Team, dem Product Owner und der Organisation. Er verteilt aber keine Arbeit und entscheidet nicht über Inhalte.',
   ),
   zuordnen(
     'a1-sr-5',
@@ -1910,7 +1910,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Der Scrum Master ist Vorgesetzter der Developers.',
-        'Der Scrum Master führt, indem er dient - nicht als Vorgesetzter.',
+        'Der Scrum Master führt, indem er dient, nicht als Vorgesetzter.',
       ),
       nein(
         'Ein Team hat mehrere Product Owner, je Fachbereich einen.',
@@ -1918,7 +1918,7 @@ final List<Question> questionsA01Journey = [
       ),
     ],
     explanation:
-        'Ein Scrum Team besteht aus einem Product Owner, einem Scrum Master und Developers - klein, interdisziplinär, selbstmanagend, ohne Unterteams und Hierarchien.',
+        'Ein Scrum Team besteht aus einem Product Owner, einem Scrum Master und Developers: klein, interdisziplinär, selbstmanagend, ohne Unterteams und Hierarchien.',
   ),
 
   // ================================================ Artefakte und Commitments
@@ -1942,7 +1942,7 @@ final List<Question> questionsA01Journey = [
       ],
     ],
     explanation:
-        'Product Backlog - Produktziel, Sprint Backlog - Sprintziel, Increment - Definition of Done. Die Velocity ist eine Messgröße, kein Commitment.',
+        'Product Backlog: Produktziel, Sprint Backlog: Sprintziel, Increment: Definition of Done. Die Velocity ist eine Messgröße, kein Commitment.',
   ),
   mehrfach(
     'a1-sa-2',
@@ -2011,7 +2011,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Sie zählt zur Hälfte in die Velocity.',
-        'Es gibt keine halben Punkte - nur fertige Einträge zählen.',
+        'Es gibt keine halben Punkte: Nur fertige Einträge zählen.',
       ),
     ],
     explanation:
@@ -2027,7 +2027,7 @@ final List<Question> questionsA01Journey = [
       zu(
         'Der Code wurde von einer zweiten Person geprüft.',
         0,
-        'Gilt für jeden Eintrag - handwerkliche Qualität.',
+        'Gilt für jeden Eintrag, also handwerkliche Qualität.',
       ),
       zu(
         'Alle automatischen Tests sind grün.',
@@ -2168,7 +2168,7 @@ final List<Question> questionsA01Journey = [
       ),
     ],
     explanation:
-        'Ein Sprint wird nur abgebrochen, wenn sein Ziel obsolet ist - etwa weil sich der Markt geändert hat. Diese Befugnis hat allein der Product Owner.',
+        'Ein Sprint wird nur abgebrochen, wenn sein Ziel obsolet ist, etwa weil sich der Markt geändert hat. Diese Befugnis hat allein der Product Owner.',
   ),
   einfach(
     'a1-se-4',
@@ -2195,7 +2195,7 @@ final List<Question> questionsA01Journey = [
       ),
     ],
     explanation:
-        'Im Daily Scrum organisieren sich die Developers selbst. Sie prüfen den Fortschritt zum Sprintziel und planen die nächsten 24 Stunden - ohne Berichtspflicht an Vorgesetzte.',
+        'Im Daily Scrum organisieren sich die Developers selbst. Sie prüfen den Fortschritt zum Sprintziel und planen die nächsten 24 Stunden, ohne Berichtspflicht an Vorgesetzte.',
   ),
   mehrfach(
     'a1-se-5',
@@ -2265,7 +2265,7 @@ final List<Question> questionsA01Journey = [
       'das System MySQL verwendet',
     ],
     explanation:
-        'Eine User Story folgt dem Muster: Als <Rolle> möchte ich <Ziel>, damit <Nutzen>. „Als Entwickler möchte ich eine Klasse anlegen“ beschreibt eine Umsetzung, „das System muss MySQL verwenden“ eine technische Vorgabe - beides ohne Nutzen für die Anwender.',
+        'Eine User Story folgt dem Muster: Als <Rolle> möchte ich <Ziel>, damit <Nutzen>. „Als Entwickler möchte ich eine Klasse anlegen“ beschreibt eine Umsetzung, „das System muss MySQL verwenden“ eine technische Vorgabe, beides ohne Nutzen für die Anwender.',
   ),
   rechnen(
     'a1-st-2',
@@ -2305,7 +2305,7 @@ final List<Question> questionsA01Journey = [
     choices: [
       ja(
         'Small',
-        'Mit 100 Punkten passt sie in keinen Sprint - sie ist ein Epic und muss zerlegt werden.',
+        'Mit 100 Punkten passt sie in keinen Sprint. Sie ist ein Epic und muss zerlegt werden.',
       ),
       nein('Valuable', 'Ein Nutzen ist genannt.'),
       nein('Negotiable', 'Nichts deutet auf eine starre Vorgabe hin.'),
@@ -2330,7 +2330,7 @@ final List<Question> questionsA01Journey = [
       'Erneut schätzen, bis sich das Team einigt',
     ],
     explanation:
-        'Erst verstehen, dann verdeckt schätzen und gleichzeitig aufdecken - das verhindert den Ankereffekt. Große Abweichungen werden besprochen, weil sie auf unterschiedliches Verständnis hinweisen.',
+        'Erst verstehen, dann verdeckt schätzen und gleichzeitig aufdecken. Das verhindert den Ankereffekt. Große Abweichungen werden besprochen, weil sie auf unterschiedliches Verständnis hinweisen.',
   ),
   einfach(
     'a1-st-6',
@@ -2383,7 +2383,7 @@ final List<Question> questionsA01Journey = [
       ),
     ],
     explanation:
-        'Story Points messen die relative Größe. Die Velocity ist die durchschnittliche Menge fertiger Punkte je Sprint - ein Planungswert für ein Team, kein Leistungsvergleich.',
+        'Story Points messen die relative Größe. Die Velocity ist die durchschnittliche Menge fertiger Punkte je Sprint. Das ist ein Planungswert für ein Team, kein Leistungsvergleich.',
   ),
 
   // ======================================================= Aufbau eines Netzplans
@@ -2459,7 +2459,7 @@ final List<Question> questionsA01Journey = [
       ja('B und C', 'Von B und von C führt je ein Pfeil zu D.'),
       nein(
         'A, B und C',
-        'A ist nur indirekter Vorgänger - zwischen A und D liegen B bzw. C.',
+        'A ist nur indirekter Vorgänger: Zwischen A und D liegen B bzw. C.',
       ),
       nein('Nur C', 'Auch von B führt ein Pfeil zu D.'),
       nein(
@@ -2513,7 +2513,7 @@ final List<Question> questionsA01Journey = [
       ],
     ],
     explanation:
-        'Nachfolgerangaben werden umgedreht: Steht D bei X als Nachfolger, ist X Vorgänger von D. Bei B und bei C steht D - also hat D die Vorgänger B und C. F steht bei D und E, also sind D und E seine Vorgänger.',
+        'Nachfolgerangaben werden umgedreht: Steht D bei X als Nachfolger, ist X Vorgänger von D. Bei B und bei C steht D, also hat D die Vorgänger B und C. F steht bei D und E, also sind D und E seine Vorgänger.',
   ),
   rechnen(
     'a1-ng-7',
@@ -2641,7 +2641,7 @@ final List<Question> questionsA01Journey = [
     answer: 9,
     unit: 'Tage',
     explanation:
-        'Vorwärts: E endet bei 15 - das ist die Projektdauer.\n'
+        'Vorwärts: E endet bei 15: Das ist die Projektdauer.\n'
         'E: SEZ 15, SAZ 15 - 4 = 11.\n'
         'D: SEZ = SAZ von E = 11, SAZ = 11 - 2 = 9.',
   ),
@@ -2710,7 +2710,7 @@ final List<Question> questionsA01Journey = [
     prompt: 'Welchen SEZ hat der Vorgang?',
     answer: 8,
     explanation:
-        'Rückwärtsrechnung: SEZ = min(SAZ aller Nachfolger) = min(10; 8; 14) = 8. Der Vorgang muss fertig sein, bevor der eiligste Nachfolger Q spätestens beginnen muss - mit 10 oder 14 käme Q zu spät.',
+        'Rückwärtsrechnung: SEZ = min(SAZ aller Nachfolger) = min(10; 8; 14) = 8. Der Vorgang muss fertig sein, bevor der eiligste Nachfolger Q spätestens beginnen muss. Mit 10 oder 14 käme Q zu spät.',
     difficulty: 1,
   ),
   rechnen(
@@ -2849,7 +2849,7 @@ final List<Question> questionsA01Journey = [
       wahl('FEZ', [
         'FAZ',
         'SAZ',
-      ], 'Gleichwertig zu SAZ - FAZ - gut als Gegenprobe.'),
+      ], 'Gleichwertig zu SAZ - FAZ, also gut als Gegenprobe.'),
       wahl('FAZ', ['SAZ', 'FEZ'], 'Der früheste Anfang, nicht der späteste.'),
       wahl('FEZ', ['FAZ', 'SEZ']),
       zahl(0, rationale: 'Daran erkennt man kritische Vorgänge.'),
@@ -2925,7 +2925,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'B ist unkritisch, weil Möbel nichts mit IT zu tun haben.',
-        'Kritisch ist, was keinen Puffer hat - der Inhalt spielt keine Rolle.',
+        'Kritisch ist, was keinen Puffer hat. Der Inhalt spielt keine Rolle.',
       ),
     ],
     explanation:
@@ -2942,7 +2942,7 @@ final List<Question> questionsA01Journey = [
     explanation:
         'Vorher: A - C - E = 5 + 6 + 4 = 15 (kritisch), A - B - D - E = 5 + 3 + 2 + 4 = 14.\n'
         'Nachher: A - C - E = 5 + 3 + 4 = 12, A - B - D - E = 14.\n'
-        'Der längste Weg ist jetzt A - B - D - E mit 14 Tagen. Von 3 Tagen Verkürzung bleibt nur 1 Tag übrig - der kritische Pfad ist gewandert.',
+        'Der längste Weg ist jetzt A - B - D - E mit 14 Tagen. Von 3 Tagen Verkürzung bleibt nur 1 Tag übrig: Der kritische Pfad ist gewandert.',
     difficulty: 3,
   ),
   einfach(
@@ -2958,11 +2958,11 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Von einem anderen kritischen Vorgang',
-        'Dann verzögert sich dieser - und das Projektende direkt mit.',
+        'Dann verzögert sich dieser und das Projektende direkt mit.',
       ),
       nein(
         'Von einem Vorgang mit Gesamtpuffer 1 Tag',
-        'Wenig Luft - schon eine kleine Verzögerung macht ihn kritisch.',
+        'Wenig Luft: Schon eine kleine Verzögerung macht ihn kritisch.',
       ),
       nein(
         'Vom Vorgang mit der längsten Dauer',
@@ -2970,7 +2970,7 @@ final List<Question> questionsA01Journey = [
       ),
     ],
     explanation:
-        'Ressourcen gehören auf den kritischen Pfad. Abgezogen wird dort, wo am meisten Puffer ist - danach sollte man neu rechnen, ob der Puffer noch reicht.',
+        'Ressourcen gehören auf den kritischen Pfad. Abgezogen wird dort, wo am meisten Puffer ist. Danach sollte man neu rechnen, ob der Puffer noch reicht.',
   ),
   mehrfach(
     'a1-nk-6',
@@ -2987,7 +2987,7 @@ final List<Question> questionsA01Journey = [
       ),
       ja(
         'Den Umfang eines kritischen Vorgangs reduzieren',
-        'Weniger Arbeit auf dem kritischen Pfad - in Absprache mit dem Auftraggeber.',
+        'Weniger Arbeit auf dem kritischen Pfad, in Absprache mit dem Auftraggeber.',
       ),
       nein(
         'Einen unkritischen Vorgang beschleunigen',
@@ -2999,7 +2999,7 @@ final List<Question> questionsA01Journey = [
       ),
     ],
     explanation:
-        'Nur Maßnahmen auf dem kritischen Pfad verkürzen das Projekt - und nur so lange, bis ein anderer Weg kritisch wird. Danach immer neu rechnen.',
+        'Nur Maßnahmen auf dem kritischen Pfad verkürzen das Projekt und nur so lange, bis ein anderer Weg kritisch wird. Danach immer neu rechnen.',
   ),
   einfach(
     'a1-nk-7',
@@ -3017,7 +3017,7 @@ final List<Question> questionsA01Journey = [
       ja('B mit 2 Tagen', 'B endet bei 5, D beginnt erst bei 7 - 2 Tage Luft.'),
       nein(
         'C mit 4 Tagen',
-        'C endet bei 7 und D beginnt sofort - C ist kritisch. 4 ist nur seine Dauer.',
+        'C endet bei 7 und D beginnt sofort, also C ist kritisch. 4 ist nur seine Dauer.',
       ),
       nein(
         'D mit 1 Tag',

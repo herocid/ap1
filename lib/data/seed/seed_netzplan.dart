@@ -41,7 +41,7 @@ final List<Question> seedNetzplan = [
         'D: FAZ 7 (nach B), FEZ 7+5 = 12\n'
         'E: FAZ = max(FEZ C = 10, FEZ D = 12) = 12, FEZ 12+2 = 14\n\n'
         'Der häufigste Fehler: bei E den kleineren Wert nehmen. Bei mehreren '
-        'Vorgängern gilt immer das MAXIMUM - der Vorgang kann erst starten, '
+        'Vorgängern gilt immer das MAXIMUM: der Vorgang kann erst starten, '
         'wenn der letzte Vorgänger fertig ist. Projektdauer: 14 Arbeitstage.',
   ),
 
@@ -84,7 +84,7 @@ final List<Question> seedNetzplan = [
         'GP = SAZ - FAZ  ->  A 0, B 0, C 1, D 0, E 1, F 0\n'
         'FP = min(FAZ der Nachfolger) - FEZ  ->  A 0, B 0, C 0, D 0, E 1, F 0\n\n'
         'Der Lerneffekt steckt in Vorgang C: GP = 1, aber FP = 0. Man kann C '
-        'zwar um einen Tag verschieben, ohne das Projektende zu gefährden - '
+        'zwar um einen Tag verschieben, ohne das Projektende zu gefährden; '
         'aber der Nachfolger E startet dann später. Freier Puffer heißt: '
         'verschiebbar OHNE den frühesten Start des Nachfolgers anzutasten. '
         'Kritischer Pfad: A - B - D - F.',
@@ -159,11 +159,11 @@ final List<Question> seedNetzplan = [
       _c('Alle Vorgänge auf ihm haben einen Gesamtpuffer von 0.', true,
           'Das ist die Definition. Genau daran erkennt man ihn in der Rechnung.'),
       _c('Er ist der längste Weg durch den Netzplan.', true,
-          'Der längste Weg bestimmt die Projektdauer - deshalb hat er keinen Puffer.'),
+          'Der längste Weg bestimmt die Projektdauer. Deshalb hat er keinen Puffer.'),
       _c('Verzögert sich ein Vorgang auf ihm um 2 Tage, verzögert sich das Projektende um 2 Tage.', true,
           'Ohne Puffer schlägt jede Verzögerung eins zu eins aufs Projektende durch.'),
       _c('Ein Netzplan hat immer genau einen kritischen Pfad.', false,
-          'Falsch. Es kann mehrere gleich lange kritische Pfade geben - dann ist das Projekt besonders anfällig, weil es mehrere pufferlose Ketten gibt.'),
+          'Falsch. Es kann mehrere gleich lange kritische Pfade geben. Dann ist das Projekt besonders anfällig, weil es mehrere pufferlose Ketten gibt.'),
       _c('Er enthält immer die Vorgänge mit der längsten Einzeldauer.', false,
           'Falsch. Ein einzelner langer Vorgang kann parallel liegen und viel Puffer haben. Entscheidend ist die Kette, nicht die Einzeldauer.'),
       _c('Eine Verkürzung eines Vorgangs auf dem kritischen Pfad verkürzt immer das Projekt um denselben Betrag.', false,
@@ -173,7 +173,7 @@ final List<Question> seedNetzplan = [
         'Der kritische Pfad ist der längste Weg vom Start- zum Endvorgang und '
         'damit die Kette ohne Puffer. Praktische Konsequenz fürs Projekt: '
         'Ressourcen und Aufmerksamkeit gehören zuerst dorthin. Bei '
-        'Verkürzungsaufgaben immer nach jedem Schritt neu rechnen - der '
+        'Verkürzungsaufgaben immer nach jedem Schritt neu rechnen: der '
         'kritische Pfad kann wandern.',
   ),
 
@@ -205,7 +205,7 @@ final List<Question> seedNetzplan = [
         'GP = SAZ - FAZ: A 0, B 0, C 1, D 0, E 5, F 0, G 0\n'
         'FP = min(FAZ Nachfolger) - FEZ: A 0, B 0, C 1, D 0, E 5, F 0, G 0\n\n'
         'Kritischer Pfad: A - B - D - F - G (16 Tage).\n'
-        'Vorgang E hat mit 5 Tagen den größten Spielraum - hier kann man ohne '
+        'Vorgang E hat mit 5 Tagen den größten Spielraum: hier kann man ohne '
         'Risiko Personal abziehen, wenn es auf dem kritischen Pfad brennt. '
         'Achtung bei C: die Lieferung dauert zwar am längsten (6 Tage), liegt '
         'aber trotzdem nicht auf dem kritischen Pfad.',
@@ -263,7 +263,7 @@ final List<Question> seedNetzplan = [
     explanation:
         'Arbeitsteilung in der Praxis: mit dem Netzplan rechnen, mit dem '
         'Balkenplan kommunizieren. Moderne Tools erzeugen den Gantt direkt aus '
-        'den Netzplandaten und zeichnen den kritischen Pfad rot ein - '
+        'den Netzplandaten und zeichnen den kritischen Pfad rot ein; '
         'in der Prüfung muss man beides aber getrennt beherrschen.',
   ),
 
@@ -277,7 +277,7 @@ final List<Question> seedNetzplan = [
     prompt: 'Was kennzeichnet einen Meilenstein in der Projektplanung?',
     choices: [
       _c('Ein Ereignis mit der Dauer null, an dem ein definiertes Zwischenergebnis vorliegt.', true,
-          'Richtig. Ein Meilenstein verbraucht keine Zeit und keine Ressourcen - er stellt nur fest, ob ein Ergebnis erreicht ist.'),
+          'Richtig. Ein Meilenstein verbraucht keine Zeit und keine Ressourcen. Er stellt nur fest, ob ein Ergebnis erreicht ist.'),
       _c('Der längste Vorgang im Projekt.', false,
           'Das hat mit Meilensteinen nichts zu tun; lange Vorgänge sind einfach Vorgänge.'),
       _c('Ein Vorgang, der besonders viel Budget bindet.', false,
@@ -291,7 +291,7 @@ final List<Question> seedNetzplan = [
         '("Pflichtenheft vom Kunden unterzeichnet"), nicht schwammig '
         '("Konzept weitgehend fertig"). In der Meilensteintrendanalyse (MTA) '
         'trägt man über die Zeit auf, wie sich die geplanten '
-        'Meilensteintermine verschieben - eine steigende Linie bedeutet '
+        'Meilensteintermine verschieben: eine steigende Linie bedeutet '
         'Verzug.',
   ),
 
@@ -309,7 +309,7 @@ final List<Question> seedNetzplan = [
       _c('Der Meilenstein verschiebt sich immer weiter nach hinten.', true,
           'Richtig. Steigende Linie = der prognostizierte Termin wird bei jedem Berichtszeitpunkt später.'),
       _c('Es besteht Handlungsbedarf, z. B. Ressourcen umsteuern oder Umfang kürzen.', true,
-          'Die MTA ist ein Frühwarninstrument - der Zweck ist genau dieses Gegensteuern.'),
+          'Die MTA ist ein Frühwarninstrument. Der Zweck ist genau dieses Gegensteuern.'),
       _c('Der Meilenstein wird früher als geplant erreicht.', false,
           'Falsch, das wäre eine FALLENDE Linie. Steigend = später.'),
       _c('Das Projekt liegt im Plan.', false,
@@ -344,7 +344,7 @@ final List<Question> seedNetzplan = [
         'Rechenweg:\n'
         '1. Tatsächliche Kapazität pro Tag = 4 Entwickler x 0,75 = 3 Personentage/Tag\n'
         '2. Dauer = 120 Personentage / 3 Personentage pro Tag = 40 Arbeitstage\n\n'
-        'Typischer Fehler: 120 / 4 = 30 Tage - die Verfügbarkeit wird '
+        'Typischer Fehler: 120 / 4 = 30 Tage. Die Verfügbarkeit wird '
         'vergessen. In Prüfungsaufgaben ist der Verfügbarkeitsgrad fast '
         'immer der eigentliche Prüfpunkt. Merke außerdem: Personentage sind '
         'Aufwand, Arbeitstage sind Dauer. Die beiden Einheiten zu verwechseln '

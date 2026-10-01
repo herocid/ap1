@@ -208,7 +208,7 @@ final List<ExamCase> casesA01Projekte = [
           ], 'Ein Datum wie „bis 30.06.“.'),
         ],
         explanation:
-            'SMART: spezifisch, messbar, attraktiv bzw. akzeptiert, realistisch, terminiert. Auch die englischen Begriffe (measurable, achievable, realistic bzw. relevant, time-bound) werden gewertet - 1 Punkt je Begriff.',
+            'SMART: spezifisch, messbar, attraktiv bzw. akzeptiert, realistisch, terminiert. Auch die englischen Begriffe (measurable, achievable, realistic bzw. relevant, time-bound) werden gewertet, 1 Punkt je Begriff.',
         punkte: 4,
         difficulty: 1,
       ),
@@ -363,7 +363,7 @@ final List<ExamCase> casesA01Projekte = [
             ],
           ),
           krit(
-            'Filialleitung und Beschäftigte der Filiale: müssen mit Kassen und Systemen arbeiten - ihre Akzeptanz und Schulung entscheiden über den Start.',
+            'Filialleitung und Beschäftigte der Filiale: müssen mit Kassen und Systemen arbeiten. Ihre Akzeptanz und Schulung entscheiden über den Start.',
             stichwoerter: [
               'Filialleitung',
               'Mitarbeiter',
@@ -420,9 +420,9 @@ final List<ExamCase> casesA01Projekte = [
         zeilen: [
           nein(
             'Vorgang A',
-            'Startvorgang: 0/3, rückwärts 0/3, GP 0 - richtig.',
+            'Startvorgang: 0/3, rückwärts 0/3, GP 0, also richtig.',
           ),
-          nein('Vorgang B', '3/13, rückwärts 3/13, GP 0 - richtig.'),
+          nein('Vorgang B', '3/13, rückwärts 3/13, GP 0, also richtig.'),
           ja(
             'Vorgang C',
             'SEZ = SAZ von E = 12 stimmt, aber SAZ = 12 - 6 = 6, nicht 5.',
@@ -434,11 +434,11 @@ final List<ExamCase> casesA01Projekte = [
           ),
           nein(
             'Vorgang F',
-            'FAZ = max(FEZ B 13; FEZ D 7) = 13, FEZ 15, GP 0 - richtig.',
+            'FAZ = max(FEZ B 13; FEZ D 7) = 13, FEZ 15, GP 0, also richtig.',
           ),
           nein(
             'Vorgang G',
-            'FAZ = max(FEZ E 12; FEZ F 15) = 15, FEZ 17 - richtig.',
+            'FAZ = max(FEZ E 12; FEZ F 15) = 15, FEZ 17, also richtig.',
           ),
         ],
         explanation:
@@ -464,7 +464,7 @@ final List<ExamCase> casesA01Projekte = [
           zahl(12, rationale: '9 + 3 = 12'),
           zahl(
             13,
-            rationale: 'SEZ 15 - Dauer 2 = 13 - der Wert des Kollegen stimmt.',
+            rationale: 'SEZ 15 - Dauer 2 = 13: Der Wert des Kollegen stimmt.',
           ),
         ],
         explanation:
@@ -576,7 +576,7 @@ final List<ExamCase> casesA01Projekte = [
             ],
           ),
           krit(
-            'Die Pilotkunden geben alle zwei Wochen Rückmeldung - das passt zu Sprints mit Sprint Review.',
+            'Die Pilotkunden geben alle zwei Wochen Rückmeldung. Das passt zu Sprints mit Sprint Review.',
             punkte: 2,
             stichwoerter: [
               'Rückmeldung',
@@ -587,7 +587,7 @@ final List<ExamCase> casesA01Projekte = [
             ],
           ),
           krit(
-            'Erste Funktionen sollen früh nutzbar sein - jeder Sprint liefert ein nutzbares Increment.',
+            'Erste Funktionen sollen früh nutzbar sein: Jeder Sprint liefert ein nutzbares Increment.',
             punkte: 2,
             stichwoerter: [
               'früh',
@@ -609,7 +609,7 @@ final List<ExamCase> casesA01Projekte = [
           ),
         ],
         loesung:
-            'Scrum. Die Anforderungen sind erst grob bekannt und werden sich mit den Rückmeldungen ändern - ein vollständiges Pflichtenheft ließe sich nicht schreiben. Die Pilotkunden können alle zwei Wochen Rückmeldung geben, was zu zweiwöchigen Sprints mit Sprint Review passt. Zudem entsteht nach jedem Sprint ein nutzbares Increment.',
+            'Scrum. Die Anforderungen sind erst grob bekannt und werden sich mit den Rückmeldungen ändern. Ein vollständiges Pflichtenheft ließe sich nicht schreiben. Die Pilotkunden können alle zwei Wochen Rückmeldung geben, was zu zweiwöchigen Sprints mit Sprint Review passt. Zudem entsteht nach jedem Sprint ein nutzbares Increment.',
         explanation:
             '1 Punkt für das Modell, je Argument 2 Punkte, höchstens 5 Punkte. Gewertet werden nur Argumente aus der Situation.',
         punkte: 5,
@@ -667,7 +667,7 @@ final List<ExamCase> casesA01Projekte = [
           ],
         ],
         explanation:
-            'Absatz 1: tägliche Abstimmung der Developers über die nächsten 24 Stunden - Daily Scrum. Absatz 2: Increment zeigen, Feedback der Kunden - Sprint Review. Absatz 3: Zusammenarbeit verbessern, nur das Team - Retrospektive. Absatz 4: Sprintziel (sprint goal) und Auswahl der Einträge - Sprint Planning.',
+            'Absatz 1: tägliche Abstimmung der Developers über die nächsten 24 Stunden: Daily Scrum. Absatz 2: Increment zeigen, Feedback der Kunden: Sprint Review. Absatz 3: Zusammenarbeit verbessern, nur das Team: Retrospektive. Absatz 4: Sprintziel (sprint goal) und Auswahl der Einträge: Sprint Planning.',
         punkte: 4,
       ),
       tabelle(
@@ -730,7 +730,7 @@ final List<ExamCase> casesA01Projekte = [
             'Markiere alle Stories, die zum Increment gehören und den Pilotkunden als fertig gezeigt werden.',
         zeilen: [
           ja('Anfrage stellen', 'Review, Tests und Hilfetext sind erfüllt.'),
-          nein('Status ansehen', 'Der Hilfetext fehlt - nicht „done“.'),
+          nein('Status ansehen', 'Der Hilfetext fehlt, also nicht „done“.'),
           nein('Datei anhängen', 'Ein Test schlägt fehl.'),
           ja('Passwort ändern', 'Alle drei Punkte sind erfüllt.'),
           nein('Anfrage bewerten', 'Das Code-Review fehlt.'),
@@ -827,7 +827,7 @@ final List<ExamCase> casesA01Projekte = [
         loesung:
             'Die Pilotkunden geben früh Rückmeldung, sodass Fehlentwicklungen nach spätestens einem Sprint auffallen. Nach jedem Sprint liegt ein nutzbares Teilergebnis vor. Änderungswünsche können schon im nächsten Sprint berücksichtigt werden; außerdem ist der Fortschritt für alle sichtbar.',
         explanation:
-            'Je Nennung 1 Punkt, höchstens 3 Punkte. „Scrum ist schneller“ ist kein gültiger Vorteil - Scrum ist flexibler, nicht automatisch schneller.',
+            'Je Nennung 1 Punkt, höchstens 3 Punkte. „Scrum ist schneller“ ist kein gültiger Vorteil. Scrum ist flexibler, nicht automatisch schneller.',
         punkte: 3,
       ),
     ],

@@ -29,7 +29,7 @@ final List<Nugget> nuggetsA01Planung = [
       ['unterste', 'Arbeitspaket', 'nein'],
     ],
     points: [
-      '100-%-Regel: Die Elemente einer Ebene decken zusammen den vollen Umfang des übergeordneten Elements ab - nicht mehr und nicht weniger.',
+      '100-%-Regel: Die Elemente einer Ebene decken zusammen den vollen Umfang des übergeordneten Elements ab, nicht mehr und nicht weniger.',
     ],
   ),
   vergleich(
@@ -83,7 +83,7 @@ final List<Nugget> nuggetsA01Planung = [
     ),
     points: [
       'Ebene 1: die Teilaufgaben 1 bis 3',
-      'Ebene 2: Arbeitspakete wie 1.1 „Server“ - sie werden nicht weiter zerlegt',
+      'Ebene 2: Arbeitspakete wie 1.1 „Server“; sie werden nicht weiter zerlegt',
     ],
   ),
   skizze(
@@ -174,7 +174,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-tp-9',
     't-psp',
     'Einen PSP erstellen',
-    'So gehst du vor - auch in einer Prüfungsaufgabe, in der ein PSP zu zeichnen ist.',
+    'So gehst du vor, auch in einer Prüfungsaufgabe, in der ein PSP zu zeichnen ist.',
     [
       'Projektgegenstand und Ziel aus dem Projektauftrag klären',
       'Gliederungsprinzip für die erste Ebene wählen',
@@ -201,10 +201,10 @@ final List<Nugget> nuggetsA01Planung = [
     'n-tp-11',
     't-psp',
     'Der PSP kennt keine Reihenfolge',
-    'Ein Projektstrukturplan zeigt, WAS zu tun ist - nicht wann und in welcher Reihenfolge. Termine und Abhängigkeiten kommen erst im Netzplan oder Gantt-Diagramm dazu.',
+    'Ein Projektstrukturplan zeigt, WAS zu tun ist, nicht wann und in welcher Reihenfolge. Termine und Abhängigkeiten kommen erst im Netzplan oder Gantt-Diagramm dazu.',
     points: [
       'keine Pfeile und keine Datumsangaben im PSP',
-      'Arbeitspakete sind Arbeit mit Aufwand - keine Meilensteine mit Dauer 0',
+      'Arbeitspakete sind Arbeit mit Aufwand, keine Meilensteine mit Dauer 0',
       'nicht zwei Gliederungsprinzipien auf derselben Ebene mischen',
     ],
   ),
@@ -248,7 +248,7 @@ final List<Nugget> nuggetsA01Planung = [
       'B und C folgen auf A, starten also bei 3. B endet bei 3 + 5 = 8, C bei 3 + 4 = 7.',
       'D braucht B und C: Start beim späteren Ende, also bei 8. Ende 8 + 3 = 11.',
       'E folgt auf D: Start 11, Ende 11 + 2 = 13. Dort liegt der Meilenstein „Raum abgenommen“.',
-      'C könnte 8 - 7 = 1 Tag später enden, ohne D zu verzögern - C hat 1 Tag Puffer, alle anderen keinen.',
+      'C könnte 8 - 7 = 1 Tag später enden, ohne D zu verzögern: C hat 1 Tag Puffer, alle anderen keinen.',
     ],
     ergebnis:
         'Projektdauer 13 Tage; kritisch sind A, B, D und E, C hat 1 Tag Puffer.',
@@ -264,13 +264,13 @@ final List<Nugget> nuggetsA01Planung = [
   konzept(
     'n-tg-3',
     't-gantt',
-    'Was du ablesen kannst - und was nicht',
+    'Was du ablesen kannst und was nicht',
     'Im Balkenplan siehst du sofort, was wann läuft und was parallel passiert. Viele Werkzeuge färben kritische Vorgänge ein und zeigen den Fortschritt als gefüllten Balkenanteil.',
     points: [
       'Parallelität: B und C laufen gleichzeitig',
       'Fortschritt: Ist-Balken oder Heute-Linie zeigen einen Verzug',
       'Abhängigkeiten nur, wenn Pfeile eingezeichnet sind',
-      'Puffer nur, wenn er eigens dargestellt wird - berechnet wird er im Netzplan',
+      'Puffer nur, wenn er eigens dargestellt wird; berechnet wird er im Netzplan',
     ],
   ),
   vergleich(
@@ -329,7 +329,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-tg-6',
     't-gantt',
     'Meilensteine',
-    'Ein Meilenstein ist ein Ereignis mit der Dauer 0, das ein wichtiges Zwischenergebnis markiert - oft das Ende einer Phase. An Meilensteinen wird entschieden, ob das Projekt wie geplant weiterläuft.',
+    'Ein Meilenstein ist ein Ereignis mit der Dauer 0, das ein wichtiges Zwischenergebnis markiert, oft das Ende einer Phase. An Meilensteinen wird entschieden, ob das Projekt wie geplant weiterläuft.',
     points: [
       'im Gantt-Diagramm als Raute auf der Zeitachse',
       'verbraucht weder Zeit noch Ressourcen',
@@ -340,7 +340,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-tg-7',
     't-gantt',
     'Meilensteine richtig formulieren',
-    'Ein Meilenstein ist erreicht oder nicht - dazwischen gibt es nichts. Formuliere ihn deshalb als prüfbares Ergebnis, nicht als Tätigkeit.',
+    'Ein Meilenstein ist erreicht oder nicht. Dazwischen gibt es nichts. Formuliere ihn deshalb als prüfbares Ergebnis, nicht als Tätigkeit.',
     [
       ['Schlecht (Tätigkeit)', 'Gut (prüfbares Ereignis)'],
       ['Pflichtenheft schreiben', 'Pflichtenheft vom Kunden freigegeben'],
@@ -367,7 +367,7 @@ final List<Nugget> nuggetsA01Planung = [
     ),
     points: [
       'M1 verläuft waagerecht: Der Termin Woche 8 hält, in Woche 8 trifft die Linie die Diagonale.',
-      'M2 steigt je Berichtswoche um eine halbe Woche: Verzug - geplant war Woche 10, in Berichtswoche 8 lautet die Prognose Woche 14.',
+      'M2 steigt je Berichtswoche um eine halbe Woche: Verzug: Geplant war Woche 10, in Berichtswoche 8 lautet die Prognose Woche 14.',
     ],
   ),
   vergleich(
@@ -438,7 +438,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-tr-3',
     't-ressourcen',
     'Brutto- und Nettokapazität',
-    'Niemand arbeitet an allen Arbeitstagen voll im Projekt. Von der Bruttokapazität gehen Urlaub, Krankheit, Schulungen und Linienaufgaben ab - übrig bleibt die Nettokapazität.',
+    'Niemand arbeitet an allen Arbeitstagen voll im Projekt. Von der Bruttokapazität gehen Urlaub, Krankheit, Schulungen und Linienaufgaben ab. Übrig bleibt die Nettokapazität.',
     points: [
       'Verfügbarkeitsgrad: Anteil der Arbeitszeit, der dem Projekt gehört, zum Beispiel 60 %',
       'erst abwesende Tage abziehen, dann mit dem Verfügbarkeitsgrad multiplizieren',
@@ -467,7 +467,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-tr-5',
     't-ressourcen',
     'Dauer, Aufwand und Personen',
-    'Aus einer Grundformel lässt sich jede der drei Größen berechnen - je nachdem, was in der Aufgabe gesucht ist.',
+    'Aus einer Grundformel lässt sich jede der drei Größen berechnen, je nachdem, was in der Aufgabe gesucht ist.',
     'Dauer    = Aufwand / (Personen × Verfügbarkeit)\n'
         'Aufwand  = Dauer × Personen × Verfügbarkeit\n'
         'Personen = Aufwand / (Dauer × Verfügbarkeit)',
@@ -519,7 +519,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-tr-9',
     't-ressourcen',
     'Das Ressourcenhistogramm',
-    'Das Histogramm zeigt, wie viele Stunden eine Person je Woche verplant ist. Ihre Kapazität liegt bei 40 Stunden pro Woche - in KW 2 ist sie überschritten.',
+    'Das Histogramm zeigt, wie viele Stunden eine Person je Woche verplant ist. Ihre Kapazität liegt bei 40 Stunden pro Woche: In KW 2 ist sie überschritten.',
     const BalkenDiagramm(
       [
         Balken('KW 1', 32),
@@ -532,7 +532,7 @@ final List<Nugget> nuggetsA01Planung = [
     ),
     points: [
       'KW 2: 56 h - 40 h = 16 Stunden Überlast, so nicht umsetzbar',
-      'KW 4: 40 h - 16 h = 24 Stunden frei - hierhin lässt sich Arbeit verschieben, wenn der Puffer es erlaubt',
+      'KW 4: 40 h - 16 h = 24 Stunden frei. Hierhin lässt sich Arbeit verschieben, wenn der Puffer es erlaubt',
     ],
   ),
   konzept(
@@ -545,7 +545,7 @@ final List<Nugget> nuggetsA01Planung = [
       'Arbeit auf weniger ausgelastete Personen umverteilen',
       'kurzfristig Überstunden',
       'zusätzliche interne oder externe Kapazität beschaffen',
-      'Termin verschieben oder Umfang kürzen - nur in Absprache mit dem Auftraggeber',
+      'Termin verschieben oder Umfang kürzen, nur in Absprache mit dem Auftraggeber',
     ],
   ),
   falle(
@@ -570,7 +570,7 @@ final List<Nugget> nuggetsA01Planung = [
     'Merksatz',
     'Die Einheiten verraten die Bedeutung.',
     satz:
-        'Personentage beschreiben Arbeit, Arbeitstage beschreiben Zeit - dazwischen steht die Verfügbarkeit.',
+        'Personentage beschreiben Arbeit, Arbeitstage beschreiben Zeit. Dazwischen steht die Verfügbarkeit.',
   ),
 
   // ======================================= Der Risikomanagement-Prozess
@@ -595,7 +595,7 @@ final List<Nugget> nuggetsA01Planung = [
       ['Problem', 'ist eingetreten', 'Der Lieferant hat zu spät geliefert.'],
     ],
     points: [
-      'Tritt ein Risiko ein, wird es zum Problem - dann greift die vorbereitete Notfallmaßnahme.',
+      'Tritt ein Risiko ein, wird es zum Problem. Dann greift die vorbereitete Notfallmaßnahme.',
     ],
   ),
   vergleich(
@@ -617,7 +617,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-rp-4',
     'r-prozess',
     'Der Risikomanagement-Kreislauf',
-    'Risikomanagement ist ein Kreislauf, der das ganze Projekt begleitet - vom Start bis zum Abschluss.',
+    'Risikomanagement ist ein Kreislauf, der das ganze Projekt begleitet, vom Start bis zum Abschluss.',
     const FlussDiagramm(
       [
         FlussKnoten('Risiken identifizieren'),
@@ -639,7 +639,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-rp-5',
     'r-prozess',
     'Risiken finden',
-    'Kein Verfahren findet alle Risiken - deshalb kombiniert man mehrere.',
+    'Kein Verfahren findet alle Risiken. Deshalb kombiniert man mehrere.',
     points: [
       'Brainstorming im Team',
       'Checklisten aus früheren Projekten',
@@ -660,14 +660,14 @@ final List<Nugget> nuggetsA01Planung = [
       ['Auswirkung', 'sodass sich der Go-live um 2 Wochen verschiebt.'],
     ],
     points: [
-      'Zu ungenau: „Das Projekt könnte scheitern.“ - daraus folgt keine Maßnahme.',
+      'Zu ungenau: „Das Projekt könnte scheitern.“. Daraus folgt keine Maßnahme.',
     ],
   ),
   konzept(
     'n-rp-7',
     'r-prozess',
     'Das Risikoregister',
-    'Alle erkannten Risiken werden in einer Liste gesammelt und laufend gepflegt. Auch unwahrscheinliche Risiken gehören hinein - erst die Bewertung entscheidet über Maßnahmen.',
+    'Alle erkannten Risiken werden in einer Liste gesammelt und laufend gepflegt. Auch unwahrscheinliche Risiken gehören hinein. Erst die Bewertung entscheidet über Maßnahmen.',
     table: [
       ['Feld', 'Beispiel'],
       ['ID, Beschreibung', 'R3: Admin fällt während der Umstellung aus'],
@@ -701,15 +701,14 @@ final List<Nugget> nuggetsA01Planung = [
     'n-rp-10',
     'r-prozess',
     'Problem statt Risiko',
-    'In Prüfungsaufgaben werden gern eingetretene Ereignisse als Risiko angeboten. „Der Server ist ausgefallen“ ist ein Problem, kein Risiko - es wird sofort gelöst, nicht bewertet. Achte auf die Formulierung: Ein Risiko steht in der Möglichkeitsform (könnte, falls).',
+    'In Prüfungsaufgaben werden gern eingetretene Ereignisse als Risiko angeboten. „Der Server ist ausgefallen“ ist ein Problem, kein Risiko. Es wird sofort gelöst, nicht bewertet. Achte auf die Formulierung: Ein Risiko steht in der Möglichkeitsform (könnte, falls).',
   ),
   merke(
     'n-rp-11',
     'r-prozess',
     'Merksatz',
     'Der Prozess endet nie mit dem ersten Durchlauf.',
-    satz:
-        'Erkennen, bewerten, behandeln, überwachen - und dann wieder von vorn.',
+    satz: 'Erkennen, bewerten, behandeln, überwachen und dann wieder von vorn.',
   ),
 
   // =========================================================== Risiken bewerten
@@ -770,7 +769,7 @@ final List<Nugget> nuggetsA01Planung = [
     ],
     ergebnis: 'Rangfolge: R1 (8.000 €), R2 (6.000 €), R3 (2.000 €)',
     merksatz:
-        'Das wahrscheinlichste Risiko R2 steht nicht vorn - es zählt das Produkt.',
+        'Das wahrscheinlichste Risiko R2 steht nicht vorn. Es zählt das Produkt.',
   ),
   skizze(
     'n-rb-5',
@@ -798,9 +797,9 @@ final List<Nugget> nuggetsA01Planung = [
       ['gering (1)', '1', '2', '3'],
     ],
     points: [
-      '1 bis 2: grün - akzeptieren und beobachten',
-      '3 bis 4: gelb - Maßnahmen planen',
-      '6 bis 9: rot - sofort handeln',
+      '1 bis 2: grün, also akzeptieren und beobachten',
+      '3 bis 4: gelb, also Maßnahmen planen',
+      '6 bis 9: rot, also sofort handeln',
     ],
   ),
   beispiel(
@@ -814,7 +813,8 @@ final List<Nugget> nuggetsA01Planung = [
       'Risikokennzahl = 2 × 3 = 6',
       'Einordnen: 6 liegt im roten Bereich',
     ],
-    ergebnis: 'Kennzahl 6 - rot, es muss sofort eine Maßnahme geplant werden',
+    ergebnis:
+        'Kennzahl 6, also rot, es muss sofort eine Maßnahme geplant werden',
   ),
   formel(
     'n-rb-8',
@@ -836,19 +836,19 @@ final List<Nugget> nuggetsA01Planung = [
       'Vergleich: 8.000 € Nutzen > 5.000 € Kosten',
     ],
     ergebnis:
-        'Die Maßnahme lohnt sich - sie bringt 3.000 € mehr, als sie kostet.',
+        'Die Maßnahme lohnt sich: sie bringt 3.000 € mehr, als sie kostet.',
   ),
   falle(
     'n-rb-10',
     'r-bewertung',
     'Die Schwäche der Rechnung',
-    'Ein sehr seltenes, aber existenzbedrohendes Risiko bekommt rechnerisch einen kleinen Wert: 1 % × 5 Mio. € ergibt 50.000 €. Trotzdem darf es nicht einfach hingenommen werden - Risiken, die das Unternehmen gefährden, brauchen immer eine Maßnahme.',
+    'Ein sehr seltenes, aber existenzbedrohendes Risiko bekommt rechnerisch einen kleinen Wert: 1 % × 5 Mio. € ergibt 50.000 €. Trotzdem darf es nicht einfach hingenommen werden: Risiken, die das Unternehmen gefährden, brauchen immer eine Maßnahme.',
   ),
   falle(
     'n-rb-11',
     'r-bewertung',
     'Prozente und Achsen',
-    'Zwei Fehler kosten regelmäßig Punkte: 25 % × 36.000 € sind 0,25 × 36.000 € = 9.000 € - Prozent immer als Dezimalzahl einsetzen. Und bei einer vorgegebenen Matrix zuerst prüfen, welche Achse was zeigt: Nicht jede Vorlage hat die Wahrscheinlichkeit waagerecht.',
+    'Zwei Fehler kosten regelmäßig Punkte: 25 % × 36.000 € sind 0,25 × 36.000 € = 9.000 €: Prozent immer als Dezimalzahl einsetzen. Und bei einer vorgegebenen Matrix zuerst prüfen, welche Achse was zeigt: Nicht jede Vorlage hat die Wahrscheinlichkeit waagerecht.',
   ),
   merke(
     'n-rb-12',
@@ -864,7 +864,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-rs-1',
     'r-strategien',
     'Vom Risiko zur Maßnahme',
-    'Für jedes relevante Risiko wird eine Strategie gewählt und in konkrete Maßnahmen übersetzt - mit Verantwortlichem, Termin und Kosten. Die vier klassischen Strategien unterscheiden sich darin, wo sie ansetzen.',
+    'Für jedes relevante Risiko wird eine Strategie gewählt und in konkrete Maßnahmen übersetzt, mit Verantwortlichem, Termin und Kosten. Die vier klassischen Strategien unterscheiden sich darin, wo sie ansetzen.',
     points: [
       'an der Ursache: vermeiden',
       'an Wahrscheinlichkeit oder Auswirkung: vermindern',
@@ -876,7 +876,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-rs-2',
     'r-strategien',
     'Die vier Strategien',
-    'Übertragen heißt in manchen Büchern auch überwälzen - gemeint ist dasselbe.',
+    'Übertragen heißt in manchen Büchern auch überwälzen. Gemeint ist dasselbe.',
     [
       ['Strategie', 'Idee', 'Beispiel'],
       [
@@ -916,7 +916,7 @@ final List<Nugget> nuggetsA01Planung = [
     ),
     points: [
       'selten, aber teuer: typisch für eine Versicherung',
-      'häufig und teuer: so nicht eingehen - Ursache beseitigen',
+      'häufig und teuer: so nicht eingehen, Ursache beseitigen',
     ],
   ),
   konzept(
@@ -927,7 +927,7 @@ final List<Nugget> nuggetsA01Planung = [
     points: [
       'Nein, die Ursache ist weg: vermeiden',
       'Ja, aber seltener oder weniger schlimm: vermindern',
-      'Beispiel: Ein Backup verhindert keinen Plattendefekt, begrenzt aber den Schaden - also vermindern.',
+      'Beispiel: Ein Backup verhindert keinen Plattendefekt, begrenzt aber den Schaden, also vermindern.',
     ],
   ),
   vergleich(
@@ -981,7 +981,7 @@ final List<Nugget> nuggetsA01Planung = [
       'Risikowert vorher: 0,40 × 20.000 € = 8.000 €',
       'Restrisiko: 0,10 × 20.000 € = 2.000 €',
       'Senkung: 8.000 € - 2.000 € = 6.000 €',
-      'Das Restrisiko wird neu eingestuft: 2.000 € sind vertretbar - akzeptieren und beobachten.',
+      'Das Restrisiko wird neu eingestuft: 2.000 € sind vertretbar, also akzeptieren und beobachten.',
     ],
     ergebnis: 'Restrisiko 2.000 €',
   ),
@@ -989,13 +989,13 @@ final List<Nugget> nuggetsA01Planung = [
     'n-rs-9',
     'r-strategien',
     'Übertragen heißt nicht beseitigen',
-    'Eine Versicherung verhindert keinen Serverausfall - sie bezahlt nur den Schaden. Das Ereignis kann trotzdem eintreten, mit allen Folgen für den Zeitplan.',
+    'Eine Versicherung verhindert keinen Serverausfall. Sie bezahlt nur den Schaden. Das Ereignis kann trotzdem eintreten, mit allen Folgen für den Zeitplan.',
   ),
   falle(
     'n-rs-10',
     'r-strategien',
     'Akzeptieren ist nicht ignorieren',
-    'Akzeptieren ist eine bewusste Entscheidung: Das Risiko steht im Register, ist bewertet, und jemand hat entschieden, es zu tragen - oft mit einer finanziellen Rücklage. Ein Risiko, das niemand erfasst hat, ist nicht akzeptiert, sondern übersehen.',
+    'Akzeptieren ist eine bewusste Entscheidung: Das Risiko steht im Register, ist bewertet, und jemand hat entschieden, es zu tragen, oft mit einer finanziellen Rücklage. Ein Risiko, das niemand erfasst hat, ist nicht akzeptiert, sondern übersehen.',
   ),
   merke(
     'n-rs-11',
@@ -1003,7 +1003,7 @@ final List<Nugget> nuggetsA01Planung = [
     'Merksatz',
     'Geprüft wird von der wirksamsten zur schwächsten Strategie.',
     satz:
-        'Vermeiden, vermindern, übertragen, akzeptieren - in dieser Reihenfolge prüfen.',
+        'Vermeiden, vermindern, übertragen, akzeptieren, und zwar in dieser Reihenfolge prüfen.',
   ),
 
   // ============================================== Projektkosten kalkulieren
@@ -1013,10 +1013,10 @@ final List<Nugget> nuggetsA01Planung = [
     'Woraus Projektkosten bestehen',
     'In IT-Projekten sind die Personalkosten meist der größte Posten.',
     points: [
-      'Personalkosten - interne Arbeitszeit',
-      'Sachkosten - Hardware, Lizenzen, Material',
-      'Fremdleistungen - externe Dienstleister',
-      'Gemeinkosten - anteilige Kosten für Räume, Verwaltung, Infrastruktur',
+      'Personalkosten: interne Arbeitszeit',
+      'Sachkosten: Hardware, Lizenzen, Material',
+      'Fremdleistungen: externe Dienstleister',
+      'Gemeinkosten: anteilige Kosten für Räume, Verwaltung, Infrastruktur',
     ],
   ),
   vergleich(
@@ -1085,7 +1085,7 @@ final List<Nugget> nuggetsA01Planung = [
         '+ Umsatzsteuer 19 %\n'
         '= Bruttoangebotspreis',
     points: [
-      'Worauf sich der Gemeinkostenzuschlag bezieht, steht in der Aufgabe - hier auf die Personalkosten.',
+      'Worauf sich der Gemeinkostenzuschlag bezieht, steht in der Aufgabe, hier auf die Personalkosten.',
     ],
   ),
   beispiel(
@@ -1159,7 +1159,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-wk-14',
     'w-kalkulation',
     'Entgangener Umsatz gehört zu den Kosten',
-    'Wer geschult wird oder auf ein neues System umstellt, kann in dieser Zeit keine Kundenstunden abrechnen. Der Umsatz, der dadurch fehlt, heißt entgangener Umsatz. Er steht auf keiner Rechnung, gehört aber in jeden Kostenvergleich - sonst wirkt die Lösung mit der längeren Schulung zu günstig.',
+    'Wer geschult wird oder auf ein neues System umstellt, kann in dieser Zeit keine Kundenstunden abrechnen. Der Umsatz, der dadurch fehlt, heißt entgangener Umsatz. Er steht auf keiner Rechnung, gehört aber in jeden Kostenvergleich, sonst wirkt die Lösung mit der längeren Schulung zu günstig.',
     points: [
       'Entgangener Umsatz = Personen × ausgefallene Stunden × Stundensatz',
       'typische Anlässe: Schulung, Umstellung, Systemausfall',
@@ -1188,14 +1188,14 @@ final List<Nugget> nuggetsA01Planung = [
     points: [
       'Vorkalkulation: vor dem Projekt, Grundlage für Angebot und Budget',
       'Mitkalkulation: während des Projekts, laufender Soll-Ist-Vergleich',
-      'Nachkalkulation: nach dem Projekt, Abgleich mit den echten Kosten - verbessert die nächste Schätzung',
+      'Nachkalkulation: nach dem Projekt, Abgleich mit den echten Kosten; verbessert die nächste Schätzung',
     ],
   ),
   falle(
     'n-wk-11',
     'w-kalkulation',
     'Jeder Prozentsatz hat seine Basis',
-    'Skonto wird vom Zieleinkaufspreis abgezogen, also nach dem Rabatt - nicht vom Listenpreis. Auf Bezugskosten gibt es kein Skonto. Der Gewinnzuschlag bezieht sich auf die Selbstkosten, die Umsatzsteuer auf den Nettopreis.',
+    'Skonto wird vom Zieleinkaufspreis abgezogen, also nach dem Rabatt, nicht vom Listenpreis. Auf Bezugskosten gibt es kein Skonto. Der Gewinnzuschlag bezieht sich auf die Selbstkosten, die Umsatzsteuer auf den Nettopreis.',
     points: [
       'Falsch: 2.500 € - 10 % - 2 % jeweils vom Listenpreis = 2.200 €',
       'Richtig: 2.500 € -> 2.250 € -> 2.205 €',
@@ -1205,7 +1205,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-wk-12',
     'w-kalkulation',
     'Produktive Stunden, nicht Anwesenheit',
-    'Wer die Jahreskosten auf alle theoretisch möglichen Stunden verteilt (250 Tage × 8 h = 2.000 h), erhält 57.600 € / 2.000 h = 28,80 €/h - zu wenig. Urlaub, Krankheit und Weiterbildung werden bezahlt, bringen aber keine Projektstunden. Richtig sind 36 €/h.',
+    'Wer die Jahreskosten auf alle theoretisch möglichen Stunden verteilt (250 Tage × 8 h = 2.000 h), erhält 57.600 € / 2.000 h = 28,80 €/h. Das ist zu wenig. Urlaub, Krankheit und Weiterbildung werden bezahlt, bringen aber keine Projektstunden. Richtig sind 36 €/h.',
   ),
   merke(
     'n-wk-13',
@@ -1221,7 +1221,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-wn-1',
     'w-nutzwert',
     'Wozu eine Nutzwertanalyse?',
-    'Nicht alles lässt sich in Euro ausdrücken: Bedienbarkeit, Support oder Zukunftssicherheit zum Beispiel. Die Nutzwertanalyse macht solche qualitativen Kriterien mit Punkten und Gewichten vergleichbar - etwa bei der Auswahl von Software, Hardware oder Dienstleistern.',
+    'Nicht alles lässt sich in Euro ausdrücken: Bedienbarkeit, Support oder Zukunftssicherheit zum Beispiel. Die Nutzwertanalyse macht solche qualitativen Kriterien mit Punkten und Gewichten vergleichbar, etwa bei der Auswahl von Software, Hardware oder Dienstleistern.',
   ),
   vergleich(
     'n-wn-2',
@@ -1252,9 +1252,9 @@ final List<Nugget> nuggetsA01Planung = [
     'Die Schritte',
     'Das Verfahren ist immer gleich.',
     [
-      'Kriterien festlegen - bevor man die Angebote kennt',
+      'Kriterien festlegen, bevor man die Angebote kennt',
       'K.-o.-Kriterien prüfen, ungeeignete Alternativen streichen',
-      'Kriterien gewichten - die Gewichte ergeben zusammen 100 %',
+      'Kriterien gewichten; die Gewichte ergeben zusammen 100 %',
       'Jede Alternative je Kriterium mit Punkten bewerten',
       'Teilnutzwert = Gewicht × Punkte',
       'Teilnutzwerte je Alternative zum Nutzwert addieren',
@@ -1268,7 +1268,7 @@ final List<Nugget> nuggetsA01Planung = [
     'Die Gewichte drücken aus, wie wichtig ein Kriterium ist, die Punkte, wie gut eine Alternative es erfüllt. Beides wird vor der Bewertung festgelegt.',
     points: [
       'Gewichte in Prozent (Summe 100 %) oder als Anteile (Summe 1)',
-      'eine einheitliche Punkteskala, z. B. 0 bis 10 - höher ist immer besser',
+      'eine einheitliche Punkteskala, z. B. 0 bis 10; höher ist immer besser',
       'auch beim Preis: günstig bekommt viele Punkte',
       'Hilfe beim Gewichten: paarweiser Vergleich, jedes Kriterium gegen jedes andere',
     ],
@@ -1281,7 +1281,7 @@ final List<Nugget> nuggetsA01Planung = [
     'Teilnutzwert = Gewicht × Punkte\n'
         'Nutzwert     = Summe aller Teilnutzwerte',
     points: [
-      'Der Nutzwert kann nie über dem Maximum der Punkteskala liegen - gute Kontrolle.',
+      'Der Nutzwert kann nie über dem Maximum der Punkteskala liegen. Das ist eine gute Kontrolle.',
     ],
   ),
   beispiel(
@@ -1307,7 +1307,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-wn-8',
     'w-nutzwert',
     'Das Ergebnis als Balkendiagramm',
-    'Ein Balkendiagramm macht das Ergebnis für Entscheider auf einen Blick lesbar. Der Abstand zwischen A und B ist klein - hier lohnt ein zweiter Blick.',
+    'Ein Balkendiagramm macht das Ergebnis für Entscheider auf einen Blick lesbar. Der Abstand zwischen A und B ist klein: Hier lohnt ein zweiter Blick.',
     const BalkenDiagramm(
       [
         Balken('A', 7.55, hervorheben: true),
@@ -1329,7 +1329,7 @@ final List<Nugget> nuggetsA01Planung = [
     'Muss-Kriterium ist „Daten werden in der EU gespeichert“. Ticketsystem A aus dem Beispiel speichert die Daten in den USA, B und C in Deutschland.',
     schritte: [
       'K.-o.-Prüfung vor der Rechnung: A erfüllt das Muss-Kriterium nicht.',
-      'A scheidet aus - sein Nutzwert von 7,55 spielt keine Rolle.',
+      'A scheidet aus. Sein Nutzwert von 7,55 spielt keine Rolle.',
       'Unter den verbleibenden Alternativen hat B den höchsten Nutzwert: 7,30 > 6,85.',
     ],
     ergebnis: 'Gewählt wird B.',
@@ -1338,7 +1338,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-wn-12',
     'w-nutzwert',
     'Entscheidungsmatrix mit Rangplätzen',
-    'Die einfachste Form des Vergleichs kommt ohne Gewichtung aus: Je Kriterium werden die Alternativen in eine Rangfolge gebracht, die Ränge werden addiert. Welche Zahl für den besten Wert steht, legt die Aufgabe fest - deshalb immer zuerst die Vorgabe lesen.',
+    'Die einfachste Form des Vergleichs kommt ohne Gewichtung aus: Je Kriterium werden die Alternativen in eine Rangfolge gebracht, die Ränge werden addiert. Welche Zahl für den besten Wert steht, legt die Aufgabe fest. Deshalb immer zuerst die Vorgabe lesen.',
     points: [
       'Vorgabe „Rang 1 für den besten Wert“: Die kleinste Rangsumme gewinnt.',
       'Vorgabe „höchste Punktzahl für den besten Wert“ (bei drei Alternativen 3 Punkte): Die größte Summe gewinnt.',
@@ -1384,14 +1384,14 @@ final List<Nugget> nuggetsA01Planung = [
       'Gewichte ergeben nicht 100 %',
       'Punkte ohne Gewichtung addiert',
       'Prozent als ganze Zahl gerechnet: 40 × 8 = 320 statt 0,40 × 8 = 3,20',
-      'K.-o.-Kriterien übersehen: Wer eine Mussanforderung verfehlt, fällt vorher heraus - egal wie hoch sein Nutzwert wäre',
+      'K.-o.-Kriterien übersehen: Wer eine Mussanforderung verfehlt, fällt vorher heraus, egal wie hoch sein Nutzwert wäre',
     ],
   ),
   merke(
     'n-wn-11',
     'w-nutzwert',
     'Die Grenze des Verfahrens',
-    'Gewichte und Punkte sind subjektiv - wer sie festlegt, beeinflusst das Ergebnis. Deshalb legt man Kriterien und Gewichte fest, bevor man die Angebote kennt.',
+    'Gewichte und Punkte sind subjektiv: Wer sie festlegt, beeinflusst das Ergebnis. Deshalb legt man Kriterien und Gewichte fest, bevor man die Angebote kennt.',
     satz:
         'Die Nutzwertanalyse macht eine Entscheidung nachvollziehbar, nicht objektiv.',
   ),
@@ -1480,15 +1480,15 @@ final List<Nugget> nuggetsA01Planung = [
       punkte: [DiagrammPunkt(200, 10000, 'kritische Menge')],
     ),
     points: [
-      '150 Geräte: make 6.000 € + 3.000 € = 9.000 €, buy 7.500 € - buy ist günstiger',
-      '300 Geräte: make 6.000 € + 6.000 € = 12.000 €, buy 15.000 € - make ist günstiger',
+      '150 Geräte: make 6.000 € + 3.000 € = 9.000 €, buy 7.500 €: buy ist günstiger',
+      '300 Geräte: make 6.000 € + 6.000 € = 12.000 €, buy 15.000 €: make ist günstiger',
     ],
   ),
   konzept(
     'n-wm-7',
     'w-makeorbuy',
     'Total Cost of Ownership',
-    'Die TCO betrachtet alle Kosten über die gesamte Nutzungsdauer - nicht nur den Kaufpreis. Erträge gehören nicht dazu, sie kommen erst in einer Wirtschaftlichkeitsrechnung ins Spiel.',
+    'Die TCO betrachtet alle Kosten über die gesamte Nutzungsdauer, nicht nur den Kaufpreis. Erträge gehören nicht dazu, sie kommen erst in einer Wirtschaftlichkeitsrechnung ins Spiel.',
     points: [
       'Anschaffung und Einrichtung',
       'Betrieb: Strom, Wartung, Lizenzen',
@@ -1515,7 +1515,7 @@ final List<Nugget> nuggetsA01Planung = [
       'Differenz: 24.600 € - 24.000 € = 600 € zugunsten von Make',
     ],
     ergebnis:
-        'Make ist über 4 Jahre 600 € günstiger - bei so knappem Abstand entscheiden die qualitativen Kriterien.',
+        'Make ist über 4 Jahre 600 € günstiger. Bei so knappem Abstand entscheiden die qualitativen Kriterien.',
   ),
   konzept(
     'n-wm-9',
@@ -1523,11 +1523,11 @@ final List<Nugget> nuggetsA01Planung = [
     'Die Machbarkeitsanalyse',
     'Bevor ein Weg gewählt wird, prüft man, ob er überhaupt gangbar ist.',
     points: [
-      'technisch - lässt es sich umsetzen?',
-      'wirtschaftlich - lohnt es sich?',
-      'rechtlich - ist es erlaubt, etwa beim Datenschutz und bei Lizenzen?',
-      'organisatorisch - passt es zu Abläufen und Personal?',
-      'zeitlich - ist es rechtzeitig fertig?',
+      'technisch: lässt es sich umsetzen?',
+      'wirtschaftlich: lohnt es sich?',
+      'rechtlich: ist es erlaubt, etwa beim Datenschutz und bei Lizenzen?',
+      'organisatorisch: passt es zu Abläufen und Personal?',
+      'zeitlich: ist es rechtzeitig fertig?',
     ],
   ),
   falle(
@@ -1626,7 +1626,7 @@ final List<Nugget> nuggetsA01Planung = [
     'Break-even bei einem Abo-Dienst',
     'Ein Start-up bietet Cloud-Backup für 25 € pro Kunde und Monat an. Je Kunde entstehen 5 € variable Kosten im Monat, die Fixkosten liegen bei 36.000 € im Jahr.',
     schritte: [
-      'Alle Größen auf dasselbe Zeitmaß bringen - hier ein Jahr',
+      'Alle Größen auf dasselbe Zeitmaß bringen, hier ein Jahr',
       'Deckungsbeitrag je Kunde und Monat: 25 € - 5 € = 20 €',
       'Deckungsbeitrag je Kunde und Jahr: 20 € × 12 = 240 €',
       'Break-even: 36.000 € / 240 € = 150 Kunden',
@@ -1692,7 +1692,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-wb-12',
     'w-breakeven',
     'Laufende Kosten vergessen, falsch runden',
-    'Die Einsparung allein ist nicht der Rückfluss - laufende Kosten der neuen Lösung werden abgezogen, sonst wird die Amortisationsdauer zu kurz. Und eine Break-even-Menge von 333,3 Stück heißt 334 Stück: Mit 333 wäre die Schwelle noch nicht erreicht.',
+    'Die Einsparung allein ist nicht der Rückfluss. Laufende Kosten der neuen Lösung werden abgezogen, sonst wird die Amortisationsdauer zu kurz. Und eine Break-even-Menge von 333,3 Stück heißt 334 Stück: Mit 333 wäre die Schwelle noch nicht erreicht.',
   ),
   merke(
     'n-wb-13',
@@ -1718,7 +1718,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-aa-2',
     'a-abnahme',
     'Der Ablauf des Abschlusses',
-    'Eine sinnvolle Reihenfolge - das Team wird zuletzt aufgelöst, weil es für Bericht und Lessons Learned noch gebraucht wird.',
+    'Eine sinnvolle Reihenfolge: das Team wird zuletzt aufgelöst, weil es für Bericht und Lessons Learned noch gebraucht wird.',
     [
       'Restarbeiten erledigen, Ergebnis fertigstellen',
       'Abnahme des Ergebnisses durch den Auftraggeber',
@@ -1734,7 +1734,7 @@ final List<Nugget> nuggetsA01Planung = [
     'Die Abnahme',
     'Bei der Abnahme prüft der Auftraggeber das Ergebnis gegen die vereinbarten Abnahmekriterien, meist aus dem Pflichtenheft, und erklärt, dass er es als im Wesentlichen vertragsgemäß annimmt.',
     points: [
-      'Maßstab ist nur, was vereinbart war - nicht spätere Wünsche',
+      'Maßstab ist nur, was vereinbart war, nicht spätere Wünsche',
       'Abnahmekriterien werden deshalb schon bei der Planung prüfbar festgelegt',
       'das Ergebnis hält ein Abnahmeprotokoll fest',
     ],
@@ -1774,14 +1774,14 @@ final List<Nugget> nuggetsA01Planung = [
     ],
     points: [
       'Wegen unwesentlicher Mängel darf die Abnahme nicht verweigert werden.',
-      'Bekannte Mängel gehören ins Protokoll - wer ohne Vorbehalt abnimmt, verliert wichtige Mängelrechte.',
+      'Bekannte Mängel gehören ins Protokoll. Wer ohne Vorbehalt abnimmt, verliert wichtige Mängelrechte.',
     ],
   ),
   ablauf(
     'n-aa-6',
     'a-abnahme',
     'So läuft eine Abnahme',
-    'Eine Abnahme wird vorbereitet wie ein Test - nur dass am Ende der Auftraggeber entscheidet.',
+    'Eine Abnahme wird vorbereitet wie ein Test, nur dass am Ende der Auftraggeber entscheidet.',
     [
       'Abnahmekriterien vorab festlegen, zum Beispiel aus dem Pflichtenheft',
       'Termin, Teilnehmer und Testdaten abstimmen',
@@ -1831,7 +1831,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-aa-9',
     'a-abnahme',
     'Übergabe an den Betrieb',
-    'Nach dem Projekt muss jemand die Lösung betreiben. Damit das funktioniert, bekommt der Betrieb alles, was er braucht - und bestätigt die Übernahme.',
+    'Nach dem Projekt muss jemand die Lösung betreiben. Damit das funktioniert, bekommt der Betrieb alles, was er braucht und bestätigt die Übernahme.',
     points: [
       'Betriebs- und Benutzerdokumentation',
       'Schulung von Anwendern und Administratoren',
@@ -1861,7 +1861,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-aa-11',
     'a-abnahme',
     'Mängel nicht festhalten',
-    'Kleine Mängel, die bei der Abnahme bekannt sind, gehören ins Protokoll - sonst lässt sich später nicht mehr belegen, dass sie schon bei Übergabe bestanden, und wichtige Mängelrechte gehen verloren.',
+    'Kleine Mängel, die bei der Abnahme bekannt sind, gehören ins Protokoll, sonst lässt sich später nicht mehr belegen, dass sie schon bei Übergabe bestanden, und wichtige Mängelrechte gehen verloren.',
   ),
   falle(
     'n-aa-12',
@@ -1918,8 +1918,8 @@ final List<Nugget> nuggetsA01Planung = [
     'absolute Abweichung = Ist - Soll\n'
         'relative Abweichung = (Ist - Soll) / Soll × 100 %',
     points: [
-      'positiv: mehr als geplant - bei Kosten und Dauer eine Überschreitung',
-      'negativ: weniger als geplant - bei Kosten eine Unterschreitung',
+      'positiv: mehr als geplant, bei Kosten und Dauer eine Überschreitung',
+      'negativ: weniger als geplant, bei Kosten eine Unterschreitung',
     ],
   ),
   beispiel(
@@ -2004,13 +2004,13 @@ final List<Nugget> nuggetsA01Planung = [
     'n-ab-10',
     'a-bericht',
     'Nur Zahlen, keine Gründe',
-    'Eine Abweichung ohne Begründung hilft niemandem. Wertvoll wird der Bericht erst, wenn er erklärt, warum die Kosten gestiegen sind - etwa durch eine nachträglich beauftragte Schnittstelle.',
+    'Eine Abweichung ohne Begründung hilft niemandem. Wertvoll wird der Bericht erst, wenn er erklärt, warum die Kosten gestiegen sind, etwa durch eine nachträglich beauftragte Schnittstelle.',
   ),
   falle(
     'n-ab-11',
     'a-bericht',
     'Die falsche Bezugsgröße',
-    'Die relative Abweichung bezieht sich immer auf das Soll. Wer (46.000 - 40.000) / 46.000 rechnet, erhält rund 13 % statt 15 % - und unterschätzt die Überschreitung.',
+    'Die relative Abweichung bezieht sich immer auf das Soll. Wer (46.000 - 40.000) / 46.000 rechnet, erhält rund 13 % statt 15 % und unterschätzt die Überschreitung.',
   ),
   merke(
     'n-ab-12',
@@ -2018,7 +2018,7 @@ final List<Nugget> nuggetsA01Planung = [
     'Merksatz',
     'Der Soll-Ist-Vergleich ist das Herzstück des Abschlussberichts.',
     satz:
-        'Abweichung = Ist minus Soll, bezogen auf das Soll - und immer mit Begründung.',
+        'Abweichung = Ist minus Soll, bezogen auf das Soll und immer mit Begründung.',
   ),
 
   // ============================================================== Lessons Learned
@@ -2026,13 +2026,13 @@ final List<Nugget> nuggetsA01Planung = [
     'n-al-1',
     'a-lessons',
     'Wozu Lessons Learned?',
-    'Aus Erfahrungen soll Wissen für künftige Projekte werden. Ohne diesen Schritt wiederholt die nächste Projektgruppe dieselben Fehler - und muss erfolgreiche Lösungen neu erfinden.',
+    'Aus Erfahrungen soll Wissen für künftige Projekte werden. Ohne diesen Schritt wiederholt die nächste Projektgruppe dieselben Fehler und muss erfolgreiche Lösungen neu erfinden.',
   ),
   konzept(
     'n-al-2',
     'a-lessons',
     'Wann Erfahrungen gesichert werden',
-    'Der klassische Zeitpunkt ist das Projektende, solange die Erinnerungen frisch sind. Besser ist es, auch nach Phasen oder Meilensteinen innezuhalten - dann profitiert schon das laufende Projekt.',
+    'Der klassische Zeitpunkt ist das Projektende, solange die Erinnerungen frisch sind. Besser ist es, auch nach Phasen oder Meilensteinen innezuhalten. Dann profitiert schon das laufende Projekt.',
     points: [
       'am Projektende: Lessons-Learned-Workshop',
       'projektbegleitend: nach Phasen und Meilensteinen',
@@ -2061,8 +2061,8 @@ final List<Nugget> nuggetsA01Planung = [
     'Ein Lessons-Learned-Workshop',
     'So läuft der Workshop üblicherweise ab.',
     [
-      'Vorbereiten - Beteiligte einladen, Projektdaten bereitlegen',
-      'Sammeln - was lief gut, was lief schlecht?',
+      'Vorbereiten: Beteiligte einladen, Projektdaten bereitlegen',
+      'Sammeln: was lief gut, was lief schlecht?',
       'Ursachen analysieren',
       'Empfehlungen für künftige Projekte ableiten',
       'Dokumentieren und für andere zugänglich ablegen',
@@ -2104,7 +2104,7 @@ final List<Nugget> nuggetsA01Planung = [
       ['Empfehlung', 'Freigaben schon beim Projektstart beantragen.'],
     ],
     points: [
-      'Zu allgemein: „Die Kommunikation verbessern.“ - daraus folgt keine Handlung.',
+      'Zu allgemein: „Die Kommunikation verbessern.“. Daraus folgt keine Handlung.',
     ],
   ),
   konzept(
@@ -2123,7 +2123,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-al-9',
     'a-lessons',
     'Keine Schuldfrage',
-    'Geht es um Schuld, schweigen die Beteiligten - und die wichtigsten Erkenntnisse gehen verloren. Lessons Learned fragen nach Ursachen und Verbesserungen, nicht nach Verantwortlichen.',
+    'Geht es um Schuld, schweigen die Beteiligten und die wichtigsten Erkenntnisse gehen verloren. Lessons Learned fragen nach Ursachen und Verbesserungen, nicht nach Verantwortlichen.',
   ),
   konzept(
     'n-al-10',
@@ -2143,6 +2143,6 @@ final List<Nugget> nuggetsA01Planung = [
     'Merksatz',
     'Der Aufwand lohnt sich nur, wenn die Erkenntnisse beim nächsten Projekt ankommen.',
     satz:
-        'Lessons Learned machen aus Erfahrung Wissen - für das nächste Projekt, nicht für das Protokoll.',
+        'Lessons Learned machen aus Erfahrung Wissen, für das nächste Projekt, nicht für das Protokoll.',
   ),
 ];

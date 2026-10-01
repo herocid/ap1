@@ -56,7 +56,7 @@ final List<Question> ihkA01Planung = [
     loesung:
         'Der PSP zerlegt das Projekt vollständig in Teilaufgaben und Arbeitspakete, sodass keine Aufgabe vergessen wird. Außerdem ist er die Grundlage für alles Weitere: Aufwand, Kosten und Termine lassen sich erst je Arbeitspaket verlässlich schätzen.',
     explanation:
-        'Je Grund 2 Punkte (Aussage plus kurze Ausführung), höchstens 4 Punkte. Der PSP beantwortet die Frage WAS - erst danach folgen Dauer, Reihenfolge und Termine.',
+        'Je Grund 2 Punkte (Aussage plus kurze Ausführung), höchstens 4 Punkte. Der PSP beantwortet die Frage WAS: Erst danach folgen Dauer, Reihenfolge und Termine.',
   ),
   tabelle(
     'i1-tp-2',
@@ -109,7 +109,7 @@ final List<Question> ihkA01Planung = [
         'Markiere alle Einträge, die nicht in einen Projektstrukturplan gehören. (3 P.)',
     punkte: 3,
     zeilen: [
-      nein('1 Beschaffung', 'Eine Teilaufgabe - gehört in den PSP.'),
+      nein('1 Beschaffung', 'Eine Teilaufgabe, also gehört in den PSP.'),
       nein(
         '1.1 Angebote einholen',
         'Ein Arbeitspaket unter der Teilaufgabe Beschaffung.',
@@ -118,7 +118,7 @@ final List<Question> ihkA01Planung = [
         '1.2 Liefertermin: 14. März',
         'Ein Termin gehört in den Terminplan, nicht in den PSP.',
       ),
-      nein('2 Installation', 'Eine Teilaufgabe - gehört in den PSP.'),
+      nein('2 Installation', 'Eine Teilaufgabe, also gehört in den PSP.'),
       nein('2.1 Image erstellen', 'Ein Arbeitspaket mit prüfbarem Ergebnis.'),
       ja(
         '2.2 Image erst nach Abschluss von 1.1 verteilen',
@@ -194,7 +194,7 @@ final List<Question> ihkA01Planung = [
       zahl(2, rationale: 'D beginnt bei 7, C endet bei 5: 7 - 5 = 2.'),
     ],
     explanation:
-        'A läuft von 0 bis 3. B: 3 bis 7, C: 3 bis 5. D braucht B und C und startet beim späteren Ende, also bei 7, und endet bei 12. E läuft von 12 bis 14 - das Projekt dauert 14 Tage. C ist schon bei 5 fertig, D beginnt erst bei 7: 2 Tage Puffer.',
+        'A läuft von 0 bis 3. B: 3 bis 7, C: 3 bis 5. D braucht B und C und startet beim späteren Ende, also bei 7, und endet bei 12. E läuft von 12 bis 14: Das Projekt dauert 14 Tage. C ist schon bei 5 fertig, D beginnt erst bei 7: 2 Tage Puffer.',
   ),
   freitext(
     'i1-tg-3',
@@ -242,9 +242,9 @@ final List<Question> ihkA01Planung = [
       ),
     ],
     loesung:
-        'Aus dem Gantt-Diagramm lassen sich Beginn, Ende und Dauer der Vorgänge, parallel laufende Vorgänge und die Meilensteine ablesen. Auch die Gesamtdauer und - mit Heute-Linie - der Fortschritt sind erkennbar.',
+        'Aus dem Gantt-Diagramm lassen sich Beginn, Ende und Dauer der Vorgänge, parallel laufende Vorgänge und die Meilensteine ablesen. Auch die Gesamtdauer und (mit Heute-Linie) der Fortschritt sind erkennbar.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 3 Punkte. Puffer und kritischer Pfad werden dagegen im Netzplan berechnet - das Gantt-Diagramm zeigt sie nur, wenn sie eingezeichnet sind.',
+        'Je Nennung 1 Punkt, höchstens 3 Punkte. Puffer und kritischer Pfad werden dagegen im Netzplan berechnet. Das Gantt-Diagramm zeigt sie nur, wenn sie eingezeichnet sind.',
   ),
 
   // ================================================== Ressourcen und Aufwand
@@ -449,7 +449,7 @@ final List<Question> ihkA01Planung = [
     loesung:
         'Technisch: Die Terminals arbeiten nicht mit der Lohnsoftware zusammen. Personell: Die Belegschaft lehnt die Zeiterfassung ab. Terminlich: Die Terminals kommen verspätet. Rechtlich: Der Betriebsrat wurde nicht beteiligt oder der Datenschutz wird verletzt.',
     explanation:
-        'Je Risiko 1 Punkt, höchstens 4. Wer systematisch nach Risikoarten sucht - technisch, personell, terminlich, rechtlich, wirtschaftlich -, übersieht weniger.',
+        'Je Risiko 1 Punkt, höchstens 4. Wer systematisch nach Risikoarten sucht, technisch, personell, terminlich, rechtlich, wirtschaftlich -, übersieht weniger.',
   ),
   lueckentext(
     'i1-rp-3',
@@ -490,7 +490,7 @@ final List<Question> ihkA01Planung = [
       paar('Überwachen', 'Frühwarnindikatoren beobachten'),
     ],
     explanation:
-        'Identifizieren (Risiken finden), bewerten (Wahrscheinlichkeit × Schaden), Maßnahmen planen (Strategie, Verantwortliche), überwachen (Indikatoren, Status) - danach beginnt der Kreislauf von vorn.',
+        'Identifizieren (Risiken finden), bewerten (Wahrscheinlichkeit × Schaden), Maßnahmen planen (Strategie, Verantwortliche), überwachen (Indikatoren, Status). Danach beginnt der Kreislauf von vorn.',
   ),
 
   // =========================================================== Risiken bewerten
@@ -519,7 +519,7 @@ final List<Question> ihkA01Planung = [
         'R1: 0,20 × 30.000 € = 6.000 €\n'
         'R2: 0,05 × 200.000 € = 10.000 €\n'
         'R3: 0,60 × 4.000 € = 2.400 €\n'
-        'Rangfolge: R2, R1, R3 - das unwahrscheinlichste Risiko steht vorn, das wahrscheinlichste hinten.',
+        'Rangfolge: R2, R1, R3: das unwahrscheinlichste Risiko steht vorn, das wahrscheinlichste hinten.',
   ),
   markieren(
     'i1-rb-2',
@@ -529,12 +529,12 @@ final List<Question> ihkA01Planung = [
     prompt: 'Markiere alle Risiken, die falsch eingeordnet wurden. (3 P.)',
     punkte: 3,
     zeilen: [
-      nein('R1: W 3, A 3 - rot', '3 × 3 = 9, also rot. Richtig eingeordnet.'),
-      ja('R2: W 1, A 2 - gelb', '1 × 2 = 2, das ist grün.'),
-      nein('R3: W 2, A 2 - gelb', '2 × 2 = 4, also gelb. Richtig.'),
-      ja('R4: W 3, A 2 - gelb', '3 × 2 = 6, das ist bereits rot.'),
-      nein('R5: W 1, A 1 - grün', '1 × 1 = 1, also grün. Richtig.'),
-      ja('R6: W 1, A 3 - grün', '1 × 3 = 3, das ist gelb.'),
+      nein('R1: W 3, A 3: rot', '3 × 3 = 9, also rot. Richtig eingeordnet.'),
+      ja('R2: W 1, A 2: gelb', '1 × 2 = 2, das ist grün.'),
+      nein('R3: W 2, A 2: gelb', '2 × 2 = 4, also gelb. Richtig.'),
+      ja('R4: W 3, A 2: gelb', '3 × 2 = 6, das ist bereits rot.'),
+      nein('R5: W 1, A 1: grün', '1 × 1 = 1, also grün. Richtig.'),
+      ja('R6: W 1, A 3: grün', '1 × 3 = 3, das ist gelb.'),
     ],
     explanation:
         'Kennzahl = Wahrscheinlichkeit × Auswirkung. R2: 2 (grün), R4: 6 (rot), R6: 3 (gelb) sind falsch eingeordnet. Die Kennzahl 5 kann in einer 3×3-Matrix nicht vorkommen, deshalb beginnt Rot bei 6.',
@@ -560,7 +560,7 @@ final List<Question> ihkA01Planung = [
       wahl('lohnt sich', ['lohnt sich nicht', 'ändert nichts am Risiko']),
     ],
     explanation:
-        'Vorher: 0,15 × 80.000 € = 12.000 €. Nachher: 0,05 × 80.000 € = 4.000 €. Die Maßnahme senkt den Risikowert um 8.000 € und kostet 5.000 € - es bleibt ein Vorteil von 3.000 €, sie lohnt sich.',
+        'Vorher: 0,15 × 80.000 € = 12.000 €. Nachher: 0,05 × 80.000 € = 4.000 €. Die Maßnahme senkt den Risikowert um 8.000 € und kostet 5.000 €: Es bleibt ein Vorteil von 3.000 €, sie lohnt sich.',
   ),
   freitext(
     'i1-rb-4',
@@ -572,7 +572,7 @@ final List<Question> ihkA01Planung = [
     punkte: 3,
     kriterien: [
       krit(
-        'Der Risikowert ist nur ein rechnerischer Durchschnitt - tritt das Risiko ein, fällt der volle Schaden an.',
+        'Der Risikowert ist nur ein rechnerischer Durchschnitt: Tritt das Risiko ein, fällt der volle Schaden an.',
         punkte: 2,
         stichwoerter: [
           'Durchschnitt',
@@ -605,9 +605,9 @@ final List<Question> ihkA01Planung = [
       ),
     ],
     loesung:
-        'Der Risikowert von 10.000 € ist nur ein Durchschnitt. Tritt der Brand ein, fallen die vollen 2 Mio. € an - das könnte das Unternehmen in die Insolvenz treiben. Deshalb wird das Risiko übertragen (Versicherung) und der Schaden durch ausgelagerte Backups begrenzt.',
+        'Der Risikowert von 10.000 € ist nur ein Durchschnitt. Tritt der Brand ein, fallen die vollen 2 Mio. € an. Das könnte das Unternehmen in die Insolvenz treiben. Deshalb wird das Risiko übertragen (Versicherung) und der Schaden durch ausgelagerte Backups begrenzt.',
     explanation:
-        'Begründung 2 Punkte, Maßnahme 1 Punkt. Seltene, aber existenzbedrohende Risiken brauchen immer eine Maßnahme - der Risikowert allein unterschätzt sie.',
+        'Begründung 2 Punkte, Maßnahme 1 Punkt. Seltene, aber existenzbedrohende Risiken brauchen immer eine Maßnahme, denn der Risikowert allein unterschätzt sie.',
   ),
 
   // =========================================================== Risikostrategien
@@ -659,7 +659,7 @@ final List<Question> ihkA01Planung = [
       ],
     ],
     explanation:
-        'Die Probe senkt die Wahrscheinlichkeit eines Fehlschlags, der Ersatzserver begrenzt den Schaden - beides ist Vermindern. Die Versicherung ändert nur, wer zahlt (Übertragen). Wer auf die Beta-Version verzichtet, beseitigt die Ursache (Vermeiden).',
+        'Die Probe senkt die Wahrscheinlichkeit eines Fehlschlags, der Ersatzserver begrenzt den Schaden: Beides ist Vermindern. Die Versicherung ändert nur, wer zahlt (Übertragen). Wer auf die Beta-Version verzichtet, beseitigt die Ursache (Vermeiden).',
   ),
   freitext(
     'i1-rs-3',
@@ -682,7 +682,7 @@ final List<Question> ihkA01Planung = [
     punkte: 6,
     kriterien: [
       krit(
-        'Transportversicherung für den Server abschließen - Strategie: Übertragen',
+        'Transportversicherung für den Server abschließen, Strategie: Übertragen',
         punkte: 2,
         stichwoerter: [
           'Versicherung',
@@ -692,7 +692,7 @@ final List<Question> ihkA01Planung = [
         ],
       ),
       krit(
-        'Vollsicherung und Wiederherstellungstest vor dem Umzug - Strategie: Vermindern',
+        'Vollsicherung und Wiederherstellungstest vor dem Umzug, Strategie: Vermindern',
         punkte: 2,
         stichwoerter: [
           'Backup',
@@ -703,7 +703,7 @@ final List<Question> ihkA01Planung = [
         ],
       ),
       krit(
-        'Ersatzserver im Rechenzentrum mieten, damit weitergearbeitet werden kann - Strategie: Vermindern',
+        'Ersatzserver im Rechenzentrum mieten, damit weitergearbeitet werden kann, Strategie: Vermindern',
         punkte: 2,
         stichwoerter: [
           'Ersatzserver',
@@ -715,9 +715,9 @@ final List<Question> ihkA01Planung = [
       ),
     ],
     loesung:
-        '1. Transportversicherung abschließen - Übertragen (die Versicherung trägt den finanziellen Schaden). 2. Vollsicherung mit Wiederherstellungstest vor dem Umzug - Vermindern (der Schaden wird begrenzt). 3. Ersatzserver im Rechenzentrum mieten - Vermindern (der Arbeitsausfall wird kleiner).',
+        '1. Transportversicherung abschließen: Übertragen (die Versicherung trägt den finanziellen Schaden). 2. Vollsicherung mit Wiederherstellungstest vor dem Umzug: Vermindern (der Schaden wird begrenzt). 3. Ersatzserver im Rechenzentrum mieten: Vermindern (der Arbeitsausfall wird kleiner).',
     explanation:
-        'Je Maßnahme 1 Punkt für die Übersetzung und 1 Punkt für die Strategie. Keine der Maßnahmen verhindert den Transportschaden - sie verlagern oder begrenzen nur seine Folgen.',
+        'Je Maßnahme 1 Punkt für die Übersetzung und 1 Punkt für die Strategie. Keine der Maßnahmen verhindert den Transportschaden. Sie verlagern oder begrenzen nur seine Folgen.',
   ),
 
   // ============================================== Projektkosten kalkulieren
@@ -799,7 +799,7 @@ final List<Question> ihkA01Planung = [
         'Lizenzen: A 6 × 40 € × 12 = 2.880 €, B 6 × 55 € × 12 = 3.960 €\n'
         'Entgangener Umsatz: A 6 × 2 Tage × 8 h × 75 € = 7.200 €, B 6 × 1 Tag × 8 h × 75 € = 3.600 €\n'
         'Summe: A 2.880 + 1.600 + 7.200 = 11.680 €, B 3.960 + 800 + 3.600 = 8.360 €\n'
-        'Trotz teurerer Lizenz ist B um 3.320 € günstiger - der entgangene Umsatz entscheidet.',
+        'Trotz teurerer Lizenz ist B um 3.320 € günstiger: Der entgangene Umsatz entscheidet.',
   ),
   markieren(
     'i1-wk-4',
@@ -821,15 +821,15 @@ final List<Question> ihkA01Planung = [
       ),
       nein(
         'Bareinkaufspreis: 3.600 € - 80 € = 3.520 €',
-        'Nur ein Folgefehler - richtig wären 3.600 € - 72 € = 3.528 €.',
+        'Nur ein Folgefehler: Richtig wären 3.600 € - 72 € = 3.528 €.',
       ),
       ja(
         'Fracht: 60 € abzüglich 2 % Skonto = 58,80 €',
-        'Auf Bezugskosten gibt es kein Skonto - es bleiben 60 €.',
+        'Auf Bezugskosten gibt es kein Skonto, also es bleiben 60 €.',
       ),
       nein(
         'Bezugspreis: 3.520 € + 58,80 € = 3.578,80 €',
-        'Nur ein Folgefehler - richtig wären 3.528 € + 60 € = 3.588 €.',
+        'Nur ein Folgefehler: Richtig wären 3.528 € + 60 € = 3.588 €.',
       ),
     ],
     explanation:
@@ -857,7 +857,7 @@ final List<Question> ihkA01Planung = [
     explanation:
         'Umsatzsteuer: 2.400 € × 0,19 = 456 €\n'
         'Brutto: 2.400 € + 456 € = 2.856 €\n'
-        'Skonto: 2.856 € × 0,02 = 57,12 € - beim Bezahlen einer Rechnung ist der Bruttobetrag die Basis\n'
+        'Skonto: 2.856 € × 0,02 = 57,12 €. Beim Bezahlen einer Rechnung ist der Bruttobetrag die Basis\n'
         'Überweisung: 2.856 € - 57,12 € = 2.798,88 €',
   ),
   lueckentext(
@@ -913,7 +913,7 @@ final List<Question> ihkA01Planung = [
     punkte: 4,
     kriterien: [
       krit(
-        'Während Schulung und Umstellung leisten die Beschäftigten keine abrechenbaren Stunden - dieser Umsatz fehlt dem Unternehmen.',
+        'Während Schulung und Umstellung leisten die Beschäftigten keine abrechenbaren Stunden. Dieser Umsatz fehlt dem Unternehmen.',
         punkte: 2,
         stichwoerter: [
           'abrechenbar',
@@ -944,7 +944,7 @@ final List<Question> ihkA01Planung = [
       ),
     ],
     loesung:
-        'Solange die Beraterinnen und Berater geschult werden, können sie keine Stunden an Kunden abrechnen. Der Umsatz, der in dieser Zeit erzielt worden wäre, fehlt - er gehört deshalb zu den Kosten der Einführung. Weitere Kosten: Trainerhonorar für die Schulung und die Datenübernahme aus dem Altsystem.',
+        'Solange die Beraterinnen und Berater geschult werden, können sie keine Stunden an Kunden abrechnen. Der Umsatz, der in dieser Zeit erzielt worden wäre, fehlt. Er gehört deshalb zu den Kosten der Einführung. Weitere Kosten: Trainerhonorar für die Schulung und die Datenübernahme aus dem Altsystem.',
     explanation:
         'Erläuterung 2 Punkte, je weitere Kostenart 1 Punkt. Entgangener Umsatz = ausgefallene Stunden × Stundensatz × Personen. Es fließt kein Geld ab, aber es kommt weniger herein.',
   ),
@@ -992,7 +992,7 @@ final List<Question> ihkA01Planung = [
     explanation:
         'A: 0,5 × 8 = 4,0; 0,3 × 5 = 1,5; 0,2 × 7 = 1,4; Nutzwert 6,9\n'
         'B: 0,5 × 6 = 3,0; 0,3 × 9 = 2,7; 0,2 × 8 = 1,6; Nutzwert 7,3\n'
-        'B gewinnt, obwohl A beim wichtigsten Kriterium vorn liegt - es zählt die Summe.',
+        'B gewinnt, obwohl A beim wichtigsten Kriterium vorn liegt: Es zählt die Summe.',
   ),
   tabelle(
     'i1-wn-2',
@@ -1032,7 +1032,7 @@ final List<Question> ihkA01Planung = [
     punkte: 4,
     kriterien: [
       krit(
-        'Die Gewichtung ist subjektiv - wer die Gewichte festlegt, beeinflusst das Ergebnis.',
+        'Die Gewichtung ist subjektiv: Wer die Gewichte festlegt, beeinflusst das Ergebnis.',
         punkte: 2,
         stichwoerter: ['Gewichtung', 'Gewichte', 'subjektiv', 'gewichtet'],
       ),
@@ -1048,7 +1048,7 @@ final List<Question> ihkA01Planung = [
         ],
       ),
       krit(
-        'Bei knappen Abständen kann eine kleine Änderung das Ergebnis kippen - die Zahl täuscht Genauigkeit vor.',
+        'Bei knappen Abständen kann eine kleine Änderung das Ergebnis kippen: Die Zahl täuscht Genauigkeit vor.',
         punkte: 2,
         stichwoerter: [
           'knapp',
@@ -1065,7 +1065,7 @@ final List<Question> ihkA01Planung = [
       ),
     ],
     loesung:
-        'Gewichte und Punkte beruhen auf persönlichen Einschätzungen: Wer sie festlegt, beeinflusst das Ergebnis. Bei einem Abstand von nur 0,2 Punkten kann schon ein leicht anderes Gewicht die Reihenfolge umdrehen - das Ergebnis wirkt genauer, als es ist.',
+        'Gewichte und Punkte beruhen auf persönlichen Einschätzungen: Wer sie festlegt, beeinflusst das Ergebnis. Bei einem Abstand von nur 0,2 Punkten kann schon ein leicht anderes Gewicht die Reihenfolge umdrehen: Das Ergebnis wirkt genauer, als es ist.',
     explanation:
         'Je Schwäche 2 Punkte, höchstens 4. Die Nutzwertanalyse macht eine Entscheidung nachvollziehbar, nicht objektiv. Deshalb werden Kriterien und Gewichte festgelegt, bevor die Angebote bekannt sind.',
   ),
@@ -1094,7 +1094,7 @@ final List<Question> ihkA01Planung = [
       ], 'Rang 1 ist am besten, also gewinnt die kleinste Summe.'),
     ],
     explanation:
-        'Ohne Gewichtung zählen alle Kriterien gleich: Ränge vergeben, addieren, kleinste Rangsumme gewinnt. Achtung: Lautet die Vorgabe umgekehrt (höchste Punktzahl für den besten Wert), gewinnt die größte Summe - immer zuerst die Vorgabe lesen.',
+        'Ohne Gewichtung zählen alle Kriterien gleich: Ränge vergeben, addieren, kleinste Rangsumme gewinnt. Achtung: Lautet die Vorgabe umgekehrt (höchste Punktzahl für den besten Wert), gewinnt die größte Summe. Immer zuerst die Vorgabe lesen.',
   ),
 
   // ================================================================== Make or Buy
@@ -1145,7 +1145,7 @@ final List<Question> ihkA01Planung = [
     explanation:
         'Gleichsetzen: 6.000 + 5x = 20x, also x = 6.000 / 15 = 400 Vorgänge.\n'
         'Bei 250 Vorgängen: Make 6.000 € + 1.250 € = 7.250 €, Buy 250 × 20 € = 5.000 €.\n'
-        '250 liegt unter der kritischen Menge - Buy ist um 2.250 € günstiger.',
+        '250 liegt unter der kritischen Menge, also Buy ist um 2.250 € günstiger.',
   ),
   markieren(
     'i1-wm-3',
@@ -1192,7 +1192,7 @@ final List<Question> ihkA01Planung = [
       ),
     ],
     explanation:
-        'Enthalten sind Updates, tägliche Backups und E-Mail-Support. Nicht enthalten: Datenmigration und Schulung vor Ort - diese Kosten gehören in den Make-or-Buy-Vergleich. Abgerechnet wird jährlich, die Mindestlaufzeit beträgt 12 Monate.',
+        'Enthalten sind Updates, tägliche Backups und E-Mail-Support. Nicht enthalten: Datenmigration und Schulung vor Ort. Diese Kosten gehören in den Make-or-Buy-Vergleich. Abgerechnet wird jährlich, die Mindestlaufzeit beträgt 12 Monate.',
   ),
   rechnen(
     'i1-wm-4',
@@ -1289,7 +1289,7 @@ final List<Question> ihkA01Planung = [
     punkte: 4,
     kriterien: [
       krit(
-        'Menge, bei der der Erlös genau die Gesamtkosten deckt - weder Gewinn noch Verlust',
+        'Menge, bei der der Erlös genau die Gesamtkosten deckt, also weder Gewinn noch Verlust',
         punkte: 2,
         stichwoerter: [
           'Gewinnschwelle',
@@ -1315,7 +1315,7 @@ final List<Question> ihkA01Planung = [
       ),
     ],
     loesung:
-        'Der Break-even-Point ist die Menge, bei der der Erlös genau die fixen und variablen Kosten deckt - hier 12.000 € / (60 € - 30 €) = 400 Stück. Bei kleineren Mengen liegt die Kostengerade über der Erlösgeraden (Verlust), bei größeren Mengen darunter (Gewinn).',
+        'Der Break-even-Point ist die Menge, bei der der Erlös genau die fixen und variablen Kosten deckt: hier 12.000 € / (60 € - 30 €) = 400 Stück. Bei kleineren Mengen liegt die Kostengerade über der Erlösgeraden (Verlust), bei größeren Mengen darunter (Gewinn).',
     explanation:
         'Erklärung 2 Punkte, je Seite 1 Punkt. Der senkrechte Abstand zwischen Erlös- und Kostengerade zeigt den Gewinn bzw. Verlust; im Schnittpunkt ist er null.',
   ),
@@ -1386,7 +1386,7 @@ final List<Question> ihkA01Planung = [
       ],
     ],
     explanation:
-        'Wesentliche Mängel (Kernfunktion gestört) berechtigen zur Verweigerung der Abnahme. Unwesentliche Mängel nicht - sie werden mit Frist im Protokoll vorbehalten. Ein nicht vereinbarter Wunsch ist kein Mangel, sondern ein Änderungsantrag.',
+        'Wesentliche Mängel (Kernfunktion gestört) berechtigen zur Verweigerung der Abnahme. Unwesentliche Mängel nicht: Sie werden mit Frist im Protokoll vorbehalten. Ein nicht vereinbarter Wunsch ist kein Mangel, sondern ein Änderungsantrag.',
   ),
   freitext(
     'i1-aa-2',
@@ -1432,8 +1432,8 @@ final List<Question> ihkA01Planung = [
     prompt: 'Setze die passenden Begriffe ein. (4 P.)',
     punkte: 4,
     text:
-        'Bei der {0} wird das Altsystem zu einem festen Termin abgeschaltet - schnell, aber riskant.\n'
-        'Beim {1} laufen altes und neues System eine Zeit lang gleichzeitig - sicher, aber doppelter Aufwand.\n'
+        'Bei der {0} wird das Altsystem zu einem festen Termin abgeschaltet: schnell, aber riskant.\n'
+        'Beim {1} laufen altes und neues System eine Zeit lang gleichzeitig: sicher, aber doppelter Aufwand.\n'
         'Beim {2} arbeitet zunächst nur eine Station mit dem neuen System.\n'
         'Bei der {3} Einführung wird Modul für Modul umgestellt.',
     luecken: [
@@ -1461,7 +1461,7 @@ final List<Question> ihkA01Planung = [
       'Schlussrechnung stellen',
     ],
     explanation:
-        'Erst wird die Fertigstellung gemeldet, dann gegen die vereinbarten Kriterien geprüft. Mängel kommen ins Protokoll, danach erklärt der Auftraggeber die Abnahme. Erst mit der Abnahme wird die Vergütung fällig - deshalb steht die Schlussrechnung am Ende.',
+        'Erst wird die Fertigstellung gemeldet, dann gegen die vereinbarten Kriterien geprüft. Mängel kommen ins Protokoll, danach erklärt der Auftraggeber die Abnahme. Erst mit der Abnahme wird die Vergütung fällig. Deshalb steht die Schlussrechnung am Ende.',
   ),
 
   // ====================================================== Abschlussbericht und Soll-Ist
@@ -1521,7 +1521,7 @@ final List<Question> ihkA01Planung = [
     loesung:
         'Der Abschlussbericht enthält einen Überblick (Auftrag, Ziele, Beteiligte), das Ergebnis, den Soll-Ist-Vergleich von Leistung, Terminen und Kosten mit begründeten Abweichungen, die offenen Punkte sowie die Erfahrungen und Empfehlungen.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 4. Der Bericht beantwortet für den Auftraggeber die Frage „Was ist herausgekommen?“ - Kern ist der begründete Soll-Ist-Vergleich.',
+        'Je Nennung 1 Punkt, höchstens 4. Der Bericht beantwortet für den Auftraggeber die Frage „Was ist herausgekommen?“. Kern ist der begründete Soll-Ist-Vergleich.',
   ),
   markieren(
     'i1-ab-3',
@@ -1532,27 +1532,27 @@ final List<Question> ihkA01Planung = [
     punkte: 3,
     zeilen: [
       nein(
-        'Kosten: Soll 50.000 €, Ist 55.000 € - Abweichung +10 %',
+        'Kosten: Soll 50.000 €, Ist 55.000 €, Abweichung +10 %',
         '5.000 / 50.000 = 10 %. Richtig.',
       ),
       ja(
-        'Aufwand: Soll 200 PT, Ist 180 PT - Abweichung -11,1 %',
+        'Aufwand: Soll 200 PT, Ist 180 PT, Abweichung -11,1 %',
         'Falsch auf das Ist bezogen. Richtig: -20 / 200 = -10 %.',
       ),
       nein(
-        'Dauer: Soll 10 Wochen, Ist 12 Wochen - Abweichung +20 %',
+        'Dauer: Soll 10 Wochen, Ist 12 Wochen, Abweichung +20 %',
         '2 / 10 = 20 %. Richtig.',
       ),
       ja(
-        'Lizenzen: Soll 8.000 €, Ist 6.000 € - Abweichung +25 %',
+        'Lizenzen: Soll 8.000 €, Ist 6.000 €, Abweichung +25 %',
         'Das Ist liegt unter dem Soll: -2.000 / 8.000 = -25 %.',
       ),
       ja(
-        'Schulung: Soll 4.000 €, Ist 5.000 € - Abweichung +20 %',
+        'Schulung: Soll 4.000 €, Ist 5.000 €, Abweichung +20 %',
         'Falsch auf das Ist bezogen. Richtig: 1.000 / 4.000 = +25 %.',
       ),
       nein(
-        'Hardware: Soll 12.000 €, Ist 12.600 € - Abweichung +5 %',
+        'Hardware: Soll 12.000 €, Ist 12.600 €, Abweichung +5 %',
         '600 / 12.000 = 5 %. Richtig.',
       ),
     ],
@@ -1597,7 +1597,7 @@ final List<Question> ihkA01Planung = [
     punkte: 4,
     kriterien: [
       krit(
-        'Keine Schuldzuweisungen - es geht um Ursachen und Verbesserungen.',
+        'Keine Schuldzuweisungen: Es geht um Ursachen und Verbesserungen.',
         punkte: 2,
         stichwoerter: ['Schuld', 'Schuldzuweisung', 'Vorwürfe', 'sachlich'],
       ),
@@ -1629,7 +1629,7 @@ final List<Question> ihkA01Planung = [
       ),
     ],
     loesung:
-        'Es werden keine Schuldigen gesucht, sondern Ursachen und Verbesserungen - sonst schweigt das Team. Außerdem wird aus jeder Erfahrung eine konkrete Empfehlung abgeleitet und so abgelegt, dass künftige Projektteams sie finden.',
+        'Es werden keine Schuldigen gesucht, sondern Ursachen und Verbesserungen, sonst schweigt das Team. Außerdem wird aus jeder Erfahrung eine konkrete Empfehlung abgeleitet und so abgelegt, dass künftige Projektteams sie finden.',
     explanation:
         'Je Regel 2 Punkte, höchstens 4. Lessons Learned blicken nach vorn: Sie fragen „Was lernen wir daraus?“ und nicht „Wer war schuld?“.',
   ),
@@ -1682,6 +1682,6 @@ final List<Question> ihkA01Planung = [
       ),
     ],
     explanation:
-        'Eine brauchbare Lesson nennt Situation, Ursache und Empfehlung - konkret, ohne Schuldzuweisung und für andere Projekte verständlich. „Die Kommunikation muss besser werden“ wäre zu vage.',
+        'Eine brauchbare Lesson nennt Situation, Ursache und Empfehlung, konkret, ohne Schuldzuweisung und für andere Projekte verständlich. „Die Kommunikation muss besser werden“ wäre zu vage.',
   ),
 ];

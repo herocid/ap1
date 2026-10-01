@@ -125,7 +125,7 @@ final List<ExamCase> casesA01Planung = [
         loesung:
             'Standardpasswort des Administrators ändern, verschlüsselte Übertragung (TLS) für Scan-to-E-Mail einschalten, Scan-Ziele auf freigegebene Netzlaufwerke beschränken, Firmware-Updates zeitnah einspielen. Außerdem: Scans nach jedem Auftrag automatisch aus dem Gerätespeicher löschen.',
         explanation:
-            'Im Text stehen fünf Maßnahmen, vier werden verlangt - je Nennung 1 Punkt. Geantwortet wird auf Deutsch, Stichworte genügen.',
+            'Im Text stehen fünf Maßnahmen, vier werden verlangt, also je Nennung 1 Punkt. Geantwortet wird auf Deutsch, Stichworte genügen.',
       ),
       freitext(
         'f-a01w-systemhaus-e',
@@ -167,7 +167,7 @@ final List<ExamCase> casesA01Planung = [
           ),
         ],
         loesung:
-            'Ohne Gewichtung zählt jedes Kriterium gleich viel. Ist der Kanzlei zum Beispiel das Scantempo viel wichtiger als der Preis, bildet die Matrix das nicht ab - die Entscheidung kann deshalb am tatsächlichen Bedarf vorbeigehen.',
+            'Ohne Gewichtung zählt jedes Kriterium gleich viel. Ist der Kanzlei zum Beispiel das Scantempo viel wichtiger als der Preis, bildet die Matrix das nicht ab. Die Entscheidung kann deshalb am tatsächlichen Bedarf vorbeigehen.',
         explanation:
             'Nachteil 2 Punkte, Folge 1 Punkt. Im Beispiel gewinnt das langsamste Gerät, weil Preis und Wartung genauso viel zählen wie das Scantempo.',
       ),
@@ -190,7 +190,7 @@ final List<ExamCase> casesA01Planung = [
         ],
         explanation:
             'Umsatzsteuer: 864 € × 0,19 = 164,16 €, brutto 1.028,16 €\n'
-            'Skonto: 1.028,16 € × 0,02 = 20,5632 €, gerundet 20,56 € - Basis ist der Bruttobetrag\n'
+            'Skonto: 1.028,16 € × 0,02 = 20,5632 €, gerundet 20,56 €; Basis ist der Bruttobetrag\n'
             'Überweisung: 1.028,16 € - 20,56 € = 1.007,60 €',
       ),
       freitext(
@@ -201,7 +201,7 @@ final List<ExamCase> casesA01Planung = [
         punkte: 4,
         kriterien: [
           krit(
-            'Lieferverzug zum Umzugstermin - verbindlichen Liefertermin vereinbaren oder ein Leihgerät einplanen',
+            'Lieferverzug zum Umzugstermin: verbindlichen Liefertermin vereinbaren oder ein Leihgerät einplanen',
             punkte: 2,
             stichwoerter: [
               'Lieferverzug',
@@ -212,7 +212,7 @@ final List<ExamCase> casesA01Planung = [
             ],
           ),
           krit(
-            'Ausfall des einzigen Scanners - Wartungsvertrag mit Austauschgerät abschließen',
+            'Ausfall des einzigen Scanners: Wartungsvertrag mit Austauschgerät abschließen',
             punkte: 2,
             stichwoerter: [
               'Ausfall',
@@ -223,7 +223,7 @@ final List<ExamCase> casesA01Planung = [
             ],
           ),
           krit(
-            'Bedienfehler oder fehlende Akzeptanz - Beschäftigte einweisen und schulen',
+            'Bedienfehler oder fehlende Akzeptanz: Beschäftigte einweisen und schulen',
             punkte: 2,
             stichwoerter: [
               'Schulung',
@@ -233,7 +233,7 @@ final List<ExamCase> casesA01Planung = [
             ],
           ),
           krit(
-            'Scanner arbeitet nicht mit der Kanzleisoftware zusammen - vor dem Kauf mit einem Testgerät prüfen',
+            'Scanner arbeitet nicht mit der Kanzleisoftware zusammen: vor dem Kauf mit einem Testgerät prüfen',
             punkte: 2,
             stichwoerter: [
               'kompatibel',
@@ -244,7 +244,7 @@ final List<ExamCase> casesA01Planung = [
             ],
           ),
           krit(
-            'Vertrauliche Scans bleiben im Gerätespeicher - automatische Löschung aktivieren',
+            'Vertrauliche Scans bleiben im Gerätespeicher: automatische Löschung aktivieren',
             punkte: 2,
             stichwoerter: ['vertraulich', 'Datenschutz', 'Gerätespeicher'],
           ),
@@ -252,7 +252,7 @@ final List<ExamCase> casesA01Planung = [
         loesung:
             'Risiko 1: Der Scanner wird nicht rechtzeitig zum Umzug geliefert. Maßnahme: verbindlichen Liefertermin vereinbaren und ein Leihgerät einplanen. Risiko 2: Der einzige Scanner fällt aus und der Posteingang staut sich. Maßnahme: Wartungsvertrag mit Austauschgerät abschließen.',
         explanation:
-            'Je Risiko mit Maßnahme 2 Punkte, höchstens 4. Andere sinnvolle Risiken sind möglich - entscheidend ist, dass die Maßnahme zum Risiko passt.',
+            'Je Risiko mit Maßnahme 2 Punkte, höchstens 4. Andere sinnvolle Risiken sind möglich. Entscheidend ist, dass die Maßnahme zum Risiko passt.',
       ),
     ],
   ),
@@ -366,7 +366,7 @@ final List<ExamCase> casesA01Planung = [
         loesung:
             'Zum Beispiel: kürzere Lieferzeit, besserer Service bei Störungen und längere Garantie. Auch Zuverlässigkeit, Qualität der Geräte oder günstigere Zahlungsbedingungen können den Ausschlag geben.',
         explanation:
-            'Je Nennung 1 Punkt, höchstens 3. Der Bezugspreis ist nur der quantitative Teil des Angebotsvergleichs - qualitative Kriterien können ihn überstimmen.',
+            'Je Nennung 1 Punkt, höchstens 3. Der Bezugspreis ist nur der quantitative Teil des Angebotsvergleichs. Qualitative Kriterien können ihn überstimmen.',
       ),
       freitext(
         'f-a01w-handel-c',
@@ -418,7 +418,7 @@ final List<ExamCase> casesA01Planung = [
             'Leasing: 20 × 27,50 € × 36 Monate = 19.800,00 €\n'
             'Kauf: 16.903,04 € (Bürowelt24)\n'
             'Mehrkosten des Leasings: 19.800,00 € - 16.903,04 € = 2.896,96 €\n'
-            'Mit dem Ersatzwert 16.900,00 € ergeben sich 2.900,00 € - auch das wird gewertet.',
+            'Mit dem Ersatzwert 16.900,00 € ergeben sich 2.900,00 €; auch das wird gewertet.',
       ),
       freitext(
         'f-a01w-handel-e',
@@ -428,7 +428,7 @@ final List<ExamCase> casesA01Planung = [
         punkte: 3,
         kriterien: [
           krit(
-            'Die Liquidität bleibt erhalten - keine hohe Anfangsinvestition',
+            'Die Liquidität bleibt erhalten: keine hohe Anfangsinvestition',
             stichwoerter: [
               'Liquidität',
               'Anfangsinvestition',
@@ -548,7 +548,7 @@ final List<ExamCase> casesA01Planung = [
             stichwoerter: ['TicketBase', 'Ticket Base', 'Ticketbase'],
           ),
           krit(
-            'HelpWave und DeskOne scheiden als SaaS-Lösungen aus - die Bedingung ist ein K.-o.-Kriterium.',
+            'HelpWave und DeskOne scheiden als SaaS-Lösungen aus, denn die Bedingung ist ein K.-o.-Kriterium.',
             stichwoerter: [
               'SaaS',
               'scheiden aus',
@@ -560,7 +560,7 @@ final List<ExamCase> casesA01Planung = [
           ),
         ],
         loesung:
-            'TicketBase. HelpWave hat zwar den höchsten Nutzwert, ist aber wie DeskOne eine SaaS-Lösung und verfehlt damit die Muss-Bedingung „on-premise“ - beide scheiden vor dem Punktevergleich aus.',
+            'TicketBase. HelpWave hat zwar den höchsten Nutzwert, ist aber wie DeskOne eine SaaS-Lösung und verfehlt damit die Muss-Bedingung „on-premise“. Beide scheiden vor dem Punktevergleich aus.',
         explanation:
             '1 Punkt für die Wahl, 1 Punkt für den Ausschlussgrund. Ein K.-o.-Kriterium schlägt den Nutzwert: Wer es verfehlt, scheidet aus, egal wie viele Punkte er hat.',
       ),
@@ -579,7 +579,7 @@ final List<ExamCase> casesA01Planung = [
             'Schulung: 1.500 €\n'
             'Entgangener Umsatz: 12 Personen × 8 h × 85 € = 8.160 €\n'
             'Summe: 2.160 € + 1.500 € + 8.160 € = 11.820 €\n'
-            'Der entgangene Umsatz ist der größte Posten - wer ihn weglässt, unterschätzt die Kosten deutlich.',
+            'Der entgangene Umsatz ist der größte Posten: Wer ihn weglässt, unterschätzt die Kosten deutlich.',
       ),
       freitext(
         'f-a01w-agentur-d',
@@ -631,7 +631,7 @@ final List<ExamCase> casesA01Planung = [
         loesung:
             'Enthalten sind: unbegrenzt viele Tickets und Kundenkontakte, Software-Updates während der Vertragslaufzeit, E-Mail-Support an Werktagen (Antwort innerhalb von 8 Stunden) und eine zweistündige Einführung per Fernsitzung. Außerdem eine mobile App.',
         explanation:
-            'Je Nennung 1 Punkt, höchstens 4. Nicht enthalten sind Installation vor Ort, Datenübernahme und individuelle Schulung - diese Kosten kommen im Vergleich dazu.',
+            'Je Nennung 1 Punkt, höchstens 4. Nicht enthalten sind Installation vor Ort, Datenübernahme und individuelle Schulung. Diese Kosten kommen im Vergleich dazu.',
       ),
       lueckentext(
         'f-a01w-agentur-e',
@@ -659,7 +659,7 @@ final List<ExamCase> casesA01Planung = [
             'Wartung: 40 h × 75 € × 5 = 15.000 €\n'
             'Summe: 45.000 € über 5 Jahre, also 9.000 € je Jahr\n'
             'Kauf je Nutzer und Jahr: 15 € × 12 = 180 €\n'
-            'Gleichstand: 9.000 € / 180 € = 50 Nutzer - erst darüber lohnt sich die Eigenentwicklung.',
+            'Gleichstand: 9.000 € / 180 € = 50 Nutzer. Erst darüber lohnt sich die Eigenentwicklung.',
       ),
       freitext(
         'f-a01w-agentur-f',
@@ -669,7 +669,7 @@ final List<ExamCase> casesA01Planung = [
         punkte: 4,
         kriterien: [
           krit(
-            'Kaufen: 12 Nutzer liegen weit unter dem Gleichstand von 50 Nutzern - der Kauf ist deutlich günstiger.',
+            'Kaufen: 12 Nutzer liegen weit unter dem Gleichstand von 50 Nutzern. Der Kauf ist deutlich günstiger.',
             punkte: 2,
             stichwoerter: [
               'Gleichstand',
@@ -680,7 +680,7 @@ final List<ExamCase> casesA01Planung = [
             ],
           ),
           krit(
-            'Die Entwickler werden für bezahlte Kundenprojekte gebraucht - Eigenentwicklung bedeutet entgangenen Umsatz.',
+            'Die Entwickler werden für bezahlte Kundenprojekte gebraucht. Eigenentwicklung bedeutet entgangenen Umsatz.',
             punkte: 2,
             stichwoerter: [
               'Kundenprojekte',
@@ -705,7 +705,7 @@ final List<ExamCase> casesA01Planung = [
         loesung:
             'Die Agentur sollte kaufen. Mit 12 Nutzern liegt sie weit unter dem Gleichstand von 50 Nutzern: Der Kauf kostet 12 × 180 € = 2.160 € im Jahr, die Eigenentwicklung 9.000 €. Außerdem würden 400 Entwicklerstunden für bezahlte Kundenprojekte fehlen.',
         explanation:
-            'Je Argument 2 Punkte, höchstens 4. Eine begründete Entscheidung für die Eigenentwicklung (etwa wegen sehr spezieller Abläufe) wäre ebenfalls zu werten - die Rechnung spricht hier aber klar für den Kauf.',
+            'Je Argument 2 Punkte, höchstens 4. Eine begründete Entscheidung für die Eigenentwicklung (etwa wegen sehr spezieller Abläufe) wäre ebenfalls zu werten. Die Rechnung spricht hier aber klar für den Kauf.',
       ),
     ],
   ),
@@ -799,7 +799,7 @@ final List<ExamCase> casesA01Planung = [
             stichwoerter: ['LagerTec', 'Lager Tec', 'Lagertech'],
           ),
           krit(
-            'LagerTec hat mit 70 Punkten die höchste gewichtete Summe - trotz des höchsten Preises; nur LagerTec und HandyScan liefern vor dem Hallenstart.',
+            'LagerTec hat mit 70 Punkten die höchste gewichtete Summe, trotz des höchsten Preises; nur LagerTec und HandyScan liefern vor dem Hallenstart.',
             stichwoerter: [
               '70',
               'höchste Summe',
@@ -812,7 +812,7 @@ final List<ExamCase> casesA01Planung = [
         loesung:
             'LagerTec. Das Angebot erreicht mit 70 Punkten die höchste gewichtete Summe, obwohl es das teuerste ist. Außerdem liefert LagerTec in einer Woche und damit rechtzeitig vor dem Start der Halle.',
         explanation:
-            '1 Punkt für die Wahl, 1 Punkt für die Begründung. Wer nur auf den Preis schaut, würde ScanTrack wählen - dessen Lieferzeit von 4 Wochen käme aber zu spät.',
+            '1 Punkt für die Wahl, 1 Punkt für die Begründung. Wer nur auf den Preis schaut, würde ScanTrack wählen. Dessen Lieferzeit von 4 Wochen käme aber zu spät.',
       ),
       rechnen(
         'f-a01w-logistik-d',
@@ -844,7 +844,7 @@ final List<ExamCase> casesA01Planung = [
         explanation:
             'Rückfluss je Monat: 1.900 € - 170 € = 1.730 €\n'
             'Amortisation: 24.900 € / 1.730 € = 14,39 Monate\n'
-            'Nach 14 Monaten sind erst 24.220 € zurückgeflossen - erst nach 15 vollen Monaten ist die Anschaffung gedeckt. Es wird aufgerundet.',
+            'Nach 14 Monaten sind erst 24.220 € zurückgeflossen. Erst nach 15 vollen Monaten ist die Anschaffung gedeckt. Es wird aufgerundet.',
       ),
       freitext(
         'f-a01w-logistik-f',
@@ -854,7 +854,7 @@ final List<ExamCase> casesA01Planung = [
         punkte: 4,
         kriterien: [
           krit(
-            'Lieferverzug zum Hallenstart - festen Liefertermin mit Vertragsstrafe vereinbaren oder übergangsweise mit Papierlisten arbeiten',
+            'Lieferverzug zum Hallenstart: festen Liefertermin mit Vertragsstrafe vereinbaren oder übergangsweise mit Papierlisten arbeiten',
             punkte: 2,
             stichwoerter: [
               'Lieferverzug',
@@ -865,7 +865,7 @@ final List<ExamCase> casesA01Planung = [
             ],
           ),
           krit(
-            'Geräte fallen im Schichtbetrieb aus - Ersatzgeräte vorhalten, Wartungsvertrag mit schnellem Austausch',
+            'Geräte fallen im Schichtbetrieb aus: Ersatzgeräte vorhalten, Wartungsvertrag mit schnellem Austausch',
             punkte: 2,
             stichwoerter: [
               'Ausfall',
@@ -876,12 +876,12 @@ final List<ExamCase> casesA01Planung = [
             ],
           ),
           krit(
-            'Akkus halten keine Schicht durch - Wechselakkus und Ladestationen bereitstellen',
+            'Akkus halten keine Schicht durch: Wechselakkus und Ladestationen bereitstellen',
             punkte: 2,
             stichwoerter: ['Akku', 'Wechselakku', 'Ladestation', 'Laufzeit'],
           ),
           krit(
-            'Lücken im WLAN der Halle - Funkausleuchtung vor dem Start messen und Access Points ergänzen',
+            'Lücken im WLAN der Halle: Funkausleuchtung vor dem Start messen und Access Points ergänzen',
             punkte: 2,
             stichwoerter: [
               'WLAN',
@@ -892,7 +892,7 @@ final List<ExamCase> casesA01Planung = [
             ],
           ),
           krit(
-            'Beschäftigte kommen mit den Geräten nicht zurecht - Schulung in allen Schichten',
+            'Beschäftigte kommen mit den Geräten nicht zurecht: Schulung in allen Schichten',
             punkte: 2,
             stichwoerter: [
               'Schulung',

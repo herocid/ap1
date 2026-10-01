@@ -23,7 +23,7 @@ final List<Question> seedGrundlagen = [
       ja('Einführung eines neuen ERP-Systems bis Jahresende, mit eigenem Team und Budget',
           'Einmalig, mit Ziel, begrenzt und mit eigener Organisation.'),
       nein('Tägliche Datensicherung der Server',
-          'Wiederkehrende Routine - Tagesgeschäft.'),
+          'Wiederkehrende Routine: Tagesgeschäft.'),
       ja('Umzug des Rechenzentrums in ein neues Gebäude',
           'Einmaliges Vorhaben mit klarem Anfang und Ende.'),
       nein('Monatliche Lohnabrechnung',
@@ -37,7 +37,7 @@ final List<Question> seedGrundlagen = [
         'Merksatz: Einmaligkeit der Bedingungen, erkennbar an Zielvorgabe, '
         'Begrenzung (zeitlich, finanziell, personell), Abgrenzung gegenüber '
         'anderen Vorhaben und eigener Organisation. Größe und Budget '
-        'sind nicht Teil der Definition - auch ein Zwei-Personen-Vorhaben '
+        'sind nicht Teil der Definition; auch ein Zwei-Personen-Vorhaben '
         'kann ein Projekt sein.',
   ),
 
@@ -65,7 +65,7 @@ final List<Question> seedGrundlagen = [
       MatchItem(
         text: 'Weisungsbefugnis ist zwischen Linien- und Projektleitung geteilt.',
         bucket: 1,
-        rationale: 'Der typische Kompromiss - und die typische Konfliktquelle der Matrix.',
+        rationale: 'Der typische Kompromiss und die typische Konfliktquelle der Matrix.',
       ),
       MatchItem(
         text: 'Hohes Konfliktpotenzial durch zwei Vorgesetzte pro Person.',
@@ -105,13 +105,13 @@ final List<Question> seedGrundlagen = [
         'Welche Strategie sieht die Stakeholder-Matrix (Einfluss/Interesse) für '
         'diese Gruppe vor?',
     choices: [
-      _c('Zufriedenstellen - regelmäßig informieren, aber nicht überfrachten', true,
+      _c('Zufriedenstellen: regelmäßig informieren, aber nicht überfrachten', true,
           'Richtig. Hoher Einfluss + geringes Interesse = "keep satisfied". Die Gruppe kann das Projekt kippen, will aber keine Detailflut.'),
-      _c('Eng einbinden - in alle Entscheidungen einbeziehen', false,
+      _c('Eng einbinden: in alle Entscheidungen einbeziehen', false,
           'Das gilt für hohen Einfluss UND hohes Interesse. Hier würde es den Betriebsrat mit Details überfordern und Widerstand erzeugen.'),
-      _c('Beobachten - minimaler Aufwand', false,
+      _c('Beobachten: minimaler Aufwand', false,
           'Das gilt nur bei geringem Einfluss UND geringem Interesse. Wer den Betriebsrat so behandelt, erlebt spätestens bei der Mitbestimmung eine Vollbremsung.'),
-      _c('Informieren - ausführlich über Fortschritte berichten', false,
+      _c('Informieren: ausführlich über Fortschritte berichten', false,
           'Das ist die Strategie für geringen Einfluss und hohes Interesse, z. B. interessierte Fachanwender.'),
     ],
     explanation:
@@ -174,9 +174,9 @@ final List<Question> seedGrundlagen = [
     prompt: 'Welche Konsequenz ergibt sich zwangsläufig aus dem magischen Dreieck?',
     choices: [
       _c('Der Leistungsumfang muss reduziert werden.', true,
-          'Richtig. Zeit und Kosten sind fixiert - im Dreieck bleibt nur die dritte Größe, der Umfang (Qualität/Leistung), als Stellhebel.'),
+          'Richtig. Zeit und Kosten sind fixiert. Im Dreieck bleibt nur die dritte Größe, der Umfang (Qualität/Leistung), als Stellhebel.'),
       _c('Die Qualitätssicherung kann entfallen, ohne den Umfang zu ändern.', false,
-          'Das ist keine neutrale Option: QS zu streichen ist selbst eine Reduzierung der Qualität - also ebenfalls eine Änderung der dritten Größe, nur eine besonders teure.'),
+          'Das ist keine neutrale Option: QS zu streichen ist selbst eine Reduzierung der Qualität, also ebenfalls eine Änderung der dritten Größe, nur eine besonders teure.'),
       _c('Mehr Personal löst das Problem ohne Nebenwirkung.', false,
           'Erstens kostet mehr Personal Budget (das es nicht gibt), zweitens gilt Brooks Law: zusätzliche Leute in einem späten Projekt verzögern es zunächst weiter.'),
       _c('Das Projekt muss abgebrochen werden.', false,
@@ -210,7 +210,7 @@ final List<Question> seedGrundlagen = [
     explanation:
         'Das Wasserfallmodell läuft streng sequenziell: jede Phase endet mit '
         'einem freigegebenen Dokument, erst dann startet die nächste. Das ist '
-        'zugleich sein größter Nachteil - Fehler aus der Analyse fallen erst '
+        'zugleich sein größter Nachteil: Fehler aus der Analyse fallen erst '
         'im Test auf, und dann ist die Korrektur am teuersten.',
   ),
 
@@ -232,7 +232,7 @@ final List<Question> seedGrundlagen = [
       _c('Modultest', false,
           'Der Modul-/Unittest liegt auf der untersten Ebene und prüft gegen die Modulspezifikation bzw. den Feinentwurf.'),
       _c('Integrationstest', false,
-          'Der Integrationstest gehört zum Grobentwurf/Architektur - er prüft das Zusammenspiel der Komponenten.'),
+          'Der Integrationstest gehört zum Grobentwurf/Architektur. Er prüft das Zusammenspiel der Komponenten.'),
       _c('Systemtest', false,
           'Der Systemtest gehört zur Systemspezifikation, also eine Ebene unterhalb der Anforderungsdefinition. Er prüft in der Testumgebung, der Abnahmetest beim Kunden.'),
     ],
@@ -280,7 +280,7 @@ final List<Question> seedGrundlagen = [
       MatchItem(
         text: 'Anforderungen müssen zu Projektbeginn vollständig bekannt sein.',
         bucket: 0,
-        rationale: 'Die zentrale Voraussetzung - und Schwäche - des Wasserfalls.',
+        rationale: 'Die zentrale Voraussetzung (und Schwäche) des Wasserfalls.',
       ),
       MatchItem(
         text: 'Priorisierung der Arbeit erfolgt fortlaufend durch eine Rolle mit Produktverantwortung.',
@@ -312,9 +312,9 @@ final List<Question> seedGrundlagen = [
       _c('Der Kunde sieht nach jeder Iteration lauffähige Software.', true,
           'Früher Feedback-Zyklus. Fehlannahmen fallen nach Wochen auf, nicht nach Monaten.'),
       _c('Das Projektbudget lässt sich von Anfang an exakt festschreiben.', false,
-          'Falsch - das ist eine Stärke des klassischen Vorgehens. Agil arbeitet eher mit festem Budget und variablem Umfang.'),
+          'Falsch. Das ist eine Stärke des klassischen Vorgehens. Agil arbeitet eher mit festem Budget und variablem Umfang.'),
       _c('Der Dokumentationsaufwand entfällt vollständig.', false,
-          'Falsch. Das agile Manifest sagt "funktionierende Software MEHR ALS umfassende Dokumentation" - nicht "statt". Dokumentation wird reduziert, nicht abgeschafft.'),
+          'Falsch. Das agile Manifest sagt "funktionierende Software MEHR ALS umfassende Dokumentation", nicht "statt". Dokumentation wird reduziert, nicht abgeschafft.'),
       _c('Das Risiko einer kompletten Fehlentwicklung sinkt.', true,
           'Durch kurze Zyklen und regelmäßige Abnahme kann man maximal eine Iteration in die falsche Richtung laufen.'),
       _c('Ein vollständiges Pflichtenheft ist zu Projektbeginn erforderlich.', false,
@@ -463,7 +463,7 @@ final List<Question> seedGrundlagen = [
       MatchItem(
         text: 'Definition of Done',
         bucket: 2,
-        rationale: 'Die DoD beschreibt, wann ein Increment wirklich fertig - also nutzbar - ist.',
+        rationale: 'Die DoD beschreibt, wann ein Increment wirklich fertig (also nutzbar) ist.',
       ),
       MatchItem(
         text: 'Geordnete Liste aller bekannten Anforderungen an das Produkt',
@@ -508,7 +508,7 @@ final List<Question> seedGrundlagen = [
         'Rechenweg:\n'
         '1. Durchschnittliche Velocity = (28 + 32 + 30) / 3 = 30 Story Points/Sprint\n'
         '2. 270 SP / 30 SP je Sprint = 9 Sprints\n'
-        'Wäre das Ergebnis krumm (z. B. 9,3), wird aufgerundet - ein halber '
+        'Wäre das Ergebnis krumm (z. B. 9,3), wird aufgerundet: ein halber '
         'Sprint existiert in der Planung nicht. Die Velocity wird immer aus '
         'abgeschlossenen (Definition of Done erfüllten) Items gebildet, nicht '
         'aus angefangenen.',
@@ -531,7 +531,7 @@ final List<Question> seedGrundlagen = [
       _c('Es begrenzt die maximale Teamgröße.', false,
           'WIP bezieht sich auf Arbeit, nicht auf Personen.'),
       _c('Es definiert, wie lange eine Aufgabe maximal dauern darf.', false,
-          'Das wäre eine Timebox bzw. ein Service Level Expectation - nicht das WIP-Limit.'),
+          'Das wäre eine Timebox bzw. ein Service Level Expectation, nicht das WIP-Limit.'),
     ],
     explanation:
         'Kanban-Kernpraktiken: Workflow visualisieren, WIP limitieren, Fluss '
@@ -553,7 +553,7 @@ final List<Question> seedGrundlagen = [
       _c('Das Format lautet: Als <Rolle> möchte ich <Ziel>, um <Nutzen>.', true,
           'Das ist das Standardformat. Der "um ... zu"-Teil ist der wichtigste und wird am häufigsten weggelassen.'),
       _c('Akzeptanzkriterien legen fest, wann die Story als erfüllt gilt.', true,
-          'Sie sind storyspezifisch und prüfbar - im Gegensatz zur Definition of Done, die für alle Stories gilt.'),
+          'Sie sind storyspezifisch und prüfbar, im Gegensatz zur Definition of Done, die für alle Stories gilt.'),
       _c('Die Definition of Done ersetzt die Akzeptanzkriterien.', false,
           'Falsch. Die DoD gilt teamweit für JEDES Increment (z. B. Code-Review erfolgt, Tests grün). Akzeptanzkriterien sind fachlich und gelten nur für diese eine Story. Beides muss erfüllt sein.'),
       _c('Story Points schätzen den Aufwand relativ, nicht in Stunden.', true,
