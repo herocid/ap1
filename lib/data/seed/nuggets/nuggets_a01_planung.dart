@@ -1156,6 +1156,31 @@ final List<Nugget> nuggetsA01Planung = [
     ],
   ),
   konzept(
+    'n-wk-14',
+    'w-kalkulation',
+    'Entgangener Umsatz gehört zu den Kosten',
+    'Wer geschult wird oder auf ein neues System umstellt, kann in dieser Zeit keine Kundenstunden abrechnen. Der Umsatz, der dadurch fehlt, heißt entgangener Umsatz. Er steht auf keiner Rechnung, gehört aber in jeden Kostenvergleich - sonst wirkt die Lösung mit der längeren Schulung zu günstig.',
+    points: [
+      'Entgangener Umsatz = Personen × ausgefallene Stunden × Stundensatz',
+      'typische Anlässe: Schulung, Umstellung, Systemausfall',
+      'Kosten im ersten Jahr = Lizenzen + Schulung + entgangener Umsatz',
+    ],
+  ),
+  beispiel(
+    'n-wk-15',
+    'w-kalkulation',
+    'Jahreskosten mit entgangenem Umsatz',
+    'Ein Planungsbüro führt für 4 Ingenieure eine neue Software ein. Die Lizenz kostet 60 € je Nutzer und Monat. Die Pflichtschulung dauert 6 Stunden und kostet pauschal 1.200 €. Ein Ingenieur rechnet 90 € je Stunde beim Kunden ab.',
+    schritte: [
+      'Lizenzen: 4 Nutzer × 60 € × 12 Monate = 2.880 €',
+      'Schulung: 1.200 € pauschal',
+      'Entgangener Umsatz: 4 Personen × 6 h × 90 € = 2.160 €',
+      'Summe: 2.880 € + 1.200 € + 2.160 € = 6.240 €',
+    ],
+    ergebnis:
+        'Kosten im ersten Jahr: 6.240 €, davon 2.160 € entgangener Umsatz',
+  ),
+  konzept(
     'n-wk-10',
     'w-kalkulation',
     'Vor-, Mit- und Nachkalkulation',
@@ -1308,6 +1333,47 @@ final List<Nugget> nuggetsA01Planung = [
       'Unter den verbleibenden Alternativen hat B den höchsten Nutzwert: 7,30 > 6,85.',
     ],
     ergebnis: 'Gewählt wird B.',
+  ),
+  konzept(
+    'n-wn-12',
+    'w-nutzwert',
+    'Entscheidungsmatrix mit Rangplätzen',
+    'Die einfachste Form des Vergleichs kommt ohne Gewichtung aus: Je Kriterium werden die Alternativen in eine Rangfolge gebracht, die Ränge werden addiert. Welche Zahl für den besten Wert steht, legt die Aufgabe fest - deshalb immer zuerst die Vorgabe lesen.',
+    points: [
+      'Vorgabe „Rang 1 für den besten Wert“: Die kleinste Rangsumme gewinnt.',
+      'Vorgabe „höchste Punktzahl für den besten Wert“ (bei drei Alternativen 3 Punkte): Die größte Summe gewinnt.',
+      'Jeder Rang wird je Kriterium nur einmal vergeben.',
+      'Bewertet werden nur die genannten Kriterien, auch wenn die Datentabelle mehr Merkmale enthält.',
+    ],
+  ),
+  beispiel(
+    'n-wn-13',
+    'w-nutzwert',
+    'Drei Drucker nach Rangplätzen vergleichen',
+    'Drei Drucker werden ohne Gewichtung verglichen. Vorgabe: Rang 1 für den besten, Rang 3 für den schlechtesten Wert je Kriterium.',
+    table: [
+      ['Kriterium', 'Gerät A', 'Gerät B', 'Gerät C'],
+      ['Preis', '480 €', '390 €', '560 €'],
+      ['Drucktempo (Seiten/min)', '30', '22', '38'],
+      ['Wartung je Monat', '14 €', '9 €', '11 €'],
+    ],
+    schritte: [
+      'Preis (klein ist gut): B Rang 1, A Rang 2, C Rang 3',
+      'Drucktempo (groß ist gut): C Rang 1, A Rang 2, B Rang 3',
+      'Wartung (klein ist gut): B Rang 1, C Rang 2, A Rang 3',
+      'Rangsummen: A 2 + 2 + 3 = 7, B 1 + 3 + 1 = 5, C 3 + 1 + 2 = 6',
+    ],
+    ergebnis: 'Gerät B gewinnt mit der kleinsten Rangsumme 5.',
+  ),
+  falle(
+    'n-wn-14',
+    'w-nutzwert',
+    'Bei Kosten ist klein gut',
+    'Der häufigste Fehler in der Entscheidungsmatrix: Beim Preis oder bei den Wartungskosten bekommt der größte Wert den besten Rang. Bei Kosten, Lieferzeit oder Stromverbrauch ist aber der kleinste Wert der beste. Der zweite Fehler: die Vorgabe überlesen und die falsche Summe gewinnen lassen.',
+    points: [
+      'Vorgabe „3 Punkte für den besten Wert“: Das günstigste Gerät erhält 3 Punkte, die größte Summe gewinnt.',
+      'Vorgabe „Rang 1 für den besten Wert“: Das günstigste Gerät erhält Rang 1, die kleinste Summe gewinnt.',
+    ],
   ),
   falle(
     'n-wn-10',

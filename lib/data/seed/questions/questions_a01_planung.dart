@@ -9,21 +9,25 @@ import '../builders.dart';
 /// qr-001, qr-002, qr-004, ab-001..ab-003).
 final List<Question> questionsA01Planung = [
   // ========================================================= Projektstrukturplan
-  einfach(
+  lueckentext(
     'a1-tp-1',
     't-psp',
-    prompt: 'Was enthält ein Projektstrukturplan NICHT?',
-    choices: [
-      ja(
-        'Die zeitliche Reihenfolge der Arbeitspakete',
-        'Reihenfolge und Termine kommen erst im Netzplan oder Gantt-Diagramm dazu.',
-      ),
-      nein('Teilaufgaben', 'Die gehören in die mittleren Ebenen des PSP.'),
-      nein('Arbeitspakete', 'Die unterste Ebene des PSP.'),
-      nein('Die Gliederung des Gesamtprojekts', 'Genau das ist der PSP.'),
+    scenario:
+        'Im Projekthandbuch eines Systemhauses soll der Projektstrukturplan (PSP) in wenigen Sätzen erklärt werden.',
+    prompt: 'Vervollständigen Sie den Text mit den passenden Begriffen.',
+    text:
+        'Der PSP zeigt, {0} im Projekt zu tun ist - aber nicht, {1} es erledigt wird.\n'
+        'Seine unterste Ebene bilden die {2}.\n'
+        'Reihenfolge und Abhängigkeiten zeigt erst der {3}.',
+    luecken: [
+      wort(['was'], 'Der PSP gliedert den Inhalt des Projekts.'),
+      wort(['wann'], 'Termine enthält der PSP nicht.'),
+      wort(['Arbeitspakete'], 'Sie werden nicht weiter zerlegt.'),
+      wort(['Netzplan'], 'Dort stehen Vorgänger und Nachfolger.'),
     ],
+    wortbank: ['Meilensteine', 'Lastenheft', 'warum'],
     explanation:
-        'Der PSP zeigt, WAS zu tun ist - nicht WANN und in welcher Reihenfolge.',
+        'Der PSP zeigt, WAS zu tun ist - nicht WANN und in welcher Reihenfolge. Seine unterste Ebene sind die Arbeitspakete; Reihenfolge und Termine kommen erst im Netzplan oder Gantt-Diagramm dazu.',
   ),
   zuordnen(
     'a1-tp-2',
@@ -57,34 +61,39 @@ final List<Question> questionsA01Planung = [
     explanation:
         'Objektorientiert: Bestandteile des Ergebnisses. Funktionsorientiert: Tätigkeiten. Phasenorientiert: Projektphasen.',
   ),
-  mehrfach(
+  freitext(
     'a1-tp-3',
     't-psp',
-    prompt: 'Welche Eigenschaften hat ein gutes Arbeitspaket?',
-    choices: [
-      ja(
+    scenario:
+        'Eine Projektleiterin prüft den PSP eines Auszubildenden und stellt fest, dass mehrere Arbeitspakete zu grob beschrieben sind.',
+    prompt: 'Nennen Sie drei Eigenschaften eines guten Arbeitspakets. (3 P.)',
+    punkte: 3,
+    kriterien: [
+      krit(
         'Ein eindeutig abgegrenztes, prüfbares Ergebnis',
-        'Sonst lässt sich nicht feststellen, wann es fertig ist.',
+        stichwoerter: ['prüfbar', 'Ergebnis', 'abgegrenzt', 'eindeutig'],
       ),
-      ja(
+      krit(
         'Genau eine verantwortliche Person',
-        'Geteilte Verantwortung heißt oft: niemand fühlt sich zuständig.',
+        stichwoerter: ['verantwortlich', 'Verantwortlicher', 'zuständig'],
       ),
-      ja(
+      krit(
         'Ein schätzbarer Aufwand',
-        'Nur so lassen sich Termine und Kosten planen.',
+        stichwoerter: ['Aufwand', 'schätzbar', 'geschätzt'],
       ),
-      nein(
-        'Es umfasst mindestens drei Monate Arbeit',
-        'Arbeitspakete sollen überschaubar sein, nicht möglichst groß.',
-      ),
-      nein(
-        'Es wird im PSP in weitere Arbeitspakete zerlegt',
-        'Das Arbeitspaket ist die unterste Ebene - es wird nicht weiter zerlegt.',
+      krit(
+        'Überschaubare Größe - es wird im PSP nicht weiter zerlegt',
+        stichwoerter: [
+          'überschaubar',
+          'nicht weiter zerlegt',
+          'unterste Ebene',
+        ],
       ),
     ],
+    loesung:
+        'Ein gutes Arbeitspaket hat ein eindeutig abgegrenztes, prüfbares Ergebnis, genau eine verantwortliche Person und einen schätzbaren Aufwand. Es ist überschaubar und wird im PSP nicht weiter zerlegt.',
     explanation:
-        'Das Arbeitspaket ist die kleinste, eindeutig verantwortete und schätzbare Einheit im PSP.',
+        'Je Nennung 1 Punkt, höchstens 3. Das Arbeitspaket ist die kleinste, eindeutig verantwortete und schätzbare Einheit im PSP.',
   ),
   einfach(
     'a1-tp-4',
@@ -234,11 +243,14 @@ final List<Question> questionsA01Planung = [
     explanation:
         'D braucht B und C und startet beim späteren Ende, also bei 5 (Ende von C). B ist schon bei 4 fertig und hat damit 5 - 4 = 1 Tag Puffer. Alle anderen Vorgänge sind kritisch.',
   ),
-  einfach(
+  markieren(
     'a1-tg-3',
     't-gantt',
-    prompt: 'Welche Formulierung eignet sich als Meilenstein?',
-    choices: [
+    scenario:
+        'Im Terminplan für die Einführung einer Lagersoftware sollen Meilensteine festgelegt werden. Zur Auswahl stehen sechs Formulierungen.',
+    prompt:
+        'Markieren Sie alle Formulierungen, die sich als Meilenstein eignen.',
+    zeilen: [
       ja(
         'Pflichtenheft vom Kunden unterschrieben',
         'Ein prüfbares Ereignis ohne Dauer - erreicht oder nicht.',
@@ -247,7 +259,12 @@ final List<Question> questionsA01Planung = [
         'Pflichtenheft erstellen',
         'Das ist eine Tätigkeit mit Dauer, also ein Vorgang.',
       ),
+      ja('Abnahmetest bestanden', 'Ein abgeschlossenes, prüfbares Ergebnis.'),
       nein('Testphase', 'Eine Phase hat eine Dauer - ein Meilenstein nicht.'),
+      ja(
+        'Hardware vollständig geliefert',
+        'Ein eindeutig feststellbares Ereignis.',
+      ),
       nein(
         'Programmierung zu 80 % fertig',
         'Nicht eindeutig prüfbar; Meilensteine kennen kein „fast“.',
@@ -365,27 +382,19 @@ final List<Question> questionsA01Planung = [
     explanation:
         'Dauer = Aufwand / (Personen × Verfügbarkeit) = 24 / (2 × 0,6) = 24 / 1,2 = 20 Arbeitstage.',
   ),
-  einfach(
+  paare(
     'a1-tr-2',
     't-ressourcen',
-    prompt: 'Was beschreibt der Aufwand eines Arbeitspakets?',
-    choices: [
-      ja(
-        'Die Menge an Arbeit, zum Beispiel in Personentagen',
-        'Aufwand misst Arbeit, nicht Zeit.',
-      ),
-      nein('Die Zeitspanne im Kalender', 'Das ist die Dauer.'),
-      nein(
-        'Die Kosten des Arbeitspakets',
-        'Kosten ergeben sich erst aus Aufwand mal Stundensatz.',
-      ),
-      nein(
-        'Die Anzahl der beteiligten Personen',
-        'Die beeinflusst die Dauer, nicht den Aufwand.',
-      ),
+    scenario: 'In der Ressourcenplanung werden vier Begriffe oft verwechselt.',
+    prompt: 'Ordnen Sie jedem Begriff seine Bedeutung zu.',
+    paare: [
+      paar('Aufwand', 'Arbeitsmenge in Personentagen'),
+      paar('Dauer', 'Zeitspanne in Arbeitstagen'),
+      paar('Verfügbarkeit', 'Anteil der Arbeitszeit für das Projekt'),
+      paar('Kapazität', 'Verfügbare Personentage im Zeitraum'),
     ],
     explanation:
-        'Aufwand = Arbeitsmenge (PT), Dauer = Kalenderzeit (AT). Mehr Personen senken die Dauer, nicht den Aufwand.',
+        'Aufwand = Arbeitsmenge (PT), Dauer = Kalenderzeit (AT). Mehr Personen senken die Dauer, nicht den Aufwand. Die Kapazität ergibt sich aus Arbeitstagen mal Verfügbarkeit.',
   ),
   rechnen(
     'a1-tr-3',
@@ -507,53 +516,88 @@ final List<Question> questionsA01Planung = [
     explanation:
         'Ein Kreislauf: Nach dem Überwachen beginnt die Identifikation neuer Risiken von vorn.',
   ),
-  einfach(
+  markieren(
     'a1-rp-2',
     'r-prozess',
-    prompt: 'Welche Situation beschreibt ein Risiko und kein Problem?',
-    choices: [
-      ja(
+    scenario:
+        'Im Kick-off einer Serverumstellung wurden Einträge für das Risikoregister gesammelt. Einige davon sind bereits eingetreten.',
+    prompt:
+        'Markieren Sie alle Einträge, die kein Risiko, sondern ein Problem beschreiben.',
+    zeilen: [
+      nein(
         'Der einzige Datenbankexperte könnte während der Migration krank werden.',
         'Ein mögliches künftiges Ereignis - also ein Risiko.',
       ),
-      nein(
-        'Der Server ist gestern ausgefallen.',
+      ja(
+        'Die Lizenzschlüssel wurden nicht geliefert.',
         'Bereits eingetreten - ein Problem.',
       ),
       nein(
-        'Die Lieferung kam drei Tage zu spät.',
+        'Die Schnittstelle zum ERP-System ist möglicherweise inkompatibel.',
+        'Noch ungewiss - ein Risiko.',
+      ),
+      ja(
+        'Zwei Entwickler sind seit Montag krank.',
         'Bereits eingetreten - ein Problem.',
       ),
-      nein(
+      ja(
         'Das Budget ist bereits um 10 % überschritten.',
         'Bereits eingetreten - ein Problem.',
       ),
+      nein(
+        'Die Fachabteilung könnte die Schulung absagen.',
+        'Kann eintreten, muss aber nicht - ein Risiko.',
+      ),
     ],
     explanation:
-        'Ein Risiko liegt in der Zukunft und kann eintreten. Ein Problem ist bereits eingetreten.',
+        'Ein Risiko liegt in der Zukunft und kann eintreten. Ein Problem ist bereits eingetreten - es gehört in die Problembehandlung, nicht ins Risikoregister.',
   ),
-  mehrfach(
+  freitext(
     'a1-rp-3',
     'r-prozess',
-    prompt: 'Was gehört in ein Risikoregister?',
-    choices: [
-      ja('Beschreibung und Ursache des Risikos', 'Grundlage jedes Eintrags.'),
-      ja(
-        'Eintrittswahrscheinlichkeit und Schadenshöhe',
-        'Grundlage der Bewertung.',
+    scenario:
+        'Für ein Migrationsprojekt wird ein Risikoregister angelegt. Die Vorlage soll alle nötigen Spalten enthalten.',
+    prompt:
+        'Nennen Sie vier Angaben, die das Risikoregister zu jedem Risiko enthält. (4 P.)',
+    punkte: 4,
+    kriterien: [
+      krit(
+        'Beschreibung und Ursache des Risikos',
+        stichwoerter: ['Beschreibung', 'Ursache', 'Bezeichnung'],
       ),
-      ja(
-        'Maßnahme und verantwortliche Person',
-        'Ohne Verantwortlichen passiert nichts.',
+      krit(
+        'Eintrittswahrscheinlichkeit',
+        stichwoerter: [
+          'Wahrscheinlichkeit',
+          'Eintrittswahrscheinlichkeit',
+          'wahrscheinlich',
+        ],
       ),
-      nein('Die Gehaltsliste des Teams', 'Gehört nicht in das Risikoregister.'),
-      nein(
-        'Der Quellcode des Projekts',
-        'Gehört ins Versionsverwaltungssystem.',
+      krit(
+        'Schadenshöhe bzw. Auswirkung',
+        stichwoerter: ['Schaden', 'Schadenshöhe', 'Auswirkung'],
+      ),
+      krit(
+        'Risikowert bzw. Priorität',
+        stichwoerter: ['Risikowert', 'Priorität', 'Kennzahl'],
+      ),
+      krit(
+        'Geplante Maßnahme',
+        stichwoerter: ['Maßnahme', 'Gegenmaßnahme', 'Strategie'],
+      ),
+      krit(
+        'Verantwortliche Person (Risikoeigner)',
+        stichwoerter: ['verantwortlich', 'Risikoeigner', 'zuständig'],
+      ),
+      krit(
+        'Status und Frühwarnindikator',
+        stichwoerter: ['Status', 'Frühwarnindikator', 'Indikator'],
       ),
     ],
+    loesung:
+        'Beschreibung mit Ursache, Eintrittswahrscheinlichkeit, Schadenshöhe und die geplante Maßnahme. Dazu kommen Risikowert, verantwortliche Person und Status.',
     explanation:
-        'Das Register dokumentiert jedes Risiko mit Bewertung, Maßnahme, Verantwortlichem und Status.',
+        'Je Nennung 1 Punkt, höchstens 4. Das Register dokumentiert jedes Risiko mit Bewertung, Maßnahme, Verantwortlichem und Status.',
   ),
   zuordnen(
     'a1-rp-4',
@@ -618,60 +662,76 @@ final List<Question> questionsA01Planung = [
     explanation:
         'Ein gut beschriebenes Risiko folgt dem Muster „Weil (Ursache) könnte (Ereignis), sodass (Auswirkung)“. Erst dann lassen sich Wahrscheinlichkeit und Schaden sinnvoll schätzen.',
   ),
-  mehrfach(
+  freitext(
     'a1-rp-6',
     'r-prozess',
-    prompt: 'Welche Methoden eignen sich, um Risiken zu identifizieren?',
-    choices: [
-      ja(
+    scenario:
+        'Vor dem Start eines Rechenzentrumsumzugs sollen möglichst viele Risiken gefunden werden.',
+    prompt:
+        'Nennen Sie drei Methoden, mit denen sich Risiken identifizieren lassen. (3 P.)',
+    punkte: 3,
+    kriterien: [
+      krit(
         'Brainstorming im Projektteam',
-        'Viele Blickwinkel finden viele Risiken.',
+        stichwoerter: ['Brainstorming', 'Workshop', 'Ideensammlung'],
       ),
-      ja(
+      krit(
         'Checklisten aus früheren Projekten',
-        'Typische Risiken wiederholen sich.',
+        stichwoerter: ['Checkliste', 'Checklisten', 'Prüfliste'],
       ),
-      ja(
+      krit(
         'Befragung von Fachleuten',
-        'Expertinnen kennen die Stolpersteine ihres Gebiets.',
+        stichwoerter: ['Befragung', 'Experten', 'Fachleute', 'Interview'],
       ),
-      ja(
+      krit(
         'Auswertung von Lessons Learned früherer Projekte',
-        'Was damals schiefging, droht wieder.',
+        stichwoerter: ['Lessons Learned', 'Erfahrungen', 'frühere Projekte'],
       ),
-      nein(
-        'Nutzwertanalyse',
-        'Sie dient der Auswahl zwischen Alternativen, nicht dem Finden von Risiken.',
-      ),
-      nein('Break-even-Analyse', 'Sie berechnet eine Gewinnschwelle.'),
     ],
+    loesung:
+        'Brainstorming im Projektteam, Checklisten aus früheren Projekten und die Befragung von Fachleuten. Auch die Auswertung von Lessons Learned hilft.',
     explanation:
-        'Kein Verfahren findet alle Risiken. Deshalb kombiniert man Kreativität (Brainstorming), Erfahrung (Checklisten, Lessons Learned) und Fachwissen (Befragungen).',
+        'Je Nennung 1 Punkt, höchstens 3. Kein Verfahren findet alle Risiken. Deshalb kombiniert man Kreativität (Brainstorming), Erfahrung (Checklisten, Lessons Learned) und Fachwissen (Befragungen).',
   ),
-  einfach(
+  freitext(
     'a1-rp-7',
     'r-prozess',
-    prompt: 'Wozu dient ein Frühwarnindikator im Risikomanagement?',
-    choices: [
-      ja(
-        'Er zeigt an, dass ein Risiko wahrscheinlicher wird oder bald eintreten könnte.',
-        'So bleibt Zeit, die vorbereitete Maßnahme rechtzeitig zu starten.',
+    scenario:
+        'Im Risikoregister eines Rollout-Projekts gibt es die Spalte „Frühwarnindikator“. Ein neues Teammitglied fragt nach ihrem Zweck.',
+    prompt:
+        'Erläutern Sie, wozu ein Frühwarnindikator dient, und nennen Sie ein Beispiel. (3 P.)',
+    punkte: 3,
+    kriterien: [
+      krit(
+        'Er zeigt frühzeitig an, dass ein Risiko wahrscheinlicher wird oder bald eintreten könnte.',
+        punkte: 2,
+        stichwoerter: [
+          'frühzeitig',
+          'rechtzeitig',
+          'Anzeichen',
+          'wahrscheinlicher',
+          'bevorsteht',
+        ],
       ),
-      nein(
-        'Er berechnet den Risikowert.',
-        'Den berechnet man aus Wahrscheinlichkeit und Schaden.',
+      krit(
+        'So bleibt Zeit, die vorbereitete Maßnahme zu starten.',
+        stichwoerter: ['Maßnahme', 'reagieren', 'gegensteuern', 'einleiten'],
       ),
-      nein(
-        'Er ersetzt das Risikoregister.',
-        'Er ergänzt das Register beim Überwachen.',
-      ),
-      nein(
-        'Er meldet eingetretene Probleme nach Projektende.',
-        'Dann wäre es zu spät - Frühwarnung heißt vorher.',
+      krit(
+        'Beispiel: Der Lieferant bestätigt den Liefertermin nicht.',
+        stichwoerter: [
+          'Lieferant',
+          'Liefertermin',
+          'Krankmeldungen',
+          'Überstunden',
+          'Ist-Kosten',
+        ],
       ),
     ],
+    loesung:
+        'Ein Frühwarnindikator ist ein beobachtbares Anzeichen dafür, dass ein Risiko wahrscheinlicher wird. So kann die vorbereitete Maßnahme rechtzeitig gestartet werden. Beispiel: Der Lieferant bestätigt den Liefertermin nicht - Hinweis auf drohenden Lieferverzug.',
     explanation:
-        'Beim Überwachen beobachtet der Risikoeigner Frühwarnindikatoren, zum Beispiel „Lieferant bestätigt den Liefertermin nicht“. Schlagen sie an, wird die geplante Maßnahme ausgelöst.',
+        'Zweck 2 Punkte, Beispiel 1 Punkt. Beim Überwachen beobachtet der Risikoeigner die Frühwarnindikatoren; schlagen sie an, wird die geplante Maßnahme ausgelöst.',
   ),
 
   // =========================================================== Risiken bewerten
@@ -867,30 +927,26 @@ final List<Question> questionsA01Planung = [
     explanation:
         'Testfrage: Kann das Risiko danach noch eintreten? Nein -> vermeiden. Ja, aber seltener oder milder -> vermindern. Ja, aber ein Dritter trägt die Folgen -> übertragen. Ja, und man trägt es bewusst -> akzeptieren.',
   ),
-  einfach(
+  lueckentext(
     'a1-rs-3',
     'r-strategien',
     scenario:
-        'Nach einer Maßnahme kann das Risiko weiterhin eintreten, allerdings deutlich seltener als vorher.',
-    prompt: 'Welche Strategie wurde gewählt?',
-    choices: [
-      ja(
-        'Vermindern',
-        'Die Wahrscheinlichkeit sinkt, das Risiko bleibt bestehen.',
-      ),
-      nein(
-        'Vermeiden',
-        'Beim Vermeiden könnte das Risiko gar nicht mehr eintreten.',
-      ),
-      nein(
-        'Übertragen',
-        'Übertragen ändert nicht die Wahrscheinlichkeit, sondern wer den Schaden trägt.',
-      ),
-      nein('Akzeptieren', 'Beim Akzeptieren wird nichts unternommen.'),
+        'Mit einer einfachen Testfrage lässt sich jede Maßnahme einer Risikostrategie zuordnen: Kann das Risiko danach noch eintreten?',
+    prompt: 'Wählen Sie zu jeder Beschreibung die passende Strategie.',
+    text:
+        'Das Risiko kann nicht mehr eintreten, weil die Ursache entfällt: {0}.\n'
+        'Es kann noch eintreten, aber seltener oder mit kleinerem Schaden: {1}.\n'
+        'Es kann noch eintreten, die finanziellen Folgen trägt ein Dritter: {2}.\n'
+        'Es kann noch eintreten und wird bewusst ohne Maßnahme getragen: {3}.',
+    luecken: [
+      wahl('Vermeiden', ['Vermindern', 'Übertragen', 'Akzeptieren']),
+      wahl('Vermindern', ['Vermeiden', 'Übertragen', 'Akzeptieren']),
+      wahl('Übertragen', ['Vermeiden', 'Vermindern', 'Akzeptieren']),
+      wahl('Akzeptieren', ['Vermeiden', 'Vermindern', 'Übertragen']),
     ],
     difficulty: 1,
     explanation:
-        'Vermindern senkt Wahrscheinlichkeit oder Auswirkung, beseitigt das Risiko aber nicht. Beim Vermeiden ist die Ursache weg, das Risiko kann nicht mehr eintreten.',
+        'Vermindern senkt Wahrscheinlichkeit oder Auswirkung, beseitigt das Risiko aber nicht. Beim Vermeiden ist die Ursache weg, das Risiko kann nicht mehr eintreten. Übertragen ändert, wer den Schaden trägt; Akzeptieren heißt bewusst nichts tun.',
   ),
   rechnen(
     'a1-rs-4',
@@ -905,57 +961,84 @@ final List<Question> questionsA01Planung = [
         'Nachher wirken beide Maßnahmen zusammen: 0,10 × 30.000 € = 3.000 €.\n'
         'Das Restrisiko von 3.000 € wird neu eingestuft und z. B. bewusst akzeptiert.',
   ),
-  mehrfach(
+  freitext(
     'a1-rs-5',
     'r-strategien',
+    scenario:
+        'Für die Lieferung neuer Server wurde eine Transportversicherung abgeschlossen. Ein Teammitglied schlägt vor, das Risiko „Transportschaden“ aus dem Risikoregister zu streichen.',
     prompt:
-        'Welche Aussagen zum Übertragen (Überwälzen) von Risiken sind richtig?',
-    choices: [
-      ja(
-        'Die finanziellen Folgen trägt ganz oder teilweise ein Dritter.',
-        'Das ist der Kern der Strategie.',
+        'Erläutern Sie zwei Gründe, warum das Risiko trotz Versicherung weiter überwacht wird. (4 P.)',
+    punkte: 4,
+    kriterien: [
+      krit(
+        'Die Versicherung verhindert den Schaden nicht - das Ereignis kann mit gleicher Wahrscheinlichkeit eintreten.',
+        punkte: 2,
+        stichwoerter: [
+          'verhindert nicht',
+          'weiterhin eintreten',
+          'Wahrscheinlichkeit bleibt',
+          'trotzdem eintreten',
+        ],
       ),
-      ja(
-        'Das Ereignis selbst kann weiterhin eintreten.',
-        'Eine Versicherung verhindert keinen Schaden.',
+      krit(
+        'Der Terminverzug bleibt im Projekt: Beschädigte Server müssen neu beschafft werden.',
+        punkte: 2,
+        stichwoerter: ['Termin', 'Verzug', 'Verzögerung', 'Zeitplan'],
       ),
-      ja(
-        'Eine Versicherung ist ein typisches Beispiel.',
-        'Ebenso Festpreisverträge oder Vertragsstrafen.',
-      ),
-      nein(
-        'Nach dem Übertragen muss das Risiko nicht mehr überwacht werden.',
-        'Terminfolgen und Ansehensschäden bleiben im Projekt - überwacht wird weiter.',
-      ),
-      nein(
-        'Übertragen senkt die Eintrittswahrscheinlichkeit auf null.',
-        'Die Wahrscheinlichkeit bleibt gleich.',
+      krit(
+        'Nicht alle Folgen sind gedeckt, etwa Selbstbeteiligung oder Ansehensverlust beim Kunden.',
+        punkte: 2,
+        stichwoerter: [
+          'Selbstbeteiligung',
+          'Ansehen',
+          'Image',
+          'nicht gedeckt',
+        ],
       ),
     ],
+    loesung:
+        'Die Versicherung ersetzt nur den finanziellen Schaden - der Transportschaden selbst kann genauso wahrscheinlich eintreten wie vorher. Tritt er ein, verzögert sich das Projekt trotzdem, weil die Server neu beschafft werden müssen.',
     explanation:
-        'Übertragen verlagert den finanziellen Schaden, nicht das Ereignis. Ein versicherter Serverausfall verzögert das Projekt trotzdem - deshalb kombiniert man Übertragen oft mit Vermindern.',
+        'Je Grund 2 Punkte, höchstens 4. Übertragen verlagert den finanziellen Schaden, nicht das Ereignis - deshalb kombiniert man Übertragen oft mit Vermindern.',
   ),
-  einfach(
+  zuordnen(
     'a1-rs-6',
     'r-strategien',
+    scenario:
+        'Für das Risiko „Ausfall des zentralen Servers“ wurden sechs Maßnahmen gesammelt.',
     prompt:
-        'Welche Maßnahme ist korrektiv, also eine Notfallmaßnahme für den Fall des Eintritts?',
-    choices: [
-      ja(
-        'Ein Wiederanlaufplan, der nach einem Serverausfall abgearbeitet wird',
+        'Wirkt die Maßnahme präventiv (vor dem Eintritt) oder korrektiv (nach dem Eintritt)?',
+    buckets: ['präventiv', 'korrektiv'],
+    items: [
+      zu(
+        'Wiederanlaufplan, der nach einem Ausfall abgearbeitet wird',
+        1,
         'Er greift erst nach dem Eintritt und begrenzt den Schaden.',
       ),
-      nein(
-        'Einen zweiten Administrator einarbeiten',
-        'Das ist präventiv - es senkt die Wahrscheinlichkeit eines Engpasses.',
+      zu(
+        'Zweiten Administrator einarbeiten',
+        0,
+        'Senkt die Wahrscheinlichkeit eines Engpasses.',
       ),
-      nein(
-        'Hardware mit redundanten Netzteilen kaufen',
-        'Präventiv - der Ausfall wird unwahrscheinlicher.',
+      zu(
+        'Server mit redundanten Netzteilen kaufen',
+        0,
+        'Der Ausfall wird unwahrscheinlicher.',
       ),
-      nein(
-        'Ein Risiko-Workshop zu Projektbeginn',
-        'Das gehört zum Identifizieren, nicht zu den Maßnahmen.',
+      zu(
+        'Datensicherung auf den Ersatzserver zurückspielen',
+        1,
+        'Wird erst nach dem Ausfall ausgeführt.',
+      ),
+      zu(
+        'Sicherheitsupdates regelmäßig einspielen',
+        0,
+        'Beugt Ausfällen durch Schwachstellen vor.',
+      ),
+      zu(
+        'Betroffene Abteilungen über den Ausfall informieren',
+        1,
+        'Teil des Notfallplans nach dem Eintritt.',
       ),
     ],
     explanation:
@@ -1077,27 +1160,16 @@ final List<Question> questionsA01Planung = [
     explanation:
         'Einzelkosten lassen sich einem Projekt direkt zuordnen (Projektstunden, projektbezogener Einkauf). Gemeinkosten fallen für das ganze Unternehmen an und werden über einen Zuschlagssatz anteilig verrechnet.',
   ),
-  einfach(
+  paare(
     'a1-wk-7',
     'w-kalkulation',
-    prompt: 'Wann wird die Nachkalkulation erstellt, und wozu dient sie?',
-    choices: [
-      ja(
-        'Nach dem Projekt, um die tatsächlichen Kosten mit der Planung zu vergleichen und künftige Schätzungen zu verbessern',
-        'Sie liefert Erfahrungswerte für das nächste Angebot.',
-      ),
-      nein(
-        'Vor dem Projekt, um den Angebotspreis festzulegen',
-        'Das ist die Vorkalkulation.',
-      ),
-      nein(
-        'Während des Projekts als laufender Soll-Ist-Vergleich',
-        'Das ist die Mitkalkulation.',
-      ),
-      nein(
-        'Nur wenn das Projekt abgebrochen wurde',
-        'Nachkalkuliert wird jedes Projekt.',
-      ),
+    scenario:
+        'Ein Systemhaus kalkuliert jedes Kundenprojekt zu drei Zeitpunkten.',
+    prompt: 'Ordnen Sie jeder Kalkulation Zeitpunkt und Zweck zu.',
+    paare: [
+      paar('Vorkalkulation', 'Vor dem Projekt: Angebot und Budget'),
+      paar('Mitkalkulation', 'Im Projekt: laufender Soll-Ist-Vergleich'),
+      paar('Nachkalkulation', 'Nach dem Projekt: Abgleich mit echten Kosten'),
     ],
     difficulty: 1,
     explanation:
@@ -1105,34 +1177,41 @@ final List<Question> questionsA01Planung = [
   ),
 
   // ============================================================ Nutzwertanalyse
-  mehrfach(
+  markieren(
     'a1-wn-1',
     'w-nutzwert',
-    prompt: 'Welche Fehler machen eine Nutzwertanalyse ungültig?',
-    choices: [
+    scenario:
+        'Ein Auszubildender hat für die Auswahl eines Cloud-Speichers eine Nutzwertanalyse erstellt und beschreibt sein Vorgehen.',
+    prompt:
+        'Markieren Sie alle Aussagen, die einen Fehler in der Nutzwertanalyse beschreiben.',
+    zeilen: [
       ja(
-        'Die Gewichte ergeben zusammen 120 %',
+        'Die Gewichte ergeben zusammen 120 %.',
         'Die Gewichte müssen genau 100 % ergeben.',
       ),
+      nein(
+        'Die Kriterien sind unterschiedlich gewichtet.',
+        'Das ist der Sinn der Gewichtung.',
+      ),
       ja(
-        'Die Punkte werden ohne Gewichtung addiert',
+        'Die Punkte wurden ohne Gewichtung addiert.',
         'Dann hätten alle Kriterien dasselbe Gewicht.',
       ),
       nein(
-        'Die Kriterien sind unterschiedlich gewichtet',
-        'Das ist der Sinn der Gewichtung.',
-      ),
-      nein(
-        'Es werden mehr als zwei Alternativen verglichen',
+        'Es wurden vier Alternativen verglichen.',
         'Beliebig viele Alternativen sind möglich.',
       ),
       ja(
-        'Ein Anbieter verfehlt ein Muss-Kriterium und wird trotzdem gewählt',
+        'Ein Anbieter verfehlt ein Muss-Kriterium und wurde trotzdem gewählt.',
         'Muss-Kriterien sind K.-o.-Kriterien und werden vorab geprüft.',
+      ),
+      ja(
+        'Der teuerste Anbieter bekam beim Preis die meisten Punkte.',
+        'Höher ist immer besser: Der günstigste Anbieter erhält beim Preis die meisten Punkte.',
       ),
     ],
     explanation:
-        'Gewichte summieren sich zu 100 %, Punkte werden mit dem Gewicht multipliziert, Muss-Kriterien werden vorab geprüft.',
+        'Gewichte summieren sich zu 100 %, Punkte werden mit dem Gewicht multipliziert, Muss-Kriterien werden vorab geprüft. Auf der Punkteskala ist höher immer besser - auch beim Preis.',
   ),
   rechnen(
     'a1-wn-2',
@@ -1236,31 +1315,49 @@ final List<Question> questionsA01Planung = [
   ),
 
   // ================================================================== Make or Buy
-  mehrfach(
+  freitext(
     'a1-wm-1',
     'w-makeorbuy',
-    prompt: 'Welche Argumente sprechen für eine Eigenentwicklung (Make)?',
-    choices: [
-      ja(
-        'Die Lösung passt genau zu den eigenen Abläufen',
-        'Maßgeschneidert statt Standard.',
+    scenario:
+        'Ein Onlinehändler überlegt, sein Retourenportal selbst zu entwickeln (Make) oder eine fertige Lösung zu kaufen (Buy).',
+    prompt:
+        'Nennen Sie je zwei Argumente für die Eigenentwicklung und für den Kauf. (4 P.)',
+    punkte: 4,
+    kriterien: [
+      krit(
+        'Make: Die Lösung passt genau zu den eigenen Abläufen.',
+        stichwoerter: [
+          'passgenau',
+          'maßgeschneidert',
+          'individuell',
+          'eigene Abläufe',
+        ],
       ),
-      ja(
-        'Das Know-how bleibt im Unternehmen',
-        'Man versteht und beherrscht die eigene Lösung.',
+      krit(
+        'Make: Das Know-how bleibt im Unternehmen.',
+        stichwoerter: ['Know-how', 'Wissen', 'Kompetenz'],
       ),
-      nein('Die Lösung ist sofort verfügbar', 'Das spricht für den Kauf.'),
-      ja(
-        'Es gibt keine Abhängigkeit von einem Anbieter',
-        'Kein Risiko, dass ein Anbieter Preise erhöht oder das Produkt einstellt.',
+      krit(
+        'Make: Keine Abhängigkeit von einem Anbieter.',
+        stichwoerter: ['unabhängig', 'Abhängigkeit', 'Kontrolle'],
       ),
-      nein(
-        'Die Entwicklungskosten sind gering',
-        'Eigenentwicklung ist meist teuer - das spricht eher für Buy.',
+      krit(
+        'Buy: Die Lösung ist sofort verfügbar.',
+        stichwoerter: ['sofort', 'schnell verfügbar', 'Zeit', 'schneller'],
+      ),
+      krit(
+        'Buy: Geringere Entwicklungskosten.',
+        stichwoerter: ['Entwicklungskosten', 'günstiger', 'Kosten'],
+      ),
+      krit(
+        'Buy: Ausgereiftes Produkt, Wartung und Updates liefert der Hersteller.',
+        stichwoerter: ['ausgereift', 'erprobt', 'Wartung', 'Updates'],
       ),
     ],
+    loesung:
+        'Make: Die Lösung passt genau zu den eigenen Abläufen, und das Know-how bleibt im Unternehmen. Buy: Die Lösung ist sofort verfügbar und verursacht geringere Entwicklungskosten.',
     explanation:
-        'Make punktet mit Passgenauigkeit, Know-how und Unabhängigkeit; Buy mit Geschwindigkeit und geringeren Entwicklungskosten.',
+        'Je Argument 1 Punkt, höchstens 4. Make punktet mit Passgenauigkeit, Know-how und Unabhängigkeit; Buy mit Geschwindigkeit und geringeren Entwicklungskosten.',
   ),
   rechnen(
     'a1-wm-2',
@@ -1378,31 +1475,18 @@ final List<Question> questionsA01Planung = [
     explanation:
         'Make: Kernkompetenz, sehr spezielle Anforderungen, Unabhängigkeit, vorhandenes Know-how. Buy: Zeitdruck, fehlendes Know-how, ausgereifte Standardprodukte, geringere Entwicklungskosten.',
   ),
-  mehrfach(
+  paare(
     'a1-wm-7',
     'w-makeorbuy',
-    prompt: 'Welche Fragen gehören zu einer Machbarkeitsanalyse?',
-    choices: [
-      ja(
-        'Lässt sich die Lösung mit der vorhandenen Technik umsetzen?',
-        'Technische Machbarkeit.',
-      ),
-      ja(
-        'Stehen Nutzen und Kosten in einem sinnvollen Verhältnis?',
-        'Wirtschaftliche Machbarkeit.',
-      ),
-      ja(
-        'Ist die Lösung mit Datenschutz und Lizenzrecht vereinbar?',
-        'Rechtliche Machbarkeit.',
-      ),
-      ja(
-        'Ist die Lösung bis zum geforderten Termin fertig?',
-        'Zeitliche Machbarkeit.',
-      ),
-      nein(
-        'Wer war beim letzten Projekt an der Verspätung schuld?',
-        'Schuldfragen helfen bei keiner Entscheidung.',
-      ),
+    scenario:
+        'Vor einer Make-or-Buy-Entscheidung prüft eine Machbarkeitsanalyse, ob ein Weg überhaupt gangbar ist.',
+    prompt: 'Ordnen Sie jeder Art der Machbarkeit ihre Leitfrage zu.',
+    paare: [
+      paar('technisch', 'Mit vorhandener Technik umsetzbar?'),
+      paar('wirtschaftlich', 'Übersteigt der Nutzen die Kosten?'),
+      paar('rechtlich', 'Mit Datenschutz und Lizenzrecht vereinbar?'),
+      paar('zeitlich', 'Bis zum geforderten Termin fertig?'),
+      paar('organisatorisch', 'Passen Personal und Abläufe dazu?'),
     ],
     explanation:
         'Die Machbarkeitsanalyse prüft vor der Entscheidung technisch, wirtschaftlich, rechtlich, organisatorisch und zeitlich, ob ein Weg gangbar ist.',
@@ -1523,30 +1607,35 @@ final List<Question> questionsA01Planung = [
   ),
 
   // ============================================================ Abnahme und Übergabe
-  einfach(
+  freitext(
     'a1-aa-1',
     'a-abnahme',
-    prompt: 'Wogegen prüft der Auftraggeber das Ergebnis bei der Abnahme?',
-    choices: [
-      ja(
-        'Gegen die vereinbarten Anforderungen und Abnahmekriterien, z. B. aus dem Pflichtenheft',
-        'Nur was vereinbart war, kann eingefordert werden.',
+    scenario:
+        'Bei der Abnahme einer Lagerverwaltung streiten Auftraggeber und Auftragnehmer, ob die Anforderung „Die Software soll schnell reagieren“ erfüllt ist.',
+    prompt:
+        'Erläutern Sie zwei Gründe, warum Abnahmekriterien schon im Pflichtenheft prüfbar formuliert sein müssen. (4 P.)',
+    punkte: 4,
+    kriterien: [
+      krit(
+        'Abgenommen wird gegen das Vereinbarte - nur was vereinbart ist, kann der Auftraggeber einfordern.',
+        punkte: 2,
+        stichwoerter: ['vereinbart', 'einfordern', 'Maßstab', 'Pflichtenheft'],
       ),
-      nein(
-        'Gegen die Erwartungen von Anwendern, die im Projekt nicht beteiligt waren',
-        'Nicht vereinbarte Erwartungen sind kein Maßstab der Abnahme.',
+      krit(
+        'Nur messbare Kriterien lassen eine eindeutige Entscheidung „erfüllt oder nicht erfüllt“ zu.',
+        punkte: 2,
+        stichwoerter: ['messbar', 'eindeutig', 'objektiv', 'Zielwert'],
       ),
-      nein(
-        'Gegen das verbrauchte Budget',
-        'Das Budget ist Teil der Nachkalkulation, nicht der Abnahme.',
-      ),
-      nein(
-        'Gegen die Zahl der geleisteten Arbeitsstunden',
-        'Aufwand sagt nichts über die Qualität des Ergebnisses.',
+      krit(
+        'Prüfbare Kriterien vermeiden Streit und Verzögerungen bei der Abnahme.',
+        punkte: 2,
+        stichwoerter: ['Streit', 'Konflikt', 'Diskussion', 'Auslegung'],
       ),
     ],
+    loesung:
+        'Bei der Abnahme wird das Ergebnis gegen die vereinbarten Anforderungen geprüft. „Schnell“ hat keinen Zielwert - ob das Kriterium erfüllt ist, bleibt Ansichtssache. Mit „Antwortzeit höchstens 2 s“ lässt sich eindeutig entscheiden, und Streit bei der Abnahme wird vermieden.',
     explanation:
-        'Abgenommen wird gegen vereinbarte Kriterien. Deshalb müssen Anforderungen und Abnahmekriterien vorher prüfbar formuliert sein.',
+        'Je Grund 2 Punkte, höchstens 4. Abgenommen wird gegen vereinbarte Kriterien. Deshalb müssen Anforderungen und Abnahmekriterien vorher prüfbar formuliert sein.',
   ),
   zuordnen(
     'a1-aa-2',
@@ -1633,32 +1722,44 @@ final List<Question> questionsA01Planung = [
     explanation:
         'Wesentliche Mängel berechtigen zur Verweigerung, unwesentliche nicht. Bekannte Mängel werden im Abnahmeprotokoll mit Frist zur Behebung festgehalten - sonst sind sie später schwer durchzusetzen.',
   ),
-  mehrfach(
+  freitext(
     'a1-aa-5',
     'a-abnahme',
-    prompt: 'Was gehört in ein Abnahmeprotokoll?',
-    choices: [
-      ja('Datum, Teilnehmer und Prüfgegenstand', 'Wer hat wann was geprüft?'),
-      ja(
+    scenario:
+        'Ein Systemhaus übergibt einem Kunden eine neue Telefonanlage. Die Abnahme soll in einem Protokoll festgehalten werden.',
+    prompt: 'Nennen Sie vier Inhalte eines Abnahmeprotokolls. (4 P.)',
+    punkte: 4,
+    kriterien: [
+      krit(
+        'Datum und Ort der Abnahme',
+        stichwoerter: ['Datum', 'Ort', 'Termin'],
+      ),
+      krit(
+        'Teilnehmer beider Seiten',
+        stichwoerter: ['Teilnehmer', 'Beteiligte', 'Anwesende'],
+      ),
+      krit(
+        'Prüfgegenstand bzw. Leistungsumfang',
+        stichwoerter: ['Prüfgegenstand', 'Gegenstand', 'Leistungsumfang'],
+      ),
+      krit(
         'Festgestellte Mängel mit Frist zur Behebung',
-        'Belegt den Zustand bei Übergabe.',
+        stichwoerter: ['Mängel', 'Mangel', 'Frist'],
       ),
-      ja(
-        'Die Entscheidung: abgenommen, unter Vorbehalt oder verweigert',
-        'Das Ergebnis der Abnahme.',
+      krit(
+        'Entscheidung: abgenommen, unter Vorbehalt oder verweigert',
+        stichwoerter: ['Entscheidung', 'abgenommen', 'Vorbehalt', 'verweigert'],
       ),
-      ja(
-        'Die Unterschriften beider Seiten',
-        'Macht das Protokoll verbindlich.',
-      ),
-      nein(
-        'Die Stundenzettel aller Teammitglieder',
-        'Gehören in die Nachkalkulation, nicht ins Abnahmeprotokoll.',
+      krit(
+        'Unterschriften beider Seiten',
+        stichwoerter: ['Unterschrift', 'Unterschriften', 'unterschrieben'],
       ),
     ],
+    loesung:
+        'Datum und Teilnehmer, Prüfgegenstand, festgestellte Mängel mit Frist zur Behebung, die Entscheidung (abgenommen, unter Vorbehalt oder verweigert) und die Unterschriften beider Seiten.',
     difficulty: 1,
     explanation:
-        'Das Abnahmeprotokoll dokumentiert, was geprüft wurde, welche Mängel bestehen und wie entschieden wurde. Ohne Protokoll steht im Streitfall Aussage gegen Aussage.',
+        'Je Nennung 1 Punkt, höchstens 4. Das Abnahmeprotokoll dokumentiert, was geprüft wurde, welche Mängel bestehen und wie entschieden wurde. Ohne Protokoll steht im Streitfall Aussage gegen Aussage.',
   ),
   zuordnen(
     'a1-aa-6',
@@ -1735,31 +1836,30 @@ final List<Question> questionsA01Planung = [
     explanation:
         'Abweichung = (Ist - Soll) / Soll × 100 = (69.000 - 60.000) / 60.000 × 100 = 15 %.',
   ),
-  einfach(
+  lueckentext(
     'a1-ab-2',
     'a-bericht',
-    prompt:
-        'Was macht einen Soll-Ist-Vergleich im Abschlussbericht wirklich wertvoll?',
-    choices: [
-      ja(
-        'Die Abweichungen werden begründet',
-        'Erst die Ursachen machen den Vergleich für künftige Projekte nützlich.',
-      ),
-      nein(
-        'Er enthält möglichst viele Kennzahlen',
-        'Menge ersetzt keine Erklärung.',
-      ),
-      nein(
-        'Er benennt die Schuldigen für Verzögerungen',
-        'Schuldzuweisungen verhindern offene Aufarbeitung.',
-      ),
-      nein(
-        'Er zeigt nur positive Abweichungen',
-        'Ein beschönigter Bericht ist wertlos.',
-      ),
+    scenario:
+        'Für den Abschlussbericht eines Rollout-Projekts wird der Soll-Ist-Vergleich vorbereitet.',
+    prompt: 'Vervollständigen Sie die Regeln für den Soll-Ist-Vergleich.',
+    text:
+        'Abweichung absolut = {0} minus {1}\n'
+        'Abweichung relativ = Abweichung absolut geteilt durch {2}, mal 100 %\n'
+        'Wertvoll wird der Vergleich erst, wenn die Abweichungen {3} werden.',
+    luecken: [
+      wahl('Ist', ['Soll', 'Budgetrest'], 'Vom Ist wird das Soll abgezogen.'),
+      wahl('Soll', ['Ist', 'Budgetrest'], 'Das Soll ist der Plan.'),
+      wahl('das Soll', [
+        'das Ist',
+        'die Summe aus Soll und Ist',
+      ], 'Bezugsgröße ist immer der Plan.'),
+      wahl('begründet', [
+        'gerundet',
+        'geschönt',
+      ], 'Erst die Ursachen helfen künftigen Projekten.'),
     ],
     explanation:
-        'Ein Soll-Ist-Vergleich nennt Abweichungen und erklärt, wie sie entstanden sind.',
+        'Abweichung = Ist - Soll, relativ bezogen auf das Soll. Ein Soll-Ist-Vergleich nennt Abweichungen und erklärt, wie sie entstanden sind - erst die Ursachen machen ihn für künftige Projekte nützlich.',
   ),
   rechnen(
     'a1-ab-3',
@@ -1823,35 +1923,44 @@ final List<Question> questionsA01Planung = [
     explanation:
         'Absolute Abweichung = Ist - Soll = -5.000 €. Relative Abweichung = -5.000 / 50.000 × 100 % = -10 %. Negativ heißt bei Kosten: günstiger als geplant.',
   ),
-  mehrfach(
+  freitext(
     'a1-ab-7',
     'a-bericht',
+    scenario:
+        'Die Nachkalkulation eines Softwareprojekts zeigt: Statt der geplanten 60.000 € sind 69.000 € angefallen. Im Abschlussbericht soll die Abweichung begründet werden.',
     prompt:
-        'Welche Ursachen können eine Kostenüberschreitung im Abschlussbericht erklären?',
-    choices: [
-      ja(
-        'Änderungswünsche wurden umgesetzt, ohne das Budget anzupassen',
-        'Mehr Leistung ohne mehr Budget führt zur Überschreitung.',
+        'Nennen Sie drei mögliche Ursachen für eine Kostenüberschreitung. (3 P.)',
+    punkte: 3,
+    kriterien: [
+      krit(
+        'Der Aufwand wurde in der Planung zu niedrig geschätzt.',
+        stichwoerter: ['geschätzt', 'Schätzfehler', 'unterschätzt', 'Aufwand'],
       ),
-      ja(
-        'Der Aufwand wurde in der Planung zu niedrig geschätzt',
-        'Ein klassischer Schätzfehler.',
+      krit(
+        'Änderungswünsche wurden umgesetzt, ohne das Budget anzupassen.',
+        stichwoerter: ['Änderungswünsche', 'Änderungen', 'Zusatzwünsche'],
       ),
-      ja(
-        'Ein Lieferverzug führte zu Wartezeiten des Teams',
-        'Wartezeiten kosten Personalstunden.',
+      krit(
+        'Lieferverzug führte zu Wartezeiten des Teams.',
+        stichwoerter: ['Lieferverzug', 'Wartezeiten', 'Lieferung'],
       ),
-      nein(
-        'Der Auftraggeber hat die Abnahme erteilt',
-        'Die Abnahme ist ein Ergebnis, keine Kostenursache.',
+      krit(
+        'Ausfall von Teammitgliedern, teurer externer Ersatz',
+        stichwoerter: ['Ausfall', 'krank', 'extern'],
       ),
-      nein(
-        'Die Kosten wurden in der Nachkalkulation erfasst',
-        'Das Erfassen verursacht keine Kosten.',
+      krit(
+        'Technische Probleme verursachten Mehrarbeit.',
+        stichwoerter: ['technische Probleme', 'Fehler', 'Mehrarbeit'],
+      ),
+      krit(
+        'Preise für Hardware oder Lizenzen sind gestiegen.',
+        stichwoerter: ['Preise', 'Preissteigerung', 'teurer'],
       ),
     ],
+    loesung:
+        'Der Aufwand wurde zu niedrig geschätzt, Änderungswünsche wurden ohne Budgetanpassung umgesetzt, und ein Lieferverzug führte zu Wartezeiten des Teams.',
     explanation:
-        'Typische Ursachen sind Schätzfehler, Änderungswünsche ohne Anpassung von Budget und Termin, Ausfälle, Lieferverzug und technische Probleme. Zu jeder Ursache gehört eine Empfehlung für künftige Projekte.',
+        'Je Nennung 1 Punkt, höchstens 3. Typische Ursachen sind Schätzfehler, Änderungswünsche ohne Anpassung von Budget und Termin, Ausfälle, Lieferverzug und technische Probleme. Zu jeder Ursache gehört eine Empfehlung für künftige Projekte.',
   ),
 
   // ============================================================== Lessons Learned
@@ -1939,11 +2048,13 @@ final List<Question> questionsA01Planung = [
     explanation:
         'Start - Stop - Continue übersetzt Erfahrungen direkt in Handlungen. Wichtig: Auch Erfolge (Continue) werden gesammelt, nicht nur Fehler.',
   ),
-  einfach(
+  markieren(
     'a1-al-4',
     'a-lessons',
-    prompt: 'Welche Lesson ist am besten formuliert?',
-    choices: [
+    scenario:
+        'Im Lessons-Learned-Workshop wurden Karten gesammelt. Ins Wiki sollen nur Einträge, nach denen ein fremdes Team handeln kann.',
+    prompt: 'Markieren Sie alle brauchbar formulierten Lessons.',
+    zeilen: [
       ja(
         'Die Firewall-Freigabe dauerte 10 Tage und verzögerte den Go-live - Freigaben künftig beim Projektstart beantragen.',
         'Situation, Ursache und konkrete Empfehlung - ein fremdes Team kann danach handeln.',
@@ -1956,9 +2067,17 @@ final List<Question> questionsA01Planung = [
         'Herr Meier hat die Freigabe zu spät beantragt.',
         'Eine Schuldzuweisung, keine Lesson.',
       ),
+      ja(
+        'Testdaten fehlten bis Woche 6, weil niemand zuständig war - künftig im Kick-off eine verantwortliche Person benennen.',
+        'Ursache und Empfehlung sind klar benannt.',
+      ),
       nein(
         'Insgesamt lief alles gut.',
         'Daraus folgt keine übertragbare Erkenntnis.',
+      ),
+      ja(
+        'Die tägliche 15-Minuten-Abstimmung hat Rückfragen früh geklärt - beibehalten.',
+        'Auch Erfolge gehören dazu, mit klarer Empfehlung.',
       ),
     ],
     explanation:
@@ -1994,26 +2113,39 @@ final List<Question> questionsA01Planung = [
     explanation:
         'Lessons Learned wirken nur, wenn sie zeitnah erhoben, zentral und auffindbar abgelegt und in Checklisten und Projektstarts eingebunden werden.',
   ),
-  einfach(
+  zuordnen(
     'a1-al-6',
     'a-lessons',
-    prompt: 'Worin unterscheiden sich Lessons Learned und Abschlussbericht?',
-    choices: [
-      ja(
-        'Lessons Learned blicken nach vorn auf künftige Projekte, der Abschlussbericht bewertet Ergebnis und Zahlen dieses Projekts.',
-        'Unterschiedliche Blickrichtung und Zielgruppe.',
+    scenario:
+        'Am Projektende entstehen zwei Dokumente: der Abschlussbericht und die Lessons Learned.',
+    prompt: 'Zu welchem Dokument gehört die Aussage?',
+    buckets: ['Abschlussbericht', 'Lessons Learned'],
+    items: [
+      zu('Empfehlungen für künftige Projekte', 1, 'Der Blick geht nach vorn.'),
+      zu(
+        'Soll-Ist-Vergleich von Kosten und Terminen',
+        0,
+        'Kern des Abschlussberichts.',
       ),
-      nein(
-        'Sie sind dasselbe unter zwei Namen.',
-        'Der Bericht richtet sich an den Auftraggeber, die Lessons an künftige Teams.',
+      zu(
+        'Richtet sich vor allem an künftige Projektteams',
+        1,
+        'Sie sollen aus den Erfahrungen lernen.',
       ),
-      nein(
-        'Nur Lessons Learned enthalten einen Soll-Ist-Vergleich.',
-        'Der Soll-Ist-Vergleich ist Kern des Abschlussberichts.',
+      zu(
+        'Richtet sich an Auftraggeber und Lenkungsausschuss',
+        0,
+        'Sie wollen wissen, was herausgekommen ist.',
       ),
-      nein(
-        'Lessons Learned sind nur bei gescheiterten Projekten nötig.',
-        'Auch erfolgreiche Projekte liefern übertragbare Erfahrungen.',
+      zu(
+        'Was lief gut und soll beibehalten werden?',
+        1,
+        'Typische Frage im Workshop.',
+      ),
+      zu(
+        'Grad der Zielerreichung des Projekts',
+        0,
+        'Bewertet das Ergebnis dieses Projekts.',
       ),
     ],
     explanation:
