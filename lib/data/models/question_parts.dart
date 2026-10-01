@@ -159,7 +159,9 @@ class Criterion {
       final tokens = key
           .split(RegExp(r'[^a-z0-9]+'))
           .where((t) => t.isNotEmpty);
-      return tokens.every((t) => words.any((w) => _similar(w, t)));
+      // Stichwörter nur aus Sonderzeichen (<=) zählen nur bei exaktem Treffer.
+      return tokens.isNotEmpty &&
+          tokens.every((t) => words.any((w) => _similar(w, t)));
     });
   }
 
