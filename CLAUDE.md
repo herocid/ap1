@@ -43,6 +43,13 @@ $env:Path = "C:\Users\Student\develop\flutter\bin;C:\Program Files\Git\cmd;C:\Pr
   Wissenscheck am Lektionsende, keine Verweise auf Quiz/Karten). Karten = auffrischen,
   Quiz/Prüfung = abfragen. Verbunden werden die drei nur in den **Sessions nach
   Themengebiet** auf der Startseite (`/session-bereich/:areaId`: Lernen -> Karten -> Quiz).
+- **Karteikasten** (`lib/features/cards/`, Logik in `lib/data/models/flashcard.dart`): Leitner
+  mit 5 Fächern, Selbstbewertung bewusst binär (Nochmal / Wusste ich). Nicht Gewusstes kommt in
+  derselben Runde nach 3 Karten wieder, bis es sitzt; für den Kasten zählt nur die erste Antwort
+  je Runde. Modi: Fällig, Durchlauf (`CardRun`: alle Karten oder Auswahl bleiben im Pool, bis
+  jede gewusst wurde, gespeichert), Zufallsmix, Themenauswahl (`/karten-auswahl`), Schwächen.
+  Statistik zeigt Karten (sitzen, Trefferquote, Aktivität `CardActivity`, Durchlauf, schwächste
+  Themen, je Bereich).
 - **In der ganzen App wird geduzt**, auch in Prüfungs- und Fallaufgaben („Nenne …“,
   „Erläutere …“). Siezen nur in wörtlicher Rede im Material (Kunden-E-Mail, Brief).
 - **Quiz und Prüfung bilden die echte AP1 ab** (Analyse der Prüfungen 2021-2026 in
@@ -105,7 +112,10 @@ Vorlage für Stil und Tiefe: `nuggets_a03_netze.dart`, `cards_a03_systeme.dart`,
 - Aufgaben: jede Option mit Begründung (auch warum falsch), Erklärung > 40 Zeichen,
   Einfachauswahl genau 1 richtig, Mehrfachauswahl mind. 2 richtig, Zuordnung nutzt jede
   Kategorie, Rechenaufgaben mit Rechenweg in der Erklärung. Eindeutig formulieren.
-- Karten: Rückseite > 15 Zeichen, Vorderseite kurz.
+- Karten: Rückseite > 15 Zeichen, Vorderseite max. 120 Zeichen (Test). Best Practice: Vorderseite
+  als präzise Frage (kein bloßer Begriff, keine Ja/Nein-Frage), eine Karte = ein Gedanke,
+  Rückseite knapp (Ziel < 220 Zeichen), Aufzählungen bis ca. 4, Rechenkarten mit Rechenweg,
+  verwechselbare Begriffe als eigene Abgrenzungskarte. Karten-IDs nie ändern (Lernstand hängt dran).
 - IDs eindeutig: Lernschritte `n-xx-N`, Karten `k-xx-N`, Aufgaben `aB-xx-N`.
 
 ## Stand
