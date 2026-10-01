@@ -154,31 +154,20 @@ final List<Question> questionsA03 = [
         'DDR4-3200 = 3.200 Mio. Übertragungen pro Sekunde. 64 Bit = 8 Byte. Ein Modul: 3.200 × 8 = 25.600 MB/s = 25,6 GB/s. Dual-Channel: 2 × 25,6 = 51,2 GB/s.',
     difficulty: 3,
   ),
-  mehrfach(
+  paare(
     'a3-hk-9',
     'h-komponenten',
-    prompt: 'Welche Bausteine gehören zur Von-Neumann-Architektur?',
-    choices: [
-      ja(
-        'Steuerwerk',
-        'Holt und entschlüsselt Befehle und steuert den Ablauf.',
-      ),
-      ja('Rechenwerk (ALU)', 'Führt Rechen- und Vergleichsoperationen aus.'),
-      ja(
-        'Ein gemeinsamer Speicher für Programme und Daten',
-        'Das ist das Kennzeichen der Von-Neumann-Architektur.',
-      ),
-      ja(
-        'Ein Bussystem',
-        'Daten-, Adress- und Steuerbus verbinden die Bausteine.',
-      ),
-      nein(
-        'Das Betriebssystem',
-        'Das ist Software, kein Baustein der Architektur.',
-      ),
+    prompt:
+        'Ordne jedem Baustein der Von-Neumann-Architektur seine Aufgabe zu.',
+    paare: [
+      paar('Steuerwerk', 'holt und entschlüsselt Befehle'),
+      paar('Rechenwerk (ALU)', 'rechnet und vergleicht'),
+      paar('Speicher', 'hält Programme und Daten gemeinsam'),
+      paar('Bussystem', 'verbindet die Bausteine'),
+      paar('Ein-/Ausgabewerk', 'tauscht Daten mit der Außenwelt'),
     ],
     explanation:
-        'Von Neumann: Steuerwerk und Rechenwerk (zusammen die CPU), gemeinsamer Speicher, Ein-/Ausgabewerk und Bussystem.',
+        'Von Neumann: Steuerwerk und Rechenwerk (zusammen die CPU), ein gemeinsamer Speicher für Programme und Daten, Ein-/Ausgabewerk und Bussystem. Das Betriebssystem gehört nicht dazu - es ist Software.',
   ),
 
   // ======================================================= Speicher: HDD und SSD
@@ -217,34 +206,21 @@ final List<Question> questionsA03 = [
     explanation:
         'SSDs haben keine beweglichen Teile. Für Notebooks sind sie wegen Tempo, Robustheit und Stromverbrauch Standard.',
   ),
-  mehrfach(
+  zuordnen(
     'a3-hs-3',
     'h-speicher',
-    prompt: 'Welche Aussagen zum Vergleich HDD und SSD sind richtig?',
-    choices: [
-      ja(
-        'Die SSD hat eine deutlich geringere Zugriffszeit.',
-        'Kein Lesekopf muss sich bewegen.',
-      ),
-      ja(
-        'Die HDD ist pro Gigabyte günstiger.',
-        'Deshalb eignet sie sich für große Archive.',
-      ),
-      nein(
-        'Die HDD ist unempfindlicher gegen Stöße.',
-        'Umgekehrt - die Mechanik der HDD ist stoßempfindlich.',
-      ),
-      ja(
-        'SSDs vertragen nur eine begrenzte Menge an Schreibvorgängen.',
-        'Angegeben als TBW.',
-      ),
-      nein(
-        'Eine SATA-SSD ist schneller als eine NVMe-SSD.',
-        'NVMe über PCIe ist deutlich schneller.',
-      ),
+    prompt: 'Auf welchen Datenträger trifft die Aussage zu?',
+    buckets: ['HDD', 'SSD'],
+    items: [
+      zu('Sehr kurze Zugriffszeit, weil kein Lesekopf bewegt wird', 1),
+      zu('Günstiger Preis pro Gigabyte, gut für große Archive', 0),
+      zu('Unempfindlich gegen Stöße', 1),
+      zu('Begrenzte Zahl an Schreibvorgängen, angegeben als TBW', 1),
+      zu('Rotierende Magnetscheiben, hörbares Laufgeräusch', 0),
+      zu('Als NVMe-Variante mehrere GB/s über PCIe', 1),
     ],
     explanation:
-        'SSD: schnell, robust, begrenzte Schreibzyklen. HDD: günstig pro GB, mechanisch empfindlich.',
+        'SSD: schnell, robust, lautlos, aber mit begrenzter Schreibmenge (TBW). HDD: mechanisch und stoßempfindlich, dafür günstig pro GB.',
   ),
   rechnen(
     'a3-hs-4',
@@ -318,12 +294,12 @@ final List<Question> questionsA03 = [
     prompt: 'Ist der Speicher flüchtig oder nicht flüchtig?',
     buckets: ['flüchtig', 'nicht flüchtig'],
     items: [
-      zu('Arbeitsspeicher (RAM)', 0),
-      zu('Prozessor-Cache', 0),
-      zu('Register', 0),
       zu('SSD', 1),
-      zu('Festplatte (HDD)', 1),
+      zu('Register', 0),
       zu('USB-Stick', 1),
+      zu('Prozessor-Cache', 0),
+      zu('Festplatte (HDD)', 1),
+      zu('Arbeitsspeicher (RAM)', 0),
     ],
     explanation:
         'Register, Cache und RAM verlieren ihren Inhalt ohne Strom. SSD, HDD und USB-Stick speichern dauerhaft.',
@@ -348,30 +324,37 @@ final List<Question> questionsA03 = [
   ),
 
   // ============================================ Schnittstellen und Peripherie
-  einfach(
+  freitext(
     'a3-hi-1',
     'h-schnittstellen',
-    prompt: 'Welche Aussage zu USB-C ist richtig?',
-    choices: [
-      ja(
-        'USB-C beschreibt nur die Steckerform - die Geschwindigkeit hängt vom unterstützten Standard ab.',
-        'Über USB-C kann USB 2.0 ebenso laufen wie USB4.',
+    scenario:
+        'Ein Kunde hat eine externe SSD „mit USB-C“ gekauft und ist enttäuscht: Sie kopiert kaum schneller als sein alter USB-Stick.',
+    prompt:
+        'Erläutere, warum die Angabe „USB-C“ nichts über die Geschwindigkeit aussagt.',
+    kriterien: [
+      krit(
+        'USB-C beschreibt nur die Steckerform',
+        stichwoerter: ['Steckerform', 'Stecker', 'Bauform', 'Form'],
       ),
-      nein(
-        'USB-C überträgt immer mit 40 Gbit/s.',
-        'Das kann nur USB4 bzw. Thunderbolt.',
+      krit(
+        'Die Datenrate hängt vom Standard dahinter ab: von USB 2.0 mit 480 Mbit/s bis USB4 mit 40 Gbit/s',
+        stichwoerter: ['Standard', 'USB 2.0', 'USB4', 'Version', 'Generation'],
       ),
-      nein(
-        'USB-C ist ein anderer Name für USB 3.0.',
-        'USB 3.0 heißt heute USB 3.2 Gen 1 und ist ein Standard, keine Steckerform.',
-      ),
-      nein(
-        'USB-C kann keinen Strom übertragen.',
-        'USB-C unterstützt sogar hohe Ladeleistungen.',
+      krit(
+        'Auch Kabel und Anschluss am PC müssen den schnellen Standard unterstützen',
+        stichwoerter: [
+          'Kabel',
+          'Anschluss am PC',
+          'beide Seiten',
+          'Gegenstelle',
+        ],
       ),
     ],
+    punkte: 2,
+    loesung:
+        'USB-C ist nur die Form des Steckers. Welche Datenrate möglich ist, legt der Standard dahinter fest: Über USB-C kann USB 2.0 mit 480 Mbit/s ebenso laufen wie USB4 mit 40 Gbit/s. Außerdem müssen Kabel und Anschluss am PC den schnellen Standard unterstützen.',
     explanation:
-        'Stecker und Standard sind zwei Paar Schuhe - die Datenrate steht im Datenblatt.',
+        'Stecker und Standard sind zwei Paar Schuhe - die Datenrate steht im Datenblatt. Bewertung: je Aussage 1 Punkt, höchstens 2 Punkte.',
   ),
   zuordnen(
     'a3-hi-2',
@@ -380,9 +363,9 @@ final List<Question> questionsA03 = [
     buckets: ['480 Mbit/s', '5 Gbit/s', '10 Gbit/s', '40 Gbit/s'],
     items: [
       zu('USB 2.0', 0),
-      zu('USB 3.2 Gen 1', 1),
       zu('USB 3.2 Gen 2', 2),
       zu('USB4', 3),
+      zu('USB 3.2 Gen 1', 1),
     ],
     explanation:
         'USB 2.0: 480 Mbit/s. USB 3.2 Gen 1: 5 Gbit/s. Gen 2: 10 Gbit/s. USB4: bis 40 Gbit/s.',
@@ -499,30 +482,22 @@ final List<Question> questionsA03 = [
     unit: 'VA',
     explanation: '540 W × 1,2 = 648 W. Scheinleistung = 648 W / 0,9 = 720 VA.',
   ),
-  einfach(
+  lueckentext(
     'a3-hu-2',
     'h-usv',
-    prompt: 'Welcher USV-Typ bietet den besten Schutz ohne jede Umschaltzeit?',
-    choices: [
-      ja(
-        'Online-USV (Doppelwandler)',
-        'Die Last hängt dauerhaft am Wechselrichter - ein Ausfall wird nicht einmal bemerkt.',
-      ),
-      nein(
-        'Offline-USV',
-        'Sie schaltet erst bei Ausfall um - mit kurzer Umschaltzeit.',
-      ),
-      nein(
-        'Line-Interactive-USV',
-        'Sie regelt Schwankungen aus, schaltet bei Ausfall aber ebenfalls um.',
-      ),
-      nein(
-        'Überspannungsschutz-Steckdosenleiste',
-        'Das ist keine USV - sie hat keinen Akku.',
-      ),
+    prompt: 'Vervollständige die Aussagen zu den USV-Typen.',
+    text:
+        'Die {0} versorgt die Last dauerhaft über den Wechselrichter und hat deshalb {1} Umschaltzeit. '
+        'Die {2} schaltet erst bei einem Netzausfall auf den Akku um und bietet nur Grundschutz. '
+        'Die {3} gleicht zusätzlich Spannungsschwankungen über einen Regler aus.',
+    luecken: [
+      wahl('Online-USV', ['Offline-USV', 'Line-Interactive-USV']),
+      wahl('keine', ['eine kurze', 'eine lange']),
+      wahl('Offline-USV', ['Online-USV', 'Steckdosenleiste']),
+      wahl('Line-Interactive-USV', ['Offline-USV', 'Steckdosenleiste']),
     ],
     explanation:
-        'Die Online-USV bietet den höchsten Schutz, kostet aber mehr und hat höhere Verluste.',
+        'Die Online-USV (Doppelwandler) bietet den höchsten Schutz ohne Umschaltzeit, kostet aber mehr und hat höhere Verluste. Offline schaltet nur um, Line-Interactive regelt zusätzlich die Spannung.',
   ),
   einfach(
     'a3-hu-3',
@@ -581,11 +556,11 @@ final List<Question> questionsA03 = [
     prompt: 'Welcher USV-Typ ist gemeint?',
     buckets: ['Offline (VFD)', 'Line-Interactive (VI)', 'Online (VFI)'],
     items: [
+      zu('Versorgt die Last dauerhaft über den Wechselrichter', 2),
       zu('Schaltet erst bei Netzausfall auf den Akku um', 0),
       zu('Günstiger Grundschutz für einen einzelnen Arbeitsplatz', 0),
-      zu('Regelt Spannungsschwankungen aus, schaltet bei Ausfall um', 1),
-      zu('Versorgt die Last dauerhaft über den Wechselrichter', 2),
       zu('Höchster Schutz im Rechenzentrum, keine Umschaltzeit', 2),
+      zu('Regelt Spannungsschwankungen aus, schaltet bei Ausfall um', 1),
     ],
     explanation:
         'Offline (VFD) schaltet nur um, Line-Interactive (VI) regelt zusätzlich die Spannung, Online (VFI) entkoppelt die Last vollständig vom Netz.',
@@ -682,27 +657,28 @@ final List<Question> questionsA03 = [
     explanation:
         'Green IT senkt Energie- und Ressourcenverbrauch über den gesamten Lebenszyklus.',
   ),
-  einfach(
+  lueckentext(
     'a3-ha-3',
     'h-arbeitsplatz',
-    prompt: 'Wie wird ein Bildschirm ergonomisch aufgestellt?',
-    choices: [
-      ja(
-        'Oberkante auf oder leicht unter Augenhöhe, seitlich zum Fenster',
-        'Entspannte Kopfhaltung und keine Blendung.',
+    prompt: 'Vervollständige die Regeln für die Aufstellung eines Bildschirms.',
+    text:
+        'Die Oberkante des Bildschirms liegt {0}. '
+        'Die Blickrichtung verläuft {1}. '
+        'Der Sehabstand beträgt etwa {2}.',
+    luecken: [
+      wahl('auf oder leicht unter Augenhöhe', [
+        'deutlich über Augenhöhe',
+        'auf Höhe der Tischplatte',
+      ], 'So bleibt die Kopfhaltung entspannt.'),
+      wahl(
+        'parallel zum Fenster',
+        ['zum Fenster hin', 'vom Fenster weg'],
+        'Sonst blendet das Gegenlicht oder das Fenster spiegelt sich.',
       ),
-      nein(
-        'Direkt vor dem Fenster mit Blick nach draußen',
-        'Führt zu Blendung durch das Gegenlicht.',
-      ),
-      nein('Deutlich über Augenhöhe', 'Führt zu Nackenverspannungen.'),
-      nein(
-        'Mit dem Rücken zum Fenster',
-        'Führt zu Spiegelungen auf dem Bildschirm.',
-      ),
+      wahl('50 bis 70 cm', ['20 bis 30 cm', '120 bis 150 cm']),
     ],
     explanation:
-        'Die Arbeitsstättenverordnung verlangt blendfreie Bildschirmarbeitsplätze mit ergonomischer Aufstellung.',
+        'Die Arbeitsstättenverordnung verlangt blendfreie Bildschirmarbeitsplätze: Oberkante auf oder leicht unter Augenhöhe, Blick parallel zum Fenster, Abstand etwa eine Armlänge.',
   ),
   rechnen(
     'a3-ha-4',
@@ -735,13 +711,13 @@ final List<Question> questionsA03 = [
     prompt: 'Welches Siegel ist gemeint?',
     buckets: ['80 PLUS', 'TCO Certified', 'Blauer Engel', 'EU-Energielabel'],
     items: [
-      zu('Bescheinigt den Wirkungsgrad eines Netzteils', 0),
       zu('Umwelt, Ergonomie und soziale Bedingungen in der Herstellung', 1),
       zu(
         'Deutsches Umweltzeichen: sparsam, schadstoffarm, recyclinggerecht',
         2,
       ),
       zu('Effizienzklassen von A bis G, z. B. bei Monitoren', 3),
+      zu('Bescheinigt den Wirkungsgrad eines Netzteils', 0),
     ],
     explanation:
         '80 PLUS bewertet Netzteile, TCO Certified Nachhaltigkeit und Ergonomie, der Blaue Engel die Umweltverträglichkeit, das EU-Energielabel die Effizienzklasse.',
@@ -776,31 +752,21 @@ final List<Question> questionsA03 = [
     explanation:
         'Monitor parallel zum Fenster, auf oder leicht unter Augenhöhe, 50 bis 70 cm entfernt, 500 Lux und mindestens 20 °C.',
   ),
-  einfach(
+  paare(
     'a3-ha-8',
     'h-arbeitsplatz',
-    prompt:
-        'Welche Vorschrift regelt die Anforderungen an Bildschirmarbeitsplätze?',
-    choices: [
-      ja(
-        'Die Arbeitsstättenverordnung (ArbStättV)',
-        'Ihr Anhang enthält die Anforderungen an Bildschirmarbeitsplätze.',
+    prompt: 'Ordne jeder Vorschrift zu, was sie regelt.',
+    paare: [
+      paar('Arbeitsstättenverordnung', 'Bildschirmarbeitsplätze'),
+      paar(
+        'Elektrogesetz (ElektroG)',
+        'Rücknahme und Entsorgung von Altgeräten',
       ),
-      nein(
-        'Das Bundesdatenschutzgesetz',
-        'Es regelt den Umgang mit personenbezogenen Daten.',
-      ),
-      nein(
-        'Das Elektro- und Elektronikgerätegesetz',
-        'Es regelt Rücknahme und Entsorgung von Altgeräten.',
-      ),
-      nein(
-        'Das Urheberrechtsgesetz',
-        'Es schützt geistige Werke wie Software.',
-      ),
+      paar('DSGVO', 'Umgang mit personenbezogenen Daten'),
+      paar('Urheberrechtsgesetz', 'Schutz geistiger Werke wie Software'),
     ],
     explanation:
-        'Die Bildschirmarbeit ist in der Arbeitsstättenverordnung geregelt; der Arbeitgeber muss dafür eine Gefährdungsbeurteilung durchführen.',
+        'Die Bildschirmarbeit ist in der Arbeitsstättenverordnung geregelt; der Arbeitgeber muss dafür eine Gefährdungsbeurteilung durchführen. Das ElektroG regelt die Entsorgung, die DSGVO den Datenschutz, das Urheberrecht den Schutz von Software.',
     difficulty: 1,
   ),
   einfach(
@@ -842,60 +808,73 @@ final List<Question> questionsA03 = [
       'Benutzerverwaltung',
     ],
     items: [
+      zu('Nur angemeldete Konten erhalten Zugriff', 3),
+      zu('Ein Treiber steuert den neuen Drucker an', 2),
       zu('Rechenzeit wird zwischen laufenden Programmen verteilt', 0),
       zu('Bei zu wenig RAM wird auf den Datenträger ausgelagert', 1),
-      zu('Ein Treiber steuert den neuen Drucker an', 2),
-      zu('Nur angemeldete Konten erhalten Zugriff', 3),
     ],
     explanation:
         'Das Betriebssystem verwaltet Prozesse, Speicher, Geräte, Dateien und Benutzer.',
   ),
-  einfach(
+  freitext(
     'a3-ba-2',
     'b-aufgaben',
-    prompt: 'Was unterscheidet einen Thread von einem Prozess?',
-    choices: [
-      ja(
-        'Ein Thread läuft innerhalb eines Prozesses und teilt dessen Speicher.',
-        'Mehrere Threads eines Programms arbeiten auf denselben Daten.',
+    scenario:
+        'Im Task-Manager zeigt ein Browser 12 Prozesse und über 200 Threads.',
+    prompt:
+        'Erläutere den Unterschied zwischen einem Prozess und einem Thread.',
+    kriterien: [
+      krit(
+        'Prozess: ein laufendes Programm mit eigenem Speicherbereich',
+        stichwoerter: [
+          'laufendes Programm',
+          'eigener Speicher',
+          'eigenem Speicher',
+          'Adressraum',
+        ],
       ),
-      nein(
-        'Ein Thread ist ein eigenständiges Programm mit eigenem Speicher.',
-        'Das beschreibt einen Prozess.',
-      ),
-      nein(
-        'Threads gibt es nur unter Linux.',
-        'Alle modernen Betriebssysteme kennen Threads.',
-      ),
-      nein(
-        'Ein Thread ist ein Hardwarebauteil.',
-        'Ein Thread ist ein Konzept der Software.',
+      krit(
+        'Thread: ein Ausführungsstrang innerhalb eines Prozesses, der sich dessen Speicher mit den anderen Threads teilt',
+        stichwoerter: [
+          'innerhalb',
+          'Ausführungsstrang',
+          'teilt',
+          'gemeinsamer Speicher',
+        ],
       ),
     ],
+    loesung:
+        'Ein Prozess ist ein laufendes Programm mit eigenem, geschütztem Speicherbereich. Ein Thread ist ein Ausführungsstrang innerhalb eines Prozesses; mehrere Threads eines Prozesses teilen sich dessen Speicher und arbeiten auf denselben Daten.',
     explanation:
-        'Prozess: laufendes Programm mit eigenem Speicherbereich. Thread: Ausführungsstrang innerhalb eines Prozesses.',
+        'Prozess: laufendes Programm mit eigenem Speicherbereich. Thread: Ausführungsstrang innerhalb eines Prozesses. Bewertung: je Begriff 1 Punkt.',
   ),
-  einfach(
+  freitext(
     'a3-ba-3',
     'b-aufgaben',
-    prompt: 'Welche Aufgabe hat ein Gerätetreiber?',
-    choices: [
-      ja(
-        'Er übersetzt zwischen Betriebssystem und einer bestimmten Hardware.',
-        'Ohne Treiber kann das System das Gerät nicht ansprechen.',
+    scenario:
+        'Ein neuer Etikettendrucker wird angeschlossen. Windows meldet „Unbekanntes Gerät“.',
+    prompt: 'Beschreibe die Aufgabe eines Gerätetreibers.',
+    kriterien: [
+      krit(
+        'Der Treiber übersetzt zwischen dem Betriebssystem und einer bestimmten Hardware',
+        punkte: 2,
+        stichwoerter: ['übersetzt', 'Schnittstelle', 'vermittelt', 'ansteuern'],
       ),
-      nein(
-        'Er schützt den Rechner vor Viren.',
-        'Das ist Aufgabe von Sicherheitssoftware.',
-      ),
-      nein('Er verwaltet Benutzerkonten.', 'Das ist Benutzerverwaltung.'),
-      nein(
-        'Er ersetzt das BIOS.',
-        'Treiber laufen im Betriebssystem, nicht in der Firmware.',
+      krit(
+        'Ohne passenden Treiber kann das Betriebssystem das Gerät nicht oder nur eingeschränkt nutzen',
+        stichwoerter: [
+          'ohne Treiber',
+          'nicht nutzen',
+          'nicht ansprechen',
+          'erkennt',
+        ],
       ),
     ],
+    punkte: 2,
+    loesung:
+        'Ein Gerätetreiber ist ein Programm, das zwischen dem Betriebssystem und einem bestimmten Gerät übersetzt: Er kennt die Befehle der Hardware und stellt dem System einheitliche Funktionen bereit. Ohne Treiber kann das Betriebssystem das Gerät nicht ansprechen - daher die Meldung.',
     explanation:
-        'Treiber sind die Brücke zwischen dem allgemeinen Betriebssystem und einem konkreten Gerät.',
+        'Treiber sind die Brücke zwischen dem allgemeinen Betriebssystem und einem konkreten Gerät. Bewertung: höchstens 2 Punkte.',
   ),
   rechnen(
     'a3-ba-4',
@@ -961,9 +940,9 @@ final List<Question> questionsA03 = [
     prompt: 'Läuft die Software im Kernelmodus oder im Benutzermodus?',
     buckets: ['Kernelmodus', 'Benutzermodus'],
     items: [
-      zu('Gerätetreiber für die Netzwerkkarte', 0),
-      zu('Speicherverwaltung des Betriebssystems', 0),
       zu('Textverarbeitung', 1),
+      zu('Speicherverwaltung des Betriebssystems', 0),
+      zu('Gerätetreiber für die Netzwerkkarte', 0),
       zu('Webbrowser', 1),
     ],
     explanation:
@@ -1038,30 +1017,31 @@ final List<Question> questionsA03 = [
     explanation:
         'NTFS für Windows mit Rechten, ext4 für Linux, exFAT für austauschbare Datenträger.',
   ),
-  einfach(
+  freitext(
     'a3-bd-3',
     'b-dateisysteme',
-    prompt: 'Welchen Vorteil bietet ein Journaling-Dateisystem?',
-    choices: [
-      ja(
-        'Nach einem Absturz lässt es sich schnell in einen konsistenten Zustand bringen.',
-        'Das Journal zeigt, welche Änderungen unvollständig waren.',
+    scenario:
+        'Nach einem Stromausfall ist ein Server mit NTFS nach Sekunden wieder bereit. Ein alter Rechner mit FAT32 prüft dagegen minutenlang den ganzen Datenträger.',
+    prompt: 'Erläutere den Vorteil eines Journaling-Dateisystems.',
+    kriterien: [
+      krit(
+        'Geplante Änderungen werden zuerst in einem Journal protokolliert',
+        stichwoerter: [
+          'Journal',
+          'protokolliert',
+          'Protokoll',
+          'aufgezeichnet',
+        ],
       ),
-      nein(
-        'Es komprimiert alle Dateien automatisch.',
-        'Das ist eine andere Funktion.',
-      ),
-      nein(
-        'Es verschlüsselt alle Daten.',
-        'Journaling ist keine Verschlüsselung.',
-      ),
-      nein(
-        'Es verhindert jeden Datenverlust.',
-        'Es schützt die Struktur, nicht unbedingt jede gerade geschriebene Datei.',
+      krit(
+        'Nach einem Absturz lässt sich das Dateisystem schnell wieder in einen konsistenten Zustand bringen',
+        stichwoerter: ['konsistent', 'schnell', 'Wiederherstellung', 'Absturz'],
       ),
     ],
+    loesung:
+        'Ein Journaling-Dateisystem schreibt geplante Änderungen zuerst in ein Journal. Nach einem Absturz zeigt das Journal, welche Änderungen unvollständig waren; sie werden abgeschlossen oder verworfen. So ist das Dateisystem schnell wieder konsistent, ohne dass der ganze Datenträger geprüft werden muss.',
     explanation:
-        'Journaling protokolliert geplante Änderungen und beschleunigt so die Wiederherstellung nach Abstürzen.',
+        'Journaling protokolliert geplante Änderungen und beschleunigt so die Wiederherstellung nach Abstürzen. Es schützt die Struktur des Dateisystems, nicht jede gerade geschriebene Datei. Bewertung: je Aussage 1 Punkt.',
   ),
   rechnen(
     'a3-bd-4',
@@ -1165,20 +1145,22 @@ final List<Question> questionsA03 = [
   ),
 
   // ======================================================== Benutzer und Rechte
-  einfach(
+  lueckentext(
     'a3-br-1',
     'b-rechte',
-    prompt: 'Welche Rechte ergibt chmod 754 für eine Datei?',
-    choices: [
-      ja(
-        'rwxr-xr--',
-        '7 = rwx (Besitzer), 5 = r-x (Gruppe), 4 = r-- (andere).',
-      ),
-      nein('rwxrw-r--', '6 wäre rw- - hier steht aber 5.'),
-      nein('rw-r-xr--', 'Der Besitzer hat mit 7 auch das Ausführungsrecht.'),
-      nein('rwxr-x---', 'Das wäre 750.'),
+    scenario: 'Eine Datei erhält mit chmod 754 neue Rechte.',
+    prompt: 'Welche Rechte gelten für wen?',
+    text:
+        'Besitzer: {0}\n'
+        'Gruppe: {1}\n'
+        'Andere: {2}',
+    luecken: [
+      wahl('rwx', ['rw-', 'r-x', 'r--'], '7 = 4 + 2 + 1'),
+      wahl('r-x', ['rwx', 'rw-', 'r--'], '5 = 4 + 1'),
+      wahl('r--', ['r-x', 'rw-', '--x'], '4'),
     ],
-    explanation: 'r = 4, w = 2, x = 1. 7 = 4+2+1, 5 = 4+1, 4 = 4.',
+    explanation:
+        'r = 4, w = 2, x = 1. 7 = 4 + 2 + 1 = rwx, 5 = 4 + 1 = r-x, 4 = r--. Zusammen: rwxr-xr--.',
   ),
   einfach(
     'a3-br-2',
@@ -1254,40 +1236,30 @@ final List<Question> questionsA03 = [
         'Welches Recht braucht man für die Aktion in einem Linux-Verzeichnis?',
     buckets: ['r', 'w', 'x'],
     items: [
-      zu('Die Dateinamen im Verzeichnis auflisten', 0),
-      zu('Eine Datei im Verzeichnis löschen', 1),
       zu('Eine neue Datei im Verzeichnis anlegen', 1),
+      zu('Eine Datei im Verzeichnis löschen', 1),
       zu('Mit cd in das Verzeichnis wechseln', 2),
+      zu('Die Dateinamen im Verzeichnis auflisten', 0),
     ],
     explanation:
         'Bei Verzeichnissen heißt r auflisten, w Einträge anlegen, löschen oder umbenennen und x hineinwechseln.',
     difficulty: 3,
   ),
-  einfach(
+  zuordnen(
     'a3-br-7',
     'b-rechte',
-    prompt:
-        'Was ist der Unterschied zwischen Authentifizierung und Autorisierung?',
-    choices: [
-      ja(
-        'Authentifizierung prüft die Identität, Autorisierung legt fest, was man darf.',
-        'Erst wird geprüft, wer man ist, dann, welche Rechte gelten.',
-      ),
-      nein(
-        'Beide Begriffe bedeuten dasselbe.',
-        'Es sind zwei getrennte Schritte der Zugriffskontrolle.',
-      ),
-      nein(
-        'Autorisierung prüft das Passwort, Authentifizierung die Rechte.',
-        'Genau umgekehrt.',
-      ),
-      nein(
-        'Authentifizierung gibt es nur bei Webseiten.',
-        'Jede Anmeldung an einem System ist eine Authentifizierung.',
-      ),
+    prompt: 'Gehört der Vorgang zur Authentifizierung oder zur Autorisierung?',
+    buckets: ['Authentifizierung', 'Autorisierung'],
+    items: [
+      zu('Passwort bei der Anmeldung eingeben', 0),
+      zu('Die Gruppe Buchhaltung darf den Ordner Rechnungen ändern', 1),
+      zu('Fingerabdruck am Notebook scannen', 0),
+      zu('Eine Datei erhält die Rechte chmod 640', 1),
+      zu('Einmalcode aus der Authenticator-App eintippen', 0),
+      zu('Die Rolle Praktikant darf nur lesen', 1),
     ],
     explanation:
-        'Authentifizierung: Wer bist du (Passwort, Token, Fingerabdruck)? Autorisierung: Was darfst du (Rechte, Rollen)?',
+        'Authentifizierung: Wer bist du (Passwort, Token, Fingerabdruck)? Autorisierung: Was darfst du (Rechte, Rollen)? Erst wird die Identität geprüft, dann gelten die Rechte.',
     difficulty: 1,
   ),
   einfach(
@@ -1340,7 +1312,7 @@ final List<Question> questionsA03 = [
     'b-cli',
     prompt: 'Ordne jedem Windows-Befehl das Linux-Gegenstück zu.',
     buckets: ['ls', 'cp', 'ip a', 'traceroute'],
-    items: [zu('dir', 0), zu('copy', 1), zu('ipconfig', 2), zu('tracert', 3)],
+    items: [zu('ipconfig', 2), zu('dir', 0), zu('tracert', 3), zu('copy', 1)],
     explanation: 'dir - ls, copy - cp, ipconfig - ip a, tracert - traceroute.',
   ),
   einfach(
@@ -1417,32 +1389,27 @@ final List<Question> questionsA03 = [
     prompt: 'Welcher Linux-Befehl erfüllt die Aufgabe?',
     buckets: ['pwd', 'grep', 'df -h', 'sudo'],
     items: [
-      zu('Das aktuelle Verzeichnis anzeigen', 0),
       zu('In einer Logdatei nach „error“ suchen', 1),
-      zu('Den freien Platz auf den Datenträgern anzeigen', 2),
       zu('Einen Befehl mit Administratorrechten ausführen', 3),
+      zu('Den freien Platz auf den Datenträgern anzeigen', 2),
+      zu('Das aktuelle Verzeichnis anzeigen', 0),
     ],
     explanation:
         'pwd zeigt den Pfad, grep sucht Text, df -h zeigt belegten und freien Speicher, sudo führt mit erhöhten Rechten aus.',
   ),
-  einfach(
+  paare(
     'a3-bc-6',
     'b-cli',
-    prompt: 'Was bewirkt der Befehl echo Fehler >> log.txt?',
-    choices: [
-      ja(
-        'Er hängt die Zeile „Fehler“ an das Ende von log.txt an.',
-        '>> hängt an, ohne den bisherigen Inhalt zu löschen.',
-      ),
-      nein(
-        'Er überschreibt log.txt mit „Fehler“.',
-        'Das macht ein einfaches >.',
-      ),
-      nein('Er sucht „Fehler“ in log.txt.', 'Dafür gibt es grep bzw. findstr.'),
-      nein('Er löscht log.txt.', 'Zum Löschen dienen rm bzw. del.'),
+    scenario: 'In einem Skript steht die Zeile: echo Fehler >> log.txt',
+    prompt: 'Ordne jedem Zeichen bzw. Befehl seine Wirkung zu.',
+    paare: [
+      paar('>', 'überschreibt die Zieldatei'),
+      paar('>>', 'hängt an die Zieldatei an'),
+      paar('|', 'gibt die Ausgabe an den nächsten Befehl'),
+      paar('grep', 'filtert Zeilen nach einem Suchtext'),
     ],
     explanation:
-        '> leitet die Ausgabe in eine Datei um und überschreibt sie, >> hängt an. Das gilt unter Windows und Linux gleichermaßen.',
+        '> leitet die Ausgabe in eine Datei um und überschreibt sie, >> hängt an - die Zeile im Skript ergänzt log.txt also um „Fehler“. | verkettet Befehle, grep (Windows: findstr) sucht Text.',
     difficulty: 1,
   ),
   einfach(
@@ -1552,30 +1519,40 @@ final List<Question> questionsA03 = [
     explanation:
         'Härtung verkleinert die Angriffsfläche: weniger Dienste, sichere Zugänge, aktuelle Software, restriktive Rechte.',
   ),
-  einfach(
+  freitext(
     'a3-bh-2',
     'b-haertung',
-    prompt: 'Was ist eine Zero-Day-Lücke?',
-    choices: [
-      ja(
-        'Eine Schwachstelle, für die es noch kein Update gibt',
-        'Der Hersteller hatte „null Tage“ Zeit zu reagieren.',
+    scenario:
+        'Ein Sicherheitsportal warnt vor einer Zero-Day-Lücke in einer verbreiteten Fernwartungssoftware, die bereits ausgenutzt wird.',
+    prompt:
+        'Erläutere, was eine Zero-Day-Lücke ist, und nenne eine Schutzmaßnahme.',
+    kriterien: [
+      krit(
+        'Eine Schwachstelle, für die es noch kein Update des Herstellers gibt',
+        punkte: 2,
+        stichwoerter: [
+          'kein Update',
+          'kein Patch',
+          'noch nicht geschlossen',
+          'unbekannt',
+        ],
       ),
-      nein(
-        'Ein Fehler, der am ersten Tag nach der Installation auftritt',
-        'Mit der Installation hat der Begriff nichts zu tun.',
-      ),
-      nein(
-        'Ein Update, das keine Änderungen enthält',
-        'Zero-Day bezeichnet eine Schwachstelle, kein Update.',
-      ),
-      nein(
-        'Eine Lücke, die bereits geschlossen ist',
-        'Dann wäre sie nicht mehr Zero-Day.',
+      krit(
+        'Schutz bis zum Patch: betroffenen Dienst abschalten oder abschotten, Rechte beschränken, System überwachen',
+        stichwoerter: [
+          'abschalten',
+          'abschotten',
+          'isolieren',
+          'Rechte',
+          'überwachen',
+          'Härtung',
+        ],
       ),
     ],
+    loesung:
+        'Eine Zero-Day-Lücke ist eine Schwachstelle, für die der Hersteller noch kein Update bereitstellt - er hatte „null Tage“ Zeit zu reagieren. Bis ein Patch erscheint, helfen nur Härtung und Umgehungen: den betroffenen Dienst abschalten oder vom Internet abschotten, Rechte beschränken und das System überwachen.',
     explanation:
-        'Gegen Zero-Day-Lücken helfen nur Härtung, Rechtebeschränkung und Überwachung, bis ein Patch erscheint.',
+        'Gegen Zero-Day-Lücken helfen nur Härtung, Rechtebeschränkung und Überwachung, bis ein Patch erscheint. Bewertung: 2 Punkte für die Erklärung, 1 Punkt für eine Maßnahme.',
   ),
   reihenfolge(
     'a3-bh-3',
@@ -1597,12 +1574,12 @@ final List<Question> questionsA03 = [
     prompt: 'Auf welcher Ebene setzt die Härtungsmaßnahme an?',
     buckets: ['Konten', 'Dienste und Ports', 'System'],
     items: [
+      zu('Nicht benötigte Ports in der Firewall schließen', 1),
+      zu('Datenträger mit BitLocker verschlüsseln', 2),
       zu('Standardpasswort des Administrators ändern', 0),
+      zu('Secure Boot aktivieren', 2),
       zu('Anmeldung mit zweitem Faktor einführen', 0),
       zu('Telnet-Dienst deinstallieren', 1),
-      zu('Nicht benötigte Ports in der Firewall schließen', 1),
-      zu('Secure Boot aktivieren', 2),
-      zu('Datenträger mit BitLocker verschlüsseln', 2),
     ],
     explanation:
         'Härtung setzt auf allen Ebenen an: sichere Konten, möglichst wenige Dienste und offene Ports sowie ein geschütztes, aktuelles System.',
@@ -1755,21 +1732,23 @@ final List<Question> questionsA03 = [
     explanation:
         'ERP integriert die Unternehmensbereiche: Eine Buchung im Einkauf ist sofort im Lager und in der Buchhaltung sichtbar.',
   ),
-  einfach(
+  lueckentext(
     'a3-au-3',
     'an-unternehmen',
-    prompt: 'Wofür steht die Abkürzung CRM?',
-    choices: [
-      ja(
-        'Customer Relationship Management',
-        'Verwaltung der Kundenbeziehungen.',
-      ),
-      nein('Central Resource Management', 'Keine gängige Bezeichnung.'),
-      nein('Customer Resource Monitoring', 'Keine gängige Bezeichnung.'),
-      nein('Company Risk Management', 'Das wäre Risikomanagement.'),
+    prompt: 'Ergänze die ausgeschriebenen Abkürzungen.',
+    text:
+        'CRM steht für Customer {0} Management. '
+        'ERP steht für Enterprise {1} Planning. '
+        'SCM steht für Supply {2} Management.',
+    luecken: [
+      wort(['Relationship']),
+      wort(['Resource']),
+      wort(['Chain']),
     ],
+    wortbank: ['Risk', 'Record', 'Cloud'],
     explanation:
-        'CRM = Customer Relationship Management: alle Kontakte, Vertriebs- und Serviceinformationen zu Kunden an einem Ort.',
+        'CRM = Customer Relationship Management (Kundenbeziehungen), ERP = Enterprise Resource Planning (Planung der Unternehmensressourcen), SCM = Supply Chain Management (Lieferkette).',
+    difficulty: 1,
   ),
   zuordnen(
     'a3-au-4',
@@ -1777,14 +1756,14 @@ final List<Question> questionsA03 = [
     prompt: 'Zu welchem Bereich des CRM gehört die Tätigkeit?',
     buckets: ['operatives CRM', 'analytisches CRM', 'kommunikatives CRM'],
     items: [
-      zu('Ein Angebot für einen Kunden erstellen', 0),
-      zu('Ein Service-Ticket bearbeiten', 0),
-      zu('Auswerten, welche Kunden abzuwandern drohen', 1),
-      zu('Umsatz je Kundengruppe vergleichen', 1),
       zu(
         'Anfragen aus E-Mail, Telefon und Chat in einer Oberfläche bündeln',
         2,
       ),
+      zu('Umsatz je Kundengruppe vergleichen', 1),
+      zu('Ein Service-Ticket bearbeiten', 0),
+      zu('Auswerten, welche Kunden abzuwandern drohen', 1),
+      zu('Ein Angebot für einen Kunden erstellen', 0),
     ],
     explanation:
         'Operativ: Tagesgeschäft mit dem Kunden. Analytisch: Auswertung der Kundendaten. Kommunikativ: Steuerung und Bündelung der Kontaktkanäle.',
@@ -1796,13 +1775,13 @@ final List<Question> questionsA03 = [
     prompt: 'Welches System passt zur Anforderung?',
     buckets: ['DMS', 'BI', 'HRM', 'CMS'],
     items: [
+      zu('Bewerbungen, Urlaubsanträge und Arbeitszeiten verwalten', 2),
+      zu('Die Firmenwebseite ohne Programmierkenntnisse pflegen', 3),
       zu('Verträge revisionssicher ablegen und per Volltext finden', 0),
       zu(
         'Umsatzkennzahlen aus mehreren Systemen in einem Dashboard auswerten',
         1,
       ),
-      zu('Bewerbungen, Urlaubsanträge und Arbeitszeiten verwalten', 2),
-      zu('Die Firmenwebseite ohne Programmierkenntnisse pflegen', 3),
     ],
     explanation:
         'DMS verwaltet Dokumente, BI wertet Daten aus, HRM unterstützt das Personalwesen, ein CMS pflegt Webinhalte.',
@@ -1871,32 +1850,21 @@ final List<Question> questionsA03 = [
   ),
 
   // ================================================== Standard- oder Individualsoftware
-  mehrfach(
+  zuordnen(
     'a3-as-1',
     'an-software',
-    prompt:
-        'Welche Vorteile hat Standardsoftware gegenüber Individualsoftware?',
-    choices: [
-      ja('Sie ist sofort verfügbar.', 'Keine Entwicklungszeit.'),
-      ja(
-        'Sie ist meist günstiger.',
-        'Die Entwicklungskosten verteilen sich auf viele Kunden.',
-      ),
-      ja(
-        'Der Hersteller entwickelt sie weiter.',
-        'Updates und neue Funktionen kommen vom Hersteller.',
-      ),
-      nein(
-        'Sie passt immer exakt zu den eigenen Abläufen.',
-        'Oft müssen Abläufe oder Einstellungen angepasst werden.',
-      ),
-      nein(
-        'Man besitzt den Quellcode.',
-        'Das ist bei Standardsoftware in der Regel nicht der Fall.',
-      ),
+    prompt: 'Auf welche Art von Software trifft die Aussage zu?',
+    buckets: ['Standardsoftware', 'Individualsoftware'],
+    items: [
+      zu('Sofort verfügbar', 0),
+      zu('Genau auf die eigenen Abläufe zugeschnitten', 1),
+      zu('Die Entwicklungskosten verteilen sich auf viele Kunden', 0),
+      zu('Der Auftraggeber bestimmt über die Weiterentwicklung', 1),
+      zu('Hohe Anfangskosten und lange Wartezeit', 1),
+      zu('Updates für alle Kunden kommen vom Hersteller', 0),
     ],
     explanation:
-        'Standardsoftware: günstig, schnell verfügbar, gepflegt. Individualsoftware: passgenau, aber teuer und langsam verfügbar.',
+        'Standardsoftware: günstig, schnell verfügbar, vom Hersteller gepflegt. Individualsoftware: passgenau und selbstbestimmt, aber teuer und erst nach der Entwicklung verfügbar.',
   ),
   einfach(
     'a3-as-2',
@@ -1973,9 +1941,9 @@ final List<Question> questionsA03 = [
         'Was passiert mit der Anpassung beim nächsten Release-Update der Standardsoftware in der Regel?',
     buckets: ['bleibt erhalten', 'muss neu eingebaut werden'],
     items: [
-      zu('Parametrisierung über vorgesehene Einstellungen', 0),
       zu('Customizing: eigene Felder und Formulare', 0),
       zu('Geänderter Programmcode des Herstellers', 1),
+      zu('Parametrisierung über vorgesehene Einstellungen', 0),
       zu('Direkt im Quellcode umgeschriebene Preisberechnung', 1),
     ],
     explanation:
@@ -2003,11 +1971,11 @@ final List<Question> questionsA03 = [
     prompt: 'Zu welcher Softwareart gehört das Programm?',
     buckets: ['Systemsoftware', 'Anwendungssoftware', 'Entwicklungssoftware'],
     items: [
-      zu('Betriebssystem', 0),
+      zu('Compiler', 2),
       zu('Druckertreiber', 0),
+      zu('Betriebssystem', 0),
       zu('Tabellenkalkulation', 1),
       zu('ERP-System', 1),
-      zu('Compiler', 2),
     ],
     explanation:
         'Systemsoftware betreibt die Hardware, Anwendungssoftware löst Aufgaben der Nutzer, Entwicklungssoftware dient zum Erstellen von Software.',
@@ -2021,10 +1989,10 @@ final List<Question> questionsA03 = [
     prompt: 'Ordne die Beschreibung der Lizenzart zu.',
     buckets: ['Open Source', 'Freeware', 'Shareware', 'proprietär'],
     items: [
-      zu('Quellcode offen, darf verändert und weitergegeben werden', 0),
-      zu('Kostenlos, aber Quellcode geschlossen', 1),
       zu('Zum Testen kostenlos, danach kostenpflichtig', 2),
+      zu('Kostenlos, aber Quellcode geschlossen', 1),
       zu('Quellcode geheim, Nutzung gegen Lizenzgebühr', 3),
+      zu('Quellcode offen, darf verändert und weitergegeben werden', 0),
     ],
     explanation:
         'Entscheidend sind Kosten und Zugang zum Quellcode - die beiden Merkmale sind unabhängig voneinander.',
@@ -2259,30 +2227,39 @@ final List<Question> questionsA03 = [
     explanation:
         'Personenbezogene Daten in Cloud-Werkzeugen brauchen einen Vertrag zur Auftragsverarbeitung und einen geprüften Anbieter.',
   ),
-  einfach(
+  freitext(
     'a3-ak-3',
     'an-kollaboration',
-    prompt: 'Wozu dient eine Social-Media-Richtlinie im Unternehmen?',
-    choices: [
-      ja(
-        'Sie regelt, wer im Namen des Unternehmens postet und welche Informationen vertraulich bleiben.',
-        'Schützt Ruf und Geschäftsgeheimnisse.',
+    scenario:
+        'Ein Auszubildender postet ein Foto aus dem Serverraum. Im Hintergrund ist ein Whiteboard mit Zugangsdaten zu erkennen. Die Firma will nun eine Social-Media-Richtlinie einführen.',
+    prompt: 'Nenne drei Punkte, die eine Social-Media-Richtlinie regelt.',
+    kriterien: [
+      krit(
+        'wer im Namen des Unternehmens posten darf',
+        stichwoerter: ['im Namen', 'wer posten', 'Zuständigkeit', 'offiziell'],
       ),
-      nein(
-        'Sie verbietet Beschäftigten jede private Nutzung sozialer Netzwerke.',
-        'Privates Verhalten regelt sie höchstens in Bezug auf das Unternehmen.',
+      krit(
+        'welche Informationen vertraulich bleiben (Interna, Kundendaten, Fotos aus dem Betrieb)',
+        stichwoerter: ['vertraulich', 'Interna', 'Geschäftsgeheimnis', 'Fotos'],
       ),
-      nein(
-        'Sie legt die Farben des Firmenlogos fest.',
-        'Das ist das Corporate Design.',
+      krit(
+        'Tonfall und Umgang mit Kritik und Beschwerden',
+        stichwoerter: ['Kritik', 'Tonfall', 'Beschwerden', 'Umgangston'],
       ),
-      nein(
-        'Sie ersetzt die Datenschutzerklärung.',
-        'Die ist gesetzlich separat vorgeschrieben.',
+      krit(
+        'Datenschutz und Urheberrecht, etwa Bildrechte',
+        stichwoerter: ['Datenschutz', 'Urheberrecht', 'Bildrechte'],
+      ),
+      krit(
+        'Trennung von privater Meinung und Aussagen des Unternehmens',
+        stichwoerter: ['private Meinung', 'privat', 'Trennung'],
       ),
     ],
+    punkte: 3,
+    loesung:
+        'Die Richtlinie legt fest, wer im Namen des Unternehmens posten darf, welche Informationen vertraulich bleiben - etwa Interna, Kundendaten und Fotos aus dem Betrieb - und wie mit Kritik umgegangen wird. Dazu kommen Hinweise zu Datenschutz und Urheberrecht.',
     explanation:
-        'Eine Richtlinie gibt Sicherheit im Umgang mit sozialen Medien und schützt vor Reputationsschäden.',
+        'Eine Richtlinie gibt Sicherheit im Umgang mit sozialen Medien und schützt vor Reputationsschäden. Bewertung: je Nennung 1 Punkt, höchstens 3 Punkte.',
   ),
   zuordnen(
     'a3-ak-4',
@@ -2295,11 +2272,11 @@ final List<Question> questionsA03 = [
       'verteilt, zeitversetzt',
     ],
     items: [
-      zu('Besprechung im Konferenzraum', 0),
-      zu('Workshop am Whiteboard vor Ort', 0),
-      zu('Videokonferenz mit dem Homeoffice', 1),
       zu('Telefonat mit dem Kunden', 1),
+      zu('Besprechung im Konferenzraum', 0),
+      zu('Videokonferenz mit dem Homeoffice', 1),
       zu('E-Mail an die Niederlassung', 2),
+      zu('Workshop am Whiteboard vor Ort', 0),
       zu('Beitrag im Wiki', 2),
     ],
     explanation:
@@ -2443,27 +2420,33 @@ final List<Question> questionsA03 = [
     explanation:
         'Von unten nach oben: Bitübertragung, Sicherung, Vermittlung, Transport, Sitzung, Darstellung, Anwendung.',
   ),
-  einfach(
+  zuordnen(
     'a3-no-3',
     'nw-modelle',
-    prompt: 'Warum nutzt Videotelefonie meist UDP statt TCP?',
-    choices: [
-      ja(
-        'Verzögerungen durch erneutes Senden stören mehr als ein verlorenes Datenpaket.',
-        'Ein kurzer Aussetzer ist besser als ein ruckelnder, verzögerter Anruf.',
+    prompt: 'Welches Transportprotokoll passt zur Anwendung?',
+    buckets: ['TCP', 'UDP'],
+    items: [
+      zu(
+        'Videotelefonie',
+        1,
+        'Verzögerung stört mehr als ein verlorenes Paket.',
       ),
-      nein('UDP ist sicherer verschlüsselt.', 'UDP verschlüsselt nicht.'),
-      nein(
-        'TCP kann keine Audiodaten übertragen.',
-        'TCP kann alle Daten übertragen.',
+      zu('Webseite laden', 0, 'Die Seite muss vollständig ankommen.'),
+      zu(
+        'DNS-Anfrage',
+        1,
+        'Kurze Frage, kurze Antwort - ohne Verbindungsaufbau.',
       ),
-      nein(
-        'UDP garantiert die Reihenfolge der Pakete.',
-        'Das tut TCP, nicht UDP.',
+      zu('E-Mail versenden', 0, 'Jedes Byte muss ankommen.'),
+      zu(
+        'Live-Übertragung eines Vortrags',
+        1,
+        'Echtzeit geht vor Vollständigkeit.',
       ),
+      zu('Datei herunterladen', 0, 'Fehlende Teile werden erneut gesendet.'),
     ],
     explanation:
-        'Bei Echtzeitanwendungen zählt geringe Verzögerung mehr als Vollständigkeit - deshalb UDP.',
+        'TCP sichert die Übertragung mit Bestätigungen und erneutem Senden - richtig, wenn alles vollständig ankommen muss. Bei Echtzeitanwendungen zählt geringe Verzögerung mehr als Vollständigkeit - deshalb UDP.',
   ),
   reihenfolge(
     'a3-no-4',
@@ -2486,10 +2469,10 @@ final List<Question> questionsA03 = [
     prompt: 'Wie heißt die Dateneinheit auf der jeweiligen OSI-Schicht?',
     buckets: ['Segment', 'Paket', 'Frame', 'Bit'],
     items: [
-      zu('Transportschicht (TCP)', 0),
-      zu('Vermittlungsschicht', 1),
       zu('Sicherungsschicht', 2),
+      zu('Transportschicht (TCP)', 0),
       zu('Bitübertragungsschicht', 3),
+      zu('Vermittlungsschicht', 1),
     ],
     explanation:
         'Kapselung von oben nach unten: Daten, Segment (Schicht 4), Paket (Schicht 3), Frame (Schicht 2), Bits (Schicht 1).',
@@ -2500,12 +2483,12 @@ final List<Question> questionsA03 = [
     prompt: 'Zu welcher Schicht des TCP/IP-Modells gehört das Protokoll?',
     buckets: ['Anwendung', 'Transport', 'Internet', 'Netzzugang'],
     items: [
-      zu('HTTP', 0),
-      zu('DNS', 0),
-      zu('TCP', 1),
-      zu('UDP', 1),
-      zu('IP', 2),
       zu('Ethernet', 3),
+      zu('TCP', 1),
+      zu('DNS', 0),
+      zu('IP', 2),
+      zu('HTTP', 0),
+      zu('UDP', 1),
     ],
     explanation:
         'Das TCP/IP-Modell fasst OSI 5-7 zur Anwendungsschicht und OSI 1-2 zum Netzzugang zusammen. Transport und Internet entsprechen OSI 4 und 3.',
@@ -2526,25 +2509,21 @@ final List<Question> questionsA03 = [
     explanation:
         'ARP (Address Resolution Protocol) verbindet Schicht 3 und Schicht 2: Aus der IP-Adresse wird die MAC-Adresse für den Frame.',
   ),
-  einfach(
+  lueckentext(
     'a3-no-8',
     'nw-modelle',
-    prompt:
-        'Welcher Portbereich ist für bekannte Standarddienste wie HTTP oder SSH reserviert (Well-known Ports)?',
-    choices: [
-      ja(
-        '0 bis 1.023',
-        'Hier liegen z. B. 22 (SSH), 80 (HTTP) und 443 (HTTPS).',
-      ),
-      nein('1.024 bis 49.151', 'Das sind registrierte Ports für Anwendungen.'),
-      nein('49.152 bis 65.535', 'Das sind dynamische Ports für Clients.'),
-      nein(
-        '65.536 bis 131.071',
-        'Ports sind 16 Bit lang und enden bei 65.535.',
-      ),
+    prompt: 'Ergänze die Zahlen zu Portnummern.',
+    text:
+        'Eine Portnummer ist {0} Bit lang. '
+        'Die Well-known Ports für Standarddienste wie HTTP oder SSH reichen von 0 bis {1}. '
+        'Der höchste mögliche Port ist {2}.',
+    luecken: [
+      zahl(16),
+      zahl(1023, rationale: 'z. B. 22 (SSH), 80 (HTTP), 443 (HTTPS)'),
+      zahl(65535, rationale: '2¹⁶ - 1'),
     ],
     explanation:
-        'Ports reichen von 0 bis 65.535: Well-known bis 1.023, Registered bis 49.151, darüber dynamische Client-Ports.',
+        'Ports sind 16 Bit lang und reichen von 0 bis 65.535: Well-known bis 1.023, Registered bis 49.151, darüber dynamische Client-Ports.',
   ),
   einfach(
     'a3-no-9',
@@ -2569,27 +2548,20 @@ final List<Question> questionsA03 = [
   ),
 
   // =============================================== Netzwerkgeräte und Verkabelung
-  einfach(
+  zuordnen(
     'a3-ng-1',
     'nw-geraete',
-    prompt: 'Welches Gerät verbindet zwei verschiedene IP-Netze miteinander?',
-    choices: [
-      ja(
-        'Router',
-        'Er arbeitet auf Schicht 3 und leitet anhand von IP-Adressen zwischen Netzen weiter.',
-      ),
-      nein(
-        'Switch',
-        'Er verbindet Geräte innerhalb eines Netzes anhand der MAC-Adresse.',
-      ),
-      nein('Hub', 'Er verteilt Signale an alle Anschlüsse eines Netzes.'),
-      nein(
-        'Access Point',
-        'Er verbindet WLAN-Geräte mit dem kabelgebundenen Netz.',
-      ),
+    prompt: 'Welches Gerät übernimmt die Aufgabe?',
+    buckets: ['Switch', 'Router', 'Access Point'],
+    items: [
+      zu('Verbindet zwei verschiedene IP-Netze miteinander', 1),
+      zu('Leitet Frames anhand der MAC-Adresse an den richtigen Port', 0),
+      zu('Bindet WLAN-Geräte an das kabelgebundene Netz an', 2),
+      zu('Begrenzt Broadcasts auf das eigene Netz', 1),
+      zu('Lernt, an welchem Port welches Gerät hängt', 0),
     ],
     explanation:
-        'Zwischen Netzen vermittelt der Router, innerhalb eines Netzes der Switch.',
+        'Zwischen Netzen vermittelt der Router (Schicht 3), innerhalb eines Netzes der Switch (Schicht 2). Der Access Point bringt WLAN-Geräte ins kabelgebundene Netz.',
   ),
   einfach(
     'a3-ng-2',
@@ -2653,10 +2625,10 @@ final List<Question> questionsA03 = [
     prompt: 'Ordne dem WLAN-Standard seinen Namen zu.',
     buckets: ['Wi-Fi 4', 'Wi-Fi 5', 'Wi-Fi 6', 'Wi-Fi 7'],
     items: [
+      zu('IEEE 802.11be', 3),
       zu('IEEE 802.11n', 0),
       zu('IEEE 802.11ac', 1),
       zu('IEEE 802.11ax', 2),
-      zu('IEEE 802.11be', 3),
     ],
     explanation:
         '802.11n = Wi-Fi 4, 802.11ac = Wi-Fi 5, 802.11ax = Wi-Fi 6 (mit 6 GHz: Wi-Fi 6E), 802.11be = Wi-Fi 7.',
@@ -2796,22 +2768,17 @@ final List<Question> questionsA03 = [
     explanation:
         '32 - 27 = 5 Hostbits. 2⁵ = 32 Adressen, abzüglich Netz- und Broadcastadresse = 30 Hosts.',
   ),
-  einfach(
+  lueckentext(
     'a3-n4-2',
     'nw-ipv4',
-    prompt:
-        'Welche Broadcastadresse hat das Netz, in dem 172.16.5.200/26 liegt?',
-    choices: [
-      ja(
-        '172.16.5.255',
-        'Blockgröße 64: Das Netz beginnt bei .192, der nächste Block wäre .256 - Broadcast ist .255.',
-      ),
-      nein(
-        '172.16.5.191',
-        'Das ist der Broadcast des vorherigen Blocks (.128 bis .191).',
-      ),
-      nein('172.16.5.192', 'Das ist die Netzadresse.'),
-      nein('172.16.255.255', 'Das wäre der Broadcast eines /16-Netzes.'),
+    scenario: 'Ein Server hat die Adresse 172.16.5.200/26.',
+    prompt: 'Ermittle Netz- und Broadcastadresse seines Subnetzes.',
+    text:
+        'Netzadresse: {0}\n'
+        'Broadcastadresse: {1}',
+    luecken: [
+      wort(['172.16.5.192'], 'Blockgröße 64: 200 liegt im Block ab .192'),
+      wort(['172.16.5.255'], 'der nächste Block begänne bei .256'),
     ],
     explanation:
         '/26 = Blockgröße 64. Netze: .0, .64, .128, .192. 200 liegt ab .192 - Netzadresse .192, Broadcast .255.',
@@ -2845,18 +2812,17 @@ final List<Question> questionsA03 = [
     explanation:
         '50 Hosts brauchen 6 Hostbits (2⁶ - 2 = 62). Präfix: 32 - 6 = /26. Aus /24 werden 2² = 4 Subnetze mit je 62 Hosts.',
   ),
-  einfach(
+  lueckentext(
     'a3-n4-5',
     'nw-ipv4',
-    prompt: 'Wie lautet die Netzadresse von 10.20.30.140/27?',
-    choices: [
-      ja(
-        '10.20.30.128',
-        'Blockgröße 32: Blöcke .96, .128, .160 - 140 liegt im Block .128 bis .159.',
-      ),
-      nein('10.20.30.96', 'Dieser Block reicht nur bis .127.'),
-      nein('10.20.30.140', 'Das ist die Hostadresse selbst.'),
-      nein('10.20.30.160', 'Das ist bereits der nächste Block.'),
+    scenario: 'Ein Drucker hat die Adresse 10.20.30.140/27.',
+    prompt: 'Ermittle Netz- und Broadcastadresse seines Subnetzes.',
+    text:
+        'Netzadresse: {0}\n'
+        'Broadcastadresse: {1}',
+    luecken: [
+      wort(['10.20.30.128'], 'Blöcke .96, .128, .160 - 140 liegt ab .128'),
+      wort(['10.20.30.159'], 'eine Adresse vor dem nächsten Block .160'),
     ],
     explanation:
         '/27 = 255.255.255.224, Blockgröße 256 - 224 = 32. 140 / 32 = 4,375 - der Block beginnt bei 4 × 32 = 128. Netz .128, Broadcast .159.',
@@ -2891,21 +2857,19 @@ final List<Question> questionsA03 = [
         '/21 = 255.255.248.0, Blockgröße im dritten Oktett 256 - 248 = 8. Blöcke 64, 72, 80 - 77 liegt in 72 bis 79. Netz 10.1.72.0, Broadcast 10.1.79.255.',
     difficulty: 3,
   ),
-  einfach(
+  lueckentext(
     'a3-n4-8',
     'nw-ipv4',
-    prompt: 'Welche Subnetzmaske entspricht dem Präfix /27?',
-    choices: [
-      ja(
-        '255.255.255.224',
-        '27 Einsen: drei volle Oktette plus 3 Bit = 128 + 64 + 32 = 224.',
-      ),
-      nein('255.255.255.192', 'Das ist /26.'),
-      nein('255.255.255.240', 'Das ist /28.'),
-      nein('255.255.224.0', 'Das ist /19.'),
+    prompt: 'Ergänze die Angaben zum Präfix /27.',
+    text:
+        'Subnetzmaske: {0}\n'
+        'Blockgröße: {1}',
+    luecken: [
+      wort(['255.255.255.224'], '27 Einsen: drei volle Oktette plus 3 Bit'),
+      zahl(32, rationale: '256 - 224'),
     ],
     explanation:
-        'Nach 24 Bit folgen noch 3 Einsen im letzten Oktett: 11100000 = 224.',
+        'Nach 24 Bit folgen noch 3 Einsen im letzten Oktett: 11100000 = 128 + 64 + 32 = 224. Die Blockgröße ist 256 - 224 = 32.',
     difficulty: 1,
   ),
   rechnen(
@@ -2918,19 +2882,18 @@ final List<Question> questionsA03 = [
     explanation:
         'Geliehene Bits: 20 - 16 = 4. Anzahl Subnetze: 2⁴ = 16, jedes mit 2¹² - 2 = 4.094 Hosts.',
   ),
-  einfach(
+  lueckentext(
     'a3-n4-10',
     'nw-ipv4',
-    prompt:
-        'Welches ist die letzte nutzbare Hostadresse im Netz 192.168.5.64/26?',
-    choices: [
-      ja(
-        '192.168.5.126',
-        'Das Netz reicht von .64 bis .127; .127 ist Broadcast, also ist .126 der letzte Host.',
-      ),
-      nein('192.168.5.127', 'Das ist die Broadcastadresse.'),
-      nein('192.168.5.128', 'Das ist die Netzadresse des nächsten Subnetzes.'),
-      nein('192.168.5.254', 'Das wäre der letzte Host eines /24-Netzes.'),
+    scenario:
+        'Für die Dokumentation wird der Hostbereich des Netzes 192.168.5.64/26 gebraucht.',
+    prompt: 'Ermittle die erste und die letzte nutzbare Hostadresse.',
+    text:
+        'Erste nutzbare Adresse: {0}\n'
+        'Letzte nutzbare Adresse: {1}',
+    luecken: [
+      wort(['192.168.5.65'], 'Netzadresse + 1'),
+      wort(['192.168.5.126'], 'Broadcast .127 - 1'),
     ],
     explanation:
         'Blockgröße 64: Netz .64, erster Host .65, letzter Host .126, Broadcast .127.',
@@ -3056,26 +3019,26 @@ final List<Question> questionsA03 = [
     prompt: 'Um welchen Adresstyp handelt es sich?',
     buckets: ['Link-Local', 'Global Unicast', 'Loopback', 'Multicast'],
     items: [
-      zu('fe80::1a2b:3c4d', 0),
       zu('2a00:1450:4001::200e', 1),
-      zu('::1', 2),
       zu('ff02::1', 3),
+      zu('fe80::1a2b:3c4d', 0),
+      zu('::1', 2),
     ],
     explanation:
         'fe80:: Link-Local, 2000::/3 Global Unicast, ::1 Loopback, ff00::/8 Multicast.',
   ),
-  einfach(
+  lueckentext(
     'a3-n6-3',
     'nw-ipv6',
-    prompt: 'Wie viele Bit hat eine IPv6-Adresse?',
-    choices: [
-      ja('128', 'Acht Blöcke zu je 16 Bit.'),
-      nein('32', 'Das ist IPv4.'),
-      nein('64', 'Das ist die übliche Länge von Präfix bzw. Interface-ID.'),
-      nein('48', 'Das ist die Länge einer MAC-Adresse.'),
-    ],
+    prompt: 'Ergänze die Zahlen zum Aufbau der Adressen.',
+    text:
+        'Eine IPv6-Adresse hat {0} Bit. '
+        'Sie wird in {1} Blöcken zu je {2} Bit geschrieben. '
+        'Eine IPv4-Adresse hat dagegen nur {3} Bit.',
+    luecken: [zahl(128), zahl(8), zahl(16), zahl(32)],
     explanation:
-        'IPv6 nutzt 128 Bit - typischerweise 64 Bit Präfix und 64 Bit Interface-ID.',
+        'IPv6 nutzt 128 Bit: acht Blöcke zu je 16 Bit, hexadezimal geschrieben - typischerweise 64 Bit Präfix und 64 Bit Interface-ID. IPv4 hat 32 Bit.',
+    difficulty: 1,
   ),
   einfach(
     'a3-n6-4',
@@ -3150,12 +3113,12 @@ final List<Question> questionsA03 = [
     prompt: 'Gibt es das Merkmal nur bei IPv4, nur bei IPv6 oder bei beiden?',
     buckets: ['nur IPv4', 'nur IPv6', 'beide'],
     items: [
-      zu('Broadcast-Adressen', 0),
       zu('ARP zur Adressauflösung', 0),
-      zu('Selbstkonfiguration per SLAAC', 1),
       zu('Neighbor Discovery (NDP)', 1),
+      zu('Selbstkonfiguration per SLAAC', 1),
       zu('Multicast', 2),
       zu('Adressvergabe über einen DHCP-Server', 2),
+      zu('Broadcast-Adressen', 0),
     ],
     explanation:
         'IPv6 verzichtet auf Broadcast und ARP und nutzt NDP und SLAAC. Multicast und DHCP (als DHCPv6) gibt es in beiden Versionen.',
@@ -3196,48 +3159,54 @@ final List<Question> questionsA03 = [
     buckets: ['22', '53', '443', '3389'],
     items: [
       zu('SSH', 0),
-      zu('DNS', 1),
-      zu('HTTPS', 2),
       zu('Windows-Remotedesktop (RDP)', 3),
+      zu('HTTPS', 2),
+      zu('DNS', 1),
     ],
     explanation:
         'SSH 22, DNS 53, HTTPS 443, RDP 3389. Diese Ports tauchen in Firewall-Aufgaben regelmäßig auf.',
   ),
-  einfach(
+  paare(
     'a3-nd-3',
     'nw-dienste',
-    prompt:
-        'Welcher DNS-Eintrag gibt an, welcher Server die E-Mails einer Domain annimmt?',
-    choices: [
-      ja('MX', 'Mail Exchanger.'),
-      nein('A', 'Ordnet einem Namen eine IPv4-Adresse zu.'),
-      nein('CNAME', 'Verweist als Alias auf einen anderen Namen.'),
-      nein('PTR', 'Löst eine Adresse in einen Namen auf.'),
+    prompt: 'Ordne jedem DNS-Eintrag seine Bedeutung zu.',
+    paare: [
+      paar('A', 'Name zu IPv4-Adresse'),
+      paar('AAAA', 'Name zu IPv6-Adresse'),
+      paar('MX', 'Mailserver der Domain'),
+      paar('CNAME', 'Alias auf einen anderen Namen'),
+      paar('PTR', 'Adresse zu Name'),
     ],
     explanation:
-        'Der MX-Eintrag nennt den zuständigen Mailserver einer Domain.',
+        'A: Name zu IPv4, AAAA: Name zu IPv6, MX: zuständiger Mailserver (Mail Exchanger), CNAME: Alias, PTR: Rückwärtsauflösung von der Adresse zum Namen.',
   ),
-  einfach(
+  freitext(
     'a3-nd-4',
     'nw-dienste',
-    prompt: 'Welche Angaben erhält ein Client typischerweise per DHCP?',
-    choices: [
-      ja(
-        'IP-Adresse, Subnetzmaske, Standardgateway und DNS-Server',
-        'Alles, was für die Kommunikation im Netz und ins Internet nötig ist.',
+    scenario:
+        'Ein neues Notebook wird ans Firmennetz angeschlossen und ist ohne weitere Einstellungen sofort online.',
+    prompt: 'Nenne vier Angaben, die ein Client per DHCP erhält.',
+    kriterien: [
+      krit('IP-Adresse', stichwoerter: ['IP-Adresse', 'IP', 'IPv4-Adresse']),
+      krit(
+        'Subnetzmaske',
+        stichwoerter: ['Subnetzmaske', 'Maske', 'Netzmaske'],
       ),
-      nein(
-        'Nur die MAC-Adresse',
-        'Die MAC-Adresse ist fest in der Netzwerkkarte hinterlegt.',
+      krit(
+        'Standardgateway',
+        stichwoerter: ['Gateway', 'Standardgateway', 'Router'],
       ),
-      nein('Benutzername und Passwort', 'Das ist keine DHCP-Aufgabe.'),
-      nein(
-        'Die Lizenzschlüssel der installierten Software',
-        'Hat mit DHCP nichts zu tun.',
+      krit('DNS-Server', stichwoerter: ['DNS', 'DNS-Server', 'Nameserver']),
+      krit(
+        'Gültigkeitsdauer der Adresse (Lease)',
+        stichwoerter: ['Lease', 'Gültigkeit', 'Leasedauer'],
       ),
     ],
+    punkte: 4,
+    loesung:
+        'IP-Adresse, Subnetzmaske, Standardgateway und DNS-Server - befristet über eine Lease. Die MAC-Adresse stammt dagegen nicht vom DHCP-Server; sie ist in der Netzwerkkarte hinterlegt.',
     explanation:
-        'DHCP verteilt die Netzwerkkonfiguration automatisch - befristet über eine Lease.',
+        'DHCP verteilt die Netzwerkkonfiguration automatisch - befristet über eine Lease. Bewertung: je Nennung 1 Punkt, höchstens 4 Punkte.',
   ),
   zuordnen(
     'a3-nd-5',
@@ -3245,10 +3214,10 @@ final List<Question> questionsA03 = [
     prompt: 'Ordne jedem Dienst seinen Standardport zu.',
     buckets: ['25', '123', '993', '995'],
     items: [
-      zu('SMTP zwischen Mailservern', 0),
       zu('NTP (Zeitsynchronisation)', 1),
-      zu('IMAPS', 2),
       zu('POP3S', 3),
+      zu('IMAPS', 2),
+      zu('SMTP zwischen Mailservern', 0),
     ],
     explanation:
         'SMTP 25 (Einlieferung durch Clients 587), NTP 123 über UDP, IMAPS 993 und POP3S 995 - die verschlüsselten Varianten von IMAP (143) und POP3 (110).',
@@ -3333,9 +3302,9 @@ final List<Question> questionsA03 = [
     buckets: ['SSH', 'HTTPS', 'SFTP', 'IMAPS'],
     items: [
       zu('Telnet', 0),
-      zu('HTTP', 1),
       zu('FTP', 2),
       zu('IMAP auf Port 143', 3),
+      zu('HTTP', 1),
     ],
     explanation:
         'Telnet -> SSH (22), HTTP -> HTTPS (443), FTP -> SFTP (22) oder FTPS, IMAP -> IMAPS (993).',
@@ -3430,46 +3399,41 @@ final List<Question> questionsA03 = [
     explanation:
         'IaaS: Infrastruktur. PaaS: Plattform. SaaS: fertige Anwendung.',
   ),
-  einfach(
+  zuordnen(
     'a3-nc-2',
     'nw-cloud',
-    prompt: 'Was unterscheidet einen Container von einer virtuellen Maschine?',
-    choices: [
-      ja(
-        'Container teilen den Kernel des Host-Betriebssystems und starten in Sekunden.',
-        'Sie sind dadurch leichtgewichtig.',
-      ),
-      nein(
-        'Container enthalten ein komplettes eigenes Betriebssystem.',
-        'Das beschreibt eine VM.',
-      ),
-      nein(
-        'Container brauchen immer einen Typ-1-Hypervisor.',
-        'Container laufen auf einer Container-Engine im Betriebssystem.',
-      ),
-      nein(
-        'Container sind stärker isoliert als VMs.',
-        'VMs sind stärker isoliert.',
-      ),
+    prompt:
+        'Trifft das Merkmal auf eine virtuelle Maschine oder auf einen Container zu?',
+    buckets: ['Virtuelle Maschine', 'Container'],
+    items: [
+      zu('Teilt sich den Kernel des Host-Betriebssystems', 1),
+      zu('Enthält ein vollständiges eigenes Betriebssystem', 0),
+      zu('Startet in Sekunden', 1),
+      zu('Läuft auf einem Hypervisor', 0),
+      zu('Stärker vom Host und von anderen Instanzen isoliert', 0),
+      zu('Sehr leichtgewichtig, viele Instanzen je Host', 1),
     ],
     explanation:
-        'VMs virtualisieren Hardware mit eigenem Betriebssystem, Container virtualisieren auf Betriebssystemebene.',
+        'VMs virtualisieren Hardware und bringen ein eigenes Betriebssystem mit - stark isoliert, aber schwergewichtig. Container virtualisieren auf Betriebssystemebene, teilen den Kernel und starten in Sekunden.',
   ),
-  einfach(
+  zuordnen(
     'a3-nc-3',
     'nw-cloud',
-    prompt: 'Welcher Hypervisor läuft direkt auf der Hardware (Typ 1)?',
-    choices: [
-      ja('VMware ESXi', 'Ein Bare-Metal-Hypervisor.'),
-      nein(
-        'VirtualBox',
-        'Läuft als Programm auf einem Betriebssystem - Typ 2.',
+    prompt: 'Um welche Art von Software handelt es sich?',
+    buckets: ['Hypervisor Typ 1', 'Hypervisor Typ 2', 'kein Hypervisor'],
+    items: [
+      zu('VirtualBox', 1, 'Läuft als Programm auf einem Betriebssystem.'),
+      zu('VMware ESXi', 0, 'Läuft direkt auf der Hardware.'),
+      zu('Docker', 2, 'Eine Container-Engine.'),
+      zu(
+        'VMware Workstation',
+        1,
+        'Läuft als Programm auf einem Betriebssystem.',
       ),
-      nein('VMware Workstation', 'Typ 2.'),
-      nein('Docker', 'Eine Container-Engine, kein Hypervisor.'),
+      zu('Microsoft Hyper-V', 0, 'Läuft direkt auf der Hardware.'),
     ],
     explanation:
-        'Typ 1: direkt auf der Hardware (ESXi, Hyper-V, KVM). Typ 2: auf einem Betriebssystem (VirtualBox, Workstation).',
+        'Typ 1: direkt auf der Hardware (ESXi, Hyper-V, KVM). Typ 2: auf einem Betriebssystem (VirtualBox, Workstation). Docker ist eine Container-Engine und kein Hypervisor.',
   ),
   rechnen(
     'a3-nc-4',
@@ -3518,12 +3482,12 @@ final List<Question> questionsA03 = [
       'Community Cloud',
     ],
     items: [
-      zu('Ein Online-Speicherdienst für beliebige Kunden', 0),
+      zu('Personaldaten intern, der Webshop beim großen Cloud-Anbieter', 2),
       zu(
         'Eine Cloud-Plattform im eigenen Rechenzentrum, nur für die eigene Firma',
         1,
       ),
-      zu('Personaldaten intern, der Webshop beim großen Cloud-Anbieter', 2),
+      zu('Ein Online-Speicherdienst für beliebige Kunden', 0),
       zu(
         'Mehrere Kliniken teilen sich eine Cloud mit gleichen Datenschutzanforderungen',
         3,

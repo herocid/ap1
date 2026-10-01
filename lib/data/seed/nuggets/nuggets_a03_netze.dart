@@ -1184,6 +1184,62 @@ final List<Nugget> nuggetsA03Netze = [
       'Das Leistungsbudget des Switches muss für alle angeschlossenen Geräte zusammen reichen',
     ],
   ),
+  beispiel(
+    'n-ng2-15',
+    'nw-geraete',
+    'Welcher PoE-Standard reicht?',
+    'Ein Access Point braucht laut Datenblatt 18 W und wird mit 48 V über PoE versorgt. Welcher Standard ist mindestens nötig, welcher Strom fließt, und reicht ein Switch mit 185 W PoE-Budget für 8 solcher Access Points? Es gilt P = U × I.',
+    table: [
+      ['Standard', 'Leistung am Switch-Port'],
+      ['IEEE 802.3af (PoE)', 'bis 15,4 W'],
+      ['IEEE 802.3at (PoE+)', 'bis 30 W'],
+      ['IEEE 802.3bt (PoE++)', 'bis 60 bzw. 90 W'],
+    ],
+    schritte: [
+      'Standard: 18 W liegt über 15,4 W (802.3af), aber unter 30 W - also 802.3at',
+      'Strom: I = P / U = 18 W / 48 V = 0,375 A = 375 mA',
+      'Bedarf aller Geräte: 8 × 18 W = 144 W',
+      'Budget: 185 W - 144 W = 41 W Reserve',
+    ],
+    ergebnis:
+        '802.3at (PoE+), 375 mA je Port, das Budget reicht mit 41 W Reserve',
+  ),
+  konzept(
+    'n-ng2-16',
+    'nw-geraete',
+    'Strukturierte Verkabelung',
+    'Ein Gebäudenetz wird nicht von Gerät zu Gerät verkabelt, sondern in drei Stufen nach einem festen Schema. So bleibt es übersichtlich, erweiterbar und unabhängig davon, was später an der Dose hängt.',
+    table: [
+      ['Bereich', 'verbindet', 'Medium'],
+      ['Primär', 'Gebäude untereinander', 'Glasfaser'],
+      ['Sekundär', 'Etagen im Gebäude', 'Glasfaser oder Kupfer'],
+      ['Tertiär', 'Etagenverteiler bis Dose', 'Kupfer, max. 90 m'],
+    ],
+    points: [
+      'Tertiärbereich: 90 m fest verlegtes Kabel plus zusammen 10 m Patchkabel = 100 m',
+      'Im Verteilerschrank enden die Kabel auf einem Patchfeld, im Büro an der Netzwerkdose',
+      'Zwischen Gebäuden Glasfaser: große Reichweite und keine elektrische Verbindung der Gebäude',
+    ],
+  ),
+  konzept(
+    'n-ng2-17',
+    'nw-geraete',
+    'Patchfeld und Netzwerkdose',
+    'Die Netzwerkdose im Büro ist über das fest verlegte Kabel nur mit einem Port des Patchfelds im Verteilerschrank verbunden. Ins Netz kommt sie erst, wenn ein kurzes Patchkabel diesen Patchfeld-Port mit einem Switch-Port verbindet - die Dose ist dann „gepatcht“.',
+    table: [
+      ['Station', 'Verbindung zur nächsten'],
+      ['PC', 'Patchkabel zur Dose'],
+      ['Netzwerkdose 2.14', 'Verlegekabel in der Wand'],
+      ['Patchfeld-Port 2.14', 'Patchkabel im Schrank'],
+      ['Switch-Port', 'weiter ins Netz'],
+    ],
+    points: [
+      'Dose und Patchfeld-Port tragen dieselbe Nummer',
+      'Nicht gepatchte Dose: keine Link-LED am Gerät, obwohl PC und Kabel in Ordnung sind',
+      'Prüfen: ein funktionierendes Gerät oder einen Kabeltester anschließen, im Schrank nachsehen',
+      'Beheben: den Port patchen (lassen) oder eine bereits gepatchte Dose nutzen',
+    ],
+  ),
   falle(
     'n-ng2-13',
     'nw-geraete',
@@ -1630,6 +1686,52 @@ final List<Nugget> nuggetsA03Netze = [
     points: [
       'Dual Stack: Während des Übergangs sprechen Geräte beide Protokolle gleichzeitig',
     ],
+  ),
+  vergleich(
+    'n-n6-15',
+    'nw-ipv6',
+    'Der Übergang: IPv4 und IPv6 nebeneinander',
+    'IPv4 lässt sich nicht an einem Tag abschalten - viele Geräte und Dienste sprechen nur das alte Protokoll. Deshalb laufen beide Versionen über Jahre parallel. Dafür gibt es drei Wege.',
+    [
+      ['Verfahren', 'Prinzip', 'Beispiel'],
+      [
+        'Dual Stack',
+        'Gerät hat eine IPv4- und eine IPv6-Adresse und nutzt beide',
+        'PCs, Router',
+      ],
+      ['Tunneling', 'IPv6-Pakete werden in IPv4-Pakete verpackt', '6to4, 6in4'],
+      [
+        'Übersetzung',
+        'ein Gateway übersetzt zwischen den Protokollen',
+        'NAT64',
+      ],
+    ],
+    points: [
+      'Dual Stack ist der Normalfall: Der DNS liefert A- und AAAA-Eintrag, das Gerät wählt',
+      'Tunneling verbindet IPv6-Netze über eine Strecke, die nur IPv4 kann; die Tunnelenden packen ein und aus',
+      'Auch umgekehrt möglich: IPv4 im IPv6-Tunnel, etwa bei DS-Lite-Anschlüssen',
+    ],
+  ),
+  beispiel(
+    'n-n6-16',
+    'nw-ipv6',
+    'Dual Stack in der Konfiguration erkennen',
+    'ipconfig zeigt bei einem Arbeitsplatz-PC die folgende Ausgabe. Über welche Protokollversionen kann der PC kommunizieren?',
+    code:
+        'IPv6-Adresse . . : 2a02:810d:4b40:1::2f\n'
+        'Verbindungslokal : fe80::9c1e:5aff:fe33:71\n'
+        'IPv4-Adresse . . : 192.168.20.47\n'
+        'Subnetzmaske . . : 255.255.255.0\n'
+        'Standardgateway  : fe80::1\n'
+        '                   192.168.20.1',
+    schritte: [
+      '2a02:... ist eine globale IPv6-Adresse (Bereich 2000::/3)',
+      'fe80::... ist die Link-Local-Adresse, die jede IPv6-Schnittstelle zusätzlich hat',
+      '192.168.20.47 ist eine private IPv4-Adresse',
+      'Es gibt je ein Gateway für IPv6 und für IPv4',
+    ],
+    ergebnis:
+        'Der PC arbeitet im Dual-Stack-Betrieb: IPv4 und IPv6 gleichzeitig',
   ),
   falle(
     'n-n6-13',
