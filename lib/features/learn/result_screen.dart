@@ -13,6 +13,7 @@ import '../../state/providers.dart';
 import '../../state/session_controller.dart';
 import '../../widgets/achievement_badge.dart';
 import '../../widgets/common.dart';
+import '../../widgets/feedback_fx.dart';
 import '../../widgets/mascot.dart';
 import '../exam/exam_result_view.dart';
 import '../exam/exam_widgets.dart';
@@ -42,6 +43,9 @@ class _ResultScreenState extends ConsumerState<ResultScreen> {
   /// Runde, bleibt dieser Bildschirm während des Seitenwechsels noch kurz
   /// sichtbar - dann mit dem alten Ergebnis statt mit „keine Auswertung“.
   SessionState? _shown;
+
+  /// Konfetti höchstens einmal je Auswertung.
+  bool _celebrated = false;
 
   /// Zurück dorthin, wo die Runde gestartet wurde - Startseite, Quiz,
   /// Prüfung oder die Session eines Themengebiets.
@@ -80,6 +84,20 @@ class _ResultScreenState extends ConsumerState<ResultScreen> {
       for (final e in achievements.entries)
         if (e.value.earned && !session.badgesBefore.contains(e.key)) e.key,
     ];
+    // Konfetti nur bei Meilensteinen: neues Abzeichen oder Tagesziel in
+    // dieser Runde gerade erreicht (vorher noch nicht).
+    if (!_celebrated) {
+      _celebrated = true;
+      final today = ref.read(progressProvider).answeredToday();
+      final goal = ref.read(profileProvider).dailyGoal;
+      final before = today - session.checkedCount;
+      final goalJustReached = goal > 0 && today >= goal && before < goal;
+      if (newBadges.isNotEmpty || goalJustReached) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) Celebration.show(context);
+        });
+      }
+    }
     final dueMistakes = ref.watch(mistakeStatusProvider).due.length;
     final percent = session.totalScore;
     final isPaper = session.paper != null;
@@ -234,11 +252,21 @@ class _PracticeResult extends StatelessWidget {
           padding: const EdgeInsets.all(Gap.xl),
           child: LayoutBuilder(
             builder: (context, box) {
-              final ring = ReadinessRing(
-                value: (percent * 100).round(),
-                label: 'Prozent',
-                size: 132,
-              );
+              final target = (percent * 100).round();
+              final reduce =
+                  MediaQuery.maybeDisableAnimationsOf(context) ?? false;
+              final ring = reduce
+                  ? ReadinessRing(value: target, label: 'Prozent', size: 132)
+                  : TweenAnimationBuilder<double>(
+                      tween: Tween(begin: 0, end: target.toDouble()),
+                      duration: const Duration(milliseconds: 900),
+                      curve: Curves.easeOutCubic,
+                      builder: (context, v, _) => ReadinessRing(
+                        value: v.round(),
+                        label: 'Prozent',
+                        size: 132,
+                      ),
+                    );
               final facts = Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,

@@ -10,6 +10,8 @@ import '../../data/seed/seed_theory.dart';
 import '../../state/providers.dart';
 import '../../state/session_controller.dart';
 import '../../widgets/common.dart';
+import '../../widgets/feedback_fx.dart';
+import '../../widgets/mascot.dart';
 import '../exam/exam_widgets.dart';
 import 'question_host.dart';
 import 'theory_sheet.dart';
@@ -258,7 +260,11 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       if (item.checked) ...[
-                        _Feedback(item: item),
+                        _Feedback(
+                          item: item,
+                          index: session.index,
+                          streak: session.correctStreak,
+                        ),
                         const SizedBox(height: Gap.l),
                       ] else if (item.retry) ...[
                         const _RetryNote(),
@@ -309,9 +315,38 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
 /// („3 von 4 P.“) - nie nur Farbe. Die ausführliche Erklärung steht unter
 /// der Aufgabe.
 class _Feedback extends StatelessWidget {
-  const _Feedback({required this.item});
+  const _Feedback({
+    required this.item,
+    required this.index,
+    required this.streak,
+  });
 
   final SessionItem item;
+  final int index;
+  final int streak;
+
+  static const _comfort = [
+    'Kein Problem - genau so lernt man. Lies die Erklärung, die Aufgabe kommt wieder.',
+    'Fehler sind Lernstoff. Schau dir die Erklärung in Ruhe an.',
+    'Nicht schlimm - beim nächsten Mal sitzt es.',
+    'Dranbleiben! Die Erklärung unten zeigt, worauf es ankommt.',
+  ];
+
+  /// Bit meldet sich nur selten: bei 3, 5 und 10 richtigen in Folge oder
+  /// nach einer falschen Antwort - bei normal-richtig reicht der Puls.
+  (MascotMood, String)? _bit() {
+    final g = item.grade;
+    if (g == null || item.isOpen) return null;
+    if (g.isCorrect) {
+      return switch (streak) {
+        3 => (MascotMood.cheer, '3 in Folge - du bist im Flow!'),
+        5 => (MascotMood.cheer, '5 in Folge - stark, weiter so!'),
+        10 => (MascotMood.cheer, '10 in Folge - das ist Prüfungsniveau!'),
+        _ => null,
+      };
+    }
+    return (MascotMood.oops, _comfort[index % _comfort.length]);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -340,47 +375,70 @@ class _Feedback extends StatelessWidget {
             open ? 'Noch keine Punkte' : 'Noch nicht',
           );
 
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: Gap.l, vertical: Gap.m),
-      decoration: BoxDecoration(
-        color: bg,
-        borderRadius: BorderRadius.circular(Radii.m),
-        border: Border.all(color: color.withValues(alpha: 0.3)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Icon(icon, size: 20, color: color),
-              const SizedBox(width: Gap.s),
-              Expanded(
-                child: Text(
-                  word,
-                  style: context.text.titleMedium?.copyWith(color: color),
+    final fx = g == null
+        ? AnswerFxKind.none
+        : g.isCorrect
+        ? AnswerFxKind.correct
+        : item.earned > 0
+        ? AnswerFxKind.none
+        : AnswerFxKind.wrong;
+    final bit = _bit();
+
+    return AnswerFx(
+      kind: fx,
+      trigger: index,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: Gap.l, vertical: Gap.m),
+        decoration: BoxDecoration(
+          color: bg,
+          borderRadius: BorderRadius.circular(Radii.m),
+          border: Border.all(color: color.withValues(alpha: 0.3)),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Icon(icon, size: 20, color: color),
+                const SizedBox(width: Gap.s),
+                Expanded(
+                  child: Text(
+                    word,
+                    style: context.text.titleMedium?.copyWith(color: color),
+                  ),
                 ),
+                const SizedBox(width: Gap.s),
+                PointsPill.earned(item),
+              ],
+            ),
+            if (open) ...[
+              const SizedBox(height: Gap.xs),
+              Text(
+                'Vergleiche mit der Musterlösung und hake ab, was wirklich '
+                'in deiner Antwort stand - danach richten sich die Punkte.',
+                style: context.text.bodySmall,
               ),
-              const SizedBox(width: Gap.s),
-              PointsPill.earned(item),
+            ] else if (item.retry && g?.isCorrect == true) ...[
+              const SizedBox(height: Gap.xs),
+              Text(
+                'Im zweiten Anlauf geschafft. Die Aufgabe kommt an einem '
+                'anderen Tag noch einmal.',
+                style: context.text.bodySmall,
+              ),
             ],
-          ),
-          if (open) ...[
-            const SizedBox(height: Gap.xs),
-            Text(
-              'Vergleiche mit der Musterlösung und hake ab, was wirklich '
-              'in deiner Antwort stand - danach richten sich die Punkte.',
-              style: context.text.bodySmall,
-            ),
-          ] else if (item.retry && g?.isCorrect == true) ...[
-            const SizedBox(height: Gap.xs),
-            Text(
-              'Im zweiten Anlauf geschafft. Die Aufgabe kommt an einem '
-              'anderen Tag noch einmal.',
-              style: context.text.bodySmall,
-            ),
+            if (bit != null) ...[
+              const SizedBox(height: Gap.s),
+              Row(
+                children: [
+                  Mascot(mood: bit.$1, size: 36),
+                  const SizedBox(width: Gap.s),
+                  Expanded(child: Text(bit.$2, style: context.text.bodySmall)),
+                ],
+              ),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }

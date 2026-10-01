@@ -13,6 +13,7 @@ import '../../data/models/resume.dart';
 import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
+import '../../widgets/feedback_fx.dart';
 import '../../widgets/mascot.dart';
 
 /// Wie eine Karteikarten-Runde ihre Karten auswählt.
@@ -108,6 +109,13 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
   int _relearned = 0;
   final List<Flashcard> _missedCards = [];
 
+  /// Gewusst in Folge (jede Antwort zählt) - Bit meldet sich bei 5 und 10.
+  int _knewStreak = 0;
+
+  /// Kurzes Feedback auf der Bewertungsleiste nach jeder Antwort.
+  AnswerFxKind _fx = AnswerFxKind.none;
+  int _fxTick = 0;
+
   @override
   void initState() {
     super.initState();
@@ -182,7 +190,12 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
       ref.read(cardRunProvider.notifier).answer(card.id, knewIt: knewIt);
     }
     HapticFeedback.selectionClick();
+    _knewStreak = knewIt ? _knewStreak + 1 : 0;
+    if (_knewStreak == 5 || _knewStreak == 10) _bitCheers(_knewStreak);
+    final wasFinished = _finished;
     setState(() {
+      _fx = knewIt ? AnswerFxKind.correct : AnswerFxKind.wrong;
+      _fxTick++;
       if (knewIt) {
         if (_open.remove(card.id)) _relearned++;
       } else {
@@ -197,6 +210,37 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
         _finished = true;
       }
     });
+    // Durchlauf gerade fertig: alle Karten gewusst - ein echter Meilenstein.
+    if (!wasFinished && _finished && _mode == CardMode.run) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) Celebration.show(context);
+      });
+    }
+  }
+
+  void _bitCheers(int streak) {
+    final messenger = ScaffoldMessenger.maybeOf(context);
+    if (messenger == null) return;
+    messenger
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          duration: const Duration(seconds: 2),
+          content: Row(
+            children: [
+              const Mascot(mood: MascotMood.cheer, size: 36),
+              const SizedBox(width: Gap.s),
+              Expanded(
+                child: Text(
+                  streak >= 10
+                      ? '10 gewusst in Folge - du bist richtig drin!'
+                      : '5 gewusst in Folge - weiter so!',
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
   }
 
   void _close() {
@@ -338,47 +382,51 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
           top: false,
           child: Padding(
             padding: const EdgeInsets.all(Gap.l),
-            child: ReadableWidth(
-              maxWidth: 640,
-              shrinkHeight: true,
-              child: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 200),
-                child: _revealed
-                    // Auf 320 px mit großer Schrift passen beide Knöpfe nicht
-                    // nebeneinander - dann untereinander statt „Wusst-e ich“.
-                    ? ButtonPair(
-                        key: const ValueKey('bewerten'),
-                        labels: const ['Nochmal', 'Wusste ich'],
-                        start: OutlinedButton.icon(
-                          onPressed: () => _answer(false),
-                          style: OutlinedButton.styleFrom(
-                            foregroundColor: context.c.danger,
-                            side: BorderSide(
-                              color: context.c.danger.withValues(alpha: 0.5),
+            child: AnswerFx(
+              kind: _fx,
+              trigger: _fxTick,
+              child: ReadableWidth(
+                maxWidth: 640,
+                shrinkHeight: true,
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 200),
+                  child: _revealed
+                      // Auf 320 px mit großer Schrift passen beide Knöpfe nicht
+                      // nebeneinander - dann untereinander statt „Wusst-e ich“.
+                      ? ButtonPair(
+                          key: const ValueKey('bewerten'),
+                          labels: const ['Nochmal', 'Wusste ich'],
+                          start: OutlinedButton.icon(
+                            onPressed: () => _answer(false),
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: context.c.danger,
+                              side: BorderSide(
+                                color: context.c.danger.withValues(alpha: 0.5),
+                              ),
                             ),
+                            icon: const Icon(Icons.refresh),
+                            label: const Text('Nochmal', maxLines: 1),
                           ),
-                          icon: const Icon(Icons.refresh),
-                          label: const Text('Nochmal', maxLines: 1),
-                        ),
-                        end: FilledButton.icon(
-                          onPressed: () => _answer(true),
-                          style: FilledButton.styleFrom(
-                            backgroundColor: context.c.success,
-                            foregroundColor: context.scheme.onPrimary,
+                          end: FilledButton.icon(
+                            onPressed: () => _answer(true),
+                            style: FilledButton.styleFrom(
+                              backgroundColor: context.c.success,
+                              foregroundColor: context.scheme.onPrimary,
+                            ),
+                            icon: const Icon(Icons.check),
+                            label: const Text('Wusste ich', maxLines: 1),
                           ),
-                          icon: const Icon(Icons.check),
-                          label: const Text('Wusste ich', maxLines: 1),
+                        )
+                      : SizedBox(
+                          key: const ValueKey('umdrehen'),
+                          width: double.infinity,
+                          child: FilledButton.icon(
+                            onPressed: () => setState(() => _revealed = true),
+                            icon: const Icon(Icons.flip_to_back),
+                            label: const Text('Umdrehen'),
+                          ),
                         ),
-                      )
-                    : SizedBox(
-                        key: const ValueKey('umdrehen'),
-                        width: double.infinity,
-                        child: FilledButton.icon(
-                          onPressed: () => setState(() => _revealed = true),
-                          icon: const Icon(Icons.flip_to_back),
-                          label: const Text('Umdrehen'),
-                        ),
-                      ),
+                ),
               ),
             ),
           ),
