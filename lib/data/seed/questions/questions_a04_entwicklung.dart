@@ -35,32 +35,24 @@ final List<Question> questionsA04Entwicklung = [
         'Die Praxis hat als Auftraggeber das Lastenheft (Was?) geliefert. Die technische Lösung mit Architektur, Schnittstelle und Testplan (Wie?) ist das Pflichtenheft des Auftragnehmers.',
     difficulty: 1,
   ),
-  mehrfach(
+  lueckentext(
     'a4-ld-2',
     'af-dokumente',
-    prompt: 'Welche Inhalte kommen typischerweise erst im Pflichtenheft hinzu?',
-    choices: [
-      ja(
-        'Die eingesetzten Technologien',
-        'Womit umgesetzt wird, entscheidet der Auftragnehmer.',
-      ),
-      ja(
-        'Die Systemarchitektur und Schnittstellen',
-        'Das ist das technische Wie der Lösung.',
-      ),
-      ja(
-        'Konkrete Testfälle für die Abnahme',
-        'Sie machen die Anforderungen prüfbar.',
-      ),
-      nein(
-        'Die Ziele des Auftraggebers',
-        'Die stehen schon im Lastenheft - dort beginnt alles.',
-      ),
-      nein(
-        'Die Beschreibung der Ausgangssituation',
-        'Sie gehört ins Lastenheft, das der Auftraggeber schreibt.',
-      ),
+    scenario:
+        'Ein Softwarehaus hat den Auftrag für ein Kundenportal erhalten und schreibt nun das Pflichtenheft.',
+    prompt:
+        'Ergänze, was im Pflichtenheft gegenüber dem Lastenheft hinzukommt.',
+    text:
+        'Das Pflichtenheft übernimmt die Anforderungen aus dem {0}. Es ergänzt, womit umgesetzt wird (eingesetzte {1}), wie die Teile zusammenspielen (Systemarchitektur und {2}) und woran die Abnahme gemessen wird (konkrete {3}).',
+    luecken: [
+      wort(['Lastenheft'], 'Dort beginnt alles - mit den Anforderungen.'),
+      wort([
+        'Technologien',
+      ], 'Womit umgesetzt wird, entscheidet der Auftragnehmer.'),
+      wort(['Schnittstellen'], 'Sie gehören zum technischen Wie der Lösung.'),
+      wort(['Testfälle'], 'Sie machen die Anforderungen prüfbar.'),
     ],
+    wortbank: ['Angebote', 'Budgetvorgaben'],
     explanation:
         'Das Lastenheft enthält Ausgangslage, Ziele und Anforderungen. Das Pflichtenheft übernimmt sie und ergänzt das Lösungskonzept: Technologien, Architektur, Schnittstellen und Abnahmekriterien.',
   ),
@@ -150,31 +142,33 @@ final List<Question> questionsA04Entwicklung = [
     explanation:
         'Das Lastenheft ist Grundlage für die Angebote. Nach der Vergabe schreibt der Auftragnehmer das Pflichtenheft, das der Auftraggeber genehmigt. Erst dann wird umgesetzt und am Ende gegen das Pflichtenheft abgenommen.',
   ),
-  mehrfach(
+  lueckentext(
     'a4-ld-6',
     'af-dokumente',
-    prompt: 'Welche Aussagen zum Lastenheft sind richtig?',
-    choices: [
-      ja(
-        'Es wird vom Auftraggeber erstellt.',
-        'Der Kunde beschreibt, was er braucht.',
-      ),
-      ja(
-        'Es ist lösungsneutral formuliert.',
+    scenario:
+        'Eine Schreinerei will eine Auftragsverwaltung einführen. Die Inhaberin fragt, was ein Lastenheft ausmacht.',
+    prompt: 'Vervollständige die Aussagen zum Lastenheft.',
+    text:
+        'Das Lastenheft erstellt der {0}.\nEs ist {1} formuliert.\nEs dient als Grundlage für die {2}.\nAbgenommen wird am Ende gegen das genehmigte {3}.',
+    luecken: [
+      wahl('Auftraggeber', [
+        'Auftragnehmer',
+        'Projektleiter des Anbieters',
+      ], 'Der Kunde beschreibt, was er braucht.'),
+      wahl(
+        'lösungsneutral',
+        ['technisch detailliert', 'als Testplan'],
         'Es beschreibt das Was, nicht das Wie - so bleiben Angebote vergleichbar.',
       ),
-      ja(
-        'Es dient als Grundlage für Angebote.',
+      wahl(
+        'Angebote',
+        ['Abnahme', 'Schlussrechnung'],
         'Anbieter kalkulieren auf Basis der beschriebenen Anforderungen.',
       ),
-      nein(
-        'Es legt Programmiersprache und Datenbank fest.',
-        'Technische Entscheidungen trifft der Auftragnehmer im Pflichtenheft.',
-      ),
-      nein(
-        'Es ist die verbindliche Grundlage der Abnahme.',
-        'Abgenommen wird gegen das genehmigte Pflichtenheft.',
-      ),
+      wahl('Pflichtenheft', [
+        'Lastenheft',
+        'Angebot',
+      ], 'Technik und Abnahmegrundlage stehen im Pflichtenheft.'),
     ],
     explanation:
         'Das Lastenheft schreibt der Auftraggeber lösungsneutral: Ist-Zustand, Ziele, Anforderungen, Rahmenbedingungen. Es dient als Basis für Angebote. Technik und Abnahmegrundlage stehen im Pflichtenheft.',
@@ -234,31 +228,33 @@ final List<Question> questionsA04Entwicklung = [
         'Funktional ist, was das System tut (Screenshot anhängen). Verfügbarkeit, Plattform und Antwortzeit beschreiben, wie gut oder unter welchen Bedingungen es arbeitet.',
     difficulty: 1,
   ),
-  mehrfach(
+  tabelle(
     'a4-fa-2',
     'af-arten',
-    prompt: 'Welche Anforderungen an einen Webshop sind nicht-funktional?',
-    choices: [
-      ja(
+    scenario: 'Auszug aus dem Lastenheft eines Webshops.',
+    prompt: 'Ordne jede Anforderung ihrer Art zu.',
+    zeilen: [
+      ['Anforderung', 'Art'],
+      [
         'Die Seiten erfüllen die Vorgaben zur Barrierefreiheit.',
-        'Benutzbarkeit ist eine Qualitätsanforderung.',
-      ),
-      ja(
-        'Der Shop verkraftet 500 gleichzeitige Nutzer ohne Leistungseinbruch.',
-        'Leistung und Belastbarkeit sind nicht-funktional.',
-      ),
-      ja(
-        'Personenbezogene Daten werden nur auf Servern in der EU gespeichert.',
-        'Eine Randbedingung aus dem Datenschutz.',
-      ),
-      nein(
+        wahl('nicht-funktional', ['funktional', 'keine Anforderung']),
+      ],
+      [
         'Kunden können eine Bestellung innerhalb von 14 Tagen stornieren.',
-        'Stornieren ist eine Funktion des Systems.',
-      ),
-      nein(
-        'Der Shop versendet nach der Bestellung eine Bestätigungsmail.',
-        'Auch das ist eine Tätigkeit des Systems - funktional.',
-      ),
+        wahl('funktional', ['nicht-funktional', 'keine Anforderung']),
+      ],
+      [
+        'Der Shop verkraftet 500 gleichzeitige Nutzer ohne Leistungseinbruch.',
+        wahl('nicht-funktional', ['funktional', 'keine Anforderung']),
+      ],
+      [
+        'Nach der Bestellung wird eine Bestätigungsmail versendet.',
+        wahl('funktional', ['nicht-funktional', 'keine Anforderung']),
+      ],
+      [
+        'Personenbezogene Daten liegen nur auf Servern in der EU.',
+        wahl('nicht-funktional', ['funktional', 'keine Anforderung']),
+      ],
     ],
     explanation:
         'Nicht-funktional sind Qualitätsmerkmale und Randbedingungen wie Barrierefreiheit, Leistung und Speicherort. Stornieren und Mails versenden sind Funktionen.',
@@ -469,25 +465,19 @@ final List<Question> questionsA04Entwicklung = [
     explanation:
         'Befragungen liefern nur bewusstes Wissen. Routinen, Umwege und Workarounds zeigt erst die Beobachtung. Deshalb kombiniert man Interview und Beobachtung.',
   ),
-  mehrfach(
+  paare(
     'a4-fe-4',
     'af-erhebung',
-    prompt: 'Welche Eigenschaften zeichnen eine gute Anforderung aus?',
-    choices: [
-      ja('Eindeutig', 'Sie lässt nur eine Interpretation zu.'),
-      ja('Prüfbar', 'Es gibt ein messbares Kriterium für die Abnahme.'),
-      ja(
-        'Widerspruchsfrei',
-        'Sie steht nicht im Konflikt mit anderen Anforderungen.',
-      ),
-      nein(
-        'Möglichst allgemein formuliert',
-        'Allgemeine Formulierungen sind mehrdeutig und nicht prüfbar.',
-      ),
-      nein(
-        'Mehrere Anforderungen in einem Satz',
-        'Jede Anforderung sollte einzeln stehen, damit sie einzeln geprüft werden kann.',
-      ),
+    scenario:
+        'Vor der Abstimmung mit dem Kunden prüfst du die gesammelten Anforderungen auf ihre Qualität.',
+    prompt:
+        'Ordne jeder Eigenschaft einer guten Anforderung ihre Bedeutung zu.',
+    paare: [
+      paar('eindeutig', 'lässt nur eine Deutung zu'),
+      paar('prüfbar', 'hat ein messbares Kriterium'),
+      paar('widerspruchsfrei', 'kollidiert mit keiner anderen'),
+      paar('notwendig', 'erfüllt einen echten Bedarf'),
+      paar('realisierbar', 'ist technisch und finanziell machbar'),
     ],
     explanation:
         'Gute Anforderungen sind eindeutig, vollständig, widerspruchsfrei, prüfbar, notwendig, realisierbar und verfolgbar. Allgemeine oder zusammengefasste Formulierungen verhindern eine klare Abnahme.',
@@ -614,30 +604,32 @@ final List<Question> questionsA04Entwicklung = [
     explanation:
         'Akteure sind Rollen oder externe Systeme außerhalb der Systemgrenze. Anwendungsfälle sind Leistungen des Systems, benannt mit Objekt und Verb.',
   ),
-  mehrfach(
+  lueckentext(
     'a4-uu-3',
     'u-usecase',
-    prompt: 'Welche Aussagen zum Anwendungsfalldiagramm sind richtig?',
-    choices: [
-      ja(
-        'Akteure stehen außerhalb der Systemgrenze.',
-        'Sie nutzen das System, gehören aber nicht dazu.',
+    scenario:
+        'Du erklärst einem neuen Teammitglied das Anwendungsfalldiagramm eines Webshops.',
+    prompt: 'Vervollständige die Aussagen zum Anwendungsfalldiagramm.',
+    text:
+        'Akteure stehen {0} der Systemgrenze.\nEin mit «include» eingebundener Anwendungsfall läuft {1} mit ab.\nDer «extend»-Pfeil zeigt {2}.\nDie Reihenfolge der Abläufe zeigt erst das {3}.',
+    luecken: [
+      wahl('außerhalb', [
+        'innerhalb',
+        'auf',
+      ], 'Sie nutzen das System, gehören aber nicht dazu.'),
+      wahl('bei jeder Ausführung des Basisfalls', [
+        'nur unter einer Bedingung',
+        'nie automatisch',
+      ], 'Genau das bedeutet «include».'),
+      wahl(
+        'von der Erweiterung zum Basisfall',
+        ['vom Basisfall zur Erweiterung', 'vom Akteur zum Anwendungsfall'],
+        'Der Basisfall ist auch ohne die Erweiterung vollständig.',
       ),
-      ja(
-        'Ein inkludierter Anwendungsfall wird bei jeder Ausführung des Basisfalls mit ausgeführt.',
-        'Genau das bedeutet «include».',
-      ),
-      ja(
-        'Ein Akteur beschreibt eine Rolle, keine bestimmte Person.',
-        'Also „Kundin“ statt „Frau Meier“.',
-      ),
-      nein(
-        'Das Diagramm zeigt, in welcher Reihenfolge die Anwendungsfälle ablaufen.',
-        'Abläufe zeigt das Aktivitätsdiagramm.',
-      ),
-      nein(
-        'Der «extend»-Pfeil zeigt vom Basisfall zur Erweiterung.',
-        'Umgekehrt: von der Erweiterung zum Basisfall.',
+      wahl(
+        'Aktivitätsdiagramm',
+        ['Klassendiagramm', 'Anwendungsfalldiagramm'],
+        'Das Anwendungsfalldiagramm zeigt keine Reihenfolge.',
       ),
     ],
     explanation:
@@ -823,26 +815,31 @@ final List<Question> questionsA04Entwicklung = [
     explanation:
         'Komposition (gefüllte Raute): Das Teil lebt und stirbt mit dem Ganzen. Aggregation (leere Raute): Das Teil kann auch ohne das Ganze existieren.',
   ),
-  mehrfach(
+  lueckentext(
     'a4-uk-3',
     'u-klassen',
     scenario: 'In der Klasse Konto steht der Eintrag: - kontoNr: String',
-    prompt: 'Welche Aussagen treffen zu?',
-    choices: [
-      ja(
-        'Es handelt sich um ein Attribut.',
+    prompt: 'Vervollständige die Aussagen zu diesem Eintrag.',
+    text:
+        'Der Eintrag ist {0}.\nDas Zeichen „-“ bedeutet {1}.\nDer Datentyp ist {2}.\nEine Methode erkennt man an {3}.',
+    luecken: [
+      wahl(
+        'ein Attribut',
+        ['eine Methode', 'eine Beziehung'],
         'Ohne Klammern und im mittleren Abschnitt - ein Attribut.',
       ),
-      ja('Das Attribut ist private.', 'Das Minuszeichen steht für private.'),
-      ja('Der Datentyp ist String.', 'Der Typ steht hinter dem Doppelpunkt.'),
-      nein(
-        'Es handelt sich um eine Methode.',
-        'Methoden haben Klammern, z. B. getKontoNr(): String.',
-      ),
-      nein(
-        'Andere Klassen dürfen direkt darauf zugreifen.',
-        'Das wäre public (+).',
-      ),
+      wahl('private', [
+        'public',
+        'protected',
+      ], 'Das Minuszeichen steht für private.'),
+      wahl('String', [
+        'kontoNr',
+        'Konto',
+      ], 'Der Typ steht hinter dem Doppelpunkt.'),
+      wahl('den Klammern', [
+        'dem Doppelpunkt',
+        'dem Minuszeichen',
+      ], 'Methoden haben Klammern, z. B. getKontoNr(): String.'),
     ],
     explanation:
         'Schreibweise im Klassendiagramm: Sichtbarkeit, Name, Doppelpunkt, Datentyp. „-“ bedeutet private, also nur innerhalb der Klasse Konto zugreifbar.',
@@ -893,29 +890,30 @@ final List<Question> questionsA04Entwicklung = [
         'Multiplizitäten liest man von einem Objekt aus über die Linie hinweg: Ein Leser hat 0..5 Ausleihen, eine Ausleihe gehört zu genau 1 Leser und betrifft genau 1 Medium, ein Medium steckt in 0..* Ausleihen.',
     difficulty: 3,
   ),
-  einfach(
+  tabelle(
     'a4-uk-5',
     'u-klassen',
     scenario:
         'In einer Klasse steht die Methode:\n+ berechneRabatt(betrag: double, stammkunde: boolean): double',
-    prompt: 'Welche Aussage ist richtig?',
-    choices: [
-      ja(
-        'Die Methode ist öffentlich, erwartet zwei Parameter und liefert eine Gleitkommazahl.',
-        '+ = public, zwei Parameter in der Klammer, Rückgabetyp double nach dem Doppelpunkt.',
-      ),
-      nein(
-        'Die Methode liefert einen Wahrheitswert zurück.',
-        'boolean ist der Typ des zweiten Parameters, zurückgegeben wird double.',
-      ),
-      nein(
-        'Die Methode ist privat.',
-        'Private Methoden sind mit - gekennzeichnet.',
-      ),
-      nein('Die Methode hat keinen Rückgabewert.', 'Das wäre void.'),
+    prompt: 'Lies die Signatur und fülle die Tabelle aus.',
+    zeilen: [
+      ['Bestandteil', 'Angabe'],
+      [
+        'Sichtbarkeit',
+        wahl('public', ['private', 'protected']),
+      ],
+      ['Anzahl der Parameter', zahl(2)],
+      [
+        'Typ von stammkunde',
+        wahl('boolean', ['double', 'void']),
+      ],
+      [
+        'Rückgabetyp',
+        wahl('double', ['boolean', 'void']),
+      ],
     ],
     explanation:
-        'Methodenschreibweise in UML: Sichtbarkeit, Name, Parameterliste mit „name: Typ“, dann Doppelpunkt und Rückgabetyp. + steht für public.',
+        'Methodenschreibweise in UML: Sichtbarkeit, Name, Parameterliste mit „name: Typ“, dann Doppelpunkt und Rückgabetyp. + steht für public, in der Klammer stehen zwei Parameter, zurückgegeben wird double.',
     difficulty: 1,
   ),
   einfach(
@@ -1095,32 +1093,22 @@ final List<Question> questionsA04Entwicklung = [
     explanation:
         'Das Diagramm beginnt mit dem Startknoten. Die Aktionen folgen der Beschreibung, die PIN-Prüfung ist eine Entscheidung mit Guards. Im Erfolgsfall folgen Betrag wählen, Karte ausgeben und Geld ausgeben, am Ende steht der Endknoten.',
   ),
-  mehrfach(
+  lueckentext(
     'a4-ua-6',
     'u-aktivitaet',
-    prompt: 'Welche Aussagen zum Aktivitätsdiagramm sind richtig?',
-    choices: [
-      ja(
-        'Bedingungen an den Kanten stehen in eckigen Klammern.',
-        'Diese Guards steuern, welcher Weg genommen wird.',
-      ),
-      ja(
-        'Mit einer Entscheidung und einer Rückkante lässt sich eine Schleife darstellen.',
-        'Eine eigene Schleifenform gibt es nicht.',
-      ),
-      ja(
-        'Swimlanes zeigen, wer eine Aktion ausführt.',
-        'Jede Bahn steht für eine Rolle oder Abteilung.',
-      ),
-      nein(
-        'Nach einer Raute laufen alle ausgehenden Wege parallel.',
-        'Das gilt für den Gabelungsbalken, nach einer Raute läuft genau ein Weg.',
-      ),
-      nein(
-        'Es darf nur einen Endknoten geben.',
-        'Mehrere Endknoten sind erlaubt, z. B. für Erfolg und Abbruch.',
-      ),
+    scenario:
+        'Für die Dokumentation eines Bestellprozesses fasst du die Regeln des Aktivitätsdiagramms zusammen.',
+    prompt: 'Ergänze den Text mit den passenden Begriffen.',
+    text:
+        'Bedingungen an den Kanten stehen in eckigen Klammern und heißen {0}. Nach einer {1} läuft genau ein Weg weiter, nach einer {2} laufen alle Wege parallel. Wer eine Aktion ausführt, zeigen {3}. Eine Schleife entsteht aus einer Entscheidung und einer {4}.',
+    luecken: [
+      wort(['Guards'], 'Sie steuern, welcher Weg genommen wird.'),
+      wort(['Entscheidung'], 'Die Raute - genau ein Weg.'),
+      wort(['Gabelung'], 'Der Balken - alle Wege gleichzeitig.'),
+      wort(['Swimlanes'], 'Jede Bahn steht für eine Rolle oder Abteilung.'),
+      wort(['Rückkante'], 'Eine eigene Schleifenform gibt es nicht.'),
     ],
+    wortbank: ['Vereinigung', 'Endknoten', 'Akteure'],
     explanation:
         'Guards in [ ] steuern Entscheidungen, Schleifen entstehen aus Entscheidung und Rückkante, Swimlanes ordnen Aktionen Rollen zu. Parallelität braucht Balken, und ein Diagramm darf mehrere Endknoten haben.',
   ),
@@ -1240,31 +1228,26 @@ final List<Question> questionsA04Entwicklung = [
     explanation:
         'Von 0 bis 5000 sind es 5001 Werte. 2^12 = 4096 reicht nicht (4096 < 5001). 2^13 = 8192 reicht. Mit 13 Bit ohne Vorzeichen lassen sich 0 bis 8191 speichern.',
   ),
-  einfach(
+  lueckentext(
     'a4-pd-7',
     'pl-datentypen',
-    scenario: 'String s = "5" + 3 + 4;',
-    prompt: 'Welchen Wert hat s nach Ausführung dieses Java-Codes?',
-    choices: [
-      ja(
-        '"534"',
-        'Von links nach rechts: "5" + 3 ergibt "53", dann "53" + 4 ergibt "534".',
+    scenario:
+        'In Java verkettet + Text, sobald ein Operand ein String ist. Ausgewertet wird von links nach rechts, Klammern zuerst.',
+    prompt: 'Gib an, welche Werte die Variablen erhalten.',
+    mono: true,
+    text:
+        'String s = "5" + 3 + 4;     // s = "{0}"\nString t = "5" + (3 + 4);   // t = "{1}"\nint u = 5 + 3 + 4;          // u = {2}',
+    luecken: [
+      zahl(
+        534,
+        rationale:
+            'Von links nach rechts: "5" + 3 ergibt "53", dann "53" + 4 ergibt "534".',
       ),
-      nein(
-        '"57"',
-        'Das ergäbe sich, wenn 3 + 4 zuerst gerechnet würde - dafür bräuchte es Klammern.',
-      ),
-      nein(
-        '12',
-        'Sobald ein String beteiligt ist, verkettet + Text statt zu addieren.',
-      ),
-      nein(
-        'Ein Compilerfehler',
-        'Zahlen werden beim Verketten automatisch in Text umgewandelt.',
-      ),
+      zahl(57, rationale: 'Die Klammer zuerst: 3 + 4 = 7, dann "5" + 7.'),
+      zahl(12, rationale: 'Nur Zahlen - hier wird addiert.'),
     ],
     explanation:
-        'Der Operator + wird von links nach rechts ausgewertet. Ist ein Operand ein String, wird verkettet: "5" + 3 = "53", "53" + 4 = "534". Mit "5" + (3 + 4) entstünde "57".',
+        'Der Operator + wird von links nach rechts ausgewertet. Ist ein Operand ein String, wird verkettet: "5" + 3 = "53", "53" + 4 = "534". Mit "5" + (3 + 4) entstünde "57". Ohne String wird gerechnet: 12.',
     difficulty: 3,
   ),
   mehrfach(
@@ -1305,29 +1288,21 @@ final List<Question> questionsA04Entwicklung = [
     explanation:
         'i nimmt die Werte 2, 5, 8, 11, 14, 17, 20 an - das sind 7 Werte. Danach wäre i = 23, und 23 <= 20 ist falsch. Kontrolle: (20 - 2) / 3 + 1 = 6 + 1 = 7.',
   ),
-  einfach(
+  lueckentext(
     'a4-pk-2',
     'pl-kontrollstrukturen',
     scenario:
         'Eine Kasse soll die PIN abfragen und die Abfrage so lange wiederholen, bis die PIN korrekt ist. Die erste Abfrage erfolgt in jedem Fall.',
-    prompt: 'Welche Schleife passt am besten?',
-    choices: [
-      ja(
-        'Fußgesteuerte Schleife (do-while)',
-        'Sie läuft mindestens einmal und prüft danach.',
-      ),
-      nein(
-        'Zählschleife (for)',
-        'Die Anzahl der Versuche ist vorher nicht bekannt.',
-      ),
-      nein('switch / case', 'Das ist eine Verzweigung, keine Wiederholung.'),
-      nein(
-        'Einseitige Verzweigung (if)',
-        'Sie fragt höchstens einmal ab und wiederholt nichts.',
-      ),
+    prompt: 'Ergänze die Schleife mit den passenden Schlüsselwörtern.',
+    mono: true,
+    text: '{0}\n  pin ← eingabe()\n{1} pin = korrekt',
+    luecken: [
+      wort(['WIEDERHOLE'], 'Fußgesteuert: Der Rumpf läuft mindestens einmal.'),
+      wort(['BIS'], 'Die Abbruchbedingung steht am Ende.'),
     ],
+    wortbank: ['SOLANGE', 'FÜR', 'WENN'],
     explanation:
-        'Wenn der Rumpf mindestens einmal laufen muss und erst danach über die Wiederholung entschieden wird, ist die fußgesteuerte Schleife die passende Wahl.',
+        'Wenn der Rumpf mindestens einmal laufen muss und erst danach über die Wiederholung entschieden wird, ist die fußgesteuerte Schleife die passende Wahl: WIEDERHOLE … BIS mit der Abbruchbedingung am Ende.',
   ),
   zuordnen(
     'a4-pk-3',
@@ -1354,31 +1329,15 @@ final List<Question> questionsA04Entwicklung = [
     explanation:
         'Eine einmalige Bedingung ist eine Verzweigung. Kann der Rumpf null Mal laufen: kopfgesteuert. Muss er mindestens einmal laufen: fußgesteuert. Steht die Anzahl fest: Zählschleife.',
   ),
-  einfach(
+  rechnen(
     'a4-pk-4',
     'pl-kontrollstrukturen',
     scenario: 'int x = 10;\ndo {\n  x = x + 5;\n} while (x < 10);',
     prompt: 'Wie oft wird der Schleifenrumpf ausgeführt?',
-    choices: [
-      ja(
-        'Genau einmal',
-        'do-while führt den Rumpf zuerst aus: x wird 15, dann ist 15 < 10 falsch.',
-      ),
-      nein(
-        'Gar nicht',
-        'Das gälte für eine while-Schleife, weil 10 < 10 schon zu Beginn falsch ist.',
-      ),
-      nein(
-        'Zweimal',
-        'Nach dem ersten Durchlauf ist die Bedingung bereits falsch.',
-      ),
-      nein(
-        'Endlos',
-        'x wächst, die Bedingung wird nach dem ersten Durchlauf falsch.',
-      ),
-    ],
+    answer: 1,
+    unit: 'Durchlauf',
     explanation:
-        'Fußgesteuert heißt: erst ausführen, dann prüfen. Der Rumpf läuft einmal (x = 15), danach ist x < 10 falsch und die Schleife endet.',
+        'Fußgesteuert heißt: erst ausführen, dann prüfen. Der Rumpf läuft einmal (x = 15), danach ist 15 < 10 falsch und die Schleife endet. Eine while-Schleife liefe hier gar nicht, weil 10 < 10 schon zu Beginn falsch ist.',
   ),
   einfach(
     'a4-pk-5',
@@ -1522,26 +1481,24 @@ final List<Question> questionsA04Entwicklung = [
     explanation:
         'abstand(3, 10): 3 > 10 ist falsch, Rückgabe 10 - 3 = 7. abstand(8, 2): 8 > 2 ist wahr, Rückgabe 8 - 2 = 6. Ausgabe: 7 + 6 = 13.',
   ),
-  einfach(
+  lueckentext(
     'a4-pc-5',
     'pl-pseudocode',
     scenario:
-        'Der Algorithmus soll zählen, wie viele Schüler die Note 1 haben.\n\nanzahl ← 0\nFÜR i VON 0 BIS n - 1\n  WENN noten[i] = 1 DANN\n    ???\n  ENDE WENN\nENDE FÜR\nAUSGABE anzahl',
-    prompt: 'Welche Anweisung gehört an die Stelle ???',
-    choices: [
-      ja('anzahl ← anzahl + 1', 'Der Zähler wächst bei jedem Treffer um eins.'),
-      nein(
+        'Der Algorithmus soll zählen, wie viele Schüler die Note 1 haben.',
+    prompt: 'Wähle die fehlende Anweisung.',
+    mono: true,
+    text:
+        'anzahl ← 0\nFÜR i VON 0 BIS n - 1\n  WENN noten[i] = 1 DANN\n    {0}\n  ENDE WENN\nENDE FÜR\nAUSGABE anzahl',
+    luecken: [
+      wahl('anzahl ← anzahl + 1', [
         'anzahl ← 1',
-        'Dann wäre das Ergebnis höchstens 1, egal wie viele Einsen es gibt.',
-      ),
-      nein(
         'i ← i + 1',
-        'Die FÜR-Schleife erhöht i selbst - so würde ein Element übersprungen.',
-      ),
-      nein('anzahl ← noten[i]', 'Das speichert eine Note, zählt aber nicht.'),
+        'anzahl ← noten[i]',
+      ], 'Der Zähler wächst bei jedem Treffer um eins.'),
     ],
     explanation:
-        'Beim Zählen mit Bedingung startet der Zähler bei 0 und wird nur im Dann-Zweig um 1 erhöht. Nach der Schleife steht die Anzahl der Treffer fest.',
+        'Beim Zählen mit Bedingung startet der Zähler bei 0 und wird nur im Dann-Zweig um 1 erhöht. „anzahl ← 1“ ergäbe höchstens 1, „i ← i + 1“ würde ein Element überspringen, „anzahl ← noten[i]“ speichert eine Note, zählt aber nicht.',
     difficulty: 1,
   ),
   rechnen(
@@ -1607,28 +1564,21 @@ final List<Question> questionsA04Entwicklung = [
         'i = 1 (ungerade): x = -1. i = 2 (gerade): x = -1 + 2 = 1. i = 3: x = 0. i = 4: x = 4. i = 5: x = 3. i = 6: x = 9. Kontrolle: gerade Zahlen 2 + 4 + 6 = 12, drei ungerade je -1 = -3, 12 - 3 = 9.',
     difficulty: 3,
   ),
-  einfach(
+  tabelle(
     'a4-pt-3',
     'pl-schreibtischtest',
-    scenario: 'a ← 4\nb ← 9\na ← b\nb ← a',
-    prompt: 'Welche Werte haben a und b am Ende?',
-    choices: [
-      ja(
-        'a = 9, b = 9',
-        'a ← b macht a zu 9, danach übernimmt b den neuen Wert von a, also ebenfalls 9.',
-      ),
-      nein(
-        'a = 9, b = 4',
-        'Das wäre ein Tausch - dafür fehlt die Hilfsvariable.',
-      ),
-      nein('a = 4, b = 4', 'Die erste Zuweisung überschreibt a mit 9.'),
-      nein(
-        'a = 4, b = 9',
-        'Die Zuweisungen verändern die Werte, sie bleiben nicht gleich.',
-      ),
+    scenario:
+        'Zwei Variablen sollen ihre Werte tauschen. Die Hilfsvariable wurde vergessen.',
+    code: 'a ← 4\nb ← 9\na ← b\nb ← a',
+    prompt: 'Trage die Werte von a und b nach den letzten beiden Zeilen ein.',
+    zeilen: [
+      ['nach Zeile', 'a', 'b'],
+      ['b ← 9', '4', '9'],
+      ['a ← b', zahl(9), zahl(9)],
+      ['b ← a', zahl(9), zahl(9)],
     ],
     explanation:
-        'Jede Zuweisung nutzt den aktuellen Wert. Nach a ← b ist die 4 verloren. Ein echter Tausch braucht eine Hilfsvariable: hilf ← a, a ← b, b ← hilf.',
+        'Jede Zuweisung nutzt den aktuellen Wert. Nach a ← b ist die 4 verloren, danach übernimmt b den neuen Wert von a: beide sind 9. Ein echter Tausch braucht eine Hilfsvariable: hilf ← a, a ← b, b ← hilf.',
   ),
   rechnen(
     'a4-pt-4',
@@ -1705,58 +1655,56 @@ final List<Question> questionsA04Entwicklung = [
         'Die Klasse beschreibt alle Tickets, ein Objekt ist ein bestimmtes Ticket. Attribute sind Eigenschaften wie prioritaet und erstelltAm, Methoden Fähigkeiten wie eskalieren().',
     difficulty: 1,
   ),
-  einfach(
+  lueckentext(
     'a4-og-2',
     'oo-grundbegriffe',
-    prompt: 'Was versteht man unter dem Zustand eines Objekts?',
-    choices: [
-      ja(
-        'Die aktuellen Werte seiner Attribute',
-        'Ändert sich ein Attributwert, ändert sich der Zustand.',
-      ),
-      nein('Die Methoden seiner Klasse', 'Methoden beschreiben das Verhalten.'),
-      nein(
-        'Seine eindeutige Identität',
-        'Die Identität bleibt gleich, auch wenn sich der Zustand ändert.',
-      ),
-      nein(
-        'Den Namen seiner Klasse',
-        'Der Klassenname beschreibt die Art, nicht den Zustand.',
-      ),
+    scenario:
+        'Im Lager gibt es zwei Paletten-Objekte mit demselben Gewicht und demselben Lagerplatz-Typ.',
+    prompt: 'Ergänze den Text mit den passenden Begriffen.',
+    text:
+        'Der Zustand eines Objekts sind die aktuellen Werte seiner {0}. Sein Verhalten bestimmen die {1} der Klasse. Zwei Objekte mit gleichen Werten bleiben verschieden - jedes hat seine eigene {2}.',
+    luecken: [
+      wort([
+        'Attribute',
+      ], 'Ändert sich ein Attributwert, ändert sich der Zustand.'),
+      wort(['Methoden'], 'Methoden beschreiben das Verhalten.'),
+      wort([
+        'Identität',
+      ], 'Sie bleibt gleich, auch wenn sich der Zustand ändert.'),
     ],
+    wortbank: ['Klassen', 'Parameter'],
     explanation:
         'Ein Objekt hat Zustand (Attributwerte), Verhalten (Methoden) und Identität (es ist eigenständig, auch bei gleichen Werten).',
   ),
-  mehrfach(
+  lueckentext(
     'a4-og-3',
     'oo-grundbegriffe',
-    prompt: 'Welche Aussagen sind richtig?',
-    choices: [
-      ja(
-        'Aus einer Klasse können beliebig viele Objekte erzeugt werden.',
-        'Die Klasse ist der Bauplan für alle.',
-      ),
-      ja(
-        'Zwei Objekte mit gleichen Attributwerten sind trotzdem verschiedene Objekte.',
-        'Jedes Objekt hat seine eigene Identität.',
-      ),
-      ja(
-        'Methoden beschreiben das Verhalten von Objekten.',
-        'Sie legen fest, was ein Objekt kann.',
-      ),
-      nein(
-        'Wird Ticket 4711 geschlossen, sind auch alle anderen Tickets geschlossen.',
-        'Jedes Objekt hat seinen eigenen Zustand.',
-      ),
-      nein(
-        'Ein Objekt ist der Bauplan, aus dem Klassen entstehen.',
-        'Umgekehrt: Aus der Klasse entstehen Objekte.',
-      ),
+    scenario:
+        'Im Ticketsystem werden zwei Tickets angelegt, danach wird eines geschlossen. Neue Tickets sind offen.',
+    code:
+        'Ticket t1 = new Ticket();\nTicket t2 = new Ticket();\nt1.schliessen();',
+    prompt: 'Vervollständige die Aussagen zum Code.',
+    text:
+        'Es wurden {0} Objekte der Klasse Ticket erzeugt.\nNach der letzten Zeile ist t2 {1}.\nTicket ist {2}, t1 ist {3}.',
+    luecken: [
+      zahl(2, rationale: 'Jedes new erzeugt ein Objekt.'),
+      wahl('weiterhin offen', [
+        'ebenfalls geschlossen',
+        'gelöscht',
+      ], 'Jedes Objekt hat seinen eigenen Zustand.'),
+      wahl('die Klasse', [
+        'ein Objekt',
+        'ein Attribut',
+      ], 'Der Bauplan für alle Tickets.'),
+      wahl('ein Objekt', [
+        'die Klasse',
+        'eine Methode',
+      ], 'Ein Exemplar, erzeugt mit new.'),
     ],
     explanation:
-        'Klasse = Bauplan, Objekt = Exemplar mit eigenem Zustand und eigener Identität. Methoden beschreiben das Verhalten und ändern den Zustand genau des Objekts, auf dem sie aufgerufen werden.',
+        'Klasse = Bauplan, Objekt = Exemplar mit eigenem Zustand und eigener Identität. Methoden beschreiben das Verhalten und ändern den Zustand genau des Objekts, auf dem sie aufgerufen werden - t2 bleibt offen.',
   ),
-  mehrfach(
+  tabelle(
     'a4-og-4',
     'oo-grundbegriffe',
     scenario: 'Aus einem Personalverwaltungssystem:',
@@ -1771,31 +1719,25 @@ final List<Question> questionsA04Entwicklung = [
         methoden: ['+ getName(): String', '+ setStunden(h: int): void'],
       ),
     ]),
-    prompt: 'Welche Aussagen treffen zu?',
-    choices: [
-      ja(
-        'Die Klasse hat drei Attribute.',
-        'personalNr, name und wochenstunden.',
-      ),
-      ja(
-        'setStunden erwartet einen Parameter vom Typ int.',
-        'In der Klammer steht h: int.',
-      ),
-      ja(
-        'getName liefert einen String zurück.',
-        'Der Rückgabetyp steht nach dem Doppelpunkt.',
-      ),
-      nein(
-        'Die Klasse enthält die Mitarbeiterin Frau Kaya.',
-        'Konkrete Personen sind Objekte, die Klasse ist nur der Bauplan.',
-      ),
-      nein(
-        'Andere Klassen dürfen direkt auf name zugreifen.',
-        'name ist private (-).',
-      ),
+    prompt: 'Lies das Klassendiagramm und fülle die Tabelle aus.',
+    zeilen: [
+      ['Frage', 'Antwort'],
+      ['Anzahl der Attribute', zahl(3)],
+      [
+        'Sichtbarkeit von name',
+        wahl('private', ['public', 'protected']),
+      ],
+      [
+        'Parametertyp von setStunden',
+        wahl('int', ['String', 'void']),
+      ],
+      [
+        'Rückgabetyp von getName',
+        wahl('String', ['int', 'void']),
+      ],
     ],
     explanation:
-        'Das Klassendiagramm zeigt den Bauplan: Attribute im mittleren, Methoden im unteren Abschnitt. Konkrete Werte wie „Frau Kaya“ gehören zu Objekten. Mit - gekennzeichnete Attribute sind nur innerhalb der Klasse zugreifbar.',
+        'Das Klassendiagramm zeigt den Bauplan: Attribute im mittleren, Methoden im unteren Abschnitt. Die Klasse hat drei Attribute, alle private (-). setStunden erwartet h: int, getName liefert einen String.',
     difficulty: 1,
   ),
   einfach(
@@ -1899,34 +1841,56 @@ final List<Question> questionsA04Entwicklung = [
     explanation:
         'setBestand(30): gültig, bestand = 30. setBestand(-10): -10 >= 0 ist falsch, bestand bleibt 30. setBestand(30 + 5): gültig, bestand = 35.',
   ),
-  mehrfach(
+  freitext(
     'a4-ok-3',
     'oo-kapselung',
-    prompt: 'Welche Vorteile bietet die Kapselung?',
-    choices: [
-      ja(
-        'Ungültige Werte lassen sich im Setter abfangen.',
-        'Nur die Klasse selbst ändert ihre Daten - nach ihren Regeln.',
+    scenario:
+        'Im Code-Review wird vorgeschlagen, alle Attribute der Klasse Artikel public zu machen, „weil das kürzer ist“. Du bist für Kapselung.',
+    prompt: 'Nenne zwei Vorteile der Kapselung. (2 P.)',
+    punkte: 2,
+    kriterien: [
+      krit(
+        'Ungültige Werte lassen sich im Setter abfangen',
+        stichwoerter: [
+          'ungültige',
+          'prüfen',
+          'prüfung',
+          'validierung',
+          'abfangen',
+        ],
       ),
-      ja(
-        'Die interne Darstellung kann sich ändern, ohne dass aufrufender Code angepasst werden muss.',
-        'Andere Klassen kennen nur die Schnittstelle.',
+      krit(
+        'Die interne Darstellung kann sich ändern, ohne dass aufrufender Code angepasst werden muss',
+        stichwoerter: [
+          'intern',
+          'änderbar',
+          'unabhängig',
+          'austauschbar',
+          'ohne anpassung',
+        ],
       ),
-      ja(
-        'Die Klasse hat eine klar definierte Schnittstelle.',
-        'Die öffentlichen Methoden legen fest, was von außen möglich ist.',
+      krit(
+        'Die Klasse hat eine klar definierte Schnittstelle',
+        stichwoerter: [
+          'schnittstelle',
+          'öffentliche methoden',
+          'kontrollierter zugriff',
+        ],
       ),
-      nein(
-        'Das Programm läuft dadurch schneller.',
-        'Kapselung dient der Struktur und Sicherheit im Code, nicht der Geschwindigkeit.',
-      ),
-      nein(
-        'Private Attribute werden automatisch verschlüsselt gespeichert.',
-        'private regelt nur den Zugriff im Code, es verschlüsselt nichts.',
+      krit(
+        'Daten sind vor unkontrolliertem Zugriff geschützt',
+        stichwoerter: [
+          'geschützt',
+          'schutz',
+          'unkontrolliert',
+          'kein direkter zugriff',
+        ],
       ),
     ],
+    loesung:
+        'Zum Beispiel: Ungültige Werte lassen sich im Setter abfangen, und die interne Darstellung kann geändert werden, ohne dass andere Klassen angepasst werden müssen. Ebenfalls richtig: klare Schnittstelle, Schutz vor unkontrolliertem Zugriff.',
     explanation:
-        'Kapselung schützt Daten vor falscher Verwendung, macht Klassen unabhängig voneinander änderbar und legt eine klare Schnittstelle fest.',
+        'Je Nennung 1 Punkt, höchstens 2. Kapselung schützt Daten vor falscher Verwendung, macht Klassen unabhängig voneinander änderbar und legt eine klare Schnittstelle fest. Schneller wird das Programm dadurch nicht.',
   ),
   zuordnen(
     'a4-ok-4',
@@ -1987,28 +1951,27 @@ final List<Question> questionsA04Entwicklung = [
     explanation:
         'einlagern(40): 0 + 40 = 40. auslagern(15): 15 <= 40, Bestand 25. auslagern(30): 30 > 25, abgelehnt, bleibt 25. einlagern(0): 0 > 0 ist falsch, bleibt 25. auslagern(20): 20 <= 25, Bestand 5.',
   ),
-  einfach(
+  lueckentext(
     'a4-ok-7',
     'oo-kapselung',
     scenario: 'Die Klasse Kunde hat das private Attribut - aktiv: boolean.',
-    prompt: 'Welche Signatur ist ein üblicher Getter für dieses Attribut?',
-    choices: [
-      ja(
-        '+ isAktiv(): boolean',
-        'Getter für boolean beginnen üblicherweise mit is, haben keinen Parameter und liefern den Wert.',
-      ),
-      nein(
-        '+ setAktiv(): boolean',
-        'set ist die Vorsilbe für Setter, und ein Setter braucht einen Parameter.',
-      ),
-      nein(
-        '+ isAktiv(a: boolean): void',
-        'Ein Getter liefert einen Wert zurück und braucht keinen Parameter.',
-      ),
-      nein(
-        '- isAktiv(): boolean',
-        'Ein privater Getter wäre von außen nicht nutzbar.',
-      ),
+    prompt:
+        'Ergänze die Signatur eines üblichen Getters für dieses Attribut in UML-Schreibweise.',
+    mono: true,
+    text: '{0} {1}(): {2}',
+    luecken: [
+      wahl('+', [
+        '-',
+        '#',
+      ], 'Ein privater Getter wäre von außen nicht nutzbar.'),
+      wahl('isAktiv', [
+        'setAktiv',
+        'aktiv',
+      ], 'Getter für boolean beginnen üblicherweise mit is.'),
+      wahl('boolean', [
+        'void',
+        'String',
+      ], 'Ein Getter liefert den Attributwert zurück.'),
     ],
     explanation:
         'Getter sind öffentlich, parameterlos und liefern den Attributwert: getName() oder bei boolean isAktiv(). Setter heißen setName(wert) und haben meist den Rückgabetyp void.',
@@ -2032,29 +1995,21 @@ final List<Question> questionsA04Entwicklung = [
   ),
 
   // ======================================================== Objekte erzeugen und nutzen
-  mehrfach(
+  lueckentext(
     'a4-oc-1',
     'oo-konstruktor',
-    prompt: 'Welche Aussagen zum Konstruktor sind richtig?',
-    choices: [
-      ja(
-        'Er heißt genau wie die Klasse.',
-        'Daran erkennt der Compiler den Konstruktor.',
-      ),
-      ja('Er hat keinen Rückgabetyp.', 'Nicht einmal void.'),
-      ja(
-        'Er wird beim Erzeugen eines Objekts mit new aufgerufen.',
-        'Er setzt dabei die Startwerte.',
-      ),
-      nein(
-        'Er muss mit void deklariert werden.',
-        'Mit void wäre er eine gewöhnliche Methode.',
-      ),
-      nein(
-        'Eine Klasse darf höchstens einen Konstruktor haben.',
-        'Konstruktoren lassen sich überladen.',
-      ),
+    scenario:
+        'Für eine Schulung fasst du die Merkmale eines Konstruktors zusammen.',
+    prompt: 'Ergänze den Text mit den passenden Begriffen.',
+    text:
+        'Der Konstruktor heißt genau wie die {0} und hat keinen {1}. Er wird beim Erzeugen eines Objekts mit {2} aufgerufen. Hat eine Klasse mehrere Konstruktoren mit unterschiedlichen Parameterlisten, spricht man von {3}.',
+    luecken: [
+      wort(['Klasse'], 'Daran erkennt der Compiler den Konstruktor.'),
+      wort(['Rückgabetyp'], 'Nicht einmal void.'),
+      wort(['new'], 'Er setzt dabei die Startwerte.'),
+      wort(['Überladen'], 'Konstruktoren lassen sich überladen.'),
     ],
+    wortbank: ['void', 'Methode', 'Kapselung'],
     explanation:
         'Der Konstruktor trägt den Klassennamen, hat keinen Rückgabetyp, wird bei new aufgerufen und kann überladen werden.',
   ),
