@@ -15,7 +15,7 @@ final List<Question> ihkA04Daten = [
       beziehungen: [ErmBeziehung('Techniker', 'wartet', 'Gerät', 'n', 'm')],
     ),
     prompt:
-        'Ordnen Sie jedes Attribut dem Element des ER-Modells zu, an dem es eingetragen wird.',
+        'Ordne jedes Attribut dem Element des ER-Modells zu, an dem es eingetragen wird.',
     buckets: ['Techniker', 'Gerät', 'Beziehung „wartet“'],
     items: [
       zu('Seriennummer', 1, 'Kennzeichnet genau ein Gerät.'),
@@ -68,7 +68,7 @@ final List<Question> ihkA04Daten = [
         ErmBeziehung('Bestellung', 'enthält', 'Artikel', 'n', 'm'),
       ],
     ),
-    prompt: 'Ergänzen Sie die Aussagen zum ER-Modell.',
+    prompt: 'Ergänze die Aussagen zum ER-Modell.',
     text:
         'Das Modell enthält {0} Entitätstypen. Der Primärschlüssel von Artikel ist {1}. '
         'Eine Bestellung gehört zu {2} Kunden. '
@@ -101,7 +101,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Im Lager der Elbtal Logistik AG werden Artikel auf Lagerplätzen eingelagert. Ein Artikel kann auf mehreren Lagerplätzen liegen, auf einem Lagerplatz können mehrere Artikel liegen. Ein Kollege möchte das Attribut „Menge“ beim Entitätstyp Artikel eintragen.',
     prompt:
-        'Erläutern Sie, warum das Attribut „Menge“ an die Beziehung zwischen Artikel und Lagerplatz gehört und nicht an den Entitätstyp Artikel.',
+        'Erläutere, warum das Attribut „Menge“ an die Beziehung zwischen Artikel und Lagerplatz gehört und nicht an den Entitätstyp Artikel.',
     kriterien: [
       krit(
         'Die Menge hängt von der Kombination aus Artikel und Lagerplatz ab - sie beschreibt, wie viel eines Artikels auf einem bestimmten Platz liegt.',
@@ -137,8 +137,7 @@ final List<Question> ihkA04Daten = [
     'dm-erm',
     scenario:
         'Die Pixelhafen Medien GmbH beschreibt ihr neues Ticketsystem so: „Kunden mit Firmenname und Telefonnummer eröffnen Tickets. Jedes Ticket hat eine Priorität und ein Eröffnungsdatum. Mitarbeiter mit Kürzel und Abteilung bearbeiten die Tickets.“',
-    prompt:
-        'Markieren Sie alle Begriffe, die im ER-Modell zu Entitätstypen werden.',
+    prompt: 'Markiere alle Begriffe, die im ER-Modell zu Entitätstypen werden.',
     zeilen: [
       ja('Kunde', 'Zu Kunden werden eigene Daten gespeichert.'),
       nein('Telefonnummer', 'Eigenschaft des Kunden - ein Attribut.'),
@@ -177,7 +176,7 @@ final List<Question> ihkA04Daten = [
         'mistakes are cheap to fix at\n'
         'this early stage.',
     prompt:
-        'Beschreiben Sie auf Deutsch anhand des Textes, was eine Entität und was eine Beziehung ist. Geben Sie außerdem an, warum das Modell laut Text zuerst mit dem Kunden besprochen wird.',
+        'Beschreibe auf Deutsch anhand des Textes, was eine Entität und was eine Beziehung ist. Gib außerdem an, warum das Modell laut Text zuerst mit dem Kunden besprochen wird.',
     kriterien: [
       krit(
         'Entität: ein reales Objekt, z. B. ein einzelner Kunde oder ein Produkt.',
@@ -223,8 +222,8 @@ final List<Question> ihkA04Daten = [
     'i4-de-6',
     'dm-erm',
     scenario:
-        'Für eine Schulung der neuen Auszubildenden stellen Sie die Grundbegriffe des ER-Modells zusammen.',
-    prompt: 'Ordnen Sie jedem Begriff die passende Erklärung zu.',
+        'Für eine Schulung der neuen Auszubildenden stellst du die Grundbegriffe des ER-Modells zusammen.',
+    prompt: 'Ordne jedem Begriff die passende Erklärung zu.',
     paare: [
       paar('Entität', 'ein einzelnes, unterscheidbares Objekt'),
       paar('Entitätstyp', 'Menge gleichartiger Objekte'),
@@ -260,7 +259,7 @@ final List<Question> ihkA04Daten = [
         ErmBeziehung('Mitarbeiter', 'nutzt', 'Laptop', '?', '?'),
       ],
     ),
-    prompt: 'Ergänzen Sie die Kardinalitäten der drei Beziehungen.',
+    prompt: 'Ergänze die Kardinalitäten der drei Beziehungen.',
     text:
         'Kunde - Projekt: {0}\n'
         'Mitarbeiter - Projekt: {1}\n'
@@ -288,7 +287,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Bei der Kessler & Brandt IT-Systemhaus GmbH besuchen Mitarbeiter Schulungen. Ein Mitarbeiter besucht mehrere Schulungen, eine Schulung hat mehrere Teilnehmer. Zu jeder Teilnahme wird das Datum gespeichert. Vorhanden sind die Tabellen Mitarbeiter (PersNr, Name) und Schulung (SchulungsNr, Titel).',
     prompt:
-        'Lösen Sie die n:m-Beziehung auf: Vervollständigen Sie die Zwischentabelle „Teilnahme“.',
+        'Löse die n:m-Beziehung auf: Vervollständige die Zwischentabelle „Teilnahme“.',
     zeilen: [
       ['Spalte', 'Schlüsselrolle', 'verweist auf Tabelle'],
       [
@@ -326,7 +325,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Die Grünwerk Gartenbedarf GmbH bezieht Artikel von Lieferanten. Ein Lieferant liefert viele Artikel, derselbe Artikel kann von mehreren Lieferanten bezogen werden. Eine Kollegin schlägt vor, in der Tabelle Artikel einfach die Spalte LieferantNr zu ergänzen.',
     prompt:
-        'Erläutern Sie, warum dieser Vorschlag die Beziehung nicht abbilden kann, und beschreiben Sie die richtige Umsetzung im relationalen Modell.',
+        'Erläutere, warum dieser Vorschlag die Beziehung nicht abbilden kann, und beschreibe die richtige Umsetzung im relationalen Modell.',
     kriterien: [
       krit(
         'Mit einer Spalte LieferantNr in Artikel kann jeder Artikel nur genau einen Lieferanten haben - das wäre 1:n statt n:m.',
@@ -363,7 +362,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Für die Datenbank der Elbtal Logistik AG wurden die folgenden Regeln aufgenommen. Bei der Umsetzung in Tabellen soll der Aufwand geschätzt werden.',
     prompt:
-        'Markieren Sie alle Regeln, für deren Umsetzung eine Zwischentabelle nötig ist.',
+        'Markiere alle Regeln, für deren Umsetzung eine Zwischentabelle nötig ist.',
     zeilen: [
       nein(
         'Jeder Handscanner ist genau einer Halle zugeordnet, eine Halle hat viele Handscanner.',
@@ -412,7 +411,7 @@ final List<Question> ihkA04Daten = [
         ErmBeziehung('Kunde', 'gibt auf', 'Bestellung', '1', 'n'),
       ],
     ),
-    prompt: 'Ermitteln Sie, was bei der Umsetzung mindestens entsteht.',
+    prompt: 'Ermittle, was bei der Umsetzung mindestens entsteht.',
     text:
         'Tabellen insgesamt: {0}\n'
         'davon Zwischentabellen: {1}\n'
@@ -448,7 +447,7 @@ final List<Question> ihkA04Daten = [
       ],
     ),
     prompt:
-        'Lesen Sie das Diagramm in beide Richtungen und vervollständigen Sie die Aussagen.',
+        'Lies das Diagramm in beide Richtungen und vervollständige die Aussagen.',
     zeilen: [
       ['Aussage', 'Anzahl'],
       [
@@ -487,7 +486,7 @@ final List<Question> ihkA04Daten = [
       ['Position', 'BestellNr, ArtikelNr, Menge'],
       ['Lieferant', 'LieferantNr, Firma'],
     ],
-    prompt: 'Markieren Sie alle Spalten, die Fremdschlüssel sind.',
+    prompt: 'Markiere alle Spalten, die Fremdschlüssel sind.',
     zeilen: [
       nein('Kunde.KundenNr', 'Primärschlüssel der Tabelle Kunde.'),
       ja('Bestellung.KundenNr', 'Verweist auf den Primärschlüssel von Kunde.'),
@@ -517,7 +516,7 @@ final List<Question> ihkA04Daten = [
     'dm-schluessel',
     scenario:
         'In der Tabelle Kunde gibt es genau die Kundennummern K1, K2 und K3. In die Tabelle Bestellung (BestellNr, Datum, KundenNr) sollen die folgenden Datensätze importiert werden. BestellNr ist Primärschlüssel, KundenNr Fremdschlüssel auf Kunde; die referenzielle Integrität ist aktiv.',
-    prompt: 'Markieren Sie alle Datensätze, die die Datenbank ablehnt.',
+    prompt: 'Markiere alle Datensätze, die die Datenbank ablehnt.',
     zeilen: [
       nein('B101 | 02.03. | K1', 'Neue BestellNr, vorhandener Kunde.'),
       nein(
@@ -547,7 +546,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Die Steuerkanzlei Albers & Partner fragt, wozu die Tabellen Mandant (MandantNr, Name) und Vorgang (VorgangNr, Betreff, MandantNr) Schlüssel brauchen.',
     prompt:
-        'Beschreiben Sie am Beispiel die Aufgabe des Primärschlüssels und die Aufgabe des Fremdschlüssels.',
+        'Beschreibe am Beispiel die Aufgabe des Primärschlüssels und die Aufgabe des Fremdschlüssels.',
     kriterien: [
       krit(
         'Primärschlüssel (MandantNr in Mandant, VorgangNr in Vorgang): identifiziert jeden Datensatz eindeutig.',
@@ -598,7 +597,7 @@ final List<Question> ihkA04Daten = [
         'table. This link keeps related\n'
         'data together and avoids\n'
         'storing the same data twice.',
-    prompt: 'Markieren Sie alle Aussagen, die sich dem Text entnehmen lassen.',
+    prompt: 'Markiere alle Aussagen, die sich dem Text entnehmen lassen.',
     zeilen: [
       ja(
         'Der Wert eines Primärschlüssels darf nicht leer sein.',
@@ -638,8 +637,8 @@ final List<Question> ihkA04Daten = [
     'i4-dl-5',
     'dm-schluessel',
     scenario:
-        'Sie ergänzen das Glossar im Wiki der IT-Abteilung um den Eintrag „Schlüssel in relationalen Datenbanken“.',
-    prompt: 'Setzen Sie die passenden Begriffe ein.',
+        'Du ergänzt das Glossar im Wiki der IT-Abteilung um den Eintrag „Schlüssel in relationalen Datenbanken“.',
+    prompt: 'Setze die passenden Begriffe ein.',
     text:
         'Ein {0} identifiziert jeden Datensatz einer Tabelle eindeutig. '
         'Ein {1} verweist auf den Primärschlüssel einer anderen Tabelle. '
@@ -664,7 +663,7 @@ final List<Question> ihkA04Daten = [
     'dm-schluessel',
     scenario:
         'Für die Datenbank der Pixelhafen Medien GmbH sind die Primärschlüssel festzulegen.',
-    prompt: 'Wählen Sie für jede Tabelle den geeigneten Primärschlüssel.',
+    prompt: 'Wähle für jede Tabelle den geeigneten Primärschlüssel.',
     zeilen: [
       ['Tabelle (Spalten)', 'Primärschlüssel'],
       [
@@ -698,7 +697,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'In der Datenbank der Elbtal Logistik AG verweist die Tabelle Lieferung über den Fremdschlüssel LieferantNr auf die Tabelle Lieferant. Eine Sachbearbeiterin will einen Lieferanten löschen, zu dem noch 14 Lieferungen gespeichert sind. Die Datenbank meldet einen Fehler.',
     prompt:
-        'Erläutern Sie, warum die Datenbank das Löschen ablehnt. Nennen Sie außerdem eine Möglichkeit, wie mit dem Lieferanten stattdessen verfahren werden kann.',
+        'Erläutere, warum die Datenbank das Löschen ablehnt. Nenne außerdem eine Möglichkeit, wie mit dem Lieferanten stattdessen verfahren werden kann.',
     kriterien: [
       krit(
         'Referenzielle Integrität: Die 14 Lieferungen würden sonst auf einen nicht mehr vorhandenen Lieferanten verweisen (verwaiste Datensätze).',
@@ -757,7 +756,7 @@ final List<Question> ihkA04Daten = [
       ['6', 'B106', 'K2', 'Yilmaz', 'Kassel', 'Spaten'],
     ],
     prompt:
-        'Markieren Sie alle Zeilen, in denen der Ort geändert werden muss, damit die Daten widerspruchsfrei bleiben.',
+        'Markiere alle Zeilen, in denen der Ort geändert werden muss, damit die Daten widerspruchsfrei bleiben.',
     zeilen: [
       nein('Zeile 1', 'Kunde Brandt (K1) wohnt weiter in Kassel.'),
       ja('Zeile 2', 'Bestellung der Kundin Yilmaz (K2).'),
@@ -786,7 +785,7 @@ final List<Question> ihkA04Daten = [
       ['P3', 'Onlineshop', 'Bäckerei Krume', '0341 5550101'],
     ],
     prompt:
-        'Erklären Sie anhand der Tabelle den Begriff Redundanz und beschreiben Sie ein Problem, das dadurch entstehen kann.',
+        'Erkläre anhand der Tabelle den Begriff Redundanz und beschreibe ein Problem, das dadurch entstehen kann.',
     kriterien: [
       krit(
         'Redundanz: Dieselbe Information (Kundenname und Telefonnummer) ist mehrfach gespeichert.',
@@ -833,7 +832,7 @@ final List<Question> ihkA04Daten = [
     'dm-normalisierung',
     scenario:
         'Die Tabelle Kurstermin der Kessler & Brandt IT-Systemhaus GmbH hat die Spalten KursNr, TeilnehmerNr, Kurstitel, Teilnehmername, RaumNr und Raumgröße. Primärschlüssel ist KursNr + TeilnehmerNr. Der Kurstitel hängt nur von der KursNr ab; jeder Kurs findet in genau einem Raum statt, die Raumgröße hängt von der RaumNr ab. Alle Werte sind atomar.',
-    prompt: 'Ergänzen Sie die Beurteilung der Tabelle.',
+    prompt: 'Ergänze die Beurteilung der Tabelle.',
     text:
         'Die Tabelle erfüllt die {0}, weil alle Werte atomar sind. '
         'Der Kurstitel hängt nur von einem Teil des Schlüssels ab - eine {1} Abhängigkeit, die die {2} verletzt. '
@@ -862,7 +861,7 @@ final List<Question> ihkA04Daten = [
       ['S3', 'Schubmast', 'Liftwerk', '0391 5550177'],
     ],
     prompt:
-        'Beschreiben Sie anhand der Tabelle zwei Anomalien, die beim Arbeiten mit diesen Daten auftreten können.',
+        'Beschreibe anhand der Tabelle zwei Anomalien, die beim Arbeiten mit diesen Daten auftreten können.',
     kriterien: [
       krit(
         'Änderungsanomalie: Ändert sich die Telefonnummer von Hubtec und wird sie nur in einer Zeile angepasst, widersprechen sich die Daten.',
@@ -912,7 +911,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Die Grünwerk Gartenbedarf GmbH testet eine neue Version ihres Webshops. Im Testprotokoll steht diese Adresse: https://shop.gruenwerk.example:8443/artikel/liste?kat=rasen#top',
     prompt:
-        'Zerlegen Sie die URL: Tragen Sie zu jedem Bestandteil den Wert aus der Adresse ein.',
+        'Zerlege die URL: Trage zu jedem Bestandteil den Wert aus der Adresse ein.',
     zeilen: [
       ['Bestandteil', 'Wert'],
       [
@@ -946,7 +945,7 @@ final List<Question> ihkA04Daten = [
     'wi-url',
     scenario:
         'Ein neuer Kollege im Kundenservice soll Fehlermeldungen mit URL besser einordnen können.',
-    prompt: 'Ordnen Sie jedem Bestandteil einer URL seine Aufgabe zu.',
+    prompt: 'Ordne jedem Bestandteil einer URL seine Aufgabe zu.',
     paare: [
       paar('Schema', 'legt das Protokoll fest'),
       paar('Host', 'benennt den Server'),
@@ -966,7 +965,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Beschäftigte der Grünwerk Gartenbedarf GmbH erhalten E-Mails mit Links, die angeblich zum Firmenportal führen. Die echte Domain des Unternehmens ist gruenwerk.example.',
     prompt:
-        'Markieren Sie alle Links, die NICHT zu einem Server der Domain gruenwerk.example führen.',
+        'Markiere alle Links, die NICHT zu einem Server der Domain gruenwerk.example führen.',
     zeilen: [
       nein(
         'https://portal.gruenwerk.example/login',
@@ -1005,7 +1004,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Die Seite https://www.pixelhafen.example/kunden/projekte/liste.html enthält mehrere Links.',
     prompt:
-        'Geben Sie an, welche Adresse der Browser beim Klick auf den jeweiligen Link aufruft.',
+        'Gib an, welche Adresse der Browser beim Klick auf den jeweiligen Link aufruft.',
     text:
         'href="details.html" führt zu {0}\n'
         'href="../kontakt.html" führt zu {1}\n'
@@ -1037,7 +1036,7 @@ final List<Question> ihkA04Daten = [
     'wi-http',
     scenario:
         'Im Zugriffsprotokoll des Grünwerk-Webshops tauchen verschiedene HTTP-Statuscodes auf. Für die Fehlersuche soll geklärt werden, was sie bedeuten und wo die Ursache liegt.',
-    prompt: 'Vervollständigen Sie die Tabelle.',
+    prompt: 'Vervollständige die Tabelle.',
     zeilen: [
       ['Code', 'Bedeutung', 'Ursache liegt'],
       [
@@ -1097,9 +1096,9 @@ final List<Question> ihkA04Daten = [
     'i4-wh-2',
     'wi-http',
     scenario:
-        'Kunden der Grünwerk Gartenbedarf GmbH melden, dass der Webshop zeitweise nicht funktioniert. Sie sehen sich einen Auszug aus dem Zugriffsprotokoll des Webservers an (Uhrzeit, Methode, Pfad, Statuscode).',
+        'Kunden der Grünwerk Gartenbedarf GmbH melden, dass der Webshop zeitweise nicht funktioniert. Du siehst dir einen Auszug aus dem Zugriffsprotokoll des Webservers an (Uhrzeit, Methode, Pfad, Statuscode).',
     prompt:
-        'Markieren Sie alle Zeilen, die auf einen Fehler auf der Seite des Servers hinweisen.',
+        'Markiere alle Zeilen, die auf einen Fehler auf der Seite des Servers hinweisen.',
     zeilen: [
       nein('10:02:11 GET /artikel/17 200', '200 OK - erfolgreich.'),
       nein(
@@ -1138,7 +1137,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Die Steuerkanzlei Albers & Partner will ein Mandantenportal anbieten. Ein Partner fragt, warum das Portal nur über HTTPS und nicht über HTTP erreichbar sein soll.',
     prompt:
-        'Beschreiben Sie zwei Vorteile, die HTTPS gegenüber HTTP für das Mandantenportal hat.',
+        'Beschreibe zwei Vorteile, die HTTPS gegenüber HTTP für das Mandantenportal hat.',
     kriterien: [
       krit(
         'Vertraulichkeit: Die Daten (Anmeldedaten, Dokumente) werden per TLS verschlüsselt übertragen und können nicht mitgelesen werden.',
@@ -1185,7 +1184,7 @@ final List<Question> ihkA04Daten = [
     'wi-http',
     scenario:
         'Ein Mandant meldet sich am Portal der Kanzlei an. Der Browser schickt das Formular mit Benutzername und Passwort über HTTPS an den Server portal.albers.example.',
-    prompt: 'Ergänzen Sie die Anfrage und die Aussagen dazu.',
+    prompt: 'Ergänze die Anfrage und die Aussagen dazu.',
     text:
         '{0} /login HTTP/1.1\n'
         'Host: {1}\n'
@@ -1220,7 +1219,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Eine Kundin ruft im Grünwerk-Webshop die Seite https://shop.gruenwerk.example/angebote auf. Die Seite ist dynamisch: Die aktuellen Angebote stehen in einer Datenbank.',
     prompt:
-        'Bringen Sie die Schritte vom Absenden der Adresse bis zur fertigen Seite in die richtige Reihenfolge.',
+        'Bringe die Schritte vom Absenden der Adresse bis zur fertigen Seite in die richtige Reihenfolge.',
     items: [
       'DNS liefert die IP-Adresse zu shop.gruenwerk.example',
       'Browser baut die TCP-Verbindung zum Server auf',
@@ -1240,7 +1239,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Die Pixelhafen Medien GmbH berät einen Handwerksbetrieb, der bisher eine statische Website hat. Der Betrieb möchte künftig Referenzen selbst pflegen und einen Kundenbereich mit Anmeldung anbieten.',
     prompt:
-        'Erläutern Sie den Unterschied zwischen einer statischen und einer dynamischen Website.',
+        'Erläutere den Unterschied zwischen einer statischen und einer dynamischen Website.',
     kriterien: [
       krit(
         'Statisch: Die Seiten liegen als fertige Dateien auf dem Server; jeder Besucher erhält denselben Inhalt.',
@@ -1277,7 +1276,7 @@ final List<Question> ihkA04Daten = [
     'wi-aufruf',
     scenario:
         'Die Pixelhafen Medien GmbH sortiert Kundenanfragen danach, ob eine statische Website genügt oder eine dynamische nötig ist.',
-    prompt: 'Ordnen Sie jede Anforderung der passenden Art von Website zu.',
+    prompt: 'Ordne jede Anforderung der passenden Art von Website zu.',
     buckets: ['statische Website genügt', 'dynamische Website nötig'],
     items: [
       zu(
@@ -1321,7 +1320,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Für den Kundenbereich des Handwerksbetriebs soll die Website künftig dynamisch erzeugt werden. Der Kunde fragt, womit solche Seiten programmiert werden.',
     prompt:
-        'Nennen Sie drei Programmiersprachen, mit denen sich dynamische Webinhalte auf dem Server erzeugen lassen.',
+        'Nenne drei Programmiersprachen, mit denen sich dynamische Webinhalte auf dem Server erzeugen lassen.',
     kriterien: [
       krit('PHP als serverseitige Sprache', stichwoerter: ['PHP']),
       krit('Python als serverseitige Sprache', stichwoerter: ['Python']),
@@ -1346,8 +1345,8 @@ final List<Question> ihkA04Daten = [
     'i4-wt-1',
     'wi-html',
     scenario:
-        'Eine Auszubildende der Pixelhafen Medien GmbH hat eine Angebotsseite geschrieben. Der Browser zeigt die Seite fehlerhaft an. Sie prüfen den Quelltext.',
-    prompt: 'Markieren Sie alle Zeilen, die einen Syntaxfehler enthalten.',
+        'Eine Auszubildende der Pixelhafen Medien GmbH hat eine Angebotsseite geschrieben. Der Browser zeigt die Seite fehlerhaft an. Du prüfst den Quelltext.',
+    prompt: 'Markiere alle Zeilen, die einen Syntaxfehler enthalten.',
     zeilen: [
       nein('<!DOCTYPE html>', 'Korrekte Dokumenttyp-Angabe.'),
       nein('<html lang="de">', 'Korrekt, mit Sprachangabe.'),
@@ -1380,7 +1379,7 @@ final List<Question> ihkA04Daten = [
     'wi-html',
     scenario:
         'Für die Angebotsseite fehlen noch einige Stellen in HTML und CSS. Hinweise sollen rot erscheinen; sie sind im HTML mit class="hinweis" ausgezeichnet.',
-    prompt: 'Ergänzen Sie den Quelltext.',
+    prompt: 'Ergänze den Quelltext.',
     text:
         '<h1>Angebote der Woche{0}\n'
         '<a {1}="agb.html">AGB</a>\n'
@@ -1409,8 +1408,8 @@ final List<Question> ihkA04Daten = [
     'i4-wt-3',
     'wi-html',
     scenario:
-        'Sie erstellen für neue Auszubildende eine Übersicht der wichtigsten HTML-Elemente.',
-    prompt: 'Ordnen Sie jedem Element seine Bedeutung zu.',
+        'Du erstellst für neue Auszubildende eine Übersicht der wichtigsten HTML-Elemente.',
+    prompt: 'Ordne jedem Element seine Bedeutung zu.',
     paare: [
       paar('<h1>', 'Hauptüberschrift'),
       paar('<p>', 'Absatz'),
@@ -1430,7 +1429,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Auf den alten Seiten eines Kunden der Pixelhafen Medien GmbH stehen Farben und Schriftgrößen direkt in jedem einzelnen HTML-Element. Beim Relaunch soll die Gestaltung in eine zentrale CSS-Datei ausgelagert werden.',
     prompt:
-        'Erläutern Sie zwei Vorteile der Trennung von Struktur (HTML) und Gestaltung (CSS).',
+        'Erläutere zwei Vorteile der Trennung von Struktur (HTML) und Gestaltung (CSS).',
     kriterien: [
       krit(
         'Zentrale Pflege: Eine Änderung in der CSS-Datei wirkt auf alle Seiten - weniger Aufwand.',
@@ -1492,7 +1491,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Der Webshop der Grünwerk Gartenbedarf GmbH muss nach dem Barrierefreiheitsstärkungsgesetz barrierefrei sein. Bei einer Prüfung fällt auf: Produktbilder haben keine Beschreibung, hellgraue Schrift steht auf weißem Grund, das Menü lässt sich nur mit der Maus öffnen und Produktvideos haben keinen Text.',
     prompt:
-        'Beschreiben Sie drei Maßnahmen, mit denen der Webshop barrierefreier wird.',
+        'Beschreibe drei Maßnahmen, mit denen der Webshop barrierefreier wird.',
     kriterien: [
       krit(
         'Produktbilder erhalten aussagekräftige Alternativtexte, die Screenreader vorlesen.',
@@ -1542,9 +1541,9 @@ final List<Question> ihkA04Daten = [
     'i4-wf-2',
     'wi-barrierefrei',
     scenario:
-        'Vor der Freigabe prüfen Sie einen Ausschnitt der Bestellseite auf Barrierefreiheit.',
+        'Vor der Freigabe prüfst du einen Ausschnitt der Bestellseite auf Barrierefreiheit.',
     prompt:
-        'Markieren Sie alle Zeilen, die gegen Regeln der Barrierefreiheit verstoßen.',
+        'Markiere alle Zeilen, die gegen Regeln der Barrierefreiheit verstoßen.',
     zeilen: [
       nein(
         '<h1>Ihre Bestellung</h1>',
@@ -1588,8 +1587,8 @@ final List<Question> ihkA04Daten = [
     'i4-wf-3',
     'wi-barrierefrei',
     scenario:
-        'Für das Pflichtenheft des Webshop-Relaunchs fassen Sie die Anforderungen an die Barrierefreiheit zusammen.',
-    prompt: 'Setzen Sie die passenden Begriffe ein.',
+        'Für das Pflichtenheft des Webshop-Relaunchs fasst du die Anforderungen an die Barrierefreiheit zusammen.',
+    prompt: 'Setze die passenden Begriffe ein.',
     text:
         'Die meisten privaten Online-Shops müssen seit dem 28.06.2025 nach dem {0} barrierefrei sein. '
         'Maßstab sind die vier Prinzipien der {1}: wahrnehmbar, bedienbar, verständlich und robust. '
@@ -1615,8 +1614,7 @@ final List<Question> ihkA04Daten = [
     'md-zahlensysteme',
     scenario:
         'In der Dokumentation eines Netzwerkgeräts der Elbtal Logistik AG stehen Registerwerte teils dezimal, teils binär und teils hexadezimal.',
-    prompt:
-        'Vervollständigen Sie die Tabelle. Schreiben Sie Binärzahlen mit 8 Bit.',
+    prompt: 'Vervollständige die Tabelle. Schreibe Binärzahlen mit 8 Bit.',
     zeilen: [
       ['dezimal', 'binär', 'hexadezimal'],
       [
@@ -1648,7 +1646,7 @@ final List<Question> ihkA04Daten = [
       BitZeile('A', '1011 0110'),
       BitZeile('B', '0100 1101'),
     ]),
-    prompt: 'Ermitteln Sie die Werte der beiden Bytes.',
+    prompt: 'Ermittle die Werte der beiden Bytes.',
     text:
         'A dezimal: {0}\n'
         'A hexadezimal: {1}\n'
@@ -1671,7 +1669,7 @@ final List<Question> ihkA04Daten = [
     'md-zahlensysteme',
     scenario:
         'Für die Nummerierung von Lagerplätzen, Geräten und Farben soll geklärt werden, wie viele Werte sich mit einer bestimmten Anzahl Bit darstellen lassen. Die erste Zeile ist als Muster ausgefüllt.',
-    prompt: 'Ergänzen Sie die Tabelle.',
+    prompt: 'Ergänze die Tabelle.',
     zeilen: [
       ['Bit', 'Anzahl Werte', 'größter Wert (ab 0)'],
       ['4', '16', '15'],
@@ -1688,7 +1686,7 @@ final List<Question> ihkA04Daten = [
     'md-zahlensysteme',
     scenario:
         'In verschiedenen Protokolldateien steht derselbe Sensorwert 90 (dezimal) in unterschiedlicher Schreibweise - daneben aber auch andere Werte.',
-    prompt: 'Markieren Sie alle Angaben, die dem Dezimalwert 90 entsprechen.',
+    prompt: 'Markiere alle Angaben, die dem Dezimalwert 90 entsprechen.',
     zeilen: [
       ja('hexadezimal 5A', '5 × 16 + 10 = 90.'),
       nein('hexadezimal A5', '10 × 16 + 5 = 165 - Ziffern vertauscht.'),
@@ -1709,8 +1707,7 @@ final List<Question> ihkA04Daten = [
     'md-zeichen',
     scenario:
         'Eine Schnittstelle der Grünwerk Gartenbedarf GmbH begrenzt Kundennamen auf eine feste Anzahl Byte. Die Daten werden in UTF-8 übertragen.',
-    prompt:
-        'Geben Sie an, wie viele Byte das Zeichen bzw. der Text in UTF-8 belegt.',
+    prompt: 'Gib an, wie viele Byte das Zeichen bzw. der Text in UTF-8 belegt.',
     zeilen: [
       ['Zeichen / Text', 'Codepoint', 'Byte in UTF-8'],
       ['A', 'U+0041', zahl(1)],
@@ -1727,14 +1724,14 @@ final List<Question> ihkA04Daten = [
     'i4-mc-2',
     'md-zeichen',
     scenario:
-        'Für eine Prüfroutine brauchen Sie einige ASCII-Codes. Bekannt sind die Werte aus der Tabelle.',
+        'Für eine Prüfroutine brauchst du einige ASCII-Codes. Bekannt sind die Werte aus der Tabelle.',
     table: [
       ['Zeichen', 'dezimal'],
       ['0', '48'],
       ['A', '65'],
       ['a', '97'],
     ],
-    prompt: 'Ermitteln Sie die fehlenden Werte.',
+    prompt: 'Ermittle die fehlenden Werte.',
     text:
         '„D“ dezimal: {0}\n'
         '„d“ dezimal: {1}\n'
@@ -1756,7 +1753,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Nach dem Import einer Kundenliste aus dem alten Warenwirtschaftssystem steht im Webshop der Grünwerk Gartenbedarf GmbH „GÃ¤rtner“ statt „Gärtner“ und „MÃ¼ller“ statt „Müller“.',
     prompt:
-        'Erläutern Sie die Ursache des Fehlers und beschreiben Sie eine Maßnahme, mit der er sich künftig vermeiden lässt.',
+        'Erläutere die Ursache des Fehlers und beschreibe eine Maßnahme, mit der er sich künftig vermeiden lässt.',
     kriterien: [
       krit(
         'Ursache: Die Datei ist in UTF-8 kodiert, wird aber mit einer anderen Kodierung (z. B. ISO 8859-1) gelesen - die zwei Byte eines Umlauts erscheinen als zwei Zeichen.',
@@ -1793,8 +1790,8 @@ final List<Question> ihkA04Daten = [
     'i4-mc-4',
     'md-zeichen',
     scenario:
-        'In einem Übergabeprotokoll tauchen mehrere Begriffe zu Zeichensätzen auf, die Sie für die Kollegen einordnen.',
-    prompt: 'Ordnen Sie jedem Begriff die passende Beschreibung zu.',
+        'In einem Übergabeprotokoll tauchen mehrere Begriffe zu Zeichensätzen auf, die du für die Kollegen einordnest.',
+    prompt: 'Ordne jedem Begriff die passende Beschreibung zu.',
     paare: [
       paar('ASCII', '7 Bit, 128 Zeichen, keine Umlaute'),
       paar('ISO 8859-1', '8 Bit, westeuropäische Zeichen'),
@@ -1815,7 +1812,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Im Lager der Elbtal Logistik AG werden Lieferscheine gescannt und archiviert. Rund um die Uhr fallen im Durchschnitt 22 Lieferscheine pro Stunde an, ein Scan ist 96 kB groß (1 kB = 1.000 Byte, 1 KiB = 1.024 Byte). Das Archivsystem verringert den Speicherbedarf durch Kompression um 25 %. Ein Jahr hat 365 Tage.',
     prompt:
-        'Ermitteln Sie schrittweise den Speicherbedarf. Runden Sie nur das Endergebnis auf zwei Nachkommastellen.',
+        'Ermittle schrittweise den Speicherbedarf. Runde nur das Endergebnis auf zwei Nachkommastellen.',
     text:
         'Lieferscheine pro Tag: {0}\n'
         'Speicherbedarf pro Tag in KiB: {1}\n'
@@ -1843,7 +1840,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Die Grünwerk Gartenbedarf GmbH fotografiert 2.500 Artikel für den Webshop. Die Kamera liefert Bilder mit 4.000 × 3.000 Pixeln und 24 Bit Farbtiefe. Vor dem Speichern werden die Bilder als JPEG auf 15 % ihrer unkomprimierten Größe komprimiert. Es gilt 1 MB = 1.000.000 Byte und 1 GiB = 1.024³ Byte.',
     prompt:
-        'Berechnen Sie die Zwischenschritte. Runden Sie den letzten Wert auf zwei Nachkommastellen.',
+        'Berechne die Zwischenschritte. Runde den letzten Wert auf zwei Nachkommastellen.',
     zeilen: [
       ['Schritt', 'Ergebnis'],
       ['Ein Foto unkomprimiert in MB', zahl(36)],
@@ -1861,7 +1858,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Die Hotline der Kessler & Brandt IT-Systemhaus GmbH zeichnet mit Einwilligung der Kunden Gespräche zu Schulungszwecken auf: 16 kHz Abtastrate, 16 Bit, Mono, unkomprimiert. Ein Gespräch dauert im Schnitt 4 Minuten, pro Tag werden 150 Gespräche aufgezeichnet. Es gilt 1 MB = 1.000.000 Byte und 1 MiB = 1.024² Byte.',
     prompt:
-        'Berechnen Sie den Speicherbedarf. Runden Sie den letzten Wert auf zwei Nachkommastellen.',
+        'Berechne den Speicherbedarf. Runde den letzten Wert auf zwei Nachkommastellen.',
     text:
         'Ein Gespräch in Byte: {0}\n'
         'Alle Gespräche eines Tages in MB: {1}\n'
@@ -1881,7 +1878,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Die Elbtal Logistik AG plant für den Außenbereich 8 Kameras. Jede Kamera liefert 2.560 × 1.440 Pixel mit 24 Bit Farbtiefe und 20 Bildern pro Sekunde. Der Videocodec komprimiert den Datenstrom auf 2 % der unkomprimierten Datenrate. Die Aufnahmen aller Kameras sollen 7 Tage (168 Stunden) gespeichert werden. Es gilt 1 Mbit = 1.000.000 Bit und 1 TiB = 1.024⁴ Byte.',
     prompt:
-        'Berechnen Sie Datenrate und Speicherbedarf. Rechnen Sie in den Folgeschritten mit dem gerundeten Wert weiter.',
+        'Berechne Datenrate und Speicherbedarf. Rechne in den Folgeschritten mit dem gerundeten Wert weiter.',
     text:
         'Unkomprimierte Datenrate einer Kamera in Mbit/s (eine Nachkommastelle): {0}\n'
         'Komprimierte Datenrate in Mbit/s (auf volle Mbit/s aufrunden): {1}\n'
@@ -1904,8 +1901,8 @@ final List<Question> ihkA04Daten = [
     'i4-md-5',
     'md-datenmengen',
     scenario:
-        'Ein Auszubildender der Pixelhafen Medien GmbH berechnet die Größe eines unkomprimierten Screenshots (1.920 × 1.080 Pixel, 24 Bit Farbtiefe) in MiB. Jede Zeile rechnet mit dem richtigen Ergebnis der Vorzeile weiter. Sie prüfen den Rechenweg.',
-    prompt: 'Markieren Sie alle Zeilen, die einen Fehler enthalten.',
+        'Ein Auszubildender der Pixelhafen Medien GmbH berechnet die Größe eines unkomprimierten Screenshots (1.920 × 1.080 Pixel, 24 Bit Farbtiefe) in MiB. Jede Zeile rechnet mit dem richtigen Ergebnis der Vorzeile weiter. Du prüfst den Rechenweg.',
+    prompt: 'Markiere alle Zeilen, die einen Fehler enthalten.',
     zeilen: [
       nein('1.920 × 1.080 = 2.073.600 Pixel', 'Breite × Höhe stimmt.'),
       nein(
@@ -1931,8 +1928,8 @@ final List<Question> ihkA04Daten = [
     'i4-md-6',
     'md-datenmengen',
     scenario:
-        'In Angeboten und Datenblättern stehen Speichergrößen mal mit dezimalen (kB, MB, GB), mal mit binären Vorsätzen (KiB, MiB, GiB, TiB). Für den Angebotsvergleich rechnen Sie um.',
-    prompt: 'Rechnen Sie die Angaben um.',
+        'In Angeboten und Datenblättern stehen Speichergrößen mal mit dezimalen (kB, MB, GB), mal mit binären Vorsätzen (KiB, MiB, GiB, TiB). Für den Angebotsvergleich rechnest du um.',
+    prompt: 'Rechne die Angaben um.',
     zeilen: [
       ['gegeben', 'gesucht in', 'Ergebnis'],
       ['3 MB', 'kB', zahl(3000)],
@@ -1952,7 +1949,7 @@ final List<Question> ihkA04Daten = [
     'md-datenmengen',
     scenario:
         'Für das Belegarchiv der Elbtal Logistik AG werden 34 GiB Cloud-Speicher benötigt. Der Anbieter verkauft Speicher nur in Paketen zu je 10 GiB; ein Paket kostet 12 € pro Jahr. Der Bedarf bleibt über die Laufzeit gleich.',
-    prompt: 'Berechnen Sie die Speicherkosten für 5 Jahre.',
+    prompt: 'Berechne die Speicherkosten für 5 Jahre.',
     answer: 240,
     unit: '€',
     explanation:
@@ -1967,7 +1964,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Die Kessler & Brandt IT-Systemhaus GmbH sichert für die Steuerkanzlei Albers & Partner nachts 72 GB (1 GB = 1.000.000.000 Byte) in ein Rechenzentrum. Der Anschluss der Kanzlei bietet 100 Mbit/s im Download und 25 Mbit/s im Upload. Durch Protokoll-Overhead steigt die zu übertragende Datenmenge um 10 %.',
     prompt:
-        'Berechnen Sie schrittweise die Dauer der Sicherung. Runden Sie den letzten Wert auf zwei Nachkommastellen.',
+        'Berechne schrittweise die Dauer der Sicherung. Runde den letzten Wert auf zwei Nachkommastellen.',
     text:
         'Datenmenge in Mbit: {0}\n'
         'Datenmenge mit Overhead in Mbit: {1}\n'
@@ -1999,7 +1996,7 @@ final List<Question> ihkA04Daten = [
         'Power supply:  PoE\n'
         'Network port:  100 Mbit/s',
     prompt:
-        'Entnehmen Sie dem Datenblatt die nötigen Werte und berechnen Sie die Datenraten (1 Mbit = 1.000.000 Bit).',
+        'Entnimm dem Datenblatt die nötigen Werte und berechne die Datenraten (1 Mbit = 1.000.000 Bit).',
     text:
         'Bilder pro Sekunde: {0}\n'
         'Unkomprimierte Datenrate in Mbit/s (eine Nachkommastelle): {1}\n'
@@ -2026,7 +2023,7 @@ final List<Question> ihkA04Daten = [
     'md-uebertragung',
     scenario:
         'Die IT der Grünwerk Gartenbedarf GmbH schätzt ab, wie lange typische Übertragungen dauern. Es gilt 1 MB = 1.000.000 Byte, 1 GB = 1.000 MB; Overhead bleibt unberücksichtigt.',
-    prompt: 'Berechnen Sie die Übertragungsdauer in Sekunden.',
+    prompt: 'Berechne die Übertragungsdauer in Sekunden.',
     zeilen: [
       ['Datenmenge', 'Datenrate', 'Dauer in s'],
       ['500 MB', '100 Mbit/s', zahl(40)],
@@ -2042,8 +2039,8 @@ final List<Question> ihkA04Daten = [
     'i4-mu-4',
     'md-uebertragung',
     scenario:
-        'Die Filiale Göttingen soll eine 3-GB-Datei (1 GB = 1.000 MB) in die Zentrale hochladen. Der Anschluss der Filiale hat 100 Mbit/s im Download und 20 Mbit/s im Upload. Ein Kollege hat die Dauer berechnet; Sie prüfen seinen Rechenweg.',
-    prompt: 'Markieren Sie alle Zeilen, die einen Fehler enthalten.',
+        'Die Filiale Göttingen soll eine 3-GB-Datei (1 GB = 1.000 MB) in die Zentrale hochladen. Der Anschluss der Filiale hat 100 Mbit/s im Download und 20 Mbit/s im Upload. Ein Kollege hat die Dauer berechnet; du prüfst seinen Rechenweg.',
+    prompt: 'Markiere alle Zeilen, die einen Fehler enthalten.',
     zeilen: [
       nein('3 GB = 3.000 MB', 'Dezimal umgerechnet - richtig.'),
       nein('3.000 MB × 8 = 24.000 Mbit', 'Byte in Bit: × 8 - richtig.'),
@@ -2072,7 +2069,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Für die Datensicherung der Kanzlei wurde eine Übertragungsdauer von rund 7 Stunden berechnet. In der ersten Nacht dauert die Sicherung jedoch fast 10 Stunden.',
     prompt:
-        'Erläutern Sie zwei mögliche Gründe, warum eine Übertragung in der Praxis länger dauert als berechnet.',
+        'Erläutere zwei mögliche Gründe, warum eine Übertragung in der Praxis länger dauert als berechnet.',
     kriterien: [
       krit(
         'Die Leitung wird mit anderen Anwendungen oder Nutzern geteilt - es steht nicht die volle Datenrate zur Verfügung.',
@@ -2131,7 +2128,7 @@ final List<Question> ihkA04Daten = [
     'md-uebertragung',
     scenario:
         'In der neuen Lagerhalle der Elbtal Logistik AG senden 12 Kameras ihre Bilder über einen gemeinsamen Uplink mit 100 Mbit/s an den Aufzeichnungsserver. Jede Kamera erzeugt einen Datenstrom von 6 Mbit/s. Der Uplink soll höchstens zu 80 % ausgelastet werden.',
-    prompt: 'Prüfen Sie, ob der Uplink ausreicht.',
+    prompt: 'Prüfe, ob der Uplink ausreicht.',
     text:
         'Datenrate aller Kameras in Mbit/s: {0}\n'
         'Zulässige Auslastung des Uplinks in Mbit/s: {1}\n'
@@ -2158,7 +2155,7 @@ final List<Question> ihkA04Daten = [
     'md-kompression',
     scenario:
         'Eine Videodatei der Pixelhafen Medien GmbH ist unkomprimiert 80 MB groß. In drei Angeboten von Software-Herstellern wird die Kompression unterschiedlich beschrieben.',
-    prompt: 'Berechnen Sie jeweils die Größe der komprimierten Datei.',
+    prompt: 'Berechne jeweils die Größe der komprimierten Datei.',
     text:
         'Angebot A, „verringert die Größe um 30 %“: {0} MB\n'
         'Angebot B, „verringert die Größe auf 30 %“: {1} MB\n'
@@ -2180,7 +2177,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Die Pixelhafen Medien GmbH bereitet für einen Kunden Bildmaterial auf: Produktfotos für die Website und eingescannte Vertragsunterlagen für das Archiv. Der Kunde fragt, ob er alles einfach „stark als JPEG komprimieren“ kann.',
     prompt:
-        'Erläutern Sie den Unterschied zwischen verlustfreier und verlustbehafteter Kompression und geben Sie an, welche Art für die beiden Einsatzzwecke jeweils geeignet ist.',
+        'Erläutere den Unterschied zwischen verlustfreier und verlustbehafteter Kompression und gib an, welche Art für die beiden Einsatzzwecke jeweils geeignet ist.',
     kriterien: [
       krit(
         'Verlustfrei: Das Original lässt sich exakt wiederherstellen (z. B. PNG, ZIP).',
@@ -2246,7 +2243,7 @@ final List<Question> ihkA04Daten = [
         'was used. Most video codecs are\n'
         'lossy: details that viewers\n'
         'hardly notice are removed.',
-    prompt: 'Markieren Sie alle Aussagen, die sich dem Text entnehmen lassen.',
+    prompt: 'Markiere alle Aussagen, die sich dem Text entnehmen lassen.',
     zeilen: [
       ja(
         'Der Container hält Video- und Tonspuren zusammen.',
@@ -2286,8 +2283,8 @@ final List<Question> ihkA04Daten = [
     'i4-mx-4',
     'md-kompression',
     scenario:
-        'Für die Medienrichtlinie der Agentur stellen Sie die wichtigsten Dateiformate mit ihren Eigenschaften zusammen.',
-    prompt: 'Ordnen Sie jedem Format die passende Eigenschaft zu.',
+        'Für die Medienrichtlinie der Agentur stellst du die wichtigsten Dateiformate mit ihren Eigenschaften zusammen.',
+    prompt: 'Ordne jedem Format die passende Eigenschaft zu.',
     paare: [
       paar('JPEG', 'verlustbehaftet, für Fotos'),
       paar('PNG', 'verlustfreies Rasterbild mit Transparenz'),
@@ -2307,7 +2304,7 @@ final List<Question> ihkA04Daten = [
     'i4-ig-1',
     'ki-grundlagen',
     scenario:
-        'Die Geschäftsführung der Elbtal Logistik AG hat einen englischen Fachartikel über künstliche Intelligenz erhalten und bittet Sie um eine kurze Auswertung.',
+        'Die Geschäftsführung der Elbtal Logistik AG hat einen englischen Fachartikel über künstliche Intelligenz erhalten und bittet dich um eine kurze Auswertung.',
     code:
         'Artificial intelligence (AI) is\n'
         'the ability of computer systems\n'
@@ -2322,7 +2319,7 @@ final List<Question> ihkA04Daten = [
         'e-mails and detecting faulty\n'
         'products in photos.',
     prompt:
-        'Beschreiben Sie auf Deutsch anhand des Textes, wodurch sich maschinelles Lernen von klassischer Programmierung unterscheidet. Nennen Sie außerdem zwei der im Text genannten Anwendungen.',
+        'Beschreibe auf Deutsch anhand des Textes, wodurch sich maschinelles Lernen von klassischer Programmierung unterscheidet. Nenne außerdem zwei der im Text genannten Anwendungen.',
     kriterien: [
       krit(
         'Unterschied: Das System erhält keine fest programmierten Regeln, sondern lernt Muster aus vielen Beispieldaten.',
@@ -2371,7 +2368,7 @@ final List<Question> ihkA04Daten = [
       ['Spam (100)', '90', '10'],
       ['erwünscht (100)', '5', '95'],
     ],
-    prompt: 'Werten Sie den Test aus.',
+    prompt: 'Werte den Test aus.',
     text:
         'Richtig eingeordnete Mails: {0}\n'
         'Genauigkeit in Prozent: {1}\n'
@@ -2389,8 +2386,8 @@ final List<Question> ihkA04Daten = [
     'i4-ig-3',
     'ki-grundlagen',
     scenario:
-        'Für eine interne Schulung zur KI-Kompetenz erstellen Sie ein kurzes Glossar.',
-    prompt: 'Ordnen Sie jedem Begriff die passende Erklärung zu.',
+        'Für eine interne Schulung zur KI-Kompetenz erstellst du ein kurzes Glossar.',
+    prompt: 'Ordne jedem Begriff die passende Erklärung zu.',
     paare: [
       paar('Trainingsdaten', 'Beispiele, aus denen das Modell lernt'),
       paar('Label', 'richtige Antwort zu einem Beispiel'),
@@ -2410,7 +2407,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Die Elbtal Logistik AG lässt ein Modell trainieren, das auf Fotos beschädigte Pakete erkennt. Alle Trainingsfotos wurden in Halle 1 bei Tageslicht aufgenommen. Im Training erkennt das Modell 99 % der Fälle richtig, im Betrieb in der neuen Halle mit Kunstlicht nur noch 68 %.',
     prompt:
-        'Erläutern Sie die wahrscheinliche Ursache und beschreiben Sie eine Maßnahme, mit der sich das Ergebnis verbessern lässt.',
+        'Erläutere die wahrscheinliche Ursache und beschreibe eine Maßnahme, mit der sich das Ergebnis verbessern lässt.',
     kriterien: [
       krit(
         'Ursache: Die Trainingsdaten sind einseitig (nur Halle 1, nur Tageslicht) - das Modell ist darauf überangepasst (Overfitting) und verallgemeinert schlecht.',
@@ -2462,7 +2459,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Die Kessler & Brandt IT-Systemhaus GmbH möchte KI im Support einsetzen. Der Ablauf einer Störungsmeldung besteht aus fünf Schritten. Für den ersten Schritt ist die KI-Unterstützung als Muster eingetragen.',
     prompt:
-        'Wählen Sie zu jedem weiteren Prozessschritt die passende Möglichkeit der KI-Unterstützung.',
+        'Wähle zu jedem weiteren Prozessschritt die passende Möglichkeit der KI-Unterstützung.',
     zeilen: [
       ['Prozessschritt', 'KI-Unterstützung'],
       [
@@ -2508,7 +2505,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Einige Techniker der Kessler & Brandt IT-Systemhaus GmbH stehen der KI-gestützten Ticketbearbeitung skeptisch gegenüber. Die Teamleitung möchte in der nächsten Besprechung für die Einführung werben.',
     prompt:
-        'Beschreiben Sie zwei Argumente, die für den Einsatz von KI in der Ticketbearbeitung sprechen.',
+        'Beschreibe zwei Argumente, die für den Einsatz von KI in der Ticketbearbeitung sprechen.',
     kriterien: [
       krit(
         'Entlastung von Routinearbeit: Sortieren, Zusammenfassen und Entwürfe übernimmt die KI - es bleibt mehr Zeit für schwierige Fälle.',
@@ -2574,7 +2571,7 @@ final List<Question> ihkA04Daten = [
       ['Kosten der Arbeitszeit', '45 € je Stunde'],
     ],
     prompt:
-        'Berechnen Sie die Gesamtkosten im ersten Jahr einschließlich der ausgefallenen Arbeitszeit.',
+        'Berechne die Gesamtkosten im ersten Jahr einschließlich der ausgefallenen Arbeitszeit.',
     answer: 11850,
     unit: '€',
     explanation:
@@ -2586,7 +2583,7 @@ final List<Question> ihkA04Daten = [
     'ki-einsatz',
     scenario:
         'Ein Kollege beschwert sich, der KI-Assistent liefere nur unbrauchbare Antworten. Sein Prompt lautet: „Schreib was über Backups.“',
-    prompt: 'Nennen Sie vier Angaben, die ein guter Prompt enthalten sollte.',
+    prompt: 'Nenne vier Angaben, die ein guter Prompt enthalten sollte.',
     kriterien: [
       krit(
         'Rolle, aus deren Sicht geantwortet werden soll',
@@ -2631,7 +2628,7 @@ final List<Question> ihkA04Daten = [
     'i4-ir-1',
     'ki-grenzen',
     scenario:
-        'Ein Kunde fragt nach dem Router NetGate R20. Ein Kollege lässt die Antwort von einem KI-Chatbot formulieren. Sie vergleichen die Aussagen mit dem Datenblatt des Herstellers. Eine Zeitschrift namens „NetzProfi“ lässt sich nirgends finden.',
+        'Ein Kunde fragt nach dem Router NetGate R20. Ein Kollege lässt die Antwort von einem KI-Chatbot formulieren. Du vergleichst die Aussagen mit dem Datenblatt des Herstellers. Eine Zeitschrift namens „NetzProfi“ lässt sich nirgends finden.',
     table: [
       ['Merkmal', 'Datenblatt'],
       ['LAN-Ports', '4 × 1 Gbit/s'],
@@ -2640,7 +2637,7 @@ final List<Question> ihkA04Daten = [
       ['Garantie', '2 Jahre'],
     ],
     prompt:
-        'Markieren Sie alle Aussagen des Chatbots, die auf eine Halluzination hindeuten.',
+        'Markiere alle Aussagen des Chatbots, die auf eine Halluzination hindeuten.',
     zeilen: [
       nein(
         '„Der Router hat vier Gigabit-LAN-Ports.“',
@@ -2677,7 +2674,7 @@ final List<Question> ihkA04Daten = [
     scenario:
         'Die Grünwerk Gartenbedarf GmbH will im Webshop einen KI-Chatbot einsetzen, der Kundenfragen zu Bestellungen, Lieferzeiten und Reklamationen selbstständig beantwortet.',
     prompt:
-        'Beschreiben Sie zwei Risiken, die mit dem Einsatz des Chatbots verbunden sind.',
+        'Beschreibe zwei Risiken, die mit dem Einsatz des Chatbots verbunden sind.',
     kriterien: [
       krit(
         'Falsche Auskünfte (Halluzinationen), z. B. erfundene Lieferzeiten oder Zusagen - Folge: verärgerte Kunden, Imageschaden, rechtliche Ansprüche.',
@@ -2734,8 +2731,8 @@ final List<Question> ihkA04Daten = [
     'i4-ir-3',
     'ki-grenzen',
     scenario:
-        'Für die KI-Richtlinie der Pixelhafen Medien GmbH ordnen Sie jedem Risiko eine Gegenmaßnahme zu.',
-    prompt: 'Ordnen Sie jedem Risiko die passende Gegenmaßnahme zu.',
+        'Für die KI-Richtlinie der Pixelhafen Medien GmbH ordnest du jedem Risiko eine Gegenmaßnahme zu.',
+    prompt: 'Ordne jedem Risiko die passende Gegenmaßnahme zu.',
     paare: [
       paar('Halluzination', 'Fakten und Quellen nachprüfen'),
       paar('Bias', 'ausgewogene Trainingsdaten verwenden'),
@@ -2766,7 +2763,7 @@ final List<Question> ihkA04Daten = [
         'Finally, staff may trust the\n'
         'results too much and stop\n'
         'checking them.',
-    prompt: 'Nennen Sie auf Deutsch drei Risiken, die der Text beschreibt.',
+    prompt: 'Nenne auf Deutsch drei Risiken, die der Text beschreibt.',
     kriterien: [
       krit(
         'Antworten, die richtig klingen, aber falsch sind',

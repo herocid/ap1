@@ -11,7 +11,7 @@ final List<Question> ihkA04Entwicklung = [
     scenario:
         'Ein Sanitätshaus möchte seine Lagerverwaltung ablösen und holt dafür Angebote ein. Die Geschäftsführerin fragt, wozu sie neben dem Lastenheft später noch ein Pflichtenheft braucht.',
     prompt:
-        'Beschreiben Sie den Unterschied zwischen Lastenheft und Pflichtenheft. (4 P.)',
+        'Beschreibe den Unterschied zwischen Lastenheft und Pflichtenheft. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -52,7 +52,7 @@ final List<Question> ihkA04Entwicklung = [
     'af-dokumente',
     scenario:
         'Ein Fitnessstudio will eine App für Kursbuchungen entwickeln lassen. Du hilfst der Inhaberin, das Lastenheft zu gliedern.',
-    prompt: 'Nennen Sie vier Inhalte, die in ein Lastenheft gehören. (4 P.)',
+    prompt: 'Nenne vier Inhalte, die in ein Lastenheft gehören. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -111,7 +111,7 @@ final List<Question> ihkA04Entwicklung = [
     'af-dokumente',
     scenario:
         'Für eine Projektmappe sollst du Lastenheft und Pflichtenheft gegenüberstellen.',
-    prompt: 'Vervollständigen Sie die Tabelle. (4 P.)',
+    prompt: 'Vervollständige die Tabelle. (4 P.)',
     zeilen: [
       ['Merkmal', 'Lastenheft', 'Pflichtenheft'],
       [
@@ -154,7 +154,7 @@ final List<Question> ihkA04Entwicklung = [
     scenario:
         'Gesprächsnotiz aus der Tierarztpraxis Lindner: „Das Team will Termine anlegen, verschieben und absagen. Tierhalter sollen am Vortag automatisch per SMS erinnert werden. Auch bei 20 gleichzeitig angemeldeten Nutzern darf eine Suche höchstens 2 Sekunden dauern. Die Daten dürfen nur in der EU gespeichert werden. Neue Mitarbeitende sollen nach einer Stunde Einweisung damit arbeiten können.“',
     prompt:
-        'Nennen Sie aus der Gesprächsnotiz zwei funktionale und zwei nicht-funktionale Anforderungen. (4 P.)',
+        'Nenne aus der Gesprächsnotiz zwei funktionale und zwei nicht-funktionale Anforderungen. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -200,7 +200,7 @@ final List<Question> ihkA04Entwicklung = [
     'af-arten',
     scenario:
         'Ein englischsprachiger Kunde schickt per E-Mail seine Anforderungen an ein Buchungsportal für Besprechungsräume.',
-    prompt: 'Markieren Sie alle nicht-funktionalen Anforderungen. (3 P.)',
+    prompt: 'Markiere alle nicht-funktionalen Anforderungen. (3 P.)',
     zeilen: [
       nein(
         'Users can book a meeting room for a specific date.',
@@ -236,7 +236,7 @@ final List<Question> ihkA04Entwicklung = [
     'af-arten',
     scenario:
         'Im Lastenheft eines Kundenportals steht: „Das Portal soll schnell und immer erreichbar sein.“ Der Auftragnehmer verlangt eine prüfbare Formulierung.',
-    prompt: 'Ergänzen Sie die überarbeiteten Anforderungen. (3 P.)',
+    prompt: 'Ergänze die überarbeiteten Anforderungen. (3 P.)',
     text:
         'Bei 200 gleichzeitigen Nutzern wird jede Seite in höchstens {0} aufgebaut.\nDas Portal ist im Jahresmittel zu mindestens {1} verfügbar.\nBeide Anforderungen gehören zu den {2} Anforderungen.',
     luecken: [
@@ -265,7 +265,7 @@ final List<Question> ihkA04Entwicklung = [
     scenario:
         'In einem Lastenheft für eine Lager-App steht die Anforderung: „Die App soll benutzerfreundlich sein.“',
     prompt:
-        'Erläutern Sie, warum diese Anforderung so nicht geeignet ist, und formulieren Sie ein Beispiel für eine geeignete Fassung. (3 P.)',
+        'Erläutere, warum diese Anforderung so nicht geeignet ist, und formuliere ein Beispiel für eine geeignete Fassung. (3 P.)',
     punkte: 3,
     kriterien: [
       krit(
@@ -308,7 +308,7 @@ final List<Question> ihkA04Entwicklung = [
     scenario:
         'Für die Einführung einer neuen Kassensoftware in 40 Filialen sollst du Erhebungstechniken vergleichen.',
     prompt:
-        'Ordnen Sie jeder Technik ihren typischen Vorteil und Nachteil zu. (6 P.)',
+        'Ordne jeder Technik ihren typischen Vorteil und Nachteil zu. (6 P.)',
     zeilen: [
       ['Technik', 'Vorteil', 'Nachteil'],
       [
@@ -355,7 +355,7 @@ final List<Question> ihkA04Entwicklung = [
     scenario:
         'Eine Spedition will ihre Tourenplanung digitalisieren. Betroffen sind 4 Disponenten in der Zentrale und rund 150 Fahrerinnen und Fahrer, die selten im Büro sind.',
     prompt:
-        'Beschreiben Sie zwei Erhebungstechniken, mit denen sich die Anforderungen in dieser Situation ermitteln lassen. (4 P.)',
+        'Beschreibe zwei Erhebungstechniken, mit denen sich die Anforderungen in dieser Situation ermitteln lassen. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -410,7 +410,7 @@ final List<Question> ihkA04Entwicklung = [
     scenario:
         'Im Interview sagt eine Lagermitarbeiterin: „Ich tippe jeden Wareneingang von der Liste ab. Das dauert ewig. Mit dem Scanner ginge das viel schneller.“',
     prompt:
-        'Formulieren Sie aus dieser Aussage eine User Story nach dem üblichen Muster. (3 P.)',
+        'Formuliere aus dieser Aussage eine User Story nach dem üblichen Muster. (3 P.)',
     punkte: 3,
     kriterien: [
       krit(
@@ -460,7 +460,7 @@ final List<Question> ihkA04Entwicklung = [
         UcBeziehung(2, 0, UcArt.extend),
       ],
     ),
-    prompt: 'Ergänzen Sie die Aussagen zum Diagramm. (4 P.)',
+    prompt: 'Ergänze die Aussagen zum Diagramm. (4 P.)',
     text:
         '„Zahlung durchführen“ läuft bei {0} Reservierung ab.\n„Rechnung anfordern“ läuft {1} ab.\nDer «extend»-Pfeil zeigt auf den Anwendungsfall {2}.\nDer Kunde ist direkt mit {3} Anwendungsfällen verbunden.',
     luecken: [
@@ -493,7 +493,7 @@ final List<Question> ihkA04Entwicklung = [
     scenario:
         'Eine Stadtbibliothek plant einen Selbstverbuchungs-Terminal: Leserinnen und Leser leihen Medien aus und geben sie zurück. Bei jeder Ausleihe wird der Leserausweis geprüft. Das Bibliothekspersonal sperrt verlorene Ausweise. Gebühren werden über einen externen Zahlungsdienst beglichen.',
     prompt:
-        'Nennen Sie aus der Beschreibung zwei Akteure und drei Anwendungsfälle für ein Anwendungsfalldiagramm. (5 P.)',
+        'Nenne aus der Beschreibung zwei Akteure und drei Anwendungsfälle für ein Anwendungsfalldiagramm. (5 P.)',
     punkte: 5,
     kriterien: [
       krit(
@@ -553,7 +553,7 @@ final List<Question> ihkA04Entwicklung = [
     scenario:
         'In einem Review fragt eine Kollegin, warum im Diagramm des Webshops „Adresse prüfen“ mit «include» und „Gutschein einlösen“ mit «extend» an „Bestellung aufgeben“ hängt.',
     prompt:
-        'Erläutern Sie den Unterschied zwischen «include» und «extend» anhand dieses Beispiels. (4 P.)',
+        'Erläutere den Unterschied zwischen «include» und «extend» anhand dieses Beispiels. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -589,7 +589,7 @@ final List<Question> ihkA04Entwicklung = [
     'u-usecase',
     scenario:
         'Auf dem Prüfungsbogen ist die Notation des Anwendungsfalldiagramms abgedruckt.',
-    prompt: 'Ordnen Sie jedem Symbol seine Bedeutung zu. (3 P.)',
+    prompt: 'Ordne jedem Symbol seine Bedeutung zu. (3 P.)',
     paare: [
       paar('Strichmännchen', 'Akteur (Rolle)'),
       paar('Ellipse', 'Anwendungsfall'),
@@ -610,7 +610,7 @@ final List<Question> ihkA04Entwicklung = [
     'u-klassen',
     scenario:
         'Für eine Paketverwaltung wird eine Klasse modelliert: Ein Paket hat eine Paketnummer als Text, ein Gewicht in Kilogramm mit Nachkommastellen und die Angabe, ob es als Express verschickt wird. Die Attribute sind nur innerhalb der Klasse sichtbar. Die öffentliche Methode berechnePorto liefert einen Geldbetrag mit Nachkommastellen.',
-    prompt: 'Ergänzen Sie das Klassendiagramm. (6 P.)',
+    prompt: 'Ergänze das Klassendiagramm. (6 P.)',
     mono: true,
     text:
         '{0}\n----------------------------\n{1} paketNr: {2}\n- gewicht: {3}\n- express: {4}\n----------------------------\n+ berechnePorto(): {5}',
@@ -633,8 +633,7 @@ final List<Question> ihkA04Entwicklung = [
     'u-klassen',
     scenario:
         'Für ein Personalsystem wird die Klasse Mitarbeiter beschrieben: Jede Person hat einen Namen und eine ganzzahlige Personalnummer. Das Monatsgehalt wird mit Nachkommastellen gespeichert. Alle Attribute sind gekapselt. Die Methode erhoeheGehalt erhält einen Prozentsatz und soll von anderen Klassen aufgerufen werden können, sie liefert nichts zurück.',
-    prompt:
-        'Tragen Sie Sichtbarkeit und Typ für das Klassendiagramm ein. (8 P.)',
+    prompt: 'Trage Sichtbarkeit und Typ für das Klassendiagramm ein. (8 P.)',
     zeilen: [
       ['Element', 'Sichtbarkeit', 'Typ / Rückgabetyp'],
       [
@@ -667,7 +666,7 @@ final List<Question> ihkA04Entwicklung = [
     'u-klassen',
     scenario:
         'Aus dem Fachkonzept eines Webshops: Ein Kunde kann beliebig viele Bestellungen aufgeben, auch keine. Jede Bestellung gehört zu genau einem Kunden. Eine Bestellung besteht aus mindestens einer Position. Eine Position gehört zu genau einer Bestellung und wird mit ihr gelöscht.',
-    prompt: 'Wählen Sie die Multiplizitäten und die Beziehungsart. (5 P.)',
+    prompt: 'Wähle die Multiplizitäten und die Beziehungsart. (5 P.)',
     mono: true,
     text:
         'Kunde {0} ------ {1} Bestellung\nBestellung {2} ◆----- {3} Position\n\nGefüllte Raute = {4}',
@@ -691,7 +690,7 @@ final List<Question> ihkA04Entwicklung = [
     'u-klassen',
     scenario:
         'In der Klasse Konto fehlen noch Methoden: einzahlen erhält einen Betrag mit Nachkommastellen und liefert nichts zurück. abheben erhält ebenfalls einen Betrag und meldet, ob die Abhebung geklappt hat. getKontostand hat keinen Parameter und liefert den Kontostand. Alle drei sind von außen aufrufbar.',
-    prompt: 'Ergänzen Sie die Methodensignaturen in UML-Schreibweise. (5 P.)',
+    prompt: 'Ergänze die Methodensignaturen in UML-Schreibweise. (5 P.)',
     mono: true,
     text:
         '{0} einzahlen(betrag: {1}): {2}\n+ abheben(betrag: double): {3}\n+ getKontostand(): {4}',
@@ -734,7 +733,7 @@ final List<Question> ihkA04Entwicklung = [
       ],
     ),
     prompt:
-        'Beschreiben Sie die Beziehung zwischen Rechnung und Position: Art der Beziehung und Bedeutung der Multiplizitäten. (4 P.)',
+        'Beschreibe die Beziehung zwischen Rechnung und Position: Art der Beziehung und Bedeutung der Multiplizitäten. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -780,7 +779,7 @@ final List<Question> ihkA04Entwicklung = [
     'u-klassen',
     scenario:
         'Du liest ein Klassendiagramm, das eine Kollegin für die Auftragsverwaltung gezeichnet hat.',
-    prompt: 'Ordnen Sie jeder Notation ihre Bedeutung zu. (3 P.)',
+    prompt: 'Ordne jeder Notation ihre Bedeutung zu. (3 P.)',
     paare: [
       paar('+', 'public: von überall sichtbar'),
       paar('-', 'private: nur in der Klasse'),
@@ -799,7 +798,7 @@ final List<Question> ihkA04Entwicklung = [
     'u-klassen',
     scenario:
         'Ein Praktikant hat die Klasse Artikel notiert. Einige Zeilen entsprechen nicht der UML-Schreibweise „Sichtbarkeit Name: Typ“ bzw. „Sichtbarkeit Name(Parameter): Rückgabetyp“.',
-    prompt: 'Markieren Sie alle Zeilen mit einem Notationsfehler. (3 P.)',
+    prompt: 'Markiere alle Zeilen mit einem Notationsfehler. (3 P.)',
     mono: true,
     zeilen: [
       nein(
@@ -836,7 +835,7 @@ final List<Question> ihkA04Entwicklung = [
     scenario:
         'Ablauf im Support eines Elektronikhändlers: Der Support erfasst die Reklamation und prüft danach die Garantie. Besteht Garantie, wird ein Ersatzgerät verschickt, sonst wird ein Kostenvoranschlag erstellt. In beiden Fällen wird der Vorgang anschließend abgeschlossen.',
     prompt:
-        'Erstellen Sie das Aktivitätsdiagramm für den Garantiefall: Bringen Sie die Elemente in die richtige Reihenfolge. (4 P.)',
+        'Erstelle das Aktivitätsdiagramm für den Garantiefall: Bringe die Elemente in die richtige Reihenfolge. (4 P.)',
     items: [
       'Startknoten',
       'Reklamation erfassen',
@@ -858,7 +857,7 @@ final List<Question> ihkA04Entwicklung = [
     scenario:
         'Bestellfreigabe in einem Industriebetrieb: Zuerst wird der Betrag ermittelt. Bestellungen ab 1.000 € brauchen eine Freigabe der Abteilungsleitung, kleinere nicht. Danach werden „Ware bestellen“ und „Budget buchen“ gleichzeitig erledigt. Erst wenn beides fertig ist, endet der Ablauf.',
     prompt:
-        'Ergänzen Sie die Beschreibung des Aktivitätsdiagramms mit den passenden Begriffen. (7 P.)',
+        'Ergänze die Beschreibung des Aktivitätsdiagramms mit den passenden Begriffen. (7 P.)',
     text:
         'Der Ablauf beginnt am {0}. Nach der Aktion „Betrag ermitteln“ folgt eine {1}. An der Kante zu „Freigabe einholen“ steht die Bedingung {2}, an der anderen Kante {3}. „Ware bestellen“ und „Budget buchen“ starten gemeinsam an einer {4}. Erst hinter der {5} geht es weiter zum {6}.',
     luecken: [
@@ -885,7 +884,7 @@ final List<Question> ihkA04Entwicklung = [
     scenario:
         'Retoure im Onlinehandel: Der Kunde meldet die Rücksendung an und verschickt das Paket. Das Lager nimmt das Paket an und prüft die Ware. Die Buchhaltung erstattet danach den Kaufpreis und verschickt die Gutschrift.',
     prompt:
-        'Das Aktivitätsdiagramm erhält drei Swimlanes. Ordnen Sie jede Aktion der richtigen Bahn zu. (3 P.)',
+        'Das Aktivitätsdiagramm erhält drei Swimlanes. Ordne jede Aktion der richtigen Bahn zu. (3 P.)',
     buckets: ['Kunde', 'Lager', 'Buchhaltung'],
     items: [
       zu('Ware prüfen', 1),
@@ -905,7 +904,7 @@ final List<Question> ihkA04Entwicklung = [
     'u-aktivitaet',
     scenario:
         'Im Review eines Aktivitätsdiagramms stehen an fünf Entscheidungen jeweils zwei Bedingungen. Bedingungen müssen sich gegenseitig ausschließen und zusammen alle Fälle abdecken.',
-    prompt: 'Markieren Sie alle fehlerhaften Bedingungspaare. (2 P.)',
+    prompt: 'Markiere alle fehlerhaften Bedingungspaare. (2 P.)',
     zeilen: [
       nein(
         '[Menge > 0] und [Menge <= 0]',
@@ -935,7 +934,7 @@ final List<Question> ihkA04Entwicklung = [
     scenario:
         'Ein Auszubildender hat im Aktivitätsdiagramm „Ware verpacken“ und „Rechnung erstellen“ hinter eine Raute gezeichnet. Laut Beschreibung sollen beide Aktionen gleichzeitig ablaufen.',
     prompt:
-        'Erläutern Sie den Unterschied zwischen einer Entscheidung (Raute) und einer Gabelung (Balken) und nennen Sie das hier richtige Element. (4 P.)',
+        'Erläutere den Unterschied zwischen einer Entscheidung (Raute) und einer Gabelung (Balken) und nenne das hier richtige Element. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -986,7 +985,7 @@ final List<Question> ihkA04Entwicklung = [
       FlussKnoten('Kalender eintragen'),
       FlussKnoten('Ende', form: FlussForm.ende),
     ]),
-    prompt: 'Ergänzen Sie die Aussagen zum Diagramm. (4 P.)',
+    prompt: 'Ergänze die Aussagen zum Diagramm. (4 P.)',
     text:
         'Die Raute ist eine {0}.\n[ja] und [nein] nennt man {1}.\nBei 5 Resttagen und einem Antrag über 5 Tage wird der Antrag {2}.\nIm [ja]-Fall werden vom Start bis zum Ende insgesamt {3} Aktionen ausgeführt.',
     luecken: [
@@ -1014,7 +1013,7 @@ final List<Question> ihkA04Entwicklung = [
     'u-aktivitaet',
     scenario:
         'Ein Entwickler soll ein Aktivitätsdiagramm in Pseudocode umsetzen und sucht zu jedem Muster die passende Struktur.',
-    prompt: 'Wählen Sie zu jedem Muster die passende Struktur. (4 P.)',
+    prompt: 'Wähle zu jedem Muster die passende Struktur. (4 P.)',
     zeilen: [
       ['Muster im Aktivitätsdiagramm', 'Entspricht'],
       [
@@ -1062,7 +1061,7 @@ final List<Question> ihkA04Entwicklung = [
     'pl-datentypen',
     scenario:
         'Für die Artikelverwaltung eines Baumarkts werden Variablen angelegt. Du sollst jeweils den passenden Datentyp wählen.',
-    prompt: 'Wählen Sie für jede Variable den Datentyp. (5 P.)',
+    prompt: 'Wähle für jede Variable den Datentyp. (5 P.)',
     zeilen: [
       ['Variable', 'Beispielwert', 'Datentyp'],
       [
@@ -1102,7 +1101,7 @@ final List<Question> ihkA04Entwicklung = [
     scenario:
         'In einer Kundenverwaltung wurde die Postleitzahl als Ganzzahl (int) gespeichert. Kunden aus Dresden (01067) erhalten nun Post mit der Postleitzahl 1067.',
     prompt:
-        'Begründen Sie, warum für die Postleitzahl der Datentyp String besser geeignet ist. (2 P.)',
+        'Begründe, warum für die Postleitzahl der Datentyp String besser geeignet ist. (2 P.)',
     punkte: 2,
     kriterien: [
       krit(
@@ -1140,7 +1139,7 @@ final List<Question> ihkA04Entwicklung = [
     'pl-datentypen',
     scenario:
         'Ein Java-Programm verteilt 17 Lizenzen auf Teams. Bei zwei int-Werten ist / eine Ganzzahldivision, % liefert den Rest.',
-    prompt: 'Geben Sie die Werte der Variablen an. (3 P.)',
+    prompt: 'Gib die Werte der Variablen an. (3 P.)',
     mono: true,
     text:
         'int a = 17;\nint b = 5;\nint q = a / b;        // q = {0}\nint r = a % b;        // r = {1}\ndouble d = a / 2.0;   // d = {2}',
@@ -1159,7 +1158,7 @@ final List<Question> ihkA04Entwicklung = [
     scenario:
         'Der Compiler meldet in einem Java-Programm mehrere Typfehler. Die Meldungen sind verloren gegangen.',
     prompt:
-        'Markieren Sie alle Zeilen, in denen Wert und Datentyp nicht zusammenpassen. (3 P.)',
+        'Markiere alle Zeilen, in denen Wert und Datentyp nicht zusammenpassen. (3 P.)',
     mono: true,
     zeilen: [
       ja(
@@ -1194,7 +1193,7 @@ for (int i = 10; i > 0; i -= 3) {
   summe = summe + i;
 }''',
     prompt:
-        'Tragen Sie für jeden Durchlauf die Werte von i und summe am Ende des Durchlaufs ein. (4 P.)',
+        'Trage für jeden Durchlauf die Werte von i und summe am Ende des Durchlaufs ein. (4 P.)',
     zeilen: [
       ['Durchlauf', 'i', 'summe'],
       ['1', zahl(10), zahl(10)],
@@ -1211,7 +1210,7 @@ for (int i = 10; i > 0; i -= 3) {
     'pl-kontrollstrukturen',
     scenario:
         'Vor dem Start eines Updates soll ein Countdown die Zahlen 5, 4, 3, 2, 1 ausgeben - die 0 nicht.',
-    prompt: 'Ergänzen Sie die Schleife. (3 P.)',
+    prompt: 'Ergänze die Schleife. (3 P.)',
     mono: true,
     text: 'i ← {0}\nSOLANGE i {1} 0\n  AUSGABE i\n  i ← i {2} 1\nENDE SOLANGE',
     luecken: [
@@ -1238,7 +1237,7 @@ SONST
     versand ← 4.90
   ENDE WENN
 ENDE WENN''',
-    prompt: 'Ermitteln Sie für jede Bestellung den Wert von versand. (4 P.)',
+    prompt: 'Ermittle für jede Bestellung den Wert von versand. (4 P.)',
     zeilen: [
       ['wert', 'gewicht', 'versand'],
       [
@@ -1271,7 +1270,7 @@ ENDE WENN''',
     'pl-kontrollstrukturen',
     scenario:
         'Das Programm soll den Durchschnitt von vier Messwerten berechnen. Die Indizes des Arrays beginnen bei 0. Beim Test bricht es mit einem Zugriffsfehler ab.',
-    prompt: 'Markieren Sie die fehlerhafte Zeile. (1 P.)',
+    prompt: 'Markiere die fehlerhafte Zeile. (1 P.)',
     mono: true,
     zeilen: [
       nein('werte ← [4, 8, 15, 16]', 'Vier Werte mit den Indizes 0 bis 3.'),
@@ -1297,7 +1296,7 @@ ENDE WENN''',
     'pl-kontrollstrukturen',
     scenario:
         'In einem Java-Quelltext sollst du die Kontrollstrukturen benennen.',
-    prompt: 'Ordnen Sie jeder Zeile die Kontrollstruktur zu. (3 P.)',
+    prompt: 'Ordne jeder Zeile die Kontrollstruktur zu. (3 P.)',
     paare: [
       paar('if (alter >= 18) { … }', 'einseitige Verzweigung'),
       paar('while (rest > 0) { … }', 'kopfgesteuerte Schleife'),
@@ -1316,7 +1315,7 @@ ENDE WENN''',
     scenario:
         'Ein Programm soll eine Menüauswahl einlesen und so lange wiederholen, bis „Beenden“ gewählt wird. Im Team wird diskutiert, ob eine kopf- oder eine fußgesteuerte Schleife besser passt.',
     prompt:
-        'Erläutern Sie den Unterschied zwischen einer kopfgesteuerten und einer fußgesteuerten Schleife und begründen Sie Ihre Wahl für das Menü. (4 P.)',
+        'Erläutere den Unterschied zwischen einer kopfgesteuerten und einer fußgesteuerten Schleife und begründe deine Wahl für das Menü. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -1360,8 +1359,7 @@ ENDE WENN''',
     'pl-kontrollstrukturen',
     scenario:
         'Ein Array werte hat n = 4 Elemente, die Indizes beginnen bei 0. Die Schleife „FÜR i VON 0 BIS n“ führt zu einem Zugriffsfehler und soll korrigiert werden.',
-    prompt:
-        'Korrigieren Sie den Schleifenkopf und ergänzen Sie die Begründung. (3 P.)',
+    prompt: 'Korrigiere den Schleifenkopf und ergänze die Begründung. (3 P.)',
     text:
         'Korrekter Schleifenkopf: FÜR i VON 0 BIS {0}\nDer letzte gültige Index ist {1}.\nDie fehlerhafte Schleife greift zusätzlich auf werte[{2}] zu.',
     luecken: [
@@ -1380,7 +1378,7 @@ ENDE WENN''',
     'pl-pseudocode',
     scenario:
         'Der Algorithmus soll das Gesamtgewicht einer Lieferung aus n Paketen berechnen. Für die Gewichte [12, 7, 20] gibt er 0 statt 39 aus.',
-    prompt: 'Markieren Sie die fehlerhafte Zeile. (1 P.)',
+    prompt: 'Markiere die fehlerhafte Zeile. (1 P.)',
     mono: true,
     zeilen: [
       nein('gesamt ← 0', 'Eine Summe startet richtig bei 0.'),
@@ -1410,7 +1408,7 @@ FÜR i VON 0 BIS n - 1
 ENDE FÜR
 AUSGABE gesamt''',
     prompt:
-        'Erläutern Sie den Fehler im Pseudocode und geben Sie die korrigierte Zeile an. (3 P.)',
+        'Erläutere den Fehler im Pseudocode und gib die korrigierte Zeile an. (3 P.)',
     punkte: 3,
     kriterien: [
       krit(
@@ -1447,7 +1445,7 @@ AUSGABE gesamt''',
     'pl-pseudocode',
     scenario:
         'Eine Funktion soll aus einem Array mit n Preisen den niedrigsten Preis ermitteln und zurückgeben. Die Indizes beginnen bei 0.',
-    prompt: 'Ergänzen Sie den Pseudocode mit den passenden Bausteinen. (5 P.)',
+    prompt: 'Ergänze den Pseudocode mit den passenden Bausteinen. (5 P.)',
     mono: true,
     text:
         'FUNKTION kleinster(preise, n)\n  min ← {0}\n  FÜR i VON 1 BIS {1}\n    WENN preise[i] {2} min DANN\n      min ← {3}\n    ENDE WENN\n  ENDE FÜR\n  RÜCKGABE {4}\nENDE FUNKTION',
@@ -1475,7 +1473,7 @@ for each t in tickets
   end if
 end for
 print count''',
-    prompt: 'Ordnen Sie jeder Zeile die passende Beschreibung zu. (5 P.)',
+    prompt: 'Ordne jeder Zeile die passende Beschreibung zu. (5 P.)',
     paare: [
       paar('count ← 0', 'Zähler auf 0 setzen'),
       paar('for each t in tickets', 'alle Tickets durchlaufen'),
@@ -1494,7 +1492,7 @@ print count''',
     scenario:
         'Eine Funktion soll prüfen, ob eine Artikelnummer x in einer Liste mit n Einträgen vorkommt, und wahr oder falsch zurückgeben.',
     prompt:
-        'Bringen Sie die Zeilen der Funktion in die richtige Reihenfolge. (4 P.)',
+        'Bringe die Zeilen der Funktion in die richtige Reihenfolge. (4 P.)',
     items: [
       'FUNKTION enthaelt(liste, n, x)',
       'FÜR i VON 0 BIS n - 1',
@@ -1523,7 +1521,7 @@ function finalPrice(price, qty)
   return price * qty
 end function''',
     prompt:
-        'Erläutern Sie auf Deutsch, was die drei Zeilen „if qty >= 10 then“, „price ← price * 0.95“ und „return price * qty“ bewirken. (3 P.)',
+        'Erläutere auf Deutsch, was die drei Zeilen „if qty >= 10 then“, „price ← price * 0.95“ und „return price * qty“ bewirken. (3 P.)',
     punkte: 3,
     kriterien: [
       krit(
@@ -1569,7 +1567,7 @@ function finalPrice(price, qty)
   return price * qty
 end function''',
     prompt:
-        'Ermitteln Sie für jeden Aufruf den Wert von price vor der Rückgabe und den Rückgabewert. (6 P.)',
+        'Ermittle für jeden Aufruf den Wert von price vor der Rückgabe und den Rückgabewert. (6 P.)',
     zeilen: [
       ['Aufruf', 'price vor return', 'Rückgabe'],
       [
@@ -1597,7 +1595,7 @@ end function''',
     'pl-pseudocode',
     scenario:
         'Eine Funktion soll das Porto für eine Sendung liefern: Bis einschließlich 1000 g kostet sie 1,80 €, darüber 2,90 €. Das Ergebnis geht an das aufrufende Programm zurück.',
-    prompt: 'Ergänzen Sie Bedingung, Zuweisung und Rückgabe. (3 P.)',
+    prompt: 'Ergänze Bedingung, Zuweisung und Rückgabe. (3 P.)',
     mono: true,
     text:
         'FUNKTION porto(gramm)\n  WENN gramm {0} 1000 DANN\n    preis ← 1.80\n  SONST\n    preis ← {1}\n  ENDE WENN\n  {2} preis\nENDE FUNKTION',
@@ -1630,7 +1628,7 @@ FÜR i VON 0 BIS 4
 ENDE FÜR
 AUSGABE fehl''',
     prompt:
-        'Führen Sie einen Schreibtischtest durch: Tragen Sie ein, ob die Bedingung zutrifft, und den Wert von fehl am Ende jedes Durchlaufs. (8 P.)',
+        'Führe einen Schreibtischtest durch: Trage ein, ob die Bedingung zutrifft, und den Wert von fehl am Ende jedes Durchlaufs. (8 P.)',
     zeilen: [
       ['i', 'lager[i]', 'lager[i] < soll', 'fehl'],
       ['0', '12', 'falsch', zahl(0)],
@@ -1666,8 +1664,7 @@ SOLANGE offen > 8
   tag ← tag + 1
 ENDE SOLANGE
 AUSGABE tag''',
-    prompt:
-        'Führen Sie einen Schreibtischtest durch und geben Sie die Ausgabe an. (5 P.)',
+    prompt: 'Führe einen Schreibtischtest durch und gib die Ausgabe an. (5 P.)',
     zeilen: [
       ['Zeitpunkt', 'offen', 'tag'],
       ['Start', '40', '0'],
@@ -1701,7 +1698,7 @@ AUSGABE tag''',
     ENDE WENN
   ENDE WENN
 ENDE FUNKTION''',
-    prompt: 'Geben Sie für jeden Aufruf den Rückgabewert an. (8 P.)',
+    prompt: 'Gib für jeden Aufruf den Rückgabewert an. (8 P.)',
     zeilen: [
       ['Aufruf', 'Rückgabe'],
       [
@@ -1748,7 +1745,7 @@ if total > 50 then
 end if
 print total''',
     prompt:
-        'Führen Sie einen Schreibtischtest durch: Berechnen Sie die Kosten je Auftrag, die Summe nach der Schleife und die Ausgabe (in €). (8 P.)',
+        'Führe einen Schreibtischtest durch: Berechne die Kosten je Auftrag, die Summe nach der Schleife und die Ausgabe (in €). (8 P.)',
     zeilen: [
       ['Schritt', 'Wert'],
       ['cost für J1', zahl(22, toleranz: 0.005)],
@@ -1775,7 +1772,7 @@ FÜR i VON 1 BIS 4
     x ← 3 * x + 1
   ENDE WENN
 ENDE FÜR''',
-    prompt: 'Ermitteln Sie den Wert von x nach dem letzten Durchlauf. (3 P.)',
+    prompt: 'Ermittle den Wert von x nach dem letzten Durchlauf. (3 P.)',
     answer: 8,
     explanation:
         'Start x = 3. i = 1: 3 ist ungerade, x = 3 × 3 + 1 = 10. i = 2: 10 ist gerade, x = 10 DIV 2 = 5. i = 3: 5 ist ungerade, x = 16. i = 4: 16 ist gerade, x = 8.',
@@ -1795,7 +1792,7 @@ for each o in orders
   end if
 end for''',
     prompt:
-        'Führen Sie einen Schreibtischtest durch und markieren Sie alle Bestellungen, deren id ausgegeben wird. (2 P.)',
+        'Führe einen Schreibtischtest durch und markiere alle Bestellungen, deren id ausgegeben wird. (2 P.)',
     mono: true,
     zeilen: [
       ja(
@@ -1834,7 +1831,7 @@ SOLANGE b > 0
 ENDE SOLANGE
 AUSGABE a''',
     prompt:
-        'Führen Sie einen Schreibtischtest durch: Tragen Sie die Werte am Ende jedes Durchlaufs und die Ausgabe ein. (10 P.)',
+        'Führe einen Schreibtischtest durch: Trage die Werte am Ende jedes Durchlaufs und die Ausgabe ein. (10 P.)',
     zeilen: [
       ['Zeitpunkt', 'rest', 'a', 'b'],
       ['Start', '-', '90', '24'],
@@ -1855,7 +1852,7 @@ AUSGABE a''',
     'oo-grundbegriffe',
     scenario:
         'Für das Ausbildungshandbuch sollst du die Grundbegriffe der Objektorientierung am Beispiel einer Fuhrparkverwaltung erklären.',
-    prompt: 'Ergänzen Sie den Text mit den passenden Begriffen. (4 P.)',
+    prompt: 'Ergänze den Text mit den passenden Begriffen. (4 P.)',
     text:
         'Fahrzeug ist eine {0}: der Bauplan für alle Fahrzeuge. Der Transporter mit dem Kennzeichen HB-KB 204 ist ein {1} dieser Klasse. Sein Kilometerstand ist ein {2}, tanken() ist eine {3}.',
     luecken: [
@@ -1876,7 +1873,7 @@ AUSGABE a''',
     scenario:
         'Ein Softwarehaus will eine alte, prozedural geschriebene Lagerverwaltung objektorientiert neu entwickeln. Die Geschäftsführung fragt nach dem Nutzen.',
     prompt:
-        'Nennen Sie zwei Vorteile der objektorientierten gegenüber der prozeduralen Programmierung. (2 P.)',
+        'Nenne zwei Vorteile der objektorientierten gegenüber der prozeduralen Programmierung. (2 P.)',
     punkte: 2,
     kriterien: [
       krit(
@@ -1939,7 +1936,7 @@ AUSGABE a''',
     scenario:
         'Die Klasse Zaehler hat das Attribut stand (Startwert 0) sowie die Methoden erhoehen() - addiert 1 - und zuruecksetzen() - setzt stand auf 0. Es werden zwei Objekte erzeugt: z1 und z2.',
     prompt:
-        'Tragen Sie nach jeder Anweisung den Wert von stand in beiden Objekten ein. (5 P.)',
+        'Trage nach jeder Anweisung den Wert von stand in beiden Objekten ein. (5 P.)',
     zeilen: [
       ['Anweisung', 'z1.stand', 'z2.stand'],
       ['z1.erhoehen()', zahl(1), zahl(0)],
@@ -1958,7 +1955,7 @@ AUSGABE a''',
     scenario:
         'In einer Schulverwaltung gibt es die Klasse Schueler mit den Attributen name und klasse. Im System sind 480 Schülerinnen und Schüler erfasst.',
     prompt:
-        'Erläutern Sie den Unterschied zwischen einer Klasse und einem Objekt anhand dieses Beispiels. (4 P.)',
+        'Erläutere den Unterschied zwischen einer Klasse und einem Objekt anhand dieses Beispiels. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -1998,7 +1995,7 @@ AUSGABE a''',
     scenario:
         'In der Klasse Artikel ist das Attribut preis bisher public. Nach einem Fehler in einer anderen Klasse standen im Shop negative Preise. Die Klasse soll deshalb gekapselt werden.',
     prompt:
-        'Beschreiben Sie, wie die Kapselung des Attributs preis umgesetzt wird. (4 P.)',
+        'Beschreibe, wie die Kapselung des Attributs preis umgesetzt wird. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -2044,7 +2041,7 @@ AUSGABE a''',
     'oo-kapselung',
     scenario:
         'In der Klasse Artikel soll der Setter für das private Attribut rabatt nur Werte von 0 bis 30 Prozent übernehmen, jeweils einschließlich.',
-    prompt: 'Ergänzen Sie den Setter. (3 P.)',
+    prompt: 'Ergänze den Setter. (3 P.)',
     mono: true,
     text:
         'public void setRabatt(int r) {\n  if (r {0} 0 && r <= {1}) {\n    {2}.rabatt = r;\n  }\n}',
@@ -2077,7 +2074,7 @@ AUSGABE a''',
       ),
     ]),
     prompt:
-        'Markieren Sie alle Zeilen der Klasse Kasse, die gegen die Kapselung verstoßen. (2 P.)',
+        'Markiere alle Zeilen der Klasse Kasse, die gegen die Kapselung verstoßen. (2 P.)',
     mono: true,
     zeilen: [
       nein('Konto k = new Konto();', 'Ein Objekt zu erzeugen ist erlaubt.'),
@@ -2100,7 +2097,7 @@ AUSGABE a''',
     scenario:
         'Die Klasse Thermostat kapselt das Attribut temperatur (aktuell 20). Der Setter setTemperatur(t) übernimmt den Wert nur, wenn t zwischen 16 und 26 liegt, jeweils einschließlich. Die Aufrufe erfolgen nacheinander.',
     prompt:
-        'Tragen Sie für jeden Aufruf ein, ob der Wert übernommen wird und welchen Wert temperatur danach hat. (5 P.)',
+        'Trage für jeden Aufruf ein, ob der Wert übernommen wird und welchen Wert temperatur danach hat. (5 P.)',
     zeilen: [
       ['Aufruf', 'übernommen?', 'temperatur danach'],
       [
@@ -2140,8 +2137,7 @@ AUSGABE a''',
     'oo-konstruktor',
     scenario:
         'Im Ticketsystem soll jedes neue Ticket beim Erzeugen seine Nummer erhalten und mit dem Status „offen“ starten.',
-    prompt:
-        'Ergänzen Sie den Konstruktor und die Erzeugung des Objekts. (4 P.)',
+    prompt: 'Ergänze den Konstruktor und die Erzeugung des Objekts. (4 P.)',
     mono: true,
     text:
         'class Ticket {\n  private int nr;\n  private String status;\n\n  public {0}(int nr) {\n    {1}.nr = nr;\n    status = {2};\n  }\n}\n\nTicket t = {3} Ticket(4711);',
@@ -2171,7 +2167,7 @@ AUSGABE a''',
     scenario:
         'Der Konstruktor von Konto setzt den Startbetrag, einzahlen(b) addiert b. Zuerst werden zwei Objekte erzeugt: Konto a = new Konto(100); Konto b = new Konto(40); Danach folgen vier Anweisungen.',
     prompt:
-        'Tragen Sie nach jeder Anweisung ein, welchen Wert a.getStand() und b.getStand() liefern. (8 P.)',
+        'Trage nach jeder Anweisung ein, welchen Wert a.getStand() und b.getStand() liefern. (8 P.)',
     zeilen: [
       ['Anweisung', 'a.getStand()', 'b.getStand()'],
       ['Konto c = a;', zahl(100), zahl(40)],
@@ -2190,7 +2186,7 @@ AUSGABE a''',
     scenario:
         'In einem Code-Review fällt auf, dass neue Objekte der Klasse Kunde ohne Namen und Kundennummer im System landen. Die Klasse hat keinen eigenen Konstruktor.',
     prompt:
-        'Beschreiben Sie die Aufgabe eines Konstruktors und nennen Sie zwei Merkmale, an denen man ihn im Quelltext erkennt. (4 P.)',
+        'Beschreibe die Aufgabe eines Konstruktors und nenne zwei Merkmale, an denen man ihn im Quelltext erkennt. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -2242,7 +2238,7 @@ AUSGABE a''',
     'oo-konstruktor',
     scenario:
         'Ein Java-Programm arbeitet mit Objekten der Klasse Kunde. Du erklärst einer neuen Kollegin die Zeilen.',
-    prompt: 'Ordnen Sie jeder Zeile die passende Beschreibung zu. (4 P.)',
+    prompt: 'Ordne jeder Zeile die passende Beschreibung zu. (4 P.)',
     paare: [
       paar('Kunde k = new Kunde("Ay");', 'Objekt erzeugen'),
       paar('String n = k.getName();', 'Attributwert über Getter lesen'),

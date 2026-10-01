@@ -57,7 +57,7 @@ final List<Question> questionsA04Daten = [
     'dm-erm',
     scenario:
         'In der Prüfung wird das ER-Modell in der Chen-Notation gezeichnet.',
-    prompt: 'Ordnen Sie jedem Symbol der Chen-Notation seine Bedeutung zu.',
+    prompt: 'Ordne jedem Symbol der Chen-Notation seine Bedeutung zu.',
     paare: [
       paar('Rechteck', 'Entitätstyp'),
       paar('Raute', 'Beziehung'),
@@ -74,8 +74,7 @@ final List<Question> questionsA04Daten = [
     'dm-erm',
     scenario:
         'Eine Arztpraxis will speichern: Patienten mit Name und Geburtsdatum, Ärztinnen und Ärzte mit Fachrichtung sowie Krankenkassen mit Name und Kassennummer. Jeder Patient ist bei einer Krankenkasse versichert.',
-    prompt:
-        'Markieren Sie alle Begriffe, die im ER-Modell zu Entitätstypen werden.',
+    prompt: 'Markiere alle Begriffe, die im ER-Modell zu Entitätstypen werden.',
     zeilen: [
       ja('Patient', 'Zu Patienten werden eigene Daten gespeichert.'),
       nein('Geburtsdatum', 'Eine Eigenschaft des Patienten - ein Attribut.'),
@@ -157,7 +156,7 @@ final List<Question> questionsA04Daten = [
     'dm-erm',
     scenario:
         'Das fertige ER-Modell eines Webshops wird in ein relationales Modell überführt.',
-    prompt: 'Geben Sie an, was aus dem jeweiligen Element des ER-Modells wird.',
+    prompt: 'Gib an, was aus dem jeweiligen Element des ER-Modells wird.',
     zeilen: [
       ['Element im ER-Modell', 'wird im relationalen Modell zu'],
       [
@@ -283,7 +282,7 @@ final List<Question> questionsA04Daten = [
     'dm-kardinalitaet',
     scenario:
         'Zwischen Abteilung (AbtNr, Name) und Mitarbeiter (PersNr, Name) besteht eine 1:n-Beziehung: Jeder Mitarbeiter gehört zu genau einer Abteilung.',
-    prompt: 'Ergänzen Sie die Umsetzung im relationalen Modell.',
+    prompt: 'Ergänze die Umsetzung im relationalen Modell.',
     text:
         'Der Primärschlüssel {0} wird als Fremdschlüssel in die Tabelle {1} aufgenommen. '
         'Der Fremdschlüssel steht damit auf der {2} der Beziehung. '
@@ -400,7 +399,7 @@ final List<Question> questionsA04Daten = [
     'dm-kardinalitaet',
     scenario:
         'Zwischen Schüler und Kurs besteht eine n:m-Beziehung. Zu jeder Belegung soll die Note gespeichert werden.',
-    prompt: 'Setzen Sie die passenden Begriffe ein.',
+    prompt: 'Setze die passenden Begriffe ein.',
     text:
         'Für die Beziehung entsteht eine {0} namens Belegung. '
         'Sie enthält SchülerNr und KursNr als {1}. '
@@ -426,7 +425,7 @@ final List<Question> questionsA04Daten = [
     scenario:
         'Beim Entwurf einer neuen Tabelle Mitglied muss ein Primärschlüssel festgelegt werden.',
     prompt:
-        'Nennen Sie drei Eigenschaften, die ein Primärschlüssel haben muss oder haben sollte.',
+        'Nenne drei Eigenschaften, die ein Primärschlüssel haben muss oder haben sollte.',
     kriterien: [
       krit(
         'Eindeutig: Jeder Wert kommt in der Tabelle nur einmal vor.',
@@ -726,7 +725,7 @@ final List<Question> questionsA04Daten = [
       ['K3', 'Nowak', '0661 5550145'],
       ['K4', 'Peters', '0551 5550167 und 0551 5550168'],
     ],
-    prompt: 'Markieren Sie alle Zeilen, die die 1. Normalform verletzen.',
+    prompt: 'Markiere alle Zeilen, die die 1. Normalform verletzen.',
     zeilen: [
       nein('K1 Brandt', 'Genau ein Wert im Feld Telefon - atomar.'),
       ja(
@@ -773,7 +772,7 @@ final List<Question> questionsA04Daten = [
     'dm-normalisierung',
     scenario:
         'Eine Tabelle ist in der 1NF und hat einen Primärschlüssel aus nur einer Spalte.',
-    prompt: 'Ergänzen Sie die Beurteilung.',
+    prompt: 'Ergänze die Beurteilung.',
     text:
         'Die Tabelle ist automatisch auch in der {0}, '
         'denn {1} Abhängigkeiten gibt es nur bei {2} Schlüsseln. '
@@ -934,7 +933,7 @@ final List<Question> questionsA04Daten = [
     'wi-url',
     scenario:
         'Ein Dateiname mit Leerzeichen und Sonderzeichen soll in einer URL verwendet werden. Bei der Prozentkodierung folgt auf das Prozentzeichen der Bytewert in hexadezimaler Schreibweise.',
-    prompt: 'Ergänzen Sie die Prozentkodierung.',
+    prompt: 'Ergänze die Prozentkodierung.',
     text:
         'Das Leerzeichen hat den ASCII-Code 32, hexadezimal {0}. '
         'In der URL wird es deshalb als {1} geschrieben. '
@@ -1015,8 +1014,8 @@ final List<Question> questionsA04Daten = [
     'a4-wh-4',
     'wi-http',
     scenario:
-        'Für die Einarbeitung neuer Kollegen im Support fassen Sie die Grundlagen zu HTTP und HTTPS zusammen.',
-    prompt: 'Ergänzen Sie die Aussagen.',
+        'Für die Einarbeitung neuer Kollegen im Support fasst du die Grundlagen zu HTTP und HTTPS zusammen.',
+    prompt: 'Ergänze die Aussagen.',
     text:
         'HTTP ist {0}: Jede Anfrage steht für sich. '
         'Sitzungen entstehen erst durch {1}, die der Browser speichert und mitschickt. '
@@ -1103,7 +1102,7 @@ final List<Question> questionsA04Daten = [
     'wi-http',
     scenario:
         'Eine Anfrage beginnt mit den Zeilen „GET /produkte?seite=2 HTTP/1.1“ und „Host: shop.example.com“.',
-    prompt: 'Ordnen Sie jedem Teil der Anfrage seine Bedeutung zu.',
+    prompt: 'Ordne jedem Teil der Anfrage seine Bedeutung zu.',
     paare: [
       paar('GET', 'Methode'),
       paar('/produkte', 'Pfad der Ressource'),
@@ -1149,7 +1148,7 @@ final List<Question> questionsA04Daten = [
     'wi-aufruf',
     scenario:
         'Beim Aufruf einer Webseite arbeiten mehrere Protokolle und Dienste zusammen.',
-    prompt: 'Ordnen Sie jedem Protokoll bzw. Dienst seine Aufgabe zu.',
+    prompt: 'Ordne jedem Protokoll bzw. Dienst seine Aufgabe zu.',
     paare: [
       paar('DNS', 'übersetzt den Hostnamen in eine IP-Adresse'),
       paar('TCP', 'baut eine zuverlässige Verbindung auf'),
@@ -1226,7 +1225,7 @@ final List<Question> questionsA04Daten = [
     scenario:
         'Nach dem Aufbau der TCP-Verbindung zu https://shop.example.com folgt der TLS-Handshake.',
     prompt:
-        'Bringen Sie die Schritte des vereinfachten TLS-Handshakes in die richtige Reihenfolge.',
+        'Bringe die Schritte des vereinfachten TLS-Handshakes in die richtige Reihenfolge.',
     items: [
       'Client nennt dem Server die unterstützten Verfahren',
       'Server schickt sein Zertifikat mit dem öffentlichen Schlüssel',
@@ -1276,7 +1275,7 @@ final List<Question> questionsA04Daten = [
     'wi-html',
     scenario:
         'In der CSS-Datei eines Webshops stehen Regeln mit unterschiedlichen Selektoren.',
-    prompt: 'Ordnen Sie jedem CSS-Selektor zu, was er auswählt.',
+    prompt: 'Ordne jedem CSS-Selektor zu, was er auswählt.',
     paare: [
       paar('.preis', 'alle Elemente mit class="preis"'),
       paar('#preis', 'das Element mit id="preis"'),
@@ -1468,7 +1467,7 @@ final List<Question> questionsA04Daten = [
     scenario:
         'Für den Relaunch einer Website liegt eine Liste mit Gestaltungsvorschlägen vor. Einige davon würden die Barrierefreiheit verschlechtern.',
     prompt:
-        'Markieren Sie alle Vorschläge, die die Barrierefreiheit verschlechtern.',
+        'Markiere alle Vorschläge, die die Barrierefreiheit verschlechtern.',
     zeilen: [
       nein(
         'Aussagekräftige Alt-Texte für inhaltliche Bilder',
@@ -1630,7 +1629,7 @@ final List<Question> questionsA04Daten = [
     'md-zahlensysteme',
     scenario:
         'Die Dezimalzahl 200 soll mit dem Divisionsrestverfahren in eine Hexadezimalzahl umgewandelt werden.',
-    prompt: 'Ergänzen Sie den Rechenweg.',
+    prompt: 'Ergänze den Rechenweg.',
     text:
         '200 : 16 = {0} Rest {1}\n'
         'Der Wert 12 entspricht der Hex-Ziffer {2}.\n'
@@ -1649,7 +1648,7 @@ final List<Question> questionsA04Daten = [
     'md-zahlensysteme',
     scenario:
         'Die Dezimalzahl 45 soll als Binärzahl mit 8 Bit geschrieben werden. Die Stellenwerte eines Bytes sind 128, 64, 32, 16, 8, 4, 2, 1.',
-    prompt: 'Ergänzen Sie die Zerlegung und das Ergebnis.',
+    prompt: 'Ergänze die Zerlegung und das Ergebnis.',
     text:
         '45 = {0} + 8 + 4 + 1\n'
         'Binär mit 8 Bit: {1}',
@@ -1739,7 +1738,7 @@ final List<Question> questionsA04Daten = [
     'md-zahlensysteme',
     scenario:
         'In einer Konfigurationsdatei muss der Dezimalwert 172 hexadezimal eingetragen werden.',
-    prompt: 'Ergänzen Sie den Rechenweg.',
+    prompt: 'Ergänze den Rechenweg.',
     text:
         '172 : 16 = {0} Rest {1}\n'
         'Ergebnis hexadezimal: {2}',
@@ -1766,7 +1765,7 @@ final List<Question> questionsA04Daten = [
     'a4-mc-2',
     'md-zeichen',
     scenario: 'Eine alte Schnittstelle überträgt Texte im ASCII-Code.',
-    prompt: 'Ergänzen Sie die Angaben zum ASCII-Zeichensatz.',
+    prompt: 'Ergänze die Angaben zum ASCII-Zeichensatz.',
     text:
         'ASCII verwendet {0} Bit je Zeichen. '
         'Damit lassen sich {1} verschiedene Zeichen darstellen, '
@@ -1810,7 +1809,7 @@ final List<Question> questionsA04Daten = [
     'a4-mc-4',
     'md-zeichen',
     scenario: 'Eine Webanwendung soll durchgängig auf UTF-8 umgestellt werden.',
-    prompt: 'Ergänzen Sie die Aussagen zu UTF-8.',
+    prompt: 'Ergänze die Aussagen zu UTF-8.',
     text:
         'UTF-8 ist eine {0} für Unicode. '
         'Ein Zeichen belegt {1} Byte. '
@@ -1988,7 +1987,7 @@ final List<Question> questionsA04Daten = [
     'md-datenmengen',
     scenario:
         'Für eine Grafikkarte wird verglichen, wie viele Farben bei welcher Farbtiefe darstellbar sind. Die erste Zeile ist als Muster ausgefüllt.',
-    prompt: 'Ergänzen Sie die Anzahl der darstellbaren Farben.',
+    prompt: 'Ergänze die Anzahl der darstellbaren Farben.',
     zeilen: [
       ['Farbtiefe', 'Anzahl Farben'],
       ['1 Bit', '2'],
@@ -2130,7 +2129,7 @@ final List<Question> questionsA04Daten = [
     'md-uebertragung',
     scenario:
         'In vier Angeboten wird die Geschwindigkeit unterschiedlich angegeben - mal in Bit, mal in Byte pro Sekunde.',
-    prompt: 'Ordnen Sie die Datenraten von der niedrigsten zur höchsten.',
+    prompt: 'Ordne die Datenraten von der niedrigsten zur höchsten.',
     items: ['800 Mbit/s', '110 MB/s', '120 MB/s', '1 Gbit/s'],
     explanation:
         'Zum Vergleichen alles in Mbit/s umrechnen: MB/s mal 8, Gbit/s mal 1.000. 110 MB/s = 880 Mbit/s, 120 MB/s = 960 Mbit/s, 1 Gbit/s = 1.000 Mbit/s. Reihenfolge: 800 < 880 < 960 < 1.000 Mbit/s.',
@@ -2335,8 +2334,8 @@ final List<Question> questionsA04Daten = [
     'a4-ig-3',
     'ki-grundlagen',
     scenario:
-        'Für eine interne Schulung zur KI-Kompetenz ordnen Sie die Grundbegriffe ein.',
-    prompt: 'Setzen Sie die passenden Begriffe ein.',
+        'Für eine interne Schulung zur KI-Kompetenz ordnest du die Grundbegriffe ein.',
+    prompt: 'Setze die passenden Begriffe ein.',
     text:
         'Maschinelles Lernen ist ein Teilgebiet der {0}. '
         '{1} ist wiederum ein Teilgebiet des maschinellen Lernens und nutzt neuronale Netze mit vielen Schichten. '
@@ -2600,7 +2599,7 @@ final List<Question> questionsA04Daten = [
     scenario:
         'Ein Unternehmen will seinen Mitarbeitenden ein Sprachmodell für die tägliche Arbeit bereitstellen.',
     prompt:
-        'Nennen Sie drei Maßnahmen, die das Unternehmen vor der Einführung treffen sollte.',
+        'Nenne drei Maßnahmen, die das Unternehmen vor der Einführung treffen sollte.',
     kriterien: [
       krit(
         'Mit dem Anbieter einen Auftragsverarbeitungsvertrag (AVV) schließen',
@@ -2703,7 +2702,7 @@ final List<Question> questionsA04Daten = [
     'ki-grenzen',
     scenario:
         'In der KI-Richtlinie eines Unternehmens werden typische Risiken erklärt.',
-    prompt: 'Ordnen Sie jedem Begriff die passende Erklärung zu.',
+    prompt: 'Ordne jedem Begriff die passende Erklärung zu.',
     paare: [
       paar('Halluzination', 'überzeugend klingende, aber erfundene Ausgabe'),
       paar('Bias', 'Verzerrung durch einseitige Trainingsdaten'),
@@ -2720,7 +2719,7 @@ final List<Question> questionsA04Daten = [
     scenario:
         'Ein Mitarbeiter will die Beschwerde einer Kundin über einen defekten Rasenmäher mit einem öffentlichen KI-Chatbot beantworten lassen. Das Werkzeug ist im Unternehmen für Texte ohne personenbezogene Daten freigegeben.',
     prompt:
-        'Markieren Sie alle Angaben, die er vor der Eingabe aus dem Beschwerdetext entfernen muss.',
+        'Markiere alle Angaben, die er vor der Eingabe aus dem Beschwerdetext entfernen muss.',
     zeilen: [
       ja('Vor- und Nachname der Kundin', 'Personenbezogenes Datum.'),
       nein(
@@ -2830,7 +2829,7 @@ final List<Question> questionsA04Daten = [
     'ki-grenzen',
     scenario:
         'Ein Unternehmen lässt Kundendaten von einem externen KI-Dienst verarbeiten und prüft die Anforderungen des Datenschutzes.',
-    prompt: 'Ergänzen Sie die Aussagen zu KI und Datenschutz.',
+    prompt: 'Ergänze die Aussagen zu KI und Datenschutz.',
     text:
         'Mit dem externen KI-Anbieter wird ein {0} geschlossen. '
         'Nach dem Grundsatz der {1} werden Daten vor der Eingabe möglichst anonymisiert. '

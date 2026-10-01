@@ -13,13 +13,13 @@ final List<ExamCase> casesA06 = [
     bereich: 'a06',
     titel: 'Sichere E-Mail-Kommunikation der Kanzlei',
     situation:
-        'Die Steuerkanzlei Albers & Partner möchte Steuerbescheide und Lohnunterlagen künftig per E-Mail mit ihren Mandanten austauschen. Die Kessler & Brandt IT-Systemhaus GmbH soll dafür ein neues E-Mail-Programm mit Verschlüsselung einrichten. Sie bereiten die Einführung vor und beraten die Kanzlei zu Datenschutz und Datensicherheit.',
+        'Die Steuerkanzlei Albers & Partner möchte Steuerbescheide und Lohnunterlagen künftig per E-Mail mit ihren Mandanten austauschen. Die Kessler & Brandt IT-Systemhaus GmbH soll dafür ein neues E-Mail-Programm mit Verschlüsselung einrichten. Du bereitest die Einführung vor und berätst die Kanzlei zu Datenschutz und Datensicherheit.',
     teile: [
       freitext(
         'f-a06-systemhaus-a',
         'ds-grundlagen',
         prompt:
-            'Für den Austausch zwischen Steuerberater und Mandant gelten erhöhte Anforderungen an den Schutz der Daten. Nennen Sie zwei Rechtsgrundlagen, aus denen sich diese Anforderungen ergeben. (2 P.)',
+            'Für den Austausch zwischen Steuerberater und Mandant gelten erhöhte Anforderungen an den Schutz der Daten. Nenne zwei Rechtsgrundlagen, aus denen sich diese Anforderungen ergeben. (2 P.)',
         kriterien: [
           krit(
             'Datenschutz-Grundverordnung (DSGVO)',
@@ -59,7 +59,7 @@ final List<ExamCase> casesA06 = [
       freitext(
         'f-a06-systemhaus-b',
         'ds-grundlagen',
-        prompt: 'Beschreiben Sie den Zweck des Datenschutzrechts. (2 P.)',
+        prompt: 'Beschreibe den Zweck des Datenschutzrechts. (2 P.)',
         kriterien: [
           krit(
             'Schutz natürlicher Personen bei der Verarbeitung ihrer Daten - jeder soll selbst über seine Daten bestimmen können (informationelle Selbstbestimmung)',
@@ -103,7 +103,7 @@ final List<ExamCase> casesA06 = [
           ],
         ),
         prompt:
-            'Beschreiben Sie anhand der Skizze, wie die Kanzlei eine E-Mail verschlüsselt und wie der Mandant sie entschlüsselt. (4 P.)',
+            'Beschreibe anhand der Skizze, wie die Kanzlei eine E-Mail verschlüsselt und wie der Mandant sie entschlüsselt. (4 P.)',
         kriterien: [
           krit(
             'Die Kanzlei verschlüsselt die E-Mail mit dem öffentlichen Schlüssel des Mandanten (Empfängers)',
@@ -136,7 +136,7 @@ final List<ExamCase> casesA06 = [
         'f-a06-systemhaus-d',
         'kr-asymmetrisch',
         prompt:
-            'Ergänzen Sie das erreichte Schutzziel sowie je einen Vorteil und einen Nachteil der asymmetrischen gegenüber der symmetrischen Verschlüsselung.',
+            'Ergänze das erreichte Schutzziel sowie je einen Vorteil und einen Nachteil der asymmetrischen gegenüber der symmetrischen Verschlüsselung.',
         text:
             'Die Verschlüsselung der E-Mail sichert das Schutzziel {0}. Vorteil des asymmetrischen Verfahrens: Es muss {1} ausgetauscht werden. Nachteil: Das Verfahren ist {2} als ein symmetrisches.',
         luecken: [
@@ -160,7 +160,7 @@ final List<ExamCase> casesA06 = [
           ['Datei', 'SHA-256'],
           ['mailclient-12.4-setup.exe', '4be1907c…a3f2d85e'],
         ],
-        prompt: 'Erläutern Sie den Zweck des angegebenen Hashwerts. (4 P.)',
+        prompt: 'Erläutere den Zweck des angegebenen Hashwerts. (4 P.)',
         kriterien: [
           krit(
             'Nach dem Download wird der Hashwert der Datei selbst berechnet und mit dem angegebenen verglichen',
@@ -196,7 +196,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'Eine Mitarbeiterin der Kanzlei möchte auf ihrem PC Administratorrechte, um Programme selbst installieren zu können.',
         prompt:
-            'Erläutern Sie einen Grund, warum die Beschäftigten nicht mit Administratorrechten arbeiten sollen. (3 P.)',
+            'Erläutere einen Grund, warum die Beschäftigten nicht mit Administratorrechten arbeiten sollen. (3 P.)',
         kriterien: [
           krit(
             'Schadsoftware läuft mit den Rechten des angemeldeten Kontos - mit Administratorrechten kann sie sich systemweit einnisten und Schutzfunktionen abschalten',
@@ -236,7 +236,7 @@ final List<ExamCase> casesA06 = [
         code:
             'SECURING YOUR MAIL CLIENT\n\nTo protect confidential messages, first install the\nlatest security baseline provided by the vendor. Use a\nstrong and unique password for every mailbox. Make sure\nthe built-in firewall of the operating system is enabled.\nConfigure the client to download and install updates\nautomatically. Finally, disable the automatic loading of\nexternal images, because they can be used to track the\nreader.',
         prompt:
-            'Nennen Sie vier Sicherheitsmaßnahmen, die der Text empfiehlt. Antworten Sie auf Deutsch. (4 P.)',
+            'Nenne vier Sicherheitsmaßnahmen, die der Text empfiehlt. Antworte auf Deutsch. (4 P.)',
         kriterien: [
           krit(
             'Aktuelle Sicherheits-Baseline (Grundkonfiguration) des Herstellers einspielen',
@@ -282,7 +282,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'Kurz nach der Umstellung erhält die Kanzlei folgende E-Mail.',
         prompt:
-            'Markieren Sie alle Zeilen, die auf einen Phishing-Versuch hindeuten.',
+            'Markiere alle Zeilen, die auf einen Phishing-Versuch hindeuten.',
         zeilen: [
           ja(
             'Von: Finanzamt Bremen <bescheid@finanzamt-bremen.steuer-post.example>',
@@ -323,7 +323,7 @@ final List<ExamCase> casesA06 = [
     bereich: 'a06',
     titel: 'Kassen und mobile Arbeitsplätze absichern',
     situation:
-        'Für die neue Filiale in Göttingen beschafft die Grünwerk Gartenbedarf GmbH Kassenterminals. Gleichzeitig erhalten 20 Beschäftigte aus Einkauf und Kundenservice Notebooks für mobiles Arbeiten. Die IT-Abteilung soll beides sicher in Betrieb nehmen. Sie unterstützen bei Planung und Einrichtung.',
+        'Für die neue Filiale in Göttingen beschafft die Grünwerk Gartenbedarf GmbH Kassenterminals. Gleichzeitig erhalten 20 Beschäftigte aus Einkauf und Kundenservice Notebooks für mobiles Arbeiten. Die IT-Abteilung soll beides sicher in Betrieb nehmen. Du unterstützt bei Planung und Einrichtung.',
     teile: [
       freitext(
         'f-a06-handel-a',
@@ -331,7 +331,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'Die Filialleitung schlägt vor, dass sich das Kassenpersonal per Fingerabdruck an den Terminals anmeldet.',
         prompt:
-            'Begründen Sie, warum Fingerabdruckdaten einen erhöhten Schutz benötigen, und nennen Sie eine Rechtsgrundlage für den Datenschutz. (3 P.)',
+            'Begründe, warum Fingerabdruckdaten einen erhöhten Schutz benötigen, und nenne eine Rechtsgrundlage für den Datenschutz. (3 P.)',
         kriterien: [
           krit(
             'Begründung: Biometrische Daten zur Identifizierung sind besonders schützenswerte personenbezogene Daten; ihre Verarbeitung ist nur ausnahmsweise erlaubt, z. B. mit ausdrücklicher Einwilligung',
@@ -365,7 +365,7 @@ final List<ExamCase> casesA06 = [
         'f-a06-handel-b',
         'kr-auth',
         prompt:
-            'Für die Anmeldung an den Kassen werden drei Methoden verglichen. Ergänzen Sie die Tabelle; die Zeile „Fingerabdruck“ dient als Muster.',
+            'Für die Anmeldung an den Kassen werden drei Methoden verglichen. Ergänze die Tabelle; die Zeile „Fingerabdruck“ dient als Muster.',
         zeilen: [
           ['Methode', 'Vorteil', 'Risiko'],
           [
@@ -406,7 +406,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'Die Kassenterminals werden mit der Software ausgeliefert, die bei der Fertigung vor acht Monaten aufgespielt wurde.',
         prompt:
-            'Beschreiben Sie einen Grund, warum vor der Inbetriebnahme ein Softwareupdate durchgeführt werden soll. (2 P.)',
+            'Beschreibe einen Grund, warum vor der Inbetriebnahme ein Softwareupdate durchgeführt werden soll. (2 P.)',
         kriterien: [
           krit(
             'Seit der Fertigung bekannt gewordene Sicherheitslücken werden geschlossen - das Gerät ist gegen Angriffe gehärtet',
@@ -448,7 +448,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'Ein unbekannter Onlinehändler bietet baugleiche Terminals deutlich günstiger an. Die IT-Leitung besteht auf dem Kauf beim autorisierten Fachhändler.',
         prompt:
-            'Beschreiben Sie ein Risiko, das von Geräten ausgeht, die in der Lieferkette manipuliert wurden. (2 P.)',
+            'Beschreibe ein Risiko, das von Geräten ausgeht, die in der Lieferkette manipuliert wurden. (2 P.)',
         kriterien: [
           krit(
             'Unbemerkt eingebaute Abhör- oder Auslesefunktionen: Kartendaten und PINs werden abgegriffen und an Dritte übertragen',
@@ -486,7 +486,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'Die Kassendaten der Filiale werden gesichert: sonntags eine Vollsicherung mit 120 GB, von Montag bis Samstag je eine inkrementelle Sicherung mit 8 GB. Alle Sicherungen werden vier Wochen aufbewahrt.',
         prompt:
-            'Berechnen Sie den Speicherplatz, der für die Sicherungen von vier Wochen benötigt wird.',
+            'Berechne den Speicherplatz, der für die Sicherungen von vier Wochen benötigt wird.',
         answer: 672,
         unit: 'GB',
         explanation:
@@ -506,7 +506,7 @@ final List<ExamCase> casesA06 = [
           ],
         ),
         prompt:
-            'Beschreiben Sie anhand der Skizze, wie die digitale Signatur erstellt und wie sie geprüft wird. (4 P.)',
+            'Beschreibe anhand der Skizze, wie die digitale Signatur erstellt und wie sie geprüft wird. (4 P.)',
         kriterien: [
           krit(
             'Erstellen: Hashwert der Bestellung bilden und mit dem privaten Schlüssel des Einkaufs (Absenders) verschlüsseln; Bestellung und Signatur senden',
@@ -539,7 +539,7 @@ final List<ExamCase> casesA06 = [
         'f-a06-handel-g',
         'ds-tom',
         prompt:
-            'Für das mobile Arbeiten gelten Schutzmaßnahmen. Ergänzen Sie zu jeder Maßnahme die Folge, die droht, wenn sie fehlt. Die erste Zeile dient als Muster.',
+            'Für das mobile Arbeiten gelten Schutzmaßnahmen. Ergänze zu jeder Maßnahme die Folge, die droht, wenn sie fehlt. Die erste Zeile dient als Muster.',
         zeilen: [
           ['Maßnahme', 'Folge, wenn sie fehlt'],
           ['Anmeldung mit Passwort', 'Unbefugte können das Gerät nutzen'],
@@ -586,7 +586,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'Die 20 Notebooks sollten laut Kaufvertrag „am 15. September“ geliefert werden. Am 1. Oktober sind sie noch nicht eingetroffen; der Händler hatte die Bestellung beim Hersteller versäumt.',
         prompt:
-            'Nennen Sie drei Rechte, die der Grünwerk Gartenbedarf GmbH wegen des Lieferungsverzugs zustehen können. (3 P.)',
+            'Nenne drei Rechte, die der Grünwerk Gartenbedarf GmbH wegen des Lieferungsverzugs zustehen können. (3 P.)',
         kriterien: [
           krit(
             'Weiterhin auf der Lieferung bestehen',
@@ -635,13 +635,13 @@ final List<ExamCase> casesA06 = [
     bereich: 'a06',
     titel: 'Ticketsystem datenschutzgerecht einführen',
     situation:
-        'Die Pixelhafen Medien GmbH führt ein Ticketsystem ein, über das Kunden Supportanfragen stellen. Das System läuft auf einem eigenen Server und ist über ein Webportal erreichbar. Sie unterstützen die beiden Administratoren bei der sicheren Einrichtung und begleiten die Einführung im Supportteam.',
+        'Die Pixelhafen Medien GmbH führt ein Ticketsystem ein, über das Kunden Supportanfragen stellen. Das System läuft auf einem eigenen Server und ist über ein Webportal erreichbar. Du unterstützt die beiden Administratoren bei der sicheren Einrichtung und begleitest die Einführung im Supportteam.',
     teile: [
       freitext(
         'f-a06-agentur-a',
         'ds-grundlagen',
         prompt:
-            'Im Ticketsystem werden personenbezogene Daten gespeichert. Nennen Sie zwei Rechtsgrundlagen des Datenschutzes, die in Deutschland gelten. (2 P.)',
+            'Im Ticketsystem werden personenbezogene Daten gespeichert. Nenne zwei Rechtsgrundlagen des Datenschutzes, die in Deutschland gelten. (2 P.)',
         kriterien: [
           krit(
             'Datenschutz-Grundverordnung (DSGVO)',
@@ -671,7 +671,7 @@ final List<ExamCase> casesA06 = [
         'f-a06-agentur-b',
         'ds-grundlagen',
         scenario: 'Ein Ticket enthält folgende Angaben.',
-        prompt: 'Markieren Sie alle Angaben, die personenbezogene Daten sind.',
+        prompt: 'Markiere alle Angaben, die personenbezogene Daten sind.',
         zeilen: [
           nein(
             'Kunde: Möbel Brandt GmbH',
@@ -703,7 +703,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'Das Ticketsystem protokolliert jede Anmeldung und jede Änderung an einem Ticket mit Benutzername und Uhrzeit.',
         prompt:
-            'Beschreiben Sie zwei Anforderungen des Datenschutzes an solche Protokolle. (4 P.)',
+            'Beschreibe zwei Anforderungen des Datenschutzes an solche Protokolle. (4 P.)',
         kriterien: [
           krit(
             'Zweckbindung: Protokolle nur für festgelegte Zwecke wie Sicherheit und Fehlersuche auswerten, nicht zur Leistungs- oder Verhaltenskontrolle',
@@ -758,7 +758,7 @@ final List<ExamCase> casesA06 = [
         'f-a06-agentur-d',
         'sm-zugriff',
         prompt:
-            'Der Server des Ticketsystems soll vor der Inbetriebnahme gehärtet werden. Nennen Sie vier Maßnahmen zur Härtung. (4 P.)',
+            'Der Server des Ticketsystems soll vor der Inbetriebnahme gehärtet werden. Nenne vier Maßnahmen zur Härtung. (4 P.)',
         kriterien: [
           krit(
             'Nicht benötigte Dienste abschalten und ungenutzte Ports schließen',
@@ -827,7 +827,7 @@ final List<ExamCase> casesA06 = [
         'sm-zugriff',
         scenario:
             'Im Ticketsystem gibt es drei Rollen. Kunden sehen und kommentieren nur ihre eigenen Tickets. Support-Mitarbeitende bearbeiten alle Tickets. Benutzerkonten verwalten ausschließlich die Administratoren.',
-        prompt: 'Ergänzen Sie die Berechtigungen nach dem Minimalprinzip.',
+        prompt: 'Ergänze die Berechtigungen nach dem Minimalprinzip.',
         zeilen: [
           ['Aktion', 'Kunde', 'Support'],
           [
@@ -854,7 +854,7 @@ final List<ExamCase> casesA06 = [
         'f-a06-agentur-f',
         'kr-hybrid',
         prompt:
-            'Das Webportal ist nur über HTTPS erreichbar. Ergänzen Sie die Beschreibung des Verbindungsaufbaus.',
+            'Das Webportal ist nur über HTTPS erreichbar. Ergänze die Beschreibung des Verbindungsaufbaus.',
         text:
             'Beim Verbindungsaufbau prüft der Browser zuerst das {0} des Servers. Anschließend vereinbaren beide Seiten einen Sitzungsschlüssel. Die Nutzdaten werden damit {1} verschlüsselt, weil dieses Verfahren deutlich {2} ist.',
         luecken: [
@@ -874,7 +874,7 @@ final List<ExamCase> casesA06 = [
         code:
             'WHY PEOPLE RESIST NEW SOFTWARE\n\nEmployees often resist a new system because they fear\nlosing control over their work. Many worry that they will\nnot be able to learn the new tool quickly enough. Others\nhave had bad experiences with earlier projects. Resistance\nalso grows when staff are informed too late and are not\ninvolved in decisions.',
         prompt:
-            'Benennen Sie drei Gründe für Widerstand, die der Text anführt. Antworten Sie auf Deutsch. (3 P.)',
+            'Benenne drei Gründe für Widerstand, die der Text anführt. Antworte auf Deutsch. (3 P.)',
         kriterien: [
           krit(
             'Angst, die Kontrolle über die eigene Arbeit zu verlieren',
@@ -922,7 +922,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'Zwei Wochen nach dem Start beantworten einige Mitarbeitende Kundenanfragen weiter per E-Mail statt im Ticketsystem.',
         prompt:
-            'Beschreiben Sie eine Maßnahme, mit der die Agentur die Akzeptanz des Ticketsystems erhöhen kann. (2 P.)',
+            'Beschreibe eine Maßnahme, mit der die Agentur die Akzeptanz des Ticketsystems erhöhen kann. (2 P.)',
         kriterien: [
           krit(
             'Schulungen und Hilfen anbieten, damit alle das System sicher bedienen können',
@@ -984,13 +984,13 @@ final List<ExamCase> casesA06 = [
     bereich: 'a06',
     titel: 'Kameras und Netz der neuen Lagerhalle',
     situation:
-        'Die neue Lagerhalle der Elbtal Logistik AG erhält Netzwerkkameras an den Laderampen und am Hoftor. Die Kameras werden in ein eigenes Netzsegment eingebunden und liefern ihre Bilder an einen Aufzeichnungsserver. Die IT-Abteilung plant die Inbetriebnahme; Sie arbeiten im Projekt mit.',
+        'Die neue Lagerhalle der Elbtal Logistik AG erhält Netzwerkkameras an den Laderampen und am Hoftor. Die Kameras werden in ein eigenes Netzsegment eingebunden und liefern ihre Bilder an einen Aufzeichnungsserver. Die IT-Abteilung plant die Inbetriebnahme; du arbeitest im Projekt mit.',
     teile: [
       freitext(
         'f-a06-logistik-a',
         'ds-grundsaetze',
         prompt:
-            'Nennen Sie drei rechtliche Pflichten, die das Unternehmen bei der Videoüberwachung beachten muss. (3 P.)',
+            'Nenne drei rechtliche Pflichten, die das Unternehmen bei der Videoüberwachung beachten muss. (3 P.)',
         kriterien: [
           krit(
             'Durch gut sichtbare Schilder auf die Überwachung hinweisen',
@@ -1056,7 +1056,7 @@ final List<ExamCase> casesA06 = [
         code:
             'NETWORK CAMERA NC-420 - SECURITY FEATURES\n\n- No default passwords: a password must be set\n  during first setup\n- Encrypted video stream (TLS 1.3)\n- Signed firmware with automatic update check\n- Login is locked for 10 minutes after 5 failed\n  attempts',
         prompt:
-            'Beschreiben Sie zwei Konsequenzen, die sich aus der Angabe „No default passwords“ ergeben. (4 P.)',
+            'Beschreibe zwei Konsequenzen, die sich aus der Angabe „No default passwords“ ergeben. (4 P.)',
         kriterien: [
           krit(
             'Bei der Ersteinrichtung muss für jede Kamera ein eigenes Passwort gesetzt werden, das der Passwortrichtlinie entspricht',
@@ -1104,7 +1104,7 @@ final List<ExamCase> casesA06 = [
         mono: true,
         scenario:
             'Die Handscanner der Halle verbinden sich über Access Points mit dem Lagernetz. Ein Dienstleister hat den ersten Access Point eingerichtet.',
-        prompt: 'Markieren Sie alle unsicheren Einstellungen.',
+        prompt: 'Markiere alle unsicheren Einstellungen.',
         zeilen: [
           ja(
             'Verschlüsselung: WEP',
@@ -1144,7 +1144,7 @@ final List<ExamCase> casesA06 = [
         'sm-firewall',
         scenario:
             'Vorgaben für das Kamera-Netz: Die Kameras liefern ihre Bilder per HTTPS an den Aufzeichnungsserver. Die Uhrzeit beziehen sie per NTP vom internen Zeitserver. Verbindungen ins Internet sind den Kameras verboten. Alles nicht ausdrücklich Erlaubte wird verworfen.',
-        prompt: 'Ergänzen Sie das Regelwerk der Firewall.',
+        prompt: 'Ergänze das Regelwerk der Firewall.',
         zeilen: [
           ['Quelle', 'Ziel', 'Port', 'Aktion'],
           [
@@ -1182,7 +1182,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'Damit Bilder aufgezeichnet werden, müssen der Switch der Halle (Verfügbarkeit 99,9 %) und der Aufzeichnungsserver (Verfügbarkeit 99,0 %) gleichzeitig funktionieren.',
         prompt:
-            'Berechnen Sie die Gesamtverfügbarkeit der Aufzeichnung in Prozent. Runden Sie auf zwei Nachkommastellen.',
+            'Berechne die Gesamtverfügbarkeit der Aufzeichnung in Prozent. Runde auf zwei Nachkommastellen.',
         answer: 98.9,
         tolerance: 0.01,
         unit: '%',
@@ -1196,7 +1196,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'Laut Kaufvertrag sollten die Kameras „in der 38. Kalenderwoche“ geliefert werden. Zwei Wochen später sind sie noch nicht da; der Eröffnungstermin der Halle ist gefährdet.',
         prompt:
-            'Beschreiben Sie ein Recht, das die Elbtal Logistik AG als Käuferin wegen des Lieferungsverzugs geltend machen kann. (3 P.)',
+            'Beschreibe ein Recht, das die Elbtal Logistik AG als Käuferin wegen des Lieferungsverzugs geltend machen kann. (3 P.)',
         kriterien: [
           krit(
             'Auf Lieferung bestehen und Ersatz des Verzögerungsschadens verlangen, wenn der Verkäufer die Verspätung zu vertreten hat',
@@ -1231,7 +1231,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'In der Belegschaft regt sich Widerstand: Viele befürchten, die Kameras dienten dazu, ihr Arbeitstempo zu überwachen.',
         prompt:
-            'Beschreiben Sie zwei Maßnahmen, mit denen die Unternehmensleitung die Akzeptanz der Kameras erhöhen kann. (4 P.)',
+            'Beschreibe zwei Maßnahmen, mit denen die Unternehmensleitung die Akzeptanz der Kameras erhöhen kann. (4 P.)',
         kriterien: [
           krit(
             'Früh und offen informieren: Zweck, erfasste Bereiche, Speicherdauer und Zugriffsberechtigte erklären',
@@ -1294,13 +1294,13 @@ final List<ExamCase> casesA06 = [
     bereich: 'a06',
     titel: 'Datenschutz und Datensicherung der Kanzlei',
     situation:
-        'Mit dem Umzug in die neuen Büroräume lässt die Steuerkanzlei Albers & Partner ihr Sicherheitskonzept überarbeiten. Bisher wird der Server einmal wöchentlich auf eine zweite Festplatte im selben Gehäuse gesichert. Die Kessler & Brandt IT-Systemhaus GmbH soll Schutzbedarf, Zugriffsschutz und Datensicherung neu planen. Sie arbeiten das Konzept mit aus.',
+        'Mit dem Umzug in die neuen Büroräume lässt die Steuerkanzlei Albers & Partner ihr Sicherheitskonzept überarbeiten. Bisher wird der Server einmal wöchentlich auf eine zweite Festplatte im selben Gehäuse gesichert. Die Kessler & Brandt IT-Systemhaus GmbH soll Schutzbedarf, Zugriffsschutz und Datensicherung neu planen. Du arbeitest das Konzept mit aus.',
     teile: [
       zuordnen(
         'f-a06-systemhaus2-a',
         'sz-schutzziele',
         prompt:
-            'Ordnen Sie jede geplante Maßnahme dem Schutzziel zu, das sie in erster Linie unterstützt.',
+            'Ordne jede geplante Maßnahme dem Schutzziel zu, das sie in erster Linie unterstützt.',
         buckets: ['Vertraulichkeit', 'Integrität', 'Verfügbarkeit'],
         items: [
           zu(
@@ -1339,7 +1339,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'Der IT-Grundschutz fordert unter anderem „Autoupdate“ und „Rollentrennung“.',
         prompt:
-            'Nennen Sie zu jeder der beiden Anforderungen eine Maßnahme, mit der die Kanzlei sie umsetzt. (2 P.)',
+            'Nenne zu jeder der beiden Anforderungen eine Maßnahme, mit der die Kanzlei sie umsetzt. (2 P.)',
         kriterien: [
           krit(
             'Autoupdate: automatische Updates für Betriebssystem, Anwendungen und Virensignaturen aktivieren',
@@ -1380,7 +1380,7 @@ final List<ExamCase> casesA06 = [
           ['sehr hoch', 'existenzbedrohend'],
         ],
         prompt:
-            'Ergänzen Sie Kategorie und Begründung. Die erste Zeile dient als Muster.',
+            'Ergänze Kategorie und Begründung. Die erste Zeile dient als Muster.',
         zeilen: [
           ['Anwendung', 'Schutzziel', 'Kategorie', 'Begründung'],
           [
@@ -1425,7 +1425,7 @@ final List<ExamCase> casesA06 = [
         'f-a06-systemhaus2-d',
         'kr-auth',
         prompt:
-            'Führen Sie zwei Kriterien für sichere Passwörter an und beschreiben Sie jeweils, wie das Kriterium die Sicherheit erhöht. (4 P.)',
+            'Führe zwei Kriterien für sichere Passwörter an und beschreibe jeweils, wie das Kriterium die Sicherheit erhöht. (4 P.)',
         kriterien: [
           krit(
             'Ausreichende Länge: Die Zahl der möglichen Kombinationen wächst mit jedem Zeichen stark - Durchprobieren (Brute Force) dauert zu lange',
@@ -1482,7 +1482,7 @@ final List<ExamCase> casesA06 = [
         'f-a06-systemhaus2-e',
         'sm-backup',
         prompt:
-            'Bisher wird nur einmal wöchentlich auf eine zweite Festplatte im Servergehäuse gesichert. Beschreiben Sie zwei Risiken dieses Vorgehens. (2 P.)',
+            'Bisher wird nur einmal wöchentlich auf eine zweite Festplatte im Servergehäuse gesichert. Beschreibe zwei Risiken dieses Vorgehens. (2 P.)',
         kriterien: [
           krit(
             'Bis zu sechs Tage Arbeit gehen verloren, weil nur wöchentlich gesichert wird',
@@ -1527,7 +1527,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'Neuer Sicherungsplan: Freitagabend eine Vollsicherung mit 300 GB auf ein externes Medium, das außer Haus gelagert wird. Von Montag bis Donnerstag folgt jeden Abend eine differenzielle Sicherung. Täglich ändern sich 20 GB jeweils anderer Dateien.',
         prompt:
-            'Ergänzen Sie die Größe der differenziellen Sicherungen und die Anzahl der Sicherungen, die bei einem Ausfall am Freitagmorgen zurückgespielt werden müssen.',
+            'Ergänze die Größe der differenziellen Sicherungen und die Anzahl der Sicherungen, die bei einem Ausfall am Freitagmorgen zurückgespielt werden müssen.',
         zeilen: [
           ['Sicherung', 'Wert'],
           ['Montag (GB)', '20'],
@@ -1553,7 +1553,7 @@ final List<ExamCase> casesA06 = [
         'f-a06-systemhaus2-g',
         'sm-backup',
         prompt:
-            'Berechnen Sie, wie viel Speicherplatz die Vollsicherung und die vier differenziellen Sicherungen einer Woche zusammen belegen.',
+            'Berechne, wie viel Speicherplatz die Vollsicherung und die vier differenziellen Sicherungen einer Woche zusammen belegen.',
         answer: 500,
         unit: 'GB',
         explanation:
@@ -1570,7 +1570,7 @@ final List<ExamCase> casesA06 = [
     bereich: 'a06',
     titel: 'Mobile Arbeitsplätze der Disposition',
     situation:
-        'Die Disponentinnen und Disponenten der Elbtal Logistik AG erhalten Notebooks, mit denen sie auch von zu Hause und unterwegs arbeiten. Die SSD jedes Notebooks ist verschlüsselt; beim Start wird ein Passwort abgefragt. Die IT-Abteilung legt die Regeln für das mobile Arbeiten fest. Sie wirken an der Richtlinie mit.',
+        'Die Disponentinnen und Disponenten der Elbtal Logistik AG erhalten Notebooks, mit denen sie auch von zu Hause und unterwegs arbeiten. Die SSD jedes Notebooks ist verschlüsselt; beim Start wird ein Passwort abgefragt. Die IT-Abteilung legt die Regeln für das mobile Arbeiten fest. Du wirkst an der Richtlinie mit.',
     teile: [
       freitext(
         'f-a06-logistik2-a',
@@ -1578,7 +1578,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'Auf den Notebooks werden auch Schichtpläne mit Namen, Arbeitszeiten und Telefonnummern der Beschäftigten bearbeitet.',
         prompt:
-            'Benennen Sie eine Rechtsgrundlage, auf die sich die Verarbeitung dieser Beschäftigtendaten stützt, und begründen Sie Ihre Antwort. (3 P.)',
+            'Benenne eine Rechtsgrundlage, auf die sich die Verarbeitung dieser Beschäftigtendaten stützt, und begründe deine Antwort. (3 P.)',
         kriterien: [
           krit(
             'Rechtsgrundlage: Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO, § 26 BDSG)',
@@ -1612,7 +1612,7 @@ final List<ExamCase> casesA06 = [
         'f-a06-logistik2-b',
         'ds-tom',
         prompt:
-            'Ergänzen Sie für jeden Bereich eine geeignete technisch-organisatorische Maßnahme. Die erste Zeile dient als Muster.',
+            'Ergänze für jeden Bereich eine geeignete technisch-organisatorische Maßnahme. Die erste Zeile dient als Muster.',
         zeilen: [
           ['Bereich', 'Maßnahme'],
           ['Zutritt zum Arbeitsplatz zu Hause', 'abschließbares Arbeitszimmer'],
@@ -1657,7 +1657,7 @@ final List<ExamCase> casesA06 = [
         'f-a06-logistik2-c',
         'kr-auth',
         prompt:
-            'Nennen Sie zwei Kriterien für ein sicheres Passwort zum Entsperren der SSD. (2 P.)',
+            'Nenne zwei Kriterien für ein sicheres Passwort zum Entsperren der SSD. (2 P.)',
         kriterien: [
           krit(
             'Ausreichende Länge',
@@ -1703,7 +1703,7 @@ final List<ExamCase> casesA06 = [
         'f-a06-logistik2-d',
         'sz-schutzziele',
         prompt:
-            'Beschreiben Sie, was die Schutzziele Vertraulichkeit und Integrität bezogen auf die Daten der verschlüsselten SSD bedeuten. (4 P.)',
+            'Beschreibe, was die Schutzziele Vertraulichkeit und Integrität bezogen auf die Daten der verschlüsselten SSD bedeuten. (4 P.)',
         kriterien: [
           krit(
             'Vertraulichkeit: Nur Befugte, die das Passwort kennen, können die Daten auf der SSD lesen',
@@ -1740,7 +1740,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'Einem Disponenten wird das ausgeschaltete Notebook aus dem Auto gestohlen.',
         prompt:
-            'Beurteilen Sie, wie gut die Daten in diesem Fall durch die Verschlüsselung geschützt sind. (2 P.)',
+            'Beurteile, wie gut die Daten in diesem Fall durch die Verschlüsselung geschützt sind. (2 P.)',
         kriterien: [
           krit(
             'Ohne das Passwort kann der Dieb die Daten nicht lesen - auch nicht, wenn er die SSD ausbaut',
@@ -1773,7 +1773,7 @@ final List<ExamCase> casesA06 = [
         'f-a06-logistik2-f',
         'sm-firewall',
         prompt:
-            'Unterwegs nutzen die Beschäftigten häufig öffentliche WLANs. Beschreiben Sie den Sicherheitsvorteil einer VPN-Verbindung. (2 P.)',
+            'Unterwegs nutzen die Beschäftigten häufig öffentliche WLANs. Beschreibe den Sicherheitsvorteil einer VPN-Verbindung. (2 P.)',
         kriterien: [
           krit(
             'Das VPN baut einen verschlüsselten Tunnel durch das unsichere Netz bis ins Firmennetz auf',
@@ -1809,7 +1809,7 @@ final List<ExamCase> casesA06 = [
           ],
         ),
         prompt:
-            'Bringen Sie die Schritte der asymmetrischen Verschlüsselung in die richtige Reihenfolge.',
+            'Bringe die Schritte der asymmetrischen Verschlüsselung in die richtige Reihenfolge.',
         items: [
           'Die Spedition erzeugt ein Schlüsselpaar',
           'Die Spedition übermittelt ihren öffentlichen Schlüssel an die Disposition',
@@ -1829,7 +1829,7 @@ final List<ExamCase> casesA06 = [
         code:
             'SECURITY BULLETIN - HANDHELD SCANNER HS-70\n\nA vulnerability in the Bluetooth module allows attackers\nwithin radio range to take control of the device.\nUpdate the firmware to version 3.1.2 as soon as\npossible. Until then, switch off Bluetooth on all\ndevices. Change the administrator PIN, as the old PIN\nmay have been read out. Remove devices that are no\nlonger supported from the network. Report lost or\nstolen scanners to your IT department immediately.',
         prompt:
-            'Nennen Sie vier Maßnahmen, die der Hersteller empfiehlt. Antworten Sie auf Deutsch. (4 P.)',
+            'Nenne vier Maßnahmen, die der Hersteller empfiehlt. Antworte auf Deutsch. (4 P.)',
         kriterien: [
           krit(
             'Firmware so bald wie möglich auf Version 3.1.2 aktualisieren',

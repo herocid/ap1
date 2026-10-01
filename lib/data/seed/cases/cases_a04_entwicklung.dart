@@ -21,7 +21,7 @@ final List<ExamCase> casesA04Entwicklung = [
         scenario:
             'Notiz aus dem Gespräch mit der Abrechnung: „Die Techniker erfassen jeden Einsatz mit Datum, Dauer und Ort. Das Programm erstellt am Monatsende je Kunde eine Rechnung als PDF. Die Monatsrechnung muss in höchstens 10 Sekunden erzeugt sein. Die Daten dürfen nur auf unseren eigenen Servern liegen.“',
         prompt:
-            'Nennen Sie aus der Notiz zwei funktionale und zwei nicht-funktionale Anforderungen. (4 P.)',
+            'Nenne aus der Notiz zwei funktionale und zwei nicht-funktionale Anforderungen. (4 P.)',
         punkte: 4,
         kriterien: [
           krit(
@@ -73,7 +73,7 @@ final List<ExamCase> casesA04Entwicklung = [
         'u-klassen',
         scenario:
             'Ein Einsatz hat ein Datum (als Text), eine Dauer in ganzen Minuten, die Angabe, ob er vor Ort stattfand, und einen Stundensatz mit Nachkommastellen. Die Attribute sind von außen nicht direkt zugreifbar. Die Methode berechneKosten ist bereits eingetragen.',
-        prompt: 'Ergänzen Sie das UML-Klassendiagramm. (5 P.)',
+        prompt: 'Ergänze das UML-Klassendiagramm. (5 P.)',
         mono: true,
         text:
             '{0}\n----------------------------\n- datum: String\n{1} minuten: {2}\n- vorOrt: {3}\n- stundensatz: {4}\n----------------------------\n+ berechneKosten(): double',
@@ -110,7 +110,7 @@ WENN summe > 500 DANN
 ENDE WENN
 AUSGABE summe''',
         prompt:
-            'Führen Sie einen Schreibtischtest durch: Berechnen Sie die Kosten je Einsatz, die Summe nach der Schleife und die Ausgabe (in €). (9 P.)',
+            'Führe einen Schreibtischtest durch: Berechne die Kosten je Einsatz, die Summe nach der Schleife und die Ausgabe (in €). (9 P.)',
         zeilen: [
           ['Schritt', 'Wert'],
           ['kosten für i = 0', zahl(220, toleranz: 0.005)],
@@ -129,7 +129,7 @@ AUSGABE summe''',
         'pl-pseudocode',
         scenario:
             'Eine weitere Routine soll die durchschnittliche Dauer aller n Einsätze berechnen. Für die Dauern [120, 60, 100] gibt sie 33,33 statt 93,33 aus.',
-        prompt: 'Markieren Sie die fehlerhafte Zeile. (2 P.)',
+        prompt: 'Markiere die fehlerhafte Zeile. (2 P.)',
         mono: true,
         zeilen: [
           nein('summe ← 0', 'Der Startwert einer Summe ist richtig 0.'),
@@ -155,7 +155,7 @@ AUSGABE summe''',
         scenario:
             'Die fehlerhafte Zeile „summe ← minuten[i]“ der Durchschnittsberechnung soll korrigiert werden. Testdaten: [120, 60, 100].',
         prompt:
-            'Korrigieren Sie die Zeile und geben Sie die Ausgabe des korrigierten Programms an, gerundet auf zwei Nachkommastellen. (2 P.)',
+            'Korrigiere die Zeile und gib die Ausgabe des korrigierten Programms an, gerundet auf zwei Nachkommastellen. (2 P.)',
         mono: true,
         text: 'summe ← {0}\n\nAusgabe nach der Korrektur: {1}',
         luecken: [
@@ -180,7 +180,7 @@ AUSGABE summe''',
         scenario:
             'Im Entwurf sind alle Attribute der Klasse Einsatz private. Ein Kollege möchte sie public machen, „damit man nicht für alles eine Methode schreiben muss“.',
         prompt:
-            'Erläutern Sie, warum die Attribute private bleiben sollten und wie andere Klassen trotzdem an die Werte kommen. (3 P.)',
+            'Erläutere, warum die Attribute private bleiben sollten und wie andere Klassen trotzdem an die Werte kommen. (3 P.)',
         punkte: 3,
         kriterien: [
           krit(
@@ -242,7 +242,7 @@ Every report has to be available within
 five seconds. The tool must run in all
 common web browsers.''',
         prompt:
-            'Nennen Sie auf Deutsch drei Anforderungen aus dem Text und geben Sie jeweils an, ob sie funktional oder nicht-funktional ist. (3 P.)',
+            'Nenne auf Deutsch drei Anforderungen aus dem Text und gib jeweils an, ob sie funktional oder nicht-funktional ist. (3 P.)',
         punkte: 3,
         kriterien: [
           krit(
@@ -293,7 +293,7 @@ common web browsers.''',
         scenario:
             'Ablauf einer Nachbestellung: Das System ermittelt den Lagerbestand eines Artikels. Liegt er unter dem Mindestbestand, wird eine Bestellung erzeugt und an den Lieferanten gesendet. In jedem Fall wird der Vorgang anschließend protokolliert.',
         prompt:
-            'Erstellen Sie das Aktivitätsdiagramm für den Fall, dass nachbestellt wird: Bringen Sie die Elemente in die richtige Reihenfolge. (3 P.)',
+            'Erstelle das Aktivitätsdiagramm für den Fall, dass nachbestellt wird: Bringe die Elemente in die richtige Reihenfolge. (3 P.)',
         items: [
           'Startknoten',
           'Lagerbestand ermitteln',
@@ -315,7 +315,7 @@ common web browsers.''',
         scenario:
             'Der Ablauf wird erweitert: Nachbestellt wird, wenn der Bestand kleiner als 20 Stück ist. Nach „Bestellung senden“ sollen „Einkauf informieren“ und „Liefertermin vormerken“ gleichzeitig ablaufen.',
         prompt:
-            'Ergänzen Sie die Beschreibung des Aktivitätsdiagramms mit den passenden Begriffen. (4 P.)',
+            'Ergänze die Beschreibung des Aktivitätsdiagramms mit den passenden Begriffen. (4 P.)',
         text:
             'An der Kante zu „Bestellung erzeugen“ steht die Bedingung {0}, an der anderen Kante {1}. Die beiden gleichzeitigen Aktionen beginnen an einer {2} und enden an einer {3}.',
         luecken: [
@@ -348,7 +348,7 @@ for each b in branches
 end for
 print count, gap''',
         prompt:
-            'Erläutern Sie auf Deutsch, was die Zeilen „for each b in branches“, „if b.revenue < target then“ und „print b.name“ bewirken. (3 P.)',
+            'Erläutere auf Deutsch, was die Zeilen „for each b in branches“, „if b.revenue < target then“ und „print b.name“ bewirken. (3 P.)',
         punkte: 3,
         kriterien: [
           krit(
@@ -404,7 +404,7 @@ for each b in branches
 end for
 print count, gap''',
         prompt:
-            'Führen Sie einen Schreibtischtest durch: Tragen Sie die Werte von count und gap nach jeder Filiale ein. (6 P.)',
+            'Führe einen Schreibtischtest durch: Trage die Werte von count und gap nach jeder Filiale ein. (6 P.)',
         zeilen: [
           ['Filiale', 'revenue', 'count', 'gap'],
           ['Kassel', '24500', '0', '0'],
@@ -428,7 +428,7 @@ FÜR i VON 0 BIS n - 1
   ENDE WENN
 ENDE FÜR
 AUSGABE anzahl''',
-        prompt: 'Erläutern Sie den Fehler im Pseudocode. (3 P.)',
+        prompt: 'Erläutere den Fehler im Pseudocode. (3 P.)',
         punkte: 3,
         kriterien: [
           krit(
@@ -472,7 +472,7 @@ AUSGABE anzahl''',
         scenario:
             'Die fehlerhafte Zeile „anzahl ← 1“ soll korrigiert werden. Testdaten: bestand = [3, 9, 2, 1], mindest = 5.',
         prompt:
-            'Korrigieren Sie die Zeile und geben Sie die Ausgaben vor und nach der Korrektur an. (3 P.)',
+            'Korrigiere die Zeile und gib die Ausgaben vor und nach der Korrektur an. (3 P.)',
         mono: true,
         text: 'anzahl ← {0}\n\nAusgabe vorher: {1}\nAusgabe nachher: {2}',
         luecken: [
@@ -511,7 +511,7 @@ AUSGABE anzahl''',
     anteil = esk / ges * 100
     return quote, zeit, anteil''',
         prompt:
-            'Berechnen Sie die drei Rückgabewerte auf zwei Nachkommastellen. (6 P.)',
+            'Berechne die drei Rückgabewerte auf zwei Nachkommastellen. (6 P.)',
         zeilen: [
           ['Rückgabewert', 'Wert'],
           ['quote', zahl(82.5, toleranz: 0.005)],
@@ -546,7 +546,7 @@ AUSGABE anzahl''',
     ENDE WENN
   ENDE WENN
 ENDE FUNKTION''',
-        prompt: 'Geben Sie für jeden Aufruf den Rückgabewert an. (6 P.)',
+        prompt: 'Gib für jeden Aufruf den Rückgabewert an. (6 P.)',
         zeilen: [
           ['Aufruf', 'Rückgabe'],
           [
@@ -587,7 +587,7 @@ ENDE FUNKTION''',
         'u-klassen',
         scenario:
             'Ein Ticket hat eine ganzzahlige Nummer, einen Betreff als Text, die Angabe, ob es von einem Premiumkunden stammt, und sein Alter in Stunden mit Nachkommastellen. Alle Attribute sind nur innerhalb der Klasse sichtbar. Die Methode schliessen ist bereits eingetragen.',
-        prompt: 'Ergänzen Sie das UML-Klassendiagramm. (5 P.)',
+        prompt: 'Ergänze das UML-Klassendiagramm. (5 P.)',
         mono: true,
         text:
             '{0}\n----------------------------\n- nr: {1}\n- betreff: {2}\n{3} premium: boolean\n- alterStd: {4}\n----------------------------\n+ schliessen(): void',
@@ -615,7 +615,7 @@ FÜR i VON 0 BIS n - 1
 ENDE FÜR
 AUSGABE anz''',
         prompt:
-            'Erläutern Sie den Fehler im Pseudocode und geben Sie die korrigierte Zeile an. (3 P.)',
+            'Erläutere den Fehler im Pseudocode und gib die korrigierte Zeile an. (3 P.)',
         punkte: 3,
         kriterien: [
           krit(
@@ -659,7 +659,7 @@ AUSGABE anz''',
         scenario:
             'Das Ticketsystem wird objektorientiert entwickelt. Ein Kunde der Agentur fragt, was das bringt.',
         prompt:
-            'Nennen Sie zwei Vorteile der objektorientierten gegenüber der prozeduralen Programmierung. (2 P.)',
+            'Nenne zwei Vorteile der objektorientierten gegenüber der prozeduralen Programmierung. (2 P.)',
         punkte: 2,
         kriterien: [
           krit(
@@ -705,7 +705,7 @@ AUSGABE anz''',
         scenario:
             'Für einen Kunden soll die Agentur ein ähnliches Ticketsystem entwickeln. Der Kunde hat ein Lastenheft geschickt und erwartet von Pixelhafen ein Pflichtenheft.',
         prompt:
-            'Beschreiben Sie, worin sich das Pflichtenheft vom Lastenheft unterscheidet. (3 P.)',
+            'Beschreibe, worin sich das Pflichtenheft vom Lastenheft unterscheidet. (3 P.)',
         punkte: 3,
         kriterien: [
           krit(
@@ -764,7 +764,7 @@ AUSGABE anz''',
         scenario:
             'Die bisherige Lagersoftware ist prozedural geschrieben. Das neue Programm soll objektorientiert entwickelt werden.',
         prompt:
-            'Nennen Sie zwei Vorteile der objektorientierten gegenüber der prozeduralen Programmierung. (2 P.)',
+            'Nenne zwei Vorteile der objektorientierten gegenüber der prozeduralen Programmierung. (2 P.)',
         punkte: 2,
         kriterien: [
           krit(
@@ -809,7 +809,7 @@ AUSGABE anz''',
         'u-klassen',
         scenario:
             'Eine Palette hat eine Kennung als Text, ein Gewicht in Kilogramm mit Nachkommastellen, die Angabe, ob sie gekühlt gelagert wird, und die Zahl der bisherigen Lagertage. Alle Attribute sind von außen nicht direkt zugreifbar. Die Methode berechneGebuehr ist bereits eingetragen.',
-        prompt: 'Ergänzen Sie das UML-Klassendiagramm. (5 P.)',
+        prompt: 'Ergänze das UML-Klassendiagramm. (5 P.)',
         mono: true,
         text:
             '{0}\n----------------------------\n- kennung: {1}\n- gewicht: {2}\n{3} gekuehlt: boolean\n- lagertage: {4}\n----------------------------\n+ berechneGebuehr(): double',
@@ -849,7 +849,7 @@ if total >= 25 then
 end if
 print total''',
         prompt:
-            'Führen Sie einen Schreibtischtest durch: Berechnen Sie die Gebühr je Palette und die Ausgabe (in €). (10 P.)',
+            'Führe einen Schreibtischtest durch: Berechne die Gebühr je Palette und die Ausgabe (in €). (10 P.)',
         zeilen: [
           ['Schritt', 'Wert'],
           ['fee für P1', zahl(13, toleranz: 0.005)],
@@ -868,7 +868,7 @@ print total''',
         scenario:
             'Wareneingang in der neuen Halle: Der Lieferschein wird gescannt, danach werden die Paletten gezählt. Stimmt die Menge mit dem Lieferschein überein, wird die Ware eingelagert, sonst wird eine Abweichung gemeldet. In beiden Fällen wird anschließend der Wareneingang gebucht.',
         prompt:
-            'Erstellen Sie das Aktivitätsdiagramm für den Fall, dass die Menge stimmt: Bringen Sie die Elemente in die richtige Reihenfolge. (3 P.)',
+            'Erstelle das Aktivitätsdiagramm für den Fall, dass die Menge stimmt: Bringe die Elemente in die richtige Reihenfolge. (3 P.)',
         items: [
           'Startknoten',
           'Lieferschein scannen',
@@ -890,7 +890,7 @@ print total''',
         scenario:
             'Der Ablauf des Wareneingangs wird ergänzt: Nach „Wareneingang buchen“ sollen „Etikett drucken“ und „Lagerplatz zuweisen“ gleichzeitig ablaufen.',
         prompt:
-            'Ergänzen Sie die Beschreibung des Aktivitätsdiagramms mit den passenden Begriffen. (3 P.)',
+            'Ergänze die Beschreibung des Aktivitätsdiagramms mit den passenden Begriffen. (3 P.)',
         text:
             'An der zweiten Kante der Entscheidung steht die Bedingung {0}. Die beiden gleichzeitigen Aktionen beginnen an einer {1} und enden an einer {2}.',
         luecken: [
@@ -911,7 +911,7 @@ print total''',
         scenario:
             'Jede Palette trägt einen 18-stelligen Barcode, der mit Nullen beginnen kann, zum Beispiel 003401234500000017. Ein Kollege schlägt vor, ihn als Ganzzahl (int) zu speichern.',
         prompt:
-            'Begründen Sie, warum der Datentyp String für den Barcode besser geeignet ist. (2 P.)',
+            'Begründe, warum der Datentyp String für den Barcode besser geeignet ist. (2 P.)',
         punkte: 2,
         kriterien: [
           krit(
@@ -961,7 +961,7 @@ print total''',
         scenario:
             'Im Entwurf gibt es die Klasse Projekt mit den Attributen titel und budgetStunden. Aktuell betreut die Agentur 14 Kundenprojekte.',
         prompt:
-            'Erläutern Sie den Unterschied zwischen einer Klasse und einem Objekt anhand dieses Beispiels. (4 P.)',
+            'Erläutere den Unterschied zwischen einer Klasse und einem Objekt anhand dieses Beispiels. (4 P.)',
         punkte: 4,
         kriterien: [
           krit(
@@ -998,7 +998,7 @@ print total''',
         scenario:
             'Die Klasse Projekt erhält einen Titel als Text und ein Stundenbudget als ganze Zahl. Beide Attribute sind gekapselt. Die Methode bucheStunden erhält eine Stundenzahl mit Nachkommastellen, soll von anderen Klassen aufgerufen werden können und liefert nichts zurück.',
         prompt:
-            'Tragen Sie Sichtbarkeit und Typ für das UML-Klassendiagramm ein. (6 P.)',
+            'Trage Sichtbarkeit und Typ für das UML-Klassendiagramm ein. (6 P.)',
         zeilen: [
           ['Element', 'Sichtbarkeit', 'Typ / Rückgabetyp'],
           [
@@ -1037,7 +1037,7 @@ FÜR i VON 0 BIS 4
 ENDE FÜR
 AUSGABE ueber''',
         prompt:
-            'Führen Sie einen Schreibtischtest durch: Tragen Sie für jeden Durchlauf diff und den Wert von ueber am Ende des Durchlaufs ein. (8 P.)',
+            'Führe einen Schreibtischtest durch: Trage für jeden Durchlauf diff und den Wert von ueber am Ende des Durchlaufs ein. (8 P.)',
         zeilen: [
           ['i', 'ist[i]', 'diff', 'ueber'],
           ['0', '9', '1', '1'],
@@ -1055,7 +1055,7 @@ AUSGABE ueber''',
         'pl-pseudocode',
         scenario:
             'Der Algorithmus soll warnen, wenn die gebuchten Stunden das Budget überschreiten. Bei stunden = [12, 9, 14] und budget = 30 erscheint keine Warnung.',
-        prompt: 'Markieren Sie die fehlerhafte Zeile. (2 P.)',
+        prompt: 'Markiere die fehlerhafte Zeile. (2 P.)',
         mono: true,
         zeilen: [
           nein('summe ← 0', 'Die Summe startet richtig bei 0.'),
@@ -1081,8 +1081,7 @@ AUSGABE ueber''',
         'pl-pseudocode',
         scenario:
             'In der Budgetprüfung steht die Zeile „WENN summe < budget DANN“. Bei stunden = [12, 9, 14] und budget = 30 erscheint keine Warnung „Budget überschritten“.',
-        prompt:
-            'Erläutern Sie den Fehler und geben Sie die korrigierte Zeile an. (3 P.)',
+        prompt: 'Erläutere den Fehler und gib die korrigierte Zeile an. (3 P.)',
         punkte: 3,
         kriterien: [
           krit(
@@ -1131,7 +1130,7 @@ FÜR i VON 0 BIS 2
   betrag ← betrag + stunden[i] * 80
 ENDE FÜR
 AUSGABE betrag''',
-        prompt: 'Ermitteln Sie die Ausgabe des Programms. (2 P.)',
+        prompt: 'Ermittle die Ausgabe des Programms. (2 P.)',
         answer: 800,
         unit: '€',
         explanation:
@@ -1156,7 +1155,7 @@ AUSGABE betrag''',
         scenario:
             'Ein neues Bonuskonto startet mit 0 Punkten. gutschreiben(p) addiert p nur, wenn p > 0 ist. einloesen(p) zieht p nur ab, wenn p <= punkte ist. Die Aufrufe erfolgen nacheinander auf demselben Objekt k.',
         prompt:
-            'Tragen Sie nach jedem Aufruf den Wert des Attributs punkte ein. (4 P.)',
+            'Trage nach jedem Aufruf den Wert des Attributs punkte ein. (4 P.)',
         zeilen: [
           ['Aufruf', 'punkte danach'],
           ['k.gutschreiben(120)', zahl(120)],
@@ -1184,7 +1183,7 @@ FÜR i VON 0 BIS 3
 ENDE FÜR
 AUSGABE punkte''',
         prompt:
-            'Führen Sie einen Schreibtischtest durch: Tragen Sie für jeden Durchlauf p und punkte am Ende des Durchlaufs ein. (6 P.)',
+            'Führe einen Schreibtischtest durch: Trage für jeden Durchlauf p und punkte am Ende des Durchlaufs ein. (6 P.)',
         zeilen: [
           ['i', 'umsatz[i]', 'p', 'punkte'],
           ['0', '45', zahl(4), zahl(4)],
@@ -1202,7 +1201,7 @@ AUSGABE punkte''',
         scenario:
             'Aus dem Fachkonzept: Jeder Kunde besitzt genau ein Bonuskonto, jedes Bonuskonto gehört zu genau einem Kunden. Zu einem Bonuskonto gehören beliebig viele Buchungen, auch keine. Eine Buchung gehört zu genau einem Bonuskonto und wird mit ihm gelöscht.',
         prompt:
-            'Wählen Sie die Multiplizitäten und die Beziehungsart für das UML-Klassendiagramm. (5 P.)',
+            'Wähle die Multiplizitäten und die Beziehungsart für das UML-Klassendiagramm. (5 P.)',
         mono: true,
         text:
             'Kunde {0} ------ {1} Bonuskonto\nBonuskonto {2} ◆----- {3} Buchung\n\nGefüllte Raute = {4}',
@@ -1231,7 +1230,7 @@ AUSGABE punkte''',
         code: '''Bonuskonto k = new Bonuskonto();
 k.gutschreiben(50);
 int p = k.getPunkte();''',
-        prompt: 'Erläutern Sie, was jede der drei Zeilen bewirkt. (3 P.)',
+        prompt: 'Erläutere, was jede der drei Zeilen bewirkt. (3 P.)',
         punkte: 3,
         kriterien: [
           krit(
@@ -1276,7 +1275,7 @@ int p = k.getPunkte();''',
         scenario:
             'Im ersten Entwurf war das Attribut punkte der Klasse Bonuskonto public. Im Test hat ein anderes Modul den Punktestand versehentlich auf -300 gesetzt.',
         prompt:
-            'Beschreiben Sie, wie sich dieser Fehler durch Kapselung verhindern lässt. (4 P.)',
+            'Beschreibe, wie sich dieser Fehler durch Kapselung verhindern lässt. (4 P.)',
         punkte: 4,
         kriterien: [
           krit(
@@ -1323,7 +1322,7 @@ int p = k.getPunkte();''',
         scenario:
             'Vor der Entwicklung sollen die Wünsche von rund 60 Verkäuferinnen und Verkäufern in den Filialen und der drei Verantwortlichen im Kundenservice an das Bonusprogramm ermittelt werden.',
         prompt:
-            'Nennen Sie drei Techniken, mit denen sich die Anforderungen erheben lassen. (3 P.)',
+            'Nenne drei Techniken, mit denen sich die Anforderungen erheben lassen. (3 P.)',
         punkte: 3,
         kriterien: [
           krit(
