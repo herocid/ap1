@@ -94,34 +94,23 @@ final List<Question> questionsA01Journey = [
     explanation:
         'Ein Projekt ist einmalig, zielgerichtet und zeitlich wie finanziell begrenzt. Alle anderen Beispiele wiederholen sich oder laufen dauerhaft - sie gehören zum Tagesgeschäft.',
   ),
-  mehrfach(
+  lueckentext(
     'a1-pb-2',
     'p-begriff',
-    prompt: 'Welche Aussagen über Projekte sind richtig?',
-    choices: [
-      ja(
-        'Ein Projekt hat einen festgelegten Anfang und ein festgelegtes Ende.',
-        'Die zeitliche Begrenzung gehört zu den Kernmerkmalen.',
-      ),
-      ja(
-        'Projekte haben meist eine eigene, zeitlich begrenzte Organisation.',
-        'Rollen wie Projektleitung und Projektteam bestehen nur für die Projektdauer.',
-      ),
-      nein(
-        'Ein Vorhaben ist erst ab einem Budget von 10.000 € ein Projekt.',
-        'Größe und Budget sind keine Merkmale - entscheidend ist die Einmaligkeit.',
-      ),
-      nein(
-        'Projekte wiederholen sich regelmäßig in gleicher Form.',
-        'Das beschreibt eine Linienaufgabe.',
-      ),
-      ja(
-        'Projekte bergen durch ihre Neuartigkeit höhere Risiken als Routineaufgaben.',
-        'Weil Erfahrungswerte fehlen, ist die Unsicherheit größer.',
-      ),
+    prompt: 'Vervollständige die Beschreibung eines Projekts.',
+    text:
+        'Ein Projekt ist ein Vorhaben, das durch die {0} seiner Bedingungen gekennzeichnet ist. Es hat ein klares {1}, einen festgelegten Anfang und ein festgelegtes {2}. Budget und Personal sind {3}. Für die Dauer des Vorhabens gibt es eine eigene {4} mit Projektleitung und Team. Weil Erfahrungswerte fehlen, ist das {5} höher als bei Routineaufgaben.',
+    luecken: [
+      wort(['Einmaligkeit'], 'Das Kernmerkmal nach DIN 69901.'),
+      wort(['Ziel'], 'Ein Projekt ist zielgerichtet.'),
+      wort(['Ende'], 'Die zeitliche Begrenzung gehört zu den Kernmerkmalen.'),
+      wort(['begrenzt'], 'Die Ressourcen stehen nicht unbeschränkt bereit.'),
+      wort(['Organisation'], 'Rollen bestehen nur für die Projektdauer.'),
+      wort(['Risiko'], 'Neuartigkeit bringt Unsicherheit.'),
     ],
+    wortbank: ['Wiederholung', 'unbegrenzt', 'Routine', 'Mindestbudget'],
     explanation:
-        'Projekte sind einmalig und begrenzt, haben eine eigene Organisation und tragen wegen ihrer Neuartigkeit mehr Risiko. Eine Mindestgröße gibt es nicht.',
+        'Projekte sind einmalig, zielgerichtet und begrenzt, haben eine eigene Organisation und tragen wegen ihrer Neuartigkeit mehr Risiko. Eine Mindestgröße oder ein Mindestbudget gibt es nicht.',
   ),
   zuordnen(
     'a1-pb-3',
@@ -220,31 +209,23 @@ final List<Question> questionsA01Journey = [
     explanation:
         'Entscheidend ist, ob ein Vorhaben einmalig, zielgerichtet und zeitlich begrenzt ist. Wiederkehrende Tätigkeiten wie Protokollauswertung oder Wartung bleiben Linienaufgaben.',
   ),
-  einfach(
+  lueckentext(
     'a1-pb-6',
     'p-begriff',
-    prompt:
-        'Welche Beschreibung passt zum Begriff Projektmanagement nach DIN 69901?',
-    choices: [
-      ja(
-        'Gesamtheit von Führungsaufgaben, -organisation, -techniken und -mitteln für Initiierung, Definition, Planung, Steuerung und Abschluss von Projekten',
-        'So definiert die Norm Projektmanagement.',
-      ),
-      nein(
-        'Die fachliche Umsetzung der Arbeitspakete durch das Projektteam',
-        'Das ist die Projektarbeit selbst, nicht deren Management.',
-      ),
-      nein(
-        'Die dauerhafte Leitung einer Abteilung',
-        'Das ist Linienführung, kein Projektmanagement.',
-      ),
-      nein(
-        'Ausschließlich das Erstellen von Netzplänen',
-        'Der Netzplan ist nur eine von vielen Techniken des Projektmanagements.',
-      ),
+    prompt: 'Ergänze die Beschreibung von Projektmanagement nach DIN 69901.',
+    text:
+        'Projektmanagement ist die Gesamtheit von {0}, -organisation, -techniken und -mitteln für die Initiierung, Definition, {1}, Steuerung und den {2} von Projekten. Die fachliche Umsetzung der Arbeitspakete ist dagegen Aufgabe des {3}.',
+    luecken: [
+      wahl('Führungsaufgaben', [
+        'Arbeitspaketen',
+        'Linienaufgaben',
+      ], 'Management heißt führen, nicht selbst umsetzen.'),
+      wahl('Planung', ['Programmierung', 'Abnahme']),
+      wahl('Abschluss', ['Betrieb', 'Verkauf']),
+      wahl('Projektteams', ['Lenkungsausschusses', 'Auftraggebers']),
     ],
     explanation:
-        'Projektmanagement umfasst alles, was ein Projekt führt: planen, organisieren, steuern, kontrollieren und kommunizieren - von der Initiierung bis zum Abschluss.',
+        'Projektmanagement umfasst alles, was ein Projekt führt: planen, organisieren, steuern, kontrollieren und kommunizieren - von der Initiierung bis zum Abschluss. Die Projektarbeit selbst leistet das Team.',
     difficulty: 1,
   ),
 
@@ -340,32 +321,47 @@ final List<Question> questionsA01Journey = [
     explanation:
         'Leistung steigt, Zeit und Qualität sind fest. Im magischen Dreieck bleibt nur eine Größe, die nachgeben kann: die Kosten.',
   ),
-  einfach(
+  zuordnen(
     'a1-pz-4',
     'p-ziele',
     scenario:
-        'Ziel 1: Das Projekt soll zwei Monate früher fertig werden. Ziel 2: Die Projektkosten sollen um 10 % sinken.',
-    prompt: 'Welche Zielbeziehung liegt vor?',
-    choices: [
-      ja(
-        'Konkurrierend',
+        'Im Projekt „Neues Intranet“ treffen jeweils zwei Ziele aufeinander.',
+    prompt: 'Ordne jedem Zielpaar die passende Zielbeziehung zu.',
+    buckets: ['konkurrierend', 'komplementär', 'indifferent'],
+    items: [
+      zu(
+        'Zwei Monate früher fertig werden - Projektkosten um 10 % senken',
+        0,
         'Früher fertig werden braucht meist mehr Personal oder Überstunden - das erschwert das Sparziel.',
       ),
-      nein(
-        'Komplementär',
-        'Komplementäre Ziele fördern sich gegenseitig; diese beiden behindern sich.',
+      zu(
+        'Anwender früh schulen - weniger Supportanfragen nach dem Start',
+        1,
+        'Geschulte Anwender fragen seltener nach: Die Ziele fördern sich.',
       ),
-      nein(
-        'Indifferent',
-        'Indifferente Ziele beeinflussen sich nicht - Zeit und Kosten hängen aber eng zusammen.',
+      zu(
+        'Farbschema der Startseite festlegen - Serverstandort festlegen',
+        2,
+        'Die beiden Ziele beeinflussen sich nicht.',
       ),
-      nein(
-        'Identisch',
-        'Die Ziele betreffen unterschiedliche Größen: Zeit und Kosten.',
+      zu(
+        'Mehr Funktionen liefern - den Endtermin halten',
+        0,
+        'Mehr Umfang kostet Zeit: Die Ziele behindern sich.',
+      ),
+      zu(
+        'Gründlich testen - wenige Fehler im Betrieb',
+        1,
+        'Gründliche Tests führen zu weniger Fehlern: Die Ziele fördern sich.',
+      ),
+      zu(
+        'Logo im Seitenkopf erneuern - Zeitfenster der Datensicherung verkürzen',
+        2,
+        'Kein Zusammenhang zwischen beiden Zielen.',
       ),
     ],
     explanation:
-        'Zeit und Kosten sind zwei Ecken des magischen Dreiecks. Wird die eine verbessert, gerät die andere meist unter Druck - die Ziele konkurrieren und müssen priorisiert werden.',
+        'Konkurrierende Ziele behindern sich (typisch: zwei Ecken des magischen Dreiecks) und müssen priorisiert werden. Komplementäre Ziele fördern sich gegenseitig, indifferente beeinflussen sich nicht.',
   ),
   mehrfach(
     'a1-pz-5',
@@ -450,34 +446,37 @@ final List<Question> questionsA01Journey = [
     explanation:
         'Je größer, länger und bedeutender ein Projekt ist, desto eher lohnt sich die reine Projektorganisation mit voller Weisungsbefugnis der Projektleitung.',
   ),
-  mehrfach(
+  tabelle(
     'a1-po-2',
     'p-organisation',
-    prompt: 'Welche Aussagen treffen auf die Matrix-Projektorganisation zu?',
-    choices: [
-      ja(
-        'Die Projektleitung hat fachliche Weisungsbefugnis.',
-        'Sie bestimmt, was und wie im Projekt gearbeitet wird.',
-      ),
-      ja(
-        'Mitarbeitende haben zwei Vorgesetzte - im Projekt und in der Linie.',
-        'Das ist das Kennzeichen der Matrix.',
-      ),
-      nein(
-        'Die Projektleitung entscheidet über Urlaub und Gehalt der Teammitglieder.',
-        'Das ist disziplinarische Weisung - sie bleibt in der Matrix bei der Linie.',
-      ),
-      ja(
-        'Es kann zu Konflikten um Prioritäten kommen.',
-        'Wenn Linie und Projekt gleichzeitig Zeit beanspruchen, entsteht Konfliktpotenzial.',
-      ),
-      nein(
-        'Das Team wird für die Projektdauer vollständig aus der Linie herausgelöst.',
-        'Das beschreibt die reine Projektorganisation.',
-      ),
+    prompt:
+        'Vervollständige den Vergleich der drei Formen der Projektorganisation.',
+    zeilen: [
+      ['Merkmal', 'Rein', 'Matrix', 'Stab / Einfluss'],
+      [
+        'Weisungsbefugnis der Projektleitung',
+        wahl('fachlich und disziplinarisch', ['nur fachlich', 'keine']),
+        wahl('nur fachlich', ['fachlich und disziplinarisch', 'keine']),
+        wahl('keine', ['fachlich und disziplinarisch', 'nur fachlich']),
+      ],
+      [
+        'Team',
+        wahl('aus der Linie gelöst', [
+          'anteilig im Projekt',
+          'ganz in der Linie',
+        ]),
+        wahl('anteilig im Projekt', [
+          'aus der Linie gelöst',
+          'ganz in der Linie',
+        ]),
+        wahl('ganz in der Linie', [
+          'aus der Linie gelöst',
+          'anteilig im Projekt',
+        ]),
+      ],
     ],
     explanation:
-        'In der Matrix ist die Weisungsbefugnis geteilt: fachlich beim Projekt, disziplinarisch in der Linie. Das nutzt Ressourcen flexibel, erzeugt aber Prioritätenkonflikte.',
+        'Rein: volle Befugnis, das Team wird herausgelöst. Matrix: Die Projektleitung führt fachlich, die Linie disziplinarisch; die Mitarbeitenden haben zwei Vorgesetzte und arbeiten anteilig mit - das nutzt Ressourcen flexibel, erzeugt aber Prioritätenkonflikte. Stab/Einfluss: keine Weisungsbefugnis, alle bleiben in der Linie.',
   ),
   einfach(
     'a1-po-3',
@@ -689,32 +688,20 @@ final List<Question> questionsA01Journey = [
     explanation:
         'Das Kick-off ist der offizielle Start mit allen Beteiligten. Es schafft ein gemeinsames Verständnis von Zielen, Rollen und Zusammenarbeit.',
   ),
-  einfach(
+  paare(
     'a1-pr-4',
     'p-rollen',
     scenario:
-        'In der RACI-Matrix eines Projekts steht in der Zeile „Abnahme des Systems“ beim Auftraggeber ein A.',
-    prompt: 'Was bedeutet das?',
-    choices: [
-      ja(
-        'Der Auftraggeber verantwortet die Abnahme und entscheidet darüber.',
-        'A steht für Accountable: verantwortlich für das Ergebnis, trifft die Entscheidung.',
-      ),
-      nein(
-        'Der Auftraggeber wird über die Abnahme nur informiert.',
-        'Das wäre I - Informed.',
-      ),
-      nein(
-        'Der Auftraggeber wird vorher um Rat gefragt.',
-        'Das wäre C - Consulted.',
-      ),
-      nein(
-        'Der Auftraggeber führt die Abnahmetests selbst durch.',
-        'Das wäre R - Responsible. R und A können zusammenfallen, A allein heißt aber „verantwortet und entscheidet“.',
-      ),
+        'In der RACI-Matrix eines Projekts steht in jeder Zeile eine Aufgabe und in jeder Spalte eine Rolle. In den Zellen stehen die Buchstaben R, A, C und I.',
+    prompt: 'Verbinde jeden Buchstaben mit seiner Bedeutung.',
+    paare: [
+      paar('R - Responsible', 'führt die Aufgabe durch'),
+      paar('A - Accountable', 'verantwortet und entscheidet'),
+      paar('C - Consulted', 'wird vorher befragt'),
+      paar('I - Informed', 'wird informiert'),
     ],
     explanation:
-        'RACI: R = Responsible (führt durch), A = Accountable (verantwortet, entscheidet; genau eine Person je Aufgabe), C = Consulted (wird gefragt), I = Informed (wird informiert).',
+        'RACI: R = Responsible (führt durch), A = Accountable (verantwortet, entscheidet; genau eine Person je Aufgabe), C = Consulted (wird gefragt), I = Informed (wird informiert). Steht bei „Abnahme des Systems“ beim Auftraggeber ein A, verantwortet und entscheidet er die Abnahme.',
   ),
   reihenfolge(
     'a1-pr-5',
@@ -733,58 +720,103 @@ final List<Question> questionsA01Journey = [
         'Probleme werden auf der niedrigsten Ebene gelöst, die dazu befugt ist. Erst wenn die Befugnis nicht reicht, geht die Entscheidung eine Stufe höher - bis im Extremfall über Fortsetzung oder Abbruch entschieden wird.',
     difficulty: 1,
   ),
-  einfach(
+  zuordnen(
     'a1-pr-6',
     'p-rollen',
     scenario:
-        'Im Statusbericht meldet die Projektleitung: Termine gelb, Kosten rot, Leistung grün.',
-    prompt: 'Was bedeutet die rote Ampel bei den Kosten?',
-    choices: [
-      ja(
-        'Der Kostenrahmen ist gefährdet; es braucht eine Entscheidung des Lenkungsausschusses.',
-        'Rot heißt: Die Projektleitung kann die Abweichung im Rahmen ihres Auftrags nicht mehr ausgleichen.',
+        'Die Projektleitung bereitet den Statusbericht vor und bewertet jede Lage mit einer Ampelfarbe.',
+    prompt: 'Ordne jeder Lage die passende Ampelfarbe zu.',
+    buckets: ['Grün', 'Gelb', 'Rot'],
+    items: [
+      zu(
+        'Ein Arbeitspaket ist zwei Tage im Verzug; die Projektleitung gleicht das durch Umplanung aus.',
+        1,
+        'Abweichung, die die Projektleitung selbst steuert.',
       ),
-      nein('Die Kosten liegen genau im Plan.', 'Das wäre grün.'),
-      nein(
-        'Es gibt eine Abweichung, die die Projektleitung selbst ausgleicht.',
-        'Das beschreibt gelb.',
+      zu(
+        'Alle Arbeitspakete liegen im Zeitplan.',
+        0,
+        'Im Plan - keine Maßnahme nötig.',
       ),
-      nein(
-        'Das Projekt ist damit automatisch abgebrochen.',
-        'Über einen Abbruch entscheiden Auftraggeber bzw. Lenkungsausschuss - rot ist ein Warnsignal, keine Entscheidung.',
+      zu(
+        'Das Budget wird um 20 % überschritten, wenn der vereinbarte Umfang geliefert wird.',
+        2,
+        'Der Kostenrahmen ist gefährdet - der Lenkungsausschuss muss entscheiden.',
       ),
+      zu(
+        'Eine Entwicklerin fällt eine Woche aus; die Projektleitung verteilt ihre Aufgaben im Team um.',
+        1,
+        'Abweichung, die sich innerhalb des Auftrags ausgleichen lässt.',
+      ),
+      zu(
+        'Der Endtermin ist ohne zusätzliches Personal nicht mehr zu halten.',
+        2,
+        'Der Terminrahmen ist gefährdet - es braucht eine Entscheidung von oben.',
+      ),
+      zu('Die Kosten liegen 1 % unter dem Plan.', 0, 'Im Plan - grün.'),
     ],
     explanation:
-        'Die Ampel im Statusbericht: grün = im Plan, gelb = Abweichung, die die Projektleitung selbst steuert, rot = Rahmen gefährdet, Entscheidung von oben nötig.',
+        'Die Ampel im Statusbericht: grün = im Plan, gelb = Abweichung, die die Projektleitung selbst steuert, rot = Rahmen gefährdet, Entscheidung des Lenkungsausschusses nötig. Rot ist ein Warnsignal, kein automatischer Abbruch.',
   ),
-  mehrfach(
+  freitext(
     'a1-pr-7',
     'p-rollen',
-    prompt: 'Welche Aufgaben gehören zur Projektleitung?',
-    choices: [
-      ja(
-        'Terminplan erstellen und fortschreiben',
-        'Planen ist Kernaufgabe der Projektleitung.',
+    scenario:
+        'Frau Okafor übernimmt zum ersten Mal die Leitung eines Projekts: die Einführung eines neuen Warenwirtschaftssystems.',
+    prompt: 'Nenne vier Aufgaben, die sie als Projektleiterin hat.',
+    kriterien: [
+      krit(
+        'Planen: Termin-, Ressourcen- und Kostenplan erstellen und fortschreiben',
+        stichwoerter: ['planen', 'Planung', 'Terminplan', 'Projektplan'],
       ),
-      ja(
-        'Soll-Ist-Vergleiche durchführen und gegensteuern',
-        'Steuern und Kontrollieren gehören dazu.',
+      krit(
+        'Organisieren und führen: Aufgaben im Team verteilen, Team koordinieren',
+        stichwoerter: [
+          'führen',
+          'koordinieren',
+          'organisieren',
+          'Aufgaben verteilen',
+          'Team',
+        ],
       ),
-      ja(
-        'Statusberichte an den Lenkungsausschuss schreiben',
-        'Berichten ist Pflicht der Projektleitung.',
+      krit(
+        'Steuern und kontrollieren: Soll-Ist-Vergleiche durchführen und gegensteuern',
+        stichwoerter: [
+          'steuern',
+          'Soll-Ist',
+          'kontrollieren',
+          'überwachen',
+          'gegensteuern',
+        ],
       ),
-      nein(
-        'Eine Budgeterhöhung genehmigen',
-        'Das entscheidet der Lenkungsausschuss bzw. der Auftraggeber.',
+      krit(
+        'Berichten: Statusberichte an Auftraggeber und Lenkungsausschuss',
+        stichwoerter: ['berichten', 'Statusbericht', 'Bericht', 'Reporting'],
       ),
-      nein(
-        'Das Projektergebnis abnehmen',
-        'Die Abnahme ist Sache des Auftraggebers.',
+      krit(
+        'Kommunizieren: Ansprechperson für Stakeholder sein',
+        stichwoerter: [
+          'Kommunikation',
+          'kommunizieren',
+          'Stakeholder',
+          'Ansprechpartner',
+        ],
+      ),
+      krit(
+        'Risiken im Blick behalten und rechtzeitig eskalieren',
+        stichwoerter: [
+          'Risiken',
+          'Risikomanagement',
+          'eskalieren',
+          'Eskalation',
+        ],
       ),
     ],
+    loesung:
+        'Die Projektleiterin plant (Termine, Ressourcen, Kosten), organisiert und führt das Team, steuert und kontrolliert über Soll-Ist-Vergleiche und berichtet mit Statusberichten an Auftraggeber und Lenkungsausschuss. Sie ist außerdem Ansprechperson für die Stakeholder und eskaliert, wenn der Rahmen gefährdet ist.',
     explanation:
-        'Die Projektleitung plant, organisiert, führt, steuert und berichtet - innerhalb des Auftrags. Entscheidungen über den Rahmen und die Abnahme liegen beim Auftraggeber und beim Lenkungsausschuss.',
+        'Je Nennung 1 Punkt, höchstens 4 Punkte. Nicht zu ihren Aufgaben gehören die Genehmigung einer Budgeterhöhung (Lenkungsausschuss) und die Abnahme des Ergebnisses (Auftraggeber).',
+    punkte: 4,
   ),
   einfach(
     'a1-pr-8',
@@ -845,57 +877,82 @@ final List<Question> questionsA01Journey = [
     explanation:
         'Erst muss klar sein, wer betroffen ist. Dann wird eingeschätzt und eingeordnet, zuletzt werden daraus Maßnahmen abgeleitet - und die Analyse wird im Projektverlauf aktualisiert.',
   ),
-  einfach(
+  freitext(
     'a1-ps-3',
     'p-stakeholder',
     scenario:
-        'Die Beschäftigten der Buchhaltung werden täglich mit der neuen Software arbeiten. Auf Projektentscheidungen haben sie kaum Einfluss.',
-    prompt: 'Welche Strategie ist für diese Gruppe angemessen?',
-    choices: [
-      ja(
-        'Informieren - regelmäßig über Stand und Schulungen auf dem Laufenden halten',
-        'Geringer Einfluss, hohes Interesse: Die Gruppe will und muss Bescheid wissen.',
+        'Die Beschäftigten der Buchhaltung werden täglich mit der neuen Software arbeiten. Auf Projektentscheidungen haben sie kaum Einfluss. Nach der Stakeholder-Matrix gilt für sie die Strategie „informieren“.',
+    prompt:
+        'Nenne drei Maßnahmen, mit denen die Projektleitung diese Gruppe auf dem Laufenden hält.',
+    kriterien: [
+      krit(
+        'Newsletter oder Rundmail zum Projektstand',
+        stichwoerter: ['Newsletter', 'Rundmail', 'E-Mail', 'Intranet'],
       ),
-      nein(
-        'Eng einbinden - an allen Entscheidungen beteiligen',
-        'Das gilt für hohen Einfluss und hohes Interesse.',
+      krit(
+        'Infoveranstaltung oder Vorführung der neuen Software',
+        stichwoerter: [
+          'Infoveranstaltung',
+          'Informationsveranstaltung',
+          'Demo',
+          'Vorführung',
+          'Präsentation',
+        ],
       ),
-      nein(
-        'Zufriedenstellen - nur knapp berichten',
-        'Das gilt für hohen Einfluss und geringes Interesse.',
+      krit(
+        'Schulungsplan und Schulungen',
+        stichwoerter: ['Schulung', 'Schulungsplan', 'Training', 'Einweisung'],
       ),
-      nein(
-        'Beobachten - kaum Aufwand',
-        'Das gilt, wenn Einfluss und Interesse gering sind.',
+      krit(
+        'Feste Ansprechperson oder Key-User in der Abteilung',
+        stichwoerter: [
+          'Ansprechpartner',
+          'Ansprechperson',
+          'Key-User',
+          'Sprechstunde',
+        ],
+      ),
+      krit(
+        'Kurzanleitung oder FAQ',
+        stichwoerter: ['FAQ', 'Anleitung', 'Handbuch', 'Aushang'],
       ),
     ],
+    loesung:
+        'Geeignet sind zum Beispiel ein regelmäßiger Newsletter zum Projektstand, ein Demo-Termin, an dem die neue Software vorgeführt wird, und ein früh bekannt gegebener Schulungsplan. Eine feste Ansprechperson (Key-User) in der Buchhaltung und eine Kurzanleitung helfen zusätzlich.',
     explanation:
-        'Im Stakeholder-Portfolio liegt die Buchhaltung unten rechts: geringer Einfluss, hohes Interesse → informieren, etwa per Newsletter, Demo-Termin und Schulungsplan.',
+        'Je Nennung 1 Punkt, höchstens 3 Punkte. Geringer Einfluss, hohes Interesse → informieren: Die Gruppe will und muss Bescheid wissen, entscheidet aber nicht mit.',
+    punkte: 3,
     difficulty: 1,
   ),
-  mehrfach(
+  zuordnen(
     'a1-ps-4',
     'p-stakeholder',
     scenario: 'Ein Energieversorger führt ein Online-Kundenportal ein.',
-    prompt: 'Welche Stakeholder sind extern?',
-    choices: [
-      ja(
+    prompt: 'Ordne jeden Stakeholder als intern oder extern ein.',
+    buckets: ['intern', 'extern'],
+    items: [
+      zu(
         'Kundinnen und Kunden',
+        1,
         'Sie gehören nicht zum Unternehmen, nutzen aber das Portal.',
       ),
-      ja('Der Hosting-Dienstleister', 'Ein externer Vertragspartner.'),
-      ja(
-        'Die Datenschutz-Aufsichtsbehörde',
-        'Eine Behörde außerhalb des Unternehmens.',
-      ),
-      nein(
+      zu(
         'Der Betriebsrat',
+        0,
         'Er vertritt die eigenen Beschäftigten - ein interner Stakeholder.',
       ),
-      nein(
+      zu('Der Hosting-Dienstleister', 1, 'Ein externer Vertragspartner.'),
+      zu(
         'Die Vertriebsabteilung',
+        0,
         'Eine Abteilung des eigenen Unternehmens.',
       ),
+      zu(
+        'Die Datenschutz-Aufsichtsbehörde',
+        1,
+        'Eine Behörde außerhalb des Unternehmens.',
+      ),
+      zu('Die Geschäftsführung', 0, 'Leitung des eigenen Unternehmens.'),
     ],
     explanation:
         'Interne Stakeholder gehören zum eigenen Unternehmen (Abteilungen, Beschäftigte, Betriebsrat, Geschäftsführung). Externe stehen außerhalb: Kunden, Lieferanten, Dienstleister, Behörden.',
@@ -951,30 +1008,22 @@ final List<Question> questionsA01Journey = [
     explanation:
         'Eng einbinden heißt mitentscheiden lassen, zufriedenstellen heißt knapp und regelmäßig abstimmen, informieren heißt auf dem Laufenden halten, beobachten heißt mit wenig Aufwand im Blick behalten.',
   ),
-  einfach(
+  lueckentext(
     'a1-ps-7',
     'p-stakeholder',
-    prompt: 'Was legt ein Kommunikationsplan fest?',
-    choices: [
-      ja(
-        'Wer welche Information wann und auf welchem Weg erhält',
-        'Genau das ist sein Zweck - er folgt aus der Stakeholderanalyse.',
-      ),
-      nein(
-        'In welcher Reihenfolge die Vorgänge ablaufen',
-        'Das zeigt der Netzplan.',
-      ),
-      nein(
-        'Welche Personen welches Gehalt bekommen',
-        'Das ist keine Projektkommunikation.',
-      ),
-      nein(
-        'Welche Risiken wie wahrscheinlich sind',
-        'Das steht in der Risikoanalyse.',
-      ),
+    prompt: 'Vervollständige die Beschreibung des Kommunikationsplans.',
+    text:
+        'Der Kommunikationsplan folgt aus der {0}. Er legt fest, welcher {1} welche {2} zu welchem {3} und über welches {4} erhält - zum Beispiel: Lenkungsausschuss, Statusbericht, monatlich, Sitzung.',
+    luecken: [
+      wort(['Stakeholderanalyse'], 'Sie zeigt, wer was wissen muss.'),
+      wort(['Empfänger'], 'Zum Beispiel der Lenkungsausschuss.'),
+      wort(['Information'], 'Zum Beispiel der Statusbericht.'),
+      wort(['Zeitpunkt'], 'Zum Beispiel monatlich.'),
+      wort(['Medium'], 'Zum Beispiel Sitzung, E-Mail oder Newsletter.'),
     ],
+    wortbank: ['Netzplan', 'Risikoanalyse', 'Gehalt', 'Vorgang'],
     explanation:
-        'Der Kommunikationsplan übersetzt die Stakeholderanalyse in konkrete Maßnahmen: Empfänger, Inhalt, Medium und Rhythmus - etwa „Lenkungsausschuss, Statusbericht, monatliche Sitzung“.',
+        'Der Kommunikationsplan übersetzt die Stakeholderanalyse in konkrete Maßnahmen: Empfänger, Inhalt, Zeitpunkt bzw. Rhythmus und Medium - etwa „Lenkungsausschuss, Statusbericht, monatlich, Sitzung“.',
     difficulty: 1,
   ),
 
@@ -1010,81 +1059,65 @@ final List<Question> questionsA01Journey = [
     explanation:
         'Initialisierung: Auftrag. Definition: Ziele, Anforderungen, Machbarkeit. Planung: Struktur, Termine, Kosten. Abschluss: Bericht und Lessons Learned.',
   ),
-  einfach(
+  lueckentext(
     'a1-vp-3',
     'v-phasen',
-    prompt: 'In welcher Phase wird der Projektstrukturplan erstellt?',
-    choices: [
-      ja(
-        'Planung',
-        'Der PSP ist die Grundlage aller weiteren Pläne und entsteht zu Beginn der Planung.',
-      ),
-      nein(
-        'Definition',
-        'Hier werden Ziele und Anforderungen geklärt - noch nicht die Arbeitsstruktur.',
-      ),
-      nein(
-        'Initialisierung',
-        'Hier geht es um die Idee und den Projektauftrag.',
-      ),
-      nein(
-        'Steuerung',
-        'In der Steuerung wird der Plan umgesetzt und überwacht, nicht erst erstellt.',
-      ),
+    prompt: 'Ordne den Projektstrukturplan in die Projektphasen ein.',
+    text:
+        'Der Projektstrukturplan entsteht zu Beginn der Phase {0}. Er ist die Grundlage für den Termin-, den Ressourcen- und den {1}. In der Phase {2} werden zuvor Ziele und Anforderungen geklärt; in der Phase {3} wird der Plan anschließend umgesetzt und überwacht.',
+    luecken: [
+      wahl('Planung', ['Definition', 'Steuerung']),
+      wahl('Kostenplan', ['Projektauftrag', 'Abschlussbericht']),
+      wahl('Definition', ['Initialisierung', 'Abschluss']),
+      wahl('Steuerung', ['Abschluss', 'Initialisierung']),
     ],
     explanation:
-        'Die Planung beginnt mit dem Projektstrukturplan. Aus ihm entstehen Termin-, Ressourcen- und Kostenplan.',
+        'Die Planung beginnt mit dem Projektstrukturplan. Aus ihm entstehen Termin-, Ressourcen- und Kostenplan. Davor liegt die Definition (Ziele, Anforderungen), danach die Steuerung (umsetzen und überwachen).',
   ),
-  einfach(
+  lueckentext(
     'a1-vp-4',
     'v-phasen',
-    prompt: 'Was ist ein Meilenstein?',
-    choices: [
-      ja(
-        'Ein Ereignis ohne Dauer, an dem ein prüfbares Zwischenergebnis vorliegt',
-        'Meilensteine sind Zeitpunkte, keine Zeiträume.',
-      ),
-      nein(
-        'Die längste Phase eines Projekts',
-        'Eine Phase ist ein Zeitraum - ein Meilenstein hat keine Dauer.',
-      ),
-      nein(
-        'Ein Arbeitspaket mit besonders hohem Aufwand',
-        'Arbeitspakete verbrauchen Zeit und Ressourcen, Meilensteine nicht.',
-      ),
-      nein(
-        'Das wöchentliche Statusmeeting',
-        'Ein wiederkehrender Termin ist kein Meilenstein.',
-      ),
+    prompt: 'Vervollständige die Beschreibung eines Meilensteins.',
+    text:
+        'Ein Meilenstein ist ein {0} ohne {1}, an dem ein {2} Zwischenergebnis vorliegt. Er markiert meist das {3} einer Phase. An ihm wird entschieden, ob die nächste Phase {4} darf.',
+    luecken: [
+      wort(['Ereignis'], 'Ein Zeitpunkt, kein Zeitraum.'),
+      wort(['Dauer'], 'Meilensteine verbrauchen keine Zeit.'),
+      wort(['prüfbares'], 'Erreicht oder nicht erreicht.'),
+      wort(['Ende'], 'Zum Beispiel „Pflichtenheft freigegeben“.'),
+      wort(['beginnen'], 'Der Meilenstein ist ein Entscheidungspunkt.'),
     ],
+    wortbank: ['Arbeitspaket', 'Zeitraum', 'ungefähres', 'Teammitglied'],
     explanation:
-        'Ein Meilenstein markiert meist das Ende einer Phase. An ihm wird geprüft, ob das Ergebnis vorliegt, und entschieden, ob die nächste Phase beginnen darf.',
+        'Ein Meilenstein ist ein Ereignis ohne Dauer. Er markiert meist das Ende einer Phase: An ihm wird geprüft, ob das Ergebnis vorliegt, und entschieden, ob die nächste Phase beginnen darf.',
     difficulty: 1,
   ),
-  mehrfach(
+  markieren(
     'a1-vp-5',
     'v-phasen',
-    prompt: 'Welche Meilensteine sind gut formuliert?',
-    choices: [
+    scenario:
+        'Im Meilensteinplan für den WLAN-Ausbau einer Berufsschule stehen fünf Einträge.',
+    prompt: 'Markiere alle Meilensteine, die prüfbar formuliert sind.',
+    zeilen: [
       ja(
         'Pflichtenheft vom Kunden unterschrieben',
         'Eindeutig prüfbar: unterschrieben oder nicht.',
-      ),
-      ja(
-        'Alle 40 Access Points montiert und abgenommen',
-        'Konkret und prüfbar.',
-      ),
-      ja(
-        'Server geliefert und im Rack eingebaut',
-        'Ein klarer, prüfbarer Zustand.',
       ),
       nein(
         'Konzept größtenteils fertig',
         '„Größtenteils“ lässt sich nicht eindeutig prüfen.',
       ),
+      ja(
+        'Alle 40 Access Points montiert und abgenommen',
+        'Konkret und prüfbar.',
+      ),
       nein(
         'Programmierung läuft gut',
         'Eine Einschätzung, kein prüfbares Ergebnis.',
+      ),
+      ja(
+        'Server geliefert und im Rack eingebaut',
+        'Ein klarer, prüfbarer Zustand.',
       ),
     ],
     explanation:
@@ -1243,61 +1276,71 @@ final List<Question> questionsA01Journey = [
     explanation:
         'Im Wasserfall ist das freigegebene Pflichtenheft verbindlich. Neue Wünsche werden als Change Request bewertet; Auftraggeber und Auftragnehmer vereinbaren dann Mehrkosten und neue Termine.',
   ),
-  einfach(
+  tabelle(
     'a1-vw-5',
     'v-wasserfall',
-    prompt:
-        'Welches Dokument beschreibt, wie und womit der Auftragnehmer die Anforderungen umsetzt?',
-    choices: [
-      ja(
-        'Pflichtenheft',
-        'Es wird vom Auftragnehmer erstellt und beantwortet das Wie und Womit.',
-      ),
-      nein(
-        'Lastenheft',
-        'Das Lastenheft schreibt der Auftraggeber - es beschreibt das Was und Wofür.',
-      ),
-      nein(
-        'Testprotokoll',
-        'Es dokumentiert Testergebnisse, keine Umsetzungsplanung.',
-      ),
-      nein(
-        'Projektauftrag',
-        'Er startet das Projekt, beschreibt aber keine technische Umsetzung.',
-      ),
+    prompt: 'Vervollständige den Vergleich von Lastenheft und Pflichtenheft.',
+    zeilen: [
+      ['Frage', 'Lastenheft', 'Pflichtenheft'],
+      [
+        'Wer erstellt es?',
+        wahl('Auftraggeber', ['Auftragnehmer', 'Lenkungsausschuss']),
+        wahl('Auftragnehmer', ['Auftraggeber', 'Lenkungsausschuss']),
+      ],
+      [
+        'Was beschreibt es?',
+        wahl('Was und wofür', ['Wie und womit', 'Wann und wie teuer']),
+        wahl('Wie und womit', ['Was und wofür', 'Wann und wie teuer']),
+      ],
     ],
     explanation:
         'Lastenheft (Auftraggeber): Was soll das System leisten und wofür? Pflichtenheft (Auftragnehmer): Wie und womit wird es umgesetzt? Beide entstehen in der Anforderungsanalyse.',
     difficulty: 1,
   ),
-  mehrfach(
+  freitext(
     'a1-vw-6',
     'v-wasserfall',
-    prompt: 'Welche Nachteile hat das Wasserfallmodell?',
-    choices: [
-      ja(
-        'Der Kunde sieht lauffähige Software erst spät.',
-        'Zwischenergebnisse sind Dokumente.',
+    scenario:
+        'Ein Softwarehaus überlegt, ein Projekt mit noch unklaren Anforderungen nach dem Wasserfallmodell abzuwickeln.',
+    prompt: 'Nenne drei Nachteile des Wasserfallmodells.',
+    kriterien: [
+      krit(
+        'Der Kunde sieht lauffähige Software erst spät - Zwischenergebnisse sind Dokumente.',
+        stichwoerter: ['erst spät', 'erst am Ende', 'lauffähig', 'spät'],
       ),
-      ja(
-        'Späte Änderungen sind teuer.',
-        'Alle abgeschlossenen Phasen müssen nachgearbeitet werden.',
+      krit(
+        'Späte Änderungen sind teuer, weil abgeschlossene Phasen nachgearbeitet werden müssen.',
+        stichwoerter: [
+          'Änderungen',
+          'teuer',
+          'unflexibel',
+          'starr',
+          'Change Request',
+        ],
       ),
-      ja(
+      krit(
         'Fehler aus der Analyse fallen oft erst im Test auf.',
-        'Der Test liegt am Ende der Kette.',
+        stichwoerter: [
+          'Fehler',
+          'spät entdeckt',
+          'erst im Test',
+          'Rule of Ten',
+        ],
       ),
-      nein(
-        'Es gibt keine Dokumentation.',
-        'Im Gegenteil - das Modell ist stark dokumentgetrieben.',
+      krit(
+        'Rückmeldung des Kunden kommt spät - Gefahr, am Bedarf vorbeizuentwickeln.',
+        stichwoerter: ['Rückmeldung', 'Feedback', 'am Bedarf vorbei', 'Kunde'],
       ),
-      nein(
-        'Kosten und Termine lassen sich nicht planen.',
-        'Gute Planbarkeit ist gerade eine Stärke.',
+      krit(
+        'Die Anforderungen müssen zu Beginn vollständig bekannt sein.',
+        stichwoerter: ['vollständig', 'zu Beginn', 'vorab', 'von Anfang an'],
       ),
     ],
+    loesung:
+        'Der Kunde sieht lauffähige Software erst am Ende. Späte Änderungen sind teuer, weil alle abgeschlossenen Phasen nachgearbeitet werden müssen. Fehler aus der Analyse fallen oft erst im Test auf.',
     explanation:
-        'Die Stärken des Wasserfalls - Planbarkeit, Dokumentation, klare Struktur - erkauft man mit wenig Flexibilität: späte Rückmeldung, teure Änderungen, spät entdeckte Analysefehler.',
+        'Je Nennung 1 Punkt, höchstens 3 Punkte. Die Stärken des Wasserfalls - Planbarkeit, Dokumentation, klare Struktur - erkauft man mit wenig Flexibilität. „Keine Dokumentation“ oder „nicht planbar“ wären falsch.',
+    punkte: 3,
   ),
 
   // ======================================================== Klassisch oder agil?
@@ -1355,59 +1398,90 @@ final List<Question> questionsA01Journey = [
     explanation:
         'Bei klaren, stabilen Anforderungen und vertraglich fixiertem Rahmen ist der Wasserfall die naheliegende Wahl.',
   ),
-  einfach(
+  tabelle(
     'a1-va-3',
     'v-auswahl',
     prompt:
-        'Welche Größen des magischen Dreiecks sind in Scrum typischerweise fest, welche variabel?',
-    choices: [
-      ja(
-        'Zeit und Kosten fest, Umfang variabel',
-        'Sprints haben eine feste Länge, das Team kostet pro Sprint gleich viel - was geliefert wird, entscheidet die Priorisierung.',
-      ),
-      nein(
-        'Umfang fest, Zeit und Kosten variabel',
-        'Das ist die Logik des Wasserfalls.',
-      ),
-      nein(
-        'Alle drei Größen fest',
-        'Dann gäbe es keinen Spielraum - das magische Dreieck lässt das nicht zu.',
-      ),
-      nein(
-        'Alle drei Größen variabel',
-        'Ohne feste Größe wäre das Projekt nicht steuerbar.',
-      ),
+        'Wie gehen die beiden Modelle mit den Größen des magischen Dreiecks um? Vervollständige die Tabelle.',
+    zeilen: [
+      ['Größe', 'Wasserfall', 'Scrum'],
+      [
+        'Umfang',
+        wahl('fest', [
+          'variabel',
+          'ohne Bedeutung',
+        ], 'Im Pflichtenheft festgelegt.'),
+        wahl('variabel', [
+          'fest',
+          'ohne Bedeutung',
+        ], 'Ergibt sich aus der Priorisierung.'),
+      ],
+      [
+        'Zeit',
+        wahl('variabel', [
+          'fest',
+          'ohne Bedeutung',
+        ], 'Wird geschätzt und gibt bei Engpässen nach.'),
+        wahl('fest', [
+          'variabel',
+          'ohne Bedeutung',
+        ], 'Sprints haben eine feste Länge.'),
+      ],
+      [
+        'Kosten',
+        wahl('variabel', [
+          'fest',
+          'ohne Bedeutung',
+        ], 'Werden geschätzt und geben bei Engpässen nach.'),
+        wahl('fest', [
+          'variabel',
+          'ohne Bedeutung',
+        ], 'Das Team kostet je Sprint gleich viel.'),
+      ],
     ],
     explanation:
-        'Scrum dreht das Dreieck um: Zeit (Sprints) und Kosten (Team) stehen fest, der Umfang ergibt sich. Wird es eng, fallen die am wenigsten wertvollen Einträge weg - nicht der Termin.',
+        'Scrum dreht das Dreieck um: Zeit (Sprints) und Kosten (Team) stehen fest, der Umfang ergibt sich. Wird es eng, fallen die am wenigsten wertvollen Einträge weg - nicht der Termin. Im Wasserfall ist der Umfang fest; Zeit und Kosten werden geschätzt und geben bei Engpässen nach.',
   ),
-  einfach(
+  zuordnen(
     'a1-va-4',
     'v-auswahl',
-    scenario:
-        'Ein Team liefert im ersten Sprint eine einfache Suchfunktion. Im zweiten Sprint verbessert es genau diese Suche anhand von Nutzerfeedback.',
-    prompt:
-        'Welcher Begriff beschreibt die Verbesserung im zweiten Sprint am treffendsten?',
-    choices: [
-      ja(
-        'Iterativ',
+    scenario: 'Ein Team entwickelt in Sprints einen Webshop.',
+    prompt: 'Ist das beschriebene Vorgehen iterativ oder inkrementell?',
+    buckets: ['iterativ', 'inkrementell'],
+    items: [
+      zu(
+        'Die vorhandene Suche wird anhand von Nutzerfeedback verbessert.',
+        0,
         'Ein vorhandenes Ergebnis wird in einer Wiederholung verbessert.',
       ),
-      nein(
-        'Inkrementell',
-        'Inkrementell hieße, eine neue Funktion hinzuzufügen - etwa einen Warenkorb.',
+      zu(
+        'Zum Produktkatalog kommt im zweiten Sprint ein Warenkorb hinzu.',
+        1,
+        'Das Produkt wächst um ein neues Teilstück.',
       ),
-      nein(
-        'Sequenziell',
-        'Sequenziell ist der Wasserfall: Phasen einmal nacheinander.',
+      zu(
+        'Im dritten Sprint wird erstmals eine Bezahlfunktion ergänzt.',
+        1,
+        'Eine neue Funktion erweitert das Produkt.',
       ),
-      nein(
-        'Linear',
-        'Linear beschreibt ebenfalls einen einmaligen Durchlauf ohne Wiederholung.',
+      zu(
+        'Das Bestellformular wird nach einem Test mit Kunden überarbeitet.',
+        0,
+        'Vorhandenes wird überarbeitet, nichts Neues kommt hinzu.',
+      ),
+      zu(
+        'Die Ladezeit der bestehenden Produktliste wird in einem weiteren Durchgang halbiert.',
+        0,
+        'Verbesserung in einer Wiederholung.',
+      ),
+      zu(
+        'Im vierten Sprint kommt die Sendungsverfolgung als neue Funktion dazu.',
+        1,
+        'Erweiterung um ein weiteres Stück.',
       ),
     ],
     explanation:
-        'Iterativ = in Wiederholungen verbessern. Inkrementell = in Teilstücken erweitern. Scrum ist beides: Jeder Sprint fügt etwas hinzu und verbessert Vorhandenes.',
+        'Iterativ = in Wiederholungen verbessern. Inkrementell = in Teilstücken erweitern. Scrum ist beides: Jeder Sprint fügt etwas hinzu und verbessert Vorhandenes. Der Wasserfall ist dagegen sequenziell.',
   ),
   zuordnen(
     'a1-va-5',
@@ -1481,30 +1555,19 @@ final List<Question> questionsA01Journey = [
   ),
 
   // ============================================================ Agiles Manifest
-  einfach(
+  paare(
     'a1-sm-1',
     's-manifest',
-    prompt: 'Welcher Satz steht so im agilen Manifest?',
-    choices: [
-      ja(
-        'Funktionierende Software ist wichtiger als umfassende Dokumentation.',
-        'Das ist einer der vier Werte.',
-      ),
-      nein(
-        'Umfassende Dokumentation ist wichtiger als funktionierende Software.',
-        'Genau umgekehrt.',
-      ),
-      nein(
-        'Befolgen eines Plans ist wichtiger als Reagieren auf Veränderung.',
-        'Umgekehrt: Reagieren auf Veränderung steht vorn.',
-      ),
-      nein(
-        'Prozesse und Werkzeuge sind wichtiger als Individuen und Interaktionen.',
-        'Umgekehrt: Menschen und Zusammenarbeit stehen vorn.',
-      ),
+    prompt:
+        'Verbinde jede höher geschätzte Seite der vier Werte des agilen Manifests mit ihrem Gegenstück.',
+    paare: [
+      paar('Individuen und Interaktionen', 'Prozesse und Werkzeuge'),
+      paar('Funktionierende Software', 'Umfassende Dokumentation'),
+      paar('Zusammenarbeit mit dem Kunden', 'Vertragsverhandlung'),
+      paar('Reagieren auf Veränderung', 'Befolgen eines Plans'),
     ],
     explanation:
-        'Die vier Werte: Individuen und Interaktionen, funktionierende Software, Zusammenarbeit mit dem Kunden und Reagieren auf Veränderung sind wichtiger als die jeweilige rechte Seite.',
+        'Die vier Werte: Individuen und Interaktionen, funktionierende Software, Zusammenarbeit mit dem Kunden und Reagieren auf Veränderung sind wichtiger als die jeweilige rechte Seite. Die rechte Seite bleibt trotzdem wertvoll.',
   ),
   mehrfach(
     'a1-sm-2',
@@ -1603,31 +1666,20 @@ final List<Question> questionsA01Journey = [
         'Agil zählt, was nutzbar ist: Funktionierende Software zeigt echten Fortschritt. In Scrum wird er deshalb im Sprint Review am Increment geprüft.',
     difficulty: 1,
   ),
-  einfach(
+  lueckentext(
     'a1-sm-6',
     's-manifest',
-    prompt:
-        'Wann und von wem wurde das Manifest für agile Softwareentwicklung verfasst?',
-    choices: [
-      ja(
-        '2001 von 17 Softwareentwicklern',
-        'Die Gruppe traf sich 2001 und formulierte vier Werte und zwölf Prinzipien.',
-      ),
-      nein(
-        '1970 von Winston W. Royce',
-        'Royce wird mit dem Wasserfallmodell verbunden.',
-      ),
-      nein(
-        '2020 von Ken Schwaber und Jeff Sutherland',
-        'Die beiden haben den Scrum Guide 2020 veröffentlicht. Sie gehörten zwar 2001 zu den 17 Unterzeichnern, das Manifest selbst ist aber von 2001.',
-      ),
-      nein(
-        '2025 von der IHK für den Prüfungskatalog',
-        'Die IHK hat das Manifest nicht verfasst.',
-      ),
+    prompt: 'Ergänze die Eckdaten des agilen Manifests.',
+    text:
+        'Das Manifest für agile Softwareentwicklung entstand im Jahr {0}. Verfasst wurde es von {1} Softwareentwicklern. Es besteht aus {2} Werten und {3} Prinzipien.',
+    luecken: [
+      zahl(2001),
+      zahl(17, rationale: 'Unter ihnen Ken Schwaber und Jeff Sutherland.'),
+      zahl(4),
+      zahl(12),
     ],
     explanation:
-        'Das agile Manifest entstand 2001 als Antwort auf schwerfällige, dokumentlastige Vorgehensweisen. Es beschreibt Werte und Prinzipien, keine konkrete Methode.',
+        'Das agile Manifest entstand 2001 als Antwort auf schwerfällige, dokumentlastige Vorgehensweisen. 17 Softwareentwickler formulierten vier Werte und zwölf Prinzipien - Werte und Prinzipien, keine konkrete Methode.',
   ),
   einfach(
     'a1-sm-7',
@@ -1701,27 +1753,21 @@ final List<Question> questionsA01Journey = [
     explanation:
         'Der Product Owner verantwortet den Wert und das Backlog, der Scrum Master die Wirksamkeit des Teams, die Developers das nutzbare Increment in der vereinbarten Qualität.',
   ),
-  einfach(
+  lueckentext(
     'a1-sr-2',
     's-rollen',
-    prompt: 'Wie groß ist ein Scrum Team laut Scrum Guide in der Regel?',
-    choices: [
-      ja(
-        '10 oder weniger Personen',
-        'So steht es im Scrum Guide: klein genug, um wendig zu bleiben.',
-      ),
-      nein('Genau 7 Developers', 'Eine feste Zahl gibt es nicht.'),
-      nein(
-        'Mindestens 12 Personen',
-        'Größere Teams sollen sich eher in mehrere Scrum Teams aufteilen.',
-      ),
-      nein(
-        'Beliebig groß, solange es einen Product Owner gibt',
-        'Die Teamgröße ist ausdrücklich begrenzt.',
-      ),
+    prompt: 'Ergänze die Beschreibung des Scrum Teams laut Scrum Guide.',
+    text:
+        'Ein Scrum Team besteht aus genau einem {0}, genau einem {1} und den {2}. Es umfasst in der Regel {3} oder weniger Personen und hat keine Unterteams und keine {4}.',
+    luecken: [
+      wahl('Product Owner', ['Projektleiter', 'Auftraggeber']),
+      wahl('Scrum Master', ['Teamleiter', 'Lenkungsausschuss']),
+      wahl('Developers', ['Stakeholdern', 'Testern']),
+      zahl(10, rationale: 'Klein genug, um wendig zu bleiben.'),
+      wahl('Hierarchien', ['Timeboxen', 'Artefakte']),
     ],
     explanation:
-        'Ein Scrum Team umfasst typischerweise zehn oder weniger Personen. Kleine Teams kommunizieren besser und sind produktiver.',
+        'Ein Scrum Team besteht aus einem Product Owner, einem Scrum Master und Developers. Es umfasst typischerweise zehn oder weniger Personen - kleine Teams kommunizieren besser. Unterteams und Hierarchien gibt es nicht.',
   ),
   einfach(
     'a1-sr-3',
@@ -1779,29 +1825,45 @@ final List<Question> questionsA01Journey = [
     explanation:
         'Der Scrum Master verantwortet die Wirksamkeit des Scrum Teams. Er dient dem Team, dem Product Owner und der Organisation - er verteilt aber keine Arbeit und entscheidet nicht über Inhalte.',
   ),
-  einfach(
+  zuordnen(
     'a1-sr-5',
     's-rollen',
-    scenario:
-        'Die Developers prüfen im Daily Scrum, wie weit sie mit dem Sprintziel sind.',
-    prompt: 'Welche Säule der Empirie in Scrum wird hier vor allem gelebt?',
-    choices: [
-      ja('Überprüfung', 'Der Fortschritt wird regelmäßig geprüft.'),
-      nein(
-        'Transparenz',
-        'Transparenz ist Voraussetzung dafür, aber das Prüfen selbst ist Überprüfung.',
+    prompt: 'Welche Säule der Empirie in Scrum zeigt sich hier jeweils?',
+    buckets: ['Transparenz', 'Überprüfung', 'Anpassung'],
+    items: [
+      zu(
+        'Im Daily Scrum prüfen die Developers, wie weit sie mit dem Sprintziel sind.',
+        1,
+        'Der Fortschritt wird regelmäßig geprüft.',
       ),
-      nein(
-        'Commitment',
-        'Commitment ist ein Scrum-Wert, keine Säule der Empirie.',
+      zu(
+        'Das Sprint Backlog hängt für alle sichtbar am Board.',
+        0,
+        'Arbeit und Fortschritt sind für alle sichtbar.',
       ),
-      nein(
-        'Hierarchie',
-        'Scrum kennt keine Hierarchie im Team - und sie ist keine Säule.',
+      zu(
+        'Nach dem Daily ändern die Developers ihren Plan für den Tag.',
+        2,
+        'Bei Abweichungen wird sofort nachgesteuert.',
+      ),
+      zu(
+        'Im Sprint Review begutachten Team und Stakeholder das Increment.',
+        1,
+        'Das Ergebnis wird geprüft.',
+      ),
+      zu(
+        'Die Definition of Done ist allen bekannt und einsehbar.',
+        0,
+        'Alle haben dasselbe Verständnis von „fertig“.',
+      ),
+      zu(
+        'Nach der Retrospektive führt das Team eine neue Arbeitsregel ein.',
+        2,
+        'Die Arbeitsweise wird angepasst.',
       ),
     ],
     explanation:
-        'Die drei Säulen sind Transparenz, Überprüfung und Anpassung. Im Daily wird überprüft; passen die Developers danach ihren Plan an, folgt die Anpassung.',
+        'Die drei Säulen sind Transparenz, Überprüfung und Anpassung. Transparenz ist die Voraussetzung, im Daily und im Review wird überprüft; ändern die Developers danach ihren Plan, folgt die Anpassung. Commitment ist ein Scrum-Wert, keine Säule.',
   ),
   einfach(
     'a1-sr-6',
@@ -1860,21 +1922,27 @@ final List<Question> questionsA01Journey = [
   ),
 
   // ================================================ Artefakte und Commitments
-  einfach(
+  tabelle(
     'a1-sa-1',
     's-artefakte',
-    prompt: 'Welches Commitment gehört zum Sprint Backlog?',
-    choices: [
-      ja(
-        'Sprintziel',
-        'Das Sprintziel gibt dem Sprint Backlog seine Richtung.',
-      ),
-      nein('Produktziel', 'Das gehört zum Product Backlog.'),
-      nein('Definition of Done', 'Die gehört zum Increment.'),
-      nein('Velocity', 'Die Velocity ist eine Messgröße, kein Commitment.'),
+    prompt: 'Trage zu jedem Artefakt das zugehörige Commitment ein.',
+    zeilen: [
+      ['Artefakt', 'Commitment'],
+      [
+        'Product Backlog',
+        wahl('Produktziel', ['Sprintziel', 'Definition of Done', 'Velocity']),
+      ],
+      [
+        'Sprint Backlog',
+        wahl('Sprintziel', ['Produktziel', 'Definition of Done', 'Velocity']),
+      ],
+      [
+        'Increment',
+        wahl('Definition of Done', ['Produktziel', 'Sprintziel', 'Velocity']),
+      ],
     ],
     explanation:
-        'Product Backlog - Produktziel, Sprint Backlog - Sprintziel, Increment - Definition of Done.',
+        'Product Backlog - Produktziel, Sprint Backlog - Sprintziel, Increment - Definition of Done. Die Velocity ist eine Messgröße, kein Commitment.',
   ),
   mehrfach(
     'a1-sa-2',
@@ -1905,30 +1973,21 @@ final List<Question> questionsA01Journey = [
     explanation:
         'Die Definition of Done ist der Qualitätsmaßstab für alle Einträge. Nur was sie erfüllt, gehört zum Increment.',
   ),
-  einfach(
+  lueckentext(
     'a1-sa-3',
     's-artefakte',
-    prompt: 'Wem gehört das Sprint Backlog?',
-    choices: [
-      ja(
-        'Den Developers',
-        'Es ist ihr Plan für den Sprint; nur sie ändern ihn.',
-      ),
-      nein(
-        'Dem Product Owner',
-        'Er verantwortet das Product Backlog, nicht das Sprint Backlog.',
-      ),
-      nein(
-        'Dem Scrum Master',
-        'Er sorgt für wirksames Scrum, plant aber nicht die Arbeit.',
-      ),
-      nein(
-        'Den Stakeholdern',
-        'Sie geben Rückmeldung im Review, planen aber nicht den Sprint.',
-      ),
+    prompt: 'Vervollständige die Beschreibung des Sprint Backlogs.',
+    text:
+        'Das Sprint Backlog besteht aus dem {0}, den für den Sprint ausgewählten {1} des Product Backlogs und dem {2} für die Umsetzung. Es gehört den {3}; nur sie ändern es im laufenden Sprint.',
+    luecken: [
+      wort(['Sprintziel'], 'Es gibt dem Sprint Backlog seine Richtung.'),
+      wort(['Einträgen'], 'Im Sprint Planning ausgewählt.'),
+      wort(['Plan'], 'Wie die Arbeit erledigt wird.'),
+      wort(['Developers'], 'Es ist ihr Plan für den Sprint.'),
     ],
+    wortbank: ['Produktziel', 'Stakeholdern', 'Increments', 'Vertrag'],
     explanation:
-        'Das Sprint Backlog ist ein Plan von und für die Developers: Sprintziel, ausgewählte Einträge und der Plan zur Umsetzung. Sie aktualisieren es im Sprint laufend.',
+        'Das Sprint Backlog ist ein Plan von und für die Developers: Sprintziel, ausgewählte Einträge und der Plan zur Umsetzung. Sie aktualisieren es im Sprint laufend. Der Product Owner verantwortet das Product Backlog, nicht das Sprint Backlog.',
     difficulty: 1,
   ),
   einfach(
@@ -2167,55 +2226,46 @@ final List<Question> questionsA01Journey = [
     explanation:
         'Im Sprint Review prüfen Scrum Team und Stakeholder gemeinsam das Ergebnis und beraten die nächsten Schritte. Es liegt vor der Retrospektive und dauert beim Monatssprint höchstens 4 Stunden.',
   ),
-  einfach(
+  lueckentext(
     'a1-se-6',
     's-events',
-    prompt: 'Welche Frage wird im Sprint Planning beantwortet?',
-    choices: [
-      ja(
-        'Warum ist dieser Sprint wertvoll, und was ist das Sprintziel?',
-        'Das ist das erste der drei Themen im Planning.',
-      ),
-      nein(
-        'Wie kann das Team seine Zusammenarbeit verbessern?',
-        'Das klärt die Retrospektive.',
-      ),
-      nein(
-        'Was halten die Stakeholder vom Ergebnis?',
-        'Das klärt das Sprint Review.',
-      ),
-      nein(
-        'Was hat jeder gestern gemacht?',
-        'Eine typische, aber nicht mehr vorgeschriebene Frage im Daily.',
-      ),
+    prompt: 'Ergänze die drei Fragen, die das Sprint Planning beantwortet.',
+    text:
+        '{0} ist dieser Sprint wertvoll? Daraus entsteht das {1}. {2} kann in diesem Sprint erledigt werden? Die Developers wählen dazu Einträge aus dem {3}. {4} wird die ausgewählte Arbeit erledigt? Ergebnis des Plannings ist das Sprint Backlog.',
+    luecken: [
+      wahl('Warum', ['Wann', 'Wer']),
+      wahl('Sprintziel', ['Produktziel', 'Increment']),
+      wahl('Was', ['Wer', 'Wo']),
+      wahl('Product Backlog', ['Sprint Review', 'Increment']),
+      wahl('Wie', ['Wann', 'Warum']),
     ],
     explanation:
-        'Das Sprint Planning beantwortet drei Fragen: Warum ist der Sprint wertvoll (Sprintziel)? Was kann erledigt werden? Wie wird die Arbeit erledigt? Ergebnis ist das Sprint Backlog.',
+        'Das Sprint Planning beantwortet drei Fragen: Warum ist der Sprint wertvoll (Sprintziel)? Was kann erledigt werden? Wie wird die Arbeit erledigt? Ergebnis ist das Sprint Backlog. Die Zusammenarbeit klärt die Retrospektive, die Meinung der Stakeholder das Sprint Review.',
     difficulty: 1,
   ),
 
   // ============================================= User Stories und Schätzung
-  einfach(
+  lueckentext(
     'a1-st-1',
     's-stories',
-    prompt: 'Welche User Story ist korrekt formuliert?',
-    choices: [
-      ja(
-        'Als Vertriebsmitarbeiter möchte ich Kunden nach Postleitzahl filtern, damit ich Besuche besser planen kann.',
-        'Rolle, Ziel und Nutzen sind genannt.',
-      ),
-      nein(
-        'Das System muss eine MySQL-Datenbank verwenden.',
-        'Eine technische Vorgabe ohne Rolle und Nutzen - keine User Story.',
-      ),
-      nein(
-        'Als Entwickler möchte ich eine Klasse KundenDAO anlegen.',
-        'Beschreibt eine Umsetzung, keinen Nutzen für Anwender.',
-      ),
-      nein('Filterfunktion für Kunden einbauen.', 'Rolle und Nutzen fehlen.'),
+    scenario:
+        'Der Vertrieb wünscht sich im CRM-System eine Filterfunktion für die Besuchsplanung.',
+    prompt: 'Setze die User Story aus Sicht der Anwender zusammen.',
+    text: 'Als {0} möchte ich {1}, damit {2}.',
+    luecken: [
+      wort(['Vertriebsmitarbeiter'], 'Die Rolle: wer etwas braucht.'),
+      wort([
+        'Kunden nach Postleitzahl filtern',
+      ], 'Das Ziel: was gebraucht wird.'),
+      wort(['ich Besuche besser planen kann'], 'Der Nutzen: wozu es dient.'),
+    ],
+    wortbank: [
+      'Entwickler',
+      'eine Klasse KundenDAO anlegen',
+      'das System MySQL verwendet',
     ],
     explanation:
-        'Eine User Story folgt dem Muster: Als <Rolle> möchte ich <Ziel>, damit <Nutzen>.',
+        'Eine User Story folgt dem Muster: Als <Rolle> möchte ich <Ziel>, damit <Nutzen>. „Als Entwickler möchte ich eine Klasse anlegen“ beschreibt eine Umsetzung, „das System muss MySQL verwenden“ eine technische Vorgabe - beides ohne Nutzen für die Anwender.',
   ),
   rechnen(
     'a1-st-2',
@@ -2337,51 +2387,35 @@ final List<Question> questionsA01Journey = [
   ),
 
   // ======================================================= Aufbau eines Netzplans
-  einfach(
+  paare(
     'a1-ng-1',
     'n-grundlagen',
-    prompt: 'Welche Anordnungsbeziehung ist in Netzplänen der Normalfall?',
-    choices: [
-      ja(
-        'Normalfolge (Ende-Anfang)',
-        'Der Nachfolger beginnt, wenn der Vorgänger beendet ist.',
-      ),
-      nein(
-        'Anfangsfolge (Anfang-Anfang)',
-        'Kommt vor, ist aber nicht der Standard.',
-      ),
-      nein('Endfolge (Ende-Ende)', 'Kommt vor, ist aber nicht der Standard.'),
-      nein('Sprungfolge (Anfang-Ende)', 'Selten und in der AP1 kaum relevant.'),
+    prompt:
+        'Verbinde jede Anordnungsbeziehung mit den Zeitpunkten, die sie verknüpft (Vorgänger - Nachfolger).',
+    paare: [
+      paar('Normalfolge', 'Ende - Anfang'),
+      paar('Anfangsfolge', 'Anfang - Anfang'),
+      paar('Endfolge', 'Ende - Ende'),
+      paar('Sprungfolge', 'Anfang - Ende'),
     ],
     explanation:
-        'In AP1-Netzplänen ist praktisch immer die Normalfolge gemeint.',
+        'Der Normalfall ist die Normalfolge (Ende-Anfang): Der Nachfolger beginnt, wenn der Vorgänger beendet ist. In AP1-Netzplänen ist praktisch immer sie gemeint; Anfangs-, End- und Sprungfolge kommen selten vor.',
   ),
-  mehrfach(
+  paare(
     'a1-ng-2',
     'n-grundlagen',
-    prompt:
-        'Welche Angaben stehen in einem vollständig berechneten Vorgangsknoten?',
-    choices: [
-      ja(
-        'Frühester Anfang und frühestes Ende (FAZ, FEZ)',
-        'Ergebnis der Vorwärtsrechnung.',
-      ),
-      ja(
-        'Spätester Anfang und spätestes Ende (SAZ, SEZ)',
-        'Ergebnis der Rückwärtsrechnung.',
-      ),
-      ja(
-        'Gesamtpuffer und freier Puffer (GP, FP)',
-        'Werden aus den Zeitpunkten berechnet.',
-      ),
-      nein(
-        'Stundensatz der bearbeitenden Person',
-        'Kosten gehören in die Kostenplanung, nicht in den Knoten.',
-      ),
-      nein('Kundenzufriedenheit', 'Keine Größe der Terminplanung.'),
+    prompt: 'Verbinde jedes Kürzel im Vorgangsknoten mit seiner Bedeutung.',
+    paare: [
+      paar('FAZ', 'frühester Anfangszeitpunkt'),
+      paar('FEZ', 'frühester Endzeitpunkt'),
+      paar('SAZ', 'spätester Anfangszeitpunkt'),
+      paar('SEZ', 'spätester Endzeitpunkt'),
+      paar('GP', 'Gesamtpuffer'),
+      paar('FP', 'freier Puffer'),
     ],
     explanation:
-        'Ein Vorgangsknoten enthält Nummer, Bezeichnung, Dauer, die vier Zeitpunkte und die beiden Puffer.',
+        'Ein Vorgangsknoten enthält Nummer, Bezeichnung, Dauer, die vier Zeitpunkte und die beiden Puffer. FAZ und FEZ ergibt die Vorwärtsrechnung, SAZ und SEZ die Rückwärtsrechnung; die Puffer werden daraus berechnet.',
+    difficulty: 1,
   ),
   reihenfolge(
     'a1-ng-3',
@@ -2437,7 +2471,7 @@ final List<Question> questionsA01Journey = [
         'Direkte Vorgänger sind die Vorgänge, von denen ein Pfeil unmittelbar zum Vorgang führt. D darf erst beginnen, wenn B und C beendet sind.',
     difficulty: 1,
   ),
-  einfach(
+  tabelle(
     'a1-ng-6',
     'n-grundlagen',
     scenario:
@@ -2448,21 +2482,38 @@ final List<Question> questionsA01Journey = [
         'D: Nachfolger F\n'
         'E: Nachfolger F\n'
         'F: kein Nachfolger',
-    prompt: 'Welche Vorgänger hat D?',
-    choices: [
-      ja(
-        'B und C',
-        'D steht bei B und bei C als Nachfolger - also sind beide Vorgänger von D.',
-      ),
-      nein('Nur B', 'Auch C nennt D als Nachfolger.'),
-      nein('F', 'F ist der Nachfolger von D, nicht sein Vorgänger.'),
-      nein(
-        'C und E',
-        'E ist kein Vorgänger von D; E und D laufen parallel und führen beide zu F.',
-      ),
+    prompt:
+        'Wandle die Liste um: Trage zu jedem Vorgang seine direkten Vorgänger ein.',
+    zeilen: [
+      ['Vorgang', 'Vorgänger'],
+      ['A', '-'],
+      [
+        'B',
+        wahl('A', ['C', 'D']),
+      ],
+      [
+        'C',
+        wahl('A', ['B', 'D, E']),
+      ],
+      [
+        'D',
+        wahl('B, C', [
+          'B',
+          'C, E',
+          'F',
+        ], 'D steht bei B und bei C als Nachfolger.'),
+      ],
+      [
+        'E',
+        wahl('C', ['D', 'B, C']),
+      ],
+      [
+        'F',
+        wahl('D, E', ['D', 'E', 'C, D, E']),
+      ],
     ],
     explanation:
-        'Nachfolgerangaben werden umgedreht: Steht D bei X als Nachfolger, ist X Vorgänger von D. Bei B und bei C steht D - also hat D die Vorgänger B und C.',
+        'Nachfolgerangaben werden umgedreht: Steht D bei X als Nachfolger, ist X Vorgänger von D. Bei B und bei C steht D - also hat D die Vorgänger B und C. F steht bei D und E, also sind D und E seine Vorgänger.',
   ),
   rechnen(
     'a1-ng-7',
@@ -2555,23 +2606,15 @@ final List<Question> questionsA01Journey = [
         'D: FAZ = max(FEZ A 4; FEZ B 6) = 6, FEZ 8.\n'
         'E: FAZ = max(FEZ C 7; FEZ D 8) = 8.',
   ),
-  einfach(
+  rechnen(
     'a1-nv-4',
     'n-vorwaerts',
     scenario:
         'Ein Vorgang hat drei Vorgänger: X mit FEZ 9, Y mit FEZ 12 und Z mit FEZ 7.',
     prompt: 'Welchen FAZ hat der Vorgang?',
-    choices: [
-      ja(
-        '12',
-        'Er kann erst beginnen, wenn der letzte Vorgänger (Y) fertig ist - das Maximum.',
-      ),
-      nein('7', 'Das Minimum - dann liefen X und Y noch.'),
-      nein('9', 'Dann liefe Y noch drei Tage.'),
-      nein('28', 'Die FEZ werden nicht addiert.'),
-    ],
+    answer: 12,
     explanation:
-        'Vorwärtsrechnung: FAZ = max(FEZ aller Vorgänger) = max(9; 12; 7) = 12.',
+        'Vorwärtsrechnung: FAZ = max(FEZ aller Vorgänger) = max(9; 12; 7) = 12. Der Vorgang kann erst beginnen, wenn der letzte Vorgänger (Y) fertig ist. Die FEZ-Werte werden weder addiert noch wird der kleinste genommen.',
     difficulty: 1,
   ),
   rechnen(
@@ -2659,23 +2702,15 @@ final List<Question> questionsA01Journey = [
         'A: SEZ = min(SAZ B 3; SAZ C 7) = 3, SAZ 3 - 3 = 0 ✓',
     difficulty: 2,
   ),
-  einfach(
+  rechnen(
     'a1-nr-5',
     'n-rueckwaerts',
     scenario:
         'Ein Vorgang hat drei Nachfolger: P mit SAZ 10, Q mit SAZ 8 und R mit SAZ 14.',
     prompt: 'Welchen SEZ hat der Vorgang?',
-    choices: [
-      ja(
-        '8',
-        'Er muss fertig sein, bevor der eiligste Nachfolger Q spätestens beginnen muss - das Minimum.',
-      ),
-      nein('14', 'Dann würde Q zu spät beginnen und das Projekt verschieben.'),
-      nein('10', 'Auch dann käme Q zu spät.'),
-      nein('32', 'SAZ-Werte werden nicht addiert.'),
-    ],
+    answer: 8,
     explanation:
-        'Rückwärtsrechnung: SEZ = min(SAZ aller Nachfolger) = min(10; 8; 14) = 8.',
+        'Rückwärtsrechnung: SEZ = min(SAZ aller Nachfolger) = min(10; 8; 14) = 8. Der Vorgang muss fertig sein, bevor der eiligste Nachfolger Q spätestens beginnen muss - mit 10 oder 14 käme Q zu spät.',
     difficulty: 1,
   ),
   rechnen(
@@ -2801,59 +2836,54 @@ final List<Question> questionsA01Journey = [
         'Der Gesamtpuffer fängt 2 Tage auf.\n'
         'Verschiebung des Projektendes = Verzögerung - GP = 5 - 2 = 3 Tage.',
   ),
-  mehrfach(
+  lueckentext(
     'a1-np-5',
     'n-puffer',
-    prompt: 'Welche Aussagen zu Gesamtpuffer und freiem Puffer sind richtig?',
-    choices: [
-      ja(
-        'Der freie Puffer ist nie größer als der Gesamtpuffer.',
-        'Es gilt immer FP ≤ GP.',
-      ),
-      ja(
-        'Auf dem kritischen Pfad ist der Gesamtpuffer 0.',
-        'Daran erkennt man kritische Vorgänge.',
-      ),
-      ja(
-        'GP = SEZ - FEZ',
-        'Gleichwertig zu GP = SAZ - FAZ - gut als Gegenprobe.',
-      ),
-      nein(
-        'Der freie Puffer wird mit dem SAZ des Nachfolgers berechnet.',
-        'Richtig ist der FAZ des Nachfolgers.',
-      ),
-      nein('GP = FAZ - SAZ', 'Vorzeichen vertauscht: GP = SAZ - FAZ.'),
+    prompt: 'Ergänze die Formeln und Regeln zu den Puffern.',
+    text:
+        'GP = {0} - FAZ = SEZ - {1}\n'
+        'FP = kleinster {2} der Nachfolger - {3}\n'
+        'Auf dem kritischen Pfad gilt GP = {4}. Der freie Puffer ist nie {5} als der Gesamtpuffer.',
+    luecken: [
+      wahl('SAZ', ['FEZ', 'SEZ']),
+      wahl('FEZ', [
+        'FAZ',
+        'SAZ',
+      ], 'Gleichwertig zu SAZ - FAZ - gut als Gegenprobe.'),
+      wahl('FAZ', ['SAZ', 'FEZ'], 'Der früheste Anfang, nicht der späteste.'),
+      wahl('FEZ', ['FAZ', 'SEZ']),
+      zahl(0, rationale: 'Daran erkennt man kritische Vorgänge.'),
+      wahl('größer', ['kleiner', 'früher']),
     ],
     explanation:
         'GP = SAZ - FAZ = SEZ - FEZ schützt das Projektende. FP = kleinster FAZ der Nachfolger - FEZ schützt die Nachfolger. Weil der Nachfolger selbst Puffer haben kann, ist FP ≤ GP.',
   ),
 
   // ============================================================= Kritischer Pfad
-  einfach(
+  tabelle(
     'a1-nk-1',
     'n-kritisch',
     scenario: _netz,
-    prompt: 'Welcher Weg ist der kritische Pfad?',
-    choices: [
-      ja(
-        'A - C - E',
-        'A, C und E haben einen Gesamtpuffer von 0. Länge 5 + 6 + 4 = 15 Tage.',
-      ),
-      nein(
-        'A - B - D - E',
-        'Dieser Weg dauert nur 14 Tage - B und D haben je einen Tag Puffer.',
-      ),
-      nein(
-        'A - B - C',
-        'B und C liegen nicht hintereinander, sondern parallel.',
-      ),
-      nein(
-        'Es gibt keinen kritischen Pfad',
-        'Jeder Netzplan hat mindestens einen kritischen Pfad.',
-      ),
+    prompt: 'Bestimme die Länge beider Wege und den kritischen Pfad.',
+    zeilen: [
+      ['Frage', 'Antwort'],
+      ['Länge des Wegs A - C - E in Tagen', zahl(15, rationale: '5 + 6 + 4')],
+      [
+        'Länge des Wegs A - B - D - E in Tagen',
+        zahl(14, rationale: '5 + 3 + 2 + 4'),
+      ],
+      ['Projektdauer in Tagen', zahl(15)],
+      [
+        'Kritischer Pfad',
+        wahl(
+          'A - C - E',
+          ['A - B - D - E', 'A - B - C'],
+          'Der längste Weg; B und C liegen parallel, nicht hintereinander.',
+        ),
+      ],
     ],
     explanation:
-        'GP = SAZ - FAZ: A 0, B 1, C 0, D 1, E 0. Der kritische Pfad verbindet alle Vorgänge ohne Puffer: A - C - E mit 15 Tagen Projektdauer.',
+        'A - C - E = 5 + 6 + 4 = 15 Tage, A - B - D - E = 5 + 3 + 2 + 4 = 14 Tage. Der längste Weg bestimmt die Projektdauer und ist der kritische Pfad: A - C - E. Auf ihm ist GP = 0; B und D haben je einen Tag Puffer.',
   ),
   netzplanAufgabe(
     'a1-nk-2',
