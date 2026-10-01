@@ -339,8 +339,7 @@ class _SectionTitle extends StatelessWidget {
               label: Text(action!),
               style: TextButton.styleFrom(
                 padding: const EdgeInsets.only(left: Gap.s),
-                minimumSize: const Size(0, 36),
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                minimumSize: const Size(48, 48),
               ),
             ),
         ],

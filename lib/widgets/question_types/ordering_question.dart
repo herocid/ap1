@@ -268,7 +268,7 @@ class _ArrowButton extends StatelessWidget {
       icon: Icon(icon),
       tooltip: tooltip,
       padding: EdgeInsets.zero,
-      constraints: const BoxConstraints.tightFor(width: 40, height: 48),
+      constraints: const BoxConstraints.tightFor(width: 48, height: 48),
       style: IconButton.styleFrom(
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
