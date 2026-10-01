@@ -12,38 +12,28 @@ final List<Question> questionsA02 = [
     prompt: 'Ordne jede Deutung der passenden Seite der Nachricht zu.',
     buckets: ['Sachinhalt', 'Selbstoffenbarung', 'Beziehung', 'Appell'],
     items: [
-      zu('Nach dem Update funktioniert etwas nicht.', 0),
       zu('Ich bin frustriert.', 1),
-      zu('Ihr liefert schlechte Arbeit.', 2),
+      zu('Nach dem Update funktioniert etwas nicht.', 0),
       zu('Macht das Update rückgängig!', 3),
+      zu('Ihr liefert schlechte Arbeit.', 2),
     ],
     explanation:
         'Nach Schulz von Thun sendet jede Nachricht vier Botschaften: Sache, Selbstoffenbarung, Beziehung und Appell. Im Support hilft es, vor allem den Sachinhalt und den Appell zu hören.',
   ),
-  einfach(
+  paare(
     'a2-km-2',
     'k-modelle',
-    prompt: 'Was besagt das Axiom „Man kann nicht nicht kommunizieren“?',
-    choices: [
-      ja(
-        'Auch Schweigen oder Körpersprache senden eine Botschaft.',
-        'Jedes Verhalten in Anwesenheit anderer hat Mitteilungscharakter.',
-      ),
-      nein(
-        'Man muss in jedem Gespräch etwas sagen.',
-        'Das Axiom ist keine Verhaltensregel.',
-      ),
-      nein(
-        'Schriftliche Kommunikation zählt nicht.',
-        'Auch sie ist Kommunikation.',
-      ),
-      nein(
-        'Kommunikation gelingt nur mit gemeinsamem Zeichenvorrat.',
-        'Das stammt aus dem Sender-Empfänger-Modell.',
-      ),
+    scenario:
+        'In einer Schulung zur Kundenkommunikation werden vier Kommunikationsmodelle vorgestellt.',
+    prompt: 'Ordne jedem Modell seine Kernaussage zu.',
+    paare: [
+      paar('Sender-Empfänger-Modell', 'gemeinsamer Zeichenvorrat nötig'),
+      paar('Vier-Seiten-Modell', 'vier Botschaften in jeder Nachricht'),
+      paar('Eisbergmodell', 'die Beziehungsebene liegt verborgen'),
+      paar('1. Axiom nach Watzlawick', 'auch Schweigen ist eine Botschaft'),
     ],
     explanation:
-        'Watzlawicks erstes Axiom: Jedes Verhalten ist Kommunikation. Wer im Kundentermin auf sein Handy schaut, sendet eine Botschaft - auch ohne ein Wort.',
+        'Sender-Empfänger: Verständigung braucht einen gemeinsamen Zeichenvorrat. Schulz von Thun: Sache, Selbstoffenbarung, Beziehung, Appell. Eisberg: Nur die Sachebene ist sichtbar. Watzlawick: Man kann nicht nicht kommunizieren - wer im Kundentermin aufs Handy schaut, sendet eine Botschaft.',
   ),
   einfach(
     'a2-km-3',
@@ -117,18 +107,18 @@ final List<Question> questionsA02 = [
     ],
     items: [
       zu(
-        'Ein Kollege beantwortet eine E-Mail gar nicht - die Absenderin deutet das als Ablehnung.',
-        0,
-      ),
-      zu(
         'Dieselbe Kritik nimmt ein Azubi vom geschätzten Ausbilder an, vom unbeliebten Kollegen nicht.',
         1,
       ),
       zu(
+        'Ein Kollege beantwortet eine E-Mail gar nicht - die Absenderin deutet das als Ablehnung.',
+        0,
+      ),
+      zu('Der Kunde sagt „Sehr schön“ und rollt dabei mit den Augen.', 3),
+      zu(
         'Teamleiterin: „Ich kontrolliere, weil ihr Fehler macht.“ Team: „Wir machen Fehler, weil du uns ständig kontrollierst.“',
         2,
       ),
-      zu('Der Kunde sagt „Sehr schön“ und rollt dabei mit den Augen.', 3),
     ],
     explanation:
         'Auch Schweigen ist eine Botschaft (1. Axiom). Die Beziehung bestimmt, wie ein Inhalt ankommt (2.). Bei der Interpunktion sieht jeder den Auslöser beim anderen (3.). Worte (digital) und Körpersprache (analog) senden gleichzeitig - hier widersprüchlich (4.).',
@@ -161,19 +151,22 @@ final List<Question> questionsA02 = [
     explanation:
         'Nach dem Eisbergmodell ist nur die Sachebene sichtbar. Gefühle wie Kränkung liegen darunter und steuern das Gespräch. Solange nur über Tabs gestritten wird, bleibt der eigentliche Konflikt ungelöst.',
   ),
-  mehrfach(
+  zuordnen(
     'a2-km-7',
     'k-modelle',
-    prompt: 'Welche Signale gehören zur paraverbalen Kommunikation?',
-    choices: [
-      ja('Lautstärke', 'Wie laut gesprochen wird, ist paraverbal.'),
-      ja('Sprechtempo', 'Das Tempo gehört zur Art des Sprechens - paraverbal.'),
-      ja('Tonfall', 'Ob etwas freundlich oder genervt klingt, ist paraverbal.'),
-      nein(
-        'Blickkontakt',
-        'Blicke gehören zur nonverbalen Kommunikation (Körpersprache).',
-      ),
-      nein('Wortwahl', 'Die Worte selbst sind die verbale Ebene.'),
+    scenario:
+        'Du beobachtest ein Kundengespräch und notierst, worüber Botschaften gesendet werden.',
+    prompt: 'Ordne jedes Signal der richtigen Ebene der Kommunikation zu.',
+    buckets: ['verbal', 'paraverbal', 'nonverbal'],
+    items: [
+      zu('Lautstärke', 1),
+      zu('Blickkontakt', 2),
+      zu('Wortwahl', 0),
+      zu('Sprechtempo', 1),
+      zu('Gestik', 2),
+      zu('Tonfall', 1),
+      zu('Fachbegriffe', 0),
+      zu('Körperhaltung', 2),
     ],
     explanation:
         'Verbal sind die Worte, paraverbal ist die Art des Sprechens (Tonfall, Lautstärke, Tempo, Pausen), nonverbal die Körpersprache (Mimik, Gestik, Blickkontakt, Haltung).',
@@ -276,15 +269,15 @@ final List<Question> questionsA02 = [
     prompt: 'Welche Stufe des aktiven Zuhörens zeigt die Reaktion?',
     buckets: ['aufnehmendes Zuhören', 'Paraphrasieren', 'Verbalisieren'],
     items: [
-      zu('Nicken und „Mhm, verstehe.“', 0),
       zu('Den Kunden ausreden lassen und kurze Signale geben', 0),
-      zu('„Sie meinen also, dass seit dem Update die Vorlagen fehlen.“', 1),
+      zu('Nicken und „Mhm, verstehe.“', 0),
+      zu('„Ich höre, dass Sie sich darüber ärgern.“', 2),
+      zu('„Das bringt Sie vor dem Abschluss ganz schön unter Druck.“', 2),
       zu(
         '„Wenn ich Sie richtig verstehe, fehlen die Vorlagen für alle Rechnungsarten.“',
         1,
       ),
-      zu('„Das bringt Sie vor dem Abschluss ganz schön unter Druck.“', 2),
-      zu('„Ich höre, dass Sie sich darüber ärgern.“', 2),
+      zu('„Sie meinen also, dass seit dem Update die Vorlagen fehlen.“', 1),
     ],
     explanation:
         'Aufnehmendes Zuhören zeigt Aufmerksamkeit (Nicken, „Mhm“). Paraphrasieren gibt den Inhalt mit eigenen Worten wieder. Verbalisieren spricht die Gefühle des Gegenübers an.',
@@ -316,30 +309,39 @@ final List<Question> questionsA02 = [
     explanation:
         'Eine echte Ich-Botschaft beschreibt Beobachtung, Wirkung und Wunsch aus eigener Sicht, ohne die Person zu bewerten. Ein „Ich finde, Sie sind ...“ ist eine getarnte Du-Botschaft.',
   ),
-  mehrfach(
+  zuordnen(
     'a2-kg-7',
     'k-gespraech',
-    prompt: 'Welche Reaktionen gelten als Gesprächsstörer?',
-    choices: [
-      ja(
-        '„Das steht doch im Handbuch.“',
-        'Belehren wirkt von oben herab und blockiert.',
-      ),
-      ja(
-        '„Ist doch halb so wild.“',
-        'Bagatellisieren nimmt das Anliegen nicht ernst.',
-      ),
-      ja(
-        'Den Kunden mitten im Satz unterbrechen',
-        'Wer unterbricht, signalisiert Desinteresse.',
-      ),
-      nein(
+    scenario:
+        'Im Support reagieren Mitarbeitende unterschiedlich auf eine Kundenbeschwerde.',
+    prompt: 'Ist die Reaktion ein Gesprächsförderer oder ein Gesprächsstörer?',
+    buckets: ['Gesprächsförderer', 'Gesprächsstörer'],
+    items: [
+      zu('„Das steht doch im Handbuch.“', 1, 'Belehren wirkt von oben herab.'),
+      zu(
         '„Was genau passiert, wenn Sie auf Speichern klicken?“',
+        0,
         'Eine offene Nachfrage fördert das Gespräch.',
       ),
-      nein(
+      zu(
+        '„Ist doch halb so wild.“',
+        1,
+        'Bagatellisieren nimmt das Anliegen nicht ernst.',
+      ),
+      zu(
         '„Sie meinen also, dass der Fehler nur morgens auftritt?“',
-        'Paraphrasieren sichert das Verstehen - ein Gesprächsförderer.',
+        0,
+        'Paraphrasieren sichert das Verstehen.',
+      ),
+      zu(
+        'Den Kunden mitten im Satz unterbrechen',
+        1,
+        'Wer unterbricht, signalisiert Desinteresse.',
+      ),
+      zu(
+        '„Ich verstehe, dass Sie das ärgert.“',
+        0,
+        'Gefühle anzuerkennen entspannt das Gespräch.',
       ),
     ],
     explanation:
@@ -364,27 +366,37 @@ final List<Question> questionsA02 = [
     explanation:
         'Erst vollständig erfassen und einordnen, dann bearbeiten. Geschlossen wird erst, wenn die Lösung dokumentiert und vom Kunden bestätigt ist.',
   ),
-  einfach(
+  tabelle(
     'a2-kk-2',
     'k-kunde',
-    prompt: 'Welches Ticket hat die höchste Priorität?',
-    choices: [
-      ja(
-        'Der Mailserver ist für das ganze Unternehmen ausgefallen.',
-        'Hohe Dringlichkeit und sehr große Auswirkung.',
-      ),
-      nein(
-        'Ein Drucker in der Buchhaltung druckt blass.',
-        'Wenige Betroffene, Arbeit ist möglich.',
-      ),
-      nein(
-        'Eine Mitarbeiterin wünscht sich einen zweiten Monitor.',
-        'Ein Wunsch ohne Störung.',
-      ),
-      nein('Ein Passwort läuft in zwei Wochen ab.', 'Nicht dringlich.'),
+    scenario:
+        'Im Service gilt: Auswirkung hoch = ganzes Unternehmen, mittel = eine Abteilung, gering = eine Person. Dringlichkeit hoch = Lösung heute nötig, mittel = diese Woche, gering = ohne Termin.\n'
+        'Priorität 1 = beide hoch; Priorität 2 = einmal hoch und einmal mittel; Priorität 3 = alle übrigen Kombinationen.',
+    prompt:
+        'Bestimme für jedes Ticket Auswirkung, Dringlichkeit und Priorität.',
+    zeilen: [
+      ['Ticket', 'Auswirkung', 'Dringlichkeit', 'Priorität'],
+      [
+        'Der Mailserver ist ausgefallen, niemand im Unternehmen kann arbeiten.',
+        wahl('hoch', ['mittel', 'gering']),
+        wahl('hoch', ['mittel', 'gering']),
+        wahl('1', ['2', '3']),
+      ],
+      [
+        'In der Buchhaltung startet die Lohnsoftware nicht - die Löhne müssen heute raus.',
+        wahl('mittel', ['hoch', 'gering']),
+        wahl('hoch', ['mittel', 'gering']),
+        wahl('2', ['1', '3']),
+      ],
+      [
+        'Eine Mitarbeiterin wünscht sich einen zweiten Monitor, ein Termin ist nicht genannt.',
+        wahl('gering', ['hoch', 'mittel']),
+        wahl('gering', ['hoch', 'mittel']),
+        wahl('3', ['1', '2']),
+      ],
     ],
     explanation:
-        'Die Priorität ergibt sich aus Dringlichkeit und Auswirkung. Ein Ausfall, der alle betrifft, hat Vorrang.',
+        'Die Priorität ergibt sich aus Auswirkung und Dringlichkeit. Mailserver: ganzes Unternehmen und sofort - Priorität 1. Lohnsoftware: eine Abteilung (mittel), Frist heute (hoch) - Priorität 2. Monitorwunsch: eine Person, kein Termin - Priorität 3.',
   ),
   einfach(
     'a2-kk-3',
@@ -445,12 +457,12 @@ final List<Question> questionsA02 = [
     prompt: 'Ist der Kommunikationskanal synchron oder asynchron?',
     buckets: ['synchron', 'asynchron'],
     items: [
-      zu('Telefonat mit dem Kunden', 0),
       zu('Videokonferenz', 0),
-      zu('Fernwartungssitzung, bei der der Kunde zusieht', 0),
-      zu('E-Mail', 1),
-      zu('Eintrag im Ticketsystem', 1),
+      zu('Telefonat mit dem Kunden', 0),
       zu('Brief', 1),
+      zu('Eintrag im Ticketsystem', 1),
+      zu('E-Mail', 1),
+      zu('Fernwartungssitzung, bei der der Kunde zusieht', 0),
     ],
     explanation:
         'Synchron heißt: Beide sind gleichzeitig beteiligt (Telefon, Videokonferenz, Fernwartung). Asynchron heißt: Die Antwort kann zeitversetzt kommen (E-Mail, Ticket, Brief) - das lässt sich leichter dokumentieren.',
@@ -527,30 +539,23 @@ final List<Question> questionsA02 = [
     explanation:
         'Offene Auseinandersetzungen über Rollen und Macht kennzeichnen die Storming-Phase.',
   ),
-  einfach(
+  lueckentext(
     'a2-tt-3',
     'te-phasen',
-    prompt: 'Was hilft einem Team in der Norming-Phase am meisten?',
-    choices: [
-      ja(
-        'Gemeinsam vereinbarte Regeln festhalten',
-        'In dieser Phase einigt sich das Team auf seinen Umgang.',
-      ),
-      nein(
-        'Möglichst viel Freiraum ohne jede Absprache',
-        'Das passt zur Performing-Phase.',
-      ),
-      nein(
-        'Konflikte unterdrücken',
-        'Unterdrückte Konflikte brechen später wieder auf.',
-      ),
-      nein(
-        'Das Team neu zusammensetzen',
-        'Das würde es in frühere Phasen zurückwerfen.',
-      ),
+    scenario:
+        'Ein neu zusammengestelltes Projektteam durchläuft die Teamphasen nach Tuckman.',
+    prompt: 'Setze die Phasen an der richtigen Stelle ein.',
+    text:
+        'Im {0} lernen sich die Mitglieder kennen und sind noch zurückhaltend. Im {1} wird um Rollen und Einfluss gestritten. Im {2} einigt sich das Team auf gemeinsame Regeln - sie festzuhalten stabilisiert die Zusammenarbeit. Im {3} arbeitet es selbstständig und effektiv.',
+    luecken: [
+      wort(['Forming'], 'Orientierung.'),
+      wort(['Storming'], 'Konflikt.'),
+      wort(['Norming'], 'Regeln.'),
+      wort(['Performing'], 'Leistung.'),
     ],
+    wortbank: ['Adjourning', 'Brainstorming'],
     explanation:
-        'In der Norming-Phase entstehen Regeln und Abläufe. Wer sie festhält, stabilisiert das Team.',
+        'Forming (Orientierung), Storming (Konflikt), Norming (Regeln), Performing (Leistung), Adjourning (Auflösung). In der Norming-Phase hilft es am meisten, die gemeinsam vereinbarten Regeln festzuhalten.',
   ),
 
   zuordnen(
@@ -561,10 +566,10 @@ final List<Question> questionsA02 = [
     prompt: 'In welcher Teamphase fällt die Aussage?',
     buckets: ['Forming', 'Storming', 'Norming', 'Performing', 'Adjourning'],
     items: [
-      zu('„Ich weiß noch gar nicht, was hier von mir erwartet wird.“', 0),
       zu('„Warum soll ausgerechnet dein Konzept umgesetzt werden?“', 1),
-      zu('„Lasst uns festhalten: Code-Reviews immer vor dem Merge.“', 2),
       zu('„Du testest, ich spiele es ein - heute sind wir fertig.“', 3),
+      zu('„Ich weiß noch gar nicht, was hier von mir erwartet wird.“', 0),
+      zu('„Lasst uns festhalten: Code-Reviews immer vor dem Merge.“', 2),
       zu(
         '„Die Übergabe an den Betrieb ist erledigt - danke für die tolle Zusammenarbeit!“',
         4,
@@ -637,14 +642,14 @@ final List<Question> questionsA02 = [
     prompt: 'Zu welchem Schwerpunkt gehört die Teamrolle nach Belbin?',
     buckets: ['Handeln', 'Kommunikation', 'Wissen'],
     items: [
-      zu('Macher', 0),
       zu('Umsetzer', 0),
-      zu('Perfektionist', 0),
       zu('Koordinator', 1),
-      zu('Wegbereiter', 1),
       zu('Teamarbeiter', 1),
-      zu('Neuerer', 2),
       zu('Beobachter', 2),
+      zu('Macher', 0),
+      zu('Perfektionist', 0),
+      zu('Wegbereiter', 1),
+      zu('Neuerer', 2),
       zu('Spezialist', 2),
     ],
     explanation:
@@ -678,50 +683,73 @@ final List<Question> questionsA02 = [
     explanation:
         'Gutes Feedback beschreibt ein konkretes Verhalten zeitnah aus der eigenen Wahrnehmung.',
   ),
-  mehrfach(
+  lueckentext(
     'a2-tf-2',
     'te-feedback',
-    prompt: 'Wie verhält man sich richtig, wenn man Feedback erhält?',
-    choices: [
-      ja(
-        'Zuhören und ausreden lassen',
-        'Nur so kommt die Rückmeldung vollständig an.',
-      ),
-      ja(
-        'Bei Unklarheit nachfragen',
-        'Hilft, das Feedback richtig zu verstehen.',
-      ),
-      nein(
-        'Sich sofort rechtfertigen',
-        'Blockiert das Gespräch und die eigene Entwicklung.',
-      ),
-      ja(
-        'Sich bedanken',
-        'Feedback ist ein Geschenk - auch wenn es unbequem ist.',
-      ),
-      nein('Mit Gegenkritik antworten', 'Macht aus dem Feedback einen Streit.'),
+    scenario:
+        'Dein Ausbilder gibt dir nach einer Kundenpräsentation kritisches Feedback.',
+    prompt:
+        'Wähle für jede Lücke, wie du dich als Feedback-Nehmer richtig verhältst.',
+    text:
+        'Du hörst zu und lässt ihn {0}. Ist etwas unklar, {1} du. Du verzichtest darauf, dich zu {2}, und antwortest nicht mit Gegenkritik. Am Ende {3} du dich und entscheidest selbst, was du umsetzt.',
+    luecken: [
+      wahl('ausreden', [
+        'warten',
+        'raten',
+      ], 'Nur so kommt die Rückmeldung vollständig an.'),
+      wahl('fragst nach', [
+        'widersprichst',
+        'schweigst',
+      ], 'Nachfragen hilft, das Feedback richtig zu verstehen.'),
+      wahl('rechtfertigen', [
+        'bedanken',
+        'informieren',
+      ], 'Rechtfertigungen blockieren das Gespräch.'),
+      wahl('bedankst', [
+        'beschwerst',
+        'verteidigst',
+      ], 'Feedback ist ein Geschenk - auch wenn es unbequem ist.'),
     ],
     explanation:
-        'Wer Feedback annimmt, hört zu, fragt nach und entscheidet danach selbst, was er umsetzt.',
+        'Wer Feedback annimmt, hört zu, fragt bei Unklarheit nach, rechtfertigt sich nicht und bedankt sich. Was er davon umsetzt, entscheidet er danach selbst.',
   ),
-  einfach(
+  tabelle(
     'a2-tf-3',
     'te-feedback',
-    prompt: 'Welchen Bereich des Johari-Fensters verkleinert Feedback?',
-    choices: [
-      ja(
-        'Den blinden Fleck',
-        'Das, was andere an mir wahrnehmen, ich selbst aber nicht.',
-      ),
-      nein('Den öffentlichen Bereich', 'Der wird durch Feedback eher größer.'),
-      nein(
-        'Den geheimen Bereich',
-        'Der verkleinert sich, wenn ich selbst etwas preisgebe.',
-      ),
-      nein('Den unbekannten Bereich', 'Den kennen weder ich noch andere.'),
+    scenario:
+        'Das Johari-Fenster ordnet Informationen über eine Person danach, wem sie bekannt sind.',
+    prompt: 'Trage die vier Bereiche des Johari-Fensters ein.',
+    zeilen: [
+      ['Wissen', 'mir bekannt', 'mir unbekannt'],
+      [
+        'anderen bekannt',
+        wahl('Öffentliche Person', [
+          'Blinder Fleck',
+          'Private Person',
+          'Unbekanntes',
+        ]),
+        wahl('Blinder Fleck', [
+          'Öffentliche Person',
+          'Private Person',
+          'Unbekanntes',
+        ], 'Diesen Bereich verkleinert Feedback.'),
+      ],
+      [
+        'anderen unbekannt',
+        wahl(
+          'Private Person',
+          ['Öffentliche Person', 'Blinder Fleck', 'Unbekanntes'],
+          'Diesen Bereich verkleinert, wer etwas von sich preisgibt.',
+        ),
+        wahl('Unbekanntes', [
+          'Öffentliche Person',
+          'Blinder Fleck',
+          'Private Person',
+        ]),
+      ],
     ],
     explanation:
-        'Feedback macht bewusst, wie man auf andere wirkt - der blinde Fleck schrumpft.',
+        'Öffentlich: mir und anderen bekannt. Blinder Fleck: nur anderen bekannt. Privat: nur mir bekannt. Unbekannt: niemandem bekannt. Feedback macht bewusst, wie man auf andere wirkt - der blinde Fleck schrumpft.',
   ),
 
   reihenfolge(
@@ -750,16 +778,16 @@ final List<Question> questionsA02 = [
       'Unbekanntes',
     ],
     items: [
-      zu('Alle im Team wissen, dass Lara sehr gut programmiert.', 0),
       zu(
         'Lara merkt nicht, dass sie andere in Meetings oft unterbricht - den Kollegen fällt es auf.',
         1,
       ),
-      zu('Lara hat Angst vor Präsentationen, erzählt aber niemandem davon.', 2),
+      zu('Alle im Team wissen, dass Lara sehr gut programmiert.', 0),
       zu(
         'Lara hat ein Talent zum Moderieren, das weder sie noch andere bisher bemerkt haben.',
         3,
       ),
+      zu('Lara hat Angst vor Präsentationen, erzählt aber niemandem davon.', 2),
     ],
     explanation:
         'Öffentlich: mir und anderen bekannt. Blinder Fleck: nur anderen bekannt. Privat: nur mir bekannt. Unbekannt: niemandem bekannt. Feedback verkleinert den blinden Fleck, Selbstoffenbarung den privaten Bereich.',
@@ -835,60 +863,65 @@ final List<Question> questionsA02 = [
       'Rollenkonflikt',
     ],
     items: [
-      zu('Zwei Entwickler streiten, ob React oder Vue eingesetzt wird.', 0),
       zu('Zwei Kollegen gehen sich seit einer Kränkung aus dem Weg.', 1),
-      zu('Zwei Teams beanspruchen dasselbe Testsystem.', 2),
+      zu('Zwei Entwickler streiten, ob React oder Vue eingesetzt wird.', 0),
       zu(
         'Ein Mitarbeiter soll gleichzeitig im Projekt und in der Linie Vollzeit leisten.',
         3,
       ),
+      zu('Zwei Teams beanspruchen dasselbe Testsystem.', 2),
     ],
     explanation:
         'Sachkonflikt: Methoden. Beziehungskonflikt: Personen. Verteilungskonflikt: knappe Ressourcen. Rollenkonflikt: widersprüchliche Erwartungen an eine Person.',
   ),
-  einfach(
+  paare(
     'a2-tk-2',
     'te-konflikte',
-    prompt: 'Welche Konfliktlösung ist am nachhaltigsten?',
-    choices: [
-      ja('Konsens', 'Beide erarbeiten eine gemeinsame Lösung und gewinnen.'),
-      nein(
-        'Kompromiss',
-        'Beide geben nach - oft bleibt auf beiden Seiten Unzufriedenheit.',
-      ),
-      nein(
-        'Durchsetzen',
-        'Es gibt einen Verlierer, der Konflikt schwelt weiter.',
-      ),
-      nein('Flucht', 'Der Konflikt bleibt ungelöst.'),
+    scenario:
+        'Zwei Teams streiten um denselben Testserver. Je nach Vorgehen endet der Konflikt unterschiedlich.',
+    prompt: 'Ordne jedem Grundmuster der Konfliktlösung sein Ergebnis zu.',
+    paare: [
+      paar('Flucht', 'der Konflikt bleibt ungelöst'),
+      paar('Durchsetzen', 'ein Gewinner, ein Verlierer'),
+      paar('Delegation', 'ein Dritter entscheidet'),
+      paar('Kompromiss', 'beide geben teilweise nach'),
+      paar('Konsens', 'beide Interessen voll erfüllt'),
     ],
     explanation:
-        'Beim Konsens werden die Interessen beider Seiten erfüllt - der Konflikt ist wirklich gelöst.',
+        'Am nachhaltigsten ist der Konsens: Beide erarbeiten eine neue Lösung, die ihre Interessen voll erfüllt. Beim Kompromiss bleibt oft Unzufriedenheit, beim Durchsetzen ein Verlierer, bei der Flucht der ganze Konflikt.',
   ),
-  einfach(
+  freitext(
     'a2-tk-3',
     'te-konflikte',
-    prompt: 'Was regelt das Allgemeine Gleichbehandlungsgesetz (AGG)?',
-    choices: [
-      ja(
-        'Es verbietet Benachteiligung u. a. wegen Herkunft, Geschlecht, Religion, Behinderung, Alter oder sexueller Identität.',
-        'Das ist der Kern des AGG.',
+    scenario:
+        'Bei der Auswahl neuer Auszubildender will ein Betrieb das Allgemeine Gleichbehandlungsgesetz (AGG) einhalten.',
+    prompt:
+        'Nenne vier Merkmale, wegen derer das AGG eine Benachteiligung verbietet.',
+    kriterien: [
+      krit(
+        'Rasse oder ethnische Herkunft',
+        stichwoerter: ['Herkunft', 'ethnisch', 'Rasse', 'Hautfarbe'],
       ),
-      nein(
-        'Es schreibt vor, dass alle Beschäftigten gleich viel verdienen.',
-        'Das regelt es nicht.',
+      krit('Geschlecht', stichwoerter: ['Geschlecht']),
+      krit(
+        'Religion oder Weltanschauung',
+        stichwoerter: ['Religion', 'Weltanschauung', 'Glaube'],
       ),
-      nein(
-        'Es regelt die Mitbestimmung des Betriebsrats.',
-        'Das regelt das Betriebsverfassungsgesetz.',
+      krit(
+        'Behinderung',
+        stichwoerter: ['Behinderung', 'behindert', 'Handicap'],
       ),
-      nein(
-        'Es legt fest, wie Konflikte im Team gelöst werden.',
-        'Das AGG betrifft Diskriminierung.',
+      krit('Lebensalter', stichwoerter: ['Alter', 'Lebensalter']),
+      krit(
+        'Sexuelle Identität',
+        stichwoerter: ['sexuell', 'Orientierung', 'Identität'],
       ),
     ],
+    punkte: 4,
+    loesung:
+        'Das AGG verbietet Benachteiligungen wegen der ethnischen Herkunft, des Geschlechts, der Religion oder Weltanschauung, einer Behinderung, des Alters und der sexuellen Identität.',
     explanation:
-        'Das AGG schützt vor Diskriminierung - etwa bei Einstellung, Bezahlung und Beförderung.',
+        'Je Nennung 1 Punkt, höchstens 4. Das AGG schützt vor Diskriminierung - etwa bei Einstellung, Bezahlung und Beförderung. Die Mitbestimmung regelt dagegen das Betriebsverfassungsgesetz.',
   ),
 
   reihenfolge(
@@ -942,18 +975,18 @@ final List<Question> questionsA02 = [
     prompt: 'Welches Grundmuster der Konfliktlösung liegt vor?',
     buckets: ['Flucht', 'Delegation', 'Kompromiss', 'Konsens'],
     items: [
-      zu('Das Thema wird im Meeting immer wieder vertagt.', 0),
       zu(
         'Die Abteilungsleiterin soll entscheiden, welches Team den Server bekommt.',
         1,
       ),
-      zu(
-        'Jedes Team darf den Server an zweieinhalb Tagen pro Woche nutzen, obwohl beide ihn täglich bräuchten.',
-        2,
-      ),
+      zu('Das Thema wird im Meeting immer wieder vertagt.', 0),
       zu(
         'Die Teams stellen fest, dass ein zweiter virtueller Server die Anforderungen beider vollständig erfüllt.',
         3,
+      ),
+      zu(
+        'Jedes Team darf den Server an zweieinhalb Tagen pro Woche nutzen, obwohl beide ihn täglich bräuchten.',
+        2,
       ),
     ],
     explanation:
@@ -990,28 +1023,23 @@ final List<Question> questionsA02 = [
   ),
 
   // ====================================================== Das Harvard-Konzept
-  mehrfach(
+  lueckentext(
     'a2-vh-1',
     've-harvard',
-    prompt: 'Welche Grundsätze gehören zum Harvard-Konzept?',
-    choices: [
-      ja('Menschen und Probleme getrennt behandeln', 'Erstes Prinzip.'),
-      ja(
-        'Interessen statt Positionen in den Mittelpunkt stellen',
-        'Zweites Prinzip.',
-      ),
-      ja('Neutrale Beurteilungskriterien verwenden', 'Viertes Prinzip.'),
-      nein(
-        'Möglichst hoch einsteigen, um Spielraum zu haben',
-        'Das ist klassisches Feilschen um Positionen.',
-      ),
-      nein(
-        'Die eigene Position nie ändern',
-        'Widerspricht der Suche nach Optionen.',
-      ),
+    scenario:
+        'Vor einer Vertragsverhandlung wiederholst du die vier Prinzipien des Harvard-Konzepts.',
+    prompt: 'Setze die passenden Begriffe ein.',
+    text:
+        'Das Harvard-Konzept hat vier Prinzipien: {0} und Probleme getrennt behandeln, {1} statt Positionen in den Mittelpunkt stellen, {2} zum beiderseitigen Vorteil entwickeln und neutrale {3} verwenden.',
+    luecken: [
+      wort(['Menschen'], 'Erstes Prinzip.'),
+      wort(['Interessen'], 'Zweites Prinzip.'),
+      wort(['Optionen'], 'Drittes Prinzip.'),
+      wort(['Kriterien'], 'Viertes Prinzip.'),
     ],
+    wortbank: ['Forderungen', 'Drohungen', 'Preise'],
     explanation:
-        'Die vier Prinzipien: Menschen und Probleme trennen, Interessen statt Positionen, Optionen zum beiderseitigen Vorteil, neutrale Kriterien.',
+        'Die vier Prinzipien: Menschen und Probleme trennen, Interessen statt Positionen, Optionen zum beiderseitigen Vorteil, neutrale Kriterien. Hoch einzusteigen oder die Position nie zu ändern ist dagegen Feilschen um Positionen.',
   ),
   einfach(
     'a2-vh-2',
@@ -1040,24 +1068,39 @@ final List<Question> questionsA02 = [
     explanation:
         'Hinter der Position („bis Freitag fertig“) steht ein Interesse („Messe am Montag“). Wer das Interesse bedient, findet oft eine bessere Lösung für beide.',
   ),
-  einfach(
+  freitext(
     'a2-vh-3',
     've-harvard',
-    prompt: 'Wozu dient die BATNA in einer Verhandlung?',
-    choices: [
-      ja(
-        'Sie zeigt, ab wann ein Angebot schlechter ist als keine Einigung.',
-        'Die beste Alternative zur Verhandlungslösung ist die Untergrenze.',
+    scenario:
+        'Ein Systemhaus verhandelt mit einem Lieferanten über 50 Monitore. Ein zweiter Lieferant hat bereits ein verbindliches Angebot abgegeben.',
+    prompt:
+        'Erläutere, was die BATNA ist und wozu sie in dieser Verhandlung dient.',
+    kriterien: [
+      krit(
+        'Die BATNA ist die beste Alternative, falls keine Einigung zustande kommt - hier das Angebot des zweiten Lieferanten.',
+        stichwoerter: [
+          'Alternative',
+          'zweiter Lieferant',
+          'anderes Angebot',
+          'ohne Einigung',
+        ],
       ),
-      nein(
-        'Sie ist der höchste Preis, den man verlangen darf.',
-        'Sie beschreibt eine Alternative, keinen Preis.',
+      krit(
+        'Sie ist die Messlatte: Ein Verhandlungsergebnis lohnt sich nur, wenn es besser ist als die BATNA.',
+        stichwoerter: [
+          'Messlatte',
+          'Untergrenze',
+          'besser als',
+          'Grenze',
+          'Maßstab',
+          'schlechter als',
+        ],
       ),
-      nein('Sie ist eine Liste aller Forderungen.', 'Das wären Positionen.'),
-      nein('Sie ist ein Vertragsmuster.', 'Sie ist kein Dokument.'),
     ],
+    loesung:
+        'Die BATNA (Best Alternative to a Negotiated Agreement) ist die beste Alternative für den Fall, dass die Verhandlung scheitert - hier das verbindliche Angebot des zweiten Lieferanten. Sie dient als Messlatte: Das Systemhaus stimmt nur einem Ergebnis zu, das besser ist als diese Alternative.',
     explanation:
-        'Wer seine beste Alternative kennt, lässt sich nicht zu einer schlechten Einigung drängen.',
+        '1 Punkt für die Erklärung (beste Alternative ohne Einigung), 1 Punkt für den Zweck (Messlatte bzw. Untergrenze). Wer seine BATNA kennt, lässt sich nicht zu einer schlechten Einigung drängen.',
   ),
 
   zuordnen(
@@ -1073,18 +1116,18 @@ final List<Question> questionsA02 = [
       'Neutrale Kriterien',
     ],
     items: [
+      zu('„Wozu genau brauchen Sie das System schon im März?“', 1),
       zu(
         '„Ich verstehe Ihren Ärger - lassen Sie uns gemeinsam auf den Zeitplan schauen.“',
         0,
       ),
-      zu('„Wozu genau brauchen Sie das System schon im März?“', 1),
-      zu(
-        '„Lassen Sie uns drei Varianten durchrechnen, bevor wir uns festlegen.“',
-        2,
-      ),
       zu(
         '„Orientieren wir uns an den Reaktionszeiten, die im SLA vereinbart sind.“',
         3,
+      ),
+      zu(
+        '„Lassen Sie uns drei Varianten durchrechnen, bevor wir uns festlegen.“',
+        2,
       ),
     ],
     explanation:
@@ -1139,31 +1182,39 @@ final List<Question> questionsA02 = [
         'BATNA = Best Alternative to a Negotiated Agreement. Sie ist die Messlatte: Ein Ergebnis mit A lohnt sich nur, wenn es insgesamt besser ist als das sichere Angebot von B.',
     difficulty: 3,
   ),
-  mehrfach(
+  zuordnen(
     'a2-vh-7',
     've-harvard',
-    prompt:
-        'Welche Verhaltensweisen passen zur sachgerechten Verhandlung nach dem Harvard-Konzept?',
-    choices: [
-      ja(
+    scenario:
+        'In einer Preisverhandlung zeigen die Beteiligten unterschiedliche Verhaltensweisen.',
+    prompt: 'Zu welchem Verhandlungsstil gehört das Verhalten?',
+    buckets: ['harter Stil', 'weicher Stil', 'sachgerecht (Harvard)'],
+    items: [
+      zu(
+        'Mit einer stark überhöhten Forderung einsteigen',
+        0,
+        'Hartes Feilschen um Positionen.',
+      ),
+      zu(
         'Nach den Gründen hinter einer Forderung fragen',
+        2,
         'Interessen statt Positionen.',
       ),
-      ja(
-        'Mehrere Lösungsvarianten entwickeln, bevor entschieden wird',
-        'Optionen zum beiderseitigen Vorteil.',
+      zu(
+        'Um des lieben Friedens willen sofort nachgeben',
+        1,
+        'Die Beziehung ist wichtiger als das Ergebnis.',
       ),
-      ja(
+      zu(
         'Objektive Maßstäbe wie Marktpreise heranziehen',
+        2,
         'Neutrale Beurteilungskriterien.',
       ),
-      nein(
-        'Mit einer stark überhöhten Forderung einsteigen',
-        'Das ist hartes Feilschen um Positionen.',
-      ),
-      nein(
-        'Um des lieben Friedens willen sofort nachgeben',
-        'Das ist der weiche Verhandlungsstil.',
+      zu('Mit Abbruch drohen, um Druck aufzubauen', 0, 'Druck statt Lösung.'),
+      zu(
+        'Mehrere Lösungsvarianten entwickeln, bevor entschieden wird',
+        2,
+        'Optionen zum beiderseitigen Vorteil.',
       ),
     ],
     explanation:
@@ -1179,37 +1230,33 @@ final List<Question> questionsA02 = [
     buckets: ['Ja-aber', 'Bumerang', 'Rückfrage', 'Referenz'],
     items: [
       zu(
-        '„Ja, der Preis ist höher - dafür ist die Wartung drei Jahre inklusive.“',
-        0,
-      ),
-      zu(
         '„Gerade weil Ihr Team klein ist, entlastet das System es spürbar.“',
         1,
       ),
-      zu('„Was genau erscheint Ihnen zu kompliziert?“', 2),
+      zu(
+        '„Ja, der Preis ist höher - dafür ist die Wartung drei Jahre inklusive.“',
+        0,
+      ),
       zu('„Ein Betrieb Ihrer Größe nutzt es seit zwei Jahren erfolgreich.“', 3),
+      zu('„Was genau erscheint Ihnen zu kompliziert?“', 2),
     ],
     explanation:
         'Ja-aber: zustimmen und ergänzen. Bumerang: Einwand wird zum Argument. Rückfrage: Hintergrund klären. Referenz: auf zufriedene Kunden verweisen.',
   ),
-  einfach(
+  reihenfolge(
     'a2-ve-2',
     've-einwaende',
-    prompt: 'Welche Aussage folgt der Nutzenargumentation?',
-    choices: [
-      ja(
-        '„Dank der SSD startet der Rechner in Sekunden - Ihre Mitarbeitenden verlieren morgens keine Zeit.“',
-        'Vom Merkmal über den Vorteil zum Nutzen für den Kunden.',
-      ),
-      nein('„Der Rechner hat eine SSD mit 1 TB.“', 'Nennt nur das Merkmal.'),
-      nein('„Das ist unser beliebtestes Modell.“', 'Kein konkreter Nutzen.'),
-      nein(
-        '„Die SSD ist technisch sehr modern.“',
-        'Ein Vorteil ohne Bezug zum Kunden.',
-      ),
+    scenario:
+        'Du empfiehlst einem Kunden Rechner mit SSD und baust dein Argument als Nutzenargumentation auf.',
+    prompt:
+        'Bringe die Aussagen in die Reihenfolge Merkmal - Vorteil - Nutzen.',
+    items: [
+      '„Der Rechner hat eine SSD mit 1 TB.“',
+      '„Dadurch startet er in wenigen Sekunden.“',
+      '„Ihre Mitarbeitenden verlieren morgens keine Zeit mehr mit Warten.“',
     ],
     explanation:
-        'Kunden kaufen Nutzen, nicht Technik. Überzeugend ist die Kette Merkmal - Vorteil - Nutzen.',
+        'Kunden kaufen Nutzen, nicht Technik. Überzeugend ist die Kette Merkmal (SSD) - Vorteil (startet schnell) - Nutzen (keine Wartezeit für die Mitarbeitenden).',
   ),
   einfach(
     'a2-ve-3',
@@ -1244,15 +1291,15 @@ final List<Question> questionsA02 = [
     prompt: 'Ist die Aussage ein Merkmal, ein Vorteil oder ein Nutzen?',
     buckets: ['Merkmal', 'Vorteil', 'Nutzen'],
     items: [
-      zu('Das Notebook wiegt 1,1 kg.', 0),
       zu('Der Akku hält bis zu 14 Stunden.', 0),
-      zu('Es lässt sich leicht überallhin mitnehmen.', 1),
-      zu('Man braucht unterwegs kein Ladegerät.', 1),
+      zu('Das Notebook wiegt 1,1 kg.', 0),
+      zu('Sie können einen ganzen Messetag ohne Steckdose präsentieren.', 2),
       zu(
         'Ihre Außendienstler kommen entspannt beim Kunden an, ohne schwer zu schleppen.',
         2,
       ),
-      zu('Sie können einen ganzen Messetag ohne Steckdose präsentieren.', 2),
+      zu('Man braucht unterwegs kein Ladegerät.', 1),
+      zu('Es lässt sich leicht überallhin mitnehmen.', 1),
     ],
     explanation:
         'Das Merkmal ist eine Eigenschaft des Produkts, der Vorteil das, was es dadurch besser kann, der Nutzen der konkrete Gewinn für genau diesen Kunden - oft als Sie-Formulierung.',
@@ -1345,47 +1392,67 @@ final List<Question> questionsA02 = [
     explanation:
         'Balken vergleichen, Linien zeigen Entwicklungen, Kreise zeigen Anteile an einem Ganzen.',
   ),
-  mehrfach(
+  markieren(
     'a2-pp-2',
     'pr-praesentation',
-    prompt: 'Welche Regeln gelten für gute Präsentationsfolien?',
-    choices: [
+    scenario:
+        'Ein Kollege zeigt dir den Entwurf seiner Präsentationsfolien für einen Kundentermin.',
+    prompt:
+        'Markiere alle Eigenschaften, die gegen die Regeln guter Foliengestaltung verstoßen.',
+    zeilen: [
       ja(
-        'Eine Kernaussage pro Folie',
+        'Auf den Folien stehen ganze Absätze, die er vorlesen will.',
+        'Dann lesen die Zuhörer, statt zuzuhören.',
+      ),
+      nein(
+        'Jede Folie hat genau eine Kernaussage.',
         'Hält die Aufmerksamkeit auf dem Wesentlichen.',
       ),
       ja(
-        'Wenig Text, große Schrift',
-        'Folien sollen unterstützen, nicht vorgelesen werden.',
-      ),
-      nein(
-        'Möglichst vollständige Sätze, damit nichts vergessen wird',
-        'Dann lesen die Zuhörer, statt zuzuhören.',
-      ),
-      ja('Diagramme statt Zahlenkolonnen', 'Grafiken erfasst man schneller.'),
-      nein(
-        'Jede Folie mit anderem Design',
+        'Jede Folie hat ein anderes Design.',
         'Wirkt unruhig und unprofessionell.',
       ),
+      nein(
+        'Zahlen werden als Diagramm gezeigt.',
+        'Grafiken erfasst man schneller als Zahlenkolonnen.',
+      ),
+      ja(
+        'Die Schrift ist klein, damit alles auf eine Folie passt.',
+        'Folien brauchen wenig Text in großer Schrift.',
+      ),
+      nein(
+        'Schrift und Farben sind einheitlich.',
+        'Ein einheitliches Erscheinungsbild wirkt ruhig.',
+      ),
     ],
     explanation:
-        'Gute Folien sind knapp, einheitlich und visuell - der Vortrag liefert die Erklärung.',
+        'Gute Folien sind knapp, einheitlich und visuell: eine Kernaussage pro Folie, wenig Text in großer Schrift, Diagramme statt Zahlenkolonnen - der Vortrag liefert die Erklärung.',
   ),
-  einfach(
+  lueckentext(
     'a2-pp-3',
     'pr-praesentation',
-    prompt: 'Womit beginnt die Vorbereitung einer Präsentation?',
-    choices: [
-      ja(
-        'Mit dem Ziel und der Zielgruppe',
-        'Ohne Ziel und Zielgruppe lassen sich Inhalte nicht sinnvoll auswählen.',
+    scenario: 'Du bereitest eine Präsentation für einen Kundentermin vor.',
+    prompt: 'Wähle für jede Lücke den passenden Begriff.',
+    text:
+        'Am Anfang klärst du {0} der Präsentation. Danach sammelst du Inhalte und {1} sie. Die Folien gestaltest du erst, wenn {2} steht. Zum Schluss {3} du den Vortrag.',
+    luecken: [
+      wahl(
+        'Ziel und Zielgruppe',
+        ['Schriftart und Farben', 'die Foliennummern'],
+        'Ohne Ziel und Zielgruppe lassen sich Inhalte nicht auswählen.',
       ),
-      nein('Mit dem Folien-Design', 'Das ist der letzte Schritt.'),
-      nein('Mit dem Üben des Vortrags', 'Geübt wird, wenn die Inhalte stehen.'),
-      nein('Mit der Auswahl der Schriftart', 'Nebensache.'),
+      wahl('gliederst', [
+        'druckst',
+        'animierst',
+      ], 'Erst ordnen, dann gestalten.'),
+      wahl('die Gliederung', [
+        'das Design',
+        'die Kleiderordnung',
+      ], 'Das Design ist der letzte inhaltliche Schritt.'),
+      wahl('übst', ['kürzt', 'verschickst'], 'Geübt wird, wenn alles steht.'),
     ],
     explanation:
-        'Erst klären, was die Zuhörer danach wissen oder tun sollen und was sie mitbringen - dann Inhalte, Gliederung und Folien.',
+        'Erst klären, was die Zuhörer danach wissen oder tun sollen und was sie mitbringen - dann Inhalte sammeln, gliedern, Folien gestalten und zum Schluss üben.',
   ),
 
   reihenfolge(
@@ -1503,19 +1570,58 @@ final List<Question> questionsA02 = [
     explanation:
         'Primärquellen liefern Originalinformation, Sekundärquellen bereiten sie auf - und können dabei Fehler einbauen.',
   ),
-  mehrfach(
+  freitext(
     'a2-pq-2',
     'pr-quellen',
-    prompt: 'Nach welchen Kriterien bewertet man eine Informationsquelle?',
-    choices: [
-      ja('Aktualität', 'Gerade in der IT veralten Informationen schnell.'),
-      ja('Urheber und Kompetenz', 'Wer steht hinter der Information?'),
-      ja('Objektivität', 'Verfolgt der Autor ein Verkaufsinteresse?'),
-      nein('Anzahl der Bilder', 'Kein Qualitätsmerkmal.'),
-      nein('Länge des Textes', 'Länge sagt nichts über Richtigkeit.'),
+    scenario:
+        'Für ein Kundenangebot recherchierst du im Internet nach Informationen zu einem neuen WLAN-Standard.',
+    prompt:
+        'Nenne drei Kriterien, nach denen du die Qualität einer Informationsquelle bewertest.',
+    kriterien: [
+      krit(
+        'Aktualität - gerade in der IT veralten Informationen schnell',
+        stichwoerter: ['aktuell', 'Aktualität', 'Datum', 'veraltet'],
+      ),
+      krit(
+        'Urheber und seine Kompetenz',
+        stichwoerter: [
+          'Urheber',
+          'Autor',
+          'Herausgeber',
+          'Kompetenz',
+          'Verfasser',
+        ],
+      ),
+      krit(
+        'Objektivität - verfolgt der Autor ein Verkaufsinteresse?',
+        stichwoerter: [
+          'objektiv',
+          'neutral',
+          'Verkaufsinteresse',
+          'Werbung',
+          'unabhängig',
+        ],
+      ),
+      krit(
+        'Nachprüfbarkeit - sind die Aussagen belegt?',
+        stichwoerter: [
+          'nachprüfbar',
+          'Belege',
+          'Quellenangabe',
+          'überprüfbar',
+          'nachvollziehbar',
+        ],
+      ),
+      krit(
+        'Relevanz für die eigene Fragestellung',
+        stichwoerter: ['Relevanz', 'relevant', 'passend'],
+      ),
     ],
+    punkte: 3,
+    loesung:
+        'Ich prüfe die Aktualität (Datum der Veröffentlichung), den Urheber und seine Kompetenz sowie die Objektivität - also ob der Autor ein Verkaufsinteresse hat. Weitere Kriterien sind Nachprüfbarkeit und Relevanz.',
     explanation:
-        'Aktualität, Urheber, Objektivität, Nachprüfbarkeit und Relevanz entscheiden über die Qualität einer Quelle.',
+        'Je Nennung 1 Punkt, höchstens 3. Aktualität, Urheber, Objektivität, Nachprüfbarkeit und Relevanz entscheiden über die Qualität einer Quelle - nicht Länge oder Zahl der Bilder.',
   ),
   einfach(
     'a2-pq-3',
@@ -1609,10 +1715,10 @@ final List<Question> questionsA02 = [
       'nur ein Dateityp',
     ],
     items: [
-      zu('"Fehlercode 0x80070005"', 0),
       zu('switch -nintendo', 1),
-      zu('site:bsi.bund.de ransomware', 2),
+      zu('"Fehlercode 0x80070005"', 0),
       zu('filetype:pdf handbuch', 3),
+      zu('site:bsi.bund.de ransomware', 2),
     ],
     explanation:
         'Anführungszeichen suchen die genaue Wortfolge, ein Minus schließt Begriffe aus, site: beschränkt auf eine Domain, filetype: auf einen Dateityp.',
@@ -1644,30 +1750,35 @@ final List<Question> questionsA02 = [
   ),
 
   // ==================================================== Anfrage, Angebot, Vergleich
-  einfach(
+  lueckentext(
     'a2-pa-1',
     'pr-angebot',
-    prompt: 'Welche Aussage über Anfrage und Angebot ist richtig?',
-    choices: [
-      ja(
-        'Die Anfrage ist unverbindlich, das Angebot bindet den Anbieter.',
-        'Wer anfragt, muss nicht kaufen. Wer anbietet, muss liefern, wenn rechtzeitig angenommen wird.',
+    scenario:
+        'Ein Kunde bittet ein Systemhaus per E-Mail um Preise für zehn Notebooks. Das Systemhaus schickt ein Angebot ohne Einschränkung, der Kunde bestellt drei Tage später unverändert.',
+    prompt: 'Wähle für jede Lücke die richtige Ergänzung.',
+    text:
+        'Die Anfrage des Kunden ist rechtlich {0}. Das Angebot ist für das Systemhaus {1}. Mit der rechtzeitigen, unveränderten Bestellung {2}. Der Zusatz „freibleibend“ im Angebot wäre eine {3}.',
+    luecken: [
+      wahl('unverbindlich', [
+        'verbindlich',
+        'unwirksam',
+      ], 'Wer anfragt, muss nicht kaufen.'),
+      wahl(
+        'verbindlich',
+        ['unverbindlich', 'nur eine Werbung'],
+        'Ein Angebot ist ein Antrag - der Anbieter ist daran gebunden.',
       ),
-      nein(
-        'Beide sind rechtlich unverbindlich.',
-        'Das Angebot ist eine verbindliche Willenserklärung.',
-      ),
-      nein(
-        'Die Anfrage bindet den Kunden zur Abnahme.',
-        'Eine Anfrage verpflichtet zu nichts.',
-      ),
-      nein(
-        'Ein Angebot bindet nur, wenn es notariell beurkundet ist.',
-        'Eine besondere Form ist bei IT-Angeboten nicht nötig.',
-      ),
+      wahl('kommt der Vertrag zustande', [
+        'entsteht ein neues Angebot',
+        'endet die Bindung',
+      ], 'Antrag und Annahme stimmen überein.'),
+      wahl('Freizeichnungsklausel', [
+        'Auftragsbestätigung',
+        'Mängelrüge',
+      ], 'Sie schränkt die Bindung des Angebots ein.'),
     ],
     explanation:
-        'Anfrage: unverbindlich. Angebot: verbindlich, sofern es nicht durch eine Freizeichnungsklausel eingeschränkt ist.',
+        'Anfrage: unverbindlich. Angebot: verbindlich, sofern es nicht durch eine Freizeichnungsklausel eingeschränkt ist. Wird es rechtzeitig und unverändert angenommen, kommt der Vertrag zustande.',
   ),
   einfach(
     'a2-pa-2',
@@ -1696,31 +1807,55 @@ final List<Question> questionsA02 = [
     explanation:
         'Ohne Frist bindet ein Angebot unter Abwesenden nur für die übliche Antwortzeit. Eine verspätete Annahme gilt als neues Angebot.',
   ),
-  mehrfach(
+  freitext(
     'a2-pa-3',
     'pr-angebot',
-    prompt: 'Was gehört in ein vollständiges Angebot?',
-    choices: [
-      ja(
+    scenario:
+        'Du erstellst für einen Kunden ein Angebot über die Einrichtung von fünf Arbeitsplätzen.',
+    prompt: 'Nenne vier Angaben, die in ein vollständiges Angebot gehören.',
+    kriterien: [
+      krit(
         'Art, Güte und Menge der Leistung',
-        'Beschreibt, was genau geliefert wird.',
+        stichwoerter: [
+          'Menge',
+          'Güte',
+          'Leistungsbeschreibung',
+          'Beschaffenheit',
+          'Artikel',
+        ],
       ),
-      ja('Preis und Zahlungsbedingungen', 'Ohne Preis kein Angebot.'),
-      ja(
-        'Lieferzeit und Lieferbedingungen',
-        'Regelt wann und wie geliefert wird.',
+      krit('Preis und Preisnachlässe', stichwoerter: ['Preis', 'Rabatt']),
+      krit(
+        'Lieferzeit',
+        stichwoerter: ['Lieferzeit', 'Liefertermin', 'Lieferdatum'],
       ),
-      nein(
-        'Die private Telefonnummer des Geschäftsführers',
-        'Gehört nicht ins Angebot.',
+      krit(
+        'Liefer- bzw. Versandbedingungen',
+        stichwoerter: ['Lieferbedingungen', 'Versand', 'frei Haus', 'Fracht'],
       ),
-      nein(
-        'Die Gewinnmarge des Anbieters',
-        'Interne Kalkulation bleibt intern.',
+      krit(
+        'Zahlungsbedingungen',
+        stichwoerter: [
+          'Zahlungsbedingungen',
+          'Zahlungsziel',
+          'Skonto',
+          'Zahlung',
+        ],
+      ),
+      krit(
+        'Gewährleistung bzw. Garantie',
+        stichwoerter: ['Gewährleistung', 'Garantie'],
+      ),
+      krit(
+        'Gültigkeit des Angebots',
+        stichwoerter: ['gültig', 'Gültigkeit', 'Bindefrist', 'befristet'],
       ),
     ],
+    punkte: 4,
+    loesung:
+        'In das Angebot gehören Art, Güte und Menge der Leistung, der Preis mit Rabatt und Skonto, die Lieferzeit und die Zahlungsbedingungen. Außerdem: Lieferbedingungen, Gewährleistung und Gültigkeit.',
     explanation:
-        'Ein Angebot beschreibt Leistung, Preis, Zahlungs- und Lieferbedingungen sowie Gewährleistung und Gültigkeit.',
+        'Je Nennung 1 Punkt, höchstens 4. Ein Angebot beschreibt Leistung, Preis, Zahlungs- und Lieferbedingungen sowie Gewährleistung und Gültigkeit. Die interne Kalkulation gehört nicht hinein.',
   ),
 
   rechnen(
@@ -1840,22 +1975,42 @@ final List<Question> questionsA02 = [
     ],
     explanation: 'Polypol: viele Anbieter. Oligopol: wenige. Monopol: einer.',
   ),
-  einfach(
+  tabelle(
     'a2-mm-2',
     'm-markt',
-    prompt:
-        'In welcher Marktform hat der Anbieter die größte Macht über den Preis?',
-    choices: [
-      ja(
-        'Monopol',
-        'Ohne Konkurrenz ist der Preis nur durch die Zahlungsbereitschaft begrenzt.',
-      ),
-      nein('Polypol', 'Hier bestimmt der Wettbewerb den Preis.'),
-      nein('Oligopol', 'Die Macht ist groß, aber zwischen wenigen verteilt.'),
-      nein('In allen gleich', 'Die Zahl der Anbieter macht den Unterschied.'),
+    scenario:
+        'Das Marktformenschema kombiniert die Zahl der Anbieter mit der Zahl der Nachfrager.',
+    prompt: 'Trage zu jeder Kombination die Marktform ein.',
+    zeilen: [
+      ['Anbieter', 'Nachfrager', 'Marktform'],
+      [
+        'viele',
+        'viele',
+        wahl('Polypol', ['Angebotsoligopol', 'Angebotsmonopol']),
+      ],
+      [
+        'wenige',
+        'viele',
+        wahl('Angebotsoligopol', ['Polypol', 'Nachfrageoligopol']),
+      ],
+      [
+        'einer',
+        'viele',
+        wahl('Angebotsmonopol', ['Nachfragemonopol', 'Angebotsoligopol']),
+      ],
+      [
+        'viele',
+        'einer',
+        wahl('Nachfragemonopol', ['Angebotsmonopol', 'Polypol']),
+      ],
+      [
+        'wenige',
+        'wenige',
+        wahl('zweiseitiges Oligopol', ['Angebotsoligopol', 'Polypol']),
+      ],
     ],
     explanation:
-        'Je weniger Anbieter, desto größer ihre Preismacht - am größten im Monopol.',
+        'Polypol: viele Anbieter und viele Nachfrager. Oligopol: wenige. Monopol: einer. Je weniger Anbieter, desto größer ihre Macht über den Preis - am größten im Angebotsmonopol.',
   ),
   einfach(
     'a2-mm-3',
@@ -1905,20 +2060,20 @@ final List<Question> questionsA02 = [
     buckets: ['Marktanalyse', 'Marktbeobachtung', 'Marktprognose'],
     items: [
       zu(
-        'Wie viele Handwerksbetriebe im Kreis nutzen derzeit eine digitale Zeiterfassung?',
-        0,
-      ),
-      zu(
         'Wie hat sich die Nachfrage nach Cloud-Telefonie seit 2022 entwickelt?',
         1,
       ),
       zu(
-        'Monatliche Auswertung der Preise der drei wichtigsten Wettbewerber über ein Jahr',
-        1,
+        'Wie viele Handwerksbetriebe im Kreis nutzen derzeit eine digitale Zeiterfassung?',
+        0,
       ),
       zu(
         'Wie viele Arztpraxen werden 2030 voraussichtlich Videosprechstunden anbieten?',
         2,
+      ),
+      zu(
+        'Monatliche Auswertung der Preise der drei wichtigsten Wettbewerber über ein Jahr',
+        1,
       ),
     ],
     explanation:
@@ -1968,27 +2123,31 @@ final List<Question> questionsA02 = [
         'Im Marktformenschema werden Anbieter und Nachfrager kombiniert. Wenige Anbieter und wenige Nachfrager ergeben ein zweiseitiges (bilaterales) Oligopol.',
     difficulty: 3,
   ),
-  einfach(
+  lueckentext(
     'a2-mm-9',
     'm-markt',
-    prompt: 'Was geschieht, wenn der Preis über dem Gleichgewichtspreis liegt?',
-    choices: [
-      ja(
-        'Es entsteht ein Angebotsüberhang, der Preis sinkt tendenziell.',
-        'Anbieter wollen mehr verkaufen, als nachgefragt wird - sie senken die Preise.',
-      ),
-      nein(
-        'Es entsteht ein Nachfrageüberhang, der Preis steigt.',
-        'Das passiert bei einem Preis unter dem Gleichgewicht.',
-      ),
-      nein(
-        'Angebot und Nachfrage sind genau gleich groß.',
-        'Das gilt nur im Gleichgewicht.',
-      ),
-      nein(
-        'Die Nachfrage steigt, weil die Ware teurer ist.',
-        'Bei höherem Preis sinkt die Nachfrage in der Regel.',
-      ),
+    scenario:
+        'Auf dem Markt für gebrauchte Business-Notebooks liegt der Gleichgewichtspreis bei 300 €. Die Händler verlangen derzeit 380 €.',
+    prompt: 'Wähle für jede Lücke den passenden Begriff.',
+    text:
+        'Beim Preis von 380 € ist die angebotene Menge {0} als die nachgefragte - es entsteht ein {1}. Die Händler bleiben auf Ware sitzen, der Preis wird deshalb tendenziell {2}. Beim Gleichgewichtspreis sind angebotene und nachgefragte Menge {3}.',
+    luecken: [
+      wahl('größer', [
+        'kleiner',
+        'genauso groß',
+      ], 'Bei hohem Preis wird viel angeboten und wenig nachgefragt.'),
+      wahl('Angebotsüberhang', [
+        'Nachfrageüberhang',
+        'Marktgleichgewicht',
+      ], 'Mehr Angebot als Nachfrage.'),
+      wahl('sinken', [
+        'steigen',
+        'gleich bleiben',
+      ], 'Die Anbieter senken die Preise, um zu verkaufen.'),
+      wahl('gleich groß', [
+        'beide null',
+        'unabhängig vom Preis',
+      ], 'Dort schneiden sich Angebots- und Nachfragekurve.'),
     ],
     explanation:
         'Im Gleichgewicht schneiden sich Angebots- und Nachfragekurve. Liegt der Preis darüber, bleiben Anbieter auf Ware sitzen (Angebotsüberhang) - der Preis sinkt Richtung Gleichgewicht.',
@@ -2004,19 +2163,22 @@ final List<Question> questionsA02 = [
     explanation:
         'Bedürfnis (Mangel), Bedarf (Bedürfnis mit Kaufkraft), Nachfrage (am Markt wirksamer Bedarf).',
   ),
-  einfach(
+  reihenfolge(
     'a2-mb-2',
     'm-bedarf',
+    scenario:
+        'Ein Verkäufer will seine Argumente an den Bedürfnissen der Kunden ausrichten und nutzt dafür die Bedürfnispyramide nach Maslow.',
     prompt:
-        'Welche Stufe der Maslow-Pyramide spricht ein sicherer, unbefristeter Arbeitsvertrag an?',
-    choices: [
-      ja('Sicherheitsbedürfnisse', 'Stufe 2: Absicherung und Planbarkeit.'),
-      nein('Grundbedürfnisse', 'Stufe 1: Essen, Schlaf, Wohnung.'),
-      nein('Soziale Bedürfnisse', 'Stufe 3: Zugehörigkeit.'),
-      nein('Selbstverwirklichung', 'Stufe 5: persönliche Entfaltung.'),
+        'Bringe die Stufen der Pyramide in die richtige Reihenfolge - von unten nach oben.',
+    items: [
+      'Grundbedürfnisse',
+      'Sicherheitsbedürfnisse',
+      'Soziale Bedürfnisse',
+      'Wertschätzung',
+      'Selbstverwirklichung',
     ],
     explanation:
-        'Die Pyramide von unten: Grundbedürfnisse, Sicherheit, soziale Bedürfnisse, Wertschätzung, Selbstverwirklichung.',
+        'Die Pyramide von unten: Grundbedürfnisse, Sicherheit, soziale Bedürfnisse, Wertschätzung, Selbstverwirklichung. Ein sicherer, unbefristeter Arbeitsvertrag spricht zum Beispiel die zweite Stufe an.',
   ),
   einfach(
     'a2-mb-3',
@@ -2050,15 +2212,15 @@ final List<Question> questionsA02 = [
     buckets: ['Bedürfnis', 'Bedarf', 'Nachfrage'],
     items: [
       zu(
-        'Timo wünscht sich einen schnelleren Rechner für seine Grafikarbeiten.',
-        0,
-      ),
-      zu(
         'Eine Arztpraxis empfindet die langen Wartezeiten am Empfang als Mangel.',
         0,
       ),
-      zu('Timo hat 1.500 € gespart und könnte sich den Rechner leisten.', 1),
+      zu(
+        'Timo wünscht sich einen schnelleren Rechner für seine Grafikarbeiten.',
+        0,
+      ),
       zu('Timo bestellt den Rechner im Onlineshop.', 2),
+      zu('Timo hat 1.500 € gespart und könnte sich den Rechner leisten.', 1),
     ],
     explanation:
         'Ein Bedürfnis ist ein empfundener Mangel. Kommt Kaufkraft dazu, wird daraus Bedarf. Tritt der Bedarf am Markt auf - etwa durch eine Bestellung -, ist es Nachfrage.',
@@ -2126,13 +2288,13 @@ final List<Question> questionsA02 = [
       'Selbstverwirklichung',
     ],
     items: [
-      zu('Automatisches Backup, damit keine Kundendaten verloren gehen', 0),
       zu(
         'Team-Chat, damit sich Mitarbeitende im Homeoffice nicht isoliert fühlen',
         1,
       ),
-      zu('Das neueste Premium-Smartphone als Statussymbol', 2),
+      zu('Automatisches Backup, damit keine Kundendaten verloren gehen', 0),
       zu('Weiterbildung zur Spezialistin für IT-Sicherheit', 3),
+      zu('Das neueste Premium-Smartphone als Statussymbol', 2),
     ],
     explanation:
         'Maslow von unten: Grundbedürfnisse, Sicherheit, soziale Bedürfnisse, Wertschätzung, Selbstverwirklichung. Wer das Bedürfnis kennt, wählt das passende Argument.',
@@ -2165,10 +2327,10 @@ final List<Question> questionsA02 = [
       'Kommunikationspolitik',
     ],
     items: [
-      zu('Drei Jahre Vor-Ort-Garantie ins Angebot aufnehmen', 0),
       zu('10 % Frühbucherrabatt gewähren', 1),
-      zu('Die Software zusätzlich über einen Onlineshop vertreiben', 2),
+      zu('Drei Jahre Vor-Ort-Garantie ins Angebot aufnehmen', 0),
       zu('Einen Stand auf einer IT-Messe betreiben', 3),
+      zu('Die Software zusätzlich über einen Onlineshop vertreiben', 2),
     ],
     explanation:
         'Produkt: was angeboten wird. Preis: zu welchen Konditionen. Distribution: über welchen Weg. Kommunikation: wie es bekannt wird.',
@@ -2181,24 +2343,20 @@ final List<Question> questionsA02 = [
     explanation:
         'Aufmerksamkeit wecken, Interesse erzeugen, Wunsch auslösen, zum Handeln bewegen.',
   ),
-  einfach(
+  paare(
     'a2-mk-3',
     'm-marketing',
-    prompt: 'Welches Element einer Werbeanzeige gehört zur Stufe „Action“?',
-    choices: [
-      ja(
-        '„Jetzt 30 Tage kostenlos testen“',
-        'Eine konkrete Handlungsaufforderung.',
-      ),
-      nein('Eine auffällige Überschrift', 'Das ist Attention.'),
-      nein('Zahlen zu Datenverlusten im Mittelstand', 'Das weckt Interest.'),
-      nein(
-        'Die Beschreibung, wie bequem die Lösung ist',
-        'Das erzeugt Desire.',
-      ),
+    scenario:
+        'Ein Systemhaus entwirft eine Werbeanzeige für sein Cloud-Backup nach der AIDA-Formel.',
+    prompt: 'Ordne jedes Element der Anzeige der passenden AIDA-Stufe zu.',
+    paare: [
+      paar('Attention', 'auffällige Überschrift: „Daten weg?“'),
+      paar('Interest', 'Zahlen zu Datenverlusten im Mittelstand'),
+      paar('Desire', 'Beschreibung, wie bequem die Lösung ist'),
+      paar('Action', '„Jetzt 30 Tage kostenlos testen“'),
     ],
     explanation:
-        'Action ist die Aufforderung zum Handeln - kaufen, testen, anrufen.',
+        'AIDA: Aufmerksamkeit wecken (Attention), Interesse erzeugen (Interest), Wunsch auslösen (Desire), zum Handeln bewegen (Action) - etwa kaufen, testen oder anrufen.',
   ),
 
   zuordnen(
@@ -2208,20 +2366,20 @@ final List<Question> questionsA02 = [
     buckets: ['Penetration', 'Abschöpfung (Skimming)', 'Preisdifferenzierung'],
     items: [
       zu(
-        'Ein neuer Cloud-Speicher startet mit 1 € im Monat, später kostet er 5 €.',
-        0,
-      ),
-      zu(
         'Ein Messenger ist zum Start kostenlos, um schnell viele Nutzer zu gewinnen - später kommen Gebühren.',
         0,
       ),
       zu(
-        'Eine neue Spielkonsole kostet zum Start 699 €, ein Jahr später 499 €.',
-        1,
+        'Ein neuer Cloud-Speicher startet mit 1 € im Monat, später kostet er 5 €.',
+        0,
       ),
       zu(
         'Dieselbe Software kostet für Schüler 20 €, für Unternehmen 200 €.',
         2,
+      ),
+      zu(
+        'Eine neue Spielkonsole kostet zum Start 699 €, ein Jahr später 499 €.',
+        1,
       ),
     ],
     explanation:
@@ -2233,43 +2391,67 @@ final List<Question> questionsA02 = [
     prompt: 'In welches Feld der BCG-Matrix gehört das Produkt?',
     buckets: ['Question Mark', 'Star', 'Cash Cow', 'Poor Dog'],
     items: [
-      zu('Neue KI-Software: Markt wächst stark, eigener Anteil noch klein', 0),
       zu('Marktführer bei Cloud-Backup in einem stark wachsenden Markt', 1),
-      zu('Marktführer bei Druckerwartung, der Markt wächst kaum noch', 2),
+      zu('Neue KI-Software: Markt wächst stark, eigener Anteil noch klein', 0),
       zu('Kleiner Anteil am schrumpfenden Markt für Faxgeräte', 3),
+      zu('Marktführer bei Druckerwartung, der Markt wächst kaum noch', 2),
     ],
     explanation:
         'Die BCG-Matrix kombiniert Marktwachstum und relativen Marktanteil: Question Marks (hohes Wachstum, kleiner Anteil), Stars (hoch, groß), Cash Cows (niedrig, groß), Poor Dogs (niedrig, klein).',
     difficulty: 3,
   ),
-  mehrfach(
+  freitext(
     'a2-mk-6',
     'm-marketing',
-    prompt: 'Welche Maßnahmen gehören zur Kommunikationspolitik?',
-    choices: [
-      ja(
-        'Pressemitteilung zur Eröffnung eines neuen Standorts',
-        'Öffentlichkeitsarbeit (PR).',
+    scenario:
+        'Ein IT-Dienstleister eröffnet einen zweiten Standort und will ihn in der Region bekannt machen.',
+    prompt:
+        'Nenne drei Instrumente der Kommunikationspolitik, die er dafür einsetzen kann.',
+    kriterien: [
+      krit(
+        'Werbung, z. B. Anzeigen, Plakate oder Online-Werbung',
+        stichwoerter: ['Werbung', 'Anzeige', 'Plakat', 'Flyer'],
       ),
-      ja(
-        'Newsletter an Bestandskunden',
-        'Online-Marketing - Teil der Kommunikationspolitik.',
+      krit(
+        'Öffentlichkeitsarbeit (PR), z. B. eine Pressemitteilung zur Eröffnung',
+        stichwoerter: [
+          'Öffentlichkeitsarbeit',
+          'Public Relations',
+          'Pressemitteilung',
+          'Presse',
+        ],
       ),
-      ja(
-        'Sponsoring der Trikots eines Sportvereins',
-        'Sponsoring macht das Unternehmen bekannt.',
+      krit(
+        'Verkaufsförderung, z. B. Eröffnungsaktion oder Messestand',
+        stichwoerter: [
+          'Verkaufsförderung',
+          'Eröffnungsaktion',
+          'Messe',
+          'Gutschein',
+          'Promotion',
+        ],
       ),
-      nein(
-        'Einführung eines Mengenrabatts',
-        'Rabatte gehören zur Preispolitik.',
+      krit(
+        'Online-Marketing, z. B. Newsletter und soziale Medien',
+        stichwoerter: [
+          'Newsletter',
+          'Social Media',
+          'Online-Marketing',
+          'soziale Medien',
+          'Website',
+        ],
       ),
-      nein(
-        'Vertrieb zusätzlich über einen Onlineshop',
-        'Vertriebswege gehören zur Distributionspolitik.',
+      krit('Sponsoring', stichwoerter: ['Sponsoring', 'Sponsor']),
+      krit(
+        'Persönlicher Verkauf',
+        stichwoerter: ['persönlicher Verkauf', 'Außendienst', 'Kundenbesuch'],
       ),
     ],
+    punkte: 3,
+    loesung:
+        'Geeignet sind Werbung (z. B. Anzeigen in der Regionalzeitung), Öffentlichkeitsarbeit (Pressemitteilung zur Eröffnung) und Online-Marketing (Newsletter an Bestandskunden). Auch Verkaufsförderung, Sponsoring und persönlicher Verkauf gehören dazu.',
     explanation:
-        'Zur Kommunikationspolitik zählen Werbung, Verkaufsförderung, Public Relations, persönlicher Verkauf, Online-Marketing und Sponsoring. Preise und Vertriebswege sind andere Instrumente.',
+        'Je Nennung 1 Punkt, höchstens 3. Zur Kommunikationspolitik zählen Werbung, Verkaufsförderung, Public Relations, persönlicher Verkauf, Online-Marketing und Sponsoring. Rabatte gehören zur Preispolitik, Vertriebswege zur Distributionspolitik.',
     difficulty: 1,
   ),
   einfach(
@@ -2329,27 +2511,35 @@ final List<Question> questionsA02 = [
     explanation:
         'Ohne Sortierung und Kumulierung lassen sich die Klassengrenzen nicht ziehen.',
   ),
-  einfach(
+  tabelle(
     'a2-ma-3',
     'm-abc',
-    prompt: 'Was ist typisch für C-Kunden?',
-    choices: [
-      ja(
-        'Viele Kunden mit geringem Umsatzanteil',
-        'Die C-Klasse umfasst die Masse mit wenig Wertbeitrag.',
-      ),
-      nein('Wenige Kunden mit dem größten Umsatzanteil', 'Das sind A-Kunden.'),
-      nein(
-        'Kunden, die besonders intensiv betreut werden müssen',
-        'Intensive Betreuung lohnt sich vor allem bei A-Kunden.',
-      ),
-      nein(
-        'Kunden, die man sofort kündigen sollte',
-        'Auch C-Kunden tragen zum Umsatz bei - sie werden nur effizienter betreut.',
-      ),
+    scenario:
+        'Ein Systemhaus hat seine Kunden mit einer ABC-Analyse nach dem Umsatz eingeteilt.',
+    prompt: 'Trage zu jeder Klasse die typischen Merkmale ein.',
+    zeilen: [
+      ['Klasse', 'Anzahl Kunden', 'Umsatzanteil', 'Betreuung'],
+      [
+        'A',
+        wahl('wenige', ['viele', 'mittlere Zahl']),
+        wahl('groß', ['mittel', 'klein']),
+        wahl('persönlich und intensiv', ['nach Bedarf', 'standardisiert']),
+      ],
+      [
+        'B',
+        wahl('mittlere Zahl', ['wenige', 'viele']),
+        wahl('mittel', ['groß', 'klein']),
+        wahl('nach Bedarf', ['persönlich und intensiv', 'standardisiert']),
+      ],
+      [
+        'C',
+        wahl('viele', ['wenige', 'mittlere Zahl']),
+        wahl('klein', ['groß', 'mittel']),
+        wahl('standardisiert', ['persönlich und intensiv', 'nach Bedarf']),
+      ],
     ],
     explanation:
-        'A: wenige Objekte, großer Wert. C: viele Objekte, kleiner Wert - effizient betreuen.',
+        'A: wenige Kunden mit großem Umsatzanteil - intensiv betreuen. C: viele Kunden mit kleinem Umsatzanteil - effizient und standardisiert betreuen, aber nicht kündigen. B liegt dazwischen.',
   ),
 
   rechnen(
@@ -2439,13 +2629,13 @@ final List<Question> questionsA02 = [
     prompt: 'Ordne die Aussage der passenden Rechtsform zu.',
     buckets: ['GmbH', 'AG', 'KG', 'Einzelunternehmen'],
     items: [
-      zu('25.000 € Stammkapital, Haftung mit dem Gesellschaftsvermögen', 0),
       zu('Organe sind Vorstand, Aufsichtsrat und Hauptversammlung', 1),
+      zu('25.000 € Stammkapital, Haftung mit dem Gesellschaftsvermögen', 0),
+      zu('Eine Person entscheidet allein und haftet unbeschränkt', 3),
       zu(
         'Ein Gesellschafter haftet unbeschränkt, ein anderer nur mit seiner Einlage',
         2,
       ),
-      zu('Eine Person entscheidet allein und haftet unbeschränkt', 3),
     ],
     explanation:
         'GmbH: Stammkapital 25.000 €. AG: drei Organe. KG: Komplementär und Kommanditist. Einzelunternehmen: Inhaber haftet allein und voll.',
@@ -2531,45 +2721,30 @@ final List<Question> questionsA02 = [
         'Welches Mindestkapital schreibt das Gesetz für die Rechtsform vor?',
     buckets: ['kein Mindestkapital', '1 €', '25.000 €', '50.000 €'],
     items: [
-      zu('GbR', 0),
       zu('OHG', 0),
-      zu('KG', 0),
-      zu('UG (haftungsbeschränkt)', 1),
-      zu('GmbH', 2),
+      zu('GbR', 0),
       zu('AG', 3),
+      zu('GmbH', 2),
+      zu('UG (haftungsbeschränkt)', 1),
+      zu('KG', 0),
     ],
     explanation:
         'Personengesellschaften brauchen kein Mindestkapital, weil die Gesellschafter persönlich haften. GmbH: 25.000 € Stammkapital, UG: ab 1 €, AG: 50.000 € Grundkapital.',
     difficulty: 1,
   ),
-  mehrfach(
+  paare(
     'a2-mr-7',
     'm-rechtsformen',
-    prompt: 'Welche Aussagen zur Haftung in der OHG sind richtig?',
-    choices: [
-      ja(
-        'Alle Gesellschafter haften unbeschränkt mit ihrem Privatvermögen.',
-        'Unbeschränkte Haftung.',
-      ),
-      ja(
-        'Ein Gläubiger kann sich direkt an einen einzelnen Gesellschafter wenden.',
-        'Unmittelbare Haftung.',
-      ),
-      ja(
-        'Jeder Gesellschafter haftet für die gesamte Schuld, nicht nur für seinen Anteil.',
-        'Solidarische (gesamtschuldnerische) Haftung.',
-      ),
-      nein(
-        'Für die Gründung sind 25.000 € Mindestkapital nötig.',
-        'Das gilt für die GmbH - die OHG hat kein Mindestkapital.',
-      ),
-      nein(
-        'Die Gesellschafter haften nur mit ihrer Einlage.',
-        'Das gilt bei Kapitalgesellschaften oder für Kommanditisten.',
-      ),
+    scenario:
+        'Ein Lieferant fordert 60.000 € von einer OHG mit drei Gesellschaftern.',
+    prompt: 'Ordne jedem Haftungsmerkmal der OHG seine Bedeutung zu.',
+    paare: [
+      paar('unbeschränkt', 'auch mit dem Privatvermögen'),
+      paar('unmittelbar', 'Gläubiger fordert direkt vom Gesellschafter'),
+      paar('solidarisch', 'jeder haftet für die gesamte Schuld'),
     ],
     explanation:
-        'OHG-Gesellschafter haften unbeschränkt (mit dem Privatvermögen), unmittelbar (Gläubiger können direkt fordern) und solidarisch (jeder für die ganze Schuld).',
+        'OHG-Gesellschafter haften unbeschränkt (mit dem Privatvermögen), unmittelbar (Gläubiger können direkt fordern) und solidarisch (jeder für die ganze Schuld). Ein Mindestkapital gibt es bei der OHG nicht.',
   ),
   einfach(
     'a2-mr-8',
