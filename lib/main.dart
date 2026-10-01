@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'core/env.dart';
+import 'core/notifications/reminder_service.dart';
 import 'core/router.dart';
 import 'core/theme/app_theme.dart';
 import 'data/models/profile.dart';
@@ -35,6 +36,7 @@ Future<void> main() async {
   }
 
   _registerFontLicenses();
+  await ReminderService.instance.init();
 
   final store = await HiveLocalStore.open();
   await store.migrateFrom(await SharedPreferences.getInstance());
@@ -75,11 +77,28 @@ void _registerFontLicenses() {
   });
 }
 
-class Ap1TrainerApp extends ConsumerWidget {
+class Ap1TrainerApp extends ConsumerStatefulWidget {
   const Ap1TrainerApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<Ap1TrainerApp> createState() => _Ap1TrainerAppState();
+}
+
+class _Ap1TrainerAppState extends ConsumerState<Ap1TrainerApp> {
+  @override
+  void initState() {
+    super.initState();
+    // Erinnerungen bei Start und nach jeder Änderung (Runde, Einstellung)
+    // neu planen. Ohne init() (Web, Tests) ist das ein No-op.
+    ref.listenManual(
+      reminderPlanProvider,
+      (_, plan) => ReminderService.instance.apply(plan),
+      fireImmediately: true,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final router = ref.watch(routerProvider);
     final themeMode = ref.watch(themeModeProvider);
 
