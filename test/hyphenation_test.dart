@@ -101,6 +101,11 @@ void main() {
           'betrachtung der Netzwerkinfrastruktur.',
       'Erläutere die Eintrittswahrscheinlichkeit und die Schadenshöhe bei der '
           'Risikobewertung des Datensicherungskonzepts.',
+      // Mehrere Absätze: Früher endete die Zeilensuche am ersten Umbruch.
+      'Für die Geräteverwaltung gelten diese Regeln:\n'
+          '- Manche Geräte (z. B. der Besprechungslaptop) werden von mehreren '
+          'Mitarbeitern genutzt.\n'
+          '- Zu jeder Nutzung werden Ausgabe- und Rückgabedatum festgehalten.',
     ];
     for (final text in texts) {
       for (final size in [14.0, 18.85, 22.0, 28.6]) {

@@ -48185,11 +48185,11 @@ values (
   'marking',
   'In der Reklamationsabteilung eines IT-Händlers gehen sechs Meldungen ein.',
   'Markiere alle Fälle, in denen ein Sachmangel im Sinne des § 434 BGB vorliegt.',
-  'Ein Sachmangel liegt vor, wenn die Sache bei Gefahrübergang nicht den vereinbarten oder üblichen Anforderungen oder den Montageanforderungen entspricht; Falsch- und Zuweniglieferung stehen gleich. Verschleiß und selbst verursachte Schäden nach der Übergabe sind keine Mängel.',
+  'Ein Sachmangel liegt vor, wenn die Sache bei Gefahrübergang nicht den vereinbarten oder üblichen Anforderungen oder den Montageanforderungen entspricht. Zur Beschaffenheit gehört seit 2022 auch die Menge - eine Zuweniglieferung ist also selbst ein Sachmangel; die Lieferung einer anderen Sache steht dem Sachmangel gleich (§ 434 Abs. 5 BGB). Verschleiß und selbst verursachte Schäden nach der Übergabe sind keine Mängel.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Ein Notebook hat 8 GB statt der vereinbarten 16 GB Arbeitsspeicher.","is_correct":true,"rationale":"Die vereinbarte Beschaffenheit fehlt."},{"text":"Dem Kunden gefällt die Gehäusefarbe nach zwei Wochen nicht mehr.","is_correct":false,"rationale":"Geliefert wurde, was vereinbart war - Reue ist kein Mangel."},{"text":"Die Montageanleitung des Serverschranks ist fehlerhaft, der Aufbau misslingt.","is_correct":true,"rationale":"Eine mangelhafte Montageanleitung ist ein Sachmangel."},{"text":"Der Akku hält nach drei Jahren normaler Nutzung spürbar kürzer.","is_correct":false,"rationale":"Gewöhnlicher Verschleiß nach Gefahrübergang ist kein Mangel."},{"text":"Statt 10 Switches werden 8 geliefert.","is_correct":true,"rationale":"Eine Zuweniglieferung steht dem Sachmangel gleich."},{"text":"Der Kunde lässt den Monitor beim Auspacken fallen, das Display reißt.","is_correct":false,"rationale":"Der Schaden entstand nach der Übergabe durch den Käufer selbst."}],"points":3}'::jsonb,
+  '{"choices":[{"text":"Ein Notebook hat 8 GB statt der vereinbarten 16 GB Arbeitsspeicher.","is_correct":true,"rationale":"Die vereinbarte Beschaffenheit fehlt."},{"text":"Dem Kunden gefällt die Gehäusefarbe nach zwei Wochen nicht mehr.","is_correct":false,"rationale":"Geliefert wurde, was vereinbart war - Reue ist kein Mangel."},{"text":"Die Montageanleitung des Serverschranks ist fehlerhaft, der Aufbau misslingt.","is_correct":true,"rationale":"Eine mangelhafte Montageanleitung ist ein Sachmangel."},{"text":"Der Akku hält nach drei Jahren normaler Nutzung spürbar kürzer.","is_correct":false,"rationale":"Gewöhnlicher Verschleiß nach Gefahrübergang ist kein Mangel."},{"text":"Statt 10 Switches werden 8 geliefert.","is_correct":true,"rationale":"Die vereinbarte Menge gehört zur Beschaffenheit - eine Zuweniglieferung ist deshalb ein Sachmangel (§ 434 Abs. 2 BGB)."},{"text":"Der Kunde lässt den Monitor beim Auspacken fallen, das Display reißt.","is_correct":false,"rationale":"Der Schaden entstand nach der Übergabe durch den Käufer selbst."}],"points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -56722,7 +56722,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a06-logistik2","points":3,"criteria":[{"text":"Rechtsgrundlage: Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO, § 26 BDSG)","points":1,"keywords":["Arbeitsvertrag","Vertrag","lit. b","§ 26","Beschäftigungsverhältnis"]},{"text":"Begründung: Ohne diese Daten lässt sich der Schichtbetrieb nicht planen - die Verarbeitung ist für die Durchführung des Arbeitsverhältnisses erforderlich, eine Einwilligung ist nicht nötig","points":2,"keywords":["erforderlich","notwendig","Schichtplanung","keine Einwilligung","Durchführung"]}],"sample_solution":"Rechtsgrundlage ist die Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO; für Beschäftigte ergänzend § 26 BDSG). Die Daten sind erforderlich, um den Dreischichtbetrieb zu planen und die Beschäftigten zu erreichen. Eine Einwilligung ist dafür nicht nötig."}'::jsonb,
+  '{"case_id":"f-a06-logistik2","points":3,"criteria":[{"text":"Rechtsgrundlage: Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO); die Nennung von § 26 BDSG wird ebenfalls gewertet","points":1,"keywords":["Arbeitsvertrag","Vertrag","lit. b","§ 26","Beschäftigungsverhältnis"]},{"text":"Begründung: Ohne diese Daten lässt sich der Schichtbetrieb nicht planen - die Verarbeitung ist für die Durchführung des Arbeitsverhältnisses erforderlich, eine Einwilligung ist nicht nötig","points":2,"keywords":["erforderlich","notwendig","Schichtplanung","keine Einwilligung","Durchführung"]}],"sample_solution":"Rechtsgrundlage ist die Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO). Die Daten sind erforderlich, um den Dreischichtbetrieb zu planen und die Beschäftigten zu erreichen. Eine Einwilligung ist dafür nicht nötig. In Lehrbüchern und älteren Lösungen wird oft § 26 BDSG genannt; ob dessen allgemeine Regel nach einem Urteil des Europäischen Gerichtshofs von 2023 noch anwendbar ist, ist umstritten - sicher ist die Stütze auf die DSGVO."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -57211,7 +57211,7 @@ values (
   'open',
   null,
   'Nenne die beiden Arten der Nacherfüllung und gib an, wer beim Kaufvertrag zwischen ihnen wählt.',
-  'Je Angabe 1 Punkt. Der Verkäufer darf die gewählte Art nur verweigern, wenn sie unverhältnismäßig teuer ist. Beim Werkvertrag wählt dagegen der Unternehmer.',
+  'Je Angabe 1 Punkt. Der Verkäufer darf die gewählte Art verweigern, wenn sie nur mit unverhältnismäßigen Kosten möglich ist (§ 439 Abs. 4 BGB). Beim Werkvertrag wählt dagegen der Unternehmer.',
   2,
   '{}',
   null,

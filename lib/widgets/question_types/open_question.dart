@@ -211,7 +211,10 @@ class _OpenQuestionViewState extends State<OpenQuestionView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Selbstbewertung', style: context.text.titleMedium),
+                  HyphenText(
+                    'Selbstbewertung',
+                    style: context.text.titleMedium,
+                  ),
                   const SizedBox(height: 2),
                   Text(
                     'Hake ab, was in deiner Antwort wirklich steht.',

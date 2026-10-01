@@ -43,6 +43,17 @@ $env:Path = "C:\Users\Student\develop\flutter\bin;C:\Program Files\Git\cmd;C:\Pr
   Wissenscheck am Lektionsende, keine Verweise auf Quiz/Karten). Karten = auffrischen,
   Quiz/Prüfung = abfragen. Verbunden werden die drei nur in den **Sessions nach
   Themengebiet** auf der Startseite (`/session-bereich/:areaId`: Lernen -> Karten -> Quiz).
+- **In der ganzen App wird geduzt**, auch in Prüfungs- und Fallaufgaben („Nenne …“,
+  „Erläutere …“). Siezen nur in wörtlicher Rede im Material (Kunden-E-Mail, Brief).
+- **Quiz und Prüfung bilden die echte AP1 ab** (Analyse der Prüfungen 2021-2026 in
+  `docs/pruefungsanalyse/`, Quizformen in `docs/QUIZFORMATE.md`): gesunder Formatmix,
+  Auswahlaufgaben höchstens rund 30 % je Runde und je Bereich. Anzeige von Optionen,
+  Zuordnungen und Paaren wird gemischt (kein erkennbares Muster). Die
+  **Prüfungssimulation** besteht nur aus Fallaufgaben (`ExamCase`, je 25 Punkte, ohne
+  Auswahlaufgaben, nach echten IHK-Aufgaben gebaut, aber mit eigenen Texten - die
+  Originale sind urheberrechtlich geschützt): ein Modellunternehmen, 4 Fälle aus
+  verschiedenen Bereichen, 100 Punkte, 90 Minuten, IHK-Notenschlüssel, Freitext mit
+  Selbstbewertung nach Kriterien (Stichworterkennung ist nur ein Vorschlag, offline).
 - 20 Abzeichen (`Achievement` in `progress.dart`, Auswertung in
   `lib/core/util/achievements.dart`), stehen oben in der Statistik. Die Namen der ersten
   sieben Enum-Werte sind gespeichert und dürfen sich nicht ändern.
@@ -69,6 +80,15 @@ Parameter `skizze:` = Zeichnung aus `lib/data/models/diagram.dart` (15 Arten, ge
 `lib/widgets/diagrams/`, Stimmigkeit prüft `test/diagram_test.dart`, Geometrie
 `test/diagram_geometry_test.dart`):
 
+Aufgaben im IHK-Stil (`lib/data/seed/builders_ihk.dart`): `lueckentext` (Dropdown `wahl`,
+Wortbank, Eingabe `wort`/`zahl`), `tabelle`, `freitext` (Kriterien `krit` mit Stichwörtern,
+Musterlösung), `markieren`, `paare`, Fallaufgabe `fall` (Firma aus `ExamCompanies`, genau
+25 Punkte). Jede Aufgabe kann Material tragen (`table:`, `code:`, `skizze:`) und `punkte:`.
+Regeln prüft `test/ihk_integrity_test.dart`. Ansichten in `lib/widgets/question_types/`,
+Prüfungslauf in `lib/features/exam/`, Auswahl in `lib/core/util/exam_composer.dart`.
+
+- `lib/data/seed/questions/ihk_aNN_*.dart` (neue Formate) und
+  `lib/data/seed/cases/cases_aNN_*.dart` (Fallaufgaben) sind schon registriert
 - `lib/data/seed/nuggets/nuggets_aNN_*.dart` -> in `nuggets_data.dart` registrieren
 - `lib/data/seed/cards/cards_aNN_*.dart` -> in `cards_data.dart` registrieren
 - `lib/data/seed/questions/questions_aNN_*.dart` -> in `seed_data.dart` registrieren
@@ -108,7 +128,19 @@ Stand 01.10.2026: Journey vertieft auf rund 1.560 Lernschritte (10-15 je Lektion
 Prüf-Agenten nachgerechnet. Zielgröße je Lektion: 8-14 Lernschritte, mind. 6 Aufgaben,
 mind. 6 Karten (Test erzwingt weiter nur 4/3/4).
 
-## Offen (Stand 30.09.2026)
+Stand 01.10.2026 (Quiz/Prüfung): rund 1.600 Aufgaben plus rund 290 Teilaufgaben in 44
+Fallaufgaben (11 je Modellunternehmen); Auswahlanteil je Bereich 17-29 % (vorher 47-68 %).
+Rechtsangaben der neuen Aufgaben gegen Gesetzestexte geprüft.
+
+## Offen (Stand 01.10.2026)
+
+Quiz/Prüfung:
+- Abzeichen „Ernstfall bestanden“/„Note 1“ (`achievements.dart`) rechnen noch mit dem
+  ungewichteten Mittel statt mit Punkten und zählen auch halbe Prüfungen.
+- Ausgangssituation einer Fallaufgabe ist im Quiz aufgeklappt sehr lang (Unternehmen +
+  Situation); im Prüfungslauf zeigt `QuestionView` Punkte doppelt zur Kopfzeile.
+- Blitzrunde (60 Sekunden) nicht gebaut; KI-Bewertung von Freitext bewusst nicht (Kosten,
+  Server, online) - nur auf Wunsch des Nutzers.
 
 Store-Vorbereitung (Nutzer legt die Konten bei Google/Apple selbst an):
 - Android: Release-Signatur einrichten (build.gradle signiert Release noch mit Debug-Key),
@@ -120,9 +152,6 @@ Store-Vorbereitung (Nutzer legt die Konten bei Google/Apple selbst an):
   Screenshots. Name „AP1 Coach“ in Stores und DPMA/EUIPO auf Verfügbarkeit prüfen.
 
 App:
-- Aufgabenansicht an das Kachel-Design (`ActionTile`, `TileIcon`) angleichen.
-- Netzplan-Aufgabe läuft bei 320 px/130 % um 14 px über; Reihenfolge-Aufgaben lassen dem
-  Text wenig Breite.
 - Zeichnungen auf 320-px-Handys mit 130 % Schrift (Use Case, Netzskizze, Balken mit langen
   Labels) - Geometrietest prüft bei 130 % erst ab 256 px; 11 Netzskizzen scrollen unter
   ca. 340 px seitlich (Knoten enger setzen), lange Gantt-Diagramme ebenfalls.

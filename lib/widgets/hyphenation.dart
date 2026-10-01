@@ -203,7 +203,12 @@ class RenderHyphenText extends RenderBox {
     var start = 0;
     while (start < text.length) {
       final line = _painter.getLineBoundary(TextPosition(offset: start));
-      if (line.end <= start) break;
+      // An einem harten Zeilenumbruch liefert die Abfrage dieselbe Zeile noch
+      // einmal - dann ein Zeichen weitergehen statt abzubrechen.
+      if (line.end <= start) {
+        start++;
+        continue;
+      }
       ends.add(line.end);
       start = line.end;
     }
@@ -224,7 +229,12 @@ class RenderHyphenText extends RenderBox {
     var start = 0;
     while (start < text.length) {
       final line = _painter.getLineBoundary(TextPosition(offset: start));
-      if (line.end <= start) break;
+      // An einem harten Zeilenumbruch liefert die Abfrage dieselbe Zeile noch
+      // einmal - dann ein Zeichen weitergehen statt abzubrechen.
+      if (line.end <= start) {
+        start++;
+        continue;
+      }
       if (line.end < text.length && text[line.end - 1] == _shy) count++;
       start = line.end;
     }
@@ -318,7 +328,12 @@ class RenderHyphenText extends RenderBox {
     var start = 0;
     while (start < text.length) {
       final line = painter.getLineBoundary(TextPosition(offset: start));
-      if (line.end <= start) break;
+      // An einem harten Zeilenumbruch liefert die Abfrage dieselbe Zeile noch
+      // einmal - dann ein Zeichen weitergehen statt abzubrechen.
+      if (line.end <= start) {
+        start++;
+        continue;
+      }
       final end = line.end;
       if (end < text.length) {
         if (text[end - 1] == _shy) {

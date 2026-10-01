@@ -120,7 +120,7 @@ class _QuestionViewState extends State<QuestionView> {
                       Icon(topic.icon, size: 15, color: context.scheme.primary),
                       const SizedBox(width: Gap.s),
                       Expanded(
-                        child: Text(
+                        child: HyphenText(
                           topic.title.toUpperCase(),
                           style: context.text.labelSmall?.copyWith(
                             color: context.scheme.primary,

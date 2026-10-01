@@ -145,7 +145,7 @@ void main() {
     expect(s.finished, isTrue);
     expect(find.text('VOLLE PRÜFUNG'), findsOneWidget);
     expect(find.text('0 von 100 Punkten'), findsOneWidget);
-    expect(find.text('Noch nicht bestanden'), findsOneWidget);
+    expect(hyphenText('Noch nicht bestanden'), findsOneWidget);
     final history = container.read(progressProvider).history;
     expect(history, hasLength(24));
     expect(history.every((r) => r.mode == SessionMode.pruefung), isTrue);
