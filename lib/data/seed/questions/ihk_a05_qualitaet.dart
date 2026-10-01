@@ -86,40 +86,40 @@ final List<Question> ihkA05 = [
         'Je Erklärung und je Beispiel 1 Punkt. Beide ergänzen sich: Konstruktive Maßnahmen senken die Zahl der Fehler, analytische finden die verbleibenden.',
   ),
 
-  // ================================================== Qualitätsmerkmale
+  // ================================================== Qualitätsanforderungen
   tabelle(
     'i5-qe-1',
     'qm-merkmale',
     scenario:
-        'Im Lastenheft für ein Kundenportal stehen vier Qualitätsanforderungen. Vor der Übernahme ins Pflichtenheft wird geprüft, ob sie messbar formuliert sind.',
+        'Im Lastenheft für ein Kundenportal stehen vier Anforderungen. Vor der Übernahme ins Pflichtenheft wird geprüft, welcher Art sie sind und ob sie messbar formuliert sind.',
     prompt:
-        'Ordne jede Anforderung einem Qualitätsmerkmal zu und beurteile, ob sie prüfbar ist. (4 P.)',
+        'Ordne jede Anforderung ein und beurteile, ob sie prüfbar ist. (4 P.)',
     punkte: 4,
     zeilen: [
-      ['Anforderung', 'Merkmal', 'Prüfbar?'],
+      ['Anforderung', 'Art', 'Prüfbar?'],
       [
         'Die Suche antwortet in höchstens 2 s.',
-        wahl('Effizienz', ['Benutzbarkeit', 'Zuverlässigkeit', 'Wartbarkeit']),
+        wahl('nicht funktional', ['funktional', 'keine Anforderung']),
         wahl('messbar', ['nicht messbar', 'keine Anforderung']),
       ],
       [
         'Das Portal soll benutzerfreundlich sein.',
-        wahl('Benutzbarkeit', ['Effizienz', 'Zuverlässigkeit', 'Wartbarkeit']),
+        wahl('nicht funktional', ['funktional', 'keine Anforderung']),
         wahl('nicht messbar', ['messbar', 'keine Anforderung']),
       ],
       [
-        'Verfügbarkeit mindestens 99,5 % im Monat.',
-        wahl('Zuverlässigkeit', ['Effizienz', 'Benutzbarkeit', 'Wartbarkeit']),
+        'Kunden können Rechnungen als PDF herunterladen.',
+        wahl('funktional', ['nicht funktional', 'keine Anforderung']),
         wahl('messbar', ['nicht messbar', 'keine Anforderung']),
       ],
       [
-        'Der Code soll gut änderbar sein.',
-        wahl('Wartbarkeit', ['Effizienz', 'Benutzbarkeit', 'Zuverlässigkeit']),
+        'Das Portal soll möglichst immer erreichbar sein.',
+        wahl('nicht funktional', ['funktional', 'keine Anforderung']),
         wahl('nicht messbar', ['messbar', 'keine Anforderung']),
       ],
     ],
     explanation:
-        'Eine prüfbare Anforderung nennt Messgröße und Zielwert: „höchstens 2 s“, „mindestens 99,5 %“. „Benutzerfreundlich“ und „gut änderbar“ sind Wünsche ohne Zielwert - sie müssen konkretisiert werden, etwa „Neue Nutzer erfassen nach 15 Minuten Einweisung einen Auftrag ohne Hilfe“.',
+        'Antwortzeit, Bedienbarkeit und Erreichbarkeit beschreiben, WIE GUT das Portal arbeitet - nicht funktional. Der PDF-Download ist eine Funktion und lässt sich eindeutig testen (vorhanden oder nicht). „Benutzerfreundlich“ und „möglichst immer“ haben keinen Zielwert; besser: „Verfügbarkeit mindestens 99,5 % im Monat“.',
   ),
   lueckentext(
     'i5-qe-2',
@@ -150,69 +150,58 @@ final List<Question> ihkA05 = [
     'i5-qe-3',
     'qm-merkmale',
     scenario:
-        'Ein Logistikunternehmen lässt eine App für seine Handscanner entwickeln. Im Pflichtenheft sollen neben den Funktionen auch Qualitätsmerkmale festgelegt werden.',
-    prompt: 'Nenne vier Qualitätsmerkmale von Software. (4 P.)',
+        'Ein Logistikunternehmen lässt eine App für seine Handscanner entwickeln. Im Lastenheft steht: „Die Buchung einer Palette soll schnell gehen.“',
+    prompt:
+        'Formuliere die Anforderung so um, dass sie bei der Abnahme prüfbar ist, und nenne die Bestandteile, die du dabei ergänzt hast. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
-        'Funktionalität (das Richtige tun)',
-        stichwoerter: ['Funktionalität', 'funktional', 'Korrektheit'],
+        'Messgröße genannt (Antwortzeit/Dauer der Buchung)',
+        stichwoerter: ['Antwortzeit', 'Dauer', 'Sekunde', 'Messgröße'],
       ),
       krit(
-        'Zuverlässigkeit (stabil und dauerhaft)',
-        stichwoerter: ['Zuverlässigkeit', 'Verfügbarkeit', 'Fehlertoleranz'],
+        'konkreter Zielwert (z. B. höchstens 1 s)',
+        stichwoerter: ['höchstens', 'maximal', 'max', 'Zielwert'],
       ),
       krit(
-        'Benutzbarkeit (leicht zu bedienen)',
-        stichwoerter: [
-          'Benutzbarkeit',
-          'Usability',
-          'Bedienbarkeit',
-          'Gebrauchstauglichkeit',
-        ],
+        'Bedingung genannt (z. B. bei 50 gleichzeitigen Scannern, im WLAN der Halle)',
+        stichwoerter: ['bei', 'gleichzeitig', 'Bedingung', 'Last'],
       ),
       krit(
-        'Effizienz (schnell und sparsam)',
-        stichwoerter: ['Effizienz', 'Performance', 'Antwortzeit'],
-      ),
-      krit(
-        'Wartbarkeit (leicht zu ändern)',
-        stichwoerter: ['Wartbarkeit', 'Änderbarkeit', 'Testbarkeit'],
-      ),
-      krit(
-        'Übertragbarkeit (läuft in anderer Umgebung)',
-        stichwoerter: ['Übertragbarkeit', 'Portabilität', 'portierbar'],
-      ),
-      krit(
-        'Sicherheit (Schutz vor unbefugtem Zugriff)',
-        stichwoerter: ['Sicherheit', 'Zugriffsschutz', 'Security'],
-      ),
-      krit(
-        'Kompatibilität (arbeitet mit anderen Systemen zusammen)',
-        stichwoerter: ['Kompatibilität', 'Interoperabilität', 'kompatibel'],
+        'Abnahmekriterium/Prüfmethode (z. B. 95 % der Buchungen im Lasttest)',
+        stichwoerter: ['95', 'Prozent', 'Lasttest', 'Abnahme', 'Test'],
       ),
     ],
     loesung:
-        'Funktionalität, Zuverlässigkeit, Benutzbarkeit und Effizienz. Weitere Merkmale sind Wartbarkeit, Übertragbarkeit, Sicherheit und Kompatibilität.',
+        '„Bei 50 gleichzeitig angemeldeten Scannern ist in 95 % der Fälle die Buchung einer Palette nach höchstens 1 Sekunde bestätigt; geprüft wird mit einem Lasttest.“ Ergänzt wurden Messgröße (Antwortzeit), Zielwert (1 s), Bedingung (50 Scanner) und Abnahmekriterium (95 %, Lasttest).',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 4. Jedes Merkmal wird im Pflichtenheft durch messbare Anforderungen konkretisiert, etwa „Buchung in höchstens 1 s“ für die Effizienz.',
+        'Je Bestandteil 1 Punkt. Ohne Zielwert und Bedingung kann niemand entscheiden, ob „schnell“ erreicht ist - die Abnahme würde zum Streit.',
   ),
   paare(
     'i5-qe-4',
     'qm-merkmale',
     scenario:
-        'Für die Schulung neuer Auszubildender wird jedem Qualitätsmerkmal eine Leitfrage zugeordnet.',
-    prompt: 'Verbinde jedes Qualitätsmerkmal mit seiner Leitfrage. (5 P.)',
-    punkte: 5,
+        'In einem Lastenheft stehen unscharfe Formulierungen. Sie sollen durch messbare Größen ersetzt werden.',
+    prompt:
+        'Verbinde jede unscharfe Formulierung mit einer passenden Messgröße. (4 P.)',
+    punkte: 4,
     paare: [
-      paar('Effizienz', 'Wie schnell und sparsam arbeitet es?'),
-      paar('Benutzbarkeit', 'Wie leicht ist es zu bedienen?'),
-      paar('Wartbarkeit', 'Wie leicht lässt es sich ändern?'),
-      paar('Übertragbarkeit', 'Läuft es in einer anderen Umgebung?'),
-      paar('Zuverlässigkeit', 'Läuft es stabil und dauerhaft?'),
+      paar('„Die Seite soll schnell laden.“', 'Ladezeit in Sekunden'),
+      paar(
+        '„Der Dienst soll immer laufen.“',
+        'Verfügbarkeit in Prozent pro Monat',
+      ),
+      paar(
+        '„Neue Nutzer sollen gut zurechtkommen.“',
+        'Einarbeitungszeit bis zur ersten Buchung ohne Hilfe',
+      ),
+      paar(
+        '„Nach einem Ausfall soll es bald weitergehen.“',
+        'Wiederanlaufzeit in Minuten',
+      ),
     ],
     explanation:
-        'Über die Leitfrage lässt sich jede Anforderung einordnen: Antwortzeit und Ressourcen (Effizienz), Bedienung (Benutzbarkeit), Änderungen (Wartbarkeit), andere Plattform (Übertragbarkeit), Stabilität (Zuverlässigkeit).',
+        'Jede unscharfe Formulierung bekommt eine Messgröße, zu der dann noch Zielwert und Bedingung kommen - etwa „Ladezeit höchstens 2 s bei 500 Nutzern“.',
   ),
 
   // ======================================================= PDCA und KVP

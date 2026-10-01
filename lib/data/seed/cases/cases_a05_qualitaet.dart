@@ -191,43 +191,34 @@ final List<ExamCase> casesA05 = [
         'f-a05-agentur-g',
         'qm-merkmale',
         prompt:
-            'Nenne neben der Funktionalität drei weitere Qualitätsmerkmale, die für den Webshop des Fahrradhändlers wichtig sind. (3 P.)',
+            'Neben den Funktionen soll das Pflichtenheft auch nicht funktionale Anforderungen an den Webshop des Fahrradhändlers enthalten. Formuliere drei solche Anforderungen messbar. (3 P.)',
         punkte: 3,
         kriterien: [
           krit(
-            'Benutzbarkeit (einfache Bedienung des Bestellvorgangs)',
-            stichwoerter: ['Benutzbarkeit', 'Usability', 'Bedienbarkeit'],
+            'Antwortzeit mit Zielwert (z. B. Seite lädt in max. 2 s bei 300 Nutzern)',
+            stichwoerter: ['Ladezeit', 'Antwortzeit', 'Sekunde', ' s '],
           ),
           krit(
-            'Effizienz (kurze Ladezeiten)',
-            stichwoerter: ['Effizienz', 'Performance', 'Ladezeit'],
+            'Verfügbarkeit in Prozent (z. B. mind. 99,5 % pro Monat)',
+            stichwoerter: ['Verfügbarkeit', '%', 'Prozent', 'erreichbar'],
           ),
           krit(
-            'Zuverlässigkeit (hohe Verfügbarkeit des Shops)',
-            stichwoerter: ['Zuverlässigkeit', 'Verfügbarkeit', 'stabil'],
+            'Bedienbarkeit messbar (z. B. Bestellung in höchstens 5 Klicks)',
+            stichwoerter: ['Klick', 'Minute', 'ohne Hilfe', 'Bedienung'],
           ),
           krit(
-            'Sicherheit (Schutz von Kunden- und Zahlungsdaten)',
-            stichwoerter: ['Sicherheit', 'Datenschutz', 'Zahlungsdaten'],
+            'Sicherheit prüfbar (z. B. Zahlungsdaten nur per TLS übertragen, Passwörter gehasht)',
+            stichwoerter: ['TLS', 'HTTPS', 'Hash', 'verschlüsselt'],
           ),
           krit(
-            'Kompatibilität und Übertragbarkeit (verschiedene Browser und Geräte)',
-            stichwoerter: [
-              'Kompatibilität',
-              'Übertragbarkeit',
-              'Browser',
-              'Portabilität',
-            ],
-          ),
-          krit(
-            'Wartbarkeit (leicht änderbar, etwa bei neuen Versandregeln)',
-            stichwoerter: ['Wartbarkeit', 'Änderbarkeit', 'wartbar'],
+            'Wiederanlauf/Kompatibilität prüfbar (z. B. nach Ausfall in 30 min wieder online, läuft in den drei häufigsten Browsern)',
+            stichwoerter: ['Wiederanlauf', 'Browser', 'Smartphone', 'Ausfall'],
           ),
         ],
         loesung:
-            'Benutzbarkeit (der Bestellvorgang ist leicht zu bedienen), Effizienz (kurze Ladezeiten) und Sicherheit (Kunden- und Zahlungsdaten sind geschützt). Auch Zuverlässigkeit, Kompatibilität mit verschiedenen Browsern und Wartbarkeit sind richtig.',
+            'Die Produktseiten laden bei 300 gleichzeitigen Besuchern in höchstens 2 Sekunden. Der Shop ist mindestens 99,5 % pro Monat erreichbar. Eine Bestellung ist in höchstens 5 Klicks abgeschlossen. Auch prüfbare Sicherheits- oder Browseranforderungen sind richtig.',
         explanation:
-            'Je Nennung 1 Punkt, höchstens 3. Qualitätsmerkmale beschreiben, WIE GUT ein System arbeitet - sie werden mit messbaren Anforderungen konkretisiert.',
+            'Je messbar formulierter Anforderung 1 Punkt, höchstens 3. Ohne Zielwert („schnell“, „sicher“) gibt es keinen Punkt, denn die Anforderung wäre bei der Abnahme nicht prüfbar.',
       ),
     ],
   ),
@@ -436,18 +427,26 @@ final List<ExamCase> casesA05 = [
         'f-a05-logistik-f',
         'qm-merkmale',
         scenario:
-            'Im Pflichtenheft stehen neben den Funktionen auch Qualitätsanforderungen an die App.',
-        prompt:
-            'Ordne jeder Anforderung das Qualitätsmerkmal zu, das sie konkretisiert. (3 P.)',
+            'Im Pflichtenheft stehen neben den Funktionen auch nicht funktionale Anforderungen an die App. Für die Abnahme muss jede testbar sein.',
+        prompt: 'Ordne jeder Anforderung die passende Prüfmethode zu. (3 P.)',
         punkte: 3,
         paare: [
-          paar('Buchung in höchstens 1 s', 'Effizienz'),
-          paar('Kein Datenverlust bei WLAN-Abbruch', 'Zuverlässigkeit'),
-          paar('Mit Arbeitshandschuhen bedienbar', 'Benutzbarkeit'),
-          paar('Läuft auf zwei Scannermodellen', 'Übertragbarkeit'),
+          paar('Buchung in höchstens 1 s', 'Lasttest mit Zeitmessung'),
+          paar(
+            'Kein Datenverlust bei WLAN-Abbruch',
+            'WLAN während der Buchung trennen und Datenbestand prüfen',
+          ),
+          paar(
+            'Mit Arbeitshandschuhen bedienbar',
+            'Usability-Test mit Lagerpersonal in Handschuhen',
+          ),
+          paar(
+            'Läuft auf zwei Scannermodellen',
+            'Testfälle auf beiden Geräten ausführen',
+          ),
         ],
         explanation:
-            'Antwortzeit ist Effizienz, Robustheit gegen Störungen ist Zuverlässigkeit, einfache Bedienung ist Benutzbarkeit, der Betrieb auf verschiedenen Geräten ist Übertragbarkeit.',
+            'Zu jeder nicht funktionalen Anforderung gehört eine Prüfmethode, die ein eindeutiges Ergebnis liefert: Zeit messen, Störung herbeiführen, echte Nutzer beobachten, auf jeder Zielplattform testen.',
       ),
       rechnen(
         'f-a05-logistik-g',

@@ -111,7 +111,7 @@ class Subtopics {
     Subtopic(id: 'k-modelle', topicId: 'kommunikation', title: 'Kommunikationsmodelle',
         goal: 'Du erklärst Missverständnisse mit dem Sender-Empfänger- und dem Vier-Ohren-Modell.'),
     Subtopic(id: 'k-gespraech', topicId: 'kommunikation', title: 'Gesprächsführung',
-        goal: 'Du setzt aktives Zuhören und passende Fragetechniken gezielt ein.'),
+        goal: 'Du führst Kundengespräche in Phasen, ermittelst den Bedarf und sprichst Probleme mit Ich-Botschaften an.'),
     Subtopic(id: 'k-kunde', topicId: 'kommunikation', title: 'Kunden beraten und betreuen',
         goal: 'Du erklärst Technik adressatengerecht und bearbeitest Anfragen strukturiert.'),
 
@@ -279,8 +279,8 @@ class Subtopics {
     // Qualitätsmanagement
     Subtopic(id: 'qm-grundlagen', topicId: 'qualitaetsmanagement', title: 'Qualität und Qualitätssicherung',
         goal: 'Du unterscheidest konstruktive und analytische Qualitätssicherung.'),
-    Subtopic(id: 'qm-merkmale', topicId: 'qualitaetsmanagement', title: 'Qualitätsmerkmale von Software',
-        goal: 'Du ordnest Anforderungen den Qualitätsmerkmalen zu.'),
+    Subtopic(id: 'qm-merkmale', topicId: 'qualitaetsmanagement', title: 'Qualitätsanforderungen',
+        goal: 'Du formulierst nicht funktionale Anforderungen messbar und prüfst die Verfügbarkeit.'),
     Subtopic(id: 'qm-pdca', topicId: 'qualitaetsmanagement', title: 'PDCA und kontinuierliche Verbesserung',
         goal: 'Du wendest den PDCA-Zyklus auf ein Problem an.'),
 

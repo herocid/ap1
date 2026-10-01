@@ -106,22 +106,22 @@ final List<Question> ihkA02 = [
     'k-modelle',
     scenario:
         'In der IT-Abteilung der Elbtal Logistik AG streiten zwei Administratoren seit Wochen über die Benennung von Servern. Die Teamleiterin vermutet, dass es eigentlich um etwas anderes geht.',
-    prompt: 'Setze die passenden Begriffe zum Eisbergmodell ein.',
+    prompt: 'Setze die passenden Begriffe nach Watzlawick ein.',
     text:
-        'Nach dem Eisbergmodell ist nur etwa ein Fünftel der Kommunikation sichtbar: die {0} mit Zahlen, Daten und Fakten. Unter der Wasseroberfläche liegt die {1} mit {2}, Erfahrungen und Werten. Sie {3} darüber, wie eine Sachaussage ankommt. Ein Dauerstreit über eine Kleinigkeit ist deshalb oft ein Zeichen für einen verdeckten {4}.',
+        'Nach Watzlawick hat jede Kommunikation einen {0} und einen {1}. Der Inhalt sind die Zahlen, Daten und Fakten, über die gesprochen wird. Die Beziehung zeigt sich vor allem in {2} und Tonfall. Sie {3} darüber, wie eine Sachaussage ankommt. Ein Dauerstreit über eine Kleinigkeit ist deshalb oft ein Zeichen für einen verdeckten {4}.',
     luecken: [
-      wort(['Sachebene'], 'Der sichtbare Teil: das, worüber gesprochen wird.'),
-      wort(['Beziehungsebene'], 'Der verborgene, größere Teil des Eisbergs.'),
+      wort(['Inhaltsaspekt'], 'Das, worüber gesprochen wird.'),
+      wort(['Beziehungsaspekt'], 'Wie die Gesprächspartner zueinander stehen.'),
       wort(['Gefühlen'], 'Gefühle gehören zur Beziehungsebene.'),
       wort(['entscheidet'], 'Die Beziehung bestimmt, wie der Inhalt ankommt.'),
       wort([
         'Beziehungskonflikt',
-      ], 'Der Sachstreit ist nur die Spitze des Eisbergs.'),
+      ], 'Der Sachstreit überdeckt das eigentliche Problem.'),
     ],
     wortbank: ['Kanalstörung', 'Zeichenvorrat', 'Appell'],
     punkte: 5,
     explanation:
-        'Das Eisbergmodell: rund 20 % Sachebene (sichtbar), rund 80 % Beziehungsebene (verborgen). Die Beziehungsebene bestimmt die Sachebene. Solange nur über Servernamen gestritten wird, bleibt der eigentliche Konflikt ungelöst.',
+        'Das 2. Axiom nach Watzlawick: Jede Kommunikation hat einen Inhalts- und einen Beziehungsaspekt, wobei der Beziehungsaspekt den Inhaltsaspekt bestimmt. Solange nur über Servernamen gestritten wird, bleibt der eigentliche Konflikt ungelöst.',
   ),
 
   // ======================================================== Gesprächsführung
@@ -129,19 +129,19 @@ final List<Question> ihkA02 = [
     'i2-kg-1',
     'k-gespraech',
     scenario:
-        'Du bereitest bei der Kessler & Brandt IT-Systemhaus GmbH das Erstgespräch mit der Steuerkanzlei Albers & Partner vor und planst deine Fragen.',
-    prompt: 'Ordne jeder Frageart ihren Zweck zu.',
+        'Du bereitest bei der Kessler & Brandt IT-Systemhaus GmbH das Erstgespräch mit der Steuerkanzlei Albers & Partner vor und planst den Ablauf.',
+    prompt: 'Ordne jeder Gesprächsphase ihr Ziel zu.',
     paare: [
-      paar('offene Frage', 'viele Informationen sammeln'),
-      paar('geschlossene Frage', 'Fakten mit Ja oder Nein klären'),
-      paar('Alternativfrage', 'Entscheidung herbeiführen'),
-      paar('Kontrollfrage', 'Verständnis sichern'),
-      paar('Suggestivfrage', 'legt die Antwort nahe - vermeiden'),
-      paar('rhetorische Frage', 'Aufmerksamkeit, keine Antwort erwartet'),
+      paar('Kontakt und Begrüßung', 'Vertrauen aufbauen, Gesprächsziel nennen'),
+      paar('Bedarfsermittlung', 'Ist-Situation, Ziele und Rahmen klären'),
+      paar('Lösung mit Nutzen', 'Vorschlag am Kundenproblem begründen'),
+      paar('Einwände klären', 'Bedenken ernst nehmen und ausräumen'),
+      paar('Abschluss', 'nächste Schritte verbindlich vereinbaren'),
+      paar('Nachbereitung', 'Gesprächsnotiz und Angebot erstellen'),
     ],
     punkte: 3,
     explanation:
-        'Offene W-Fragen bringen den Kunden zum Erzählen, geschlossene Fragen klären Einzelheiten, Alternativfragen führen zur Entscheidung, Kontrollfragen sichern das Verständnis. Suggestivfragen manipulieren und gehören nicht in die Beratung.',
+        'Jede Phase hat ein eigenes Ziel. Wer die Bedarfsermittlung überspringt, bietet eine Lösung an, die nicht zum Problem passt; ohne Abschluss bleibt offen, wie es weitergeht.',
   ),
   markieren(
     'i2-kg-2',
@@ -165,7 +165,7 @@ final List<Question> ihkA02 = [
       ),
       nein(
         'S: „Sie meinen also, dass der Druck nach dem Bezahlen gar nicht erst startet?“',
-        'Paraphrasieren sichert das Verständnis.',
+        'Zusammenfassen mit eigenen Worten sichert das Verständnis.',
       ),
       ja(
         'S: „Ist ja nur ein Bondrucker, da gibt es Schlimmeres.“',
@@ -173,7 +173,7 @@ final List<Question> ihkA02 = [
       ),
       nein(
         'S: „Ich verstehe, dass das bei vollem Laden sehr ärgerlich ist.“',
-        'Verbalisieren erkennt das Gefühl der Kundin an.',
+        'Den Ärger anzuerkennen beruhigt die Beziehungsebene.',
       ),
       ja(
         'S: „Moment, lassen Sie mich mal - ich erkläre Ihnen jetzt, wie so ein Drucker funktioniert.“',
@@ -182,7 +182,7 @@ final List<Question> ihkA02 = [
     ],
     punkte: 4,
     explanation:
-        'Gesprächsstörer sind Widersprechen, Belehren, Bagatellisieren und Unterbrechen. Gesprächsförderer sind Nachfragen, Paraphrasieren und das Anerkennen von Gefühlen (Verbalisieren).',
+        'Gesprächsstörer sind Widersprechen, Belehren, Bagatellisieren und Unterbrechen. Gesprächsförderer sind Nachfragen, Zusammenfassen und das Anerkennen von Gefühlen.',
   ),
   freitext(
     'i2-kg-3',
@@ -190,88 +190,96 @@ final List<Question> ihkA02 = [
     scenario:
         'Ein Kunde der Pixelhafen Medien GmbH beschwert sich aufgebracht am Telefon: Seine neue Website sei „eine Katastrophe“, die Bestellungen kämen nicht mehr an.',
     prompt:
-        'Beschreibe zwei Techniken des aktiven Zuhörens, mit denen du in diesem Gespräch reagierst.',
+        'Beschreibe zwei Verhaltensweisen, mit denen du dieses Beschwerdegespräch zielführend führst.',
     kriterien: [
       krit(
-        'Paraphrasieren: den Inhalt mit eigenen Worten wiedergeben („Sie meinen also, dass keine Bestellungen mehr ankommen“).',
+        'Ärger anerkennen statt rechtfertigen: Beziehungsebene beruhigen („Das ist ärgerlich, wenn Bestellungen fehlen.“).',
         punkte: 2,
         stichwoerter: [
-          'paraphrasieren',
-          'eigenen Worten',
-          'wiederholen',
-          'wiedergeben',
-          'zusammenfassen',
-        ],
-      ),
-      krit(
-        'Verbalisieren: die Gefühle des Kunden ansprechen („Ich höre, dass Sie das sehr ärgert“).',
-        punkte: 2,
-        stichwoerter: [
-          'verbalisieren',
-          'Gefühl',
           'Ärger',
-          'Emotion',
-          'Verständnis zeigen',
+          'Verständnis',
+          'anerkennen',
+          'Gefühl',
+          'Beziehung',
         ],
       ),
       krit(
-        'Nachfragen: mit offenen Fragen klären, was genau passiert.',
+        'Sachverhalt gezielt klären: nachfragen, seit wann und was genau nicht ankommt.',
         punkte: 2,
         stichwoerter: [
           'nachfragen',
-          'offene Frage',
-          'Rückfrage',
-          'W-Frage',
+          'seit wann',
           'klären',
+          'Frage',
+          'Fehlermeldung',
         ],
       ),
       krit(
-        'Aufnehmendes Zuhören: ausreden lassen und Aufmerksamkeit signalisieren („Mhm“, „Ich verstehe“).',
+        'Ergebnis zusammenfassen und bestätigen lassen.',
         punkte: 2,
         stichwoerter: [
-          'ausreden',
-          'aufnehmend',
-          'aufmerksam',
-          'nicht unterbrechen',
-          'Signale',
+          'zusammenfassen',
+          'bestätigen',
+          'eigenen Worten',
+          'wiedergeben',
+        ],
+      ),
+      krit(
+        'Ausreden lassen, keine Gesprächsstörer (nicht unterbrechen, belehren, bagatellisieren).',
+        punkte: 2,
+        stichwoerter: ['ausreden', 'unterbrechen', 'belehren', 'Störer'],
+      ),
+      krit(
+        'Nächsten Schritt verbindlich zusagen (Prüfung, Rückruf mit Uhrzeit).',
+        punkte: 2,
+        stichwoerter: [
+          'Rückruf',
+          'zusagen',
+          'nächster Schritt',
+          'Uhr',
+          'verbindlich',
         ],
       ),
     ],
     punkte: 4,
     loesung:
-        'Ich paraphrasiere, gebe also den Inhalt mit eigenen Worten wieder: „Sie meinen also, dass seit der Umstellung keine Bestellungen mehr ankommen.“ So merkt der Kunde, dass ich ihn verstanden habe. Außerdem verbalisiere ich sein Gefühl: „Ich höre, dass Sie das sehr ärgert.“ Das nimmt Druck aus dem Gespräch.',
+        'Ich lasse den Kunden ausreden und erkenne seinen Ärger an: „Das ist ärgerlich, wenn keine Bestellungen ankommen.“ Dann kläre ich sachlich nach: „Seit wann fehlen die Bestellungen, und erscheint eine Fehlermeldung?“ Zum Schluss sage ich einen konkreten nächsten Schritt zu, etwa einen Rückruf bis 15 Uhr.',
     explanation:
-        'Je beschriebener Technik 2 Punkte, höchstens 4. Aktives Zuhören hat drei Stufen: aufnehmendes Zuhören, Paraphrasieren (Inhalt) und Verbalisieren (Gefühle); dazu kommen klärende Nachfragen.',
+        'Je beschriebener Verhaltensweise 2 Punkte, höchstens 4. Bei Beschwerden zuerst die Beziehungsebene beruhigen, dann die Sache klären und verbindlich abschließen.',
   ),
   lueckentext(
     'i2-kg-4',
     'k-gespraech',
     scenario:
-        'Du sprichst für die IT-Abteilung der Elbtal Logistik AG mit dem Leiter der Disposition über neue Arbeitsplatzrechner und gehst nach der Trichtertechnik vor.',
+        'Du sprichst für die IT-Abteilung der Elbtal Logistik AG mit dem Leiter der Disposition über neue Arbeitsplatzrechner.',
     prompt: 'Wähle für jede Lücke den passenden Begriff.',
     text:
-        'Zu Beginn stellst du {0} Fragen wie „Wie arbeiten Ihre Disponenten heute?“, damit dein Gesprächspartner erzählt. Danach klärst du Einzelheiten mit {1} Fragen wie „Brauchen alle zwei Monitore?“. Mit einer {2} wie „Habe ich richtig verstanden, dass ...?“ sicherst du das Verständnis. Die Frage „Sie wollen doch sicher das teurere Modell?“ ist eine {3} und sollte vermieden werden.',
+        'Nach der Begrüßung beginnt die {0}. Du lässt dir zuerst die {1} schildern: „Wie arbeiten Ihre Disponenten heute?“ Danach klärst du {2} wie Budget und Termin. Bevor du eine Lösung vorschlägst, {3} du das Ergebnis und lässt es bestätigen. Die Lösung begründest du mit ihrem {4} für den Kunden.',
     luecken: [
-      wahl('offene', [
-        'geschlossene',
-        'rhetorische',
-      ], 'Offene W-Fragen liefern viele Informationen.'),
-      wahl('geschlossenen', [
-        'offenen',
-        'suggestiven',
-      ], 'Ja/Nein-Fragen klären Fakten.'),
-      wahl('Kontrollfrage', [
-        'Alternativfrage',
-        'Gegenfrage',
-      ], 'Sie prüft, ob du richtig verstanden hast.'),
-      wahl('Suggestivfrage', [
-        'Kontrollfrage',
-        'Alternativfrage',
-      ], 'Sie legt die gewünschte Antwort nahe.'),
+      wahl('Bedarfsermittlung', [
+        'Nachbereitung',
+        'Einwandbehandlung',
+      ], 'Hier wird geklärt, was der Kunde braucht.'),
+      wahl('Ist-Situation', [
+        'Lösung',
+        'Rechnung',
+      ], 'Wie heute gearbeitet wird.'),
+      wahl('Rahmenbedingungen', [
+        'Einwände',
+        'Gesprächsstörer',
+      ], 'Budget, Termin, Nutzerzahl.'),
+      wahl('fasst zusammen', [
+        'verkaufst',
+        'bagatellisierst',
+      ], 'Sichert, dass du richtig verstanden hast.'),
+      wahl('Nutzen', [
+        'Preis',
+        'Merkmal',
+      ], 'Merkmal allein überzeugt nicht - der Nutzen schon.'),
     ],
-    punkte: 4,
+    punkte: 5,
     explanation:
-        'Die Trichtertechnik führt vom Weiten ins Enge: erst offene Fragen, dann geschlossene Fragen, zum Schluss eine Kontrollfrage mit Zusammenfassung. Suggestivfragen wirken manipulativ.',
+        'Erst verstehen, dann lösen: Die Bedarfsermittlung klärt Ist-Situation, Ziele und Rahmen. Eine Zusammenfassung sichert das Verständnis, dann wird die Lösung mit ihrem Nutzen begründet.',
   ),
 
   // ============================================ Kunden beraten und betreuen

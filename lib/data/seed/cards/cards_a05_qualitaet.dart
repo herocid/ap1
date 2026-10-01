@@ -62,7 +62,7 @@ final List<Flashcard> cardsA05 = [
     'k-qg-10',
     'qm-grundlagen',
     'Nenne drei Beispiele für analytische QS-Maßnahmen.',
-    'Test, Review, Inspektion, statische Codeanalyse, Audit.',
+    'Test, Review, Inspektion, statische Codeanalyse.',
   ),
   karte(
     'k-qg-11',

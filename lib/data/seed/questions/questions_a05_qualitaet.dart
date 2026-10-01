@@ -170,81 +170,74 @@ final List<Question> questionsA05 = [
         'Qualität entsteht nicht durch eine Endkontrolle: Konstruktive Maßnahmen und frühe statische Prüfungen sparen die teuren späten Fehler. Tests zeigen Fehler, beweisen aber nie Fehlerfreiheit.',
   ),
 
-  // ================================================== Qualitätsmerkmale
+  // ================================================== Qualitätsanforderungen
   zuordnen(
     'a5-qe-1',
     'qm-merkmale',
-    scenario: 'Für eine neue Rechnungssoftware wurden Anforderungen gesammelt.',
-    prompt:
-        'Ordne jede Anforderung dem Qualitätsmerkmal zu, das sie konkretisiert.',
-    buckets: [
-      'Effizienz',
-      'Benutzbarkeit',
-      'Wartbarkeit',
-      'Übertragbarkeit',
-      'Sicherheit',
-    ],
+    scenario:
+        'Im Lastenheft einer neuen Rechnungssoftware stehen sechs Anforderungen.',
+    prompt: 'Ist die Anforderung messbar formuliert oder nicht?',
+    buckets: ['messbar', 'nicht messbar'],
     items: [
       zu(
         'Eine Rechnung wird in höchstens 1 s als PDF erzeugt.',
         0,
-        'Antwortzeit gehört zum Zeitverhalten, also zur Effizienz.',
+        'Messgröße (Zeit) und Zielwert (1 s) sind genannt.',
+      ),
+      zu(
+        'Die Software soll schnell reagieren.',
+        1,
+        '„Schnell“ hat keinen Zielwert.',
       ),
       zu(
         'Neue Mitarbeitende erfassen nach 15 Minuten Einweisung eine Rechnung ohne Hilfe.',
-        1,
-        'Erlernbarkeit ist ein Teil der Benutzbarkeit.',
-      ),
-      zu(
-        'Ein neues Zahlungsverfahren lässt sich ergänzen, ohne bestehende Module zu ändern.',
-        2,
-        'Änderbarkeit ist ein Teil der Wartbarkeit.',
-      ),
-      zu(
-        'Die Software läuft ohne Anpassung unter Windows und macOS.',
-        3,
-        'Betrieb in einer anderen Umgebung ist Übertragbarkeit.',
-      ),
-      zu(
-        'Nur die Rolle Buchhaltung darf Rechnungen stornieren.',
-        4,
-        'Schutz vor unbefugten Aktionen ist Sicherheit.',
-      ),
-      zu(
-        'Bei 50 gleichzeitigen Nutzern belegt der Server höchstens 4 GB RAM.',
         0,
-        'Ressourcenverbrauch gehört ebenfalls zur Effizienz.',
+        'Einarbeitungszeit und Ziel sind prüfbar.',
+      ),
+      zu(
+        'Die Oberfläche soll intuitiv sein.',
+        1,
+        '„Intuitiv“ ist eine Empfindung, keine Messgröße.',
+      ),
+      zu(
+        'Das System ist mindestens 99,8 % der Geschäftszeit verfügbar.',
+        0,
+        'Verfügbarkeit in Prozent lässt sich messen.',
+      ),
+      zu(
+        'Das System soll möglichst stabil laufen.',
+        1,
+        'Was „stabil“ heißt, bleibt offen.',
       ),
     ],
     explanation:
-        'Jede Anforderung wird über ihre Leitfrage eingeordnet: Wie schnell und sparsam (Effizienz)? Wie leicht zu bedienen (Benutzbarkeit)? Wie leicht zu ändern (Wartbarkeit)? Läuft sie anderswo (Übertragbarkeit)? Ist sie geschützt (Sicherheit)?',
+        'Messbar ist eine Anforderung, wenn sie Messgröße und Zielwert (und meist eine Bedingung) nennt. Wörter wie „schnell“, „intuitiv“ oder „stabil“ müssen durch Zahlen ersetzt werden.',
   ),
   einfach(
     'a5-qe-2',
     'qm-merkmale',
-    scenario:
-        'Eine Zeiterfassungs-App berechnet die Arbeitszeiten stets korrekt. Sie stürzt aber etwa zweimal pro Woche ab, und ungespeicherte Eingaben gehen verloren.',
-    prompt: 'Welches Qualitätsmerkmal ist vor allem verletzt?',
+    scenario: 'Für eine Zeiterfassungs-App werden Anforderungen gesammelt.',
+    prompt: 'Welche Anforderung ist nicht funktional?',
     choices: [
       ja(
-        'Zuverlässigkeit',
-        'Abstürze und Datenverlust zeigen, dass die App nicht stabil läuft.',
+        'Die App startet auf den Dienst-Smartphones in höchstens 3 Sekunden.',
+        'Sie beschreibt, WIE GUT die App arbeitet (Antwortzeit) - nicht funktional.',
       ),
       nein(
-        'Funktionalität',
-        'Die Berechnungen sind korrekt - die App tut das Richtige, nur nicht beständig.',
+        'Mitarbeitende können Beginn und Ende ihrer Arbeitszeit buchen.',
+        'Das ist eine Funktion - WAS die App tut.',
       ),
       nein(
-        'Übertragbarkeit',
-        'Es geht nicht um den Betrieb in einer anderen Umgebung.',
+        'Die App berechnet die Überstunden eines Monats.',
+        'Eine Berechnung ist eine Funktion der App.',
       ),
       nein(
-        'Wartbarkeit',
-        'Wartbarkeit betrifft die Änderbarkeit des Codes, nicht das Verhalten im Betrieb.',
+        'Vorgesetzte können Urlaubsanträge genehmigen.',
+        'Auch das Genehmigen ist eine Funktion.',
       ),
     ],
     explanation:
-        'Funktionalität fragt, ob die Software das Richtige tut. Zuverlässigkeit fragt, ob sie das dauerhaft und stabil tut. Korrekte Ergebnisse bei häufigen Abstürzen sind ein Zuverlässigkeitsproblem.',
+        'Funktionale Anforderungen beschreiben Leistungen des Systems (buchen, berechnen, genehmigen). Nicht funktionale Anforderungen beschreiben Eigenschaften wie Antwortzeit, Verfügbarkeit oder Sicherheit.',
   ),
   einfach(
     'a5-qe-3',
@@ -270,7 +263,7 @@ final List<Question> questionsA05 = [
       ),
     ],
     explanation:
-        'Eine prüfbare Anforderung nennt Merkmal, Messgröße, Zielwert und Bedingung. Nur dann lässt sich später im Test entscheiden, ob die Qualität erreicht ist.',
+        'Eine prüfbare Anforderung nennt Messgröße, Zielwert und Bedingung. Nur dann lässt sich später im Test entscheiden, ob die Qualität erreicht ist.',
   ),
   rechnen(
     'a5-qe-4',
@@ -288,46 +281,20 @@ final List<Question> questionsA05 = [
         'Ausfallzeit: 720 h × 0,001 = 0,72 h\n'
         'In Minuten: 0,72 × 60 = 43,2 min',
   ),
-  zuordnen(
+  rechnen(
     'a5-qe-5',
     'qm-merkmale',
-    prompt: 'Welchem Qualitätsmerkmal gehört die Anforderung an?',
-    buckets: ['Zuverlässigkeit', 'Wartbarkeit', 'Kompatibilität'],
-    items: [
-      zu(
-        'Nach einem Stromausfall startet der Dienst selbstständig und ohne Datenverlust neu.',
-        0,
-        'Wiederherstellbarkeit ist ein Teilmerkmal der Zuverlässigkeit.',
-      ),
-      zu(
-        'Fällt ein Server im Cluster aus, läuft der Dienst ohne Unterbrechung weiter.',
-        0,
-        'Fehlertoleranz gehört zur Zuverlässigkeit.',
-      ),
-      zu(
-        'Der Code ist in unabhängige Module gegliedert, die einzeln getestet werden können.',
-        1,
-        'Modularität und Testbarkeit sind Teil der Wartbarkeit.',
-      ),
-      zu(
-        'Aussagekräftige Logdateien grenzen einen Fehler schnell ein.',
-        1,
-        'Analysierbarkeit gehört zur Wartbarkeit.',
-      ),
-      zu(
-        'Kundendaten werden über eine REST-Schnittstelle mit dem CRM ausgetauscht.',
-        2,
-        'Interoperabilität ist ein Teilmerkmal der Kompatibilität.',
-      ),
-      zu(
-        'Die Anwendung läuft auf demselben Server wie die Buchhaltung, ohne sie zu stören.',
-        2,
-        'Koexistenz gehört zur Kompatibilität.',
-      ),
-    ],
-    difficulty: 3,
+    scenario:
+        'Ein Ticketsystem läuft rund um die Uhr. Im 30-Tage-Monat fiel es insgesamt 9 Stunden aus.',
+    prompt:
+        'Welche Verfügbarkeit in Prozent wurde erreicht? (zwei Nachkommastellen)',
+    answer: 98.75,
+    tolerance: 0.005,
+    unit: '%',
     explanation:
-        'Die Teilmerkmale helfen bei der Zuordnung: Zuverlässigkeit (Reife, Verfügbarkeit, Fehlertoleranz, Wiederherstellbarkeit), Wartbarkeit (Modularität, Analysierbarkeit, Änderbarkeit, Testbarkeit), Kompatibilität (Interoperabilität, Koexistenz).',
+        'Betriebszeit: 30 × 24 h = 720 h\n'
+        'Verfügbare Zeit: 720 h - 9 h = 711 h\n'
+        'Verfügbarkeit: 711 / 720 × 100 % = 98,75 %',
   ),
   zuordnen(
     'a5-qe-6',
@@ -339,7 +306,7 @@ final List<Question> questionsA05 = [
       zu(
         'Die Suche liefert Ergebnisse in höchstens 2 Sekunden.',
         1,
-        'Sie beschreibt, WIE GUT das System arbeitet (Effizienz).',
+        'Sie beschreibt, WIE GUT das System arbeitet (Antwortzeit).',
       ),
       zu(
         'Kunden können Artikel in den Warenkorb legen.',
@@ -364,40 +331,28 @@ final List<Question> questionsA05 = [
       zu(
         'Neue Kunden bestellen ohne Anleitung in unter 3 Minuten.',
         1,
-        'Erlernbarkeit gehört zur Benutzbarkeit.',
+        'Eine Eigenschaft der Bedienbarkeit, keine eigene Funktion.',
       ),
     ],
     difficulty: 1,
     explanation:
         'Funktionale Anforderungen beschreiben, WAS ein System tun soll. Nicht funktionale Anforderungen beschreiben, WIE GUT es das tun soll - Antwortzeit, Verfügbarkeit, Bedienbarkeit, Sicherheit.',
   ),
-  einfach(
+  reihenfolge(
     'a5-qe-7',
     'qm-merkmale',
-    scenario:
-        'Eine Bank führt für ihre App eine Zwei-Faktor-Anmeldung per Bestätigungscode ein.',
+    scenario: 'Ein Systemhaus plant die Qualität eines neuen Kundenportals.',
     prompt:
-        'Welche Wirkung auf die Qualitätsmerkmale ist am ehesten zu erwarten?',
-    choices: [
-      ja(
-        'Die Sicherheit steigt, die Benutzbarkeit sinkt etwas.',
-        'Ein zusätzlicher Schritt schützt besser, macht die Anmeldung aber umständlicher.',
-      ),
-      nein(
-        'Sicherheit und Benutzbarkeit steigen beide.',
-        'Der zusätzliche Schritt macht die Bedienung nicht leichter.',
-      ),
-      nein(
-        'Die Effizienz steigt, weil die Anmeldung schneller geht.',
-        'Die Anmeldung dauert eher länger.',
-      ),
-      nein(
-        'Keine Merkmale sind betroffen.',
-        'Sicherheit und Benutzbarkeit ändern sich spürbar.',
-      ),
+        'Bringe die Schritte der Qualitätsplanung in die richtige Reihenfolge.',
+    items: [
+      'Anforderungen mit dem Auftraggeber erheben',
+      'Anforderungen in funktional und nicht funktional einteilen',
+      'Nicht funktionale Anforderungen mit Messgröße und Zielwert formulieren',
+      'Prüfmethode und Abnahmekriterium festlegen',
+      'Ist-Werte bei der Abnahme mit den Zielwerten vergleichen',
     ],
     explanation:
-        'Qualitätsmerkmale konkurrieren: Mehr Sicherheit kostet oft Benutzbarkeit, starke Optimierung kostet Wartbarkeit. Welches Merkmal Vorrang hat, legt der Auftraggeber fest.',
+        'Erst wird erhoben und eingeordnet, dann messbar formuliert. Zu jeder Anforderung gehört ein Abnahmekriterium, damit am Ende Ist und Soll eindeutig verglichen werden können.',
   ),
 
   // ======================================================= PDCA und KVP

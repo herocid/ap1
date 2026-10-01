@@ -1224,7 +1224,7 @@ final List<Question> ihkA01Projekte = [
         'please find attached our complete requirements\n'
         'specification (84 pages). The scope is final and\n'
         'will not change. We expect a fixed-price offer\n'
-        'and delivery by 30 November. Our auditors require\n'
+        'and delivery by 30 November. Our management requires\n'
         'the full design documentation before development\n'
         'starts. Please note that our staff will not be\n'
         'available for regular meetings during the project.\n'
@@ -1253,8 +1253,13 @@ final List<Question> ihkA01Projekte = [
         stichwoerter: ['Termin', 'Liefertermin', 'Lieferung', '30. November'],
       ),
       krit(
-        'Die vollständige Entwurfsdokumentation wird vor Entwicklungsbeginn verlangt (auditors).',
-        stichwoerter: ['Dokumentation', 'Prüfer', 'Auditoren', 'Entwurf'],
+        'Die vollständige Entwurfsdokumentation wird vor Entwicklungsbeginn verlangt (management requires).',
+        stichwoerter: [
+          'Dokumentation',
+          'Geschäftsleitung',
+          'Management',
+          'Entwurf',
+        ],
       ),
       krit(
         'Die Mitarbeitenden des Kunden stehen nicht für regelmäßige Treffen zur Verfügung.',
@@ -1268,7 +1273,7 @@ final List<Question> ihkA01Projekte = [
       ),
     ],
     loesung:
-        'Für den Wasserfall spricht: Die Anforderungen liegen vollständig vor und der Umfang ändert sich nicht. Der Kunde verlangt einen Festpreis und einen festen Liefertermin (30. November). Seine Prüfer wollen die vollständige Entwurfsdokumentation vor Entwicklungsbeginn, und seine Mitarbeitenden stehen nicht für regelmäßige Treffen bereit - Sprint Reviews wären also kaum möglich.',
+        'Für den Wasserfall spricht: Die Anforderungen liegen vollständig vor und der Umfang ändert sich nicht. Der Kunde verlangt einen Festpreis und einen festen Liefertermin (30. November). Seine Geschäftsleitung will die vollständige Entwurfsdokumentation vor Entwicklungsbeginn, und seine Mitarbeitenden stehen nicht für regelmäßige Treffen bereit - Sprint Reviews wären also kaum möglich.',
     explanation:
         'Je Nennung 1 Punkt, höchstens 3 Punkte. Stabile Anforderungen, Festpreis, Dokumentationspflicht und ein kaum verfügbarer Kunde sind die klassischen Argumente für den Wasserfall.',
     punkte: 3,

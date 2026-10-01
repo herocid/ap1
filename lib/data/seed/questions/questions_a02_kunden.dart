@@ -29,11 +29,14 @@ final List<Question> questionsA02 = [
     paare: [
       paar('Sender-Empfänger-Modell', 'gemeinsamer Zeichenvorrat nötig'),
       paar('Vier-Seiten-Modell', 'vier Botschaften in jeder Nachricht'),
-      paar('Eisbergmodell', 'die Beziehungsebene liegt verborgen'),
+      paar(
+        '2. Axiom nach Watzlawick',
+        'Beziehung prägt, wie der Inhalt ankommt',
+      ),
       paar('1. Axiom nach Watzlawick', 'auch Schweigen ist eine Botschaft'),
     ],
     explanation:
-        'Sender-Empfänger: Verständigung braucht einen gemeinsamen Zeichenvorrat. Schulz von Thun: Sache, Selbstoffenbarung, Beziehung, Appell. Eisberg: Nur die Sachebene ist sichtbar. Watzlawick: Man kann nicht nicht kommunizieren - wer im Kundentermin aufs Handy schaut, sendet eine Botschaft.',
+        'Sender-Empfänger: Verständigung braucht einen gemeinsamen Zeichenvorrat. Schulz von Thun: Sache, Selbstoffenbarung, Beziehung, Appell. Watzlawick: Die Beziehung bestimmt, wie ein Inhalt verstanden wird (2. Axiom), und man kann nicht nicht kommunizieren (1. Axiom) - wer im Kundentermin aufs Handy schaut, sendet eine Botschaft.',
   ),
   einfach(
     'a2-km-3',
@@ -132,8 +135,8 @@ final List<Question> questionsA02 = [
     prompt: 'Welches Modell erklärt diesen Streit am besten?',
     choices: [
       ja(
-        'Das Eisbergmodell: Den sichtbaren Sachstreit treibt ein verdecktes Problem auf der Beziehungsebene an.',
-        'Die Kränkung liegt „unter Wasser“ und macht die harmlose Sachfrage zum Dauerstreit.',
+        'Watzlawicks 2. Axiom: Die gestörte Beziehungsebene bestimmt, wie der Inhalt ankommt.',
+        'Die Kränkung wirkt auf der Beziehungsebene und macht die harmlose Sachfrage zum Dauerstreit.',
       ),
       nein(
         'Das Sender-Empfänger-Modell: Es fehlt ein gemeinsamer Zeichenvorrat.',
@@ -144,12 +147,12 @@ final List<Question> questionsA02 = [
         'In der Performing-Phase arbeitet ein Team konfliktarm; verdeckte Motive erklärt Tuckman nicht.',
       ),
       nein(
-        'Watzlawick: Die Kommunikation ist symmetrisch.',
-        'Symmetrie beschreibt Gespräche auf Augenhöhe - sie erklärt nicht, warum hinter einem Sachstreit ein anderer Grund steckt.',
+        'Verbal, paraverbal, nonverbal: Die Körpersprache widerspricht den Worten.',
+        'Von widersprüchlichen Signalen ist keine Rede - der Grund liegt in der Beziehung, nicht in der Körpersprache.',
       ),
     ],
     explanation:
-        'Nach dem Eisbergmodell ist nur die Sachebene sichtbar. Gefühle wie Kränkung liegen darunter und steuern das Gespräch. Solange nur über Tabs gestritten wird, bleibt der eigentliche Konflikt ungelöst.',
+        'Nach Watzlawick hat jede Nachricht einen Inhalts- und einen Beziehungsaspekt, und die Beziehung bestimmt den Inhalt. Gefühle wie Kränkung steuern deshalb das Gespräch. Solange nur über Tabs gestritten wird, bleibt der eigentliche Konflikt ungelöst.',
   ),
   zuordnen(
     'a2-km-7',
@@ -177,32 +180,54 @@ final List<Question> questionsA02 = [
   zuordnen(
     'a2-kg-1',
     'k-gespraech',
-    prompt: 'Um welche Frageart handelt es sich?',
-    buckets: ['offen', 'geschlossen', 'Alternativfrage', 'Suggestivfrage'],
+    scenario:
+        'Du führst ein Beratungsgespräch mit einer Steuerkanzlei, die ein neues Dokumentenmanagement sucht.',
+    prompt: 'In welche Gesprächsphase gehört die Äußerung?',
+    buckets: ['Kontakt', 'Bedarfsermittlung', 'Lösung mit Nutzen', 'Abschluss'],
     items: [
-      zu('Wie läuft die Rechnungsprüfung bei Ihnen heute ab?', 0),
-      zu('Haben Sie den Rechner schon neu gestartet?', 1),
-      zu('Soll ich morgens oder nachmittags vorbeikommen?', 2),
-      zu('Sie möchten doch sicher auch das Wartungspaket?', 3),
-      zu('Welche Probleme treten dabei auf?', 0),
+      zu(
+        '„Schön, dass es heute klappt. Ich möchte verstehen, wo es bei Ihnen hakt.“',
+        0,
+        'Begrüßung und Gesprächsziel gehören zum Kontakt.',
+      ),
+      zu(
+        '„Wie legen Sie Mandantenunterlagen heute ab?“',
+        1,
+        'Die Ist-Situation wird erfragt.',
+      ),
+      zu(
+        '„Wie viele Mitarbeitende sollen damit arbeiten, und bis wann?“',
+        1,
+        'Rahmenbedingungen gehören zur Bedarfsermittlung.',
+      ),
+      zu(
+        '„Mit der Volltextsuche finden Sie jede Akte in Sekunden statt Minuten.“',
+        2,
+        'Ein Merkmal wird in einen Nutzen für den Kunden übersetzt.',
+      ),
+      zu(
+        '„Ich schicke Ihnen das Angebot bis Freitag und rufe Montag an.“',
+        3,
+        'Nächste Schritte verbindlich vereinbaren schließt das Gespräch ab.',
+      ),
     ],
     explanation:
-        'Offene Fragen sammeln Informationen, geschlossene klären Fakten, Alternativfragen führen zur Entscheidung. Suggestivfragen geben die Antwort vor und wirken manipulativ.',
+        'Kontakt schafft Orientierung, die Bedarfsermittlung klärt Ist, Ziel und Rahmen, die Lösung wird mit ihrem Nutzen begründet, der Abschluss legt nächste Schritte fest.',
   ),
   einfach(
     'a2-kg-2',
     'k-gespraech',
     scenario:
-        'Eine Kundin schildert aufgebracht ein Problem mit ihrer Buchhaltungssoftware.',
-    prompt: 'Welche Reaktion entspricht dem aktiven Zuhören?',
+        'Eine Kundin schildert aufgebracht, dass der Export ihrer Buchhaltungssoftware seit gestern abbricht und der Monatsabschluss drängt.',
+    prompt: 'Welche Reaktion ist für den Einstieg am besten geeignet?',
     choices: [
       ja(
-        '„Wenn ich Sie richtig verstehe, bricht der Export seit gestern ab - und das bremst Ihren Monatsabschluss.“',
-        'Paraphrasieren und die Auswirkung ansprechen zeigt Verständnis und sichert das Verstehen.',
+        '„Das ist ärgerlich, gerade vor dem Abschluss. Welche Meldung erscheint beim Export?“',
+        'Erkennt den Ärger an (Beziehungsebene) und klärt dann gezielt den Sachverhalt.',
       ),
       nein(
         '„Das kann eigentlich nicht sein, bei anderen Kunden läuft es.“',
-        'Widerspricht und stellt die Kundin in Frage.',
+        'Widerspricht und stellt die Kundin in Frage - ein Gesprächsstörer.',
       ),
       nein(
         '„Haben Sie das Handbuch gelesen?“',
@@ -214,7 +239,7 @@ final List<Question> questionsA02 = [
       ),
     ],
     explanation:
-        'Aktives Zuhören heißt: das Gesagte mit eigenen Worten wiedergeben, Gefühle anerkennen und Verständnis sichern.',
+        'Bei Beschwerden erst die Beziehungsebene beruhigen (Ärger anerkennen), dann sachlich nachfragen. Widersprechen, Belehren und Abwiegeln sind Gesprächsstörer.',
   ),
   reihenfolge(
     'a2-kg-3',
@@ -223,7 +248,7 @@ final List<Question> questionsA02 = [
         'Bringe die Phasen eines Beratungsgesprächs in eine sinnvolle Reihenfolge.',
     items: [
       'Begrüßung und Gesprächsziel klären',
-      'Bedarf mit offenen Fragen ermitteln',
+      'Ist-Situation, Ziele und Rahmen ermitteln',
       'Verständnis durch Zusammenfassen sichern',
       'Lösung vorschlagen und mit dem Nutzen begründen',
       'Nächste Schritte vereinbaren',
@@ -232,55 +257,87 @@ final List<Question> questionsA02 = [
         'Erst verstehen, dann lösen: Wer vor der Bedarfsermittlung eine Lösung anbietet, rät nur.',
   ),
 
-  einfach(
+  zuordnen(
     'a2-kg-4',
     'k-gespraech',
     scenario:
-        'Du beginnst ein Beratungsgespräch mit einem neuen Kunden, der ein Warenwirtschaftssystem sucht.',
-    prompt:
-        'Welche Frage eignet sich am besten als Einstieg in die Bedarfsermittlung?',
-    choices: [
-      ja(
-        '„Wie laufen Bestellung und Lagerverwaltung bei Ihnen heute ab?“',
-        'Eine offene Frage bringt den Kunden zum Erzählen und liefert viele Informationen.',
+        'Ein Handwerksbetrieb sucht ein Warenwirtschaftssystem. In der Bedarfsermittlung notierst du die Antworten.',
+    prompt: 'Welcher Teil der Bedarfsermittlung wird geklärt?',
+    buckets: ['Ist-Situation', 'Ziel', 'Rahmenbedingung'],
+    items: [
+      zu(
+        'Bestellungen werden heute in Excel-Listen erfasst.',
+        0,
+        'Beschreibt, wie heute gearbeitet wird.',
       ),
-      nein(
-        '„Sie brauchen doch sicher auch eine Schnittstelle zum Onlineshop?“',
-        'Suggestivfrage - sie gibt die Antwort vor und wirkt manipulativ.',
+      zu(
+        'Fehlbestände sollen künftig automatisch gemeldet werden.',
+        1,
+        'Beschreibt, was danach besser sein soll.',
       ),
-      nein(
-        '„Nutzen Sie bisher Excel?“',
-        'Geschlossene Frage - am Anfang zu eng, sie liefert nur Ja oder Nein.',
+      zu(
+        'Das Budget liegt bei 8.000 Euro.',
+        2,
+        'Budget begrenzt die möglichen Lösungen.',
       ),
-      nein(
-        '„Soll es System A oder System B sein?“',
-        'Alternativfrage - sie verlangt eine Entscheidung, bevor der Bedarf bekannt ist.',
+      zu(
+        'Das System muss bis zum Jahreswechsel laufen.',
+        2,
+        'Ein Termin ist eine Rahmenbedingung.',
+      ),
+      zu(
+        'Lagerbestände werden einmal im Monat von Hand gezählt.',
+        0,
+        'Auch das ist der heutige Ablauf.',
+      ),
+      zu(
+        'Die Inventur soll höchstens noch einen Tag dauern.',
+        1,
+        'Ein messbares Ziel des Kunden.',
       ),
     ],
     explanation:
-        'Nach der Trichtertechnik beginnt die Bedarfsermittlung mit offenen W-Fragen. Geschlossene und Alternativfragen kommen später zum Präzisieren und Entscheiden.',
+        'Eine vollständige Bedarfsermittlung klärt die Ist-Situation (wie heute), die Ziele (was besser werden soll) und den Rahmen (Budget, Termin, Nutzer, Schnittstellen). Erst dann folgt die Lösung.',
     difficulty: 1,
   ),
   zuordnen(
     'a2-kg-5',
     'k-gespraech',
     scenario:
-        'Ein Kunde beschwert sich am Telefon, dass nach einem Update die Rechnungsvorlagen fehlen und morgen der Monatsabschluss ansteht.',
-    prompt: 'Welche Stufe des aktiven Zuhörens zeigt die Reaktion?',
-    buckets: ['aufnehmendes Zuhören', 'Paraphrasieren', 'Verbalisieren'],
+        'In einer Schulung für den Support werden Formulierungen gegenüber Kunden und Kollegen bewertet.',
+    prompt:
+        'Ist die Formulierung eine echte Ich-Botschaft oder eine Du-Botschaft?',
+    buckets: ['echte Ich-Botschaft', 'Du-Botschaft (auch verkappt)'],
     items: [
-      zu('Den Kunden ausreden lassen und kurze Signale geben', 0),
-      zu('Nicken und „Mhm, verstehe.“', 0),
-      zu('„Ich höre, dass Sie sich darüber ärgern.“', 2),
-      zu('„Das bringt Sie vor dem Abschluss ganz schön unter Druck.“', 2),
       zu(
-        '„Wenn ich Sie richtig verstehe, fehlen die Vorlagen für alle Rechnungsarten.“',
-        1,
+        '„Ich kann erst weitermachen, wenn ich die Zugangsdaten habe.“',
+        0,
+        'Beschreibt die eigene Lage und einen Wunsch.',
       ),
-      zu('„Sie meinen also, dass seit dem Update die Vorlagen fehlen.“', 1),
+      zu(
+        '„Sie haben mir schon wieder nichts geschickt.“',
+        1,
+        'Vorwurf an die Person.',
+      ),
+      zu(
+        '„Ich finde, du bist total unzuverlässig.“',
+        1,
+        'Beginnt mit „Ich“, bewertet aber die Person - verkappt.',
+      ),
+      zu(
+        '„Ich verliere den Faden, wenn ich unterbrochen werde. Lass mich bitte ausreden.“',
+        0,
+        'Beobachtung, Wirkung, Wunsch.',
+      ),
+      zu('„Ihr meldet euch ja nie.“', 1, 'Verallgemeinernder Vorwurf.'),
+      zu(
+        '„Ich brauche die Freigabe bis Donnerstag, damit der Termin hält.“',
+        0,
+        'Eigener Bedarf mit Begründung.',
+      ),
     ],
     explanation:
-        'Aufnehmendes Zuhören zeigt Aufmerksamkeit (Nicken, „Mhm“). Paraphrasieren gibt den Inhalt mit eigenen Worten wieder. Verbalisieren spricht die Gefühle des Gegenübers an.',
+        'Eine echte Ich-Botschaft beschreibt Beobachtung, Wirkung auf mich und Wunsch, ohne die Person zu bewerten. „Ich finde, du bist ...“ ist eine verkappte Du-Botschaft.',
   ),
   einfach(
     'a2-kg-6',
@@ -321,7 +378,7 @@ final List<Question> questionsA02 = [
       zu(
         '„Was genau passiert, wenn Sie auf Speichern klicken?“',
         0,
-        'Eine offene Nachfrage fördert das Gespräch.',
+        'Eine gezielte Nachfrage fördert das Gespräch.',
       ),
       zu(
         '„Ist doch halb so wild.“',
@@ -331,7 +388,7 @@ final List<Question> questionsA02 = [
       zu(
         '„Sie meinen also, dass der Fehler nur morgens auftritt?“',
         0,
-        'Paraphrasieren sichert das Verstehen.',
+        'Zusammenfassen sichert das Verstehen.',
       ),
       zu(
         'Den Kunden mitten im Satz unterbrechen',
@@ -345,7 +402,7 @@ final List<Question> questionsA02 = [
       ),
     ],
     explanation:
-        'Gesprächsstörer sind z. B. Belehren, Bagatellisieren, Unterbrechen, ungefragte Ratschläge. Gesprächsförderer sind Nachfragen, Paraphrasieren, Zusammenfassen und das Anerkennen von Gefühlen.',
+        'Gesprächsstörer sind z. B. Belehren, Bagatellisieren, Unterbrechen, ungefragte Ratschläge. Gesprächsförderer sind Nachfragen, Zusammenfassen, Ich-Botschaften und das Anerkennen von Gefühlen.',
     difficulty: 1,
   ),
 

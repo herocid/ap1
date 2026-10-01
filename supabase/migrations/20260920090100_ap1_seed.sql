@@ -8500,11 +8500,11 @@ values (
   'pairs',
   'In einer Schulung zur Kundenkommunikation werden vier Kommunikationsmodelle vorgestellt.',
   'Ordne jedem Modell seine Kernaussage zu.',
-  'Sender-Empfänger: Verständigung braucht einen gemeinsamen Zeichenvorrat. Schulz von Thun: Sache, Selbstoffenbarung, Beziehung, Appell. Eisberg: Nur die Sachebene ist sichtbar. Watzlawick: Man kann nicht nicht kommunizieren - wer im Kundentermin aufs Handy schaut, sendet eine Botschaft.',
+  'Sender-Empfänger: Verständigung braucht einen gemeinsamen Zeichenvorrat. Schulz von Thun: Sache, Selbstoffenbarung, Beziehung, Appell. Watzlawick: Die Beziehung bestimmt, wie ein Inhalt verstanden wird (2. Axiom), und man kann nicht nicht kommunizieren (1. Axiom) - wer im Kundentermin aufs Handy schaut, sendet eine Botschaft.',
   2,
   '{}',
   null,
-  '{"pairs":[{"left":"Sender-Empfänger-Modell","right":"gemeinsamer Zeichenvorrat nötig"},{"left":"Vier-Seiten-Modell","right":"vier Botschaften in jeder Nachricht"},{"left":"Eisbergmodell","right":"die Beziehungsebene liegt verborgen"},{"left":"1. Axiom nach Watzlawick","right":"auch Schweigen ist eine Botschaft"}]}'::jsonb,
+  '{"pairs":[{"left":"Sender-Empfänger-Modell","right":"gemeinsamer Zeichenvorrat nötig"},{"left":"Vier-Seiten-Modell","right":"vier Botschaften in jeder Nachricht"},{"left":"2. Axiom nach Watzlawick","right":"Beziehung prägt, wie der Inhalt ankommt"},{"left":"1. Axiom nach Watzlawick","right":"auch Schweigen ist eine Botschaft"}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -8616,11 +8616,11 @@ values (
   'single',
   'Zwei Entwickler streiten seit Wochen heftig darüber, ob im Code Tabs oder Leerzeichen verwendet werden. Eigentlich fühlt sich einer von ihnen übergangen, weil der andere die Teamleitung bekommen hat.',
   'Welches Modell erklärt diesen Streit am besten?',
-  'Nach dem Eisbergmodell ist nur die Sachebene sichtbar. Gefühle wie Kränkung liegen darunter und steuern das Gespräch. Solange nur über Tabs gestritten wird, bleibt der eigentliche Konflikt ungelöst.',
+  'Nach Watzlawick hat jede Nachricht einen Inhalts- und einen Beziehungsaspekt, und die Beziehung bestimmt den Inhalt. Gefühle wie Kränkung steuern deshalb das Gespräch. Solange nur über Tabs gestritten wird, bleibt der eigentliche Konflikt ungelöst.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Das Eisbergmodell: Den sichtbaren Sachstreit treibt ein verdecktes Problem auf der Beziehungsebene an.","is_correct":true,"rationale":"Die Kränkung liegt „unter Wasser“ und macht die harmlose Sachfrage zum Dauerstreit."},{"text":"Das Sender-Empfänger-Modell: Es fehlt ein gemeinsamer Zeichenvorrat.","is_correct":false,"rationale":"Beide kennen die Begriffe genau - am Verstehen liegt es nicht."},{"text":"Das Tuckman-Modell: Das Team ist in der Performing-Phase.","is_correct":false,"rationale":"In der Performing-Phase arbeitet ein Team konfliktarm; verdeckte Motive erklärt Tuckman nicht."},{"text":"Watzlawick: Die Kommunikation ist symmetrisch.","is_correct":false,"rationale":"Symmetrie beschreibt Gespräche auf Augenhöhe - sie erklärt nicht, warum hinter einem Sachstreit ein anderer Grund steckt."}]}'::jsonb,
+  '{"choices":[{"text":"Watzlawicks 2. Axiom: Die gestörte Beziehungsebene bestimmt, wie der Inhalt ankommt.","is_correct":true,"rationale":"Die Kränkung wirkt auf der Beziehungsebene und macht die harmlose Sachfrage zum Dauerstreit."},{"text":"Das Sender-Empfänger-Modell: Es fehlt ein gemeinsamer Zeichenvorrat.","is_correct":false,"rationale":"Beide kennen die Begriffe genau - am Verstehen liegt es nicht."},{"text":"Das Tuckman-Modell: Das Team ist in der Performing-Phase.","is_correct":false,"rationale":"In der Performing-Phase arbeitet ein Team konfliktarm; verdeckte Motive erklärt Tuckman nicht."},{"text":"Verbal, paraverbal, nonverbal: Die Körpersprache widerspricht den Worten.","is_correct":false,"rationale":"Von widersprüchlichen Signalen ist keine Rede - der Grund liegt in der Beziehung, nicht in der Körpersprache."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -8672,13 +8672,13 @@ values (
   'kommunikation',
   'k-gespraech',
   'matching',
-  null,
-  'Um welche Frageart handelt es sich?',
-  'Offene Fragen sammeln Informationen, geschlossene klären Fakten, Alternativfragen führen zur Entscheidung. Suggestivfragen geben die Antwort vor und wirken manipulativ.',
+  'Du führst ein Beratungsgespräch mit einer Steuerkanzlei, die ein neues Dokumentenmanagement sucht.',
+  'In welche Gesprächsphase gehört die Äußerung?',
+  'Kontakt schafft Orientierung, die Bedarfsermittlung klärt Ist, Ziel und Rahmen, die Lösung wird mit ihrem Nutzen begründet, der Abschluss legt nächste Schritte fest.',
   2,
   '{}',
   null,
-  '{"buckets":["offen","geschlossen","Alternativfrage","Suggestivfrage"],"match_items":[{"text":"Wie läuft die Rechnungsprüfung bei Ihnen heute ab?","bucket":0,"rationale":""},{"text":"Haben Sie den Rechner schon neu gestartet?","bucket":1,"rationale":""},{"text":"Soll ich morgens oder nachmittags vorbeikommen?","bucket":2,"rationale":""},{"text":"Sie möchten doch sicher auch das Wartungspaket?","bucket":3,"rationale":""},{"text":"Welche Probleme treten dabei auf?","bucket":0,"rationale":""}]}'::jsonb,
+  '{"buckets":["Kontakt","Bedarfsermittlung","Lösung mit Nutzen","Abschluss"],"match_items":[{"text":"„Schön, dass es heute klappt. Ich möchte verstehen, wo es bei Ihnen hakt.“","bucket":0,"rationale":"Begrüßung und Gesprächsziel gehören zum Kontakt."},{"text":"„Wie legen Sie Mandantenunterlagen heute ab?“","bucket":1,"rationale":"Die Ist-Situation wird erfragt."},{"text":"„Wie viele Mitarbeitende sollen damit arbeiten, und bis wann?“","bucket":1,"rationale":"Rahmenbedingungen gehören zur Bedarfsermittlung."},{"text":"„Mit der Volltextsuche finden Sie jede Akte in Sekunden statt Minuten.“","bucket":2,"rationale":"Ein Merkmal wird in einen Nutzen für den Kunden übersetzt."},{"text":"„Ich schicke Ihnen das Angebot bis Freitag und rufe Montag an.“","bucket":3,"rationale":"Nächste Schritte verbindlich vereinbaren schließt das Gespräch ab."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -8701,13 +8701,13 @@ values (
   'kommunikation',
   'k-gespraech',
   'single',
-  'Eine Kundin schildert aufgebracht ein Problem mit ihrer Buchhaltungssoftware.',
-  'Welche Reaktion entspricht dem aktiven Zuhören?',
-  'Aktives Zuhören heißt: das Gesagte mit eigenen Worten wiedergeben, Gefühle anerkennen und Verständnis sichern.',
+  'Eine Kundin schildert aufgebracht, dass der Export ihrer Buchhaltungssoftware seit gestern abbricht und der Monatsabschluss drängt.',
+  'Welche Reaktion ist für den Einstieg am besten geeignet?',
+  'Bei Beschwerden erst die Beziehungsebene beruhigen (Ärger anerkennen), dann sachlich nachfragen. Widersprechen, Belehren und Abwiegeln sind Gesprächsstörer.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"„Wenn ich Sie richtig verstehe, bricht der Export seit gestern ab - und das bremst Ihren Monatsabschluss.“","is_correct":true,"rationale":"Paraphrasieren und die Auswirkung ansprechen zeigt Verständnis und sichert das Verstehen."},{"text":"„Das kann eigentlich nicht sein, bei anderen Kunden läuft es.“","is_correct":false,"rationale":"Widerspricht und stellt die Kundin in Frage."},{"text":"„Haben Sie das Handbuch gelesen?“","is_correct":false,"rationale":"Wirkt belehrend und blockiert das Gespräch."},{"text":"„Beruhigen Sie sich erst einmal.“","is_correct":false,"rationale":"Übergeht das Anliegen und verstärkt oft den Ärger."}]}'::jsonb,
+  '{"choices":[{"text":"„Das ist ärgerlich, gerade vor dem Abschluss. Welche Meldung erscheint beim Export?“","is_correct":true,"rationale":"Erkennt den Ärger an (Beziehungsebene) und klärt dann gezielt den Sachverhalt."},{"text":"„Das kann eigentlich nicht sein, bei anderen Kunden läuft es.“","is_correct":false,"rationale":"Widerspricht und stellt die Kundin in Frage - ein Gesprächsstörer."},{"text":"„Haben Sie das Handbuch gelesen?“","is_correct":false,"rationale":"Wirkt belehrend und blockiert das Gespräch."},{"text":"„Beruhigen Sie sich erst einmal.“","is_correct":false,"rationale":"Übergeht das Anliegen und verstärkt oft den Ärger."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -8736,7 +8736,7 @@ values (
   2,
   '{}',
   null,
-  '{"ordered_items":["Begrüßung und Gesprächsziel klären","Bedarf mit offenen Fragen ermitteln","Verständnis durch Zusammenfassen sichern","Lösung vorschlagen und mit dem Nutzen begründen","Nächste Schritte vereinbaren"]}'::jsonb,
+  '{"ordered_items":["Begrüßung und Gesprächsziel klären","Ist-Situation, Ziele und Rahmen ermitteln","Verständnis durch Zusammenfassen sichern","Lösung vorschlagen und mit dem Nutzen begründen","Nächste Schritte vereinbaren"]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -8758,14 +8758,14 @@ values (
   'a2-kg-4',
   'kommunikation',
   'k-gespraech',
-  'single',
-  'Du beginnst ein Beratungsgespräch mit einem neuen Kunden, der ein Warenwirtschaftssystem sucht.',
-  'Welche Frage eignet sich am besten als Einstieg in die Bedarfsermittlung?',
-  'Nach der Trichtertechnik beginnt die Bedarfsermittlung mit offenen W-Fragen. Geschlossene und Alternativfragen kommen später zum Präzisieren und Entscheiden.',
+  'matching',
+  'Ein Handwerksbetrieb sucht ein Warenwirtschaftssystem. In der Bedarfsermittlung notierst du die Antworten.',
+  'Welcher Teil der Bedarfsermittlung wird geklärt?',
+  'Eine vollständige Bedarfsermittlung klärt die Ist-Situation (wie heute), die Ziele (was besser werden soll) und den Rahmen (Budget, Termin, Nutzer, Schnittstellen). Erst dann folgt die Lösung.',
   1,
   '{}',
   null,
-  '{"choices":[{"text":"„Wie laufen Bestellung und Lagerverwaltung bei Ihnen heute ab?“","is_correct":true,"rationale":"Eine offene Frage bringt den Kunden zum Erzählen und liefert viele Informationen."},{"text":"„Sie brauchen doch sicher auch eine Schnittstelle zum Onlineshop?“","is_correct":false,"rationale":"Suggestivfrage - sie gibt die Antwort vor und wirkt manipulativ."},{"text":"„Nutzen Sie bisher Excel?“","is_correct":false,"rationale":"Geschlossene Frage - am Anfang zu eng, sie liefert nur Ja oder Nein."},{"text":"„Soll es System A oder System B sein?“","is_correct":false,"rationale":"Alternativfrage - sie verlangt eine Entscheidung, bevor der Bedarf bekannt ist."}]}'::jsonb,
+  '{"buckets":["Ist-Situation","Ziel","Rahmenbedingung"],"match_items":[{"text":"Bestellungen werden heute in Excel-Listen erfasst.","bucket":0,"rationale":"Beschreibt, wie heute gearbeitet wird."},{"text":"Fehlbestände sollen künftig automatisch gemeldet werden.","bucket":1,"rationale":"Beschreibt, was danach besser sein soll."},{"text":"Das Budget liegt bei 8.000 Euro.","bucket":2,"rationale":"Budget begrenzt die möglichen Lösungen."},{"text":"Das System muss bis zum Jahreswechsel laufen.","bucket":2,"rationale":"Ein Termin ist eine Rahmenbedingung."},{"text":"Lagerbestände werden einmal im Monat von Hand gezählt.","bucket":0,"rationale":"Auch das ist der heutige Ablauf."},{"text":"Die Inventur soll höchstens noch einen Tag dauern.","bucket":1,"rationale":"Ein messbares Ziel des Kunden."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -8788,13 +8788,13 @@ values (
   'kommunikation',
   'k-gespraech',
   'matching',
-  'Ein Kunde beschwert sich am Telefon, dass nach einem Update die Rechnungsvorlagen fehlen und morgen der Monatsabschluss ansteht.',
-  'Welche Stufe des aktiven Zuhörens zeigt die Reaktion?',
-  'Aufnehmendes Zuhören zeigt Aufmerksamkeit (Nicken, „Mhm“). Paraphrasieren gibt den Inhalt mit eigenen Worten wieder. Verbalisieren spricht die Gefühle des Gegenübers an.',
+  'In einer Schulung für den Support werden Formulierungen gegenüber Kunden und Kollegen bewertet.',
+  'Ist die Formulierung eine echte Ich-Botschaft oder eine Du-Botschaft?',
+  'Eine echte Ich-Botschaft beschreibt Beobachtung, Wirkung auf mich und Wunsch, ohne die Person zu bewerten. „Ich finde, du bist ...“ ist eine verkappte Du-Botschaft.',
   2,
   '{}',
   null,
-  '{"buckets":["aufnehmendes Zuhören","Paraphrasieren","Verbalisieren"],"match_items":[{"text":"Den Kunden ausreden lassen und kurze Signale geben","bucket":0,"rationale":""},{"text":"Nicken und „Mhm, verstehe.“","bucket":0,"rationale":""},{"text":"„Ich höre, dass Sie sich darüber ärgern.“","bucket":2,"rationale":""},{"text":"„Das bringt Sie vor dem Abschluss ganz schön unter Druck.“","bucket":2,"rationale":""},{"text":"„Wenn ich Sie richtig verstehe, fehlen die Vorlagen für alle Rechnungsarten.“","bucket":1,"rationale":""},{"text":"„Sie meinen also, dass seit dem Update die Vorlagen fehlen.“","bucket":1,"rationale":""}]}'::jsonb,
+  '{"buckets":["echte Ich-Botschaft","Du-Botschaft (auch verkappt)"],"match_items":[{"text":"„Ich kann erst weitermachen, wenn ich die Zugangsdaten habe.“","bucket":0,"rationale":"Beschreibt die eigene Lage und einen Wunsch."},{"text":"„Sie haben mir schon wieder nichts geschickt.“","bucket":1,"rationale":"Vorwurf an die Person."},{"text":"„Ich finde, du bist total unzuverlässig.“","bucket":1,"rationale":"Beginnt mit „Ich“, bewertet aber die Person - verkappt."},{"text":"„Ich verliere den Faden, wenn ich unterbrochen werde. Lass mich bitte ausreden.“","bucket":0,"rationale":"Beobachtung, Wirkung, Wunsch."},{"text":"„Ihr meldet euch ja nie.“","bucket":1,"rationale":"Verallgemeinernder Vorwurf."},{"text":"„Ich brauche die Freigabe bis Donnerstag, damit der Termin hält.“","bucket":0,"rationale":"Eigener Bedarf mit Begründung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -8848,11 +8848,11 @@ values (
   'matching',
   'Im Support reagieren Mitarbeitende unterschiedlich auf eine Kundenbeschwerde.',
   'Ist die Reaktion ein Gesprächsförderer oder ein Gesprächsstörer?',
-  'Gesprächsstörer sind z. B. Belehren, Bagatellisieren, Unterbrechen, ungefragte Ratschläge. Gesprächsförderer sind Nachfragen, Paraphrasieren, Zusammenfassen und das Anerkennen von Gefühlen.',
+  'Gesprächsstörer sind z. B. Belehren, Bagatellisieren, Unterbrechen, ungefragte Ratschläge. Gesprächsförderer sind Nachfragen, Zusammenfassen, Ich-Botschaften und das Anerkennen von Gefühlen.',
   1,
   '{}',
   null,
-  '{"buckets":["Gesprächsförderer","Gesprächsstörer"],"match_items":[{"text":"„Das steht doch im Handbuch.“","bucket":1,"rationale":"Belehren wirkt von oben herab."},{"text":"„Was genau passiert, wenn Sie auf Speichern klicken?“","bucket":0,"rationale":"Eine offene Nachfrage fördert das Gespräch."},{"text":"„Ist doch halb so wild.“","bucket":1,"rationale":"Bagatellisieren nimmt das Anliegen nicht ernst."},{"text":"„Sie meinen also, dass der Fehler nur morgens auftritt?“","bucket":0,"rationale":"Paraphrasieren sichert das Verstehen."},{"text":"Den Kunden mitten im Satz unterbrechen","bucket":1,"rationale":"Wer unterbricht, signalisiert Desinteresse."},{"text":"„Ich verstehe, dass Sie das ärgert.“","bucket":0,"rationale":"Gefühle anzuerkennen entspannt das Gespräch."}]}'::jsonb,
+  '{"buckets":["Gesprächsförderer","Gesprächsstörer"],"match_items":[{"text":"„Das steht doch im Handbuch.“","bucket":1,"rationale":"Belehren wirkt von oben herab."},{"text":"„Was genau passiert, wenn Sie auf Speichern klicken?“","bucket":0,"rationale":"Eine gezielte Nachfrage fördert das Gespräch."},{"text":"„Ist doch halb so wild.“","bucket":1,"rationale":"Bagatellisieren nimmt das Anliegen nicht ernst."},{"text":"„Sie meinen also, dass der Fehler nur morgens auftritt?“","bucket":0,"rationale":"Zusammenfassen sichert das Verstehen."},{"text":"Den Kunden mitten im Satz unterbrechen","bucket":1,"rationale":"Wer unterbricht, signalisiert Desinteresse."},{"text":"„Ich verstehe, dass Sie das ärgert.“","bucket":0,"rationale":"Gefühle anzuerkennen entspannt das Gespräch."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -24519,13 +24519,13 @@ values (
   'qualitaetsmanagement',
   'qm-merkmale',
   'matching',
-  'Für eine neue Rechnungssoftware wurden Anforderungen gesammelt.',
-  'Ordne jede Anforderung dem Qualitätsmerkmal zu, das sie konkretisiert.',
-  'Jede Anforderung wird über ihre Leitfrage eingeordnet: Wie schnell und sparsam (Effizienz)? Wie leicht zu bedienen (Benutzbarkeit)? Wie leicht zu ändern (Wartbarkeit)? Läuft sie anderswo (Übertragbarkeit)? Ist sie geschützt (Sicherheit)?',
+  'Im Lastenheft einer neuen Rechnungssoftware stehen sechs Anforderungen.',
+  'Ist die Anforderung messbar formuliert oder nicht?',
+  'Messbar ist eine Anforderung, wenn sie Messgröße und Zielwert (und meist eine Bedingung) nennt. Wörter wie „schnell“, „intuitiv“ oder „stabil“ müssen durch Zahlen ersetzt werden.',
   2,
   '{}',
   null,
-  '{"buckets":["Effizienz","Benutzbarkeit","Wartbarkeit","Übertragbarkeit","Sicherheit"],"match_items":[{"text":"Eine Rechnung wird in höchstens 1 s als PDF erzeugt.","bucket":0,"rationale":"Antwortzeit gehört zum Zeitverhalten, also zur Effizienz."},{"text":"Neue Mitarbeitende erfassen nach 15 Minuten Einweisung eine Rechnung ohne Hilfe.","bucket":1,"rationale":"Erlernbarkeit ist ein Teil der Benutzbarkeit."},{"text":"Ein neues Zahlungsverfahren lässt sich ergänzen, ohne bestehende Module zu ändern.","bucket":2,"rationale":"Änderbarkeit ist ein Teil der Wartbarkeit."},{"text":"Die Software läuft ohne Anpassung unter Windows und macOS.","bucket":3,"rationale":"Betrieb in einer anderen Umgebung ist Übertragbarkeit."},{"text":"Nur die Rolle Buchhaltung darf Rechnungen stornieren.","bucket":4,"rationale":"Schutz vor unbefugten Aktionen ist Sicherheit."},{"text":"Bei 50 gleichzeitigen Nutzern belegt der Server höchstens 4 GB RAM.","bucket":0,"rationale":"Ressourcenverbrauch gehört ebenfalls zur Effizienz."}]}'::jsonb,
+  '{"buckets":["messbar","nicht messbar"],"match_items":[{"text":"Eine Rechnung wird in höchstens 1 s als PDF erzeugt.","bucket":0,"rationale":"Messgröße (Zeit) und Zielwert (1 s) sind genannt."},{"text":"Die Software soll schnell reagieren.","bucket":1,"rationale":"„Schnell“ hat keinen Zielwert."},{"text":"Neue Mitarbeitende erfassen nach 15 Minuten Einweisung eine Rechnung ohne Hilfe.","bucket":0,"rationale":"Einarbeitungszeit und Ziel sind prüfbar."},{"text":"Die Oberfläche soll intuitiv sein.","bucket":1,"rationale":"„Intuitiv“ ist eine Empfindung, keine Messgröße."},{"text":"Das System ist mindestens 99,8 % der Geschäftszeit verfügbar.","bucket":0,"rationale":"Verfügbarkeit in Prozent lässt sich messen."},{"text":"Das System soll möglichst stabil laufen.","bucket":1,"rationale":"Was „stabil“ heißt, bleibt offen."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -24548,13 +24548,13 @@ values (
   'qualitaetsmanagement',
   'qm-merkmale',
   'single',
-  'Eine Zeiterfassungs-App berechnet die Arbeitszeiten stets korrekt. Sie stürzt aber etwa zweimal pro Woche ab, und ungespeicherte Eingaben gehen verloren.',
-  'Welches Qualitätsmerkmal ist vor allem verletzt?',
-  'Funktionalität fragt, ob die Software das Richtige tut. Zuverlässigkeit fragt, ob sie das dauerhaft und stabil tut. Korrekte Ergebnisse bei häufigen Abstürzen sind ein Zuverlässigkeitsproblem.',
+  'Für eine Zeiterfassungs-App werden Anforderungen gesammelt.',
+  'Welche Anforderung ist nicht funktional?',
+  'Funktionale Anforderungen beschreiben Leistungen des Systems (buchen, berechnen, genehmigen). Nicht funktionale Anforderungen beschreiben Eigenschaften wie Antwortzeit, Verfügbarkeit oder Sicherheit.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Zuverlässigkeit","is_correct":true,"rationale":"Abstürze und Datenverlust zeigen, dass die App nicht stabil läuft."},{"text":"Funktionalität","is_correct":false,"rationale":"Die Berechnungen sind korrekt - die App tut das Richtige, nur nicht beständig."},{"text":"Übertragbarkeit","is_correct":false,"rationale":"Es geht nicht um den Betrieb in einer anderen Umgebung."},{"text":"Wartbarkeit","is_correct":false,"rationale":"Wartbarkeit betrifft die Änderbarkeit des Codes, nicht das Verhalten im Betrieb."}]}'::jsonb,
+  '{"choices":[{"text":"Die App startet auf den Dienst-Smartphones in höchstens 3 Sekunden.","is_correct":true,"rationale":"Sie beschreibt, WIE GUT die App arbeitet (Antwortzeit) - nicht funktional."},{"text":"Mitarbeitende können Beginn und Ende ihrer Arbeitszeit buchen.","is_correct":false,"rationale":"Das ist eine Funktion - WAS die App tut."},{"text":"Die App berechnet die Überstunden eines Monats.","is_correct":false,"rationale":"Eine Berechnung ist eine Funktion der App."},{"text":"Vorgesetzte können Urlaubsanträge genehmigen.","is_correct":false,"rationale":"Auch das Genehmigen ist eine Funktion."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -24579,7 +24579,7 @@ values (
   'single',
   null,
   'Welche Anforderung an einen Webshop ist messbar und damit prüfbar formuliert?',
-  'Eine prüfbare Anforderung nennt Merkmal, Messgröße, Zielwert und Bedingung. Nur dann lässt sich später im Test entscheiden, ob die Qualität erreicht ist.',
+  'Eine prüfbare Anforderung nennt Messgröße, Zielwert und Bedingung. Nur dann lässt sich später im Test entscheiden, ob die Qualität erreicht ist.',
   2,
   '{}',
   null,
@@ -24637,14 +24637,16 @@ values (
   'a5-qe-5',
   'qualitaetsmanagement',
   'qm-merkmale',
-  'matching',
-  null,
-  'Welchem Qualitätsmerkmal gehört die Anforderung an?',
-  'Die Teilmerkmale helfen bei der Zuordnung: Zuverlässigkeit (Reife, Verfügbarkeit, Fehlertoleranz, Wiederherstellbarkeit), Wartbarkeit (Modularität, Analysierbarkeit, Änderbarkeit, Testbarkeit), Kompatibilität (Interoperabilität, Koexistenz).',
-  3,
+  'numeric',
+  'Ein Ticketsystem läuft rund um die Uhr. Im 30-Tage-Monat fiel es insgesamt 9 Stunden aus.',
+  'Welche Verfügbarkeit in Prozent wurde erreicht? (zwei Nachkommastellen)',
+  'Betriebszeit: 30 × 24 h = 720 h
+Verfügbare Zeit: 720 h - 9 h = 711 h
+Verfügbarkeit: 711 / 720 × 100 % = 98,75 %',
+  2,
   '{}',
   null,
-  '{"buckets":["Zuverlässigkeit","Wartbarkeit","Kompatibilität"],"match_items":[{"text":"Nach einem Stromausfall startet der Dienst selbstständig und ohne Datenverlust neu.","bucket":0,"rationale":"Wiederherstellbarkeit ist ein Teilmerkmal der Zuverlässigkeit."},{"text":"Fällt ein Server im Cluster aus, läuft der Dienst ohne Unterbrechung weiter.","bucket":0,"rationale":"Fehlertoleranz gehört zur Zuverlässigkeit."},{"text":"Der Code ist in unabhängige Module gegliedert, die einzeln getestet werden können.","bucket":1,"rationale":"Modularität und Testbarkeit sind Teil der Wartbarkeit."},{"text":"Aussagekräftige Logdateien grenzen einen Fehler schnell ein.","bucket":1,"rationale":"Analysierbarkeit gehört zur Wartbarkeit."},{"text":"Kundendaten werden über eine REST-Schnittstelle mit dem CRM ausgetauscht.","bucket":2,"rationale":"Interoperabilität ist ein Teilmerkmal der Kompatibilität."},{"text":"Die Anwendung läuft auf demselben Server wie die Buchhaltung, ohne sie zu stören.","bucket":2,"rationale":"Koexistenz gehört zur Kompatibilität."}]}'::jsonb,
+  '{"answer":98.75,"tolerance":0.005,"unit":"%"}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -24673,7 +24675,7 @@ values (
   1,
   '{}',
   null,
-  '{"buckets":["funktional","nicht funktional"],"match_items":[{"text":"Die Suche liefert Ergebnisse in höchstens 2 Sekunden.","bucket":1,"rationale":"Sie beschreibt, WIE GUT das System arbeitet (Effizienz)."},{"text":"Kunden können Artikel in den Warenkorb legen.","bucket":0,"rationale":"Eine Funktion - WAS das System tut."},{"text":"Der Shop ist zu 99,5 % im Monat erreichbar.","bucket":1,"rationale":"Verfügbarkeit ist eine Qualitätseigenschaft."},{"text":"Das System erstellt monatlich eine Umsatzstatistik.","bucket":0,"rationale":"Eine Funktion des Systems."},{"text":"Kunden können ihr Passwort selbst zurücksetzen.","bucket":0,"rationale":"Auch das ist eine Funktion."},{"text":"Neue Kunden bestellen ohne Anleitung in unter 3 Minuten.","bucket":1,"rationale":"Erlernbarkeit gehört zur Benutzbarkeit."}]}'::jsonb,
+  '{"buckets":["funktional","nicht funktional"],"match_items":[{"text":"Die Suche liefert Ergebnisse in höchstens 2 Sekunden.","bucket":1,"rationale":"Sie beschreibt, WIE GUT das System arbeitet (Antwortzeit)."},{"text":"Kunden können Artikel in den Warenkorb legen.","bucket":0,"rationale":"Eine Funktion - WAS das System tut."},{"text":"Der Shop ist zu 99,5 % im Monat erreichbar.","bucket":1,"rationale":"Verfügbarkeit ist eine Qualitätseigenschaft."},{"text":"Das System erstellt monatlich eine Umsatzstatistik.","bucket":0,"rationale":"Eine Funktion des Systems."},{"text":"Kunden können ihr Passwort selbst zurücksetzen.","bucket":0,"rationale":"Auch das ist eine Funktion."},{"text":"Neue Kunden bestellen ohne Anleitung in unter 3 Minuten.","bucket":1,"rationale":"Eine Eigenschaft der Bedienbarkeit, keine eigene Funktion."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -24695,14 +24697,14 @@ values (
   'a5-qe-7',
   'qualitaetsmanagement',
   'qm-merkmale',
-  'single',
-  'Eine Bank führt für ihre App eine Zwei-Faktor-Anmeldung per Bestätigungscode ein.',
-  'Welche Wirkung auf die Qualitätsmerkmale ist am ehesten zu erwarten?',
-  'Qualitätsmerkmale konkurrieren: Mehr Sicherheit kostet oft Benutzbarkeit, starke Optimierung kostet Wartbarkeit. Welches Merkmal Vorrang hat, legt der Auftraggeber fest.',
+  'ordering',
+  'Ein Systemhaus plant die Qualität eines neuen Kundenportals.',
+  'Bringe die Schritte der Qualitätsplanung in die richtige Reihenfolge.',
+  'Erst wird erhoben und eingeordnet, dann messbar formuliert. Zu jeder Anforderung gehört ein Abnahmekriterium, damit am Ende Ist und Soll eindeutig verglichen werden können.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Die Sicherheit steigt, die Benutzbarkeit sinkt etwas.","is_correct":true,"rationale":"Ein zusätzlicher Schritt schützt besser, macht die Anmeldung aber umständlicher."},{"text":"Sicherheit und Benutzbarkeit steigen beide.","is_correct":false,"rationale":"Der zusätzliche Schritt macht die Bedienung nicht leichter."},{"text":"Die Effizienz steigt, weil die Anmeldung schneller geht.","is_correct":false,"rationale":"Die Anmeldung dauert eher länger."},{"text":"Keine Merkmale sind betroffen.","is_correct":false,"rationale":"Sicherheit und Benutzbarkeit ändern sich spürbar."}]}'::jsonb,
+  '{"ordered_items":["Anforderungen mit dem Auftraggeber erheben","Anforderungen in funktional und nicht funktional einteilen","Nicht funktionale Anforderungen mit Messgröße und Zielwert formulieren","Prüfmethode und Abnahmekriterium festlegen","Ist-Werte bei der Abnahme mit den Zielwerten vergleichen"]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -32968,7 +32970,7 @@ values (
   2,
   '{}',
   null,
-  '{"code":"Dear project team,\n\nplease find attached our complete requirements\nspecification (84 pages). The scope is final and\nwill not change. We expect a fixed-price offer\nand delivery by 30 November. Our auditors require\nthe full design documentation before development\nstarts. Please note that our staff will not be\navailable for regular meetings during the project.\n\nKind regards, H. Clarke","points":3,"criteria":[{"text":"Die Anforderungen liegen vollständig vor und ändern sich nicht (complete specification, scope is final).","points":1,"keywords":["Anforderungen","vollständig","final","ändern sich nicht","Spezifikation","Umfang steht fest"]},{"text":"Der Kunde erwartet ein Festpreisangebot (fixed-price offer).","points":1,"keywords":["Festpreis","fixed price","fester Preis"]},{"text":"Es gibt einen festen Liefertermin (delivery by 30 November).","points":1,"keywords":["Termin","Liefertermin","Lieferung","30. November"]},{"text":"Die vollständige Entwurfsdokumentation wird vor Entwicklungsbeginn verlangt (auditors).","points":1,"keywords":["Dokumentation","Prüfer","Auditoren","Entwurf"]},{"text":"Die Mitarbeitenden des Kunden stehen nicht für regelmäßige Treffen zur Verfügung.","points":1,"keywords":["nicht verfügbar","keine Zeit","keine regelmäßigen","Treffen","Meetings"]}],"sample_solution":"Für den Wasserfall spricht: Die Anforderungen liegen vollständig vor und der Umfang ändert sich nicht. Der Kunde verlangt einen Festpreis und einen festen Liefertermin (30. November). Seine Prüfer wollen die vollständige Entwurfsdokumentation vor Entwicklungsbeginn, und seine Mitarbeitenden stehen nicht für regelmäßige Treffen bereit - Sprint Reviews wären also kaum möglich."}'::jsonb,
+  '{"code":"Dear project team,\n\nplease find attached our complete requirements\nspecification (84 pages). The scope is final and\nwill not change. We expect a fixed-price offer\nand delivery by 30 November. Our management requires\nthe full design documentation before development\nstarts. Please note that our staff will not be\navailable for regular meetings during the project.\n\nKind regards, H. Clarke","points":3,"criteria":[{"text":"Die Anforderungen liegen vollständig vor und ändern sich nicht (complete specification, scope is final).","points":1,"keywords":["Anforderungen","vollständig","final","ändern sich nicht","Spezifikation","Umfang steht fest"]},{"text":"Der Kunde erwartet ein Festpreisangebot (fixed-price offer).","points":1,"keywords":["Festpreis","fixed price","fester Preis"]},{"text":"Es gibt einen festen Liefertermin (delivery by 30 November).","points":1,"keywords":["Termin","Liefertermin","Lieferung","30. November"]},{"text":"Die vollständige Entwurfsdokumentation wird vor Entwicklungsbeginn verlangt (management requires).","points":1,"keywords":["Dokumentation","Geschäftsleitung","Management","Entwurf"]},{"text":"Die Mitarbeitenden des Kunden stehen nicht für regelmäßige Treffen zur Verfügung.","points":1,"keywords":["nicht verfügbar","keine Zeit","keine regelmäßigen","Treffen","Meetings"]}],"sample_solution":"Für den Wasserfall spricht: Die Anforderungen liegen vollständig vor und der Umfang ändert sich nicht. Der Kunde verlangt einen Festpreis und einen festen Liefertermin (30. November). Seine Geschäftsleitung will die vollständige Entwurfsdokumentation vor Entwicklungsbeginn, und seine Mitarbeitenden stehen nicht für regelmäßige Treffen bereit - Sprint Reviews wären also kaum möglich."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -35698,12 +35700,12 @@ values (
   'k-modelle',
   'cloze',
   'In der IT-Abteilung der Elbtal Logistik AG streiten zwei Administratoren seit Wochen über die Benennung von Servern. Die Teamleiterin vermutet, dass es eigentlich um etwas anderes geht.',
-  'Setze die passenden Begriffe zum Eisbergmodell ein.',
-  'Das Eisbergmodell: rund 20 % Sachebene (sichtbar), rund 80 % Beziehungsebene (verborgen). Die Beziehungsebene bestimmt die Sachebene. Solange nur über Servernamen gestritten wird, bleibt der eigentliche Konflikt ungelöst.',
+  'Setze die passenden Begriffe nach Watzlawick ein.',
+  'Das 2. Axiom nach Watzlawick: Jede Kommunikation hat einen Inhalts- und einen Beziehungsaspekt, wobei der Beziehungsaspekt den Inhaltsaspekt bestimmt. Solange nur über Servernamen gestritten wird, bleibt der eigentliche Konflikt ungelöst.',
   2,
   '{}',
   null,
-  '{"points":5,"cloze_text":"Nach dem Eisbergmodell ist nur etwa ein Fünftel der Kommunikation sichtbar: die {0} mit Zahlen, Daten und Fakten. Unter der Wasseroberfläche liegt die {1} mit {2}, Erfahrungen und Werten. Sie {3} darüber, wie eine Sachaussage ankommt. Ein Dauerstreit über eine Kleinigkeit ist deshalb oft ein Zeichen für einen verdeckten {4}.","gaps":[{"answers":["Sachebene"],"rationale":"Der sichtbare Teil: das, worüber gesprochen wird."},{"answers":["Beziehungsebene"],"rationale":"Der verborgene, größere Teil des Eisbergs."},{"answers":["Gefühlen"],"rationale":"Gefühle gehören zur Beziehungsebene."},{"answers":["entscheidet"],"rationale":"Die Beziehung bestimmt, wie der Inhalt ankommt."},{"answers":["Beziehungskonflikt"],"rationale":"Der Sachstreit ist nur die Spitze des Eisbergs."}],"word_bank":["Kanalstörung","Zeichenvorrat","Appell"]}'::jsonb,
+  '{"points":5,"cloze_text":"Nach Watzlawick hat jede Kommunikation einen {0} und einen {1}. Der Inhalt sind die Zahlen, Daten und Fakten, über die gesprochen wird. Die Beziehung zeigt sich vor allem in {2} und Tonfall. Sie {3} darüber, wie eine Sachaussage ankommt. Ein Dauerstreit über eine Kleinigkeit ist deshalb oft ein Zeichen für einen verdeckten {4}.","gaps":[{"answers":["Inhaltsaspekt"],"rationale":"Das, worüber gesprochen wird."},{"answers":["Beziehungsaspekt"],"rationale":"Wie die Gesprächspartner zueinander stehen."},{"answers":["Gefühlen"],"rationale":"Gefühle gehören zur Beziehungsebene."},{"answers":["entscheidet"],"rationale":"Die Beziehung bestimmt, wie der Inhalt ankommt."},{"answers":["Beziehungskonflikt"],"rationale":"Der Sachstreit überdeckt das eigentliche Problem."}],"word_bank":["Kanalstörung","Zeichenvorrat","Appell"]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -35726,13 +35728,13 @@ values (
   'kommunikation',
   'k-gespraech',
   'pairs',
-  'Du bereitest bei der Kessler & Brandt IT-Systemhaus GmbH das Erstgespräch mit der Steuerkanzlei Albers & Partner vor und planst deine Fragen.',
-  'Ordne jeder Frageart ihren Zweck zu.',
-  'Offene W-Fragen bringen den Kunden zum Erzählen, geschlossene Fragen klären Einzelheiten, Alternativfragen führen zur Entscheidung, Kontrollfragen sichern das Verständnis. Suggestivfragen manipulieren und gehören nicht in die Beratung.',
+  'Du bereitest bei der Kessler & Brandt IT-Systemhaus GmbH das Erstgespräch mit der Steuerkanzlei Albers & Partner vor und planst den Ablauf.',
+  'Ordne jeder Gesprächsphase ihr Ziel zu.',
+  'Jede Phase hat ein eigenes Ziel. Wer die Bedarfsermittlung überspringt, bietet eine Lösung an, die nicht zum Problem passt; ohne Abschluss bleibt offen, wie es weitergeht.',
   2,
   '{}',
   null,
-  '{"points":3,"pairs":[{"left":"offene Frage","right":"viele Informationen sammeln"},{"left":"geschlossene Frage","right":"Fakten mit Ja oder Nein klären"},{"left":"Alternativfrage","right":"Entscheidung herbeiführen"},{"left":"Kontrollfrage","right":"Verständnis sichern"},{"left":"Suggestivfrage","right":"legt die Antwort nahe - vermeiden"},{"left":"rhetorische Frage","right":"Aufmerksamkeit, keine Antwort erwartet"}]}'::jsonb,
+  '{"points":3,"pairs":[{"left":"Kontakt und Begrüßung","right":"Vertrauen aufbauen, Gesprächsziel nennen"},{"left":"Bedarfsermittlung","right":"Ist-Situation, Ziele und Rahmen klären"},{"left":"Lösung mit Nutzen","right":"Vorschlag am Kundenproblem begründen"},{"left":"Einwände klären","right":"Bedenken ernst nehmen und ausräumen"},{"left":"Abschluss","right":"nächste Schritte verbindlich vereinbaren"},{"left":"Nachbereitung","right":"Gesprächsnotiz und Angebot erstellen"}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -35757,11 +35759,11 @@ values (
   'marking',
   'Gesprächsprotokoll aus dem IT-Support der Grünwerk Gartenbedarf GmbH: Eine Filialmitarbeiterin meldet aufgeregt, dass die Kasse keine Bons mehr druckt. Notiert sind die Äußerungen des Supporters (S).',
   'Markiere alle Äußerungen des Supporters, die Gesprächsstörer sind.',
-  'Gesprächsstörer sind Widersprechen, Belehren, Bagatellisieren und Unterbrechen. Gesprächsförderer sind Nachfragen, Paraphrasieren und das Anerkennen von Gefühlen (Verbalisieren).',
+  'Gesprächsstörer sind Widersprechen, Belehren, Bagatellisieren und Unterbrechen. Gesprächsförderer sind Nachfragen, Zusammenfassen und das Anerkennen von Gefühlen.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"S: „Das kann gar nicht sein, gestern lief die Kasse noch.“","is_correct":true,"rationale":"Widersprechen stellt die Kundin infrage."},{"text":"S: „Seit wann genau druckt die Kasse keine Bons mehr?“","is_correct":false,"rationale":"Eine gezielte Nachfrage fördert das Gespräch."},{"text":"S: „Das steht alles in der Anleitung, die wir verschickt haben.“","is_correct":true,"rationale":"Belehren wirkt von oben herab."},{"text":"S: „Sie meinen also, dass der Druck nach dem Bezahlen gar nicht erst startet?“","is_correct":false,"rationale":"Paraphrasieren sichert das Verständnis."},{"text":"S: „Ist ja nur ein Bondrucker, da gibt es Schlimmeres.“","is_correct":true,"rationale":"Bagatellisieren nimmt das Anliegen nicht ernst."},{"text":"S: „Ich verstehe, dass das bei vollem Laden sehr ärgerlich ist.“","is_correct":false,"rationale":"Verbalisieren erkennt das Gefühl der Kundin an."},{"text":"S: „Moment, lassen Sie mich mal - ich erkläre Ihnen jetzt, wie so ein Drucker funktioniert.“","is_correct":true,"rationale":"Unterbrechen und ungefragtes Dozieren blockieren das Gespräch."}],"points":4}'::jsonb,
+  '{"choices":[{"text":"S: „Das kann gar nicht sein, gestern lief die Kasse noch.“","is_correct":true,"rationale":"Widersprechen stellt die Kundin infrage."},{"text":"S: „Seit wann genau druckt die Kasse keine Bons mehr?“","is_correct":false,"rationale":"Eine gezielte Nachfrage fördert das Gespräch."},{"text":"S: „Das steht alles in der Anleitung, die wir verschickt haben.“","is_correct":true,"rationale":"Belehren wirkt von oben herab."},{"text":"S: „Sie meinen also, dass der Druck nach dem Bezahlen gar nicht erst startet?“","is_correct":false,"rationale":"Zusammenfassen mit eigenen Worten sichert das Verständnis."},{"text":"S: „Ist ja nur ein Bondrucker, da gibt es Schlimmeres.“","is_correct":true,"rationale":"Bagatellisieren nimmt das Anliegen nicht ernst."},{"text":"S: „Ich verstehe, dass das bei vollem Laden sehr ärgerlich ist.“","is_correct":false,"rationale":"Den Ärger anzuerkennen beruhigt die Beziehungsebene."},{"text":"S: „Moment, lassen Sie mich mal - ich erkläre Ihnen jetzt, wie so ein Drucker funktioniert.“","is_correct":true,"rationale":"Unterbrechen und ungefragtes Dozieren blockieren das Gespräch."}],"points":4}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -35785,12 +35787,12 @@ values (
   'k-gespraech',
   'open',
   'Ein Kunde der Pixelhafen Medien GmbH beschwert sich aufgebracht am Telefon: Seine neue Website sei „eine Katastrophe“, die Bestellungen kämen nicht mehr an.',
-  'Beschreibe zwei Techniken des aktiven Zuhörens, mit denen du in diesem Gespräch reagierst.',
-  'Je beschriebener Technik 2 Punkte, höchstens 4. Aktives Zuhören hat drei Stufen: aufnehmendes Zuhören, Paraphrasieren (Inhalt) und Verbalisieren (Gefühle); dazu kommen klärende Nachfragen.',
+  'Beschreibe zwei Verhaltensweisen, mit denen du dieses Beschwerdegespräch zielführend führst.',
+  'Je beschriebener Verhaltensweise 2 Punkte, höchstens 4. Bei Beschwerden zuerst die Beziehungsebene beruhigen, dann die Sache klären und verbindlich abschließen.',
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Paraphrasieren: den Inhalt mit eigenen Worten wiedergeben („Sie meinen also, dass keine Bestellungen mehr ankommen“).","points":2,"keywords":["paraphrasieren","eigenen Worten","wiederholen","wiedergeben","zusammenfassen"]},{"text":"Verbalisieren: die Gefühle des Kunden ansprechen („Ich höre, dass Sie das sehr ärgert“).","points":2,"keywords":["verbalisieren","Gefühl","Ärger","Emotion","Verständnis zeigen"]},{"text":"Nachfragen: mit offenen Fragen klären, was genau passiert.","points":2,"keywords":["nachfragen","offene Frage","Rückfrage","W-Frage","klären"]},{"text":"Aufnehmendes Zuhören: ausreden lassen und Aufmerksamkeit signalisieren („Mhm“, „Ich verstehe“).","points":2,"keywords":["ausreden","aufnehmend","aufmerksam","nicht unterbrechen","Signale"]}],"sample_solution":"Ich paraphrasiere, gebe also den Inhalt mit eigenen Worten wieder: „Sie meinen also, dass seit der Umstellung keine Bestellungen mehr ankommen.“ So merkt der Kunde, dass ich ihn verstanden habe. Außerdem verbalisiere ich sein Gefühl: „Ich höre, dass Sie das sehr ärgert.“ Das nimmt Druck aus dem Gespräch."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Ärger anerkennen statt rechtfertigen: Beziehungsebene beruhigen („Das ist ärgerlich, wenn Bestellungen fehlen.“).","points":2,"keywords":["Ärger","Verständnis","anerkennen","Gefühl","Beziehung"]},{"text":"Sachverhalt gezielt klären: nachfragen, seit wann und was genau nicht ankommt.","points":2,"keywords":["nachfragen","seit wann","klären","Frage","Fehlermeldung"]},{"text":"Ergebnis zusammenfassen und bestätigen lassen.","points":2,"keywords":["zusammenfassen","bestätigen","eigenen Worten","wiedergeben"]},{"text":"Ausreden lassen, keine Gesprächsstörer (nicht unterbrechen, belehren, bagatellisieren).","points":2,"keywords":["ausreden","unterbrechen","belehren","Störer"]},{"text":"Nächsten Schritt verbindlich zusagen (Prüfung, Rückruf mit Uhrzeit).","points":2,"keywords":["Rückruf","zusagen","nächster Schritt","Uhr","verbindlich"]}],"sample_solution":"Ich lasse den Kunden ausreden und erkenne seinen Ärger an: „Das ist ärgerlich, wenn keine Bestellungen ankommen.“ Dann kläre ich sachlich nach: „Seit wann fehlen die Bestellungen, und erscheint eine Fehlermeldung?“ Zum Schluss sage ich einen konkreten nächsten Schritt zu, etwa einen Rückruf bis 15 Uhr."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -35813,13 +35815,13 @@ values (
   'kommunikation',
   'k-gespraech',
   'cloze',
-  'Du sprichst für die IT-Abteilung der Elbtal Logistik AG mit dem Leiter der Disposition über neue Arbeitsplatzrechner und gehst nach der Trichtertechnik vor.',
+  'Du sprichst für die IT-Abteilung der Elbtal Logistik AG mit dem Leiter der Disposition über neue Arbeitsplatzrechner.',
   'Wähle für jede Lücke den passenden Begriff.',
-  'Die Trichtertechnik führt vom Weiten ins Enge: erst offene Fragen, dann geschlossene Fragen, zum Schluss eine Kontrollfrage mit Zusammenfassung. Suggestivfragen wirken manipulativ.',
+  'Erst verstehen, dann lösen: Die Bedarfsermittlung klärt Ist-Situation, Ziele und Rahmen. Eine Zusammenfassung sichert das Verständnis, dann wird die Lösung mit ihrem Nutzen begründet.',
   2,
   '{}',
   null,
-  '{"points":4,"cloze_text":"Zu Beginn stellst du {0} Fragen wie „Wie arbeiten Ihre Disponenten heute?“, damit dein Gesprächspartner erzählt. Danach klärst du Einzelheiten mit {1} Fragen wie „Brauchen alle zwei Monitore?“. Mit einer {2} wie „Habe ich richtig verstanden, dass ...?“ sicherst du das Verständnis. Die Frage „Sie wollen doch sicher das teurere Modell?“ ist eine {3} und sollte vermieden werden.","gaps":[{"answers":["offene"],"options":["offene","geschlossene","rhetorische"],"rationale":"Offene W-Fragen liefern viele Informationen."},{"answers":["geschlossenen"],"options":["geschlossenen","offenen","suggestiven"],"rationale":"Ja/Nein-Fragen klären Fakten."},{"answers":["Kontrollfrage"],"options":["Kontrollfrage","Alternativfrage","Gegenfrage"],"rationale":"Sie prüft, ob du richtig verstanden hast."},{"answers":["Suggestivfrage"],"options":["Suggestivfrage","Kontrollfrage","Alternativfrage"],"rationale":"Sie legt die gewünschte Antwort nahe."}]}'::jsonb,
+  '{"points":5,"cloze_text":"Nach der Begrüßung beginnt die {0}. Du lässt dir zuerst die {1} schildern: „Wie arbeiten Ihre Disponenten heute?“ Danach klärst du {2} wie Budget und Termin. Bevor du eine Lösung vorschlägst, {3} du das Ergebnis und lässt es bestätigen. Die Lösung begründest du mit ihrem {4} für den Kunden.","gaps":[{"answers":["Bedarfsermittlung"],"options":["Bedarfsermittlung","Nachbereitung","Einwandbehandlung"],"rationale":"Hier wird geklärt, was der Kunde braucht."},{"answers":["Ist-Situation"],"options":["Ist-Situation","Lösung","Rechnung"],"rationale":"Wie heute gearbeitet wird."},{"answers":["Rahmenbedingungen"],"options":["Rahmenbedingungen","Einwände","Gesprächsstörer"],"rationale":"Budget, Termin, Nutzerzahl."},{"answers":["fasst zusammen"],"options":["fasst zusammen","verkaufst","bagatellisierst"],"rationale":"Sichert, dass du richtig verstanden hast."},{"answers":["Nutzen"],"options":["Nutzen","Preis","Merkmal"],"rationale":"Merkmal allein überzeugt nicht - der Nutzen schon."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -44344,13 +44346,13 @@ values (
   'qualitaetsmanagement',
   'qm-merkmale',
   'table',
-  'Im Lastenheft für ein Kundenportal stehen vier Qualitätsanforderungen. Vor der Übernahme ins Pflichtenheft wird geprüft, ob sie messbar formuliert sind.',
-  'Ordne jede Anforderung einem Qualitätsmerkmal zu und beurteile, ob sie prüfbar ist. (4 P.)',
-  'Eine prüfbare Anforderung nennt Messgröße und Zielwert: „höchstens 2 s“, „mindestens 99,5 %“. „Benutzerfreundlich“ und „gut änderbar“ sind Wünsche ohne Zielwert - sie müssen konkretisiert werden, etwa „Neue Nutzer erfassen nach 15 Minuten Einweisung einen Auftrag ohne Hilfe“.',
+  'Im Lastenheft für ein Kundenportal stehen vier Anforderungen. Vor der Übernahme ins Pflichtenheft wird geprüft, welcher Art sie sind und ob sie messbar formuliert sind.',
+  'Ordne jede Anforderung ein und beurteile, ob sie prüfbar ist. (4 P.)',
+  'Antwortzeit, Bedienbarkeit und Erreichbarkeit beschreiben, WIE GUT das Portal arbeitet - nicht funktional. Der PDF-Download ist eine Funktion und lässt sich eindeutig testen (vorhanden oder nicht). „Benutzerfreundlich“ und „möglichst immer“ haben keinen Zielwert; besser: „Verfügbarkeit mindestens 99,5 % im Monat“.',
   2,
   '{}',
   null,
-  '{"points":4,"grid":[[{"text":"Anforderung"},{"text":"Merkmal"},{"text":"Prüfbar?"}],[{"text":"Die Suche antwortet in höchstens 2 s."},{"gap":{"answers":["Effizienz"],"options":["Effizienz","Benutzbarkeit","Zuverlässigkeit","Wartbarkeit"]}},{"gap":{"answers":["messbar"],"options":["messbar","nicht messbar","keine Anforderung"]}}],[{"text":"Das Portal soll benutzerfreundlich sein."},{"gap":{"answers":["Benutzbarkeit"],"options":["Benutzbarkeit","Effizienz","Zuverlässigkeit","Wartbarkeit"]}},{"gap":{"answers":["nicht messbar"],"options":["nicht messbar","messbar","keine Anforderung"]}}],[{"text":"Verfügbarkeit mindestens 99,5 % im Monat."},{"gap":{"answers":["Zuverlässigkeit"],"options":["Zuverlässigkeit","Effizienz","Benutzbarkeit","Wartbarkeit"]}},{"gap":{"answers":["messbar"],"options":["messbar","nicht messbar","keine Anforderung"]}}],[{"text":"Der Code soll gut änderbar sein."},{"gap":{"answers":["Wartbarkeit"],"options":["Wartbarkeit","Effizienz","Benutzbarkeit","Zuverlässigkeit"]}},{"gap":{"answers":["nicht messbar"],"options":["nicht messbar","messbar","keine Anforderung"]}}]]}'::jsonb,
+  '{"points":4,"grid":[[{"text":"Anforderung"},{"text":"Art"},{"text":"Prüfbar?"}],[{"text":"Die Suche antwortet in höchstens 2 s."},{"gap":{"answers":["nicht funktional"],"options":["nicht funktional","funktional","keine Anforderung"]}},{"gap":{"answers":["messbar"],"options":["messbar","nicht messbar","keine Anforderung"]}}],[{"text":"Das Portal soll benutzerfreundlich sein."},{"gap":{"answers":["nicht funktional"],"options":["nicht funktional","funktional","keine Anforderung"]}},{"gap":{"answers":["nicht messbar"],"options":["nicht messbar","messbar","keine Anforderung"]}}],[{"text":"Kunden können Rechnungen als PDF herunterladen."},{"gap":{"answers":["funktional"],"options":["funktional","nicht funktional","keine Anforderung"]}},{"gap":{"answers":["messbar"],"options":["messbar","nicht messbar","keine Anforderung"]}}],[{"text":"Das Portal soll möglichst immer erreichbar sein."},{"gap":{"answers":["nicht funktional"],"options":["nicht funktional","funktional","keine Anforderung"]}},{"gap":{"answers":["nicht messbar"],"options":["nicht messbar","messbar","keine Anforderung"]}}]]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -44404,13 +44406,13 @@ values (
   'qualitaetsmanagement',
   'qm-merkmale',
   'open',
-  'Ein Logistikunternehmen lässt eine App für seine Handscanner entwickeln. Im Pflichtenheft sollen neben den Funktionen auch Qualitätsmerkmale festgelegt werden.',
-  'Nenne vier Qualitätsmerkmale von Software. (4 P.)',
-  'Je Nennung 1 Punkt, höchstens 4. Jedes Merkmal wird im Pflichtenheft durch messbare Anforderungen konkretisiert, etwa „Buchung in höchstens 1 s“ für die Effizienz.',
+  'Ein Logistikunternehmen lässt eine App für seine Handscanner entwickeln. Im Lastenheft steht: „Die Buchung einer Palette soll schnell gehen.“',
+  'Formuliere die Anforderung so um, dass sie bei der Abnahme prüfbar ist, und nenne die Bestandteile, die du dabei ergänzt hast. (4 P.)',
+  'Je Bestandteil 1 Punkt. Ohne Zielwert und Bedingung kann niemand entscheiden, ob „schnell“ erreicht ist - die Abnahme würde zum Streit.',
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Funktionalität (das Richtige tun)","points":1,"keywords":["Funktionalität","funktional","Korrektheit"]},{"text":"Zuverlässigkeit (stabil und dauerhaft)","points":1,"keywords":["Zuverlässigkeit","Verfügbarkeit","Fehlertoleranz"]},{"text":"Benutzbarkeit (leicht zu bedienen)","points":1,"keywords":["Benutzbarkeit","Usability","Bedienbarkeit","Gebrauchstauglichkeit"]},{"text":"Effizienz (schnell und sparsam)","points":1,"keywords":["Effizienz","Performance","Antwortzeit"]},{"text":"Wartbarkeit (leicht zu ändern)","points":1,"keywords":["Wartbarkeit","Änderbarkeit","Testbarkeit"]},{"text":"Übertragbarkeit (läuft in anderer Umgebung)","points":1,"keywords":["Übertragbarkeit","Portabilität","portierbar"]},{"text":"Sicherheit (Schutz vor unbefugtem Zugriff)","points":1,"keywords":["Sicherheit","Zugriffsschutz","Security"]},{"text":"Kompatibilität (arbeitet mit anderen Systemen zusammen)","points":1,"keywords":["Kompatibilität","Interoperabilität","kompatibel"]}],"sample_solution":"Funktionalität, Zuverlässigkeit, Benutzbarkeit und Effizienz. Weitere Merkmale sind Wartbarkeit, Übertragbarkeit, Sicherheit und Kompatibilität."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Messgröße genannt (Antwortzeit/Dauer der Buchung)","points":1,"keywords":["Antwortzeit","Dauer","Sekunde","Messgröße"]},{"text":"konkreter Zielwert (z. B. höchstens 1 s)","points":1,"keywords":["höchstens","maximal","max","Zielwert"]},{"text":"Bedingung genannt (z. B. bei 50 gleichzeitigen Scannern, im WLAN der Halle)","points":1,"keywords":["bei","gleichzeitig","Bedingung","Last"]},{"text":"Abnahmekriterium/Prüfmethode (z. B. 95 % der Buchungen im Lasttest)","points":1,"keywords":["95","Prozent","Lasttest","Abnahme","Test"]}],"sample_solution":"„Bei 50 gleichzeitig angemeldeten Scannern ist in 95 % der Fälle die Buchung einer Palette nach höchstens 1 Sekunde bestätigt; geprüft wird mit einem Lasttest.“ Ergänzt wurden Messgröße (Antwortzeit), Zielwert (1 s), Bedingung (50 Scanner) und Abnahmekriterium (95 %, Lasttest)."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -44433,13 +44435,13 @@ values (
   'qualitaetsmanagement',
   'qm-merkmale',
   'pairs',
-  'Für die Schulung neuer Auszubildender wird jedem Qualitätsmerkmal eine Leitfrage zugeordnet.',
-  'Verbinde jedes Qualitätsmerkmal mit seiner Leitfrage. (5 P.)',
-  'Über die Leitfrage lässt sich jede Anforderung einordnen: Antwortzeit und Ressourcen (Effizienz), Bedienung (Benutzbarkeit), Änderungen (Wartbarkeit), andere Plattform (Übertragbarkeit), Stabilität (Zuverlässigkeit).',
+  'In einem Lastenheft stehen unscharfe Formulierungen. Sie sollen durch messbare Größen ersetzt werden.',
+  'Verbinde jede unscharfe Formulierung mit einer passenden Messgröße. (4 P.)',
+  'Jede unscharfe Formulierung bekommt eine Messgröße, zu der dann noch Zielwert und Bedingung kommen - etwa „Ladezeit höchstens 2 s bei 500 Nutzern“.',
   2,
   '{}',
   null,
-  '{"points":5,"pairs":[{"left":"Effizienz","right":"Wie schnell und sparsam arbeitet es?"},{"left":"Benutzbarkeit","right":"Wie leicht ist es zu bedienen?"},{"left":"Wartbarkeit","right":"Wie leicht lässt es sich ändern?"},{"left":"Übertragbarkeit","right":"Läuft es in einer anderen Umgebung?"},{"left":"Zuverlässigkeit","right":"Läuft es stabil und dauerhaft?"}]}'::jsonb,
+  '{"points":4,"pairs":[{"left":"„Die Seite soll schnell laden.“","right":"Ladezeit in Sekunden"},{"left":"„Der Dienst soll immer laufen.“","right":"Verfügbarkeit in Prozent pro Monat"},{"left":"„Neue Nutzer sollen gut zurechtkommen.“","right":"Einarbeitungszeit bis zur ersten Buchung ohne Hilfe"},{"left":"„Nach einem Ausfall soll es bald weitergehen.“","right":"Wiederanlaufzeit in Minuten"}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -55383,12 +55385,12 @@ values (
   'qm-merkmale',
   'open',
   null,
-  'Nenne neben der Funktionalität drei weitere Qualitätsmerkmale, die für den Webshop des Fahrradhändlers wichtig sind. (3 P.)',
-  'Je Nennung 1 Punkt, höchstens 3. Qualitätsmerkmale beschreiben, WIE GUT ein System arbeitet - sie werden mit messbaren Anforderungen konkretisiert.',
+  'Neben den Funktionen soll das Pflichtenheft auch nicht funktionale Anforderungen an den Webshop des Fahrradhändlers enthalten. Formuliere drei solche Anforderungen messbar. (3 P.)',
+  'Je messbar formulierter Anforderung 1 Punkt, höchstens 3. Ohne Zielwert („schnell“, „sicher“) gibt es keinen Punkt, denn die Anforderung wäre bei der Abnahme nicht prüfbar.',
   2,
   '{}',
   null,
-  '{"case_id":"f-a05-agentur","points":3,"criteria":[{"text":"Benutzbarkeit (einfache Bedienung des Bestellvorgangs)","points":1,"keywords":["Benutzbarkeit","Usability","Bedienbarkeit"]},{"text":"Effizienz (kurze Ladezeiten)","points":1,"keywords":["Effizienz","Performance","Ladezeit"]},{"text":"Zuverlässigkeit (hohe Verfügbarkeit des Shops)","points":1,"keywords":["Zuverlässigkeit","Verfügbarkeit","stabil"]},{"text":"Sicherheit (Schutz von Kunden- und Zahlungsdaten)","points":1,"keywords":["Sicherheit","Datenschutz","Zahlungsdaten"]},{"text":"Kompatibilität und Übertragbarkeit (verschiedene Browser und Geräte)","points":1,"keywords":["Kompatibilität","Übertragbarkeit","Browser","Portabilität"]},{"text":"Wartbarkeit (leicht änderbar, etwa bei neuen Versandregeln)","points":1,"keywords":["Wartbarkeit","Änderbarkeit","wartbar"]}],"sample_solution":"Benutzbarkeit (der Bestellvorgang ist leicht zu bedienen), Effizienz (kurze Ladezeiten) und Sicherheit (Kunden- und Zahlungsdaten sind geschützt). Auch Zuverlässigkeit, Kompatibilität mit verschiedenen Browsern und Wartbarkeit sind richtig."}'::jsonb,
+  '{"case_id":"f-a05-agentur","points":3,"criteria":[{"text":"Antwortzeit mit Zielwert (z. B. Seite lädt in max. 2 s bei 300 Nutzern)","points":1,"keywords":["Ladezeit","Antwortzeit","Sekunde"," s "]},{"text":"Verfügbarkeit in Prozent (z. B. mind. 99,5 % pro Monat)","points":1,"keywords":["Verfügbarkeit","%","Prozent","erreichbar"]},{"text":"Bedienbarkeit messbar (z. B. Bestellung in höchstens 5 Klicks)","points":1,"keywords":["Klick","Minute","ohne Hilfe","Bedienung"]},{"text":"Sicherheit prüfbar (z. B. Zahlungsdaten nur per TLS übertragen, Passwörter gehasht)","points":1,"keywords":["TLS","HTTPS","Hash","verschlüsselt"]},{"text":"Wiederanlauf/Kompatibilität prüfbar (z. B. nach Ausfall in 30 min wieder online, läuft in den drei häufigsten Browsern)","points":1,"keywords":["Wiederanlauf","Browser","Smartphone","Ausfall"]}],"sample_solution":"Die Produktseiten laden bei 300 gleichzeitigen Besuchern in höchstens 2 Sekunden. Der Shop ist mindestens 99,5 % pro Monat erreichbar. Eine Bestellung ist in höchstens 5 Klicks abgeschlossen. Auch prüfbare Sicherheits- oder Browseranforderungen sind richtig."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -55556,13 +55558,13 @@ values (
   'qualitaetsmanagement',
   'qm-merkmale',
   'pairs',
-  'Im Pflichtenheft stehen neben den Funktionen auch Qualitätsanforderungen an die App.',
-  'Ordne jeder Anforderung das Qualitätsmerkmal zu, das sie konkretisiert. (3 P.)',
-  'Antwortzeit ist Effizienz, Robustheit gegen Störungen ist Zuverlässigkeit, einfache Bedienung ist Benutzbarkeit, der Betrieb auf verschiedenen Geräten ist Übertragbarkeit.',
+  'Im Pflichtenheft stehen neben den Funktionen auch nicht funktionale Anforderungen an die App. Für die Abnahme muss jede testbar sein.',
+  'Ordne jeder Anforderung die passende Prüfmethode zu. (3 P.)',
+  'Zu jeder nicht funktionalen Anforderung gehört eine Prüfmethode, die ein eindeutiges Ergebnis liefert: Zeit messen, Störung herbeiführen, echte Nutzer beobachten, auf jeder Zielplattform testen.',
   2,
   '{}',
   null,
-  '{"case_id":"f-a05-logistik","points":3,"pairs":[{"left":"Buchung in höchstens 1 s","right":"Effizienz"},{"left":"Kein Datenverlust bei WLAN-Abbruch","right":"Zuverlässigkeit"},{"left":"Mit Arbeitshandschuhen bedienbar","right":"Benutzbarkeit"},{"left":"Läuft auf zwei Scannermodellen","right":"Übertragbarkeit"}]}'::jsonb,
+  '{"case_id":"f-a05-logistik","points":3,"pairs":[{"left":"Buchung in höchstens 1 s","right":"Lasttest mit Zeitmessung"},{"left":"Kein Datenverlust bei WLAN-Abbruch","right":"WLAN während der Buchung trennen und Datenbestand prüfen"},{"left":"Mit Arbeitshandschuhen bedienbar","right":"Usability-Test mit Lagerpersonal in Handschuhen"},{"left":"Läuft auf zwei Scannermodellen","right":"Testfälle auf beiden Geräten ausführen"}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -65175,7 +65177,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-kg-20', 'kommunikation', 'k-gespraech', 'Was ist das Ziel der Bedarfsermittlung im Kundengespräch?', 'Verstehen, was der Kunde wirklich braucht - mit offenen Fragen, aktivem Zuhören und einer Kontrollfrage, bevor du eine Lösung anbietest.', null, '{}', 564)
+values ('k-kg-20', 'kommunikation', 'k-gespraech', 'Was ist das Ziel der Bedarfsermittlung im Kundengespräch?', 'Verstehen, was der Kunde wirklich braucht: Ist-Situation, Ziele und Rahmen klären und zusammenfassen, bevor du eine Lösung anbietest.', null, '{}', 564)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -85117,7 +85119,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-qg-10', 'qualitaetsmanagement', 'qm-grundlagen', 'Nenne drei Beispiele für analytische QS-Maßnahmen.', 'Test, Review, Inspektion, statische Codeanalyse, Audit.', null, '{}', 2098)
+values ('k-qg-10', 'qualitaetsmanagement', 'qm-grundlagen', 'Nenne drei Beispiele für analytische QS-Maßnahmen.', 'Test, Review, Inspektion, statische Codeanalyse.', null, '{}', 2098)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,

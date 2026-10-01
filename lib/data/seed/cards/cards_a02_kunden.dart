@@ -149,7 +149,7 @@ final List<Flashcard> cardsA02 = [
     'k-kg-20',
     'k-gespraech',
     'Was ist das Ziel der Bedarfsermittlung im Kundengespräch?',
-    'Verstehen, was der Kunde wirklich braucht - mit offenen Fragen, aktivem Zuhören und einer Kontrollfrage, bevor du eine Lösung anbietest.',
+    'Verstehen, was der Kunde wirklich braucht: Ist-Situation, Ziele und Rahmen klären und zusammenfassen, bevor du eine Lösung anbietest.',
   ),
 
   // Kunden beraten
