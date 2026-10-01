@@ -353,7 +353,9 @@ class Question {
 
       case QuestionKind.open:
         final a = answer as OpenAnswer?;
-        final total = criteria.fold<int>(0, (s, c) => s + c.points);
+        // Wie im Lösungsbogen: Die Kriterienliste darf länger sein als verlangt
+        // ("zwei von sechs Nennungen") - gedeckelt wird auf die Punkte der Aufgabe.
+        final total = points;
         final parts = <String, bool>{};
         var earned = 0;
         for (var i = 0; i < criteria.length; i++) {
@@ -366,7 +368,7 @@ class Question {
           if (ok) earned += criteria[i].points;
         }
         return GradeResult(
-          score: total == 0 ? 0 : earned / total,
+          score: total == 0 ? 0 : (earned / total).clamp(0.0, 1.0),
           parts: parts,
         );
 
