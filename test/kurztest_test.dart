@@ -4,7 +4,7 @@ import 'package:ap1_trainer/data/models/progress.dart';
 import 'package:ap1_trainer/data/models/question.dart';
 import 'package:ap1_trainer/data/repositories/local_store.dart';
 import 'package:ap1_trainer/data/seed/seed_data.dart';
-import 'package:ap1_trainer/features/learn/session_launcher.dart';
+import 'package:ap1_trainer/core/util/question_selector.dart';
 import 'package:ap1_trainer/state/providers.dart';
 import 'package:ap1_trainer/state/session_controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -36,7 +36,7 @@ void main() {
           questions: [single],
           mode: SessionMode.uebung,
           title: 'Kurztest',
-          supply: (used) => SessionLauncher.pickRandom(pool, used, rnd),
+          supply: (asked) => QuestionSelector.nextEndless(pool, asked, rnd),
         );
   }
 
@@ -82,7 +82,7 @@ void main() {
     final rnd = math.Random(7);
     final topics = <String>{};
     for (var i = 0; i < 2000; i++) {
-      topics.add(SessionLauncher.pickRandom(pool, const {}, rnd)!.topicId);
+      topics.add(QuestionSelector.nextEndless(pool, const [], rnd)!.topicId);
     }
     expect(topics, pool.map((q) => q.topicId).toSet());
   });

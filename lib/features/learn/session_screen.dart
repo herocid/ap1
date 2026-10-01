@@ -5,22 +5,24 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
-import '../../core/theme/app_theme.dart';
+import '../../data/models/question.dart';
 import '../../data/seed/seed_theory.dart';
 import '../../state/providers.dart';
 import '../../state/session_controller.dart';
 import '../../widgets/common.dart';
-import '../../widgets/question_view.dart';
+import '../exam/exam_widgets.dart';
+import 'question_host.dart';
 import 'theory_sheet.dart';
 
-/// Der Aufgaben-Runner - eine Oberfläche für Übung und Prüfung.
+/// Der Aufgaben-Runner für Übungsrunden (Kurztest, Schwächen-Training,
+/// Fehler wiederholen, Bereichs-Quiz).
 ///
-/// Der Unterschied ist bewusst sichtbar, aber klein gehalten:
-/// - Übung: Aktion "Prüfen" -> Feedback und Erklärung sofort, dann "Weiter".
-///   Zurückblättern gibt es nicht; eine beantwortete Aufgabe ist erledigt.
-/// - Prüfung: Countdown in der Kopfzeile, kein "Prüfen", dafür freie
-///   Navigation, Markieren für später und eine Aufgabenübersicht. Keine
-///   Erklärungen, keine Farben, kein Hinweis auf richtig oder falsch.
+/// Aktion "Prüfen" -> Rückmeldung mit Teilpunkten und Erklärung sofort, dann
+/// "Weiter". Zurückblättern gibt es nicht; eine beantwortete Aufgabe ist
+/// erledigt. Bei Freitext folgt nach dem Aufdecken die Selbstbewertung -
+/// die Punkte oben ändern sich mit jedem Haken.
+///
+/// Prüfungsbögen (Simulation, Aufgabe des Tages) laufen im `ExamRunScreen`.
 class SessionScreen extends ConsumerStatefulWidget {
   const SessionScreen({super.key});
 
@@ -39,7 +41,7 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
   }
 
   void _maybeShowTheory(SessionState s) {
-    if (_theoryChecked || s.isExam || s.endless) return;
+    if (_theoryChecked || s.deferredFeedback || s.endless) return;
     _theoryChecked = true;
 
     final topicId = s.items.first.question.topicId;
@@ -86,13 +88,10 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
     final leave = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text(s.isExam ? 'Simulation abbrechen?' : 'Session beenden?'),
-        content: Text(
-          s.isExam
-              ? 'Die Simulation wird nicht gewertet und der Versuch geht '
-                    'verloren.'
-              : 'Bereits geprüfte Aufgaben bleiben in deiner Statistik. '
-                    'Der Rest der Runde verfällt.',
+        title: const Text('Session beenden?'),
+        content: const Text(
+          'Bereits geprüfte Aufgaben bleiben in deiner Statistik. '
+          'Der Rest der Runde verfällt.',
         ),
         actions: [
           TextButton(
@@ -136,39 +135,41 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
+    // Ein Prüfungsbogen gehört in den Prüfungslauf.
+    if (session.paper != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) context.pushReplacement('/pruefung-lauf');
+      });
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+
     _maybeShowTheory(session);
 
     final item = session.current;
     final controller = ref.read(sessionProvider.notifier);
 
+    Future<void> close() async {
+      if (session.endless) {
+        _endKurztest(session, controller);
+        return;
+      }
+      if (await _confirmLeave(session)) {
+        controller.clear();
+        if (context.mounted) _leave();
+      }
+    }
+
     return PopScope(
       canPop: false,
-      onPopInvokedWithResult: (didPop, _) async {
-        if (didPop) return;
-        if (session.endless) {
-          _endKurztest(session, controller);
-          return;
-        }
-        if (await _confirmLeave(session)) {
-          controller.clear();
-          if (context.mounted) _leave();
-        }
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) close();
       },
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
             icon: const Icon(Icons.close),
             tooltip: 'Beenden',
-            onPressed: () async {
-              if (session.endless) {
-                _endKurztest(session, controller);
-                return;
-              }
-              if (await _confirmLeave(session)) {
-                controller.clear();
-                if (context.mounted) _leave();
-              }
-            },
+            onPressed: close,
           ),
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -201,19 +202,6 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
                 child: const Text('Beenden'),
               ),
               const SizedBox(width: Gap.xs),
-            ] else if (session.isExam) ...[
-              IconButton(
-                tooltip: item.flagged
-                    ? 'Markierung entfernen'
-                    : 'Für später markieren',
-                onPressed: controller.toggleFlag,
-                icon: Icon(
-                  item.flagged ? Icons.bookmark : Icons.bookmark_outline,
-                  color: item.flagged ? context.c.flame : null,
-                ),
-              ),
-              _CountdownBadge(remaining: session.remaining ?? Duration.zero),
-              const SizedBox(width: Gap.s),
             ] else
               IconButton(
                 tooltip: 'Kurz nachlesen',
@@ -265,14 +253,29 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
                     alignment: Alignment.topCenter,
                     children: [...previous, ?current],
                   ),
-                  child: QuestionView(
+                  child: Column(
                     key: ValueKey('${session.index}-${item.question.id}'),
-                    question: item.question,
-                    answer: item.answer,
-                    onChanged: controller.setAnswer,
-                    revealed: item.checked,
-                    grade: item.grade,
-                    showExplanation: !session.isExam,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (item.checked) ...[
+                        _Feedback(item: item),
+                        const SizedBox(height: Gap.l),
+                      ] else if (item.retry) ...[
+                        const _RetryNote(),
+                        const SizedBox(height: Gap.l),
+                      ],
+                      QuestionHost(
+                        question: item.question,
+                        answer: item.answer,
+                        onChanged: controller.setAnswer,
+                        revealed: item.checked,
+                        grade: item.grade,
+                        shuffleSeed: QuestionHost.seedFor(
+                          session.startedAt,
+                          item.question,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -295,206 +298,108 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
             controller.next();
             _scrollToTop();
           },
-          onPrevious: () {
-            controller.previous();
-            _scrollToTop();
-          },
-          onFinish: () => _confirmFinish(session, controller),
-          onOverview: () => _showOverview(session, controller),
-        ),
-      ),
-    );
-  }
-
-  Future<void> _confirmFinish(
-    SessionState s,
-    SessionController controller,
-  ) async {
-    if (!s.isExam) {
-      controller.finish();
-      return;
-    }
-    final open = s.items.where((i) => !i.hasAnswer).length;
-    final ok = await showDialog<bool>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: const Text('Simulation abgeben?'),
-        content: Text(
-          open == 0
-              ? 'Alle Aufgaben sind bearbeitet. Nach der Abgabe siehst du die '
-                    'Auswertung mit allen Erklärungen.'
-              : '$open ${open == 1 ? "Aufgabe ist" : "Aufgaben sind"} noch '
-                    'unbeantwortet. Unbeantwortete Aufgaben zählen mit 0 Punkten.',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(ctx).pop(false),
-            child: const Text('Zurück'),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.of(ctx).pop(true),
-            child: const Text('Abgeben'),
-          ),
-        ],
-      ),
-    );
-    if (ok == true) controller.finish();
-  }
-
-  void _showOverview(SessionState s, SessionController controller) {
-    showModalBottomSheet<void>(
-      context: context,
-      builder: (ctx) => SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(Gap.xl, 0, Gap.xl, Gap.xl),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Aufgabenübersicht', style: ctx.text.titleLarge),
-              const SizedBox(height: Gap.xs),
-              Text(
-                '${s.answeredCount} von ${s.items.length} bearbeitet',
-                style: ctx.text.labelSmall?.copyWith(color: ctx.c.textMuted),
-              ),
-              const SizedBox(height: Gap.l),
-              Wrap(
-                spacing: Gap.s,
-                runSpacing: Gap.s,
-                children: [
-                  for (var i = 0; i < s.items.length; i++)
-                    _OverviewDot(
-                      index: i,
-                      item: s.items[i],
-                      isCurrent: i == s.index,
-                      onTap: () {
-                        controller.jumpTo(i);
-                        Navigator.of(ctx).pop();
-                        _scrollToTop();
-                      },
-                    ),
-                ],
-              ),
-              const SizedBox(height: Gap.l),
-              Row(
-                children: [
-                  _LegendDot(color: ctx.scheme.primary, label: 'bearbeitet'),
-                  const SizedBox(width: Gap.l),
-                  _LegendDot(color: ctx.c.flame, label: 'markiert'),
-                  const SizedBox(width: Gap.l),
-                  _LegendDot(color: ctx.c.border, label: 'offen'),
-                ],
-              ),
-            ],
-          ),
+          onFinish: controller.finish,
         ),
       ),
     );
   }
 }
 
-class _CountdownBadge extends StatelessWidget {
-  const _CountdownBadge({required this.remaining});
+/// Rückmeldung direkt nach dem Prüfen: Symbol, ein Wort und die Teilpunkte
+/// („3 von 4 P.“) - nie nur Farbe. Die ausführliche Erklärung steht unter
+/// der Aufgabe.
+class _Feedback extends StatelessWidget {
+  const _Feedback({required this.item});
 
-  final Duration remaining;
+  final SessionItem item;
 
   @override
   Widget build(BuildContext context) {
-    final warn = remaining.inMinutes < 5;
-    final critical = remaining.inMinutes < 1;
-    final color = critical
-        ? context.c.danger
-        : (warn ? context.c.flame : context.c.textMuted);
+    final g = item.grade;
+    final open = item.isOpen;
+    final (color, bg, icon, word) = g == null
+        ? (context.c.textMuted, context.c.surfaceAlt, Icons.help_outline, '')
+        : g.isCorrect
+        ? (
+            context.c.success,
+            context.c.successBg,
+            Icons.check_circle,
+            open ? 'Volle Punkte' : 'Richtig',
+          )
+        : item.earned > 0
+        ? (
+            context.c.flame,
+            context.c.flameBg,
+            Icons.adjust,
+            open ? 'Teilpunkte' : 'Teilweise richtig',
+          )
+        : (
+            context.c.danger,
+            context.c.dangerBg,
+            Icons.cancel,
+            open ? 'Noch keine Punkte' : 'Noch nicht',
+          );
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: Gap.m, vertical: 6),
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: Gap.l, vertical: Gap.m),
       decoration: BoxDecoration(
-        color: critical
-            ? context.c.dangerBg
-            : warn
-            ? context.c.flameBg
-            : context.c.surfaceAlt,
-        borderRadius: BorderRadius.circular(Radii.pill),
+        color: bg,
+        borderRadius: BorderRadius.circular(Radii.m),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.timer_outlined, size: 15, color: color),
-          const SizedBox(width: 5),
-          Text(
-            formatDuration(remaining),
-            style: AppType.numeric(size: 14, color: color),
+          Row(
+            children: [
+              Icon(icon, size: 20, color: color),
+              const SizedBox(width: Gap.s),
+              Expanded(
+                child: Text(
+                  word,
+                  style: context.text.titleMedium?.copyWith(color: color),
+                ),
+              ),
+              const SizedBox(width: Gap.s),
+              PointsPill.earned(item),
+            ],
           ),
+          if (open) ...[
+            const SizedBox(height: Gap.xs),
+            Text(
+              'Vergleiche mit der Musterlösung und hake ab, was wirklich '
+              'in deiner Antwort stand - danach richten sich die Punkte.',
+              style: context.text.bodySmall,
+            ),
+          ] else if (item.retry && g?.isCorrect == true) ...[
+            const SizedBox(height: Gap.xs),
+            Text(
+              'Im zweiten Anlauf geschafft. Die Aufgabe kommt an einem '
+              'anderen Tag noch einmal.',
+              style: context.text.bodySmall,
+            ),
+          ],
         ],
       ),
     );
   }
 }
 
-class _OverviewDot extends StatelessWidget {
-  const _OverviewDot({
-    required this.index,
-    required this.item,
-    required this.isCurrent,
-    required this.onTap,
-  });
-
-  final int index;
-  final SessionItem item;
-  final bool isCurrent;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final color = item.flagged
-        ? context.c.flame
-        : item.hasAnswer
-        ? context.scheme.primary
-        : context.c.border;
-
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(Radii.s),
-      child: Container(
-        width: 42,
-        height: 42,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: item.hasAnswer || item.flagged
-              ? color.withValues(alpha: 0.14)
-              : Colors.transparent,
-          borderRadius: BorderRadius.circular(Radii.s),
-          border: Border.all(color: color, width: isCurrent ? 2.4 : 1.2),
-        ),
-        child: Text('${index + 1}', style: AppType.numeric(size: 14)),
-      ),
-    );
-  }
-}
-
-class _LegendDot extends StatelessWidget {
-  const _LegendDot({required this.color, required this.label});
-
-  final Color color;
-  final String label;
+class _RetryNote extends StatelessWidget {
+  const _RetryNote();
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          width: 10,
-          height: 10,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(3),
-            border: Border.all(color: color, width: 2),
+        Icon(Icons.replay, size: 16, color: context.c.flame),
+        const SizedBox(width: Gap.s),
+        Expanded(
+          child: Text(
+            'Zweiter Anlauf - die Aufgabe ging vorhin daneben.',
+            style: context.text.labelSmall?.copyWith(color: context.c.flame),
           ),
-        ),
-        const SizedBox(width: 5),
-        Text(
-          label,
-          style: context.text.labelSmall?.copyWith(color: context.c.textMuted),
         ),
       ],
     );
@@ -506,21 +411,23 @@ class _BottomBar extends StatelessWidget {
     required this.session,
     required this.onCheck,
     required this.onNext,
-    required this.onPrevious,
     required this.onFinish,
-    required this.onOverview,
   });
 
   final SessionState session;
   final VoidCallback onCheck;
   final VoidCallback onNext;
-  final VoidCallback onPrevious;
   final VoidCallback onFinish;
-  final VoidCallback onOverview;
 
   @override
   Widget build(BuildContext context) {
     final item = session.current;
+    final last = session.isLast && !session.endless;
+    final kind = item.question.kind;
+    final picks =
+        kind == QuestionKind.single ||
+        kind == QuestionKind.multiple ||
+        kind == QuestionKind.marking;
 
     return Container(
       decoration: BoxDecoration(
@@ -533,67 +440,37 @@ class _BottomBar extends StatelessWidget {
           padding: const EdgeInsets.all(Gap.l),
           child: ReadableWidth(
             shrinkHeight: true,
-            child: session.isExam
-                ? Row(
-                    children: [
-                      IconButton.outlined(
-                        onPressed: session.index == 0 ? null : onPrevious,
-                        icon: const Icon(Icons.chevron_left),
-                        tooltip: 'Vorherige Aufgabe',
+            child: SizedBox(
+              width: double.infinity,
+              child: item.checked
+                  ? FilledButton.icon(
+                      onPressed: last ? onFinish : onNext,
+                      icon: Icon(
+                        last ? Icons.flag_outlined : Icons.arrow_forward,
                       ),
-                      const SizedBox(width: Gap.s),
-                      IconButton.outlined(
-                        onPressed: onOverview,
-                        icon: const Icon(Icons.grid_view_outlined),
-                        tooltip: 'Übersicht',
+                      label: Text(
+                        last
+                            ? 'Auswertung ansehen'
+                            : session.endless
+                            ? 'Nächste Frage'
+                            : 'Nächste Aufgabe',
                       ),
-                      const SizedBox(width: Gap.m),
-                      Expanded(
-                        child: session.isLast
-                            ? FilledButton.icon(
-                                onPressed: onFinish,
-                                icon: const Icon(Icons.done_all),
-                                label: const Text('Abgeben'),
-                              )
-                            : FilledButton(
-                                onPressed: onNext,
-                                child: const Text('Weiter'),
-                              ),
+                    )
+                  : FilledButton(
+                      // Freitext darf man auch im Kopf lösen und dann die
+                      // Musterlösung aufdecken.
+                      onPressed: item.hasAnswer || item.isOpen ? onCheck : null,
+                      child: Text(
+                        item.hasAnswer
+                            ? 'Antwort prüfen'
+                            : item.isOpen
+                            ? 'Musterlösung zeigen'
+                            : picks
+                            ? 'Antwort auswählen'
+                            : 'Antwort eingeben',
                       ),
-                    ],
-                  )
-                : Row(
-                    children: [
-                      Expanded(
-                        child: item.checked
-                            ? FilledButton.icon(
-                                onPressed: session.isLast && !session.endless
-                                    ? onFinish
-                                    : onNext,
-                                icon: Icon(
-                                  session.isLast && !session.endless
-                                      ? Icons.flag_outlined
-                                      : Icons.arrow_forward,
-                                ),
-                                label: Text(
-                                  session.isLast && !session.endless
-                                      ? 'Auswertung ansehen'
-                                      : session.endless
-                                      ? 'Nächste Frage'
-                                      : 'Nächste Aufgabe',
-                                ),
-                              )
-                            : FilledButton(
-                                onPressed: item.hasAnswer ? onCheck : null,
-                                child: Text(
-                                  item.hasAnswer
-                                      ? 'Antwort prüfen'
-                                      : 'Antwort auswählen',
-                                ),
-                              ),
-                      ),
-                    ],
-                  ),
+                    ),
+            ),
           ),
         ),
       ),
