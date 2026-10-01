@@ -232,7 +232,7 @@ class _OpenQuestionViewState extends State<OpenQuestionView> {
           Text(
             needed != null && needed < q.criteria.length
                 ? '$needed von ${q.criteria.length} Nennungen genügen für '
-                      'die volle Punktzahl – die Liste zeigt alle Möglichkeiten.'
+                      'die volle Punktzahl. Die Liste zeigt alle Möglichkeiten.'
                 : 'Für die volle Punktzahl genügen $total von $listed '
                       'möglichen Punkten.',
             style: context.text.bodySmall?.copyWith(color: c.textMuted),
@@ -260,7 +260,7 @@ class _OpenQuestionViewState extends State<OpenQuestionView> {
                 const SizedBox(width: Gap.s),
                 Expanded(
                   child: Text(
-                    'Vorschlag der App – bitte selbst prüfen',
+                    'Vorschlag der App, bitte selbst prüfen',
                     style: context.text.labelSmall?.copyWith(
                       color: c.info,
                       letterSpacing: 0.2,

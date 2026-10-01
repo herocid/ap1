@@ -324,7 +324,7 @@ class _ExplanationBlock extends StatelessWidget {
         : g.isCorrect
         ? 'Richtig'
         : g.isPartial
-        ? 'Teilweise richtig – ${(g.score * 100).round()} %'
+        ? 'Teilweise richtig: ${(g.score * 100).round()} %'
         : 'Leider falsch';
 
     return Column(

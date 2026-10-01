@@ -156,8 +156,8 @@ class CardsOverviewScreen extends ConsumerWidget {
                   icon: Icons.shuffle,
                   title: 'Zufallsmix',
                   subtitle:
-                      '20 Karten quer durch alle Themen, Unsicheres '
-                      'bevorzugt. Trainiert das Umschalten wie in der Prüfung.',
+                      '20 Karten quer durch alle Themen, Unsicheres zuerst. '
+                      'So übst du das Umschalten wie in der Prüfung.',
                   onTap: () => CardLaunch.randomMix(context, ref),
                 ),
                 const SizedBox(height: Gap.s),
@@ -165,8 +165,8 @@ class CardsOverviewScreen extends ConsumerWidget {
                   icon: Icons.tune,
                   title: 'Themen auswählen',
                   subtitle:
-                      'Bereiche oder einzelne Themen wählen, als kurze '
-                      'Runde oder als Durchlauf.',
+                      'Wähl Bereiche oder einzelne Themen und lern sie als '
+                      'kurze Runde oder im Durchlauf.',
                   onTap: () => context.push('/karten-auswahl'),
                 ),
                 const SizedBox(height: Gap.s),
@@ -204,8 +204,8 @@ class CardsOverviewScreen extends ConsumerWidget {
                       ),
                       const SizedBox(height: Gap.xs),
                       Text(
-                        'Rechts sitzt es. Was nicht gewusst wird, fällt zurück '
-                        'in Fach 1.',
+                        'Je weiter rechts, desto sicherer sitzt es. Was du nicht '
+                        'weißt, fällt zurück in Fach 1.',
                         style: context.text.bodySmall?.copyWith(
                           color: context.c.textMuted,
                         ),
@@ -219,7 +219,8 @@ class CardsOverviewScreen extends ConsumerWidget {
 
                 const SectionHeader(
                   'Nach Bereich lernen',
-                  subtitle: 'Zuerst Fälliges, dann Neues aus dem Themengebiet.',
+                  subtitle:
+                      'Erst kommt Fälliges, dann Neues aus dem Themengebiet.',
                 ),
                 for (final area in ExamAreas.all)
                   _AreaCardRow(area: area, cards: cards, deck: deck),

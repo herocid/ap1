@@ -279,7 +279,7 @@ void main() {
     await tester.pumpAndSettle();
 
     await host.check(tester);
-    expect(textOf('Vorschlag der App – bitte selbst prüfen'), findsOneWidget);
+    expect(textOf('Vorschlag der App, bitte selbst prüfen'), findsOneWidget);
     expect(
       textOf('Die IHK wertet auch andere fachlich richtige Antworten.'),
       findsOneWidget,
@@ -296,7 +296,7 @@ void main() {
     expect(a.text, 'Stromausfall überbrücken');
     expect(host.grade.isCorrect, isTrue);
     expect(textOf('2 / 2'), findsOneWidget);
-    expect(textOf('Vorschlag der App – bitte selbst prüfen'), findsNothing);
+    expect(textOf('Vorschlag der App, bitte selbst prüfen'), findsNothing);
 
     // Mehr Haken als verlangt: Punkte bleiben gedeckelt.
     await tapKey(tester, 'krit-2');
@@ -348,7 +348,7 @@ void main() {
     expect(host.answer, {0, 1});
     await host.check(tester);
     expect(textOf('Falsch markiert'), findsOneWidget);
-    expect(textOf('Übersehen – gehört markiert'), findsNWidgets(2));
+    expect(textOf('Übersehen, gehört markiert'), findsNWidgets(2));
 
     final empty = QuestionHost(markingList);
     await tester.pumpWidget(empty.build());

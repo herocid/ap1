@@ -69,13 +69,13 @@ class ExamIntroScreen extends ConsumerWidget {
                       _Rule(
                         icon: Icons.flag_outlined,
                         text:
-                            'Die Reihenfolge bestimmst du: frei springen und '
-                            'Unsicheres zum Nachsehen markieren.',
+                            'Die Reihenfolge bestimmst du. Spring frei hin und her und '
+                            'markier Unsicheres zum Nachsehen.',
                       ),
                       _Rule(
                         icon: Icons.visibility_off_outlined,
                         text:
-                            'Keine Rückmeldung bis zur Abgabe. Danach '
+                            'Bis zur Abgabe bekommst du keine Rückmeldung. Danach '
                             'bewertest du deine Freitext-Antworten mit der '
                             'Musterlösung selbst.',
                         last: true,

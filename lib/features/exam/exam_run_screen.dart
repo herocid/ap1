@@ -346,7 +346,7 @@ class _Cover extends StatelessWidget {
                   child: Text(
                     'Erlaubt ist nur ein Taschenrechner. Stichworte genügen, '
                     'ganze Sätze bringen keine Zusatzpunkte. Die Reihenfolge '
-                    'bestimmst du selbst; rechne mit knapp einer Minute je '
+                    'bestimmst du selbst. Rechne mit knapp einer Minute je '
                     'Punkt.',
                   ),
                 ),

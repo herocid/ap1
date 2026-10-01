@@ -162,7 +162,7 @@ class _ClozeQuestionViewState extends State<ClozeQuestionView> {
 
     final hint = [
       if (modes.contains(GapMode.bank))
-        'Tippe die Begriffe an – sie füllen die Lücken der Reihe nach. '
+        'Tippe die Begriffe an. Sie füllen die Lücken der Reihe nach. '
             'Ein Tipp auf eine gefüllte Lücke leert sie.',
       if (modes.contains(GapMode.select))
         'Tippe auf eine Lücke und wähle die passende Antwort.',

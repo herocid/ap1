@@ -58,8 +58,8 @@ class QuizScreen extends ConsumerWidget {
                   tone: TileTone.brand,
                   title: 'Schwächen-Training',
                   subtitle:
-                      '10 gemischte Aufgaben, und zwar dort, wo dir die meisten '
-                      'Punkte fehlen',
+                      '10 gemischte Aufgaben aus den Themen, in denen dir die '
+                      'meisten Punkte fehlen',
                   onTap: () => SessionLauncher.weakness(context, ref),
                 ),
                 const SizedBox(height: Gap.s),
@@ -89,8 +89,8 @@ class QuizScreen extends ConsumerWidget {
                   tone: TileTone.flame,
                   title: 'Kurztest',
                   subtitle:
-                      'Endlos, alle Bereiche gemischt. Aufhören kannst du '
-                      'jederzeit',
+                      'Läuft endlos mit allen Bereichen gemischt. Aufhören '
+                      'kannst du jederzeit',
                   onTap: () => SessionLauncher.kurztest(context, ref),
                 ),
                 const SizedBox(height: Gap.xl),
@@ -104,8 +104,8 @@ class QuizScreen extends ConsumerWidget {
                   // Schrift auf 320 px nicht in eine Zeile.
                   title: 'Prüfung simulieren',
                   subtitle:
-                      '4 Aufgaben, 100 Punkte, 90 Minuten, oder die halbe '
-                      'Prüfung',
+                      '4 Aufgaben, 100 Punkte, 90 Minuten. Oder erst mal die '
+                      'halbe Prüfung',
                   onTap: () => context.push('/pruefung'),
                 ),
                 const SizedBox(height: Gap.xxl),
@@ -114,7 +114,7 @@ class QuizScreen extends ConsumerWidget {
                 SectionHeader(
                   'Nach Bereich abfragen',
                   subtitle:
-                      'Gezielt ein Thema üben. Der Wert rechts ist dein '
+                      'Üb gezielt ein Thema. Der Wert rechts ist dein '
                       'Stand im Bereich.',
                   action: TextButton(
                     onPressed: () => context.push('/themen'),
@@ -221,8 +221,8 @@ class _DailyCard extends ConsumerWidget {
             HyphenText(task.title, style: context.text.titleMedium),
             const SizedBox(height: 2),
             HyphenText(
-              '${paper!.company?.name ?? ''}: eine Situation, '
-              'Teilaufgaben a), b), c) … und die Musterlösung danach.',
+              '${paper!.company?.name ?? ''}: erst die Situation, dann die '
+              'Teilaufgaben a), b), c) … und danach die Musterlösung.',
               style: context.text.bodyMedium?.copyWith(
                 color: context.c.textMuted,
               ),

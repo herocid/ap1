@@ -157,7 +157,7 @@ class _MarkRow extends StatelessWidget {
       border = c.success;
       accent = c.success;
       icon = Icons.add_circle_outline;
-      verdict = 'Übersehen – gehört markiert';
+      verdict = 'Übersehen, gehört markiert';
     } else if (selected) {
       bg = c.dangerBg;
       border = c.danger;
