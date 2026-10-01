@@ -15,6 +15,7 @@ import '../../state/providers.dart';
 import '../../widgets/common.dart';
 import '../../widgets/feedback_fx.dart';
 import '../../widgets/mascot.dart';
+import 'card_launch.dart';
 
 /// Wie eine Karteikarten-Runde ihre Karten auswählt.
 enum CardMode {
@@ -275,10 +276,35 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
           icon: Icons.task_alt,
           title: _mode == CardMode.weak ? 'Keine Schwächen' : 'Nichts fällig',
           message: _emptyMessage,
-          action: FilledButton(
-            onPressed: () => context.pop(),
-            child: const Text('Zurück'),
-          ),
+          // Nichts fällig heißt nicht „nichts mehr zu lernen“: Wer weiter
+          // will, bekommt eine Runde ohne Tageslimit.
+          action: _mode == CardMode.due
+              ? Column(
+                  children: [
+                    FilledButton.icon(
+                      onPressed: () => CardLaunch.practice(
+                        context,
+                        ref,
+                        topicIds: widget.args.topicIds,
+                        title: widget.args.topicIds.isEmpty
+                            ? 'Weiterlernen'
+                            : widget.args.title,
+                        replace: true,
+                      ),
+                      icon: const Icon(Icons.play_arrow_rounded),
+                      label: const Text('Trotzdem weiterlernen'),
+                    ),
+                    const SizedBox(height: Gap.s),
+                    TextButton(
+                      onPressed: () => context.pop(),
+                      child: const Text('Zurück'),
+                    ),
+                  ],
+                )
+              : FilledButton(
+                  onPressed: () => context.pop(),
+                  child: const Text('Zurück'),
+                ),
         ),
       );
     }

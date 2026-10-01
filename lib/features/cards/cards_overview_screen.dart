@@ -456,7 +456,7 @@ class _BoxChart extends StatelessWidget {
   }
 }
 
-class _AreaCardRow extends StatelessWidget {
+class _AreaCardRow extends ConsumerWidget {
   const _AreaCardRow({
     required this.area,
     required this.cards,
@@ -468,7 +468,7 @@ class _AreaCardRow extends StatelessWidget {
   final DeckState deck;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final topicIds = Topics.ofArea(area.id).map((t) => t.id).toSet();
     final areaCards = cards.where((c) => topicIds.contains(c.topicId)).toList();
 
@@ -488,9 +488,14 @@ class _AreaCardRow extends StatelessWidget {
         badge: due > 0 ? '$due fällig' : null,
         onTap: areaCards.isEmpty
             ? null
-            : () => context.push(
-                '/karten-lernen',
-                extra: CardSessionArgs(topicIds: topicIds, title: area.title),
+            // Gezielt lernen kennt kein Tageslimit: Fälliges und Neues
+            // zuerst, dann was noch wackelt - auch nach den 20 neuen
+            // Karten des Tages.
+            : () => CardLaunch.practice(
+                context,
+                ref,
+                topicIds: topicIds,
+                title: area.title,
               ),
       ),
     );

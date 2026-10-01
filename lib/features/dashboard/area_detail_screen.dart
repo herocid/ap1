@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
@@ -10,7 +9,7 @@ import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
 import '../../widgets/hyphenation.dart';
-import '../cards/card_session_screen.dart';
+import '../cards/card_launch.dart';
 import '../learn/session_launcher.dart';
 import '../learn/theory_sheet.dart';
 
@@ -63,12 +62,11 @@ class AreaDetailScreen extends ConsumerWidget {
                   SizedBox(
                     width: double.infinity,
                     child: FilledButton.icon(
-                      onPressed: () => context.push(
-                        '/karten-lernen',
-                        extra: CardSessionArgs(
-                          topicIds: areaTopicIds,
-                          title: area.title,
-                        ),
+                      onPressed: () => CardLaunch.practice(
+                        context,
+                        ref,
+                        topicIds: areaTopicIds,
+                        title: area.title,
                       ),
                       icon: const Icon(Icons.style_outlined),
                       label: Text(
@@ -90,9 +88,11 @@ class AreaDetailScreen extends ConsumerWidget {
                     cards: cardCount[t.id] ?? 0,
                     onPractice: () =>
                         SessionLauncher.practice(context, ref, topicId: t.id),
-                    onCards: () => context.push(
-                      '/karten-lernen',
-                      extra: CardSessionArgs(topicIds: {t.id}, title: t.title),
+                    onCards: () => CardLaunch.practice(
+                      context,
+                      ref,
+                      topicIds: {t.id},
+                      title: t.title,
                     ),
                     onTheory: () =>
                         showTheorySheet(context, ref, topicId: t.id),

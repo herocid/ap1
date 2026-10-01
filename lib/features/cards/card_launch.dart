@@ -63,20 +63,21 @@ class CardLaunch {
     required Set<String> topicIds,
     required String title,
     int count = 20,
+    bool replace = false,
   }) {
     final pool = ref
         .read(flashcardsProvider)
         .where((c) => topicIds.isEmpty || topicIds.contains(c.topicId))
         .toList();
-    context.push(
-      '/karten-lernen',
-      extra: CardSessionArgs(
-        mode: CardMode.practice,
-        title: title,
-        topicIds: topicIds,
-        cardIds: pickPractice(pool, ref.read(deckProvider), count: count),
-      ),
+    final args = CardSessionArgs(
+      mode: CardMode.practice,
+      title: title,
+      topicIds: topicIds,
+      cardIds: pickPractice(pool, ref.read(deckProvider), count: count),
     );
+    replace
+        ? context.pushReplacement('/karten-lernen', extra: args)
+        : context.push('/karten-lernen', extra: args);
   }
 
   /// Schwächen trainieren - optional auf Themen beschränkt.
