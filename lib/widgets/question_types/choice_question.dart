@@ -4,12 +4,17 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../data/models/question.dart';
 import '../hyphenation.dart';
+import 'question_material.dart';
+import 'shuffle.dart';
 
 /// Einfach- und Mehrfachauswahl.
 ///
 /// Nach dem Prüfen wird JEDE Option eingefärbt und mit ihrer Begründung
 /// versehen - nicht nur die angekreuzte. Das ist der eigentliche Lerneffekt:
 /// zu verstehen, warum die drei anderen Antworten falsch sind.
+///
+/// Die Optionen stehen in gemischter Reihenfolge ([shuffleSeed]); die
+/// Antwort bleibt in Original-Indizes.
 class ChoiceQuestionView extends StatelessWidget {
   const ChoiceQuestionView({
     super.key,
@@ -18,6 +23,7 @@ class ChoiceQuestionView extends StatelessWidget {
     required this.onChanged,
     required this.revealed,
     this.grade,
+    this.shuffleSeed = 0,
   });
 
   final Question question;
@@ -25,6 +31,23 @@ class ChoiceQuestionView extends StatelessWidget {
   final ValueChanged<Object?> onChanged;
   final bool revealed;
   final GradeResult? grade;
+  final int shuffleSeed;
+
+  /// Anzeigeposition -> Original-Index. „Alle genannten“ und ähnliche
+  /// Optionen bleiben am Ende; verweist eine Option auf die Position einer
+  /// anderen („Antwort A“), wird gar nicht gemischt.
+  static List<int> orderFor(Question q, int seed) {
+    final texts = [for (final c in q.choices) c.text];
+    if (refersToPosition(texts)) {
+      return List<int>.generate(texts.length, (i) => i);
+    }
+    return displayOrder(
+      texts.length,
+      seed,
+      salt: 'choice',
+      pinLast: (i) => isCatchAllOption(texts[i]),
+    );
+  }
 
   Set<int> get _selected => (answer as Set<int>?) ?? const <int>{};
 
@@ -43,30 +66,31 @@ class ChoiceQuestionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final order = orderFor(question, shuffleSeed);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (_isMulti)
-          Padding(
-            padding: const EdgeInsets.only(bottom: Gap.m),
-            child: Text(
+        if (_isMulti && !revealed)
+          const Padding(
+            padding: EdgeInsets.only(bottom: Gap.m),
+            child: HintLine(
               'Mehrere Antworten können richtig sein. '
               'Falsch angekreuzte Optionen ziehen Punkte ab.',
-              style: context.text.labelSmall?.copyWith(
-                color: context.c.textMuted,
-              ),
+              icon: Icons.checklist,
             ),
           ),
-        for (var i = 0; i < question.choices.length; i++) ...[
+        for (var pos = 0; pos < order.length; pos++) ...[
           _ChoiceRow(
-            choice: question.choices[i],
-            index: i,
-            selected: _selected.contains(i),
+            key: ValueKey('choice-${order[pos]}'),
+            choice: question.choices[order[pos]],
+            // Der Buchstabe folgt der Anzeige, nicht dem Original-Index.
+            index: pos,
+            selected: _selected.contains(order[pos]),
             revealed: revealed,
             isMulti: _isMulti,
-            onTap: () => _toggle(i),
+            onTap: () => _toggle(order[pos]),
           ),
-          if (i < question.choices.length - 1) const SizedBox(height: Gap.s),
+          if (pos < order.length - 1) const SizedBox(height: Gap.s),
         ],
       ],
     );
@@ -75,6 +99,7 @@ class ChoiceQuestionView extends StatelessWidget {
 
 class _ChoiceRow extends StatelessWidget {
   const _ChoiceRow({
+    super.key,
     required this.choice,
     required this.index,
     required this.selected,
@@ -123,59 +148,70 @@ class _ChoiceRow extends StatelessWidget {
       }
     }
 
-    return Material(
-      color: bg,
-      borderRadius: BorderRadius.circular(Radii.m),
-      child: InkWell(
-        onTap: revealed ? null : onTap,
+    final thick = selected || (revealed && choice.isCorrect);
+    return Semantics(
+      checked: isMulti ? selected : null,
+      selected: isMulti ? null : selected,
+      button: !revealed,
+      child: Material(
+        color: bg,
         borderRadius: BorderRadius.circular(Radii.m),
-        child: Container(
-          padding: const EdgeInsets.all(Gap.l),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Radii.m),
-            border: Border.all(
-              color: border,
-              width: (selected || (revealed && choice.isCorrect)) ? 2 : 1,
+        child: InkWell(
+          onTap: revealed ? null : onTap,
+          borderRadius: BorderRadius.circular(Radii.m),
+          child: Container(
+            constraints: const BoxConstraints(minHeight: 60),
+            // Der dickere Rahmen wird vom Innenabstand abgezogen - sonst
+            // springt der Text beim Antippen um 1 px.
+            padding: EdgeInsets.all(thick ? Gap.l - 1 : Gap.l),
+            alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(Radii.m),
+              border: Border.all(color: border, width: thick ? 2 : 1),
             ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _Marker(
-                    letter: _letters[index % _letters.length],
-                    selected: selected,
-                    revealed: revealed,
-                    accent: accent,
-                    icon: marker,
-                    isMulti: isMulti,
-                  ),
-                  const SizedBox(width: Gap.m),
-                  Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _Marker(
+                      letter: _letters[index % _letters.length],
+                      selected: selected,
+                      revealed: revealed,
+                      accent: accent,
+                      icon: marker,
+                      isMulti: isMulti,
+                    ),
+                    const SizedBox(width: Gap.m),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 1),
+                        child: HyphenText(
+                          choice.text,
+                          style: context.text.bodyLarge,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                if (revealed && choice.rationale.isNotEmpty) ...[
+                  const SizedBox(height: Gap.m),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 40),
                     child: HyphenText(
-                      choice.text,
-                      style: context.text.bodyLarge,
+                      choice.rationale,
+                      style: context.text.bodyMedium?.copyWith(
+                        color: choice.isCorrect || selected
+                            ? accent
+                            : c.textMuted,
+                      ),
                     ),
                   ),
                 ],
-              ),
-              if (revealed && choice.rationale.isNotEmpty) ...[
-                const SizedBox(height: Gap.m),
-                Padding(
-                  padding: const EdgeInsets.only(left: 40),
-                  child: HyphenText(
-                    choice.rationale,
-                    style: context.text.bodyMedium?.copyWith(
-                      color: choice.isCorrect || selected
-                          ? accent
-                          : c.textMuted,
-                    ),
-                  ),
-                ),
               ],
-            ],
+            ),
           ),
         ),
       ),
@@ -224,6 +260,7 @@ class _Marker extends StatelessWidget {
       ),
       child: Text(
         letter,
+        textScaler: TextScaler.noScaling,
         style: context.text.labelSmall?.copyWith(
           color: selected ? context.scheme.onPrimary : context.c.textMuted,
         ),

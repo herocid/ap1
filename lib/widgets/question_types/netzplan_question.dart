@@ -182,7 +182,12 @@ class _NetzplanQuestionViewState extends State<NetzplanQuestionView> {
       children: [
         _ActivityTable(activities: q.activities),
         const SizedBox(height: Gap.l),
-        Row(
+        // Wrap statt Row: Mit großer Schrift rutscht der Zähler unter die
+        // Knöpfe, statt rechts aus dem Bild zu laufen.
+        Wrap(
+          spacing: Gap.s,
+          runSpacing: Gap.s,
+          crossAxisAlignment: WrapCrossAlignment.center,
           children: [
             _ToolChip(
               icon: Icons.functions,
@@ -190,7 +195,6 @@ class _NetzplanQuestionViewState extends State<NetzplanQuestionView> {
               active: _showRules,
               onTap: () => setState(() => _showRules = !_showRules),
             ),
-            const SizedBox(width: Gap.s),
             if (widget.revealed)
               _ToolChip(
                 icon: Icons.route_outlined,
@@ -198,10 +202,13 @@ class _NetzplanQuestionViewState extends State<NetzplanQuestionView> {
                 active: _showPath,
                 onTap: () => setState(() => _showPath = !_showPath),
               ),
-            const Spacer(),
-            Text(
-              '${_values.length}/${q.activities.length * q.askedFields.length}',
-              style: AppType.numeric(size: 13, color: context.c.textMuted),
+            Padding(
+              padding: const EdgeInsets.only(left: Gap.xs),
+              child: Text(
+                '${_values.length} von '
+                '${q.activities.length * q.askedFields.length} Feldern',
+                style: AppType.numeric(size: 13, color: context.c.textMuted),
+              ),
             ),
           ],
         ),
@@ -885,8 +892,9 @@ class _ToolChip extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(Radii.pill),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Gap.m, vertical: 7),
+        child: Container(
+          constraints: const BoxConstraints(minHeight: 48),
+          padding: const EdgeInsets.symmetric(horizontal: Gap.l, vertical: 7),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

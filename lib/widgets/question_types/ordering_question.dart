@@ -1,5 +1,3 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 
 import '../../core/theme/app_colors.dart';
@@ -7,12 +5,16 @@ import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/question.dart';
 import '../hyphenation.dart';
+import 'question_material.dart';
+import 'shuffle.dart';
 
 /// Reihenfolge-Aufgaben (Phasen, Scrum-Events, Abläufe).
 ///
-/// Bedienung bewusst doppelt: ziehen am Griff für Touch, Pfeiltasten für
-/// Maus und Screenreader. Drag-and-drop allein ist auf dem Desktop fummelig
-/// und mit Tastatur gar nicht bedienbar.
+/// Bedienung bewusst doppelt: gedrückt halten und ziehen für Touch,
+/// Pfeiltasten für Maus und Screenreader. Drag-and-drop allein ist auf dem
+/// Desktop fummelig und mit Tastatur gar nicht bedienbar. Einen eigenen
+/// Ziehgriff gibt es nicht - die ganze Zeile lässt sich ziehen, so bleibt
+/// dem Text auf schmalen Displays mehr Breite.
 class OrderingQuestionView extends StatefulWidget {
   const OrderingQuestionView({
     super.key,
@@ -21,6 +23,7 @@ class OrderingQuestionView extends StatefulWidget {
     required this.onChanged,
     required this.revealed,
     this.grade,
+    this.shuffleSeed = 0,
   });
 
   final Question question;
@@ -28,6 +31,7 @@ class OrderingQuestionView extends StatefulWidget {
   final ValueChanged<Object?> onChanged;
   final bool revealed;
   final GradeResult? grade;
+  final int shuffleSeed;
 
   @override
   State<OrderingQuestionView> createState() => _OrderingQuestionViewState();
@@ -64,20 +68,14 @@ class _OrderingQuestionViewState extends State<OrderingQuestionView> {
         existing.length == widget.question.orderedItems.length) {
       return List<int>.from(existing);
     }
-    final n = widget.question.orderedItems.length;
-    final idx = List<int>.generate(n, (i) => i);
-    // Fester Seed pro Aufgabe: dieselbe Aufgabe startet immer gleich, aber
-    // verschiedene Aufgaben unterschiedlich.
-    final rnd = math.Random(widget.question.id.hashCode);
-    idx.shuffle(rnd);
-    // Eine zufällig korrekte Startreihenfolge wäre ein Geschenk - einmal
-    // rotieren, falls das passiert.
-    final isIdentity = List.generate(n, (i) => idx[i] == i).every((e) => e);
-    if (isIdentity && n > 1) {
-      final first = idx.removeAt(0);
-      idx.add(first);
-    }
-    return idx;
+    // Eine zufällig korrekte Startreihenfolge wäre ein Geschenk - deshalb
+    // nie die Lösung selbst.
+    return displayOrder(
+      widget.question.orderedItems.length,
+      widget.shuffleSeed,
+      salt: 'order',
+      avoidIdentity: true,
+    );
   }
 
   void _apply(List<int> next) {
@@ -101,16 +99,17 @@ class _OrderingQuestionViewState extends State<OrderingQuestionView> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (widget.question.orderingHint != null)
-          Padding(
-            padding: const EdgeInsets.only(bottom: Gap.m),
-            child: Text(
-              widget.question.orderingHint!,
-              style: context.text.labelSmall?.copyWith(
-                color: context.c.textMuted,
-              ),
-            ),
-          ),
+        HintLine(
+          widget.revealed
+              ? 'Auswertung: Grün steht am richtigen Platz.'
+              : [
+                  ?widget.question.orderingHint,
+                  'Verschiebe mit den Pfeilen oder halte eine Zeile gedrückt '
+                      'und ziehe sie.',
+                ].join(' '),
+          icon: widget.revealed ? Icons.fact_check_outlined : Icons.swap_vert,
+        ),
+        const SizedBox(height: Gap.m),
         ReorderableListView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -123,22 +122,26 @@ class _OrderingQuestionViewState extends State<OrderingQuestionView> {
           },
           itemBuilder: (context, position) {
             final originalIndex = _order[position];
+            final row = _OrderRow(
+              position: position,
+              text: items[originalIndex],
+              revealed: widget.revealed,
+              correctHere: originalIndex == position,
+              correctPosition: originalIndex + 1,
+              onUp: position == 0 ? null : () => _move(position, position - 1),
+              onDown: position == _order.length - 1
+                  ? null
+                  : () => _move(position, position + 1),
+            );
             return Padding(
               key: ValueKey('ord-${widget.question.id}-$originalIndex'),
               padding: const EdgeInsets.only(bottom: Gap.s),
-              child: _OrderRow(
-                position: position,
-                text: items[originalIndex],
-                revealed: widget.revealed,
-                correctHere: originalIndex == position,
-                correctPosition: originalIndex + 1,
-                onUp: position == 0
-                    ? null
-                    : () => _move(position, position - 1),
-                onDown: position == _order.length - 1
-                    ? null
-                    : () => _move(position, position + 1),
-              ),
+              child: widget.revealed
+                  ? row
+                  : ReorderableDelayedDragStartListener(
+                      index: position,
+                      child: row,
+                    ),
             );
           },
         ),
@@ -181,7 +184,13 @@ class _OrderRow extends StatelessWidget {
         : c.danger;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: Gap.m, vertical: Gap.m),
+      constraints: const BoxConstraints(minHeight: 56),
+      padding: EdgeInsets.fromLTRB(
+        Gap.m,
+        Gap.s,
+        revealed ? Gap.m : Gap.xs,
+        Gap.s,
+      ),
       decoration: BoxDecoration(
         color: bg,
         borderRadius: BorderRadius.circular(Radii.m),
@@ -197,11 +206,16 @@ class _OrderRow extends StatelessWidget {
               color: c.surfaceAlt,
               borderRadius: BorderRadius.circular(Radii.pill),
             ),
-            child: Text('${position + 1}', style: AppType.numeric(size: 13)),
+            child: Text(
+              '${position + 1}',
+              textScaler: TextScaler.noScaling,
+              style: AppType.numeric(size: 13),
+            ),
           ),
           const SizedBox(width: Gap.m),
           Expanded(child: HyphenText(text, style: context.text.bodyMedium)),
           if (revealed) ...[
+            const SizedBox(width: Gap.s),
             if (correctHere)
               Icon(Icons.check_circle, size: 20, color: c.success)
             else
@@ -217,27 +231,46 @@ class _OrderRow extends StatelessWidget {
                 ],
               ),
           ] else ...[
-            IconButton(
-              visualDensity: VisualDensity.compact,
-              onPressed: onUp,
-              icon: const Icon(Icons.keyboard_arrow_up),
+            _ArrowButton(
+              icon: Icons.keyboard_arrow_up,
               tooltip: 'Nach oben',
+              onPressed: onUp,
             ),
-            IconButton(
-              visualDensity: VisualDensity.compact,
-              onPressed: onDown,
-              icon: const Icon(Icons.keyboard_arrow_down),
+            _ArrowButton(
+              icon: Icons.keyboard_arrow_down,
               tooltip: 'Nach unten',
-            ),
-            ReorderableDragStartListener(
-              index: position,
-              child: Padding(
-                padding: const EdgeInsets.only(left: Gap.xs),
-                child: Icon(Icons.drag_indicator, color: c.textMuted),
-              ),
+              onPressed: onDown,
             ),
           ],
         ],
+      ),
+    );
+  }
+}
+
+/// Pfeil mit 40 px Breite und 48 px Höhe: schmal genug, dass dem Text Platz
+/// bleibt, hoch genug zum Treffen.
+class _ArrowButton extends StatelessWidget {
+  const _ArrowButton({
+    required this.icon,
+    required this.tooltip,
+    required this.onPressed,
+  });
+
+  final IconData icon;
+  final String tooltip;
+  final VoidCallback? onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: onPressed,
+      icon: Icon(icon),
+      tooltip: tooltip,
+      padding: EdgeInsets.zero,
+      constraints: const BoxConstraints.tightFor(width: 40, height: 48),
+      style: IconButton.styleFrom(
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
     );
   }

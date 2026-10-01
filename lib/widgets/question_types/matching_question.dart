@@ -4,6 +4,8 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../data/models/question.dart';
 import '../hyphenation.dart';
+import 'question_material.dart';
+import 'shuffle.dart';
 
 /// Zuordnungsaufgaben (Lastenheft/Pflichtenheft, Risikostrategien, ...).
 ///
@@ -11,6 +13,11 @@ import '../hyphenation.dart';
 /// unbedienbar, sobald die Texte länger als drei Wörter sind. Stattdessen
 /// steht unter jeder Aussage eine Reihe antippbarer Zielkategorien - ein Tipp
 /// pro Zuordnung, funktioniert auf Touch und mit der Maus identisch.
+///
+/// Die Aussagen stehen in gemischter Reihenfolge ([shuffleSeed]) - sonst
+/// verrät die Reihenfolge der Autoren (erst alles zu Kategorie 1, dann alles
+/// zu Kategorie 2) die Lösung. Die Kategorien stehen unter jeder Aussage in
+/// derselben Reihenfolge und sehen vor dem Prüfen alle gleich aus.
 class MatchingQuestionView extends StatelessWidget {
   const MatchingQuestionView({
     super.key,
@@ -19,6 +26,7 @@ class MatchingQuestionView extends StatelessWidget {
     required this.onChanged,
     required this.revealed,
     this.grade,
+    this.shuffleSeed = 0,
   });
 
   final Question question;
@@ -26,6 +34,7 @@ class MatchingQuestionView extends StatelessWidget {
   final ValueChanged<Object?> onChanged;
   final bool revealed;
   final GradeResult? grade;
+  final int shuffleSeed;
 
   Map<int, int> get _map => (answer as Map<int, int>?) ?? const <int, int>{};
 
@@ -42,38 +51,31 @@ class MatchingQuestionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = context.c;
     final assigned = _map.length;
     final total = question.matchItems.length;
+    final order = displayOrder(total, shuffleSeed, salt: 'items');
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Icon(Icons.touch_app_outlined, size: 15, color: c.textMuted),
-            const SizedBox(width: 5),
-            Expanded(
-              child: Text(
-                revealed
-                    ? 'Auswertung: pro richtiger Zuordnung gibt es Teilpunkte.'
-                    : 'Tippe unter jeder Aussage die passende Kategorie an. '
-                          '($assigned von $total zugeordnet)',
-                style: context.text.labelSmall?.copyWith(color: c.textMuted),
-              ),
-            ),
-          ],
+        HintLine(
+          revealed
+              ? 'Auswertung: pro richtiger Zuordnung gibt es Teilpunkte.'
+              : 'Tippe unter jeder Aussage die passende Kategorie an. '
+                    '($assigned von $total zugeordnet)',
+          icon: revealed ? Icons.fact_check_outlined : Icons.touch_app_outlined,
         ),
         const SizedBox(height: Gap.m),
-        for (var i = 0; i < question.matchItems.length; i++) ...[
+        for (var pos = 0; pos < order.length; pos++) ...[
           _MatchRow(
-            item: question.matchItems[i],
+            key: ValueKey('match-${order[pos]}'),
+            item: question.matchItems[order[pos]],
             buckets: question.buckets,
-            selected: _map[i],
+            selected: _map[order[pos]],
             revealed: revealed,
-            onSelect: (b) => _assign(i, b),
+            onSelect: (b) => _assign(order[pos], b),
           ),
-          if (i < question.matchItems.length - 1) const SizedBox(height: Gap.m),
+          if (pos < order.length - 1) const SizedBox(height: Gap.m),
         ],
       ],
     );
@@ -82,6 +84,7 @@ class MatchingQuestionView extends StatelessWidget {
 
 class _MatchRow extends StatelessWidget {
   const _MatchRow({
+    super.key,
     required this.item,
     required this.buckets,
     required this.selected,
@@ -207,37 +210,47 @@ class _BucketChip extends StatelessWidget {
       border = context.scheme.primary;
     }
 
-    return Material(
-      color: bg,
-      borderRadius: BorderRadius.circular(Radii.pill),
-      child: InkWell(
-        onTap: enabled ? onTap : null,
-        borderRadius: BorderRadius.circular(Radii.pill),
-        child: Container(
-          constraints: const BoxConstraints(minHeight: 40),
-          padding: const EdgeInsets.symmetric(
-            horizontal: Gap.l,
-            vertical: Gap.s,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Radii.pill),
-            border: Border.all(color: border, width: 1.4),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (isTruth) ...[
-                Icon(Icons.check, size: 15, color: fg),
-                const SizedBox(width: 4),
-              ],
-              Text(
-                label,
-                style: context.text.labelLarge?.copyWith(
-                  fontSize: 13.5,
-                  color: fg,
+    return Semantics(
+      button: enabled,
+      selected: selected,
+      child: Material(
+        color: bg,
+        borderRadius: BorderRadius.circular(Radii.xl),
+        child: InkWell(
+          onTap: enabled ? onTap : null,
+          borderRadius: BorderRadius.circular(Radii.xl),
+          child: Container(
+            constraints: const BoxConstraints(minHeight: 48),
+            padding: const EdgeInsets.symmetric(
+              horizontal: Gap.l,
+              vertical: Gap.s,
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(Radii.xl),
+              border: Border.all(color: border, width: 1.4),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (isTruth) ...[
+                  Icon(Icons.check, size: 15, color: fg),
+                  const SizedBox(width: 4),
+                ] else if (wrongPick) ...[
+                  Icon(Icons.close, size: 15, color: fg),
+                  const SizedBox(width: 4),
+                ],
+                // Lange Kategorien brechen um, statt die Zeile zu sprengen.
+                Flexible(
+                  child: HyphenText(
+                    label,
+                    style: context.text.labelLarge?.copyWith(
+                      fontSize: 13.5,
+                      color: fg,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
