@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/notifications/reminder_service.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../state/providers.dart';
@@ -34,7 +35,14 @@ class _TutorialScreenState extends ConsumerState<TutorialScreen> {
   }
 
   void _done() {
+    final first = !ref.read(profileProvider).tutorialSeen;
     ref.read(profileProvider.notifier).markTutorialSeen();
+    // Erinnerungen sind standardmäßig an - nach der ersten Einführung
+    // einmal um Erlaubnis fragen, sonst blieben sie stumm. Auf dem Web und
+    // in Tests passiert nichts.
+    if (first && ref.read(profileProvider).remindersOn) {
+      ReminderService.instance.requestPermission();
+    }
     if (context.canPop()) {
       context.pop();
     } else {
