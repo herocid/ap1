@@ -47,5 +47,14 @@ void main() {
       expect(g.matches('1235'), isFalse);
       expect(g.matches(''), isFalse);
     });
+
+    test('Zahl: Tausenderpunkte', () {
+      expect(Blank.zahl(1000000).matches('1.000.000'), isTrue);
+      expect(Blank.zahl(456976).matches('456.976'), isTrue);
+      expect(Blank.zahl(456976).matches('456976'), isTrue);
+      expect(Blank.zahl(3.125).matches('3,125'), isTrue);
+      expect(Blank.zahl(3.125).matches('3.125'), isTrue);
+      expect(Blank.zahl(62).matches('62 Hosts'), isTrue);
+    });
   });
 }
