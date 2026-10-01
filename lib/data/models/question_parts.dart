@@ -71,11 +71,17 @@ class Blank {
   bool matches(String? input) {
     if (input == null || input.trim().isEmpty) return false;
     if (numeric) {
-      final v = parseNumber(input);
-      if (v == null) return false;
+      // "1.000" kann eintausend (deutsch) oder eins (englisch) heißen -
+      // beide Lesarten gelten, damit niemand an der Schreibweise scheitert.
+      final candidates = [
+        parseNumber(input),
+        if (RegExp(r'^\s*-?\d{1,3}(\.\d{3})+\D*$').hasMatch(input))
+          parseNumber(input.replaceAll('.', '')),
+      ].whereType<double>();
       return answers.any((a) {
-        final w = parseNumber(a);
-        return w != null && (v - w).abs() <= tolerance + 1e-9;
+        final w = double.tryParse(a.trim()) ?? parseNumber(a);
+        return w != null &&
+            candidates.any((v) => (v - w).abs() <= tolerance + 1e-9);
       });
     }
     final n = normalizeAnswer(input);
