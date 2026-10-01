@@ -2,20 +2,39 @@ import 'package:flutter/foundation.dart';
 
 import 'diagram.dart';
 import 'netzplan.dart';
+import 'question_parts.dart';
+
+export 'question_parts.dart';
 
 /// Aufgabentypen des Trainers.
 ///
-/// Bewusst mehr als nur Multiple Choice: die AP1 prüft Rechnen (Netzplan,
-/// Nutzwertanalyse), Zuordnen (Lastenheft vs. Pflichtenheft) und Reihenfolgen
-/// (Phasen, Scrum-Events). Wer nur MC übt, fällt im Ernstfall genau über
-/// diese Aufgaben.
+/// Bewusst mehr als nur Multiple Choice: Die AP1 besteht aus ungebundenen
+/// Aufgaben - rechnen, Tabellen ausfüllen, Pseudocode ergänzen, erläutern.
+/// Wer nur ankreuzt, fällt im Ernstfall genau über diese Aufgaben.
 enum QuestionKind {
   single('Einfachauswahl'),
   multiple('Mehrfachauswahl'),
   numeric('Rechenaufgabe'),
   ordering('Reihenfolge'),
   matching('Zuordnung'),
-  netzplan('Netzplan');
+  netzplan('Netzplan'),
+
+  /// Text mit Lücken: Dropdown, Wortbank oder Eingabe (siehe [Blank]).
+  cloze('Lückentext'),
+
+  /// Tabelle, in der einzelne Zellen auszufüllen sind.
+  table('Tabelle ausfüllen'),
+
+  /// Freitext wie in der IHK-Prüfung: Antwort schreiben, mit der
+  /// Musterlösung vergleichen, Bewertungskriterien abhaken.
+  open('Freitext'),
+
+  /// Zeilen oder Elemente antippen, die eine Bedingung erfüllen
+  /// (fehlerhafte Codezeilen, personenbezogene Daten ...).
+  marking('Markieren'),
+
+  /// Linke und rechte Begriffe zu Paaren verbinden.
+  pairs('Paare finden');
 
   const QuestionKind(this.label);
   final String label;
@@ -143,6 +162,18 @@ class Question {
     this.askedFields = const [],
     this.source,
     this.catalogStatus = CatalogStatus.current,
+    this.table,
+    this.code,
+    this.caseId,
+    this.pointsOverride,
+    this.clozeText,
+    this.gaps = const [],
+    this.wordBank = const [],
+    this.grid = const [],
+    this.criteria = const [],
+    this.sampleSolution,
+    this.mono = false,
+    this.pairs = const [],
   });
 
   final String id;
@@ -194,6 +225,59 @@ class Question {
   final List<Activity> activities;
   final List<NodeField> askedFields;
 
+  // ---- Material, das zu jeder Aufgabenart gehören kann (wie die Anlagen
+  // einer IHK-Aufgabe). Steht zwischen Situation und Frage.
+
+  /// Gegebene Tabelle: erste Zeile = Spaltenköpfe, alle Zeilen gleich lang.
+  final List<List<String>>? table;
+
+  /// Gegebener Pseudocode, Konfigurationsauszug, Log oder englischer
+  /// Handbuchtext - wird in Festbreitenschrift gesetzt.
+  final String? code;
+
+  /// Fallaufgabe (`ExamCase`), zu der diese Teilaufgabe gehört. Die App
+  /// zeigt dann deren Ausgangssituation über der Aufgabe.
+  final String? caseId;
+
+  /// Punkte wie im Lösungsbogen der IHK; ohne Angabe gilt der Standard der
+  /// Aufgabenart.
+  final int? pointsOverride;
+
+  // cloze
+  /// Text mit Platzhaltern `{0}`, `{1}` ... für die [gaps]. Zeilenumbrüche
+  /// bleiben erhalten; mit [mono] wird er als Code gesetzt.
+  final String? clozeText;
+  final List<Blank> gaps;
+
+  /// Zusätzliche falsche Begriffe für die Wortbank. Ist die Liste gefüllt
+  /// (oder haben die Lücken keine [Blank.options] und [wordBank] ist nicht
+  /// leer), tippt man Begriffe an, statt zu schreiben.
+  final List<String> wordBank;
+
+  // table
+  /// Zeilen der Tabelle; die erste Zeile sind die Spaltenköpfe.
+  final List<List<GridCell>> grid;
+
+  // open
+  final List<Criterion> criteria;
+
+  /// Ausformulierte Musterlösung, wie sie im Lösungsbogen stünde.
+  final String? sampleSolution;
+
+  // marking: nutzt [choices] (isCorrect = gehört markiert). cloze/marking:
+  /// Zeilen in Festbreitenschrift setzen (Code, Logs, Konfiguration).
+  final bool mono;
+
+  // pairs
+  final List<PairItem> pairs;
+
+  /// Alle auszufüllenden Zellen der Tabelle als "zeile.spalte" -> Lücke.
+  Map<String, Blank> get gridGaps => {
+    for (var r = 0; r < grid.length; r++)
+      for (var c = 0; c < grid[r].length; c++)
+        if (grid[r][c].isGap) '$r.$c': grid[r][c].gap!,
+  };
+
   /// Geschätzte Bearbeitungszeit - Grundlage für das Zeitbudget im
   /// Prüfungsmodus.
   int get estimatedSeconds => switch (kind) {
@@ -203,17 +287,29 @@ class Question {
     QuestionKind.ordering => 75,
     QuestionKind.matching => 95,
     QuestionKind.netzplan => 60 + activities.length * 35,
+    QuestionKind.cloze => 50 + gaps.length * 15,
+    QuestionKind.table => 50 + gridGaps.length * 20,
+    QuestionKind.open => 60 + points * 45,
+    QuestionKind.marking => 75,
+    QuestionKind.pairs => 40 + pairs.length * 8,
   };
 
   /// Punkte, wie sie die IHK vergeben würde - skaliert mit Aufwand.
-  int get points => switch (kind) {
-    QuestionKind.single => 2,
-    QuestionKind.multiple => 3,
-    QuestionKind.numeric => 3,
-    QuestionKind.ordering => 3,
-    QuestionKind.matching => 4,
-    QuestionKind.netzplan => 6,
-  };
+  int get points =>
+      pointsOverride ??
+      switch (kind) {
+        QuestionKind.single => 2,
+        QuestionKind.multiple => 3,
+        QuestionKind.numeric => 3,
+        QuestionKind.ordering => 3,
+        QuestionKind.matching => 4,
+        QuestionKind.netzplan => 6,
+        QuestionKind.cloze => 3,
+        QuestionKind.table => 4,
+        QuestionKind.open => criteria.fold(0, (s, c) => s + c.points),
+        QuestionKind.marking => 3,
+        QuestionKind.pairs => 3,
+      };
 
   NetzplanSolution? get netzplanSolution =>
       activities.isEmpty ? null : NetzplanSolver.solve(activities);
@@ -224,10 +320,70 @@ class Question {
   /// - ordering: `List<int>` der Original-Indizes in Nutzerreihenfolge
   /// - matching: `Map<int, int>` Item-Index -> Bucket-Index
   /// - netzplan: `Map<String, int>` "A.faz" -> Wert
+  /// - cloze: `Map<int, String>` Lückenindex -> Eingabe
+  /// - table: `Map<String, String>` "zeile.spalte" -> Eingabe
+  /// - open: [OpenAnswer]
+  /// - marking: `Set<int>` der markierten Indizes in [choices]
+  /// - pairs: `Map<int, int>` Index links -> Index rechts (in [pairs])
   GradeResult grade(Object? answer) {
     switch (kind) {
+      case QuestionKind.cloze:
+        final map = (answer as Map<int, String>?) ?? const <int, String>{};
+        final parts = <String, bool>{
+          for (var i = 0; i < gaps.length; i++) '$i': gaps[i].matches(map[i]),
+        };
+        final hits = parts.values.where((v) => v).length;
+        return GradeResult(
+          score: gaps.isEmpty ? 0 : hits / gaps.length,
+          parts: parts,
+        );
+
+      case QuestionKind.table:
+        final map =
+            (answer as Map<String, String>?) ?? const <String, String>{};
+        final cells = gridGaps;
+        final parts = <String, bool>{
+          for (final e in cells.entries) e.key: e.value.matches(map[e.key]),
+        };
+        final hits = parts.values.where((v) => v).length;
+        return GradeResult(
+          score: cells.isEmpty ? 0 : hits / cells.length,
+          parts: parts,
+        );
+
+      case QuestionKind.open:
+        final a = answer as OpenAnswer?;
+        final total = criteria.fold<int>(0, (s, c) => s + c.points);
+        final parts = <String, bool>{};
+        var earned = 0;
+        for (var i = 0; i < criteria.length; i++) {
+          final ok = a == null
+              ? false
+              : a.checked != null
+              ? a.checked!.contains(i)
+              : criteria[i].foundIn(a.text);
+          parts['$i'] = ok;
+          if (ok) earned += criteria[i].points;
+        }
+        return GradeResult(
+          score: total == 0 ? 0 : earned / total,
+          parts: parts,
+        );
+
+      case QuestionKind.pairs:
+        final map = (answer as Map<int, int>?) ?? const <int, int>{};
+        final parts = <String, bool>{
+          for (var i = 0; i < pairs.length; i++) '$i': map[i] == i,
+        };
+        final hits = parts.values.where((v) => v).length;
+        return GradeResult(
+          score: pairs.isEmpty ? 0 : hits / pairs.length,
+          parts: parts,
+        );
+
       case QuestionKind.single:
       case QuestionKind.multiple:
+      case QuestionKind.marking:
         final selected = (answer as Set<int>?) ?? const <int>{};
         final parts = <String, bool>{};
         var hits = 0;
@@ -357,6 +513,36 @@ class Question {
             ),
           )
           .toList(),
+      table: (data['table'] as List?)
+          ?.map((row) => (row as List).cast<String>().toList())
+          .toList(),
+      code: data['code'] as String?,
+      caseId: data['case_id'] as String?,
+      pointsOverride: (data['points'] as num?)?.toInt(),
+      clozeText: data['cloze_text'] as String?,
+      gaps: ((data['gaps'] as List?) ?? const [])
+          .map((e) => Blank.fromJson((e as Map).cast<String, dynamic>()))
+          .toList(),
+      wordBank: ((data['word_bank'] as List?) ?? const [])
+          .cast<String>()
+          .toList(),
+      grid: ((data['grid'] as List?) ?? const [])
+          .map(
+            (row) => (row as List)
+                .map(
+                  (c) => GridCell.fromJson((c as Map).cast<String, dynamic>()),
+                )
+                .toList(),
+          )
+          .toList(),
+      criteria: ((data['criteria'] as List?) ?? const [])
+          .map((e) => Criterion.fromJson((e as Map).cast<String, dynamic>()))
+          .toList(),
+      sampleSolution: data['sample_solution'] as String?,
+      mono: data['mono'] == true,
+      pairs: ((data['pairs'] as List?) ?? const [])
+          .map((e) => PairItem.fromJson((e as Map).cast<String, dynamic>()))
+          .toList(),
     );
   }
 
@@ -388,6 +574,60 @@ class Question {
         'activities': activities.map((a) => a.toJson()).toList(),
       if (askedFields.isNotEmpty)
         'asked_fields': askedFields.map((f) => f.name).toList(),
+      if (table != null) 'table': table,
+      if (code != null) 'code': code,
+      if (caseId != null) 'case_id': caseId,
+      if (pointsOverride != null) 'points': pointsOverride,
+      if (clozeText != null) 'cloze_text': clozeText,
+      if (gaps.isNotEmpty) 'gaps': gaps.map((g) => g.toJson()).toList(),
+      if (wordBank.isNotEmpty) 'word_bank': wordBank,
+      if (grid.isNotEmpty)
+        'grid': [
+          for (final row in grid) [for (final c in row) c.toJson()],
+        ],
+      if (criteria.isNotEmpty)
+        'criteria': criteria.map((c) => c.toJson()).toList(),
+      if (sampleSolution != null) 'sample_solution': sampleSolution,
+      if (mono) 'mono': true,
+      if (pairs.isNotEmpty) 'pairs': pairs.map((p) => p.toJson()).toList(),
     },
   };
+
+  /// Kopie als Teilaufgabe einer Fallaufgabe.
+  Question inCase(String caseId) => Question(
+    id: id,
+    topicId: topicId,
+    kind: kind,
+    prompt: prompt,
+    explanation: explanation,
+    subtopicId: subtopicId,
+    scenario: scenario,
+    diagram: diagram,
+    difficulty: difficulty,
+    tags: tags,
+    choices: choices,
+    numericAnswer: numericAnswer,
+    numericTolerance: numericTolerance,
+    unit: unit,
+    orderedItems: orderedItems,
+    orderingHint: orderingHint,
+    buckets: buckets,
+    matchItems: matchItems,
+    activities: activities,
+    askedFields: askedFields,
+    source: source,
+    catalogStatus: catalogStatus,
+    table: table,
+    code: code,
+    caseId: caseId,
+    pointsOverride: pointsOverride,
+    clozeText: clozeText,
+    gaps: gaps,
+    wordBank: wordBank,
+    grid: grid,
+    criteria: criteria,
+    sampleSolution: sampleSolution,
+    mono: mono,
+    pairs: pairs,
+  );
 }

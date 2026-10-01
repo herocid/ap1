@@ -1,7 +1,18 @@
 export 'cards/cards_data.dart' show kSeedFlashcards;
+export 'cases/cases_data.dart' show kSeedCases, kCaseById;
 import '../models/question.dart';
 import '../models/theory.dart';
 import 'cards/cards_data.dart';
+import 'cases/cases_data.dart';
+import 'questions/ihk_a01_planung.dart';
+import 'questions/ihk_a01_projekte.dart';
+import 'questions/ihk_a02_kunden.dart';
+import 'questions/ihk_a03_systeme.dart';
+import 'questions/ihk_a04_daten.dart';
+import 'questions/ihk_a04_entwicklung.dart';
+import 'questions/ihk_a05_qualitaet.dart';
+import 'questions/ihk_a06_sicherheit.dart';
+import 'questions/ihk_a07_vertraege.dart';
 import 'questions/questions_a01_journey.dart';
 import 'questions/questions_a01_planung.dart';
 import 'questions/questions_a02_kunden.dart';
@@ -38,6 +49,17 @@ final List<Question> kSeedQuestions = [
   ...questionsA06Sicherheit,
   ...questionsA06Krypto,
   ...questionsA07,
+  ...ihkA01Projekte,
+  ...ihkA01Planung,
+  ...ihkA02,
+  ...ihkA03,
+  ...ihkA04Entwicklung,
+  ...ihkA04Daten,
+  ...ihkA05,
+  ...ihkA06,
+  ...ihkA07,
+  // Teilaufgaben der Fallaufgaben (mit caseId) - auch im Quiz verfügbar.
+  for (final c in kSeedCases) ...c.parts,
 ];
 
 final List<TheorySnack> kSeedTheory = seedTheory;

@@ -12,6 +12,7 @@ import 'question_types/matching_question.dart';
 import 'question_types/netzplan_question.dart';
 import 'question_types/numeric_question.dart';
 import 'question_types/ordering_question.dart';
+import 'question_types/pending_question.dart';
 
 /// Rahmen um jede Aufgabe: Szenario, Fragestellung, Eingabebereich und -
 /// nach dem Prüfen - die Erklärung.
@@ -152,6 +153,12 @@ class QuestionView extends StatelessWidget {
           revealed: revealed,
           grade: grade,
         );
+      case QuestionKind.cloze:
+      case QuestionKind.table:
+      case QuestionKind.open:
+      case QuestionKind.marking:
+      case QuestionKind.pairs:
+        return PendingQuestionView(question: question);
       case QuestionKind.netzplan:
         return NetzplanQuestionView(
           key: ValueKey('np-${question.id}'),

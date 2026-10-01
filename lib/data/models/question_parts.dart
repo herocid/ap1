@@ -1,0 +1,186 @@
+import 'package:flutter/foundation.dart';
+
+/// Vereinheitlicht eine getippte Antwort für den Vergleich: Groß-/Klein-
+/// schreibung, Umlaut-Schreibweisen, Bindestriche und überzählige
+/// Leerzeichen spielen keine Rolle.
+String normalizeAnswer(String s) {
+  var t = s.trim().toLowerCase();
+  const fold = {'ä': 'ae', 'ö': 'oe', 'ü': 'ue', 'ß': 'ss'};
+  fold.forEach((k, v) => t = t.replaceAll(k, v));
+  t = t.replaceAll(RegExp(r'[\-‐‑–_]'), ' ');
+  t = t.replaceAll(RegExp(r'[.,;:!?]+$'), '');
+  return t.replaceAll(RegExp(r'\s+'), ' ').trim();
+}
+
+/// Liest eine Zahl in deutscher oder englischer Schreibweise
+/// ("1.234,5", "1234.5", "12 %", "3,5 GB").
+double? parseNumber(String s) {
+  var t = s.trim().replaceAll(RegExp(r'[^0-9,.\-]'), '');
+  if (t.isEmpty) return null;
+  if (t.contains(',') && t.contains('.')) {
+    // Das letzte der beiden Zeichen ist das Dezimaltrennzeichen.
+    if (t.lastIndexOf(',') > t.lastIndexOf('.')) {
+      t = t.replaceAll('.', '').replaceAll(',', '.');
+    } else {
+      t = t.replaceAll(',', '');
+    }
+  } else if (t.contains(',')) {
+    t = t.replaceAll(',', '.');
+  }
+  return double.tryParse(t);
+}
+
+/// Eine Lücke in einem Lückentext oder eine auszufüllende Tabellenzelle.
+///
+/// Drei Bedienarten, die sich aus den Daten ergeben:
+/// - [options] gefüllt: Auswahl aus einer Liste (Dropdown).
+/// - [options] leer und die Aufgabe hat eine Wortbank: Begriff antippen.
+/// - sonst: kurze Eingabe (Text oder, mit [numeric], eine Zahl).
+@immutable
+class Blank {
+  const Blank(
+    this.answers, {
+    this.options = const [],
+    this.numeric = false,
+    this.tolerance = 0,
+    this.unit,
+    this.rationale = '',
+  });
+
+  /// Zahl als Lösung, z. B. `Blank.zahl(62, unit: 'Hosts')`.
+  Blank.zahl(num value, {this.tolerance = 0, this.unit, this.rationale = ''})
+    : answers = [_fmt(value)],
+      options = const [],
+      numeric = true;
+
+  /// Akzeptierte Lösungen; die erste wird als Musterlösung gezeigt.
+  final List<String> answers;
+
+  /// Auswahlmöglichkeiten inklusive der richtigen. Reihenfolge egal - die
+  /// App mischt.
+  final List<String> options;
+  final bool numeric;
+  final double tolerance;
+  final String? unit;
+
+  /// Kurze Begründung, die nach dem Prüfen an der Lücke steht.
+  final String rationale;
+
+  String get solution => answers.first;
+
+  bool matches(String? input) {
+    if (input == null || input.trim().isEmpty) return false;
+    if (numeric) {
+      final v = parseNumber(input);
+      if (v == null) return false;
+      return answers.any((a) {
+        final w = parseNumber(a);
+        return w != null && (v - w).abs() <= tolerance + 1e-9;
+      });
+    }
+    final n = normalizeAnswer(input);
+    return answers.any((a) => normalizeAnswer(a) == n);
+  }
+
+  static String _fmt(num v) =>
+      v == v.roundToDouble() ? v.round().toString() : v.toString();
+
+  Map<String, dynamic> toJson() => {
+    'answers': answers,
+    if (options.isNotEmpty) 'options': options,
+    if (numeric) 'numeric': true,
+    if (tolerance != 0) 'tolerance': tolerance,
+    if (unit != null) 'unit': unit,
+    if (rationale.isNotEmpty) 'rationale': rationale,
+  };
+
+  factory Blank.fromJson(Map<String, dynamic> j) => Blank(
+    ((j['answers'] as List?) ?? const []).cast<String>().toList(),
+    options: ((j['options'] as List?) ?? const []).cast<String>().toList(),
+    numeric: j['numeric'] == true,
+    tolerance: (j['tolerance'] as num?)?.toDouble() ?? 0,
+    unit: j['unit'] as String?,
+    rationale: (j['rationale'] ?? '') as String,
+  );
+}
+
+/// Zelle einer Tabelle zum Ausfüllen: entweder vorgegebener Text oder eine
+/// [Blank], die der Prüfling füllt.
+@immutable
+class GridCell {
+  const GridCell(this.text) : gap = null;
+  const GridCell.gap(Blank this.gap) : text = '';
+
+  final String text;
+  final Blank? gap;
+
+  bool get isGap => gap != null;
+
+  Map<String, dynamic> toJson() =>
+      gap == null ? {'text': text} : {'gap': gap!.toJson()};
+
+  factory GridCell.fromJson(Map<String, dynamic> j) => j['gap'] == null
+      ? GridCell((j['text'] ?? '') as String)
+      : GridCell.gap(Blank.fromJson((j['gap'] as Map).cast<String, dynamic>()));
+}
+
+/// Bewertungskriterium einer Freitext-Aufgabe - so, wie es in den
+/// Lösungshinweisen der IHK steht ("je Nennung 1 Punkt").
+@immutable
+class Criterion {
+  const Criterion(this.text, {this.points = 1, this.keywords = const []});
+
+  /// Was in der Antwort stehen muss, als ganzer Satz oder Stichpunkt.
+  final String text;
+  final int points;
+
+  /// Stichwörter, an denen die App das Kriterium in der getippten Antwort
+  /// erkennt (Vorschlag für die Selbstbewertung; ein Treffer genügt).
+  final List<String> keywords;
+
+  bool foundIn(String answer) {
+    final n = normalizeAnswer(answer);
+    return keywords.any((k) => n.contains(normalizeAnswer(k)));
+  }
+
+  Map<String, dynamic> toJson() => {
+    'text': text,
+    'points': points,
+    if (keywords.isNotEmpty) 'keywords': keywords,
+  };
+
+  factory Criterion.fromJson(Map<String, dynamic> j) => Criterion(
+    j['text'] as String,
+    points: (j['points'] as num?)?.toInt() ?? 1,
+    keywords: ((j['keywords'] as List?) ?? const []).cast<String>().toList(),
+  );
+}
+
+/// Antwort auf eine Freitext-Aufgabe.
+@immutable
+class OpenAnswer {
+  const OpenAnswer({this.text = '', this.checked});
+
+  /// Die getippte Antwort (darf leer sein, wenn nur im Kopf gelöst wurde).
+  final String text;
+
+  /// Vom Prüfling nach Ansicht der Musterlösung abgehakte Kriterien.
+  /// `null`: noch nicht selbst bewertet - dann zählt die Stichworterkennung.
+  final Set<int>? checked;
+
+  OpenAnswer copyWith({String? text, Set<int>? checked}) =>
+      OpenAnswer(text: text ?? this.text, checked: checked ?? this.checked);
+}
+
+/// Ein Paar für "Paare finden": Begriff links, Gegenstück rechts.
+@immutable
+class PairItem {
+  const PairItem(this.left, this.right);
+  final String left;
+  final String right;
+
+  Map<String, dynamic> toJson() => {'left': left, 'right': right};
+
+  factory PairItem.fromJson(Map<String, dynamic> j) =>
+      PairItem(j['left'] as String, j['right'] as String);
+}

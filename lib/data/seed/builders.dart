@@ -9,6 +9,7 @@ import '../models/subtopic.dart';
 // Netzplan-Vorgänge.
 export '../models/diagram.dart';
 export '../models/netzplan.dart' show Activity, NodeField;
+export 'builders_ihk.dart';
 
 /// Kurzschreibweisen für die Inhaltsdateien.
 ///
@@ -262,6 +263,9 @@ Question einfach(
   required String explanation,
   String? scenario,
   Diagram? skizze,
+  List<List<String>>? table,
+  String? code,
+  int? punkte,
   int difficulty = 2,
   List<String> tags = const [],
 }) => Question(
@@ -272,6 +276,9 @@ Question einfach(
   prompt: prompt,
   scenario: scenario,
   diagram: skizze,
+  table: table,
+  code: code,
+  pointsOverride: punkte,
   choices: choices,
   explanation: explanation,
   difficulty: difficulty,
@@ -286,6 +293,9 @@ Question mehrfach(
   required String explanation,
   String? scenario,
   Diagram? skizze,
+  List<List<String>>? table,
+  String? code,
+  int? punkte,
   int difficulty = 2,
   List<String> tags = const [],
 }) => Question(
@@ -296,6 +306,9 @@ Question mehrfach(
   prompt: prompt,
   scenario: scenario,
   diagram: skizze,
+  table: table,
+  code: code,
+  pointsOverride: punkte,
   choices: choices,
   explanation: explanation,
   difficulty: difficulty,
@@ -310,6 +323,9 @@ Question rechnen(
   required String explanation,
   String? scenario,
   Diagram? skizze,
+  List<List<String>>? table,
+  String? code,
+  int? punkte,
   String? unit,
   double tolerance = 0,
   int difficulty = 2,
@@ -322,6 +338,9 @@ Question rechnen(
   prompt: prompt,
   scenario: scenario,
   diagram: skizze,
+  table: table,
+  code: code,
+  pointsOverride: punkte,
   numericAnswer: answer,
   numericTolerance: tolerance,
   unit: unit,
@@ -339,6 +358,9 @@ Question reihenfolge(
   required String explanation,
   String? scenario,
   Diagram? skizze,
+  List<List<String>>? table,
+  String? code,
+  int? punkte,
   String? hint,
   int difficulty = 2,
   List<String> tags = const [],
@@ -350,6 +372,9 @@ Question reihenfolge(
   prompt: prompt,
   scenario: scenario,
   diagram: skizze,
+  table: table,
+  code: code,
+  pointsOverride: punkte,
   orderedItems: items,
   orderingHint: hint,
   explanation: explanation,
@@ -366,6 +391,9 @@ Question zuordnen(
   required String explanation,
   String? scenario,
   Diagram? skizze,
+  List<List<String>>? table,
+  String? code,
+  int? punkte,
   int difficulty = 2,
   List<String> tags = const [],
 }) => Question(
@@ -376,6 +404,9 @@ Question zuordnen(
   prompt: prompt,
   scenario: scenario,
   diagram: skizze,
+  table: table,
+  code: code,
+  pointsOverride: punkte,
   buckets: buckets,
   matchItems: items,
   explanation: explanation,
@@ -399,6 +430,7 @@ Question netzplanAufgabe(
     NodeField.gp,
   ],
   String? scenario,
+  int? punkte,
   int difficulty = 3,
   List<String> tags = const [],
 }) => Question(
@@ -408,6 +440,7 @@ Question netzplanAufgabe(
   kind: QuestionKind.netzplan,
   prompt: prompt,
   scenario: scenario,
+  pointsOverride: punkte,
   activities: vorgaenge,
   askedFields: gefragt,
   explanation: explanation,
