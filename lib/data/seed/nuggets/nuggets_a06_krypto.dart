@@ -13,18 +13,18 @@ final List<Nugget> nuggetsA06Krypto = [
       'Klartext: die lesbare Nachricht',
       'Geheimtext (Chiffrat): das verschlüsselte, unlesbare Ergebnis',
       'Schlüssel: geheimer Wert, der das Ergebnis des Verfahrens steuert',
-      'Kerckhoffs-Prinzip: Das Verfahren darf öffentlich bekannt sein - die Sicherheit beruht allein auf dem geheimen Schlüssel.',
+      'Kerckhoffs-Prinzip: Das Verfahren darf öffentlich bekannt sein. Die Sicherheit beruht allein auf dem geheimen Schlüssel.',
     ],
   ),
   konzept(
     'n-cs-2',
     'kr-symmetrisch',
     'Ein Schlüssel für beide Seiten',
-    'Bei symmetrischer Verschlüsselung benutzen Sender und Empfänger denselben geheimen Schlüssel - zum Ver- und zum Entschlüsseln. Beide müssen ihn also vorher kennen und geheim halten.',
+    'Bei symmetrischer Verschlüsselung benutzen Sender und Empfänger denselben geheimen Schlüssel, und zwar zum Ver- und zum Entschlüsseln. Beide müssen ihn also vorher kennen und geheim halten.',
     points: [
       'Klartext + Schlüssel -> Geheimtext',
       'Geheimtext + derselbe Schlüssel -> Klartext',
-      'Wer den Schlüssel kennt, kann alles lesen - und auch selbst gültige Geheimtexte erzeugen.',
+      'Wer den Schlüssel kennt, kann alles lesen und auch selbst gültige Geheimtexte erzeugen.',
     ],
   ),
   skizze(
@@ -41,8 +41,8 @@ final List<Nugget> nuggetsA06Krypto = [
       ],
     ),
     points: [
-      'Vorab: Beide brauchen denselben Schlüssel K - das ist der heikle Schritt.',
-      'Alice verschlüsselt mit K, Bob entschlüsselt mit K - und umgekehrt.',
+      'Vorab: Beide brauchen denselben Schlüssel K. Das ist der heikle Schritt.',
+      'Alice verschlüsselt mit K, Bob entschlüsselt mit K, oder umgekehrt.',
       'Wer K unterwegs abfängt, kann jede Nachricht lesen.',
     ],
   ),
@@ -50,7 +50,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-cs-4',
     'kr-symmetrisch',
     'Die Caesar-Verschiebung von Hand',
-    'Das älteste symmetrische Verfahren verschiebt jeden Buchstaben um eine feste Zahl - der Schlüssel. Verschlüssele HALLO mit dem Schlüssel 3 und entschlüssele das Ergebnis wieder.',
+    'Das älteste symmetrische Verfahren verschiebt jeden Buchstaben um eine feste Zahl, den Schlüssel. Verschlüssele HALLO mit dem Schlüssel 3 und entschlüssele das Ergebnis wieder.',
     code:
         'Klar:   A B C D E F G H I J K L M N O P Q R S T U V W X Y Z\nGeheim: D E F G H I J K L M N O P Q R S T U V W X Y Z A B C',
     schritte: [
@@ -61,7 +61,7 @@ final List<Nugget> nuggetsA06Krypto = [
     ],
     ergebnis: 'HALLO -> KDOOR -> HALLO (Schlüssel 3 für beide Richtungen)',
     merksatz:
-        'Caesar hat nur 25 sinnvolle Schlüssel - durch Ausprobieren sofort geknackt. Moderne Verfahren brauchen riesige Schlüsselräume.',
+        'Caesar hat nur 25 sinnvolle Schlüssel und ist durch Ausprobieren sofort geknackt. Moderne Verfahren brauchen riesige Schlüsselräume.',
   ),
   vergleich(
     'n-cs-5',
@@ -108,10 +108,10 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-cs-8',
     'kr-symmetrisch',
     'Wie viele Schlüssel braucht man?',
-    'Jedes Paar von Teilnehmenden, das vertraulich kommunizieren will, braucht einen eigenen Schlüssel. Jede der n Personen braucht einen Schlüssel mit jeder der n - 1 anderen - und jeder Schlüssel gehört zu zwei Personen, daher die Division durch 2.',
+    'Jedes Paar von Teilnehmenden, das vertraulich kommunizieren will, braucht einen eigenen Schlüssel. Jede der n Personen braucht einen Schlüssel mit jeder der n - 1 anderen, und jeder Schlüssel gehört zu zwei Personen, daher die Division durch 2.',
     'Schlüssel = n × (n - 1) / 2\n\n 4 Personen:   4 × 3 / 2 = 6\n10 Personen:  10 × 9 / 2 = 45\n100 Personen: 100 × 99 / 2 = 4.950',
     merksatz:
-        'Die Schlüsselzahl wächst fast quadratisch - bei großen Gruppen unhandlich.',
+        'Die Schlüsselzahl wächst fast quadratisch und wird bei großen Gruppen unhandlich.',
   ),
   beispiel(
     'n-cs-9',
@@ -121,7 +121,7 @@ final List<Nugget> nuggetsA06Krypto = [
     schritte: [
       '12 Personen: 12 × 11 / 2 = 132 / 2 = 66 Schlüssel',
       '13 Personen: 13 × 12 / 2 = 156 / 2 = 78 Schlüssel',
-      'Differenz: 78 - 66 = 12 - die neue Person braucht mit jeder der 12 bisherigen einen eigenen Schlüssel',
+      'Differenz: 78 - 66 = 12. Die neue Person braucht mit jeder der 12 bisherigen einen eigenen Schlüssel',
     ],
     ergebnis: '66 Schlüssel, mit der 13. Person 78 (12 neue)',
   ),
@@ -132,7 +132,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'Der gemeinsame Schlüssel muss vorher sicher zum Gegenüber gelangen. Wer die verschlüsselte ZIP-Datei und das Passwort in derselben E-Mail verschickt, hat nichts gewonnen: Wer die Mail mitliest, hat beides.',
     points: [
       'Ohne Technik: Schlüssel über einen zweiten, unabhängigen Kanal übergeben, z. B. per Telefon',
-      'Mit Technik: asymmetrische Verfahren oder Diffie-Hellman lösen das Problem - das nutzen hybride Verfahren wie TLS',
+      'Mit Technik: asymmetrische Verfahren oder Diffie-Hellman lösen das Problem. Das nutzen hybride Verfahren wie TLS',
     ],
   ),
   merke(
@@ -142,11 +142,11 @@ final List<Nugget> nuggetsA06Krypto = [
     'Symmetrische Verfahren sind das Arbeitspferd der Verschlüsselung.',
     points: [
       'ein gemeinsamer geheimer Schlüssel für Ver- und Entschlüsselung',
-      'sehr schnell - für große Datenmengen',
+      'sehr schnell, auch für große Datenmengen',
       'aktueller Standard: AES mit 128, 192 oder 256 Bit',
     ],
     satz:
-        'Symmetrisch: schnell, aber der Schlüssel muss sicher übergeben werden - und bei n Personen braucht man n × (n - 1) / 2 Schlüssel.',
+        'Symmetrisch: schnell, aber der Schlüssel muss sicher übergeben werden, und bei n Personen braucht man n × (n - 1) / 2 Schlüssel.',
   ),
 
   // ============================================= Asymmetrische Verschlüsselung
@@ -157,7 +157,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'Bei asymmetrischer Verschlüsselung hat jede Person zwei zusammengehörende Schlüssel. Der öffentliche Schlüssel darf jeder kennen, der private bleibt geheim. Was mit dem einen Schlüssel verschlüsselt wurde, lässt sich nur mit dem anderen entschlüsseln.',
     points: [
       'Aus dem öffentlichen Schlüssel lässt sich der private praktisch nicht berechnen.',
-      'Kein geheimer Schlüssel muss mehr übertragen werden - das Schlüsselaustauschproblem entfällt.',
+      'Kein geheimer Schlüssel muss mehr übertragen werden. Das Schlüsselaustauschproblem entfällt.',
       'Nachteil: deutlich langsamer als symmetrische Verfahren.',
     ],
   ),
@@ -165,7 +165,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-ca-2',
     'kr-asymmetrisch',
     'Das Briefkasten-Bild',
-    'Der öffentliche Schlüssel funktioniert wie ein Briefkasten mit Einwurfschlitz: Jeder kann einen Brief einwerfen, also verschlüsseln. Nur wer den Briefkastenschlüssel besitzt - den privaten Schlüssel -, kann den Kasten öffnen und lesen.',
+    'Der öffentliche Schlüssel funktioniert wie ein Briefkasten mit Einwurfschlitz: Jeder kann einen Brief einwerfen, also verschlüsseln. Nur wer den Briefkastenschlüssel besitzt (den privaten Schlüssel), kann den Kasten öffnen und lesen.',
     points: [
       'Briefkasten = öffentlicher Schlüssel, darf überall hängen',
       'Briefkastenschlüssel = privater Schlüssel, bleibt beim Besitzer',
@@ -176,7 +176,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-ca-3',
     'kr-asymmetrisch',
     'Vertraulich an Bob',
-    'Alice will Bob eine vertrauliche Nachricht schicken. Sie braucht dafür nur Bobs öffentlichen Schlüssel - ein gemeinsames Geheimnis ist nicht nötig.',
+    'Alice will Bob eine vertrauliche Nachricht schicken. Sie braucht dafür nur Bobs öffentlichen Schlüssel. Ein gemeinsames Geheimnis ist nicht nötig.',
     SequenzDiagramm(
       ['Alice', 'Bob'],
       [
@@ -187,7 +187,7 @@ final List<Nugget> nuggetsA06Krypto = [
     points: [
       'Bob veröffentlicht seinen öffentlichen Schlüssel, etwa über ein Zertifikat.',
       'Alice verschlüsselt die Nachricht mit Bobs öffentlichem Schlüssel.',
-      'Nur Bobs privater Schlüssel entschlüsselt - nicht einmal Alice kann den Geheimtext wieder lesen.',
+      'Nur Bobs privater Schlüssel entschlüsselt. Nicht einmal Alice kann den Geheimtext wieder lesen.',
     ],
   ),
   vergleich(
@@ -232,14 +232,14 @@ final List<Nugget> nuggetsA06Krypto = [
       'Absender bildet den Hashwert der Rechnung und signiert ihn mit seinem privaten Schlüssel.',
       'Rechnung und Signatur gehen an den Kunden.',
       'Der Kunde prüft die Signatur mit dem öffentlichen Schlüssel des Absenders und erhält dessen Hashwert.',
-      'Er bildet selbst den Hashwert der empfangenen Rechnung und vergleicht - gleich heißt echt und unverändert.',
+      'Er bildet selbst den Hashwert der empfangenen Rechnung und vergleicht. Gleich heißt echt und unverändert.',
     ],
   ),
   konzept(
     'n-ca-6',
     'kr-asymmetrisch',
-    'Was die Signatur leistet - und was nicht',
-    'Die Signatur sichert Integrität, Authentizität und Verbindlichkeit: Nur der Besitzer des privaten Schlüssels kann sie erzeugen, und jede Änderung fällt auf. Vertraulich ist das Dokument dadurch aber nicht - es bleibt lesbar.',
+    'Was die Signatur leistet und was nicht',
+    'Die Signatur sichert Integrität, Authentizität und Verbindlichkeit: Nur der Besitzer des privaten Schlüssels kann sie erzeugen, und jede Änderung fällt auf. Vertraulich ist das Dokument dadurch aber nicht. Es bleibt lesbar.',
     points: [
       'Soll ein Dokument signiert und vertraulich sein: erst mit dem eigenen privaten Schlüssel signieren, dann mit dem öffentlichen Schlüssel des Empfängers verschlüsseln.',
       'Rechtlich (eIDAS-Verordnung) gibt es einfache, fortgeschrittene und qualifizierte elektronische Signaturen.',
@@ -250,7 +250,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-ca-7',
     'kr-asymmetrisch',
     'Symmetrisch und asymmetrisch im Vergleich',
-    'Beide Verfahren haben Stärken, die sich ergänzen - deshalb werden sie in der Praxis kombiniert.',
+    'Beide Verfahren haben Stärken, die sich ergänzen. Deshalb werden sie in der Praxis kombiniert.',
     [
       ['', 'symmetrisch', 'asymmetrisch'],
       ['Schlüssel', 'einer, gemeinsam', 'Paar pro Person'],
@@ -281,7 +281,7 @@ final List<Nugget> nuggetsA06Krypto = [
     schritte: [
       'Symmetrisch: 200 × 199 / 2 = 39.800 / 2 = 19.900 Schlüssel',
       'Asymmetrisch: 2 × 200 = 400 Schlüssel (200 öffentliche, 200 private)',
-      'Geheim halten muss jede Person asymmetrisch nur einen Schlüssel - ihren privaten.',
+      'Geheim halten muss jede Person asymmetrisch nur einen Schlüssel, ihren privaten.',
     ],
     ergebnis: '19.900 symmetrische gegenüber 400 asymmetrischen Schlüsseln',
   ),
@@ -292,8 +292,8 @@ final List<Nugget> nuggetsA06Krypto = [
     'Asymmetrische Verfahren beruhen auf mathematischen Aufgaben, die in eine Richtung leicht und in die andere praktisch unlösbar sind. Diese drei Namen solltest du einordnen können.',
     points: [
       'RSA: Zwei große Primzahlen zu multiplizieren ist leicht, das Produkt wieder zu zerlegen praktisch unmöglich. Empfohlen sind heute mindestens 3.000 Bit.',
-      'ECC (elliptische Kurven): gleiche Sicherheit mit viel kürzeren Schlüsseln (ab etwa 250 Bit) - gut für Smartphones und Chipkarten.',
-      'Diffie-Hellman: kein Verschlüsselungsverfahren, sondern eine Schlüsselvereinbarung - beide Seiten berechnen ein gemeinsames Geheimnis, ohne es je zu übertragen.',
+      'ECC (elliptische Kurven): gleiche Sicherheit mit viel kürzeren Schlüsseln (ab etwa 250 Bit), daher gut für Smartphones und Chipkarten.',
+      'Diffie-Hellman: kein Verschlüsselungsverfahren, sondern eine Schlüsselvereinbarung. Beide Seiten berechnen ein gemeinsames Geheimnis, ohne es je zu übertragen.',
     ],
   ),
   falle(
@@ -303,7 +303,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'Wer eine Nachricht mit dem eigenen privaten Schlüssel „verschlüsselt“, schützt sie nicht: Jeder kann sie mit dem öffentlichen Schlüssel wieder lesen. Das ist eine Signatur, keine Verschlüsselung. Für Vertraulichkeit nimmt man immer den öffentlichen Schlüssel des Empfängers.',
     points: [
       'Den privaten Schlüssel einer anderen Person hat man nie.',
-      'Mit dem eigenen öffentlichen Schlüssel verschlüsselt, kann nur man selbst die Nachricht lesen - nicht der Empfänger.',
+      'Mit dem eigenen öffentlichen Schlüssel verschlüsselt, kann nur man selbst die Nachricht lesen, der Empfänger aber nicht.',
     ],
   ),
   merke(
@@ -326,7 +326,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-ch-1',
     'kr-hybrid',
     'Das Beste aus beiden Welten',
-    'Hybride Verfahren verschlüsseln die eigentlichen Daten symmetrisch mit einem zufälligen Sitzungsschlüssel - das ist schnell. Asymmetrische Verfahren sorgen nur dafür, dass beide Seiten diesen Sitzungsschlüssel sicher erhalten und der Gegenüber echt ist.',
+    'Hybride Verfahren verschlüsseln die eigentlichen Daten symmetrisch mit einem zufälligen Sitzungsschlüssel. Das ist schnell. Asymmetrische Verfahren sorgen nur dafür, dass beide Seiten diesen Sitzungsschlüssel sicher erhalten und der Gegenüber echt ist.',
     table: [
       ['Aufgabe', 'Verfahren'],
       ['Daten verschlüsseln', 'symmetrisch, z. B. AES'],
@@ -349,7 +349,7 @@ final List<Nugget> nuggetsA06Krypto = [
     ),
     points: [
       'Alice erzeugt einen zufälligen Sitzungsschlüssel.',
-      'Sie verschlüsselt die Mail damit symmetrisch (AES) - schnell, auch bei großen Anhängen.',
+      'Sie verschlüsselt die Mail damit symmetrisch (AES). Das geht schnell, auch bei großen Anhängen.',
       'Den Sitzungsschlüssel verschlüsselt sie asymmetrisch mit Bobs öffentlichem Schlüssel und schickt ihn mit.',
       'Bob entschlüsselt zuerst den Sitzungsschlüssel mit seinem privaten Schlüssel, dann damit die Mail.',
     ],
@@ -372,9 +372,9 @@ final List<Nugget> nuggetsA06Krypto = [
     ),
     points: [
       'Client Hello: Der Browser nennt die unterstützten Verfahren und schickt seinen Diffie-Hellman-Anteil.',
-      'Server Hello: Der Server wählt die Verfahren und schickt seinen Anteil - beide berechnen daraus denselben Sitzungsschlüssel.',
+      'Server Hello: Der Server wählt die Verfahren und schickt seinen Anteil. Beide berechnen daraus denselben Sitzungsschlüssel.',
       'Der Server sendet sein Zertifikat und signiert den Handshake mit seinem privaten Schlüssel.',
-      'Der Browser prüft Zertifikat und Signatur - erst dann gilt der Server als echt.',
+      'Der Browser prüft Zertifikat und Signatur. Erst dann gilt der Server als echt.',
       'Die Nutzdaten laufen symmetrisch verschlüsselt, z. B. mit AES.',
     ],
   ),
@@ -398,10 +398,10 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-ch-5',
     'kr-hybrid',
     'Wozu Zertifikate?',
-    'Asymmetrische Verschlüsselung hat eine Lücke: Woher weiß Alice, dass der öffentliche Schlüssel wirklich Bob gehört? Ein Angreifer könnte ihr seinen eigenen unterschieben und alles mitlesen (Man-in-the-Middle). Ein Zertifikat bindet den öffentlichen Schlüssel an einen Namen - bestätigt durch die Signatur einer Zertifizierungsstelle (CA).',
+    'Asymmetrische Verschlüsselung hat eine Lücke: Woher weiß Alice, dass der öffentliche Schlüssel wirklich Bob gehört? Ein Angreifer könnte ihr seinen eigenen unterschieben und alles mitlesen (Man-in-the-Middle). Ein Zertifikat bindet den öffentlichen Schlüssel an einen Namen, bestätigt durch die Signatur einer Zertifizierungsstelle (CA).',
     points: [
-      'Vergleich: Der Personalausweis bestätigt, dass Foto und Name zusammengehören - ausgestellt von einer Behörde, der alle vertrauen.',
-      'Das Zertifikat bestätigt: Dieser öffentliche Schlüssel gehört zu shop.example - ausgestellt von einer CA, der der Browser vertraut.',
+      'Vergleich: Der Personalausweis bestätigt, dass Foto und Name zusammengehören, ausgestellt von einer Behörde, der alle vertrauen.',
+      'Das Zertifikat bestätigt: Dieser öffentliche Schlüssel gehört zu shop.example, ausgestellt von einer CA, der der Browser vertraut.',
     ],
   ),
   vergleich(
@@ -423,7 +423,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-ch-7',
     'kr-hybrid',
     'Die Vertrauenskette',
-    'Browser und Betriebssysteme bringen eine Liste vertrauenswürdiger Wurzelzertifikate (Root-CAs) mit. Die Root-CA signiert eine Zwischen-CA, diese das Serverzertifikat - so entsteht eine Kette bis zu einem bekannten Anker.',
+    'Browser und Betriebssysteme bringen eine Liste vertrauenswürdiger Wurzelzertifikate (Root-CAs) mit. Die Root-CA signiert eine Zwischen-CA, diese das Serverzertifikat. So entsteht eine Kette bis zu einem bekannten Anker.',
     BaumDiagramm(
       BaumKnoten('Root-CA', [
         BaumKnoten('Zwischen-CA', [
@@ -463,10 +463,10 @@ final List<Nugget> nuggetsA06Krypto = [
     'Ein Serverzertifikat beantragen',
     'Beispiel: Der Webshop shop.example braucht ein neues Zertifikat für HTTPS.',
     [
-      'Auf dem Server ein Schlüsselpaar erzeugen - der private Schlüssel verlässt den Server nie.',
+      'Auf dem Server ein Schlüsselpaar erzeugen. Der private Schlüssel verlässt den Server nie.',
       'Einen Zertifikatsantrag (CSR) mit öffentlichem Schlüssel und Domainnamen erstellen.',
       'Den CSR an die CA senden.',
-      'Die CA prüft, ob der Antragsteller die Domain kontrolliert - bei höheren Stufen auch die Firma.',
+      'Die CA prüft, ob der Antragsteller die Domain kontrolliert, bei höheren Stufen auch die Firma.',
       'Die CA signiert und liefert das Zertifikat.',
       'Zertifikat samt Zwischenzertifikat auf dem Server einbinden und vor Ablauf erneuern.',
     ],
@@ -484,7 +484,7 @@ final List<Nugget> nuggetsA06Krypto = [
       ],
       ['OV (Organization Validation)', 'zusätzlich die Organisation'],
       ['EV (Extended Validation)', 'strengste Prüfung der Organisation'],
-      ['selbstsigniert', 'nichts - keine CA, der Browser warnt'],
+      ['selbstsigniert', 'nichts (keine CA), der Browser warnt'],
     ],
     points: [
       'Selbstsignierte Zertifikate nur für Tests oder für interne Systeme mit eigener, verteilter Firmen-CA.',
@@ -508,7 +508,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'Das Schloss heißt nicht „seriöse Seite“',
     'Das Schloss im Browser bestätigt nur, dass die Verbindung verschlüsselt ist und der Server die Domain kontrolliert. Auch Phishing-Seiten bekommen problemlos ein Zertifikat für ihre eigene Domain.',
     points: [
-      'Der private Schlüssel steht nie im Zertifikat - er bleibt auf dem Server.',
+      'Der private Schlüssel steht nie im Zertifikat. Er bleibt auf dem Server.',
       'Bei TLS 1.3 wird der Sitzungsschlüssel nicht mit RSA verschickt, sondern per Diffie-Hellman ausgehandelt.',
       'HTTPS ist Transportverschlüsselung: Auf dem Server liegen die Daten wieder im Klartext.',
     ],
@@ -532,10 +532,10 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-cx-1',
     'kr-hash',
     'Der digitale Fingerabdruck',
-    'Eine Hashfunktion berechnet aus beliebig vielen Daten einen kurzen Wert fester Länge, den Hashwert (Prüfsumme). Aus dem Hashwert lässt sich die Eingabe nicht zurückrechnen - es ist eine Einwegfunktion. Gleiche Eingabe ergibt immer denselben Hashwert.',
+    'Eine Hashfunktion berechnet aus beliebig vielen Daten einen kurzen Wert fester Länge, den Hashwert (Prüfsumme). Aus dem Hashwert lässt sich die Eingabe nicht zurückrechnen. Es ist eine Einwegfunktion. Gleiche Eingabe ergibt immer denselben Hashwert.',
     points: [
       'wie ein Fingerabdruck: klein, eindeutig, aber kein Abbild der ganzen Person',
-      'Es gibt keinen Schlüssel - jeder kann denselben Hashwert nachrechnen.',
+      'Es gibt keinen Schlüssel. Jeder kann denselben Hashwert nachrechnen.',
     ],
   ),
   vergleich(
@@ -559,13 +559,13 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-cx-3',
     'kr-hash',
     'Der Lawineneffekt',
-    'Berechnet wurde der SHA-256-Wert von „Hallo“ und „hallo“ - die Wörter unterscheiden sich nur im ersten Buchstaben.',
+    'Berechnet wurde der SHA-256-Wert von „Hallo“ und „hallo“. Die Wörter unterscheiden sich nur im ersten Buchstaben.',
     code:
         'Hallo  753692ec36adb4c794c973945eb2a99c\n       1649703ea6f76bf259abb4fb838e013e\nhallo  d3751d33f9cd5049c4af2b462735457e\n       4d3baf130bcbb87f389e349fbaeb20b9',
     schritte: [
-      'H ist hexadezimal 48, h ist 68 - die Eingaben unterscheiden sich in genau einem Bit.',
+      'H ist hexadezimal 48, h ist 68. Die Eingaben unterscheiden sich in genau einem Bit.',
       'Die Hashwerte haben trotzdem nichts erkennbar gemeinsam.',
-      'Beide sind 64 Hex-Zeichen lang, also 256 Bit - egal wie lang die Eingabe ist.',
+      'Beide sind 64 Hex-Zeichen lang, also 256 Bit, ganz egal, wie lang die Eingabe ist.',
     ],
     ergebnis: 'kleinste Änderung -> völlig anderer Hashwert',
   ),
@@ -573,7 +573,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-cx-4',
     'kr-hash',
     'Gängige Verfahren',
-    'Bei Hashverfahren ist Kollisionsresistenz das Hauptkriterium. Für MD5 und SHA-1 wurden Kollisionen gefunden - sie gelten deshalb als veraltet.',
+    'Bei Hashverfahren ist Kollisionsresistenz das Hauptkriterium. Für MD5 und SHA-1 wurden Kollisionen gefunden. Sie gelten deshalb als veraltet.',
     [
       ['Verfahren', 'Länge', 'Bewertung'],
       ['MD5', '128 Bit', 'veraltet'],
@@ -604,25 +604,25 @@ final List<Nugget> nuggetsA06Krypto = [
     ],
     ergebnis: 'übereinstimmende Hashwerte belegen die Integrität der Datei',
     merksatz:
-        'Ein Hash allein beweist nicht die Herkunft - wer Datei und Hash austauscht, fällt nicht auf. Die Herkunft belegt erst eine Signatur.',
+        'Ein Hash allein beweist nicht die Herkunft. Wer Datei und Hash austauscht, fällt nicht auf. Die Herkunft belegt erst eine Signatur.',
   ),
   konzept(
     'n-cx-7',
     'kr-hash',
     'Wo Hashwerte eingesetzt werden',
-    'Hashfunktionen stecken in vielen Sicherheitsverfahren - immer dann, wenn Veränderungen erkannt oder Geheimnisse nicht im Klartext gespeichert werden sollen.',
+    'Hashfunktionen stecken in vielen Sicherheitsverfahren, und zwar immer dann, wenn Veränderungen erkannt oder Geheimnisse nicht im Klartext gespeichert werden sollen.',
     points: [
       'Integrität: Downloads, Backups und Datenübertragungen prüfen',
       'Passwörter speichern, ohne sie im Klartext abzulegen',
       'Digitale Signaturen: signiert wird der Hashwert, nicht das ganze Dokument',
-      'HMAC: Hash mit geheimem Schlüssel - sichert Integrität und Authentizität, z. B. in VPN und TLS',
+      'HMAC: Hash mit geheimem Schlüssel, er sichert Integrität und Authentizität, z. B. in VPN und TLS',
     ],
   ),
   vergleich(
     'n-cx-8',
     'kr-hash',
     'Hashen, Verschlüsseln, Kodieren',
-    'Drei Verfahren, die Daten „unleserlich“ aussehen lassen - aber mit völlig verschiedenen Zielen.',
+    'Drei Verfahren, die Daten „unleserlich“ aussehen lassen, aber mit völlig verschiedenen Zielen.',
     [
       ['Verfahren', 'umkehrbar?', 'Zweck'],
       ['Hashen (SHA-256)', 'nein', 'Integrität, Passwörter'],
@@ -630,7 +630,7 @@ final List<Nugget> nuggetsA06Krypto = [
       [
         'Kodieren (Base64)',
         'ja, ohne Schlüssel',
-        'Daten transportieren - kein Schutz',
+        'Daten transportieren, kein Schutz',
       ],
     ],
   ),
@@ -642,7 +642,7 @@ final List<Nugget> nuggetsA06Krypto = [
     [
       'Beim Registrieren ein zufälliges Salt je Konto erzeugen.',
       'Passwort und Salt mit einem bewusst langsamen Verfahren wie Argon2 oder bcrypt hashen.',
-      'Salt und Hashwert in der Datenbank speichern - das Passwort selbst nicht.',
+      'Salt und Hashwert in der Datenbank speichern, das Passwort selbst nicht.',
       'Beim Login das eingegebene Passwort mit demselben Salt hashen und die Hashwerte vergleichen.',
     ],
   ),
@@ -654,9 +654,9 @@ final List<Nugget> nuggetsA06Krypto = [
     code:
         'ohne Salt:\nKunde A         b391797a80a7c9a2...\nKunde B         b391797a80a7c9a2...\n\nmit Salt (Salt + Passwort):\nA, Salt x7Qp!   f164ee476b8e718b...\nB, Salt k2Lm#   6810bbb849e709aa...',
     schritte: [
-      'Ohne Salt ergeben gleiche Passwörter gleiche Hashwerte - ein Angreifer sieht sofort, wer dasselbe Passwort hat.',
+      'Ohne Salt ergeben gleiche Passwörter gleiche Hashwerte. Ein Angreifer sieht sofort, wer dasselbe Passwort hat.',
       'Häufige Passwörter lassen sich in vorberechneten Tabellen (Rainbow Tables) direkt nachschlagen.',
-      'Mit Salt hat jedes Konto einen eigenen Zufallswert - die Hashwerte unterscheiden sich völlig.',
+      'Mit Salt hat jedes Konto einen eigenen Zufallswert. Die Hashwerte unterscheiden sich völlig.',
       'Das Salt ist nicht geheim: Es steht im Klartext neben dem Hashwert.',
     ],
     ergebnis:
@@ -666,10 +666,10 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-cx-11',
     'kr-hash',
     'Angriffe auf Hashwerte',
-    'Hashwerte sind nicht umkehrbar - aber man kann raten und vergleichen. Genau darauf zielen die Angriffe.',
+    'Hashwerte sind nicht umkehrbar, aber man kann raten und vergleichen. Genau darauf zielen die Angriffe.',
     points: [
       'Brute Force und Wörterbuch offline: Grafikkarten berechnen Milliarden SHA-256-Werte pro Sekunde.',
-      'Rainbow Tables: vorberechnete Hashwerte - wirkungslos gegen Salt.',
+      'Rainbow Tables: vorberechnete Hashwerte, aber wirkungslos gegen Salt.',
       'Kollisionen bei MD5 und SHA-1: zwei Dokumente mit gleichem Hash machen Signaturen fälschbar.',
       'Abhilfe: Salt plus langsame Verfahren wie Argon2, bcrypt oder PBKDF2 mit einstellbarem Aufwand.',
     ],
@@ -678,7 +678,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-cx-12',
     'kr-hash',
     'Hash ist keine Verschlüsselung',
-    'Verschlüsseltes lässt sich mit dem Schlüssel wieder lesbar machen, ein Hashwert nicht - es gibt keinen Schlüssel. Und ein schnelles SHA-256 ohne Salt reicht für Passwörter nicht: Angreifer probieren Milliarden Kandidaten pro Sekunde oder schlagen in vorberechneten Tabellen nach.',
+    'Verschlüsseltes lässt sich mit dem Schlüssel wieder lesbar machen, ein Hashwert nicht. Es gibt keinen Schlüssel. Und ein schnelles SHA-256 ohne Salt reicht für Passwörter nicht: Angreifer probieren Milliarden Kandidaten pro Sekunde oder schlagen in vorberechneten Tabellen nach.',
     points: [
       'Hashwerte sind nicht „entschlüsselbar“, höchstens durch Raten zu finden.',
       'Base64 ist weder Hash noch Verschlüsselung.',
@@ -693,7 +693,7 @@ final List<Nugget> nuggetsA06Krypto = [
     points: [
       'Einweg, feste Länge, Lawineneffekt, kollisionsresistent',
       'Hex-Länge = Bit / 4, SHA-256 -> 64 Zeichen',
-      'aktuell SHA-256, SHA-512, SHA-3 - veraltet MD5 und SHA-1',
+      'aktuell SHA-256, SHA-512, SHA-3; veraltet sind MD5 und SHA-1',
     ],
     satz:
         'Hash = Einweg-Fingerabdruck fester Länge für Integrität. Passwörter: Salt plus langsames Verfahren.',
@@ -761,14 +761,14 @@ final List<Nugget> nuggetsA06Krypto = [
       ['Verfahren', 'Bewertung'],
       [
         'SMS-Code',
-        'besser als nichts - SMS kann umgeleitet werden (SIM-Swapping)',
+        'besser als nichts: SMS kann umgeleitet werden (SIM-Swapping)',
       ],
-      ['TOTP-App', 'gut - Code entsteht offline auf dem Gerät'],
+      ['TOTP-App', 'gut: Code entsteht offline auf dem Gerät'],
       [
         'Push-Freigabe',
-        'gut - Vorsicht bei unerwarteten Anfragen (MFA-Fatigue)',
+        'gut: Vorsicht bei unerwarteten Anfragen (MFA-Fatigue)',
       ],
-      ['FIDO2-Schlüssel, Passkey', 'sehr gut - phishingresistent'],
+      ['FIDO2-Schlüssel, Passkey', 'sehr gut, phishingresistent'],
     ],
   ),
   skizze(
@@ -787,7 +787,7 @@ final List<Nugget> nuggetsA06Krypto = [
       ],
     ),
     points: [
-      'Der Code gilt meist 30 Sekunden - ein abgefangener Code ist schnell wertlos.',
+      'Der Code gilt meist 30 Sekunden. Ein abgefangener Code ist schnell wertlos.',
       'Das Smartphone braucht dafür keine Internetverbindung.',
       'Passwort = Wissen, Smartphone mit App = Besitz -> echte 2FA.',
     ],
@@ -818,8 +818,8 @@ final List<Nugget> nuggetsA06Krypto = [
     'Moderne Anmeldeverfahren machen Logins sicherer und bequemer zugleich.',
     points: [
       'Passkeys (FIDO2): ein Schlüsselpaar je Website. Der private Schlüssel bleibt auf dem Gerät und wird per Fingerabdruck oder PIN freigegeben.',
-      'Passkeys funktionieren nur auf der echten Domain - eine Phishing-Seite bekommt keine gültige Antwort.',
-      'Single Sign-on (SSO): einmal anmelden, dann Zugriff auf mehrere Anwendungen - das zentrale Konto braucht darum besonders starken Schutz.',
+      'Passkeys funktionieren nur auf der echten Domain. Eine Phishing-Seite bekommt keine gültige Antwort.',
+      'Single Sign-on (SSO): einmal anmelden, dann Zugriff auf mehrere Anwendungen. Das zentrale Konto braucht darum besonders starken Schutz.',
     ],
   ),
   formel(
@@ -850,7 +850,7 @@ final List<Nugget> nuggetsA06Krypto = [
       '9,54 × 10^16 / 10^10 pro s ≈ 9.542.896 s ≈ 110 Tage',
     ],
     ergebnis:
-        '8 gemischte Zeichen: rund 6 Stunden - 12 Kleinbuchstaben: rund 110 Tage',
+        '8 gemischte Zeichen: rund 6 Stunden; 12 Kleinbuchstaben: rund 110 Tage',
     merksatz:
         'Länge schlägt Komplexität: vier Zeichen mehr wirken stärker als ein größerer Zeichenvorrat.',
   ),
@@ -864,13 +864,13 @@ final List<Nugget> nuggetsA06Krypto = [
       'erlaubte Versuche: 3',
       'Wahrscheinlichkeit: 3 / 10.000 = 0,0003 = 0,03 %',
     ],
-    ergebnis: '0,03 % - erst die Sperre macht die kurze PIN sicher',
+    ergebnis: '0,03 %. Erst die Sperre macht die kurze PIN sicher',
   ),
   falle(
     'n-cz-11',
     'kr-auth',
     'Zwei Passwörter sind keine 2FA',
-    'Zwei-Faktor-Authentifizierung verlangt zwei Faktoren aus VERSCHIEDENEN Kategorien. Passwort plus Sicherheitsfrage sind zweimal Wissen - wer das Passwort abgefischt hat, fischt die Antwort gleich mit.',
+    'Zwei-Faktor-Authentifizierung verlangt zwei Faktoren aus VERSCHIEDENEN Kategorien. Passwort plus Sicherheitsfrage sind zweimal Wissen. Wer das Passwort abgefischt hat, fischt die Antwort gleich mit.',
     points: [
       'Passwort + PIN = zweimal Wissen, keine 2FA',
       'Passwort + Code vom Smartphone = Wissen + Besitz, echte 2FA',
@@ -885,7 +885,7 @@ final List<Nugget> nuggetsA06Krypto = [
     points: [
       'lieber lang als kompliziert, z. B. eine Passphrase aus mehreren Wörtern',
       'für jeden Dienst ein eigenes Passwort, verwaltet im Passwortmanager',
-      'kein anlassloser Zwangswechsel - ändern bei Verdacht auf Kompromittierung',
+      'kein anlassloser Zwangswechsel, ändern bei Verdacht auf Kompromittierung',
       'wo möglich zusätzlich MFA oder Passkeys nutzen',
     ],
     satz:
@@ -927,7 +927,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xg-3',
     'ds-grundlagen',
     'Personenbezogen oder nicht?',
-    'Entscheidend ist, ob sich die Information einem bestimmten Menschen zuordnen lässt - direkt oder mit Zusatzwissen.',
+    'Entscheidend ist, ob sich die Information einem bestimmten Menschen zuordnen lässt, direkt oder mit Zusatzwissen.',
     [
       ['Beispiel', 'Einstufung'],
       ['Name, Anschrift, Geburtsdatum', 'personenbezogen'],
@@ -942,7 +942,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xg-4',
     'ds-grundlagen',
     'Besondere Kategorien (Art. 9)',
-    'Einige Daten sind so sensibel, dass ihre Verarbeitung grundsätzlich verboten ist - erlaubt nur mit Ausnahme, etwa ausdrücklicher Einwilligung oder im Arbeitsrecht. Für Daten über Straftaten gilt eine eigene strenge Regel (Art. 10).',
+    'Einige Daten sind so sensibel, dass ihre Verarbeitung grundsätzlich verboten ist. Erlaubt ist sie nur ausnahmsweise, etwa ausdrücklicher Einwilligung oder im Arbeitsrecht. Für Daten über Straftaten gilt eine eigene strenge Regel (Art. 10).',
     [
       ['Bereich', 'Beispiele'],
       ['Gesundheit', 'Diagnose, Krankschreibung'],
@@ -990,7 +990,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xg-7',
     'ds-grundlagen',
     'DSGVO und BDSG',
-    'Die Datenschutz-Grundverordnung (DSGVO) gilt seit dem 25. Mai 2018 unmittelbar in der ganzen EU. Das deutsche Bundesdatenschutzgesetz (BDSG) ergänzt sie dort, wo sie den Staaten Spielraum lässt - etwa beim Beschäftigtendatenschutz und bei der Pflicht zum Datenschutzbeauftragten.',
+    'Die Datenschutz-Grundverordnung (DSGVO) gilt seit dem 25. Mai 2018 unmittelbar in der ganzen EU. Das deutsche Bundesdatenschutzgesetz (BDSG) ergänzt sie dort, wo sie den Staaten Spielraum lässt, etwa beim Beschäftigtendatenschutz und bei der Pflicht zum Datenschutzbeauftragten.',
     points: [
       'Marktortprinzip (Art. 3): Die DSGVO gilt auch für Anbieter außerhalb der EU, die Menschen in der EU Waren oder Dienste anbieten.',
       'Bei Widerspruch geht die DSGVO als EU-Verordnung dem nationalen Recht vor.',
@@ -1017,10 +1017,10 @@ final List<Nugget> nuggetsA06Krypto = [
       'Das sind die 14 Büro-Beschäftigten.',
       '14 < 20 -> keine Pflicht nach § 38 BDSG',
       'Eine Pflicht nach Art. 37 liegt ohne besondere Risiken ebenfalls nicht vor.',
-      'Die DSGVO gilt trotzdem vollständig - nur die Pflicht zur Benennung entfällt.',
+      'Die DSGVO gilt trotzdem vollständig. Nur die Pflicht zur Benennung entfällt.',
     ],
     ergebnis:
-        'kein DSB vorgeschrieben - alle anderen Datenschutzpflichten bleiben',
+        'kein DSB vorgeschrieben, aber alle anderen Datenschutzpflichten bleiben',
   ),
   konzept(
     'n-xg-10',
@@ -1054,7 +1054,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xg-11',
     'ds-grundlagen',
     'Ohne Namen heißt nicht anonym',
-    'Auch ohne Namen kann ein Datensatz personenbezogen sein: Die Kombination aus Postleitzahl, Geburtsdatum und Geschlecht führt oft zu genau einer Person. Und Biometrie zählt nur dann zu Art. 9, wenn sie zur eindeutigen Identifizierung verarbeitet wird - ein Porträtfoto auf der Website allein noch nicht.',
+    'Auch ohne Namen kann ein Datensatz personenbezogen sein: Die Kombination aus Postleitzahl, Geburtsdatum und Geschlecht führt oft zu genau einer Person. Und Biometrie zählt nur dann zu Art. 9, wenn sie zur eindeutigen Identifizierung verarbeitet wird. Ein Porträtfoto auf der Website allein noch nicht.',
     points: [
       'Datenschutz ≠ Datensicherheit: Ein verschlüsselter Server macht eine unzulässige Verarbeitung nicht zulässig.',
       'Die Pflicht zum DSB hängt an den Personen, die Daten verarbeiten, nicht an der Gesamtbelegschaft.',
@@ -1072,7 +1072,7 @@ final List<Nugget> nuggetsA06Krypto = [
       'DSB ab 20 Personen mit ständiger automatisierter Verarbeitung',
     ],
     satz:
-        'Personenbezogen ist alles, was sich einem Menschen zuordnen lässt - auch über Nummern und Kennungen.',
+        'Personenbezogen ist alles, was sich einem Menschen zuordnen lässt, auch über Nummern und Kennungen.',
   ),
 
   // ========================================= Grundsätze der Verarbeitung
@@ -1080,7 +1080,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xs-1',
     'ds-grundsaetze',
     'Verbot mit Erlaubnisvorbehalt',
-    'Die DSGVO geht von einem strengen Grundsatz aus: Das Verarbeiten personenbezogener Daten ist verboten - es sei denn, eine Rechtsgrundlage erlaubt es. Zusätzlich muss jede Verarbeitung die Grundsätze aus Art. 5 einhalten. Prüfe deshalb immer zwei Fragen.',
+    'Die DSGVO geht von einem strengen Grundsatz aus: Das Verarbeiten personenbezogener Daten ist verboten, es sei denn, eine Rechtsgrundlage erlaubt es. Zusätzlich muss jede Verarbeitung die Grundsätze aus Art. 5 einhalten. Prüfe deshalb immer zwei Fragen.',
     points: [
       'Darf ich überhaupt? -> Rechtsgrundlage nach Art. 6 (bei besonderen Kategorien zusätzlich Art. 9)',
       'Wie darf ich? -> Grundsätze nach Art. 5',
@@ -1155,11 +1155,11 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xs-5',
     'ds-grundsaetze',
     'Die Einwilligung (Art. 7)',
-    'Die Einwilligung ist nur eine von sechs Rechtsgrundlagen - und die mit den strengsten Anforderungen. Braucht man Daten ohnehin für einen Vertrag, ist keine Einwilligung nötig.',
+    'Die Einwilligung ist nur eine von sechs Rechtsgrundlagen, und zwar die mit den strengsten Anforderungen. Braucht man Daten ohnehin für einen Vertrag, ist keine Einwilligung nötig.',
     points: [
       'freiwillig: keine Nachteile bei Ablehnung, Vertrag nicht von unnötiger Einwilligung abhängig machen (Kopplungsverbot)',
       'informiert und für einen bestimmten Zweck',
-      'unmissverständlich durch aktives Handeln - kein vorangekreuztes Kästchen',
+      'unmissverständlich durch aktives Handeln, kein vorangekreuztes Kästchen',
       'nachweisbar, z. B. per Double-Opt-in beim Newsletter',
       'jederzeit widerrufbar, so einfach wie erteilt',
       'Kinder unter 16 Jahren: bei Online-Diensten Zustimmung der Eltern (Art. 8)',
@@ -1173,8 +1173,8 @@ final List<Nugget> nuggetsA06Krypto = [
     [
       'Zweck klären: Wofür wird das Geburtsdatum gebraucht? Für den Versand nicht.',
       'Rechtsgrundlage suchen: Zur Vertragserfüllung (lit. b) ist es nicht nötig.',
-      'Datenminimierung: Ohne Zweck entfällt das Feld - allenfalls bleibt es freiwillig mit Einwilligung.',
-      'Braucht der Shop wirklich eine Altersprüfung, genügt als Ergebnis „volljährig ja/nein“ - das volle Datum muss nicht gespeichert werden.',
+      'Datenminimierung: Ohne Zweck entfällt das Feld, allenfalls bleibt es freiwillig mit Einwilligung.',
+      'Braucht der Shop wirklich eine Altersprüfung, genügt als Ergebnis „volljährig ja/nein“. Das volle Datum muss nicht gespeichert werden.',
     ],
   ),
   konzept(
@@ -1183,8 +1183,8 @@ final List<Nugget> nuggetsA06Krypto = [
     'Privacy by Design und by Default (Art. 25)',
     'Datenschutz muss schon bei der Entwicklung eingeplant werden, nicht nachträglich. Für IT-Fachleute ist das einer der wichtigsten Artikel, denn er betrifft jedes Softwareprojekt.',
     points: [
-      'Privacy by Design: Datenschutz durch Technikgestaltung - z. B. Pseudonymisierung, Löschfunktionen, Verschlüsselung von Anfang an',
-      'Privacy by Default: datenschutzfreundliche Voreinstellungen - nur nötige Daten, Profil nicht öffentlich, optionale Felder leer, Tracking aus',
+      'Privacy by Design: Datenschutz durch Technikgestaltung, z. B. Pseudonymisierung, Löschfunktionen, Verschlüsselung von Anfang an',
+      'Privacy by Default: datenschutzfreundliche Voreinstellungen. Nur nötige Daten, Profil nicht öffentlich, optionale Felder leer, Tracking aus',
       'Beispiel App: Standortzugriff nur während der Nutzung und nur, wenn die Funktion ihn wirklich braucht',
     ],
   ),
@@ -1202,7 +1202,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xs-9',
     'ds-grundsaetze',
     'Bußgelder (Art. 83)',
-    'Verstöße können teuer werden. Die DSGVO kennt zwei Obergrenzen - bei Unternehmen gilt jeweils der höhere der beiden Beträge.',
+    'Verstöße können teuer werden. Die DSGVO kennt zwei Obergrenzen. Bei Unternehmen gilt jeweils der höhere der beiden Beträge.',
     [
       ['Verstoß gegen', 'Höchstbetrag'],
       [
@@ -1215,7 +1215,7 @@ final List<Nugget> nuggetsA06Krypto = [
       ],
     ],
     points: [
-      'Bußgelder sollen wirksam, verhältnismäßig und abschreckend sein - die Obergrenze wird selten ausgeschöpft.',
+      'Bußgelder sollen wirksam, verhältnismäßig und abschreckend sein. Die Obergrenze wird selten ausgeschöpft.',
       'Dazu kommen Schadenersatzansprüche Betroffener (Art. 82).',
     ],
   ),
@@ -1235,10 +1235,10 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xs-13',
     'ds-grundsaetze',
     'Videoüberwachung datenschutzgerecht',
-    'Kamerabilder, auf denen Menschen erkennbar sind, sind personenbezogene Daten. Eine Videoüberwachung braucht deshalb eine Rechtsgrundlage - in Unternehmen meist das berechtigte Interesse (Art. 6 Abs. 1 lit. f DSGVO), etwa der Schutz vor Diebstahl. Dieses Interesse muss gegen die Interessen der Gefilmten abgewogen werden.',
+    'Kamerabilder, auf denen Menschen erkennbar sind, sind personenbezogene Daten. Eine Videoüberwachung braucht deshalb eine Rechtsgrundlage, in Unternehmen meist das berechtigte Interesse (Art. 6 Abs. 1 lit. f DSGVO), etwa der Schutz vor Diebstahl. Dieses Interesse muss gegen die Interessen der Gefilmten abgewogen werden.',
     points: [
       'Hinweispflicht: gut sichtbare Schilder mit Verantwortlichem und Zweck, bevor man den Bereich betritt',
-      'Erforderlichkeit: nur die nötigen Bereiche erfassen - keinen öffentlichen Raum, keine Nachbargrundstücke',
+      'Erforderlichkeit: nur die nötigen Bereiche erfassen, keinen öffentlichen Raum, keine Nachbargrundstücke',
       'Tabu sind Umkleiden, Sanitär- und Pausenräume',
       'Speicherbegrenzung: Aufnahmen nach kurzer Zeit löschen; die Aufsichtsbehörden nennen als Richtwert 72 Stunden',
       'Sicherheit: Aufnahmen vor unbefugtem Zugriff schützen, Zugriff nur für wenige Berechtigte',
@@ -1256,7 +1256,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xs-11',
     'ds-grundsaetze',
     'Die Einwilligung ist kein Allheilmittel',
-    'Viele halten die Einwilligung für die wichtigste Rechtsgrundlage. Dabei ist sie bei Verträgen überflüssig und im Arbeitsverhältnis oft nicht freiwillig. Wird sie widerrufen, wirkt das nur für die Zukunft - was bis dahin verarbeitet wurde, bleibt rechtmäßig.',
+    'Viele halten die Einwilligung für die wichtigste Rechtsgrundlage. Dabei ist sie bei Verträgen überflüssig und im Arbeitsverhältnis oft nicht freiwillig. Wird sie widerrufen, wirkt das nur für die Zukunft. Was bis dahin verarbeitet wurde, bleibt rechtmäßig.',
     points: [
       'Vorangekreuzte Häkchen und Schweigen sind keine Einwilligung.',
       'Zweckbindung heißt nicht „nie wieder verwenden“, sondern nur für vereinbare Zwecke.',
@@ -1274,7 +1274,7 @@ final List<Nugget> nuggetsA06Krypto = [
       'Art. 25: Datenschutz durch Technik und Voreinstellungen',
     ],
     satz:
-        'Verboten, außer erlaubt - und dann nur so viel wie nötig, so lange wie nötig, so sicher wie nötig.',
+        'Verboten, außer erlaubt, und dann nur so viel wie nötig, so lange wie nötig, so sicher wie nötig.',
   ),
 
   // ============================================ Rechte der Betroffenen
@@ -1300,7 +1300,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xr-2',
     'ds-rechte',
     'Informationspflicht (Art. 13, 14)',
-    'Schon beim Erheben muss der Verantwortliche von sich aus informieren - meist über die Datenschutzerklärung. Art. 13 gilt, wenn die Daten bei der Person selbst erhoben werden, Art. 14, wenn sie aus einer anderen Quelle stammen.',
+    'Schon beim Erheben muss der Verantwortliche von sich aus informieren, meist über die Datenschutzerklärung. Art. 13 gilt, wenn die Daten bei der Person selbst erhoben werden, Art. 14, wenn sie aus einer anderen Quelle stammen.',
     points: [
       'Name und Kontaktdaten des Verantwortlichen und ggf. des DSB',
       'Zwecke und Rechtsgrundlage der Verarbeitung',
@@ -1316,7 +1316,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'Jede Person darf erfahren, ob und welche Daten über sie verarbeitet werden. Die Auskunft ist das Recht, das in der Praxis am häufigsten genutzt wird.',
     points: [
       'Bestätigung, ob überhaupt Daten verarbeitet werden',
-      'Kopie der Daten - die erste kostenlos',
+      'Kopie der Daten, die erste kostenlos',
       'Zwecke, Kategorien der Daten, Empfänger, Speicherdauer, Herkunft',
       'Hinweis auf Berichtigung, Löschung, Einschränkung, Widerspruch und Beschwerde',
     ],
@@ -1330,7 +1330,7 @@ final List<Nugget> nuggetsA06Krypto = [
       'Berichtigung (Art. 16): falsche Daten korrigieren, unvollständige ergänzen',
       'Löschung (Art. 17): z. B. wenn der Zweck entfallen ist, die Einwilligung widerrufen wurde oder die Verarbeitung unrechtmäßig war',
       'Grenzen der Löschung: gesetzliche Aufbewahrungspflichten und die Durchsetzung von Rechtsansprüchen gehen vor',
-      'Einschränkung (Art. 18): Daten bleiben gespeichert, dürfen aber vorerst nicht genutzt werden - z. B. solange die Richtigkeit bestritten ist',
+      'Einschränkung (Art. 18): Daten bleiben gespeichert, dürfen aber vorerst nicht genutzt werden, z. B. solange die Richtigkeit bestritten ist',
     ],
   ),
   konzept(
@@ -1339,9 +1339,9 @@ final List<Nugget> nuggetsA06Krypto = [
     'Übertragbarkeit, Widerspruch, automatisierte Entscheidung',
     'Diese Rechte schützen vor Abhängigkeit von einem Anbieter und vor Entscheidungen, die allein ein Computer trifft.',
     points: [
-      'Datenübertragbarkeit (Art. 20): eigene, selbst bereitgestellte Daten in einem strukturierten, gängigen, maschinenlesbaren Format erhalten, z. B. als CSV oder JSON - für den Anbieterwechsel',
+      'Datenübertragbarkeit (Art. 20): eigene, selbst bereitgestellte Daten in einem strukturierten, gängigen, maschinenlesbaren Format erhalten, z. B. als CSV oder JSON, für den Anbieterwechsel',
       'Widerspruch (Art. 21): gegen Verarbeitungen aus berechtigtem Interesse; gegen Direktwerbung immer und ohne Begründung',
-      'Art. 22: Niemand muss sich einer rein automatisierten Entscheidung mit rechtlicher Wirkung unterwerfen, etwa einer Kreditablehnung allein durch einen Algorithmus - er kann das Eingreifen eines Menschen verlangen.',
+      'Art. 22: Niemand muss sich einer rein automatisierten Entscheidung mit rechtlicher Wirkung unterwerfen, etwa einer Kreditablehnung allein durch einen Algorithmus. Er kann das Eingreifen eines Menschen verlangen.',
     ],
   ),
   vergleich(
@@ -1381,7 +1381,7 @@ final List<Nugget> nuggetsA06Krypto = [
       FlussKnoten('Antwort binnen 1 Monat', form: FlussForm.ende),
     ]),
     points: [
-      'Identität prüfen, damit keine Daten an Fremde gehen - aber nicht mehr Nachweise verlangen als nötig.',
+      'Identität prüfen, damit keine Daten an Fremde gehen, aber nicht mehr Nachweise verlangen als nötig.',
       'Alle Systeme durchsuchen: CRM, Shop, Ticketsystem, E-Mail, Backups.',
       'Auskunft mit Kopie, Zwecken, Empfängern und Speicherdauer unverzüglich, spätestens nach einem Monat.',
     ],
@@ -1398,7 +1398,7 @@ final List<Nugget> nuggetsA06Krypto = [
       'Die Verlängerung muss innerhalb des ersten Monats mit Gründen mitgeteilt werden.',
     ],
     ergebnis:
-        'spätestens 10. April - mit Verlängerung spätestens 10. Juni (1 + 2 = 3 Monate)',
+        'spätestens 10. April, mit Verlängerung spätestens 10. Juni (1 + 2 = 3 Monate)',
   ),
   konzept(
     'n-xr-9',
@@ -1406,7 +1406,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'Form und Kosten',
     'Die Rechte sollen leicht wahrzunehmen sein. Art. 12 regelt deshalb, wie Anfragen zu behandeln sind.',
     points: [
-      'kostenlos - nur bei offenkundig unbegründeten oder exzessiven Anfragen darf ein Entgelt verlangt oder abgelehnt werden',
+      'kostenlos. Nur bei offenkundig unbegründeten oder exzessiven Anfragen darf ein Entgelt verlangt oder abgelehnt werden',
       'formlos möglich: per Brief, Mail, Formular oder mündlich',
       'elektronisch gestellt -> nach Möglichkeit elektronisch beantworten',
       'Ablehnung begründen und auf das Beschwerderecht hinweisen',
@@ -1416,7 +1416,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xr-10',
     'ds-rechte',
     'Löschen ist nicht immer möglich',
-    'Das Recht auf Löschung gilt nicht grenzenlos. Gesetzliche Aufbewahrungspflichten, etwa für Rechnungen nach Handels- und Steuerrecht, gehen vor. Dann werden diese Daten gesperrt und erst nach Ablauf der Frist gelöscht - alle übrigen Daten müssen sofort gelöscht werden.',
+    'Das Recht auf Löschung gilt nicht grenzenlos. Gesetzliche Aufbewahrungspflichten, etwa für Rechnungen nach Handels- und Steuerrecht, gehen vor. Dann werden diese Daten gesperrt und erst nach Ablauf der Frist gelöscht. Alle übrigen Daten müssen sofort gelöscht werden.',
     points: [
       'Einschränkung ≠ Löschung: Die Daten bleiben gespeichert, werden aber nicht genutzt.',
       'Übertragbarkeit ≠ Auskunft: Es geht um ein maschinenlesbares Format für den Wechsel.',
@@ -1427,7 +1427,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xr-11',
     'ds-rechte',
     'Auf einen Blick',
-    'Betroffene haben umfassende Rechte - und der Verantwortliche eine feste Frist.',
+    'Betroffene haben umfassende Rechte, und der Verantwortliche hat eine feste Frist.',
     satz:
         'Information 13/14, Auskunft 15, Berichtigung 16, Löschung 17, Einschränkung 18, Übertragbarkeit 20, Widerspruch 21, Beschwerde 77. Antwort binnen eines Monats, höchstens drei.',
   ),
@@ -1456,7 +1456,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'Pseudonymisierung ist in Art. 4 Nr. 5 DSGVO definiert: Die Daten lassen sich ohne zusätzliche Informationen keiner Person mehr zuordnen, und diese Zusatzinformationen werden getrennt und geschützt aufbewahrt. Anonym sind Daten, wenn die Person mit allen vernünftigerweise einsetzbaren Mitteln nicht mehr bestimmbar ist (Erwägungsgrund 26).',
     points: [
       'Pseudonymisierung: Schutzmaßnahme innerhalb der DSGVO',
-      'Anonymisierung: führt aus der DSGVO heraus - aber nur, wenn sie wirklich gelingt',
+      'Anonymisierung: führt aus der DSGVO heraus, aber nur, wenn sie wirklich gelingt',
     ],
   ),
   beispiel(
@@ -1472,7 +1472,7 @@ final List<Nugget> nuggetsA06Krypto = [
     ],
     schritte: [
       'Pseudonymisieren: Name durch die Kennung K-3381 ersetzen, die Zuordnungstabelle getrennt und geschützt speichern.',
-      'Das Ergebnis bleibt personenbezogen - über die Tabelle oder die Kombination Geburtsdatum + PLZ ist Lisa bestimmbar.',
+      'Das Ergebnis bleibt personenbezogen, denn über die Tabelle oder die Kombination Geburtsdatum + PLZ ist Lisa bestimmbar.',
       'Anonymisieren: direkte Merkmale löschen, Werte vergröbern und zu Summen zusammenfassen.',
       'Aus der Summe von 412 Käufen ist keine Einzelperson mehr ablesbar.',
     ],
@@ -1482,7 +1482,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xa-4',
     'ds-anonym',
     'Pseudonymisierung in der Praxis',
-    'Beim Pseudonymisieren wird der Name durch ein Kennzeichen ersetzt, etwa Patient P-4711. Die Zuordnungstabelle wird getrennt aufbewahrt und besonders geschützt. Wer nur die Tabelle mit den Befunden sieht, erkennt niemanden - wer beide hat, schon.',
+    'Beim Pseudonymisieren wird der Name durch ein Kennzeichen ersetzt, etwa Patient P-4711. Die Zuordnungstabelle wird getrennt aufbewahrt und besonders geschützt. Wer nur die Tabelle mit den Befunden sieht, erkennt niemanden. Wer beide hat, schon.',
     points: [
       'Pseudonyme: fortlaufende Nummern, zufällige Kennungen oder Hashwerte',
       'Senkt das Risiko und zählt als Schutzmaßnahme nach Art. 25 und Art. 32',
@@ -1513,7 +1513,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xa-6',
     'ds-anonym',
     'Wie groß ist die kleinste Gruppe?',
-    'Eine generalisierte Tabelle soll weitergegeben werden. Vorgabe: Jede Kombination aus Altersgruppe und PLZ-Bereich muss mindestens 3-mal vorkommen - sonst ist die Person erkennbar.',
+    'Eine generalisierte Tabelle soll weitergegeben werden. Vorgabe: Jede Kombination aus Altersgruppe und PLZ-Bereich muss mindestens 3-mal vorkommen. Sonst ist die Person erkennbar.',
     table: [
       ['Altersgruppe', 'PLZ-Bereich', 'Personen'],
       ['20 bis 29', '50xxx', '5'],
@@ -1528,7 +1528,7 @@ final List<Nugget> nuggetsA06Krypto = [
       'Abhilfe: PLZ weiter vergröbern (5xxxx) oder die Zeile unterdrücken.',
     ],
     ergebnis:
-        'kleinste Gruppe 1 statt mindestens 3 - die Tabelle ist noch nicht anonym',
+        'kleinste Gruppe 1 statt mindestens 3. Die Tabelle ist noch nicht anonym',
   ),
   ablauf(
     'n-xa-7',
@@ -1539,7 +1539,7 @@ final List<Nugget> nuggetsA06Krypto = [
       'Direkte Merkmale entfernen: Name, Personalnummer, E-Mail',
       'Generalisieren: Alter 34 -> „30 bis 39“, PLZ 10115 -> „10xxx“',
       'Aggregieren: nur Durchschnittsgehalt je Abteilung statt Einzelwerten',
-      'Kleine Gruppen prüfen: Hat eine Abteilung nur eine Person, ist ihr Gehalt erkennbar - zusammenfassen oder weglassen',
+      'Kleine Gruppen prüfen: Hat eine Abteilung nur eine Person, ist ihr Gehalt erkennbar. Dann zusammenfassen oder weglassen',
     ],
   ),
   konzept(
@@ -1548,7 +1548,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'Welches Verfahren wofür?',
     'Die Wahl hängt davon ab, ob später noch ein Rückbezug zur Person nötig ist.',
     points: [
-      'Testdaten für die Softwareentwicklung: nie echte Kundendaten ungeschützt ins Testsystem - anonymisieren oder künstliche Testdaten erzeugen',
+      'Testdaten für die Softwareentwicklung: nie echte Kundendaten ungeschützt ins Testsystem, sondern anonymisieren oder künstliche Testdaten erzeugen',
       'Statistiken und Berichte: anonymisieren',
       'Studien mit Rückfragen oder Nachuntersuchungen: pseudonymisieren',
       'Support und Auftragsverarbeitung: wo möglich nur pseudonymisierte Daten weitergeben',
@@ -1569,7 +1569,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xa-10',
     'ds-anonym',
     'Auf einen Blick',
-    'Der Unterschied liegt in der Umkehrbarkeit - und damit in der Geltung der DSGVO.',
+    'Der Unterschied liegt in der Umkehrbarkeit und damit in der Geltung der DSGVO.',
     satz:
         'Anonym: niemand kann die Person mehr bestimmen -> DSGVO gilt nicht. Pseudonym: mit Zusatzwissen möglich -> DSGVO gilt weiter.',
   ),
@@ -1579,7 +1579,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xt-1',
     'ds-tom',
     'Was Art. 32 verlangt',
-    'Verantwortliche und Auftragsverarbeiter müssen geeignete technische und organisatorische Maßnahmen (TOM) treffen - angemessen zum Risiko und unter Berücksichtigung von Stand der Technik, Kosten und Art der Verarbeitung. Art. 32 Abs. 1 nennt ausdrücklich:',
+    'Verantwortliche und Auftragsverarbeiter müssen geeignete technische und organisatorische Maßnahmen (TOM) treffen, angemessen zum Risiko und unter Berücksichtigung von Stand der Technik, Kosten und Art der Verarbeitung. Art. 32 Abs. 1 nennt ausdrücklich:',
     points: [
       'a) Pseudonymisierung und Verschlüsselung',
       'b) Vertraulichkeit, Integrität, Verfügbarkeit und Belastbarkeit der Systeme auf Dauer sicherstellen',
@@ -1642,12 +1642,12 @@ final List<Nugget> nuggetsA06Krypto = [
       ['tägliches Backup außer Haus', 'Verfügbarkeit', 'technisch'],
     ],
     schritte: [
-      'Frage 1: Was wird geschützt - Raum, System, Daten, Übertragung, Nachvollziehbarkeit, Dienstleister oder Bestand?',
+      'Frage 1: Was wird geschützt: Raum, System, Daten, Übertragung, Nachvollziehbarkeit, Dienstleister oder Bestand?',
       'Frage 2: Setzt die Technik es durch (technisch) oder eine Regel für Menschen (organisatorisch)?',
       'Beide Fragen unabhängig beantworten: Zutritt kann technisch (Alarmanlage) oder organisatorisch (Schlüsselbuch) gesichert sein.',
     ],
     ergebnis:
-        'jede Maßnahme hat ein Kontrollziel - und fast jedes Kontrollziel braucht technische und organisatorische Maßnahmen',
+        'jede Maßnahme hat ein Kontrollziel und fast jedes Kontrollziel braucht technische und organisatorische Maßnahmen',
   ),
   skizze(
     'n-xt-5',
@@ -1669,7 +1669,7 @@ final List<Nugget> nuggetsA06Krypto = [
       ),
     ),
     points: [
-      'Beispiel: Diebstahl eines unverschlüsselten Notebooks mit Patientendaten - mittlere Wahrscheinlichkeit, hoher Schaden -> Festplattenverschlüsselung.',
+      'Beispiel: Diebstahl eines unverschlüsselten Notebooks mit Patientendaten, mittlere Wahrscheinlichkeit, hoher Schaden -> Festplattenverschlüsselung.',
       'Risiko = Eintrittswahrscheinlichkeit × Schadenshöhe',
     ],
   ),
@@ -1677,11 +1677,11 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xt-6',
     'ds-tom',
     'Datenpanne: Meldepflicht (Art. 33, 34)',
-    'Eine Datenpanne ist eine Verletzung des Schutzes personenbezogener Daten: Verlust, Diebstahl, unbefugte Offenlegung oder Veränderung. Der Verantwortliche muss sie unverzüglich und möglichst binnen 72 Stunden nach Bekanntwerden der Aufsichtsbehörde melden - außer, sie führt voraussichtlich zu keinem Risiko für die Betroffenen.',
+    'Eine Datenpanne ist eine Verletzung des Schutzes personenbezogener Daten: Verlust, Diebstahl, unbefugte Offenlegung oder Veränderung. Der Verantwortliche muss sie unverzüglich und möglichst binnen 72 Stunden nach Bekanntwerden der Aufsichtsbehörde melden, außer sie führt voraussichtlich zu keinem Risiko für die Betroffenen.',
     points: [
       'Beispiele: Fehlversand einer Mail mit Kundenliste, gestohlenes Notebook, Hackerangriff auf die Datenbank',
       'Bei voraussichtlich hohem Risiko zusätzlich die Betroffenen unverzüglich benachrichtigen (Art. 34).',
-      'Jede Panne intern dokumentieren - auch wenn keine Meldung nötig ist.',
+      'Jede Panne intern dokumentieren, auch wenn keine Meldung nötig ist.',
       'Ein Auftragsverarbeiter meldet eine Panne unverzüglich seinem Auftraggeber.',
     ],
   ),
@@ -1733,7 +1733,7 @@ final List<Nugget> nuggetsA06Krypto = [
       'Richtlinien: Passwörter, mobiles Arbeiten, Clean Desk (keine Unterlagen offen liegen lassen)',
       'Löschkonzept mit festen Fristen',
       'Notfallplan und Meldewege für Datenpannen',
-      'regelmäßige Überprüfung der Maßnahmen - planen, umsetzen, prüfen, verbessern',
+      'regelmäßige Überprüfung der Maßnahmen: planen, umsetzen, prüfen, verbessern',
     ],
   ),
   falle(
@@ -1745,7 +1745,7 @@ final List<Nugget> nuggetsA06Krypto = [
       'Zutritt = Tür',
       'Zugang = Login',
       'Zugriff = Berechtigung',
-      '72 Stunden laufen ab Bekanntwerden - auch am Wochenende.',
+      '72 Stunden laufen ab Bekanntwerden, auch am Wochenende.',
     ],
   ),
   merke(

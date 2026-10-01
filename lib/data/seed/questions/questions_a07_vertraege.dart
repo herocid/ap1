@@ -20,7 +20,7 @@ final List<Question> questionsA07 = [
       ),
       nein(
         'Der Katalog des Systemhauses',
-        'Ein Katalog richtet sich an einen unbestimmten Personenkreis - er ist eine invitatio ad offerendum, kein Antrag.',
+        'Ein Katalog richtet sich an einen unbestimmten Personenkreis. Er ist eine invitatio ad offerendum, kein Antrag.',
       ),
       nein(
         'Die Auftragsbestätigung des Systemhauses',
@@ -50,7 +50,7 @@ final List<Question> questionsA07 = [
       zu(
         'Die Kanzlei bestellt am 10. Mai zu genau den Angebotsbedingungen.',
         1,
-        'Rechtzeitig und inhaltlich deckungsgleich - der Vertrag kommt zustande.',
+        'Rechtzeitig und inhaltlich deckungsgleich. Der Vertrag kommt zustande.',
       ),
       zu(
         'Die Kanzlei bestellt am 20. Mai zu den Angebotsbedingungen.',
@@ -132,7 +132,7 @@ final List<Question> questionsA07 = [
       ],
     ],
     explanation:
-        'Unter 7 Jahren: geschäftsunfähig, Erklärungen sind nichtig. 7 bis 17 Jahre: beschränkt geschäftsfähig, Verträge sind bis zur Genehmigung der Eltern schwebend unwirksam - außer beim Taschengeldparagrafen. Ab 18: voll geschäftsfähig.',
+        'Unter 7 Jahren: geschäftsunfähig, Erklärungen sind nichtig. 7 bis 17 Jahre: beschränkt geschäftsfähig, Verträge sind bis zur Genehmigung der Eltern schwebend unwirksam, außer beim Taschengeldparagrafen. Ab 18: voll geschäftsfähig.',
     punkte: 4,
   ),
 
@@ -223,7 +223,7 @@ final List<Question> questionsA07 = [
       ),
       ja(
         '§ 5 (im Abschnitt „Versand“) Mit der Bestellung wird der Kunde Mitglied im kostenpflichtigen Premium-Club.',
-        'Überraschende Klausel - sie wird nicht Vertragsbestandteil (§ 305c BGB).',
+        'Überraschende Klausel. Sie wird nicht Vertragsbestandteil (§ 305c BGB).',
       ),
       nein(
         '§ 6 Die Ware bleibt bis zur vollständigen Bezahlung Eigentum des Verkäufers.',
@@ -332,7 +332,7 @@ final List<Question> questionsA07 = [
       zu(
         'Ein CRM wird als SaaS für 49 € pro Nutzer und Monat genutzt.',
         3,
-        'Nutzung auf Zeit gegen Entgelt - typischerweise Miete.',
+        'Nutzung auf Zeit gegen Entgelt, also typischerweise Miete.',
       ),
       zu(
         'Ein Webshop-Betreiber nutzt 12 Monate lang einen Server im Rechenzentrum gegen Monatsgebühr.',
@@ -370,7 +370,7 @@ final List<Question> questionsA07 = [
       nein('Kaufvertrag', 'Es wird keine Sache übereignet.'),
     ],
     explanation:
-        'Entscheidend ist, was geschuldet wird: Hier nur die Arbeitsleistung, kein Ergebnis. Deshalb Dienstvertrag - ohne Abnahme, vergütet nach Stunden.',
+        'Entscheidend ist, was geschuldet wird: Hier nur die Arbeitsleistung, kein Ergebnis. Deshalb Dienstvertrag, ohne Abnahme, vergütet nach Stunden.',
   ),
 
   einfach(
@@ -417,7 +417,7 @@ final List<Question> questionsA07 = [
       wahl('Unternehmer', [
         'Besteller',
         'Gutachter',
-      ], '§ 635 BGB - anders als beim Kauf, wo der Käufer wählt.'),
+      ], '§ 635 BGB, also anders als beim Kauf, wo der Käufer wählt.'),
       wahl('Dienstvertrag', ['Kaufvertrag', 'Mietvertrag']),
       wahl('Kaufrecht', [
         'Mietrecht',
@@ -705,7 +705,7 @@ final List<Question> questionsA07 = [
       ),
       nein(
         'Freitag, 19:30 Uhr',
-        'Nach 18 Uhr läuft die Uhr nicht weiter - dann ist keine Servicezeit.',
+        'Nach 18 Uhr läuft die Uhr nicht weiter. Dann ist keine Servicezeit.',
       ),
       nein(
         'Montag, 10:00 Uhr',
@@ -867,7 +867,7 @@ final List<Question> questionsA07 = [
       zu(
         'Der 2nd Level meldet einen reproduzierbaren Programmfehler an den Hersteller.',
         0,
-        'Der Hersteller ist der 3rd Level - mehr Fachwissen zum Produkt.',
+        'Der Hersteller ist der 3rd Level mit mehr Fachwissen zum Produkt.',
       ),
       zu(
         'Die IT-Leitung stellt für einen Großausfall zusätzliche Techniker ab.',
@@ -890,7 +890,7 @@ final List<Question> questionsA07 = [
       ),
       nein(
         'Ein Mitarbeiter wünscht sich ein anderes Hintergrundbild.',
-        'Geringe Auswirkung, keine Dringlichkeit - zudem keine Störung.',
+        'Geringe Auswirkung, keine Dringlichkeit, zudem keine Störung.',
       ),
       nein(
         'Die Druckfunktion eines Arbeitsplatzes fällt aus, ein funktionierender Drucker steht im Nebenraum.',
@@ -1016,7 +1016,7 @@ final List<Question> questionsA07 = [
       paar('Telefon-Hotline', 'schnelle persönliche Klärung'),
     ],
     explanation:
-        'Die Supportkanäle haben verschiedene Stärken: Self-Service für Standardfälle, Telefon und Chat für schnelle Hilfe, Remote für Softwareprobleme (nur mit Zustimmung des Anwenders), Vor-Ort für Hardware. Follow the Sun heißt, dass Teams in mehreren Zeitzonen Tickets übergeben - so entsteht Support rund um die Uhr.',
+        'Die Supportkanäle haben verschiedene Stärken: Self-Service für Standardfälle, Telefon und Chat für schnelle Hilfe, Remote für Softwareprobleme (nur mit Zustimmung des Anwenders), Vor-Ort für Hardware. Follow the Sun heißt, dass Teams in mehreren Zeitzonen Tickets übergeben. So entsteht Support rund um die Uhr.',
     difficulty: 2,
   ),
 
@@ -1066,7 +1066,7 @@ final List<Question> questionsA07 = [
     'sla-itil',
     prompt: 'Verbinde jeden ITIL-Begriff mit seiner Bedeutung.',
     paare: [
-      paar('Incident', 'Störung - Service schnell wiederherstellen'),
+      paar('Incident', 'Störung: Service schnell wiederherstellen'),
       paar('Problem', 'Ursache hinter Störungen'),
       paar('Known Error', 'Problem mit bekannter, dokumentierter Ursache'),
       paar('Workaround', 'vorläufige Umgehung ohne Ursachenbehebung'),
@@ -1074,7 +1074,7 @@ final List<Question> questionsA07 = [
       paar('Emergency Change', 'dringend, beschleunigt genehmigt'),
     ],
     explanation:
-        'Incident Management stellt wieder her, Problem Management beseitigt Ursachen, Change Management steuert Änderungen je nach Risiko als Standard, Normal oder Emergency Change. Auch ein Emergency Change wird genehmigt und dokumentiert - nur schneller.',
+        'Incident Management stellt wieder her, Problem Management beseitigt Ursachen, Change Management steuert Änderungen je nach Risiko als Standard, Normal oder Emergency Change. Auch ein Emergency Change wird genehmigt und dokumentiert, nur schneller.',
   ),
   reihenfolge(
     'a7-lt-3',
@@ -1461,7 +1461,7 @@ final List<Question> questionsA07 = [
     prompt: 'Was kann sie vom Händler zuerst verlangen?',
     choices: [
       ja(
-        'Nacherfüllung - nach ihrer Wahl Reparatur oder ein neues Gerät',
+        'Nacherfüllung, also nach ihrer Wahl Reparatur oder ein neues Gerät',
         'Beim Kaufvertrag hat die Nacherfüllung Vorrang, und grundsätzlich wählt der Käufer die Art.',
       ),
       nein(
@@ -1469,7 +1469,7 @@ final List<Question> questionsA07 = [
         'Rücktritt ist nachrangig und setzt grundsätzlich eine gescheiterte Nacherfüllung voraus.',
       ),
       nein(
-        'Nacherfüllung - die Art bestimmt der Händler',
+        'Nacherfüllung. Die Art bestimmt der Händler',
         'Beim Kauf wählt der Käufer. Beim Werkvertrag wählt dagegen der Unternehmer.',
       ),
       nein(
@@ -1666,7 +1666,7 @@ final List<Question> questionsA07 = [
       ),
       nein(
         'Ohne Unterschrift unter ein Protokoll gibt es keine Abnahme.',
-        'Die Abnahme kann auch fingiert werden - eine Unterschrift ist nicht zwingend.',
+        'Die Abnahme kann auch fingiert werden. Eine Unterschrift ist nicht zwingend.',
       ),
       nein('Der Vertrag ist aufgelöst.', 'Schweigen löst keinen Vertrag auf.'),
       nein(
@@ -1702,9 +1702,9 @@ final List<Question> questionsA07 = [
       ),
     ],
     loesung:
-        'Die Vergütung wird fällig, die Verjährungsfrist für Mängelansprüche beginnt, die Gefahr geht auf den Besteller über, und die Beweislast kehrt sich um - nach der Abnahme muss der Besteller beweisen, dass ein Mangel vorliegt.',
+        'Die Vergütung wird fällig, die Verjährungsfrist für Mängelansprüche beginnt, die Gefahr geht auf den Besteller über, und die Beweislast kehrt sich um: Nach der Abnahme muss der Besteller beweisen, dass ein Mangel vorliegt.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 3 Punkte. Die Mängelrechte selbst enden mit der Abnahme nicht - sie bestehen bis zur Verjährung weiter.',
+        'Je Nennung 1 Punkt, höchstens 3 Punkte. Die Mängelrechte selbst enden mit der Abnahme nicht. Sie bestehen bis zur Verjährung weiter.',
     punkte: 3,
   ),
 
@@ -1873,7 +1873,7 @@ final List<Question> questionsA07 = [
     choices: [
       ja(
         'Refreezing',
-        'Der neue Zustand wurde nicht verankert - das Alte blieb verfügbar, deshalb kehren alle zurück.',
+        'Der neue Zustand wurde nicht verankert. Das Alte blieb verfügbar, deshalb kehren alle zurück.',
       ),
       nein(
         'Unfreezing',
@@ -1881,7 +1881,7 @@ final List<Question> questionsA07 = [
       ),
       nein('Moving', 'Die Umsetzung mit Schulungen lief laut Szenario gut.'),
       nein(
-        'Keine - Rückfälle sind nach Lewin unvermeidlich',
+        'Keine: Rückfälle sind nach Lewin unvermeidlich',
         'Gerade das Refreezing soll Rückfälle verhindern.',
       ),
     ],
@@ -2031,7 +2031,7 @@ final List<Question> questionsA07 = [
       zu(
         '„Ich finde mich in der neuen Oberfläche einfach nicht zurecht.“',
         1,
-        'Es fehlen Fähigkeiten - Schulung hilft.',
+        'Es fehlen Fähigkeiten: Schulung hilft.',
       ),
       zu(
         '„Ich würde Tickets gern selbst schließen, habe aber keine Berechtigung dazu.“',
@@ -2058,7 +2058,7 @@ final List<Question> questionsA07 = [
       ),
       nein(
         'Eine Mitarbeiterin widerspricht in der Teambesprechung deutlich dem Zeitplan.',
-        'Das ist offener Widerstand - er ist sichtbar und lässt sich ansprechen.',
+        'Das ist offener Widerstand. Er ist sichtbar und lässt sich ansprechen.',
       ),
       nein(
         'Ein Team schreibt eine Beschwerde über die Einführung an die Geschäftsleitung.',
@@ -2346,11 +2346,11 @@ final List<Question> questionsA07 = [
     'cm-kaizen',
     prompt: 'Verbinde jeden Schritt der 5S-Methode mit seiner Bedeutung.',
     paare: [
-      paar('Seiri', 'Sortieren - Unnötiges entfernen'),
+      paar('Seiri', 'Sortieren: Unnötiges entfernen'),
       paar('Seiton', 'Systematisch ordnen'),
       paar('Seiso', 'Sauber halten'),
       paar('Seiketsu', 'Standardisieren'),
-      paar('Shitsuke', 'Selbstdisziplin - Regeln einhalten'),
+      paar('Shitsuke', 'Selbstdisziplin: Regeln einhalten'),
     ],
     explanation:
         '5S: Seiri (Sortieren), Seiton (Systematisch ordnen), Seiso (Sauber halten), Seiketsu (Standardisieren), Shitsuke (Selbstdisziplin). Die Methode schafft geordnete, standardisierte Arbeitsplätze als Grundlage für Kaizen.',

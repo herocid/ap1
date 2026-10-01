@@ -9,7 +9,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-zz-1',
     'sz-schutzziele',
     'Woran man Sicherheit misst',
-    'Informationssicherheit schützt Informationen - egal ob sie auf einem Server, auf Papier oder in einer Mail stehen. Gemessen wird sie an Schutzzielen. Die drei Grundwerte heißen nach ihren englischen Anfangsbuchstaben auch CIA-Triade. Jeder Sicherheitsvorfall verletzt mindestens eines dieser Ziele.',
+    'Informationssicherheit schützt Informationen, egal ob sie auf einem Server, auf Papier oder in einer Mail stehen. Gemessen wird sie an Schutzzielen. Die drei Grundwerte heißen nach ihren englischen Anfangsbuchstaben auch CIA-Triade. Jeder Sicherheitsvorfall verletzt mindestens eines dieser Ziele.',
     skizze: BaumDiagramm(
       BaumKnoten('Schutzziele (CIA)', [
         BaumKnoten('Vertraulichkeit', [], 'Confidentiality'),
@@ -59,16 +59,16 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'Weitere Schutzziele',
     'Neben CIA verlangen Prüfungen oft drei ergänzende Schutzziele. Technisch werden sie meist mit Anmeldung, digitalen Signaturen, Zertifikaten und Protokollierung umgesetzt.',
     points: [
-      'Authentizität: Echtheit und Herkunft sind überprüfbar - die Mail stammt wirklich vom Lieferanten, der Server ist wirklich die Bank.',
-      'Verbindlichkeit (Nichtabstreitbarkeit): Eine Handlung kann später nicht geleugnet werden - der Kunde kann seine signierte Bestellung nicht abstreiten.',
-      'Zurechenbarkeit: Eine Aktion lässt sich eindeutig einer Person zuordnen - dafür braucht es persönliche Konten statt Sammelkonten und ein Protokoll.',
+      'Authentizität: Echtheit und Herkunft sind überprüfbar. Die Mail stammt wirklich vom Lieferanten, der Server ist wirklich die Bank.',
+      'Verbindlichkeit (Nichtabstreitbarkeit): Eine Handlung kann später nicht geleugnet werden. Der Kunde kann seine signierte Bestellung nicht abstreiten.',
+      'Zurechenbarkeit: Eine Aktion lässt sich eindeutig einer Person zuordnen. Dafür braucht es persönliche Konten statt Sammelkonten und ein Protokoll.',
     ],
   ),
   vergleich(
     'n-zz-5',
     'sz-schutzziele',
     'Vorfälle zuordnen',
-    'In der Prüfung lautet die Frage immer: Was genau ist schiefgegangen - wurde etwas gesehen, verändert, war etwas nicht erreichbar oder ist die Herkunft gefälscht?',
+    'In der Prüfung lautet die Frage immer: Was genau ist schiefgegangen, wurde etwas gesehen, verändert, war etwas nicht erreichbar oder ist die Herkunft gefälscht?',
     [
       ['Vorfall', 'verletztes Schutzziel'],
       [
@@ -105,7 +105,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-zz-7',
     'sz-schutzziele',
     'Verfügbarkeit berechnen',
-    'Verträge und SLAs nennen die Verfügbarkeit als Prozentwert der vereinbarten Betriebszeit. Daraus lässt sich die höchstens erlaubte Ausfallzeit berechnen - und umgekehrt.',
+    'Verträge und SLAs nennen die Verfügbarkeit als Prozentwert der vereinbarten Betriebszeit. Daraus lässt sich die höchstens erlaubte Ausfallzeit berechnen und umgekehrt.',
     'V = (Betriebszeit - Ausfallzeit)\n    / Betriebszeit × 100 %\n\nmax. Ausfallzeit\n  = (100 % - V) × Betriebszeit',
     points: [
       'Rund um die Uhr (24/7): 365 Tage × 24 h = 8.760 h pro Jahr',
@@ -117,8 +117,8 @@ final List<Nugget> nuggetsA06Sicherheit = [
   beispiel(
     'n-zz-8',
     'sz-schutzziele',
-    '99,9 % - wie viel Ausfall ist erlaubt?',
-    'Ein Rechenzentrum garantiert für einen Webshop 99,9 % Verfügbarkeit bei Betrieb rund um die Uhr. Wie lange darf der Shop höchstens ausfallen - pro Jahr und pro Monat (30 Tage)?',
+    '99,9 %: Wie viel Ausfall ist erlaubt?',
+    'Ein Rechenzentrum garantiert für einen Webshop 99,9 % Verfügbarkeit bei Betrieb rund um die Uhr. Wie lange darf der Shop höchstens ausfallen, jeweils pro Jahr und pro Monat (30 Tage)?',
     schritte: [
       'Erlaubter Ausfallanteil: 100 % - 99,9 % = 0,1 % = 0,001',
       'Stunden pro Jahr: 365 × 24 h = 8.760 h',
@@ -147,7 +147,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
       'erlaubter Ausfall: 0,005 × 3.120 h = 15,6 h',
     ],
     ergebnis:
-        '15,6 h pro Jahr - Ausfälle nachts und am Wochenende zählen nicht mit',
+        '15,6 h pro Jahr: Ausfälle nachts und am Wochenende zählen nicht mit',
   ),
   beispiel(
     'n-zz-10',
@@ -166,14 +166,14 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-zz-11',
     'sz-schutzziele',
     'Komponenten in Reihe und parallel',
-    'Ein Webshop braucht Router (99 %) und Server (99,5 %) - fällt einer aus, steht der Shop. Wie hoch ist die Gesamtverfügbarkeit? Und was bringt ein zweiter, gleich guter Router parallel zum ersten?',
+    'Ein Webshop braucht Router (99 %) und Server (99,5 %). Fällt einer aus, steht der Shop. Wie hoch ist die Gesamtverfügbarkeit? Und was bringt ein zweiter, gleich guter Router parallel zum ersten?',
     schritte: [
       'In Reihe müssen alle Teile gleichzeitig laufen: V = V1 × V2',
       'ohne Redundanz: 0,99 × 0,995 = 0,98505 -> 98,505 %',
       'Parallel fällt der Routerteil nur aus, wenn beide Router ausfallen: 1 - (1 - 0,99) × (1 - 0,99) = 1 - 0,01 × 0,01 = 0,9999',
       'mit zwei Routern: 0,9999 × 0,995 = 0,9949005 -> rund 99,49 %',
     ],
-    ergebnis: 'Reihe: 98,505 % - mit redundantem Router rund 99,49 %',
+    ergebnis: 'Reihe: 98,505 %; mit redundantem Router rund 99,49 %',
     skizze: NetzSkizze(
       [
         NetzKnoten('inet', 'Internet', NetzTyp.internet, 2, 0),
@@ -189,13 +189,13 @@ final List<Nugget> nuggetsA06Sicherheit = [
       ],
     ),
     merksatz:
-        'Reihe: multiplizieren - die Kette ist schwächer als ihr schwächstes Glied. Parallel: 1 minus Produkt der Ausfallwahrscheinlichkeiten.',
+        'Reihe: multiplizieren. Die Kette ist schwächer als ihr schwächstes Glied. Parallel: 1 minus Produkt der Ausfallwahrscheinlichkeiten.',
   ),
   falle(
     'n-zz-12',
     'sz-schutzziele',
     'Maßnahme und Schutzziel nicht verwechseln',
-    'Verschlüsselung schützt die Vertraulichkeit, ein Hashwert macht Veränderungen sichtbar und schützt damit die Integrität. Für die Verfügbarkeit sorgen ganz andere Maßnahmen: USV, Redundanz und Datensicherung. Und Achtung: Ransomware verletzt vor allem die Verfügbarkeit - die Daten sind ja noch da, nur nicht nutzbar.',
+    'Verschlüsselung schützt die Vertraulichkeit, ein Hashwert macht Veränderungen sichtbar und schützt damit die Integrität. Für die Verfügbarkeit sorgen ganz andere Maßnahmen: USV, Redundanz und Datensicherung. Und Achtung: Ransomware verletzt vor allem die Verfügbarkeit. Die Daten sind ja noch da, nur nicht nutzbar.',
     points: [
       'Hash ≠ Verschlüsselung: Ein Hash verbirgt nichts, er zeigt nur Änderungen an.',
       'Backup verhindert keinen Ausfall, es verkürzt ihn.',
@@ -214,15 +214,15 @@ final List<Nugget> nuggetsA06Sicherheit = [
       'Authentizität: es ist echt; Verbindlichkeit: niemand kann es abstreiten',
     ],
     satz:
-        'Ausfallzeit = (100 % - Verfügbarkeit) × Betriebszeit - bei 24/7 sind das 8.760 h im Jahr.',
+        'Ausfallzeit = (100 % - Verfügbarkeit) × Betriebszeit. Bei 24/7 sind das 8.760 h im Jahr.',
   ),
 
   // ============================================================= Schadsoftware
   konzept(
     'n-zm-1',
     'sz-schadsoftware',
-    'Schadsoftware - ein Oberbegriff',
-    'Schadsoftware (Malware) ist jedes Programm, das unerwünschte oder schädliche Funktionen ausführt. Man ordnet sie auf zwei Arten: nach dem Weg, auf dem sie sich verbreitet, und nach dem Schaden, den sie anrichtet. Ein Schädling kann beides zugleich sein - etwa ein Trojaner, der Ransomware nachlädt.',
+    'Schadsoftware als Oberbegriff',
+    'Schadsoftware (Malware) ist jedes Programm, das unerwünschte oder schädliche Funktionen ausführt. Man ordnet sie auf zwei Arten: nach dem Weg, auf dem sie sich verbreitet, und nach dem Schaden, den sie anrichtet. Ein Schädling kann beides zugleich sein, etwa ein Trojaner, der Ransomware nachlädt.',
     skizze: BaumDiagramm(
       BaumKnoten('Schadsoftware', [
         BaumKnoten('nach Verbreitung', [
@@ -292,8 +292,8 @@ final List<Nugget> nuggetsA06Sicherheit = [
       'E-Mail-Anhang: Office-Dokument mit Makro oder getarnte Programmdatei in einem ZIP-Archiv',
       'Drive-by-Download: Schon das Aufrufen einer präparierten Webseite infiziert über eine Lücke im Browser',
       'USB-Stick: absichtlich „verlorene“ Sticks mit Schadcode (Baiting)',
-      'Ungepatchte Dienste, die aus dem Internet erreichbar sind - der typische Weg von Würmern',
-      'Gefälschte Downloads, Cracks und Raubkopien - der typische Weg von Trojanern',
+      'Ungepatchte Dienste, die aus dem Internet erreichbar sind: der typische Weg von Würmern',
+      'Gefälschte Downloads, Cracks und Raubkopien: der typische Weg von Trojanern',
       'Manipulierte Updates eines Herstellers (Angriff auf die Lieferkette)',
     ],
   ),
@@ -301,7 +301,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-zm-5',
     'sz-schadsoftware',
     'Exploit und Zero-Day',
-    'Ein Exploit ist Code, der eine bestimmte Sicherheitslücke ausnutzt, um Schadsoftware einzuschleusen oder Rechte zu erlangen. Eine Zero-Day-Lücke ist dem Hersteller noch unbekannt oder noch nicht geschlossen - es gibt also noch kein Update. Dagegen helfen nur Schutz in mehreren Schichten, minimale Rechte und Verhaltenserkennung.',
+    'Ein Exploit ist Code, der eine bestimmte Sicherheitslücke ausnutzt, um Schadsoftware einzuschleusen oder Rechte zu erlangen. Eine Zero-Day-Lücke ist dem Hersteller noch unbekannt oder noch nicht geschlossen. Es gibt also noch kein Update. Dagegen helfen nur Schutz in mehreren Schichten, minimale Rechte und Verhaltenserkennung.',
     points: [
       'Patch: Update, das eine Lücke schließt',
       'Die meisten erfolgreichen Angriffe nutzen längst bekannte Lücken, für die es schon Updates gäbe.',
@@ -335,7 +335,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     points: [
       'Einsatz: DDoS-Angriffe, Spam-Versand, Passwort-Angriffe, Nachladen weiterer Schadsoftware',
       'Wer einen Bot im Netz hat, ist zugleich Opfer und unfreiwilliger Mittäter.',
-      'Erkennbar oft an ungewöhnlichem ausgehenden Verkehr - ein Grund, auch ausgehende Verbindungen zu filtern.',
+      'Erkennbar oft an ungewöhnlichem ausgehenden Verkehr. Ein Grund, auch ausgehende Verbindungen zu filtern.',
     ],
   ),
   ablauf(
@@ -348,7 +348,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
       'Der Trojaner meldet sich beim Steuerserver und sucht im Netz nach weiteren Rechnern, Freigaben und Sicherungen.',
       'Die Angreifer kopieren vertrauliche Daten nach außen.',
       'Die Ransomware verschlüsselt Dateien auf dem PC, allen erreichbaren Netzlaufwerken und erreichbaren Backups.',
-      'Eine Erpressernachricht fordert Lösegeld in Kryptowährung - und droht mit der Veröffentlichung der kopierten Daten (doppelte Erpressung).',
+      'Eine Erpressernachricht fordert Lösegeld in Kryptowährung und droht mit der Veröffentlichung der kopierten Daten (doppelte Erpressung).',
     ],
     table: [
       ['betroffenes Schutzziel', 'wodurch'],
@@ -360,7 +360,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-zm-8',
     'sz-schadsoftware',
     'Verhalten im Ernstfall',
-    'Bei Verdacht auf Befall zählt jede Minute. Das BSI empfiehlt ein festes Vorgehen, das jede und jeder im Betrieb kennen sollte - zum Beispiel über eine IT-Notfallkarte am Arbeitsplatz.',
+    'Bei Verdacht auf Befall zählt jede Minute. Das BSI empfiehlt ein festes Vorgehen, das jede und jeder im Betrieb kennen sollte, zum Beispiel über eine IT-Notfallkarte am Arbeitsplatz.',
     FlussDiagramm([
       FlussKnoten('Verdacht auf Befall', form: FlussForm.start),
       FlussKnoten('Vom Netz trennen'),
@@ -370,10 +370,10 @@ final List<Nugget> nuggetsA06Sicherheit = [
       FlussKnoten('Nur nach Anweisung handeln', form: FlussForm.ende),
     ]),
     points: [
-      'Netzwerkkabel ziehen bzw. WLAN aus - so kann sich die Schadsoftware nicht weiter ausbreiten.',
+      'Netzwerkkabel ziehen bzw. WLAN ausschalten. So kann sich die Schadsoftware nicht weiter ausbreiten.',
       'Melden über die bekannte Notfallnummer, nicht über das betroffene System.',
       'Notieren: Was ist aufgefallen, wann, was wurde vorher geöffnet?',
-      'Nicht selbst „aufräumen“ - dabei gehen Spuren verloren. Kein Lösegeld zahlen: Es garantiert nichts und finanziert weitere Angriffe.',
+      'Nicht selbst „aufräumen“. Dabei gehen Spuren verloren. Kein Lösegeld zahlen: Es garantiert nichts und finanziert weitere Angriffe.',
     ],
   ),
   vergleich(
@@ -475,12 +475,12 @@ final List<Nugget> nuggetsA06Sicherheit = [
       'Absenderadresse lesen: Die Domain „sparkasse-kontosicherheit.info“ gehört nicht der Bank.',
       'Link mit dem Mauszeiger prüfen, ohne zu klicken: Das tatsächliche Ziel weicht vom angezeigten Text ab.',
       'Warnsignale sammeln: Frist, Drohung, unpersönliche Anrede, Bitte um Zugangsdaten.',
-      'Im Zweifel über einen bekannten Kanal rückfragen - nie über Nummern oder Links aus der Mail.',
+      'Im Zweifel über einen bekannten Kanal rückfragen, nie über Nummern oder Links aus der Mail.',
       'Die Mail an die IT melden und nicht an Kollegen weiterleiten.',
     ],
-    ergebnis: 'Phishing - vier klare Warnsignale, nicht klicken, melden',
+    ergebnis: 'Phishing mit vier klaren Warnsignalen: nicht klicken, melden',
     merksatz:
-        'Logos und Schlösser lassen sich kopieren - entscheidend sind Absenderdomain und Linkziel.',
+        'Logos und Schlösser lassen sich kopieren. Entscheidend sind Absenderdomain und Linkziel.',
   ),
   vergleich(
     'n-za-4',
@@ -520,9 +520,9 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-za-5',
     'sz-angriffe',
     'DoS und DDoS',
-    'Ein Denial-of-Service-Angriff (DoS) überlastet einen Dienst, bis er für echte Nutzer nicht mehr erreichbar ist - verletzt ist die Verfügbarkeit. Beim Distributed DoS (DDoS) kommen die Anfragen aus vielen Quellen gleichzeitig, meist aus einem Botnetz. Einzelne Absender zu sperren hilft dann kaum.',
+    'Ein Denial-of-Service-Angriff (DoS) überlastet einen Dienst, bis er für echte Nutzer nicht mehr erreichbar ist. Verletzt ist die Verfügbarkeit. Beim Distributed DoS (DDoS) kommen die Anfragen aus vielen Quellen gleichzeitig, meist aus einem Botnetz. Einzelne Absender zu sperren hilft dann kaum.',
     points: [
-      'SYN-Flood: massenhaft Verbindungsanfragen, die nie abgeschlossen werden - der Server wartet auf Tausende halboffene Verbindungen.',
+      'SYN-Flood: massenhaft Verbindungsanfragen, die nie abgeschlossen werden. Der Server wartet auf Tausende halboffene Verbindungen.',
       'HTTP-Flood: massenhaft echte Seitenaufrufe, die den Webserver auslasten',
       'Reflexion/Verstärkung: kleine Anfragen mit gefälschter Absender-IP an offene Server, deren große Antworten beim Opfer landen',
       'Schutz: Ratenbegrenzung, DDoS-Schutzdienst des Providers oder ein Content Delivery Network, ausreichende Reserven',
@@ -545,7 +545,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     points: [
       'Mitlesen verletzt die Vertraulichkeit, Verändern die Integrität.',
       'Schutz: Ende-zu-Ende-Verschlüsselung mit Zertifikatsprüfung (HTTPS, VPN).',
-      'Zertifikatswarnungen im Browser nie einfach wegklicken - sie sind oft das einzige Anzeichen.',
+      'Zertifikatswarnungen im Browser nie einfach wegklicken. Sie sind oft das einzige Anzeichen.',
     ],
   ),
   vergleich(
@@ -614,7 +614,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-za-12',
     'sz-angriffe',
     'Manipulierte Geräte in der Lieferkette',
-    'Ein Angriff muss nicht im eigenen Netz beginnen. Auf dem Weg vom Hersteller über Zwischenhändler und Spedition bis zum Kunden kann ein Gerät verändert werden - oder es wird gleich eine Fälschung geliefert. Das Tückische: Das Gerät kommt originalverpackt an und funktioniert ganz normal.',
+    'Ein Angriff muss nicht im eigenen Netz beginnen. Auf dem Weg vom Hersteller über Zwischenhändler und Spedition bis zum Kunden kann ein Gerät verändert werden, oder es wird gleich eine Fälschung geliefert. Das Tückische: Das Gerät kommt originalverpackt an und funktioniert ganz normal.',
     points: [
       'Abhör- und Auslesefunktionen: Ein Zusatzchip oder veränderte Firmware schneidet Daten mit und sendet sie nach außen',
       'Hintertür (Backdoor): versteckter Fernzugang, über den Angreifer später ins Netz gelangen',
@@ -627,7 +627,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-za-13',
     'sz-angriffe',
     'Schutz vor manipulierten Geräten',
-    'Ganz ausschließen lässt sich das Risiko nicht, aber deutlich verkleinern - bei der Beschaffung, bei der Annahme und vor der Inbetriebnahme.',
+    'Ganz ausschließen lässt sich das Risiko nicht, aber deutlich verkleinern, und zwar bei der Beschaffung, bei der Annahme und vor der Inbetriebnahme.',
     [
       'Beschaffung: nur beim Hersteller oder bei autorisierten Fachhändlern kaufen, auffällig billige Angebote meiden',
       'Wareneingang: Verpackung und Siegel prüfen, Seriennummern mit dem Lieferschein abgleichen',
@@ -658,7 +658,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
       'Gegen Passwortangriffe: Länge, eigene Passwörter je Dienst, MFA, Salt',
     ],
     satz:
-        'Im Zweifel über einen bekannten Kanal nachfragen - und Eingaben von außen nie ungeprüft verarbeiten.',
+        'Im Zweifel über einen bekannten Kanal nachfragen und Eingaben von außen nie ungeprüft verarbeiten.',
   ),
 
   // ====================================================== Schutzbedarf und IT-Grundschutz
@@ -666,7 +666,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-zb-1',
     'sz-schutzbedarf',
     'IT-Grundschutz des BSI',
-    'Das Bundesamt für Sicherheit in der Informationstechnik (BSI) beschreibt mit dem IT-Grundschutz, wie eine Organisation ihre Informationssicherheit systematisch aufbaut. Nicht jedes System braucht gleich viel Schutz - die Schutzbedarfsfeststellung klärt, wie viel.',
+    'Das Bundesamt für Sicherheit in der Informationstechnik (BSI) beschreibt mit dem IT-Grundschutz, wie eine Organisation ihre Informationssicherheit systematisch aufbaut. Nicht jedes System braucht gleich viel Schutz. Die Schutzbedarfsfeststellung klärt, wie viel.',
     points: [
       'IT-Grundschutz-Kompendium: Bausteine wie „Server“, „WLAN-Betrieb“ oder „Datensicherungskonzept“ mit konkreten Anforderungen',
       'BSI-Standard 200-1: Managementsystem für Informationssicherheit (ISMS)',
@@ -678,7 +678,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-zb-2',
     'sz-schutzbedarf',
     'Drei Wege der Absicherung',
-    'Der BSI-Standard 200-2 bietet drei Vorgehensweisen an - je nachdem, wie weit eine Organisation schon ist.',
+    'Der BSI-Standard 200-2 bietet drei Vorgehensweisen an, je nachdem, wie weit eine Organisation schon ist.',
     [
       ['Variante', 'Ziel'],
       [
@@ -691,7 +691,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
       ],
       [
         'Standard-Absicherung',
-        'umfassender Schutz nach der vollständigen Methodik - empfohlen',
+        'umfassender Schutz nach der vollständigen Methodik (empfohlen)',
       ],
     ],
   ),
@@ -714,9 +714,9 @@ final List<Nugget> nuggetsA06Sicherheit = [
     ),
     points: [
       'Strukturanalyse: Was gibt es? Prozesse, Anwendungen, Systeme, Räume, Verbindungen',
-      'Schutzbedarfsfeststellung: Wie schlimm wäre ein Schaden - je Schutzziel?',
+      'Schutzbedarfsfeststellung: Wie schlimm wäre ein Schaden, je Schutzziel?',
       'Modellierung: passende Bausteine aus dem Kompendium auswählen',
-      'IT-Grundschutz-Check: Soll-Ist-Vergleich - was ist schon umgesetzt?',
+      'IT-Grundschutz-Check: Soll-Ist-Vergleich. Was ist schon umgesetzt?',
       'Risikoanalyse: zusätzlich für Objekte mit hohem oder sehr hohem Schutzbedarf',
       'Umsetzung planen und durchführen, dann regelmäßig überprüfen',
     ],
@@ -725,7 +725,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-zb-4',
     'sz-schutzbedarf',
     'Die Strukturanalyse',
-    'Bevor man etwas schützt, muss man wissen, was es gibt und wie es zusammenhängt. Die Strukturanalyse erfasst alle Zielobjekte und ihre Abhängigkeiten - meist mit Hilfe eines vereinfachten Netzplans.',
+    'Bevor man etwas schützt, muss man wissen, was es gibt und wie es zusammenhängt. Die Strukturanalyse erfasst alle Zielobjekte und ihre Abhängigkeiten, meist mit Hilfe eines vereinfachten Netzplans.',
     points: [
       'Geschäftsprozesse und die Informationen, die sie brauchen',
       'Anwendungen, z. B. Warenwirtschaft, Praxissoftware, E-Mail',
@@ -753,7 +753,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-zb-6',
     'sz-schutzbedarf',
     'Schadensszenarien',
-    'Um den Schaden einzuschätzen, spielt man für jedes Schutzziel sechs typische Szenarien durch. Beispiel Arztpraxis: Werden Patientendaten bekannt, drohen Rechtsverstöße, Verletzung der Persönlichkeitsrechte und Vertrauensverlust - Vertraulichkeit „sehr hoch“.',
+    'Um den Schaden einzuschätzen, spielt man für jedes Schutzziel sechs typische Szenarien durch. Beispiel Arztpraxis: Werden Patientendaten bekannt, drohen Rechtsverstöße, Verletzung der Persönlichkeitsrechte und Vertrauensverlust: Vertraulichkeit „sehr hoch“.',
     points: [
       'Verstoß gegen Gesetze, Vorschriften oder Verträge',
       'Beeinträchtigung des informationellen Selbstbestimmungsrechts',
@@ -784,7 +784,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-zb-8',
     'sz-schutzbedarf',
     'Vererbung des Schutzbedarfs',
-    'Der Schutzbedarf wird von den Geschäftsprozessen auf alles übertragen, wovon sie abhängen - „Vererbung“ ist hier ein Begriff des BSI. Beispiel: Die Praxissoftware hat für die Vertraulichkeit Schutzbedarf „sehr hoch“.',
+    'Der Schutzbedarf wird von den Geschäftsprozessen auf alles übertragen, wovon sie abhängen: „Vererbung“ ist hier ein Begriff des BSI. Beispiel: Die Praxissoftware hat für die Vertraulichkeit Schutzbedarf „sehr hoch“.',
     [
       'Geschäftsprozess: Patientenbehandlung und Abrechnung',
       'Anwendung: Praxissoftware mit Patientenakten -> sehr hoch',
@@ -806,11 +806,11 @@ final List<Nugget> nuggetsA06Sicherheit = [
       ],
       [
         'Kumulationseffekt',
-        'viele kleine Schäden summieren sich - der Schutzbedarf steigt',
+        'viele kleine Schäden summieren sich. Der Schutzbedarf steigt',
       ],
       [
         'Verteilungseffekt',
-        'Anwendung läuft redundant auf mehreren Systemen - ein einzelnes kann niedriger liegen',
+        'Anwendung läuft redundant auf mehreren Systemen, ein einzelnes kann niedriger liegen',
       ],
     ],
   ),
@@ -826,7 +826,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
       ['Praxis-Wiki', 'normal', 'normal', 'normal'],
     ],
     schritte: [
-      'Jedes Schutzziel einzeln betrachten - nie über eine Zeile mitteln',
+      'Jedes Schutzziel einzeln betrachten, nie über eine Zeile mitteln',
       'Vertraulichkeit: Maximum aus normal, sehr hoch, normal = sehr hoch',
       'Integrität: Maximum aus normal, hoch, normal = hoch',
       'Verfügbarkeit: Maximum aus hoch, normal, normal = hoch',
@@ -841,25 +841,25 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'Kumulation und Verteilung',
     'Ein Virtualisierungshost trägt 25 virtuelle Server, jeder mit Verfügbarkeit „normal“. Der Webshop (Verfügbarkeit „hoch“) läuft auf zwei Servern im Cluster, die sich gegenseitig vertreten. Wie werden Host und Clusterknoten eingestuft?',
     schritte: [
-      'Host: Jeder einzelne Ausfall wäre verkraftbar - aber fällt der Host aus, fallen alle 25 Server gleichzeitig aus.',
+      'Host: Jeder einzelne Ausfall wäre verkraftbar, aber fällt der Host aus, fallen alle 25 Server gleichzeitig aus.',
       'Die vielen kleinen Schäden summieren sich: Kumulationseffekt -> Host Verfügbarkeit hoch.',
       'Cluster: Fällt ein Knoten aus, übernimmt der andere den Webshop.',
       'Verteilungseffekt: Ein einzelner Knoten kann mit „normal“ eingestuft werden, der Verbund bleibt „hoch“.',
     ],
     ergebnis:
-        'Host: hoch (Kumulation) - einzelner Clusterknoten: normal (Verteilung)',
+        'Host: hoch (Kumulation), einzelner Clusterknoten: normal (Verteilung)',
     merksatz:
-        'Der Verteilungseffekt betrifft vor allem die Verfügbarkeit - vertrauliche Daten bleiben auf jedem Knoten vertraulich.',
+        'Der Verteilungseffekt betrifft vor allem die Verfügbarkeit. Vertrauliche Daten bleiben auf jedem Knoten vertraulich.',
   ),
   falle(
     'n-zb-12',
     'sz-schutzbedarf',
     'Nicht mitteln, nicht zusammenfassen',
-    'Zwei typische Fehler: den Durchschnitt statt des Maximums nehmen und die drei Schutzziele zu einem Wert zusammenfassen. Ein öffentlicher Webauftritt hat für die Vertraulichkeit oft nur „normal“, für die Verfügbarkeit aber „hoch“ - beide Werte bleiben getrennt stehen.',
+    'Zwei typische Fehler: den Durchschnitt statt des Maximums nehmen und die drei Schutzziele zu einem Wert zusammenfassen. Ein öffentlicher Webauftritt hat für die Vertraulichkeit oft nur „normal“, für die Verfügbarkeit aber „hoch“. Beide Werte bleiben getrennt stehen.',
     points: [
       'Keine Zwischenstufen wie „normal bis hoch“',
       'Die Mehrheit der Anwendungen zählt nicht, nur die höchste',
-      'Kumulation kann das Maximum übersteigen, Verteilung es senken - beides begründen',
+      'Kumulation kann das Maximum übersteigen, Verteilung es senken; beides begründen',
     ],
   ),
   merke(
@@ -872,7 +872,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
       'Vererbung: Prozess -> Anwendung -> IT-System -> Raum/Verbindung',
     ],
     satz:
-        'Das Maximum zählt, nie der Durchschnitt - und zwar für jedes Schutzziel einzeln.',
+        'Das Maximum zählt, nie der Durchschnitt, und zwar für jedes Schutzziel einzeln.',
   ),
 
   // ============================================================ Firewall und DMZ
@@ -942,12 +942,12 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-yf-4',
     'sm-firewall',
     'Stateful Inspection an einem Beispiel',
-    'Ein PC im LAN öffnet eine HTTPS-Verbindung zu einem Webserver. Die Firewall trägt die Verbindung in ihre Zustandstabelle ein. Antwortpakete des Webservers passen zu diesem Eintrag und dürfen zurück - ohne eigene Regel für eingehenden Verkehr.',
+    'Ein PC im LAN öffnet eine HTTPS-Verbindung zu einem Webserver. Die Firewall trägt die Verbindung in ihre Zustandstabelle ein. Antwortpakete des Webservers passen zu diesem Eintrag und dürfen zurück, ohne eigene Regel für eingehenden Verkehr.',
     code:
         'Quelle              Ziel              Zustand\n192.168.1.20:51234  203.0.113.10:443  ESTABLISHED',
     points: [
       'Ein unaufgefordertes Paket von außen passt zu keinem Eintrag und wird verworfen.',
-      'Ein zustandsloser Paketfilter bräuchte dafür eine eigene Regel für alle Antwortpakete - das reißt Lücken.',
+      'Ein zustandsloser Paketfilter bräuchte dafür eine eigene Regel für alle Antwortpakete. Das reißt Lücken.',
       'Wird die Verbindung beendet oder bleibt sie zu lange still, löscht die Firewall den Eintrag.',
     ],
   ),
@@ -970,10 +970,10 @@ final List<Nugget> nuggetsA06Sicherheit = [
         'Web Application Firewall (WAF)',
         'schützt Webanwendungen z. B. vor SQL-Injection und XSS',
       ],
-      ['IDS (Intrusion Detection)', 'erkennt Angriffe und meldet sie - passiv'],
+      ['IDS (Intrusion Detection)', 'erkennt Angriffe und meldet sie (passiv)'],
       [
         'IPS (Intrusion Prevention)',
-        'erkennt Angriffe und blockiert sie - aktiv im Datenstrom',
+        'erkennt Angriffe und blockiert sie (aktiv im Datenstrom)',
       ],
       [
         'Personal Firewall',
@@ -988,17 +988,17 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'Firewall-Regeln nennen Dienste über ihre Portnummern. Diese Standardports solltest du sicher kennen.',
     [
       ['Port', 'Dienst'],
-      ['20, 21', 'FTP - unverschlüsselt'],
-      ['22', 'SSH - verschlüsselte Fernwartung'],
-      ['23', 'Telnet - unverschlüsselt, abschalten'],
-      ['25', 'SMTP - Mailserver untereinander'],
-      ['53', 'DNS - Namensauflösung'],
+      ['20, 21', 'FTP, unverschlüsselt'],
+      ['22', 'SSH, verschlüsselte Fernwartung'],
+      ['23', 'Telnet, unverschlüsselt: abschalten'],
+      ['25', 'SMTP: Mailserver untereinander'],
+      ['53', 'DNS: Namensauflösung'],
       ['80', 'HTTP'],
       ['443', 'HTTPS'],
       ['587', 'SMTP-Einlieferung vom Mailprogramm'],
       ['110 / 995', 'POP3 / POP3S'],
       ['143 / 993', 'IMAP / IMAPS'],
-      ['3389', 'RDP - nie offen ins Internet'],
+      ['3389', 'RDP, nie offen ins Internet'],
     ],
   ),
   formel(
@@ -1027,7 +1027,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
       'Internet -> LAN-PC, Port 3389 (RDP): nur Regel 5 passt -> verworfen.',
     ],
     ergebnis:
-        'erlaubt: HTTPS zum Webserver und HTTP aus dem LAN - SSH und RDP von außen werden verworfen',
+        'erlaubt: HTTPS zum Webserver und HTTP aus dem LAN. SSH und RDP von außen werden verworfen',
   ),
   konzept(
     'n-yf-9',
@@ -1035,7 +1035,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'Die DMZ',
     'Die demilitarisierte Zone (DMZ) ist ein eigenes Netzsegment für Server, die aus dem Internet erreichbar sein müssen. Wird dort ein Server übernommen, steht der Angreifer noch nicht im internen Netz.',
     points: [
-      'In die DMZ: Webserver, Mail-Gateway, Reverse Proxy - alles, was von außen erreichbar sein muss',
+      'In die DMZ: Webserver, Mail-Gateway, Reverse Proxy. Alles, was von außen erreichbar sein muss',
       'Ins LAN: Datenbanken mit Kundendaten, Dateiserver, Arbeitsplätze',
       'Internet -> DMZ: nur die nötigen Ports, z. B. 443 zum Webserver',
       'DMZ -> LAN: grundsätzlich gesperrt, höchstens einzelne Ausnahmen wie Webserver -> Datenbankport',
@@ -1046,7 +1046,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-yf-10',
     'sm-firewall',
     'Zweistufige DMZ',
-    'Die äußere Firewall trennt Internet und DMZ, die innere trennt DMZ und LAN. Ein Angreifer muss zwei Hürden überwinden - besonders wirksam, wenn beide Firewalls von verschiedenen Herstellern stammen.',
+    'Die äußere Firewall trennt Internet und DMZ, die innere trennt DMZ und LAN. Ein Angreifer muss zwei Hürden überwinden. Das ist besonders wirksam, wenn beide Firewalls von verschiedenen Herstellern stammen.',
     NetzSkizze(
       [
         NetzKnoten('inet', 'Internet', NetzTyp.internet, 2, 0),
@@ -1087,7 +1087,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-yf-12',
     'sm-firewall',
     'VPN: sicher von außen ins LAN',
-    'Ein VPN (Virtual Private Network) baut über das unsichere Internet einen verschlüsselten Tunnel ins Firmennetz. Das Notebook im Homeoffice verhält sich dann, als stünde es im LAN - die Firewall muss nur den VPN-Zugang öffnen, nicht die einzelnen Dienste.',
+    'Ein VPN (Virtual Private Network) baut über das unsichere Internet einen verschlüsselten Tunnel ins Firmennetz. Das Notebook im Homeoffice verhält sich dann, als stünde es im LAN. Die Firewall muss nur den VPN-Zugang öffnen, nicht die einzelnen Dienste.',
     NetzSkizze(
       [
         NetzKnoten('nb', 'Notebook Homeoffice', NetzTyp.laptop, 0.6, 0),
@@ -1108,7 +1108,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
       'Client-to-Site: ein einzelnes Gerät verbindet sich mit dem Firmennetz (Homeoffice, Außendienst).',
       'Site-to-Site: zwei Standorte sind dauerhaft über ihre Router gekoppelt (Filiale und Zentrale).',
       'Gängige Protokolle: IPsec, OpenVPN, WireGuard.',
-      'Schützt Vertraulichkeit und Integrität auf dem Weg - die Anmeldung sollte mit MFA oder Zertifikat erfolgen.',
+      'Schützt Vertraulichkeit und Integrität auf dem Weg. Die Anmeldung sollte mit MFA oder Zertifikat erfolgen.',
     ],
   ),
   falle(
@@ -1117,7 +1117,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'Die Reihenfolge entscheidet',
     'Steht die Regel „any any deny“ ganz oben, wird alles blockiert. Steht eine allgemeine Erlaubnis vor einer speziellen Sperre, greift die Sperre nie. Deshalb: spezielle Regeln nach oben, und als letzte Regel alles verbieten, was nicht ausdrücklich erlaubt ist.',
     points: [
-      'Eine Personal Firewall ersetzt keine Netzwerk-Firewall - sie ergänzt sie.',
+      'Eine Personal Firewall ersetzt keine Netzwerk-Firewall. Sie ergänzt sie.',
       'Ein Paketfilter sieht keine Inhalte: Schadcode in einer Webseite erkennt nur ein Proxy bzw. eine NGFW.',
       'Die Datenbank mit Kundendaten gehört nie in die DMZ.',
     ],
@@ -1126,14 +1126,14 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-yf-14',
     'sm-firewall',
     'Auf einen Blick',
-    'Eine Firewall setzt ein Regelwerk durch - so gut wie die Regeln und ihre Reihenfolge.',
+    'Eine Firewall setzt ein Regelwerk durch. So gut wie die Regeln und ihre Reihenfolge.',
     points: [
       'Paketfilter und Stateful: Schicht 3/4, Proxy: Schicht 7, NGFW: alles zusammen',
       'DMZ: öffentlich erreichbare Server getrennt vom LAN, zweistufig mit zwei Firewalls',
       'VPN: verschlüsselter Tunnel für Fernzugriff und Standortkopplung',
     ],
     satz:
-        'Die erste passende Regel gewinnt - und am Ende steht: Alles andere ist verboten.',
+        'Die erste passende Regel gewinnt, und am Ende steht: Alles andere ist verboten.',
   ),
 
   // ============================================================== Datensicherung
@@ -1145,7 +1145,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     points: [
       'Backup: Kopie für die Wiederherstellung, ältere Stände bleiben erhalten',
       'Archivierung: Daten langfristig und unveränderbar aufbewahren, z. B. wegen gesetzlicher Pflichten',
-      'Spiegelung/Replikation: aktuelle Kopie in Echtzeit - übernimmt aber auch Fehler und Löschungen sofort',
+      'Spiegelung/Replikation: aktuelle Kopie in Echtzeit, übernimmt aber auch Fehler und Löschungen sofort',
     ],
   ),
   vergleich(
@@ -1182,7 +1182,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     ]),
     points: [
       'Sichern geht schnell, jede Sicherung ist klein.',
-      'Wiederherstellen am Freitag: Voll + Mo + Di + Mi + Do - alle fünf müssen lesbar sein.',
+      'Wiederherstellen am Freitag: Voll + Mo + Di + Mi + Do. Alle fünf müssen lesbar sein.',
     ],
   ),
   skizze(
@@ -1251,10 +1251,10 @@ final List<Nugget> nuggetsA06Sicherheit = [
       'Letzte Sicherung: Donnerstagabend',
       'Inkrementell: Voll (So) + Mo + Di + Mi + Do = 5 Sicherungen, 200 + 4 × 10 = 240 GB',
       'Differenziell: Voll (So) + Diff. Do = 2 Sicherungen, 200 + 40 = 240 GB',
-      'Gleiche Datenmenge, aber inkrementell fünf Medien - fällt eines aus, fehlt ein ganzer Tag',
+      'Gleiche Datenmenge, aber inkrementell fünf Medien. Fällt eines aus, fehlt ein ganzer Tag',
       'In beiden Fällen verloren: alle Änderungen seit Donnerstagabend',
     ],
-    ergebnis: 'inkrementell 5 Sicherungen, differenziell 2 - jeweils 240 GB',
+    ergebnis: 'inkrementell 5 Sicherungen, differenziell 2, jeweils 240 GB',
   ),
   konzept(
     'n-yb-8',
@@ -1278,13 +1278,13 @@ final List<Nugget> nuggetsA06Sicherheit = [
       'Großväter: 12 Monate werden vorgehalten = 12 Medien',
       'Summe: 4 + 4 + 12 = 20 Medien',
     ],
-    ergebnis: '20 Medien - der älteste Stand reicht bis zu einem Jahr zurück',
+    ergebnis: '20 Medien. Der älteste Stand reicht bis zu einem Jahr zurück',
   ),
   konzept(
     'n-yb-10',
     'sm-backup',
     'RPO und RTO',
-    'Zwei Kennzahlen legen fest, was eine Sicherung leisten muss. Das RPO (Recovery Point Objective) gibt an, wie viel Datenverlust höchstens hinnehmbar ist - es bestimmt den Sicherungsabstand. Das RTO (Recovery Time Objective) gibt an, wie schnell der Betrieb wieder laufen muss.',
+    'Zwei Kennzahlen legen fest, was eine Sicherung leisten muss. Das RPO (Recovery Point Objective) gibt an, wie viel Datenverlust höchstens hinnehmbar ist. Es bestimmt den Sicherungsabstand. Das RTO (Recovery Time Objective) gibt an, wie schnell der Betrieb wieder laufen muss.',
     points: [
       'RPO 24 h: tägliche Sicherung reicht',
       'RPO 1 h: mindestens stündlich sichern oder replizieren',
@@ -1323,7 +1323,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-yb-13',
     'sm-backup',
     'Synchronisation ist kein Backup',
-    'Ein synchronisierter Cloud-Ordner übernimmt jede Änderung sofort - auch versehentliches Löschen oder die Verschlüsselung durch Ransomware. Nach wenigen Sekunden ist die Kopie genauso unbrauchbar wie das Original. Ein Backup ist eine getrennte Kopie, die ältere Stände aufbewahrt.',
+    'Ein synchronisierter Cloud-Ordner übernimmt jede Änderung sofort, auch versehentliches Löschen oder die Verschlüsselung durch Ransomware. Nach wenigen Sekunden ist die Kopie genauso unbrauchbar wie das Original. Ein Backup ist eine getrennte Kopie, die ältere Stände aufbewahrt.',
     points: [
       'Ein Backup im selben Raum wie der Server hilft nicht gegen Brand oder Diebstahl.',
       'Ein Backup-Laufwerk, das dauerhaft verbunden ist, verschlüsselt die Ransomware gleich mit.',
@@ -1350,7 +1350,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-yw-1',
     'sm-wlan',
     'Warum WLAN besonders gefährdet ist',
-    'Funk endet nicht an der Bürowand: Jeder in Reichweite kann die Pakete empfangen - auch vom Parkplatz aus. Ein WLAN muss deshalb stark verschlüsseln und genau prüfen, wer sich anmeldet.',
+    'Funk endet nicht an der Bürowand: Jeder in Reichweite kann die Pakete empfangen, auch vom Parkplatz aus. Ein WLAN muss deshalb stark verschlüsseln und genau prüfen, wer sich anmeldet.',
     points: [
       'Mitlesen des unverschlüsselten oder schwach verschlüsselten Verkehrs',
       'Unbefugte Nutzung des Internetzugangs, für die der Betreiber geradestehen muss',
@@ -1403,7 +1403,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
       'Forward Secrecy: Wird das Passwort später bekannt, bleibt früher mitgeschnittener Verkehr trotzdem geschützt.',
       'Geschützte Verwaltungspakete (PMF): gefälschte Abmeldepakete werfen Geräte nicht mehr aus dem Netz.',
       'Enhanced Open (OWE): verschlüsselt auch offene Hotspots ohne Passwort.',
-      'Übergangsmodus WPA2/WPA3 für ältere Geräte - nur so lange wie nötig.',
+      'Übergangsmodus WPA2/WPA3 für ältere Geräte, aber nur so lange wie nötig.',
     ],
   ),
   skizze(
@@ -1438,10 +1438,10 @@ final List<Nugget> nuggetsA06Sicherheit = [
       '8 Kleinbuchstaben: 26^8 = 208.827.064.576 ≈ 2,1 × 10^11 Möglichkeiten',
       'Zeit: 2,1 × 10^11 / 10^6 pro s ≈ 208.827 s ≈ 58 h',
       '20 Zeichen aus 62: 62^20 ≈ 7,0 × 10^35 Möglichkeiten',
-      'Zeit: 7,0 × 10^35 / 10^6 pro s ≈ 7,0 × 10^29 s - rund 2 × 10^22 Jahre',
+      'Zeit: 7,0 × 10^35 / 10^6 pro s ≈ 7,0 × 10^29 s, rund 2 × 10^22 Jahre',
     ],
     ergebnis:
-        '8 Kleinbuchstaben: nach gut 2 Tagen geknackt - 20 gemischte Zeichen: praktisch nie',
+        '8 Kleinbuchstaben: nach gut 2 Tagen geknackt; 20 gemischte Zeichen: praktisch nie',
     merksatz:
         'Für WPA2-Personal empfiehlt das BSI ein zufälliges Passwort mit mindestens 20 Zeichen.',
   ),
@@ -1449,7 +1449,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-yw-7',
     'sm-wlan',
     'Warum WPS aus sein muss',
-    'WPS soll das Verbinden per Knopfdruck oder 8-stelliger PIN erleichtern. Der Router bestätigt die beiden Hälften der PIN aber getrennt - damit schrumpft der Aufwand für einen Brute-Force-Angriff drastisch.',
+    'WPS soll das Verbinden per Knopfdruck oder 8-stelliger PIN erleichtern. Der Router bestätigt die beiden Hälften der PIN aber getrennt. Damit schrumpft der Aufwand für einen Brute-Force-Angriff drastisch.',
     'PIN: 8 Ziffern, letzte = Prüfziffer\nHälfte 1: 4 Ziffern -> 10^4 = 10.000\nHälfte 2: 3 Ziffern -> 10^3 =  1.000\nzusammen höchstens 11.000 Versuche\nstatt 10^7 = 10.000.000',
     merksatz: 'WPS im Router abschalten.',
   ),
@@ -1457,7 +1457,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-yw-8',
     'sm-wlan',
     'Gastnetz per VLAN',
-    'Ein Access Point strahlt zwei WLAN-Namen (SSIDs) aus. Jede SSID gehört zu einem eigenen VLAN. Die Firewall erlaubt dem Gast-VLAN nur den Weg ins Internet - niemals zum Praxisserver.',
+    'Ein Access Point strahlt zwei WLAN-Namen (SSIDs) aus. Jede SSID gehört zu einem eigenen VLAN. Die Firewall erlaubt dem Gast-VLAN nur den Weg ins Internet, niemals zum Praxisserver.',
     NetzSkizze(
       [
         NetzKnoten('inet', 'Internet', NetzTyp.internet, 2, 0),
@@ -1508,8 +1508,8 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'Scheinsicherheit: SSID und MAC-Filter',
     'Eine versteckte SSID taucht trotzdem in den Funkpaketen der verbundenen Geräte auf und ist mit einfachen Werkzeugen sichtbar. MAC-Adressen werden unverschlüsselt übertragen und lassen sich leicht fälschen. Beides ersetzt keine starke Verschlüsselung.',
     points: [
-      'WPA2 mit TKIP ist trotz „WPA2“ im Namen veraltet - es muss AES sein.',
-      'Ein gemeinsames Passwort für die ganze Firma ist bequem, aber nicht widerrufbar - ab mehreren Beschäftigten lohnt sich 802.1X.',
+      'WPA2 mit TKIP ist trotz „WPA2“ im Namen veraltet. Es muss AES sein.',
+      'Ein gemeinsames Passwort für die ganze Firma ist bequem, aber nicht widerrufbar. Ab mehreren Beschäftigten lohnt sich 802.1X.',
     ],
   ),
   merke(
@@ -1519,7 +1519,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'Ein sicheres WLAN kombiniert aktuelle Verschlüsselung, starke Anmeldung und getrennte Netze.',
     points: [
       'WPA3 oder mindestens WPA2 mit AES',
-      'Personal: langes Passwort - Enterprise: 802.1X mit RADIUS',
+      'Personal: langes Passwort; Enterprise: 802.1X mit RADIUS',
       'WPS aus, Gäste ins eigene VLAN',
     ],
     satz:
@@ -1531,7 +1531,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-yz-1',
     'sm-zugriff',
     'Zutritt, Zugang, Zugriff',
-    'Drei ähnlich klingende Begriffe beschreiben drei Stufen des Schutzes - vom Gebäude bis zur einzelnen Datei.',
+    'Drei ähnlich klingende Begriffe beschreiben drei Stufen des Schutzes, vom Gebäude bis zur einzelnen Datei.',
     [
       ['Begriff', 'schützt', 'Beispiel'],
       ['Zutritt', 'Räume und Gebäude', 'Chipkarte am Serverraum'],
@@ -1580,7 +1580,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'Zwei Grundsätze bestimmen, wie viele Rechte jemand bekommt. Beide zielen darauf, den möglichen Schaden eines gestohlenen Kontos oder eines Fehlers klein zu halten.',
     points: [
       'Need-to-know: Jede Person erhält nur die Informationen, die sie für ihre Aufgabe braucht.',
-      'Minimalprinzip (Least Privilege): Jedes Konto erhält nur die Rechte, die es für seine Aufgabe braucht - der Vertrieb liest die Preisliste, darf sie aber nicht ändern.',
+      'Minimalprinzip (Least Privilege): Jedes Konto erhält nur die Rechte, die es für seine Aufgabe braucht. Der Vertrieb liest die Preisliste, darf sie aber nicht ändern.',
       'Funktionstrennung: Kritische Vorgänge verteilen, z. B. anlegen und freigeben einer Zahlung durch zwei Personen.',
     ],
   ),
@@ -1627,7 +1627,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
       'Endet Tims Einsatz im Vertrieb, wird die Rolle „Vertrieb“ sofort wieder entzogen.',
     ],
     ergebnis:
-        'Tim darf „Preise“ lesen, aber nicht ändern - auf „Personal“ hat er keinen Zugriff',
+        'Tim darf „Preise“ lesen, aber nicht ändern. Auf „Personal“ hat er keinen Zugriff',
   ),
   ablauf(
     'n-yz-6',
@@ -1636,7 +1636,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'Bei rollenbasierter Rechtevergabe hängen die Rechte an Rollen, nicht an Personen. Beispiel: Azubi Lena kommt in die Buchhaltung.',
     [
       'Rolle „Buchhaltung“ festlegen: Finanzordner lesen und schreiben, Rechnungsmodul im ERP.',
-      'Eintritt: Lenas persönliches Konto anlegen und der Rolle zuordnen - ohne Einzelrechte.',
+      'Eintritt: Lenas persönliches Konto anlegen und der Rolle zuordnen, ohne Einzelrechte.',
       'Wechsel in den Vertrieb: alte Rolle entziehen, neue zuordnen, damit sich keine Rechte ansammeln.',
       'Austritt: Konto am letzten Arbeitstag sperren, später löschen.',
       'Regelmäßig prüfen, ob alle Zuordnungen noch stimmen (Rezertifizierung).',
@@ -1649,7 +1649,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'Wer mit Administratorrechten E-Mails liest und surft, gibt jedem Schadcode aus einem Anhang ebenfalls volle Rechte. Deshalb haben Admins zwei Konten: ein normales für den Alltag und ein eigenes Admin-Konto nur für Verwaltungsaufgaben.',
     points: [
       'Admin-Konten nur mit MFA und nur von gesicherten Geräten aus nutzen',
-      'Persönliche Admin-Konten statt eines geteilten „admin“ - sonst ist nichts zurechenbar',
+      'Persönliche Admin-Konten statt eines geteilten „admin“. Sonst ist nichts zurechenbar',
       'Notfall-Konto mit versiegeltem Passwort für den Ausfall der normalen Anmeldung',
     ],
   ),
@@ -1670,12 +1670,12 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-yz-9',
     'sm-zugriff',
     'Patchmanagement und Protokollierung',
-    'Updates schließen bekannte Lücken - Angreifer nutzen genau diese Lücken oft wenige Tage nach der Veröffentlichung. Patchmanagement heißt: Updates systematisch erfassen, testen, verteilen und dokumentieren. Protokolle zeigen, ob trotzdem etwas passiert.',
+    'Updates schließen bekannte Lücken: Angreifer nutzen genau diese Lücken oft wenige Tage nach der Veröffentlichung. Patchmanagement heißt: Updates systematisch erfassen, testen, verteilen und dokumentieren. Protokolle zeigen, ob trotzdem etwas passiert.',
     points: [
       'kritische Updates zeitnah und möglichst automatisiert verteilen',
       'vorher auf einem Testsystem prüfen und zurückrollen können',
       'protokollieren: An- und Abmeldungen, Fehlversuche, Rechteänderungen',
-      'Protokolle zentral sammeln und auswerten - sonst bemerkt niemand den Angriff',
+      'Protokolle zentral sammeln und auswerten. Sonst bemerkt niemand den Angriff',
     ],
   ),
   skizze(
@@ -1700,9 +1700,9 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-yz-13',
     'sm-zugriff',
     'Standardpasswörter bei Geräten',
-    'Router, Access Points, Drucker, Kameras und andere Netzwerkgeräte werden oft mit voreingestellten Zugangsdaten ausgeliefert, etwa „admin“ und „admin“. Diese Standardpasswörter sind bei allen Geräten einer Baureihe gleich und stehen im Handbuch - und in Listen im Internet.',
+    'Router, Access Points, Drucker, Kameras und andere Netzwerkgeräte werden oft mit voreingestellten Zugangsdaten ausgeliefert, etwa „admin“ und „admin“. Diese Standardpasswörter sind bei allen Geräten einer Baureihe gleich und stehen im Handbuch, und in Listen im Internet.',
     points: [
-      'Angreifer und Schadsoftware probieren solche Listen automatisch durch - so entstand 2016 das Botnetz Mirai aus hunderttausenden Kameras und Routern',
+      'Angreifer und Schadsoftware probieren solche Listen automatisch durch. So entstand 2016 das Botnetz Mirai aus hunderttausenden Kameras und Routern',
       'Folgen: Fremde sehen Kamerabilder, ändern die Konfiguration oder nutzen das Gerät als Einstieg ins interne Netz',
       'Auch im internen Netz gefährlich: Ein einziger befallener PC genügt als Ausgangspunkt',
       'Regel: das Standardpasswort vor der Inbetriebnahme durch ein eigenes, langes Passwort je Gerät ersetzen',
@@ -1715,7 +1715,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     '„No default passwords“ im Datenblatt',
     'Neuere Geräte werden häufig ohne voreingestelltes Passwort ausgeliefert. Im englischen Datenblatt steht dann „No default passwords“. Das hat praktische Folgen für die Inbetriebnahme.',
     points: [
-      'Bei der Ersteinrichtung muss ein eigenes Passwort gesetzt werden - vorher ist kein Zugang möglich',
+      'Bei der Ersteinrichtung muss ein eigenes Passwort gesetzt werden, vorher ist kein Zugang möglich',
       'Das Passwort muss der Passwortrichtlinie des Betriebs entsprechen',
       'Nicht alle Geräte des Herstellers teilen dasselbe Passwort: Listen mit Standardpasswörtern nützen Angreifern nichts',
       'Die vergebenen Passwörter gehören in einen Passwortmanager, nicht auf einen Zettel am Gerät',
@@ -1738,7 +1738,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'Auf einen Blick',
     'Zugriffsschutz und Härtung verkleinern, wer was darf und was überhaupt angreifbar ist.',
     points: [
-      'Zutritt: Raum - Zugang: System - Zugriff: Daten',
+      'Zutritt: Raum; Zugang: System; Zugriff: Daten',
       'RBAC: Rechte an Rollen, bei Wechsel alte Rolle entziehen',
       'Härtung: Unnötiges aus, Standards ändern, Updates einspielen',
     ],

@@ -62,7 +62,7 @@ final List<ExamCase> casesA06 = [
         prompt: 'Beschreibe den Zweck des Datenschutzrechts. (2 P.)',
         kriterien: [
           krit(
-            'Schutz natürlicher Personen bei der Verarbeitung ihrer Daten - jeder soll selbst über seine Daten bestimmen können (informationelle Selbstbestimmung)',
+            'Schutz natürlicher Personen bei der Verarbeitung ihrer Daten. Jeder soll selbst über seine Daten bestimmen können (informationelle Selbstbestimmung)',
             punkte: 2,
             stichwoerter: [
               'natürliche Personen',
@@ -148,7 +148,7 @@ final List<ExamCase> casesA06 = [
           wahl('langsamer', ['schneller', 'unsicherer']),
         ],
         explanation:
-            'Verschlüsselung schützt die Vertraulichkeit. Asymmetrisch muss kein geheimer Schlüssel über einen sicheren Kanal ausgetauscht werden - der öffentliche darf jedem bekannt sein. Dafür ist das Verfahren rechenaufwendiger und langsamer.',
+            'Verschlüsselung schützt die Vertraulichkeit. Asymmetrisch muss kein geheimer Schlüssel über einen sicheren Kanal ausgetauscht werden. Der öffentliche darf jedem bekannt sein. Dafür ist das Verfahren rechenaufwendiger und langsamer.',
         punkte: 3,
       ),
       freitext(
@@ -173,7 +173,7 @@ final List<ExamCase> casesA06 = [
             ],
           ),
           krit(
-            'Gleich: Datei vollständig und unverändert (Integrität). Ungleich: beschädigt oder manipuliert - nicht installieren',
+            'Gleich: Datei vollständig und unverändert (Integrität). Ungleich: beschädigt oder manipuliert, nicht installieren',
             punkte: 2,
             stichwoerter: [
               'Integrität',
@@ -199,7 +199,7 @@ final List<ExamCase> casesA06 = [
             'Erläutere einen Grund, warum die Beschäftigten nicht mit Administratorrechten arbeiten sollen. (3 P.)',
         kriterien: [
           krit(
-            'Schadsoftware läuft mit den Rechten des angemeldeten Kontos - mit Administratorrechten kann sie sich systemweit einnisten und Schutzfunktionen abschalten',
+            'Schadsoftware läuft mit den Rechten des angemeldeten Kontos. Mit Administratorrechten kann sie sich systemweit einnisten und Schutzfunktionen abschalten',
             punkte: 3,
             stichwoerter: [
               'Schadsoftware',
@@ -289,7 +289,7 @@ final List<ExamCase> casesA06 = [
             'Die Absenderdomain gehört nicht zur Finanzverwaltung.',
           ),
           ja(
-            'Betreff: Letzte Mahnung - Vollstreckung in 48 Stunden',
+            'Betreff: Letzte Mahnung: Vollstreckung in 48 Stunden',
             'Drohung und Zeitdruck sollen zu unüberlegtem Handeln verleiten.',
           ),
           nein(
@@ -397,7 +397,7 @@ final List<ExamCase> casesA06 = [
           ],
         ],
         explanation:
-            'Wissen (Passwort): braucht keine Hardware, kann aber verraten, ausgespäht oder erraten werden. Besitz (Chipkarte): nicht erratbar, ein Verlust fällt auf - sie kann aber gestohlen und missbraucht werden. Je Zelle 1 Punkt.',
+            'Wissen (Passwort): braucht keine Hardware, kann aber verraten, ausgespäht oder erraten werden. Besitz (Chipkarte): nicht erratbar, ein Verlust fällt auf. Sie kann aber gestohlen und missbraucht werden. Je Zelle 1 Punkt.',
         punkte: 4,
       ),
       freitext(
@@ -409,7 +409,7 @@ final List<ExamCase> casesA06 = [
             'Beschreibe einen Grund, warum vor der Inbetriebnahme ein Softwareupdate durchgeführt werden soll. (2 P.)',
         kriterien: [
           krit(
-            'Seit der Fertigung bekannt gewordene Sicherheitslücken werden geschlossen - das Gerät ist gegen Angriffe gehärtet',
+            'Seit der Fertigung bekannt gewordene Sicherheitslücken werden geschlossen. Das Gerät ist gegen Angriffe gehärtet',
             punkte: 2,
             stichwoerter: [
               'Sicherheitslücke',
@@ -531,7 +531,7 @@ final List<ExamCase> casesA06 = [
         ],
         punkte: 4,
         loesung:
-            'Der Einkauf bildet den Hashwert der Bestellung und verschlüsselt ihn mit seinem privaten Schlüssel - das ist die Signatur. Bestellung und Signatur gehen an den Lieferanten. Dieser entschlüsselt die Signatur mit dem öffentlichen Schlüssel des Einkaufs, berechnet den Hashwert der Bestellung selbst und vergleicht beide Werte. Stimmen sie überein, ist die Bestellung echt (Authentizität) und unverändert (Integrität).',
+            'Der Einkauf bildet den Hashwert der Bestellung und verschlüsselt ihn mit seinem privaten Schlüssel. Das ist die Signatur. Bestellung und Signatur gehen an den Lieferanten. Dieser entschlüsselt die Signatur mit dem öffentlichen Schlüssel des Einkaufs, berechnet den Hashwert der Bestellung selbst und vergleicht beide Werte. Stimmen sie überein, ist die Bestellung echt (Authentizität) und unverändert (Integrität).',
         explanation:
             '2 Punkte für das Erstellen (privater Schlüssel des Absenders), 2 Punkte für das Prüfen (öffentlicher Schlüssel des Absenders). Auch die Kurzfassung „mit dem privaten Schlüssel signieren, mit dem öffentlichen prüfen“ erhält volle Punkte.',
       ),
@@ -675,7 +675,7 @@ final List<ExamCase> casesA06 = [
         zeilen: [
           nein(
             'Kunde: Möbel Brandt GmbH',
-            'Eine GmbH ist eine juristische Person - nicht von der DSGVO geschützt.',
+            'Eine GmbH ist eine juristische Person und deshalb nicht von der DSGVO geschützt.',
           ),
           ja('Ansprechpartner: Jonas Reuter', 'Name einer natürlichen Person.'),
           ja(
@@ -694,7 +694,7 @@ final List<ExamCase> casesA06 = [
           ),
         ],
         explanation:
-            'Personenbezogen sind alle Informationen über identifizierte oder identifizierbare natürliche Personen: Name, persönliche E-Mail-Adresse, Durchwahl - auch die der eigenen Beschäftigten. Angaben über eine GmbH und reine Sachangaben gehören nicht dazu.',
+            'Personenbezogen sind alle Informationen über identifizierte oder identifizierbare natürliche Personen: Name, persönliche E-Mail-Adresse, Durchwahl, auch die der eigenen Beschäftigten. Angaben über eine GmbH und reine Sachangaben gehören nicht dazu.',
         punkte: 3,
       ),
       freitext(
@@ -847,7 +847,7 @@ final List<ExamCase> casesA06 = [
           ],
         ],
         explanation:
-            'Minimalprinzip: Jede Rolle erhält nur die Rechte, die sie für ihre Aufgabe braucht. Kunden sehen nur eigene Tickets, der Support alle. Die Kontenverwaltung bleibt den Administratoren vorbehalten - auch der Support braucht sie nicht.',
+            'Minimalprinzip: Jede Rolle erhält nur die Rechte, die sie für ihre Aufgabe braucht. Kunden sehen nur eigene Tickets, der Support alle. Die Kontenverwaltung bleibt den Administratoren vorbehalten, denn auch der Support braucht sie nicht.',
         punkte: 4,
       ),
       lueckentext(
@@ -970,7 +970,7 @@ final List<ExamCase> casesA06 = [
         ],
         punkte: 2,
         loesung:
-            'Die Agentur kann die Mitarbeitenden schulen und ihnen den Nutzen zeigen, zum Beispiel dass keine Anfrage mehr verloren geht und Kolleginnen im Urlaub vertreten werden können. Sinnvoll ist auch, Rückmeldungen einzuholen und das System daraufhin anzupassen - Beteiligung wirkt nachhaltiger als Druck.',
+            'Die Agentur kann die Mitarbeitenden schulen und ihnen den Nutzen zeigen, zum Beispiel dass keine Anfrage mehr verloren geht und Kolleginnen im Urlaub vertreten werden können. Sinnvoll ist auch, Rückmeldungen einzuholen und das System daraufhin anzupassen: Beteiligung wirkt nachhaltiger als Druck.',
         explanation:
             '2 Punkte für eine beschriebene Maßnahme: Schulung, Beteiligung, offene Kommunikation des Nutzens oder Ansprechpersonen im Team.$_andere',
       ),
@@ -1070,7 +1070,7 @@ final List<ExamCase> casesA06 = [
             ],
           ),
           krit(
-            'Es gibt kein bei allen Geräten gleiches, öffentlich bekanntes Passwort - Angriffe mit Listen von Standardpasswörtern laufen ins Leere',
+            'Es gibt kein bei allen Geräten gleiches, öffentlich bekanntes Passwort: Angriffe mit Listen von Standardpasswörtern laufen ins Leere',
             punkte: 2,
             stichwoerter: [
               'öffentlich bekannt',
@@ -1094,7 +1094,7 @@ final List<ExamCase> casesA06 = [
         ],
         punkte: 4,
         loesung:
-            'Die Kamera wird ohne voreingestelltes Passwort ausgeliefert. Erstens muss bei der Ersteinrichtung jeder Kamera ein eigenes, regelkonformes Passwort vergeben werden - ohne dieses ist kein Zugang möglich. Zweitens teilen sich nicht alle Geräte des Herstellers dasselbe, öffentlich bekannte Passwort; Angreifer können die Kameras nicht mit Listen von Standardpasswörtern übernehmen.',
+            'Die Kamera wird ohne voreingestelltes Passwort ausgeliefert. Erstens muss bei der Ersteinrichtung jeder Kamera ein eigenes, regelkonformes Passwort vergeben werden. Ohne dieses ist kein Zugang möglich. Zweitens teilen sich nicht alle Geräte des Herstellers dasselbe, öffentlich bekannte Passwort; Angreifer können die Kameras nicht mit Listen von Standardpasswörtern übernehmen.',
         explanation: 'Je Konsequenz 2 Punkte, höchstens 4 Punkte.$_andere',
         tags: ['englisch'],
       ),
@@ -1282,7 +1282,7 @@ final List<ExamCase> casesA06 = [
         loesung:
             'Die Leitung sollte früh und offen informieren, wozu die Kameras dienen, welche Bereiche sie erfassen, wie lange gespeichert wird und wer die Bilder sehen darf. Außerdem sollte sie Betriebsrat und Beschäftigte beteiligen und in einer Betriebsvereinbarung festhalten, dass die Aufnahmen nicht zur Leistungskontrolle genutzt werden.',
         explanation:
-            'Je Maßnahme 2 Punkte, höchstens 4 Punkte. Widerstand entsteht hier aus Sorge - Information und Beteiligung wirken besser als Anordnung.$_andere',
+            'Je Maßnahme 2 Punkte, höchstens 4 Punkte. Widerstand entsteht hier aus Sorge: Information und Beteiligung wirken besser als Anordnung.$_andere',
       ),
     ],
   ),
@@ -1428,7 +1428,7 @@ final List<ExamCase> casesA06 = [
             'Führe zwei Kriterien für sichere Passwörter an und beschreibe jeweils, wie das Kriterium die Sicherheit erhöht. (4 P.)',
         kriterien: [
           krit(
-            'Ausreichende Länge: Die Zahl der möglichen Kombinationen wächst mit jedem Zeichen stark - Durchprobieren (Brute Force) dauert zu lange',
+            'Ausreichende Länge: Die Zahl der möglichen Kombinationen wächst mit jedem Zeichen stark, deshalb dauert Durchprobieren (Brute Force) zu lange',
             punkte: 2,
             stichwoerter: [
               'Länge',
@@ -1546,7 +1546,7 @@ final List<ExamCase> casesA06 = [
           ],
         ],
         explanation:
-            'Die differenzielle Sicherung enthält alle Änderungen seit der letzten Vollsicherung: 20, 40, 60, 80 GB. Für die Wiederherstellung genügen die Vollsicherung und die letzte differenzielle Sicherung - also 2. Je Zelle 1 Punkt.',
+            'Die differenzielle Sicherung enthält alle Änderungen seit der letzten Vollsicherung: 20, 40, 60, 80 GB. Für die Wiederherstellung genügen die Vollsicherung und die letzte differenzielle Sicherung, also 2. Je Zelle 1 Punkt.',
         punkte: 4,
       ),
       rechnen(
@@ -1591,7 +1591,7 @@ final List<ExamCase> casesA06 = [
             ],
           ),
           krit(
-            'Begründung: Ohne diese Daten lässt sich der Schichtbetrieb nicht planen - die Verarbeitung ist für die Durchführung des Arbeitsverhältnisses erforderlich, eine Einwilligung ist nicht nötig',
+            'Begründung: Ohne diese Daten lässt sich der Schichtbetrieb nicht planen. Die Verarbeitung ist für die Durchführung des Arbeitsverhältnisses erforderlich, eine Einwilligung ist nicht nötig',
             punkte: 2,
             stichwoerter: [
               'erforderlich',
@@ -1604,7 +1604,7 @@ final List<ExamCase> casesA06 = [
         ],
         punkte: 3,
         loesung:
-            'Rechtsgrundlage ist die Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO). Die Daten sind erforderlich, um den Dreischichtbetrieb zu planen und die Beschäftigten zu erreichen. Eine Einwilligung ist dafür nicht nötig. In Lehrbüchern und älteren Lösungen wird oft § 26 BDSG genannt; ob dessen allgemeine Regel nach einem Urteil des Europäischen Gerichtshofs von 2023 noch anwendbar ist, ist umstritten - sicher ist die Stütze auf die DSGVO.',
+            'Rechtsgrundlage ist die Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO). Die Daten sind erforderlich, um den Dreischichtbetrieb zu planen und die Beschäftigten zu erreichen. Eine Einwilligung ist dafür nicht nötig. In Lehrbüchern und älteren Lösungen wird oft § 26 BDSG genannt; ob dessen allgemeine Regel nach einem Urteil des Europäischen Gerichtshofs von 2023 noch anwendbar ist, ist umstritten. Sicher ist die Stütze auf die DSGVO.',
         explanation:
             '1 Punkt für die Rechtsgrundlage, 2 Punkte für die Begründung über die Erforderlichkeit für das Arbeitsverhältnis.',
       ),
@@ -1730,7 +1730,7 @@ final List<ExamCase> casesA06 = [
         ],
         punkte: 4,
         loesung:
-            'Vertraulichkeit: Die Daten auf der SSD können nur von Befugten gelesen werden, die das Passwort kennen - ein Finder oder Dieb sieht nur verschlüsselte Daten. Integrität: Die Daten bleiben vollständig und unverändert; ein Unbefugter kann sie nicht gezielt verändern, ohne dass es auffällt.',
+            'Vertraulichkeit: Die Daten auf der SSD können nur von Befugten gelesen werden, die das Passwort kennen. Ein Finder oder Dieb sieht nur verschlüsselte Daten. Integrität: Die Daten bleiben vollständig und unverändert; ein Unbefugter kann sie nicht gezielt verändern, ohne dass es auffällt.',
         explanation:
             'Je Schutzziel 2 Punkte: Vertraulichkeit = nur Befugte können lesen, Integrität = unbefugte Änderungen werden verhindert oder erkannt.',
       ),
@@ -1743,7 +1743,7 @@ final List<ExamCase> casesA06 = [
             'Beurteile, wie gut die Daten in diesem Fall durch die Verschlüsselung geschützt sind. (2 P.)',
         kriterien: [
           krit(
-            'Ohne das Passwort kann der Dieb die Daten nicht lesen - auch nicht, wenn er die SSD ausbaut',
+            'Ohne das Passwort kann der Dieb die Daten nicht lesen, auch nicht, wenn er die SSD ausbaut',
             stichwoerter: [
               'ohne Passwort',
               'nicht lesen',
@@ -1765,7 +1765,7 @@ final List<ExamCase> casesA06 = [
         ],
         punkte: 2,
         loesung:
-            'Die Daten sind gut geschützt: Ohne das Passwort lässt sich die SSD nicht entschlüsseln, auch nicht nach dem Ausbau. Der Schutz hängt aber vollständig an der Qualität und Geheimhaltung des Passworts - klebt es am Gerät oder ist es leicht zu erraten, ist die Verschlüsselung wertlos.',
+            'Die Daten sind gut geschützt: Ohne das Passwort lässt sich die SSD nicht entschlüsseln, auch nicht nach dem Ausbau. Der Schutz hängt aber vollständig an der Qualität und Geheimhaltung des Passworts. Klebt es am Gerät oder ist es leicht zu erraten, ist die Verschlüsselung wertlos.',
         explanation:
             '1 Punkt für die Aussage (ohne Passwort kein Zugriff), 1 Punkt für die Einschränkung (Schutz hängt am Passwort).',
       ),
@@ -1827,7 +1827,7 @@ final List<ExamCase> casesA06 = [
         scenario:
             'Der Hersteller der Handscanner, die auch die Disposition nutzt, veröffentlicht eine Sicherheitsmeldung.',
         code:
-            'SECURITY BULLETIN - HANDHELD SCANNER HS-70\n\nA vulnerability in the Bluetooth module allows attackers\nwithin radio range to take control of the device.\nUpdate the firmware to version 3.1.2 as soon as\npossible. Until then, switch off Bluetooth on all\ndevices. Change the administrator PIN, as the old PIN\nmay have been read out. Remove devices that are no\nlonger supported from the network. Report lost or\nstolen scanners to your IT department immediately.',
+            'SECURITY BULLETIN: HANDHELD SCANNER HS-70\n\nA vulnerability in the Bluetooth module allows attackers\nwithin radio range to take control of the device.\nUpdate the firmware to version 3.1.2 as soon as\npossible. Until then, switch off Bluetooth on all\ndevices. Change the administrator PIN, as the old PIN\nmay have been read out. Remove devices that are no\nlonger supported from the network. Report lost or\nstolen scanners to your IT department immediately.',
         prompt:
             'Nenne vier Maßnahmen, die der Hersteller empfiehlt. Antworte auf Deutsch. (4 P.)',
         kriterien: [

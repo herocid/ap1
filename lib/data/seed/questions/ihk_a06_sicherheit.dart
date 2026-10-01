@@ -77,7 +77,7 @@ final List<Question> ihkA06 = [
       ),
     ],
     loesung:
-        'Vertraulichkeit: Nur Befugte dürfen Daten lesen - z. B. Verschlüsselung und Zugriffsrechte. Integrität: Daten sind vollständig und unverändert - z. B. Hashwerte oder Signaturen. Verfügbarkeit: Systeme und Daten sind nutzbar, wenn sie gebraucht werden - z. B. Datensicherung, redundante Hardware, USV.',
+        'Vertraulichkeit: Nur Befugte dürfen Daten lesen, z. B. Verschlüsselung und Zugriffsrechte. Integrität: Daten sind vollständig und unverändert, z. B. Hashwerte oder Signaturen. Verfügbarkeit: Systeme und Daten sind nutzbar, wenn sie gebraucht werden, z. B. Datensicherung, redundante Hardware, USV.',
     explanation:
         'Je Schutzziel 1 Punkt für die Nennung und 1 Punkt für eine passende Maßnahme. Die falsch adressierte Liste verletzt die Vertraulichkeit, der Ausfall die Verfügbarkeit.$_andere',
   ),
@@ -116,19 +116,19 @@ final List<Question> ihkA06 = [
     zeilen: [
       ja(
         'Ein Skript überschreibt Lagerbestände mit falschen Mengen',
-        'Die Daten sind nicht mehr korrekt - Integrität verletzt.',
+        'Die Daten sind nicht mehr korrekt: Integrität verletzt.',
       ),
       nein(
         'Das Lagerverwaltungssystem ist nach einem Stromausfall zwei Stunden nicht erreichbar',
-        'Die Daten sind unverändert, aber nicht nutzbar - Verfügbarkeit.',
+        'Die Daten sind unverändert, aber nicht nutzbar: Verfügbarkeit.',
       ),
       ja(
         'Ein Angreifer ändert die Lieferadresse in einem Frachtauftrag',
-        'Unbefugte Veränderung von Daten - Integrität verletzt.',
+        'Unbefugte Veränderung von Daten: Integrität verletzt.',
       ),
       nein(
         'Ein Besucher fotografiert die Tourenplanung am Bildschirm',
-        'Unbefugte Kenntnisnahme - Vertraulichkeit.',
+        'Unbefugte Kenntnisnahme: Vertraulichkeit.',
       ),
       ja(
         'Ein defektes Kabel verfälscht übertragene Scannerdaten unbemerkt',
@@ -136,11 +136,11 @@ final List<Question> ihkA06 = [
       ),
       nein(
         'Ein Notebook mit unverschlüsselten Personaldaten wird gestohlen',
-        'Die Daten gelangen an Unbefugte - Vertraulichkeit.',
+        'Die Daten gelangen an Unbefugte: Vertraulichkeit.',
       ),
     ],
     explanation:
-        'Integrität heißt: Daten sind vollständig und unverändert. Verletzt wird sie durch jede unbemerkte oder unbefugte Veränderung - durch Angreifer, Programmfehler oder technische Störungen. Mitlesen betrifft die Vertraulichkeit, Ausfälle die Verfügbarkeit.',
+        'Integrität heißt: Daten sind vollständig und unverändert. Verletzt wird sie durch jede unbemerkte oder unbefugte Veränderung, durch Angreifer, Programmfehler oder technische Störungen. Mitlesen betrifft die Vertraulichkeit, Ausfälle die Verfügbarkeit.',
     punkte: 3,
   ),
 
@@ -183,7 +183,7 @@ final List<Question> ihkA06 = [
         ],
       ),
       krit(
-        'Schadsoftware kann sich im Netz ausbreiten - Folge sind Datenverlust, Datenabfluss oder Betriebsausfall',
+        'Schadsoftware kann sich im Netz ausbreiten: Folge sind Datenverlust, Datenabfluss oder Betriebsausfall',
         punkte: 2,
         stichwoerter: [
           'Schadsoftware',
@@ -212,7 +212,7 @@ final List<Question> ihkA06 = [
     ],
     punkte: 4,
     loesung:
-        'Ohne Updates bleiben bekannte Sicherheitslücken offen. Angreifer können sie gezielt ausnutzen, etwa um Ransomware einzuschleusen - mit Datenverlust und Stillstand der Kassen als Folge. Außerdem bleiben Programmfehler bestehen, und der Betrieb entspricht nicht mehr dem Stand der Technik.',
+        'Ohne Updates bleiben bekannte Sicherheitslücken offen. Angreifer können sie gezielt ausnutzen, etwa um Ransomware einzuschleusen, mit Datenverlust und Stillstand der Kassen als Folge. Außerdem bleiben Programmfehler bestehen, und der Betrieb entspricht nicht mehr dem Stand der Technik.',
     explanation:
         'Je beschriebener Folge 2 Punkte, höchstens 4 Punkte. Erwartet wird eine Aussage mit kurzer Ausführung, nicht nur ein Stichwort.$_andere',
   ),
@@ -248,7 +248,7 @@ final List<Question> ihkA06 = [
       ),
       nein(
         'Die Software deinstallieren und auf ein anderes Produkt wechseln',
-        'Davon ist im Text keine Rede - der Hersteller liefert einen Patch.',
+        'Davon ist im Text keine Rede. Der Hersteller liefert einen Patch.',
       ),
       nein(
         'Das geforderte Lösegeld zahlen',
@@ -256,7 +256,7 @@ final List<Question> ihkA06 = [
       ),
     ],
     explanation:
-        'Der Text nennt vier Maßnahmen: Patch einspielen, Port 9401 bis dahin sperren, eine Offline-Sicherung vorhalten und die Logdateien prüfen. In der Prüfung zählt nur, was im Text steht - eigene Ideen bringen hier keine Punkte.',
+        'Der Text nennt vier Maßnahmen: Patch einspielen, Port 9401 bis dahin sperren, eine Offline-Sicherung vorhalten und die Logdateien prüfen. In der Prüfung zählt nur, was im Text steht. Eigene Ideen bringen hier keine Punkte.',
     punkte: 4,
     tags: ['englisch'],
   ),
@@ -278,7 +278,7 @@ final List<Question> ihkA06 = [
     hint:
         'Erst eindämmen, dann melden und untersuchen, zuletzt wiederherstellen.',
     explanation:
-        'Zuerst wird die Ausbreitung gestoppt (Netz trennen) und der Vorfall gemeldet. Danach wird der Umfang ermittelt. Erst auf bereinigten oder neu aufgesetzten Systemen werden die Daten zurückgespielt - sonst wird die Sicherung gleich wieder verschlüsselt. Am Ende steht die Auswertung.',
+        'Zuerst wird die Ausbreitung gestoppt (Netz trennen) und der Vorfall gemeldet. Danach wird der Umfang ermittelt. Erst auf bereinigten oder neu aufgesetzten Systemen werden die Daten zurückgespielt. Sonst wird die Sicherung gleich wieder verschlüsselt. Am Ende steht die Auswertung.',
     punkte: 3,
   ),
 
@@ -296,16 +296,16 @@ final List<Question> ihkA06 = [
         'Die Domain ist nachgeahmt (Null statt o, fremder Zusatz).',
       ),
       ja(
-        'Betreff: DRINGEND - Ihr Konto wird in 24 Stunden gesperrt',
+        'Betreff: DRINGEND: Ihr Konto wird in 24 Stunden gesperrt',
         'Zeitdruck und Drohung sind typische Mittel des Social Engineering.',
       ),
       ja(
         'Sehr geehrter Kunde,',
-        'Unpersönliche Anrede - die echte Bank kennt den Namen.',
+        'Unpersönliche Anrede. Die echte Bank kennt den Namen.',
       ),
       nein(
         'unser System wurde in der vergangenen Woche aktualisiert.',
-        'Eine neutrale Information ohne Aufforderung - für sich kein Merkmal.',
+        'Eine neutrale Information ohne Aufforderung und für sich kein Merkmal.',
       ),
       ja(
         'Bestätigen Sie Ihre PIN und TAN unter http://nordbank.kunden-login.example',
@@ -313,7 +313,7 @@ final List<Question> ihkA06 = [
       ),
       ja(
         'Anhang: Sicherheitsformular.pdf.exe',
-        'Doppelte Dateiendung - tatsächlich ein ausführbares Programm.',
+        'Doppelte Dateiendung, in Wahrheit also ein ausführbares Programm.',
       ),
       nein(
         'Mit freundlichen Grüßen',
@@ -348,7 +348,7 @@ final List<Question> ihkA06 = [
         'Beschreibe ein Risiko, das von manipulierten Geräten in der Lieferkette ausgeht, und nenne zwei Maßnahmen, mit denen sich das Unternehmen schützt. (4 P.)',
     kriterien: [
       krit(
-        'Risiko: unbemerkt eingebaute Hintertür oder Abhörfunktion - Daten werden ausgelesen oder das Gerät wird ferngesteuert',
+        'Risiko: unbemerkt eingebaute Hintertür oder Abhörfunktion, über die Daten ausgelesen werden oder das Gerät ferngesteuert wird',
         punkte: 2,
         stichwoerter: [
           'Hintertür',
@@ -399,7 +399,7 @@ final List<Question> ihkA06 = [
     loesung:
         'Risiko: Auf dem Weg vom Hersteller zum Kunden kann ein Gerät verändert worden sein, etwa durch eine Hintertür in der Firmware. Damit lassen sich Daten unbemerkt auslesen oder das Gerät dient als Einstieg ins interne Netz. Maßnahmen: nur bei autorisierten Händlern kaufen, Siegel und Seriennummern prüfen, Firmware vor dem Einsatz aus der Herstellerquelle neu einspielen und deren Hashwert prüfen.',
     explanation:
-        '2 Punkte für ein beschriebenes Risiko, je 1 Punkt für zwei Maßnahmen - höchstens 4 Punkte.$_andere',
+        '2 Punkte für ein beschriebenes Risiko, je 1 Punkt für zwei Maßnahmen, höchstens 4 Punkte.$_andere',
   ),
 
   // ================================================================ Schutzbedarf
@@ -453,7 +453,7 @@ final List<Question> ihkA06 = [
       wahl('Verteilungseffekt', ['Kumulationseffekt', 'Maximumprinzip']),
     ],
     explanation:
-        'Maximumprinzip: Der höchste Schutzbedarf der Anwendungen vererbt sich auf das System - hier „hoch“. Kumulationseffekt: Viele kleinere Schäden summieren sich zu einem größeren. Verteilungseffekt: Redundanz senkt den Bedarf des einzelnen Systems.',
+        'Maximumprinzip: Der höchste Schutzbedarf der Anwendungen vererbt sich auf das System, hier „hoch“. Kumulationseffekt: Viele kleinere Schäden summieren sich zu einem größeren. Verteilungseffekt: Redundanz senkt den Bedarf des einzelnen Systems.',
     punkte: 4,
   ),
   freitext(
@@ -553,7 +553,7 @@ final List<Question> ihkA06 = [
       ],
     ],
     explanation:
-        'HTTPS nutzt TCP 443, SSH nutzt TCP 22. Verbindungen aus dem Internet ins LAN werden verworfen. Als letzte Regel steht immer „alles verwerfen“ (Default Deny) - erlaubt ist nur, was ausdrücklich freigegeben wurde.',
+        'HTTPS nutzt TCP 443, SSH nutzt TCP 22. Verbindungen aus dem Internet ins LAN werden verworfen. Als letzte Regel steht immer „alles verwerfen“ (Default Deny). Erlaubt ist nur, was ausdrücklich freigegeben wurde.',
     punkte: 5,
   ),
   markieren(
@@ -570,7 +570,7 @@ final List<Question> ihkA06 = [
       ),
       ja(
         '2 ALLOW Internet -> LAN-File tcp/445',
-        'Dateifreigaben aus dem Internet ins LAN - klarer Verstoß.',
+        'Dateifreigaben aus dem Internet ins LAN: ein klarer Verstoß.',
       ),
       nein(
         '3 ALLOW LAN      -> Internet tcp/80,443',
@@ -578,7 +578,7 @@ final List<Question> ihkA06 = [
       ),
       ja(
         '4 ALLOW Internet -> DMZ-Web  tcp/3389',
-        'Fernwartung (RDP) aus dem Internet ist nicht vorgesehen - nur HTTPS.',
+        'Fernwartung (RDP) aus dem Internet ist nicht vorgesehen, sondern nur HTTPS.',
       ),
       ja(
         '5 ALLOW DMZ-Web  -> LAN      any',
@@ -649,7 +649,7 @@ final List<Question> ihkA06 = [
     ],
     punkte: 4,
     loesung:
-        'Eine DMZ ist eine eigene Netzzone für Server, die aus dem Internet erreichbar sein müssen. Sie ist durch die Firewall sowohl vom Internet als auch vom internen Netz getrennt. Wird der Webshop angegriffen und übernommen, steht der Angreifer nur in der DMZ - der Weg ins LAN mit den internen Daten bleibt durch die Firewall versperrt.',
+        'Eine DMZ ist eine eigene Netzzone für Server, die aus dem Internet erreichbar sein müssen. Sie ist durch die Firewall sowohl vom Internet als auch vom internen Netz getrennt. Wird der Webshop angegriffen und übernommen, steht der Angreifer nur in der DMZ. Der Weg ins LAN mit den internen Daten bleibt durch die Firewall versperrt.',
     explanation:
         'Je Aspekt 2 Punkte, höchstens 4 Punkte: Trennung öffentlicher Server vom internen Netz und der Schutz des LAN, falls ein Server übernommen wird.$_andere',
   ),
@@ -683,7 +683,7 @@ final List<Question> ihkA06 = [
       ],
     ],
     explanation:
-        'Differenziell: immer alle Änderungen seit der letzten Vollsicherung - 10, 20, 30, 40 GB. Zurückgespielt werden nur die Vollsicherung und die letzte differenzielle (2). Inkrementell: nur die Änderungen seit der letzten Sicherung - jeweils 10 GB. Zurückgespielt werden die Vollsicherung und alle vier Inkremente (5).',
+        'Differenziell: immer alle Änderungen seit der letzten Vollsicherung: 10, 20, 30, 40 GB. Zurückgespielt werden nur die Vollsicherung und die letzte differenzielle (2). Inkrementell: nur die Änderungen seit der letzten Sicherung, jeweils 10 GB. Zurückgespielt werden die Vollsicherung und alle vier Inkremente (5).',
     punkte: 7,
   ),
   freitext(
@@ -716,7 +716,7 @@ final List<Question> ihkA06 = [
         ],
       ),
       krit(
-        'Wiederherstellung: differenziell braucht Vollsicherung und letzte differenzielle, inkrementell die Vollsicherung und alle Inkremente - dauert länger, eine defekte Sicherung unterbricht die Kette',
+        'Wiederherstellung: differenziell braucht Vollsicherung und letzte differenzielle, inkrementell die Vollsicherung und alle Inkremente. Das dauert länger, und eine defekte Sicherung unterbricht die Kette',
         punkte: 2,
         stichwoerter: [
           'Wiederherstellung',
@@ -783,11 +783,11 @@ final List<Question> ihkA06 = [
       ),
       ja(
         'Verschlüsselung:  WPA (TKIP)',
-        'WPA mit TKIP ist veraltet - Stand der Technik ist WPA3, mindestens WPA2 mit AES.',
+        'WPA mit TKIP ist veraltet: Stand der Technik ist WPA3, mindestens WPA2 mit AES.',
       ),
       ja(
         'WLAN-Schlüssel:  12345678',
-        'Kurz und in jeder Passwortliste enthalten - per Wörterbuchangriff sofort gefunden.',
+        'Kurz und in jeder Passwortliste enthalten, also per Wörterbuchangriff sofort gefunden.',
       ),
       ja(
         'WPS (PIN):      aktiviert',
@@ -854,7 +854,7 @@ final List<Question> ihkA06 = [
     loesung:
         'Die Richtlinie verlangt: WPA3 (bei alten Geräten WPA2 mit AES), Gäste nur im getrennten Gastnetz ohne Zugriff auf interne Server, das Standardpasswort des Administrators vor der Inbetriebnahme ändern, WPS abschalten und Firmware-Updates innerhalb von 14 Tagen nach Erscheinen einspielen.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 4 Punkte. Der Text enthält fünf Vorgaben - gewertet wird nur, was im Text steht. Stichworte auf Deutsch genügen.',
+        'Je Nennung 1 Punkt, höchstens 4 Punkte. Der Text enthält fünf Vorgaben. Gewertet wird nur, was im Text steht. Stichworte auf Deutsch genügen.',
     tags: ['englisch'],
   ),
   lueckentext(
@@ -873,7 +873,7 @@ final List<Question> ihkA06 = [
       wahl('RADIUS', ['DHCP', 'DNS', 'NTP']),
     ],
     explanation:
-        'WPA2/WPA3-Personal: ein gemeinsamer Schlüssel (PSK) für alle. WPA3 handelt ihn per SAE aus. Im Enterprise-Modus meldet sich jede Person einzeln nach 802.1X an, ein RADIUS-Server prüft die Zugangsdaten - beim Ausscheiden muss kein gemeinsamer Schlüssel getauscht werden.',
+        'WPA2/WPA3-Personal: ein gemeinsamer Schlüssel (PSK) für alle. WPA3 handelt ihn per SAE aus. Im Enterprise-Modus meldet sich jede Person einzeln nach 802.1X an, und ein RADIUS-Server prüft die Zugangsdaten. Beim Ausscheiden muss kein gemeinsamer Schlüssel getauscht werden.',
     punkte: 5,
   ),
 
@@ -916,7 +916,7 @@ final List<Question> ihkA06 = [
     ],
     punkte: 4,
     loesung:
-        'Standardpasswörter stehen im Handbuch und in Listen im Internet und sind bei allen Geräten der Baureihe gleich. Jeder im Netz - auch Schadsoftware auf einem befallenen PC - kann sich damit anmelden, Kamerabilder mitsehen, Einstellungen ändern oder die Aufzeichnung abschalten. Ein übernommenes Gerät kann außerdem als Sprungbrett für Angriffe auf weitere Systeme oder als Teil eines Botnetzes dienen.',
+        'Standardpasswörter stehen im Handbuch und in Listen im Internet und sind bei allen Geräten der Baureihe gleich. Jeder im Netz, auch Schadsoftware auf einem befallenen PC, kann sich damit anmelden, Kamerabilder mitsehen, Einstellungen ändern oder die Aufzeichnung abschalten. Ein übernommenes Gerät kann außerdem als Sprungbrett für Angriffe auf weitere Systeme oder als Teil eines Botnetzes dienen.',
     explanation:
         'Je Risiko 2 Punkte, höchstens 4 Punkte. Auch im internen Netz gilt: Standardpasswörter werden vor der Inbetriebnahme geändert.$_andere',
   ),
@@ -931,7 +931,7 @@ final List<Question> ihkA06 = [
     zeilen: [
       ja(
         'telnet:  aktiv (Port 23)',
-        'Telnet überträgt alles im Klartext - abschalten, SSH nutzen.',
+        'Telnet überträgt alles im Klartext: abschalten und SSH nutzen.',
       ),
       ja(
         'ssh:     PermitRootLogin yes',
@@ -951,7 +951,7 @@ final List<Question> ihkA06 = [
       ),
       ja(
         'ftp:     aktiv, wird nicht genutzt',
-        'Nicht benötigte Dienste abschalten - zudem ist FTP unverschlüsselt.',
+        'Nicht benötigte Dienste abschalten, zudem ist FTP unverschlüsselt.',
       ),
       nein(
         'firewall: nur 22 und 443 offen',
@@ -1061,7 +1061,7 @@ final List<Question> ihkA06 = [
       ],
     ],
     explanation:
-        'Symmetrisch: n × (n - 1) / 2, also 10 × 9 / 2 = 45 und 20 × 19 / 2 = 190. Asymmetrisch: 2 × n, also 20 und 40. Die Zahl der symmetrischen Schlüssel wächst quadratisch - ein Grund für asymmetrische und hybride Verfahren.',
+        'Symmetrisch: n × (n - 1) / 2, also 10 × 9 / 2 = 45 und 20 × 19 / 2 = 190. Asymmetrisch: 2 × n, also 20 und 40. Die Zahl der symmetrischen Schlüssel wächst quadratisch. Ein Grund für asymmetrische und hybride Verfahren.',
     punkte: 4,
   ),
   lueckentext(
@@ -1116,7 +1116,7 @@ final List<Question> ihkA06 = [
       ),
     ],
     loesung:
-        'Bei symmetrischer Verschlüsselung brauchen Absender und Empfänger denselben geheimen Schlüssel. Steht das Passwort in derselben E-Mail wie das Archiv, bekommt ein Angreifer, der die E-Mail mitliest, beides - die Verschlüsselung ist wirkungslos. Lösung: das Passwort über einen anderen Kanal mitteilen (z. B. telefonisch) oder ein asymmetrisches bzw. hybrides Verfahren nutzen, bei dem kein geheimer Schlüssel übertragen werden muss.',
+        'Bei symmetrischer Verschlüsselung brauchen Absender und Empfänger denselben geheimen Schlüssel. Steht das Passwort in derselben E-Mail wie das Archiv, bekommt ein Angreifer, der die E-Mail mitliest, beides. Die Verschlüsselung ist wirkungslos. Lösung: das Passwort über einen anderen Kanal mitteilen (z. B. telefonisch) oder ein asymmetrisches bzw. hybrides Verfahren nutzen, bei dem kein geheimer Schlüssel übertragen werden muss.',
     explanation:
         '2 Punkte für das beschriebene Schlüsselaustauschproblem, 1 Punkt für eine geeignete Lösung.$_andere',
   ),
@@ -1130,7 +1130,7 @@ final List<Question> ihkA06 = [
     answer: 1024,
     unit: 's',
     explanation:
-        'Anzahl der Schlüssel: 2^40. Dauer: 2^40 / 2^30 = 2^10 = 1.024 Sekunden, also rund 17 Minuten. Jedes zusätzliche Bit verdoppelt den Aufwand - deshalb gelten heute 128 Bit und mehr als sicher.',
+        'Anzahl der Schlüssel: 2^40. Dauer: 2^40 / 2^30 = 2^10 = 1.024 Sekunden, also rund 17 Minuten. Jedes zusätzliche Bit verdoppelt den Aufwand. Deshalb gelten heute 128 Bit und mehr als sicher.',
     punkte: 3,
   ),
 
@@ -1157,7 +1157,7 @@ final List<Question> ihkA06 = [
       'Der Mandant entschlüsselt mit seinem privaten Schlüssel',
     ],
     explanation:
-        'Verschlüsselt wird immer mit dem öffentlichen Schlüssel des Empfängers. Nur der Empfänger besitzt den passenden privaten Schlüssel und kann den Geheimtext lesen - nicht einmal die Kanzlei selbst kann ihn wieder entschlüsseln.',
+        'Verschlüsselt wird immer mit dem öffentlichen Schlüssel des Empfängers. Nur der Empfänger besitzt den passenden privaten Schlüssel und kann den Geheimtext lesen. Nicht einmal die Kanzlei selbst kann ihn wieder entschlüsseln.',
     punkte: 4,
   ),
   lueckentext(
@@ -1190,7 +1190,7 @@ final List<Question> ihkA06 = [
       ]),
     ],
     explanation:
-        'Verschlüsseln: öffentlicher Schlüssel des Empfängers. Entschlüsseln: privater Schlüssel des Empfängers. Die Schlüssel der Senderin spielen hier keine Rolle - sie kämen erst bei einer Signatur ins Spiel. Schutzziel ist die Vertraulichkeit.',
+        'Verschlüsseln: öffentlicher Schlüssel des Empfängers. Entschlüsseln: privater Schlüssel des Empfängers. Die Schlüssel der Senderin spielen hier keine Rolle. Sie kämen erst bei einer Signatur ins Spiel. Schutzziel ist die Vertraulichkeit.',
     punkte: 4,
   ),
   reihenfolge(
@@ -1209,7 +1209,7 @@ final List<Question> ihkA06 = [
         'Bringe die Schritte beim Erstellen und Prüfen der digitalen Signatur in die richtige Reihenfolge.',
     items: [
       'Der Einkauf bildet den Hashwert der Bestellung',
-      'Der Einkauf verschlüsselt den Hashwert mit seinem privaten Schlüssel - das ist die Signatur',
+      'Der Einkauf verschlüsselt den Hashwert mit seinem privaten Schlüssel. Das ist die Signatur',
       'Der Einkauf sendet Bestellung und Signatur',
       'Der Lieferant entschlüsselt die Signatur mit dem öffentlichen Schlüssel des Einkaufs',
       'Der Lieferant vergleicht das Ergebnis mit dem Hashwert, den er selbst aus der Bestellung berechnet',
@@ -1279,9 +1279,9 @@ final List<Question> ihkA06 = [
       ),
     ],
     loesung:
-        'Elbtal bildet den Hashwert des Auftrags und verschlüsselt ihn mit dem eigenen privaten Schlüssel - das Ergebnis ist die Signatur. Auftrag und Signatur gehen an den Lieferanten. Dieser entschlüsselt die Signatur mit dem öffentlichen Schlüssel von Elbtal und erhält den ursprünglichen Hashwert. Er berechnet den Hashwert des erhaltenen Auftrags selbst und vergleicht: Stimmen beide überein, ist der Auftrag unverändert und stammt von Elbtal.',
+        'Elbtal bildet den Hashwert des Auftrags und verschlüsselt ihn mit dem eigenen privaten Schlüssel. Das Ergebnis ist die Signatur. Auftrag und Signatur gehen an den Lieferanten. Dieser entschlüsselt die Signatur mit dem öffentlichen Schlüssel von Elbtal und erhält den ursprünglichen Hashwert. Er berechnet den Hashwert des erhaltenen Auftrags selbst und vergleicht: Stimmen beide überein, ist der Auftrag unverändert und stammt von Elbtal.',
     explanation:
-        '2 Punkte für das Erstellen (privater Schlüssel des Absenders), 2 Punkte für das Prüfen (öffentlicher Schlüssel des Absenders). Auch die Kurzfassung „mit dem privaten Schlüssel signieren, mit dem öffentlichen prüfen“ reicht - entscheidend ist, wessen Schlüssel es sind.',
+        '2 Punkte für das Erstellen (privater Schlüssel des Absenders), 2 Punkte für das Prüfen (öffentlicher Schlüssel des Absenders). Auch die Kurzfassung „mit dem privaten Schlüssel signieren, mit dem öffentlichen prüfen“ reicht. Entscheidend ist, wessen Schlüssel es sind.',
   ),
   markieren(
     'i6-ca-6',
@@ -1308,7 +1308,7 @@ final List<Question> ihkA06 = [
       ),
       ja(
         'Damit jeder ihre Signatur prüfen kann, veröffentlicht Anna ihren privaten Schlüssel.',
-        'Falsch: Der private Schlüssel bleibt immer geheim - veröffentlicht wird der öffentliche.',
+        'Falsch: Der private Schlüssel bleibt immer geheim. Veröffentlicht wird der öffentliche.',
       ),
       nein(
         'Ben entnimmt Annas öffentlichen Schlüssel ihrem Zertifikat.',
@@ -1368,7 +1368,7 @@ final List<Question> ihkA06 = [
         ],
       ),
       krit(
-        'Asymmetrische Verfahren lösen den Schlüsselaustausch, sind aber langsam - sie schützen deshalb nur den kurzen Sitzungsschlüssel',
+        'Asymmetrische Verfahren lösen den Schlüsselaustausch, sind aber langsam. Sie schützen deshalb nur den kurzen Sitzungsschlüssel',
         punkte: 2,
         stichwoerter: [
           'langsam',
@@ -1462,7 +1462,7 @@ final List<Question> ihkA06 = [
         'Erläutere den Zweck des angegebenen Hashwerts und wie du ihn verwendest. (4 P.)',
     kriterien: [
       krit(
-        'Zweck: Integrität prüfen - die Datei ist vollständig und wurde weder beim Übertragen beschädigt noch manipuliert',
+        'Zweck: Integrität prüfen. Die Datei ist vollständig und wurde weder beim Übertragen beschädigt noch manipuliert',
         punkte: 2,
         stichwoerter: [
           'Integrität',
@@ -1521,7 +1521,7 @@ final List<Question> ihkA06 = [
       ),
       ja(
         'firmware.bin  soll b71d02aa  ist b71d02ab',
-        'Die letzte Stelle weicht ab - die Datei ist verändert oder beschädigt.',
+        'Die letzte Stelle weicht ab. Die Datei ist verändert oder beschädigt.',
       ),
       nein(
         'setup.exe     soll 09c5e7d3  ist 09c5e7d3',
@@ -1529,7 +1529,7 @@ final List<Question> ihkA06 = [
       ),
       ja(
         'update.msi    soll e4a81f60  ist e4a18f60',
-        'Zwei Stellen sind vertauscht - die Werte stimmen nicht überein.',
+        'Zwei Stellen sind vertauscht. Die Werte stimmen nicht überein.',
       ),
       nein(
         'tools.tar     soll 5d20bb97  ist 5d20bb97',
@@ -1537,7 +1537,7 @@ final List<Question> ihkA06 = [
       ),
     ],
     explanation:
-        'Schon eine einzige abweichende Stelle bedeutet: Die Datei ist nicht die veröffentlichte. Sie kann beim Download beschädigt oder absichtlich manipuliert worden sein - in beiden Fällen wird sie nicht installiert, sondern neu aus der Originalquelle geladen.',
+        'Schon eine einzige abweichende Stelle bedeutet: Die Datei ist nicht die veröffentlichte. Sie kann beim Download beschädigt oder absichtlich manipuliert worden sein. In beiden Fällen wird sie nicht installiert, sondern neu aus der Originalquelle geladen.',
     punkte: 2,
   ),
   zuordnen(
@@ -1556,11 +1556,11 @@ final List<Question> ihkA06 = [
       zu('MD5', 0, 'Kollisionen lassen sich in Sekunden erzeugen.'),
       zu('bcrypt', 2, 'Absichtlich langsam, mit eingebautem Salt.'),
       zu('SHA-1', 0, 'Praktische Kollisionen sind nachgewiesen.'),
-      zu('Argon2', 2, 'Speicher- und rechenintensiv - bremst Brute Force.'),
+      zu('Argon2', 2, 'Speicher- und rechenintensiv, das bremst Brute Force.'),
       zu('SHA-3', 1, 'Aktueller Standard neben SHA-2.'),
     ],
     explanation:
-        'MD5 und SHA-1 gelten als gebrochen. SHA-256 und SHA-3 sind aktuell und schnell - gut für die Integritätsprüfung, aber zu schnell für Passwörter. Für Passwörter nimmt man absichtlich langsame Verfahren mit Salt wie bcrypt oder Argon2.',
+        'MD5 und SHA-1 gelten als gebrochen. SHA-256 und SHA-3 sind aktuell und schnell, gut für die Integritätsprüfung, aber zu schnell für Passwörter. Für Passwörter nimmt man absichtlich langsame Verfahren mit Salt wie bcrypt oder Argon2.',
     punkte: 3,
   ),
   freitext(
@@ -1653,7 +1653,7 @@ final List<Question> ihkA06 = [
       ['5 Kleinbuchstaben (a-z)', '26^5', zahl(11881376)],
     ],
     explanation:
-        'Anzahl = Zeichenvorrat hoch Länge. 10^6 = 1.000.000. 26^4 = 26 × 26 × 26 × 26 = 456.976. 26^5 = 456.976 × 26 = 11.881.376. Ein Zeichen mehr vervielfacht die Zahl um den ganzen Zeichenvorrat - Länge wirkt stärker als ein etwas größerer Zeichensatz.',
+        'Anzahl = Zeichenvorrat hoch Länge. 10^6 = 1.000.000. 26^4 = 26 × 26 × 26 × 26 = 456.976. 26^5 = 456.976 × 26 = 11.881.376. Ein Zeichen mehr vervielfacht die Zahl um den ganzen Zeichenvorrat: Länge wirkt stärker als ein etwas größerer Zeichensatz.',
     punkte: 3,
   ),
   freitext(
@@ -1675,7 +1675,7 @@ final List<Question> ihkA06 = [
         ],
       ),
       krit(
-        'Ein ausgespähtes oder erratenes Passwort reicht allein nicht - der Angreifer bräuchte zusätzlich den zweiten Faktor, z. B. das Smartphone',
+        'Ein ausgespähtes oder erratenes Passwort reicht allein nicht. Der Angreifer bräuchte zusätzlich den zweiten Faktor, z. B. das Smartphone',
         punkte: 2,
         stichwoerter: [
           'reicht nicht',
@@ -1759,7 +1759,7 @@ final List<Question> ihkA06 = [
       wahl('Besitz', ['Wissen', 'Biometrie']),
     ],
     explanation:
-        'TOTP = Time-based One-Time Password: App und Server berechnen aus dem gemeinsamen Geheimnis und der Uhrzeit denselben Code, der meist 30 Sekunden gilt. Passwort = Wissen, Smartphone mit App = Besitz - zusammen eine echte Zwei-Faktor-Authentifizierung.',
+        'TOTP = Time-based One-Time Password: App und Server berechnen aus dem gemeinsamen Geheimnis und der Uhrzeit denselben Code, der meist 30 Sekunden gilt. Passwort = Wissen, Smartphone mit App = Besitz, zusammen also eine echte Zwei-Faktor-Authentifizierung.',
     punkte: 5,
   ),
   markieren(
@@ -1770,14 +1770,14 @@ final List<Question> ihkA06 = [
         'Passwortrichtlinie der Kanzlei Albers & Partner: mindestens 12 Zeichen; der Name der Kanzlei oder der eigene Benutzername darf nicht vorkommen; keine reinen Zahlen- oder Tastaturfolgen. Frau Albers (Benutzername m.albers) schlägt fünf Passwörter vor.',
     prompt: 'Markiere alle Vorschläge, die gegen die Richtlinie verstoßen.',
     zeilen: [
-      ja('Sommer2026!', 'Nur 11 Zeichen - zu kurz.'),
+      ja('Sommer2026!', 'Nur 11 Zeichen, zu kurz.'),
       ja('Albers&Partner2026', 'Enthält den Namen der Kanzlei.'),
       nein(
         'Kaffee-Regal-Wolke-Fahrrad',
         '26 Zeichen, vier zufällige Wörter, kein Bezug zu Kanzlei oder Konto.',
       ),
       ja('123456789012', 'Reine Zahlenfolge.'),
-      nein('Vq7#mLp2xRt9wZ', '14 zufällige Zeichen - erfüllt alle Regeln.'),
+      nein('Vq7#mLp2xRt9wZ', '14 zufällige Zeichen, damit sind alle Regeln erfüllt.'),
     ],
     explanation:
         'Geprüft wird jede Regel einzeln: Länge (mindestens 12), kein Kanzlei- oder Benutzername, keine reine Zahlen- oder Tastaturfolge. Eine lange Passphrase aus zufälligen Wörtern ist ebenso zulässig wie eine zufällige Zeichenfolge.',
@@ -1898,7 +1898,7 @@ final List<Question> ihkA06 = [
       ),
     ],
     explanation:
-        'Verantwortlicher ist, wer über Zwecke und Mittel der Verarbeitung entscheidet - hier die Kanzlei. Auftragsverarbeiter verarbeiten Daten nach Weisung des Verantwortlichen (Rechenzentrum, Systemhaus) und brauchen einen Vertrag nach Art. 28 DSGVO. Betroffene Personen sind die Menschen, deren Daten verarbeitet werden.',
+        'Verantwortlicher ist, wer über Zwecke und Mittel der Verarbeitung entscheidet, hier die Kanzlei. Auftragsverarbeiter verarbeiten Daten nach Weisung des Verantwortlichen (Rechenzentrum, Systemhaus) und brauchen einen Vertrag nach Art. 28 DSGVO. Betroffene Personen sind die Menschen, deren Daten verarbeitet werden.',
     punkte: 5,
   ),
   lueckentext(
@@ -1968,7 +1968,7 @@ final List<Question> ihkA06 = [
     loesung:
         'Nötig ist ein Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO. Er regelt unter anderem Gegenstand, Dauer und Zweck der Verarbeitung, die Bindung an die Weisungen des Verantwortlichen, die technischen und organisatorischen Maßnahmen, die Vertraulichkeitsverpflichtung des Personals, den Einsatz von Unterauftragnehmern sowie Löschung oder Rückgabe der Daten am Ende.',
     explanation:
-        '1 Punkt für den Vertrag, je 1 Punkt für zwei Regelungspunkte - höchstens 3 Punkte. Grünwerk bleibt trotz Auslagerung Verantwortlicher.',
+        '1 Punkt für den Vertrag, je 1 Punkt für zwei Regelungspunkte, höchstens 3 Punkte. Grünwerk bleibt trotz Auslagerung Verantwortlicher.',
   ),
 
   // ================================================== Grundsätze der Verarbeitung
@@ -1998,7 +1998,7 @@ final List<Question> ihkA06 = [
       ),
     ],
     loesung:
-        'Rechtsgrundlage ist die Erfüllung eines Vertrags (Art. 6 Abs. 1 lit. b DSGVO). Die Daten sind erforderlich, um den Kaufvertrag abzuwickeln: Ohne Name und Anschrift kann die Ware nicht geliefert, ohne E-Mail-Adresse die Bestellung nicht bestätigt werden. Eine Einwilligung ist dafür nicht nötig - sie wäre erst gefragt, wenn die Daten zusätzlich für einen Newsletter genutzt werden sollen.',
+        'Rechtsgrundlage ist die Erfüllung eines Vertrags (Art. 6 Abs. 1 lit. b DSGVO). Die Daten sind erforderlich, um den Kaufvertrag abzuwickeln: Ohne Name und Anschrift kann die Ware nicht geliefert, ohne E-Mail-Adresse die Bestellung nicht bestätigt werden. Eine Einwilligung ist dafür nicht nötig. Sie wäre erst gefragt, wenn die Daten zusätzlich für einen Newsletter genutzt werden sollen.',
     explanation:
         '1 Punkt für die Rechtsgrundlage, 2 Punkte für die Begründung (Erforderlichkeit für den Vertrag). Die Einwilligung ist nur eine von sechs Rechtsgrundlagen und hier überflüssig.',
   ),
@@ -2073,9 +2073,9 @@ final List<Question> ihkA06 = [
     ],
     punkte: 3,
     loesung:
-        'Das Unternehmen muss durch gut sichtbare Schilder auf die Überwachung hinweisen, den Zweck vorab festlegen und seine Interessen gegen die der Betroffenen abwägen. Die Kameras dürfen nur das Nötige erfassen - keinen öffentlichen Raum und keine Pausen- oder Umkleideräume. Aufnahmen werden vor unbefugtem Zugriff geschützt und nach kurzer Zeit gelöscht. Der Betriebsrat ist zu beteiligen.',
+        'Das Unternehmen muss durch gut sichtbare Schilder auf die Überwachung hinweisen, den Zweck vorab festlegen und seine Interessen gegen die der Betroffenen abwägen. Die Kameras dürfen nur das Nötige erfassen, keinen öffentlichen Raum und keine Pausen- oder Umkleideräume. Aufnahmen werden vor unbefugtem Zugriff geschützt und nach kurzer Zeit gelöscht. Der Betriebsrat ist zu beteiligen.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 3 Punkte. Rechtsgrundlage ist in der Regel das berechtigte Interesse (Art. 6 Abs. 1 lit. f DSGVO) - es muss gegen die Interessen der Gefilmten abgewogen werden.',
+        'Je Nennung 1 Punkt, höchstens 3 Punkte. Rechtsgrundlage ist in der Regel das berechtigte Interesse (Art. 6 Abs. 1 lit. f DSGVO). Es muss gegen die Interessen der Gefilmten abgewogen werden.',
   ),
   paare(
     'i6-xs-3',
@@ -2104,7 +2104,7 @@ final List<Question> ihkA06 = [
         'Erläutere, wie das Unternehmen auf das Verlangen reagieren muss. (4 P.)',
     kriterien: [
       krit(
-        'Daten ohne weiteren Zweck (Kundenkonto, Newsletter-Anmeldung) werden gelöscht - Recht auf Löschung nach Art. 17 DSGVO',
+        'Daten ohne weiteren Zweck (Kundenkonto, Newsletter-Anmeldung) werden gelöscht: Recht auf Löschung nach Art. 17 DSGVO',
         punkte: 2,
         stichwoerter: [
           'Kundenkonto',
@@ -2183,7 +2183,7 @@ final List<Question> ihkA06 = [
       'Erledigung dokumentieren',
     ],
     explanation:
-        'Mit dem Eingang beginnt die Monatsfrist. Erst nach der Identitätsprüfung werden die Daten zusammengetragen - sonst könnten Unbefugte Auskünfte erschleichen. Die Auskunft enthält neben den Daten auch Zwecke, Empfänger und Speicherdauer. Am Ende wird der Vorgang dokumentiert (Rechenschaftspflicht).',
+        'Mit dem Eingang beginnt die Monatsfrist. Erst nach der Identitätsprüfung werden die Daten zusammengetragen. Sonst könnten Unbefugte Auskünfte erschleichen. Die Auskunft enthält neben den Daten auch Zwecke, Empfänger und Speicherdauer. Am Ende wird der Vorgang dokumentiert (Rechenschaftspflicht).',
     punkte: 3,
   ),
   paare(
@@ -2214,12 +2214,12 @@ final List<Question> ihkA06 = [
       ja('Vor- und Nachname', 'Identifiziert die Person unmittelbar.'),
       nein(
         'Altersgruppe (z. B. 30-39 Jahre)',
-        'Vergröbert - trifft auf sehr viele Personen zu.',
+        'Vergröbert, die Angabe trifft auf sehr viele Personen zu.',
       ),
       ja('E-Mail-Adresse', 'Eindeutige Kennung einer Person.'),
       ja(
         'Kundennummer',
-        'Über die Kundendatei lässt sie sich wieder einer Person zuordnen - nur ein Pseudonym.',
+        'Über die Kundendatei lässt sie sich wieder einer Person zuordnen. Es ist nur ein Pseudonym.',
       ),
       nein('Bundesland', 'Grobe Region ohne Bezug zu einer einzelnen Person.'),
       nein('Bestellmonat', 'Kein Merkmal, das eine Person bestimmt.'),
@@ -2242,7 +2242,7 @@ final List<Question> ihkA06 = [
         'Erläutere den Unterschied zwischen Anonymisierung und Pseudonymisierung und die jeweilige Folge für die Anwendung der DSGVO. (4 P.)',
     kriterien: [
       krit(
-        'Anonymisierung: Der Personenbezug wird dauerhaft entfernt und lässt sich nicht wiederherstellen - die DSGVO gilt für diese Daten nicht mehr',
+        'Anonymisierung: Der Personenbezug wird dauerhaft entfernt und lässt sich nicht wiederherstellen. Die DSGVO gilt für diese Daten nicht mehr',
         punkte: 2,
         stichwoerter: [
           'dauerhaft',
@@ -2253,7 +2253,7 @@ final List<Question> ihkA06 = [
         ],
       ),
       krit(
-        'Pseudonymisierung: Merkmale werden durch ein Kennzeichen ersetzt; mit getrennt aufbewahrten Zusatzinformationen ist die Zuordnung möglich - die Daten bleiben personenbezogen, die DSGVO gilt weiter',
+        'Pseudonymisierung: Merkmale werden durch ein Kennzeichen ersetzt; mit getrennt aufbewahrten Zusatzinformationen ist die Zuordnung möglich. Die Daten bleiben personenbezogen, die DSGVO gilt weiter',
         punkte: 2,
         stichwoerter: [
           'Kennzeichen',
@@ -2266,7 +2266,7 @@ final List<Question> ihkA06 = [
       ),
     ],
     loesung:
-        'Bei der Anonymisierung wird der Personenbezug so entfernt, dass niemand die Daten mehr einer Person zuordnen kann. Anonyme Daten fallen nicht unter die DSGVO. Bei der Pseudonymisierung werden identifizierende Merkmale durch ein Kennzeichen ersetzt; die Zuordnung ist mit getrennt aufbewahrten Zusatzinformationen weiterhin möglich. Pseudonyme Daten bleiben personenbezogen, die DSGVO gilt in vollem Umfang - das Risiko ist aber geringer.',
+        'Bei der Anonymisierung wird der Personenbezug so entfernt, dass niemand die Daten mehr einer Person zuordnen kann. Anonyme Daten fallen nicht unter die DSGVO. Bei der Pseudonymisierung werden identifizierende Merkmale durch ein Kennzeichen ersetzt; die Zuordnung ist mit getrennt aufbewahrten Zusatzinformationen weiterhin möglich. Pseudonyme Daten bleiben personenbezogen, die DSGVO gilt in vollem Umfang. Das Risiko ist aber geringer.',
     explanation:
         'Je 2 Punkte für Anonymisierung und Pseudonymisierung, jeweils Erklärung und Rechtsfolge. Pseudonymisierung ist eine Schutzmaßnahme, kein Ausweg aus der DSGVO.',
   ),
@@ -2286,7 +2286,7 @@ final List<Question> ihkA06 = [
       wahl('nicht', ['weiterhin', 'verschärft']),
     ],
     explanation:
-        'Kennung plus getrennt aufbewahrte Zuordnungsliste = Pseudonymisierung, die Daten bleiben personenbezogen. Zusammengefasste Werte (Aggregation) ohne Rückschluss auf Einzelne sind anonym - für sie gilt die DSGVO nicht. Zu kleine Gruppen können allerdings wieder auf Einzelne schließen lassen.',
+        'Kennung plus getrennt aufbewahrte Zuordnungsliste = Pseudonymisierung. Die Daten bleiben personenbezogen. Zusammengefasste Werte (Aggregation) ohne Rückschluss auf Einzelne sind anonym. Für sie gilt die DSGVO nicht. Zu kleine Gruppen können allerdings wieder auf Einzelne schließen lassen.',
     punkte: 5,
   ),
 
@@ -2334,7 +2334,7 @@ final List<Question> ihkA06 = [
         'Beschreibe zwei Pflichten, die die Kanzlei nach der DSGVO nun erfüllen muss. (4 P.)',
     kriterien: [
       krit(
-        'Meldung an die zuständige Datenschutz-Aufsichtsbehörde - unverzüglich, möglichst binnen 72 Stunden (Art. 33 DSGVO)',
+        'Meldung an die zuständige Datenschutz-Aufsichtsbehörde, unverzüglich, möglichst binnen 72 Stunden (Art. 33 DSGVO)',
         punkte: 2,
         stichwoerter: [
           'Aufsichtsbehörde',
@@ -2370,7 +2370,7 @@ final List<Question> ihkA06 = [
     loesung:
         'Die Kanzlei muss die Verletzung des Schutzes personenbezogener Daten unverzüglich, möglichst binnen 72 Stunden nach Bekanntwerden, der Datenschutz-Aufsichtsbehörde melden (Art. 33 DSGVO). Weil unverschlüsselte Steuerdaten ein hohes Risiko für die Mandanten bedeuten, müssen auch diese unverzüglich benachrichtigt werden (Art. 34 DSGVO). Außerdem ist der Vorfall mit den ergriffenen Maßnahmen zu dokumentieren.',
     explanation:
-        'Je Pflicht 2 Punkte, höchstens 4 Punkte. Wäre die Festplatte verschlüsselt gewesen, bestünde voraussichtlich kein Risiko - Meldung und Benachrichtigung könnten dann entfallen.',
+        'Je Pflicht 2 Punkte, höchstens 4 Punkte. Wäre die Festplatte verschlüsselt gewesen, bestünde voraussichtlich kein Risiko: Meldung und Benachrichtigung könnten dann entfallen.',
   ),
   paare(
     'i6-xt-3',

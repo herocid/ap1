@@ -14,13 +14,13 @@ final List<Flashcard> cardsA07 = [
     'k-vz-2',
     'vt-zustandekommen',
     'Was ist eine invitatio ad offerendum?',
-    'Eine Aufforderung zur Abgabe eines Antrags, z. B. Katalog, Werbung, Webshop-Seite - noch kein Antrag.',
+    'Eine Aufforderung zur Abgabe eines Antrags, z. B. Katalog, Werbung oder Webshop-Seite. Das ist noch kein Antrag.',
   ),
   karte(
     'k-vz-3',
     'vt-zustandekommen',
     'Was bewirkt eine verspätete oder abgeänderte Annahme?',
-    'Sie gilt als Ablehnung verbunden mit einem neuen Antrag (§ 150 BGB) - die andere Seite kann annehmen oder ablehnen.',
+    'Sie gilt als Ablehnung verbunden mit einem neuen Antrag (§ 150 BGB). Die andere Seite kann annehmen oder ablehnen.',
   ),
   karte(
     'k-vz-4',
@@ -44,7 +44,7 @@ final List<Flashcard> cardsA07 = [
     'k-vz-7',
     'vt-zustandekommen',
     'Was ist der Unterschied zwischen nichtig und anfechtbar?',
-    'Nichtig: von Anfang an unwirksam. Anfechtbar: wirksam, bis die Anfechtung erklärt ist - dann rückwirkend nichtig (§ 142 BGB).',
+    'Nichtig: von Anfang an unwirksam. Anfechtbar: wirksam, bis die Anfechtung erklärt ist. Dann rückwirkend nichtig (§ 142 BGB).',
   ),
   karte(
     'k-vz-8',
@@ -74,7 +74,7 @@ final List<Flashcard> cardsA07 = [
     'k-vz-12',
     'vt-zustandekommen',
     'Wie lange kannst du ein Angebot unter Anwesenden annehmen?',
-    'Nur sofort (§ 147 Abs. 1 BGB) - das gilt auch am Telefon.',
+    'Nur sofort (§ 147 Abs. 1 BGB). Das gilt auch am Telefon.',
   ),
   karte(
     'k-vz-13',
@@ -86,7 +86,7 @@ final List<Flashcard> cardsA07 = [
     'k-vz-14',
     'vt-zustandekommen',
     'Welche Wirkung hat Schweigen auf einen Antrag?',
-    'Grundsätzlich keine - Schweigen ist keine Annahme. Ausnahme unter Kaufleuten: Schweigen auf ein kaufmännisches Bestätigungsschreiben.',
+    'Grundsätzlich keine: Schweigen ist keine Annahme. Ausnahme unter Kaufleuten: Schweigen auf ein kaufmännisches Bestätigungsschreiben.',
   ),
   karte(
     'k-vz-15',
@@ -105,7 +105,7 @@ final List<Flashcard> cardsA07 = [
     'k-vz-17',
     'vt-zustandekommen',
     'Was bewirkt der Zusatz „freibleibend“ in einem Angebot?',
-    'Der Anbietende schränkt seine Bindung an das Angebot ein - er kann es noch ändern oder zurückziehen.',
+    'Der Anbietende schränkt seine Bindung an das Angebot ein. Er kann es noch ändern oder zurückziehen.',
   ),
   karte(
     'k-vz-18',
@@ -141,7 +141,7 @@ final List<Flashcard> cardsA07 = [
     'k-vz-23',
     'vt-zustandekommen',
     'Warum fällt ein Ratenkauf eines 16-Jährigen nicht unter § 110 BGB?',
-    'Der Taschengeldparagraf verlangt vollständige Bezahlung - beim Ratenkauf erst mit der letzten Rate. Bis zur Genehmigung schwebend unwirksam.',
+    'Der Taschengeldparagraf verlangt vollständige Bezahlung, beim Ratenkauf erst mit der letzten Rate. Bis zur Genehmigung ist der Vertrag schwebend unwirksam.',
   ),
   karte(
     'k-vz-24',
@@ -169,13 +169,13 @@ final List<Flashcard> cardsA07 = [
     'k-vy-3',
     'vt-arten',
     'Was kennzeichnet einen Mietvertrag?',
-    'Gebrauchsüberlassung auf Zeit gegen Entgelt (§ 535 BGB) - typische Einordnung für SaaS, Cloud-Dienste und gemietete Server.',
+    'Gebrauchsüberlassung auf Zeit gegen Entgelt (§ 535 BGB). So werden typischerweise SaaS, Cloud-Dienste und gemietete Server eingeordnet.',
   ),
   karte(
     'k-vy-4',
     'vt-arten',
     'Was ist ein Werklieferungsvertrag?',
-    'Herstellung und Lieferung einer beweglichen Sache (§ 650 BGB) - es gilt Kaufrecht.',
+    'Herstellung und Lieferung einer beweglichen Sache (§ 650 BGB). Es gilt Kaufrecht.',
   ),
   karte(
     'k-vy-5',
@@ -193,7 +193,7 @@ final List<Flashcard> cardsA07 = [
     'k-vy-7',
     'vt-arten',
     'Was ist der Unterschied zwischen Besitz und Eigentum?',
-    'Besitz: tatsächliche Herrschaft über eine Sache. Eigentum: rechtliche Herrschaft - wem sie gehört.',
+    'Besitz: tatsächliche Herrschaft über eine Sache. Eigentum: rechtliche Herrschaft, also wem sie gehört.',
   ),
   karte(
     'k-vy-8',
@@ -224,7 +224,7 @@ final List<Flashcard> cardsA07 = [
     'k-vy-12',
     'vt-arten',
     'Ein Admin hilft für 95 € je Stunde aus: Welche Vertragsart?',
-    'Dienstvertrag (§ 611 BGB): Bezahlt wird Arbeitszeit, kein Ergebnis - es gibt keine Abnahme.',
+    'Dienstvertrag (§ 611 BGB): Bezahlt wird Arbeitszeit, kein Ergebnis. Es gibt keine Abnahme.',
   ),
   karte(
     'k-vy-13',
@@ -266,31 +266,31 @@ final List<Flashcard> cardsA07 = [
     'k-vy-19',
     'vt-arten',
     'Was unterscheidet Verpflichtungs- und Erfüllungsgeschäft beim Kauf?',
-    'Mit dem Vertrag verpflichten sich beide nur. Erfüllt wird durch Übergabe und Übereignung bzw. Zahlung - erst dann wechselt das Eigentum.',
+    'Mit dem Vertrag verpflichten sich beide nur. Erfüllt wird durch Übergabe und Übereignung bzw. Zahlung. Erst dann wechselt das Eigentum.',
   ),
   karte(
     'k-vy-20',
     'vt-arten',
     'Was ist ein Verbrauchsgüterkauf?',
-    'Ein Unternehmer verkauft eine bewegliche Sache an einen Verbraucher (§ 474 BGB) - mit besonderem Schutz, z. B. Beweislastumkehr.',
+    'Ein Unternehmer verkauft eine bewegliche Sache an einen Verbraucher (§ 474 BGB), mit besonderem Schutz, z. B. Beweislastumkehr.',
   ),
   karte(
     'k-vy-21',
     'vt-arten',
     'Was ist ein Handelskauf?',
-    'Ein Kauf zwischen Kaufleuten - mit der Pflicht, Ware unverzüglich zu prüfen und Mängel zu rügen (§ 377 HGB).',
+    'Ein Kauf zwischen Kaufleuten, mit der Pflicht, Ware unverzüglich zu prüfen und Mängel zu rügen (§ 377 HGB).',
   ),
   karte(
     'k-vy-22',
     'vt-arten',
     'Ein „Dienstleistungsvertrag“ verspricht eine fertige App: Welche Vertragsart liegt vor?',
-    'Ein Werkvertrag - maßgeblich ist der Inhalt (geschuldeter Erfolg), nicht die Überschrift.',
+    'Ein Werkvertrag. Maßgeblich ist der Inhalt (geschuldeter Erfolg), nicht die Überschrift.',
   ),
   karte(
     'k-vy-23',
     'vt-arten',
     'Nenne vier Punkte, die ein IT-Vertrag regeln sollte.',
-    'Leistungsbeschreibung, Vergütung und Termine, Mitwirkungspflichten des Kunden, Abnahme und Gewährleistung - dazu Nutzungsrechte, Laufzeit.',
+    'Leistungsbeschreibung, Vergütung und Termine, Mitwirkungspflichten des Kunden, Abnahme und Gewährleistung, dazu Nutzungsrechte, Laufzeit.',
   ),
   karte(
     'k-vy-24',
@@ -304,7 +304,7 @@ final List<Flashcard> cardsA07 = [
     'k-vu-1',
     'vt-urheber',
     'Wann entsteht Urheberrecht?',
-    'Automatisch mit der Schöpfung des Werks - ohne Anmeldung oder ©-Vermerk.',
+    'Automatisch mit der Schöpfung des Werks, ohne Anmeldung oder ©-Vermerk.',
   ),
   karte(
     'k-vu-2',
@@ -316,7 +316,7 @@ final List<Flashcard> cardsA07 = [
     'k-vu-3',
     'vt-urheber',
     'Was erlaubt ein einfaches Nutzungsrecht?',
-    'Die Nutzung neben anderen Berechtigten - der Rechteinhaber darf weitere Lizenzen vergeben.',
+    'Die Nutzung neben anderen Berechtigten. Der Rechteinhaber darf weitere Lizenzen vergeben.',
   ),
   karte(
     'k-vu-4',
@@ -334,7 +334,7 @@ final List<Flashcard> cardsA07 = [
     'k-vu-6',
     'vt-urheber',
     'Was bewirkt ein ausschließliches Nutzungsrecht?',
-    'Nur der Inhaber darf nutzen; weitere Lizenzen sind ausgeschlossen - grundsätzlich sogar für den Urheber selbst, wenn er sich die Nutzung nicht vorbehält (§ 31 Abs. 3 UrhG).',
+    'Nur der Inhaber darf nutzen; weitere Lizenzen sind ausgeschlossen, grundsätzlich sogar für den Urheber selbst, wenn er sich die Nutzung nicht vorbehält (§ 31 Abs. 3 UrhG).',
   ),
   karte(
     'k-vu-7',
@@ -346,7 +346,7 @@ final List<Flashcard> cardsA07 = [
     'k-vu-8',
     'vt-urheber',
     'Was besagt der Erschöpfungsgrundsatz?',
-    'Eine mit Zustimmung in der EU verkaufte Programmkopie darf weiterverkauft werden (§ 69c Nr. 3 UrhG) - nicht bei Miete oder Abo.',
+    'Eine mit Zustimmung in der EU verkaufte Programmkopie darf weiterverkauft werden (§ 69c Nr. 3 UrhG), nicht bei Miete oder Abo.',
   ),
   karte(
     'k-vu-9',
@@ -364,7 +364,7 @@ final List<Flashcard> cardsA07 = [
     'k-vu-11',
     'vt-urheber',
     'Wer kann Urheber einer Software sein?',
-    'Nur ein Mensch, der sie geschaffen hat (§ 7 UrhG) - nie eine Firma. Mehrere ohne trennbare Anteile sind Miturheber.',
+    'Nur ein Mensch, der sie geschaffen hat (§ 7 UrhG), nie eine Firma. Mehrere ohne trennbare Anteile sind Miturheber.',
   ),
   karte(
     'k-vu-12',
@@ -376,43 +376,43 @@ final List<Flashcard> cardsA07 = [
     'k-vu-13',
     'vt-urheber',
     'Welche Rechte gehören zum Urheberpersönlichkeitsrecht?',
-    'Veröffentlichung, Namensnennung, Schutz vor Entstellung - sie bleiben immer beim Urheber.',
+    'Veröffentlichung, Namensnennung, Schutz vor Entstellung. Sie bleiben immer beim Urheber.',
   ),
   karte(
     'k-vu-14',
     'vt-urheber',
     'Warum braucht schon das Installieren einer Software eine Lizenz?',
-    'Jede Installation ist eine Vervielfältigung - ein Verwertungsrecht des Rechteinhabers (§ 69c UrhG).',
+    'Jede Installation ist eine Vervielfältigung und damit ein Verwertungsrecht des Rechteinhabers (§ 69c UrhG).',
   ),
   karte(
     'k-vu-15',
     'vt-urheber',
     'Wie lassen sich Nutzungsrechte beschränken?',
-    'Räumlich (nur Deutschland), zeitlich (3 Jahre) und inhaltlich (nur intern, max. 25 Nutzer) - § 31 Abs. 1 UrhG.',
+    'Räumlich (nur Deutschland), zeitlich (3 Jahre) und inhaltlich (nur intern, max. 25 Nutzer), siehe § 31 Abs. 1 UrhG.',
   ),
   karte(
     'k-vu-16',
     'vt-urheber',
     'Ein Freiberufler liefert Code, Nutzungsrechte sind nicht geregelt: Was darf der Kunde?',
-    'Nur, was der Vertragszweck erfordert (§ 31 Abs. 5 UrhG) - § 69b gilt nicht für Freiberufler. Rechte ausdrücklich vereinbaren!',
+    'Nur, was der Vertragszweck erfordert (§ 31 Abs. 5 UrhG); § 69b gilt nicht für Freiberufler. Rechte ausdrücklich vereinbaren!',
   ),
   karte(
     'k-vu-17',
     'vt-urheber',
     'Was ist Software-Escrow?',
-    'Hinterlegung des Quellcodes bei einem Treuhänder - der Kunde erhält ihn, falls der Hersteller ausfällt.',
+    'Hinterlegung des Quellcodes bei einem Treuhänder. Der Kunde erhält ihn, falls der Hersteller ausfällt.',
   ),
   karte(
     'k-vu-18',
     'vt-urheber',
     'Was ist der Unterschied zwischen Named-User- und Concurrent-User-Lizenz?',
-    'Named User: je benannter Person. Concurrent User: je gleichzeitig angemeldeter Person - die Anzahl richtet sich nach der Spitzenlast.',
+    'Named User: je benannter Person. Concurrent User: je gleichzeitig angemeldeter Person. Die Anzahl richtet sich nach der Spitzenlast.',
   ),
   karte(
     'k-vu-19',
     'vt-urheber',
     '30 Mitarbeitende, höchstens 12 gleichzeitig, Concurrent-Lizenz 210 €/Jahr: Kosten?',
-    '12 × 210 € = 2.520 € pro Jahr - es zählt die höchste gleichzeitige Nutzung.',
+    '12 × 210 € = 2.520 € pro Jahr. Es zählt die höchste gleichzeitige Nutzung.',
   ),
   karte(
     'k-vu-20',
@@ -449,7 +449,7 @@ final List<Flashcard> cardsA07 = [
     'k-vu-25',
     'vt-urheber',
     'Unter welcher Bedingung kann Software patentiert werden?',
-    'Nicht „als solche“ (§ 1 Abs. 3 PatG) - nur als Teil einer technischen Erfindung, in der Software steckt.',
+    'Nicht „als solche“ (§ 1 Abs. 3 PatG). Nur als Teil einer technischen Erfindung, in der Software steckt.',
   ),
 
   // SLA
@@ -457,13 +457,13 @@ final List<Flashcard> cardsA07 = [
     'k-li-1',
     'sla-inhalte',
     'Was ist ein SLA?',
-    'Service Level Agreement - vereinbart messbare Servicequalität zwischen Dienstleister und Kunde.',
+    'Service Level Agreement. Es vereinbart messbare Servicequalität zwischen Dienstleister und Kunde.',
   ),
   karte(
     'k-li-2',
     'sla-inhalte',
     'Was misst die Reaktionszeit?',
-    'Die Zeit von der Meldung bis zur ersten qualifizierten Rückmeldung - nicht bis zur Lösung.',
+    'Die Zeit von der Meldung bis zur ersten qualifizierten Rückmeldung, nicht bis zur Lösung.',
   ),
   karte(
     'k-li-3',
@@ -547,13 +547,13 @@ final List<Flashcard> cardsA07 = [
     'k-li-16',
     'sla-inhalte',
     'Warum müssen die Zeiten in OLA und UC kürzer sein als im SLA?',
-    'Sonst kann der Dienstleister das SLA nicht halten - interne Übergaben und Lieferanten brauchen Puffer innerhalb der SLA-Zeit.',
+    'Sonst kann der Dienstleister das SLA nicht halten. Interne Übergaben und Lieferanten brauchen Puffer innerhalb der SLA-Zeit.',
   ),
   karte(
     'k-li-17',
     'sla-inhalte',
     'Nenne vier Inhalte eines SLA.',
-    'Leistungsbeschreibung, Servicezeit, Verfügbarkeit mit Bezugszeitraum, Reaktions- und Lösungszeiten je Priorität - dazu Pönale, Reporting.',
+    'Leistungsbeschreibung, Servicezeit, Verfügbarkeit mit Bezugszeitraum, Reaktions- und Lösungszeiten je Priorität, dazu Pönale, Reporting.',
   ),
   karte(
     'k-li-18',
@@ -565,7 +565,7 @@ final List<Flashcard> cardsA07 = [
     'k-li-19',
     'sla-inhalte',
     'Was regelt ein Wartungsfenster im SLA?',
-    'Einen Zeitraum für geplante Arbeiten, der meist nicht als Ausfall zählt - aber nur, wenn er ausdrücklich vereinbart ist.',
+    'Einen Zeitraum für geplante Arbeiten, der meist nicht als Ausfall zählt, aber nur, wenn er ausdrücklich vereinbart ist.',
   ),
   karte(
     'k-li-20',
@@ -596,7 +596,7 @@ final List<Flashcard> cardsA07 = [
     'k-li-24',
     'sla-inhalte',
     'Um wie viel steigt die Verfügbarkeit von 99,5 % auf 99,9 %?',
-    'Um 0,4 Prozentpunkte - nicht um 0,4 Prozent.',
+    'Um 0,4 Prozentpunkte, nicht um 0,4 Prozent.',
   ),
 
   // Support
@@ -640,13 +640,13 @@ final List<Flashcard> cardsA07 = [
     'k-ls-7',
     'sla-support',
     'Was besagt das Ownership-Prinzip?',
-    'Der Service Desk bleibt Ansprechpartner des Anwenders, bis das Ticket geschlossen ist - auch nach einer Eskalation.',
+    'Der Service Desk bleibt Ansprechpartner des Anwenders, bis das Ticket geschlossen ist, auch nach einer Eskalation.',
   ),
   karte(
     'k-ls-8',
     'sla-support',
     'Was bedeutet „Follow the Sun“?',
-    'Service Desks in mehreren Zeitzonen übergeben offene Tickets - so entsteht 24/7-Support ohne Nachtschicht.',
+    'Service Desks in mehreren Zeitzonen übergeben offene Tickets. So entsteht 24/7-Support ohne Nachtschicht.',
   ),
   karte(
     'k-ls-9',
@@ -676,7 +676,7 @@ final List<Flashcard> cardsA07 = [
     'k-ls-13',
     'sla-support',
     'Ein Programmfehler lässt sich nur per Codeänderung beheben: Welcher Level?',
-    '3rd Level - Hersteller oder Entwicklung.',
+    '3rd Level: Hersteller oder Entwicklung.',
   ),
   karte(
     'k-ls-14',
@@ -694,13 +694,13 @@ final List<Flashcard> cardsA07 = [
     'k-ls-16',
     'sla-support',
     'Webshop für alle Kunden ausgefallen: Welche Priorität?',
-    'P1 - Auswirkung hoch und Dringlichkeit hoch.',
+    'P1: Auswirkung hoch und Dringlichkeit hoch.',
   ),
   karte(
     'k-ls-17',
     'sla-support',
     'Abteilungsdrucker defekt, Ausweichdrucker im Flur: Welche Priorität (3×3-Matrix)?',
-    'P4 - Auswirkung mittel, Dringlichkeit niedrig.',
+    'P4: Auswirkung mittel, Dringlichkeit niedrig.',
   ),
   karte(
     'k-ls-18',
@@ -730,7 +730,7 @@ final List<Flashcard> cardsA07 = [
     'k-ls-22',
     'sla-support',
     'Wozu dient eine Wissensdatenbank im Support?',
-    'Sie hält Lösungen bekannter Fälle fest, damit 1st Level und Self-Service sie schneller lösen - das hebt die FLRR.',
+    'Sie hält Lösungen bekannter Fälle fest, damit 1st Level und Self-Service sie schneller lösen. Das hebt die FLRR.',
   ),
 
   // ITIL
@@ -750,7 +750,7 @@ final List<Flashcard> cardsA07 = [
     'k-lt-3',
     'sla-itil',
     'Was ist ein Known Error?',
-    'Ein analysiertes, aber noch nicht gelöstes Problem, dessen Ursache dokumentiert ist - meist mit Workaround.',
+    'Ein analysiertes, aber noch nicht gelöstes Problem, dessen Ursache dokumentiert ist, meist mit Workaround.',
   ),
   karte(
     'k-lt-4',
@@ -780,7 +780,7 @@ final List<Flashcard> cardsA07 = [
     'k-lt-8',
     'sla-itil',
     'Was ist ein Emergency Change?',
-    'Eine dringende Änderung, z. B. Sicherheitspatch bei aktivem Angriff - beschleunigt genehmigt und trotzdem dokumentiert.',
+    'Eine dringende Änderung, z. B. Sicherheitspatch bei aktivem Angriff, beschleunigt genehmigt und trotzdem dokumentiert.',
   ),
   karte(
     'k-lt-9',
@@ -798,7 +798,7 @@ final List<Flashcard> cardsA07 = [
     'k-lt-11',
     'sla-itil',
     'Was ist ITIL?',
-    'Eine Sammlung bewährter Vorgehensweisen (Best Practices) für das IT-Service-Management - kein Gesetz, keine Software. Aktuell: ITIL 4.',
+    'Eine Sammlung bewährter Vorgehensweisen (Best Practices) für das IT-Service-Management, aber kein Gesetz, keine Software. Aktuell: ITIL 4.',
   ),
   karte(
     'k-lt-12',
@@ -810,13 +810,13 @@ final List<Flashcard> cardsA07 = [
     'k-lt-13',
     'sla-itil',
     'Was ist ein Normal Change?',
-    'Eine geplante Änderung, die einzeln bewertet und genehmigt wird, oft durch das CAB - z. B. ERP auf neuen Server migrieren.',
+    'Eine geplante Änderung, die einzeln bewertet und genehmigt wird, oft durch das CAB, z. B. ERP auf neuen Server migrieren.',
   ),
   karte(
     'k-lt-14',
     'sla-itil',
     'Wofür steht CAB?',
-    'Change Advisory Board - ein Gremium, das Changes bewertet und bei der Genehmigung berät.',
+    'Change Advisory Board. Ein Gremium, das Changes bewertet und bei der Genehmigung berät.',
   ),
   karte(
     'k-lt-15',
@@ -828,7 +828,7 @@ final List<Flashcard> cardsA07 = [
     'k-lt-16',
     'sla-itil',
     'Was ist ein Event im Sinne von ITIL?',
-    'Eine bedeutsame Zustandsänderung, z. B. Festplatte zu 80 % voll - noch keine Störung.',
+    'Eine bedeutsame Zustandsänderung, z. B. Festplatte zu 80 % voll. Das ist noch keine Störung.',
   ),
   karte(
     'k-lt-17',
@@ -840,19 +840,19 @@ final List<Flashcard> cardsA07 = [
     'k-lt-18',
     'sla-itil',
     'Die Werkstattsoftware startet an keinem PC: Welche ITIL-Kategorie?',
-    'Incident - der Service ist gestört und muss sofort wiederhergestellt werden.',
+    'Incident. Der Service ist gestört und muss sofort wiederhergestellt werden.',
   ),
   karte(
     'k-lt-19',
     'sla-itil',
     'Eine Software stürzt seit Wochen montags ab, die Ursache soll gefunden werden: Kategorie?',
-    'Problem - gesucht wird die Ursache wiederkehrender Incidents.',
+    'Problem, denn gesucht wird die Ursache wiederkehrender Incidents.',
   ),
   karte(
     'k-lt-20',
     'sla-itil',
     'Der Mailserver soll auf eine neue Version aktualisiert werden: Welche ITIL-Kategorie?',
-    'Change, als Normal Change bewertet und genehmigt - eine geplante Änderung an einem Service.',
+    'Change, als Normal Change bewertet und genehmigt. Er ist eine geplante Änderung an einem Service.',
   ),
   karte(
     'k-lt-21',
@@ -890,7 +890,7 @@ final List<Flashcard> cardsA07 = [
     'k-gv-2',
     'ls-verzug',
     'Welche Rechte hat der Käufer beim Lieferungsverzug ohne Nachfrist?',
-    'Auf Lieferung bestehen und - bei Verschulden - Ersatz des Verzögerungsschadens verlangen.',
+    'Auf Lieferung bestehen und bei Verschulden Ersatz des Verzögerungsschadens verlangen.',
   ),
   karte(
     'k-gv-3',
@@ -909,7 +909,7 @@ final List<Flashcard> cardsA07 = [
     'k-gv-5',
     'ls-verzug',
     'Wann kommt ein Zahlungsschuldner ohne Mahnung in Verzug?',
-    'Spätestens 30 Tage nach Fälligkeit und Zugang der Rechnung (§ 286 Abs. 3 BGB) - Verbraucher nur bei Hinweis darauf.',
+    'Spätestens 30 Tage nach Fälligkeit und Zugang der Rechnung (§ 286 Abs. 3 BGB). Bei Verbrauchern gilt das nur mit Hinweis darauf.',
   ),
   karte(
     'k-gv-6',
@@ -957,19 +957,19 @@ final List<Flashcard> cardsA07 = [
     'k-gv-13',
     'ls-verzug',
     'Nenne die fünf Arten von Leistungsstörungen.',
-    'Lieferungsverzug, Schlechtleistung (Mangel), Unmöglichkeit - auf Käuferseite Annahmeverzug und Zahlungsverzug.',
+    'Lieferungsverzug, Schlechtleistung (Mangel), Unmöglichkeit, auf Käuferseite Annahmeverzug und Zahlungsverzug.',
   ),
   karte(
     'k-gv-14',
     'ls-verzug',
     'Warum braucht der Käufer bei „Lieferung Mitte März“ eine Mahnung?',
-    'Der Termin ist nicht kalendermäßig bestimmt - Verzug tritt erst mit der Mahnung ein.',
+    'Der Termin ist nicht kalendermäßig bestimmt: Verzug tritt erst mit der Mahnung ein.',
   ),
   karte(
     'k-gv-15',
     'ls-verzug',
     'Wer muss beim Lieferungsverzug das Verschulden beweisen?',
-    'Das Verschulden wird vermutet - der Lieferer muss sich entlasten (§ 286 Abs. 4 BGB).',
+    'Das Verschulden wird vermutet. Der Lieferer muss sich entlasten (§ 286 Abs. 4 BGB).',
   ),
   karte(
     'k-gv-16',
@@ -993,7 +993,7 @@ final List<Flashcard> cardsA07 = [
     'k-gv-19',
     'ls-verzug',
     'Was unterscheidet relatives und absolutes Fixgeschäft?',
-    'Relativ: Termin wesentlich, Rücktritt ohne Nachfrist. Absolut: Spätere Leistung ist sinnlos (Techniker für den Messetag) - Unmöglichkeit.',
+    'Relativ: Termin wesentlich, Rücktritt ohne Nachfrist. Absolut: Spätere Leistung ist sinnlos (Techniker für den Messetag). Das ist Unmöglichkeit.',
   ),
   karte(
     'k-gv-20',
@@ -1005,13 +1005,13 @@ final List<Flashcard> cardsA07 = [
     'k-gv-21',
     'ls-verzug',
     '36.500 €, nur Unternehmen, Basiszins 2 %, 30 Tage Verzug: Wie hoch sind die Zinsen?',
-    '2 % + 9 = 11 %; 36.500 € × 0,11 × 30 / 365 = 330,00 € - dazu 40 € Pauschale = 370,00 €.',
+    '2 % + 9 = 11 %; 36.500 € × 0,11 × 30 / 365 = 330,00 €, dazu 40 € Pauschale = 370,00 €.',
   ),
   karte(
     'k-gv-22',
     'ls-verzug',
     '2.920 €, Verbraucher, Basiszins 1,5 %, 60 Tage Verzug: Wie hoch sind die Zinsen?',
-    '1,5 % + 5 = 6,5 %; 2.920 € × 0,065 × 60 / 365 = 31,20 € - keine Pauschale.',
+    '1,5 % + 5 = 6,5 %; 2.920 € × 0,065 × 60 / 365 = 31,20 €, keine Pauschale.',
   ),
   karte(
     'k-gv-23',
@@ -1023,7 +1023,7 @@ final List<Flashcard> cardsA07 = [
     'k-gv-24',
     'ls-verzug',
     'Rechnung am 1. Juni fällig und zugegangen, keine Mahnung: Ab wann besteht Verzug?',
-    'Ab dem 2. Juli - nach Ablauf der 30-Tage-Frist (§ 286 Abs. 3 BGB). Verbraucher nur bei Hinweis in der Rechnung.',
+    'Ab dem 2. Juli, nach Ablauf der 30-Tage-Frist (§ 286 Abs. 3 BGB). Verbraucher nur bei Hinweis in der Rechnung.',
   ),
   karte(
     'k-gv-25',
@@ -1036,7 +1036,7 @@ final List<Flashcard> cardsA07 = [
     'k-gv-26',
     'ls-verzug',
     'Wie viele Mahnungen sind für den Verzug nötig?',
-    'Eine einzige genügt - die drei Mahnungen aus dem Alltag sind keine Voraussetzung.',
+    'Eine einzige genügt. Die drei Mahnungen aus dem Alltag sind keine Voraussetzung.',
   ),
 
   // Mängel
@@ -1044,13 +1044,13 @@ final List<Flashcard> cardsA07 = [
     'k-gm-1',
     'ls-maengel',
     'Welches Recht hat der Käufer bei einem Mangel zuerst?',
-    'Nacherfüllung (§ 439 BGB): Nachbesserung oder Ersatzlieferung - beim Kauf wählt der Käufer.',
+    'Nacherfüllung (§ 439 BGB): Nachbesserung oder Ersatzlieferung. Beim Kauf wählt der Käufer.',
   ),
   karte(
     'k-gm-2',
     'ls-maengel',
     'Welche Mängelrechte sind nachrangig?',
-    'Rücktritt oder Minderung sowie Schadensersatz (nur bei Verschulden) - in der Regel erst nach erfolgloser Frist zur Nacherfüllung.',
+    'Rücktritt oder Minderung sowie Schadensersatz (nur bei Verschulden), in der Regel erst nach erfolgloser Frist zur Nacherfüllung.',
   ),
   karte(
     'k-gm-3',
@@ -1068,7 +1068,7 @@ final List<Flashcard> cardsA07 = [
     'k-gm-5',
     'ls-maengel',
     'Was verlangt die Rügepflicht nach § 377 HGB?',
-    'Beim Kauf unter Kaufleuten Ware unverzüglich prüfen und Mängel unverzüglich rügen - sonst gilt die Ware als genehmigt.',
+    'Beim Kauf unter Kaufleuten Ware unverzüglich prüfen und Mängel unverzüglich rügen. Sonst gilt die Ware als genehmigt.',
   ),
   karte(
     'k-gm-6',
@@ -1098,7 +1098,7 @@ final List<Flashcard> cardsA07 = [
     'k-gm-10',
     'ls-maengel',
     'Wer wählt beim Werkvertrag die Art der Nacherfüllung?',
-    'Der Unternehmer - zwischen Nachbesserung und Neuherstellung (§ 635 BGB).',
+    'Der Unternehmer, und zwar zwischen Nachbesserung und Neuherstellung (§ 635 BGB).',
   ),
   karte(
     'k-gm-11',
@@ -1116,13 +1116,13 @@ final List<Flashcard> cardsA07 = [
     'k-gm-13',
     'ls-maengel',
     'Werbung verspricht „10 h Akku“, er hält 3 h: Welcher Mangel liegt vor?',
-    'Ein Sachmangel - die Sache erfüllt die objektiven Anforderungen nicht, zu denen auch Werbeaussagen gehören.',
+    'Ein Sachmangel. Die Sache erfüllt die objektiven Anforderungen nicht, zu denen auch Werbeaussagen gehören.',
   ),
   karte(
     'k-gm-14',
     'ls-maengel',
     'Was unterscheidet offenen und versteckten Mangel?',
-    'Offen: bei Prüfung sofort erkennbar. Versteckt: zeigt sich erst später - unter Kaufleuten unverzüglich nach Entdeckung rügen.',
+    'Offen: bei Prüfung sofort erkennbar. Versteckt: zeigt sich erst später. Unter Kaufleuten muss er unverzüglich nach Entdeckung gerügt werden.',
   ),
   karte(
     'k-gm-15',
@@ -1134,7 +1134,7 @@ final List<Flashcard> cardsA07 = [
     'k-gm-16',
     'ls-maengel',
     'Wer trägt die Kosten der Nacherfüllung?',
-    'Der Verkäufer - Transport, Arbeit und Material (§ 439 Abs. 2 BGB).',
+    'Der Verkäufer: Transport, Arbeit und Material (§ 439 Abs. 2 BGB).',
   ),
   karte(
     'k-gm-17',
@@ -1146,13 +1146,13 @@ final List<Flashcard> cardsA07 = [
     'k-gm-18',
     'ls-maengel',
     'Kaufpreis 1.200 €, Wert ohne Mangel 1.500 €, mit Mangel 1.000 €: Geminderter Preis?',
-    '1.200 € × 1.000 / 1.500 = 800 € - die Minderung beträgt 400 €, nicht 500 €.',
+    '1.200 € × 1.000 / 1.500 = 800 €. Die Minderung beträgt 400 €, nicht 500 €.',
   ),
   karte(
     'k-gm-19',
     'ls-maengel',
     'Gegen wen richten sich die Gewährleistungsansprüche des Käufers?',
-    'Gegen den Verkäufer, nicht gegen den Hersteller - die Herstellergarantie ist davon unabhängig.',
+    'Gegen den Verkäufer, nicht gegen den Hersteller. Die Herstellergarantie ist davon unabhängig.',
   ),
   karte(
     'k-gm-20',
@@ -1164,7 +1164,7 @@ final List<Flashcard> cardsA07 = [
     'k-gm-21',
     'ls-maengel',
     'Auf wie lange darf die Gewährleistung für gebrauchte Sachen an Verbraucher verkürzt werden?',
-    'Auf 1 Jahr. Unter Unternehmen kann sie weiter beschränkt werden - nie bei Arglist.',
+    'Auf 1 Jahr. Unter Unternehmen kann sie weiter beschränkt werden, nie bei Arglist.',
   ),
   karte(
     'k-gm-22',
@@ -1202,19 +1202,19 @@ final List<Flashcard> cardsA07 = [
     'k-ga-3',
     'ls-abnahme',
     'Was ist eine Abnahme unter Vorbehalt?',
-    'Abnahme mit protokollierten Mängeln - die Rechte zu diesen Mängeln bleiben erhalten.',
+    'Abnahme mit protokollierten Mängeln. Die Rechte zu diesen Mängeln bleiben erhalten.',
   ),
   karte(
     'k-ga-4',
     'ls-abnahme',
     'Welche Folge hat ein unwesentlicher Mangel für die Abnahme?',
-    'Er berechtigt nicht zur Verweigerung (§ 640 Abs. 1 BGB) - er wird protokolliert und nachgebessert.',
+    'Er berechtigt nicht zur Verweigerung (§ 640 Abs. 1 BGB). Er wird protokolliert und nachgebessert.',
   ),
   karte(
     'k-ga-5',
     'ls-abnahme',
     'Was ist die Abnahme nach § 640 BGB?',
-    'Billigung des Werks als im Wesentlichen vertragsgemäß - Pflicht des Bestellers, wenn das Werk vertragsgemäß ist.',
+    'Billigung des Werks als im Wesentlichen vertragsgemäß: Pflicht des Bestellers, wenn das Werk vertragsgemäß ist.',
   ),
   karte(
     'k-ga-6',
@@ -1226,25 +1226,25 @@ final List<Flashcard> cardsA07 = [
     'k-ga-7',
     'ls-abnahme',
     'Was passiert, wenn du trotz bekannter Mängel vorbehaltlos abnimmst?',
-    'Für diese Mängel entfallen Nacherfüllung, Selbstvornahme, Rücktritt und Minderung - nur Schadensersatz bleibt (§ 640 Abs. 3 BGB).',
+    'Für diese Mängel entfallen Nacherfüllung, Selbstvornahme, Rücktritt und Minderung. Nur Schadensersatz bleibt (§ 640 Abs. 3 BGB).',
   ),
   karte(
     'k-ga-8',
     'ls-abnahme',
     'Welche drei Mängelklassen nutzen viele IT-Verträge?',
-    'Betriebsverhindernd, betriebsbehindernd, leicht - der Vertrag legt fest, bei welcher Klasse die Abnahme verweigert werden darf.',
+    'Betriebsverhindernd, betriebsbehindernd, leicht. Der Vertrag legt fest, bei welcher Klasse die Abnahme verweigert werden darf.',
   ),
   karte(
     'k-ga-9',
     'ls-abnahme',
     'Was bedeutet „Abnahme“ beim Kaufvertrag?',
-    'Nur die körperliche Entgegennahme der Ware (§ 433 Abs. 2 BGB) - keine Billigung wie beim Werkvertrag.',
+    'Nur die körperliche Entgegennahme der Ware (§ 433 Abs. 2 BGB), keine Billigung wie beim Werkvertrag.',
   ),
   karte(
     'k-ga-10',
     'ls-abnahme',
     'Warum gibt es beim Dienstvertrag keine Abnahme?',
-    'Geschuldet ist nur die Tätigkeit, kein Erfolg - es gibt kein Werk, das gebilligt werden könnte.',
+    'Geschuldet ist nur die Tätigkeit, kein Erfolg. Es gibt kein Werk, das gebilligt werden könnte.',
   ),
   karte(
     'k-ga-11',
@@ -1286,7 +1286,7 @@ final List<Flashcard> cardsA07 = [
     'k-ga-17',
     'ls-abnahme',
     'Woran wird ein Werk beim Abnahmetest gemessen?',
-    'An den vorab vereinbarten, messbaren Abnahmekriterien aus Vertrag bzw. Pflichtenheft - nicht an späteren Wünschen.',
+    'An den vorab vereinbarten, messbaren Abnahmekriterien aus Vertrag bzw. Pflichtenheft, nicht an späteren Wünschen.',
   ),
   karte(
     'k-ga-18',
@@ -1298,7 +1298,7 @@ final List<Flashcard> cardsA07 = [
     'k-ga-19',
     'ls-abnahme',
     'Beim Abnahmetest scheitert der Login für alle Nutzer: Was tust du?',
-    'Wesentlicher Mangel - Abnahme verweigern und eine Frist zur Beseitigung setzen.',
+    'Wesentlicher Mangel: Abnahme verweigern und eine Frist zur Beseitigung setzen.',
   ),
 
   // Lewin
@@ -1348,7 +1348,7 @@ final List<Flashcard> cardsA07 = [
     'k-cl-8',
     'cm-lewin',
     'Was ist die Leistungsdelle in der Moving-Phase?',
-    'Die Leistung sinkt vorübergehend, während das Neue gelernt wird - das ist normal, kein Zeichen des Scheiterns.',
+    'Die Leistung sinkt vorübergehend, während das Neue gelernt wird. Das ist normal, kein Zeichen des Scheiterns.',
   ),
   karte(
     'k-cl-9',
@@ -1402,7 +1402,7 @@ final List<Flashcard> cardsA07 = [
     'k-cl-17',
     'cm-lewin',
     'Was kennzeichnet die stufenweise Einführung?',
-    'Das neue System löst das alte Schritt für Schritt ab, z. B. Modul für Modul - überschaubar, dauert aber lange (Schnittstellen alt/neu).',
+    'Das neue System löst das alte Schritt für Schritt ab, z. B. Modul für Modul. Das ist überschaubar, dauert aber lange (Schnittstellen alt/neu).',
   ),
   karte(
     'k-cl-18',
@@ -1414,19 +1414,19 @@ final List<Flashcard> cardsA07 = [
     'k-cl-19',
     'cm-lewin',
     'Eine Infoveranstaltung zeigt die Kosten des alten Prozesses: Welche Phase?',
-    'Unfreezing - sie macht sichtbar, warum sich etwas ändern muss.',
+    'Unfreezing. Sie macht sichtbar, warum sich etwas ändern muss.',
   ),
   karte(
     'k-cl-20',
     'cm-lewin',
     'Warum gelingt Refreezing kaum, wenn das alte System verfügbar bleibt?',
-    'Der Rückweg bleibt offen - viele kehren zur Gewohnheit zurück. Das Alte abzuschalten verankert das Neue.',
+    'Der Rückweg bleibt offen, also kehren viele zur Gewohnheit zurück. Das Alte abzuschalten verankert das Neue.',
   ),
   karte(
     'k-cl-21',
     'cm-lewin',
     'Warum wirkt der Abbau hemmender Kräfte nachhaltiger als mehr Druck?',
-    'Mehr Druck von der treibenden Seite erzeugt oft Gegendruck - ohne Hemmnisse verschiebt sich das Gleichgewicht dauerhaft.',
+    'Mehr Druck von der treibenden Seite erzeugt oft Gegendruck. Ohne Hemmnisse verschiebt sich das Gleichgewicht dauerhaft.',
   ),
 
   // Widerstand
@@ -1440,7 +1440,7 @@ final List<Flashcard> cardsA07 = [
     'k-cw-2',
     'cm-widerstand',
     'Wie reagierst du auf Widerstand aus „nicht können“?',
-    'Schulen und begleiten - die Fähigkeit fehlt, nicht der Wille.',
+    'Schulen und begleiten, denn es fehlt die Fähigkeit, nicht der Wille.',
   ),
   karte(
     'k-cw-3',
@@ -1452,7 +1452,7 @@ final List<Flashcard> cardsA07 = [
     'k-cw-4',
     'cm-widerstand',
     'Welche Gegenmaßnahme wirkt gegen Widerstand am nachhaltigsten?',
-    'Betroffene frühzeitig beteiligen - wer mitgestaltet, blockiert selten.',
+    'Betroffene frühzeitig beteiligen. Wer mitgestaltet, blockiert selten.',
   ),
   karte(
     'k-cw-5',
@@ -1488,7 +1488,7 @@ final List<Flashcard> cardsA07 = [
     'k-cw-10',
     'cm-widerstand',
     'Wie reagierst du auf Widerstand aus „nicht dürfen“?',
-    'Befugnisse und Rahmenbedingungen klären - eine Schulung hilft hier nicht.',
+    'Befugnisse und Rahmenbedingungen klären. Eine Schulung hilft hier nicht.',
   ),
   karte(
     'k-cw-11',
@@ -1518,7 +1518,7 @@ final List<Flashcard> cardsA07 = [
     'k-cw-15',
     'cm-widerstand',
     'Wann ist Anordnung oder Druck als Strategie vertretbar?',
-    'Nur als letztes Mittel bei großer Eile (nach Kotter/Schlesinger) - sonst droht Scheinanpassung.',
+    'Nur als letztes Mittel bei großer Eile (nach Kotter/Schlesinger). Sonst droht Scheinanpassung.',
   ),
   karte(
     'k-cw-16',
@@ -1536,7 +1536,7 @@ final List<Flashcard> cardsA07 = [
     'k-cw-18',
     'cm-widerstand',
     'Was bedeutet Schweigen im Veränderungsprozess oft?',
-    'Keine Zustimmung, sondern häufig verdeckten Widerstand - nachfragen und Sorgen aktiv erfragen.',
+    'Keine Zustimmung, sondern häufig verdeckten Widerstand. Deshalb nachfragen und Sorgen aktiv erfragen.',
   ),
 
   // Kaizen
@@ -1556,13 +1556,13 @@ final List<Flashcard> cardsA07 = [
     'k-ck-3',
     'cm-kaizen',
     'Wofür steht PDCA?',
-    'Plan, Do, Check, Act - der Zyklus, mit dem jeder KVP-Schritt durchlaufen wird.',
+    'Plan, Do, Check, Act. Der Zyklus, mit dem jeder KVP-Schritt durchlaufen wird.',
   ),
   karte(
     'k-ck-4',
     'cm-kaizen',
     'Was ist Business Process Reengineering?',
-    'Radikale, grundlegende Neugestaltung von Prozessen - Gegenentwurf zu Kaizen.',
+    'Radikale, grundlegende Neugestaltung von Prozessen: Gegenentwurf zu Kaizen.',
   ),
   karte(
     'k-ck-5',
@@ -1617,7 +1617,7 @@ final List<Flashcard> cardsA07 = [
     'k-ck-13',
     'cm-kaizen',
     'Was geschieht im Schritt „Act“ des PDCA-Zyklus?',
-    'Bei Erfolg wird die Maßnahme zum neuen Standard, sonst wird neu geplant - dann beginnt der nächste Zyklus.',
+    'Bei Erfolg wird die Maßnahme zum neuen Standard, sonst wird neu geplant. Dann beginnt der nächste Zyklus.',
   ),
   karte(
     'k-ck-14',
@@ -1635,13 +1635,13 @@ final List<Flashcard> cardsA07 = [
     'k-ck-16',
     'cm-kaizen',
     'Tickets bleiben tagelang liegen: Welche Art der Verschwendung ist das?',
-    'Bestände - unerledigte Arbeit, die sich staut.',
+    'Bestände, also unerledigte Arbeit, die sich staut.',
   ),
   karte(
     'k-ck-17',
     'cm-kaizen',
     'Software enthält Funktionen, die niemand nutzt: Welche Art der Verschwendung?',
-    'Überproduktion - es wird mehr hergestellt, als die Kundschaft braucht.',
+    'Überproduktion. Es wird mehr hergestellt, als die Kundschaft braucht.',
   ),
   karte(
     'k-ck-18',
@@ -1653,6 +1653,6 @@ final List<Flashcard> cardsA07 = [
     'k-ck-19',
     'cm-kaizen',
     'Warum ist KVP kein Projekt?',
-    'Ein Projekt hat ein Ende, KVP läuft dauerhaft weiter - und ist Aufgabe aller, nicht nur der Qualitätsabteilung.',
+    'Ein Projekt hat ein Ende. KVP läuft dauerhaft weiter und ist Aufgabe aller, nicht nur der Qualitätsabteilung.',
   ),
 ];

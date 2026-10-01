@@ -38,7 +38,7 @@ final List<Question> ihkA07 = [
         wahl(
           'neuer Antrag',
           ['Annahme', 'Anfrage (unverbindlich)', 'Aufforderung zum Antrag'],
-          'Die Frist ist seit dem 19.03. abgelaufen - eine verspätete Annahme gilt als neuer Antrag (§ 150 Abs. 1 BGB).',
+          'Die Frist ist seit dem 19.03. abgelaufen. Eine verspätete Annahme gilt als neuer Antrag (§ 150 Abs. 1 BGB).',
         ),
       ],
       [
@@ -61,7 +61,7 @@ final List<Question> ihkA07 = [
       ],
     ],
     explanation:
-        'Anfrage = unverbindlich. Angebot an einen bestimmten Kunden = Antrag, hier befristet bis 19.03. Die Bestellung vom 21.03. kommt zu spät und ist deshalb ein neuer Antrag (§ 150 Abs. 1 BGB). Mit der Auftragsbestätigung vom 22.03. nimmt der Lieferant an - erst jetzt besteht der Vertrag.',
+        'Anfrage = unverbindlich. Angebot an einen bestimmten Kunden = Antrag, hier befristet bis 19.03. Die Bestellung vom 21.03. kommt zu spät und ist deshalb ein neuer Antrag (§ 150 Abs. 1 BGB). Mit der Auftragsbestätigung vom 22.03. nimmt der Lieferant an. Erst jetzt besteht der Vertrag.',
     punkte: 5,
   ),
   freitext(
@@ -116,7 +116,7 @@ final List<Question> ihkA07 = [
       ),
     ],
     loesung:
-        'Ein nichtiges Rechtsgeschäft ist von Anfang an unwirksam, zum Beispiel der Kauf eines sechsjährigen Kindes oder ein Grundstückskauf ohne Notar. Ein anfechtbares Rechtsgeschäft ist zunächst wirksam. Erst wenn der Berechtigte die Anfechtung erklärt, wird es rückwirkend nichtig - zum Beispiel beim Tippfehler im Preis (Erklärungsirrtum) oder bei arglistiger Täuschung. Der Vertrag aus der Situation ist also nicht automatisch nichtig, sondern muss unverzüglich angefochten werden.',
+        'Ein nichtiges Rechtsgeschäft ist von Anfang an unwirksam, zum Beispiel der Kauf eines sechsjährigen Kindes oder ein Grundstückskauf ohne Notar. Ein anfechtbares Rechtsgeschäft ist zunächst wirksam. Erst wenn der Berechtigte die Anfechtung erklärt, wird es rückwirkend nichtig, zum Beispiel beim Tippfehler im Preis (Erklärungsirrtum) oder bei arglistiger Täuschung. Der Vertrag aus der Situation ist also nicht automatisch nichtig, sondern muss unverzüglich angefochten werden.',
     explanation:
         'Je Erläuterung 2 Punkte, je passendes Beispiel 1 Punkt. Andere richtige Beispiele werden ebenfalls gewertet. Wichtig ist die Abgrenzung: nichtig wirkt von selbst, anfechtbar braucht eine Erklärung.',
     punkte: 6,
@@ -151,7 +151,7 @@ final List<Question> ihkA07 = [
     zeilen: [
       nein(
         'Werbeflyer „Notebooks ab 599 €“ an alle Haushalte',
-        'Werbung richtet sich an die Allgemeinheit - nur eine Aufforderung zum Antrag.',
+        'Werbung richtet sich an die Allgemeinheit, sie ist nur eine Aufforderung zum Antrag.',
       ),
       ja(
         'Schriftliches Angebot an eine Kanzlei über 18 Notebooks, gültig 14 Tage',
@@ -171,7 +171,7 @@ final List<Question> ihkA07 = [
       ),
       ja(
         'Auftragsbestätigung auf die fristgerechte Bestellung eines Kunden',
-        'Das ist die Annahme - damit ist der Vertrag geschlossen und für beide verbindlich.',
+        'Das ist die Annahme. Damit ist der Vertrag geschlossen und für beide verbindlich.',
       ),
     ],
     explanation:
@@ -261,7 +261,7 @@ final List<Question> ihkA07 = [
       ),
     ],
     loesung:
-        'Beim Werkvertrag schuldet der Unternehmer einen Erfolg, etwa das lauffähige Portal; beim Dienstvertrag nur das Tätigwerden. Deshalb gibt es beim Werkvertrag eine Abnahme, mit der die Vergütung fällig wird, und Mängelrechte, wenn das Werk Fehler hat. Beim Dienstvertrag wird nach geleisteter Zeit bezahlt, auch wenn das Ergebnis ausbleibt - das Risiko trägt der Auftraggeber.',
+        'Beim Werkvertrag schuldet der Unternehmer einen Erfolg, etwa das lauffähige Portal; beim Dienstvertrag nur das Tätigwerden. Deshalb gibt es beim Werkvertrag eine Abnahme, mit der die Vergütung fällig wird, und Mängelrechte, wenn das Werk Fehler hat. Beim Dienstvertrag wird nach geleisteter Zeit bezahlt, auch wenn das Ergebnis ausbleibt. Das Risiko trägt der Auftraggeber.',
     explanation:
         'Je Unterschied 2 Punkte, höchstens 4 Punkte. Für das Handelsunternehmen ist der Werkvertrag günstiger, weil das Softwarehaus für das funktionierende Ergebnis einstehen muss.',
     punkte: 4,
@@ -292,7 +292,7 @@ final List<Question> ihkA07 = [
     zeilen: [
       ja(
         'Der Auftragnehmer schuldet eine lauffähige Lagerverwaltung gemäß Pflichtenheft.',
-        'Ein bestimmter Erfolg ist geschuldet - das Kennzeichen des Werkvertrags (§ 631 BGB).',
+        'Ein bestimmter Erfolg ist geschuldet. Das Kennzeichen des Werkvertrags (§ 631 BGB).',
       ),
       nein(
         'Abgerechnet wird monatlich nach geleisteten Stunden zu 95 € je Stunde.',
@@ -304,7 +304,7 @@ final List<Question> ihkA07 = [
       ),
       nein(
         'Der Auftragnehmer stellt zwei Entwickler zur Unterstützung des Teams bereit.',
-        'Geschuldet ist nur Arbeitsleistung, kein Ergebnis - Dienstvertrag.',
+        'Geschuldet ist nur Arbeitsleistung, kein Ergebnis: Dienstvertrag.',
       ),
       ja(
         'Der Auftraggeber nimmt die Software nach bestandenem Abnahmetest ab.',
@@ -357,7 +357,7 @@ final List<Question> ihkA07 = [
       ),
       nein(
         'Die Agentur verkauft die Lizenz an ein befreundetes Unternehmen weiter.',
-        'Nr. 1: „non-transferable“ - die Lizenz ist nicht übertragbar.',
+        'Nr. 1: „non-transferable“. Die Lizenz ist nicht übertragbar.',
       ),
       ja(
         'Ein Administrator legt eine Sicherungskopie für das Archiv an.',
@@ -369,7 +369,7 @@ final List<Question> ihkA07 = [
       ),
       ja(
         'Der Hersteller vergibt dieselbe Software auch an andere Kunden.',
-        'Nr. 1: „non-exclusive“ - ein einfaches Nutzungsrecht, der Hersteller darf weitere Lizenzen vergeben.',
+        'Nr. 1: „non-exclusive“. Ein einfaches Nutzungsrecht, der Hersteller darf weitere Lizenzen vergeben.',
       ),
       nein(
         'Die Agentur nutzt die Software im 14. Monat ohne Verlängerung weiter.',
@@ -458,7 +458,7 @@ final List<Question> ihkA07 = [
     loesung:
         'Urheber ist der Entwickler, denn Urheber kann nur der Mensch sein, der das Programm geschaffen hat; dieses Recht ist nicht übertragbar. Weil das Tool in Wahrnehmung seiner Aufgaben im Arbeitsverhältnis entstanden ist, stehen alle vermögensrechtlichen Befugnisse ausschließlich dem Arbeitgeber zu (§ 69b UrhG). Der Entwickler darf das Tool daher nicht ohne Zustimmung des Systemhauses verkaufen oder weiterverwenden.',
     explanation:
-        'Je Aussage 2 Punkte, höchstens 4 Punkte. Typischer Fehler: „Der Arbeitgeber wird Urheber.“ Er erhält nur die Verwertungsrechte - das allerdings vollständig.',
+        'Je Aussage 2 Punkte, höchstens 4 Punkte. Typischer Fehler: „Der Arbeitgeber wird Urheber.“ Er erhält nur die Verwertungsrechte, allerdings vollständig.',
     punkte: 4,
   ),
   freitext(
@@ -515,7 +515,7 @@ final List<Question> ihkA07 = [
     loesung:
         'Open Source: keine Lizenzkosten, Quellcode einsehbar und anpassbar, keine Herstellerbindung. Proprietär: Support und Gewährleistung durch den Hersteller, geregelte Updates, gute Integration in andere Produkte des Herstellers.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 4 Punkte. Achtung: Auch Open-Source-Software hat Lizenzbedingungen, etwa die Copyleft-Pflicht der GPL - kostenlos heißt nicht frei von Pflichten.',
+        'Je Nennung 1 Punkt, höchstens 4 Punkte. Achtung: Auch Open-Source-Software hat Lizenzbedingungen, etwa die Copyleft-Pflicht der GPL. Kostenlos heißt nicht frei von Pflichten.',
     punkte: 4,
     difficulty: 1,
   ),
@@ -608,7 +608,7 @@ final List<Question> ihkA07 = [
       ],
     ],
     explanation:
-        'Zulässiger Ausfall = Servicezeit × (100 % − Verfügbarkeit). 720 h × 1 % = 7,2 h = 432 min. 720 h × 0,1 % = 0,72 h = 43,2 min. 200 h × 2 % = 4 h = 240 min. 200 h × 0,5 % = 1 h = 60 min. Die Prozentzahl allein sagt wenig - entscheidend ist die Servicezeit, auf die sie sich bezieht.',
+        'Zulässiger Ausfall = Servicezeit × (100 % − Verfügbarkeit). 720 h × 1 % = 7,2 h = 432 min. 720 h × 0,1 % = 0,72 h = 43,2 min. 200 h × 2 % = 4 h = 240 min. 200 h × 0,5 % = 1 h = 60 min. Die Prozentzahl allein sagt wenig. Entscheidend ist die Servicezeit, auf die sie sich bezieht.',
     punkte: 4,
   ),
   freitext(
@@ -675,7 +675,7 @@ final List<Question> ihkA07 = [
     loesung:
         'Leistungsbeschreibung, Servicezeiten, Verfügbarkeit mit Bezugszeitraum, Reaktions- und Lösungszeiten je Priorität, Eskalationswege, Messverfahren und Reporting, Folgen bei Nichteinhaltung (Gutschrift oder Vertragsstrafe), Wartungsfenster, Mitwirkungspflichten des Kunden.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 5 Punkte. Entscheidend ist, dass jede Zusage messbar ist - „schnell“ oder „möglichst immer“ lässt sich später nicht prüfen.',
+        'Je Nennung 1 Punkt, höchstens 5 Punkte. Entscheidend ist, dass jede Zusage messbar ist. „Schnell“ oder „möglichst immer“ lässt sich später nicht prüfen.',
     punkte: 5,
     difficulty: 1,
   ),
@@ -688,7 +688,7 @@ final List<Question> ihkA07 = [
     zeilen: [
       ja(
         'Der Dienst steht dem Kunden möglichst durchgehend zur Verfügung.',
-        '„Möglichst“ ist kein Wert - es fehlen Prozentzahl und Bezugszeitraum.',
+        '„Möglichst“ ist kein Wert. Es fehlen Prozentzahl und Bezugszeitraum.',
       ),
       nein(
         'Servicezeit: Montag bis Freitag, 7 bis 19 Uhr',
@@ -696,7 +696,7 @@ final List<Question> ihkA07 = [
       ),
       ja(
         'Störungen werden zeitnah bearbeitet.',
-        '„Zeitnah“ ist nicht messbar - nötig sind Reaktions- und Lösungszeiten je Priorität.',
+        '„Zeitnah“ ist nicht messbar. Nötig sind Reaktions- und Lösungszeiten je Priorität.',
       ),
       nein(
         'Priorität 1: Reaktion innerhalb von 30 Minuten',
@@ -704,7 +704,7 @@ final List<Question> ihkA07 = [
       ),
       ja(
         'Bei Unterschreitung der Verfügbarkeit bemüht sich der Anbieter um eine kulante Lösung.',
-        'Keine konkrete Folge - eine Gutschrift in Prozent wäre prüfbar.',
+        'Keine konkrete Folge. Eine Gutschrift in Prozent wäre prüfbar.',
       ),
       nein(
         'Der Anbieter berichtet bis zum 5. Werktag des Folgemonats über die erreichte Verfügbarkeit.',
@@ -739,7 +739,7 @@ final List<Question> ihkA07 = [
     ],
     mono: true,
     explanation:
-        'Servicezeit: 30 × 24 h = 720 h. Ausfall: 3 h + 4,2 h = 7,2 h. Verfügbar: 720 h − 7,2 h = 712,8 h. Verfügbarkeit = 712,8 / 720 × 100 % = 99 %. Zugesagt waren 99,5 % (höchstens 3,6 h Ausfall) - das SLA ist verfehlt.',
+        'Servicezeit: 30 × 24 h = 720 h. Ausfall: 3 h + 4,2 h = 7,2 h. Verfügbar: 720 h − 7,2 h = 712,8 h. Verfügbarkeit = 712,8 / 720 × 100 % = 99 %. Zugesagt waren 99,5 % (höchstens 3,6 h Ausfall). Das SLA ist verfehlt.',
     punkte: 5,
   ),
 
@@ -881,7 +881,7 @@ final List<Question> ihkA07 = [
       ),
       nein(
         '09:10 1st Level prüft die Wissensdatenbank: keine Lösung',
-        'Erst bekannte Lösungen prüfen - richtig.',
+        'Erst bekannte Lösungen prüfen: richtig.',
       ),
       ja(
         '09:15 Ticket geschlossen; Anwender soll sich neu beim 2nd Level melden',
@@ -988,7 +988,7 @@ final List<Question> ihkA07 = [
       ),
     ],
     loesung:
-        'Das Incident Management soll den Service so schnell wie möglich wiederherstellen - hier durch den Neustart der App als Workaround. Die Ursache bleibt dabei bestehen. Das Problem Management untersucht, warum die App abstürzt, dokumentiert die Ursache als Known Error und sorgt für eine dauerhafte Lösung, die als Change eingeführt wird.',
+        'Das Incident Management soll den Service so schnell wie möglich wiederherstellen. Hier durch den Neustart der App als Workaround. Die Ursache bleibt dabei bestehen. Das Problem Management untersucht, warum die App abstürzt, dokumentiert die Ursache als Known Error und sorgt für eine dauerhafte Lösung, die als Change eingeführt wird.',
     explanation:
         'Je Erläuterung 2 Punkte. Merkhilfe: Incident = Symptom schnell beheben, Problem = Ursache finden. Gehäufte gleichartige Incidents sind der typische Anlass, ein Problem zu eröffnen.',
     punkte: 4,
@@ -1008,7 +1008,7 @@ final List<Question> ihkA07 = [
       'Ergebnis prüfen, dokumentieren und Change abschließen',
     ],
     explanation:
-        'Ein Normal Change wird erst beantragt und bewertet, dann genehmigt. Erst danach wird die Umsetzung geplant - mit Rückfallplan für den Fall, dass etwas schiefgeht - und durchgeführt. Am Ende steht die Überprüfung, ob das Ziel erreicht wurde.',
+        'Ein Normal Change wird erst beantragt und bewertet, dann genehmigt. Erst danach wird die Umsetzung geplant, mit Rückfallplan für den Fall, dass etwas schiefgeht, und durchgeführt. Am Ende steht die Überprüfung, ob das Ziel erreicht wurde.',
     punkte: 3,
   ),
   lueckentext(
@@ -1120,9 +1120,9 @@ final List<Question> ihkA07 = [
       ),
     ],
     loesung:
-        'Der Distributor ist in Verzug: Die Lieferung war am 2. März fällig, der Termin ist kalendermäßig bestimmt, also braucht es keine Mahnung (§ 286 Abs. 2 Nr. 1 BGB). Dass der eigene Lieferant nicht geliefert hat, entlastet ihn in der Regel nicht - er trägt das Beschaffungsrisiko. Das Systemhaus kann weiter Lieferung verlangen und den Verzögerungsschaden ersetzt verlangen, etwa die Kosten für Leihgeräte. Es kann außerdem eine angemessene Nachfrist setzen und nach deren erfolglosem Ablauf zurücktreten und Schadensersatz statt der Leistung verlangen, etwa die Mehrkosten eines Deckungskaufs.',
+        'Der Distributor ist in Verzug: Die Lieferung war am 2. März fällig, der Termin ist kalendermäßig bestimmt, also braucht es keine Mahnung (§ 286 Abs. 2 Nr. 1 BGB). Dass der eigene Lieferant nicht geliefert hat, entlastet ihn in der Regel nicht. Er trägt das Beschaffungsrisiko. Das Systemhaus kann weiter Lieferung verlangen und den Verzögerungsschaden ersetzt verlangen, etwa die Kosten für Leihgeräte. Es kann außerdem eine angemessene Nachfrist setzen und nach deren erfolglosem Ablauf zurücktreten und Schadensersatz statt der Leistung verlangen, etwa die Mehrkosten eines Deckungskaufs.',
     explanation:
-        'Prüfung des Verzugs bis zu 2 Punkte, je beschriebenes Recht 2 Punkte, höchstens 6 Punkte. Die angekündigten „four weeks“ ändern am Verzug nichts - sie sind nur eine Information.',
+        'Prüfung des Verzugs bis zu 2 Punkte, je beschriebenes Recht 2 Punkte, höchstens 6 Punkte. Die angekündigten „four weeks“ ändern am Verzug nichts. Sie sind nur eine Information.',
     punkte: 6,
     difficulty: 3,
     tags: ['englisch'],
@@ -1187,7 +1187,7 @@ final List<Question> ihkA07 = [
       ),
     ],
     explanation:
-        'Bei einem vertraglich vereinbarten Kalendertermin tritt Verzug ohne Mahnung ein - hier ab dem 17. Mai. Unter Unternehmern betragen die Verzugszinsen 9 Prozentpunkte über dem Basiszinssatz, dazu kommt die Pauschale von 40 €. Eine Mahnung fordert bestimmt und mit Datum zur Zahlung auf.',
+        'Bei einem vertraglich vereinbarten Kalendertermin tritt Verzug ohne Mahnung ein. Hier ab dem 17. Mai. Unter Unternehmern betragen die Verzugszinsen 9 Prozentpunkte über dem Basiszinssatz, dazu kommt die Pauschale von 40 €. Eine Mahnung fordert bestimmt und mit Datum zur Zahlung auf.',
     punkte: 3,
   ),
   reihenfolge(
@@ -1205,7 +1205,7 @@ final List<Question> ihkA07 = [
       'Zwangsvollstreckung, z. B. durch den Gerichtsvollzieher',
     ],
     explanation:
-        'Erst außergerichtlich erinnern und mahnen, dann das gerichtliche Mahnverfahren: Mahnbescheid, bei ausbleibendem Widerspruch Vollstreckungsbescheid, zuletzt Zwangsvollstreckung. Rechtlich nötig ist höchstens eine Mahnung - mehrere Mahnstufen sind nur kaufmännische Übung.',
+        'Erst außergerichtlich erinnern und mahnen, dann das gerichtliche Mahnverfahren: Mahnbescheid, bei ausbleibendem Widerspruch Vollstreckungsbescheid, zuletzt Zwangsvollstreckung. Rechtlich nötig ist höchstens eine Mahnung. Mehrere Mahnstufen sind nur kaufmännische Übung.',
     punkte: 3,
   ),
   tabelle(
@@ -1230,7 +1230,7 @@ final List<Question> ihkA07 = [
         wahl(
           'Verzug erst nach Mahnung',
           ['Verzug ohne Mahnung', 'kein Verzug (nicht zu vertreten)'],
-          'Kein bestimmter Termin - der Käufer muss mahnen.',
+          'Kein bestimmter Termin. Der Käufer muss mahnen.',
         ),
       ],
       [
@@ -1270,7 +1270,7 @@ final List<Question> ihkA07 = [
     'ls-maengel',
     prompt: 'Verbinde jedes Recht des Käufers mit der passenden Voraussetzung.',
     paare: [
-      paar('Nacherfüllung', 'Mangel bei Übergabe - mehr nicht'),
+      paar('Nacherfüllung', 'Mangel bei Übergabe, sonst nichts'),
       paar('Rücktritt', 'Frist erfolglos, Mangel nicht unerheblich'),
       paar('Minderung', 'Frist erfolglos, auch bei kleinem Mangel'),
       paar('Schadensersatz', 'zusätzlich Verschulden des Verkäufers'),
@@ -1358,7 +1358,7 @@ final List<Question> ihkA07 = [
           '6 Monate',
           '2 Jahre',
           '14 Tage',
-        ], '§ 477 BGB - seit 2022 ein Jahr.'),
+        ], '§ 477 BGB: seit 2022 ein Jahr.'),
       ],
       [
         'Rüge eines offenen Mangels unter Kaufleuten',
@@ -1366,7 +1366,7 @@ final List<Question> ihkA07 = [
           'innerhalb von 14 Tagen',
           'innerhalb von 2 Jahren',
           'innerhalb von 30 Tagen',
-        ], '§ 377 HGB - sonst gilt die Ware als genehmigt.'),
+        ], '§ 377 HGB. Sonst gilt die Ware als genehmigt.'),
       ],
       [
         'Verjährung, wenn der Verkäufer den Mangel arglistig verschwiegen hat',
@@ -1398,7 +1398,7 @@ final List<Question> ihkA07 = [
     ],
     mono: true,
     explanation:
-        'Der Kaufpreis wird im Verhältnis der Werte herabgesetzt: 1.500 / 2.000 = 0,75. Geminderter Preis: 1.800 € × 0,75 = 1.350 €. Minderungsbetrag: 1.800 € − 1.350 € = 450 €. Falsch wäre die bloße Wertdifferenz von 500 € - das gute Geschäft des Käufers bleibt anteilig erhalten.',
+        'Der Kaufpreis wird im Verhältnis der Werte herabgesetzt: 1.500 / 2.000 = 0,75. Geminderter Preis: 1.800 € × 0,75 = 1.350 €. Minderungsbetrag: 1.800 € − 1.350 € = 450 €. Falsch wäre die bloße Wertdifferenz von 500 €, denn das gute Geschäft des Käufers bleibt anteilig erhalten.',
     punkte: 3,
   ),
   markieren(
@@ -1415,7 +1415,7 @@ final List<Question> ihkA07 = [
       ),
       nein(
         'Dem Kunden gefällt die Gehäusefarbe nach zwei Wochen nicht mehr.',
-        'Geliefert wurde, was vereinbart war - Reue ist kein Mangel.',
+        'Geliefert wurde, was vereinbart war: Reue ist kein Mangel.',
       ),
       ja(
         'Die Montageanleitung des Serverschranks ist fehlerhaft, der Aufbau misslingt.',
@@ -1427,7 +1427,7 @@ final List<Question> ihkA07 = [
       ),
       ja(
         'Statt 10 Switches werden 8 geliefert.',
-        'Die vereinbarte Menge gehört zur Beschaffenheit - eine Zuweniglieferung ist deshalb ein Sachmangel (§ 434 Abs. 2 BGB).',
+        'Die vereinbarte Menge gehört zur Beschaffenheit. Eine Zuweniglieferung ist deshalb ein Sachmangel (§ 434 Abs. 2 BGB).',
       ),
       nein(
         'Der Kunde lässt den Monitor beim Auspacken fallen, das Display reißt.',
@@ -1435,7 +1435,7 @@ final List<Question> ihkA07 = [
       ),
     ],
     explanation:
-        'Ein Sachmangel liegt vor, wenn die Sache bei Gefahrübergang nicht den vereinbarten oder üblichen Anforderungen oder den Montageanforderungen entspricht. Zur Beschaffenheit gehört seit 2022 auch die Menge - eine Zuweniglieferung ist also selbst ein Sachmangel; die Lieferung einer anderen Sache steht dem Sachmangel gleich (§ 434 Abs. 5 BGB). Verschleiß und selbst verursachte Schäden nach der Übergabe sind keine Mängel.',
+        'Ein Sachmangel liegt vor, wenn die Sache bei Gefahrübergang nicht den vereinbarten oder üblichen Anforderungen oder den Montageanforderungen entspricht. Zur Beschaffenheit gehört seit 2022 auch die Menge. Eine Zuweniglieferung ist also selbst ein Sachmangel; die Lieferung einer anderen Sache steht dem Sachmangel gleich (§ 434 Abs. 5 BGB). Verschleiß und selbst verursachte Schäden nach der Übergabe sind keine Mängel.',
     punkte: 3,
   ),
 
@@ -1525,7 +1525,7 @@ final List<Question> ihkA07 = [
     loesung:
         'Nimmt der Kunde ohne Vorbehalt ab, obwohl er den Mangel kennt, verliert er dafür seine Rechte auf Nacherfüllung, Selbstvornahme, Rücktritt und Minderung (§ 640 Abs. 3 BGB). Außerdem kehrt sich mit der Abnahme die Beweislast um: Das Protokoll belegt, dass der Mangel schon bei der Abnahme vorlag. Die Frist legt verbindlich fest, bis wann nachgebessert wird, und der Kunde kann bis dahin einen angemessenen Teil der Vergütung zurückhalten.',
     explanation:
-        'Je Grund 2 Punkte, höchstens 4 Punkte. Die mündliche Zusage des Projektleiters hilft später wenig - was nicht im Protokoll steht, lässt sich kaum beweisen.',
+        'Je Grund 2 Punkte, höchstens 4 Punkte. Die mündliche Zusage des Projektleiters hilft später wenig. Was nicht im Protokoll steht, lässt sich kaum beweisen.',
     punkte: 4,
   ),
   lueckentext(
@@ -1559,11 +1559,11 @@ final List<Question> ihkA07 = [
     zeilen: [
       ja(
         'Bestellungen über 1.000 € werden nicht gespeichert.',
-        'Eine Kernfunktion fällt aus - wesentlicher Mangel.',
+        'Eine Kernfunktion fällt aus, also ein wesentlicher Mangel.',
       ),
       nein(
         'Im Impressum fehlt ein Buchstabe.',
-        'Unwesentlich - wird unter Vorbehalt protokolliert.',
+        'Unwesentlich, er wird unter Vorbehalt protokolliert.',
       ),
       ja(
         'Die Anmeldung scheitert bei allen Nutzern mit Umlaut im Namen.',
@@ -1583,7 +1583,7 @@ final List<Question> ihkA07 = [
       ),
     ],
     explanation:
-        'Wegen unwesentlicher Mängel darf die Abnahme nicht verweigert werden (§ 640 Abs. 1 Satz 2 BGB). Wesentlich ist ein Mangel, wenn er den vertragsgemäßen Gebrauch spürbar beeinträchtigt - etwa wenn Kernfunktionen fehlen oder versagen. Kleinigkeiten kommen mit Frist ins Protokoll.',
+        'Wegen unwesentlicher Mängel darf die Abnahme nicht verweigert werden (§ 640 Abs. 1 Satz 2 BGB). Wesentlich ist ein Mangel, wenn er den vertragsgemäßen Gebrauch spürbar beeinträchtigt, etwa wenn Kernfunktionen fehlen oder versagen. Kleinigkeiten kommen mit Frist ins Protokoll.',
     punkte: 3,
   ),
   rechnen(
@@ -1705,7 +1705,7 @@ final List<Question> ihkA07 = [
         ],
       ),
       krit(
-        'Sofortumstellung, Nachteil: hohes Risiko - Fehler treffen sofort den ganzen Betrieb, kein Rückfall auf das alte System',
+        'Sofortumstellung, Nachteil: hohes Risiko: Fehler treffen sofort den ganzen Betrieb, kein Rückfall auf das alte System',
         stichwoerter: [
           'Risiko',
           'kein Rückfall',
@@ -1716,7 +1716,7 @@ final List<Question> ihkA07 = [
         ],
       ),
       krit(
-        'Parallelbetrieb, Vorteil: Sicherheit - das alte System steht als Rückfall bereit, Ergebnisse lassen sich vergleichen',
+        'Parallelbetrieb, Vorteil: Sicherheit. Das alte System steht als Rückfall bereit, Ergebnisse lassen sich vergleichen',
         stichwoerter: [
           'Sicherheit',
           'Rückfall',
@@ -1755,7 +1755,7 @@ final List<Question> ihkA07 = [
         'collected. During the rollout, offer hands-on training\n'
         'and name key users who can answer questions on the\n'
         'spot. Once the new system is live, switch off the old\n'
-        'one and update the work instructions - otherwise staff\n'
+        'one and update the work instructions, otherwise staff\n'
         'will quietly slide back into old habits.',
     prompt: 'Ordne die im Text genannten Maßnahmen den Phasen nach Lewin zu.',
     buckets: ['Unfreezing', 'Moving', 'Refreezing'],
@@ -1768,31 +1768,31 @@ final List<Question> ihkA07 = [
       zu(
         'Gründe früh und ehrlich erklären',
         0,
-        '„explain the reasons early and honestly“ - schafft Einsicht.',
+        '„explain the reasons early and honestly“ schafft Einsicht.',
       ),
       zu(
         'Das alte System abschalten',
         2,
-        '„switch off the old one“ - nimmt den Rückweg.',
+        '„switch off the old one“ nimmt den Rückweg.',
       ),
       zu(
         'Künftige Nutzer bei den Anforderungen beteiligen',
         0,
-        '„involve the future users“ - Beteiligung vor der Umstellung.',
+        '„involve the future users“: Beteiligung vor der Umstellung.',
       ),
       zu(
         'Key-User als Ansprechpartner benennen',
         1,
-        '„name key users“ - Begleitung während der Umstellung.',
+        '„name key users“: Begleitung während der Umstellung.',
       ),
       zu(
         'Arbeitsanweisungen aktualisieren',
         2,
-        '„update the work instructions“ - das Neue wird Standard.',
+        '„update the work instructions“. Das Neue wird Standard.',
       ),
     ],
     explanation:
-        'Unfreezing: erklären und beteiligen. Moving: schulen und begleiten. Refreezing: Altes abschalten und Standards festschreiben - sonst rutschen die Beschäftigten laut Text in alte Gewohnheiten zurück („slide back into old habits“).',
+        'Unfreezing: erklären und beteiligen. Moving: schulen und begleiten. Refreezing: Altes abschalten und Standards festschreiben. Sonst rutschen die Beschäftigten laut Text in alte Gewohnheiten zurück („slide back into old habits“).',
     punkte: 3,
     tags: ['englisch'],
   ),
@@ -1900,7 +1900,7 @@ final List<Question> ihkA07 = [
     zeilen: [
       ja(
         '„Das haben wir schon immer mit Listen gemacht, und es hat funktioniert.“',
-        'Offener Widerspruch - verbal und aktiv.',
+        'Offener Widerspruch, also verbal und aktiv.',
       ),
       nein(
         '„Können wir die Schulung auf zwei Termine legen, damit die Schicht besetzt bleibt?“',
@@ -1908,11 +1908,11 @@ final List<Question> ihkA07 = [
       ),
       ja(
         '„Das betrifft doch eher die Verwaltung, bei uns ist das nicht so wichtig.“',
-        'Ausweichen und Bagatellisieren - verbal und passiv.',
+        'Ausweichen und Bagatellisieren, also verbal und passiv.',
       ),
       ja(
         '„Ich habe gehört, mit den Scannern sollen nur Stellen gestrichen werden.“',
-        'Gerüchte und Unruhe - Aufregung.',
+        'Gerüchte und Unruhe: Aufregung.',
       ),
       nein(
         '„Ich würde die Scanner gern im Pilot testen.“',
@@ -1920,7 +1920,7 @@ final List<Question> ihkA07 = [
       ),
       ja(
         'Mehrere Beschäftigte schweigen die ganze Besprechung über und schauen auf ihr Handy.',
-        'Lustlosigkeit und Rückzug - nonverbal und passiv. Schweigen ist keine Zustimmung.',
+        'Lustlosigkeit und Rückzug, also nonverbal und passiv. Schweigen ist keine Zustimmung.',
       ),
     ],
     explanation:
@@ -1999,7 +1999,7 @@ final List<Question> ihkA07 = [
     loesung:
         'Angst um den Arbeitsplatz, Angst vor Überwachung und Leistungskontrolle, Sorge vor Überforderung durch das neue System, Festhalten an gewohnten Abläufen, fehlende Information über Gründe und Nutzen, Mehraufwand während der Umstellung, Verlust des eigenen Expertenstatus.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 3 Punkte. Hinter den Gründen stehen die vier Ursachen nicht wissen, nicht können, nicht wollen und nicht dürfen - daran richtet sich die passende Maßnahme aus.',
+        'Je Nennung 1 Punkt, höchstens 3 Punkte. Hinter den Gründen stehen die vier Ursachen nicht wissen, nicht können, nicht wollen und nicht dürfen. Daran richtet sich die passende Maßnahme aus.',
     punkte: 3,
     difficulty: 1,
   ),
@@ -2035,7 +2035,7 @@ final List<Question> ihkA07 = [
       ],
     ],
     explanation:
-        'Plan: Ist-Zustand, Ursachen, Ziel und Maßnahme. Do: im Kleinen ausprobieren. Check: Ergebnis mit dem Ziel vergleichen. Act: Erfolgreiches zum Standard machen - und von dort den nächsten Zyklus starten.',
+        'Plan: Ist-Zustand, Ursachen, Ziel und Maßnahme. Do: im Kleinen ausprobieren. Check: Ergebnis mit dem Ziel vergleichen. Act: Erfolgreiches zum Standard machen und von dort den nächsten Zyklus starten.',
     punkte: 3,
     difficulty: 1,
   ),
@@ -2113,7 +2113,7 @@ final List<Question> ihkA07 = [
     ],
     mono: true,
     explanation:
-        'Vorher: 1.500 × 0,14 = 210 Tickets. Nachher: 1.500 × 0,06 = 90 Tickets. Differenz: 120 Tickets × 8 min = 960 min = 16 h. Einsparung: 16 h × 45 € = 720 € im Monat. Kleine Verbesserungen summieren sich - das ist der Kern von Kaizen.',
+        'Vorher: 1.500 × 0,14 = 210 Tickets. Nachher: 1.500 × 0,06 = 90 Tickets. Differenz: 120 Tickets × 8 min = 960 min = 16 h. Einsparung: 16 h × 45 € = 720 € im Monat. Kleine Verbesserungen summieren sich. Das ist der Kern von Kaizen.',
     punkte: 4,
   ),
   markieren(
@@ -2125,7 +2125,7 @@ final List<Question> ihkA07 = [
     zeilen: [
       nein(
         'Die Fachabteilung füllt den Antrag im Portal aus.',
-        'Notwendiger Schritt - hier entsteht der Auftrag.',
+        'Notwendiger Schritt. Hier entsteht der Auftrag.',
       ),
       ja(
         'Der Antrag wird ausgedruckt und per Hauspost zur IT gebracht.',
@@ -2133,7 +2133,7 @@ final List<Question> ihkA07 = [
       ),
       ja(
         'Die IT tippt die Daten vom Ausdruck erneut ab.',
-        'Doppelerfassung - Überbearbeitung.',
+        'Doppelerfassung: Überbearbeitung.',
       ),
       ja(
         'Der Antrag liegt drei Tage zur Unterschrift bei der Teamleitung.',

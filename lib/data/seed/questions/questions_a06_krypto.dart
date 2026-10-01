@@ -33,7 +33,7 @@ final List<Question> questionsA06Krypto = [
       zu('3DES', 0, 'Älteres symmetrisches Verfahren, heute abgelöst.'),
     ],
     explanation:
-        'Symmetrisch (ein gemeinsamer Schlüssel): AES, ChaCha20, 3DES. Asymmetrisch (Schlüsselpaar): RSA, ECC. SHA-256 ist ein Hashverfahren - es erzeugt einen Prüfwert und lässt sich nicht „entschlüsseln“.',
+        'Symmetrisch (ein gemeinsamer Schlüssel): AES, ChaCha20, 3DES. Asymmetrisch (Schlüsselpaar): RSA, ECC. SHA-256 ist ein Hashverfahren. Es erzeugt einen Prüfwert und lässt sich nicht „entschlüsseln“.',
   ),
   mehrfach(
     'a6-cs-3',
@@ -95,7 +95,7 @@ final List<Question> questionsA06Krypto = [
     'a6-cs-5',
     'kr-symmetrisch',
     scenario:
-        'Sechs Filialen eines Händlers sollen jeweils paarweise über symmetrisch verschlüsselte Verbindungen gekoppelt werden - jede Filiale mit jeder anderen, jede Verbindung mit eigenem Schlüssel.',
+        'Sechs Filialen eines Händlers sollen jeweils paarweise über symmetrisch verschlüsselte Verbindungen gekoppelt werden. Jede Filiale mit jeder anderen, jede Verbindung mit eigenem Schlüssel.',
     prompt: 'Wie viele Schlüssel werden benötigt?',
     answer: 15,
     unit: 'Schlüssel',
@@ -187,7 +187,7 @@ final List<Question> questionsA06Krypto = [
       ),
       nein(
         'Mit Annas privatem Schlüssel',
-        'Das wäre eine Signatur - jeder könnte sie mit Annas öffentlichem Schlüssel lesen.',
+        'Das wäre eine Signatur. Jeder könnte sie mit Annas öffentlichem Schlüssel lesen.',
       ),
       nein(
         'Mit Annas öffentlichem Schlüssel',
@@ -195,7 +195,7 @@ final List<Question> questionsA06Krypto = [
       ),
       nein(
         'Mit Bens privatem Schlüssel',
-        'Den kennt nur Ben - Anna hat ihn nicht.',
+        'Den kennt nur Ben: Anna hat ihn nicht.',
       ),
     ],
     explanation:
@@ -215,12 +215,12 @@ final List<Question> questionsA06Krypto = [
       zu(
         'Signatur prüfen',
         0,
-        'Jeder kann prüfen - dafür genügt der öffentliche Schlüssel des Absenders.',
+        'Jeder kann prüfen. Dafür genügt der öffentliche Schlüssel des Absenders.',
       ),
       zu(
         'Signatur erstellen',
         1,
-        'Nur der Absender besitzt seinen privaten Schlüssel - deshalb beweist die Signatur die Herkunft.',
+        'Nur der Absender besitzt seinen privaten Schlüssel. Deshalb beweist die Signatur die Herkunft.',
       ),
       zu(
         'Nachricht verschlüsseln',
@@ -253,7 +253,7 @@ final List<Question> questionsA06Krypto = [
     'kr-asymmetrisch',
     prompt: 'Ergänze die Aussagen zur digitalen Signatur.',
     text:
-        'Signiert wird nicht das ganze Dokument, sondern sein {0}. Der Absender verschlüsselt ihn mit seinem {1} Schlüssel. Der Empfänger prüft die Signatur mit dem {2} Schlüssel des Absenders. Die Signatur sichert {3} und Authentizität, aber nicht die {4} - das Dokument selbst bleibt lesbar.',
+        'Signiert wird nicht das ganze Dokument, sondern sein {0}. Der Absender verschlüsselt ihn mit seinem {1} Schlüssel. Der Empfänger prüft die Signatur mit dem {2} Schlüssel des Absenders. Die Signatur sichert {3} und Authentizität, aber nicht die {4}. Das Dokument selbst bleibt lesbar.',
     luecken: [
       wahl('Hashwert', ['Dateiname', 'Sitzungsschlüssel']),
       wahl('privaten', ['öffentlichen', 'symmetrischen']),
@@ -273,11 +273,11 @@ final List<Question> questionsA06Krypto = [
     choices: [
       ja(
         'Mit Bobs privatem Schlüssel',
-        'Nur Bob besitzt ihn - deshalb beweist die Signatur die Herkunft.',
+        'Nur Bob besitzt ihn. Deshalb beweist die Signatur die Herkunft.',
       ),
       nein(
         'Mit Bobs öffentlichem Schlüssel',
-        'Den kennt jeder - eine damit erzeugte „Signatur“ könnte jeder fälschen.',
+        'Den kennt jeder. Eine damit erzeugte „Signatur“ könnte jeder fälschen.',
       ),
       nein(
         'Mit Alices öffentlichem Schlüssel',
@@ -359,7 +359,7 @@ final List<Question> questionsA06Krypto = [
         'Warum verschlüsselt TLS die Nutzdaten symmetrisch und nicht asymmetrisch?',
     choices: [
       ja(
-        'Symmetrische Verfahren sind viel schneller - asymmetrische dienen nur Schlüsselaustausch und Echtheitsnachweis.',
+        'Symmetrische Verfahren sind viel schneller. Asymmetrische dienen nur Schlüsselaustausch und Echtheitsnachweis.',
         'So verbindet das Hybridverfahren das Tempo der symmetrischen mit den Vorteilen der asymmetrischen Verfahren.',
       ),
       nein(
@@ -368,7 +368,7 @@ final List<Question> questionsA06Krypto = [
       ),
       nein(
         'Symmetrische Verfahren brauchen keinen Schlüssel.',
-        'Sie brauchen einen gemeinsamen Schlüssel - den Sitzungsschlüssel.',
+        'Sie brauchen einen gemeinsamen Schlüssel, den Sitzungsschlüssel.',
       ),
       nein(
         'Browser können keine asymmetrischen Verfahren ausführen.',
@@ -405,7 +405,7 @@ final List<Question> questionsA06Krypto = [
       ),
       nein(
         'Privater Schlüssel des Servers',
-        'Er verlässt den Server nie - stünde er im Zertifikat, wäre es wertlos.',
+        'Er verlässt den Server nie. Stünde er im Zertifikat, wäre es wertlos.',
       ),
       ja('Name des Inhabers (Domain)', 'Für wen das Zertifikat gilt.'),
       ja('Gültigkeitszeitraum', 'Beginn und Ende der Gültigkeit.'),
@@ -604,7 +604,7 @@ final List<Question> questionsA06Krypto = [
       ),
       nein(
         'Mit AES verschlüsseln',
-        'Verschlüsseltes lässt sich mit dem Schlüssel zurückholen - wird er gestohlen, liegen alle Passwörter offen.',
+        'Verschlüsseltes lässt sich mit dem Schlüssel zurückholen. Wird er gestohlen, liegen alle Passwörter offen.',
       ),
       nein(
         'Mit MD5 hashen',
@@ -639,7 +639,7 @@ final List<Question> questionsA06Krypto = [
       ),
       nein(
         'Die Datei ist in Ordnung, nur größer als erwartet.',
-        'Die Größe beeinflusst die Länge des Hashwerts nicht - abweichende Werte heißen abweichende Daten.',
+        'Die Größe beeinflusst die Länge des Hashwerts nicht. Abweichende Werte heißen abweichende Daten.',
       ),
     ],
     explanation:
@@ -694,7 +694,7 @@ final List<Question> questionsA06Krypto = [
       wahl('nicht geheim', ['geheim', 'mindestens 256 Bit lang']),
     ],
     explanation:
-        'Der Salt ist ein zufälliger, je Konto eigener Wert. Er sorgt dafür, dass gleiche Passwörter verschiedene Hashwerte ergeben und Rainbow-Tables nicht mehr passen. Geheim sein muss er nicht - er wird zusammen mit dem Hashwert gespeichert.',
+        'Der Salt ist ein zufälliger, je Konto eigener Wert. Er sorgt dafür, dass gleiche Passwörter verschiedene Hashwerte ergeben und Rainbow-Tables nicht mehr passen. Geheim sein muss er nicht. Er wird zusammen mit dem Hashwert gespeichert.',
   ),
   einfach(
     'a6-cx-8',
@@ -705,7 +705,7 @@ final List<Question> questionsA06Krypto = [
     choices: [
       ja(
         'Der Angreifer kann Datei und angezeigten Hashwert gemeinsam austauschen.',
-        'Der Vergleich passt dann wieder - der Hash belegt die Integrität, aber nicht die Herkunft.',
+        'Der Vergleich passt dann wieder. Der Hash belegt die Integrität, aber nicht die Herkunft.',
       ),
       nein(
         'SHA-256 ist veraltet und unsicher.',
@@ -713,7 +713,7 @@ final List<Question> questionsA06Krypto = [
       ),
       nein(
         'Hashwerte lassen sich nur mit dem Schlüssel des Herstellers prüfen.',
-        'Hashfunktionen haben keinen Schlüssel - jeder kann sie berechnen.',
+        'Hashfunktionen haben keinen Schlüssel. Jeder kann sie berechnen.',
       ),
       nein(
         'Der Hashwert ändert sich bei jedem Download.',
@@ -721,7 +721,7 @@ final List<Question> questionsA06Krypto = [
       ),
     ],
     explanation:
-        'Ein Hashwert beweist nur, dass zwei Daten gleich sind. Um die Herkunft zu belegen, braucht es eine digitale Signatur des Herstellers - die kann der Angreifer ohne dessen privaten Schlüssel nicht fälschen.',
+        'Ein Hashwert beweist nur, dass zwei Daten gleich sind. Um die Herkunft zu belegen, braucht es eine digitale Signatur des Herstellers. Die kann der Angreifer ohne dessen privaten Schlüssel nicht fälschen.',
   ),
 
   // =========================================== Authentifizierung und 2FA
@@ -743,7 +743,7 @@ final List<Question> questionsA06Krypto = [
       zu('PIN + Passwort', 1, 'Zweimal Wissen.'),
     ],
     explanation:
-        'Echte Zwei-Faktor-Authentifizierung kombiniert zwei verschiedene Kategorien: Wissen, Besitz, Biometrie. Zwei Nachweise aus derselben Kategorie - etwa Passwort und Sicherheitsfrage - fallen demselben Angriff zum Opfer.',
+        'Echte Zwei-Faktor-Authentifizierung kombiniert zwei verschiedene Kategorien: Wissen, Besitz, Biometrie. Zwei Nachweise aus derselben Kategorie, etwa Passwort und Sicherheitsfrage, fallen demselben Angriff zum Opfer.',
   ),
   zuordnen(
     'a6-cz-2',
@@ -751,7 +751,7 @@ final List<Question> questionsA06Krypto = [
     prompt: 'Ordne jeden Nachweis seiner Faktorkategorie zu.',
     buckets: ['Wissen', 'Besitz', 'Inhärenz'],
     items: [
-      zu('PIN', 0, 'Eine PIN muss man sich merken - Wissen.'),
+      zu('PIN', 0, 'Eine PIN muss man sich merken: Wissen.'),
       zu(
         'Passphrase',
         0,
@@ -760,10 +760,10 @@ final List<Question> questionsA06Krypto = [
       zu(
         'Hardware-Sicherheitsschlüssel',
         1,
-        'Ein Gegenstand, den man bei sich trägt - Besitz.',
+        'Ein Gegenstand, den man bei sich trägt: Besitz.',
       ),
       zu('Smartcard', 1, 'Die Karte muss man physisch besitzen.'),
-      zu('Gesichtserkennung', 2, 'Ein körperliches Merkmal - Inhärenz.'),
+      zu('Gesichtserkennung', 2, 'Ein körperliches Merkmal: Inhärenz.'),
       zu('Iris-Scan', 2, 'Die Iris ist ein biometrisches Merkmal der Person.'),
     ],
     explanation:
@@ -798,7 +798,7 @@ final List<Question> questionsA06Krypto = [
       ),
       nein(
         'Acht Zeichen reichen immer, wenn ein Sonderzeichen dabei ist',
-        'Kurze Passwörter bleiben auch mit Sonderzeichen angreifbar - Länge wirkt stärker.',
+        'Kurze Passwörter bleiben auch mit Sonderzeichen angreifbar: Länge wirkt stärker.',
       ),
     ],
     explanation:
@@ -854,7 +854,7 @@ final List<Question> questionsA06Krypto = [
       zu(
         'Sie bestätigt die Anmeldung per Fingerabdruck am Smartphone.',
         1,
-        'Ein weiterer Nachweis der Identität - zweiter Faktor.',
+        'Ein weiterer Nachweis der Identität, also ein zweiter Faktor.',
       ),
       zu(
         'Nur Teamleitungen dürfen Tickets endgültig schließen.',
@@ -872,7 +872,7 @@ final List<Question> questionsA06Krypto = [
     choices: [
       ja(
         'FIDO2-Sicherheitsschlüssel bzw. Passkey',
-        'Die Antwort ist an die echte Domain gebunden - eine Phishing-Seite erhält keine gültige Anmeldung.',
+        'Die Antwort ist an die echte Domain gebunden. Eine Phishing-Seite erhält keine gültige Anmeldung.',
       ),
       nein(
         'SMS-Code',
@@ -926,7 +926,7 @@ final List<Question> questionsA06Krypto = [
       ),
     ],
     explanation:
-        'Personenbezogen sind alle Informationen über eine identifizierte oder identifizierbare natürliche Person - auch Kennungen wie Kundennummer, IP-Adresse oder Kfz-Kennzeichen. Sachdaten und Angaben über juristische Personen gehören nicht dazu.',
+        'Personenbezogen sind alle Informationen über eine identifizierte oder identifizierbare natürliche Person, auch Kennungen wie Kundennummer, IP-Adresse oder Kfz-Kennzeichen. Sachdaten und Angaben über juristische Personen gehören nicht dazu.',
   ),
   zuordnen(
     'a6-xg-2',
@@ -1019,7 +1019,7 @@ final List<Question> questionsA06Krypto = [
       ),
     ],
     explanation:
-        'Die DSGVO schützt natürliche Personen - unabhängig davon, ob sie Kunden, Beschäftigte oder Bewerbende sind.',
+        'Die DSGVO schützt natürliche Personen, unabhängig davon, ob sie Kunden, Beschäftigte oder Bewerbende sind.',
   ),
   einfach(
     'a6-xg-5',
@@ -1030,7 +1030,7 @@ final List<Question> questionsA06Krypto = [
     choices: [
       ja(
         'Ja, weil mindestens 20 Personen ständig mit der automatisierten Verarbeitung personenbezogener Daten beschäftigt sind',
-        '22 ≥ 20 - die Schwelle aus § 38 BDSG ist erreicht.',
+        '22 ≥ 20. Die Schwelle aus § 38 BDSG ist erreicht.',
       ),
       nein(
         'Nein, weil weniger als die Hälfte der Beschäftigten mit Daten arbeitet',
@@ -1088,7 +1088,7 @@ final List<Question> questionsA06Krypto = [
     choices: [
       ja(
         'Einen Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO',
-        'Der Dienstleister verarbeitet im Auftrag und nach Weisung - dafür ist ein AV-Vertrag vorgeschrieben.',
+        'Der Dienstleister verarbeitet im Auftrag und nach Weisung. Dafür ist ein AV-Vertrag vorgeschrieben.',
       ),
       nein(
         'Eine Einwilligung jedes Beschäftigten',
@@ -1100,7 +1100,7 @@ final List<Question> questionsA06Krypto = [
       ),
       nein(
         'Nichts, weil der Dienstleister selbst Verantwortlicher wird',
-        'Über Zweck und Mittel entscheidet weiter die Firma - sie bleibt verantwortlich.',
+        'Über Zweck und Mittel entscheidet weiter die Firma. Sie bleibt verantwortlich.',
       ),
     ],
     explanation:
@@ -1144,7 +1144,7 @@ final List<Question> questionsA06Krypto = [
       zu(
         'Ein Newsletter-Formular verlangt Geburtsdatum und Telefonnummer als Pflichtfelder.',
         1,
-        'Für den Newsletter genügt die E-Mail-Adresse - alles andere ist zu viel.',
+        'Für den Newsletter genügt die E-Mail-Adresse. Alles andere ist zu viel.',
       ),
       zu(
         'Unterlagen abgelehnter Bewerbender liegen seit fünf Jahren im Ordner.',
@@ -1192,7 +1192,7 @@ final List<Question> questionsA06Krypto = [
     'ds-grundsaetze',
     prompt: 'Ergänze die Voraussetzungen einer wirksamen Einwilligung.',
     text:
-        'Eine Einwilligung muss {0} erteilt werden - wer keine echte Wahl hat, willigt nicht wirksam ein. Die Person muss vorher {1} werden, wozu ihre Daten verwendet werden. Ein vorangekreuztes Kästchen ist {2}. Die Einwilligung kann {3} widerrufen werden; der Widerruf wirkt {4}.',
+        'Eine Einwilligung muss {0} erteilt werden. Wer keine echte Wahl hat, willigt nicht wirksam ein. Die Person muss vorher {1} werden, wozu ihre Daten verwendet werden. Ein vorangekreuztes Kästchen ist {2}. Die Einwilligung kann {3} widerrufen werden; der Widerruf wirkt {4}.',
     luecken: [
       wahl('freiwillig', ['schriftlich', 'notariell']),
       wahl('informiert', ['geprüft', 'registriert']),
@@ -1207,7 +1207,7 @@ final List<Question> questionsA06Krypto = [
       ]),
     ],
     explanation:
-        'Eine wirksame Einwilligung ist freiwillig, informiert, eindeutig (aktives Ankreuzen) und jederzeit widerrufbar. Der Widerruf wirkt nur für die Zukunft - die bisherige Verarbeitung bleibt rechtmäßig. Er muss so einfach sein wie die Erteilung.',
+        'Eine wirksame Einwilligung ist freiwillig, informiert, eindeutig (aktives Ankreuzen) und jederzeit widerrufbar. Der Widerruf wirkt nur für die Zukunft. Die bisherige Verarbeitung bleibt rechtmäßig. Er muss so einfach sein wie die Erteilung.',
   ),
   einfach(
     'a6-xs-4',
@@ -1442,7 +1442,7 @@ final List<Question> questionsA06Krypto = [
     choices: [
       ja(
         'Das Recht, keiner rein automatisierten Entscheidung unterworfen zu werden, und das Eingreifen eines Menschen zu verlangen (Art. 22)',
-        'Entscheidungen mit rechtlicher oder ähnlich erheblicher Wirkung dürfen nicht allein ein Algorithmus treffen - Ausnahmen gelten nur mit Schutzmaßnahmen.',
+        'Entscheidungen mit rechtlicher oder ähnlich erheblicher Wirkung dürfen nicht allein ein Algorithmus treffen: Ausnahmen gelten nur mit Schutzmaßnahmen.',
       ),
       nein(
         'Das Recht auf Datenübertragbarkeit (Art. 20)',
@@ -1526,7 +1526,7 @@ final List<Question> questionsA06Krypto = [
       ),
       nein(
         'Die Daten anderer Kunden mit demselben Nachnamen',
-        'Auskunft gibt es nur über die eigenen Daten - sonst entsteht eine Datenpanne.',
+        'Auskunft gibt es nur über die eigenen Daten. Sonst entsteht eine Datenpanne.',
       ),
     ],
     explanation:
@@ -1606,11 +1606,11 @@ final List<Question> questionsA06Krypto = [
       ),
       nein(
         'Namen durch Personalnummern ersetzen',
-        'Über die Personalnummer ist die Person weiterhin bestimmbar - das ist Pseudonymisierung.',
+        'Über die Personalnummer ist die Person weiterhin bestimmbar. Das ist Pseudonymisierung.',
       ),
       nein(
         'E-Mail-Adressen durch ihren Hashwert ersetzen',
-        'Der Hash lässt sich aus bekannten Adressen nachrechnen - das bleibt pseudonym.',
+        'Der Hash lässt sich aus bekannten Adressen nachrechnen. Das bleibt pseudonym.',
       ),
     ],
     explanation:
@@ -1664,11 +1664,11 @@ final List<Question> questionsA06Krypto = [
       ),
       nein(
         'Die Kopie mit AES verschlüsseln und so testen',
-        'Zum Testen muss sie entschlüsselt werden - der Personenbezug bleibt.',
+        'Zum Testen muss sie entschlüsselt werden. Der Personenbezug bleibt.',
       ),
     ],
     explanation:
-        'Echte Kundendaten haben in Testsystemen nichts verloren. Richtig ist, sie zu anonymisieren oder synthetische Testdaten zu erzeugen - nur dann gilt die DSGVO für die Testdaten nicht.',
+        'Echte Kundendaten haben in Testsystemen nichts verloren. Richtig ist, sie zu anonymisieren oder synthetische Testdaten zu erzeugen. Nur dann gilt die DSGVO für die Testdaten nicht.',
   ),
   einfach(
     'a6-xa-6',
@@ -1679,7 +1679,7 @@ final List<Question> questionsA06Krypto = [
     choices: [
       ja(
         'Die Gruppe 30-39 / 51xxx mit nur 2 Personen weiter vergröbern oder weglassen',
-        'Sie unterschreitet die Mindestgröße von 3 - diese Personen wären leichter erkennbar.',
+        'Sie unterschreitet die Mindestgröße von 3. Diese Personen wären leichter erkennbar.',
       ),
       nein(
         'Nichts, alle Gruppen sind groß genug',
@@ -1687,7 +1687,7 @@ final List<Question> questionsA06Krypto = [
       ),
       nein(
         'Die Gruppe 20-29 / 50xxx aufteilen, weil sie die größte ist',
-        'Große Gruppen sind unkritisch - das Problem sind kleine.',
+        'Große Gruppen sind unkritisch, problematisch sind kleine.',
       ),
       nein(
         'Namen ergänzen, damit die Tabelle verständlicher wird',
@@ -1736,24 +1736,24 @@ final List<Question> questionsA06Krypto = [
     prompt: 'Sind die Daten für das Unternehmen dadurch anonym?',
     choices: [
       ja(
-        'Nein - mit dem Schlüssel lässt sich der Personenbezug wiederherstellen, die DSGVO gilt weiter.',
+        'Nein, mit dem Schlüssel lässt sich der Personenbezug wiederherstellen. Die DSGVO gilt weiter.',
         'Verschlüsselung ist eine wichtige Schutzmaßnahme, aber keine Anonymisierung.',
       ),
       nein(
-        'Ja - verschlüsselte Daten sind immer anonym.',
+        'Ja, verschlüsselte Daten sind immer anonym.',
         'Verschlüsselung ist umkehrbar, Anonymisierung nicht.',
       ),
       nein(
-        'Ja - weil AES-256 als praktisch nicht knackbar gilt.',
+        'Ja, weil AES-256 als praktisch nicht knackbar gilt.',
         'Die Stärke des Verfahrens ändert nichts: Wer den Schlüssel hat, kann die Daten jederzeit wieder lesen.',
       ),
       nein(
-        'Nein - verschlüsselte Daten sind automatisch besondere Kategorien nach Art. 9.',
+        'Nein, verschlüsselte Daten sind automatisch besondere Kategorien nach Art. 9.',
         'Die Verschlüsselung ändert nichts an der Art der Daten.',
       ),
     ],
     explanation:
-        'Anonym sind Daten nur, wenn sich der Personenbezug mit keinen vernünftigen Mitteln mehr herstellen lässt. Verschlüsselte Daten sind mit dem Schlüssel wieder lesbar - sie bleiben personenbezogen.',
+        'Anonym sind Daten nur, wenn sich der Personenbezug mit keinen vernünftigen Mitteln mehr herstellen lässt. Verschlüsselte Daten sind mit dem Schlüssel wieder lesbar. Sie bleiben personenbezogen.',
   ),
 
   // =============================== Technische und organisatorische Maßnahmen
@@ -1773,32 +1773,32 @@ final List<Question> questionsA06Krypto = [
       zu(
         'Chipkartenleser an der Tür zum Serverraum',
         0,
-        'Schützt den Raum - Zutritt.',
+        'Schützt den Raum: Zutritt.',
       ),
       zu(
         'Anmeldung am Notebook mit Passwort und zweitem Faktor',
         1,
-        'Schützt die Nutzung des Systems - Zugang.',
+        'Schützt die Nutzung des Systems: Zugang.',
       ),
       zu(
         'Nur die Personalabteilung darf Personalakten lesen',
         2,
-        'Regelt die Rechte auf bestimmte Daten - Zugriff.',
+        'Regelt die Rechte auf bestimmte Daten: Zugriff.',
       ),
       zu(
         'E-Mails mit Patientendaten werden mit S/MIME verschlüsselt',
         3,
-        'Schützt die Daten bei der Übertragung - Weitergabe.',
+        'Schützt die Daten bei der Übertragung: Weitergabe.',
       ),
       zu(
         'Jede Änderung an einer Patientenakte wird mit Name und Uhrzeit protokolliert',
         4,
-        'Macht nachvollziehbar, wer was geändert hat - Eingabe.',
+        'Macht nachvollziehbar, wer was geändert hat: Eingabe.',
       ),
       zu(
         'Tägliches Backup auf ein ausgelagertes System',
         5,
-        'Schützt den Datenbestand vor Verlust - Verfügbarkeit.',
+        'Schützt den Datenbestand vor Verlust: Verfügbarkeit.',
       ),
     ],
     explanation:
@@ -1915,7 +1915,7 @@ final List<Question> questionsA06Krypto = [
     'ds-tom',
     prompt: 'Ergänze die Regeln zur Meldepflicht bei Datenpannen.',
     text:
-        'Eine Verletzung des Schutzes personenbezogener Daten wird der {0} gemeldet - unverzüglich, möglichst binnen {1} Stunden nach Bekanntwerden. Die Frist läuft am Wochenende {2}. Besteht voraussichtlich ein {3} für die Betroffenen, müssen auch sie benachrichtigt werden. Intern wird {4} Panne dokumentiert.',
+        'Eine Verletzung des Schutzes personenbezogener Daten wird der {0} gemeldet, unverzüglich, möglichst binnen {1} Stunden nach Bekanntwerden. Die Frist läuft am Wochenende {2}. Besteht voraussichtlich ein {3} für die Betroffenen, müssen auch sie benachrichtigt werden. Intern wird {4} Panne dokumentiert.',
     luecken: [
       wahl('Aufsichtsbehörde', ['Polizei', 'Geschäftsführung des Kunden']),
       zahl(72),
@@ -1924,7 +1924,7 @@ final List<Question> questionsA06Krypto = [
       wahl('jede', ['nur eine gemeldete', 'keine']),
     ],
     explanation:
-        'Art. 33 DSGVO: Meldung an die Aufsichtsbehörde binnen 72 Stunden, außer es besteht voraussichtlich kein Risiko; die Frist läuft durchgehend. Art. 34: Bei hohem Risiko werden zusätzlich die Betroffenen benachrichtigt. Dokumentiert wird jede Panne - auch die nicht meldepflichtige.',
+        'Art. 33 DSGVO: Meldung an die Aufsichtsbehörde binnen 72 Stunden, außer es besteht voraussichtlich kein Risiko; die Frist läuft durchgehend. Art. 34: Bei hohem Risiko werden zusätzlich die Betroffenen benachrichtigt. Dokumentiert wird jede Panne, auch die nicht meldepflichtige.',
   ),
   einfach(
     'a6-xt-7',
@@ -1934,7 +1934,7 @@ final List<Question> questionsA06Krypto = [
     prompt: 'Was gilt für die Meldepflicht?',
     choices: [
       ja(
-        'Voraussichtlich besteht kein Risiko für die Betroffenen - keine Meldung nötig, aber intern dokumentieren.',
+        'Voraussichtlich besteht kein Risiko für die Betroffenen. Keine Meldung nötig, aber intern dokumentieren.',
         'Die Daten sind für den Dieb unlesbar und dank Sicherung nicht verloren.',
       ),
       nein(

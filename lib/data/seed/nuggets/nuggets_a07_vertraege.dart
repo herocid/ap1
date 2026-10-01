@@ -1609,7 +1609,7 @@ final List<Nugget> nuggetsA07 = [
         '            / Wert ohne Mangel\n'
         '\n'
         'Minderungsbetrag =\n'
-        '  Kaufpreis - geminderter Preis',
+        '  Kaufpreis, geminderter Preis',
     points: [
       'Die Werte schätzt man, notfalls ein Gutachter',
       'Hat der Käufer schon mehr bezahlt, bekommt er den Minderungsbetrag zurück',
@@ -2046,7 +2046,7 @@ final List<Nugget> nuggetsA07 = [
       ],
     ],
     merksatz:
-        'Sofortumstellung spart Aufwand und kostet Sicherheit - beim Parallelbetrieb ist es umgekehrt.',
+        'Sofortumstellung spart Aufwand und kostet Sicherheit. Beim Parallelbetrieb ist es umgekehrt.',
   ),
   beispiel(
     'n-cl-13',

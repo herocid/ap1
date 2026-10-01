@@ -203,7 +203,7 @@ final List<ExamCase> casesA07 = [
           ],
         ],
         explanation:
-            'Servicezeit: 21 × 10 h = 210 h. Zulässiger Ausfall: 210 h × 1 % = 2,1 h = 126 min. Erreicht: (210 h − 4,2 h) / 210 h = 205,8 / 210 = 0,98 = 98 %. Das SLA ist verfehlt - der Ausfall war doppelt so lang wie erlaubt.',
+            'Servicezeit: 21 × 10 h = 210 h. Zulässiger Ausfall: 210 h × 1 % = 2,1 h = 126 min. Erreicht: (210 h − 4,2 h) / 210 h = 205,8 / 210 = 0,98 = 98 %. Das SLA ist verfehlt. Der Ausfall war doppelt so lang wie erlaubt.',
         punkte: 4,
       ),
       freitext(
@@ -301,7 +301,7 @@ final List<ExamCase> casesA07 = [
         loesung:
             'Beim Parallelbetrieb muss jeder Vorgang sowohl in der Papierakte als auch in der digitalen Akte gepflegt werden. Das bedeutet doppelte Arbeit und höhere Kosten und kann zu abweichenden Datenständen führen. Außerdem bleiben die Beschäftigten leichter bei der gewohnten Papierakte.',
         explanation:
-            '2 Punkte für einen beschriebenen Nachteil (nennen und kurz ausführen). Der Vorteil des Parallelbetriebs - die Sicherheit durch den Rückfall auf das alte Verfahren - war nicht gefragt.',
+            '2 Punkte für einen beschriebenen Nachteil (nennen und kurz ausführen). Der Vorteil des Parallelbetriebs (die Sicherheit durch den Rückfall auf das alte Verfahren) war nicht gefragt.',
         punkte: 2,
       ),
     ],
@@ -797,15 +797,15 @@ final List<ExamCase> casesA07 = [
           ),
           nein(
             '„Wie sehe ich im Ticketsystem, welche Anfragen zu meinem Projekt gehören?“',
-            'Sachliche Frage zur Nutzung - Interesse, kein Widerstand.',
+            'Sachliche Frage zur Nutzung: Interesse, kein Widerstand.',
           ),
           ja(
             'Ein Projektleiter wechselt jedes Mal das Thema, sobald es um den Starttermin geht.',
-            'Ausweichen - verbal und passiv.',
+            'Ausweichen, also verbal und passiv.',
           ),
           ja(
             'Auf dem Flur heißt es, das System diene nur dazu, Antwortzeiten zu überwachen.',
-            'Gerüchte und Unruhe - Aufregung.',
+            'Gerüchte und Unruhe: Aufregung.',
           ),
           nein(
             '„Ich würde gern in der Testphase mitmachen.“',
@@ -813,7 +813,7 @@ final List<ExamCase> casesA07 = [
           ),
           ja(
             'Zwei Kolleginnen sagen nichts und erscheinen nicht zur angesetzten Schulung.',
-            'Rückzug und Lustlosigkeit - verdeckter Widerstand.',
+            'Rückzug und Lustlosigkeit, also verdeckter Widerstand.',
           ),
         ],
         explanation:
@@ -952,7 +952,7 @@ final List<ExamCase> casesA07 = [
             ],
           ),
           krit(
-            'Der Händler hat die Verspätung zu vertreten (Verschulden wird vermutet) - er ist seit dem 16. April in Verzug',
+            'Der Händler hat die Verspätung zu vertreten (Verschulden wird vermutet). Er ist seit dem 16. April in Verzug',
             stichwoerter: [
               'vertreten',
               'Verschulden',
@@ -1107,9 +1107,9 @@ final List<ExamCase> casesA07 = [
           ),
         ],
         loesung:
-            'Bei der Sofortumstellung gibt es keinen Rückfall auf die Papierlisten. Störungen des neuen Systems treffen den Betrieb daher sofort und in allen drei Schichten - im schlimmsten Fall stehen Kommissionierung und Verladung. Außerdem müssen alle Beschäftigten vom ersten Tag an sicher mit den Scannern umgehen können, was den Druck erhöht.',
+            'Bei der Sofortumstellung gibt es keinen Rückfall auf die Papierlisten. Störungen des neuen Systems treffen den Betrieb daher sofort und in allen drei Schichten. Im schlimmsten Fall stehen Kommissionierung und Verladung. Außerdem müssen alle Beschäftigten vom ersten Tag an sicher mit den Scannern umgehen können, was den Druck erhöht.',
         explanation:
-            '2 Punkte für einen beschriebenen Nachteil (nennen und auf den Betrieb beziehen). Gefragt war ein Nachteil - Vorteile wie die kurze Umstellungsdauer bringen keine Punkte.',
+            '2 Punkte für einen beschriebenen Nachteil (nennen und auf den Betrieb beziehen). Gefragt war ein Nachteil: Vorteile wie die kurze Umstellungsdauer bringen keine Punkte.',
         punkte: 2,
       ),
       freitext(

@@ -14,7 +14,7 @@ final List<Question> questionsA06Sicherheit = [
       zu(
         'Ein Azubi öffnet die Gehaltsliste in einem für alle freigegebenen Ordner',
         0,
-        'Unbefugte Einsicht - die Daten selbst bleiben unverändert und verfügbar.',
+        'Unbefugte Einsicht. Die Daten selbst bleiben unverändert und verfügbar.',
       ),
       zu(
         'Ein Angreifer ändert die IBAN in einer Rechnungsvorlage',
@@ -29,7 +29,7 @@ final List<Question> questionsA06Sicherheit = [
       zu(
         'Ein Übertragungsfehler verfälscht Messwerte in der Datenbank',
         1,
-        'Die Daten sind nicht mehr korrekt - auch ohne Angreifer ist die Integrität verletzt.',
+        'Die Daten sind nicht mehr korrekt. Auch ohne Angreifer ist die Integrität verletzt.',
       ),
       zu(
         'Ein Mitarbeiter fotografiert Kundendaten vom Bildschirm und verkauft sie',
@@ -90,11 +90,11 @@ final List<Question> questionsA06Sicherheit = [
     zeilen: [
       ja(
         'Unterbrechungsfreie Stromversorgung (USV)',
-        'Überbrückt Stromausfälle - die Systeme bleiben erreichbar.',
+        'Überbrückt Stromausfälle. Die Systeme bleiben erreichbar.',
       ),
       nein(
         'Verschlüsselung der Festplatten',
-        'Schützt vor unbefugtem Lesen - Vertraulichkeit.',
+        'Schützt vor unbefugtem Lesen: Vertraulichkeit.',
       ),
       ja(
         'Zweite Internetleitung über einen anderen Anbieter',
@@ -110,7 +110,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
       nein(
         'Zugriffsrechte nach dem Minimalprinzip',
-        'Begrenzt, wer Daten sehen und ändern darf - vor allem Vertraulichkeit.',
+        'Begrenzt, wer Daten sehen und ändern darf, schützt also vor allem die Vertraulichkeit.',
       ),
       ja(
         'Klimaanlage mit Ersatzgerät im Serverraum',
@@ -146,7 +146,7 @@ final List<Question> questionsA06Sicherheit = [
     unit: '%',
     difficulty: 3,
     explanation:
-        'Bei Komponenten in Reihe werden die Verfügbarkeiten multipliziert: 0,99 × 0,999 = 0,98901; 0,98901 × 0,995 = 0,98406495. Das sind gerundet 98,41 % - weniger als jede einzelne Komponente.',
+        'Bei Komponenten in Reihe werden die Verfügbarkeiten multipliziert: 0,99 × 0,999 = 0,98901; 0,98901 × 0,995 = 0,98406495. Das sind gerundet 98,41 %, also weniger als jede einzelne Komponente.',
   ),
   zuordnen(
     'a6-zz-7',
@@ -215,7 +215,7 @@ final List<Question> questionsA06Sicherheit = [
       zu(
         'Verbreitet sich ohne jedes Zutun der Nutzer im gesamten Firmennetz',
         1,
-        'Kein Wirt, keine Nutzeraktion - ein Wurm.',
+        'Kein Wirt, keine Nutzeraktion: ein Wurm.',
       ),
     ],
     explanation:
@@ -416,7 +416,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
     ],
     loesung:
-        'Eine Zero-Day-Lücke ist eine Sicherheitslücke, die dem Hersteller noch nicht bekannt ist oder für die es noch kein Update gibt - er hatte „null Tage“ Zeit, sie zu schließen. Sie ist besonders gefährlich, weil sich selbst sorgfältig gepflegte Systeme nicht durch Updates schützen können und Virenscanner den Angriff mangels Signatur meist nicht erkennen.',
+        'Eine Zero-Day-Lücke ist eine Sicherheitslücke, die dem Hersteller noch nicht bekannt ist oder für die es noch kein Update gibt. Er hatte „null Tage“ Zeit, sie zu schließen. Sie ist besonders gefährlich, weil sich selbst sorgfältig gepflegte Systeme nicht durch Updates schützen können und Virenscanner den Angriff mangels Signatur meist nicht erkennen.',
     explanation:
         '2 Punkte für die Erklärung des Begriffs, 2 Punkte für die Gefahr. Schutz bieten dann nur weitere Ebenen: Minimalprinzip, Netzsegmentierung, Verhaltensanalyse und Datensicherung.',
     difficulty: 1,
@@ -442,7 +442,7 @@ final List<Question> questionsA06Sicherheit = [
       zu(
         'Der angebliche Geschäftsführer fordert per Mail eine eilige, vertrauliche Überweisung',
         2,
-        'Autorität, Zeitdruck und Geheimhaltung - typisch für CEO-Fraud.',
+        'Autorität, Zeitdruck und Geheimhaltung, typisch für CEO-Fraud.',
       ),
       zu(
         'Tausende gekaperte Rechner legen den Webshop mit Anfragen lahm',
@@ -478,7 +478,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
       nein(
         'Das Logo der Sparkasse in der Mail',
-        'Logos lassen sich beliebig kopieren - sie sind weder ein Beleg für Echtheit noch ein Warnsignal.',
+        'Logos lassen sich beliebig kopieren. Sie sind weder ein Beleg für Echtheit noch ein Warnsignal.',
       ),
     ],
     explanation:
@@ -566,7 +566,7 @@ final List<Question> questionsA06Sicherheit = [
     'a6-za-5',
     'sz-angriffe',
     scenario:
-        'Auf dem Firmenparkplatz liegt ein USB-Stick mit der Aufschrift „Gehälter 2026 - vertraulich“. Ein Mitarbeiter steckt ihn aus Neugier an seinen Arbeits-PC.',
+        'Auf dem Firmenparkplatz liegt ein USB-Stick mit der Aufschrift „Gehälter 2026, vertraulich“. Ein Mitarbeiter steckt ihn aus Neugier an seinen Arbeits-PC.',
     prompt: 'Welche Social-Engineering-Methode hat der Angreifer genutzt?',
     choices: [
       ja(
@@ -648,7 +648,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
       nein(
         'Das Sperren einer einzelnen IP-Adresse stoppt den Angriff zuverlässig.',
-        'Bei zehntausenden Quellen bleibt die Sperre einer Adresse wirkungslos - hier hilft ein DDoS-Schutzdienst.',
+        'Bei zehntausenden Quellen bleibt die Sperre einer Adresse wirkungslos. Hier hilft ein DDoS-Schutzdienst.',
       ),
     ],
     explanation:
@@ -693,7 +693,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
       nein(
         'normal',
-        'Die Mehrheit zählt nicht - sonst wären die Personaldaten unzureichend geschützt.',
+        'Die Mehrheit zählt nicht. Sonst wären die Personaldaten unzureichend geschützt.',
       ),
       nein(
         'sehr hoch',
@@ -705,7 +705,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
     ],
     explanation:
-        'Maximumprinzip: Das IT-System erbt den höchsten Schutzbedarf der Anwendungen, die darauf laufen - hier „hoch“ von der Personalverwaltung.',
+        'Maximumprinzip: Das IT-System erbt den höchsten Schutzbedarf der Anwendungen, die darauf laufen. Hier „hoch“ von der Personalverwaltung.',
   ),
   zuordnen(
     'a6-zb-2',
@@ -714,17 +714,17 @@ final List<Question> questionsA06Sicherheit = [
     buckets: ['Maximumprinzip', 'Kumulationseffekt', 'Verteilungseffekt'],
     items: [
       zu(
-        'Auf dem Dateiserver liegen Projektdaten (normal) und Personalakten (hoch) - er wird mit „hoch“ eingestuft',
+        'Auf dem Dateiserver liegen Projektdaten (normal) und Personalakten (hoch), deshalb wird er mit „hoch“ eingestuft',
         0,
         'Der höchste Einzelwert gilt.',
       ),
       zu(
-        'Ein Virtualisierungshost trägt 30 VMs mit jeweils „normal“ - weil ein Ausfall alle trifft, wird er mit „hoch“ eingestuft',
+        'Ein Virtualisierungshost trägt 30 VMs mit jeweils „normal“. Weil ein Ausfall alle trifft, wird er mit „hoch“ eingestuft',
         1,
         'Viele kleine Schäden summieren sich zu einem großen.',
       ),
       zu(
-        'Der Webshop (Verfügbarkeit „hoch“) läuft auf drei redundanten Servern - ein einzelner Server wird mit „normal“ eingestuft',
+        'Der Webshop (Verfügbarkeit „hoch“) läuft auf drei redundanten Servern. Ein einzelner Server wird mit „normal“ eingestuft',
         2,
         'Fällt ein Server aus, übernehmen die anderen.',
       ),
@@ -793,7 +793,7 @@ final List<Question> questionsA06Sicherheit = [
       zu(
         'Verfügbarkeit des Intranets',
         0,
-        'Für die Anwendung selbst gilt ihr eigener Wert - normal.',
+        'Für die Anwendung selbst gilt ihr eigener Wert, also normal.',
       ),
     ],
     difficulty: 3,
@@ -849,7 +849,7 @@ final List<Question> questionsA06Sicherheit = [
       nein('Sie wird durch Regel 2 erlaubt.', 'Port 53 ist DNS, nicht HTTP.'),
       nein(
         'Sie wird erlaubt, weil sie aus dem LAN kommt.',
-        'Die Herkunft allein genügt nicht - auch Port und Protokoll müssen zu einer Regel passen.',
+        'Die Herkunft allein genügt nicht. Auch Port und Protokoll müssen zu einer Regel passen.',
       ),
     ],
     explanation:
@@ -909,7 +909,7 @@ final List<Question> questionsA06Sicherheit = [
     'sm-firewall',
     prompt: 'Ergänze die Aussagen zu Firewalls.',
     text:
-        'Ein Regelwerk wird von oben nach unten abgearbeitet; es gilt die {0} passende Regel. Am Ende steht die Regel „alles {1}“ - dieses Prinzip heißt {2}. Eine Stateful-Firewall lässt Antwortpakete zu einer erlaubten Verbindung {3} durch. Server, die aus dem Internet erreichbar sein müssen, stehen in der {4}.',
+        'Ein Regelwerk wird von oben nach unten abgearbeitet; es gilt die {0} passende Regel. Am Ende steht die Regel „alles {1}“. Dieses Prinzip heißt {2}. Eine Stateful-Firewall lässt Antwortpakete zu einer erlaubten Verbindung {3} durch. Server, die aus dem Internet erreichbar sein müssen, stehen in der {4}.',
     luecken: [
       wahl('erste', ['letzte', 'strengste']),
       wahl('verwerfen', ['erlauben', 'protokollieren']),
@@ -929,7 +929,7 @@ final List<Question> questionsA06Sicherheit = [
     choices: [
       ja(
         'Regel 2 steht vor Regel 3 und verwirft die Verbindung, bevor Regel 3 geprüft wird.',
-        'Die erste passende Regel entscheidet - die Sperrregel muss ans Ende.',
+        'Die erste passende Regel entscheidet. Die Sperrregel muss ans Ende.',
       ),
       nein(
         'Port 80 lässt sich grundsätzlich nicht freigeben.',
@@ -1015,7 +1015,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
       nein(
         'Der Webserver ist aus dem Internet nicht erreichbar.',
-        'Doch - genau dafür steht er in der DMZ, die Firewall gibt die nötigen Ports frei.',
+        'Doch. Genau dafür steht er in der DMZ, die Firewall gibt die nötigen Ports frei.',
       ),
       nein(
         'Die Datenbank steht ungeschützt im Internet.',
@@ -1097,7 +1097,7 @@ final List<Question> questionsA06Sicherheit = [
       wahl('beim Cloud-Anbieter', ['auf dem NAS', 'auf dem Server']),
     ],
     explanation:
-        '3-2-1-Regel: 3 Kopien (Original eingeschlossen), 2 verschiedene Medienarten, 1 Kopie an einem anderen Ort. Das NAS im selben Raum schützt nicht vor Brand oder Einbruch - das leistet nur die Kopie beim Cloud-Anbieter.',
+        '3-2-1-Regel: 3 Kopien (Original eingeschlossen), 2 verschiedene Medienarten, 1 Kopie an einem anderen Ort. Das NAS im selben Raum schützt nicht vor Brand oder Einbruch. Das leistet nur die Kopie beim Cloud-Anbieter.',
   ),
   einfach(
     'a6-yb-4',
@@ -1108,7 +1108,7 @@ final List<Question> questionsA06Sicherheit = [
     choices: [
       ja(
         'Recovery Point Objective (RPO)',
-        'Das RPO beschreibt den maximal hinnehmbaren Datenverlust - hier müsste mindestens alle 4 Stunden gesichert werden.',
+        'Das RPO beschreibt den maximal hinnehmbaren Datenverlust. Hier müsste mindestens alle 4 Stunden gesichert werden.',
       ),
       nein(
         'Recovery Time Objective (RTO)',
@@ -1281,7 +1281,7 @@ final List<Question> questionsA06Sicherheit = [
     loesung:
         'Wirksam sind: WPA3 (mindestens WPA2 mit AES), ein langer zufälliger Schlüssel, abgeschaltetes WPS, ein getrenntes Gastnetz ohne Zugriff auf das interne Netz, ein geändertes Administratorpasswort und aktuelle Firmware. Das Verstecken der SSID und MAC-Filter bringen dagegen kaum Sicherheit.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 4 Punkte. Nicht gewertet werden Scheinmaßnahmen wie das Verstecken der SSID oder ein MAC-Filter - beides lässt sich leicht umgehen.',
+        'Je Nennung 1 Punkt, höchstens 4 Punkte. Nicht gewertet werden Scheinmaßnahmen wie das Verstecken der SSID oder ein MAC-Filter, denn beides lässt sich leicht umgehen.',
   ),
   zuordnen(
     'a6-yw-3',
@@ -1331,24 +1331,24 @@ final List<Question> questionsA06Sicherheit = [
         'Was ist jetzt nötig, und wie wäre es mit WPA2- oder WPA3-Enterprise?',
     choices: [
       ja(
-        'Das WLAN-Passwort auf allen Geräten ändern - mit Enterprise würde man nur sein persönliches Konto sperren.',
+        'Das WLAN-Passwort auf allen Geräten ändern. Mit Enterprise würde man nur sein persönliches Konto sperren.',
         'Bei Personal kennen alle dasselbe Passwort, bei Enterprise meldet sich jede Person mit eigenen Zugangsdaten über 802.1X an.',
       ),
       nein(
-        'Nichts - ein WLAN-Passwort lässt sich nicht weitergeben.',
+        'Nichts. Ein WLAN-Passwort lässt sich nicht weitergeben.',
         'Der ehemalige Mitarbeiter kennt das Passwort und kann es nutzen oder weitergeben.',
       ),
       nein(
-        'Nur die SSID verstecken - mit Enterprise wäre das ebenso nötig.',
+        'Nur die SSID verstecken. Mit Enterprise wäre das ebenso nötig.',
         'Eine versteckte SSID ist leicht zu finden und schützt nicht.',
       ),
       nein(
-        'Den MAC-Filter um sein privates Handy ergänzen - mit Enterprise wäre das ebenso nötig.',
+        'Den MAC-Filter um sein privates Handy ergänzen. Mit Enterprise wäre das ebenso nötig.',
         'MAC-Adressen lassen sich fälschen, und er kann jedes andere Gerät benutzen.',
       ),
     ],
     explanation:
-        'WPA-Personal nutzt ein gemeinsames Passwort, das nur durch Ändern auf allen Geräten widerrufen werden kann. WPA-Enterprise prüft über 802.1X und RADIUS persönliche Zugangsdaten - ein einzelnes Konto lässt sich sperren.',
+        'WPA-Personal nutzt ein gemeinsames Passwort, das nur durch Ändern auf allen Geräten widerrufen werden kann. WPA-Enterprise prüft über 802.1X und RADIUS persönliche Zugangsdaten. Ein einzelnes Konto lässt sich sperren.',
   ),
   paare(
     'a6-yw-6',
@@ -1460,7 +1460,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
       nein(
         'Rolle „Buchhaltung“ zusätzlich zuordnen und „Vertrieb“ behalten',
-        'Rechte würden sich anhäufen - ein Verstoß gegen das Minimalprinzip.',
+        'Rechte würden sich anhäufen, ein Verstoß gegen das Minimalprinzip.',
       ),
       nein(
         'Ihm Administratorrechte geben, damit er überall Zugriff hat',
@@ -1495,7 +1495,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
       nein(
         'Alle Ports öffnen, damit später keine Dienste blockiert werden',
-        'Das vergrößert die Angriffsfläche - das Gegenteil von Härtung.',
+        'Das vergrößert die Angriffsfläche, also das Gegenteil von Härtung.',
       ),
       nein(
         'Das Administratorkonto für die tägliche Arbeit nutzen',
@@ -1525,7 +1525,7 @@ final List<Question> questionsA06Sicherheit = [
         ],
       ),
       krit(
-        'Mit einem normalen Konto bleibt der Schaden begrenzt - mit Administratorrechten wäre das ganze System oder Netz betroffen',
+        'Mit einem normalen Konto bleibt der Schaden begrenzt. Mit Administratorrechten wäre das ganze System oder Netz betroffen',
         stichwoerter: [
           'Schaden begrenzt',
           'ganzes System',
@@ -1557,7 +1557,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
       nein(
         'Nichts, weil „Personal“ keinen Zugriff hat',
-        'Ein fehlendes Recht einer Rolle hebt die Rechte einer anderen Rolle nicht auf - sie addieren sich.',
+        'Ein fehlendes Recht einer Rolle hebt die Rechte einer anderen Rolle nicht auf. Sie addieren sich.',
       ),
       nein('Nur schreiben', 'Keine seiner Rollen erlaubt das Schreiben.'),
     ],
@@ -1577,7 +1577,7 @@ final List<Question> questionsA06Sicherheit = [
       zu(
         'Wer eine Datei anlegt, legt selbst fest, wer sie lesen darf',
         0,
-        'Der Besitzer entscheidet über seine Objekte - benutzerbestimmt.',
+        'Der Besitzer entscheidet über seine Objekte, also benutzerbestimmt.',
       ),
       zu(
         'Dokumente tragen Einstufungen wie „VS-Vertraulich“, Nutzer dürfen nur bis zu ihrer Freigabestufe lesen',
@@ -1596,7 +1596,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
     ],
     explanation:
-        'DAC: Besitzer vergibt Rechte. MAC: System erzwingt Sicherheitsstufen. RBAC: Rechte hängen an Rollen - das übliche Modell in Unternehmen.',
+        'DAC: Besitzer vergibt Rechte. MAC: System erzwingt Sicherheitsstufen. RBAC: Rechte hängen an Rollen, das übliche Modell in Unternehmen.',
   ),
   markieren(
     'a6-yz-7',
@@ -1612,7 +1612,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
       ja(
         'Alle Azubis haben Adminrechte, damit sie Software selbst installieren können.',
-        'Weit mehr Rechte als nötig - und eine offene Tür für Schadsoftware.',
+        'Weit mehr Rechte als nötig und eine offene Tür für Schadsoftware.',
       ),
       nein(
         'Administratoren nutzen für E-Mail und Internet ein normales Konto.',
@@ -1632,6 +1632,6 @@ final List<Question> questionsA06Sicherheit = [
       ),
     ],
     explanation:
-        'Minimalprinzip: Jedes Konto bekommt nur die Rechte, die es für seine Aufgabe braucht - und verliert sie, sobald die Aufgabe entfällt. Verstöße sind pauschale Adminrechte, geteilte Konten mit allen Rechten und mitgeschleppte Rechte nach einem Abteilungswechsel.',
+        'Minimalprinzip: Jedes Konto bekommt nur die Rechte, die es für seine Aufgabe braucht, und verliert sie, sobald die Aufgabe entfällt. Verstöße sind pauschale Adminrechte, geteilte Konten mit allen Rechten und mitgeschleppte Rechte nach einem Abteilungswechsel.',
   ),
 ];
