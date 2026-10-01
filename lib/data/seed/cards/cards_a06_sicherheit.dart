@@ -414,24 +414,6 @@ final List<Flashcard> cardsA06Sicherheit = [
     'Nur beim Hersteller oder autorisierten Händler kaufen, Siegel und Seriennummern prüfen, Werksreset und Firmware frisch vom Hersteller mit Signaturprüfung.',
   ),
   karte(
-    'k-za-26',
-    'sz-angriffe',
-    'Was regelt SPF bei E-Mails?',
-    'Sender Policy Framework: Ein DNS-Eintrag der Domain legt fest, welche Server Mails für sie versenden dürfen - gefälschte Absenderserver fallen auf.',
-  ),
-  karte(
-    'k-za-27',
-    'sz-angriffe',
-    'Wie funktioniert DKIM?',
-    'DomainKeys Identified Mail: Der sendende Mailserver signiert die Mail, die Domain veröffentlicht den öffentlichen Schlüssel im DNS. Der Empfänger prüft Herkunft und Unverändertheit.',
-  ),
-  karte(
-    'k-za-28',
-    'sz-angriffe',
-    'Wozu dient DMARC?',
-    'Eine DNS-Richtlinie der Domain legt fest, was Empfänger mit Mails tun, bei denen weder SPF noch DKIM passt (zustellen, Quarantäne, abweisen), und regelt Berichte.',
-  ),
-  karte(
     'k-za-29',
     'sz-angriffe',
     'Wie schützt du dich gegen Man-in-the-Middle-Angriffe?',
@@ -588,30 +570,6 @@ final List<Flashcard> cardsA06Sicherheit = [
     'sz-schutzbedarf',
     'Was steht in einem Notfallhandbuch?',
     'Sofortmaßnahmen, Alarmierung und Meldewege, Zuständigkeiten sowie Notfall- und Wiederanlaufpläne für die kritischen Prozesse und Systeme.',
-  ),
-  karte(
-    'k-zb-24',
-    'sz-schutzbedarf',
-    'Was ist die Grundidee der EU-Richtlinie NIS2?',
-    'Viel mehr Unternehmen aus wichtigen Sektoren (z. B. Energie, Gesundheit, digitale Dienste) müssen Cybersicherheit nachweisbar managen und erhebliche Vorfälle melden.',
-  ),
-  karte(
-    'k-zb-25',
-    'sz-schutzbedarf',
-    'Welche Meldefristen sieht NIS2 für erhebliche Sicherheitsvorfälle vor?',
-    'Frühwarnung binnen 24 Stunden, Meldung binnen 72 Stunden, Abschlussbericht nach einem Monat - in Deutschland an das BSI.',
-  ),
-  karte(
-    'k-zb-26',
-    'sz-schutzbedarf',
-    'Welche Pflichten hat die Geschäftsleitung nach NIS2?',
-    'Sie muss die Risikomanagementmaßnahmen billigen, ihre Umsetzung überwachen und sich schulen lassen - bei Verstößen kann sie haften.',
-  ),
-  karte(
-    'k-zb-27',
-    'sz-schutzbedarf',
-    'Was unterscheidet die 72-Stunden-Meldung nach NIS2 von der nach DSGVO?',
-    'NIS2: erhebliche Sicherheitsvorfälle an das BSI. DSGVO (Art. 33): Verletzungen des Schutzes personenbezogener Daten an die Datenschutz-Aufsichtsbehörde.',
   ),
 
   // Firewall
@@ -1148,24 +1106,6 @@ final List<Flashcard> cardsA06Sicherheit = [
     'sm-zugriff',
     'Tim hat die Rollen „Azubi“ (Preise: kein Recht) und „Vertrieb“ (Preise: lesen). Was darf er bei Preise?',
     'Lesen - die Rechte mehrerer Rollen addieren sich.',
-  ),
-  karte(
-    'k-yz-21',
-    'sm-zugriff',
-    'Was ist Mobile Device Management (MDM)?',
-    'Zentrale Verwaltung mobiler Geräte: Richtlinien und Apps verteilen, Verschlüsselung und Sperrcode erzwingen, verlorene Geräte sperren oder fernlöschen.',
-  ),
-  karte(
-    'k-yz-22',
-    'sm-zugriff',
-    'Was bedeutet BYOD, und welches Risiko bringt es?',
-    'Bring Your Own Device: Private Geräte werden dienstlich genutzt. Risiko: Firmen- und Privatdaten vermischen sich auf einem Gerät, das die Firma kaum kontrolliert.',
-  ),
-  karte(
-    'k-yz-23',
-    'sm-zugriff',
-    'Wie trennst du bei BYOD Firmen- und Privatdaten?',
-    'Mit einem per MDM verwalteten Container bzw. Arbeitsprofil - die Firma verwaltet und löscht nur diesen Bereich. Dazu eine schriftliche Nutzungsvereinbarung.',
   ),
   karte(
     'k-yz-24',

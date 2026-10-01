@@ -36,12 +36,6 @@ final List<Flashcard> cardsA02 = [
     'Jede Nachricht hat einen Inhalts- und einen Beziehungsaspekt. Die Beziehung bestimmt, wie der Inhalt verstanden wird.',
   ),
   karte(
-    'k-km-6',
-    'k-modelle',
-    'Was zeigt das Eisbergmodell der Kommunikation?',
-    'Sichtbar ist nur die Sachebene (bildlich ca. 20 %). Darunter liegen Gefühle, Werte und Erfahrungen (ca. 80 %) - sie steuern, wie die Sache ankommt.',
-  ),
-  karte(
     'k-km-7',
     'k-modelle',
     'Was meint Watzlawick mit Interpunktion?',
@@ -119,38 +113,8 @@ final List<Flashcard> cardsA02 = [
     'Was unterscheidet symmetrische und komplementäre Kommunikation?',
     'Symmetrisch: auf Augenhöhe, z. B. zwei Kollegen. Komplementär: mit Gefälle, z. B. Ausbilder und Azubi (fünftes Axiom nach Watzlawick).',
   ),
-  karte(
-    'k-km-20',
-    'k-modelle',
-    'Zwei Kollegen streiten über ein Framework, mögen sich aber eigentlich nicht. Welches Modell erklärt das?',
-    'Das Eisbergmodell: Der Sachstreit ist sichtbar, der eigentliche Konflikt liegt verdeckt auf der Beziehungsebene.',
-  ),
 
   // Gesprächsführung
-  karte(
-    'k-kg-1',
-    'k-gespraech',
-    'Wer hat das aktive Zuhören geprägt, und was bewirkt es?',
-    'Der Psychologe Carl Rogers. Es zeigt dem Gegenüber Aufmerksamkeit und prüft zugleich, ob du richtig verstanden hast.',
-  ),
-  karte(
-    'k-kg-2',
-    'k-gespraech',
-    'Was ist eine offene Frage, und wann setzt du sie ein?',
-    'Eine W-Frage, die sich nicht mit Ja oder Nein beantworten lässt: „Wie gehen Sie heute vor?“ Ideal am Gesprächsanfang, um Informationen zu sammeln.',
-  ),
-  karte(
-    'k-kg-3',
-    'k-gespraech',
-    'Wozu dient eine geschlossene Frage?',
-    'Sie wird mit Ja oder Nein beantwortet, klärt Fakten und präzisiert: „Tritt der Fehler auch an anderen PCs auf?“',
-  ),
-  karte(
-    'k-kg-4',
-    'k-gespraech',
-    'Woran erkennst du eine Suggestivfrage?',
-    'Sie gibt die Antwort vor, oft mit Signalwörtern wie doch, sicher, bestimmt: „Sie wollen doch sicher ...?“ - manipulativ, im Kundengespräch vermeiden.',
-  ),
   karte(
     'k-kg-5',
     'k-gespraech',
@@ -158,58 +122,10 @@ final List<Flashcard> cardsA02 = [
     'Sie beschreibt die eigene Sicht statt den anderen anzugreifen: „Ich kann das Problem erst lösen, wenn ich die Fehlermeldung kenne.“',
   ),
   karte(
-    'k-kg-6',
-    'k-gespraech',
-    'Wie läuft die Trichtertechnik ab?',
-    'Von offenen über gezielte W-Fragen zu geschlossenen Fragen, am Ende eine Kontrollfrage - dann das Ergebnis festhalten.',
-  ),
-  karte(
-    'k-kg-7',
-    'k-gespraech',
-    'Was ist der Unterschied zwischen Paraphrasieren und Verbalisieren?',
-    'Paraphrasieren: den Inhalt mit eigenen Worten wiedergeben. Verbalisieren: das Gefühl des anderen ansprechen („Das setzt Sie unter Druck.“).',
-  ),
-  karte(
-    'k-kg-8',
-    'k-gespraech',
-    'Wozu dient eine Alternativfrage?',
-    'Sie bietet zwei Möglichkeiten zur Wahl und führt zu einer Entscheidung: „Passt Ihnen Dienstag oder Donnerstag?“',
-  ),
-  karte(
     'k-kg-9',
     'k-gespraech',
     'In welchen Phasen läuft ein Beratungsgespräch ab?',
     'Kontakt, Bedarfsermittlung, Lösung mit Nutzen, Einwände klären, Abschluss, Nachbereitung.',
-  ),
-  karte(
-    'k-kg-10',
-    'k-gespraech',
-    'Wozu dient eine Kontrollfrage?',
-    'Sie sichert das Verständnis: „Habe ich richtig verstanden, dass ...?“ - typisch am Ende der Trichtertechnik.',
-  ),
-  karte(
-    'k-kg-11',
-    'k-gespraech',
-    'Was ist eine Gegenfrage, und wozu nutzt du sie?',
-    'Eine Rückfrage auf eine Aussage, die den Hintergrund klärt: „Was genau meinen Sie mit langsam?“',
-  ),
-  karte(
-    'k-kg-12',
-    'k-gespraech',
-    'Was kennzeichnet eine rhetorische Frage?',
-    'Sie erwartet keine Antwort, sondern weckt Aufmerksamkeit: „Wer möchte schon Daten verlieren?“',
-  ),
-  karte(
-    'k-kg-13',
-    'k-gespraech',
-    'Warum solltest du mit Warum-Fragen vorsichtig sein?',
-    'Sie klingen schnell nach Vorwurf und lösen Rechtfertigung aus. Besser: „Was ist der Grund ...?“ oder „Wozu ...?“',
-  ),
-  karte(
-    'k-kg-14',
-    'k-gespraech',
-    'Welche drei Stufen hat das aktive Zuhören?',
-    'Aufnehmend (nicken, „Mhm“), paraphrasierend (Inhalt wiedergeben), verbalisierend (Gefühle ansprechen).',
   ),
   karte(
     'k-kg-15',
@@ -228,18 +144,6 @@ final List<Flashcard> cardsA02 = [
     'k-gespraech',
     'Nenne drei Gesprächsförderer.',
     'Nachfragen, Gefühle anerkennen („Das ist ärgerlich.“), ausreden lassen, zusammenfassen.',
-  ),
-  karte(
-    'k-kg-18',
-    'k-gespraech',
-    'Warum beginnst du ein Gespräch nicht mit geschlossenen Fragen?',
-    'Du bekommst nur bestätigt, was du ohnehin vermutest. Erst offen fragen, dann mit geschlossenen Fragen präzisieren.',
-  ),
-  karte(
-    'k-kg-19',
-    'k-gespraech',
-    '„Sie haben den Rechner doch sicher schon neu gestartet?“ - welche Frageart ist das?',
-    'Eine Suggestivfrage: Sie lässt sich zwar mit Ja oder Nein beantworten, gibt die Antwort aber vor (Signalwörter „doch sicher“).',
   ),
   karte(
     'k-kg-20',

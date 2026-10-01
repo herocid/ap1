@@ -659,24 +659,6 @@ final List<Flashcard> cardsA04Entwicklung = [
     'Welchem Pseudocode-Element entspricht Entscheidung plus Zusammenführung?',
     'Einer Verzweigung: WENN … DANN … SONST … ENDE WENN.',
   ),
-  karte(
-    'k-ua-17',
-    'u-aktivitaet',
-    'Was zeigt ein Zustandsdiagramm?',
-    'Die Zustände eines Objekts und die Übergänge dazwischen, ausgelöst durch Ereignisse - z. B. Ticket: offen, in Bearbeitung, geschlossen.',
-  ),
-  karte(
-    'k-ua-18',
-    'u-aktivitaet',
-    'Wie wird ein Übergang im Zustandsdiagramm beschriftet?',
-    'Ereignis [Bedingung] / Aktion, z. B. bezahlen [Betrag ok] / Rechnung senden.',
-  ),
-  karte(
-    'k-ua-19',
-    'u-aktivitaet',
-    'Wann nimmst du ein Zustandsdiagramm statt eines Aktivitätsdiagramms?',
-    'Wenn die Zustände eines einzelnen Objekts und ihre Wechsel gezeigt werden sollen. Das Aktivitätsdiagramm zeigt den Ablauf von Aktionen.',
-  ),
 
   // Variablen und Datentypen
   karte(
@@ -973,12 +955,6 @@ final List<Flashcard> cardsA04Entwicklung = [
     'Mit dem ersten Element des Arrays - nicht mit 0, sonst scheitert es an lauter negativen Werten.',
   ),
   karte(
-    'k-pc-4',
-    'pl-pseudocode',
-    'Wie funktioniert die lineare Suche?',
-    'Die Liste wird von vorn Element für Element verglichen, bis der Wert gefunden ist. Nicht gefunden: Rückgabe -1.',
-  ),
-  karte(
     'k-pc-5',
     'pl-pseudocode',
     'Was ist der Unterschied zwischen Parameter und Argument?',
@@ -989,12 +965,6 @@ final List<Flashcard> cardsA04Entwicklung = [
     'pl-pseudocode',
     'Wie zählst du die Elemente, die eine Bedingung erfüllen?',
     'Zähler mit 0 starten und nur im Dann-Zweig um 1 erhöhen.',
-  ),
-  karte(
-    'k-pc-7',
-    'pl-pseudocode',
-    'Wie arbeitet Bubblesort?',
-    'Vergleicht benachbarte Elemente und tauscht sie bei falscher Reihenfolge - je Durchlauf wandert das größte nach hinten.',
   ),
   karte(
     'k-pc-8',
@@ -1061,54 +1031,6 @@ final List<Flashcard> cardsA04Entwicklung = [
     'pl-pseudocode',
     'Was passiert bei FÜR i VON 0 BIS n mit Zugriff auf liste[i]?',
     'Im letzten Durchlauf wird liste[n] gelesen - das Element gibt es nicht (Laufzeitfehler). Richtig: BIS n - 1.',
-  ),
-  karte(
-    'k-pc-19',
-    'pl-pseudocode',
-    'Was ist die Voraussetzung für die binäre Suche?',
-    'Die Liste muss sortiert sein.',
-  ),
-  karte(
-    'k-pc-20',
-    'pl-pseudocode',
-    'Wie arbeitet die binäre Suche?',
-    'Das mittlere Element prüfen: Treffer, sonst nur in der linken oder rechten Hälfte weitersuchen - der Suchbereich halbiert sich jedes Mal.',
-  ),
-  karte(
-    'k-pc-21',
-    'pl-pseudocode',
-    'Binäre Suche nach 23 in [2, 5, 8, 12, 16, 23, 38]: Welche Elemente werden geprüft?',
-    'Erst die Mitte, Index 3: 12 < 23, also rechts weiter (Index 4 bis 6). Mitte Index 5: 23 gefunden.',
-  ),
-  karte(
-    'k-pc-22',
-    'pl-pseudocode',
-    'Wie viele Vergleiche braucht die binäre Suche bei 1.000 Elementen höchstens?',
-    '10, denn 2^10 = 1024 ≥ 1000. Die lineare Suche braucht bis zu 1.000.',
-  ),
-  karte(
-    'k-pc-23',
-    'pl-pseudocode',
-    'Wann ist die lineare Suche der binären vorzuziehen?',
-    'Bei unsortierten oder sehr kleinen Listen - nur für eine einzelne Suche lohnt sich das Sortieren nicht.',
-  ),
-  karte(
-    'k-pc-24',
-    'pl-pseudocode',
-    'Wie sieht [5, 1, 4, 2] nach dem ersten Bubblesort-Durchlauf aus?',
-    '[1, 4, 2, 5] - die 5 wird bei jedem Vergleich weitergetauscht und landet hinten.',
-  ),
-  karte(
-    'k-pc-25',
-    'pl-pseudocode',
-    'Wie viele Vergleiche macht Bubblesort bei 4 Elementen ohne vorzeitigen Abbruch?',
-    '3 + 2 + 1 = 6 Vergleiche, allgemein n × (n - 1) / 2.',
-  ),
-  karte(
-    'k-pc-26',
-    'pl-pseudocode',
-    'Wann kann Bubblesort vorzeitig aufhören?',
-    'Wenn in einem Durchlauf kein Tausch mehr stattfindet - dann ist das Array sortiert.',
   ),
 
   // Schreibtischtest
@@ -1579,23 +1501,5 @@ final List<Flashcard> cardsA04Entwicklung = [
     'oo-konstruktor',
     'Woran erkennst du eine Komposition im Code?',
     'Das Ganze erzeugt seine Teile selbst, z. B. im Konstruktor - ohne das Ganze gibt es die Teile nicht.',
-  ),
-  karte(
-    'k-oc-21',
-    'oo-konstruktor',
-    'Was zeigt ein Sequenzdiagramm?',
-    'Den zeitlichen Ablauf der Nachrichten zwischen Objekten - die Zeit läuft von oben nach unten.',
-  ),
-  karte(
-    'k-oc-22',
-    'oo-konstruktor',
-    'Was ist eine Lebenslinie im Sequenzdiagramm?',
-    'Die senkrechte gestrichelte Linie unter einem Objekt - sie zeigt seine Existenz über die Zeit.',
-  ),
-  karte(
-    'k-oc-23',
-    'oo-konstruktor',
-    'Wie unterscheiden sich synchrone Nachricht und Antwort im Sequenzdiagramm?',
-    'Synchrone Nachricht: durchgezogener Pfeil mit gefüllter Spitze, der Sender wartet. Antwort: gestrichelter Pfeil zurück.',
   ),
 ];

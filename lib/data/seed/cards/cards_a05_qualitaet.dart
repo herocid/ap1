@@ -136,49 +136,13 @@ final List<Flashcard> cardsA05 = [
     'Was kennzeichnet ein technisches Review?',
     'Fachleute prüfen ein Ergebnis gegen Vorgaben wie Spezifikation oder Richtlinien; mittlere Formalität.',
   ),
-  karte(
-    'k-qg-23',
-    'qm-grundlagen',
-    'Was ist ein Audit?',
-    'Systematische, unabhängige Prüfung, ob Prozesse und Vorgaben eingehalten werden - durch interne oder externe Auditoren.',
-  ),
 
   // Qualitätsmerkmale
-  karte(
-    'k-qe-1',
-    'qm-merkmale',
-    'Was beschreibt das Qualitätsmerkmal Zuverlässigkeit?',
-    'Die Software läuft stabil, verträgt Störungen und ist verfügbar, wenn sie gebraucht wird.',
-  ),
-  karte(
-    'k-qe-2',
-    'qm-merkmale',
-    'Was beschreibt das Qualitätsmerkmal Benutzbarkeit?',
-    'Wie leicht die Software zu erlernen und zu bedienen ist.',
-  ),
-  karte(
-    'k-qe-3',
-    'qm-merkmale',
-    'Was beschreibt das Qualitätsmerkmal Effizienz?',
-    'Zeitverhalten und Ressourcenverbrauch, z. B. Antwortzeit oder Speicherbedarf.',
-  ),
-  karte(
-    'k-qe-4',
-    'qm-merkmale',
-    'Was unterscheidet Wartbarkeit von Übertragbarkeit?',
-    'Wartbarkeit: leicht zu ändern und zu korrigieren. Übertragbarkeit: läuft auch in anderer Umgebung.',
-  ),
   karte(
     'k-qe-5',
     'qm-merkmale',
     'Welche vier Angaben machen eine Anforderung messbar?',
     'Merkmal, Messgröße, Zielwert und Bedingung - z. B. max. 2 s bei 200 Nutzern.',
-  ),
-  karte(
-    'k-qe-6',
-    'qm-merkmale',
-    'Nenne die vier Teilmerkmale der Zuverlässigkeit.',
-    'Reife, Verfügbarkeit, Fehlertoleranz, Wiederherstellbarkeit.',
   ),
   karte(
     'k-qe-7',
@@ -193,89 +157,10 @@ final List<Flashcard> cardsA05 = [
     '30 Tage × 24 h = 720 h; 720 h × 0,005 = 3,6 h = 3 h 36 min pro Monat.',
   ),
   karte(
-    'k-qe-9',
-    'qm-merkmale',
-    'Was beschreibt das Qualitätsmerkmal Funktionalität?',
-    'Ob die Software das Richtige tut und korrekt rechnet - Vollständigkeit, Korrektheit, Angemessenheit.',
-  ),
-  karte(
-    'k-qe-10',
-    'qm-merkmale',
-    'Was beschreibt das Qualitätsmerkmal Kompatibilität?',
-    'Zusammenarbeit mit anderen Systemen (Interoperabilität) und störungsfreies Nebeneinander in derselben Umgebung (Koexistenz).',
-  ),
-  karte(
-    'k-qe-11',
-    'qm-merkmale',
-    'Was beschreibt das Qualitätsmerkmal Sicherheit?',
-    'Schutz der Daten vor unbefugtem Zugriff und Veränderung - Vertraulichkeit, Integrität, Authentizität.',
-  ),
-  karte(
-    'k-qe-12',
-    'qm-merkmale',
-    'Nenne vier Teilmerkmale der Wartbarkeit.',
-    'Modularität, Analysierbarkeit, Änderbarkeit, Testbarkeit.',
-  ),
-  karte(
-    'k-qe-13',
-    'qm-merkmale',
-    'Nenne drei Teilmerkmale der Effizienz.',
-    'Zeitverhalten, Ressourcenverbrauch, Kapazität.',
-  ),
-  karte(
-    'k-qe-14',
-    'qm-merkmale',
-    'Nenne drei Teilmerkmale der Benutzbarkeit.',
-    'Erlernbarkeit, Bedienbarkeit, Barrierefreiheit.',
-  ),
-  karte(
-    'k-qe-15',
-    'qm-merkmale',
-    '„Die Seite lädt in max. 2 s bei 500 Nutzern.“ Welches Merkmal ist das?',
-    'Effizienz (Zeitverhalten) - eine nicht funktionale Anforderung.',
-  ),
-  karte(
-    'k-qe-16',
-    'qm-merkmale',
-    '„Die App läuft auch auf dem Tablet.“ Welches Merkmal ist das?',
-    'Übertragbarkeit - es geht um die Umgebung, nicht um die Bedienung.',
-    'Falle: nicht Benutzbarkeit.',
-  ),
-  karte(
-    'k-qe-17',
-    'qm-merkmale',
-    '„Der Shop tauscht Daten mit dem ERP über REST aus.“ Welches Merkmal ist das?',
-    'Kompatibilität (Interoperabilität), nicht Funktionalität.',
-  ),
-  karte(
-    'k-qe-18',
-    'qm-merkmale',
-    '„Nur die Buchhaltung darf stornieren.“ Welches Merkmal ist das?',
-    'Sicherheit (Schutz vor unbefugtem Zugriff), nicht Zuverlässigkeit.',
-  ),
-  karte(
-    'k-qe-19',
-    'qm-merkmale',
-    '„Neue Zahlart ohne Änderung am Warenkorb.“ Welches Merkmal ist das?',
-    'Wartbarkeit - Änderbarkeit und Modularität.',
-  ),
-  karte(
-    'k-qe-20',
-    'qm-merkmale',
-    'Ein Programm rechnet korrekt, stürzt aber täglich ab. Welches Merkmal fehlt?',
-    'Zuverlässigkeit - die Funktionalität (korrekte Ergebnisse) ist erfüllt.',
-  ),
-  karte(
     'k-qe-21',
     'qm-merkmale',
     'Formuliere „Die Suche soll schnell sein“ als messbare Anforderung.',
     'Z. B.: Bei 200 gleichzeitigen Nutzern liegen in 95 % der Suchanfragen die Treffer nach höchstens 2 s vor.',
-  ),
-  karte(
-    'k-qe-22',
-    'qm-merkmale',
-    'Nenne einen typischen Zielkonflikt zwischen zwei Qualitätsmerkmalen.',
-    'Sicherheit gegen Benutzbarkeit: Die Zwei-Faktor-Anmeldung kostet einen Schritt mehr. Ebenso Effizienz gegen Wartbarkeit.',
   ),
   karte(
     'k-qe-23',
@@ -288,18 +173,6 @@ final List<Flashcard> cardsA05 = [
     'qm-merkmale',
     'Ein System fiel im 30-Tage-Monat 7,2 h aus. Welche Verfügbarkeit hatte es?',
     '(720 h - 7,2 h) / 720 h = 712,8 / 720 = 0,99 = 99 %.',
-  ),
-  karte(
-    'k-qe-25',
-    'qm-merkmale',
-    'Was bedeutet das Teilmerkmal Fehlertoleranz?',
-    'Das System arbeitet trotz Störung oder Fehleingabe weiter, z. B. durch abgefangene Fehler oder redundante Server.',
-  ),
-  karte(
-    'k-qe-26',
-    'qm-merkmale',
-    'Was bedeutet das Teilmerkmal Wiederherstellbarkeit?',
-    'Nach einem Ausfall lassen sich System und Daten schnell wieder in einen funktionsfähigen Zustand bringen, z. B. per Backup.',
   ),
 
   // PDCA

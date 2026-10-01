@@ -235,12 +235,6 @@ final List<Flashcard> cardsA03 = [
     'Direct Attached Storage: Speicher, der direkt am Server angeschlossen ist, nicht über das Netz.',
   ),
   karte(
-    'k-hs-8',
-    'h-speicher',
-    'Was unterscheidet NAS und SAN?',
-    'NAS: Dateispeicher im Netz (Zugriff per SMB, NFS). SAN: eigenes, blockbasiertes Speichernetz für Server.',
-  ),
-  karte(
     'k-hs-20',
     'h-speicher',
     'Wie viele Bit hat ein Byte, und wie kürzt man beide ab?',
@@ -2402,70 +2396,16 @@ final List<Flashcard> cardsA03 = [
     'RJ45 - achtpolig mit Rastnase.',
   ),
   karte(
-    'k-ng-23',
-    'nw-geraete',
-    'Welche Datenrate und Länge schafft Cat 5e?',
-    '1 Gbit/s auf 100 m - für 10 Gbit/s zu schwach.',
-  ),
-  karte(
-    'k-ng-6',
-    'nw-geraete',
-    'Wie weit schafft Cat 6 eine Datenrate von 10 Gbit/s?',
-    'Nur bis etwa 55 m - für volle 100 m braucht es Cat 6A.',
-  ),
-  karte(
-    'k-ng-4',
-    'nw-geraete',
-    'Welche Datenrate schafft Cat 6A auf welcher Länge?',
-    '10 Gbit/s auf der vollen Länge von 100 m.',
-  ),
-  karte(
-    'k-ng-24',
-    'nw-geraete',
-    'Wofür eignet sich Cat 8?',
-    '25 oder 40 Gbit/s auf kurzen Strecken bis 30 m, z. B. im Rechenzentrum.',
-  ),
-  karte(
     'k-ng-26',
     'nw-geraete',
     'Was bedeutet die Kabelbezeichnung S/FTP?',
     'S: Gesamtschirm aus Geflecht. FTP: jedes Adernpaar mit Folie geschirmt. U stünde für ungeschirmt.',
   ),
   karte(
-    'k-ng-35',
-    'nw-geraete',
-    'Was unterscheidet Kategorie und Klasse bei Kupferverkabelung?',
-    'Kategorie: einzelne Bauteile, Klasse: ganze Strecke. Cat 5e = Klasse D, Cat 6 = E, Cat 6A = EA, Cat 7 = F.',
-  ),
-  karte(
     'k-ng-27',
     'nw-geraete',
     'Wie teilen sich die 100 m einer Twisted-Pair-Strecke auf?',
     '90 m fest verlegtes Kabel plus zusammen 10 m Patchkabel.',
-  ),
-  karte(
-    'k-ng-30',
-    'nw-geraete',
-    'Was verbindet die Primärverkabelung?',
-    'Die Gebäude eines Standorts untereinander (Campus) - meist mit Glasfaser.',
-  ),
-  karte(
-    'k-ng-31',
-    'nw-geraete',
-    'Was verbindet die Sekundärverkabelung?',
-    'Den Gebäudeverteiler mit den Etagenverteilern im Gebäude - Glasfaser oder Kupfer.',
-  ),
-  karte(
-    'k-ng-32',
-    'nw-geraete',
-    'Was verbindet die Tertiärverkabelung?',
-    'Den Etagenverteiler mit der Netzwerkdose am Arbeitsplatz - Kupfer, höchstens 90 m fest verlegt.',
-  ),
-  karte(
-    'k-ng-34',
-    'nw-geraete',
-    'Welche Verteiler gibt es in der strukturierten Verkabelung?',
-    'Standortverteiler, Gebäudeverteiler und Etagenverteiler.',
   ),
   karte(
     'k-ng-33',
@@ -2484,18 +2424,6 @@ final List<Flashcard> cardsA03 = [
     'nw-geraete',
     'Was unterscheidet Singlemode- von Multimode-Glasfaser?',
     'Singlemode: ca. 9 µm Kern, Laser, viele Kilometer. Multimode: 50 oder 62,5 µm Kern, einige hundert Meter.',
-  ),
-  karte(
-    'k-ng-36',
-    'nw-geraete',
-    'Wofür stehen die Glasfaserklassen OM und OS?',
-    'OM1 bis OM5: Multimode (Optical Multimode). OS1 und OS2: Singlemode (Optical Singlemode).',
-  ),
-  karte(
-    'k-ng-37',
-    'nw-geraete',
-    'Wie weit überträgt Multimode OM3 bzw. OM4 10 Gbit/s?',
-    'OM3 rund 300 m, OM4 rund 400 m (10GBASE-SR). Singlemode OS2 schafft viele Kilometer.',
   ),
   karte(
     'k-ng-29',

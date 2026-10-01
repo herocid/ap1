@@ -1362,36 +1362,6 @@ final List<Flashcard> cardsA04Daten = [
     'Wie subtrahiert ein Rechner binär?',
     'Er addiert das Zweierkomplement des Subtrahenden; ein Übertrag über die Bitbreite hinaus fällt weg.',
   ),
-  karte(
-    'k-mz-24',
-    'md-zahlensysteme',
-    'Aus welchen drei Teilen besteht eine Gleitkommazahl nach IEEE 754?',
-    'Vorzeichen (1 Bit), Exponent und Mantisse: Wert = (-1)^V × 1,Mantisse × 2^(Exponent - Bias).',
-  ),
-  karte(
-    'k-mz-25',
-    'md-zahlensysteme',
-    'Wie verteilen sich die Bits bei IEEE 754 in einfacher und doppelter Genauigkeit?',
-    'Single (32 Bit): 1 + 8 + 23. Double (64 Bit): 1 + 11 + 52 - jeweils Vorzeichen, Exponent, Mantisse.',
-  ),
-  karte(
-    'k-mz-26',
-    'md-zahlensysteme',
-    'Wozu dient der Bias beim Exponenten nach IEEE 754?',
-    'Gespeichert wird Exponent + Bias (127 bei Single, 1.023 bei Double), so kommen negative Exponenten ohne Vorzeichenbit aus.',
-  ),
-  karte(
-    'k-mz-27',
-    'md-zahlensysteme',
-    'Warum ergibt 0,1 + 0,2 im Computer nicht exakt 0,3?',
-    'Dezimalbrüche wie 0,1 sind binär periodisch und werden als Gleitkommazahl nur gerundet gespeichert.',
-  ),
-  karte(
-    'k-mz-28',
-    'md-zahlensysteme',
-    'Warum speicherst du Geldbeträge nicht als Gleitkommazahl?',
-    'Wegen der Rundungsfehler - besser ganze Cent als Ganzzahl oder ein Dezimaltyp.',
-  ),
 
   // Zeichensätze
   karte(
@@ -2011,54 +1981,6 @@ final List<Flashcard> cardsA04Daten = [
     'md-kompression',
     'Was passiert, wenn du ein JPEG als PNG speicherst?',
     'Verlorene Details kommen nicht zurück - die Datei wird nur größer.',
-  ),
-  karte(
-    'k-mx-24',
-    'md-kompression',
-    'Was ist CSV, und wie ist eine CSV-Datei aufgebaut?',
-    'Comma-Separated Values: ein Datensatz je Zeile, Felder durch Komma oder Semikolon getrennt, erste Zeile oft die Spaltennamen.',
-  ),
-  karte(
-    'k-mx-25',
-    'md-kompression',
-    'Wie ist JSON aufgebaut?',
-    'Objekte in { } mit "name": wert-Paaren, Arrays in [ ]; Werte: String, Zahl, true/false, null, Objekt oder Array.',
-  ),
-  karte(
-    'k-mx-26',
-    'md-kompression',
-    'Wie ist XML aufgebaut?',
-    'Verschachtelte Elemente mit Start- und End-Tag (<kunde>…</kunde>), dazu Attribute und genau ein Wurzelelement.',
-  ),
-  karte(
-    'k-mx-27',
-    'md-kompression',
-    'Was unterscheidet CSV von JSON und XML?',
-    'CSV ist flach - nur Tabelle, ohne Verschachtelung und Datentypen. JSON und XML bilden verschachtelte Strukturen ab.',
-  ),
-  karte(
-    'k-mx-28',
-    'md-kompression',
-    'Wofür setzt du JSON typischerweise ein?',
-    'Für den Datenaustausch über Web-APIs (REST) und für Konfigurationsdateien - kompakt und leicht maschinell lesbar.',
-  ),
-  karte(
-    'k-mx-29',
-    'md-kompression',
-    'Was bedeutet „wohlgeformtes XML“?',
-    'Jedes Element ist korrekt geöffnet und geschlossen, sauber verschachtelt, und es gibt genau ein Wurzelelement.',
-  ),
-  karte(
-    'k-mx-30',
-    'md-kompression',
-    'Womit prüfst du, ob ein XML-Dokument die vereinbarte Struktur einhält?',
-    'Mit einem Schema (XSD oder DTD) - erfüllt es das Schema, gilt es als gültig (valide).',
-  ),
-  karte(
-    'k-mx-31',
-    'md-kompression',
-    'Warum zerfällt eine CSV-Datei beim Import manchmal in falsche Spalten?',
-    'Das Trennzeichen passt nicht: Deutsche Programme nutzen oft ; (Komma ist Dezimalzeichen), andere das Komma.',
   ),
 
   // KI-Grundlagen

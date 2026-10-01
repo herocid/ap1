@@ -260,30 +260,6 @@ final List<Flashcard> cardsA01Planung = [
     '5 Personen - immer aufrunden, sonst wird der Termin nicht gehalten.',
   ),
   karte(
-    'k-tr-12',
-    't-ressourcen',
-    'Wie funktioniert eine Expertenschätzung?',
-    'Erfahrene Fachleute schätzen den Aufwand aus ihrem Wissen - schnell, aber stark von der Person abhängig.',
-  ),
-  karte(
-    'k-tr-13',
-    't-ressourcen',
-    'Wie funktioniert das Analogieverfahren bei der Aufwandsschätzung?',
-    'Der Aufwand wird aus einem vergleichbaren, abgeschlossenen Projekt abgeleitet und an die Unterschiede angepasst.',
-  ),
-  karte(
-    'k-tr-14',
-    't-ressourcen',
-    'Wie läuft die Delphi-Methode zur Aufwandsschätzung ab?',
-    'Mehrere Fachleute schätzen unabhängig und anonym; die Ergebnisse werden zurückgemeldet und erneut geschätzt, bis sich die Werte annähern.',
-  ),
-  karte(
-    'k-tr-15',
-    't-ressourcen',
-    'Was ist die Grundidee der Function-Point-Methode?',
-    'Der Funktionsumfang aus Nutzersicht (Eingaben, Ausgaben, Abfragen, Datenbestände) wird gezählt und gewichtet; Erfahrungswerte übersetzen die Punkte in Aufwand.',
-  ),
-  karte(
     'k-tr-16',
     't-ressourcen',
     'Warum liegt der Erwartungswert der Drei-Punkt-Schätzung oft über dem wahrscheinlichsten Wert?',

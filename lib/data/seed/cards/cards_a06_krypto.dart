@@ -382,12 +382,6 @@ final List<Flashcard> cardsA06Krypto = [
     'Es schaltet eine zunächst unverschlüsselte Verbindung, z. B. SMTP, auf TLS um - Transportverschlüsselung, keine Ende-zu-Ende-Verschlüsselung.',
   ),
   karte(
-    'k-ch-24',
-    'kr-hybrid',
-    'Was unterscheidet eine DKIM-Signatur von einer S/MIME-Signatur?',
-    'DKIM: Der Mailserver signiert für die ganze Domain, geprüft wird per DNS. S/MIME: Die Person signiert mit eigenem Zertifikat, Ende-zu-Ende.',
-  ),
-  karte(
     'k-ch-25',
     'kr-hybrid',
     'Warum liegen Daten trotz HTTPS auf dem Server im Klartext vor?',
