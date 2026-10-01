@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/util/exam_composer.dart';
 import '../../core/util/question_selector.dart';
 import '../../data/models/progress.dart';
-import '../../data/models/question.dart';
 import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../state/session_controller.dart';
@@ -16,6 +16,14 @@ import '../../state/session_controller.dart';
 class SessionLauncher {
   const SessionLauncher._();
 
+  static const dailyTitle = 'Prüfungsaufgabe des Tages';
+
+  /// Übungsrunde mit Sofort-Feedback.
+  ///
+  /// [mistakesOnly] ist die Fehler-Wiederholung mit Abstand: Es kommen die
+  /// heute fälligen Fehler, und wer in der Runde erneut danebenliegt, sieht
+  /// die Aufgabe nach ein paar anderen noch einmal. [replace] ersetzt den
+  /// aktuellen Bildschirm (Start aus der Auswertung heraus).
   static void practice(
     BuildContext context,
     WidgetRef ref, {
@@ -23,11 +31,14 @@ class SessionLauncher {
     String? subtopicId,
     String? title,
     bool mistakesOnly = false,
+    bool focus = false,
     int count = 10,
+    bool replace = false,
   }) {
     final pool = ref.read(questionsProvider);
     final progress = ref.read(progressProvider);
     final poolSize = ref.read(poolSizeProvider);
+    final mistakes = ref.read(mistakeStatusProvider);
 
     final questions = QuestionSelector.forPractice(
       pool: pool,
@@ -37,12 +48,20 @@ class SessionLauncher {
       topicFilter: topicId,
       subtopicFilter: subtopicId,
       mistakesOnly: mistakesOnly,
+      // Offene Fehler haben in jeder Runde Vorrang; in der Wiederholung
+      // zählen nur die, die heute noch nicht richtig waren.
+      mistakeIds: mistakesOnly ? mistakes.due : null,
     );
 
     if (questions.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Für diese Auswahl gibt es gerade keine Aufgaben.'),
+        SnackBar(
+          content: Text(
+            mistakesOnly && mistakes.open.isNotEmpty
+                ? 'Für heute erledigt - die Fehler kommen an einem anderen '
+                      'Tag noch einmal.'
+                : 'Für diese Auswahl gibt es gerade keine Aufgaben.',
+          ),
         ),
       );
       return;
@@ -51,7 +70,7 @@ class SessionLauncher {
     final sessionTitle =
         title ??
         (mistakesOnly
-            ? 'Fehlerspeicher'
+            ? 'Fehler wiederholen'
             : topicId != null
             ? Topics.byId(topicId).title
             : 'Tagesübung');
@@ -60,19 +79,33 @@ class SessionLauncher {
         .read(sessionProvider.notifier)
         .start(
           questions: questions,
-          mode: topicId != null || subtopicId != null || mistakesOnly
+          mode: focus || topicId != null || subtopicId != null || mistakesOnly
               ? SessionMode.fokus
               : SessionMode.uebung,
           topicFilter: topicId,
           title: sessionTitle,
+          requeueWrong: mistakesOnly,
         );
-    context.push('/session');
+    _open(context, '/session', replace: replace);
   }
 
+  /// Schwächen-Training: 10 gemischte Aufgaben, gewichtet nach Fehlerquote,
+  /// Themenschwäche und Abstand seit dem letzten Abruf.
+  static void weakness(
+    BuildContext context,
+    WidgetRef ref, {
+    bool replace = false,
+  }) => practice(
+    context,
+    ref,
+    title: 'Schwächen-Training',
+    focus: true,
+    replace: replace,
+  );
+
   static void querbeet(BuildContext context, WidgetRef ref, {int count = 15}) {
-    final questions = QuestionSelector.forMix(
-      pool: ref.read(questionsProvider),
-      count: count,
+    final questions = QuestionSelector.arrange(
+      QuestionSelector.forMix(pool: ref.read(questionsProvider), count: count),
     );
     if (questions.isEmpty) return;
 
@@ -87,11 +120,11 @@ class SessionLauncher {
   }
 
   /// Kurztest: eine Zufallsaufgabe nach der anderen aus allen Bereichen,
-  /// ohne festes Ende.
+  /// ohne festes Ende - mit demselben Formatmix wie jede Runde.
   static void kurztest(BuildContext context, WidgetRef ref) {
     final pool = ref.read(questionsProvider);
     final rnd = math.Random();
-    final first = pickRandom(pool, const {}, rnd);
+    final first = QuestionSelector.nextEndless(pool, const [], rnd);
     if (first == null) return;
 
     ref
@@ -100,56 +133,60 @@ class SessionLauncher {
           questions: [first],
           mode: SessionMode.uebung,
           title: 'Kurztest',
-          supply: (used) => pickRandom(pool, used, rnd),
+          supply: (asked) => QuestionSelector.nextEndless(pool, asked, rnd),
         );
     context.push('/session');
   }
 
-  /// Zieht erst ein Thema, dann eine Aufgabe daraus. So kommen kleine
-  /// Themen genauso oft dran wie große. Sind alle Aufgaben einmal
-  /// gelaufen, dürfen sie sich wiederholen.
-  @visibleForTesting
-  static Question? pickRandom(
-    List<Question> pool,
-    Set<String> used,
-    math.Random rnd,
-  ) {
-    final byTopic = <String, List<Question>>{};
-    for (final q in pool.where((q) => q.isExamRelevant)) {
-      byTopic.putIfAbsent(q.topicId, () => []).add(q);
-    }
-    if (byTopic.isEmpty) return null;
-
-    final fresh = {
-      for (final e in byTopic.entries)
-        if (e.value.any((q) => !used.contains(q.id)))
-          e.key: e.value.where((q) => !used.contains(q.id)).toList(),
-    };
-    final source = fresh.isEmpty ? byTopic : fresh;
-    final topics = source.keys.toList();
-    final list = source[topics[rnd.nextInt(topics.length)]]!;
-    return list[rnd.nextInt(list.length)];
-  }
-
-  static void exam(
-    BuildContext context,
-    WidgetRef ref, {
-    required int count,
-    required Duration limit,
-    required String title,
-  }) {
-    final pool = ref.read(questionsProvider);
-    final questions = QuestionSelector.forExam(pool: pool, count: count);
-    if (questions.isEmpty) return;
+  /// Prüfungssimulation: ein Unternehmen, Fallaufgaben aus verschiedenen
+  /// Bereichen, Zeitlimit. Beginnt mit dem Deckblatt.
+  static void exam(BuildContext context, WidgetRef ref, ExamVariant variant) {
+    final paper = ExamComposer.compose(
+      cases: ref.read(examCasesProvider),
+      pool: ref.read(questionsProvider),
+      tasks: variant.tasks,
+      lastSeen: ref.read(caseLastSeenProvider),
+    );
+    if (paper.tasks.isEmpty) return;
 
     ref
         .read(sessionProvider.notifier)
-        .start(
-          questions: questions,
+        .startPaper(
+          paper: paper,
           mode: SessionMode.pruefung,
-          limit: limit,
-          title: title,
+          // Bei Fallaufgaben stimmt das Verhältnis von selbst (25 Punkte je
+          // Aufgabe). Der Ersatzbogen bekommt dieselbe Zeit.
+          limit: variant.limit,
+          title: variant.title,
         );
-    context.push('/session');
+    context.push('/pruefung-lauf');
+  }
+
+  /// Prüfungsaufgabe des Tages: eine Fallaufgabe im Prüfungsformat, ohne
+  /// Zeitlimit. Zählt als Übung, nicht als Simulation.
+  static void daily(BuildContext context, WidgetRef ref) {
+    final paper = ref.read(dailyPaperProvider);
+    if (paper == null) return;
+    ref
+        .read(sessionProvider.notifier)
+        .startPaper(
+          paper: paper,
+          mode: SessionMode.uebung,
+          title: dailyTitle,
+          cover: false,
+        );
+    context.push('/pruefung-lauf');
+  }
+
+  static void _open(
+    BuildContext context,
+    String route, {
+    required bool replace,
+  }) {
+    if (replace) {
+      context.pushReplacement(route);
+    } else {
+      context.push(route);
+    }
   }
 }

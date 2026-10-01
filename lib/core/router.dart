@@ -12,6 +12,7 @@ import '../features/journey/journey_screen.dart';
 import '../features/journey/lesson_screen.dart';
 import '../features/info/catalog_changes_screen.dart';
 import '../features/exam/exam_intro_screen.dart';
+import '../features/exam/exam_run_screen.dart';
 import '../features/learn/result_screen.dart';
 import '../features/learn/session_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
@@ -57,6 +58,12 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/pruefung',
         parentNavigatorKey: _rootKey,
         builder: (context, state) => const ExamIntroScreen(),
+      ),
+      // Laufender Prüfungsbogen: Deckblatt, Aufgaben, Selbstbewertung.
+      GoRoute(
+        path: '/pruefung-lauf',
+        parentNavigatorKey: _rootKey,
+        builder: (context, state) => const ExamRunScreen(),
       ),
       GoRoute(
         path: '/karten-lernen',

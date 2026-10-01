@@ -5,40 +5,62 @@ import 'package:go_router/go_router.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
-import '../../data/models/topic.dart';
-import '../../state/session_controller.dart';
 import '../../core/util/achievements.dart';
+import '../../core/util/answer_format.dart';
 import '../../data/models/progress.dart';
+import '../../data/models/topic.dart';
 import '../../state/providers.dart';
+import '../../state/session_controller.dart';
 import '../../widgets/achievement_badge.dart';
 import '../../widgets/common.dart';
 import '../../widgets/mascot.dart';
-import '../../widgets/question_view.dart';
+import '../exam/exam_result_view.dart';
+import '../exam/exam_widgets.dart';
+import 'review_tile.dart';
+import 'session_launcher.dart';
 
-/// IHK-Notenschlüssel (100-Punkte-Schema).
-({String note, String label}) ihkNote(double percent) {
-  final p = percent * 100;
-  if (p >= 92) return (note: '1', label: 'sehr gut');
-  if (p >= 81) return (note: '2', label: 'gut');
-  if (p >= 67) return (note: '3', label: 'befriedigend');
-  if (p >= 50) return (note: '4', label: 'ausreichend');
-  if (p >= 30) return (note: '5', label: 'mangelhaft');
-  return (note: '6', label: 'ungenügend');
-}
+export '../../core/util/answer_format.dart' show ihkNote;
 
 /// Auswertung nach einer Session.
 ///
 /// Der wichtigste Teil ist nicht die Prozentzahl, sondern die Liste darunter:
 /// jede Aufgabe aufklappbar mit der vollständigen Erklärung. Wer nach der
 /// Simulation nur "58 %" sieht, hat nichts gelernt.
-class ResultScreen extends ConsumerWidget {
+///
+/// Prüfungsbögen (Simulation, Aufgabe des Tages) haben eine eigene
+/// Auswertung ([ExamResultView]); Rahmen, Abzeichen und der nächste Schritt
+/// sind für beide gleich.
+class ResultScreen extends ConsumerStatefulWidget {
   const ResultScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final session = ref.watch(sessionProvider);
+  ConsumerState<ResultScreen> createState() => _ResultScreenState();
+}
 
-    if (session == null || !session.finished) {
+class _ResultScreenState extends ConsumerState<ResultScreen> {
+  /// Die zuletzt gezeigte Auswertung. Startet von hier aus die nächste
+  /// Runde, bleibt dieser Bildschirm während des Seitenwechsels noch kurz
+  /// sichtbar - dann mit dem alten Ergebnis statt mit „keine Auswertung“.
+  SessionState? _shown;
+
+  /// Zurück dorthin, wo die Runde gestartet wurde - Startseite, Quiz,
+  /// Prüfung oder die Session eines Themengebiets.
+  void _leave() {
+    ref.read(sessionProvider.notifier).clear();
+    if (context.canPop()) {
+      context.pop();
+    } else {
+      context.go('/');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final live = ref.watch(sessionProvider);
+    if (live != null && live.finished) _shown = live;
+    final session = _shown;
+
+    if (session == null) {
       return Scaffold(
         appBar: AppBar(),
         body: EmptyState(
@@ -58,53 +80,25 @@ class ResultScreen extends ConsumerWidget {
       for (final e in achievements.entries)
         if (e.value.earned && !session.badgesBefore.contains(e.key)) e.key,
     ];
-
+    final dueMistakes = ref.watch(mistakeStatusProvider).due.length;
     final percent = session.totalScore;
-    final note = ihkNote(percent);
-    final correct = session.items
-        .where((i) => i.grade?.isCorrect == true)
-        .length;
-    final partial = session.items
-        .where((i) => i.grade?.isPartial == true)
-        .length;
-    final wrong = session.items.length - correct - partial;
-
-    // Themenauswertung dieser Runde (nicht der Gesamtstatistik).
-    final byTopic = <String, List<SessionItem>>{};
-    for (final i in session.items) {
-      byTopic.putIfAbsent(i.question.topicId, () => []).add(i);
-    }
-
-    // Zurück dorthin, wo die Runde gestartet wurde - Startseite, Quiz,
-    // Prüfung oder die Session eines Themengebiets.
-    void leave() {
-      ref.read(sessionProvider.notifier).clear();
-      if (context.canPop()) {
-        context.pop();
-      } else {
-        context.go('/');
-      }
-    }
+    final isPaper = session.paper != null;
 
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, _) {
-        if (!didPop) leave();
+        if (!didPop) _leave();
       },
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
             icon: const Icon(Icons.close),
-            onPressed: leave,
+            onPressed: _leave,
             tooltip: 'Schließen',
           ),
-          title: Text(
-            session.isExam
-                ? 'Auswertung Simulation'
-                : session.endless
-                ? 'Auswertung Kurztest'
-                : 'Auswertung',
-          ),
+          // Kurz gehalten: Mit großer Schrift passt auf 320 px nicht mehr -
+          // welche Runde es war, steht in der Zeile darunter.
+          title: const Text('Auswertung'),
         ),
         body: ListView(
           padding: const EdgeInsets.fromLTRB(Gap.l, Gap.l, Gap.l, Gap.xxxl),
@@ -113,6 +107,14 @@ class ResultScreen extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(
+                    session.title.toUpperCase(),
+                    style: context.text.labelSmall?.copyWith(
+                      color: context.scheme.primary,
+                      letterSpacing: 1.1,
+                    ),
+                  ),
+                  const SizedBox(height: Gap.s),
                   MascotSays(
                     mood: percent >= 0.8
                         ? MascotMood.cheer
@@ -129,131 +131,60 @@ class ResultScreen extends ConsumerWidget {
                         : percent >= 0.5
                         ? 'Die Hälfte hast du sicher. Schau dir unten an, '
                               'wo die Punkte fehlen.'
-                        : 'Fehler sind hier erwünscht - jede falsche '
-                              'Aufgabe kommt in den Fehlerspeicher und du '
-                              'übst sie gezielt nach.',
+                        : 'Fehler gehören zum Lernen. Was heute danebenging, '
+                              'kommt in der Fehler-Wiederholung wieder - bis '
+                              'es an zwei Tagen sitzt.',
                   ),
                   const SizedBox(height: Gap.l),
                   if (newBadges.isNotEmpty) ...[
                     _NewBadges(badges: newBadges, statuses: achievements),
                     const SizedBox(height: Gap.l),
                   ],
-                  AppCard(
-                    padding: const EdgeInsets.all(Gap.xl),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            ReadinessRing(
-                              value: (percent * 100).round(),
-                              label: session.isExam
-                                  ? 'Note ${note.note}'
-                                  : 'erreicht',
-                              caption: session.isExam ? note.label : null,
-                              size: 132,
-                            ),
-                            const SizedBox(width: Gap.xl),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '${session.earnedPoints} von ${session.possiblePoints} Punkten',
-                                    style: context.text.titleMedium,
-                                  ),
-                                  const SizedBox(height: Gap.s),
-                                  _Tally(
-                                    color: context.c.success,
-                                    icon: Icons.check_circle,
-                                    count: correct,
-                                    label: 'richtig',
-                                  ),
-                                  if (partial > 0)
-                                    _Tally(
-                                      color: context.c.flame,
-                                      icon: Icons.adjust,
-                                      count: partial,
-                                      label: 'teilweise',
-                                    ),
-                                  _Tally(
-                                    color: context.c.danger,
-                                    icon: Icons.cancel,
-                                    count: wrong,
-                                    label: 'falsch',
-                                  ),
-                                  const SizedBox(height: Gap.s),
-                                  Text(
-                                    'Zeit: ${formatDuration(session.elapsed)}',
-                                    style: context.text.labelSmall?.copyWith(
-                                      color: context.c.textMuted,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        if (session.isExam) ...[
-                          const SizedBox(height: Gap.l),
-                          NoteBox(
-                            tone: percent >= 0.5
-                                ? NoteTone.success
-                                : NoteTone.warn,
-                            child: Text(
-                              percent >= 0.5
-                                  ? 'Mit ${(percent * 100).round()} % wärst du '
-                                        'bestanden (Note ${note.note}, ${note.label}). '
-                                        'Die Punkte holst du jetzt in den Themen '
-                                        'unten.'
-                                  : 'Unter 50 % gilt als nicht bestanden. Das ist '
-                                        'eine Übung, kein Urteil - arbeite die '
-                                        'schwächsten Themen unten der Reihe nach ab.',
-                            ),
-                          ),
-                        ],
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: Gap.xl),
+                  if (isPaper)
+                    ExamResultView(session: session)
+                  else
+                    _PracticeResult(session: session),
+                  const SizedBox(height: Gap.m),
 
-                  const SectionHeader('Nach Themen'),
-                  for (final e in byTopic.entries) ...[
-                    _TopicResultRow(topic: Topics.byId(e.key), items: e.value),
-                    const SizedBox(height: Gap.s),
-                  ],
-                  const SizedBox(height: Gap.xl),
-
-                  const SectionHeader(
-                    'Alle Aufgaben',
-                    subtitle:
-                        'Aufklappen zeigt deine Antwort, die Lösung und die '
-                        'Begründung.',
-                  ),
-                  for (var i = 0; i < session.items.length; i++) ...[
-                    _ReviewTile(index: i, item: session.items[i]),
-                    const SizedBox(height: Gap.s),
-                  ],
-                  const SizedBox(height: Gap.xl),
-
-                  if (wrong + partial > 0)
+                  // Genau ein empfohlener nächster Schritt, dazu „Fertig“.
+                  if (dueMistakes > 0) ...[
                     SizedBox(
                       width: double.infinity,
                       child: FilledButton.icon(
-                        onPressed: leave,
+                        onPressed: () => SessionLauncher.practice(
+                          context,
+                          ref,
+                          mistakesOnly: true,
+                          replace: true,
+                        ),
                         icon: const Icon(Icons.replay),
                         label: Text(
-                          wrong + partial == 1
-                              ? '1 Aufgabe landet im Fehlerspeicher'
-                              : '${wrong + partial} Aufgaben landen im '
-                                    'Fehlerspeicher',
+                          dueMistakes == 1
+                              ? '1 Fehler wiederholen'
+                              : '$dueMistakes Fehler wiederholen',
                         ),
                       ),
                     ),
-                  const SizedBox(height: Gap.s),
+                    const SizedBox(height: Gap.s),
+                  ] else if (!isPaper && !session.endless) ...[
+                    SizedBox(
+                      width: double.infinity,
+                      child: FilledButton.icon(
+                        onPressed: () => SessionLauncher.weakness(
+                          context,
+                          ref,
+                          replace: true,
+                        ),
+                        icon: const Icon(Icons.fitness_center_rounded),
+                        label: const Text('Schwächen-Training'),
+                      ),
+                    ),
+                    const SizedBox(height: Gap.s),
+                  ],
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      onPressed: leave,
+                      onPressed: _leave,
                       child: const Text('Fertig'),
                     ),
                   ),
@@ -263,6 +194,159 @@ class ResultScreen extends ConsumerWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// Auswertung einer Übungsrunde: Punkte, Formate mit den meisten Fehlern,
+/// Themen und alle Aufgaben zum Aufklappen.
+class _PracticeResult extends StatelessWidget {
+  const _PracticeResult({required this.session});
+
+  final SessionState session;
+
+  @override
+  Widget build(BuildContext context) {
+    final percent = session.totalScore;
+    final correct = session.items
+        .where((i) => i.grade?.isCorrect == true)
+        .length;
+    final partial = session.items
+        .where((i) => i.grade?.isCorrect != true && i.earned > 0)
+        .length;
+    final wrong = session.items.length - correct - partial;
+
+    // Themenauswertung dieser Runde (nicht der Gesamtstatistik).
+    final byTopic = ScoreSum.group(session.items, (i) => i.question.topicId);
+
+    // Höchstens zwei Formate - die mit den meisten verlorenen Punkten.
+    final weakFormats =
+        ScoreSum.group(
+            session.items,
+            (i) => AnswerFormat.of(i.question),
+          ).entries.where((e) => e.value.lost >= 0.5).toList()
+          ..sort((a, b) => b.value.lost.compareTo(a.value.lost));
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        AppCard(
+          padding: const EdgeInsets.all(Gap.xl),
+          child: LayoutBuilder(
+            builder: (context, box) {
+              final ring = ReadinessRing(
+                value: (percent * 100).round(),
+                label: 'Prozent',
+                size: 132,
+              );
+              final facts = Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    '${formatPoints(session.earnedPoints)} von '
+                    '${session.possiblePoints} Punkten',
+                    style: context.text.titleMedium,
+                  ),
+                  const SizedBox(height: Gap.s),
+                  _Tally(
+                    color: context.c.success,
+                    icon: Icons.check_circle,
+                    count: correct,
+                    label: 'richtig',
+                  ),
+                  if (partial > 0)
+                    _Tally(
+                      color: context.c.flame,
+                      icon: Icons.adjust,
+                      count: partial,
+                      label: 'teilweise',
+                    ),
+                  _Tally(
+                    color: context.c.danger,
+                    icon: Icons.cancel,
+                    count: wrong,
+                    label: 'falsch',
+                  ),
+                  const SizedBox(height: Gap.s),
+                  Text(
+                    'Zeit: ${formatDuration(session.elapsed)}',
+                    style: context.text.labelSmall?.copyWith(
+                      color: context.c.textMuted,
+                    ),
+                  ),
+                ],
+              );
+              // Neben dem Ring braucht der Text Platz für „12 teilweise“ -
+              // auf schmalen Handys oder mit großer Schrift steht er darunter.
+              final scale = MediaQuery.textScalerOf(context).scale(1);
+              final beside = box.maxWidth - 132 - Gap.xl >= 150 * scale;
+              return beside
+                  ? Row(
+                      children: [
+                        ring,
+                        const SizedBox(width: Gap.xl),
+                        Expanded(child: facts),
+                      ],
+                    )
+                  : Column(
+                      children: [
+                        ring,
+                        const SizedBox(height: Gap.l),
+                        facts,
+                      ],
+                    );
+            },
+          ),
+        ),
+        const SizedBox(height: Gap.xl),
+
+        if (weakFormats.isNotEmpty) ...[
+          const SectionHeader(
+            'Hier fehlen die meisten Punkte',
+            subtitle: 'Nach Antwortformat - das kommt im Training wieder.',
+          ),
+          for (final e in weakFormats.take(2)) ...[
+            ScoreRow(
+              icon: e.key.icon,
+              title: e.key.label,
+              earned: e.value.earned,
+              possible: e.value.possible,
+            ),
+            const SizedBox(height: Gap.s),
+          ],
+          const SizedBox(height: Gap.xl),
+        ],
+
+        const SectionHeader('Nach Themen'),
+        for (final e in byTopic.entries) ...[
+          ScoreRow(
+            icon: Topics.byId(e.key).icon,
+            title: Topics.byId(e.key).title,
+            earned: e.value.earned,
+            possible: e.value.possible,
+          ),
+          const SizedBox(height: Gap.s),
+        ],
+        const SizedBox(height: Gap.xl),
+
+        const SectionHeader(
+          'Alle Aufgaben',
+          subtitle:
+              'Aufklappen zeigt deine Antwort, die Lösung und die '
+              'Begründung.',
+        ),
+        for (var i = 0; i < session.items.length; i++) ...[
+          ReviewTile(
+            index: i,
+            item: session.items[i],
+            label: '${i + 1}.',
+            startedAt: session.startedAt,
+          ),
+          const SizedBox(height: Gap.s),
+        ],
+        const SizedBox(height: Gap.m),
+      ],
     );
   }
 }
@@ -297,114 +381,6 @@ class _Tally extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _TopicResultRow extends StatelessWidget {
-  const _TopicResultRow({required this.topic, required this.items});
-
-  final Topic topic;
-  final List<SessionItem> items;
-
-  @override
-  Widget build(BuildContext context) {
-    final earned = items.fold<double>(
-      0,
-      (s, i) => s + (i.grade?.score ?? 0) * i.question.points,
-    );
-    final possible = items.fold<int>(0, (s, i) => s + i.question.points);
-    final ratio = possible == 0 ? 0.0 : earned / possible;
-
-    return AppCard(
-      padding: const EdgeInsets.all(Gap.l),
-      child: Row(
-        children: [
-          Icon(topic.icon, size: 20, color: context.scheme.primary),
-          const SizedBox(width: Gap.m),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(topic.title, style: context.text.titleMedium),
-                    ),
-                    Text(
-                      '${(ratio * 100).round()} %',
-                      style: AppType.numeric(size: 13),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: Gap.s),
-                TopicBar(confidence: ratio, coverage: 0),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ReviewTile extends StatelessWidget {
-  const _ReviewTile({required this.index, required this.item});
-
-  final int index;
-  final SessionItem item;
-
-  @override
-  Widget build(BuildContext context) {
-    final g = item.grade;
-    final (color, icon) = g == null
-        ? (context.c.textMuted, Icons.help_outline)
-        : g.isCorrect
-        ? (context.c.success, Icons.check_circle)
-        : g.isPartial
-        ? (context.c.flame, Icons.adjust)
-        : (context.c.danger, Icons.cancel);
-
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(Radii.l),
-      child: Container(
-        decoration: BoxDecoration(
-          color: context.scheme.surface,
-          borderRadius: BorderRadius.circular(Radii.l),
-          border: Border.all(color: context.c.border),
-        ),
-        child: Theme(
-          data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-          child: ExpansionTile(
-            tilePadding: const EdgeInsets.symmetric(horizontal: Gap.l),
-            childrenPadding: const EdgeInsets.fromLTRB(Gap.l, 0, Gap.l, Gap.l),
-            leading: Icon(icon, color: color),
-            // Vorschau - aufgeklappt steht die ganze Aufgabe darunter.
-            title: ClampedText(
-              '${index + 1}. ${item.question.prompt}',
-              maxLines: 2,
-              style: context.text.bodyLarge,
-            ),
-            subtitle: Text(
-              '${Topics.byId(item.question.topicId).title} · '
-              '${((g?.score ?? 0) * item.question.points).toStringAsFixed(1).replaceAll('.', ',')}'
-              ' von ${item.question.points} Punkten',
-              style: context.text.labelSmall?.copyWith(
-                color: context.c.textMuted,
-              ),
-            ),
-            children: [
-              QuestionView(
-                question: item.question,
-                answer: item.answer,
-                onChanged: (_) {},
-                revealed: true,
-                grade: item.grade,
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

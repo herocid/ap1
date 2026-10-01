@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/util/achievements.dart';
+import '../core/util/exam_composer.dart';
+import '../core/util/mistake_tracker.dart';
 import '../core/util/study_plan.dart';
 import '../data/models/exam_area.dart';
+import '../data/models/exam_case.dart';
 import '../data/models/flashcard.dart';
 import '../data/models/nugget.dart';
 import '../data/models/profile.dart';
@@ -392,6 +395,42 @@ final seenTheoryProvider =
     StateNotifierProvider<SeenTheoryNotifier, Set<String>>((ref) {
       return SeenTheoryNotifier(ref.watch(localStoreProvider));
     });
+
+// ------------------------------------------------------ Prüfung und Fehler
+
+/// Alle Fallaufgaben der Prüfungssimulation.
+final examCasesProvider = Provider<List<ExamCase>>((ref) => kSeedCases);
+
+/// Wann welcher Fall zuletzt bearbeitet wurde - die Simulation meidet
+/// zuletzt gesehene Fälle.
+final caseLastSeenProvider = Provider<Map<String, DateTime>>((ref) {
+  return ExamComposer.lastSeenByCase(
+    ref.watch(examCasesProvider),
+    ref.watch(progressProvider).history,
+  );
+});
+
+/// Die Prüfungsaufgabe des Tages - für alle am selben Tag dieselbe
+/// Fallaufgabe. `null`, solange es keine Fallaufgaben gibt.
+final dailyPaperProvider = Provider<ExamPaper?>((ref) {
+  return ExamComposer.daily(
+    cases: ref.watch(examCasesProvider),
+    day: DateTime.now(),
+  );
+});
+
+/// Fehler-Wiederholung mit Abstand: offen bleibt eine Aufgabe, bis sie an
+/// zwei verschiedenen Tagen richtig war. Beschränkt auf Aufgaben, die es im
+/// Pool noch gibt und die prüfungsrelevant sind.
+final mistakeStatusProvider = Provider<MistakeStatus>((ref) {
+  final ids = {
+    for (final q in ref.watch(questionsProvider))
+      if (q.isExamRelevant) q.id,
+  };
+  return MistakeStatus.of(
+    ref.watch(progressProvider).history,
+  ).restrictedTo(ids);
+});
 
 // ------------------------------------------------------------- Abzeichen
 

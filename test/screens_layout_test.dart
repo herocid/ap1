@@ -39,6 +39,9 @@ void main() {
     '/statistik',
     '/einstellungen',
     '/pruefung',
+    // Ohne laufende Prüfung der Leerzustand - Deckblatt, Lauf, Bewertung und
+    // Auswertung prüft `exam_layout_test.dart` mit Test-Fallaufgaben.
+    '/pruefung-lauf',
     '/karten-lernen',
     '/bereich/a01',
     '/katalog-aenderungen',
