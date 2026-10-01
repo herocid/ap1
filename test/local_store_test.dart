@@ -1,6 +1,7 @@
 import 'package:ap1_trainer/data/models/flashcard.dart';
 import 'package:ap1_trainer/data/models/profile.dart';
 import 'package:ap1_trainer/data/models/progress.dart';
+import 'package:ap1_trainer/data/models/resume.dart';
 import 'package:ap1_trainer/data/repositories/local_store.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -169,6 +170,35 @@ void main() {
       );
       await store.writeCardRun(null);
       expect(store.readCardRun(), isNull);
+    });
+  });
+
+  group('Lesezeichen', () {
+    test('Lektion und Kartenrunde werden gespeichert', () async {
+      await store.writeResume(
+        ResumeState(
+          lesson: LessonBookmark(
+            lessonId: 'p-ziele',
+            page: 4,
+            at: DateTime(2026, 9, 20),
+          ),
+          cards: CardBookmark(
+            mode: 'practice',
+            title: 'Netzwerke',
+            topicIds: const {'netzwerke'},
+            at: DateTime(2026, 9, 20),
+          ),
+        ),
+      );
+      final r = store.readResume();
+      expect(r.lesson?.lessonId, 'p-ziele');
+      expect(r.lesson?.page, 4);
+      expect(r.cards?.topicIds, {'netzwerke'});
+    });
+
+    test('ohne Eintrag leer', () {
+      expect(store.readResume().lesson, isNull);
+      expect(store.readResume().cards, isNull);
     });
   });
 }

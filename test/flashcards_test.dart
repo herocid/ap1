@@ -341,4 +341,39 @@ void main() {
       expect(a.streak(now: DateTime(2026, 9, 22)), 0);
     });
   });
+
+  group('Tageslimit für neue Karten', () {
+    final many = [
+      for (var i = 0; i < 50; i++)
+        Flashcard(id: 'n$i', topicId: 'netzplan', front: 'F$i', back: 'B$i'),
+    ];
+
+    test('heute höchstens ${Leitner.newPerDay} neue Karten fällig', () {
+      const deck = DeckState();
+      expect(deck.dueCount(many, now: heute), Leitner.newPerDay);
+      expect(deck.due(many, now: heute, limit: 99).length, Leitner.newPerDay);
+    });
+
+    test('heute eingeführte Karten verbrauchen das Limit', () {
+      var deck = const DeckState();
+      for (var i = 0; i < 5; i++) {
+        deck = deck.withAnswer('n$i', true, now: heute);
+      }
+      expect(deck.newIntroducedOn(heute), 5);
+      expect(deck.dueNewCount(many, now: heute), Leitner.newPerDay - 5);
+    });
+
+    test('neue Karten kommen in Lernreihenfolge', () {
+      const deck = DeckState();
+      final due = deck.due(many, now: heute, limit: 3);
+      expect(due.map((c) => c.id), ['n0', 'n1', 'n2']);
+    });
+
+    test('erste Abfrage bleibt gespeichert', () {
+      var deck = const DeckState().withAnswer('n1', false, now: heute);
+      deck = deck.withAnswer('n1', true, now: DateTime(2026, 9, 25));
+      final back = DeckState.decode(deck.encode());
+      expect(back.stateOf('n1').firstSeen, heute);
+    });
+  });
 }
