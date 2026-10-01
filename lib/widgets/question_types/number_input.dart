@@ -33,9 +33,15 @@ class NumericKeypad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final keys = <String>[
-      '1', '2', '3',
-      '4', '5', '6',
-      '7', '8', '9',
+      '1',
+      '2',
+      '3',
+      '4',
+      '5',
+      '6',
+      '7',
+      '8',
+      '9',
       allowDecimal ? ',' : (allowNegative ? '-' : 'C'),
       '0',
       'DEL',
@@ -104,8 +110,11 @@ class _Key extends StatelessWidget {
             border: Border.all(color: context.c.border),
           ),
           child: label == 'DEL'
-              ? Icon(Icons.backspace_outlined,
-                  size: 20, color: context.c.textMuted)
+              ? Icon(
+                  Icons.backspace_outlined,
+                  size: 20,
+                  color: context.c.textMuted,
+                )
               : Text(label, style: AppType.numeric(size: 20)),
         ),
       ),
@@ -132,8 +141,11 @@ Future<String?> showNumericKeypad(
         builder: (ctx, setSheet) {
           void digit(String d) {
             if (d == '-') {
-              setSheet(() => value =
-                  value.startsWith('-') ? value.substring(1) : '-$value');
+              setSheet(
+                () => value = value.startsWith('-')
+                    ? value.substring(1)
+                    : '-$value',
+              );
               return;
             }
             if (d == ',' && value.contains(',')) return;
@@ -153,8 +165,9 @@ Future<String?> showNumericKeypad(
                         const SizedBox(height: 2),
                         Text(
                           hint,
-                          style: ctx.text.labelSmall
-                              ?.copyWith(color: ctx.c.textMuted),
+                          style: ctx.text.labelSmall?.copyWith(
+                            color: ctx.c.textMuted,
+                          ),
                         ),
                       ],
                       const SizedBox(height: Gap.l),
