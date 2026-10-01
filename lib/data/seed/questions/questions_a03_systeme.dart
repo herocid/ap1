@@ -28,7 +28,7 @@ final List<Question> questionsA03 = [
     choices: [
       ja(
         'Mehr Arbeitsspeicher',
-        'Reicht der RAM nicht, lagert das System auf den Datenträger aus - das erklärt die Dauerlast.',
+        'Reicht der RAM nicht, lagert das System auf den Datenträger aus. Das erklärt die Dauerlast.',
       ),
       nein(
         'Eine bessere Grafikkarte',
@@ -84,7 +84,7 @@ final List<Question> questionsA03 = [
       ),
       nein(
         'Der Prozessor hat 16 physische Kerne.',
-        'Physisch sind es 8 Kerne - Threads sind keine zusätzlichen Kerne.',
+        'Physisch sind es 8 Kerne, denn Threads sind keine zusätzlichen Kerne.',
       ),
       nein(
         'Der Prozessor ist doppelt so schnell wie einer mit 8 Threads.',
@@ -167,7 +167,7 @@ final List<Question> questionsA03 = [
       paar('Ein-/Ausgabewerk', 'tauscht Daten mit der Außenwelt'),
     ],
     explanation:
-        'Von Neumann: Steuerwerk und Rechenwerk (zusammen die CPU), ein gemeinsamer Speicher für Programme und Daten, Ein-/Ausgabewerk und Bussystem. Das Betriebssystem gehört nicht dazu - es ist Software.',
+        'Von Neumann: Steuerwerk und Rechenwerk (zusammen die CPU), ein gemeinsamer Speicher für Programme und Daten, Ein-/Ausgabewerk und Bussystem. Das Betriebssystem gehört nicht dazu, es ist Software.',
   ),
 
   // ======================================================= Speicher: HDD und SSD
@@ -191,7 +191,7 @@ final List<Question> questionsA03 = [
     choices: [
       ja(
         'NVMe-SSD',
-        'Schnell, stoßfest und stromsparend - ideal für ein mobiles Gerät.',
+        'Schnell, stoßfest und stromsparend: ideal für ein mobiles Gerät.',
       ),
       nein(
         '3,5-Zoll-HDD',
@@ -265,7 +265,7 @@ final List<Question> questionsA03 = [
     'a3-hs-7',
     'h-speicher',
     scenario:
-        'Ein Kunde hat eine M.2-SSD eingebaut und wundert sich, dass sie nur etwa 550 MB/s liest - im Test eines Kollegen waren es 7.000 MB/s.',
+        'Ein Kunde hat eine M.2-SSD eingebaut und wundert sich, dass sie nur etwa 550 MB/s liest; im Test eines Kollegen waren es 7.000 MB/s.',
     prompt: 'Was ist die wahrscheinlichste Erklärung?',
     choices: [
       ja(
@@ -354,7 +354,7 @@ final List<Question> questionsA03 = [
     loesung:
         'USB-C ist nur die Form des Steckers. Welche Datenrate möglich ist, legt der Standard dahinter fest: Über USB-C kann USB 2.0 mit 480 Mbit/s ebenso laufen wie USB4 mit 40 Gbit/s. Außerdem müssen Kabel und Anschluss am PC den schnellen Standard unterstützen.',
     explanation:
-        'Stecker und Standard sind zwei Paar Schuhe - die Datenrate steht im Datenblatt. Bewertung: je Aussage 1 Punkt, höchstens 2 Punkte.',
+        'Stecker und Standard sind zwei Paar Schuhe. Die Datenrate steht im Datenblatt. Bewertung: je Aussage 1 Punkt, höchstens 2 Punkte.',
   ),
   zuordnen(
     'a3-hi-2',
@@ -442,7 +442,7 @@ final List<Question> questionsA03 = [
     choices: [
       ja('HDMI 2.1', 'Mit 48 Gbit/s schafft HDMI 2.1 4K mit 120 Hz.'),
       nein('HDMI 2.0', 'Mit 18 Gbit/s reicht HDMI 2.0 für 4K nur bis 60 Hz.'),
-      nein('VGA', 'Analog und veraltet - für 4K ungeeignet.'),
+      nein('VGA', 'Analog und veraltet; für 4K ungeeignet.'),
       nein('DVI-D', 'Mit rund 8 Gbit/s zu langsam und ohne Tonübertragung.'),
     ],
     explanation:
@@ -523,7 +523,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     explanation:
-        'Die USV soll den Betrieb überbrücken, bis alle Systeme sauber herunterfahren - idealerweise automatisch ausgelöst.',
+        'Die USV soll den Betrieb überbrücken, bis alle Systeme sauber herunterfahren, idealerweise automatisch ausgelöst.',
   ),
   rechnen(
     'a3-hu-4',
@@ -647,7 +647,7 @@ final List<Question> questionsA03 = [
       ja('Altgeräte fachgerecht recyceln', 'Schont Ressourcen und Umwelt.'),
       nein(
         'Alle Geräte jedes Jahr ersetzen',
-        'Die Herstellung verbraucht viel Energie - lange Nutzung ist nachhaltiger.',
+        'Die Herstellung verbraucht viel Energie; lange Nutzung ist nachhaltiger.',
       ),
       nein(
         'Bildschirmschoner mit Animation dauerhaft laufen lassen',
@@ -684,7 +684,7 @@ final List<Question> questionsA03 = [
     'a3-ha-4',
     'h-arbeitsplatz',
     scenario:
-        'In einer Firma bleiben 30 PCs nach Feierabend eingeschaltet und brauchen im Leerlauf je 35 W - jeweils 14 Stunden an 250 Arbeitstagen. Strom kostet 0,30 € pro kWh.',
+        'In einer Firma bleiben 30 PCs nach Feierabend eingeschaltet und brauchen im Leerlauf je 35 W, und zwar jeweils 14 Stunden an 250 Arbeitstagen. Strom kostet 0,30 € pro kWh.',
     prompt: 'Wie hoch sind die vermeidbaren Stromkosten pro Jahr?',
     answer: 1102.5,
     tolerance: 0.01,
@@ -734,7 +734,7 @@ final List<Question> questionsA03 = [
       ),
       ja(
         'Sehabstand etwa 50 bis 70 cm',
-        'Etwa eine Armlänge - bei großen Monitoren mehr.',
+        'Etwa eine Armlänge, bei großen Monitoren mehr.',
       ),
       ja(
         'Beleuchtung von mindestens 500 Lux',
@@ -872,7 +872,7 @@ final List<Question> questionsA03 = [
     ],
     punkte: 2,
     loesung:
-        'Ein Gerätetreiber ist ein Programm, das zwischen dem Betriebssystem und einem bestimmten Gerät übersetzt: Er kennt die Befehle der Hardware und stellt dem System einheitliche Funktionen bereit. Ohne Treiber kann das Betriebssystem das Gerät nicht ansprechen - daher die Meldung.',
+        'Ein Gerätetreiber ist ein Programm, das zwischen dem Betriebssystem und einem bestimmten Gerät übersetzt: Er kennt die Befehle der Hardware und stellt dem System einheitliche Funktionen bereit. Ohne Treiber kann das Betriebssystem das Gerät nicht ansprechen. Daher die Meldung.',
     explanation:
         'Treiber sind die Brücke zwischen dem allgemeinen Betriebssystem und einem konkreten Gerät. Bewertung: höchstens 2 Punkte.',
   ),
@@ -932,7 +932,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     explanation:
-        'Beim präemptiven Multitasking verteilt der Scheduler Zeitscheiben und kann Prozesse jederzeit unterbrechen - heute Standard bei allen verbreiteten Betriebssystemen.',
+        'Beim präemptiven Multitasking verteilt der Scheduler Zeitscheiben und kann Prozesse jederzeit unterbrechen. Das ist heute Standard bei allen verbreiteten Betriebssystemen.',
   ),
   zuordnen(
     'a3-ba-7',
@@ -992,7 +992,7 @@ final List<Question> questionsA03 = [
       ),
       nein(
         'FAT32',
-        'Dateien über 4 GB sind nicht möglich - genau daran scheitert der Vorgang.',
+        'Dateien über 4 GB sind nicht möglich, und genau daran scheitert der Vorgang.',
       ),
       nein('ext4', 'Wird von Windows und macOS nicht direkt unterstützt.'),
       nein(
@@ -1208,7 +1208,7 @@ final List<Question> questionsA03 = [
       nein('Kein Zugriff', 'Beide Berechtigungen erlauben mindestens Lesen.'),
     ],
     explanation:
-        'Freigabe- und NTFS-Rechte werden kombiniert - wirksam ist immer die restriktivere Berechtigung.',
+        'Freigabe- und NTFS-Rechte werden kombiniert: wirksam ist immer die restriktivere Berechtigung.',
   ),
   rechnen(
     'a3-br-4',
@@ -1266,7 +1266,7 @@ final List<Question> questionsA03 = [
     'a3-br-8',
     'b-rechte',
     scenario:
-        'Ein Mitarbeiter ist Mitglied der Gruppen Vertrieb und Praktikanten. Auf einem Ordner hat Vertrieb die NTFS-Berechtigung „Ändern - Zulassen“, Praktikanten haben „Schreiben - Verweigern“.',
+        'Ein Mitarbeiter ist Mitglied der Gruppen Vertrieb und Praktikanten. Auf einem Ordner hat Vertrieb die NTFS-Berechtigung „Ändern: Zulassen“, Praktikanten haben „Schreiben: Verweigern“.',
     prompt: 'Was darf er in dem Ordner?',
     choices: [
       ja(
@@ -1284,7 +1284,7 @@ final List<Question> questionsA03 = [
       nein('Vollzugriff', 'Keine der beiden Gruppen hat Vollzugriff.'),
     ],
     explanation:
-        'NTFS-Rechte mehrerer Gruppen addieren sich - aber ein ausdrückliches Verweigern schlägt jedes Zulassen.',
+        'NTFS-Rechte mehrerer Gruppen addieren sich, aber ein ausdrückliches Verweigern schlägt jedes Zulassen.',
     difficulty: 3,
   ),
   einfach(
@@ -1298,7 +1298,7 @@ final List<Question> questionsA03 = [
         'rwxr--r--',
         'u+x fügt nur dem Besitzer (user) das Ausführungsrecht hinzu.',
       ),
-      nein('rwxr-xr-x', 'Das wäre a+x - Ausführen für alle.'),
+      nein('rwxr-xr-x', 'Das wäre a+x: Ausführen für alle.'),
       nein('rw-r--r-x', 'o steht für andere, u für den Besitzer.'),
       nein('--x------', '+ fügt hinzu, es ersetzt nicht die übrigen Rechte.'),
     ],
@@ -1313,7 +1313,7 @@ final List<Question> questionsA03 = [
     prompt: 'Ordne jedem Windows-Befehl das Linux-Gegenstück zu.',
     buckets: ['ls', 'cp', 'ip a', 'traceroute'],
     items: [zu('ipconfig', 2), zu('dir', 0), zu('tracert', 3), zu('copy', 1)],
-    explanation: 'dir - ls, copy - cp, ipconfig - ip a, tracert - traceroute.',
+    explanation: 'dir → ls, copy → cp, ipconfig → ip a, tracert → traceroute.',
   ),
   einfach(
     'a3-bc-2',
@@ -1324,7 +1324,7 @@ final List<Question> questionsA03 = [
     choices: [
       ja(
         'Bei der Namensauflösung (DNS)',
-        'Die Verbindung ins Internet steht - nur Namen werden nicht in Adressen übersetzt.',
+        'Die Verbindung ins Internet steht; nur Namen werden nicht in Adressen übersetzt.',
       ),
       nein(
         'Beim Netzwerkkabel',
@@ -1340,7 +1340,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     explanation:
-        'IP-Adressen erreichbar, Namen nicht: Das ist das Muster eines DNS-Problems - prüfbar mit nslookup.',
+        'IP-Adressen erreichbar, Namen nicht: Das ist das Muster eines DNS-Problems, das du mit nslookup prüfen kannst.',
   ),
   reihenfolge(
     'a3-bc-3',
@@ -1409,7 +1409,7 @@ final List<Question> questionsA03 = [
       paar('grep', 'filtert Zeilen nach einem Suchtext'),
     ],
     explanation:
-        '> leitet die Ausgabe in eine Datei um und überschreibt sie, >> hängt an - die Zeile im Skript ergänzt log.txt also um „Fehler“. | verkettet Befehle, grep (Windows: findstr) sucht Text.',
+        '> leitet die Ausgabe in eine Datei um und überschreibt sie, >> hängt an. Die Zeile im Skript ergänzt log.txt also um „Fehler“. | verkettet Befehle, grep (Windows: findstr) sucht Text.',
     difficulty: 1,
   ),
   einfach(
@@ -1550,7 +1550,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     loesung:
-        'Eine Zero-Day-Lücke ist eine Schwachstelle, für die der Hersteller noch kein Update bereitstellt - er hatte „null Tage“ Zeit zu reagieren. Bis ein Patch erscheint, helfen nur Härtung und Umgehungen: den betroffenen Dienst abschalten oder vom Internet abschotten, Rechte beschränken und das System überwachen.',
+        'Eine Zero-Day-Lücke ist eine Schwachstelle, für die der Hersteller noch kein Update bereitstellt. Er hatte „null Tage“ Zeit zu reagieren. Bis ein Patch erscheint, helfen nur Härtung und Umgehungen: den betroffenen Dienst abschalten oder vom Internet abschotten, Rechte beschränken und das System überwachen.',
     explanation:
         'Gegen Zero-Day-Lücken helfen nur Härtung, Rechtebeschränkung und Überwachung, bis ein Patch erscheint. Bewertung: 2 Punkte für die Erklärung, 1 Punkt für eine Maßnahme.',
   ),
@@ -1566,7 +1566,7 @@ final List<Question> questionsA03 = [
       'Erfolg kontrollieren und dokumentieren',
     ],
     explanation:
-        'Getestet wird vor der Verteilung - ein fehlerhaftes Update kann sonst alle Systeme gleichzeitig lahmlegen.',
+        'Getestet wird vor der Verteilung. Ein fehlerhaftes Update kann sonst alle Systeme gleichzeitig lahmlegen.',
   ),
   zuordnen(
     'a3-bh-4',
@@ -1593,7 +1593,7 @@ final List<Question> questionsA03 = [
     choices: [
       ja(
         'Den PC vom übrigen Netz abschotten und die Ablösung planen',
-        'Ohne Updates bleibt jede neue Lücke offen - Isolation begrenzt das Risiko.',
+        'Ohne Updates bleibt jede neue Lücke offen; Isolation begrenzt das Risiko.',
       ),
       nein(
         'Nichts tun, solange die Maschine läuft',
@@ -1601,7 +1601,7 @@ final List<Question> questionsA03 = [
       ),
       nein(
         'Den PC direkt ins Internet stellen, damit er Updates sucht',
-        'Es gibt keine Updates mehr - so vergrößert sich nur die Angriffsfläche.',
+        'Es gibt keine Updates mehr. So vergrößert sich nur die Angriffsfläche.',
       ),
       nein(
         'Den Virenschutz deinstallieren, um Leistung zu sparen',
@@ -1645,7 +1645,7 @@ final List<Question> questionsA03 = [
     choices: [
       ja(
         'Anmeldung als root direkt per SSH verbieten',
-        'Angreifer kennen den Namen root - persönliche Konten mit sudo sind sicherer.',
+        'Angreifer kennen den Namen root; persönliche Konten mit sudo sind sicherer.',
       ),
       ja(
         'Anmeldung mit Schlüsselpaar statt Passwort',
@@ -1799,7 +1799,7 @@ final List<Question> questionsA03 = [
       'Buchhaltung stellt die Rechnung und überwacht die Zahlung',
     ],
     explanation:
-        'Der Auftrag durchläuft Vertrieb, Lager, Beschaffung bzw. Produktion, Versand und Buchhaltung - jedes Modul arbeitet mit denselben Daten weiter.',
+        'Der Auftrag durchläuft Vertrieb, Lager, Beschaffung bzw. Produktion, Versand und Buchhaltung. Jedes Modul arbeitet mit denselben Daten weiter.',
   ),
   einfach(
     'a3-au-7',
@@ -1947,7 +1947,7 @@ final List<Question> questionsA03 = [
       zu('Direkt im Quellcode umgeschriebene Preisberechnung', 1),
     ],
     explanation:
-        'Vorgesehene Einstellungen übersteht jedes Update. Modifikationen am Herstellercode überschreibt das neue Release - sie müssen neu eingebaut und getestet werden.',
+        'Vorgesehene Einstellungen übersteht jedes Update. Modifikationen am Herstellercode überschreibt das neue Release. Sie müssen neu eingebaut und getestet werden.',
   ),
   reihenfolge(
     'a3-as-7',
@@ -1995,7 +1995,7 @@ final List<Question> questionsA03 = [
       zu('Quellcode offen, darf verändert und weitergegeben werden', 0),
     ],
     explanation:
-        'Entscheidend sind Kosten und Zugang zum Quellcode - die beiden Merkmale sind unabhängig voneinander.',
+        'Entscheidend sind Kosten und Zugang zum Quellcode. Die beiden Merkmale sind unabhängig voneinander.',
   ),
   einfach(
     'a3-al-2',
@@ -2009,7 +2009,7 @@ final List<Question> questionsA03 = [
         'Das verlangt das Copyleft der GPL.',
       ),
       nein(
-        'Nichts - Open Source darf beliebig genutzt werden.',
+        'Nichts: Open Source darf beliebig genutzt werden.',
         'Auch Open-Source-Lizenzen stellen Bedingungen.',
       ),
       nein(
@@ -2032,11 +2032,11 @@ final List<Question> questionsA03 = [
     prompt: 'Welches Lizenzmodell ist am günstigsten?',
     choices: [
       ja(
-        'Concurrent User - gezählt werden gleichzeitige Anmeldungen',
+        'Concurrent User: gezählt werden gleichzeitige Anmeldungen',
         'Es reichen 20 Lizenzen.',
       ),
       nein(
-        'Named User - jede berechtigte Person braucht eine Lizenz',
+        'Named User: Jede berechtigte Person braucht eine Lizenz',
         'Dafür wären 60 Lizenzen nötig.',
       ),
       nein(
@@ -2154,7 +2154,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     explanation:
-        'Lizenzmanagement gleicht Installationen und Lizenzen ab - gegen rechtliche Risiken und gegen unnötige Kosten.',
+        'Lizenzmanagement gleicht Installationen und Lizenzen ab und schützt so vor rechtlichen Risiken und unnötigen Kosten.',
   ),
   einfach(
     'a3-al-9',
@@ -2213,7 +2213,7 @@ final List<Question> questionsA03 = [
       ),
       nein(
         'Online-Whiteboards dürfen grundsätzlich nicht genutzt werden.',
-        'Sie sind erlaubt - mit geregeltem Vertrag.',
+        'Sie sind erlaubt, wenn ein Vertrag sie regelt.',
       ),
       nein(
         'Nichts, solange das Tool kostenlos ist.',
@@ -2257,7 +2257,7 @@ final List<Question> questionsA03 = [
     ],
     punkte: 3,
     loesung:
-        'Die Richtlinie legt fest, wer im Namen des Unternehmens posten darf, welche Informationen vertraulich bleiben - etwa Interna, Kundendaten und Fotos aus dem Betrieb - und wie mit Kritik umgegangen wird. Dazu kommen Hinweise zu Datenschutz und Urheberrecht.',
+        'Die Richtlinie legt fest, wer im Namen des Unternehmens posten darf, welche Informationen vertraulich bleiben (etwa Interna, Kundendaten und Fotos aus dem Betrieb) und wie mit Kritik umgegangen wird. Dazu kommen Hinweise zu Datenschutz und Urheberrecht.',
     explanation:
         'Eine Richtlinie gibt Sicherheit im Umgang mit sozialen Medien und schützt vor Reputationsschäden. Bewertung: je Nennung 1 Punkt, höchstens 3 Punkte.',
   ),
@@ -2407,7 +2407,7 @@ final List<Question> questionsA03 = [
     'a3-no-2',
     'nw-modelle',
     prompt:
-        'Bringe die OSI-Schichten in die richtige Reihenfolge - von Schicht 1 nach 7.',
+        'Bringe die OSI-Schichten in die richtige Reihenfolge, von Schicht 1 nach 7.',
     items: [
       'Bitübertragung',
       'Sicherung',
@@ -2435,7 +2435,7 @@ final List<Question> questionsA03 = [
       zu(
         'DNS-Anfrage',
         1,
-        'Kurze Frage, kurze Antwort - ohne Verbindungsaufbau.',
+        'Kurze Frage, kurze Antwort, ohne Verbindungsaufbau.',
       ),
       zu('E-Mail versenden', 0, 'Jedes Byte muss ankommen.'),
       zu(
@@ -2446,7 +2446,7 @@ final List<Question> questionsA03 = [
       zu('Datei herunterladen', 0, 'Fehlende Teile werden erneut gesendet.'),
     ],
     explanation:
-        'TCP sichert die Übertragung mit Bestätigungen und erneutem Senden - richtig, wenn alles vollständig ankommen muss. Bei Echtzeitanwendungen zählt geringe Verzögerung mehr als Vollständigkeit - deshalb UDP.',
+        'TCP sichert die Übertragung mit Bestätigungen und erneutem Senden; das ist richtig, wenn alles vollständig ankommen muss. Bei Echtzeitanwendungen zählt geringe Verzögerung mehr als Vollständigkeit. Deshalb UDP.',
   ),
   reihenfolge(
     'a3-no-4',
@@ -2617,7 +2617,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     explanation:
-        'VLANs trennen Netze logisch auf gemeinsamer Hardware - Kommunikation zwischen ihnen läuft über Routing.',
+        'VLANs trennen Netze logisch auf gemeinsamer Hardware; Kommunikation zwischen ihnen läuft über Routing.',
   ),
   zuordnen(
     'a3-ng-4',
@@ -2670,7 +2670,10 @@ final List<Question> questionsA03 = [
       ja('Cat 6A', '10 Gbit/s auf bis zu 100 m.'),
       nein('Cat 5e', 'Nur 1 Gbit/s.'),
       nein('Cat 6', '10 Gbit/s nur bis etwa 55 m.'),
-      nein('Cat 8', 'Schafft mehr, aber nur bis 30 m - für 80 m ungeeignet.'),
+      nein(
+        'Cat 8',
+        'Schafft mehr, aber nur bis 30 m und ist daher für 80 m ungeeignet.',
+      ),
     ],
     explanation:
         'Für 10GBASE-T über die volle Länge von 100 m braucht es mindestens Cat 6A. Cat 6 reicht nur für kürzere Strecken.',
@@ -2744,7 +2747,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     explanation:
-        'Innerhalb eines VLANs verbindet der Switch direkt. Zwischen VLANs braucht es Routing - das ist hier noch nicht eingerichtet.',
+        'Innerhalb eines VLANs verbindet der Switch direkt. Zwischen VLANs braucht es Routing, und das ist hier noch nicht eingerichtet.',
   ),
   rechnen(
     'a3-ng-10',
@@ -2796,7 +2799,7 @@ final List<Question> questionsA03 = [
       nein('8.8.8.8', 'Öffentliche Adresse.'),
       nein(
         '169.254.3.4',
-        'APIPA-Adresse - nicht privat im Sinne von RFC 1918, sondern selbst vergeben.',
+        'APIPA-Adresse: nicht privat im Sinne von RFC 1918, sondern selbst vergeben.',
       ),
     ],
     explanation:
@@ -2806,7 +2809,7 @@ final List<Question> questionsA03 = [
     'a3-n4-4',
     'nw-ipv4',
     prompt:
-        'Das Netz 10.0.0.0/24 soll in Subnetze mit mindestens 50 nutzbaren Hosts aufgeteilt werden - so viele wie möglich. Wie viele Subnetze entstehen?',
+        'Das Netz 10.0.0.0/24 soll in Subnetze mit mindestens 50 nutzbaren Hosts aufgeteilt werden, und zwar in so viele wie möglich. Wie viele Subnetze entstehen?',
     answer: 4,
     unit: 'Subnetze',
     explanation:
@@ -2999,7 +3002,7 @@ final List<Question> questionsA03 = [
       ),
       nein(
         '2001:db8::1::abc',
-        ':: darf nur einmal vorkommen - sonst ist die Adresse mehrdeutig und damit ungültig.',
+        ':: darf nur einmal vorkommen, sonst ist die Adresse mehrdeutig und damit ungültig.',
       ),
       nein(
         '2001:db8:0:0:0:1::abc',
@@ -3007,7 +3010,7 @@ final List<Question> questionsA03 = [
       ),
       nein(
         '21:db8::1:0:abc',
-        'Nur führende Nullen dürfen entfallen - aus 2001 wird nicht 21.',
+        'Nur führende Nullen dürfen entfallen, aus 2001 wird nicht 21.',
       ),
     ],
     explanation:
@@ -3037,7 +3040,7 @@ final List<Question> questionsA03 = [
         'Eine IPv4-Adresse hat dagegen nur {3} Bit.',
     luecken: [zahl(128), zahl(8), zahl(16), zahl(32)],
     explanation:
-        'IPv6 nutzt 128 Bit: acht Blöcke zu je 16 Bit, hexadezimal geschrieben - typischerweise 64 Bit Präfix und 64 Bit Interface-ID. IPv4 hat 32 Bit.',
+        'IPv6 nutzt 128 Bit: acht Blöcke zu je 16 Bit, hexadezimal geschrieben, typischerweise 64 Bit Präfix und 64 Bit Interface-ID. IPv4 hat 32 Bit.',
     difficulty: 1,
   ),
   einfach(
@@ -3052,7 +3055,7 @@ final List<Question> questionsA03 = [
       ),
       nein(
         '2001:db8::1:0:0:0',
-        'Gültig, aber länger - hier wurde die kürzere Folge ersetzt.',
+        'Gültig, aber länger; hier wurde die kürzere Folge ersetzt.',
       ),
       nein('2001:db8::1::', 'Zweimal :: ist ungültig.'),
       nein(
@@ -3134,7 +3137,7 @@ final List<Question> questionsA03 = [
         'fd12:3456:789a::1',
         'fd00::/8 gehört zum Bereich fc00::/7 der Unique Local Addresses.',
       ),
-      nein('fe80::1', 'Link-Local - nur im eigenen Segment gültig.'),
+      nein('fe80::1', 'Link-Local, nur im eigenen Segment gültig.'),
       nein('2a00:1450::1', 'Global Unicast aus 2000::/3.'),
       nein('ff02::1', 'Multicast an alle Knoten im Segment.'),
     ],
@@ -3204,9 +3207,9 @@ final List<Question> questionsA03 = [
     ],
     punkte: 4,
     loesung:
-        'IP-Adresse, Subnetzmaske, Standardgateway und DNS-Server - befristet über eine Lease. Die MAC-Adresse stammt dagegen nicht vom DHCP-Server; sie ist in der Netzwerkkarte hinterlegt.',
+        'IP-Adresse, Subnetzmaske, Standardgateway und DNS-Server, befristet über eine Lease. Die MAC-Adresse stammt dagegen nicht vom DHCP-Server; sie ist in der Netzwerkkarte hinterlegt.',
     explanation:
-        'DHCP verteilt die Netzwerkkonfiguration automatisch - befristet über eine Lease. Bewertung: je Nennung 1 Punkt, höchstens 4 Punkte.',
+        'DHCP verteilt die Netzwerkkonfiguration automatisch, befristet über eine Lease. Bewertung: je Nennung 1 Punkt, höchstens 4 Punkte.',
   ),
   zuordnen(
     'a3-nd-5',
@@ -3288,7 +3291,7 @@ final List<Question> questionsA03 = [
         'Ohne öffentliche Adresse ist das Internet nicht erreichbar.',
       ),
       nein(
-        'Zwei - eine für ein- und eine für ausgehenden Verkehr',
+        'Zwei: eine für ein- und eine für ausgehenden Verkehr',
         'PAT kommt mit einer Adresse für beide Richtungen aus.',
       ),
     ],
@@ -3414,7 +3417,7 @@ final List<Question> questionsA03 = [
       zu('Sehr leichtgewichtig, viele Instanzen je Host', 1),
     ],
     explanation:
-        'VMs virtualisieren Hardware und bringen ein eigenes Betriebssystem mit - stark isoliert, aber schwergewichtig. Container virtualisieren auf Betriebssystemebene, teilen den Kernel und starten in Sekunden.',
+        'VMs virtualisieren Hardware und bringen ein eigenes Betriebssystem mit: stark isoliert, aber schwergewichtig. Container virtualisieren auf Betriebssystemebene, teilen den Kernel und starten in Sekunden.',
   ),
   zuordnen(
     'a3-nc-3',
@@ -3568,7 +3571,7 @@ final List<Question> questionsA03 = [
         'Das darf ein Auftragsverarbeiter gerade nicht.',
       ),
       nein(
-        'Nichts - der Anbieter trägt die volle Verantwortung',
+        'Nichts. Der Anbieter trägt die volle Verantwortung',
         'Verantwortlich bleibt das Unternehmen selbst.',
       ),
     ],

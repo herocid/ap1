@@ -8,10 +8,10 @@ final List<Nugget> nuggetsA02 = [
     'n-km-1',
     'k-modelle',
     'Was bei Kommunikation passiert',
-    'Kommunikation heißt: Eine Person übermittelt einer anderen eine Nachricht. Das Sender-Empfänger-Modell (nach Shannon und Weaver) zerlegt diesen Vorgang in Schritte - und zeigt, an welcher Stelle etwas schiefgehen kann.',
+    'Kommunikation heißt: Eine Person übermittelt einer anderen eine Nachricht. Das Sender-Empfänger-Modell (nach Shannon und Weaver) zerlegt diesen Vorgang in Schritte und zeigt, an welcher Stelle etwas schiefgehen kann.',
     points: [
       'Sender: hat eine Idee und will sie mitteilen',
-      'Codieren: die Idee in Zeichen fassen - Worte, Gesten, Bilder',
+      'Codieren: die Idee in Zeichen fassen (Worte, Gesten, Bilder)',
       'Kanal: der Weg der Nachricht - Gespräch, Telefon, E-Mail, Chat',
       'Decodieren: der Empfänger deutet die Zeichen',
       'Rückmeldung (Feedback): zeigt dem Sender, was angekommen ist',
@@ -21,7 +21,7 @@ final List<Nugget> nuggetsA02 = [
     'n-km-2',
     'k-modelle',
     'Das Sender-Empfänger-Modell',
-    'Verstanden wird nur, was beide mit demselben Zeichenvorrat deuten. Störungen im Kanal oder fremde Begriffe verfälschen die Nachricht - erst die Rückmeldung deckt das auf.',
+    'Verstanden wird nur, was beide mit demselben Zeichenvorrat deuten. Störungen im Kanal oder fremde Begriffe verfälschen die Nachricht. Erst die Rückmeldung deckt das auf.',
     FlussDiagramm(
       [
         FlussKnoten('Sender: hat eine Idee'),
@@ -42,7 +42,7 @@ final List<Nugget> nuggetsA02 = [
     'n-km-3',
     'k-modelle',
     'Typische Störquellen',
-    'Missverständnisse haben unterschiedliche Ursachen - und jede braucht eine andere Abhilfe.',
+    'Missverständnisse haben unterschiedliche Ursachen, und jede braucht eine andere Abhilfe.',
     [
       ['Störung', 'Beispiel', 'Abhilfe'],
       [
@@ -59,7 +59,7 @@ final List<Nugget> nuggetsA02 = [
     'n-km-4',
     'k-modelle',
     'Das Vier-Seiten-Modell',
-    'Nach Friedemann Schulz von Thun enthält jede Nachricht vier Botschaften zugleich - man spricht vom Nachrichtenquadrat. Der Sender spricht mit „vier Schnäbeln“, der Empfänger hört mit „vier Ohren“ und entscheidet selbst, welches Ohr gerade am lautesten ist.',
+    'Nach Friedemann Schulz von Thun enthält jede Nachricht vier Botschaften zugleich. Man spricht vom Nachrichtenquadrat. Der Sender spricht mit „vier Schnäbeln“, der Empfänger hört mit „vier Ohren“ und entscheidet selbst, welches Ohr gerade am lautesten ist.',
     points: [
       'Sachinhalt: Worüber informiere ich? (Daten, Fakten)',
       'Selbstoffenbarung: Was gebe ich von mir preis? (Gefühle, Haltung)',
@@ -94,14 +94,14 @@ final List<Nugget> nuggetsA02 = [
     'Eine Kundenaussage entschlüsseln',
     'Eine Kundin ruft an: „Das Programm stürzt schon wieder ab!“ Zerlege die Aussage nach Schulz von Thun und leite eine passende Reaktion ab.',
     schritte: [
-      'Sachinhalt: Die Software ist erneut abgestürzt - es ist nicht das erste Mal.',
+      'Sachinhalt: Die Software ist erneut abgestürzt. Es ist nicht das erste Mal.',
       'Selbstoffenbarung: Die Kundin ist verärgert und steht vermutlich unter Zeitdruck.',
       'Beziehung: Sie zweifelt daran, dass ihr zuverlässig geholfen wird.',
-      'Appell: Behebt den Fehler - und zwar dauerhaft.',
+      'Appell: Behebt den Fehler, und zwar dauerhaft.',
       'Reaktion: „Das ist ärgerlich, gerade wenn es wiederholt passiert. Welche Meldung erscheint? Ich sorge dafür, dass wir die Ursache finden.“',
     ],
     ergebnis:
-        'Mit dem Sach- und dem Appell-Ohr hören, die Selbstoffenbarung anerkennen - und nicht auf der Beziehungsebene zurückschlagen.',
+        'Mit dem Sach- und dem Appell-Ohr hören, die Selbstoffenbarung anerkennen und nicht auf der Beziehungsebene zurückschlagen.',
   ),
   konzept(
     'n-km-7',
@@ -112,7 +112,7 @@ final List<Nugget> nuggetsA02 = [
       'Kodieren: Der Sender wählt Fachbegriffe, die der Empfänger nicht kennt („Der DHCP-Lease ist abgelaufen“).',
       'Kanal: Schlechte Leitung, Lärm oder eine missverständliche E-Mail verfälschen die Nachricht.',
       'Dekodieren: Der Empfänger deutet die Nachricht mit seinem eigenen Wissen und seiner Stimmung.',
-      'Feedback: Erst die Rückmeldung zeigt, ob angekommen ist, was gemeint war - deshalb Ergebnis zusammenfassen lassen.',
+      'Feedback: Erst die Rückmeldung zeigt, ob angekommen ist, was gemeint war. Deshalb Ergebnis zusammenfassen lassen.',
     ],
   ),
   vergleich(
@@ -145,7 +145,7 @@ final List<Nugget> nuggetsA02 = [
       [
         '5. symmetrisch oder komplementär',
         'Beziehung auf Augenhöhe oder mit Gefälle.',
-        'zwei Kollegen - Ausbilder und Azubi',
+        'zwei Kollegen: Ausbilder und Azubi',
       ],
     ],
   ),
@@ -155,10 +155,10 @@ final List<Nugget> nuggetsA02 = [
     'Verbal, paraverbal, nonverbal',
     'Wie eine Nachricht ankommt, hängt nicht nur an den Worten. Passen die drei Ebenen zusammen, wirkt der Sprecher stimmig (kongruent). Widersprechen sie sich, glaubt der Empfänger meist eher der Körpersprache.',
     points: [
-      'verbal: die Worte selbst - Wortwahl, Satzbau, Fachbegriffe',
-      'paraverbal: wie gesprochen wird - Tonfall, Lautstärke, Tempo, Pausen',
+      'verbal: die Worte selbst (Wortwahl, Satzbau, Fachbegriffe)',
+      'paraverbal: wie gesprochen wird (Tonfall, Lautstärke, Tempo, Pausen)',
       'nonverbal: Mimik, Gestik, Blickkontakt, Körperhaltung, Abstand',
-      'inkongruent: „Kein Problem“ - mit verschränkten Armen und einem Seufzer',
+      'inkongruent: „Kein Problem“ mit verschränkten Armen und einem Seufzer',
     ],
   ),
   vergleich(
@@ -190,20 +190,20 @@ final List<Nugget> nuggetsA02 = [
     'n-km-11',
     'k-modelle',
     'Nur mit dem Beziehungsohr hören',
-    'Hört der Supporter die Aussage „Das Programm stürzt schon wieder ab!“ nur mit dem Beziehungsohr, fühlt er sich angegriffen und reagiert gereizt - obwohl die Kundin vor allem ein Problem gelöst haben möchte. Im Kundenkontakt hilft ein bewusst „lautes“ Sach- und Appell-Ohr.',
+    'Hört der Supporter die Aussage „Das Programm stürzt schon wieder ab!“ nur mit dem Beziehungsohr, fühlt er sich angegriffen und reagiert gereizt, obwohl die Kundin vor allem ein Problem gelöst haben möchte. Im Kundenkontakt hilft ein bewusst „lautes“ Sach- und Appell-Ohr.',
   ),
   falle(
     'n-km-12',
     'k-modelle',
     'Appell und Sachinhalt verwechseln',
-    'Der Sachinhalt beschreibt, was ist: „Der Drucker ist leer.“ Der Appell beschreibt, was der andere tun soll: „Füll bitte Papier nach.“ Der Appell steht oft gar nicht wörtlich im Satz - in Zuordnungsaufgaben wird er deshalb gern mit dem Sachinhalt verwechselt.',
+    'Der Sachinhalt beschreibt, was ist: „Der Drucker ist leer.“ Der Appell beschreibt, was der andere tun soll: „Füll bitte Papier nach.“ Der Appell steht oft gar nicht wörtlich im Satz. In Zuordnungsaufgaben wird er deshalb gern mit dem Sachinhalt verwechselt.',
   ),
   merke(
     'n-km-13',
     'k-modelle',
     'Merksatz',
     'Für jedes Kunden- und Teamgespräch gilt dieselbe Grundregel.',
-    satz: 'Nicht was gesagt wird, zählt - sondern was ankommt.',
+    satz: 'Nicht was gesagt wird, zählt, sondern was ankommt.',
   ),
 
   // ======================================================== Gesprächsführung
@@ -213,10 +213,10 @@ final List<Nugget> nuggetsA02 = [
     'Gespräche bewusst führen',
     'Ein gutes Kundengespräch ist kein Zufall. Wer eine klare Struktur hat, den Bedarf gründlich ermittelt und Probleme mit Ich-Botschaften anspricht, erfährt mehr, vermeidet Streit und kommt schneller zu einem Ergebnis.',
     points: [
-      'Gesprächsphasen - geben beiden Seiten Orientierung',
-      'Bedarfsermittlung - erst verstehen, dann eine Lösung anbieten',
-      'Ich-Botschaften - sprechen Probleme an, ohne anzugreifen',
-      'Gesprächsförderer - halten das Gespräch in Gang, Störer würgen es ab',
+      'Gesprächsphasen: geben beiden Seiten Orientierung',
+      'Bedarfsermittlung: erst verstehen, dann eine Lösung anbieten',
+      'Ich-Botschaften: sprechen Probleme an, ohne anzugreifen',
+      'Gesprächsförderer: halten das Gespräch in Gang, Störer würgen es ab',
     ],
   ),
   vergleich(
@@ -232,14 +232,14 @@ final List<Nugget> nuggetsA02 = [
       ['Appell', 'Kümmert euch sofort darum!'],
     ],
     points: [
-      'Wer nur auf der Sachebene antwortet, überhört den Ärger - erst die Beziehung beruhigen, dann das Problem lösen.',
+      'Wer nur auf der Sachebene antwortet, überhört den Ärger. Erst die Beziehung beruhigen, dann das Problem lösen.',
     ],
   ),
   konzept(
     'n-kg-3',
     'k-gespraech',
     'Bedarfsermittlung: erst verstehen',
-    'In der Bedarfsermittlung klärst du, was der Kunde wirklich braucht - nicht nur, was er zuerst verlangt. Ein Kunde, der „einen schnelleren PC“ will, braucht vielleicht nur eine SSD oder eine aufgeräumte Software.',
+    'In der Bedarfsermittlung klärst du, was der Kunde wirklich braucht, nicht nur, was er zuerst verlangt. Ein Kunde, der „einen schnelleren PC“ will, braucht vielleicht nur eine SSD oder eine aufgeräumte Software.',
     points: [
       'Ist-Situation: Wie wird heute gearbeitet, was stört?',
       'Ziele: Was soll danach besser sein, woran misst der Kunde Erfolg?',
@@ -277,9 +277,9 @@ final List<Nugget> nuggetsA02 = [
     'n-kg-6',
     'k-gespraech',
     'Eine Beschwerde am Telefon führen',
-    'Eine Kundin ruft aufgebracht an: „Seit Ihrem Update kann ich keine Rechnungen mehr drucken - und morgen ist Monatsabschluss!“ Führe das Gespräch.',
+    'Eine Kundin ruft aufgebracht an: „Seit Ihrem Update kann ich keine Rechnungen mehr drucken, und morgen ist Monatsabschluss!“ Führe das Gespräch.',
     schritte: [
-      'Ausreden lassen und nicht rechtfertigen - der Ärger soll erst raus.',
+      'Ausreden lassen und nicht rechtfertigen. Der Ärger soll erst raus.',
       'Beziehungsebene beruhigen: „Das ist ärgerlich, gerade vor dem Monatsabschluss.“',
       'Sachverhalt klären: „Welche Meldung erscheint, wenn Sie auf Drucken klicken?“',
       'Ergebnis zusammenfassen: „Seit dem Update druckt das Programm keine Rechnungen mehr.“',
@@ -316,7 +316,7 @@ final List<Nugget> nuggetsA02 = [
     'n-kg-8',
     'k-gespraech',
     'Die Phasen eines Kundengesprächs',
-    'Ein Beratungs- oder Verkaufsgespräch folgt einer klaren Struktur. Jede Phase hat ein eigenes Ziel - wer eine überspringt, muss später meist zurück.',
+    'Ein Beratungs- oder Verkaufsgespräch folgt einer klaren Struktur. Jede Phase hat ein eigenes Ziel. Wer eine überspringt, muss später meist zurück.',
     FlussDiagramm([
       FlussKnoten('Kontakt und Begrüßung', seitlich: 'Gesprächsziel nennen'),
       FlussKnoten('Bedarfsermittlung', seitlich: 'Ist, Ziel, Rahmen'),
@@ -348,10 +348,10 @@ final List<Nugget> nuggetsA02 = [
       ],
     ),
     schritte: [
-      'Kontakt: begrüßen, Ziel nennen - „Ich möchte verstehen, wo es hakt.“',
+      'Kontakt: begrüßen, Ziel nennen. „Ich möchte verstehen, wo es hakt.“',
       'Bedarf: Ablauf und Programme erzählen lassen, dann Details klären: „Sind alle drei Empfangsrechner betroffen?“',
       'Verständnis sichern: Ergebnis zusammenfassen und bestätigen lassen.',
-      'Lösung mit Nutzen: „Mit SSDs starten die Rechner deutlich schneller - Ihre Patienten warten kürzer.“',
+      'Lösung mit Nutzen: „Mit SSDs starten die Rechner deutlich schneller. Ihre Patienten warten kürzer.“',
       'Abschluss: Angebot bis Freitag zusagen und das Gespräch dokumentieren.',
     ],
     ergebnis:
@@ -387,7 +387,7 @@ final List<Nugget> nuggetsA02 = [
     'n-kg-12',
     'k-gespraech',
     'Die verkappte Du-Botschaft',
-    '„Ich finde, Sie sind unzuverlässig“ beginnt mit „Ich“, bewertet aber den anderen - es bleibt eine Du-Botschaft. Eine echte Ich-Botschaft beschreibt eine Beobachtung, ihre Wirkung auf dich und deinen Wunsch.',
+    '„Ich finde, Sie sind unzuverlässig“ beginnt mit „Ich“, bewertet aber den anderen. Es bleibt eine Du-Botschaft. Eine echte Ich-Botschaft beschreibt eine Beobachtung, ihre Wirkung auf dich und deinen Wunsch.',
     points: [
       'verkappt: „Ich finde, Sie melden sich nie.“',
       'echt: „Ich brauche bis Freitag eine Rückmeldung, damit der Termin hält.“',
@@ -399,7 +399,7 @@ final List<Nugget> nuggetsA02 = [
     'Merksatz',
     'Die Grundregel der Gesprächsführung in einem Satz.',
     satz:
-        'Erst verstehen, dann lösen - Bedarf klären, zusammenfassen, Lösung mit Nutzen anbieten.',
+        'Erst verstehen, dann lösen: Bedarf klären, zusammenfassen, Lösung mit Nutzen anbieten.',
   ),
 
   // ============================================ Kunden beraten und betreuen
@@ -407,10 +407,10 @@ final List<Nugget> nuggetsA02 = [
     'n-kk-1',
     'k-kunde',
     'Kundenorientierung',
-    'Kundenorientiert arbeiten heißt, die Bedürfnisse des Kunden in den Mittelpunkt zu stellen - vom ersten Kontakt bis nach dem Auftrag. Zufriedene Kunden bleiben, empfehlen weiter und sind günstiger zu halten als neue zu gewinnen.',
+    'Kundenorientiert arbeiten heißt, die Bedürfnisse des Kunden in den Mittelpunkt zu stellen, vom ersten Kontakt bis nach dem Auftrag. Zufriedene Kunden bleiben, empfehlen weiter und sind günstiger zu halten als neue zu gewinnen.',
     points: [
       'externe Kunden: Firmen oder Privatpersonen, die Leistungen kaufen',
-      'interne Kunden: Kollegen und Abteilungen, die deine Leistung nutzen - etwa der Vertrieb beim IT-Support',
+      'interne Kunden: Kollegen und Abteilungen, die deine Leistung nutzen, etwa der Vertrieb beim IT-Support',
       'Kette: Kundenzufriedenheit → Kundenbindung → Weiterempfehlung',
     ],
   ),
@@ -451,13 +451,13 @@ final List<Nugget> nuggetsA02 = [
       'Verständnis prüfen: „Ist das nachvollziehbar, oder soll ich etwas genauer erklären?“',
     ],
     ergebnis:
-        'Nutzen, Alltagsvergleich und Kosten statt Technik - so kann die Geschäftsführerin entscheiden.',
+        'Nutzen, Alltagsvergleich und Kosten statt Technik. So kann die Geschäftsführerin entscheiden.',
   ),
   vergleich(
     'n-kk-4',
     'k-kunde',
     'Kundentypen',
-    'Kunden sind verschieden. Typen aus der Praxis helfen, schnell die passende Haltung zu finden - ohne Menschen in Schubladen zu stecken.',
+    'Kunden sind verschieden. Typen aus der Praxis helfen, schnell die passende Haltung zu finden, ohne Menschen in Schubladen zu stecken.',
     [
       ['Typ', 'erkennbar an', 'so reagierst du'],
       [
@@ -565,10 +565,10 @@ final List<Nugget> nuggetsA02 = [
     'Beschwerden professionell behandeln',
     'Eine Beschwerde ist eine Chance: Gut gelöst, bindet sie den Kunden oft stärker als vorher.',
     [
-      'Zuhören und ausreden lassen - nicht rechtfertigen',
+      'Zuhören und ausreden lassen, nicht rechtfertigen',
       'Verständnis zeigen und für den Hinweis danken',
       'Sachverhalt mit Fragen klären und notieren',
-      'Lösung anbieten oder gemeinsam vereinbaren - mit Termin',
+      'Lösung anbieten oder gemeinsam vereinbaren, mit Termin',
       'Lösung umsetzen und beim Kunden nachfassen',
       'Beschwerde dokumentieren und die Ursache abstellen',
     ],
@@ -589,13 +589,13 @@ final List<Nugget> nuggetsA02 = [
     'n-kk-11',
     'k-kunde',
     'Fachchinesisch',
-    '„Der DHCP-Lease ist abgelaufen“ hilft einer Sachbearbeiterin nicht. „Ihr Rechner hat keine Netzwerkadresse bekommen, ich starte ihn neu“ schon. Fachbegriffe sind nicht falsch - aber nur dort, wo das Gegenüber sie versteht.',
+    '„Der DHCP-Lease ist abgelaufen“ hilft einer Sachbearbeiterin nicht. „Ihr Rechner hat keine Netzwerkadresse bekommen, ich starte ihn neu“ schon. Fachbegriffe sind nicht falsch, aber nur dort, wo das Gegenüber sie versteht.',
   ),
   falle(
     'n-kk-12',
     'k-kunde',
     'Ticket ohne Bestätigung geschlossen',
-    'Ein Ticket ist erst erledigt, wenn die Lösung dokumentiert und vom Kunden bestätigt ist. Wer vorher schließt, riskiert, dass das Problem wieder auftaucht - und dass sich der Kunde nicht ernst genommen fühlt.',
+    'Ein Ticket ist erst erledigt, wenn die Lösung dokumentiert und vom Kunden bestätigt ist. Wer vorher schließt, riskiert, dass das Problem wieder auftaucht und dass sich der Kunde nicht ernst genommen fühlt.',
   ),
   merke(
     'n-kk-13',
@@ -603,7 +603,7 @@ final List<Nugget> nuggetsA02 = [
     'Merksatz',
     'Worauf es bei jeder Kundenbetreuung ankommt.',
     satz:
-        'Sprich die Sprache des Kunden - und lass keine Anfrage verloren gehen.',
+        'Sprich die Sprache des Kunden und lass keine Anfrage verloren gehen.',
   ),
 
   // ============================================== Teamphasen nach Tuckman
@@ -632,10 +632,10 @@ final List<Nugget> nuggetsA02 = [
       FlussKnoten('Adjourning', seitlich: 'Auflösung'),
     ]),
     points: [
-      'Forming - höflich, vorsichtig, abwartend',
-      'Storming - Rollen und Einfluss werden ausgehandelt',
-      'Norming - das Team einigt sich auf Umgang und Abläufe',
-      'Performing - selbstständige, effektive Arbeit',
+      'Forming: höflich, vorsichtig, abwartend',
+      'Storming: Rollen und Einfluss werden ausgehandelt',
+      'Norming: Das Team einigt sich auf Umgang und Abläufe',
+      'Performing: selbstständige, effektive Arbeit',
       'Adjourning - Abschluss, das Team geht auseinander',
     ],
   ),
@@ -643,7 +643,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tt-3',
     'te-phasen',
     'Woran du die Phase erkennst',
-    'In Prüfungsaufgaben wird eine Situation beschrieben - du ordnest sie einer Phase zu.',
+    'In Prüfungsaufgaben wird eine Situation beschrieben. Du ordnest sie einer Phase zu.',
     [
       ['Phase', 'Stimmung', 'typische Aussage'],
       ['Forming', 'höflich, unsicher', '„Wer macht hier eigentlich was?“'],
@@ -665,7 +665,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tt-4',
     'te-phasen',
     'Was das Team in jeder Phase braucht',
-    'Die Leitung muss ihr Verhalten der Phase anpassen - anfangs lenkt sie stark, später lässt sie los.',
+    'Die Leitung muss ihr Verhalten der Phase anpassen: anfangs lenkt sie stark, später lässt sie los.',
     [
       ['Phase', 'Aufgabe der Leitung'],
       ['Forming', 'Ziele und Rollen klären, Kennenlernen ermöglichen'],
@@ -747,7 +747,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tt-9',
     'te-phasen',
     'Chancen und Risiken von Teamarbeit',
-    'Teams leisten oft mehr als Einzelne - aber nicht automatisch.',
+    'Teams leisten oft mehr als Einzelne, aber nicht automatisch.',
     [
       ['Chancen', 'Risiken'],
       ['mehr Wissen und Perspektiven', 'höherer Abstimmungsaufwand'],
@@ -777,7 +777,7 @@ final List<Nugget> nuggetsA02 = [
     'Eselsbrücke',
     'Die Reihenfolge reimt sich im Englischen.',
     satz:
-        'Forming, Storming, Norming, Performing, Adjourning - kennenlernen, streiten, Regeln finden, leisten, auseinandergehen.',
+        'Forming, Storming, Norming, Performing, Adjourning: kennenlernen, streiten, Regeln finden, leisten, auseinandergehen.',
   ),
 
   // ============================================ Feedback und Fehlerkultur
@@ -785,10 +785,10 @@ final List<Nugget> nuggetsA02 = [
     'n-tf-1',
     'te-feedback',
     'Wozu Feedback?',
-    'Feedback ist eine Rückmeldung darüber, wie ein Verhalten auf andere wirkt. Es gleicht Selbstbild und Fremdbild ab: Wie sehe ich mich - und wie sehen mich die anderen?',
+    'Feedback ist eine Rückmeldung darüber, wie ein Verhalten auf andere wirkt. Es gleicht Selbstbild und Fremdbild ab: Wie sehe ich mich, und wie sehen mich die anderen?',
     points: [
       'positives Feedback: bestärkt, was gut läuft',
-      'kritisches (konstruktives) Feedback: zeigt, was sich ändern sollte - mit Vorschlag',
+      'kritisches (konstruktives) Feedback: zeigt, was sich ändern sollte (mit Vorschlag)',
       'Feedback bezieht sich auf Verhalten, nie auf die Person als Ganzes',
     ],
   ),
@@ -796,7 +796,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tf-2',
     'te-feedback',
     'Das Johari-Fenster',
-    'Das Johari-Fenster (nach Joseph Luft und Harry Ingham) teilt das Verhalten einer Person in vier Bereiche - je nachdem, ob es ihr selbst bekannt ist und ob es anderen bekannt ist.',
+    'Das Johari-Fenster (nach Joseph Luft und Harry Ingham) teilt das Verhalten einer Person in vier Bereiche, je nachdem, ob es ihr selbst bekannt ist und ob es anderen bekannt ist.',
     QuadrantenDiagramm(
       xAchse: 'mir selbst bekannt',
       yAchse: 'anderen bekannt',
@@ -816,10 +816,10 @@ final List<Nugget> nuggetsA02 = [
     'n-tf-3',
     'te-feedback',
     'Wie sich das Fenster verschiebt',
-    'Ziel ist ein großer öffentlicher Bereich - dort ist die Zusammenarbeit am offensten. Zwei Wege führen dahin.',
+    'Ziel ist ein großer öffentlicher Bereich. Dort ist die Zusammenarbeit am offensten. Zwei Wege führen dahin.',
     points: [
       'Feedback von anderen verkleinert den blinden Fleck',
-      'Selbstoffenbarung - etwas von sich erzählen - verkleinert den privaten Bereich',
+      'Selbstoffenbarung (etwas von sich erzählen) verkleinert den privaten Bereich',
       'Beides zusammen vergrößert die öffentliche Person, und das Vertrauen im Team wächst',
     ],
   ),
@@ -827,7 +827,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tf-4',
     'te-feedback',
     'Regeln für Feedback-Geber',
-    'Gutes Feedback ist konkret, beschreibend und hilfreich - der andere soll damit etwas anfangen können.',
+    'Gutes Feedback ist konkret, beschreibend und hilfreich. Der andere soll damit etwas anfangen können.',
     [
       ['So', 'statt so'],
       [
@@ -845,7 +845,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tf-5',
     'te-feedback',
     'Feedback in drei Schritten',
-    'Die WWW-Methode gibt Feedback eine klare Form: Wahrnehmung, Wirkung, Wunsch - jeweils als Ich-Botschaft.',
+    'Die WWW-Methode gibt Feedback eine klare Form: Wahrnehmung, Wirkung, Wunsch, jeweils als Ich-Botschaft.',
     [
       'Wahrnehmung: Was habe ich konkret beobachtet? - ohne Bewertung',
       'Wirkung: Was hat das bei mir ausgelöst oder bewirkt?',
@@ -856,27 +856,27 @@ final List<Nugget> nuggetsA02 = [
     'n-tf-6',
     'te-feedback',
     'Feedback formulieren',
-    'Dein Mitazubi Jonas kam diese Woche dreimal zehn Minuten zu spät zum Daily. Du willst ihm Feedback geben - nach der WWW-Methode.',
+    'Dein Mitazubi Jonas kam diese Woche dreimal zehn Minuten zu spät zum Daily. Du willst ihm Feedback geben, und zwar nach der WWW-Methode.',
     schritte: [
       'Rahmen: unter vier Augen und zeitnah, vorher fragen: „Hast du kurz Zeit für eine Rückmeldung?“',
       'Wahrnehmung: „Mir ist aufgefallen, dass du diese Woche dreimal etwa zehn Minuten nach Beginn zum Daily gekommen bist.“',
       'Wirkung: „Wir mussten dann den Stand noch einmal erklären, und das Daily hat länger gedauert.“',
-      'Wunsch: „Ich wünsche mir, dass du pünktlich kommst - oder kurz im Chat Bescheid gibst, wenn es nicht klappt.“',
+      'Wunsch: „Ich wünsche mir, dass du pünktlich kommst oder kurz im Chat Bescheid gibst, wenn es nicht klappt.“',
       'Raum geben: Jonas kann seine Sicht schildern.',
     ],
     ergebnis:
-        'Konkret, beschreibend, als Ich-Botschaft und mit erfüllbarem Wunsch - statt „Du bist immer unpünktlich“.',
+        'Konkret, beschreibend, als Ich-Botschaft und mit erfüllbarem Wunsch, statt „Du bist immer unpünktlich“.',
   ),
   konzept(
     'n-tf-7',
     'te-feedback',
     'Regeln für Feedback-Nehmer',
-    'Auch Feedback annehmen will gelernt sein. Feedback ist die Sicht des Gebers - keine objektive Wahrheit, aber eine wertvolle Information.',
+    'Auch Feedback annehmen will gelernt sein. Feedback ist die Sicht des Gebers, keine objektive Wahrheit, aber eine wertvolle Information.',
     points: [
       'zuhören und ausreden lassen',
       'nicht rechtfertigen oder verteidigen',
       'bei Unklarheit nachfragen',
-      'bedanken - und selbst entscheiden, was man annimmt',
+      'bedanken und selbst entscheiden, was man annimmt',
     ],
   ),
   konzept(
@@ -907,7 +907,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tf-10',
     'te-feedback',
     'Feedback im Projektalltag',
-    'Feedback hat im Projekt feste Orte - so wird es zur Gewohnheit statt zur Ausnahme.',
+    'Feedback hat im Projekt feste Orte. So wird es zur Gewohnheit statt zur Ausnahme.',
     points: [
       'Retrospektive in Scrum: Am Sprintende überlegt das Team, was gut lief und was es ändern will.',
       'Lessons Learned am Projektende: Erfahrungen für künftige Projekte sichern.',
@@ -919,7 +919,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tf-11',
     'te-feedback',
     'Du-Botschaften',
-    '„Du arbeitest schlampig“ greift die Person an und erzeugt Abwehr. „Mir ist aufgefallen, dass im Testprotokoll drei Fälle fehlen“ beschreibt ein Verhalten - darüber lässt sich sprechen.',
+    '„Du arbeitest schlampig“ greift die Person an und erzeugt Abwehr. „Mir ist aufgefallen, dass im Testprotokoll drei Fälle fehlen“ beschreibt ein Verhalten, und darüber lässt sich sprechen.',
   ),
   falle(
     'n-tf-12',
@@ -933,7 +933,7 @@ final List<Nugget> nuggetsA02 = [
     'Merksatz',
     'Die Feedbackregeln in einem Satz zusammengefasst.',
     satz:
-        'Feedback beschreibt Verhalten, nicht Menschen - konkret, zeitnah, als Ich-Botschaft und mit Wunsch.',
+        'Feedback beschreibt Verhalten, nicht Menschen: konkret, zeitnah, als Ich-Botschaft und mit Wunsch.',
   ),
 
   // ============================================== Konflikte und Vielfalt
@@ -941,7 +941,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tk-1',
     'te-konflikte',
     'Was ein Konflikt ist',
-    'Ein Konflikt entsteht, wenn Ziele, Interessen, Werte oder Erwartungen aufeinandertreffen, die sich nicht gleichzeitig erfüllen lassen. Konflikte sind normal - früh erkannt, führen sie oft sogar zu besseren Lösungen.',
+    'Ein Konflikt entsteht, wenn Ziele, Interessen, Werte oder Erwartungen aufeinandertreffen, die sich nicht gleichzeitig erfüllen lassen. Konflikte sind normal. Früh erkannt führen sie oft sogar zu besseren Lösungen.',
     points: [
       'Warnsignale: Gereiztheit, Sticheleien, Rückzug, Gerüchte',
       'weitere Signale: Dienst nach Vorschrift, Cliquenbildung, häufige Fehlzeiten',
@@ -978,7 +978,7 @@ final List<Nugget> nuggetsA02 = [
       [
         'Wertekonflikt',
         'unterschiedliche Überzeugungen',
-        'Kundendaten für Werbung nutzen - ja oder nein?',
+        'Kundendaten für Werbung nutzen: ja oder nein?',
       ],
     ],
   ),
@@ -986,7 +986,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tk-3',
     'te-konflikte',
     'Die Eskalationsstufen nach Glasl',
-    'Friedrich Glasl beschreibt neun Stufen, auf denen ein Konflikt immer weiter nach unten eskaliert - wie eine Treppe abwärts. Je tiefer die Stufe, desto schwerer ist der Weg zurück.',
+    'Friedrich Glasl beschreibt neun Stufen, auf denen ein Konflikt immer weiter nach unten eskaliert, wie eine Treppe abwärts. Je tiefer die Stufe, desto schwerer ist der Weg zurück.',
     StapelDiagramm(
       [
         StapelEbene('1 Verhärtung', 'win-win'),
@@ -1004,14 +1004,14 @@ final List<Nugget> nuggetsA02 = [
     ),
     points: [
       'Stufe 1-3: Man streitet noch über die Sache, eine Lösung für beide ist möglich.',
-      'Stufe 4-6: Man sucht Verbündete, stellt den anderen bloß und droht - einer soll verlieren.',
+      'Stufe 4-6: Man sucht Verbündete, stellt den anderen bloß und droht. Einer soll verlieren.',
       'Stufe 7-9: Man nimmt eigenen Schaden in Kauf, um dem anderen zu schaden.',
     ],
   ),
   vergleich(
     'n-tk-4',
     'te-konflikte',
-    'Drei Phasen - wer hilft?',
+    'Drei Phasen. Wer hilft?',
     'Glasl fasst je drei Stufen zu einer Hauptphase zusammen. Je weiter ein Konflikt eskaliert ist, desto stärker muss ein Dritter eingreifen (grobe Zuordnung).',
     [
       ['Stufen', 'Phase', 'Hilfe'],
@@ -1028,7 +1028,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tk-5',
     'te-konflikte',
     'Sechs Wege, wie Konflikte ausgehen',
-    'Gerhard Schwarz beschreibt sechs Grundmuster der Konfliktlösung. Sie sind nach ihrer Reife geordnet - von der Flucht bis zum Konsens.',
+    'Gerhard Schwarz beschreibt sechs Grundmuster der Konfliktlösung. Sie sind nach ihrer Reife geordnet, von der Flucht bis zum Konsens.',
     [
       ['Muster', 'Ergebnis', 'Bewertung'],
       ['Flucht', 'Konflikt wird gemieden', 'bleibt ungelöst'],
@@ -1075,7 +1075,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tk-8',
     'te-konflikte',
     'Ein Konflikt im Azubi-Team',
-    'Lena und Tim streiten seit Tagen um den einzigen Test-Laptop. Inzwischen reden sie kaum noch miteinander - jeder nimmt sich den Laptop einfach, sobald er frei ist. Analysiere den Konflikt und finde eine Lösung.',
+    'Lena und Tim streiten seit Tagen um den einzigen Test-Laptop. Inzwischen reden sie kaum noch miteinander. Jeder nimmt sich den Laptop einfach, sobald er frei ist. Analysiere den Konflikt und finde eine Lösung.',
     schritte: [
       'Konfliktart: Es geht um eine knappe Ressource → Verteilungskonflikt, der schon auf die Beziehung abfärbt.',
       'Eskalationsstufe: Sie reden nicht mehr, sondern schaffen Fakten → Glasl-Stufe 3 „Taten statt Worte“, noch in der win-win-Phase.',
@@ -1084,13 +1084,13 @@ final List<Nugget> nuggetsA02 = [
       'Lösung: ein gemeinsamer Buchungskalender mit festen Zeiten.',
     ],
     ergebnis:
-        'Konsens: Die Lösung erfüllt die Interessen beider - niemand muss nachgeben.',
+        'Konsens: Die Lösung erfüllt die Interessen beider, niemand muss nachgeben.',
   ),
   konzept(
     'n-tk-9',
     'te-konflikte',
     'Mediation',
-    'Bei einer Mediation hilft ein neutraler Dritter den Beteiligten, selbst eine Lösung zu finden. Der Mediator entscheidet nicht - anders als bei Delegation oder Schiedsverfahren strukturiert er nur das Gespräch.',
+    'Bei einer Mediation hilft ein neutraler Dritter den Beteiligten, selbst eine Lösung zu finden. Der Mediator entscheidet nicht. Anders als bei Delegation oder Schiedsverfahren strukturiert er nur das Gespräch.',
     points: [
       'freiwillig: Alle Beteiligten stimmen zu.',
       'allparteilich: Der Mediator unterstützt alle Seiten gleichermaßen.',
@@ -1102,7 +1102,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tk-10',
     'te-konflikte',
     'Vielfalt im Team',
-    'Diversity meint die Vielfalt in einem Team - etwa nach Alter, Geschlecht, Herkunft, Religion, Behinderung oder sexueller Identität. Gemischte Teams bringen mehr Perspektiven ein und finden oft kreativere Lösungen. Ohne offene Kommunikation können Unterschiede aber auch Missverständnisse auslösen.',
+    'Diversity meint die Vielfalt in einem Team, etwa nach Alter, Geschlecht, Herkunft, Religion, Behinderung oder sexueller Identität. Gemischte Teams bringen mehr Perspektiven ein und finden oft kreativere Lösungen. Ohne offene Kommunikation können Unterschiede aber auch Missverständnisse auslösen.',
     points: [
       'Chance: unterschiedliche Erfahrungen, Sprachen und Sichtweisen auf Kundenbedürfnisse',
       'Aufgabe: Vorurteile erkennen und Regeln für respektvollen Umgang vereinbaren',
@@ -1112,7 +1112,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tk-11',
     'te-konflikte',
     'Das Allgemeine Gleichbehandlungsgesetz',
-    'Das AGG verbietet Benachteiligungen aus sechs Gründen - im Arbeitsleben etwa bei Stellenanzeige, Einstellung, Bezahlung und Beförderung.',
+    'Das AGG verbietet Benachteiligungen aus sechs Gründen, im Arbeitsleben etwa bei Stellenanzeige, Einstellung, Bezahlung und Beförderung.',
     [
       ['Merkmal', 'Beispiel für Benachteiligung'],
       [
@@ -1130,13 +1130,13 @@ final List<Nugget> nuggetsA02 = [
     'n-tk-12',
     'te-konflikte',
     'Beziehungskonflikt als Sachfrage getarnt',
-    'Oft streiten zwei über eine Sachfrage, obwohl eigentlich die Beziehung gestört ist - nach Watzlawick bestimmt die Beziehungsebene, wie der Inhalt ankommt. Solange nur über das Framework diskutiert wird, bleibt der eigentliche Konflikt ungelöst.',
+    'Oft streiten zwei über eine Sachfrage, obwohl eigentlich die Beziehung gestört ist. Nach Watzlawick bestimmt die Beziehungsebene, wie der Inhalt ankommt. Solange nur über das Framework diskutiert wird, bleibt der eigentliche Konflikt ungelöst.',
   ),
   falle(
     'n-tk-13',
     'te-konflikte',
     'Kompromiss ist nicht Konsens',
-    'Beim Kompromiss gibt jede Seite etwas nach - beide bekommen nur einen Teil. Beim Konsens entwickeln beide eine neue Lösung, die die Interessen aller erfüllt. In Prüfungen gilt der Konsens als nachhaltigste Konfliktlösung.',
+    'Beim Kompromiss gibt jede Seite etwas nach, und beide bekommen nur einen Teil. Beim Konsens entwickeln beide eine neue Lösung, die die Interessen aller erfüllt. In Prüfungen gilt der Konsens als nachhaltigste Konfliktlösung.',
   ),
   merke(
     'n-tk-14',
@@ -1152,7 +1152,7 @@ final List<Nugget> nuggetsA02 = [
     'n-vh-1',
     've-harvard',
     'Sachgerecht verhandeln',
-    'Das Harvard-Konzept wurde von Roger Fisher und William Ury an der Harvard University entwickelt (Buch „Getting to Yes“, 1981). Ziel ist ein Ergebnis, mit dem beide Seiten gut leben können - ohne die Beziehung zu beschädigen.',
+    'Das Harvard-Konzept wurde von Roger Fisher und William Ury an der Harvard University entwickelt (Buch „Getting to Yes“, 1981). Ziel ist ein Ergebnis, mit dem beide Seiten gut leben können, ohne die Beziehung zu beschädigen.',
     points: [
       'Grundidee: nicht um Positionen feilschen, sondern gemeinsam das Problem lösen',
       'Einsatz: Preis- und Vertragsverhandlungen, Konflikte im Team, Streit um Termine',
@@ -1211,17 +1211,17 @@ final List<Nugget> nuggetsA02 = [
     'n-vh-5',
     've-harvard',
     'Prinzip 2: Interessen statt Positionen',
-    'Die Position ist die Forderung, das Interesse der Grund dafür. Der Kunde fordert „Das System muss bis Freitag laufen“ (Position), weil am Montag eine Messe beginnt (Interesse). Vielleicht reicht bis Freitag eine Demo-Version - dann sind beide Seiten zufrieden.',
+    'Die Position ist die Forderung, das Interesse der Grund dafür. Der Kunde fordert „Das System muss bis Freitag laufen“ (Position), weil am Montag eine Messe beginnt (Interesse). Vielleicht reicht bis Freitag eine Demo-Version. Dann sind beide Seiten zufrieden.',
     points: [
       'Frage nach dem Warum: „Wozu brauchen Sie das bis Freitag?“',
-      'Hinter einer Position stecken oft mehrere Interessen - und nicht alle widersprechen sich.',
+      'Hinter einer Position stecken oft mehrere Interessen, und nicht alle widersprechen sich.',
     ],
   ),
   konzept(
     'n-vh-6',
     've-harvard',
     'Prinzip 3: Optionen zum beiderseitigen Vorteil',
-    'Bevor entschieden wird, entwickeln beide Seiten mehrere Lösungen. Das bekannte Orangen-Beispiel zeigt warum: Zwei streiten um eine Orange und teilen sie halb-halb. Die eine wollte aber nur den Saft, der andere nur die Schale zum Backen - beide hätten alles bekommen können.',
+    'Bevor entschieden wird, entwickeln beide Seiten mehrere Lösungen. Das bekannte Orangen-Beispiel zeigt warum: Zwei streiten um eine Orange und teilen sie halb-halb. Die eine wollte aber nur den Saft, der andere nur die Schale zum Backen. Beide hätten alles bekommen können.',
     points: [
       'erst Ideen sammeln, dann bewerten (Brainstorming)',
       'den Kuchen vergrößern statt nur zu verteilen: Laufzeit, Leistungsumfang, Zahlungsziel, Termine',
@@ -1231,7 +1231,7 @@ final List<Nugget> nuggetsA02 = [
     'n-vh-7',
     've-harvard',
     'Prinzip 4: Neutrale Beurteilungskriterien',
-    'Streit über Zahlen lässt sich mit objektiven Maßstäben entschärfen. Beide Seiten einigen sich zuerst auf das Kriterium - dann ergibt sich das Ergebnis fast von selbst, und keiner muss „nachgeben“.',
+    'Streit über Zahlen lässt sich mit objektiven Maßstäben entschärfen. Beide Seiten einigen sich zuerst auf das Kriterium. Dann ergibt sich das Ergebnis fast von selbst, und keiner muss „nachgeben“.',
     points: [
       'marktübliche Preise und Stundensätze',
       'Herstellerangaben, Normen, Gutachten',
@@ -1256,11 +1256,11 @@ final List<Nugget> nuggetsA02 = [
   konzept(
     'n-vh-9',
     've-harvard',
-    'BATNA - die beste Alternative',
-    'BATNA steht für „Best Alternative to a Negotiated Agreement“ - die beste Alternative, falls keine Einigung zustande kommt. Wer sie kennt, weiß, wann ein Angebot zu schlecht ist, und lässt sich nicht unter Druck setzen.',
+    'BATNA: die beste Alternative',
+    'BATNA steht für „Best Alternative to a Negotiated Agreement“, also die beste Alternative, falls keine Einigung zustande kommt. Wer sie kennt, weiß, wann ein Angebot zu schlecht ist, und lässt sich nicht unter Druck setzen.',
     points: [
       'Beispiel: Ein Systemhaus verhandelt mit einem Lieferanten. Seine BATNA ist ein zweiter Lieferant, der 3 % teurer ist.',
-      'Ist das Angebot besser als die BATNA, lohnt die Einigung - sonst nimmt man die Alternative.',
+      'Ist das Angebot besser als die BATNA, lohnt die Einigung, sonst nimmt man die Alternative.',
       'Wer seine BATNA vor der Verhandlung verbessert, verhandelt aus einer stärkeren Position.',
     ],
   ),
@@ -1268,16 +1268,16 @@ final List<Nugget> nuggetsA02 = [
     'n-vh-10',
     've-harvard',
     'Harvard im Kundengespräch',
-    'Ein Kunde fordert beim Wartungsvertrag für seine Server 20 % Preisnachlass - „sonst kündigen wir“. Wende die vier Prinzipien an.',
+    'Ein Kunde fordert beim Wartungsvertrag für seine Server 20 % Preisnachlass, „sonst kündigen wir“. Wende die vier Prinzipien an.',
     schritte: [
-      'Menschen und Probleme trennen: ruhig bleiben, den Ärger anerkennen - „Ich verstehe, dass die Kosten Sie belasten.“',
+      'Menschen und Probleme trennen: ruhig bleiben, den Ärger anerkennen. „Ich verstehe, dass die Kosten Sie belasten.“',
       'Interessen klären: Das IT-Budget ist für dieses Jahr gedeckelt, der Kunde braucht aber weiter schnellen Support.',
       'Optionen entwickeln: längere Laufzeit gegen niedrigeren Monatspreis, Wartung nur für kritische Server, Zahlung in Quartalsraten.',
       'Neutrale Kriterien: marktübliche Stundensätze und die im SLA vereinbarten Reaktionszeiten als Maßstab.',
-      'BATNA prüfen: Der Kunde müsste einen neuen Dienstleister einarbeiten, der Dienstleister verlöre einen Stammkunden - beide haben Interesse an einer Einigung.',
+      'BATNA prüfen: Der Kunde müsste einen neuen Dienstleister einarbeiten, der Dienstleister verlöre einen Stammkunden. Beide haben Interesse an einer Einigung.',
     ],
     ergebnis:
-        'Einigung: drei Jahre Laufzeit zu einem um 10 % niedrigeren Monatspreis - der Kunde hält sein Budget ein, der Dienstleister gewinnt Planungssicherheit.',
+        'Einigung: drei Jahre Laufzeit zu einem um 10 % niedrigeren Monatspreis. Der Kunde hält sein Budget ein, der Dienstleister gewinnt Planungssicherheit.',
   ),
   falle(
     'n-vh-11',
@@ -1298,7 +1298,7 @@ final List<Nugget> nuggetsA02 = [
     'n-ve-1',
     've-einwaende',
     'Überzeugen statt überreden',
-    'Wer überzeugt, führt den Kunden mit nachvollziehbaren Argumenten zu einer eigenen Entscheidung. Wer überredet, drängt ihn - und riskiert, dass er den Kauf später bereut.',
+    'Wer überzeugt, führt den Kunden mit nachvollziehbaren Argumenten zu einer eigenen Entscheidung. Wer überredet, drängt ihn und riskiert, dass er den Kauf später bereut.',
     points: [
       'Argumente am Bedarf des Kunden ausrichten, nicht an der Technik',
       'Einwände sind ein gutes Zeichen: Der Kunde beschäftigt sich ernsthaft mit dem Angebot.',
@@ -1308,7 +1308,7 @@ final List<Nugget> nuggetsA02 = [
     'n-ve-2',
     've-einwaende',
     'Nutzenargumentation',
-    'Kunden kaufen keinen Prozessor, sondern schnellere Arbeit. Überzeugend ist die Kette vom Merkmal über den Vorteil zum Nutzen - die „Sie-Formulierung“ macht den Nutzen persönlich.',
+    'Kunden kaufen keinen Prozessor, sondern schnellere Arbeit. Überzeugend ist die Kette vom Merkmal über den Vorteil zum Nutzen. Die „Sie-Formulierung“ macht den Nutzen persönlich.',
     'Merkmal  → was das Produkt hat\n'
         'Vorteil  → was es besser kann\n'
         'Nutzen   → was der Kunde davon hat',
@@ -1333,9 +1333,9 @@ final List<Nugget> nuggetsA02 = [
     'Vom Merkmal zum Nutzen',
     'Du willst einem Steuerbüro Notebooks mit Dockingstation statt Desktop-PCs empfehlen. Baue ein Argument nach der Nutzenargumentation auf.',
     schritte: [
-      'Merkmal: Notebook mit Dockingstation - ein Kabel verbindet Bildschirme, Tastatur und Netzwerk.',
+      'Merkmal: Notebook mit Dockingstation. Ein Kabel verbindet Bildschirme, Tastatur und Netzwerk.',
       'Vorteil: Der Arbeitsplatz lässt sich in Sekunden mitnehmen, zu Hause oder beim Mandanten geht es sofort weiter.',
-      'Nutzen (Sie-Formulierung): „Ihre Mitarbeitenden arbeiten im Homeoffice oder beim Mandanten genauso wie im Büro - ohne Daten zu kopieren.“',
+      'Nutzen (Sie-Formulierung): „Ihre Mitarbeitenden arbeiten im Homeoffice oder beim Mandanten genauso wie im Büro, ohne Daten zu kopieren.“',
       'Bedarf aufgreifen: „Sie hatten erwähnt, dass Frau Albers zweimal pro Woche mobil arbeitet.“',
     ],
     ergebnis:
@@ -1345,7 +1345,7 @@ final List<Nugget> nuggetsA02 = [
     'n-ve-4',
     've-einwaende',
     'Ein Argument aufbauen',
-    'Eine überzeugende Argumentation folgt einer festen Kette - vom Standpunkt bis zur Folgerung.',
+    'Eine überzeugende Argumentation folgt einer festen Kette, vom Standpunkt bis zur Folgerung.',
     [
       'Behauptung: „Das Cloud-Backup ist für Sie die richtige Wahl.“',
       'Begründung: „Denn Ihre Daten liegen zusätzlich außer Haus.“',
@@ -1357,7 +1357,7 @@ final List<Nugget> nuggetsA02 = [
     'n-ve-5',
     've-einwaende',
     'Einwand oder Vorwand?',
-    'Nicht jeder Einwand ist echt - manchmal schiebt ein Kunde nur einen Grund vor, weil er den wahren nicht nennen will.',
+    'Nicht jeder Einwand ist echt. Manchmal schiebt ein Kunde nur einen Grund vor, weil er den wahren nicht nennen will.',
     [
       ['Merkmal', 'Einwand', 'Vorwand'],
       ['Bedeutung', 'echter Zweifel', 'vorgeschobener Grund'],
@@ -1376,8 +1376,8 @@ final List<Nugget> nuggetsA02 = [
   skizze(
     'n-ve-6',
     've-einwaende',
-    'Einwände behandeln - der Ablauf',
-    'Egal welche Methode du wählst - der Rahmen bleibt gleich. Wer zuerst zuhört und nachfragt, weiß, worauf er eigentlich antworten muss.',
+    'Einwände behandeln: der Ablauf',
+    'Egal welche Methode du wählst, der Rahmen bleibt gleich. Wer zuerst zuhört und nachfragt, weiß, worauf er eigentlich antworten muss.',
     FlussDiagramm([
       FlussKnoten('Zuhören, ausreden lassen'),
       FlussKnoten('Verständnis zeigen', seitlich: '„Das verstehe ich.“'),
@@ -1402,7 +1402,7 @@ final List<Nugget> nuggetsA02 = [
       [
         'Ja-aber',
         'zustimmen, dann ergänzen',
-        '„Ja, der Preis ist höher - aber die Wartung ist inklusive.“',
+        '„Ja, der Preis ist höher, aber die Wartung ist inklusive.“',
       ],
       [
         'Bumerang',
@@ -1454,14 +1454,14 @@ final List<Nugget> nuggetsA02 = [
     ),
     schritte: [
       'Verständnis zeigen: „Ich verstehe, dass Sie auf die Kosten achten.“',
-      'Rückfrage: „Zu teuer im Vergleich wozu?“ - die Kundin sichert bisher selbst auf eine USB-Festplatte.',
-      'Ja-aber: „Ja, das ist günstiger - aber es kostet Sie jede Woche Zeit, und die Platte liegt im selben Büro.“',
-      'Bumerang: Sie vergisst die Sicherung oft - „Gerade deshalb lohnt sich die automatische Sicherung.“',
-      'Preis einordnen: 89 € im Monat sind knapp 3 € pro Tag - ein Datenverlust wäre um ein Vielfaches teurer.',
+      'Rückfrage: „Zu teuer im Vergleich wozu?“ Die Kundin sichert bisher selbst auf eine USB-Festplatte.',
+      'Ja-aber: „Ja, das ist günstiger, aber es kostet Sie jede Woche Zeit, und die Platte liegt im selben Büro.“',
+      'Bumerang: Sie vergisst die Sicherung oft: „Gerade deshalb lohnt sich die automatische Sicherung.“',
+      'Preis einordnen: 89 € im Monat sind knapp 3 € pro Tag. Ein Datenverlust wäre um ein Vielfaches teurer.',
       'Zustimmung sichern: „Sollen wir es einen Monat testen?“',
     ],
     ergebnis:
-        'Erst den wahren Grund erfragen, dann gezielt antworten - hier mit Ja-aber und Bumerang.',
+        'Erst den wahren Grund erfragen, dann gezielt antworten; hier mit Ja-aber und Bumerang.',
   ),
   konzept(
     'n-ve-9',
@@ -1472,7 +1472,7 @@ final List<Nugget> nuggetsA02 = [
       '„Die Lösung sichert Ihre Daten täglich automatisch ...“',
       '„... für 89 € im Monat ...“',
       '„... und Sie müssen nie wieder selbst daran denken.“',
-      'Tipp: den Preis auf kleine Einheiten umrechnen - pro Tag oder pro Arbeitsplatz',
+      'Tipp: den Preis auf kleine Einheiten umrechnen (pro Tag oder pro Arbeitsplatz)',
     ],
   ),
   falle(
@@ -1501,7 +1501,7 @@ final List<Nugget> nuggetsA02 = [
     'n-pp-1',
     'pr-praesentation',
     'Wozu präsentieren?',
-    'In der IT präsentierst du Projektstände, Lösungsvorschläge oder Schulungsinhalte - vor Kunden, Kollegen oder der Geschäftsführung. Eine Präsentation soll informieren, überzeugen oder zu einer Entscheidung führen.',
+    'In der IT präsentierst du Projektstände, Lösungsvorschläge oder Schulungsinhalte, vor Kunden, Kollegen oder der Geschäftsführung. Eine Präsentation soll informieren, überzeugen oder zu einer Entscheidung führen.',
     points: [
       'Informieren: z. B. neue Software im Team vorstellen',
       'Überzeugen: z. B. einem Kunden ein Konzept empfehlen',
@@ -1514,13 +1514,13 @@ final List<Nugget> nuggetsA02 = [
     'Eine Präsentation vorbereiten',
     'Die Vorbereitung beginnt nicht mit Folien, sondern mit dem Ziel.',
     [
-      'Ziel festlegen - was sollen die Zuhörer danach wissen oder tun?',
-      'Zielgruppe analysieren - Vorwissen, Erwartungen, Interessen',
-      'Rahmen klären - Dauer, Raum, Technik, Teilnehmerzahl',
+      'Ziel festlegen: Was sollen die Zuhörer danach wissen oder tun?',
+      'Zielgruppe analysieren: Vorwissen, Erwartungen, Interessen',
+      'Rahmen klären: Dauer, Raum, Technik, Teilnehmerzahl',
       'Inhalte sammeln und auswählen',
       'Gliedern - Einleitung, Hauptteil, Schluss',
       'Visualisieren - Folien, Diagramme, Handout',
-      'Vortrag üben - mit Uhr und möglichst vor Publikum',
+      'Vortrag üben, mit Uhr und möglichst vor Publikum',
     ],
   ),
   vergleich(
@@ -1565,7 +1565,7 @@ final List<Nugget> nuggetsA02 = [
     ],
     points: [
       'Einstieg: eine Frage, eine überraschende Zahl oder ein Beispiel aus dem Alltag der Zuhörer',
-      'Der Schluss bleibt am besten im Gedächtnis - nie mit „Das war’s“ enden.',
+      'Der Schluss bleibt am besten im Gedächtnis: nie mit „Das war’s“ enden.',
     ],
   ),
   skizze(
@@ -1614,7 +1614,7 @@ final List<Nugget> nuggetsA02 = [
       Balken('Angebot C', 8460),
     ], einheit: '€'),
     schritte: [
-      'Aussage klären: Die Geschäftsführung soll Beträge vergleichen - welches Angebot ist am günstigsten?',
+      'Aussage klären: Die Geschäftsführung soll Beträge vergleichen: Welches Angebot ist am günstigsten?',
       'Vergleich von Werten → Balken- oder Säulendiagramm.',
       'Kein Kreisdiagramm: Die drei Beträge sind keine Anteile eines Ganzen.',
       'Kein Liniendiagramm: Es gibt keine zeitliche Entwicklung.',
@@ -1672,11 +1672,11 @@ final List<Nugget> nuggetsA02 = [
     'Körpersprache und Stimme',
     'Wie du etwas sagst, wirkt oft stärker als der Inhalt. Sicheres Auftreten lässt sich üben.',
     points: [
-      'Blickkontakt mit dem ganzen Publikum - nicht mit der Leinwand',
+      'Blickkontakt mit dem ganzen Publikum, nicht mit der Leinwand',
       'offene, aufrechte Haltung; Hände sichtbar, nicht in den Taschen',
       'frei sprechen mit Stichwortkarten statt ablesen',
       'laut, deutlich und eher langsam sprechen, bewusst Pausen setzen',
-      'Fachbegriffe erklären oder weglassen - je nach Zielgruppe',
+      'Fachbegriffe erklären oder weglassen, je nach Zielgruppe',
     ],
   ),
   konzept(
@@ -1686,7 +1686,7 @@ final List<Nugget> nuggetsA02 = [
     'Fragen sind ein Zeichen von Interesse. Wer vorher festlegt, wann gefragt werden darf, behält Zeit und Ablauf im Griff.',
     points: [
       'zu Beginn sagen, ob Fragen zwischendurch oder am Ende gestellt werden',
-      'Frage wiederholen oder zusammenfassen - dann hören alle, worum es geht',
+      'Frage wiederholen oder zusammenfassen, dann hören alle, worum es geht',
       'Antwort unbekannt: ehrlich sagen und das Nachreichen zusagen',
       'Technikausfall: die Kernaussagen auch ohne Folien vortragen können, Ausdruck als Reserve',
     ],
@@ -1695,7 +1695,7 @@ final List<Nugget> nuggetsA02 = [
     'n-pp-12',
     'pr-praesentation',
     'Folien vorlesen',
-    'Wer Wort für Wort vorliest, was auf der Folie steht, verliert sein Publikum - die Zuhörer lesen schneller, als man spricht. Die Folie zeigt das Stichwort, die Erklärung kommt vom Vortragenden.',
+    'Wer Wort für Wort vorliest, was auf der Folie steht, verliert sein Publikum. Die Zuhörer lesen schneller, als man spricht. Die Folie zeigt das Stichwort, die Erklärung kommt vom Vortragenden.',
   ),
   falle(
     'n-pp-13',
@@ -1712,7 +1712,7 @@ final List<Nugget> nuggetsA02 = [
     'Merksatz',
     'Die Grundregel für jede Präsentation.',
     satz:
-        'Erst Ziel und Zielgruppe, dann Inhalt, zuletzt die Folien - und nie vorlesen.',
+        'Erst Ziel und Zielgruppe, dann Inhalt, zuletzt die Folien, und nie vorlesen.',
   ),
 
   // ============================================= Informationsquellen bewerten
@@ -1720,7 +1720,7 @@ final List<Nugget> nuggetsA02 = [
     'n-pq-1',
     'pr-quellen',
     'Warum Quellen prüfen?',
-    'Für Angebote, Präsentationen und Entscheidungen brauchst du verlässliche Informationen. Im Internet steht Richtiges neben Veraltetem, Werbung und Falschem - deshalb wird jede Quelle geprüft, bevor du sie verwendest.',
+    'Für Angebote, Präsentationen und Entscheidungen brauchst du verlässliche Informationen. Im Internet steht Richtiges neben Veraltetem, Werbung und Falschem. Deshalb wird jede Quelle geprüft, bevor du sie verwendest.',
     points: [
       'Falsche Informationen führen zu falschen Entscheidungen und kosten Geld.',
       'Wer Quellen angibt, macht Aussagen nachprüfbar und wirkt glaubwürdig.',
@@ -1745,14 +1745,14 @@ final List<Nugget> nuggetsA02 = [
       ],
     ],
     points: [
-      'Sekundärquellen sind bequem, können beim Zusammenfassen aber Fehler einbauen - im Zweifel zur Primärquelle gehen.',
+      'Sekundärquellen sind bequem, können beim Zusammenfassen aber Fehler einbauen. Im Zweifel zur Primärquelle gehen.',
     ],
   ),
   vergleich(
     'n-pq-3',
     'pr-quellen',
     'Interne und externe Quellen',
-    'Viele Antworten liegen schon im eigenen Unternehmen - man muss nur wissen, wo.',
+    'Viele Antworten liegen schon im eigenen Unternehmen. Man muss nur wissen, wo.',
     [
       ['Art', 'Beispiele', 'Stärke'],
       [
@@ -1774,7 +1774,7 @@ final List<Nugget> nuggetsA02 = [
     'Vor dem Verwenden einer Information lohnt sich ein kurzer Check mit fünf Kriterien.',
     [
       ['Kriterium', 'Prüffrage'],
-      ['Aktualität', 'Von wann ist die Information - gilt sie noch?'],
+      ['Aktualität', 'Von wann ist die Information, und gilt sie noch?'],
       ['Urheber', 'Wer steht dahinter, ist er fachlich kompetent?'],
       ['Objektivität', 'Verfolgt der Autor ein Verkaufsinteresse?'],
       ['Nachprüfbarkeit', 'Werden Belege und Quellen genannt?'],
@@ -1795,13 +1795,13 @@ final List<Nugget> nuggetsA02 = [
       ['Nachprüfbarkeit', 'Primärquelle', 'keine Belege'],
     ],
     schritte: [
-      'Aktualität: Support-Termine ändern sich - ein fünf Jahre alter Beitrag kann überholt sein.',
+      'Aktualität: Support-Termine ändern sich. Ein fünf Jahre alter Beitrag kann überholt sein.',
       'Urheber: Der Hersteller legt die Termine selbst fest, der Forennutzer ist unbekannt.',
       'Nachprüfbarkeit: Die Herstellerseite ist die Primärquelle, das Forum nennt keine Belege.',
       'Entscheidung: Quelle A verwenden und in der Antwort an den Kunden angeben.',
     ],
     ergebnis:
-        'Quelle A ist verlässlich - Quelle B allenfalls ein Hinweis, wo man weitersuchen kann.',
+        'Quelle A ist verlässlich, Quelle B allenfalls ein Hinweis, wo man weitersuchen kann.',
   ),
   vergleich(
     'n-pq-6',
@@ -1820,7 +1820,7 @@ final List<Nugget> nuggetsA02 = [
     'n-pq-7',
     'pr-quellen',
     'Direkt und indirekt zitieren',
-    'Wer fremde Gedanken nutzt, muss das kennzeichnen - egal ob wörtlich oder sinngemäß.',
+    'Wer fremde Gedanken nutzt, muss das kennzeichnen, egal ob wörtlich oder sinngemäß.',
     [
       ['Art', 'Kennzeichnung', 'Beispiel'],
       [
@@ -1857,50 +1857,50 @@ final List<Nugget> nuggetsA02 = [
     'n-pq-9',
     'pr-quellen',
     'Zitatrecht und Urheberrecht',
-    'Texte, Bilder, Grafiken und Videos sind urheberrechtlich geschützt - auch wenn sie frei im Internet stehen. Das Zitatrecht (§ 51 UrhG) erlaubt es, fremde Werke ohne Erlaubnis zu nutzen, wenn bestimmte Bedingungen erfüllt sind.',
+    'Texte, Bilder, Grafiken und Videos sind urheberrechtlich geschützt, auch wenn sie frei im Internet stehen. Das Zitatrecht (§ 51 UrhG) erlaubt es, fremde Werke ohne Erlaubnis zu nutzen, wenn bestimmte Bedingungen erfüllt sind.',
     points: [
       'Zitatzweck: Du setzt dich mit dem Werk auseinander oder belegst eine eigene Aussage.',
       'Umfang: nur so viel, wie der Zweck erfordert',
       'Quelle: immer deutlich angeben',
       'unverändert übernehmen',
-      'Ein Bild nur als Schmuck auf einer Folie ist kein Zitat - dafür braucht es ein Nutzungsrecht.',
+      'Ein Bild nur als Schmuck auf einer Folie ist kein Zitat. Dafür braucht es ein Nutzungsrecht.',
     ],
   ),
   vergleich(
     'n-pq-10',
     'pr-quellen',
     'Creative-Commons-Lizenzen',
-    'Viele Bilder und Texte stehen unter einer Creative-Commons-Lizenz (CC). Sie erlaubt die Nutzung ohne Nachfrage - aber nur zu den Bedingungen, die ihre Bausteine nennen.',
+    'Viele Bilder und Texte stehen unter einer Creative-Commons-Lizenz (CC). Sie erlaubt die Nutzung ohne Nachfrage, aber nur zu den Bedingungen, die ihre Bausteine nennen.',
     [
       ['Baustein', 'Bedeutung'],
       ['BY', 'Namensnennung: Urheber und Lizenz angeben'],
       ['SA', 'Weitergabe nur unter gleichen Bedingungen'],
-      ['NC', 'nicht kommerziell - keine geschäftliche Nutzung'],
+      ['NC', 'nicht kommerziell (keine geschäftliche Nutzung)'],
       ['ND', 'keine Bearbeitung erlaubt'],
       ['CC0', 'Urheber verzichtet so weit wie möglich auf seine Rechte'],
     ],
     points: [
-      'Beispiel: Ein Foto unter CC BY-NC darfst du mit Namensnennung privat nutzen - aber nicht in der Werbebroschüre deines Betriebs.',
+      'Beispiel: Ein Foto unter CC BY-NC darfst du mit Namensnennung privat nutzen, aber nicht in der Werbebroschüre deines Betriebs.',
     ],
   ),
   falle(
     'n-pq-11',
     'pr-quellen',
     'Ungeprüfte KI-Antworten',
-    'Antworten von KI-Chatbots klingen oft überzeugend, können aber erfundene Fakten oder sogar erfundene Quellen enthalten. Sie sind keine Quelle im eigentlichen Sinn - wichtige Aussagen müssen an einer Primärquelle überprüft werden, bevor sie in ein Angebot oder eine Präsentation gelangen.',
+    'Antworten von KI-Chatbots klingen oft überzeugend, können aber erfundene Fakten oder sogar erfundene Quellen enthalten. Sie sind keine Quelle im eigentlichen Sinn. Wichtige Aussagen müssen an einer Primärquelle überprüft werden, bevor sie in ein Angebot oder eine Präsentation gelangen.',
   ),
   falle(
     'n-pq-12',
     'pr-quellen',
     'Frei zugänglich heißt nicht frei nutzbar',
-    'Nur weil ein Bild über die Suchmaschine auffindbar ist, darfst du es nicht in deine Kundenpräsentation übernehmen. Ohne Lizenz oder Erlaubnis drohen Abmahnung und Schadensersatz - auch dem Unternehmen.',
+    'Nur weil ein Bild über die Suchmaschine auffindbar ist, darfst du es nicht in deine Kundenpräsentation übernehmen. Ohne Lizenz oder Erlaubnis drohen Abmahnung und Schadensersatz, auch dem Unternehmen.',
   ),
   merke(
     'n-pq-13',
     'pr-quellen',
     'Merksatz',
     'Die Grundregel für jede Recherche im Beruf.',
-    satz: 'Erst prüfen, dann nutzen - und immer die Quelle nennen.',
+    satz: 'Erst prüfen, dann nutzen, und immer die Quelle nennen.',
   ),
 
   // ==================================================== Anfrage, Angebot, Vergleich
@@ -1908,7 +1908,7 @@ final List<Nugget> nuggetsA02 = [
     'n-pa-1',
     'pr-angebot',
     'Von der Anfrage zum Vertrag',
-    'Ein Kaufvertrag entsteht durch zwei übereinstimmende Willenserklärungen: Antrag und Annahme. Die Anfrage des Kunden gehört noch nicht dazu - sie ist unverbindlich.',
+    'Ein Kaufvertrag entsteht durch zwei übereinstimmende Willenserklärungen: Antrag und Annahme. Die Anfrage des Kunden gehört noch nicht dazu. Sie ist unverbindlich.',
     SequenzDiagramm(
       ['Kunde', 'IT-Händler'],
       [
@@ -1920,14 +1920,14 @@ final List<Nugget> nuggetsA02 = [
     ),
     points: [
       'Angebot + rechtzeitige, unveränderte Bestellung = Vertrag',
-      'Bestellt der Kunde ohne vorheriges Angebot oder mit Änderungen, ist die Bestellung der Antrag - erst die Auftragsbestätigung nimmt ihn an.',
+      'Bestellt der Kunde ohne vorheriges Angebot oder mit Änderungen, ist die Bestellung der Antrag. Erst die Auftragsbestätigung nimmt ihn an.',
     ],
   ),
   vergleich(
     'n-pa-2',
     'pr-angebot',
     'Die Anfrage',
-    'Mit einer Anfrage erkundigt sich ein Kunde nach Leistungen, Preisen und Bedingungen. Sie ist rechtlich unverbindlich - wer anfragt, muss nicht kaufen und darf mehrere Anbieter fragen.',
+    'Mit einer Anfrage erkundigt sich ein Kunde nach Leistungen, Preisen und Bedingungen. Sie ist rechtlich unverbindlich. Wer anfragt, muss nicht kaufen und darf mehrere Anbieter fragen.',
     [
       ['Art', 'Inhalt', 'Beispiel'],
       [
@@ -1995,7 +1995,7 @@ final List<Nugget> nuggetsA02 = [
     'n-pa-6',
     'pr-angebot',
     'Die Bezugskalkulation',
-    'Um Angebote fair zu vergleichen, rechnest du jeden Listenpreis auf den Bezugspreis um - das, was dich die Ware bis ins Haus wirklich kostet. Die Reihenfolge ist fest.',
+    'Um Angebote fair zu vergleichen, rechnest du jeden Listenpreis auf den Bezugspreis um: das, was dich die Ware bis ins Haus wirklich kostet. Die Reihenfolge ist fest.',
     '  Listeneinkaufspreis (Menge x Listenpreis)\n'
         '- Liefererrabatt (% vom Listeneinkaufspreis)\n'
         '= Zieleinkaufspreis\n'
@@ -2004,9 +2004,9 @@ final List<Nugget> nuggetsA02 = [
         '+ Bezugskosten (Versand, Verpackung)\n'
         '= Bezugspreis (Einstandspreis)',
     points: [
-      'Rabatt: Nachlass z. B. für Menge oder Treue - wird sofort abgezogen',
+      'Rabatt: Nachlass z. B. für Menge oder Treue, wird sofort abgezogen',
       'Skonto: Nachlass für Zahlung innerhalb einer kurzen Frist',
-      'Bezugskosten: Fracht, Verpackung, Versicherung - sie werden nicht rabattiert',
+      'Bezugskosten: Fracht, Verpackung, Versicherung. Sie werden nicht rabattiert',
       'Verglichen werden Nettopreise: Unternehmen mit Vorsteuerabzug bekommen die Umsatzsteuer vom Finanzamt zurück.',
     ],
   ),
@@ -2079,7 +2079,7 @@ final List<Nugget> nuggetsA02 = [
       'B: 1,60 + 1,75 + 1,00 = 4,35.',
     ],
     ergebnis:
-        'Angebot B hat den höheren Nutzwert (4,35 zu 3,45) - der günstigere Preis von A gleicht den schwachen Support nicht aus.',
+        'Angebot B hat den höheren Nutzwert (4,35 zu 3,45). Der günstigere Preis von A gleicht den schwachen Support nicht aus.',
   ),
   beispiel(
     'n-pa-11',
@@ -2111,11 +2111,11 @@ final List<Nugget> nuggetsA02 = [
     'Bevor eine Rechnung bezahlt wird, wird sie sachlich und rechnerisch geprüft. Grundlage sind drei Belege: die Bestellung, der Lieferschein und die Rechnung selbst.',
     [
       'Artikel und Menge je Position mit Bestellung und Lieferschein abgleichen: Berechnet werden darf nur, was bestellt und geliefert wurde.',
-      'Einzelpreise mit der Bestellung vergleichen - sind vereinbarte Rabatte und Lieferbedingungen (z. B. frei Haus) berücksichtigt?',
+      'Einzelpreise mit der Bestellung vergleichen: sind vereinbarte Rabatte und Lieferbedingungen (z. B. frei Haus) berücksichtigt?',
       'Steuersatz je Position prüfen: 19 % oder 7 %.',
       'Nachrechnen: Menge × Einzelpreis, Summen und Umsatzsteuer.',
       'Pflichtangaben prüfen, z. B. Rechnungsnummer und Datum.',
-      'Erst dann zur Zahlung freigeben - und dabei die Skontofrist beachten.',
+      'Erst dann zur Zahlung freigeben, und dabei die Skontofrist beachten.',
     ],
     table: [
       ['Datum auf der Rechnung', 'Vorgang'],
@@ -2166,7 +2166,7 @@ final List<Nugget> nuggetsA02 = [
       ['= Zahlbetrag', '2.413,96 €'],
     ],
     schritte: [
-      'Fehler: Einzelpreis der Dockingstation (139 € statt 129 €), Menge der Kabel (15 statt 12), Steuersatz der Bücher (19 % statt 7 %) - die Rechnung wird reklamiert.',
+      'Fehler: Einzelpreis der Dockingstation (139 € statt 129 €), Menge der Kabel (15 statt 12), Steuersatz der Bücher (19 % statt 7 %). Die Rechnung wird reklamiert.',
       'Netto zu 19 %: 6 × 189 € + 6 × 129 € + 12 × 7,50 € = 1.134 € + 774 € + 90 € = 1.998,00 €; Umsatzsteuer 379,62 €.',
       'Netto zu 7 %: 2 × 40 € = 80,00 €; Umsatzsteuer 5,60 €.',
       'Rechnungsbetrag: 1.998,00 € + 379,62 € + 80,00 € + 5,60 € = 2.463,22 €.',
@@ -2175,7 +2175,7 @@ final List<Nugget> nuggetsA02 = [
     ergebnis:
         'Drei Fehler (Preis, Menge, Steuersatz). Die berichtigte Rechnung lautet über 2.463,22 €; mit Skonto werden 2.413,96 € überwiesen.',
     merksatz:
-        'Beim Bezahlen wird Skonto vom Rechnungsbetrag (brutto) abgezogen - in der Bezugskalkulation rechnest du dagegen mit Nettopreisen.',
+        'Beim Bezahlen wird Skonto vom Rechnungsbetrag (brutto) abgezogen; in der Bezugskalkulation rechnest du dagegen mit Nettopreisen.',
   ),
   konzept(
     'n-pa-18',
@@ -2199,22 +2199,22 @@ final List<Nugget> nuggetsA02 = [
       'Inhalt: Name des Empfängers, IBAN, BIC, Betrag und Verwendungszweck',
       'Vorteil für den Zahlenden: kein Abtippen, keine Zahlendreher in der IBAN',
       'Vorteil für den Rechnungssteller: Zahlungen kommen schneller und lassen sich über den Verwendungszweck eindeutig zuordnen',
-      'Der Code ersetzt die Rechnungsprüfung nicht - wer Skonto abzieht, passt den Betrag in der App an.',
+      'Der Code ersetzt die Rechnungsprüfung nicht. Wer Skonto abzieht, passt den Betrag in der App an.',
     ],
   ),
   falle(
     'n-pa-12',
     'pr-angebot',
     'Werbung ist kein Angebot',
-    'Anzeigen, Kataloge oder Onlineshop-Seiten richten sich an die Allgemeinheit. Sie sind nur eine Aufforderung, selbst ein Angebot abzugeben (lateinisch „invitatio ad offerendum“) - der Händler muss nicht an jeden verkaufen.',
+    'Anzeigen, Kataloge oder Onlineshop-Seiten richten sich an die Allgemeinheit. Sie sind nur eine Aufforderung, selbst ein Angebot abzugeben (lateinisch „invitatio ad offerendum“). Der Händler muss nicht an jeden verkaufen.',
   ),
   falle(
     'n-pa-13',
     'pr-angebot',
     'Skonto vom falschen Betrag',
-    'Skonto wird vom Zieleinkaufspreis berechnet - also nach Abzug des Rabatts, nicht vom Listenpreis. Bezugskosten kommen erst ganz am Ende dazu, sie werden weder rabattiert noch skontiert.',
+    'Skonto wird vom Zieleinkaufspreis berechnet, also nach Abzug des Rabatts, nicht vom Listenpreis. Bezugskosten kommen erst ganz am Ende dazu und werden weder rabattiert noch skontiert.',
     points: [
-      'Angebot A: 2 % von 8.100 € = 162 € (richtig) - nicht 2 % von 9.000 € = 180 €',
+      'Angebot A: 2 % von 8.100 € = 162 € (richtig), nicht 2 % von 9.000 € = 180 €',
     ],
   ),
   merke(
@@ -2223,7 +2223,7 @@ final List<Nugget> nuggetsA02 = [
     'Merksatz',
     'Die Rechenkette für jeden Angebotsvergleich.',
     satz:
-        'Listenpreis minus Rabatt minus Skonto plus Bezugskosten gleich Bezugspreis - danach die Qualität prüfen.',
+        'Listenpreis minus Rabatt minus Skonto plus Bezugskosten gleich Bezugspreis. Danach die Qualität prüfen.',
   ),
 
   // ======================================================== Markt und Marktformen
@@ -2231,7 +2231,7 @@ final List<Nugget> nuggetsA02 = [
     'n-mm-1',
     'm-markt',
     'Was ein Markt ist',
-    'Überall dort, wo Angebot und Nachfrage zusammentreffen, entsteht ein Markt - auf dem Wochenmarkt, im Onlineshop oder bei einer Ausschreibung. Aus Angebot und Nachfrage bildet sich der Preis.',
+    'Überall dort, wo Angebot und Nachfrage zusammentreffen, entsteht ein Markt: auf dem Wochenmarkt, im Onlineshop oder bei einer Ausschreibung. Aus Angebot und Nachfrage bildet sich der Preis.',
     points: [
       'Anbieter wollen möglichst teuer verkaufen.',
       'Nachfrager wollen möglichst günstig kaufen.',
@@ -2242,7 +2242,7 @@ final List<Nugget> nuggetsA02 = [
     'n-mm-2',
     'm-markt',
     'Wie sich der Preis bildet',
-    'Je höher der Preis, desto mehr bieten die Anbieter an - und desto weniger fragen die Käufer nach. Wo sich Angebots- und Nachfragekurve schneiden, liegt der Gleichgewichtspreis: Dort wird die größte Menge umgesetzt.',
+    'Je höher der Preis, desto mehr bieten die Anbieter an, und desto weniger fragen die Käufer nach. Wo sich Angebots- und Nachfragekurve schneiden, liegt der Gleichgewichtspreis: Dort wird die größte Menge umgesetzt.',
     GeradenDiagramm(
       xAchse: 'Menge in Stück',
       yAchse: 'Preis in €',
@@ -2253,15 +2253,15 @@ final List<Nugget> nuggetsA02 = [
     ),
     points: [
       'Im Beispiel: Beim Preis von 60 € werden 40 Stück angeboten und nachgefragt.',
-      'Preis darüber: Angebotsüberhang - Anbieter bleiben auf Ware sitzen, der Preis sinkt.',
-      'Preis darunter: Nachfrageüberhang - die Ware wird knapp, der Preis steigt.',
+      'Preis darüber: Angebotsüberhang. Anbieter bleiben auf Ware sitzen, der Preis sinkt.',
+      'Preis darunter: Nachfrageüberhang. Die Ware wird knapp, der Preis steigt.',
     ],
   ),
   vergleich(
     'n-mm-3',
     'm-markt',
     'Die drei Grundformen',
-    'Marktformen werden nach der Zahl der Marktteilnehmer unterschieden. Zuerst die Angebotsseite - bei vielen Nachfragern.',
+    'Marktformen werden nach der Zahl der Marktteilnehmer unterschieden. Zuerst die Angebotsseite bei vielen Nachfragern.',
     [
       ['Marktform', 'Anbieter', 'IT-Beispiel'],
       ['Polypol', 'viele', 'IT-Dienstleister in einer Großstadt'],
@@ -2299,12 +2299,12 @@ final List<Nugget> nuggetsA02 = [
     'n-mm-5',
     'm-markt',
     'Preismacht und Wettbewerb',
-    'Je weniger Anbieter es gibt, desto größer ist ihre Macht über den Preis. Im Polypol bestimmt der Wettbewerb den Preis, im Monopol der Anbieter - begrenzt nur durch die Zahlungsbereitschaft der Kunden.',
+    'Je weniger Anbieter es gibt, desto größer ist ihre Macht über den Preis. Im Polypol bestimmt der Wettbewerb den Preis, im Monopol der Anbieter, begrenzt nur durch die Zahlungsbereitschaft der Kunden.',
     points: [
       'Polypol: Der einzelne Anbieter muss den Marktpreis hinnehmen.',
-      'Oligopol: Die Anbieter beobachten sich genau - senkt einer den Preis, ziehen die anderen oft nach.',
+      'Oligopol: Die Anbieter beobachten sich genau. Senkt einer den Preis, ziehen die anderen oft nach.',
       'Monopol: Der Anbieter setzt den Preis selbst.',
-      'Preisabsprachen zwischen Wettbewerbern (Kartelle) sind verboten - das regelt das Gesetz gegen Wettbewerbsbeschränkungen (GWB).',
+      'Preisabsprachen zwischen Wettbewerbern (Kartelle) sind verboten. Das regelt das Gesetz gegen Wettbewerbsbeschränkungen (GWB).',
     ],
   ),
   vergleich(
@@ -2331,7 +2331,7 @@ final List<Nugget> nuggetsA02 = [
       ],
     ],
     points: [
-      'Marktforschung geht systematisch und geplant vor, Markterkundung eher gelegentlich - etwa bei einem Messebesuch.',
+      'Marktforschung geht systematisch und geplant vor, Markterkundung eher gelegentlich, etwa bei einem Messebesuch.',
     ],
   ),
   vergleich(
@@ -2368,7 +2368,7 @@ final List<Nugget> nuggetsA02 = [
         'Sättigung      = Marktvolumen / Marktpotenzial x 100',
     points: [
       'Das Marktvolumen ist immer kleiner oder gleich dem Marktpotenzial.',
-      'Hoher Sättigungsgrad: Neue Kunden gibt es kaum noch - Wachstum geht dann nur auf Kosten der Konkurrenz.',
+      'Hoher Sättigungsgrad: Neue Kunden gibt es kaum noch. Wachstum geht dann nur auf Kosten der Konkurrenz.',
     ],
   ),
   beispiel(
@@ -2380,7 +2380,7 @@ final List<Nugget> nuggetsA02 = [
       'Marktvolumen (tatsächlicher Umsatz aller Anbieter) = 4.000.000 €; Marktpotenzial = 5.000.000 €.',
       'Marktanteil = 320.000 € / 4.000.000 € × 100 = 8 %.',
       'Sättigungsgrad = 4.000.000 € / 5.000.000 € × 100 = 80 %.',
-      'Deutung: 20 % des Potenzials sind noch unerschlossen - dort lohnt sich Werbung um Neukunden.',
+      'Deutung: 20 % des Potenzials sind noch unerschlossen. Dort lohnt sich Werbung um Neukunden.',
     ],
     ergebnis: 'Marktanteil 8 %, Sättigungsgrad 80 %.',
   ),
@@ -2388,15 +2388,15 @@ final List<Nugget> nuggetsA02 = [
     'n-mm-10',
     'm-markt',
     'Nachfrageseite nicht vergessen',
-    'Marktformen gibt es auch auf der Nachfrageseite. Kauft nur ein einziger Kunde - etwa eine Behörde, die ein Spezialsystem ausschreibt, das viele Firmen liefern könnten -, spricht man von einem Nachfragemonopol.',
+    'Marktformen gibt es auch auf der Nachfrageseite. Kauft nur ein einziger Kunde (etwa eine Behörde, die ein Spezialsystem ausschreibt, das viele Firmen liefern könnten), spricht man von einem Nachfragemonopol.',
   ),
   falle(
     'n-mm-11',
     'm-markt',
     'Volumen und Potenzial verwechseln',
-    'Das Marktpotenzial ist die theoretische Obergrenze, das Marktvolumen das, was tatsächlich verkauft wird. Der Marktanteil wird immer am Marktvolumen gemessen - nicht am Potenzial.',
+    'Das Marktpotenzial ist die theoretische Obergrenze, das Marktvolumen das, was tatsächlich verkauft wird. Der Marktanteil wird immer am Marktvolumen gemessen, nicht am Potenzial.',
     points: [
-      'Im Beispiel wären 320.000 € / 5 Mio. € = 6,4 % - falsch, weil am Potenzial gemessen.',
+      'Im Beispiel wären 320.000 € / 5 Mio. € = 6,4 %, und das wäre falsch, weil am Potenzial gemessen.',
     ],
   ),
   merke(
@@ -2405,7 +2405,7 @@ final List<Nugget> nuggetsA02 = [
     'Merksatz',
     'Die wichtigste Regel zu den Marktformen.',
     satz:
-        'Je weniger Anbieter, desto größer ihre Preismacht - je weniger Nachfrager, desto größer deren Macht.',
+        'Je weniger Anbieter, desto größer ihre Preismacht; je weniger Nachfrager, desto größer deren Macht.',
   ),
 
   // ============================================================== Bedarf ermitteln
@@ -2413,10 +2413,10 @@ final List<Nugget> nuggetsA02 = [
     'n-mb-1',
     'm-bedarf',
     'Vom Bedürfnis zur Nachfrage',
-    'Drei Begriffe, die aufeinander aufbauen - und in der Prüfung gern verwechselt werden.',
+    'Drei Begriffe, die aufeinander aufbauen und in der Prüfung gern verwechselt werden.',
     [
-      'Bedürfnis - das Gefühl eines Mangels: „Ich möchte schneller arbeiten.“',
-      'Bedarf - Bedürfnis mit Kaufkraft: „Ich kann mir einen neuen Laptop leisten.“',
+      'Bedürfnis: das Gefühl eines Mangels: „Ich möchte schneller arbeiten.“',
+      'Bedarf: Bedürfnis mit Kaufkraft: „Ich kann mir einen neuen Laptop leisten.“',
       'Nachfrage - Bedarf, der am Markt wirksam wird: „Ich bestelle den Laptop.“',
     ],
   ),
@@ -2435,12 +2435,12 @@ final List<Nugget> nuggetsA02 = [
       [
         'nach Träger',
         'individuell oder kollektiv',
-        'eigener Laptop - Breitbandausbau für alle',
+        'eigener Laptop: Breitbandausbau für alle',
       ],
       [
         'nach Art',
         'materiell oder immateriell',
-        'neuer Monitor - Anerkennung im Team',
+        'neuer Monitor: Anerkennung im Team',
       ],
     ],
   ),
@@ -2541,7 +2541,7 @@ final List<Nugget> nuggetsA02 = [
     'n-mb-7',
     'm-bedarf',
     'Eine Bedarfsanalyse durchführen',
-    'Eine strukturierte Bedarfsanalyse folgt fünf Schritten - vom Ist zum dokumentierten Soll.',
+    'Eine strukturierte Bedarfsanalyse folgt fünf Schritten, vom Ist zum dokumentierten Soll.',
     [
       'Ist-Aufnahme: Systeme, Abläufe und Nutzer erfassen',
       'Schwachstellen erkennen: Was stört, was fehlt?',
@@ -2563,7 +2563,7 @@ final List<Nugget> nuggetsA02 = [
       'Rahmen: Budget 12.000 €, Umstellung im Sommer.',
     ],
     ergebnis:
-        'Bedarf: 6 Notebooks mit Dockingstation, zentrale Ablage auf einem NAS, automatische Datensicherung außer Haus und VPN-Zugang - viel mehr als „neue Computer“.',
+        'Bedarf: 6 Notebooks mit Dockingstation, zentrale Ablage auf einem NAS, automatische Datensicherung außer Haus und VPN-Zugang, viel mehr als „neue Computer“.',
   ),
   vergleich(
     'n-mb-9',
@@ -2580,7 +2580,7 @@ final List<Nugget> nuggetsA02 = [
       [
         'latenter Bedarf',
         'Kunde ist sich dessen nicht bewusst',
-        'fehlendes Backup - erst die Beratung macht es sichtbar',
+        'fehlendes Backup: erst die Beratung macht es sichtbar',
       ],
     ],
   ),
@@ -2588,13 +2588,13 @@ final List<Nugget> nuggetsA02 = [
     'n-mb-10',
     'm-bedarf',
     'Wunsch ist nicht Bedarf',
-    'Ein Kunde wünscht sich den teuersten Server - braucht für seine drei Arbeitsplätze aber nur ein NAS. Gute Beratung ermittelt den tatsächlichen Bedarf, statt jeden Wunsch zu erfüllen.',
+    'Ein Kunde wünscht sich den teuersten Server, braucht für seine drei Arbeitsplätze aber nur ein NAS. Gute Beratung ermittelt den tatsächlichen Bedarf, statt jeden Wunsch zu erfüllen.',
   ),
   falle(
     'n-mb-11',
     'm-bedarf',
     'Bedarf braucht Kaufkraft',
-    'Ein Bedürfnis ist noch kein Bedarf. Erst wenn Geld vorhanden ist, um es zu erfüllen, spricht man von Bedarf - und erst der Kauf am Markt macht daraus Nachfrage. „Ich hätte gern einen Gaming-PC“ ohne Budget bleibt ein Bedürfnis.',
+    'Ein Bedürfnis ist noch kein Bedarf. Erst wenn Geld vorhanden ist, um es zu erfüllen, spricht man von Bedarf, und erst der Kauf am Markt macht daraus Nachfrage. „Ich hätte gern einen Gaming-PC“ ohne Budget bleibt ein Bedürfnis.',
   ),
   merke(
     'n-mb-12',
@@ -2609,7 +2609,7 @@ final List<Nugget> nuggetsA02 = [
     'n-mk-1',
     'm-marketing',
     'Was Marketing ist',
-    'Marketing heißt, das ganze Unternehmen auf die Bedürfnisse des Marktes auszurichten - nicht nur Werbung zu machen. Dazu nutzt es vier Instrumente, die aufeinander abgestimmt sein müssen: den Marketing-Mix.',
+    'Marketing heißt, das ganze Unternehmen auf die Bedürfnisse des Marktes auszurichten, nicht nur Werbung zu machen. Dazu nutzt es vier Instrumente, die aufeinander abgestimmt sein müssen: den Marketing-Mix.',
     points: [
       'Grundlage: Marktforschung und Bedarfsanalyse',
       'Ziel: Kunden gewinnen und binden, Umsatz steigern',
@@ -2648,7 +2648,7 @@ final List<Nugget> nuggetsA02 = [
     'n-mk-3',
     'm-marketing',
     'Produktpolitik',
-    'Die Produktpolitik legt fest, welche Produkte und Leistungen angeboten werden - und wie sie sich über die Zeit verändern.',
+    'Die Produktpolitik legt fest, welche Produkte und Leistungen angeboten werden und wie sie sich über die Zeit verändern.',
     [
       ['Maßnahme', 'Bedeutung', 'IT-Beispiel'],
       ['Innovation', 'neues Produkt einführen', 'neuer Managed-Backup-Dienst'],
@@ -2764,7 +2764,7 @@ final List<Nugget> nuggetsA02 = [
     'n-mk-7',
     'm-marketing',
     'Die AIDA-Formel',
-    'Werbung soll Kunden in vier Stufen zum Kauf führen. Die AIDA-Formel beschreibt diese Stufen - und hilft, Anzeigen, Webseiten oder Mailings aufzubauen.',
+    'Werbung soll Kunden in vier Stufen zum Kauf führen. Die AIDA-Formel beschreibt diese Stufen und hilft, Anzeigen, Webseiten oder Mailings aufzubauen.',
     FlussDiagramm([
       FlussKnoten('Attention', seitlich: 'Aufmerksamkeit wecken'),
       FlussKnoten('Interest', seitlich: 'Interesse erzeugen'),
@@ -2778,10 +2778,10 @@ final List<Nugget> nuggetsA02 = [
     'AIDA an einer Anzeige',
     'Du entwirfst eine Anzeige für ein Backup-System. Ordne jedem Element eine AIDA-Stufe zu.',
     schritte: [
-      'Attention: Überschrift „Alle Daten weg?“ - eine provozierende Frage fällt auf.',
-      'Interest: Wie häufig Datenverlust im Mittelstand vorkommt - der Leser fühlt sich betroffen.',
-      'Desire: automatische Sicherung, ohne dass jemand daran denken muss - der Wunsch nach Sorglosigkeit.',
-      'Action: „Jetzt 30 Tage kostenlos testen“ - eine konkrete Handlungsaufforderung.',
+      'Attention: Überschrift „Alle Daten weg?“ Eine provozierende Frage fällt auf.',
+      'Interest: Wie häufig Datenverlust im Mittelstand vorkommt. Der Leser fühlt sich betroffen.',
+      'Desire: automatische Sicherung, ohne dass jemand daran denken muss; das weckt den Wunsch nach Sorglosigkeit.',
+      'Action: „Jetzt 30 Tage kostenlos testen“ als konkrete Handlungsaufforderung.',
     ],
     ergebnis: 'Aufmerksamkeit → Interesse → Wunsch → Handlung',
   ),
@@ -2805,13 +2805,13 @@ final List<Nugget> nuggetsA02 = [
       'Webinar und Social Media machen den Dienst bekannt → Kommunikationspolitik.',
     ],
     ergebnis:
-        'Alle vier P sind abgedeckt und passen zusammen - ein stimmiger Marketing-Mix.',
+        'Alle vier P sind abgedeckt und passen zusammen: ein stimmiger Marketing-Mix.',
   ),
   vergleich(
     'n-mk-10',
     'm-marketing',
     'Der Produktlebenszyklus',
-    'Jedes Produkt durchläuft typische Phasen - vom Marktstart bis zum Rückzug. Der Marketing-Mix muss zur Phase passen. Die Balken zeigen den typischen Umsatzverlauf (schematisch).',
+    'Jedes Produkt durchläuft typische Phasen, vom Marktstart bis zum Rückzug. Der Marketing-Mix muss zur Phase passen. Die Balken zeigen den typischen Umsatzverlauf (schematisch).',
     [
       ['Phase', 'Umsatz', 'Marketing'],
       [
@@ -2852,7 +2852,7 @@ final List<Nugget> nuggetsA02 = [
     points: [
       'Question Marks: neue Produkte in wachsenden Märkten, Zukunft offen',
       'Stars: Marktführer in einem Wachstumsmarkt',
-      'Cash Cows: Marktführer in einem reifen Markt - sie finanzieren die anderen',
+      'Cash Cows: Marktführer in einem reifen Markt, sie finanzieren die anderen',
       'Poor Dogs: geringer Anteil, kaum Wachstum',
     ],
   ),
@@ -2860,7 +2860,7 @@ final List<Nugget> nuggetsA02 = [
     'n-mk-12',
     'm-marketing',
     'Preis ist nicht Kommunikation',
-    'Ein Rabatt gehört zur Preispolitik - auch wenn er in einer Werbeanzeige erscheint. Die Anzeige selbst ist Kommunikationspolitik. In Prüfungen wird oft nach genau dieser Abgrenzung gefragt.',
+    'Ein Rabatt gehört zur Preispolitik, auch wenn er in einer Werbeanzeige erscheint. Die Anzeige selbst ist Kommunikationspolitik. In Prüfungen wird oft nach genau dieser Abgrenzung gefragt.',
   ),
   merke(
     'n-mk-13',
@@ -2868,7 +2868,7 @@ final List<Nugget> nuggetsA02 = [
     'Merksatz',
     'Die vier Instrumente als Eselsbrücke.',
     satz:
-        'Product, Price, Place, Promotion - was, wie teuer, auf welchem Weg und wie bekannt.',
+        'Product, Price, Place, Promotion: was, wie teuer, auf welchem Weg und wie bekannt.',
   ),
 
   // ============================================================== ABC-Analyse
@@ -2876,7 +2876,7 @@ final List<Nugget> nuggetsA02 = [
     'n-ma-1',
     'm-abc',
     'Die Idee',
-    'Die ABC-Analyse teilt Objekte - Kunden, Produkte, Lagerartikel - nach ihrer wirtschaftlichen Bedeutung in drei Klassen ein. Oft zeigt sich: Wenige Objekte bringen den größten Teil des Werts (Pareto-Prinzip, „80/20-Regel“). So wird sichtbar, wo sich Aufwand wirklich lohnt.',
+    'Die ABC-Analyse teilt Objekte (Kunden, Produkte, Lagerartikel) nach ihrer wirtschaftlichen Bedeutung in drei Klassen ein. Oft zeigt sich: Wenige Objekte bringen den größten Teil des Werts (Pareto-Prinzip, „80/20-Regel“). So wird sichtbar, wo sich Aufwand wirklich lohnt.',
     points: [
       'Kunden: Wer bringt den meisten Umsatz?',
       'Einkauf und Lager: Welche Artikel binden das meiste Geld?',
@@ -2887,7 +2887,7 @@ final List<Nugget> nuggetsA02 = [
     'n-ma-2',
     'm-abc',
     'Die Schritte',
-    'Das Vorgehen ist immer gleich - egal ob Kunden oder Artikel untersucht werden.',
+    'Das Vorgehen ist immer gleich, egal ob Kunden oder Artikel untersucht werden.',
     [
       'Wert je Objekt ermitteln, z. B. Jahresumsatz oder Menge × Preis',
       'Nach Wert absteigend sortieren',
@@ -2968,7 +2968,7 @@ final List<Nugget> nuggetsA02 = [
     'n-ma-6',
     'm-abc',
     'Typische Verteilung',
-    'In der Praxis zeigt sich häufig ein ähnliches Bild - die genauen Werte schwanken je nach Unternehmen.',
+    'In der Praxis zeigt sich häufig ein ähnliches Bild. Die genauen Werte schwanken je nach Unternehmen.',
     points: [
       'A: wenige Objekte (etwa 10-20 %) mit etwa 70-80 % des Werts',
       'B: mittlere Zahl von Objekten mit etwa 15-20 % des Werts',
@@ -3001,7 +3001,7 @@ final List<Nugget> nuggetsA02 = [
     'n-ma-8',
     'm-abc',
     'Was aus den Klassen folgt',
-    'Die ABC-Analyse ist kein Selbstzweck - aus jeder Klasse folgen andere Maßnahmen.',
+    'Die ABC-Analyse ist kein Selbstzweck: Aus jeder Klasse folgen andere Maßnahmen.',
     [
       ['Klasse', 'Kunden', 'Einkauf und Lager'],
       [
@@ -3027,7 +3027,7 @@ final List<Nugget> nuggetsA02 = [
     'n-ma-10',
     'm-abc',
     'Nach Menge statt nach Wert sortiert',
-    'Im Einkaufsbeispiel liegen 800 Kabel im Lager - die größte Stückzahl von allen. Trotzdem sind sie C-Artikel, weil ihr Wert nur 1.600 € beträgt. Sortiert wird immer nach dem Wert (Menge × Preis), nie nach der Stückzahl.',
+    'Im Einkaufsbeispiel liegen 800 Kabel im Lager, die größte Stückzahl von allen. Trotzdem sind sie C-Artikel, weil ihr Wert nur 1.600 € beträgt. Sortiert wird immer nach dem Wert (Menge × Preis), nie nach der Stückzahl.',
   ),
   merke(
     'n-ma-11',
@@ -3180,7 +3180,7 @@ final List<Nugget> nuggetsA02 = [
     'Die Müller IT KG hat 100.000 € Schulden bei einem Lieferanten. Ihr Vermögen beträgt nur noch 30.000 €. Komplementärin ist Frau Müller, Kommanditist ist Herr Stein mit einer voll eingezahlten Einlage von 20.000 €.',
     schritte: [
       'Die KG haftet mit ihrem Vermögen: 30.000 € gehen an den Lieferanten, offen bleiben 70.000 €.',
-      'Herr Stein (Kommanditist) haftet nur bis zur Höhe seiner Einlage. Die hat er voll eingezahlt - sie steckt im Vermögen der KG. Er muss nichts nachzahlen.',
+      'Herr Stein (Kommanditist) haftet nur bis zur Höhe seiner Einlage. Die hat er voll eingezahlt. Sie steckt im Vermögen der KG. Er muss nichts nachzahlen.',
       'Frau Müller (Komplementärin) haftet unbeschränkt mit ihrem Privatvermögen für die restlichen 70.000 €.',
     ],
     ergebnis:
@@ -3192,10 +3192,10 @@ final List<Nugget> nuggetsA02 = [
     'Die Rücklage der UG',
     'Zwei Gründer starten eine IT-Service-UG mit 2.000 € Stammkapital. Im ersten Jahr erzielt sie einen Jahresüberschuss von 12.000 €. Wie viel muss sie zurücklegen?',
     schritte: [
-      'Gesetzliche Pflicht (§ 5a GmbHG): Ein Viertel des Jahresüberschusses - abzüglich eines Verlustvortrags aus dem Vorjahr - kommt in eine gesetzliche Rücklage.',
+      'Gesetzliche Pflicht (§ 5a GmbHG): Ein Viertel des Jahresüberschusses (abzüglich eines Verlustvortrags aus dem Vorjahr) kommt in eine gesetzliche Rücklage.',
       'Rechnung: 12.000 € × 25 % = 3.000 €.',
       'Die Rücklage darf nur für eine Kapitalerhöhung oder zum Ausgleich von Verlusten verwendet werden.',
-      'Hat die UG ihr Stammkapital auf 25.000 € erhöht, entfällt die Pflicht - sie darf dann als GmbH firmieren.',
+      'Hat die UG ihr Stammkapital auf 25.000 € erhöht, entfällt die Pflicht. Sie darf dann als GmbH firmieren.',
     ],
     ergebnis:
         'Rücklage: 3.000 € - für eine Ausschüttung an die Gründer bleiben höchstens 9.000 €.',
@@ -3217,7 +3217,7 @@ final List<Nugget> nuggetsA02 = [
     'n-mr-11',
     'm-rechtsformen',
     'Firma und Handelsregister',
-    'Die Firma ist der Name, unter dem ein Kaufmann seine Geschäfte betreibt - nicht das Unternehmen selbst. Sie muss einen Rechtsformzusatz enthalten, damit jeder die Haftung erkennt.',
+    'Die Firma ist der Name, unter dem ein Kaufmann seine Geschäfte betreibt, nicht das Unternehmen selbst. Sie muss einen Rechtsformzusatz enthalten, damit jeder die Haftung erkennt.',
     points: [
       'Beispiele: „Weber IT e. K.“, „Weber & Kurz OHG“, „NetzPlus GmbH“, „CodeStart UG (haftungsbeschränkt)“',
       'Das Handelsregister ist ein öffentliches Verzeichnis beim Amtsgericht. Kaufleute, OHG, KG, GmbH, UG und AG sind dort eingetragen.',
@@ -3228,13 +3228,13 @@ final List<Nugget> nuggetsA02 = [
     'n-mr-12',
     'm-rechtsformen',
     'Beschränkt heißt nicht keine Haftung',
-    'Auch eine GmbH haftet - aber nur mit ihrem eigenen Vermögen. Die Gesellschafter riskieren ihre Einlage, nicht ihr Privatvermögen. Das gilt jedoch nicht, wenn sie sich zusätzlich persönlich verbürgt haben, etwa für einen Bankkredit.',
+    'Auch eine GmbH haftet, aber nur mit ihrem eigenen Vermögen. Die Gesellschafter riskieren ihre Einlage, nicht ihr Privatvermögen. Das gilt jedoch nicht, wenn sie sich zusätzlich persönlich verbürgt haben, etwa für einen Bankkredit.',
   ),
   falle(
     'n-mr-13',
     'm-rechtsformen',
     'Die GmbH & Co. KG',
-    'Eine GmbH & Co. KG ist eine KG - also eine Personengesellschaft. Ihr Komplementär ist aber keine natürliche Person, sondern eine GmbH. Unbeschränkt haftet damit nur die GmbH mit ihrem Vermögen - im Ergebnis haftet kein Mensch mit seinem Privatvermögen.',
+    'Eine GmbH & Co. KG ist eine KG, also eine Personengesellschaft. Ihr Komplementär ist aber keine natürliche Person, sondern eine GmbH. Unbeschränkt haftet damit nur die GmbH mit ihrem Vermögen. Im Ergebnis haftet kein Mensch mit seinem Privatvermögen.',
   ),
   merke(
     'n-mr-14',

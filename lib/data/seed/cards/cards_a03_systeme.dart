@@ -8,7 +8,7 @@ final List<Flashcard> cardsA03 = [
     'k-hk-1',
     'h-komponenten',
     'Wofür steht das EVA-Prinzip?',
-    'Eingabe, Verarbeitung, Ausgabe - ergänzt um die Speicherung, damit Daten einen Neustart überleben.',
+    'Eingabe, Verarbeitung, Ausgabe, ergänzt um die Speicherung, damit Daten einen Neustart überleben.',
   ),
   karte(
     'k-hk-7',
@@ -26,25 +26,25 @@ final List<Flashcard> cardsA03 = [
     'k-hk-9',
     'h-komponenten',
     'Was ist der Unterschied zwischen Kernen und Threads einer CPU?',
-    'Kerne sind eigenständige Recheneinheiten. Threads sind Befehlsstränge - mit SMT (Hyper-Threading) bearbeitet ein Kern zwei davon.',
+    'Kerne sind eigenständige Recheneinheiten. Threads sind Befehlsstränge; mit SMT (Hyper-Threading) bearbeitet ein Kern zwei davon.',
   ),
   karte(
     'k-hk-10',
     'h-komponenten',
     'Warum macht SMT (Hyper-Threading) einen Kern nicht doppelt so schnell?',
-    'Der Kern bearbeitet zwei Threads abwechselnd und nutzt nur Leerlaufzeiten - seine Rechenwerke werden nicht verdoppelt.',
+    'Der Kern bearbeitet zwei Threads abwechselnd und nutzt nur Leerlaufzeiten. Seine Rechenwerke werden nicht verdoppelt.',
   ),
   karte(
     'k-hk-11',
     'h-komponenten',
     'Was gibt die TDP eines Prozessors an?',
-    'Die Wärmeabgabe in Watt - sie bestimmt die nötige Kühlung und gibt einen Anhalt für den Verbrauch.',
+    'Die Wärmeabgabe in Watt. Sie bestimmt die nötige Kühlung und gibt einen Anhalt für den Verbrauch.',
   ),
   karte(
     'k-hk-12',
     'h-komponenten',
     'Wozu dient der Cache einer CPU?',
-    'Sehr schneller Zwischenspeicher auf dem Chip (L1 bis L3) für häufig gebrauchte Daten - spart langsame Zugriffe auf den RAM.',
+    'Sehr schneller Zwischenspeicher auf dem Chip (L1 bis L3) für häufig gebrauchte Daten; das spart langsame Zugriffe auf den RAM.',
   ),
   karte(
     'k-hk-3',
@@ -68,7 +68,7 @@ final List<Flashcard> cardsA03 = [
     'k-hk-15',
     'h-komponenten',
     'Was ist ECC-RAM, und wo wird er eingesetzt?',
-    'Arbeitsspeicher, der Bitfehler erkennt und korrigiert - Standard in Servern.',
+    'Arbeitsspeicher, der Bitfehler erkennt und korrigiert, Standard in Servern.',
   ),
   karte(
     'k-hk-16',
@@ -152,7 +152,7 @@ final List<Flashcard> cardsA03 = [
     'k-hk-20',
     'h-komponenten',
     'Was prüft Secure Boot?',
-    'Es startet nur Bootloader mit gültiger digitaler Signatur - Schadsoftware kann sich nicht vor dem Betriebssystem einnisten.',
+    'Es startet nur Bootloader mit gültiger digitaler Signatur. So kann sich Schadsoftware nicht vor dem Betriebssystem einnisten.',
   ),
   karte(
     'k-hk-23',
@@ -164,7 +164,7 @@ final List<Flashcard> cardsA03 = [
     'k-hk-25',
     'h-komponenten',
     'Was ist ein Thin Client?',
-    'Ein sparsames Endgerät mit wenig Leistung - die Programme laufen auf dem Server, der Client zeigt nur an.',
+    'Ein sparsames Endgerät mit wenig Leistung. Die Programme laufen auf dem Server, der Client zeigt nur an.',
   ),
 
   // ======================================================= Speicher: HDD und SSD
@@ -178,7 +178,7 @@ final List<Flashcard> cardsA03 = [
     'k-hs-9',
     'h-speicher',
     'Welche Speicher sind flüchtig?',
-    'Register, Cache und RAM - sie verlieren ihren Inhalt ohne Strom.',
+    'Register, Cache und RAM. Sie verlieren ihren Inhalt ohne Strom.',
   ),
   karte(
     'k-hs-1',
@@ -202,7 +202,7 @@ final List<Flashcard> cardsA03 = [
     'k-hs-2',
     'h-speicher',
     'Was ist NVMe?',
-    'Ein Protokoll für SSDs über PCIe - mehrere GB/s, deutlich schneller als SATA (ca. 550-600 MB/s).',
+    'Ein Protokoll für SSDs über PCIe: mehrere GB/s, deutlich schneller als SATA (ca. 550-600 MB/s).',
   ),
   karte(
     'k-hs-6',
@@ -256,7 +256,7 @@ final List<Flashcard> cardsA03 = [
     'k-hs-12',
     'h-speicher',
     'Warum zeigt Windows bei einer 1-TB-SSD nur rund 931 „GB“?',
-    '1.000⁴ Byte / 1.024³ ≈ 931,32 GiB - Windows rechnet binär, beschriftet aber mit „GB“. Es fehlt nichts.',
+    '1.000⁴ Byte / 1.024³ ≈ 931,32 GiB: Windows rechnet binär, beschriftet aber mit „GB“. Es fehlt nichts.',
   ),
   karte(
     'k-hs-21',
@@ -286,7 +286,7 @@ final List<Flashcard> cardsA03 = [
     'k-hs-18',
     'h-speicher',
     'Ein Server braucht 1.000 GB, plus 30 % Wachstum und 20 % Reserve. Wie groß mindestens?',
-    '1.000 GB × 1,3 × 1,2 = 1.560 GB - gewählt wird die nächste handelsübliche Größe, z. B. 2 TB.',
+    '1.000 GB × 1,3 × 1,2 = 1.560 GB: gewählt wird die nächste handelsübliche Größe, z. B. 2 TB.',
   ),
 
   // ============================================ Schnittstellen und Peripherie
@@ -300,7 +300,7 @@ final List<Flashcard> cardsA03 = [
     'k-hi-1',
     'h-schnittstellen',
     'Welche Datenrate hat USB 3.2 Gen 1?',
-    '5 Gbit/s - früher USB 3.0 genannt.',
+    '5 Gbit/s, früher USB 3.0 genannt.',
   ),
   karte(
     'k-hi-10',
@@ -324,7 +324,7 @@ final List<Flashcard> cardsA03 = [
     'k-hi-2',
     'h-schnittstellen',
     'Was sagt „USB-C“ über die Geschwindigkeit aus?',
-    'Nichts - USB-C ist nur die Steckerform. Dahinter kann USB 2.0 (480 Mbit/s) bis USB4 (40 Gbit/s) stecken.',
+    'Nichts: USB-C ist nur die Steckerform. Dahinter kann USB 2.0 (480 Mbit/s) bis USB4 (40 Gbit/s) stecken.',
   ),
   karte(
     'k-hi-14',
@@ -342,13 +342,13 @@ final List<Flashcard> cardsA03 = [
     'k-hi-16',
     'h-schnittstellen',
     'Ein Gerät braucht 9 V / 2 A. Welchen Strom bräuchte es an 5 V?',
-    'P = 9 V × 2 A = 18 W; I = 18 W / 5 V = 3,6 A - zu viel für einen normalen USB-Port.',
+    'P = 9 V × 2 A = 18 W; I = 18 W / 5 V = 3,6 A, zu viel für einen normalen USB-Port.',
   ),
   karte(
     'k-hi-6',
     'h-schnittstellen',
     'Mit welcher Formel berechnest du die Übertragungszeit einer Datei?',
-    'Zeit (s) = Datenmenge in Bit / Datenrate in Bit/s - vorher Byte × 8 rechnen.',
+    'Zeit (s) = Datenmenge in Bit / Datenrate in Bit/s: vorher Byte × 8 rechnen.',
   ),
   karte(
     'k-hi-12',
@@ -361,7 +361,7 @@ final List<Flashcard> cardsA03 = [
     'h-schnittstellen',
     'Wie viele MB/s überträgt eine 100-Mbit/s-Leitung höchstens?',
     '100 Mbit/s / 8 = 12,5 MB/s.',
-    'Kleines b = Bit, großes B = Byte - Faktor 8.',
+    'Kleines b = Bit, großes B = Byte, also Faktor 8.',
   ),
   karte(
     'k-hi-3',
@@ -379,7 +379,7 @@ final List<Flashcard> cardsA03 = [
     'k-hi-17',
     'h-schnittstellen',
     'Welche Datenrate braucht 4K mit 60 Hz und 24 Bit unkomprimiert?',
-    '3840 × 2160 × 24 Bit × 60 ≈ 11,94 Gbit/s - HDMI 2.0 (18 Gbit/s) reicht.',
+    '3840 × 2160 × 24 Bit × 60 ≈ 11,94 Gbit/s: HDMI 2.0 (18 Gbit/s) reicht.',
   ),
   karte(
     'k-hi-18',
@@ -391,7 +391,7 @@ final List<Flashcard> cardsA03 = [
     'k-hi-19',
     'h-schnittstellen',
     'Welche Technik steckt hinter Daisy Chaining, und welche Anschlüsse können sie?',
-    'Multi-Stream Transport (MST) - DisplayPort ab Version 1.2 und Thunderbolt. HDMI kann keine Monitorkette.',
+    'Multi-Stream Transport (MST): DisplayPort ab Version 1.2 und Thunderbolt. HDMI kann keine Monitorkette.',
   ),
   karte(
     'k-hi-20',
@@ -415,7 +415,7 @@ final List<Flashcard> cardsA03 = [
     'k-hi-22',
     'h-schnittstellen',
     'Was ist eine Kaltgerätebuchse?',
-    'Die Buchse mit drei flachen Stiften (IEC C14) am Netzteil von PC, Monitor oder Drucker - hier steckt das 230-V-Netzkabel.',
+    'Die Buchse mit drei flachen Stiften (IEC C14) am Netzteil von PC, Monitor oder Drucker. Hier steckt das 230-V-Netzkabel.',
   ),
   karte(
     'k-hi-5',
@@ -427,7 +427,7 @@ final List<Flashcard> cardsA03 = [
     'k-hi-4',
     'h-schnittstellen',
     'Welche Stärke hat ein IPS-Panel?',
-    'Gute Farbwiedergabe und stabile Blickwinkel - verbreitet bei Büro- und Grafikmonitoren.',
+    'Gute Farbwiedergabe und stabile Blickwinkel: verbreitet bei Büro- und Grafikmonitoren.',
   ),
   karte(
     'k-hi-26',
@@ -439,7 +439,7 @@ final List<Flashcard> cardsA03 = [
     'k-hi-31',
     'h-schnittstellen',
     'Was gibt die Reaktionszeit eines Monitors an?',
-    'Wie schnell ein Pixel umschaltet, in ms - kurze Zeiten vermeiden Schlieren bei Bewegung.',
+    'Wie schnell ein Pixel umschaltet, in ms: kurze Zeiten vermeiden Schlieren bei Bewegung.',
   ),
   karte(
     'k-hi-25',
@@ -489,7 +489,7 @@ final List<Flashcard> cardsA03 = [
     'k-hu-2',
     'h-usv',
     'Wie arbeitet eine Offline-USV?',
-    'Die Last hängt am Netz; erst beim Ausfall schaltet sie auf den Akku um (ca. 4-10 ms) - günstiger Grundschutz.',
+    'Die Last hängt am Netz; erst beim Ausfall schaltet sie auf den Akku um (ca. 4-10 ms), ein günstiger Grundschutz.',
   ),
   karte(
     'k-hu-9',
@@ -501,19 +501,19 @@ final List<Flashcard> cardsA03 = [
     'k-hu-1',
     'h-usv',
     'Wie arbeitet eine Online-USV (Doppelwandler)?',
-    'Die Last hängt dauerhaft am Wechselrichter - keine Umschaltzeit, bester Schutz.',
+    'Die Last hängt dauerhaft am Wechselrichter. Es gibt keine Umschaltzeit, der Schutz ist am besten.',
   ),
   karte(
     'k-hu-5',
     'h-usv',
     'Wofür stehen die USV-Klassen VFD, VI und VFI?',
-    'VFD: Offline, VI: Line-Interactive, VFI: Online - von netzabhängig bis unabhängig von Spannung und Frequenz.',
+    'VFD: Offline, VI: Line-Interactive, VFI: Online. Die Reihe reicht von netzabhängig bis unabhängig von Spannung und Frequenz.',
   ),
   karte(
     'k-hu-10',
     'h-usv',
     'Was ist der Nachteil einer Online-USV?',
-    'Die ständige Doppelwandlung kostet Wirkungsgrad - mehr Stromverbrauch und Wärme.',
+    'Die ständige Doppelwandlung kostet Wirkungsgrad, also mehr Stromverbrauch und Wärme.',
   ),
   karte(
     'k-hu-11',
@@ -543,7 +543,7 @@ final List<Flashcard> cardsA03 = [
     'k-hu-12',
     'h-usv',
     'Geräte: 850 W, 20 % Reserve, Leistungsfaktor 0,8. Wie viel VA braucht die USV?',
-    '850 W × 1,2 = 1.020 W; 1.020 W / 0,8 = 1.275 VA - gewählt wird z. B. eine 1.500-VA-USV.',
+    '850 W × 1,2 = 1.020 W; 1.020 W / 0,8 = 1.275 VA: gewählt wird z. B. eine 1.500-VA-USV.',
   ),
   karte(
     'k-hu-13',
@@ -555,7 +555,7 @@ final List<Flashcard> cardsA03 = [
     'k-hu-4',
     'h-usv',
     'Was ist die Überbrückungszeit einer USV?',
-    'Wie lange der Akku die Last versorgt - mindestens lang genug für ein geordnetes Herunterfahren.',
+    'Wie lange der Akku die Last versorgt: mindestens lang genug für ein geordnetes Herunterfahren.',
   ),
   karte(
     'k-hu-15',
@@ -597,7 +597,7 @@ final List<Flashcard> cardsA03 = [
     'k-hu-23',
     'h-usv',
     'Was ergänzt die USV bei langen Stromausfällen?',
-    'Ein Notstromaggregat - die USV überbrückt nur, bis es anläuft oder die Systeme heruntergefahren sind.',
+    'Ein Notstromaggregat. Die USV überbrückt nur, bis es anläuft oder die Systeme heruntergefahren sind.',
   ),
   karte(
     'k-hu-19',
@@ -755,7 +755,7 @@ final List<Flashcard> cardsA03 = [
     'k-ha-22',
     'h-arbeitsplatz',
     'Welches Gesetz regelt die Rücknahme und Entsorgung von Elektrogeräten?',
-    'Das Elektro- und Elektronikgerätegesetz (ElektroG) - Elektrogeräte gehören nicht in den Restmüll.',
+    'Das Elektro- und Elektronikgerätegesetz (ElektroG): Elektrogeräte gehören nicht in den Restmüll.',
   ),
   karte(
     'k-ha-7',
@@ -793,7 +793,7 @@ final List<Flashcard> cardsA03 = [
     'k-ba-10',
     'b-aufgaben',
     'Was ist ein Systemaufruf?',
-    'Die Anfrage einer Anwendung an den Kernel, etwa eine Datei zu öffnen - Programme greifen nie direkt auf die Hardware zu.',
+    'Die Anfrage einer Anwendung an den Kernel, etwa eine Datei zu öffnen. Programme greifen nie direkt auf die Hardware zu.',
   ),
   karte(
     'k-ba-4',
@@ -805,7 +805,7 @@ final List<Flashcard> cardsA03 = [
     'k-ba-11',
     'b-aufgaben',
     'Warum kann ein fehlerhafter Treiber das ganze System anhalten?',
-    'Treiber laufen im Kernel mit höchsten Rechten - ein Fehler dort trifft das gesamte System, nicht nur eine Anwendung.',
+    'Treiber laufen im Kernel mit höchsten Rechten. Ein Fehler dort trifft das gesamte System, nicht nur eine Anwendung.',
   ),
   karte(
     'k-ba-12',
@@ -823,7 +823,7 @@ final List<Flashcard> cardsA03 = [
     'k-ba-5',
     'b-aufgaben',
     'Welche drei Zustände kann ein laufender Prozess haben?',
-    'Bereit, rechnend, blockiert - der Scheduler schaltet zwischen ihnen um.',
+    'Bereit, rechnend, blockiert. Der Scheduler schaltet zwischen ihnen um.',
   ),
   karte(
     'k-ba-15',
@@ -847,19 +847,19 @@ final List<Flashcard> cardsA03 = [
     'k-ba-6',
     'b-aufgaben',
     'Was ist präemptives Multitasking?',
-    'Das Betriebssystem entzieht einem Prozess nach seiner Zeitscheibe die CPU - heute Standard.',
+    'Das Betriebssystem entzieht einem Prozess nach seiner Zeitscheibe die CPU; das ist heute Standard.',
   ),
   karte(
     'k-ba-13',
     'b-aufgaben',
     'Was ist kooperatives Multitasking, und was ist sein Nachteil?',
-    'Programme geben die CPU freiwillig ab - ein hängendes Programm blockiert das ganze System.',
+    'Programme geben die CPU freiwillig ab. Ein hängendes Programm blockiert das ganze System.',
   ),
   karte(
     'k-ba-17',
     'b-aufgaben',
     'Was ist virtueller Speicher?',
-    'Jeder Prozess erhält einen eigenen Adressraum, den das Betriebssystem auf den echten RAM abbildet - Programme können sich nicht überschreiben.',
+    'Jeder Prozess erhält einen eigenen Adressraum, den das Betriebssystem auf den echten RAM abbildet. So können sich Programme nicht überschreiben.',
   ),
   karte(
     'k-ba-18',
@@ -877,7 +877,7 @@ final List<Flashcard> cardsA03 = [
     'k-ba-19',
     'b-aufgaben',
     'Was hilft, wenn ein Rechner ständig auslagert und träge wird?',
-    'Mehr Arbeitsspeicher - Auslagern auf die SSD ist um ein Vielfaches langsamer als RAM.',
+    'Mehr Arbeitsspeicher, denn Auslagern auf die SSD ist um ein Vielfaches langsamer als RAM.',
   ),
   karte(
     'k-ba-7',
@@ -889,7 +889,7 @@ final List<Flashcard> cardsA03 = [
     'k-ba-23',
     'b-aufgaben',
     'Wie viel Speicher kann ein 64-Bit-System theoretisch adressieren?',
-    '2⁶⁴ Byte = 16 EiB - weit mehr, als heutige Rechner haben.',
+    '2⁶⁴ Byte = 16 EiB, weit mehr, als heutige Rechner haben.',
   ),
   karte(
     'k-ba-20',
@@ -907,7 +907,7 @@ final List<Flashcard> cardsA03 = [
     'k-ba-22',
     'b-aufgaben',
     'Wo laufen Embedded-Betriebssysteme, und was zeichnet sie aus?',
-    'In Routern, Maschinen und Autos - klein, spezialisiert, oft mit Echtzeitanforderungen.',
+    'In Routern, Maschinen und Autos: klein, spezialisiert, oft mit Echtzeitanforderungen.',
   ),
 
   // ============================================================== Dateisysteme
@@ -921,7 +921,7 @@ final List<Flashcard> cardsA03 = [
     'k-bd-10',
     'b-dateisysteme',
     'Welche Metadaten speichert ein Dateisystem zu einer Datei?',
-    'Name, Größe, Zeitstempel, Besitzer und Rechte - und welche Blöcke zur Datei gehören.',
+    'Name, Größe, Zeitstempel, Besitzer und Rechte sowie die Blöcke, die zur Datei gehören.',
   ),
   karte(
     'k-bd-11',
@@ -981,7 +981,7 @@ final List<Flashcard> cardsA03 = [
     'k-bd-18',
     'b-dateisysteme',
     'Ein 6-GB-Video passt nicht auf einen leeren 32-GB-Stick. Warum?',
-    'Der Stick ist mit FAT32 formatiert (höchstens 4 GiB je Datei) - mit exFAT oder NTFS neu formatieren.',
+    'Der Stick ist mit FAT32 formatiert (höchstens 4 GiB je Datei). Lösung: mit exFAT oder NTFS neu formatieren.',
   ),
   karte(
     'k-bd-3',
@@ -999,7 +999,7 @@ final List<Flashcard> cardsA03 = [
     'k-bd-5',
     'b-dateisysteme',
     'Was leistet Journaling in einem Dateisystem?',
-    'Änderungen werden vorab protokolliert - nach einem Absturz ist das Dateisystem schnell wieder konsistent.',
+    'Änderungen werden vorab protokolliert. Nach einem Absturz ist das Dateisystem schnell wieder konsistent.',
   ),
   karte(
     'k-bd-4',
@@ -1041,13 +1041,13 @@ final List<Flashcard> cardsA03 = [
     'k-bd-8',
     'b-dateisysteme',
     'Was macht eine Schnellformatierung mit den alten Daten?',
-    'Nichts - sie legt nur ein neues Inhaltsverzeichnis an. Die Daten sind oft wiederherstellbar.',
+    'Nichts. Sie legt nur ein neues Inhaltsverzeichnis an. Die Daten sind oft wiederherstellbar.',
   ),
   karte(
     'k-bd-22',
     'b-dateisysteme',
     'Wie löschst du eine SSD vor der Weitergabe sicher?',
-    'Mit Secure Erase - oder du vernichtest den Datenträger physisch.',
+    'Mit Secure Erase. Alternativ vernichtest du den Datenträger physisch.',
   ),
 
   // ======================================================== Benutzer und Rechte
@@ -1067,7 +1067,7 @@ final List<Flashcard> cardsA03 = [
     'k-br-11',
     'b-rechte',
     'Wofür ist ein Dienstkonto gedacht?',
-    'Für Dienste und Programme, nicht für Menschen - mit nur den nötigen Rechten.',
+    'Für Dienste und Programme, nicht für Menschen; sie haben nur die nötigen Rechte.',
   ),
   karte(
     'k-br-1',
@@ -1079,7 +1079,7 @@ final List<Flashcard> cardsA03 = [
     'k-br-9',
     'b-rechte',
     'Warum vergibt man Rechte an Gruppen statt an Personen?',
-    'Wechselt jemand die Abteilung, ändert sich nur die Gruppenmitgliedschaft - Rechte bleiben nachvollziehbar.',
+    'Wechselt jemand die Abteilung, ändert sich nur die Gruppenmitgliedschaft, und die Rechte bleiben nachvollziehbar.',
   ),
   karte(
     'k-br-24',
@@ -1091,13 +1091,13 @@ final List<Flashcard> cardsA03 = [
     'k-br-22',
     'b-rechte',
     'Warum sind Sammelkonten wie „azubi“ problematisch?',
-    'Handlungen lassen sich keiner Person zuordnen - keine Nachvollziehbarkeit und kein gezielter Entzug.',
+    'Handlungen lassen sich keiner Person zuordnen. Es gibt keine Nachvollziehbarkeit und keinen gezielten Entzug.',
   ),
   karte(
     'k-br-23',
     'b-rechte',
     'Wie arbeiten Administratoren im Alltag sicher?',
-    'Mit einem normalen Konto; Adminrechte nur bei Bedarf - Linux mit sudo, Windows über die Benutzerkontensteuerung (UAC).',
+    'Mit einem normalen Konto; Adminrechte nur bei Bedarf: Linux mit sudo, Windows über die Benutzerkontensteuerung (UAC).',
   ),
   karte(
     'k-br-3',
@@ -1187,19 +1187,19 @@ final List<Flashcard> cardsA03 = [
     'k-br-4',
     'b-rechte',
     'Welche Rechte gelten beim Netzzugriff auf eine Windows-Freigabe?',
-    'Freigabe- und NTFS-Rechte zugleich - wirksam ist die strengere von beiden.',
+    'Freigabe- und NTFS-Rechte zugleich: wirksam ist die strengere von beiden.',
   ),
   karte(
     'k-br-19',
     'b-rechte',
     'Freigabe „Ändern“, NTFS „Lesen“: Was darf ein Nutzer über das Netzwerk?',
-    'Nur lesen - beim Netzzugriff gilt die strengere der beiden Berechtigungen.',
+    'Nur lesen: beim Netzzugriff gilt die strengere der beiden Berechtigungen.',
   ),
   karte(
     'k-br-20',
     'b-rechte',
     'Welche Rechte gelten, wenn jemand direkt am Server auf einen Ordner zugreift?',
-    'Nur die NTFS-Rechte - Freigaberechte wirken ausschließlich beim Zugriff über das Netzwerk.',
+    'Nur die NTFS-Rechte: Freigaberechte wirken ausschließlich beim Zugriff über das Netzwerk.',
   ),
 
   // ============================================================== Kommandozeile
@@ -1225,7 +1225,7 @@ final List<Flashcard> cardsA03 = [
     'k-bc-5',
     'b-cli',
     'Was macht grep?',
-    'Durchsucht Dateien oder Ausgaben nach einem Text - unter Windows entspricht das findstr.',
+    'Durchsucht Dateien oder Ausgaben nach einem Text. Unter Windows entspricht das findstr.',
   ),
   karte(
     'k-bc-33',
@@ -1279,7 +1279,7 @@ final List<Flashcard> cardsA03 = [
     'k-bc-26',
     'b-cli',
     'Wie heißen PowerShell-Befehle, und wie sind sie aufgebaut?',
-    'Cmdlets nach dem Muster Verb-Nomen, z. B. Get-Process - sie geben Objekte statt Text zurück.',
+    'Cmdlets nach dem Muster Verb-Nomen, z. B. Get-Process. Sie geben Objekte statt Text zurück.',
   ),
   karte(
     'k-bc-27',
@@ -1291,7 +1291,7 @@ final List<Flashcard> cardsA03 = [
     'k-bc-1',
     'b-cli',
     'Welcher Linux-Befehl entspricht ipconfig?',
-    'ip a (früher ifconfig) - zeigt Schnittstellen und Adressen.',
+    'ip a (früher ifconfig): zeigt Schnittstellen und Adressen.',
   ),
   karte(
     'k-bc-15',
@@ -1315,13 +1315,13 @@ final List<Flashcard> cardsA03 = [
     'k-bc-8',
     'b-cli',
     'ipconfig zeigt die Adresse 169.254.23.7. Was bedeutet das?',
-    'APIPA-Adresse: Kein DHCP-Server hat geantwortet - Kabel, Switchport/VLAN und DHCP-Server prüfen.',
+    'APIPA-Adresse: Kein DHCP-Server hat geantwortet. Kabel, Switchport/VLAN und DHCP-Server prüfen.',
   ),
   karte(
     'k-bc-3',
     'b-cli',
     'Wofür nutzt du nslookup?',
-    'Es fragt einen DNS-Server nach der Adresse zu einem Namen - prüft die Namensauflösung.',
+    'Es fragt einen DNS-Server nach der Adresse zu einem Namen. So prüfst du die Namensauflösung.',
   ),
   karte(
     'k-bc-2',
@@ -1351,7 +1351,7 @@ final List<Flashcard> cardsA03 = [
     'k-bc-17',
     'b-cli',
     'ping 8.8.8.8 klappt, ping google.de nicht. Wo liegt der Fehler?',
-    'Bei der Namensauflösung (DNS) - das Netzwerk selbst funktioniert.',
+    'Bei der Namensauflösung (DNS). Das Netzwerk selbst funktioniert.',
   ),
   karte(
     'k-bc-18',
@@ -1363,13 +1363,13 @@ final List<Flashcard> cardsA03 = [
     'k-bc-19',
     'b-cli',
     'Welches Protokoll nutzt ping?',
-    'ICMP - es sendet Echo-Anfragen und misst die Laufzeit der Antwort.',
+    'ICMP. Es sendet Echo-Anfragen und misst die Laufzeit der Antwort.',
   ),
   karte(
     'k-bc-20',
     'b-cli',
     'Was zeigt der TTL-Wert in einer ping-Antwort?',
-    'Die restlichen Router-Sprünge des Pakets - der Wert sinkt je Router um 1.',
+    'Die restlichen Router-Sprünge des Pakets. Der Wert sinkt je Router um 1.',
   ),
   karte(
     'k-bc-21',
@@ -1381,13 +1381,13 @@ final List<Flashcard> cardsA03 = [
     'k-bc-23',
     'b-cli',
     'Ping-Antworten: 3 ms, 480 ms, 5 ms. Wie hoch ist der Mittelwert?',
-    '(3 + 480 + 5) / 3 = 488 / 3 ≈ 162,7 ms - der Ausreißer verzerrt den Mittelwert stark.',
+    '(3 + 480 + 5) / 3 = 488 / 3 ≈ 162,7 ms. Der Ausreißer verzerrt den Mittelwert stark.',
   ),
   karte(
     'k-bc-22',
     'b-cli',
     'Was ist Jitter, und was stört er?',
-    'Schwankende Laufzeiten der Pakete - stört vor allem Sprache und Video.',
+    'Schwankende Laufzeiten der Pakete, das stört vor allem Sprache und Video.',
   ),
   karte(
     'k-bc-30',
@@ -1431,7 +1431,7 @@ final List<Flashcard> cardsA03 = [
     'k-bh-7',
     'b-haertung',
     'Mit welchen Befehlen findest du lauschende Ports?',
-    'Linux: ss -tulpen, Windows: netstat -an - Grundlage, um unnötige Dienste abzuschalten.',
+    'Linux: ss -tulpen, Windows: netstat -an. Das ist die Grundlage, um unnötige Dienste abzuschalten.',
   ),
   karte(
     'k-bh-16',
@@ -1449,7 +1449,7 @@ final List<Flashcard> cardsA03 = [
     'k-bh-18',
     'b-haertung',
     'Womit ersetzt du FTP für Uploads?',
-    'Durch SFTP (über SSH) - FTP überträgt Passwörter im Klartext.',
+    'Durch SFTP (über SSH), denn FTP überträgt Passwörter im Klartext.',
   ),
   karte(
     'k-bh-9',
@@ -1467,7 +1467,7 @@ final List<Flashcard> cardsA03 = [
     'k-bh-3',
     'b-haertung',
     'Welche Schritte umfasst das Patchmanagement?',
-    'Updates erfassen, bewerten, testen, verteilen, kontrollieren und dokumentieren - als wiederkehrender Kreislauf.',
+    'Updates erfassen, bewerten, testen, verteilen, kontrollieren und dokumentieren, als wiederkehrender Kreislauf.',
   ),
   karte(
     'k-bh-15',
@@ -1479,7 +1479,7 @@ final List<Flashcard> cardsA03 = [
     'k-bh-6',
     'b-haertung',
     'Wie rollst du Updates gestaffelt aus?',
-    'In Wellen: IT und Testgeräte, dann eine Pilotgruppe, dann alle übrigen - vorher Backup oder Snapshot.',
+    'In Wellen: IT und Testgeräte, dann eine Pilotgruppe, dann alle übrigen; vorher Backup oder Snapshot.',
   ),
   karte(
     'k-bh-13',
@@ -1503,7 +1503,7 @@ final List<Flashcard> cardsA03 = [
     'k-bh-2',
     'b-haertung',
     'Was ist eine Zero-Day-Lücke?',
-    'Eine Schwachstelle, für die es noch kein Update gibt - der Hersteller hatte „null Tage“ Zeit zu reagieren.',
+    'Eine Schwachstelle, für die es noch kein Update gibt. Der Hersteller hatte „null Tage“ Zeit zu reagieren.',
   ),
   karte(
     'k-bh-8',
@@ -1515,7 +1515,7 @@ final List<Flashcard> cardsA03 = [
     'k-bh-5',
     'b-haertung',
     'Was bedeutet End of Life bei Software?',
-    'Kein Support und keine Sicherheitsupdates mehr - jede neue Lücke bleibt offen. System ablösen oder abschotten.',
+    'Kein Support und keine Sicherheitsupdates mehr. Jede neue Lücke bleibt offen. Abhilfe: System ablösen oder abschotten.',
   ),
   karte(
     'k-bh-11',
@@ -1547,7 +1547,7 @@ final List<Flashcard> cardsA03 = [
     'k-au-16',
     'an-unternehmen',
     'Was sind Dateninseln?',
-    'Jede Abteilung pflegt eigene Daten - doppelt und widersprüchlich. Integrierte Systeme lösen genau das.',
+    'Jede Abteilung pflegt eigene Daten: doppelt und widersprüchlich. Integrierte Systeme lösen genau das.',
   ),
   karte(
     'k-au-1',
@@ -1559,7 +1559,7 @@ final List<Flashcard> cardsA03 = [
     'k-au-4',
     'an-unternehmen',
     'Welchen Vorteil bringt die gemeinsame Datenbank eines ERP-Systems?',
-    'Keine doppelte Datenhaltung - alle Bereiche arbeiten mit denselben, aktuellen Daten.',
+    'Keine doppelte Datenhaltung. Alle Bereiche arbeiten mit denselben, aktuellen Daten.',
   ),
   karte(
     'k-au-10',
@@ -1595,7 +1595,7 @@ final List<Flashcard> cardsA03 = [
     'k-au-12',
     'an-unternehmen',
     'Was bedeutet Just-in-time in der Lieferkette?',
-    'Ware kommt genau dann, wenn sie gebraucht wird - das senkt die Lagerbestände.',
+    'Ware kommt genau dann, wenn sie gebraucht wird. Das senkt die Lagerbestände.',
   ),
   karte(
     'k-au-3',
@@ -1711,25 +1711,25 @@ final List<Flashcard> cardsA03 = [
     'k-as-9',
     'an-software',
     'Was ist Parametrisierung?',
-    'Die Auswahl vorgesehener Einstellungen einer Standardsoftware - bleibt bei Updates erhalten.',
+    'Die Auswahl vorgesehener Einstellungen einer Standardsoftware; sie bleibt bei Updates erhalten.',
   ),
   karte(
     'k-as-3',
     'an-software',
     'Was ist Customizing?',
-    'Anpassen von Standardsoftware über vorgesehene Einstellungen, eigene Felder und Formulare - ohne den Programmcode zu ändern.',
+    'Anpassen von Standardsoftware über vorgesehene Einstellungen, eigene Felder und Formulare, ohne den Programmcode zu ändern.',
   ),
   karte(
     'k-as-10',
     'an-software',
     'Was ist ein Add-on bei Standardsoftware?',
-    'Ein Zusatzmodul über Schnittstellen - bei Updates muss es auf Verträglichkeit geprüft werden.',
+    'Ein Zusatzmodul über Schnittstellen. Bei Updates muss es auf Verträglichkeit geprüft werden.',
   ),
   karte(
     'k-as-5',
     'an-software',
     'Was ist eine Modifikation von Standardsoftware?',
-    'Eine Änderung am Programmcode des Herstellers - geht bei Updates oft verloren.',
+    'Eine Änderung am Programmcode des Herstellers, geht bei Updates oft verloren.',
   ),
   karte(
     'k-as-11',
@@ -1777,7 +1777,7 @@ final List<Flashcard> cardsA03 = [
     'k-as-16',
     'an-software',
     'Wie berechnest du den Nutzwert einer Alternative?',
-    'Je Kriterium Gewicht × Punkte, dann alle Produkte addieren - die höchste Summe gewinnt.',
+    'Je Kriterium Gewicht × Punkte, dann alle Produkte addieren. Die höchste Summe gewinnt.',
   ),
   karte(
     'k-as-17',
@@ -1803,7 +1803,7 @@ final List<Flashcard> cardsA03 = [
     'k-al-11',
     'an-lizenzen',
     'Was erwirbst du beim Kauf von Software?',
-    'Ein Nutzungsrecht (Lizenz), nicht das Programm selbst - Software ist urheberrechtlich geschützt.',
+    'Ein Nutzungsrecht (Lizenz), nicht das Programm selbst, denn Software ist urheberrechtlich geschützt.',
   ),
   karte(
     'k-al-12',
@@ -1833,7 +1833,7 @@ final List<Flashcard> cardsA03 = [
     'k-al-15',
     'an-lizenzen',
     'Wie kann Open-Source-Software trotzdem Geld kosten?',
-    'Etwa über Supportverträge oder Dienstleistungen - offen ist der Quellcode, nicht zwingend der Preis.',
+    'Etwa über Supportverträge oder Dienstleistungen: offen ist der Quellcode, nicht zwingend der Preis.',
   ),
   karte(
     'k-al-3',
@@ -1899,7 +1899,7 @@ final List<Flashcard> cardsA03 = [
     'k-al-27',
     'an-lizenzen',
     'Der PC mit OEM-Lizenz wird ersetzt. Was gilt für die Lizenz?',
-    'Sie bleibt an das alte Gerät gebunden - für den neuen PC braucht es eine Voll- oder Volumenlizenz.',
+    'Sie bleibt an das alte Gerät gebunden. Für den neuen PC braucht es eine Voll- oder Volumenlizenz.',
   ),
   karte(
     'k-al-20',
@@ -1929,13 +1929,13 @@ final List<Flashcard> cardsA03 = [
     'k-al-9',
     'an-lizenzen',
     'Was ist Unterlizenzierung, und was droht?',
-    'Mehr Installationen als Lizenzen - eine Urheberrechtsverletzung; Nachzahlung und Schadenersatz drohen.',
+    'Mehr Installationen als Lizenzen. Das ist eine Urheberrechtsverletzung; Nachzahlung und Schadenersatz drohen.',
   ),
   karte(
     'k-al-24',
     'an-lizenzen',
     'Was ist Überlizenzierung?',
-    'Bezahlte, aber ungenutzte Lizenzen - sie kosten unnötig Geld.',
+    'Bezahlte, aber ungenutzte Lizenzen. Sie kosten unnötig Geld.',
   ),
   karte(
     'k-al-25',
@@ -1961,7 +1961,7 @@ final List<Flashcard> cardsA03 = [
     'k-ak-1',
     'an-kollaboration',
     'Was ist synchrone Kommunikation? Nenne Beispiele.',
-    'Alle sind gleichzeitig dabei - Videokonferenz, Telefon, Live-Chat.',
+    'Alle sind gleichzeitig dabei: Videokonferenz, Telefon, Live-Chat.',
   ),
   karte(
     'k-ak-2',
@@ -1979,19 +1979,19 @@ final List<Flashcard> cardsA03 = [
     'k-ak-5',
     'an-kollaboration',
     'Wonach ordnet die Raum-Zeit-Matrix Werkzeuge?',
-    'Nach Ort (gleich oder verteilt) und Zeit (gleichzeitig oder versetzt) - es entstehen vier Felder.',
+    'Nach Ort (gleich oder verteilt) und Zeit (gleichzeitig oder versetzt). Es entstehen vier Felder.',
   ),
   karte(
     'k-ak-9',
     'an-kollaboration',
     'In welches Feld der Raum-Zeit-Matrix gehört ein Wiki?',
-    'Räumlich verteilt, zeitlich versetzt - wie E-Mail und Ticketsystem.',
+    'Räumlich verteilt, zeitlich versetzt, wie E-Mail und Ticketsystem.',
   ),
   karte(
     'k-ak-10',
     'an-kollaboration',
     'In welches Feld der Raum-Zeit-Matrix gehört eine Videokonferenz?',
-    'Räumlich verteilt, gleiche Zeit - wie ein Chat in Echtzeit.',
+    'Räumlich verteilt, gleiche Zeit, wie ein Chat in Echtzeit.',
   ),
   karte(
     'k-ak-11',
@@ -2003,7 +2003,7 @@ final List<Flashcard> cardsA03 = [
     'k-ak-12',
     'an-kollaboration',
     'Warum ein gemeinsames Cloud-Dokument statt Anhängen per E-Mail?',
-    'Alle arbeiten an derselben Fassung - mit Versionsverlauf, Kommentaren und abgestuften Rechten.',
+    'Alle arbeiten an derselben Fassung, mit Versionsverlauf, Kommentaren und abgestuften Rechten.',
   ),
   karte(
     'k-ak-13',
@@ -2069,7 +2069,7 @@ final List<Flashcard> cardsA03 = [
     'k-ak-4',
     'an-kollaboration',
     'Wann brauchst du einen Vertrag zur Auftragsverarbeitung?',
-    'Wenn ein Dienstleister personenbezogene Daten in deinem Auftrag verarbeitet - auch bei Cloud-Werkzeugen (Art. 28 DSGVO).',
+    'Wenn ein Dienstleister personenbezogene Daten in deinem Auftrag verarbeitet, auch bei Cloud-Werkzeugen (Art. 28 DSGVO).',
   ),
   karte(
     'k-ak-6',
@@ -2081,7 +2081,7 @@ final List<Flashcard> cardsA03 = [
     'k-ak-21',
     'an-kollaboration',
     'Ein Mitarbeiter teilt Kundendaten über seinen privaten Cloudspeicher. Was ist das Problem?',
-    'Schatten-IT ohne Vertrag zur Auftragsverarbeitung - die Daten liegen unkontrolliert außerhalb des Unternehmens.',
+    'Schatten-IT ohne Vertrag zur Auftragsverarbeitung. Die Daten liegen unkontrolliert außerhalb des Unternehmens.',
   ),
   karte(
     'k-ak-22',
@@ -2151,13 +2151,13 @@ final List<Flashcard> cardsA03 = [
     'k-no-2',
     'nw-modelle',
     'Auf welcher OSI-Schicht arbeitet ein Switch?',
-    'Schicht 2 (Sicherung) - er arbeitet mit MAC-Adressen.',
+    'Schicht 2 (Sicherung). Er arbeitet mit MAC-Adressen.',
   ),
   karte(
     'k-no-3',
     'nw-modelle',
     'Auf welcher OSI-Schicht arbeitet ein Router?',
-    'Schicht 3 (Vermittlung) - er arbeitet mit IP-Adressen.',
+    'Schicht 3 (Vermittlung). Er arbeitet mit IP-Adressen.',
   ),
   karte(
     'k-no-8',
@@ -2241,7 +2241,7 @@ final List<Flashcard> cardsA03 = [
     'k-no-25',
     'nw-modelle',
     'Welche Dienste nutzen typischerweise TCP?',
-    'Web (HTTP, HTTPS), E-Mail und Dateiübertragung - überall, wo nichts verloren gehen darf.',
+    'Web (HTTP, HTTPS), E-Mail und Dateiübertragung: überall, wo nichts verloren gehen darf.',
   ),
   karte(
     'k-no-6',
@@ -2315,7 +2315,7 @@ final List<Flashcard> cardsA03 = [
     'k-ng-8',
     'nw-geraete',
     'Was ist eine Broadcastdomäne, und wo endet sie?',
-    'Der Bereich, den ein Broadcast erreicht - er endet am Router; jedes VLAN bildet eine eigene.',
+    'Der Bereich, den ein Broadcast erreicht. Er endet am Router; jedes VLAN bildet eine eigene.',
   ),
   karte(
     'k-ng-3',
@@ -2338,7 +2338,7 @@ final List<Flashcard> cardsA03 = [
   karte(
     'k-ng-56',
     'nw-geraete',
-    'Was ist in Prüfungsfragen mit „Router“ gemeint - anders als beim Heimrouter?',
+    'Was ist in Prüfungsfragen mit „Router“ gemeint: anders als beim Heimrouter?',
     'Nur die Funktion auf Schicht 3: Netze verbinden und Pakete weiterleiten. Der Heimrouter ist zusätzlich Modem, Switch, Access Point, DHCP-Server und Firewall.',
   ),
   karte(
@@ -2351,7 +2351,7 @@ final List<Flashcard> cardsA03 = [
     'k-ng-18',
     'nw-geraete',
     'Welche Topologie ist im LAN heute Standard?',
-    'Der erweiterte Stern (Baum): Switches sternförmig hintereinander - gut erweiterbar.',
+    'Der erweiterte Stern (Baum): Switches sternförmig hintereinander, gut erweiterbar.',
   ),
   karte(
     'k-ng-16',
@@ -2363,7 +2363,7 @@ final List<Flashcard> cardsA03 = [
     'k-ng-17',
     'nw-geraete',
     'Was kennzeichnet die Maschentopologie?',
-    'Mehrere Wege zwischen den Knoten - sehr ausfallsicher, aber viel Kabel und teuer.',
+    'Mehrere Wege zwischen den Knoten: sehr ausfallsicher, aber viel Kabel und teuer.',
   ),
   karte(
     'k-ng-5',
@@ -2411,7 +2411,7 @@ final List<Flashcard> cardsA03 = [
     'k-ng-33',
     'nw-geraete',
     'Warum verbindet man Gebäude per Glasfaser?',
-    'Große Reichweite und keine elektrisch leitende Verbindung - schützt vor Potenzialunterschieden und Überspannung.',
+    'Große Reichweite und keine elektrisch leitende Verbindung; das schützt vor Potenzialunterschieden und Überspannung.',
   ),
   karte(
     'k-ng-28',
@@ -2447,7 +2447,7 @@ final List<Flashcard> cardsA03 = [
     'k-ng-40',
     'nw-geraete',
     'PC und Kabel sind in Ordnung, an der Dose leuchtet aber keine Link-LED. Warum?',
-    'Die Dose ist vermutlich nicht gepatcht - Patchfeld-Port mit dem Switch verbinden (lassen) oder eine gepatchte Dose nutzen.',
+    'Die Dose ist vermutlich nicht gepatcht: Patchfeld-Port mit dem Switch verbinden (lassen) oder eine gepatchte Dose nutzen.',
   ),
   karte(
     'k-ng-41',
@@ -2477,13 +2477,13 @@ final List<Flashcard> cardsA03 = [
     'k-ng-44',
     'nw-geraete',
     'Was bringt Wi-Fi 6E gegenüber Wi-Fi 6?',
-    'Zusätzlich das 6-GHz-Band - mehr Kanäle, weniger Störungen.',
+    'Zusätzlich das 6-GHz-Band. Das bringt mehr Kanäle und weniger Störungen.',
   ),
   karte(
     'k-ng-45',
     'nw-geraete',
     'Welche Brutto-Datenraten haben Wi-Fi 6 und Wi-Fi 7?',
-    'Wi-Fi 6: 9,6 Gbit/s, Wi-Fi 7: 46 Gbit/s - real bleibt oft die Hälfte oder weniger.',
+    'Wi-Fi 6: 9,6 Gbit/s, Wi-Fi 7: 46 Gbit/s; real bleibt oft die Hälfte oder weniger.',
   ),
   karte(
     'k-ng-46',
@@ -2531,7 +2531,7 @@ final List<Flashcard> cardsA03 = [
     'k-ng-55',
     'nw-geraete',
     'Welche Geräte versorgt man typischerweise per PoE?',
-    'Access Points, IP-Telefone und Netzwerkkameras - sie brauchen dann keine eigene Steckdose.',
+    'Access Points, IP-Telefone und Netzwerkkameras. Sie brauchen dann keine eigene Steckdose.',
   ),
   karte(
     'k-ng-52',
@@ -2581,7 +2581,7 @@ final List<Flashcard> cardsA03 = [
     'k-n4-35',
     'nw-ipv4',
     'Welche Netzklassen A, B und C gab es früher?',
-    'A: 1-126 (/8), B: 128-191 (/16), C: 192-223 (/24) - heute durch CIDR ersetzt.',
+    'A: 1-126 (/8), B: 128-191 (/16), C: 192-223 (/24). Heute durch CIDR ersetzt.',
   ),
   karte(
     'k-n4-13',
@@ -2659,7 +2659,7 @@ final List<Flashcard> cardsA03 = [
     'k-n4-24',
     'nw-ipv4',
     'Mit welcher Formel berechnest du die Anzahl der Subnetze?',
-    '2^geliehene Bits - z. B. ergeben 3 geliehene Bits 8 Subnetze.',
+    '2^geliehene Bits: z. B. ergeben 3 geliehene Bits 8 Subnetze.',
   ),
   karte(
     'k-n4-6',
@@ -2671,7 +2671,7 @@ final List<Flashcard> cardsA03 = [
     'k-n4-8',
     'nw-ipv4',
     'Wie ermittelst du Netz- und Broadcastadresse bitweise?',
-    'Netz: IP-Adresse bitweise UND Maske - alle Hostbits werden 0. Broadcast: alle Hostbits auf 1.',
+    'Netz: IP-Adresse bitweise UND Maske. Alle Hostbits werden 0. Broadcast: alle Hostbits auf 1.',
   ),
   karte(
     'k-n4-30',
@@ -2743,7 +2743,7 @@ final List<Flashcard> cardsA03 = [
     'k-n4-10',
     'nw-ipv4',
     'Was ist VLSM, und womit beginnst du?',
-    'Subnetze unterschiedlicher Größe - immer mit dem größten Netz beginnen, sonst passen die großen Blöcke nicht mehr.',
+    'Subnetze unterschiedlicher Größe. Immer mit dem größten Netz beginnen, sonst passen die großen Blöcke nicht mehr.',
   ),
   karte(
     'k-n4-37',
@@ -2773,13 +2773,13 @@ final List<Flashcard> cardsA03 = [
     'k-n4-33',
     'nw-ipv4',
     'Wofür steht die Adresse 127.0.0.1?',
-    'Loopback - der eigene Rechner (Bereich 127.0.0.0/8).',
+    'Loopback, also der eigene Rechner (Bereich 127.0.0.0/8).',
   ),
   karte(
     'k-n4-4',
     'nw-ipv4',
     'Was ist eine APIPA-Adresse?',
-    '169.254.x.x - selbst vergebene Adresse, wenn kein DHCP-Server antwortet.',
+    '169.254.x.x: selbst vergebene Adresse, wenn kein DHCP-Server antwortet.',
   ),
   karte(
     'k-n4-34',
@@ -2805,7 +2805,7 @@ final List<Flashcard> cardsA03 = [
     'k-n6-11',
     'nw-ipv6',
     'Wie viele Bit stellt eine Hexadezimalziffer dar?',
-    '4 Bit - ein Block aus vier Hex-Ziffern hat 16 Bit.',
+    '4 Bit. Ein Block aus vier Hex-Ziffern hat 16 Bit.',
   ),
   karte(
     'k-n6-2',
@@ -2817,13 +2817,13 @@ final List<Flashcard> cardsA03 = [
     'k-n6-15',
     'nw-ipv6',
     'Welche Null-Folge ersetzt du durch ::, wenn es mehrere gibt?',
-    'Die längste - bei gleicher Länge die erste.',
+    'Die längste; bei gleicher Länge die erste.',
   ),
   karte(
     'k-n6-16',
     'nw-ipv6',
     'Warum darf :: nur einmal in einer Adresse vorkommen?',
-    'Sonst wäre unklar, wie viele Null-Blöcke jede Lücke ersetzt - die Adresse wäre mehrdeutig.',
+    'Sonst wäre unklar, wie viele Null-Blöcke jede Lücke ersetzt. Die Adresse wäre mehrdeutig.',
   ),
   karte(
     'k-n6-17',
@@ -2877,19 +2877,19 @@ final List<Flashcard> cardsA03 = [
     'k-n6-3',
     'nw-ipv6',
     'Welcher Adresstyp beginnt mit fe80::/10?',
-    'Link-Local - nur im eigenen Netzsegment gültig; jede IPv6-Schnittstelle hat eine.',
+    'Link-Local, nur im eigenen Netzsegment gültig; jede IPv6-Schnittstelle hat eine.',
   ),
   karte(
     'k-n6-6',
     'nw-ipv6',
     'Welcher Adresstyp gehört zu fc00::/7?',
-    'Unique Local Address - privat, im Internet nicht geroutet, meist mit fd beginnend.',
+    'Unique Local Address: privat, im Internet nicht geroutet, meist mit fd beginnend.',
   ),
   karte(
     'k-n6-4',
     'nw-ipv6',
     'Was ist die IPv6-Adresse ::1?',
-    'Loopback - der eigene Rechner, wie 127.0.0.1 bei IPv4.',
+    'Loopback, also der eigene Rechner, wie 127.0.0.1 bei IPv4.',
   ),
   karte(
     'k-n6-22',
@@ -2901,13 +2901,13 @@ final List<Flashcard> cardsA03 = [
     'k-n6-23',
     'nw-ipv6',
     'Was bedeutet die IPv6-Adresse :: allein?',
-    'Die unspezifizierte Adresse - das Gerät hat noch keine Adresse.',
+    'Die unspezifizierte Adresse: Das Gerät hat noch keine Adresse.',
   ),
   karte(
     'k-n6-5',
     'nw-ipv6',
     'Was ersetzt in IPv6 den Broadcast?',
-    'Multicast (ff00::/8) - IPv6 kennt keinen Broadcast.',
+    'Multicast (ff00::/8). IPv6 kennt keinen Broadcast.',
   ),
   karte(
     'k-n6-26',
@@ -2931,7 +2931,7 @@ final List<Flashcard> cardsA03 = [
     'k-n6-24',
     'nw-ipv6',
     'Wie lautet die EUI-64-Interface-ID zur MAC-Adresse 00:1a:2b:3c:4d:5e?',
-    '021a:2bff:fe3c:4d5e - ff:fe in die Mitte, 7. Bit gedreht (00 wird 02).',
+    '021a:2bff:fe3c:4d5e: ff:fe in die Mitte, 7. Bit gedreht (00 wird 02).',
   ),
   karte(
     'k-n6-25',
@@ -2943,7 +2943,7 @@ final List<Flashcard> cardsA03 = [
     'k-n6-9',
     'nw-ipv6',
     'Was ist NDP?',
-    'Neighbor Discovery Protocol - ersetzt bei IPv6 das ARP und findet Router und Nachbarn.',
+    'Neighbor Discovery Protocol: ersetzt bei IPv6 das ARP und findet Router und Nachbarn.',
   ),
   karte(
     'k-n6-33',
@@ -2961,19 +2961,19 @@ final List<Flashcard> cardsA03 = [
     'k-n6-27',
     'nw-ipv6',
     'Was ist Dual Stack?',
-    'Ein Gerät hat gleichzeitig eine IPv4- und eine IPv6-Adresse und nutzt beide - der Normalfall im Übergang.',
+    'Ein Gerät hat gleichzeitig eine IPv4- und eine IPv6-Adresse und nutzt beide, der Normalfall im Übergang.',
   ),
   karte(
     'k-n6-31',
     'nw-ipv6',
     'ipconfig zeigt eine 2a02:…-Adresse und 192.168.20.47. Was folgt daraus?',
-    'Dual-Stack-Betrieb: globale IPv6- und private IPv4-Adresse - der PC spricht beide Protokolle.',
+    'Dual-Stack-Betrieb: globale IPv6- und private IPv4-Adresse. Der PC spricht beide Protokolle.',
   ),
   karte(
     'k-n6-32',
     'nw-ipv6',
     'Welche DNS-Einträge liefert ein Dienst im Dual-Stack-Betrieb?',
-    'Einen A-Eintrag (IPv4) und einen AAAA-Eintrag (IPv6) - das Gerät wählt.',
+    'Einen A-Eintrag (IPv4) und einen AAAA-Eintrag (IPv6). Das Gerät wählt.',
   ),
   karte(
     'k-n6-28',
@@ -3005,31 +3005,31 @@ final List<Flashcard> cardsA03 = [
     'k-nd-42',
     'nw-dienste',
     'Auf welcher OSI-Schicht arbeiten HTTP, DNS und SMTP?',
-    'Schicht 7 (Anwendung) - sie nutzen TCP oder UDP auf Schicht 4.',
+    'Schicht 7 (Anwendung). Sie nutzen TCP oder UDP auf Schicht 4.',
   ),
   karte(
     'k-nd-3',
     'nw-dienste',
     'Welchen Port nutzt HTTPS?',
-    '443 (TCP) - verschlüsselte Webseiten. Unverschlüsseltes HTTP nutzt Port 80.',
+    '443 (TCP): verschlüsselte Webseiten. Unverschlüsseltes HTTP nutzt Port 80.',
   ),
   karte(
     'k-nd-4',
     'nw-dienste',
     'Welchen Port nutzt SSH?',
-    '22 (TCP) - verschlüsselte Fernwartung, ersetzt das unsichere Telnet (Port 23).',
+    '22 (TCP): verschlüsselte Fernwartung, ersetzt das unsichere Telnet (Port 23).',
   ),
   karte(
     'k-nd-12',
     'nw-dienste',
     'Welche Ports nutzt FTP?',
-    '20 (Daten) und 21 (Steuerung), TCP - unverschlüsselt.',
+    '20 (Daten) und 21 (Steuerung), TCP, unverschlüsselt.',
   ),
   karte(
     'k-nd-13',
     'nw-dienste',
     'Welchen Port nutzt RDP?',
-    '3389 (TCP, auch UDP) - Remotedesktop unter Windows.',
+    '3389 (TCP, auch UDP): Remotedesktop unter Windows.',
   ),
   karte(
     'k-nd-14',
@@ -3065,7 +3065,7 @@ final List<Flashcard> cardsA03 = [
     'k-nd-10',
     'nw-dienste',
     'Welchen Port nutzt NTP, und wofür?',
-    'Port 123/UDP - synchronisiert die Uhrzeit, wichtig für Protokolle und Anmeldung.',
+    'Port 123/UDP: synchronisiert die Uhrzeit, wichtig für Protokolle und Anmeldung.',
   ),
   karte(
     'k-nd-20',
@@ -3083,7 +3083,7 @@ final List<Flashcard> cardsA03 = [
     'k-nd-19',
     'nw-dienste',
     'Welchen Port nutzt SMB?',
-    '445 (TCP) - Dateifreigaben unter Windows.',
+    '445 (TCP): Dateifreigaben unter Windows.',
   ),
   karte(
     'k-nd-21',
@@ -3119,13 +3119,13 @@ final List<Flashcard> cardsA03 = [
     'k-nd-22',
     'nw-dienste',
     'Welche Konfiguration erhält ein Client per DHCP?',
-    'IP-Adresse, Subnetzmaske, Standardgateway und DNS-Server - für die Dauer der Lease.',
+    'IP-Adresse, Subnetzmaske, Standardgateway und DNS-Server, für die Dauer der Lease.',
   ),
   karte(
     'k-nd-24',
     'nw-dienste',
     'Was ist eine DHCP-Lease, und wann wird sie verlängert?',
-    'Die Gültigkeitsdauer der vergebenen Adresse - ab der Hälfte versucht der Client zu verlängern.',
+    'Die Gültigkeitsdauer der vergebenen Adresse. Ab der Hälfte versucht der Client zu verlängern.',
   ),
   karte(
     'k-nd-26',
@@ -3149,13 +3149,13 @@ final List<Flashcard> cardsA03 = [
     'k-nd-27',
     'nw-dienste',
     'Warum bekommen Clients in einem anderen VLAN als der DHCP-Server keine Adresse?',
-    'DHCP-Broadcasts enden am Router - dort fehlt ein DHCP-Relay.',
+    'DHCP-Broadcasts enden am Router. Dort fehlt ein DHCP-Relay.',
   ),
   karte(
     'k-nd-28',
     'nw-dienste',
     'Was macht DNS?',
-    'Es übersetzt Namen in IP-Adressen - ein weltweit verteiltes, hierarchisches Verzeichnis.',
+    'Es übersetzt Namen in IP-Adressen und ist ein weltweit verteiltes, hierarchisches Verzeichnis.',
   ),
   karte(
     'k-nd-29',
@@ -3185,7 +3185,7 @@ final List<Flashcard> cardsA03 = [
     'k-nd-2',
     'nw-dienste',
     'Was nennt der DNS-Eintrag MX?',
-    'Den zuständigen Mailserver einer Domain - darüber findet der Absender-Server den Server des Empfängers.',
+    'Den zuständigen Mailserver einer Domain. Darüber findet der Absender-Server den Server des Empfängers.',
   ),
   karte(
     'k-nd-32',
@@ -3215,7 +3215,7 @@ final List<Flashcard> cardsA03 = [
     'k-nd-7',
     'nw-dienste',
     'Was ist PAT (NAT-Overload)?',
-    'Viele private Adressen teilen sich eine öffentliche - unterschieden werden sie über die Ports.',
+    'Viele private Adressen teilen sich eine öffentliche; unterschieden werden sie über die Ports.',
   ),
   karte(
     'k-nd-36',
@@ -3289,19 +3289,19 @@ final List<Flashcard> cardsA03 = [
     'k-nc-12',
     'nw-cloud',
     'Ein Kunde will eine eigene Web-App betreiben, ohne Server zu verwalten. Welches Modell passt?',
-    'PaaS - der Anbieter stellt Laufzeitumgebung und Datenbank.',
+    'PaaS, denn der Anbieter stellt Laufzeitumgebung und Datenbank.',
   ),
   karte(
     'k-nc-9',
     'nw-cloud',
     'Wofür ist der Kunde in der Cloud immer verantwortlich?',
-    'Für seine Daten und Zugänge - bei IaaS zusätzlich für Betriebssystem und Anwendungen.',
+    'Für seine Daten und Zugänge, bei IaaS zusätzlich für Betriebssystem und Anwendungen.',
   ),
   karte(
     'k-nc-13',
     'nw-cloud',
     'Wer spielt bei IaaS die Updates des Betriebssystems ein?',
-    'Der Kunde - der Anbieter verantwortet nur Hardware, Netz und Virtualisierung.',
+    'Der Kunde. Der Anbieter verantwortet nur Hardware, Netz und Virtualisierung.',
   ),
   karte(
     'k-nc-14',
@@ -3367,7 +3367,7 @@ final List<Flashcard> cardsA03 = [
     'k-nc-28',
     'nw-cloud',
     'Welche Rolle hat ein Cloud-Anbieter, der personenbezogene Daten verarbeitet?',
-    'Er ist Auftragsverarbeiter - nötig ist ein Vertrag nach Art. 28 DSGVO; verantwortlich bleibt das Unternehmen.',
+    'Er ist Auftragsverarbeiter: nötig ist ein Vertrag nach Art. 28 DSGVO; verantwortlich bleibt das Unternehmen.',
   ),
   karte(
     'k-nc-30',
@@ -3379,13 +3379,13 @@ final List<Flashcard> cardsA03 = [
     'k-nc-29',
     'nw-cloud',
     'Was ist Vendor Lock-in, und wie beugst du vor?',
-    'Abhängigkeit von einem Anbieter - vorbeugen mit Ausstiegsstrategie und exportierbaren Daten.',
+    'Abhängigkeit von einem Anbieter: vorbeugen mit Ausstiegsstrategie und exportierbaren Daten.',
   ),
   karte(
     'k-nc-19',
     'nw-cloud',
     'Was ist Virtualisierung?',
-    'Mehrere virtuelle Maschinen laufen auf einem physischen Server, jede wie ein eigener Rechner - Grundlage jeder Cloud.',
+    'Mehrere virtuelle Maschinen laufen auf einem physischen Server, jede wie ein eigener Rechner. Das ist die Grundlage jeder Cloud.',
   ),
   karte(
     'k-nc-20',
@@ -3397,7 +3397,7 @@ final List<Flashcard> cardsA03 = [
     'k-nc-21',
     'nw-cloud',
     'Was ist ein Snapshot einer VM?',
-    'Der gesicherte Zustand einer VM, z. B. vor einem Update - man kann dorthin zurückspringen.',
+    'Der gesicherte Zustand einer VM, z. B. vor einem Update. Man kann dorthin zurückspringen.',
   ),
   karte(
     'k-nc-22',
@@ -3427,13 +3427,13 @@ final List<Flashcard> cardsA03 = [
     'k-nc-25',
     'nw-cloud',
     'Warum ist die Isolation bei Containern schwächer als bei VMs?',
-    'Container teilen sich den Kernel des Hosts - eine Lücke im Kernel betrifft alle Container.',
+    'Container teilen sich den Kernel des Hosts. Eine Lücke im Kernel betrifft alle Container.',
   ),
   karte(
     'k-nc-24',
     'nw-cloud',
     'Was ist Docker?',
-    'Eine Container-Engine - kein Hypervisor. Container teilen sich den Kernel des Hosts.',
+    'Eine Container-Engine, kein Hypervisor. Container teilen sich den Kernel des Hosts.',
   ),
   karte(
     'k-nc-26',

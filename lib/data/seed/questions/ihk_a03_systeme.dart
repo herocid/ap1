@@ -78,9 +78,9 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     loesung:
-        'Der Arbeitsspeicher ist nahezu voll. Das Betriebssystem lagert deshalb Speicherseiten auf die Festplatte aus - daher die dauerhafte Datenträgerlast, während der Prozessor kaum arbeitet. Abhilfe: den Arbeitsspeicher erweitern, z. B. auf 16 GB. Zusätzlich hilft eine SSD statt der HDD.',
+        'Der Arbeitsspeicher ist nahezu voll. Das Betriebssystem lagert deshalb Speicherseiten auf die Festplatte aus. Daher die dauerhafte Datenträgerlast, während der Prozessor kaum arbeitet. Abhilfe: den Arbeitsspeicher erweitern, z. B. auf 16 GB. Zusätzlich hilft eine SSD statt der HDD.',
     explanation:
-        'Bewertung: 2 Punkte für die Ursache (voller RAM, Auslagerung), 2 Punkte für eine passende Aufrüstung - höchstens 4 Punkte. Eine schnellere CPU hilft nicht, sie ist nur zu 20 % ausgelastet.',
+        'Bewertung: 2 Punkte für die Ursache (voller RAM, Auslagerung), 2 Punkte für eine passende Aufrüstung, höchstens 4 Punkte. Eine schnellere CPU hilft nicht, denn sie ist nur zu 20 % ausgelastet.',
   ),
   markieren(
     'i3-hk-3',
@@ -104,7 +104,7 @@ final List<Question> ihkA03 = [
       ),
       ja(
         'Gaming-Grafikkarte mit 300 W Leistungsaufnahme',
-        'Für Buchhaltung überdimensioniert: teuer, laut und stromhungrig - die integrierte Grafik reicht.',
+        'Für Buchhaltung überdimensioniert: teuer, laut und stromhungrig. Die integrierte Grafik reicht.',
       ),
       nein(
         'NVMe-SSD mit 500 GB',
@@ -116,7 +116,7 @@ final List<Question> ihkA03 = [
       ),
     ],
     explanation:
-        'Zwei Positionen fallen heraus: DDR4-RAM passt nicht auf ein DDR5-Mainboard, und die Gaming-Grafikkarte widerspricht den Zielen leise und sparsam - außerdem würde sie das 300-W-Netzteil überfordern.',
+        'Zwei Positionen fallen heraus: DDR4-RAM passt nicht auf ein DDR5-Mainboard, und die Gaming-Grafikkarte widerspricht den Zielen leise und sparsam; außerdem würde sie das 300-W-Netzteil überfordern.',
   ),
   paare(
     'i3-hk-4',
@@ -221,7 +221,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     explanation:
-        'Die HDD speichert magnetisch auf rotierenden Scheiben, hängt an SATA und ist pro GB günstig - gut für Archive. Die NVMe-SSD speichert in Flash-Zellen, hängt an PCIe und liest mehrere GB pro Sekunde - ideal als Systemlaufwerk.',
+        'Die HDD speichert magnetisch auf rotierenden Scheiben, hängt an SATA und ist pro GB günstig: gut für Archive. Die NVMe-SSD speichert in Flash-Zellen, hängt an PCIe und liest mehrere GB pro Sekunde: ideal als Systemlaufwerk.',
   ),
   freitext(
     'i3-hs-5',
@@ -264,7 +264,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 3,
     loesung:
-        'Eine SSD ist deutlich schneller (kurze Zugriffszeiten), unempfindlich gegen Stöße, weil sie keine beweglichen Teile hat, und braucht weniger Strom - der Akku hält länger. Außerdem arbeitet sie lautlos und ist kleiner und leichter.',
+        'Eine SSD ist deutlich schneller (kurze Zugriffszeiten), unempfindlich gegen Stöße, weil sie keine beweglichen Teile hat, und braucht weniger Strom, sodass der Akku länger hält. Außerdem arbeitet sie lautlos und ist kleiner und leichter.',
     explanation:
         'Bewertung: je Nennung 1 Punkt, höchstens 3 Punkte. Andere fachlich richtige Vorteile zählen ebenfalls. Der Preis pro GB ist dagegen ein Vorteil der HDD.',
     difficulty: 1,
@@ -298,7 +298,7 @@ final List<Question> ihkA03 = [
         'Beschreibe das Daisy Chaining von Monitoren und nenne zwei technische Voraussetzungen.',
     kriterien: [
       krit(
-        'Die Monitore werden hintereinander verbunden: vom PC zum ersten Monitor, von dort zum nächsten - nur ein Kabel führt zum PC',
+        'Die Monitore werden hintereinander verbunden: vom PC zum ersten Monitor, von dort zum nächsten; nur ein Kabel führt zum PC',
         punkte: 2,
         stichwoerter: [
           'hintereinander',
@@ -331,7 +331,7 @@ final List<Question> ihkA03 = [
     loesung:
         'Beim Daisy Chaining werden die Monitore in Reihe geschaltet: Ein Kabel führt vom PC zum ersten Monitor, von dessen Ausgang geht es zum zweiten und von dort zum dritten. Voraussetzungen: Der Ausgang des PCs (DisplayPort ab 1.2 oder Thunderbolt) und die Monitore müssen Multi-Stream Transport unterstützen, und die Monitore in der Kette brauchen einen DisplayPort-Ausgang. Die Datenrate des einen Ausgangs muss für alle Bilder genügen.',
     explanation:
-        'Bewertung: 2 Punkte für die Beschreibung, je 1 Punkt für eine Voraussetzung - höchstens 4 Punkte. HDMI eignet sich nicht für eine Monitorkette.',
+        'Bewertung: 2 Punkte für die Beschreibung, je 1 Punkt für eine Voraussetzung, höchstens 4 Punkte. HDMI eignet sich nicht für eine Monitorkette.',
   ),
   tabelle(
     'i3-hi-3',
@@ -377,7 +377,7 @@ final List<Question> ihkA03 = [
     unit: 'A',
     punkte: 2,
     explanation:
-        'Leistung des Druckers: P = 24 V × 0,75 A = 18 W. Strom bei 5 V: I = P / U = 18 W / 5 V = 3,6 A. Ein USB-A-Port liefert nur 0,5 bis 0,9 A, USB-C ohne Power Delivery bis 3 A - das Netzteil bleibt die richtige Wahl.',
+        'Leistung des Druckers: P = 24 V × 0,75 A = 18 W. Strom bei 5 V: I = P / U = 18 W / 5 V = 3,6 A. Ein USB-A-Port liefert nur 0,5 bis 0,9 A, USB-C ohne Power Delivery bis 3 A. Das Netzteil bleibt die richtige Wahl.',
   ),
   markieren(
     'i3-hi-5',
@@ -394,7 +394,7 @@ final List<Question> ihkA03 = [
         'Über USB-C kann im DisplayPort-Modus auch das Bild laufen.',
       ),
       nein('RJ45', 'Das ist die Netzwerkbuchse.'),
-      nein('USB-A 2.0', 'Für Maus, Tastatur und Speicher - kein Bildausgang.'),
+      nein('USB-A 2.0', 'Für Maus, Tastatur und Speicher, kein Bildausgang.'),
       nein('Klinke 3,5 mm', 'Überträgt nur Ton.'),
       nein('Kaltgerätebuchse', 'Hier steckt das Stromkabel.'),
     ],
@@ -421,7 +421,7 @@ final List<Question> ihkA03 = [
     wortbank: ['HDMI', 'RJ45-Buchse', 'Power over Ethernet', 'Datenrate'],
     punkte: 4,
     explanation:
-        'Monitorketten (Daisy Chaining) laufen über DisplayPort mit Multi-Stream Transport. Das Stromkabel steckt in der Kaltgerätebuchse. USB-C ist eine Steckerform - die Datenrate hängt vom Standard dahinter ab.',
+        'Monitorketten (Daisy Chaining) laufen über DisplayPort mit Multi-Stream Transport. Das Stromkabel steckt in der Kaltgerätebuchse. USB-C ist eine Steckerform. Die Datenrate hängt vom Standard dahinter ab.',
   ),
   freitext(
     'i3-hi-7',
@@ -536,7 +536,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     explanation:
-        'Offline- und Line-Interactive-USV schalten bei Ausfall in wenigen Millisekunden um; die Line-Interactive regelt zusätzlich die Spannung. Die Online-USV versorgt die Last dauerhaft über den Wechselrichter (Doppelwandlung) - ohne Umschaltzeit, aber teurer.',
+        'Offline- und Line-Interactive-USV schalten bei Ausfall in wenigen Millisekunden um; die Line-Interactive regelt zusätzlich die Spannung. Die Online-USV versorgt die Last dauerhaft über den Wechselrichter (Doppelwandlung), ohne Umschaltzeit, aber teurer.',
   ),
   freitext(
     'i3-hu-4',
@@ -551,7 +551,7 @@ final List<Question> ihkA03 = [
         stichwoerter: ['überbrücken', 'Akku', 'weiterlaufen', 'Stromausfall'],
       ),
       krit(
-        'Bei längerem Ausfall fährt der Server geordnet herunter - kein Datenverlust, kein beschädigtes Dateisystem',
+        'Bei längerem Ausfall fährt der Server geordnet herunter: kein Datenverlust, kein beschädigtes Dateisystem',
         punkte: 2,
         stichwoerter: [
           'herunterfahren',
@@ -573,7 +573,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     loesung:
-        'Die USV überbrückt kurze Ausfälle aus ihrem Akku, sodass der Server ohne Unterbrechung weiterläuft. Dauert der Ausfall länger, meldet sie das an den Server, der dann geordnet herunterfährt - offene Dateien und Datenbanken bleiben unbeschädigt. Zusätzlich glättet sie Spannungsschwankungen und Überspannungen.',
+        'Die USV überbrückt kurze Ausfälle aus ihrem Akku, sodass der Server ohne Unterbrechung weiterläuft. Dauert der Ausfall länger, meldet sie das an den Server, der dann geordnet herunterfährt. Offene Dateien und Datenbanken bleiben so unbeschädigt. Zusätzlich glättet sie Spannungsschwankungen und Überspannungen.',
     explanation:
         'Bewertung: 2 Punkte je erläuterter Aufgabe, höchstens 4 Punkte. Eine USV ersetzt keine Datensicherung und kein Notstromaggregat für lange Ausfälle.',
   ),
@@ -711,7 +711,7 @@ final List<Question> ihkA03 = [
     zeilen: [
       ja(
         'Der Monitor steht direkt vor dem Fenster.',
-        'Das Gegenlicht blendet - der Monitor gehört seitlich zum Fenster.',
+        'Das Gegenlicht blendet. Der Monitor gehört seitlich zum Fenster.',
       ),
       nein(
         'Die Oberkante des Monitors liegt leicht unter Augenhöhe.',
@@ -937,7 +937,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     explanation:
-        'FAT32: höchstens 4 GiB je Datei, keine Rechte, kein Journal - dafür überall lesbar. NTFS (Windows) und ext4 (Linux) kennen große Dateien, Zugriffsrechte und Journaling.',
+        'FAT32: höchstens 4 GiB je Datei, keine Rechte, kein Journal, dafür überall lesbar. NTFS (Windows) und ext4 (Linux) kennen große Dateien, Zugriffsrechte und Journaling.',
   ),
   freitext(
     'i3-bd-2',
@@ -948,7 +948,7 @@ final List<Question> ihkA03 = [
         'Erläutere, warum eine Schnellformatierung nicht genügt, und nenne zwei geeignete Verfahren.',
     kriterien: [
       krit(
-        'Die Schnellformatierung legt nur ein neues, leeres Inhaltsverzeichnis an - die Daten bleiben erhalten und lassen sich wiederherstellen',
+        'Die Schnellformatierung legt nur ein neues, leeres Inhaltsverzeichnis an. Die Daten bleiben erhalten und lassen sich wiederherstellen',
         punkte: 2,
         stichwoerter: [
           'wiederherstellen',
@@ -979,7 +979,7 @@ final List<Question> ihkA03 = [
     loesung:
         'Bei der Schnellformatierung wird nur ein neues, leeres Dateisystem angelegt; die eigentlichen Daten stehen weiter auf dem Datenträger und lassen sich mit Werkzeugen wiederherstellen. Geeignet sind: den Datenträger vollständig überschreiben, bei SSDs Secure Erase nutzen oder den Datenträger physisch vernichten.',
     explanation:
-        'Bewertung: 2 Punkte für die Erläuterung, je 1 Punkt für ein geeignetes Verfahren - höchstens 4 Punkte.',
+        'Bewertung: 2 Punkte für die Erläuterung, je 1 Punkt für ein geeignetes Verfahren, höchstens 4 Punkte.',
   ),
   lueckentext(
     'i3-bd-3',
@@ -1117,7 +1117,7 @@ final List<Question> ihkA03 = [
     loesung:
         'Nach dem Prinzip der minimalen Rechte erhält jeder nur die Rechte, die er für seine Arbeit braucht. Mit Administratorrechten könnte Schadsoftware, die ein Benutzer versehentlich startet, sich im ganzen System einnisten. Außerdem könnten Benutzer Schutzfunktionen abschalten oder Einstellungen verändern.',
     explanation:
-        'Bewertung: Grund plus Folge ergeben die volle Punktzahl - höchstens 3 Punkte. Administrative Arbeiten erledigt ein getrenntes Admin-Konto.',
+        'Bewertung: Grund plus Folge ergeben die volle Punktzahl, höchstens 3 Punkte. Administrative Arbeiten erledigt ein getrenntes Admin-Konto.',
   ),
   markieren(
     'i3-br-4',
@@ -1129,7 +1129,7 @@ final List<Question> ihkA03 = [
     zeilen: [
       nein(
         '-rw-r--r-- root root hosts',
-        'Nur root darf schreiben, alle dürfen lesen - üblich für diese Datei.',
+        'Nur root darf schreiben, alle dürfen lesen: üblich für diese Datei.',
       ),
       ja(
         '-rwxrwxrwx root root backup.sh',
@@ -1137,7 +1137,7 @@ final List<Question> ihkA03 = [
       ),
       nein(
         '-rw------- anna anna id_ed25519',
-        'Der private Schlüssel ist nur für die Besitzerin lesbar - richtig so.',
+        'Der private Schlüssel ist nur für die Besitzerin lesbar: richtig so.',
       ),
       ja(
         '-rw-rw-rw- root root kunden.csv',
@@ -1157,7 +1157,7 @@ final List<Question> ihkA03 = [
     'i3-bc-1',
     'b-cli',
     scenario:
-        'Das Bild der Kamera am Wareneingang ruckelt. Du pingst vom Arbeitsplatz erst das Gateway, dann die Kamera - beide im eigenen LAN.',
+        'Das Bild der Kamera am Wareneingang ruckelt. Du pingst vom Arbeitsplatz erst das Gateway, dann die Kamera; beide hängen im eigenen LAN.',
     prompt: 'Markiere alle auffälligen Zeilen der Ausgabe.',
     mono: true,
     zeilen: [
@@ -1176,7 +1176,7 @@ final List<Question> ihkA03 = [
       ),
     ],
     explanation:
-        'Das Gateway antwortet schnell und verlustfrei - das eigene Netz ist in Ordnung. Bei der Kamera fallen Zeitüberschreitung, 412 ms Antwortzeit und 50 % Paketverlust auf: Die Strecke zur Kamera ist gestört.',
+        'Das Gateway antwortet schnell und verlustfrei, das eigene Netz ist also in Ordnung. Bei der Kamera fallen Zeitüberschreitung, 412 ms Antwortzeit und 50 % Paketverlust auf: Die Strecke zur Kamera ist gestört.',
   ),
   freitext(
     'i3-bc-2',
@@ -1272,7 +1272,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 5,
     explanation:
-        'dir - ls, copy - cp, del - rm, tracert - traceroute, ipconfig - ip a. Je richtigem Befehl 1 Punkt.',
+        'dir → ls, copy → cp, del → rm, tracert → traceroute, ipconfig → ip a. Je richtigem Befehl 1 Punkt.',
   ),
   lueckentext(
     'i3-bc-5',
@@ -1313,7 +1313,7 @@ final List<Question> ihkA03 = [
         'Beschreibe drei Maßnahmen, mit denen du den Server vor der Inbetriebnahme härtest.',
     kriterien: [
       krit(
-        'Nicht benötigte Dienste und Programme abschalten oder deinstallieren - weniger Angriffsfläche',
+        'Nicht benötigte Dienste und Programme abschalten oder deinstallieren: weniger Angriffsfläche',
         punkte: 2,
         stichwoerter: [
           'Dienste',
@@ -1412,7 +1412,7 @@ final List<Question> ihkA03 = [
         'Erläutere das Risiko und beschreibe eine Maßnahme bei der Inbetriebnahme.',
     kriterien: [
       krit(
-        'Standardpasswörter sind öffentlich bekannt (Handbuch, Internet) - Angreifer können sich ohne Aufwand anmelden',
+        'Standardpasswörter sind öffentlich bekannt (Handbuch, Internet): Angreifer können sich ohne Aufwand anmelden',
         punkte: 2,
         stichwoerter: [
           'bekannt',
@@ -1442,7 +1442,7 @@ final List<Question> ihkA03 = [
     loesung:
         'Standardzugangsdaten stehen im Handbuch und sind im Internet zu finden. Bleiben sie unverändert, kann sich jeder im Netz an der Kamera anmelden, das Bild ansehen oder das Gerät für Angriffe missbrauchen. Deshalb wird vor der Inbetriebnahme ein eigenes, starkes Passwort vergeben; zusätzlich wird die Firmware aktualisiert.',
     explanation:
-        'Bewertung: 2 Punkte für das Risiko, 2 Punkte für eine Maßnahme - höchstens 4 Punkte.',
+        'Bewertung: 2 Punkte für das Risiko, 2 Punkte für eine Maßnahme, höchstens 4 Punkte.',
   ),
 
   // =============================================================== ERP, SCM, CRM
@@ -1726,7 +1726,7 @@ final List<Question> ihkA03 = [
     loesung:
         'Open Source: keine Lizenzkosten, der Quellcode ist einsehbar und anpassbar, man ist nicht an einen Hersteller gebunden. Proprietär: Support und Gewährleistung vom Hersteller, geregelte Updates und meist gute Integration in dessen übrige Produkte.',
     explanation:
-        'Bewertung: je Nennung 1 Punkt, höchstens 4 Punkte (je zwei pro Seite). Open Source heißt nicht „ohne Regeln“ - auch diese Lizenzen stellen Bedingungen.',
+        'Bewertung: je Nennung 1 Punkt, höchstens 4 Punkte (je zwei pro Seite). Open Source heißt nicht „ohne Regeln“; auch diese Lizenzen stellen Bedingungen.',
     difficulty: 1,
   ),
   markieren(
@@ -1747,27 +1747,27 @@ final List<Question> ihkA03 = [
     zeilen: [
       ja(
         'Lizenziert wird jede namentlich benannte Person.',
-        '„per named user“ - Punkt 1.',
+        '„per named user“: Punkt 1.',
       ),
       ja(
         'Eine Person darf die Software auf zwei Geräten installieren.',
-        '„on up to two devices“ - Punkt 2.',
+        '„on up to two devices“: Punkt 2.',
       ),
       nein(
         'Die Lizenz wird einmal gekauft und gilt unbefristet.',
-        'Es ist ein Abonnement über 12 Monate - Punkt 3.',
+        'Es ist ein Abonnement über 12 Monate: Punkt 3.',
       ),
       ja(
         'Ohne Kündigung verlängert sich die Lizenz von selbst.',
-        '„renews automatically“ - Punkt 3.',
+        '„renews automatically“: Punkt 3.',
       ),
       nein(
         'Nicht mehr benötigte Lizenzen dürfen weiterverkauft werden.',
-        'Die Weitergabe an Dritte ist ausgeschlossen - Punkt 4.',
+        'Die Weitergabe an Dritte ist ausgeschlossen: Punkt 4.',
       ),
       nein(
         'Gezählt werden die gleichzeitig angemeldeten Personen.',
-        'Das wäre Concurrent User - hier gilt Named User.',
+        'Das wäre Concurrent User; hier gilt Named User.',
       ),
     ],
     explanation:
@@ -1840,9 +1840,9 @@ final List<Question> ihkA03 = [
     ],
     punkte: 5,
     loesung:
-        'Die Daten liegen bei Anbietern, mit denen kein Vertrag zur Auftragsverarbeitung besteht - ein Datenschutzverstoß. Die IT hat keine Kontrolle über Zugriffsrechte, Sicherung und Löschung; verlässt jemand die Firma, bleiben die Daten in seinem privaten Konto. Gegenmaßnahme: ein geprüftes, komfortables Werkzeug offiziell bereitstellen und die Nutzung per Richtlinie und Schulung regeln.',
+        'Die Daten liegen bei Anbietern, mit denen kein Vertrag zur Auftragsverarbeitung besteht, ein Datenschutzverstoß. Die IT hat keine Kontrolle über Zugriffsrechte, Sicherung und Löschung; verlässt jemand die Firma, bleiben die Daten in seinem privaten Konto. Gegenmaßnahme: ein geprüftes, komfortables Werkzeug offiziell bereitstellen und die Nutzung per Richtlinie und Schulung regeln.',
     explanation:
-        'Bewertung: 2 Punkte je erläutertem Risiko, 1 Punkt für die Gegenmaßnahme - höchstens 5 Punkte.',
+        'Bewertung: 2 Punkte je erläutertem Risiko, 1 Punkt für die Gegenmaßnahme, höchstens 5 Punkte.',
   ),
   tabelle(
     'i3-ak-2',
@@ -1971,7 +1971,7 @@ final List<Question> ihkA03 = [
         ],
       ),
       krit(
-        'TCP sichert die Übertragung: Bestätigungen, erneutes Senden, richtige Reihenfolge - UDP nicht',
+        'TCP sichert die Übertragung: Bestätigungen, erneutes Senden, richtige Reihenfolge. UDP nicht',
         punkte: 2,
         stichwoerter: [
           'Bestätigung',
@@ -1982,7 +1982,7 @@ final List<Question> ihkA03 = [
         ],
       ),
       krit(
-        'UDP hat weniger Overhead und Verzögerung - geeignet für Echtzeit wie Sprache und Video',
+        'UDP hat weniger Overhead und Verzögerung: geeignet für Echtzeit wie Sprache und Video',
         punkte: 2,
         stichwoerter: [
           'Overhead',
@@ -2114,9 +2114,9 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     loesung:
-        'Die Netzwerkdose ist über das fest verlegte Kabel nur mit dem Port 3.07 des Patchfelds verbunden. Weil dort kein Patchkabel zum Switch steckt, hat die Dose keine Verbindung ins Netz - sie ist nicht gepatcht. Behebung: Port 3.07 mit einem Patchkabel an einen freien Switch-Port anschließen (lassen) oder den PC an eine gepatchte Dose hängen.',
+        'Die Netzwerkdose ist über das fest verlegte Kabel nur mit dem Port 3.07 des Patchfelds verbunden. Weil dort kein Patchkabel zum Switch steckt, hat die Dose keine Verbindung ins Netz. Sie ist nicht gepatcht. Behebung: Port 3.07 mit einem Patchkabel an einen freien Switch-Port anschließen (lassen) oder den PC an eine gepatchte Dose hängen.',
     explanation:
-        'Bewertung: 2 Punkte für die Ursache, 2 Punkte für die Behebung - höchstens 4 Punkte.',
+        'Bewertung: 2 Punkte für die Ursache, 2 Punkte für die Behebung, höchstens 4 Punkte.',
   ),
   markieren(
     'i3-ng-4',
@@ -2128,7 +2128,7 @@ final List<Question> ihkA03 = [
     zeilen: [
       nein(
         'Verlegekabel Cat 6A, geschirmt',
-        '10 Gbit/s auf bis zu 100 m - passt.',
+        '10 Gbit/s auf bis zu 100 m: passt.',
       ),
       ja(
         'Patchkabel Cat 5e',
@@ -2263,12 +2263,12 @@ final List<Question> ihkA03 = [
     zeilen: [
       ja(
         'IPv4-Adresse:    192.168.50.255',
-        'Das ist die Broadcastadresse des Netzes - sie darf keinem Gerät gehören.',
+        'Das ist die Broadcastadresse des Netzes. Sie darf keinem Gerät gehören.',
       ),
       nein('Subnetzmaske:    255.255.255.0', 'Passt zu /24.'),
       ja(
         'Standardgateway: 192.168.5.1',
-        'Liegt in einem anderen Netz - richtig wäre 192.168.50.1.',
+        'Liegt in einem anderen Netz: richtig wäre 192.168.50.1.',
       ),
       nein('DNS-Server:      192.168.50.10', 'Entspricht der Vorgabe.'),
       nein(
@@ -2342,9 +2342,9 @@ final List<Question> ihkA03 = [
     ],
     punkte: 5,
     loesung:
-        'Private Bereiche: 10.0.0.0/8, 172.16.0.0/12 und 192.168.0.0/16. Diese Adressen darf jeder intern verwenden; Router im Internet leiten sie nicht weiter. Ins Internet gelangen die Geräte nur über NAT am Router, der ihre Adresse durch seine öffentliche ersetzt - von außen sind sie deshalb nicht direkt adressierbar.',
+        'Private Bereiche: 10.0.0.0/8, 172.16.0.0/12 und 192.168.0.0/16. Diese Adressen darf jeder intern verwenden; Router im Internet leiten sie nicht weiter. Ins Internet gelangen die Geräte nur über NAT am Router, der ihre Adresse durch seine öffentliche ersetzt. Von außen sind sie deshalb nicht direkt adressierbar.',
     explanation:
-        'Bewertung: je Bereich 1 Punkt, 2 Punkte für die Beschreibung - höchstens 5 Punkte.',
+        'Bewertung: je Bereich 1 Punkt, 2 Punkte für die Beschreibung, höchstens 5 Punkte.',
   ),
   zuordnen(
     'i3-n4-7',
@@ -2356,10 +2356,10 @@ final List<Question> ihkA03 = [
     items: [
       zu('172.31.255.1', 0, 'Liegt in 172.16.0.0/12 (bis 172.31.255.255).'),
       zu('8.8.4.4', 1, 'Öffentliche Adresse.'),
-      zu('127.0.0.1', 2, 'Loopback - der eigene Rechner.'),
+      zu('127.0.0.1', 2, 'Loopback, der eigene Rechner.'),
       zu('10.4.4.4', 0, 'Liegt in 10.0.0.0/8.'),
       zu('172.32.0.1', 1, 'Knapp außerhalb von 172.16.0.0/12.'),
-      zu('169.254.10.10', 2, 'APIPA - selbst vergeben, wenn DHCP fehlt.'),
+      zu('169.254.10.10', 2, 'APIPA: selbst vergeben, wenn DHCP fehlt.'),
       zu('192.168.178.20', 0, 'Liegt in 192.168.0.0/16.'),
     ],
     explanation:
@@ -2539,7 +2539,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     loesung:
-        'IPv4-Adressen sind 32 Bit lang und werden dezimal mit Punkten geschrieben, IPv6-Adressen 128 Bit lang und hexadezimal mit Doppelpunkten - der Adressraum ist dadurch um ein Vielfaches größer. IPv6-Geräte können sich per SLAAC selbst konfigurieren; Broadcast und NAT entfallen.',
+        'IPv4-Adressen sind 32 Bit lang und werden dezimal mit Punkten geschrieben, IPv6-Adressen 128 Bit lang und hexadezimal mit Doppelpunkten. Der Adressraum ist dadurch um ein Vielfaches größer. IPv6-Geräte können sich per SLAAC selbst konfigurieren; Broadcast und NAT entfallen.',
     explanation:
         'Bewertung: 2 Punkte je beschriebenem Unterschied, höchstens 4 Punkte. Andere fachlich richtige Unterschiede zählen ebenfalls.',
   ),
@@ -2656,7 +2656,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 8,
     explanation:
-        'Kabel: Link-LED prüfen, Kabel tauschen. DHCP: ipconfig zeigt 169.254.x.x, dann Server prüfen und Adresse neu anfordern. Dose: mit einem funktionierenden Gerät oder Tester prüfen, patchen lassen. DNS: IP erreichbar, Name nicht - nslookup, dann DNS-Server prüfen. Je Zelle 1 Punkt.',
+        'Kabel: Link-LED prüfen, Kabel tauschen. DHCP: ipconfig zeigt 169.254.x.x, dann Server prüfen und Adresse neu anfordern. Dose: mit einem funktionierenden Gerät oder Tester prüfen, patchen lassen. DNS: IP erreichbar, Name nicht, nslookup, dann DNS-Server prüfen. Je Zelle 1 Punkt.',
     tags: ['fehlersuche'],
   ),
   freitext(
@@ -2724,7 +2724,7 @@ final List<Question> ihkA03 = [
     loesung:
         'Geeignet ist SSH auf Port 22: Die gesamte Sitzung samt Anmeldung ist verschlüsselt. Telnet überträgt alles im Klartext, Passwörter könnten mitgelesen werden. Eine serielle Verbindung setzt ein direkt am Gerät angeschlossenes Kabel voraus und ist über das Internet nicht möglich.',
     explanation:
-        'Bewertung: je 1 Punkt für SSH, Port 22 und die beiden Begründungen - zusammen 4 Punkte.',
+        'Bewertung: je 1 Punkt für SSH, Port 22 und die beiden Begründungen, zusammen 4 Punkte.',
   ),
   paare(
     'i3-nd-5',
@@ -2784,7 +2784,7 @@ final List<Question> ihkA03 = [
       nein('allow tcp any -> web:443', 'HTTPS aus dem Internet ist gewollt.'),
       nein(
         'allow tcp 10.0.9.0/24 -> web:22',
-        'SSH nur aus dem Admin-Netz - wie verlangt.',
+        'SSH nur aus dem Admin-Netz, wie verlangt.',
       ),
       ja(
         'allow tcp any -> web:22',
@@ -2798,7 +2798,7 @@ final List<Question> ihkA03 = [
         'allow tcp any -> web:3389',
         'Ein Remotedesktop aus dem Internet ist nicht vorgesehen.',
       ),
-      nein('deny  ip  any -> any', 'Alles Übrige wird verworfen - richtig.'),
+      nein('deny  ip  any -> any', 'Alles Übrige wird verworfen: richtig.'),
     ],
     explanation:
         'Erlaubt sein sollen nur TCP 443 von überall und TCP 22 aus 10.0.9.0/24. Die Regeln für 22 von überall, 23 und 3389 öffnen unnötige Zugänge und werden entfernt.',
@@ -2896,7 +2896,7 @@ final List<Question> ihkA03 = [
         stichwoerter: ['Abhängigkeit', 'Lock-in', 'Anbieterwechsel'],
       ),
       krit(
-        'Nachteil: Datenschutz - Daten liegen außer Haus, Standort und Vertrag müssen geprüft werden',
+        'Nachteil: Datenschutz, denn Daten liegen außer Haus, Standort und Vertrag müssen geprüft werden',
         stichwoerter: ['Datenschutz', 'DSGVO', 'außer Haus', 'Standort'],
       ),
       krit(
@@ -2910,7 +2910,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     loesung:
-        'Vorteile: keine eigene Hardware und keine hohe Anfangsinvestition; der Speicher wächst nach Bedarf mit, und der Anbieter übernimmt Wartung und Ausfallsicherheit. Nachteile: Ohne Internetverbindung kein Zugriff, Abhängigkeit vom Anbieter, und die Daten liegen außer Haus - Datenschutz und Standort müssen geklärt sein.',
+        'Vorteile: keine eigene Hardware und keine hohe Anfangsinvestition; der Speicher wächst nach Bedarf mit, und der Anbieter übernimmt Wartung und Ausfallsicherheit. Nachteile: Ohne Internetverbindung kein Zugriff, Abhängigkeit vom Anbieter, und die Daten liegen außer Haus. Datenschutz und Standort müssen geklärt sein.',
     explanation:
         'Bewertung: je Nennung 1 Punkt, höchstens 4 Punkte (je zwei Vorteile und Nachteile).',
     difficulty: 1,

@@ -339,7 +339,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 4,
         loesung:
-            'IPv4-Adressen haben 32 Bit und werden dezimal mit Punkten geschrieben; IPv6-Adressen haben 128 Bit und werden hexadezimal mit Doppelpunkten geschrieben - der Adressraum ist um ein Vielfaches größer. IPv6-Geräte können sich außerdem per SLAAC selbst konfigurieren.',
+            'IPv4-Adressen haben 32 Bit und werden dezimal mit Punkten geschrieben; IPv6-Adressen haben 128 Bit und werden hexadezimal mit Doppelpunkten geschrieben. Der Adressraum ist um ein Vielfaches größer. IPv6-Geräte können sich außerdem per SLAAC selbst konfigurieren.',
         explanation:
             'Bewertung: 2 Punkte je beschriebenem Unterschied, höchstens 4 Punkte.',
       ),
@@ -378,7 +378,7 @@ final List<ExamCase> casesA03 = [
         loesung:
             'Dual Stack: Arbeitsplätze, Router und - soweit möglich - Server erhalten sowohl eine IPv4- als auch eine IPv6-Adresse. Die Kanzleisoftware wird weiter über IPv4 angesprochen, Ziele mit IPv6 über IPv6. Alternativ Tunneling: IPv6-Pakete werden in IPv4-Pakete verpackt und am Tunnelende wieder ausgepackt.',
         explanation:
-            'Bewertung: Eine erläuterte Möglichkeit ergibt 3 Punkte - Dual Stack oder Tunneling.',
+            'Bewertung: Eine erläuterte Möglichkeit ergibt 3 Punkte (Dual Stack oder Tunneling).',
       ),
       freitext(
         'f-a03n-systemhaus-e',
@@ -403,7 +403,7 @@ final List<ExamCase> casesA03 = [
           ),
         ],
         loesung:
-            'Die PCs haben private IPv4-Adressen. Solche Adressen werden im Internet nicht geroutet. Ins Internet gelangen die PCs über den Router, der ihre Adresse per NAT durch seine öffentliche ersetzt - von außen sind sie deshalb nicht direkt erreichbar.',
+            'Die PCs haben private IPv4-Adressen. Solche Adressen werden im Internet nicht geroutet. Ins Internet gelangen die PCs über den Router, der ihre Adresse per NAT durch seine öffentliche ersetzt. Von außen sind sie deshalb nicht direkt erreichbar.',
         punkte: 2,
         explanation:
             'Bewertung: 1 Punkt für „private Adressen“, 1 Punkt für „werden im Internet nicht geroutet“.',
@@ -430,7 +430,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 2,
         explanation:
-            'Gateway und Drucker antworten schnell und verlustfrei. Nur beim Server fallen die hohe Antwortzeit von 438 ms und 25 % Paketverlust auf - die Strecke zum Server ist gestört.',
+            'Gateway und Drucker antworten schnell und verlustfrei. Nur beim Server fallen die hohe Antwortzeit von 438 ms und 25 % Paketverlust auf. Die Strecke zum Server ist gestört.',
       ),
       freitext(
         'f-a03n-systemhaus-g',
@@ -546,7 +546,7 @@ final List<ExamCase> casesA03 = [
             ],
           ),
           krit(
-            'Folge: Unterversorgung - das Terminal startet neu oder fällt aus; weitere USB-Geräte verschärfen das',
+            'Folge: Unterversorgung. Das Terminal startet neu oder fällt aus; weitere USB-Geräte verschärfen das',
             stichwoerter: [
               'instabil',
               'Unterversorgung',
@@ -561,7 +561,7 @@ final List<ExamCase> casesA03 = [
           ),
         ],
         loesung:
-            'Das Terminal braucht bei 5 V rund 4,8 A. Ein USB-A-Port liefert nur 0,5 bis 0,9 A, selbst USB-C ohne Power Delivery höchstens 3 A - und am Kassen-PC hängen weitere USB-Geräte. Das Terminal ist unterversorgt, startet neu oder fällt aus. Empfehlung: das mitgelieferte Netzteil nutzen und dafür Steckdosen nachrüsten.',
+            'Das Terminal braucht bei 5 V rund 4,8 A. Ein USB-A-Port liefert nur 0,5 bis 0,9 A, selbst USB-C ohne Power Delivery höchstens 3 A, und am Kassen-PC hängen weitere USB-Geräte. Das Terminal ist unterversorgt, startet neu oder fällt aus. Empfehlung: das mitgelieferte Netzteil nutzen und dafür Steckdosen nachrüsten.',
         punkte: 3,
         explanation:
             'Bewertung: 2 Punkte für die Begründung (Port liefert zu wenig, Versorgung instabil), 1 Punkt für die Empfehlung.',
@@ -672,7 +672,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 3,
         loesung:
-            'Das Terminal funktioniert nur an Dose 1 oder 2. Die Dosen 3 und 4 enden zwar am Patchfeld, ihre Ports sind dort aber nicht per Patchkabel mit dem Switch verbunden - sie sind nicht gepatcht. Alternativ kann Port 3 nachträglich gepatcht werden.',
+            'Das Terminal funktioniert nur an Dose 1 oder 2. Die Dosen 3 und 4 enden zwar am Patchfeld, ihre Ports sind dort aber nicht per Patchkabel mit dem Switch verbunden. Sie sind nicht gepatcht. Alternativ kann Port 3 nachträglich gepatcht werden.',
         explanation:
             'Bewertung: 1 Punkt für die richtige Dose, 2 Punkte für die Begründung. Auch die Lösung „Port 3 patchen“ ist richtig.',
       ),
@@ -778,7 +778,7 @@ final List<ExamCase> casesA03 = [
             'Begründe, warum die Verbindungstypen Telnet und Serial hier nicht in Frage kommen.',
         kriterien: [
           krit(
-            'Telnet überträgt unverschlüsselt - auch Benutzername und Passwort können mitgelesen werden',
+            'Telnet überträgt unverschlüsselt; auch Benutzername und Passwort können mitgelesen werden',
             stichwoerter: [
               'unverschlüsselt',
               'Klartext',
@@ -850,7 +850,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 4,
         explanation:
-            'Abgerufen wird verschlüsselt per IMAPS auf Port 993, versendet per SMTP - Mailprogramme liefern über Port 587 mit STARTTLS ein. Je Zelle 1 Punkt.',
+            'Abgerufen wird verschlüsselt per IMAPS auf Port 993, versendet per SMTP (Mailprogramme liefern über Port 587 mit STARTTLS ein). Je Zelle 1 Punkt.',
       ),
       lueckentext(
         'f-a03n-handel-e',
@@ -919,7 +919,7 @@ final List<ExamCase> casesA03 = [
           ),
           ja(
             'Konferenzserver: Maximum 863ms',
-            'Starker Ausreißer - die Laufzeit schwankt erheblich.',
+            'Starker Ausreißer. Die Laufzeit schwankt erheblich.',
           ),
           ja(
             'Konferenzserver: 10% Verlust',
@@ -1043,7 +1043,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 4,
         explanation:
-            'Summe: 125 + 220 + 50 + 2 × 5 + 2 × 8 + 3 × 4 = 433 W. Mit Puffer: 433 W × 1,1 = 476,3 W - das nächstgrößere Netzteil hat 500 W. Aus der Steckdose: 433 W / 0,9 ≈ 481,1 W, denn die Nutzleistung wird durch den Wirkungsgrad geteilt.',
+            'Summe: 125 + 220 + 50 + 2 × 5 + 2 × 8 + 3 × 4 = 433 W. Mit Puffer: 433 W × 1,1 = 476,3 W. Das nächstgrößere Netzteil hat 500 W. Aus der Steckdose: 433 W / 0,9 ≈ 481,1 W, denn die Nutzleistung wird durch den Wirkungsgrad geteilt.',
       ),
       freitext(
         'f-a03h-agentur-c',
@@ -1107,7 +1107,7 @@ final List<ExamCase> casesA03 = [
             'Der Bildausgang des PCs - DisplayPort oder Thunderbolt - und alle Monitore der Kette bis auf den letzten müssen Multi-Stream Transport (MST) unterstützen. Nur dann lassen sich mehrere Bildsignale über ein Kabel übertragen und von Monitor zu Monitor weiterreichen.',
         punkte: 3,
         explanation:
-            'Bewertung: je 1 Punkt für MST, den Ausgang des PCs und die Monitore - zusammen 3 Punkte.',
+            'Bewertung: je 1 Punkt für MST, den Ausgang des PCs und die Monitore, zusammen 3 Punkte.',
         tags: ['englisch'],
       ),
       reihenfolge(
@@ -1141,7 +1141,7 @@ final List<ExamCase> casesA03 = [
         unit: 'A',
         punkte: 3,
         explanation:
-            'Gesamtleistung: 480 W + 3 × 40 W + 900 W + 2.000 W = 3.500 W. Strom: I = P / U = 3.500 W / 230 V ≈ 15,22 A. Das liegt knapp unter 16 A - zulässig, aber ohne Reserve; der Wasserkocher gehört an eine andere Steckdose.',
+            'Gesamtleistung: 480 W + 3 × 40 W + 900 W + 2.000 W = 3.500 W. Strom: I = P / U = 3.500 W / 230 V ≈ 15,22 A. Das liegt knapp unter 16 A und ist damit zulässig, aber ohne Reserve; der Wasserkocher gehört an eine andere Steckdose.',
       ),
       freitext(
         'f-a03h-agentur-g',
@@ -1246,7 +1246,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 4,
         loesung:
-            'Dauerlicht: Die Netzwerkkarte hat eine physische Verbindung (Link) zum Gegenüber, etwa dem Switch - Kabel und Patchung sind in Ordnung. Blinken: Über die Verbindung werden gerade Daten gesendet oder empfangen.',
+            'Dauerlicht: Die Netzwerkkarte hat eine physische Verbindung (Link) zum Gegenüber, etwa dem Switch. Kabel und Patchung sind in Ordnung. Blinken: Über die Verbindung werden gerade Daten gesendet oder empfangen.',
         explanation:
             'Bewertung: je 2 Punkte für Dauerlicht (Link) und Blinken (Datenverkehr). Bleibt die LED dunkel, liegt der Fehler auf Schicht 1: Kabel, Dose, Patchung oder Switch-Port.',
       ),
@@ -1498,7 +1498,7 @@ final List<ExamCase> casesA03 = [
             ],
           ),
           krit(
-            'Die Geräte des Herstellers teilen sich kein bekanntes Passwort - Angreifer können sich nicht mit Standarddaten anmelden',
+            'Die Geräte des Herstellers teilen sich kein bekanntes Passwort. Angreifer können sich nicht mit Standarddaten anmelden',
             punkte: 2,
             stichwoerter: [
               'kein bekanntes Passwort',
@@ -1519,7 +1519,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 4,
         loesung:
-            'Die Kamera wird ohne voreingestelltes Passwort geliefert. Bei der ersten Anmeldung muss deshalb ein eigenes, sicheres Passwort vergeben und dokumentiert werden - vorher ist kein Zugriff möglich. Vorteil: Es gibt kein Passwort, das alle Geräte des Herstellers teilen und das Angreifer aus dem Handbuch kennen.',
+            'Die Kamera wird ohne voreingestelltes Passwort geliefert. Bei der ersten Anmeldung muss deshalb ein eigenes, sicheres Passwort vergeben und dokumentiert werden; vorher ist kein Zugriff möglich. Vorteil: Es gibt kein Passwort, das alle Geräte des Herstellers teilen und das Angreifer aus dem Handbuch kennen.',
         explanation:
             'Bewertung: 2 Punkte je beschriebener Konsequenz, höchstens 4 Punkte.',
         tags: ['englisch', 'datenblatt'],
@@ -1544,7 +1544,7 @@ final List<ExamCase> casesA03 = [
             'Die Infrarot-LEDs beleuchten die Szene unsichtbar und ermöglichen Aufnahmen bei Dunkelheit. Die Heizung verhindert, dass die Kamera an den offenen Verladetoren bei Kälte vereist oder beschlägt.',
         punkte: 2,
         explanation:
-            'Bewertung: je Nennung 1 Punkt. Infrarot dient der Nachtsicht, die Heizung schützt vor Vereisung und Beschlag - beides erhöht die Leistungsaufnahme.',
+            'Bewertung: je Nennung 1 Punkt. Infrarot dient der Nachtsicht, die Heizung schützt vor Vereisung und Beschlag; beides erhöht die Leistungsaufnahme.',
       ),
       lueckentext(
         'f-a03h-logistik-c',
@@ -1569,7 +1569,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 4,
         explanation:
-            '21 W liegen über 15,4 W, aber unter 30 W - nur IEEE 802.3at reicht. I = P / U = 21 W / 48 V = 0,4375 A = 437,5 mA. 2 Punkte für den Standard, 2 Punkte für die Stromstärke.',
+            '21 W liegen über 15,4 W, aber unter 30 W, also reicht nur IEEE 802.3at. I = P / U = 21 W / 48 V = 0,4375 A = 437,5 mA. 2 Punkte für den Standard, 2 Punkte für die Stromstärke.',
       ),
       rechnen(
         'f-a03h-logistik-d',
@@ -1621,7 +1621,7 @@ final List<ExamCase> casesA03 = [
             'Erläutere einen Vorteil der Stromversorgung per PoE gegenüber einzelnen Netzteilen an den Verladetoren.',
         kriterien: [
           krit(
-            'Daten und Strom laufen über ein Kabel - am Montageort wird keine Steckdose gebraucht, die Installation ist einfacher',
+            'Daten und Strom laufen über ein Kabel. Am Montageort wird keine Steckdose gebraucht, und die Installation ist einfacher',
             punkte: 3,
             stichwoerter: [
               'ein Kabel',
@@ -1743,7 +1743,7 @@ final List<ExamCase> casesA03 = [
           ),
         ],
         loesung:
-            'PC und Kabel sind in Ordnung, denn an Dose 6 funktioniert alles. Dose 5 endet im Verteilerschrank am Patchfeld-Port 5, der nicht per Patchkabel mit dem Switch verbunden ist - die Dose ist nicht gepatcht. Lösung: Port 5 an einen freien Switch-Port patchen oder den PC an Dose 6 betreiben.',
+            'PC und Kabel sind in Ordnung, denn an Dose 6 funktioniert alles. Dose 5 endet im Verteilerschrank am Patchfeld-Port 5, der nicht per Patchkabel mit dem Switch verbunden ist. Die Dose ist nicht gepatcht. Lösung: Port 5 an einen freien Switch-Port patchen oder den PC an Dose 6 betreiben.',
         punkte: 3,
         explanation:
             'Bewertung: 2 Punkte für die Ursache, 1 Punkt für die Lösung.',
@@ -1825,7 +1825,7 @@ final List<ExamCase> casesA03 = [
           ),
           ja(
             'Scanner hinten: Maximum 940ms',
-            'Fast eine Sekunde - die Verbindung ist zeitweise sehr schlecht.',
+            'Fast eine Sekunde. Die Verbindung ist zeitweise sehr schlecht.',
           ),
           ja(
             'Scanner hinten: Mittelwert 310ms',
@@ -1838,7 +1838,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 3,
         explanation:
-            'Der Scanner im vorderen Gang antwortet schnell und verlustfrei. Im hinteren Gang fallen Maximum, Mittelwert und Paketverlust auf - dort ist die Funkverbindung gestört.',
+            'Der Scanner im vorderen Gang antwortet schnell und verlustfrei. Im hinteren Gang fallen Maximum, Mittelwert und Paketverlust auf. Dort ist die Funkverbindung gestört.',
       ),
       freitext(
         'f-a03n-logistik-g',

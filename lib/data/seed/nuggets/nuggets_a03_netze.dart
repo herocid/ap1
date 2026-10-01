@@ -81,7 +81,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-au-5',
     'an-unternehmen',
     'SCM: die Lieferkette',
-    'SCM (Supply Chain Management) steuert den Waren- und Informationsfluss über Unternehmensgrenzen hinweg - vom Rohstoff bis zum Endkunden.',
+    'SCM (Supply Chain Management) steuert den Waren- und Informationsfluss über Unternehmensgrenzen hinweg, vom Rohstoff bis zum Endkunden.',
     const FlussDiagramm([
       FlussKnoten('Rohstofflieferant'),
       FlussKnoten('Zulieferer'),
@@ -182,7 +182,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-au-11',
     'an-unternehmen',
     'Dateninseln',
-    'Führt jede Abteilung ihre eigene Tabelle, entstehen doppelte und widersprüchliche Daten - die Adresse eines Kunden ist im Vertrieb neu, in der Buchhaltung alt. Solche Dateninseln sind genau das Problem, das integrierte Systeme lösen.',
+    'Führt jede Abteilung ihre eigene Tabelle, entstehen doppelte und widersprüchliche Daten. Die Adresse eines Kunden ist im Vertrieb neu, in der Buchhaltung alt. Solche Dateninseln sind genau das Problem, das integrierte Systeme lösen.',
   ),
   merke(
     'n-au-12',
@@ -192,7 +192,7 @@ final List<Nugget> nuggetsA03Netze = [
     points: [
       'ERP: ganzes Unternehmen, gemeinsame Datenbank',
       'SCM: Lieferkette mit Lieferanten',
-      'CRM: Kunden - operativ, analytisch, kommunikativ',
+      'CRM: Kunden, operativ, analytisch, kommunikativ',
       'DMS, BI, HRM, PPS und CMS zuordnen können',
     ],
     satz: 'ERP schaut nach innen, SCM zu den Lieferanten, CRM zu den Kunden.',
@@ -249,7 +249,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-as-3',
     'an-software',
     'Branchensoftware',
-    'Zwischen Standard und Individual liegt die Branchensoftware: für viele Kunden entwickelt, aber auf eine Branche zugeschnitten - etwa für Arztpraxen, Handwerksbetriebe oder Steuerkanzleien. Sie bildet branchentypische Abläufe und gesetzliche Vorgaben schon ab.',
+    'Zwischen Standard und Individual liegt die Branchensoftware: für viele Kunden entwickelt, aber auf eine Branche zugeschnitten, etwa für Arztpraxen, Handwerksbetriebe oder Steuerkanzleien. Sie bildet branchentypische Abläufe und gesetzliche Vorgaben schon ab.',
   ),
   vergleich(
     'n-as-4',
@@ -389,7 +389,7 @@ final List<Nugget> nuggetsA03Netze = [
       'Gesamtkosten (TCO) über die Nutzungsdauer vergleichen',
     ],
     satz:
-        'Erst prüfen, ob Standard reicht - individuell entwickeln nur, wo es einen echten Vorteil bringt.',
+        'Erst prüfen, ob Standard reicht: individuell entwickeln nur, wo es einen echten Vorteil bringt.',
   ),
 
   // ============================================================== Lizenzmodelle
@@ -400,7 +400,7 @@ final List<Nugget> nuggetsA03Netze = [
     'Software ist urheberrechtlich geschützt. Wer sie kauft, erwirbt nicht das Programm selbst, sondern ein Nutzungsrecht. Die Lizenz legt fest, wie, wie oft und von wem die Software genutzt werden darf.',
     points: [
       'EULA (Endbenutzer-Lizenzvertrag): die Nutzungsbedingungen des Herstellers',
-      'Lizenznachweise aufbewahren - bei einer Prüfung durch den Hersteller muss man sie vorlegen',
+      'Lizenznachweise aufbewahren; bei einer Prüfung durch den Hersteller muss man sie vorlegen',
     ],
   ),
   vergleich(
@@ -443,7 +443,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-al2-4',
     'an-lizenzen',
     'Copyleft oder freizügig?',
-    'Auch Open-Source-Lizenzen stellen Bedingungen - vor allem für die Weitergabe.',
+    'Auch Open-Source-Lizenzen stellen Bedingungen, vor allem für die Weitergabe.',
     [
       ['Typ', 'Beispiel', 'Bedingung'],
       [
@@ -459,7 +459,7 @@ final List<Nugget> nuggetsA03Netze = [
       [
         'freizügig (permissiv)',
         'MIT, Apache, BSD',
-        'auch in geschlossener Software - mit Lizenzhinweis',
+        'auch in geschlossener Software, mit Lizenzhinweis',
       ],
     ],
   ),
@@ -515,7 +515,7 @@ final List<Nugget> nuggetsA03Netze = [
       'gleichsetzen: 1.200 + 240n = 540n -> 1.200 = 300n',
       'n = 1.200 / 300 = 4 Jahre (beide kosten dann 2.160 €)',
     ],
-    ergebnis: 'nach 4 Jahren - bei längerer Nutzung ist der Kauf günstiger',
+    ergebnis: 'nach 4 Jahren; bei längerer Nutzung ist der Kauf günstiger',
     skizze: const GeradenDiagramm(
       xAchse: 'Jahre',
       yAchse: 'Kosten in €',
@@ -531,7 +531,7 @@ final List<Nugget> nuggetsA03Netze = [
     'Lizenzmanagement',
     'Unternehmen müssen jederzeit nachweisen können, dass jede installierte Software korrekt lizenziert ist. Das Lizenzmanagement (Software Asset Management) gleicht Installationen und gekaufte Lizenzen ab.',
     points: [
-      'Unterlizenzierung verletzt das Urheberrecht - Nachzahlungen und Schadenersatz drohen',
+      'Unterlizenzierung verletzt das Urheberrecht: Nachzahlungen und Schadenersatz drohen',
       'Überlizenzierung: bezahlte, aber ungenutzte Lizenzen kosten unnötig Geld',
       'Hersteller dürfen laut Vertrag oft Prüfungen (Audits) durchführen',
       'Lizenzen bei Austritt oder Gerätetausch zurückholen und neu zuweisen',
@@ -541,7 +541,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-al2-10',
     'an-lizenzen',
     'Gebrauchte Software',
-    'In der EU dürfen gekaufte Dauerlizenzen grundsätzlich weiterverkauft werden. Der Verkäufer muss seine eigene Kopie dabei unbrauchbar machen. Abonnements lassen sich dagegen nicht weiterverkaufen - man hat die Software nur gemietet.',
+    'In der EU dürfen gekaufte Dauerlizenzen grundsätzlich weiterverkauft werden. Der Verkäufer muss seine eigene Kopie dabei unbrauchbar machen. Abonnements lassen sich dagegen nicht weiterverkaufen, denn man hat die Software nur gemietet.',
   ),
   falle(
     'n-al2-11',
@@ -553,7 +553,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-al2-12',
     'an-lizenzen',
     'Die OEM-Lizenz zieht nicht um',
-    'Eine OEM-Lizenz ist an das Gerät gebunden, mit dem sie verkauft wurde. Wird der PC ersetzt, darf die Lizenz nicht einfach auf den neuen übertragen werden - dafür braucht es eine Voll- oder Volumenlizenz.',
+    'Eine OEM-Lizenz ist an das Gerät gebunden, mit dem sie verkauft wurde. Wird der PC ersetzt, darf die Lizenz nicht einfach auf den neuen übertragen werden. Dafür braucht es eine Voll- oder Volumenlizenz.',
   ),
   merke(
     'n-al2-13',
@@ -568,7 +568,7 @@ final List<Nugget> nuggetsA03Netze = [
       'Kauf oder Abo: den Zeitpunkt gleicher Kosten ausrechnen',
     ],
     satz:
-        'Erst klären, was gezählt wird und welche Bedingungen gelten - dann rechnen.',
+        'Erst klären, was gezählt wird und welche Bedingungen gelten. Dann rechnen.',
   ),
 
   // ====================================== Kollaboration und Social Media
@@ -677,7 +677,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-ak-8',
     'an-kollaboration',
     'Chancen und Risiken von Social Media',
-    'Soziale Netzwerke sind öffentlich und schnell - im Guten wie im Schlechten.',
+    'Soziale Netzwerke sind öffentlich und schnell, im Guten wie im Schlechten.',
     [
       ['Chancen', 'Risiken'],
       [
@@ -706,7 +706,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-ak-10',
     'an-kollaboration',
     'Ein Werkzeug auswählen',
-    'Für Kollaborationswerkzeuge gelten dieselben Auswahlkriterien wie für jede Software - der Datenschutz steht dabei weit oben.',
+    'Für Kollaborationswerkzeuge gelten dieselben Auswahlkriterien wie für jede Software. Der Datenschutz steht dabei weit oben.',
     points: [
       'Datenschutz: Serverstandort, Vertrag zur Auftragsverarbeitung',
       'Sicherheit: Verschlüsselung, Anmeldung mit mehreren Faktoren',
@@ -725,7 +725,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-ak-12',
     'an-kollaboration',
     'Schatten-IT',
-    'Nutzen Beschäftigte eigenmächtig Dienste, die die IT nicht kennt - etwa einen privaten Cloudspeicher für Firmendaten -, spricht man von Schatten-IT. Die Daten liegen dann unkontrolliert außerhalb des Unternehmens. Abhilfe schaffen gute offizielle Werkzeuge und klare Regeln.',
+    'Nutzen Beschäftigte eigenmächtig Dienste, die die IT nicht kennt, etwa einen privaten Cloudspeicher für Firmendaten, spricht man von Schatten-IT. Die Daten liegen dann unkontrolliert außerhalb des Unternehmens. Abhilfe schaffen gute offizielle Werkzeuge und klare Regeln.',
   ),
   merke(
     'n-ak-13',
@@ -740,7 +740,7 @@ final List<Nugget> nuggetsA03Netze = [
       'personenbezogene Daten in der Cloud: Vertrag zur Auftragsverarbeitung',
     ],
     satz:
-        'Das beste Werkzeug nützt nichts ohne Regeln - und darf den Datenschutz nicht aushebeln.',
+        'Das beste Werkzeug nützt nichts ohne Regeln und darf den Datenschutz nicht aushebeln.',
   ),
 
   // ============================================================ OSI und TCP/IP
@@ -784,7 +784,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-no-4',
     'nw-modelle',
     'Eselsbrücken',
-    'Die Anfangsbuchstaben der Schichten ergeben Merksätze - auf Deutsch von oben, auf Englisch von unten.',
+    'Die Anfangsbuchstaben der Schichten ergeben Merksätze: auf Deutsch von oben, auf Englisch von unten.',
     points: [
       'von 1 nach 7: Please Do Not Throw Sausage Pizza Away - Physical, Data Link, Network, Transport, Session, Presentation, Application',
     ],
@@ -861,7 +861,7 @@ final List<Nugget> nuggetsA03Netze = [
     points: [
       'SYN: Der Client wünscht eine Verbindung und sendet seine Startnummer',
       'SYN-ACK: Der Server bestätigt und sendet seine eigene Startnummer',
-      'ACK: Der Client bestätigt - die Verbindung steht',
+      'ACK: Der Client bestätigt, die Verbindung steht',
     ],
   ),
   konzept(
@@ -905,7 +905,7 @@ final List<Nugget> nuggetsA03Netze = [
       ['PC A', 'PC B (.20)'],
       [
         Nachricht(0, 1, 'Broadcast: Wer hat .20?'),
-        Nachricht(1, 0, 'Ich - meine MAC-Adresse', antwort: true),
+        Nachricht(1, 0, 'Ich: meine MAC-Adresse', antwort: true),
       ],
     ),
     points: [
@@ -930,7 +930,7 @@ final List<Nugget> nuggetsA03Netze = [
       'TCP/IP: Anwendung, Transport, Internet, Netzzugang',
       'Einheiten: Daten, Segment, Paket, Frame, Bit',
       'Switch: Schicht 2 (MAC), Router: Schicht 3 (IP)',
-      'TCP: Handshake SYN, SYN-ACK, ACK - UDP: ohne Verbindung',
+      'TCP: Handshake SYN, SYN-ACK, ACK. UDP: ohne Verbindung',
     ],
     satz:
         'Port für das Programm, IP für den Rechner im Netz der Netze, MAC für die Netzwerkkarte.',
@@ -947,7 +947,7 @@ final List<Nugget> nuggetsA03Netze = [
       [
         'Repeater, Hub',
         '1',
-        'verstärkt bzw. verteilt Signale an alle - veraltet',
+        'verstärkt bzw. verteilt Signale an alle (veraltet)',
       ],
       [
         'Bridge, Switch',
@@ -976,7 +976,7 @@ final List<Nugget> nuggetsA03Netze = [
       'Unbekannt oder Broadcast: Er sendet an alle Ports außer dem Eingangsport (Flooding)',
     ],
     merksatz:
-        'Ein Hub verteilt immer an alle - ein Switch nur dorthin, wo das Ziel hängt. Das spart Bandbreite und erhöht die Sicherheit.',
+        'Ein Hub verteilt immer an alle. Ein Switch nur dorthin, wo das Ziel hängt. Das spart Bandbreite und erhöht die Sicherheit.',
   ),
   vergleich(
     'n-ng2-3',
@@ -1004,7 +1004,7 @@ final List<Nugget> nuggetsA03Netze = [
         'Kabelfehler trifft nur ein Gerät',
         'Ausfall des Switches trifft alle',
       ],
-      ['Bus', 'wenig Kabel', 'ein Fehler legt alles lahm - veraltet'],
+      ['Bus', 'wenig Kabel', 'ein Fehler legt alles lahm; veraltet'],
       ['Ring', 'geregelter Zugriff', 'eine Unterbrechung stört den Ring'],
       ['Masche', 'sehr ausfallsicher, mehrere Wege', 'viel Kabel, teuer'],
       [
@@ -1087,7 +1087,7 @@ final List<Nugget> nuggetsA03Netze = [
     ],
     points: [
       'Die 100 m gelten für die ganze Strecke vom Switch bis zum Gerät: 90 m fest verlegt plus Patchkabel',
-      'Schirmung XX/YTP: vorn der Gesamtschirm, hinten der Schirm je Adernpaar - U = ungeschirmt, F = Folie, S = Geflecht, z. B. S/FTP',
+      'Schirmung XX/YTP: vorn der Gesamtschirm, hinten der Schirm je Adernpaar. U = ungeschirmt, F = Folie, S = Geflecht, z. B. S/FTP',
     ],
   ),
   vergleich(
@@ -1111,7 +1111,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-ng2-9',
     'nw-geraete',
     'WLAN-Standards',
-    'WLAN ist im Standard IEEE 802.11 festgelegt. Die Datenraten sind theoretische Bruttowerte - real bleibt oft nur die Hälfte oder weniger.',
+    'WLAN ist im Standard IEEE 802.11 festgelegt. Die Datenraten sind theoretische Bruttowerte: real bleibt oft nur die Hälfte oder weniger.',
     [
       ['Standard', 'Name', 'Frequenz', 'max. brutto'],
       ['802.11n', 'Wi-Fi 4', '2,4 und 5 GHz', '600 Mbit/s'],
@@ -1196,7 +1196,7 @@ final List<Nugget> nuggetsA03Netze = [
       ['IEEE 802.3bt (PoE++)', 'bis 60 bzw. 90 W'],
     ],
     schritte: [
-      'Standard: 18 W liegt über 15,4 W (802.3af), aber unter 30 W - also 802.3at',
+      'Standard: 18 W liegt über 15,4 W (802.3af), aber unter 30 W, also 802.3at',
       'Strom: I = P / U = 18 W / 48 V = 0,375 A = 375 mA',
       'Bedarf aller Geräte: 8 × 18 W = 144 W',
       'Budget: 185 W - 144 W = 41 W Reserve',
@@ -1225,7 +1225,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-ng2-17',
     'nw-geraete',
     'Patchfeld und Netzwerkdose',
-    'Die Netzwerkdose im Büro ist über das fest verlegte Kabel nur mit einem Port des Patchfelds im Verteilerschrank verbunden. Ins Netz kommt sie erst, wenn ein kurzes Patchkabel diesen Patchfeld-Port mit einem Switch-Port verbindet - die Dose ist dann „gepatcht“.',
+    'Die Netzwerkdose im Büro ist über das fest verlegte Kabel nur mit einem Port des Patchfelds im Verteilerschrank verbunden. Ins Netz kommt sie erst, wenn ein kurzes Patchkabel diesen Patchfeld-Port mit einem Switch-Port verbindet. Die Dose ist dann „gepatcht“.',
     table: [
       ['Station', 'Verbindung zur nächsten'],
       ['PC', 'Patchkabel zur Dose'],
@@ -1266,7 +1266,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-n4-1',
     'nw-ipv4',
     'Aufbau einer IPv4-Adresse',
-    'Eine IPv4-Adresse besteht aus 32 Bit, geschrieben als vier Dezimalzahlen von 0 bis 255 (Oktette). Die Subnetzmaske legt fest, wie viele Bit von links zum Netz gehören - beim Präfix /24 sind es 24. Der Rest adressiert die Geräte (Hosts).',
+    'Eine IPv4-Adresse besteht aus 32 Bit, geschrieben als vier Dezimalzahlen von 0 bis 255 (Oktette). Die Subnetzmaske legt fest, wie viele Bit von links zum Netz gehören: beim Präfix /24 sind es 24. Der Rest adressiert die Geräte (Hosts).',
     const BitDiagramm([
       BitZeile(
         '192.168.10.77',
@@ -1345,10 +1345,10 @@ final List<Nugget> nuggetsA03Netze = [
       ['10.0.0.0/8', 'privat'],
       ['172.16.0.0/12', 'privat (172.16.0.0 bis 172.31.255.255)'],
       ['192.168.0.0/16', 'privat'],
-      ['127.0.0.0/8', 'Loopback - der eigene Rechner'],
+      ['127.0.0.0/8', 'Loopback, der eigene Rechner'],
       [
         '169.254.0.0/16',
-        'APIPA - selbst vergeben, wenn kein DHCP-Server antwortet',
+        'APIPA: selbst vergeben, wenn kein DHCP-Server antwortet',
       ],
       ['255.255.255.255', 'Broadcast an alle im eigenen Netz'],
     ],
@@ -1485,7 +1485,7 @@ final List<Nugget> nuggetsA03Netze = [
     ],
     ergebnis: 'vier Subnetze ohne Überschneidung, .228 bis .255 als Reserve',
     merksatz:
-        'Immer mit dem größten Netz beginnen - sonst passen die großen Blöcke nicht mehr auf ihre Grenzen.',
+        'Immer mit dem größten Netz beginnen, sonst passen die großen Blöcke nicht mehr auf ihre Grenzen.',
   ),
   beispiel(
     'n-n4-12',
@@ -1497,7 +1497,7 @@ final List<Nugget> nuggetsA03Netze = [
       'Das Ziel .130 liegt im Block .128 bis .191',
       'Verschiedene Netze: PC A schickt das Paket an sein Standardgateway',
     ],
-    ergebnis: 'anderes Subnetz - der Weg führt über das Standardgateway',
+    ergebnis: 'anderes Subnetz, der Weg führt über das Standardgateway',
     merksatz:
         'Das Standardgateway muss selbst im Subnetz des PCs liegen, hier also zwischen .65 und .126.',
   ),
@@ -1528,7 +1528,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-n6-1',
     'nw-ipv6',
     'Warum IPv6?',
-    'IPv4 bietet rund 4,3 Milliarden Adressen - zu wenig für alle Geräte der Welt. IPv6 nutzt 128 Bit und damit 2¹²⁸ ≈ 3,4 × 10³⁸ Adressen. Geschrieben wird es als acht Blöcke zu je vier Hexadezimalziffern, getrennt durch Doppelpunkte.',
+    'IPv4 bietet rund 4,3 Milliarden Adressen: zu wenig für alle Geräte der Welt. IPv6 nutzt 128 Bit und damit 2¹²⁸ ≈ 3,4 × 10³⁸ Adressen. Geschrieben wird es als acht Blöcke zu je vier Hexadezimalziffern, getrennt durch Doppelpunkte.',
   ),
   konzept(
     'n-n6-2',
@@ -1550,7 +1550,7 @@ final List<Nugget> nuggetsA03Netze = [
     'Zwei Regeln machen lange Adressen lesbar. Beide darf man kombinieren.',
     [
       'Regel 1: Führende Nullen in jedem Block dürfen entfallen - 0db8 wird db8, 0042 wird 42, 0000 wird 0',
-      'Regel 2: Eine zusammenhängende Folge von Null-Blöcken darf durch :: ersetzt werden - aber nur ein einziges Mal',
+      'Regel 2: Eine zusammenhängende Folge von Null-Blöcken darf durch :: ersetzt werden, aber nur ein einziges Mal',
       'Gibt es mehrere Folgen, ersetzt man die längste; bei gleicher Länge die erste',
     ],
   ),
@@ -1691,7 +1691,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-n6-15',
     'nw-ipv6',
     'Der Übergang: IPv4 und IPv6 nebeneinander',
-    'IPv4 lässt sich nicht an einem Tag abschalten - viele Geräte und Dienste sprechen nur das alte Protokoll. Deshalb laufen beide Versionen über Jahre parallel. Dafür gibt es drei Wege.',
+    'IPv4 lässt sich nicht an einem Tag abschalten: viele Geräte und Dienste sprechen nur das alte Protokoll. Deshalb laufen beide Versionen über Jahre parallel. Dafür gibt es drei Wege.',
     [
       ['Verfahren', 'Prinzip', 'Beispiel'],
       [
@@ -1737,7 +1737,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-n6-13',
     'nw-ipv6',
     'Zweimal :: und falsche Nullen',
-    'Wer :: zweimal in einer Adresse verwendet, macht sie mehrdeutig - das ist ungültig. Und nur führende Nullen dürfen entfallen: Aus 0db8 wird db8, aber aus 2001 niemals 21. Außerdem kennt IPv6 keinen Broadcast; seine Aufgaben übernimmt Multicast.',
+    'Wer :: zweimal in einer Adresse verwendet, macht sie mehrdeutig. Das ist ungültig. Und nur führende Nullen dürfen entfallen: Aus 0db8 wird db8, aber aus 2001 niemals 21. Außerdem kennt IPv6 keinen Broadcast; seine Aufgaben übernimmt Multicast.',
   ),
   merke(
     'n-n6-14',
@@ -1751,7 +1751,7 @@ final List<Nugget> nuggetsA03Netze = [
       'fe80::/10 Link-Local, 2000::/3 Global, fc00::/7 Unique Local, ::1 Loopback, ff00::/8 Multicast',
       'kein Broadcast, statt ARP gibt es NDP',
     ],
-    satz: 'Nullen vorn weg, einmal Doppel-Doppelpunkt - und nie mehr.',
+    satz: 'Nullen vorn weg, einmal Doppel-Doppelpunkt, und nie mehr.',
   ),
 
   // ============================================ Protokolle, Dienste und Ports
@@ -1815,7 +1815,7 @@ final List<Nugget> nuggetsA03Netze = [
       'Acknowledge: Der Server bestätigt die Vergabe',
     ],
     merksatz:
-        'Der Client erhält IP-Adresse, Subnetzmaske, Standardgateway und DNS-Server - für eine begrenzte Zeit (Lease).',
+        'Der Client erhält IP-Adresse, Subnetzmaske, Standardgateway und DNS-Server für eine begrenzte Zeit (Lease).',
   ),
   konzept(
     'n-nd-5',
@@ -1872,7 +1872,7 @@ final List<Nugget> nuggetsA03Netze = [
       ],
     ),
     points: [
-      'Genau genommen fragt der Resolver erst einen Root-Server, dann den Server für .de - hier zusammengefasst',
+      'Genau genommen fragt der Resolver erst einen Root-Server, dann den Server für .de (hier zusammengefasst)',
       'Wie lange eine Antwort im Cache bleibt, legt die TTL (Time to Live) des Eintrags fest',
     ],
   ),
@@ -1938,7 +1938,7 @@ final List<Nugget> nuggetsA03Netze = [
       ['SMTP', 'Mails senden und zwischen Servern weiterleiten'],
       [
         'IMAP',
-        'abrufen, Mails bleiben auf dem Server - gleicher Stand auf allen Geräten',
+        'abrufen, Mails bleiben auf dem Server: gleicher Stand auf allen Geräten',
       ],
       ['POP3', 'abrufen, Mails werden meist heruntergeladen und gelöscht'],
     ],
@@ -1966,7 +1966,7 @@ final List<Nugget> nuggetsA03Netze = [
     'Neben Web und E-Mail laufen in jedem Firmennetz Infrastrukturdienste im Hintergrund.',
     table: [
       ['Dienst', 'Aufgabe'],
-      ['NTP', 'Uhrzeit synchronisieren - wichtig für Protokolle und Anmeldung'],
+      ['NTP', 'Uhrzeit synchronisieren, wichtig für Protokolle und Anmeldung'],
       ['SNMP', 'Netzwerkgeräte überwachen'],
       ['LDAP', 'Verzeichnisdienst abfragen, z. B. Active Directory'],
       ['SMB, NFS', 'Dateifreigaben (Windows bzw. Linux)'],
@@ -1977,7 +1977,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-nd-13',
     'nw-dienste',
     'DHCP endet am Router',
-    'DHCP-Anfragen sind Broadcasts, und Router leiten Broadcasts nicht weiter. Steht der DHCP-Server in einem anderen Subnetz oder VLAN, bekommen die Clients keine Adresse - bis auf dem Router ein DHCP-Relay eingerichtet ist.',
+    'DHCP-Anfragen sind Broadcasts, und Router leiten Broadcasts nicht weiter. Steht der DHCP-Server in einem anderen Subnetz oder VLAN, bekommen die Clients keine Adresse, bis auf dem Router ein DHCP-Relay eingerichtet ist.',
   ),
   merke(
     'n-nd-14',
@@ -2095,13 +2095,13 @@ final List<Nugget> nuggetsA03Netze = [
     ],
     ergebnis: 'die Cloud-VM ist über 3 Jahre 960 € günstiger',
     merksatz:
-        'Personalaufwand, Internetanbindung und Kosten für Datentransfer können das Ergebnis drehen - sie gehören in einen vollständigen Vergleich.',
+        'Personalaufwand, Internetanbindung und Kosten für Datentransfer können das Ergebnis drehen. Sie gehören in einen vollständigen Vergleich.',
   ),
   konzept(
     'n-nc-7',
     'nw-cloud',
     'Virtualisierung',
-    'Virtualisierung lässt mehrere virtuelle Maschinen (VMs) auf einem physischen Server laufen. Jede VM verhält sich wie ein eigener Rechner - diese Technik ist die Grundlage jeder Cloud.',
+    'Virtualisierung lässt mehrere virtuelle Maschinen (VMs) auf einem physischen Server laufen. Jede VM verhält sich wie ein eigener Rechner. Diese Technik ist die Grundlage jeder Cloud.',
     points: [
       'bessere Auslastung: wenige gut ausgelastete statt vieler halb leerer Server',
       'Snapshots: den Zustand vor einem Update sichern und zurückspringen',
@@ -2138,7 +2138,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-nc-9',
     'nw-cloud',
     'Virtuelle Maschine oder Container?',
-    'Beide trennen Anwendungen voneinander - auf unterschiedliche Weise. Container teilen sich den Kernel des Host-Betriebssystems.',
+    'Beide trennen Anwendungen voneinander, aber auf unterschiedliche Weise. Container teilen sich den Kernel des Host-Betriebssystems.',
     [
       ['', 'Virtuelle Maschine', 'Container'],
       [
@@ -2170,7 +2170,7 @@ final List<Nugget> nuggetsA03Netze = [
       'in Euro: 15.768 kWh × 0,30 €/kWh = 4.730,40 €',
     ],
     ergebnis:
-        'rund 4.730 € Stromkosten pro Jahr - dazu weniger Kühlung und Platz',
+        'rund 4.730 € Stromkosten pro Jahr, dazu weniger Kühlung und Platz',
   ),
   beispiel(
     'n-nc-11',
@@ -2192,7 +2192,7 @@ final List<Nugget> nuggetsA03Netze = [
     'Verarbeitet ein Cloud-Anbieter personenbezogene Daten, ist er Auftragsverarbeiter. Das Unternehmen bleibt für die Daten verantwortlich.',
     points: [
       'Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO abschließen',
-      'Serverstandort prüfen - für Drittländer wie die USA braucht die Übermittlung eine eigene Rechtsgrundlage',
+      'Serverstandort prüfen; für Drittländer wie die USA braucht die Übermittlung eine eigene Rechtsgrundlage',
       'Daten verschlüsselt speichern und übertragen',
       'Ausstiegsstrategie gegen Abhängigkeit (Vendor Lock-in): Daten müssen exportierbar sein',
     ],
@@ -2201,7 +2201,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-nc-13',
     'nw-cloud',
     'Cloud heißt nicht sorgenfrei',
-    'In der Cloud bleibt der Kunde für einiges verantwortlich - bei IaaS etwa für Updates des Betriebssystems, bei jedem Modell für seine Daten und Zugänge. Dazu kommen Abhängigkeit vom Anbieter, Internetanbindung und die Frage nach dem Serverstandort für den Datenschutz.',
+    'In der Cloud bleibt der Kunde für einiges verantwortlich: bei IaaS etwa für Updates des Betriebssystems, bei jedem Modell für seine Daten und Zugänge. Dazu kommen Abhängigkeit vom Anbieter, Internetanbindung und die Frage nach dem Serverstandort für den Datenschutz.',
   ),
   merke(
     'n-nc-14',
@@ -2216,6 +2216,6 @@ final List<Nugget> nuggetsA03Netze = [
       'Container teilen den Kernel, VMs haben ein eigenes Betriebssystem',
     ],
     satz:
-        'Je mehr „as a Service“, desto weniger Betrieb - aber nie weniger Verantwortung für die eigenen Daten.',
+        'Je mehr „as a Service“, desto weniger Betrieb, aber nie weniger Verantwortung für die eigenen Daten.',
   ),
 ];

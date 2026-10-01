@@ -36,7 +36,7 @@ final List<Question> questionsA02 = [
       paar('1. Axiom nach Watzlawick', 'auch Schweigen ist eine Botschaft'),
     ],
     explanation:
-        'Sender-Empfänger: Verständigung braucht einen gemeinsamen Zeichenvorrat. Schulz von Thun: Sache, Selbstoffenbarung, Beziehung, Appell. Watzlawick: Die Beziehung bestimmt, wie ein Inhalt verstanden wird (2. Axiom), und man kann nicht nicht kommunizieren (1. Axiom) - wer im Kundentermin aufs Handy schaut, sendet eine Botschaft.',
+        'Sender-Empfänger: Verständigung braucht einen gemeinsamen Zeichenvorrat. Schulz von Thun: Sache, Selbstoffenbarung, Beziehung, Appell. Watzlawick: Die Beziehung bestimmt, wie ein Inhalt verstanden wird (2. Axiom), und man kann nicht nicht kommunizieren (1. Axiom). Wer im Kundentermin aufs Handy schaut, sendet eine Botschaft.',
   ),
   einfach(
     'a2-km-3',
@@ -47,7 +47,7 @@ final List<Question> questionsA02 = [
     choices: [
       ja(
         'Sender und Empfänger haben keinen gemeinsamen Zeichenvorrat.',
-        'Die Fachbegriffe sind der Empfängerin unbekannt - die Nachricht kann nicht entschlüsselt werden.',
+        'Die Fachbegriffe sind der Empfängerin unbekannt. Die Nachricht kann nicht entschlüsselt werden.',
       ),
       nein(
         'Der Kanal ist gestört.',
@@ -59,7 +59,7 @@ final List<Question> questionsA02 = [
       ),
       nein(
         'Die Botschaft ist nonverbal.',
-        'Sie ist verbal - nur unverständlich.',
+        'Sie ist verbal, nur unverständlich.',
       ),
     ],
     explanation:
@@ -76,10 +76,10 @@ final List<Question> questionsA02 = [
     choices: [
       ja(
         'Sie hat die Aussage vor allem mit dem Beziehungsohr gehört.',
-        'Sie fühlt sich bevormundet - das ist eine Deutung auf der Beziehungsebene.',
+        'Sie fühlt sich bevormundet. Das ist eine Deutung auf der Beziehungsebene.',
       ),
       ja(
-        'Der Sachinhalt - der Termin - ist bei ihr angekommen.',
+        'Der Sachinhalt (der Termin) ist bei ihr angekommen.',
         '„Ich weiß“ zeigt, dass die Sachinformation verstanden wurde.',
       ),
       ja(
@@ -88,11 +88,11 @@ final List<Question> questionsA02 = [
       ),
       nein(
         'Die Nachricht wurde im Kanal gestört.',
-        'Kanalstörungen erklärt das Sender-Empfänger-Modell - hier kam akustisch alles an.',
+        'Kanalstörungen erklärt das Sender-Empfänger-Modell; hier kam akustisch alles an.',
       ),
       nein(
         'Der Projektleiter hat keine Selbstoffenbarung gesendet.',
-        'Jede Nachricht enthält alle vier Seiten, also auch eine Selbstoffenbarung - etwa, dass ihm der Termin wichtig ist.',
+        'Jede Nachricht enthält alle vier Seiten, also auch eine Selbstoffenbarung, etwa dass ihm der Termin wichtig ist.',
       ),
     ],
     explanation:
@@ -114,7 +114,7 @@ final List<Question> questionsA02 = [
         1,
       ),
       zu(
-        'Ein Kollege beantwortet eine E-Mail gar nicht - die Absenderin deutet das als Ablehnung.',
+        'Ein Kollege beantwortet eine E-Mail gar nicht. Die Absenderin deutet das als Ablehnung.',
         0,
       ),
       zu('Der Kunde sagt „Sehr schön“ und rollt dabei mit den Augen.', 3),
@@ -124,7 +124,7 @@ final List<Question> questionsA02 = [
       ),
     ],
     explanation:
-        'Auch Schweigen ist eine Botschaft (1. Axiom). Die Beziehung bestimmt, wie ein Inhalt ankommt (2.). Bei der Interpunktion sieht jeder den Auslöser beim anderen (3.). Worte (digital) und Körpersprache (analog) senden gleichzeitig - hier widersprüchlich (4.).',
+        'Auch Schweigen ist eine Botschaft (1. Axiom). Die Beziehung bestimmt, wie ein Inhalt ankommt (2.). Bei der Interpunktion sieht jeder den Auslöser beim anderen (3.). Worte (digital) und Körpersprache (analog) senden gleichzeitig, hier widersprüchlich (4.).',
     difficulty: 3,
   ),
   einfach(
@@ -140,7 +140,7 @@ final List<Question> questionsA02 = [
       ),
       nein(
         'Das Sender-Empfänger-Modell: Es fehlt ein gemeinsamer Zeichenvorrat.',
-        'Beide kennen die Begriffe genau - am Verstehen liegt es nicht.',
+        'Beide kennen die Begriffe genau; am Verstehen liegt es nicht.',
       ),
       nein(
         'Das Tuckman-Modell: Das Team ist in der Performing-Phase.',
@@ -148,7 +148,7 @@ final List<Question> questionsA02 = [
       ),
       nein(
         'Verbal, paraverbal, nonverbal: Die Körpersprache widerspricht den Worten.',
-        'Von widersprüchlichen Signalen ist keine Rede - der Grund liegt in der Beziehung, nicht in der Körpersprache.',
+        'Von widersprüchlichen Signalen ist keine Rede. Der Grund liegt in der Beziehung, nicht in der Körpersprache.',
       ),
     ],
     explanation:
@@ -227,7 +227,7 @@ final List<Question> questionsA02 = [
       ),
       nein(
         '„Das kann eigentlich nicht sein, bei anderen Kunden läuft es.“',
-        'Widerspricht und stellt die Kundin in Frage - ein Gesprächsstörer.',
+        'Widerspricht und stellt die Kundin in Frage, ein Gesprächsstörer.',
       ),
       nein(
         '„Haben Sie das Handbuch gelesen?“',
@@ -322,7 +322,7 @@ final List<Question> questionsA02 = [
       zu(
         '„Ich finde, du bist total unzuverlässig.“',
         1,
-        'Beginnt mit „Ich“, bewertet aber die Person - verkappt.',
+        'Beginnt mit „Ich“, bewertet aber die Person: verkappt.',
       ),
       zu(
         '„Ich verliere den Faden, wenn ich unterbrochen werde. Lass mich bitte ausreden.“',
@@ -352,11 +352,11 @@ final List<Question> questionsA02 = [
       ),
       nein(
         '„Sie schicken mir immer unvollständige Beschreibungen.“',
-        'Sie-Botschaft mit Verallgemeinerung „immer“ - sie wirkt als Vorwurf.',
+        'Sie-Botschaft mit Verallgemeinerung „immer“. Sie wirkt als Vorwurf.',
       ),
       nein(
         '„Ich finde, Sie sind da ziemlich nachlässig.“',
-        'Beginnt zwar mit „Ich“, bewertet aber die Person - eine verdeckte Du-Botschaft.',
+        'Beginnt zwar mit „Ich“, bewertet aber die Person. Das ist eine verdeckte Du-Botschaft.',
       ),
       nein(
         '„Man sollte eine Fehlermeldung schon vollständig beschreiben.“',
@@ -440,7 +440,7 @@ final List<Question> questionsA02 = [
         wahl('1', ['2', '3']),
       ],
       [
-        'In der Buchhaltung startet die Lohnsoftware nicht - die Löhne müssen heute raus.',
+        'In der Buchhaltung startet die Lohnsoftware nicht. Die Löhne müssen heute raus.',
         wahl('mittel', ['hoch', 'gering']),
         wahl('hoch', ['mittel', 'gering']),
         wahl('2', ['1', '3']),
@@ -453,7 +453,7 @@ final List<Question> questionsA02 = [
       ],
     ],
     explanation:
-        'Die Priorität ergibt sich aus Auswirkung und Dringlichkeit. Mailserver: ganzes Unternehmen und sofort - Priorität 1. Lohnsoftware: eine Abteilung (mittel), Frist heute (hoch) - Priorität 2. Monitorwunsch: eine Person, kein Termin - Priorität 3.',
+        'Die Priorität ergibt sich aus Auswirkung und Dringlichkeit. Mailserver: ganzes Unternehmen und sofort, also Priorität 1. Lohnsoftware: eine Abteilung (mittel), Frist heute (hoch), also Priorität 2. Monitorwunsch: eine Person, kein Termin, also Priorität 3.',
   ),
   einfach(
     'a2-kk-3',
@@ -477,7 +477,7 @@ final List<Question> questionsA02 = [
       ),
     ],
     explanation:
-        'Entscheider brauchen Nutzen, Risiken und Kosten - keine Technikdetails. Adressatengerecht heißt, die Sprache an das Gegenüber anzupassen.',
+        'Entscheider brauchen Nutzen, Risiken und Kosten, keine Technikdetails. Adressatengerecht heißt, die Sprache an das Gegenüber anzupassen.',
   ),
 
   einfach(
@@ -493,7 +493,7 @@ final List<Question> questionsA02 = [
       ),
       nein(
         'Ihm nachweisen, dass er falsch liegt',
-        'Führt zum Machtkampf - der Kunde verliert das Gesicht.',
+        'Führt zum Machtkampf. Der Kunde verliert das Gesicht.',
       ),
       nein(
         'Das Gespräch sofort abbrechen',
@@ -522,7 +522,7 @@ final List<Question> questionsA02 = [
       zu('Fernwartungssitzung, bei der der Kunde zusieht', 0),
     ],
     explanation:
-        'Synchron heißt: Beide sind gleichzeitig beteiligt (Telefon, Videokonferenz, Fernwartung). Asynchron heißt: Die Antwort kann zeitversetzt kommen (E-Mail, Ticket, Brief) - das lässt sich leichter dokumentieren.',
+        'Synchron heißt: Beide sind gleichzeitig beteiligt (Telefon, Videokonferenz, Fernwartung). Asynchron heißt: Die Antwort kann zeitversetzt kommen (E-Mail, Ticket, Brief). Das lässt sich leichter dokumentieren.',
     difficulty: 1,
   ),
   einfach(
@@ -541,7 +541,7 @@ final List<Question> questionsA02 = [
       nein('Priorität 1', 'Dafür müsste das ganze Unternehmen betroffen sein.'),
       nein(
         'Priorität 3',
-        'Die Frist heute macht das Ticket hoch dringlich - das ergibt mehr als 3.',
+        'Die Frist heute macht das Ticket hoch dringlich. Das ergibt mehr als 3.',
       ),
       nein('Priorität 5', 'Passt nur zu geringer Auswirkung ohne Termin.'),
     ],
@@ -584,7 +584,7 @@ final List<Question> questionsA02 = [
     choices: [
       ja(
         'Storming',
-        'Rollen und Einfluss werden ausgehandelt - typisch für die Konfliktphase.',
+        'Rollen und Einfluss werden ausgehandelt; das ist typisch für die Konfliktphase.',
       ),
       nein('Forming', 'Da wäre das Team noch vorsichtig und höflich.'),
       nein('Norming', 'Da hätte man sich bereits auf Regeln geeinigt.'),
@@ -603,7 +603,7 @@ final List<Question> questionsA02 = [
         'Ein neu zusammengestelltes Projektteam durchläuft die Teamphasen nach Tuckman.',
     prompt: 'Setze die Phasen an der richtigen Stelle ein.',
     text:
-        'Im {0} lernen sich die Mitglieder kennen und sind noch zurückhaltend. Im {1} wird um Rollen und Einfluss gestritten. Im {2} einigt sich das Team auf gemeinsame Regeln - sie festzuhalten stabilisiert die Zusammenarbeit. Im {3} arbeitet es selbstständig und effektiv.',
+        'Im {0} lernen sich die Mitglieder kennen und sind noch zurückhaltend. Im {1} wird um Rollen und Einfluss gestritten. Im {2} einigt sich das Team auf gemeinsame Regeln. Sie festzuhalten stabilisiert die Zusammenarbeit. Im {3} arbeitet es selbstständig und effektiv.',
     luecken: [
       wort(['Forming'], 'Orientierung.'),
       wort(['Storming'], 'Konflikt.'),
@@ -624,11 +624,11 @@ final List<Question> questionsA02 = [
     buckets: ['Forming', 'Storming', 'Norming', 'Performing', 'Adjourning'],
     items: [
       zu('„Warum soll ausgerechnet dein Konzept umgesetzt werden?“', 1),
-      zu('„Du testest, ich spiele es ein - heute sind wir fertig.“', 3),
+      zu('„Du testest, ich spiele es ein. Heute sind wir fertig.“', 3),
       zu('„Ich weiß noch gar nicht, was hier von mir erwartet wird.“', 0),
       zu('„Lasst uns festhalten: Code-Reviews immer vor dem Merge.“', 2),
       zu(
-        '„Die Übergabe an den Betrieb ist erledigt - danke für die tolle Zusammenarbeit!“',
+        '„Die Übergabe an den Betrieb ist erledigt. Danke für die tolle Zusammenarbeit!“',
         4,
       ),
     ],
@@ -644,7 +644,7 @@ final List<Question> questionsA02 = [
     choices: [
       ja(
         'Das Team ist durch die Veränderungen in die Storming-Phase zurückgefallen.',
-        'Neue Mitglieder und neue Ziele stellen Rollen wieder infrage - ein typischer Rückfall.',
+        'Neue Mitglieder und neue Ziele stellen Rollen wieder infrage, ein typischer Rückfall.',
       ),
       nein(
         'Das Team ist in der Adjourning-Phase.',
@@ -656,11 +656,11 @@ final List<Question> questionsA02 = [
       ),
       nein(
         'Das Team ist in der Forming-Phase, weil dort gestritten wird.',
-        'Im Forming sind Teams höflich und abwartend - gestritten wird im Storming.',
+        'Im Forming sind Teams höflich und abwartend; gestritten wird im Storming.',
       ),
     ],
     explanation:
-        'Die Phasen nach Tuckman sind kein Einbahnweg. Ändern sich Zusammensetzung oder Ziele, fällt ein Team oft zurück - hier ins Storming, weil Rollen neu ausgehandelt werden.',
+        'Die Phasen nach Tuckman sind kein Einbahnweg. Ändern sich Zusammensetzung oder Ziele, fällt ein Team oft zurück (hier ins Storming, weil Rollen neu ausgehandelt werden).',
   ),
   mehrfach(
     'a2-tt-6',
@@ -691,7 +691,7 @@ final List<Question> questionsA02 = [
       ),
     ],
     explanation:
-        'In der Storming-Phase ringen die Mitglieder um Rollen und Einfluss. Die Leitung moderiert Konflikte und hilft, Rollen zu klären - so kommt das Team ins Norming.',
+        'In der Storming-Phase ringen die Mitglieder um Rollen und Einfluss. Die Leitung moderiert Konflikte und hilft, Rollen zu klären. So kommt das Team ins Norming.',
   ),
   zuordnen(
     'a2-tt-7',
@@ -730,7 +730,7 @@ final List<Question> questionsA02 = [
       ),
       nein(
         '„Irgendwas stimmt mit deinen Tests nicht.“',
-        'Unkonkret - der andere weiß nicht, was er ändern soll.',
+        'Unkonkret: Der andere weiß nicht, was er ändern soll.',
       ),
       nein(
         '„Das hätte ich dir schon vor drei Monaten sagen sollen.“',
@@ -765,7 +765,7 @@ final List<Question> questionsA02 = [
       wahl('bedankst', [
         'beschwerst',
         'verteidigst',
-      ], 'Feedback ist ein Geschenk - auch wenn es unbequem ist.'),
+      ], 'Feedback ist ein Geschenk, auch wenn es unbequem ist.'),
     ],
     explanation:
         'Wer Feedback annimmt, hört zu, fragt bei Unklarheit nach, rechtfertigt sich nicht und bedankt sich. Was er davon umsetzt, entscheidet er danach selbst.',
@@ -806,7 +806,7 @@ final List<Question> questionsA02 = [
       ],
     ],
     explanation:
-        'Öffentlich: mir und anderen bekannt. Blinder Fleck: nur anderen bekannt. Privat: nur mir bekannt. Unbekannt: niemandem bekannt. Feedback macht bewusst, wie man auf andere wirkt - der blinde Fleck schrumpft.',
+        'Öffentlich: mir und anderen bekannt. Blinder Fleck: nur anderen bekannt. Privat: nur mir bekannt. Unbekannt: niemandem bekannt. Feedback macht bewusst, wie man auf andere wirkt, und der blinde Fleck schrumpft.',
   ),
 
   reihenfolge(
@@ -836,7 +836,7 @@ final List<Question> questionsA02 = [
     ],
     items: [
       zu(
-        'Lara merkt nicht, dass sie andere in Meetings oft unterbricht - den Kollegen fällt es auf.',
+        'Lara merkt nicht, dass sie andere in Meetings oft unterbricht. Den Kollegen fällt es auf.',
         1,
       ),
       zu('Alle im Team wissen, dass Lara sehr gut programmiert.', 0),
@@ -858,7 +858,7 @@ final List<Question> questionsA02 = [
     choices: [
       ja(
         '„Danke, das war mir nicht bewusst. An welcher Stelle ist dir das aufgefallen?“',
-        'Bedanken und nachfragen - so nimmt man Feedback richtig an.',
+        'Bedanken und nachfragen. So nimmt man Feedback richtig an.',
       ),
       nein(
         '„Das stimmt nicht, ich habe ihn oft angesehen.“',
@@ -896,7 +896,7 @@ final List<Question> questionsA02 = [
       ),
       nein(
         'Wer einen Fehler macht, wird vor dem Team ermahnt.',
-        'Bloßstellen erzeugt Angst - Fehler werden dann verschwiegen.',
+        'Bloßstellen erzeugt Angst, Fehler werden dann verschwiegen.',
       ),
       nein(
         'Fehler werden still und schnell behoben, ohne darüber zu sprechen.',
@@ -978,7 +978,7 @@ final List<Question> questionsA02 = [
     loesung:
         'Das AGG verbietet Benachteiligungen wegen der ethnischen Herkunft, des Geschlechts, der Religion oder Weltanschauung, einer Behinderung, des Alters und der sexuellen Identität.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 4. Das AGG schützt vor Diskriminierung - etwa bei Einstellung, Bezahlung und Beförderung. Die Mitbestimmung regelt dagegen das Betriebsverfassungsgesetz.',
+        'Je Nennung 1 Punkt, höchstens 4. Das AGG schützt vor Diskriminierung, etwa bei Einstellung, Bezahlung und Beförderung. Die Mitbestimmung regelt dagegen das Betriebsverfassungsgesetz.',
   ),
 
   reihenfolge(
@@ -1014,7 +1014,7 @@ final List<Question> questionsA02 = [
       ),
       nein(
         'lose-lose: Beide nehmen eigenen Schaden in Kauf.',
-        'Das beginnt erst mit Stufe 7, wenn gezielt geschadet wird - auch um den Preis eigener Verluste.',
+        'Das beginnt erst mit Stufe 7, wenn gezielt geschadet wird, auch um den Preis eigener Verluste.',
       ),
       nein(
         'Konsens: Beide erarbeiten eine gemeinsame Lösung.',
@@ -1134,7 +1134,7 @@ final List<Question> questionsA02 = [
         'Erläutere, was die BATNA ist und wozu sie in dieser Verhandlung dient.',
     kriterien: [
       krit(
-        'Die BATNA ist die beste Alternative, falls keine Einigung zustande kommt - hier das Angebot des zweiten Lieferanten.',
+        'Die BATNA ist die beste Alternative, falls keine Einigung zustande kommt; hier das Angebot des zweiten Lieferanten.',
         stichwoerter: [
           'Alternative',
           'zweiter Lieferant',
@@ -1155,7 +1155,7 @@ final List<Question> questionsA02 = [
       ),
     ],
     loesung:
-        'Die BATNA (Best Alternative to a Negotiated Agreement) ist die beste Alternative für den Fall, dass die Verhandlung scheitert - hier das verbindliche Angebot des zweiten Lieferanten. Sie dient als Messlatte: Das Systemhaus stimmt nur einem Ergebnis zu, das besser ist als diese Alternative.',
+        'Die BATNA (Best Alternative to a Negotiated Agreement) ist die beste Alternative für den Fall, dass die Verhandlung scheitert; hier das verbindliche Angebot des zweiten Lieferanten. Sie dient als Messlatte: Das Systemhaus stimmt nur einem Ergebnis zu, das besser ist als diese Alternative.',
     explanation:
         '1 Punkt für die Erklärung (beste Alternative ohne Einigung), 1 Punkt für den Zweck (Messlatte bzw. Untergrenze). Wer seine BATNA kennt, lässt sich nicht zu einer schlechten Einigung drängen.',
   ),
@@ -1175,7 +1175,7 @@ final List<Question> questionsA02 = [
     items: [
       zu('„Wozu genau brauchen Sie das System schon im März?“', 1),
       zu(
-        '„Ich verstehe Ihren Ärger - lassen Sie uns gemeinsam auf den Zeitplan schauen.“',
+        '„Ich verstehe Ihren Ärger. Lassen Sie uns gemeinsam auf den Zeitplan schauen.“',
         0,
       ),
       zu(
@@ -1203,13 +1203,13 @@ final List<Question> questionsA02 = [
       ),
       nein(
         '20 zusätzliche Lizenzen',
-        'Das ist die Position - die konkrete Forderung.',
+        'Das ist die Position, also die konkrete Forderung.',
       ),
       nein('Ein möglichst niedriger Preis', 'Davon ist keine Rede.'),
       nein('Eine sofortige Lieferung', 'Auch das ist Teil der Position.'),
     ],
     explanation:
-        'Die Position ist „20 Lizenzen sofort“, das Interesse „die Praktikanten sollen arbeiten können“. Wer das Interesse kennt, findet Optionen - etwa zehn befristete Lizenzen für vier Wochen.',
+        'Die Position ist „20 Lizenzen sofort“, das Interesse „die Praktikanten sollen arbeiten können“. Wer das Interesse kennt, findet Optionen, etwa zehn befristete Lizenzen für vier Wochen.',
   ),
   einfach(
     'a2-vh-6',
@@ -1219,7 +1219,7 @@ final List<Question> questionsA02 = [
     prompt: 'Welche Aussage zur BATNA des Systemhauses ist richtig?',
     choices: [
       ja(
-        'Die BATNA ist das Angebot von B - A muss insgesamt, also mit Preis und Garantie, besser sein, damit sich die Einigung lohnt.',
+        'Die BATNA ist das Angebot von B: A muss insgesamt, also mit Preis und Garantie, besser sein, damit sich die Einigung lohnt.',
         'Die BATNA ist die beste verfügbare Alternative, falls die Verhandlung mit A scheitert.',
       ),
       nein(
@@ -1228,11 +1228,11 @@ final List<Question> questionsA02 = [
       ),
       nein(
         'Die BATNA ist immer der niedrigste Preis am Markt.',
-        'Sie ist die beste tatsächlich verfügbare eigene Alternative - nicht irgendein Marktpreis.',
+        'Sie ist die beste tatsächlich verfügbare eigene Alternative, nicht irgendein Marktpreis.',
       ),
       nein(
         'Eine BATNA hat nur der Lieferant, nicht der Käufer.',
-        'Beide Seiten haben eine BATNA - hier ist es für das Systemhaus Lieferant B.',
+        'Beide Seiten haben eine BATNA; hier ist es für das Systemhaus Lieferant B.',
       ),
     ],
     explanation:
@@ -1291,7 +1291,7 @@ final List<Question> questionsA02 = [
         1,
       ),
       zu(
-        '„Ja, der Preis ist höher - dafür ist die Wartung drei Jahre inklusive.“',
+        '„Ja, der Preis ist höher. Dafür ist die Wartung drei Jahre inklusive.“',
         0,
       ),
       zu('„Ein Betrieb Ihrer Größe nutzt es seit zwei Jahren erfolgreich.“', 3),
@@ -1324,11 +1324,11 @@ final List<Question> questionsA02 = [
     choices: [
       ja(
         'Mit einer Rückfrage den eigentlichen Grund herausfinden',
-        'Es könnte ein Vorwand sein - die Rückfrage deckt den wahren Grund auf.',
+        'Es könnte ein Vorwand sein. Die Rückfrage deckt den wahren Grund auf.',
       ),
       nein(
         'Sofort einen Rabatt anbieten',
-        'Setzt voraus, dass es am Preis liegt - vielleicht zu Unrecht.',
+        'Setzt voraus, dass es am Preis liegt, vielleicht zu Unrecht.',
       ),
       nein(
         'Das Gespräch beenden',
@@ -1359,7 +1359,7 @@ final List<Question> questionsA02 = [
       zu('Es lässt sich leicht überallhin mitnehmen.', 1),
     ],
     explanation:
-        'Das Merkmal ist eine Eigenschaft des Produkts, der Vorteil das, was es dadurch besser kann, der Nutzen der konkrete Gewinn für genau diesen Kunden - oft als Sie-Formulierung.',
+        'Das Merkmal ist eine Eigenschaft des Produkts, der Vorteil das, was es dadurch besser kann, der Nutzen der konkrete Gewinn für genau diesen Kunden, oft als Sie-Formulierung.',
   ),
   einfach(
     'a2-ve-5',
@@ -1413,7 +1413,7 @@ final List<Question> questionsA02 = [
         'Eine Rückfrage klärt, woran die Kundin den Preis misst.',
       ),
       ja(
-        '„Ja, der Preis ist höher als eine USB-Festplatte - dafür läuft die Sicherung automatisch und außer Haus.“',
+        '„Ja, der Preis ist höher als eine USB-Festplatte. Dafür läuft die Sicherung automatisch und außer Haus.“',
         'Ja-aber: zustimmen und ein Gegenargument ergänzen.',
       ),
       ja(
@@ -1426,7 +1426,7 @@ final List<Question> questionsA02 = [
       ),
       nein(
         'Sofort 20 % Rabatt anbieten, ohne nachzufragen',
-        'Ohne Rückfrage weißt du nicht, ob es wirklich am Preis liegt - und verschenkst Marge.',
+        'Ohne Rückfrage weißt du nicht, ob es wirklich am Preis liegt, und verschenkst Marge.',
       ),
     ],
     explanation:
@@ -1483,7 +1483,7 @@ final List<Question> questionsA02 = [
       ),
     ],
     explanation:
-        'Gute Folien sind knapp, einheitlich und visuell: eine Kernaussage pro Folie, wenig Text in großer Schrift, Diagramme statt Zahlenkolonnen - der Vortrag liefert die Erklärung.',
+        'Gute Folien sind knapp, einheitlich und visuell: eine Kernaussage pro Folie, wenig Text in großer Schrift, Diagramme statt Zahlenkolonnen. Der Vortrag liefert die Erklärung.',
   ),
   lueckentext(
     'a2-pp-3',
@@ -1509,7 +1509,7 @@ final List<Question> questionsA02 = [
       wahl('übst', ['kürzt', 'verschickst'], 'Geübt wird, wenn alles steht.'),
     ],
     explanation:
-        'Erst klären, was die Zuhörer danach wissen oder tun sollen und was sie mitbringen - dann Inhalte sammeln, gliedern, Folien gestalten und zum Schluss üben.',
+        'Erst klären, was die Zuhörer danach wissen oder tun sollen und was sie mitbringen. Dann Inhalte sammeln, gliedern, Folien gestalten und zum Schluss üben.',
   ),
 
   reihenfolge(
@@ -1527,7 +1527,7 @@ final List<Question> questionsA02 = [
       'Vortrag üben',
     ],
     explanation:
-        'Ohne Ziel und Zielgruppe lassen sich Inhalte nicht sinnvoll auswählen. Erst wenn Inhalt und Gliederung stehen, werden Folien gestaltet - geübt wird zum Schluss.',
+        'Ohne Ziel und Zielgruppe lassen sich Inhalte nicht sinnvoll auswählen. Erst wenn Inhalt und Gliederung stehen, werden Folien gestaltet; geübt wird zum Schluss.',
     difficulty: 1,
   ),
   zuordnen(
@@ -1565,7 +1565,7 @@ final List<Question> questionsA02 = [
     choices: [
       ja(
         'Der Unterschied von 87 € wirkt, als wäre ein Angebot doppelt so teuer.',
-        'Ab 7.900 € gemessen ist ein Balken 88 €, der andere 175 € lang - ein verzerrter Eindruck.',
+        'Ab 7.900 € gemessen ist ein Balken 88 €, der andere 175 € lang, ein verzerrter Eindruck.',
       ),
       nein(
         'Balkendiagramme sind für Kostenvergleiche ungeeignet.',
@@ -1625,7 +1625,7 @@ final List<Question> questionsA02 = [
       zu('Eigene Messung der Übertragungsrate', 0),
     ],
     explanation:
-        'Primärquellen liefern Originalinformation, Sekundärquellen bereiten sie auf - und können dabei Fehler einbauen.',
+        'Primärquellen liefern Originalinformation, Sekundärquellen bereiten sie auf und können dabei Fehler einbauen.',
   ),
   freitext(
     'a2-pq-2',
@@ -1636,7 +1636,7 @@ final List<Question> questionsA02 = [
         'Nenne drei Kriterien, nach denen du die Qualität einer Informationsquelle bewertest.',
     kriterien: [
       krit(
-        'Aktualität - gerade in der IT veralten Informationen schnell',
+        'Aktualität: Gerade in der IT veralten Informationen schnell',
         stichwoerter: ['aktuell', 'Aktualität', 'Datum', 'veraltet'],
       ),
       krit(
@@ -1650,7 +1650,7 @@ final List<Question> questionsA02 = [
         ],
       ),
       krit(
-        'Objektivität - verfolgt der Autor ein Verkaufsinteresse?',
+        'Objektivität: Verfolgt der Autor ein Verkaufsinteresse?',
         stichwoerter: [
           'objektiv',
           'neutral',
@@ -1660,7 +1660,7 @@ final List<Question> questionsA02 = [
         ],
       ),
       krit(
-        'Nachprüfbarkeit - sind die Aussagen belegt?',
+        'Nachprüfbarkeit: Sind die Aussagen belegt?',
         stichwoerter: [
           'nachprüfbar',
           'Belege',
@@ -1676,9 +1676,9 @@ final List<Question> questionsA02 = [
     ],
     punkte: 3,
     loesung:
-        'Ich prüfe die Aktualität (Datum der Veröffentlichung), den Urheber und seine Kompetenz sowie die Objektivität - also ob der Autor ein Verkaufsinteresse hat. Weitere Kriterien sind Nachprüfbarkeit und Relevanz.',
+        'Ich prüfe die Aktualität (Datum der Veröffentlichung), den Urheber und seine Kompetenz sowie die Objektivität, also ob der Autor ein Verkaufsinteresse hat. Weitere Kriterien sind Nachprüfbarkeit und Relevanz.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 3. Aktualität, Urheber, Objektivität, Nachprüfbarkeit und Relevanz entscheiden über die Qualität einer Quelle - nicht Länge oder Zahl der Bilder.',
+        'Je Nennung 1 Punkt, höchstens 3. Aktualität, Urheber, Objektivität, Nachprüfbarkeit und Relevanz entscheiden über die Qualität einer Quelle, nicht Länge oder Zahl der Bilder.',
   ),
   einfach(
     'a2-pq-3',
@@ -1712,19 +1712,19 @@ final List<Question> questionsA02 = [
     prompt: 'Darfst du das Foto verwenden?',
     choices: [
       ja(
-        'Nein - NC schließt kommerzielle Nutzung aus, und die Präsentation dient geschäftlichen Zwecken.',
+        'Nein: NC schließt kommerzielle Nutzung aus, und die Präsentation dient geschäftlichen Zwecken.',
         'Eine Kundenakquise ist eine geschäftliche Nutzung.',
       ),
       nein(
-        'Ja - mit Namensnennung ist jede Nutzung erlaubt.',
+        'Ja, mit Namensnennung ist jede Nutzung erlaubt.',
         'BY verlangt die Namensnennung, NC verbietet aber zusätzlich die kommerzielle Nutzung.',
       ),
       nein(
-        'Ja - Bilder aus der Suchmaschine sind frei verwendbar.',
-        'Auffindbar heißt nicht frei nutzbar - die Lizenz entscheidet.',
+        'Ja: Bilder aus der Suchmaschine sind frei verwendbar.',
+        'Auffindbar heißt nicht frei nutzbar. Die Lizenz entscheidet.',
       ),
       nein(
-        'Ja - wenn du das Bild vorher bearbeitest.',
+        'Ja, wenn du das Bild vorher bearbeitest.',
         'Eine Bearbeitung ändert nichts am NC-Baustein.',
       ),
     ],
@@ -1751,11 +1751,11 @@ final List<Question> questionsA02 = [
       ),
       nein(
         'Der Text wird leicht umformuliert, damit er nicht auffällt.',
-        'Fremde Gedanken ohne Kennzeichnung sind ein Plagiat - auch umformuliert.',
+        'Fremde Gedanken ohne Kennzeichnung sind ein Plagiat, auch umformuliert.',
       ),
       nein(
         'Der Artikel ist älter als ein Jahr.',
-        'Das Alter spielt keine Rolle - das Urheberrecht gilt bis 70 Jahre nach dem Tod des Urhebers.',
+        'Das Alter spielt keine Rolle. Das Urheberrecht gilt bis 70 Jahre nach dem Tod des Urhebers.',
       ),
     ],
     explanation:
@@ -1789,7 +1789,7 @@ final List<Question> questionsA02 = [
     choices: [
       ja(
         'URL und Abrufdatum',
-        'Webseiten ändern sich - das Datum zeigt, welcher Stand gemeint ist.',
+        'Webseiten ändern sich. Das Datum zeigt, welcher Stand gemeint ist.',
       ),
       nein('ISBN und Auflage', 'Das sind Angaben für Bücher.'),
       nein(
@@ -1823,7 +1823,7 @@ final List<Question> questionsA02 = [
       wahl(
         'verbindlich',
         ['unverbindlich', 'nur eine Werbung'],
-        'Ein Angebot ist ein Antrag - der Anbieter ist daran gebunden.',
+        'Ein Angebot ist ein Antrag. Der Anbieter ist daran gebunden.',
       ),
       wahl('kommt der Vertrag zustande', [
         'entsteht ein neues Angebot',
@@ -1845,19 +1845,19 @@ final List<Question> questionsA02 = [
     prompt: 'Ist der Händler noch gebunden?',
     choices: [
       ja(
-        'Nein - unter Abwesenden bindet ein Angebot nur so lange, wie unter normalen Umständen mit einer Antwort zu rechnen ist.',
-        'Sechs Wochen sind deutlich zu lang - die Bestellung ist ein neues Angebot des Kunden.',
+        'Nein, unter Abwesenden bindet ein Angebot nur so lange, wie unter normalen Umständen mit einer Antwort zu rechnen ist.',
+        'Sechs Wochen sind deutlich zu lang. Die Bestellung ist ein neues Angebot des Kunden.',
       ),
       nein(
-        'Ja - Angebote gelten unbegrenzt.',
+        'Ja: Angebote gelten unbegrenzt.',
         'Ohne Frist gilt die übliche Antwortzeit.',
       ),
       nein(
-        'Ja - E-Mail-Angebote gelten immer drei Monate.',
+        'Ja: E-Mail-Angebote gelten immer drei Monate.',
         'Eine solche Regel gibt es nicht.',
       ),
       nein(
-        'Nein - E-Mail-Angebote sind nie verbindlich.',
+        'Nein: E-Mail-Angebote sind nie verbindlich.',
         'Auch E-Mail-Angebote binden.',
       ),
     ],
@@ -2067,7 +2067,7 @@ final List<Question> questionsA02 = [
       ],
     ],
     explanation:
-        'Polypol: viele Anbieter und viele Nachfrager. Oligopol: wenige. Monopol: einer. Je weniger Anbieter, desto größer ihre Macht über den Preis - am größten im Angebotsmonopol.',
+        'Polypol: viele Anbieter und viele Nachfrager. Oligopol: wenige. Monopol: einer. Je weniger Anbieter, desto größer ihre Macht über den Preis; am größten im Angebotsmonopol.',
   ),
   einfach(
     'a2-mm-3',
@@ -2159,7 +2159,7 @@ final List<Question> questionsA02 = [
       ),
     ],
     explanation:
-        'Primärforschung erhebt neue Daten (Befragung, Beobachtung, Test). Sekundärforschung wertet vorhandene Daten aus - auch interne wie die eigene Umsatzstatistik.',
+        'Primärforschung erhebt neue Daten (Befragung, Beobachtung, Test). Sekundärforschung wertet vorhandene Daten aus, auch interne wie die eigene Umsatzstatistik.',
     difficulty: 2,
   ),
   einfach(
@@ -2187,7 +2187,7 @@ final List<Question> questionsA02 = [
         'Auf dem Markt für gebrauchte Business-Notebooks liegt der Gleichgewichtspreis bei 300 €. Die Händler verlangen derzeit 380 €.',
     prompt: 'Wähle für jede Lücke den passenden Begriff.',
     text:
-        'Beim Preis von 380 € ist die angebotene Menge {0} als die nachgefragte - es entsteht ein {1}. Die Händler bleiben auf Ware sitzen, der Preis wird deshalb tendenziell {2}. Beim Gleichgewichtspreis sind angebotene und nachgefragte Menge {3}.',
+        'Beim Preis von 380 € ist die angebotene Menge {0} als die nachgefragte. Es entsteht ein {1}. Die Händler bleiben auf Ware sitzen, der Preis wird deshalb tendenziell {2}. Beim Gleichgewichtspreis sind angebotene und nachgefragte Menge {3}.',
     luecken: [
       wahl('größer', [
         'kleiner',
@@ -2207,7 +2207,7 @@ final List<Question> questionsA02 = [
       ], 'Dort schneiden sich Angebots- und Nachfragekurve.'),
     ],
     explanation:
-        'Im Gleichgewicht schneiden sich Angebots- und Nachfragekurve. Liegt der Preis darüber, bleiben Anbieter auf Ware sitzen (Angebotsüberhang) - der Preis sinkt Richtung Gleichgewicht.',
+        'Im Gleichgewicht schneiden sich Angebots- und Nachfragekurve. Liegt der Preis darüber, bleiben Anbieter auf Ware sitzen (Angebotsüberhang). Der Preis sinkt Richtung Gleichgewicht.',
   ),
 
   // ============================================================== Bedarf ermitteln
@@ -2215,7 +2215,7 @@ final List<Question> questionsA02 = [
     'a2-mb-1',
     'm-bedarf',
     prompt:
-        'Bringe die Begriffe in die richtige Reihenfolge - vom ersten Gefühl bis zum Kauf.',
+        'Bringe die Begriffe in die richtige Reihenfolge, vom ersten Gefühl bis zum Kauf.',
     items: ['Bedürfnis', 'Bedarf', 'Nachfrage'],
     explanation:
         'Bedürfnis (Mangel), Bedarf (Bedürfnis mit Kaufkraft), Nachfrage (am Markt wirksamer Bedarf).',
@@ -2226,7 +2226,7 @@ final List<Question> questionsA02 = [
     scenario:
         'Ein Verkäufer will seine Argumente an den Bedürfnissen der Kunden ausrichten und nutzt dafür die Bedürfnispyramide nach Maslow.',
     prompt:
-        'Bringe die Stufen der Pyramide in die richtige Reihenfolge - von unten nach oben.',
+        'Bringe die Stufen der Pyramide in die richtige Reihenfolge, von unten nach oben.',
     items: [
       'Grundbedürfnisse',
       'Sicherheitsbedürfnisse',
@@ -2249,7 +2249,7 @@ final List<Question> questionsA02 = [
         'Gute Beratung orientiert sich am Bedarf, nicht am Wunsch.',
       ),
       nein(
-        'Den Server liefern - der Kunde hat es so gewollt',
+        'Den Server liefern, der Kunde hat es so gewollt',
         'Überdimensioniert und teuer ohne Nutzen.',
       ),
       nein('Den Auftrag ablehnen', 'Verschenkt eine sinnvolle Lösung.'),
@@ -2280,14 +2280,14 @@ final List<Question> questionsA02 = [
       zu('Timo hat 1.500 € gespart und könnte sich den Rechner leisten.', 1),
     ],
     explanation:
-        'Ein Bedürfnis ist ein empfundener Mangel. Kommt Kaufkraft dazu, wird daraus Bedarf. Tritt der Bedarf am Markt auf - etwa durch eine Bestellung -, ist es Nachfrage.',
+        'Ein Bedürfnis ist ein empfundener Mangel. Kommt Kaufkraft dazu, wird daraus Bedarf. Tritt der Bedarf am Markt auf, etwa durch eine Bestellung, ist es Nachfrage.',
     difficulty: 1,
   ),
   einfach(
     'a2-mb-5',
     'm-bedarf',
     scenario:
-        'Bei der Bedarfsanalyse wünscht sich ein Kunde nur „schnellere Rechner“. Du stellst fest, dass seine Daten nirgends gesichert werden - daran hat er selbst nicht gedacht.',
+        'Bei der Bedarfsanalyse wünscht sich ein Kunde nur „schnellere Rechner“. Du stellst fest, dass seine Daten nirgends gesichert werden. Daran hat er selbst nicht gedacht.',
     prompt: 'Wie nennt man den Bedarf an einer Datensicherung in diesem Fall?',
     choices: [
       ja('latenter Bedarf', 'Er besteht, ist dem Kunden aber nicht bewusst.'),
@@ -2413,7 +2413,7 @@ final List<Question> questionsA02 = [
       paar('Action', '„Jetzt 30 Tage kostenlos testen“'),
     ],
     explanation:
-        'AIDA: Aufmerksamkeit wecken (Attention), Interesse erzeugen (Interest), Wunsch auslösen (Desire), zum Handeln bewegen (Action) - etwa kaufen, testen oder anrufen.',
+        'AIDA: Aufmerksamkeit wecken (Attention), Interesse erzeugen (Interest), Wunsch auslösen (Desire), zum Handeln bewegen (Action), etwa kaufen, testen oder anrufen.',
   ),
 
   zuordnen(
@@ -2423,7 +2423,7 @@ final List<Question> questionsA02 = [
     buckets: ['Penetration', 'Abschöpfung (Skimming)', 'Preisdifferenzierung'],
     items: [
       zu(
-        'Ein Messenger ist zum Start kostenlos, um schnell viele Nutzer zu gewinnen - später kommen Gebühren.',
+        'Ein Messenger ist zum Start kostenlos, um schnell viele Nutzer zu gewinnen, später kommen Gebühren.',
         0,
       ),
       zu(
@@ -2520,19 +2520,19 @@ final List<Question> questionsA02 = [
         'In welcher Phase des Produktlebenszyklus ist das Produkt, und was passt dazu?',
     choices: [
       ja(
-        'Reife - sich mit Zusatzfunktionen und Service von der Konkurrenz abheben',
+        'Reife: sich mit Zusatzfunktionen und Service von der Konkurrenz abheben',
         'Hoher, kaum noch wachsender Umsatz bei starker Konkurrenz kennzeichnet die Reife.',
       ),
       nein(
-        'Einführung - das Produkt erst bekannt machen',
+        'Einführung: das Produkt erst bekannt machen',
         'In der Einführung ist der Umsatz noch gering.',
       ),
       nein(
-        'Wachstum - den Vertrieb stark ausbauen',
+        'Wachstum: den Vertrieb stark ausbauen',
         'Im Wachstum steigt der Umsatz stark an.',
       ),
       nein(
-        'Rückgang - das Produkt sofort vom Markt nehmen',
+        'Rückgang: das Produkt sofort vom Markt nehmen',
         'Der Umsatz sinkt nicht, er ist hoch.',
       ),
     ],
@@ -2552,7 +2552,7 @@ final List<Question> questionsA02 = [
     answer: 75,
     unit: '%',
     explanation:
-        'P1: 50.000 / 100.000 = 50 %. P2: 25 %. Kumuliert: 50 % + 25 % = 75 % - bei einer üblichen A-Grenze von 75 bis 80 % gehören beide zur A-Klasse.',
+        'P1: 50.000 / 100.000 = 50 %. P2: 25 %. Kumuliert: 50 % + 25 % = 75 %. Bei einer üblichen A-Grenze von 75 bis 80 % gehören beide zur A-Klasse.',
   ),
   reihenfolge(
     'a2-ma-2',
@@ -2596,7 +2596,7 @@ final List<Question> questionsA02 = [
       ],
     ],
     explanation:
-        'A: wenige Kunden mit großem Umsatzanteil - intensiv betreuen. C: viele Kunden mit kleinem Umsatzanteil - effizient und standardisiert betreuen, aber nicht kündigen. B liegt dazwischen.',
+        'A: wenige Kunden mit großem Umsatzanteil, intensiv betreuen. C: viele Kunden mit kleinem Umsatzanteil, effizient und standardisiert betreuen, aber nicht kündigen. B liegt dazwischen.',
   ),
 
   rechnen(
@@ -2725,7 +2725,7 @@ final List<Question> questionsA02 = [
         'Womit haften die Gesellschafter einer GmbH für Schulden der Gesellschaft?',
     choices: [
       ja(
-        'Nur mit ihrer Einlage - die GmbH haftet mit ihrem Gesellschaftsvermögen',
+        'Nur mit ihrer Einlage; die GmbH haftet mit ihrem Gesellschaftsvermögen',
         'Das Privatvermögen der Gesellschafter ist grundsätzlich geschützt.',
       ),
       nein(
@@ -2733,8 +2733,8 @@ final List<Question> questionsA02 = [
         'Das gilt bei Personengesellschaften wie OHG oder GbR.',
       ),
       nein(
-        'Gar nicht - eine GmbH haftet nie',
-        'Die GmbH haftet - aber mit ihrem eigenen Vermögen.',
+        'Gar nicht, eine GmbH haftet nie',
+        'Die GmbH haftet, aber mit ihrem eigenen Vermögen.',
       ),
       nein(
         'Nur mit dem Geschäftsführergehalt',
@@ -2742,7 +2742,7 @@ final List<Question> questionsA02 = [
       ),
     ],
     explanation:
-        'Bei Kapitalgesellschaften haftet das Gesellschaftsvermögen. Gesellschafter riskieren ihre Einlage - außer sie haben sich zusätzlich persönlich verbürgt.',
+        'Bei Kapitalgesellschaften haftet das Gesellschaftsvermögen. Gesellschafter riskieren ihre Einlage, außer sie haben sich zusätzlich persönlich verbürgt.',
   ),
   rechnen(
     'a2-mr-4',
@@ -2768,7 +2768,7 @@ final List<Question> questionsA02 = [
     unit: '€',
     tolerance: 0.01,
     explanation:
-        'Aus dem Vermögen der KG werden 35.000 € gezahlt, offen bleiben 80.000 € − 35.000 € = 45.000 €. Frau Kaya haftet nur bis zur Höhe ihrer Einlage, die sie bereits voll eingezahlt hat - sie muss nichts nachzahlen. Der Komplementär haftet unbeschränkt und trägt die 45.000 €.',
+        'Aus dem Vermögen der KG werden 35.000 € gezahlt, offen bleiben 80.000 € − 35.000 € = 45.000 €. Frau Kaya haftet nur bis zur Höhe ihrer Einlage, die sie bereits voll eingezahlt hat. Sie muss nichts nachzahlen. Der Komplementär haftet unbeschränkt und trägt die 45.000 €.',
     difficulty: 3,
   ),
   zuordnen(
@@ -2810,7 +2810,7 @@ final List<Question> questionsA02 = [
     choices: [
       ja(
         'Eine KG, deren Komplementär eine GmbH ist',
-        'Die unbeschränkt haftende Gesellschafterin ist eine GmbH - so haftet im Ergebnis keine natürliche Person privat.',
+        'Die unbeschränkt haftende Gesellschafterin ist eine GmbH. So haftet im Ergebnis keine natürliche Person privat.',
       ),
       nein(
         'Eine GmbH mit zusätzlichen Kommanditisten',

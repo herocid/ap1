@@ -230,7 +230,7 @@ final List<ExamCase> casesA02 = [
             ],
           ),
           krit(
-            'Nach der Laufzeit können neue Geräte geleast werden - die Technik bleibt aktuell.',
+            'Nach der Laufzeit können neue Geräte geleast werden. Die Technik bleibt aktuell.',
             stichwoerter: [
               'aktuell',
               'neue Geräte',
@@ -262,7 +262,7 @@ final List<ExamCase> casesA02 = [
         prompt: 'Erläutere, was die Kaufoption für die Kanzlei bedeutet.',
         kriterien: [
           krit(
-            'Am Ende der Laufzeit kann die Kanzlei die Notebooks kaufen - sie muss es aber nicht.',
+            'Am Ende der Laufzeit kann die Kanzlei die Notebooks kaufen. Sie muss es aber nicht.',
             stichwoerter: [
               'Ende der Laufzeit',
               'Vertragsende',
@@ -400,7 +400,7 @@ final List<ExamCase> casesA02 = [
         loesung:
             'Ich vergleiche je Position die Menge mit Bestellung und Lieferschein (4 Bondrucker, 4 Kassenschubladen, 2 Bücher). Ich prüfe, ob die Einzelpreise der Bestellung entsprechen. Und ich kontrolliere den Steuersatz: 19 % für die Geräte, 7 % für das Fachbuch.',
         explanation:
-            'Je beschriebener Kontrolle 2 Punkte, höchstens 6. Gewertet werden nur Kontrollen der Positionen (Artikel, Menge, Einzelpreis, Steuersatz, Rechenweg) - nicht Anschrift oder Bankverbindung.',
+            'Je beschriebener Kontrolle 2 Punkte, höchstens 6. Gewertet werden nur Kontrollen der Positionen (Artikel, Menge, Einzelpreis, Steuersatz, Rechenweg), nicht Anschrift oder Bankverbindung.',
       ),
       rechnen(
         'f-a02-handel-c',
@@ -516,7 +516,7 @@ final List<ExamCase> casesA02 = [
           ),
           nein(
             'Der GiroCode ersetzt die Prüfung der Rechnung.',
-            'Der Code enthält nur Zahlungsdaten - ob die Rechnung stimmt, muss weiter geprüft werden.',
+            'Der Code enthält nur Zahlungsdaten. Ob die Rechnung stimmt, muss weiter geprüft werden.',
           ),
           ja(
             'Der Lieferant kann den Zahlungseingang leichter zuordnen.',
@@ -730,7 +730,7 @@ final List<ExamCase> casesA02 = [
         ],
         punkte: 4,
         loesung:
-            'Erstens werden die Aufgaben nur einmal pro Woche verteilt - eine dringende Störung kann also tagelang liegen bleiben. Zweitens werden die Meldungen von Hand in eine Tabelle übertragen: Das ist fehleranfällig, und weder Kunde noch Team sehen den aktuellen Status.',
+            'Erstens werden die Aufgaben nur einmal pro Woche verteilt. Eine dringende Störung kann also tagelang liegen bleiben. Zweitens werden die Meldungen von Hand in eine Tabelle übertragen: Das ist fehleranfällig, und weder Kunde noch Team sehen den aktuellen Status.',
         explanation:
             'Je beschriebener Schwachstelle 2 Punkte, höchstens 4. Kritikpunkte: nur ein Meldeweg, manuelle und unübersichtliche Datenhaltung, langsamer Planungstakt ohne Priorisierung, kurze Servicezeiten.',
       ),
@@ -848,7 +848,7 @@ final List<ExamCase> casesA02 = [
         ],
         punkte: 2,
         explanation:
-            'Zu langsam: „customers who wait for days often move to a competitor“ - Kunden wandern zur Konkurrenz ab. Zu schnell: „leads to wrong solutions and extra work“ - falsche Lösungen und zusätzliche Arbeit.',
+            'Zu langsam: „customers who wait for days often move to a competitor“: Kunden wandern zur Konkurrenz ab. Zu schnell: „leads to wrong solutions and extra work“: falsche Lösungen und zusätzliche Arbeit.',
       ),
       freitext(
         'f-a02-agentur-f',
@@ -899,7 +899,7 @@ final List<ExamCase> casesA02 = [
         'f-a02-agentur-g',
         'k-modelle',
         scenario:
-            'Ein Kunde ruft an und sagt: „Seit drei Tagen warte ich auf eine Antwort - bei dem, was wir Ihnen zahlen!“',
+            'Ein Kunde ruft an und sagt: „Seit drei Tagen warte ich auf eine Antwort. Bei dem, was wir Ihnen zahlen!“',
         prompt:
             'Deute die Aussage nach dem Vier-Seiten-Modell: Wähle zu jeder Seite die passende Botschaft.',
         zeilen: [
@@ -968,11 +968,11 @@ final List<ExamCase> casesA02 = [
           ], 'Wenige Anbieter, viele Nachfrager.'),
           wort([
             'Polypol',
-          ], 'Viele Anbieter, viele Nachfrager - vollständige Konkurrenz.'),
+          ], 'Viele Anbieter, viele Nachfrager: vollständige Konkurrenz.'),
         ],
         punkte: 2,
         explanation:
-            'Wenige Anbieter und viele Nachfrager bilden ein Angebotsoligopol, viele Anbieter und viele Nachfrager ein Polypol. Im Polypol bestimmt der Wettbewerb den Preis - gut für den Einkauf.',
+            'Wenige Anbieter und viele Nachfrager bilden ein Angebotsoligopol, viele Anbieter und viele Nachfrager ein Polypol. Im Polypol bestimmt der Wettbewerb den Preis, und das ist gut für den Einkauf.',
       ),
       tabelle(
         'f-a02-logistik-b',
@@ -994,7 +994,7 @@ final List<ExamCase> casesA02 = [
         ],
         punkte: 3,
         explanation:
-            'Rabatt und Skonto gibt es hier nicht - entscheidend ist die Lieferbedingung. L1 „ab Werk“: 200 € + 6 € Fracht = 206 €. L2 und L3 liefern frei Haus: 215 € und 240 €.',
+            'Rabatt und Skonto gibt es hier nicht. Entscheidend ist die Lieferbedingung. L1 „ab Werk“: 200 € + 6 € Fracht = 206 €. L2 und L3 liefern frei Haus: 215 € und 240 €.',
       ),
       tabelle(
         'f-a02-logistik-c',

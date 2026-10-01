@@ -73,14 +73,14 @@ final List<Nugget> nuggetsA03Systeme = [
     'Die Leistung einer CPU hängt nicht nur am Takt. Im Datenblatt stehen mehrere Werte, die du deuten können musst.',
     table: [
       ['Kennzahl', 'Bedeutung'],
-      ['Kerne', 'eigenständige Recheneinheiten - echte Parallelität'],
+      ['Kerne', 'eigenständige Recheneinheiten: echte Parallelität'],
       [
         'Threads',
         'gleichzeitige Befehlsstränge; mit SMT (Hyper-Threading) 2 je Kern',
       ],
       ['Takt (GHz)', 'Arbeitsschritte pro Sekunde; Basis- und Boost-Takt'],
       ['Cache (L1-L3)', 'sehr schneller Zwischenspeicher auf dem Chip'],
-      ['TDP (Watt)', 'Wärmeabgabe - bestimmt Kühlung und Verbrauch'],
+      ['TDP (Watt)', 'Wärmeabgabe: bestimmt Kühlung und Verbrauch'],
       ['Architektur', 'Befehlssatz, z. B. x86-64 oder ARM'],
     ],
     merksatz:
@@ -90,12 +90,12 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-hk-5',
     'h-komponenten',
     'Arbeitsspeicher (RAM)',
-    'Der Arbeitsspeicher hält laufende Programme und ihre Daten. Er ist flüchtig: Ohne Strom ist der Inhalt weg. Reicht er nicht, lagert das Betriebssystem auf die SSD aus - das ist um ein Vielfaches langsamer und macht den Rechner träge.',
+    'Der Arbeitsspeicher hält laufende Programme und ihre Daten. Er ist flüchtig: Ohne Strom ist der Inhalt weg. Reicht er nicht, lagert das Betriebssystem auf die SSD aus. Das ist um ein Vielfaches langsamer und macht den Rechner träge.',
     points: [
       'Generation: DDR4 und DDR5 sind nicht steckkompatibel',
       'Kapazität: fürs Büro heute 16 GB, für Entwicklung und CAD 32 GB und mehr',
       'Dual-Channel: zwei gleiche Module verdoppeln die Bandbreite',
-      'ECC-RAM erkennt und korrigiert Bitfehler - Standard in Servern',
+      'ECC-RAM erkennt und korrigiert Bitfehler: Standard in Servern',
     ],
   ),
   beispiel(
@@ -153,7 +153,7 @@ final List<Nugget> nuggetsA03Systeme = [
     schritte: [
       'Wirkungsgrad η = abgegebene Leistung / aufgenommene Leistung',
       'Aufnahme = 300 W / 0,9 = 333,3 W',
-      'Verlust = 333,3 W - 300 W = 33,3 W - wird zu Wärme',
+      'Verlust = 333,3 W - 300 W = 33,3 W, sie wird zu Wärme',
     ],
     ergebnis: 'rund 333 W Aufnahme, 33 W Verlust',
     merksatz:
@@ -187,7 +187,7 @@ final List<Nugget> nuggetsA03Systeme = [
       ['Stand', 'seit den 1980ern', 'heutiger Standard'],
       ['Partitionstabelle', 'MBR, max. 2 TiB', 'GPT, sehr große Datenträger'],
       ['Oberfläche', 'Text, Tastatur', 'grafisch, auch mit Maus'],
-      ['Secure Boot', 'nein', 'ja - startet nur signierte Bootloader'],
+      ['Secure Boot', 'nein', 'ja: startet nur signierte Bootloader'],
     ],
   ),
   vergleich(
@@ -203,14 +203,14 @@ final List<Nugget> nuggetsA03Systeme = [
       ['Thin Client', 'sparsam, 4-8 GB', 'Programme laufen auf dem Server'],
     ],
     points: [
-      'Notebook statt Desktop, wenn mobil gearbeitet wird - dann auch Akku, Gewicht und Dockingstation bedenken',
+      'Notebook statt Desktop, wenn mobil gearbeitet wird; dann auch Akku, Gewicht und Dockingstation bedenken',
     ],
   ),
   falle(
     'n-hk-13',
     'h-komponenten',
     'Passt die Komponente?',
-    'Ein Prozessor passt nur in ein Mainboard mit passendem Sockel und Chipsatz. Arbeitsspeicher muss zur unterstützten Generation passen - DDR5-Module passen nicht in DDR4-Steckplätze. Und eine starke Grafikkarte braucht ein Netzteil mit genug Leistung und den passenden Anschlüssen.',
+    'Ein Prozessor passt nur in ein Mainboard mit passendem Sockel und Chipsatz. Arbeitsspeicher muss zur unterstützten Generation passen: DDR5-Module passen nicht in DDR4-Steckplätze. Und eine starke Grafikkarte braucht ein Netzteil mit genug Leistung und den passenden Anschlüssen.',
   ),
   merke(
     'n-hk-14',
@@ -220,11 +220,11 @@ final List<Nugget> nuggetsA03Systeme = [
     points: [
       'EVA: Eingabe, Verarbeitung, Ausgabe plus Speicherung',
       'CPU: Kerne, Threads, Takt, Cache, TDP',
-      'RAM ist flüchtig - zu wenig RAM macht den Rechner träge',
+      'RAM ist flüchtig; zu wenig RAM macht den Rechner träge',
       'Start: POST, UEFI, Bootloader, Kernel',
     ],
     satz:
-        'Erst klären, was der Arbeitsplatz braucht - dann Komponenten wählen, die zueinander passen.',
+        'Erst klären, was der Arbeitsplatz braucht. Dann Komponenten wählen, die zueinander passen.',
   ),
 
   // ======================================================= Speicher: HDD und SSD
@@ -251,7 +251,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-hs-2',
     'h-speicher',
     'Flüchtig oder nicht flüchtig?',
-    'Flüchtige Speicher verlieren ihren Inhalt ohne Strom. Nicht flüchtige behalten ihn - deshalb landen Dateien dort.',
+    'Flüchtige Speicher verlieren ihren Inhalt ohne Strom. Nicht flüchtige behalten ihn. Deshalb landen Dateien dort.',
     [
       ['Art', 'Beispiele', 'Einsatz'],
       ['flüchtig', 'Register, Cache, RAM', 'laufende Programme'],
@@ -286,7 +286,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-hs-4',
     'h-speicher',
     'Anbindung und Bauform von SSDs',
-    'Auch SSDs sind nicht gleich schnell - entscheidend ist die Anbindung, nicht die Form.',
+    'Auch SSDs sind nicht gleich schnell. Entscheidend ist die Anbindung, nicht die Form.',
     [
       ['Variante', 'Anbindung', 'Lesen bis ca.'],
       ['2,5-Zoll-SSD', 'SATA', '550 MB/s'],
@@ -325,7 +325,7 @@ final List<Nugget> nuggetsA03Systeme = [
       ['Tera / Tebi', '1 TB = 1.000⁴ B', '1 TiB = 1.024⁴ B'],
     ],
     points: [
-      '1 Byte = 8 Bit - Datenraten stehen meist in Bit pro Sekunde, Dateigrößen in Byte',
+      '1 Byte = 8 Bit: Datenraten stehen meist in Bit pro Sekunde, Dateigrößen in Byte',
     ],
   ),
   formel(
@@ -350,7 +350,7 @@ final List<Nugget> nuggetsA03Systeme = [
       '1.000.000.000.000 / 1.073.741.824 ≈ 931,32',
       'Windows rechnet in GiB, beschriftet aber mit „GB“',
     ],
-    ergebnis: '1 TB ≈ 931,32 GiB - es fehlt nichts',
+    ergebnis: '1 TB ≈ 931,32 GiB, es fehlt nichts',
   ),
   beispiel(
     'n-hs-9',
@@ -389,7 +389,7 @@ final List<Nugget> nuggetsA03Systeme = [
       'mit Reserve: 1.300 GB × 1,2 = 1.560 GB',
       'nächste handelsübliche Größe wählen, z. B. 2 TB',
     ],
-    ergebnis: 'mindestens 1.560 GB - gewählt werden 2 TB',
+    ergebnis: 'mindestens 1.560 GB: gewählt werden 2 TB',
   ),
   falle(
     'n-hs-12',
@@ -410,7 +410,7 @@ final List<Nugget> nuggetsA03Systeme = [
       'Bild: Pixel × Farbtiefe; Audio: Abtastrate × Bit × Kanäle × Sekunden',
     ],
     satz:
-        'Bei Speicherrechnungen zuerst alles in Byte umrechnen - dann ist die Einheit nie das Problem.',
+        'Bei Speicherrechnungen zuerst alles in Byte umrechnen. Dann ist die Einheit nie das Problem.',
   ),
 
   // ============================================ Schnittstellen und Peripherie
@@ -418,7 +418,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-hi-1',
     'h-schnittstellen',
     'Was eine Schnittstelle ist',
-    'Eine Schnittstelle verbindet Komponenten oder Geräte über einen festgelegten Stecker, ein elektrisches Signal und ein Protokoll. Heute übertragen fast alle seriell - Bit für Bit, dafür sehr schnell.',
+    'Eine Schnittstelle verbindet Komponenten oder Geräte über einen festgelegten Stecker, ein elektrisches Signal und ein Protokoll. Heute übertragen fast alle seriell: Bit für Bit, dafür sehr schnell.',
     table: [
       ['Art', 'Beispiele'],
       ['intern', 'PCIe, SATA, M.2'],
@@ -460,7 +460,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-hi-4',
     'h-schnittstellen',
     'USB-C ist kein Tempo',
-    'USB-C beschreibt nur die Form des Steckers. Über einen USB-C-Anschluss kann USB 2.0 mit 480 Mbit/s laufen oder USB4 mit 40 Gbit/s. Welche Geschwindigkeit möglich ist, steht im Datenblatt - nicht auf dem Stecker. Auch das Kabel muss die Datenrate schaffen.',
+    'USB-C beschreibt nur die Form des Steckers. Über einen USB-C-Anschluss kann USB 2.0 mit 480 Mbit/s laufen oder USB4 mit 40 Gbit/s. Welche Geschwindigkeit möglich ist, steht im Datenblatt, nicht auf dem Stecker. Auch das Kabel muss die Datenrate schaffen.',
   ),
   formel(
     'n-hi-5',
@@ -514,9 +514,9 @@ final List<Nugget> nuggetsA03Systeme = [
       'Pixel pro Bild: 3840 × 2160 = 8.294.400',
       'Bit pro Bild: 8.294.400 × 24 = 199.065.600 Bit',
       'pro Sekunde: 199.065.600 × 60 ≈ 11,94 Gbit/s',
-      'HDMI 2.0 schafft 18 Gbit/s - das reicht; HDMI 1.4 mit 10,2 Gbit/s nicht',
+      'HDMI 2.0 schafft 18 Gbit/s. Das reicht; HDMI 1.4 mit 10,2 Gbit/s nicht',
     ],
-    ergebnis: 'rund 11,9 Gbit/s - HDMI 2.0 genügt',
+    ergebnis: 'rund 11,9 Gbit/s: HDMI 2.0 genügt',
   ),
   vergleich(
     'n-hi-9',
@@ -527,8 +527,8 @@ final List<Nugget> nuggetsA03Systeme = [
       ['Kennzahl', 'Bedeutung'],
       ['Auflösung', 'Full HD 1920 × 1080, WQHD 2560 × 1440, 4K 3840 × 2160'],
       ['Diagonale', 'in Zoll, 1 Zoll = 2,54 cm'],
-      ['Bildwiederholrate', 'in Hz - wichtig für flüssige Bewegung'],
-      ['Reaktionszeit', 'in ms - kurze Zeiten vermeiden Schlieren'],
+      ['Bildwiederholrate', 'in Hz, wichtig für flüssige Bewegung'],
+      ['Reaktionszeit', 'in ms: kurze Zeiten vermeiden Schlieren'],
       ['Panel IPS', 'gute Farben und Blickwinkel'],
       ['Panel VA', 'hoher Kontrast'],
       ['Panel TN', 'schnell und günstig, schwache Blickwinkel'],
@@ -587,7 +587,7 @@ final List<Nugget> nuggetsA03Systeme = [
       ['Voraussetzung', 'Warum'],
       [
         'PC-Ausgang mit MST',
-        'DisplayPort oder Thunderbolt - HDMI kann keine Kette',
+        'DisplayPort oder Thunderbolt: HDMI kann keine Kette',
       ],
       [
         'Monitor mit DP-Ausgang',
@@ -615,14 +615,13 @@ final List<Nugget> nuggetsA03Systeme = [
       'Vergleich: 8,96 Gbit/s liegt deutlich unter 32,4 Gbit/s',
       'Zusätzlich prüfen: PC-Ausgang und die ersten beiden Monitore müssen MST unterstützen',
     ],
-    ergebnis:
-        'rund 9 Gbit/s - die Kette passt an einen DisplayPort-1.4-Ausgang',
+    ergebnis: 'rund 9 Gbit/s, die Kette passt an einen DisplayPort-1.4-Ausgang',
   ),
   vergleich(
     'n-hi-17',
     'h-schnittstellen',
     'Anschlüsse am Gerät erkennen',
-    'Auf der Rückseite eines PCs sitzt das I/O-Panel mit allen Buchsen. In der Prüfung werden solche Buchsen als Bild gezeigt - du musst sie benennen und ihren Zweck kennen.',
+    'Auf der Rückseite eines PCs sitzt das I/O-Panel mit allen Buchsen. In der Prüfung werden solche Buchsen als Bild gezeigt. Du musst sie benennen und ihren Zweck kennen.',
     [
       ['Anschluss', 'Merkmal', 'Zweck'],
       ['RJ45', 'achtpolig, Rastnase', 'Netzwerkkabel (LAN)'],
@@ -634,7 +633,7 @@ final List<Nugget> nuggetsA03Systeme = [
       ['Kaltgerätebuchse', 'drei flache Stifte', 'Netzkabel 230 V'],
     ],
     points: [
-      'Die Kaltgerätebuchse (IEC C14) sitzt am Netzteil von PC, Monitor oder Drucker - hier steckt das Stromkabel',
+      'Die Kaltgerätebuchse (IEC C14) sitzt am Netzteil von PC, Monitor oder Drucker. Hier steckt das Stromkabel',
       'Thunderbolt nutzt die USB-C-Buchse und ist mit einem Blitz gekennzeichnet',
     ],
   ),
@@ -657,7 +656,7 @@ final List<Nugget> nuggetsA03Systeme = [
       'Folge: Der Port würde überlastet, das Gerät liefe instabil oder gar nicht',
     ],
     ergebnis:
-        '3,6 A - das schafft ein normaler USB-Port nicht, also Netzteil nutzen',
+        '3,6 A. Das schafft ein normaler USB-Port nicht, also Netzteil nutzen',
   ),
   falle(
     'n-hi-13',
@@ -676,7 +675,7 @@ final List<Nugget> nuggetsA03Systeme = [
       'HDMI und DisplayPort: Bild und Ton digital, VGA: analog',
       'Zeit = Datenmenge in Bit / Datenrate in Bit/s',
     ],
-    satz: 'Der Stecker sagt nichts über das Tempo - und Byte mal 8 ergibt Bit.',
+    satz: 'Der Stecker sagt nichts über das Tempo, und Byte mal 8 ergibt Bit.',
   ),
 
   // =================================================== USV und Stromversorgung
@@ -684,7 +683,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-hu-1',
     'h-usv',
     'Wozu eine USV?',
-    'Eine unterbrechungsfreie Stromversorgung (USV) überbrückt Stromausfälle mit einem Akku und glättet Störungen im Netz. Server und Netzwerktechnik laufen weiter - lange genug, um sie geordnet herunterzufahren.',
+    'Eine unterbrechungsfreie Stromversorgung (USV) überbrückt Stromausfälle mit einem Akku und glättet Störungen im Netz. Server und Netzwerktechnik laufen weiter, lange genug, um sie geordnet herunterzufahren.',
     points: [
       'Stromausfall',
       'Spannungseinbrüche und Überspannung',
@@ -716,14 +715,14 @@ final List<Nugget> nuggetsA03Systeme = [
     points: [
       'VFD: Ausgang abhängig von Spannung und Frequenz des Netzes',
       'VI: Ausgang unabhängig von der Netzspannung',
-      'VFI: Ausgang unabhängig von Spannung und Frequenz - bester Schutz',
+      'VFI: Ausgang unabhängig von Spannung und Frequenz, bester Schutz',
     ],
   ),
   skizze(
     'n-hu-3',
     'h-usv',
     'So arbeitet die Online-USV',
-    'Bei der Online-USV fließt der Strom immer über Gleichrichter und Wechselrichter. Fällt das Netz aus, speist der Akku den Zwischenkreis - ohne jede Umschaltung.',
+    'Bei der Online-USV fließt der Strom immer über Gleichrichter und Wechselrichter. Fällt das Netz aus, speist der Akku den Zwischenkreis, ohne jede Umschaltung.',
     const FlussDiagramm([
       FlussKnoten('Stromnetz (230 V ~)'),
       FlussKnoten('Gleichrichter', seitlich: 'lädt den Akku'),
@@ -763,9 +762,9 @@ final List<Nugget> nuggetsA03Systeme = [
       'Summe: 2 × 350 W + 60 W + 40 W + 50 W = 850 W',
       'mit Reserve: 850 W × 1,2 = 1.020 W',
       'Scheinleistung: 1.020 W / 0,8 = 1.275 VA',
-      'nächstgrößeres Modell wählen: 1.500 VA - liefert 1.500 × 0,8 = 1.200 W',
+      'nächstgrößeres Modell wählen: 1.500 VA, liefert 1.500 × 0,8 = 1.200 W',
     ],
-    ergebnis: 'mindestens 1.275 VA - gewählt wird eine 1.500-VA-USV',
+    ergebnis: 'mindestens 1.275 VA: gewählt wird eine 1.500-VA-USV',
   ),
   beispiel(
     'n-hu-6',
@@ -774,11 +773,11 @@ final List<Nugget> nuggetsA03Systeme = [
     'Eine USV hat 3.000 VA bei einem Leistungsfaktor von 0,9. Angeschlossen werden sollen Geräte mit zusammen 2.500 W. Reicht das?',
     schritte: [
       'Wirkleistung der USV: 3.000 VA × 0,9 = 2.700 W',
-      'Vergleich: 2.500 W ≤ 2.700 W - die Last passt',
+      'Vergleich: 2.500 W ≤ 2.700 W, die Last passt',
       'Auslastung: 2.500 W / 2.700 W ≈ 92,6 %',
-      'Reserve nur noch 200 W - für Erweiterungen zu knapp',
+      'Reserve nur noch 200 W; für Erweiterungen zu knapp',
     ],
-    ergebnis: 'reicht knapp (92,6 % Auslastung) - besser größer planen',
+    ergebnis: 'reicht knapp (92,6 % Auslastung): besser größer planen',
   ),
   formel(
     'n-hu-7',
@@ -789,7 +788,7 @@ final List<Nugget> nuggetsA03Systeme = [
         'Zeit (h)     = Energie (Wh) × Wirkungsgrad / Last (W)\n'
         'Zeit (min)   = Zeit (h) × 60',
     merksatz:
-        'Das ist eine Näherung. Genaue Werte liefern die Laufzeittabellen der Hersteller - bei halber Last hält der Akku oft mehr als doppelt so lange.',
+        'Das ist eine Näherung. Genaue Werte liefern die Laufzeittabellen der Hersteller; bei halber Last hält der Akku oft mehr als doppelt so lange.',
   ),
   beispiel(
     'n-hu-8',
@@ -824,7 +823,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'Auch eine USV braucht Pflege. Die Akkus altern und sind das Bauteil, das am häufigsten ausfällt.',
     points: [
       'Akkus nach etwa 3 bis 5 Jahren tauschen, bei Wärme früher',
-      'Raumtemperatur um 20-25 °C halten - Hitze verkürzt die Lebensdauer',
+      'Raumtemperatur um 20-25 °C halten: Hitze verkürzt die Lebensdauer',
       'regelmäßige Selbsttests und Überwachung per Software',
       'für lange Ausfälle: zusätzlich ein Notstromaggregat',
     ],
@@ -833,7 +832,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-hu-14',
     'h-usv',
     'Elektrische Leistung: P = U × I',
-    'Die Leistung eines Geräts ergibt sich aus Spannung mal Stromstärke. Die Formel steht in der Prüfung meist dabei - umstellen musst du sie selbst. Auf dem Typenschild eines Netzteils stehen Spannung und Strom, etwa „20 V / 4,5 A“.',
+    'Die Leistung eines Geräts ergibt sich aus Spannung mal Stromstärke. Die Formel steht in der Prüfung meist dabei, umstellen musst du sie selbst. Auf dem Typenschild eines Netzteils stehen Spannung und Strom, etwa „20 V / 4,5 A“.',
     'P (W) = U (V) × I (A)\n'
         'I (A) = P (W) / U (V)\n'
         'U (V) = P (W) / I (A)\n'
@@ -861,7 +860,7 @@ final List<Nugget> nuggetsA03Systeme = [
       'Höchstleistung der Leiste: P = U × I = 230 V × 16 A = 3.680 W',
       'Summe der Geräte: 2 × 300 W + 1.100 W + 2.000 W = 3.700 W',
       'Strom der Geräte: I = P / U = 3.700 W / 230 V ≈ 16,09 A',
-      'Vergleich: 16,09 A liegt über 16 A - die Leiste wäre überlastet',
+      'Vergleich: 16,09 A liegt über 16 A, die Leiste wäre überlastet',
     ],
     ergebnis:
         'nicht zulässig: 3.700 W bzw. 16,09 A überschreiten 3.680 W bzw. 16 A',
@@ -946,14 +945,14 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-ha-5',
     'h-arbeitsplatz',
     'Was das Laufenlassen über Nacht kostet',
-    '25 PCs bleiben nach Feierabend an und brauchen im Leerlauf je 40 W - jeweils 16 Stunden an 250 Arbeitstagen. Strom kostet 0,32 € pro kWh. Wie viel kostet das im Jahr?',
+    '25 PCs bleiben nach Feierabend an und brauchen im Leerlauf je 40 W, und zwar jeweils 16 Stunden an 250 Arbeitstagen. Strom kostet 0,32 € pro kWh. Wie viel kostet das im Jahr?',
     schritte: [
       'Stunden: 16 h × 250 = 4.000 h',
       'je PC: 40 W × 4.000 h = 160.000 Wh = 160 kWh',
       'alle PCs: 160 kWh × 25 = 4.000 kWh',
       'Kosten: 4.000 kWh × 0,32 €/kWh = 1.280 €',
     ],
-    ergebnis: '1.280 € pro Jahr - allein für den Leerlauf',
+    ergebnis: '1.280 € pro Jahr, allein für den Leerlauf',
   ),
   beispiel(
     'n-ha-6',
@@ -966,7 +965,7 @@ final List<Nugget> nuggetsA03Systeme = [
       'in Euro: 50 kWh × 0,30 €/kWh = 15 € pro Jahr',
       'Amortisation: 180 € / 15 € pro Jahr = 12 Jahre',
     ],
-    ergebnis: '12 Jahre - allein wegen des Stroms lohnt der Tausch nicht',
+    ergebnis: '12 Jahre; allein wegen des Stroms lohnt der Tausch nicht',
     merksatz:
         'Green IT heißt auch: funktionierende Geräte lange nutzen. Die Herstellung verbraucht oft mehr Energie als Jahre des Betriebs.',
   ),
@@ -974,7 +973,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-ha-7',
     'h-arbeitsplatz',
     'Rechtliche Grundlagen der Bildschirmarbeit',
-    'Die Arbeitsstättenverordnung (ArbStättV) regelt in ihrem Anhang die Anforderungen an Bildschirmarbeitsplätze. Der Arbeitgeber muss die Gefährdungen beurteilen und die Arbeitsplätze danach einrichten - auch eingerichtete Telearbeitsplätze.',
+    'Die Arbeitsstättenverordnung (ArbStättV) regelt in ihrem Anhang die Anforderungen an Bildschirmarbeitsplätze. Der Arbeitgeber muss die Gefährdungen beurteilen und die Arbeitsplätze danach einrichten, auch eingerichtete Telearbeitsplätze.',
     points: [
       'Arbeitsschutzgesetz: Gefährdungsbeurteilung ist Pflicht des Arbeitgebers',
       'Technische Regeln für Arbeitsstätten (ASR) nennen konkrete Werte, etwa für Licht und Temperatur',
@@ -1015,7 +1014,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'Altgeräte richtig entsorgen',
     'Elektrogeräte gehören nicht in den Restmüll. Nach dem Elektro- und Elektronikgerätegesetz (ElektroG) gehen sie über Rücknahmestellen oder zertifizierte Entsorger ins Recycling.',
     points: [
-      'Vorher alle Datenträger sicher löschen oder physisch vernichten - Datenschutz!',
+      'Vorher alle Datenträger sicher löschen oder physisch vernichten: Datenschutz!',
       'Die Vernichtung mit einem Nachweis dokumentieren lassen',
       'Noch brauchbare Geräte aufbereiten und weiterverwenden (Refurbishing)',
     ],
@@ -1024,7 +1023,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-ha-11',
     'h-arbeitsplatz',
     'Standby frisst Strom',
-    'Geräte im Standby verbrauchen weiter Strom - bei vielen Arbeitsplätzen und 24 Stunden am Tag summiert sich das. Schaltbare Steckdosenleisten oder zeitgesteuertes Abschalten sparen hier echtes Geld.',
+    'Geräte im Standby verbrauchen weiter Strom. Bei vielen Arbeitsplätzen und 24 Stunden am Tag summiert sich das. Schaltbare Steckdosenleisten oder zeitgesteuertes Abschalten sparen hier echtes Geld.',
   ),
   merke(
     'n-ha-12',
@@ -1038,7 +1037,7 @@ final List<Nugget> nuggetsA03Systeme = [
       'Altgeräte: Daten löschen, dann fachgerecht recyceln',
     ],
     satz:
-        'Die sparsamste Kilowattstunde ist die, die nicht verbraucht wird - und das umweltfreundlichste Gerät oft das, das weiter genutzt wird.',
+        'Die sparsamste Kilowattstunde ist die, die nicht verbraucht wird, und das umweltfreundlichste Gerät oft das, das weiter genutzt wird.',
   ),
 
   // ============================================= Aufgaben eines Betriebssystems
@@ -1125,10 +1124,10 @@ final List<Nugget> nuggetsA03Systeme = [
     'Ein Kern führt zu jedem Zeitpunkt nur einen Thread aus. Das Betriebssystem teilt die Rechenzeit in kurze Zeitscheiben und wechselt so schnell, dass alles gleichzeitig zu laufen scheint. Mehrere Kerne ermöglichen echte Parallelität.',
     table: [
       ['Verfahren', 'Merkmal'],
-      ['präemptiv', 'das Betriebssystem entzieht die CPU - heute Standard'],
+      ['präemptiv', 'das Betriebssystem entzieht die CPU; heute Standard'],
       [
         'kooperativ',
-        'das Programm gibt die CPU freiwillig ab - ein hängendes Programm blockiert alles',
+        'das Programm gibt die CPU freiwillig ab; ein hängendes Programm blockiert alles',
       ],
     ],
   ),
@@ -1139,8 +1138,8 @@ final List<Nugget> nuggetsA03Systeme = [
     'Jeder Prozess bekommt einen eigenen virtuellen Adressraum, den das Betriebssystem auf den echten Arbeitsspeicher abbildet. So können sich Programme nicht gegenseitig überschreiben.',
     points: [
       'Paging: Der Speicher wird in Seiten fester Größe verwaltet, oft 4 KiB',
-      'Reicht der RAM nicht, werden Seiten ausgelagert - unter Windows in die Auslagerungsdatei (pagefile.sys), unter Linux in den Swap',
-      'Häufiges Auslagern bremst stark - dann hilft mehr RAM',
+      'Reicht der RAM nicht, werden Seiten ausgelagert: unter Windows in die Auslagerungsdatei (pagefile.sys), unter Linux in den Swap',
+      'Häufiges Auslagern bremst stark, dann hilft mehr RAM',
     ],
   ),
   vergleich(
@@ -1178,9 +1177,9 @@ final List<Nugget> nuggetsA03Systeme = [
       '32-Bit-Adressen: 2³² verschiedene Adressen, je Adresse 1 Byte',
       '2³² Byte = 4.294.967.296 Byte',
       'in GiB: 4.294.967.296 / 1.024³ = 4 GiB',
-      '64 Bit: 2⁶⁴ Byte = 16 EiB - weit mehr, als ein heutiger Rechner hat',
+      '64 Bit: 2⁶⁴ Byte = 16 EiB, weit mehr, als ein heutiger Rechner hat',
     ],
-    ergebnis: '32 Bit: höchstens 4 GiB - für 16 GB braucht es 64 Bit',
+    ergebnis: '32 Bit: höchstens 4 GiB; für 16 GB braucht es 64 Bit',
   ),
   falle(
     'n-ba-11',
@@ -1197,7 +1196,7 @@ final List<Nugget> nuggetsA03Systeme = [
       'Aufgaben: Prozesse, Speicher, Dateien, Geräte, Benutzer, Oberfläche',
       'Kernelmodus: voller Hardwarezugriff, Benutzermodus: eingeschränkt',
       'Prozess: eigener Speicher, Thread: teilt ihn',
-      'Zustände: bereit - rechnend - blockiert',
+      'Zustände: bereit, rechnend, blockiert',
       '32 Bit: höchstens 4 GiB adressierbar',
     ],
     satz:
@@ -1220,7 +1219,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-bd-2',
     'b-dateisysteme',
     'Der Verzeichnisbaum unter Linux',
-    'Linux kennt keine Laufwerksbuchstaben. Alles hängt in einem einzigen Baum ab der Wurzel „/“ - auch weitere Datenträger, die an einer Stelle eingehängt (gemountet) werden.',
+    'Linux kennt keine Laufwerksbuchstaben. Alles hängt in einem einzigen Baum ab der Wurzel „/“, auch weitere Datenträger, die an einer Stelle eingehängt (gemountet) werden.',
     const BaumDiagramm(
       BaumKnoten('/', [
         BaumKnoten('bin', [], 'Programme'),
@@ -1260,7 +1259,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-bd-5',
     'b-dateisysteme',
     'Dateisysteme im Vergleich',
-    'Das Dateisystem legt fest, wie Daten organisiert werden - und welche Grenzen gelten.',
+    'Das Dateisystem legt fest, wie Daten organisiert werden und welche Grenzen gelten.',
     [
       ['Dateisystem', 'Einsatz', 'größte Datei'],
       ['FAT32', 'ältere Sticks, Kameras', '4 GiB - 1 Byte'],
@@ -1327,8 +1326,8 @@ final List<Nugget> nuggetsA03Systeme = [
     'Einen Datenträger einrichten',
     'Bevor ein neuer Datenträger Dateien aufnehmen kann, sind mehrere Schritte nötig.',
     [
-      'Partitionieren: Partitionstabelle (GPT) anlegen und Bereiche festlegen - Windows: Datenträgerverwaltung oder diskpart, Linux: fdisk oder parted',
-      'Formatieren: Dateisystem anlegen - Windows: format, Linux: mkfs.ext4',
+      'Partitionieren: Partitionstabelle (GPT) anlegen und Bereiche festlegen. Windows: Datenträgerverwaltung oder diskpart, Linux: fdisk oder parted',
+      'Formatieren: Dateisystem anlegen. Windows: format, Linux: mkfs.ext4',
       'Einbinden: Laufwerksbuchstaben zuweisen (Windows) oder an einem Verzeichnis einhängen (Linux: mount, dauerhaft über /etc/fstab)',
       'Rechte setzen: festlegen, wer lesen und schreiben darf',
     ],
@@ -1343,7 +1342,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-bd-12',
     'b-dateisysteme',
     'Die 4-GB-Grenze',
-    'Auf einen FAT32-Stick passt keine einzelne Datei über 4 GiB - egal wie viel Platz frei ist. Wer ein großes Image oder Video kopieren will, formatiert den Stick mit exFAT oder NTFS.',
+    'Auf einen FAT32-Stick passt keine einzelne Datei über 4 GiB, egal wie viel Platz frei ist. Wer ein großes Image oder Video kopieren will, formatiert den Stick mit exFAT oder NTFS.',
   ),
   merke(
     'n-bd-13',
@@ -1358,7 +1357,7 @@ final List<Nugget> nuggetsA03Systeme = [
       'GPT mit UEFI für große Datenträger, MBR höchstens 2 TiB',
     ],
     satz:
-        'Partitionieren, formatieren, einbinden - und für jeden Zweck das passende Dateisystem.',
+        'Partitionieren, formatieren, einbinden, und für jeden Zweck das passende Dateisystem.',
   ),
 
   // ======================================================== Benutzer und Rechte
@@ -1372,14 +1371,14 @@ final List<Nugget> nuggetsA03Systeme = [
       ['lokales Konto', 'gilt nur auf einem Rechner'],
       ['Domänenkonto', 'zentral verwaltet, z. B. im Active Directory'],
       ['Dienstkonto', 'für Dienste und Programme, nicht für Menschen'],
-      ['Administrator / root', 'volle Rechte - nur für die Verwaltung'],
+      ['Administrator / root', 'volle Rechte, nur für die Verwaltung'],
     ],
   ),
   konzept(
     'n-br-2',
     'b-rechte',
     'Das Minimalprinzip',
-    'Jeder Benutzer erhält nur die Rechte, die er für seine Aufgabe braucht - nicht mehr (Least Privilege). Rechte werden an Gruppen vergeben, nicht an einzelne Personen: Wechselt jemand die Abteilung, wechselt er nur die Gruppe.',
+    'Jeder Benutzer erhält nur die Rechte, die er für seine Aufgabe braucht, nicht mehr (Least Privilege). Rechte werden an Gruppen vergeben, nicht an einzelne Personen: Wechselt jemand die Abteilung, wechselt er nur die Gruppe.',
   ),
   skizze(
     'n-br-3',
@@ -1416,7 +1415,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-br-5',
     'b-rechte',
     'Oktal ist binär in Dreiergruppen',
-    'Jede Oktalziffer steht für drei Bit - genau die drei Rechte r, w und x. Eine 1 heißt: Recht gesetzt.',
+    'Jede Oktalziffer steht für drei Bit, genau die drei Rechte r, w und x. Eine 1 heißt: Recht gesetzt.',
     const BitDiagramm([
       BitZeile('754 (rwxr-xr--)', '111 101 100'),
       BitZeile('640 (rw-r-----)', '110 100 000'),
@@ -1518,7 +1517,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-br-13',
     'b-rechte',
     'Admin nur zum Administrieren',
-    'Auch Administratoren arbeiten im Alltag mit einem normalen Konto und wechseln nur für Verwaltungsaufgaben die Rechte - unter Linux mit sudo, unter Windows über die Benutzerkontensteuerung (UAC). So richtet Schadsoftware im Alltagskonto weniger Schaden an.',
+    'Auch Administratoren arbeiten im Alltag mit einem normalen Konto und wechseln nur für Verwaltungsaufgaben die Rechte: unter Linux mit sudo, unter Windows über die Benutzerkontensteuerung (UAC). So richtet Schadsoftware im Alltagskonto weniger Schaden an.',
   ),
   merke(
     'n-br-14',
@@ -1527,13 +1526,13 @@ final List<Nugget> nuggetsA03Systeme = [
     'Diese Punkte solltest du zu Benutzern und Rechten sicher beherrschen.',
     points: [
       'Authentifizierung: wer? Autorisierung: was?',
-      'Rechte an Gruppen, nicht an Personen - nach dem Minimalprinzip',
+      'Rechte an Gruppen, nicht an Personen und nach dem Minimalprinzip',
       'Linux: r = 4, w = 2, x = 1 - je für Besitzer, Gruppe, andere',
       'Netzwerkzugriff: die strengere aus Freigabe und NTFS gilt',
       'Verweigern schlägt Zulassen',
     ],
     satz:
-        'So wenig Rechte wie möglich, so viele wie nötig - und immer über Gruppen.',
+        'So wenig Rechte wie möglich, so viele wie nötig, und immer über Gruppen.',
   ),
 
   // ============================================================== Kommandozeile
@@ -1657,12 +1656,11 @@ final List<Nugget> nuggetsA03Systeme = [
         '   Standardgateway  :',
     schritte: [
       '169.254.x.x ist eine APIPA-Adresse: Der Rechner hat sich selbst eine Adresse gegeben',
-      'Das passiert, wenn kein DHCP-Server antwortet - deshalb fehlt auch das Gateway',
+      'Das passiert, wenn kein DHCP-Server antwortet. Deshalb fehlt auch das Gateway',
       'Prüfen: Kabel und Link-LED, Switchport bzw. VLAN, läuft der DHCP-Server?',
       'Danach mit ipconfig /release und ipconfig /renew eine Adresse neu anfordern',
     ],
-    ergebnis:
-        'DHCP-Problem - der Rechner hat keine Adresse vom Server erhalten',
+    ergebnis: 'DHCP-Problem: Der Rechner hat keine Adresse vom Server erhalten',
   ),
   skizze(
     'n-bc-9',
@@ -1721,12 +1719,12 @@ final List<Nugget> nuggetsA03Systeme = [
     schritte: [
       'Paketverlust: 1 von 4 Anfragen blieb unbeantwortet - 25 % statt 0 %',
       'Antwortzeit: Im LAN sind wenige Millisekunden normal, 480 ms ist ein Ausreißer',
-      'Mittelwert: (3 + 480 + 5) / 3 ≈ 162 ms - gemittelt wird nur über die Antworten',
+      'Mittelwert: (3 + 480 + 5) / 3 ≈ 162 ms; gemittelt wird nur über die Antworten',
       'Folgen: ruckelndes oder einfrierendes Bild, Zeitüberschreitungen, Verbindungsabbrüche',
       'Mögliche Ursachen: defektes Kabel oder Stecker, schwaches WLAN, überlastete Leitung',
     ],
     ergebnis:
-        'auffällig sind 25 % Verlust und 480 ms Maximum - die Verbindung zur Kamera ist gestört',
+        'auffällig sind 25 % Verlust und 480 ms Maximum, die Verbindung zur Kamera ist gestört',
   ),
   vergleich(
     'n-bc-15',
@@ -1754,7 +1752,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-bc-10',
     'b-cli',
     'Ping heißt nicht Internet',
-    'Wenn ping auf 8.8.8.8 klappt, aber nicht auf google.de, funktioniert das Netzwerk - nur die Namensauflösung ist gestört. Wer hier den Router neu startet, sucht an der falschen Stelle.',
+    'Wenn ping auf 8.8.8.8 klappt, aber nicht auf google.de, funktioniert das Netzwerk; nur die Namensauflösung ist gestört. Wer hier den Router neu startet, sucht an der falschen Stelle.',
   ),
   falle(
     'n-bc-11',
@@ -1879,7 +1877,7 @@ echo "Gesichert nach $ZIEL"''',
     'n-bh-6',
     'b-haertung',
     'Zero-Day-Lücken',
-    'Eine Zero-Day-Lücke ist eine Schwachstelle, für die es noch kein Update gibt - der Hersteller hatte „null Tage“ Zeit zu reagieren. Hier helfen nur Härtung, eingeschränkte Rechte und Überwachung, bis ein Patch erscheint.',
+    'Eine Zero-Day-Lücke ist eine Schwachstelle, für die es noch kein Update gibt. Der Hersteller hatte „null Tage“ Zeit zu reagieren. Hier helfen nur Härtung, eingeschränkte Rechte und Überwachung, bis ein Patch erscheint.',
   ),
   konzept(
     'n-bh-7',
@@ -1927,7 +1925,7 @@ echo "Gesichert nach $ZIEL"''',
     points: [
       'Datenträgerverschlüsselung (BitLocker, LUKS, FileVault) schützt bei Verlust oder Diebstahl',
       'Virenschutz bzw. Endpoint-Schutz erkennt Schadsoftware',
-      'Protokollierung zeigt, was passiert ist - die Uhrzeit dafür per NTP synchron halten',
+      'Protokollierung zeigt, was passiert ist; die Uhrzeit dafür per NTP synchron halten',
       'Benutzer arbeiten ohne Administratorrechte',
     ],
   ),
@@ -1945,10 +1943,10 @@ echo "Gesichert nach $ZIEL"''',
     points: [
       'Angriffsfläche verkleinern: Dienste, Ports, Konten, Rechte',
       'Patchmanagement: erfassen, bewerten, testen, verteilen, kontrollieren',
-      'Zero-Day: noch kein Patch - Härtung und Überwachung helfen',
-      'End of Life: keine Updates mehr - ablösen oder abschotten',
+      'Zero-Day: noch kein Patch, Härtung und Überwachung helfen',
+      'End of Life: keine Updates mehr; ablösen oder abschotten',
     ],
     satz:
-        'Was nicht läuft, kann nicht angegriffen werden - und was läuft, muss aktuell sein.',
+        'Was nicht läuft, kann nicht angegriffen werden, und was läuft, muss aktuell sein.',
   ),
 ];
