@@ -10,6 +10,7 @@ import '../../data/models/flashcard.dart';
 import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
+import '../../widgets/feedback_fx.dart';
 import '../../widgets/mascot.dart';
 import 'card_launch.dart';
 import 'card_session_screen.dart';
@@ -84,8 +85,8 @@ class CardsOverviewScreen extends ConsumerWidget {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            '$due',
+                          AnimatedCount(
+                            due,
                             style: AppType.numeric(
                               size: 34,
                               weight: FontWeight.w700,
@@ -329,10 +330,7 @@ class _RunCard extends ConsumerWidget {
           ),
           const SizedBox(height: Gap.m),
           if (active || done) ...[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(Radii.pill),
-              child: LinearProgressIndicator(value: run.progress, minHeight: 8),
-            ),
+            AnimatedBar(value: run.progress, minHeight: 8),
             const SizedBox(height: Gap.s),
             Text(
               done

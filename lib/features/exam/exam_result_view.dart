@@ -8,6 +8,7 @@ import '../../data/models/exam_area.dart';
 import '../../data/models/topic.dart';
 import '../../state/session_controller.dart';
 import '../../widgets/common.dart';
+import '../../widgets/feedback_fx.dart';
 import '../learn/review_tile.dart';
 import 'exam_widgets.dart';
 
@@ -57,6 +58,18 @@ class ExamResultView extends StatefulWidget {
 
 class _ExamResultViewState extends State<ExamResultView> {
   final _situationOpen = <int>{};
+
+  @override
+  void initState() {
+    super.initState();
+    // Bestandene Prüfungssimulation (Note 4 oder besser): einmal feiern.
+    final s = widget.session;
+    if (s.isExam && (s.totalScore * 100).round() >= 50) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) Celebration.show(context);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

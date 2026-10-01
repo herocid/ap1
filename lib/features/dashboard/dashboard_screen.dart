@@ -11,6 +11,7 @@ import '../../data/models/subtopic.dart';
 import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
+import '../../widgets/feedback_fx.dart';
 import '../../widgets/hyphenation.dart';
 import '../../widgets/mascot.dart';
 import '../cards/card_launch.dart';
@@ -415,18 +416,10 @@ class _TodayCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: Gap.l),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(Radii.pill),
-            child: TweenAnimationBuilder<double>(
-              tween: Tween(begin: 0, end: share),
-              duration: const Duration(milliseconds: 700),
-              curve: Curves.easeOutCubic,
-              builder: (context, t, _) => LinearProgressIndicator(
-                value: t,
-                minHeight: 8,
-                color: reached ? c.success : c.flame,
-              ),
-            ),
+          AnimatedBar(
+            value: share,
+            minHeight: 8,
+            color: reached ? c.success : c.flame,
           ),
           const SizedBox(height: Gap.xl),
           SizedBox(
@@ -552,13 +545,10 @@ class _JourneyCard extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(Radii.pill),
-                  child: LinearProgressIndicator(
-                    value: share,
-                    minHeight: 5,
-                    color: context.c.flame,
-                  ),
+                child: AnimatedBar(
+                  value: share,
+                  minHeight: 5,
+                  color: context.c.flame,
                 ),
               ),
               const SizedBox(width: Gap.m),
@@ -800,13 +790,10 @@ class _CardsResumeCard extends ConsumerWidget {
             Row(
               children: [
                 Expanded(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(Radii.pill),
-                    child: LinearProgressIndicator(
-                      value: progress,
-                      minHeight: 5,
-                      color: context.c.success,
-                    ),
+                  child: AnimatedBar(
+                    value: progress,
+                    minHeight: 5,
+                    color: context.c.success,
                   ),
                 ),
                 const SizedBox(width: Gap.m),

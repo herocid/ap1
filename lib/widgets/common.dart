@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../core/theme/app_colors.dart';
 import '../core/theme/app_spacing.dart';
 import '../core/theme/app_theme.dart';
+import 'feedback_fx.dart';
 import 'hyphenation.dart';
 import 'mascot.dart';
 
@@ -582,7 +583,7 @@ class ReadinessRing extends StatelessWidget {
       height: size,
       child: TweenAnimationBuilder<double>(
         tween: Tween(begin: 0, end: value / 100),
-        duration: const Duration(milliseconds: 700),
+        duration: _animDuration(context, 700),
         curve: Curves.easeOutCubic,
         builder: (context, t, _) => CustomPaint(
           painter: _RingPainter(
@@ -715,14 +716,9 @@ class StatTile extends StatelessWidget {
           FittedBox(
             fit: BoxFit.scaleDown,
             alignment: Alignment.centerLeft,
-            child: Text(
+            child: _numericValue(
               value,
-              maxLines: 1,
-              style: AppType.numeric(
-                size: 20,
-                weight: FontWeight.w700,
-                color: c,
-              ),
+              AppType.numeric(size: 20, weight: FontWeight.w700, color: c),
             ),
           ),
           const SizedBox(height: 2),
@@ -733,6 +729,18 @@ class StatTile extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  /// Reine Zahl (optional mit Einheit wie „ %“) zählt hoch, alles andere
+  /// („Lv. 12“, „3/5“) bleibt Text.
+  static Widget _numericValue(String value, TextStyle style) {
+    final m = RegExp(r'^(\d+)(\s?%)?$').firstMatch(value);
+    if (m == null) return Text(value, maxLines: 1, style: style);
+    return AnimatedCount(
+      int.parse(m.group(1)!),
+      suffix: m.group(2) ?? '',
+      style: style,
     );
   }
 
@@ -831,7 +839,8 @@ class TopicBar extends StatelessWidget {
               ),
               TweenAnimationBuilder<double>(
                 tween: Tween(begin: 0, end: confidence.clamp(0.0, 1.0)),
-                duration: const Duration(milliseconds: 500),
+                duration: _animDuration(context, 600),
+                curve: Curves.easeOutCubic,
                 builder: (context, t, _) => Container(
                   width: w * t,
                   decoration: BoxDecoration(
@@ -1270,3 +1279,9 @@ String formatDuration(Duration d) {
   if (d.inHours > 0) return '${d.inHours}:$m:$s';
   return '$m:$s';
 }
+
+/// Dauer einer Füll-Animation; null bei „Animationen reduzieren“.
+Duration _animDuration(BuildContext context, int ms) =>
+    (MediaQuery.maybeDisableAnimationsOf(context) ?? false)
+    ? Duration.zero
+    : Duration(milliseconds: ms);

@@ -11,6 +11,7 @@ import '../../data/models/subtopic.dart';
 import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
+import '../../widgets/feedback_fx.dart';
 import '../../widgets/hyphenation.dart';
 import 'nugget_card.dart';
 import '../../widgets/bit_tips.dart';
@@ -170,7 +171,12 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
             onPageChanged: (p) {
               setState(() => _page = p);
               if (p == pageCount - 1) {
+                // Feier nur, wenn die Lektion jetzt neu abgeschlossen wird -
+                // nicht beim erneuten Durchblättern. Gilt auch für das
+                // Ende der kompletten Journey (letzte offene Lektion).
+                final isNew = !ref.read(journeyProvider).contains(lesson.id);
                 ref.read(journeyProvider.notifier).complete(lesson.id);
+                if (isNew) Celebration.show(context);
                 ref.read(resumeProvider.notifier).lessonDone(lesson.id);
                 HapticFeedback.lightImpact();
               } else if (!ref.read(journeyProvider).contains(lesson.id)) {

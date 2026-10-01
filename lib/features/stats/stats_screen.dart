@@ -17,6 +17,7 @@ import '../learn/session_launcher.dart';
 import '../../state/providers.dart';
 import '../../widgets/achievement_badge.dart';
 import '../../widgets/common.dart';
+import '../../widgets/feedback_fx.dart';
 import '../../widgets/mascot.dart';
 
 /// Statistik in der Reihenfolge, in der man sie liest:
@@ -164,13 +165,7 @@ class _QuizPanel extends ConsumerWidget {
                   style: context.text.titleMedium,
                 ),
                 const SizedBox(height: Gap.m),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(Radii.pill),
-                  child: LinearProgressIndicator(
-                    value: progress.levelProgress,
-                    minHeight: 8,
-                  ),
-                ),
+                AnimatedBar(value: progress.levelProgress, minHeight: 8),
                 const SizedBox(height: Gap.s),
                 Text(
                   '${progress.xp - progress.xpForCurrentLevel} von '

@@ -10,6 +10,7 @@ import '../../data/models/subtopic.dart';
 import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
+import '../../widgets/feedback_fx.dart';
 import '../../widgets/hyphenation.dart';
 import '../../widgets/bit_tips.dart';
 
@@ -115,9 +116,16 @@ class _ProgressHero extends ConsumerWidget {
               Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(
-                      text: '$doneCount',
-                      style: AppType.numeric(size: 22, weight: FontWeight.w700),
+                    WidgetSpan(
+                      alignment: PlaceholderAlignment.baseline,
+                      baseline: TextBaseline.alphabetic,
+                      child: AnimatedCount(
+                        doneCount,
+                        style: AppType.numeric(
+                          size: 22,
+                          weight: FontWeight.w700,
+                        ),
+                      ),
                     ),
                     TextSpan(
                       text: ' / ${lessons.length} Lektionen',
@@ -129,14 +137,7 @@ class _ProgressHero extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: Gap.m),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(Radii.pill),
-            child: LinearProgressIndicator(
-              value: share,
-              minHeight: 6,
-              color: c.flame,
-            ),
-          ),
+          AnimatedBar(value: share, minHeight: 6, color: c.flame),
           if (next != null) ...[
             const SizedBox(height: Gap.xl),
             Text(
