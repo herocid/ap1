@@ -1033,6 +1033,23 @@ final List<Nugget> nuggetsA06Krypto = [
       'Server außerhalb von EU/EWR (Drittland): nur mit Angemessenheitsbeschluss oder Garantien wie Standardvertragsklauseln',
     ],
   ),
+  vergleich(
+    'n-xg-13',
+    'ds-grundlagen',
+    'Berufsgeheimnis neben der DSGVO',
+    'Für manche Berufe gilt neben dem Datenschutzrecht eine eigene Schweigepflicht: das Berufsgeheimnis. Wer als Ärztin, Apotheker, Rechtsanwältin oder Steuerberater ein anvertrautes Geheimnis unbefugt offenbart, macht sich nach § 203 StGB strafbar. In Fällen mit Kanzlei, Praxis oder Apotheke gibt es deshalb zwei Grundlagen für den erhöhten Schutz.',
+    [
+      ['Merkmal', 'DSGVO und BDSG', '§ 203 StGB'],
+      ['schützt', 'personenbezogene Daten', 'anvertraute Geheimnisse'],
+      ['gilt für', 'alle Verantwortlichen', 'bestimmte Berufe'],
+      ['bei Verstoß', 'Bußgeld', 'Geld- oder Freiheitsstrafe'],
+    ],
+    points: [
+      'IT-Dienstleister solcher Berufe gelten als „mitwirkende Personen“: Sie müssen zur Verschwiegenheit verpflichtet werden und machen sich bei einem Bruch selbst strafbar',
+      'Der Vertrag zur Auftragsverarbeitung nach der DSGVO bleibt zusätzlich nötig',
+    ],
+    merksatz: 'Kanzlei, Praxis, Apotheke: DSGVO und Berufsgeheimnis nennen.',
+  ),
   falle(
     'n-xg-11',
     'ds-grundlagen',
@@ -1213,6 +1230,27 @@ final List<Nugget> nuggetsA06Krypto = [
       'Mittelständler: 4 % × 40 Mio. € = 1,6 Mio. € < 20 Mio. € -> 20 Mio. €',
     ],
     ergebnis: 'Obergrenze: Konzern 36 Mio. €, Mittelständler 20 Mio. €',
+  ),
+  konzept(
+    'n-xs-13',
+    'ds-grundsaetze',
+    'Videoüberwachung datenschutzgerecht',
+    'Kamerabilder, auf denen Menschen erkennbar sind, sind personenbezogene Daten. Eine Videoüberwachung braucht deshalb eine Rechtsgrundlage - in Unternehmen meist das berechtigte Interesse (Art. 6 Abs. 1 lit. f DSGVO), etwa der Schutz vor Diebstahl. Dieses Interesse muss gegen die Interessen der Gefilmten abgewogen werden.',
+    points: [
+      'Hinweispflicht: gut sichtbare Schilder mit Verantwortlichem und Zweck, bevor man den Bereich betritt',
+      'Erforderlichkeit: nur die nötigen Bereiche erfassen - keinen öffentlichen Raum, keine Nachbargrundstücke',
+      'Tabu sind Umkleiden, Sanitär- und Pausenräume',
+      'Speicherbegrenzung: Aufnahmen nach kurzer Zeit löschen; die Aufsichtsbehörden nennen als Richtwert 72 Stunden',
+      'Sicherheit: Aufnahmen vor unbefugtem Zugriff schützen, Zugriff nur für wenige Berechtigte',
+      'Im Betrieb bestimmt der Betriebsrat mit',
+    ],
+    merksatz: 'Hinweisen, begrenzen, schützen, löschen.',
+  ),
+  falle(
+    'n-xs-14',
+    'ds-grundsaetze',
+    'Kameras sind kein Kontrollwerkzeug',
+    'Eine Kamera gegen Diebstahl an der Laderampe ist etwas anderes als eine Kamera, die Beschäftigte dauerhaft bei der Arbeit beobachtet. Die Dauerüberwachung von Arbeitsplätzen ist in aller Regel unzulässig, heimliche Aufnahmen und Tonaufzeichnungen sind es erst recht. Außerdem gilt die Zweckbindung: Aufnahmen, die dem Schutz vor Diebstahl dienen, dürfen nicht nachträglich zur Leistungskontrolle ausgewertet werden.',
   ),
   falle(
     'n-xs-11',

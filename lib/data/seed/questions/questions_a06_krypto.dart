@@ -15,25 +15,25 @@ final List<Question> questionsA06Krypto = [
     explanation:
         'Jedes Paar braucht einen eigenen Schlüssel: n × (n - 1) / 2 = 20 × 19 / 2 = 380 / 2 = 190 Schlüssel.',
   ),
-  einfach(
+  zuordnen(
     'a6-cs-2',
     'kr-symmetrisch',
-    prompt:
-        'Welches Verfahren ist ein symmetrisches Verschlüsselungsverfahren?',
-    choices: [
-      ja(
-        'AES',
-        'AES nutzt denselben Schlüssel zum Ver- und Entschlüsseln und ist der aktuelle Standard.',
-      ),
-      nein('RSA', 'RSA ist asymmetrisch und arbeitet mit einem Schlüsselpaar.'),
-      nein('SHA-256', 'SHA-256 ist eine Hashfunktion und verschlüsselt nicht.'),
-      nein(
-        'ECC',
-        'ECC (elliptische Kurven) gehört zu den asymmetrischen Verfahren.',
-      ),
+    prompt: 'Ordne jedes Verfahren seiner Art zu.',
+    buckets: [
+      'symmetrische Verschlüsselung',
+      'asymmetrische Verschlüsselung',
+      'Hashverfahren',
+    ],
+    items: [
+      zu('RSA', 1, 'Arbeitet mit einem Schlüsselpaar.'),
+      zu('AES', 0, 'Der heutige Standard mit einem gemeinsamen Schlüssel.'),
+      zu('SHA-256', 2, 'Bildet einen Prüfwert, verschlüsselt nicht.'),
+      zu('ChaCha20', 0, 'Schnelle Stromchiffre, z. B. in TLS 1.3.'),
+      zu('ECC (elliptische Kurven)', 1, 'Asymmetrisch mit kurzen Schlüsseln.'),
+      zu('3DES', 0, 'Älteres symmetrisches Verfahren, heute abgelöst.'),
     ],
     explanation:
-        'AES ist symmetrisch, RSA und ECC sind asymmetrisch, SHA-256 ist ein Hashverfahren ohne Schlüssel.',
+        'Symmetrisch (ein gemeinsamer Schlüssel): AES, ChaCha20, 3DES. Asymmetrisch (Schlüsselpaar): RSA, ECC. SHA-256 ist ein Hashverfahren - es erzeugt einen Prüfwert und lässt sich nicht „entschlüsseln“.',
   ),
   mehrfach(
     'a6-cs-3',
@@ -136,30 +136,41 @@ final List<Question> questionsA06Krypto = [
     explanation:
         'Die Zahl der Schlüssel ist 2^Bitlänge. 2^72 / 2^64 = 2^(72 - 64) = 2^8 = 256. Jedes zusätzliche Bit verdoppelt die Anzahl, 8 Bit mehr ergeben also den Faktor 256.',
   ),
-  einfach(
+  freitext(
     'a6-cs-8',
     'kr-symmetrisch',
-    prompt: 'Worauf beruht die Sicherheit eines modernen Verfahrens wie AES?',
-    choices: [
-      ja(
-        'Allein auf der Geheimhaltung des Schlüssels - das Verfahren selbst ist öffentlich.',
-        'Das ist das Kerckhoffs-Prinzip: Ein gutes Verfahren bleibt sicher, auch wenn jeder weiß, wie es funktioniert.',
+    scenario:
+        'Ein Softwareanbieter wirbt damit, sein selbst entwickeltes Verschlüsselungsverfahren sei besonders sicher, weil niemand wisse, wie es funktioniert.',
+    prompt:
+        'Erläutere, worauf die Sicherheit eines modernen Verfahrens wie AES beruht und warum das Werbeargument nicht überzeugt. (4 P.)',
+    kriterien: [
+      krit(
+        'Die Sicherheit beruht allein auf der Geheimhaltung des Schlüssels, nicht des Verfahrens (Kerckhoffs-Prinzip)',
+        punkte: 2,
+        stichwoerter: [
+          'Geheimhaltung des Schlüssels',
+          'Schlüssel geheim',
+          'Kerckhoffs',
+          'nur der Schlüssel',
+        ],
       ),
-      nein(
-        'Auf der Geheimhaltung des Verfahrens',
-        'Geheime Verfahren gelten als unsicher, weil sie nicht von Fachleuten geprüft werden können.',
-      ),
-      nein(
-        'Darauf, dass der Geheimtext kürzer ist als der Klartext',
-        'Die Länge sagt nichts über die Sicherheit aus.',
-      ),
-      nein(
-        'Auf einem öffentlichen und einem privaten Schlüssel',
-        'Das beschreibt asymmetrische Verfahren - AES ist symmetrisch.',
+      krit(
+        'Offene Verfahren sind von vielen Fachleuten geprüft; ein geheimes Verfahren kann unentdeckte Schwächen haben und ist wertlos, sobald es bekannt wird',
+        punkte: 2,
+        stichwoerter: [
+          'öffentlich geprüft',
+          'Fachleute',
+          'Schwächen',
+          'Security by Obscurity',
+          'offengelegt',
+          'überprüft',
+        ],
       ),
     ],
+    loesung:
+        'Nach dem Kerckhoffs-Prinzip darf die Sicherheit eines Verfahrens nur von der Geheimhaltung des Schlüssels abhängen. AES ist vollständig offengelegt und seit Jahren von Fachleuten weltweit geprüft. Ein geheim gehaltenes Eigenverfahren („Security by Obscurity“) wurde von niemandem unabhängig geprüft, kann grobe Schwächen enthalten und bietet keinen Schutz mehr, sobald der Algorithmus bekannt wird.',
     explanation:
-        'Nach dem Kerckhoffs-Prinzip darf das Verfahren bekannt sein; die Sicherheit hängt nur vom geheimen Schlüssel und seiner Länge ab. AES ist öffentlich und gründlich geprüft.',
+        '2 Punkte für das Prinzip (nur der Schlüssel ist geheim), 2 Punkte für die Begründung (öffentliche Prüfung statt Geheimhaltung des Verfahrens).',
   ),
 
   // ============================================= Asymmetrische Verschlüsselung
@@ -237,34 +248,21 @@ final List<Question> questionsA06Krypto = [
     explanation:
         'Jede Person hat ein Schlüsselpaar: 2 × n = 2 × 50 = 100 Schlüssel. Symmetrisch wären es 50 × 49 / 2 = 1.225.',
   ),
-  mehrfach(
+  lueckentext(
     'a6-ca-4',
     'kr-asymmetrisch',
-    prompt: 'Welche Aussagen zur digitalen Signatur sind richtig?',
-    choices: [
-      ja(
-        'Sie weist nach, dass die Nachricht nicht verändert wurde.',
-        'Jede Änderung führt zu einem anderen Hashwert - der Vergleich schlägt fehl.',
-      ),
-      ja(
-        'Sie weist nach, wer die Nachricht signiert hat.',
-        'Nur der Besitzer des privaten Schlüssels kann eine passende Signatur erzeugen.',
-      ),
-      ja(
-        'Sie wird mit dem privaten Schlüssel des Absenders erstellt.',
-        'Geprüft wird mit dem zugehörigen öffentlichen Schlüssel.',
-      ),
-      nein(
-        'Sie macht den Inhalt der Nachricht vertraulich.',
-        'Die Nachricht selbst bleibt lesbar. Für Vertraulichkeit muss zusätzlich verschlüsselt werden.',
-      ),
-      nein(
-        'Zum Prüfen braucht der Empfänger den privaten Schlüssel des Absenders.',
-        'Der private Schlüssel verlässt nie den Absender - geprüft wird mit dem öffentlichen.',
-      ),
+    prompt: 'Ergänze die Aussagen zur digitalen Signatur.',
+    text:
+        'Signiert wird nicht das ganze Dokument, sondern sein {0}. Der Absender verschlüsselt ihn mit seinem {1} Schlüssel. Der Empfänger prüft die Signatur mit dem {2} Schlüssel des Absenders. Die Signatur sichert {3} und Authentizität, aber nicht die {4} - das Dokument selbst bleibt lesbar.',
+    luecken: [
+      wahl('Hashwert', ['Dateiname', 'Sitzungsschlüssel']),
+      wahl('privaten', ['öffentlichen', 'symmetrischen']),
+      wahl('öffentlichen', ['privaten', 'symmetrischen']),
+      wahl('Integrität', ['Verfügbarkeit', 'Vertraulichkeit']),
+      wahl('Vertraulichkeit', ['Integrität', 'Verbindlichkeit']),
     ],
     explanation:
-        'Eine Signatur sichert Integrität und Authentizität, aber keine Vertraulichkeit. Signiert wird privat, geprüft öffentlich.',
+        'Der Absender bildet den Hashwert und verschlüsselt ihn mit seinem privaten Schlüssel. Jeder kann mit dem öffentlichen Schlüssel des Absenders prüfen. So sind Integrität und Authentizität gesichert. Vertraulich wird das Dokument erst durch zusätzliche Verschlüsselung.',
   ),
   einfach(
     'a6-ca-5',
@@ -395,31 +393,41 @@ final List<Question> questionsA06Krypto = [
     explanation:
         'Erst verständigen sich beide über die Verfahren, dann weist sich der Server mit seinem Zertifikat aus. Erst nach erfolgreicher Prüfung fließen die Nutzdaten verschlüsselt.',
   ),
-  mehrfach(
+  markieren(
     'a6-ch-3',
     'kr-hybrid',
-    prompt: 'Welche Angaben enthält ein X.509-Serverzertifikat?',
-    choices: [
+    prompt:
+        'Markiere alle Angaben, die in einem X.509-Serverzertifikat enthalten sind.',
+    zeilen: [
       ja(
-        'Den öffentlichen Schlüssel des Servers',
-        'Genau diesen Schlüssel bestätigt das Zertifikat.',
-      ),
-      ja(
-        'Den Aussteller (die CA)',
-        'Über ihn wird die Vertrauenskette geprüft.',
-      ),
-      ja('Den Gültigkeitszeitraum', 'Außerhalb davon warnt der Browser.'),
-      nein(
-        'Den privaten Schlüssel des Servers',
-        'Der private Schlüssel bleibt geheim auf dem Server und steht nie im Zertifikat.',
+        'Öffentlicher Schlüssel des Servers',
+        'Ihn bindet das Zertifikat an den Inhaber.',
       ),
       nein(
-        'Das Administratorpasswort des Servers',
-        'Passwörter haben in einem öffentlichen Zertifikat nichts zu suchen.',
+        'Privater Schlüssel des Servers',
+        'Er verlässt den Server nie - stünde er im Zertifikat, wäre es wertlos.',
+      ),
+      ja('Name des Inhabers (Domain)', 'Für wen das Zertifikat gilt.'),
+      ja('Gültigkeitszeitraum', 'Beginn und Ende der Gültigkeit.'),
+      ja(
+        'Name der ausstellenden Zertifizierungsstelle',
+        'Sie bürgt für die Angaben.',
+      ),
+      nein(
+        'Sitzungsschlüssel der Verbindung',
+        'Er wird für jede Verbindung neu ausgehandelt.',
+      ),
+      ja(
+        'Digitale Signatur der Zertifizierungsstelle',
+        'Sie macht das Zertifikat fälschungssicher.',
+      ),
+      nein(
+        'Passwort des Administrators',
+        'Zugangsdaten haben im Zertifikat nichts zu suchen.',
       ),
     ],
     explanation:
-        'Ein Zertifikat enthält u. a. Inhaber, öffentlichen Schlüssel, Aussteller, Gültigkeit, Seriennummer und die Signatur der CA - nie den privaten Schlüssel.',
+        'Ein Zertifikat enthält den öffentlichen Schlüssel, den Inhaber, den Aussteller, den Gültigkeitszeitraum, eine Seriennummer und die Signatur der Zertifizierungsstelle. Private Schlüssel, Sitzungsschlüssel und Passwörter stehen nie darin.',
   ),
   einfach(
     'a6-ch-4',
@@ -565,34 +573,23 @@ final List<Question> questionsA06Krypto = [
     explanation:
         'Ein Hex-Zeichen stellt 4 Bit dar. 512 Bit / 4 Bit je Zeichen = 128 Zeichen.',
   ),
-  mehrfach(
+  paare(
     'a6-cx-2',
     'kr-hash',
-    prompt: 'Welche Eigenschaften hat eine kryptographische Hashfunktion?',
-    choices: [
-      ja(
-        'Der Hashwert hat immer dieselbe Länge.',
-        'Egal ob die Eingabe 1 Byte oder 10 GB groß ist.',
+    prompt:
+        'Ordne jeder Eigenschaft einer kryptographischen Hashfunktion ihre Bedeutung zu.',
+    paare: [
+      paar('Einwegfunktion', 'Eingabe lässt sich nicht zurückrechnen'),
+      paar(
+        'Kollisionsresistenz',
+        'Keine zwei Eingaben mit gleichem Hashwert auffindbar',
       ),
-      ja(
-        'Aus dem Hashwert lässt sich die Eingabe nicht berechnen.',
-        'Sie ist eine Einwegfunktion.',
-      ),
-      ja(
-        'Eine winzige Änderung der Eingabe ergibt einen völlig anderen Hashwert.',
-        'Das ist der Lawineneffekt.',
-      ),
-      nein(
-        'Mit dem richtigen Schlüssel lässt sich der Hashwert zurückrechnen.',
-        'Hashfunktionen haben keinen Schlüssel und sind nicht umkehrbar.',
-      ),
-      nein(
-        'Je größer die Datei, desto länger der Hashwert.',
-        'Die Länge ist fest, z. B. 256 Bit bei SHA-256.',
-      ),
+      paar('Lawineneffekt', 'Kleinste Änderung ergibt völlig anderen Hashwert'),
+      paar('Feste Länge', 'Ausgabe ist unabhängig von der Eingabegröße'),
+      paar('Determinismus', 'Gleiche Eingabe ergibt immer gleichen Hashwert'),
     ],
     explanation:
-        'Kryptographische Hashfunktionen sind Einwegfunktionen mit fester Ausgabelänge, Lawineneffekt und Kollisionsresistenz.',
+        'Eine kryptographische Hashfunktion ist deterministisch, liefert eine Ausgabe fester Länge, lässt sich nicht umkehren (Einwegfunktion), reagiert auf kleinste Änderungen mit einem völlig anderen Wert (Lawineneffekt) und ist kollisionsresistent.',
   ),
   einfach(
     'a6-cx-3',
@@ -683,35 +680,21 @@ final List<Question> questionsA06Krypto = [
     explanation:
         'Hashen ist nicht umkehrbar, Verschlüsseln ist mit Schlüssel umkehrbar, Kodieren ist ohne Schlüssel umkehrbar und schützt nichts.',
   ),
-  mehrfach(
+  lueckentext(
     'a6-cx-7',
     'kr-hash',
-    prompt:
-        'Welche Aussagen zum Salt beim Speichern von Passwörtern sind richtig?',
-    choices: [
-      ja(
-        'Es wird für jedes Konto zufällig erzeugt.',
-        'Nur so ergeben gleiche Passwörter verschiedene Hashwerte.',
-      ),
-      ja(
-        'Es darf im Klartext neben dem Hashwert gespeichert werden.',
-        'Das Salt muss nicht geheim sein, es wird beim Login wieder gebraucht.',
-      ),
-      ja(
-        'Es macht vorberechnete Tabellen (Rainbow Tables) nutzlos.',
-        'Die Tabellen müssten für jedes Salt neu berechnet werden.',
-      ),
-      nein(
-        'Es muss wie ein Schlüssel geheim gehalten werden.',
-        'Das Salt ist kein Geheimnis, seine Wirkung entsteht durch die Einzigartigkeit.',
-      ),
-      nein(
-        'Es macht den Hashwert umkehrbar.',
-        'Auch mit Salt bleibt der Hash eine Einwegfunktion.',
-      ),
+    prompt: 'Ergänze die Aussagen zum Salt beim Speichern von Passwörtern.',
+    text:
+        'Ein Salt ist ein {0} Wert, der vor dem Hashen an das Passwort angehängt wird. Er wird für jedes Konto {1} erzeugt. Dadurch ergeben zwei gleiche Passwörter {2} Hashwerte, und vorberechnete {3} werden nutzlos. Der Salt muss {4} sein und steht neben dem Hashwert in der Datenbank.',
+    luecken: [
+      wahl('zufälliger', ['geheimer', 'verschlüsselter']),
+      wahl('neu', ['einmal für alle gleich', 'aus dem Benutzernamen']),
+      wahl('verschiedene', ['gleiche', 'kürzere']),
+      wahl('Rainbow-Tables', ['Zertifikate', 'Sitzungsschlüssel']),
+      wahl('nicht geheim', ['geheim', 'mindestens 256 Bit lang']),
     ],
     explanation:
-        'Ein Salt ist ein zufälliger, nicht geheimer Wert je Konto. Er verhindert, dass gleiche Passwörter gleiche Hashes ergeben, und entwertet vorberechnete Tabellen.',
+        'Der Salt ist ein zufälliger, je Konto eigener Wert. Er sorgt dafür, dass gleiche Passwörter verschiedene Hashwerte ergeben und Rainbow-Tables nicht mehr passen. Geheim sein muss er nicht - er wird zusammen mit dem Hashwert gespeichert.',
   ),
   einfach(
     'a6-cx-8',
@@ -742,26 +725,25 @@ final List<Question> questionsA06Krypto = [
   ),
 
   // =========================================== Authentifizierung und 2FA
-  mehrfach(
+  zuordnen(
     'a6-cz-1',
     'kr-auth',
-    prompt:
-        'Welche Kombinationen sind eine echte Zwei-Faktor-Authentifizierung?',
-    choices: [
-      ja(
-        'Passwort und Code aus einer Authenticator-App',
-        'Wissen und Besitz (Smartphone).',
+    prompt: 'Ist die Kombination eine echte Zwei-Faktor-Authentifizierung?',
+    buckets: ['echte 2FA (zwei Kategorien)', 'keine 2FA (gleiche Kategorie)'],
+    items: [
+      zu(
+        'Passwort + Einmalcode aus der Authenticator-App',
+        0,
+        'Wissen + Besitz.',
       ),
-      ja('Chipkarte und PIN', 'Besitz und Wissen.'),
-      ja('Fingerabdruck und Passwort', 'Inhärenz und Wissen.'),
-      nein(
-        'Passwort und Sicherheitsfrage',
-        'Beides ist Wissen - nur eine Kategorie.',
-      ),
-      nein('PIN und Passwort', 'Beides ist Wissen - nur eine Kategorie.'),
+      zu('Passwort + Sicherheitsfrage', 1, 'Zweimal Wissen.'),
+      zu('Chipkarte + PIN', 0, 'Besitz + Wissen.'),
+      zu('Fingerabdruck + Gesichtserkennung', 1, 'Zweimal Biometrie.'),
+      zu('Hardware-Token + Fingerabdruck', 0, 'Besitz + Biometrie.'),
+      zu('PIN + Passwort', 1, 'Zweimal Wissen.'),
     ],
     explanation:
-        '2FA verlangt zwei Faktoren aus verschiedenen Kategorien: Wissen, Besitz oder Inhärenz. Zweimal Wissen zählt nicht.',
+        'Echte Zwei-Faktor-Authentifizierung kombiniert zwei verschiedene Kategorien: Wissen, Besitz, Biometrie. Zwei Nachweise aus derselben Kategorie - etwa Passwort und Sicherheitsfrage - fallen demselben Angriff zum Opfer.',
   ),
   zuordnen(
     'a6-cz-2',
@@ -836,31 +818,20 @@ final List<Question> questionsA06Krypto = [
     explanation:
         'Kombinationen: 26^6 = 308.915.776. Zeit: 308.915.776 / 100.000.000 pro s = 3,09 s. Ein kurzes Passwort aus Kleinbuchstaben ist also in wenigen Sekunden geknackt.',
   ),
-  einfach(
+  reihenfolge(
     'a6-cz-6',
     'kr-auth',
     prompt:
-        'Welchen Vorteil hat ein Challenge-Response-Verfahren gegenüber dem Übertragen eines Passworts?',
-    choices: [
-      ja(
-        'Das Geheimnis wird nie übertragen, und eine mitgeschnittene Antwort ist beim nächsten Mal wertlos.',
-        'Der Server schickt jedes Mal eine neue Zufallszahl, die Antwort passt nur zu ihr.',
-      ),
-      nein(
-        'Es kommt ganz ohne Geheimnis aus.',
-        'Beide Seiten brauchen ein gemeinsames Geheimnis oder ein Schlüsselpaar.',
-      ),
-      nein(
-        'Der Nutzer muss sich keinen Benutzernamen mehr merken.',
-        'Die Identifikation bleibt nötig.',
-      ),
-      nein(
-        'Die Antwort ist immer dieselbe und kann gespeichert werden.',
-        'Gerade weil sie sich ändert, schützt das Verfahren vor Wiedereinspielen.',
-      ),
+        'Bringe die Schritte eines Challenge-Response-Verfahrens in die richtige Reihenfolge.',
+    items: [
+      'Der Client meldet sich mit seinem Benutzernamen an',
+      'Der Server schickt eine neue Zufallszahl (Challenge)',
+      'Der Client berechnet aus Zufallszahl und Geheimnis die Antwort',
+      'Der Client schickt die Antwort (Response)',
+      'Der Server berechnet die Antwort selbst und vergleicht',
     ],
     explanation:
-        'Beim Challenge-Response-Verfahren berechnet der Client aus einer Zufallszahl und seinem Geheimnis eine Antwort. Das Geheimnis verlässt das Gerät nie, und Replay-Angriffe laufen ins Leere.',
+        'Beim Challenge-Response-Verfahren berechnet der Client aus einer Zufallszahl und seinem Geheimnis eine Antwort. Das Geheimnis wird nie übertragen, und weil jede Anmeldung eine neue Zufallszahl verwendet, ist eine mitgeschnittene Antwort beim nächsten Mal wertlos (Schutz vor Replay-Angriffen).',
   ),
   zuordnen(
     'a6-cz-7',
@@ -921,34 +892,41 @@ final List<Question> questionsA06Krypto = [
   ),
 
   // =========================================== Personenbezogene Daten
-  mehrfach(
+  markieren(
     'a6-xg-1',
     'ds-grundlagen',
-    prompt: 'Welche Daten sind personenbezogen im Sinne der DSGVO?',
-    choices: [
+    scenario:
+        'Ein Onlineshop prüft, welche seiner gespeicherten Angaben unter die DSGVO fallen.',
+    prompt: 'Markiere alle Angaben, die personenbezogene Daten sind.',
+    zeilen: [
       ja(
-        'Die E-Mail-Adresse max.mueller@firma.example',
-        'Sie ist einer bestimmten Person zugeordnet.',
-      ),
-      ja(
-        'Die IP-Adresse eines Website-Besuchers',
-        'Mit Zusatzwissen, etwa vom Provider, lässt sie sich einem Anschluss und einer Person zuordnen.',
-      ),
-      ja(
-        'Das Kfz-Kennzeichen eines Dienstwagens, den eine Mitarbeiterin fährt',
-        'Über das Kennzeichen und den Fahrtenplan ist die Person identifizierbar.',
+        'Name und Lieferanschrift einer Kundin',
+        'Identifiziert die Person unmittelbar.',
       ),
       nein(
-        'Der Jahresumsatz einer GmbH',
-        'Er betrifft eine juristische Person, keine natürliche.',
+        'Lagerbestand eines Artikels',
+        'Sachangabe ohne Bezug zu einem Menschen.',
+      ),
+      ja(
+        'IP-Adresse mit Zeitstempel im Serverprotokoll',
+        'Über den Provider lässt sie sich einem Anschluss zuordnen.',
+      ),
+      ja('Kundennummer', 'Über die Kundendatei einem Menschen zuzuordnen.'),
+      nein(
+        'Umsatz der Filiale Kassel im März',
+        'Zusammengefasste Unternehmenszahl ohne Personenbezug.',
+      ),
+      ja(
+        'Kfz-Kennzeichen des Lieferwagens eines Einzelunternehmers',
+        'Über den Halter auf eine natürliche Person beziehbar.',
       ),
       nein(
-        'Die Durchschnittstemperatur im Serverraum',
-        'Sie hat keinen Bezug zu einer Person.',
+        'Handelsregisternummer einer GmbH',
+        'Eine GmbH ist eine juristische Person.',
       ),
     ],
     explanation:
-        'Personenbezogen ist jede Information über eine identifizierte oder identifizierbare natürliche Person - auch über Kennungen wie IP-Adresse oder Kennzeichen.',
+        'Personenbezogen sind alle Informationen über eine identifizierte oder identifizierbare natürliche Person - auch Kennungen wie Kundennummer, IP-Adresse oder Kfz-Kennzeichen. Sachdaten und Angaben über juristische Personen gehören nicht dazu.',
   ),
   zuordnen(
     'a6-xg-2',
@@ -1128,32 +1106,22 @@ final List<Question> questionsA06Krypto = [
     explanation:
         'Wer Daten im Auftrag verarbeiten lässt, bleibt Verantwortlicher und muss mit dem Auftragsverarbeiter einen AV-Vertrag schließen: Weisungsbindung, TOM, Unterauftragnehmer, Löschung am Ende.',
   ),
-  mehrfach(
+  lueckentext(
     'a6-xg-8',
     'ds-grundlagen',
     prompt:
-        'Welche Daten gehören zu den besonderen Kategorien nach Art. 9 DSGVO?',
-    choices: [
-      ja(
-        'Religionszugehörigkeit einer Mitarbeiterin',
-        'Religiöse Überzeugungen sind ausdrücklich genannt.',
-      ),
-      ja(
-        'Fingerabdruck, mit dem sich Beschäftigte an der Zeiterfassung eindeutig identifizieren',
-        'Biometrische Daten zur eindeutigen Identifizierung gehören zu Art. 9.',
-      ),
-      ja('Diagnose auf einem Arztbrief', 'Gesundheitsdaten gehören zu Art. 9.'),
-      nein(
-        'IBAN eines Kunden',
-        'Bankdaten sind personenbezogen und schutzwürdig, aber keine besondere Kategorie.',
-      ),
-      nein(
-        'Gehalt eines Mitarbeiters',
-        'Das Gehalt ist vertraulich, zählt aber nicht zu Art. 9.',
-      ),
+        'Ergänze die Aussagen zu den besonderen Kategorien personenbezogener Daten.',
+    text:
+        'Die besonderen Kategorien regelt Art. {0} DSGVO. Dazu zählen zum Beispiel {1} und die Gewerkschaftszugehörigkeit, nicht aber die {2}. Ihre Verarbeitung ist grundsätzlich {3}. Erlaubt ist sie nur in Ausnahmefällen, etwa mit {4} Einwilligung der betroffenen Person.',
+    luecken: [
+      zahl(9),
+      wahl('Gesundheitsdaten', ['Kontodaten', 'Anschriften']),
+      wahl('Bankverbindung', ['religiöse Überzeugung', 'ethnische Herkunft']),
+      wahl('untersagt', ['erlaubt', 'meldepflichtig']),
+      wahl('ausdrücklicher', ['stillschweigender', 'mündlicher']),
     ],
     explanation:
-        'Art. 9 nennt u. a. Gesundheit, Herkunft, Religion und Weltanschauung, politische Meinung, Gewerkschaft, genetische Daten, Biometrie zur Identifizierung und Sexualleben. Finanzdaten gehören nicht dazu.',
+        'Art. 9 DSGVO nennt unter anderem Gesundheitsdaten, religiöse und politische Überzeugungen, ethnische Herkunft, Gewerkschaftszugehörigkeit, genetische und biometrische Daten. Ihre Verarbeitung ist grundsätzlich untersagt; Ausnahmen sind etwa die ausdrückliche Einwilligung oder gesetzliche Pflichten im Arbeits- und Sozialrecht.',
   ),
 
   // ========================================= Grundsätze der Verarbeitung
@@ -1219,34 +1187,27 @@ final List<Question> questionsA06Krypto = [
     explanation:
         'Daten, die zur Erfüllung eines Vertrags nötig sind, dürfen nach Art. 6 Abs. 1 lit. b DSGVO ohne Einwilligung verarbeitet werden.',
   ),
-  mehrfach(
+  lueckentext(
     'a6-xs-3',
     'ds-grundsaetze',
-    prompt: 'Welche Aussagen zur Einwilligung sind richtig?',
-    choices: [
-      ja(
-        'Sie muss freiwillig erteilt werden.',
-        'Wer keine echte Wahl hat, willigt nicht wirksam ein.',
-      ),
-      ja(
-        'Sie kann jederzeit widerrufen werden.',
-        'Der Widerruf muss so einfach sein wie die Erteilung.',
-      ),
-      ja(
-        'Die Person muss wissen, worin sie einwilligt.',
-        'Eine Einwilligung muss informiert sein.',
-      ),
-      nein(
-        'Ein vorangekreuztes Häkchen genügt.',
-        'Stillschweigen oder vorausgefüllte Kästchen sind keine eindeutige Einwilligung.',
-      ),
-      nein(
-        'Ein Widerruf macht die bisherige Verarbeitung rückwirkend rechtswidrig.',
-        'Der Widerruf wirkt nur für die Zukunft.',
-      ),
+    prompt: 'Ergänze die Voraussetzungen einer wirksamen Einwilligung.',
+    text:
+        'Eine Einwilligung muss {0} erteilt werden - wer keine echte Wahl hat, willigt nicht wirksam ein. Die Person muss vorher {1} werden, wozu ihre Daten verwendet werden. Ein vorangekreuztes Kästchen ist {2}. Die Einwilligung kann {3} widerrufen werden; der Widerruf wirkt {4}.',
+    luecken: [
+      wahl('freiwillig', ['schriftlich', 'notariell']),
+      wahl('informiert', ['geprüft', 'registriert']),
+      wahl('keine wirksame Einwilligung', [
+        'ausreichend',
+        'nur online zulässig',
+      ]),
+      wahl('jederzeit', ['nur binnen 14 Tagen', 'nur schriftlich']),
+      wahl('nur für die Zukunft', [
+        'auch rückwirkend',
+        'erst nach einem Monat',
+      ]),
     ],
     explanation:
-        'Eine wirksame Einwilligung ist freiwillig, informiert, eindeutig und jederzeit für die Zukunft widerrufbar.',
+        'Eine wirksame Einwilligung ist freiwillig, informiert, eindeutig (aktives Ankreuzen) und jederzeit widerrufbar. Der Widerruf wirkt nur für die Zukunft - die bisherige Verarbeitung bleibt rechtmäßig. Er muss so einfach sein wie die Erteilung.',
   ),
   einfach(
     'a6-xs-4',
@@ -1341,32 +1302,28 @@ final List<Question> questionsA06Krypto = [
     explanation:
         'Art. 25 verlangt Datenschutz durch Technikgestaltung und datenschutzfreundliche Voreinstellungen: Profil privat, Standort aus, bis die Person selbst etwas anderes wählt.',
   ),
-  einfach(
+  paare(
     'a6-xs-8',
     'ds-grundsaetze',
-    prompt:
-        'Welches Dokument listet alle Verarbeitungen eines Unternehmens mit Zweck, Datenkategorien, Empfängern und Löschfristen auf?',
-    choices: [
-      ja(
-        'Verzeichnis von Verarbeitungstätigkeiten (Art. 30)',
-        'Es ist der zentrale Nachweis für die Rechenschaftspflicht.',
+    prompt: 'Ordne jedem Dokument des Datenschutzes seinen Zweck zu.',
+    paare: [
+      paar(
+        'Verarbeitungsverzeichnis',
+        'Listet alle Verarbeitungen mit Zweck und Löschfrist',
       ),
-      nein(
-        'Datenschutzerklärung auf der Website',
-        'Sie informiert Betroffene nach Art. 13, ist aber kein internes Gesamtverzeichnis.',
-      ),
-      nein(
-        'Vertrag zur Auftragsverarbeitung',
-        'Er regelt nur die Zusammenarbeit mit einem einzelnen Dienstleister.',
-      ),
-      nein(
+      paar(
         'Datenschutz-Folgenabschätzung',
-        'Sie bewertet einzelne Verarbeitungen mit hohem Risiko, listet aber nicht alle auf.',
+        'Prüft vorab Verarbeitungen mit hohem Risiko',
       ),
+      paar(
+        'Auftragsverarbeitungsvertrag',
+        'Regelt die Verarbeitung durch Dienstleister',
+      ),
+      paar('Datenschutzerklärung', 'Informiert Betroffene bei der Erhebung'),
     ],
     difficulty: 1,
     explanation:
-        'Das Verzeichnis von Verarbeitungstätigkeiten (VVT) nach Art. 30 beschreibt jede Verarbeitung. Die DSFA nach Art. 35 kommt nur bei voraussichtlich hohem Risiko hinzu.',
+        'Das Verzeichnis von Verarbeitungstätigkeiten (Art. 30 DSGVO) listet alle Verarbeitungen mit Zweck, Datenkategorien, Empfängern und Löschfristen. Die Folgenabschätzung (Art. 35) ist vor riskanten Verarbeitungen nötig, der Auftragsverarbeitungsvertrag (Art. 28) bei Dienstleistern, die Datenschutzerklärung erfüllt die Informationspflicht (Art. 13).',
   ),
 
   // ============================================ Rechte der Betroffenen
@@ -1532,11 +1489,13 @@ final List<Question> questionsA06Krypto = [
     explanation:
         'Die Informationspflicht nach Art. 13 gilt bei der Erhebung. Üblich ist ein Hinweis auf der Karriereseite oder in der Eingangsbestätigung mit Verantwortlichem, Zweck, Rechtsgrundlage, Speicherdauer und Rechten.',
   ),
-  mehrfach(
+  markieren(
     'a6-xr-7',
     'ds-rechte',
-    prompt: 'Was gehört zu einer vollständigen Auskunft nach Art. 15 DSGVO?',
-    choices: [
+    scenario:
+        'Ein Onlinehändler bereitet die Antwort auf ein Auskunftsersuchen nach Art. 15 DSGVO vor.',
+    prompt: 'Markiere alles, was zu einer vollständigen Auskunft gehört.',
+    zeilen: [
       ja(
         'Eine Kopie der gespeicherten personenbezogenen Daten',
         'Die erste Kopie ist kostenlos.',
@@ -1544,6 +1503,10 @@ final List<Question> questionsA06Krypto = [
       ja(
         'Die Zwecke der Verarbeitung',
         'Die Person soll wissen, wofür ihre Daten genutzt werden.',
+      ),
+      nein(
+        'Der Quellcode der Kundendatenbank',
+        'Die Auskunft betrifft die Daten der Person, nicht die Technik.',
       ),
       ja(
         'Die Empfänger oder Kategorien von Empfängern',
@@ -1554,16 +1517,20 @@ final List<Question> questionsA06Krypto = [
         'Oder die Kriterien, nach denen sie festgelegt wird.',
       ),
       nein(
-        'Der Quellcode der Kundendatenbank',
-        'Die Auskunft betrifft die Daten der Person, nicht die Technik.',
-      ),
-      nein(
         'Eine Rechnung über 25 € für die erste Kopie',
         'Die erste Kopie ist kostenlos.',
       ),
+      ja(
+        'Der Hinweis auf das Beschwerderecht bei der Aufsichtsbehörde',
+        'Auch die weiteren Rechte gehören in die Auskunft.',
+      ),
+      nein(
+        'Die Daten anderer Kunden mit demselben Nachnamen',
+        'Auskunft gibt es nur über die eigenen Daten - sonst entsteht eine Datenpanne.',
+      ),
     ],
     explanation:
-        'Die Auskunft umfasst die Daten selbst (als Kopie), Zwecke, Kategorien, Empfänger, Speicherdauer, Herkunft sowie Hinweise auf die weiteren Rechte und das Beschwerderecht.',
+        'Die Auskunft umfasst die Daten selbst (als Kopie), Zwecke, Kategorien, Empfänger, Speicherdauer, Herkunft sowie Hinweise auf die weiteren Rechte und das Beschwerderecht. Sie ist grundsätzlich kostenlos und betrifft nur die Daten der anfragenden Person.',
   ),
 
   // ================================ Anonymisieren und Pseudonymisieren
@@ -1896,35 +1863,26 @@ final List<Question> questionsA06Krypto = [
     explanation:
         'Mandantentrennung ist das typische Beispiel für das Trennungsgebot aus der klassischen Gliederung der Kontrollziele.',
   ),
-  mehrfach(
+  lueckentext(
     'a6-xt-4',
     'ds-tom',
     prompt:
-        'Was nennt Art. 32 DSGVO als Teil angemessener Sicherheitsmaßnahmen?',
-    choices: [
-      ja(
-        'Pseudonymisierung und Verschlüsselung',
-        'Beides wird ausdrücklich als Beispiel genannt.',
-      ),
-      ja(
-        'Vertraulichkeit, Integrität, Verfügbarkeit und Belastbarkeit der Systeme',
-        'Sie sollen auf Dauer sichergestellt werden.',
-      ),
-      ja(
-        'Regelmäßige Überprüfung der Wirksamkeit der Maßnahmen',
-        'Maßnahmen müssen überprüft, bewertet und evaluiert werden.',
-      ),
-      nein(
-        'Verschlüsselung aller Daten ohne Ausnahme, unabhängig vom Risiko',
-        'Art. 32 verlangt risikoangemessene Maßnahmen, keine starre Pflicht.',
-      ),
-      nein(
-        'Veröffentlichung aller Sicherheitsmaßnahmen im Internet',
-        'Das fordert die DSGVO nicht - es würde Angreifern eher helfen.',
-      ),
+        'Ergänze die Vorgaben des Art. 32 DSGVO zur Sicherheit der Verarbeitung.',
+    text:
+        'Die Maßnahmen müssen dem {0} entsprechen und dem {1} für die Betroffenen angemessen sein. Ausdrücklich genannt werden {2} und Verschlüsselung. Systeme müssen dauerhaft vertraulich, integer, verfügbar und {3} sein. Nach einem Zwischenfall müssen die Daten rasch {4} werden können, und die Wirksamkeit der Maßnahmen wird regelmäßig {5}.',
+    luecken: [
+      wahl('Stand der Technik', [
+        'Wunsch der Geschäftsführung',
+        'billigsten Angebot',
+      ]),
+      wahl('Risiko', ['Umsatz', 'Alter']),
+      wahl('Pseudonymisierung', ['Videoüberwachung', 'Vorratsspeicherung']),
+      wahl('belastbar', ['öffentlich', 'kostenlos']),
+      wahl('wiederhergestellt', ['gelöscht', 'veröffentlicht']),
+      wahl('überprüft', ['gemeldet', 'ausgesetzt']),
     ],
     explanation:
-        'Art. 32 fordert risikoangemessene TOM: u. a. Pseudonymisierung, Verschlüsselung, dauerhafte Sicherheit der Systeme, schnelle Wiederherstellung und regelmäßige Überprüfung.',
+        'Art. 32 DSGVO verlangt risikoangemessene Maßnahmen nach dem Stand der Technik. Genannt werden Pseudonymisierung und Verschlüsselung, die Sicherstellung von Vertraulichkeit, Integrität, Verfügbarkeit und Belastbarkeit, die rasche Wiederherstellung nach einem Zwischenfall und die regelmäßige Überprüfung der Wirksamkeit.',
   ),
   einfach(
     'a6-xt-5',
@@ -1952,34 +1910,21 @@ final List<Question> questionsA06Krypto = [
     explanation:
         'Nach Art. 33 ist eine Datenpanne unverzüglich und möglichst binnen 72 Stunden nach Bekanntwerden der Aufsichtsbehörde zu melden. Mittwoch 10 Uhr + 72 h = Samstag 10 Uhr.',
   ),
-  mehrfach(
+  lueckentext(
     'a6-xt-6',
     'ds-tom',
-    prompt: 'Welche Aussagen zur Meldepflicht bei Datenpannen sind richtig?',
-    choices: [
-      ja(
-        'Die Meldung an die Aufsichtsbehörde soll binnen 72 Stunden nach Bekanntwerden erfolgen.',
-        'So verlangt es Art. 33.',
-      ),
-      ja(
-        'Bei voraussichtlich hohem Risiko müssen zusätzlich die Betroffenen benachrichtigt werden.',
-        'Das regelt Art. 34.',
-      ),
-      ja(
-        'Jede Panne wird intern dokumentiert, auch wenn keine Meldung nötig ist.',
-        'Die Dokumentation dient der Rechenschaftspflicht.',
-      ),
-      nein(
-        'Gemeldet werden muss erst, wenn die Presse berichtet.',
-        'Die Pflicht hängt vom Risiko für die Betroffenen ab, nicht von der Öffentlichkeit.',
-      ),
-      nein(
-        'Am Wochenende ruht die 72-Stunden-Frist.',
-        'Die Frist läuft durchgehend.',
-      ),
+    prompt: 'Ergänze die Regeln zur Meldepflicht bei Datenpannen.',
+    text:
+        'Eine Verletzung des Schutzes personenbezogener Daten wird der {0} gemeldet - unverzüglich, möglichst binnen {1} Stunden nach Bekanntwerden. Die Frist läuft am Wochenende {2}. Besteht voraussichtlich ein {3} für die Betroffenen, müssen auch sie benachrichtigt werden. Intern wird {4} Panne dokumentiert.',
+    luecken: [
+      wahl('Aufsichtsbehörde', ['Polizei', 'Geschäftsführung des Kunden']),
+      zahl(72),
+      wahl('weiter', ['nicht weiter', 'nur zur Hälfte']),
+      wahl('hohes Risiko', ['geringes Risiko', 'öffentliches Interesse']),
+      wahl('jede', ['nur eine gemeldete', 'keine']),
     ],
     explanation:
-        'Datenpanne: Aufsicht binnen 72 h (außer voraussichtlich kein Risiko), Betroffene bei hohem Risiko unverzüglich, intern immer dokumentieren.',
+        'Art. 33 DSGVO: Meldung an die Aufsichtsbehörde binnen 72 Stunden, außer es besteht voraussichtlich kein Risiko; die Frist läuft durchgehend. Art. 34: Bei hohem Risiko werden zusätzlich die Betroffenen benachrichtigt. Dokumentiert wird jede Panne - auch die nicht meldepflichtige.',
   ),
   einfach(
     'a6-xt-7',
