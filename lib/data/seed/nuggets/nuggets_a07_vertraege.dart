@@ -2005,6 +2005,63 @@ final List<Nugget> nuggetsA07 = [
       ['Refreezing', '8 in der Kultur verankern'],
     ],
   ),
+  konzept(
+    'n-cl-11',
+    'cm-lewin',
+    'Einführungsstrategien',
+    'In der Phase des Veränderns geht das neue System in Betrieb. Wie umgestellt wird, entscheidet über Risiko, Kosten und die Belastung der Beschäftigten. Vier Strategien solltest du kennen.',
+    points: [
+      'Sofortumstellung (Stichtag, Big Bang): Zu einem festen Termin wird das alte System abgeschaltet, alle arbeiten sofort mit dem neuen',
+      'Parallelbetrieb: Altes und neues System laufen einige Wochen nebeneinander, die Ergebnisse werden verglichen',
+      'Stufenweise Einführung: Das neue System löst das alte Schritt für Schritt ab, etwa Modul für Modul',
+      'Pilotbetrieb: Erst eine Abteilung oder ein Standort stellt um, danach folgen die übrigen',
+    ],
+  ),
+  vergleich(
+    'n-cl-12',
+    'cm-lewin',
+    'Vor- und Nachteile der Einführungsstrategien',
+    'Keine Strategie ist immer die beste. Je kritischer das System für den laufenden Betrieb ist, desto mehr zählt die Sicherheit.',
+    [
+      ['Strategie', 'Vorteil', 'Nachteil'],
+      [
+        'Sofortumstellung',
+        'schnell, keine Doppelarbeit, günstig',
+        'Fehler treffen sofort alle, kein Rückfall',
+      ],
+      [
+        'Parallelbetrieb',
+        'Rückfall möglich, Ergebnisse vergleichbar',
+        'doppelte Arbeit, höhere Kosten',
+      ],
+      [
+        'stufenweise',
+        'überschaubare Schritte, Lernen unterwegs',
+        'dauert lange, Schnittstellen alt/neu',
+      ],
+      [
+        'Pilotbetrieb',
+        'Fehler treffen nur einen Bereich',
+        'die anderen profitieren erst später',
+      ],
+    ],
+    merksatz:
+        'Sofortumstellung spart Aufwand und kostet Sicherheit - beim Parallelbetrieb ist es umgekehrt.',
+  ),
+  beispiel(
+    'n-cl-13',
+    'cm-lewin',
+    'Eine Einführungsstrategie wählen',
+    'Ein Logistiker mit Dreischichtbetrieb ersetzt in drei Lagerhallen die Papierlisten durch Handscanner. Steht die Kommissionierung, warten sofort Lkw an der Rampe. Welche Strategie passt?',
+    schritte: [
+      'Sofortumstellung in allen Hallen: Ein Fehler im Scannersystem legt das ganze Lager lahm, ein Rückfall ist nicht vorbereitet -> zu riskant',
+      'Parallelbetrieb: Jeder Auftrag müsste auf Papier und im Scanner bestätigt werden -> doppelte Arbeit in allen Schichten',
+      'Pilotbetrieb in einer Halle: Fehler treffen nur einen Teil des Lagers, die Erfahrungen fließen in die Schulung der anderen Hallen ein',
+      'Danach Halle für Halle umstellen und die Papierlisten jeweils abschaffen (Refreezing)',
+    ],
+    ergebnis:
+        'Pilotbetrieb in einer Halle, danach die übrigen Hallen nacheinander umstellen.',
+  ),
   falle(
     'n-cl-9',
     'cm-lewin',
