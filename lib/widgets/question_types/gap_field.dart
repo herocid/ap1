@@ -15,6 +15,10 @@ enum GapMode { select, bank, input }
 GapMode gapModeOf(Blank gap, {bool hasWordBank = false}) =>
     gap.options.isNotEmpty
     ? GapMode.select
+    // Zahlen werden immer getippt - auch wenn andere Lücken derselben
+    // Aufgabe aus der Wortbank gefüllt werden.
+    : gap.numeric
+    ? GapMode.input
     : hasWordBank
     ? GapMode.bank
     : GapMode.input;

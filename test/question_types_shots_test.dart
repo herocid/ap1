@@ -9,6 +9,7 @@ import 'dart:io';
 import 'dart:ui' as ui;
 
 import 'package:ap1_trainer/data/models/question.dart';
+import 'package:ap1_trainer/data/seed/seed_data.dart';
 import 'package:ap1_trainer/widgets/question_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -113,5 +114,40 @@ void main() {
         expect(tester.takeException(), isNull);
       });
     }
+  }
+
+  // Echte Aufgaben aus dem Pool, an denen sich die schwierigen Fälle
+  // zeigen: gemischte Lücken, lange Auswahloptionen in Tabellen, englisches
+  // Material, ER-Diagramm zum Ergänzen.
+  const realIds = [
+    'i4-de-2',
+    'i4-mu-6',
+    'a6-yb-8',
+    'f-a06-handel-b',
+    'f-a06-handel-g',
+    'i4-ua-7',
+    'a4-fa-2',
+    'f-a04d-systemhaus-b',
+  ];
+  final real = [
+    for (final id in realIds)
+      ...kSeedQuestions.where((q) => q.id == id).take(1),
+    ...kSeedQuestions
+        .where((q) => q.code != null && q.kind == QuestionKind.open)
+        .take(4),
+  ];
+  for (final q in real) {
+    testWidgets('Pool ${q.id}', (tester) async {
+      setView(tester, const Size(320, 4000), 1.3);
+      final host = QuestionHost(q);
+      await tester.pumpWidget(
+        RepaintBoundary(key: boundaryKey, child: host.build()),
+      );
+      await tester.pumpAndSettle();
+      await save(tester, 'pool_${q.id}_a');
+      await host.check(tester);
+      await save(tester, 'pool_${q.id}_b');
+      expect(tester.takeException(), isNull);
+    });
   }
 }

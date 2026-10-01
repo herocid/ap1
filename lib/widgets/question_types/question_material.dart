@@ -329,27 +329,157 @@ String breakableCode(String line) => line.replaceAllMapped(
   ),
 );
 
-/// True, wenn [text] Fließtext ist (englischer Handbuchauszug, E-Mail) und
-/// kein Code: lange Zeilen ohne Einrückung und fast ohne Sonderzeichen.
-bool looksLikeProse(String text) {
-  final lines = text.split('\n').where((l) => l.trim().isNotEmpty).toList();
-  if (lines.isEmpty) return false;
-  if (lines.any((l) => l.startsWith('  ') || l.startsWith('\t'))) return false;
-  final symbols = RegExp(r'[{}()\[\];=<>|\\#$]').allMatches(text).length;
-  if (symbols > text.length * 0.012) return false;
-  final words = text.split(RegExp(r'\s+')).where((w) => w.isNotEmpty).length;
-  final longLine = lines.any((l) => l.length > 56);
-  return longLine && words / lines.length >= 7;
+/// Eine Zeile des Materials nach dem Aufbereiten.
+class MaterialLine {
+  const MaterialLine(
+    this.text, {
+    this.flow = false,
+    this.bullet,
+    this.indent = 0,
+  });
+
+  final String text;
+
+  /// Fließtext: bricht am Wort um, die Schrift wird nicht verkleinert.
+  final bool flow;
+
+  /// Aufzählungszeichen („-“, „1.“), falls die Zeile ein Listenpunkt ist.
+  final String? bullet;
+
+  /// Einrückung in Zeichen (nur Code).
+  final int indent;
+
+  bool get isBlank => text.isEmpty && bullet == null;
+}
+
+final _codeSymbols = RegExp(r'[{}()\[\];=<>|\\#$]');
+final _bulletLine = RegExp(r'^\s*([-*•]|\d{1,2}[.)])\s+(.*)$');
+
+/// Bereitet Material für die Anzeige auf.
+///
+/// Englische Handbuchtexte und Datenblätter sind von den Autoren hart
+/// umbrochen (rund 34-56 Zeichen je Zeile). Auf einem schmalen Display
+/// entstünde daraus ein Flattersatz aus halben Zeilen. Deshalb werden die
+/// Zeilen eines Absatzes wieder zu Fließtext verbunden, Listenpunkte samt
+/// ihrer eingerückten Fortsetzung ebenfalls. Code, Logs und
+/// Konfigurationen (Sonderzeichen, Einrückung, Spalten aus Leerzeichen)
+/// behalten ihre Zeilen.
+List<MaterialLine> prepareMaterial(String code) {
+  final raw = code.replaceAll('\t', '    ').trimRight().split('\n');
+  final out = <MaterialLine>[];
+
+  List<MaterialLine> asCode(List<String> block) => [
+    for (final l in block)
+      MaterialLine(l.trim(), indent: l.length - l.trimLeft().length),
+  ];
+
+  bool textLike(List<String> block) {
+    final all = block.join('\n');
+    if (_codeSymbols.allMatches(all).length > all.length * 0.012) return false;
+    // Pseudocode ohne Sonderzeichen erkennt man an den Schlüsselwörtern in
+    // Großbuchstaben (WENN, DANN, ENDE) - eine einzelne Überschrift in
+    // Großbuchstaben ist dagegen Text.
+    if (block.length > 1) {
+      final words = all.split(RegExp(r'\s+')).where((w) => w.length >= 3);
+      final caps = words.where(
+        (w) => w == w.toUpperCase() && w.contains(RegExp(r'[A-ZÄÖÜ]')),
+      );
+      if (caps.length > words.length * 0.15) return false;
+    }
+    var inList = false;
+    for (final l in block) {
+      if (_bulletLine.hasMatch(l)) {
+        inList = true;
+        continue;
+      }
+      // Spalten aus Leerzeichen: Tabelle oder Konfiguration.
+      if (l.trim().contains(RegExp(r'\S {2,}\S'))) return false;
+      if (l.startsWith(' ')) {
+        if (!inList) return false;
+      } else {
+        inList = false;
+      }
+    }
+    return true;
+  }
+
+  List<MaterialLine> asText(List<String> block) {
+    final lines = <MaterialLine>[];
+    final para = <String>[];
+
+    void flush() {
+      if (para.isEmpty) return;
+      final longest = para.fold<int>(0, (m, l) => math.max(m, l.length));
+      final wrapped =
+          para.length > 1 &&
+          longest >= 28 &&
+          para
+              .take(para.length - 1)
+              .every((l) => l.length >= longest * 0.6 && l.contains(' '));
+      if (wrapped) {
+        lines.add(MaterialLine(para.join(' '), flow: true));
+      } else {
+        lines.addAll([for (final l in para) MaterialLine(l, flow: true)]);
+      }
+      para.clear();
+    }
+
+    String? bullet;
+    final item = <String>[];
+    void flushItem() {
+      if (bullet == null) return;
+      lines.add(MaterialLine(item.join(' '), flow: true, bullet: bullet));
+      bullet = null;
+      item.clear();
+    }
+
+    for (final l in block) {
+      final m = _bulletLine.firstMatch(l);
+      if (m != null) {
+        flush();
+        flushItem();
+        bullet = m[1];
+        item.add(m[2]!.trim());
+      } else if (bullet != null && l.startsWith(' ')) {
+        item.add(l.trim());
+      } else {
+        flushItem();
+        para.add(l.trim());
+      }
+    }
+    flush();
+    flushItem();
+    return lines;
+  }
+
+  final block = <String>[];
+  void flushBlock() {
+    if (block.isEmpty) return;
+    out.addAll(textLike(block) ? asText(block) : asCode(block));
+    block.clear();
+  }
+
+  for (final l in raw) {
+    if (l.trim().isEmpty) {
+      flushBlock();
+      out.add(const MaterialLine(''));
+    } else {
+      block.add(l.trimRight());
+    }
+  }
+  flushBlock();
+  return out;
 }
 
 /// Gegebener Pseudocode, Log, Konfigurationsauszug oder englischer Text in
 /// Festbreitenschrift.
 ///
-/// Fließtext bricht ganz normal am Wort um. Code behält seine Zeilen: Ist
-/// eine Zeile zu lang, wird die Schrift bis auf [_minScale] verkleinert;
-/// reicht das nicht, bricht die Zeile um und die Fortsetzung bleibt
-/// eingerückt - die Struktur bleibt erkennbar, nichts verschwindet hinter
-/// dem Rand.
+/// Fließtext und Listen brechen ganz normal am Wort um
+/// ([prepareMaterial]). Code behält seine Zeilen: Ist eine Zeile zu lang,
+/// wird die Schrift bis auf [_minScale] verkleinert; reicht das nicht,
+/// bricht die Zeile um und die Fortsetzung bleibt eingerückt - die Struktur
+/// bleibt erkennbar, nichts verschwindet hinter dem Rand und niemand muss
+/// seitlich scrollen.
 class MaterialCodeBlock extends StatelessWidget {
   const MaterialCodeBlock(this.code, {super.key, this.accent});
 
@@ -364,92 +494,81 @@ class MaterialCodeBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scaler = MediaQuery.textScalerOf(context);
-    final lines = code.replaceAll('\t', '    ').trimRight().split('\n');
-    final prose = looksLikeProse(code);
+    final lines = prepareMaterial(code);
     final base = AppType.mono(
       size: _base,
       color: context.scheme.onSurface,
     ).copyWith(letterSpacing: 0);
 
-    Widget frame(Widget child) => ClipRRect(
-      borderRadius: BorderRadius.circular(Radii.m),
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.fromLTRB(_padL, Gap.m, _padR, Gap.m),
-        decoration: BoxDecoration(
-          color: context.c.surfaceAlt,
-          border: Border(
-            left: BorderSide(color: accent ?? context.scheme.primary, width: 3),
-          ),
-        ),
-        child: child,
-      ),
-    );
-
-    if (prose) {
-      return frame(
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            for (final l in lines)
-              l.trim().isEmpty
-                  ? const SizedBox(height: Gap.s)
-                  : Text(l.trim(), style: base.copyWith(height: 1.55)),
-          ],
-        ),
-      );
-    }
-
     return LayoutBuilder(
       builder: (context, box) {
         final inner = box.maxWidth - _padL - 3 - _padR;
 
-        double measure(String s, TextStyle style) {
+        double charWidth(TextStyle style) {
           final tp = TextPainter(
-            text: TextSpan(text: s, style: style),
+            text: TextSpan(text: 'MMMMMMMMMM', style: style),
             textDirection: TextDirection.ltr,
             textScaler: scaler,
           )..layout();
-          final w = tp.width;
+          final w = tp.width / 10;
           tp.dispose();
           return w;
         }
 
-        double charWidth(TextStyle style) =>
-            (measure('MMMMMMMMMM', style)) / 10;
-
-        // Schrift so weit verkleinern, dass die längste Zeile passt - aber
-        // nicht unter die Lesbarkeitsgrenze.
+        // Schrift so weit verkleinern, dass die längste Codezeile passt -
+        // aber nicht unter die Lesbarkeitsgrenze.
         var scale = 1.0;
-        final longest = lines.fold<int>(0, (m, l) => math.max(m, l.length));
+        final longest = lines
+            .where((l) => !l.flow)
+            .fold<int>(0, (m, l) => math.max(m, l.indent + l.text.length));
         final need = longest * charWidth(base);
         if (need > inner && inner > 0) {
           scale = math.max(_minScale, (inner - 1) / need);
         }
-        final style = base.copyWith(fontSize: _base * scale);
-        final space = charWidth(style);
+        final codeStyle = base.copyWith(fontSize: _base * scale);
+        final flowStyle = base.copyWith(height: 1.55);
+        final space = charWidth(codeStyle);
 
-        return frame(
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              for (final line in lines)
-                Padding(
-                  padding: EdgeInsets.only(
-                    // Höchstens ein Drittel der Breite einrücken - tiefe
-                    // Verschachtelung soll nicht zu einem Wort pro Zeile
-                    // führen.
-                    left: math.min(
-                      (line.length - line.trimLeft().length) * space,
-                      math.max(0, inner / 3),
-                    ),
-                  ),
-                  child: Text(
-                    line.trim().isEmpty ? ' ' : breakableCode(line.trim()),
-                    style: style,
-                  ),
+        Widget line(MaterialLine l) {
+          if (l.isBlank) return const SizedBox(height: Gap.s);
+          if (l.bullet != null) {
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('${l.bullet} ', style: flowStyle),
+                Expanded(child: Text(l.text, style: flowStyle)),
+              ],
+            );
+          }
+          if (l.flow) return Text(l.text, style: flowStyle);
+          return Padding(
+            padding: EdgeInsets.only(
+              // Höchstens ein Drittel der Breite einrücken - tiefe
+              // Verschachtelung soll nicht zu einem Wort pro Zeile führen.
+              left: math.min(l.indent * space, math.max(0, inner / 3)),
+            ),
+            child: Text(breakableCode(l.text), style: codeStyle),
+          );
+        }
+
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(Radii.m),
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.fromLTRB(_padL, Gap.m, _padR, Gap.m),
+            decoration: BoxDecoration(
+              color: context.c.surfaceAlt,
+              border: Border(
+                left: BorderSide(
+                  color: accent ?? context.scheme.primary,
+                  width: 3,
                 ),
-            ],
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [for (final l in lines) line(l)],
+            ),
           ),
         );
       },

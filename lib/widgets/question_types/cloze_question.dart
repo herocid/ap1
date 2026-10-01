@@ -355,6 +355,20 @@ class _ClozeQuestionViewState extends State<ClozeQuestionView> {
               2,
         );
     final gapCount = parts.where((p) => p.gap != null).length;
+    // Hängt viel Text an der Lücke (`{1}="agb.html">AGB</a>`), darf das
+    // Stück in sich umbrechen - sonst läuft es rechts aus dem Bild.
+    if (textW > width * 0.4) {
+      return Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: [
+          for (final p in parts)
+            if (p.gap == null)
+              Text(_q.mono ? breakableCode(p.text) : p.text, style: style)
+            else
+              _gap(context, p.gap!, width),
+        ],
+      );
+    }
     final maxGap = math.max(48.0, (width - textW) / gapCount - 1);
     return Row(
       mainAxisSize: MainAxisSize.min,

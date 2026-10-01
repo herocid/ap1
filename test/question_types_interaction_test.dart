@@ -1,4 +1,7 @@
 import 'package:ap1_trainer/data/models/question.dart';
+import 'package:ap1_trainer/data/seed/builders.dart';
+import 'package:ap1_trainer/widgets/question_types/gap_field.dart';
+import 'package:ap1_trainer/widgets/question_types/question_material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -132,6 +135,78 @@ void main() {
     await tester.enterText(field('0'), '');
     await tester.pumpAndSettle();
     expect((host.answer! as Map).containsKey(0), isFalse);
+  });
+
+  testWidgets('Lückentext: Modus je Lücke (Auswahl, Zahl, Wortbank)', (
+    tester,
+  ) async {
+    final q = lueckentext(
+      'ts-cloze-mixed',
+      kSub,
+      prompt: 'Ergänze.',
+      text: 'Ein {0} hat {1} Bit und nutzt {2}.',
+      luecken: [
+        wort(['Byte']),
+        zahl(8),
+        wahl('Binärzahlen', ['Dezimalzahlen']),
+      ],
+      wortbank: ['Nibble'],
+      explanation: 'Ein Byte besteht aus 8 Bit, gerechnet wird binär.',
+    );
+    expect(gapModeOf(q.gaps[0], hasWordBank: true), GapMode.bank);
+    expect(gapModeOf(q.gaps[1], hasWordBank: true), GapMode.input);
+    expect(gapModeOf(q.gaps[2], hasWordBank: true), GapMode.select);
+    expect(gapModeOf(q.gaps[0]), GapMode.input);
+
+    final host = QuestionHost(q);
+    await tester.pumpWidget(host.build());
+    // Die Zahl steht nicht in der Wortbank - sie wird getippt.
+    expect(find.byKey(const ValueKey('bank-1')), findsOneWidget);
+    expect(find.byKey(const ValueKey('bank-2')), findsNothing);
+    await tester.tap(
+      find.ancestor(of: textOf('Byte'), matching: find.byType(InkWell)),
+    );
+    await tester.pumpAndSettle();
+    await tester.enterText(field('1'), '8');
+    await pick(tester, '2', 'Binärzahlen');
+    expect(host.answer, {0: 'Byte', 1: '8', 2: 'Binärzahlen'});
+    expect(host.grade.isCorrect, isTrue);
+  });
+
+  test('Material: hart umbrochener Fließtext wird wieder Fließtext', () {
+    final text = prepareMaterial(
+      'SECURING YOUR MAIL CLIENT\n\n'
+      'To protect confidential messages, first install the\n'
+      'latest security baseline provided by the vendor. Use a\n'
+      'strong and unique password.\n\n'
+      '- No default passwords: a password must be set\n'
+      '  during first setup\n'
+      '- Signed firmware',
+    );
+    expect(text.map((l) => l.text).toList(), [
+      'SECURING YOUR MAIL CLIENT',
+      '',
+      'To protect confidential messages, first install the latest security '
+          'baseline provided by the vendor. Use a strong and unique password.',
+      '',
+      'No default passwords: a password must be set during first setup',
+      'Signed firmware',
+    ]);
+    expect(text[4].bullet, '-');
+    expect(text.where((l) => !l.isBlank).every((l) => l.flow), isTrue);
+
+    // Code, Pseudocode und Konfiguration behalten Zeilen und Einrückung.
+    for (final code in [
+      'summe = 0\nFÜR i = 0 BIS laenge(werte) - 1\n    summe = summe + werte[i]',
+      'WENN alter GROESSER 18 DANN\nAUSGABE Hinweis anzeigen und weiter\nENDE WENN',
+      'interface Gi0/1\n ip address 10.0.0.1 255.255.255.0\n no shutdown',
+      'Power      65 W\nWeight     1.2 kg',
+    ]) {
+      final lines = prepareMaterial(code);
+      expect(lines.length, code.split('\n').length, reason: code);
+      expect(lines.any((l) => l.flow), isFalse, reason: code);
+    }
+    expect(prepareMaterial('a\n    b')[1].indent, 4);
   });
 
   testWidgets('Lückentext als Pseudocode', (tester) async {
