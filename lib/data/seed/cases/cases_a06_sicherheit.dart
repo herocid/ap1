@@ -1581,7 +1581,7 @@ final List<ExamCase> casesA06 = [
             'Benenne eine Rechtsgrundlage, auf die sich die Verarbeitung dieser Beschäftigtendaten stützt, und begründe deine Antwort. (3 P.)',
         kriterien: [
           krit(
-            'Rechtsgrundlage: Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO, § 26 BDSG)',
+            'Rechtsgrundlage: Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO); die Nennung von § 26 BDSG wird ebenfalls gewertet',
             stichwoerter: [
               'Arbeitsvertrag',
               'Vertrag',
@@ -1604,7 +1604,7 @@ final List<ExamCase> casesA06 = [
         ],
         punkte: 3,
         loesung:
-            'Rechtsgrundlage ist die Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO; für Beschäftigte ergänzend § 26 BDSG). Die Daten sind erforderlich, um den Dreischichtbetrieb zu planen und die Beschäftigten zu erreichen. Eine Einwilligung ist dafür nicht nötig.',
+            'Rechtsgrundlage ist die Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO). Die Daten sind erforderlich, um den Dreischichtbetrieb zu planen und die Beschäftigten zu erreichen. Eine Einwilligung ist dafür nicht nötig. In Lehrbüchern und älteren Lösungen wird oft § 26 BDSG genannt; ob dessen allgemeine Regel nach einem Urteil des Europäischen Gerichtshofs von 2023 noch anwendbar ist, ist umstritten - sicher ist die Stütze auf die DSGVO.',
         explanation:
             '1 Punkt für die Rechtsgrundlage, 2 Punkte für die Begründung über die Erforderlichkeit für das Arbeitsverhältnis.',
       ),

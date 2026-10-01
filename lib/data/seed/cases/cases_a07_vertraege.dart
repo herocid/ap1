@@ -363,7 +363,7 @@ final List<ExamCase> casesA07 = [
         loesung:
             'Nacherfüllung bedeutet Nachbesserung (der Händler repariert die Scanner) oder Ersatzlieferung (er liefert mangelfreie Scanner). Beim Kaufvertrag wählt grundsätzlich der Käufer, hier also die Grünwerk GmbH (§ 439 Abs. 1 BGB).',
         explanation:
-            'Je Angabe 1 Punkt. Der Verkäufer darf die gewählte Art nur verweigern, wenn sie unverhältnismäßig teuer ist. Beim Werkvertrag wählt dagegen der Unternehmer.',
+            'Je Angabe 1 Punkt. Der Verkäufer darf die gewählte Art verweigern, wenn sie nur mit unverhältnismäßigen Kosten möglich ist (§ 439 Abs. 4 BGB). Beim Werkvertrag wählt dagegen der Unternehmer.',
         punkte: 3,
       ),
       lueckentext(

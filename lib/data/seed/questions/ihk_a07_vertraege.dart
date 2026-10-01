@@ -1427,7 +1427,7 @@ final List<Question> ihkA07 = [
       ),
       ja(
         'Statt 10 Switches werden 8 geliefert.',
-        'Eine Zuweniglieferung steht dem Sachmangel gleich.',
+        'Die vereinbarte Menge gehört zur Beschaffenheit - eine Zuweniglieferung ist deshalb ein Sachmangel (§ 434 Abs. 2 BGB).',
       ),
       nein(
         'Der Kunde lässt den Monitor beim Auspacken fallen, das Display reißt.',
@@ -1435,7 +1435,7 @@ final List<Question> ihkA07 = [
       ),
     ],
     explanation:
-        'Ein Sachmangel liegt vor, wenn die Sache bei Gefahrübergang nicht den vereinbarten oder üblichen Anforderungen oder den Montageanforderungen entspricht; Falsch- und Zuweniglieferung stehen gleich. Verschleiß und selbst verursachte Schäden nach der Übergabe sind keine Mängel.',
+        'Ein Sachmangel liegt vor, wenn die Sache bei Gefahrübergang nicht den vereinbarten oder üblichen Anforderungen oder den Montageanforderungen entspricht. Zur Beschaffenheit gehört seit 2022 auch die Menge - eine Zuweniglieferung ist also selbst ein Sachmangel; die Lieferung einer anderen Sache steht dem Sachmangel gleich (§ 434 Abs. 5 BGB). Verschleiß und selbst verursachte Schäden nach der Übergabe sind keine Mängel.',
     punkte: 3,
   ),
 
