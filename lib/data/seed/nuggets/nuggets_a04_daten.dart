@@ -9,7 +9,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-de-1',
     'dm-erm',
     'Erst modellieren, dann speichern',
-    'Bevor eine Datenbank entsteht, wird geplant, welche Daten sie enthält und wie sie zusammenhängen. Das Entity-Relationship-Modell (ERM) beschreibt das fachlich und unabhängig von einer Software. Erst danach wird es in Tabellen übersetzt.',
+    'Bevor eine Datenbank entsteht, planst du, welche Daten sie enthält und wie sie zusammenhängen. Das Entity-Relationship-Modell (ERM) beschreibt das fachlich und unabhängig von einer Software. Erst danach übersetzt du es in Tabellen.',
     points: [
       'Konzeptionell: ERM (was gibt es, wie hängt es zusammen?)',
       'Logisch: relationales Modell (welche Tabellen, Spalten und Schlüssel?)',
@@ -154,7 +154,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-de-9',
     'dm-erm',
     'Vom ERM zur Tabelle',
-    'Das ERM wird anschließend in das relationale Modell überführt. Dabei entspricht jedem Element des ERM ein Element der Tabelle.',
+    'Anschließend überführst du das ERM in das relationale Modell. Dabei findet jedes Element des ERM seine Entsprechung in der Tabelle.',
     [
       ['ERM', 'Relationales Modell'],
       ['Entitätstyp', 'Tabelle (Relation)'],
@@ -549,7 +549,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-dl-11',
     'dm-schluessel',
     'Schlechte Primärschlüssel',
-    'Name, Telefonnummer oder E-Mail sind als Primärschlüssel ungeeignet: nicht sicher eindeutig, nicht stabil oder manchmal leer. Auch ein zusammengesetzter Schlüssel aus mehr Spalten als nötig ist falsch, denn er ist nicht minimal.',
+    'Name, Telefonnummer oder E-Mail taugen nicht als Primärschlüssel, weil sie nicht sicher eindeutig, nicht stabil oder manchmal leer sind. Auch ein zusammengesetzter Schlüssel aus mehr Spalten als nötig ist falsch, denn er ist nicht minimal.',
   ),
   merke(
     'n-dl-12',
@@ -687,7 +687,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-dn-8',
     'dm-normalisierung',
     'Schritt 3: dritte Normalform',
-    'Jetzt werden Abhängigkeiten zwischen Nichtschlüsselattributen gesucht. In Bestellung gilt: BestNr -> KdNr -> Name, Ort.',
+    'Jetzt suchst du Abhängigkeiten zwischen Nichtschlüsselattributen. In Bestellung gilt: BestNr -> KdNr -> Name, Ort.',
     schritte: [
       'Name und Ort hängen über KdNr vom Schlüssel ab (transitiv)',
       'KdNr, Name, Ort in eine eigene Tabelle Kunde auslagern, KdNr wird dort Primärschlüssel',
@@ -1081,7 +1081,7 @@ final List<Nugget> nuggetsA04Daten = [
     schritte: [
       '200: Die Login-Seite wurde korrekt ausgeliefert',
       '401: Anmeldung fehlgeschlagen, etwa ein falsches Passwort',
-      '403: Sie ist nun bekannt, darf den Admin-Bereich aber nicht sehen. Richtig so',
+      '403: Sie ist nun bekannt, darf den Admin-Bereich aber nicht sehen, und das ist richtig so',
       '404: Das Logo fehlt auf dem Server oder der Pfad im HTML ist falsch',
       '500: Beim Anlegen der Bestellung ist das Serverprogramm abgestürzt',
     ],
@@ -1136,7 +1136,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wh-13',
     'wi-http',
     'Schloss heißt nicht seriös',
-    'Das Schloss zeigt nur, dass die Verbindung verschlüsselt ist und das Zertifikat zum Hostnamen passt. Auch Phishing-Seiten haben gültige Zertifikate, verschlüsselt mit dem Betrüger. Ob die Seite vertrauenswürdig ist, sagt erst die Domain.',
+    'Das Schloss zeigt nur, dass die Verbindung verschlüsselt ist und das Zertifikat zum Hostnamen passt. Auch Phishing-Seiten haben gültige Zertifikate, du sprichst dann eben verschlüsselt mit dem Betrüger. Ob die Seite vertrauenswürdig ist, sagt erst die Domain.',
   ),
   merke(
     'n-wh-14',
@@ -1305,7 +1305,7 @@ final List<Nugget> nuggetsA04Daten = [
       'Server schickt das fertige HTML als Response zurück',
     ],
     merksatz:
-        'Ein CMS (Content-Management-System) ist ein fertiges Programm dieser Art: Inhalte pflegen ohne zu programmieren.',
+        'Ein CMS (Content-Management-System) ist ein fertiges Programm dieser Art. Damit pflegst du Inhalte, ohne zu programmieren.',
   ),
   konzept(
     'n-wa-15',
@@ -1458,7 +1458,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wt-7',
     'wi-html',
     'Semantische Tags',
-    'Semantische Tags sagen, welche Rolle ein Bereich hat. Das hilft Screenreadern und Suchmaschinen, div und span tun das nicht.',
+    'Semantische Tags sagen, welche Rolle ein Bereich hat. Das hilft Screenreadern und Suchmaschinen. div und span leisten das nicht.',
     [
       ['Tag', 'Bedeutung'],
       ['<header>', 'Kopfbereich'],
@@ -1548,7 +1548,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wt-13',
     'wi-html',
     'Das Wichtigste zu HTML und CSS',
-    'Struktur, Gestaltung und Verhalten werden getrennt.',
+    'Halte Struktur, Gestaltung und Verhalten sauber getrennt.',
     points: [
       'Grundgerüst: DOCTYPE, html, head, body',
       'Element = Start-Tag + Inhalt + End-Tag, Attribute als name="wert"',
@@ -1643,7 +1643,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wf-6',
     'wi-barrierefrei',
     'Kontrast messen',
-    'Das Kontrastverhältnis vergleicht die relative Helligkeit (Luminanz) von Text und Hintergrund. Es reicht von 1:1 (gleiche Farbe) bis 21:1 (Schwarz auf Weiß). Gemessen wird mit einem Kontrast-Prüfwerkzeug.',
+    'Das Kontrastverhältnis vergleicht die relative Helligkeit (Luminanz) von Text und Hintergrund. Es reicht von 1:1 (gleiche Farbe) bis 21:1 (Schwarz auf Weiß). Messen kannst du es mit einem Kontrast-Prüfwerkzeug.',
     'Kontrast = (L hell + 0,05)\n'
         '         / (L dunkel + 0,05)\n'
         '\n'
@@ -1719,7 +1719,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wf-10',
     'wi-barrierefrei',
     'Farbe allein reicht nicht',
-    'Pflichtfelder nur rot markieren oder Fehler nur mit einer roten Umrandung zeigen, schließt Menschen mit Farbsehschwäche aus. Die Information muss auch als Text oder Symbol erkennbar sein. Ebenso hilft ein Alt-Text wie „bild1.jpg“ niemandem.',
+    'Wer Pflichtfelder nur rot markiert oder Fehler nur mit einer roten Umrandung zeigt, schließt Menschen mit Farbsehschwäche aus. Die Information muss auch als Text oder Symbol erkennbar sein. Ebenso hilft ein Alt-Text wie „bild1.jpg“ niemandem.',
   ),
   falle(
     'n-wf-11',
@@ -1796,7 +1796,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mz-4',
     'md-zahlensysteme',
     'Dezimal -> binär: Divisionsrest',
-    'Wandle 156 in eine Binärzahl um. Die Zahl wird so lange durch 2 geteilt, bis 0 herauskommt.',
+    'Wandle 156 in eine Binärzahl um. Dazu teilst du die Zahl so lange durch 2, bis 0 herauskommt.',
     code:
         '156 : 2 = 78  Rest 0\n'
         ' 78 : 2 = 39  Rest 0\n'
@@ -1817,7 +1817,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mz-5',
     'md-zahlensysteme',
     'Dezimal -> binär: Stellenwerte abziehen',
-    'Wandle 200 in eine Binärzahl um, diesmal ohne Division. Von links wird geprüft, ob der Stellenwert noch hineinpasst.',
+    'Wandle 200 in eine Binärzahl um, diesmal ohne Division. Du prüfst von links, ob der Stellenwert noch hineinpasst.',
     schritte: [
       '128 passt in 200 -> Bit 1, Rest 200 - 128 = 72',
       '64 passt in 72 -> Bit 1, Rest 72 - 64 = 8',
@@ -2099,7 +2099,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mc-8',
     'md-zeichen',
     'Durchgerechnet: Bytes zählen',
-    'Wie viele Byte belegen „Grüße“ und „Preis: 5 €“ in UTF-8? Jedes Zeichen wird einzeln gezählt, auch Leerzeichen und Satzzeichen.',
+    'Wie viele Byte belegen „Grüße“ und „Preis: 5 €“ in UTF-8? Zähle jedes Zeichen einzeln, auch Leerzeichen und Satzzeichen.',
     code:
         'G  r  ü  ß  e\n'
         '1 +1 +2 +2 +1 = 7 Byte',
@@ -2131,7 +2131,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mc-10',
     'md-zeichen',
     'Die Kodierung angeben',
-    'Einer Bytefolge sieht man nicht an, wie sie kodiert ist. Deshalb wird die Kodierung mitgeliefert: in der Datei, im HTTP-Header oder in der Datenbank.',
+    'Einer Bytefolge sieht man nicht an, wie sie kodiert ist. Deshalb liefert man die Kodierung mit, und zwar in der Datei, im HTTP-Header oder in der Datenbank.',
     code:
         '<meta charset="utf-8">\n'
         '\n'
@@ -2147,7 +2147,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mc-11',
     'md-zeichen',
     'Mojibake',
-    'Wird UTF-8-Text als Latin-1 gelesen, erscheinen aus einem Umlaut zwei fremde Zeichen: Aus „Müller“ wird „MÃ¼ller“, weil die zwei Bytes C3 BC einzeln gedeutet werden. Die Daten sind nicht kaputt, nur falsch interpretiert. Abhilfe: überall dieselbe Kodierung festlegen, z. B. UTF-8 in Datenbank, Datei und HTML-Kopf.',
+    'Wird UTF-8-Text als Latin-1 gelesen, erscheinen aus einem Umlaut zwei fremde Zeichen: Aus „Müller“ wird „MÃ¼ller“, weil die zwei Bytes C3 BC einzeln gedeutet werden. Die Daten sind nicht kaputt, nur falsch interpretiert. Abhilfe schaffst du, indem du überall dieselbe Kodierung festlegst, z. B. UTF-8 in Datenbank, Datei und HTML-Kopf.',
   ),
   falle(
     'n-mc-12',
@@ -2202,7 +2202,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-md-3',
     'md-datenmengen',
     'Einheiten umrechnen',
-    'Zur größeren Einheit wird geteilt, zur kleineren malgenommen. Bit und Byte trennt immer der Faktor 8.',
+    'Zur größeren Einheit teilst du, zur kleineren nimmst du mal. Bit und Byte trennt immer der Faktor 8.',
     'Bit  -> Byte : / 8\n'
         'Byte -> kB   : / 1.000\n'
         'kB   -> MB   : / 1.000\n'
@@ -2276,7 +2276,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-md-8',
     'md-datenmengen',
     'Durchgerechnet: Audio',
-    'Wie groß ist eine Minute Musik in CD-Qualität (44,1 kHz, 16 Bit, Stereo), unkomprimiert? Bei Audio wird das Signal viele Male pro Sekunde abgetastet, jeder Messwert hat eine feste Bittiefe.',
+    'Wie groß ist eine Minute Musik in CD-Qualität (44,1 kHz, 16 Bit, Stereo), unkomprimiert? Bei Audio wird das Signal viele Male pro Sekunde abgetastet, und jeder Messwert hat eine feste Bittiefe.',
     code:
         'Bit = Abtastrate × Bittiefe\n'
         '      × Kanäle × Sekunden',
@@ -2373,7 +2373,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-md-12',
     'md-datenmengen',
     'Bit, Byte, MB und MiB',
-    'Die häufigsten Fehler: Farbtiefe in Bit nicht durch 8 geteilt, Stereo vergessen (× 2), Minuten nicht in Sekunden umgerechnet oder dezimal und binär gemischt. 6.220.800 Byte sind 6,22 MB, aber nur 5,93 MiB. Lies genau, welche Einheit die Aufgabe verlangt.',
+    'Am häufigsten passiert es, dass die Farbtiefe in Bit nicht durch 8 geteilt, Stereo vergessen (× 2), Minuten nicht in Sekunden umgerechnet oder dezimal und binär gemischt werden. 6.220.800 Byte sind 6,22 MB, aber nur 5,93 MiB. Lies genau, welche Einheit die Aufgabe verlangt.',
   ),
   merke(
     'n-md-13',
@@ -2395,7 +2395,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mu-1',
     'md-uebertragung',
     'Datenrate in Bit pro Sekunde',
-    'Die Datenrate (umgangssprachlich Bandbreite) gibt an, wie viele Bit pro Sekunde übertragen werden. Anbieter rechnen dezimal: 1 Mbit/s sind 1.000.000 Bit/s. Dateigrößen stehen dagegen meist in Byte. Für die Dauer müssen beide in dieselbe Einheit.',
+    'Die Datenrate (umgangssprachlich Bandbreite) gibt an, wie viele Bit pro Sekunde übertragen werden. Anbieter rechnen dezimal: 1 Mbit/s sind 1.000.000 Bit/s. Dateigrößen stehen dagegen meist in Byte. Für die Dauer musst du beide in dieselbe Einheit bringen.',
     points: [
       'Schreibweisen: Mbit/s, Mb/s oder Mbps, alle meinen Megabit pro Sekunde',
       'MB/s (Megabyte pro Sekunde) ist das Achtfache',
@@ -2536,13 +2536,13 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mu-12',
     'md-uebertragung',
     'Einheiten gemischt',
-    'Ist die Datei in GiB, die Leitung aber in Mbit/s angegeben, muss erst alles in Bit umgerechnet werden, einmal mit 1.024, einmal mit 1.000. Und das Ergebnis in Sekunden muss oft noch in Minuten oder Stunden: 1 h = 3.600 s.',
+    'Ist die Datei in GiB, die Leitung aber in Mbit/s angegeben, rechnest du erst alles in Bit um, einmal mit 1.024, einmal mit 1.000. Das Ergebnis in Sekunden musst du oft noch in Minuten oder Stunden umrechnen (1 h = 3.600 s).',
   ),
   merke(
     'n-mu-13',
     'md-uebertragung',
     'Das Wichtigste zur Übertragungsdauer',
-    'Alles in Bit und Sekunden, dann teilen.',
+    'Rechne alles in Bit und Sekunden um und teile dann.',
     points: [
       'Datenmenge in Bit: Byte × 8, Präfix beachten',
       'Datenrate in Bit/s: dezimal, 1 Mbit/s = 1.000.000 Bit/s',
@@ -2642,7 +2642,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mx-7',
     'md-kompression',
     'Kompression bewerten',
-    'Das Ergebnis gibt man als Faktor oder als Einsparung in Prozent an. Der Begriff „Kompressionsrate“ wird uneinheitlich verwendet. Rechne immer genau das, was die Aufgabe fragt.',
+    'Das Ergebnis gibt man als Faktor oder als Einsparung in Prozent an. Weil der Begriff „Kompressionsrate“ uneinheitlich verwendet wird, rechnest du immer genau das, was die Aufgabe fragt.',
     'Faktor = Original / komprimiert\n'
         '\n'
         'Einsparung =\n'
@@ -2669,7 +2669,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mx-9',
     'md-kompression',
     'Formate im Überblick',
-    'Für jede Aufgabe gibt es ein passendes Format. In der Prüfung wird oft eine Begründung für die Wahl verlangt.',
+    'Für jede Aufgabe gibt es ein passendes Format. In der Prüfung sollst du deine Wahl oft begründen.',
     [
       ['Format', 'Art', 'Einsatz'],
       ['JPEG', 'verlustbehaftet', 'Fotos'],
@@ -2813,7 +2813,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-ig-6',
     'ki-grundlagen',
     'So entsteht ein Modell',
-    'Ein Modell wird nicht einmal gebaut und ist fertig. Der Ablauf wiederholt sich, bis die Qualität reicht, und auch im Betrieb wird es weiter beobachtet.',
+    'Mit einem einzigen Durchgang ist ein Modell nicht fertig. Der Ablauf wiederholt sich, bis die Qualität reicht, und auch im Betrieb wird es weiter beobachtet.',
     FlussDiagramm([
       FlussKnoten('Start', form: FlussForm.start),
       FlussKnoten('Daten sammeln'),
@@ -2836,7 +2836,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-ig-7',
     'ki-grundlagen',
     'Trainings- und Testdaten',
-    'Die Daten werden vor dem Training aufgeteilt, oft etwa 80 zu 20. Mit den Trainingsdaten lernt das Modell, mit den Testdaten wird geprüft, wie gut es mit Beispielen umgeht, die es noch nie gesehen hat.',
+    'Die Daten werden vor dem Training aufgeteilt, oft etwa 80 zu 20. Mit den Trainingsdaten lernt das Modell, mit den Testdaten prüfst du, wie gut es mit Beispielen umgeht, die es noch nie gesehen hat.',
     points: [
       'Beispiel: 10.000 markierte Bilder -> 8.000 zum Training, 2.000 zum Test',
       'Overfitting: Das Modell lernt die Trainingsdaten auswendig. Dort ist es sehr gut, bei neuen Daten schlecht',
@@ -2860,7 +2860,7 @@ final List<Nugget> nuggetsA04Daten = [
       'Fehler: 4 Spam-Mails rutschen durch, 8 echte Mails landen im Spam-Ordner (falsch positiv)',
     ],
     ergebnis:
-        '94 % Genauigkeit und trotzdem 8 verlorene echte Mails, die im Betrieb stören können.',
+        'Trotz 94 % Genauigkeit gehen 8 echte Mails verloren, und das kann im Betrieb stören.',
   ),
   konzept(
     'n-ig-9',
@@ -3082,13 +3082,13 @@ final List<Nugget> nuggetsA04Daten = [
     'n-ie-10',
     'ki-einsatz',
     'Geprüft wird immer',
-    'KI-Code kann veraltete Bibliotheken, Sicherheitslücken oder frei erfundene Funktionen enthalten, eine Kundenantwort falsche Zusagen. Dass Code kompiliert, heißt nur, dass er syntaktisch stimmt. Wer das Ergebnis ungeprüft weitergibt, trägt die Verantwortung, nicht das Werkzeug.',
+    'KI-Code kann veraltete Bibliotheken, Sicherheitslücken oder frei erfundene Funktionen enthalten, und eine Kundenantwort kann falsche Zusagen machen. Dass Code kompiliert, heißt nur, dass er syntaktisch stimmt. Wer das Ergebnis ungeprüft weitergibt, trägt die Verantwortung, nicht das Werkzeug.',
   ),
   falle(
     'n-ie-11',
     'ki-einsatz',
     'Geheimnisse gehören nicht in den Prompt',
-    'Passwörter, API-Schlüssel, Kundendaten oder interner Quellcode haben in öffentlichen KI-Diensten nichts zu suchen, denn Eingaben können gespeichert und ausgewertet werden. Vor dem Einfügen anonymisieren oder ein freigegebenes Unternehmenswerkzeug nutzen.',
+    'Passwörter, API-Schlüssel, Kundendaten oder interner Quellcode haben in öffentlichen KI-Diensten nichts zu suchen, denn Eingaben können gespeichert und ausgewertet werden. Anonymisiere die Daten vor dem Einfügen oder nutze ein freigegebenes Unternehmenswerkzeug.',
   ),
   merke(
     'n-ie-12',
@@ -3156,7 +3156,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-ir-5',
     'ki-grenzen',
     'Technische Grenzen',
-    'Sprachmodelle haben Grenzen, die man kennen muss, um ihre Antworten richtig einzuschätzen.',
+    'Sprachmodelle haben Grenzen, und die musst du kennen, um ihre Antworten richtig einzuschätzen.',
     points: [
       'Wissensstand: nur bis zum Ende der Trainingsdaten',
       'Kontextfenster: sehr lange Dokumente werden nicht vollständig berücksichtigt',

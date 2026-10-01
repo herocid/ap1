@@ -21,7 +21,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-tp-2',
     't-psp',
     'Die Ebenen des PSP',
-    'Ein PSP ist ein Baum: oben das Projekt, darunter Teilaufgaben, ganz unten die Arbeitspakete. Jede Ebene verfeinert die darüberliegende.',
+    'Ein PSP ist wie ein Baum aufgebaut: Oben steht das Projekt, darunter folgen die Teilaufgaben und ganz unten die Arbeitspakete. Jede Ebene verfeinert die darüberliegende.',
     table: [
       ['Ebene', 'Element', 'Weiter zerlegt?'],
       ['0', 'Projekt (Wurzel)', 'ja'],
@@ -167,7 +167,7 @@ final List<Nugget> nuggetsA01Planung = [
       ],
     ],
     points: [
-      'In der Praxis kombiniert: grob top-down gliedern, dann im Team Tätigkeiten sammeln und einsortieren.',
+      'In der Praxis kombiniert man beides: erst grob top-down gliedern, dann im Team Tätigkeiten sammeln und einsortieren.',
     ],
   ),
   ablauf(
@@ -367,7 +367,7 @@ final List<Nugget> nuggetsA01Planung = [
     ),
     points: [
       'M1 verläuft waagerecht: Der Termin Woche 8 hält, in Woche 8 trifft die Linie die Diagonale.',
-      'M2 steigt je Berichtswoche um eine halbe Woche: Verzug: Geplant war Woche 10, in Berichtswoche 8 lautet die Prognose Woche 14.',
+      'M2 steigt je Berichtswoche um eine halbe Woche, das bedeutet Verzug. Geplant war Woche 10, in Berichtswoche 8 lautet die Prognose Woche 14.',
     ],
   ),
   vergleich(
@@ -411,7 +411,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-tr-1',
     't-ressourcen',
     'Ressourcen planen',
-    'Ressourcen sind alles, was ein Arbeitspaket zum Erledigen braucht. Die Ressourcenplanung prüft, ob sie zur richtigen Zeit in ausreichender Menge verfügbar sind: Bedarf ermitteln, Verfügbarkeit ermitteln, beides abgleichen.',
+    'Ressourcen sind alles, was ein Arbeitspaket zum Erledigen braucht. Die Ressourcenplanung prüft, ob sie zur richtigen Zeit in ausreichender Menge verfügbar sind. Dazu ermittelst du Bedarf und Verfügbarkeit und gleichst beides ab.',
     points: [
       'Personal: Entwicklerinnen, Admins, Fachbereich',
       'Sachmittel: Hardware, Testumgebung, Räume, Lizenzen',
@@ -543,7 +543,7 @@ final List<Nugget> nuggetsA01Planung = [
     points: [
       'Vorgänge innerhalb ihres Puffers verschieben (Kapazitätsausgleich)',
       'Arbeit auf weniger ausgelastete Personen umverteilen',
-      'kurzfristig Überstunden',
+      'kurzfristig Überstunden machen',
       'zusätzliche interne oder externe Kapazität beschaffen',
       'Termin verschieben oder Umfang kürzen, nur in Absprache mit dem Auftraggeber',
     ],
@@ -568,7 +568,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-tr-13',
     't-ressourcen',
     'Merksatz',
-    'Die Einheiten verraten die Bedeutung.',
+    'Schon an der Einheit erkennst du, was gemeint ist.',
     satz:
         'Personentage beschreiben Arbeit, Arbeitstage beschreiben Zeit. Dazwischen steht die Verfügbarkeit.',
   ),
@@ -660,7 +660,7 @@ final List<Nugget> nuggetsA01Planung = [
       ['Auswirkung', 'sodass sich der Go-live um 2 Wochen verschiebt.'],
     ],
     points: [
-      'Zu ungenau: „Das Projekt könnte scheitern.“. Daraus folgt keine Maßnahme.',
+      '„Das Projekt könnte scheitern.“ ist zu ungenau, daraus folgt keine Maßnahme.',
     ],
   ),
   konzept(
@@ -769,7 +769,7 @@ final List<Nugget> nuggetsA01Planung = [
     ],
     ergebnis: 'Rangfolge: R1 (8.000 €), R2 (6.000 €), R3 (2.000 €)',
     merksatz:
-        'Das wahrscheinlichste Risiko R2 steht nicht vorn. Es zählt das Produkt.',
+        'Das wahrscheinlichste Risiko R2 steht nicht vorn, denn es zählt das Produkt.',
   ),
   skizze(
     'n-rb-5',
@@ -814,7 +814,7 @@ final List<Nugget> nuggetsA01Planung = [
       'Einordnen: 6 liegt im roten Bereich',
     ],
     ergebnis:
-        'Kennzahl 6, also rot, es muss sofort eine Maßnahme geplant werden',
+        'Kennzahl 6 bedeutet Rot, also muss sofort eine Maßnahme geplant werden.',
   ),
   formel(
     'n-rb-8',
@@ -836,7 +836,7 @@ final List<Nugget> nuggetsA01Planung = [
       'Vergleich: 8.000 € Nutzen > 5.000 € Kosten',
     ],
     ergebnis:
-        'Die Maßnahme lohnt sich: sie bringt 3.000 € mehr, als sie kostet.',
+        'Die Maßnahme lohnt sich, denn sie bringt 3.000 € mehr, als sie kostet.',
   ),
   falle(
     'n-rb-10',
@@ -848,7 +848,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-rb-11',
     'r-bewertung',
     'Prozente und Achsen',
-    'Zwei Fehler kosten regelmäßig Punkte: 25 % × 36.000 € sind 0,25 × 36.000 € = 9.000 €: Prozent immer als Dezimalzahl einsetzen. Und bei einer vorgegebenen Matrix zuerst prüfen, welche Achse was zeigt: Nicht jede Vorlage hat die Wahrscheinlichkeit waagerecht.',
+    'Zwei Fehler kosten regelmäßig Punkte. Erstens: Setz Prozent immer als Dezimalzahl ein, 25 % × 36.000 € sind 0,25 × 36.000 € = 9.000 €. Zweitens: Prüf bei einer vorgegebenen Matrix zuerst, welche Achse was zeigt, denn nicht jede Vorlage hat die Wahrscheinlichkeit waagerecht.',
   ),
   merke(
     'n-rb-12',
@@ -1003,7 +1003,7 @@ final List<Nugget> nuggetsA01Planung = [
     'Merksatz',
     'Geprüft wird von der wirksamsten zur schwächsten Strategie.',
     satz:
-        'Vermeiden, vermindern, übertragen, akzeptieren, und zwar in dieser Reihenfolge prüfen.',
+        'Prüfe in dieser Reihenfolge: vermeiden, vermindern, übertragen, akzeptieren.',
   ),
 
   // ============================================== Projektkosten kalkulieren
@@ -1117,7 +1117,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-wk-7',
     'w-kalkulation',
     'Die Bezugskalkulation',
-    'Beim Vergleich von Lieferantenangeboten zählt nicht der Listenpreis, sondern der Bezugspreis (Einstandspreis): was die Ware wirklich kostet, bis sie im Haus ist.',
+    'Beim Vergleich von Lieferantenangeboten zählt nicht der Listenpreis, sondern der Bezugspreis (Einstandspreis), also das, was die Ware wirklich kostet, bis sie im Haus ist.',
     '  Listenpreis\n'
         '- Rabatt (% vom Listenpreis)\n'
         '= Zieleinkaufspreis\n'
@@ -1250,7 +1250,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-wn-4',
     'w-nutzwert',
     'Die Schritte',
-    'Das Verfahren ist immer gleich.',
+    'Das Verfahren läuft immer gleich ab.',
     [
       'Kriterien festlegen, bevor man die Angebote kennt',
       'K.-o.-Kriterien prüfen, ungeeignete Alternativen streichen',
@@ -1307,7 +1307,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-wn-8',
     'w-nutzwert',
     'Das Ergebnis als Balkendiagramm',
-    'Ein Balkendiagramm macht das Ergebnis für Entscheider auf einen Blick lesbar. Der Abstand zwischen A und B ist klein: Hier lohnt ein zweiter Blick.',
+    'Ein Balkendiagramm macht das Ergebnis für Entscheider auf einen Blick lesbar. Der Abstand zwischen A und B ist klein, hier lohnt sich ein zweiter Blick.',
     const BalkenDiagramm(
       [
         Balken('A', 7.55, hervorheben: true),
@@ -1338,7 +1338,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-wn-12',
     'w-nutzwert',
     'Entscheidungsmatrix mit Rangplätzen',
-    'Die einfachste Form des Vergleichs kommt ohne Gewichtung aus: Je Kriterium werden die Alternativen in eine Rangfolge gebracht, die Ränge werden addiert. Welche Zahl für den besten Wert steht, legt die Aufgabe fest. Deshalb immer zuerst die Vorgabe lesen.',
+    'Die einfachste Form des Vergleichs kommt ohne Gewichtung aus: Je Kriterium werden die Alternativen in eine Rangfolge gebracht, die Ränge werden addiert. Welche Zahl für den besten Wert steht, legt die Aufgabe fest. Lies deshalb immer zuerst die Vorgabe.',
     points: [
       'Vorgabe „Rang 1 für den besten Wert“: Die kleinste Rangsumme gewinnt.',
       'Vorgabe „höchste Punktzahl für den besten Wert“ (bei drei Alternativen 3 Punkte): Die größte Summe gewinnt.',
@@ -1369,7 +1369,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-wn-14',
     'w-nutzwert',
     'Bei Kosten ist klein gut',
-    'Der häufigste Fehler in der Entscheidungsmatrix: Beim Preis oder bei den Wartungskosten bekommt der größte Wert den besten Rang. Bei Kosten, Lieferzeit oder Stromverbrauch ist aber der kleinste Wert der beste. Der zweite Fehler: die Vorgabe überlesen und die falsche Summe gewinnen lassen.',
+    'Der häufigste Fehler in der Entscheidungsmatrix ist, dass beim Preis oder bei den Wartungskosten der größte Wert den besten Rang bekommt. Bei Kosten, Lieferzeit oder Stromverbrauch ist aber der kleinste Wert der beste. Der zweite Fehler ist, die Vorgabe zu überlesen und die falsche Summe gewinnen zu lassen.',
     points: [
       'Vorgabe „3 Punkte für den besten Wert“: Das günstigste Gerät erhält 3 Punkte, die größte Summe gewinnt.',
       'Vorgabe „Rang 1 für den besten Wert“: Das günstigste Gerät erhält Rang 1, die kleinste Summe gewinnt.',
@@ -1523,11 +1523,11 @@ final List<Nugget> nuggetsA01Planung = [
     'Die Machbarkeitsanalyse',
     'Bevor ein Weg gewählt wird, prüft man, ob er überhaupt gangbar ist.',
     points: [
-      'technisch: lässt es sich umsetzen?',
-      'wirtschaftlich: lohnt es sich?',
-      'rechtlich: ist es erlaubt, etwa beim Datenschutz und bei Lizenzen?',
-      'organisatorisch: passt es zu Abläufen und Personal?',
-      'zeitlich: ist es rechtzeitig fertig?',
+      'technisch: Lässt es sich umsetzen?',
+      'wirtschaftlich: Lohnt es sich?',
+      'rechtlich: Ist es erlaubt, etwa beim Datenschutz und bei Lizenzen?',
+      'organisatorisch: Passt es zu Abläufen und Personal?',
+      'zeitlich: Ist es rechtzeitig fertig?',
     ],
   ),
   falle(
@@ -1699,7 +1699,8 @@ final List<Nugget> nuggetsA01Planung = [
     'w-breakeven',
     'Merksatz',
     'Break-even und Amortisation folgen demselben Muster.',
-    satz: 'Was einmal anfällt, geteilt durch das, was regelmäßig zurückfließt.',
+    satz:
+        'Du teilst, was einmal anfällt, durch das, was regelmäßig zurückfließt.',
   ),
 
   // ============================================================ Abnahme und Übergabe
@@ -1718,7 +1719,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-aa-2',
     'a-abnahme',
     'Der Ablauf des Abschlusses',
-    'Eine sinnvolle Reihenfolge: das Team wird zuletzt aufgelöst, weil es für Bericht und Lessons Learned noch gebraucht wird.',
+    'Sinnvoll ist diese Reihenfolge. Das Team wird zuletzt aufgelöst, weil es für Bericht und Lessons Learned noch gebraucht wird.',
     [
       'Restarbeiten erledigen, Ergebnis fertigstellen',
       'Abnahme des Ergebnisses durch den Auftraggeber',
@@ -1831,7 +1832,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-aa-9',
     'a-abnahme',
     'Übergabe an den Betrieb',
-    'Nach dem Projekt muss jemand die Lösung betreiben. Damit das funktioniert, bekommt der Betrieb alles, was er braucht und bestätigt die Übernahme.',
+    'Nach dem Projekt muss jemand die Lösung betreiben. Damit das funktioniert, bekommt der Betrieb alles, was er braucht, und bestätigt die Übernahme.',
     points: [
       'Betriebs- und Benutzerdokumentation',
       'Schulung von Anwendern und Administratoren',
@@ -1861,7 +1862,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-aa-11',
     'a-abnahme',
     'Mängel nicht festhalten',
-    'Kleine Mängel, die bei der Abnahme bekannt sind, gehören ins Protokoll, sonst lässt sich später nicht mehr belegen, dass sie schon bei Übergabe bestanden, und wichtige Mängelrechte gehen verloren.',
+    'Kleine Mängel, die bei der Abnahme bekannt sind, gehören ins Protokoll. Sonst lässt sich später nicht mehr belegen, dass sie schon bei Übergabe bestanden, und wichtige Mängelrechte gehen verloren.',
   ),
   falle(
     'n-aa-12',
@@ -1882,7 +1883,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-ab-1',
     'a-bericht',
     'Der Abschlussbericht',
-    'Der Abschlussbericht fasst das Projekt für Auftraggeber und Lenkungsausschuss zusammen. Er beantwortet: Was sollte erreicht werden, was wurde erreicht, und warum weicht beides voneinander ab?',
+    'Der Abschlussbericht fasst das Projekt für Auftraggeber und Lenkungsausschuss zusammen. Er beantwortet die Fragen: Was sollte erreicht werden, was wurde erreicht, und warum weicht beides voneinander ab?',
   ),
   vergleich(
     'n-ab-2',
@@ -2062,7 +2063,7 @@ final List<Nugget> nuggetsA01Planung = [
     'So läuft der Workshop üblicherweise ab.',
     [
       'Vorbereiten: Beteiligte einladen, Projektdaten bereitlegen',
-      'Sammeln: was lief gut, was lief schlecht?',
+      'Sammeln: Was lief gut, was lief schlecht?',
       'Ursachen analysieren',
       'Empfehlungen für künftige Projekte ableiten',
       'Dokumentieren und für andere zugänglich ablegen',
@@ -2072,7 +2073,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-al-5',
     'a-lessons',
     'Die Leitfragen',
-    'Im Workshop führen wenige offene Fragen durch die Sammlung. Wichtig: Auch Erfolge werden gesammelt, nicht nur Fehler.',
+    'Im Workshop führen wenige offene Fragen durch die Sammlung. Sammle dabei auch Erfolge, nicht nur Fehler.',
     points: [
       'Was lief gut und sollte beibehalten werden?',
       'Was lief schlecht, und warum?',
@@ -2084,7 +2085,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-al-6',
     'a-lessons',
     'Methode: Start - Stop - Continue',
-    'Eine einfache Methode, die Erfahrungen direkt in Handlungen übersetzt.',
+    'Diese einfache Methode übersetzt Erfahrungen direkt in Handlungen.',
     [
       ['Frage', 'Beispiel'],
       ['Start: Was neu anfangen?', 'Fachbereich früher in Tests einbinden'],
@@ -2104,7 +2105,7 @@ final List<Nugget> nuggetsA01Planung = [
       ['Empfehlung', 'Freigaben schon beim Projektstart beantragen.'],
     ],
     points: [
-      'Zu allgemein: „Die Kommunikation verbessern.“. Daraus folgt keine Handlung.',
+      '„Die Kommunikation verbessern.“ ist zu allgemein, daraus folgt keine Handlung.',
     ],
   ),
   konzept(
@@ -2123,7 +2124,7 @@ final List<Nugget> nuggetsA01Planung = [
     'n-al-9',
     'a-lessons',
     'Keine Schuldfrage',
-    'Geht es um Schuld, schweigen die Beteiligten und die wichtigsten Erkenntnisse gehen verloren. Lessons Learned fragen nach Ursachen und Verbesserungen, nicht nach Verantwortlichen.',
+    'Geht es um Schuld, schweigen die Beteiligten, und die wichtigsten Erkenntnisse gehen verloren. Lessons Learned fragen nach Ursachen und Verbesserungen, nicht nach Verantwortlichen.',
   ),
   konzept(
     'n-al-10',

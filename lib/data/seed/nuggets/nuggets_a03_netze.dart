@@ -227,7 +227,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-as-2',
     'an-software',
     'Standard oder individuell?',
-    'Die Grundfrage bei jeder Softwareeinführung: fertig kaufen oder eigens entwickeln lassen?',
+    'Bei jeder Softwareeinführung stellt sich zuerst die Frage, ob du fertig kaufst oder eigens entwickeln lässt.',
     [
       ['', 'Standardsoftware', 'Individualsoftware'],
       [
@@ -389,7 +389,7 @@ final List<Nugget> nuggetsA03Netze = [
       'Gesamtkosten (TCO) über die Nutzungsdauer vergleichen',
     ],
     satz:
-        'Erst prüfen, ob Standard reicht: individuell entwickeln nur, wo es einen echten Vorteil bringt.',
+        'Prüf zuerst, ob Standardsoftware reicht, und lass nur dort individuell entwickeln, wo es einen echten Vorteil bringt.',
   ),
 
   // ============================================================== Lizenzmodelle
@@ -568,7 +568,7 @@ final List<Nugget> nuggetsA03Netze = [
       'Kauf oder Abo: den Zeitpunkt gleicher Kosten ausrechnen',
     ],
     satz:
-        'Erst klären, was gezählt wird und welche Bedingungen gelten. Dann rechnen.',
+        'Kläre zuerst, was gezählt wird und welche Bedingungen gelten, und rechne erst dann.',
   ),
 
   // ====================================== Kollaboration und Social Media
@@ -933,7 +933,7 @@ final List<Nugget> nuggetsA03Netze = [
       'TCP: Handshake SYN, SYN-ACK, ACK. UDP: ohne Verbindung',
     ],
     satz:
-        'Port für das Programm, IP für den Rechner im Netz der Netze, MAC für die Netzwerkkarte.',
+        'Der Port adressiert das Programm, die IP den Rechner im Netz der Netze und die MAC die Netzwerkkarte.',
   ),
 
   // =============================================== Netzwerkgeräte und Verkabelung
@@ -976,7 +976,7 @@ final List<Nugget> nuggetsA03Netze = [
       'Unbekannt oder Broadcast: Er sendet an alle Ports außer dem Eingangsport (Flooding)',
     ],
     merksatz:
-        'Ein Hub verteilt immer an alle. Ein Switch nur dorthin, wo das Ziel hängt. Das spart Bandbreite und erhöht die Sicherheit.',
+        'Ein Hub verteilt immer an alle, ein Switch nur dorthin, wo das Ziel hängt. Das spart Bandbreite und erhöht die Sicherheit.',
   ),
   vergleich(
     'n-ng2-3',
@@ -1133,7 +1133,7 @@ final List<Nugget> nuggetsA03Netze = [
     ],
     points: [
       'Verschlüsselung: WPA3 oder mindestens WPA2 - WEP und WPA gelten als unsicher',
-      'Gäste in ein eigenes WLAN mit eigenem VLAN',
+      'Gäste kommen in ein eigenes WLAN mit eigenem VLAN',
       'Im Unternehmen: Anmeldung pro Person mit WPA2/WPA3-Enterprise (802.1X)',
     ],
   ),
@@ -1258,7 +1258,7 @@ final List<Nugget> nuggetsA03Netze = [
       'Cat 6A: 10 Gbit/s auf 100 m; Glasfaser für lange Wege und Störumgebungen',
       'Wi-Fi 6 = 802.11ax, Wi-Fi 7 = 802.11be',
     ],
-    satz: 'Switch verbindet Geräte im Netz, Router verbindet Netze.',
+    satz: 'Ein Switch verbindet Geräte im Netz, ein Router verbindet Netze.',
   ),
 
   // =========================================================== IPv4 und Subnetting
@@ -1485,7 +1485,7 @@ final List<Nugget> nuggetsA03Netze = [
     ],
     ergebnis: 'vier Subnetze ohne Überschneidung, .228 bis .255 als Reserve',
     merksatz:
-        'Immer mit dem größten Netz beginnen, sonst passen die großen Blöcke nicht mehr auf ihre Grenzen.',
+        'Fang immer mit dem größten Netz an, sonst passen die großen Blöcke nicht mehr auf ihre Grenzen.',
   ),
   beispiel(
     'n-n4-12',
@@ -1520,7 +1520,7 @@ final List<Nugget> nuggetsA03Netze = [
       'privat: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16',
     ],
     satz:
-        'Block bestimmen, Netz finden, Broadcast ist der nächste Block minus eins.',
+        'Bestimm den Block, finde das Netz, und der Broadcast ist der nächste Block minus eins.',
   ),
 
   // ====================================================================== IPv6
@@ -1547,7 +1547,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-n6-3',
     'nw-ipv6',
     'Die Kürzungsregeln',
-    'Zwei Regeln machen lange Adressen lesbar. Beide darf man kombinieren.',
+    'Zwei Regeln machen lange Adressen lesbar. Du darfst beide kombinieren.',
     [
       'Regel 1: Führende Nullen in jedem Block dürfen entfallen - 0db8 wird db8, 0042 wird 42, 0000 wird 0',
       'Regel 2: Eine zusammenhängende Folge von Null-Blöcken darf durch :: ersetzt werden, aber nur ein einziges Mal',
@@ -1737,7 +1737,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-n6-13',
     'nw-ipv6',
     'Zweimal :: und falsche Nullen',
-    'Wer :: zweimal in einer Adresse verwendet, macht sie mehrdeutig. Das ist ungültig. Und nur führende Nullen dürfen entfallen: Aus 0db8 wird db8, aber aus 2001 niemals 21. Außerdem kennt IPv6 keinen Broadcast; seine Aufgaben übernimmt Multicast.',
+    'Wer :: zweimal in einer Adresse verwendet, macht sie mehrdeutig und damit ungültig. Und nur führende Nullen dürfen entfallen: Aus 0db8 wird db8, aber aus 2001 niemals 21. Außerdem kennt IPv6 keinen Broadcast; seine Aufgaben übernimmt Multicast.',
   ),
   merke(
     'n-n6-14',
@@ -1751,7 +1751,8 @@ final List<Nugget> nuggetsA03Netze = [
       'fe80::/10 Link-Local, 2000::/3 Global, fc00::/7 Unique Local, ::1 Loopback, ff00::/8 Multicast',
       'kein Broadcast, statt ARP gibt es NDP',
     ],
-    satz: 'Nullen vorn weg, einmal Doppel-Doppelpunkt, und nie mehr.',
+    satz:
+        'Lass die Nullen vorn weg und setz den Doppel-Doppelpunkt nur ein einziges Mal.',
   ),
 
   // ============================================ Protokolle, Dienste und Ports
@@ -1992,7 +1993,7 @@ final List<Nugget> nuggetsA03Netze = [
       'Klartextprotokolle durch verschlüsselte ersetzen',
     ],
     satz:
-        'DORA für die Adresse, DNS für den Namen, NAT für den Weg ins Internet.',
+        'DORA bringt die Adresse, DNS löst den Namen auf, und NAT öffnet den Weg ins Internet.',
   ),
 
   // =============================================== Cloud und Virtualisierung
@@ -2000,7 +2001,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-nc-1',
     'nw-cloud',
     'Was Cloud Computing ausmacht',
-    'Cloud Computing heißt: IT-Ressourcen wie Rechenleistung, Speicher oder Software werden über das Netz bereitgestellt und nach Verbrauch abgerechnet. Fünf Merkmale kennzeichnen eine Cloud.',
+    'Beim Cloud Computing werden IT-Ressourcen wie Rechenleistung, Speicher oder Software über das Netz bereitgestellt und nach Verbrauch abgerechnet. Fünf Merkmale kennzeichnen eine Cloud.',
     points: [
       'Selbstbedienung nach Bedarf, ohne Rückfrage beim Anbieter',
       'Zugriff über das Netz von überall',
@@ -2052,7 +2053,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-nc-4',
     'nw-cloud',
     'Bereitstellungsmodelle',
-    'Wo die Cloud steht und wer sie nutzt.',
+    'Diese Modelle beschreiben, wo die Cloud steht und wer sie nutzt.',
     [
       ['Modell', 'Bedeutung'],
       ['Public Cloud', 'Angebot eines Anbieters für viele Kunden'],
@@ -2095,7 +2096,7 @@ final List<Nugget> nuggetsA03Netze = [
     ],
     ergebnis: 'die Cloud-VM ist über 3 Jahre 960 € günstiger',
     merksatz:
-        'Personalaufwand, Internetanbindung und Kosten für Datentransfer können das Ergebnis drehen. Sie gehören in einen vollständigen Vergleich.',
+        'Personalaufwand, Internetanbindung und Kosten für Datentransfer können das Ergebnis drehen, deshalb gehören sie in einen vollständigen Vergleich.',
   ),
   konzept(
     'n-nc-7',
@@ -2113,7 +2114,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-nc-8',
     'nw-cloud',
     'Hypervisor Typ 1 und Typ 2',
-    'Der Hypervisor stellt die virtuellen Maschinen bereit. Die Zeichnung zeigt Typ 2 - bei Typ 1 fehlt das Host-Betriebssystem, der Hypervisor sitzt direkt auf der Hardware.',
+    'Der Hypervisor stellt die virtuellen Maschinen bereit. Die Zeichnung zeigt Typ 2. Bei Typ 1 fehlt das Host-Betriebssystem, und der Hypervisor sitzt direkt auf der Hardware.',
     [
       ['Typ', 'läuft', 'Beispiele'],
       [

@@ -118,7 +118,7 @@ final List<Nugget> nuggetsA05 = [
     'n-qg-8',
     'qm-grundlagen',
     'Verifikation und Validierung',
-    'Zwei Prüffragen, die oft verwechselt werden. Beide sind nötig: Ein Produkt kann exakt nach Spezifikation gebaut sein und trotzdem am Bedarf vorbeigehen.',
+    'Diese beiden Prüffragen werden oft verwechselt, dabei brauchst du beide. Ein Produkt kann exakt nach Spezifikation gebaut sein und trotzdem am Bedarf vorbeigehen.',
     [
       ['', 'Verifikation', 'Validierung'],
       [
@@ -165,7 +165,7 @@ final List<Nugget> nuggetsA05 = [
     'n-qg-11',
     'qm-grundlagen',
     'QS ist keine Endkontrolle',
-    'Wer Qualität erst am Ende „hineintesten“ will, zahlt die teuersten Fehlerkosten. Reviews von Anforderungen und Entwürfen sind schon vor der ersten Codezeile möglich. Und: Ein Test kann Fehler zeigen, aber nie beweisen, dass keine mehr da sind.',
+    'Wer Qualität erst am Ende „hineintesten“ will, zahlt die teuersten Fehlerkosten. Reviews von Anforderungen und Entwürfen sind schon vor der ersten Codezeile möglich. Bedenke außerdem: Ein Test kann Fehler zeigen, aber nie beweisen, dass keine mehr da sind.',
   ),
   merke(
     'n-qg-12',
@@ -181,7 +181,7 @@ final List<Nugget> nuggetsA05 = [
     'n-qe-1',
     'qm-merkmale',
     'Qualität planen statt hoffen',
-    '„Gute Software“ ist zu ungenau, um sie abzunehmen. Qualitätsplanung heißt deshalb: Schon im Lasten- und Pflichtenheft wird festgelegt, welche Qualität das Produkt haben muss und wie sie bei der Abnahme geprüft wird. Nur was vorher vereinbart und messbar beschrieben ist, kann später eindeutig bestehen oder scheitern.',
+    '„Gute Software“ ist zu ungenau, um sie abzunehmen. Bei der Qualitätsplanung legst du deshalb schon im Lasten- und Pflichtenheft fest, welche Qualität das Produkt haben muss und wie sie bei der Abnahme geprüft wird. Nur was vorher vereinbart und messbar beschrieben ist, kann später eindeutig bestehen oder scheitern.',
   ),
   vergleich(
     'n-qe-2',
@@ -198,7 +198,7 @@ final List<Nugget> nuggetsA05 = [
     'n-qe-3',
     'qm-merkmale',
     'Typische nicht funktionale Anforderungen',
-    'In Lastenheften stehen immer wieder dieselben Arten von Qualitätsanforderungen. Wichtig ist nicht der Name, sondern dass jede mit einer Zahl versehen wird.',
+    'In Lastenheften stehen immer wieder dieselben Arten von Qualitätsanforderungen. Wie sie heißen, ist zweitrangig. Wichtig ist, dass jede eine Zahl bekommt.',
     [
       ['Bereich', 'messbare Anforderung'],
       ['Antwortzeit', 'Seite lädt in max. 2 s bei 500 Nutzern'],
@@ -547,7 +547,7 @@ final List<Nugget> nuggetsA05 = [
     'n-ss-9',
     'ts-stufen',
     'Systemtest ist nicht Abnahme',
-    'Den Systemtest führt der Auftragnehmer durch, um die Spezifikation zu prüfen. Den Abnahmetest verantwortet der Auftraggeber, denn er entscheidet, ob er das Ergebnis annimmt. Und: Der Regressionstest ist keine eigene Stufe, sondern wird nach jeder Änderung auf jeder Stufe wiederholt.',
+    'Den Systemtest führt der Auftragnehmer durch, um die Spezifikation zu prüfen. Den Abnahmetest verantwortet der Auftraggeber, denn er entscheidet, ob er das Ergebnis annimmt. Den Regressionstest solltest du nicht als eigene Stufe ansehen: Er wird nach jeder Änderung auf jeder Stufe wiederholt.',
   ),
   merke(
     'n-ss-10',
@@ -1025,7 +1025,7 @@ final List<Nugget> nuggetsA05 = [
     'n-sp-11',
     'ts-protokoll',
     'Schwere ist nicht Priorität',
-    'Die Fehlerklasse sagt, wie schwer ein Fehler wiegt, die Priorität, wie dringend er behoben wird. Ein Tippfehler im Firmennamen auf der Startseite ist nur kosmetisch, wird aber sofort behoben. Und: Der Nachtest prüft die Korrektur, der Regressionstest die Nebenwirkungen.',
+    'Die Fehlerklasse sagt, wie schwer ein Fehler wiegt, die Priorität, wie dringend er behoben wird. Ein Tippfehler im Firmennamen auf der Startseite ist nur kosmetisch, wird aber sofort behoben. Halte außerdem auseinander: Der Nachtest prüft die Korrektur, der Regressionstest die Nebenwirkungen.',
   ),
   merke(
     'n-sp-12',

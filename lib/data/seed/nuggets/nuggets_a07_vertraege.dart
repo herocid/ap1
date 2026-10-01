@@ -460,7 +460,7 @@ final List<Nugget> nuggetsA07 = [
     'Der Name entscheidet nicht',
     'Steht „Dienstleistungsvertrag“ über einem Vertrag, in dem eine fertige App geschuldet wird, ist es trotzdem ein Werkvertrag. Maßgeblich ist der Inhalt, nicht die Überschrift. Genauso ist ein „Softwarekauf“ als Abo mit monatlicher Gebühr in Wahrheit Miete.',
     points: [
-      'Werklieferungsvertrag: Auf herzustellende bewegliche Sachen wird Kaufrecht angewendet',
+      'Werklieferungsvertrag: Für herzustellende bewegliche Sachen gilt Kaufrecht',
       '„Abnahme“ beim Kauf heißt nur Entgegennahme der Ware – die Billigung als vertragsgemäß gibt es nur beim Werkvertrag',
     ],
   ),
@@ -674,9 +674,9 @@ final List<Nugget> nuggetsA07 = [
     'Was ist ein SLA?',
     'Ein Service Level Agreement legt messbar fest, in welcher Qualität ein IT-Dienstleister seine Leistung erbringt. Beispiel: Ein Rechenzentrum betreibt den Webshop eines Kunden und sichert Verfügbarkeit und Reaktionszeiten zu. Ohne SLA ist „guter Service“ nicht prüfbar.',
     points: [
-      'Macht Qualität messbar: jede Zusage als Zahl mit Einheit und Bezugszeitraum',
-      'Grundlage für Reporting, Abrechnung und Vertragsstrafen',
-      'Wird regelmäßig in Service-Reviews überprüft und angepasst',
+      'Es macht Qualität messbar: jede Zusage als Zahl mit Einheit und Bezugszeitraum',
+      'Es ist die Grundlage für Reporting, Abrechnung und Vertragsstrafen',
+      'Es wird regelmäßig in Service-Reviews überprüft und angepasst',
     ],
   ),
   vergleich(
@@ -860,7 +860,7 @@ final List<Nugget> nuggetsA07 = [
     'n-li-14',
     'sla-inhalte',
     'Ein gutes SLA',
-    'Ein SLA wirkt nur, wenn es gemessen, berichtet und durchgesetzt wird.',
+    'Ein SLA wirkt nur, wenn du es misst, darüber berichtest und es auch durchsetzt.',
     points: [
       'Kennzahlen klar definiert und messbar',
       'regelmäßiges Reporting an den Kunden',
@@ -1019,7 +1019,7 @@ final List<Nugget> nuggetsA07 = [
     'n-ls-10',
     'sla-support',
     'Eskalation nach Zeitschwellen',
-    'Viele SLAs legen fest, wann automatisch eskaliert wird. Beispiel für ein Ticket der Priorität 1 mit 4 Stunden Lösungszeit:',
+    'Viele SLAs legen fest, wann automatisch eskaliert wird. Das Beispiel zeigt ein Ticket der Priorität 1 mit 4 Stunden Lösungszeit.',
     FlussDiagramm([
       FlussKnoten('P1-Ticket erfasst', pfeil: 'nach 15 min'),
       FlussKnoten(
@@ -1278,7 +1278,7 @@ final List<Nugget> nuggetsA07 = [
     'n-lt-12',
     'sla-itil',
     'Incident ist nicht Problem',
-    'Ein Incident ist erledigt, sobald der Service wieder läuft – auch wenn die Ursache unbekannt bleibt. Die Ursachensuche ist Aufgabe des Problem Managements. Und ein neues Passwort ist kein Incident, sondern ein Service Request: Nichts ist kaputt.',
+    'Ein Incident ist erledigt, sobald der Service wieder läuft – auch wenn die Ursache unbekannt bleibt. Die Ursachensuche ist Aufgabe des Problem Managements. Und ein neues Passwort ist kein Incident, sondern ein Service Request, denn kaputt ist ja nichts.',
     points: [
       'Ein Event ist nur eine bedeutsame Zustandsänderung, z. B. Festplatte zu 80 % voll – noch keine Störung',
       'Auch ein Emergency Change wird genehmigt und dokumentiert, nur schneller',
@@ -1487,7 +1487,7 @@ final List<Nugget> nuggetsA07 = [
     'n-gv-13',
     'ls-verzug',
     'Prozent oder Prozentpunkte?',
-    'Verzugszinsen liegen 5 bzw. 9 Prozentpunkte über dem Basiszinssatz. Bei 2 % Basiszins sind das 7 % bzw. 11 % – nicht 2 % × 1,05. Und die drei Mahnungen aus dem Alltag sind keine Voraussetzung: Eine einzige genügt.',
+    'Verzugszinsen liegen 5 bzw. 9 Prozentpunkte über dem Basiszinssatz. Bei 2 % Basiszins sind das 7 % bzw. 11 % – nicht 2 % × 1,05. Die drei Mahnungen, die man aus dem Alltag kennt, brauchst du übrigens nicht – eine einzige genügt.',
     points: [
       'Ein Zahlungsziel, das der Verkäufer nur einseitig auf die Rechnung schreibt, ersetzt keine Mahnung',
       'Die 30-Tage-Regel gilt nur für Geldforderungen, nicht für den Lieferungsverzug',
@@ -1498,7 +1498,7 @@ final List<Nugget> nuggetsA07 = [
     'n-gv-14',
     'ls-verzug',
     'Verzug auf einen Blick',
-    'Beim Verzug zählen immer dieselben drei Bausteine. Die Rechte daraus hängen an Nachfrist und Verschulden.',
+    'Beim Verzug prüfst du immer dieselben drei Bausteine. Welche Rechte daraus folgen, hängt von Nachfrist und Verschulden ab.',
     points: [
       'Lieferungsverzug: Lieferung + Verzögerungsschaden sofort, Rücktritt und Schadensersatz statt der Leistung nach Nachfrist',
       'Zahlungsverzug: Zinsen 5 bzw. 9 Prozentpunkte über Basiszins, B2B plus 40 €',
@@ -1609,9 +1609,9 @@ final List<Nugget> nuggetsA07 = [
         '            / Wert ohne Mangel\n'
         '\n'
         'Minderungsbetrag =\n'
-        '  Kaufpreis, geminderter Preis',
+        '  Kaufpreis - geminderter Preis',
     points: [
-      'Die Werte schätzt man, notfalls ein Gutachter',
+      'Die Werte werden geschätzt, notfalls von einem Gutachter',
       'Hat der Käufer schon mehr bezahlt, bekommt er den Minderungsbetrag zurück',
     ],
   ),
@@ -1783,7 +1783,7 @@ final List<Nugget> nuggetsA07 = [
     'n-ga-5',
     'ls-abnahme',
     'Mängelklassen im Protokoll',
-    'Viele IT-Verträge teilen Mängel in Klassen ein und legen fest, bei welcher Klasse die Abnahme verweigert werden darf. Eine typische Einteilung:',
+    'Viele IT-Verträge teilen Mängel in Klassen ein und legen fest, bei welcher Klasse die Abnahme verweigert werden darf. So sieht eine typische Einteilung aus.',
     [
       ['Klasse', 'Wirkung', 'Typische Folge'],
       ['betriebsverhindernd', 'Nutzung unmöglich', 'Abnahme verweigert'],
@@ -1875,8 +1875,8 @@ final List<Nugget> nuggetsA07 = [
     'Abnahme ohne Unterschrift',
     'Wer ein Werk nach einer angemessenen Prüfzeit produktiv nutzt und vorbehaltlos bezahlt, kann es konkludent abgenommen haben – auch ganz ohne Protokoll. Und wer ein Werk trotz bekannter Mängel ohne Vorbehalt abnimmt, verliert für diese Mängel Nacherfüllung, Selbstvornahme, Rücktritt und Minderung. Nur der Schadensersatz bleibt (§ 640 Abs. 3 BGB).',
     points: [
-      'Mängel immer schriftlich rügen, bevor man produktiv geht',
-      'Bekannte Mängel gehören ins Abnahmeprotokoll',
+      'Rüge Mängel immer schriftlich, bevor du produktiv gehst',
+      'Trag bekannte Mängel ins Abnahmeprotokoll ein',
     ],
   ),
   merke(
@@ -1920,7 +1920,7 @@ final List<Nugget> nuggetsA07 = [
     'n-cl-3',
     'cm-lewin',
     'Die drei Phasen',
-    'Jede Phase hat eine eigene Aufgabe und eigene Maßnahmen.',
+    'Jede Phase hat ihre eigene Aufgabe, und dazu passen jeweils andere Maßnahmen.',
     [
       ['Phase', 'Ziel', 'Maßnahmen'],
       [
@@ -1940,7 +1940,7 @@ final List<Nugget> nuggetsA07 = [
     'n-cl-4',
     'cm-lewin',
     'Die Kraftfeldanalyse',
-    'Lewin sieht jeden Zustand als Gleichgewicht zwischen treibenden und hemmenden Kräften. Verändern heißt: treibende Kräfte stärken oder – meist wirksamer – hemmende abbauen. Beispiel Ticketsystem:',
+    'Lewin sieht jeden Zustand als Gleichgewicht zwischen treibenden und hemmenden Kräften. Wer etwas verändern will, stärkt die treibenden Kräfte oder baut – meist wirksamer – die hemmenden ab. Ein Beispiel ist die Einführung eines Ticketsystems.',
     [
       ['treibende Kräfte', 'hemmende Kräfte'],
       ['Postfächer laufen über', 'Gewohnheit: „ging doch immer“'],
@@ -2228,7 +2228,7 @@ final List<Nugget> nuggetsA07 = [
     'n-cw-11',
     'cm-widerstand',
     'Widerstand auf einen Blick',
-    'Erst erkennen, dann die Ursache klären, dann passend handeln.',
+    'Erkenne den Widerstand zuerst, kläre dann seine Ursache und handle danach passend.',
     points: [
       'Symptome: Widerspruch, Ausweichen, Aufregung, Lustlosigkeit',
       'Ursachen: nicht wissen, nicht können, nicht wollen, nicht dürfen',
@@ -2382,7 +2382,7 @@ final List<Nugget> nuggetsA07 = [
     'n-ck-11',
     'cm-kaizen',
     'KVP ist kein Projekt',
-    'Ein Projekt hat ein Ende, KVP nicht. Wer nach dem ersten Verbesserungszyklus aufhört, betreibt kein Kaizen. Ebenso falsch: Kaizen als Aufgabe nur der Qualitätsabteilung oder einer externen Beratung zu sehen.',
+    'Ein Projekt hat ein Ende, KVP nicht. Wer nach dem ersten Verbesserungszyklus aufhört, betreibt kein Kaizen. Genauso falsch ist es, Kaizen als Aufgabe nur der Qualitätsabteilung oder einer externen Beratung zu sehen.',
     points: [
       'Ein kompletter Neuentwurf eines Prozesses ist Reengineering, kein Kaizen',
     ],
@@ -2391,7 +2391,7 @@ final List<Nugget> nuggetsA07 = [
     'n-ck-12',
     'cm-kaizen',
     'Kaizen auf einen Blick',
-    'Kaizen ist eine Haltung: Jeder verbessert täglich ein bisschen – mit Methode.',
+    'Kaizen ist eine Haltung, bei der jeder täglich ein bisschen verbessert, und zwar mit Methode.',
     points: [
       'Werkzeug: PDCA (Plan, Do, Check, Act)',
       '7 Muda: Transport, Bestände, Bewegung, Wartezeit, Überproduktion, Überbearbeitung, Fehler',

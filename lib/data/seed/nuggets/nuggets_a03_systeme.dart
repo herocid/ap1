@@ -115,7 +115,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-hk-7',
     'h-komponenten',
     'Mainboard und Formfaktor',
-    'Das Mainboard verbindet alles. Sockel und Chipsatz bestimmen, welche CPU passt, die Steckplätze, was sich erweitern lässt.',
+    'Das Mainboard verbindet alles. Sockel und Chipsatz bestimmen, welche CPU passt, und an den Steckplätzen siehst du, was sich erweitern lässt.',
     [
       ['Element', 'Zweck'],
       ['Sockel', 'Aufnahme der CPU, z. B. AM5 oder LGA1700'],
@@ -224,7 +224,7 @@ final List<Nugget> nuggetsA03Systeme = [
       'Start: POST, UEFI, Bootloader, Kernel',
     ],
     satz:
-        'Erst klären, was der Arbeitsplatz braucht. Dann Komponenten wählen, die zueinander passen.',
+        'Kläre zuerst, was der Arbeitsplatz braucht, und wähle dann Komponenten, die zueinander passen.',
   ),
 
   // ======================================================= Speicher: HDD und SSD
@@ -251,7 +251,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-hs-2',
     'h-speicher',
     'Flüchtig oder nicht flüchtig?',
-    'Flüchtige Speicher verlieren ihren Inhalt ohne Strom. Nicht flüchtige behalten ihn. Deshalb landen Dateien dort.',
+    'Flüchtige Speicher verlieren ihren Inhalt ohne Strom. Nicht flüchtige behalten ihn, deshalb landen deine Dateien dort.',
     [
       ['Art', 'Beispiele', 'Einsatz'],
       ['flüchtig', 'Register, Cache, RAM', 'laufende Programme'],
@@ -337,7 +337,7 @@ final List<Nugget> nuggetsA03Systeme = [
         'Byte = Wert × 1.024^n   (Ki: n=1, Mi: 2, Gi: 3, Ti: 4)\n'
         'Bit  = Byte × 8',
     merksatz:
-        'Von GB nach GiB: Byte-Zahl ausrechnen, dann durch 1.024³ teilen.',
+        'Willst du von GB nach GiB, rechnest du erst die Byte-Zahl aus und teilst sie dann durch 1.024³.',
   ),
   beispiel(
     'n-hs-8',
@@ -633,7 +633,7 @@ final List<Nugget> nuggetsA03Systeme = [
       ['Kaltgerätebuchse', 'drei flache Stifte', 'Netzkabel 230 V'],
     ],
     points: [
-      'Die Kaltgerätebuchse (IEC C14) sitzt am Netzteil von PC, Monitor oder Drucker. Hier steckt das Stromkabel',
+      'Die Kaltgerätebuchse (IEC C14) sitzt am Netzteil von PC, Monitor oder Drucker, hier steckt das Stromkabel',
       'Thunderbolt nutzt die USB-C-Buchse und ist mit einem Blitz gekennzeichnet',
     ],
   ),
@@ -653,10 +653,10 @@ final List<Nugget> nuggetsA03Systeme = [
       'Leistung des Geräts: P = U × I = 9 V × 2 A = 18 W',
       'Strom bei 5 V: I = P / U = 18 W / 5 V = 3,6 A',
       'Vergleich: Ein USB-A-Port liefert 0,5 bzw. 0,9 A, USB-C ohne Power Delivery bis 3 A',
-      'Folge: Der Port würde überlastet, das Gerät liefe instabil oder gar nicht',
+      'Der Port würde also überlastet, und das Gerät liefe instabil oder gar nicht',
     ],
     ergebnis:
-        '3,6 A. Das schafft ein normaler USB-Port nicht, also Netzteil nutzen',
+        '3,6 A; das schafft ein normaler USB-Port nicht, also bleibt es beim Netzteil',
   ),
   falle(
     'n-hi-13',
@@ -889,7 +889,7 @@ final List<Nugget> nuggetsA03Systeme = [
       'Zeit (h) = Wh × Wirkungsgrad / W',
     ],
     satz:
-        'Erst die Watt addieren, Reserve aufschlagen, dann durch den Leistungsfaktor teilen.',
+        'Addiere erst die Watt, schlag die Reserve auf und teile dann durch den Leistungsfaktor.',
   ),
 
   // ======================================================= Green IT und Ergonomie
@@ -1336,7 +1336,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-bd-11',
     'b-dateisysteme',
     'Formatieren ist nicht löschen',
-    'Eine Schnellformatierung legt nur ein neues, leeres Inhaltsverzeichnis an. Die alten Daten liegen weiter auf dem Datenträger und lassen sich mit Werkzeugen wiederherstellen. Vor Weitergabe oder Entsorgung wird deshalb sicher überschrieben, bei SSDs per Secure Erase, oder der Datenträger wird vernichtet.',
+    'Eine Schnellformatierung legt nur ein neues, leeres Inhaltsverzeichnis an. Die alten Daten liegen weiter auf dem Datenträger und lassen sich mit Werkzeugen wiederherstellen. Vor der Weitergabe oder Entsorgung überschreibst du ihn deshalb sicher, bei SSDs per Secure Erase, oder du vernichtest den Datenträger.',
   ),
   falle(
     'n-bd-12',
@@ -1357,7 +1357,7 @@ final List<Nugget> nuggetsA03Systeme = [
       'GPT mit UEFI für große Datenträger, MBR höchstens 2 TiB',
     ],
     satz:
-        'Partitionieren, formatieren, einbinden, und für jeden Zweck das passende Dateisystem.',
+        'Erst partitionieren, dann formatieren und einbinden, und für jeden Zweck wählst du das passende Dateisystem.',
   ),
 
   // ======================================================== Benutzer und Rechte
@@ -1505,7 +1505,7 @@ final List<Nugget> nuggetsA03Systeme = [
     ],
     ergebnis: 'über das Netzwerk: Lesen, lokal: Lesen',
     merksatz:
-        'Übliche Praxis: Freigabe großzügig setzen, die eigentliche Steuerung über NTFS-Rechte.',
+        'In der Praxis setzt man die Freigabe meist großzügig und steuert den Zugriff eigentlich über die NTFS-Rechte.',
   ),
   falle(
     'n-br-12',
@@ -1532,7 +1532,7 @@ final List<Nugget> nuggetsA03Systeme = [
       'Verweigern schlägt Zulassen',
     ],
     satz:
-        'So wenig Rechte wie möglich, so viele wie nötig, und immer über Gruppen.',
+        'Vergib so wenig Rechte wie möglich und so viele wie nötig, und zwar immer über Gruppen.',
   ),
 
   // ============================================================== Kommandozeile
@@ -1552,7 +1552,7 @@ final List<Nugget> nuggetsA03Systeme = [
     'n-bc-2',
     'b-cli',
     'Dateien und Ordner',
-    'Die wichtigsten Befehle für die tägliche Arbeit im Vergleich.',
+    'Hier siehst du die wichtigsten Befehle für die tägliche Arbeit im Vergleich.',
     [
       ['Aufgabe', 'Windows (cmd)', 'Linux'],
       ['Inhalt anzeigen', 'dir', 'ls'],
@@ -1894,7 +1894,7 @@ echo "Gesichert nach $ZIEL"''',
     'n-bh-8',
     'b-haertung',
     'Offene Ports finden',
-    'Jeder Dienst, der auf einem Port lauscht, ist eine mögliche Angriffsstelle. Zuerst ermitteln, was offen ist, dann Unnötiges abschalten und die Firewall nur für Benötigtes öffnen.',
+    'Jeder Dienst, der auf einem Port lauscht, ist eine mögliche Angriffsstelle. Ermittle zuerst, was offen ist, schalte dann Unnötiges ab und öffne die Firewall nur für das, was gebraucht wird.',
     code:
         'Windows: netstat -an\n'
         'Linux:   ss -tulpen   (lauschende Ports mit Programm)',
@@ -1903,7 +1903,7 @@ echo "Gesichert nach $ZIEL"''',
     'n-bh-9',
     'b-haertung',
     'Einen Webserver härten',
-    'Bei der Prüfung eines Webservers fällt Folgendes auf. So wird jeder Befund behoben.',
+    'Bei der Prüfung eines Webservers fällt Folgendes auf. So behebst du jeden Befund.',
     [
       ['Befund', 'Maßnahme'],
       ['Telnet aktiv (Port 23)', 'abschalten, SSH nutzen'],
@@ -1933,7 +1933,7 @@ echo "Gesichert nach $ZIEL"''',
     'n-bh-11',
     'b-haertung',
     'Updates auf später verschieben',
-    'Viele erfolgreiche Angriffe nutzen Lücken, für die längst ein Patch existiert. Sicherheitsupdates wochenlang aufzuschieben ist eines der größten Risiken in kleinen Unternehmen.',
+    'Viele erfolgreiche Angriffe nutzen Lücken, für die längst ein Patch existiert. Sicherheitsupdates wochenlang aufzuschieben, ist eines der größten Risiken in kleinen Unternehmen.',
   ),
   merke(
     'n-bh-12',

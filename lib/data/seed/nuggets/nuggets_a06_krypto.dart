@@ -132,7 +132,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'Der gemeinsame Schlüssel muss vorher sicher zum Gegenüber gelangen. Wer die verschlüsselte ZIP-Datei und das Passwort in derselben E-Mail verschickt, hat nichts gewonnen: Wer die Mail mitliest, hat beides.',
     points: [
       'Ohne Technik: Schlüssel über einen zweiten, unabhängigen Kanal übergeben, z. B. per Telefon',
-      'Mit Technik: asymmetrische Verfahren oder Diffie-Hellman lösen das Problem. Das nutzen hybride Verfahren wie TLS',
+      'Mit Technik: asymmetrische Verfahren oder Diffie-Hellman lösen das Problem, und genau das nutzen hybride Verfahren wie TLS',
     ],
   ),
   merke(
@@ -239,7 +239,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-ca-6',
     'kr-asymmetrisch',
     'Was die Signatur leistet und was nicht',
-    'Die Signatur sichert Integrität, Authentizität und Verbindlichkeit: Nur der Besitzer des privaten Schlüssels kann sie erzeugen, und jede Änderung fällt auf. Vertraulich ist das Dokument dadurch aber nicht. Es bleibt lesbar.',
+    'Die Signatur sichert Integrität, Authentizität und Verbindlichkeit: Nur der Besitzer des privaten Schlüssels kann sie erzeugen, und jede Änderung fällt auf. Vertraulich wird das Dokument dadurch aber nicht, es bleibt lesbar.',
     points: [
       'Soll ein Dokument signiert und vertraulich sein: erst mit dem eigenen privaten Schlüssel signieren, dann mit dem öffentlichen Schlüssel des Empfängers verschlüsseln.',
       'Rechtlich (eIDAS-Verordnung) gibt es einfache, fortgeschrittene und qualifizierte elektronische Signaturen.',
@@ -310,7 +310,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-ca-12',
     'kr-asymmetrisch',
     'Auf einen Blick',
-    'Asymmetrisch heißt: Schlüsselpaar pro Person, öffentlich verteilen, privat geheim halten.',
+    'Asymmetrisch heißt: Jede Person hat ein Schlüsselpaar. Den öffentlichen Schlüssel verteilt sie, den privaten hält sie geheim.',
     points: [
       'Verschlüsseln: öffentlicher Schlüssel des Empfängers',
       'Entschlüsseln: privater Schlüssel des Empfängers',
@@ -678,7 +678,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-cx-12',
     'kr-hash',
     'Hash ist keine Verschlüsselung',
-    'Verschlüsseltes lässt sich mit dem Schlüssel wieder lesbar machen, ein Hashwert nicht. Es gibt keinen Schlüssel. Und ein schnelles SHA-256 ohne Salt reicht für Passwörter nicht: Angreifer probieren Milliarden Kandidaten pro Sekunde oder schlagen in vorberechneten Tabellen nach.',
+    'Verschlüsseltes lässt sich mit dem Schlüssel wieder lesbar machen, ein Hashwert nicht, denn dafür gibt es keinen Schlüssel. Und ein schnelles SHA-256 ohne Salt reicht für Passwörter nicht: Angreifer probieren Milliarden Kandidaten pro Sekunde oder schlagen in vorberechneten Tabellen nach.',
     points: [
       'Hashwerte sind nicht „entschlüsselbar“, höchstens durch Raten zu finden.',
       'Base64 ist weder Hash noch Verschlüsselung.',
@@ -1054,7 +1054,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xg-11',
     'ds-grundlagen',
     'Ohne Namen heißt nicht anonym',
-    'Auch ohne Namen kann ein Datensatz personenbezogen sein: Die Kombination aus Postleitzahl, Geburtsdatum und Geschlecht führt oft zu genau einer Person. Und Biometrie zählt nur dann zu Art. 9, wenn sie zur eindeutigen Identifizierung verarbeitet wird. Ein Porträtfoto auf der Website allein noch nicht.',
+    'Auch ohne Namen kann ein Datensatz personenbezogen sein: Die Kombination aus Postleitzahl, Geburtsdatum und Geschlecht führt oft zu genau einer Person. Und Biometrie zählt nur dann zu Art. 9, wenn sie zur eindeutigen Identifizierung verarbeitet wird. Ein Porträtfoto auf der Website gehört allein noch nicht dazu.',
     points: [
       'Datenschutz ≠ Datensicherheit: Ein verschlüsselter Server macht eine unzulässige Verarbeitung nicht zulässig.',
       'Die Pflicht zum DSB hängt an den Personen, die Daten verarbeiten, nicht an der Gesamtbelegschaft.',
@@ -1513,7 +1513,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xa-6',
     'ds-anonym',
     'Wie groß ist die kleinste Gruppe?',
-    'Eine generalisierte Tabelle soll weitergegeben werden. Vorgabe: Jede Kombination aus Altersgruppe und PLZ-Bereich muss mindestens 3-mal vorkommen. Sonst ist die Person erkennbar.',
+    'Eine generalisierte Tabelle soll weitergegeben werden. Vorgabe: Jede Kombination aus Altersgruppe und PLZ-Bereich muss mindestens 3-mal vorkommen, sonst ist die Person erkennbar.',
     table: [
       ['Altersgruppe', 'PLZ-Bereich', 'Personen'],
       ['20 bis 29', '50xxx', '5'],
@@ -1539,7 +1539,7 @@ final List<Nugget> nuggetsA06Krypto = [
       'Direkte Merkmale entfernen: Name, Personalnummer, E-Mail',
       'Generalisieren: Alter 34 -> „30 bis 39“, PLZ 10115 -> „10xxx“',
       'Aggregieren: nur Durchschnittsgehalt je Abteilung statt Einzelwerten',
-      'Kleine Gruppen prüfen: Hat eine Abteilung nur eine Person, ist ihr Gehalt erkennbar. Dann zusammenfassen oder weglassen',
+      'Kleine Gruppen prüfen: Hat eine Abteilung nur eine Person, ist ihr Gehalt erkennbar. Dann fasst du zusammen oder lässt die Angabe weg',
     ],
   ),
   konzept(

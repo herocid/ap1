@@ -397,7 +397,7 @@ final List<Nugget> nuggetsA02 = [
     'n-kg-13',
     'k-gespraech',
     'Merksatz',
-    'Die Grundregel der Gesprächsführung in einem Satz.',
+    'So lässt sich die Grundregel der Gesprächsführung in einem Satz fassen.',
     satz:
         'Erst verstehen, dann lösen: Bedarf klären, zusammenfassen, Lösung mit Nutzen anbieten.',
   ),
@@ -418,7 +418,7 @@ final List<Nugget> nuggetsA02 = [
     'n-kk-2',
     'k-kunde',
     'Adressatengerecht erklären',
-    'Wer erklärt, muss wissen, wem. Dieselbe Firewall wird drei Zielgruppen unterschiedlich erklärt.',
+    'Bevor du etwas erklärst, überleg dir, wem. Dieselbe Firewall erklärst du drei Zielgruppen ganz unterschiedlich.',
     [
       ['Adressat', 'braucht', 'So klingt es'],
       [
@@ -451,7 +451,7 @@ final List<Nugget> nuggetsA02 = [
       'Verständnis prüfen: „Ist das nachvollziehbar, oder soll ich etwas genauer erklären?“',
     ],
     ergebnis:
-        'Nutzen, Alltagsvergleich und Kosten statt Technik. So kann die Geschäftsführerin entscheiden.',
+        'Du sprichst über Nutzen, Alltagsvergleich und Kosten statt über Technik. So kann die Geschäftsführerin entscheiden.',
   ),
   vergleich(
     'n-kk-4',
@@ -577,7 +577,7 @@ final List<Nugget> nuggetsA02 = [
     'n-kk-10',
     'k-kunde',
     'Kundenzufriedenheit messen',
-    'Was gemessen wird, lässt sich verbessern. Im IT-Service werden Zufriedenheit und Servicequalität deshalb laufend erfasst.',
+    'Was du misst, kannst du auch verbessern. Deshalb erfasst man im IT-Service Zufriedenheit und Servicequalität laufend.',
     points: [
       'kurze Umfrage nach jedem geschlossenen Ticket',
       'Kennzahlen: Reaktionszeit, Lösungszeit, Anteil der beim Erstkontakt gelösten Fälle',
@@ -601,7 +601,7 @@ final List<Nugget> nuggetsA02 = [
     'n-kk-13',
     'k-kunde',
     'Merksatz',
-    'Worauf es bei jeder Kundenbetreuung ankommt.',
+    'Darauf kommt es bei jeder Kundenbetreuung an.',
     satz:
         'Sprich die Sprache des Kunden und lass keine Anfrage verloren gehen.',
   ),
@@ -636,7 +636,7 @@ final List<Nugget> nuggetsA02 = [
       'Storming: Rollen und Einfluss werden ausgehandelt',
       'Norming: Das Team einigt sich auf Umgang und Abläufe',
       'Performing: selbstständige, effektive Arbeit',
-      'Adjourning - Abschluss, das Team geht auseinander',
+      'Adjourning: Abschluss, das Team geht auseinander',
     ],
   ),
   vergleich(
@@ -865,7 +865,7 @@ final List<Nugget> nuggetsA02 = [
       'Raum geben: Jonas kann seine Sicht schildern.',
     ],
     ergebnis:
-        'Konkret, beschreibend, als Ich-Botschaft und mit erfüllbarem Wunsch, statt „Du bist immer unpünktlich“.',
+        'Das Feedback ist konkret und beschreibend, als Ich-Botschaft formuliert und endet mit einem erfüllbaren Wunsch, statt nur „Du bist immer unpünktlich“ zu sagen.',
   ),
   konzept(
     'n-tf-7',
@@ -931,7 +931,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tf-13',
     'te-feedback',
     'Merksatz',
-    'Die Feedbackregeln in einem Satz zusammengefasst.',
+    'Hier sind alle Feedbackregeln in einem Satz zusammengefasst.',
     satz:
         'Feedback beschreibt Verhalten, nicht Menschen: konkret, zeitnah, als Ich-Botschaft und mit Wunsch.',
   ),
@@ -1142,7 +1142,7 @@ final List<Nugget> nuggetsA02 = [
     'n-tk-14',
     'te-konflikte',
     'Merksatz',
-    'Was du aus dem Glasl-Modell mitnimmst.',
+    'Das solltest du aus dem Glasl-Modell mitnehmen.',
     satz:
         'Je früher ein Konflikt angesprochen wird, desto eher ist eine Lösung möglich, bei der beide gewinnen.',
   ),
@@ -1152,7 +1152,7 @@ final List<Nugget> nuggetsA02 = [
     'n-vh-1',
     've-harvard',
     'Sachgerecht verhandeln',
-    'Das Harvard-Konzept wurde von Roger Fisher und William Ury an der Harvard University entwickelt (Buch „Getting to Yes“, 1981). Ziel ist ein Ergebnis, mit dem beide Seiten gut leben können, ohne die Beziehung zu beschädigen.',
+    'Roger Fisher und William Ury haben das Harvard-Konzept an der Harvard University entwickelt (Buch „Getting to Yes“, 1981). Ihr Ziel ist ein Ergebnis, mit dem beide Seiten gut leben können, ohne die Beziehung zu beschädigen.',
     points: [
       'Grundidee: nicht um Positionen feilschen, sondern gemeinsam das Problem lösen',
       'Einsatz: Preis- und Vertragsverhandlungen, Konflikte im Team, Streit um Termine',
@@ -1289,7 +1289,7 @@ final List<Nugget> nuggetsA02 = [
     'n-vh-12',
     've-harvard',
     'Merksatz',
-    'Der Kern des Harvard-Konzepts in einem Satz.',
+    'So bringst du den Kern des Harvard-Konzepts auf einen Satz.',
     satz: 'Hart in der Sache, weich zu den Menschen.',
   ),
 
@@ -1461,7 +1461,7 @@ final List<Nugget> nuggetsA02 = [
       'Zustimmung sichern: „Sollen wir es einen Monat testen?“',
     ],
     ergebnis:
-        'Erst den wahren Grund erfragen, dann gezielt antworten; hier mit Ja-aber und Bumerang.',
+        'Erst den wahren Grund erfragen, dann gezielt antworten, in diesem Fall mit Ja-aber und Bumerang.',
   ),
   konzept(
     'n-ve-9',
@@ -1491,7 +1491,7 @@ final List<Nugget> nuggetsA02 = [
     'n-ve-12',
     've-einwaende',
     'Merksatz',
-    'Die Grundhaltung jeder Einwandbehandlung.',
+    'Diese Grundhaltung steckt hinter jeder Einwandbehandlung.',
     satz:
         'Einwände sind Fragen, keine Angriffe: erst verstehen, dann antworten.',
   ),
@@ -1518,8 +1518,8 @@ final List<Nugget> nuggetsA02 = [
       'Zielgruppe analysieren: Vorwissen, Erwartungen, Interessen',
       'Rahmen klären: Dauer, Raum, Technik, Teilnehmerzahl',
       'Inhalte sammeln und auswählen',
-      'Gliedern - Einleitung, Hauptteil, Schluss',
-      'Visualisieren - Folien, Diagramme, Handout',
+      'Gliedern: Einleitung, Hauptteil, Schluss',
+      'Visualisieren: Folien, Diagramme, Handout',
       'Vortrag üben, mit Uhr und möglichst vor Publikum',
     ],
   ),
@@ -1710,7 +1710,7 @@ final List<Nugget> nuggetsA02 = [
     'n-pp-14',
     'pr-praesentation',
     'Merksatz',
-    'Die Grundregel für jede Präsentation.',
+    'Diese Grundregel gilt für jede Präsentation.',
     satz:
         'Erst Ziel und Zielgruppe, dann Inhalt, zuletzt die Folien, und nie vorlesen.',
   ),
@@ -1720,7 +1720,7 @@ final List<Nugget> nuggetsA02 = [
     'n-pq-1',
     'pr-quellen',
     'Warum Quellen prüfen?',
-    'Für Angebote, Präsentationen und Entscheidungen brauchst du verlässliche Informationen. Im Internet steht Richtiges neben Veraltetem, Werbung und Falschem. Deshalb wird jede Quelle geprüft, bevor du sie verwendest.',
+    'Für Angebote, Präsentationen und Entscheidungen brauchst du verlässliche Informationen. Im Internet steht Richtiges neben Veraltetem, Werbung und Falschem. Deshalb prüfst du jede Quelle, bevor du sie verwendest.',
     points: [
       'Falsche Informationen führen zu falschen Entscheidungen und kosten Geld.',
       'Wer Quellen angibt, macht Aussagen nachprüfbar und wirkt glaubwürdig.',
@@ -1771,7 +1771,7 @@ final List<Nugget> nuggetsA02 = [
     'n-pq-4',
     'pr-quellen',
     'Woran man gute Quellen erkennt',
-    'Vor dem Verwenden einer Information lohnt sich ein kurzer Check mit fünf Kriterien.',
+    'Bevor du eine Information verwendest, lohnt sich ein kurzer Check mit fünf Kriterien.',
     [
       ['Kriterium', 'Prüffrage'],
       ['Aktualität', 'Von wann ist die Information, und gilt sie noch?'],
@@ -1887,7 +1887,7 @@ final List<Nugget> nuggetsA02 = [
     'n-pq-11',
     'pr-quellen',
     'Ungeprüfte KI-Antworten',
-    'Antworten von KI-Chatbots klingen oft überzeugend, können aber erfundene Fakten oder sogar erfundene Quellen enthalten. Sie sind keine Quelle im eigentlichen Sinn. Wichtige Aussagen müssen an einer Primärquelle überprüft werden, bevor sie in ein Angebot oder eine Präsentation gelangen.',
+    'Antworten von KI-Chatbots klingen oft überzeugend, können aber erfundene Fakten oder sogar erfundene Quellen enthalten. Sie sind keine Quelle im eigentlichen Sinn. Prüf wichtige Aussagen deshalb an einer Primärquelle, bevor sie in ein Angebot oder eine Präsentation gelangen.',
   ),
   falle(
     'n-pq-12',
@@ -1899,7 +1899,7 @@ final List<Nugget> nuggetsA02 = [
     'n-pq-13',
     'pr-quellen',
     'Merksatz',
-    'Die Grundregel für jede Recherche im Beruf.',
+    'Diese Grundregel gilt für jede Recherche im Beruf.',
     satz: 'Erst prüfen, dann nutzen, und immer die Quelle nennen.',
   ),
 
@@ -2108,10 +2108,10 @@ final List<Nugget> nuggetsA02 = [
     'n-pa-15',
     'pr-angebot',
     'Eine Eingangsrechnung prüfen',
-    'Bevor eine Rechnung bezahlt wird, wird sie sachlich und rechnerisch geprüft. Grundlage sind drei Belege: die Bestellung, der Lieferschein und die Rechnung selbst.',
+    'Bevor du eine Rechnung bezahlst, prüfst du sie sachlich und rechnerisch. Grundlage sind drei Belege: die Bestellung, der Lieferschein und die Rechnung selbst.',
     [
       'Artikel und Menge je Position mit Bestellung und Lieferschein abgleichen: Berechnet werden darf nur, was bestellt und geliefert wurde.',
-      'Einzelpreise mit der Bestellung vergleichen: sind vereinbarte Rabatte und Lieferbedingungen (z. B. frei Haus) berücksichtigt?',
+      'Einzelpreise mit der Bestellung vergleichen: Sind vereinbarte Rabatte und Lieferbedingungen (z. B. frei Haus) berücksichtigt?',
       'Steuersatz je Position prüfen: 19 % oder 7 %.',
       'Nachrechnen: Menge × Einzelpreis, Summen und Umsatzsteuer.',
       'Pflichtangaben prüfen, z. B. Rechnungsnummer und Datum.',
@@ -2173,7 +2173,7 @@ final List<Nugget> nuggetsA02 = [
       'Skonto: 2 % von 2.463,22 € = 49,2644 € → 49,26 €. Zahlbetrag: 2.463,22 € − 49,26 € = 2.413,96 €.',
     ],
     ergebnis:
-        'Drei Fehler (Preis, Menge, Steuersatz). Die berichtigte Rechnung lautet über 2.463,22 €; mit Skonto werden 2.413,96 € überwiesen.',
+        'Die Rechnung enthält drei Fehler (Preis, Menge, Steuersatz). Die berichtigte Rechnung lautet über 2.463,22 €; mit Skonto werden 2.413,96 € überwiesen.',
     merksatz:
         'Beim Bezahlen wird Skonto vom Rechnungsbetrag (brutto) abgezogen; in der Bezugskalkulation rechnest du dagegen mit Nettopreisen.',
   ),
@@ -2221,7 +2221,7 @@ final List<Nugget> nuggetsA02 = [
     'n-pa-14',
     'pr-angebot',
     'Merksatz',
-    'Die Rechenkette für jeden Angebotsvergleich.',
+    'Diese Rechenkette brauchst du für jeden Angebotsvergleich.',
     satz:
         'Listenpreis minus Rabatt minus Skonto plus Bezugskosten gleich Bezugspreis. Danach die Qualität prüfen.',
   ),
@@ -2261,7 +2261,7 @@ final List<Nugget> nuggetsA02 = [
     'n-mm-3',
     'm-markt',
     'Die drei Grundformen',
-    'Marktformen werden nach der Zahl der Marktteilnehmer unterschieden. Zuerst die Angebotsseite bei vielen Nachfragern.',
+    'Marktformen werden nach der Zahl der Marktteilnehmer unterschieden. Schau dir zuerst die Angebotsseite bei vielen Nachfragern an.',
     [
       ['Marktform', 'Anbieter', 'IT-Beispiel'],
       ['Polypol', 'viele', 'IT-Dienstleister in einer Großstadt'],
@@ -2277,7 +2277,7 @@ final List<Nugget> nuggetsA02 = [
     'n-mm-4',
     'm-markt',
     'Das Marktformenschema',
-    'Betrachtet man Anbieter und Nachfrager zugleich, ergeben sich neun Marktformen. Gelesen wird: Zeile = Zahl der Anbieter, Spalte = Zahl der Nachfrager.',
+    'Betrachtet man Anbieter und Nachfrager zugleich, ergeben sich neun Marktformen. Lies die Tabelle so: Zeile = Zahl der Anbieter, Spalte = Zahl der Nachfrager.',
     [
       ['Anbieter', 'viele Nachfrager', 'wenige Nachfrager', 'ein Nachfrager'],
       ['viele', 'Polypol', 'Nachfrageoligopol', 'Nachfragemonopol'],
@@ -2396,14 +2396,14 @@ final List<Nugget> nuggetsA02 = [
     'Volumen und Potenzial verwechseln',
     'Das Marktpotenzial ist die theoretische Obergrenze, das Marktvolumen das, was tatsächlich verkauft wird. Der Marktanteil wird immer am Marktvolumen gemessen, nicht am Potenzial.',
     points: [
-      'Im Beispiel wären 320.000 € / 5 Mio. € = 6,4 %, und das wäre falsch, weil am Potenzial gemessen.',
+      'Im Beispiel kämen 320.000 € / 5 Mio. € = 6,4 % heraus. Das wäre falsch, weil es am Potenzial gemessen ist.',
     ],
   ),
   merke(
     'n-mm-12',
     'm-markt',
     'Merksatz',
-    'Die wichtigste Regel zu den Marktformen.',
+    'Das ist die wichtigste Regel zu den Marktformen.',
     satz:
         'Je weniger Anbieter, desto größer ihre Preismacht; je weniger Nachfrager, desto größer deren Macht.',
   ),
@@ -2413,11 +2413,11 @@ final List<Nugget> nuggetsA02 = [
     'n-mb-1',
     'm-bedarf',
     'Vom Bedürfnis zur Nachfrage',
-    'Drei Begriffe, die aufeinander aufbauen und in der Prüfung gern verwechselt werden.',
+    'Diese drei Begriffe bauen aufeinander auf und werden in der Prüfung gern verwechselt.',
     [
-      'Bedürfnis: das Gefühl eines Mangels: „Ich möchte schneller arbeiten.“',
-      'Bedarf: Bedürfnis mit Kaufkraft: „Ich kann mir einen neuen Laptop leisten.“',
-      'Nachfrage - Bedarf, der am Markt wirksam wird: „Ich bestelle den Laptop.“',
+      'Bedürfnis: das Gefühl eines Mangels, etwa „Ich möchte schneller arbeiten.“',
+      'Bedarf: Bedürfnis mit Kaufkraft, etwa „Ich kann mir einen neuen Laptop leisten.“',
+      'Nachfrage: Bedarf, der am Markt wirksam wird, etwa „Ich bestelle den Laptop.“',
     ],
   ),
   vergleich(
@@ -2558,7 +2558,7 @@ final List<Nugget> nuggetsA02 = [
     schritte: [
       'Ist-Aufnahme: sechs Desktop-PCs, acht Jahre alt; Daten liegen auf den einzelnen PCs; gesichert wird unregelmäßig per USB-Stick.',
       'Schwachstellen: langsame Rechner, keine zentrale Ablage, kein verlässliches Backup, kein mobiles Arbeiten.',
-      'Offene Fragen ergeben: Zwei Mitarbeitende arbeiten regelmäßig im Homeoffice, die Mandantendaten sind besonders schutzbedürftig.',
+      'Nachfragen ergibt: Zwei Mitarbeitende arbeiten regelmäßig im Homeoffice, die Mandantendaten sind besonders schutzbedürftig.',
       'Soll-Zustand: schnelle Arbeitsplätze, zentrale Ablage mit automatischer Sicherung, sicherer Fernzugriff.',
       'Rahmen: Budget 12.000 €, Umstellung im Sommer.',
     ],
@@ -2600,7 +2600,7 @@ final List<Nugget> nuggetsA02 = [
     'n-mb-12',
     'm-bedarf',
     'Merksatz',
-    'Die Begriffskette in einem Satz.',
+    'So passt die ganze Begriffskette in einen Satz.',
     satz: 'Bedürfnis + Kaufkraft = Bedarf; Bedarf am Markt = Nachfrage.',
   ),
 
@@ -2619,7 +2619,7 @@ final List<Nugget> nuggetsA02 = [
     'n-mk-2',
     'm-marketing',
     'Der Marketing-Mix (4 P)',
-    'Die vier Instrumente werden nach ihren englischen Anfangsbuchstaben als 4 P bezeichnet.',
+    'Nach ihren englischen Anfangsbuchstaben nennt man die vier Instrumente kurz die 4 P.',
     [
       ['Instrument', 'Frage', 'Beispiel'],
       [
@@ -2779,7 +2779,7 @@ final List<Nugget> nuggetsA02 = [
     'Du entwirfst eine Anzeige für ein Backup-System. Ordne jedem Element eine AIDA-Stufe zu.',
     schritte: [
       'Attention: Überschrift „Alle Daten weg?“ Eine provozierende Frage fällt auf.',
-      'Interest: Wie häufig Datenverlust im Mittelstand vorkommt. Der Leser fühlt sich betroffen.',
+      'Interest: Der Text zeigt, wie häufig Datenverlust im Mittelstand vorkommt, und der Leser fühlt sich betroffen.',
       'Desire: automatische Sicherung, ohne dass jemand daran denken muss; das weckt den Wunsch nach Sorglosigkeit.',
       'Action: „Jetzt 30 Tage kostenlos testen“ als konkrete Handlungsaufforderung.',
     ],
@@ -2866,7 +2866,7 @@ final List<Nugget> nuggetsA02 = [
     'n-mk-13',
     'm-marketing',
     'Merksatz',
-    'Die vier Instrumente als Eselsbrücke.',
+    'Mit dieser Eselsbrücke behältst du die vier Instrumente.',
     satz:
         'Product, Price, Place, Promotion: was, wie teuer, auf welchem Weg und wie bekannt.',
   ),
@@ -3033,7 +3033,7 @@ final List<Nugget> nuggetsA02 = [
     'n-ma-11',
     'm-abc',
     'Merksatz',
-    'Was du aus jeder ABC-Analyse ableitest.',
+    'Das leitest du aus jeder ABC-Analyse ab.',
     satz:
         'A-Objekte intensiv betreuen, C-Objekte möglichst effizient abwickeln.',
   ),
@@ -3055,7 +3055,7 @@ final List<Nugget> nuggetsA02 = [
     'n-mr-2',
     'm-rechtsformen',
     'Überblick über die Rechtsformen',
-    'Unterschieden werden Einzelunternehmen, Personengesellschaften und Kapitalgesellschaften.',
+    'Man unterscheidet Einzelunternehmen, Personengesellschaften und Kapitalgesellschaften.',
     BaumDiagramm(
       BaumKnoten('Rechtsformen', [
         BaumKnoten('Einzelunternehmen', [], 'eine Person'),
@@ -3240,7 +3240,7 @@ final List<Nugget> nuggetsA02 = [
     'n-mr-14',
     'm-rechtsformen',
     'Merksatz',
-    'Die Grundregel für die Haftung.',
+    'Für die Haftung gilt eine einfache Grundregel.',
     satz:
         'Personengesellschaft: Menschen haften. Kapitalgesellschaft: das Kapital haftet.',
   ),

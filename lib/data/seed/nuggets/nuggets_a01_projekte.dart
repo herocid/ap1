@@ -73,7 +73,7 @@ final List<Nugget> nuggetsA01 = [
     'n-pb-3',
     'p-begriff',
     'Projekt oder Linienaufgabe?',
-    'Die meisten Tätigkeiten im Betrieb sind Linienaufgaben: wiederkehrend und eingespielt. Ein Projekt bricht aus dieser Routine aus.',
+    'Die meisten Tätigkeiten im Betrieb sind Linienaufgaben, die immer wiederkehren und gut eingespielt sind. Ein Projekt bricht aus dieser Routine aus.',
     [
       ['Merkmal', 'Projekt', 'Linienaufgabe'],
       ['Häufigkeit', 'einmalig', 'wiederkehrend'],
@@ -87,7 +87,7 @@ final List<Nugget> nuggetsA01 = [
     'n-pb-4',
     'p-begriff',
     'Was ist Projektmanagement?',
-    'Projektmanagement ist nach DIN 69901 die Gesamtheit von Führungsaufgaben, -organisation, -techniken und -mitteln für die Initiierung, Definition, Planung, Steuerung und den Abschluss von Projekten. Kurz: alles, was nötig ist, damit ein Projekt sein Ziel im vorgegebenen Rahmen erreicht.',
+    'Projektmanagement ist nach DIN 69901 die Gesamtheit von Führungsaufgaben, -organisation, -techniken und -mitteln für die Initiierung, Definition, Planung, Steuerung und den Abschluss von Projekten. Kurz gesagt gehört alles dazu, was nötig ist, damit ein Projekt sein Ziel im vorgegebenen Rahmen erreicht.',
     points: [
       'Planen: Struktur, Termine, Ressourcen, Kosten, Risiken',
       'Organisieren: Rollen festlegen, Team zusammenstellen',
@@ -175,14 +175,14 @@ final List<Nugget> nuggetsA01 = [
     'n-pb-9',
     'p-begriff',
     'Groß heißt nicht Projekt',
-    'Größe, Budget oder Teamstärke sind keine Merkmale eines Projekts. Ein zweiwöchiges, einmaliges Vorhaben mit klarem Ziel ist ein Projekt, aber der jährliche Hardware-Austausch mit 500 Geräten nach bewährtem Ablauf dagegen Routine.',
+    'Größe, Budget oder Teamstärke sind keine Merkmale eines Projekts. Ein zweiwöchiges, einmaliges Vorhaben mit klarem Ziel ist ein Projekt. Der jährliche Hardware-Austausch mit 500 Geräten nach bewährtem Ablauf ist dagegen Routine.',
     merksatz: 'Entscheidend ist die Einmaligkeit, nicht die Größe.',
   ),
   falle(
     'n-pb-10',
     'p-begriff',
     'Einmalig heißt nicht weltneu',
-    'Die Einmaligkeit bezieht sich auf die Bedingungen in ihrer Gesamtheit, nicht auf die Technik. Ein Webshop ist technisch nichts Neues: für diesen Kunden, mit diesem Team, Budget und Termin ist das Vorhaben trotzdem einmalig.',
+    'Die Einmaligkeit bezieht sich auf die Bedingungen in ihrer Gesamtheit, nicht auf die Technik. Ein Webshop ist technisch nichts Neues, aber für diesen Kunden, mit diesem Team, Budget und Termin ist das Vorhaben trotzdem einmalig.',
   ),
   merke(
     'n-pb-11',
@@ -242,10 +242,10 @@ final List<Nugget> nuggetsA01 = [
     'Die Geschäftsführung sagt: „Unser Support soll schneller werden.“ Heute dauert es im Schnitt 8 Stunden bis zur ersten Antwort auf ein Ticket. Formuliere daraus ein SMART-Ziel.',
     schritte: [
       'Spezifisch: Was genau? Die Zeit bis zur ersten Antwort auf ein Ticket.',
-      'Messbar: Kennzahl festlegen: Anteil der Tickets mit Erstantwort innerhalb von 2 Stunden.',
+      'Messbar: Als Kennzahl dient der Anteil der Tickets mit Erstantwort innerhalb von 2 Stunden.',
       'Attraktiv/akzeptiert: mit dem Support-Team abstimmen, damit es das Ziel mitträgt.',
       'Realistisch: Mit neuem Ticketsystem und Antwortvorlagen sind 2 Stunden erreichbar, aber nicht für jedes Ticket. Deshalb 90 %.',
-      'Terminiert: Stichtag festlegen: ab 30.09.',
+      'Terminiert: Das Ziel gilt ab dem Stichtag 30.09.',
     ],
     ergebnis:
         '„Ab 30.09. erhalten 90 % aller Tickets innerhalb von 2 Stunden eine erste Antwort.“',
@@ -452,8 +452,8 @@ final List<Nugget> nuggetsA01 = [
       ['Vertrieb', 'Dana (30 %)', '-'],
     ],
     points: [
-      'Zeilen: Linie: disziplinarische Führung (Urlaub, Beurteilung)',
-      'Spalten: Projekte: fachliche Führung (Aufgaben, Termine)',
+      'Die Zeilen zeigen die Linie, sie führt disziplinarisch (Urlaub, Beurteilung).',
+      'Die Spalten zeigen die Projekte, sie führen fachlich (Aufgaben, Termine).',
       'Cem arbeitet für zwei Projekte und hat damit drei Ansprechpersonen.',
     ],
   ),
@@ -487,7 +487,7 @@ final List<Nugget> nuggetsA01 = [
     'Fachlich oder disziplinarisch?',
     'Die Prüfung vertauscht die beiden Begriffe gern. Präge dir je ein typisches Beispiel ein.',
     points: [
-      'Fachlich: WAS und WIE gearbeitet wird: Aufgaben, Termine, Qualität',
+      'Fachlich: WAS und WIE gearbeitet wird, also Aufgaben, Termine, Qualität',
       'Disziplinarisch: Urlaub, Beurteilung, Gehalt, Abmahnung',
       'In der Matrix: fachlich die Projektleitung, disziplinarisch der Linienvorgesetzte',
     ],
@@ -512,8 +512,8 @@ final List<Nugget> nuggetsA01 = [
     'Organisationsform begründen',
     'Ein Systemhaus mit 80 Mitarbeitenden führt eine neue Zeiterfassung ein. Das Projekt dauert 4 Monate. Beschäftigte aus IT, Personal und Buchhaltung arbeiten zu 20 bis 40 % mit, die Projektleitung soll ihnen Aufgaben zuweisen können. Welche Organisationsform passt?',
     schritte: [
-      'Größe und Dauer: mittel: vier Monate, drei Abteilungen beteiligt.',
-      'Mitarbeit: anteilig: alle bleiben in ihren Abteilungen.',
+      'Größe und Dauer sind mittel: vier Monate, drei Abteilungen beteiligt.',
+      'Die Mitarbeit ist anteilig, alle bleiben in ihren Abteilungen.',
       'Befugnis: Die Projektleitung braucht fachliche Weisungsbefugnis.',
       'Reine Projektorganisation wäre für Teilzeit-Mitarbeit zu aufwendig, die Einflussorganisation gäbe keine Weisungsbefugnis.',
     ],
@@ -538,7 +538,7 @@ final List<Nugget> nuggetsA01 = [
       'Aufgabe: was zu tun ist',
       'Kompetenz: was entschieden werden darf',
       'Verantwortung: wofür man geradesteht',
-      'Kongruenzprinzip: Alle drei müssen zusammenpassen: Wer Verantwortung trägt, braucht die passenden Befugnisse.',
+      'Kongruenzprinzip: Alle drei müssen zusammenpassen, denn wer Verantwortung trägt, braucht die passenden Befugnisse.',
     ],
   ),
   skizze(
@@ -635,7 +635,7 @@ final List<Nugget> nuggetsA01 = [
     'n-pr-7',
     'p-rollen',
     'Das Kick-off-Meeting',
-    'Der offizielle Startschuss mit allen Beteiligten. Ziel ist ein gemeinsames Verständnis, bevor die eigentliche Arbeit beginnt. Es ist keine Detailplanung.',
+    'Das Kick-off ist der offizielle Startschuss mit allen Beteiligten. Ziel ist ein gemeinsames Verständnis, bevor die eigentliche Arbeit beginnt. Es ist keine Detailplanung.',
     points: [
       'Ziele und Nicht-Ziele vorstellen',
       'Rollen und Zuständigkeiten klären',
@@ -692,7 +692,7 @@ final List<Nugget> nuggetsA01 = [
     'n-pr-10',
     'p-rollen',
     'Wer entscheidet?',
-    'Die Projektleitung entscheidet im Rahmen des Projektauftrags. Alles, was diesen Rahmen verändert (mehr Budget, späterer Termin, anderer Umfang) entscheidet der Auftraggeber bzw. der Lenkungsausschuss.',
+    'Die Projektleitung entscheidet im Rahmen des Projektauftrags. Alles, was diesen Rahmen verändert (mehr Budget, späterer Termin, anderer Umfang), entscheidet der Auftraggeber bzw. der Lenkungsausschuss.',
     points: [
       'Droht der Rahmen zu platzen, eskaliert die Projektleitung früh, nicht erst im Abschlussbericht.',
     ],
@@ -705,7 +705,7 @@ final List<Nugget> nuggetsA01 = [
     'Merksatz',
     'Jede Rolle hat ihre eigene Frage, auf die sie antwortet.',
     satz:
-        'Auftraggeber beauftragt und nimmt ab, Lenkungsausschuss entscheidet über den Rahmen, Projektleitung steuert, Team setzt um.',
+        'Der Auftraggeber beauftragt und nimmt ab, der Lenkungsausschuss entscheidet über den Rahmen, die Projektleitung steuert und das Team setzt um.',
   ),
 
   // ===================================================== Stakeholder analysieren
@@ -853,7 +853,7 @@ final List<Nugget> nuggetsA01 = [
     'Am häufigsten gefragt wird „hoher Einfluss, geringes Interesse“, weil es am wenigsten intuitiv ist. Eng einbinden wäre hier falsch: Diese Gruppe will nicht mit Details überhäuft werden, kann das Projekt aber jederzeit stoppen.',
     points: [
       'Typisch: Geschäftsführung anderer Bereiche, Betriebsrat',
-      'Der Betriebsrat bestimmt bei IT-Systemen mit, mit denen sich Leistung oder Verhalten von Beschäftigten überwachen lassen (§ 87 Abs. 1 Nr. 6 BetrVG), also ihn frühzeitig einbeziehen.',
+      'Der Betriebsrat bestimmt bei IT-Systemen mit, mit denen sich Leistung oder Verhalten von Beschäftigten überwachen lassen (§ 87 Abs. 1 Nr. 6 BetrVG). Bezieh ihn deshalb frühzeitig ein.',
     ],
   ),
   falle(
@@ -935,8 +935,8 @@ final List<Nugget> nuggetsA01 = [
     'Meilensteine',
     'Ein Meilenstein ist ein Ereignis ohne Dauer, an dem ein prüfbares Zwischenergebnis vorliegt. Meist schließt er eine Phase ab; dort wird entschieden, ob die nächste Phase beginnen darf (Phasenfreigabe).',
     points: [
-      'Gut formuliert: „Pflichtenheft vom Kunden unterschrieben“: eindeutig erreicht oder nicht',
-      'Schlecht formuliert: „Konzept weitgehend fertig“: nicht prüfbar',
+      'Gut formuliert ist „Pflichtenheft vom Kunden unterschrieben“, denn das ist eindeutig erreicht oder nicht.',
+      'Schlecht formuliert ist „Konzept weitgehend fertig“, weil sich das nicht prüfen lässt.',
       'Im Gantt-Diagramm als Raute mit Dauer 0 dargestellt',
     ],
   ),
@@ -996,7 +996,7 @@ final List<Nugget> nuggetsA01 = [
     'Im Wasserfallmodell laufen die Phasen der Softwareentwicklung streng nacheinander ab. Jede Phase wird vollständig abgeschlossen und dokumentiert, bevor die nächste beginnt, wie Wasser, das Stufe für Stufe nach unten fällt.',
     points: [
       'Geht auf eine Veröffentlichung von Winston W. Royce (1970) zurück',
-      'Sequenziell: keine Überlappung der Phasen',
+      'Sequenziell: Die Phasen überlappen sich nicht.',
       'Dokumentgetrieben: Jede Phase liefert ein freigegebenes Dokument.',
     ],
   ),
@@ -1045,8 +1045,8 @@ final List<Nugget> nuggetsA01 = [
     'Lastenheft und Pflichtenheft',
     'Beide Dokumente entstehen in der Anforderungsanalyse und sind die Grundlage aller folgenden Phasen.',
     points: [
-      'Lastenheft: vom Auftraggeber: WAS soll das System leisten und WOFÜR?',
-      'Pflichtenheft: vom Auftragnehmer: WIE und WOMIT werden die Anforderungen umgesetzt?',
+      'Das Lastenheft kommt vom Auftraggeber: WAS soll das System leisten und WOFÜR?',
+      'Das Pflichtenheft kommt vom Auftragnehmer: WIE und WOMIT werden die Anforderungen umgesetzt?',
       'Das freigegebene Pflichtenheft ist die verbindliche Grundlage für Entwurf, Test und Abnahme.',
     ],
   ),
@@ -1109,7 +1109,7 @@ final List<Nugget> nuggetsA01 = [
     'n-vw-9',
     'v-wasserfall',
     'Testen erst am Ende?',
-    'Auch im Wasserfall testen Entwickler ihre Module schon bei der Implementierung. Die eigene Testphase prüft das Zusammenspiel und das Gesamtsystem gegen die Anforderungen und genau dort fallen Analysefehler erst auf.',
+    'Auch im Wasserfall testen Entwickler ihre Module schon bei der Implementierung. Die eigene Testphase prüft das Zusammenspiel und das Gesamtsystem gegen die Anforderungen, und genau dort fallen Analysefehler erst auf.',
   ),
   merke(
     'n-vw-10',
@@ -1123,7 +1123,7 @@ final List<Nugget> nuggetsA01 = [
       'Bekannte Technik, erfahrenes Team',
     ],
     satz:
-        'Wasserfall: erst vollständig planen, dann bauen. Das ist ideal bei klaren, stabilen Anforderungen.',
+        'Beim Wasserfall wird erst vollständig geplant und dann gebaut. Das ist ideal bei klaren, stabilen Anforderungen.',
   ),
 
   // ======================================================== Klassisch oder agil?
@@ -1234,7 +1234,8 @@ final List<Nugget> nuggetsA01 = [
       'Technik: bekannt, wenig Unsicherheit → Wasserfall',
       'Abnahme gegen ein Pflichtenheft, Dokumentationspflicht der Behörde → Wasserfall',
     ],
-    ergebnis: 'Wasserfall: Stabile Anforderungen und fester Vertragsrahmen.',
+    ergebnis:
+        'Wasserfall, denn die Anforderungen sind stabil und der Vertragsrahmen steht fest.',
   ),
   konzept(
     'n-va-8',
@@ -1258,7 +1259,7 @@ final List<Nugget> nuggetsA01 = [
     'n-va-11',
     'v-auswahl',
     'Merksatz',
-    'Die Anforderungen entscheiden.',
+    'Am Ende entscheiden die Anforderungen.',
     satz:
         'Stabile Anforderungen und fester Vertrag: Wasserfall. Unklare oder sich ändernde Anforderungen und ein verfügbarer Kunde: Scrum.',
   ),
@@ -1318,7 +1319,7 @@ final List<Nugget> nuggetsA01 = [
     'n-sm-5',
     's-manifest',
     'Die zwölf Prinzipien (1 bis 6)',
-    'Hinter den Werten stehen zwölf Prinzipien. Hier die ersten sechs, sinngemäß zusammengefasst.',
+    'Hinter den Werten stehen zwölf Prinzipien. Hier sind die ersten sechs, sinngemäß zusammengefasst.',
     points: [
       '1. Kunden durch frühe und kontinuierliche Auslieferung wertvoller Software zufriedenstellen',
       '2. Änderungen der Anforderungen sind willkommen, auch spät in der Entwicklung',
@@ -1380,9 +1381,9 @@ final List<Nugget> nuggetsA01 = [
     'n-sm-10',
     's-manifest',
     'Merksatz',
-    'Die kürzeste Form des Manifests.',
+    'So lässt sich das Manifest am kürzesten zusammenfassen.',
     satz:
-        'Links vor rechts, nicht links statt rechts. Vier Werte, zwölf Prinzipien, im Zentrum: früh liefern, eng zusammenarbeiten, auf Veränderung reagieren.',
+        'Links vor rechts, nicht links statt rechts. Im Zentrum der vier Werte und zwölf Prinzipien stehen: früh liefern, eng zusammenarbeiten, auf Veränderung reagieren.',
   ),
 
   // ============================================ Die drei Verantwortlichkeiten
@@ -1485,7 +1486,7 @@ final List<Nugget> nuggetsA01 = [
     'n-sr-7',
     's-rollen',
     'Der Scrum Master',
-    'Der Scrum Master sorgt dafür, dass Scrum so gelebt wird, wie es im Scrum Guide steht. Er ist eine Führungskraft, die dient: er hilft anderen, statt Anweisungen zu geben.',
+    'Der Scrum Master sorgt dafür, dass Scrum so gelebt wird, wie es im Scrum Guide steht. Er ist eine Führungskraft, die dient. Er hilft anderen, statt Anweisungen zu geben.',
     points: [
       'Für das Team: coacht Selbstmanagement, beseitigt Hindernisse, sorgt für produktive Events innerhalb der Timebox',
       'Für den Product Owner: hilft mit Techniken für Produktziel und Backlog-Pflege',
@@ -1544,7 +1545,7 @@ final List<Nugget> nuggetsA01 = [
     'n-sr-12',
     's-rollen',
     'Merksatz',
-    'Drei Verantwortlichkeiten, drei Fragen.',
+    'Jede der drei Verantwortlichkeiten beantwortet ihre eigene Frage.',
     satz:
         'Product Owner: WAS und WARUM. Developers: WIE und WIE VIEL. Scrum Master: DASS es funktioniert.',
   ),
@@ -1554,7 +1555,7 @@ final List<Nugget> nuggetsA01 = [
     'n-sa-1',
     's-artefakte',
     'Drei Artefakte',
-    'Artefakte machen Arbeit und Wert sichtbar, also sie sorgen für Transparenz. Zu jedem Artefakt gehört ein Commitment, an dem sich der Fortschritt messen lässt.',
+    'Artefakte machen Arbeit und Wert sichtbar, sie sorgen also für Transparenz. Zu jedem Artefakt gehört ein Commitment, an dem sich der Fortschritt messen lässt.',
   ),
   vergleich(
     'n-sa-2',
@@ -1586,7 +1587,7 @@ final List<Nugget> nuggetsA01 = [
       'Oben: kleine, detaillierte Einträge, bereit für den nächsten Sprint',
       'Unten: grobe, große Einträge wie Epics',
       'Verantwortlich: Product Owner',
-      'Commitment: Produktziel: der langfristige Zielzustand des Produkts',
+      'Commitment: das Produktziel, also der langfristige Zielzustand des Produkts',
     ],
   ),
   konzept(
@@ -1706,7 +1707,7 @@ final List<Nugget> nuggetsA01 = [
     'Der Sprint',
     'Der Sprint ist der Rahmen für alle anderen Events. Er hat eine feste Länge von höchstens einem Monat; der nächste Sprint beginnt direkt nach dem Ende des vorherigen.',
     points: [
-      'Keine Änderungen, die das Sprintziel gefährden',
+      'Es gibt keine Änderungen, die das Sprintziel gefährden.',
       'Die Qualität wird nicht verringert.',
       'Das Product Backlog wird bei Bedarf verfeinert.',
       'Abbrechen darf nur der Product Owner, und zwar wenn das Sprintziel hinfällig geworden ist.',
@@ -1774,7 +1775,7 @@ final List<Nugget> nuggetsA01 = [
     'n-se-5',
     's-events',
     'Das Daily Scrum',
-    'Ein 15-minütiges Event für die Developers, jeden Arbeitstag zur gleichen Zeit am gleichen Ort. Sie prüfen den Fortschritt zum Sprintziel und passen den Plan für die nächsten 24 Stunden an.',
+    'Das Daily Scrum ist ein 15-minütiges Event für die Developers, jeden Arbeitstag zur gleichen Zeit am gleichen Ort. Sie prüfen den Fortschritt zum Sprintziel und passen den Plan für die nächsten 24 Stunden an.',
     points: [
       'Die Struktur wählen die Developers selbst. Die früher üblichen drei Fragen (gestern, heute, Hindernisse) sind nicht mehr vorgeschrieben.',
       'Product Owner und Scrum Master nehmen als Developers teil, wenn sie selbst an Einträgen arbeiten.',
@@ -1951,7 +1952,7 @@ final List<Nugget> nuggetsA01 = [
       'Jede Person wählt verdeckt eine Karte mit ihrer Schätzung.',
       'Alle decken gleichzeitig auf.',
       'Wer am höchsten und wer am niedrigsten geschätzt hat, begründet seinen Wert.',
-      'Erneut schätzen, bis sich das Team auf einen Wert einigt.',
+      'Dann wird erneut geschätzt, bis sich das Team auf einen Wert einigt.',
     ],
   ),
   formel(
@@ -2171,7 +2172,7 @@ final List<Nugget> nuggetsA01 = [
     'n-ng-11',
     'n-grundlagen',
     'Vorgänger oder Nachfolger?',
-    'Manche Aufgaben geben statt der Vorgänger die Nachfolger an. Dann zuerst umdrehen: Steht bei A „Nachfolger: B, C“, ist A der Vorgänger von B und von C.',
+    'Manche Aufgaben geben statt der Vorgänger die Nachfolger an. Dreh die Angabe dann zuerst um: Steht bei A „Nachfolger: B, C“, ist A der Vorgänger von B und von C.',
   ),
   falle(
     'n-ng-12',
@@ -2419,7 +2420,7 @@ final List<Nugget> nuggetsA01 = [
     'n-nr-10',
     'n-rueckwaerts',
     'Merksatz',
-    'Das Gegenstück zur Vorwärtsrechnung.',
+    'Die Rückwärtsrechnung ist das Gegenstück zur Vorwärtsrechnung.',
     satz:
         'Rückwärts: SAZ = SEZ - D, und an der Verzweigung bestimmt der eiligste Nachfolger, also das Minimum.',
   ),
@@ -2511,11 +2512,11 @@ final List<Nugget> nuggetsA01 = [
     'n-np-8',
     'n-puffer',
     'Gesamtpuffer ist nicht freier Puffer',
-    'Die häufigsten Fehler beim Puffer.',
+    'Beim Puffer passieren immer wieder dieselben Fehler.',
     points: [
       'Den freien Puffer mit dem SAZ statt dem FAZ des Nachfolgers rechnen',
       'Übersehen, dass sich Vorgänge einer Kette einen Gesamtpuffer teilen',
-      'Einen freien Puffer größer als den Gesamtpuffer angeben. Das ist unmöglich',
+      'Einen freien Puffer angeben, der größer als der Gesamtpuffer ist, obwohl das unmöglich ist',
       'Bei mehreren Nachfolgern den größten statt den kleinsten FAZ nehmen',
     ],
   ),
@@ -2523,7 +2524,7 @@ final List<Nugget> nuggetsA01 = [
     'n-np-9',
     'n-puffer',
     'Puffer ist keine Reserve zum Verplanen',
-    'Puffer ergibt sich aus der Struktur des Plans. Wer ihn gleich am Anfang verbraucht („wir haben ja Luft“), hat später keinen mehr und aus einem unkritischen Weg wird ein kritischer.',
+    'Puffer ergibt sich aus der Struktur des Plans. Wer ihn gleich am Anfang verbraucht („wir haben ja Luft“), hat später keinen mehr, und aus einem unkritischen Weg wird ein kritischer.',
   ),
   merke(
     'n-np-10',
@@ -2613,8 +2614,8 @@ final List<Nugget> nuggetsA01 = [
     'Das Projekt beschleunigen',
     'Nur kürzere kritische Vorgänge verkürzen das Projekt. Mehr Tempo bei unkritischen Vorgängen vergrößert bloß deren Puffer.',
     points: [
-      'Mehr Ressourcen auf einen kritischen Vorgang setzen (Crashing), kostet Geld',
-      'Kritische Vorgänge teilweise parallel statt nacheinander ausführen (Fast Tracking), erhöht das Risiko',
+      'Mehr Ressourcen auf einen kritischen Vorgang setzen (Crashing), was Geld kostet',
+      'Kritische Vorgänge teilweise parallel statt nacheinander ausführen (Fast Tracking), was das Risiko erhöht',
       'Umfang reduzieren, in Absprache mit dem Auftraggeber',
       'Danach neu rechnen: Ein anderer Weg kann jetzt kritisch sein.',
     ],
@@ -2669,6 +2670,6 @@ final List<Nugget> nuggetsA01 = [
     'Merksatz',
     'Daraus folgt, wo bei Terminproblemen angesetzt werden muss.',
     satz:
-        'Kritisch heißt: Gesamtpuffer 0, längster Weg. Wer hier Zeit verliert, verliert sie am Projektende. Wer hier Zeit gewinnt, gewinnt sie nur, bis ein anderer Weg kritisch wird.',
+        'Kritisch heißt Gesamtpuffer 0 auf dem längsten Weg. Wer hier Zeit verliert, verliert sie am Projektende. Wer hier Zeit gewinnt, gewinnt sie nur, bis ein anderer Weg kritisch wird.',
   ),
 ];

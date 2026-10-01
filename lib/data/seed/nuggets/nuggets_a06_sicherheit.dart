@@ -189,7 +189,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
       ],
     ),
     merksatz:
-        'Reihe: multiplizieren. Die Kette ist schwächer als ihr schwächstes Glied. Parallel: 1 minus Produkt der Ausfallwahrscheinlichkeiten.',
+        'In Reihe wird multipliziert, die Kette ist schwächer als ihr schwächstes Glied. Parallel rechnest du 1 minus das Produkt der Ausfallwahrscheinlichkeiten.',
   ),
   falle(
     'n-zz-12',
@@ -335,7 +335,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     points: [
       'Einsatz: DDoS-Angriffe, Spam-Versand, Passwort-Angriffe, Nachladen weiterer Schadsoftware',
       'Wer einen Bot im Netz hat, ist zugleich Opfer und unfreiwilliger Mittäter.',
-      'Erkennbar oft an ungewöhnlichem ausgehenden Verkehr. Ein Grund, auch ausgehende Verbindungen zu filtern.',
+      'Bots verraten sich oft durch ungewöhnlichen ausgehenden Verkehr. Auch deshalb lohnt es sich, ausgehende Verbindungen zu filtern.',
     ],
   ),
   ablauf(
@@ -614,7 +614,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-za-12',
     'sz-angriffe',
     'Manipulierte Geräte in der Lieferkette',
-    'Ein Angriff muss nicht im eigenen Netz beginnen. Auf dem Weg vom Hersteller über Zwischenhändler und Spedition bis zum Kunden kann ein Gerät verändert werden, oder es wird gleich eine Fälschung geliefert. Das Tückische: Das Gerät kommt originalverpackt an und funktioniert ganz normal.',
+    'Ein Angriff muss nicht im eigenen Netz beginnen. Auf dem Weg vom Hersteller über Zwischenhändler und Spedition bis zum Kunden kann ein Gerät verändert werden, oder es wird gleich eine Fälschung geliefert. Tückisch ist, dass das Gerät originalverpackt ankommt und ganz normal funktioniert.',
     points: [
       'Abhör- und Auslesefunktionen: Ein Zusatzchip oder veränderte Firmware schneidet Daten mit und sendet sie nach außen',
       'Hintertür (Backdoor): versteckter Fernzugang, über den Angreifer später ins Netz gelangen',
@@ -1035,7 +1035,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'Die DMZ',
     'Die demilitarisierte Zone (DMZ) ist ein eigenes Netzsegment für Server, die aus dem Internet erreichbar sein müssen. Wird dort ein Server übernommen, steht der Angreifer noch nicht im internen Netz.',
     points: [
-      'In die DMZ: Webserver, Mail-Gateway, Reverse Proxy. Alles, was von außen erreichbar sein muss',
+      'In die DMZ gehört alles, was von außen erreichbar sein muss: Webserver, Mail-Gateway, Reverse Proxy',
       'Ins LAN: Datenbanken mit Kundendaten, Dateiserver, Arbeitsplätze',
       'Internet -> DMZ: nur die nötigen Ports, z. B. 443 zum Webserver',
       'DMZ -> LAN: grundsätzlich gesperrt, höchstens einzelne Ausnahmen wie Webserver -> Datenbankport',
@@ -1115,7 +1115,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-yf-13',
     'sm-firewall',
     'Die Reihenfolge entscheidet',
-    'Steht die Regel „any any deny“ ganz oben, wird alles blockiert. Steht eine allgemeine Erlaubnis vor einer speziellen Sperre, greift die Sperre nie. Deshalb: spezielle Regeln nach oben, und als letzte Regel alles verbieten, was nicht ausdrücklich erlaubt ist.',
+    'Steht die Regel „any any deny“ ganz oben, wird alles blockiert. Steht eine allgemeine Erlaubnis vor einer speziellen Sperre, greift die Sperre nie. Setz deshalb spezielle Regeln nach oben und verbiete mit der letzten Regel alles, was nicht ausdrücklich erlaubt ist.',
     points: [
       'Eine Personal Firewall ersetzt keine Netzwerk-Firewall. Sie ergänzt sie.',
       'Ein Paketfilter sieht keine Inhalte: Schadcode in einer Webseite erkennt nur ein Proxy bzw. eine NGFW.',
@@ -1126,7 +1126,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-yf-14',
     'sm-firewall',
     'Auf einen Blick',
-    'Eine Firewall setzt ein Regelwerk durch. So gut wie die Regeln und ihre Reihenfolge.',
+    'Eine Firewall setzt ein Regelwerk durch und ist nur so gut wie ihre Regeln und deren Reihenfolge.',
     points: [
       'Paketfilter und Stateful: Schicht 3/4, Proxy: Schicht 7, NGFW: alles zusammen',
       'DMZ: öffentlich erreichbare Server getrennt vom LAN, zweistufig mit zwei Firewalls',
@@ -1649,7 +1649,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'Wer mit Administratorrechten E-Mails liest und surft, gibt jedem Schadcode aus einem Anhang ebenfalls volle Rechte. Deshalb haben Admins zwei Konten: ein normales für den Alltag und ein eigenes Admin-Konto nur für Verwaltungsaufgaben.',
     points: [
       'Admin-Konten nur mit MFA und nur von gesicherten Geräten aus nutzen',
-      'Persönliche Admin-Konten statt eines geteilten „admin“. Sonst ist nichts zurechenbar',
+      'Persönliche Admin-Konten statt eines geteilten „admin“, sonst ist nichts zurechenbar',
       'Notfall-Konto mit versiegeltem Passwort für den Ausfall der normalen Anmeldung',
     ],
   ),
@@ -1670,12 +1670,12 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-yz-9',
     'sm-zugriff',
     'Patchmanagement und Protokollierung',
-    'Updates schließen bekannte Lücken: Angreifer nutzen genau diese Lücken oft wenige Tage nach der Veröffentlichung. Patchmanagement heißt: Updates systematisch erfassen, testen, verteilen und dokumentieren. Protokolle zeigen, ob trotzdem etwas passiert.',
+    'Updates schließen bekannte Lücken, und genau diese Lücken nutzen Angreifer oft wenige Tage nach der Veröffentlichung. Patchmanagement heißt: Updates systematisch erfassen, testen, verteilen und dokumentieren. Protokolle zeigen, ob trotzdem etwas passiert.',
     points: [
       'kritische Updates zeitnah und möglichst automatisiert verteilen',
       'vorher auf einem Testsystem prüfen und zurückrollen können',
       'protokollieren: An- und Abmeldungen, Fehlversuche, Rechteänderungen',
-      'Protokolle zentral sammeln und auswerten. Sonst bemerkt niemand den Angriff',
+      'Protokolle zentral sammeln und auswerten, sonst bemerkt niemand den Angriff',
     ],
   ),
   skizze(
@@ -1700,7 +1700,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-yz-13',
     'sm-zugriff',
     'Standardpasswörter bei Geräten',
-    'Router, Access Points, Drucker, Kameras und andere Netzwerkgeräte werden oft mit voreingestellten Zugangsdaten ausgeliefert, etwa „admin“ und „admin“. Diese Standardpasswörter sind bei allen Geräten einer Baureihe gleich und stehen im Handbuch, und in Listen im Internet.',
+    'Router, Access Points, Drucker, Kameras und andere Netzwerkgeräte werden oft mit voreingestellten Zugangsdaten ausgeliefert, etwa „admin“ und „admin“. Diese Standardpasswörter sind bei allen Geräten einer Baureihe gleich und stehen im Handbuch und in Listen im Internet.',
     points: [
       'Angreifer und Schadsoftware probieren solche Listen automatisch durch. So entstand 2016 das Botnetz Mirai aus hunderttausenden Kameras und Routern',
       'Folgen: Fremde sehen Kamerabilder, ändern die Konfiguration oder nutzen das Gerät als Einstieg ins interne Netz',
@@ -1725,7 +1725,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     'n-yz-11',
     'sm-zugriff',
     'Offener Bildschirm, offene Tür',
-    'Die beste Anmeldung nützt nichts, wenn der angemeldete Rechner unbeaufsichtigt bleibt. Beim Verlassen des Platzes sperren (Windows: Windows-Taste + L) und eine automatische Sperre nach kurzer Inaktivität einstellen.',
+    'Die beste Anmeldung nützt nichts, wenn der angemeldete Rechner unbeaufsichtigt bleibt. Sperr ihn deshalb, wenn du den Platz verlässt (Windows: Windows-Taste + L), und stell eine automatische Sperre nach kurzer Inaktivität ein.',
     points: [
       'Chipkarte an der Serverraumtür = Zutritt, nicht Zugang',
       'Geteilte Konten verhindern jede Nachvollziehbarkeit',
