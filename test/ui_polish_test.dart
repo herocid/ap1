@@ -159,7 +159,7 @@ void main() {
       }
     }
 
-    testWidgets('aktiver Reiter hat gefülltes Symbol und Markenfarbe', (
+    testWidgets('aktiver Reiter behält sein Symbol in Markenfarbe', (
       tester,
     ) async {
       final c = await pumpApp(tester, size: const Size(375, 800), scale: 1);
@@ -167,13 +167,13 @@ void main() {
       await tester.pumpAndSettle();
       final bar = find.byType(AppNavigationBar);
       final active = tester.widget<Icon>(
-        find.descendant(of: bar, matching: find.byIcon(Icons.quiz)),
+        find.descendant(of: bar, matching: find.byIcon(Icons.quiz_outlined)),
       );
       final ctx = tester.element(bar);
       expect(active.color, Theme.of(ctx).colorScheme.primary);
       expect(
         find.descendant(of: bar, matching: find.byIcon(Icons.quiz_outlined)),
-        findsNothing,
+        findsOneWidget,
       );
       expect(
         find.descendant(of: bar, matching: find.byIcon(Icons.home_outlined)),
