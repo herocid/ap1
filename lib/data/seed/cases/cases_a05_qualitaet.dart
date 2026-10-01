@@ -28,7 +28,7 @@ final List<ExamCase> casesA05 = [
         'f-a05-agentur-a',
         'ts-testfaelle',
         prompt:
-            'Bilden Sie die Äquivalenzklassen für den Bestellwert: Geben Sie an, ob die Klasse gültig ist, und nennen Sie das Soll-Ergebnis. (6 P.)',
+            'Bilde die Äquivalenzklassen für den Bestellwert: Gib an, ob die Klasse gültig ist, und nenne das Soll-Ergebnis. (6 P.)',
         punkte: 6,
         zeilen: [
           ['Bestellwert', 'Klasse', 'Soll-Ergebnis'],
@@ -65,7 +65,7 @@ final List<ExamCase> casesA05 = [
         'f-a05-agentur-b',
         'ts-testfaelle',
         prompt:
-            'Ergänzen Sie für die Grenzwertanalyse die beiden Testwerte direkt links und rechts jedes Übergangs. (4 P.)',
+            'Ergänze für die Grenzwertanalyse die beiden Testwerte direkt links und rechts jedes Übergangs. (4 P.)',
         punkte: 4,
         zeilen: [
           ['Übergang', 'Wert links', 'Wert rechts'],
@@ -83,7 +83,7 @@ final List<ExamCase> casesA05 = [
         scenario: 'Ein Kollege hat die Funktion so umgesetzt:',
         code: _versandCode,
         prompt:
-            'Geben Sie an, welchen Wert der abgebildete Code für die vier Aufrufe zurückgibt. (4 P.)',
+            'Gib an, welchen Wert der abgebildete Code für die vier Aufrufe zurückgibt. (4 P.)',
         punkte: 4,
         text:
             'versand(49) liefert {0}\n'
@@ -112,7 +112,7 @@ final List<ExamCase> casesA05 = [
         scenario:
             'Der Test mit dem Bestellwert 200 liefert 2,90 € statt 0,00 €.',
         code: _versandCode,
-        prompt: 'Markieren Sie die Zeile, die den Fehler verursacht. (2 P.)',
+        prompt: 'Markiere die Zeile, die den Fehler verursacht. (2 P.)',
         punkte: 2,
         mono: true,
         zeilen: [
@@ -139,7 +139,7 @@ final List<ExamCase> casesA05 = [
         'f-a05-agentur-e',
         'ts-testfaelle',
         prompt:
-            'Erläutern Sie, warum zusätzlich zu den Repräsentanten der Äquivalenzklassen auch die Grenzwerte getestet werden. Beziehen Sie sich auf den gefundenen Fehler. (4 P.)',
+            'Erläutere, warum zusätzlich zu den Repräsentanten der Äquivalenzklassen auch die Grenzwerte getestet werden. Beziehe dich auf den gefundenen Fehler. (4 P.)',
         punkte: 4,
         kriterien: [
           krit(
@@ -175,7 +175,7 @@ final List<ExamCase> casesA05 = [
         'f-a05-agentur-f',
         'ts-protokoll',
         scenario: 'Die Entwicklung meldet den Fehler als behoben.',
-        prompt: 'Vervollständigen Sie das weitere Vorgehen. (2 P.)',
+        prompt: 'Vervollständige das weitere Vorgehen. (2 P.)',
         punkte: 2,
         text:
             'Zuerst wird der fehlgeschlagene Testfall mit dem Bestellwert 200 wiederholt - das ist der {0}.\n'
@@ -191,7 +191,7 @@ final List<ExamCase> casesA05 = [
         'f-a05-agentur-g',
         'qm-merkmale',
         prompt:
-            'Nennen Sie neben der Funktionalität drei weitere Qualitätsmerkmale, die für den Webshop des Fahrradhändlers wichtig sind. (3 P.)',
+            'Nenne neben der Funktionalität drei weitere Qualitätsmerkmale, die für den Webshop des Fahrradhändlers wichtig sind. (3 P.)',
         punkte: 3,
         kriterien: [
           krit(
@@ -244,7 +244,7 @@ final List<ExamCase> casesA05 = [
       tabelle(
         'f-a05-logistik-a',
         'ts-protokoll',
-        prompt: 'Bewerten Sie die fünf Testfälle des Testprotokolls. (5 P.)',
+        prompt: 'Bewerte die fünf Testfälle des Testprotokolls. (5 P.)',
         punkte: 5,
         zeilen: [
           ['Testfall', 'Menge', 'Soll', 'Ist', 'Ergebnis'],
@@ -292,7 +292,7 @@ final List<ExamCase> casesA05 = [
         'ts-testfaelle',
         scenario:
             'Im Code der App steht die Bedingung: WENN menge >= 0 UND menge < 120 DANN buchen.',
-        prompt: 'Werten Sie das Testprotokoll aus. (4 P.)',
+        prompt: 'Werte das Testprotokoll aus. (4 P.)',
         punkte: 4,
         text:
             'Bestehensquote: {0} %\n'
@@ -311,7 +311,7 @@ final List<ExamCase> casesA05 = [
         'f-a05-logistik-c',
         'a-abnahme',
         scenario: 'Bei der Abnahme werden fünf Feststellungen notiert.',
-        prompt: 'Stufen Sie jede Feststellung ein. (4 P.)',
+        prompt: 'Stufe jede Feststellung ein. (4 P.)',
         punkte: 4,
         buckets: [
           'wesentlicher Mangel',
@@ -352,7 +352,7 @@ final List<ExamCase> casesA05 = [
         'f-a05-logistik-d',
         'a-abnahme',
         prompt:
-            'Begründen Sie, ob Elbtal die Abnahme erklären sollte, und beschreiben Sie das weitere Vorgehen. (4 P.)',
+            'Begründe, ob Elbtal die Abnahme erklären sollte, und beschreibe das weitere Vorgehen. (4 P.)',
         punkte: 4,
         kriterien: [
           krit(
@@ -398,7 +398,7 @@ final List<ExamCase> casesA05 = [
         'f-a05-logistik-e',
         'ts-protokoll',
         prompt:
-            'Nennen Sie drei Angaben, die die Fehlermeldung zu TF-02 an das Softwarehaus enthalten muss. (3 P.)',
+            'Nenne drei Angaben, die die Fehlermeldung zu TF-02 an das Softwarehaus enthalten muss. (3 P.)',
         punkte: 3,
         kriterien: [
           krit(
@@ -438,7 +438,7 @@ final List<ExamCase> casesA05 = [
         scenario:
             'Im Pflichtenheft stehen neben den Funktionen auch Qualitätsanforderungen an die App.',
         prompt:
-            'Ordnen Sie jeder Anforderung das Qualitätsmerkmal zu, das sie konkretisiert. (3 P.)',
+            'Ordne jeder Anforderung das Qualitätsmerkmal zu, das sie konkretisiert. (3 P.)',
         punkte: 3,
         paare: [
           paar('Buchung in höchstens 1 s', 'Effizienz'),
@@ -455,7 +455,7 @@ final List<ExamCase> casesA05 = [
         scenario:
             'Für die Wiederholung des Abnahmetests werden 60 Testfälle festgelegt. Endekriterium: Mindestens 95 % der Testfälle sind bestanden.',
         prompt:
-            'Berechnen Sie, wie viele Testfälle höchstens fehlschlagen dürfen. (2 P.)',
+            'Berechne, wie viele Testfälle höchstens fehlschlagen dürfen. (2 P.)',
         punkte: 2,
         answer: 3,
         unit: 'Testfälle',

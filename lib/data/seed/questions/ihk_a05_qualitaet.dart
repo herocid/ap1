@@ -10,7 +10,7 @@ final List<Question> ihkA05 = [
     'qm-grundlagen',
     scenario:
         'Ein Softwarehaus überarbeitet sein Qualitätshandbuch. Im Glossar sollen sechs Grundbegriffe der Qualitätssicherung erklärt werden.',
-    prompt: 'Ordnen Sie jedem Begriff die passende Erklärung zu. (6 P.)',
+    prompt: 'Ordne jedem Begriff die passende Erklärung zu. (6 P.)',
     punkte: 6,
     paare: [
       paar('konstruktive QS', 'Fehler von vornherein vermeiden'),
@@ -28,7 +28,7 @@ final List<Question> ihkA05 = [
     'qm-grundlagen',
     scenario:
         'In einem Projekt kostet die Korrektur eines Anforderungsfehlers in der Anforderungsphase 40 €. Nach der Zehnerregel verzehnfachen sich die Kosten mit jeder weiteren Phase. Drei solcher Fehler werden erst im Systemtest gefunden (zwei Phasen später), ein weiterer erst im Betrieb (drei Phasen später).',
-    prompt: 'Berechnen Sie die Fehlerkosten nach der Zehnerregel. (5 P.)',
+    prompt: 'Berechne die Fehlerkosten nach der Zehnerregel. (5 P.)',
     punkte: 5,
     text:
         'Kosten je Fehler im Systemtest: {0} €\n'
@@ -54,7 +54,7 @@ final List<Question> ihkA05 = [
     scenario:
         'Eine Agentur will die Qualität ihrer Webanwendungen verbessern und plant konstruktive und analytische Maßnahmen.',
     prompt:
-        'Erläutern Sie den Unterschied zwischen konstruktiver und analytischer Qualitätssicherung und nennen Sie je ein Beispiel. (4 P.)',
+        'Erläutere den Unterschied zwischen konstruktiver und analytischer Qualitätssicherung und nenne je ein Beispiel. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -93,7 +93,7 @@ final List<Question> ihkA05 = [
     scenario:
         'Im Lastenheft für ein Kundenportal stehen vier Qualitätsanforderungen. Vor der Übernahme ins Pflichtenheft wird geprüft, ob sie messbar formuliert sind.',
     prompt:
-        'Ordnen Sie jede Anforderung einem Qualitätsmerkmal zu und beurteilen Sie, ob sie prüfbar ist. (4 P.)',
+        'Ordne jede Anforderung einem Qualitätsmerkmal zu und beurteile, ob sie prüfbar ist. (4 P.)',
     punkte: 4,
     zeilen: [
       ['Anforderung', 'Merkmal', 'Prüfbar?'],
@@ -126,8 +126,7 @@ final List<Question> ihkA05 = [
     'qm-merkmale',
     scenario:
         'Für einen Webshop ist eine Verfügbarkeit von 99,5 % je Monat vereinbart (Monat mit 30 Tagen, Betrieb rund um die Uhr). Im Juni war der Shop insgesamt 4 Stunden nicht erreichbar.',
-    prompt:
-        'Prüfen Sie, ob die vereinbarte Verfügbarkeit eingehalten wurde. (6 P.)',
+    prompt: 'Prüfe, ob die vereinbarte Verfügbarkeit eingehalten wurde. (6 P.)',
     punkte: 6,
     text:
         'Stunden im Monat: {0} h\n'
@@ -152,7 +151,7 @@ final List<Question> ihkA05 = [
     'qm-merkmale',
     scenario:
         'Ein Logistikunternehmen lässt eine App für seine Handscanner entwickeln. Im Pflichtenheft sollen neben den Funktionen auch Qualitätsmerkmale festgelegt werden.',
-    prompt: 'Nennen Sie vier Qualitätsmerkmale von Software. (4 P.)',
+    prompt: 'Nenne vier Qualitätsmerkmale von Software. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -203,7 +202,7 @@ final List<Question> ihkA05 = [
     'qm-merkmale',
     scenario:
         'Für die Schulung neuer Auszubildender wird jedem Qualitätsmerkmal eine Leitfrage zugeordnet.',
-    prompt: 'Verbinden Sie jedes Qualitätsmerkmal mit seiner Leitfrage. (5 P.)',
+    prompt: 'Verbinde jedes Qualitätsmerkmal mit seiner Leitfrage. (5 P.)',
     punkte: 5,
     paare: [
       paar('Effizienz', 'Wie schnell und sparsam arbeitet es?'),
@@ -222,7 +221,7 @@ final List<Question> ihkA05 = [
     'qm-pdca',
     scenario:
         'Die Hotline eines Systemhauses will mehr Anfragen beim ersten Kontakt lösen. Ziel: Erstlösungsquote mindestens 50 %. Vor der Maßnahme (Wissensdatenbank für die Hotline) wurden 120 von 400 Tickets beim ersten Kontakt gelöst, in der Pilotphase 198 von 360.',
-    prompt: 'Werten Sie die Pilotphase für die Phase Check aus. (5 P.)',
+    prompt: 'Werte die Pilotphase für die Phase Check aus. (5 P.)',
     punkte: 5,
     zeilen: [
       ['Kennzahl', 'Wert'],
@@ -249,8 +248,7 @@ final List<Question> ihkA05 = [
     'qm-pdca',
     scenario:
         'Ein IT-Dienstleister beschreibt in seinem Qualitätshandbuch, wie Verbesserungen ablaufen.',
-    prompt:
-        'Setzen Sie die Phasen des PDCA-Zyklus an die richtige Stelle. (4 P.)',
+    prompt: 'Setze die Phasen des PDCA-Zyklus an die richtige Stelle. (4 P.)',
     punkte: 4,
     text:
         'In der Phase {0} werden Ursachen analysiert, ein messbares Ziel gesetzt und die Maßnahme geplant.\n'
@@ -273,7 +271,7 @@ final List<Question> ihkA05 = [
     scenario:
         'Ein Service-Desk hat eine neue Ticketvorlage vier Wochen lang erprobt. In der Phase Check liegt die Auswertung vor.',
     prompt:
-        'Beschreiben Sie, was in der Phase Act geschieht - für den Fall, dass das Ziel erreicht wurde, und für den Fall, dass es verfehlt wurde. (4 P.)',
+        'Beschreibe, was in der Phase Act geschieht - für den Fall, dass das Ziel erreicht wurde, und für den Fall, dass es verfehlt wurde. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -312,7 +310,7 @@ final List<Question> ihkA05 = [
     'ts-stufen',
     scenario:
         'Im Testkonzept einer Lagerverwaltung werden die Teststufen und der Regressionstest beschrieben.',
-    prompt: 'Ordnen Sie jedem Test seinen Prüfgegenstand zu. (5 P.)',
+    prompt: 'Ordne jedem Test seinen Prüfgegenstand zu. (5 P.)',
     punkte: 5,
     paare: [
       paar('Komponententest', 'Einzelne Funktion oder Klasse'),
@@ -330,7 +328,7 @@ final List<Question> ihkA05 = [
     scenario:
         'Ein Softwarehaus liefert eine Auftragsverwaltung an einen Großhändler. Vor der Übergabe findet der Systemtest statt, danach der Abnahmetest.',
     prompt:
-        'Erläutern Sie zwei Unterschiede zwischen Systemtest und Abnahmetest. (4 P.)',
+        'Erläutere zwei Unterschiede zwischen Systemtest und Abnahmetest. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -378,7 +376,7 @@ final List<Question> ihkA05 = [
     scenario:
         'Im Testplan eines Webshops stehen sechs Tests. Die Projektleitung will wissen, welche davon nicht funktionale Eigenschaften prüfen.',
     prompt:
-        'Markieren Sie alle Tests, die eine nicht funktionale Eigenschaft prüfen. (3 P.)',
+        'Markiere alle Tests, die eine nicht funktionale Eigenschaft prüfen. (3 P.)',
     punkte: 3,
     zeilen: [
       ja(
@@ -424,7 +422,7 @@ final List<Question> ihkA05 = [
         '  ENDE WENN\n'
         '  RÜCKGABE preis',
     prompt:
-        'Ermitteln Sie per Schreibtischtest das Soll-Ergebnis jedes Testfalls. (4 P.)',
+        'Ermittle per Schreibtischtest das Soll-Ergebnis jedes Testfalls. (4 P.)',
     punkte: 4,
     zeilen: [
       ['Testfall', 'gewicht', 'express', 'Rückgabe'],
@@ -455,7 +453,7 @@ final List<Question> ihkA05 = [
         '    preis = preis * 2\n'
         '  ENDE WENN\n'
         '  RÜCKGABE preis',
-    prompt: 'Bestimmen Sie die Überdeckung durch die Testfälle. (4 P.)',
+    prompt: 'Bestimme die Überdeckung durch die Testfälle. (4 P.)',
     punkte: 4,
     text:
         'T1 allein durchläuft {0} von 4 Zweigen, die Zweigüberdeckung beträgt {1} %.\n'
@@ -475,7 +473,7 @@ final List<Question> ihkA05 = [
     'ts-verfahren',
     scenario:
         'In der Testschulung eines Softwarehauses werden die Begriffe der Testverfahren wiederholt.',
-    prompt: 'Ordnen Sie jedem Begriff die passende Erklärung zu. (6 P.)',
+    prompt: 'Ordne jedem Begriff die passende Erklärung zu. (6 P.)',
     punkte: 6,
     paare: [
       paar('Black-Box-Test', 'Testfälle aus der Spezifikation'),
@@ -494,7 +492,7 @@ final List<Question> ihkA05 = [
     scenario:
         'Ein Entwicklungsteam diskutiert, ob für ein Abrechnungsmodul Black-Box- oder White-Box-Tests wichtiger sind.',
     prompt:
-        'Beschreiben Sie je einen Vorteil des Black-Box-Tests und des White-Box-Tests. (4 P.)',
+        'Beschreibe je einen Vorteil des Black-Box-Tests und des White-Box-Tests. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -533,8 +531,7 @@ final List<Question> ihkA05 = [
     'ts-testfaelle',
     scenario:
         'Im Urlaubsantrag eines Personalportals wird die Zahl der Urlaubstage als ganze Zahl eingegeben. Erlaubt sind 1 bis 30 Tage.',
-    prompt:
-        'Bilden Sie die Äquivalenzklassen und tragen Sie die Grenzwerte ein. (5 P.)',
+    prompt: 'Bilde die Äquivalenzklassen und trage die Grenzwerte ein. (5 P.)',
     punkte: 5,
     zeilen: [
       ['Äquivalenzklasse', 'Art', 'kleinster Wert', 'größter Wert'],
@@ -566,7 +563,7 @@ final List<Question> ihkA05 = [
     scenario:
         'Ein Webshop gewährt Rabatt auf den Bestellwert (ganze Euro): unter 100 € kein Rabatt, von 100 € bis 499 € 5 %, ab 500 € 10 %. Negative Bestellwerte werden mit einer Fehlermeldung abgelehnt.',
     prompt:
-        'Vervollständigen Sie die Testfalltabelle: Soll-Rabatt in Euro und Art des Testwerts. (8 P.)',
+        'Vervollständige die Testfalltabelle: Soll-Rabatt in Euro und Art des Testwerts. (8 P.)',
     punkte: 8,
     zeilen: [
       ['Nr.', 'Bestellwert (€)', 'Soll-Rabatt (€)', 'Art des Testwerts'],
@@ -601,7 +598,7 @@ final List<Question> ihkA05 = [
     'ts-testfaelle',
     scenario:
         'In einem Bewerbungsformular ist das Alter als ganze Zahl von 18 bis 67 Jahren zulässig. Eine Kollegin hat sechs Testfälle entworfen.',
-    prompt: 'Markieren Sie alle Testfälle, die fehlerhaft sind. (3 P.)',
+    prompt: 'Markiere alle Testfälle, die fehlerhaft sind. (3 P.)',
     punkte: 3,
     zeilen: [
       nein(
@@ -638,7 +635,7 @@ final List<Question> ihkA05 = [
     scenario:
         'Eine Auszubildende soll für die Anmeldung eines Kundenportals Testfälle schreiben, die auch ein anderer Tester ohne Rückfrage ausführen kann.',
     prompt:
-        'Nennen Sie vier Angaben, die ein vollständig beschriebener Testfall enthält. (4 P.)',
+        'Nenne vier Angaben, die ein vollständig beschriebener Testfall enthält. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -678,7 +675,7 @@ final List<Question> ihkA05 = [
     'ts-protokoll',
     scenario:
         'Im Testprotokoll eines Bestellformulars sind Soll- und Ist-Ergebnisse eingetragen. Die Spalte „Ergebnis“ fehlt noch. Bei TF-05 war der Mailserver der Testumgebung nicht erreichbar.',
-    prompt: 'Bewerten Sie jeden Testfall. (5 P.)',
+    prompt: 'Bewerte jeden Testfall. (5 P.)',
     punkte: 5,
     zeilen: [
       ['Testfall', 'Soll', 'Ist', 'Ergebnis'],
@@ -721,7 +718,7 @@ final List<Question> ihkA05 = [
     'ts-protokoll',
     scenario:
         'Im Systemtest eines Kundenportals waren 80 Testfälle geplant. 75 wurden durchgeführt, davon 66 bestanden. Endekriterium: Mindestens 95 % der durchgeführten Testfälle sind bestanden.',
-    prompt: 'Werten Sie den Teststand aus. (4 P.)',
+    prompt: 'Werte den Teststand aus. (4 P.)',
     punkte: 4,
     text:
         'Durchgeführt wurden {0} % der geplanten Testfälle (zwei Nachkommastellen).\n'
@@ -742,7 +739,7 @@ final List<Question> ihkA05 = [
     'ts-protokoll',
     scenario:
         'Ein Team nutzt drei Fehlerklassen: kritisch (Absturz, Datenverlust oder Hauptfunktion ohne Umgehung blockiert), schwer (Funktion gestört, Umgehung möglich), kosmetisch (optischer Mangel).',
-    prompt: 'Markieren Sie alle falsch eingestuften Fehlermeldungen. (3 P.)',
+    prompt: 'Markiere alle falsch eingestuften Fehlermeldungen. (3 P.)',
     punkte: 3,
     zeilen: [
       nein(
@@ -778,7 +775,7 @@ final List<Question> ihkA05 = [
     'ts-protokoll',
     scenario:
         'Für das Qualitätshandbuch werden die Dokumente und Schritte rund um die Testdurchführung beschrieben.',
-    prompt: 'Ordnen Sie jedem Begriff seine Aufgabe zu. (6 P.)',
+    prompt: 'Ordne jedem Begriff seine Aufgabe zu. (6 P.)',
     punkte: 6,
     paare: [
       paar('Testkonzept', 'Plant Ziele, Umfang und Endekriterien'),

@@ -95,7 +95,7 @@ final List<Question> questionsA05 = [
     scenario:
         'Ein Softwarehaus will Reviews einführen und vergleicht vier Review-Arten.',
     prompt:
-        'Ordnen Sie die Review-Arten von der am wenigsten bis zur am stärksten formalisierten.',
+        'Ordne die Review-Arten von der am wenigsten bis zur am stärksten formalisierten.',
     items: [
       'Informelles Review',
       'Walkthrough',
@@ -110,7 +110,7 @@ final List<Question> questionsA05 = [
     'a5-qg-5',
     'qm-grundlagen',
     scenario: 'Im Qualitätsplan eines Webprojekts stehen sechs Maßnahmen.',
-    prompt: 'Markieren Sie alle Maßnahmen der analytischen Qualitätssicherung.',
+    prompt: 'Markiere alle Maßnahmen der analytischen Qualitätssicherung.',
     zeilen: [
       nein(
         'Verbindliche Namenskonventionen für Variablen und Klassen',
@@ -146,7 +146,7 @@ final List<Question> questionsA05 = [
     'qm-grundlagen',
     scenario:
         'Im Qualitätshandbuch stehen drei Grundsätze der Qualitätssicherung.',
-    prompt: 'Vervollständigen Sie die Grundsätze.',
+    prompt: 'Vervollständige die Grundsätze.',
     text:
         'Tests können die {0} von Fehlern zeigen, aber nicht ihre {1}.\n'
         'Je {2} ein Fehler gefunden wird, desto teurer ist seine Behebung.\n'
@@ -485,7 +485,7 @@ final List<Question> questionsA05 = [
     'qm-pdca',
     scenario:
         'Die IT-Abteilung eines Großhändlers führt einen kontinuierlichen Verbesserungsprozess (KVP) ein. Die Geschäftsführung fragt, was ihn von einem einmaligen Reorganisationsprojekt unterscheidet.',
-    prompt: 'Beschreiben Sie zwei Merkmale des KVP. (4 P.)',
+    prompt: 'Beschreibe zwei Merkmale des KVP. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -545,7 +545,7 @@ final List<Question> questionsA05 = [
     'qm-pdca',
     scenario:
         'Ein Service-Desk bekommt immer wieder Tickets zu abgelaufenen Zertifikaten. Das Team will die 5-Why-Methode einsetzen.',
-    prompt: 'Ordnen Sie die Methode in den PDCA-Zyklus ein.',
+    prompt: 'Ordne die Methode in den PDCA-Zyklus ein.',
     text:
         'Die 5-Why-Methode gehört in die Phase {0}.\n'
         'Dort wird die {1} des Problems geklärt, bevor eine {2} geplant wird.',
@@ -662,7 +662,7 @@ final List<Question> questionsA05 = [
     'ts-stufen',
     scenario:
         'Eine dreischichtige Anwendung (Oberfläche, Geschäftslogik, Datenbankschicht) wird schrittweise integriert. Noch fehlende Schichten werden durch Platzhalter ersetzt.',
-    prompt: 'Vervollständigen Sie die Regeln zu Stub und Testtreiber.',
+    prompt: 'Vervollständige die Regeln zu Stub und Testtreiber.',
     text:
         'Bei der Top-down-Integration fehlen zunächst die {0} Schichten; sie werden durch {1} ersetzt.\n'
         'Bei der Bottom-up-Integration fehlen zunächst die {2} Schichten; sie werden durch {3} ersetzt.',
@@ -686,7 +686,7 @@ final List<Question> questionsA05 = [
     'ts-stufen',
     scenario:
         'Ein Softwarehersteller lässt eine neue Version vor der Freigabe von echten Anwendern testen.',
-    prompt: 'Vervollständigen Sie den Text zu Alpha- und Betatest.',
+    prompt: 'Vervollständige den Text zu Alpha- und Betatest.',
     text:
         'Beim {0} testen Anwender beim Hersteller.\n'
         'Beim {1} testen ausgewählte Kunden in ihrer eigenen Umgebung und melden Fehler zurück.\n'
@@ -984,7 +984,7 @@ final List<Question> questionsA05 = [
     'ts-testfaelle',
     scenario:
         'Eine Auszubildende fasst die Regeln für Äquivalenzklassen und Grenzwertanalyse zusammen.',
-    prompt: 'Vervollständigen Sie die Regeln.',
+    prompt: 'Vervollständige die Regeln.',
     text:
         'Aus jeder Äquivalenzklasse genügt {0}.\n'
         'Für jede ungültige Klasse wird {1} gebildet.\n'
@@ -1227,7 +1227,7 @@ final List<Question> questionsA05 = [
     'ts-protokoll',
     scenario:
         'Im Systemtest eines Kundenportals stürzt der PDF-Export ab. Der Tester soll den Fehler so melden, dass die Entwicklung ihn ohne Rückfrage nachstellen kann.',
-    prompt: 'Nennen Sie vier Angaben einer guten Fehlermeldung. (4 P.)',
+    prompt: 'Nenne vier Angaben einer guten Fehlermeldung. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(

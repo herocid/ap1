@@ -14,7 +14,7 @@ final List<Question> questionsA01Planung = [
     't-psp',
     scenario:
         'Im Projekthandbuch eines Systemhauses soll der Projektstrukturplan (PSP) in wenigen Sätzen erklärt werden.',
-    prompt: 'Vervollständigen Sie den Text mit den passenden Begriffen.',
+    prompt: 'Vervollständige den Text mit den passenden Begriffen.',
     text:
         'Der PSP zeigt, {0} im Projekt zu tun ist - aber nicht, {1} es erledigt wird.\n'
         'Seine unterste Ebene bilden die {2}.\n'
@@ -66,7 +66,7 @@ final List<Question> questionsA01Planung = [
     't-psp',
     scenario:
         'Eine Projektleiterin prüft den PSP eines Auszubildenden und stellt fest, dass mehrere Arbeitspakete zu grob beschrieben sind.',
-    prompt: 'Nennen Sie drei Eigenschaften eines guten Arbeitspakets. (3 P.)',
+    prompt: 'Nenne drei Eigenschaften eines guten Arbeitspakets. (3 P.)',
     punkte: 3,
     kriterien: [
       krit(
@@ -248,8 +248,7 @@ final List<Question> questionsA01Planung = [
     't-gantt',
     scenario:
         'Im Terminplan für die Einführung einer Lagersoftware sollen Meilensteine festgelegt werden. Zur Auswahl stehen sechs Formulierungen.',
-    prompt:
-        'Markieren Sie alle Formulierungen, die sich als Meilenstein eignen.',
+    prompt: 'Markiere alle Formulierungen, die sich als Meilenstein eignen.',
     zeilen: [
       ja(
         'Pflichtenheft vom Kunden unterschrieben',
@@ -386,7 +385,7 @@ final List<Question> questionsA01Planung = [
     'a1-tr-2',
     't-ressourcen',
     scenario: 'In der Ressourcenplanung werden vier Begriffe oft verwechselt.',
-    prompt: 'Ordnen Sie jedem Begriff seine Bedeutung zu.',
+    prompt: 'Ordne jedem Begriff seine Bedeutung zu.',
     paare: [
       paar('Aufwand', 'Arbeitsmenge in Personentagen'),
       paar('Dauer', 'Zeitspanne in Arbeitstagen'),
@@ -522,7 +521,7 @@ final List<Question> questionsA01Planung = [
     scenario:
         'Im Kick-off einer Serverumstellung wurden Einträge für das Risikoregister gesammelt. Einige davon sind bereits eingetreten.',
     prompt:
-        'Markieren Sie alle Einträge, die kein Risiko, sondern ein Problem beschreiben.',
+        'Markiere alle Einträge, die kein Risiko, sondern ein Problem beschreiben.',
     zeilen: [
       nein(
         'Der einzige Datenbankexperte könnte während der Migration krank werden.',
@@ -558,7 +557,7 @@ final List<Question> questionsA01Planung = [
     scenario:
         'Für ein Migrationsprojekt wird ein Risikoregister angelegt. Die Vorlage soll alle nötigen Spalten enthalten.',
     prompt:
-        'Nennen Sie vier Angaben, die das Risikoregister zu jedem Risiko enthält. (4 P.)',
+        'Nenne vier Angaben, die das Risikoregister zu jedem Risiko enthält. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -668,7 +667,7 @@ final List<Question> questionsA01Planung = [
     scenario:
         'Vor dem Start eines Rechenzentrumsumzugs sollen möglichst viele Risiken gefunden werden.',
     prompt:
-        'Nennen Sie drei Methoden, mit denen sich Risiken identifizieren lassen. (3 P.)',
+        'Nenne drei Methoden, mit denen sich Risiken identifizieren lassen. (3 P.)',
     punkte: 3,
     kriterien: [
       krit(
@@ -699,7 +698,7 @@ final List<Question> questionsA01Planung = [
     scenario:
         'Im Risikoregister eines Rollout-Projekts gibt es die Spalte „Frühwarnindikator“. Ein neues Teammitglied fragt nach ihrem Zweck.',
     prompt:
-        'Erläutern Sie, wozu ein Frühwarnindikator dient, und nennen Sie ein Beispiel. (3 P.)',
+        'Erläutere, wozu ein Frühwarnindikator dient, und nenne ein Beispiel. (3 P.)',
     punkte: 3,
     kriterien: [
       krit(
@@ -932,7 +931,7 @@ final List<Question> questionsA01Planung = [
     'r-strategien',
     scenario:
         'Mit einer einfachen Testfrage lässt sich jede Maßnahme einer Risikostrategie zuordnen: Kann das Risiko danach noch eintreten?',
-    prompt: 'Wählen Sie zu jeder Beschreibung die passende Strategie.',
+    prompt: 'Wähle zu jeder Beschreibung die passende Strategie.',
     text:
         'Das Risiko kann nicht mehr eintreten, weil die Ursache entfällt: {0}.\n'
         'Es kann noch eintreten, aber seltener oder mit kleinerem Schaden: {1}.\n'
@@ -967,7 +966,7 @@ final List<Question> questionsA01Planung = [
     scenario:
         'Für die Lieferung neuer Server wurde eine Transportversicherung abgeschlossen. Ein Teammitglied schlägt vor, das Risiko „Transportschaden“ aus dem Risikoregister zu streichen.',
     prompt:
-        'Erläutern Sie zwei Gründe, warum das Risiko trotz Versicherung weiter überwacht wird. (4 P.)',
+        'Erläutere zwei Gründe, warum das Risiko trotz Versicherung weiter überwacht wird. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -1165,7 +1164,7 @@ final List<Question> questionsA01Planung = [
     'w-kalkulation',
     scenario:
         'Ein Systemhaus kalkuliert jedes Kundenprojekt zu drei Zeitpunkten.',
-    prompt: 'Ordnen Sie jeder Kalkulation Zeitpunkt und Zweck zu.',
+    prompt: 'Ordne jeder Kalkulation Zeitpunkt und Zweck zu.',
     paare: [
       paar('Vorkalkulation', 'Vor dem Projekt: Angebot und Budget'),
       paar('Mitkalkulation', 'Im Projekt: laufender Soll-Ist-Vergleich'),
@@ -1183,7 +1182,7 @@ final List<Question> questionsA01Planung = [
     scenario:
         'Ein Auszubildender hat für die Auswahl eines Cloud-Speichers eine Nutzwertanalyse erstellt und beschreibt sein Vorgehen.',
     prompt:
-        'Markieren Sie alle Aussagen, die einen Fehler in der Nutzwertanalyse beschreiben.',
+        'Markiere alle Aussagen, die einen Fehler in der Nutzwertanalyse beschreiben.',
     zeilen: [
       ja(
         'Die Gewichte ergeben zusammen 120 %.',
@@ -1321,7 +1320,7 @@ final List<Question> questionsA01Planung = [
     scenario:
         'Ein Onlinehändler überlegt, sein Retourenportal selbst zu entwickeln (Make) oder eine fertige Lösung zu kaufen (Buy).',
     prompt:
-        'Nennen Sie je zwei Argumente für die Eigenentwicklung und für den Kauf. (4 P.)',
+        'Nenne je zwei Argumente für die Eigenentwicklung und für den Kauf. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -1480,7 +1479,7 @@ final List<Question> questionsA01Planung = [
     'w-makeorbuy',
     scenario:
         'Vor einer Make-or-Buy-Entscheidung prüft eine Machbarkeitsanalyse, ob ein Weg überhaupt gangbar ist.',
-    prompt: 'Ordnen Sie jeder Art der Machbarkeit ihre Leitfrage zu.',
+    prompt: 'Ordne jeder Art der Machbarkeit ihre Leitfrage zu.',
     paare: [
       paar('technisch', 'Mit vorhandener Technik umsetzbar?'),
       paar('wirtschaftlich', 'Übersteigt der Nutzen die Kosten?'),
@@ -1613,7 +1612,7 @@ final List<Question> questionsA01Planung = [
     scenario:
         'Bei der Abnahme einer Lagerverwaltung streiten Auftraggeber und Auftragnehmer, ob die Anforderung „Die Software soll schnell reagieren“ erfüllt ist.',
     prompt:
-        'Erläutern Sie zwei Gründe, warum Abnahmekriterien schon im Pflichtenheft prüfbar formuliert sein müssen. (4 P.)',
+        'Erläutere zwei Gründe, warum Abnahmekriterien schon im Pflichtenheft prüfbar formuliert sein müssen. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -1727,7 +1726,7 @@ final List<Question> questionsA01Planung = [
     'a-abnahme',
     scenario:
         'Ein Systemhaus übergibt einem Kunden eine neue Telefonanlage. Die Abnahme soll in einem Protokoll festgehalten werden.',
-    prompt: 'Nennen Sie vier Inhalte eines Abnahmeprotokolls. (4 P.)',
+    prompt: 'Nenne vier Inhalte eines Abnahmeprotokolls. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -1841,7 +1840,7 @@ final List<Question> questionsA01Planung = [
     'a-bericht',
     scenario:
         'Für den Abschlussbericht eines Rollout-Projekts wird der Soll-Ist-Vergleich vorbereitet.',
-    prompt: 'Vervollständigen Sie die Regeln für den Soll-Ist-Vergleich.',
+    prompt: 'Vervollständige die Regeln für den Soll-Ist-Vergleich.',
     text:
         'Abweichung absolut = {0} minus {1}\n'
         'Abweichung relativ = Abweichung absolut geteilt durch {2}, mal 100 %\n'
@@ -1929,7 +1928,7 @@ final List<Question> questionsA01Planung = [
     scenario:
         'Die Nachkalkulation eines Softwareprojekts zeigt: Statt der geplanten 60.000 € sind 69.000 € angefallen. Im Abschlussbericht soll die Abweichung begründet werden.',
     prompt:
-        'Nennen Sie drei mögliche Ursachen für eine Kostenüberschreitung. (3 P.)',
+        'Nenne drei mögliche Ursachen für eine Kostenüberschreitung. (3 P.)',
     punkte: 3,
     kriterien: [
       krit(
@@ -2053,7 +2052,7 @@ final List<Question> questionsA01Planung = [
     'a-lessons',
     scenario:
         'Im Lessons-Learned-Workshop wurden Karten gesammelt. Ins Wiki sollen nur Einträge, nach denen ein fremdes Team handeln kann.',
-    prompt: 'Markieren Sie alle brauchbar formulierten Lessons.',
+    prompt: 'Markiere alle brauchbar formulierten Lessons.',
     zeilen: [
       ja(
         'Die Firewall-Freigabe dauerte 10 Tage und verzögerte den Go-live - Freigaben künftig beim Projektstart beantragen.',

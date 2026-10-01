@@ -28,7 +28,7 @@ final List<ExamCase> casesA01Planung = [
           ['Preis (netto)', '1.080 €', '1.512 €', '864 €'],
         ],
         prompt:
-            'Die Kanzlei entscheidet nach Scantempo, Einzug, Wartungskosten und Preis. Je Kriterium erhält das beste Gerät 3 Punkte, das schlechteste 1 Punkt. Vervollständigen Sie die Entscheidungsmatrix und bilden Sie die Summen. (6 P.)',
+            'Die Kanzlei entscheidet nach Scantempo, Einzug, Wartungskosten und Preis. Je Kriterium erhält das beste Gerät 3 Punkte, das schlechteste 1 Punkt. Vervollständige die Entscheidungsmatrix und bilde die Summen. (6 P.)',
         punkte: 6,
         zeilen: [
           ['Kriterium', 'ScanPro 40', 'DocuJet S', 'Aktiv 3000'],
@@ -47,7 +47,7 @@ final List<ExamCase> casesA01Planung = [
         'f-a01w-systemhaus-b',
         'w-nutzwert',
         prompt:
-            'Nennen Sie das Gerät, das nach der Entscheidungsmatrix auszuwählen ist. (2 P.)',
+            'Nenne das Gerät, das nach der Entscheidungsmatrix auszuwählen ist. (2 P.)',
         punkte: 2,
         text:
             'Auszuwählen ist das Gerät {0}, weil es mit {1} Punkten die höchste Summe erreicht.',
@@ -64,7 +64,7 @@ final List<ExamCase> casesA01Planung = [
         scenario:
             'Die Kanzlei kauft den Aktiv 3000 für 864 € und nutzt ihn 48 Monate. Für Verschleißteile (Einzugsrollen, Reinigung) fallen 0,004 € je gescannter Seite an, dazu kommt die Wartung laut Datentabelle.',
         prompt:
-            'Berechnen Sie die monatlichen Kosten des Scanners bei 6.000 Seiten im Monat. (3 P.)',
+            'Berechne die monatlichen Kosten des Scanners bei 6.000 Seiten im Monat. (3 P.)',
         punkte: 3,
         answer: 50,
         unit: '€',
@@ -92,7 +92,7 @@ final List<ExamCase> casesA01Planung = [
             'images from the internal memory after\n'
             'each job.',
         prompt:
-            'Nennen Sie vier Sicherheitsmaßnahmen, die der Hersteller empfiehlt. (4 P.)',
+            'Nenne vier Sicherheitsmaßnahmen, die der Hersteller empfiehlt. (4 P.)',
         punkte: 4,
         kriterien: [
           krit(
@@ -131,7 +131,7 @@ final List<ExamCase> casesA01Planung = [
         'f-a01w-systemhaus-e',
         'w-nutzwert',
         prompt:
-            'Erläutern Sie einen Nachteil einer Entscheidungsmatrix, die ohne Gewichtung arbeitet. (3 P.)',
+            'Erläutere einen Nachteil einer Entscheidungsmatrix, die ohne Gewichtung arbeitet. (3 P.)',
         punkte: 3,
         kriterien: [
           krit(
@@ -177,7 +177,7 @@ final List<ExamCase> casesA01Planung = [
         scenario:
             'Die Rechnung für den Aktiv 3000 lautet über 864,00 € netto zuzüglich 19 % Umsatzsteuer. Zahlungsbedingung: 2 % Skonto bei Zahlung innerhalb von 10 Tagen.',
         prompt:
-            'Berechnen Sie den Überweisungsbetrag bei Zahlung mit Skonto (kaufmännisch auf zwei Nachkommastellen). (3 P.)',
+            'Berechne den Überweisungsbetrag bei Zahlung mit Skonto (kaufmännisch auf zwei Nachkommastellen). (3 P.)',
         punkte: 3,
         text:
             'Rechnungsbetrag brutto: {0} €\n'
@@ -197,7 +197,7 @@ final List<ExamCase> casesA01Planung = [
         'f-a01w-systemhaus-g',
         'r-strategien',
         prompt:
-            'Beschreiben Sie zwei Risiken bei Beschaffung oder Einführung des Scanners und je eine passende Gegenmaßnahme. (4 P.)',
+            'Beschreibe zwei Risiken bei Beschaffung oder Einführung des Scanners und je eine passende Gegenmaßnahme. (4 P.)',
         punkte: 4,
         kriterien: [
           krit(
@@ -278,7 +278,7 @@ final List<ExamCase> casesA01Planung = [
           ['Lieferung', 'frei Haus', 'ab Werk, Fracht 140,00 €'],
         ],
         prompt:
-            'Ermitteln Sie die Bezugspreise beider Lieferanten für die gesamte Bestellung. Skonto wird genutzt. (8 P.)',
+            'Ermittle die Bezugspreise beider Lieferanten für die gesamte Bestellung. Skonto wird genutzt. (8 P.)',
         punkte: 8,
         zeilen: [
           ['Position', 'Bürowelt24 (€)', 'TechnoPart (€)'],
@@ -315,7 +315,7 @@ final List<ExamCase> casesA01Planung = [
         'f-a01w-handel-b',
         'w-nutzwert',
         prompt:
-            'Nennen Sie drei Gründe, aus denen sich ein Unternehmen für einen teureren Lieferanten entscheiden kann. (3 P.)',
+            'Nenne drei Gründe, aus denen sich ein Unternehmen für einen teureren Lieferanten entscheiden kann. (3 P.)',
         punkte: 3,
         kriterien: [
           krit(
@@ -374,7 +374,7 @@ final List<ExamCase> casesA01Planung = [
         scenario:
             'Alternativ bietet die Hausbank Leasing an: 20 Notebooks für 27,50 € je Gerät und Monat, Laufzeit 36 Monate, mit Kaufoption am Vertragsende.',
         prompt:
-            'Beschreiben Sie das Grundprinzip des Leasings und erklären Sie, wer während der Laufzeit Eigentümer und wer Besitzer der Notebooks ist. (4 P.)',
+            'Beschreibe das Grundprinzip des Leasings und erkläre, wer während der Laufzeit Eigentümer und wer Besitzer der Notebooks ist. (4 P.)',
         punkte: 4,
         kriterien: [
           krit(
@@ -409,7 +409,7 @@ final List<ExamCase> casesA01Planung = [
         scenario:
             'Leasing: 20 Notebooks zu je 27,50 € im Monat, Laufzeit 36 Monate. Kauf: Bezugspreis des günstigeren Lieferanten (Ersatzwert, falls Teilaufgabe a nicht gelöst wurde: 16.900,00 €).',
         prompt:
-            'Ermitteln Sie, um wie viel Euro das Leasing über die Laufzeit teurer ist als der Kauf. (3 P.)',
+            'Ermittle, um wie viel Euro das Leasing über die Laufzeit teurer ist als der Kauf. (3 P.)',
         punkte: 3,
         answer: 2896.96,
         tolerance: 3.05,
@@ -424,7 +424,7 @@ final List<ExamCase> casesA01Planung = [
         'f-a01w-handel-e',
         'vt-arten',
         prompt:
-            'Nennen Sie drei Vorteile, die das Leasing für Grünwerk trotz der höheren Gesamtkosten hat. (3 P.)',
+            'Nenne drei Vorteile, die das Leasing für Grünwerk trotz der höheren Gesamtkosten hat. (3 P.)',
         punkte: 3,
         kriterien: [
           krit(
@@ -476,7 +476,7 @@ final List<ExamCase> casesA01Planung = [
         scenario:
             'Grünwerk entscheidet sich für den Kauf bei Bürowelt24 (Bezugspreis 16.903,04 €) und nutzt die Notebooks 36 Monate. Je Notebook fallen 6 € im Monat für die Sicherheitssoftware an. Der Wartungsvertrag für alle Geräte kostet 1.080 € im Jahr.',
         prompt:
-            'Berechnen Sie die laufenden Kosten je Monat für alle 20 Notebooks (auf zwei Nachkommastellen). (4 P.)',
+            'Berechne die laufenden Kosten je Monat für alle 20 Notebooks (auf zwei Nachkommastellen). (4 P.)',
         punkte: 4,
         text:
             'Anschaffung je Monat: {0} €\n'
@@ -519,7 +519,7 @@ final List<ExamCase> casesA01Planung = [
           ['Betriebsart', 'SaaS', 'on-premise', 'SaaS'],
         ],
         prompt:
-            'Vervollständigen Sie die Nutzwertanalyse (gewichteter Wert = Gewicht × Punkte). (6 P.)',
+            'Vervollständige die Nutzwertanalyse (gewichteter Wert = Gewicht × Punkte). (6 P.)',
         punkte: 6,
         zeilen: [
           ['Kriterium', 'Gewicht', 'HelpWave', 'TicketBase', 'DeskOne'],
@@ -540,7 +540,7 @@ final List<ExamCase> casesA01Planung = [
         scenario:
             'Ein Großkunde verlangt vertraglich, dass seine Daten nur auf Servern der Agentur gespeichert werden (on-premise).',
         prompt:
-            'Nennen Sie den Anbieter, der unter dieser Bedingung auszuwählen ist, und begründen Sie Ihre Wahl. (2 P.)',
+            'Nenne den Anbieter, der unter dieser Bedingung auszuwählen ist, und begründe deine Wahl. (2 P.)',
         punkte: 2,
         kriterien: [
           krit(
@@ -570,7 +570,7 @@ final List<ExamCase> casesA01Planung = [
         scenario:
             'TicketBase kostet 15 € je Nutzer und Monat. Für die Einführung ist eine ganztägige Schulung (8 Stunden) aller 12 Nutzer nötig, der Trainer berechnet pauschal 1.500 €. Während der Schulung können die Mitarbeitenden keine Kundenstunden abrechnen; ihr Stundensatz beträgt 85 €.',
         prompt:
-            'Errechnen Sie die Kosten für TicketBase im ersten Jahr einschließlich des entgangenen Umsatzes. (4 P.)',
+            'Errechne die Kosten für TicketBase im ersten Jahr einschließlich des entgangenen Umsatzes. (4 P.)',
         punkte: 4,
         answer: 11820,
         unit: '€',
@@ -598,7 +598,7 @@ final List<ExamCase> casesA01Planung = [
             'Not included: on-site installation,\n'
             'data migration, individual training',
         prompt:
-            'Nennen Sie vier Leistungen, die in der Lizenzgebühr enthalten sind. (4 P.)',
+            'Nenne vier Leistungen, die in der Lizenzgebühr enthalten sind. (4 P.)',
         punkte: 4,
         kriterien: [
           krit(
@@ -639,7 +639,7 @@ final List<ExamCase> casesA01Planung = [
         scenario:
             'Für die Eigenentwicklung schätzt der Entwickler 400 Stunden. Die Wartung würde 40 Stunden im Jahr kosten. Gerechnet wird mit 75 € je Stunde und einer Nutzungsdauer von 5 Jahren. Die gekaufte Lösung kostet 15 € je Nutzer und Monat.',
         prompt:
-            'Berechnen Sie, ab wie vielen Nutzern die Eigenentwicklung genauso teuer ist wie der Kauf. (5 P.)',
+            'Berechne, ab wie vielen Nutzern die Eigenentwicklung genauso teuer ist wie der Kauf. (5 P.)',
         punkte: 5,
         text:
             'Entwicklungskosten: {0} €\n'
@@ -665,7 +665,7 @@ final List<ExamCase> casesA01Planung = [
         'f-a01w-agentur-f',
         'w-makeorbuy',
         prompt:
-            'Pixelhafen hat 12 Nutzer. Begründen Sie mit zwei Argumenten, ob die Agentur das Ticketsystem selbst entwickeln oder kaufen sollte. (4 P.)',
+            'Pixelhafen hat 12 Nutzer. Begründe mit zwei Argumenten, ob die Agentur das Ticketsystem selbst entwickeln oder kaufen sollte. (4 P.)',
         punkte: 4,
         kriterien: [
           krit(
@@ -735,7 +735,7 @@ final List<ExamCase> casesA01Planung = [
             'Delivery:   4 weeks\n'
             'Battery:    10 h per charge',
         prompt:
-            'Ermitteln Sie den Bezugspreis des Angebots von ScanTrack. Skonto wird genutzt. (5 P.)',
+            'Ermittle den Bezugspreis des Angebots von ScanTrack. Skonto wird genutzt. (5 P.)',
         punkte: 5,
         text:
             'Listenpreis gesamt: {0} €\n'
@@ -771,7 +771,7 @@ final List<ExamCase> casesA01Planung = [
           ['Austausch bei Defekt', '5 Werktage', '1 Werktag', '2 Werktage'],
         ],
         prompt:
-            'Bewerten Sie die Angebote: Je Kriterium erhält das beste Angebot 3 Punkte, das schlechteste 1 Punkt. Tragen Sie die gewichteten Punkte (Punkte × Gewicht) und die Summen ein. (6 P.)',
+            'Bewerte die Angebote: Je Kriterium erhält das beste Angebot 3 Punkte, das schlechteste 1 Punkt. Trage die gewichteten Punkte (Punkte × Gewicht) und die Summen ein. (6 P.)',
         punkte: 6,
         zeilen: [
           ['Kriterium (Gewicht)', 'ScanTrack', 'LagerTec', 'HandyScan'],
@@ -791,7 +791,7 @@ final List<ExamCase> casesA01Planung = [
         'f-a01w-logistik-c',
         'w-nutzwert',
         prompt:
-            'Nennen Sie den Lieferanten, der den Auftrag erhalten soll, und begründen Sie die Entscheidung. (2 P.)',
+            'Nenne den Lieferanten, der den Auftrag erhalten soll, und begründe die Entscheidung. (2 P.)',
         punkte: 2,
         kriterien: [
           krit(
@@ -820,7 +820,7 @@ final List<ExamCase> casesA01Planung = [
         scenario:
             'Elbtal kauft die 40 Scanner bei LagerTec für 24.900,00 € und nutzt sie 48 Monate. Der Wartungsvertrag kostet 1.500 € im Jahr. Für Ersatzakkus werden 45 € im Monat eingeplant.',
         prompt:
-            'Berechnen Sie die monatlichen Kosten der Scanner (auf zwei Nachkommastellen). (4 P.)',
+            'Berechne die monatlichen Kosten der Scanner (auf zwei Nachkommastellen). (4 P.)',
         punkte: 4,
         answer: 688.75,
         tolerance: 0.01,
@@ -837,7 +837,7 @@ final List<ExamCase> casesA01Planung = [
         scenario:
             'Gegenüber den Papierlisten sparen die Scanner Arbeitszeit im Wert von 1.900 € im Monat. Dem stehen die laufenden Kosten für Wartung und Ersatzakkus von zusammen 170 € im Monat gegenüber. Die Anschaffung kostet 24.900 €.',
         prompt:
-            'Berechnen Sie, nach wie vielen vollen Monaten sich die Anschaffung amortisiert hat. (4 P.)',
+            'Berechne, nach wie vielen vollen Monaten sich die Anschaffung amortisiert hat. (4 P.)',
         punkte: 4,
         answer: 15,
         unit: 'Monate',
@@ -850,7 +850,7 @@ final List<ExamCase> casesA01Planung = [
         'f-a01w-logistik-f',
         'r-strategien',
         prompt:
-            'Beschreiben Sie zwei Risiken bei der Einführung der Handscanner und je eine geeignete Gegenmaßnahme. (4 P.)',
+            'Beschreibe zwei Risiken bei der Einführung der Handscanner und je eine geeignete Gegenmaßnahme. (4 P.)',
         punkte: 4,
         kriterien: [
           krit(

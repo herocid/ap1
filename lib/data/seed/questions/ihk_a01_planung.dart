@@ -11,7 +11,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Die Nordlicht IT GmbH richtet für eine Grundschule ein WLAN in 14 Klassenräumen ein. Bevor Termine festgelegt werden, erstellt die Projektleiterin einen Projektstrukturplan (PSP).',
     prompt:
-        'Erläutern Sie zwei Gründe, warum vor der Terminplanung ein Projektstrukturplan erstellt wird. (4 P.)',
+        'Erläutere zwei Gründe, warum vor der Terminplanung ein Projektstrukturplan erstellt wird. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -64,7 +64,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Für den Umzug eines Serverraums wurde ein Projektstrukturplan mit numerischem Code angelegt. Die Elemente stehen in der Reihenfolge, in der sie im PSP unter ihrer Teilaufgabe hängen.',
     prompt:
-        'Ergänzen Sie die fehlenden PSP-Codes und geben Sie an, ob es sich um eine Teilaufgabe oder ein Arbeitspaket handelt. (6 P.)',
+        'Ergänze die fehlenden PSP-Codes und gib an, ob es sich um eine Teilaufgabe oder ein Arbeitspaket handelt. (6 P.)',
     punkte: 6,
     zeilen: [
       ['PSP-Code', 'Element', 'Art'],
@@ -106,7 +106,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Ein Auszubildender hat für den Rollout von 40 Notebooks einen Projektstrukturplan entworfen.',
     prompt:
-        'Markieren Sie alle Einträge, die nicht in einen Projektstrukturplan gehören. (3 P.)',
+        'Markiere alle Einträge, die nicht in einen Projektstrukturplan gehören. (3 P.)',
     punkte: 3,
     zeilen: [
       nein('1 Beschaffung', 'Eine Teilaufgabe - gehört in den PSP.'),
@@ -148,7 +148,7 @@ final List<Question> ihkA01Planung = [
       GanttVorgang('E Schulung', 11, 1, kritisch: true),
       GanttVorgang('Anlage live', 12, 0, kritisch: true),
     ], einheit: 'Tag'),
-    prompt: 'Lesen Sie die gesuchten Werte aus dem Diagramm ab. (5 P.)',
+    prompt: 'Lies die gesuchten Werte aus dem Diagramm ab. (5 P.)',
     punkte: 5,
     zeilen: [
       ['Gesucht', 'Wert'],
@@ -178,7 +178,7 @@ final List<Question> ihkA01Planung = [
       ['E Abnahme', '2 Tage', 'D'],
     ],
     prompt:
-        'Ermitteln Sie die Werte, die Sie für das Zeichnen der Balken brauchen. (6 P.)',
+        'Ermittle die Werte, die du für das Zeichnen der Balken brauchst. (6 P.)',
     punkte: 6,
     text:
         'B endet zum Zeitpunkt {0}, C endet zum Zeitpunkt {1}.\n'
@@ -202,7 +202,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Im Statusmeeting eines Migrationsprojekts wird der Terminplan als Gantt-Diagramm gezeigt.',
     prompt:
-        'Nennen Sie drei Informationen, die sich aus einem Gantt-Diagramm ablesen lassen. (3 P.)',
+        'Nenne drei Informationen, die sich aus einem Gantt-Diagramm ablesen lassen. (3 P.)',
     punkte: 3,
     kriterien: [
       krit(
@@ -254,7 +254,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Für ein Projekt im März (22 Arbeitstage) stehen drei Personen zur Verfügung. Abwesenheiten werden vor der Verfügbarkeit abgezogen.',
     prompt:
-        'Berechnen Sie die Kapazität jeder Person und die Kapazität des Teams in Personentagen (PT). (4 P.)',
+        'Berechne die Kapazität jeder Person und die Kapazität des Teams in Personentagen (PT). (4 P.)',
     punkte: 4,
     zeilen: [
       ['Person', 'Verfügbarkeit', 'Abwesend', 'Kapazität (PT)'],
@@ -275,7 +275,7 @@ final List<Question> ihkA01Planung = [
     't-ressourcen',
     scenario:
         'Eine Auszubildende soll im Projekthandbuch festhalten, wie aus dem Aufwand eines Arbeitspakets seine Dauer wird.',
-    prompt: 'Vervollständigen Sie den Text mit den passenden Begriffen. (4 P.)',
+    prompt: 'Vervollständige den Text mit den passenden Begriffen. (4 P.)',
     punkte: 4,
     text:
         'Dauer = {0} / (Anzahl der Personen × {1}).\n'
@@ -298,7 +298,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Das Ressourcenhistogramm zeigt für den einzigen Netzwerkadministrator in KW 20 eine Auslastung von 140 %. In KW 22 ist er nur zu 50 % ausgelastet.',
     prompt:
-        'Beschreiben Sie zwei Maßnahmen, mit denen die Überlast ausgeglichen werden kann. (4 P.)',
+        'Beschreibe zwei Maßnahmen, mit denen die Überlast ausgeglichen werden kann. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -338,7 +338,7 @@ final List<Question> ihkA01Planung = [
     't-ressourcen',
     scenario:
         'Für die Umstellung eines Mailservers sind 36 Personentage (PT) Aufwand geschätzt. Drei Administratoren arbeiten zu je 80 % im Projekt. Ein Personentag hat 8 Stunden, der interne Stundensatz beträgt 45 €.',
-    prompt: 'Berechnen Sie Dauer und Personalkosten des Arbeitspakets. (4 P.)',
+    prompt: 'Berechne Dauer und Personalkosten des Arbeitspakets. (4 P.)',
     punkte: 4,
     text:
         'Kapazität des Teams je Arbeitstag: {0} PT\n'
@@ -366,7 +366,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Die Brenner Maschinenbau GmbH zieht ihre Postfächer auf einen neuen Mailserver um. Im Risikoregister stehen drei Einträge.',
     prompt:
-        'Ordnen Sie jedem Risiko die Risikoart und einen passenden Frühwarnindikator zu. (6 P.)',
+        'Ordne jedem Risiko die Risikoart und einen passenden Frühwarnindikator zu. (6 P.)',
     punkte: 6,
     zeilen: [
       ['Risiko', 'Art', 'Frühwarnindikator'],
@@ -404,7 +404,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Eine Bäckereikette mit 12 Filialen führt eine digitale Zeiterfassung mit Terminals in jeder Filiale ein. Im Kick-off sollen Risiken gesammelt werden.',
     prompt:
-        'Nennen Sie vier Risiken unterschiedlicher Art, die in diesem Projekt auftreten können. (4 P.)',
+        'Nenne vier Risiken unterschiedlicher Art, die in diesem Projekt auftreten können. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -456,7 +456,7 @@ final List<Question> ihkA01Planung = [
     'r-prozess',
     scenario:
         'Im Risikoregister soll ein Risiko nach dem Muster „Ursache - Ereignis - Auswirkung“ beschrieben werden.',
-    prompt: 'Setzen Sie die drei Bausteine an die richtige Stelle. (3 P.)',
+    prompt: 'Setze die drei Bausteine an die richtige Stelle. (3 P.)',
     punkte: 3,
     text: 'Weil {0}, könnte {1}, sodass {2}.',
     luecken: [
@@ -481,7 +481,7 @@ final List<Question> ihkA01Planung = [
     'r-prozess',
     scenario:
         'Das Risikomanagement eines Projekts läuft in vier Schritten ab, die sich als Kreislauf wiederholen.',
-    prompt: 'Ordnen Sie jedem Schritt die passende Tätigkeit zu. (4 P.)',
+    prompt: 'Ordne jedem Schritt die passende Tätigkeit zu. (4 P.)',
     punkte: 4,
     paare: [
       paar('Identifizieren', 'Brainstorming und Checklisten nutzen'),
@@ -500,7 +500,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Für die Einführung eines Warenwirtschaftssystems wurden drei Risiken geschätzt. Priorisiert wird nach dem Risikowert.',
     prompt:
-        'Berechnen Sie die Risikowerte und vergeben Sie die Rangplätze (1 = zuerst behandeln). (6 P.)',
+        'Berechne die Risikowerte und vergib die Rangplätze (1 = zuerst behandeln). (6 P.)',
     punkte: 6,
     zeilen: [
       ['Risiko', 'Wahrsch.', 'Schaden', 'Risikowert (€)', 'Rang'],
@@ -526,7 +526,7 @@ final List<Question> ihkA01Planung = [
     'r-bewertung',
     scenario:
         'In einer 3×3-Risikomatrix werden Wahrscheinlichkeit (W) und Auswirkung (A) mit 1 bis 3 bewertet. Kennzahl = W × A. Kennzahl 1 bis 2: grün, 3 bis 4: gelb, 6 bis 9: rot.',
-    prompt: 'Markieren Sie alle Risiken, die falsch eingeordnet wurden. (3 P.)',
+    prompt: 'Markiere alle Risiken, die falsch eingeordnet wurden. (3 P.)',
     punkte: 3,
     zeilen: [
       nein('R1: W 3, A 3 - rot', '3 × 3 = 9, also rot. Richtig eingeordnet.'),
@@ -544,8 +544,7 @@ final List<Question> ihkA01Planung = [
     'r-bewertung',
     scenario:
         'Die Klimaanlage im Serverraum fällt mit einer Wahrscheinlichkeit von 15 % aus. Der Schaden läge bei 80.000 €. Ein zweites Klimagerät für 5.000 € würde die Wahrscheinlichkeit auf 5 % senken.',
-    prompt:
-        'Prüfen Sie rechnerisch, ob sich das zweite Klimagerät lohnt. (5 P.)',
+    prompt: 'Prüfe rechnerisch, ob sich das zweite Klimagerät lohnt. (5 P.)',
     punkte: 5,
     text:
         'Risikowert ohne Maßnahme: {0} €\n'
@@ -569,7 +568,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Ein Brand im Rechenzentrum eines Onlinehändlers ist sehr unwahrscheinlich (0,5 %), würde aber einen Schaden von 2 Mio. € verursachen. Der Risikowert beträgt nur 10.000 €.',
     prompt:
-        'Erläutern Sie, warum dieses Risiko trotz des kleinen Risikowerts behandelt werden muss, und nennen Sie eine geeignete Maßnahme. (3 P.)',
+        'Erläutere, warum dieses Risiko trotz des kleinen Risikowerts behandelt werden muss, und nenne eine geeignete Maßnahme. (3 P.)',
     punkte: 3,
     kriterien: [
       krit(
@@ -617,7 +616,7 @@ final List<Question> ihkA01Planung = [
     'r-strategien',
     scenario:
         'Für den Umzug eines Rechenzentrums wurden zu vier Risiken Maßnahmen beschlossen.',
-    prompt: 'Ordnen Sie jeder Maßnahme die Risikostrategie zu. (4 P.)',
+    prompt: 'Ordne jeder Maßnahme die Risikostrategie zu. (4 P.)',
     punkte: 4,
     paare: [
       paar('Auf die unerprobte Technik verzichten', 'Vermeiden'),
@@ -634,7 +633,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Ein Systemhaus stellt bei einem Kunden die Warenwirtschaft um. Für vier Risiken wurden Maßnahmen geplant.',
     prompt:
-        'Geben Sie zu jeder Maßnahme die Strategie an und, wo gefragt, worauf sie wirkt. (7 P.)',
+        'Gib zu jeder Maßnahme die Strategie an und, wo gefragt, worauf sie wirkt. (7 P.)',
     punkte: 7,
     zeilen: [
       ['Maßnahme', 'Strategie', 'wirkt auf'],
@@ -679,7 +678,7 @@ final List<Question> ihkA01Planung = [
         '3. Rent a standby server in the data centre so\n'
         '   that work can continue during the move.',
     prompt:
-        'Nennen Sie die drei empfohlenen Maßnahmen auf Deutsch und geben Sie jeweils die Risikostrategie an. (6 P.)',
+        'Nenne die drei empfohlenen Maßnahmen auf Deutsch und gib jeweils die Risikostrategie an. (6 P.)',
     punkte: 6,
     kriterien: [
       krit(
@@ -727,7 +726,7 @@ final List<Question> ihkA01Planung = [
     'w-kalkulation',
     scenario:
         'Ein Systemhaus kalkuliert die Einrichtung eines Besprechungsraums: 60 Stunden zu je 50 €, 40 % Gemeinkostenzuschlag auf die Personalkosten, 800 € Sachkosten, 10 % Gewinnzuschlag auf die Selbstkosten, 19 % Umsatzsteuer.',
-    prompt: 'Vervollständigen Sie das Kalkulationsschema. (7 P.)',
+    prompt: 'Vervollständige das Kalkulationsschema. (7 P.)',
     punkte: 7,
     zeilen: [
       ['Position', 'Betrag (€)'],
@@ -753,7 +752,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Eine Arztpraxis kauft einen Laserdrucker für 2.880 € und nutzt ihn 4 Jahre. Sie druckt 2.500 Seiten im Monat, eine Seite kostet 0,018 € an Toner und Papier. Der Wartungsvertrag kostet 15 € im Monat.',
     prompt:
-        'Berechnen Sie die monatlichen Kosten des Druckers und die Kosten je Seite. (5 P.)',
+        'Berechne die monatlichen Kosten des Druckers und die Kosten je Seite. (5 P.)',
     punkte: 5,
     text:
         'Nutzungsdauer: {0} Monate\n'
@@ -787,7 +786,7 @@ final List<Question> ihkA01Planung = [
       ['Trainer je Schulungstag', '800 €', '800 €'],
     ],
     prompt:
-        'Berechnen Sie die Kosten im ersten Jahr einschließlich des entgangenen Umsatzes. (6 P.)',
+        'Berechne die Kosten im ersten Jahr einschließlich des entgangenen Umsatzes. (6 P.)',
     punkte: 6,
     zeilen: [
       ['Kostenart', 'A (€)', 'B (€)'],
@@ -808,7 +807,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Ein Auszubildender hat den Bezugspreis für ein Angebot berechnet: Listenpreis 4.000 €, 10 % Rabatt, 2 % Skonto, 60 € Fracht.',
     prompt:
-        'Markieren Sie die Zeilen, in denen ein Fehler entsteht. Folgefehler in späteren Zeilen werden nicht markiert. (4 P.)',
+        'Markiere die Zeilen, in denen ein Fehler entsteht. Folgefehler in späteren Zeilen werden nicht markiert. (4 P.)',
     punkte: 4,
     zeilen: [
       nein('Rabatt: 10 % von 4.000 € = 400 €', 'Richtig gerechnet.'),
@@ -842,7 +841,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Eine Eingangsrechnung über Netzwerkkomponenten weist 2.400,00 € netto aus, dazu 19 % Umsatzsteuer. Zahlungsbedingung: „Zahlbar innerhalb von 10 Tagen mit 2 % Skonto, 30 Tage netto.“ Die Rechnung wird am 6. Tag bezahlt.',
     prompt:
-        'Berechnen Sie den Überweisungsbetrag (Beträge kaufmännisch auf zwei Nachkommastellen). (4 P.)',
+        'Berechne den Überweisungsbetrag (Beträge kaufmännisch auf zwei Nachkommastellen). (4 P.)',
     punkte: 4,
     text:
         'Umsatzsteuer: {0} €\n'
@@ -876,7 +875,7 @@ final List<Question> ihkA01Planung = [
         'Payment:     2 % cash discount within\n'
         '             10 days, 30 days net\n'
         'Delivery:    3 weeks after order',
-    prompt: 'Ermitteln Sie den Bezugspreis der Lieferung (netto). (6 P.)',
+    prompt: 'Ermittle den Bezugspreis der Lieferung (netto). (6 P.)',
     punkte: 6,
     text:
         'Listenpreis gesamt: {0} €\n'
@@ -910,7 +909,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Eine Unternehmensberatung führt eine neue Projektsoftware ein. Die Geschäftsführung fragt, warum im Kostenvergleich neben den Lizenzgebühren ein „entgangener Umsatz“ steht.',
     prompt:
-        'Erläutern Sie, warum der entgangene Umsatz ein Kostenbestandteil ist, und nennen Sie zwei weitere Kosten der Einführung außer den Lizenzgebühren. (4 P.)',
+        'Erläutere, warum der entgangene Umsatz ein Kostenbestandteil ist, und nenne zwei weitere Kosten der Einführung außer den Lizenzgebühren. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -957,7 +956,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Ein Handwerksbetrieb wählt eine Zeiterfassungs-App aus. Bewertet wird auf einer Skala von 0 bis 10 Punkten. Gewichte: Funktionsumfang 50 %, Preis 30 %, Support 20 %.',
     prompt:
-        'Berechnen Sie die gewichteten Punkte und die Nutzwerte beider Anbieter. (8 P.)',
+        'Berechne die gewichteten Punkte und die Nutzwerte beider Anbieter. (8 P.)',
     punkte: 8,
     zeilen: [
       ['Kriterium', 'A Punkte', 'A gewichtet', 'B Punkte', 'B gewichtet'],
@@ -1008,7 +1007,7 @@ final List<Question> ihkA01Planung = [
       ['Garantie', '24 Monate', '36 Monate', '12 Monate'],
     ],
     prompt:
-        'Vervollständigen Sie die Entscheidungsmatrix und bilden Sie die Rangsummen. (7 P.)',
+        'Vervollständige die Entscheidungsmatrix und bilde die Rangsummen. (7 P.)',
     punkte: 7,
     zeilen: [
       ['Kriterium', 'X', 'Y', 'Z'],
@@ -1029,7 +1028,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Die Geschäftsführung eines Autohauses zweifelt am Ergebnis einer Nutzwertanalyse: Der Sieger liegt nur 0,2 Punkte vor dem Zweiten.',
     prompt:
-        'Beschreiben Sie zwei Schwächen der Nutzwertanalyse, die bei der Entscheidung zu beachten sind. (4 P.)',
+        'Beschreibe zwei Schwächen der Nutzwertanalyse, die bei der Entscheidung zu beachten sind. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -1075,7 +1074,7 @@ final List<Question> ihkA01Planung = [
     'w-nutzwert',
     scenario:
         'Für die Auswahl eines Beamers soll eine Entscheidungsmatrix mit Rangplätzen und ohne Gewichtung erstellt werden. Vorgabe: Rang 1 ist der beste Wert.',
-    prompt: 'Vervollständigen Sie die Regeln für dieses Verfahren. (4 P.)',
+    prompt: 'Vervollständige die Regeln für dieses Verfahren. (4 P.)',
     punkte: 4,
     text:
         'Je Kriterium erhält die beste Alternative den Rang {0}.\n'
@@ -1109,8 +1108,7 @@ final List<Question> ihkA01Planung = [
       ['einmalig', 'Server 9.000 €, Lizenzen 2.400 €', 'Einrichtung 1.200 €'],
       ['laufend', 'Wartung 1.500 €/Jahr, Strom 600 €/Jahr', '520 €/Monat'],
     ],
-    prompt:
-        'Berechnen Sie die Gesamtkosten beider Varianten über 3 Jahre. (6 P.)',
+    prompt: 'Berechne die Gesamtkosten beider Varianten über 3 Jahre. (6 P.)',
     punkte: 6,
     zeilen: [
       ['Position', 'Kauf (€)', 'Cloud (€)'],
@@ -1129,8 +1127,7 @@ final List<Question> ihkA01Planung = [
     'w-makeorbuy',
     scenario:
         'Eine Versicherungsagentur lässt Schadensmeldungen digital erfassen. Eigenentwicklung (Make): 6.000 € einmalig, danach 5 € je Vorgang. Dienstleister (Buy): 20 € je Vorgang, keine Fixkosten. Erwartet werden 250 Vorgänge.',
-    prompt:
-        'Ermitteln Sie die kritische Menge und die günstigere Variante. (5 P.)',
+    prompt: 'Ermittle die kritische Menge und die günstigere Variante. (5 P.)',
     punkte: 5,
     text:
         'Ersparnis je Vorgang bei Make: {0} €\n'
@@ -1166,7 +1163,7 @@ final List<Question> ihkA01Planung = [
         'Not included: data migration,\n'
         '              on-site training\n'
         'Hosting: data centre in Frankfurt (EU)',
-    prompt: 'Markieren Sie alle Aussagen, die laut Angebot zutreffen. (3 P.)',
+    prompt: 'Markiere alle Aussagen, die laut Angebot zutreffen. (3 P.)',
     punkte: 3,
     zeilen: [
       ja(
@@ -1210,7 +1207,7 @@ final List<Question> ihkA01Planung = [
         'Setup fee: EUR 400 (one-time)\n'
         'Not included: data migration,\n'
         '              on-site training',
-    prompt: 'Berechnen Sie die Gesamtkosten der Buy-Variante im ersten Jahr.',
+    prompt: 'Berechne die Gesamtkosten der Buy-Variante im ersten Jahr.',
     punkte: 3,
     answer: 4084,
     unit: '€',
@@ -1228,7 +1225,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Ein Systemhaus bietet eine Tagesschulung zur IT-Sicherheit an. Jeder Teilnehmer zahlt 450 €. Je Teilnehmer fallen 150 € für Unterlagen und Verpflegung an. Raum und Trainer kosten 4.800 €.',
     prompt:
-        'Berechnen Sie die Gewinnschwelle und den Gewinn bei 22 Teilnehmern. (4 P.)',
+        'Berechne die Gewinnschwelle und den Gewinn bei 22 Teilnehmern. (4 P.)',
     punkte: 4,
     text:
         'Deckungsbeitrag je Teilnehmer: {0} €\n'
@@ -1259,7 +1256,7 @@ final List<Question> ihkA01Planung = [
       ['3', '9.000 €'],
     ],
     prompt:
-        'Ermitteln Sie die kumulierten Rückflüsse und das Jahr, an dessen Ende die Investition amortisiert ist. (5 P.)',
+        'Ermittle die kumulierten Rückflüsse und das Jahr, an dessen Ende die Investition amortisiert ist. (5 P.)',
     punkte: 5,
     zeilen: [
       ['Ende von Jahr', 'kumulierter Rückfluss (€)', 'noch offen (€)'],
@@ -1288,7 +1285,7 @@ final List<Question> ihkA01Planung = [
       punkte: [DiagrammPunkt(400, 24000, 'Break-even')],
     ),
     prompt:
-        'Erläutern Sie den Begriff Break-even-Point und beschreiben Sie, was links und rechts davon gilt. (4 P.)',
+        'Erläutere den Begriff Break-even-Point und beschreibe, was links und rechts davon gilt. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -1327,7 +1324,7 @@ final List<Question> ihkA01Planung = [
     'w-breakeven',
     scenario:
         'Ein Logistiker vergleicht zwei Investitionen mit einer Nutzungsdauer von jeweils 6 Jahren. A kostet 20.000 € und bringt 5.000 € Rückfluss je Jahr. B kostet 12.000 € und bringt 4.000 € Rückfluss je Jahr.',
-    prompt: 'Berechnen Sie die Kennzahlen beider Investitionen. (6 P.)',
+    prompt: 'Berechne die Kennzahlen beider Investitionen. (6 P.)',
     punkte: 6,
     zeilen: [
       ['Kennzahl', 'A', 'B'],
@@ -1349,7 +1346,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Ein Möbelhändler nimmt seinen neuen Webshop ab. Der Auftragnehmer hat nach Pflichtenheft geliefert, bei der Prüfung fallen fünf Punkte auf.',
     prompt:
-        'Stufen Sie jede Feststellung ein und geben Sie die Folge für die Abnahme an. (5 P.)',
+        'Stufe jede Feststellung ein und gib die Folge für die Abnahme an. (5 P.)',
     punkte: 5,
     zeilen: [
       ['Feststellung', 'Einstufung', 'Folge'],
@@ -1397,7 +1394,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Ein Softwarehaus hat für einen Großhändler eine Lagerverwaltung als Werkvertrag entwickelt. Der Kunde unterschreibt das Abnahmeprotokoll.',
     prompt:
-        'Nennen Sie drei rechtliche Folgen, die mit der Abnahme eintreten. (3 P.)',
+        'Nenne drei rechtliche Folgen, die mit der Abnahme eintreten. (3 P.)',
     punkte: 3,
     kriterien: [
       krit(
@@ -1432,7 +1429,7 @@ final List<Question> ihkA01Planung = [
     'a-abnahme',
     scenario:
         'Ein Krankenhaus plant die Einführung eines neuen Dienstplansystems und vergleicht vier Einführungsstrategien.',
-    prompt: 'Setzen Sie die passenden Begriffe ein. (4 P.)',
+    prompt: 'Setze die passenden Begriffe ein. (4 P.)',
     punkte: 4,
     text:
         'Bei der {0} wird das Altsystem zu einem festen Termin abgeschaltet - schnell, aber riskant.\n'
@@ -1454,7 +1451,7 @@ final List<Question> ihkA01Planung = [
     'a-abnahme',
     scenario:
         'Ein IT-Dienstleister hat bei einem Steuerbüro ein neues Dokumentenmanagementsystem eingerichtet und will das Projekt abschließen.',
-    prompt: 'Bringen Sie die Schritte der Abnahme in die richtige Reihenfolge.',
+    prompt: 'Bringe die Schritte der Abnahme in die richtige Reihenfolge.',
     punkte: 3,
     items: [
       'Fertigstellung melden und Abnahmetermin vereinbaren',
@@ -1473,7 +1470,7 @@ final List<Question> ihkA01Planung = [
     'a-bericht',
     scenario:
         'Für den Abschlussbericht eines Migrationsprojekts liegen die Plan- und Ist-Werte vor. Unterschreitungen werden mit Minuszeichen angegeben.',
-    prompt: 'Berechnen Sie die absolute und die relative Abweichung. (6 P.)',
+    prompt: 'Berechne die absolute und die relative Abweichung. (6 P.)',
     punkte: 6,
     zeilen: [
       ['Größe', 'Soll', 'Ist', 'Abw. absolut', 'Abw. in %'],
@@ -1493,7 +1490,7 @@ final List<Question> ihkA01Planung = [
     'a-bericht',
     scenario:
         'Nach der Einführung eines Ticketsystems soll die Projektleiterin den Abschlussbericht für den Lenkungsausschuss schreiben.',
-    prompt: 'Nennen Sie vier Inhalte eines Projektabschlussberichts. (4 P.)',
+    prompt: 'Nenne vier Inhalte eines Projektabschlussberichts. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -1531,7 +1528,7 @@ final List<Question> ihkA01Planung = [
     'a-bericht',
     scenario:
         'Im Entwurf eines Abschlussberichts stehen sechs Abweichungen. Die relative Abweichung soll auf das Soll bezogen sein, Unterschreitungen tragen ein Minuszeichen.',
-    prompt: 'Markieren Sie alle Zeilen mit falscher Prozentangabe. (3 P.)',
+    prompt: 'Markiere alle Zeilen mit falscher Prozentangabe. (3 P.)',
     punkte: 3,
     zeilen: [
       nein(
@@ -1567,7 +1564,7 @@ final List<Question> ihkA01Planung = [
     'a-bericht',
     scenario:
         'Ein Systemhaus hat ein Projekt zum Festpreis von 22.000 € angeboten. Kalkuliert waren 300 Stunden zu je 60 € Selbstkosten. Tatsächlich wurden 345 Stunden gebucht.',
-    prompt: 'Erstellen Sie die Nachkalkulation. (5 P.)',
+    prompt: 'Erstelle die Nachkalkulation. (5 P.)',
     punkte: 5,
     text:
         'Geplante Kosten: {0} €\n'
@@ -1596,7 +1593,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Nach einem verspäteten Rollout lädt die Projektleiterin das Team zu einem Lessons-Learned-Workshop ein.',
     prompt:
-        'Beschreiben Sie zwei Regeln, die den Workshop erfolgreich machen. (4 P.)',
+        'Beschreibe zwei Regeln, die den Workshop erfolgreich machen. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -1641,7 +1638,7 @@ final List<Question> ihkA01Planung = [
     'a-lessons',
     scenario:
         'Ein Entwicklungsteam wertet sein Projekt aus und nutzt dabei gängige Begriffe der Erfahrungssicherung.',
-    prompt: 'Ordnen Sie jedem Begriff seine Bedeutung zu. (5 P.)',
+    prompt: 'Ordne jedem Begriff seine Bedeutung zu. (5 P.)',
     punkte: 5,
     paare: [
       paar('Start', 'Künftig neu einführen'),
@@ -1659,7 +1656,7 @@ final List<Question> ihkA01Planung = [
     scenario:
         'Im Workshop soll eine Erfahrung so festgehalten werden, dass ein fremdes Projektteam danach handeln kann.',
     prompt:
-        'Bauen Sie die Lesson aus Situation, Ursache und Empfehlung zusammen. (3 P.)',
+        'Baue die Lesson aus Situation, Ursache und Empfehlung zusammen. (3 P.)',
     punkte: 3,
     text: 'Situation: {0}\nUrsache: {1}\nEmpfehlung: {2}',
     luecken: [
