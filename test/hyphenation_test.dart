@@ -90,4 +90,53 @@ void main() {
       expect(ro.plainText, text);
     }
   });
+
+  testWidgets('kein Umbruch mitten im Wort ohne Trennstrich', (tester) async {
+    // Früher ließ ein Sicherheitsnetz alle Striche weg, wenn das Setzen
+    // nicht zur Ruhe kam - dann stand "unterbre|chungsfreien" ohne Strich.
+    const texts = [
+      'Nenne zwei Vorteile einer unterbrechungsfreien Stromversorgung (USV) '
+          'für einen Serverraum.',
+      'Vervollständige die Nutzwertanalyse für die Wirtschaftlichkeits'
+          'betrachtung der Netzwerkinfrastruktur.',
+      'Erläutere die Eintrittswahrscheinlichkeit und die Schadenshöhe bei der '
+          'Risikobewertung des Datensicherungskonzepts.',
+    ];
+    for (final text in texts) {
+      for (final size in [14.0, 18.85, 22.0, 28.6]) {
+        for (var width = 150.0; width <= 360; width += 7) {
+          await tester.pumpWidget(
+            MaterialApp(
+              home: Material(
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: SizedBox(
+                    width: width,
+                    child: HyphenText(
+                      text,
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: size,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+          final ro = tester.renderObject<RenderHyphenText>(
+            find.byType(HyphenText),
+          );
+          final where = '$width px, $size pt: ${show(ro.debugPainted)}';
+          expect(
+            ro.debugDashesAtLineEnds,
+            isTrue,
+            reason: 'Strich in Zeile $where',
+          );
+          expect(ro.debugUndashedBreaks, 0, reason: 'ohne Strich $where');
+        }
+      }
+    }
+  });
 }

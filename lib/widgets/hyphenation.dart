@@ -4,6 +4,10 @@ import 'package:flutter/rendering.dart';
 /// Weiche Trennstelle (U+00AD) - unsichtbar, solange nicht getrennt wird.
 final _shy = String.fromCharCode(0x00AD);
 
+/// Wortverbinder (U+2060): unsichtbar und ohne Umbruchmöglichkeit - ersetzt
+/// eine weiche Trennstelle, an der nicht getrennt werden darf.
+final _noBreak = String.fromCharCode(0x2060);
+
 /// Unsichtbare Umbruchstelle (U+200B) ohne Trennstrich.
 final kZeroWidthSpace = String.fromCharCode(0x200B);
 String get _zwsp => kZeroWidthSpace;
@@ -211,6 +215,22 @@ class RenderHyphenText extends RenderBox {
     return true;
   }
 
+  /// Anzahl der Zeilen, die an einer weichen Trennstelle enden, ohne dass
+  /// dort ein Strich steht (mitten im Wort umbrochen).
+  @visibleForTesting
+  int get debugUndashedBreaks {
+    final text = debugPainted;
+    var count = 0;
+    var start = 0;
+    while (start < text.length) {
+      final line = _painter.getLineBoundary(TextPosition(offset: start));
+      if (line.end <= start) break;
+      if (line.end < text.length && text[line.end - 1] == _shy) count++;
+      start = line.end;
+    }
+    return count;
+  }
+
   TextPainter _measure(InlineSpan span) => TextPainter(
     text: span,
     textAlign: _textAlign,
@@ -240,21 +260,43 @@ class RenderHyphenText extends RenderBox {
     // Ein eingefügter Strich verändert den Umbruch der Zeile. Deshalb
     // setzen, nachsehen, wo die Zeilen wirklich enden, und wiederholen, bis
     // jeder Strich genau am Zeilenende steht (meist nach ein, zwei Runden).
-    var breaks = <int>{};
-    var span = _source;
-    for (var round = 0; round < 5; round++) {
-      final actual = _lineEndBreaks(span, breaks, width);
-      if (actual.length == breaks.length && actual.containsAll(breaks)) break;
-      breaks = actual;
-      span = _insertDashes(breaks);
+    //
+    // Von oben nach unten, je Runde eine Trennstelle: Die oberste Zeile, die
+    // an einer weichen Trennstelle ohne Strich endet, bekommt ihren Strich.
+    // Passt er nicht mehr in die Zeile, rückt der Umbruch an die Stelle
+    // davor. So steht nie ein Strich mitten in der Zeile, und das Verfahren
+    // endet immer (jede Runde legt eine Stelle fest oder schließt eine aus).
+    final fixed = <int>{};
+    // Trennstellen, an denen der Strich nicht mehr in die Zeile passt: Dort
+    // darf gar nicht umbrochen werden, das Wortstück rutscht in die nächste
+    // Zeile oder die Zeile endet an der Trennstelle davor.
+    final blocked = <int>{};
+    final limit = _shy.allMatches(plain).length + 2;
+    for (var round = 0; round < limit; round++) {
+      final actual = _lineEndBreaks(
+        _insertDashes(fixed, blocked),
+        fixed,
+        width,
+      );
+      fixed.removeWhere((b) => !actual.contains(b));
+      final missing = actual.where((b) => !fixed.contains(b)).toList()..sort();
+      if (missing.isEmpty) break;
+      final s = missing.first;
+      final trial = {...fixed, s};
+      final after = _lineEndBreaks(_insertDashes(trial, blocked), trial, width);
+      if (after.contains(s)) {
+        fixed.add(s);
+      } else {
+        blocked.add(s);
+      }
     }
-    // Sicherheitsnetz: Steht ein Strich nicht am Zeilenende, lieber ganz
-    // ohne sichtbare Striche setzen als mit einem Strich mitten im Wort.
-    final check = _lineEndBreaks(span, breaks, width);
-    if (!(check.length == breaks.length && check.containsAll(breaks))) {
-      return _source;
+    // Zum Schluss nur Striche behalten, die wirklich am Zeilenende stehen.
+    for (var i = 0; i < 3; i++) {
+      final check = _lineEndBreaks(_insertDashes(fixed, blocked), fixed, width);
+      if (check.containsAll(fixed)) break;
+      fixed.removeWhere((b) => !check.contains(b));
     }
-    return span;
+    return _insertDashes(fixed, blocked);
   }
 
   /// Quelltext-Positionen der weichen Trennstellen, an denen im gesetzten
@@ -292,8 +334,8 @@ class RenderHyphenText extends RenderBox {
     return out;
   }
 
-  InlineSpan _insertDashes(Set<int> breaks) {
-    if (breaks.isEmpty) return _source;
+  InlineSpan _insertDashes(Set<int> breaks, [Set<int> blocked = const {}]) {
+    if (breaks.isEmpty && blocked.isEmpty) return _source;
     var offset = 0;
     InlineSpan rebuild(InlineSpan span) {
       if (span is! TextSpan) return span;
@@ -301,7 +343,14 @@ class RenderHyphenText extends RenderBox {
       if (t != null) {
         final b = StringBuffer();
         for (var i = 0; i < t.length; i++) {
-          b.write(breaks.contains(offset + i) ? '-$_zwsp' : t[i]);
+          final at = offset + i;
+          b.write(
+            breaks.contains(at)
+                ? '-$_zwsp'
+                : blocked.contains(at)
+                ? _noBreak
+                : t[i],
+          );
         }
         offset += t.length;
         t = b.toString();

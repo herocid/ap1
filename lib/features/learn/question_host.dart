@@ -10,9 +10,6 @@ import '../../widgets/question_view.dart';
 /// stabil; [showCaseContext] schaltet die Ausgangssituation einer
 /// Fallaufgabe ab, wenn der Bildschirm sie schon selbst zeigt (Prüfung).
 ///
-/// TODO(merge): Sobald `QuestionView` die Parameter `shuffleSeed` und
-/// `showCaseContext` hat, beide hier durchreichen - alle Aufrufer übergeben
-/// sie bereits.
 class QuestionHost extends StatelessWidget {
   const QuestionHost({
     super.key,
@@ -48,6 +45,8 @@ class QuestionHost extends StatelessWidget {
       revealed: revealed,
       grade: grade,
       showExplanation: showExplanation,
+      shuffleSeed: shuffleSeed,
+      showCaseContext: showCaseContext,
     );
   }
 }
