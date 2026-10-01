@@ -267,6 +267,8 @@ class SettingsScreen extends ConsumerWidget {
     if (ok == true) {
       ref.read(progressProvider.notifier).reset();
       ref.read(deckProvider.notifier).reset();
+      ref.read(cardRunProvider.notifier).clear();
+      ref.read(cardActivityProvider.notifier).reset();
       ref.read(journeyProvider.notifier).reset();
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(

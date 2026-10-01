@@ -39,7 +39,16 @@ abstract interface class LocalStore {
 
   DeckState readDeck();
   Future<void> writeCardState(CardState s);
+
+  /// Löscht den Kasten samt Durchlauf und Kartenaktivität.
   Future<void> clearDeck();
+
+  /// Laufender oder zuletzt beendeter Durchlauf, `null` = keiner.
+  CardRun? readCardRun();
+  Future<void> writeCardRun(CardRun? run);
+
+  CardActivity readCardActivity();
+  Future<void> writeCardActivity(CardActivity a);
 
   Future<void> clearAll();
 }
@@ -69,6 +78,8 @@ class HiveLocalStore implements LocalStore {
   static const _kProgressMeta = 'progress_meta';
   static const _kSeenTheory = 'seen_theory';
   static const _kJourney = 'journey_done';
+  static const _kCardRun = 'card_run';
+  static const _kCardActivity = 'card_activity';
 
   /// Öffnet die Boxen. [inMemory] ist für Tests: nichts wird auf die Platte
   /// geschrieben, und jeder Test beginnt leer, sofern er die Boxen vorher
@@ -124,9 +135,11 @@ class HiveLocalStore implements LocalStore {
     final history = <AnswerRecord>[];
     for (final raw in _answers.values) {
       try {
-        history.add(AnswerRecord.fromJson(
-          (jsonDecode(raw) as Map).cast<String, dynamic>(),
-        ));
+        history.add(
+          AnswerRecord.fromJson(
+            (jsonDecode(raw) as Map).cast<String, dynamic>(),
+          ),
+        );
       } catch (_) {
         // Ein beschädigter Eintrag darf nicht die ganze Historie kosten.
       }
@@ -205,7 +218,42 @@ class HiveLocalStore implements LocalStore {
       _cards.put(s.cardId, jsonEncode(s.toJson()));
 
   @override
-  Future<void> clearDeck() => _cards.clear();
+  Future<void> clearDeck() async {
+    await _cards.clear();
+    await _meta.delete(_kCardRun);
+    await _meta.delete(_kCardActivity);
+  }
+
+  @override
+  CardRun? readCardRun() {
+    final raw = _meta.get(_kCardRun);
+    if (raw == null) return null;
+    try {
+      return CardRun.decode(raw);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  @override
+  Future<void> writeCardRun(CardRun? run) => run == null
+      ? _meta.delete(_kCardRun)
+      : _meta.put(_kCardRun, run.encode());
+
+  @override
+  CardActivity readCardActivity() {
+    final raw = _meta.get(_kCardActivity);
+    if (raw == null) return const CardActivity();
+    try {
+      return CardActivity.decode(raw);
+    } catch (_) {
+      return const CardActivity();
+    }
+  }
+
+  @override
+  Future<void> writeCardActivity(CardActivity a) =>
+      _meta.put(_kCardActivity, a.encode());
 
   // ------------------------------------------------------------------ Alles
 

@@ -13,6 +13,25 @@ import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
 
+/// Wie eine Karteikarten-Runde ihre Karten auswählt.
+enum CardMode {
+  /// Leitner: was heute fällig ist, Wiederholungen vor Neuem.
+  due,
+
+  /// Alle Karten einer Lektion, auch wenn sie noch nicht fällig sind.
+  lesson,
+
+  /// Eine feste Auswahl ([CardSessionArgs.cardIds]) - Themenauswahl,
+  /// Zufallsmix, Fehler der letzten Runde.
+  practice,
+
+  /// Der gespeicherte Durchlauf: alles bleibt im Pool, bis es gewusst wurde.
+  run,
+
+  /// Die wackeligsten schon gesehenen Karten.
+  weak,
+}
+
 /// Parameter einer Karteikarten-Runde.
 class CardSessionArgs {
   const CardSessionArgs({
@@ -20,6 +39,9 @@ class CardSessionArgs {
     this.subtopicIds = const {},
     this.title = 'Karteikarten',
     this.includeNotDue = false,
+    this.mode,
+    this.cardIds = const [],
+    this.limit = 20,
   });
 
   final Set<String> topicIds;
@@ -29,6 +51,17 @@ class CardSessionArgs {
   /// Direkt nach einer Lektion sollen deren Karten drankommen, auch wenn sie
   /// laut Karteikasten erst später fällig wären.
   final bool includeNotDue;
+
+  final CardMode? mode;
+
+  /// Feste Kartenauswahl für [CardMode.practice], in dieser Reihenfolge.
+  final List<String> cardIds;
+
+  /// Höchstzahl Karten für [CardMode.due] und [CardMode.weak].
+  final int limit;
+
+  CardMode get effectiveMode =>
+      mode ?? (includeNotDue ? CardMode.lesson : CardMode.due);
 }
 
 /// Die Karteikarten-Session.
@@ -37,6 +70,12 @@ class CardSessionArgs {
 /// bewerten. Die Selbsteinschätzung ist bewusst binär - "wusste ich" oder
 /// "wusste ich nicht". Vier Abstufungen wie bei Anki klingen präziser,
 /// überfordern aber genau die Person, die ein Thema gerade erst lernt.
+///
+/// Was nicht gewusst wird, verschwindet nicht bis morgen, sondern kommt
+/// wenige Karten später in derselben Runde noch einmal - so lange, bis es
+/// sitzt (Relearning wie in Anki, Drop-out-Prinzip). Für den Leitner-Kasten
+/// zählt nur die erste Antwort je Runde: Wer eine Karte erst im dritten
+/// Anlauf weiß, hat sie nicht „gewusst“, sie bleibt in Fach 1.
 class CardSessionScreen extends ConsumerStatefulWidget {
   const CardSessionScreen({super.key, required this.args});
 
@@ -47,67 +86,135 @@ class CardSessionScreen extends ConsumerStatefulWidget {
 }
 
 class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
-  late final List<Flashcard> _cards;
-  int _index = 0;
+  /// Nach so vielen anderen Karten kommt eine nicht gewusste wieder - genug
+  /// Abstand, dass die Antwort nicht mehr im Kurzzeitgedächtnis liegt.
+  static const _requeueGap = 3;
+
+  late final List<Flashcard> _queue;
+  late final CardMode _mode = widget.args.effectiveMode;
+  int _pos = 0;
   bool _revealed = false;
-  int _knew = 0;
-  int _missed = 0;
+  bool _finished = false;
+
+  /// Karten mit erster Antwort in dieser Runde.
+  final Set<String> _attempted = {};
+
+  /// Nicht gewusst und noch nicht nachgelernt.
+  final Set<String> _open = {};
+
+  int _firstKnew = 0;
+  int _relearned = 0;
   final List<Flashcard> _missedCards = [];
 
   @override
   void initState() {
     super.initState();
+    _queue = _pick();
+  }
+
+  List<Flashcard> _pick() {
     final deck = ref.read(deckProvider);
     final pool = ref.read(flashcardsProvider);
+    final byId = {for (final c in pool) c.id: c};
     final a = widget.args;
-    _cards = a.includeNotDue
-        ? pool
-              .where(
-                (c) => a.topicIds.isEmpty || a.topicIds.contains(c.topicId),
-              )
-              .where(
-                (c) =>
-                    a.subtopicIds.isEmpty ||
-                    a.subtopicIds.contains(c.subtopicId),
-              )
-              .take(30)
-              .toList()
-        : deck.due(
-            pool,
-            topicIds: a.topicIds,
-            subtopicIds: a.subtopicIds,
-            limit: 20,
-          );
+    bool inScope(Flashcard c) =>
+        (a.topicIds.isEmpty || a.topicIds.contains(c.topicId)) &&
+        (a.subtopicIds.isEmpty || a.subtopicIds.contains(c.subtopicId));
+
+    switch (_mode) {
+      case CardMode.lesson:
+        return pool.where(inScope).take(30).toList();
+      case CardMode.practice:
+        return [
+          for (final id in a.cardIds)
+            if (byId[id] != null) byId[id]!,
+        ];
+      case CardMode.run:
+        final run = ref.read(cardRunProvider);
+        if (run == null) return [];
+        return [
+          for (final id in run.remainingIds())
+            if (byId[id] != null) byId[id]!,
+        ];
+      case CardMode.weak:
+        // Gemischt statt streng nach Schwäche: sonst kämen verwandte Karten
+        // eines Themas gebündelt hintereinander.
+        return deck.weakCards(pool.where(inScope), limit: a.limit)..shuffle();
+      case CardMode.due:
+        return deck.due(
+          pool,
+          topicIds: a.topicIds,
+          subtopicIds: a.subtopicIds,
+          limit: a.limit,
+        );
+    }
   }
 
   void _answer(bool knewIt) {
-    final card = _cards[_index];
-    ref.read(deckProvider.notifier).answer(card.id, knewIt: knewIt);
+    final card = _queue[_pos];
+    final first = _attempted.add(card.id);
+    if (first) {
+      ref.read(deckProvider.notifier).answer(card.id, knewIt: knewIt);
+      if (knewIt) {
+        _firstKnew++;
+      } else {
+        _missedCards.add(card);
+      }
+    }
+    ref.read(cardActivityProvider.notifier).log(knewIt: knewIt);
+    if (_mode == CardMode.run) {
+      ref.read(cardRunProvider.notifier).answer(card.id, knewIt: knewIt);
+    }
     HapticFeedback.selectionClick();
     setState(() {
       if (knewIt) {
-        _knew++;
+        if (_open.remove(card.id)) _relearned++;
       } else {
-        _missed++;
-        _missedCards.add(card);
+        _open.add(card.id);
+        final at = math.min(_pos + 1 + _requeueGap, _queue.length);
+        _queue.insert(at, card);
       }
       _revealed = false;
-      _index++;
+      _pos++;
+      if (_mode == CardMode.run &&
+          (ref.read(cardRunProvider)?.isDone ?? false)) {
+        _finished = true;
+      }
     });
   }
 
+  void _close() {
+    if (_attempted.isEmpty) {
+      context.pop();
+    } else {
+      setState(() => _finished = true);
+    }
+  }
+
+  String get _emptyMessage => switch (_mode) {
+    CardMode.run =>
+      'Es läuft gerade kein Durchlauf, oder alle Karten darin sind '
+          'schon gewusst. Starte im Karteikasten einen neuen.',
+    CardMode.weak =>
+      'Noch keine Schwächen gefunden: Schwach ist eine Karte erst, wenn '
+          'sie einmal danebenging. Lern zuerst ein paar Runden.',
+    CardMode.practice ||
+    CardMode.lesson => 'Für diese Auswahl gibt es keine Karten.',
+    CardMode.due =>
+      'Für diese Auswahl ist heute keine Karte dran. Der Karteikasten '
+          'legt jede Karte nach dem richtigen Abstand wieder vor - komm '
+          'morgen wieder oder starte einen Durchlauf.',
+  };
+
   @override
   Widget build(BuildContext context) {
-    if (_cards.isEmpty) {
+    if (_queue.isEmpty) {
       return Scaffold(
         appBar: AppBar(title: Text(widget.args.title)),
         body: EmptyState(
           icon: Icons.task_alt,
-          title: 'Nichts fällig',
-          message:
-              'Für diese Auswahl ist heute keine Karte dran. '
-              'Der Karteikasten legt jede Karte nach dem richtigen Abstand '
-              'wieder vor - komm morgen wieder.',
+          title: _mode == CardMode.weak ? 'Keine Schwächen' : 'Nichts fällig',
+          message: _emptyMessage,
           action: FilledButton(
             onPressed: () => context.pop(),
             child: const Text('Zurück'),
@@ -116,25 +223,37 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
       );
     }
 
-    if (_index >= _cards.length) return _buildSummary(context);
+    if (_finished || _pos >= _queue.length) return _buildSummary(context);
 
-    final card = _cards[_index];
+    final card = _queue[_pos];
     final state = ref.watch(deckProvider).stateOf(card.id);
     final topic = Topics.byId(card.topicId);
+    final run = _mode == CardMode.run ? ref.watch(cardRunProvider) : null;
+    final left = _queue.length - _pos;
+    final repeat = _open.contains(card.id);
 
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.close),
-          onPressed: () => context.pop(),
+          onPressed: _close,
           tooltip: 'Beenden',
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(widget.args.title, style: context.text.titleMedium),
             Text(
-              'Karte ${_index + 1} von ${_cards.length}',
+              widget.args.title,
+              style: context.text.titleMedium,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            Text(
+              run != null
+                  ? '${run.knownCount} von ${run.total} gewusst'
+                  : left == 1
+                  ? 'Letzte Karte'
+                  : 'Noch $left Karten',
               style: context.text.labelSmall?.copyWith(
                 color: context.c.textMuted,
               ),
@@ -148,7 +267,7 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(4),
           child: LinearProgressIndicator(
-            value: _index / _cards.length,
+            value: run != null ? run.progress : _pos / _queue.length,
             minHeight: 4,
           ),
         ),
@@ -162,14 +281,28 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  MetaChip(
-                    label: topic.title,
-                    icon: topic.icon,
-                    color: context.scheme.primary,
+                  Wrap(
+                    spacing: Gap.s,
+                    runSpacing: Gap.s,
+                    children: [
+                      MetaChip(
+                        label: topic.title,
+                        icon: topic.icon,
+                        color: context.scheme.primary,
+                      ),
+                      if (repeat)
+                        MetaChip(
+                          label: 'Wiederholung',
+                          icon: Icons.refresh,
+                          color: context.c.flame,
+                        ),
+                    ],
                   ),
                   const SizedBox(height: Gap.l),
                   _FlipCard(
-                    key: ValueKey(card.id),
+                    // Die Position gehört in den Schlüssel: Kommt dieselbe
+                    // Karte als Wiederholung, beginnt sie wieder vorne.
+                    key: ValueKey('${card.id}-$_pos'),
                     card: card,
                     revealed: _revealed,
                     onTap: () => setState(() => _revealed = true),
@@ -238,9 +371,32 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
     );
   }
 
+  String _summaryNote(CardRun? run) {
+    if (run != null) {
+      if (run.isDone) {
+        return 'Durchlauf geschafft: Jede der ${run.total} Karten wurde '
+            'mindestens einmal gewusst. Ab jetzt hält der Karteikasten sie '
+            'mit Wiederholungen im passenden Abstand frisch.';
+      }
+      return 'Dein Durchlauf ist gespeichert. Noch ${run.remainingCount} '
+          '${run.remainingCount == 1 ? 'Karte ist' : 'Karten sind'} offen - '
+          'mach weiter, wann du willst. Was danebenging, kommt zuerst.';
+    }
+    final missed = _missedCards.length;
+    if (missed == 0) {
+      return 'Alle Karten saßen beim ersten Versuch. Sie kommen jetzt in '
+          'längeren Abständen wieder.';
+    }
+    return '$missed ${missed == 1 ? 'Karte liegt' : 'Karten liegen'} wieder '
+        'in Fach 1 und ${missed == 1 ? 'kommt' : 'kommen'} morgen erneut dran '
+        '- auch wenn du sie hier nachgelernt hast. Genau so festigt sich '
+        'Wissen: abrufen, vergessen, wieder abrufen.';
+  }
+
   Widget _buildSummary(BuildContext context) {
-    final total = _knew + _missed;
-    final quote = total == 0 ? 0.0 : _knew / total;
+    final run = _mode == CardMode.run ? ref.watch(cardRunProvider) : null;
+    final total = _attempted.length;
+    final quote = total == 0 ? 0.0 : _firstKnew / total;
 
     return Scaffold(
       appBar: AppBar(
@@ -248,7 +404,9 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
           icon: const Icon(Icons.close),
           onPressed: () => context.pop(),
         ),
-        title: const Text('Runde beendet'),
+        title: Text(
+          run?.isDone ?? false ? 'Durchlauf geschafft' : 'Runde beendet',
+        ),
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(Gap.l, Gap.l, Gap.l, Gap.xxxl),
@@ -267,14 +425,16 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
                     children: [
                       Center(
                         child: ReadinessRing(
-                          value: (quote * 100).round(),
-                          label: 'gewusst',
+                          value: ((run?.progress ?? quote) * 100).round(),
+                          label: run != null ? 'Durchlauf' : 'sofort gewusst',
                           size: 132,
                         ),
                       ),
                       const SizedBox(height: Gap.m),
                       Text(
-                        '$total ${total == 1 ? 'Karte' : 'Karten'} bearbeitet',
+                        run != null
+                            ? '${run.knownCount} von ${run.total} Karten gewusst'
+                            : '$total ${total == 1 ? 'Karte' : 'Karten'} bearbeitet',
                         textAlign: TextAlign.center,
                         style: context.text.titleMedium,
                       ),
@@ -286,33 +446,30 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
                   children: [
                     StatTile(
                       icon: Icons.check_circle,
-                      value: '$_knew',
-                      label: 'gewusst',
+                      value: '$_firstKnew',
+                      label: 'sofort gewusst',
                       color: context.c.success,
                     ),
                     StatTile(
-                      icon: Icons.refresh,
-                      value: '$_missed',
-                      label: 'nochmal',
-                      color: context.c.danger,
+                      icon: Icons.replay,
+                      value: '$_relearned',
+                      label: 'nachgelernt',
+                      color: context.c.flame,
                     ),
+                    if (_open.isNotEmpty)
+                      StatTile(
+                        icon: Icons.help_outline,
+                        value: '${_open.length}',
+                        label: 'offen',
+                        color: context.c.danger,
+                      ),
                   ],
                 ),
                 const SizedBox(height: Gap.l),
-                NoteBox(
-                  tone: NoteTone.info,
-                  child: Text(
-                    _missed == 0
-                        ? 'Alle Karten saßen. Sie kommen jetzt in längeren '
-                              'Abständen wieder.'
-                        : '$_missed ${_missed == 1 ? "Karte liegt" : "Karten liegen"} '
-                              'wieder in Fach 1 und kommen morgen erneut dran. '
-                              'Genau so soll der Kasten arbeiten.',
-                  ),
-                ),
+                NoteBox(tone: NoteTone.info, child: Text(_summaryNote(run))),
                 if (_missedCards.isNotEmpty) ...[
                   const SizedBox(height: Gap.xl),
-                  const SectionHeader('Das kam nochmal zurück'),
+                  const SectionHeader('Das ging beim ersten Mal daneben'),
                   for (final c in _missedCards)
                     Padding(
                       padding: const EdgeInsets.only(bottom: Gap.s),
@@ -335,13 +492,53 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
                     ),
                 ],
                 const SizedBox(height: Gap.xl),
-                SizedBox(
-                  width: double.infinity,
-                  child: FilledButton(
-                    onPressed: () => context.pop(),
-                    child: const Text('Fertig'),
+                if (run != null && !run.isDone) ...[
+                  SizedBox(
+                    width: double.infinity,
+                    child: FilledButton.icon(
+                      onPressed: () => context.pushReplacement(
+                        '/karten-lernen',
+                        extra: widget.args,
+                      ),
+                      icon: const Icon(Icons.play_arrow_rounded),
+                      label: const Text('Weiter im Durchlauf'),
+                    ),
                   ),
-                ),
+                  const SizedBox(height: Gap.s),
+                  SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton(
+                      onPressed: () => context.pop(),
+                      child: const Text('Pause'),
+                    ),
+                  ),
+                ] else ...[
+                  if (_missedCards.isNotEmpty && _mode != CardMode.run) ...[
+                    SizedBox(
+                      width: double.infinity,
+                      child: OutlinedButton.icon(
+                        onPressed: () => context.pushReplacement(
+                          '/karten-lernen',
+                          extra: CardSessionArgs(
+                            mode: CardMode.practice,
+                            title: 'Fehler wiederholen',
+                            cardIds: [for (final c in _missedCards) c.id],
+                          ),
+                        ),
+                        icon: const Icon(Icons.replay),
+                        label: const Text('Fehler gleich nochmal'),
+                      ),
+                    ),
+                    const SizedBox(height: Gap.s),
+                  ],
+                  SizedBox(
+                    width: double.infinity,
+                    child: FilledButton(
+                      onPressed: () => context.pop(),
+                      child: const Text('Fertig'),
+                    ),
+                  ),
+                ],
               ],
             ),
           ),

@@ -5,7 +5,8 @@ import 'package:ap1_trainer/data/repositories/local_store.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-AnswerRecord _answer(String id, {double score = 1, int day = 1}) => AnswerRecord(
+AnswerRecord _answer(String id, {double score = 1, int day = 1}) =>
+    AnswerRecord(
       questionId: id,
       topicId: 'netzplan',
       score: score,
@@ -31,12 +32,14 @@ void main() {
 
     test('Kennzahlen überschreiben, ohne die Historie anzufassen', () async {
       await store.appendAnswers([_answer('q1')]);
-      await store.writeProgressMeta(ProgressState(
-        streak: 4,
-        longestStreak: 9,
-        lastActiveDay: DateTime(2026, 9, 1),
-        badges: const {Achievement.ersterTag},
-      ));
+      await store.writeProgressMeta(
+        ProgressState(
+          streak: 4,
+          longestStreak: 9,
+          lastActiveDay: DateTime(2026, 9, 1),
+          badges: const {Achievement.ersterTag},
+        ),
+      );
 
       final p = store.readProgress();
       expect(p.history, hasLength(1));
@@ -135,6 +138,37 @@ void main() {
 
       expect(store.readProfile(), isNull);
       expect(store.readProgress().history, isEmpty);
+    });
+  });
+
+  group('Durchlauf und Kartenaktivität', () {
+    test('werden gespeichert und mit dem Kasten gelöscht', () async {
+      final run = CardRun(
+        title: 'Alle',
+        cardIds: const ['a', 'b'],
+        startedAt: DateTime(2026, 9, 20),
+      ).withAnswer('a', knewIt: true);
+      await store.writeCardRun(run);
+      await store.writeCardActivity(
+        const CardActivity().withAnswer(knewIt: true),
+      );
+      await store.writeCardState(const CardState(cardId: 'a', box: 2));
+
+      expect(store.readCardRun()?.known, {'a'});
+      expect(store.readCardActivity().totalReviews, 1);
+
+      await store.clearDeck();
+      expect(store.readCardRun(), isNull);
+      expect(store.readCardActivity().totalReviews, 0);
+      expect(store.readDeck().cards, isEmpty);
+    });
+
+    test('null löscht den Durchlauf', () async {
+      await store.writeCardRun(
+        CardRun(title: 'x', cardIds: const ['a'], startedAt: DateTime(2026)),
+      );
+      await store.writeCardRun(null);
+      expect(store.readCardRun(), isNull);
     });
   });
 }

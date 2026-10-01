@@ -293,6 +293,57 @@ final deckProvider = StateNotifierProvider<DeckNotifier, DeckState>((ref) {
   return DeckNotifier(ref.watch(localStoreProvider));
 });
 
+/// Der laufende Durchlauf („Full Run“) - `null`, solange keiner gestartet
+/// wurde. Karten, die es nach einem Update nicht mehr gibt, fallen heraus.
+class CardRunNotifier extends StateNotifier<CardRun?> {
+  CardRunNotifier(this._store, Set<String> existing)
+    : super(_store.readCardRun()?.restrictedTo(existing));
+
+  final LocalStore _store;
+
+  void start(CardRun run) {
+    state = run;
+    _store.writeCardRun(run);
+  }
+
+  void answer(String cardId, {required bool knewIt}) {
+    final run = state;
+    if (run == null) return;
+    state = run.withAnswer(cardId, knewIt: knewIt);
+    _store.writeCardRun(state);
+  }
+
+  void clear() {
+    state = null;
+    _store.writeCardRun(null);
+  }
+}
+
+final cardRunProvider = StateNotifierProvider<CardRunNotifier, CardRun?>((ref) {
+  return CardRunNotifier(ref.watch(localStoreProvider), {
+    for (final c in ref.read(flashcardsProvider)) c.id,
+  });
+});
+
+/// Abgefragte Karten je Tag.
+class CardActivityNotifier extends StateNotifier<CardActivity> {
+  CardActivityNotifier(this._store) : super(_store.readCardActivity());
+
+  final LocalStore _store;
+
+  void log({required bool knewIt}) {
+    state = state.withAnswer(knewIt: knewIt);
+    _store.writeCardActivity(state);
+  }
+
+  void reset() => state = const CardActivity();
+}
+
+final cardActivityProvider =
+    StateNotifierProvider<CardActivityNotifier, CardActivity>((ref) {
+      return CardActivityNotifier(ref.watch(localStoreProvider));
+    });
+
 /// Wie viele Karten heute fällig sind - die Zahl fürs Dashboard.
 final dueCardsProvider = Provider<int>((ref) {
   final deck = ref.watch(deckProvider);

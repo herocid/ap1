@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:ap1_trainer/data/models/flashcard.dart';
 import 'package:ap1_trainer/data/models/topic.dart';
 import 'package:ap1_trainer/data/seed/seed_data.dart';
@@ -56,8 +58,10 @@ void main() {
 
     test('die Intervalle wachsen streng monoton', () {
       for (var box = 1; box < Leitner.boxCount; box++) {
-        expect(Leitner.intervalFor(box + 1),
-            greaterThan(Leitner.intervalFor(box)));
+        expect(
+          Leitner.intervalFor(box + 1),
+          greaterThan(Leitner.intervalFor(box)),
+        );
       }
     });
   });
@@ -86,8 +90,11 @@ void main() {
       deck = deck.withAnswer('a', true, now: DateTime(2026, 9, 1));
       deck = deck.withAnswer('a', true, now: DateTime(2026, 9, 5));
       final due = deck.due(cards, now: heute);
-      expect(due.first.id, isNot('a'),
-          reason: 'Was schon sitzt, darf nicht vor dem Neuen kommen');
+      expect(
+        due.first.id,
+        isNot('a'),
+        reason: 'Was schon sitzt, darf nicht vor dem Neuen kommen',
+      );
     });
 
     test('eine falsch beantwortete Karte ist morgen wieder dran', () {
@@ -131,16 +138,22 @@ void main() {
 
     test('jede Karte verweist auf ein existierendes Thema', () {
       for (final c in kSeedFlashcards) {
-        expect(Topics.map.containsKey(c.topicId), isTrue,
-            reason: '${c.id} nutzt unbekanntes Thema ${c.topicId}');
+        expect(
+          Topics.map.containsKey(c.topicId),
+          isTrue,
+          reason: '${c.id} nutzt unbekanntes Thema ${c.topicId}',
+        );
       }
     });
 
     test('Vorder- und Rückseite sind gefüllt', () {
       for (final c in kSeedFlashcards) {
         expect(c.front.trim(), isNotEmpty, reason: c.id);
-        expect(c.back.trim().length, greaterThan(15),
-            reason: '${c.id}: Rückseite zu dünn');
+        expect(
+          c.back.trim().length,
+          greaterThan(15),
+          reason: '${c.id}: Rückseite zu dünn',
+        );
       }
     });
 
@@ -148,8 +161,11 @@ void main() {
       // Eine Vorderseite, die länger ist als ein Satz, ist keine Karteikarte
       // mehr, sondern eine Aufgabe.
       for (final c in kSeedFlashcards) {
-        expect(c.front.length, lessThanOrEqualTo(120),
-            reason: '${c.id}: Vorderseite zu lang (${c.front.length} Zeichen)');
+        expect(
+          c.front.length,
+          lessThanOrEqualTo(120),
+          reason: '${c.id}: Vorderseite zu lang (${c.front.length} Zeichen)',
+        );
       }
     });
 
@@ -158,9 +174,13 @@ void main() {
       for (final t in Topics.all) {
         final n = counts[t.id] ?? 0;
         if (n == 0) continue;
-        expect(n, greaterThanOrEqualTo(8),
-            reason: 'Thema ${t.id} hat nur $n Karten - zu wenig für einen '
-                'sinnvollen Kasten');
+        expect(
+          n,
+          greaterThanOrEqualTo(8),
+          reason:
+              'Thema ${t.id} hat nur $n Karten - zu wenig für einen '
+              'sinnvollen Kasten',
+        );
       }
     });
 
@@ -170,9 +190,155 @@ void main() {
         byTopic.putIfAbsent(c.topicId, () => []).add(c.front.toLowerCase());
       }
       for (final e in byTopic.entries) {
-        expect(e.value.toSet().length, e.value.length,
-            reason: 'Thema ${e.key} hat doppelte Kartenvorderseiten');
+        expect(
+          e.value.toSet().length,
+          e.value.length,
+          reason: 'Thema ${e.key} hat doppelte Kartenvorderseiten',
+        );
       }
+    });
+  });
+
+  group('Durchlauf', () {
+    final pool = [
+      for (final id in ['a', 'b', 'c', 'd'])
+        Flashcard(id: id, topicId: 'netzplan', front: id, back: id),
+    ];
+
+    test('startet mit allen Karten offen, gemischt und vollständig', () {
+      final run = CardRun.start(
+        title: 'Alle',
+        pool: pool,
+        random: math.Random(1),
+        now: heute,
+      );
+      expect(run.total, 4);
+      expect(run.remainingCount, 4);
+      expect(run.cardIds.toSet(), {'a', 'b', 'c', 'd'});
+      expect(run.isDone, isFalse);
+    });
+
+    test('nicht gewusst bleibt im Pool und kommt beim Fortsetzen zuerst', () {
+      var run = CardRun(
+        title: 'Alle',
+        cardIds: const ['a', 'b', 'c', 'd'],
+        startedAt: heute,
+      );
+      run = run.withAnswer('a', knewIt: true);
+      run = run.withAnswer('c', knewIt: false);
+      expect(run.knownCount, 1);
+      expect(run.remainingIds(), ['c', 'b', 'd']);
+      expect(run.missCount, 1);
+    });
+
+    test('ist fertig, wenn jede Karte einmal gewusst wurde', () {
+      var run = CardRun(
+        title: 'Alle',
+        cardIds: const ['a', 'b'],
+        startedAt: heute,
+      );
+      run = run.withAnswer('a', knewIt: false, now: heute);
+      run = run.withAnswer('a', knewIt: true, now: heute);
+      expect(run.isDone, isFalse);
+      run = run.withAnswer('b', knewIt: true, now: heute);
+      expect(run.isDone, isTrue);
+      expect(run.finishedAt, heute);
+      expect(run.misses['a'], 1);
+    });
+
+    test('eine gewusste Karte zählt kein zweites Mal', () {
+      var run = CardRun(
+        title: 'Alle',
+        cardIds: const ['a', 'b'],
+        startedAt: heute,
+      );
+      run = run.withAnswer('a', knewIt: true);
+      final again = run.withAnswer('a', knewIt: false);
+      expect(again.misses, isEmpty);
+      expect(again.knownCount, 1);
+    });
+
+    test('Karten, die es nicht mehr gibt, fallen heraus', () {
+      final run = CardRun(
+        title: 'Alle',
+        cardIds: const ['a', 'b', 'x'],
+        known: const {'x'},
+        startedAt: heute,
+      ).restrictedTo({'a', 'b'});
+      expect(run.cardIds, ['a', 'b']);
+      expect(run.known, isEmpty);
+    });
+
+    test('JSON-Roundtrip erhält den Stand', () {
+      final run = CardRun(
+        title: 'Bereich 03',
+        cardIds: const ['a', 'b'],
+        topicIds: const {'netzwerke'},
+        startedAt: heute,
+      ).withAnswer('a', knewIt: false).withAnswer('b', knewIt: true);
+      final back = CardRun.decode(run.encode());
+      expect(back.title, 'Bereich 03');
+      expect(back.cardIds, ['a', 'b']);
+      expect(back.topicIds, {'netzwerke'});
+      expect(back.known, {'b'});
+      expect(back.misses, {'a': 1});
+      expect(back.startedAt, heute);
+    });
+  });
+
+  group('Schwächen und Aktivität', () {
+    final cards = [
+      for (final id in ['a', 'b', 'c'])
+        Flashcard(id: id, topicId: 'netzplan', front: id, back: id),
+    ];
+
+    test('Schwächen: nur gesehene Karten, die danebengingen', () {
+      var deck = const DeckState();
+      deck = deck.withAnswer('a', false, now: heute);
+      deck = deck.withAnswer('b', true, now: heute);
+      deck = deck.withAnswer('b', true, now: heute);
+      deck = deck.withAnswer('b', true, now: heute);
+      expect(deck.weakCards(cards).map((c) => c.id), ['a']);
+      expect(deck.weakness('c'), isNull);
+      expect(deck.weakness('a')!, greaterThan(deck.weakness('b')!));
+    });
+
+    test('Trefferquote über alle Antworten', () {
+      var deck = const DeckState();
+      expect(deck.accuracy(cards), isNull);
+      deck = deck.withAnswer('a', false, now: heute);
+      deck = deck.withAnswer('b', true, now: heute);
+      expect(deck.accuracy(cards), 0.5);
+    });
+
+    test('fällige Wiederholungen kommen vor neuen Karten desselben Fachs', () {
+      var deck = const DeckState();
+      deck = deck.withAnswer('c', false, now: DateTime(2026, 9, 18));
+      final due = deck.due(cards, now: heute);
+      expect(due.first.id, 'c');
+    });
+
+    test('Aktivität zählt je Tag und Tage in Folge', () {
+      var a = const CardActivity();
+      a = a.withAnswer(knewIt: true, now: DateTime(2026, 9, 18, 10));
+      a = a.withAnswer(knewIt: false, now: DateTime(2026, 9, 19, 10));
+      a = a.withAnswer(knewIt: true, now: DateTime(2026, 9, 20, 8));
+      a = a.withAnswer(knewIt: true, now: DateTime(2026, 9, 20, 9));
+      expect(a.reviewsOn(heute), 2);
+      expect(a.streak(now: heute), 3);
+      expect(a.lastDays(3, now: heute), [1, 1, 2]);
+      expect(a.totalReviews, 4);
+      final back = CardActivity.decode(a.encode());
+      expect(back.days, a.days);
+    });
+
+    test('Streak zählt ab gestern, wenn heute noch nichts geübt wurde', () {
+      final a = const CardActivity().withAnswer(
+        knewIt: true,
+        now: DateTime(2026, 9, 19),
+      );
+      expect(a.streak(now: heute), 1);
+      expect(a.streak(now: DateTime(2026, 9, 22)), 0);
     });
   });
 }

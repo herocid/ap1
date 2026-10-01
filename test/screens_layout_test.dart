@@ -1,5 +1,8 @@
 import 'package:ap1_trainer/core/router.dart';
+import 'package:ap1_trainer/data/models/flashcard.dart';
 import 'package:ap1_trainer/data/models/profile.dart';
+import 'package:ap1_trainer/data/models/progress.dart';
+import 'package:ap1_trainer/data/seed/cards/cards_data.dart';
 import 'package:ap1_trainer/data/repositories/local_store.dart';
 import 'package:ap1_trainer/main.dart';
 import 'package:ap1_trainer/state/providers.dart';
@@ -43,6 +46,7 @@ void main() {
     // Auswertung prüft `exam_layout_test.dart` mit Test-Fallaufgaben.
     '/pruefung-lauf',
     '/karten-lernen',
+    '/karten-auswahl',
     '/bereich/a01',
     '/katalog-aenderungen',
   ];
@@ -88,4 +92,80 @@ void main() {
       }
     }
   }
+
+  // Karteikasten und Statistik mit Lernstand: Durchlauf, Schwächen,
+  // Aktivität - die Leerzustände oben zeigen diese Teile gar nicht.
+  group('mit Kartenfortschritt', () {
+    setUp(() async {
+      final now = DateTime.now();
+      await store.appendAnswers([
+        AnswerRecord(
+          questionId: 'q1',
+          topicId: 'netzplan',
+          score: 1,
+          seconds: 30,
+          at: now,
+          mode: SessionMode.uebung,
+        ),
+      ]);
+      var deck = const DeckState();
+      var activity = const CardActivity();
+      for (final (i, c) in kSeedFlashcards.take(60).indexed) {
+        deck = deck.withAnswer(c.id, i % 3 != 0, now: now);
+        activity = activity.withAnswer(knewIt: i % 3 != 0, now: now);
+      }
+      for (final s in deck.cards.values) {
+        await store.writeCardState(s);
+      }
+      await store.writeCardActivity(activity);
+      var run = CardRun(
+        title: 'Informations- und Softwaresysteme mit langem Namen',
+        cardIds: [for (final c in kSeedFlashcards.take(80)) c.id],
+        startedAt: now,
+      );
+      for (final (i, c) in kSeedFlashcards.take(30).indexed) {
+        run = run.withAnswer(c.id, knewIt: i.isEven);
+      }
+      await store.writeCardRun(run);
+    });
+
+    for (final scale in textScales) {
+      for (final route in ['/karten', '/statistik', '/karten-auswahl']) {
+        testWidgets('$route bei 320 px, Schrift ${(scale * 100).round()} %', (
+          tester,
+        ) async {
+          tester.view.physicalSize = sizes.first * 3;
+          tester.view.devicePixelRatio = 3;
+          tester.platformDispatcher.textScaleFactorTestValue = scale;
+          addTearDown(tester.view.reset);
+          addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+
+          final container = ProviderContainer(
+            overrides: [localStoreProvider.overrideWithValue(store)],
+          );
+          addTearDown(container.dispose);
+          await tester.pumpWidget(
+            UncontrolledProviderScope(
+              container: container,
+              child: const Ap1TrainerApp(),
+            ),
+          );
+          await tester.pumpAndSettle();
+          tester.takeException();
+          container.read(routerProvider).go(route);
+          await tester.pumpAndSettle();
+          expect(tester.takeException(), isNull);
+
+          // Themenauswahl: einen Bereich aufklappen und ankreuzen.
+          if (route == '/karten-auswahl') {
+            await tester.tap(find.byType(ExpansionTile).first);
+            await tester.pumpAndSettle();
+            await tester.tap(find.byType(Checkbox).first);
+            await tester.pumpAndSettle();
+            expect(tester.takeException(), isNull);
+          }
+        });
+      }
+    }
+  });
 }

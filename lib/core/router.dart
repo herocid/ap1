@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../features/cards/card_picker_screen.dart';
 import '../features/cards/card_session_screen.dart';
 import '../features/cards/cards_overview_screen.dart';
 import '../features/dashboard/area_detail_screen.dart';
@@ -71,6 +72,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => CardSessionScreen(
           args: state.extra as CardSessionArgs? ?? const CardSessionArgs(),
         ),
+      ),
+      GoRoute(
+        path: '/karten-auswahl',
+        parentNavigatorKey: _rootKey,
+        builder: (context, state) => const CardPickerScreen(),
       ),
       GoRoute(
         path: '/bereich/:areaId',
