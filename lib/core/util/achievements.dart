@@ -2,6 +2,8 @@ import 'dart:math' as math;
 
 import '../../data/models/flashcard.dart';
 import '../../data/models/progress.dart';
+import 'answer_format.dart';
+import 'exam_composer.dart';
 
 /// Stand eines Abzeichens: wie weit, wie viel nötig, schon verdient?
 class AchievementStatus {
@@ -32,6 +34,7 @@ Map<Achievement, AchievementStatus> evaluateAchievements({
   required List<Flashcard> cards,
   required Map<String, int> areaReadiness,
   required Map<String, int> poolSize,
+  Map<String, int> pointsById = const {},
 }) {
   final h = progress.history;
   final answered = h.length;
@@ -69,17 +72,7 @@ Map<Achievement, AchievementStatus> evaluateAchievements({
   }
   final topicsWithFive = poolSize.keys.where((t) => (perTopic[t] ?? 0) >= 5);
 
-  // Bestes Simulationsergebnis. Ein Lauf bucht alle Antworten mit
-  // demselben Zeitstempel (auf die Minute genau).
-  final runs = <String, List<AnswerRecord>>{};
-  for (final r in h.where((r) => r.mode == SessionMode.pruefung)) {
-    runs.putIfAbsent(r.at.toIso8601String().substring(0, 16), () => []).add(r);
-  }
-  var bestExam = 0;
-  for (final list in runs.values) {
-    final avg = list.fold<double>(0, (s, r) => s + r.score) / list.length;
-    bestExam = math.max(bestExam, (avg * 100).round());
-  }
+  final bestExam = bestExamPercent(h, pointsById);
 
   var learned = 0;
   var longTerm = 0;
@@ -132,4 +125,34 @@ Map<Achievement, AchievementStatus> evaluateAchievements({
         earned: progress.badges.contains(a) || valueOf(a) >= targetOf(a),
       ),
   };
+}
+
+/// Punkte einer vollen Prüfungssimulation (4 Aufgaben zu je 25 Punkten).
+const int kFullExamPoints = 4 * ExamComposer.pointsPerTask;
+
+/// Bestes Ergebnis (0..100, auf ganze Prozent gerundet wie [ihkNote]) einer
+/// vollständigen Prüfungssimulation.
+///
+/// Rechnet wie die Auswertung: erreichte Punkte (je Teilaufgabe auf halbe
+/// Punkte gerundet) durch mögliche Punkte. Ein Lauf bucht alle Antworten mit
+/// demselben Zeitstempel; abgebrochene Läufe werden gar nicht gebucht. Halbe
+/// Prüfungen und Einzelaufgaben (weniger als [kFullExamPoints]) zählen nicht.
+int bestExamPercent(List<AnswerRecord> history, Map<String, int> pointsById) {
+  final runs = <String, List<AnswerRecord>>{};
+  for (final r in history.where((r) => r.mode == SessionMode.pruefung)) {
+    runs.putIfAbsent(r.at.toIso8601String().substring(0, 16), () => []).add(r);
+  }
+  var best = 0;
+  for (final list in runs.values) {
+    var earned = 0.0;
+    var possible = 0;
+    for (final r in list) {
+      final p = pointsById[r.questionId] ?? 1;
+      earned += halfPoints(r.score * p);
+      possible += p;
+    }
+    if (possible < kFullExamPoints) continue;
+    best = math.max(best, (earned / possible * 100).round());
+  }
+  return best;
 }
