@@ -36,40 +36,94 @@
     html, body { margin: 0; height: 100%; background: #F3F6FB; }
     @media (prefers-color-scheme: dark) { html, body { background: #0D1321; } }
     #splash { position: fixed; inset: 0; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 18px;
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
-    #splash svg { width: 88px; height: 88px;
+      align-items: center; justify-content: center; gap: 14px; padding: 24px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      transition: opacity .35s ease, transform .35s ease; }
+    #splash.done { opacity: 0; transform: scale(1.03); pointer-events: none; }
+    #splash .logo { width: 96px; height: 96px; filter: drop-shadow(0 10px 24px rgba(11, 99, 206, .28));
       animation: pop .6s cubic-bezier(.2, .9, .3, 1.2) both; }
-    #splash span { font-size: 20px; font-weight: 700; color: #0B63CE; }
-    #splash span b { color: #D25E0A; }
+    #splash .flag { transform-origin: 51px 17px; animation: wave 1.6s ease-in-out .6s infinite; }
+    #splash .name { margin-top: 6px; font-size: 26px; font-weight: 800; letter-spacing: -.3px;
+      color: #0B63CE; animation: up .5s ease .15s both; }
+    #splash .name b { color: #C2560A; }
+    #splash .claim { font-size: 15px; color: #4A5568; text-align: center; max-width: 280px;
+      animation: up .5s ease .25s both; }
+    #splash .bar { margin-top: 18px; width: 168px; height: 6px; border-radius: 99px;
+      background: #DCE6F4; overflow: hidden; animation: up .5s ease .35s both; }
+    #splash .bar i { display: block; width: 40%; height: 100%; border-radius: 99px;
+      background: #0B63CE;
+      animation: slide 1.15s ease-in-out infinite; }
+    #splash .bit { display: flex; align-items: center; gap: 10px; margin-top: 22px;
+      max-width: 300px; animation: up .5s ease .5s both; }
+    #splash .bit svg { flex: none; width: 40px; height: 40px; }
+    #splash .bit span { font-size: 13px; line-height: 1.4; color: #4A5568;
+      background: #FFFFFF; border: 1px solid #DCE3EE; border-radius: 14px; padding: 8px 12px; }
     @media (prefers-color-scheme: dark) {
-      #splash span { color: #EEF2F8; }
-      #splash span b { color: #FFA24D; }
+      #splash .name { color: #EEF2F8; }
+      #splash .name b { color: #FFA24D; }
+      #splash .claim, #splash .bit span { color: #A9B4C6; }
+      #splash .bit span { background: #172033; border-color: #2A3650; }
+      #splash .bar { background: #1E2A40; }
     }
-    @keyframes pop {
-      from { transform: scale(.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      #splash *, #splash { animation: none !important; transition: none !important; }
+      #splash .bar i { width: 100%; opacity: .5; }
     }
+    @keyframes pop { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    @keyframes up { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+    @keyframes slide { 0% { transform: translateX(-110%); } 100% { transform: translateX(260%); } }
+    @keyframes wave { 0%, 100% { transform: skewY(0); } 50% { transform: skewY(-8deg); } }
   </style>
 </head>
 <body>
   <!-- Startbildschirm, bis Flutter das erste Bild gezeichnet hat. -->
-  <div id="splash" aria-label="AP1 Coach wird geladen">
-    <svg viewBox="0 0 100 100" aria-hidden="true">
+  <div id="splash" role="status" aria-live="polite" aria-label="AP1 Coach wird geladen">
+    <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
       <rect width="100" height="100" rx="24" fill="#0B63CE"/>
       <path d="M25 78 L50 33 L75 78" fill="none" stroke="#FFFFFF"
             stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M39 62 H61" stroke="#FFA24D" stroke-width="8" stroke-linecap="round"/>
       <path d="M50 31 V13" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
-      <path d="M51 12 L67 17.5 L51 23 Z" fill="#FFA24D"/>
+      <path class="flag" d="M51 12 L67 17.5 L51 23 Z" fill="#FFA24D"/>
     </svg>
-    <span>AP1 <b>Coach</b></span>
+    <div class="name">AP1 <b>Coach</b></div>
+    <div class="claim">Dein Coach für die IHK-Abschlussprüfung Teil 1</div>
+    <div class="bar" aria-hidden="true"><i></i></div>
+    <div class="bit">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <line x1="32" y1="6" x2="32" y2="14" stroke="#0B63CE" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="32" cy="6" r="4" fill="#FFA24D"/>
+        <rect x="8" y="14" width="48" height="36" rx="12" fill="#0B63CE"/>
+        <rect x="14" y="20" width="36" height="24" rx="8" fill="#FFFFFF"/>
+        <circle cx="25" cy="31" r="3.2" fill="#0D1321"/>
+        <circle cx="39" cy="31" r="3.2" fill="#0D1321"/>
+        <path d="M26 37 Q32 41 38 37" fill="none" stroke="#0D1321" stroke-width="2.4" stroke-linecap="round"/>
+        <rect x="20" y="50" width="24" height="10" rx="5" fill="#0B63CE"/>
+      </svg>
+      <span id="tip">Bit macht deinen Lernplan startklar …</span>
+    </div>
   </div>
   <script>
-    window.addEventListener("flutter-first-frame", function () {
-      var s = document.getElementById("splash");
-      if (s) s.remove();
-    });
+    (function () {
+      var tips = [
+        "Bit macht deinen Lernplan startklar …",
+        "Tipp: 15 Minuten am Tag schlagen 3 Stunden am Wochenende.",
+        "Tipp: Erst selbst antworten, dann umdrehen – so bleibt es hängen.",
+        "Tipp: Rechenwege immer aufschreiben – die IHK gibt Teilpunkte."
+      ];
+      var i = 0, el = document.getElementById("tip");
+      var timer = setInterval(function () {
+        i = (i + 1) % tips.length;
+        if (el) el.textContent = tips[i];
+      }, 2200);
+      window.addEventListener("flutter-first-frame", function () {
+        clearInterval(timer);
+        var s = document.getElementById("splash");
+        if (!s) return;
+        s.classList.add("done");
+        setTimeout(function () { s.remove(); }, 400);
+      });
+    })();
   </script>
   <!--
     You can customize the "flutter_bootstrap.js" script.

@@ -11,6 +11,7 @@ import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
 import '../../widgets/hyphenation.dart';
+import '../../widgets/bit_tips.dart';
 
 /// Die Learning Journey: der komplette AP1-Stoff als Lehrgang - hier wird
 /// nur gelernt, abgefragt wird in Quiz und Karteikarten.
@@ -79,6 +80,8 @@ class _Header extends StatelessWidget {
           'Der komplette AP1-Stoff in Lektionen, die aufeinander aufbauen.',
           style: context.text.bodyMedium?.copyWith(color: context.c.textMuted),
         ),
+        const SizedBox(height: Gap.l),
+        const BitTip(BitSpot.journey),
       ],
     );
   }

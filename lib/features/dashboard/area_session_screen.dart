@@ -14,6 +14,7 @@ import '../../widgets/common.dart';
 import '../../widgets/hyphenation.dart';
 import '../cards/card_session_screen.dart';
 import '../learn/session_launcher.dart';
+import '../../widgets/bit_tips.dart';
 
 /// Eine Session zu einem Themengebiet: Lernen, Wiederholen, Abfragen - am
 /// Stück und zu genau einer Lektion.
@@ -248,6 +249,8 @@ class _AreaSessionScreenState extends ConsumerState<AreaSessionScreen> {
                     color: context.c.textMuted,
                   ),
                 ),
+                const SizedBox(height: Gap.l),
+                const BitTip(BitSpot.session),
                 const SizedBox(height: Gap.xl),
 
                 // ------------------------------------------------ Thema

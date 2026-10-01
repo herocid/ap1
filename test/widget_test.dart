@@ -54,7 +54,7 @@ void main() {
 
     // Direkt danach erklärt Bit die Tabs - einmal durchklicken.
     expect(find.text('Hallo! Ich bin Bit.'), findsOneWidget);
-    for (var i = 0; i < 4; i++) {
+    while (find.text('Weiter').evaluate().isNotEmpty) {
       await tester.tap(find.text('Weiter'));
       await tester.pumpAndSettle();
     }

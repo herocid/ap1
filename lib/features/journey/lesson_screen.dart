@@ -13,6 +13,8 @@ import '../../state/providers.dart';
 import '../../widgets/common.dart';
 import '../../widgets/hyphenation.dart';
 import 'nugget_card.dart';
+import '../../widgets/bit_tips.dart';
+import '../../widgets/mascot.dart';
 
 /// Eine Lektion der Learning Journey - hier wird nur gelernt.
 ///
@@ -31,8 +33,36 @@ class LessonScreen extends ConsumerStatefulWidget {
 }
 
 class _LessonScreenState extends ConsumerState<LessonScreen> {
-  final _pager = PageController();
+  late final PageController _pager;
   int _page = 0;
+
+  /// Angefangene Lektion: an der zuletzt offenen Seite weitermachen statt
+  /// wieder beim Einstieg.
+  @override
+  void initState() {
+    super.initState();
+    final b = ref.read(resumeProvider).lesson;
+    final steps = ref.read(lessonStepsProvider)[widget.lessonId] ?? const [];
+    final done = ref.read(journeyProvider).contains(widget.lessonId);
+    if (b != null && b.lessonId == widget.lessonId && !done) {
+      _page = b.page.clamp(0, steps.length);
+    }
+    _pager = PageController(initialPage: _page);
+    if (_page > 0) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Weiter bei Schritt $_page von ${steps.length}'),
+            action: SnackBarAction(
+              label: 'Von vorn',
+              onPressed: () => _pager.jumpToPage(0),
+            ),
+          ),
+        );
+      });
+    }
+  }
 
   @override
   void dispose() {
@@ -141,7 +171,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
               setState(() => _page = p);
               if (p == pageCount - 1) {
                 ref.read(journeyProvider.notifier).complete(lesson.id);
+                ref.read(resumeProvider.notifier).lessonDone(lesson.id);
                 HapticFeedback.lightImpact();
+              } else if (!ref.read(journeyProvider).contains(lesson.id)) {
+                ref.read(resumeProvider.notifier).lessonAt(lesson.id, p);
               }
             },
             itemBuilder: (context, p) {
@@ -522,6 +555,14 @@ class _Finish extends ConsumerWidget {
               ),
             ),
           ],
+        ),
+        const SizedBox(height: Gap.xl),
+        BitTip(
+          BitSpot.lesson,
+          title: following == null
+              ? 'Journey komplett - Wahnsinn!'
+              : 'Stark, Lektion geschafft!',
+          mood: MascotMood.cheer,
         ),
         if (keyPoints.isNotEmpty) ...[
           const SizedBox(height: Gap.xl),

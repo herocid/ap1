@@ -9,9 +9,11 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/flashcard.dart';
+import '../../data/models/resume.dart';
 import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
+import '../../widgets/mascot.dart';
 
 /// Wie eine Karteikarten-Runde ihre Karten auswählt.
 enum CardMode {
@@ -152,6 +154,20 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
 
   void _answer(bool knewIt) {
     final card = _queue[_pos];
+    if (_attempted.isEmpty && _mode != CardMode.lesson) {
+      // Erst mit der ersten Antwort zählt die Runde als begonnen - wer nur
+      // reinschaut, überschreibt nicht das Lesezeichen.
+      ref
+          .read(resumeProvider.notifier)
+          .cardsStarted(
+            CardBookmark(
+              mode: _mode.name,
+              title: widget.args.title,
+              topicIds: widget.args.topicIds,
+              at: DateTime.now(),
+            ),
+          );
+    }
     final first = _attempted.add(card.id);
     if (first) {
       ref.read(deckProvider.notifier).answer(card.id, knewIt: knewIt);
@@ -371,6 +387,20 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
     );
   }
 
+  MascotMood _summaryMood(CardRun? run, double quote) {
+    if (run?.isDone ?? false) return MascotMood.cheer;
+    if (quote >= 0.8) return MascotMood.cheer;
+    if (quote < 0.5) return MascotMood.oops;
+    return MascotMood.happy;
+  }
+
+  String _summaryTitle(CardRun? run, double quote) {
+    if (run?.isDone ?? false) return 'Du hast es durchgezogen!';
+    if (quote >= 0.8) return 'Stark gewusst!';
+    if (quote < 0.5) return 'Dranbleiben lohnt sich';
+    return 'Gute Runde!';
+  }
+
   String _summaryNote(CardRun? run) {
     if (run != null) {
       if (run.isDone) {
@@ -466,7 +496,11 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
                   ],
                 ),
                 const SizedBox(height: Gap.l),
-                NoteBox(tone: NoteTone.info, child: Text(_summaryNote(run))),
+                MascotSays(
+                  mood: _summaryMood(run, quote),
+                  title: _summaryTitle(run, quote),
+                  text: _summaryNote(run),
+                ),
                 if (_missedCards.isNotEmpty) ...[
                   const SizedBox(height: Gap.xl),
                   const SectionHeader('Das ging beim ersten Mal daneben'),

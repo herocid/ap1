@@ -6,6 +6,7 @@ import '../core/theme/app_colors.dart';
 import '../core/theme/app_spacing.dart';
 import '../core/theme/app_theme.dart';
 import 'hyphenation.dart';
+import 'mascot.dart';
 
 /// Standardkarte. Fasst Padding, Rahmen und Radius an einer Stelle zusammen,
 /// damit nicht jeder Screen sein eigenes Container-Rezept erfindet.
@@ -1149,9 +1150,15 @@ class EmptyState extends StatelessWidget {
     required this.title,
     required this.message,
     this.action,
+    this.mood = MascotMood.think,
   });
 
+  /// Kleines Symbol an Bit - sagt auf einen Blick, worum es geht.
   final IconData icon;
+
+  /// Leerzustände erklärt Bit: Ein leerer Bildschirm mit Coach wirkt wie
+  /// ein Hinweis, ohne Coach wie ein Fehler.
+  final MascotMood mood;
   final String title;
   final String message;
   final Widget? action;
@@ -1176,15 +1183,33 @@ class EmptyState extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            width: 88,
-            height: 88,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: context.scheme.primaryContainer,
-              shape: BoxShape.circle,
+          SizedBox(
+            width: 112,
+            height: 104,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Mascot(mood: mood, size: 96),
+                Positioned(
+                  right: 0,
+                  bottom: 0,
+                  child: Container(
+                    width: 36,
+                    height: 36,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: context.scheme.primaryContainer,
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: context.scheme.surface,
+                        width: 2,
+                      ),
+                    ),
+                    child: Icon(icon, size: 18, color: context.scheme.primary),
+                  ),
+                ),
+              ],
             ),
-            child: Icon(icon, size: 40, color: context.scheme.primary),
           ),
           const SizedBox(height: Gap.l),
           Text(

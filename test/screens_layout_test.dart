@@ -168,4 +168,38 @@ void main() {
       }
     }
   });
+
+  // Einführung: jede Seite einmal, auf dem kleinsten Handy mit großer Schrift.
+  testWidgets('Einführung: alle Seiten bei 320 px, Schrift 130 %', (
+    tester,
+  ) async {
+    tester.view.physicalSize = sizes.first * 3;
+    tester.view.devicePixelRatio = 3;
+    tester.platformDispatcher.textScaleFactorTestValue = 1.3;
+    addTearDown(tester.view.reset);
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+    final container = ProviderContainer(
+      overrides: [localStoreProvider.overrideWithValue(store)],
+    );
+    addTearDown(container.dispose);
+    await tester.pumpWidget(
+      UncontrolledProviderScope(
+        container: container,
+        child: const Ap1TrainerApp(),
+      ),
+    );
+    await tester.pumpAndSettle();
+    tester.takeException();
+    container.read(routerProvider).go('/einfuehrung');
+    await tester.pumpAndSettle();
+    var pages = 1;
+    while (find.text('Weiter').evaluate().isNotEmpty) {
+      await tester.tap(find.text('Weiter'));
+      await tester.pumpAndSettle();
+      expect(tester.takeException(), isNull, reason: 'Seite ${pages + 1}');
+      pages++;
+    }
+    expect(find.text('Los geht’s'), findsOneWidget);
+    expect(pages, greaterThanOrEqualTo(8));
+  });
 }

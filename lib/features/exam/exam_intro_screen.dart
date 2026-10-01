@@ -10,6 +10,7 @@ import '../../data/models/progress.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
 import '../learn/session_launcher.dart';
+import '../../widgets/bit_tips.dart';
 
 /// Der Einstieg in die Prüfungssimulation.
 ///
@@ -39,6 +40,8 @@ class ExamIntroScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const BitTip(BitSpot.exam, title: 'Bits Prüfungstipp'),
+                const SizedBox(height: Gap.l),
                 const NoteBox(
                   tone: NoteTone.warn,
                   title: 'Wie in der echten AP1',

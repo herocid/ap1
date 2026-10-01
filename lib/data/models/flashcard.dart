@@ -78,6 +78,12 @@ class Leitner {
   /// Wiedervorlage in Tagen je Fach.
   static const List<int> intervalDays = [1, 2, 4, 9, 18];
 
+  /// Neue Karten pro Tag im Modus „Fällig“. Wie bei Anki: Ohne Limit
+  /// stünden am ersten Tag dreitausend Karten auf dem Zettel - und nach einer
+  /// Woche ein unbezwingbarer Berg Wiederholungen. Durchlauf, Zufallsmix und
+  /// Themenauswahl kennen kein Limit.
+  static const int newPerDay = 20;
+
   static int intervalFor(int box) =>
       intervalDays[(box - 1).clamp(0, boxCount - 1)];
 
@@ -101,9 +107,14 @@ class CardState {
     this.lastSeen,
     this.timesCorrect = 0,
     this.timesWrong = 0,
+    this.firstSeen,
   });
 
   final String cardId;
+
+  /// Erste Abfrage überhaupt - zählt das Tageslimit für neue Karten.
+  /// `null` bei Karten aus älteren Versionen; die zählen als nicht heute.
+  final DateTime? firstSeen;
 
   /// 1 bis 5.
   final int box;
@@ -135,6 +146,7 @@ class CardState {
       lastSeen: n,
       timesCorrect: timesCorrect + (knewIt ? 1 : 0),
       timesWrong: timesWrong + (knewIt ? 0 : 1),
+      firstSeen: firstSeen ?? (isNew ? n : null),
     );
   }
 
@@ -145,6 +157,7 @@ class CardState {
     'last_seen': lastSeen?.toIso8601String(),
     'correct': timesCorrect,
     'wrong': timesWrong,
+    if (firstSeen != null) 'first_seen': firstSeen!.toIso8601String(),
   };
 
   factory CardState.fromJson(Map<String, dynamic> j) => CardState(
@@ -154,6 +167,7 @@ class CardState {
     lastSeen: DateTime.tryParse((j['last_seen'] ?? '') as String),
     timesCorrect: (j['correct'] as num?)?.toInt() ?? 0,
     timesWrong: (j['wrong'] as num?)?.toInt() ?? 0,
+    firstSeen: DateTime.tryParse((j['first_seen'] ?? '') as String),
   );
 }
 
@@ -174,9 +188,36 @@ class DeckState {
     return DeckState(cards: next);
   }
 
-  /// Fällige und neue Karten eines Themas - oder aller Themen, wenn
-  /// [topicIds] leer ist. Reihenfolge: zuerst was schon mal danebenging
-  /// (niedriges Fach), dann Neues, dann der Rest.
+  /// Wie viele Karten heute zum ersten Mal abgefragt wurden.
+  int newIntroducedOn(DateTime day) => cards.values.where((s) {
+    final f = s.firstSeen;
+    return f != null &&
+        f.year == day.year &&
+        f.month == day.month &&
+        f.day == day.day;
+  }).length;
+
+  /// Wie viele neue Karten heute noch drankommen dürfen.
+  int newAllowance({DateTime? now}) =>
+      math.max(0, Leitner.newPerDay - newIntroducedOn(now ?? DateTime.now()));
+
+  /// Fällige Wiederholungen - schon gesehene Karten, deren Termin da ist.
+  int dueReviewCount(Iterable<Flashcard> pool, {DateTime? now}) =>
+      pool.where((c) {
+        final s = stateOf(c.id);
+        return !s.isNew && s.isDue(now);
+      }).length;
+
+  /// Neue Karten, die heute noch drankommen (Tageslimit beachtet).
+  int dueNewCount(Iterable<Flashcard> pool, {DateTime? now}) => math.min(
+    newAllowance(now: now),
+    pool.where((c) => stateOf(c.id).isNew).length,
+  );
+
+  /// Fällige Wiederholungen plus die neuen Karten des Tages - eines Themas
+  /// oder aller Themen, wenn [topicIds] leer ist. Neue Karten kommen in
+  /// Lernreihenfolge (Reihenfolge des Pools) und höchstens bis zum
+  /// Tageslimit. Sortiert: was noch wackelt (niedriges Fach) zuerst.
   List<Flashcard> due(
     List<Flashcard> pool, {
     Set<String> topicIds = const {},
@@ -184,11 +225,20 @@ class DeckState {
     int limit = 20,
     DateTime? now,
   }) {
-    final candidates = pool
+    final scoped = pool
         .where((c) => topicIds.isEmpty || topicIds.contains(c.topicId))
-        .where((c) => subtopicIds.isEmpty || subtopicIds.contains(c.subtopicId))
-        .where((c) => stateOf(c.id).isDue(now))
-        .toList();
+        .where(
+          (c) => subtopicIds.isEmpty || subtopicIds.contains(c.subtopicId),
+        );
+    final reviews = scoped.where((c) {
+      final s = stateOf(c.id);
+      return !s.isNew && s.isDue(now);
+    });
+    final fresh = scoped
+        .where((c) => stateOf(c.id).isNew)
+        .take(newAllowance(now: now));
+    final candidates = [...reviews, ...fresh];
+    final order = {for (final (i, c) in candidates.indexed) c.id: i};
 
     candidates.sort((a, b) {
       final sa = stateOf(a.id);
@@ -196,14 +246,15 @@ class DeckState {
       // Niedrigeres Fach zuerst: was noch wackelt, kommt öfter dran.
       final byBox = sa.box.compareTo(sb.box);
       if (byBox != 0) return byBox;
-      // Im selben Fach erst die Wiederholungen, dann Neues - sonst
-      // verdrängen bei über tausend neuen Karten die Neuen jede fällige
-      // Wiederholung aus der Runde.
+      // Im selben Fach erst die Wiederholungen, dann Neues.
       if (sa.isNew != sb.isNew) return sa.isNew ? 1 : -1;
-      // Danach: länger überfällig zuerst.
+      // Danach: länger überfällig zuerst; neue Karten behalten ihre
+      // Lernreihenfolge (List.sort ist nicht stabil, daher der Index).
       final da = sa.due ?? DateTime(2000);
       final db = sb.due ?? DateTime(2000);
-      return da.compareTo(db);
+      final byDue = da.compareTo(db);
+      if (byDue != 0) return byDue;
+      return order[a.id]!.compareTo(order[b.id]!);
     });
 
     return candidates.take(limit).toList();
@@ -212,8 +263,10 @@ class DeckState {
   int countInBox(int box) =>
       cards.values.where((s) => s.box == box && !s.isNew).length;
 
+  /// Was heute dran ist: fällige Wiederholungen plus neue Karten bis zum
+  /// Tageslimit.
   int dueCount(List<Flashcard> pool, {DateTime? now}) =>
-      pool.where((c) => stateOf(c.id).isDue(now)).length;
+      dueReviewCount(pool, now: now) + dueNewCount(pool, now: now);
 
   int learnedCount(List<Flashcard> pool) =>
       pool.where((c) => !stateOf(c.id).isNew && stateOf(c.id).box >= 4).length;

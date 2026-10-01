@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/flashcard.dart';
 import '../models/profile.dart';
 import '../models/progress.dart';
+import '../models/resume.dart';
 
 /// Lokale Persistenz. Die App ist offline-first: alles landet zuerst hier,
 /// die Synchronisation mit Supabase ist ein zusätzlicher Schritt, keine
@@ -50,6 +51,10 @@ abstract interface class LocalStore {
   CardActivity readCardActivity();
   Future<void> writeCardActivity(CardActivity a);
 
+  /// Lesezeichen für „Weitermachen“ in Journey und Karteikasten.
+  ResumeState readResume();
+  Future<void> writeResume(ResumeState r);
+
   Future<void> clearAll();
 }
 
@@ -80,6 +85,7 @@ class HiveLocalStore implements LocalStore {
   static const _kJourney = 'journey_done';
   static const _kCardRun = 'card_run';
   static const _kCardActivity = 'card_activity';
+  static const _kResume = 'resume';
 
   /// Öffnet die Boxen. [inMemory] ist für Tests: nichts wird auf die Platte
   /// geschrieben, und jeder Test beginnt leer, sofern er die Boxen vorher
@@ -254,6 +260,20 @@ class HiveLocalStore implements LocalStore {
   @override
   Future<void> writeCardActivity(CardActivity a) =>
       _meta.put(_kCardActivity, a.encode());
+
+  @override
+  ResumeState readResume() {
+    final raw = _meta.get(_kResume);
+    if (raw == null) return const ResumeState();
+    try {
+      return ResumeState.decode(raw);
+    } catch (_) {
+      return const ResumeState();
+    }
+  }
+
+  @override
+  Future<void> writeResume(ResumeState r) => _meta.put(_kResume, r.encode());
 
   // ------------------------------------------------------------------ Alles
 

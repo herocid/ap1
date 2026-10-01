@@ -10,6 +10,7 @@ import '../../data/models/flashcard.dart';
 import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
+import '../../widgets/mascot.dart';
 import 'card_launch.dart';
 import 'card_session_screen.dart';
 
@@ -31,7 +32,9 @@ class CardsOverviewScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final cards = ref.watch(flashcardsProvider);
     final deck = ref.watch(deckProvider);
-    final due = deck.dueCount(cards);
+    final reviews = deck.dueReviewCount(cards);
+    final fresh = deck.dueNewCount(cards);
+    final due = reviews + fresh;
     final mastery = deck.mastery(cards);
     final weak = deck.weakCards(cards, limit: 999).length;
 
@@ -55,14 +58,28 @@ class CardsOverviewScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                MascotSays(
+                  mood: _tipMood(deck, cards, reviews, weak),
+                  size: 52,
+                  title: _tipTitle(deck, cards, reviews, weak),
+                  text: _tipText(deck, cards, reviews, weak),
+                ),
+                const SizedBox(height: Gap.l),
                 AppCard(
                   padding: const EdgeInsets.all(Gap.l),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Zahl und Aussage in einer Zeile, Erklärung darunter
-                      // über die volle Breite - die Zahl rechts neben dem
-                      // Text quetschte ihn auf 320 px auf vier Zeilen.
+                      Text(
+                        'HEUTE DRAN',
+                        style: context.text.labelSmall?.copyWith(
+                          color: context.c.textMuted,
+                          letterSpacing: 1,
+                        ),
+                      ),
+                      const SizedBox(height: Gap.xs),
+                      // Zahl und Aussage in einer Zeile, Aufschlüsselung
+                      // darunter über die volle Breite.
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -80,10 +97,10 @@ class CardsOverviewScreen extends ConsumerWidget {
                           Expanded(
                             child: Text(
                               due == 0
-                                  ? 'Heute nichts fällig'
+                                  ? 'Alles erledigt für heute'
                                   : due == 1
-                                  ? 'Karte heute fällig'
-                                  : 'Karten heute fällig',
+                                  ? 'Karte wartet auf dich'
+                                  : 'Karten warten auf dich',
                               style: context.text.titleMedium,
                             ),
                           ),
@@ -92,9 +109,11 @@ class CardsOverviewScreen extends ConsumerWidget {
                       const SizedBox(height: Gap.xs),
                       Text(
                         due == 0
-                            ? 'Der Kasten legt jede Karte nach dem passenden '
-                                  'Abstand wieder vor.'
-                            : 'Diese Karten sollten heute wiederholt werden.',
+                            ? 'Morgen legt dir der Kasten die nächsten Karten '
+                                  'vor. Lust auf mehr? Starte einen Durchlauf.'
+                            : '$reviews ${reviews == 1 ? 'Wiederholung' : 'Wiederholungen'}'
+                                  ' · $fresh neue ${fresh == 1 ? 'Karte' : 'Karten'}'
+                                  ' (Tageslimit ${Leitner.newPerDay})',
                         style: context.text.bodyMedium?.copyWith(
                           color: context.c.textMuted,
                         ),
@@ -106,11 +125,15 @@ class CardsOverviewScreen extends ConsumerWidget {
                           onPressed: due == 0
                               ? null
                               : () => _start(context, const CardSessionArgs()),
-                          icon: const Icon(Icons.play_arrow_rounded),
+                          icon: Icon(
+                            due == 0
+                                ? Icons.check_circle_outline
+                                : Icons.play_arrow_rounded,
+                          ),
                           label: Text(
                             due == 0
-                                ? 'Alles erledigt'
-                                : 'Lernen (${due > 20 ? 20 : due} Karten)',
+                                ? 'Heute geschafft'
+                                : 'Jetzt lernen (${due > 20 ? 20 : due} Karten)',
                           ),
                         ),
                       ),
@@ -204,6 +227,52 @@ class CardsOverviewScreen extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  // Bit kommentiert den Stand des Kastens - ein Satz, der sagt, was jetzt
+  // am meisten bringt.
+  static MascotMood _tipMood(
+    DeckState deck,
+    List<Flashcard> cards,
+    int reviews,
+    int weak,
+  ) {
+    if (deck.cards.isEmpty) return MascotMood.wave;
+    if (reviews == 0 && weak == 0) return MascotMood.cheer;
+    return MascotMood.think;
+  }
+
+  static String _tipTitle(
+    DeckState deck,
+    List<Flashcard> cards,
+    int reviews,
+    int weak,
+  ) {
+    if (deck.cards.isEmpty) return 'Dein Karteikasten';
+    if (reviews > 0) return 'Wiederholen lohnt sich';
+    if (weak > 0) return 'Schwächen in Stärken verwandeln';
+    return 'Alles im grünen Bereich';
+  }
+
+  static String _tipText(
+    DeckState deck,
+    List<Flashcard> cards,
+    int reviews,
+    int weak,
+  ) {
+    if (deck.cards.isEmpty) {
+      return 'Lies die Frage, antworte im Kopf, dreh dann um - und sei ehrlich '
+          'zu dir. Was du nicht weißt, kommt gleich nochmal.';
+    }
+    if (reviews > 0) {
+      return '$reviews ${reviews == 1 ? 'Karte ist' : 'Karten sind'} kurz vor '
+          'dem Vergessen. Jetzt wiederholt, sitzt es doppelt so lange.';
+    }
+    if (weak > 0) {
+      return '$weak ${weak == 1 ? 'Karte wackelt' : 'Karten wackeln'} noch. '
+          'Fünf Minuten Schwächen-Training bringen hier am meisten.';
+    }
+    return 'Keine Wiederholung offen. Ein Zufallsmix hält alles frisch.';
   }
 
   static void _start(BuildContext context, CardSessionArgs args) {

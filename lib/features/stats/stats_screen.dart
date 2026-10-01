@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
@@ -10,60 +11,59 @@ import '../../data/models/exam_area.dart';
 import '../../data/models/flashcard.dart';
 import '../../data/models/progress.dart';
 import '../../data/models/topic.dart';
+import '../../data/models/subtopic.dart';
 import '../cards/card_launch.dart';
+import '../learn/session_launcher.dart';
 import '../../state/providers.dart';
 import '../../widgets/achievement_badge.dart';
 import '../../widgets/common.dart';
 import '../../widgets/mascot.dart';
 
-/// Statistik. Beantwortet: Bin ich besser geworden, wo stehe ich pro Thema,
-/// und habe ich zuletzt überhaupt etwas getan?
+/// Statistik in der Reihenfolge, in der man sie liest:
+///
+/// 1. Karteikarten - wie sicher die Karten sitzen.
+/// 2. Quiz - Trefferquote, Aktivität, Prüfungsreife je Thema.
+/// 3. Problemthemen - aus Quiz und Karten zusammen: wo es am meisten hakt.
+/// 4. Journey - wie weit der Lernweg ist.
+/// 5. Abzeichen - ganz unten, als Belohnung.
+///
+/// Bit steht oben und sagt in einem Satz, was die Zahlen bedeuten.
 class StatsScreen extends ConsumerWidget {
   const StatsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final progress = ref.watch(progressProvider);
-    final readiness = ref.watch(readinessProvider);
-    final stats = ref.watch(topicStatsProvider);
-    final poolSize = ref.watch(poolSizeProvider);
     final achievements = ref.watch(achievementsProvider);
+    final problems = ref.watch(_problemTopicsProvider);
+    final deck = ref.watch(deckProvider);
+    final lessonsDone = ref.watch(journeyProvider).length;
 
-    // Die Erfolge stehen immer ganz oben - auch vor der ersten Aufgabe
-    // zeigen sie, was es zu holen gibt.
-    if (progress.history.isEmpty) {
-      return Scaffold(
-        appBar: AppBar(title: const Text('Statistik')),
-        body: ListView(
-          padding: const EdgeInsets.fromLTRB(Gap.l, 0, Gap.l, Gap.xxxl),
-          children: [
-            ReadableWidth(
-              child: Column(
-                children: [
-                  AchievementsPanel(statuses: achievements),
-                  const SizedBox(height: Gap.xl),
-                  if (ref.watch(deckProvider).cards.isNotEmpty) ...[
-                    const _CardStatsPanel(),
-                    const SizedBox(height: Gap.xl),
-                  ],
-                  const MascotSays(
-                    mood: MascotMood.think,
-                    title: 'Noch keine Daten',
-                    text:
-                        'Sobald du die erste Runde gespielt hast, siehst du '
-                        'hier deine Trefferquote je Thema, deine Aktivität '
-                        'und deine Prüfungsreife.',
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    final days = _last14Days(progress.history);
-    final maxDay = days.fold<int>(1, (m, e) => math.max(m, e));
+    final tip =
+        progress.history.isEmpty && deck.cards.isEmpty && lessonsDone == 0
+        ? (
+            mood: MascotMood.think,
+            title: 'Hier entsteht dein Lernbild',
+            text:
+                'Sobald du lernst, siehst du hier, was sitzt und wo es hakt. '
+                'Starte mit einer Lektion oder ein paar Karten.',
+          )
+        : problems.isNotEmpty
+        ? (
+            mood: MascotMood.think,
+            title: 'Dein größter Hebel',
+            text:
+                '„${problems.first.topic.title}“ hakt noch am meisten. '
+                'Tipp das Thema bei den Problemthemen an - ich stelle dir '
+                'die passende Übung zusammen.',
+          )
+        : (
+            mood: MascotMood.cheer,
+            title: 'Keine Problemthemen',
+            text:
+                'Was du bisher gelernt hast, sitzt. Nimm dir jetzt ein Thema '
+                'vor, das du noch nicht angefasst hast.',
+          );
 
     return Scaffold(
       appBar: AppBar(title: const Text('Statistik')),
@@ -74,125 +74,200 @@ class StatsScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AchievementsPanel(statuses: achievements),
-                const SizedBox(height: Gap.l),
-                StatTileRow(
-                  children: [
-                    StatTile(
-                      icon: Icons.local_fire_department,
-                      value: '${progress.streak}',
-                      label: progress.streak == 1
-                          ? 'Tag Streak'
-                          : 'Tage Streak',
-                      color: context.c.flame,
-                    ),
-                    StatTile(
-                      icon: Icons.military_tech_outlined,
-                      value: 'Lv. ${progress.level}',
-                      label: '${progress.xp} XP',
-                    ),
-                    StatTile(
-                      icon: Icons.checklist_rtl,
-                      value: '${progress.totalAnswered}',
-                      label: 'Aufgaben',
-                      color: context.c.success,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: Gap.l),
-
-                AppCard(
-                  padding: const EdgeInsets.all(Gap.l),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Fortschritt zum nächsten Level',
-                        style: context.text.titleMedium,
-                      ),
-                      const SizedBox(height: Gap.m),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(Radii.pill),
-                        child: LinearProgressIndicator(
-                          value: progress.levelProgress,
-                        ),
-                      ),
-                      const SizedBox(height: Gap.s),
-                      Text(
-                        '${progress.xp - progress.xpForCurrentLevel} von '
-                        '${progress.xpForNextLevel - progress.xpForCurrentLevel} XP '
-                        'bis Level ${progress.level + 1}',
-                        style: context.text.labelSmall?.copyWith(
-                          color: context.c.textMuted,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: Gap.l),
-
-                AppCard(
-                  padding: const EdgeInsets.all(Gap.l),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Letzte 14 Tage', style: context.text.titleMedium),
-                      const SizedBox(height: Gap.l),
-                      SizedBox(
-                        height: 92,
-                        child: _ActivityChart(
-                          values: days,
-                          max: maxDay,
-                          barColor: context.scheme.primary,
-                          trackColor: context.c.surfaceAlt,
-                        ),
-                      ),
-                      const SizedBox(height: Gap.s),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Flexible(
-                            child: Text(
-                              'vor 14 Tagen',
-                              style: context.text.labelSmall?.copyWith(
-                                color: context.c.textMuted,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            'heute',
-                            style: context.text.labelSmall?.copyWith(
-                              color: context.c.textMuted,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                MascotSays(mood: tip.mood, title: tip.title, text: tip.text),
                 const SizedBox(height: Gap.xl),
                 const _CardStatsPanel(),
-                const SizedBox(height: Gap.xl),
-
-                SectionHeader(
-                  'Prüfungsreife: $readiness %',
-                  subtitle:
-                      'Gefüllter Balken = Können, senkrechter Strich = wie '
-                      'viel des Themas du schon gesehen hast.',
+                const SizedBox(height: Gap.xxl),
+                _QuizPanel(progress: progress),
+                const SizedBox(height: Gap.xxl),
+                _ProblemTopicsPanel(problems: problems),
+                const SizedBox(height: Gap.xxl),
+                const _JourneyPanel(),
+                const SizedBox(height: Gap.xxl),
+                const SectionHeader(
+                  'Abzeichen',
+                  subtitle: 'Für Ausdauer, Können und Meilensteine.',
                 ),
-                for (final t in Topics.all) ...[
-                  _TopicStatRow(
-                    topic: t,
-                    stat: stats[t.id],
-                    poolSize: poolSize[t.id] ?? 0,
-                  ),
-                  const SizedBox(height: Gap.s),
-                ],
+                AchievementsPanel(statuses: achievements),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+/// Quiz: Trefferquote, Level, Aktivität und Prüfungsreife je Thema.
+class _QuizPanel extends ConsumerWidget {
+  const _QuizPanel({required this.progress});
+
+  final ProgressState progress;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final readiness = ref.watch(readinessProvider);
+    final stats = ref.watch(topicStatsProvider);
+    final poolSize = ref.watch(poolSizeProvider);
+    final history = progress.history;
+    final days = _last14Days(history);
+    final maxDay = days.fold<int>(1, (m, e) => math.max(m, e));
+    final quote = history.isEmpty
+        ? null
+        : history.fold<double>(0, (s, r) => s + r.score) / history.length;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SectionHeader(
+          'Quiz',
+          subtitle: 'Wie du bei Aufgaben und Prüfungsfragen abschneidest.',
+        ),
+        StatTileRow(
+          children: [
+            StatTile(
+              icon: Icons.checklist_rtl,
+              value: '${progress.totalAnswered}',
+              label: 'Aufgaben',
+              color: context.c.success,
+            ),
+            StatTile(
+              icon: Icons.track_changes,
+              value: quote == null ? '–' : '${(quote * 100).round()} %',
+              label: 'Trefferquote',
+            ),
+            StatTile(
+              icon: Icons.local_fire_department,
+              value: '${progress.streak}',
+              label: progress.streak == 1 ? 'Tag Serie' : 'Tage Serie',
+              color: context.c.flame,
+            ),
+          ],
+        ),
+        const SizedBox(height: Gap.l),
+        if (history.isEmpty)
+          const NoteBox(
+            tone: NoteTone.info,
+            child: Text(
+              'Noch keine Quizrunde gespielt. Starte im Tab „Quiz“ einen '
+              'Kurztest - nach zehn Aufgaben siehst du hier deine Stärken.',
+            ),
+          )
+        else ...[
+          AppCard(
+            padding: const EdgeInsets.all(Gap.l),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Level ${progress.level}',
+                  style: context.text.titleMedium,
+                ),
+                const SizedBox(height: Gap.m),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(Radii.pill),
+                  child: LinearProgressIndicator(
+                    value: progress.levelProgress,
+                    minHeight: 8,
+                  ),
+                ),
+                const SizedBox(height: Gap.s),
+                Text(
+                  '${progress.xp - progress.xpForCurrentLevel} von '
+                  '${progress.xpForNextLevel - progress.xpForCurrentLevel} XP '
+                  'bis Level ${progress.level + 1}',
+                  style: context.text.labelSmall?.copyWith(
+                    color: context.c.textMuted,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: Gap.l),
+          AppCard(
+            padding: const EdgeInsets.all(Gap.l),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Aufgaben der letzten 14 Tage',
+                  style: context.text.titleMedium,
+                ),
+                const SizedBox(height: Gap.l),
+                SizedBox(
+                  height: 92,
+                  child: _ActivityChart(
+                    values: days,
+                    max: maxDay,
+                    barColor: context.scheme.primary,
+                    trackColor: context.c.surfaceAlt,
+                  ),
+                ),
+                const SizedBox(height: Gap.s),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        'vor 14 Tagen',
+                        style: context.text.labelSmall?.copyWith(
+                          color: context.c.textMuted,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      'heute',
+                      style: context.text.labelSmall?.copyWith(
+                        color: context.c.textMuted,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: Gap.l),
+          // Die 35 Themen eingeklappt: aufgeklappt wären sie eine
+          // Bildschirmlänge nach der anderen.
+          AppCard(
+            padding: EdgeInsets.zero,
+            child: Theme(
+              data: Theme.of(
+                context,
+              ).copyWith(dividerColor: Colors.transparent),
+              child: ExpansionTile(
+                tilePadding: const EdgeInsets.symmetric(horizontal: Gap.l),
+                childrenPadding: const EdgeInsets.fromLTRB(
+                  Gap.s,
+                  0,
+                  Gap.s,
+                  Gap.s,
+                ),
+                title: Text(
+                  'Prüfungsreife: $readiness %',
+                  style: context.text.titleMedium,
+                ),
+                subtitle: Text(
+                  progress.readinessLabel(readiness),
+                  style: context.text.bodySmall?.copyWith(
+                    color: context.c.textMuted,
+                  ),
+                ),
+                children: [
+                  for (final t in Topics.all) ...[
+                    _TopicStatRow(
+                      topic: t,
+                      stat: stats[t.id],
+                      poolSize: poolSize[t.id] ?? 0,
+                    ),
+                    const SizedBox(height: Gap.s),
+                  ],
+                ],
+              ),
+            ),
+          ),
+        ],
+      ],
     );
   }
 
@@ -206,6 +281,193 @@ class StatsScreen extends ConsumerWidget {
       if (diff >= 0 && diff < 14) counts[13 - diff]++;
     }
     return counts;
+  }
+}
+
+/// Ein Problemthema: schwach im Quiz, bei den Karten oder in beidem.
+class _ProblemTopic {
+  const _ProblemTopic({
+    required this.topic,
+    required this.score,
+    this.quiz,
+    this.cards,
+  });
+
+  final Topic topic;
+
+  /// 0..1, Mittel aus Quiz- und Kartenquote (soweit vorhanden).
+  final double score;
+  final double? quiz;
+  final double? cards;
+}
+
+/// Problemthemen aus Quiz und Karten. Ein Thema zählt erst ab drei Antworten
+/// (Quiz) bzw. drei gesehenen Karten - eine einzelne Fehlantwort macht noch
+/// kein Problemthema. Problem = unter 70 %.
+final _problemTopicsProvider = Provider<List<_ProblemTopic>>((ref) {
+  final stats = ref.watch(topicStatsProvider);
+  final cards = ref.watch(flashcardsProvider);
+  final deck = ref.watch(deckProvider);
+
+  final byTopic = <String, List<Flashcard>>{};
+  for (final c in cards) {
+    byTopic.putIfAbsent(c.topicId, () => []).add(c);
+  }
+
+  final out = <_ProblemTopic>[];
+  for (final t in Topics.all) {
+    final st = stats[t.id];
+    final quiz = st != null && st.answered >= 3 ? st.mastery : null;
+    final topicCards = byTopic[t.id] ?? const <Flashcard>[];
+    final card = deck.seenCount(topicCards) >= 3
+        ? deck.accuracy(topicCards)
+        : null;
+    final parts = [?quiz, ?card];
+    if (parts.isEmpty) continue;
+    final score = parts.reduce((a, b) => a + b) / parts.length;
+    if (score >= 0.7) continue;
+    out.add(_ProblemTopic(topic: t, score: score, quiz: quiz, cards: card));
+  }
+  out.sort((a, b) => a.score.compareTo(b.score));
+  return out;
+});
+
+class _ProblemTopicsPanel extends ConsumerWidget {
+  const _ProblemTopicsPanel({required this.problems});
+
+  final List<_ProblemTopic> problems;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    String pct(double v) => '${(v * 100).round()} %';
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SectionHeader(
+          'Problemthemen',
+          subtitle:
+              'Aus deinen Quizrunden und Karten - antippen startet die '
+              'passende Übung.',
+        ),
+        if (problems.isEmpty)
+          const NoteBox(
+            tone: NoteTone.info,
+            child: Text(
+              'Noch keine Problemthemen. Ein Thema landet hier, wenn du '
+              'darin unter 70 % liegst - ab drei Antworten oder Karten.',
+            ),
+          )
+        else
+          for (final p in problems.take(6)) ...[
+            ProgressTile(
+              icon: p.topic.icon,
+              tone: TileTone.danger,
+              title: p.topic.title,
+              progress: p.score,
+              caption: [
+                if (p.quiz != null) 'Quiz ${pct(p.quiz!)}',
+                if (p.cards != null) 'Karten ${pct(p.cards!)}',
+              ].join(' · '),
+              // Geübt wird da, wo es am meisten hakt.
+              onTap: () => (p.cards ?? 2) < (p.quiz ?? 2)
+                  ? CardLaunch.weak(
+                      context,
+                      topicIds: {p.topic.id},
+                      title: p.topic.title,
+                    )
+                  : SessionLauncher.practice(context, ref, topicId: p.topic.id),
+            ),
+            const SizedBox(height: Gap.s),
+          ],
+      ],
+    );
+  }
+}
+
+/// Journey: Lektionen je Bereich und die angefangene Lektion.
+class _JourneyPanel extends ConsumerWidget {
+  const _JourneyPanel();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final lessons = ref.watch(lessonsProvider);
+    final done = ref.watch(journeyProvider);
+    final inProgress = ref.watch(lessonInProgressProvider);
+    final steps = ref.watch(lessonStepsProvider);
+    final doneCount = lessons.where((l) => done.contains(l.id)).length;
+    final stepsRead = lessons
+        .where((l) => done.contains(l.id))
+        .fold<int>(0, (s, l) => s + (steps[l.id]?.length ?? 0));
+    final open = inProgress == null
+        ? null
+        : Subtopics.byId(inProgress.lessonId);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SectionHeader(
+          'Journey',
+          subtitle: 'Dein Lernweg durch alle sieben Prüfungsbereiche.',
+        ),
+        StatTileRow(
+          children: [
+            StatTile(
+              icon: Icons.route_outlined,
+              value: '$doneCount',
+              label: 'von ${lessons.length} Lektionen',
+              color: context.c.flame,
+            ),
+            StatTile(
+              icon: Icons.menu_book_outlined,
+              value: '$stepsRead',
+              label: 'Lernschritte',
+            ),
+            StatTile(
+              icon: Icons.pie_chart_outline,
+              value: lessons.isEmpty
+                  ? '0 %'
+                  : '${(doneCount / lessons.length * 100).round()} %',
+              label: 'geschafft',
+              color: context.c.success,
+            ),
+          ],
+        ),
+        if (open != null) ...[
+          const SizedBox(height: Gap.l),
+          ActionTile(
+            icon: Icons.bookmark_outline,
+            tone: TileTone.flame,
+            title: open.title,
+            subtitle:
+                'Angefangen - weiter bei Schritt ${inProgress!.page} von '
+                '${steps[open.id]?.length ?? 0}',
+            onTap: () => context.push('/lektion/${open.id}'),
+          ),
+        ],
+        const SizedBox(height: Gap.l),
+        for (final area in ExamAreas.all) ...[
+          Builder(
+            builder: (context) {
+              final areaLessons = lessons
+                  .where((l) => Topics.byId(l.topicId).areaId == area.id)
+                  .toList();
+              if (areaLessons.isEmpty) return const SizedBox.shrink();
+              final n = areaLessons.where((l) => done.contains(l.id)).length;
+              return ProgressTile(
+                icon: area.icon,
+                tone: TileTone.flame,
+                overline: 'BEREICH ${area.number}',
+                title: area.title,
+                progress: n / areaLessons.length,
+                caption: '$n von ${areaLessons.length} Lektionen',
+                onTap: () => context.go('/journey'),
+              );
+            },
+          ),
+          const SizedBox(height: Gap.s),
+        ],
+      ],
+    );
   }
 }
 
@@ -323,36 +585,12 @@ class _CardStatsPanel extends ConsumerWidget {
     final days = activity.lastDays(14);
     final maxDay = days.fold<int>(1, (m, e) => math.max(m, e));
 
-    // Schwächste Themen: nur mit genug gesehenen Karten, damit eine einzige
-    // Fehlantwort kein ganzes Thema rot färbt.
-    final byTopic = <String, List<Flashcard>>{};
-    for (final c in cards) {
-      byTopic.putIfAbsent(c.topicId, () => []).add(c);
-    }
-    final weakTopics = <(Topic, double, int, double)>[];
-    for (final e in byTopic.entries) {
-      final seen = e.value.where((c) => !deck.stateOf(c.id).isNew).toList();
-      if (seen.length < 3) continue;
-      final w =
-          seen.map((c) => deck.weakness(c.id)!).reduce((a, b) => a + b) /
-          seen.length;
-      final shaky = deck.weakCards(e.value, limit: 999).length;
-      if (shaky == 0) continue;
-      weakTopics.add((
-        Topics.byId(e.key),
-        w,
-        shaky,
-        deck.accuracy(e.value) ?? 0,
-      ));
-    }
-    weakTopics.sort((a, b) => b.$2.compareTo(a.$2));
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SectionHeader(
           'Karteikarten',
-          subtitle: 'Was sitzt, wie oft du übst und wo es noch hakt.',
+          subtitle: 'Wie sicher deine Karten sitzen und wie oft du übst.',
         ),
         StatTileRow(
           children: [
@@ -425,38 +663,6 @@ class _CardStatsPanel extends ConsumerWidget {
                 : () => CardLaunch.continueRun(context, run.title),
           ),
         ],
-        const SizedBox(height: Gap.l),
-        Text('Schwächste Themen', style: context.text.titleMedium),
-        const SizedBox(height: Gap.s),
-        if (weakTopics.isEmpty)
-          NoteBox(
-            tone: NoteTone.info,
-            child: Text(
-              deck.seenCount(cards) < 3
-                  ? 'Lerne ein paar Runden - dann zeigt sich hier, welche '
-                        'Themen noch wackeln.'
-                  : 'Keine Schwächen erkennbar - alles, was du bisher '
-                        'gelernt hast, sitzt.',
-            ),
-          )
-        else
-          for (final w in weakTopics.take(5)) ...[
-            ProgressTile(
-              icon: w.$1.icon,
-              tone: TileTone.danger,
-              title: w.$1.title,
-              progress: w.$4,
-              caption:
-                  '${(w.$4 * 100).round()} % Treffer · ${w.$3} wackelige '
-                  '${w.$3 == 1 ? 'Karte' : 'Karten'}',
-              onTap: () => CardLaunch.weak(
-                context,
-                topicIds: {w.$1.id},
-                title: w.$1.title,
-              ),
-            ),
-            const SizedBox(height: Gap.s),
-          ],
         const SizedBox(height: Gap.l),
         Text('Karten je Bereich', style: context.text.titleMedium),
         const SizedBox(height: Gap.xs),

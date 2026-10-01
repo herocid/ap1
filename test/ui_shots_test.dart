@@ -70,13 +70,12 @@ Future<void> _loadFonts() async {
   final flutterRoot =
       Platform.environment['FLUTTER_ROOT'] ??
       r'C:\Users\Student\develop\flutter';
-  final icons = FontLoader('MaterialIcons')
-    ..addFont(
-      file(
-        '$flutterRoot/bin/cache/artifacts/material_fonts/'
-        'materialicons-regular.otf',
-      ),
-    );
+  // Unter Windows ist die Groß-/Kleinschreibung egal, unter Linux nicht.
+  final dir = '$flutterRoot/bin/cache/artifacts/material_fonts';
+  final iconFile = File('$dir/MaterialIcons-Regular.otf').existsSync()
+      ? '$dir/MaterialIcons-Regular.otf'
+      : '$dir/materialicons-regular.otf';
+  final icons = FontLoader('MaterialIcons')..addFont(file(iconFile));
   await icons.load();
 }
 

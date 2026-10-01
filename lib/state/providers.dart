@@ -8,6 +8,7 @@ import '../core/util/study_plan.dart';
 import '../data/models/exam_area.dart';
 import '../data/models/exam_case.dart';
 import '../data/models/flashcard.dart';
+import '../data/models/resume.dart';
 import '../data/models/nugget.dart';
 import '../data/models/profile.dart';
 import '../data/models/progress.dart';
@@ -399,6 +400,56 @@ final journeyProvider = StateNotifierProvider<JourneyNotifier, Set<String>>((
   ref,
 ) {
   return JourneyNotifier(ref.watch(localStoreProvider));
+});
+
+/// Lesezeichen für „Weitermachen“: angefangene Lektion und letzte
+/// Kartenrunde.
+class ResumeNotifier extends StateNotifier<ResumeState> {
+  ResumeNotifier(this._store) : super(_store.readResume());
+  final LocalStore _store;
+
+  void lessonAt(String lessonId, int page) {
+    state = state.copyWith(
+      lesson: LessonBookmark(
+        lessonId: lessonId,
+        page: page,
+        at: DateTime.now(),
+      ),
+    );
+    _store.writeResume(state);
+  }
+
+  /// Lektion fertig: Lesezeichen entfernen, falls es auf sie zeigt.
+  void lessonDone(String lessonId) {
+    if (state.lesson?.lessonId != lessonId) return;
+    state = state.copyWith(clearLesson: true);
+    _store.writeResume(state);
+  }
+
+  void cardsStarted(CardBookmark b) {
+    state = state.copyWith(cards: b);
+    _store.writeResume(state);
+  }
+
+  void reset() {
+    state = const ResumeState();
+    _store.writeResume(state);
+  }
+}
+
+final resumeProvider = StateNotifierProvider<ResumeNotifier, ResumeState>((
+  ref,
+) {
+  return ResumeNotifier(ref.watch(localStoreProvider));
+});
+
+/// Die angefangene Lektion, sofern sie noch nicht abgeschlossen ist.
+final lessonInProgressProvider = Provider<LessonBookmark?>((ref) {
+  final b = ref.watch(resumeProvider).lesson;
+  if (b == null || ref.watch(journeyProvider).contains(b.lessonId)) {
+    return null;
+  }
+  return b;
 });
 
 /// Die erste noch offene Lektion in Lernreihenfolge - oder null, wenn alles

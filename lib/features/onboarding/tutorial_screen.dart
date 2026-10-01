@@ -125,7 +125,7 @@ class _TutorialScreenState extends ConsumerState<TutorialScreen> {
   }
 
   static List<_PageData> _pages(int lessons) => [
-    // Erst stellt Bit sich vor, dann führt er durch die Tabs.
+    // Erst stellt Bit sich vor, dann führt er Tab für Tab durch die App.
     const _PageData(
       intro: true,
       mood: MascotMood.wave,
@@ -135,8 +135,21 @@ class _TutorialScreenState extends ConsumerState<TutorialScreen> {
           'der AP1 auswendig. Ab heute bin ich dein Coach.',
       points: [
         'Ich sage dir jeden Tag, was als Nächstes dran ist.',
-        'Ich freue mich mit dir, wenn es klappt.',
-        'Und wenn nicht, üben wir es einfach noch einmal.',
+        'Ich gebe dir überall Tipps - tipp mich an, dann kommt der nächste.',
+        'Und wenn etwas nicht klappt, üben wir es einfach noch einmal.',
+      ],
+    ),
+    const _PageData(
+      mood: MascotMood.happy,
+      tab: 0,
+      title: 'Start: Dein Tag auf einen Blick',
+      speech:
+          'Auf der Startseite steht immer, was jetzt am meisten bringt - '
+          'ein Tipp von mir und ein großer Knopf.',
+      points: [
+        'Tagesziel: eine gemischte Runde, erst Fehler, dann Schwächen',
+        'Weitermachen: Journey und Karten genau da, wo du aufgehört hast',
+        'Countdown bis zu deiner Prüfung',
       ],
     ),
     _PageData(
@@ -144,11 +157,12 @@ class _TutorialScreenState extends ConsumerState<TutorialScreen> {
       tab: 1,
       title: 'Journey: Neues lernen',
       speech:
-          'In der Journey bringe ich dir den Stoff bei - in '
+          'In der Journey bringe ich dir den kompletten Stoff bei - in '
           '$lessons kurzen Lektionen, eine nach der anderen.',
       points: const [
         'Erst die Idee, dann ein Beispiel, dann die Prüfungsfalle',
-        'Am Ende jeder Lektion ein kleiner Wissenscheck',
+        'Zum Schluss das Wichtigste in Kürze',
+        'Unterbrochen? Ich merke mir den Schritt.',
       ],
     ),
     const _PageData(
@@ -156,36 +170,74 @@ class _TutorialScreenState extends ConsumerState<TutorialScreen> {
       tab: 2,
       title: 'Quiz: Abgefragt werden',
       speech:
-          'Im Quiz erkläre ich nichts - hier frage ich dich ab. '
-          'So sehen wir beide, was schon sitzt.',
+          'Im Quiz erkläre ich nichts - hier frage ich dich ab, in den '
+          'Aufgabenformaten der echten IHK-Prüfung.',
       points: [
         'Kurztest: Zufallsfragen, bis du aufhörst',
-        'Prüfung: 90 Minuten mit Zeitlimit wie im Ernstfall',
-        'Falsche Antworten merke ich mir im Fehlerspeicher',
+        'Gezielt ein Thema üben',
+        'Falsche Antworten kommen im Fehlerspeicher wieder',
+      ],
+    ),
+    const _PageData(
+      mood: MascotMood.think,
+      tab: 2,
+      title: 'Prüfung: Der Ernstfall zum Üben',
+      speech:
+          'Die Prüfungssimulation ist aufgebaut wie die echte AP1: ein '
+          'Unternehmen, vier Fallaufgaben, 90 Minuten.',
+      points: [
+        'Je Aufgabe 25 Punkte, zusammen 100',
+        'Freitext mit Bewertung nach Kriterien - wie bei der IHK',
+        'Am Ende deine Note nach dem IHK-Schlüssel',
       ],
     ),
     const _PageData(
       mood: MascotMood.happy,
       tab: 3,
-      title: 'Karten: Wiederholen',
+      title: 'Karten: Schnell wiederholen',
       speech:
-          'Karteikarten lege ich dir genau dann wieder hin, wenn du '
-          'sie sonst vergessen würdest.',
+          'Karteikarten lege ich dir genau dann wieder hin, wenn du sie '
+          'sonst vergessen würdest.',
       points: [
-        'Gewusst: Die Karte wandert ein Fach weiter',
-        'Wiedervorlage nach 1, 2, 4, 9 und 18 Tagen',
+        'Nicht gewusst? Die Karte kommt in derselben Runde wieder.',
+        'Jeden Tag 20 neue Karten plus deine Wiederholungen',
+        'Durchlauf: alle Karten, bis du alles weißt',
+      ],
+    ),
+    const _PageData(
+      mood: MascotMood.happy,
+      tab: 0,
+      title: 'Sessions: Alles zu einem Thema',
+      speech:
+          'Wenn du ein Themengebiet am Stück durcharbeiten willst, '
+          'starte auf der Startseite eine Session.',
+      points: [
+        'Erst lernen, dann die Karten dazu, dann ein kurzes Quiz',
+        'Etwa 15 Minuten je Lektion',
       ],
     ),
     const _PageData(
       mood: MascotMood.cheer,
-      tab: 0,
+      tab: 4,
+      title: 'Statistik: Was sitzt, was hakt',
+      speech:
+          'In der Statistik siehst du, wie du bei Karten und Quiz '
+          'abschneidest - und welche Themen noch Arbeit brauchen.',
+      points: [
+        'Problemthemen antippen startet die passende Übung',
+        'Dein Fortschritt in der Journey',
+        '20 Abzeichen zum Sammeln',
+      ],
+    ),
+    const _PageData(
+      mood: MascotMood.cheer,
       title: 'Jeden Tag ein Stück',
       speech:
-          'Auf der Startseite warte ich jeden Tag mit einem Tipp auf '
-          'dich. Und in der Statistik siehst du, wie prüfungsreif du bist.',
+          'Mein wichtigster Tipp: lieber jeden Tag 15 Minuten als einmal '
+          'die Woche drei Stunden. Abstand ist der Trick beim Behalten.',
       points: [
-        'Ein Knopf für die Tagesrunde',
-        'Streak und Tagesziel halten dich dran',
+        'Tagesziel erreichen hält deine Serie am Leben',
+        'Du kannst diese Einführung in den Einstellungen wieder ansehen',
       ],
     ),
   ];
@@ -243,7 +295,10 @@ class _TutorialPage extends StatelessWidget {
               ),
             ),
           ] else ...[
-            _NavPreview(active: page.tab!),
+            if (page.tab != null)
+              _NavPreview(active: page.tab!)
+            else
+              Center(child: Mascot(mood: page.mood, size: 120)),
             const SizedBox(height: Gap.xl),
             Text(page.title, style: context.text.headlineSmall),
             const SizedBox(height: Gap.l),

@@ -8,6 +8,7 @@ import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
 import 'card_launch.dart';
+import '../../widgets/bit_tips.dart';
 
 /// Themen für eine Karteikarten-Runde auswählen.
 ///
@@ -63,13 +64,7 @@ class _CardPickerScreenState extends ConsumerState<CardPickerScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Tipp: Mehrere Themen gemischt zu lernen fällt schwerer, '
-                  'bleibt aber länger hängen als ein Thema am Stück.',
-                  style: context.text.bodyMedium?.copyWith(
-                    color: context.c.textMuted,
-                  ),
-                ),
+                const BitTip(BitSpot.picker),
                 const SizedBox(height: Gap.l),
                 for (final area in ExamAreas.all) ...[
                   _AreaBlock(

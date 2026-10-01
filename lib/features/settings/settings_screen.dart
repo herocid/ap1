@@ -270,6 +270,7 @@ class SettingsScreen extends ConsumerWidget {
       ref.read(cardRunProvider.notifier).clear();
       ref.read(cardActivityProvider.notifier).reset();
       ref.read(journeyProvider.notifier).reset();
+      ref.read(resumeProvider.notifier).reset();
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Fortschritt zurückgesetzt.')),

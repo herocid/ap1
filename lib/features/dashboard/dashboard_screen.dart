@@ -13,6 +13,8 @@ import '../../state/providers.dart';
 import '../../widgets/common.dart';
 import '../../widgets/hyphenation.dart';
 import '../../widgets/mascot.dart';
+import '../cards/card_launch.dart';
+import '../cards/card_session_screen.dart';
 import '../learn/session_launcher.dart';
 
 /// Die Startseite. Sie beantwortet in fünf Sekunden „Was mache ich jetzt?“:
@@ -93,24 +95,40 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         ],
       ],
     );
-    final journey = nextLesson == null
-        ? null
-        : Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              _SectionTitle(
-                lessonsDone == 0 ? 'Hier anfangen' : 'Weiterlernen',
-                action: 'Journey',
-                onAction: () => context.go('/journey'),
-              ),
-              _JourneyCard(
-                lesson: nextLesson,
-                done: lessonsDone,
-                total: lessonCount,
-              ),
-            ],
-          );
-    final journeyFirst = journey != null && lessonsDone == 0 && todayCount == 0;
+    final inProgress = ref.watch(lessonInProgressProvider);
+    final resumeLesson = inProgress == null
+        ? nextLesson
+        : Subtopics.byId(inProgress.lessonId) ?? nextLesson;
+    final steps = resumeLesson == null
+        ? 0
+        : (ref.watch(lessonStepsProvider)[resumeLesson.id]?.length ?? 0);
+    // „Weitermachen“: Journey und Karteikasten genau da fortsetzen, wo
+    // zuletzt aufgehört wurde.
+    final journey = Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _SectionTitle(
+          lessonsDone == 0 && inProgress == null
+              ? 'Hier anfangen'
+              : 'Weitermachen',
+          action: 'Journey',
+          onAction: () => context.go('/journey'),
+        ),
+        if (resumeLesson != null)
+          _JourneyCard(
+            lesson: resumeLesson,
+            done: lessonsDone,
+            total: lessonCount,
+            step: inProgress?.lessonId == resumeLesson.id
+                ? inProgress!.page
+                : 0,
+            stepCount: steps,
+          ),
+        const SizedBox(height: Gap.s),
+        const _CardsResumeCard(),
+      ],
+    );
+    final journeyFirst = lessonsDone == 0 && todayCount == 0;
 
     return Scaffold(
       body: SafeArea(
@@ -150,11 +168,15 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                             ],
                           ),
                         ),
-                        StreakChip(
-                          days: progress.streak,
-                          activeToday: todayCount > 0,
-                        ),
-                        const SizedBox(width: Gap.xs),
+                        // Die Serie erst zeigen, wenn es eine gibt - „0 Tage“
+                        // ist keine Motivation, sondern ein Vorwurf.
+                        if (progress.streak > 0) ...[
+                          StreakChip(
+                            days: progress.streak,
+                            activeToday: todayCount > 0,
+                          ),
+                          const SizedBox(width: Gap.xs),
+                        ],
                         IconButton(
                           tooltip: 'Einstellungen',
                           onPressed: () => context.push('/einstellungen'),
@@ -183,10 +205,8 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                       today,
                     ] else ...[
                       today,
-                      if (journey != null) ...[
-                        const SizedBox(height: Gap.xxl),
-                        journey,
-                      ],
+                      const SizedBox(height: Gap.xxl),
+                      journey,
                     ],
 
                     // ------------------------- Sessions nach Themengebiet
@@ -218,17 +238,6 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                       title: 'Prüfung simulieren',
                       subtitle: 'Mit Zeitlimit, bis zu 90 Minuten',
                       onTap: () => context.push('/pruefung'),
-                    ),
-                    const SizedBox(height: Gap.s),
-                    ActionTile(
-                      icon: Icons.style_rounded,
-                      tone: TileTone.success,
-                      title: 'Karteikarten',
-                      subtitle: dueCards == 0
-                          ? 'Neue Karten lernen'
-                          : 'Wiederholungen warten auf dich',
-                      badge: dueCards == 0 ? null : '$dueCards',
-                      onTap: () => context.go('/karten'),
                     ),
 
                     // --------------------------------------- Prüfungsreife
@@ -468,11 +477,17 @@ class _JourneyCard extends StatelessWidget {
     required this.lesson,
     required this.done,
     required this.total,
+    this.step = 0,
+    this.stepCount = 0,
   });
 
   final Subtopic lesson;
   final int done;
   final int total;
+
+  /// Angefangene Lektion: zuletzt offener Lernschritt, 0 = nicht begonnen.
+  final int step;
+  final int stepCount;
 
   @override
   Widget build(BuildContext context) {
@@ -506,7 +521,11 @@ class _JourneyCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      done == 0 ? 'Erste Lektion' : 'Nächste Lektion',
+                      step > 0
+                          ? 'Journey · Schritt $step von $stepCount'
+                          : done == 0
+                          ? 'Journey · Erste Lektion'
+                          : 'Journey · Nächste Lektion',
                       style: context.text.labelSmall?.copyWith(
                         color: context.c.textMuted,
                       ),
@@ -544,9 +563,11 @@ class _JourneyCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: Gap.m),
-              Text(
-                '$done / $total',
-                style: AppType.numeric(size: 12, color: context.c.textMuted),
+              Flexible(
+                child: Text(
+                  '$done / $total Lektionen',
+                  style: AppType.numeric(size: 12, color: context.c.textMuted),
+                ),
               ),
             ],
           ),
@@ -624,10 +645,28 @@ class _SessionAreas extends ConsumerWidget {
     final steps = ref.watch(lessonStepsProvider);
     final done = ref.watch(journeyProvider);
 
+    final byArea = {
+      for (final area in ExamAreas.all)
+        area.id: [
+          for (final t in Topics.ofArea(area.id))
+            for (final l in Subtopics.ofTopic(t.id))
+              if (steps.containsKey(l.id)) l,
+        ],
+    };
+    // Empfohlen: der erste Bereich, in dem noch Lektionen offen sind - so
+    // folgt die Session der Lernreihenfolge.
+    final recommended =
+        ExamAreas.all
+            .where((a) => byArea[a.id]!.any((l) => !done.contains(l.id)))
+            .firstOrNull ??
+        ExamAreas.all.first;
+    final recLessons = byArea[recommended.id]!;
+    final recDone = recLessons.where((l) => done.contains(l.id)).length;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const _SectionTitle('Sessions nach Themengebiet'),
+        const _SectionTitle('Session nach Themengebiet'),
         Padding(
           padding: const EdgeInsets.only(bottom: Gap.m),
           child: Text(
@@ -638,28 +677,157 @@ class _SessionAreas extends ConsumerWidget {
             ),
           ),
         ),
-        for (final area in ExamAreas.all) ...[
-          Builder(
-            builder: (context) {
-              final lessons = [
-                for (final t in Topics.ofArea(area.id))
-                  for (final l in Subtopics.ofTopic(t.id))
-                    if (steps.containsKey(l.id)) l,
-              ];
-              final doneHere = lessons.where((l) => done.contains(l.id)).length;
-              return ProgressTile(
-                icon: area.icon,
-                overline: 'BEREICH ${area.number}',
-                title: area.title,
-                progress: lessons.isEmpty ? 0 : doneHere / lessons.length,
-                progressLabel: '$doneHere/${lessons.length}',
-                onTap: () => context.push('/session-bereich/${area.id}'),
-              );
-            },
-          ),
-          const SizedBox(height: Gap.s),
-        ],
+        ProgressTile(
+          icon: recommended.icon,
+          overline: 'EMPFOHLEN · BEREICH ${recommended.number}',
+          title: recommended.title,
+          progress: recLessons.isEmpty ? 0 : recDone / recLessons.length,
+          progressLabel: '$recDone/${recLessons.length}',
+          onTap: () => context.push('/session-bereich/${recommended.id}'),
+        ),
+        const SizedBox(height: Gap.m),
+        // Die anderen Bereiche als kompakte Knöpfe statt sieben großer
+        // Kacheln - die Startseite bleibt kurz, jeder Bereich ist einen
+        // Tipp entfernt.
+        Wrap(
+          spacing: Gap.s,
+          runSpacing: Gap.s,
+          children: [
+            for (final area in ExamAreas.all)
+              if (area.id != recommended.id)
+                Tooltip(
+                  message: area.title,
+                  child: OutlinedButton.icon(
+                    style: OutlinedButton.styleFrom(
+                      minimumSize: const Size(0, 48),
+                      padding: const EdgeInsets.symmetric(horizontal: Gap.m),
+                    ),
+                    icon: Icon(area.icon, size: 18),
+                    label: Text('Bereich ${area.number}'),
+                    onPressed: () =>
+                        context.push('/session-bereich/${area.id}'),
+                  ),
+                ),
+          ],
+        ),
       ],
+    );
+  }
+}
+
+/// Karteikasten fortsetzen: laufender Durchlauf, sonst was heute dran ist,
+/// sonst die zuletzt gestartete Runde.
+class _CardsResumeCard extends ConsumerWidget {
+  const _CardsResumeCard();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final run = ref.watch(cardRunProvider);
+    final cards = ref.watch(flashcardsProvider);
+    final deck = ref.watch(deckProvider);
+    final last = ref.watch(resumeProvider).cards;
+    final due = deck.dueCount(cards);
+    final activeRun = run != null && !run.isDone && run.total > 0;
+
+    final String label;
+    final String title;
+    final double? progress;
+    final VoidCallback onTap;
+    if (activeRun) {
+      label = 'Karten · Durchlauf';
+      title = '${run.title}: noch ${run.remainingCount} offen';
+      progress = run.progress;
+      onTap = () => CardLaunch.continueRun(context, run.title);
+    } else if (due > 0) {
+      label = 'Karten · Heute dran';
+      title = '$due ${due == 1 ? 'Karte wartet' : 'Karten warten'} auf dich';
+      progress = deck.mastery(cards);
+      onTap = () => context.push(
+        '/karten-lernen',
+        extra: const CardSessionArgs(title: 'Fällige Karten'),
+      );
+    } else if (last != null) {
+      label = 'Karten · Zuletzt gelernt';
+      title = last.title;
+      progress = deck.mastery(cards);
+      onTap = () => last.topicIds.isEmpty
+          ? CardLaunch.randomMix(context, ref)
+          : CardLaunch.practice(
+              context,
+              ref,
+              topicIds: last.topicIds,
+              title: last.title,
+            );
+    } else {
+      label = 'Karten · Schnell wiederholen';
+      title = 'Zufallsmix mit 20 Karten';
+      progress = null;
+      onTap = () => CardLaunch.randomMix(context, ref);
+    }
+
+    return AppCard(
+      onTap: onTap,
+      padding: const EdgeInsets.all(Gap.l),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const TileIcon(icon: Icons.style_rounded, tone: TileTone.success),
+              const SizedBox(width: Gap.m),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      label,
+                      style: context.text.labelSmall?.copyWith(
+                        color: context.c.textMuted,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    WordSafeText(title, style: context.text.titleMedium),
+                  ],
+                ),
+              ),
+              Icon(
+                Icons.play_circle_fill_rounded,
+                size: 34,
+                color: context.c.success,
+              ),
+            ],
+          ),
+          if (progress != null) ...[
+            const SizedBox(height: Gap.m),
+            Row(
+              children: [
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(Radii.pill),
+                    child: LinearProgressIndicator(
+                      value: progress,
+                      minHeight: 5,
+                      color: context.c.success,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: Gap.m),
+                Flexible(
+                  child: Text(
+                    activeRun
+                        ? '${run.knownCount} / ${run.total}'
+                        : '${(progress * 100).round()} % sicher',
+                    style: AppType.numeric(
+                      size: 12,
+                      color: context.c.textMuted,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ],
+      ),
     );
   }
 }

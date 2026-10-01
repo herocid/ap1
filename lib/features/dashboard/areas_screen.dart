@@ -10,6 +10,7 @@ import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
 import '../../widgets/hyphenation.dart';
+import '../../widgets/bit_tips.dart';
 
 /// Die sieben Bereiche des Prüfungskatalogs.
 ///
@@ -44,6 +45,8 @@ class AreasScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const BitTip(BitSpot.areas),
+                const SizedBox(height: Gap.l),
                 NoteBox(
                   tone: plan.feasible ? NoteTone.success : NoteTone.warn,
                   title: plan.feasible
