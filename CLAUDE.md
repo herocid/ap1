@@ -138,6 +138,12 @@ Stand 01.10.2026: Journey vertieft auf rund 1.560 Lernschritte (10-15 je Lektion
 Prüf-Agenten nachgerechnet. Zielgröße je Lektion: 8-14 Lernschritte, mind. 6 Aufgaben,
 mind. 6 Karten (Test erzwingt weiter nur 4/3/4).
 
+Stand 01.10.2026 (Karteikarten): rund 3.020 Karten (mind. 15 je Lektion, meist 18-25), alle
+Vorderseiten als Fragen nach Best Practice überarbeitet; neu abgedeckt u. a. Aufwandsschätzung,
+Unternehmensziele, Aufbauorganisation, strukturierte Verkabelung, Such-/Sortieralgorithmen,
+Sequenz-/Zustandsdiagramm, IEEE 754, JSON/XML/CSV, ISMS/BCM, NIS2, E-Mail-Sicherheit, MDM/BYOD
+(nur als Karten, ohne eigene Journey-Lektion - Katalogzugehörigkeit noch prüfen).
+
 Stand 01.10.2026 (Quiz/Prüfung): rund 1.600 Aufgaben plus rund 290 Teilaufgaben in 44
 Fallaufgaben (11 je Modellunternehmen); Auswahlanteil je Bereich 17-29 % (vorher 47-68 %).
 Rechtsangaben der neuen Aufgaben gegen Gesetzestexte geprüft.
