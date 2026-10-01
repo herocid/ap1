@@ -25,12 +25,13 @@ class AppColors {
 
   // Orange (Komplementärfarbe): Streak, Tagesziel, kritischer Pfad,
   // Zeitwarnung. Der Name "flame" ist historisch. Eine Spur tiefer als ein
-  // reines Signalorange, damit orange Schrift auf Weiß 4,5:1 schafft.
-  static const flame = Color(0xFFC2560A);
+  // reines Signalorange, damit orange Schrift auch auf der hellen Orange-
+  // Fläche (flameBg) 4,5:1 schafft (WCAG AA).
+  static const flame = Color(0xFFAD4C08);
   static const flameDark = Color(0xFFFFA24D);
 
   // Rot für falsche Antworten.
-  static const danger = Color(0xFFD93025);
+  static const danger = Color(0xFFC5221F);
   static const dangerDark = Color(0xFFFF7B72);
 
   // Petrol für Erklärungen und Merksätze - abgesetzt vom Marken-Blau.

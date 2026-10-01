@@ -722,10 +722,9 @@ class _CardsResumeCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final run = ref.watch(cardRunProvider);
-    final cards = ref.watch(flashcardsProvider);
-    final deck = ref.watch(deckProvider);
     final last = ref.watch(resumeProvider).cards;
-    final due = deck.dueCount(cards);
+    final summary = ref.watch(deckSummaryProvider);
+    final due = summary.reviews + summary.fresh;
     final activeRun = run != null && !run.isDone && run.total > 0;
 
     final String label;
@@ -740,7 +739,7 @@ class _CardsResumeCard extends ConsumerWidget {
     } else if (due > 0) {
       label = 'Karten · Heute dran';
       title = '$due ${due == 1 ? 'Karte wartet' : 'Karten warten'} auf dich';
-      progress = deck.mastery(cards);
+      progress = summary.mastery;
       onTap = () => context.push(
         '/karten-lernen',
         extra: const CardSessionArgs(title: 'Fällige Karten'),
@@ -748,7 +747,7 @@ class _CardsResumeCard extends ConsumerWidget {
     } else if (last != null) {
       label = 'Karten · Zuletzt gelernt';
       title = last.title;
-      progress = deck.mastery(cards);
+      progress = summary.mastery;
       onTap = () => last.topicIds.isEmpty
           ? CardLaunch.randomMix(context, ref)
           : CardLaunch.practice(

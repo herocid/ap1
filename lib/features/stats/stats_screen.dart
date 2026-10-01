@@ -580,8 +580,9 @@ class _CardStatsPanel extends ConsumerWidget {
     final activity = ref.watch(cardActivityProvider);
     final run = ref.watch(cardRunProvider);
 
-    final solid = deck.learnedCount(cards);
-    final accuracy = deck.accuracy(cards);
+    final summary = ref.watch(deckSummaryProvider);
+    final solid = summary.solid;
+    final accuracy = summary.accuracy;
     final days = activity.lastDays(14);
     final maxDay = days.fold<int>(1, (m, e) => math.max(m, e));
 
@@ -632,16 +633,27 @@ class _CardStatsPanel extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: Gap.l),
-              SizedBox(
-                height: 92,
-                child: _ActivityChart(
-                  values: days,
-                  max: maxDay,
-                  barColor: context.c.flame,
-                  trackColor: context.c.surfaceAlt,
-                  unit: 'Karten',
+              // Ohne Abfragen wäre das Diagramm nur eine Reihe grauer
+              // Striche - dann lieber ein Satz, wie es losgeht.
+              if (activity.totalReviews == 0)
+                Text(
+                  'Noch keine Karten geübt. Schon fünf Minuten im '
+                  'Karteikasten füllen dieses Diagramm.',
+                  style: context.text.bodyMedium?.copyWith(
+                    color: context.c.textMuted,
+                  ),
+                )
+              else
+                SizedBox(
+                  height: 92,
+                  child: _ActivityChart(
+                    values: days,
+                    max: maxDay,
+                    barColor: context.c.flame,
+                    trackColor: context.c.surfaceAlt,
+                    unit: 'Karten',
+                  ),
                 ),
-              ),
             ],
           ),
         ),

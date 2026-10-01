@@ -118,10 +118,10 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
         body: EmptyState(
           icon: Icons.inbox_outlined,
           title: 'Keine laufende Session',
-          message: 'Starte eine Runde vom Dashboard aus.',
+          message: 'Starte eine Runde auf der Startseite oder im Quiz.',
           action: FilledButton(
             onPressed: () => context.go('/'),
-            child: const Text('Zum Dashboard'),
+            child: const Text('Zur Startseite'),
           ),
         ),
       );

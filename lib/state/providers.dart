@@ -345,6 +345,30 @@ final cardActivityProvider =
       return CardActivityNotifier(ref.watch(localStoreProvider));
     });
 
+/// Kennzahlen des ganzen Kastens, einmal je Änderung berechnet statt bei
+/// jedem Neuaufbau eines Screens - bei rund 3.000 Karten spürbar.
+typedef DeckSummary = ({
+  int reviews,
+  int fresh,
+  double mastery,
+  int weak,
+  int solid,
+  double? accuracy,
+});
+
+final deckSummaryProvider = Provider<DeckSummary>((ref) {
+  final deck = ref.watch(deckProvider);
+  final cards = ref.watch(flashcardsProvider);
+  return (
+    reviews: deck.dueReviewCount(cards),
+    fresh: deck.dueNewCount(cards),
+    mastery: deck.mastery(cards),
+    weak: deck.weakCards(cards, limit: 1 << 30).length,
+    solid: deck.learnedCount(cards),
+    accuracy: deck.accuracy(cards),
+  );
+});
+
 /// Wie viele Karten heute fällig sind - die Zahl fürs Dashboard.
 final dueCardsProvider = Provider<int>((ref) {
   final deck = ref.watch(deckProvider);

@@ -273,7 +273,9 @@ class SettingsScreen extends ConsumerWidget {
       ref.read(resumeProvider.notifier).reset();
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Fortschritt zurückgesetzt.')),
+          const SnackBar(
+            content: Text('Alles zurückgesetzt - auf einen frischen Start!'),
+          ),
         );
       }
     }

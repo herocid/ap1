@@ -32,11 +32,12 @@ class CardsOverviewScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final cards = ref.watch(flashcardsProvider);
     final deck = ref.watch(deckProvider);
-    final reviews = deck.dueReviewCount(cards);
-    final fresh = deck.dueNewCount(cards);
+    final summary = ref.watch(deckSummaryProvider);
+    final reviews = summary.reviews;
+    final fresh = summary.fresh;
     final due = reviews + fresh;
-    final mastery = deck.mastery(cards);
-    final weak = deck.weakCards(cards, limit: 999).length;
+    final mastery = summary.mastery;
+    final weak = summary.weak;
 
     if (cards.isEmpty) {
       return Scaffold(
