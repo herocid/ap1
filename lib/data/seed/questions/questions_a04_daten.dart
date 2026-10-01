@@ -24,71 +24,75 @@ final List<Question> questionsA04Daten = [
     explanation:
         'Substantive, zu denen eigene Daten gespeichert werden, sind Entitätstypen. Beschreibende Angaben sind Attribute, Verben zwischen Entitätstypen sind Beziehungen.',
   ),
-  einfach(
+  zuordnen(
     'a4-de-2',
     'dm-erm',
-    prompt: 'Welche Angabe beschreibt eine Entität?',
-    choices: [
-      ja(
+    scenario:
+        'Für die Kundendatenbank eines Webshops werden Begriffe aus dem Fachkonzept eingeordnet.',
+    prompt:
+        'Handelt es sich um eine Entität, einen Entitätstyp oder ein Attribut?',
+    buckets: ['Entität', 'Entitätstyp', 'Attribut'],
+    items: [
+      zu('Kunde', 1, 'Zusammenfassung aller gleichartigen Kunden.'),
+      zu(
         'Die Kundin Frau Yilmaz mit der Kundennummer 10457',
-        'Ein einzelnes, unterscheidbares Objekt ist eine Entität.',
+        0,
+        'Ein einzelnes, unterscheidbares Objekt.',
       ),
-      nein(
-        'Der Kunde als allgemeiner Typ',
-        'Das ist ein Entitätstyp - die Zusammenfassung gleichartiger Entitäten.',
+      zu('Postleitzahl', 2, 'Eine Eigenschaft, die einen Kunden beschreibt.'),
+      zu(
+        'Der Laptop mit der Seriennummer SN-4471',
+        0,
+        'Ein konkretes Exemplar.',
       ),
-      nein('Die Eigenschaft Postleitzahl', 'Das ist ein Attribut.'),
-      nein(
-        'Die Verbindung „kauft“ zwischen Kunde und Artikel',
-        'Das ist eine Beziehung.',
-      ),
+      zu('Artikel', 1, 'Der allgemeine Typ, nicht ein einzelner Artikel.'),
+      zu('Preis', 2, 'Eine Eigenschaft eines Artikels.'),
     ],
     explanation:
-        'Entität = konkretes Exemplar, Entitätstyp = Menge gleichartiger Entitäten, Attribut = Eigenschaft, Beziehung = Verbindung.',
+        'Entität = konkretes Exemplar, Entitätstyp = Menge gleichartiger Entitäten, Attribut = Eigenschaft. Die Beziehung verbindet Entitätstypen miteinander.',
     difficulty: 1,
   ),
-  einfach(
+  paare(
     'a4-de-3',
     'dm-erm',
-    prompt:
-        'Mit welchem Symbol wird in der Chen-Notation eine Beziehung dargestellt?',
-    choices: [
-      ja(
-        'Raute',
-        'Beziehungen wie „bestellt“ stehen in einer Raute zwischen den Entitätstypen.',
-      ),
-      nein('Rechteck', 'Das Rechteck steht für einen Entitätstyp.'),
-      nein('Ellipse', 'Die Ellipse steht für ein Attribut.'),
-      nein(
-        'Unterstrichener Text',
-        'So wird ein Schlüsselattribut gekennzeichnet.',
-      ),
+    scenario:
+        'In der Prüfung wird das ER-Modell in der Chen-Notation gezeichnet.',
+    prompt: 'Ordnen Sie jedem Symbol der Chen-Notation seine Bedeutung zu.',
+    paare: [
+      paar('Rechteck', 'Entitätstyp'),
+      paar('Raute', 'Beziehung'),
+      paar('Ellipse', 'Attribut'),
+      paar('Unterstreichung', 'Schlüsselattribut'),
+      paar('1, n, m an der Linie', 'Kardinalität'),
     ],
     explanation:
-        'Chen-Notation: Rechteck = Entitätstyp, Raute = Beziehung, Ellipse = Attribut, Unterstreichung = Schlüsselattribut.',
+        'Chen-Notation: Rechteck = Entitätstyp, Raute = Beziehung, Ellipse = Attribut, Unterstreichung = Schlüsselattribut. Die Kardinalitäten 1, n und m stehen an den Linien zwischen Entitätstyp und Raute.',
     difficulty: 1,
   ),
-  mehrfach(
+  markieren(
     'a4-de-4',
     'dm-erm',
     scenario:
         'Eine Arztpraxis will speichern: Patienten mit Name und Geburtsdatum, Ärztinnen und Ärzte mit Fachrichtung sowie Krankenkassen mit Name und Kassennummer. Jeder Patient ist bei einer Krankenkasse versichert.',
-    prompt: 'Welche Begriffe werden im ER-Modell zu Entitätstypen?',
-    choices: [
+    prompt:
+        'Markieren Sie alle Begriffe, die im ER-Modell zu Entitätstypen werden.',
+    zeilen: [
       ja('Patient', 'Zu Patienten werden eigene Daten gespeichert.'),
+      nein('Geburtsdatum', 'Eine Eigenschaft des Patienten - ein Attribut.'),
       ja('Arzt', 'Zu Ärztinnen und Ärzten wird die Fachrichtung gespeichert.'),
+      nein('Fachrichtung', 'Eine Eigenschaft des Arztes - also ein Attribut.'),
       ja(
         'Krankenkasse',
         'Die Kasse hat eigene Attribute wie Name und Kassennummer.',
       ),
-      nein('Fachrichtung', 'Eine Eigenschaft des Arztes - also ein Attribut.'),
       nein(
         'ist versichert bei',
         'Das verbindet Patient und Krankenkasse - eine Beziehung.',
       ),
+      nein('Kassennummer', 'Schlüsselattribut der Krankenkasse.'),
     ],
     explanation:
-        'Entitätstypen sind Dinge mit eigenen Eigenschaften: Patient, Arzt, Krankenkasse. Fachrichtung ist ein Attribut, „ist versichert bei“ eine Beziehung.',
+        'Entitätstypen sind Dinge mit eigenen Eigenschaften: Patient, Arzt, Krankenkasse. Fachrichtung, Geburtsdatum und Kassennummer sind Attribute, „ist versichert bei“ ist eine Beziehung.',
   ),
 
   einfach(
@@ -148,35 +152,47 @@ final List<Question> questionsA04Daten = [
     explanation:
         'Zusammengesetzte Attribute werden in Teile zerlegt, mehrwertige als eigener Entitätstyp ausgelagert, abgeleitete Werte berechnet statt gespeichert.',
   ),
-  mehrfach(
+  tabelle(
     'a4-de-7',
     'dm-erm',
-    prompt:
-        'Welche Aussagen zur Überführung eines ERM in Tabellen sind richtig?',
-    choices: [
-      ja(
-        'Ein Entitätstyp wird zu einer Tabelle.',
-        'Aus „Kunde“ wird die Tabelle Kunde.',
-      ),
-      ja(
-        'Ein Attribut wird zu einer Spalte.',
-        'Aus dem Attribut Name wird die Spalte Name.',
-      ),
-      ja(
-        'Eine einzelne Entität entspricht einer Zeile.',
-        'Die Kundin Yilmaz ist ein Datensatz in Kunde.',
-      ),
-      nein(
-        'Jede Beziehung wird zu einer eigenen Tabelle.',
-        'Nur n:m-Beziehungen brauchen eine Zwischentabelle, 1:1 und 1:n werden über Fremdschlüssel umgesetzt.',
-      ),
-      nein(
-        'Fremdschlüssel werden schon im ERM als Attribute eingezeichnet.',
-        'Im ERM zeigt die Beziehung die Verbindung - Fremdschlüssel entstehen erst im relationalen Modell.',
-      ),
+    scenario:
+        'Das fertige ER-Modell eines Webshops wird in ein relationales Modell überführt.',
+    prompt: 'Geben Sie an, was aus dem jeweiligen Element des ER-Modells wird.',
+    zeilen: [
+      ['Element im ER-Modell', 'wird im relationalen Modell zu'],
+      [
+        'Entitätstyp',
+        wahl('Tabelle', ['Spalte', 'Zeile']),
+      ],
+      [
+        'Attribut',
+        wahl('Spalte', ['Tabelle', 'Zeile']),
+      ],
+      [
+        'einzelne Entität',
+        wahl('Zeile (Datensatz)', ['Tabelle', 'Spalte']),
+      ],
+      [
+        'Schlüsselattribut',
+        wahl('Primärschlüssel', ['Fremdschlüssel', 'Zwischentabelle']),
+      ],
+      [
+        '1:n-Beziehung',
+        wahl('Fremdschlüssel auf der n-Seite', [
+          'Zwischentabelle',
+          'Fremdschlüssel auf der 1-Seite',
+        ]),
+      ],
+      [
+        'n:m-Beziehung',
+        wahl('Zwischentabelle', [
+          'Fremdschlüssel auf der n-Seite',
+          'Primärschlüssel',
+        ]),
+      ],
     ],
     explanation:
-        'Entitätstyp -> Tabelle, Attribut -> Spalte, Entität -> Zeile, Schlüsselattribut -> Primärschlüssel. Beziehungen werden je nach Kardinalität zu Fremdschlüsseln oder Zwischentabellen.',
+        'Entitätstyp -> Tabelle, Attribut -> Spalte, Entität -> Zeile, Schlüsselattribut -> Primärschlüssel. Beziehungen werden je nach Kardinalität umgesetzt: 1:n über einen Fremdschlüssel auf der n-Seite, n:m über eine Zwischentabelle. Fremdschlüssel entstehen erst im relationalen Modell.',
   ),
   einfach(
     'a4-de-8',
@@ -262,31 +278,33 @@ final List<Question> questionsA04Daten = [
     explanation:
         'Eine n:m-Beziehung braucht eine Zwischentabelle. Ihr Primärschlüssel besteht meist aus den beiden Fremdschlüsseln, dazu kommen Attribute der Beziehung wie die Menge.',
   ),
-  einfach(
+  lueckentext(
     'a4-dk-3',
     'dm-kardinalitaet',
-    prompt:
-        'Zwischen Abteilung und Mitarbeiter besteht eine 1:n-Beziehung. Wo wird der Fremdschlüssel angelegt?',
-    choices: [
-      ja(
-        'In der Tabelle Mitarbeiter als Spalte AbteilungsNr',
-        'Der Fremdschlüssel kommt auf die n-Seite - jeder Mitarbeiter verweist auf seine eine Abteilung.',
-      ),
-      nein(
-        'In der Tabelle Abteilung als Spalte MitarbeiterNr',
-        'Eine Abteilung hat viele Mitarbeiter - eine einzelne Spalte kann sie nicht alle aufnehmen.',
-      ),
-      nein(
-        'In beiden Tabellen',
-        'Das wäre redundant und könnte widersprüchlich werden.',
-      ),
-      nein(
-        'In einer zusätzlichen Zwischentabelle',
-        'Eine Zwischentabelle ist nur bei n:m nötig.',
-      ),
+    scenario:
+        'Zwischen Abteilung (AbtNr, Name) und Mitarbeiter (PersNr, Name) besteht eine 1:n-Beziehung: Jeder Mitarbeiter gehört zu genau einer Abteilung.',
+    prompt: 'Ergänzen Sie die Umsetzung im relationalen Modell.',
+    text:
+        'Der Primärschlüssel {0} wird als Fremdschlüssel in die Tabelle {1} aufgenommen. '
+        'Der Fremdschlüssel steht damit auf der {2} der Beziehung. '
+        'Eine Zwischentabelle ist {3}.',
+    luecken: [
+      wahl('AbtNr', [
+        'PersNr',
+        'Name',
+      ], 'Der Schlüssel der 1-Seite wandert zur n-Seite.'),
+      wahl('Mitarbeiter', [
+        'Abteilung',
+        'Zwischentabelle',
+      ], 'Jeder Mitarbeiter verweist auf seine eine Abteilung.'),
+      wahl('n-Seite', ['1-Seite', 'beiden Seiten']),
+      wahl('nicht nötig', [
+        'zwingend nötig',
+        'nur bei mehr als 100 Mitarbeitern nötig',
+      ], 'Zwischentabellen braucht nur n:m.'),
     ],
     explanation:
-        'Bei 1:n wandert der Primärschlüssel der 1-Seite als Fremdschlüssel in die Tabelle der n-Seite.',
+        'Bei 1:n wandert der Primärschlüssel der 1-Seite (AbtNr) als Fremdschlüssel in die Tabelle der n-Seite (Mitarbeiter). Umgekehrt ginge es nicht: Eine Abteilung hat viele Mitarbeiter, eine einzelne Spalte könnte sie nicht aufnehmen.',
   ),
   rechnen(
     'a4-dk-4',
@@ -377,67 +395,72 @@ final List<Question> questionsA04Daten = [
         '1 = genau eins, c = keins oder eins, m = mindestens eins, mc = beliebig viele einschließlich keins.',
     difficulty: 3,
   ),
-  mehrfach(
+  lueckentext(
     'a4-dk-8',
     'dm-kardinalitaet',
     scenario:
         'Zwischen Schüler und Kurs besteht eine n:m-Beziehung. Zu jeder Belegung soll die Note gespeichert werden.',
-    prompt: 'Welche Aussagen zur Umsetzung sind richtig?',
-    choices: [
-      ja(
-        'Es entsteht eine Zwischentabelle, z. B. Belegung.',
-        'n:m lässt sich nur so abbilden.',
-      ),
-      ja(
-        'Die Zwischentabelle enthält SchülerNr und KursNr als Fremdschlüssel.',
-        'Sie verweist auf beide Seiten.',
-      ),
-      ja(
-        'Die Note wird in der Zwischentabelle gespeichert.',
-        'Sie gehört zur Kombination aus Schüler und Kurs.',
-      ),
-      nein(
-        'Die Note wird in der Tabelle Schüler gespeichert.',
-        'Ein Schüler hat in jedem Kurs eine eigene Note.',
-      ),
-      nein(
-        'Danach besteht zwischen Schüler und Kurs weiterhin eine direkte n:m-Beziehung.',
-        'Nach der Auflösung gibt es zwei 1:n-Beziehungen zur Zwischentabelle.',
-      ),
+    prompt: 'Setzen Sie die passenden Begriffe ein.',
+    text:
+        'Für die Beziehung entsteht eine {0} namens Belegung. '
+        'Sie enthält SchülerNr und KursNr als {1}. '
+        'Beide zusammen bilden ihren {2}. '
+        'Die Note wird in der Tabelle {3} gespeichert. '
+        'Aus der n:m-Beziehung werden so zwei {4}-Beziehungen.',
+    luecken: [
+      wort(['Zwischentabelle']),
+      wort(['Fremdschlüssel']),
+      wort(['Primärschlüssel']),
+      wort(['Belegung']),
+      wort(['1:n']),
     ],
+    wortbank: ['Schüler', 'Kurs', '1:1', 'Attribut'],
     explanation:
-        'Die Zwischentabelle Belegung (SchülerNr, KursNr, Note) löst n:m in zwei 1:n-Beziehungen auf und nimmt die Attribute der Beziehung auf.',
+        'Die Zwischentabelle Belegung (SchülerNr, KursNr, Note) löst n:m in zwei 1:n-Beziehungen auf. Ihre beiden Fremdschlüssel bilden gemeinsam den Primärschlüssel; die Note gehört zur Kombination aus Schüler und Kurs und steht deshalb in Belegung.',
   ),
 
   // ================================================================ Schlüssel
-  mehrfach(
+  freitext(
     'a4-dl-1',
     'dm-schluessel',
-    prompt: 'Welche Aussagen zum Primärschlüssel sind richtig?',
-    choices: [
-      ja(
-        'Sein Wert ist innerhalb der Tabelle eindeutig.',
-        'Nur so lässt sich jeder Datensatz sicher ansprechen.',
+    scenario:
+        'Beim Entwurf einer neuen Tabelle Mitglied muss ein Primärschlüssel festgelegt werden.',
+    prompt:
+        'Nennen Sie drei Eigenschaften, die ein Primärschlüssel haben muss oder haben sollte.',
+    kriterien: [
+      krit(
+        'Eindeutig: Jeder Wert kommt in der Tabelle nur einmal vor.',
+        stichwoerter: ['eindeutig', 'einmalig', 'nur einmal', 'unique'],
       ),
-      ja(
-        'Er darf nicht leer sein.',
-        'Ein leerer Wert könnte keinen Datensatz identifizieren.',
+      krit(
+        'Nie leer: Jeder Datensatz hat einen Schlüsselwert.',
+        stichwoerter: [
+          'nicht leer',
+          'nie leer',
+          'kein leerer',
+          'not null',
+          'Pflichtfeld',
+        ],
       ),
-      ja(
-        'Er kann aus mehreren Spalten zusammengesetzt sein.',
-        'Etwa BestellNr + ArtikelNr in einer Bestellposition.',
+      krit(
+        'Stabil: Der Wert ändert sich nicht.',
+        stichwoerter: [
+          'stabil',
+          'unveränderlich',
+          'ändert sich nicht',
+          'dauerhaft',
+        ],
       ),
-      nein(
-        'Er muss eine fachliche Bedeutung haben.',
-        'Künstliche Schlüssel ohne Bedeutung sind sogar oft die bessere Wahl.',
-      ),
-      nein(
-        'Er darf in keiner anderen Tabelle vorkommen.',
-        'Als Fremdschlüssel taucht er gerade in anderen Tabellen auf.',
+      krit(
+        'Möglichst kurz bzw. minimal: keine überflüssigen Spalten.',
+        stichwoerter: ['minimal', 'kurz', 'wenige Spalten', 'einfach'],
       ),
     ],
+    loesung:
+        'Ein Primärschlüssel ist eindeutig (jeder Wert kommt nur einmal vor), nie leer und stabil (der Wert ändert sich nicht). Außerdem sollte er möglichst kurz sein. Eine fachliche Bedeutung braucht er nicht - künstliche Schlüssel sind oft die bessere Wahl.',
     explanation:
-        'Ein Primärschlüssel ist eindeutig, nie leer und möglichst stabil. Er darf zusammengesetzt oder künstlich sein und wird von Fremdschlüsseln referenziert.',
+        'Je Nennung 1 Punkt, höchstens 3. Eindeutig, nie leer, stabil - dazu möglichst kurz. Der Primärschlüssel darf zusammengesetzt sein und taucht als Fremdschlüssel in anderen Tabellen auf.',
+    punkte: 3,
   ),
   einfach(
     'a4-dl-2',
@@ -691,23 +714,30 @@ final List<Question> questionsA04Daten = [
     difficulty: 3,
   ),
 
-  einfach(
+  markieren(
     'a4-dn-5',
     'dm-normalisierung',
     scenario:
-        'Tabelle Kunde (KundenNr, Name, Telefon). In einer Zeile steht bei Telefon: „0221 123456, 0170 9876543“.',
-    prompt: 'Welche Normalform ist verletzt?',
-    choices: [
-      ja('1NF', 'Das Feld Telefon enthält zwei Werte - es ist nicht atomar.'),
-      nein(
-        '2NF',
-        'Die 2NF setzt die 1NF voraus und betrifft partielle Abhängigkeiten.',
+        'Die Tabelle Kunde hat die Spalten KundenNr, Name und Telefon. Sie soll in die 1. Normalform gebracht werden.',
+    table: [
+      ['KundenNr', 'Name', 'Telefon'],
+      ['K1', 'Brandt', '0561 5550111'],
+      ['K2', 'Yilmaz', '0221 5550123, 0170 5550199'],
+      ['K3', 'Nowak', '0661 5550145'],
+      ['K4', 'Peters', '0551 5550167 und 0551 5550168'],
+    ],
+    prompt: 'Markieren Sie alle Zeilen, die die 1. Normalform verletzen.',
+    zeilen: [
+      nein('K1 Brandt', 'Genau ein Wert im Feld Telefon - atomar.'),
+      ja(
+        'K2 Yilmaz',
+        'Zwei Telefonnummern in einer Zelle - der Wert ist nicht atomar.',
       ),
-      nein('3NF', 'Die 3NF betrifft transitive Abhängigkeiten.'),
-      nein('Keine', 'Mehrere Werte in einer Zelle verletzen die 1NF.'),
+      nein('K3 Nowak', 'Genau ein Wert im Feld Telefon - atomar.'),
+      ja('K4 Peters', 'Auch hier stehen zwei Nummern in einer Zelle.'),
     ],
     explanation:
-        'Die 1NF verlangt atomare Werte. Mehrere Telefonnummern werden in eine eigene Tabelle Telefon (KundenNr, Nummer) ausgelagert.',
+        'Die 1NF verlangt atomare Werte: In jeder Zelle steht genau ein Wert. Mehrere Telefonnummern werden in eine eigene Tabelle Telefon (KundenNr, Nummer) ausgelagert.',
     difficulty: 1,
   ),
   reihenfolge(
@@ -738,29 +768,24 @@ final List<Question> questionsA04Daten = [
     explanation:
         '2NF: TeilnName, TeilnOrt hängen nur von TeilnNr ab -> Teilnehmer. Kurstitel, DozentNr, DozentName nur von KursNr -> Kurs. Buchungsdatum hängt vom ganzen Schlüssel ab -> Buchung. 3NF: In Kurs gilt KursNr -> DozentNr -> DozentName (transitiv) -> Dozent auslagern. Ergebnis: Teilnehmer, Kurs, Dozent, Buchung = 4 Tabellen.',
   ),
-  einfach(
+  lueckentext(
     'a4-dn-8',
     'dm-normalisierung',
     scenario:
         'Eine Tabelle ist in der 1NF und hat einen Primärschlüssel aus nur einer Spalte.',
-    prompt: 'Welche Aussage trifft zu?',
-    choices: [
-      ja(
-        'Sie ist automatisch auch in der 2NF.',
-        'Partielle Abhängigkeiten gibt es nur bei zusammengesetzten Schlüsseln.',
-      ),
-      nein(
-        'Sie ist automatisch auch in der 3NF.',
-        'Transitive Abhängigkeiten sind trotzdem möglich.',
-      ),
-      nein('Sie kann nie in der 2NF sein.', 'Im Gegenteil - sie ist es immer.'),
-      nein(
-        'Sie muss einen zweiten Schlüssel bekommen.',
-        'Ein einspaltiger Primärschlüssel ist üblich und richtig.',
-      ),
+    prompt: 'Ergänzen Sie die Beurteilung.',
+    text:
+        'Die Tabelle ist automatisch auch in der {0}, '
+        'denn {1} Abhängigkeiten gibt es nur bei {2} Schlüsseln. '
+        'Die 3NF muss trotzdem geprüft werden, weil {3} Abhängigkeiten weiterhin möglich sind.',
+    luecken: [
+      wahl('2NF', ['3NF', 'keiner weiteren Normalform']),
+      wahl('partielle', ['transitive', 'atomare']),
+      wahl('zusammengesetzten', ['künstlichen', 'einspaltigen']),
+      wahl('transitive', ['partielle', 'zusammengesetzte']),
     ],
     explanation:
-        'Ein Attribut kann nicht von einem Teil eines einspaltigen Schlüssels abhängen. Die 2NF ist dann automatisch erfüllt, die 3NF muss trotzdem geprüft werden.',
+        'Ein Attribut kann nicht von einem Teil eines einspaltigen Schlüssels abhängen. Die 2NF ist dann automatisch erfüllt. Transitive Abhängigkeiten (über ein anderes Nichtschlüsselattribut) sind trotzdem möglich - die 3NF muss geprüft werden.',
   ),
 
   // ============================================================ Aufbau einer URL
@@ -904,18 +929,23 @@ final List<Question> questionsA04Daten = [
     explanation:
         'Relative Adressen werden vom Ordner der aktuellen Seite aus aufgelöst: agb.html = gleicher Ordner, ../agb.html = eine Ebene höher, /agb.html = ab der Wurzel.',
   ),
-  einfach(
+  lueckentext(
     'a4-wu-7',
     'wi-url',
-    prompt: 'Wie wird ein Leerzeichen in einem URL-Pfad prozentkodiert?',
-    choices: [
-      ja('%20', 'Das Leerzeichen hat den ASCII-Code 32 = hex 20.'),
-      nein('%32', '32 ist der Dezimalwert - kodiert wird hexadezimal.'),
-      nein('%00', '00 ist das Nullzeichen, nicht das Leerzeichen.'),
-      nein('&nbsp;', 'Das ist eine HTML-Entität, keine URL-Kodierung.'),
+    scenario:
+        'Ein Dateiname mit Leerzeichen und Sonderzeichen soll in einer URL verwendet werden. Bei der Prozentkodierung folgt auf das Prozentzeichen der Bytewert in hexadezimaler Schreibweise.',
+    prompt: 'Ergänzen Sie die Prozentkodierung.',
+    text:
+        'Das Leerzeichen hat den ASCII-Code 32, hexadezimal {0}. '
+        'In der URL wird es deshalb als {1} geschrieben. '
+        'Das Zeichen & hat den ASCII-Code 38, hexadezimal 26, und wird zu {2}.',
+    luecken: [
+      zahl(20, rationale: '32 = 2 × 16 + 0.'),
+      wort(['%20'], 'Prozentzeichen plus Hexwert.'),
+      wort(['%26'], 'Prozentzeichen plus Hexwert.'),
     ],
     explanation:
-        'Bei der Prozentkodierung folgt auf % der Bytewert in Hexadezimal. Leerzeichen = 32 = 20h -> %20. In Formularparametern ist auch + üblich.',
+        'Bei der Prozentkodierung folgt auf % der Bytewert in Hexadezimal. Leerzeichen = 32 = 20h -> %20, & = 38 = 26h -> %26. Kodiert wird hexadezimal, nicht dezimal - %32 wäre die Ziffer 2. In Formularparametern ist für das Leerzeichen auch + üblich.',
     difficulty: 1,
   ),
 
@@ -981,34 +1011,26 @@ final List<Question> questionsA04Daten = [
     explanation:
         'GET liest, POST legt Neues an bzw. sendet Daten, PUT ersetzt eine Ressource unter bekannter Adresse, DELETE löscht sie.',
   ),
-  mehrfach(
+  lueckentext(
     'a4-wh-4',
     'wi-http',
-    prompt: 'Welche Aussagen zu HTTP und HTTPS sind richtig?',
-    choices: [
-      ja(
-        'HTTP ist zustandslos.',
-        'Jede Anfrage steht für sich - Sitzungen entstehen erst durch Cookies oder Tokens.',
-      ),
-      ja(
-        'HTTPS ist HTTP über eine TLS-verschlüsselte Verbindung.',
-        'Das Protokoll bleibt HTTP, nur der Transport ist gesichert.',
-      ),
-      ja(
-        'Der Standardport von HTTPS ist 443.',
-        'HTTP ohne Verschlüsselung nutzt Port 80.',
-      ),
-      nein(
-        'Cookies werden nur auf dem Server gespeichert.',
-        'Cookies speichert der Browser und schickt sie bei Anfragen mit.',
-      ),
-      nein(
-        'Ein 5xx-Code bedeutet, dass die Adresse falsch eingegeben wurde.',
-        'Eine falsche Adresse führt zu 404, einem Client-Fehler.',
-      ),
+    scenario:
+        'Für die Einarbeitung neuer Kollegen im Support fassen Sie die Grundlagen zu HTTP und HTTPS zusammen.',
+    prompt: 'Ergänzen Sie die Aussagen.',
+    text:
+        'HTTP ist {0}: Jede Anfrage steht für sich. '
+        'Sitzungen entstehen erst durch {1}, die der Browser speichert und mitschickt. '
+        'HTTPS ist HTTP über eine mit {2} verschlüsselte Verbindung, der Standardport ist {3}. '
+        'Ein Statuscode der Klasse 5xx meldet einen Fehler {4}.',
+    luecken: [
+      wahl('zustandslos', ['zustandsbehaftet', 'verschlüsselt']),
+      wahl('Cookies', ['Fragmente', 'Statuscodes']),
+      wahl('TLS', ['DNS', 'FTP']),
+      wahl('443', ['80', '8080']),
+      wahl('beim Server', ['in der Anfrage', 'beim DNS']),
     ],
     explanation:
-        'HTTP ist zustandslos, HTTPS verschlüsselt über TLS auf Port 443. Cookies liegen im Browser, 5xx meldet Fehler auf dem Server.',
+        'HTTP ist zustandslos; Cookies oder Tokens, die der Browser speichert und mitsendet, verbinden die Anfragen zu einer Sitzung. HTTPS verschlüsselt über TLS auf Port 443 (HTTP: Port 80). 5xx meldet Fehler auf dem Server, 4xx Fehler in der Anfrage.',
   ),
 
   zuordnen(
@@ -1076,23 +1098,21 @@ final List<Question> questionsA04Daten = [
         'HTTPS verschlüsselt alles ab der HTTP-Ebene: Pfad, Query, Header, Cookies und Inhalt. Sichtbar bleiben Ziel-IP-Adresse, meist der Hostname und die Datenmenge.',
     difficulty: 3,
   ),
-  einfach(
+  paare(
     'a4-wh-8',
     'wi-http',
     scenario:
-        'Die erste Zeile einer Anfrage lautet: GET /produkte?seite=2 HTTP/1.1',
-    prompt: 'Was gibt „/produkte?seite=2“ an?',
-    choices: [
-      ja(
-        'Die angeforderte Ressource: Pfad mit Query',
-        'Nach der Methode folgt das Ziel der Anfrage.',
-      ),
-      nein('Den Hostnamen des Servers', 'Der steht im Header Host.'),
-      nein('Den Statuscode', 'Statuscodes stehen nur in der Antwort.'),
-      nein('Die HTTP-Version', 'Die Version steht am Ende: HTTP/1.1.'),
+        'Eine Anfrage beginnt mit den Zeilen „GET /produkte?seite=2 HTTP/1.1“ und „Host: shop.example.com“.',
+    prompt: 'Ordnen Sie jedem Teil der Anfrage seine Bedeutung zu.',
+    paare: [
+      paar('GET', 'Methode'),
+      paar('/produkte', 'Pfad der Ressource'),
+      paar('seite=2', 'Query-Parameter'),
+      paar('HTTP/1.1', 'Protokollversion'),
+      paar('Host: shop.example.com', 'Header mit dem Hostnamen'),
     ],
     explanation:
-        'Die Startzeile einer Anfrage besteht aus Methode (GET), Ziel (Pfad mit Query) und Version (HTTP/1.1). Danach folgen die Header.',
+        'Die Startzeile einer Anfrage besteht aus Methode (GET), Ziel (Pfad mit Query) und Version (HTTP/1.1). Danach folgen die Header, darunter Host mit dem Namen des Servers. Statuscodes stehen nur in der Antwort.',
     difficulty: 1,
   ),
 
@@ -1124,27 +1144,21 @@ final List<Question> questionsA04Daten = [
         'Beim 3-Way-Handshake fragt der Client an (SYN), der Server bestätigt und fragt zurück (SYN-ACK), der Client bestätigt (ACK).',
     difficulty: 1,
   ),
-  einfach(
+  paare(
     'a4-wa-3',
     'wi-aufruf',
-    prompt: 'Welche Aufgabe hat DNS beim Aufruf einer Webseite?',
-    choices: [
-      ja(
-        'Es übersetzt den Hostnamen in eine IP-Adresse.',
-        'Ohne IP-Adresse kann der Browser keine Verbindung aufbauen.',
-      ),
-      nein('Es verschlüsselt die Verbindung.', 'Das ist Aufgabe von TLS.'),
-      nein(
-        'Es liefert die HTML-Seite aus.',
-        'Das macht der Webserver per HTTP.',
-      ),
-      nein(
-        'Es vergibt dem Client eine IP-Adresse.',
-        'Das ist Aufgabe von DHCP.',
-      ),
+    scenario:
+        'Beim Aufruf einer Webseite arbeiten mehrere Protokolle und Dienste zusammen.',
+    prompt: 'Ordnen Sie jedem Protokoll bzw. Dienst seine Aufgabe zu.',
+    paare: [
+      paar('DNS', 'übersetzt den Hostnamen in eine IP-Adresse'),
+      paar('TCP', 'baut eine zuverlässige Verbindung auf'),
+      paar('TLS', 'verschlüsselt die Verbindung'),
+      paar('HTTP', 'überträgt Anfrage und Antwort'),
+      paar('DHCP', 'vergibt dem Client eine IP-Adresse'),
     ],
     explanation:
-        'DNS ist das Telefonbuch des Internets: Name rein, IP-Adresse raus. Die Inhalte kommen danach per HTTP.',
+        'DNS ist das Telefonbuch des Internets: Name rein, IP-Adresse raus. TCP stellt die Verbindung her, TLS sichert sie, HTTP transportiert die Inhalte. DHCP gehört nicht zum Seitenaufruf selbst - es hat dem Client zuvor seine IP-Adresse zugeteilt.',
     difficulty: 1,
   ),
   einfach(
@@ -1206,34 +1220,22 @@ final List<Question> questionsA04Daten = [
         'Die Auflösung läuft von oben durch die Hierarchie: Root verweist auf die TLD, die TLD auf den zuständigen Nameserver, der die Adresse kennt. Der Resolver merkt sich die Antwort.',
     difficulty: 3,
   ),
-  mehrfach(
+  reihenfolge(
     'a4-wa-7',
     'wi-aufruf',
-    prompt: 'Welche Aussagen zum TLS-Handshake sind richtig?',
-    choices: [
-      ja(
-        'Der Server weist sich mit einem Zertifikat aus.',
-        'Es enthält seinen öffentlichen Schlüssel und ist von einer Zertifizierungsstelle signiert.',
-      ),
-      ja(
-        'Der Browser prüft, ob das Zertifikat zum Hostnamen passt.',
-        'Sonst zeigt er eine Warnung.',
-      ),
-      ja(
-        'Die Nutzdaten werden danach symmetrisch verschlüsselt.',
-        'Mit dem ausgehandelten Sitzungsschlüssel, etwa per AES.',
-      ),
-      nein(
-        'Der TLS-Handshake findet vor dem TCP-Handshake statt.',
-        'TLS braucht eine bestehende TCP-Verbindung.',
-      ),
-      nein(
-        'Der Server schickt seinen privaten Schlüssel an den Browser.',
-        'Der private Schlüssel verlässt den Server nie.',
-      ),
+    scenario:
+        'Nach dem Aufbau der TCP-Verbindung zu https://shop.example.com folgt der TLS-Handshake.',
+    prompt:
+        'Bringen Sie die Schritte des vereinfachten TLS-Handshakes in die richtige Reihenfolge.',
+    items: [
+      'Client nennt dem Server die unterstützten Verfahren',
+      'Server schickt sein Zertifikat mit dem öffentlichen Schlüssel',
+      'Client prüft, ob das Zertifikat gültig ist und zum Hostnamen passt',
+      'Beide vereinbaren einen gemeinsamen Sitzungsschlüssel',
+      'Die Nutzdaten werden symmetrisch verschlüsselt übertragen',
     ],
     explanation:
-        'TLS arbeitet hybrid: Zertifikat und asymmetrische Verfahren sichern den Schlüsselaustausch, die eigentlichen Daten laufen schnell symmetrisch verschlüsselt.',
+        'TLS arbeitet hybrid: Zertifikat und asymmetrische Verfahren sichern den Schlüsselaustausch, die eigentlichen Daten laufen danach schnell symmetrisch verschlüsselt. Der private Schlüssel verlässt den Server nie, und TLS setzt eine bestehende TCP-Verbindung voraus.',
   ),
   einfach(
     'a4-wa-8',
@@ -1269,39 +1271,39 @@ final List<Question> questionsA04Daten = [
     explanation:
         'HTML legt Struktur und Bedeutung fest, CSS die Gestaltung, JavaScript das Verhalten der Seite.',
   ),
-  einfach(
+  paare(
     'a4-wt-2',
     'wi-html',
-    prompt: 'Welcher CSS-Selektor wählt alle Elemente mit class="preis"?',
-    choices: [
-      ja('.preis', 'Der Punkt kennzeichnet einen Klassenselektor.'),
-      nein('#preis', 'Die Raute wählt das Element mit id="preis".'),
-      nein(
-        'preis',
-        'Ohne Zeichen davor wäre das ein Elementselektor für ein Tag namens preis.',
-      ),
-      nein(
-        '<preis>',
-        'Das ist keine CSS-Syntax, sondern sieht aus wie ein HTML-Tag.',
-      ),
+    scenario:
+        'In der CSS-Datei eines Webshops stehen Regeln mit unterschiedlichen Selektoren.',
+    prompt: 'Ordnen Sie jedem CSS-Selektor zu, was er auswählt.',
+    paare: [
+      paar('.preis', 'alle Elemente mit class="preis"'),
+      paar('#preis', 'das Element mit id="preis"'),
+      paar('p', 'alle Absätze'),
+      paar('h1', 'alle Hauptüberschriften'),
     ],
     explanation:
-        'Klassen werden mit Punkt (.preis), IDs mit Raute (#preis) und Elemente mit ihrem Namen (h1) ausgewählt.',
+        'Klassen werden mit Punkt (.preis), IDs mit Raute (#preis) und Elemente mit ihrem Namen (p, h1) ausgewählt. Eine ID darf pro Seite nur einmal vorkommen, eine Klasse beliebig oft.',
   ),
-  mehrfach(
+  zuordnen(
     'a4-wt-3',
     'wi-html',
+    scenario:
+        'Beim Relaunch einer Website sollen neutrale Container, wo möglich, durch semantische Elemente ersetzt werden.',
     prompt:
-        'Welche HTML-Tags sind semantisch, sagen also etwas über die Rolle des Inhalts aus?',
-    choices: [
-      ja('<nav>', 'Kennzeichnet einen Navigationsbereich.'),
-      ja('<main>', 'Kennzeichnet den Hauptinhalt der Seite.'),
-      ja('<footer>', 'Kennzeichnet den Fußbereich.'),
-      nein('<div>', 'Ein neutraler Container ohne Bedeutung.'),
-      nein('<span>', 'Ein neutraler Inline-Container ohne Bedeutung.'),
+        'Ist das HTML-Element semantisch (sagt etwas über die Rolle des Inhalts) oder neutral?',
+    buckets: ['semantisch', 'neutral'],
+    items: [
+      zu('<nav>', 0, 'Kennzeichnet einen Navigationsbereich.'),
+      zu('<div>', 1, 'Ein neutraler Container ohne Bedeutung.'),
+      zu('<main>', 0, 'Kennzeichnet den Hauptinhalt der Seite.'),
+      zu('<footer>', 0, 'Kennzeichnet den Fußbereich.'),
+      zu('<span>', 1, 'Ein neutraler Inline-Container ohne Bedeutung.'),
+      zu('<article>', 0, 'Kennzeichnet einen eigenständigen Beitrag.'),
     ],
     explanation:
-        'Semantische Tags wie header, nav, main, article und footer beschreiben die Rolle eines Bereichs. div und span gliedern nur, ohne Bedeutung.',
+        'Semantische Tags wie header, nav, main, article und footer beschreiben die Rolle eines Bereichs - das hilft Screenreadern und Suchmaschinen. div und span gliedern nur, ohne Bedeutung.',
   ),
   einfach(
     'a4-wt-4',
@@ -1460,34 +1462,41 @@ final List<Question> questionsA04Daten = [
     explanation:
         'Seit dem 28.06.2025 verpflichtet das BFSG viele private Anbieter, etwa von Online-Shops, zur Barrierefreiheit. Mit 40 Beschäftigten greift die Ausnahme für Kleinstunternehmen nicht.',
   ),
-  mehrfach(
+  markieren(
     'a4-wf-3',
     'wi-barrierefrei',
-    prompt: 'Welche Maßnahmen verbessern die Barrierefreiheit einer Website?',
-    choices: [
-      ja(
+    scenario:
+        'Für den Relaunch einer Website liegt eine Liste mit Gestaltungsvorschlägen vor. Einige davon würden die Barrierefreiheit verschlechtern.',
+    prompt:
+        'Markieren Sie alle Vorschläge, die die Barrierefreiheit verschlechtern.',
+    zeilen: [
+      nein(
         'Aussagekräftige Alt-Texte für inhaltliche Bilder',
-        'Screenreader lesen den Alt-Text vor.',
+        'Screenreader lesen den Alt-Text vor - eine Verbesserung.',
       ),
       ja(
+        'Pflichtfelder nur durch rote Farbe kennzeichnen',
+        'Menschen mit Farbsehschwäche erkennen die Markierung nicht.',
+      ),
+      nein(
         'Ein deutlich sichtbarer Tastaturfokus',
         'Wer ohne Maus arbeitet, sieht so, wo er sich befindet.',
       ),
       ja(
-        'Mindestens 4,5:1 Kontrast bei normalem Text',
-        'Das verlangt die WCAG-Stufe AA.',
-      ),
-      nein(
-        'Pflichtfelder nur rot markieren',
-        'Menschen mit Farbsehschwäche erkennen die Markierung nicht.',
-      ),
-      nein(
         'Texte als Bild einbinden, damit die Schrift überall gleich aussieht',
         'Screenreader können Bildtext nicht lesen, beim Vergrößern wird er unscharf.',
       ),
+      nein(
+        'Mindestens 4,5:1 Kontrast bei normalem Text',
+        'Das verlangt die WCAG-Stufe AA.',
+      ),
+      ja(
+        'Das Menü öffnet sich nur, wenn die Maus darüberfährt',
+        'Ohne Maus - per Tastatur oder Touch - ist das Menü nicht erreichbar.',
+      ),
     ],
     explanation:
-        'Barrierefreiheit heißt: Inhalte mit mehreren Sinnen erfassbar, ohne Maus bedienbar und gut lesbar. Information nie nur über Farbe oder als Bild vermitteln.',
+        'Barrierefreiheit heißt: Inhalte mit mehreren Sinnen erfassbar, ohne Maus bedienbar und gut lesbar. Information nie nur über Farbe oder als Bild vermitteln, Funktionen nie nur für die Maus anbieten.',
   ),
   einfach(
     'a4-wf-4',
@@ -1616,34 +1625,44 @@ final List<Question> questionsA04Daten = [
     explanation:
         'Stellenwerte 256, 16, 1. A = 10. 1 × 256 + 10 × 16 + 3 × 1 = 256 + 160 + 3 = 419.',
   ),
-  einfach(
+  lueckentext(
     'a4-mz-3',
     'md-zahlensysteme',
-    prompt: 'Welche Hexadezimalzahl entspricht der Dezimalzahl 200?',
-    choices: [
-      ja('C8', '200 : 16 = 12 Rest 8, 12 = C. Probe: 12 × 16 + 8 = 200.'),
-      nein('8C', 'Ziffern vertauscht: 8 × 16 + 12 = 140.'),
-      nein('D0', 'D0 = 13 × 16 = 208.'),
-      nein('128', 'Hexadezimal gelesen: 1 × 256 + 2 × 16 + 8 = 296.'),
+    scenario:
+        'Die Dezimalzahl 200 soll mit dem Divisionsrestverfahren in eine Hexadezimalzahl umgewandelt werden.',
+    prompt: 'Ergänzen Sie den Rechenweg.',
+    text:
+        '200 : 16 = {0} Rest {1}\n'
+        'Der Wert 12 entspricht der Hex-Ziffer {2}.\n'
+        'Ergebnis hexadezimal: {3}',
+    luecken: [
+      zahl(12, rationale: '12 × 16 = 192.'),
+      zahl(8, rationale: '200 - 192 = 8.'),
+      wort(['C'], 'A = 10, B = 11, C = 12.'),
+      wort(['C8'], 'Von unten gelesen: C, dann 8.'),
     ],
     explanation:
-        'Divisionsrestverfahren mit 16: 200 : 16 = 12 Rest 8, 12 : 16 = 0 Rest 12 (C). Von unten gelesen: C8.',
+        'Divisionsrestverfahren mit 16: 200 : 16 = 12 Rest 8, 12 : 16 = 0 Rest 12 (C). Von unten gelesen: C8. Probe: 12 × 16 + 8 = 200. Typischer Fehler: die Ziffern vertauschen (8C = 140).',
   ),
-  einfach(
+  lueckentext(
     'a4-mz-4',
     'md-zahlensysteme',
-    prompt: 'Welche Binärzahl entspricht der Dezimalzahl 45?',
-    choices: [
-      ja('0010 1101', '32 + 8 + 4 + 1 = 45.'),
-      nein('0010 1011', 'Das ergibt 32 + 8 + 2 + 1 = 43.'),
-      nein(
-        '1011 0100',
-        'Die richtige Folge rückwärts gelesen - das ergibt 180.',
-      ),
-      nein('0011 1101', 'Das ergibt 32 + 16 + 8 + 4 + 1 = 61.'),
+    scenario:
+        'Die Dezimalzahl 45 soll als Binärzahl mit 8 Bit geschrieben werden. Die Stellenwerte eines Bytes sind 128, 64, 32, 16, 8, 4, 2, 1.',
+    prompt: 'Ergänzen Sie die Zerlegung und das Ergebnis.',
+    text:
+        '45 = {0} + 8 + 4 + 1\n'
+        'Binär mit 8 Bit: {1}',
+    luecken: [
+      zahl(32, rationale: 'Größter Stellenwert, der in 45 passt.'),
+      wort([
+        '0010 1101',
+        '00101101',
+        '101101',
+      ], 'Eine 1 bei den Stellenwerten 32, 8, 4 und 1.'),
     ],
     explanation:
-        '45 : 2 = 22 Rest 1, 22 : 2 = 11 Rest 0, 11 : 2 = 5 Rest 1, 5 : 2 = 2 Rest 1, 2 : 2 = 1 Rest 0, 1 : 2 = 0 Rest 1. Von unten gelesen: 101101, als Byte 0010 1101.',
+        '45 = 32 + 8 + 4 + 1. Bei diesen Stellenwerten steht eine 1, bei allen anderen eine 0: 0010 1101. Probe mit dem Divisionsrestverfahren: 45 : 2 = 22 Rest 1, 22 : 2 = 11 Rest 0, 11 : 2 = 5 Rest 1, 5 : 2 = 2 Rest 1, 2 : 2 = 1 Rest 0, 1 : 2 = 0 Rest 1 - von unten gelesen 101101.',
   ),
 
   rechnen(
@@ -1715,24 +1734,22 @@ final List<Question> questionsA04Daten = [
     explanation:
         'Probe dezimal: 0110 1011 = 64 + 32 + 8 + 2 + 1 = 107, 0001 0110 = 16 + 4 + 2 = 22. 107 + 22 = 129 = 1000 0001. Binär gilt 1 + 1 = 0 mit Übertrag 1.',
   ),
-  einfach(
+  lueckentext(
     'a4-mz-11',
     'md-zahlensysteme',
-    prompt: 'Welche Hexadezimalzahl entspricht der Dezimalzahl 172?',
-    choices: [
-      ja(
-        'AC',
-        '172 : 16 = 10 Rest 12, 10 = A, 12 = C. Probe: 10 × 16 + 12 = 172.',
-      ),
-      nein('CA', 'Ziffern vertauscht: 12 × 16 + 10 = 202.'),
-      nein('B2', 'B2 = 11 × 16 + 2 = 178.'),
-      nein(
-        'A12',
-        'Der Rest 12 ist eine einzelne Hex-Ziffer und wird als C geschrieben.',
-      ),
+    scenario:
+        'In einer Konfigurationsdatei muss der Dezimalwert 172 hexadezimal eingetragen werden.',
+    prompt: 'Ergänzen Sie den Rechenweg.',
+    text:
+        '172 : 16 = {0} Rest {1}\n'
+        'Ergebnis hexadezimal: {2}',
+    luecken: [
+      zahl(10, rationale: '10 × 16 = 160.'),
+      zahl(12, rationale: '172 - 160 = 12.'),
+      wort(['AC'], '10 = A, 12 = C.'),
     ],
     explanation:
-        'Divisionsrestverfahren mit 16: 172 : 16 = 10 Rest 12 (C), 10 : 16 = 0 Rest 10 (A). Von unten gelesen: AC.',
+        'Divisionsrestverfahren mit 16: 172 : 16 = 10 Rest 12. 10 = A, 12 = C, von unten gelesen: AC. Probe: 10 × 16 + 12 = 172. Der Rest 12 ist eine einzelne Hex-Ziffer (C), nicht „12“.',
   ),
 
   // ============================================================= Zeichensätze
@@ -1745,18 +1762,22 @@ final List<Question> questionsA04Daten = [
     explanation:
         'S, t, r, a, e sind ASCII-Zeichen mit je 1 Byte: 5 Byte. ß liegt außerhalb von ASCII und braucht 2 Byte. 5 + 2 = 7 Byte.',
   ),
-  einfach(
+  lueckentext(
     'a4-mc-2',
     'md-zeichen',
-    prompt: 'Wie viele Zeichen umfasst der ASCII-Zeichensatz?',
-    choices: [
-      ja('128', 'ASCII nutzt 7 Bit: 2⁷ = 128 Zeichen (Werte 0 bis 127).'),
-      nein('256', 'Das sind 8 Bit - etwa ISO 8859-1 (Latin-1).'),
-      nein('65.536', 'Das wären 16 Bit.'),
-      nein('127', 'Die Werte reichen von 0 bis 127 - das sind 128 Zeichen.'),
+    scenario: 'Eine alte Schnittstelle überträgt Texte im ASCII-Code.',
+    prompt: 'Ergänzen Sie die Angaben zum ASCII-Zeichensatz.',
+    text:
+        'ASCII verwendet {0} Bit je Zeichen. '
+        'Damit lassen sich {1} verschiedene Zeichen darstellen, '
+        'mit den Werten 0 bis {2}.',
+    luecken: [
+      zahl(7, rationale: 'ASCII ist ein 7-Bit-Code.'),
+      zahl(128, rationale: '2 hoch 7.'),
+      zahl(127, rationale: 'Die Zählung beginnt bei 0.'),
     ],
     explanation:
-        'ASCII ist ein 7-Bit-Code mit 128 Zeichen: Steuerzeichen, Ziffern, englische Buchstaben und Satzzeichen, aber keine Umlaute.',
+        'ASCII ist ein 7-Bit-Code mit 2⁷ = 128 Zeichen (Werte 0 bis 127): Steuerzeichen, Ziffern, englische Buchstaben und Satzzeichen, aber keine Umlaute. 256 Zeichen wären 8 Bit, etwa ISO 8859-1.',
     difficulty: 1,
   ),
   einfach(
@@ -1785,34 +1806,24 @@ final List<Question> questionsA04Daten = [
     explanation:
         'Mojibake entsteht, wenn Bytes mit einer anderen Kodierung gelesen werden, als geschrieben wurde. Abhilfe: durchgängig UTF-8 festlegen.',
   ),
-  mehrfach(
+  lueckentext(
     'a4-mc-4',
     'md-zeichen',
-    prompt: 'Welche Aussagen zu UTF-8 sind richtig?',
-    choices: [
-      ja(
-        'Ein Zeichen belegt 1 bis 4 Byte.',
-        'UTF-8 ist eine Kodierung mit variabler Länge.',
-      ),
-      ja(
-        'Die ersten 128 Zeichen sind identisch mit ASCII.',
-        'Reiner ASCII-Text ist daher gültiges UTF-8.',
-      ),
-      ja(
-        'Alle Unicode-Zeichen lassen sich darstellen.',
-        'UTF-8 kann jeden Codepoint kodieren.',
-      ),
-      nein(
-        'Jedes Zeichen belegt genau 2 Byte.',
-        'ASCII-Zeichen brauchen nur 1 Byte, andere bis zu 4.',
-      ),
-      nein(
-        'UTF-8 ist ein eigener Zeichensatz neben Unicode.',
-        'UTF-8 ist eine Kodierung für Unicode.',
-      ),
+    scenario: 'Eine Webanwendung soll durchgängig auf UTF-8 umgestellt werden.',
+    prompt: 'Ergänzen Sie die Aussagen zu UTF-8.',
+    text:
+        'UTF-8 ist eine {0} für Unicode. '
+        'Ein Zeichen belegt {1} Byte. '
+        'Die ersten 128 Zeichen sind identisch mit {2}. '
+        'Ein deutscher Umlaut belegt {3} Byte.',
+    luecken: [
+      wahl('Kodierung', ['Schriftart', 'Programmiersprache']),
+      wahl('1 bis 4', ['immer 2', 'immer 4']),
+      wahl('ASCII', ['ISO 8859-1', 'UTF-16']),
+      wahl('2', ['1', '4']),
     ],
     explanation:
-        'Unicode legt die Codepoints fest, UTF-8 speichert sie mit 1 bis 4 Byte und ist abwärtskompatibel zu ASCII.',
+        'Unicode legt die Codepoints fest, UTF-8 speichert sie mit variabler Länge von 1 bis 4 Byte. Die ersten 128 Zeichen entsprechen ASCII - reiner ASCII-Text ist daher gültiges UTF-8. Umlaute und ß brauchen 2 Byte, das Eurozeichen 3, Emojis 4.',
   ),
 
   rechnen(
@@ -1972,19 +1983,21 @@ final List<Question> questionsA04Daten = [
     explanation:
         'Ein Bild: 1920 × 1080 × 3 Byte = 6.220.800 Byte. 32.000.000.000 / 6.220.800 ≈ 5.144,03. Nur vollständige Bilder zählen -> abrunden auf 5.144.',
   ),
-  einfach(
+  tabelle(
     'a4-md-9',
     'md-datenmengen',
-    prompt:
-        'Wie viele verschiedene Farben lassen sich mit 16 Bit Farbtiefe darstellen?',
-    choices: [
-      ja('65.536', '2^16 = 65.536.'),
-      nein('256', 'Das sind 8 Bit: 2^8.'),
-      nein('16.777.216', 'Das sind 24 Bit: 2^24.'),
-      nein('32', 'Das wäre 16 × 2 - die Anzahl wächst aber exponentiell.'),
+    scenario:
+        'Für eine Grafikkarte wird verglichen, wie viele Farben bei welcher Farbtiefe darstellbar sind. Die erste Zeile ist als Muster ausgefüllt.',
+    prompt: 'Ergänzen Sie die Anzahl der darstellbaren Farben.',
+    zeilen: [
+      ['Farbtiefe', 'Anzahl Farben'],
+      ['1 Bit', '2'],
+      ['8 Bit', zahl(256)],
+      ['16 Bit', zahl(65536)],
+      ['24 Bit', zahl(16777216)],
     ],
     explanation:
-        'Mit n Bit Farbtiefe gibt es 2^n Farben: 8 Bit = 256, 16 Bit = 65.536, 24 Bit = 16.777.216.',
+        'Mit n Bit Farbtiefe gibt es 2^n Farben: 8 Bit = 256, 16 Bit = 65.536, 24 Bit = 16.777.216 (True Color). Die Anzahl wächst exponentiell, nicht linear.',
     difficulty: 1,
   ),
   rechnen(
@@ -2112,18 +2125,15 @@ final List<Question> questionsA04Daten = [
     explanation: '1 Byte = 8 Bit, also 30 MB/s × 8 = 240 Mbit/s.',
     difficulty: 1,
   ),
-  einfach(
+  reihenfolge(
     'a4-mu-9',
     'md-uebertragung',
-    prompt: 'Welche Datenrate ist am höchsten?',
-    choices: [
-      ja('1 Gbit/s', '= 1.000 Mbit/s.'),
-      nein('120 MB/s', '120 × 8 = 960 Mbit/s.'),
-      nein('100 MB/s', '100 × 8 = 800 Mbit/s.'),
-      nein('800 Mbit/s', 'Weniger als 1.000 Mbit/s.'),
-    ],
+    scenario:
+        'In vier Angeboten wird die Geschwindigkeit unterschiedlich angegeben - mal in Bit, mal in Byte pro Sekunde.',
+    prompt: 'Ordnen Sie die Datenraten von der niedrigsten zur höchsten.',
+    items: ['800 Mbit/s', '110 MB/s', '120 MB/s', '1 Gbit/s'],
     explanation:
-        'Zum Vergleichen alles in Mbit/s umrechnen: MB/s mal 8, Gbit/s mal 1.000. 1 Gbit/s = 1.000 Mbit/s ist der höchste Wert.',
+        'Zum Vergleichen alles in Mbit/s umrechnen: MB/s mal 8, Gbit/s mal 1.000. 110 MB/s = 880 Mbit/s, 120 MB/s = 960 Mbit/s, 1 Gbit/s = 1.000 Mbit/s. Reihenfolge: 800 < 880 < 960 < 1.000 Mbit/s.',
   ),
 
   // =================================================== Kompression und Formate
@@ -2253,30 +2263,23 @@ final List<Question> questionsA04Daten = [
     explanation:
         'Fotos: JPEG. Schrift, harte Kanten und Transparenz im Raster: PNG. Beliebig skalierbare Logos: SVG. Verlustfreies Audio: FLAC.',
   ),
-  einfach(
+  zuordnen(
     'a4-mx-9',
     'md-kompression',
-    prompt: 'Was ist MP4?',
-    choices: [
-      ja(
-        'Ein Containerformat, das z. B. eine H.264-Videospur und eine AAC-Tonspur enthalten kann',
-        'Der Container bündelt Spuren, die Codecs komprimieren sie.',
-      ),
-      nein(
-        'Ein verlustfreier Video-Codec',
-        'MP4 ist kein Codec - und übliche Videocodecs sind verlustbehaftet.',
-      ),
-      nein(
-        'Ein Audioformat wie MP3',
-        'MP4 enthält meist Video, Ton und Untertitel.',
-      ),
-      nein(
-        'Ein Verfahren zur Verschlüsselung von Videos',
-        'Mit Verschlüsselung hat der Container nichts zu tun.',
-      ),
+    scenario:
+        'Ein Kunde kann ein Video nicht abspielen. Für die Fehlersuche ist zu klären, welche Angaben einen Container und welche einen Codec bezeichnen.',
+    prompt: 'Handelt es sich um ein Containerformat oder um einen Codec?',
+    buckets: ['Containerformat', 'Codec'],
+    items: [
+      zu('MP4', 0, 'Bündelt Video-, Ton- und Untertitelspuren.'),
+      zu('H.264', 1, 'Komprimiert Videodaten.'),
+      zu('MKV', 0, 'Container für beliebig viele Spuren.'),
+      zu('AAC', 1, 'Komprimiert Audiodaten.'),
+      zu('H.265', 1, 'Nachfolger von H.264 mit stärkerer Kompression.'),
+      zu('WebM', 0, 'Container für Webvideos.'),
     ],
     explanation:
-        'Container (MP4, MKV) und Codec (H.264, H.265, AAC) sind verschiedene Dinge. Ob ein Gerät eine Datei abspielen kann, hängt vom Codec ab, nicht von der Endung.',
+        'Container (MP4, MKV, WebM) bündeln Spuren, Codecs (H.264, H.265, AAC) komprimieren sie. Ob ein Gerät eine Datei abspielen kann, hängt vom Codec ab, nicht von der Endung.',
   ),
 
   // ============================================================ KI-Grundlagen
@@ -2328,34 +2331,26 @@ final List<Question> questionsA04Daten = [
     explanation:
         'Ein LLM zerlegt Text in Tokens und berechnet Schritt für Schritt Wahrscheinlichkeiten für das nächste Token. Deshalb klingt die Antwort flüssig, ist aber nicht automatisch richtig.',
   ),
-  mehrfach(
+  lueckentext(
     'a4-ig-3',
     'ki-grundlagen',
-    prompt: 'Welche Aussagen sind richtig?',
-    choices: [
-      ja(
-        'Deep Learning ist ein Teilgebiet des Machine Learning.',
-        'Es nutzt neuronale Netze mit vielen Schichten.',
-      ),
-      ja(
-        'Heutige KI-Systeme gelten als schwache KI.',
-        'Sie sind auf Aufgabenfelder spezialisiert.',
-      ),
-      ja(
-        'Beim Training werden die Gewichte eines neuronalen Netzes angepasst.',
-        'So lernt das Netz aus den Trainingsdaten.',
-      ),
-      nein(
-        'Heutige Chatbots sind starke KI mit menschenähnlichem Verständnis.',
-        'Starke KI gibt es bisher nicht.',
-      ),
-      nein(
-        'Unüberwachtes Lernen braucht Daten mit richtigen Antworten.',
-        'Das gilt für überwachtes Lernen.',
-      ),
+    scenario:
+        'Für eine interne Schulung zur KI-Kompetenz ordnen Sie die Grundbegriffe ein.',
+    prompt: 'Setzen Sie die passenden Begriffe ein.',
+    text:
+        'Maschinelles Lernen ist ein Teilgebiet der {0}. '
+        '{1} ist wiederum ein Teilgebiet des maschinellen Lernens und nutzt neuronale Netze mit vielen Schichten. '
+        'Beim Training werden die {2} des Netzes angepasst. '
+        'Heutige Systeme gelten als {3} KI, weil sie auf einzelne Aufgabenfelder spezialisiert sind.',
+    luecken: [
+      wort(['künstlichen Intelligenz']),
+      wort(['Deep Learning']),
+      wort(['Gewichte']),
+      wort(['schwache']),
     ],
+    wortbank: ['starke', 'Tokens', 'Regression'],
     explanation:
-        'KI umfasst Machine Learning, Machine Learning umfasst Deep Learning. Heutige Systeme sind schwache KI, gelernt wird durch Anpassen von Gewichten.',
+        'KI umfasst Machine Learning, Machine Learning umfasst Deep Learning. Gelernt wird durch das Anpassen von Gewichten. Heutige Systeme - auch Chatbots - sind schwache KI; eine starke KI mit menschenähnlichem Verständnis gibt es bisher nicht.',
   ),
   einfach(
     'a4-ig-4',
@@ -2599,36 +2594,46 @@ final List<Question> questionsA04Daten = [
         'Zero-Shot: Aufgabe ohne Beispiel. Few-Shot: mit einigen Beispielen, damit das Modell das gewünschte Muster erkennt.',
     difficulty: 1,
   ),
-  mehrfach(
+  freitext(
     'a4-ie-6',
     'ki-einsatz',
     scenario:
         'Ein Unternehmen will seinen Mitarbeitenden ein Sprachmodell für die tägliche Arbeit bereitstellen.',
-    prompt: 'Welche Maßnahmen sind sinnvoll?',
-    choices: [
-      ja(
+    prompt:
+        'Nennen Sie drei Maßnahmen, die das Unternehmen vor der Einführung treffen sollte.',
+    kriterien: [
+      krit(
         'Mit dem Anbieter einen Auftragsverarbeitungsvertrag (AVV) schließen',
-        'Nötig, wenn personenbezogene Daten verarbeitet werden.',
+        stichwoerter: ['AVV', 'Auftragsverarbeitung', 'Vertrag'],
       ),
-      ja(
-        'Eine Unternehmenslizenz wählen, bei der Eingaben nicht zum Training genutzt werden',
-        'So bleiben Firmendaten geschützt.',
+      krit(
+        'Unternehmenslizenz wählen, bei der Eingaben nicht zum Training genutzt werden',
+        stichwoerter: [
+          'Unternehmenslizenz',
+          'nicht zum Training',
+          'Lizenz',
+          'freigegebenes Werkzeug',
+        ],
       ),
-      ja(
-        'Die Mitarbeitenden im Umgang mit KI schulen',
-        'Der AI Act verlangt ausreichende KI-Kompetenz.',
+      krit(
+        'Mitarbeitende im Umgang mit KI schulen (KI-Kompetenz)',
+        stichwoerter: ['schulen', 'Schulung', 'KI-Kompetenz', 'unterweisen'],
       ),
-      nein(
-        'Jeden sein privates Konto nutzen lassen',
-        'Dann hat das Unternehmen keine Kontrolle über die Daten.',
-      ),
-      nein(
-        'Kundendaten ungefiltert eingeben, damit die Antworten genauer werden',
-        'Das verstößt gegen Datenminimierung und Vertraulichkeit.',
+      krit(
+        'Richtlinie festlegen: welche Daten eingegeben werden dürfen, Ergebnisse immer prüfen',
+        stichwoerter: [
+          'Richtlinie',
+          'Regeln',
+          'keine personenbezogenen Daten',
+          'Ergebnisse prüfen',
+        ],
       ),
     ],
+    loesung:
+        'Zum Beispiel: mit dem Anbieter einen Auftragsverarbeitungsvertrag schließen, eine Unternehmenslizenz wählen, bei der Eingaben nicht zum Training genutzt werden, und die Mitarbeitenden schulen. Dazu gehört eine Richtlinie, welche Daten eingegeben werden dürfen. Private Konten und ungefilterte Kundendaten sind dagegen tabu.',
     explanation:
-        'Sicherer KI-Einsatz braucht Regeln: freigegebene Werkzeuge, Verträge nach DSGVO, geschultes Personal und keine unnötigen personenbezogenen Daten.',
+        'Je Nennung 1 Punkt, höchstens 3. Sicherer KI-Einsatz braucht Regeln: freigegebene Werkzeuge, Verträge nach DSGVO, geschultes Personal (der AI Act verlangt ausreichende KI-Kompetenz) und keine unnötigen personenbezogenen Daten.',
+    punkte: 3,
   ),
   zuordnen(
     'a4-ie-7',
@@ -2693,62 +2698,51 @@ final List<Question> questionsA04Daten = [
     explanation:
         'Unannehmbar: verboten. Hoch: strenge Pflichten wie Risikomanagement und menschliche Aufsicht. Begrenzt: Transparenzpflicht. Minimal: keine besonderen Pflichten.',
   ),
-  einfach(
+  paare(
     'a4-ir-2',
     'ki-grenzen',
-    prompt: 'Was ist eine Halluzination eines KI-Modells?',
-    choices: [
-      ja(
-        'Eine überzeugend klingende, aber falsche oder erfundene Ausgabe',
-        'Das Modell erzeugt wahrscheinlichen, nicht geprüften Text.',
-      ),
-      nein(
-        'Eine absichtliche Lüge des Modells',
-        'Ein Modell hat keine Absicht - es berechnet Wahrscheinlichkeiten.',
-      ),
-      nein(
-        'Ein Absturz des Modells',
-        'Bei einer Halluzination läuft das Modell normal und antwortet.',
-      ),
-      nein(
-        'Die Weigerung, eine Frage zu beantworten',
-        'Das ist eine Ablehnung, keine Halluzination.',
-      ),
+    scenario:
+        'In der KI-Richtlinie eines Unternehmens werden typische Risiken erklärt.',
+    prompt: 'Ordnen Sie jedem Begriff die passende Erklärung zu.',
+    paare: [
+      paar('Halluzination', 'überzeugend klingende, aber erfundene Ausgabe'),
+      paar('Bias', 'Verzerrung durch einseitige Trainingsdaten'),
+      paar('Prompt Injection', 'versteckte Anweisung in Eingabedaten'),
+      paar('Deepfake', 'täuschend echt gefälschtes Bild, Video oder Audio'),
     ],
     explanation:
-        'Halluzinationen sind gefährlich, weil sie flüssig und plausibel klingen. Fakten, Quellen und Zahlen aus KI-Antworten immer prüfen.',
+        'Halluzinationen sind gefährlich, weil sie flüssig und plausibel klingen - ohne Absicht des Modells, es berechnet nur Wahrscheinlichkeiten. Bias stammt aus den Trainingsdaten, Prompt Injection aus manipulierten Eingaben, Deepfakes sind künstlich erzeugte Fälschungen. Fakten, Quellen und Zahlen aus KI-Antworten immer prüfen.',
     difficulty: 1,
   ),
-  mehrfach(
+  markieren(
     'a4-ir-3',
     'ki-grenzen',
     scenario:
-        'Ein Mitarbeiter will eine Kundenbeschwerde mit einem öffentlichen KI-Chatbot beantworten lassen.',
-    prompt: 'Welche Vorgehensweisen sind richtig?',
-    choices: [
-      ja(
-        'Vorher klären, ob das Werkzeug im Unternehmen erlaubt ist',
-        'Viele Unternehmen regeln den KI-Einsatz in einer Richtlinie.',
+        'Ein Mitarbeiter will die Beschwerde einer Kundin über einen defekten Rasenmäher mit einem öffentlichen KI-Chatbot beantworten lassen. Das Werkzeug ist im Unternehmen für Texte ohne personenbezogene Daten freigegeben.',
+    prompt:
+        'Markieren Sie alle Angaben, die er vor der Eingabe aus dem Beschwerdetext entfernen muss.',
+    zeilen: [
+      ja('Vor- und Nachname der Kundin', 'Personenbezogenes Datum.'),
+      nein(
+        'Beschreibung des Mangels: „springt nach drei Wochen nicht mehr an“',
+        'Ohne Bezug zu einer Person - für die Antwort nötig.',
       ),
+      ja('Anschrift der Kundin', 'Personenbezogenes Datum.'),
       ja(
-        'Name, Adresse und Kundennummer vor der Eingabe entfernen',
-        'Personenbezogene Daten gehören nicht in öffentliche Tools.',
-      ),
-      ja(
-        'Den Antwortentwurf vor dem Versand fachlich prüfen',
-        'Die Antwort kann falsche Aussagen oder Zusagen enthalten.',
+        'Kundennummer',
+        'Über die Kundennummer ist die Person identifizierbar.',
       ),
       nein(
-        'Die komplette Kundenakte hochladen, damit die Antwort genauer wird',
-        'Das wäre eine unzulässige Weitergabe personenbezogener und vertraulicher Daten.',
+        'Bezeichnung des Rasenmähermodells',
+        'Eine Produktangabe ohne Personenbezug.',
       ),
-      nein(
-        'Die Antwort ungelesen versenden, weil der Chatbot höflich formuliert',
-        'Höflichkeit sagt nichts über die Richtigkeit.',
+      ja(
+        'IBAN für die Rückerstattung',
+        'Bankdaten sind personenbezogen und besonders heikel.',
       ),
     ],
     explanation:
-        'Beim KI-Einsatz gilt die DSGVO: keine personenbezogenen oder vertraulichen Daten in öffentliche Tools. Ergebnisse werden immer geprüft.',
+        'Beim KI-Einsatz gilt die DSGVO: Name, Anschrift, Kundennummer und Bankdaten gehören nicht in ein öffentliches Werkzeug. Sachangaben zum Produkt und zum Mangel dürfen bleiben. Den Antwortentwurf prüft der Mitarbeiter vor dem Versand.',
   ),
   einfach(
     'a4-ir-4',
@@ -2831,34 +2825,28 @@ final List<Question> questionsA04Daten = [
         'Seit 2. Februar 2025 verboten sind u. a. Social Scoring und Emotionserkennung am Arbeitsplatz und in Bildungseinrichtungen (Ausnahmen: medizinische oder Sicherheitsgründe).',
     difficulty: 3,
   ),
-  mehrfach(
+  lueckentext(
     'a4-ir-7',
     'ki-grenzen',
-    prompt: 'Welche Aussagen zu KI und Datenschutz (DSGVO) sind richtig?',
-    choices: [
-      ja(
-        'Mit einem externen KI-Anbieter, der personenbezogene Daten verarbeitet, wird ein Auftragsverarbeitungsvertrag geschlossen.',
-        'Der Anbieter verarbeitet die Daten im Auftrag des Unternehmens.',
-      ),
-      ja(
-        'Personen dürfen verlangen, nicht einer ausschließlich automatisierten Entscheidung mit erheblicher Wirkung unterworfen zu werden.',
-        'Das regelt Art. 22 DSGVO.',
-      ),
-      ja(
-        'Daten sollen vor der Eingabe möglichst anonymisiert werden.',
-        'Das folgt aus dem Grundsatz der Datenminimierung.',
-      ),
-      nein(
-        'Die DSGVO gilt nicht, wenn eine KI die Daten verarbeitet.',
-        'Sie gilt für jede Verarbeitung personenbezogener Daten.',
-      ),
-      nein(
-        'Bei minimalem Risiko nach dem AI Act entfällt die DSGVO.',
-        'AI Act und DSGVO gelten nebeneinander.',
-      ),
+    scenario:
+        'Ein Unternehmen lässt Kundendaten von einem externen KI-Dienst verarbeiten und prüft die Anforderungen des Datenschutzes.',
+    prompt: 'Ergänzen Sie die Aussagen zu KI und Datenschutz.',
+    text:
+        'Mit dem externen KI-Anbieter wird ein {0} geschlossen. '
+        'Nach dem Grundsatz der {1} werden Daten vor der Eingabe möglichst anonymisiert. '
+        'Art. 22 DSGVO schützt Personen vor ausschließlich {2} Entscheidungen mit erheblicher Wirkung. '
+        'AI Act und DSGVO gelten {3}.',
+    luecken: [
+      wahl('Auftragsverarbeitungsvertrag', ['Werkvertrag', 'Lizenzvertrag']),
+      wahl('Datenminimierung', ['Datensicherung', 'Datenübertragbarkeit']),
+      wahl('automatisierten', ['mündlichen', 'schriftlichen']),
+      wahl('nebeneinander', [
+        'nur einer von beiden, je nach Risikostufe',
+        'nicht für KI-Systeme',
+      ]),
     ],
     explanation:
-        'Der AI Act ersetzt die DSGVO nicht. Wer personenbezogene Daten in KI-Systeme gibt, braucht eine Rechtsgrundlage, beachtet Datenminimierung und schließt mit externen Anbietern einen AVV.',
+        'Der AI Act ersetzt die DSGVO nicht - sie gilt für jede Verarbeitung personenbezogener Daten. Wer solche Daten in KI-Systeme gibt, braucht eine Rechtsgrundlage, beachtet die Datenminimierung und schließt mit externen Anbietern einen Auftragsverarbeitungsvertrag. Art. 22 DSGVO betrifft ausschließlich automatisierte Entscheidungen.',
   ),
   einfach(
     'a4-ir-8',

@@ -1278,6 +1278,48 @@ final List<Nugget> nuggetsA04Daten = [
     ],
   ),
   vergleich(
+    'n-wa-13',
+    'wi-aufruf',
+    'Statische und dynamische Website',
+    'Was der Server zwischen Anfrage und Antwort tut, hängt von der Art der Website ab. Eine statische Seite liegt fertig auf dem Server, eine dynamische wird bei jedem Aufruf neu zusammengebaut.',
+    [
+      ['Merkmal', 'statisch', 'dynamisch'],
+      ['Entstehung', 'fertige Dateien', 'beim Aufruf vom Programm erzeugt'],
+      ['Inhalt', 'für alle gleich', 'je nach Nutzer, Eingabe, Daten'],
+      ['Pflege', 'Dateien bearbeiten', 'über CMS und Datenbank'],
+      ['Beispiel', 'Visitenkarten-Seite', 'Webshop, Kundenportal'],
+    ],
+    merksatz:
+        'Statisch: Der Server liefert aus. Dynamisch: Der Server rechnet erst und liefert dann aus.',
+  ),
+  ablauf(
+    'n-wa-14',
+    'wi-aufruf',
+    'So entsteht eine dynamische Seite',
+    'Bei einer dynamischen Website startet der Webserver nach dem HTTP-Request ein Programm. Erst dessen Ergebnis geht als Response an den Browser - der Browser sieht nur fertiges HTML, nie das Programm selbst.',
+    [
+      'Browser sendet den Request, z. B. GET /angebote',
+      'Webserver übergibt die Anfrage an ein serverseitiges Programm',
+      'Programm liest die nötigen Daten aus der Datenbank',
+      'Programm setzt die Daten in eine HTML-Vorlage ein',
+      'Server schickt das fertige HTML als Response zurück',
+    ],
+    merksatz:
+        'Ein CMS (Content-Management-System) ist ein fertiges Programm dieser Art: Inhalte pflegen ohne zu programmieren.',
+  ),
+  konzept(
+    'n-wa-15',
+    'wi-aufruf',
+    'Serverseitige und clientseitige Sprachen',
+    'Dynamische Inhalte entstehen mit Programmiersprachen, die auf dem Server laufen. Im Browser laufen dagegen nur HTML, CSS und JavaScript. Die Prüfung fragt gern nach Beispielen für serverseitige Sprachen.',
+    points: [
+      'Serverseitig: PHP, Python, Java, C#, Ruby, JavaScript (Node.js)',
+      'Clientseitig im Browser: JavaScript, dazu HTML und CSS',
+      'HTML und CSS sind keine Programmiersprachen - sie beschreiben Struktur und Aussehen',
+      'JavaScript kann beides: im Browser und mit Node.js auf dem Server',
+    ],
+  ),
+  vergleich(
     'n-wa-10',
     'wi-aufruf',
     'Fehlerbild und Ursache',
@@ -2289,6 +2331,43 @@ final List<Nugget> nuggetsA04Daten = [
       '76.800.000 / 8 = 9.600.000 Byte',
     ],
     ergebnis: '9.600.000 Byte = 9,6 MB',
+  ),
+  beispiel(
+    'n-md-14',
+    'md-datenmengen',
+    'Durchgerechnet: Datenrate einer Kamera',
+    'Bei Videostreams fragt die Prüfung nach der Datenrate in Mbit/s. Eine Kamera liefert 1920 × 1080 Pixel, 24 Bit Farbtiefe und 25 Bilder pro Sekunde (fps). Der Codec komprimiert auf 1 % der Rohdaten. Wie hoch ist die Datenrate in vollen Mbit/s?',
+    code:
+        'Mbit/s = Breite × Höhe\n'
+        '  × Farbtiefe × Bilder/s\n'
+        '  / 1.000.000 × Faktor',
+    schritte: [
+      'Ein Bild: 1920 × 1080 × 24 Bit = 49.766.400 Bit',
+      'Pro Sekunde: 49.766.400 × 25 = 1.244.160.000 Bit/s',
+      'In Mbit/s (dezimal): / 1.000.000 = 1.244,16 Mbit/s',
+      'Kompression auf 1 %: × 0,01 = 12,44 Mbit/s',
+      'Auf volle Mbit/s aufrunden, damit die Leitung reicht: 13 Mbit/s',
+    ],
+    ergebnis: '13 Mbit/s je Kamera',
+    merksatz:
+        '„Auf 1 %“ heißt Faktor 0,01 - „um 1 %“ wäre Faktor 0,99. Datenraten rechnet man in Bit und dezimal.',
+  ),
+  beispiel(
+    'n-md-15',
+    'md-datenmengen',
+    'Durchgerechnet: Speicher für mehrere Kameras',
+    'Aus der Datenrate folgt der Speicherbedarf. 5 Kameras mit je 13 Mbit/s zeichnen 30 Tage lang ununterbrochen auf. Wie viele TiB Speicher sind mindestens nötig (1 TiB = 1.024⁴ Byte)?',
+    schritte: [
+      'Alle Kameras: 5 × 13 Mbit/s = 65 Mbit/s = 65.000.000 Bit/s',
+      'Dauer: 30 Tage × 24 h × 3.600 s = 2.592.000 s',
+      'Bit: 65.000.000 × 2.592.000 = 168.480.000.000.000 Bit',
+      'Byte: / 8 = 21.060.000.000.000 Byte',
+      'TiB: viermal durch 1.024 teilen ≈ 19,15 TiB',
+      'Der Speicher muss reichen -> aufrunden',
+    ],
+    ergebnis: '20 TiB',
+    merksatz:
+        'Vier Stolperstellen: Bit in Byte (/ 8), Zeit in Sekunden, Mbit dezimal, TiB binär - und am Ende aufrunden.',
   ),
   falle(
     'n-md-12',
