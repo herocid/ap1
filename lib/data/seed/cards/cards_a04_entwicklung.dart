@@ -21,13 +21,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ld-3',
     'af-dokumente',
     'Wogegen wird ein Softwareprojekt abgenommen?',
-    'Gegen das vom Auftraggeber genehmigte Pflichtenheft - nicht gegen das Lastenheft.',
+    'Gegen das vom Auftraggeber genehmigte Pflichtenheft, nicht gegen das Lastenheft.',
   ),
   karte(
     'k-ld-4',
     'af-dokumente',
     'Wann entsteht das Pflichtenheft?',
-    'Nach der Vergabe - erst dann steht fest, welcher Auftragnehmer es schreibt.',
+    'Nach der Vergabe, denn erst dann steht fest, welcher Auftragnehmer es schreibt.',
   ),
   karte(
     'k-ld-5',
@@ -70,7 +70,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ld-11',
     'af-dokumente',
     'Wodurch wird das Pflichtenheft verbindlich?',
-    'Durch die Genehmigung des Auftraggebers - danach ist es Teil des Vertrags.',
+    'Durch die Genehmigung des Auftraggebers. Danach ist es Teil des Vertrags.',
   ),
   karte(
     'k-ld-12',
@@ -82,13 +82,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ld-13',
     'af-dokumente',
     '„Die App wird mit Flutter entwickelt.“ In welches Dokument gehört der Satz?',
-    'Ins Pflichtenheft - es ist eine Technologieentscheidung des Auftragnehmers (womit?).',
+    'Ins Pflichtenheft, denn es ist eine Technologieentscheidung des Auftragnehmers (womit?).',
   ),
   karte(
     'k-ld-14',
     'af-dokumente',
     '„Das Budget beträgt 40.000 €.“ In welches Dokument gehört der Satz?',
-    'Ins Lastenheft - das Budget ist eine Rahmenbedingung des Auftraggebers.',
+    'Ins Lastenheft, denn das Budget ist eine Rahmenbedingung des Auftraggebers.',
   ),
   karte(
     'k-ld-15',
@@ -100,13 +100,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ld-16',
     'af-dokumente',
     'Was bedeutet das genehmigte Pflichtenheft im Streitfall?',
-    'Es ist der Maßstab: Geliefert werden muss, was drinsteht - und was nicht drinsteht, muss nicht geliefert werden.',
+    'Es ist der Maßstab: Geliefert werden muss, was drinsteht, und was nicht drinsteht, muss nicht geliefert werden.',
   ),
   karte(
     'k-ld-17',
     'af-dokumente',
     'Was beschreibt der Abschnitt „Produkteinsatz“ im Lastenheft?',
-    'Wer das System nutzt und wofür - Zielgruppen und Anwendungsbereiche.',
+    'Wer das System nutzt und wofür: Zielgruppen und Anwendungsbereiche.',
   ),
 
   // Arten von Anforderungen
@@ -126,7 +126,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-fa-3',
     'af-arten',
     'Nenne vier Qualitätsmerkmale für nicht-funktionale Anforderungen.',
-    'Leistung, Zuverlässigkeit, Benutzbarkeit, Sicherheit - außerdem Wartbarkeit und Übertragbarkeit.',
+    'Leistung, Zuverlässigkeit, Benutzbarkeit, Sicherheit, außerdem Wartbarkeit und Übertragbarkeit.',
   ),
   karte(
     'k-fa-4',
@@ -150,7 +150,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-fa-7',
     'af-arten',
     '„Anmelden mit zweitem Faktor“: funktional oder nicht-funktional?',
-    'Funktional - es beschreibt eine Tätigkeit des Systems, auch wenn es um Sicherheit geht.',
+    'Funktional, denn es beschreibt eine Tätigkeit des Systems, auch wenn es um Sicherheit geht.',
   ),
   karte(
     'k-fa-8',
@@ -174,19 +174,19 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-fa-11',
     'af-arten',
     '„Passwörter werden nur als Hash gespeichert.“ Welche Art Anforderung ist das?',
-    'Nicht-funktional (Sicherheit) - es beschreibt eine Eigenschaft, keine Tätigkeit des Systems.',
+    'Nicht-funktional (Sicherheit), denn es beschreibt eine Eigenschaft, keine Tätigkeit des Systems.',
   ),
   karte(
     'k-fa-12',
     'af-arten',
     '„Die App läuft unter Android und iOS.“ Welches Qualitätsmerkmal ist gemeint?',
-    'Übertragbarkeit - auf welchen Plattformen das System lauffähig ist.',
+    'Übertragbarkeit: auf welchen Plattformen das System lauffähig ist.',
   ),
   karte(
     'k-fa-13',
     'af-arten',
     'Welches Qualitätsmerkmal beschreibt „Module sind einzeln austauschbar“?',
-    'Wartbarkeit - wie leicht sich das System ändern und erweitern lässt.',
+    'Wartbarkeit: wie leicht sich das System ändern und erweitern lässt.',
   ),
   karte(
     'k-fa-14',
@@ -236,13 +236,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-fe-4',
     'af-erhebung',
     'Wofür steht MoSCoW?',
-    'Must have, Should have, Could have, Won’t have (this time) - Priorisierung von Anforderungen.',
+    'Must have, Should have, Could have, Won’t have (this time), Priorisierung von Anforderungen.',
   ),
   karte(
     'k-fe-5',
     'af-erhebung',
     'Nenne vier Merkmale einer guten Anforderung.',
-    'Eindeutig, vollständig, widerspruchsfrei, prüfbar - außerdem notwendig, realisierbar und verfolgbar.',
+    'Eindeutig, vollständig, widerspruchsfrei, prüfbar, außerdem notwendig, realisierbar und verfolgbar.',
   ),
   karte(
     'k-fe-6',
@@ -254,7 +254,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-fe-7',
     'af-erhebung',
     'Wann setzt du einen Workshop zur Erhebung ein?',
-    'Wenn mehrere Stakeholder gemeinsam Anforderungen erarbeiten und Konflikte klären sollen - braucht Moderation.',
+    'Wenn mehrere Stakeholder gemeinsam Anforderungen erarbeiten und Konflikte klären sollen. Er braucht Moderation.',
   ),
   karte(
     'k-fe-8',
@@ -266,7 +266,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-fe-9',
     'af-erhebung',
     'Was ist der erste Schritt beim Erheben von Anforderungen?',
-    'Die Stakeholder ermitteln - wer eine Gruppe vergisst, vergisst ihre Anforderungen.',
+    'Die Stakeholder ermitteln, denn wer eine Gruppe vergisst, vergisst ihre Anforderungen.',
   ),
   karte(
     'k-fe-10',
@@ -278,7 +278,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-fe-11',
     'af-erhebung',
     '150 Beschäftigte sollen ihre Wünsche nennen. Welche Erhebungstechnik passt?',
-    'Ein Fragebogen - er erreicht viele Personen und lässt sich gut auswerten.',
+    'Ein Fragebogen, denn er erreicht viele Personen und lässt sich gut auswerten.',
   ),
   karte(
     'k-fe-12',
@@ -296,7 +296,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-fe-14',
     'af-erhebung',
     'Was bedeutet „Won’t have“ bei MoSCoW genau?',
-    'In diesem Release bewusst nicht - die Anforderung bleibt dokumentiert und kann später wieder aufgenommen werden.',
+    'In diesem Release bewusst nicht. Die Anforderung bleibt dokumentiert und kann später wieder aufgenommen werden.',
   ),
   karte(
     'k-fe-15',
@@ -314,7 +314,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-fe-17',
     'af-erhebung',
     'Was bedeutet „verfolgbar“ bei einer Anforderung?',
-    'Sie hat eine eindeutige Nummer und eine bekannte Quelle - so lässt sie sich bis zum Test nachverfolgen.',
+    'Sie hat eine eindeutige Nummer und eine bekannte Quelle, so lässt sie sich bis zum Test nachverfolgen.',
   ),
   karte(
     'k-fe-18',
@@ -359,7 +359,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-uu-6',
     'u-usecase',
     'Was zeigt ein Anwendungsfalldiagramm nicht?',
-    'Keine Reihenfolge und keinen Ablauf - nur, wer welche Leistung nutzt. Abläufe zeigt das Aktivitätsdiagramm.',
+    'Keine Reihenfolge und keinen Ablauf. Nur, wer welche Leistung nutzt. Abläufe zeigt das Aktivitätsdiagramm.',
   ),
   karte(
     'k-uu-7',
@@ -371,7 +371,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-uu-8',
     'u-usecase',
     'Wozu dient ein Anwendungsfalldiagramm?',
-    'Es zeigt aus Nutzersicht, welche Leistungen ein System bietet und wer sie nutzt - gut für Anforderungsanalyse und Kundengespräch.',
+    'Es zeigt aus Nutzersicht, welche Leistungen ein System bietet und wer sie nutzt. Gut für Anforderungsanalyse und Kundengespräch.',
   ),
   karte(
     'k-uu-9',
@@ -383,13 +383,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-uu-10',
     'u-usecase',
     'Warum heißt ein Akteur „Kundin“ und nicht „Frau Meier“?',
-    'Akteure sind Rollen, keine Personen - eine Person kann mehrere Rollen haben.',
+    'Akteure sind Rollen, keine Personen. Eine Person kann mehrere Rollen haben.',
   ),
   karte(
     'k-uu-11',
     'u-usecase',
     'Womit verbindest du Akteur und Anwendungsfall?',
-    'Mit einer durchgezogenen Linie (Assoziation) - ohne Pfeil.',
+    'Mit einer durchgezogenen Linie (Assoziation), ohne Pfeil.',
   ),
   karte(
     'k-uu-12',
@@ -401,25 +401,25 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-uu-13',
     'u-usecase',
     'Jede Bestellung setzt eine Anmeldung voraus. Welche Beziehung modellierst du?',
-    '«include» - Pfeil von „Bestellung aufgeben“ zu „Anmelden“.',
+    '«include»: Pfeil von „Bestellung aufgeben“ zu „Anmelden“.',
   ),
   karte(
     'k-uu-14',
     'u-usecase',
     'Nur manche Kunden lösen beim Bestellen einen Gutschein ein. Welche Beziehung?',
-    '«extend» - Pfeil von „Gutschein einlösen“ zu „Bestellung aufgeben“.',
+    '«extend»: Pfeil von „Gutschein einlösen“ zu „Bestellung aufgeben“.',
   ),
   karte(
     'k-uu-15',
     'u-usecase',
     'Als was modellierst du einen externen Zahlungsdienst?',
-    'Als Akteur - er ist ein externes System außerhalb der Systemgrenze.',
+    'Als Akteur, denn er ist ein externes System außerhalb der Systemgrenze.',
   ),
   karte(
     'k-uu-16',
     'u-usecase',
     'Warum ist „Button OK klicken“ kein guter Anwendungsfall?',
-    'Er ist zu fein - ein Bedienschritt, kein Ziel des Akteurs. Gut wäre z. B. „Termin buchen“.',
+    'Er ist zu fein: ein Bedienschritt, kein Ziel des Akteurs. Gut wäre z. B. „Termin buchen“.',
   ),
   karte(
     'k-uu-17',
@@ -445,13 +445,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-uk-3',
     'u-klassen',
     'Was ist eine Aggregation und wie wird sie gezeichnet?',
-    'Leere Raute am Ganzen - das Teil kann ohne das Ganze existieren (Abteilung - Mitarbeiter).',
+    'Leere Raute am Ganzen: das Teil kann ohne das Ganze existieren (Abteilung - Mitarbeiter).',
   ),
   karte(
     'k-uk-4',
     'u-klassen',
     'Was ist eine Komposition und wie wird sie gezeichnet?',
-    'Gefüllte Raute am Ganzen - das Teil existiert nur mit dem Ganzen (Rechnung - Position).',
+    'Gefüllte Raute am Ganzen: das Teil existiert nur mit dem Ganzen (Rechnung - Position).',
   ),
   karte(
     'k-uk-5',
@@ -487,7 +487,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-uk-10',
     'u-klassen',
     'Was bedeutet die Multiplizität 0..1?',
-    'Keins oder genau eins - die Beziehung ist optional.',
+    'Keins oder genau eins, die Beziehung ist optional.',
   ),
   karte(
     'k-uk-11',
@@ -499,7 +499,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-uk-12',
     'u-klassen',
     'Was bedeutet der Eintrag „- kontoNr: String“?',
-    'Privates Attribut kontoNr vom Typ String - nur die Klasse selbst darf darauf zugreifen.',
+    'Privates Attribut kontoNr vom Typ String. Nur die Klasse selbst darf darauf zugreifen.',
   ),
   karte(
     'k-uk-13',
@@ -517,19 +517,19 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-uk-15',
     'u-klassen',
     'Wie benennst du eine Klasse?',
-    'Mit einem Substantiv im Singular, großgeschrieben - Kunde, nicht Kunden.',
+    'Mit einem Substantiv im Singular, großgeschrieben (Kunde, nicht Kunden).',
   ),
   karte(
     'k-uk-16',
     'u-klassen',
     'Ein Gebäude besteht aus Räumen, die es ohne das Gebäude nicht gibt. Welche Beziehung?',
-    'Komposition - gefüllte Raute am Gebäude, denn die Räume hängen von seiner Existenz ab.',
+    'Komposition: gefüllte Raute am Gebäude, denn die Räume hängen von seiner Existenz ab.',
   ),
   karte(
     'k-uk-17',
     'u-klassen',
     'Ein Verein hat Mitglieder, die es auch ohne den Verein gibt. Welche Beziehung?',
-    'Aggregation - leere Raute am Verein, die Mitglieder existieren unabhängig.',
+    'Aggregation: leere Raute am Verein, die Mitglieder existieren unabhängig.',
   ),
   karte(
     'k-uk-18',
@@ -547,13 +547,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-uk-20',
     'u-klassen',
     'Was gehört nicht in ein Klassendiagramm?',
-    'Konkrete Werte wie „Meier“ und die Reihenfolge von Methodenaufrufen - es zeigt nur die Struktur.',
+    'Konkrete Werte wie „Meier“ und die Reihenfolge von Methodenaufrufen. Es zeigt nur die Struktur.',
   ),
   karte(
     'k-uk-21',
     'u-klassen',
     'Warum braucht Bestellung kein Attribut kundenNr, wenn die Beziehung zu Kunde gezeichnet ist?',
-    'Die Assoziation bildet die Verbindung schon ab - ein zusätzliches Attribut wäre doppelt.',
+    'Die Assoziation bildet die Verbindung schon ab. Ein zusätzliches Attribut wäre doppelt.',
   ),
   karte(
     'k-uk-22',
@@ -573,7 +573,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ua-2',
     'u-aktivitaet',
     'Wie funktioniert eine Entscheidung im Aktivitätsdiagramm?',
-    'Raute mit einem Eingang und mehreren Ausgängen - genau ein Weg wird genommen, gesteuert über Guards [ ].',
+    'Raute mit einem Eingang und mehreren Ausgängen: genau ein Weg wird genommen, gesteuert über Guards [ ].',
   ),
   karte(
     'k-ua-3',
@@ -585,7 +585,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ua-4',
     'u-aktivitaet',
     'Was zeigt eine Swimlane?',
-    'Einen Aktivitätsbereich je Rolle oder Abteilung - also, wer eine Aktion ausführt.',
+    'Einen Aktivitätsbereich je Rolle oder Abteilung, also, wer eine Aktion ausführt.',
   ),
   karte(
     'k-ua-5',
@@ -603,13 +603,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ua-7',
     'u-aktivitaet',
     'Wie stellst du eine Schleife im Aktivitätsdiagramm dar?',
-    'Mit einer Entscheidung und einer Kante zurück vor eine frühere Aktion - ein eigenes Schleifensymbol gibt es nicht.',
+    'Mit einer Entscheidung und einer Kante zurück vor eine frühere Aktion. Ein eigenes Schleifensymbol gibt es nicht.',
   ),
   karte(
     'k-ua-8',
     'u-aktivitaet',
     'Wofür nutzt du ein Aktivitätsdiagramm?',
-    'Um einen Ablauf Schritt für Schritt darzustellen - einen Geschäftsprozess oder einen Algorithmus.',
+    'Um einen Ablauf Schritt für Schritt darzustellen: einen Geschäftsprozess oder einen Algorithmus.',
   ),
   karte(
     'k-ua-9',
@@ -621,7 +621,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ua-10',
     'u-aktivitaet',
     'Warum sind die Guards [Betrag > 500] und [Betrag < 500] fehlerhaft?',
-    'Bei genau 500 trifft keiner zu. Guards müssen alle Fälle abdecken - richtig wäre [Betrag <= 500].',
+    'Bei genau 500 trifft keiner zu. Guards müssen alle Fälle abdecken. Richtig wäre [Betrag <= 500].',
   ),
   karte(
     'k-ua-11',
@@ -645,7 +645,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ua-14',
     'u-aktivitaet',
     'Was passiert, wenn du parallele Wege mit einer Raute statt mit einem Balken zusammenführst?',
-    'Der Ablauf läuft schon weiter, sobald der erste Weg fertig ist - nicht erst, wenn alle fertig sind.',
+    'Der Ablauf läuft schon weiter, sobald der erste Weg fertig ist, nicht erst, wenn alle fertig sind.',
   ),
   karte(
     'k-ua-15',
@@ -671,13 +671,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pd-2',
     'pl-datentypen',
     'Welcher Datentyp passt für eine Postleitzahl?',
-    'String - mit ihr wird nicht gerechnet, und die führende Null (01067) bleibt erhalten.',
+    'String, denn mit ihr wird nicht gerechnet, und die führende Null (01067) bleibt erhalten.',
   ),
   karte(
     'k-pd-3',
     'pl-datentypen',
     'Was ist ein Cast?',
-    'Eine ausdrückliche Typumwandlung, z. B. (int) 9.99 ergibt 9 - abgeschnitten, nicht gerundet.',
+    'Eine ausdrückliche Typumwandlung, z. B. (int) 9.99 ergibt 9 (abgeschnitten, nicht gerundet).',
   ),
   karte(
     'k-pd-4',
@@ -701,7 +701,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pd-7',
     'pl-datentypen',
     'Wie viele Bit belegen die einfachen Zahlentypen in Java?',
-    'byte 8, short 16, int 32, long 64, float 32, double 64 Bit - char 16 Bit.',
+    'byte 8, short 16, int 32, long 64, float 32, double 64 Bit, char 16 Bit.',
   ),
   karte(
     'k-pd-8',
@@ -743,13 +743,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pd-14',
     'pl-datentypen',
     'Wie viele Bit brauchst du mindestens für die Werte 0 bis 1000?',
-    '1001 Werte: 2^9 = 512 reicht nicht, 2^10 = 1024 reicht - also 10 Bit.',
+    '1001 Werte: 2^9 = 512 reicht nicht, 2^10 = 1024 reicht. Also 10 Bit.',
   ),
   karte(
     'k-pd-15',
     'pl-datentypen',
     'Welcher Datentyp passt für die Angabe „Kunde ist aktiv“?',
-    'boolean - es gibt nur die Werte true und false.',
+    'boolean, denn es gibt nur die Werte true und false.',
   ),
   karte(
     'k-pd-16',
@@ -761,19 +761,19 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pd-17',
     'pl-datentypen',
     'Welchen Wert hat d nach double d = 7 / 2; in Java?',
-    '3.0 - int / int wird zuerst ganzzahlig zu 3 gerechnet, erst dann in double umgewandelt.',
+    '3.0, denn int / int wird zuerst ganzzahlig zu 3 gerechnet, erst dann in double umgewandelt.',
   ),
   karte(
     'k-pd-18',
     'pl-datentypen',
     'Welchen Wert hat (double) 7 / 2 in Java?',
-    '3.5 - die 7 wird vor der Division zu 7.0, also wird normal dividiert.',
+    '3.5, denn die 7 wird vor der Division zu 7.0, also wird normal dividiert.',
   ),
   karte(
     'k-pd-19',
     'pl-datentypen',
     'Was ergibt "5" + 3 in Java?',
-    '"53" - ist ein Operand ein String, wird verkettet statt gerechnet.',
+    '"53": ist ein Operand ein String, wird verkettet statt gerechnet.',
   ),
   karte(
     'k-pd-20',
@@ -799,13 +799,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pk-1',
     'pl-kontrollstrukturen',
     'Was kennzeichnet eine kopfgesteuerte Schleife?',
-    'Sie prüft vor jedem Durchlauf (while) - und läuft eventuell gar nicht.',
+    'Sie prüft vor jedem Durchlauf (while), und läuft eventuell gar nicht.',
   ),
   karte(
     'k-pk-2',
     'pl-kontrollstrukturen',
     'Was kennzeichnet eine fußgesteuerte Schleife?',
-    'Sie prüft nach jedem Durchlauf (do-while) - und läuft mindestens einmal.',
+    'Sie prüft nach jedem Durchlauf (do-while), und läuft mindestens einmal.',
   ),
   karte(
     'k-pk-3',
@@ -823,19 +823,19 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pk-5',
     'pl-kontrollstrukturen',
     'In welcher Rangfolge werden NICHT, UND und ODER ausgewertet?',
-    'NICHT vor UND vor ODER - im Zweifel Klammern setzen.',
+    'NICHT vor UND vor ODER. Im Zweifel Klammern setzen.',
   ),
   karte(
     'k-pk-6',
     'pl-kontrollstrukturen',
     'Wann ist a ODER b wahr?',
-    'Wenn mindestens eine Seite wahr ist - also auch, wenn beide wahr sind.',
+    'Wenn mindestens eine Seite wahr ist, also auch, wenn beide wahr sind.',
   ),
   karte(
     'k-pk-7',
     'pl-kontrollstrukturen',
     'Was ist der Unterschied zwischen WIEDERHOLE … BIS und do-while?',
-    'BIS nennt die Abbruchbedingung, while die Laufbedingung - beim Übersetzen die Bedingung umkehren.',
+    'BIS nennt die Abbruchbedingung, while die Laufbedingung. Beim Übersetzen die Bedingung umkehren.',
     'BIS x wird zu while (NICHT x).',
   ),
   karte(
@@ -854,7 +854,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pk-10',
     'pl-kontrollstrukturen',
     'Wann ist a UND b wahr?',
-    'Nur wenn beide Seiten wahr sind - sonst ist der Ausdruck falsch.',
+    'Nur wenn beide Seiten wahr sind, sonst ist der Ausdruck falsch.',
   ),
   karte(
     'k-pk-11',
@@ -877,8 +877,8 @@ final List<Flashcard> cardsA04Entwicklung = [
   karte(
     'k-pk-14',
     'pl-kontrollstrukturen',
-    'int x = 20; while (x < 10) { x++; } - wie oft läuft der Rumpf?',
-    '0-mal - kopfgesteuert: 20 < 10 ist schon vor dem ersten Durchlauf falsch.',
+    'int x = 20; while (x < 10) { x++; }. Wie oft läuft der Rumpf?',
+    '0-mal, kopfgesteuert: 20 < 10 ist schon vor dem ersten Durchlauf falsch.',
   ),
   karte(
     'k-pk-15',
@@ -920,13 +920,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pk-21',
     'pl-kontrollstrukturen',
     'alter = 17, mitglied = wahr: Welchen Wert hat alter >= 18 ODER mitglied?',
-    'wahr - falsch ODER wahr ergibt wahr.',
+    'wahr: falsch ODER wahr ergibt wahr.',
   ),
   karte(
     'k-pk-22',
     'pl-kontrollstrukturen',
     'Welchen Wert hat wahr ODER wahr UND falsch?',
-    'wahr - UND zuerst: wahr UND falsch = falsch, dann wahr ODER falsch = wahr.',
+    'wahr, UND zuerst: wahr UND falsch = falsch, dann wahr ODER falsch = wahr.',
   ),
   karte(
     'k-pk-23',
@@ -946,13 +946,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pc-2',
     'pl-pseudocode',
     'Welche Indizes hat ein Array mit n Elementen, wenn der Index bei 0 beginnt?',
-    '0 bis n - 1 - ein Element mit Index n gibt es nicht.',
+    '0 bis n - 1. Ein Element mit Index n gibt es nicht.',
   ),
   karte(
     'k-pc-3',
     'pl-pseudocode',
     'Mit welchem Startwert beginnst du die Suche nach dem Maximum?',
-    'Mit dem ersten Element des Arrays - nicht mit 0, sonst scheitert es an lauter negativen Werten.',
+    'Mit dem ersten Element des Arrays, nicht mit 0, sonst scheitert es an lauter negativen Werten.',
   ),
   karte(
     'k-pc-5',
@@ -970,25 +970,25 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pc-8',
     'pl-pseudocode',
     'Was ist Pseudocode?',
-    'Eine von der Programmiersprache unabhängige Beschreibung eines Algorithmus - ohne Norm, aber eindeutig und durchgehend gleich geschrieben.',
+    'Eine von der Programmiersprache unabhängige Beschreibung eines Algorithmus, ohne Norm, aber eindeutig und durchgehend gleich geschrieben.',
   ),
   karte(
     'k-pc-9',
     'pl-pseudocode',
     'Woran erkennst du im Pseudocode, was zu einem Block gehört?',
-    'An der Einrückung - und jeder Block wird geschlossen, z. B. mit ENDE WENN oder ENDE FÜR.',
+    'An der Einrückung, und jeder Block wird geschlossen, z. B. mit ENDE WENN oder ENDE FÜR.',
   ),
   karte(
     'k-pc-10',
     'pl-pseudocode',
     'Wofür stehen IF … THEN, WHILE und RETURN im Pseudocode?',
-    'WENN … DANN, SOLANGE und RÜCKGABE - englische Schlüsselwörter sind in der Prüfung üblich.',
+    'WENN … DANN, SOLANGE und RÜCKGABE. Englische Schlüsselwörter sind in der Prüfung üblich.',
   ),
   karte(
     'k-pc-11',
     'pl-pseudocode',
     'zahlen ← [4, 9, 2]: Welchen Wert hat zahlen[1]?',
-    '9 - der Index beginnt bei 0, zahlen[0] ist 4.',
+    '9, denn der Index beginnt bei 0, zahlen[0] ist 4.',
   ),
   karte(
     'k-pc-12',
@@ -1000,7 +1000,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pc-13',
     'pl-pseudocode',
     'Was musst du vor der Rechnung summe / n prüfen?',
-    'Dass n > 0 ist - bei einem leeren Array würde durch 0 geteilt.',
+    'Dass n > 0 ist, denn bei einem leeren Array würde durch 0 geteilt.',
   ),
   karte(
     'k-pc-14',
@@ -1018,19 +1018,19 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pc-16',
     'pl-pseudocode',
     'brutto(netto, satz) gibt netto * (1 + satz) zurück. Was liefert brutto(100, 0.19)?',
-    '119 - 100 × 1,19 = 119.',
+    '119 (100 × 1,19 = 119).',
   ),
   karte(
     'k-pc-17',
     'pl-pseudocode',
     'Was bezeichnet m[1][2] in einem zweidimensionalen Array?',
-    'Zeile 1, Spalte 2 - bei Index ab 0 also zweite Zeile, dritte Spalte.',
+    'Zeile 1, Spalte 2. Bei Index ab 0 also zweite Zeile, dritte Spalte.',
   ),
   karte(
     'k-pc-18',
     'pl-pseudocode',
     'Was passiert bei FÜR i VON 0 BIS n mit Zugriff auf liste[i]?',
-    'Im letzten Durchlauf wird liste[n] gelesen - das Element gibt es nicht (Laufzeitfehler). Richtig: BIS n - 1.',
+    'Im letzten Durchlauf wird liste[n] gelesen. Das Element gibt es nicht (Laufzeitfehler). Richtig: BIS n - 1.',
   ),
 
   // Schreibtischtest
@@ -1062,13 +1062,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pt-5',
     'pl-schreibtischtest',
     'Mit welchem Startwert beginnt die Berechnung eines Produkts?',
-    'Mit 1 - mit 0 bliebe jedes Produkt 0 (z. B. bei der Fakultät).',
+    'Mit 1, denn mit 0 bliebe jedes Produkt 0 (z. B. bei der Fakultät).',
   ),
   karte(
     'k-pt-6',
     'pl-schreibtischtest',
     'Was liefern zahl MOD 10 und zahl DIV 10?',
-    'MOD 10 liefert die letzte Ziffer, DIV 10 schneidet sie ab - Grundlage der Quersumme.',
+    'MOD 10 liefert die letzte Ziffer, DIV 10 schneidet sie ab. Grundlage der Quersumme.',
   ),
   karte(
     'k-pt-7',
@@ -1086,19 +1086,19 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pt-9',
     'pl-schreibtischtest',
     'a = 3, b = 7: Was ergibt der Tausch a ← b, b ← a ohne Hilfsvariable?',
-    'a = 7 und b = 7 - die 3 geht schon bei a ← b verloren.',
+    'a = 7 und b = 7, denn die 3 geht schon bei a ← b verloren.',
   ),
   karte(
     'k-pt-10',
     'pl-schreibtischtest',
     'x ← 1, y ← 0; SOLANGE x < 5: y ← y + x, x ← x + 2. Welchen Wert hat y am Ende?',
-    '4 - Durchlauf 1: y = 1, x = 3; Durchlauf 2: y = 4, x = 5; dann ist 5 < 5 falsch.',
+    '4 (Durchlauf 1: y = 1, x = 3; Durchlauf 2: y = 4, x = 5; dann ist 5 < 5 falsch).',
   ),
   karte(
     'k-pt-11',
     'pl-schreibtischtest',
     'x ← 8; SOLANGE x < 10: x ← x + 5. Welchen Wert hat x am Ende?',
-    '13 - der Rumpf läuft einmal ganz durch (8 + 5), erst dann ist 13 < 10 falsch.',
+    '13, denn der Rumpf läuft einmal ganz durch (8 + 5), erst dann ist 13 < 10 falsch.',
   ),
   karte(
     'k-pt-12',
@@ -1110,19 +1110,19 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pt-13',
     'pl-schreibtischtest',
     'z ← 0; FÜR i VON 1 BIS 3: FÜR j VON 1 BIS i: z ← z + j. Welchen Wert hat z?',
-    '10 - i = 1: +1; i = 2: +1 +2; i = 3: +1 +2 +3. Also 1 + 3 + 6 = 10.',
+    '10 (i = 1: +1; i = 2: +1 +2; i = 3: +1 +2 +3. Also 1 + 3 + 6 = 10).',
   ),
   karte(
     'k-pt-14',
     'pl-schreibtischtest',
     'Wie oft läuft FÜR j VON 1 BIS i, wenn außen i von 1 bis 3 läuft?',
-    '1 + 2 + 3 = 6-mal - die innere Grenze hängt von i ab, daher nicht 3 × 3.',
+    '1 + 2 + 3 = 6-mal, denn die innere Grenze hängt von i ab, daher nicht 3 × 3.',
   ),
   karte(
     'k-pt-15',
     'pl-schreibtischtest',
     's ← 0; FÜR i VON 1 BIS 5: WENN i MOD 2 = 1 DANN s ← s + i. Welchen Wert hat s?',
-    '9 - nur ungerade i werden addiert: 1 + 3 + 5 = 9.',
+    '9, denn nur ungerade i werden addiert: 1 + 3 + 5 = 9.',
   ),
   karte(
     'k-pt-16',
@@ -1134,13 +1134,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pt-17',
     'pl-schreibtischtest',
     'x ← 1; WIEDERHOLE x ← x * 2 BIS x > 20. Welchen Wert hat x am Ende?',
-    '32 - x wird 2, 4, 8, 16, 32; erst 32 > 20 beendet die Schleife.',
+    '32: x wird 2, 4, 8, 16, 32; erst 32 > 20 beendet die Schleife.',
   ),
   karte(
     'k-pt-18',
     'pl-schreibtischtest',
     'Maximum mit Position in [3, 8, 2, 9, 4], Index ab 0: Was wird ausgegeben?',
-    'Position 3, Maximum 9 - geändert wird nur bei 8 (Index 1) und bei 9 (Index 3).',
+    'Position 3, Maximum 9. Geändert wird nur bei 8 (Index 1) und bei 9 (Index 3).',
   ),
   karte(
     'k-pt-19',
@@ -1152,7 +1152,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pt-20',
     'pl-schreibtischtest',
     'a ← 5, b ← 3; a ← a + b; b ← a - b; a ← a - b. Welche Werte haben a und b?',
-    'a = 3, b = 5 - erst a = 8, dann b = 8 - 3 = 5, dann a = 8 - 5 = 3. Die Werte sind getauscht.',
+    'a = 3, b = 5: erst a = 8, dann b = 8 - 3 = 5, dann a = 8 - 5 = 3. Die Werte sind getauscht.',
   ),
 
   // Klasse, Objekt, Attribut, Methode
@@ -1178,7 +1178,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-og-4',
     'oo-grundbegriffe',
     'Was bedeutet die Identität eines Objekts?',
-    'Jedes Objekt ist eigenständig - auch zwei Objekte mit gleichen Attributwerten sind zwei verschiedene Objekte.',
+    'Jedes Objekt ist eigenständig, auch zwei Objekte mit gleichen Attributwerten sind zwei verschiedene Objekte.',
   ),
   karte(
     'k-og-5',
@@ -1196,7 +1196,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-og-7',
     'oo-grundbegriffe',
     'Warum speicherst du das Geburtsdatum statt des Alters?',
-    'Das Alter ändert sich jedes Jahr - eine Methode getAlter() berechnet es aus dem Geburtsdatum.',
+    'Das Alter ändert sich jedes Jahr. Eine Methode getAlter() berechnet es aus dem Geburtsdatum.',
   ),
   karte(
     'k-og-8',
@@ -1220,7 +1220,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-og-11',
     'oo-grundbegriffe',
     't1 und t2 sind Tickets. Was passiert mit t2, wenn t1.schliessen() aufgerufen wird?',
-    'Nichts - jedes Objekt hat seinen eigenen Zustand, nur t1 ändert sich.',
+    'Nichts, denn jedes Objekt hat seinen eigenen Zustand, nur t1 ändert sich.',
   ),
   karte(
     'k-og-12',
@@ -1232,7 +1232,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-og-13',
     'oo-grundbegriffe',
     'Was gibt der Rückgabetyp einer Methode an?',
-    'Den Typ ihres Ergebnisses - void bedeutet, dass sie nichts zurückgibt.',
+    'Den Typ ihres Ergebnisses: void bedeutet, dass sie nichts zurückgibt.',
   ),
   karte(
     'k-og-14',
@@ -1243,8 +1243,8 @@ final List<Flashcard> cardsA04Entwicklung = [
   karte(
     'k-og-15',
     'oo-grundbegriffe',
-    'Wohin gehört ein konkreter Wert wie „Meier“ oder 4711 - Klasse oder Objekt?',
-    'Zum Objekt - die Klasse legt nur fest, welche Attribute es gibt, nicht ihre Werte.',
+    'Wohin gehört ein konkreter Wert wie „Meier“ oder 4711: Klasse oder Objekt?',
+    'Zum Objekt, denn die Klasse legt nur fest, welche Attribute es gibt, nicht ihre Werte.',
   ),
   karte(
     'k-og-16',
@@ -1262,7 +1262,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-og-18',
     'oo-grundbegriffe',
     'Warum wird ein Bruttopreis meist als Methode statt als Attribut modelliert?',
-    'Er lässt sich aus Nettopreis und Steuersatz berechnen - berechnete Werte speichert man nicht doppelt.',
+    'Er lässt sich aus Nettopreis und Steuersatz berechnen. Berechnete Werte speichert man nicht doppelt.',
   ),
 
   // Kapselung und Sichtbarkeit
@@ -1282,7 +1282,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ok-3',
     'oo-kapselung',
     'Was ist ein Setter?',
-    'Eine öffentliche Methode, die ein privates Attribut ändert - idealerweise erst nach einer Prüfung des Werts.',
+    'Eine öffentliche Methode, die ein privates Attribut ändert, idealerweise erst nach einer Prüfung des Werts.',
   ),
   karte(
     'k-ok-4',
@@ -1300,7 +1300,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ok-6',
     'oo-kapselung',
     'Wie machst du ein Attribut nur lesbar?',
-    'Es wird im Konstruktor gesetzt und hat nur einen Getter, keinen Setter - z. B. kontoNr.',
+    'Es wird im Konstruktor gesetzt und hat nur einen Getter, keinen Setter, z. B. kontoNr.',
   ),
   karte(
     'k-ok-7',
@@ -1312,7 +1312,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ok-8',
     'oo-kapselung',
     'Was ist die Schnittstelle einer Klasse?',
-    'Ihre öffentlichen (public) Methoden - nur darüber greifen andere Objekte zu.',
+    'Ihre öffentlichen (public) Methoden. Nur darüber greifen andere Objekte zu.',
   ),
   karte(
     'k-ok-9',
@@ -1330,13 +1330,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ok-11',
     'oo-kapselung',
     'Was passiert bei a.bestand = -5;, wenn bestand private ist?',
-    'Ein Compilerfehler - von außen ist das private Attribut nicht erreichbar.',
+    'Ein Compilerfehler, denn von außen ist das private Attribut nicht erreichbar.',
   ),
   karte(
     'k-ok-12',
     'oo-kapselung',
     'setBestand prüft b >= 0. Welcher Bestand gilt nach setBestand(20), setBestand(-5)?',
-    '20 - der ungültige Wert -5 wird vom Setter abgelehnt.',
+    '20, denn der ungültige Wert -5 wird vom Setter abgelehnt.',
   ),
   karte(
     'k-ok-13',
@@ -1348,18 +1348,18 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ok-14',
     'oo-kapselung',
     'Welche Sichtbarkeit bekommen Hilfsmethoden, die nur intern gebraucht werden?',
-    'private - sie sind ein internes Detail und gehören nicht zur Schnittstelle.',
+    'private: sie sind ein internes Detail und gehören nicht zur Schnittstelle.',
   ),
   karte(
     'k-ok-15',
     'oo-kapselung',
     'Was ist „Kapselung nur zum Schein“?',
-    'Für jedes Attribut Getter und Setter ohne Prüfung - dann kann weiterhin jeder jeden Wert setzen.',
+    'Für jedes Attribut Getter und Setter ohne Prüfung. Dann kann weiterhin jeder jeden Wert setzen.',
   ),
   karte(
     'k-ok-16',
     'oo-kapselung',
-    'Wovor schützt private - und wovor nicht?',
+    'Wovor schützt private, und wovor nicht?',
     'Es schützt vor falscher Verwendung im Code, verschlüsselt aber keine Daten.',
   ),
   karte(
@@ -1372,7 +1372,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ok-18',
     'oo-kapselung',
     'Bestand 0: einlagern(100), auslagern(30), auslagern(200). Welcher Bestand bleibt?',
-    '70 - auslagern(200) wird abgelehnt, weil nur 70 vorhanden sind.',
+    '70: auslagern(200) wird abgelehnt, weil nur 70 vorhanden sind.',
   ),
   karte(
     'k-ok-19',
@@ -1386,7 +1386,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-oc-1',
     'oo-konstruktor',
     'Wozu dient ein Konstruktor?',
-    'Er wird bei new automatisch aufgerufen und setzt die Startwerte der Attribute - so entsteht kein halb fertiges Objekt.',
+    'Er wird bei new automatisch aufgerufen und setzt die Startwerte der Attribute. So entsteht kein halb fertiges Objekt.',
   ),
   karte(
     'k-oc-2',
@@ -1398,7 +1398,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-oc-3',
     'oo-konstruktor',
     'Was ist eine Referenz?',
-    'Ein Verweis auf ein Objekt. b = a kopiert nur den Verweis - danach zeigen beide auf dasselbe Objekt.',
+    'Ein Verweis auf ein Objekt. b = a kopiert nur den Verweis. Danach zeigen beide auf dasselbe Objekt.',
   ),
   karte(
     'k-oc-4',
@@ -1410,7 +1410,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-oc-5',
     'oo-konstruktor',
     'Wann legt Java einen Standardkonstruktor an?',
-    'Nur wenn die Klasse keinen eigenen Konstruktor hat - dann einen parameterlosen.',
+    'Nur wenn die Klasse keinen eigenen Konstruktor hat, dann einen parameterlosen.',
   ),
   karte(
     'k-oc-6',
@@ -1440,7 +1440,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-oc-10',
     'oo-konstruktor',
     'Was passiert, wenn vor dem Konstruktornamen void steht?',
-    'Dann ist es eine gewöhnliche Methode - sie läuft bei new nicht mit.',
+    'Dann ist es eine gewöhnliche Methode. Sie läuft bei new nicht mit.',
   ),
   karte(
     'k-oc-11',
@@ -1458,13 +1458,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-oc-13',
     'oo-konstruktor',
     'Warum sind Kunde(String name) und Kunde(String vorname) nicht zusammen erlaubt?',
-    'Beide haben dieselbe Signatur (ein String) - überladen geht nur mit verschiedenen Parameterlisten.',
+    'Beide haben dieselbe Signatur (ein String). Überladen geht nur mit verschiedenen Parameterlisten.',
   ),
   karte(
     'k-oc-14',
     'oo-konstruktor',
     'Was bewirkt name = name; im Konstruktor ohne this?',
-    'Der Parameter wird sich selbst zugewiesen - das Attribut bleibt leer (null).',
+    'Der Parameter wird sich selbst zugewiesen. Das Attribut bleibt leer (null).',
   ),
   karte(
     'k-oc-15',
@@ -1482,13 +1482,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-oc-17',
     'oo-konstruktor',
     'Kunde b = k; b.setName("Ott"); Was liefert danach k.getName()?',
-    '"Ott" - b und k zeigen auf dasselbe Objekt.',
+    '"Ott", denn b und k zeigen auf dasselbe Objekt.',
   ),
   karte(
     'k-oc-18',
     'oo-konstruktor',
     'static zaehler (Start 0) wird in jedem Konstruktor erhöht. Wert nach drei new Ticket()?',
-    '3 - das Klassenattribut gibt es nur einmal, alle Objekte erhöhen denselben Zähler.',
+    '3, denn das Klassenattribut gibt es nur einmal, alle Objekte erhöhen denselben Zähler.',
   ),
   karte(
     'k-oc-19',
@@ -1500,6 +1500,6 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-oc-20',
     'oo-konstruktor',
     'Woran erkennst du eine Komposition im Code?',
-    'Das Ganze erzeugt seine Teile selbst, z. B. im Konstruktor - ohne das Ganze gibt es die Teile nicht.',
+    'Das Ganze erzeugt seine Teile selbst, z. B. im Konstruktor. Ohne das Ganze gibt es die Teile nicht.',
   ),
 ];

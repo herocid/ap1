@@ -103,7 +103,7 @@ final List<ExamCase> casesA05 = [
         explanation:
             'versand(49): Zeile 5 trifft zu, Rückgabe 4.90.\n'
             'versand(50): Zeile 5 trifft nicht zu, Zeile 8 (50 <= 200) trifft zu, Rückgabe 2.90.\n'
-            'versand(200): Zeile 8 (200 <= 200) trifft zu, Rückgabe 2.90 - laut Vorgabe müsste der Versand ab 200 € kostenlos sein.\n'
+            'versand(200): Zeile 8 (200 <= 200) trifft zu, Rückgabe 2.90. Laut Vorgabe müsste der Versand ab 200 € kostenlos sein.\n'
             'versand(201): keine Bedingung trifft zu, Rückgabe 0.',
       ),
       markieren(
@@ -127,7 +127,7 @@ final List<ExamCase> casesA05 = [
           nein(' 6     RÜCKGABE 4.90', 'Der Betrag entspricht der Vorgabe.'),
           ja(
             ' 8   WENN wert <= 200 DANN',
-            'Richtig wäre wert < 200 (oder wert <= 199) - ab 200 € ist der Versand kostenlos.',
+            'Richtig wäre wert < 200 (oder wert <= 199). Ab 200 € ist der Versand kostenlos.',
           ),
           nein(' 9     RÜCKGABE 2.90', 'Der Betrag entspricht der Vorgabe.'),
           nein('11   RÜCKGABE 0', 'Kostenloser Versand ist hier richtig.'),
@@ -154,7 +154,7 @@ final List<ExamCase> casesA05 = [
             ],
           ),
           krit(
-            'Ein Repräsentant aus der Mitte der Klasse (z. B. 120 oder 800) hätte den Fehler nicht aufgedeckt - nur der Grenzwert 200.',
+            'Ein Repräsentant aus der Mitte der Klasse (z. B. 120 oder 800) hätte den Fehler nicht aufgedeckt, nur der Grenzwert 200.',
             punkte: 2,
             stichwoerter: [
               'Mitte',
@@ -167,7 +167,7 @@ final List<ExamCase> casesA05 = [
           ),
         ],
         loesung:
-            'An den Klassengrenzen entstehen besonders häufig Fehler, etwa durch einen falschen Vergleichsoperator. Im Beispiel liefern Repräsentanten wie 120 € und 800 € richtige Ergebnisse - erst der Grenzwert 200 € zeigt, dass im Code <= statt < steht.',
+            'An den Klassengrenzen entstehen besonders häufig Fehler, etwa durch einen falschen Vergleichsoperator. Im Beispiel liefern Repräsentanten wie 120 € und 800 € richtige Ergebnisse. Erst der Grenzwert 200 € zeigt, dass im Code <= statt < steht.',
         explanation:
             'Je Aspekt 2 Punkte. Äquivalenzklassen sorgen dafür, dass jeder Fall einmal vorkommt, die Grenzwertanalyse prüft gezielt die Übergänge.',
       ),
@@ -178,7 +178,7 @@ final List<ExamCase> casesA05 = [
         prompt: 'Vervollständige das weitere Vorgehen. (2 P.)',
         punkte: 2,
         text:
-            'Zuerst wird der fehlgeschlagene Testfall mit dem Bestellwert 200 wiederholt - das ist der {0}.\n'
+            'Zuerst wird der fehlgeschlagene Testfall mit dem Bestellwert 200 wiederholt, das ist der {0}.\n'
             'Danach prüft der {1}, ob die Korrektur andere Funktionen beschädigt hat.',
         luecken: [
           wahl('Nachtest', ['Abnahmetest', 'Lasttest']),
@@ -276,7 +276,7 @@ final List<ExamCase> casesA05 = [
           ],
         ],
         explanation:
-            'Ein Testfall ist bestanden, wenn Ist und Soll übereinstimmen: TF-01, TF-03 und TF-05. Bei TF-02 wird die zulässige Menge 120 abgelehnt, bei TF-04 die unzulässige Menge 0 gebucht - beide sind fehlgeschlagen. Auch eine korrekt ausgelöste Fehlermeldung (TF-03) ist ein bestandener Test.',
+            'Ein Testfall ist bestanden, wenn Ist und Soll übereinstimmen: TF-01, TF-03 und TF-05. Bei TF-02 wird die zulässige Menge 120 abgelehnt, bei TF-04 die unzulässige Menge 0 gebucht. Beide sind fehlgeschlagen. Auch eine korrekt ausgelöste Fehlermeldung (TF-03) ist ein bestandener Test.',
       ),
       lueckentext(
         'f-a05-logistik-b',
@@ -296,7 +296,7 @@ final List<ExamCase> casesA05 = [
           wahl('Grenzwertanalyse', ['Zweigüberdeckung', 'Lastmessung']),
         ],
         explanation:
-            'Bestehensquote: 3 / 5 = 60 %. Zulässig ist 1 bis 120, also menge >= 1 UND menge <= 120. Im Code sind beide Grenzen um eins verschoben. Gefunden wurden die Fehler mit 0 und 120 - Werten direkt an den Klassengrenzen. Der Repräsentant 60 (TF-05) hätte nichts gezeigt.',
+            'Bestehensquote: 3 / 5 = 60 %. Zulässig ist 1 bis 120, also menge >= 1 UND menge <= 120. Im Code sind beide Grenzen um eins verschoben. Gefunden wurden die Fehler mit 0 und 120, also Werten direkt an den Klassengrenzen. Der Repräsentant 60 (TF-05) hätte nichts gezeigt.',
       ),
       zuordnen(
         'f-a05-logistik-c',
@@ -323,12 +323,12 @@ final List<ExamCase> casesA05 = [
           zu(
             'Die Schichtleitung wünscht sich zusätzlich eine Statistik je Schicht.',
             2,
-            'Nicht im Pflichtenheft vereinbart - ein Änderungsantrag.',
+            'Nicht im Pflichtenheft vereinbart, also ein Änderungsantrag.',
           ),
           zu(
             'Die Menge 0 wird als Wareneingang gebucht.',
             0,
-            'Falsche Bestände im Lager - die Kernfunktion arbeitet fehlerhaft.',
+            'Falsche Bestände im Lager: die Kernfunktion arbeitet fehlerhaft.',
           ),
           zu(
             'Der Bestätigungston ist leise, die Buchung funktioniert.',
@@ -337,7 +337,7 @@ final List<ExamCase> casesA05 = [
           ),
         ],
         explanation:
-            'Wesentlich sind Mängel, die die vereinbarte Nutzung verhindern oder verfälschen (Buchung von 120 und von 0). Schreibfehler und ein leiser Ton sind unwesentlich. Die Statistik war nicht vereinbart - sie ist kein Mangel, sondern ein neuer Wunsch.',
+            'Wesentlich sind Mängel, die die vereinbarte Nutzung verhindern oder verfälschen (Buchung von 120 und von 0). Schreibfehler und ein leiser Ton sind unwesentlich. Die Statistik war nicht vereinbart. Sie ist kein Mangel, sondern ein neuer Wunsch.',
       ),
       freitext(
         'f-a05-logistik-d',
@@ -383,7 +383,7 @@ final List<ExamCase> casesA05 = [
         loesung:
             'Elbtal sollte die Abnahme verweigern, weil mit den beiden Buchungsfehlern wesentliche Mängel vorliegen. Die Mängel werden im Abnahmeprotokoll festgehalten und dem Softwarehaus wird eine Frist zur Nachbesserung gesetzt. Nach der Korrektur wird erneut getestet und ein neuer Abnahmetermin vereinbart.',
         explanation:
-            'Je Aspekt 2 Punkte, höchstens 4. Wegen unwesentlicher Mängel dürfte die Abnahme nicht verweigert werden - sie würden nur mit Vorbehalt ins Protokoll aufgenommen.',
+            'Je Aspekt 2 Punkte, höchstens 4. Wegen unwesentlicher Mängel dürfte die Abnahme nicht verweigert werden. Sie würden nur mit Vorbehalt ins Protokoll aufgenommen.',
       ),
       freitext(
         'f-a05-logistik-e',

@@ -120,7 +120,7 @@ AUSGABE summe''',
           ['Ausgabe', zahl(500, toleranz: 0.005)],
         ],
         explanation:
-            'i = 0: 120 / 60 × 90 = 180, plus 40 Anfahrt = 220. i = 1: 60 / 60 × 90 = 90, nicht vor Ort. i = 2: 100 / 60 × 90 = 150, plus 40 = 190. Summe: 220 + 90 + 190 = 500. 500 > 500 ist falsch - kein Rabatt, Ausgabe 500.',
+            'i = 0: 120 / 60 × 90 = 180, plus 40 Anfahrt = 220. i = 1: 60 / 60 × 90 = 90, nicht vor Ort. i = 2: 100 / 60 × 90 = 150, plus 40 = 190. Summe: 220 + 90 + 190 = 500. 500 > 500 ist falsch, also kein Rabatt, Ausgabe 500.',
         punkte: 9,
         difficulty: 3,
       ),
@@ -136,7 +136,7 @@ AUSGABE summe''',
           nein('FÜR i VON 0 BIS n - 1', 'Alle n Einsätze werden durchlaufen.'),
           ja(
             '  summe ← minuten[i]',
-            'Die Summe wird überschrieben statt erhöht - am Ende steht nur der letzte Wert darin.',
+            'Die Summe wird überschrieben statt erhöht. Am Ende steht nur der letzte Wert darin.',
           ),
           nein('ENDE FÜR', 'Schließt die Schleife.'),
           nein(
@@ -215,7 +215,7 @@ AUSGABE summe''',
           ),
         ],
         loesung:
-            'Private Attribute lassen sich von anderen Klassen nicht direkt ändern. So kann niemand ungültige Werte wie negative Minuten eintragen (Kapselung). Andere Klassen lesen und ändern die Werte über öffentliche Methoden - Getter und Setter -, wobei der Setter den neuen Wert prüfen kann.',
+            'Private Attribute lassen sich von anderen Klassen nicht direkt ändern. So kann niemand ungültige Werte wie negative Minuten eintragen (Kapselung). Andere Klassen lesen und ändern die Werte über öffentliche Methoden (Getter und Setter), wobei der Setter den neuen Wert prüfen kann.',
         explanation:
             '2 Punkte für den Schutz vor unkontrollierten Änderungen, 1 Punkt für den Zugriff über Getter/Setter oder die Prüfung im Setter, höchstens 3.',
       ),
@@ -328,7 +328,7 @@ common web browsers.''',
         ],
         wortbank: ['[Bestand <= 20]', '[Bestand > 20]', 'Zusammenführung'],
         explanation:
-            '„Kleiner als 20“ ist [Bestand < 20], das Gegenstück [Bestand >= 20] - so ist auch der Wert 20 abgedeckt. Gleichzeitige Aktionen starten an einer Gabelung und enden an einer Vereinigung. Eine Zusammenführung (Raute) vereint dagegen alternative Wege.',
+            '„Kleiner als 20“ ist [Bestand < 20], das Gegenstück [Bestand >= 20]. So ist auch der Wert 20 abgedeckt. Gleichzeitige Aktionen starten an einer Gabelung und enden an einer Vereinigung. Eine Zusammenführung (Raute) vereint dagegen alternative Wege.',
         punkte: 4,
       ),
       freitext(
@@ -413,7 +413,7 @@ print count, gap''',
           ['Göttingen', '16500', zahl(2), zahl(5300)],
         ],
         explanation:
-            'Kassel: 24500 < 20000 ist falsch. Fulda: 20000 < 20000 ist falsch - der Grenzwert zählt bei < nicht. Marburg: wahr, count = 1, gap = 20000 - 18200 = 1800. Göttingen: wahr, count = 2, gap = 1800 + 3500 = 5300. Ausgegeben werden Marburg und Göttingen, dann 2 und 5300.',
+            'Kassel: 24500 < 20000 ist falsch. Fulda: 20000 < 20000 ist falsch. Der Grenzwert zählt bei < nicht. Marburg: wahr, count = 1, gap = 20000 - 18200 = 1800. Göttingen: wahr, count = 2, gap = 1800 + 3500 = 5300. Ausgegeben werden Marburg und Göttingen, dann 2 und 5300.',
         punkte: 6,
       ),
       freitext(
@@ -462,7 +462,7 @@ AUSGABE anzahl''',
           ),
         ],
         loesung:
-            'Im Dann-Zweig wird anzahl bei jedem Treffer auf 1 gesetzt, statt um 1 erhöht zu werden. Dadurch ist das Ergebnis höchstens 1 - auch wenn wie hier drei Artikel unter dem Mindestbestand liegen.',
+            'Im Dann-Zweig wird anzahl bei jedem Treffer auf 1 gesetzt, statt um 1 erhöht zu werden. Dadurch ist das Ergebnis höchstens 1, auch wenn wie hier drei Artikel unter dem Mindestbestand liegen.',
         explanation:
             'Je 1 Punkt für die Fundstelle, die Beschreibung des Fehlers (setzen statt erhöhen) und die Auswirkung (Ergebnis höchstens 1).',
       ),
@@ -485,7 +485,7 @@ AUSGABE anzahl''',
           zahl(3, rationale: '3, 2 und 1 liegen unter 5.'),
         ],
         explanation:
-            'Korrekt ist anzahl ← anzahl + 1. Unter dem Mindestbestand 5 liegen die Bestände 3, 2 und 1 - die 9 nicht. Der fehlerhafte Code gibt 1 aus, der korrigierte 3.',
+            'Korrekt ist anzahl ← anzahl + 1. Unter dem Mindestbestand 5 liegen die Bestände 3, 2 und 1, aber die 9 nicht. Der fehlerhafte Code gibt 1 aus, der korrigierte 3.',
         punkte: 3,
       ),
     ],
@@ -578,7 +578,7 @@ ENDE FUNKTION''',
           ],
         ],
         explanation:
-            'bewerte(48, wahr, 3): 48 > 48 ist falsch, premium wahr, 48 > 24 wahr: „heute lösen“. bewerte(24, falsch, 10): nicht premium, 10 >= 10 wahr: „später“. bewerte(24, wahr, 12): premium, 24 > 24 ist falsch: „bevorzugt“ - offen wird hier nicht geprüft.',
+            'bewerte(48, wahr, 3): 48 > 48 ist falsch, premium wahr, 48 > 24 wahr: „heute lösen“. bewerte(24, falsch, 10): nicht premium, 10 >= 10 wahr: „später“. bewerte(24, wahr, 12): premium, 24 > 24 ist falsch: „bevorzugt“. Offen wird hier nicht geprüft.',
         punkte: 6,
         difficulty: 3,
       ),
@@ -619,7 +619,7 @@ AUSGABE anz''',
         punkte: 3,
         kriterien: [
           krit(
-            'Fehler: Der Vergleich ist vertauscht - geprüft wird „kleiner als 48“',
+            'Fehler: Der Vergleich ist vertauscht. Geprüft wird „kleiner als 48“',
             stichwoerter: [
               'vergleich',
               'vertauscht',
@@ -649,7 +649,7 @@ AUSGABE anz''',
           ),
         ],
         loesung:
-            'Der Vergleichsoperator ist vertauscht: Die Bedingung alter[i] < 48 zählt die Tickets, die jünger als 48 Stunden sind - hier nur das mit 30 Stunden. Korrekt ist: WENN alter[i] > 48 DANN. Dann werden 50 und 72 gezählt, Ausgabe 2.',
+            'Der Vergleichsoperator ist vertauscht: Die Bedingung alter[i] < 48 zählt die Tickets, die jünger als 48 Stunden sind, hier nur das mit 30 Stunden. Korrekt ist: WENN alter[i] > 48 DANN. Dann werden 50 und 72 gezählt, Ausgabe 2.',
         explanation:
             'Je 1 Punkt für die Fundstelle (Vergleich), die Auswirkung (falsche Tickets werden gezählt) und die korrigierte Zeile. Das Ticket mit genau 48 Stunden zählt bei > 48 nicht mit.',
       ),
@@ -902,7 +902,7 @@ print total''',
         ],
         wortbank: ['[Menge > 0]', 'Zusammenführung', 'Entscheidung'],
         explanation:
-            'Die Bedingungen einer Entscheidung müssen alle Fälle abdecken: [Menge stimmt] und [Menge weicht ab]. Gleichzeitige Aktionen liegen zwischen zwei Balken - Gabelung am Anfang, Vereinigung am Ende.',
+            'Die Bedingungen einer Entscheidung müssen alle Fälle abdecken: [Menge stimmt] und [Menge weicht ab]. Gleichzeitige Aktionen liegen zwischen zwei Balken: Gabelung am Anfang, Vereinigung am Ende.',
         punkte: 3,
       ),
       freitext(
@@ -929,7 +929,7 @@ print total''',
             stichwoerter: ['wertebereich', 'zu groß', 'überlauf', '18 stellen'],
           ),
           krit(
-            'Mit dem Barcode wird nicht gerechnet - er ist ein Kennzeichen',
+            'Mit dem Barcode wird nicht gerechnet, denn er ist ein Kennzeichen',
             stichwoerter: [
               'nicht gerechnet',
               'kein rechnen',
@@ -939,7 +939,7 @@ print total''',
           ),
         ],
         loesung:
-            'Als Ganzzahl gingen die führenden Nullen verloren, außerdem passen 18 Stellen nicht in den Wertebereich von int. Mit dem Barcode wird nicht gerechnet - er ist ein Kennzeichen und wird als Zeichenfolge (String) unverändert gespeichert.',
+            'Als Ganzzahl gingen die führenden Nullen verloren, außerdem passen 18 Stellen nicht in den Wertebereich von int. Mit dem Barcode wird nicht gerechnet, denn er ist ein Kennzeichen und wird als Zeichenfolge (String) unverändert gespeichert.',
         explanation:
             '2 Punkte für die führenden Nullen, alternativ je 1 Punkt für den Wertebereich und für „es wird nicht gerechnet“, höchstens 2.',
       ),
@@ -1064,7 +1064,7 @@ AUSGABE ueber''',
           nein('ENDE FÜR', 'Schließt die Schleife.'),
           ja(
             'WENN summe < budget DANN',
-            'Der Vergleich ist vertauscht - gewarnt wird, wenn die Summe unter dem Budget liegt.',
+            'Der Vergleich ist vertauscht: gewarnt wird, wenn die Summe unter dem Budget liegt.',
           ),
           nein(
             '  AUSGABE "Budget überschritten"',
@@ -1115,7 +1115,7 @@ AUSGABE ueber''',
           ),
         ],
         loesung:
-            'Der Vergleichsoperator ist vertauscht: summe < budget ist nur wahr, wenn das Budget noch nicht erreicht ist. Hier ist die Summe 35, und 35 < 30 ist falsch - es erscheint keine Warnung. Korrekt ist: WENN summe > budget DANN.',
+            'Der Vergleichsoperator ist vertauscht: summe < budget ist nur wahr, wenn das Budget noch nicht erreicht ist. Hier ist die Summe 35, und 35 < 30 ist falsch. Es erscheint keine Warnung. Korrekt ist: WENN summe > budget DANN.',
         explanation:
             'Je 1 Punkt für die Fundstelle (Vergleichsoperator), die Auswirkung (Warnung bleibt aus) und die korrigierte Zeile.',
       ),
@@ -1220,7 +1220,7 @@ AUSGABE punkte''',
           ], 'Die Buchung existiert nicht ohne ihr Bonuskonto.'),
         ],
         explanation:
-            'Kunde und Bonuskonto stehen 1 zu 1. Ein Bonuskonto hat 0..* Buchungen, jede Buchung gehört zu genau 1 Bonuskonto. Weil die Buchungen mit dem Konto gelöscht werden, ist es eine Komposition - gefüllte Raute am Ganzen.',
+            'Kunde und Bonuskonto stehen 1 zu 1. Ein Bonuskonto hat 0..* Buchungen, jede Buchung gehört zu genau 1 Bonuskonto. Weil die Buchungen mit dem Konto gelöscht werden, ist es eine Komposition, also gefüllte Raute am Ganzen.',
         punkte: 5,
       ),
       freitext(
@@ -1279,7 +1279,7 @@ int p = k.getPunkte();''',
         punkte: 4,
         kriterien: [
           krit(
-            'Das Attribut punkte wird private - kein direkter Zugriff von außen',
+            'Das Attribut punkte wird private: kein direkter Zugriff von außen',
             punkte: 2,
             stichwoerter: [
               'private',
@@ -1312,7 +1312,7 @@ int p = k.getPunkte();''',
           ),
         ],
         loesung:
-            'Das Attribut punkte wird private, sodass andere Module nicht mehr direkt darauf zugreifen können. Geändert wird der Punktestand nur über die öffentlichen Methoden gutschreiben und einloesen. Diese prüfen die übergebenen Werte und lehnen ungültige ab - ein negativer Punktestand kann nicht mehr entstehen.',
+            'Das Attribut punkte wird private, sodass andere Module nicht mehr direkt darauf zugreifen können. Geändert wird der Punktestand nur über die öffentlichen Methoden gutschreiben und einloesen. Diese prüfen die übergebenen Werte und lehnen ungültige ab. Ein negativer Punktestand kann nicht mehr entstehen.',
         explanation:
             'Je Aspekt 2 Punkte, höchstens 4: private Attribute, Zugriff nur über öffentliche Methoden, Prüfung der Werte in den Methoden.',
       ),

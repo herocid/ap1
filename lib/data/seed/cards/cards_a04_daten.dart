@@ -27,7 +27,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-de-4',
     'dm-erm',
     'Wo trägst du ein Attribut ein, das zu zwei Entitätstypen gemeinsam gehört?',
-    'An die Beziehung - z. B. „Menge“ an der Beziehung Bestellung „enthält“ Artikel.',
+    'An die Beziehung, z. B. „Menge“ an der Beziehung Bestellung „enthält“ Artikel.',
   ),
   karte(
     'k-de-5',
@@ -45,7 +45,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-de-7',
     'dm-erm',
     'Was ist ein abgeleitetes Attribut?',
-    'Wird aus anderen Werten berechnet, z. B. Alter aus Geburtsdatum - wird nicht gespeichert.',
+    'Wird aus anderen Werten berechnet, z. B. Alter aus Geburtsdatum. Es wird nicht gespeichert.',
   ),
   karte(
     'k-de-8',
@@ -80,7 +80,7 @@ final List<Flashcard> cardsA04Daten = [
   karte(
     'k-de-13',
     'dm-erm',
-    'Was zeigt das Rechteck im ER-Diagramm - und was zeigt es nie?',
+    'Was zeigt das Rechteck im ER-Diagramm, und was zeigt es nie?',
     'Den Entitätstyp (z. B. Kunde). Einzelne Entitäten wie „Frau Yilmaz“ erscheinen nie im Diagramm.',
   ),
   karte(
@@ -99,7 +99,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-de-16',
     'dm-erm',
     'Woran erkennst du, ob ein Substantiv Entitätstyp oder nur Attribut wird?',
-    'Werden zu dem Begriff eigene Daten gespeichert (Abteilung mit Name, Standort), ist er Entitätstyp - sonst Attribut (Ort beim Kunden).',
+    'Werden zu dem Begriff eigene Daten gespeichert (Abteilung mit Name, Standort), ist er Entitätstyp, sonst Attribut (Ort beim Kunden).',
   ),
   karte(
     'k-de-17',
@@ -117,7 +117,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-de-19',
     'dm-erm',
     'Kunde leiht Fahrrad, das Ausleihdatum wird gespeichert. Wohin gehört das Ausleihdatum?',
-    'An die Beziehung „leiht“ - es gehört weder nur zum Kunden noch nur zum Fahrrad.',
+    'An die Beziehung „leiht“, denn es gehört weder nur zum Kunden noch nur zum Fahrrad.',
   ),
 
   // Kardinalitäten
@@ -155,7 +155,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-dk-6',
     'dm-kardinalitaet',
     'Wie bestimmst du die Kardinalität einer Beziehung sicher?',
-    'Beide Richtungen lesen: „Ein A hat ... B“ und „Ein B gehört zu ... A“ - dann kombinieren.',
+    'Beide Richtungen lesen: „Ein A hat ... B“ und „Ein B gehört zu ... A“. Dann kombinieren.',
   ),
   karte(
     'k-dk-7',
@@ -203,7 +203,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-dk-14',
     'dm-kardinalitaet',
     'Warum gehört der Fremdschlüssel nie auf die 1-Seite einer 1:n-Beziehung?',
-    'Eine Spalte fasst nur einen Wert - MitarbeiterNr in Abteilung könnte nur einen der vielen Mitarbeiter speichern.',
+    'Eine Spalte fasst nur einen Wert: MitarbeiterNr in Abteilung könnte nur einen der vielen Mitarbeiter speichern.',
   ),
   karte(
     'k-dk-15',
@@ -228,13 +228,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-dk-18',
     'dm-kardinalitaet',
     'Was bedeutet „Abteilung 1 : mc Mitarbeiter“?',
-    'Jeder Mitarbeiter gehört zu genau einer Abteilung, eine Abteilung hat beliebig viele - auch keinen.',
+    'Jeder Mitarbeiter gehört zu genau einer Abteilung, eine Abteilung hat beliebig viele, auch keinen.',
   ),
   karte(
     'k-dk-19',
     'dm-kardinalitaet',
     'Warum legt „Ein Kunde erteilt viele Aufträge“ allein noch nicht 1:n fest?',
-    'Erst die Gegenrichtung entscheidet: Gehört jeder Auftrag genau einem Kunden, ist es 1:n - sonst n:m.',
+    'Erst die Gegenrichtung entscheidet: Gehört jeder Auftrag genau einem Kunden, ist es 1:n, sonst n:m.',
   ),
 
   // Schlüssel
@@ -248,7 +248,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-dl-2',
     'dm-schluessel',
     'Was ist ein Fremdschlüssel?',
-    'Eine Spalte, die auf den Primärschlüssel einer anderen Tabelle verweist - ihre Werte dürfen sich wiederholen.',
+    'Eine Spalte, die auf den Primärschlüssel einer anderen Tabelle verweist. Ihre Werte dürfen sich wiederholen.',
   ),
   karte(
     'k-dl-3',
@@ -302,13 +302,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-dl-11',
     'dm-schluessel',
     'Was unterscheidet einen natürlichen von einem künstlichen Schlüssel?',
-    'Natürlich: fachliches Merkmal (Steuer-ID). Künstlich: vom System vergeben, ohne Bedeutung (KundenNr) - garantiert eindeutig und stabil.',
+    'Natürlich: fachliches Merkmal (Steuer-ID). Künstlich: vom System vergeben, ohne Bedeutung (KundenNr), garantiert eindeutig und stabil.',
   ),
   karte(
     'k-dl-12',
     'dm-schluessel',
     'Warum ist ein Primärschlüssel aus mehr Spalten als nötig falsch?',
-    'Er ist nicht minimal - schon eine Teilmenge der Spalten wäre eindeutig.',
+    'Er ist nicht minimal: schon eine Teilmenge der Spalten wäre eindeutig.',
   ),
   karte(
     'k-dl-13',
@@ -320,7 +320,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-dl-14',
     'dm-schluessel',
     'Was muss bei Fremdschlüssel und referenziertem Primärschlüssel übereinstimmen?',
-    'Der Wertebereich (Datentyp) - der Spaltenname darf verschieden sein.',
+    'Der Wertebereich (Datentyp). Der Spaltenname darf verschieden sein.',
   ),
   karte(
     'k-dl-15',
@@ -332,13 +332,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-dl-16',
     'dm-schluessel',
     'Eine neue Bestellung verweist auf die nicht vorhandene KundenNr 999. Was passiert?',
-    'Die Datenbank lehnt den Datensatz ab - die referenzielle Integrität verbietet Verweise ins Leere.',
+    'Die Datenbank lehnt den Datensatz ab, denn die referenzielle Integrität verbietet Verweise ins Leere.',
   ),
   karte(
     'k-dl-17',
     'dm-schluessel',
     'Ein Kunde mit Bestellungen soll gelöscht werden. Wie reagiert eine Datenbank mit referenzieller Integrität?',
-    'Sie verhindert das Löschen - alternativ: Löschweitergabe (Kaskade) oder Fremdschlüssel leeren, wenn optional.',
+    'Sie verhindert das Löschen. Alternativ: Löschweitergabe (Kaskade) oder Fremdschlüssel leeren, wenn optional.',
   ),
   karte(
     'k-dl-18',
@@ -394,13 +394,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-dn-6',
     'dm-normalisierung',
     'Was ist eine partielle Abhängigkeit?',
-    'Ein Attribut hängt nur von einem Teil eines zusammengesetzten Schlüssels ab - verletzt die 2NF.',
+    'Ein Attribut hängt nur von einem Teil eines zusammengesetzten Schlüssels ab und verletzt die 2NF.',
   ),
   karte(
     'k-dn-7',
     'dm-normalisierung',
     'Was ist eine transitive Abhängigkeit?',
-    'Ein Attribut hängt über ein Nichtschlüsselattribut vom Schlüssel ab: BestNr -> KdNr -> Name - verletzt die 3NF.',
+    'Ein Attribut hängt über ein Nichtschlüsselattribut vom Schlüssel ab: BestNr -> KdNr -> Name. Das verletzt die 3NF.',
   ),
   karte(
     'k-dn-8',
@@ -412,25 +412,25 @@ final List<Flashcard> cardsA04Daten = [
     'k-dn-9',
     'dm-normalisierung',
     'Was ist Redundanz in einer Datenbank?',
-    'Mehrfach gespeicherte gleiche Information, z. B. der Kundenname in jeder Bestellzeile - kostet Platz und führt zu Widersprüchen.',
+    'Mehrfach gespeicherte gleiche Information, z. B. der Kundenname in jeder Bestellzeile. Das kostet Platz und führt zu Widersprüchen.',
   ),
   karte(
     'k-dn-10',
     'dm-normalisierung',
     'Was ist eine Einfügeanomalie?',
-    'Ein Datensatz lässt sich nicht speichern, weil ein Schlüsselteil fehlt - z. B. ein neuer Artikel ohne Bestellung.',
+    'Ein Datensatz lässt sich nicht speichern, weil ein Schlüsselteil fehlt, z. B. ein neuer Artikel ohne Bestellung.',
   ),
   karte(
     'k-dn-11',
     'dm-normalisierung',
     'Was ist eine Änderungsanomalie?',
-    'Eine Information muss in mehreren Zeilen geändert werden, sonst widersprechen sich die Daten - z. B. beim Umzug eines Kunden.',
+    'Eine Information muss in mehreren Zeilen geändert werden, sonst widersprechen sich die Daten, z. B. beim Umzug eines Kunden.',
   ),
   karte(
     'k-dn-12',
     'dm-normalisierung',
     'Was ist eine Löschanomalie?',
-    'Beim Löschen gehen ungewollt andere Informationen verloren - mit der einzigen Bestellung verschwindet auch die Kundin.',
+    'Beim Löschen gehen ungewollt andere Informationen verloren: mit der einzigen Bestellung verschwindet auch die Kundin.',
   ),
   karte(
     'k-dn-13',
@@ -442,7 +442,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-dn-14',
     'dm-normalisierung',
     'Wann ist eine Tabelle in 1NF automatisch auch in 2NF?',
-    'Wenn der Primärschlüssel nur aus einer Spalte besteht - dann gibt es keine partiellen Abhängigkeiten.',
+    'Wenn der Primärschlüssel nur aus einer Spalte besteht, dann gibt es keine partiellen Abhängigkeiten.',
   ),
   karte(
     'k-dn-15',
@@ -478,13 +478,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-dn-20',
     'dm-normalisierung',
     'Kunde (KdNr, Name, Telefon „0221 123, 0171 456“): Was verletzt die 1NF?',
-    'Die Spalte Telefon - zwei Nummern in einer Zelle sind nicht atomar.',
+    'Die Spalte Telefon: zwei Nummern in einer Zelle sind nicht atomar.',
   ),
   karte(
     'k-dn-21',
     'dm-normalisierung',
     'Warum wird eine Positionssumme (Menge × Preis) nicht gespeichert?',
-    'Sie lässt sich jederzeit berechnen - gespeichert wäre sie redundant und könnte veralten.',
+    'Sie lässt sich jederzeit berechnen. Gespeichert wäre sie redundant und könnte veralten.',
   ),
   karte(
     'k-dn-22',
@@ -528,7 +528,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wu-5',
     'wi-url',
     'In welcher Richtung liest du einen Domainnamen?',
-    'Von rechts: TLD, davor die Domain, links davon Subdomains - shop.example.com.',
+    'Von rechts: TLD, davor die Domain, links davon Subdomains, z. B. shop.example.com.',
   ),
   karte(
     'k-wu-6',
@@ -558,13 +558,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-wu-10',
     'wi-url',
     'Welche Teile einer URL sind Pflicht?',
-    'Nur Schema und Host - Port, Pfad, Query und Fragment sind optional.',
+    'Nur Schema und Host. Port, Pfad, Query und Fragment sind optional.',
   ),
   karte(
     'k-wu-11',
     'wi-url',
     'Welchen Port nutzt der Browser für https://example.com/login?',
-    '443 - fehlt der Port, gilt der Standardport des Schemas.',
+    '443. Fehlt der Port, gilt der Standardport des Schemas.',
   ),
   karte(
     'k-wu-12',
@@ -582,7 +582,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wu-14',
     'wi-url',
     'Zu welcher Domain gehört https://bank.de.konto-check.example/login?',
-    'Zu konto-check.example - „bank.de“ ist nur eine Subdomain davon (typischer Phishing-Trick).',
+    'Zu konto-check.example. „bank.de“ ist nur eine Subdomain davon (typischer Phishing-Trick).',
   ),
   karte(
     'k-wu-15',
@@ -600,13 +600,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-wu-17',
     'wi-url',
     'Wohin führt der Link /kontakt auf https://shop.example.com/hilfe/faq.html?',
-    'Zu https://shop.example.com/kontakt - ein führender / beginnt an der Wurzel des Hosts.',
+    'Zu https://shop.example.com/kontakt. Ein führender / beginnt an der Wurzel des Hosts.',
   ),
   karte(
     'k-wu-18',
     'wi-url',
     'Wie kodierst du ein & im Wert eines Query-Parameters?',
-    'Als %26 - sonst gilt es als Trenner zwischen zwei Parametern.',
+    'Als %26, sonst gilt es als Trenner zwischen zwei Parametern.',
   ),
   karte(
     'k-wu-19',
@@ -650,7 +650,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wh-5',
     'wi-http',
     'Was ist HTTPS?',
-    'HTTP über eine mit TLS verschlüsselte Verbindung, Standardport 443 - kein eigenes Protokoll.',
+    'HTTP über eine mit TLS verschlüsselte Verbindung, Standardport 443. Es ist kein eigenes Protokoll.',
   ),
   karte(
     'k-wh-6',
@@ -668,7 +668,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wh-8',
     'wi-http',
     'Wie ist eine HTTP-Nachricht aufgebaut?',
-    'Startzeile, Header-Zeilen, Leerzeile, Body (Inhalt) - bei Request und Response gleich.',
+    'Startzeile, Header-Zeilen, Leerzeile, Body (Inhalt). Bei Request und Response gleich.',
   ),
   karte(
     'k-wh-9',
@@ -710,7 +710,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wh-15',
     'wi-http',
     'Was bedeutet Statuscode 404?',
-    'Not Found: Unter dem Pfad gibt es keine Ressource, z. B. Tippfehler oder falscher Link - ein Client-Fehler.',
+    'Not Found: Unter dem Pfad gibt es keine Ressource, z. B. Tippfehler oder falscher Link, also ein Client-Fehler.',
   ),
   karte(
     'k-wh-16',
@@ -728,7 +728,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wh-18',
     'wi-http',
     'Wozu dient die HTTP-Methode PATCH?',
-    'Sie ändert eine Ressource teilweise - PUT ersetzt sie dagegen ganz.',
+    'Sie ändert eine Ressource teilweise. PUT ersetzt sie dagegen ganz.',
   ),
   karte(
     'k-wh-19',
@@ -770,7 +770,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wh-25',
     'wi-http',
     'Was ist eine REST-API?',
-    'Eine Webschnittstelle, die Ressourcen über URLs adressiert und mit HTTP-Methoden bearbeitet - Daten meist als JSON.',
+    'Eine Webschnittstelle, die Ressourcen über URLs adressiert und mit HTTP-Methoden bearbeitet, Daten meist als JSON.',
   ),
 
   // Seitenaufruf
@@ -790,7 +790,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wa-3',
     'wi-aufruf',
     'Welche Aufgabe hat DNS?',
-    'Es übersetzt einen Hostnamen in die zugehörige IP-Adresse - die Seite selbst kommt danach per HTTP.',
+    'Es übersetzt einen Hostnamen in die zugehörige IP-Adresse. Die Seite selbst kommt danach per HTTP.',
   ),
   karte(
     'k-wa-4',
@@ -814,7 +814,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wa-7',
     'wi-aufruf',
     'Was bedeutet die TTL bei DNS-Einträgen?',
-    'Gültigkeitsdauer eines Eintrags im Cache - danach wird neu gefragt.',
+    'Gültigkeitsdauer eines Eintrags im Cache. Danach wird neu gefragt.',
   ),
   karte(
     'k-wa-8',
@@ -862,7 +862,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wa-15',
     'wi-aufruf',
     'Wie viele HTTP-Anfragen braucht eine Seite mit HTML, einer CSS-Datei und drei Bildern?',
-    '5 - der Browser fragt jede Datei einzeln an (ohne Cache).',
+    '5, denn der Browser fragt jede Datei einzeln an (ohne Cache).',
   ),
   karte(
     'k-wa-16',
@@ -892,19 +892,19 @@ final List<Flashcard> cardsA04Daten = [
     'k-wa-20',
     'wi-aufruf',
     '„Server nicht gefunden“, per IP-Adresse klappt der Aufruf. Wo liegt der Fehler?',
-    'Bei der DNS-Auflösung - der Name lässt sich nicht in die IP-Adresse übersetzen.',
+    'Bei der DNS-Auflösung: der Name lässt sich nicht in die IP-Adresse übersetzen.',
   ),
   karte(
     'k-wa-21',
     'wi-aufruf',
     'Der Browser warnt vor einem ungültigen Zertifikat. Welcher Schritt scheitert?',
-    'Der TLS-Handshake - das Zertifikat ist abgelaufen, nicht vertrauenswürdig oder für einen anderen Hostnamen.',
+    'Der TLS-Handshake: das Zertifikat ist abgelaufen, nicht vertrauenswürdig oder für einen anderen Hostnamen.',
   ),
   karte(
     'k-wa-22',
     'wi-aufruf',
     'Eine Seite liefert Statuscode 500. Was sagt das über DNS, TCP und TLS?',
-    'Sie haben funktioniert - ein Statuscode kommt erst mit der HTTP-Antwort. Der Fehler liegt im Serverprogramm.',
+    'Sie haben funktioniert, denn ein Statuscode kommt erst mit der HTTP-Antwort. Der Fehler liegt im Serverprogramm.',
   ),
 
   // HTML und CSS
@@ -918,7 +918,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wt-2',
     'wi-html',
     'Wie ist eine CSS-Regel aufgebaut?',
-    'Selektor { Eigenschaft: Wert; } - z. B. h1 { color: navy; }',
+    'Selektor { Eigenschaft: Wert; }, z. B. h1 { color: navy; }',
   ),
   karte(
     'k-wt-3',
@@ -930,7 +930,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wt-4',
     'wi-html',
     'Was ist eine Media Query?',
-    'Eine CSS-Regel mit Bedingung, z. B. @media (max-width: 600px) - Grundlage für responsives Design.',
+    'Eine CSS-Regel mit Bedingung, z. B. @media (max-width: 600px), Grundlage für responsives Design.',
   ),
   karte(
     'k-wt-5',
@@ -954,13 +954,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-wt-8',
     'wi-html',
     'Ein Formularfeld wird nicht mitgesendet. Was fehlt?',
-    'Das Attribut name - nur Felder mit name werden als name=wert übertragen.',
+    'Das Attribut name: nur Felder mit name werden als name=wert übertragen.',
   ),
   karte(
     'k-wt-9',
     'wi-html',
     'Welche Art Sprache sind HTML und CSS?',
-    'HTML ist eine Auszeichnungssprache, CSS eine Gestaltungssprache - beide sind keine Programmiersprachen.',
+    'HTML ist eine Auszeichnungssprache, CSS eine Gestaltungssprache. Beide sind keine Programmiersprachen.',
   ),
   karte(
     'k-wt-10',
@@ -972,7 +972,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wt-11',
     'wi-html',
     'Wozu dient lang="de" im html-Element?',
-    'Es gibt die Sprache der Seite an - Screenreader lesen den Text dann mit richtiger Aussprache vor.',
+    'Es gibt die Sprache der Seite an. Screenreader lesen den Text dann mit richtiger Aussprache vor.',
   ),
   karte(
     'k-wt-12',
@@ -1002,13 +1002,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-wt-16',
     'wi-html',
     'Was sind semantische HTML-Elemente?',
-    'Elemente, die die Rolle eines Bereichs benennen, z. B. header, nav, main, footer - div und span sind neutral.',
+    'Elemente, die die Rolle eines Bereichs benennen, z. B. header, nav, main, footer, div und span sind neutral.',
   ),
   karte(
     'k-wt-17',
     'wi-html',
     'Warum lohnen sich semantische Elemente?',
-    'Screenreader und Suchmaschinen erkennen die Rolle der Bereiche - die Seite wird zugänglicher und besser auffindbar.',
+    'Screenreader und Suchmaschinen erkennen die Rolle der Bereiche. Die Seite wird zugänglicher und besser auffindbar.',
   ),
   karte(
     'k-wt-18',
@@ -1026,7 +1026,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wt-20',
     'wi-html',
     'Wo kann CSS stehen, und was ist üblich?',
-    'Extern (link auf .css-Datei), intern (style im head) oder inline (style-Attribut). Üblich: extern - gilt für alle Seiten, wird gecacht.',
+    'Extern (link auf .css-Datei), intern (style im head) oder inline (style-Attribut). Üblich: extern (gilt für alle Seiten, wird gecacht).',
   ),
   karte(
     'k-wt-21',
@@ -1106,13 +1106,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-wf-7',
     'wi-barrierefrei',
     'Warum braucht jedes Formularfeld ein label?',
-    'Die sichtbare, per for/id verknüpfte Beschriftung lesen Screenreader vor - ein Platzhalter ersetzt sie nicht.',
+    'Die sichtbare, per for/id verknüpfte Beschriftung lesen Screenreader vor. Ein Platzhalter ersetzt sie nicht.',
   ),
   karte(
     'k-wf-8',
     'wi-barrierefrei',
     'Wofür steht WCAG, und wer gibt sie heraus?',
-    'Web Content Accessibility Guidelines - Richtlinien des W3C für barrierefreie Webinhalte.',
+    'Web Content Accessibility Guidelines, Richtlinien des W3C für barrierefreie Webinhalte.',
   ),
   karte(
     'k-wf-9',
@@ -1130,43 +1130,43 @@ final List<Flashcard> cardsA04Daten = [
     'k-wf-11',
     'wi-barrierefrei',
     'Welchen Alt-Text bekommt ein rein dekoratives Bild?',
-    'Ein leeres alt="" - der Screenreader überspringt das Bild.',
+    'Ein leeres alt="": der Screenreader überspringt das Bild.',
   ),
   karte(
     'k-wf-12',
     'wi-barrierefrei',
     'Welchen Alt-Text bekommt ein Logo, das zur Startseite verlinkt?',
-    'Den Zweck des Links, z. B. „Startseite Azubi-Shop“ - nicht das Aussehen.',
+    'Den Zweck des Links, z. B. „Startseite Azubi-Shop“, nicht das Aussehen.',
   ),
   karte(
     'k-wf-13',
     'wi-barrierefrei',
     'Warum dürfen Pflichtfelder nicht nur rot markiert sein?',
-    'Menschen mit Farbsehschwäche erkennen das nicht - die Information braucht zusätzlich Text oder Symbol.',
+    'Menschen mit Farbsehschwäche erkennen das nicht. Die Information braucht zusätzlich Text oder Symbol.',
   ),
   karte(
     'k-wf-14',
     'wi-barrierefrei',
     'Zu welchem WCAG-Prinzip gehören Untertitel für Videos?',
-    'Wahrnehmbar - Inhalte sind über mehr als einen Sinn erfassbar.',
+    'Wahrnehmbar: Inhalte sind über mehr als einen Sinn erfassbar.',
   ),
   karte(
     'k-wf-15',
     'wi-barrierefrei',
     'Zu welchem WCAG-Prinzip gehört die Tastaturbedienung?',
-    'Bedienbar - alles muss auch ohne Maus erreichbar sein.',
+    'Bedienbar: alles muss auch ohne Maus erreichbar sein.',
   ),
   karte(
     'k-wf-16',
     'wi-barrierefrei',
     'Zu welchem WCAG-Prinzip gehören verständliche Fehlermeldungen?',
-    'Verständlich - Feld und Lösung nennen, z. B. „Bitte das Datum als TT.MM.JJJJ eingeben“.',
+    'Verständlich: Feld und Lösung nennen, z. B. „Bitte das Datum als TT.MM.JJJJ eingeben“.',
   ),
   karte(
     'k-wf-17',
     'wi-barrierefrei',
     'Zu welchem WCAG-Prinzip gehört sauberes HTML?',
-    'Robust - Hilfsmittel wie Screenreader können es zuverlässig auswerten.',
+    'Robust: Hilfsmittel wie Screenreader können es zuverlässig auswerten.',
   ),
   karte(
     'k-wf-18',
@@ -1178,13 +1178,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-wf-19',
     'wi-barrierefrei',
     'Welches Kontrastverhältnis hat Schwarz auf Weiß?',
-    '21:1 - (1 + 0,05) / (0 + 0,05) = 21, das Maximum.',
+    '21:1, denn (1 + 0,05) / (0 + 0,05) = 21 ist das Maximum.',
   ),
   karte(
     'k-wf-20',
     'wi-barrierefrei',
     'Ab wann gilt Text nach WCAG als groß?',
-    'Ab 18 pt bzw. ab 14 pt in Fett - dann genügt Kontrast 3:1.',
+    'Ab 18 pt bzw. ab 14 pt in Fett, dann genügt Kontrast 3:1.',
   ),
   karte(
     'k-wf-21',
@@ -1208,7 +1208,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wf-24',
     'wi-barrierefrei',
     'Welche Rolle spielen ARIA-Attribute wie aria-label?',
-    'Sie ergänzen nur - Vorrang hat semantisches HTML mit den passenden Elementen.',
+    'Sie ergänzen nur. Vorrang hat semantisches HTML mit den passenden Elementen.',
   ),
   karte(
     'k-wf-25',
@@ -1228,7 +1228,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-mz-1',
     'md-zahlensysteme',
     'Welche Stellenwerte hat ein Byte?',
-    '128, 64, 32, 16, 8, 4, 2, 1 - von links nach rechts.',
+    '128, 64, 32, 16, 8, 4, 2, 1 (von links nach rechts).',
   ),
   karte(
     'k-mz-2',
@@ -1311,7 +1311,7 @@ final List<Flashcard> cardsA04Daten = [
   karte(
     'k-mz-15',
     'md-zahlensysteme',
-    'Welcher größte Wert passt in ein Byte - dezimal, binär und hex?',
+    'Welcher größte Wert passt in ein Byte: dezimal, binär und hex?',
     '255 = 1111 1111 = FF.',
   ),
   karte(
@@ -1342,7 +1342,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-mz-20',
     'md-zahlensysteme',
     'Woran erkennst du im Zweierkomplement eine negative Zahl?',
-    'Am höchsten Bit: Ist es 1, ist die Zahl negativ - bei 8 Bit zählt es -128.',
+    'Am höchsten Bit: Ist es 1, ist die Zahl negativ. Bei 8 Bit zählt es -128.',
   ),
   karte(
     'k-mz-21',
@@ -1368,7 +1368,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-mc-1',
     'md-zeichen',
     'Was kennzeichnet den ASCII-Zeichensatz?',
-    '7 Bit, 128 Zeichen - ohne Umlaute. „A“ = 65, „a“ = 97, „0“ = 48.',
+    '7 Bit, 128 Zeichen, ohne Umlaute. „A“ = 65, „a“ = 97, „0“ = 48.',
   ),
   karte(
     'k-mc-2',
@@ -1410,31 +1410,31 @@ final List<Flashcard> cardsA04Daten = [
     'k-mc-8',
     'md-zeichen',
     'Welchen ASCII-Code hat „a“, wenn „A“ = 65 ist?',
-    '97 - Kleinbuchstaben liegen genau 32 hinter den Großbuchstaben.',
+    '97, denn Kleinbuchstaben liegen genau 32 hinter den Großbuchstaben.',
   ),
   karte(
     'k-mc-9',
     'md-zeichen',
     'Welchen ASCII-Code hat die Ziffer „7“?',
-    '55 (= 48 + 7, hex 37) - nicht 7.',
+    '55 (= 48 + 7, hex 37), nicht 7.',
   ),
   karte(
     'k-mc-10',
     'md-zeichen',
     'Wie kodierst du „IHK“ in ASCII (dezimal und hex)?',
-    'I = 73 = 49h, H = 72 = 48h, K = 75 = 4Bh - zusammen 3 Byte.',
+    'I = 73 = 49h, H = 72 = 48h, K = 75 = 4Bh, zusammen 3 Byte.',
   ),
   karte(
     'k-mc-11',
     'md-zeichen',
     'Welche ASCII-Codes haben Zeilenumbruch (LF) und Tabulator?',
-    'LF = 10, Tabulator = 9 - Steuerzeichen liegen im Bereich 0 bis 31.',
+    'LF = 10, Tabulator = 9. Steuerzeichen liegen im Bereich 0 bis 31.',
   ),
   karte(
     'k-mc-12',
     'md-zeichen',
     'Was ist ISO 8859-1 (Latin-1)?',
-    '8-Bit-Zeichensatz mit 256 Zeichen, westeuropäisch mit ä, ö, ü, ß - aber ohne €.',
+    '8-Bit-Zeichensatz mit 256 Zeichen, westeuropäisch mit ä, ö, ü, ß, aber ohne €.',
   ),
   karte(
     'k-mc-13',
@@ -1446,7 +1446,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-mc-14',
     'md-zeichen',
     'Welche Unicode-Codepoints stimmen mit ASCII überein?',
-    'Die ersten 128 (U+0000 bis U+007F) - deshalb ist UTF-8 ASCII-kompatibel.',
+    'Die ersten 128 (U+0000 bis U+007F), deshalb ist UTF-8 ASCII-kompatibel.',
   ),
   karte(
     'k-mc-15',
@@ -1464,7 +1464,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-mc-17',
     'md-zeichen',
     'Welchen Codepoint hat das €-Zeichen, und wie viele Byte braucht es in UTF-8?',
-    'U+20AC - in UTF-8 3 Byte (E2 82 AC).',
+    'U+20AC, in UTF-8 3 Byte (E2 82 AC).',
   ),
   karte(
     'k-mc-18',
@@ -1482,7 +1482,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-mc-20',
     'md-zeichen',
     'Wie viele Umlaute passen in ein UTF-8-Feld mit 10 Byte?',
-    '5 - jeder Umlaut braucht 2 Byte (ASCII-Zeichen passen 10).',
+    '5, denn jeder Umlaut braucht 2 Byte (ASCII-Zeichen passen 10).',
   ),
   karte(
     'k-mc-21',
@@ -1568,7 +1568,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-md-8',
     'md-datenmengen',
     'Welche Werte hat Audio in CD-Qualität?',
-    '44,1 kHz, 16 Bit, Stereo = 1.411,2 kbit/s - rund 10,58 MB pro Minute.',
+    '44,1 kHz, 16 Bit, Stereo = 1.411,2 kbit/s, also rund 10,58 MB pro Minute.',
   ),
   karte(
     'k-md-9',
@@ -1580,7 +1580,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-md-10',
     'md-datenmengen',
     'Wie groß ist der Unterschied zwischen dezimalem und binärem Präfix?',
-    'Etwa 2,4 % bei Kilo/Kibi, mit jeder Stufe mehr - rund 10 % bei Tera/Tebi.',
+    'Etwa 2,4 % bei Kilo/Kibi, mit jeder Stufe mehr, rund 10 % bei Tera/Tebi.',
   ),
   karte(
     'k-md-11',
@@ -1616,7 +1616,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-md-16',
     'md-datenmengen',
     'Wie viele Zentimeter hat ein Zoll?',
-    '1 Zoll = 2,54 cm - Maße in cm vor der dpi-Rechnung erst in Zoll umrechnen.',
+    '1 Zoll = 2,54 cm. Maße in cm vor der dpi-Rechnung erst in Zoll umrechnen.',
   ),
   karte(
     'k-md-17',
@@ -1702,7 +1702,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-mu-2',
     'md-uebertragung',
     'Wie viele Bit pro Sekunde sind 1 Mbit/s?',
-    '1.000.000 Bit pro Sekunde - Datenraten werden dezimal angegeben.',
+    '1.000.000 Bit pro Sekunde. Datenraten werden dezimal angegeben.',
   ),
   karte(
     'k-mu-3',
@@ -1714,7 +1714,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-mu-4',
     'md-uebertragung',
     'Welche Datenrate zählt beim Cloud-Backup?',
-    'Die Upload-Rate - sie ist meist deutlich kleiner als die Download-Rate, z. B. 250/40 Mbit/s.',
+    'Die Upload-Rate, denn sie ist meist deutlich kleiner als die Download-Rate, z. B. 250/40 Mbit/s.',
   ),
   karte(
     'k-mu-5',
@@ -1822,19 +1822,19 @@ final List<Flashcard> cardsA04Daten = [
     'k-mu-22',
     'md-uebertragung',
     'Welcher Fehler steckt in „500 MB bei 50 Mbit/s = 10 s“?',
-    'MB wurden nicht in Mbit umgerechnet (× 8 fehlt) - richtig sind 80 s.',
+    'MB wurden nicht in Mbit umgerechnet (× 8 fehlt). Richtig sind 80 s.',
   ),
   karte(
     'k-mu-23',
     'md-uebertragung',
     'Was musst du tun, wenn die Datei in GiB, die Leitung in Mbit/s angegeben ist?',
-    'Beides in Bit umrechnen: die Datei mit 1.024³ × 8, die Datenrate mit 1.000.000 - dann teilen.',
+    'Beides in Bit umrechnen: die Datei mit 1.024³ × 8, die Datenrate mit 1.000.000, dann teilen.',
   ),
   karte(
     'k-mu-24',
     'md-uebertragung',
     'Was passiert mit der Übertragungsdauer, wenn sich die Datenrate verdoppelt?',
-    'Sie halbiert sich - Dauer und Datenrate sind umgekehrt proportional.',
+    'Sie halbiert sich, denn Dauer und Datenrate sind umgekehrt proportional.',
   ),
   karte(
     'k-mu-25',
@@ -1848,13 +1848,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-mx-1',
     'md-kompression',
     'Nenne verlustfreie Kompressionsformate.',
-    'ZIP, PNG, FLAC, GIF - das Original lässt sich Bit für Bit wiederherstellen.',
+    'ZIP, PNG, FLAC, GIF: das Original lässt sich Bit für Bit wiederherstellen.',
   ),
   karte(
     'k-mx-2',
     'md-kompression',
     'Nenne verlustbehaftete Formate.',
-    'JPEG, MP3, AAC, H.264, H.265 - Details werden dauerhaft weggelassen.',
+    'JPEG, MP3, AAC, H.264, H.265: Details werden dauerhaft weggelassen.',
   ),
   karte(
     'k-mx-3',
@@ -1896,7 +1896,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-mx-9',
     'md-kompression',
     'Kodiere AAAAABBBCCCCCCCC mit RLE. Wie viel wird gespart?',
-    '5A3B8C - 6 statt 16 Zeichen: (1 - 6/16) × 100 % = 62,5 %.',
+    '5A3B8C, also 6 statt 16 Zeichen: (1 - 6/16) × 100 % = 62,5 %.',
   ),
   karte(
     'k-mx-10',
@@ -1920,7 +1920,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-mx-13',
     'md-kompression',
     'Was ist Deflate?',
-    'Wörterbuchverfahren (LZ) plus Huffman-Kodierung - genutzt in ZIP und PNG.',
+    'Wörterbuchverfahren (LZ) plus Huffman-Kodierung, genutzt in ZIP und PNG.',
   ),
   karte(
     'k-mx-14',
@@ -1962,13 +1962,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-mx-20',
     'md-kompression',
     'Was ist beim GIF-Format zu beachten?',
-    'Verlustfrei, aber höchstens 256 Farben - für Fotos ungeeignet.',
+    'Verlustfrei, aber höchstens 256 Farben, daher für Fotos ungeeignet.',
   ),
   karte(
     'k-mx-21',
     'md-kompression',
     'Warum ist ein ZIP-Archiv voller JPEGs kaum kleiner als die Dateien?',
-    'JPEGs sind schon komprimiert - doppeltes Komprimieren bringt fast nichts.',
+    'JPEGs sind schon komprimiert. Doppeltes Komprimieren bringt fast nichts.',
   ),
   karte(
     'k-mx-22',
@@ -1980,7 +1980,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-mx-23',
     'md-kompression',
     'Was passiert, wenn du ein JPEG als PNG speicherst?',
-    'Verlorene Details kommen nicht zurück - die Datei wird nur größer.',
+    'Verlorene Details kommen nicht zurück. Die Datei wird nur größer.',
   ),
 
   // KI-Grundlagen
@@ -1988,7 +1988,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-ig-1',
     'ki-grundlagen',
     'Was unterscheidet schwache und starke KI?',
-    'Schwach: löst bestimmte Aufgaben (alle heutigen Systeme). Stark: allgemeine, menschenähnliche Intelligenz - gibt es bisher nicht.',
+    'Schwach: löst bestimmte Aufgaben (alle heutigen Systeme). Stark: allgemeine, menschenähnliche Intelligenz (gibt es bisher nicht).',
   ),
   karte(
     'k-ig-2',
@@ -2042,7 +2042,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-ig-10',
     'ki-grundlagen',
     'Was unterscheidet Machine Learning von klassischer Programmierung?',
-    'Klassisch schreibt der Mensch die Regeln. Beim ML lernt das System sie aus Beispieldaten - das Ergebnis heißt Modell.',
+    'Klassisch schreibt der Mensch die Regeln. Beim ML lernt das System sie aus Beispieldaten. Das Ergebnis heißt Modell.',
   ),
   karte(
     'k-ig-11',
@@ -2078,7 +2078,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-ig-16',
     'ki-grundlagen',
     'Was passiert, wenn du ein Modell mit seinen Trainingsdaten testest?',
-    'Die Genauigkeit wirkt viel zu gut - Overfitting fällt so nicht auf.',
+    'Die Genauigkeit wirkt viel zu gut, und Overfitting fällt so nicht auf.',
   ),
   karte(
     'k-ig-17',
@@ -2114,19 +2114,19 @@ final List<Flashcard> cardsA04Daten = [
     'k-ig-22',
     'ki-grundlagen',
     'Was ist ein Token bei Sprachmodellen?',
-    'Ein Textbaustein - Wort, Wortteil oder Satzzeichen -, den das Modell verarbeitet.',
+    'Ein Textbaustein (Wort, Wortteil oder Satzzeichen), den das Modell verarbeitet.',
   ),
   karte(
     'k-ig-23',
     'ki-grundlagen',
     'Was ist das Kontextfenster eines Sprachmodells?',
-    'Wie viele Tokens das Modell auf einmal berücksichtigen kann - was darüber hinausgeht, fließt nicht ein.',
+    'Wie viele Tokens das Modell auf einmal berücksichtigen kann. Was darüber hinausgeht, fließt nicht ein.',
   ),
   karte(
     'k-ig-24',
     'ki-grundlagen',
     'Was sind die Parameter eines Sprachmodells?',
-    'Die beim Training gelernten Gewichte - bei LLMs Milliarden.',
+    'Die beim Training gelernten Gewichte, bei LLMs Milliarden.',
   ),
   karte(
     'k-ig-25',
@@ -2146,7 +2146,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-ie-1',
     'ki-einsatz',
     'Aus welchen Bausteinen besteht ein guter Prompt?',
-    'Rolle, Kontext, Aufgabe, Format - und bei Bedarf Beispiele.',
+    'Rolle, Kontext, Aufgabe, Format und und bei Bedarf Beispiele.',
   ),
   karte(
     'k-ie-2',
@@ -2158,13 +2158,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-ie-3',
     'ki-einsatz',
     'Wie gehst du mit einem KI-Ergebnis um?',
-    'Lesen, verstehen, fachlich prüfen (z. B. testen) - die Verantwortung bleibt beim Menschen.',
+    'Lesen, verstehen, fachlich prüfen (z. B. testen). Die Verantwortung bleibt beim Menschen.',
   ),
   karte(
     'k-ie-4',
     'ki-einsatz',
     'Wann ist ein klassisches Programm besser als KI?',
-    'Bei Aufgaben mit festen Regeln, z. B. Rechnungsbeträge - es ist zuverlässiger, nachvollziehbar und günstiger.',
+    'Bei Aufgaben mit festen Regeln, z. B. Rechnungsbeträge. Es ist zuverlässiger, nachvollziehbar und günstiger.',
   ),
   karte(
     'k-ie-5',
@@ -2182,7 +2182,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-ie-7',
     'ki-einsatz',
     'Was gehört nie in den Prompt eines öffentlichen KI-Dienstes?',
-    'Passwörter, API-Schlüssel, Kundendaten und vertraulicher Code - Eingaben können gespeichert und ausgewertet werden.',
+    'Passwörter, API-Schlüssel, Kundendaten und vertraulicher Code, denn Eingaben können gespeichert und ausgewertet werden.',
   ),
   karte(
     'k-ie-8',
@@ -2254,13 +2254,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-ie-19',
     'ki-einsatz',
     'Wie bereitest du eine Kundenbeschwerde für einen öffentlichen KI-Dienst vor?',
-    'Namen, Kundennummern, Kontaktdaten und Passwörter entfernen bzw. anonymisieren - oder ein freigegebenes Werkzeug nutzen.',
+    'Namen, Kundennummern, Kontaktdaten und Passwörter entfernen bzw. anonymisieren, oder ein freigegebenes Werkzeug nutzen.',
   ),
   karte(
     'k-ie-20',
     'ki-einsatz',
     'Welche Schritte gehören zur Einführung eines Support-Chatbots?',
-    'Ziel und Wissensbasis festlegen, Datenschutz klären, als KI kennzeichnen, Übergabe an einen Menschen einbauen - dann testen.',
+    'Ziel und Wissensbasis festlegen, Datenschutz klären, als KI kennzeichnen, Übergabe an einen Menschen einbauen, dann testen.',
   ),
   karte(
     'k-ie-21',
@@ -2316,7 +2316,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-ir-4',
     'ki-grenzen',
     'Wann gilt die DSGVO bei der Nutzung von KI-Tools?',
-    'Sobald personenbezogene Daten hineingelangen - wie bei jeder Verarbeitung: Rechtsgrundlage, Zweckbindung, Datenminimierung.',
+    'Sobald personenbezogene Daten hineingelangen. Wie bei jeder Verarbeitung: Rechtsgrundlage, Zweckbindung, Datenminimierung.',
   ),
   karte(
     'k-ir-5',
@@ -2364,13 +2364,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-ir-12',
     'ki-grenzen',
     'Was ist ein Deepfake?',
-    'Täuschend echt gefälschtes Bild, Video oder Stimme - z. B. die Stimme des Chefs fordert eine Überweisung.',
+    'Täuschend echt gefälschtes Bild, Video oder Stimme, z. B. die Stimme des Chefs fordert eine Überweisung.',
   ),
   karte(
     'k-ir-13',
     'ki-grenzen',
     'Was bedeutet „Blackbox“ bei neuronalen Netzen?',
-    'Man kann oft nicht nachvollziehen, warum das Modell so entschieden hat - heikel bei Kredit- oder Bewerbungsentscheidungen.',
+    'Man kann oft nicht nachvollziehen, warum das Modell so entschieden hat. Das ist heikel bei Kredit- oder Bewerbungsentscheidungen.',
   ),
   karte(
     'k-ir-14',
@@ -2400,7 +2400,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-ir-18',
     'ki-grenzen',
     'Nenne zwei Hochrisiko-Bereiche nach dem AI Act.',
-    'Beschäftigung (z. B. Bewerberauswahl) und Kreditwürdigkeitsprüfung - mit Pflichten wie menschlicher Aufsicht.',
+    'Beschäftigung (z. B. Bewerberauswahl) und Kreditwürdigkeitsprüfung, mit Pflichten wie menschlicher Aufsicht.',
   ),
   karte(
     'k-ir-19',
@@ -2424,7 +2424,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-ir-22',
     'ki-grenzen',
     'Welche Rolle hat ein Unternehmen, das ein fertiges KI-Werkzeug beruflich nutzt?',
-    'Betreiber - es muss das System bestimmungsgemäß nutzen und das Personal schulen.',
+    'Betreiber. Es muss das System bestimmungsgemäß nutzen und das Personal schulen.',
   ),
   karte(
     'k-ir-23',
@@ -2436,12 +2436,12 @@ final List<Flashcard> cardsA04Daten = [
     'k-ir-24',
     'ki-grenzen',
     'Welche Regeln gelten für ein KI-System mit minimalem Risiko?',
-    'Keine besonderen Pflichten nach dem AI Act - DSGVO, Urheberrecht und Haftung gelten aber weiter.',
+    'Keine besonderen Pflichten nach dem AI Act. DSGVO, Urheberrecht und Haftung gelten aber weiter.',
   ),
   karte(
     'k-ir-25',
     'ki-grenzen',
     'Wie steht es in Deutschland um den Urheberrechtsschutz reiner KI-Erzeugnisse?',
-    'In der Regel nicht, ohne menschlichen schöpferischen Beitrag - die Ausgabe kann aber fremde Werke verletzen.',
+    'In der Regel nicht, ohne menschlichen schöpferischen Beitrag. Die Ausgabe kann aber fremde Werke verletzen.',
   ),
 ];

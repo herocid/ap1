@@ -20,7 +20,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Lastenheft',
-        'Das Lastenheft schreibt der Auftraggeber - hier die Praxis mit ihrer Beschreibung.',
+        'Das Lastenheft schreibt der Auftraggeber, hier die Praxis mit ihrer Beschreibung.',
       ),
       nein(
         'Abnahmeprotokoll',
@@ -45,7 +45,7 @@ final List<Question> questionsA04Entwicklung = [
     text:
         'Das Pflichtenheft übernimmt die Anforderungen aus dem {0}. Es ergänzt, womit umgesetzt wird (eingesetzte {1}), wie die Teile zusammenspielen (Systemarchitektur und {2}) und woran die Abnahme gemessen wird (konkrete {3}).',
     luecken: [
-      wort(['Lastenheft'], 'Dort beginnt alles - mit den Anforderungen.'),
+      wort(['Lastenheft'], 'Dort beginnt alles: mit den Anforderungen.'),
       wort([
         'Technologien',
       ], 'Womit umgesetzt wird, entscheidet der Auftragnehmer.'),
@@ -86,7 +86,7 @@ final List<Question> questionsA04Entwicklung = [
       zu(
         'Die Termine werden per REST-API aus dem Werkstattsystem gelesen.',
         1,
-        'Schnittstelle - das technische Wie.',
+        'Schnittstelle: das technische Wie.',
       ),
       zu(
         'Testfall 12: Buchung ohne freien Termin wird abgelehnt.',
@@ -105,7 +105,7 @@ final List<Question> questionsA04Entwicklung = [
     prompt: 'Welche Aussage entspricht der üblichen Projektpraxis?',
     choices: [
       ja(
-        'Maßstab ist das genehmigte Pflichtenheft - der Export muss über einen Änderungsantrag nachbeauftragt werden.',
+        'Maßstab ist das genehmigte Pflichtenheft. Der Export muss über einen Änderungsantrag nachbeauftragt werden.',
         'Mit der Genehmigung hat der Kunde den Leistungsumfang bestätigt.',
       ),
       nein(
@@ -114,7 +114,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Die Abnahme ist unmöglich, bis ein neues Lastenheft geschrieben wurde.',
-        'Ein neues Lastenheft ist nicht nötig - die Änderung läuft über einen Änderungsantrag.',
+        'Ein neues Lastenheft ist nicht nötig, denn die Änderung läuft über einen Änderungsantrag.',
       ),
       nein(
         'Der Kunde hätte das Pflichtenheft selbst schreiben müssen.',
@@ -158,7 +158,7 @@ final List<Question> questionsA04Entwicklung = [
       wahl(
         'lösungsneutral',
         ['technisch detailliert', 'als Testplan'],
-        'Es beschreibt das Was, nicht das Wie - so bleiben Angebote vergleichbar.',
+        'Es beschreibt das Was, nicht das Wie. So bleiben Angebote vergleichbar.',
       ),
       wahl(
         'Angebote',
@@ -221,7 +221,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Die Ticketliste lädt in höchstens 2 Sekunden.',
-        'Das beschreibt, wie schnell - also nicht-funktional.',
+        'Das beschreibt, wie schnell, also nicht-funktional.',
       ),
     ],
     explanation:
@@ -282,7 +282,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
     ],
     explanation:
-        'Beantragen, benachrichtigen und berechnen sind Tätigkeiten des Systems - funktional. Verfügbarkeit, Ladezeit und Speicherort beschreiben Qualität oder Rahmenbedingungen - nicht-funktional.',
+        'Beantragen, benachrichtigen und berechnen sind Tätigkeiten des Systems, also funktional. Verfügbarkeit, Ladezeit und Speicherort beschreiben Qualität oder Rahmenbedingungen, also nicht-funktional.',
     difficulty: 1,
   ),
   rechnen(
@@ -304,7 +304,7 @@ final List<Question> questionsA04Entwicklung = [
     choices: [
       ja(
         'Bei 1.000 gleichzeitigen Nutzern liefert die Suche in 95 % der Fälle nach höchstens 2 Sekunden ein Ergebnis.',
-        'Last, Anteil und Zeit sind messbar - bei der Abnahme eindeutig prüfbar.',
+        'Last, Anteil und Zeit sind messbar und bei der Abnahme eindeutig prüfbar.',
       ),
       nein(
         'Die Suche ist sehr schnell.',
@@ -367,7 +367,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Der Warenkorb bleibt nach dem Abmelden gespeichert.',
-        'Auch das beschreibt, was das System tut - funktional.',
+        'Auch das beschreibt, was das System tut, also funktional.',
       ),
     ],
     explanation:
@@ -420,7 +420,7 @@ final List<Question> questionsA04Entwicklung = [
     choices: [
       ja(
         'Sie wird in diesem Release bewusst nicht umgesetzt, bleibt aber dokumentiert.',
-        'Won’t have heißt „this time“ - später ist sie wieder möglich.',
+        'Won’t have heißt „this time“: später ist sie wieder möglich.',
       ),
       nein(
         'Sie wird endgültig gestrichen und aus der Dokumentation entfernt.',
@@ -442,7 +442,7 @@ final List<Question> questionsA04Entwicklung = [
     'a4-fe-3',
     'af-erhebung',
     scenario:
-        'Im Interview beschreiben die Lagerbeschäftigten ihre Arbeit lückenhaft - viele Handgriffe sind Routine und fallen ihnen gar nicht mehr auf.',
+        'Im Interview beschreiben die Lagerbeschäftigten ihre Arbeit lückenhaft: viele Handgriffe sind Routine und fallen ihnen gar nicht mehr auf.',
     prompt: 'Welche Erhebungstechnik ergänzt das Interview hier am besten?',
     choices: [
       ja(
@@ -493,7 +493,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Das System muss eine relationale Datenbank nutzen.',
-        'Eine technische Vorgabe ohne Rolle und Nutzen - keine User Story.',
+        'Eine technische Vorgabe ohne Rolle und Nutzen, also keine User Story.',
       ),
       nein(
         'Als Entwickler baue ich eine REST-API.',
@@ -539,7 +539,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Nutzen Sie derzeit Excel?',
-        'Mit Ja oder Nein beantwortbar - geschlossen.',
+        'Mit Ja oder Nein beantwortbar, also geschlossen.',
       ),
       nein(
         'Sind Sie mit dem jetzigen System zufrieden?',
@@ -547,7 +547,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Wie zufrieden sind Sie auf einer Skala von 1 bis 5?',
-        'Eine Skalenfrage mit festen Antworten - geschlossen.',
+        'Eine Skalenfrage mit festen Antworten, also geschlossen.',
       ),
     ],
     explanation:
@@ -569,7 +569,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         '«extend»-Pfeil von „Bestellung aufgeben“ zu „Gutschein einlösen“',
-        'Die Richtung ist vertauscht - bei extend zeigt der Pfeil zum Basisfall.',
+        'Die Richtung ist vertauscht: bei extend zeigt der Pfeil zum Basisfall.',
       ),
       nein(
         '«include»-Pfeil von „Bestellung aufgeben“ zu „Gutschein einlösen“',
@@ -633,7 +633,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
     ],
     explanation:
-        'Das Anwendungsfalldiagramm zeigt, wer welche Leistung des Systems nutzt - keine Reihenfolge. include ist Pflichtbestandteil, extend eine bedingte Erweiterung mit Pfeil zum Basisfall.',
+        'Das Anwendungsfalldiagramm zeigt, wer welche Leistung des Systems nutzt, keine Reihenfolge. include ist Pflichtbestandteil, extend eine bedingte Erweiterung mit Pfeil zum Basisfall.',
   ),
   einfach(
     'a4-uu-4',
@@ -668,7 +668,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Bei jeder Überweisung wird zuerst der Kontostand abgerufen.',
-        'Zwischen den beiden Fällen gibt es keine Beziehung - und das Diagramm zeigt keine Reihenfolge.',
+        'Zwischen den beiden Fällen gibt es keine Beziehung, und das Diagramm zeigt keine Reihenfolge.',
       ),
       nein(
         '„TAN bestätigen“ ist ein Akteur.',
@@ -693,7 +693,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Zimmer buchen',
-        'Das ist eine Leistung des Systems - ein Anwendungsfall.',
+        'Das ist eine Leistung des Systems, also ein Anwendungsfall.',
       ),
       nein(
         'Hoteldatenbank',
@@ -719,11 +719,11 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Button „Weiter“ klicken',
-        'Ein einzelner Bedienschritt - zu fein für einen Anwendungsfall.',
+        'Ein einzelner Bedienschritt, zu fein für einen Anwendungsfall.',
       ),
       nein(
         'Hotel',
-        'Ein Substantiv ohne Tätigkeit - das beschreibt eher das ganze System.',
+        'Ein Substantiv ohne Tätigkeit. Das beschreibt eher das ganze System.',
       ),
     ],
     explanation:
@@ -739,12 +739,12 @@ final List<Question> questionsA04Entwicklung = [
       zu(
         'Jede Auszahlung am Geldautomaten erfordert eine PIN-Prüfung.',
         0,
-        'Immer - also include.',
+        'Immer, also include.',
       ),
       zu(
         'Auf Wunsch wird nach der Auszahlung ein Beleg gedruckt.',
         1,
-        'Nur bei Bedarf - also extend.',
+        'Nur bei Bedarf, also extend.',
       ),
       zu(
         'Die Kundin nutzt den Anwendungsfall „Geld abheben“.',
@@ -775,7 +775,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Eine Bestellung kann zu mehreren Kunden gehören.',
-        'Beim Kunden steht 1 - also genau ein Kunde je Bestellung.',
+        'Beim Kunden steht 1, also genau ein Kunde je Bestellung.',
       ),
       nein(
         'Ein Kunde muss mindestens eine Bestellung haben.',
@@ -826,7 +826,7 @@ final List<Question> questionsA04Entwicklung = [
       wahl(
         'ein Attribut',
         ['eine Methode', 'eine Beziehung'],
-        'Ohne Klammern und im mittleren Abschnitt - ein Attribut.',
+        'Ohne Klammern und im mittleren Abschnitt, also ein Attribut.',
       ),
       wahl('private', [
         'public',
@@ -883,7 +883,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Eine Ausleihe kann zu mehreren Lesern gehören.',
-        'Neben Leser steht 1 - genau ein Leser je Ausleihe.',
+        'Neben Leser steht 1: genau ein Leser je Ausleihe.',
       ),
     ],
     explanation:
@@ -920,7 +920,7 @@ final List<Question> questionsA04Entwicklung = [
     'a4-uk-6',
     'u-klassen',
     scenario:
-        'Ein Gebäude besteht aus Räumen. Wird ein Gebäude aus dem System gelöscht, werden auch seine Räume gelöscht - ein Raum gehört immer zu genau einem Gebäude.',
+        'Ein Gebäude besteht aus Räumen. Wird ein Gebäude aus dem System gelöscht, werden auch seine Räume gelöscht. Ein Raum gehört immer zu genau einem Gebäude.',
     prompt: 'Wie wird die Beziehung korrekt modelliert?',
     choices: [
       ja(
@@ -1002,7 +1002,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Die Guards schließen sich nicht gegenseitig aus.',
-        'Doch - kein Betrag ist zugleich größer und kleiner als 500.',
+        'Doch: kein Betrag ist zugleich größer und kleiner als 500.',
       ),
       nein(
         'Guards gehören in die Raute, nicht an die Kanten.',
@@ -1058,14 +1058,14 @@ final List<Question> questionsA04Entwicklung = [
       ja('Der [ja]-Zweig: Versand gratis setzen', '50 >= 50 ist wahr.'),
       nein(
         'Der [nein]-Zweig: Versandkosten addieren',
-        'Das gälte nur, wenn die Bedingung falsch wäre - bei >= ist 50 eingeschlossen.',
+        'Das gälte nur, wenn die Bedingung falsch wäre. Bei >= ist 50 eingeschlossen.',
       ),
       nein(
         'Beide Zweige nacheinander',
         'Nach einer Entscheidung läuft genau ein Weg weiter.',
       ),
       nein(
-        'Keiner - der Ablauf bleibt stehen',
+        'Keiner: der Ablauf bleibt stehen',
         'Die Guards [ja] und [nein] decken alle Fälle ab.',
       ),
     ],
@@ -1103,8 +1103,8 @@ final List<Question> questionsA04Entwicklung = [
         'Bedingungen an den Kanten stehen in eckigen Klammern und heißen {0}. Nach einer {1} läuft genau ein Weg weiter, nach einer {2} laufen alle Wege parallel. Wer eine Aktion ausführt, zeigen {3}. Eine Schleife entsteht aus einer Entscheidung und einer {4}.',
     luecken: [
       wort(['Guards'], 'Sie steuern, welcher Weg genommen wird.'),
-      wort(['Entscheidung'], 'Die Raute - genau ein Weg.'),
-      wort(['Gabelung'], 'Der Balken - alle Wege gleichzeitig.'),
+      wort(['Entscheidung'], 'Die Raute: genau ein Weg.'),
+      wort(['Gabelung'], 'Der Balken: alle Wege gleichzeitig.'),
       wort(['Swimlanes'], 'Jede Bahn steht für eine Rolle oder Abteilung.'),
       wort(['Rückkante'], 'Eine eigene Schleifenform gibt es nicht.'),
     ],
@@ -1142,11 +1142,11 @@ final List<Question> questionsA04Entwicklung = [
       nein('Zählschleife', 'Die Anzahl der Artikel steht vorher nicht fest.'),
       nein(
         'Einfache Verzweigung',
-        'Die Rückkante wiederholt die Aktion - das ist eine Schleife.',
+        'Die Rückkante wiederholt die Aktion. Das ist eine Schleife.',
       ),
     ],
     explanation:
-        'Die Aktion steht vor der Entscheidung, die über die Rückkante zurückführt. Also läuft der Rumpf mindestens einmal - das Muster einer fußgesteuerten Schleife (WIEDERHOLE … BIS keine Artikel mehr).',
+        'Die Aktion steht vor der Entscheidung, die über die Rückkante zurückführt. Also läuft der Rumpf mindestens einmal: das Muster einer fußgesteuerten Schleife (WIEDERHOLE … BIS keine Artikel mehr).',
     difficulty: 3,
   ),
 
@@ -1161,7 +1161,7 @@ final List<Question> questionsA04Entwicklung = [
       zu('Durchschnittliche Bearbeitungszeit in Stunden, z. B. 2,75', 1),
       zu('Newsletter abonniert: ja oder nein', 2),
       zu('Trennzeichen einer CSV-Datei, z. B. ;', 3),
-      zu('Postleitzahl 01067', 4, 'Führende Null, keine Rechnung - also Text.'),
+      zu('Postleitzahl 01067', 4, 'Führende Null, keine Rechnung, also Text.'),
       zu('Telefonnummer +49 351 123456', 4, 'Enthält + und Leerzeichen.'),
     ],
     explanation:
@@ -1199,10 +1199,10 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'double',
-        'Gleitkommazahlen stellen viele Dezimalbrüche nur näherungsweise dar - 0.1 + 0.2 ist nicht exakt 0.3.',
+        'Gleitkommazahlen stellen viele Dezimalbrüche nur näherungsweise dar: 0.1 + 0.2 ist nicht exakt 0.3.',
       ),
       nein('String', 'Mit Text kann man nicht direkt rechnen.'),
-      nein('float', 'Noch ungenauer als double - gleiches Problem.'),
+      nein('float', 'Noch ungenauer als double, gleiches Problem.'),
     ],
     explanation:
         'float und double speichern Zahlen binär, viele Centbeträge sind dort nur Näherungen. Bei Summen über viele Buchungen entstehen so Rundungsfehler. Dezimaltypen oder Cent-Ganzzahlen rechnen exakt.',
@@ -1244,7 +1244,7 @@ final List<Question> questionsA04Entwicklung = [
             'Von links nach rechts: "5" + 3 ergibt "53", dann "53" + 4 ergibt "534".',
       ),
       zahl(57, rationale: 'Die Klammer zuerst: 3 + 4 = 7, dann "5" + 7.'),
-      zahl(12, rationale: 'Nur Zahlen - hier wird addiert.'),
+      zahl(12, rationale: 'Nur Zahlen: hier wird addiert.'),
     ],
     explanation:
         'Der Operator + wird von links nach rechts ausgewertet. Ist ein Operand ein String, wird verkettet: "5" + 3 = "53", "53" + 4 = "534". Mit "5" + (3 + 4) entstünde "57". Ohne String wird gerechnet: 12.',
@@ -1262,7 +1262,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       ja(
         'byte b = (byte) 200;',
-        'byte reicht nur bis 127 - der Wert läuft über und wird -56.',
+        'byte reicht nur bis 127: der Wert läuft über und wird -56.',
       ),
       nein(
         'double y = i;',
@@ -1286,7 +1286,7 @@ final List<Question> questionsA04Entwicklung = [
     answer: 7,
     unit: 'Durchläufe',
     explanation:
-        'i nimmt die Werte 2, 5, 8, 11, 14, 17, 20 an - das sind 7 Werte. Danach wäre i = 23, und 23 <= 20 ist falsch. Kontrolle: (20 - 2) / 3 + 1 = 6 + 1 = 7.',
+        'i nimmt die Werte 2, 5, 8, 11, 14, 17, 20 an, das sind 7 Werte. Danach wäre i = 23, und 23 <= 20 ist falsch. Kontrolle: (20 - 2) / 3 + 1 = 6 + 1 = 7.',
   ),
   lueckentext(
     'a4-pk-2',
@@ -1317,7 +1317,7 @@ final List<Question> questionsA04Entwicklung = [
     items: [
       zu('Ab 50 € Bestellwert entfallen die Versandkosten.', 0),
       zu(
-        'Eine Datei zeilenweise lesen, solange noch Zeilen da sind - sie kann auch leer sein.',
+        'Eine Datei zeilenweise lesen, solange noch Zeilen da sind. Sie kann auch leer sein.',
         1,
       ),
       zu(
@@ -1399,7 +1399,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'do { x = x * 2; } while (x > 100);',
-        'Die Bedingung wurde nicht umgekehrt - die Schleife liefe genau im falschen Fall weiter.',
+        'Die Bedingung wurde nicht umgekehrt: die Schleife liefe genau im falschen Fall weiter.',
       ),
       nein(
         'do { x = x * 2; } while (x < 100);',
@@ -1465,7 +1465,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'max mit 100 initialisieren',
-        'Dann wäre das Ergebnis 100 - noch weiter daneben.',
+        'Dann wäre das Ergebnis 100 und noch weiter daneben.',
       ),
     ],
     explanation:
@@ -1550,7 +1550,7 @@ final List<Question> questionsA04Entwicklung = [
     prompt: 'Welchen Wert hat a nach Ablauf des Algorithmus?',
     answer: 17,
     explanation:
-        'Trace (a, b): Start (2, 20). 20 > 2: (5, 19). 19 > 5: (8, 18). 18 > 8: (11, 17). 17 > 11: (14, 16). 16 > 14: (17, 15). Jetzt ist 15 > 17 falsch - Ende nach 5 Durchläufen. a = 17.',
+        'Trace (a, b): Start (2, 20). 20 > 2: (5, 19). 19 > 5: (8, 18). 18 > 8: (11, 17). 17 > 11: (14, 16). 16 > 14: (17, 15). Jetzt ist 15 > 17 falsch, also Ende nach 5 Durchläufen. a = 17.',
   ),
   rechnen(
     'a4-pt-2',
@@ -1600,7 +1600,7 @@ final List<Question> questionsA04Entwicklung = [
     prompt: 'Welcher Wert wird ausgegeben?',
     answer: 4,
     explanation:
-        'Trace (n, k): Start (100, 0). 100 > 1: (33, 1). 33 > 1: (11, 2). 11 > 1: (3, 3). 3 > 1: (1, 4). 1 > 1 ist falsch - Ende. Ausgabe k = 4.',
+        'Trace (n, k): Start (100, 0). 100 > 1: (33, 1). 33 > 1: (11, 2). 11 > 1: (3, 3). 3 > 1: (1, 4). 1 > 1 ist falsch, also Ende. Ausgabe k = 4.',
   ),
   einfach(
     'a4-pt-6',
@@ -1632,7 +1632,7 @@ final List<Question> questionsA04Entwicklung = [
     prompt: 'Welcher Wert wird ausgegeben?',
     answer: 81,
     explanation:
-        'x = 3 (3 > 50 falsch), x = 9 (falsch), x = 27 (falsch), x = 81 (81 > 50 wahr) - Ende. Ausgabe 81. Die Bedingung wird erst nach jedem Durchlauf geprüft.',
+        'x = 3 (3 > 50 falsch), x = 9 (falsch), x = 27 (falsch), x = 81 (81 > 50 wahr), also Ende. Ausgabe 81. Die Bedingung wird erst nach jedem Durchlauf geprüft.',
     difficulty: 1,
   ),
 
@@ -1662,7 +1662,7 @@ final List<Question> questionsA04Entwicklung = [
         'Im Lager gibt es zwei Paletten-Objekte mit demselben Gewicht und demselben Lagerplatz-Typ.',
     prompt: 'Ergänze den Text mit den passenden Begriffen.',
     text:
-        'Der Zustand eines Objekts sind die aktuellen Werte seiner {0}. Sein Verhalten bestimmen die {1} der Klasse. Zwei Objekte mit gleichen Werten bleiben verschieden - jedes hat seine eigene {2}.',
+        'Der Zustand eines Objekts sind die aktuellen Werte seiner {0}. Sein Verhalten bestimmen die {1} der Klasse. Zwei Objekte mit gleichen Werten bleiben verschieden. Jedes hat seine eigene {2}.',
     luecken: [
       wort([
         'Attribute',
@@ -1702,7 +1702,7 @@ final List<Question> questionsA04Entwicklung = [
       ], 'Ein Exemplar, erzeugt mit new.'),
     ],
     explanation:
-        'Klasse = Bauplan, Objekt = Exemplar mit eigenem Zustand und eigener Identität. Methoden beschreiben das Verhalten und ändern den Zustand genau des Objekts, auf dem sie aufgerufen werden - t2 bleibt offen.',
+        'Klasse = Bauplan, Objekt = Exemplar mit eigenem Zustand und eigener Identität. Methoden beschreiben das Verhalten und ändern den Zustand genau des Objekts, auf dem sie aufgerufen werden: t2 bleibt offen.',
   ),
   tabelle(
     'a4-og-4',
@@ -1749,7 +1749,7 @@ final List<Question> questionsA04Entwicklung = [
     choices: [
       ja(
         'schuhgroesse',
-        'Für das Ausleihen von Medien spielt sie keine Rolle - Abstraktion lässt sie weg.',
+        'Für das Ausleihen von Medien spielt sie keine Rolle: Abstraktion lässt sie weg.',
       ),
       nein('leserNr', 'Sie identifiziert den Leser bei jeder Ausleihe.'),
       nein('name', 'Wird für Mahnungen und den Ausweis gebraucht.'),
@@ -1926,7 +1926,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'a.bestand = 10;',
-        'bestand ist private - Zugriff nur innerhalb von Artikel.',
+        'bestand ist private: Zugriff nur innerhalb von Artikel.',
       ),
       nein(
         'a.bestand++;',
@@ -1990,7 +1990,7 @@ final List<Question> questionsA04Entwicklung = [
       zu('Getter getKontoNr()', 1),
     ],
     explanation:
-        'Attribute und interne Hilfsmethoden sind private. Die Methoden, die andere Klassen nutzen sollen - fachliche Methoden und Getter - bilden die öffentliche Schnittstelle.',
+        'Attribute und interne Hilfsmethoden sind private. Die Methoden, die andere Klassen nutzen sollen (fachliche Methoden und Getter), bilden die öffentliche Schnittstelle.',
     difficulty: 1,
   ),
 
@@ -2022,13 +2022,13 @@ final List<Question> questionsA04Entwicklung = [
     choices: [
       ja(
         'Kunde(String vorname)',
-        'Gleiche Parameterliste wie Kunde(String name) - nur der Parametername unterscheidet sich.',
+        'Gleiche Parameterliste wie Kunde(String name). Nur der Parametername unterscheidet sich.',
       ),
-      nein('Kunde()', 'Keine Parameter - diese Liste gibt es noch nicht.'),
+      nein('Kunde()', 'Keine Parameter: diese Liste gibt es noch nicht.'),
       nein('Kunde(int nr)', 'Ein int-Parameter ist eine neue Parameterliste.'),
       nein(
         'Kunde(int nr, String name)',
-        'Andere Reihenfolge der Typen - erlaubt.',
+        'Andere Reihenfolge der Typen: erlaubt.',
       ),
     ],
     explanation:
@@ -2055,7 +2055,7 @@ final List<Question> questionsA04Entwicklung = [
     prompt: 'Welchen Wert hat Kunde.anzahl am Ende?',
     answer: 4,
     explanation:
-        'Der Konstruktor läuft nur bei new: k1, k2, k4 und k5 - also viermal. k3 = k1 kopiert nur die Referenz und erzeugt kein Objekt. Da anzahl static ist, gibt es den Zähler nur einmal: 4.',
+        'Der Konstruktor läuft nur bei new: k1, k2, k4 und k5, also viermal. k3 = k1 kopiert nur die Referenz und erzeugt kein Objekt. Da anzahl static ist, gibt es den Zähler nur einmal: 4.',
   ),
   einfach(
     'a4-oc-5',
@@ -2085,7 +2085,7 @@ final List<Question> questionsA04Entwicklung = [
     prompt: 'Welche Aussagen zu Klassenattributen (static) sind richtig?',
     choices: [
       ja(
-        'Ein Klassenattribut gibt es nur einmal - alle Objekte teilen es.',
+        'Ein Klassenattribut gibt es nur einmal, alle Objekte teilen es.',
         'Es gehört zur Klasse, nicht zu einem Objekt.',
       ),
       ja(
@@ -2102,7 +2102,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Ein static-Attribut kann nie geändert werden.',
-        'Unveränderlich macht erst final - static heißt nur „gehört zur Klasse“.',
+        'Unveränderlich macht erst final, static heißt nur „gehört zur Klasse“.',
       ),
     ],
     explanation:
@@ -2117,7 +2117,7 @@ final List<Question> questionsA04Entwicklung = [
     choices: [
       ja(
         'null',
-        'name = name weist den Parameter sich selbst zu - das Attribut bleibt beim Standardwert null.',
+        'name = name weist den Parameter sich selbst zu. Das Attribut bleibt beim Standardwert null.',
       ),
       nein('„Meier“', 'Dafür müsste this.name = name; dort stehen.'),
       nein(

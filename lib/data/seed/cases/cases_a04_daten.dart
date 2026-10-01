@@ -47,7 +47,7 @@ final List<ExamCase> casesA04Daten = [
             ],
           ),
           krit(
-            'Vorteil: Jede Information wird nur einmal gespeichert - das spart Speicherplatz.',
+            'Vorteil: Jede Information wird nur einmal gespeichert, das spart Speicherplatz.',
             punkte: 2,
             stichwoerter: [
               'nur einmal',
@@ -70,7 +70,7 @@ final List<ExamCase> casesA04Daten = [
         loesung:
             'Der Primärschlüssel ist eine Spalte, deren Wert genau einen Datensatz einer Tabelle identifiziert. Durch die Verknüpfung über Fremdschlüssel wird jede Information nur einmal gespeichert; das spart Speicherplatz und verhindert widersprüchliche Daten.',
         explanation:
-            '2 Punkte für die Aufgabe des Primärschlüssels, 2 Punkte für einen Vorteil - der Text nennt zwei (Speicherplatz, keine widersprüchlichen Daten). Geantwortet wird auf Deutsch und mit Bezug zum Text.',
+            '2 Punkte für die Aufgabe des Primärschlüssels, 2 Punkte für einen Vorteil. Der Text nennt zwei (Speicherplatz, keine widersprüchlichen Daten). Geantwortet wird auf Deutsch und mit Bezug zum Text.',
         punkte: 4,
         tags: ['englisch'],
       ),
@@ -109,7 +109,7 @@ final List<ExamCase> casesA04Daten = [
           zu(
             'Rückgabedatum',
             3,
-            'Gehört zur einzelnen Nutzung - nicht zum Gerät allein.',
+            'Gehört zur einzelnen Nutzung, nicht zum Gerät allein.',
           ),
           zu('Nachname', 0, 'Eigenschaft des Mitarbeiters.'),
           zu('Kaufdatum', 1, 'Jedes Gerät wurde genau einmal gekauft.'),
@@ -154,7 +154,7 @@ final List<ExamCase> casesA04Daten = [
         zeilen: [
           ja(
             'Personalnummer',
-            'Eindeutig, stabil und nie leer - identifiziert einen Mitarbeiter.',
+            'Eindeutig, stabil und nie leer, damit identifiziert sie einen Mitarbeiter.',
           ),
           nein('Nachname', 'Mehrere Mitarbeiter können gleich heißen.'),
           ja('Inventarnummer', 'Wird je Gerät genau einmal vergeben.'),
@@ -325,7 +325,7 @@ final List<ExamCase> casesA04Daten = [
           ),
         ],
         loesung:
-            'Eine statische Website besteht aus fertigen Dateien, die der Server unverändert ausliefert - alle Besucher sehen dasselbe. Eine dynamische Website wird bei jedem Aufruf von einem Programm auf dem Server erzeugt, meist aus einer Datenbank. Ihr Inhalt kann vom Nutzer oder von Eingaben abhängen und über ein Redaktionssystem gepflegt werden.',
+            'Eine statische Website besteht aus fertigen Dateien, die der Server unverändert ausliefert. Alle Besucher sehen dasselbe. Eine dynamische Website wird bei jedem Aufruf von einem Programm auf dem Server erzeugt, meist aus einer Datenbank. Ihr Inhalt kann vom Nutzer oder von Eingaben abhängen und über ein Redaktionssystem gepflegt werden.',
         explanation:
             'Für die volle Punktzahl müssen beide Seiten des Vergleichs erkennbar sein: statisch = feste Dateien, gleicher Inhalt; dynamisch = beim Aufruf serverseitig erzeugt, nutzer- oder eingabeabhängig.',
         punkte: 3,
@@ -366,7 +366,7 @@ final List<ExamCase> casesA04Daten = [
         loesung:
             'Zum Beispiel PHP, Python und JavaScript; ebenfalls richtig sind Java, C# oder Ruby.',
         explanation:
-            'Je Nennung 1 Punkt, höchstens 3. HTML und CSS zählen nicht - sie sind keine Programmiersprachen.',
+            'Je Nennung 1 Punkt, höchstens 3. HTML und CSS zählen nicht, denn sie sind keine Programmiersprachen.',
         punkte: 3,
         difficulty: 1,
       ),
@@ -402,7 +402,7 @@ final List<ExamCase> casesA04Daten = [
           ],
         ],
         explanation:
-            'Je Zelle ein halber Punkt. Aufbau: Schema://Host:Port/Pfad?Query#Fragment. Fehlt der Port, nimmt der Browser den Standardport des Schemas - bei https ist das 443.',
+            'Je Zelle ein halber Punkt. Aufbau: Schema://Host:Port/Pfad?Query#Fragment. Fehlt der Port, nimmt der Browser den Standardport des Schemas: bei https ist das 443.',
         punkte: 3,
       ),
       freitext(
@@ -493,7 +493,7 @@ final List<ExamCase> casesA04Daten = [
           wahl('Bestellposition', ['Bestellung', 'Artikel']),
         ],
         explanation:
-            'Je Lücke 1 Punkt. n:m-Beziehungen werden durch eine Zwischentabelle in zwei 1:n-Beziehungen aufgelöst. Die Zwischentabelle enthält die Primärschlüssel beider Seiten als Fremdschlüssel - zusammen ihr Primärschlüssel - und die Attribute der Beziehung, hier die Menge.',
+            'Je Lücke 1 Punkt. n:m-Beziehungen werden durch eine Zwischentabelle in zwei 1:n-Beziehungen aufgelöst. Die Zwischentabelle enthält die Primärschlüssel beider Seiten als Fremdschlüssel (zusammen ihr Primärschlüssel) und die Attribute der Beziehung, hier die Menge.',
         punkte: 4,
       ),
       lueckentext(
@@ -566,7 +566,7 @@ final List<ExamCase> casesA04Daten = [
           ),
         ],
         explanation:
-            'Je richtig entnommener Aussage 1 Punkt. Der Text beschreibt eine dynamische Website: Inhalte in der Datenbank, Seitenaufbau beim Aufruf aus Vorlage (template) und Inhalt, Pflege ohne Programmierkenntnisse - und regelmäßige Updates als Schutz vor Angriffen.',
+            'Je richtig entnommener Aussage 1 Punkt. Der Text beschreibt eine dynamische Website: Inhalte in der Datenbank, Seitenaufbau beim Aufruf aus Vorlage (template) und Inhalt, Pflege ohne Programmierkenntnisse, und regelmäßige Updates als Schutz vor Angriffen.',
         punkte: 4,
         tags: ['englisch'],
       ),
@@ -637,7 +637,7 @@ final List<ExamCase> casesA04Daten = [
             'Erläutere einen Vorteil, den der KI-Assistent für die Beschäftigten im Support hat.',
         kriterien: [
           krit(
-            'Entlastung von Routinearbeit (Sortieren, Zusammenfassen) - mehr Zeit für anspruchsvolle Anfragen.',
+            'Entlastung von Routinearbeit (Sortieren, Zusammenfassen), also mehr Zeit für anspruchsvolle Anfragen.',
             punkte: 2,
             stichwoerter: [
               'Routine',
@@ -742,7 +742,7 @@ final List<ExamCase> casesA04Daten = [
           ),
         ],
         loesung:
-            'Risiko 1: Die Tickets enthalten personenbezogene Daten und Zugangsdaten, die bei der Verarbeitung zum externen Anbieter gelangen - ohne Vertrag und Schutzmaßnahmen ein Datenschutzverstoß. Risiko 2: Der Assistent kann überzeugend klingende, aber falsche Lösungen vorschlagen; werden sie ungeprüft übernommen, erhalten Kunden falsche Auskünfte.',
+            'Risiko 1: Die Tickets enthalten personenbezogene Daten und Zugangsdaten, die bei der Verarbeitung zum externen Anbieter gelangen. Ohne Vertrag und Schutzmaßnahmen ein Datenschutzverstoß. Risiko 2: Der Assistent kann überzeugend klingende, aber falsche Lösungen vorschlagen; werden sie ungeprüft übernommen, erhalten Kunden falsche Auskünfte.',
         explanation:
             'Je beschriebenem Risiko 2 Punkte, verlangt sind zwei. Gegenmaßnahmen: Auftragsverarbeitungsvertrag, sensible Daten vor der Verarbeitung entfernen, jede Antwort vor dem Versand prüfen.',
         punkte: 4,
@@ -907,7 +907,7 @@ final List<ExamCase> casesA04Daten = [
           ['Reichweite der Nachtsicht in Metern', zahl(30)],
         ],
         explanation:
-            'Je Wert 1 Punkt. Frame rate = Bildrate (12 fps = 12 Bilder pro Sekunde), colour depth = Farbtiefe, night vision up to 30 m = Nachtsicht bis 30 Meter. „No local storage“: Die Kamera speichert nicht selbst - die Aufnahmen müssen auf den Server.',
+            'Je Wert 1 Punkt. Frame rate = Bildrate (12 fps = 12 Bilder pro Sekunde), colour depth = Farbtiefe, night vision up to 30 m = Nachtsicht bis 30 Meter. „No local storage“: Die Kamera speichert nicht selbst. Die Aufnahmen müssen auf den Server.',
         punkte: 3,
         difficulty: 1,
         tags: ['englisch'],
@@ -994,7 +994,7 @@ final List<ExamCase> casesA04Daten = [
           zu('Bezeichnung der Zone', 1, 'Eigenschaft der Lagerzone.'),
         ],
         explanation:
-            'Je richtig zugeordnetem Attribut ein halber Punkt. Blickrichtung und Einrichtungsdatum beschreiben die Kombination aus Kamera und Zone - sie gehören an die Beziehung, nicht an eine der beiden Entitäten.',
+            'Je richtig zugeordnetem Attribut ein halber Punkt. Blickrichtung und Einrichtungsdatum beschreiben die Kombination aus Kamera und Zone. Sie gehören an die Beziehung, nicht an eine der beiden Entitäten.',
         punkte: 4,
         difficulty: 3,
       ),
@@ -1063,7 +1063,7 @@ final List<ExamCase> casesA04Daten = [
           ),
         ],
         loesung:
-            'Eine KI-gestützte Bilderkennung liest das Kennzeichen eines ankommenden LKW, ordnet es der angekündigten Lieferung zu und erfasst Datum und Uhrzeit der Ankunft. Das System weist dem LKW automatisch eine freie Rampe zu und informiert das Lagerpersonal - Wartezeiten sinken.',
+            'Eine KI-gestützte Bilderkennung liest das Kennzeichen eines ankommenden LKW, ordnet es der angekündigten Lieferung zu und erfasst Datum und Uhrzeit der Ankunft. Das System weist dem LKW automatisch eine freie Rampe zu und informiert das Lagerpersonal. Wartezeiten sinken.',
         explanation:
             '3 Punkte für eine nachvollziehbar erläuterte Möglichkeit: Was erkennt die KI, was geschieht mit der Information, welcher Nutzen entsteht. Andere sinnvolle Lösungen (z. B. freie Stellplätze zählen, Beladung dokumentieren) zählen ebenso.',
         punkte: 3,
@@ -1089,7 +1089,7 @@ final List<ExamCase> casesA04Daten = [
             ],
           ),
           krit(
-            'Folge: LKW werden falschen Lieferungen oder Rampen zugeordnet - das Ergebnis muss von Menschen kontrolliert werden.',
+            'Folge: LKW werden falschen Lieferungen oder Rampen zugeordnet. Das Ergebnis muss von Menschen kontrolliert werden.',
             punkte: 2,
             stichwoerter: [
               'falsch zugeordnet',
@@ -1272,7 +1272,7 @@ final List<ExamCase> casesA04Daten = [
           ),
         ],
         loesung:
-            'Redundanz heißt, dass dieselbe Information mehrfach gespeichert ist - hier die Lieferantenadresse in jeder Lieferzeile. Ändert sich die Adresse, müssen alle Zeilen angepasst werden; wird eine vergessen, werden die Daten widersprüchlich. Die Lösung: jeden Lieferanten nur einmal in einer eigenen Tabelle speichern.',
+            'Redundanz heißt, dass dieselbe Information mehrfach gespeichert ist, hier die Lieferantenadresse in jeder Lieferzeile. Ändert sich die Adresse, müssen alle Zeilen angepasst werden; wird eine vergessen, werden die Daten widersprüchlich. Die Lösung: jeden Lieferanten nur einmal in einer eigenen Tabelle speichern.',
         explanation:
             '1 Punkt für den Begriff, 2 Punkte für das Problem (unvollständige Änderung führt zu Inkonsistenz), 1 Punkt für die Lösung. „Spreadsheet“ ist die Tabellenkalkulation, „supplier“ der Lieferant.',
         punkte: 4,
@@ -1313,7 +1313,7 @@ final List<ExamCase> casesA04Daten = [
           ],
         ],
         explanation:
-            'Je Attribut ein halber Punkt. Menge und Chargennummer gelten für einen Artikel auf einem bestimmten Lieferschein - sie gehören an die Beziehung. Lieferdatum und Fahrer beschreiben den Lieferschein, Bezeichnung und Stückgewicht den Artikel.',
+            'Je Attribut ein halber Punkt. Menge und Chargennummer gelten für einen Artikel auf einem bestimmten Lieferschein. Sie gehören an die Beziehung. Lieferdatum und Fahrer beschreiben den Lieferschein, Bezeichnung und Stückgewicht den Artikel.',
         punkte: 3,
         difficulty: 3,
       ),
@@ -1360,7 +1360,7 @@ final List<ExamCase> casesA04Daten = [
             ],
           ),
           krit(
-            'Bei Belegen müssen Schrift, Zahlen und Stempel lesbar und unverändert bleiben - Artefakte könnten Mengen oder Nummern unleserlich machen.',
+            'Bei Belegen müssen Schrift, Zahlen und Stempel lesbar und unverändert bleiben, denn Artefakte könnten Mengen oder Nummern unleserlich machen.',
             punkte: 2,
             stichwoerter: [
               'lesbar',
@@ -1409,7 +1409,7 @@ final List<ExamCase> casesA04Daten = [
             ],
           ),
           krit(
-            'Authentizität: Der Server weist sich per Zertifikat aus - Mandanten sind mit dem echten Portal verbunden.',
+            'Authentizität: Der Server weist sich per Zertifikat aus. Mandanten sind mit dem echten Portal verbunden.',
             punkte: 2,
             stichwoerter: ['Zertifikat', 'Authentizität', 'echte', 'Identität'],
           ),
@@ -1488,7 +1488,7 @@ final List<ExamCase> casesA04Daten = [
           ),
           nein(
             '<input id="user" name="user" type="text">',
-            'Korrekt - input hat kein End-Tag.',
+            'Korrekt: input hat kein End-Tag.',
           ),
           nein('<label for="pw">Passwort</label>', 'Korrekt.'),
           ja(
@@ -1551,7 +1551,7 @@ final List<ExamCase> casesA04Daten = [
           ),
         ],
         loesung:
-            'Erstens müssen alle Funktionen - Anmelden, Hochladen, Abrufen - auch ohne Maus per Tastatur erreichbar sein, mit sichtbarem Fokus. Zweitens brauchen Texte ausreichend Kontrast und müssen sich vergrößern lassen. Außerdem erhalten Formularfelder verknüpfte Beschriftungen und Symbole Alternativtexte für Screenreader.',
+            'Erstens müssen alle Funktionen (Anmelden, Hochladen, Abrufen) auch ohne Maus per Tastatur erreichbar sein, mit sichtbarem Fokus. Zweitens brauchen Texte ausreichend Kontrast und müssen sich vergrößern lassen. Außerdem erhalten Formularfelder verknüpfte Beschriftungen und Symbole Alternativtexte für Screenreader.',
         explanation:
             'Je beschriebener Maßnahme 2 Punkte, verlangt sind zwei. Maßstab sind die WCAG-Prinzipien wahrnehmbar, bedienbar, verständlich, robust.',
         punkte: 4,
@@ -1571,7 +1571,7 @@ final List<ExamCase> casesA04Daten = [
         luecken: [
           zahl(6800, rationale: '850 × 8.'),
           zahl(7140, rationale: '6.800 × 1,05.'),
-          zahl(357, rationale: '7.140 / 20 - es zählt die Upload-Rate.'),
+          zahl(357, rationale: '7.140 / 20. Es zählt die Upload-Rate.'),
           zahl(5.95, toleranz: 0.01, rationale: '357 / 60.'),
         ],
         explanation:
@@ -1627,9 +1627,9 @@ final List<ExamCase> casesA04Daten = [
           ),
         ],
         loesung:
-            'Erstens Bilder und Dokumente vor dem Senden komprimieren. Zweitens dem Browser erlauben, selten geänderte Dateien zwischenzuspeichern (Cache) - als Beispiel nennt der Text das Logo. Drittens die Zahl der Anfragen verringern, indem kleine Skriptdateien zu einer zusammengefasst werden.',
+            'Erstens Bilder und Dokumente vor dem Senden komprimieren. Zweitens dem Browser erlauben, selten geänderte Dateien zwischenzuspeichern (Cache). Als Beispiel nennt der Text das Logo. Drittens die Zahl der Anfragen verringern, indem kleine Skriptdateien zu einer zusammengefasst werden.',
         explanation:
-            'Je Nennung 1 Punkt: komprimieren, im Browser zwischenspeichern, Anfragen verringern - dazu das Beispiel Logo. Stichworte auf Deutsch genügen.',
+            'Je Nennung 1 Punkt: komprimieren, im Browser zwischenspeichern, Anfragen verringern, dazu das Beispiel Logo. Stichworte auf Deutsch genügen.',
         punkte: 4,
         tags: ['englisch'],
       ),

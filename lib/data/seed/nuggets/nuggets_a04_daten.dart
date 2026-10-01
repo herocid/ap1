@@ -11,8 +11,8 @@ final List<Nugget> nuggetsA04Daten = [
     'Erst modellieren, dann speichern',
     'Bevor eine Datenbank entsteht, wird geplant, welche Daten sie enthält und wie sie zusammenhängen. Das Entity-Relationship-Modell (ERM) beschreibt das fachlich und unabhängig von einer Software. Erst danach wird es in Tabellen übersetzt.',
     points: [
-      'Konzeptionell: ERM - was gibt es, wie hängt es zusammen?',
-      'Logisch: relationales Modell - welche Tabellen, Spalten und Schlüssel?',
+      'Konzeptionell: ERM (was gibt es, wie hängt es zusammen?)',
+      'Logisch: relationales Modell (welche Tabellen, Spalten und Schlüssel?)',
       'Physisch: Umsetzung in einem konkreten Datenbanksystem',
     ],
   ),
@@ -20,7 +20,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-de-2',
     'dm-erm',
     'Entität und Entitätstyp',
-    'Eine Entität ist ein einzelnes, unterscheidbares Objekt, über das Daten gespeichert werden - etwa die Kundin Frau Yilmaz oder die Rechnung 2025-117. Gleichartige Entitäten fasst man zu einem Entitätstyp zusammen, zum Beispiel „Kunde“ oder „Rechnung“.',
+    'Eine Entität ist ein einzelnes, unterscheidbares Objekt, über das Daten gespeichert werden, etwa die Kundin Frau Yilmaz oder die Rechnung 2025-117. Gleichartige Entitäten fasst man zu einem Entitätstyp zusammen, zum Beispiel „Kunde“ oder „Rechnung“.',
     points: [
       'Entitäten können Personen (Kunde), Dinge (Artikel), Orte (Filiale) oder Vorgänge (Bestellung) sein',
       'Im Diagramm erscheint nur der Entitätstyp, nie die einzelne Entität',
@@ -33,7 +33,7 @@ final List<Nugget> nuggetsA04Daten = [
     'Attribute beschreiben die Eigenschaften eines Entitätstyps, Beziehungen verbinden Entitätstypen miteinander. Ein Schlüsselattribut macht jede Entität eindeutig unterscheidbar.',
     points: [
       'Attribute von „Kunde“: KundenNr, Name, E-Mail, Ort',
-      'Schlüsselattribut von „Kunde“: KundenNr - wird unterstrichen',
+      'Schlüsselattribut von „Kunde“: KundenNr, wird unterstrichen',
       'Beziehung als Verb: Kunde „erteilt“ Auftrag',
       'Auch eine Beziehung kann Attribute haben: „Menge“ bei Auftrag „enthält“ Artikel',
     ],
@@ -104,7 +104,7 @@ final List<Nugget> nuggetsA04Daten = [
     'Vom Text zum ER-Modell',
     'In der Prüfung steht meist ein kurzer Text mit den Anforderungen. Mit diesem Vorgehen entsteht daraus Schritt für Schritt das ERM.',
     [
-      'Substantive markieren - Kandidaten für Entitätstypen',
+      'Substantive markieren: Kandidaten für Entitätstypen',
       'Prüfen: Werden zu dem Begriff eigene Daten gespeichert? Dann Entitätstyp, sonst Attribut',
       'Beschreibende Angaben als Attribute zuordnen',
       'Verben zwischen zwei Entitätstypen werden zu Beziehungen',
@@ -125,7 +125,7 @@ final List<Nugget> nuggetsA04Daten = [
       'Das Ausleihdatum gehört weder nur zum Kunden noch nur zum Rad -> Attribut der Beziehung „leiht“',
     ],
     ergebnis:
-        'Filiale 1:n Fahrrad, Kunde n:m Fahrrad - das Ausleihdatum hängt an der Beziehung „leiht“.',
+        'Filiale 1:n Fahrrad, Kunde n:m Fahrrad. Das Ausleihdatum hängt an der Beziehung „leiht“.',
     skizze: ErmDiagramm(
       [
         ErmEntitaet(
@@ -168,13 +168,13 @@ final List<Nugget> nuggetsA04Daten = [
     'n-de-10',
     'dm-erm',
     'Attribut oder eigener Entitätstyp?',
-    'Nicht jedes Substantiv wird ein Entitätstyp. „Ort“ ist meist nur ein Attribut des Kunden. Sobald zu einer Sache eigene Eigenschaften gespeichert werden sollen - etwa zu einer Abteilung Name, Standort und Leitung -, wird sie ein eigener Entitätstyp.',
+    'Nicht jedes Substantiv wird ein Entitätstyp. „Ort“ ist meist nur ein Attribut des Kunden. Sobald zu einer Sache eigene Eigenschaften gespeichert werden sollen (etwa zu einer Abteilung Name, Standort und Leitung), wird sie ein eigener Entitätstyp.',
   ),
   falle(
     'n-de-11',
     'dm-erm',
     'Fremdschlüssel gehören nicht ins ERM',
-    'Im ERM zeigt die Linie über die Raute, wer mit wem verbunden ist. Einen Fremdschlüssel wie KundenNr als Attribut beim Auftrag einzutragen, ist doppelt gemoppelt - er entsteht erst beim Übergang ins relationale Modell. Ebenso häufig vergessen: die Kardinalitäten an jeder Linie.',
+    'Im ERM zeigt die Linie über die Raute, wer mit wem verbunden ist. Einen Fremdschlüssel wie KundenNr als Attribut beim Auftrag einzutragen, ist doppelt gemoppelt, denn er entsteht erst beim Übergang ins relationale Modell. Ebenso häufig vergessen: die Kardinalitäten an jeder Linie.',
   ),
   merke(
     'n-de-12',
@@ -194,7 +194,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-dk-1',
     'dm-kardinalitaet',
     'Was die Kardinalität angibt',
-    'Die Kardinalität legt fest, mit wie vielen Entitäten des anderen Typs eine Entität höchstens in Beziehung stehen kann. Eine Beziehung liest man immer in beide Richtungen: Wie viele B hat ein A - und wie viele A hat ein B?',
+    'Die Kardinalität legt fest, mit wie vielen Entitäten des anderen Typs eine Entität höchstens in Beziehung stehen kann. Eine Beziehung liest man immer in beide Richtungen: Wie viele B hat ein A, und wie viele A hat ein B?',
   ),
   vergleich(
     'n-dk-2',
@@ -282,7 +282,7 @@ final List<Nugget> nuggetsA04Daten = [
       ['mc', 'beliebig viele', '0 bis viele'],
     ],
     points: [
-      'Beispiel: Abteilung 1 : mc Mitarbeiter - jeder Mitarbeiter hat genau eine Abteilung, eine neue Abteilung darf noch leer sein',
+      'Beispiel: Abteilung 1 : mc Mitarbeiter: jeder Mitarbeiter hat genau eine Abteilung, eine neue Abteilung darf noch leer sein',
     ],
   ),
   konzept(
@@ -306,7 +306,7 @@ final List<Nugget> nuggetsA04Daten = [
       'Primärschlüssel beider Seiten als Fremdschlüssel aufnehmen: BestellNr und ArtikelNr',
       'Beide zusammen bilden den Primärschlüssel der Zwischentabelle',
       'Attribute der Beziehung dort ablegen, z. B. Menge',
-      'Ergebnis: zwei 1:n-Beziehungen - Bestellung 1:n Bestellposition, Artikel 1:n Bestellposition',
+      'Ergebnis: zwei 1:n-Beziehungen: Bestellung 1:n Bestellposition, Artikel 1:n Bestellposition',
     ],
   ),
   skizze(
@@ -387,7 +387,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-dk-12',
     'dm-kardinalitaet',
     'Fremdschlüssel auf der falschen Seite',
-    'Eine Spalte MitarbeiterNr in der Tabelle Abteilung kann nur einen einzigen Mitarbeiter aufnehmen - das passt nicht zu „eine Abteilung hat viele“. Der Fremdschlüssel gehört immer auf die n-Seite. Umgekehrt braucht 1:n keine Zwischentabelle, nur n:m.',
+    'Eine Spalte MitarbeiterNr in der Tabelle Abteilung kann nur einen einzigen Mitarbeiter aufnehmen. Das passt nicht zu „eine Abteilung hat viele“. Der Fremdschlüssel gehört immer auf die n-Seite. Umgekehrt braucht 1:n keine Zwischentabelle, nur n:m.',
   ),
   merke(
     'n-dk-13',
@@ -445,7 +445,7 @@ final List<Nugget> nuggetsA04Daten = [
     points: [
       'Tabelle Mitarbeiter: PersNr und Steuer-ID sind beide eindeutig',
       'Gewählt wird meist die kurze, stabile PersNr',
-      'Die Steuer-ID bleibt Alternativschlüssel - doppelte Werte wären ein Fehler',
+      'Die Steuer-ID bleibt Alternativschlüssel. Doppelte Werte wären ein Fehler',
     ],
   ),
   konzept(
@@ -481,7 +481,7 @@ final List<Nugget> nuggetsA04Daten = [
     points: [
       'PK = Primärschlüssel (im Heft unterstrichen)',
       'FK = Fremdschlüssel mit Verweis auf eine andere Tabelle',
-      'Eine Spalte kann beides sein - wie BestellNr in Position',
+      'Eine Spalte kann beides sein, wie BestellNr in Position',
     ],
   ),
   beispiel(
@@ -506,7 +506,7 @@ final List<Nugget> nuggetsA04Daten = [
       'In Bestellung alle Zeilen mit KundenNr K2 zählen: 5002 und 5003',
     ],
     ergebnis:
-        'Frau oder Herr Aydin aus Bonn - mit 2 Bestellungen. Der Fremdschlüssel K2 wiederholt sich.',
+        'Frau oder Herr Aydin aus Bonn, mit 2 Bestellungen. Der Fremdschlüssel K2 wiederholt sich.',
   ),
   ablauf(
     'n-dl-8',
@@ -514,7 +514,7 @@ final List<Nugget> nuggetsA04Daten = [
     'Referenzielle Integrität',
     'Referenzielle Integrität heißt: Jeder Fremdschlüsselwert verweist auf einen vorhandenen Primärschlüssel. Die Datenbank prüft das bei jeder Änderung. Beispiel: Bestellung mit der Spalte KundenNr.',
     [
-      'Neue Bestellung für KundenNr 999 - Kunde 999 gibt es nicht -> wird abgelehnt',
+      'Neue Bestellung für KundenNr 999: Kunde 999 gibt es nicht -> wird abgelehnt',
       'Kunde 10457 soll gelöscht werden, hat aber Bestellungen -> Löschen wird verhindert',
       'Alternative Löschweitergabe (Kaskade): Mit dem Kunden werden seine Bestellungen mitgelöscht',
       'Alternative: Fremdschlüssel auf leer setzen, wenn die Beziehung optional ist',
@@ -536,7 +536,7 @@ final List<Nugget> nuggetsA04Daten = [
       ['künstlich', 'PositionsNr', 'Kombination darf mehrfach vorkommen'],
     ],
     points: [
-      'Beispiel für mehrfach: derselbe Patient hat mehrmals Termine beim selben Arzt - dann ist PatientNr + ArztNr nicht eindeutig',
+      'Beispiel für mehrfach: derselbe Patient hat mehrmals Termine beim selben Arzt, dann ist PatientNr + ArztNr nicht eindeutig',
     ],
   ),
   falle(
@@ -549,7 +549,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-dl-11',
     'dm-schluessel',
     'Schlechte Primärschlüssel',
-    'Name, Telefonnummer oder E-Mail sind als Primärschlüssel ungeeignet: nicht sicher eindeutig, nicht stabil oder manchmal leer. Auch ein zusammengesetzter Schlüssel aus mehr Spalten als nötig ist falsch - er ist nicht minimal.',
+    'Name, Telefonnummer oder E-Mail sind als Primärschlüssel ungeeignet: nicht sicher eindeutig, nicht stabil oder manchmal leer. Auch ein zusammengesetzter Schlüssel aus mehr Spalten als nötig ist falsch, denn er ist nicht minimal.',
   ),
   merke(
     'n-dl-12',
@@ -573,7 +573,7 @@ final List<Nugget> nuggetsA04Daten = [
     points: [
       'Ziel: Redundanz vermeiden, Anomalien verhindern',
       'Weg: Tabelle Schritt für Schritt in 1NF, 2NF und 3NF bringen',
-      'Es geht keine Information verloren - sie wird nur verteilt',
+      'Es geht keine Information verloren, sie wird nur verteilt',
     ],
   ),
   konzept(
@@ -603,7 +603,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-dn-4',
     'dm-normalisierung',
     'Die Ausgangstabelle',
-    'Ein Webshop speichert jede Bestellung in einer einzigen Zeile. Die Spalten Kunde und Artikel enthalten mehrere Werte auf einmal - die Tabelle ist nicht normalisiert.',
+    'Ein Webshop speichert jede Bestellung in einer einzigen Zeile. Die Spalten Kunde und Artikel enthalten mehrere Werte auf einmal. Die Tabelle ist nicht normalisiert.',
     table: [
       ['BestNr', 'Datum', 'Kunde', 'Artikel'],
       [
@@ -654,7 +654,7 @@ final List<Nugget> nuggetsA04Daten = [
       ['Anomalie', 'am Beispiel'],
       [
         'Einfügen',
-        'neuer Artikel A4 ohne Bestellung nicht speicherbar - BestNr fehlt im Schlüssel',
+        'neuer Artikel A4 ohne Bestellung nicht speicherbar: BestNr fehlt im Schlüssel',
       ],
       [
         'Ändern',
@@ -681,7 +681,7 @@ final List<Nugget> nuggetsA04Daten = [
         'Position (BestNr PK FK,\n'
         '  ArtNr PK FK, Menge)',
     ergebnis:
-        '2NF erreicht: 3 Tabellen. Maus steht nur noch einmal in Artikel - Meyer aber noch zweimal in Bestellung.',
+        '2NF erreicht: 3 Tabellen. Maus steht nur noch einmal in Artikel, Meyer aber noch zweimal in Bestellung.',
   ),
   beispiel(
     'n-dn-8',
@@ -702,7 +702,7 @@ final List<Nugget> nuggetsA04Daten = [
       ['Position', 'BestNr + ArtNr', 'BestNr, ArtNr'],
     ],
     ergebnis:
-        '3NF erreicht: Kunde, Bestellung, Artikel, Position - jede Information steht genau einmal.',
+        '3NF erreicht: Kunde, Bestellung, Artikel, Position: jede Information steht genau einmal.',
   ),
   skizze(
     'n-dn-9',
@@ -756,13 +756,13 @@ final List<Nugget> nuggetsA04Daten = [
     'n-dn-11',
     'dm-normalisierung',
     '2NF nur bei zusammengesetztem Schlüssel',
-    'Eine Tabelle in 1NF mit einspaltigem Primärschlüssel ist automatisch in 2NF - ein Attribut kann nicht von einem Teil eines einzelnen Schlüssels abhängen. Die 2NF-Prüfung lohnt sich nur bei zusammengesetzten Schlüsseln, die 3NF-Prüfung immer.',
+    'Eine Tabelle in 1NF mit einspaltigem Primärschlüssel ist automatisch in 2NF, denn ein Attribut kann nicht von einem Teil eines einzelnen Schlüssels abhängen. Die 2NF-Prüfung lohnt sich nur bei zusammengesetzten Schlüsseln, die 3NF-Prüfung immer.',
   ),
   falle(
     'n-dn-12',
     'dm-normalisierung',
     'Listenpreis oder Verkaufspreis?',
-    'Der Preis in Artikel ist der aktuelle Listenpreis. Soll festgehalten werden, zu welchem Preis damals verkauft wurde, gehört ein eigener Verkaufspreis in Position - das ist keine Redundanz, sondern eine andere Information. Berechnete Werte wie Positionssumme = Menge × Preis werden dagegen nicht gespeichert.',
+    'Der Preis in Artikel ist der aktuelle Listenpreis. Soll festgehalten werden, zu welchem Preis damals verkauft wurde, gehört ein eigener Verkaufspreis in Position. Das ist keine Redundanz, sondern eine andere Information. Berechnete Werte wie Positionssumme = Menge × Preis werden dagegen nicht gespeichert.',
   ),
   merke(
     'n-dn-13',
@@ -786,7 +786,7 @@ final List<Nugget> nuggetsA04Daten = [
     'Eine URL (Uniform Resource Locator) sagt dem Browser, mit welchem Protokoll er welchen Server ansprechen und welche Ressource er dort abrufen soll. Jeder Teil hat eine feste Position und ein eigenes Trennzeichen.',
     points: [
       'Ressource: eine Seite, ein Bild, eine Datei oder ein Datensatz einer Schnittstelle',
-      'Oberbegriff URI: jede eindeutige Kennung einer Ressource - eine URL ist ein URI mit Ortsangabe',
+      'Oberbegriff URI: jede eindeutige Kennung einer Ressource. Eine URL ist ein URI mit Ortsangabe',
     ],
   ),
   formel(
@@ -894,7 +894,7 @@ final List<Nugget> nuggetsA04Daten = [
     'In einer URL sind nur bestimmte Zeichen erlaubt. Leerzeichen, Umlaute und Zeichen mit Sonderbedeutung wie & werden prozentkodiert: ein % und der Bytewert in Hexadezimal.',
     points: [
       'Leerzeichen -> %20 (in Formularparametern auch +)',
-      'ä -> %C3%A4 - die zwei UTF-8-Bytes des Zeichens',
+      'ä -> %C3%A4: die zwei UTF-8-Bytes des Zeichens',
       '& im Wert selbst -> %26, damit es nicht als Trenner gilt',
       'Umlaut-Domains wie müller.de werden intern als xn--mller-kva.de übertragen (Punycode)',
     ],
@@ -910,7 +910,7 @@ final List<Nugget> nuggetsA04Daten = [
       'Kein Port angegeben -> Standardport von https: 443',
       'Ab / bis ?: Pfad /kurse/it',
       'Ab ? bis #: Query jahr=2025&ort=koeln mit zwei Parametern',
-      'Nach #: Fragment termine - bleibt im Browser',
+      'Nach #: Fragment termine, bleibt im Browser',
     ],
     table: [
       ['Teil', 'Wert'],
@@ -928,13 +928,13 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wu-10',
     'wi-url',
     'Das Fragment bleibt im Browser',
-    'Alles hinter # schickt der Browser nicht an den Server - er springt damit nur zu einer Stelle der Seite. Wer Daten an den Server übergeben will, nutzt die Query hinter ?. Und: www ist keine Pflicht, sondern nur eine übliche Subdomain.',
+    'Alles hinter # schickt der Browser nicht an den Server. Er springt damit nur zu einer Stelle der Seite. Wer Daten an den Server übergeben will, nutzt die Query hinter ?. Und: www ist keine Pflicht, sondern nur eine übliche Subdomain.',
   ),
   falle(
     'n-wu-11',
     'wi-url',
     'Die echte Domain steht rechts',
-    'Phishing-Adressen nutzen aus, dass man von links liest: In https://bank.de.konto-check.example/login ist die echte Domain konto-check.example - „bank.de“ ist nur eine Subdomain davon. Maßgeblich ist, was direkt vor dem ersten einzelnen / steht, von rechts gelesen.',
+    'Phishing-Adressen nutzen aus, dass man von links liest: In https://bank.de.konto-check.example/login ist die echte Domain konto-check.example. „bank.de“ ist nur eine Subdomain davon. Maßgeblich ist, was direkt vor dem ersten einzelnen / steht, von rechts gelesen.',
   ),
   merke(
     'n-wu-12',
@@ -954,10 +954,10 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wh-1',
     'wi-http',
     'Anfrage und Antwort',
-    'HTTP (Hypertext Transfer Protocol) arbeitet nach dem Client-Server-Prinzip: Der Browser schickt einen Request mit Methode, Pfad und Headern. Der Server antwortet mit einer Response aus Statuscode, Headern und Inhalt - etwa dem HTML einer Seite.',
+    'HTTP (Hypertext Transfer Protocol) arbeitet nach dem Client-Server-Prinzip: Der Browser schickt einen Request mit Methode, Pfad und Headern. Der Server antwortet mit einer Response aus Statuscode, Headern und Inhalt, etwa dem HTML einer Seite.',
     points: [
       'HTTP ist ein Protokoll der Anwendungsschicht und nutzt TCP',
-      'Jede Datei der Seite - HTML, CSS, Bild, Skript - wird einzeln angefragt',
+      'Jede Datei der Seite (HTML, CSS, Bild, Skript) wird einzeln angefragt',
     ],
   ),
   skizze(
@@ -1018,7 +1018,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wh-5',
     'wi-http',
     'GET oder POST?',
-    'Beide Methoden können Daten an den Server schicken - aber auf unterschiedlichem Weg.',
+    'Beide Methoden können Daten an den Server schicken, aber auf unterschiedlichem Weg.',
     [
       ['Merkmal', 'GET', 'POST'],
       ['Daten stehen', 'in der URL (Query)', 'im Body'],
@@ -1081,7 +1081,7 @@ final List<Nugget> nuggetsA04Daten = [
     schritte: [
       '200: Die Login-Seite wurde korrekt ausgeliefert',
       '401: Anmeldung fehlgeschlagen, etwa ein falsches Passwort',
-      '403: Sie ist nun bekannt, darf den Admin-Bereich aber nicht sehen - richtig so',
+      '403: Sie ist nun bekannt, darf den Admin-Bereich aber nicht sehen. Richtig so',
       '404: Das Logo fehlt auf dem Server oder der Pfad im HTML ist falsch',
       '500: Beim Anlegen der Bestellung ist das Serverprogramm abgestürzt',
     ],
@@ -1091,7 +1091,7 @@ final List<Nugget> nuggetsA04Daten = [
   konzept(
     'n-wh-9',
     'wi-http',
-    'Zustandslos - und Cookies',
+    'Zustandslosigkeit und Cookies',
     'HTTP ist zustandslos: Jede Anfrage steht für sich, der Server erinnert sich nicht an die vorige. Damit Warenkorb oder Login erhalten bleiben, setzt der Server ein Cookie mit einer Sitzungs-ID, das der Browser bei jeder weiteren Anfrage mitschickt.',
     points: [
       'Server setzt: Set-Cookie: sid=4f9a',
@@ -1119,7 +1119,7 @@ final List<Nugget> nuggetsA04Daten = [
   konzept(
     'n-wh-11',
     'wi-http',
-    'Was HTTPS verbirgt - und was nicht',
+    'Was HTTPS verbirgt und was nicht',
     'Mit HTTPS sind Pfad, Query, Header, Cookies und Inhalt verschlüsselt. Sichtbar bleiben für Netzbetreiber aber die IP-Adresse des Servers, meist der Hostname und die Menge der übertragenen Daten.',
     points: [
       'Verschlüsselt: /konto?id=42, Passwörter, Formulardaten, Cookies',
@@ -1136,7 +1136,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wh-13',
     'wi-http',
     'Schloss heißt nicht seriös',
-    'Das Schloss zeigt nur, dass die Verbindung verschlüsselt ist und das Zertifikat zum Hostnamen passt. Auch Phishing-Seiten haben gültige Zertifikate - verschlüsselt mit dem Betrüger. Ob die Seite vertrauenswürdig ist, sagt erst die Domain.',
+    'Das Schloss zeigt nur, dass die Verbindung verschlüsselt ist und das Zertifikat zum Hostnamen passt. Auch Phishing-Seiten haben gültige Zertifikate, verschlüsselt mit dem Betrüger. Ob die Seite vertrauenswürdig ist, sagt erst die Domain.',
   ),
   merke(
     'n-wh-14',
@@ -1225,7 +1225,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wa-6',
     'wi-aufruf',
     'Wenn kein Cache hilft',
-    'Kennt der Resolver den Namen nicht, fragt er sich von oben durch die DNS-Hierarchie - von rechts nach links durch den Namen.',
+    'Kennt der Resolver den Namen nicht, fragt er sich von oben durch die DNS-Hierarchie, von rechts nach links durch den Namen.',
     [
       'Resolver fragt einen Root-Server: Wer ist für .com zuständig?',
       'Root verweist auf die Nameserver der TLD .com',
@@ -1242,7 +1242,7 @@ final List<Nugget> nuggetsA04Daten = [
     [
       'Client -> Server: SYN (Verbindungswunsch)',
       'Server -> Client: SYN-ACK (Bestätigung und eigener Verbindungswunsch)',
-      'Client -> Server: ACK (Bestätigung) - die Verbindung steht',
+      'Client -> Server: ACK (Bestätigung). Die Verbindung steht',
     ],
     skizze: SequenzDiagramm(
       ['Client', 'Server'],
@@ -1296,7 +1296,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wa-14',
     'wi-aufruf',
     'So entsteht eine dynamische Seite',
-    'Bei einer dynamischen Website startet der Webserver nach dem HTTP-Request ein Programm. Erst dessen Ergebnis geht als Response an den Browser - der Browser sieht nur fertiges HTML, nie das Programm selbst.',
+    'Bei einer dynamischen Website startet der Webserver nach dem HTTP-Request ein Programm. Erst dessen Ergebnis geht als Response an den Browser. Der Browser sieht nur fertiges HTML, nie das Programm selbst.',
     [
       'Browser sendet den Request, z. B. GET /angebote',
       'Webserver übergibt die Anfrage an ein serverseitiges Programm',
@@ -1315,7 +1315,7 @@ final List<Nugget> nuggetsA04Daten = [
     points: [
       'Serverseitig: PHP, Python, Java, C#, Ruby, JavaScript (Node.js)',
       'Clientseitig im Browser: JavaScript, dazu HTML und CSS',
-      'HTML und CSS sind keine Programmiersprachen - sie beschreiben Struktur und Aussehen',
+      'HTML und CSS sind keine Programmiersprachen: sie beschreiben Struktur und Aussehen',
       'JavaScript kann beides: im Browser und mit Node.js auf dem Server',
     ],
   ),
@@ -1338,7 +1338,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wa-11',
     'wi-aufruf',
     'DNS liefert nur die Adresse',
-    'DNS übersetzt den Namen in eine IP-Adresse - die Seite selbst kommt danach per HTTP vom Webserver. Und TLS folgt auf die TCP-Verbindung, nicht umgekehrt: Ohne bestehende Verbindung kann nichts verschlüsselt ausgehandelt werden.',
+    'DNS übersetzt den Namen in eine IP-Adresse. Die Seite selbst kommt danach per HTTP vom Webserver. Und TLS folgt auf die TCP-Verbindung, nicht umgekehrt: Ohne bestehende Verbindung kann nichts verschlüsselt ausgehandelt werden.',
   ),
   merke(
     'n-wa-12',
@@ -1413,7 +1413,7 @@ final List<Nugget> nuggetsA04Daten = [
         '<img src="logo.png" alt="Logo">',
     points: [
       'a ist das Element (Link), href das Attribut, „Kontakt“ der Inhalt',
-      'img hat kein End-Tag - ein leeres Element',
+      'img hat kein End-Tag, es ist ein leeres Element',
       'Elemente werden sauber verschachtelt: was zuletzt geöffnet wurde, wird zuerst geschlossen',
     ],
   ),
@@ -1450,7 +1450,7 @@ final List<Nugget> nuggetsA04Daten = [
         '</form>',
     points: [
       'method="post": Daten im Body, nicht in der URL',
-      'label for="mail" gehört zum Feld mit id="mail" - Screenreader lesen die Beschriftung vor',
+      'label for="mail" gehört zum Feld mit id="mail". Screenreader lesen die Beschriftung vor',
       'type="email" und required: Der Browser prüft die Eingabe vorab',
     ],
   ),
@@ -1458,7 +1458,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wt-7',
     'wi-html',
     'Semantische Tags',
-    'Semantische Tags sagen, welche Rolle ein Bereich hat. Das hilft Screenreadern und Suchmaschinen - div und span tun das nicht.',
+    'Semantische Tags sagen, welche Rolle ein Bereich hat. Das hilft Screenreadern und Suchmaschinen, div und span tun das nicht.',
     [
       ['Tag', 'Bedeutung'],
       ['<header>', 'Kopfbereich'],
@@ -1542,7 +1542,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wt-12',
     'wi-html',
     'Klasse, ID und falsche Semantik',
-    'Eine ID darf pro Seite nur einmal vorkommen, eine Klasse beliebig oft. Und Gestaltung gehört ins CSS: Wer einen Text nur wegen der großen Schrift als h1 auszeichnet oder Überschriftenebenen überspringt, verfälscht die Struktur - Screenreader lesen die Seite dann falsch gegliedert vor.',
+    'Eine ID darf pro Seite nur einmal vorkommen, eine Klasse beliebig oft. Und Gestaltung gehört ins CSS: Wer einen Text nur wegen der großen Schrift als h1 auszeichnet oder Überschriftenebenen überspringt, verfälscht die Struktur. Screenreader lesen die Seite dann falsch gegliedert vor.',
   ),
   merke(
     'n-wt-13',
@@ -1563,7 +1563,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wf-1',
     'wi-barrierefrei',
     'Für wen Barrierefreiheit zählt',
-    'Barrierefreie Webangebote sind für alle nutzbar - auch für Menschen mit Seh-, Hör-, motorischen oder kognitiven Einschränkungen und für ältere Menschen. Davon profitieren auch alle, die in greller Sonne oder mit einer Hand am Handy arbeiten.',
+    'Barrierefreie Webangebote sind für alle nutzbar, auch für Menschen mit Seh-, Hör-, motorischen oder kognitiven Einschränkungen und für ältere Menschen. Davon profitieren auch alle, die in greller Sonne oder mit einer Hand am Handy arbeiten.',
   ),
   vergleich(
     'n-wf-2',
@@ -1611,11 +1611,11 @@ final List<Nugget> nuggetsA04Daten = [
       ['A', 'Grundanforderungen, z. B. Alt-Texte'],
       [
         'AA',
-        'Standard, z. B. Kontrast 4,5:1 - von BITV 2.0 und BFSG gefordert',
+        'Standard, z. B. Kontrast 4,5:1 (von BITV 2.0 und BFSG gefordert)',
       ],
       [
         'AAA',
-        'höchste Stufe, z. B. Kontrast 7:1 - nicht für ganze Websites verlangt',
+        'höchste Stufe, z. B. Kontrast 7:1 (nicht für ganze Websites verlangt)',
       ],
     ],
   ),
@@ -1634,9 +1634,9 @@ final List<Nugget> nuggetsA04Daten = [
         '  alt="Startseite Azubi-Shop"></a>',
     points: [
       'Inhaltliches Bild: beschreiben, was wichtig ist',
-      'Dekoratives Bild: alt="" - der Screenreader überspringt es',
+      'Dekoratives Bild: alt="". Der Screenreader überspringt es',
       'Bild als Link: den Zweck nennen, nicht das Aussehen',
-      'Vorrang hat semantisches HTML - ARIA-Attribute wie aria-label nur ergänzend',
+      'Vorrang hat semantisches HTML, ARIA-Attribute wie aria-label nur ergänzend',
     ],
   ),
   formel(
@@ -1656,8 +1656,8 @@ final List<Nugget> nuggetsA04Daten = [
       ['Bedienelemente, Grafiken', 'mind. 3:1'],
     ],
     points: [
-      'Grau #767676 auf Weiß erreicht 4,54:1 - gerade noch AA',
-      'Grau #777777 auf Weiß erreicht nur 4,48:1 - nicht bestanden',
+      'Grau #767676 auf Weiß erreicht 4,54:1 und damit gerade noch AA',
+      'Grau #777777 auf Weiß erreicht nur 4,48:1 und besteht damit nicht',
     ],
   ),
   ablauf(
@@ -1689,11 +1689,11 @@ final List<Nugget> nuggetsA04Daten = [
     schritte: [
       'Rote Umrandung: Farbe allein reicht nicht -> zusätzlich „Pflichtfeld“ oder * mit Erklärung',
       'Datumsauswahl: per Tastatur bedienbar machen oder Eingabe als Text erlauben',
-      'Fehlermeldung: Feld und Lösung nennen - „Bitte das Datum als TT.MM.JJJJ eingeben“',
+      'Fehlermeldung: Feld und Lösung nennen, etwa „Bitte das Datum als TT.MM.JJJJ eingeben“',
       'label for=... ergänzen, damit Hilfsmittel jedes Feld eindeutig benennen können',
     ],
     ergebnis:
-        'Je ein Mangel pro Prinzip - alle vier lassen sich mit wenig Aufwand beheben.',
+        'Je ein Mangel pro Prinzip. Alle vier lassen sich mit wenig Aufwand beheben.',
   ),
   vergleich(
     'n-wf-9',
@@ -1719,7 +1719,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wf-10',
     'wi-barrierefrei',
     'Farbe allein reicht nicht',
-    'Pflichtfelder nur rot markieren oder Fehler nur mit einer roten Umrandung zeigen, schließt Menschen mit Farbsehschwäche aus - die Information muss auch als Text oder Symbol erkennbar sein. Ebenso hilft ein Alt-Text wie „bild1.jpg“ niemandem.',
+    'Pflichtfelder nur rot markieren oder Fehler nur mit einer roten Umrandung zeigen, schließt Menschen mit Farbsehschwäche aus. Die Information muss auch als Text oder Symbol erkennbar sein. Ebenso hilft ein Alt-Text wie „bild1.jpg“ niemandem.',
   ),
   falle(
     'n-wf-11',
@@ -1817,7 +1817,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mz-5',
     'md-zahlensysteme',
     'Dezimal -> binär: Stellenwerte abziehen',
-    'Wandle 200 in eine Binärzahl um - diesmal ohne Division. Von links wird geprüft, ob der Stellenwert noch hineinpasst.',
+    'Wandle 200 in eine Binärzahl um, diesmal ohne Division. Von links wird geprüft, ob der Stellenwert noch hineinpasst.',
     schritte: [
       '128 passt in 200 -> Bit 1, Rest 200 - 128 = 72',
       '64 passt in 72 -> Bit 1, Rest 72 - 64 = 8',
@@ -1832,7 +1832,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mz-6',
     'md-zahlensysteme',
     'Die ersten 16 Zahlen',
-    'Diese Tabelle solltest du sicher können - jede Hex-Ziffer steht für genau vier Bit.',
+    'Diese Tabelle solltest du sicher können. Jede Hex-Ziffer steht für genau vier Bit.',
     [
       ['Dezimal', 'Binär', 'Hex'],
       ['0', '0000', '0'],
@@ -1959,7 +1959,7 @@ final List<Nugget> nuggetsA04Daten = [
       'Regeln: 0 + 0 = 0, 0 + 1 = 1, 1 + 1 = 0 mit Übertrag 1, 1 + 1 + 1 = 1 mit Übertrag 1',
       'Stellenweise von rechts addieren (Kasten): Ergebnis 1001 0001 = 128 + 16 + 1 = 145',
       'Für 90 - 55 wird -55 addiert: 55 = 0011 0111, umkehren 1100 1000, + 1 = 1100 1001',
-      '0101 1010 + 1100 1001 = 1 0010 0011 - der Übertrag ins 9. Bit fällt weg',
+      '0101 1010 + 1100 1001 = 1 0010 0011. Der Übertrag ins 9. Bit fällt weg',
       '0010 0011 = 32 + 2 + 1 = 35',
     ],
     ergebnis: '90 + 55 = 1001 0001 (145), 90 - 55 = 0010 0011 (35)',
@@ -2006,7 +2006,7 @@ final List<Nugget> nuggetsA04Daten = [
       [
         'Latin-1 (ISO 8859-1)',
         '8 Bit, 256 Zeichen',
-        'westeuropäisch, mit ä, ö, ü, ß - ohne €',
+        'westeuropäisch, mit ä, ö, ü, ß, aber ohne €',
       ],
       [
         'Unicode',
@@ -2038,14 +2038,14 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mc-4',
     'md-zeichen',
     'Durchgerechnet: „IHK“ in ASCII',
-    'Kodiere das Wort „IHK“ in ASCII - dezimal, hexadezimal und binär.',
+    'Kodiere das Wort „IHK“ in ASCII: dezimal, hexadezimal und binär.',
     schritte: [
       'Von A = 65 aus zählen: H = 72, I = 73, K = 75',
       'In hex: 73 = 4 × 16 + 9 = 49, 72 = 48, 75 = 4 × 16 + 11 = 4B',
       'In binär je Hex-Ziffer vier Bit: 4 = 0100, 9 = 1001, 8 = 1000, B = 1011',
       'Jedes Zeichen belegt ein Byte, das Wort also 3 Byte',
     ],
-    ergebnis: 'I = 73 = 49h, H = 72 = 48h, K = 75 = 4Bh - zusammen 3 Byte',
+    ergebnis: 'I = 73 = 49h, H = 72 = 48h, K = 75 = 4Bh, zusammen 3 Byte',
     skizze: BitDiagramm([
       BitZeile('I', '0100 1001'),
       BitZeile('H', '0100 1000'),
@@ -2131,7 +2131,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mc-10',
     'md-zeichen',
     'Die Kodierung angeben',
-    'Einer Bytefolge sieht man nicht an, wie sie kodiert ist. Deshalb wird die Kodierung mitgeliefert - in der Datei, im HTTP-Header oder in der Datenbank.',
+    'Einer Bytefolge sieht man nicht an, wie sie kodiert ist. Deshalb wird die Kodierung mitgeliefert: in der Datei, im HTTP-Header oder in der Datenbank.',
     code:
         '<meta charset="utf-8">\n'
         '\n'
@@ -2153,7 +2153,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mc-12',
     'md-zeichen',
     'Zeichen sind nicht gleich Byte',
-    'Ein Feld mit 10 Byte Platz fasst in UTF-8 zehn ASCII-Zeichen, aber nur fünf Umlaute. Ähnlich bei der SMS: Mit dem GSM-Zeichensatz passen 160 Zeichen hinein - ein einziges Emoji schaltet auf UCS-2 um, dann sind es nur noch 70.',
+    'Ein Feld mit 10 Byte Platz fasst in UTF-8 zehn ASCII-Zeichen, aber nur fünf Umlaute. Ähnlich bei der SMS: Mit dem GSM-Zeichensatz passen 160 Zeichen hinein. Ein einziges Emoji schaltet auf UCS-2 um, dann sind es nur noch 70.',
   ),
   merke(
     'n-mc-13',
@@ -2177,7 +2177,7 @@ final List<Nugget> nuggetsA04Daten = [
     'Ein Bit ist die kleinste Informationseinheit: 0 oder 1. Acht Bit ergeben ein Byte. Speicher und Dateigrößen werden in Byte angegeben, Datenraten in Bit pro Sekunde.',
     points: [
       '1 Byte = 8 Bit, 4 Bit = 1 Nibble',
-      'Abkürzung: b oder bit für Bit, B für Byte - 1 MB ist das Achtfache von 1 Mbit',
+      'Abkürzung: b oder bit für Bit, B für Byte. 1 MB ist das Achtfache von 1 Mbit',
       'n Bit können 2^n Zustände annehmen',
     ],
   ),
@@ -2185,7 +2185,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-md-2',
     'md-datenmengen',
     'Dezimale und binäre Präfixe',
-    'Hersteller von Festplatten und Netztechnik rechnen dezimal in Tausenderschritten. Betriebssysteme rechnen oft binär in 1.024er-Schritten - Windows schreibt dann trotzdem „GB“.',
+    'Hersteller von Festplatten und Netztechnik rechnen dezimal in Tausenderschritten. Betriebssysteme rechnen oft binär in 1.024er-Schritten. Windows schreibt dann trotzdem „GB“.',
     [
       ['Dezimal (SI)', 'Binär (IEC)'],
       ['1 kB = 1.000 Byte', '1 KiB = 1.024 Byte'],
@@ -2224,7 +2224,7 @@ final List<Nugget> nuggetsA04Daten = [
       'Windows rechnet binär, schreibt aber „TB“ und zeigt nur zwei Nachkommastellen: 1,81',
     ],
     ergebnis:
-        '2 TB ≈ 1,82 TiB - es fehlt kein Speicher, nur die Einheit ist eine andere.',
+        '2 TB ≈ 1,82 TiB. Es fehlt kein Speicher, nur die Einheit ist eine andere.',
   ),
   formel(
     'n-md-5',
@@ -2246,7 +2246,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-md-6',
     'md-datenmengen',
     'Durchgerechnet: ein Full-HD-Bild',
-    'Wie groß ist ein unkomprimiertes Bild mit 1920 × 1080 Pixeln und 24 Bit Farbtiefe - in MB und in MiB?',
+    'Wie groß ist ein unkomprimiertes Bild mit 1920 × 1080 Pixeln und 24 Bit Farbtiefe, in MB und in MiB?',
     schritte: [
       'Pixel: 1920 × 1080 = 2.073.600',
       'Bit: 2.073.600 × 24 = 49.766.400 Bit',
@@ -2293,7 +2293,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-md-9',
     'md-datenmengen',
     'Durchgerechnet: Video',
-    'Unkomprimiertes Video ist eine Folge von Einzelbildern. Wie viel Speicher braucht eine Sekunde HD-Video (1280 × 720, 24 Bit, 25 Bilder pro Sekunde) ohne Ton - und eine Minute?',
+    'Unkomprimiertes Video ist eine Folge von Einzelbildern. Wie viel Speicher braucht eine Sekunde HD-Video (1280 × 720, 24 Bit, 25 Bilder pro Sekunde) ohne Ton, und eine Minute?',
     code:
         'Bit = Breite × Höhe × Farbtiefe\n'
         '      × Bilder/s × Sekunden',
@@ -2350,7 +2350,7 @@ final List<Nugget> nuggetsA04Daten = [
     ],
     ergebnis: '13 Mbit/s je Kamera',
     merksatz:
-        '„Auf 1 %“ heißt Faktor 0,01 - „um 1 %“ wäre Faktor 0,99. Datenraten rechnet man in Bit und dezimal.',
+        '„Auf 1 %“ heißt Faktor 0,01. „um 1 %“ wäre Faktor 0,99. Datenraten rechnet man in Bit und dezimal.',
   ),
   beispiel(
     'n-md-15',
@@ -2367,13 +2367,13 @@ final List<Nugget> nuggetsA04Daten = [
     ],
     ergebnis: '20 TiB',
     merksatz:
-        'Vier Stolperstellen: Bit in Byte (/ 8), Zeit in Sekunden, Mbit dezimal, TiB binär - und am Ende aufrunden.',
+        'Vier Stolperstellen: Bit in Byte (/ 8), Zeit in Sekunden, Mbit dezimal, TiB binär, und am Ende aufrunden.',
   ),
   falle(
     'n-md-12',
     'md-datenmengen',
     'Bit, Byte, MB und MiB',
-    'Die häufigsten Fehler: Farbtiefe in Bit nicht durch 8 geteilt, Stereo vergessen (× 2), Minuten nicht in Sekunden umgerechnet oder dezimal und binär gemischt. 6.220.800 Byte sind 6,22 MB, aber nur 5,93 MiB - lies genau, welche Einheit die Aufgabe verlangt.',
+    'Die häufigsten Fehler: Farbtiefe in Bit nicht durch 8 geteilt, Stereo vergessen (× 2), Minuten nicht in Sekunden umgerechnet oder dezimal und binär gemischt. 6.220.800 Byte sind 6,22 MB, aber nur 5,93 MiB. Lies genau, welche Einheit die Aufgabe verlangt.',
   ),
   merke(
     'n-md-13',
@@ -2395,9 +2395,9 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mu-1',
     'md-uebertragung',
     'Datenrate in Bit pro Sekunde',
-    'Die Datenrate (umgangssprachlich Bandbreite) gibt an, wie viele Bit pro Sekunde übertragen werden. Anbieter rechnen dezimal: 1 Mbit/s sind 1.000.000 Bit/s. Dateigrößen stehen dagegen meist in Byte - für die Dauer müssen beide in dieselbe Einheit.',
+    'Die Datenrate (umgangssprachlich Bandbreite) gibt an, wie viele Bit pro Sekunde übertragen werden. Anbieter rechnen dezimal: 1 Mbit/s sind 1.000.000 Bit/s. Dateigrößen stehen dagegen meist in Byte. Für die Dauer müssen beide in dieselbe Einheit.',
     points: [
-      'Schreibweisen: Mbit/s, Mb/s oder Mbps - alle meinen Megabit pro Sekunde',
+      'Schreibweisen: Mbit/s, Mb/s oder Mbps, alle meinen Megabit pro Sekunde',
       'MB/s (Megabyte pro Sekunde) ist das Achtfache',
     ],
   ),
@@ -2413,7 +2413,7 @@ final List<Nugget> nuggetsA04Daten = [
         'R: Datenrate in Bit/s\n'
         '\n'
         'D = R × t      R = D / t',
-    merksatz: 'Byte × 8 = Bit - erst dann durch die Datenrate teilen.',
+    merksatz: 'Byte × 8 = Bit, erst dann durch die Datenrate teilen.',
   ),
   beispiel(
     'n-mu-3',
@@ -2452,7 +2452,7 @@ final List<Nugget> nuggetsA04Daten = [
       'Nach R umstellen: R = D / t = 240.000 Mbit / 3.600 s ≈ 66,7 Mbit/s',
     ],
     ergebnis:
-        'mindestens 66,7 Mbit/s Upload - ein Anschluss mit 40 Mbit/s Upload reicht nicht.',
+        'mindestens 66,7 Mbit/s Upload. Ein Anschluss mit 40 Mbit/s Upload reicht nicht.',
   ),
   beispiel(
     'n-mu-6',
@@ -2524,19 +2524,19 @@ final List<Nugget> nuggetsA04Daten = [
       'Höchstmöglicher Wert: 100 Mbit/s / 8 = 12,5 MB/s',
     ],
     ergebnis:
-        'Er erhält 88 % der Tarifrate - der Rest ist üblicher Overhead. Die Beschwerde ist unbegründet.',
+        'Er erhält 88 % der Tarifrate. Der Rest ist üblicher Overhead. Die Beschwerde ist unbegründet.',
   ),
   falle(
     'n-mu-11',
     'md-uebertragung',
     'Faktor 8 vergessen',
-    'Der Klassiker: 500 MB bei 50 Mbit/s dauern nicht 10 s, sondern 80 s - Megabyte und Megabit unterscheiden sich um den Faktor 8. Bei einem Backup in die Cloud zählt außerdem die Upload-Rate, nicht die Download-Rate.',
+    'Der Klassiker: 500 MB bei 50 Mbit/s dauern nicht 10 s, sondern 80 s, denn Megabyte und Megabit unterscheiden sich um den Faktor 8. Bei einem Backup in die Cloud zählt außerdem die Upload-Rate, nicht die Download-Rate.',
   ),
   falle(
     'n-mu-12',
     'md-uebertragung',
     'Einheiten gemischt',
-    'Ist die Datei in GiB, die Leitung aber in Mbit/s angegeben, muss erst alles in Bit umgerechnet werden - einmal mit 1.024, einmal mit 1.000. Und das Ergebnis in Sekunden muss oft noch in Minuten oder Stunden: 1 h = 3.600 s.',
+    'Ist die Datei in GiB, die Leitung aber in Mbit/s angegeben, muss erst alles in Bit umgerechnet werden, einmal mit 1.024, einmal mit 1.000. Und das Ergebnis in Sekunden muss oft noch in Minuten oder Stunden: 1 h = 3.600 s.',
   ),
   merke(
     'n-mu-13',
@@ -2588,7 +2588,7 @@ final List<Nugget> nuggetsA04Daten = [
       'Länge vorher: 16 Zeichen, nachher: 6 Zeichen',
       'Faktor: 16 / 6 ≈ 2,67, Einsparung: (1 - 6/16) × 100 % = 62,5 %',
     ],
-    ergebnis: '5A3B8C - 62,5 % kleiner, verlustfrei umkehrbar',
+    ergebnis: '5A3B8C: 62,5 % kleiner, verlustfrei umkehrbar',
     merksatz:
         'Bei ständig wechselnden Zeichen wird es länger: ABCD -> 1A1B1C1D. RLE lohnt sich nur bei langen Wiederholungen, etwa einfarbigen Flächen.',
   ),
@@ -2616,7 +2616,7 @@ final List<Nugget> nuggetsA04Daten = [
       'Huffman: 5 × 1 + 2 × 2 + 1 × 2 = 11 Bit',
       'Einsparung: (1 - 11/16) × 100 % = 31,25 %',
     ],
-    ergebnis: '11 statt 16 Bit - 31,25 % gespart, verlustfrei',
+    ergebnis: '11 statt 16 Bit: 31,25 % gespart, verlustfrei',
     skizze: BaumDiagramm(
       BaumKnoten('Wurzel', [
         BaumKnoten('A', [], '5×, Code 0'),
@@ -2642,7 +2642,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mx-7',
     'md-kompression',
     'Kompression bewerten',
-    'Das Ergebnis gibt man als Faktor oder als Einsparung in Prozent an. Der Begriff „Kompressionsrate“ wird uneinheitlich verwendet - rechne immer genau das, was die Aufgabe fragt.',
+    'Das Ergebnis gibt man als Faktor oder als Einsparung in Prozent an. Der Begriff „Kompressionsrate“ wird uneinheitlich verwendet. Rechne immer genau das, was die Aufgabe fragt.',
     'Faktor = Original / komprimiert\n'
         '\n'
         'Einsparung =\n'
@@ -2710,13 +2710,13 @@ final List<Nugget> nuggetsA04Daten = [
     'n-mx-12',
     'md-kompression',
     'Das falsche Format',
-    'JPEG erzeugt an harten Kanten und Schrift sichtbare Artefakte und kennt keine Transparenz - für Logos und Screenshots sind PNG oder SVG besser. Umgekehrt werden Fotos als PNG unnötig groß. Und ein JPEG, das man als PNG speichert, bekommt verlorene Details nicht zurück.',
+    'JPEG erzeugt an harten Kanten und Schrift sichtbare Artefakte und kennt keine Transparenz. Für Logos und Screenshots sind PNG oder SVG besser. Umgekehrt werden Fotos als PNG unnötig groß. Und ein JPEG, das man als PNG speichert, bekommt verlorene Details nicht zurück.',
   ),
   falle(
     'n-mx-13',
     'md-kompression',
     'Doppelt komprimieren bringt nichts',
-    'Ein ZIP-Archiv voller JPEGs oder MP3s ist kaum kleiner als die Dateien selbst - sie sind schon komprimiert. Wird ein JPEG mehrfach bearbeitet und neu gespeichert, sinkt die Qualität jedes Mal weiter (Generationsverlust).',
+    'Ein ZIP-Archiv voller JPEGs oder MP3s ist kaum kleiner als die Dateien selbst, denn sie sind schon komprimiert. Wird ein JPEG mehrfach bearbeitet und neu gespeichert, sinkt die Qualität jedes Mal weiter (Generationsverlust).',
   ),
   merke(
     'n-mx-14',
@@ -2724,8 +2724,8 @@ final List<Nugget> nuggetsA04Daten = [
     'Das Wichtigste zur Kompression',
     'Die Wahl des Verfahrens hängt davon ab, ob Details verloren gehen dürfen.',
     points: [
-      'Verlustfrei: ZIP, PNG, FLAC, GIF - für Programme, Texte, Grafiken',
-      'Verlustbehaftet: JPEG, MP3, AAC, H.264 - für Fotos, Musik, Video',
+      'Verlustfrei: ZIP, PNG, FLAC, GIF (für Programme, Texte, Grafiken)',
+      'Verlustbehaftet: JPEG, MP3, AAC, H.264 (für Fotos, Musik, Video)',
       'Einsparung = (1 - neu/alt) × 100 %',
     ],
     satz:
@@ -2737,10 +2737,10 @@ final List<Nugget> nuggetsA04Daten = [
     'n-ig-1',
     'ki-grundlagen',
     'Was KI heißt',
-    'Künstliche Intelligenz (KI) bezeichnet Systeme, die Aufgaben lösen, für die man sonst menschliche Intelligenz braucht - etwa Sprache verstehen oder Bilder erkennen. Heutige Systeme gelten als schwache KI: stark in einem Aufgabenfeld, ohne menschenähnliches Verständnis.',
+    'Künstliche Intelligenz (KI) bezeichnet Systeme, die Aufgaben lösen, für die man sonst menschliche Intelligenz braucht, etwa Sprache verstehen oder Bilder erkennen. Heutige Systeme gelten als schwache KI: stark in einem Aufgabenfeld, ohne menschenähnliches Verständnis.',
     points: [
-      'Schwache KI: spezialisiert - Übersetzer, Spamfilter, Chatbot',
-      'Starke KI: allgemeine Intelligenz wie ein Mensch - gibt es bisher nicht',
+      'Schwache KI: spezialisiert, etwa Übersetzer, Spamfilter, Chatbot',
+      'Starke KI: allgemeine Intelligenz wie ein Mensch (gibt es bisher nicht)',
     ],
   ),
   skizze(
@@ -2813,7 +2813,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-ig-6',
     'ki-grundlagen',
     'So entsteht ein Modell',
-    'Ein Modell wird nicht einmal gebaut und ist fertig. Der Ablauf wiederholt sich, bis die Qualität reicht - und auch im Betrieb wird es weiter beobachtet.',
+    'Ein Modell wird nicht einmal gebaut und ist fertig. Der Ablauf wiederholt sich, bis die Qualität reicht, und auch im Betrieb wird es weiter beobachtet.',
     FlussDiagramm([
       FlussKnoten('Start', form: FlussForm.start),
       FlussKnoten('Daten sammeln'),
@@ -2839,7 +2839,7 @@ final List<Nugget> nuggetsA04Daten = [
     'Die Daten werden vor dem Training aufgeteilt, oft etwa 80 zu 20. Mit den Trainingsdaten lernt das Modell, mit den Testdaten wird geprüft, wie gut es mit Beispielen umgeht, die es noch nie gesehen hat.',
     points: [
       'Beispiel: 10.000 markierte Bilder -> 8.000 zum Training, 2.000 zum Test',
-      'Overfitting: Das Modell lernt die Trainingsdaten auswendig - dort sehr gut, bei neuen Daten schlecht',
+      'Overfitting: Das Modell lernt die Trainingsdaten auswendig. Dort ist es sehr gut, bei neuen Daten schlecht',
       'Underfitting: Das Modell ist zu einfach und erkennt nicht einmal die Trainingsdaten gut',
       'Qualität der Daten entscheidet: Fehler und Lücken in den Daten lernt das Modell mit',
     ],
@@ -2860,7 +2860,7 @@ final List<Nugget> nuggetsA04Daten = [
       'Fehler: 4 Spam-Mails rutschen durch, 8 echte Mails landen im Spam-Ordner (falsch positiv)',
     ],
     ergebnis:
-        '94 % Genauigkeit - trotzdem 8 verlorene echte Mails, die im Betrieb stören können.',
+        '94 % Genauigkeit und trotzdem 8 verlorene echte Mails, die im Betrieb stören können.',
   ),
   konzept(
     'n-ig-9',
@@ -2902,7 +2902,7 @@ final List<Nugget> nuggetsA04Daten = [
     'Wie ein Sprachmodell antwortet',
     'Ein LLM erzeugt seine Antwort Stück für Stück. Beispiel: Der Prompt lautet „Die Hauptstadt von Frankreich ist“.',
     [
-      'Der Text wird in Tokens zerlegt - Wörter, Wortteile oder Satzzeichen',
+      'Der Text wird in Tokens zerlegt: Wörter, Wortteile oder Satzzeichen',
       'Das Modell berechnet für jedes mögliche nächste Token eine Wahrscheinlichkeit',
       'Ein wahrscheinliches Token wird gewählt, hier „Paris“',
       'Das Token wird angehängt, und der Vorgang wiederholt sich bis zum Ende der Antwort',
@@ -2918,7 +2918,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-ig-13',
     'ki-grundlagen',
     'Mit den Trainingsdaten getestet',
-    'Wird ein Modell mit denselben Daten geprüft, mit denen es trainiert wurde, sieht die Genauigkeit viel zu gut aus - Overfitting fällt so nicht auf. Testdaten müssen für das Modell neu sein.',
+    'Wird ein Modell mit denselben Daten geprüft, mit denen es trainiert wurde, sieht die Genauigkeit viel zu gut aus. Overfitting fällt so nicht auf. Testdaten müssen für das Modell neu sein.',
   ),
   merke(
     'n-ig-14',
@@ -2960,7 +2960,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-ie-2',
     'ki-einsatz',
     'Einsatzfelder in Unternehmen',
-    'Auch außerhalb der IT-Abteilung ist KI verbreitet - oft unauffällig in Geräten und Programmen.',
+    'Auch außerhalb der IT-Abteilung ist KI verbreitet, oft unauffällig in Geräten und Programmen.',
     [
       ['Einsatz', 'Beispiel'],
       ['Bilderkennung', 'Kamera prüft Bauteile auf Kratzer'],
@@ -3033,10 +3033,10 @@ final List<Nugget> nuggetsA04Daten = [
     'Gute Ergebnisse entstehen in Schleifen. Beispiel: Ein Azubi lässt sich eine Funktion schreiben, die Postleitzahlen prüft.',
     [
       'Prompt mit Rolle, Kontext, Aufgabe und Format formulieren',
-      'Antwort lesen und verstehen - nicht einfach übernehmen',
+      'Antwort lesen und verstehen, nicht einfach übernehmen',
       'Fachlich prüfen: Tests ausführen, Grenzfälle wie „01067“ mit führender Null testen',
       'Nachschärfen: Fehler oder fehlende Punkte im nächsten Prompt benennen',
-      'Erst das geprüfte Ergebnis einsetzen - die Verantwortung bleibt beim Menschen',
+      'Erst das geprüfte Ergebnis einsetzen. Die Verantwortung bleibt beim Menschen',
     ],
   ),
   vergleich(
@@ -3046,9 +3046,9 @@ final List<Nugget> nuggetsA04Daten = [
     'KI lohnt sich bei unscharfen Aufgaben mit Sprache, Bildern und Mustern. Für feste Regeln ist ein normales Programm zuverlässiger und günstiger.',
     [
       ['Aufgabe', 'KI geeignet?'],
-      ['Ticket zusammenfassen', 'ja - Sprache, kleine Fehler verkraftbar'],
-      ['Bilder nach Mängeln sortieren', 'ja - Muster erkennen'],
-      ['Rechnungssumme mit MwSt.', 'nein - feste Rechenregel'],
+      ['Ticket zusammenfassen', 'ja: Sprache, kleine Fehler verkraftbar'],
+      ['Bilder nach Mängeln sortieren', 'ja: Muster erkennen'],
+      ['Rechnungssumme mit MwSt.', 'nein: feste Rechenregel'],
       ['Kündigung verbindlich bestätigen', 'nur mit menschlicher Prüfung'],
     ],
   ),
@@ -3082,19 +3082,19 @@ final List<Nugget> nuggetsA04Daten = [
     'n-ie-10',
     'ki-einsatz',
     'Geprüft wird immer',
-    'KI-Code kann veraltete Bibliotheken, Sicherheitslücken oder frei erfundene Funktionen enthalten, eine Kundenantwort falsche Zusagen. Dass Code kompiliert, heißt nur, dass er syntaktisch stimmt. Wer das Ergebnis ungeprüft weitergibt, trägt die Verantwortung - nicht das Werkzeug.',
+    'KI-Code kann veraltete Bibliotheken, Sicherheitslücken oder frei erfundene Funktionen enthalten, eine Kundenantwort falsche Zusagen. Dass Code kompiliert, heißt nur, dass er syntaktisch stimmt. Wer das Ergebnis ungeprüft weitergibt, trägt die Verantwortung, nicht das Werkzeug.',
   ),
   falle(
     'n-ie-11',
     'ki-einsatz',
     'Geheimnisse gehören nicht in den Prompt',
-    'Passwörter, API-Schlüssel, Kundendaten oder interner Quellcode haben in öffentlichen KI-Diensten nichts zu suchen - Eingaben können gespeichert und ausgewertet werden. Vor dem Einfügen anonymisieren oder ein freigegebenes Unternehmenswerkzeug nutzen.',
+    'Passwörter, API-Schlüssel, Kundendaten oder interner Quellcode haben in öffentlichen KI-Diensten nichts zu suchen, denn Eingaben können gespeichert und ausgewertet werden. Vor dem Einfügen anonymisieren oder ein freigegebenes Unternehmenswerkzeug nutzen.',
   ),
   merke(
     'n-ie-12',
     'ki-einsatz',
     'Das Wichtigste zum KI-Einsatz',
-    'KI ist ein Werkzeug für Text, Code und Muster - kein Ersatz für Fachwissen.',
+    'KI ist ein Werkzeug für Text, Code und Muster und kein Ersatz für Fachwissen.',
     points: [
       'Gut für: zusammenfassen, klassifizieren, entwerfen, übersetzen',
       'Nicht für: feste Rechenregeln, ungeprüfte verbindliche Aussagen',
@@ -3109,7 +3109,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-ir-1',
     'ki-grenzen',
     'Halluzinationen',
-    'Eine Halluzination ist eine überzeugend formulierte, aber falsche oder erfundene Ausgabe - etwa ein Gesetzesparagraf, den es nicht gibt, oder eine Quelle mit erfundenem Titel. Sie entsteht, weil das Modell wahrscheinliche statt geprüfte Texte erzeugt.',
+    'Eine Halluzination ist eine überzeugend formulierte, aber falsche oder erfundene Ausgabe, etwa ein Gesetzesparagraf, den es nicht gibt, oder eine Quelle mit erfundenem Titel. Sie entsteht, weil das Modell wahrscheinliche statt geprüfte Texte erzeugt.',
     points: [
       'Besonders gefährdet: Zahlen, Zitate, Quellen, Namen, Rechtsfragen',
       'Gegenmittel: Quellen verlangen und prüfen, Fakten gegenchecken',
@@ -3136,7 +3136,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-ir-3',
     'ki-grenzen',
     'Wie Bias entsteht',
-    'Ein Modell übernimmt die Muster seiner Trainingsdaten - auch die unfairen. Sind Gruppen unterrepräsentiert oder spiegeln die Daten frühere Benachteiligung, trifft das Modell verzerrte Entscheidungen.',
+    'Ein Modell übernimmt die Muster seiner Trainingsdaten, auch die unfairen. Sind Gruppen unterrepräsentiert oder spiegeln die Daten frühere Benachteiligung, trifft das Modell verzerrte Entscheidungen.',
     points: [
       'Ursachen: einseitige Datenauswahl, fehlerhafte Labels, historische Ungleichheit',
       'Gegenmaßnahmen: ausgewogene Daten, Ergebnisse je Gruppe testen, Menschen entscheiden lassen',
@@ -3146,7 +3146,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-ir-4',
     'ki-grenzen',
     'Die Blackbox',
-    'Bei tiefen neuronalen Netzen lässt sich oft nicht nachvollziehen, warum sie so entschieden haben. Bei Entscheidungen über Menschen - Kredit, Bewerbung - ist das ein Problem: Betroffene haben ein Recht darauf, die Entscheidung zu verstehen und anzufechten.',
+    'Bei tiefen neuronalen Netzen lässt sich oft nicht nachvollziehen, warum sie so entschieden haben. Bei Entscheidungen über Menschen (Kredit, Bewerbung) ist das ein Problem: Betroffene haben ein Recht darauf, die Entscheidung zu verstehen und anzufechten.',
     points: [
       'Erklärbare KI (Explainable AI) versucht, Entscheidungen nachvollziehbar zu machen',
       'DSGVO Art. 22: Niemand muss sich einer ausschließlich automatisierten Entscheidung mit erheblicher Wirkung unterwerfen',
@@ -3192,7 +3192,7 @@ final List<Nugget> nuggetsA04Daten = [
     'Beispiel: Ein Mitarbeiter will eine Kundenbeschwerde mit einem Chatbot beantworten lassen.',
     [
       'Prüfen, ob das Werkzeug im Unternehmen freigegeben ist',
-      'Keine personenbezogenen oder vertraulichen Daten in öffentliche Tools eingeben - Namen, Kundennummern, Passwörter vorher entfernen',
+      'Keine personenbezogenen oder vertraulichen Daten in öffentliche Tools eingeben. Namen, Kundennummern, Passwörter vorher entfernen',
       'Ausgabe auf Fakten prüfen, Quellen gegenchecken',
       'KI-Einsatz kennzeichnen, wo andere davon wissen müssen',
     ],
@@ -3264,13 +3264,13 @@ final List<Nugget> nuggetsA04Daten = [
       'Emotionserkennung am Arbeitsplatz: grundsätzlich verboten (unannehmbares Risiko), Ausnahmen nur aus medizinischen oder Sicherheitsgründen',
     ],
     ergebnis:
-        'Chatbot: begrenzt, Bewerbungs-KI: hoch, Stimmungskamera: verboten - dieses Projekt wird gestrichen.',
+        'Chatbot: begrenzt, Bewerbungs-KI: hoch, Stimmungskamera: verboten. Dieses Projekt wird gestrichen.',
   ),
   falle(
     'n-ir-12',
     'ki-grenzen',
     'KI-Ergebnis heißt nicht rechtefrei',
-    'Reine KI-Erzeugnisse ohne menschlichen schöpferischen Beitrag sind in Deutschland in der Regel nicht urheberrechtlich geschützt - trotzdem kann eine Ausgabe ein fremdes Werk verletzen. Und die DSGVO gilt auch hier: Wer personenbezogene Daten eingibt, verarbeitet sie.',
+    'Reine KI-Erzeugnisse ohne menschlichen schöpferischen Beitrag sind in Deutschland in der Regel nicht urheberrechtlich geschützt. Trotzdem kann eine Ausgabe ein fremdes Werk verletzen. Und die DSGVO gilt auch hier: Wer personenbezogene Daten eingibt, verarbeitet sie.',
   ),
   falle(
     'n-ir-13',
@@ -3282,14 +3282,14 @@ final List<Nugget> nuggetsA04Daten = [
     'n-ir-14',
     'ki-grenzen',
     'Das Wichtigste zu Grenzen und Recht',
-    'KI-Ergebnisse brauchen menschliche Kontrolle - technisch und rechtlich.',
+    'KI-Ergebnisse brauchen menschliche Kontrolle, technisch und rechtlich.',
     points: [
-      'Halluzination: plausibel, aber falsch - immer prüfen',
+      'Halluzination: plausibel, aber falsch. Immer prüfen',
       'Bias: Verzerrung aus den Trainingsdaten',
       'DSGVO: keine personenbezogenen Daten in nicht freigegebene Tools',
       'AI Act: unannehmbar, hoch, begrenzt, minimal',
     ],
     satz:
-        'AI Act: Je höher das Risiko, desto strenger die Regeln - von verboten bis frei.',
+        'AI Act: Je höher das Risiko, desto strenger die Regeln, von verboten bis frei.',
   ),
 ];

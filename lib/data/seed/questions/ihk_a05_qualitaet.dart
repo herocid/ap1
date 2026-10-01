@@ -46,7 +46,7 @@ final List<Question> ihkA05 = [
     explanation:
         'Zwei Phasen später: 40 € × 10² = 4.000 € je Fehler, für drei Fehler 12.000 €.\n'
         'Drei Phasen später: 40 € × 10³ = 40.000 €.\n'
-        'Summe: 52.000 € - gegenüber 4 × 40 € = 160 € bei früher Entdeckung. Deshalb lohnen sich Reviews der Anforderungen.',
+        'Summe: 52.000 €, gegenüber 4 × 40 € = 160 € bei früher Entdeckung. Deshalb lohnen sich Reviews der Anforderungen.',
   ),
   freitext(
     'i5-qg-3',
@@ -119,7 +119,7 @@ final List<Question> ihkA05 = [
       ],
     ],
     explanation:
-        'Antwortzeit, Bedienbarkeit und Erreichbarkeit beschreiben, WIE GUT das Portal arbeitet - nicht funktional. Der PDF-Download ist eine Funktion und lässt sich eindeutig testen (vorhanden oder nicht). „Benutzerfreundlich“ und „möglichst immer“ haben keinen Zielwert; besser: „Verfügbarkeit mindestens 99,5 % im Monat“.',
+        'Antwortzeit, Bedienbarkeit und Erreichbarkeit beschreiben, WIE GUT das Portal arbeitet, also nicht funktional. Der PDF-Download ist eine Funktion und lässt sich eindeutig testen (vorhanden oder nicht). „Benutzerfreundlich“ und „möglichst immer“ haben keinen Zielwert; besser: „Verfügbarkeit mindestens 99,5 % im Monat“.',
   ),
   lueckentext(
     'i5-qe-2',
@@ -144,7 +144,7 @@ final List<Question> ihkA05 = [
     explanation:
         'Monat: 30 × 24 h = 720 h. Erlaubt: 0,5 % von 720 h = 3,6 h = 216 min.\n'
         'Juni: (720 - 4) / 720 = 716 / 720 = 99,44 %.\n'
-        '4 h Ausfall sind mehr als 3,6 h - die Verfügbarkeit von 99,5 % wurde verfehlt.',
+        '4 h Ausfall sind mehr als 3,6 h. Die Verfügbarkeit von 99,5 % wurde verfehlt.',
   ),
   freitext(
     'i5-qe-3',
@@ -175,7 +175,7 @@ final List<Question> ihkA05 = [
     loesung:
         '„Bei 50 gleichzeitig angemeldeten Scannern ist in 95 % der Fälle die Buchung einer Palette nach höchstens 1 Sekunde bestätigt; geprüft wird mit einem Lasttest.“ Ergänzt wurden Messgröße (Antwortzeit), Zielwert (1 s), Bedingung (50 Scanner) und Abnahmekriterium (95 %, Lasttest).',
     explanation:
-        'Je Bestandteil 1 Punkt. Ohne Zielwert und Bedingung kann niemand entscheiden, ob „schnell“ erreicht ist - die Abnahme würde zum Streit.',
+        'Je Bestandteil 1 Punkt. Ohne Zielwert und Bedingung kann niemand entscheiden, ob „schnell“ erreicht ist. Die Abnahme würde zum Streit.',
   ),
   paare(
     'i5-qe-4',
@@ -201,7 +201,7 @@ final List<Question> ihkA05 = [
       ),
     ],
     explanation:
-        'Jede unscharfe Formulierung bekommt eine Messgröße, zu der dann noch Zielwert und Bedingung kommen - etwa „Ladezeit höchstens 2 s bei 500 Nutzern“.',
+        'Jede unscharfe Formulierung bekommt eine Messgröße, zu der dann noch Zielwert und Bedingung kommen, etwa „Ladezeit höchstens 2 s bei 500 Nutzern“.',
   ),
 
   // ======================================================= PDCA und KVP
@@ -230,7 +230,7 @@ final List<Question> ihkA05 = [
       ],
     ],
     explanation:
-        'Vorher: 120 / 400 = 30 %. Pilot: 198 / 360 = 55 %. Veränderung: 55 - 30 = 25 Prozentpunkte. 55 % liegt über dem Ziel von 50 % - in Act wird die Wissensdatenbank für die ganze Hotline verbindlich eingeführt.',
+        'Vorher: 120 / 400 = 30 %. Pilot: 198 / 360 = 55 %. Veränderung: 55 - 30 = 25 Prozentpunkte. 55 % liegt über dem Ziel von 50 %. In Act wird die Wissensdatenbank für die ganze Hotline verbindlich eingeführt.',
   ),
   lueckentext(
     'i5-qp-2',
@@ -260,7 +260,7 @@ final List<Question> ihkA05 = [
     scenario:
         'Ein Service-Desk hat eine neue Ticketvorlage vier Wochen lang erprobt. In der Phase Check liegt die Auswertung vor.',
     prompt:
-        'Beschreibe, was in der Phase Act geschieht - für den Fall, dass das Ziel erreicht wurde, und für den Fall, dass es verfehlt wurde. (4 P.)',
+        'Beschreibe, was in der Phase Act geschieht, für den Fall, dass das Ziel erreicht wurde, und für den Fall, dass es verfehlt wurde. (4 P.)',
     punkte: 4,
     kriterien: [
       krit(
@@ -290,7 +290,7 @@ final List<Question> ihkA05 = [
     loesung:
         'Wurde das Ziel erreicht, wird die neue Ticketvorlage zum verbindlichen Standard für alle Teams und dokumentiert. Wurde es verfehlt, werden die Ursachen untersucht, die Maßnahme angepasst und in einem neuen Zyklus erneut erprobt.',
     explanation:
-        'Je Fall 2 Punkte. Act hat immer zwei Ausgänge - in beiden Fällen dreht sich der Zyklus weiter, genau das macht PDCA zum Werkzeug der kontinuierlichen Verbesserung.',
+        'Je Fall 2 Punkte. Act hat immer zwei Ausgänge. In beiden Fällen dreht sich der Zyklus weiter, genau das macht PDCA zum Werkzeug der kontinuierlichen Verbesserung.',
   ),
 
   // ============================================================ Teststufen
@@ -357,7 +357,7 @@ final List<Question> ihkA05 = [
     loesung:
         'Den Systemtest führt der Auftragnehmer durch und prüft das Gesamtsystem gegen das Pflichtenheft. Den Abnahmetest führt der Auftraggeber durch: Er prüft gegen die vereinbarten Abnahmekriterien und entscheidet über die Annahme.',
     explanation:
-        'Je Unterschied 2 Punkte, höchstens 4. Merkhilfe: Im Systemtest weist der Auftragnehmer nach, dass er richtig gebaut hat - im Abnahmetest entscheidet der Kunde.',
+        'Je Unterschied 2 Punkte, höchstens 4. Merkhilfe: Im Systemtest weist der Auftragnehmer nach, dass er richtig gebaut hat. Im Abnahmetest entscheidet der Kunde.',
   ),
   markieren(
     'i5-ss-3',
@@ -370,7 +370,7 @@ final List<Question> ihkA05 = [
     zeilen: [
       ja(
         'Lasttest mit 500 gleichzeitigen Nutzern',
-        'Prüft das Zeitverhalten unter Last - eine Qualitätseigenschaft.',
+        'Prüft das Zeitverhalten unter Last, also eine Qualitätseigenschaft.',
       ),
       nein(
         'Test der Rabattberechnung im Warenkorb',
@@ -455,7 +455,7 @@ final List<Question> ihkA05 = [
       zahl(100, rationale: 'T4 führt jede Anweisung aus.'),
     ],
     explanation:
-        'T1 nimmt bei beiden Abfragen den Nein-Zweig: 2 von 4 Zweigen = 50 %. T4 nimmt beide Ja-Zweige - zusammen 100 % Zweigüberdeckung. T4 allein führt jede Anweisung aus (100 % Anweisungsüberdeckung), deckt aber nur die Hälfte der Zweige ab.',
+        'T1 nimmt bei beiden Abfragen den Nein-Zweig: 2 von 4 Zweigen = 50 %. T4 nimmt beide Ja-Zweige, zusammen 100 % Zweigüberdeckung. T4 allein führt jede Anweisung aus (100 % Anweisungsüberdeckung), deckt aber nur die Hälfte der Zweige ab.',
   ),
   paare(
     'i5-sv-3',
@@ -485,7 +485,7 @@ final List<Question> ihkA05 = [
     punkte: 4,
     kriterien: [
       krit(
-        'Black-Box: prüft aus Sicht der Anforderungen, unabhängig von der Umsetzung - findet auch fehlende oder falsch verstandene Funktionen.',
+        'Black-Box: prüft aus Sicht der Anforderungen, unabhängig von der Umsetzung und findet auch fehlende oder falsch verstandene Funktionen.',
         punkte: 2,
         stichwoerter: [
           'Anforderungen',
@@ -496,7 +496,7 @@ final List<Question> ihkA05 = [
         ],
       ),
       krit(
-        'White-Box: nutzt die Kenntnis des Codes - deckt nicht durchlaufene Zweige und Anweisungen auf, die Überdeckung ist messbar.',
+        'White-Box: nutzt die Kenntnis des Codes und deckt nicht durchlaufene Zweige und Anweisungen auf, die Überdeckung ist messbar.',
         punkte: 2,
         stichwoerter: [
           'Zweige',
@@ -509,7 +509,7 @@ final List<Question> ihkA05 = [
       ),
     ],
     loesung:
-        'Der Black-Box-Test prüft das Verhalten gegen die Anforderungen, ohne den Code zu kennen - so fallen auch fehlende Funktionen auf. Der White-Box-Test nutzt die Kenntnis des Codes und stellt sicher, dass jeder Zweig mindestens einmal durchlaufen wird; die Überdeckung lässt sich messen.',
+        'Der Black-Box-Test prüft das Verhalten gegen die Anforderungen, ohne den Code zu kennen. So fallen auch fehlende Funktionen auf. Der White-Box-Test nutzt die Kenntnis des Codes und stellt sicher, dass jeder Zweig mindestens einmal durchlaufen wird; die Überdeckung lässt sich messen.',
     explanation:
         'Je Vorteil 2 Punkte. Die Verfahren ergänzen sich: Black-Box findet, was fehlt oder falsch verstanden wurde; White-Box findet, was im Code nie getestet wurde.',
   ),
@@ -604,7 +604,7 @@ final List<Question> ihkA05 = [
       ),
       nein(
         'TF4: Eingabe 68 - Soll: abgelehnt',
-        '68 liegt über der Grenze - richtig.',
+        '68 liegt über der Grenze. Richtig.',
       ),
       nein(
         'TF5: Eingabe „abc“ - Soll: Fehlermeldung',
@@ -700,7 +700,7 @@ final List<Question> ihkA05 = [
       ],
     ],
     explanation:
-        'Bestanden ist ein Testfall nur, wenn Ist und Soll übereinstimmen (TF-01, TF-03). Bei TF-02 und TF-04 weicht das Ist ab: fehlgeschlagen, es folgt eine Fehlermeldung. TF-05 konnte nicht ausgeführt werden - er ist blockiert und wird nachgeholt, er zählt nicht als bestanden.',
+        'Bestanden ist ein Testfall nur, wenn Ist und Soll übereinstimmen (TF-01, TF-03). Bei TF-02 und TF-04 weicht das Ist ab: fehlgeschlagen, es folgt eine Fehlermeldung. TF-05 konnte nicht ausgeführt werden. Er ist blockiert und wird nachgeholt, er zählt nicht als bestanden.',
   ),
   lueckentext(
     'i5-sp-2',
@@ -721,7 +721,7 @@ final List<Question> ihkA05 = [
       wahl('nicht erfüllt', ['erfüllt', 'nicht prüfbar']),
     ],
     explanation:
-        'Durchführungsquote: 75 / 80 = 93,75 %. Bestehensquote: 66 / 75 = 88 %. Fehlgeschlagen: 75 - 66 = 9. Mit 88 % ist das Endekriterium von 95 % verfehlt - die Fehler werden behoben, nachgetestet, und die fünf offenen Testfälle werden nachgeholt.',
+        'Durchführungsquote: 75 / 80 = 93,75 %. Bestehensquote: 66 / 75 = 88 %. Fehlgeschlagen: 75 - 66 = 9. Mit 88 % ist das Endekriterium von 95 % verfehlt. Die Fehler werden behoben, nachgetestet, und die fünf offenen Testfälle werden nachgeholt.',
   ),
   markieren(
     'i5-sp-3',

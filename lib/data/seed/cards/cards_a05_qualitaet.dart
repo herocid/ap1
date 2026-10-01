@@ -68,7 +68,7 @@ final List<Flashcard> cardsA05 = [
     'k-qg-11',
     'qm-grundlagen',
     'Ein Team führt einen Styleguide ein. Welche Art von QS ist das?',
-    'Konstruktive QS - der Styleguide soll Fehler gar nicht erst entstehen lassen.',
+    'Konstruktive QS, denn der Styleguide soll Fehler gar nicht erst entstehen lassen.',
   ),
   karte(
     'k-qg-12',
@@ -86,7 +86,7 @@ final List<Flashcard> cardsA05 = [
     'k-qg-14',
     'qm-grundlagen',
     'Welchen Vorteil haben statische Prüfungen gegenüber Tests?',
-    'Sie gehen schon mit Anforderungen und Entwürfen, bevor Code existiert - Fehler werden früh und billig gefunden.',
+    'Sie gehen schon mit Anforderungen und Entwürfen, bevor Code existiert. Fehler werden früh und billig gefunden.',
   ),
   karte(
     'k-qg-15',
@@ -104,19 +104,19 @@ final List<Flashcard> cardsA05 = [
     'k-qg-17',
     'qm-grundlagen',
     'Warum kann ein Test nie beweisen, dass Software fehlerfrei ist?',
-    'Er zeigt nur Fehler in den geprüften Fällen - alle möglichen Eingaben lassen sich nie vollständig testen.',
+    'Er zeigt nur Fehler in den geprüften Fällen. Alle möglichen Eingaben lassen sich nie vollständig testen.',
   ),
   karte(
     'k-qg-18',
     'qm-grundlagen',
     'Ein Systemtest prüft gegen das Pflichtenheft: Verifikation oder Validierung?',
-    'Verifikation - Maßstab ist die Spezifikation, nicht der Bedarf des Kunden.',
+    'Verifikation: Maßstab ist die Spezifikation, nicht der Bedarf des Kunden.',
   ),
   karte(
     'k-qg-19',
     'qm-grundlagen',
     'Anwender prüfen bei der Abnahme, ob das Produkt ihren Bedarf trifft: Welche Prüfung ist das?',
-    'Validierung - „Bauen wir das richtige Produkt?“',
+    'Validierung: „Bauen wir das richtige Produkt?“',
   ),
   karte(
     'k-qg-20',
@@ -128,7 +128,7 @@ final List<Flashcard> cardsA05 = [
     'k-qg-21',
     'qm-grundlagen',
     'Was kennzeichnet ein informelles Review?',
-    'Eine Kollegin liest Dokument oder Code gegen - ohne festen Ablauf und ohne Protokoll.',
+    'Eine Kollegin liest Dokument oder Code gegen, ohne festen Ablauf und ohne Protokoll.',
   ),
   karte(
     'k-qg-22',
@@ -142,7 +142,7 @@ final List<Flashcard> cardsA05 = [
     'k-qe-5',
     'qm-merkmale',
     'Welche vier Angaben machen eine Anforderung messbar?',
-    'Merkmal, Messgröße, Zielwert und Bedingung - z. B. max. 2 s bei 200 Nutzern.',
+    'Merkmal, Messgröße, Zielwert und Bedingung, z. B. max. 2 s bei 200 Nutzern.',
   ),
   karte(
     'k-qe-7',
@@ -180,7 +180,7 @@ final List<Flashcard> cardsA05 = [
     'k-qp-1',
     'qm-pdca',
     'Wofür steht PDCA?',
-    'Plan, Do, Check, Act - der Deming-Kreis für schrittweise Verbesserung.',
+    'Plan, Do, Check, Act: der Deming-Kreis für schrittweise Verbesserung.',
   ),
   karte(
     'k-qp-2',
@@ -222,7 +222,7 @@ final List<Flashcard> cardsA05 = [
     'k-qp-8',
     'qm-pdca',
     'Was passiert in „Check“?',
-    'Das Ergebnis wird gemessen und mit dem Ziel verglichen - Soll-Ist-Vergleich anhand von Kennzahlen.',
+    'Das Ergebnis wird gemessen und mit dem Ziel verglichen: Soll-Ist-Vergleich anhand von Kennzahlen.',
   ),
   karte(
     'k-qp-9',
@@ -240,13 +240,13 @@ final List<Flashcard> cardsA05 = [
     'k-qp-11',
     'qm-pdca',
     'In welcher PDCA-Phase wird eine Maßnahme zum Standard?',
-    'In „Act“ - und erst nach erfolgreichem „Check“.',
+    'In „Act“, und erst nach erfolgreichem „Check“.',
   ),
   karte(
     'k-qp-12',
     'qm-pdca',
     'In welcher PDCA-Phase läuft ein Pilotbetrieb in einer Abteilung?',
-    'In „Do“ - die Maßnahme wird im kleinen Rahmen erprobt.',
+    'In „Do“: die Maßnahme wird im kleinen Rahmen erprobt.',
   ),
   karte(
     'k-qp-13',
@@ -264,13 +264,13 @@ final List<Flashcard> cardsA05 = [
     'k-qp-15',
     'qm-pdca',
     'Wie heißt das japanische Vorbild des KVP?',
-    'Kaizen - Verbesserung in vielen kleinen Schritten.',
+    'Kaizen: Verbesserung in vielen kleinen Schritten.',
   ),
   karte(
     'k-qp-16',
     'qm-pdca',
     'Was passiert nach „Act“?',
-    'Der nächste Zyklus beginnt mit einem neuen „Plan“ - PDCA ist ein Kreis und das Werkzeug des KVP.',
+    'Der nächste Zyklus beginnt mit einem neuen „Plan“. PDCA ist ein Kreis und das Werkzeug des KVP.',
   ),
   karte(
     'k-qp-17',
@@ -363,7 +363,7 @@ final List<Flashcard> cardsA05 = [
     'k-ss-10',
     'ts-stufen',
     'Gegen welche Grundlage prüft der Systemtest?',
-    'Gegen das Pflichtenheft - das Gesamtsystem in einer produktionsnahen Testumgebung.',
+    'Gegen das Pflichtenheft: das Gesamtsystem in einer produktionsnahen Testumgebung.',
   ),
   karte(
     'k-ss-11',
@@ -393,7 +393,7 @@ final List<Flashcard> cardsA05 = [
     'k-ss-15',
     'ts-stufen',
     'Was unterscheidet eine Teststufe von einer Testart?',
-    'Teststufe: WAS geprüft wird (Komponente bis Abnahme). Testart: WORAUF geprüft wird (z. B. Last, Sicherheit) - auf mehreren Stufen.',
+    'Teststufe: WAS geprüft wird (Komponente bis Abnahme). Testart: WORAUF geprüft wird (z. B. Last, Sicherheit), auf mehreren Stufen.',
   ),
   karte(
     'k-ss-16',
@@ -417,19 +417,19 @@ final List<Flashcard> cardsA05 = [
     'k-ss-19',
     'ts-stufen',
     'Auf welcher Teststufe findet der Regressionstest statt?',
-    'Auf jeder - er ist keine eigene Stufe, sondern wird nach jeder Änderung wiederholt.',
+    'Auf jeder, denn er ist keine eigene Stufe, sondern wird nach jeder Änderung wiederholt.',
   ),
   karte(
     'k-ss-20',
     'ts-stufen',
     'Ein Shop soll bei 500 gleichzeitigen Nutzern flüssig laufen. Welche Testart prüft das?',
-    'Lasttest - Verhalten bei der erwarteten Höchstlast.',
+    'Lasttest: Verhalten bei der erwarteten Höchstlast.',
   ),
   karte(
     'k-ss-21',
     'ts-stufen',
     'Du willst wissen, ab wie vielen Nutzern der Server zusammenbricht. Welche Testart?',
-    'Stresstest - Belastung über die Grenze hinaus, um Ausfall- und Wiederanlaufverhalten zu sehen.',
+    'Stresstest: Belastung über die Grenze hinaus, um Ausfall- und Wiederanlaufverhalten zu sehen.',
   ),
   karte(
     'k-ss-22',
@@ -449,7 +449,7 @@ final List<Flashcard> cardsA05 = [
     'k-sv-1',
     'ts-verfahren',
     'Woraus leitet der Black-Box-Test seine Testfälle ab?',
-    'Aus der Spezifikation, ohne Kenntnis des Codes - z. B. mit Äquivalenzklassen und Grenzwerten.',
+    'Aus der Spezifikation, ohne Kenntnis des Codes, z. B. mit Äquivalenzklassen und Grenzwerten.',
   ),
   karte(
     'k-sv-2',
@@ -473,13 +473,13 @@ final List<Flashcard> cardsA05 = [
     'k-sv-5',
     'ts-verfahren',
     'Wann lohnt sich Testautomatisierung?',
-    'Wenn Tests oft wiederholt werden, etwa als Regressionstest nach jeder Änderung - das Erstellen ist teuer, jeder Lauf danach billig.',
+    'Wenn Tests oft wiederholt werden, etwa als Regressionstest nach jeder Änderung. Das Erstellen ist teuer, jeder Lauf danach billig.',
   ),
   karte(
     'k-sv-6',
     'ts-verfahren',
     'Was fordert die Pfadüberdeckung?',
-    'Jeder mögliche Weg durch den Code. Bei n unabhängigen Abfragen 2 hoch n Pfade - oft zu aufwendig.',
+    'Jeder mögliche Weg durch den Code. Bei n unabhängigen Abfragen 2 hoch n Pfade, oft zu aufwendig.',
   ),
   karte(
     'k-sv-7',
@@ -503,7 +503,7 @@ final List<Flashcard> cardsA05 = [
     'k-sv-10',
     'ts-verfahren',
     'Welche Überdeckung ist stärker: Anweisungs- oder Zweigüberdeckung?',
-    'Zweigüberdeckung - wer sie erreicht, hat auch volle Anweisungsüberdeckung, aber nicht umgekehrt.',
+    'Zweigüberdeckung: wer sie erreicht, hat auch volle Anweisungsüberdeckung, aber nicht umgekehrt.',
   ),
   karte(
     'k-sv-11',
@@ -515,7 +515,7 @@ final List<Flashcard> cardsA05 = [
     'k-sv-12',
     'ts-verfahren',
     'Zwei unabhängige WENN ohne SONST: Wie viele Testfälle braucht die Zweigüberdeckung?',
-    '2 - einer nimmt beide Ja-Zweige, einer beide Nein-Zweige.',
+    '2: einer nimmt beide Ja-Zweige, einer beide Nein-Zweige.',
   ),
   karte(
     'k-sv-13',
@@ -563,7 +563,7 @@ final List<Flashcard> cardsA05 = [
     'k-sv-20',
     'ts-verfahren',
     'Warum bedeutet 100 % Zweigüberdeckung nicht fehlerfrei?',
-    'Jeder Zweig lief nur einmal - ob er das Richtige berechnet, zeigt erst der Vergleich mit dem Soll-Ergebnis.',
+    'Jeder Zweig lief nur einmal. Ob er das Richtige berechnet, zeigt erst der Vergleich mit dem Soll-Ergebnis.',
   ),
   karte(
     'k-sv-21',
@@ -587,7 +587,7 @@ final List<Flashcard> cardsA05 = [
     'k-sv-24',
     'ts-verfahren',
     'Ein API-Test nutzt Wissen über die Datenbankstruktur. Welches Verfahren ist das?',
-    'Grey-Box-Test - Test gegen die Anforderungen mit Teilwissen über den Aufbau.',
+    'Grey-Box-Test: Test gegen die Anforderungen mit Teilwissen über den Aufbau.',
   ),
 
   // Testfälle entwerfen
@@ -644,7 +644,7 @@ final List<Flashcard> cardsA05 = [
     'k-sf-9',
     'ts-testfaelle',
     'Wie viele Repräsentanten brauchst du je Äquivalenzklasse?',
-    'Einen - alle Werte einer Klasse verhalten sich laut Spezifikation gleich.',
+    'Einen, denn alle Werte einer Klasse verhalten sich laut Spezifikation gleich.',
   ),
   karte(
     'k-sf-10',
@@ -662,7 +662,7 @@ final List<Flashcard> cardsA05 = [
     'k-sf-12',
     'ts-testfaelle',
     'Kino: 0-13 Kind, 14-64 normal, 65-120 Senior. Welche Grenzwerte testest du?',
-    '-1, 0, 13, 14, 64, 65, 120, 121 - je Übergang der letzte und der erste Wert.',
+    '-1, 0, 13, 14, 64, 65, 120, 121: je Übergang der letzte und der erste Wert.',
   ),
   karte(
     'k-sf-13',
@@ -674,31 +674,31 @@ final List<Flashcard> cardsA05 = [
     'k-sf-14',
     'ts-testfaelle',
     '„Zutritt ab 18 Jahren“: Welche zwei Grenzwerte testest du?',
-    '17 (abgelehnt) und 18 (erlaubt) - „ab 18“ schließt 18 ein.',
+    '17 (abgelehnt) und 18 (erlaubt), denn „ab 18“ schließt 18 ein.',
   ),
   karte(
     'k-sf-15',
     'ts-testfaelle',
     '„Rabatt über 100 €“, Beträge in ganzen Euro: Welche zwei Grenzwerte testest du?',
-    '100 € (kein Rabatt) und 101 € (Rabatt) - „über 100“ schließt 100 aus.',
+    '100 € (kein Rabatt) und 101 € (Rabatt), denn „über 100“ schließt 100 aus.',
   ),
   karte(
     'k-sf-16',
     'ts-testfaelle',
     'Welchem Codefehler entspricht eine falsch gelesene Grenze?',
-    '> statt >= (oder umgekehrt) - alle Grenzwerte verschieben sich um eins.',
+    '> statt >= (oder umgekehrt): alle Grenzwerte verschieben sich um eins.',
   ),
   karte(
     'k-sf-17',
     'ts-testfaelle',
     'Sind Äquivalenzklassen und Grenzwertanalyse Black-Box- oder White-Box-Verfahren?',
-    'Black-Box - sie brauchen nur die Spezifikation, keinen Code.',
+    'Black-Box, denn sie brauchen nur die Spezifikation, keinen Code.',
   ),
   karte(
     'k-sf-18',
     'ts-testfaelle',
     'Was macht aus einem Testwert einen Testfall?',
-    'Kennung, Vorbedingung und erwartetes Ergebnis - erst damit ist der Wert prüfbar.',
+    'Kennung, Vorbedingung und erwartetes Ergebnis. Erst damit ist der Wert prüfbar.',
   ),
   karte(
     'k-sf-19',
@@ -734,7 +734,7 @@ final List<Flashcard> cardsA05 = [
     'k-sf-24',
     'ts-testfaelle',
     'Wie gehst du mit den gültigen Klassen mehrerer Eingabefelder um?',
-    'Du kombinierst sie in gemeinsamen Testfällen - das spart Aufwand. Nur ungültige Klassen werden einzeln getestet.',
+    'Du kombinierst sie in gemeinsamen Testfällen, das spart Aufwand. Nur ungültige Klassen werden einzeln getestet.',
   ),
 
   // Testplanung und Testprotokoll
@@ -748,7 +748,7 @@ final List<Flashcard> cardsA05 = [
     'k-sp-2',
     'ts-protokoll',
     'Was ist ein Endekriterium?',
-    'Vorab festgelegte, messbare Bedingung, wann der Test abgeschlossen ist - z. B. 95 % bestanden, kein kritischer Fehler offen.',
+    'Vorab festgelegte, messbare Bedingung, wann der Test abgeschlossen ist, z. B. 95 % bestanden, kein kritischer Fehler offen.',
   ),
   karte(
     'k-sp-3',
@@ -779,13 +779,13 @@ final List<Flashcard> cardsA05 = [
     'k-sp-7',
     'ts-protokoll',
     'Welche Zustände durchläuft eine Fehlermeldung?',
-    'Neu, zugewiesen, behoben, Nachtest, geschlossen - scheitert der Nachtest: wiedereröffnet.',
+    'Neu, zugewiesen, behoben, Nachtest, geschlossen. Scheitert der Nachtest: wiedereröffnet.',
   ),
   karte(
     'k-sp-8',
     'ts-protokoll',
     'Was gehört in eine Fehlermeldung (Bug-Report)?',
-    'ID und Titel, Schritte zum Nachstellen, Soll und Ist, Umgebung und Version - dazu Fehlerklasse, Priorität, Status.',
+    'ID und Titel, Schritte zum Nachstellen, Soll und Ist, Umgebung und Version. Dazu Fehlerklasse, Priorität, Status.',
   ),
   karte(
     'k-sp-9',
@@ -815,7 +815,7 @@ final List<Flashcard> cardsA05 = [
     'k-sp-13',
     'ts-protokoll',
     'Welche Fehlerklasse hat ein falsch berechneter Rechnungsbetrag?',
-    '„Schwer“ - eine wichtige Funktion liefert falsche Ergebnisse.',
+    '„Schwer“: eine wichtige Funktion liefert falsche Ergebnisse.',
   ),
   karte(
     'k-sp-14',
@@ -827,7 +827,7 @@ final List<Flashcard> cardsA05 = [
     'k-sp-15',
     'ts-protokoll',
     'Tippfehler im Firmennamen auf der Startseite: Welche Fehlerklasse, welche Priorität?',
-    'Kosmetisch, aber hohe Priorität - der Fehler wirkt sofort nach außen.',
+    'Kosmetisch, aber hohe Priorität, denn der Fehler wirkt sofort nach außen.',
   ),
   karte(
     'k-sp-16',
@@ -857,7 +857,7 @@ final List<Flashcard> cardsA05 = [
     'k-sp-20',
     'ts-protokoll',
     'Ein Testfall kann wegen eines Ausfalls der Testumgebung nicht laufen. Welches Ergebnis?',
-    '„Blockiert“ - der Test war nicht durchführbar; das ist kein Fehler des Testobjekts.',
+    '„Blockiert“: der Test war nicht durchführbar; das ist kein Fehler des Testobjekts.',
   ),
   karte(
     'k-sp-21',
@@ -875,7 +875,7 @@ final List<Flashcard> cardsA05 = [
     'k-sp-23',
     'ts-protokoll',
     'Was legt der Testumfang im Testkonzept fest?',
-    'Was geprüft wird - und ausdrücklich auch, was nicht geprüft wird.',
+    'Was geprüft wird, und ausdrücklich auch, was nicht geprüft wird.',
   ),
   karte(
     'k-sp-24',

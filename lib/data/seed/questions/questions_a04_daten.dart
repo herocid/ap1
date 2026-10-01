@@ -77,16 +77,19 @@ final List<Question> questionsA04Daten = [
     prompt: 'Markiere alle Begriffe, die im ER-Modell zu Entitätstypen werden.',
     zeilen: [
       ja('Patient', 'Zu Patienten werden eigene Daten gespeichert.'),
-      nein('Geburtsdatum', 'Eine Eigenschaft des Patienten - ein Attribut.'),
+      nein(
+        'Geburtsdatum',
+        'Eine Eigenschaft des Patienten, also ein Attribut.',
+      ),
       ja('Arzt', 'Zu Ärztinnen und Ärzten wird die Fachrichtung gespeichert.'),
-      nein('Fachrichtung', 'Eine Eigenschaft des Arztes - also ein Attribut.'),
+      nein('Fachrichtung', 'Eine Eigenschaft des Arztes, also ein Attribut.'),
       ja(
         'Krankenkasse',
         'Die Kasse hat eigene Attribute wie Name und Kassennummer.',
       ),
       nein(
         'ist versichert bei',
-        'Das verbindet Patient und Krankenkasse - eine Beziehung.',
+        'Das verbindet Patient und Krankenkasse, also eine Beziehung.',
       ),
       nein('Kassennummer', 'Schlüsselattribut der Krankenkasse.'),
     ],
@@ -120,7 +123,7 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'Jeder Kunde erteilt genau einen Auftrag.',
-        'Auf der Seite des Auftrags steht n - ein Kunde kann viele Aufträge erteilen.',
+        'Auf der Seite des Auftrags steht n, denn ein Kunde kann viele Aufträge erteilen.',
       ),
       nein(
         'Ein Auftrag kann von mehreren Kunden gemeinsam erteilt werden.',
@@ -202,15 +205,15 @@ final List<Question> questionsA04Daten = [
     choices: [
       ja(
         'Als Attribut der Beziehung „leiht“',
-        'Das Datum beschreibt die einzelne Ausleihe - also die Verbindung von Kunde und Fahrrad.',
+        'Das Datum beschreibt die einzelne Ausleihe, also die Verbindung von Kunde und Fahrrad.',
       ),
       nein(
         'Als Attribut von Kunde',
-        'Ein Kunde leiht an vielen Tagen - ein einzelnes Datum beim Kunden reicht nicht.',
+        'Ein Kunde leiht an vielen Tagen. Ein einzelnes Datum beim Kunden reicht nicht.',
       ),
       nein(
         'Als Attribut von Fahrrad',
-        'Ein Fahrrad wird an vielen Tagen verliehen - ein Datum beim Rad wäre überschrieben.',
+        'Ein Fahrrad wird an vielen Tagen verliehen. Ein Datum beim Rad wäre überschrieben.',
       ),
       nein(
         'Als eigener Entitätstyp „Datum“',
@@ -263,7 +266,7 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'Die Tabelle Artikel bekommt die Spalte BestellNr',
-        'Dann könnte jeder Artikel nur zu einer Bestellung gehören - das wäre 1:n.',
+        'Dann könnte jeder Artikel nur zu einer Bestellung gehören. Das wäre 1:n.',
       ),
       nein(
         'Die Tabelle Bestellung bekommt die Spalten Artikel1, Artikel2 und Artikel3',
@@ -362,7 +365,7 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'PersNr als Fremdschlüssel in Abteilung, ProjNr als Fremdschlüssel in Mitarbeiter',
-        'Beides auf der falschen Seite bzw. ohne Zwischentabelle - ein Mitarbeiter könnte nur ein Projekt haben.',
+        'Beides auf der falschen Seite bzw. ohne Zwischentabelle. Ein Mitarbeiter könnte nur ein Projekt haben.',
       ),
       nein(
         'Je eine Zwischentabelle für beide Beziehungen',
@@ -456,9 +459,9 @@ final List<Question> questionsA04Daten = [
       ),
     ],
     loesung:
-        'Ein Primärschlüssel ist eindeutig (jeder Wert kommt nur einmal vor), nie leer und stabil (der Wert ändert sich nicht). Außerdem sollte er möglichst kurz sein. Eine fachliche Bedeutung braucht er nicht - künstliche Schlüssel sind oft die bessere Wahl.',
+        'Ein Primärschlüssel ist eindeutig (jeder Wert kommt nur einmal vor), nie leer und stabil (der Wert ändert sich nicht). Außerdem sollte er möglichst kurz sein. Eine fachliche Bedeutung braucht er nicht. Künstliche Schlüssel sind oft die bessere Wahl.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 3. Eindeutig, nie leer, stabil - dazu möglichst kurz. Der Primärschlüssel darf zusammengesetzt sein und taucht als Fremdschlüssel in anderen Tabellen auf.',
+        'Je Nennung 1 Punkt, höchstens 3. Eindeutig, nie leer, stabil, dazu möglichst kurz. Der Primärschlüssel darf zusammengesetzt sein und taucht als Fremdschlüssel in anderen Tabellen auf.',
     punkte: 3,
   ),
   einfach(
@@ -502,7 +505,7 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'Der Kunde wird gelöscht, die Bestellungen behalten die KundenNr 10457.',
-        'Das wären verwaiste Datensätze - genau das verhindert die referenzielle Integrität.',
+        'Das wären verwaiste Datensätze. Genau das verhindert die referenzielle Integrität.',
       ),
       nein(
         'Die Bestellungen werden automatisch mitgelöscht.',
@@ -565,7 +568,7 @@ final List<Question> questionsA04Daten = [
     choices: [
       ja(
         'K7',
-        'Einen Kunden K7 gibt es nicht - der Verweis würde ins Leere zeigen.',
+        'Einen Kunden K7 gibt es nicht. Der Verweis würde ins Leere zeigen.',
       ),
       nein('K1', 'K1 existiert als Primärschlüssel in Kunde.'),
       nein(
@@ -658,7 +661,7 @@ final List<Question> questionsA04Daten = [
     choices: [
       ja(
         '1NF',
-        'Die Werte sind atomar, aber Artikelbezeichnung hängt nur von einem Teil des Schlüssels ab - das verletzt die 2NF.',
+        'Die Werte sind atomar, aber Artikelbezeichnung hängt nur von einem Teil des Schlüssels ab. Das verletzt die 2NF.',
       ),
       nein('2NF', 'Die 2NF verlangt volle Abhängigkeit vom ganzen Schlüssel.'),
       nein('3NF', 'Die 3NF setzt die 2NF voraus.'),
@@ -727,12 +730,12 @@ final List<Question> questionsA04Daten = [
     ],
     prompt: 'Markiere alle Zeilen, die die 1. Normalform verletzen.',
     zeilen: [
-      nein('K1 Brandt', 'Genau ein Wert im Feld Telefon - atomar.'),
+      nein('K1 Brandt', 'Genau ein Wert im Feld Telefon, also atomar.'),
       ja(
         'K2 Yilmaz',
-        'Zwei Telefonnummern in einer Zelle - der Wert ist nicht atomar.',
+        'Zwei Telefonnummern in einer Zelle: der Wert ist nicht atomar.',
       ),
-      nein('K3 Nowak', 'Genau ein Wert im Feld Telefon - atomar.'),
+      nein('K3 Nowak', 'Genau ein Wert im Feld Telefon, also atomar.'),
       ja('K4 Peters', 'Auch hier stehen zwei Nummern in einer Zelle.'),
     ],
     explanation:
@@ -784,7 +787,7 @@ final List<Question> questionsA04Daten = [
       wahl('transitive', ['partielle', 'zusammengesetzte']),
     ],
     explanation:
-        'Ein Attribut kann nicht von einem Teil eines einspaltigen Schlüssels abhängen. Die 2NF ist dann automatisch erfüllt. Transitive Abhängigkeiten (über ein anderes Nichtschlüsselattribut) sind trotzdem möglich - die 3NF muss geprüft werden.',
+        'Ein Attribut kann nicht von einem Teil eines einspaltigen Schlüssels abhängen. Die 2NF ist dann automatisch erfüllt. Transitive Abhängigkeiten (über ein anderes Nichtschlüsselattribut) sind trotzdem möglich. Die 3NF muss geprüft werden.',
   ),
 
   // ============================================================ Aufbau einer URL
@@ -835,7 +838,7 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         '?q=maus',
-        'Die Query wird mitgeschickt - der Server braucht den Suchbegriff.',
+        'Die Query wird mitgeschickt, denn der Server braucht den Suchbegriff.',
       ),
       nein(
         '/suche',
@@ -870,7 +873,7 @@ final List<Question> questionsA04Daten = [
       nein('Der Port ist 80.', 'Bei https ohne Angabe gilt Port 443.'),
       nein(
         'hilfe ist ein Fragment.',
-        'hilfe ist der Pfad - ein Fragment stünde hinter #.',
+        'hilfe ist der Pfad. Ein Fragment stünde hinter #.',
       ),
     ],
     explanation:
@@ -894,12 +897,12 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'de.kontoservice',
-        'Das ist keine vollständige Domain - die TLD fehlt.',
+        'Das ist keine vollständige Domain, denn die TLD fehlt.',
       ),
       nein('login', 'login ist der Pfad, nicht die Domain.'),
     ],
     explanation:
-        'Die registrierte Domain steht direkt vor der TLD, ganz rechts im Hostnamen. Alles links davon sind Subdomains, die der Inhaber beliebig wählen kann - ein typischer Phishing-Trick.',
+        'Die registrierte Domain steht direkt vor der TLD, ganz rechts im Hostnamen. Alles links davon sind Subdomains, die der Inhaber beliebig wählen kann. Ein typischer Phishing-Trick.',
   ),
   einfach(
     'a4-wu-6',
@@ -944,7 +947,7 @@ final List<Question> questionsA04Daten = [
       wort(['%26'], 'Prozentzeichen plus Hexwert.'),
     ],
     explanation:
-        'Bei der Prozentkodierung folgt auf % der Bytewert in Hexadezimal. Leerzeichen = 32 = 20h -> %20, & = 38 = 26h -> %26. Kodiert wird hexadezimal, nicht dezimal - %32 wäre die Ziffer 2. In Formularparametern ist für das Leerzeichen auch + üblich.',
+        'Bei der Prozentkodierung folgt auf % der Bytewert in Hexadezimal. Leerzeichen = 32 = 20h -> %20, & = 38 = 26h -> %26. Kodiert wird hexadezimal, nicht dezimal: %32 wäre die Ziffer 2. In Formularparametern ist für das Leerzeichen auch + üblich.',
     difficulty: 1,
   ),
 
@@ -985,7 +988,7 @@ final List<Question> questionsA04Daten = [
         '401 Unauthorized',
         'Das gilt, wenn keine oder eine fehlgeschlagene Anmeldung vorliegt.',
       ),
-      nein('404 Not Found', 'Die Seite existiert ja - sie ist nur gesperrt.'),
+      nein('404 Not Found', 'Die Seite existiert ja, sie ist nur gesperrt.'),
       nein(
         '500 Internal Server Error',
         'Der Server arbeitet korrekt, es gibt keinen Programmfehler.',
@@ -1045,7 +1048,7 @@ final List<Question> questionsA04Daten = [
       zu('Die Daten stehen im Body der Anfrage', 1),
     ],
     explanation:
-        'GET überträgt Parameter in der URL - gut für Suchen und Links, schlecht für Passwörter und große Datenmengen. POST schickt die Daten im Body.',
+        'GET überträgt Parameter in der URL, gut für Suchen und Links, schlecht für Passwörter und große Datenmengen. POST schickt die Daten im Body.',
   ),
   einfach(
     'a4-wh-6',
@@ -1157,7 +1160,7 @@ final List<Question> questionsA04Daten = [
       paar('DHCP', 'vergibt dem Client eine IP-Adresse'),
     ],
     explanation:
-        'DNS ist das Telefonbuch des Internets: Name rein, IP-Adresse raus. TCP stellt die Verbindung her, TLS sichert sie, HTTP transportiert die Inhalte. DHCP gehört nicht zum Seitenaufruf selbst - es hat dem Client zuvor seine IP-Adresse zugeteilt.',
+        'DNS ist das Telefonbuch des Internets: Name rein, IP-Adresse raus. TCP stellt die Verbindung her, TLS sichert sie, HTTP transportiert die Inhalte. DHCP gehört nicht zum Seitenaufruf selbst. Es hat dem Client zuvor seine IP-Adresse zugeteilt.',
     difficulty: 1,
   ),
   einfach(
@@ -1177,7 +1180,7 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'Die HTTP-Response mit 404',
-        'Dann hätte der Server geantwortet - er wurde aber gar nicht gefunden.',
+        'Dann hätte der Server geantwortet. Er wurde aber gar nicht gefunden.',
       ),
       nein(
         'Das Rendern der Seite',
@@ -1201,7 +1204,7 @@ final List<Question> questionsA04Daten = [
       zu('Statuscode 500', 2),
     ],
     explanation:
-        'Namensauflösung scheitert -> DNS. Zertifikatsprobleme zeigen sich beim TLS-Handshake. Statuscodes stammen aus der HTTP-Antwort - die Verbindung stand also bereits.',
+        'Namensauflösung scheitert -> DNS. Zertifikatsprobleme zeigen sich beim TLS-Handshake. Statuscodes stammen aus der HTTP-Antwort, die Verbindung stand also bereits.',
   ),
   reihenfolge(
     'a4-wa-6',
@@ -1244,7 +1247,7 @@ final List<Question> questionsA04Daten = [
     choices: [
       ja(
         'UDP, Port 53',
-        'Kurze DNS-Anfragen passen in ein Paket - UDP spart den Verbindungsaufbau.',
+        'Kurze DNS-Anfragen passen in ein Paket. UDP spart den Verbindungsaufbau.',
       ),
       nein('TCP, Port 443', 'Das ist HTTPS.'),
       nein('TCP, Port 80', 'Das ist HTTP.'),
@@ -1302,7 +1305,7 @@ final List<Question> questionsA04Daten = [
       zu('<article>', 0, 'Kennzeichnet einen eigenständigen Beitrag.'),
     ],
     explanation:
-        'Semantische Tags wie header, nav, main, article und footer beschreiben die Rolle eines Bereichs - das hilft Screenreadern und Suchmaschinen. div und span gliedern nur, ohne Bedeutung.',
+        'Semantische Tags wie header, nav, main, article und footer beschreiben die Rolle eines Bereichs. Das hilft Screenreadern und Suchmaschinen. div und span gliedern nur, ohne Bedeutung.',
   ),
   einfach(
     'a4-wt-4',
@@ -1327,7 +1330,7 @@ final List<Question> questionsA04Daten = [
       ),
     ],
     explanation:
-        'Mit @media (max-width: 600px) { … } gelten Regeln nur auf schmalen Bildschirmen - so passt sich das Layout an.',
+        'Mit @media (max-width: 600px) { … } gelten Regeln nur auf schmalen Bildschirmen, so passt sich das Layout an.',
   ),
 
   einfach(
@@ -1356,7 +1359,7 @@ final List<Question> questionsA04Daten = [
     choices: [
       ja(
         'Dem Feld fehlt das Attribut name.',
-        'Nur Felder mit name werden übertragen - als name=wert.',
+        'Nur Felder mit name werden übertragen, als name=wert.',
       ),
       nein(
         'Das Feld braucht type="number".',
@@ -1410,7 +1413,7 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'Standardfarbe des Browsers',
-        'Beide Regeln treffen zu - eine davon gewinnt.',
+        'Beide Regeln treffen zu. Eine davon gewinnt.',
       ),
     ],
     explanation:
@@ -1471,7 +1474,7 @@ final List<Question> questionsA04Daten = [
     zeilen: [
       nein(
         'Aussagekräftige Alt-Texte für inhaltliche Bilder',
-        'Screenreader lesen den Alt-Text vor - eine Verbesserung.',
+        'Screenreader lesen den Alt-Text vor. Das ist eine Verbesserung.',
       ),
       ja(
         'Pflichtfelder nur durch rote Farbe kennzeichnen',
@@ -1491,7 +1494,7 @@ final List<Question> questionsA04Daten = [
       ),
       ja(
         'Das Menü öffnet sich nur, wenn die Maus darüberfährt',
-        'Ohne Maus - per Tastatur oder Touch - ist das Menü nicht erreichbar.',
+        'Ohne Maus (per Tastatur oder Touch) ist das Menü nicht erreichbar.',
       ),
     ],
     explanation:
@@ -1543,7 +1546,7 @@ final List<Question> questionsA04Daten = [
     prompt: 'Was ist das Hauptproblem?',
     choices: [
       ja(
-        'Der Hinweis verschwindet beim Tippen und wird nicht zuverlässig vorgelesen - es fehlt ein label.',
+        'Der Hinweis verschwindet beim Tippen und wird nicht zuverlässig vorgelesen, denn es fehlt ein label.',
         'Jedes Feld braucht eine dauerhaft sichtbare, verknüpfte Beschriftung.',
       ),
       nein(
@@ -1661,7 +1664,7 @@ final List<Question> questionsA04Daten = [
       ], 'Eine 1 bei den Stellenwerten 32, 8, 4 und 1.'),
     ],
     explanation:
-        '45 = 32 + 8 + 4 + 1. Bei diesen Stellenwerten steht eine 1, bei allen anderen eine 0: 0010 1101. Probe mit dem Divisionsrestverfahren: 45 : 2 = 22 Rest 1, 22 : 2 = 11 Rest 0, 11 : 2 = 5 Rest 1, 5 : 2 = 2 Rest 1, 2 : 2 = 1 Rest 0, 1 : 2 = 0 Rest 1 - von unten gelesen 101101.',
+        '45 = 32 + 8 + 4 + 1. Bei diesen Stellenwerten steht eine 1, bei allen anderen eine 0: 0010 1101. Probe mit dem Divisionsrestverfahren: 45 : 2 = 22 Rest 1, 22 : 2 = 11 Rest 0, 11 : 2 = 5 Rest 1, 5 : 2 = 2 Rest 1, 2 : 2 = 1 Rest 0, 1 : 2 = 0 Rest 1. Von unten gelesen 101101.',
   ),
 
   rechnen(
@@ -1690,7 +1693,7 @@ final List<Question> questionsA04Daten = [
         '1110 1100',
         '20 = 0001 0100, umgekehrt 1110 1011, plus 1 = 1110 1100. Probe: -128 + 64 + 32 + 8 + 4 = -20.',
       ),
-      nein('1110 1011', 'Das ist nur das Einerkomplement - die + 1 fehlt.'),
+      nein('1110 1011', 'Das ist nur das Einerkomplement: die + 1 fehlt.'),
       nein(
         '1001 0100',
         'Das ist Vorzeichen + Betrag, nicht das Zweierkomplement.',
@@ -1726,9 +1729,9 @@ final List<Question> questionsA04Daten = [
     prompt: 'Welches Ergebnis hat die Addition 0110 1011 + 0001 0110?',
     choices: [
       ja('1000 0001', '107 + 22 = 129 = 128 + 1.'),
-      nein('0111 1101', 'Das ist 125 - beim Übertrag ist ein Fehler passiert.'),
+      nein('0111 1101', 'Das ist 125. Beim Übertrag ist ein Fehler passiert.'),
       nein('1000 0010', 'Das ist 130.'),
-      nein('0111 0001', 'Das ist 113 - Überträge wurden vergessen.'),
+      nein('0111 0001', 'Das ist 113. Überträge wurden vergessen.'),
     ],
     explanation:
         'Probe dezimal: 0110 1011 = 64 + 32 + 8 + 2 + 1 = 107, 0001 0110 = 16 + 4 + 2 = 22. 107 + 22 = 129 = 1000 0001. Binär gilt 1 + 1 = 0 mit Übertrag 1.',
@@ -1822,7 +1825,7 @@ final List<Question> questionsA04Daten = [
       wahl('2', ['1', '4']),
     ],
     explanation:
-        'Unicode legt die Codepoints fest, UTF-8 speichert sie mit variabler Länge von 1 bis 4 Byte. Die ersten 128 Zeichen entsprechen ASCII - reiner ASCII-Text ist daher gültiges UTF-8. Umlaute und ß brauchen 2 Byte, das Eurozeichen 3, Emojis 4.',
+        'Unicode legt die Codepoints fest, UTF-8 speichert sie mit variabler Länge von 1 bis 4 Byte. Die ersten 128 Zeichen entsprechen ASCII. Reiner ASCII-Text ist daher gültiges UTF-8. Umlaute und ß brauchen 2 Byte, das Eurozeichen 3, Emojis 4.',
   ),
 
   rechnen(
@@ -1853,7 +1856,7 @@ final List<Question> questionsA04Daten = [
       nein('33', 'Das ist das Ausrufezeichen.'),
     ],
     explanation:
-        'A-Z liegen bei 65-90, a-z bei 97-122. Der Abstand beträgt immer 32 - das entspricht genau einem Bit.',
+        'A-Z liegen bei 65-90, a-z bei 97-122. Der Abstand beträgt immer 32, das entspricht genau einem Bit.',
     difficulty: 1,
   ),
   rechnen(
@@ -2055,7 +2058,7 @@ final List<Question> questionsA04Daten = [
     prompt: 'Was ist an der Rechnung falsch?',
     choices: [
       ja(
-        'Megabyte wurden nicht in Megabit umgerechnet - richtig sind 80 s.',
+        'Megabyte wurden nicht in Megabit umgerechnet. Richtig sind 80 s.',
         '500 MB × 8 = 4.000 Mbit, 4.000 / 50 = 80 s.',
       ),
       nein(
@@ -2072,7 +2075,7 @@ final List<Question> questionsA04Daten = [
       ),
     ],
     explanation:
-        'Dauer = Datenmenge in Bit / Datenrate in Bit/s. 1 Byte = 8 Bit - ohne diese Umrechnung ist das Ergebnis um den Faktor 8 zu klein.',
+        'Dauer = Datenmenge in Bit / Datenrate in Bit/s. 1 Byte = 8 Bit. Ohne diese Umrechnung ist das Ergebnis um den Faktor 8 zu klein.',
     difficulty: 1,
   ),
 
@@ -2128,7 +2131,7 @@ final List<Question> questionsA04Daten = [
     'a4-mu-9',
     'md-uebertragung',
     scenario:
-        'In vier Angeboten wird die Geschwindigkeit unterschiedlich angegeben - mal in Bit, mal in Byte pro Sekunde.',
+        'In vier Angeboten wird die Geschwindigkeit unterschiedlich angegeben: mal in Bit, mal in Byte pro Sekunde.',
     prompt: 'Ordne die Datenraten von der niedrigsten zur höchsten.',
     items: ['800 Mbit/s', '110 MB/s', '120 MB/s', '1 Gbit/s'],
     explanation:
@@ -2161,11 +2164,11 @@ final List<Question> questionsA04Daten = [
     choices: [
       ja(
         '4A3B2C1D',
-        '4 × A, 3 × B, 2 × C, 1 × D - jeweils Anzahl vor dem Zeichen.',
+        '4 × A, 3 × B, 2 × C, 1 × D (jeweils Anzahl vor dem Zeichen).',
       ),
       nein(
         'A4B3C2D1',
-        'Hier steht das Zeichen vor der Anzahl - verlangt ist die umgekehrte Schreibweise.',
+        'Hier steht das Zeichen vor der Anzahl. Verlangt ist die umgekehrte Schreibweise.',
       ),
       nein('4A3B2C2D', 'D kommt nur einmal vor.'),
       nein(
@@ -2201,11 +2204,11 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'JPEG',
-        'Rasterformat mit Artefakten an harten Kanten - beim Vergrößern pixelig.',
+        'Rasterformat mit Artefakten an harten Kanten und beim Vergrößern pixelig.',
       ),
       nein(
         'PNG',
-        'Verlustfrei, aber ein Rasterformat - bei starker Vergrößerung pixelig.',
+        'Verlustfrei, aber ein Rasterformat. Bei starker Vergrößerung pixelig.',
       ),
       nein('BMP', 'Unkomprimiertes Rasterformat, groß und nicht skalierbar.'),
     ],
@@ -2324,7 +2327,7 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'Es arbeitet fest programmierte Wenn-dann-Regeln ab.',
-        'Das beschreibt regelbasierte Systeme - ein LLM hat sein Verhalten aus Daten gelernt.',
+        'Das beschreibt regelbasierte Systeme. Ein LLM hat sein Verhalten aus Daten gelernt.',
       ),
     ],
     explanation:
@@ -2349,7 +2352,7 @@ final List<Question> questionsA04Daten = [
     ],
     wortbank: ['starke', 'Tokens', 'Regression'],
     explanation:
-        'KI umfasst Machine Learning, Machine Learning umfasst Deep Learning. Gelernt wird durch das Anpassen von Gewichten. Heutige Systeme - auch Chatbots - sind schwache KI; eine starke KI mit menschenähnlichem Verständnis gibt es bisher nicht.',
+        'KI umfasst Machine Learning, Machine Learning umfasst Deep Learning. Gelernt wird durch das Anpassen von Gewichten. Heutige Systeme, auch Chatbots, sind schwache KI; eine starke KI mit menschenähnlichem Verständnis gibt es bisher nicht.',
   ),
   einfach(
     'a4-ig-4',
@@ -2357,7 +2360,7 @@ final List<Question> questionsA04Daten = [
     prompt: 'Was ist im Zusammenhang mit Sprachmodellen ein Token?',
     choices: [
       ja(
-        'Ein Textbaustein - Wort, Wortteil oder Satzzeichen -, den das Modell verarbeitet',
+        'Ein Textbaustein (Wort, Wortteil oder Satzzeichen), den das Modell verarbeitet',
         'Sprachmodelle zerlegen jeden Text in solche Bausteine.',
       ),
       nein(
@@ -2406,7 +2409,7 @@ final List<Question> questionsA04Daten = [
       ),
     ],
     explanation:
-        'Klassifikation liefert eine Kategorie, Regression einen Zahlenwert - beides überwachtes Lernen. Clustering findet Gruppen in Daten ohne Label (unüberwacht).',
+        'Klassifikation liefert eine Kategorie, Regression einen Zahlenwert, beides überwachtes Lernen. Clustering findet Gruppen in Daten ohne Label (unüberwacht).',
   ),
   einfach(
     'a4-ig-7',
@@ -2513,7 +2516,7 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'Verbindliche Vertragszusagen ohne Kontrolle an Kunden senden',
-        'Falsche Zusagen können rechtliche Folgen haben - ein Mensch muss prüfen.',
+        'Falsche Zusagen können rechtliche Folgen haben. Ein Mensch muss prüfen.',
       ),
       nein(
         'Rechnungsbeträge exakt berechnen statt mit der Buchhaltungssoftware',
@@ -2536,7 +2539,7 @@ final List<Question> questionsA04Daten = [
       'Geprüftes Ergebnis einsetzen',
     ],
     explanation:
-        'Gute Ergebnisse entstehen iterativ: klar fragen, Antwort prüfen, nachbessern - und erst das geprüfte Ergebnis verwenden.',
+        'Gute Ergebnisse entstehen iterativ: klar fragen, Antwort prüfen, nachbessern, und erst das geprüfte Ergebnis verwenden.',
   ),
   einfach(
     'a4-ie-4',
@@ -2547,7 +2550,7 @@ final List<Question> questionsA04Daten = [
     choices: [
       ja(
         'Den Code lesen und mit Tests und Grenzfällen prüfen',
-        'Kompilieren heißt nur: syntaktisch korrekt - nicht fachlich richtig oder sicher.',
+        'Kompilieren heißt nur: syntaktisch korrekt, nicht fachlich richtig oder sicher.',
       ),
       nein(
         'Den Code direkt in die Produktivumgebung übernehmen',
@@ -2559,7 +2562,7 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'Den Code verwerfen, weil KI-Code grundsätzlich unbrauchbar ist',
-        'Das ist überzogen - geprüft kann er sehr hilfreich sein.',
+        'Das ist überzogen. Geprüft kann er sehr hilfreich sein.',
       ),
     ],
     explanation:
@@ -2578,7 +2581,7 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'Möglichst wenige Wörter im Prompt verwenden',
-        'Kurz ist nicht gemeint - es geht um Beispiele.',
+        'Kurz ist nicht gemeint, es geht um Beispiele.',
       ),
       nein(
         'Die Frage mehrmals hintereinander stellen',
@@ -2710,7 +2713,7 @@ final List<Question> questionsA04Daten = [
       paar('Deepfake', 'täuschend echt gefälschtes Bild, Video oder Audio'),
     ],
     explanation:
-        'Halluzinationen sind gefährlich, weil sie flüssig und plausibel klingen - ohne Absicht des Modells, es berechnet nur Wahrscheinlichkeiten. Bias stammt aus den Trainingsdaten, Prompt Injection aus manipulierten Eingaben, Deepfakes sind künstlich erzeugte Fälschungen. Fakten, Quellen und Zahlen aus KI-Antworten immer prüfen.',
+        'Halluzinationen sind gefährlich, weil sie flüssig und plausibel klingen, ohne Absicht des Modells, es berechnet nur Wahrscheinlichkeiten. Bias stammt aus den Trainingsdaten, Prompt Injection aus manipulierten Eingaben, Deepfakes sind künstlich erzeugte Fälschungen. Fakten, Quellen und Zahlen aus KI-Antworten immer prüfen.',
     difficulty: 1,
   ),
   markieren(
@@ -2724,7 +2727,7 @@ final List<Question> questionsA04Daten = [
       ja('Vor- und Nachname der Kundin', 'Personenbezogenes Datum.'),
       nein(
         'Beschreibung des Mangels: „springt nach drei Wochen nicht mehr an“',
-        'Ohne Bezug zu einer Person - für die Antwort nötig.',
+        'Ohne Bezug zu einer Person und für die Antwort nötig.',
       ),
       ja('Anschrift der Kundin', 'Personenbezogenes Datum.'),
       ja(
@@ -2778,7 +2781,7 @@ final List<Question> questionsA04Daten = [
     choices: [
       ja(
         'Die Trainingsdaten spiegeln frühere Benachteiligungen wider (Bias).',
-        'Das Modell übernimmt die Muster seiner Daten - auch unfaire.',
+        'Das Modell übernimmt die Muster seiner Daten, auch unfaire.',
       ),
       nein(
         'Die KI halluziniert.',
@@ -2804,7 +2807,7 @@ final List<Question> questionsA04Daten = [
     prompt: 'Wie ist das nach der EU-KI-Verordnung einzuordnen?',
     choices: [
       ja(
-        'Verboten - Emotionserkennung am Arbeitsplatz gilt als unannehmbares Risiko',
+        'Verboten: Emotionserkennung am Arbeitsplatz gilt als unannehmbares Risiko',
         'Ausnahmen gibt es nur aus medizinischen oder Sicherheitsgründen.',
       ),
       nein(
@@ -2812,7 +2815,7 @@ final List<Question> questionsA04Daten = [
         'Emotionserkennung am Arbeitsplatz ist nicht nur streng geregelt, sondern verboten.',
       ),
       nein(
-        'Begrenztes Risiko - die Mitarbeitenden müssen nur informiert werden',
+        'Begrenztes Risiko: die Mitarbeitenden müssen nur informiert werden',
         'Eine Information reicht hier nicht.',
       ),
       nein(
@@ -2845,7 +2848,7 @@ final List<Question> questionsA04Daten = [
       ]),
     ],
     explanation:
-        'Der AI Act ersetzt die DSGVO nicht - sie gilt für jede Verarbeitung personenbezogener Daten. Wer solche Daten in KI-Systeme gibt, braucht eine Rechtsgrundlage, beachtet die Datenminimierung und schließt mit externen Anbietern einen Auftragsverarbeitungsvertrag. Art. 22 DSGVO betrifft ausschließlich automatisierte Entscheidungen.',
+        'Der AI Act ersetzt die DSGVO nicht. Sie gilt für jede Verarbeitung personenbezogener Daten. Wer solche Daten in KI-Systeme gibt, braucht eine Rechtsgrundlage, beachtet die Datenminimierung und schließt mit externen Anbietern einen Auftragsverarbeitungsvertrag. Art. 22 DSGVO betrifft ausschließlich automatisierte Entscheidungen.',
   ),
   einfach(
     'a4-ir-8',

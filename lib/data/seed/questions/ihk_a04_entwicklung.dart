@@ -103,7 +103,7 @@ final List<Question> ihkA04Entwicklung = [
     loesung:
         'Zum Beispiel: Ausgangssituation (Ist-Zustand), Ziele (Soll-Zustand), funktionale Anforderungen, nicht-funktionale Anforderungen, Rahmenbedingungen (Budget, Termine), Schnittstellen, Abnahmekriterien.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 4 Punkte. Nicht ins Lastenheft gehören technische Entscheidungen wie Programmiersprache oder Architektur - die trifft der Auftragnehmer im Pflichtenheft.',
+        'Je Nennung 1 Punkt, höchstens 4 Punkte. Nicht ins Lastenheft gehören technische Entscheidungen wie Programmiersprache oder Architektur. Die trifft der Auftragnehmer im Pflichtenheft.',
     difficulty: 1,
   ),
   tabelle(
@@ -142,7 +142,7 @@ final List<Question> ihkA04Entwicklung = [
       ],
     ],
     explanation:
-        'Der Auftraggeber beschreibt im Lastenheft vor der Angebotsphase, was er braucht - darauf kalkulieren die Anbieter. Nach der Vergabe beschreibt der Auftragnehmer im Pflichtenheft, wie und womit er umsetzt. Das genehmigte Pflichtenheft ist Maßstab der Abnahme.',
+        'Der Auftraggeber beschreibt im Lastenheft vor der Angebotsphase, was er braucht. Darauf kalkulieren die Anbieter. Nach der Vergabe beschreibt der Auftragnehmer im Pflichtenheft, wie und womit er umsetzt. Das genehmigte Pflichtenheft ist Maßstab der Abnahme.',
     punkte: 4,
     difficulty: 1,
   ),
@@ -204,7 +204,7 @@ final List<Question> ihkA04Entwicklung = [
     zeilen: [
       nein(
         'Users can book a meeting room for a specific date.',
-        'Buchen ist eine Tätigkeit des Systems - funktional.',
+        'Buchen ist eine Tätigkeit des Systems, also funktional.',
       ),
       ja(
         'The booking page must load within two seconds.',
@@ -228,7 +228,7 @@ final List<Question> ihkA04Entwicklung = [
       ),
     ],
     explanation:
-        'Nicht-funktional sind Ladezeit (within two seconds), Verfügbarkeit (available 99.5 %) und Speicherort (servers in the EU). Buchen, Bestätigungsmail und Stornieren beschreiben, was das System tut - funktional.',
+        'Nicht-funktional sind Ladezeit (within two seconds), Verfügbarkeit (available 99.5 %) und Speicherort (servers in the EU). Buchen, Bestätigungsmail und Stornieren beschreiben, was das System tut, also funktional.',
     punkte: 3,
   ),
   lueckentext(
@@ -296,7 +296,7 @@ final List<Question> ihkA04Entwicklung = [
       ),
     ],
     loesung:
-        '„Benutzerfreundlich“ ist subjektiv und nennt kein messbares Kriterium - bei der Abnahme kann niemand entscheiden, ob die Anforderung erfüllt ist. Geeignet wäre zum Beispiel: „Eine neue Lagerkraft bucht nach 30 Minuten Einweisung einen Wareneingang ohne Hilfe in höchstens 3 Bedienschritten.“',
+        '„Benutzerfreundlich“ ist subjektiv und nennt kein messbares Kriterium. Bei der Abnahme kann niemand entscheiden, ob die Anforderung erfüllt ist. Geeignet wäre zum Beispiel: „Eine neue Lagerkraft bucht nach 30 Minuten Einweisung einen Wareneingang ohne Hilfe in höchstens 3 Bedienschritten.“',
     explanation:
         '2 Punkte für die Begründung (nicht messbar, nicht prüfbar), 1 Punkt für ein Beispiel mit Messgröße und Grenzwert. Andere sinnvolle Beispiele sind möglich.',
   ),
@@ -346,7 +346,7 @@ final List<Question> ihkA04Entwicklung = [
       ],
     ],
     explanation:
-        'Das Interview liefert Tiefe durch Rückfragen, kostet aber viel Zeit je Person. Der Fragebogen erreicht viele, kommt aber oft nicht zurück. Die Beobachtung zeigt Routinen, die niemand erwähnt - allerdings arbeiten Beobachtete oft anders als sonst.',
+        'Das Interview liefert Tiefe durch Rückfragen, kostet aber viel Zeit je Person. Der Fragebogen erreicht viele, kommt aber oft nicht zurück. Die Beobachtung zeigt Routinen, die niemand erwähnt. Allerdings arbeiten Beobachtete oft anders als sonst.',
     punkte: 6,
   ),
   freitext(
@@ -580,7 +580,7 @@ final List<Question> ihkA04Entwicklung = [
       ),
     ],
     loesung:
-        '«include»: „Adresse prüfen“ ist fester Bestandteil - bei jeder Bestellung wird die Adresse geprüft. «extend»: „Gutschein einlösen“ erweitert die Bestellung nur unter einer Bedingung, nämlich wenn der Kunde einen Gutschein hat. Die Bestellung ist auch ohne die Erweiterung vollständig.',
+        '«include»: „Adresse prüfen“ ist fester Bestandteil: bei jeder Bestellung wird die Adresse geprüft. «extend»: „Gutschein einlösen“ erweitert die Bestellung nur unter einer Bedingung, nämlich wenn der Kunde einen Gutschein hat. Die Bestellung ist auch ohne die Erweiterung vollständig.',
     explanation:
         'Je Beziehung 2 Punkte: 1 für die Bedeutung, 1 für den Bezug zum Beispiel. Der «include»-Pfeil zeigt vom Basisfall zum eingebundenen Fall, der «extend»-Pfeil von der Erweiterung zum Basisfall.',
   ),
@@ -681,7 +681,7 @@ final List<Question> ihkA04Entwicklung = [
       ], 'Das Teil existiert nicht ohne das Ganze.'),
     ],
     explanation:
-        'Die Multiplizität steht an dem Ende, über das sie etwas aussagt: bei Bestellung 0..* (so viele hat ein Kunde), bei Kunde 1. Positionen gibt es mindestens eine (1..*), sie leben und sterben mit der Bestellung - Komposition, gefüllte Raute am Ganzen.',
+        'Die Multiplizität steht an dem Ende, über das sie etwas aussagt: bei Bestellung 0..* (so viele hat ein Kunde), bei Kunde 1. Positionen gibt es mindestens eine (1..*), sie leben und sterben mit der Bestellung: Komposition, gefüllte Raute am Ganzen.',
     punkte: 5,
     difficulty: 3,
   ),
@@ -803,7 +803,7 @@ final List<Question> ihkA04Entwicklung = [
     zeilen: [
       nein(
         '- artikelNr: String',
-        'Sichtbarkeit, Name, Doppelpunkt, Typ - korrekt.',
+        'Sichtbarkeit, Name, Doppelpunkt, Typ. Korrekt.',
       ),
       ja(
         '- double preis',
@@ -816,7 +816,7 @@ final List<Question> ihkA04Entwicklung = [
       ),
       nein(
         '+ einlagern(menge: int): void',
-        'Methode mit Parameter und Rückgabetyp - korrekt.',
+        'Methode mit Parameter und Rückgabetyp. Korrekt.',
       ),
       ja(
         'istLieferbar(): boolean +',
@@ -917,7 +917,7 @@ final List<Question> ihkA04Entwicklung = [
       nein('[bezahlt] und [else]', '[else] fängt alle übrigen Fälle ab.'),
       ja(
         '[Note <= 4] und [Note >= 4]',
-        'Bei Note 4 sind beide Bedingungen wahr - nicht eindeutig.',
+        'Bei Note 4 sind beide Bedingungen wahr, also nicht eindeutig.',
       ),
       nein(
         '[lieferbar] und [nicht lieferbar]',
@@ -925,7 +925,7 @@ final List<Question> ihkA04Entwicklung = [
       ),
     ],
     explanation:
-        'Bei [Alter > 18] und [Alter < 18] fehlt der Grenzwert 18 - der Ablauf bliebe stehen. Bei [Note <= 4] und [Note >= 4] trifft für 4 beides zu - der Weg wäre nicht eindeutig. Richtig sind Paare wie > und <= oder eine Bedingung mit [else].',
+        'Bei [Alter > 18] und [Alter < 18] fehlt der Grenzwert 18. Der Ablauf bliebe stehen. Bei [Note <= 4] und [Note >= 4] trifft für 4 beides zu. Der Weg wäre nicht eindeutig. Richtig sind Paare wie > und <= oder eine Bedingung mit [else].',
     punkte: 2,
   ),
   freitext(
@@ -963,7 +963,7 @@ final List<Question> ihkA04Entwicklung = [
       ),
     ],
     loesung:
-        'Nach einer Entscheidung (Raute) läuft genau ein Weg weiter - welcher, bestimmen die Bedingungen an den Kanten. Nach einer Gabelung (Balken) laufen alle Wege parallel. Hier sollen beide Aktionen gleichzeitig ablaufen, also gehört eine Gabelung hin, später eine Vereinigung.',
+        'Nach einer Entscheidung (Raute) läuft genau ein Weg weiter. Welcher, bestimmen die Bedingungen an den Kanten. Nach einer Gabelung (Balken) laufen alle Wege parallel. Hier sollen beide Aktionen gleichzeitig ablaufen, also gehört eine Gabelung hin, später eine Vereinigung.',
     explanation:
         'Je 2 Punkte für Entscheidung und Gabelung, weitere Punkte für das richtige Element oder die Vereinigung, höchstens 4. Merke: Raute = entweder-oder, Balken = gleichzeitig.',
   ),
@@ -1005,7 +1005,7 @@ final List<Question> ihkA04Entwicklung = [
       ),
     ],
     explanation:
-        'Die Raute ist eine Entscheidung, [ja] und [nein] sind ihre Bedingungen (Guards). 5 >= 5 ist wahr, also gilt der [ja]-Zweig: genehmigen. Aktionen sind nur die abgerundeten Rechtecke - Start, Raute und Ende zählen nicht mit: 4 Aktionen.',
+        'Die Raute ist eine Entscheidung, [ja] und [nein] sind ihre Bedingungen (Guards). 5 >= 5 ist wahr, also gilt der [ja]-Zweig: genehmigen. Aktionen sind nur die abgerundeten Rechtecke. Start, Raute und Ende zählen nicht mit: 4 Aktionen.',
     punkte: 4,
   ),
   tabelle(
@@ -1105,7 +1105,7 @@ final List<Question> ihkA04Entwicklung = [
     punkte: 2,
     kriterien: [
       krit(
-        'Eine Ganzzahl speichert keine führenden Nullen - aus 01067 wird 1067',
+        'Eine Ganzzahl speichert keine führenden Nullen: aus 01067 wird 1067',
         punkte: 2,
         stichwoerter: [
           'führende null',
@@ -1115,7 +1115,7 @@ final List<Question> ihkA04Entwicklung = [
         ],
       ),
       krit(
-        'Mit Postleitzahlen wird nicht gerechnet - sie sind Kennzeichen, keine Zahlenwerte',
+        'Mit Postleitzahlen wird nicht gerechnet. Sie sind Kennzeichen, keine Zahlenwerte',
         stichwoerter: [
           'nicht gerechnet',
           'kein rechnen',
@@ -1129,7 +1129,7 @@ final List<Question> ihkA04Entwicklung = [
       ),
     ],
     loesung:
-        'Ein int speichert nur den Zahlenwert, führende Nullen gehen verloren: Aus 01067 wird 1067. Mit einer Postleitzahl wird außerdem nie gerechnet - sie ist ein Kennzeichen. Ein String speichert die Zeichenfolge unverändert.',
+        'Ein int speichert nur den Zahlenwert, führende Nullen gehen verloren: Aus 01067 wird 1067. Mit einer Postleitzahl wird außerdem nie gerechnet. Sie ist ein Kennzeichen. Ein String speichert die Zeichenfolge unverändert.',
     explanation:
         '2 Punkte für die führende Null als Kernargument, alternativ je 1 Punkt für „es wird nicht gerechnet“ und „String speichert die Zeichen unverändert“, höchstens 2. Dasselbe gilt für Telefon- und Artikelnummern.',
     difficulty: 1,
@@ -1144,7 +1144,7 @@ final List<Question> ihkA04Entwicklung = [
     text:
         'int a = 17;\nint b = 5;\nint q = a / b;        // q = {0}\nint r = a % b;        // r = {1}\ndouble d = a / 2.0;   // d = {2}',
     luecken: [
-      zahl(3, rationale: '17 / 5 = 3 Rest 2 - der Rest fällt weg.'),
+      zahl(3, rationale: '17 / 5 = 3 Rest 2. Der Rest fällt weg.'),
       zahl(2, rationale: '17 - 3 × 5 = 2.'),
       zahl(8.5, rationale: '2.0 ist double, also wird mit Komma gerechnet.'),
     ],
@@ -1163,19 +1163,19 @@ final List<Question> ihkA04Entwicklung = [
     zeilen: [
       ja(
         'int menge = 3.5;',
-        'Eine Kommazahl passt nicht in int - nötig wäre double.',
+        'Eine Kommazahl passt nicht in int, nötig wäre double.',
       ),
-      nein('double preis = 19.99;', 'Kommazahl in double - passt.'),
+      nein('double preis = 19.99;', 'Kommazahl in double: passt.'),
       ja(
         'boolean aktiv = "ja";',
         'boolean kennt nur true und false, "ja" ist ein String.',
       ),
-      nein('String plz = "01067";', 'Text in Anführungszeichen - passt.'),
+      nein('String plz = "01067";', 'Text in Anführungszeichen: passt.'),
       ja(
         'char klasse = "AB";',
         'char speichert genau ein Zeichen in einfachen Anführungszeichen.',
       ),
-      nein('int stueck = 40;', 'Ganze Zahl in int - passt.'),
+      nein('int stueck = 40;', 'Ganze Zahl in int: passt.'),
     ],
     explanation:
         'int nimmt nur ganze Zahlen, boolean nur true oder false, char genau ein Zeichen wie \'A\'. Die übrigen drei Zeilen sind korrekt: double für Kommazahlen, String für Text, int für ganze Zahlen.',
@@ -1202,14 +1202,14 @@ for (int i = 10; i > 0; i -= 3) {
       ['4', zahl(1), zahl(22)],
     ],
     explanation:
-        'i nimmt die Werte 10, 7, 4 und 1 an. summe: 0 + 10 = 10, 10 + 7 = 17, 17 + 4 = 21, 21 + 1 = 22. Danach wäre i = -2, und -2 > 0 ist falsch - die Schleife endet nach 4 Durchläufen.',
+        'i nimmt die Werte 10, 7, 4 und 1 an. summe: 0 + 10 = 10, 10 + 7 = 17, 17 + 4 = 21, 21 + 1 = 22. Danach wäre i = -2, und -2 > 0 ist falsch. Die Schleife endet nach 4 Durchläufen.',
     punkte: 4,
   ),
   lueckentext(
     'i4-pk-2',
     'pl-kontrollstrukturen',
     scenario:
-        'Vor dem Start eines Updates soll ein Countdown die Zahlen 5, 4, 3, 2, 1 ausgeben - die 0 nicht.',
+        'Vor dem Start eines Updates soll ein Countdown die Zahlen 5, 4, 3, 2, 1 ausgeben, aber die 0 nicht.',
     prompt: 'Ergänze die Schleife. (3 P.)',
     mono: true,
     text: 'i ← {0}\nSOLANGE i {1} 0\n  AUSGABE i\n  i ← i {2} 1\nENDE SOLANGE',
@@ -1219,7 +1219,7 @@ for (int i = 10; i > 0; i -= 3) {
       wahl('-', ['+', '*'], 'Der Zähler muss kleiner werden.'),
     ],
     explanation:
-        'Der Zähler startet bei 5 und wird in jedem Durchlauf um 1 verringert. Die Bedingung i > 0 lässt 5, 4, 3, 2, 1 zu. Bei i = 0 ist 0 > 0 falsch - die 0 wird nicht mehr ausgegeben.',
+        'Der Zähler startet bei 5 und wird in jedem Durchlauf um 1 verringert. Die Bedingung i > 0 lässt 5, 4, 3, 2, 1 zu. Bei i = 0 ist 0 > 0 falsch. Die 0 wird nicht mehr ausgegeben.',
     punkte: 3,
     difficulty: 1,
   ),
@@ -1278,7 +1278,7 @@ ENDE WENN''',
       nein('summe ← 0', 'Die Summe startet richtig bei 0.'),
       ja(
         'FÜR i VON 0 BIS n',
-        'Die Schleife läuft bis Index 4 - werte[4] gibt es nicht.',
+        'Die Schleife läuft bis Index 4: werte[4] gibt es nicht.',
       ),
       nein('  summe ← summe + werte[i]', 'So wird richtig aufsummiert.'),
       nein('ENDE FÜR', 'Schließt die Schleife.'),
@@ -1288,7 +1288,7 @@ ENDE WENN''',
       ),
     ],
     explanation:
-        'Bei n = 4 Elementen sind die Indizes 0 bis 3. FÜR i VON 0 BIS n greift im letzten Durchlauf auf werte[4] zu - das Element existiert nicht. Richtig ist FÜR i VON 0 BIS n - 1.',
+        'Bei n = 4 Elementen sind die Indizes 0 bis 3. FÜR i VON 0 BIS n greift im letzten Durchlauf auf werte[4] zu. Das Element existiert nicht. Richtig ist FÜR i VON 0 BIS n - 1.',
     punkte: 1,
   ),
   paare(
@@ -1350,7 +1350,7 @@ ENDE WENN''',
       ),
     ],
     loesung:
-        'Die kopfgesteuerte Schleife prüft die Bedingung vor jedem Durchlauf - ist sie von Anfang an falsch, läuft der Rumpf gar nicht. Die fußgesteuerte Schleife prüft erst nach dem Durchlauf, der Rumpf läuft also mindestens einmal. Das Menü muss mindestens einmal angezeigt werden, deshalb passt die fußgesteuerte Schleife.',
+        'Die kopfgesteuerte Schleife prüft die Bedingung vor jedem Durchlauf. Ist sie von Anfang an falsch, läuft der Rumpf gar nicht. Die fußgesteuerte Schleife prüft erst nach dem Durchlauf, der Rumpf läuft also mindestens einmal. Das Menü muss mindestens einmal angezeigt werden, deshalb passt die fußgesteuerte Schleife.',
     explanation:
         'Je Schleifenart 2 Punkte (Zeitpunkt der Prüfung und Folge für die Anzahl der Durchläufe), 1 Punkt für die begründete Wahl, höchstens 4.',
   ),
@@ -1388,7 +1388,7 @@ ENDE WENN''',
       ),
       ja(
         '  gesamt ← gesamt * gewicht[i]',
-        'Hier wird multipliziert statt addiert - 0 mal irgendetwas bleibt 0.',
+        'Hier wird multipliziert statt addiert. 0 mal irgendetwas bleibt 0.',
       ),
       nein('ENDE FÜR', 'Schließt die Schleife.'),
       nein('AUSGABE gesamt', 'Die Ausgabe erfolgt richtig nach der Schleife.'),
@@ -1608,7 +1608,7 @@ end function''',
       ], 'Der Wert geht an den Aufrufer zurück.'),
     ],
     explanation:
-        '„Bis einschließlich 1000 g“ heißt gramm <= 1000 - mit < würde eine Sendung mit genau 1000 g zu teuer. Im SONST-Zweig steht der höhere Preis. RÜCKGABE liefert den Wert an das aufrufende Programm, AUSGABE würde ihn nur anzeigen.',
+        '„Bis einschließlich 1000 g“ heißt gramm <= 1000. Mit < würde eine Sendung mit genau 1000 g zu teuer. Im SONST-Zweig steht der höhere Preis. RÜCKGABE liefert den Wert an das aufrufende Programm, AUSGABE würde ihn nur anzeigen.',
     punkte: 3,
   ),
 
@@ -1649,7 +1649,7 @@ AUSGABE fehl''',
       ['Ausgabe', '', '', zahl(7)],
     ],
     explanation:
-        'i = 0: 12 < 5 falsch. i = 1: 5 < 5 ist falsch - der Grenzwert zählt bei < nicht mit. i = 2: 8 < 5 falsch. i = 3: 3 < 5 wahr, fehl = 0 + 5 - 3 = 2. i = 4: 0 < 5 wahr, fehl = 2 + 5 - 0 = 7. Ausgabe: 7.',
+        'i = 0: 12 < 5 falsch. i = 1: 5 < 5 ist falsch. Der Grenzwert zählt bei < nicht mit. i = 2: 8 < 5 falsch. i = 3: 3 < 5 wahr, fehl = 0 + 5 - 3 = 2. i = 4: 0 < 5 wahr, fehl = 2 + 5 - 0 = 7. Ausgabe: 7.',
     punkte: 8,
   ),
   tabelle(
@@ -1675,7 +1675,7 @@ AUSGABE tag''',
       ['Ausgabe', '', zahl(4)],
     ],
     explanation:
-        'Jeder Durchlauf verringert offen um 8: 40, 32, 24, 16, 8. Nach dem vierten Durchlauf ist offen = 8, und 8 > 8 ist falsch - die Schleife endet. Ausgabe: tag = 4.',
+        'Jeder Durchlauf verringert offen um 8: 40, 32, 24, 16, 8. Nach dem vierten Durchlauf ist offen = 8, und 8 > 8 ist falsch, die Schleife endet. Ausgabe: tag = 4.',
     punkte: 5,
   ),
   tabelle(
@@ -1719,7 +1719,7 @@ ENDE FUNKTION''',
       ],
     ],
     explanation:
-        'stufe(5000, 4): 5000 > 5000 ist falsch, 5000 > 1000 wahr: „Bronze“ - die Jahre spielen hier keine Rolle. stufe(5001, 3): wahr, 3 >= 3 wahr: „Gold“. stufe(8000, 2): wahr, 2 >= 3 falsch: „Silber“. stufe(1000, 10): beide Umsatzbedingungen falsch: „Basis“.',
+        'stufe(5000, 4): 5000 > 5000 ist falsch, 5000 > 1000 wahr: „Bronze“. Die Jahre spielen hier keine Rolle. stufe(5001, 3): wahr, 3 >= 3 wahr: „Gold“. stufe(8000, 2): wahr, 2 >= 3 falsch: „Silber“. stufe(1000, 10): beide Umsatzbedingungen falsch: „Basis“.',
     punkte: 8,
     difficulty: 3,
   ),
@@ -1755,7 +1755,7 @@ print total''',
       ['Ausgabe', zahl(50, toleranz: 0.005)],
     ],
     explanation:
-        'J1: 2,00 + 100 × 0,05 = 7,00, plus Farbe 100 × 0,15 = 15,00, zusammen 22,00. J2: 2,00 + 200 × 0,05 = 12,00. J3: 2,00 + 3,50 + 10,50 = 16,00. Summe: 50,00. 50 > 50 ist falsch - kein Rabatt, Ausgabe 50,00.',
+        'J1: 2,00 + 100 × 0,05 = 7,00, plus Farbe 100 × 0,15 = 15,00, zusammen 22,00. J2: 2,00 + 200 × 0,05 = 12,00. J3: 2,00 + 3,50 + 10,50 = 16,00. Summe: 50,00. 50 > 50 ist falsch, also kein Rabatt, Ausgabe 50,00.',
     punkte: 8,
     difficulty: 3,
   ),
@@ -1797,11 +1797,11 @@ end for''',
     zeilen: [
       ja(
         '4711  total 250.00  paid false',
-        '250 >= 100 und nicht bezahlt - wird ausgegeben.',
+        '250 >= 100 und nicht bezahlt: wird ausgegeben.',
       ),
       ja(
         '4712  total 100.00  paid false',
-        '100 >= 100 ist wahr - der Grenzwert zählt bei >= mit.',
+        '100 >= 100 ist wahr. Der Grenzwert zählt bei >= mit.',
       ),
       nein('4713  total  99.99  paid false', '99.99 >= 100 ist falsch.'),
       nein(
@@ -1841,7 +1841,7 @@ AUSGABE a''',
       ['Ausgabe', '', zahl(6), ''],
     ],
     explanation:
-        'Durchlauf 1: 90 MOD 24 = 18 (3 × 24 = 72), a = 24, b = 18. Durchlauf 2: 24 MOD 18 = 6, a = 18, b = 6. Durchlauf 3: 18 MOD 6 = 0, a = 6, b = 0. 0 > 0 ist falsch - Ausgabe 6. Der größte gemeinsame Teiler von 90 und 24 ist 6.',
+        'Durchlauf 1: 90 MOD 24 = 18 (3 × 24 = 72), a = 24, b = 18. Durchlauf 2: 24 MOD 18 = 6, a = 18, b = 6. Durchlauf 3: 18 MOD 6 = 0, a = 6, b = 0. 0 > 0 ist falsch, also Ausgabe 6. Der größte gemeinsame Teiler von 90 und 24 ist 6.',
     punkte: 10,
     difficulty: 3,
   ),
@@ -1927,14 +1927,14 @@ AUSGABE a''',
     loesung:
         'Zum Beispiel: Wiederverwendbarkeit (Klassen lassen sich in anderen Programmen erneut nutzen) und bessere Wartbarkeit (Daten und Funktionen stehen zusammen in einer Klasse). Ebenfalls richtig: Erweiterbarkeit, Kapselung, Nähe zur Realität.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 2. Stichworte genügen. Die Lösungsliste ist länger als verlangt - gewertet werden die ersten beiden richtigen Nennungen.',
+        'Je Nennung 1 Punkt, höchstens 2. Stichworte genügen. Die Lösungsliste ist länger als verlangt. Gewertet werden die ersten beiden richtigen Nennungen.',
     difficulty: 1,
   ),
   tabelle(
     'i4-og-3',
     'oo-grundbegriffe',
     scenario:
-        'Die Klasse Zaehler hat das Attribut stand (Startwert 0) sowie die Methoden erhoehen() - addiert 1 - und zuruecksetzen() - setzt stand auf 0. Es werden zwei Objekte erzeugt: z1 und z2.',
+        'Die Klasse Zaehler hat das Attribut stand (Startwert 0) sowie die Methoden erhoehen() (addiert 1) und zuruecksetzen() (setzt stand auf 0). Es werden zwei Objekte erzeugt: z1 und z2.',
     prompt:
         'Trage nach jeder Anweisung den Wert von stand in beiden Objekten ein. (5 P.)',
     zeilen: [
@@ -1999,7 +1999,7 @@ AUSGABE a''',
     punkte: 4,
     kriterien: [
       krit(
-        'Das Attribut wird private - von außen ist kein direkter Zugriff mehr möglich',
+        'Das Attribut wird private: von außen ist kein direkter Zugriff mehr möglich',
         punkte: 2,
         stichwoerter: [
           'private',
@@ -2034,7 +2034,7 @@ AUSGABE a''',
     loesung:
         'Das Attribut preis wird private, sodass andere Klassen nicht mehr direkt darauf zugreifen können. Gelesen wird über den öffentlichen Getter getPreis(), geändert über den öffentlichen Setter setPreis(). Der Setter prüft den neuen Wert und übernimmt ihn nur, wenn er nicht negativ ist.',
     explanation:
-        'Je Aspekt 2 Punkte, höchstens 4: private Attribute, öffentliche Getter/Setter, Prüfung im Setter. So ändert nur die Klasse selbst ihre Daten - nach ihren eigenen Regeln.',
+        'Je Aspekt 2 Punkte, höchstens 4: private Attribute, öffentliche Getter/Setter, Prüfung im Setter. So ändert nur die Klasse selbst ihre Daten, nach ihren eigenen Regeln.',
   ),
   lueckentext(
     'i4-ok-2',
@@ -2081,7 +2081,7 @@ AUSGABE a''',
       nein('k.einzahlen(200);', 'einzahlen ist public.'),
       ja(
         'k.kontostand = 500;',
-        'kontostand ist private - kein Zugriff von außen.',
+        'kontostand ist private: kein Zugriff von außen.',
       ),
       nein('double s = k.getKontostand();', 'Der Getter ist public.'),
       ja('k.pin = "0000";', 'pin ist private, einen Setter gibt es nicht.'),
@@ -2127,7 +2127,7 @@ AUSGABE a''',
       ],
     ],
     explanation:
-        '22 liegt im Bereich: 22. 27 ist zu hoch: bleibt 22. 26 ist die obere Grenze und eingeschlossen: 26. 15 ist zu niedrig: bleibt 26. 16 ist die untere Grenze und eingeschlossen: 16. Abgelehnte Werte lösen keinen Compilerfehler aus - der Setter ignoriert sie nur.',
+        '22 liegt im Bereich: 22. 27 ist zu hoch: bleibt 22. 26 ist die obere Grenze und eingeschlossen: 26. 15 ist zu niedrig: bleibt 26. 16 ist die untere Grenze und eingeschlossen: 16. Abgelehnte Werte lösen keinen Compilerfehler aus. Der Setter ignoriert sie nur.',
     punkte: 5,
   ),
 
@@ -2158,7 +2158,7 @@ AUSGABE a''',
       ], 'new erzeugt das Objekt und ruft den Konstruktor auf.'),
     ],
     explanation:
-        'Der Konstruktor trägt den Klassennamen und hat keinen Rückgabetyp - auch nicht void. this.nr = nr kopiert den Parameter in das Attribut. status erhält den Startwert "offen". Erzeugt wird das Objekt mit new Ticket(4711).',
+        'Der Konstruktor trägt den Klassennamen und hat keinen Rückgabetyp, auch nicht void. this.nr = nr kopiert den Parameter in das Attribut. status erhält den Startwert "offen". Erzeugt wird das Objekt mit new Ticket(4711).',
     punkte: 4,
   ),
   tabelle(
@@ -2176,7 +2176,7 @@ AUSGABE a''',
       ['b.einzahlen(10);', zahl(160), zahl(160)],
     ],
     explanation:
-        'c = a kopiert nur die Referenz: a und c zeigen auf dasselbe Objekt, also wirkt c.einzahlen(50) auch auf a (150). Nach b = c zeigt auch b auf dieses Objekt (150). b.einzahlen(10) ändert es auf 160 - für a, b und c. Das Objekt mit 40 ist nicht mehr erreichbar.',
+        'c = a kopiert nur die Referenz: a und c zeigen auf dasselbe Objekt, also wirkt c.einzahlen(50) auch auf a (150). Nach b = c zeigt auch b auf dieses Objekt (150). b.einzahlen(10) ändert es auf 160, für a, b und c. Das Objekt mit 40 ist nicht mehr erreichbar.',
     punkte: 8,
     difficulty: 3,
   ),
@@ -2247,7 +2247,7 @@ AUSGABE a''',
       paar('k.setName("Ayhan");', 'Attributwert über Setter ändern'),
     ],
     explanation:
-        'new erzeugt ein Objekt und ruft den Konstruktor auf. Eine Zuweisung wie k2 = k kopiert nur die Referenz - beide Variablen zeigen auf dasselbe Objekt. this.name ist das Attribut, name der Parameter. Getter lesen, Setter ändern den Wert.',
+        'new erzeugt ein Objekt und ruft den Konstruktor auf. Eine Zuweisung wie k2 = k kopiert nur die Referenz. Beide Variablen zeigen auf dasselbe Objekt. this.name ist das Attribut, name der Parameter. Getter lesen, Setter ändern den Wert.',
     punkte: 4,
   ),
 ];

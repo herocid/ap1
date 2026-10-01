@@ -8,7 +8,7 @@ final List<Nugget> nuggetsA05 = [
     'n-qg-1',
     'qm-grundlagen',
     'Was ist Qualität?',
-    'Qualität ist der Grad, in dem ein Produkt die vereinbarten Anforderungen erfüllt. Sie ist also relativ: Eine einfache Kassen-App, die genau das Geforderte zuverlässig leistet, hat hohe Qualität - auch wenn sie keine Extras bietet.',
+    'Qualität ist der Grad, in dem ein Produkt die vereinbarten Anforderungen erfüllt. Sie ist also relativ: Eine einfache Kassen-App, die genau das Geforderte zuverlässig leistet, hat hohe Qualität, auch wenn sie keine Extras bietet.',
     merksatz:
         'Ohne prüfbare Anforderungen lässt sich Qualität nicht feststellen.',
   ),
@@ -98,7 +98,7 @@ final List<Nugget> nuggetsA05 = [
       ['Test', 'dynamisch', 'Programm läuft mit Testdaten'],
     ],
     points: [
-      'Statische Prüfungen gehen auch mit Anforderungen und Entwürfen - lange bevor Code existiert.',
+      'Statische Prüfungen gehen auch mit Anforderungen und Entwürfen, lange bevor Code existiert.',
     ],
   ),
   vergleich(
@@ -159,7 +159,7 @@ final List<Nugget> nuggetsA05 = [
       'Erst beim Kunden gefunden (drei Phasen später): 6 × 10.000 € = 60.000 €',
       'Verhältnis: 60.000 € / 60 € = 1.000',
     ],
-    ergebnis: 'Früh gefunden 60 €, beim Kunden 60.000 € - das Tausendfache',
+    ergebnis: 'Früh gefunden 60 €, beim Kunden 60.000 €, also das Tausendfache',
   ),
   falle(
     'n-qg-11',
@@ -240,7 +240,7 @@ final List<Nugget> nuggetsA05 = [
     'n-qe-6',
     'qm-merkmale',
     'Messbar formulieren',
-    'Aus einem Wunsch wird so eine prüfbare Anforderung - am Beispiel „Die Suche soll schnell sein.“',
+    'Aus einem Wunsch wird so eine prüfbare Anforderung, hier am Beispiel „Die Suche soll schnell sein.“',
     [
       'Was ist gemeint? Schnelligkeit, also die Antwortzeit.',
       'Messgröße festlegen: Antwortzeit der Suche in Sekunden.',
@@ -272,13 +272,13 @@ final List<Nugget> nuggetsA05 = [
       'Verfügbarkeit: 715 h / 720 h × 100 % ≈ 99,31 %',
       'Vergleich: 99,31 % < 99,5 % (erlaubt wären nur 3,6 h Ausfall)',
     ],
-    ergebnis: 'Rund 99,31 % - die Vereinbarung wurde nicht eingehalten',
+    ergebnis: 'Rund 99,31 %: die Vereinbarung wurde nicht eingehalten',
   ),
   falle(
     'n-qe-9',
     'qm-merkmale',
     'Gleiches Thema, andere Art',
-    'Dieselbe Sache kann funktional oder nicht funktional sein. „Kunden können ihr Passwort zurücksetzen“ ist eine Funktion. „Passwörter werden nur als Hash gespeichert“ beschreibt, wie gut die Daten geschützt sind - nicht funktional. Entscheidend ist die Frage: Beschreibt der Satz eine Leistung oder eine Eigenschaft?',
+    'Dieselbe Sache kann funktional oder nicht funktional sein. „Kunden können ihr Passwort zurücksetzen“ ist eine Funktion. „Passwörter werden nur als Hash gespeichert“ beschreibt, wie gut die Daten geschützt sind, also nicht funktional. Entscheidend ist die Frage: Beschreibt der Satz eine Leistung oder eine Eigenschaft?',
     merksatz: 'Funktional fragt „Was?“, nicht funktional fragt „Wie gut?“',
   ),
   falle(
@@ -360,7 +360,7 @@ final List<Nugget> nuggetsA05 = [
     [
       'Plan: Ziel ist ein Anteil unter 15 % in drei Monaten. Maßnahme: ein Self-Service-Portal zum Zurücksetzen.',
       'Do: Das Portal wird zunächst nur im Vertrieb eingeführt.',
-      'Check: Im Vertrieb sinkt der Anteil auf 12 % - das Ziel ist erreicht.',
+      'Check: Im Vertrieb sinkt der Anteil auf 12 %. Das Ziel ist erreicht.',
       'Act: Das Portal wird für alle Abteilungen eingeführt, die Anleitung kommt ins Wiki. Der nächste Zyklus nimmt das zweithäufigste Ticketthema ins Visier.',
     ],
   ),
@@ -373,15 +373,15 @@ final List<Nugget> nuggetsA05 = [
       'Anteil vorher: 300 / 1.000 = 0,30 = 30 %',
       'Anteil nachher: 96 / 800 = 0,12 = 12 %',
       'Veränderung: 30 % - 12 % = 18 Prozentpunkte',
-      'Relativ: 18 / 30 = 0,6 - der Anteil ist um 60 % gesunken',
+      'Relativ: 18 / 30 = 0,6: der Anteil ist um 60 % gesunken',
       'Vergleich mit dem Ziel: 12 % liegt unter 15 %',
     ],
-    ergebnis: 'Ziel erreicht - in Act wird das Portal zum Standard.',
+    ergebnis: 'Ziel erreicht: in Act wird das Portal zum Standard.',
   ),
   konzept(
     'n-qp-7',
     'qm-pdca',
-    'KVP - der Kreis dreht weiter',
+    'KVP: der Kreis dreht weiter',
     'Der kontinuierliche Verbesserungsprozess (KVP) setzt auf viele kleine, stetige Verbesserungen statt auf seltene große Umbrüche. PDCA ist sein Werkzeug: Nach „Act“ beginnt der nächste Zyklus. Beteiligt sind die Mitarbeitenden, weil sie die Schwachstellen im Alltag am besten kennen.',
   ),
   vergleich(
@@ -420,7 +420,7 @@ final List<Nugget> nuggetsA05 = [
     'qm-pdca',
     'Auf einen Blick',
     'PDCA verbindet Planung, Erprobung, Messung und Standardisierung zu einem Kreis.',
-    satz: 'Erst prüfen, dann verbreiten - und danach wieder von vorn.',
+    satz: 'Erst prüfen, dann verbreiten und danach wieder von vorn.',
   ),
 
   // ============================================================ Teststufen
@@ -434,7 +434,7 @@ final List<Nugget> nuggetsA05 = [
     'n-ss-2',
     'ts-stufen',
     'Die Teststufen übereinander',
-    'Von unten nach oben wächst der Prüfgegenstand - vom einzelnen Baustein bis zum Gesamtsystem beim Kunden.',
+    'Von unten nach oben wächst der Prüfgegenstand, vom einzelnen Baustein bis zum Gesamtsystem beim Kunden.',
     const StapelDiagramm(
       [
         StapelEbene('Abnahmetest', 'Auftraggeber prüft'),
@@ -499,8 +499,8 @@ final List<Nugget> nuggetsA05 = [
     'Testtreiber und Stub',
     'Fehlen beim Testen noch Teile, werden sie durch Platzhalter ersetzt. Beispiel: Das Bestellmodul soll getestet werden, der Zahlungsdienst ist aber noch nicht fertig.',
     points: [
-      'Stub: ersetzt eine aufgerufene Komponente - hier einen Zahlungsdienst, der immer „bezahlt“ meldet.',
-      'Testtreiber: ersetzt den Aufrufer - er ruft das Bestellmodul mit Testdaten auf und prüft das Ergebnis.',
+      'Stub: ersetzt eine aufgerufene Komponente, hier einen Zahlungsdienst, der immer „bezahlt“ meldet.',
+      'Testtreiber: ersetzt den Aufrufer. Er ruft das Bestellmodul mit Testdaten auf und prüft das Ergebnis.',
     ],
   ),
   vergleich(
@@ -520,7 +520,7 @@ final List<Nugget> nuggetsA05 = [
     'n-ss-7',
     'ts-stufen',
     'Teststufe oder Testart?',
-    'Teststufen sagen, WAS geprüft wird. Testarten sagen, WORAUF geprüft wird - sie kommen auf mehreren Stufen vor.',
+    'Teststufen sagen, WAS geprüft wird. Testarten sagen, WORAUF geprüft wird. Sie kommen auf mehreren Stufen vor.',
     [
       ['Testart', 'Prüft'],
       ['funktionaler Test', 'richtige Ergebnisse laut Spezifikation'],
@@ -547,13 +547,13 @@ final List<Nugget> nuggetsA05 = [
     'n-ss-9',
     'ts-stufen',
     'Systemtest ist nicht Abnahme',
-    'Den Systemtest führt der Auftragnehmer durch, um die Spezifikation zu prüfen. Den Abnahmetest verantwortet der Auftraggeber - er entscheidet, ob er das Ergebnis annimmt. Und: Der Regressionstest ist keine eigene Stufe, sondern wird nach jeder Änderung auf jeder Stufe wiederholt.',
+    'Den Systemtest führt der Auftragnehmer durch, um die Spezifikation zu prüfen. Den Abnahmetest verantwortet der Auftraggeber, denn er entscheidet, ob er das Ergebnis annimmt. Und: Der Regressionstest ist keine eigene Stufe, sondern wird nach jeder Änderung auf jeder Stufe wiederholt.',
   ),
   merke(
     'n-ss-10',
     'ts-stufen',
     'Auf einen Blick',
-    'Komponente, Integration, System, Abnahme - vom kleinsten Baustein bis zum Kunden.',
+    'Komponente, Integration, System, Abnahme: vom kleinsten Baustein bis zum Kunden.',
     satz: 'Der Stub wird aufgerufen, der Treiber ruft auf.',
   ),
 
@@ -657,7 +657,7 @@ final List<Nugget> nuggetsA05 = [
     'Überdeckung im Beispiel',
     'Für den Rabatt-Code gibt es bisher nur einen Testfall: betrag = 50. Gezählt werden die drei Zuweisungen als Anweisungen. Wie hoch sind Anweisungs- und Zweigüberdeckung?',
     schritte: [
-      'Anweisungen: rabatt = 0, rabatt = 5, zahlen = betrag - rabatt - also 3',
+      'Anweisungen: rabatt = 0, rabatt = 5, zahlen = betrag - rabatt, also 3',
       'Mit betrag = 50 laufen rabatt = 0 und zahlen = betrag - rabatt: 2 von 3',
       'Anweisungsüberdeckung: 2 / 3 × 100 % ≈ 66,7 %',
       'Zweige: ja und nein; durchlaufen wird nur nein: 1 / 2 × 100 % = 50 %',
@@ -671,13 +671,13 @@ final List<Nugget> nuggetsA05 = [
     'Testfälle für zwei Abfragen',
     'Eine Funktion enthält zwei voneinander unabhängige WENN-Abfragen ohne SONST-Teil: WENN betrag > 100 (Rabatt) und WENN express (Zuschlag). Wie viele Testfälle braucht welche Überdeckung mindestens?',
     schritte: [
-      'Anweisungsüberdeckung: Ein Testfall, der beide Ja-Zweige nimmt, führt alle Anweisungen aus - 1 Testfall.',
-      'Zweigüberdeckung: 4 Zweige. Testfall 1 nimmt beide Ja-, Testfall 2 beide Nein-Zweige - 2 Testfälle.',
-      'Pfadüberdeckung: jede Kombination, 2 × 2 = 4 Pfade - 4 Testfälle.',
+      'Anweisungsüberdeckung: Ein Testfall, der beide Ja-Zweige nimmt, führt alle Anweisungen aus, also 1 Testfall.',
+      'Zweigüberdeckung: 4 Zweige. Testfall 1 nimmt beide Ja-, Testfall 2 beide Nein-Zweige, also 2 Testfälle.',
+      'Pfadüberdeckung: jede Kombination, 2 × 2 = 4 Pfade, also 4 Testfälle.',
     ],
     ergebnis: 'Anweisungen: 1, Zweige: 2, Pfade: 4 Testfälle',
     merksatz:
-        'Bei n unabhängigen Abfragen gibt es 2 hoch n Pfade - deshalb ist volle Pfadüberdeckung selten machbar.',
+        'Bei n unabhängigen Abfragen gibt es 2 hoch n Pfade, deshalb ist volle Pfadüberdeckung selten machbar.',
   ),
   vergleich(
     'n-sv-9',
@@ -709,7 +709,7 @@ final List<Nugget> nuggetsA05 = [
     'Unit-Tests und testgetriebene Entwicklung',
     'Automatisierte Komponententests (Unit-Tests) prüfen einzelne Funktionen per Code und laufen bei jedem Build. Bei der testgetriebenen Entwicklung (TDD) schreibt man den Test sogar vor dem Code, in einem kurzen Kreislauf.',
     points: [
-      'Red: Test schreiben - er schlägt fehl, weil der Code noch fehlt.',
+      'Red: Test schreiben. Er schlägt fehl, weil der Code noch fehlt.',
       'Green: gerade so viel Code schreiben, dass der Test besteht.',
       'Refactor: Code aufräumen, der Test bleibt grün.',
     ],
@@ -718,7 +718,7 @@ final List<Nugget> nuggetsA05 = [
     'n-sv-11',
     'ts-verfahren',
     '100 % Überdeckung ist nicht fehlerfrei',
-    'Volle Zweigüberdeckung heißt nur, dass jeder Zweig einmal lief - nicht, dass er das Richtige tut. Und eine Anforderung, die nie programmiert wurde, findet kein White-Box-Test, weil es dafür keinen Code gibt. Dafür braucht es den Black-Box-Test.',
+    'Volle Zweigüberdeckung heißt nur, dass jeder Zweig einmal lief, nicht, dass er das Richtige tut. Und eine Anforderung, die nie programmiert wurde, findet kein White-Box-Test, weil es dafür keinen Code gibt. Dafür braucht es den Black-Box-Test.',
   ),
   merke(
     'n-sv-12',
@@ -726,7 +726,7 @@ final List<Nugget> nuggetsA05 = [
     'Auf einen Blick',
     'Black-Box prüft, ob das Richtige gebaut wurde; White-Box prüft, ob alles Gebaute durchlaufen wurde.',
     satz:
-        'Black-Box aus der Spezifikation, White-Box aus dem Code - gute Tests brauchen beides.',
+        'Black-Box aus der Spezifikation, White-Box aus dem Code. Gute Tests brauchen beides.',
   ),
 
   // ====================================================== Testfälle entwerfen
@@ -781,18 +781,18 @@ final List<Nugget> nuggetsA05 = [
       'Unter 0 und über 120 sind ungültig, dazu kommt die Klasse „keine Zahl“.',
       'Je Klasse ein Repräsentant ergibt 6 Testfälle.',
     ],
-    ergebnis: '3 gültige und 3 ungültige Klassen - 6 Testfälle',
+    ergebnis: '3 gültige und 3 ungültige Klassen, also 6 Testfälle',
   ),
   ablauf(
     'n-sf-5',
     'ts-testfaelle',
     'Grenzwertanalyse',
-    'Fehler stecken besonders oft an den Rändern, etwa wenn im Code > statt >= steht. Deshalb testet man gezielt an den Klassengrenzen - am Beispiel der Bestellmenge 1 bis 99.',
+    'Fehler stecken besonders oft an den Rändern, etwa wenn im Code > statt >= steht. Deshalb testet man gezielt an den Klassengrenzen, am Beispiel der Bestellmenge 1 bis 99.',
     [
       'Grenzen bestimmen: Bei 1 bis 99 liegen sie bei 1 und bei 99.',
       'Je Grenze den Grenzwert selbst testen: 1 und 99.',
       'Je Grenze den direkt benachbarten Wert außerhalb testen: 0 und 100.',
-      'Ergebnis: 4 Testwerte - 0, 1, 99, 100. Nimmt man zusätzlich den Nachbarn innerhalb dazu (2 und 98), sind es 6.',
+      'Ergebnis: 4 Testwerte (0, 1, 99, 100). Nimmt man zusätzlich den Nachbarn innerhalb dazu (2 und 98), sind es 6.',
     ],
   ),
   beispiel(
@@ -824,7 +824,7 @@ final List<Nugget> nuggetsA05 = [
     'n-sf-8',
     'ts-testfaelle',
     'Die Testfalltabelle',
-    'In der Prüfung werden Testfälle meist als Tabelle verlangt. Jede Zeile ist ein Testfall mit eindeutigem Soll-Ergebnis - hier für das Kino.',
+    'In der Prüfung werden Testfälle meist als Tabelle verlangt. Jede Zeile ist ein Testfall mit eindeutigem Soll-Ergebnis, hier für das Kino.',
     [
       ['Nr.', 'Eingabe (Alter)', 'Erwartetes Ergebnis'],
       ['TF1', '8', 'Kinderpreis'],
@@ -865,7 +865,7 @@ final List<Nugget> nuggetsA05 = [
     'n-sf-11',
     'ts-testfaelle',
     'Ungültige Klassen einzeln testen',
-    'Wer in einem Testfall zwei ungültige Werte kombiniert, weiß bei einer Fehlermeldung nicht, welcher sie ausgelöst hat - ein Fehler kann den anderen verdecken. Deshalb gilt: je ungültige Klasse ein eigener Testfall, alle übrigen Eingaben gültig.',
+    'Wer in einem Testfall zwei ungültige Werte kombiniert, weiß bei einer Fehlermeldung nicht, welcher sie ausgelöst hat, denn ein Fehler kann den anderen verdecken. Deshalb gilt: je ungültige Klasse ein eigener Testfall, alle übrigen Eingaben gültig.',
   ),
   falle(
     'n-sf-12',
@@ -886,7 +886,7 @@ final List<Nugget> nuggetsA05 = [
     'n-sp-1',
     'ts-protokoll',
     'Der Testprozess',
-    'Testen ist ein Prozess mit festen Schritten - von der Planung bis zum Testbericht. Getestet wird, bis die vorher festgelegten Endekriterien erfüllt sind.',
+    'Testen ist ein Prozess mit festen Schritten, von der Planung bis zum Testbericht. Getestet wird, bis die vorher festgelegten Endekriterien erfüllt sind.',
     const FlussDiagramm([
       FlussKnoten('Testkonzept', form: FlussForm.dokument),
       FlussKnoten('Testfälle entwerfen'),
@@ -1013,13 +1013,13 @@ final List<Nugget> nuggetsA05 = [
     'Ist der Test abgeschlossen?',
     'Endekriterien: alle 200 geplanten Testfälle durchgeführt, mindestens 95 % bestanden, kein kritischer Fehler offen. Durchgeführt wurden 200 Testfälle, 186 davon bestanden. Offen sind 3 schwere und 1 kritischer Fehler.',
     schritte: [
-      'Durchführungsgrad: 200 / 200 × 100 % = 100 % - erfüllt',
-      'Bestehensquote: 186 / 200 × 100 % = 93 % - unter 95 %, nicht erfüllt',
-      'Ein kritischer Fehler ist offen - nicht erfüllt',
+      'Durchführungsgrad: 200 / 200 × 100 % = 100 %, erfüllt',
+      'Bestehensquote: 186 / 200 × 100 % = 93 %, unter 95 %, nicht erfüllt',
+      'Ein kritischer Fehler ist offen, nicht erfüllt',
       'Mindestens ein Kriterium ist verfehlt, also kein Testende',
     ],
     ergebnis:
-        'Nicht abgeschlossen - Fehler beheben, dann Nachtests und Regressionstests',
+        'Nicht abgeschlossen: Fehler beheben, dann Nachtests und Regressionstests',
   ),
   falle(
     'n-sp-11',

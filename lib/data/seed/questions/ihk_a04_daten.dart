@@ -29,7 +29,7 @@ final List<Question> ihkA04Daten = [
       zu(
         'Dauer in Minuten',
         2,
-        'Jede Wartung dauert unterschiedlich lang - weder Techniker noch Gerät haben „eine“ Dauer.',
+        'Jede Wartung dauert unterschiedlich lang. Weder Techniker noch Gerät haben „eine“ Dauer.',
       ),
       zu('Qualifikation', 0, 'Eigenschaft des Technikers.'),
       zu('Nachname', 0, 'Eigenschaft des Technikers.'),
@@ -104,7 +104,7 @@ final List<Question> ihkA04Daten = [
         'Erläutere, warum das Attribut „Menge“ an die Beziehung zwischen Artikel und Lagerplatz gehört und nicht an den Entitätstyp Artikel.',
     kriterien: [
       krit(
-        'Die Menge hängt von der Kombination aus Artikel und Lagerplatz ab - sie beschreibt, wie viel eines Artikels auf einem bestimmten Platz liegt.',
+        'Die Menge hängt von der Kombination aus Artikel und Lagerplatz ab. Sie beschreibt, wie viel eines Artikels auf einem bestimmten Platz liegt.',
         punkte: 2,
         stichwoerter: [
           'Kombination',
@@ -115,7 +115,7 @@ final List<Question> ihkA04Daten = [
         ],
       ),
       krit(
-        'Beim Artikel könnte nur ein einziger Wert stehen - die Mengen der einzelnen Lagerplätze ließen sich nicht unterscheiden.',
+        'Beim Artikel könnte nur ein einziger Wert stehen. Die Mengen der einzelnen Lagerplätze ließen sich nicht unterscheiden.',
         punkte: 2,
         stichwoerter: [
           'nur ein Wert',
@@ -140,16 +140,16 @@ final List<Question> ihkA04Daten = [
     prompt: 'Markiere alle Begriffe, die im ER-Modell zu Entitätstypen werden.',
     zeilen: [
       ja('Kunde', 'Zu Kunden werden eigene Daten gespeichert.'),
-      nein('Telefonnummer', 'Eigenschaft des Kunden - ein Attribut.'),
+      nein('Telefonnummer', 'Eigenschaft des Kunden, also ein Attribut.'),
       ja('Ticket', 'Ein Ticket hat eigene Attribute wie Priorität und Datum.'),
-      nein('Priorität', 'Eigenschaft des Tickets - ein Attribut.'),
+      nein('Priorität', 'Eigenschaft des Tickets, also ein Attribut.'),
       nein(
         'bearbeiten',
-        'Ein Verb zwischen zwei Entitätstypen - eine Beziehung.',
+        'Ein Verb zwischen zwei Entitätstypen, also eine Beziehung.',
       ),
       ja('Mitarbeiter', 'Mitarbeiter haben eigene Attribute.'),
-      nein('Eröffnungsdatum', 'Eigenschaft des Tickets - ein Attribut.'),
-      nein('eröffnen', 'Verbindet Kunde und Ticket - eine Beziehung.'),
+      nein('Eröffnungsdatum', 'Eigenschaft des Tickets, also ein Attribut.'),
+      nein('eröffnen', 'Verbindet Kunde und Ticket, also eine Beziehung.'),
     ],
     explanation:
         'Entitätstypen sind die Dinge, über die eigene Daten gespeichert werden: Kunde, Ticket, Mitarbeiter. Beschreibende Angaben werden Attribute, Verben zwischen den Entitätstypen werden Beziehungen.',
@@ -269,7 +269,7 @@ final List<Question> ihkA04Daten = [
         'n:1',
         'n:m',
         '1:1',
-      ], 'Ein Kunde, viele Projekte - die 1 steht beim Kunden.'),
+      ], 'Ein Kunde, viele Projekte. Die 1 steht beim Kunden.'),
       wahl('n:m', [
         '1:n',
         'n:1',
@@ -328,7 +328,7 @@ final List<Question> ihkA04Daten = [
         'Erläutere, warum dieser Vorschlag die Beziehung nicht abbilden kann, und beschreibe die richtige Umsetzung im relationalen Modell.',
     kriterien: [
       krit(
-        'Mit einer Spalte LieferantNr in Artikel kann jeder Artikel nur genau einen Lieferanten haben - das wäre 1:n statt n:m.',
+        'Mit einer Spalte LieferantNr in Artikel kann jeder Artikel nur genau einen Lieferanten haben. Das wäre 1:n statt n:m.',
         punkte: 2,
         stichwoerter: [
           'nur einen Lieferanten',
@@ -366,27 +366,27 @@ final List<Question> ihkA04Daten = [
     zeilen: [
       nein(
         'Jeder Handscanner ist genau einer Halle zugeordnet, eine Halle hat viele Handscanner.',
-        '1:n - Fremdschlüssel HallenNr in Handscanner genügt.',
+        '1:n, Fremdschlüssel HallenNr in Handscanner genügt.',
       ),
       ja(
         'Eine Lieferung enthält viele Artikel, ein Artikel kommt in vielen Lieferungen vor.',
-        'n:m - nur mit Zwischentabelle abbildbar.',
+        'n:m, nur mit Zwischentabelle abbildbar.',
       ),
       ja(
         'Ein Fahrer fährt im Lauf des Jahres viele LKW, ein LKW wird von vielen Fahrern gefahren.',
-        'n:m - Zwischentabelle, z. B. Fahrt.',
+        'n:m, Zwischentabelle, z. B. Fahrt.',
       ),
       nein(
         'Jede Lieferung kommt von genau einem Lieferanten, ein Lieferant schickt viele Lieferungen.',
-        '1:n - Fremdschlüssel LieferantNr in Lieferung.',
+        '1:n, Fremdschlüssel LieferantNr in Lieferung.',
       ),
       nein(
         'Jeder Schichtleiter hat genau ein Diensthandy, jedes Diensthandy gehört genau einem Schichtleiter.',
-        '1:1 - ein Fremdschlüssel auf einer der beiden Seiten reicht.',
+        '1:1, ein Fremdschlüssel auf einer der beiden Seiten reicht.',
       ),
       ja(
         'Ein Mitarbeiter besitzt mehrere Staplerscheine, ein Staplerschein-Typ wird von vielen Mitarbeitern erworben.',
-        'n:m - Zwischentabelle mit PersNr und ScheinTyp.',
+        'n:m, Zwischentabelle mit PersNr und ScheinTyp.',
       ),
     ],
     explanation:
@@ -477,7 +477,7 @@ final List<Question> ihkA04Daten = [
     'i4-dl-1',
     'dm-schluessel',
     scenario:
-        'Die Datenbank des Grünwerk-Webshops besteht aus den folgenden Tabellen. Unterstrichen wären in der Dokumentation nur die Primärschlüssel - die Fremdschlüssel sind noch nicht gekennzeichnet.',
+        'Die Datenbank des Grünwerk-Webshops besteht aus den folgenden Tabellen. Unterstrichen wären in der Dokumentation nur die Primärschlüssel. Die Fremdschlüssel sind noch nicht gekennzeichnet.',
     table: [
       ['Tabelle', 'Spalten'],
       ['Kunde', 'KundenNr, Name, Ort'],
@@ -521,15 +521,15 @@ final List<Question> ihkA04Daten = [
       nein('B101 | 02.03. | K1', 'Neue BestellNr, vorhandener Kunde.'),
       nein(
         'B102 | 02.03. | K1',
-        'Derselbe Kunde darf mehrfach bestellen - Fremdschlüssel dürfen sich wiederholen.',
+        'Derselbe Kunde darf mehrfach bestellen: Fremdschlüssel dürfen sich wiederholen.',
       ),
       ja(
         'B103 | 03.03. | K7',
-        'K7 gibt es in Kunde nicht - Verstoß gegen die referenzielle Integrität.',
+        'K7 gibt es in Kunde nicht: Verstoß gegen die referenzielle Integrität.',
       ),
       ja(
         'B101 | 04.03. | K2',
-        'Die BestellNr B101 ist schon vergeben - ein Primärschlüssel muss eindeutig sein.',
+        'Die BestellNr B101 ist schon vergeben. Ein Primärschlüssel muss eindeutig sein.',
       ),
       nein('B104 | 04.03. | K3', 'Neue BestellNr, vorhandener Kunde.'),
       ja('(leer) | 05.03. | K2', 'Ein Primärschlüssel darf nicht leer sein.'),
@@ -625,7 +625,7 @@ final List<Question> ihkA04Daten = [
       ),
       nein(
         'Fremdschlüssel müssen eindeutig sein.',
-        'Das steht nicht im Text - eindeutig sein muss der Primärschlüssel.',
+        'Das steht nicht im Text. Eindeutig sein muss der Primärschlüssel.',
       ),
     ],
     explanation:
@@ -671,7 +671,7 @@ final List<Question> ihkA04Daten = [
         wahl('RaumNr', ['Etage', 'Etage + Sitzplätze']),
       ],
       [
-        'Projektmitarbeit (ProjektNr, PersNr, Rolle) - jede Person ist je Projekt einmal eingetragen',
+        'Projektmitarbeit (ProjektNr, PersNr, Rolle): jede Person ist je Projekt einmal eingetragen',
         wahl('ProjektNr + PersNr', ['ProjektNr', 'PersNr', 'Rolle']),
       ],
       [
@@ -688,7 +688,7 @@ final List<Question> ihkA04Daten = [
       ],
     ],
     explanation:
-        'Ein Primärschlüssel ist eindeutig, nie leer und stabil. RaumNr und RechnungsNr erfüllen das. In der Zwischentabelle Projektmitarbeit ist erst die Kombination ProjektNr + PersNr eindeutig. Namen und Telefonnummern können doppelt vorkommen oder sich ändern - dann wird ein künstlicher Schlüssel ergänzt. KundenNr in Rechnung ist ein Fremdschlüssel und wiederholt sich.',
+        'Ein Primärschlüssel ist eindeutig, nie leer und stabil. RaumNr und RechnungsNr erfüllen das. In der Zwischentabelle Projektmitarbeit ist erst die Kombination ProjektNr + PersNr eindeutig. Namen und Telefonnummern können doppelt vorkommen oder sich ändern, dann wird ein künstlicher Schlüssel ergänzt. KundenNr in Rechnung ist ein Fremdschlüssel und wiederholt sich.',
     punkte: 4,
   ),
   freitext(
@@ -734,9 +734,9 @@ final List<Question> ihkA04Daten = [
       ),
     ],
     loesung:
-        'Die referenzielle Integrität verlangt, dass jeder Fremdschlüsselwert als Primärschlüssel existiert. Würde der Lieferant gelöscht, verwiesen die 14 Lieferungen auf einen Lieferanten, den es nicht mehr gibt. Stattdessen kann der Lieferant als inaktiv gekennzeichnet werden; alternativ müssten zuerst die abhängigen Lieferungen gelöscht oder eine Löschweitergabe eingerichtet werden - was hier wegen der Aufbewahrung der Belege kaum sinnvoll ist.',
+        'Die referenzielle Integrität verlangt, dass jeder Fremdschlüsselwert als Primärschlüssel existiert. Würde der Lieferant gelöscht, verwiesen die 14 Lieferungen auf einen Lieferanten, den es nicht mehr gibt. Stattdessen kann der Lieferant als inaktiv gekennzeichnet werden; alternativ müssten zuerst die abhängigen Lieferungen gelöscht oder eine Löschweitergabe eingerichtet werden, was hier wegen der Aufbewahrung der Belege kaum sinnvoll ist.',
     explanation:
-        '2 Punkte für die Begründung über die referenzielle Integrität, 1 Punkt für eine genannte Möglichkeit - verlangt ist nur eine, die Lösungsliste ist länger. In der Praxis werden Stammdaten mit abhängigen Belegen deaktiviert statt gelöscht.',
+        '2 Punkte für die Begründung über die referenzielle Integrität, 1 Punkt für eine genannte Möglichkeit. Verlangt ist nur eine, die Lösungsliste ist länger. In der Praxis werden Stammdaten mit abhängigen Belegen deaktiviert statt gelöscht.',
     punkte: 3,
   ),
 
@@ -769,7 +769,7 @@ final List<Question> ihkA04Daten = [
       ja('Zeile 6', 'Bestellung der Kundin Yilmaz (K2).'),
     ],
     explanation:
-        'Der Ort der Kundin ist redundant in drei Zeilen gespeichert. Wird nur eine davon geändert, widersprechen sich die Daten - eine Änderungsanomalie. In normalisierter Form stünde der Ort genau einmal in einer Tabelle Kunde.',
+        'Der Ort der Kundin ist redundant in drei Zeilen gespeichert. Wird nur eine davon geändert, widersprechen sich die Daten: eine Änderungsanomalie. In normalisierter Form stünde der Ort genau einmal in einer Tabelle Kunde.',
     punkte: 3,
     difficulty: 1,
   ),
@@ -799,7 +799,7 @@ final List<Question> ihkA04Daten = [
         ],
       ),
       krit(
-        'Problem: Inkonsistenz - wird die Telefonnummer nur in einer Zeile geändert, widersprechen sich die Daten (Änderungsanomalie).',
+        'Problem: Inkonsistenz. Wird die Telefonnummer nur in einer Zeile geändert, widersprechen sich die Daten (Änderungsanomalie).',
         punkte: 2,
         stichwoerter: [
           'Inkonsistenz',
@@ -822,9 +822,9 @@ final List<Question> ihkA04Daten = [
       ),
     ],
     loesung:
-        'Redundanz bedeutet, dass dieselbe Information mehrfach gespeichert ist - hier stehen Name und Telefonnummer der Bäckerei Krume in jeder Projektzeile. Ändert sich die Telefonnummer und wird sie nur in einer Zeile angepasst, widersprechen sich die Daten (Inkonsistenz, Änderungsanomalie). Außerdem kostet die Mehrfachspeicherung Speicherplatz und Pflegeaufwand.',
+        'Redundanz bedeutet, dass dieselbe Information mehrfach gespeichert ist. Hier stehen Name und Telefonnummer der Bäckerei Krume in jeder Projektzeile. Ändert sich die Telefonnummer und wird sie nur in einer Zeile angepasst, widersprechen sich die Daten (Inkonsistenz, Änderungsanomalie). Außerdem kostet die Mehrfachspeicherung Speicherplatz und Pflegeaufwand.',
     explanation:
-        '2 Punkte für die Erklärung (mehrfach gespeicherte gleiche Information), 2 Punkte für ein beschriebenes Problem. Verlangt ist ein Problem - die Liste nennt zwei, gewertet wird bis zur Höchstpunktzahl von 4.',
+        '2 Punkte für die Erklärung (mehrfach gespeicherte gleiche Information), 2 Punkte für ein beschriebenes Problem. Verlangt ist ein Problem, die Liste nennt zwei, gewertet wird bis zur Höchstpunktzahl von 4.',
     punkte: 4,
   ),
   lueckentext(
@@ -835,8 +835,8 @@ final List<Question> ihkA04Daten = [
     prompt: 'Ergänze die Beurteilung der Tabelle.',
     text:
         'Die Tabelle erfüllt die {0}, weil alle Werte atomar sind. '
-        'Der Kurstitel hängt nur von einem Teil des Schlüssels ab - eine {1} Abhängigkeit, die die {2} verletzt. '
-        'Die Raumgröße hängt über die RaumNr von der KursNr ab - eine {3} Abhängigkeit, die die {4} verletzt.',
+        'Der Kurstitel hängt nur von einem Teil des Schlüssels ab, eine {1} Abhängigkeit, die die {2} verletzt. '
+        'Die Raumgröße hängt über die RaumNr von der KursNr ab, eine {3} Abhängigkeit, die die {4} verletzt.',
     luecken: [
       wahl('1NF', ['2NF', '3NF']),
       wahl('partielle', ['transitive', 'redundante']),
@@ -955,7 +955,7 @@ final List<Question> ihkA04Daten = [
       paar('Fragment', 'Sprungziel innerhalb der Seite'),
     ],
     explanation:
-        'Schema = Protokoll (http, https), Host = Server, Port = Dienst (ohne Angabe 80 bzw. 443), Pfad = Ressource, Query = Parameter als name=wert, Fragment = Stelle in der Seite - es wird nicht an den Server geschickt.',
+        'Schema = Protokoll (http, https), Host = Server, Port = Dienst (ohne Angabe 80 bzw. 443), Pfad = Ressource, Query = Parameter als name=wert, Fragment = Stelle in der Seite. Es wird nicht an den Server geschickt.',
     punkte: 3,
     difficulty: 1,
   ),
@@ -985,7 +985,7 @@ final List<Question> ihkA04Daten = [
       ),
       ja(
         'https://login.example/gruenwerk.example',
-        'Der Host ist login.example - der Firmenname steht nur im Pfad.',
+        'Der Host ist login.example. Der Firmenname steht nur im Pfad.',
       ),
       nein(
         'https://shop.gruenwerk.example:8443/',
@@ -994,7 +994,7 @@ final List<Question> ihkA04Daten = [
     ],
     mono: true,
     explanation:
-        'Entscheidend ist der Host zwischen :// und dem nächsten /. Ihn liest man von rechts: erst die TLD, direkt davor die registrierte Domain. Alles links davon sind frei wählbare Subdomains, alles hinter dem ersten / ist nur Pfad - beides nutzen Phishing-Links aus.',
+        'Entscheidend ist der Host zwischen :// und dem nächsten /. Ihn liest man von rechts: erst die TLD, direkt davor die registrierte Domain. Alles links davon sind frei wählbare Subdomains, alles hinter dem ersten / ist nur Pfad. Beides nutzen Phishing-Links aus.',
     punkte: 3,
     difficulty: 3,
   ),
@@ -1089,7 +1089,7 @@ final List<Question> ihkA04Daten = [
       ],
     ],
     explanation:
-        'Die erste Ziffer bestimmt die Klasse: 2xx Erfolg, 3xx Umleitung, 4xx Fehler in der Anfrage (falsche Adresse, fehlende Rechte), 5xx Fehler beim Server (Programmfehler, Überlastung, Wartung). Ein Statuscode kommt immer aus der HTTP-Antwort - DNS und Verbindung haben also funktioniert.',
+        'Die erste Ziffer bestimmt die Klasse: 2xx Erfolg, 3xx Umleitung, 4xx Fehler in der Anfrage (falsche Adresse, fehlende Rechte), 5xx Fehler beim Server (Programmfehler, Überlastung, Wartung). Ein Statuscode kommt immer aus der HTTP-Antwort, DNS und Verbindung haben also funktioniert.',
     punkte: 5,
   ),
   markieren(
@@ -1100,30 +1100,30 @@ final List<Question> ihkA04Daten = [
     prompt:
         'Markiere alle Zeilen, die auf einen Fehler auf der Seite des Servers hinweisen.',
     zeilen: [
-      nein('10:02:11 GET /artikel/17 200', '200 OK - erfolgreich.'),
+      nein('10:02:11 GET /artikel/17 200', '200 OK: erfolgreich.'),
       nein(
         '10:02:14 GET /artikle/17 404',
-        '404 - Tippfehler im Pfad, ein Fehler in der Anfrage.',
+        '404: Tippfehler im Pfad, ein Fehler in der Anfrage.',
       ),
       ja(
         '10:02:19 POST /warenkorb 500',
-        '500 Internal Server Error - Programmfehler auf dem Server.',
+        '500 Internal Server Error: Programmfehler auf dem Server.',
       ),
       nein(
         '10:02:25 GET /alt/katalog 301',
-        '301 - dauerhafte Umleitung, kein Fehler.',
+        '301: dauerhafte Umleitung, kein Fehler.',
       ),
       ja(
         '10:02:31 POST /kasse 503',
-        '503 Service Unavailable - Server überlastet oder in Wartung.',
+        '503 Service Unavailable: Server überlastet oder in Wartung.',
       ),
       nein(
         '10:02:40 GET /admin 403',
-        '403 - Zugriff verweigert, ein Fehler auf Client-Seite (fehlende Berechtigung).',
+        '403: Zugriff verweigert, ein Fehler auf Client-Seite (fehlende Berechtigung).',
       ),
       ja(
         '10:02:48 GET /artikel/22 500',
-        '500 - wieder ein Fehler der Serveranwendung.',
+        '500: wieder ein Fehler der Serveranwendung.',
       ),
     ],
     mono: true,
@@ -1151,7 +1151,7 @@ final List<Question> ihkA04Daten = [
         ],
       ),
       krit(
-        'Authentizität: Der Server weist sich mit einem Zertifikat aus - Mandanten erkennen, dass sie mit dem echten Portal verbunden sind.',
+        'Authentizität: Der Server weist sich mit einem Zertifikat aus. Mandanten erkennen, dass sie mit dem echten Portal verbunden sind.',
         punkte: 2,
         stichwoerter: [
           'Zertifikat',
@@ -1208,7 +1208,7 @@ final List<Question> ihkA04Daten = [
     ],
     mono: true,
     explanation:
-        'Die Startzeile besteht aus Methode, Ziel und Version. Passwörter werden mit POST im Body gesendet - bei GET stünden sie in der URL, im Verlauf und in Protokollen. HTTPS nutzt Port 443. Eine fehlgeschlagene Anmeldung beantwortet der Server mit 401.',
+        'Die Startzeile besteht aus Methode, Ziel und Version. Passwörter werden mit POST im Body gesendet. Bei GET stünden sie in der URL, im Verlauf und in Protokollen. HTTPS nutzt Port 443. Eine fehlgeschlagene Anmeldung beantwortet der Server mit 401.',
     punkte: 4,
   ),
 
@@ -1253,7 +1253,7 @@ final List<Question> ihkA04Daten = [
         ],
       ),
       krit(
-        'Dynamisch: Die Seite wird beim Aufruf von einem Programm auf dem Server erzeugt, meist aus einer Datenbank - abhängig von Nutzer oder Eingabe.',
+        'Dynamisch: Die Seite wird beim Aufruf von einem Programm auf dem Server erzeugt, meist aus einer Datenbank, abhängig von Nutzer oder Eingabe.',
         punkte: 2,
         stichwoerter: [
           'beim Aufruf',
@@ -1266,7 +1266,7 @@ final List<Question> ihkA04Daten = [
       ),
     ],
     loesung:
-        'Bei einer statischen Website liegen fertige HTML-Dateien auf dem Server und werden unverändert ausgeliefert - jeder Besucher sieht dasselbe, Änderungen erfordern das Bearbeiten der Dateien. Bei einer dynamischen Website erzeugt ein Programm auf dem Server die Seite bei jedem Aufruf neu, meist aus einer Datenbank. Der Inhalt kann vom angemeldeten Nutzer oder von Eingaben abhängen und lässt sich über ein Redaktionssystem (CMS) pflegen.',
+        'Bei einer statischen Website liegen fertige HTML-Dateien auf dem Server und werden unverändert ausgeliefert. Jeder Besucher sieht dasselbe, Änderungen erfordern das Bearbeiten der Dateien. Bei einer dynamischen Website erzeugt ein Programm auf dem Server die Seite bei jedem Aufruf neu, meist aus einer Datenbank. Der Inhalt kann vom angemeldeten Nutzer oder von Eingaben abhängen und lässt sich über ein Redaktionssystem (CMS) pflegen.',
     explanation:
         'Je Seite des Vergleichs 2 Punkte: statisch = fertige Dateien, gleicher Inhalt für alle; dynamisch = beim Aufruf serverseitig erzeugt, oft aus einer Datenbank, nutzer- oder eingabeabhängig. Für Kundenbereich und selbst gepflegte Referenzen braucht der Betrieb eine dynamische Website.',
     punkte: 4,
@@ -1335,7 +1335,7 @@ final List<Question> ihkA04Daten = [
     loesung:
         'Zum Beispiel PHP, Python und JavaScript (Node.js); ebenso richtig sind Java, C# (ASP.NET) oder Ruby. HTML und CSS zählen nicht: Sie sind Auszeichnungs- bzw. Gestaltungssprachen und werden vom Server nur ausgeliefert.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 3 Punkte - die Lösungsliste ist länger als verlangt. Serverseitige Sprachen erzeugen das HTML, bevor es zum Browser geschickt wird. HTML und CSS sind keine Programmiersprachen.',
+        'Je Nennung 1 Punkt, höchstens 3 Punkte. Die Lösungsliste ist länger als verlangt. Serverseitige Sprachen erzeugen das HTML, bevor es zum Browser geschickt wird. HTML und CSS sind keine Programmiersprachen.',
     punkte: 3,
     difficulty: 1,
   ),
@@ -1361,7 +1361,7 @@ final List<Question> ihkA04Daten = [
       ),
       nein(
         '<img src="spaten.jpg" alt="Spaten">',
-        'Korrekt - img braucht kein End-Tag und hat einen Alt-Text.',
+        'Korrekt: img braucht kein End-Tag und hat einen Alt-Text.',
       ),
       ja(
         '<a href="kontakt.html>Kontakt</a>',
@@ -1432,7 +1432,7 @@ final List<Question> ihkA04Daten = [
         'Erläutere zwei Vorteile der Trennung von Struktur (HTML) und Gestaltung (CSS).',
     kriterien: [
       krit(
-        'Zentrale Pflege: Eine Änderung in der CSS-Datei wirkt auf alle Seiten - weniger Aufwand.',
+        'Zentrale Pflege: Eine Änderung in der CSS-Datei wirkt auf alle Seiten, also weniger Aufwand.',
         punkte: 2,
         stichwoerter: [
           'zentral',
@@ -1480,7 +1480,7 @@ final List<Question> ihkA04Daten = [
     loesung:
         'Erstens lässt sich die Gestaltung zentral pflegen: Eine Änderung in der CSS-Datei, etwa einer Farbe, wirkt sofort auf allen Seiten. Zweitens sehen alle Seiten einheitlich aus. Außerdem bleibt das HTML übersichtlich und seine Struktur für Screenreader und Suchmaschinen klar, und dieselbe Seite kann für Handy, Desktop oder Druck unterschiedlich dargestellt werden.',
     explanation:
-        'Je erläutertem Vorteil 2 Punkte, verlangt sind zwei. Kern: HTML sagt, was etwas ist, CSS sagt, wie es aussieht - so wird Gestaltung einmal zentral festgelegt statt in jedem Element.',
+        'Je erläutertem Vorteil 2 Punkte, verlangt sind zwei. Kern: HTML sagt, was etwas ist, CSS sagt, wie es aussieht. So wird Gestaltung einmal zentral festgelegt statt in jedem Element.',
     punkte: 4,
   ),
 
@@ -1534,7 +1534,7 @@ final List<Question> ihkA04Daten = [
     loesung:
         'Erstens erhalten alle Produktbilder aussagekräftige Alternativtexte, damit Screenreader sie vorlesen können. Zweitens wird der Kontrast erhöht, etwa dunkle Schrift auf hellem Grund mit mindestens 4,5:1. Drittens wird das Menü vollständig per Tastatur bedienbar gemacht und der Fokus sichtbar hervorgehoben. Zusätzlich sollten die Videos Untertitel oder ein Transkript bekommen.',
     explanation:
-        'Je beschriebener Maßnahme 2 Punkte, höchstens 6 - verlangt sind drei, die Situation bietet vier Ansatzpunkte. Die Maßnahmen folgen den WCAG-Prinzipien wahrnehmbar (Alt-Text, Kontrast, Untertitel) und bedienbar (Tastatur).',
+        'Je beschriebener Maßnahme 2 Punkte, höchstens 6. Verlangt sind drei, die Situation bietet vier Ansatzpunkte. Die Maßnahmen folgen den WCAG-Prinzipien wahrnehmbar (Alt-Text, Kontrast, Untertitel) und bedienbar (Tastatur).',
     punkte: 6,
   ),
   markieren(
@@ -1551,7 +1551,7 @@ final List<Question> ihkA04Daten = [
       ),
       ja(
         '<img src="rasenmaeher.jpg">',
-        'Inhaltliches Bild ohne alt-Attribut - Screenreader lesen nur den Dateinamen vor.',
+        'Inhaltliches Bild ohne alt-Attribut: Screenreader lesen nur den Dateinamen vor.',
       ),
       nein(
         '<label for="plz">Postleitzahl</label>',
@@ -1567,7 +1567,7 @@ final List<Question> ihkA04Daten = [
       ),
       ja(
         '<a href="agb.html">hier klicken</a>',
-        'Der Linktext sagt nichts über das Ziel - besser „AGB lesen“.',
+        'Der Linktext sagt nichts über das Ziel. Besser „AGB lesen“.',
       ),
       nein(
         '<button type="submit">Kostenpflichtig bestellen</button>',
@@ -1661,7 +1661,7 @@ final List<Question> ihkA04Daten = [
       zahl(259, rationale: '182 + 77.'),
     ],
     explanation:
-        'Stellenwerte eines Bytes: 128 64 32 16 8 4 2 1. A = 128 + 32 + 16 + 4 + 2 = 182, B = 64 + 8 + 4 + 1 = 77. Für Hex je vier Bit zusammenfassen: 1011 0110 = B6, 0100 1101 = 4D. 182 + 77 = 259 - das passt nicht mehr in 8 Bit (höchstens 255).',
+        'Stellenwerte eines Bytes: 128 64 32 16 8 4 2 1. A = 128 + 32 + 16 + 4 + 2 = 182, B = 64 + 8 + 4 + 1 = 77. Für Hex je vier Bit zusammenfassen: 1011 0110 = B6, 0100 1101 = 4D. 182 + 77 = 259. Das passt nicht mehr in 8 Bit (höchstens 255).',
     punkte: 5,
   ),
   tabelle(
@@ -1685,11 +1685,11 @@ final List<Question> ihkA04Daten = [
     'i4-mz-4',
     'md-zahlensysteme',
     scenario:
-        'In verschiedenen Protokolldateien steht derselbe Sensorwert 90 (dezimal) in unterschiedlicher Schreibweise - daneben aber auch andere Werte.',
+        'In verschiedenen Protokolldateien steht derselbe Sensorwert 90 (dezimal) in unterschiedlicher Schreibweise, daneben aber auch andere Werte.',
     prompt: 'Markiere alle Angaben, die dem Dezimalwert 90 entsprechen.',
     zeilen: [
       ja('hexadezimal 5A', '5 × 16 + 10 = 90.'),
-      nein('hexadezimal A5', '10 × 16 + 5 = 165 - Ziffern vertauscht.'),
+      nein('hexadezimal A5', '10 × 16 + 5 = 165. Ziffern vertauscht.'),
       ja('binär 0101 1010', '64 + 16 + 8 + 2 = 90.'),
       nein('binär 0101 1001', '64 + 16 + 8 + 1 = 89.'),
       ja('oktal 132', '1 × 64 + 3 × 8 + 2 = 90.'),
@@ -1697,7 +1697,7 @@ final List<Question> ihkA04Daten = [
     ],
     mono: true,
     explanation:
-        '90 = 5 × 16 + 10 = 5A (hex) = 0101 1010 (binär) = 132 (oktal: 64 + 24 + 2). Dieselben Ziffern bedeuten in jedem Zahlensystem etwas anderes - „90“ hexadezimal ist dezimal 144.',
+        '90 = 5 × 16 + 10 = 5A (hex) = 0101 1010 (binär) = 132 (oktal: 64 + 24 + 2). Dieselben Ziffern bedeuten in jedem Zahlensystem etwas anderes: „90“ hexadezimal ist dezimal 144.',
     punkte: 3,
   ),
 
@@ -1756,7 +1756,7 @@ final List<Question> ihkA04Daten = [
         'Erläutere die Ursache des Fehlers und beschreibe eine Maßnahme, mit der er sich künftig vermeiden lässt.',
     kriterien: [
       krit(
-        'Ursache: Die Datei ist in UTF-8 kodiert, wird aber mit einer anderen Kodierung (z. B. ISO 8859-1) gelesen - die zwei Byte eines Umlauts erscheinen als zwei Zeichen.',
+        'Ursache: Die Datei ist in UTF-8 kodiert, wird aber mit einer anderen Kodierung (z. B. ISO 8859-1) gelesen. Die zwei Byte eines Umlauts erscheinen als zwei Zeichen.',
         punkte: 2,
         stichwoerter: [
           'Kodierung',
@@ -1783,7 +1783,7 @@ final List<Question> ihkA04Daten = [
     loesung:
         'Die Daten wurden in UTF-8 geschrieben, beim Import aber mit einer anderen Kodierung gelesen, etwa ISO 8859-1. In UTF-8 belegt ein Umlaut zwei Byte; diese werden als zwei einzelne Zeichen dargestellt. Abhilfe: in allen Systemen einheitlich UTF-8 verwenden und beim Import ausdrücklich die Kodierung der Quelldatei angeben oder die Datei vorher konvertieren.',
     explanation:
-        '2 Punkte für die Ursache (Schreiben und Lesen mit unterschiedlicher Kodierung), 2 Punkte für die Maßnahme (einheitliche Kodierung bzw. Angabe beim Import). Die Daten selbst sind nicht beschädigt - sie werden nur falsch gedeutet.',
+        '2 Punkte für die Ursache (Schreiben und Lesen mit unterschiedlicher Kodierung), 2 Punkte für die Maßnahme (einheitliche Kodierung bzw. Angabe beim Import). Die Daten selbst sind nicht beschädigt, sie werden nur falsch gedeutet.',
     punkte: 4,
   ),
   paare(
@@ -1830,7 +1830,7 @@ final List<Question> ihkA04Daten = [
       ),
     ],
     explanation:
-        '22 × 24 = 528 Lieferscheine pro Tag. 528 × 96 kB = 50.688 kB = 50.688.000 Byte; / 1.024 = 49.500 KiB. × 365 = 18.067.500 KiB pro Jahr. / 1.024 / 1.024 = 17,23 GiB. „Um 25 % verringern“ heißt, es bleiben 75 %: 17,23 × 0,75 ≈ 12,92 GiB. Fallen: kB ist dezimal, KiB binär - und „um 25 %“ ergibt den Faktor 0,75.',
+        '22 × 24 = 528 Lieferscheine pro Tag. 528 × 96 kB = 50.688 kB = 50.688.000 Byte; / 1.024 = 49.500 KiB. × 365 = 18.067.500 KiB pro Jahr. / 1.024 / 1.024 = 17,23 GiB. „Um 25 % verringern“ heißt, es bleiben 75 %: 17,23 × 0,75 ≈ 12,92 GiB. Fallen: kB ist dezimal, KiB binär, und „um 25 %“ ergibt den Faktor 0,75.',
     punkte: 6,
     difficulty: 3,
   ),
@@ -1917,7 +1917,7 @@ final List<Question> ihkA04Daten = [
         '6.220.800 / 1.000 = 6.220,8 KiB',
         'KiB ist binär: 6.220.800 / 1.024 = 6.075 KiB. Durch 1.000 ergäbe kB.',
       ),
-      nein('6.075 / 1.024 ≈ 5,93 MiB', '6.075 / 1.024 = 5,93 - richtig.'),
+      nein('6.075 / 1.024 ≈ 5,93 MiB', '6.075 / 1.024 = 5,93. Richtig.'),
     ],
     mono: true,
     explanation:
@@ -1973,7 +1973,7 @@ final List<Question> ihkA04Daten = [
     luecken: [
       zahl(576000, rationale: '72.000 MB × 8.'),
       zahl(633600, rationale: '576.000 × 1,1.'),
-      zahl(25344, rationale: '633.600 / 25 - beim Sichern zählt der Upload.'),
+      zahl(25344, rationale: '633.600 / 25. Beim Sichern zählt der Upload.'),
       zahl(7.04, toleranz: 0.01, rationale: '25.344 / 3.600.'),
     ],
     explanation:
@@ -2042,8 +2042,8 @@ final List<Question> ihkA04Daten = [
         'Die Filiale Göttingen soll eine 3-GB-Datei (1 GB = 1.000 MB) in die Zentrale hochladen. Der Anschluss der Filiale hat 100 Mbit/s im Download und 20 Mbit/s im Upload. Ein Kollege hat die Dauer berechnet; du prüfst seinen Rechenweg.',
     prompt: 'Markiere alle Zeilen, die einen Fehler enthalten.',
     zeilen: [
-      nein('3 GB = 3.000 MB', 'Dezimal umgerechnet - richtig.'),
-      nein('3.000 MB × 8 = 24.000 Mbit', 'Byte in Bit: × 8 - richtig.'),
+      nein('3 GB = 3.000 MB', 'Dezimal umgerechnet. Richtig.'),
+      nein('3.000 MB × 8 = 24.000 Mbit', 'Byte in Bit: × 8. Richtig.'),
       ja(
         'Datenrate für den Upload: 100 Mbit/s',
         'Beim Hochladen zählt die Upload-Rate von 20 Mbit/s.',
@@ -2054,9 +2054,9 @@ final List<Question> ihkA04Daten = [
       ),
       nein(
         '24.000 Mbit / 20 Mbit/s = 1.200 s',
-        'Mit der Upload-Rate gerechnet - richtig.',
+        'Mit der Upload-Rate gerechnet. Richtig.',
       ),
-      nein('1.200 s = 20 min', '1.200 / 60 = 20 - richtig.'),
+      nein('1.200 s = 20 min', '1.200 / 60 = 20. Richtig.'),
     ],
     mono: true,
     explanation:
@@ -2072,7 +2072,7 @@ final List<Question> ihkA04Daten = [
         'Erläutere zwei mögliche Gründe, warum eine Übertragung in der Praxis länger dauert als berechnet.',
     kriterien: [
       krit(
-        'Die Leitung wird mit anderen Anwendungen oder Nutzern geteilt - es steht nicht die volle Datenrate zur Verfügung.',
+        'Die Leitung wird mit anderen Anwendungen oder Nutzern geteilt. Es steht nicht die volle Datenrate zur Verfügung.',
         punkte: 2,
         stichwoerter: [
           'geteilt',
@@ -2144,7 +2144,7 @@ final List<Question> ihkA04Daten = [
       ], '72 Mbit/s liegen unter der Grenze von 80 Mbit/s.'),
     ],
     explanation:
-        '12 Kameras × 6 Mbit/s = 72 Mbit/s. 80 % von 100 Mbit/s = 80 Mbit/s. 80 - 72 = 8 Mbit/s Reserve - der Uplink reicht aus, eine 14. Kamera (84 Mbit/s) würde die Grenze aber überschreiten.',
+        '12 Kameras × 6 Mbit/s = 72 Mbit/s. 80 % von 100 Mbit/s = 80 Mbit/s. 80 - 72 = 8 Mbit/s Reserve. Der Uplink reicht aus, eine 14. Kamera (84 Mbit/s) würde die Grenze aber überschreiten.',
     punkte: 4,
     difficulty: 1,
   ),
@@ -2191,7 +2191,7 @@ final List<Question> ihkA04Daten = [
         ],
       ),
       krit(
-        'Verlustbehaftet: Kaum wahrnehmbare Details werden entfernt, das Original ist nicht wiederherstellbar - dafür viel kleinere Dateien (z. B. JPEG).',
+        'Verlustbehaftet: Kaum wahrnehmbare Details werden entfernt, das Original ist nicht wiederherstellbar, dafür viel kleinere Dateien (z. B. JPEG).',
         punkte: 1,
         stichwoerter: [
           'Details entfernt',
@@ -2202,12 +2202,12 @@ final List<Question> ihkA04Daten = [
         ],
       ),
       krit(
-        'Produktfotos für die Website: verlustbehaftet (JPEG) - kleine Dateien, kurze Ladezeit.',
+        'Produktfotos für die Website: verlustbehaftet (JPEG), kleine Dateien, kurze Ladezeit.',
         punkte: 1,
         stichwoerter: ['Produktfotos', 'Fotos', 'Website', 'Ladezeit', 'JPEG'],
       ),
       krit(
-        'Vertragsunterlagen im Archiv: verlustfrei - Schrift bleibt scharf und der Inhalt unverändert.',
+        'Vertragsunterlagen im Archiv: verlustfrei, Schrift bleibt scharf und der Inhalt unverändert.',
         punkte: 1,
         stichwoerter: [
           'Vertragsunterlagen',
@@ -2275,7 +2275,7 @@ final List<Question> ihkA04Daten = [
       ),
     ],
     explanation:
-        'Der Text trennt Container (MP4: hält die Spuren zusammen) und Codec (H.264: komprimiert). Abspielbar ist eine Datei nur, wenn das Programm den Codec unterstützt - die Endung allein sagt wenig. „Lossy“ heißt verlustbehaftet.',
+        'Der Text trennt Container (MP4: hält die Spuren zusammen) und Codec (H.264: komprimiert). Abspielbar ist eine Datei nur, wenn das Programm den Codec unterstützt. Die Endung allein sagt wenig. „Lossy“ heißt verlustbehaftet.',
     punkte: 4,
     tags: ['englisch'],
   ),
@@ -2354,7 +2354,7 @@ final List<Question> ihkA04Daten = [
     loesung:
         'Beim maschinellen Lernen wird das System nicht mit festen Regeln programmiert, sondern lernt Muster aus großen Mengen von Beispieldaten. Genannte Anwendungen: Spracherkennung, das Sortieren von E-Mails und das Erkennen fehlerhafter Produkte auf Fotos.',
     explanation:
-        '2 Punkte für den Unterschied (lernen aus Beispieldaten statt fester Regeln), je 1 Punkt für zwei der drei genannten Anwendungen. Gewertet wird nur, was im Text steht - eigene Beispiele zählen hier nicht.',
+        '2 Punkte für den Unterschied (lernen aus Beispieldaten statt fester Regeln), je 1 Punkt für zwei der drei genannten Anwendungen. Gewertet wird nur, was im Text steht. Eigene Beispiele zählen hier nicht.',
     punkte: 4,
     tags: ['englisch'],
   ),
@@ -2410,7 +2410,7 @@ final List<Question> ihkA04Daten = [
         'Erläutere die wahrscheinliche Ursache und beschreibe eine Maßnahme, mit der sich das Ergebnis verbessern lässt.',
     kriterien: [
       krit(
-        'Ursache: Die Trainingsdaten sind einseitig (nur Halle 1, nur Tageslicht) - das Modell ist darauf überangepasst (Overfitting) und verallgemeinert schlecht.',
+        'Ursache: Die Trainingsdaten sind einseitig (nur Halle 1, nur Tageslicht). Das Modell ist darauf überangepasst (Overfitting) und verallgemeinert schlecht.',
         punkte: 2,
         stichwoerter: [
           'Overfitting',
@@ -2496,7 +2496,7 @@ final List<Question> ihkA04Daten = [
       ],
     ],
     explanation:
-        'KI eignet sich für Sprache, Text und Muster: Transkribieren, Klassifizieren, ähnliche Fälle finden, Entwürfe schreiben, Zusammenfassen. Was an Kunden geht, wird vorher von einem Menschen geprüft - die Verantwortung bleibt beim Techniker.',
+        'KI eignet sich für Sprache, Text und Muster: Transkribieren, Klassifizieren, ähnliche Fälle finden, Entwürfe schreiben, Zusammenfassen. Was an Kunden geht, wird vorher von einem Menschen geprüft. Die Verantwortung bleibt beim Techniker.',
     punkte: 4,
   ),
   freitext(
@@ -2508,7 +2508,7 @@ final List<Question> ihkA04Daten = [
         'Beschreibe zwei Argumente, die für den Einsatz von KI in der Ticketbearbeitung sprechen.',
     kriterien: [
       krit(
-        'Entlastung von Routinearbeit: Sortieren, Zusammenfassen und Entwürfe übernimmt die KI - es bleibt mehr Zeit für schwierige Fälle.',
+        'Entlastung von Routinearbeit: Sortieren, Zusammenfassen und Entwürfe übernimmt die KI, und es bleibt mehr Zeit für schwierige Fälle.',
         punkte: 2,
         stichwoerter: [
           'Routine',
@@ -2618,7 +2618,7 @@ final List<Question> ihkA04Daten = [
     loesung:
         'Ein guter Prompt nennt die Rolle (z. B. „Du bist IT-Administratorin“), den Kontext (kleines Büro mit 20 Arbeitsplätzen), die klare Aufgabe (Backup-Konzept vorschlagen) und das gewünschte Format (Tabelle mit höchstens zehn Zeilen). Hilfreich sind außerdem Beispiele und Einschränkungen.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 4 - die Lösungsliste ist länger als verlangt. Merkhilfe: Rolle, Kontext, Aufgabe, Format. Vertrauliche und personenbezogene Daten gehören nicht in den Prompt.',
+        'Je Nennung 1 Punkt, höchstens 4. Die Lösungsliste ist länger als verlangt. Merkhilfe: Rolle, Kontext, Aufgabe, Format. Vertrauliche und personenbezogene Daten gehören nicht in den Prompt.',
     punkte: 4,
     difficulty: 1,
   ),
@@ -2645,7 +2645,7 @@ final List<Question> ihkA04Daten = [
       ),
       ja(
         '„Er funkt nach Wi-Fi 7.“',
-        'Laut Datenblatt Wi-Fi 6 - die Angabe ist erfunden.',
+        'Laut Datenblatt Wi-Fi 6. Die Angabe ist erfunden.',
       ),
       nein(
         '„Als VPN-Verfahren steht WireGuard bereit.“',
@@ -2653,11 +2653,11 @@ final List<Question> ihkA04Daten = [
       ),
       ja(
         '„Die Garantie beträgt fünf Jahre.“',
-        'Laut Datenblatt 2 Jahre - eine falsche Zusage mit rechtlichen Folgen.',
+        'Laut Datenblatt 2 Jahre. Eine falsche Zusage mit rechtlichen Folgen.',
       ),
       ja(
         '„Laut NetzProfi 03/2025 ist er Testsieger.“',
-        'Die Quelle existiert nicht - erfundene Belege sind typisch für Halluzinationen.',
+        'Die Quelle existiert nicht. Erfundene Belege sind typisch für Halluzinationen.',
       ),
       nein(
         '„Das WLAN arbeitet nach Wi-Fi 6.“',
@@ -2665,7 +2665,7 @@ final List<Question> ihkA04Daten = [
       ),
     ],
     explanation:
-        'Halluzinationen sind flüssig formulierte, aber falsche oder erfundene Angaben - oft Zahlen, Normen und Quellen. Erkennen lassen sie sich nur durch den Abgleich mit verlässlichen Unterlagen wie dem Datenblatt. Vor dem Versand an Kunden muss ein Mensch prüfen.',
+        'Halluzinationen sind flüssig formulierte, aber falsche oder erfundene Angaben, oft Zahlen, Normen und Quellen. Erkennen lassen sie sich nur durch den Abgleich mit verlässlichen Unterlagen wie dem Datenblatt. Vor dem Versand an Kunden muss ein Mensch prüfen.',
     punkte: 3,
   ),
   freitext(
@@ -2677,7 +2677,7 @@ final List<Question> ihkA04Daten = [
         'Beschreibe zwei Risiken, die mit dem Einsatz des Chatbots verbunden sind.',
     kriterien: [
       krit(
-        'Falsche Auskünfte (Halluzinationen), z. B. erfundene Lieferzeiten oder Zusagen - Folge: verärgerte Kunden, Imageschaden, rechtliche Ansprüche.',
+        'Falsche Auskünfte (Halluzinationen), z. B. erfundene Lieferzeiten oder Zusagen. Folge: verärgerte Kunden, Imageschaden, rechtliche Ansprüche.',
         punkte: 2,
         stichwoerter: [
           'falsche Auskunft',
@@ -2775,7 +2775,7 @@ final List<Question> ihkA04Daten = [
         ],
       ),
       krit(
-        'Vorurteile in den Trainingsdaten - Gruppen werden unfair behandelt',
+        'Vorurteile in den Trainingsdaten: Gruppen werden unfair behandelt',
         stichwoerter: [
           'Vorurteil',
           'unfair',
@@ -2808,7 +2808,7 @@ final List<Question> ihkA04Daten = [
     loesung:
         'Der Text nennt vier Risiken: Antworten können richtig klingen, aber falsch sein. Die Trainingsdaten können Vorurteile enthalten, sodass Gruppen unfair behandelt werden. Vertrauliche Daten, die in ein öffentliches Werkzeug eingegeben werden, können das Unternehmen verlassen. Beschäftigte können den Ergebnissen zu sehr vertrauen und sie nicht mehr prüfen.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 3 - der Text enthält vier Risiken. Stichworte auf Deutsch genügen. „Prejudice“ bedeutet Vorurteil, „confidential“ vertraulich.',
+        'Je Nennung 1 Punkt, höchstens 3. Der Text enthält vier Risiken. Stichworte auf Deutsch genügen. „Prejudice“ bedeutet Vorurteil, „confidential“ vertraulich.',
     punkte: 3,
     tags: ['englisch'],
   ),

@@ -41,7 +41,7 @@ final List<Question> questionsA05 = [
       ),
     ],
     explanation:
-        'Statische Prüfungen untersuchen ein Ergebnis, ohne es auszuführen - das geht auch mit Anforderungen und Entwürfen, lange bevor Code existiert. Dynamische Prüfungen, also Tests, führen das Programm aus.',
+        'Statische Prüfungen untersuchen ein Ergebnis, ohne es auszuführen. Das geht auch mit Anforderungen und Entwürfen, lange bevor Code existiert. Dynamische Prüfungen, also Tests, führen das Programm aus.',
   ),
   zuordnen(
     'a5-qg-2',
@@ -104,7 +104,7 @@ final List<Question> questionsA05 = [
     ],
     hint: 'Beginne mit dem formlosen Gegenlesen',
     explanation:
-        'Reviews reichen vom informellen Gegenlesen über Walkthrough und technisches Review bis zur Inspektion - der formalsten Form mit Moderator, Rollen, Checklisten und Protokoll.',
+        'Reviews reichen vom informellen Gegenlesen über Walkthrough und technisches Review bis zur Inspektion, der formalsten Form mit Moderator, Rollen, Checklisten und Protokoll.',
   ),
   markieren(
     'a5-qg-5',
@@ -221,11 +221,11 @@ final List<Question> questionsA05 = [
     choices: [
       ja(
         'Die App startet auf den Dienst-Smartphones in höchstens 3 Sekunden.',
-        'Sie beschreibt, WIE GUT die App arbeitet (Antwortzeit) - nicht funktional.',
+        'Sie beschreibt, WIE GUT die App arbeitet (Antwortzeit), also nicht funktional.',
       ),
       nein(
         'Mitarbeitende können Beginn und Ende ihrer Arbeitszeit buchen.',
-        'Das ist eine Funktion - WAS die App tut.',
+        'Das ist eine Funktion: WAS die App tut.',
       ),
       nein(
         'Die App berechnet die Überstunden eines Monats.',
@@ -247,7 +247,7 @@ final List<Question> questionsA05 = [
     choices: [
       ja(
         'Die Produktseite lädt bei 500 gleichzeitigen Nutzern in höchstens 2 Sekunden.',
-        'Messgröße, Zielwert und Bedingung sind genannt - ein Test kann eindeutig bestehen oder scheitern.',
+        'Messgröße, Zielwert und Bedingung sind genannt. Ein Test kann eindeutig bestehen oder scheitern.',
       ),
       nein(
         'Der Shop soll möglichst schnell sein.',
@@ -311,7 +311,7 @@ final List<Question> questionsA05 = [
       zu(
         'Kunden können Artikel in den Warenkorb legen.',
         0,
-        'Eine Funktion - WAS das System tut.',
+        'Eine Funktion: WAS das System tut.',
       ),
       zu(
         'Der Shop ist zu 99,5 % im Monat erreichbar.',
@@ -336,7 +336,7 @@ final List<Question> questionsA05 = [
     ],
     difficulty: 1,
     explanation:
-        'Funktionale Anforderungen beschreiben, WAS ein System tun soll. Nicht funktionale Anforderungen beschreiben, WIE GUT es das tun soll - Antwortzeit, Verfügbarkeit, Bedienbarkeit, Sicherheit.',
+        'Funktionale Anforderungen beschreiben, WAS ein System tun soll. Nicht funktionale Anforderungen beschreiben, WIE GUT es das tun soll: Antwortzeit, Verfügbarkeit, Bedienbarkeit, Sicherheit.',
   ),
   reihenfolge(
     'a5-qe-7',
@@ -391,7 +391,7 @@ final List<Question> questionsA05 = [
       ),
     ],
     explanation:
-        'Plan: analysieren, Ziel setzen, Maßnahme planen. Do: im Kleinen erproben. Check: Ergebnis gegen das Ziel prüfen. Act: bei Erfolg standardisieren, sonst nachbessern - dann beginnt der nächste Zyklus.',
+        'Plan: analysieren, Ziel setzen, Maßnahme planen. Do: im Kleinen erproben. Check: Ergebnis gegen das Ziel prüfen. Act: bei Erfolg standardisieren, sonst nachbessern. Dann beginnt der nächste Zyklus.',
   ),
   einfach(
     'a5-qp-2',
@@ -402,7 +402,7 @@ final List<Question> questionsA05 = [
     choices: [
       ja(
         'Ursachen analysieren, die Maßnahme anpassen und einen neuen Zyklus starten',
-        'Das Ziel ist verfehlt - also wird nachgebessert und erneut erprobt.',
+        'Das Ziel ist verfehlt, also wird nachgebessert und erneut erprobt.',
       ),
       nein(
         'Das Portal sofort für alle Abteilungen einführen',
@@ -433,7 +433,7 @@ final List<Question> questionsA05 = [
         'Anteil vorher: 240 / 800 = 0,30 = 30 %\n'
         'Anteil nachher: 60 / 600 = 0,10 = 10 %\n'
         'Differenz: 30 % - 10 % = 20 Prozentpunkte\n'
-        'Relativ wäre das ein Rückgang um 20 / 30 ≈ 66,7 Prozent - Prozentpunkte und Prozent nicht verwechseln.',
+        'Relativ wäre das ein Rückgang um 20 / 30 ≈ 66,7 Prozent. Prozentpunkte und Prozent nicht verwechseln.',
   ),
   freitext(
     'a5-qp-4',
@@ -453,7 +453,7 @@ final List<Question> questionsA05 = [
         ],
       ),
       krit(
-        'Er läuft fortlaufend weiter - nach jedem Zyklus beginnt der nächste.',
+        'Er läuft fortlaufend weiter: nach jedem Zyklus beginnt der nächste.',
         punkte: 2,
         stichwoerter: [
           'fortlaufend',
@@ -538,7 +538,7 @@ final List<Question> questionsA05 = [
         'Das ist eine Testart, kein Platzhalter für fehlende Komponenten.',
       ),
       nein(
-        'Gar nicht - das Modul kann erst nach Fertigstellung aller Teile getestet werden',
+        'Gar nicht: das Modul kann erst nach Fertigstellung aller Teile getestet werden',
         'Genau dafür gibt es Platzhalter: Komponenten lassen sich früh und isoliert testen.',
       ),
     ],
@@ -574,7 +574,7 @@ final List<Question> questionsA05 = [
       zu(
         'Die Kundin prüft den Shop mit echten Artikeldaten und entscheidet über die Annahme.',
         3,
-        'Der Auftraggeber prüft und entscheidet - das ist die Abnahme.',
+        'Der Auftraggeber prüft und entscheidet. Das ist die Abnahme.',
       ),
     ],
     explanation:
@@ -746,7 +746,7 @@ final List<Question> questionsA05 = [
       zu(
         'Unit-Tests der Preisberechnung',
         0,
-        'Viele feste Eingaben mit festem Soll - ideal für Automatisierung.',
+        'Viele feste Eingaben mit festem Soll, ideal für Automatisierung.',
       ),
       zu(
         'Einmaliger Test einer Sonderaktion, die nie wiederkehrt',
@@ -779,7 +779,7 @@ final List<Question> questionsA05 = [
     explanation:
         'Anweisungsüberdeckung = ausgeführte / alle Anweisungen × 100 %\n'
         '= 34 / 40 × 100 % = 85 %.\n'
-        '6 Anweisungen wurden nie ausgeführt - für sie fehlen Testfälle.',
+        '6 Anweisungen wurden nie ausgeführt. Für sie fehlen Testfälle.',
   ),
   rechnen(
     'a5-sv-4',
@@ -812,7 +812,7 @@ final List<Question> questionsA05 = [
         'Die Abfrage hat 2 Zweige: ja und nein.\n'
         'Mit betrag = 150 wird nur der Ja-Zweig durchlaufen: 1 von 2.\n'
         'Zweigüberdeckung = 1 / 2 × 100 % = 50 %.\n'
-        'Die Anweisungsüberdeckung liegt dagegen schon bei 100 %, weil alle Anweisungen liefen - der leere Nein-Zweig enthält keine Anweisung.',
+        'Die Anweisungsüberdeckung liegt dagegen schon bei 100 %, weil alle Anweisungen liefen, denn der leere Nein-Zweig enthält keine Anweisung.',
   ),
   zuordnen(
     'a5-sv-6',
@@ -895,7 +895,7 @@ final List<Question> questionsA05 = [
       ),
     ],
     explanation:
-        'Es gibt drei Klassen: ungültig (unter 8), gültig (8 bis 64) und ungültig (über 64). Jede braucht einen Vertreter. Die Werte an den Grenzen sind Sache der Grenzwertanalyse - hier reicht je Klasse ein beliebiger Wert.',
+        'Es gibt drei Klassen: ungültig (unter 8), gültig (8 bis 64) und ungültig (über 64). Jede braucht einen Vertreter. Die Werte an den Grenzen sind Sache der Grenzwertanalyse. Hier reicht je Klasse ein beliebiger Wert.',
   ),
   rechnen(
     'a5-sf-2',
@@ -928,7 +928,7 @@ final List<Question> questionsA05 = [
       zu('99', 0, 'Obere Grenze, liegt noch im erlaubten Bereich.'),
       zu('0', 1, 'Kleiner als 1.'),
       zu('100', 1, 'Größer als 99.'),
-      zu('„zwei“', 1, 'Keine Zahl - eine eigene ungültige Klasse.'),
+      zu('„zwei“', 1, 'Keine Zahl, also eine eigene ungültige Klasse.'),
       zu('-5', 1, 'Negative Mengen liegen unter der Untergrenze.'),
     ],
     explanation:
@@ -1000,7 +1000,7 @@ final List<Question> questionsA05 = [
       ),
       nein(
         '50 und 51',
-        'Beide Werte liegen schon im Rabattbereich - ein Fehler wie > statt >= bliebe unentdeckt.',
+        'Beide Werte liegen schon im Rabattbereich. Ein Fehler wie > statt >= bliebe unentdeckt.',
       ),
       nein(
         '1 und 50',
@@ -1034,7 +1034,7 @@ final List<Question> questionsA05 = [
       ),
     ],
     explanation:
-        'Positivtests prüfen, ob gültige Eingaben korrekt verarbeitet werden. Negativtests prüfen, ob ungültige Eingaben sauber abgewiesen werden - mit verständlicher Meldung und ohne Absturz.',
+        'Positivtests prüfen, ob gültige Eingaben korrekt verarbeitet werden. Negativtests prüfen, ob ungültige Eingaben sauber abgewiesen werden, mit verständlicher Meldung und ohne Absturz.',
   ),
   rechnen(
     'a5-sf-8',
@@ -1159,7 +1159,7 @@ final List<Question> questionsA05 = [
     choices: [
       ja(
         'Der Test ist nicht abgeschlossen, weil ein kritischer Fehler offen ist.',
-        'Alle Endekriterien müssen erfüllt sein - eines ist verfehlt.',
+        'Alle Endekriterien müssen erfüllt sein. Eines ist verfehlt.',
       ),
       nein(
         'Der Test ist abgeschlossen, weil mehr als 95 % bestanden sind.',
@@ -1175,7 +1175,7 @@ final List<Question> questionsA05 = [
       ),
     ],
     explanation:
-        'Endekriterien werden vor dem Test messbar festgelegt und gelten gemeinsam. Solange ein kritischer Fehler offen ist, ist der Test nicht beendet - erst Korrektur, dann Nachtest und Regressionstest.',
+        'Endekriterien werden vor dem Test messbar festgelegt und gelten gemeinsam. Solange ein kritischer Fehler offen ist, ist der Test nicht beendet. Erst Korrektur, dann Nachtest und Regressionstest.',
   ),
   freitext(
     'a5-sp-6',
