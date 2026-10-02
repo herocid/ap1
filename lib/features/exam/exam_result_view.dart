@@ -5,11 +5,11 @@ import '../../core/theme/app_spacing.dart';
 import '../../core/util/answer_format.dart';
 import '../../core/util/exam_composer.dart';
 import '../../data/models/exam_area.dart';
-import '../../data/models/topic.dart';
 import '../../state/session_controller.dart';
 import '../../widgets/common.dart';
 import '../../widgets/feedback_fx.dart';
 import '../learn/review_tile.dart';
+import 'exam_area_breakdown.dart';
 import 'exam_widgets.dart';
 
 /// Erreichte und mögliche Punkte einer Gruppe von Teilaufgaben.
@@ -91,10 +91,6 @@ class _ExamResultViewState extends State<ExamResultView> {
           final byLost = b.value.lost.compareTo(a.value.lost);
           return byLost != 0 ? byLost : a.key.index.compareTo(b.key.index);
         });
-    final byArea = ScoreSum.group(
-      session.items,
-      (i) => Topics.byId(i.question.topicId).areaId,
-    );
     final weakest = byFormat.isEmpty || byFormat.first.value.lost < 1
         ? null
         : byFormat.first;
@@ -191,21 +187,8 @@ class _ExamResultViewState extends State<ExamResultView> {
         ],
         const SizedBox(height: Gap.xl),
 
-        if (byArea.length > 1) ...[
-          const SectionHeader('Nach Katalogbereich'),
-          for (final area in ExamAreas.all)
-            if (byArea[area.id] != null) ...[
-              ScoreRow(
-                icon: area.icon,
-                overline: 'BEREICH ${area.number}',
-                title: area.title,
-                earned: byArea[area.id]!.earned,
-                possible: byArea[area.id]!.possible,
-              ),
-              const SizedBox(height: Gap.s),
-            ],
-          const SizedBox(height: Gap.xl),
-        ],
+        ExamAreaBreakdown(session: session),
+        const SizedBox(height: Gap.xl),
 
         const SectionHeader(
           'Durchsicht',
