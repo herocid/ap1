@@ -35,6 +35,11 @@ class _ExamRunScreenState extends ConsumerState<ExamRunScreen> {
   /// eingeklappt.
   final _situationOpen = <int, bool>{};
 
+  /// Teilaufgaben, bei denen „Ganz lesen“ getippt wurde. Ohne Eintrag zeigt
+  /// die erste Teilaufgabe die Situation nur als Anriss, damit die Aufgabe
+  /// selbst auf kleinen Handys noch auf den ersten Bildschirm passt.
+  final _situationFull = <int>{};
+
   @override
   void dispose() {
     _scroll.dispose();
@@ -212,6 +217,12 @@ class _ExamRunScreenState extends ConsumerState<ExamRunScreen> {
         paper: paper,
         scroll: _scroll,
         situationOpen: _situationOpen[task] ?? paper.partAt(session.index) == 0,
+        // Von Hand aufgeklappt heißt: ganz zeigen.
+        situationPreview:
+            _situationOpen[task] == null &&
+            !_situationFull.contains(session.index),
+        onReadSituation: () =>
+            setState(() => _situationFull.add(session.index)),
         onToggleSituation: () => setState(() {
           _situationOpen[task] =
               !(_situationOpen[task] ?? paper.partAt(session.index) == 0);
@@ -411,6 +422,8 @@ class _Run extends StatelessWidget {
     required this.paper,
     required this.scroll,
     required this.situationOpen,
+    required this.situationPreview,
+    required this.onReadSituation,
     required this.onToggleSituation,
     required this.onClose,
     required this.onFlag,
@@ -425,6 +438,8 @@ class _Run extends StatelessWidget {
   final ExamPaper paper;
   final ScrollController scroll;
   final bool situationOpen;
+  final bool situationPreview;
+  final VoidCallback onReadSituation;
   final VoidCallback onToggleSituation;
   final VoidCallback onClose;
   final VoidCallback onFlag;
@@ -519,6 +534,8 @@ class _Run extends StatelessWidget {
                     task: task,
                     expanded: situationOpen,
                     onToggle: onToggleSituation,
+                    preview: situationPreview,
+                    onReadAll: onReadSituation,
                     timeUsed: Duration(seconds: taskSeconds),
                   ),
                   const SizedBox(height: Gap.l),
@@ -568,6 +585,9 @@ class _Run extends StatelessWidget {
                     showCaseContext: false,
                     // Die Punkte stehen schon in der Kopfzeile.
                     showPoints: false,
+                    // Wie auf dem echten Bogen: weder Thema noch
+                    // Schwierigkeit über der Teilaufgabe.
+                    showMeta: false,
                   ),
                 ],
               ),

@@ -12,6 +12,10 @@ final _noBreak = String.fromCharCode(0x2060);
 final kZeroWidthSpace = String.fromCharCode(0x200B);
 String get _zwsp => kZeroWidthSpace;
 
+/// Alle unsichtbaren Trennhilfen (weiche Trennstelle, Umbruchstelle,
+/// Wortverbinder).
+final _helpers = RegExp('[­​⁠]+');
+
 /// Text mit Silbentrennung und sichtbarem Trennstrich.
 ///
 /// Wie [Text], aber lange Wörter werden über [hyphenate] an Silbengrenzen
@@ -121,6 +125,43 @@ class RenderHyphenText extends RenderBox {
   final TextPainter _painter = TextPainter();
   double? _laidOutFor;
 
+  /// [_source], in dem die unsichtbaren Trennhilfen ohne Sperrung stehen.
+  InlineSpan? _unspacedCache;
+  InlineSpan get _unspaced => _unspacedCache ??= _withoutHelperSpacing(_source);
+
+  /// Flutter rechnet `letterSpacing` hinter jedes Zeichen, auch hinter die
+  /// unsichtbaren Trennhilfen. In gesperrten Labels stand deshalb an jeder
+  /// möglichen Trennstelle eine kleine Lücke („PRÄSEN TIEREN“). Die
+  /// Trennhilfen bekommen darum einen eigenen Abschnitt ohne Sperrung; die
+  /// Zeichenpositionen im Text bleiben dabei gleich.
+  static InlineSpan _withoutHelperSpacing(InlineSpan source) {
+    const none = TextStyle(letterSpacing: 0);
+    InlineSpan rebuild(InlineSpan span, bool spaced) {
+      if (span is! TextSpan) return span;
+      final spacing = span.style?.letterSpacing;
+      final here = spacing == null ? spaced : spacing != 0;
+      final children = span.children?.map((c) => rebuild(c, here)).toList();
+      final t = span.text;
+      if (t == null || !here || !t.contains(_helpers)) {
+        if (children == null) return span;
+        return TextSpan(text: t, style: span.style, children: children);
+      }
+      final parts = <InlineSpan>[];
+      var start = 0;
+      for (final m in _helpers.allMatches(t)) {
+        if (m.start > start) {
+          parts.add(TextSpan(text: t.substring(start, m.start)));
+        }
+        parts.add(TextSpan(text: m[0], style: none));
+        start = m.end;
+      }
+      if (start < t.length) parts.add(TextSpan(text: t.substring(start)));
+      return TextSpan(style: span.style, children: [...parts, ...?children]);
+    }
+
+    return rebuild(source, false);
+  }
+
   void configure({
     required InlineSpan source,
     required TextAlign textAlign,
@@ -140,6 +181,7 @@ class RenderHyphenText extends RenderBox {
     _textDirection = textDirection;
     _textScaler = textScaler;
     _locale = locale;
+    _unspacedCache = null;
     _laidOutFor = null;
     markNeedsLayout();
     markNeedsSemanticsUpdate();
@@ -194,6 +236,24 @@ class RenderHyphenText extends RenderBox {
   @visibleForTesting
   String get debugPainted =>
       _painter.text?.toPlainText(includeSemanticsLabels: false) ?? '';
+
+  /// Linke Kante jedes sichtbaren Zeichens (ohne Trennhilfen) im gesetzten
+  /// Text - zum Vergleich mit einem normalen `Text`.
+  @visibleForTesting
+  List<Offset> get debugGlyphOrigins {
+    final text = debugPainted;
+    final out = <Offset>[];
+    for (var i = 0; i < text.length; i++) {
+      final ch = text[i];
+      if (ch == _shy || ch == _zwsp || ch == _noBreak) continue;
+      final boxes = _painter.getBoxesForSelection(
+        TextSelection(baseOffset: i, extentOffset: i + 1),
+      );
+      if (boxes.isEmpty) continue;
+      out.add(Offset(boxes.first.left, boxes.first.top));
+    }
+    return out;
+  }
 
   /// True, wenn jeder eingefügte Trennstrich am Ende einer Zeile steht.
   @visibleForTesting
@@ -265,7 +325,7 @@ class RenderHyphenText extends RenderBox {
   /// einen echten Strich.
   InlineSpan _withVisibleHyphens(double width) {
     final plain = _source.toPlainText(includeSemanticsLabels: false);
-    if (!width.isFinite || !plain.contains(_shy)) return _source;
+    if (!width.isFinite || !plain.contains(_shy)) return _unspaced;
 
     // Ein eingefügter Strich verändert den Umbruch der Zeile. Deshalb
     // setzen, nachsehen, wo die Zeilen wirklich enden, und wiederholen, bis
@@ -350,7 +410,7 @@ class RenderHyphenText extends RenderBox {
   }
 
   InlineSpan _insertDashes(Set<int> breaks, [Set<int> blocked = const {}]) {
-    if (breaks.isEmpty && blocked.isEmpty) return _source;
+    if (breaks.isEmpty && blocked.isEmpty) return _unspaced;
     var offset = 0;
     InlineSpan rebuild(InlineSpan span) {
       if (span is! TextSpan) return span;
@@ -377,7 +437,7 @@ class RenderHyphenText extends RenderBox {
       );
     }
 
-    return rebuild(_source);
+    return rebuild(_unspaced);
   }
 
   @override
@@ -385,7 +445,7 @@ class RenderHyphenText extends RenderBox {
 
   @override
   double computeMaxIntrinsicWidth(double height) {
-    final p = _measure(_source)..layout();
+    final p = _measure(_unspaced)..layout();
     final w = p.maxIntrinsicWidth;
     p.dispose();
     return w;

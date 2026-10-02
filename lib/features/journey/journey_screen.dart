@@ -106,35 +106,43 @@ class _ProgressHero extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Wrap(
-            alignment: WrapAlignment.spaceBetween,
-            crossAxisAlignment: WrapCrossAlignment.end,
-            spacing: Gap.m,
-            runSpacing: Gap.xs,
-            children: [
-              Text('Dein Fortschritt', style: context.text.titleMedium),
-              Text.rich(
-                TextSpan(
-                  children: [
-                    WidgetSpan(
-                      alignment: PlaceholderAlignment.baseline,
-                      baseline: TextBaseline.alphabetic,
-                      child: AnimatedCount(
-                        doneCount,
-                        style: AppType.numeric(
-                          size: 22,
-                          weight: FontWeight.w700,
+          // Volle Breite, damit der Zähler rechtsbündig neben dem Titel steht.
+          // Reicht der Platz nicht (schmal, große Schrift), rutscht er als
+          // Ganzes unter den Titel statt mitten im Zähler umzubrechen.
+          SizedBox(
+            width: double.infinity,
+            child: Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              crossAxisAlignment: WrapCrossAlignment.end,
+              spacing: Gap.m,
+              runSpacing: Gap.xs,
+              children: [
+                Text('Dein Fortschritt', style: context.text.titleMedium),
+                Text.rich(
+                  maxLines: 1,
+                  softWrap: false,
+                  TextSpan(
+                    children: [
+                      WidgetSpan(
+                        alignment: PlaceholderAlignment.baseline,
+                        baseline: TextBaseline.alphabetic,
+                        child: AnimatedCount(
+                          doneCount,
+                          style: AppType.numeric(
+                            size: 22,
+                            weight: FontWeight.w700,
+                          ),
                         ),
                       ),
-                    ),
-                    TextSpan(
-                      text: ' / ${lessons.length} Lektionen',
-                      style: AppType.numeric(size: 13, color: c.textMuted),
-                    ),
-                  ],
+                      TextSpan(
+                        text: ' / ${lessons.length} Lektionen',
+                        style: AppType.numeric(size: 13, color: c.textMuted),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           const SizedBox(height: Gap.m),
           AnimatedBar(value: share, minHeight: 6, color: c.flameFill),

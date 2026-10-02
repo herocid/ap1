@@ -34,6 +34,13 @@ class LessonScreen extends ConsumerStatefulWidget {
 }
 
 class _LessonScreenState extends ConsumerState<LessonScreen> {
+  /// Breite des Schließen-Knopfs in der Kopfzeile.
+  static const _barLeading = 56.0;
+
+  /// Die Kopfzeile wächst mit der Schrift höchstens so weit wie jede
+  /// Material-Leiste.
+  static const _barMaxScale = 1.34;
+
   late final PageController _pager;
   int _page = 0;
 
@@ -109,6 +116,66 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     final isFinish = _page == pageCount - 1;
     final isStep = _page > 0 && !isFinish;
 
+    // Kopfzeile: Auf der Übersicht steht der Titel groß im Inhalt, die
+    // Leiste bleibt dort schlank. In den Schritten ist der Lektionstitel
+    // immer ganz lesbar (bricht um, die Leiste wächst mit); die Themenzeile
+    // erscheint nur, wenn sie ungekürzt in eine Zeile passt.
+    final showTitle = _page > 0;
+    final scaler = MediaQuery.textScalerOf(
+      context,
+    ).clamp(maxScaleFactor: _barMaxScale);
+    final topicStyle = context.text.labelSmall?.copyWith(
+      color: context.c.textMuted,
+      letterSpacing: 1.1,
+    );
+    final titleStyle = context.text.titleMedium;
+    final counterStyle = AppType.numeric(size: 13, color: context.c.textMuted);
+    final topicLabel = topic.title.toUpperCase();
+
+    TextPainter measure(String text, TextStyle? style, {double? maxWidth}) =>
+        TextPainter(
+          text: TextSpan(text: text, style: style),
+          textDirection: TextDirection.ltr,
+          textScaler: scaler,
+        )..layout(maxWidth: maxWidth ?? double.infinity);
+
+    // Breite des Zählers beim höchsten Stand - so bricht der Titel in jedem
+    // Schritt gleich um.
+    final counterPainter = measure(
+      '${steps.length}/${steps.length}',
+      counterStyle,
+    );
+    final counterWidth = counterPainter.width.ceilToDouble();
+    counterPainter.dispose();
+
+    final media = MediaQuery.of(context);
+    final textWidth =
+        media.size.width -
+        media.padding.horizontal -
+        _barLeading -
+        Gap.l -
+        (isStep ? counterWidth + Gap.m : 0);
+
+    var showTopic = false;
+    var toolbarHeight = kToolbarHeight;
+    if (showTitle) {
+      final topicPainter = measure(topicLabel, topicStyle);
+      showTopic = topicPainter.width <= textWidth - 1;
+      // Etwas schmaler messen: Ein Trennstrich am Zeilenende braucht Platz.
+      final titlePainter = measure(
+        hyphenate(lesson.title),
+        titleStyle,
+        maxWidth: (textWidth - scaler.scale(10)).clamp(40.0, double.infinity),
+      );
+      final needed =
+          titlePainter.height + (showTopic ? topicPainter.height : 0) + Gap.m;
+      toolbarHeight = needed > kToolbarHeight
+          ? needed.ceilToDouble()
+          : kToolbarHeight;
+      topicPainter.dispose();
+      titlePainter.dispose();
+    }
+
     return CallbackShortcuts(
       bindings: {
         const SingleActivator(LogicalKeyboardKey.arrowRight): () =>
@@ -125,38 +192,54 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
               tooltip: 'Lektion verlassen',
               onPressed: () => context.pop(),
             ),
+            leadingWidth: _barLeading,
             titleSpacing: 0,
-            // Kopfzeile: bewusst einzeilig mit „…“ - der volle Titel steht
-            // auf der Einstiegsseite der Lektion.
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClampedText(
-                  topic.title.toUpperCase(),
-                  style: context.text.labelSmall?.copyWith(
-                    color: context.c.textMuted,
-                    letterSpacing: 1.1,
-                  ),
-                ),
-                ClampedText(lesson.title, style: context.text.titleMedium),
-              ],
-            ),
-            actions: [
-              if (isStep)
-                Padding(
-                  padding: const EdgeInsets.only(right: Gap.l),
-                  child: Center(
-                    child: Text(
-                      '$_page/${steps.length}',
-                      semanticsLabel: 'Schritt $_page von ${steps.length}',
-                      style: AppType.numeric(
-                        size: 13,
-                        color: context.c.textMuted,
+            toolbarHeight: toolbarHeight,
+            // Der Zähler steht mit in der Titelzeile (nicht in `actions`),
+            // damit die Breite für den Titel genau bekannt ist.
+            title: !showTitle
+                ? null
+                : MediaQuery.withClampedTextScaling(
+                    maxScaleFactor: _barMaxScale,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: Gap.l),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                if (showTopic)
+                                  Text(
+                                    topicLabel,
+                                    maxLines: 1,
+                                    softWrap: false,
+                                    style: topicStyle,
+                                  ),
+                                HyphenText(lesson.title, style: titleStyle),
+                              ],
+                            ),
+                          ),
+                          if (isStep) ...[
+                            const SizedBox(width: Gap.m),
+                            ConstrainedBox(
+                              constraints: BoxConstraints(
+                                minWidth: counterWidth,
+                              ),
+                              child: Text(
+                                '$_page/${steps.length}',
+                                semanticsLabel:
+                                    'Schritt $_page von ${steps.length}',
+                                textAlign: TextAlign.end,
+                                style: counterStyle,
+                              ),
+                            ),
+                          ],
+                        ],
                       ),
                     ),
                   ),
-                ),
-            ],
             bottom: PreferredSize(
               preferredSize: const Size.fromHeight(12),
               child: Padding(

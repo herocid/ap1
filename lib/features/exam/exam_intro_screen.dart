@@ -42,8 +42,10 @@ class ExamIntroScreen extends ConsumerWidget {
               children: [
                 const BitTip(BitSpot.exam, title: 'Bits Prüfungstipp'),
                 const SizedBox(height: Gap.l),
+                // Neutrale Regeln im Hinweiston (Petrol) - Orange bleibt
+                // Motivation und Warnung vorbehalten.
                 const NoteBox(
-                  tone: NoteTone.warn,
+                  tone: NoteTone.info,
                   title: 'Wie in der echten AP1',
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

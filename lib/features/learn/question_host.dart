@@ -22,6 +22,7 @@ class QuestionHost extends StatelessWidget {
     this.shuffleSeed,
     this.showCaseContext = true,
     this.showPoints = true,
+    this.showMeta = true,
   });
 
   final Question question;
@@ -33,6 +34,9 @@ class QuestionHost extends StatelessWidget {
   final int? shuffleSeed;
   final bool showCaseContext;
   final bool showPoints;
+
+  /// Thema, Format und Schwierigkeit über der Aufgabe; im Prüfungslauf aus.
+  final bool showMeta;
 
   /// Stabiler Mischwert je Runde und Aufgabe.
   static int seedFor(DateTime startedAt, Question q) =>
@@ -50,6 +54,7 @@ class QuestionHost extends StatelessWidget {
       shuffleSeed: shuffleSeed,
       showCaseContext: showCaseContext,
       showPoints: showPoints,
+      showMeta: showMeta,
     );
   }
 }

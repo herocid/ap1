@@ -306,8 +306,16 @@ class MascotSays extends StatelessWidget {
   final MascotMood mood;
   final double size;
 
+  /// Wenig Platz: schmales Gerät oder große Schrift. Dann wäre die Blase
+  /// neben Bit sehr schmal und hoch, links bliebe eine leere Fläche.
+  static bool _isTight(BuildContext context) {
+    final mq = MediaQuery.of(context);
+    return mq.size.width < 360 || mq.textScaler.scale(100) > 115;
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (_isTight(context)) return _compact(context);
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -317,6 +325,54 @@ class MascotSays extends StatelessWidget {
           child: SpeechBubble(title: title, text: text),
         ),
       ],
+    );
+  }
+
+  /// Kompakte Form: Blase über die volle Breite, Bit klein oben links neben
+  /// dem Titel, der Text darunter in ganzer Breite. Ohne Titel steht Bit
+  /// oben links neben dem Text.
+  Widget _compact(BuildContext context) {
+    final bit = Mascot(mood: mood, size: math.min(size, 40));
+    final body = Text(text, style: context.text.bodyMedium);
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(Gap.m),
+      decoration: BoxDecoration(
+        color: context.scheme.surface,
+        borderRadius: BorderRadius.circular(Radii.l),
+        border: Border.all(color: context.c.border),
+      ),
+      child: title == null
+          ? Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                bit,
+                const SizedBox(width: Gap.s),
+                Expanded(child: body),
+              ],
+            )
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    bit,
+                    const SizedBox(width: Gap.s),
+                    Expanded(
+                      child: Text(
+                        title!,
+                        style: context.text.titleSmall?.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: Gap.xs),
+                body,
+              ],
+            ),
     );
   }
 }
@@ -349,8 +405,9 @@ class SpeechBubble extends StatelessWidget {
             if (title != null) ...[
               Text(
                 title!,
-                style: context.text.titleSmall
-                    ?.copyWith(fontWeight: FontWeight.w700),
+                style: context.text.titleSmall?.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
               ),
               const SizedBox(height: 2),
             ],

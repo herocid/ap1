@@ -128,12 +128,20 @@ class TaskHeader extends StatelessWidget {
     required this.expanded,
     required this.onToggle,
     this.timeUsed,
+    this.preview = false,
+    this.onReadAll,
   });
 
   final int number;
   final ExamTask task;
   final bool expanded;
   final VoidCallback onToggle;
+
+  /// Aufgeklappt nur die ersten Zeilen der Situation zeigen, darunter
+  /// „Ganz lesen“ ([onReadAll]). So bleibt die Teilaufgabe auf kleinen
+  /// Handys im ersten Bildschirm; kurze Situationen stehen trotzdem ganz da.
+  final bool preview;
+  final VoidCallback? onReadAll;
 
   /// Bisher mit dieser Aufgabe verbrachte Zeit; `null` blendet die
   /// Zeitzeile aus (Auswertung).
@@ -146,9 +154,15 @@ class TaskHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final guide = ExamComposer.guideTime(task.points);
     final over = timeUsed != null && timeUsed! > guide;
+    // Wenig Platz (schmales Handy oder große Systemschrift): kleinerer
+    // Titel und engerer Rand, damit der Kopf nicht den Bildschirm füllt.
+    final tight =
+        MediaQuery.sizeOf(context).width < 360 ||
+        MediaQuery.textScalerOf(context).scale(1) > 1.15;
+    final side = tight ? Gap.m : Gap.l;
 
     final head = Padding(
-      padding: const EdgeInsets.fromLTRB(Gap.l, Gap.m, Gap.s, Gap.m),
+      padding: EdgeInsets.fromLTRB(side, Gap.m, tight ? 0 : Gap.s, Gap.m),
       child: Row(
         children: [
           Expanded(
@@ -163,14 +177,27 @@ class TaskHeader extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 2),
-                HyphenText(task.title, style: context.text.titleMedium),
+                HyphenText(
+                  task.title,
+                  style: tight
+                      ? context.text.titleSmall
+                      : context.text.titleMedium,
+                ),
                 if (timeUsed != null) ...[
                   const SizedBox(height: Gap.xs),
-                  Text(
-                    'Richtzeit ${guide.inMinutes} min  ·  bisher '
-                    '${formatDuration(timeUsed!)}',
-                    style: context.text.labelSmall?.copyWith(
-                      color: over ? context.c.flame : context.c.textMuted,
+                  // Immer eine Zeile: wird auf schmalen Handys kleiner
+                  // statt umzubrechen.
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Richtzeit ${guide.inMinutes} min  ·  bisher '
+                      '${formatDuration(timeUsed!)}',
+                      maxLines: 1,
+                      softWrap: false,
+                      style: context.text.labelSmall?.copyWith(
+                        color: over ? context.c.flame : context.c.textMuted,
+                      ),
                     ),
                   ),
                 ],
@@ -179,7 +206,7 @@ class TaskHeader extends StatelessWidget {
           ),
           if (_hasSituation)
             SizedBox(
-              width: 48,
+              width: tight ? 40 : 48,
               height: 48,
               child: Icon(
                 expanded ? Icons.expand_less : Icons.expand_more,
@@ -209,29 +236,119 @@ class TaskHeader extends StatelessWidget {
             head,
           if (_hasSituation && expanded)
             Padding(
-              padding: const EdgeInsets.fromLTRB(Gap.l, 0, Gap.l, Gap.l),
+              padding: EdgeInsets.fromLTRB(side, 0, side, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Divider(height: 1, color: context.c.border),
                   const SizedBox(height: Gap.m),
-                  if (task.otherCompany != null) ...[
-                    HyphenText(
-                      'Diese Aufgabe spielt bei einem anderen Unternehmen: '
-                      '${task.otherCompany!.description}',
-                      style: context.text.bodyMedium?.copyWith(
-                        color: context.c.textMuted,
-                      ),
-                    ),
-                    const SizedBox(height: Gap.m),
-                  ],
-                  if (task.situation.trim().isNotEmpty)
-                    HyphenText(task.situation, style: context.text.bodyMedium),
+                  _SituationText(
+                    task: task,
+                    maxLines: preview ? (tight ? 3 : 4) : null,
+                    onReadAll: onReadAll,
+                    bottom: side,
+                  ),
                 ],
               ),
             ),
         ],
       ),
+    );
+  }
+}
+
+/// Text der Situation - ganz oder als Anriss mit „Ganz lesen“.
+class _SituationText extends StatelessWidget {
+  const _SituationText({
+    required this.task,
+    required this.maxLines,
+    required this.onReadAll,
+    required this.bottom,
+  });
+
+  final ExamTask task;
+
+  /// Zeilen des Anrisses; `null` zeigt alles.
+  final int? maxLines;
+  final VoidCallback? onReadAll;
+
+  /// Abstand unter dem Text (entfällt unter dem Knopf, der bringt eigenen).
+  final double bottom;
+
+  @override
+  Widget build(BuildContext context) {
+    final style = context.text.bodyMedium!;
+    final other = task.otherCompany == null
+        ? null
+        : 'Diese Aufgabe spielt bei einem anderen Unternehmen: '
+              '${task.otherCompany!.description}';
+    final situation = task.situation.trim().isEmpty ? null : task.situation;
+
+    final full = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (other != null)
+          HyphenText(other, style: style.copyWith(color: context.c.textMuted)),
+        if (other != null && situation != null) const SizedBox(height: Gap.m),
+        if (situation != null) HyphenText(situation, style: style),
+      ],
+    );
+    final lines = maxLines;
+    if (lines == null) {
+      return Padding(
+        padding: EdgeInsets.only(bottom: bottom),
+        child: full,
+      );
+    }
+
+    return LayoutBuilder(
+      builder: (context, box) {
+        // Ohne Silbentrennung gemessen - mit Trennung wird der Text
+        // höchstens kürzer, nie länger.
+        final painter = TextPainter(
+          text: TextSpan(text: other ?? situation, style: style),
+          textDirection: Directionality.of(context),
+          textScaler: MediaQuery.textScalerOf(context),
+          maxLines: lines,
+        )..layout(maxWidth: box.maxWidth);
+        final more =
+            painter.didExceedMaxLines || (other != null && situation != null);
+        final height = (painter.preferredLineHeight * lines).ceilToDouble();
+        painter.dispose();
+        if (!more) {
+          return Padding(
+            padding: EdgeInsets.only(bottom: bottom),
+            child: full,
+          );
+        }
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // An der Zeilengrenze abgeschnitten; der Rest ist einen Tipp
+            // entfernt.
+            SizedBox(
+              height: height,
+              child: ClipRect(
+                child: SingleChildScrollView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  child: full,
+                ),
+              ),
+            ),
+            TextButton.icon(
+              onPressed: onReadAll,
+              style: TextButton.styleFrom(
+                // Links bündig mit dem Text darüber.
+                padding: const EdgeInsets.only(right: Gap.s),
+                minimumSize: const Size(0, 48),
+              ),
+              icon: const Icon(Icons.unfold_more, size: 18),
+              label: const Text('Ganz lesen'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

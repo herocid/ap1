@@ -1,5 +1,6 @@
 import 'package:ap1_trainer/widgets/hyphenation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'support/fonts.dart';
@@ -187,6 +188,143 @@ void main() {
       // Bei schmaler Breite wird tatsächlich getrennt.
       if (width <= 160) expect(painted, contains('-$kZeroWidthSpace'));
       expect(ro.plainText, text);
+    }
+  });
+
+  testWidgets('gesperrte Wörter stehen ohne Umbruch wie in einem Text', (
+    tester,
+  ) async {
+    // Früher bekam jede unsichtbare Trennstelle die Sperrung noch einmal:
+    // „PRÄSEN TIEREN & BERATEN“ hatte mitten im Wort eine Lücke.
+    const labels = [
+      'PRÄSENTIEREN & BERATEN',
+      'PROJEKTGRUNDLAGEN & ORGANISATION',
+      'Wirtschaftlichkeitsbetrachtung',
+      'Lessons-Learned-Workshop',
+    ];
+    for (final label in labels) {
+      for (final spacing in [0.0, 1.1, 3.0]) {
+        for (final scale in [1.0, 1.3]) {
+          final style = TextStyle(
+            fontFamily: 'Inter',
+            fontSize: 11,
+            fontWeight: FontWeight.w600,
+            letterSpacing: spacing,
+          );
+          await tester.pumpWidget(
+            MaterialApp(
+              home: MediaQuery(
+                data: MediaQueryData(textScaler: TextScaler.linear(scale)),
+                child: Material(
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        HyphenText(label, style: style),
+                        Text(label, style: style),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+          final where = '„$label“, Sperrung $spacing, Schrift $scale';
+          final ro = tester.renderObject<RenderHyphenText>(
+            find.byType(HyphenText),
+          );
+          final plain = tester.renderObject<RenderParagraph>(
+            find.descendant(
+              of: find.byType(Text),
+              matching: find.byType(RichText),
+            ),
+          );
+          expect(ro.size.width, closeTo(plain.size.width, 0.01), reason: where);
+          expect(
+            ro.getMaxIntrinsicWidth(double.infinity),
+            closeTo(plain.getMaxIntrinsicWidth(double.infinity), 0.01),
+            reason: where,
+          );
+          final origins = ro.debugGlyphOrigins;
+          expect(origins, hasLength(label.length), reason: where);
+          for (var i = 0; i < label.length; i++) {
+            final box = plain.getBoxesForSelection(
+              TextSelection(baseOffset: i, extentOffset: i + 1),
+            );
+            expect(
+              origins[i].dx,
+              closeTo(box.first.left, 0.01),
+              reason: '$where, Zeichen $i („${label[i]}“)',
+            );
+          }
+        }
+      }
+    }
+  });
+
+  testWidgets('Sperrung: Strich am Zeilenende, keine Lücke im Wort', (
+    tester,
+  ) async {
+    const label = 'PROJEKTGRUNDLAGEN & ORGANISATION, PRÄSENTIEREN & BERATEN';
+    const style = TextStyle(
+      fontFamily: 'Inter',
+      fontSize: 11,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 1.1,
+    );
+    for (var width = 60.0; width <= 330; width += 9) {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Material(
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: SizedBox(
+                width: width,
+                child: const HyphenText(label, style: style),
+              ),
+            ),
+          ),
+        ),
+      );
+      final ro = tester.renderObject<RenderHyphenText>(find.byType(HyphenText));
+      final where = '$width px: ${show(ro.debugPainted)}';
+      expect(
+        ro.debugDashesAtLineEnds,
+        isTrue,
+        reason: 'Strich in Zeile $where',
+      );
+      expect(ro.debugUndashedBreaks, 0, reason: 'ohne Strich $where');
+      expect(ro.plainText, label);
+      // Innerhalb einer Zeile folgt jedes Zeichen im Abstand seiner eigenen
+      // Breite plus Sperrung - an einer Trennstelle darf nichts dazukommen.
+      final painted = ro.debugPainted
+          .replaceAll(String.fromCharCode(0xAD), '')
+          .replaceAll(String.fromCharCode(0x2060), '')
+          .replaceAll(kZeroWidthSpace, '');
+      final origins = ro.debugGlyphOrigins;
+      expect(origins, hasLength(painted.length), reason: where);
+      for (var i = 0; i < painted.length - 1; i++) {
+        if (origins[i + 1].dy != origins[i].dy) continue;
+        // Vorschub des Zeichens: Breite des Paars minus Breite des zweiten.
+        double measure(String t) {
+          final p = TextPainter(
+            text: TextSpan(text: t, style: style),
+            textDirection: TextDirection.ltr,
+          )..layout();
+          final w = p.width;
+          p.dispose();
+          return w;
+        }
+
+        final advance =
+            measure(painted.substring(i, i + 2)) - measure(painted[i + 1]);
+        expect(
+          origins[i + 1].dx - origins[i].dx,
+          closeTo(advance, 0.05),
+          reason: 'Lücke nach Zeichen $i („${painted[i]}“) bei $where',
+        );
+      }
     }
   });
 

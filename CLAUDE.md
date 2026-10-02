@@ -181,8 +181,14 @@ Inhalte:
 Quiz/Prüfung:
 - Abzeichen „Ernstfall bestanden“/„Note 1“ (`achievements.dart`) rechnen noch mit dem
   ungewichteten Mittel statt mit Punkten und zählen auch halbe Prüfungen.
-- Ausgangssituation einer Fallaufgabe ist im Quiz aufgeklappt sehr lang (Unternehmen +
-  Situation); im Prüfungslauf zeigt `QuestionView` Punkte doppelt zur Kopfzeile.
+- Prüfungslauf: Die Ausgangssituation steht bei Teilaufgabe a) als Anriss mit „Ganz lesen“
+  (`exam_widgets.dart`), Thema und Schwierigkeit sind dort ausgeblendet (`showMeta: false`,
+  wie auf dem echten Bogen). Offen: `CaseContextBox` im normalen Quiz zeigt die Situation
+  weiter in voller Länge.
+- Bits Sprechblase (`MascotSays`) wird unter 360 px Breite oder über 115 % Schrift kompakt.
+  Die Lektionsleiste zeigt den Titel immer ganz (bricht um), auf der Übersicht nur den
+  Schließen-Knopf.
+- `test/ui_shots_test.dart` erzeugt auch Journey, Lektion (alle Schritte) und Prüfungslauf.
 - Blitzrunde (60 Sekunden) wird nicht gebaut (Entscheidung des Nutzers, 02.10.2026);
   KI-Bewertung von Freitext bewusst nicht (Kosten, Server, online) - nur auf Wunsch des
   Nutzers.
