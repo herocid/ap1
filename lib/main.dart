@@ -15,6 +15,7 @@ import 'data/models/profile.dart';
 import 'data/repositories/local_store.dart';
 import 'state/providers.dart';
 import 'widgets/brand.dart';
+import 'widgets/mascot.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +35,9 @@ Future<void> main() async {
       debugPrint('Supabase-Initialisierung fehlgeschlagen: $e');
     }
   }
+
+  // Bit blinzelt und schwebt nur in der echten App (in Tests aus).
+  Mascot.idleAnimations = true;
 
   _registerFontLicenses();
   await ReminderService.instance.init();
