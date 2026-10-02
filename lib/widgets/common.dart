@@ -938,70 +938,72 @@ class NoteBox extends StatelessWidget {
     required this.child,
     this.tone = NoteTone.info,
     this.title,
+    this.icon,
   });
 
   final Widget child;
   final NoteTone tone;
   final String? title;
 
-  double _firstLineHeight(BuildContext context) {
-    final style = title != null
-        ? context.text.titleMedium!
-        : context.text.bodyMedium!;
-    return MediaQuery.textScalerOf(context).scale(style.fontSize ?? 14) *
-        (style.height ?? 1.2);
-  }
+  /// Optionales Symbol vor dem Text. Standard: keins.
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
     final c = context.c;
-    final (fg, bg, icon) = switch (tone) {
-      NoteTone.info => (c.info, c.infoBg, Icons.lightbulb_outline),
-      NoteTone.success => (c.success, c.successBg, Icons.check_circle_outline),
-      NoteTone.danger => (c.danger, c.dangerBg, Icons.cancel_outlined),
-      NoteTone.warn => (c.flame, c.flameBg, Icons.error_outline),
+    final accent = switch (tone) {
+      NoteTone.info => c.info,
+      NoteTone.success => c.success,
+      NoteTone.danger => c.danger,
+      NoteTone.warn => c.flame,
     };
+    final bodyStyle = context.text.bodyMedium!;
+    final lineHeight =
+        MediaQuery.textScalerOf(context).scale(bodyStyle.fontSize ?? 14) *
+        (bodyStyle.height ?? 1.2);
 
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(Gap.l),
-      decoration: BoxDecoration(
-        color: bg,
-        borderRadius: BorderRadius.circular(Radii.m),
-        border: Border.all(color: fg.withValues(alpha: 0.3)),
-      ),
-      child: Row(
+    Widget content = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (title != null) ...[
+          HyphenText(
+            title!,
+            style: context.text.labelMedium?.copyWith(
+              color: accent,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.3,
+            ),
+          ),
+          const SizedBox(height: 2),
+        ],
+        DefaultTextStyle.merge(
+          style: bodyStyle.copyWith(color: context.scheme.onSurface),
+          child: child,
+        ),
+      ],
+    );
+    if (icon != null) {
+      content = Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Symbol mittig auf die erste Textzeile (Titel oder Text) - auch
-          // bei großer Systemschrift.
           Padding(
-            padding: EdgeInsets.only(
-              top: math.max(0, (_firstLineHeight(context) - 20) / 2),
-            ),
-            child: Icon(icon, size: 20, color: fg),
+            padding: EdgeInsets.only(top: math.max(0, (lineHeight - 18) / 2)),
+            child: Icon(icon, size: 18, color: accent),
           ),
-          const SizedBox(width: Gap.m),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (title != null) ...[
-                  HyphenText(
-                    title!,
-                    style: context.text.titleMedium?.copyWith(color: fg),
-                  ),
-                  const SizedBox(height: Gap.xs),
-                ],
-                DefaultTextStyle.merge(
-                  style: context.text.bodyMedium!,
-                  child: child,
-                ),
-              ],
-            ),
-          ),
+          const SizedBox(width: Gap.s),
+          Expanded(child: content),
         ],
+      );
+    }
+
+    // Ruhiger Hinweis: schmaler Akzentstrich links, sonst neutral.
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.fromLTRB(Gap.m + 2, Gap.xs, 0, Gap.xs),
+      decoration: BoxDecoration(
+        border: Border(left: BorderSide(color: accent, width: 3)),
       ),
+      child: content,
     );
   }
 }
