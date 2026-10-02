@@ -8,6 +8,7 @@
 //   flutter test test/ui_shots_test.dart --dart-define=UI_SHOTS=true \
 //     --dart-define=UI_SHOTS_TAG=nachher
 
+import 'dart:async';
 import 'dart:io';
 import 'dart:ui' as ui;
 
@@ -20,6 +21,7 @@ import 'package:ap1_trainer/data/seed/cards/cards_data.dart';
 import 'package:ap1_trainer/features/shell/app_shell.dart';
 import 'package:ap1_trainer/main.dart';
 import 'package:ap1_trainer/state/providers.dart';
+import 'package:ap1_trainer/widgets/mascot.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -351,6 +353,68 @@ void main() {
         c.dispose();
       });
     }
+  }
+
+  for (final dark in [false, true]) {
+    testWidgets('Bit Stimmungen ${dark ? 'dunkel' : 'hell'}', (tester) async {
+      final c = await boot(
+        tester,
+        size: const Size(412, 915),
+        scale: 1,
+        dark: dark,
+      );
+      final ctx = c
+          .read(routerProvider)
+          .routerDelegate
+          .navigatorKey
+          .currentContext!;
+      final page = Scaffold(
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Wrap(
+                  spacing: 12,
+                  runSpacing: 12,
+                  children: [
+                    for (final m in MascotMood.values)
+                      Column(
+                        children: [
+                          Mascot(mood: m, size: 100),
+                          Text(m.name),
+                        ],
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                const MascotSays(
+                  mood: MascotMood.wave,
+                  title: 'Hallo, ich bin Bit',
+                  text: 'Ich begleite dich durch die AP1. Tipp mich an!',
+                ),
+                const SizedBox(height: 16),
+                MediaQuery(
+                  data: MediaQuery.of(ctx).copyWith(size: const Size(320, 568)),
+                  child: const MascotSays(
+                    mood: MascotMood.think,
+                    title: 'Kompakt',
+                    text: 'Unter 360 px steht Bit klein in der Blase.',
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+      unawaited(
+        Navigator.of(ctx).push(MaterialPageRoute<void>(builder: (_) => page)),
+      );
+      await tester.pumpAndSettle();
+      await save(tester, 'bit_stimmungen_${dark ? 'dunkel' : 'hell'}');
+      expect(tester.takeException(), isNull);
+    });
   }
 
   testWidgets('Einführung 320 hell', (tester) async {
