@@ -184,7 +184,8 @@ Erledigt (02.10.2026): Plus Jakarta Sans für Überschriften/große Zahlen, Kern
 Navigationsleiste, ruhige `NoteBox` (Farbstrich statt getöntem Kasten), redaktionelle
 Lernschritt-Karten, nummerierte Schrittliste, Haptik-System (`AppHaptics`), weiche
 Seitenübergänge (`page_transitions.dart`), Prüfungsauswertung je Bereich.
-Offen: Hero-Animation Lektion, persönliche Begrüßung, Bit-Ausbau.
+Bit-Ausbau erledigt: Figur neu gezeichnet (7 Stimmungen inkl. `proud`/`sleepy`, Blinzeln/Schweben nur mit `Mascot.idleAnimations`), Sprechblase mit Schatten, Tipps je Bereich (`BitTips.forArea`, `BitTip.area`) und Meilenstein-Meldungen.
+Offen: Hero-Animation Lektion, persönliche Begrüßung.
 
 ## Offen (Stand 02.10.2026)
 
