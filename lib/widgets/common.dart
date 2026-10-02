@@ -40,21 +40,60 @@ class _AppCardState extends State<AppCard> {
   @override
   Widget build(BuildContext context) {
     final content = Padding(padding: widget.padding, child: widget.child);
-    final card = Material(
-      color: widget.color ?? Theme.of(context).colorScheme.surface,
-      borderRadius: BorderRadius.circular(Radii.l),
-      child: InkWell(
-        onTap: widget.onTap,
-        onHighlightChanged: widget.onTap == null
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final radius = BorderRadius.circular(Radii.l);
+    final surface = Theme.of(context).colorScheme.surface;
+    // Hell: weicher, mehrlagiger Schatten statt grauem Rahmen. Dunkel:
+    // etwas hellere Fläche und ein sehr feiner Rand (Schatten sieht man
+    // dort nicht). Ein ausdrücklicher borderColor bleibt sichtbar.
+    final fill =
+        widget.color ??
+        (isDark ? Color.lerp(surface, Colors.white, 0.035)! : surface);
+    final Color? edge =
+        widget.borderColor ??
+        (isDark ? Colors.white.withValues(alpha: 0.06) : null);
+    final card = DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: radius,
+        boxShadow: isDark
             ? null
-            : (v) => setState(() => _pressed = v),
-        borderRadius: BorderRadius.circular(Radii.l),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Radii.l),
-            border: Border.all(color: widget.borderColor ?? context.c.border),
+            : const [
+                BoxShadow(
+                  color: Color(0x0A0B1E3A),
+                  blurRadius: 2,
+                  offset: Offset(0, 1),
+                ),
+                BoxShadow(
+                  color: Color(0x0F0B1E3A),
+                  blurRadius: 12,
+                  offset: Offset(0, 4),
+                ),
+                BoxShadow(
+                  color: Color(0x080B1E3A),
+                  blurRadius: 32,
+                  spreadRadius: -4,
+                  offset: Offset(0, 12),
+                ),
+              ],
+      ),
+      child: Material(
+        color: fill,
+        borderRadius: radius,
+        child: InkWell(
+          onTap: widget.onTap,
+          onHighlightChanged: widget.onTap == null
+              ? null
+              : (v) => setState(() => _pressed = v),
+          borderRadius: radius,
+          child: Container(
+            decoration: edge == null
+                ? null
+                : BoxDecoration(
+                    borderRadius: radius,
+                    border: Border.all(color: edge),
+                  ),
+            child: content,
           ),
-          child: content,
         ),
       ),
     );

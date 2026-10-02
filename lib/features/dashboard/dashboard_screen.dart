@@ -414,30 +414,32 @@ class _TodayCard extends StatelessWidget {
                   style: context.text.titleMedium?.copyWith(color: _fg),
                 ),
               ),
-              const SizedBox(width: Gap.m),
-              Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(
-                      text: '$done',
-                      style: AppType.numeric(
-                        size: 28,
-                        weight: FontWeight.w700,
-                        color: _fg,
-                      ),
-                    ),
-                    TextSpan(
-                      text: ' / $goal',
-                      style: AppType.numeric(size: 15, color: soft),
-                    ),
-                  ],
-                ),
-                maxLines: 1,
-                softWrap: false,
-              ),
             ],
           ),
           const SizedBox(height: Gap.m),
+          // Die Kernzahl groß und frei stehend, das Ziel klein daneben.
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: '$done',
+                  style: AppType.numeric(
+                    size: 52,
+                    weight: FontWeight.w800,
+                    color: _fg,
+                  ).copyWith(height: 1, letterSpacing: -1.5),
+                ),
+                TextSpan(
+                  text: ' / $goal Aufgaben',
+                  style: AppType.numeric(size: 15, color: soft),
+                ),
+              ],
+            ),
+            maxLines: 1,
+            softWrap: false,
+            overflow: TextOverflow.fade,
+          ),
+          const SizedBox(height: Gap.l),
           // Oranger Fortschritt in der hellen Stufe - die dunkle hebt sich
           // vom Blau nicht ab.
           AnimatedBar(
@@ -737,8 +739,6 @@ class _ReadinessCard extends StatelessWidget {
       padding: const EdgeInsets.all(Gap.l),
       child: Row(
         children: [
-          ReadinessRing(value: value, label: '', size: 72),
-          const SizedBox(width: Gap.l),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -749,7 +749,32 @@ class _ReadinessCard extends StatelessWidget {
                     color: context.c.textMuted,
                   ),
                 ),
-                const SizedBox(height: Gap.xs),
+                const SizedBox(height: Gap.s),
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: '$value',
+                        style: AppType.numeric(
+                          size: 52,
+                          weight: FontWeight.w800,
+                          color: context.scheme.primary,
+                        ).copyWith(height: 1, letterSpacing: -1.5),
+                      ),
+                      TextSpan(
+                        text: ' %',
+                        style: AppType.numeric(
+                          size: 24,
+                          weight: FontWeight.w700,
+                          color: context.scheme.primary,
+                        ),
+                      ),
+                    ],
+                  ),
+                  maxLines: 1,
+                  softWrap: false,
+                ),
+                const SizedBox(height: Gap.m),
                 Text(
                   next == null
                       ? 'Alle Meilensteine erreicht'

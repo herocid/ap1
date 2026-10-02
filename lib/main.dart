@@ -69,6 +69,7 @@ void _registerFontLicenses() {
     for (final (family, file) in const [
       ('Inter', 'assets/fonts/OFL-Inter.txt'),
       ('JetBrains Mono', 'assets/fonts/OFL-JetBrainsMono.txt'),
+      ('Plus Jakarta Sans', 'assets/fonts/OFL-PlusJakartaSans.txt'),
     ]) {
       yield LicenseEntryWithLineBreaks([
         family,

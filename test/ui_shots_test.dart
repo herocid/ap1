@@ -67,6 +67,12 @@ Future<void> _loadFonts() async {
     ..addFont(file('assets/fonts/JetBrainsMono-Bold.ttf'));
   await mono.load();
 
+  final display = FontLoader('PlusJakartaSans');
+  for (final w in ['SemiBold', 'Bold', 'ExtraBold']) {
+    display.addFont(file('assets/fonts/PlusJakartaSans-$w.ttf'));
+  }
+  await display.load();
+
   final flutterRoot =
       Platform.environment['FLUTTER_ROOT'] ??
       r'C:\Users\Student\develop\flutter';
