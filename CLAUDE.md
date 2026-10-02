@@ -151,14 +151,22 @@ Rechtsangaben der neuen Aufgaben gegen Gesetzestexte geprüft.
 ## Offen (Stand 02.10.2026)
 
 Inhalte:
-- Karten und Aufgaben sprachlich glätten: Die Lernschritte und die Oberfläche sind
-  überarbeitet (natürlich formuliert, ohne Gedankenstriche); Karten, Aufgaben und
-  Fallaufgaben sind bisher nur von Gedankenstrichen befreit, nicht Satz für Satz geglättet.
-  Keine Skripte für Ersetzungen (haben beim ersten Durchgang Fehler erzeugt), krit-Stichwörter
-  und Rechnungen nicht anfassen.
-- Fachliche Zweitprüfung: Bisher gab es nur Stichproben. Ein gründlicher Durchgang über alle
-  Rechenaufgaben und Rechtsangaben je Bereich ist nötig, weil die Inhalte ohne
-  Entwurfskennzeichnung live sind.
+- Erledigt am 02.10.2026: Karten, Aufgaben, Fallaufgaben und ältere `seed_*.dart` sind je
+  Datei von Hand geglättet (rund 950 Stellen) und zusammen mit den Lernschritten fachlich
+  zweitgeprüft (alle Rechnungen nachgerechnet, Rechtsangaben teils am Gesetzestext). Weiter
+  gilt: keine Skripte für Ersetzungen, krit-Stichwörter und Rechnungen nicht anfassen.
+- Rechtsstand im Blick behalten: § 38 BDSG (20-Personen-Schwelle für den
+  Datenschutzbeauftragten) soll laut Bundesregierung gestrichen werden; E-Rechnung
+  (Ausstellungspflicht ab 2027/2028, betrifft u. a. `k-pa-27`, `f-a02-logistik-f`);
+  KI-Verordnung nach dem Digital Omnibus (VO (EU) 2026/1744: Art. 4 nur noch „Maßnahmen zur
+  KI-Kompetenz“, Hochrisiko-Pflichten ab 02.12.2027 bzw. 02.08.2028; Zeittafel `n-ir-9`
+  endet bei 02.08.2025).
+- Einheitlich entscheiden (nicht geändert, weil Geschmacks- oder Katalogfrage): Zehnerregel
+  mit oder ohne Implementierungsphase (Bereich 01 `n-vw-7` gegen Bereich 05 `n-qg-9`),
+  OEM-Lizenz „an das Gerät gebunden“ (in Deutschland nicht durchsetzbar), Pflichtenheft
+  „nach der Vergabe“, Pfadschreibweise „A - C - E“ in Netzplan-Aufgaben, Aussage „Katalog
+  2025 kennt nur Wasserfall und Scrum“ (`c-vor-01`, `th-vor-1`), Server-Log 401/403 in
+  `n-wh-8`, alternative Kriterien, deren Summe über der Aufgabenpunktzahl liegt.
 
 Quiz/Prüfung:
 - Abzeichen „Ernstfall bestanden“/„Note 1“ (`achievements.dart`) rechnen noch mit dem
