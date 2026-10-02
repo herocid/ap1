@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
+import '../../core/util/haptics.dart';
 import '../../core/theme/app_theme.dart';
 import '../../widgets/brand.dart';
 import '../../widgets/common.dart';
@@ -165,7 +166,9 @@ class AppNavigationBar extends StatelessWidget {
           maxWidth: itemWidth - 2 * labelInset,
           maxScale: maxTextScale,
         );
-        return Row(
+        final indW = (itemWidth - 2 * labelInset).clamp(0.0, indicatorWidth);
+        final reduce = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
+        final row = Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             for (var i = 0; i < destinations.length; i++)
@@ -176,13 +179,36 @@ class AppNavigationBar extends StatelessWidget {
                   index: i,
                   count: destinations.length,
                   textScaler: scaler,
-                  indicatorWidth: (itemWidth - 2 * labelInset).clamp(
-                    0.0,
-                    indicatorWidth,
-                  ),
+                  indicatorWidth: indW,
                   onTap: onSelected == null ? null : () => onSelected!(i),
                 ),
               ),
+          ],
+        );
+        // Eine Pille, die zum aktiven Reiter gleitet, statt fünf Felder, die
+        // ein- und ausblenden: Der Wechsel wirkt wie eine Bewegung.
+        final dark = Theme.of(context).brightness == Brightness.dark;
+        return Stack(
+          children: [
+            AnimatedPositioned(
+              duration: reduce || onSelected == null
+                  ? Duration.zero
+                  : const Duration(milliseconds: 320),
+              curve: Curves.easeOutBack,
+              left: itemWidth * selectedIndex + (itemWidth - indW) / 2,
+              top: Gap.m,
+              width: indW,
+              height: indicatorHeight,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: context.scheme.primary.withValues(
+                    alpha: dark ? 0.26 : 0.12,
+                  ),
+                  borderRadius: BorderRadius.circular(indicatorHeight / 2),
+                ),
+              ),
+            ),
+            row,
           ],
         );
       },
@@ -191,35 +217,25 @@ class AppNavigationBar extends StatelessWidget {
     if (!framed) return bar;
 
     final dark = Theme.of(context).brightness == Brightness.dark;
-    return SafeArea(
-      top: false,
-      minimum: const EdgeInsets.only(bottom: Gap.s),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(Gap.m, 0, Gap.m, Gap.xs),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: context.scheme.surface,
-            borderRadius: BorderRadius.circular(barRadius),
-            border: Border.all(color: context.c.border),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: dark ? 0.45 : 0.10),
-                blurRadius: 24,
-                offset: const Offset(0, 8),
-              ),
-              BoxShadow(
-                color: Colors.black.withValues(alpha: dark ? 0.25 : 0.04),
-                blurRadius: 4,
-                offset: const Offset(0, 1),
-              ),
-            ],
+    // Volle Breite, bündig unten (wie iOS und Android selbst), mit feiner
+    // Kante und leichtem Schatten nach oben.
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: context.scheme.surface,
+        border: Border(top: BorderSide(color: context.c.border, width: 0.5)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: dark ? 0.35 : 0.06),
+            blurRadius: 16,
+            offset: const Offset(0, -2),
           ),
-          child: Material(
-            type: MaterialType.transparency,
-            borderRadius: BorderRadius.circular(barRadius),
-            clipBehavior: Clip.antiAlias,
-            child: bar,
-          ),
+        ],
+      ),
+      child: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: Gap.xs),
+          child: Material(type: MaterialType.transparency, child: bar),
         ),
       ),
     );
@@ -262,7 +278,7 @@ class _NavItemState extends State<_NavItem> {
     final scheme = context.scheme;
     final selected = widget.selected;
     final fg = selected ? scheme.primary : scheme.onSurfaceVariant;
-    final iconColor = selected ? scheme.onPrimary : scheme.onSurfaceVariant;
+    final iconColor = selected ? scheme.primary : scheme.onSurfaceVariant;
     final reduce = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
     // In der Vorschau (Einführung, ohne onTap) ohne Überblendung: Auf einer
     // Seite, die gerade ins Bild wischt, steht der Ticker still.
@@ -289,29 +305,13 @@ class _NavItemState extends State<_NavItem> {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                TweenAnimationBuilder<double>(
-                  tween: Tween(end: selected ? 1 : 0),
-                  duration: duration,
-                  curve: Curves.easeOutCubic,
-                  builder: (context, t, _) => Transform.scale(
-                    scale: 0.7 + 0.3 * t,
-                    child: Opacity(
-                      opacity: t.clamp(0.0, 1.0),
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: scheme.primary,
-                          borderRadius: BorderRadius.circular(Radii.m),
-                        ),
-                        child: const SizedBox.expand(),
-                      ),
-                    ),
-                  ),
-                ),
                 if (overlay > 0)
                   DecoratedBox(
                     decoration: BoxDecoration(
                       color: scheme.onSurface.withValues(alpha: overlay),
-                      borderRadius: BorderRadius.circular(Radii.m),
+                      borderRadius: BorderRadius.circular(
+                        AppNavigationBar.indicatorHeight / 2,
+                      ),
                     ),
                     child: const SizedBox.expand(),
                   ),
@@ -367,7 +367,10 @@ class _NavItemState extends State<_NavItem> {
       child: widget.onTap == null
           ? content
           : InkWell(
-              onTap: widget.onTap,
+              onTap: () {
+                if (!selected) AppHaptics.select();
+                widget.onTap!();
+              },
               onHighlightChanged: (v) => setState(() => _pressed = v),
               onHover: (v) => setState(() => _hovered = v),
               onFocusChange: (v) => setState(() => _focused = v),

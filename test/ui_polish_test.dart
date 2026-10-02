@@ -175,8 +175,8 @@ void main() {
         find.descendant(of: bar, matching: find.byIcon(Icons.quiz_outlined)),
       );
       final ctx = tester.element(bar);
-      // Weißes Symbol auf gefülltem Feld in Markenfarbe.
-      expect(active.color, Theme.of(ctx).colorScheme.onPrimary);
+      // Symbol in Markenfarbe auf der getönten Pille.
+      expect(active.color, Theme.of(ctx).colorScheme.primary);
       expect(
         find.descendant(of: bar, matching: find.byIcon(Icons.quiz_outlined)),
         findsOneWidget,
