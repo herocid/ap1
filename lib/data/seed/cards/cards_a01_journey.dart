@@ -104,7 +104,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-pz-1',
     'p-ziele',
     'Welche drei Zielarten unterscheidest du bei Projektzielen?',
-    'Sachziel (Leistung und Qualität), Terminziel, Kostenziel: Die drei Ecken des magischen Dreiecks.',
+    'Sachziel (Leistung und Qualität), Terminziel, Kostenziel. Das sind die drei Ecken des magischen Dreiecks.',
   ),
   karte(
     'k-pz-2',
@@ -247,7 +247,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-po-11',
     'p-organisation',
     'Ist „Urlaub genehmigen“ eine fachliche oder eine disziplinarische Weisung?',
-    'Disziplinarisch: wie Beurteilung, Gehalt und Abmahnung. Fachlich sind Aufgaben, Termine und Qualität.',
+    'Disziplinarisch, genau wie Beurteilung, Gehalt und Abmahnung. Fachlich sind Aufgaben, Termine und Qualität.',
   ),
   karte(
     'k-po-12',
@@ -416,7 +416,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-ps-10',
     'p-stakeholder',
     'Betriebsrat: Einfluss 4, Interesse 2 (ab 3 gilt hoch). Wie ordnest du ihn ein?',
-    'Zufriedenstellen: hoher Einfluss, geringes Interesse: Kurz und regelmäßig informieren, vor Entscheidungen abstimmen.',
+    'Zufriedenstellen (hoher Einfluss, geringes Interesse): kurz und regelmäßig informieren, vor Entscheidungen abstimmen.',
   ),
   karte(
     'k-ps-11',
@@ -522,7 +522,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-vw-1',
     'v-wasserfall',
     'Was unterscheidet Lastenheft und Pflichtenheft?',
-    'Lastenheft: vom Auftraggeber: WAS und WOFÜR. Pflichtenheft: vom Auftragnehmer: WIE und WOMIT.',
+    'Lastenheft: vom Auftraggeber, beschreibt WAS und WOFÜR. Pflichtenheft: vom Auftragnehmer, beschreibt WIE und WOMIT.',
   ),
   karte(
     'k-vw-2',
@@ -632,7 +632,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-va-8',
     'v-auswahl',
     'Nenne ein Beispiel für inkrementelles Vorgehen.',
-    'Webshop: Sprint 1 liefert die Produktliste, Sprint 2 den Warenkorb: Das Produkt wächst Stück für Stück.',
+    'Webshop: Sprint 1 liefert die Produktliste, Sprint 2 den Warenkorb. Das Produkt wächst Stück für Stück.',
   ),
   karte(
     'k-va-9',
@@ -669,13 +669,13 @@ final List<Flashcard> cardsA01Journey = [
   karte(
     'k-sm-2',
     's-manifest',
-    'Individuen und Interaktionen ...',
+    'Ergänze den agilen Wert: Individuen und Interaktionen ...',
     '... sind wichtiger als Prozesse und Werkzeuge.',
   ),
   karte(
     'k-sm-3',
     's-manifest',
-    'Reagieren auf Veränderung ...',
+    'Ergänze den agilen Wert: Reagieren auf Veränderung ...',
     '... ist wichtiger als das Befolgen eines Plans.',
     'Pläne bleiben wichtig. Sie werden nur angepasst, wenn sich die Lage ändert.',
   ),
@@ -689,7 +689,7 @@ final List<Flashcard> cardsA01Journey = [
   karte(
     'k-sm-5',
     's-manifest',
-    'Zusammenarbeit mit dem Kunden ...',
+    'Ergänze den agilen Wert: Zusammenarbeit mit dem Kunden ...',
     '... ist wichtiger als Vertragsverhandlung.',
   ),
   karte(
@@ -819,13 +819,13 @@ final List<Flashcard> cardsA01Journey = [
     'k-sr-9',
     's-rollen',
     'Der Vertrieb will mitten im Sprint eine neue Funktion. Wer ist zuständig?',
-    'Der Product Owner: nimmt den Wunsch ins Product Backlog auf und ordnet ihn ein. Der laufende Sprint bleibt geschützt.',
+    'Der Product Owner. Er nimmt den Wunsch ins Product Backlog auf und ordnet ihn ein. Der laufende Sprint bleibt geschützt.',
   ),
   karte(
     'k-sr-10',
     's-rollen',
     'Wer übernimmt in Scrum die Aufgaben der klassischen Projektleitung?',
-    'Niemand allein: Priorisieren der Product Owner, Arbeit einteilen die Developers, Hindernisse beseitigen der Scrum Master.',
+    'Niemand allein. Der Product Owner priorisiert, die Developers teilen die Arbeit ein, der Scrum Master beseitigt Hindernisse.',
   ),
   karte(
     'k-sr-11',
@@ -1116,7 +1116,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-st-12',
     's-stories',
     'Velocity 22 Story Points, im Backlog noch 150 Story Points. Wie viele Sprints noch?',
-    '150 / 22 = 6,82 → aufgerundet 7 Sprints.',
+    '150 / 22 ≈ 6,82 → aufgerundet 7 Sprints.',
   ),
   karte(
     'k-st-13',
@@ -1267,7 +1267,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-nv-7',
     'n-vorwaerts',
     'D folgt auf B (FEZ 5) und C (FEZ 7). Wie lautet der FAZ von D?',
-    'FAZ D = max(5; 7) = 7 - D wartet auf den letzten Vorgänger.',
+    'FAZ D = max(5; 7) = 7. D wartet auf den letzten Vorgänger.',
   ),
   karte(
     'k-nv-8',
@@ -1478,7 +1478,7 @@ final List<Flashcard> cardsA01Journey = [
     'k-nk-1',
     'n-kritisch',
     'Was unterscheidet Crashing und Fast Tracking?',
-    'Crashing: mehr Ressourcen auf kritische Vorgänge: Kostet Geld. Fast Tracking: kritische Vorgänge teilweise parallel: Erhöht das Risiko.',
+    'Crashing: mehr Ressourcen auf kritische Vorgänge, das kostet Geld. Fast Tracking: kritische Vorgänge teilweise parallel, das erhöht das Risiko.',
   ),
   karte(
     'k-nk-2',
@@ -1519,7 +1519,7 @@ final List<Flashcard> cardsA01Journey = [
   karte(
     'k-nk-8',
     'n-kritisch',
-    'Dauer 15, zweitlängster Weg 14. Ein kritischer Vorgang wird um 2 Tage kürzer. Neue Dauer?',
+    'Dauer 15, zweitlängster Weg 14. Ein Vorgang nur auf dem kritischen Weg wird 2 Tage kürzer. Neue Dauer?',
     '14 Tage: Nur 1 Tag gewonnen, weil jetzt der andere Weg kritisch ist.',
   ),
   karte(

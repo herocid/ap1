@@ -45,7 +45,9 @@ final List<Question> questionsA04Entwicklung = [
     text:
         'Das Pflichtenheft übernimmt die Anforderungen aus dem {0}. Es ergänzt, womit umgesetzt wird (eingesetzte {1}), wie die Teile zusammenspielen (Systemarchitektur und {2}) und woran die Abnahme gemessen wird (konkrete {3}).',
     luecken: [
-      wort(['Lastenheft'], 'Dort beginnt alles: mit den Anforderungen.'),
+      wort([
+        'Lastenheft',
+      ], 'Dort beginnt alles, nämlich mit den Anforderungen.'),
       wort([
         'Technologien',
       ], 'Womit umgesetzt wird, entscheidet der Auftragnehmer.'),
@@ -86,7 +88,7 @@ final List<Question> questionsA04Entwicklung = [
       zu(
         'Die Termine werden per REST-API aus dem Werkstattsystem gelesen.',
         1,
-        'Schnittstelle: das technische Wie.',
+        'Die Schnittstelle gehört zum technischen Wie.',
       ),
       zu(
         'Testfall 12: Buchung ohne freien Termin wird abgelehnt.',
@@ -221,7 +223,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Die Ticketliste lädt in höchstens 2 Sekunden.',
-        'Das beschreibt, wie schnell, also nicht-funktional.',
+        'Das beschreibt, wie schnell das System arbeitet, also nicht-funktional.',
       ),
     ],
     explanation:
@@ -409,7 +411,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
     ],
     explanation:
-        'Interview: Tiefe mit Rückfragen. Fragebogen: viele Personen. Beobachtung: unbewusste Abläufe. Workshop: mehrere Gruppen einigen sich. Dokumentenanalyse: vorhandene Unterlagen auswerten.',
+        'Das Interview liefert Tiefe durch Rückfragen, der Fragebogen erreicht viele Personen. Die Beobachtung zeigt unbewusste Abläufe, im Workshop einigen sich mehrere Gruppen, und die Dokumentenanalyse wertet vorhandene Unterlagen aus.',
   ),
   einfach(
     'a4-fe-2',
@@ -420,7 +422,7 @@ final List<Question> questionsA04Entwicklung = [
     choices: [
       ja(
         'Sie wird in diesem Release bewusst nicht umgesetzt, bleibt aber dokumentiert.',
-        'Won’t have heißt „this time“: später ist sie wieder möglich.',
+        'Won’t have heißt vollständig „Won’t have this time“. Später ist sie wieder möglich.',
       ),
       nein(
         'Sie wird endgültig gestrichen und aus der Dokumentation entfernt.',
@@ -442,7 +444,7 @@ final List<Question> questionsA04Entwicklung = [
     'a4-fe-3',
     'af-erhebung',
     scenario:
-        'Im Interview beschreiben die Lagerbeschäftigten ihre Arbeit lückenhaft: viele Handgriffe sind Routine und fallen ihnen gar nicht mehr auf.',
+        'Im Interview beschreiben die Lagerbeschäftigten ihre Arbeit lückenhaft, denn viele Handgriffe sind Routine und fallen ihnen gar nicht mehr auf.',
     prompt: 'Welche Erhebungstechnik ergänzt das Interview hier am besten?',
     choices: [
       ja(
@@ -569,7 +571,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         '«extend»-Pfeil von „Bestellung aufgeben“ zu „Gutschein einlösen“',
-        'Die Richtung ist vertauscht: bei extend zeigt der Pfeil zum Basisfall.',
+        'Die Richtung ist vertauscht. Bei extend zeigt der Pfeil zum Basisfall.',
       ),
       nein(
         '«include»-Pfeil von „Bestellung aufgeben“ zu „Gutschein einlösen“',
@@ -792,22 +794,22 @@ final List<Question> questionsA04Entwicklung = [
     buckets: ['Aggregation', 'Komposition'],
     items: [
       zu(
-        'Rechnung - Rechnungsposition',
+        'Rechnung und Rechnungsposition',
         1,
         'Positionen gibt es nicht ohne ihre Rechnung.',
       ),
       zu(
-        'Abteilung - Mitarbeiter',
+        'Abteilung und Mitarbeiter',
         0,
         'Mitarbeitende bleiben, wenn die Abteilung aufgelöst wird.',
       ),
       zu(
-        'Bestellung - Bestellposition',
+        'Bestellung und Bestellposition',
         1,
         'Eine Bestellposition existiert nur als Teil ihrer Bestellung.',
       ),
       zu(
-        'Playlist - Song',
+        'Playlist und Song',
         0,
         'Der Song existiert weiter, wenn die Playlist gelöscht wird.',
       ),
@@ -883,7 +885,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Eine Ausleihe kann zu mehreren Lesern gehören.',
-        'Neben Leser steht 1: genau ein Leser je Ausleihe.',
+        'Neben Leser steht 1, also genau ein Leser je Ausleihe.',
       ),
     ],
     explanation:
@@ -983,7 +985,7 @@ final List<Question> questionsA04Entwicklung = [
       zu('Balken, der wartet, bis alle eingehenden Flüsse angekommen sind', 3),
     ],
     explanation:
-        'Start: gefüllter Kreis. Entscheidung: Raute mit Guards, genau ein Weg. Gabelung: Balken, alle Wege parallel. Vereinigung: Balken, wartet auf alle eingehenden Wege.',
+        'Der Startknoten ist ein gefüllter Kreis. Nach der Entscheidung (Raute mit Guards) läuft genau ein Weg weiter. Die Gabelung startet als Balken alle Wege parallel, die Vereinigung wartet als Balken auf alle eingehenden Wege.',
   ),
   einfach(
     'a4-ua-2',
@@ -1002,7 +1004,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'Die Guards schließen sich nicht gegenseitig aus.',
-        'Doch: kein Betrag ist zugleich größer und kleiner als 500.',
+        'Doch, denn kein Betrag ist zugleich größer und kleiner als 500.',
       ),
       nein(
         'Guards gehören in die Raute, nicht an die Kanten.',
@@ -1065,7 +1067,7 @@ final List<Question> questionsA04Entwicklung = [
         'Nach einer Entscheidung läuft genau ein Weg weiter.',
       ),
       nein(
-        'Keiner: der Ablauf bleibt stehen',
+        'Keiner, der Ablauf bleibt stehen',
         'Die Guards [ja] und [nein] decken alle Fälle ab.',
       ),
     ],
@@ -1103,8 +1105,8 @@ final List<Question> questionsA04Entwicklung = [
         'Bedingungen an den Kanten stehen in eckigen Klammern und heißen {0}. Nach einer {1} läuft genau ein Weg weiter, nach einer {2} laufen alle Wege parallel. Wer eine Aktion ausführt, zeigen {3}. Eine Schleife entsteht aus einer Entscheidung und einer {4}.',
     luecken: [
       wort(['Guards'], 'Sie steuern, welcher Weg genommen wird.'),
-      wort(['Entscheidung'], 'Die Raute: genau ein Weg.'),
-      wort(['Gabelung'], 'Der Balken: alle Wege gleichzeitig.'),
+      wort(['Entscheidung'], 'Nach der Raute läuft genau ein Weg weiter.'),
+      wort(['Gabelung'], 'Am Balken starten alle Wege gleichzeitig.'),
       wort(['Swimlanes'], 'Jede Bahn steht für eine Rolle oder Abteilung.'),
       wort(['Rückkante'], 'Eine eigene Schleifenform gibt es nicht.'),
     ],
@@ -1146,7 +1148,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
     ],
     explanation:
-        'Die Aktion steht vor der Entscheidung, die über die Rückkante zurückführt. Also läuft der Rumpf mindestens einmal: das Muster einer fußgesteuerten Schleife (WIEDERHOLE … BIS keine Artikel mehr).',
+        'Die Aktion steht vor der Entscheidung, die über die Rückkante zurückführt. Der Rumpf läuft also mindestens einmal. Das ist das Muster einer fußgesteuerten Schleife (WIEDERHOLE … BIS keine Artikel mehr).',
     difficulty: 3,
   ),
 
@@ -1165,7 +1167,7 @@ final List<Question> questionsA04Entwicklung = [
       zu('Telefonnummer +49 351 123456', 4, 'Enthält + und Leerzeichen.'),
     ],
     explanation:
-        'Ganze Stückzahlen: int. Kommazahlen: double. Ja/Nein: boolean. Ein einzelnes Zeichen: char. PLZ und Telefonnummer: String, weil nicht gerechnet wird und führende Nullen und Sonderzeichen erhalten bleiben müssen.',
+        'Ganze Stückzahlen sind int, Kommazahlen double, Ja/Nein-Werte boolean und ein einzelnes Zeichen char. PLZ und Telefonnummer sind String, weil mit ihnen nicht gerechnet wird und führende Nullen und Sonderzeichen erhalten bleiben müssen.',
   ),
   rechnen(
     'a4-pd-2',
@@ -1244,7 +1246,7 @@ final List<Question> questionsA04Entwicklung = [
             'Von links nach rechts: "5" + 3 ergibt "53", dann "53" + 4 ergibt "534".',
       ),
       zahl(57, rationale: 'Die Klammer zuerst: 3 + 4 = 7, dann "5" + 7.'),
-      zahl(12, rationale: 'Nur Zahlen: hier wird addiert.'),
+      zahl(12, rationale: 'Hier stehen nur Zahlen, also wird addiert.'),
     ],
     explanation:
         'Der Operator + wird von links nach rechts ausgewertet. Ist ein Operand ein String, wird verkettet: "5" + 3 = "53", "53" + 4 = "534". Mit "5" + (3 + 4) entstünde "57". Ohne String wird gerechnet: 12.',
@@ -1262,11 +1264,11 @@ final List<Question> questionsA04Entwicklung = [
       ),
       ja(
         'byte b = (byte) 200;',
-        'byte reicht nur bis 127: der Wert läuft über und wird -56.',
+        'byte reicht nur bis 127. Der Wert läuft über und wird zu -56.',
       ),
       nein(
         'double y = i;',
-        'Erweiternde Umwandlung: aus 3 wird 3.0, nichts geht verloren.',
+        'Die Umwandlung ist erweiternd: Aus 3 wird 3.0, nichts geht verloren.',
       ),
       nein(
         'long l = i;',
@@ -1327,7 +1329,7 @@ final List<Question> questionsA04Entwicklung = [
       zu('Die 12 Monatsumsätze eines Jahres addieren.', 3),
     ],
     explanation:
-        'Eine einmalige Bedingung ist eine Verzweigung. Kann der Rumpf null Mal laufen: kopfgesteuert. Muss er mindestens einmal laufen: fußgesteuert. Steht die Anzahl fest: Zählschleife.',
+        'Eine einmalige Bedingung ist eine Verzweigung. Darf der Rumpf auch gar nicht laufen, passt die kopfgesteuerte Schleife. Muss er mindestens einmal laufen, passt die fußgesteuerte. Steht die Anzahl vorher fest, nimmst du die Zählschleife.',
   ),
   rechnen(
     'a4-pk-4',
@@ -1399,7 +1401,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'do { x = x * 2; } while (x > 100);',
-        'Die Bedingung wurde nicht umgekehrt: die Schleife liefe genau im falschen Fall weiter.',
+        'Die Bedingung wurde nicht umgekehrt. Die Schleife liefe genau im falschen Fall weiter.',
       ),
       nein(
         'do { x = x * 2; } while (x < 100);',
@@ -1702,12 +1704,12 @@ final List<Question> questionsA04Entwicklung = [
       ], 'Ein Exemplar, erzeugt mit new.'),
     ],
     explanation:
-        'Klasse = Bauplan, Objekt = Exemplar mit eigenem Zustand und eigener Identität. Methoden beschreiben das Verhalten und ändern den Zustand genau des Objekts, auf dem sie aufgerufen werden: t2 bleibt offen.',
+        'Die Klasse ist der Bauplan, ein Objekt ein Exemplar mit eigenem Zustand und eigener Identität. Methoden beschreiben das Verhalten und ändern den Zustand genau des Objekts, auf dem sie aufgerufen werden. Deshalb bleibt t2 offen.',
   ),
   tabelle(
     'a4-og-4',
     'oo-grundbegriffe',
-    scenario: 'Aus einem Personalverwaltungssystem:',
+    scenario: 'Die Klasse stammt aus einem Personalverwaltungssystem.',
     skizze: const KlassenDiagramm([
       UmlKlasse(
         'Mitarbeiter',
@@ -1749,7 +1751,7 @@ final List<Question> questionsA04Entwicklung = [
     choices: [
       ja(
         'schuhgroesse',
-        'Für das Ausleihen von Medien spielt sie keine Rolle: Abstraktion lässt sie weg.',
+        'Für das Ausleihen von Medien spielt sie keine Rolle, deshalb lässt die Abstraktion sie weg.',
       ),
       nein('leserNr', 'Sie identifiziert den Leser bei jeder Ausleihe.'),
       nein('name', 'Wird für Mahnungen und den Ausweis gebraucht.'),
@@ -1926,7 +1928,7 @@ final List<Question> questionsA04Entwicklung = [
       ),
       nein(
         'a.bestand = 10;',
-        'bestand ist private: Zugriff nur innerhalb von Artikel.',
+        'bestand ist private und nur innerhalb von Artikel zugreifbar.',
       ),
       nein(
         'a.bestand++;',
@@ -2024,11 +2026,11 @@ final List<Question> questionsA04Entwicklung = [
         'Kunde(String vorname)',
         'Gleiche Parameterliste wie Kunde(String name). Nur der Parametername unterscheidet sich.',
       ),
-      nein('Kunde()', 'Keine Parameter: diese Liste gibt es noch nicht.'),
+      nein('Kunde()', 'Eine leere Parameterliste gibt es noch nicht.'),
       nein('Kunde(int nr)', 'Ein int-Parameter ist eine neue Parameterliste.'),
       nein(
         'Kunde(int nr, String name)',
-        'Andere Reihenfolge der Typen: erlaubt.',
+        'Die Typen stehen in anderer Reihenfolge, das ist erlaubt.',
       ),
     ],
     explanation:
@@ -2045,7 +2047,7 @@ final List<Question> questionsA04Entwicklung = [
     answer: 150,
     unit: 'Punkte',
     explanation:
-        'b = a kopiert nur die Referenz: a und b zeigen auf dasselbe Objekt. 100 + 50 = 150. c ist ein eigenes Objekt mit new, seine 120 Punkte berühren a nicht. a.getPunkte() liefert 150.',
+        'b = a kopiert nur die Referenz, a und b zeigen also auf dasselbe Objekt: 100 + 50 = 150. c ist ein eigenes, mit new erzeugtes Objekt, seine 120 Punkte berühren a nicht. a.getPunkte() liefert 150.',
   ),
   rechnen(
     'a4-oc-4',
@@ -2055,7 +2057,7 @@ final List<Question> questionsA04Entwicklung = [
     prompt: 'Welchen Wert hat Kunde.anzahl am Ende?',
     answer: 4,
     explanation:
-        'Der Konstruktor läuft nur bei new: k1, k2, k4 und k5, also viermal. k3 = k1 kopiert nur die Referenz und erzeugt kein Objekt. Da anzahl static ist, gibt es den Zähler nur einmal: 4.',
+        'Der Konstruktor läuft nur bei new: k1, k2, k4 und k5, also viermal. k3 = k1 kopiert nur die Referenz und erzeugt kein Objekt. Da anzahl static ist, gibt es den Zähler nur einmal, und er steht am Ende auf 4.',
   ),
   einfach(
     'a4-oc-5',

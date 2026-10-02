@@ -30,6 +30,12 @@ class AppColors {
   static const flame = Color(0xFFAD4C08);
   static const flameDark = Color(0xFFFFA24D);
 
+  // Frisches Orange für Flächen und Balken im Hellmodus (Tagesziel,
+  // Fortschritt). Nicht für Text: auf Weiß 3,6:1, auf der Balkenspur
+  // (lightSurfaceAlt) 3,1:1 - genug für Grafik (3:1), zu wenig für Schrift.
+  // Im Dunkelmodus leuchtet flameDark schon, dort gibt es keinen Extraton.
+  static const flameFill = Color(0xFFE8590C);
+
   // Rot für falsche Antworten.
   static const danger = Color(0xFFC5221F);
   static const dangerDark = Color(0xFFFF7B72);
@@ -68,6 +74,7 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
     required this.dangerBg,
     required this.flame,
     required this.flameBg,
+    required this.flameFill,
     required this.info,
     required this.infoBg,
     required this.surfaceAlt,
@@ -81,6 +88,9 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
   final Color dangerBg;
   final Color flame;
   final Color flameBg;
+
+  /// Orange für gefüllte Flächen und Balken. Text und Icons nehmen [flame].
+  final Color flameFill;
   final Color info;
   final Color infoBg;
   final Color surfaceAlt;
@@ -94,6 +104,7 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
     dangerBg: Color(0xFFFCE8E6),
     flame: AppColors.flame,
     flameBg: Color(0xFFFEEFE3),
+    flameFill: AppColors.flameFill,
     info: AppColors.info,
     infoBg: Color(0xFFE0F2F1),
     surfaceAlt: AppColors.lightSurfaceAlt,
@@ -108,6 +119,7 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
     dangerBg: Color(0xFF3A1714),
     flame: AppColors.flameDark,
     flameBg: Color(0xFF36230F),
+    flameFill: AppColors.flameDark,
     info: AppColors.infoDark,
     infoBg: Color(0xFF0F2B2A),
     surfaceAlt: AppColors.darkSurfaceAlt,
@@ -123,6 +135,7 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
     Color? dangerBg,
     Color? flame,
     Color? flameBg,
+    Color? flameFill,
     Color? info,
     Color? infoBg,
     Color? surfaceAlt,
@@ -136,6 +149,7 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
       dangerBg: dangerBg ?? this.dangerBg,
       flame: flame ?? this.flame,
       flameBg: flameBg ?? this.flameBg,
+      flameFill: flameFill ?? this.flameFill,
       info: info ?? this.info,
       infoBg: infoBg ?? this.infoBg,
       surfaceAlt: surfaceAlt ?? this.surfaceAlt,
@@ -154,6 +168,7 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
       dangerBg: Color.lerp(dangerBg, other.dangerBg, t)!,
       flame: Color.lerp(flame, other.flame, t)!,
       flameBg: Color.lerp(flameBg, other.flameBg, t)!,
+      flameFill: Color.lerp(flameFill, other.flameFill, t)!,
       info: Color.lerp(info, other.info, t)!,
       infoBg: Color.lerp(infoBg, other.infoBg, t)!,
       surfaceAlt: Color.lerp(surfaceAlt, other.surfaceAlt, t)!,

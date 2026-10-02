@@ -16,11 +16,11 @@ final List<Question> ihkA02 = [
       ['Botschaft', 'Seite der Nachricht'],
       [
         'Der Drucker am Empfang druckt nicht.',
-        wahl('Sachinhalt', [
-          'Selbstoffenbarung',
-          'Beziehung',
-          'Appell',
-        ], 'Eine überprüfbare Tatsache: reine Sachinformation.'),
+        wahl(
+          'Sachinhalt',
+          ['Selbstoffenbarung', 'Beziehung', 'Appell'],
+          'Das ist eine überprüfbare Tatsache, also reine Sachinformation.',
+        ),
       ],
       [
         'Ich bin genervt und stehe unter Zeitdruck.',
@@ -35,7 +35,7 @@ final List<Question> ihkA02 = [
         wahl(
           'Beziehung',
           ['Sachinhalt', 'Selbstoffenbarung', 'Appell'],
-          'Sagt, was sie vom Empfänger hält: „schon wieder“ klingt nach Vorwurf.',
+          'Sie zeigt, was sie vom Empfänger hält. Das „schon wieder“ klingt nach Vorwurf.',
         ),
       ],
       [
@@ -97,7 +97,7 @@ final List<Question> ihkA02 = [
     ],
     punkte: 4,
     loesung:
-        'Erstens ist der Kanal gestört: Durch die schlechte Verbindung kommt nur ein Teil der Nachricht an. Zweitens fehlt ein gemeinsamer Zeichenvorrat: Die Kundin kennt die Fachbegriffe CMS und Plugin nicht und kann die Nachricht deshalb nicht entschlüsseln. Außerdem fehlt die Rückmeldung: Der Techniker fragt nicht nach, ob sie ihn verstanden hat.',
+        'Erstens ist der Kanal gestört: Durch die schlechte Verbindung kommt nur ein Teil der Nachricht an. Zweitens fehlt ein gemeinsamer Zeichenvorrat: Die Kundin kennt die Fachbegriffe CMS und Plugin nicht und kann die Nachricht deshalb nicht entschlüsseln. Außerdem fehlt die Rückmeldung, denn der Techniker fragt nicht nach, ob sie ihn verstanden hat.',
     explanation:
         'Je beschriebener Ursache 2 Punkte, höchstens 4. Das Sender-Empfänger-Modell kennt drei typische Fehlerquellen: Störungen im Kanal, fehlender gemeinsamer Zeichenvorrat (Codieren und Decodieren) und fehlende Rückmeldung.',
   ),
@@ -121,7 +121,7 @@ final List<Question> ihkA02 = [
     wortbank: ['Kanalstörung', 'Zeichenvorrat', 'Appell'],
     punkte: 5,
     explanation:
-        'Das 2. Axiom nach Watzlawick: Jede Kommunikation hat einen Inhalts- und einen Beziehungsaspekt, wobei der Beziehungsaspekt den Inhaltsaspekt bestimmt. Solange nur über Servernamen gestritten wird, bleibt der eigentliche Konflikt ungelöst.',
+        'Das 2. Axiom nach Watzlawick lautet: Jede Kommunikation hat einen Inhalts- und einen Beziehungsaspekt, wobei der Beziehungsaspekt den Inhaltsaspekt bestimmt. Solange nur über Servernamen gestritten wird, bleibt der eigentliche Konflikt ungelöst.',
   ),
 
   // ======================================================== Gesprächsführung
@@ -141,7 +141,7 @@ final List<Question> ihkA02 = [
     ],
     punkte: 3,
     explanation:
-        'Jede Phase hat ein eigenes Ziel. Wer die Bedarfsermittlung überspringt, bietet eine Lösung an, die nicht zum Problem passt; ohne Abschluss bleibt offen, wie es weitergeht.',
+        'Jede Phase hat ein eigenes Ziel. Wer die Bedarfsermittlung überspringt, bietet eine Lösung an, die nicht zum Problem passt. Ohne Abschluss bleibt offen, wie es weitergeht.',
   ),
   markieren(
     'i2-kg-2',
@@ -245,7 +245,7 @@ final List<Question> ihkA02 = [
     loesung:
         'Ich lasse den Kunden ausreden und erkenne seinen Ärger an: „Das ist ärgerlich, wenn keine Bestellungen ankommen.“ Dann kläre ich sachlich nach: „Seit wann fehlen die Bestellungen, und erscheint eine Fehlermeldung?“ Zum Schluss sage ich einen konkreten nächsten Schritt zu, etwa einen Rückruf bis 15 Uhr.',
     explanation:
-        'Je beschriebener Verhaltensweise 2 Punkte, höchstens 4. Bei Beschwerden zuerst die Beziehungsebene beruhigen, dann die Sache klären und verbindlich abschließen.',
+        'Je beschriebener Verhaltensweise 2 Punkte, höchstens 4. Bei Beschwerden beruhigst du zuerst die Beziehungsebene, klärst dann die Sache und schließt verbindlich ab.',
   ),
   lueckentext(
     'i2-kg-4',
@@ -275,7 +275,7 @@ final List<Question> ihkA02 = [
       wahl('Nutzen', [
         'Preis',
         'Merkmal',
-      ], 'Merkmal allein überzeugt nicht. Der Nutzen schon.'),
+      ], 'Ein Merkmal allein überzeugt nicht, der Nutzen schon.'),
     ],
     punkte: 5,
     explanation:
@@ -331,7 +331,7 @@ final List<Question> ihkA02 = [
     loesung:
         'Erstens ist der gemeinsame Kalender leer. Zweitens können zwei Kollegen keine E-Mails mit Anhängen über 5 MB versenden. Drittens werden die Abwesenheitsnotizen doppelt verschickt.',
     explanation:
-        'Je Nennung 1 Punkt. Vokabeln: shared calendar = gemeinsamer Kalender, attachment = Anhang, out-of-office reply = Abwesenheitsnotiz, twice = zweimal. Geantwortet wird wie in der Prüfung auf Deutsch.',
+        'Je Nennung 1 Punkt. Vokabeln: shared calendar = gemeinsamer Kalender, attachment = Anhang, out-of-office reply = Abwesenheitsnotiz, twice = zweimal. Du antwortest wie in der Prüfung auf Deutsch.',
   ),
   freitext(
     'i2-kk-2',
@@ -382,7 +382,7 @@ final List<Question> ihkA02 = [
     loesung:
         'Ich rufe die Kundin wie gewünscht noch heute vor 16 Uhr zurück, zeige Verständnis für den Ärger und kläre die drei Probleme mit gezielten Fragen. Danach lege ich ein Ticket mit hoher Priorität an, nenne ihr einen verbindlichen Termin für die Lösung und frage nach der Behebung nach, ob alles wieder funktioniert.',
     explanation:
-        'Je beschriebenem Schritt 2 Punkte, höchstens 4. Beschwerdebehandlung: zuhören, Verständnis zeigen, Sachverhalt klären, Lösung mit Termin anbieten, umsetzen und nachfassen. Wichtig: den Rückrufwunsch (before 4 pm = vor 16 Uhr) einhalten.',
+        'Je beschriebenem Schritt 2 Punkte, höchstens 4. Eine Beschwerde behandelst du so: zuhören, Verständnis zeigen, Sachverhalt klären, Lösung mit Termin anbieten, umsetzen und nachfassen. Halte dabei unbedingt den Rückrufwunsch ein (before 4 pm = vor 16 Uhr).',
   ),
   freitext(
     'i2-kk-3',
@@ -486,7 +486,7 @@ final List<Question> ihkA02 = [
     ],
     punkte: 4,
     explanation:
-        'Forming: Orientierung. Die Leitung gibt Ziele und Struktur vor. Storming: Machtkämpfe. Die Leitung moderiert. Norming: Regeln entstehen. Die Leitung hält sie fest. Performing: Das Team arbeitet eingespielt. Die Leitung gibt Freiraum.',
+        'Im Forming sucht das Team Orientierung, die Leitung gibt Ziele und Struktur vor. Im Storming gibt es Machtkämpfe, die Leitung moderiert. Im Norming entstehen Regeln, die Leitung hält sie fest. Im Performing arbeitet das Team eingespielt, die Leitung gibt Freiraum.',
   ),
   freitext(
     'i2-tt-2',
@@ -537,7 +537,7 @@ final List<Question> ihkA02 = [
     loesung:
         'Die Projektleitung beginnt mit einer Vorstellungsrunde, damit sich alle kennenlernen und Unsicherheit abbauen. Außerdem erklärt sie Ziel und Auftrag des Projekts und verteilt die ersten Aufgaben klar, denn in der Forming-Phase braucht das Team Orientierung und Struktur von der Leitung.',
     explanation:
-        'Je beschriebener Maßnahme 2 Punkte, höchstens 4. Im Forming sind die Mitglieder höflich, unsicher und abwartend. Die Leitung führt deshalb eng: kennenlernen lassen, Ziele erklären, Aufgaben und Regeln vorgeben.',
+        'Je beschriebener Maßnahme 2 Punkte, höchstens 4. Im Forming sind die Mitglieder höflich, unsicher und abwartend. Die Leitung führt deshalb eng: Sie lässt alle einander kennenlernen, erklärt die Ziele und gibt Aufgaben und Regeln vor.',
   ),
   markieren(
     'i2-tt-3',
@@ -548,15 +548,15 @@ final List<Question> ihkA02 = [
     zeilen: [
       ja(
         'Zwei Kollegen diskutieren lautstark, wer die Netzplanung leiten darf.',
-        'Machtkampf um Rollen: typisch für Storming.',
+        'Ein Machtkampf um Rollen ist typisch für das Storming.',
       ),
       nein(
         'Beim ersten Treffen stellen sich alle vor und bleiben zurückhaltend.',
-        'Höflich und abwartend. Das ist Forming.',
+        'Höflich und abwartend verhält sich ein Team im Forming.',
       ),
       ja(
         'Die vorgeschlagene Aufgabenverteilung wird offen infrage gestellt.',
-        'Zuständigkeiten werden ausgehandelt: Storming.',
+        'Im Storming werden Zuständigkeiten ausgehandelt.',
       ),
       nein(
         'Das Team einigt sich auf feste Regeln für die Dokumentation.',
@@ -564,11 +564,11 @@ final List<Question> ihkA02 = [
       ),
       ja(
         'Es bilden sich zwei Lager, die jeweils ihr eigenes Konzept durchsetzen wollen.',
-        'Cliquenbildung und Streit um Ideen: Storming.',
+        'Lagerbildung und Streit um Ideen gehören zum Storming.',
       ),
       nein(
         'Jeder kennt seine Aufgabe, Probleme löst das Team selbstständig.',
-        'Eingespielte Zusammenarbeit: Performing.',
+        'Eingespielte Zusammenarbeit kennzeichnet das Performing.',
       ),
     ],
     explanation:
@@ -661,13 +661,13 @@ final List<Question> ihkA02 = [
     loesung:
         '„Mir ist aufgefallen, dass diese Woche zweimal ein Handscanner ausgegeben wurde, ohne dass er in der Inventarliste steht. Dadurch haben wir heute eine Stunde nach einem Gerät gesucht. Ich wünsche mir, dass du jede Ausgabe sofort einträgst.“',
     explanation:
-        'Je Teil 1 Punkt: Wahrnehmung (konkret, ohne „immer“ und ohne Bewertung der Person), Wirkung (was daraus folgte) und Wunsch (was sich ändern soll). Alles als Ich-Botschaft.',
+        'Je Teil 1 Punkt: Wahrnehmung (konkret, ohne „immer“ und ohne Bewertung der Person), Wirkung (was daraus folgte) und Wunsch (was sich ändern soll). Formuliere alles als Ich-Botschaft.',
   ),
   freitext(
     'i2-tf-3',
     'te-feedback',
     scenario:
-        'Bei der Pixelhafen Medien GmbH hat ein Entwickler versehentlich die Live-Website eines Kunden überschrieben und den Fehler erst nach zwei Tagen gemeldet, und zwar aus Angst vor Ärger. Die Geschäftsführung will die Fehlerkultur verbessern.',
+        'Bei der Pixelhafen Medien GmbH hat ein Entwickler versehentlich die Live-Website eines Kunden überschrieben und den Fehler erst nach zwei Tagen gemeldet, weil er Angst vor Ärger hatte. Die Geschäftsführung will die Fehlerkultur verbessern.',
     prompt:
         'Erläutere zwei Vorteile einer offenen Fehlerkultur für die Agentur.',
     kriterien: [
@@ -744,7 +744,7 @@ final List<Question> ihkA02 = [
     ],
     punkte: 5,
     explanation:
-        'Glasl: 9 Stufen in 3 Phasen. Stufe 1-3 (win-win) lösen die Beteiligten noch selbst. Stufe 4-6 (win-lose) brauchen meist einen neutralen Dritten. Stufe 7-9 (lose-lose) lassen sich nur noch durch einen Machteingriff von außen stoppen.',
+        'Glasl unterscheidet 9 Stufen in 3 Phasen. Die Stufen 1 bis 3 (win-win) lösen die Beteiligten noch selbst. Die Stufen 4 bis 6 (win-lose) brauchen meist einen neutralen Dritten. Die Stufen 7 bis 9 (lose-lose) lassen sich nur noch durch einen Machteingriff von außen stoppen.',
     difficulty: 3,
   ),
   freitext(
@@ -825,7 +825,7 @@ final List<Question> ihkA02 = [
       ),
       ja(
         '„Deutsch als Muttersprache“',
-        'Benachteiligt mittelbar wegen der ethnischen Herkunft: zulässig wäre „sehr gute Deutschkenntnisse“.',
+        'Benachteiligt mittelbar wegen der ethnischen Herkunft. Zulässig wäre „sehr gute Deutschkenntnisse“.',
       ),
       nein(
         '„Sehr gute Deutschkenntnisse in Wort und Schrift“',
@@ -841,7 +841,7 @@ final List<Question> ihkA02 = [
       ),
     ],
     explanation:
-        'Das AGG verbietet Benachteiligungen wegen ethnischer Herkunft, Geschlecht, Religion oder Weltanschauung, Behinderung, Alter und sexueller Identität. Stellenanzeigen müssen deshalb neutral formuliert sein; Anforderungen brauchen einen sachlichen Bezug zur Tätigkeit.',
+        'Das AGG verbietet Benachteiligungen wegen ethnischer Herkunft, Geschlecht, Religion oder Weltanschauung, Behinderung, Alter und sexueller Identität. Stellenanzeigen müssen deshalb neutral formuliert sein, und Anforderungen brauchen einen sachlichen Bezug zur Tätigkeit.',
   ),
 
   // ====================================================== Das Harvard-Konzept
@@ -950,13 +950,13 @@ final List<Question> ihkA02 = [
     loesung:
         'Interessen statt Positionen: Ich frage, warum der Lieferant erhöht (etwa gestiegene Einkaufspreise), und kläre, was Grünwerk wirklich braucht, nämlich planbare Kosten. Optionen zum beiderseitigen Vorteil: Ich schlage zum Beispiel einen Rahmenvertrag über zwei Jahre oder eine frühere Zahlung vor, wenn dafür der alte Preis bleibt. Als neutrales Kriterium ziehe ich Vergleichsangebote heran.',
     explanation:
-        'Je erläutertem und angewendetem Prinzip 2 Punkte, höchstens 4. Die vier Prinzipien: Menschen und Probleme trennen, Interessen statt Positionen, Optionen zum beiderseitigen Vorteil, neutrale Kriterien. Die Drohung des Einkaufsleiters ist dagegen hartes Feilschen um Positionen.',
+        'Je erläutertem und angewendetem Prinzip 2 Punkte, höchstens 4. Die vier Prinzipien lauten: Menschen und Probleme trennen, Interessen statt Positionen, Optionen zum beiderseitigen Vorteil, neutrale Kriterien. Die Drohung des Einkaufsleiters ist dagegen hartes Feilschen um Positionen.',
   ),
   rechnen(
     'i2-vh-3',
     've-harvard',
     scenario:
-        'Die Kessler & Brandt IT-Systemhaus GmbH braucht 50 Monitore. Lieferant B hat verbindlich 180,00 € je Stück angeboten. Das ist die BATNA. Lieferant A, mit dem gerade verhandelt wird, verlangt 200,00 € je Stück. Service und Garantie sind bei beiden gleich.',
+        'Die Kessler & Brandt IT-Systemhaus GmbH braucht 50 Monitore. Lieferant B hat verbindlich 180,00 € je Stück angeboten, das ist die BATNA. Lieferant A, mit dem gerade verhandelt wird, verlangt 200,00 € je Stück. Service und Garantie sind bei beiden gleich.',
     prompt:
         'Berechne, wie viel Prozent Rabatt Lieferant A mindestens geben muss, damit sein Angebot nicht teurer ist als die BATNA.',
     answer: 10,
@@ -964,7 +964,7 @@ final List<Question> ihkA02 = [
     tolerance: 0.01,
     punkte: 3,
     explanation:
-        'BATNA (Lieferant B): 50 × 180 € = 9.000 €. Lieferant A: 50 × 200 € = 10.000 €. Nötiger Nachlass: 10.000 € − 9.000 € = 1.000 €. Rabatt = 1.000 € / 10.000 € × 100 = 10 %. Ein schlechteres Ergebnis als die BATNA lohnt sich nicht. Dann kauft das Systemhaus bei B.',
+        'BATNA (Lieferant B): 50 × 180 € = 9.000 €. Lieferant A: 50 × 200 € = 10.000 €. Nötiger Nachlass: 10.000 € − 9.000 € = 1.000 €. Rabatt = 1.000 € / 10.000 € × 100 = 10 %. Ein schlechteres Ergebnis als die BATNA lohnt sich nicht, dann kauft das Systemhaus lieber bei B.',
   ),
 
   // ============================================ Argumentieren und Einwände
@@ -1008,7 +1008,7 @@ final List<Question> ihkA02 = [
     loesung:
         'Die Kundin findet erstens den Preis von 89 € im Monat zu hoch. Zweitens befürchtet sie, dass die Einrichtung den Arbeitsalltag stört. Drittens ist sie unsicher, ob ihre Daten in der Cloud sicher sind.',
     explanation:
-        'Je Nennung 1 Punkt. Vokabeln: too expensive = zu teuer, setup = Einrichtung, to disturb = stören, safe = sicher. Jeder Einwand wird einzeln behandelt. Erst nachfragen, dann mit Nutzen argumentieren.',
+        'Je Nennung 1 Punkt. Vokabeln: too expensive = zu teuer, setup = Einrichtung, to disturb = stören, safe = sicher. Behandle jeden Einwand einzeln: erst nachfragen, dann mit dem Nutzen argumentieren.',
   ),
   tabelle(
     'i2-ve-2',
@@ -1095,7 +1095,7 @@ final List<Question> ihkA02 = [
     loesung:
         'Rückfrage: „Was genau erscheint Ihnen kompliziert?“ So erfahre ich, ob es um die Bedienung oder um die Einarbeitung geht. Bumerang-Methode: „Gerade weil Ihre Leute wenig Zeit haben, hilft das Tablet: Es führt Schritt für Schritt durch den Kassiervorgang.“',
     explanation:
-        'Je Methode mit passender Antwort 2 Punkte, höchstens 4. Methoden: Rückfrage (Hintergrund klären), Ja-aber (zustimmen und ergänzen), Bumerang (Einwand wird zum Argument), Referenz (zufriedene Anwender nennen). Nie direkt widersprechen.',
+        'Je Methode mit passender Antwort 2 Punkte, höchstens 4. Zur Wahl stehen Rückfrage (Hintergrund klären), Ja-aber (zustimmen und ergänzen), Bumerang (Einwand wird zum Argument) und Referenz (zufriedene Anwender nennen). Widersprich nie direkt.',
   ),
 
   // ================================================== Präsentationen aufbauen
@@ -1154,7 +1154,7 @@ final List<Question> ihkA02 = [
     loesung:
         'Ich stelle den Nutzen und die Kosten in den Mittelpunkt, zum Beispiel die eingesparte Wartezeit je Schicht, und verzichte auf technische Details wie Prozessortypen. Fachbegriffe ersetze ich durch verständliche Worte, und die Zahlen zeige ich als einfaches Balkendiagramm. Am Schluss steht eine klare Empfehlung, über die die Geschäftsführung entscheiden kann.',
     explanation:
-        'Je beschriebener Maßnahme 2 Punkte, höchstens 4. Adressatengerecht heißt: Sprache, Tiefe und Beispiele an die Zuhörer anpassen. Entscheider brauchen Nutzen, Kosten, Risiken und eine Empfehlung, keine Technikdetails.',
+        'Je beschriebener Maßnahme 2 Punkte, höchstens 4. Adressatengerecht heißt, Sprache, Tiefe und Beispiele an die Zuhörer anzupassen. Entscheider brauchen Nutzen, Kosten, Risiken und eine Empfehlung, keine Technikdetails.',
   ),
   markieren(
     'i2-pp-2',
@@ -1213,7 +1213,7 @@ final List<Question> ihkA02 = [
     ],
     punkte: 3,
     explanation:
-        'Einleitung: Aufmerksamkeit gewinnen, Thema und Ablauf nennen. Hauptteil: Inhalte logisch aufbauen und belegen. Schluss: Kernaussagen zusammenfassen und zum Handeln auffordern.',
+        'In der Einleitung gewinnst du Aufmerksamkeit und nennst Thema und Ablauf. Im Hauptteil baust du die Inhalte logisch auf und belegst sie. Im Schluss fasst du die Kernaussagen zusammen und forderst zum Handeln auf.',
   ),
 
   // ============================================= Informationsquellen bewerten
@@ -1258,7 +1258,7 @@ final List<Question> ihkA02 = [
     ],
     punkte: 4,
     explanation:
-        'CC-Bausteine: BY = Namensnennung (immer nötig), SA = Weitergabe unter gleicher Lizenz, NC = nicht kommerziell, ND = keine Bearbeitung. Für eine Verkaufs-Website mit bearbeiteten Fotos eignen sich CC BY und, mit der Auflage gleicher Lizenz: CC BY-SA.',
+        'CC-Bausteine: BY = Namensnennung (immer nötig), SA = Weitergabe unter gleicher Lizenz, NC = nicht kommerziell, ND = keine Bearbeitung. Für eine Verkaufs-Website mit bearbeiteten Fotos eignen sich CC BY und, mit der Auflage gleicher Lizenz, CC BY-SA.',
   ),
   freitext(
     'i2-pq-2',
@@ -1307,9 +1307,9 @@ final List<Question> ihkA02 = [
     ],
     punkte: 4,
     loesung:
-        'Die Quelle ist nicht objektiv: Der Text stammt vom Marketing des Herstellers, der sein Produkt verkaufen will. Außerdem ist sie nicht aktuell: Der Beitrag ist von 2019 und damit sieben Jahre alt. Hinzu kommt, dass die Behauptungen nicht belegt sind; unabhängige Tests werden sogar für unnötig erklärt.',
+        'Die Quelle ist nicht objektiv: Der Text stammt vom Marketing des Herstellers, der sein Produkt verkaufen will. Außerdem ist sie nicht aktuell: Der Beitrag ist von 2019 und damit sieben Jahre alt. Hinzu kommt, dass die Behauptungen nicht belegt sind. Unabhängige Tests werden sogar für unnötig erklärt.',
     explanation:
-        'Je beschriebenem Grund 2 Punkte, höchstens 4. Quellen werden nach Aktualität, Urheber, Objektivität, Nachprüfbarkeit und Relevanz bewertet. Herstellerangaben immer mit einer unabhängigen zweiten Quelle abgleichen (most reliable = am zuverlässigsten, independent tests = unabhängige Tests).',
+        'Je beschriebenem Grund 2 Punkte, höchstens 4. Quellen werden nach Aktualität, Urheber, Objektivität, Nachprüfbarkeit und Relevanz bewertet. Gleiche Herstellerangaben immer mit einer unabhängigen zweiten Quelle ab (most reliable = am zuverlässigsten, independent tests = unabhängige Tests).',
   ),
   markieren(
     'i2-pq-3',
@@ -1320,20 +1320,20 @@ final List<Question> ihkA02 = [
     zeilen: [
       nein(
         'Müller, A. (2024): Netzwerke planen. 3. Aufl., Bonn: IT-Verlag.',
-        'Autor, Jahr, Titel, Auflage, Ort und Verlag: vollständig für ein Buch.',
+        'Mit Autor, Jahr, Titel, Auflage, Ort und Verlag ist die Angabe für ein Buch vollständig.',
       ),
       ja('www.irgendwo.de', 'Autor, Titel, genaue URL und Abrufdatum fehlen.'),
       nein(
-        'BSI (2025): Ransomware - Maßnahmenkatalog. https://www.bsi.bund.de/ransomware, abgerufen am 12.05.2026.',
+        'BSI (2025): Ransomware: Maßnahmenkatalog. https://www.bsi.bund.de/ransomware, abgerufen am 12.05.2026.',
         'Herausgeber, Jahr, Titel, URL und Abrufdatum sind genannt.',
       ),
       ja(
         'Google-Suche nach „VLAN“',
-        'Eine Suchmaschine ist keine Quelle: angegeben wird die gefundene Seite.',
+        'Eine Suchmaschine ist keine Quelle. Angegeben wird die gefundene Seite.',
       ),
       ja(
         'Schmidt, T. (2023): VLAN-Grundlagen. https://example.org/vlan',
-        'Bei Internetquellen fehlt hier das Abrufdatum.',
+        'Hier fehlt das Abrufdatum, das zu jeder Internetquelle gehört.',
       ),
       nein(
         'Eigene Messung der Übertragungsrate am 03.06.2026, Protokoll im Anhang.',
@@ -1378,7 +1378,7 @@ final List<Question> ihkA02 = [
       ),
       nein(
         'Pos. 5: Versand frei Haus = 0,00 €',
-        'Frei Haus war vereinbart. Es dürfen keine Versandkosten anfallen.',
+        'Frei Haus war vereinbart, deshalb sind 0,00 € Versandkosten richtig.',
       ),
     ],
     explanation:
@@ -1547,7 +1547,7 @@ final List<Question> ihkA02 = [
     loesung:
         'Der GiroCode enthält die Daten einer SEPA-Überweisung: den Namen des Zahlungsempfängers, seine IBAN (und BIC), den Betrag und den Verwendungszweck, zum Beispiel die Rechnungsnummer.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 3. Der GiroCode ist ein QR-Code mit den Daten einer SEPA-Überweisung. Die Banking-App füllt die Überweisung nach dem Scannen aus: Tippfehler entfallen, und der Lieferant kann die Zahlung über den Verwendungszweck zuordnen.',
+        'Je Nennung 1 Punkt, höchstens 3. Der GiroCode ist ein QR-Code mit den Daten einer SEPA-Überweisung. Die Banking-App füllt die Überweisung nach dem Scannen aus. So entfallen Tippfehler, und der Lieferant kann die Zahlung über den Verwendungszweck zuordnen.',
   ),
   freitext(
     'i2-pa-6',
@@ -1620,7 +1620,7 @@ final List<Question> ihkA02 = [
     ],
     punkte: 4,
     loesung:
-        'Vorteile: Die Rechnungen werden automatisch eingelesen und dadurch schneller bearbeitet; außerdem entfallen Kosten für Papier, Porto und Ablage. Nachteile: Die Umstellung kostet Geld für Software und Einführung, und die Beschäftigten müssen geschult werden.',
+        'Vorteile: Die Rechnungen werden automatisch eingelesen und dadurch schneller bearbeitet. Außerdem entfallen Kosten für Papier, Porto und Ablage. Nachteile: Die Umstellung kostet Geld für Software und Einführung, und die Beschäftigten müssen geschult werden.',
     explanation:
         'Je Nennung 1 Punkt, höchstens 4. Digitale Rechnungen sparen Zeit, Kosten und Erfassungsfehler und lassen sich leicht wiederfinden. Dem stehen Einführungskosten, Schulungsaufwand und die Abhängigkeit von einer sicheren IT gegenüber.',
   ),
@@ -1685,7 +1685,7 @@ final List<Question> ihkA02 = [
     zeilen: [
       ja(
         'Fortlaufende Rechnungsnummer',
-        'Pflichtangabe. Jede Rechnung muss eindeutig sein.',
+        'Pflichtangabe, denn jede Rechnung muss eindeutig zuzuordnen sein.',
       ),
       ja(
         'Steuernummer oder USt-IdNr. des Systemhauses',
@@ -1706,7 +1706,7 @@ final List<Question> ihkA02 = [
       ),
       ja(
         'Menge und Bezeichnung der Leistung',
-        'Pflichtangabe. Der Kunde muss prüfen können, was berechnet wird.',
+        'Pflichtangabe, denn der Kunde muss prüfen können, was berechnet wird.',
       ),
       ja(
         'Steuersatz und Steuerbetrag',
@@ -1836,7 +1836,7 @@ final List<Question> ihkA02 = [
     loesung:
         'Im Angebotsmonopol gibt es keine Konkurrenz: Der Hersteller kann den Preis weitgehend selbst festlegen, wie die Erhöhung um 25 % zeigt. Die Elbtal Logistik AG kann nicht einfach wechseln und ist vom Anbieter abhängig. Zudem fehlt ihm der Druck, Qualität und Service zu verbessern.',
     explanation:
-        'Je erläutertem Nachteil 2 Punkte, höchstens 4. Im Monopol steht ein Anbieter vielen Nachfragern gegenüber. Seine Preismacht ist nur durch die Zahlungsbereitschaft der Kunden begrenzt; Wettbewerb als Antrieb für Qualität und Innovation fehlt.',
+        'Je erläutertem Nachteil 2 Punkte, höchstens 4. Im Monopol steht ein Anbieter vielen Nachfragern gegenüber. Seine Preismacht ist nur durch die Zahlungsbereitschaft der Kunden begrenzt, und der Wettbewerb als Antrieb für Qualität und Innovation fehlt.',
   ),
   tabelle(
     'i2-mm-3',
@@ -1948,7 +1948,7 @@ final List<Question> ihkA02 = [
         'Eine Mitarbeiterin im Kundenservice der Grünwerk Gartenbedarf GmbH soll künftig mobil arbeiten.',
     prompt: 'Wähle für jede Lücke den passenden Begriff.',
     text:
-        'Die Mitarbeiterin empfindet es als Mangel, zu Hause nicht auf das Shopsystem zugreifen zu können. Das ist ein {0}. Die Geschäftsführung stellt 1.200 € je Arbeitsplatz bereit: Mit der Kaufkraft wird daraus {1}. Mit der Bestellung der Notebooks beim Händler entsteht {2}. Dass auch ein VPN-Zugang nötig ist, hat niemand bedacht. Das ist ein {3} Bedarf.',
+        'Die Mitarbeiterin empfindet es als Mangel, zu Hause nicht auf das Shopsystem zugreifen zu können. Das ist ein {0}. Die Geschäftsführung stellt 1.200 € je Arbeitsplatz bereit. Mit dieser Kaufkraft wird daraus {1}. Mit der Bestellung der Notebooks beim Händler entsteht {2}. Dass auch ein VPN-Zugang nötig ist, hat niemand bedacht. Das ist ein {3} Bedarf.',
     luecken: [
       wahl('Bedürfnis', [
         'Bedarf',
@@ -1969,7 +1969,7 @@ final List<Question> ihkA02 = [
     ],
     punkte: 4,
     explanation:
-        'Bedürfnis (empfundener Mangel) → Bedarf (Bedürfnis mit Kaufkraft) → Nachfrage (Bedarf wird am Markt wirksam). Offener Bedarf wird genannt, latenter Bedarf ist unbewusst: gute Beratung macht ihn sichtbar.',
+        'Bedürfnis (empfundener Mangel) → Bedarf (Bedürfnis mit Kaufkraft) → Nachfrage (Bedarf wird am Markt wirksam). Offener Bedarf wird genannt, latenter Bedarf ist unbewusst. Gute Beratung macht ihn sichtbar.',
   ),
   tabelle(
     'i2-mb-3',
@@ -2027,7 +2027,7 @@ final List<Question> ihkA02 = [
     ],
     punkte: 5,
     explanation:
-        'Interview: tief, aber zeitaufwendig. Fragebogen: viele Personen, vergleichbar, keine Rückfragen. Beobachtung: echte Abläufe. Dokumente prüfen: Inventarlisten, Handbücher, Verträge. Workshop: mehrere Abteilungen einigen sich gemeinsam.',
+        'Das Interview geht in die Tiefe, kostet aber Zeit. Der Fragebogen erreicht viele Personen und ist vergleichbar, erlaubt aber keine Rückfragen. Die Beobachtung zeigt echte Abläufe, Dokumente wie Inventarlisten zeigen den Bestand. Im Workshop einigen sich mehrere Abteilungen.',
   ),
 
   // ================================================ Marketing-Mix und AIDA
@@ -2091,7 +2091,7 @@ final List<Question> ihkA02 = [
     ],
     punkte: 4,
     explanation:
-        'BCG-Matrix: Question Marks (hohes Wachstum, kleiner Anteil) fördern oder aufgeben, Stars (hoch, groß) investieren, Cash Cows (niedrig, groß) Gewinne abschöpfen, Poor Dogs (niedrig, klein) aufgeben. Die Cash Cows finanzieren die Stars und Question Marks.',
+        'BCG-Matrix: Question Marks (hohes Wachstum, kleiner Anteil) werden gefördert oder aufgegeben, in Stars (hoch, groß) wird investiert, bei Cash Cows (niedrig, groß) schöpft man Gewinne ab, Poor Dogs (niedrig, klein) gibt man auf. Die Cash Cows finanzieren die Stars und Question Marks.',
     difficulty: 3,
   ),
   freitext(
@@ -2116,7 +2116,7 @@ final List<Question> ihkA02 = [
     loesung:
         'Bei der Penetrationsstrategie startet das Produkt mit einem niedrigen Preis, um schnell viele Kunden und Marktanteile zu gewinnen; später wird der Preis angehoben. Bei der Abschöpfungsstrategie ist der Preis zum Start hoch, um die Zahlungsbereitschaft der ersten Käufer zu nutzen; danach wird er schrittweise gesenkt.',
     explanation:
-        'Je richtig erläuterter Strategie 2 Punkte. Penetration: niedrig einsteigen, später erhöhen; sinnvoll bei viel Konkurrenz. Abschöpfung: hoch einsteigen, später senken; sinnvoll bei neuartigen Produkten ohne Konkurrenz.',
+        'Je richtig erläuterter Strategie 2 Punkte. Penetration heißt niedrig einsteigen und später erhöhen, das ist sinnvoll bei viel Konkurrenz. Abschöpfung heißt hoch einsteigen und später senken, das ist sinnvoll bei neuartigen Produkten ohne Konkurrenz.',
   ),
 
   // ============================================================== ABC-Analyse
@@ -2195,7 +2195,7 @@ final List<Question> ihkA02 = [
         ],
       ),
       krit(
-        'Abhängigkeit erkennen: Fällt ein A-Kunde weg, fehlt ein großer Teil des Umsatzes. Also weitere Kunden aufbauen.',
+        'Abhängigkeit erkennen: Fällt ein A-Kunde weg, fehlt ein großer Teil des Umsatzes. Deshalb weitere Kunden aufbauen.',
         punkte: 2,
         stichwoerter: ['abhängig', 'Risiko', 'Wegfall', 'Klumpenrisiko'],
       ),
@@ -2209,7 +2209,7 @@ final List<Question> ihkA02 = [
     loesung:
         'Die beiden A-Kunden werden besonders intensiv und persönlich betreut, zum Beispiel mit festen Ansprechpartnern, weil an ihnen drei Viertel des Umsatzes hängen. C-Kunden werden dagegen standardisiert und kostengünstig über das Ticketsystem betreut. Zugleich zeigt die Analyse ein Risiko: Der Wegfall eines A-Kunden würde das Systemhaus hart treffen.',
     explanation:
-        'Je erläuterter Schlussfolgerung 2 Punkte, höchstens 4. Die ABC-Analyse trennt Wichtiges von Unwichtigem: Aufwand dort einsetzen, wo der Wert liegt (A), und dort sparen, wo er gering ist (C).',
+        'Je erläuterter Schlussfolgerung 2 Punkte, höchstens 4. Die ABC-Analyse trennt Wichtiges von Unwichtigem: Setze Aufwand dort ein, wo der Wert liegt (A), und spare dort, wo er gering ist (C).',
   ),
   lueckentext(
     'i2-ma-3',

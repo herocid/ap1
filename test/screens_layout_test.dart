@@ -169,6 +169,49 @@ void main() {
     }
   });
 
+  // Statistik teilweise gefüllt: nur eine Lektion gelernt. Journey zeigt
+  // Zahlen, Karten und Quiz zeigen ihre Einladung mit Startknopf. (Ganz leer
+  // prüft die Routenliste oben, ganz gefüllt die Gruppe darüber.)
+  group('Statistik nur mit Journey-Fortschritt', () {
+    setUp(() async => store.writeJourney({'n-vorwaerts'}));
+
+    for (final scale in textScales) {
+      testWidgets('/statistik bei 320 px, Schrift ${(scale * 100).round()} %', (
+        tester,
+      ) async {
+        tester.view.physicalSize = sizes.first * 3;
+        tester.view.devicePixelRatio = 3;
+        tester.platformDispatcher.textScaleFactorTestValue = scale;
+        addTearDown(tester.view.reset);
+        addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+
+        final container = ProviderContainer(
+          overrides: [localStoreProvider.overrideWithValue(store)],
+        );
+        addTearDown(container.dispose);
+        await tester.pumpWidget(
+          UncontrolledProviderScope(
+            container: container,
+            child: const Ap1TrainerApp(),
+          ),
+        );
+        await tester.pumpAndSettle();
+        tester.takeException();
+        container.read(routerProvider).go('/statistik');
+        await tester.pumpAndSettle();
+        expect(tester.takeException(), isNull);
+
+        expect(find.text('Zehn Karten üben'), findsOneWidget);
+        await tester.scrollUntilVisible(
+          find.text('Kurztest starten'),
+          200,
+          scrollable: find.byType(Scrollable).first,
+        );
+        expect(tester.takeException(), isNull);
+      });
+    }
+  });
+
   // Einführung: jede Seite einmal, auf dem kleinsten Handy mit großer Schrift.
   testWidgets('Einführung: alle Seiten bei 320 px, Schrift 130 %', (
     tester,

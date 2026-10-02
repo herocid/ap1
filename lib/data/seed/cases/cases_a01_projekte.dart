@@ -102,7 +102,7 @@ final List<ExamCase> casesA01Projekte = [
     bereich: 'a01',
     titel: 'Umzug der Kanzlei planen',
     situation:
-        'Die Steuerkanzlei Albers & Partner bezieht zum Monatsende ihre neuen Büroräume. Kessler & Brandt erneuert dabei Netzwerk und Arbeitsplätze der 18 Beschäftigten und überträgt Daten und Programme. Die Kanzlei darf höchstens zwei Arbeitstage nicht arbeitsfähig sein; das Budget beträgt 46.000 €. Du unterstützt die Projektleiterin bei der Planung.',
+        'Die Steuerkanzlei Albers & Partner bezieht zum Monatsende ihre neuen Büroräume. Kessler & Brandt erneuert dabei Netzwerk und Arbeitsplätze der 18 Beschäftigten und überträgt Daten und Programme. Die Kanzlei darf höchstens zwei Arbeitstage lang nicht arbeitsfähig sein. Das Budget beträgt 46.000 €. Du unterstützt die Projektleiterin bei der Planung.',
     teile: [
       freitext(
         'f-a01p-systemhaus-a',
@@ -155,7 +155,7 @@ final List<ExamCase> casesA01Projekte = [
         loesung:
             'Einmaligkeit bzw. Neuartigkeit, ein konkretes Ziel, zeitliche Begrenzung mit festem Endtermin, begrenzte Ressourcen (Budget, Personal), eine eigene Projektorganisation sowie Komplexität und Risiko.',
         explanation:
-            'Je Nennung 1 Punkt, höchstens 4 Punkte. Stichworte genügen; überzählige Nennungen werden nicht gewertet.',
+            'Für jede Nennung gibt es 1 Punkt, höchstens 4 Punkte. Stichworte genügen, überzählige Nennungen werden nicht gewertet.',
         punkte: 4,
         difficulty: 1,
       ),
@@ -173,10 +173,10 @@ final List<ExamCase> casesA01Projekte = [
             'R = {2}\n'
             'T = {3}',
         luecken: [
-          wort([
-            'messbar',
-            'measurable',
-          ], 'Kennzahlen wie „18 Beschäftigte“ und „zwei Arbeitstage“.'),
+          wort(
+            ['messbar', 'measurable'],
+            'Kennzahlen wie „18 Beschäftigte“ und „zwei Arbeitstage“ machen das Ziel prüfbar.',
+          ),
           wort([
             'attraktiv',
             'akzeptiert',
@@ -196,7 +196,7 @@ final List<ExamCase> casesA01Projekte = [
             'relevant',
             'realisierbar',
             'reasonable',
-          ], 'Mit den vorhandenen Mitteln erreichbar.'),
+          ], 'Das Ziel ist mit den vorhandenen Mitteln erreichbar.'),
           wort([
             'terminiert',
             'terminierbar',
@@ -205,10 +205,10 @@ final List<ExamCase> casesA01Projekte = [
             'time-bound',
             'timely',
             'timed',
-          ], 'Ein Datum wie „bis 30.06.“.'),
+          ], 'Ein Datum wie „bis 30.06.“ legt den Termin fest.'),
         ],
         explanation:
-            'SMART: spezifisch, messbar, attraktiv bzw. akzeptiert, realistisch, terminiert. Auch die englischen Begriffe (measurable, achievable, realistic bzw. relevant, time-bound) werden gewertet, 1 Punkt je Begriff.',
+            'SMART steht für spezifisch, messbar, attraktiv bzw. akzeptiert, realistisch und terminiert. Auch die englischen Begriffe (measurable, achievable, realistic bzw. relevant, time-bound) werden gewertet. Je Begriff gibt es 1 Punkt.',
         punkte: 4,
         difficulty: 1,
       ),
@@ -403,7 +403,7 @@ final List<ExamCase> casesA01Projekte = [
           ),
         ],
         loesung:
-            'Geschäftsführung: gibt Budget und Eröffnungstermin vor. Filialleitung und Beschäftigte: müssen mit den Kassen arbeiten, ihre Akzeptanz und Schulung entscheiden über einen reibungslosen Start. Internetanbieter und Lieferanten: Ihre Liefertermine bestimmen den Zeitplan.',
+            'Die Geschäftsführung gibt Budget und Eröffnungstermin vor. Filialleitung und Beschäftigte müssen mit den Kassen arbeiten, ihre Akzeptanz und Schulung entscheiden über einen reibungslosen Start. Die Liefertermine von Internetanbieter und Lieferanten bestimmen den Zeitplan.',
         explanation:
             'Je Stakeholder mit Einfluss 1 Punkt, höchstens 3 Punkte. Andere sinnvolle Gruppen (Vermieter, Fachabteilungen, Kunden) zählen ebenso.',
         punkte: 3,
@@ -412,7 +412,7 @@ final List<ExamCase> casesA01Projekte = [
         'f-a01p-handel-c',
         'n-rueckwaerts',
         scenario:
-            'Vorgangsliste der Filialeröffnung (Dauer in Arbeitstagen) und der Netzplan des Kollegen. In drei Vorgängen stehen falsche Werte.',
+            'Du siehst die Vorgangsliste der Filialeröffnung (Dauer in Arbeitstagen) und den Netzplan des Kollegen. Bei drei Vorgängen stehen falsche Werte.',
         table: _filialeListe,
         code: _filialePlan,
         prompt:
@@ -430,7 +430,7 @@ final List<ExamCase> casesA01Projekte = [
           ja('Vorgang D', 'GP = SAZ - FAZ = 8 - 3 = 5, nicht 4.'),
           ja(
             'Vorgang E',
-            'FAZ = max(FEZ C 9; FEZ D 7) = 9, nicht 7; FEZ = 9 + 3 = 12.',
+            'FAZ = max(FEZ C 9; FEZ D 7) = 9, nicht 7. Damit ist FEZ = 9 + 3 = 12.',
           ),
           nein(
             'Vorgang F',
@@ -464,7 +464,8 @@ final List<ExamCase> casesA01Projekte = [
           zahl(12, rationale: '9 + 3 = 12'),
           zahl(
             13,
-            rationale: 'SEZ 15 - Dauer 2 = 13: Der Wert des Kollegen stimmt.',
+            rationale:
+                'SEZ 15 - Dauer 2 = 13, der Wert des Kollegen stimmt also.',
           ),
         ],
         explanation:
@@ -495,7 +496,7 @@ final List<ExamCase> casesA01Projekte = [
           ], 'D hat 5 Tage Gesamtpuffer, C und E je 3.'),
         ],
         explanation:
-            'Der längste Weg ist A - B - F - G mit 3 + 10 + 2 + 2 = 17 Arbeitstagen; seine Vorgänge haben den Gesamtpuffer 0. A - C - E - G dauert 14, A - D - E - G 12 und A - D - F - G 11 Tage. D hat mit 5 Tagen den größten Gesamtpuffer.',
+            'Der längste Weg ist A - B - F - G mit 3 + 10 + 2 + 2 = 17 Arbeitstagen. Seine Vorgänge haben den Gesamtpuffer 0. A - C - E - G dauert 14, A - D - E - G 12 und A - D - F - G 11 Tage. D hat mit 5 Tagen den größten Gesamtpuffer.',
         punkte: 3,
       ),
       freitext(
@@ -555,7 +556,7 @@ final List<ExamCase> casesA01Projekte = [
     bereich: 'a01',
     titel: 'Kundenportal zum Ticketsystem entwickeln',
     situation:
-        'Zum neuen Ticketsystem entwickelt die Pixelhafen Medien GmbH selbst ein Kundenportal, in dem Kunden Anfragen stellen und verfolgen. Welche Funktionen die Kunden wirklich brauchen, ist erst grob bekannt. Drei Pilotkunden haben zugesagt, alle zwei Wochen Rückmeldung zu geben; erste Funktionen sollen möglichst früh nutzbar sein. Das Team besteht aus vier Entwicklerinnen und Entwicklern, das Monatsbudget steht fest.',
+        'Zum neuen Ticketsystem entwickelt die Pixelhafen Medien GmbH selbst ein Kundenportal, in dem Kunden Anfragen stellen und verfolgen. Welche Funktionen die Kunden wirklich brauchen, ist erst grob bekannt. Drei Pilotkunden haben zugesagt, alle zwei Wochen Rückmeldung zu geben. Erste Funktionen sollen möglichst früh nutzbar sein. Das Team besteht aus vier Entwicklerinnen und Entwicklern, das Monatsbudget steht fest.',
     teile: [
       freitext(
         'f-a01p-agentur-a',
@@ -609,7 +610,7 @@ final List<ExamCase> casesA01Projekte = [
           ),
         ],
         loesung:
-            'Scrum. Die Anforderungen sind erst grob bekannt und werden sich mit den Rückmeldungen ändern. Ein vollständiges Pflichtenheft ließe sich nicht schreiben. Die Pilotkunden können alle zwei Wochen Rückmeldung geben, was zu zweiwöchigen Sprints mit Sprint Review passt. Zudem entsteht nach jedem Sprint ein nutzbares Increment.',
+            'Scrum passt besser. Die Anforderungen sind erst grob bekannt und werden sich mit den Rückmeldungen ändern, ein vollständiges Pflichtenheft ließe sich vorab nicht schreiben. Die Pilotkunden können alle zwei Wochen Rückmeldung geben, was zu zweiwöchigen Sprints mit Sprint Review passt. Zudem entsteht nach jedem Sprint ein nutzbares Increment.',
         explanation:
             '1 Punkt für das Modell, je Argument 2 Punkte, höchstens 5 Punkte. Gewertet werden nur Argumente aus der Situation.',
         punkte: 5,
@@ -667,7 +668,7 @@ final List<ExamCase> casesA01Projekte = [
           ],
         ],
         explanation:
-            'Absatz 1: tägliche Abstimmung der Developers über die nächsten 24 Stunden: Daily Scrum. Absatz 2: Increment zeigen, Feedback der Kunden: Sprint Review. Absatz 3: Zusammenarbeit verbessern, nur das Team: Retrospektive. Absatz 4: Sprintziel (sprint goal) und Auswahl der Einträge: Sprint Planning.',
+            'Absatz 1 beschreibt die tägliche Abstimmung der Developers über die nächsten 24 Stunden, also das Daily Scrum. In Absatz 2 zeigt das Team das Increment und holt Feedback der Kunden ein (Sprint Review). In Absatz 3 bespricht das Team unter sich, wie es besser zusammenarbeitet (Sprint Retrospective). Absatz 4 nennt das Sprintziel (sprint goal) und die Auswahl der Einträge, also das Sprint Planning.',
         punkte: 4,
       ),
       tabelle(
@@ -772,7 +773,7 @@ final List<ExamCase> casesA01Projekte = [
         loesung:
             'Als Sachbearbeiter eines Kunden möchte ich im Portal den Bearbeitungsstand meiner Anfrage sehen, damit ich nicht mehr bei der Agentur anrufen muss.',
         explanation:
-            'Je Bestandteil 1 Punkt: Rolle, Ziel, Nutzen. Muster: „Als <Rolle> möchte ich <Ziel>, damit <Nutzen>“.',
+            'Für jeden Bestandteil (Rolle, Ziel, Nutzen) gibt es 1 Punkt. Das Muster lautet: „Als <Rolle> möchte ich <Ziel>, damit <Nutzen>“.',
         punkte: 3,
       ),
       freitext(
@@ -825,9 +826,9 @@ final List<ExamCase> casesA01Projekte = [
           ),
         ],
         loesung:
-            'Die Pilotkunden geben früh Rückmeldung, sodass Fehlentwicklungen nach spätestens einem Sprint auffallen. Nach jedem Sprint liegt ein nutzbares Teilergebnis vor. Änderungswünsche können schon im nächsten Sprint berücksichtigt werden; außerdem ist der Fortschritt für alle sichtbar.',
+            'Die Pilotkunden geben früh Rückmeldung, sodass Fehlentwicklungen nach spätestens einem Sprint auffallen. Nach jedem Sprint liegt ein nutzbares Teilergebnis vor. Änderungswünsche lassen sich schon im nächsten Sprint berücksichtigen. Außerdem ist der Fortschritt für alle sichtbar.',
         explanation:
-            'Je Nennung 1 Punkt, höchstens 3 Punkte. „Scrum ist schneller“ ist kein gültiger Vorteil. Scrum ist flexibler, nicht automatisch schneller.',
+            'Je Nennung 1 Punkt, höchstens 3 Punkte. „Scrum ist schneller“ zählt nicht als Vorteil, denn Scrum ist flexibler, aber nicht automatisch schneller.',
         punkte: 3,
       ),
     ],
@@ -886,7 +887,7 @@ final List<ExamCase> casesA01Projekte = [
           ),
         ],
         loesung:
-            'Das Ziel ist nicht messbar: „Gutes WLAN“ lässt sich nicht prüfen, es fehlt eine Kennzahl wie eine Mindest-Signalstärke an allen Regalplätzen. Es ist nicht terminiert: „Möglichst schnell“ nennt kein Datum. SMART wäre etwa: „Bis 30.09. ist die Halle per Glasfaser angebunden; alle 40 Handscanner buchen an jedem Regalplatz ohne Verbindungsabbruch.“',
+            'Das Ziel ist nicht messbar: „Gutes WLAN“ lässt sich nicht prüfen, es fehlt eine Kennzahl wie eine Mindest-Signalstärke an allen Regalplätzen. Es ist außerdem nicht terminiert, denn „möglichst schnell“ nennt kein Datum. SMART wäre etwa: „Bis 30.09. ist die Halle per Glasfaser angebunden; alle 40 Handscanner buchen an jedem Regalplatz ohne Verbindungsabbruch.“',
         explanation:
             'Je Mangel 2 Punkte (Kriterium nennen und am Beispiel begründen), höchstens 4 Punkte.',
         punkte: 4,
@@ -930,7 +931,7 @@ final List<ExamCase> casesA01Projekte = [
           ], '2 + 8 + 3 + 2 + 1 = 16'),
         ],
         explanation:
-            'Kritisch sind die Vorgänge mit Gesamtpuffer 0: A, B, D, F und G. Der Weg A - B - D - F - G dauert 2 + 8 + 3 + 2 + 1 = 16 Arbeitstage; A - C - E - F - G nur 14.',
+            'Kritisch sind die Vorgänge mit Gesamtpuffer 0: A, B, D, F und G. Der Weg A - B - D - F - G dauert 2 + 8 + 3 + 2 + 1 = 16 Arbeitstage, der Weg A - C - E - F - G nur 14.',
         punkte: 2,
       ),
       freitext(
@@ -1002,7 +1003,7 @@ final List<ExamCase> casesA01Projekte = [
           ],
         ],
         explanation:
-            'Stakeholder-Matrix: hoher Einfluss und hohes Interesse → eng einbinden; hoher Einfluss, geringes Interesse → zufriedenstellen; geringer Einfluss, hohes Interesse → informieren; beides gering → beobachten.',
+            'Die Stakeholder-Matrix gibt die Strategie vor: Wer viel Einfluss und großes Interesse hat, wird eng eingebunden. Bei hohem Einfluss und geringem Interesse stellst du zufrieden, bei geringem Einfluss und hohem Interesse informierst du. Ist beides gering, genügt es zu beobachten.',
         punkte: 4,
       ),
       tabelle(
@@ -1030,7 +1031,7 @@ final List<ExamCase> casesA01Projekte = [
           ],
         ],
         explanation:
-            'Initialisierung: Projektauftrag. Definition: Ziele und Anforderungen. Planung: Struktur-, Ablauf- und Terminplan, hier der Netzplan. Steuerung: Soll-Ist-Vergleich und Statusberichte. Abschluss: Abnahme, Abschlussbericht, Lessons Learned.',
+            'In der Initialisierung entsteht der Projektauftrag, in der Definition werden Ziele und Anforderungen festgelegt. Zur Planung gehören Struktur-, Ablauf- und Terminplan, hier also der Netzplan. Die Steuerung arbeitet mit Soll-Ist-Vergleich und Statusberichten. Der Abschluss umfasst Abnahme, Abschlussbericht und Lessons Learned.',
         punkte: 4,
         difficulty: 1,
       ),

@@ -145,7 +145,7 @@ final List<Nugget> nuggetsA02 = [
       [
         '5. symmetrisch oder komplementär',
         'Beziehung auf Augenhöhe oder mit Gefälle.',
-        'zwei Kollegen: Ausbilder und Azubi',
+        'symmetrisch: zwei Kollegen; komplementär: Ausbilder und Azubi',
       ],
     ],
   ),
@@ -2430,17 +2430,17 @@ final List<Nugget> nuggetsA02 = [
       [
         'nach Dringlichkeit',
         'Existenz, Kultur, Luxus',
-        'Wohnung - Smartphone - Sportwagen',
+        'Wohnung, Smartphone, Sportwagen',
       ],
       [
         'nach Träger',
         'individuell oder kollektiv',
-        'eigener Laptop: Breitbandausbau für alle',
+        'eigener Laptop oder Breitbandausbau für alle',
       ],
       [
         'nach Art',
         'materiell oder immateriell',
-        'neuer Monitor: Anerkennung im Team',
+        'neuer Monitor oder Anerkennung im Team',
       ],
     ],
   ),
@@ -3098,7 +3098,7 @@ final List<Nugget> nuggetsA02 = [
     ],
     points: [
       'OHG und KG betreiben meist ein Handelsgewerbe und werden ins Handelsregister eingetragen.',
-      'Kommanditisten haben Kontrollrechte und können außergewöhnlichen Geschäften widersprechen.',
+      'Kommanditisten haben Kontrollrechte, und außergewöhnliche Geschäfte brauchen ihre Zustimmung.',
     ],
   ),
   konzept(

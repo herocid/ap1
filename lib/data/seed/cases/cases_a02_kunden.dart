@@ -167,7 +167,7 @@ final List<ExamCase> casesA02 = [
           wahl('Nutzungsrecht', [
             'Eigentumsrecht',
             'Rückgaberecht',
-          ], 'Leasing = Gebrauch auf Zeit gegen Entgelt.'),
+          ], 'Leasing heißt: Gebrauch auf Zeit gegen Entgelt.'),
           wahl('Leasinggeber', [
             'Leasingnehmer',
             'Hersteller',
@@ -251,9 +251,9 @@ final List<ExamCase> casesA02 = [
         ],
         punkte: 3,
         loesung:
-            'Beim Leasing bleibt die Liquidität erhalten, weil die Kanzlei nicht rund 15.000 € auf einmal zahlen muss. Die gleichbleibenden Raten sind gut planbar. Nach 36 Monaten kann sie auf neue Geräte wechseln, die Technik bleibt aktuell.',
+            'Beim Leasing bleibt die Liquidität erhalten, weil die Kanzlei nicht rund 15.000 € auf einmal zahlen muss. Die gleichbleibenden Raten sind gut planbar. Nach 36 Monaten kann sie auf neue Geräte wechseln, sodass die Technik aktuell bleibt.',
         explanation:
-            'Je Nennung 1 Punkt, höchstens 3. Vorteile des Leasings: Liquidität bleibt erhalten, Eigenkapital und Kreditspielraum werden geschont, planbare Raten, regelmäßiger Technikwechsel, steuerliche Vorteile.',
+            'Je Nennung 1 Punkt, höchstens 3. Leasing erhält die Liquidität und schont Eigenkapital und Kreditspielraum. Dazu kommen planbare Raten, ein regelmäßiger Technikwechsel und steuerliche Vorteile.',
       ),
       freitext(
         'f-a02-systemhaus-f',
@@ -262,7 +262,7 @@ final List<ExamCase> casesA02 = [
         prompt: 'Erläutere, was die Kaufoption für die Kanzlei bedeutet.',
         kriterien: [
           krit(
-            'Am Ende der Laufzeit kann die Kanzlei die Notebooks kaufen. Sie muss es aber nicht.',
+            'Am Ende der Laufzeit kann die Kanzlei die Notebooks kaufen, muss es aber nicht.',
             stichwoerter: [
               'Ende der Laufzeit',
               'Vertragsende',
@@ -398,7 +398,7 @@ final List<ExamCase> casesA02 = [
         ],
         punkte: 6,
         loesung:
-            'Ich vergleiche je Position die Menge mit Bestellung und Lieferschein (4 Bondrucker, 4 Kassenschubladen, 2 Bücher). Ich prüfe, ob die Einzelpreise der Bestellung entsprechen. Und ich kontrolliere den Steuersatz: 19 % für die Geräte, 7 % für das Fachbuch.',
+            'Ich vergleiche je Position die Menge mit Bestellung und Lieferschein (4 Bondrucker, 4 Kassenschubladen, 2 Bücher). Ich prüfe, ob die Einzelpreise der Bestellung entsprechen. Außerdem kontrolliere ich den Steuersatz: 19 % für die Geräte, 7 % für das Fachbuch.',
         explanation:
             'Je beschriebener Kontrolle 2 Punkte, höchstens 6. Gewertet werden nur Kontrollen der Positionen (Artikel, Menge, Einzelpreis, Steuersatz, Rechenweg), nicht Anschrift oder Bankverbindung.',
       ),
@@ -491,7 +491,7 @@ final List<ExamCase> casesA02 = [
         ],
         punkte: 2,
         loesung:
-            'Der GiroCode enthält die Daten einer SEPA-Überweisung, zum Beispiel die IBAN des Empfängers und den Betrag. Außerdem: Name des Empfängers, BIC und Verwendungszweck.',
+            'Der GiroCode enthält die Daten einer SEPA-Überweisung, zum Beispiel die IBAN des Empfängers und den Betrag. Außerdem stehen darin der Name des Empfängers, die BIC und der Verwendungszweck.',
         explanation:
             'Je Nennung 1 Punkt, höchstens 2. Der GiroCode ist ein QR-Code mit den Daten einer SEPA-Überweisung: Empfänger, IBAN, BIC, Betrag und Verwendungszweck.',
       ),
@@ -525,7 +525,7 @@ final List<ExamCase> casesA02 = [
         ],
         punkte: 2,
         explanation:
-            'Erleichterungen durch den GiroCode: kein Abtippen, fehlerfreie Übernahme der Daten, bessere Zuordnung des Zahlungseingangs. Freigabe und Rechnungsprüfung bleiben nötig; wer Skonto abzieht, passt den Betrag in der App an.',
+            'Der GiroCode erspart das Abtippen, übernimmt die Daten fehlerfrei und erleichtert die Zuordnung des Zahlungseingangs. Freigabe und Rechnungsprüfung bleiben nötig. Wer Skonto abzieht, passt den Betrag in der App an.',
       ),
       freitext(
         'f-a02-handel-g',
@@ -568,7 +568,7 @@ final List<ExamCase> casesA02 = [
         ],
         punkte: 2,
         loesung:
-            'Mögliche Ursachen sind die Angst, durch die Automatisierung den Arbeitsplatz zu verlieren, und die Sorge, mit der neuen Software überfordert zu sein. Weitere: Festhalten an Routinen, Angst vor Kontrolle, fehlende Information.',
+            'Mögliche Ursachen sind die Angst, durch die Automatisierung den Arbeitsplatz zu verlieren, und die Sorge, mit der neuen Software überfordert zu sein. Weitere Ursachen sind das Festhalten an Routinen, die Angst vor Kontrolle und fehlende Information.',
         explanation:
             'Je Nennung 1 Punkt, höchstens 2. Widerstand gegen Veränderungen entsteht meist aus Angst (Arbeitsplatz, Überforderung, Kontrolle), aus Gewohnheit oder weil Gründe und Nutzen nicht erklärt wurden.',
       ),
@@ -730,7 +730,7 @@ final List<ExamCase> casesA02 = [
         ],
         punkte: 4,
         loesung:
-            'Erstens werden die Aufgaben nur einmal pro Woche verteilt. Eine dringende Störung kann also tagelang liegen bleiben. Zweitens werden die Meldungen von Hand in eine Tabelle übertragen: Das ist fehleranfällig, und weder Kunde noch Team sehen den aktuellen Status.',
+            'Erstens werden die Aufgaben nur einmal pro Woche verteilt. Eine dringende Störung kann also tagelang liegen bleiben. Zweitens werden die Meldungen von Hand in eine Tabelle übertragen. Das ist fehleranfällig, und weder Kunde noch Team sehen den aktuellen Status.',
         explanation:
             'Je beschriebener Schwachstelle 2 Punkte, höchstens 4. Kritikpunkte: nur ein Meldeweg, manuelle und unübersichtliche Datenhaltung, langsamer Planungstakt ohne Priorisierung, kurze Servicezeiten.',
       ),
@@ -782,9 +782,9 @@ final List<ExamCase> casesA02 = [
         ],
         punkte: 2,
         loesung:
-            'Zum Beispiel ein Ticketsystem mit automatischer Eingangsbestätigung und vereinbarte Reaktionszeiten (SLA). Weitere: längere Servicezeiten, tägliche Priorisierung, Kundenbefragungen, Wissensdatenbank.',
+            'Geeignet sind zum Beispiel ein Ticketsystem mit automatischer Eingangsbestätigung und vereinbarte Reaktionszeiten (SLA). Auch längere Servicezeiten, eine tägliche Priorisierung, Kundenbefragungen oder eine Wissensdatenbank helfen.',
         explanation:
-            'Je Nennung 1 Punkt, höchstens 2. Servicequalität steigt durch schnelle, nachvollziehbare und verlässliche Bearbeitung: Ticketsystem, SLA, längere Erreichbarkeit, Kundenfeedback.',
+            'Je Nennung 1 Punkt, höchstens 2. Die Servicequalität steigt, wenn Anfragen schnell, nachvollziehbar und verlässlich bearbeitet werden. Dazu tragen Ticketsystem, SLA, längere Erreichbarkeit und Kundenfeedback bei.',
       ),
       freitext(
         'f-a02-agentur-d',
@@ -848,7 +848,7 @@ final List<ExamCase> casesA02 = [
         ],
         punkte: 2,
         explanation:
-            'Zu langsam: „customers who wait for days often move to a competitor“: Kunden wandern zur Konkurrenz ab. Zu schnell: „leads to wrong solutions and extra work“: falsche Lösungen und zusätzliche Arbeit.',
+            'Zu langsam: „customers who wait for days often move to a competitor“ heißt, dass Kunden zur Konkurrenz abwandern. Zu schnell: „leads to wrong solutions and extra work“ bedeutet falsche Lösungen und zusätzliche Arbeit.',
       ),
       freitext(
         'f-a02-agentur-f',
@@ -1087,9 +1087,9 @@ final List<ExamCase> casesA02 = [
         'f-a02-logistik-f',
         'pr-angebot',
         scenario:
-            'L3 bietet an, Rechnungen künftig nur noch als E-Rechnung zu schicken. Die Buchhaltung der Elbtal Logistik AG arbeitet bisher mit Papierrechnungen.',
+            'L3 kündigt an, Rechnungen künftig nur noch als E-Rechnung zu schicken. Empfangen können muss die Elbtal Logistik AG solche Rechnungen seit 2025, ihre Buchhaltung arbeitet aber bisher überwiegend mit Papier.',
         prompt:
-            'Nenne zwei Vorteile und zwei Nachteile digitaler Rechnungen für die Elbtal Logistik AG.',
+            'Nenne zwei Vorteile und zwei Nachteile der E-Rechnung für die Elbtal Logistik AG.',
         kriterien: [
           krit(
             'Vorteil: schnellere, automatische Verarbeitung ohne Abtippen',
@@ -1151,7 +1151,7 @@ final List<ExamCase> casesA02 = [
         loesung:
             'Vorteile: Rechnungen werden automatisch eingelesen und schneller bearbeitet; Kosten für Papier, Porto und Ablage entfallen. Nachteile: Die Einführung kostet Geld für Software, und die Beschäftigten müssen geschult werden.',
         explanation:
-            'Je Nennung 1 Punkt, höchstens 4. Vorteile: Effizienz, Kostenersparnis, weniger Fehler, schneller Zugriff. Nachteile: Anfangsinvestition, Schulungsaufwand, Sicherheitsrisiken und Abhängigkeit von der IT.',
+            'Je Nennung 1 Punkt, höchstens 4. Vorteile sind Effizienz, Kostenersparnis, weniger Fehler und schneller Zugriff. Nachteile sind die Anfangsinvestition, der Schulungsaufwand, Sicherheitsrisiken und die Abhängigkeit von der IT.',
       ),
       freitext(
         'f-a02-logistik-g',
@@ -1196,7 +1196,7 @@ final List<ExamCase> casesA02 = [
         loesung:
             'Ich erkläre den Nutzen für die Disposition, zum Beispiel die schnelle Lieferung in einer Woche und die bessere Qualität, statt technische Daten aufzuzählen. Das Ergebnis der Nutzwertanalyse zeige ich als einfaches Balkendiagramm und schließe mit einer klaren Empfehlung für L3.',
         explanation:
-            'Je beschriebenem Punkt 2 Punkte, höchstens 4. Adressatengerecht präsentieren heißt: Nutzen statt Technik, verständliche Sprache, Zahlen visualisieren und eine klare Empfehlung geben.',
+            'Je beschriebenem Punkt 2 Punkte, höchstens 4. Adressatengerecht präsentieren heißt, den Nutzen statt der Technik zu zeigen, verständlich zu sprechen, Zahlen zu visualisieren und eine klare Empfehlung zu geben.',
       ),
     ],
   ),

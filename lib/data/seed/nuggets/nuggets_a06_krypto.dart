@@ -942,7 +942,7 @@ final List<Nugget> nuggetsA06Krypto = [
     'n-xg-4',
     'ds-grundlagen',
     'Besondere Kategorien (Art. 9)',
-    'Einige Daten sind so sensibel, dass ihre Verarbeitung grundsätzlich verboten ist. Erlaubt ist sie nur ausnahmsweise, etwa ausdrücklicher Einwilligung oder im Arbeitsrecht. Für Daten über Straftaten gilt eine eigene strenge Regel (Art. 10).',
+    'Einige Daten sind so sensibel, dass ihre Verarbeitung grundsätzlich verboten ist. Erlaubt ist sie nur ausnahmsweise, etwa mit ausdrücklicher Einwilligung oder im Arbeitsrecht. Für Daten über Straftaten gilt eine eigene strenge Regel (Art. 10).',
     [
       ['Bereich', 'Beispiele'],
       ['Gesundheit', 'Diagnose, Krankschreibung'],

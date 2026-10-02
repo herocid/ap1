@@ -142,7 +142,7 @@ final List<Question> ihkA04Entwicklung = [
       ],
     ],
     explanation:
-        'Der Auftraggeber beschreibt im Lastenheft vor der Angebotsphase, was er braucht. Darauf kalkulieren die Anbieter. Nach der Vergabe beschreibt der Auftragnehmer im Pflichtenheft, wie und womit er umsetzt. Das genehmigte Pflichtenheft ist Maßstab der Abnahme.',
+        'Der Auftraggeber beschreibt im Lastenheft vor der Angebotsphase, was er braucht. Auf dieser Grundlage kalkulieren die Anbieter. Nach der Vergabe beschreibt der Auftragnehmer im Pflichtenheft, wie und womit er das umsetzt. Das genehmigte Pflichtenheft ist Maßstab der Abnahme.',
     punkte: 4,
     difficulty: 1,
   ),
@@ -228,7 +228,7 @@ final List<Question> ihkA04Entwicklung = [
       ),
     ],
     explanation:
-        'Nicht-funktional sind Ladezeit (within two seconds), Verfügbarkeit (available 99.5 %) und Speicherort (servers in the EU). Buchen, Bestätigungsmail und Stornieren beschreiben, was das System tut, also funktional.',
+        'Nicht-funktional sind Ladezeit (within two seconds), Verfügbarkeit (available 99.5 %) und Speicherort (servers in the EU). Buchen, Bestätigungsmail und Stornieren beschreiben dagegen, was das System tut, und sind damit funktional.',
     punkte: 3,
   ),
   lueckentext(
@@ -255,7 +255,7 @@ final List<Question> ihkA04Entwicklung = [
       ),
     ],
     explanation:
-        'Prüfbar ist eine Anforderung nur mit Messgröße, Grenzwert und Bedingungen: 2 Sekunden bei 200 Nutzern, 99,5 % im Jahresmittel. „Schnell“, „angemessen“ oder „fast“ lassen sich bei der Abnahme nicht entscheiden.',
+        'Prüfbar ist eine Anforderung nur mit Messgröße, Grenzwert und Bedingungen: 2 Sekunden bei 200 Nutzern, 99,5 % im Jahresmittel. Ob etwas „schnell“, „angemessen“ oder „fast“ erreicht ist, lässt sich bei der Abnahme nicht entscheiden.',
     punkte: 3,
     difficulty: 1,
   ),
@@ -346,7 +346,7 @@ final List<Question> ihkA04Entwicklung = [
       ],
     ],
     explanation:
-        'Das Interview liefert Tiefe durch Rückfragen, kostet aber viel Zeit je Person. Der Fragebogen erreicht viele, kommt aber oft nicht zurück. Die Beobachtung zeigt Routinen, die niemand erwähnt. Allerdings arbeiten Beobachtete oft anders als sonst.',
+        'Das Interview liefert Tiefe durch Rückfragen, kostet aber viel Zeit je Person. Der Fragebogen erreicht viele, kommt aber oft nicht zurück. Die Beobachtung zeigt Routinen, die niemand erwähnt, allerdings arbeiten Beobachtete oft anders als sonst.',
     punkte: 6,
   ),
   freitext(
@@ -484,14 +484,14 @@ final List<Question> ihkA04Entwicklung = [
       ),
     ],
     explanation:
-        '«include» von „Parkplatz reservieren“ zu „Zahlung durchführen“: Die Zahlung gehört zu jeder Reservierung. „Rechnung anfordern“ erweitert die Reservierung per «extend» nur bei Bedarf, der Pfeil zeigt zum Basisfall. Der Kunde ist mit zwei Fällen assoziiert.',
+        'Der «include»-Pfeil führt von „Parkplatz reservieren“ zu „Zahlung durchführen“, die Zahlung gehört also zu jeder Reservierung. „Rechnung anfordern“ erweitert die Reservierung per «extend» nur bei Bedarf, der Pfeil zeigt zum Basisfall. Der Kunde ist mit zwei Fällen assoziiert.',
     punkte: 4,
   ),
   freitext(
     'i4-uu-2',
     'u-usecase',
     scenario:
-        'Eine Stadtbibliothek plant einen Selbstverbuchungs-Terminal: Leserinnen und Leser leihen Medien aus und geben sie zurück. Bei jeder Ausleihe wird der Leserausweis geprüft. Das Bibliothekspersonal sperrt verlorene Ausweise. Gebühren werden über einen externen Zahlungsdienst beglichen.',
+        'Eine Stadtbibliothek plant ein Selbstverbuchungs-Terminal. Leserinnen und Leser leihen dort Medien aus und geben sie zurück. Bei jeder Ausleihe wird der Leserausweis geprüft. Das Bibliothekspersonal sperrt verlorene Ausweise. Gebühren werden über einen externen Zahlungsdienst beglichen.',
     prompt:
         'Nenne aus der Beschreibung zwei Akteure und drei Anwendungsfälle für ein Anwendungsfalldiagramm. (5 P.)',
     punkte: 5,
@@ -580,7 +580,7 @@ final List<Question> ihkA04Entwicklung = [
       ),
     ],
     loesung:
-        '«include»: „Adresse prüfen“ ist fester Bestandteil: bei jeder Bestellung wird die Adresse geprüft. «extend»: „Gutschein einlösen“ erweitert die Bestellung nur unter einer Bedingung, nämlich wenn der Kunde einen Gutschein hat. Die Bestellung ist auch ohne die Erweiterung vollständig.',
+        '«include»: „Adresse prüfen“ ist fester Bestandteil, denn bei jeder Bestellung wird die Adresse geprüft. «extend»: „Gutschein einlösen“ erweitert die Bestellung nur unter einer Bedingung, nämlich wenn der Kunde einen Gutschein hat. Die Bestellung ist auch ohne die Erweiterung vollständig.',
     explanation:
         'Je Beziehung 2 Punkte: 1 für die Bedeutung, 1 für den Bezug zum Beispiel. Der «include»-Pfeil zeigt vom Basisfall zum eingebundenen Fall, der «extend»-Pfeil von der Erweiterung zum Basisfall.',
   ),
@@ -658,7 +658,7 @@ final List<Question> ihkA04Entwicklung = [
       ],
     ],
     explanation:
-        'Gekapselte Attribute sind private (-). Name: String, Personalnummer: int, Gehalt: double. Die Methode soll von außen aufrufbar sein, also public (+), und liefert nichts zurück: void.',
+        'Gekapselte Attribute sind private (-). Der Name ist ein String, die Personalnummer ein int, das Gehalt ein double. Die Methode soll von außen aufrufbar sein, also public (+). Weil sie nichts zurückliefert, ist ihr Rückgabetyp void.',
     punkte: 8,
   ),
   lueckentext(
@@ -681,7 +681,7 @@ final List<Question> ihkA04Entwicklung = [
       ], 'Das Teil existiert nicht ohne das Ganze.'),
     ],
     explanation:
-        'Die Multiplizität steht an dem Ende, über das sie etwas aussagt: bei Bestellung 0..* (so viele hat ein Kunde), bei Kunde 1. Positionen gibt es mindestens eine (1..*), sie leben und sterben mit der Bestellung: Komposition, gefüllte Raute am Ganzen.',
+        'Die Multiplizität steht an dem Ende, über das sie etwas aussagt: bei Bestellung 0..* (so viele hat ein Kunde), bei Kunde 1. Positionen gibt es mindestens eine (1..*). Sie leben und sterben mit der Bestellung, das ist eine Komposition mit gefüllter Raute am Ganzen.',
     punkte: 5,
     difficulty: 3,
   ),
@@ -875,7 +875,7 @@ final List<Question> ihkA04Entwicklung = [
     ],
     wortbank: ['[Betrag > 1000]', 'Zusammenführung', 'Aktion'],
     explanation:
-        'Entweder-oder ist eine Entscheidung (Raute) mit Guards in eckigen Klammern: „ab 1.000 €“ heißt [Betrag >= 1000], der Rest [Betrag < 1000]. Gleichzeitiges startet an der Gabelung (Balken) und endet an der Vereinigung, die auf beide Wege wartet.',
+        'Ein Entweder-oder ist eine Entscheidung (Raute) mit Guards in eckigen Klammern: „ab 1.000 €“ heißt [Betrag >= 1000], der Rest [Betrag < 1000]. Gleichzeitige Aktionen starten an der Gabelung (Balken) und enden an der Vereinigung, die auf beide Wege wartet.',
     punkte: 7,
   ),
   zuordnen(
@@ -925,7 +925,7 @@ final List<Question> ihkA04Entwicklung = [
       ),
     ],
     explanation:
-        'Bei [Alter > 18] und [Alter < 18] fehlt der Grenzwert 18. Der Ablauf bliebe stehen. Bei [Note <= 4] und [Note >= 4] trifft für 4 beides zu. Der Weg wäre nicht eindeutig. Richtig sind Paare wie > und <= oder eine Bedingung mit [else].',
+        'Bei [Alter > 18] und [Alter < 18] fehlt der Grenzwert 18, der Ablauf bliebe dort stehen. Bei [Note <= 4] und [Note >= 4] trifft für 4 beides zu, der Weg wäre also nicht eindeutig. Richtig sind Paare wie > und <= oder eine Bedingung mit [else].',
     punkte: 2,
   ),
   freitext(
@@ -963,7 +963,7 @@ final List<Question> ihkA04Entwicklung = [
       ),
     ],
     loesung:
-        'Nach einer Entscheidung (Raute) läuft genau ein Weg weiter. Welcher, bestimmen die Bedingungen an den Kanten. Nach einer Gabelung (Balken) laufen alle Wege parallel. Hier sollen beide Aktionen gleichzeitig ablaufen, also gehört eine Gabelung hin, später eine Vereinigung.',
+        'Nach einer Entscheidung (Raute) läuft genau ein Weg weiter. Welcher, bestimmen die Bedingungen an den Kanten. Nach einer Gabelung (Balken) laufen alle Wege parallel. Hier sollen beide Aktionen gleichzeitig ablaufen, also gehört hier eine Gabelung hin und später eine Vereinigung.',
     explanation:
         'Je 2 Punkte für Entscheidung und Gabelung, weitere Punkte für das richtige Element oder die Vereinigung, höchstens 4. Merke: Raute = entweder-oder, Balken = gleichzeitig.',
   ),
@@ -1005,7 +1005,7 @@ final List<Question> ihkA04Entwicklung = [
       ),
     ],
     explanation:
-        'Die Raute ist eine Entscheidung, [ja] und [nein] sind ihre Bedingungen (Guards). 5 >= 5 ist wahr, also gilt der [ja]-Zweig: genehmigen. Aktionen sind nur die abgerundeten Rechtecke. Start, Raute und Ende zählen nicht mit: 4 Aktionen.',
+        'Die Raute ist eine Entscheidung, [ja] und [nein] sind ihre Bedingungen (Guards). 5 >= 5 ist wahr, also gilt der [ja]-Zweig und der Antrag wird genehmigt. Aktionen sind nur die abgerundeten Rechtecke. Start, Raute und Ende zählen nicht mit, es bleiben 4 Aktionen.',
     punkte: 4,
   ),
   tabelle(
@@ -1091,7 +1091,7 @@ final List<Question> ihkA04Entwicklung = [
       ],
     ],
     explanation:
-        'Ganze Stückzahl: int. Artikelnummer mit Buchstaben und Bindestrich: String. Gewicht mit Nachkommastellen: double. Lieferbar ja/nein: boolean. Ein einzelner Buchstabe: char.',
+        'Eine ganze Stückzahl ist ein int, die Artikelnummer mit Buchstaben und Bindestrich ein String. Das Gewicht mit Nachkommastellen braucht double. Lieferbar oder nicht ist ein boolean, ein einzelner Buchstabe ein char.',
     punkte: 5,
     difficulty: 1,
   ),
@@ -1129,7 +1129,7 @@ final List<Question> ihkA04Entwicklung = [
       ),
     ],
     loesung:
-        'Ein int speichert nur den Zahlenwert, führende Nullen gehen verloren: Aus 01067 wird 1067. Mit einer Postleitzahl wird außerdem nie gerechnet. Sie ist ein Kennzeichen. Ein String speichert die Zeichenfolge unverändert.',
+        'Ein int speichert nur den Zahlenwert, führende Nullen gehen verloren: Aus 01067 wird 1067. Mit einer Postleitzahl wird außerdem nie gerechnet, sie ist ein Kennzeichen. Ein String speichert die Zeichenfolge unverändert.',
     explanation:
         '2 Punkte für die führende Null als Kernargument, alternativ je 1 Punkt für „es wird nicht gerechnet“ und „String speichert die Zeichen unverändert“, höchstens 2. Dasselbe gilt für Telefon- und Artikelnummern.',
     difficulty: 1,
@@ -1149,7 +1149,7 @@ final List<Question> ihkA04Entwicklung = [
       zahl(8.5, rationale: '2.0 ist double, also wird mit Komma gerechnet.'),
     ],
     explanation:
-        'Zwei int-Werte: 17 / 5 = 3 (Ganzzahldivision), der Rest 17 % 5 ist 2. Sobald ein Operand double ist, rechnet Java mit Nachkommastellen: 17 / 2.0 = 8,5.',
+        'Bei zwei int-Werten gilt 17 / 5 = 3 (Ganzzahldivision), der Rest 17 % 5 ist 2. Sobald ein Operand double ist, rechnet Java mit Nachkommastellen: 17 / 2.0 = 8,5.',
     punkte: 3,
   ),
   markieren(
@@ -1202,7 +1202,7 @@ for (int i = 10; i > 0; i -= 3) {
       ['4', zahl(1), zahl(22)],
     ],
     explanation:
-        'i nimmt die Werte 10, 7, 4 und 1 an. summe: 0 + 10 = 10, 10 + 7 = 17, 17 + 4 = 21, 21 + 1 = 22. Danach wäre i = -2, und -2 > 0 ist falsch. Die Schleife endet nach 4 Durchläufen.',
+        'i nimmt die Werte 10, 7, 4 und 1 an. summe: 0 + 10 = 10, 10 + 7 = 17, 17 + 4 = 21, 21 + 1 = 22. Danach wäre i = -2, und -2 > 0 ist falsch. Die Schleife endet also nach 4 Durchläufen.',
     punkte: 4,
   ),
   lueckentext(
@@ -1219,7 +1219,7 @@ for (int i = 10; i > 0; i -= 3) {
       wahl('-', ['+', '*'], 'Der Zähler muss kleiner werden.'),
     ],
     explanation:
-        'Der Zähler startet bei 5 und wird in jedem Durchlauf um 1 verringert. Die Bedingung i > 0 lässt 5, 4, 3, 2, 1 zu. Bei i = 0 ist 0 > 0 falsch. Die 0 wird nicht mehr ausgegeben.',
+        'Der Zähler startet bei 5 und wird in jedem Durchlauf um 1 verringert. Die Bedingung i > 0 lässt 5, 4, 3, 2, 1 zu. Bei i = 0 ist 0 > 0 falsch, die 0 wird also nicht mehr ausgegeben.',
     punkte: 3,
     difficulty: 1,
   ),
@@ -1288,7 +1288,7 @@ ENDE WENN''',
       ),
     ],
     explanation:
-        'Bei n = 4 Elementen sind die Indizes 0 bis 3. FÜR i VON 0 BIS n greift im letzten Durchlauf auf werte[4] zu. Das Element existiert nicht. Richtig ist FÜR i VON 0 BIS n - 1.',
+        'Bei n = 4 Elementen sind die Indizes 0 bis 3. FÜR i VON 0 BIS n greift im letzten Durchlauf auf werte[4] zu, und dieses Element existiert nicht. Richtig ist FÜR i VON 0 BIS n - 1.',
     punkte: 1,
   ),
   paare(
@@ -1436,7 +1436,7 @@ AUSGABE gesamt''',
       ),
     ],
     loesung:
-        'In der Schleife wird gesamt mit dem Gewicht multipliziert statt es zu addieren. Da gesamt mit 0 startet, bleibt das Produkt immer 0. Korrekt ist: gesamt ← gesamt + gewicht[i].',
+        'In der Schleife wird gesamt mit dem Gewicht multipliziert, statt es zu addieren. Da gesamt mit 0 startet, bleibt das Produkt immer 0. Korrekt ist: gesamt ← gesamt + gewicht[i].',
     explanation:
         'Je 1 Punkt für die Fundstelle (Multiplikation), die Auswirkung (Ergebnis bleibt 0) und die korrigierte Zeile. Mit + ergibt sich 12 + 7 + 20 = 39.',
   ),
@@ -1649,7 +1649,7 @@ AUSGABE fehl''',
       ['Ausgabe', '', '', zahl(7)],
     ],
     explanation:
-        'i = 0: 12 < 5 falsch. i = 1: 5 < 5 ist falsch. Der Grenzwert zählt bei < nicht mit. i = 2: 8 < 5 falsch. i = 3: 3 < 5 wahr, fehl = 0 + 5 - 3 = 2. i = 4: 0 < 5 wahr, fehl = 2 + 5 - 0 = 7. Ausgabe: 7.',
+        'i = 0: 12 < 5 falsch. i = 1: 5 < 5 ist falsch, denn der Grenzwert zählt bei < nicht mit. i = 2: 8 < 5 falsch. i = 3: 3 < 5 wahr, fehl = 0 + 5 - 3 = 2. i = 4: 0 < 5 wahr, fehl = 2 + 5 - 0 = 7. Ausgabe: 7.',
     punkte: 8,
   ),
   tabelle(
@@ -1719,7 +1719,7 @@ ENDE FUNKTION''',
       ],
     ],
     explanation:
-        'stufe(5000, 4): 5000 > 5000 ist falsch, 5000 > 1000 wahr: „Bronze“. Die Jahre spielen hier keine Rolle. stufe(5001, 3): wahr, 3 >= 3 wahr: „Gold“. stufe(8000, 2): wahr, 2 >= 3 falsch: „Silber“. stufe(1000, 10): beide Umsatzbedingungen falsch: „Basis“.',
+        'stufe(5000, 4): 5000 > 5000 ist falsch, 5000 > 1000 wahr: „Bronze“. Die Jahre spielen hier keine Rolle. stufe(5001, 3): 5001 > 5000 wahr, 3 >= 3 wahr: „Gold“. stufe(8000, 2): 8000 > 5000 wahr, 2 >= 3 falsch: „Silber“. stufe(1000, 10): beide Umsatzbedingungen falsch: „Basis“.',
     punkte: 8,
     difficulty: 3,
   ),
@@ -2127,7 +2127,7 @@ AUSGABE a''',
       ],
     ],
     explanation:
-        '22 liegt im Bereich: 22. 27 ist zu hoch: bleibt 22. 26 ist die obere Grenze und eingeschlossen: 26. 15 ist zu niedrig: bleibt 26. 16 ist die untere Grenze und eingeschlossen: 16. Abgelehnte Werte lösen keinen Compilerfehler aus. Der Setter ignoriert sie nur.',
+        '22 liegt im Bereich: 22. 27 ist zu hoch: bleibt 22. 26 ist die obere Grenze und eingeschlossen: 26. 15 ist zu niedrig: bleibt 26. 16 ist die untere Grenze und eingeschlossen: 16. Abgelehnte Werte lösen keinen Compilerfehler aus, der Setter ignoriert sie einfach.',
     punkte: 5,
   ),
 
@@ -2165,7 +2165,7 @@ AUSGABE a''',
     'i4-oc-2',
     'oo-konstruktor',
     scenario:
-        'Der Konstruktor von Konto setzt den Startbetrag, einzahlen(b) addiert b. Zuerst werden zwei Objekte erzeugt: Konto a = new Konto(100); Konto b = new Konto(40); Danach folgen vier Anweisungen.',
+        'Der Konstruktor von Konto setzt den Startbetrag, einzahlen(betrag) addiert den Betrag. Zuerst werden zwei Objekte erzeugt: Konto a = new Konto(100); Konto b = new Konto(40); Danach folgen vier Anweisungen.',
     prompt:
         'Trage nach jeder Anweisung ein, welchen Wert a.getStand() und b.getStand() liefern. (8 P.)',
     zeilen: [
@@ -2247,7 +2247,7 @@ AUSGABE a''',
       paar('k.setName("Ayhan");', 'Attributwert über Setter ändern'),
     ],
     explanation:
-        'new erzeugt ein Objekt und ruft den Konstruktor auf. Eine Zuweisung wie k2 = k kopiert nur die Referenz. Beide Variablen zeigen auf dasselbe Objekt. this.name ist das Attribut, name der Parameter. Getter lesen, Setter ändern den Wert.',
+        'new erzeugt ein Objekt und ruft den Konstruktor auf. Eine Zuweisung wie k2 = k kopiert nur die Referenz, danach zeigen beide Variablen auf dasselbe Objekt. this.name ist das Attribut, name der Parameter. Getter lesen, Setter ändern den Wert.',
     punkte: 4,
   ),
 ];

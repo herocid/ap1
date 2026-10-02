@@ -27,7 +27,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-de-4',
     'dm-erm',
     'Wo trägst du ein Attribut ein, das zu zwei Entitätstypen gemeinsam gehört?',
-    'An die Beziehung, z. B. „Menge“ an der Beziehung Bestellung „enthält“ Artikel.',
+    'An der Beziehung, z. B. „Menge“ an der Beziehung Bestellung „enthält“ Artikel.',
   ),
   karte(
     'k-de-5',
@@ -125,13 +125,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-dk-1',
     'dm-kardinalitaet',
     'Nenne ein typisches Beispiel für eine 1:n-Beziehung.',
-    'Abteilung - Mitarbeiter: Eine Abteilung hat viele Mitarbeiter, jeder gehört zu genau einer Abteilung.',
+    'Abteilung und Mitarbeiter: Eine Abteilung hat viele Mitarbeiter, jeder gehört zu genau einer Abteilung.',
   ),
   karte(
     'k-dk-2',
     'dm-kardinalitaet',
     'Wie löst du eine n:m-Beziehung im relationalen Modell auf?',
-    'Über eine Zwischentabelle mit den Primärschlüsseln beider Seiten als Fremdschlüssel -> zwei 1:n-Beziehungen.',
+    'Über eine Zwischentabelle mit den Primärschlüsseln beider Seiten als Fremdschlüssel. So entstehen zwei 1:n-Beziehungen.',
   ),
   karte(
     'k-dk-3',
@@ -173,13 +173,13 @@ final List<Flashcard> cardsA04Daten = [
     'k-dk-9',
     'dm-kardinalitaet',
     'Nenne ein Beispiel für eine 1:1-Beziehung.',
-    'Mitarbeiter - Dienstwagen, wenn jeder höchstens einen Wagen hat und jeder Wagen genau einer Person gehört.',
+    'Mitarbeiter und Dienstwagen, wenn jeder höchstens einen Wagen hat und jeder Wagen genau einer Person gehört.',
   ),
   karte(
     'k-dk-10',
     'dm-kardinalitaet',
     'Nenne ein Beispiel für eine n:m-Beziehung.',
-    'Bestellung - Artikel: Eine Bestellung enthält viele Artikel, ein Artikel steckt in vielen Bestellungen.',
+    'Bestellung und Artikel: Eine Bestellung enthält viele Artikel, ein Artikel steckt in vielen Bestellungen.',
   ),
   karte(
     'k-dk-11',
@@ -197,7 +197,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-dk-13',
     'dm-kardinalitaet',
     'Wie viele Tabellen entstehen aus 3 Entitätstypen mit einer 1:n- und einer n:m-Beziehung?',
-    '4: drei Tabellen für die Entitätstypen + 1 Zwischentabelle für n:m. Für 1:n reicht ein Fremdschlüssel.',
+    '4: 3 Tabellen für die Entitätstypen + 1 Zwischentabelle für n:m. Für 1:n reicht ein Fremdschlüssel.',
   ),
   karte(
     'k-dk-14',
@@ -716,7 +716,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wh-16',
     'wi-http',
     'Was bedeutet Statuscode 500?',
-    'Internal Server Error: Das Serverprogramm ist bei der Verarbeitung abgestürzt bzw. fehlerhaft.',
+    'Internal Server Error: Im Serverprogramm ist bei der Verarbeitung ein Fehler aufgetreten.',
   ),
   karte(
     'k-wh-17',
@@ -752,7 +752,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wh-22',
     'wi-http',
     'Was sagt das Schloss-Symbol im Browser aus?',
-    'Nur: Die Verbindung ist verschlüsselt und das Zertifikat passt zum Hostnamen. Ob die Seite seriös ist, zeigt erst die Domain.',
+    'Nur, dass die Verbindung verschlüsselt ist und das Zertifikat zum Hostnamen passt. Ob die Seite seriös ist, zeigt erst die Domain.',
   ),
   karte(
     'k-wh-23',
@@ -1002,7 +1002,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-wt-16',
     'wi-html',
     'Was sind semantische HTML-Elemente?',
-    'Elemente, die die Rolle eines Bereichs benennen, z. B. header, nav, main, footer, div und span sind neutral.',
+    'Elemente, die die Rolle eines Bereichs benennen, z. B. header, nav, main, footer. div und span sind dagegen neutral.',
   ),
   karte(
     'k-wt-17',
@@ -1714,7 +1714,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-mu-4',
     'md-uebertragung',
     'Welche Datenrate zählt beim Cloud-Backup?',
-    'Die Upload-Rate, denn sie ist meist deutlich kleiner als die Download-Rate, z. B. 250/40 Mbit/s.',
+    'Die Upload-Rate, weil die Daten hochgeladen werden. Sie ist meist deutlich kleiner als die Download-Rate, z. B. 250/40 Mbit/s.',
   ),
   karte(
     'k-mu-5',
@@ -1774,19 +1774,19 @@ final List<Flashcard> cardsA04Daten = [
     'k-mu-14',
     'md-uebertragung',
     'Wie lange dauert der Upload von 600 MB mit 40 Mbit/s?',
-    '600 × 8 = 4.800 Mbit; 4.800 / 40 = 120 s = 2 min.',
+    '600 MB × 8 = 4.800 Mbit; 4.800 / 40 = 120 s = 2 min.',
   ),
   karte(
     'k-mu-15',
     'md-uebertragung',
     'Welche Upload-Rate brauchst du für 30 GB in einer Stunde?',
-    '30 × 8 = 240.000 Mbit; 240.000 / 3.600 s ≈ 66,7 Mbit/s.',
+    '30 GB × 8 = 240 Gbit = 240.000 Mbit; 240.000 / 3.600 s ≈ 66,7 Mbit/s.',
   ),
   karte(
     'k-mu-16',
     'md-uebertragung',
     'Welche Datenrate braucht ein Stream mit 1,8 GB pro Stunde?',
-    '1,8 × 8 = 14.400 Mbit; 14.400 / 3.600 s = 4 Mbit/s.',
+    '1,8 GB × 8 = 14,4 Gbit = 14.400 Mbit; 14.400 / 3.600 s = 4 Mbit/s.',
   ),
   karte(
     'k-mu-17',
@@ -2146,7 +2146,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-ie-1',
     'ki-einsatz',
     'Aus welchen Bausteinen besteht ein guter Prompt?',
-    'Rolle, Kontext, Aufgabe, Format und und bei Bedarf Beispiele.',
+    'Rolle, Kontext, Aufgabe, Format und bei Bedarf Beispiele.',
   ),
   karte(
     'k-ie-2',
@@ -2175,8 +2175,8 @@ final List<Flashcard> cardsA04Daten = [
   karte(
     'k-ie-6',
     'ki-einsatz',
-    'Was verlangt die KI-Verordnung seit 2.2.2025 zur KI-Kompetenz?',
-    'Wer KI-Systeme anbietet oder einsetzt, sorgt dafür, dass das Personal ausreichend geschult ist.',
+    'Was verlangt die KI-Verordnung seit dem 2.2.2025 zur KI-Kompetenz?',
+    'Wer KI-Systeme anbietet oder einsetzt, ergreift Maßnahmen, damit das Personal die nötige KI-Kompetenz aufbaut, etwa Schulungen.',
   ),
   karte(
     'k-ie-7',
@@ -2364,7 +2364,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-ir-12',
     'ki-grenzen',
     'Was ist ein Deepfake?',
-    'Täuschend echt gefälschtes Bild, Video oder Stimme, z. B. die Stimme des Chefs fordert eine Überweisung.',
+    'Täuschend echt gefälschte Bilder, Videos oder Stimmen, z. B. fordert die Stimme des Chefs eine Überweisung.',
   ),
   karte(
     'k-ir-13',
@@ -2406,7 +2406,7 @@ final List<Flashcard> cardsA04Daten = [
     'k-ir-19',
     'ki-grenzen',
     'Wonach richtet sich die Risikoklasse im AI Act?',
-    'Nach dem Einsatzzweck, nicht nach der Technik: Dasselbe Modell ist im Kundenchat begrenzt, bei der Bewerberauswahl hoch.',
+    'Nach dem Einsatzzweck, nicht nach der Technik: Dasselbe Modell hat im Kundenchat begrenztes, bei der Bewerberauswahl hohes Risiko.',
   ),
   karte(
     'k-ir-20',
@@ -2442,6 +2442,6 @@ final List<Flashcard> cardsA04Daten = [
     'k-ir-25',
     'ki-grenzen',
     'Wie steht es in Deutschland um den Urheberrechtsschutz reiner KI-Erzeugnisse?',
-    'In der Regel nicht, ohne menschlichen schöpferischen Beitrag. Die Ausgabe kann aber fremde Werke verletzen.',
+    'In der Regel besteht keiner, weil der menschliche schöpferische Beitrag fehlt. Die Ausgabe kann aber fremde Werke verletzen.',
   ),
 ];

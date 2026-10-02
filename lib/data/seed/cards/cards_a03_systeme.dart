@@ -68,7 +68,7 @@ final List<Flashcard> cardsA03 = [
     'k-hk-15',
     'h-komponenten',
     'Was ist ECC-RAM, und wo wird er eingesetzt?',
-    'Arbeitsspeicher, der Bitfehler erkennt und korrigiert, Standard in Servern.',
+    'Arbeitsspeicher, der Bitfehler erkennt und korrigiert. Er ist Standard in Servern.',
   ),
   karte(
     'k-hk-16',
@@ -146,7 +146,7 @@ final List<Flashcard> cardsA03 = [
     'k-hk-4',
     'h-komponenten',
     'Was ist UEFI?',
-    'Moderne Firmware als Nachfolger des BIOS: unterstützt GPT, große Datenträger und Secure Boot.',
+    'Moderne Firmware als Nachfolger des BIOS. Sie unterstützt GPT, große Datenträger und Secure Boot.',
   ),
   karte(
     'k-hk-20',
@@ -172,7 +172,7 @@ final List<Flashcard> cardsA03 = [
     'k-hs-5',
     'h-speicher',
     'Wie ist die Speicherhierarchie von schnell nach langsam aufgebaut?',
-    'Register - Cache - RAM - SSD - HDD - Band: nach unten langsamer, günstiger und größer.',
+    'Register, Cache, RAM, SSD, HDD, Band. Nach unten wird es langsamer, günstiger und größer.',
   ),
   karte(
     'k-hs-9',
@@ -286,7 +286,7 @@ final List<Flashcard> cardsA03 = [
     'k-hs-18',
     'h-speicher',
     'Ein Server braucht 1.000 GB, plus 30 % Wachstum und 20 % Reserve. Wie groß mindestens?',
-    '1.000 GB × 1,3 × 1,2 = 1.560 GB: gewählt wird die nächste handelsübliche Größe, z. B. 2 TB.',
+    '1.000 GB × 1,3 × 1,2 = 1.560 GB. Gewählt wird die nächste handelsübliche Größe, z. B. 2 TB.',
   ),
 
   // ============================================ Schnittstellen und Peripherie
@@ -348,7 +348,7 @@ final List<Flashcard> cardsA03 = [
     'k-hi-6',
     'h-schnittstellen',
     'Mit welcher Formel berechnest du die Übertragungszeit einer Datei?',
-    'Zeit (s) = Datenmenge in Bit / Datenrate in Bit/s: vorher Byte × 8 rechnen.',
+    'Zeit (s) = Datenmenge in Bit / Datenrate in Bit/s. Vorher Byte × 8 rechnen.',
   ),
   karte(
     'k-hi-12',
@@ -379,7 +379,7 @@ final List<Flashcard> cardsA03 = [
     'k-hi-17',
     'h-schnittstellen',
     'Welche Datenrate braucht 4K mit 60 Hz und 24 Bit unkomprimiert?',
-    '3840 × 2160 × 24 Bit × 60 ≈ 11,94 Gbit/s: HDMI 2.0 (18 Gbit/s) reicht.',
+    '3840 × 2160 × 24 Bit × 60 ≈ 11,94 Gbit/s. HDMI 2.0 (18 Gbit/s) reicht.',
   ),
   karte(
     'k-hi-18',
@@ -427,7 +427,7 @@ final List<Flashcard> cardsA03 = [
     'k-hi-4',
     'h-schnittstellen',
     'Welche Stärke hat ein IPS-Panel?',
-    'Gute Farbwiedergabe und stabile Blickwinkel: verbreitet bei Büro- und Grafikmonitoren.',
+    'Gute Farbwiedergabe und stabile Blickwinkel, deshalb verbreitet bei Büro- und Grafikmonitoren.',
   ),
   karte(
     'k-hi-26',
@@ -439,7 +439,7 @@ final List<Flashcard> cardsA03 = [
     'k-hi-31',
     'h-schnittstellen',
     'Was gibt die Reaktionszeit eines Monitors an?',
-    'Wie schnell ein Pixel umschaltet, in ms: kurze Zeiten vermeiden Schlieren bei Bewegung.',
+    'Wie schnell ein Pixel umschaltet (in ms). Kurze Zeiten vermeiden Schlieren bei Bewegung.',
   ),
   karte(
     'k-hi-25',
@@ -543,7 +543,7 @@ final List<Flashcard> cardsA03 = [
     'k-hu-12',
     'h-usv',
     'Geräte: 850 W, 20 % Reserve, Leistungsfaktor 0,8. Wie viel VA braucht die USV?',
-    '850 W × 1,2 = 1.020 W; 1.020 W / 0,8 = 1.275 VA: gewählt wird z. B. eine 1.500-VA-USV.',
+    '850 W × 1,2 = 1.020 W; 1.020 W / 0,8 = 1.275 VA. Gewählt wird z. B. eine 1.500-VA-USV.',
   ),
   karte(
     'k-hu-13',
@@ -555,7 +555,7 @@ final List<Flashcard> cardsA03 = [
     'k-hu-4',
     'h-usv',
     'Was ist die Überbrückungszeit einer USV?',
-    'Wie lange der Akku die Last versorgt: mindestens lang genug für ein geordnetes Herunterfahren.',
+    'Wie lange der Akku die Last versorgt. Sie muss mindestens für ein geordnetes Herunterfahren reichen.',
   ),
   karte(
     'k-hu-15',
@@ -781,7 +781,7 @@ final List<Flashcard> cardsA03 = [
     'k-ba-3',
     'b-aufgaben',
     'Was ist der Kernel?',
-    'Der Kern des Betriebssystems: läuft im Kernelmodus mit vollem Zugriff auf die Hardware.',
+    'Der Kern des Betriebssystems. Er läuft im Kernelmodus mit vollem Zugriff auf die Hardware.',
   ),
   karte(
     'k-ba-9',
@@ -1067,7 +1067,7 @@ final List<Flashcard> cardsA03 = [
     'k-br-11',
     'b-rechte',
     'Wofür ist ein Dienstkonto gedacht?',
-    'Für Dienste und Programme, nicht für Menschen; sie haben nur die nötigen Rechte.',
+    'Für Dienste und Programme, nicht für Menschen. Es hat nur die nötigen Rechte.',
   ),
   karte(
     'k-br-1',
@@ -1187,19 +1187,19 @@ final List<Flashcard> cardsA03 = [
     'k-br-4',
     'b-rechte',
     'Welche Rechte gelten beim Netzzugriff auf eine Windows-Freigabe?',
-    'Freigabe- und NTFS-Rechte zugleich: wirksam ist die strengere von beiden.',
+    'Freigabe- und NTFS-Rechte zugleich. Wirksam ist die strengere von beiden.',
   ),
   karte(
     'k-br-19',
     'b-rechte',
     'Freigabe „Ändern“, NTFS „Lesen“: Was darf ein Nutzer über das Netzwerk?',
-    'Nur lesen: beim Netzzugriff gilt die strengere der beiden Berechtigungen.',
+    'Nur lesen, denn beim Netzzugriff gilt die strengere der beiden Berechtigungen.',
   ),
   karte(
     'k-br-20',
     'b-rechte',
     'Welche Rechte gelten, wenn jemand direkt am Server auf einen Ordner zugreift?',
-    'Nur die NTFS-Rechte: Freigaberechte wirken ausschließlich beim Zugriff über das Netzwerk.',
+    'Nur die NTFS-Rechte. Freigaberechte wirken ausschließlich beim Zugriff über das Netzwerk.',
   ),
 
   // ============================================================== Kommandozeile
@@ -1547,7 +1547,7 @@ final List<Flashcard> cardsA03 = [
     'k-au-16',
     'an-unternehmen',
     'Was sind Dateninseln?',
-    'Jede Abteilung pflegt eigene Daten: doppelt und widersprüchlich. Integrierte Systeme lösen genau das.',
+    'Jede Abteilung pflegt eigene Daten, oft doppelt und widersprüchlich. Integrierte Systeme lösen genau das.',
   ),
   karte(
     'k-au-1',
@@ -1729,7 +1729,7 @@ final List<Flashcard> cardsA03 = [
     'k-as-5',
     'an-software',
     'Was ist eine Modifikation von Standardsoftware?',
-    'Eine Änderung am Programmcode des Herstellers, geht bei Updates oft verloren.',
+    'Eine Änderung am Programmcode des Herstellers. Sie geht bei Updates oft verloren.',
   ),
   karte(
     'k-as-11',
@@ -1777,7 +1777,7 @@ final List<Flashcard> cardsA03 = [
     'k-as-16',
     'an-software',
     'Wie berechnest du den Nutzwert einer Alternative?',
-    'Je Kriterium Gewicht × Punkte, dann alle Produkte addieren. Die höchste Summe gewinnt.',
+    'Je Kriterium Gewicht × Punkte, dann alle Teilwerte addieren. Die höchste Summe gewinnt.',
   ),
   karte(
     'k-as-17',
@@ -1899,7 +1899,7 @@ final List<Flashcard> cardsA03 = [
     'k-al-27',
     'an-lizenzen',
     'Der PC mit OEM-Lizenz wird ersetzt. Was gilt für die Lizenz?',
-    'Sie bleibt an das alte Gerät gebunden. Für den neuen PC braucht es eine Voll- oder Volumenlizenz.',
+    'Laut Lizenzbedingungen des Herstellers bleibt sie an das alte Gerät gebunden. Für den neuen PC planst du eine eigene Lizenz ein.',
   ),
   karte(
     'k-al-20',
@@ -2241,13 +2241,13 @@ final List<Flashcard> cardsA03 = [
     'k-no-25',
     'nw-modelle',
     'Welche Dienste nutzen typischerweise TCP?',
-    'Web (HTTP, HTTPS), E-Mail und Dateiübertragung: überall, wo nichts verloren gehen darf.',
+    'Web (HTTP, HTTPS), E-Mail und Dateiübertragung, also überall, wo nichts verloren gehen darf.',
   ),
   karte(
     'k-no-6',
     'nw-modelle',
     'Wie läuft der TCP-Drei-Wege-Handshake ab?',
-    'SYN - SYN-ACK - ACK, danach steht die Verbindung.',
+    'SYN, SYN-ACK, ACK. Danach steht die Verbindung.',
   ),
   karte(
     'k-no-26',
@@ -2338,7 +2338,7 @@ final List<Flashcard> cardsA03 = [
   karte(
     'k-ng-56',
     'nw-geraete',
-    'Was ist in Prüfungsfragen mit „Router“ gemeint: anders als beim Heimrouter?',
+    'Was ist in Prüfungsfragen mit „Router“ gemeint, anders als beim Heimrouter?',
     'Nur die Funktion auf Schicht 3: Netze verbinden und Pakete weiterleiten. Der Heimrouter ist zusätzlich Modem, Switch, Access Point, DHCP-Server und Firewall.',
   ),
   karte(
@@ -2537,7 +2537,7 @@ final List<Flashcard> cardsA03 = [
     'k-ng-52',
     'nw-geraete',
     'Ein Access Point braucht 18 W über PoE. Welcher Standard ist mindestens nötig?',
-    '802.3at (PoE+) - 18 W liegen über 15,4 W (af), aber unter 30 W.',
+    '802.3at (PoE+), denn 18 W liegen über 15,4 W (af), aber unter 30 W.',
   ),
   karte(
     'k-ng-53',
@@ -2641,7 +2641,7 @@ final List<Flashcard> cardsA03 = [
     'k-n4-5',
     'nw-ipv4',
     'Wie viele Hosts hat ein /30-Netz, und wofür nutzt man es?',
-    '255.255.255.252 - 2 nutzbare Hosts, typisch für Punkt-zu-Punkt-Verbindungen zwischen Routern.',
+    '2 nutzbare Hosts (Maske 255.255.255.252), typisch für Punkt-zu-Punkt-Verbindungen zwischen Routern.',
   ),
   karte(
     'k-n4-19',
@@ -2659,7 +2659,7 @@ final List<Flashcard> cardsA03 = [
     'k-n4-24',
     'nw-ipv4',
     'Mit welcher Formel berechnest du die Anzahl der Subnetze?',
-    '2^geliehene Bits: z. B. ergeben 3 geliehene Bits 8 Subnetze.',
+    '2^(geliehene Bits). 3 geliehene Bits ergeben z. B. 8 Subnetze.',
   ),
   karte(
     'k-n4-6',
@@ -2853,7 +2853,7 @@ final List<Flashcard> cardsA03 = [
     'k-n6-18',
     'nw-ipv6',
     'Welches Präfix hat ein IPv6-Subnetz im LAN fast immer?',
-    '/64 - 64 Bit Präfix und 64 Bit Interface-ID.',
+    '/64, also 64 Bit Präfix und 64 Bit Interface-ID.',
   ),
   karte(
     'k-n6-19',
@@ -3367,7 +3367,7 @@ final List<Flashcard> cardsA03 = [
     'k-nc-28',
     'nw-cloud',
     'Welche Rolle hat ein Cloud-Anbieter, der personenbezogene Daten verarbeitet?',
-    'Er ist Auftragsverarbeiter: nötig ist ein Vertrag nach Art. 28 DSGVO; verantwortlich bleibt das Unternehmen.',
+    'Er ist Auftragsverarbeiter. Nötig ist ein Vertrag nach Art. 28 DSGVO, verantwortlich bleibt das Unternehmen.',
   ),
   karte(
     'k-nc-30',
@@ -3379,7 +3379,7 @@ final List<Flashcard> cardsA03 = [
     'k-nc-29',
     'nw-cloud',
     'Was ist Vendor Lock-in, und wie beugst du vor?',
-    'Abhängigkeit von einem Anbieter: vorbeugen mit Ausstiegsstrategie und exportierbaren Daten.',
+    'Die Abhängigkeit von einem Anbieter. Du beugst vor mit Ausstiegsstrategie und exportierbaren Daten.',
   ),
   karte(
     'k-nc-19',

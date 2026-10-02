@@ -148,7 +148,7 @@ final List<ExamCase> casesA06 = [
           wahl('langsamer', ['schneller', 'unsicherer']),
         ],
         explanation:
-            'Verschlüsselung schützt die Vertraulichkeit. Asymmetrisch muss kein geheimer Schlüssel über einen sicheren Kanal ausgetauscht werden. Der öffentliche darf jedem bekannt sein. Dafür ist das Verfahren rechenaufwendiger und langsamer.',
+            'Verschlüsselung schützt die Vertraulichkeit. Beim asymmetrischen Verfahren muss kein geheimer Schlüssel über einen sicheren Kanal ausgetauscht werden, denn der öffentliche Schlüssel darf jedem bekannt sein. Dafür ist das Verfahren rechenaufwendiger und langsamer.',
         punkte: 3,
       ),
       freitext(
@@ -397,7 +397,7 @@ final List<ExamCase> casesA06 = [
           ],
         ],
         explanation:
-            'Wissen (Passwort): braucht keine Hardware, kann aber verraten, ausgespäht oder erraten werden. Besitz (Chipkarte): nicht erratbar, ein Verlust fällt auf. Sie kann aber gestohlen und missbraucht werden. Je Zelle 1 Punkt.',
+            'Ein Passwort (Wissen) braucht keine Hardware, kann aber verraten, ausgespäht oder erraten werden. Eine Chipkarte (Besitz) lässt sich nicht erraten, und ihr Verlust fällt auf. Sie kann aber gestohlen und missbraucht werden. Je Zelle 1 Punkt.',
         punkte: 4,
       ),
       freitext(
@@ -409,7 +409,7 @@ final List<ExamCase> casesA06 = [
             'Beschreibe einen Grund, warum vor der Inbetriebnahme ein Softwareupdate durchgeführt werden soll. (2 P.)',
         kriterien: [
           krit(
-            'Seit der Fertigung bekannt gewordene Sicherheitslücken werden geschlossen. Das Gerät ist gegen Angriffe gehärtet',
+            'Seit der Fertigung bekannt gewordene Sicherheitslücken werden geschlossen, das Gerät ist damit gegen Angriffe gehärtet',
             punkte: 2,
             stichwoerter: [
               'Sicherheitslücke',
@@ -847,7 +847,7 @@ final List<ExamCase> casesA06 = [
           ],
         ],
         explanation:
-            'Minimalprinzip: Jede Rolle erhält nur die Rechte, die sie für ihre Aufgabe braucht. Kunden sehen nur eigene Tickets, der Support alle. Die Kontenverwaltung bleibt den Administratoren vorbehalten, denn auch der Support braucht sie nicht.',
+            'Nach dem Minimalprinzip erhält jede Rolle nur die Rechte, die sie für ihre Aufgabe braucht. Kunden sehen nur eigene Tickets, der Support alle. Die Kontenverwaltung bleibt den Administratoren vorbehalten, denn auch der Support braucht sie nicht.',
         punkte: 4,
       ),
       lueckentext(
@@ -970,7 +970,7 @@ final List<ExamCase> casesA06 = [
         ],
         punkte: 2,
         loesung:
-            'Die Agentur kann die Mitarbeitenden schulen und ihnen den Nutzen zeigen, zum Beispiel dass keine Anfrage mehr verloren geht und Kolleginnen im Urlaub vertreten werden können. Sinnvoll ist auch, Rückmeldungen einzuholen und das System daraufhin anzupassen: Beteiligung wirkt nachhaltiger als Druck.',
+            'Die Agentur kann die Mitarbeitenden schulen und ihnen den Nutzen zeigen, zum Beispiel dass keine Anfrage mehr verloren geht und Kolleginnen im Urlaub vertreten werden können. Sinnvoll ist auch, Rückmeldungen einzuholen und das System daraufhin anzupassen, denn Beteiligung wirkt nachhaltiger als Druck.',
         explanation:
             '2 Punkte für eine beschriebene Maßnahme: Schulung, Beteiligung, offene Kommunikation des Nutzens oder Ansprechpersonen im Team.$_andere',
       ),
@@ -1094,7 +1094,7 @@ final List<ExamCase> casesA06 = [
         ],
         punkte: 4,
         loesung:
-            'Die Kamera wird ohne voreingestelltes Passwort ausgeliefert. Erstens muss bei der Ersteinrichtung jeder Kamera ein eigenes, regelkonformes Passwort vergeben werden. Ohne dieses ist kein Zugang möglich. Zweitens teilen sich nicht alle Geräte des Herstellers dasselbe, öffentlich bekannte Passwort; Angreifer können die Kameras nicht mit Listen von Standardpasswörtern übernehmen.',
+            'Die Kamera wird ohne voreingestelltes Passwort ausgeliefert. Erstens muss bei der Ersteinrichtung jeder Kamera ein eigenes, regelkonformes Passwort vergeben werden, sonst ist kein Zugang möglich. Zweitens teilen sich nicht alle Geräte des Herstellers dasselbe, öffentlich bekannte Passwort; Angreifer können die Kameras nicht mit Listen von Standardpasswörtern übernehmen.',
         explanation: 'Je Konsequenz 2 Punkte, höchstens 4 Punkte.$_andere',
         tags: ['englisch'],
       ),
@@ -1282,7 +1282,7 @@ final List<ExamCase> casesA06 = [
         loesung:
             'Die Leitung sollte früh und offen informieren, wozu die Kameras dienen, welche Bereiche sie erfassen, wie lange gespeichert wird und wer die Bilder sehen darf. Außerdem sollte sie Betriebsrat und Beschäftigte beteiligen und in einer Betriebsvereinbarung festhalten, dass die Aufnahmen nicht zur Leistungskontrolle genutzt werden.',
         explanation:
-            'Je Maßnahme 2 Punkte, höchstens 4 Punkte. Widerstand entsteht hier aus Sorge: Information und Beteiligung wirken besser als Anordnung.$_andere',
+            'Je Maßnahme 2 Punkte, höchstens 4 Punkte. Der Widerstand entsteht hier aus Sorge, deshalb wirken Information und Beteiligung besser als eine Anordnung.$_andere',
       ),
     ],
   ),
@@ -1418,7 +1418,7 @@ final List<ExamCase> casesA06 = [
           ],
         ],
         explanation:
-            'Der Schutzbedarf richtet sich nach dem möglichen Schaden: Mandantenakten/Vertraulichkeit sehr hoch (Berufsgeheimnis, Existenz gefährdet), Lohnprogramm/Verfügbarkeit hoch (beträchtlicher Schaden bei längerem Ausfall), Website/Integrität normal (Schaden begrenzt). Je Zelle 1 Punkt.',
+            'Der Schutzbedarf richtet sich nach dem möglichen Schaden. Bei den Mandantenakten ist die Vertraulichkeit sehr hoch einzustufen (Berufsgeheimnis, Existenz gefährdet), beim Lohnprogramm die Verfügbarkeit hoch (beträchtlicher Schaden bei längerem Ausfall) und bei der Website die Integrität normal (Schaden begrenzt). Je Zelle 1 Punkt.',
         punkte: 6,
       ),
       freitext(
@@ -1553,11 +1553,11 @@ final List<ExamCase> casesA06 = [
         'f-a06-systemhaus2-g',
         'sm-backup',
         prompt:
-            'Berechne, wie viel Speicherplatz die Vollsicherung und die vier differenziellen Sicherungen einer Woche zusammen belegen.',
+            'Der neue Sicherungsplan sieht freitags eine Vollsicherung mit 300 GB und von Montag bis Donnerstag je eine differenzielle Sicherung vor; täglich ändern sich 20 GB jeweils anderer Dateien. Berechne, wie viel Speicherplatz die Vollsicherung und die vier differenziellen Sicherungen einer Woche zusammen belegen.',
         answer: 500,
         unit: 'GB',
         explanation:
-            'Vollsicherung 300 GB + differenzielle Sicherungen 20 + 40 + 60 + 80 = 200 GB. Zusammen 300 GB + 200 GB = 500 GB.',
+            'Jede differenzielle Sicherung enthält alle Änderungen seit der Vollsicherung: 20 + 40 + 60 + 80 = 200 GB. Mit der Vollsicherung sind das 300 GB + 200 GB = 500 GB.',
         punkte: 3,
       ),
     ],
@@ -1604,7 +1604,7 @@ final List<ExamCase> casesA06 = [
         ],
         punkte: 3,
         loesung:
-            'Rechtsgrundlage ist die Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO). Die Daten sind erforderlich, um den Dreischichtbetrieb zu planen und die Beschäftigten zu erreichen. Eine Einwilligung ist dafür nicht nötig. In Lehrbüchern und älteren Lösungen wird oft § 26 BDSG genannt; ob dessen allgemeine Regel nach einem Urteil des Europäischen Gerichtshofs von 2023 noch anwendbar ist, ist umstritten. Sicher ist die Stütze auf die DSGVO.',
+            'Rechtsgrundlage ist die Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO). Die Daten sind erforderlich, um den Dreischichtbetrieb zu planen und die Beschäftigten zu erreichen. Eine Einwilligung ist dafür nicht nötig. In Lehrbüchern und älteren Lösungen wird oft § 26 BDSG genannt; ob dessen allgemeine Regel nach einem Urteil des Europäischen Gerichtshofs von 2023 noch anwendbar ist, ist umstritten. Auf der sicheren Seite bist du mit der DSGVO.',
         explanation:
             '1 Punkt für die Rechtsgrundlage, 2 Punkte für die Begründung über die Erforderlichkeit für das Arbeitsverhältnis.',
       ),
@@ -1650,7 +1650,7 @@ final List<ExamCase> casesA06 = [
           ],
         ],
         explanation:
-            'Anmeldung: Mehr-Faktor-Authentifizierung. Kommunikation: verschlüsselter VPN-Tunnel. Unterwegs: Blickschutzfolie gegen Mitlesen. Transport: verschlossene Behälter bzw. verschlüsselte Datenträger. Je Zeile 1 Punkt.',
+            'Für die Anmeldung eignet sich eine Mehr-Faktor-Authentifizierung, für die Kommunikation ein verschlüsselter VPN-Tunnel. Unterwegs schützt die Blickschutzfolie vor dem Mitlesen, beim Transport ein verschlossener Behälter oder ein verschlüsselter Datenträger. Je Zeile 1 Punkt.',
         punkte: 4,
       ),
       freitext(
@@ -1732,7 +1732,7 @@ final List<ExamCase> casesA06 = [
         loesung:
             'Vertraulichkeit: Die Daten auf der SSD können nur von Befugten gelesen werden, die das Passwort kennen. Ein Finder oder Dieb sieht nur verschlüsselte Daten. Integrität: Die Daten bleiben vollständig und unverändert; ein Unbefugter kann sie nicht gezielt verändern, ohne dass es auffällt.',
         explanation:
-            'Je Schutzziel 2 Punkte: Vertraulichkeit = nur Befugte können lesen, Integrität = unbefugte Änderungen werden verhindert oder erkannt.',
+            'Je Schutzziel 2 Punkte. Vertraulichkeit heißt, dass nur Befugte die Daten lesen können. Integrität heißt, dass unbefugte Änderungen verhindert oder erkannt werden.',
       ),
       freitext(
         'f-a06-logistik2-e',

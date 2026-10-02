@@ -22,14 +22,29 @@ final List<Question> seedNetzplan = [
         'Für die Einführung eines Ticketsystems wurden folgende Vorgänge '
         'geplant. Alle Zeiten in Arbeitstagen.',
     prompt:
-        'Führe die Vorwärtsrechnung durch: trage FAZ und FEZ für jeden '
+        'Führe die Vorwärtsrechnung durch und trage FAZ und FEZ für jeden '
         'Vorgang ein.',
     activities: const [
       Activity(id: 'A', name: 'Anforderungsanalyse', duration: 4),
       Activity(id: 'B', name: 'Grobkonzept', duration: 3, predecessors: ['A']),
-      Activity(id: 'C', name: 'Hardwarebeschaffung', duration: 6, predecessors: ['A']),
-      Activity(id: 'D', name: 'Implementierung', duration: 5, predecessors: ['B']),
-      Activity(id: 'E', name: 'Integrationstest', duration: 2, predecessors: ['C', 'D']),
+      Activity(
+        id: 'C',
+        name: 'Hardwarebeschaffung',
+        duration: 6,
+        predecessors: ['A'],
+      ),
+      Activity(
+        id: 'D',
+        name: 'Implementierung',
+        duration: 5,
+        predecessors: ['B'],
+      ),
+      Activity(
+        id: 'E',
+        name: 'Integrationstest',
+        duration: 2,
+        predecessors: ['C', 'D'],
+      ),
     ],
     askedFields: const [NodeField.faz, NodeField.fez],
     explanation:
@@ -40,9 +55,10 @@ final List<Question> seedNetzplan = [
         'C: FAZ 4 (nach A), FEZ 4+6 = 10\n'
         'D: FAZ 7 (nach B), FEZ 7+5 = 12\n'
         'E: FAZ = max(FEZ C = 10, FEZ D = 12) = 12, FEZ 12+2 = 14\n\n'
-        'Der häufigste Fehler: bei E den kleineren Wert nehmen. Bei mehreren '
-        'Vorgängern gilt immer das MAXIMUM: der Vorgang kann erst starten, '
-        'wenn der letzte Vorgänger fertig ist. Projektdauer: 14 Arbeitstage.',
+        'Der häufigste Fehler ist, bei E den kleineren Wert zu nehmen. Bei '
+        'mehreren Vorgängern gilt immer das MAXIMUM, denn der Vorgang kann '
+        'erst starten, wenn der letzte Vorgänger fertig ist. Projektdauer: '
+        '14 Arbeitstage.',
   ),
 
   Question(
@@ -52,16 +68,25 @@ final List<Question> seedNetzplan = [
     kind: QuestionKind.netzplan,
     difficulty: 2,
     tags: ['vollständig', 'puffer'],
-    scenario:
-        'Migration eines Warenwirtschaftssystems. Dauer in Arbeitstagen.',
+    scenario: 'Migration eines Warenwirtschaftssystems. Dauer in Arbeitstagen.',
     prompt:
         'Berechne den kompletten Netzplan: FAZ, FEZ, SAZ, SEZ sowie Gesamt- und '
         'freien Puffer.',
     activities: const [
       Activity(id: 'A', name: 'Ist-Analyse', duration: 3),
       Activity(id: 'B', name: 'Datenmodell', duration: 5, predecessors: ['A']),
-      Activity(id: 'C', name: 'Schulungskonzept', duration: 2, predecessors: ['A']),
-      Activity(id: 'D', name: 'Migrationsskripte', duration: 4, predecessors: ['B']),
+      Activity(
+        id: 'C',
+        name: 'Schulungskonzept',
+        duration: 2,
+        predecessors: ['A'],
+      ),
+      Activity(
+        id: 'D',
+        name: 'Migrationsskripte',
+        duration: 4,
+        predecessors: ['B'],
+      ),
       Activity(id: 'E', name: 'Schulung', duration: 6, predecessors: ['C']),
       Activity(id: 'F', name: 'Go-Live', duration: 3, predecessors: ['D', 'E']),
     ],
@@ -84,10 +109,10 @@ final List<Question> seedNetzplan = [
         'GP = SAZ - FAZ  ->  A 0, B 0, C 1, D 0, E 1, F 0\n'
         'FP = min(FAZ der Nachfolger) - FEZ  ->  A 0, B 0, C 0, D 0, E 1, F 0\n\n'
         'Der Lerneffekt steckt in Vorgang C: GP = 1, aber FP = 0. Man kann C '
-        'zwar um einen Tag verschieben, ohne das Projektende zu gefährden; '
+        'zwar um einen Tag verschieben, ohne das Projektende zu gefährden, '
         'aber der Nachfolger E startet dann später. Freier Puffer heißt: '
-        'verschiebbar OHNE den frühesten Start des Nachfolgers anzutasten. '
-        'Kritischer Pfad: A - B - D - F.',
+        'verschiebbar, OHNE den frühesten Start des Nachfolgers anzutasten. '
+        'Kritischer Pfad: A -> B -> D -> F.',
   ),
 
   Question(
@@ -129,18 +154,30 @@ final List<Question> seedNetzplan = [
     tags: ['puffer', 'definition'],
     prompt: 'Was sagt der freie Puffer (FP) eines Vorgangs aus?',
     choices: [
-      _c('Die Zeit, um die der Vorgang verschoben werden kann, ohne den frühesten Anfang seiner Nachfolger zu verändern.', true,
-          'Richtig. FP = kleinster FAZ der Nachfolger minus eigener FEZ. Diesen Puffer darf man aufbrauchen, ohne dass es irgendjemand anders merkt.'),
-      _c('Die Zeit, um die der Vorgang verschoben werden kann, ohne das Projektende zu gefährden.', false,
-          'Das ist die Definition des GESAMTpuffers (GP = SAZ - FAZ). Der GP ist immer größer oder gleich dem FP.'),
-      _c('Die Differenz zwischen geplanter und tatsächlicher Dauer.', false,
-          'Das wäre eine Abweichung im Projektcontrolling, kein Puffer aus der Netzplantechnik.'),
-      _c('Die Reservezeit, die das Projektteam zusätzlich einplant.', false,
-          'Das ist eine Sicherheitsreserve. Puffer im Netzplan werden berechnet, nicht eingeplant.'),
+      _c(
+        'Die Zeit, um die der Vorgang verschoben werden kann, ohne den frühesten Anfang seiner Nachfolger zu verändern.',
+        true,
+        'Richtig. FP = kleinster FAZ der Nachfolger minus eigener FEZ. Diesen Puffer darf man aufbrauchen, ohne dass es irgendjemand anders merkt.',
+      ),
+      _c(
+        'Die Zeit, um die der Vorgang verschoben werden kann, ohne das Projektende zu gefährden.',
+        false,
+        'Das ist die Definition des GESAMTpuffers (GP = SAZ - FAZ). Der GP ist immer größer oder gleich dem FP.',
+      ),
+      _c(
+        'Die Differenz zwischen geplanter und tatsächlicher Dauer.',
+        false,
+        'Das wäre eine Abweichung im Projektcontrolling, kein Puffer aus der Netzplantechnik.',
+      ),
+      _c(
+        'Die Reservezeit, die das Projektteam zusätzlich einplant.',
+        false,
+        'Das ist eine Sicherheitsreserve. Puffer im Netzplan werden berechnet, nicht eingeplant.',
+      ),
     ],
     explanation:
-        'GP = SAZ - FAZ = SEZ - FEZ: Spielraum bis das PROJEKTENDE kippt.\n'
-        'FP = min(FAZ der Nachfolger) - FEZ: Spielraum bis der NACHFOLGER '
+        'GP = SAZ - FAZ = SEZ - FEZ: Spielraum, bis das PROJEKTENDE kippt.\n'
+        'FP = min(FAZ der Nachfolger) - FEZ: Spielraum, bis der NACHFOLGER '
         'betroffen ist.\n'
         'Es gilt immer FP <= GP. Auf dem kritischen Pfad sind beide 0. '
         'Ein Vorgang mit GP > 0 und FP = 0 hat zwar Luft bis zum Projektende, '
@@ -156,24 +193,42 @@ final List<Question> seedNetzplan = [
     tags: ['kritischer_pfad'],
     prompt: 'Welche Aussagen über den kritischen Pfad sind richtig?',
     choices: [
-      _c('Alle Vorgänge auf ihm haben einen Gesamtpuffer von 0.', true,
-          'Das ist die Definition. Genau daran erkennt man ihn in der Rechnung.'),
-      _c('Er ist der längste Weg durch den Netzplan.', true,
-          'Der längste Weg bestimmt die Projektdauer. Deshalb hat er keinen Puffer.'),
-      _c('Verzögert sich ein Vorgang auf ihm um 2 Tage, verzögert sich das Projektende um 2 Tage.', true,
-          'Ohne Puffer schlägt jede Verzögerung eins zu eins aufs Projektende durch.'),
-      _c('Ein Netzplan hat immer genau einen kritischen Pfad.', false,
-          'Falsch. Es kann mehrere gleich lange kritische Pfade geben. Dann ist das Projekt besonders anfällig, weil es mehrere pufferlose Ketten gibt.'),
-      _c('Er enthält immer die Vorgänge mit der längsten Einzeldauer.', false,
-          'Falsch. Ein einzelner langer Vorgang kann parallel liegen und viel Puffer haben. Entscheidend ist die Kette, nicht die Einzeldauer.'),
-      _c('Eine Verkürzung eines Vorgangs auf dem kritischen Pfad verkürzt immer das Projekt um denselben Betrag.', false,
-          'Falsch, und das ist der beliebteste Stolperstein: verkürzt man genug, wird ein anderer Weg zum kritischen Pfad und die Verkürzung verpufft ab diesem Punkt.'),
+      _c(
+        'Alle Vorgänge auf ihm haben einen Gesamtpuffer von 0.',
+        true,
+        'Das ist die Definition. Genau daran erkennt man ihn in der Rechnung.',
+      ),
+      _c(
+        'Er ist der längste Weg durch den Netzplan.',
+        true,
+        'Der längste Weg bestimmt die Projektdauer. Deshalb hat er keinen Puffer.',
+      ),
+      _c(
+        'Verzögert sich ein Vorgang auf ihm um 2 Tage, verzögert sich das Projektende um 2 Tage.',
+        true,
+        'Ohne Puffer schlägt jede Verzögerung eins zu eins aufs Projektende durch.',
+      ),
+      _c(
+        'Ein Netzplan hat immer genau einen kritischen Pfad.',
+        false,
+        'Falsch. Es kann mehrere gleich lange kritische Pfade geben. Dann ist das Projekt besonders anfällig, weil es mehrere pufferlose Ketten gibt.',
+      ),
+      _c(
+        'Er enthält immer die Vorgänge mit der längsten Einzeldauer.',
+        false,
+        'Falsch. Ein einzelner langer Vorgang kann parallel liegen und viel Puffer haben. Entscheidend ist die Kette, nicht die Einzeldauer.',
+      ),
+      _c(
+        'Eine Verkürzung eines Vorgangs auf dem kritischen Pfad verkürzt immer das Projekt um denselben Betrag.',
+        false,
+        'Falsch, und das ist der beliebteste Stolperstein: Verkürzt man genug, wird ein anderer Weg zum kritischen Pfad, und die Verkürzung verpufft ab diesem Punkt.',
+      ),
     ],
     explanation:
         'Der kritische Pfad ist der längste Weg vom Start- zum Endvorgang und '
         'damit die Kette ohne Puffer. Praktische Konsequenz fürs Projekt: '
         'Ressourcen und Aufmerksamkeit gehören zuerst dorthin. Bei '
-        'Verkürzungsaufgaben immer nach jedem Schritt neu rechnen: der '
+        'Verkürzungsaufgaben rechnest du nach jedem Schritt neu, denn der '
         'kritische Pfad kann wandern.',
   ),
 
@@ -190,12 +245,37 @@ final List<Question> seedNetzplan = [
         'Ermittle für jeden Vorgang den Gesamtpuffer und den freien Puffer.',
     activities: const [
       Activity(id: 'A', name: 'Planung', duration: 2),
-      Activity(id: 'B', name: 'Elektro-Vorbereitung', duration: 4, predecessors: ['A']),
-      Activity(id: 'C', name: 'Lieferung Racks', duration: 6, predecessors: ['A']),
+      Activity(
+        id: 'B',
+        name: 'Elektro-Vorbereitung',
+        duration: 4,
+        predecessors: ['A'],
+      ),
+      Activity(
+        id: 'C',
+        name: 'Lieferung Racks',
+        duration: 6,
+        predecessors: ['A'],
+      ),
       Activity(id: 'D', name: 'Klimatechnik', duration: 3, predecessors: ['B']),
-      Activity(id: 'E', name: 'Netzwerkverkabelung', duration: 2, predecessors: ['B']),
-      Activity(id: 'F', name: 'Hardware-Montage', duration: 4, predecessors: ['D', 'C']),
-      Activity(id: 'G', name: 'Inbetriebnahme', duration: 3, predecessors: ['E', 'F']),
+      Activity(
+        id: 'E',
+        name: 'Netzwerkverkabelung',
+        duration: 2,
+        predecessors: ['B'],
+      ),
+      Activity(
+        id: 'F',
+        name: 'Hardware-Montage',
+        duration: 4,
+        predecessors: ['D', 'C'],
+      ),
+      Activity(
+        id: 'G',
+        name: 'Inbetriebnahme',
+        duration: 3,
+        predecessors: ['E', 'F'],
+      ),
     ],
     askedFields: const [NodeField.gp, NodeField.fp],
     explanation:
@@ -204,10 +284,10 @@ final List<Question> seedNetzplan = [
         'Rückwärts: G 13/16, F 9/13, E 11/13, D 6/9, C 3/9, B 2/6, A 0/2.\n\n'
         'GP = SAZ - FAZ: A 0, B 0, C 1, D 0, E 5, F 0, G 0\n'
         'FP = min(FAZ Nachfolger) - FEZ: A 0, B 0, C 1, D 0, E 5, F 0, G 0\n\n'
-        'Kritischer Pfad: A - B - D - F - G (16 Tage).\n'
-        'Vorgang E hat mit 5 Tagen den größten Spielraum: hier kann man ohne '
+        'Kritischer Pfad: A -> B -> D -> F -> G (16 Tage).\n'
+        'Vorgang E hat mit 5 Tagen den größten Spielraum: Hier kann man ohne '
         'Risiko Personal abziehen, wenn es auf dem kritischen Pfad brennt. '
-        'Achtung bei C: die Lieferung dauert zwar am längsten (6 Tage), liegt '
+        'Achtung bei C: Die Lieferung dauert zwar am längsten (6 Tage), liegt '
         'aber trotzdem nicht auf dem kritischen Pfad.',
   ),
 
@@ -219,6 +299,7 @@ final List<Question> seedNetzplan = [
     difficulty: 1,
     tags: ['projektdauer'],
     scenario:
+        'Ein Projekt besteht aus fünf Vorgängen:\n'
         'A: 5 Tage, kein Vorgänger\n'
         'B: 3 Tage, kein Vorgänger\n'
         'C: 4 Tage, Vorgänger A und B\n'
@@ -230,10 +311,10 @@ final List<Question> seedNetzplan = [
     unit: 'Tage',
     explanation:
         'Alle Wege durchrechnen und den längsten nehmen:\n'
-        'A - C - E = 5 + 4 + 2 = 11\n'
-        'B - C - E = 3 + 4 + 2 = 9\n'
-        'A - D - E = 5 + 6 + 2 = 13  <- längster Weg\n'
-        'Projektdauer = 13 Tage, kritischer Pfad A - D - E.\n'
+        'A -> C -> E: 5 + 4 + 2 = 11\n'
+        'B -> C -> E: 3 + 4 + 2 = 9\n'
+        'A -> D -> E: 5 + 6 + 2 = 13 (längster Weg)\n'
+        'Projektdauer = 13 Tage, kritischer Pfad A -> D -> E.\n'
         'Kontrolle über die Vorwärtsrechnung: C startet bei max(5, 3) = 5, '
         'endet bei 9. D endet bei 11. E startet bei max(9, 11) = 11 und endet '
         'bei 13.',
@@ -251,20 +332,32 @@ final List<Question> seedNetzplan = [
         'Welchen Vorteil hat ein Netzplan gegenüber einem einfachen Balkenplan '
         '(Gantt-Diagramm)?',
     choices: [
-      _c('Er zeigt Abhängigkeiten und Puffer explizit und macht den kritischen Pfad berechenbar.', true,
-          'Richtig. Der Netzplan ist ein Rechenmodell: Puffer und kritischer Pfad ergeben sich rechnerisch, nicht durch Hinsehen.'),
-      _c('Er stellt den Zeitverlauf anschaulicher dar.', false,
-          'Das ist gerade die Stärke des Balkenplans: Die Zeitachse ist maßstabsgetreu und auf einen Blick lesbar.'),
-      _c('Er benötigt keine Angabe von Vorgangsdauern.', false,
-          'Ohne Dauern gibt es keine Vorwärts- und Rückwärtsrechnung. Der Netzplan braucht sie zwingend.'),
-      _c('Er eignet sich besser für die Präsentation vor der Geschäftsführung.', false,
-          'Umgekehrt. Für Präsentationen nimmt man den Balkenplan, weil er ohne Erklärung verständlich ist.'),
+      _c(
+        'Er zeigt Abhängigkeiten und Puffer explizit und macht den kritischen Pfad berechenbar.',
+        true,
+        'Richtig. Der Netzplan ist ein Rechenmodell: Puffer und kritischer Pfad ergeben sich rechnerisch, nicht durch Hinsehen.',
+      ),
+      _c(
+        'Er stellt den Zeitverlauf anschaulicher dar.',
+        false,
+        'Das ist gerade die Stärke des Balkenplans: Die Zeitachse ist maßstabsgetreu und auf einen Blick lesbar.',
+      ),
+      _c(
+        'Er benötigt keine Angabe von Vorgangsdauern.',
+        false,
+        'Ohne Dauern gibt es keine Vorwärts- und Rückwärtsrechnung. Der Netzplan braucht sie zwingend.',
+      ),
+      _c(
+        'Er eignet sich besser für die Präsentation vor der Geschäftsführung.',
+        false,
+        'Umgekehrt. Für Präsentationen nimmt man den Balkenplan, weil er ohne Erklärung verständlich ist.',
+      ),
     ],
     explanation:
-        'Arbeitsteilung in der Praxis: mit dem Netzplan rechnen, mit dem '
+        'Arbeitsteilung in der Praxis: Mit dem Netzplan rechnen, mit dem '
         'Balkenplan kommunizieren. Moderne Tools erzeugen den Gantt direkt aus '
-        'den Netzplandaten und zeichnen den kritischen Pfad rot ein; '
-        'in der Prüfung muss man beides aber getrennt beherrschen.',
+        'den Netzplandaten und zeichnen den kritischen Pfad rot ein. '
+        'In der Prüfung musst du aber beides getrennt beherrschen.',
   ),
 
   Question(
@@ -276,14 +369,26 @@ final List<Question> seedNetzplan = [
     tags: ['meilenstein'],
     prompt: 'Was kennzeichnet einen Meilenstein in der Projektplanung?',
     choices: [
-      _c('Ein Ereignis mit der Dauer null, an dem ein definiertes Zwischenergebnis vorliegt.', true,
-          'Richtig. Ein Meilenstein verbraucht keine Zeit und keine Ressourcen. Er stellt nur fest, ob ein Ergebnis erreicht ist.'),
-      _c('Der längste Vorgang im Projekt.', false,
-          'Das hat mit Meilensteinen nichts zu tun; lange Vorgänge sind einfach Vorgänge.'),
-      _c('Ein Vorgang, der besonders viel Budget bindet.', false,
-          'Budget ist kein Kriterium. Ein Meilenstein kostet definitionsgemäß nichts.'),
-      _c('Der Abschluss des gesamten Projekts.', false,
-          'Der Projektabschluss IST ein Meilenstein, aber Meilensteine gibt es während des gesamten Projekts.'),
+      _c(
+        'Ein Ereignis mit der Dauer null, an dem ein definiertes Zwischenergebnis vorliegt.',
+        true,
+        'Richtig. Ein Meilenstein verbraucht keine Zeit und keine Ressourcen. Er stellt nur fest, ob ein Ergebnis erreicht ist.',
+      ),
+      _c(
+        'Der längste Vorgang im Projekt.',
+        false,
+        'Das hat mit Meilensteinen nichts zu tun; lange Vorgänge sind einfach Vorgänge.',
+      ),
+      _c(
+        'Ein Vorgang, der besonders viel Budget bindet.',
+        false,
+        'Budget ist kein Kriterium. Ein Meilenstein kostet definitionsgemäß nichts.',
+      ),
+      _c(
+        'Der Abschluss des gesamten Projekts.',
+        false,
+        'Der Projektabschluss IST ein Meilenstein, aber Meilensteine gibt es während des gesamten Projekts.',
+      ),
     ],
     explanation:
         'Meilensteine sind Entscheidungspunkte: Ergebnis da oder nicht, weiter '
@@ -291,7 +396,7 @@ final List<Question> seedNetzplan = [
         '("Pflichtenheft vom Kunden unterzeichnet"), nicht schwammig '
         '("Konzept weitgehend fertig"). In der Meilensteintrendanalyse (MTA) '
         'trägt man über die Zeit auf, wie sich die geplanten '
-        'Meilensteintermine verschieben: eine steigende Linie bedeutet '
+        'Meilensteintermine verschieben: Eine steigende Linie bedeutet '
         'Verzug.',
   ),
 
@@ -306,16 +411,31 @@ final List<Question> seedNetzplan = [
         'Ein Meilensteintrendanalyse-Diagramm zeigt für einen Meilenstein eine '
         'nach oben steigende Linie. Welche Schlüsse sind zulässig?',
     choices: [
-      _c('Der Meilenstein verschiebt sich immer weiter nach hinten.', true,
-          'Richtig. Steigende Linie = der prognostizierte Termin wird bei jedem Berichtszeitpunkt später.'),
-      _c('Es besteht Handlungsbedarf, z. B. Ressourcen umsteuern oder Umfang kürzen.', true,
-          'Die MTA ist ein Frühwarninstrument. Der Zweck ist genau dieses Gegensteuern.'),
-      _c('Der Meilenstein wird früher als geplant erreicht.', false,
-          'Falsch, das wäre eine FALLENDE Linie. Steigend = später.'),
-      _c('Das Projekt liegt im Plan.', false,
-          'Falsch. Im Plan bedeutet eine waagerechte Linie.'),
-      _c('Die Ursache der Verzögerung lässt sich direkt aus dem Diagramm ablesen.', false,
-          'Falsch. Die MTA zeigt, DASS sich etwas verschiebt, nicht WARUM. Die Ursachenanalyse ist eine separate Aufgabe.'),
+      _c(
+        'Der Meilenstein verschiebt sich immer weiter nach hinten.',
+        true,
+        'Richtig. Steigende Linie = der prognostizierte Termin wird bei jedem Berichtszeitpunkt später.',
+      ),
+      _c(
+        'Es besteht Handlungsbedarf, z. B. Ressourcen umsteuern oder Umfang kürzen.',
+        true,
+        'Die MTA ist ein Frühwarninstrument. Der Zweck ist genau dieses Gegensteuern.',
+      ),
+      _c(
+        'Der Meilenstein wird früher als geplant erreicht.',
+        false,
+        'Falsch, das wäre eine FALLENDE Linie. Steigend = später.',
+      ),
+      _c(
+        'Das Projekt liegt im Plan.',
+        false,
+        'Falsch. Im Plan läge das Projekt bei einer waagerechten Linie.',
+      ),
+      _c(
+        'Die Ursache der Verzögerung lässt sich direkt aus dem Diagramm ablesen.',
+        false,
+        'Falsch. Die MTA zeigt, DASS sich etwas verschiebt, nicht WARUM. Die Ursachenanalyse ist eine separate Aufgabe.',
+      ),
     ],
     explanation:
         'MTA-Lesehilfe: waagerecht = im Plan, steigend = Verzug, fallend = '
@@ -348,6 +468,6 @@ final List<Question> seedNetzplan = [
         'vergessen. In Prüfungsaufgaben ist der Verfügbarkeitsgrad fast '
         'immer der eigentliche Prüfpunkt. Merke außerdem: Personentage sind '
         'Aufwand, Arbeitstage sind Dauer. Die beiden Einheiten zu verwechseln '
-        'kostet in der Klausur sofort Punkte.',
+        'kostet in der Prüfung sofort Punkte.',
   ),
 ];

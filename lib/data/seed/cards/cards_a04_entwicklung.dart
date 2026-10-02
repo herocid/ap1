@@ -236,7 +236,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-fe-4',
     'af-erhebung',
     'Wofür steht MoSCoW?',
-    'Must have, Should have, Could have, Won’t have (this time), Priorisierung von Anforderungen.',
+    'Must have, Should have, Could have, Won’t have (this time). Damit priorisierst du Anforderungen.',
   ),
   karte(
     'k-fe-5',
@@ -314,7 +314,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-fe-17',
     'af-erhebung',
     'Was bedeutet „verfolgbar“ bei einer Anforderung?',
-    'Sie hat eine eindeutige Nummer und eine bekannte Quelle, so lässt sie sich bis zum Test nachverfolgen.',
+    'Sie hat eine eindeutige Nummer und eine bekannte Quelle. So lässt sie sich bis zum Test nachverfolgen.',
   ),
   karte(
     'k-fe-18',
@@ -445,13 +445,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-uk-3',
     'u-klassen',
     'Was ist eine Aggregation und wie wird sie gezeichnet?',
-    'Leere Raute am Ganzen: das Teil kann ohne das Ganze existieren (Abteilung - Mitarbeiter).',
+    'Leere Raute am Ganzen: Das Teil kann ohne das Ganze existieren (Abteilung und Mitarbeiter).',
   ),
   karte(
     'k-uk-4',
     'u-klassen',
     'Was ist eine Komposition und wie wird sie gezeichnet?',
-    'Gefüllte Raute am Ganzen: das Teil existiert nur mit dem Ganzen (Rechnung - Position).',
+    'Gefüllte Raute am Ganzen: Das Teil existiert nur mit dem Ganzen (Rechnung und Position).',
   ),
   karte(
     'k-uk-5',
@@ -469,7 +469,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-uk-7',
     'u-klassen',
     'An welchem Ende einer Beziehung steht die Multiplizität?',
-    'Am anderen Ende der Linie: Kunde 1 --- 0..* Bestellung heißt „ein Kunde hat 0..* Bestellungen“.',
+    'Am gegenüberliegenden Ende, bei der Zielklasse: Kunde 1 --- 0..* Bestellung heißt „ein Kunde hat 0..* Bestellungen“.',
   ),
   karte(
     'k-uk-8',
@@ -573,7 +573,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ua-2',
     'u-aktivitaet',
     'Wie funktioniert eine Entscheidung im Aktivitätsdiagramm?',
-    'Raute mit einem Eingang und mehreren Ausgängen: genau ein Weg wird genommen, gesteuert über Guards [ ].',
+    'Raute mit einem Eingang und mehreren Ausgängen: Genau ein Weg wird genommen, gesteuert über Guards [ ].',
   ),
   karte(
     'k-ua-3',
@@ -585,7 +585,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ua-4',
     'u-aktivitaet',
     'Was zeigt eine Swimlane?',
-    'Einen Aktivitätsbereich je Rolle oder Abteilung, also, wer eine Aktion ausführt.',
+    'Einen Bereich je Rolle oder Abteilung. So ist erkennbar, wer eine Aktion ausführt.',
   ),
   karte(
     'k-ua-5',
@@ -621,7 +621,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ua-10',
     'u-aktivitaet',
     'Warum sind die Guards [Betrag > 500] und [Betrag < 500] fehlerhaft?',
-    'Bei genau 500 trifft keiner zu. Guards müssen alle Fälle abdecken. Richtig wäre [Betrag <= 500].',
+    'Bei genau 500 trifft keiner zu. Guards müssen alle Fälle abdecken. Richtig wäre als zweiter Guard [Betrag <= 500].',
   ),
   karte(
     'k-ua-11',
@@ -773,7 +773,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pd-19',
     'pl-datentypen',
     'Was ergibt "5" + 3 in Java?',
-    '"53": ist ein Operand ein String, wird verkettet statt gerechnet.',
+    '"53": Ist ein Operand ein String, wird verkettet statt gerechnet.',
   ),
   karte(
     'k-pd-20',
@@ -799,13 +799,13 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pk-1',
     'pl-kontrollstrukturen',
     'Was kennzeichnet eine kopfgesteuerte Schleife?',
-    'Sie prüft vor jedem Durchlauf (while), und läuft eventuell gar nicht.',
+    'Sie prüft vor jedem Durchlauf (while) und läuft eventuell gar nicht.',
   ),
   karte(
     'k-pk-2',
     'pl-kontrollstrukturen',
     'Was kennzeichnet eine fußgesteuerte Schleife?',
-    'Sie prüft nach jedem Durchlauf (do-while), und läuft mindestens einmal.',
+    'Sie prüft nach jedem Durchlauf (do-while) und läuft mindestens einmal.',
   ),
   karte(
     'k-pk-3',
@@ -878,7 +878,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pk-14',
     'pl-kontrollstrukturen',
     'int x = 20; while (x < 10) { x++; }. Wie oft läuft der Rumpf?',
-    '0-mal, kopfgesteuert: 20 < 10 ist schon vor dem ersten Durchlauf falsch.',
+    '0-mal. Die Schleife ist kopfgesteuert, und 20 < 10 ist schon vor dem ersten Durchlauf falsch.',
   ),
   karte(
     'k-pk-15',
@@ -926,7 +926,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pk-22',
     'pl-kontrollstrukturen',
     'Welchen Wert hat wahr ODER wahr UND falsch?',
-    'wahr, UND zuerst: wahr UND falsch = falsch, dann wahr ODER falsch = wahr.',
+    'wahr. UND wird zuerst ausgewertet: wahr UND falsch = falsch, dann wahr ODER falsch = wahr.',
   ),
   karte(
     'k-pk-23',
@@ -976,7 +976,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-pc-9',
     'pl-pseudocode',
     'Woran erkennst du im Pseudocode, was zu einem Block gehört?',
-    'An der Einrückung, und jeder Block wird geschlossen, z. B. mit ENDE WENN oder ENDE FÜR.',
+    'An der Einrückung. Außerdem wird jeder Block geschlossen, z. B. mit ENDE WENN oder ENDE FÜR.',
   ),
   karte(
     'k-pc-10',
@@ -1145,7 +1145,7 @@ final List<Flashcard> cardsA04Entwicklung = [
   karte(
     'k-pt-19',
     'pl-schreibtischtest',
-    'SOLANGE i < 3: i ← i + 1, summe ← summe + werte[i] (Start i = 0). Was ist falsch?',
+    'werte hat 3 Elemente, Start i = 0. SOLANGE i < 3: i ← i + 1, summe ← summe + werte[i]. Was ist falsch?',
     'i wird zu früh erhöht: werte[0] wird übersprungen, werte[3] gibt es nicht. Erst addieren, dann erhöhen.',
   ),
   karte(
@@ -1178,7 +1178,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-og-4',
     'oo-grundbegriffe',
     'Was bedeutet die Identität eines Objekts?',
-    'Jedes Objekt ist eigenständig, auch zwei Objekte mit gleichen Attributwerten sind zwei verschiedene Objekte.',
+    'Jedes Objekt ist eigenständig. Auch zwei Objekte mit gleichen Attributwerten sind zwei verschiedene Objekte.',
   ),
   karte(
     'k-og-5',
@@ -1220,7 +1220,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-og-11',
     'oo-grundbegriffe',
     't1 und t2 sind Tickets. Was passiert mit t2, wenn t1.schliessen() aufgerufen wird?',
-    'Nichts, denn jedes Objekt hat seinen eigenen Zustand, nur t1 ändert sich.',
+    'Nichts. Jedes Objekt hat seinen eigenen Zustand, also ändert sich nur t1.',
   ),
   karte(
     'k-og-12',
@@ -1250,7 +1250,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-og-16',
     'oo-grundbegriffe',
     'Nenne zwei Vorteile der objektorientierten Programmierung.',
-    'z. B. Wiederverwendbarkeit von Klassen und bessere Wartbarkeit durch Kapselung; die Objekte entsprechen der realen Welt.',
+    'Z. B. Wiederverwendbarkeit von Klassen und bessere Wartbarkeit durch Kapselung. Außerdem bilden Objekte die reale Welt nach.',
   ),
   karte(
     'k-og-17',
@@ -1348,7 +1348,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-ok-14',
     'oo-kapselung',
     'Welche Sichtbarkeit bekommen Hilfsmethoden, die nur intern gebraucht werden?',
-    'private: sie sind ein internes Detail und gehören nicht zur Schnittstelle.',
+    'private: Sie sind ein internes Detail und gehören nicht zur Schnittstelle.',
   ),
   karte(
     'k-ok-15',
@@ -1359,7 +1359,7 @@ final List<Flashcard> cardsA04Entwicklung = [
   karte(
     'k-ok-16',
     'oo-kapselung',
-    'Wovor schützt private, und wovor nicht?',
+    'Wovor schützt private und wovor nicht?',
     'Es schützt vor falscher Verwendung im Code, verschlüsselt aber keine Daten.',
   ),
   karte(
@@ -1488,7 +1488,7 @@ final List<Flashcard> cardsA04Entwicklung = [
     'k-oc-18',
     'oo-konstruktor',
     'static zaehler (Start 0) wird in jedem Konstruktor erhöht. Wert nach drei new Ticket()?',
-    '3, denn das Klassenattribut gibt es nur einmal, alle Objekte erhöhen denselben Zähler.',
+    '3, denn das Klassenattribut gibt es nur einmal. Alle Objekte erhöhen denselben Zähler.',
   ),
   karte(
     'k-oc-19',

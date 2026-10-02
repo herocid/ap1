@@ -139,10 +139,11 @@ final List<Nugget> nuggetsA05 = [
     'qm-grundlagen',
     'Die Zehnerregel',
     'Je später ein Fehler gefunden wird, desto teurer wird er. Als Faustregel verzehnfachen sich die Kosten mit jeder Phase, die er unentdeckt übersteht.',
-    'Anforderung:            10 €\n'
-        'Entwurf:               100 €\n'
-        'Test:                1.000 €\n'
-        'Betrieb beim Kunden: 10.000 €',
+    'Anforderung:              10 €\n'
+        'Entwurf:                 100 €\n'
+        'Implementierung:       1.000 €\n'
+        'Test:                 10.000 €\n'
+        'Betrieb beim Kunden: 100.000 €',
     points: [
       'Ein Fehler in der Anforderung kostet beim Review eine Korrektur im Dokument.',
       'Beim Kunden kostet derselbe Fehler Analyse, Korrektur, Test, Auslieferung und Ansehen.',
@@ -155,11 +156,12 @@ final List<Nugget> nuggetsA05 = [
     'In den Anforderungen eines Projekts stecken 6 Fehler. Nach der Zehnerregel kostet die Korrektur in der Anforderungsphase 10 € je Fehler.',
     schritte: [
       'Im Anforderungsreview gefunden: 6 × 10 € = 60 €',
-      'Erst im Test gefunden (zwei Phasen später): 6 × 1.000 € = 6.000 €',
-      'Erst beim Kunden gefunden (drei Phasen später): 6 × 10.000 € = 60.000 €',
-      'Verhältnis: 60.000 € / 60 € = 1.000',
+      'Erst im Test gefunden (drei Phasen später): 6 × 10.000 € = 60.000 €',
+      'Erst beim Kunden gefunden (vier Phasen später): 6 × 100.000 € = 600.000 €',
+      'Verhältnis: 600.000 € / 60 € = 10.000',
     ],
-    ergebnis: 'Früh gefunden 60 €, beim Kunden 60.000 €, also das Tausendfache',
+    ergebnis:
+        'Früh gefunden 60 €, beim Kunden 600.000 €, also das Zehntausendfache',
   ),
   falle(
     'n-qg-11',

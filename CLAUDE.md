@@ -35,6 +35,15 @@ $env:Path = "C:\Users\Student\develop\flutter\bin;C:\Program Files\Git\cmd;C:\Pr
   Marke, Orange als Komplementärfarbe für Motivation (Streak, Ziel), Google-Grün/-Rot für
   richtig/falsch, Petrol für Hinweise. Keine Verläufe. Design modern (Material 3);
   Store-Qualität: keine abgeschnittenen Texte, keine Überläufe.
+- Orange hat zwei Rollen: `flame` (dunkler, für Text und Icons) und `flameFill` (kräftig,
+  nur für Balken und Flächen). Fließtext hat Laufweite 0, nur Versalien-Labels sind gesperrt.
+- Startseite: Das Tagesziel ist die einzige vollflächig blaue Karte (`_TodayCard`), „Fehler
+  wiederholen“ steht als Zeile darin. Bits Tipp wiederholt keine Zahlen aus den Karten.
+- Kartenrückseiten werden nur in der Anzeige gegliedert (`card_back_format.dart`: Stichwörter,
+  Rechenwege, „Beispiel:“/„Merke:“), die Kartentexte bleiben unverändert.
+- Statistik zeigt ohne Daten Einstiege statt Nullen (`stats_empty.dart`).
+- Silbentrennung (`lib/widgets/hyphenation.dart`) ist regelbasiert mit Stammlisten: „st“ wird
+  getrennt, „ck“ nie; falsch getrennte Zusammensetzungen über die Stammlisten nachziehen.
 - Maskottchen **Bit** (`lib/widgets/mascot.dart`), ein kleiner Roboter; führt in der
   Einführung (`/einfuehrung`) durch die App und gibt auf Start-, Quiz- und Ergebnisseite Tipps.
 - Tabs: Start · Journey (lernen) · Quiz (abgefragt werden) · Karten · Statistik - kein
@@ -172,19 +181,40 @@ Schritt für Schritt umsetzen, nach jedem Schritt testen, pushen und dem Nutzer 
 ## Offen (Stand 02.10.2026)
 
 Inhalte:
-- Karten und Aufgaben sprachlich glätten: Die Lernschritte und die Oberfläche sind
-  überarbeitet (natürlich formuliert, ohne Gedankenstriche); Karten, Aufgaben und
-  Fallaufgaben sind bisher nur von Gedankenstrichen befreit, nicht Satz für Satz geglättet.
-  Keine Skripte für Ersetzungen (haben beim ersten Durchgang Fehler erzeugt), krit-Stichwörter
-  und Rechnungen nicht anfassen.
-- Fachliche Zweitprüfung: Bisher gab es nur Stichproben. Ein gründlicher Durchgang über alle
-  Rechenaufgaben und Rechtsangaben je Bereich ist nötig, weil die Inhalte ohne
-  Entwurfskennzeichnung live sind.
+- Erledigt am 02.10.2026: Karten, Aufgaben, Fallaufgaben und ältere `seed_*.dart` sind je
+  Datei von Hand geglättet (rund 950 Stellen) und zusammen mit den Lernschritten fachlich
+  zweitgeprüft (alle Rechnungen nachgerechnet, Rechtsangaben teils am Gesetzestext). Weiter
+  gilt: keine Skripte für Ersetzungen, krit-Stichwörter und Rechnungen nicht anfassen.
+- Rechtsstand im Blick behalten: § 38 BDSG (20-Personen-Schwelle für den
+  Datenschutzbeauftragten) soll laut Bundesregierung gestrichen werden; E-Rechnung
+  (Ausstellungspflicht ab 2027/2028, betrifft u. a. `k-pa-27`, `f-a02-logistik-f`);
+  KI-Verordnung nach dem Digital Omnibus (VO (EU) 2026/1744: Art. 4 nur noch „Maßnahmen zur
+  KI-Kompetenz“, Hochrisiko-Pflichten ab 02.12.2027 bzw. 02.08.2028; Zeittafel `n-ir-9`
+  ist darauf ergänzt, Quelle waren Kanzleibeiträge, nicht das Amtsblatt).
+- Festgelegt am 02.10.2026: Die Zehnerregel rechnet überall mit fünf Phasen (Anforderung,
+  Entwurf, Implementierung, Test, Betrieb). Die OEM-Bindung steht als „laut
+  Lizenzbedingungen des Herstellers“. Der Katalog 2025 nennt als Vorgehensmodelle nur
+  Wasserfall und Scrum (per IT-Berufe-Podcast bestätigt).
+- Einheitlich entscheiden (nicht geändert, weil Geschmacksfrage): Pflichtenheft „nach der
+  Vergabe“, Pfadschreibweise „A - C - E“ in Netzplan-Aufgaben, alternative Kriterien, deren
+  Summe über der Aufgabenpunktzahl liegt.
 
 Quiz/Prüfung:
-- Ausgangssituation einer Fallaufgabe ist im Quiz aufgeklappt sehr lang (Unternehmen +
-  Situation).
-- KI-Bewertung von Freitext bewusst nicht (Kosten, Server, online) - nur auf Wunsch des Nutzers.
+- Prüfungslauf: Die Ausgangssituation steht bei Teilaufgabe a) als Anriss mit „Ganz lesen“
+  (`exam_widgets.dart`), Thema und Schwierigkeit sind dort ausgeblendet (`showMeta: false`,
+  wie auf dem echten Bogen). Offen: `CaseContextBox` im normalen Quiz zeigt die Situation
+  weiter in voller Länge.
+- Bits Sprechblase (`MascotSays`) wird unter 360 px Breite oder über 115 % Schrift kompakt.
+  Die Lektionsleiste zeigt den Titel immer ganz (bricht um), auf der Übersicht nur den
+  Schließen-Knopf.
+- `test/ui_shots_test.dart` erzeugt auch Journey, Lektion (alle Schritte) und Prüfungslauf.
+- Blitzrunde (60 Sekunden) wird nicht gebaut (Entscheidung des Nutzers, 02.10.2026);
+  KI-Bewertung von Freitext bewusst nicht (Kosten, Server, online) - nur auf Wunsch des
+  Nutzers.
+- Bewertung (`question_parts.dart`): Kurze Stichwörter bis 4 Zeichen zählen nur als ganzes
+  Wort, mit Endung oder am Ende einer Zusammensetzung („Java“ trifft nicht „JavaScript“),
+  Füllwörter wie „nicht“ zählen nie. Eingabelücken vergleichen ohne Leerzeichen, mit
+  vereinheitlichten Operatoren (≥ wie >=) und ohne äußere eckige Klammern.
 
 Store-Vorbereitung (Nutzer legt die Konten bei Google/Apple selbst an):
 - Android: Release-Signatur einrichten (build.gradle signiert Release noch mit Debug-Key),

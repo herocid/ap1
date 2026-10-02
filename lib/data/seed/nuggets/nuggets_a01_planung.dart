@@ -2084,7 +2084,7 @@ final List<Nugget> nuggetsA01Planung = [
   vergleich(
     'n-al-6',
     'a-lessons',
-    'Methode: Start - Stop - Continue',
+    'Methode: Start, Stop, Continue',
     'Diese einfache Methode übersetzt Erfahrungen direkt in Handlungen.',
     [
       ['Frage', 'Beispiel'],

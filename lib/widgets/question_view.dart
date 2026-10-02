@@ -41,6 +41,7 @@ class QuestionView extends StatefulWidget {
     this.showExplanation = true,
     this.showCaseContext = true,
     this.showPoints = true,
+    this.showMeta = true,
     this.shuffleSeed,
   });
 
@@ -61,6 +62,10 @@ class QuestionView extends StatefulWidget {
   /// Punkte neben der Fragestellung zeigen. Der Prüfungslauf hat sie schon
   /// in seiner Kopfzeile und schaltet das ab.
   final bool showPoints;
+
+  /// Thema und „Format · Schwierigkeit“ über der Aufgabe zeigen. Die echte
+  /// Prüfung nennt beides nicht, der Prüfungslauf schaltet es deshalb ab.
+  final bool showMeta;
 
   /// Zufallswert für die Reihenfolge in der Anzeige, z. B. einer je
   /// Durchgang. Jede Aufgabe mischt damit anders (die Aufgaben-ID geht mit
@@ -113,52 +118,66 @@ class _QuestionViewState extends State<QuestionView> {
       children: [
         // Eine ruhige Überzeile statt vier Chips: Die Frage soll das
         // Auffälligste auf dem Bildschirm sein, nicht ihre Metadaten.
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Icon(topic.icon, size: 15, color: context.scheme.primary),
-                      const SizedBox(width: Gap.s),
-                      Expanded(
-                        child: HyphenText(
-                          topic.title.toUpperCase(),
-                          style: context.text.labelSmall?.copyWith(
-                            color: context.scheme.primary,
-                            letterSpacing: 1.1,
+        if (!widget.showMeta) ...[
+          if (widget.showPoints) ...[
+            Align(
+              alignment: Alignment.centerRight,
+              child: PointsBadge(question.points),
+            ),
+            gap,
+          ],
+        ] else ...[
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          topic.icon,
+                          size: 15,
+                          color: context.scheme.primary,
+                        ),
+                        const SizedBox(width: Gap.s),
+                        Expanded(
+                          child: HyphenText(
+                            topic.title.toUpperCase(),
+                            style: context.text.labelSmall?.copyWith(
+                              color: context.scheme.primary,
+                              letterSpacing: 1.1,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: Gap.xs),
-                  Text(
-                    [
-                      question.kind.label,
-                      switch (question.difficulty) {
-                        1 => 'Grundlagen',
-                        3 => 'Anspruchsvoll',
-                        _ => 'Prüfungsniveau',
-                      },
-                    ].join('  ·  '),
-                    style: context.text.labelSmall?.copyWith(
-                      color: context.c.textMuted,
+                      ],
                     ),
-                  ),
-                ],
+                    const SizedBox(height: Gap.xs),
+                    Text(
+                      [
+                        question.kind.label,
+                        switch (question.difficulty) {
+                          1 => 'Grundlagen',
+                          3 => 'Anspruchsvoll',
+                          _ => 'Prüfungsniveau',
+                        },
+                      ].join('  ·  '),
+                      style: context.text.labelSmall?.copyWith(
+                        color: context.c.textMuted,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            if (widget.showPoints) ...[
-              const SizedBox(width: Gap.s),
-              PointsBadge(question.points),
+              if (widget.showPoints) ...[
+                const SizedBox(width: Gap.s),
+                PointsBadge(question.points),
+              ],
             ],
-          ],
-        ),
-        gap,
+          ),
+          gap,
+        ],
         if (examCase != null) ...[CaseContextBox(examCase: examCase), gap],
         if (question.scenario != null) ...[
           MaterialBox(

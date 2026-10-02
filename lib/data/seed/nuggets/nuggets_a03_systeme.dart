@@ -1719,7 +1719,7 @@ final List<Nugget> nuggetsA03Systeme = [
     schritte: [
       'Paketverlust: 1 von 4 Anfragen blieb unbeantwortet, also 25 % statt 0 %',
       'Antwortzeit: Im LAN sind wenige Millisekunden normal, 480 ms ist ein Ausreißer',
-      'Mittelwert: (3 + 480 + 5) / 3 ≈ 162 ms; gemittelt wird nur über die Antworten',
+      'Mittelwert: (3 + 480 + 5) / 3 ≈ 162,7 ms, ping zeigt nur ganze ms (162); gemittelt wird nur über die Antworten',
       'Folgen: ruckelndes oder einfrierendes Bild, Zeitüberschreitungen, Verbindungsabbrüche',
       'Mögliche Ursachen: defektes Kabel oder Stecker, schwaches WLAN, überlastete Leitung',
     ],

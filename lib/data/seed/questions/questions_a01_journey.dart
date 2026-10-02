@@ -160,7 +160,7 @@ final List<Question> questionsA01Journey = [
     'p-begriff',
     scenario:
         'Die Geschäftsführung der Müller GmbH legt fest, dass jedes Vorhaben ab 20.000 € Budget als Projekt geführt wird. Ein Kollege folgert: „Unter 20.000 € gibt es bei uns also keine Projekte.“',
-    prompt: 'Wie ist die Aussage nach DIN 69901 zu bewerten?',
+    prompt: 'Wie bewertest du die Aussage nach DIN 69901?',
     choices: [
       ja(
         'Falsch. Die Grenze ist eine interne Regel; nach der Norm entscheidet die Einmaligkeit der Bedingungen, nicht das Budget.',
@@ -319,7 +319,7 @@ final List<Question> questionsA01Journey = [
       ),
     ],
     explanation:
-        'Leistung steigt, Zeit und Qualität sind fest. Im magischen Dreieck bleibt nur eine Größe, die nachgeben kann: die Kosten.',
+        'Die Leistung steigt, Zeit und Qualität stehen fest. Im magischen Dreieck bleibt damit nur eine Größe, die nachgeben kann: die Kosten.',
   ),
   zuordnen(
     'a1-pz-4',
@@ -330,32 +330,32 @@ final List<Question> questionsA01Journey = [
     buckets: ['konkurrierend', 'komplementär', 'indifferent'],
     items: [
       zu(
-        'Zwei Monate früher fertig werden - Projektkosten um 10 % senken',
+        'Zwei Monate früher fertig werden und Projektkosten um 10 % senken',
         0,
         'Früher fertig werden braucht meist mehr Personal oder Überstunden, und das erschwert das Sparziel.',
       ),
       zu(
-        'Anwender früh schulen - weniger Supportanfragen nach dem Start',
+        'Anwender früh schulen und weniger Supportanfragen nach dem Start',
         1,
         'Geschulte Anwender fragen seltener nach: Die Ziele fördern sich.',
       ),
       zu(
-        'Farbschema der Startseite festlegen - Serverstandort festlegen',
+        'Farbschema der Startseite festlegen und Serverstandort festlegen',
         2,
         'Die beiden Ziele beeinflussen sich nicht.',
       ),
       zu(
-        'Mehr Funktionen liefern - den Endtermin halten',
+        'Mehr Funktionen liefern und den Endtermin halten',
         0,
         'Mehr Umfang kostet Zeit: Die Ziele behindern sich.',
       ),
       zu(
-        'Gründlich testen - wenige Fehler im Betrieb',
+        'Gründlich testen und wenige Fehler im Betrieb',
         1,
         'Gründliche Tests führen zu weniger Fehlern: Die Ziele fördern sich.',
       ),
       zu(
-        'Logo im Seitenkopf erneuern - Zeitfenster der Datensicherung verkürzen',
+        'Logo im Seitenkopf erneuern und Zeitfenster der Datensicherung verkürzen',
         2,
         'Kein Zusammenhang zwischen beiden Zielen.',
       ),
@@ -384,7 +384,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Es beschreibt eine Maßnahme statt eines Zustands.',
-        'Kein SMART-Kriterium und das Ziel beschreibt tatsächlich einen gewünschten Zustand.',
+        'Das ist kein SMART-Kriterium. Außerdem beschreibt das Ziel tatsächlich einen gewünschten Zustand.',
       ),
     ],
     explanation:
@@ -476,7 +476,7 @@ final List<Question> questionsA01Journey = [
       ],
     ],
     explanation:
-        'Rein: volle Befugnis, das Team wird herausgelöst. Matrix: Die Projektleitung führt fachlich, die Linie disziplinarisch; die Mitarbeitenden haben zwei Vorgesetzte und arbeiten anteilig mit. Das nutzt Ressourcen flexibel, erzeugt aber Prioritätenkonflikte. Stab/Einfluss: keine Weisungsbefugnis, alle bleiben in der Linie.',
+        'In der reinen Projektorganisation hat die Projektleitung die volle Befugnis, das Team wird herausgelöst. In der Matrix führt sie fachlich, die Linie disziplinarisch. Die Mitarbeitenden haben zwei Vorgesetzte und arbeiten anteilig mit. Das nutzt Ressourcen flexibel, erzeugt aber Prioritätenkonflikte. In der Stabs- oder Einflussorganisation hat sie keine Weisungsbefugnis, alle bleiben in der Linie.',
   ),
   einfach(
     'a1-po-3',
@@ -580,7 +580,7 @@ final List<Question> questionsA01Journey = [
       ),
     ],
     explanation:
-        'Rein: klare Macht, hoher Aufwand, Rückkehrproblem. Matrix: flexibel, aber zwei Vorgesetzte. Einfluss: billig, aber ohne Durchsetzungskraft.',
+        'Die reine Projektorganisation bietet klare Befugnisse, kostet aber viel Aufwand und bringt das Rückkehrproblem mit. Die Matrix ist flexibel, dafür gibt es zwei Vorgesetzte. Die Einflussorganisation ist günstig, hat aber keine Durchsetzungskraft.',
   ),
   einfach(
     'a1-po-6',
@@ -682,7 +682,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Detaillierte Code-Reviews durchführen',
-        'Zum Projektstart gibt es noch keinen Code und Reviews sind keine Aufgabe des Kick-offs.',
+        'Zum Projektstart gibt es noch keinen Code, und Reviews sind keine Aufgabe des Kick-offs.',
       ),
     ],
     explanation:
@@ -736,7 +736,7 @@ final List<Question> questionsA01Journey = [
       zu(
         'Alle Arbeitspakete liegen im Zeitplan.',
         0,
-        'Im Plan: Keine Maßnahme nötig.',
+        'Alles im Plan, es ist keine Maßnahme nötig.',
       ),
       zu(
         'Das Budget wird um 20 % überschritten, wenn der vereinbarte Umfang geliefert wird.',
@@ -756,7 +756,7 @@ final List<Question> questionsA01Journey = [
       zu('Die Kosten liegen 1 % unter dem Plan.', 0, 'Im Plan, also grün.'),
     ],
     explanation:
-        'Die Ampel im Statusbericht: grün = im Plan, gelb = Abweichung, die die Projektleitung selbst steuert, rot = Rahmen gefährdet, Entscheidung des Lenkungsausschusses nötig. Rot ist ein Warnsignal, kein automatischer Abbruch.',
+        'Im Statusbericht heißt Grün: alles im Plan. Gelb steht für eine Abweichung, die die Projektleitung selbst steuert. Bei Rot ist der Rahmen gefährdet, und der Lenkungsausschuss muss entscheiden. Rot ist ein Warnsignal, kein automatischer Abbruch.',
   ),
   freitext(
     'a1-pr-7',
@@ -861,7 +861,7 @@ final List<Question> questionsA01Journey = [
       zu('Reinigungsdienst: geringer Einfluss, geringes Interesse', 3),
     ],
     explanation:
-        'Hoch/hoch: eng einbinden. Hoch/gering: zufriedenstellen. Gering/hoch: informieren. Gering/gering: beobachten. Der Betriebsrat ist das klassische Beispiel für „zufriedenstellen“.',
+        'Wer viel Einfluss und großes Interesse hat, wird eng eingebunden. Viel Einfluss bei wenig Interesse heißt zufriedenstellen, wenig Einfluss bei großem Interesse informieren. Ist beides gering, genügt beobachten. Der Betriebsrat ist das klassische Beispiel für „zufriedenstellen“.',
   ),
   reihenfolge(
     'a1-ps-2',
@@ -920,7 +920,7 @@ final List<Question> questionsA01Journey = [
     loesung:
         'Geeignet sind zum Beispiel ein regelmäßiger Newsletter zum Projektstand, ein Demo-Termin, an dem die neue Software vorgeführt wird, und ein früh bekannt gegebener Schulungsplan. Eine feste Ansprechperson (Key-User) in der Buchhaltung und eine Kurzanleitung helfen zusätzlich.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 3 Punkte. Geringer Einfluss, hohes Interesse → informieren: Die Gruppe will und muss Bescheid wissen, entscheidet aber nicht mit.',
+        'Je Nennung 1 Punkt, höchstens 3 Punkte. Bei geringem Einfluss und hohem Interesse gilt „informieren“: Die Gruppe will und muss Bescheid wissen, entscheidet aber nicht mit.',
     punkte: 3,
     difficulty: 1,
   ),
@@ -1057,7 +1057,7 @@ final List<Question> questionsA01Journey = [
       zu('Der Abschlussbericht wird geschrieben', 3),
     ],
     explanation:
-        'Initialisierung: Auftrag. Definition: Ziele, Anforderungen, Machbarkeit. Planung: Struktur, Termine, Kosten. Abschluss: Bericht und Lessons Learned.',
+        'In der Initialisierung entsteht der Auftrag. Die Definition klärt Ziele, Anforderungen und Machbarkeit. Die Planung liefert Struktur, Termine und Kosten, der Abschluss den Bericht und die Lessons Learned.',
   ),
   lueckentext(
     'a1-vp-3',
@@ -1155,7 +1155,7 @@ final List<Question> questionsA01Journey = [
       ),
       nein(
         'Beides ist dasselbe, nur mit anderen Namen.',
-        'Die Blickwinkel sind verschieden: Führung vs. Entwicklung.',
+        'Die Blickwinkel sind verschieden: hier die Führung, dort die Entwicklung.',
       ),
       nein(
         'Agile Projekte haben keinen Anfang und kein Ende.',
@@ -1328,7 +1328,7 @@ final List<Question> questionsA01Journey = [
         ],
       ),
       krit(
-        'Rückmeldung des Kunden kommt spät: Gefahr, am Bedarf vorbeizuentwickeln.',
+        'Die Rückmeldung des Kunden kommt spät, deshalb droht eine Entwicklung am Bedarf vorbei.',
         stichwoerter: ['Rückmeldung', 'Feedback', 'am Bedarf vorbei', 'Kunde'],
       ),
       krit(
@@ -1481,7 +1481,7 @@ final List<Question> questionsA01Journey = [
       ),
     ],
     explanation:
-        'Iterativ = in Wiederholungen verbessern. Inkrementell = in Teilstücken erweitern. Scrum ist beides: Jeder Sprint fügt etwas hinzu und verbessert Vorhandenes. Der Wasserfall ist dagegen sequenziell.',
+        'Iterativ heißt, in Wiederholungen zu verbessern. Inkrementell heißt, in Teilstücken zu erweitern. Scrum ist beides: Jeder Sprint fügt etwas hinzu und verbessert Vorhandenes. Der Wasserfall ist dagegen sequenziell.',
   ),
   zuordnen(
     'a1-va-5',
@@ -1567,7 +1567,7 @@ final List<Question> questionsA01Journey = [
       paar('Reagieren auf Veränderung', 'Befolgen eines Plans'),
     ],
     explanation:
-        'Die vier Werte: Individuen und Interaktionen, funktionierende Software, Zusammenarbeit mit dem Kunden und Reagieren auf Veränderung sind wichtiger als die jeweilige rechte Seite. Die rechte Seite bleibt trotzdem wertvoll.',
+        'Individuen und Interaktionen, funktionierende Software, Zusammenarbeit mit dem Kunden und Reagieren auf Veränderung zählen mehr als ihr jeweiliges Gegenstück auf der rechten Seite. Wertvoll bleibt die rechte Seite trotzdem.',
   ),
   mehrfach(
     'a1-sm-2',
@@ -1602,7 +1602,7 @@ final List<Question> questionsA01Journey = [
     'a1-sm-3',
     's-manifest',
     scenario: 'Ein Kollege sagt: „Agil heißt, wir dokumentieren nichts mehr.“',
-    prompt: 'Wie ist die Aussage einzuordnen?',
+    prompt: 'Wie ordnest du die Aussage ein?',
     choices: [
       ja(
         'Falsch. Dokumentation bleibt wichtig, funktionierende Software ist nur wichtiger.',
@@ -1679,7 +1679,7 @@ final List<Question> questionsA01Journey = [
       zahl(12),
     ],
     explanation:
-        'Das agile Manifest entstand 2001 als Antwort auf schwerfällige, dokumentlastige Vorgehensweisen. 17 Softwareentwickler formulierten vier Werte und zwölf Prinzipien: Werte und Prinzipien, keine konkrete Methode.',
+        'Das agile Manifest entstand 2001 als Antwort auf schwerfällige, dokumentlastige Vorgehensweisen. 17 Softwareentwickler formulierten vier Werte und zwölf Prinzipien. Eine konkrete Methode beschreibt das Manifest nicht.',
   ),
   einfach(
     'a1-sm-7',
@@ -1767,7 +1767,7 @@ final List<Question> questionsA01Journey = [
       wahl('Hierarchien', ['Timeboxen', 'Artefakte']),
     ],
     explanation:
-        'Ein Scrum Team besteht aus einem Product Owner, einem Scrum Master und Developers. Es umfasst typischerweise zehn oder weniger Personen. Kleine Teams kommunizieren besser. Unterteams und Hierarchien gibt es nicht.',
+        'Ein Scrum Team besteht aus einem Product Owner, einem Scrum Master und Developers. Es umfasst typischerweise zehn oder weniger Personen, denn kleine Teams kommunizieren besser. Unterteams und Hierarchien gibt es nicht.',
   ),
   einfach(
     'a1-sr-3',
@@ -1942,7 +1942,7 @@ final List<Question> questionsA01Journey = [
       ],
     ],
     explanation:
-        'Product Backlog: Produktziel, Sprint Backlog: Sprintziel, Increment: Definition of Done. Die Velocity ist eine Messgröße, kein Commitment.',
+        'Zum Product Backlog gehört das Produktziel, zum Sprint Backlog das Sprintziel und zum Increment die Definition of Done. Die Velocity ist eine Messgröße, kein Commitment.',
   ),
   mehrfach(
     'a1-sa-2',
@@ -2027,7 +2027,7 @@ final List<Question> questionsA01Journey = [
       zu(
         'Der Code wurde von einer zweiten Person geprüft.',
         0,
-        'Gilt für jeden Eintrag, also handwerkliche Qualität.',
+        'Gilt für jeden Eintrag und betrifft die handwerkliche Qualität.',
       ),
       zu(
         'Alle automatischen Tests sind grün.',
@@ -2128,7 +2128,7 @@ final List<Question> questionsA01Journey = [
       zu('Das Team überlegt, wie es seine Zusammenarbeit verbessern kann', 3),
     ],
     explanation:
-        'Planning: was und wie. Daily: nächste 24 Stunden. Review: Produkt mit Stakeholdern. Retrospektive: Zusammenarbeit im Team.',
+        'Das Planning klärt, was im Sprint entsteht und wie. Das Daily plant die nächsten 24 Stunden. Im Review geht es um das Produkt und die Stakeholder, in der Retrospektive um die Zusammenarbeit im Team.',
   ),
   rechnen(
     'a1-se-2',
@@ -2431,7 +2431,7 @@ final List<Question> questionsA01Journey = [
       'Puffer und kritischen Pfad ermitteln',
     ],
     explanation:
-        'Erst die Struktur, dann die Zeitrechnung in beide Richtungen, zuletzt die Auswertung.',
+        'Erst kommt die Struktur, dann die Zeitrechnung in beide Richtungen und zuletzt die Auswertung.',
   ),
   zuordnen(
     'a1-ng-4',
@@ -2641,7 +2641,7 @@ final List<Question> questionsA01Journey = [
     answer: 9,
     unit: 'Tage',
     explanation:
-        'Vorwärts: E endet bei 15: Das ist die Projektdauer.\n'
+        'Vorwärts endet E bei 15, das ist die Projektdauer.\n'
         'E: SEZ 15, SAZ 15 - 4 = 11.\n'
         'D: SEZ = SAZ von E = 11, SAZ = 11 - 2 = 9.',
   ),
@@ -2806,7 +2806,7 @@ final List<Question> questionsA01Journey = [
     choices: [
       ja(
         'Die Nachfolger beginnen 2 Tage später, das Projektende bleibt unverändert.',
-        '3 Tage > FP 1 → Nachfolger um 3 - 1 = 2 Tage später; 3 Tage ≤ GP 4 → Projektende sicher.',
+        'Die 3 Tage übersteigen den FP von 1, also starten die Nachfolger 3 - 1 = 2 Tage später. Der GP von 4 reicht dagegen aus, das Projektende bleibt.',
       ),
       nein(
         'Das Projektende verschiebt sich um 3 Tage.',
@@ -2999,7 +2999,7 @@ final List<Question> questionsA01Journey = [
       ),
     ],
     explanation:
-        'Nur Maßnahmen auf dem kritischen Pfad verkürzen das Projekt und nur so lange, bis ein anderer Weg kritisch wird. Danach immer neu rechnen.',
+        'Nur Maßnahmen auf dem kritischen Pfad verkürzen das Projekt, und auch das nur so lange, bis ein anderer Weg kritisch wird. Rechne danach immer neu.',
   ),
   einfach(
     'a1-nk-7',
@@ -3014,10 +3014,13 @@ final List<Question> questionsA01Journey = [
     ]),
     prompt: 'Welcher Vorgang hat Puffer, und wie viel?',
     choices: [
-      ja('B mit 2 Tagen', 'B endet bei 5, D beginnt erst bei 7 - 2 Tage Luft.'),
+      ja(
+        'B mit 2 Tagen',
+        'B endet bei 5, D beginnt erst bei 7. Das sind 2 Tage Luft.',
+      ),
       nein(
         'C mit 4 Tagen',
-        'C endet bei 7 und D beginnt sofort, also C ist kritisch. 4 ist nur seine Dauer.',
+        'C endet bei 7 und D beginnt sofort, C ist also kritisch. Die 4 ist nur seine Dauer.',
       ),
       nein(
         'D mit 1 Tag',

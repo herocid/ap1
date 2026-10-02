@@ -88,11 +88,11 @@ values (
   'marking',
   'In der IT-Abteilung eines Unternehmens stehen sechs Vorhaben an.',
   'Markiere alle Vorhaben, die nach DIN 69901 ein Projekt sind.',
-  'Merksatz: Einmaligkeit der Bedingungen, erkennbar an Zielvorgabe, Begrenzung (zeitlich, finanziell, personell), Abgrenzung gegenüber anderen Vorhaben und eigener Organisation. Größe und Budget sind nicht Teil der Definition; auch ein Zwei-Personen-Vorhaben kann ein Projekt sein.',
+  'Ein Projekt erkennst du an der Einmaligkeit der Bedingungen: Zielvorgabe, Begrenzung (zeitlich, finanziell, personell), Abgrenzung gegenüber anderen Vorhaben und eigene Organisation. Größe und Budget gehören nicht zur Definition, auch ein Zwei-Personen-Vorhaben kann ein Projekt sein.',
   1,
   ARRAY['din69901', 'projektbegriff']::text[],
   null,
-  '{"choices":[{"text":"Einführung eines neuen ERP-Systems bis Jahresende, mit eigenem Team und Budget","is_correct":true,"rationale":"Einmalig, mit Ziel, begrenzt und mit eigener Organisation."},{"text":"Tägliche Datensicherung der Server","is_correct":false,"rationale":"Wiederkehrende Routine: Tagesgeschäft."},{"text":"Umzug des Rechenzentrums in ein neues Gebäude","is_correct":true,"rationale":"Einmaliges Vorhaben mit klarem Anfang und Ende."},{"text":"Monatliche Lohnabrechnung","is_correct":false,"rationale":"Läuft jeden Monat identisch ab."},{"text":"Entwicklung einer Kunden-App für einen Auftraggeber zum Festpreis","is_correct":true,"rationale":"Zielvorgabe, Begrenzung von Zeit und Kosten, Abgrenzung von anderen Vorhaben."},{"text":"Laufender Betrieb des Service Desks","is_correct":false,"rationale":"Daueraufgabe der Linie ohne definiertes Ende."}]}'::jsonb,
+  '{"choices":[{"text":"Einführung eines neuen ERP-Systems bis Jahresende, mit eigenem Team und Budget","is_correct":true,"rationale":"Einmalig, mit Ziel, begrenzt und mit eigener Organisation."},{"text":"Tägliche Datensicherung der Server","is_correct":false,"rationale":"Wiederkehrende Routine, also Tagesgeschäft."},{"text":"Umzug des Rechenzentrums in ein neues Gebäude","is_correct":true,"rationale":"Einmaliges Vorhaben mit klarem Anfang und Ende."},{"text":"Monatliche Lohnabrechnung","is_correct":false,"rationale":"Läuft jeden Monat identisch ab."},{"text":"Entwicklung einer Kunden-App für einen Auftraggeber zum Festpreis","is_correct":true,"rationale":"Zielvorgabe, Begrenzung von Zeit und Kosten, Abgrenzung von anderen Vorhaben."},{"text":"Laufender Betrieb des Service Desks","is_correct":false,"rationale":"Daueraufgabe der Linie ohne definiertes Ende."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -121,7 +121,7 @@ values (
   2,
   ARRAY['aufbauorganisation']::text[],
   null,
-  '{"buckets":["Reine Projektorganisation","Matrix-Organisation","Stabs-/Einflussorganisation"],"match_items":[{"text":"Mitarbeitende werden vollständig aus der Linie herausgelöst.","bucket":0,"rationale":"Genau das ist das Kennzeichen der reinen (autonomen) Projektorganisation."},{"text":"Die Projektleitung hat volle fachliche und disziplinarische Weisungsbefugnis.","bucket":0,"rationale":"Nur hier ist die Weisungsbefugnis ungeteilt."},{"text":"Weisungsbefugnis ist zwischen Linien- und Projektleitung geteilt.","bucket":1,"rationale":"Der typische Kompromiss und die typische Konfliktquelle der Matrix."},{"text":"Hohes Konfliktpotenzial durch zwei Vorgesetzte pro Person.","bucket":1,"rationale":"Das klassische Matrix-Problem: zwei Chefs, widersprüchliche Prioritäten."},{"text":"Die Projektleitung koordiniert nur und kann keine Anweisungen geben.","bucket":2,"rationale":"Die Stabsstelle berichtet und koordiniert, entscheidet aber nicht."},{"text":"Geringster organisatorischer Aufwand, dafür schwache Durchsetzungskraft.","bucket":2,"rationale":"Vorteil und Nachteil der Einflussorganisation in einem Satz."}]}'::jsonb,
+  '{"buckets":["Reine Projektorganisation","Matrix-Organisation","Stabs-/Einflussorganisation"],"match_items":[{"text":"Mitarbeitende werden vollständig aus der Linie herausgelöst.","bucket":0,"rationale":"Genau das ist das Kennzeichen der reinen (autonomen) Projektorganisation."},{"text":"Die Projektleitung hat volle fachliche und disziplinarische Weisungsbefugnis.","bucket":0,"rationale":"Nur hier ist die Weisungsbefugnis ungeteilt."},{"text":"Die Weisungsbefugnis ist zwischen Linien- und Projektleitung geteilt.","bucket":1,"rationale":"Der typische Kompromiss und die typische Konfliktquelle der Matrix."},{"text":"Hohes Konfliktpotenzial durch zwei Vorgesetzte pro Person.","bucket":1,"rationale":"Das klassische Matrix-Problem: zwei Chefs, widersprüchliche Prioritäten."},{"text":"Die Projektleitung koordiniert nur und kann keine Anweisungen geben.","bucket":2,"rationale":"Die Stabsstelle berichtet und koordiniert, entscheidet aber nicht."},{"text":"Geringster organisatorischer Aufwand, dafür schwache Durchsetzungskraft.","bucket":2,"rationale":"Vorteil und Nachteil der Einflussorganisation in einem Satz."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -209,11 +209,11 @@ values (
   'single',
   'Zwei Wochen vor dem Releasetermin fällt auf, dass ein Modul mehr Aufwand braucht als geplant. Der Termin ist vertraglich fixiert, zusätzliches Budget gibt es nicht.',
   'Welche Konsequenz ergibt sich zwangsläufig aus dem magischen Dreieck?',
-  'Magisches Dreieck: Zeit, Kosten, Leistung/Qualität. Sind zwei Größen fixiert, ist die dritte die abhängige Variable. In Prüfungsaufgaben steht die Lösung immer in der Aufgabenstellung: schau, welche zwei Ecken als "fest" beschrieben sind.',
+  'Magisches Dreieck: Zeit, Kosten, Leistung/Qualität. Sind zwei Größen fixiert, ist die dritte die abhängige Variable. In Prüfungsaufgaben steht die Lösung immer in der Aufgabenstellung: Schau, welche zwei Ecken als "fest" beschrieben sind.',
   3,
   ARRAY['magisches_dreieck']::text[],
   null,
-  '{"choices":[{"text":"Der Leistungsumfang muss reduziert werden.","is_correct":true,"rationale":"Richtig. Zeit und Kosten sind fixiert. Im Dreieck bleibt nur die dritte Größe, der Umfang (Qualität/Leistung), als Stellhebel."},{"text":"Die Qualitätssicherung kann entfallen, ohne den Umfang zu ändern.","is_correct":false,"rationale":"Das ist keine neutrale Option: QS zu streichen ist selbst eine Reduzierung der Qualität, also ebenfalls eine Änderung der dritten Größe, nur eine besonders teure."},{"text":"Mehr Personal löst das Problem ohne Nebenwirkung.","is_correct":false,"rationale":"Erstens kostet mehr Personal Budget (das es nicht gibt), zweitens gilt Brooks Law: zusätzliche Leute in einem späten Projekt verzögern es zunächst weiter."},{"text":"Das Projekt muss abgebrochen werden.","is_correct":false,"rationale":"Ein Abbruch ist eine mögliche Managemententscheidung, aber nicht die zwangsläufige Folge des Dreiecks. Gefragt war die logische Konsequenz."}]}'::jsonb,
+  '{"choices":[{"text":"Der Leistungsumfang muss reduziert werden.","is_correct":true,"rationale":"Richtig. Zeit und Kosten sind fixiert. Im Dreieck bleibt nur die dritte Größe, der Umfang (Qualität/Leistung), als Stellhebel."},{"text":"Die Qualitätssicherung kann entfallen, ohne den Umfang zu ändern.","is_correct":false,"rationale":"Das ist keine neutrale Option: QS zu streichen ist selbst eine Reduzierung der Qualität, also ebenfalls eine Änderung der dritten Größe, nur eine besonders teure."},{"text":"Mehr Personal löst das Problem ohne Nebenwirkung.","is_correct":false,"rationale":"Erstens kostet mehr Personal Budget (das es nicht gibt), zweitens gilt das Brookssche Gesetz: Zusätzliche Leute in einem späten Projekt verzögern es zunächst weiter."},{"text":"Das Projekt muss abgebrochen werden.","is_correct":false,"rationale":"Ein Abbruch ist eine mögliche Managemententscheidung, aber nicht die zwangsläufige Folge des Dreiecks. Gefragt war die logische Konsequenz."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -238,7 +238,7 @@ values (
   'ordering',
   null,
   'Bringe die Phasen des Wasserfallmodells in die richtige Reihenfolge.',
-  'Das Wasserfallmodell läuft streng sequenziell: jede Phase endet mit einem freigegebenen Dokument, erst dann startet die nächste. Das ist zugleich sein größter Nachteil: Fehler aus der Analyse fallen erst im Test auf, und dann ist die Korrektur am teuersten.',
+  'Das Wasserfallmodell läuft streng sequenziell: Jede Phase endet mit einem freigegebenen Dokument, erst dann startet die nächste. Das ist zugleich sein größter Nachteil: Fehler aus der Analyse fallen erst im Test auf, und dann ist die Korrektur am teuersten.',
   1,
   ARRAY['wasserfall']::text[],
   null,
@@ -334,7 +334,7 @@ values (
   2,
   ARRAY['agil_vs_klassisch']::text[],
   null,
-  '{"choices":[{"text":"Anforderungen können zwischen den Iterationen angepasst werden.","is_correct":true,"rationale":"Genau der Fall aus dem Szenario: unklare, veränderliche Anforderungen sind das Kernargument für agil."},{"text":"Der Kunde sieht nach jeder Iteration lauffähige Software.","is_correct":true,"rationale":"Früher Feedback-Zyklus. Fehlannahmen fallen nach Wochen auf, nicht nach Monaten."},{"text":"Das Projektbudget lässt sich von Anfang an exakt festschreiben.","is_correct":false,"rationale":"Falsch. Das ist eine Stärke des klassischen Vorgehens. Agil arbeitet eher mit festem Budget und variablem Umfang."},{"text":"Der Dokumentationsaufwand entfällt vollständig.","is_correct":false,"rationale":"Falsch. Das agile Manifest sagt \"funktionierende Software MEHR ALS umfassende Dokumentation\", nicht \"statt\". Dokumentation wird reduziert, nicht abgeschafft."},{"text":"Das Risiko einer kompletten Fehlentwicklung sinkt.","is_correct":true,"rationale":"Durch kurze Zyklen und regelmäßige Abnahme kann man maximal eine Iteration in die falsche Richtung laufen."},{"text":"Ein vollständiges Pflichtenheft ist zu Projektbeginn erforderlich.","is_correct":false,"rationale":"Falsch, das ist klassisches Vorgehen. Agil startet mit einem priorisierten Backlog, das sich weiterentwickelt."}]}'::jsonb,
+  '{"choices":[{"text":"Anforderungen können zwischen den Iterationen angepasst werden.","is_correct":true,"rationale":"Genau der Fall aus dem Szenario: Unklare, veränderliche Anforderungen sind das Kernargument für agil."},{"text":"Der Kunde sieht nach jeder Iteration lauffähige Software.","is_correct":true,"rationale":"Frühes Feedback: Fehlannahmen fallen nach Wochen auf, nicht erst nach Monaten."},{"text":"Der Preis für den gesamten Funktionsumfang lässt sich von Anfang an exakt festschreiben.","is_correct":false,"rationale":"Falsch. Ein Festpreis für einen festen Umfang ist eine Stärke des klassischen Vorgehens. Agil arbeitet eher mit festem Budget und variablem Umfang."},{"text":"Der Dokumentationsaufwand entfällt vollständig.","is_correct":false,"rationale":"Falsch. Das agile Manifest sagt \"funktionierende Software MEHR ALS umfassende Dokumentation\", nicht \"statt\". Dokumentation wird reduziert, nicht abgeschafft."},{"text":"Das Risiko einer kompletten Fehlentwicklung sinkt.","is_correct":true,"rationale":"Durch kurze Zyklen und regelmäßige Abnahme kann man maximal eine Iteration in die falsche Richtung laufen."},{"text":"Ein vollständiges Pflichtenheft ist zu Projektbeginn erforderlich.","is_correct":false,"rationale":"Falsch, das ist klassisches Vorgehen. Agil startet mit einem priorisierten Backlog, das sich weiterentwickelt."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -446,7 +446,7 @@ values (
   'table',
   'Ein Scrum-Team arbeitet in vierwöchigen Sprints.',
   'Gib für jedes Event die Timebox an.',
-  'Timeboxen bei einem Monatssprint (kürzere Sprints -> anteilig kürzer):
+  'Timeboxen bei einem Monatssprint (bei kürzeren Sprints meist kürzer):
 - Sprint Planning: max. 8 Stunden
 - Daily Scrum: 15 Minuten (immer)
 - Sprint Review: max. 4 Stunden
@@ -512,7 +512,7 @@ values (
   'Rechenweg:
 1. Durchschnittliche Velocity = (28 + 32 + 30) / 3 = 30 Story Points/Sprint
 2. 270 SP / 30 SP je Sprint = 9 Sprints
-Wäre das Ergebnis krumm (z. B. 9,3), wird aufgerundet: ein halber Sprint existiert in der Planung nicht. Die Velocity wird immer aus abgeschlossenen (Definition of Done erfüllten) Items gebildet, nicht aus angefangenen.',
+Wäre das Ergebnis krumm (z. B. 9,3), wird aufgerundet, denn einen halben Sprint gibt es in der Planung nicht. Die Velocity wird immer aus abgeschlossenen Items gebildet (Definition of Done erfüllt), nicht aus angefangenen.',
   2,
   ARRAY['scrum', 'velocity']::text[],
   null,
@@ -598,7 +598,7 @@ values (
   'n-vorwaerts',
   'netzplan',
   'Für die Einführung eines Ticketsystems wurden folgende Vorgänge geplant. Alle Zeiten in Arbeitstagen.',
-  'Führe die Vorwärtsrechnung durch: trage FAZ und FEZ für jeden Vorgang ein.',
+  'Führe die Vorwärtsrechnung durch und trage FAZ und FEZ für jeden Vorgang ein.',
   'Vorwärtsrechnung, Regel: FAZ = größter FEZ aller Vorgänger (Startvorgang: 0), FEZ = FAZ + Dauer.
 
 A: FAZ 0, FEZ 0+4 = 4
@@ -607,7 +607,7 @@ C: FAZ 4 (nach A), FEZ 4+6 = 10
 D: FAZ 7 (nach B), FEZ 7+5 = 12
 E: FAZ = max(FEZ C = 10, FEZ D = 12) = 12, FEZ 12+2 = 14
 
-Der häufigste Fehler: bei E den kleineren Wert nehmen. Bei mehreren Vorgängern gilt immer das MAXIMUM: der Vorgang kann erst starten, wenn der letzte Vorgänger fertig ist. Projektdauer: 14 Arbeitstage.',
+Der häufigste Fehler ist, bei E den kleineren Wert zu nehmen. Bei mehreren Vorgängern gilt immer das MAXIMUM, denn der Vorgang kann erst starten, wenn der letzte Vorgänger fertig ist. Projektdauer: 14 Arbeitstage.',
   1,
   ARRAY['vorwärtsrechnung']::text[],
   null,
@@ -647,7 +647,7 @@ Puffer:
 GP = SAZ - FAZ  ->  A 0, B 0, C 1, D 0, E 1, F 0
 FP = min(FAZ der Nachfolger) - FEZ  ->  A 0, B 0, C 0, D 0, E 1, F 0
 
-Der Lerneffekt steckt in Vorgang C: GP = 1, aber FP = 0. Man kann C zwar um einen Tag verschieben, ohne das Projektende zu gefährden; aber der Nachfolger E startet dann später. Freier Puffer heißt: verschiebbar OHNE den frühesten Start des Nachfolgers anzutasten. Kritischer Pfad: A - B - D - F.',
+Der Lerneffekt steckt in Vorgang C: GP = 1, aber FP = 0. Man kann C zwar um einen Tag verschieben, ohne das Projektende zu gefährden, aber der Nachfolger E startet dann später. Freier Puffer heißt: verschiebbar, OHNE den frühesten Start des Nachfolgers anzutasten. Kritischer Pfad: A -> B -> D -> F.',
   2,
   ARRAY['vollständig', 'puffer']::text[],
   null,
@@ -718,8 +718,8 @@ values (
   'single',
   null,
   'Was sagt der freie Puffer (FP) eines Vorgangs aus?',
-  'GP = SAZ - FAZ = SEZ - FEZ: Spielraum bis das PROJEKTENDE kippt.
-FP = min(FAZ der Nachfolger) - FEZ: Spielraum bis der NACHFOLGER betroffen ist.
+  'GP = SAZ - FAZ = SEZ - FEZ: Spielraum, bis das PROJEKTENDE kippt.
+FP = min(FAZ der Nachfolger) - FEZ: Spielraum, bis der NACHFOLGER betroffen ist.
 Es gilt immer FP <= GP. Auf dem kritischen Pfad sind beide 0. Ein Vorgang mit GP > 0 und FP = 0 hat zwar Luft bis zum Projektende, nimmt sie aber direkt dem Nachfolger weg.',
   2,
   ARRAY['puffer', 'definition']::text[],
@@ -749,11 +749,11 @@ values (
   'multiple',
   null,
   'Welche Aussagen über den kritischen Pfad sind richtig?',
-  'Der kritische Pfad ist der längste Weg vom Start- zum Endvorgang und damit die Kette ohne Puffer. Praktische Konsequenz fürs Projekt: Ressourcen und Aufmerksamkeit gehören zuerst dorthin. Bei Verkürzungsaufgaben immer nach jedem Schritt neu rechnen: der kritische Pfad kann wandern.',
+  'Der kritische Pfad ist der längste Weg vom Start- zum Endvorgang und damit die Kette ohne Puffer. Praktische Konsequenz fürs Projekt: Ressourcen und Aufmerksamkeit gehören zuerst dorthin. Bei Verkürzungsaufgaben rechnest du nach jedem Schritt neu, denn der kritische Pfad kann wandern.',
   2,
   ARRAY['kritischer_pfad']::text[],
   null,
-  '{"choices":[{"text":"Alle Vorgänge auf ihm haben einen Gesamtpuffer von 0.","is_correct":true,"rationale":"Das ist die Definition. Genau daran erkennt man ihn in der Rechnung."},{"text":"Er ist der längste Weg durch den Netzplan.","is_correct":true,"rationale":"Der längste Weg bestimmt die Projektdauer. Deshalb hat er keinen Puffer."},{"text":"Verzögert sich ein Vorgang auf ihm um 2 Tage, verzögert sich das Projektende um 2 Tage.","is_correct":true,"rationale":"Ohne Puffer schlägt jede Verzögerung eins zu eins aufs Projektende durch."},{"text":"Ein Netzplan hat immer genau einen kritischen Pfad.","is_correct":false,"rationale":"Falsch. Es kann mehrere gleich lange kritische Pfade geben. Dann ist das Projekt besonders anfällig, weil es mehrere pufferlose Ketten gibt."},{"text":"Er enthält immer die Vorgänge mit der längsten Einzeldauer.","is_correct":false,"rationale":"Falsch. Ein einzelner langer Vorgang kann parallel liegen und viel Puffer haben. Entscheidend ist die Kette, nicht die Einzeldauer."},{"text":"Eine Verkürzung eines Vorgangs auf dem kritischen Pfad verkürzt immer das Projekt um denselben Betrag.","is_correct":false,"rationale":"Falsch, und das ist der beliebteste Stolperstein: verkürzt man genug, wird ein anderer Weg zum kritischen Pfad und die Verkürzung verpufft ab diesem Punkt."}]}'::jsonb,
+  '{"choices":[{"text":"Alle Vorgänge auf ihm haben einen Gesamtpuffer von 0.","is_correct":true,"rationale":"Das ist die Definition. Genau daran erkennt man ihn in der Rechnung."},{"text":"Er ist der längste Weg durch den Netzplan.","is_correct":true,"rationale":"Der längste Weg bestimmt die Projektdauer. Deshalb hat er keinen Puffer."},{"text":"Verzögert sich ein Vorgang auf ihm um 2 Tage, verzögert sich das Projektende um 2 Tage.","is_correct":true,"rationale":"Ohne Puffer schlägt jede Verzögerung eins zu eins aufs Projektende durch."},{"text":"Ein Netzplan hat immer genau einen kritischen Pfad.","is_correct":false,"rationale":"Falsch. Es kann mehrere gleich lange kritische Pfade geben. Dann ist das Projekt besonders anfällig, weil es mehrere pufferlose Ketten gibt."},{"text":"Er enthält immer die Vorgänge mit der längsten Einzeldauer.","is_correct":false,"rationale":"Falsch. Ein einzelner langer Vorgang kann parallel liegen und viel Puffer haben. Entscheidend ist die Kette, nicht die Einzeldauer."},{"text":"Eine Verkürzung eines Vorgangs auf dem kritischen Pfad verkürzt immer das Projekt um denselben Betrag.","is_correct":false,"rationale":"Falsch, und das ist der beliebteste Stolperstein: Verkürzt man genug, wird ein anderer Weg zum kritischen Pfad, und die Verkürzung verpufft ab diesem Punkt."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -785,8 +785,8 @@ Rückwärts: G 13/16, F 9/13, E 11/13, D 6/9, C 3/9, B 2/6, A 0/2.
 GP = SAZ - FAZ: A 0, B 0, C 1, D 0, E 5, F 0, G 0
 FP = min(FAZ Nachfolger) - FEZ: A 0, B 0, C 1, D 0, E 5, F 0, G 0
 
-Kritischer Pfad: A - B - D - F - G (16 Tage).
-Vorgang E hat mit 5 Tagen den größten Spielraum: hier kann man ohne Risiko Personal abziehen, wenn es auf dem kritischen Pfad brennt. Achtung bei C: die Lieferung dauert zwar am längsten (6 Tage), liegt aber trotzdem nicht auf dem kritischen Pfad.',
+Kritischer Pfad: A -> B -> D -> F -> G (16 Tage).
+Vorgang E hat mit 5 Tagen den größten Spielraum: Hier kann man ohne Risiko Personal abziehen, wenn es auf dem kritischen Pfad brennt. Achtung bei C: Die Lieferung dauert zwar am längsten (6 Tage), liegt aber trotzdem nicht auf dem kritischen Pfad.',
   3,
   ARRAY['puffer', 'kritischer_pfad']::text[],
   null,
@@ -813,17 +813,18 @@ values (
   'netzplan',
   'n-vorwaerts',
   'numeric',
-  'A: 5 Tage, kein Vorgänger
+  'Ein Projekt besteht aus fünf Vorgängen:
+A: 5 Tage, kein Vorgänger
 B: 3 Tage, kein Vorgänger
 C: 4 Tage, Vorgänger A und B
 D: 6 Tage, Vorgänger A
 E: 2 Tage, Vorgänger C und D',
   'Wie lang dauert das Gesamtprojekt?',
   'Alle Wege durchrechnen und den längsten nehmen:
-A - C - E = 5 + 4 + 2 = 11
-B - C - E = 3 + 4 + 2 = 9
-A - D - E = 5 + 6 + 2 = 13  <- längster Weg
-Projektdauer = 13 Tage, kritischer Pfad A - D - E.
+A -> C -> E: 5 + 4 + 2 = 11
+B -> C -> E: 3 + 4 + 2 = 9
+A -> D -> E: 5 + 6 + 2 = 13 (längster Weg)
+Projektdauer = 13 Tage, kritischer Pfad A -> D -> E.
 Kontrolle über die Vorwärtsrechnung: C startet bei max(5, 3) = 5, endet bei 9. D endet bei 11. E startet bei max(9, 11) = 11 und endet bei 13.',
   1,
   ARRAY['projektdauer']::text[],
@@ -853,7 +854,7 @@ values (
   'single',
   null,
   'Welchen Vorteil hat ein Netzplan gegenüber einem einfachen Balkenplan (Gantt-Diagramm)?',
-  'Arbeitsteilung in der Praxis: mit dem Netzplan rechnen, mit dem Balkenplan kommunizieren. Moderne Tools erzeugen den Gantt direkt aus den Netzplandaten und zeichnen den kritischen Pfad rot ein; in der Prüfung muss man beides aber getrennt beherrschen.',
+  'Arbeitsteilung in der Praxis: Mit dem Netzplan rechnen, mit dem Balkenplan kommunizieren. Moderne Tools erzeugen den Gantt direkt aus den Netzplandaten und zeichnen den kritischen Pfad rot ein. In der Prüfung musst du aber beides getrennt beherrschen.',
   2,
   ARRAY['gantt']::text[],
   null,
@@ -882,7 +883,7 @@ values (
   'single',
   null,
   'Was kennzeichnet einen Meilenstein in der Projektplanung?',
-  'Meilensteine sind Entscheidungspunkte: Ergebnis da oder nicht, weiter oder nicht. Gute Meilensteine sind binär prüfbar formuliert ("Pflichtenheft vom Kunden unterzeichnet"), nicht schwammig ("Konzept weitgehend fertig"). In der Meilensteintrendanalyse (MTA) trägt man über die Zeit auf, wie sich die geplanten Meilensteintermine verschieben: eine steigende Linie bedeutet Verzug.',
+  'Meilensteine sind Entscheidungspunkte: Ergebnis da oder nicht, weiter oder nicht. Gute Meilensteine sind binär prüfbar formuliert ("Pflichtenheft vom Kunden unterzeichnet"), nicht schwammig ("Konzept weitgehend fertig"). In der Meilensteintrendanalyse (MTA) trägt man über die Zeit auf, wie sich die geplanten Meilensteintermine verschieben: Eine steigende Linie bedeutet Verzug.',
   1,
   ARRAY['meilenstein']::text[],
   null,
@@ -915,7 +916,7 @@ values (
   2,
   ARRAY['mta']::text[],
   null,
-  '{"choices":[{"text":"Der Meilenstein verschiebt sich immer weiter nach hinten.","is_correct":true,"rationale":"Richtig. Steigende Linie = der prognostizierte Termin wird bei jedem Berichtszeitpunkt später."},{"text":"Es besteht Handlungsbedarf, z. B. Ressourcen umsteuern oder Umfang kürzen.","is_correct":true,"rationale":"Die MTA ist ein Frühwarninstrument. Der Zweck ist genau dieses Gegensteuern."},{"text":"Der Meilenstein wird früher als geplant erreicht.","is_correct":false,"rationale":"Falsch, das wäre eine FALLENDE Linie. Steigend = später."},{"text":"Das Projekt liegt im Plan.","is_correct":false,"rationale":"Falsch. Im Plan bedeutet eine waagerechte Linie."},{"text":"Die Ursache der Verzögerung lässt sich direkt aus dem Diagramm ablesen.","is_correct":false,"rationale":"Falsch. Die MTA zeigt, DASS sich etwas verschiebt, nicht WARUM. Die Ursachenanalyse ist eine separate Aufgabe."}]}'::jsonb,
+  '{"choices":[{"text":"Der Meilenstein verschiebt sich immer weiter nach hinten.","is_correct":true,"rationale":"Richtig. Steigende Linie = der prognostizierte Termin wird bei jedem Berichtszeitpunkt später."},{"text":"Es besteht Handlungsbedarf, z. B. Ressourcen umsteuern oder Umfang kürzen.","is_correct":true,"rationale":"Die MTA ist ein Frühwarninstrument. Der Zweck ist genau dieses Gegensteuern."},{"text":"Der Meilenstein wird früher als geplant erreicht.","is_correct":false,"rationale":"Falsch, das wäre eine FALLENDE Linie. Steigend = später."},{"text":"Das Projekt liegt im Plan.","is_correct":false,"rationale":"Falsch. Im Plan läge das Projekt bei einer waagerechten Linie."},{"text":"Die Ursache der Verzögerung lässt sich direkt aus dem Diagramm ablesen.","is_correct":false,"rationale":"Falsch. Die MTA zeigt, DASS sich etwas verschiebt, nicht WARUM. Die Ursachenanalyse ist eine separate Aufgabe."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -944,7 +945,7 @@ values (
 1. Tatsächliche Kapazität pro Tag = 4 Entwickler x 0,75 = 3 Personentage/Tag
 2. Dauer = 120 Personentage / 3 Personentage pro Tag = 40 Arbeitstage
 
-Typischer Fehler: 120 / 4 = 30 Tage. Die Verfügbarkeit wird vergessen. In Prüfungsaufgaben ist der Verfügbarkeitsgrad fast immer der eigentliche Prüfpunkt. Merke außerdem: Personentage sind Aufwand, Arbeitstage sind Dauer. Die beiden Einheiten zu verwechseln kostet in der Klausur sofort Punkte.',
+Typischer Fehler: 120 / 4 = 30 Tage. Die Verfügbarkeit wird vergessen. In Prüfungsaufgaben ist der Verfügbarkeitsgrad fast immer der eigentliche Prüfpunkt. Merke außerdem: Personentage sind Aufwand, Arbeitstage sind Dauer. Die beiden Einheiten zu verwechseln kostet in der Prüfung sofort Punkte.',
   3,
   ARRAY['ressourcenplanung']::text[],
   null,
@@ -1031,7 +1032,7 @@ values (
   'marking',
   'Der Entwurf eines Lastenhefts für ein Ticketsystem enthält die folgenden Anforderungen.',
   'Markiere alle Anforderungen, die NICHT gut formuliert sind.',
-  'Merkhilfe für Anforderungsqualität: eindeutig, vollständig, widerspruchsfrei, prüfbar, notwendig, verständlich, priorisiert. Eine vorweggenommene Lösung schließt bessere Alternativen aus, und Vagheit ist keine Flexibilität; die erreicht man über Prioritäten. Priorisierung erfolgt oft nach MoSCoW: Must have, Should have, Could have, Won’t have (this time).',
+  'Merkhilfe für Anforderungsqualität: eindeutig, vollständig, widerspruchsfrei, prüfbar, notwendig, verständlich, priorisiert. Eine vorweggenommene Lösung schließt bessere Alternativen aus. Vage Formulierungen schaffen auch keine Flexibilität, die erreichst du über Prioritäten. Priorisiert wird oft nach MoSCoW: Must have, Should have, Could have, Won’t have (this time).',
   2,
   ARRAY['anforderungsqualität']::text[],
   null,
@@ -1064,7 +1065,7 @@ values (
   2,
   ARRAY['abnahme']::text[],
   null,
-  '{"choices":[{"text":"Abnahme unter Vorbehalt: Mängel werden protokolliert und mit Frist zur Beseitigung vereinbart.","is_correct":true,"rationale":"Richtig. Die Abnahme unter Vorbehalt hält die Mängelrechte aufrecht und blockiert trotzdem nicht den Produktivstart."},{"text":"Vollständige Verweigerung der Abnahme bis alle Mängel beseitigt sind.","is_correct":false,"rationale":"Bei unwesentlichen Mängeln ist die Verweigerung in der Regel unzulässig (vgl. Werkvertragsrecht) und schadet dem Kunden selbst, weil der Nutzen ausbleibt."},{"text":"Vorbehaltlose Abnahme, die Mängel werden formlos per E-Mail gemeldet.","is_correct":false,"rationale":"Gefährlich: Mit der vorbehaltlosen Abnahme verliert der Kunde bei bekannten Mängeln Nacherfüllung, Minderung und Rücktritt. Nur Schadensersatz bleibt."},{"text":"Die Abnahme entfällt, weil die Software bereits läuft.","is_correct":false,"rationale":"Die Abnahme ist ein formaler Rechtsakt mit erheblichen Folgen (Gefahrübergang, Fälligkeit der Vergütung, Beginn der Gewährleistung). Sie entfällt nicht durch Nutzung. Im Gegenteil kann Nutzung als konkludente Abnahme gelten."}]}'::jsonb,
+  '{"choices":[{"text":"Abnahme unter Vorbehalt: Mängel werden protokolliert und mit Frist zur Beseitigung vereinbart.","is_correct":true,"rationale":"Richtig. Die Abnahme unter Vorbehalt hält die Mängelrechte aufrecht und blockiert trotzdem nicht den Produktivstart."},{"text":"Vollständige Verweigerung der Abnahme, bis alle Mängel beseitigt sind.","is_correct":false,"rationale":"Bei unwesentlichen Mängeln ist die Verweigerung in der Regel unzulässig (vgl. Werkvertragsrecht) und schadet dem Kunden selbst, weil der Nutzen ausbleibt."},{"text":"Vorbehaltlose Abnahme, die Mängel werden formlos per E-Mail gemeldet.","is_correct":false,"rationale":"Gefährlich: Mit der vorbehaltlosen Abnahme verliert der Kunde bei bekannten Mängeln Nacherfüllung, Minderung und Rücktritt. Nur Schadensersatz bleibt."},{"text":"Die Abnahme entfällt, weil die Software bereits läuft.","is_correct":false,"rationale":"Die Abnahme ist ein formaler Rechtsakt mit erheblichen Folgen (Gefahrübergang, Fälligkeit der Vergütung, Beginn der Gewährleistung). Sie entfällt nicht durch Nutzung. Im Gegenteil: Die Nutzung kann sogar als konkludente Abnahme gelten."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1122,7 +1123,7 @@ values (
   3,
   ARRAY['scope_creep']::text[],
   null,
-  '{"choices":[{"text":"Jede Änderung über einen definierten Change-Request-Prozess mit Aufwands- und Terminbewertung führen.","is_correct":true,"rationale":"Richtig. Änderungen sind nicht verboten. Sie müssen nur bewertet und entschieden werden, statt still im Hintergrund zu passieren."},{"text":"Die Zusatzwünsche ablehnen, weil das Pflichtenheft unterschrieben ist.","is_correct":false,"rationale":"Pauschale Ablehnung ist praxisfern und beschädigt die Zusammenarbeit. Anforderungen ändern sich. Das Problem ist der unkontrollierte Weg, nicht die Änderung selbst."},{"text":"Die Wünsche kurzfristig mit umsetzen, solange sie klein sind.","is_correct":false,"rationale":"Genau so entsteht Scope Creep: viele kleine, nie bewertete Erweiterungen sprengen am Ende Termin und Budget, und niemand kann hinterher sagen, warum."},{"text":"Die Entscheidung dem Entwickler überlassen, der den Aufwand am besten einschätzen kann.","is_correct":false,"rationale":"Der Entwickler kann den Aufwand schätzen, aber nicht über Umfang, Budget und Termin entscheiden. Das ist eine Projektleitungs- bzw. Auftraggeberentscheidung."}]}'::jsonb,
+  '{"choices":[{"text":"Jede Änderung über einen definierten Change-Request-Prozess mit Aufwands- und Terminbewertung führen.","is_correct":true,"rationale":"Richtig. Änderungen sind nicht verboten. Sie müssen nur bewertet und entschieden werden, statt still im Hintergrund zu passieren."},{"text":"Die Zusatzwünsche ablehnen, weil das Pflichtenheft unterschrieben ist.","is_correct":false,"rationale":"Pauschale Ablehnung ist praxisfern und beschädigt die Zusammenarbeit. Anforderungen ändern sich. Das Problem ist der unkontrollierte Weg, nicht die Änderung selbst."},{"text":"Die Wünsche kurzfristig mit umsetzen, solange sie klein sind.","is_correct":false,"rationale":"Genau so entsteht Scope Creep: Viele kleine, nie bewertete Erweiterungen sprengen am Ende Termin und Budget, und niemand kann hinterher sagen, warum."},{"text":"Die Entscheidung dem Entwickler überlassen, der den Aufwand am besten einschätzen kann.","is_correct":false,"rationale":"Der Entwickler kann den Aufwand schätzen, aber nicht über Umfang, Budget und Termin entscheiden. Das ist eine Projektleitungs- bzw. Auftraggeberentscheidung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1160,7 +1161,7 @@ Support:         0,20 x 5 = 1,00
 Preis:           0,15 x 2 = 0,30
 Gesamtnutzwert = 1,60 + 0,75 + 1,00 + 0,30 = 3,65
 
-Kontrolle: Die Gewichtungen müssen in Summe 100 % ergeben, sonst ist das Ergebnis nicht vergleichbar. Und der Nutzwert kann nie über dem Maximum der Skala (hier 5) liegen.',
+Kontrolle: Die Gewichtungen müssen in Summe 100 % ergeben, sonst ist das Ergebnis nicht vergleichbar. Außerdem kann der Nutzwert nie über dem Maximum der Skala (hier 5) liegen.',
   2,
   ARRAY['nutzwertanalyse']::text[],
   null,
@@ -1190,7 +1191,7 @@ values (
   'Für ein neues Ticketsystem liegen drei Angebote vor. Neben dem Preis sollen Bedienbarkeit, Support und Zukunftssicherheit in die Entscheidung einfließen.',
   'Bringe die Schritte der Nutzwertanalyse in die richtige Reihenfolge.',
   'Die Nutzwertanalyse vergleicht Alternativen anhand mehrerer, unterschiedlich gewichteter und teils nicht monetärer Kriterien. Ablauf: 1. Kriterien festlegen, 2. gewichten (Summe 100 %), 3. Alternativen je Kriterium bewerten, 4. Teilnutzwerte = Gewicht x Bewertung, 5. aufsummieren, 6. höchster Nutzwert gewinnt.
-Schwäche, nach der gern gefragt wird: Gewichtung und Bewertung sind subjektiv. Wer das Ergebnis vorher kennt, kann es über die Gewichtung herbeiführen. Deshalb Kriterien VOR dem Blick auf die Angebote festlegen.',
+Schwäche, nach der gern gefragt wird: Gewichtung und Bewertung sind subjektiv. Wer das Ergebnis vorher kennt, kann es über die Gewichtung herbeiführen. Lege die Kriterien deshalb fest, BEVOR du die Angebote ansiehst.',
   2,
   ARRAY['nutzwertanalyse']::text[],
   null,
@@ -1222,7 +1223,7 @@ values (
   'Amortisationsdauer = Investitionssumme / jährlicher Rückfluss
 = 48.000 Euro / 15.000 Euro pro Jahr = 3,2 Jahre
 
-In Worten: nach rund 3 Jahren und 2-3 Monaten hat sich die Anschaffung bezahlt gemacht. Achtung bei Aufgaben, in denen zusätzlich laufende Kosten der neuen Lösung genannt werden. Dann muss man erst den NETTO-Rückfluss bilden (Einsparung minus neue laufende Kosten) und erst damit rechnen.',
+Anders gesagt: Nach rund 3 Jahren und 2 bis 3 Monaten hat sich die Anschaffung bezahlt gemacht. Achte auf Aufgaben, die zusätzlich laufende Kosten der neuen Lösung nennen. Dann bildest du zuerst den NETTO-Rückfluss (Einsparung minus neue laufende Kosten) und rechnest erst damit.',
   2,
   ARRAY['amortisation']::text[],
   null,
@@ -1293,7 +1294,7 @@ values (
   'matching',
   'Für eine Serverbeschaffung wird eine TCO-Betrachtung (Total Cost of Ownership) aufgestellt.',
   'Ordne jede Position dem Abschnitt der TCO-Betrachtung zu.',
-  'TCO betrachtet den gesamten Lebenszyklus: Beschaffung, Betrieb, Wartung, Schulung, Ausfallkosten, Außerbetriebnahme. Der Sinn ist, das billigste Angebot vom günstigsten zu unterscheiden. Wichtig zur Abgrenzung: TCO = nur Kosten. ROI und Wirtschaftlichkeitsrechnung = Kosten UND Nutzen.',
+  'TCO betrachtet den gesamten Lebenszyklus: Beschaffung, Betrieb, Wartung, Schulung, Ausfallkosten, Außerbetriebnahme. Der Sinn ist, das billigste Angebot vom günstigsten zu unterscheiden. Halte auseinander: Die TCO erfasst nur Kosten, ROI und Wirtschaftlichkeitsrechnung betrachten Kosten UND Nutzen.',
   2,
   ARRAY['tco']::text[],
   null,
@@ -1389,7 +1390,7 @@ Grenzfall, der gern gefragt wird: Ein Linter ist konstruktiv, wenn er beim Schre
   2,
   ARRAY['qualitätssicherung']::text[],
   null,
-  '{"points":3,"grid":[[{"text":"Maßnahme"},{"text":"Einordnung"}],[{"text":"Verbindliche Coding-Standards und Styleguides"},{"gap":{"answers":["konstruktiv"],"options":["konstruktiv","analytisch","keine QS-Maßnahme"],"rationale":"Verhindert Fehler von vornherein."}}],[{"text":"Modul- und Integrationstests"},{"gap":{"answers":["analytisch"],"options":["analytisch","konstruktiv","keine QS-Maßnahme"],"rationale":"Tests finden vorhandene Fehler, sie verhindern sie nicht."}}],[{"text":"Schulung der Entwickler vor Projektbeginn"},{"gap":{"answers":["konstruktiv"],"options":["konstruktiv","analytisch","keine QS-Maßnahme"],"rationale":"Qualifikation ist eine klassische vorbeugende Maßnahme."}}],[{"text":"Code-Review nach Fertigstellung eines Moduls"},{"gap":{"answers":["analytisch"],"options":["analytisch","konstruktiv","keine QS-Maßnahme"],"rationale":"Ein bereits erstelltes Artefakt wird geprüft."}}],[{"text":"Einsatz erprobter Frameworks und Entwurfsmuster"},{"gap":{"answers":["konstruktiv"],"options":["konstruktiv","analytisch","keine QS-Maßnahme"],"rationale":"Das Rad nicht neu erfinden heißt, dessen Fehler nicht neu zu machen."}}],[{"text":"Überstunden in der Woche vor dem Release anordnen"},{"gap":{"answers":["keine QS-Maßnahme"],"options":["keine QS-Maßnahme","konstruktiv","analytisch"],"rationale":"Mehr Arbeitszeit verhindert und findet keine Fehler. Unter Zeitdruck entstehen eher neue."}}]]}'::jsonb,
+  '{"points":3,"grid":[[{"text":"Maßnahme"},{"text":"Einordnung"}],[{"text":"Verbindliche Coding-Standards und Styleguides"},{"gap":{"answers":["konstruktiv"],"options":["konstruktiv","analytisch","keine QS-Maßnahme"],"rationale":"Verhindert Fehler von vornherein."}}],[{"text":"Modul- und Integrationstests"},{"gap":{"answers":["analytisch"],"options":["analytisch","konstruktiv","keine QS-Maßnahme"],"rationale":"Tests finden vorhandene Fehler, sie verhindern sie nicht."}}],[{"text":"Schulung der Entwickler vor Projektbeginn"},{"gap":{"answers":["konstruktiv"],"options":["konstruktiv","analytisch","keine QS-Maßnahme"],"rationale":"Qualifikation ist eine klassische vorbeugende Maßnahme."}}],[{"text":"Code-Review nach Fertigstellung eines Moduls"},{"gap":{"answers":["analytisch"],"options":["analytisch","konstruktiv","keine QS-Maßnahme"],"rationale":"Ein bereits erstelltes Artefakt wird geprüft."}}],[{"text":"Einsatz erprobter Frameworks und Entwurfsmuster"},{"gap":{"answers":["konstruktiv"],"options":["konstruktiv","analytisch","keine QS-Maßnahme"],"rationale":"Wer das Rad nicht neu erfindet, macht auch dessen Fehler nicht neu."}}],[{"text":"Überstunden in der Woche vor dem Release anordnen"},{"gap":{"answers":["keine QS-Maßnahme"],"options":["keine QS-Maßnahme","konstruktiv","analytisch"],"rationale":"Mehr Arbeitszeit verhindert und findet keine Fehler. Unter Zeitdruck entstehen eher neue."}}]]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1562,7 +1563,7 @@ values (
   'cloze',
   null,
   'Ergänze die Aussagen zum Qualitätsbegriff.',
-  'Qualität = Erfüllungsgrad der Anforderungen. Daraus folgt eine praktische Konsequenz: Ohne prüfbar formulierte Anforderungen kann man Qualität gar nicht feststellen. Deshalb hängen Anforderungsanalyse und Qualitätssicherung unmittelbar zusammen, und deshalb ist eine unprüfbare Anforderung wie "benutzerfreundlich" ein Qualitätsproblem, bevor die erste Zeile Code geschrieben ist. Ein Produkt, das mehr kann als gefordert, hat nicht mehr Qualität, sondern verschwendet Budget.',
+  'Qualität ist der Grad, in dem die Anforderungen erfüllt sind. Praktisch heißt das: Ohne prüfbar formulierte Anforderungen lässt sich Qualität gar nicht feststellen. Deshalb hängen Anforderungsanalyse und Qualitätssicherung unmittelbar zusammen, und deshalb ist eine unprüfbare Anforderung wie "benutzerfreundlich" ein Qualitätsproblem, bevor die erste Zeile Code geschrieben ist. Ein Produkt, das mehr kann als gefordert, hat nicht mehr Qualität, sondern verschwendet Budget.',
   2,
   ARRAY['qualitätsbegriff']::text[],
   null,
@@ -1591,7 +1592,7 @@ values (
   'matching',
   null,
   'Ordne die Maßnahmen der konstruktiven oder analytischen Qualitätssicherung zu.',
-  'Trennlinie: KONSTRUKTIV = vorher, verhindert Fehler (Standards, Methoden, Werkzeuge, Schulung, Templates). ANALYTISCH = nachher, findet Fehler (Test, Review, Inspektion, Audit).
+  'KONSTRUKTIVE Maßnahmen greifen vorher und verhindern Fehler (Standards, Methoden, Werkzeuge, Schulung, Templates). ANALYTISCHE greifen nachher und finden Fehler (Test, Review, Inspektion, Audit).
 Merksatz: Der Test findet den Fehler, der Standard verhindert ihn. Wirtschaftlich ist konstruktive QS fast immer überlegen (siehe Rule of Ten).',
   2,
   ARRAY['qs_maßnahmen']::text[],
@@ -1622,11 +1623,11 @@ values (
   'Ein Team startet ein Projekt und legt seine Qualitätsziele fest.',
   'Nenne vier Festlegungen, die in die Qualitätsplanung gehören.',
   'Je Nennung 1 Punkt, höchstens 4 Punkte. Qualitätsplanung beantwortet vier Fragen: Was wird gemessen? Welcher Zielwert gilt? Wann und wie wird geprüft? Wer ist verantwortlich?
-Nicht geplant werden eine Anzahl erwarteter Fehler oder der Code der Testfälle. Der häufigste Fehler in der Praxis ist, Qualitätsziele nur qualitativ zu formulieren ("hohe Performance"). Ohne Zahl ist das keine Planung, sondern ein Wunsch.',
+Nicht in die Qualitätsplanung gehören eine Anzahl erwarteter Fehler oder der Code der Testfälle. Der häufigste Fehler in der Praxis ist, Qualitätsziele nur qualitativ zu formulieren ("hohe Performance"). Ohne Zahl ist das keine Planung, sondern ein Wunsch.',
   2,
   ARRAY['qualitätsplanung']::text[],
   null,
-  '{"points":4,"criteria":[{"text":"Qualitätsmerkmale, die gemessen werden, mit ihren Zielwerten","points":1,"keywords":["Qualitätsmerkmale","Zielwert","Kennzahl","Messgröße"]},{"text":"Prüfmaßnahmen und ihre Zeitpunkte (Prüfplan)","points":1,"keywords":["Prüfmaßnahmen","Prüfplan","Tests","Reviews","wann geprüft"]},{"text":"Verantwortliche für die Qualitätssicherung","points":1,"keywords":["Verantwortliche","Verantwortung","zuständig","wer"]},{"text":"Abnahmekriterien bzw. Definition of Done","points":1,"keywords":["Abnahmekriterien","Definition of Done","fertig"]},{"text":"Standards, Methoden und Werkzeuge","points":1,"keywords":["Standards","Methoden","Werkzeuge","Richtlinien"]},{"text":"Dokumentation der Prüfergebnisse","points":1,"keywords":["Dokumentation","Protokoll","Nachweis"]}],"sample_solution":"Welche Qualitätsmerkmale mit welchem Zielwert gemessen werden, welche Prüfmaßnahmen wann stattfinden (Prüfplan), wer für die Qualitätssicherung verantwortlich ist und wann etwas als fertig gilt (Abnahmekriterien bzw. Definition of Done). Dazu: Standards und Werkzeuge, Dokumentation der Prüfergebnisse."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Qualitätsmerkmale, die gemessen werden, mit ihren Zielwerten","points":1,"keywords":["Qualitätsmerkmale","Zielwert","Kennzahl","Messgröße"]},{"text":"Prüfmaßnahmen und ihre Zeitpunkte (Prüfplan)","points":1,"keywords":["Prüfmaßnahmen","Prüfplan","Tests","Reviews","wann geprüft"]},{"text":"Verantwortliche für die Qualitätssicherung","points":1,"keywords":["Verantwortliche","Verantwortung","zuständig","wer"]},{"text":"Abnahmekriterien bzw. Definition of Done","points":1,"keywords":["Abnahmekriterien","Definition of Done","fertig"]},{"text":"Standards, Methoden und Werkzeuge","points":1,"keywords":["Standards","Methoden","Werkzeuge","Richtlinien"]},{"text":"Dokumentation der Prüfergebnisse","points":1,"keywords":["Dokumentation","Protokoll","Nachweis"]}],"sample_solution":"Welche Qualitätsmerkmale mit welchem Zielwert gemessen werden, welche Prüfmaßnahmen wann stattfinden (Prüfplan), wer für die Qualitätssicherung verantwortlich ist und wann etwas als fertig gilt (Abnahmekriterien bzw. Definition of Done). Dazu kommen Standards und Werkzeuge sowie die Dokumentation der Prüfergebnisse."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1652,11 +1653,11 @@ values (
   null,
   'Bringe die Teststufen in die Reihenfolge, in der sie üblicherweise durchlaufen werden.',
   'Die vier Teststufen bauen aufeinander auf: Je höher die Stufe, desto größer der Prüfgegenstand und desto näher am Kunden.
-- Modultest: entwickelt meist der Programmierer selbst.
+- Modultest: schreibt meist die Person, die auch den Code entwickelt hat.
 - Integrationstest: prüft Schnittstellen zwischen Komponenten.
 - Systemtest: prüft das Gesamtsystem gegen die Spezifikation, in einer möglichst produktionsähnlichen Testumgebung.
 - Abnahmetest: prüft gegen die Anforderungen des Auftraggebers, in dessen Verantwortung.
-Systemtest und Abnahmetest werden gern verwechselt: der Systemtest ist Sache des Auftragnehmers, der Abnahmetest die des Auftraggebers.',
+Systemtest und Abnahmetest werden gern verwechselt: Der Systemtest ist Sache des Auftragnehmers, der Abnahmetest die des Auftraggebers.',
   2,
   ARRAY['teststufen']::text[],
   null,
@@ -1691,7 +1692,7 @@ Faustregel für die Prüfung: Steht "kennt den Code nicht" oder "gegen die Anfor
   2,
   ARRAY['blackbox', 'whitebox']::text[],
   null,
-  '{"buckets":["Black-Box","White-Box"],"match_items":[{"text":"Der Tester kennt den Quellcode nicht und prüft nur Eingabe und Ausgabe.","bucket":0,"rationale":"Genau die Definition: die innere Struktur bleibt eine schwarze Kiste."},{"text":"Die Testfälle werden so gewählt, dass jeder Programmzweig einmal durchlaufen wird.","bucket":1,"rationale":"Zweigabdeckung setzt Kenntnis des Codes voraus, also White-Box."},{"text":"Grundlage sind ausschließlich die Anforderungen aus dem Pflichtenheft.","bucket":0,"rationale":"Anforderungsbasiertes Testen ohne Blick in den Code."},{"text":"Der Entwickler prüft seine eigene Schleifenlogik mit Grenzwerten für den Zähler.","bucket":1,"rationale":"Die Logik im Inneren wird gezielt adressiert."},{"text":"Der Abnahmetest durch den Fachbereich.","bucket":0,"rationale":"Der Fachbereich testet fachlich gegen die Anforderungen, nicht gegen den Code."},{"text":"Code-Coverage wird als Kennzahl erhoben.","bucket":1,"rationale":"Überdeckungsmaße beziehen sich zwangsläufig auf den Quellcode."}]}'::jsonb,
+  '{"buckets":["Black-Box","White-Box"],"match_items":[{"text":"Der Tester kennt den Quellcode nicht und prüft nur Eingabe und Ausgabe.","bucket":0,"rationale":"Das ist genau die Definition: Die innere Struktur bleibt eine schwarze Kiste."},{"text":"Die Testfälle werden so gewählt, dass jeder Programmzweig einmal durchlaufen wird.","bucket":1,"rationale":"Zweigabdeckung setzt Kenntnis des Codes voraus, also White-Box."},{"text":"Grundlage sind ausschließlich die Anforderungen aus dem Pflichtenheft.","bucket":0,"rationale":"Anforderungsbasiertes Testen ohne Blick in den Code."},{"text":"Der Entwickler prüft seine eigene Schleifenlogik mit Grenzwerten für den Zähler.","bucket":1,"rationale":"Hier wird gezielt die Logik im Inneren des Codes geprüft."},{"text":"Der Abnahmetest durch den Fachbereich.","bucket":0,"rationale":"Der Fachbereich testet fachlich gegen die Anforderungen, nicht gegen den Code."},{"text":"Code-Coverage wird als Kennzahl erhoben.","bucket":1,"rationale":"Überdeckungsmaße beziehen sich zwangsläufig auf den Quellcode."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1716,8 +1717,8 @@ values (
   'cloze',
   null,
   'Ergänze die Bestandteile eines vollständigen Testfalls.',
-  'Ein Testfall besteht aus: Kennung, Vorbedingung, Eingabe, erwartetes Ergebnis und nach der Durchführung zusätzlich dem tatsächlichen Ergebnis sowie dem Urteil bestanden/nicht bestanden. Erst das zusammen ergibt das Testprotokoll.
-Nicht hinein gehören der Name eines "Schuldigen" oder die Dauer der Fehlerbehebung. Der häufigste Fehler in Prüfungsaufgaben: das Soll-Ergebnis vergessen. Ein Test ohne Soll-Ergebnis kann nicht fehlschlagen und ist damit wertlos.',
+  'Ein Testfall besteht aus Kennung, Vorbedingung, Eingabedaten und Soll-Ergebnis. Nach der Durchführung kommen das Ist-Ergebnis und das Urteil bestanden/nicht bestanden hinzu. Erst das zusammen ergibt das Testprotokoll.
+Nicht hinein gehören der Name eines "Schuldigen" oder die Dauer der Fehlerbehebung. Der häufigste Fehler in Prüfungsaufgaben ist, das Soll-Ergebnis zu vergessen. Ein Test ohne Soll-Ergebnis kann nicht fehlschlagen und ist damit wertlos.',
   2,
   ARRAY['testfall', 'testprotokoll']::text[],
   null,
@@ -1781,7 +1782,7 @@ Genau deshalb lohnt sich Testautomatisierung: Manuell wiederholt niemand hundert
   3,
   ARRAY['regressionstest']::text[],
   null,
-  '{"choices":[{"text":"Regressionstest","is_correct":true,"rationale":"Richtig. Der Regressionstest wiederholt bereits bestandene Tests, um genau solche Nebenwirkungen zu entdecken."},{"text":"Abnahmetest","is_correct":false,"rationale":"Der Abnahmetest findet am Ende beim Kunden statt. Dann ist der Schaden schon da."},{"text":"Lasttest","is_correct":false,"rationale":"Ein Lasttest prüft Verhalten unter Last, nicht die fachliche Korrektheit nach Änderungen."},{"text":"Usability-Test","is_correct":false,"rationale":"Der prüft die Bedienbarkeit, nicht die Funktion."}]}'::jsonb,
+  '{"choices":[{"text":"Regressionstest","is_correct":true,"rationale":"Richtig. Der Regressionstest wiederholt bereits bestandene Tests, um genau solche Nebenwirkungen zu entdecken."},{"text":"Abnahmetest","is_correct":false,"rationale":"Der Abnahmetest findet am Ende beim Kunden statt. Dann ist der Schaden schon da."},{"text":"Lasttest","is_correct":false,"rationale":"Ein Lasttest prüft Verhalten unter Last, nicht die fachliche Korrektheit nach Änderungen."},{"text":"Usability-Test","is_correct":false,"rationale":"Ein Usability-Test prüft die Bedienbarkeit, nicht die Funktion."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1814,7 +1815,7 @@ Für die Prüfung wichtig: Die Bezeichnung im Vertrag entscheidet nicht. Maßgeb
   2,
   ARRAY['vertragsarten']::text[],
   null,
-  '{"buckets":["Kaufvertrag","Werkvertrag","Dienstvertrag"],"match_items":[{"text":"Geschuldet wird ein konkreter Erfolg, zum Beispiel eine fertige, abnahmefähige Software.","bucket":1,"rationale":"Erfolg geschuldet = Werkvertrag. Deshalb gibt es hier eine Abnahme."},{"text":"Geschuldet wird die Tätigkeit als solche, nicht ein bestimmtes Ergebnis.","bucket":2,"rationale":"Dienstvertrag: bezahlt wird die geleistete Arbeit, etwa bei Beratung oder Personalgestellung."},{"text":"Übereignung einer Sache gegen Zahlung des Kaufpreises.","bucket":0,"rationale":"Der klassische Kaufvertrag, zum Beispiel beim Hardwareeinkauf."},{"text":"Die Vergütung wird mit der Abnahme fällig.","bucket":1,"rationale":"Typisch für den Werkvertrag: ohne Abnahme keine Fälligkeit."},{"text":"Ein externer Administrator wird stundenweise für Support bereitgestellt.","bucket":2,"rationale":"Bereitgestellt wird Arbeitszeit, kein definiertes Werk."},{"text":"Gewährleistung richtet sich nach dem Zustand der gelieferten Sache bei Gefahrübergang.","bucket":0,"rationale":"Sachmangelhaftung des Kaufrechts."}]}'::jsonb,
+  '{"buckets":["Kaufvertrag","Werkvertrag","Dienstvertrag"],"match_items":[{"text":"Geschuldet wird ein konkreter Erfolg, zum Beispiel eine fertige, abnahmefähige Software.","bucket":1,"rationale":"Wird ein Erfolg geschuldet, ist es ein Werkvertrag. Deshalb gibt es hier eine Abnahme."},{"text":"Geschuldet wird die Tätigkeit als solche, nicht ein bestimmtes Ergebnis.","bucket":2,"rationale":"Dienstvertrag: bezahlt wird die geleistete Arbeit, etwa bei Beratung oder Personalgestellung."},{"text":"Übereignung einer Sache gegen Zahlung des Kaufpreises.","bucket":0,"rationale":"Der klassische Kaufvertrag, zum Beispiel beim Hardwareeinkauf."},{"text":"Die Vergütung wird mit der Abnahme fällig.","bucket":1,"rationale":"Typisch für den Werkvertrag: ohne Abnahme keine Fälligkeit."},{"text":"Ein externer Administrator wird stundenweise für Support bereitgestellt.","bucket":2,"rationale":"Bereitgestellt wird Arbeitszeit, kein definiertes Werk."},{"text":"Gewährleistung richtet sich nach dem Zustand der gelieferten Sache bei Gefahrübergang.","bucket":0,"rationale":"Sachmangelhaftung des Kaufrechts."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -1839,10 +1840,10 @@ values (
   'pairs',
   null,
   'Verbinde jedes Lizenzmodell mit seinem Kennzeichen.',
-  'Vier Begriffe sauber trennen:
-- Freeware: kostenlos, Quellcode geschlossen.
+  'Halte vier Begriffe sauber auseinander:
+- Freeware: kostenlos, Quellcode meist geschlossen.
 - Open Source: Quellcode offen, oft mit Pflichten (Copyleft).
-- Proprietär: kostenpflichtig, Quellcode geschlossen.
+- Proprietär: meist kostenpflichtig, Quellcode geschlossen.
 - SaaS/Abo: Nutzungsrecht auf Zeit, Betrieb beim Anbieter.
 Lizenzmodelle nach Zählweise: pro Gerät, pro benanntem Nutzer, pro gleichzeitigem Nutzer (concurrent), pro CPU/Core, nutzungsabhängig. Volumenlizenzen sind meist, aber nicht immer günstiger als der Einzelkauf.',
   2,
@@ -1933,7 +1934,7 @@ values (
   'pairs',
   null,
   'Verbinde jede Größe eines SLA mit ihrer Bedeutung.',
-  'Ein SLA macht Servicequalität messbar und einklagbar. Die vier Größen, die man auseinanderhalten muss:
+  'Ein SLA macht Servicequalität messbar und einklagbar. Diese vier Größen musst du auseinanderhalten:
 - Servicezeit: wann der Service überhaupt erbracht wird (z. B. Mo-Fr 8-18 Uhr).
 - Verfügbarkeit: Anteil der Servicezeit ohne Störung.
 - Reaktionszeit: bis zur ersten qualifizierten Rückmeldung.
@@ -2040,11 +2041,11 @@ values (
   'Erläutere, ob sich der Lieferant im Lieferungsverzug befindet.',
   'Je Aussage 1 Punkt. Verzug setzt voraus: fällige Leistung, Nichtleistung, Verschulden des Schuldners und grundsätzlich eine Mahnung.
 Die Mahnung entfällt unter anderem, wenn ein Termin nach dem Kalender bestimmt ist ("Lieferung am 1. Oktober") oder wenn der Schuldner die Leistung ernsthaft und endgültig verweigert. Drei Mahnungen sind ein Mythos aus der Praxis.
-Beim ZAHLUNGSverzug gilt zusätzlich: Spätestens 30 Tage nach Zugang einer Rechnung tritt Verzug auch ohne Mahnung ein, bei Verbrauchern nur, wenn darauf hingewiesen wurde.',
+Beim ZAHLUNGSverzug gilt zusätzlich: Spätestens 30 Tage nach Fälligkeit und Zugang einer Rechnung tritt Verzug auch ohne Mahnung ein, bei Verbrauchern nur, wenn in der Rechnung darauf hingewiesen wurde (§ 286 Abs. 3 BGB).',
   2,
   ARRAY['verzug']::text[],
   null,
-  '{"points":3,"criteria":[{"text":"Die Lieferung ist seit dem 1. Oktober fällig und nicht erfolgt","points":1,"keywords":["fällig","Fälligkeit","nicht geliefert"]},{"text":"Eine Mahnung ist nicht nötig, weil der Termin nach dem Kalender bestimmt ist","points":1,"keywords":["Kalender","keine Mahnung","ohne Mahnung","fester Termin","entbehrlich"]},{"text":"Der Lieferant hat die Verspätung zu vertreten - er ist also in Verzug","points":1,"keywords":["vertreten","Verschulden","in Verzug"]}],"sample_solution":"Ja. Die Lieferung war am 1. Oktober fällig und ist ausgeblieben. Weil der Termin nach dem Kalender bestimmt ist, tritt der Verzug ohne Mahnung ein. Das Verschulden des Lieferanten wird vermutet. Er ist seit dem 2. Oktober in Verzug."}'::jsonb,
+  '{"points":3,"criteria":[{"text":"Die Lieferung ist seit dem 1. Oktober fällig und nicht erfolgt","points":1,"keywords":["fällig","Fälligkeit","nicht geliefert"]},{"text":"Eine Mahnung ist nicht nötig, weil der Termin nach dem Kalender bestimmt ist","points":1,"keywords":["Kalender","keine Mahnung","ohne Mahnung","fester Termin","entbehrlich"]},{"text":"Der Lieferant hat die Verspätung zu vertreten, er ist also in Verzug","points":1,"keywords":["vertreten","Verschulden","in Verzug"]}],"sample_solution":"Ja. Die Lieferung war am 1. Oktober fällig und ist ausgeblieben. Weil der Termin nach dem Kalender bestimmt ist, tritt der Verzug ohne Mahnung ein. Das Verschulden des Lieferanten wird vermutet. Er ist seit dem 2. Oktober in Verzug."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -2069,7 +2070,7 @@ values (
   'single',
   'Eine Agentur hat für einen Kunden ein Buchungsmodul programmiert (Werkvertrag). Nach der Abnahme zeigt sich ein Fehler: Stornierungen werden nicht gespeichert.',
   'Was muss der Kunde grundsätzlich tun, bevor er den Fehler von einer anderen Firma beheben lässt, die Vergütung mindert oder zurücktritt?',
-  'Beim Werkvertrag hat die Nacherfüllung Vorrang (§ 634 BGB): Der Unternehmer darf den Mangel zuerst selbst beseitigen und wählt dabei zwischen Nachbesserung und Neuherstellung. Erst nach erfolglosem Fristablauf kann der Besteller den Mangel selbst beseitigen lassen und Kostenersatz verlangen, die Vergütung mindern oder zurücktreten - und zusätzlich Schadensersatz fordern, wenn der Unternehmer den Mangel zu vertreten hat. Deshalb gehört in jede Mangelanzeige eine konkrete Frist.',
+  'Beim Werkvertrag hat die Nacherfüllung Vorrang (§ 634 BGB): Der Unternehmer darf den Mangel zuerst selbst beseitigen und wählt dabei zwischen Nachbesserung und Neuherstellung. Erst nach erfolglosem Fristablauf kann der Besteller den Mangel selbst beseitigen lassen und Kostenersatz verlangen, die Vergütung mindern oder zurücktreten. Zusätzlich kann er Schadensersatz fordern, wenn der Unternehmer den Mangel zu vertreten hat. Deshalb gehört in jede Mangelanzeige eine konkrete Frist.',
   3,
   ARRAY['mängelrechte']::text[],
   null,
@@ -2169,7 +2170,7 @@ Anordnung und Sanktion sind das letzte Mittel, nicht das erste, denn Druck erzeu
   2,
   ARRAY['widerstand']::text[],
   null,
-  '{"points":4,"criteria":[{"text":"Betroffene frühzeitig einbeziehen und ihre Erfahrung in die Gestaltung einfließen lassen","points":1,"keywords":["einbeziehen","beteiligen","mitgestalten","Erfahrung nutzen"]},{"text":"Den Nutzen für die tägliche Arbeit konkret erklären","points":1,"keywords":["Nutzen","erklären","informieren","Vorteile"]},{"text":"Schulungen anbieten","points":1,"keywords":["Schulung","schulen","Training"]},{"text":"In der Umstellungsphase begleiten und Ansprechpartner benennen","points":1,"keywords":["begleiten","Ansprechpartner","Unterstützung","Support"]},{"text":"Erfahrene Mitarbeitende als Multiplikatoren bzw. Key-User gewinnen","points":1,"keywords":["Multiplikator","Key-User","Vorbild"]},{"text":"Erste Erfolge sichtbar machen","points":1,"keywords":["Erfolge","sichtbar","Kennzahlen"]}],"sample_solution":"Die Betroffenen früh einbeziehen, den Nutzen für die tägliche Arbeit erklären, schulen, in der Umstellungsphase begleiten und erfahrene Mitarbeitende als Multiplikatoren gewinnen. Später: Erfolge sichtbar machen."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Betroffene frühzeitig einbeziehen und ihre Erfahrung in die Gestaltung einfließen lassen","points":1,"keywords":["einbeziehen","beteiligen","mitgestalten","Erfahrung nutzen"]},{"text":"Den Nutzen für die tägliche Arbeit konkret erklären","points":1,"keywords":["Nutzen","erklären","informieren","Vorteile"]},{"text":"Schulungen anbieten","points":1,"keywords":["Schulung","schulen","Training"]},{"text":"In der Umstellungsphase begleiten und Ansprechpartner benennen","points":1,"keywords":["begleiten","Ansprechpartner","Unterstützung","Support"]},{"text":"Erfahrene Mitarbeitende als Multiplikatoren bzw. Key-User gewinnen","points":1,"keywords":["Multiplikator","Key-User","Vorbild"]},{"text":"Erste Erfolge sichtbar machen","points":1,"keywords":["Erfolge","sichtbar","Kennzahlen"]}],"sample_solution":"Die Betroffenen früh einbeziehen, den Nutzen für die tägliche Arbeit erklären, schulen, in der Umstellungsphase begleiten und erfahrene Mitarbeitende als Multiplikatoren gewinnen. Später hilft es, Erfolge sichtbar zu machen."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -2196,7 +2197,7 @@ values (
   'Ergänze die Aussagen zu Kaizen und KVP.',
   'Kaizen (japanisch: Veränderung zum Besseren) steht für den kontinuierlichen Verbesserungsprozess (KVP). Kernideen: kleine Schritte statt großer Sprünge, Beteiligung aller Mitarbeitenden, Standardisierung des Erreichten und Wiederholung.
 Der Zusammenhang zum PDCA-Zyklus ist direkt: PDCA ist das Werkzeug, mit dem jeder einzelne Kaizen-Schritt durchlaufen wird.
-Abgrenzung für die Prüfung: Kaizen = viele kleine Schritte, evolutionär. Reengineering = ein großer Schnitt, revolutionär.',
+Für die Prüfung grenzt du so ab: Kaizen verbessert evolutionär in vielen kleinen Schritten, Reengineering revolutionär mit einem großen Schnitt.',
   2,
   ARRAY['kaizen']::text[],
   null,
@@ -2311,7 +2312,7 @@ values (
   'p-begriff',
   'single',
   'Die Geschäftsführung der Müller GmbH legt fest, dass jedes Vorhaben ab 20.000 € Budget als Projekt geführt wird. Ein Kollege folgert: „Unter 20.000 € gibt es bei uns also keine Projekte.“',
-  'Wie ist die Aussage nach DIN 69901 zu bewerten?',
+  'Wie bewertest du die Aussage nach DIN 69901?',
   'Nach DIN 69901 ist ein Projekt durch die Einmaligkeit der Bedingungen in ihrer Gesamtheit gekennzeichnet (Ziel, Begrenzung, Abgrenzung, eigene Organisation). Budget oder Teamgröße sind keine Kriterien.',
   2,
   '{}',
@@ -2457,7 +2458,7 @@ values (
   'single',
   'Kurz vor Projektende wünscht der Kunde zwei zusätzliche Funktionen. Der Go-live-Termin darf sich nicht verschieben, und an der Qualität soll nicht gespart werden.',
   'Was folgt daraus nach dem magischen Dreieck?',
-  'Leistung steigt, Zeit und Qualität sind fest. Im magischen Dreieck bleibt nur eine Größe, die nachgeben kann: die Kosten.',
+  'Die Leistung steigt, Zeit und Qualität stehen fest. Im magischen Dreieck bleibt damit nur eine Größe, die nachgeben kann: die Kosten.',
   2,
   '{}',
   null,
@@ -2490,7 +2491,7 @@ values (
   2,
   '{}',
   null,
-  '{"buckets":["konkurrierend","komplementär","indifferent"],"match_items":[{"text":"Zwei Monate früher fertig werden - Projektkosten um 10 % senken","bucket":0,"rationale":"Früher fertig werden braucht meist mehr Personal oder Überstunden, und das erschwert das Sparziel."},{"text":"Anwender früh schulen - weniger Supportanfragen nach dem Start","bucket":1,"rationale":"Geschulte Anwender fragen seltener nach: Die Ziele fördern sich."},{"text":"Farbschema der Startseite festlegen - Serverstandort festlegen","bucket":2,"rationale":"Die beiden Ziele beeinflussen sich nicht."},{"text":"Mehr Funktionen liefern - den Endtermin halten","bucket":0,"rationale":"Mehr Umfang kostet Zeit: Die Ziele behindern sich."},{"text":"Gründlich testen - wenige Fehler im Betrieb","bucket":1,"rationale":"Gründliche Tests führen zu weniger Fehlern: Die Ziele fördern sich."},{"text":"Logo im Seitenkopf erneuern - Zeitfenster der Datensicherung verkürzen","bucket":2,"rationale":"Kein Zusammenhang zwischen beiden Zielen."}]}'::jsonb,
+  '{"buckets":["konkurrierend","komplementär","indifferent"],"match_items":[{"text":"Zwei Monate früher fertig werden und Projektkosten um 10 % senken","bucket":0,"rationale":"Früher fertig werden braucht meist mehr Personal oder Überstunden, und das erschwert das Sparziel."},{"text":"Anwender früh schulen und weniger Supportanfragen nach dem Start","bucket":1,"rationale":"Geschulte Anwender fragen seltener nach: Die Ziele fördern sich."},{"text":"Farbschema der Startseite festlegen und Serverstandort festlegen","bucket":2,"rationale":"Die beiden Ziele beeinflussen sich nicht."},{"text":"Mehr Funktionen liefern und den Endtermin halten","bucket":0,"rationale":"Mehr Umfang kostet Zeit: Die Ziele behindern sich."},{"text":"Gründlich testen und wenige Fehler im Betrieb","bucket":1,"rationale":"Gründliche Tests führen zu weniger Fehlern: Die Ziele fördern sich."},{"text":"Logo im Seitenkopf erneuern und Zeitfenster der Datensicherung verkürzen","bucket":2,"rationale":"Kein Zusammenhang zwischen beiden Zielen."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -2519,7 +2520,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Messbar","is_correct":true,"rationale":"„Deutlich“ ist keine Kennzahl. Es fehlt ein Messwert wie eine Note oder ein Prozentsatz."},{"text":"Terminiert","is_correct":true,"rationale":"Es gibt kein Datum, bis wann das Ziel erreicht sein soll."},{"text":"Attraktiv / akzeptiert","is_correct":false,"rationale":"Ob das Ziel mitgetragen wird, lässt sich aus der Formulierung nicht ablesen. Bessere Kundenzufriedenheit ist grundsätzlich gewünscht."},{"text":"Es beschreibt eine Maßnahme statt eines Zustands.","is_correct":false,"rationale":"Kein SMART-Kriterium und das Ziel beschreibt tatsächlich einen gewünschten Zustand."}]}'::jsonb,
+  '{"choices":[{"text":"Messbar","is_correct":true,"rationale":"„Deutlich“ ist keine Kennzahl. Es fehlt ein Messwert wie eine Note oder ein Prozentsatz."},{"text":"Terminiert","is_correct":true,"rationale":"Es gibt kein Datum, bis wann das Ziel erreicht sein soll."},{"text":"Attraktiv / akzeptiert","is_correct":false,"rationale":"Ob das Ziel mitgetragen wird, lässt sich aus der Formulierung nicht ablesen. Bessere Kundenzufriedenheit ist grundsätzlich gewünscht."},{"text":"Es beschreibt eine Maßnahme statt eines Zustands.","is_correct":false,"rationale":"Das ist kein SMART-Kriterium. Außerdem beschreibt das Ziel tatsächlich einen gewünschten Zustand."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -2602,7 +2603,7 @@ values (
   'table',
   null,
   'Vervollständige den Vergleich der drei Formen der Projektorganisation.',
-  'Rein: volle Befugnis, das Team wird herausgelöst. Matrix: Die Projektleitung führt fachlich, die Linie disziplinarisch; die Mitarbeitenden haben zwei Vorgesetzte und arbeiten anteilig mit. Das nutzt Ressourcen flexibel, erzeugt aber Prioritätenkonflikte. Stab/Einfluss: keine Weisungsbefugnis, alle bleiben in der Linie.',
+  'In der reinen Projektorganisation hat die Projektleitung die volle Befugnis, das Team wird herausgelöst. In der Matrix führt sie fachlich, die Linie disziplinarisch. Die Mitarbeitenden haben zwei Vorgesetzte und arbeiten anteilig mit. Das nutzt Ressourcen flexibel, erzeugt aber Prioritätenkonflikte. In der Stabs- oder Einflussorganisation hat sie keine Weisungsbefugnis, alle bleiben in der Linie.',
   2,
   '{}',
   null,
@@ -2689,7 +2690,7 @@ values (
   'matching',
   null,
   'Ordne jeden Vor- oder Nachteil der passenden Organisationsform zu.',
-  'Rein: klare Macht, hoher Aufwand, Rückkehrproblem. Matrix: flexibel, aber zwei Vorgesetzte. Einfluss: billig, aber ohne Durchsetzungskraft.',
+  'Die reine Projektorganisation bietet klare Befugnisse, kostet aber viel Aufwand und bringt das Rückkehrproblem mit. Die Matrix ist flexibel, dafür gibt es zwei Vorgesetzte. Die Einflussorganisation ist günstig, hat aber keine Durchsetzungskraft.',
   2,
   '{}',
   null,
@@ -2809,7 +2810,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Ziele und Nicht-Ziele des Projekts vorstellen","is_correct":true,"rationale":"Das gemeinsame Verständnis der Ziele ist der wichtigste Zweck des Kick-offs."},{"text":"Rollen und Zuständigkeiten klären","is_correct":true,"rationale":"Jede Person muss wissen, wer wofür verantwortlich ist."},{"text":"Kommunikationswege und Spielregeln vereinbaren","is_correct":true,"rationale":"Zum Beispiel Termine für Statusmeetings und Kanäle für Rückfragen."},{"text":"Das Projektergebnis abnehmen","is_correct":false,"rationale":"Die Abnahme steht am Ende des Projekts, nicht am Anfang."},{"text":"Detaillierte Code-Reviews durchführen","is_correct":false,"rationale":"Zum Projektstart gibt es noch keinen Code und Reviews sind keine Aufgabe des Kick-offs."}]}'::jsonb,
+  '{"choices":[{"text":"Ziele und Nicht-Ziele des Projekts vorstellen","is_correct":true,"rationale":"Das gemeinsame Verständnis der Ziele ist der wichtigste Zweck des Kick-offs."},{"text":"Rollen und Zuständigkeiten klären","is_correct":true,"rationale":"Jede Person muss wissen, wer wofür verantwortlich ist."},{"text":"Kommunikationswege und Spielregeln vereinbaren","is_correct":true,"rationale":"Zum Beispiel Termine für Statusmeetings und Kanäle für Rückfragen."},{"text":"Das Projektergebnis abnehmen","is_correct":false,"rationale":"Die Abnahme steht am Ende des Projekts, nicht am Anfang."},{"text":"Detaillierte Code-Reviews durchführen","is_correct":false,"rationale":"Zum Projektstart gibt es noch keinen Code, und Reviews sind keine Aufgabe des Kick-offs."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -2892,11 +2893,11 @@ values (
   'matching',
   'Die Projektleitung bereitet den Statusbericht vor und bewertet jede Lage mit einer Ampelfarbe.',
   'Ordne jeder Lage die passende Ampelfarbe zu.',
-  'Die Ampel im Statusbericht: grün = im Plan, gelb = Abweichung, die die Projektleitung selbst steuert, rot = Rahmen gefährdet, Entscheidung des Lenkungsausschusses nötig. Rot ist ein Warnsignal, kein automatischer Abbruch.',
+  'Im Statusbericht heißt Grün: alles im Plan. Gelb steht für eine Abweichung, die die Projektleitung selbst steuert. Bei Rot ist der Rahmen gefährdet, und der Lenkungsausschuss muss entscheiden. Rot ist ein Warnsignal, kein automatischer Abbruch.',
   2,
   '{}',
   null,
-  '{"buckets":["Grün","Gelb","Rot"],"match_items":[{"text":"Ein Arbeitspaket ist zwei Tage im Verzug; die Projektleitung gleicht das durch Umplanung aus.","bucket":1,"rationale":"Abweichung, die die Projektleitung selbst steuert."},{"text":"Alle Arbeitspakete liegen im Zeitplan.","bucket":0,"rationale":"Im Plan: Keine Maßnahme nötig."},{"text":"Das Budget wird um 20 % überschritten, wenn der vereinbarte Umfang geliefert wird.","bucket":2,"rationale":"Der Kostenrahmen ist gefährdet: Der Lenkungsausschuss muss entscheiden."},{"text":"Eine Entwicklerin fällt eine Woche aus; die Projektleitung verteilt ihre Aufgaben im Team um.","bucket":1,"rationale":"Abweichung, die sich innerhalb des Auftrags ausgleichen lässt."},{"text":"Der Endtermin ist ohne zusätzliches Personal nicht mehr zu halten.","bucket":2,"rationale":"Der Terminrahmen ist gefährdet: Es braucht eine Entscheidung von oben."},{"text":"Die Kosten liegen 1 % unter dem Plan.","bucket":0,"rationale":"Im Plan, also grün."}]}'::jsonb,
+  '{"buckets":["Grün","Gelb","Rot"],"match_items":[{"text":"Ein Arbeitspaket ist zwei Tage im Verzug; die Projektleitung gleicht das durch Umplanung aus.","bucket":1,"rationale":"Abweichung, die die Projektleitung selbst steuert."},{"text":"Alle Arbeitspakete liegen im Zeitplan.","bucket":0,"rationale":"Alles im Plan, es ist keine Maßnahme nötig."},{"text":"Das Budget wird um 20 % überschritten, wenn der vereinbarte Umfang geliefert wird.","bucket":2,"rationale":"Der Kostenrahmen ist gefährdet: Der Lenkungsausschuss muss entscheiden."},{"text":"Eine Entwicklerin fällt eine Woche aus; die Projektleitung verteilt ihre Aufgaben im Team um.","bucket":1,"rationale":"Abweichung, die sich innerhalb des Auftrags ausgleichen lässt."},{"text":"Der Endtermin ist ohne zusätzliches Personal nicht mehr zu halten.","bucket":2,"rationale":"Der Terminrahmen ist gefährdet: Es braucht eine Entscheidung von oben."},{"text":"Die Kosten liegen 1 % unter dem Plan.","bucket":0,"rationale":"Im Plan, also grün."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -2979,7 +2980,7 @@ values (
   'matching',
   null,
   'Ordne jeder Gruppe die passende Strategie der Stakeholder-Matrix zu.',
-  'Hoch/hoch: eng einbinden. Hoch/gering: zufriedenstellen. Gering/hoch: informieren. Gering/gering: beobachten. Der Betriebsrat ist das klassische Beispiel für „zufriedenstellen“.',
+  'Wer viel Einfluss und großes Interesse hat, wird eng eingebunden. Viel Einfluss bei wenig Interesse heißt zufriedenstellen, wenig Einfluss bei großem Interesse informieren. Ist beides gering, genügt beobachten. Der Betriebsrat ist das klassische Beispiel für „zufriedenstellen“.',
   2,
   '{}',
   null,
@@ -3037,7 +3038,7 @@ values (
   'open',
   'Die Beschäftigten der Buchhaltung werden täglich mit der neuen Software arbeiten. Auf Projektentscheidungen haben sie kaum Einfluss. Nach der Stakeholder-Matrix gilt für sie die Strategie „informieren“.',
   'Nenne drei Maßnahmen, mit denen die Projektleitung diese Gruppe auf dem Laufenden hält.',
-  'Je Nennung 1 Punkt, höchstens 3 Punkte. Geringer Einfluss, hohes Interesse → informieren: Die Gruppe will und muss Bescheid wissen, entscheidet aber nicht mit.',
+  'Je Nennung 1 Punkt, höchstens 3 Punkte. Bei geringem Einfluss und hohem Interesse gilt „informieren“: Die Gruppe will und muss Bescheid wissen, entscheidet aber nicht mit.',
   1,
   '{}',
   null,
@@ -3211,7 +3212,7 @@ values (
   'matching',
   null,
   'In welcher Phase entsteht das jeweilige Ergebnis?',
-  'Initialisierung: Auftrag. Definition: Ziele, Anforderungen, Machbarkeit. Planung: Struktur, Termine, Kosten. Abschluss: Bericht und Lessons Learned.',
+  'In der Initialisierung entsteht der Auftrag. Die Definition klärt Ziele, Anforderungen und Machbarkeit. Die Planung liefert Struktur, Termine und Kosten, der Abschluss den Bericht und die Lessons Learned.',
   2,
   '{}',
   null,
@@ -3360,7 +3361,7 @@ values (
   3,
   '{}',
   null,
-  '{"choices":[{"text":"Projektphasen beschreiben das Management des Projekts, Wasserfallphasen die Entwicklung des Produkts.","is_correct":true,"rationale":"Die DIN-Phasen gelten für jedes Projekt; die Wasserfallphasen sind ein Vorgehensmodell für die Entwicklung."},{"text":"Beides ist dasselbe, nur mit anderen Namen.","is_correct":false,"rationale":"Die Blickwinkel sind verschieden: Führung vs. Entwicklung."},{"text":"Agile Projekte haben keinen Anfang und kein Ende.","is_correct":false,"rationale":"Auch ein Scrum-Projekt wird beauftragt und abgeschlossen."},{"text":"Die Implementierung ist eine Phase nach DIN 69901.","is_correct":false,"rationale":"Die DIN-Phasen sind Initialisierung, Definition, Planung, Steuerung und Abschluss."}]}'::jsonb,
+  '{"choices":[{"text":"Projektphasen beschreiben das Management des Projekts, Wasserfallphasen die Entwicklung des Produkts.","is_correct":true,"rationale":"Die DIN-Phasen gelten für jedes Projekt; die Wasserfallphasen sind ein Vorgehensmodell für die Entwicklung."},{"text":"Beides ist dasselbe, nur mit anderen Namen.","is_correct":false,"rationale":"Die Blickwinkel sind verschieden: hier die Führung, dort die Entwicklung."},{"text":"Agile Projekte haben keinen Anfang und kein Ende.","is_correct":false,"rationale":"Auch ein Scrum-Projekt wird beauftragt und abgeschlossen."},{"text":"Die Implementierung ist eine Phase nach DIN 69901.","is_correct":false,"rationale":"Die DIN-Phasen sind Initialisierung, Definition, Planung, Steuerung und Abschluss."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -3538,7 +3539,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":3,"criteria":[{"text":"Der Kunde sieht lauffähige Software erst spät. Zwischenergebnisse sind Dokumente.","points":1,"keywords":["erst spät","erst am Ende","lauffähig","spät"]},{"text":"Späte Änderungen sind teuer, weil abgeschlossene Phasen nachgearbeitet werden müssen.","points":1,"keywords":["Änderungen","teuer","unflexibel","starr","Change Request"]},{"text":"Fehler aus der Analyse fallen oft erst im Test auf.","points":1,"keywords":["Fehler","spät entdeckt","erst im Test","Rule of Ten"]},{"text":"Rückmeldung des Kunden kommt spät: Gefahr, am Bedarf vorbeizuentwickeln.","points":1,"keywords":["Rückmeldung","Feedback","am Bedarf vorbei","Kunde"]},{"text":"Die Anforderungen müssen zu Beginn vollständig bekannt sein.","points":1,"keywords":["vollständig","zu Beginn","vorab","von Anfang an"]}],"sample_solution":"Der Kunde sieht lauffähige Software erst am Ende. Späte Änderungen sind teuer, weil alle abgeschlossenen Phasen nachgearbeitet werden müssen. Fehler aus der Analyse fallen oft erst im Test auf."}'::jsonb,
+  '{"points":3,"criteria":[{"text":"Der Kunde sieht lauffähige Software erst spät. Zwischenergebnisse sind Dokumente.","points":1,"keywords":["erst spät","erst am Ende","lauffähig","spät"]},{"text":"Späte Änderungen sind teuer, weil abgeschlossene Phasen nachgearbeitet werden müssen.","points":1,"keywords":["Änderungen","teuer","unflexibel","starr","Change Request"]},{"text":"Fehler aus der Analyse fallen oft erst im Test auf.","points":1,"keywords":["Fehler","spät entdeckt","erst im Test","Rule of Ten"]},{"text":"Die Rückmeldung des Kunden kommt spät, deshalb droht eine Entwicklung am Bedarf vorbei.","points":1,"keywords":["Rückmeldung","Feedback","am Bedarf vorbei","Kunde"]},{"text":"Die Anforderungen müssen zu Beginn vollständig bekannt sein.","points":1,"keywords":["vollständig","zu Beginn","vorab","von Anfang an"]}],"sample_solution":"Der Kunde sieht lauffähige Software erst am Ende. Späte Änderungen sind teuer, weil alle abgeschlossenen Phasen nachgearbeitet werden müssen. Fehler aus der Analyse fallen oft erst im Test auf."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -3650,7 +3651,7 @@ values (
   'matching',
   'Ein Team entwickelt in Sprints einen Webshop.',
   'Ist das beschriebene Vorgehen iterativ oder inkrementell?',
-  'Iterativ = in Wiederholungen verbessern. Inkrementell = in Teilstücken erweitern. Scrum ist beides: Jeder Sprint fügt etwas hinzu und verbessert Vorhandenes. Der Wasserfall ist dagegen sequenziell.',
+  'Iterativ heißt, in Wiederholungen zu verbessern. Inkrementell heißt, in Teilstücken zu erweitern. Scrum ist beides: Jeder Sprint fügt etwas hinzu und verbessert Vorhandenes. Der Wasserfall ist dagegen sequenziell.',
   2,
   '{}',
   null,
@@ -3737,7 +3738,7 @@ values (
   'pairs',
   null,
   'Verbinde jede höher geschätzte Seite der vier Werte des agilen Manifests mit ihrem Gegenstück.',
-  'Die vier Werte: Individuen und Interaktionen, funktionierende Software, Zusammenarbeit mit dem Kunden und Reagieren auf Veränderung sind wichtiger als die jeweilige rechte Seite. Die rechte Seite bleibt trotzdem wertvoll.',
+  'Individuen und Interaktionen, funktionierende Software, Zusammenarbeit mit dem Kunden und Reagieren auf Veränderung zählen mehr als ihr jeweiliges Gegenstück auf der rechten Seite. Wertvoll bleibt die rechte Seite trotzdem.',
   2,
   '{}',
   null,
@@ -3794,7 +3795,7 @@ values (
   's-manifest',
   'single',
   'Ein Kollege sagt: „Agil heißt, wir dokumentieren nichts mehr.“',
-  'Wie ist die Aussage einzuordnen?',
+  'Wie ordnest du die Aussage ein?',
   'Links vor rechts, nicht links statt rechts: Agilität verschiebt Schwerpunkte, sie schafft nichts ab.',
   2,
   '{}',
@@ -3882,7 +3883,7 @@ values (
   'cloze',
   null,
   'Ergänze die Eckdaten des agilen Manifests.',
-  'Das agile Manifest entstand 2001 als Antwort auf schwerfällige, dokumentlastige Vorgehensweisen. 17 Softwareentwickler formulierten vier Werte und zwölf Prinzipien: Werte und Prinzipien, keine konkrete Methode.',
+  'Das agile Manifest entstand 2001 als Antwort auf schwerfällige, dokumentlastige Vorgehensweisen. 17 Softwareentwickler formulierten vier Werte und zwölf Prinzipien. Eine konkrete Methode beschreibt das Manifest nicht.',
   2,
   '{}',
   null,
@@ -3998,7 +3999,7 @@ values (
   'cloze',
   null,
   'Ergänze die Beschreibung des Scrum Teams laut Scrum Guide.',
-  'Ein Scrum Team besteht aus einem Product Owner, einem Scrum Master und Developers. Es umfasst typischerweise zehn oder weniger Personen. Kleine Teams kommunizieren besser. Unterteams und Hierarchien gibt es nicht.',
+  'Ein Scrum Team besteht aus einem Product Owner, einem Scrum Master und Developers. Es umfasst typischerweise zehn oder weniger Personen, denn kleine Teams kommunizieren besser. Unterteams und Hierarchien gibt es nicht.',
   2,
   '{}',
   null,
@@ -4172,7 +4173,7 @@ values (
   'table',
   null,
   'Trage zu jedem Artefakt das zugehörige Commitment ein.',
-  'Product Backlog: Produktziel, Sprint Backlog: Sprintziel, Increment: Definition of Done. Die Velocity ist eine Messgröße, kein Commitment.',
+  'Zum Product Backlog gehört das Produktziel, zum Sprint Backlog das Sprintziel und zum Increment die Definition of Done. Die Velocity ist eine Messgröße, kein Commitment.',
   2,
   '{}',
   null,
@@ -4292,7 +4293,7 @@ values (
   2,
   '{}',
   null,
-  '{"buckets":["Definition of Done","Akzeptanzkriterium"],"match_items":[{"text":"Der Code wurde von einer zweiten Person geprüft.","bucket":0,"rationale":"Gilt für jeden Eintrag, also handwerkliche Qualität."},{"text":"Alle automatischen Tests sind grün.","bucket":0,"rationale":"Teamweiter Qualitätsstandard."},{"text":"Bei falschem Passwort erscheint eine Fehlermeldung.","bucket":1,"rationale":"Fachliches Verhalten einer Login-Story."},{"text":"Die Sendungsnummer wird auf der Bestellseite angezeigt.","bucket":1,"rationale":"Fachliches Verhalten einer bestimmten Story."},{"text":"Die Dokumentation ist aktualisiert.","bucket":0,"rationale":"Gilt für alle Einträge."},{"text":"Der Warenkorb zeigt den Gesamtpreis inklusive Mehrwertsteuer.","bucket":1,"rationale":"Fachliche Anforderung an eine Story."}]}'::jsonb,
+  '{"buckets":["Definition of Done","Akzeptanzkriterium"],"match_items":[{"text":"Der Code wurde von einer zweiten Person geprüft.","bucket":0,"rationale":"Gilt für jeden Eintrag und betrifft die handwerkliche Qualität."},{"text":"Alle automatischen Tests sind grün.","bucket":0,"rationale":"Teamweiter Qualitätsstandard."},{"text":"Bei falschem Passwort erscheint eine Fehlermeldung.","bucket":1,"rationale":"Fachliches Verhalten einer Login-Story."},{"text":"Die Sendungsnummer wird auf der Bestellseite angezeigt.","bucket":1,"rationale":"Fachliches Verhalten einer bestimmten Story."},{"text":"Die Dokumentation ist aktualisiert.","bucket":0,"rationale":"Gilt für alle Einträge."},{"text":"Der Warenkorb zeigt den Gesamtpreis inklusive Mehrwertsteuer.","bucket":1,"rationale":"Fachliche Anforderung an eine Story."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -4375,7 +4376,7 @@ values (
   'matching',
   null,
   'Ordne jede Beschreibung dem passenden Event zu.',
-  'Planning: was und wie. Daily: nächste 24 Stunden. Review: Produkt mit Stakeholdern. Retrospektive: Zusammenarbeit im Team.',
+  'Das Planning klärt, was im Sprint entsteht und wie. Das Daily plant die nächsten 24 Stunden. Im Review geht es um das Produkt und die Stakeholder, in der Retrospektive um die Zusammenarbeit im Team.',
   2,
   '{}',
   null,
@@ -4816,7 +4817,7 @@ values (
   'ordering',
   null,
   'Bringe die Arbeitsschritte der Netzplantechnik in die richtige Reihenfolge.',
-  'Erst die Struktur, dann die Zeitrechnung in beide Richtungen, zuletzt die Auswertung.',
+  'Erst kommt die Struktur, dann die Zeitrechnung in beide Richtungen und zuletzt die Auswertung.',
   2,
   '{}',
   null,
@@ -5172,7 +5173,7 @@ C: 6 Tage, nach A
 D: 2 Tage, nach B
 E: 4 Tage, nach C und D',
   'Wie groß ist der SAZ von Vorgang D?',
-  'Vorwärts: E endet bei 15: Das ist die Projektdauer.
+  'Vorwärts endet E bei 15, das ist die Projektdauer.
 E: SEZ 15, SAZ 15 - 4 = 11.
 D: SEZ = SAZ von E = 11, SAZ = 11 - 2 = 9.',
   2,
@@ -5504,7 +5505,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Die Nachfolger beginnen 2 Tage später, das Projektende bleibt unverändert.","is_correct":true,"rationale":"3 Tage > FP 1 → Nachfolger um 3 - 1 = 2 Tage später; 3 Tage ≤ GP 4 → Projektende sicher."},{"text":"Das Projektende verschiebt sich um 3 Tage.","is_correct":false,"rationale":"Dafür müsste die Verzögerung den Gesamtpuffer übersteigen."},{"text":"Nichts, weder Nachfolger noch Projektende sind betroffen.","is_correct":false,"rationale":"Die Verzögerung ist größer als der freie Puffer."},{"text":"Das Projektende verschiebt sich um 2 Tage.","is_correct":false,"rationale":"Das Projektende ist erst betroffen, wenn der Gesamtpuffer überschritten wird."}]}'::jsonb,
+  '{"choices":[{"text":"Die Nachfolger beginnen 2 Tage später, das Projektende bleibt unverändert.","is_correct":true,"rationale":"Die 3 Tage übersteigen den FP von 1, also starten die Nachfolger 3 - 1 = 2 Tage später. Der GP von 4 reicht dagegen aus, das Projektende bleibt."},{"text":"Das Projektende verschiebt sich um 3 Tage.","is_correct":false,"rationale":"Dafür müsste die Verzögerung den Gesamtpuffer übersteigen."},{"text":"Nichts, weder Nachfolger noch Projektende sind betroffen.","is_correct":false,"rationale":"Die Verzögerung ist größer als der freie Puffer."},{"text":"Das Projektende verschiebt sich um 2 Tage.","is_correct":false,"rationale":"Das Projektende ist erst betroffen, wenn der Gesamtpuffer überschritten wird."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -5755,7 +5756,7 @@ values (
   'multiple',
   null,
   'Mit welchen Maßnahmen lässt sich die Projektdauer verkürzen?',
-  'Nur Maßnahmen auf dem kritischen Pfad verkürzen das Projekt und nur so lange, bis ein anderer Weg kritisch wird. Danach immer neu rechnen.',
+  'Nur Maßnahmen auf dem kritischen Pfad verkürzen das Projekt, und auch das nur so lange, bis ein anderer Weg kritisch wird. Rechne danach immer neu.',
   2,
   '{}',
   null,
@@ -5788,7 +5789,7 @@ values (
   2,
   '{}',
   null,
-  '{"diagram":{"type":"gantt","vorgaenge":[{"label":"A Analyse","start":0,"dauer":3},{"label":"B Konzept","start":3,"dauer":2},{"label":"C Hardware","start":3,"dauer":4},{"label":"D Test","start":7,"dauer":1}],"einheit":"Tag"},"choices":[{"text":"B mit 2 Tagen","is_correct":true,"rationale":"B endet bei 5, D beginnt erst bei 7 - 2 Tage Luft."},{"text":"C mit 4 Tagen","is_correct":false,"rationale":"C endet bei 7 und D beginnt sofort, also C ist kritisch. 4 ist nur seine Dauer."},{"text":"D mit 1 Tag","is_correct":false,"rationale":"D ist der Endvorgang auf dem kritischen Pfad; 1 ist seine Dauer."},{"text":"A mit 3 Tagen","is_correct":false,"rationale":"A ist der Startvorgang; B und C beginnen direkt danach."}]}'::jsonb,
+  '{"diagram":{"type":"gantt","vorgaenge":[{"label":"A Analyse","start":0,"dauer":3},{"label":"B Konzept","start":3,"dauer":2},{"label":"C Hardware","start":3,"dauer":4},{"label":"D Test","start":7,"dauer":1}],"einheit":"Tag"},"choices":[{"text":"B mit 2 Tagen","is_correct":true,"rationale":"B endet bei 5, D beginnt erst bei 7. Das sind 2 Tage Luft."},{"text":"C mit 4 Tagen","is_correct":false,"rationale":"C endet bei 7 und D beginnt sofort, C ist also kritisch. Die 4 ist nur seine Dauer."},{"text":"D mit 1 Tag","is_correct":false,"rationale":"D ist der Endvorgang auf dem kritischen Pfad; 1 ist seine Dauer."},{"text":"A mit 3 Tagen","is_correct":false,"rationale":"A ist der Startvorgang; B und C beginnen direkt danach."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -5842,7 +5843,7 @@ values (
   'matching',
   null,
   'Nach welchem Prinzip ist der jeweilige PSP gegliedert?',
-  'Objektorientiert: Bestandteile des Ergebnisses. Funktionsorientiert: Tätigkeiten. Phasenorientiert: Projektphasen.',
+  'Objektorientiert gliedert nach Bestandteilen des Ergebnisses, funktionsorientiert nach Tätigkeiten und phasenorientiert nach Projektphasen.',
   2,
   '{}',
   null,
@@ -5933,7 +5934,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"2.3","is_correct":true,"rationale":"Drittes Element unter Teilaufgabe 2."},{"text":"3.2","is_correct":false,"rationale":"Das wäre das zweite Element unter Teilaufgabe 3."},{"text":"2.0.3","is_correct":false,"rationale":"Jede Ebene bekommt genau eine Stelle. Eine Null dazwischen gibt es nicht."},{"text":"3","is_correct":false,"rationale":"Das wäre eine eigene Teilaufgabe auf Ebene 1."}]}'::jsonb,
+  '{"choices":[{"text":"2.3","is_correct":true,"rationale":"Drittes Element unter Teilaufgabe 2."},{"text":"3.2","is_correct":false,"rationale":"Das wäre das zweite Element unter Teilaufgabe 3."},{"text":"2.0.3","is_correct":false,"rationale":"Jede Ebene bekommt genau eine Zahl. Eine Null dazwischen gibt es nicht."},{"text":"3","is_correct":false,"rationale":"Das wäre eine eigene Teilaufgabe auf Ebene 1."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -6045,13 +6046,13 @@ values (
   'terminplanung',
   't-gantt',
   'single',
-  'Gleicher Plan wie zuvor: A 0-2, B 2-4, C 2-5, D 5-7 (braucht B und C), E 7-8.',
+  'Der Plan für einen Serverumzug: A 0-2, B 2-4, C 2-5, D 5-7 (braucht B und C), E 7-8.',
   'Welcher Vorgang hat Puffer, und wie viel?',
   'D braucht B und C und startet beim späteren Ende, also bei 5 (Ende von C). B ist schon bei 4 fertig und hat damit 5 - 4 = 1 Tag Puffer. Alle anderen Vorgänge sind kritisch.',
   2,
   '{}',
   null,
-  '{"diagram":{"type":"gantt","vorgaenge":[{"label":"A Umzug planen","start":0,"dauer":2,"kritisch":true},{"label":"B Rack aufbauen","start":2,"dauer":2},{"label":"C Daten sichern","start":2,"dauer":3,"kritisch":true},{"label":"D Server umziehen","start":5,"dauer":2,"kritisch":true},{"label":"E Test","start":7,"dauer":1,"kritisch":true},{"label":"Server live","start":8,"dauer":0,"kritisch":true}],"einheit":"Tag"},"choices":[{"text":"B, 1 Tag","is_correct":true,"rationale":"B endet bei 4, D beginnt erst bei 5. B darf 1 Tag später fertig werden."},{"text":"B, 2 Tage","is_correct":false,"rationale":"D startet bei 5, B endet bei 4: der Abstand ist 1 Tag, nicht 2."},{"text":"C, 1 Tag","is_correct":false,"rationale":"C endet genau bei 5, wenn D beginnt, also C liegt auf dem kritischen Pfad."},{"text":"Kein Vorgang hat Puffer","is_correct":false,"rationale":"B endet vor dem Start seines Nachfolgers D."}]}'::jsonb,
+  '{"diagram":{"type":"gantt","vorgaenge":[{"label":"A Umzug planen","start":0,"dauer":2,"kritisch":true},{"label":"B Rack aufbauen","start":2,"dauer":2},{"label":"C Daten sichern","start":2,"dauer":3,"kritisch":true},{"label":"D Server umziehen","start":5,"dauer":2,"kritisch":true},{"label":"E Test","start":7,"dauer":1,"kritisch":true},{"label":"Server live","start":8,"dauer":0,"kritisch":true}],"einheit":"Tag"},"choices":[{"text":"B, 1 Tag","is_correct":true,"rationale":"B endet bei 4, D beginnt erst bei 5. B darf 1 Tag später fertig werden."},{"text":"B, 2 Tage","is_correct":false,"rationale":"D startet bei 5, B endet bei 4. Der Abstand beträgt also 1 Tag, nicht 2."},{"text":"C, 1 Tag","is_correct":false,"rationale":"C endet genau bei 5, wenn D beginnt. C liegt also auf dem kritischen Pfad."},{"text":"Kein Vorgang hat Puffer","is_correct":false,"rationale":"B endet vor dem Start seines Nachfolgers D."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -6134,11 +6135,11 @@ values (
   'single',
   'In der Meilensteintrendanalyse springt die Linie eines Meilensteins von Bericht zu Bericht abwechselnd nach oben und unten, endet aber beim ursprünglich geplanten Termin.',
   'Was sagt dieser Verlauf aus?',
-  'MTA-Lesehilfe: waagerecht = Termin hält, steigend = Verzug, fallend = früher fertig, Zickzack = unsichere Planung. Die MTA zeigt den Trend, nicht die Ursache.',
+  'So liest du die MTA: Eine waagerechte Linie heißt, der Termin hält, eine steigende Verzug, eine fallende früher fertig. Zickzack steht für unsichere Planung. Die MTA zeigt den Trend, nicht die Ursache.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Die Prognosen waren unsicher, die Planung hat stark geschwankt.","is_correct":true,"rationale":"Ein Zickzack zeigt instabile Schätzungen, also ein Warnsignal für die Planungsqualität."},{"text":"Das Projekt war gut geplant, weil der Termin am Ende stimmt.","is_correct":false,"rationale":"Der Endtermin passt zufällig, aber die Schwankungen zeigen unzuverlässige Prognosen."},{"text":"Der Meilenstein wurde mehrfach erreicht.","is_correct":false,"rationale":"Ein Meilenstein wird genau einmal erreicht, wenn die Linie die Diagonale trifft."},{"text":"Es bestand nie Handlungsbedarf.","is_correct":false,"rationale":"Jeder Ausschlag nach oben war ein angekündigter Verzug, der Reaktion erforderte."}]}'::jsonb,
+  '{"choices":[{"text":"Die Prognosen waren unsicher, die Planung hat stark geschwankt.","is_correct":true,"rationale":"Ein Zickzack zeigt instabile Schätzungen und ist ein Warnsignal für die Planungsqualität."},{"text":"Das Projekt war gut geplant, weil der Termin am Ende stimmt.","is_correct":false,"rationale":"Der Endtermin passt zufällig, aber die Schwankungen zeigen unzuverlässige Prognosen."},{"text":"Der Meilenstein wurde mehrfach erreicht.","is_correct":false,"rationale":"Ein Meilenstein wird genau einmal erreicht, wenn die Linie die Diagonale trifft."},{"text":"Es bestand nie Handlungsbedarf.","is_correct":false,"rationale":"Jeder Ausschlag nach oben war ein angekündigter Verzug, der Reaktion erforderte."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -6253,7 +6254,7 @@ values (
   'pairs',
   'In der Ressourcenplanung werden vier Begriffe oft verwechselt.',
   'Ordne jedem Begriff seine Bedeutung zu.',
-  'Aufwand = Arbeitsmenge (PT), Dauer = Kalenderzeit (AT). Mehr Personen senken die Dauer, nicht den Aufwand. Die Kapazität ergibt sich aus Arbeitstagen mal Verfügbarkeit.',
+  'Aufwand = Arbeitsmenge (PT), Dauer = Zeitspanne (AT). Mehr Personen senken die Dauer, nicht den Aufwand. Die Kapazität ergibt sich aus Arbeitstagen mal Verfügbarkeit.',
   2,
   '{}',
   null,
@@ -6286,7 +6287,7 @@ values (
 Ben: 21 AT × 0,5 = 10,5 PT
 Can: (21 - 6) AT × 0,8 = 15 × 0,8 = 12,0 PT
 Summe: 21,0 + 10,5 + 12,0 = 43,5 PT
-Wichtig: erst die Urlaubstage abziehen, dann mit der Verfügbarkeit multiplizieren.',
+Ziehe erst die Urlaubstage ab und multipliziere dann mit der Verfügbarkeit.',
   2,
   '{}',
   null,
@@ -6382,7 +6383,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Einen Vorgang mit ausreichendem Puffer in KW 14 verschieben","is_correct":true,"rationale":"Kapazitätsausgleich innerhalb des Puffers kostet weder Geld noch Termin."},{"text":"Arbeit auf eine Kollegin mit freier Kapazität umverteilen","is_correct":true,"rationale":"Die Last wird auf mehrere Schultern verteilt."},{"text":"Für KW 12 externe Unterstützung einkaufen","is_correct":true,"rationale":"Zusätzliche Kapazität löst den Engpass, aber kostet aber Geld."},{"text":"Die Überlast ignorieren, weil sie nur eine Woche dauert","is_correct":false,"rationale":"Eine Planung über 100 % ist nicht umsetzbar. Der Verzug kommt sicher."},{"text":"Einen kritischen Vorgang nach hinten schieben, ohne den Endtermin zu ändern","is_correct":false,"rationale":"Kritische Vorgänge haben keinen Puffer: Jede Verschiebung verschiebt das Projektende."}]}'::jsonb,
+  '{"choices":[{"text":"Einen Vorgang mit ausreichendem Puffer in KW 14 verschieben","is_correct":true,"rationale":"Kapazitätsausgleich innerhalb des Puffers kostet weder Geld noch Termin."},{"text":"Arbeit auf eine Kollegin mit freier Kapazität umverteilen","is_correct":true,"rationale":"Die Last wird auf mehrere Schultern verteilt."},{"text":"Für KW 12 externe Unterstützung einkaufen","is_correct":true,"rationale":"Zusätzliche Kapazität löst den Engpass, kostet aber Geld."},{"text":"Die Überlast ignorieren, weil sie nur eine Woche dauert","is_correct":false,"rationale":"Eine Planung über 100 % ist nicht umsetzbar. Der Verzug kommt sicher."},{"text":"Einen kritischen Vorgang nach hinten schieben, ohne den Endtermin zu ändern","is_correct":false,"rationale":"Kritische Vorgänge haben keinen Puffer: Jede Verschiebung verschiebt das Projektende."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -6436,7 +6437,7 @@ values (
   'ordering',
   null,
   'Bringe die Schritte des Risikomanagements in die richtige Reihenfolge.',
-  'Ein Kreislauf: Nach dem Überwachen beginnt die Identifikation neuer Risiken von vorn.',
+  'Das Risikomanagement ist ein Kreislauf: Nach dem Überwachen beginnt die Identifikation neuer Risiken von vorn.',
   2,
   '{}',
   null,
@@ -6614,7 +6615,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":3,"criteria":[{"text":"Er zeigt frühzeitig an, dass ein Risiko wahrscheinlicher wird oder bald eintreten könnte.","points":2,"keywords":["frühzeitig","rechtzeitig","Anzeichen","wahrscheinlicher","bevorsteht"]},{"text":"So bleibt Zeit, die vorbereitete Maßnahme zu starten.","points":1,"keywords":["Maßnahme","reagieren","gegensteuern","einleiten"]},{"text":"Beispiel: Der Lieferant bestätigt den Liefertermin nicht.","points":1,"keywords":["Lieferant","Liefertermin","Krankmeldungen","Überstunden","Ist-Kosten"]}],"sample_solution":"Ein Frühwarnindikator ist ein beobachtbares Anzeichen dafür, dass ein Risiko wahrscheinlicher wird. So kann die vorbereitete Maßnahme rechtzeitig gestartet werden. Beispiel: Der Lieferant bestätigt den Liefertermin nicht: Hinweis auf drohenden Lieferverzug."}'::jsonb,
+  '{"points":3,"criteria":[{"text":"Er zeigt frühzeitig an, dass ein Risiko wahrscheinlicher wird oder bald eintreten könnte.","points":2,"keywords":["frühzeitig","rechtzeitig","Anzeichen","wahrscheinlicher","bevorsteht"]},{"text":"So bleibt Zeit, die vorbereitete Maßnahme zu starten.","points":1,"keywords":["Maßnahme","reagieren","gegensteuern","einleiten"]},{"text":"Beispiel: Der Lieferant bestätigt den Liefertermin nicht.","points":1,"keywords":["Lieferant","Liefertermin","Krankmeldungen","Überstunden","Ist-Kosten"]}],"sample_solution":"Ein Frühwarnindikator ist ein beobachtbares Anzeichen dafür, dass ein Risiko wahrscheinlicher wird. So kann die vorbereitete Maßnahme rechtzeitig gestartet werden. Beispiel: Der Lieferant bestätigt den Liefertermin nicht, was auf einen drohenden Lieferverzug hinweist."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -6792,11 +6793,11 @@ values (
   'Risiko A: 50 % Wahrscheinlichkeit, 4.000 € Schaden.
 Risiko B: 2 % Wahrscheinlichkeit, 100.000 € Schaden.',
   'Welche Aussage ist richtig?',
-  'A: 0,50 × 4.000 € = 2.000 €. B: 0,02 × 100.000 € = 2.000 €. Die Rechnung macht beide gleich: Hier zeigt sich die Schwäche des Risikowerts: Seltene, aber schwere Risiken muss man gesondert betrachten.',
+  'A: 0,50 × 4.000 € = 2.000 €. B: 0,02 × 100.000 € = 2.000 €. Rechnerisch sind beide gleich. Hier zeigt sich die Schwäche des Risikowerts: Seltene, aber schwere Risiken muss man gesondert betrachten.',
   3,
   '{}',
   null,
-  '{"choices":[{"text":"Beide haben einen Risikowert von 2.000 €; B verdient wegen des hohen Einzelschadens trotzdem besondere Beachtung.","is_correct":true,"rationale":"Gleicher Erwartungswert, aber ein Eintritt von B wäre ungleich schwerer zu verkraften."},{"text":"A ist wichtiger, weil es wahrscheinlicher ist.","is_correct":false,"rationale":"Priorisiert wird nach dem Produkt, nicht nach der Wahrscheinlichkeit allein."},{"text":"B hat den höheren Risikowert.","is_correct":false,"rationale":"0,02 × 100.000 € = 2.000 €, also genau wie A."},{"text":"Beide können ignoriert werden, weil ihr Risikowert klein ist.","is_correct":false,"rationale":"Auch kleine Risikowerte werden bewusst behandelt, B könnte existenzgefährdend sein."}]}'::jsonb,
+  '{"choices":[{"text":"Beide haben einen Risikowert von 2.000 €; B verdient wegen des hohen Einzelschadens trotzdem besondere Beachtung.","is_correct":true,"rationale":"Gleicher Erwartungswert, aber ein Eintritt von B wäre ungleich schwerer zu verkraften."},{"text":"A ist wichtiger, weil es wahrscheinlicher ist.","is_correct":false,"rationale":"Priorisiert wird nach dem Produkt, nicht nach der Wahrscheinlichkeit allein."},{"text":"B hat den höheren Risikowert.","is_correct":false,"rationale":"0,02 × 100.000 € = 2.000 €, also genau wie A."},{"text":"Beide können ignoriert werden, weil ihr Risikowert klein ist.","is_correct":false,"rationale":"Auch kleine Risikowerte werden bewusst behandelt. B könnte sogar die Existenz gefährden."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -6859,7 +6860,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Vermeiden","is_correct":true,"rationale":"Die riskante Ursache wird nicht eingegangen."},{"text":"Vermindern","is_correct":false,"rationale":"Dann würde man das neue Framework nutzen, aber z. B. mit Schulung absichern."},{"text":"Übertragen","is_correct":false,"rationale":"Dabei würden die Folgen auf Dritte verlagert."},{"text":"Akzeptieren","is_correct":false,"rationale":"Dann würde man das Framework bewusst trotz Risiko einsetzen."}]}'::jsonb,
+  '{"choices":[{"text":"Vermeiden","is_correct":true,"rationale":"Die riskante Ursache entfällt ganz."},{"text":"Vermindern","is_correct":false,"rationale":"Dann würde man das neue Framework nutzen, aber z. B. mit Schulung absichern."},{"text":"Übertragen","is_correct":false,"rationale":"Dabei würden die Folgen auf Dritte verlagert."},{"text":"Akzeptieren","is_correct":false,"rationale":"Dann würde man das Framework bewusst trotz Risiko einsetzen."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -6884,7 +6885,7 @@ values (
   'matching',
   null,
   'Ordne jede Maßnahme der passenden Risikostrategie zu.',
-  'Testfrage: Kann das Risiko danach noch eintreten? Nein -> vermeiden. Ja, aber seltener oder milder -> vermindern. Ja, aber ein Dritter trägt die Folgen -> übertragen. Ja, und man trägt es bewusst -> akzeptieren.',
+  'Frage dich: Kann das Risiko danach noch eintreten? Wenn nein, wird es vermieden. Tritt es seltener oder milder ein, wird es vermindert. Trägt ein Dritter die Folgen, wird es übertragen. Trägt man es bewusst selbst, wird es akzeptiert.',
   2,
   '{}',
   null,
@@ -7221,7 +7222,7 @@ values (
   'pairs',
   'Ein Systemhaus kalkuliert jedes Kundenprojekt zu drei Zeitpunkten.',
   'Ordne jeder Kalkulation Zeitpunkt und Zweck zu.',
-  'Vorkalkulation (vorher, für Angebot und Budget), Mitkalkulation (während, zur Steuerung), Nachkalkulation (danach, zum Abgleich mit den echten Kosten und als Lernquelle).',
+  'Die Vorkalkulation entsteht vor dem Projekt für Angebot und Budget, die Mitkalkulation dient währenddessen der Steuerung. Die Nachkalkulation gleicht danach mit den echten Kosten ab und ist eine Lernquelle.',
   1,
   '{}',
   null,
@@ -7408,7 +7409,7 @@ Anbieter C: Nutzwert 6,9, Serverstandort Wien.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"B","is_correct":true,"rationale":"A scheidet am K.-o.-Kriterium aus; von B und C hat B den höheren Nutzwert."},{"text":"A","is_correct":false,"rationale":"A verfehlt das Muss-Kriterium und scheidet vor jeder Punktrechnung aus."},{"text":"C","is_correct":false,"rationale":"C erfüllt das Muss-Kriterium, hat aber einen niedrigeren Nutzwert als B."},{"text":"Keiner, die Analyse muss neu gemacht werden","is_correct":false,"rationale":"Zwei Anbieter erfüllen das Muss-Kriterium, also die Entscheidung ist möglich."}]}'::jsonb,
+  '{"choices":[{"text":"B","is_correct":true,"rationale":"A scheidet am K.-o.-Kriterium aus; von B und C hat B den höheren Nutzwert."},{"text":"A","is_correct":false,"rationale":"A verfehlt das Muss-Kriterium und scheidet vor jeder Punktrechnung aus."},{"text":"C","is_correct":false,"rationale":"C erfüllt das Muss-Kriterium, hat aber einen niedrigeren Nutzwert als B."},{"text":"Keiner, die Analyse muss neu gemacht werden","is_correct":false,"rationale":"Zwei Anbieter erfüllen das Muss-Kriterium, die Entscheidung ist also möglich."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -7495,7 +7496,7 @@ Fremdbezug: 45 € je Stück, keine Fixkosten.',
   'Gleichsetzen: 9.000 + 15x = 45x
 9.000 = 30x
 x = 9.000 / 30 = 300 Stück
-Probe: make 9.000 € + 300 × 15 € = 13.500 €, buy 300 × 45 € = 13.500 €.
+Probe: Eigenfertigung 9.000 € + 300 × 15 € = 13.500 €, Fremdbezug 300 × 45 € = 13.500 €.
 Darunter ist der Fremdbezug günstiger, darüber die Eigenfertigung.',
   2,
   '{}',
@@ -7530,7 +7531,7 @@ Nutzungsdauer: 3 Jahre.',
   'Kauf: 18.000 € + 3 × 3.000 € = 27.000 €
 SaaS: 700 € × 36 Monate = 25.200 €
 Differenz: 27.000 € - 25.200 € = 1.800 € zugunsten von SaaS.
-Wichtig: Monatspreise auf dieselbe Nutzungsdauer hochrechnen.',
+Rechne Monatspreise immer auf dieselbe Nutzungsdauer hoch.',
   2,
   '{}',
   null,
@@ -7588,7 +7589,7 @@ values (
   'matching',
   null,
   'Spricht das Argument eher für Make oder für Buy?',
-  'Make: Kernkompetenz, sehr spezielle Anforderungen, Unabhängigkeit, vorhandenes Know-how. Buy: Zeitdruck, fehlendes Know-how, ausgereifte Standardprodukte, geringere Entwicklungskosten.',
+  'Für Make sprechen Kernkompetenz, sehr spezielle Anforderungen, Unabhängigkeit und vorhandenes Know-how. Für Buy sprechen Zeitdruck, fehlendes Know-how, ausgereifte Standardprodukte und geringere Entwicklungskosten.',
   2,
   '{}',
   null,
@@ -7828,7 +7829,7 @@ values (
   'single',
   'Das Diagramm zeigt Erlös (50 € je Stück), Gesamtkosten (10.000 € fix + 30 € je Stück) und Fixkosten eines Wartungspakets.',
   'Welche Aussage zum Diagramm ist richtig?',
-  'Break-even-Menge: 10.000 € / (50 € - 30 €) = 500 Stück. Links davon Verlust, rechts Gewinn; der senkrechte Abstand zwischen Erlös- und Kostengerade ist der Gewinn bzw. Verlust.',
+  'Break-even-Menge: 10.000 € / (50 € - 30 €) = 500 Stück. Links davon entsteht Verlust, rechts Gewinn. Der senkrechte Abstand zwischen Erlös- und Kostengerade ist der Gewinn bzw. Verlust.',
   2,
   '{}',
   null,
@@ -7861,7 +7862,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Abgenommen wird gegen das Vereinbarte: Nur was vereinbart ist, kann der Auftraggeber einfordern.","points":2,"keywords":["vereinbart","einfordern","Maßstab","Pflichtenheft"]},{"text":"Nur messbare Kriterien lassen eine eindeutige Entscheidung „erfüllt oder nicht erfüllt“ zu.","points":2,"keywords":["messbar","eindeutig","objektiv","Zielwert"]},{"text":"Prüfbare Kriterien vermeiden Streit und Verzögerungen bei der Abnahme.","points":2,"keywords":["Streit","Konflikt","Diskussion","Auslegung"]}],"sample_solution":"Bei der Abnahme wird das Ergebnis gegen die vereinbarten Anforderungen geprüft. „Schnell“ hat keinen Zielwert. Ob das Kriterium erfüllt ist, bleibt Ansichtssache. Mit „Antwortzeit höchstens 2 s“ lässt sich eindeutig entscheiden, und Streit bei der Abnahme wird vermieden."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Abgenommen wird gegen das Vereinbarte: Nur was vereinbart ist, kann der Auftraggeber einfordern.","points":2,"keywords":["vereinbart","einfordern","Maßstab","Pflichtenheft"]},{"text":"Nur messbare Kriterien lassen eine eindeutige Entscheidung „erfüllt oder nicht erfüllt“ zu.","points":2,"keywords":["messbar","eindeutig","objektiv","Zielwert"]},{"text":"Prüfbare Kriterien vermeiden Streit und Verzögerungen bei der Abnahme.","points":2,"keywords":["Streit","Konflikt","Diskussion","Auslegung"]}],"sample_solution":"Bei der Abnahme wird das Ergebnis gegen die vereinbarten Anforderungen geprüft. „Schnell“ hat keinen Zielwert, deshalb bleibt Ansichtssache, ob das Kriterium erfüllt ist. Mit „Antwortzeit höchstens 2 s“ lässt sich eindeutig entscheiden, und Streit bei der Abnahme wird vermieden."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -7886,7 +7887,7 @@ values (
   'matching',
   null,
   'Zu welcher Ebene des Projektabschlusses gehört die Tätigkeit?',
-  'Sachlich: Ergebnis. Wirtschaftlich: Kosten und Budget. Personell: Team und Menschen.',
+  'Sachlich geht es um das Ergebnis, wirtschaftlich um Kosten und Budget, personell um das Team und die Menschen.',
   2,
   '{}',
   null,
@@ -7915,7 +7916,7 @@ values (
   'multiple',
   null,
   'Welche Rechtsfolgen hat die Abnahme bei einem Werkvertrag?',
-  'Die Abnahme (§ 640 BGB) ist ein rechtlicher Wendepunkt: Vergütung fällig, Gefahrübergang, Umkehr der Beweislast, Beginn der Verjährung der Mängelansprüche. Deshalb wird sie sorgfältig protokolliert.',
+  'Die Abnahme (§ 640 BGB) ist ein rechtlicher Wendepunkt: Die Vergütung wird fällig, die Gefahr geht über, die Beweislast kehrt sich um und die Verjährung der Mängelansprüche beginnt. Deshalb wird sie sorgfältig protokolliert.',
   3,
   '{}',
   null,
@@ -7948,7 +7949,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Abnehmen und den Tippfehler als Mangel mit Frist ins Protokoll aufnehmen","is_correct":true,"rationale":"Unwesentlicher Mangel: Abnahme unter Vorbehalt, der Mangel wird festgehalten."},{"text":"Die Abnahme verweigern, bis alles fehlerfrei ist","is_correct":false,"rationale":"Wegen unwesentlicher Mängel darf die Abnahme nicht verweigert werden."},{"text":"Abnehmen, ohne den Tippfehler zu erwähnen","is_correct":false,"rationale":"Wer einen bekannten Mangel nicht vorbehält, verliert wichtige Mängelrechte."},{"text":"Die Abnahme auf unbestimmte Zeit verschieben","is_correct":false,"rationale":"Das verzögert Übergabe und Rechnung ohne sachlichen Grund."}]}'::jsonb,
+  '{"choices":[{"text":"Abnehmen und den Tippfehler als Mangel mit Frist ins Protokoll aufnehmen","is_correct":true,"rationale":"Der Mangel ist unwesentlich. Deshalb wird unter Vorbehalt abgenommen und der Mangel festgehalten."},{"text":"Die Abnahme verweigern, bis alles fehlerfrei ist","is_correct":false,"rationale":"Wegen unwesentlicher Mängel darf die Abnahme nicht verweigert werden."},{"text":"Abnehmen, ohne den Tippfehler zu erwähnen","is_correct":false,"rationale":"Wer einen bekannten Mangel nicht vorbehält, verliert wichtige Mängelrechte."},{"text":"Die Abnahme auf unbestimmte Zeit verschieben","is_correct":false,"rationale":"Das verzögert Übergabe und Rechnung ohne sachlichen Grund."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -8002,7 +8003,7 @@ values (
   'matching',
   null,
   'Welche Einführungsstrategie wird jeweils beschrieben?',
-  'Stichtag: schnell, aber riskant. Parallelbetrieb: sicher, aber doppelter Aufwand. Stufenweise: Modul für Modul. Pilot: ein Bereich startet komplett, die übrigen folgen nach der Auswertung.',
+  'Der Stichtag ist schnell, aber riskant. Der Parallelbetrieb ist sicher, kostet aber doppelten Aufwand. Stufenweise heißt Modul für Modul. Beim Pilotbetrieb startet ein Bereich komplett, die übrigen folgen nach der Auswertung.',
   2,
   '{}',
   null,
@@ -8272,7 +8273,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Schuldzuweisungen verhindern offene Beiträge. Es geht um Ursachen und Verbesserungen.","is_correct":true,"rationale":"Wer Angst vor Schuld hat, schweigt und die wichtigsten Erkenntnisse gehen verloren."},{"text":"Nichts, Verantwortliche müssen benannt werden.","is_correct":false,"rationale":"Genau das macht den Workshop wertlos."},{"text":"Lessons Learned finden nur bei erfolgreichen Projekten statt.","is_correct":false,"rationale":"Gerade gescheiterte Projekte sind lehrreich."},{"text":"Die Teamleiterin darf am Workshop nicht teilnehmen.","is_correct":false,"rationale":"Ihre Teilnahme ist nicht das Problem."}]}'::jsonb,
+  '{"choices":[{"text":"Schuldzuweisungen verhindern offene Beiträge. Es geht um Ursachen und Verbesserungen.","is_correct":true,"rationale":"Wer Schuldzuweisungen fürchtet, schweigt, und die wichtigsten Erkenntnisse gehen verloren."},{"text":"Nichts, Verantwortliche müssen benannt werden.","is_correct":false,"rationale":"Genau das macht den Workshop wertlos."},{"text":"Lessons Learned finden nur bei erfolgreichen Projekten statt.","is_correct":false,"rationale":"Gerade gescheiterte Projekte sind lehrreich."},{"text":"Die Teamleiterin darf am Workshop nicht teilnehmen.","is_correct":false,"rationale":"Ihre Teilnahme ist nicht das Problem."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -8297,7 +8298,7 @@ values (
   'ordering',
   null,
   'Bringe die Schritte eines Lessons-Learned-Workshops in die richtige Reihenfolge.',
-  'Aus gesammelten Erfahrungen werden über die Ursachenanalyse konkrete Empfehlungen und die müssen für andere auffindbar abgelegt werden.',
+  'Aus gesammelten Erfahrungen werden über die Ursachenanalyse konkrete Empfehlungen. Diese müssen so abgelegt werden, dass andere sie finden.',
   2,
   '{}',
   null,
@@ -8324,9 +8325,9 @@ values (
   'projektabschluss',
   'a-lessons',
   'matching',
-  'Im Lessons-Learned-Workshop werden Erfahrungen nach Start - Stop - Continue sortiert: neu einführen, was gefehlt hat; abschaffen, was geschadet hat; beibehalten, was sich bewährt hat.',
+  'Im Lessons-Learned-Workshop werden Erfahrungen nach Start, Stop, Continue sortiert: neu einführen, was gefehlt hat; abschaffen, was geschadet hat; beibehalten, was sich bewährt hat.',
   'Ordne jede Praxis der passenden Kategorie zu.',
-  'Start - Stop - Continue übersetzt Erfahrungen direkt in Handlungen. Wichtig: Auch Erfolge (Continue) werden gesammelt, nicht nur Fehler.',
+  'Start, Stop, Continue übersetzt Erfahrungen direkt in Handlungen. Gesammelt werden dabei auch Erfolge (Continue), nicht nur Fehler.',
   2,
   '{}',
   null,
@@ -8442,7 +8443,7 @@ values (
   'single',
   null,
   'Wann sollten Erfahrungen am besten gesichert werden?',
-  'Lessons Learned gehören zeitnah ans Projektende; projektbegleitend nach Phasen und Meilensteinen (in Scrum nach jedem Sprint als Retrospektive) nutzen sie schon dem laufenden Projekt.',
+  'Lessons Learned gehören zeitnah ans Projektende. Wer sie zusätzlich nach Phasen und Meilensteinen sammelt (in Scrum nach jedem Sprint als Retrospektive), hilft schon dem laufenden Projekt.',
   1,
   '{}',
   null,
@@ -8500,7 +8501,7 @@ values (
   'pairs',
   'In einer Schulung zur Kundenkommunikation werden vier Kommunikationsmodelle vorgestellt.',
   'Ordne jedem Modell seine Kernaussage zu.',
-  'Sender-Empfänger: Verständigung braucht einen gemeinsamen Zeichenvorrat. Schulz von Thun: Sache, Selbstoffenbarung, Beziehung, Appell. Watzlawick: Die Beziehung bestimmt, wie ein Inhalt verstanden wird (2. Axiom), und man kann nicht nicht kommunizieren (1. Axiom). Wer im Kundentermin aufs Handy schaut, sendet eine Botschaft.',
+  'Im Sender-Empfänger-Modell braucht Verständigung einen gemeinsamen Zeichenvorrat. Nach Schulz von Thun hat jede Nachricht vier Seiten (Sache, Selbstoffenbarung, Beziehung, Appell). Bei Watzlawick bestimmt die Beziehung, wie ein Inhalt verstanden wird (2. Axiom), und man kann nicht nicht kommunizieren (1. Axiom). Wer im Kundentermin aufs Handy schaut, sendet also auch eine Botschaft.',
   2,
   '{}',
   null,
@@ -8533,7 +8534,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Sender und Empfänger haben keinen gemeinsamen Zeichenvorrat.","is_correct":true,"rationale":"Die Fachbegriffe sind der Empfängerin unbekannt. Die Nachricht kann nicht entschlüsselt werden."},{"text":"Der Kanal ist gestört.","is_correct":false,"rationale":"Die Worte kommen an, sie werden nur nicht verstanden."},{"text":"Die Empfängerin hört nur mit dem Beziehungsohr.","is_correct":false,"rationale":"Das ist eine Deutung nach Schulz von Thun, hier fehlt schlicht das Fachwissen."},{"text":"Die Botschaft ist nonverbal.","is_correct":false,"rationale":"Sie ist verbal, nur unverständlich."}]}'::jsonb,
+  '{"choices":[{"text":"Sender und Empfänger haben keinen gemeinsamen Zeichenvorrat.","is_correct":true,"rationale":"Die Fachbegriffe sind der Empfängerin unbekannt. Die Nachricht kann nicht entschlüsselt werden."},{"text":"Der Kanal ist gestört.","is_correct":false,"rationale":"Die Worte kommen an, sie werden nur nicht verstanden."},{"text":"Die Empfängerin hört nur mit dem Beziehungsohr.","is_correct":false,"rationale":"Das wäre eine Deutung nach Schulz von Thun. Hier fehlt aber schlicht das Fachwissen."},{"text":"Die Botschaft ist nonverbal.","is_correct":false,"rationale":"Sie ist verbal, nur unverständlich."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -8616,7 +8617,7 @@ values (
   'single',
   'Zwei Entwickler streiten seit Wochen heftig darüber, ob im Code Tabs oder Leerzeichen verwendet werden. Eigentlich fühlt sich einer von ihnen übergangen, weil der andere die Teamleitung bekommen hat.',
   'Welches Modell erklärt diesen Streit am besten?',
-  'Nach Watzlawick hat jede Nachricht einen Inhalts- und einen Beziehungsaspekt, und die Beziehung bestimmt den Inhalt. Gefühle wie Kränkung steuern deshalb das Gespräch. Solange nur über Tabs gestritten wird, bleibt der eigentliche Konflikt ungelöst.',
+  'Nach Watzlawick hat jede Nachricht einen Inhalts- und einen Beziehungsaspekt, und die Beziehung bestimmt, wie der Inhalt ankommt. Gefühle wie Kränkung steuern deshalb das Gespräch. Solange nur über Tabs gestritten wird, bleibt der eigentliche Konflikt ungelöst.',
   2,
   '{}',
   null,
@@ -8703,11 +8704,11 @@ values (
   'single',
   'Eine Kundin schildert aufgebracht, dass der Export ihrer Buchhaltungssoftware seit gestern abbricht und der Monatsabschluss drängt.',
   'Welche Reaktion ist für den Einstieg am besten geeignet?',
-  'Bei Beschwerden erst die Beziehungsebene beruhigen (Ärger anerkennen), dann sachlich nachfragen. Widersprechen, Belehren und Abwiegeln sind Gesprächsstörer.',
+  'Bei Beschwerden beruhigst du erst die Beziehungsebene, indem du den Ärger anerkennst, und fragst dann sachlich nach. Widersprechen, Belehren und Abwiegeln sind Gesprächsstörer.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"„Das ist ärgerlich, gerade vor dem Abschluss. Welche Meldung erscheint beim Export?“","is_correct":true,"rationale":"Erkennt den Ärger an (Beziehungsebene) und klärt dann gezielt den Sachverhalt."},{"text":"„Das kann eigentlich nicht sein, bei anderen Kunden läuft es.“","is_correct":false,"rationale":"Widerspricht und stellt die Kundin in Frage, ein Gesprächsstörer."},{"text":"„Haben Sie das Handbuch gelesen?“","is_correct":false,"rationale":"Wirkt belehrend und blockiert das Gespräch."},{"text":"„Beruhigen Sie sich erst einmal.“","is_correct":false,"rationale":"Übergeht das Anliegen und verstärkt oft den Ärger."}]}'::jsonb,
+  '{"choices":[{"text":"„Das ist ärgerlich, gerade vor dem Abschluss. Welche Meldung erscheint beim Export?“","is_correct":true,"rationale":"Die Antwort erkennt den Ärger an (Beziehungsebene) und klärt dann gezielt den Sachverhalt."},{"text":"„Das kann eigentlich nicht sein, bei anderen Kunden läuft es.“","is_correct":false,"rationale":"Der Satz widerspricht der Kundin und stellt sie infrage. Das ist ein Gesprächsstörer."},{"text":"„Haben Sie das Handbuch gelesen?“","is_correct":false,"rationale":"Die Frage wirkt belehrend und blockiert das Gespräch."},{"text":"„Beruhigen Sie sich erst einmal.“","is_correct":false,"rationale":"Das übergeht das Anliegen und verstärkt oft den Ärger."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -8765,7 +8766,7 @@ values (
   1,
   '{}',
   null,
-  '{"buckets":["Ist-Situation","Ziel","Rahmenbedingung"],"match_items":[{"text":"Bestellungen werden heute in Excel-Listen erfasst.","bucket":0,"rationale":"Beschreibt, wie heute gearbeitet wird."},{"text":"Fehlbestände sollen künftig automatisch gemeldet werden.","bucket":1,"rationale":"Beschreibt, was danach besser sein soll."},{"text":"Das Budget liegt bei 8.000 Euro.","bucket":2,"rationale":"Budget begrenzt die möglichen Lösungen."},{"text":"Das System muss bis zum Jahreswechsel laufen.","bucket":2,"rationale":"Ein Termin ist eine Rahmenbedingung."},{"text":"Lagerbestände werden einmal im Monat von Hand gezählt.","bucket":0,"rationale":"Auch das ist der heutige Ablauf."},{"text":"Die Inventur soll höchstens noch einen Tag dauern.","bucket":1,"rationale":"Ein messbares Ziel des Kunden."}]}'::jsonb,
+  '{"buckets":["Ist-Situation","Ziel","Rahmenbedingung"],"match_items":[{"text":"Bestellungen werden heute in Excel-Listen erfasst.","bucket":0,"rationale":"Beschreibt, wie heute gearbeitet wird."},{"text":"Fehlbestände sollen künftig automatisch gemeldet werden.","bucket":1,"rationale":"Beschreibt, was danach besser sein soll."},{"text":"Das Budget liegt bei 8.000 Euro.","bucket":2,"rationale":"Das Budget begrenzt die möglichen Lösungen."},{"text":"Das System muss bis zum Jahreswechsel laufen.","bucket":2,"rationale":"Ein Termin ist eine Rahmenbedingung."},{"text":"Lagerbestände werden einmal im Monat von Hand gezählt.","bucket":0,"rationale":"Auch das ist der heutige Ablauf."},{"text":"Die Inventur soll höchstens noch einen Tag dauern.","bucket":1,"rationale":"Ein messbares Ziel des Kunden."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -8794,7 +8795,7 @@ values (
   2,
   '{}',
   null,
-  '{"buckets":["echte Ich-Botschaft","Du-Botschaft (auch verkappt)"],"match_items":[{"text":"„Ich kann erst weitermachen, wenn ich die Zugangsdaten habe.“","bucket":0,"rationale":"Beschreibt die eigene Lage und einen Wunsch."},{"text":"„Sie haben mir schon wieder nichts geschickt.“","bucket":1,"rationale":"Vorwurf an die Person."},{"text":"„Ich finde, du bist total unzuverlässig.“","bucket":1,"rationale":"Beginnt mit „Ich“, bewertet aber die Person: verkappt."},{"text":"„Ich verliere den Faden, wenn ich unterbrochen werde. Lass mich bitte ausreden.“","bucket":0,"rationale":"Beobachtung, Wirkung, Wunsch."},{"text":"„Ihr meldet euch ja nie.“","bucket":1,"rationale":"Verallgemeinernder Vorwurf."},{"text":"„Ich brauche die Freigabe bis Donnerstag, damit der Termin hält.“","bucket":0,"rationale":"Eigener Bedarf mit Begründung."}]}'::jsonb,
+  '{"buckets":["echte Ich-Botschaft","Du-Botschaft (auch verkappt)"],"match_items":[{"text":"„Ich kann erst weitermachen, wenn ich die Zugangsdaten habe.“","bucket":0,"rationale":"Beschreibt die eigene Lage und einen Wunsch."},{"text":"„Sie haben mir schon wieder nichts geschickt.“","bucket":1,"rationale":"Vorwurf an die Person."},{"text":"„Ich finde, du bist total unzuverlässig.“","bucket":1,"rationale":"Der Satz beginnt mit „Ich“, bewertet aber die Person. Das ist eine verkappte Du-Botschaft."},{"text":"„Ich verliere den Faden, wenn ich unterbrochen werde. Lass mich bitte ausreden.“","bucket":0,"rationale":"Beobachtung, Wirkung, Wunsch."},{"text":"„Ihr meldet euch ja nie.“","bucket":1,"rationale":"Verallgemeinernder Vorwurf."},{"text":"„Ich brauche die Freigabe bis Donnerstag, damit der Termin hält.“","bucket":0,"rationale":"Eigener Bedarf mit Begründung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -8823,7 +8824,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"„Ich kann den Fehler nur nachstellen, wenn ich weiß, was Sie vorher geklickt haben. Können Sie mir die Schritte kurz aufschreiben?“","is_correct":true,"rationale":"Beschreibt die eigene Lage, die Wirkung und einen konkreten Wunsch."},{"text":"„Sie schicken mir immer unvollständige Beschreibungen.“","is_correct":false,"rationale":"Sie-Botschaft mit Verallgemeinerung „immer“. Sie wirkt als Vorwurf."},{"text":"„Ich finde, Sie sind da ziemlich nachlässig.“","is_correct":false,"rationale":"Beginnt zwar mit „Ich“, bewertet aber die Person. Das ist eine verdeckte Du-Botschaft."},{"text":"„Man sollte eine Fehlermeldung schon vollständig beschreiben.“","is_correct":false,"rationale":"Man-Botschaft: unpersönlich und belehrend."}]}'::jsonb,
+  '{"choices":[{"text":"„Ich kann den Fehler nur nachstellen, wenn ich weiß, was Sie vorher geklickt haben. Können Sie mir die Schritte kurz aufschreiben?“","is_correct":true,"rationale":"Beschreibt die eigene Lage, die Wirkung und einen konkreten Wunsch."},{"text":"„Sie schicken mir immer unvollständige Beschreibungen.“","is_correct":false,"rationale":"Eine Sie-Botschaft mit der Verallgemeinerung „immer“ wirkt als Vorwurf."},{"text":"„Ich finde, Sie sind da ziemlich nachlässig.“","is_correct":false,"rationale":"Beginnt zwar mit „Ich“, bewertet aber die Person. Das ist eine verdeckte Du-Botschaft."},{"text":"„Man sollte eine Fehlermeldung schon vollständig beschreiben.“","is_correct":false,"rationale":"Eine Man-Botschaft wirkt unpersönlich und belehrend."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -8848,7 +8849,7 @@ values (
   'matching',
   'Im Support reagieren Mitarbeitende unterschiedlich auf eine Kundenbeschwerde.',
   'Ist die Reaktion ein Gesprächsförderer oder ein Gesprächsstörer?',
-  'Gesprächsstörer sind z. B. Belehren, Bagatellisieren, Unterbrechen, ungefragte Ratschläge. Gesprächsförderer sind Nachfragen, Zusammenfassen, Ich-Botschaften und das Anerkennen von Gefühlen.',
+  'Gesprächsstörer sind z. B. Belehren, Bagatellisieren, Unterbrechen und ungefragte Ratschläge. Gesprächsförderer sind Nachfragen, Zusammenfassen, Ich-Botschaften und das Anerkennen von Gefühlen.',
   1,
   '{}',
   null,
@@ -8940,7 +8941,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"„Sie schützt Ihr Firmennetz vor Angriffen aus dem Internet und verringert das Risiko teurer Ausfälle.“","is_correct":true,"rationale":"Nennt Nutzen und Wirkung in ihrer Sprache."},{"text":"„Weil sie stateful Packet Inspection auf Layer 4 macht.“","is_correct":false,"rationale":"Technisch richtig, für die Geschäftsführung aber unverständlich."},{"text":"„Weil man das heute eben so macht.“","is_correct":false,"rationale":"Keine Begründung."},{"text":"„Das würde zu lange dauern, das zu erklären.“","is_correct":false,"rationale":"Verweigert die Beratung."}]}'::jsonb,
+  '{"choices":[{"text":"„Sie schützt Ihr Firmennetz vor Angriffen aus dem Internet und verringert das Risiko teurer Ausfälle.“","is_correct":true,"rationale":"Die Antwort nennt Nutzen und Wirkung in der Sprache der Geschäftsführerin."},{"text":"„Weil sie stateful Packet Inspection auf Layer 4 macht.“","is_correct":false,"rationale":"Technisch richtig, für die Geschäftsführung aber unverständlich."},{"text":"„Weil man das heute eben so macht.“","is_correct":false,"rationale":"Das ist keine Begründung."},{"text":"„Das würde zu lange dauern, das zu erklären.“","is_correct":false,"rationale":"Damit verweigerst du die Beratung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -8969,7 +8970,7 @@ values (
   1,
   '{}',
   null,
-  '{"choices":[{"text":"Sein Wissen anerkennen und sachlich-fachlich argumentieren","is_correct":true,"rationale":"Beim „Besserwisser“ hilft es, sein Wissen zu würdigen und bei Fakten zu bleiben."},{"text":"Ihm nachweisen, dass er falsch liegt","is_correct":false,"rationale":"Führt zum Machtkampf. Der Kunde verliert das Gesicht."},{"text":"Das Gespräch sofort abbrechen","is_correct":false,"rationale":"Verweigert die Beratung und verärgert den Kunden."},{"text":"Nur noch mit Ja und Nein antworten","is_correct":false,"rationale":"Wirkt beleidigt und bringt das Gespräch nicht weiter."}]}'::jsonb,
+  '{"choices":[{"text":"Sein Wissen anerkennen und sachlich-fachlich argumentieren","is_correct":true,"rationale":"Beim „Besserwisser“ hilft es, sein Wissen zu würdigen und bei Fakten zu bleiben."},{"text":"Ihm nachweisen, dass er falsch liegt","is_correct":false,"rationale":"Das führt zum Machtkampf, und der Kunde verliert das Gesicht."},{"text":"Das Gespräch sofort abbrechen","is_correct":false,"rationale":"Damit verweigerst du die Beratung und verärgerst den Kunden."},{"text":"Nur noch mit Ja und Nein antworten","is_correct":false,"rationale":"Das wirkt beleidigt und bringt das Gespräch nicht weiter."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -8994,7 +8995,7 @@ values (
   'matching',
   null,
   'Ist der Kommunikationskanal synchron oder asynchron?',
-  'Synchron heißt: Beide sind gleichzeitig beteiligt (Telefon, Videokonferenz, Fernwartung). Asynchron heißt: Die Antwort kann zeitversetzt kommen (E-Mail, Ticket, Brief). Das lässt sich leichter dokumentieren.',
+  'Synchron heißt, dass beide gleichzeitig beteiligt sind (Telefon, Videokonferenz, Fernwartung). Asynchron heißt, dass die Antwort zeitversetzt kommen kann (E-Mail, Ticket, Brief). Asynchrone Kanäle lassen sich leichter dokumentieren.',
   1,
   '{}',
   null,
@@ -9029,7 +9030,7 @@ Die Buchhaltung meldet: Die Lohnsoftware startet auf keinem der fünf Rechner de
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Priorität 2","is_correct":true,"rationale":"Auswirkung mittel (eine Abteilung) und Dringlichkeit hoch (Frist heute)."},{"text":"Priorität 1","is_correct":false,"rationale":"Dafür müsste das ganze Unternehmen betroffen sein."},{"text":"Priorität 3","is_correct":false,"rationale":"Die Frist heute macht das Ticket hoch dringlich. Das ergibt mehr als 3."},{"text":"Priorität 5","is_correct":false,"rationale":"Passt nur zu geringer Auswirkung ohne Termin."}]}'::jsonb,
+  '{"choices":[{"text":"Priorität 2","is_correct":true,"rationale":"Auswirkung mittel (eine Abteilung) und Dringlichkeit hoch (Frist heute)."},{"text":"Priorität 1","is_correct":false,"rationale":"Dafür müsste das ganze Unternehmen betroffen sein."},{"text":"Priorität 3","is_correct":false,"rationale":"Die Frist heute macht das Ticket hoch dringlich. Mit mittlerer Auswirkung ergibt das Priorität 2."},{"text":"Priorität 5","is_correct":false,"rationale":"Passt nur zu geringer Auswirkung ohne Termin."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -9083,7 +9084,7 @@ values (
   'ordering',
   null,
   'Bringe die Teamphasen nach Tuckman in die richtige Reihenfolge.',
-  'Orientierung, Konflikt, Regeln, Leistung, Auflösung.',
+  'Die Phasen stehen für Orientierung, Konflikt, Regeln, Leistung und Auflösung.',
   2,
   '{}',
   null,
@@ -9170,7 +9171,7 @@ values (
   'matching',
   'Ein Projektteam führt über mehrere Monate ein neues Ticketsystem ein.',
   'In welcher Teamphase fällt die Aussage?',
-  'Forming: Orientierung und Unsicherheit. Storming: Machtkämpfe um Rollen und Ideen. Norming: gemeinsame Regeln. Performing: selbstständige, eingespielte Arbeit. Adjourning: Abschluss und Abschied.',
+  'Im Forming herrschen Orientierung und Unsicherheit, im Storming gibt es Machtkämpfe um Rollen und Ideen. Im Norming entstehen gemeinsame Regeln, im Performing arbeitet das Team selbstständig und eingespielt. Das Adjourning ist Abschluss und Abschied.',
   2,
   '{}',
   null,
@@ -9199,11 +9200,11 @@ values (
   'single',
   'Ein eingespieltes Team arbeitet seit Monaten selbstständig und effektiv. Nun kommen zwei neue Kolleginnen dazu, und die Projektziele werden geändert. Plötzlich gibt es wieder Streit um Zuständigkeiten.',
   'Wie lässt sich die Situation nach Tuckman erklären?',
-  'Die Phasen nach Tuckman sind kein Einbahnweg. Ändern sich Zusammensetzung oder Ziele, fällt ein Team oft zurück (hier ins Storming, weil Rollen neu ausgehandelt werden).',
+  'Die Phasen nach Tuckman sind keine Einbahnstraße. Ändern sich Zusammensetzung oder Ziele, fällt ein Team oft zurück (hier ins Storming, weil Rollen neu ausgehandelt werden).',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Das Team ist durch die Veränderungen in die Storming-Phase zurückgefallen.","is_correct":true,"rationale":"Neue Mitglieder und neue Ziele stellen Rollen wieder infrage, ein typischer Rückfall."},{"text":"Das Team ist in der Adjourning-Phase.","is_correct":false,"rationale":"Das Team löst sich nicht auf, es verändert sich."},{"text":"Das Team ist gescheitert, weil es nicht in der Performing-Phase bleibt.","is_correct":false,"rationale":"Rückfälle in frühere Phasen sind normal und kein Scheitern."},{"text":"Das Team ist in der Forming-Phase, weil dort gestritten wird.","is_correct":false,"rationale":"Im Forming sind Teams höflich und abwartend; gestritten wird im Storming."}]}'::jsonb,
+  '{"choices":[{"text":"Das Team ist durch die Veränderungen in die Storming-Phase zurückgefallen.","is_correct":true,"rationale":"Neue Mitglieder und neue Ziele stellen Rollen wieder infrage. Das ist ein typischer Rückfall."},{"text":"Das Team ist in der Adjourning-Phase.","is_correct":false,"rationale":"Das Team löst sich nicht auf, es verändert sich."},{"text":"Das Team ist gescheitert, weil es nicht in der Performing-Phase bleibt.","is_correct":false,"rationale":"Rückfälle in frühere Phasen sind normal und kein Scheitern."},{"text":"Das Team ist in der Forming-Phase, weil dort gestritten wird.","is_correct":false,"rationale":"Im Forming sind Teams höflich und abwartend; gestritten wird im Storming."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -9290,7 +9291,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"„Mir ist aufgefallen, dass im Testprotokoll gestern drei Testfälle fehlten.“","is_correct":true,"rationale":"Konkret, zeitnah, beschreibend und als Ich-Botschaft."},{"text":"„Du arbeitest immer schlampig.“","is_correct":false,"rationale":"Pauschal, bewertend und als Du-Botschaft."},{"text":"„Irgendwas stimmt mit deinen Tests nicht.“","is_correct":false,"rationale":"Unkonkret: Der andere weiß nicht, was er ändern soll."},{"text":"„Das hätte ich dir schon vor drei Monaten sagen sollen.“","is_correct":false,"rationale":"Nicht zeitnah."}]}'::jsonb,
+  '{"choices":[{"text":"„Mir ist aufgefallen, dass im Testprotokoll gestern drei Testfälle fehlten.“","is_correct":true,"rationale":"Die Aussage ist konkret, zeitnah, beschreibend und eine Ich-Botschaft."},{"text":"„Du arbeitest immer schlampig.“","is_correct":false,"rationale":"Die Aussage ist pauschal, bewertend und eine Du-Botschaft."},{"text":"„Irgendwas stimmt mit deinen Tests nicht.“","is_correct":false,"rationale":"Das ist zu unkonkret. Der andere weiß nicht, was er ändern soll."},{"text":"„Das hätte ich dir schon vor drei Monaten sagen sollen.“","is_correct":false,"rationale":"Feedback nach drei Monaten kommt nicht mehr zeitnah."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -9344,7 +9345,7 @@ values (
   'table',
   'Das Johari-Fenster ordnet Informationen über eine Person danach, wem sie bekannt sind.',
   'Trage die vier Bereiche des Johari-Fensters ein.',
-  'Öffentlich: mir und anderen bekannt. Blinder Fleck: nur anderen bekannt. Privat: nur mir bekannt. Unbekannt: niemandem bekannt. Feedback macht bewusst, wie man auf andere wirkt, und der blinde Fleck schrumpft.',
+  'Öffentlich ist, was mir und anderen bekannt ist. Der blinde Fleck ist nur anderen bekannt, das Private nur mir, das Unbekannte niemandem. Feedback macht bewusst, wie man auf andere wirkt, und so schrumpft der blinde Fleck.',
   2,
   '{}',
   null,
@@ -9402,7 +9403,7 @@ values (
   'matching',
   null,
   'In welchen Bereich des Johari-Fensters gehört die Beobachtung über Lara?',
-  'Öffentlich: mir und anderen bekannt. Blinder Fleck: nur anderen bekannt. Privat: nur mir bekannt. Unbekannt: niemandem bekannt. Feedback verkleinert den blinden Fleck, Selbstoffenbarung den privaten Bereich.',
+  'Öffentlich ist, was mir und anderen bekannt ist. Der blinde Fleck ist nur anderen bekannt, das Private nur mir, das Unbekannte niemandem. Feedback verkleinert den blinden Fleck, Selbstoffenbarung den privaten Bereich.',
   2,
   '{}',
   null,
@@ -9435,7 +9436,7 @@ values (
   1,
   '{}',
   null,
-  '{"choices":[{"text":"„Danke, das war mir nicht bewusst. An welcher Stelle ist dir das aufgefallen?“","is_correct":true,"rationale":"Bedanken und nachfragen. So nimmt man Feedback richtig an."},{"text":"„Das stimmt nicht, ich habe ihn oft angesehen.“","is_correct":false,"rationale":"Rechtfertigen blockiert das Feedback."},{"text":"„Du hast ja selbst die ganze Zeit aufs Handy geschaut.“","is_correct":false,"rationale":"Ein Gegenangriff macht aus dem Feedback einen Streit."},{"text":"Schweigend nicken und schnell das Thema wechseln","is_correct":false,"rationale":"Ohne Nachfragen und Dank verpufft das Feedback."}]}'::jsonb,
+  '{"choices":[{"text":"„Danke, das war mir nicht bewusst. An welcher Stelle ist dir das aufgefallen?“","is_correct":true,"rationale":"Wer sich bedankt und nachfragt, nimmt Feedback richtig an."},{"text":"„Das stimmt nicht, ich habe ihn oft angesehen.“","is_correct":false,"rationale":"Rechtfertigen blockiert das Feedback."},{"text":"„Du hast ja selbst die ganze Zeit aufs Handy geschaut.“","is_correct":false,"rationale":"Ein Gegenangriff macht aus dem Feedback einen Streit."},{"text":"Schweigend nicken und schnell das Thema wechseln","is_correct":false,"rationale":"Ohne Nachfragen und Dank verpufft das Feedback."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -9464,7 +9465,7 @@ values (
   1,
   '{}',
   null,
-  '{"choices":[{"text":"Fehler werden offen angesprochen.","is_correct":true,"rationale":"Nur bekannte Fehler lassen sich beheben."},{"text":"Es wird nach Ursachen gefragt, nicht nach Schuldigen.","is_correct":true,"rationale":"Die Frage nach der Ursache führt zu Verbesserungen."},{"text":"Erkenntnisse aus Fehlern werden festgehalten, z. B. als Lessons Learned.","is_correct":true,"rationale":"So lernt das ganze Unternehmen daraus."},{"text":"Wer einen Fehler macht, wird vor dem Team ermahnt.","is_correct":false,"rationale":"Bloßstellen erzeugt Angst, Fehler werden dann verschwiegen."},{"text":"Fehler werden still und schnell behoben, ohne darüber zu sprechen.","is_correct":false,"rationale":"Dann kann niemand daraus lernen, der Fehler wiederholt sich."}]}'::jsonb,
+  '{"choices":[{"text":"Fehler werden offen angesprochen.","is_correct":true,"rationale":"Nur bekannte Fehler lassen sich beheben."},{"text":"Es wird nach Ursachen gefragt, nicht nach Schuldigen.","is_correct":true,"rationale":"Die Frage nach der Ursache führt zu Verbesserungen."},{"text":"Erkenntnisse aus Fehlern werden festgehalten, z. B. als Lessons Learned.","is_correct":true,"rationale":"So lernt das ganze Unternehmen daraus."},{"text":"Wer einen Fehler macht, wird vor dem Team ermahnt.","is_correct":false,"rationale":"Bloßstellen erzeugt Angst, Fehler werden dann verschwiegen."},{"text":"Fehler werden still und schnell behoben, ohne darüber zu sprechen.","is_correct":false,"rationale":"Dann kann niemand daraus lernen, und der Fehler wiederholt sich."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -9489,7 +9490,7 @@ values (
   'matching',
   null,
   'Um welche Konfliktart handelt es sich?',
-  'Sachkonflikt: Methoden. Beziehungskonflikt: Personen. Verteilungskonflikt: knappe Ressourcen. Rollenkonflikt: widersprüchliche Erwartungen an eine Person.',
+  'Im Sachkonflikt geht es um Methoden, im Beziehungskonflikt um Personen und im Verteilungskonflikt um knappe Ressourcen. Ein Rollenkonflikt entsteht aus widersprüchlichen Erwartungen an eine Person.',
   2,
   '{}',
   null,
@@ -9725,7 +9726,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Eine vorführbare Demo-Version bis Freitag vorschlagen, die fertige Software folgt später.","is_correct":true,"rationale":"Erfüllt das eigentliche Interesse (Präsentation auf der Messe) und entlastet den Termin."},{"text":"Auf der ursprünglichen Planung bestehen.","is_correct":false,"rationale":"Ignoriert das Interesse des Kunden."},{"text":"Zusagen, obwohl es nicht zu schaffen ist.","is_correct":false,"rationale":"Löst das Problem nicht, sondern verschiebt es."},{"text":"Den Preis erhöhen, damit der Kunde zurückweicht.","is_correct":false,"rationale":"Druck statt Lösung."}]}'::jsonb,
+  '{"choices":[{"text":"Eine vorführbare Demo-Version bis Freitag vorschlagen, die fertige Software folgt später.","is_correct":true,"rationale":"Das erfüllt das eigentliche Interesse (Präsentation auf der Messe) und entlastet den Termin."},{"text":"Auf der ursprünglichen Planung bestehen.","is_correct":false,"rationale":"Das ignoriert das Interesse des Kunden."},{"text":"Zusagen, obwohl es nicht zu schaffen ist.","is_correct":false,"rationale":"Das löst das Problem nicht, sondern verschiebt es nur."},{"text":"Den Preis erhöhen, damit der Kunde zurückweicht.","is_correct":false,"rationale":"Das baut Druck auf, statt eine Lösung zu suchen."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -9866,7 +9867,7 @@ values (
   'matching',
   'In einer Preisverhandlung zeigen die Beteiligten unterschiedliche Verhaltensweisen.',
   'Zu welchem Verhandlungsstil gehört das Verhalten?',
-  'Sachgerecht verhandeln heißt: hart in der Sache, weich zu den Menschen. Weder Druck (harter Stil) noch Nachgeben (weicher Stil), sondern Interessen, Optionen und neutrale Kriterien.',
+  'Sachgerecht verhandeln heißt: hart in der Sache, weich zu den Menschen. Es zählen weder Druck (harter Stil) noch Nachgeben (weicher Stil), sondern Interessen, Optionen und neutrale Kriterien.',
   1,
   '{}',
   null,
@@ -9895,7 +9896,7 @@ values (
   'matching',
   null,
   'Welche Methode der Einwandbehandlung wird angewendet?',
-  'Ja-aber: zustimmen und ergänzen. Bumerang: Einwand wird zum Argument. Rückfrage: Hintergrund klären. Referenz: auf zufriedene Kunden verweisen.',
+  'Bei Ja-aber stimmst du zu und ergänzt ein Gegenargument. Beim Bumerang wird der Einwand zum Argument. Die Rückfrage klärt den Hintergrund, die Referenz verweist auf zufriedene Kunden.',
   2,
   '{}',
   null,
@@ -9923,8 +9924,8 @@ values (
   've-einwaende',
   'ordering',
   'Du empfiehlst einem Kunden Rechner mit SSD und baust dein Argument als Nutzenargumentation auf.',
-  'Bringe die Aussagen in die Reihenfolge Merkmal - Vorteil - Nutzen.',
-  'Kunden kaufen Nutzen, nicht Technik. Überzeugend ist die Kette Merkmal (SSD) - Vorteil (startet schnell) - Nutzen (keine Wartezeit für die Mitarbeitenden).',
+  'Bringe die Aussagen in die Reihenfolge Merkmal, Vorteil, Nutzen.',
+  'Kunden kaufen Nutzen, nicht Technik. Überzeugend ist die Kette aus Merkmal (SSD), Vorteil (startet schnell) und Nutzen (keine Wartezeit für die Mitarbeitenden).',
   2,
   '{}',
   null,
@@ -9957,7 +9958,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Mit einer Rückfrage den eigentlichen Grund herausfinden","is_correct":true,"rationale":"Es könnte ein Vorwand sein. Die Rückfrage deckt den wahren Grund auf."},{"text":"Sofort einen Rabatt anbieten","is_correct":false,"rationale":"Setzt voraus, dass es am Preis liegt, vielleicht zu Unrecht."},{"text":"Das Gespräch beenden","is_correct":false,"rationale":"Verschenkt die Chance, einen echten Einwand zu klären."},{"text":"Dem Kunden widersprechen","is_correct":false,"rationale":"Erzeugt Abwehr."}]}'::jsonb,
+  '{"choices":[{"text":"Mit einer Rückfrage den eigentlichen Grund herausfinden","is_correct":true,"rationale":"Es könnte ein Vorwand sein. Die Rückfrage deckt den wahren Grund auf."},{"text":"Sofort einen Rabatt anbieten","is_correct":false,"rationale":"Das setzt voraus, dass es am Preis liegt, vielleicht zu Unrecht."},{"text":"Das Gespräch beenden","is_correct":false,"rationale":"Das verschenkt die Chance, einen echten Einwand zu klären."},{"text":"Dem Kunden widersprechen","is_correct":false,"rationale":"Widerspruch erzeugt Abwehr."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -10069,11 +10070,11 @@ values (
   'multiple',
   'Eine Kundin sagt zu deinem Angebot für ein Managed-Backup: „Das ist mir zu teuer.“',
   'Welche Reaktionen sind sinnvoll?',
-  'Bei Preiseinwänden erst nachfragen, dann mit Ja-aber, Nutzen oder Preisumrechnung antworten. Widersprechen und vorschnelle Rabatte sind typische Fehler.',
+  'Bei Preiseinwänden fragst du erst nach und antwortest dann mit Ja-aber, Nutzen oder Preisumrechnung. Widersprechen und vorschnelle Rabatte sind typische Fehler.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"„Zu teuer im Vergleich wozu?“","is_correct":true,"rationale":"Eine Rückfrage klärt, woran die Kundin den Preis misst."},{"text":"„Ja, der Preis ist höher als eine USB-Festplatte. Dafür läuft die Sicherung automatisch und außer Haus.“","is_correct":true,"rationale":"Ja-aber: zustimmen und ein Gegenargument ergänzen."},{"text":"„Auf den Tag gerechnet sind das knapp 3 €, also weniger, als ein verlorener Auftrag kostet.“","is_correct":true,"rationale":"Den Preis auf kleine Einheiten umrechnen und mit dem Nutzen verbinden."},{"text":"„Da irren Sie sich, das ist ein fairer Preis.“","is_correct":false,"rationale":"Direkter Widerspruch erzeugt Abwehr."},{"text":"Sofort 20 % Rabatt anbieten, ohne nachzufragen","is_correct":false,"rationale":"Ohne Rückfrage weißt du nicht, ob es wirklich am Preis liegt, und verschenkst Marge."}]}'::jsonb,
+  '{"choices":[{"text":"„Zu teuer im Vergleich wozu?“","is_correct":true,"rationale":"Eine Rückfrage klärt, woran die Kundin den Preis misst."},{"text":"„Ja, der Preis ist höher als eine USB-Festplatte. Dafür läuft die Sicherung automatisch und außer Haus.“","is_correct":true,"rationale":"Das ist die Ja-aber-Methode: zustimmen und ein Gegenargument ergänzen."},{"text":"„Auf den Tag gerechnet sind das knapp 3 €, also weniger, als ein verlorener Auftrag kostet.“","is_correct":true,"rationale":"Den Preis auf kleine Einheiten umrechnen und mit dem Nutzen verbinden."},{"text":"„Da irren Sie sich, das ist ein fairer Preis.“","is_correct":false,"rationale":"Direkter Widerspruch erzeugt Abwehr."},{"text":"Sofort 20 % Rabatt anbieten, ohne nachzufragen","is_correct":false,"rationale":"Ohne Rückfrage weißt du nicht, ob es wirklich am Preis liegt, und verschenkst Marge."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -10131,7 +10132,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Auf den Folien stehen ganze Absätze, die er vorlesen will.","is_correct":true,"rationale":"Dann lesen die Zuhörer, statt zuzuhören."},{"text":"Jede Folie hat genau eine Kernaussage.","is_correct":false,"rationale":"Hält die Aufmerksamkeit auf dem Wesentlichen."},{"text":"Jede Folie hat ein anderes Design.","is_correct":true,"rationale":"Wirkt unruhig und unprofessionell."},{"text":"Zahlen werden als Diagramm gezeigt.","is_correct":false,"rationale":"Grafiken erfasst man schneller als Zahlenkolonnen."},{"text":"Die Schrift ist klein, damit alles auf eine Folie passt.","is_correct":true,"rationale":"Folien brauchen wenig Text in großer Schrift."},{"text":"Schrift und Farben sind einheitlich.","is_correct":false,"rationale":"Ein einheitliches Erscheinungsbild wirkt ruhig."}]}'::jsonb,
+  '{"choices":[{"text":"Auf den Folien stehen ganze Absätze, die er vorlesen will.","is_correct":true,"rationale":"Dann lesen die Zuhörer, statt zuzuhören."},{"text":"Jede Folie hat genau eine Kernaussage.","is_correct":false,"rationale":"Das hält die Aufmerksamkeit auf dem Wesentlichen."},{"text":"Jede Folie hat ein anderes Design.","is_correct":true,"rationale":"Das wirkt unruhig und unprofessionell."},{"text":"Zahlen werden als Diagramm gezeigt.","is_correct":false,"rationale":"Grafiken erfasst man schneller als Zahlenkolonnen."},{"text":"Die Schrift ist klein, damit alles auf eine Folie passt.","is_correct":true,"rationale":"Folien brauchen wenig Text in großer Schrift."},{"text":"Schrift und Farben sind einheitlich.","is_correct":false,"rationale":"Ein einheitliches Erscheinungsbild wirkt ruhig."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -10156,11 +10157,11 @@ values (
   'cloze',
   'Du bereitest eine Präsentation für einen Kundentermin vor.',
   'Wähle für jede Lücke den passenden Begriff.',
-  'Erst klären, was die Zuhörer danach wissen oder tun sollen und was sie mitbringen. Dann Inhalte sammeln, gliedern, Folien gestalten und zum Schluss üben.',
+  'Zuerst klärst du, was die Zuhörer danach wissen oder tun sollen und was sie mitbringen. Dann sammelst und gliederst du die Inhalte, gestaltest die Folien und übst zum Schluss.',
   2,
   '{}',
   null,
-  '{"cloze_text":"Am Anfang klärst du {0} der Präsentation. Danach sammelst du Inhalte und {1} sie. Die Folien gestaltest du erst, wenn {2} steht. Zum Schluss {3} du den Vortrag.","gaps":[{"answers":["Ziel und Zielgruppe"],"options":["Ziel und Zielgruppe","Schriftart und Farben","die Foliennummern"],"rationale":"Ohne Ziel und Zielgruppe lassen sich Inhalte nicht auswählen."},{"answers":["gliederst"],"options":["gliederst","druckst","animierst"],"rationale":"Erst ordnen, dann gestalten."},{"answers":["die Gliederung"],"options":["die Gliederung","das Design","die Kleiderordnung"],"rationale":"Das Design ist der letzte inhaltliche Schritt."},{"answers":["übst"],"options":["übst","kürzt","verschickst"],"rationale":"Geübt wird, wenn alles steht."}]}'::jsonb,
+  '{"cloze_text":"Am Anfang klärst du {0} der Präsentation. Danach sammelst du Inhalte und {1} sie. Die Folien gestaltest du erst, wenn {2} steht. Zum Schluss {3} du den Vortrag.","gaps":[{"answers":["Ziel und Zielgruppe"],"options":["Ziel und Zielgruppe","Schriftart und Farben","die Foliennummern"],"rationale":"Ohne Ziel und Zielgruppe lassen sich Inhalte nicht auswählen."},{"answers":["gliederst"],"options":["gliederst","druckst","animierst"],"rationale":"Erst ordnen, dann gestalten."},{"answers":["die Gliederung"],"options":["die Gliederung","das Design","die Kleiderordnung"],"rationale":"Das Design kommt erst nach Inhalt und Gliederung."},{"answers":["übst"],"options":["übst","kürzt","verschickst"],"rationale":"Geübt wird, wenn alles steht."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -10247,7 +10248,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Der Unterschied von 87 € wirkt, als wäre ein Angebot doppelt so teuer.","is_correct":true,"rationale":"Ab 7.900 € gemessen ist ein Balken 88 €, der andere 175 € lang, ein verzerrter Eindruck."},{"text":"Balkendiagramme sind für Kostenvergleiche ungeeignet.","is_correct":false,"rationale":"Im Gegenteil: Balken sind die richtige Wahl für Vergleiche."},{"text":"Es müsste ein Kreisdiagramm sein.","is_correct":false,"rationale":"Die Beträge sind keine Anteile eines Ganzen."},{"text":"Die Achse müsste bei 8.075 € enden.","is_correct":false,"rationale":"Das Ende der Achse ist nicht das Problem, sondern ihr Anfang."}]}'::jsonb,
+  '{"choices":[{"text":"Der Unterschied von 87 € wirkt, als wäre ein Angebot doppelt so teuer.","is_correct":true,"rationale":"Ab 7.900 € gemessen ist ein Balken 88 €, der andere 175 € lang. So entsteht ein verzerrter Eindruck."},{"text":"Balkendiagramme sind für Kostenvergleiche ungeeignet.","is_correct":false,"rationale":"Im Gegenteil: Balken sind die richtige Wahl für Vergleiche."},{"text":"Es müsste ein Kreisdiagramm sein.","is_correct":false,"rationale":"Die Beträge sind keine Anteile eines Ganzen."},{"text":"Die Achse müsste bei 8.075 € enden.","is_correct":false,"rationale":"Das Ende der Achse ist nicht das Problem, sondern ihr Anfang."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -10276,7 +10277,7 @@ values (
   1,
   '{}',
   null,
-  '{"choices":[{"text":"Blickkontakt mit dem ganzen Publikum halten","is_correct":true,"rationale":"Bindet alle Zuhörer ein."},{"text":"Frei sprechen mit Stichwortkarten","is_correct":true,"rationale":"Wirkt kompetent und lebendig."},{"text":"Bewusst Pausen setzen","is_correct":true,"rationale":"Gibt Zeit zum Nachdenken und betont Kernaussagen."},{"text":"Mit dem Rücken zum Publikum von der Leinwand ablesen","is_correct":false,"rationale":"Verliert den Kontakt zu den Zuhörern."},{"text":"Möglichst schnell sprechen, um Zeit zu sparen","is_correct":false,"rationale":"Überfordert das Publikum und wirkt nervös."}]}'::jsonb,
+  '{"choices":[{"text":"Blickkontakt mit dem ganzen Publikum halten","is_correct":true,"rationale":"Das bindet alle Zuhörer ein."},{"text":"Frei sprechen mit Stichwortkarten","is_correct":true,"rationale":"Das wirkt kompetent und lebendig."},{"text":"Bewusst Pausen setzen","is_correct":true,"rationale":"Pausen geben Zeit zum Nachdenken und betonen Kernaussagen."},{"text":"Mit dem Rücken zum Publikum von der Leinwand ablesen","is_correct":false,"rationale":"So verlierst du den Kontakt zu den Zuhörern."},{"text":"Möglichst schnell sprechen, um Zeit zu sparen","is_correct":false,"rationale":"Das überfordert das Publikum und wirkt nervös."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -10421,7 +10422,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Die Quelle wird deutlich angegeben.","is_correct":true,"rationale":"Ohne Quellenangabe ist es kein erlaubtes Zitat."},{"text":"Das Zitat belegt oder erläutert eine eigene Aussage.","is_correct":true,"rationale":"Es braucht einen Zitatzweck."},{"text":"Der Umfang ist auf das Nötige beschränkt.","is_correct":true,"rationale":"Nur so viel wie für den Zweck erforderlich."},{"text":"Der Text wird leicht umformuliert, damit er nicht auffällt.","is_correct":false,"rationale":"Fremde Gedanken ohne Kennzeichnung sind ein Plagiat, auch umformuliert."},{"text":"Der Artikel ist älter als ein Jahr.","is_correct":false,"rationale":"Das Alter spielt keine Rolle. Das Urheberrecht gilt bis 70 Jahre nach dem Tod des Urhebers."}]}'::jsonb,
+  '{"choices":[{"text":"Die Quelle wird deutlich angegeben.","is_correct":true,"rationale":"Ohne Quellenangabe ist es kein erlaubtes Zitat."},{"text":"Das Zitat belegt oder erläutert eine eigene Aussage.","is_correct":true,"rationale":"Es braucht einen Zitatzweck."},{"text":"Der Umfang ist auf das Nötige beschränkt.","is_correct":true,"rationale":"Zitiert wird nur so viel, wie für den Zweck erforderlich ist."},{"text":"Der Text wird leicht umformuliert, damit er nicht auffällt.","is_correct":false,"rationale":"Fremde Gedanken ohne Kennzeichnung sind ein Plagiat, auch umformuliert."},{"text":"Der Artikel ist älter als ein Jahr.","is_correct":false,"rationale":"Das Alter spielt keine Rolle. Das Urheberrecht gilt bis 70 Jahre nach dem Tod des Urhebers."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -10504,7 +10505,7 @@ values (
   'cloze',
   'Ein Kunde bittet ein Systemhaus per E-Mail um Preise für zehn Notebooks. Das Systemhaus schickt ein Angebot ohne Einschränkung, der Kunde bestellt drei Tage später unverändert.',
   'Wähle für jede Lücke die richtige Ergänzung.',
-  'Anfrage: unverbindlich. Angebot: verbindlich, sofern es nicht durch eine Freizeichnungsklausel eingeschränkt ist. Wird es rechtzeitig und unverändert angenommen, kommt der Vertrag zustande.',
+  'Eine Anfrage ist unverbindlich. Ein Angebot ist verbindlich, sofern es nicht durch eine Freizeichnungsklausel eingeschränkt ist. Wird es rechtzeitig und unverändert angenommen, kommt der Vertrag zustande.',
   2,
   '{}',
   null,
@@ -10622,7 +10623,7 @@ values (
 Angebot 1: 250 € je Stück, 8 % Rabatt, 2 % Skonto, Versand 36 €.
 Angebot 2: 240 € je Stück, 5 % Rabatt, kein Skonto, frei Haus.',
   'Um wie viel Euro unterscheiden sich die Bezugspreise der beiden Angebote?',
-  'Angebot 1: 12 × 250 € = 3.000 €; − 8 % Rabatt (240 €) = 2.760 €; − 2 % Skonto (55,20 €) = 2.704,80 €; + 36 € Versand = 2.740,80 €. Angebot 2: 12 × 240 € = 2.880 €; − 5 % Rabatt (144 €) = 2.736 €; kein Skonto, frei Haus = 2.736,00 €. Differenz: 2.740,80 € − 2.736,00 € = 4,80 € - Angebot 2 ist günstiger.',
+  'Angebot 1: 12 × 250 € = 3.000 €; − 8 % Rabatt (240 €) = 2.760 €; − 2 % Skonto (55,20 €) = 2.704,80 €; + 36 € Versand = 2.740,80 €. Angebot 2: 12 × 240 € = 2.880 €; − 5 % Rabatt (144 €) = 2.736 €; kein Skonto, frei Haus = 2.736,00 €. Differenz: 2.740,80 € − 2.736,00 € = 4,80 €. Angebot 2 ist günstiger.',
   3,
   '{}',
   null,
@@ -10767,7 +10768,7 @@ values (
   'matching',
   null,
   'Welche Marktform liegt vor? (jeweils viele Nachfrager)',
-  'Polypol: viele Anbieter. Oligopol: wenige. Monopol: einer.',
+  'Im Polypol gibt es viele Anbieter, im Oligopol wenige und im Monopol nur einen.',
   2,
   '{}',
   null,
@@ -10796,7 +10797,7 @@ values (
   'table',
   'Das Marktformenschema kombiniert die Zahl der Anbieter mit der Zahl der Nachfrager.',
   'Trage zu jeder Kombination die Marktform ein.',
-  'Polypol: viele Anbieter und viele Nachfrager. Oligopol: wenige. Monopol: einer. Je weniger Anbieter, desto größer ihre Macht über den Preis; am größten im Angebotsmonopol.',
+  'Im Polypol treffen viele Anbieter auf viele Nachfrager, im Oligopol sind es wenige, im Monopol ist es einer. Je weniger Anbieter es gibt, desto größer ist ihre Macht über den Preis. Am größten ist sie im Angebotsmonopol.',
   2,
   '{}',
   null,
@@ -10945,7 +10946,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Eine Online-Umfrage unter den eigenen Kunden","is_correct":true,"rationale":"Die Daten werden neu und selbst erhoben."},{"text":"Die Auswertung eines Branchenberichts","is_correct":false,"rationale":"Vorhandene Daten: Sekundärforschung."},{"text":"Zahlen des Statistischen Bundesamts","is_correct":false,"rationale":"Amtliche Statistik ist eine Sekundärquelle."},{"text":"Die Analyse der eigenen Umsatzstatistik","is_correct":false,"rationale":"Auch interne, bereits vorhandene Daten gehören zur Sekundärforschung."}]}'::jsonb,
+  '{"choices":[{"text":"Eine Online-Umfrage unter den eigenen Kunden","is_correct":true,"rationale":"Die Daten werden neu und selbst erhoben."},{"text":"Die Auswertung eines Branchenberichts","is_correct":false,"rationale":"Hier werden vorhandene Daten ausgewertet. Das ist Sekundärforschung."},{"text":"Zahlen des Statistischen Bundesamts","is_correct":false,"rationale":"Amtliche Statistik ist eine Sekundärquelle."},{"text":"Die Analyse der eigenen Umsatzstatistik","is_correct":false,"rationale":"Auch interne, bereits vorhandene Daten gehören zur Sekundärforschung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -11028,7 +11029,7 @@ values (
   'ordering',
   null,
   'Bringe die Begriffe in die richtige Reihenfolge, vom ersten Gefühl bis zum Kauf.',
-  'Bedürfnis (Mangel), Bedarf (Bedürfnis mit Kaufkraft), Nachfrage (am Markt wirksamer Bedarf).',
+  'Ein Bedürfnis ist ein empfundener Mangel. Mit Kaufkraft wird daraus Bedarf, und Bedarf, der am Markt wirksam wird, ist Nachfrage.',
   2,
   '{}',
   null,
@@ -11090,7 +11091,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Den tatsächlichen Bedarf klären und eine passende Lösung wie ein NAS empfehlen","is_correct":true,"rationale":"Gute Beratung orientiert sich am Bedarf, nicht am Wunsch."},{"text":"Den Server liefern, der Kunde hat es so gewollt","is_correct":false,"rationale":"Überdimensioniert und teuer ohne Nutzen."},{"text":"Den Auftrag ablehnen","is_correct":false,"rationale":"Verschenkt eine sinnvolle Lösung."},{"text":"Zwei Server empfehlen, um auf der sicheren Seite zu sein","is_correct":false,"rationale":"Noch weiter vom Bedarf entfernt."}]}'::jsonb,
+  '{"choices":[{"text":"Den tatsächlichen Bedarf klären und eine passende Lösung wie ein NAS empfehlen","is_correct":true,"rationale":"Gute Beratung orientiert sich am Bedarf, nicht am Wunsch."},{"text":"Den Server liefern, der Kunde hat es so gewollt","is_correct":false,"rationale":"Der Server wäre überdimensioniert und teuer, ohne zu nützen."},{"text":"Den Auftrag ablehnen","is_correct":false,"rationale":"Damit verschenkst du die Chance auf eine sinnvolle Lösung."},{"text":"Zwei Server empfehlen, um auf der sicheren Seite zu sein","is_correct":false,"rationale":"Das liegt noch weiter vom Bedarf entfernt."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -11177,7 +11178,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Ein standardisierter Online-Fragebogen","is_correct":true,"rationale":"Erreicht viele Personen und liefert vergleichbare, schnell auswertbare Antworten."},{"text":"Einzelinterviews mit allen 120 Mitarbeitenden","is_correct":false,"rationale":"Liefert tiefe Einblicke, ist bei 120 Personen aber viel zu aufwendig."},{"text":"Beobachtung an jedem Arbeitsplatz","is_correct":false,"rationale":"Zeigt Abläufe, ist bei drei Standorten sehr aufwendig und liefert keine Wünsche."},{"text":"Auswertung alter Handbücher","is_correct":false,"rationale":"Zeigt den Ist-Zustand, aber nicht, was künftig gebraucht wird."}]}'::jsonb,
+  '{"choices":[{"text":"Ein standardisierter Online-Fragebogen","is_correct":true,"rationale":"Er erreicht viele Personen und liefert vergleichbare, schnell auswertbare Antworten."},{"text":"Einzelinterviews mit allen 120 Mitarbeitenden","is_correct":false,"rationale":"Das liefert tiefe Einblicke, ist bei 120 Personen aber viel zu aufwendig."},{"text":"Beobachtung an jedem Arbeitsplatz","is_correct":false,"rationale":"Sie zeigt Abläufe, ist bei drei Standorten aber sehr aufwendig und erfasst keine Wünsche."},{"text":"Auswertung alter Handbücher","is_correct":false,"rationale":"Das zeigt den Ist-Zustand, aber nicht, was künftig gebraucht wird."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -11260,7 +11261,7 @@ values (
   'matching',
   null,
   'Zu welchem Instrument des Marketing-Mix gehört die Maßnahme?',
-  'Produkt: was angeboten wird. Preis: zu welchen Konditionen. Distribution: über welchen Weg. Kommunikation: wie es bekannt wird.',
+  'Die Produktpolitik legt fest, was angeboten wird, die Preispolitik, zu welchen Konditionen. Die Distributionspolitik bestimmt den Vertriebsweg, die Kommunikationspolitik macht das Angebot bekannt.',
   2,
   '{}',
   null,
@@ -11347,7 +11348,7 @@ values (
   'matching',
   null,
   'Welche preispolitische Strategie wird verfolgt?',
-  'Penetration: niedrig einsteigen, um schnell Marktanteile zu gewinnen, später erhöhen. Abschöpfung: hoch einsteigen und die Zahlungsbereitschaft früher Käufer nutzen, später senken. Preisdifferenzierung: gleiche Leistung, unterschiedliche Preise je Zielgruppe.',
+  'Bei der Penetration steigt der Anbieter niedrig ein, um schnell Marktanteile zu gewinnen, und erhöht später. Bei der Abschöpfung steigt er hoch ein, nutzt die Zahlungsbereitschaft früher Käufer und senkt später. Preisdifferenzierung heißt: gleiche Leistung, unterschiedliche Preise je Zielgruppe.',
   2,
   '{}',
   null,
@@ -11526,7 +11527,7 @@ values (
   'table',
   'Ein Systemhaus hat seine Kunden mit einer ABC-Analyse nach dem Umsatz eingeteilt.',
   'Trage zu jeder Klasse die typischen Merkmale ein.',
-  'A: wenige Kunden mit großem Umsatzanteil, intensiv betreuen. C: viele Kunden mit kleinem Umsatzanteil, effizient und standardisiert betreuen, aber nicht kündigen. B liegt dazwischen.',
+  'A-Kunden sind wenige, bringen aber einen großen Umsatzanteil und werden intensiv betreut. C-Kunden sind viele mit kleinem Umsatzanteil. Sie werden effizient und standardisiert betreut, aber nicht aufgegeben. B liegt dazwischen.',
   2,
   '{}',
   null,
@@ -11677,7 +11678,7 @@ values (
   'matching',
   null,
   'Ordne die Aussage der passenden Rechtsform zu.',
-  'GmbH: Stammkapital 25.000 €. AG: drei Organe. KG: Komplementär und Kommanditist. Einzelunternehmen: Inhaber haftet allein und voll.',
+  'Die GmbH braucht 25.000 € Stammkapital, die AG hat drei Organe. In der KG gibt es Komplementär und Kommanditist, im Einzelunternehmen haftet der Inhaber allein und voll.',
   2,
   '{}',
   null,
@@ -11706,11 +11707,11 @@ values (
   'single',
   'Zwei Auszubildende wollen nebenbei einen kleinen IT-Service gründen. Sie haben kaum Startkapital, wollen aber nicht mit ihrem Privatvermögen haften.',
   'Welche Rechtsform passt?',
-  'Die UG verbindet Haftungsbeschränkung mit minimalem Startkapital. Sie muss dafür Gewinne ansparen, bis 25.000 € erreicht sind.',
+  'Die UG verbindet Haftungsbeschränkung mit minimalem Startkapital. Dafür muss sie jedes Jahr ein Viertel ihres Jahresüberschusses zurücklegen, bis das Stammkapital auf 25.000 € erhöht ist.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"UG (haftungsbeschränkt)","is_correct":true,"rationale":"Haftungsbeschränkt wie eine GmbH, aber schon ab 1 € Stammkapital."},{"text":"GbR","is_correct":false,"rationale":"Die Gesellschafter haften unbeschränkt mit ihrem Privatvermögen."},{"text":"AG","is_correct":false,"rationale":"Braucht 50.000 € Grundkapital und ist sehr aufwendig."},{"text":"OHG","is_correct":false,"rationale":"Alle Gesellschafter haften unbeschränkt."}]}'::jsonb,
+  '{"choices":[{"text":"UG (haftungsbeschränkt)","is_correct":true,"rationale":"Haftungsbeschränkt wie eine GmbH, aber schon ab 1 € Stammkapital."},{"text":"GbR","is_correct":false,"rationale":"Die Gesellschafter haften unbeschränkt mit ihrem Privatvermögen."},{"text":"AG","is_correct":false,"rationale":"Sie braucht 50.000 € Grundkapital und ist sehr aufwendig."},{"text":"OHG","is_correct":false,"rationale":"Alle Gesellschafter haften unbeschränkt."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -11822,7 +11823,7 @@ values (
   'matching',
   null,
   'Welches Mindestkapital schreibt das Gesetz für die Rechtsform vor?',
-  'Personengesellschaften brauchen kein Mindestkapital, weil die Gesellschafter persönlich haften. GmbH: 25.000 € Stammkapital, UG: ab 1 €, AG: 50.000 € Grundkapital.',
+  'Personengesellschaften brauchen kein Mindestkapital, weil die Gesellschafter persönlich haften. Die GmbH braucht 25.000 € Stammkapital, die UG mindestens 1 €, die AG 50.000 € Grundkapital.',
   1,
   '{}',
   null,
@@ -11942,7 +11943,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Mehr Arbeitsspeicher","is_correct":true,"rationale":"Reicht der RAM nicht, lagert das System auf den Datenträger aus. Das erklärt die Dauerlast."},{"text":"Eine bessere Grafikkarte","is_correct":false,"rationale":"Die Grafik spielt bei Büroarbeit kaum eine Rolle."},{"text":"Ein größerer Monitor","is_correct":false,"rationale":"Ändert nichts an der Rechenleistung."},{"text":"Ein stärkeres Netzteil","is_correct":false,"rationale":"Die Stromversorgung ist nicht der Engpass."}]}'::jsonb,
+  '{"choices":[{"text":"Mehr Arbeitsspeicher","is_correct":true,"rationale":"Reicht der RAM nicht, lagert das System auf den Datenträger aus. Das erklärt die Dauerlast."},{"text":"Eine bessere Grafikkarte","is_correct":false,"rationale":"Die Grafik spielt bei Büroarbeit kaum eine Rolle."},{"text":"Ein größerer Monitor","is_correct":false,"rationale":"Er ändert nichts an der Rechenleistung."},{"text":"Ein stärkeres Netzteil","is_correct":false,"rationale":"Die Stromversorgung ist nicht der Engpass."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -11967,7 +11968,7 @@ values (
   'multiple',
   null,
   'Welche Aussagen zu UEFI sind richtig?',
-  'UEFI ist moderne Firmware: große Datenträger, grafische Oberfläche, Secure Boot.',
+  'UEFI ist moderne Firmware. Sie unterstützt große Datenträger und bietet eine grafische Oberfläche und Secure Boot.',
   2,
   '{}',
   null,
@@ -12141,7 +12142,7 @@ values (
   'pairs',
   null,
   'Ordne jedem Baustein der Von-Neumann-Architektur seine Aufgabe zu.',
-  'Von Neumann: Steuerwerk und Rechenwerk (zusammen die CPU), ein gemeinsamer Speicher für Programme und Daten, Ein-/Ausgabewerk und Bussystem. Das Betriebssystem gehört nicht dazu, es ist Software.',
+  'Zur Von-Neumann-Architektur gehören Steuerwerk und Rechenwerk (zusammen die CPU), ein gemeinsamer Speicher für Programme und Daten, das Ein-/Ausgabewerk und das Bussystem. Das Betriebssystem gehört nicht dazu, es ist Software.',
   2,
   '{}',
   null,
@@ -12203,7 +12204,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"NVMe-SSD","is_correct":true,"rationale":"Schnell, stoßfest und stromsparend: ideal für ein mobiles Gerät."},{"text":"3,5-Zoll-HDD","is_correct":false,"rationale":"Passt nicht ins Notebook, ist stoßempfindlich und langsam."},{"text":"Bandlaufwerk","is_correct":false,"rationale":"Für Archivierung, nicht für den Arbeitsbetrieb."},{"text":"USB-Stick als Systemlaufwerk","is_correct":false,"rationale":"Zu langsam und unzuverlässig als Hauptdatenträger."}]}'::jsonb,
+  '{"choices":[{"text":"NVMe-SSD","is_correct":true,"rationale":"Sie ist schnell, stoßfest und stromsparend, also ideal für ein mobiles Gerät."},{"text":"3,5-Zoll-HDD","is_correct":false,"rationale":"Sie passt nicht ins Notebook und ist stoßempfindlich und langsam."},{"text":"Bandlaufwerk","is_correct":false,"rationale":"Es dient der Archivierung, nicht dem Arbeitsbetrieb."},{"text":"USB-Stick als Systemlaufwerk","is_correct":false,"rationale":"Als Hauptdatenträger ist er zu langsam und unzuverlässig."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -12228,7 +12229,7 @@ values (
   'matching',
   null,
   'Auf welchen Datenträger trifft die Aussage zu?',
-  'SSD: schnell, robust, lautlos, aber mit begrenzter Schreibmenge (TBW). HDD: mechanisch und stoßempfindlich, dafür günstig pro GB.',
+  'Die SSD ist schnell, robust und lautlos, verträgt aber nur eine begrenzte Schreibmenge (TBW). Die HDD arbeitet mechanisch und ist stoßempfindlich, dafür günstig pro GB.',
   2,
   '{}',
   null,
@@ -12342,13 +12343,13 @@ values (
   'hardware',
   'h-speicher',
   'single',
-  'Ein Kunde hat eine M.2-SSD eingebaut und wundert sich, dass sie nur etwa 550 MB/s liest; im Test eines Kollegen waren es 7.000 MB/s.',
+  'Ein Kunde hat eine M.2-SSD eingebaut und wundert sich, dass sie nur etwa 550 MB/s liest. Im Test eines Kollegen waren es 7.000 MB/s.',
   'Was ist die wahrscheinlichste Erklärung?',
   'Entscheidend ist die Anbindung: M.2-SATA liefert SATA-Tempo, erst M.2-NVMe über PCIe erreicht mehrere GB/s.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Es ist eine M.2-SSD mit SATA-Anbindung statt NVMe.","is_correct":true,"rationale":"M.2 ist nur die Bauform; SATA begrenzt auf rund 550 MB/s."},{"text":"M.2-SSDs sind grundsätzlich auf 550 MB/s begrenzt.","is_correct":false,"rationale":"M.2-NVMe-SSDs mit PCIe 4.0 schaffen rund 7 GB/s."},{"text":"Die SSD ist bereits verschlissen.","is_correct":false,"rationale":"Verschleiß senkt nicht die Übertragungsrate auf genau den SATA-Wert."},{"text":"Das Dateisystem ist falsch formatiert.","is_correct":false,"rationale":"Das Dateisystem erklärt keinen Unterschied um den Faktor 13."}]}'::jsonb,
+  '{"choices":[{"text":"Es ist eine M.2-SSD mit SATA-Anbindung statt NVMe.","is_correct":true,"rationale":"M.2 ist nur die Bauform, und SATA begrenzt auf rund 550 MB/s."},{"text":"M.2-SSDs sind grundsätzlich auf 550 MB/s begrenzt.","is_correct":false,"rationale":"M.2-NVMe-SSDs mit PCIe 4.0 schaffen rund 7 GB/s."},{"text":"Die SSD ist bereits verschlissen.","is_correct":false,"rationale":"Verschleiß senkt nicht die Übertragungsrate auf genau den SATA-Wert."},{"text":"Das Dateisystem ist falsch formatiert.","is_correct":false,"rationale":"Das Dateisystem erklärt keinen Unterschied um den Faktor 13."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -12493,7 +12494,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Monochrom-Laserdrucker","is_correct":true,"rationale":"Günstige Kosten pro Seite und hohe Geschwindigkeit bei viel Text."},{"text":"Fotodrucker mit sechs Tintenfarben","is_correct":false,"rationale":"Für Fotos gebaut, bei Text teuer pro Seite."},{"text":"Tintenstrahl-Multifunktionsgerät für den Heimgebrauch","is_correct":false,"rationale":"Für geringe Druckvolumen ausgelegt."},{"text":"Nadeldrucker","is_correct":false,"rationale":"Nur noch für Durchschläge relevant, laut und langsam."}]}'::jsonb,
+  '{"choices":[{"text":"Monochrom-Laserdrucker","is_correct":true,"rationale":"Er druckt viel Text schnell und zu niedrigen Kosten pro Seite."},{"text":"Fotodrucker mit sechs Tintenfarben","is_correct":false,"rationale":"Er ist für Fotos gebaut und bei Text teuer pro Seite."},{"text":"Tintenstrahl-Multifunktionsgerät für den Heimgebrauch","is_correct":false,"rationale":"Es ist für geringe Druckvolumen ausgelegt."},{"text":"Nadeldrucker","is_correct":false,"rationale":"Er wird nur noch für Durchschläge gebraucht und ist laut und langsam."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -12609,7 +12610,7 @@ values (
   3,
   '{}',
   null,
-  '{"choices":[{"text":"HDMI 2.1","is_correct":true,"rationale":"Mit 48 Gbit/s schafft HDMI 2.1 4K mit 120 Hz."},{"text":"HDMI 2.0","is_correct":false,"rationale":"Mit 18 Gbit/s reicht HDMI 2.0 für 4K nur bis 60 Hz."},{"text":"VGA","is_correct":false,"rationale":"Analog und veraltet; für 4K ungeeignet."},{"text":"DVI-D","is_correct":false,"rationale":"Mit rund 8 Gbit/s zu langsam und ohne Tonübertragung."}]}'::jsonb,
+  '{"choices":[{"text":"HDMI 2.1","is_correct":true,"rationale":"Mit 48 Gbit/s schafft HDMI 2.1 4K mit 120 Hz."},{"text":"HDMI 2.0","is_correct":false,"rationale":"Mit 18 Gbit/s reicht HDMI 2.0 für 4K nur bis 60 Hz."},{"text":"VGA","is_correct":false,"rationale":"VGA ist analog, veraltet und für 4K ungeeignet."},{"text":"DVI-D","is_correct":false,"rationale":"DVI-D ist mit rund 8 Gbit/s zu langsam und überträgt keinen Ton."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -12870,7 +12871,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Die Server","is_correct":true,"rationale":"Sie müssen weiterlaufen oder sauber herunterfahren."},{"text":"Der Core-Switch","is_correct":true,"rationale":"Ohne Switch erreichen die Server weder Clients noch die USV-Software."},{"text":"Die Firewall","is_correct":true,"rationale":"Sie hält die Verbindung nach außen und schützt das Netz."},{"text":"Der Laserdrucker im Flur","is_correct":false,"rationale":"Beim Aufheizen zieht er viel Strom und kann die USV überlasten."},{"text":"Ein Heizlüfter im Serverraum","is_correct":false,"rationale":"Hohe Dauerlast, nicht geschäftskritisch."}]}'::jsonb,
+  '{"choices":[{"text":"Die Server","is_correct":true,"rationale":"Sie müssen weiterlaufen oder sauber herunterfahren."},{"text":"Der Core-Switch","is_correct":true,"rationale":"Ohne Switch erreichen die Server weder Clients noch die USV-Software."},{"text":"Die Firewall","is_correct":true,"rationale":"Sie hält die Verbindung nach außen und schützt das Netz."},{"text":"Der Laserdrucker im Flur","is_correct":false,"rationale":"Beim Aufheizen zieht er viel Strom und kann die USV überlasten."},{"text":"Ein Heizlüfter im Serverraum","is_correct":false,"rationale":"Er zieht dauerhaft viel Strom und ist nicht geschäftskritisch."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -12986,7 +12987,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Server virtualisieren und konsolidieren","is_correct":true,"rationale":"Weniger physische Server brauchen weniger Energie."},{"text":"Geräte automatisch in den Energiesparmodus versetzen","is_correct":true,"rationale":"Senkt den Verbrauch in Pausen."},{"text":"Altgeräte fachgerecht recyceln","is_correct":true,"rationale":"Schont Ressourcen und Umwelt."},{"text":"Alle Geräte jedes Jahr ersetzen","is_correct":false,"rationale":"Die Herstellung verbraucht viel Energie; lange Nutzung ist nachhaltiger."},{"text":"Bildschirmschoner mit Animation dauerhaft laufen lassen","is_correct":false,"rationale":"Verbraucht unnötig Strom."}]}'::jsonb,
+  '{"choices":[{"text":"Server virtualisieren und konsolidieren","is_correct":true,"rationale":"Weniger physische Server brauchen weniger Energie."},{"text":"Geräte automatisch in den Energiesparmodus versetzen","is_correct":true,"rationale":"Das senkt den Verbrauch in Pausen."},{"text":"Altgeräte fachgerecht recyceln","is_correct":true,"rationale":"Das schont Ressourcen und Umwelt."},{"text":"Alle Geräte jedes Jahr ersetzen","is_correct":false,"rationale":"Die Herstellung verbraucht viel Energie, deshalb ist lange Nutzung nachhaltiger."},{"text":"Bildschirmschoner mit Animation dauerhaft laufen lassen","is_correct":false,"rationale":"Das verbraucht unnötig Strom."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -13127,7 +13128,7 @@ values (
   'multiple',
   null,
   'Welche Anforderungen an einen Bildschirmarbeitsplatz sind richtig?',
-  'Monitor parallel zum Fenster, auf oder leicht unter Augenhöhe, 50 bis 70 cm entfernt, 500 Lux und mindestens 20 °C.',
+  'Die Blickrichtung verläuft parallel zum Fenster, die Oberkante des Monitors liegt auf oder leicht unter Augenhöhe, der Abstand beträgt 50 bis 70 cm. Dazu kommen mindestens 500 Lux und mindestens 20 °C.',
   2,
   '{}',
   null,
@@ -13184,7 +13185,7 @@ values (
   'h-arbeitsplatz',
   'single',
   '40 alte Büro-PCs mit Festplatten sollen ausgemustert werden.',
-  'Wie geht man richtig vor?',
+  'Wie gehst du richtig vor?',
   'Erst die Daten zuverlässig beseitigen und das dokumentieren, dann die Geräte nach dem ElektroG über Rücknahmestellen oder zertifizierte Entsorger recyceln.',
   2,
   '{}',
@@ -13243,7 +13244,7 @@ values (
   'open',
   'Im Task-Manager zeigt ein Browser 12 Prozesse und über 200 Threads.',
   'Erläutere den Unterschied zwischen einem Prozess und einem Thread.',
-  'Prozess: laufendes Programm mit eigenem Speicherbereich. Thread: Ausführungsstrang innerhalb eines Prozesses. Bewertung: je Begriff 1 Punkt.',
+  'Ein Prozess ist ein laufendes Programm mit eigenem Speicherbereich, ein Thread ein Ausführungsstrang innerhalb eines Prozesses. Bewertung: je Begriff 1 Punkt.',
   2,
   '{}',
   null,
@@ -13276,7 +13277,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":2,"criteria":[{"text":"Der Treiber übersetzt zwischen dem Betriebssystem und einer bestimmten Hardware","points":2,"keywords":["übersetzt","Schnittstelle","vermittelt","ansteuern"]},{"text":"Ohne passenden Treiber kann das Betriebssystem das Gerät nicht oder nur eingeschränkt nutzen","points":1,"keywords":["ohne Treiber","nicht nutzen","nicht ansprechen","erkennt"]}],"sample_solution":"Ein Gerätetreiber ist ein Programm, das zwischen dem Betriebssystem und einem bestimmten Gerät übersetzt: Er kennt die Befehle der Hardware und stellt dem System einheitliche Funktionen bereit. Ohne Treiber kann das Betriebssystem das Gerät nicht ansprechen. Daher die Meldung."}'::jsonb,
+  '{"points":2,"criteria":[{"text":"Der Treiber übersetzt zwischen dem Betriebssystem und einer bestimmten Hardware","points":2,"keywords":["übersetzt","Schnittstelle","vermittelt","ansteuern"]},{"text":"Ohne passenden Treiber kann das Betriebssystem das Gerät nicht oder nur eingeschränkt nutzen","points":1,"keywords":["ohne Treiber","nicht nutzen","nicht ansprechen","erkennt"]}],"sample_solution":"Ein Gerätetreiber ist ein Programm, das zwischen dem Betriebssystem und einem bestimmten Gerät übersetzt: Er kennt die Befehle der Hardware und stellt dem System einheitliche Funktionen bereit. Ohne Treiber kann das Betriebssystem das Gerät nicht ansprechen, daher die Meldung."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -13450,7 +13451,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"exFAT","is_correct":true,"rationale":"Unterstützt große Dateien und ist unter Windows und macOS lesbar und schreibbar."},{"text":"FAT32","is_correct":false,"rationale":"Dateien über 4 GB sind nicht möglich, und genau daran scheitert der Vorgang."},{"text":"ext4","is_correct":false,"rationale":"Wird von Windows und macOS nicht direkt unterstützt."},{"text":"NTFS","is_correct":false,"rationale":"macOS kann NTFS standardmäßig nur lesen, nicht beschreiben."}]}'::jsonb,
+  '{"choices":[{"text":"exFAT","is_correct":true,"rationale":"exFAT unterstützt große Dateien und ist unter Windows und macOS lesbar und schreibbar."},{"text":"FAT32","is_correct":false,"rationale":"Dateien über 4 GB sind nicht möglich, und genau daran scheitert der Vorgang."},{"text":"ext4","is_correct":false,"rationale":"ext4 wird von Windows und macOS nicht direkt unterstützt."},{"text":"NTFS","is_correct":false,"rationale":"macOS kann NTFS standardmäßig nur lesen, nicht beschreiben."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -13475,7 +13476,7 @@ values (
   'matching',
   null,
   'Welches Dateisystem passt zum Einsatz?',
-  'NTFS für Windows mit Rechten, ext4 für Linux, exFAT für austauschbare Datenträger.',
+  'NTFS passt zu Windows mit Berechtigungen, ext4 zu Linux und exFAT zu austauschbaren Datenträgern.',
   2,
   '{}',
   null,
@@ -13566,7 +13567,7 @@ values (
   1,
   '{}',
   null,
-  '{"choices":[{"text":"/home/ben/projekt","is_correct":true,"rationale":"„..“ führt eine Ebene nach oben nach /home, von dort nach ben/projekt."},{"text":"/home/anna/ben/projekt","is_correct":false,"rationale":"Das wäre der relative Pfad ohne „..“."},{"text":"/ben/projekt","is_correct":false,"rationale":"Das wäre ein absoluter Pfad ab der Wurzel."},{"text":"/home/anna/../projekt","is_correct":false,"rationale":"Kein gültiges Ergebnis, denn „..“ wird aufgelöst, und ben fehlt."}]}'::jsonb,
+  '{"choices":[{"text":"/home/ben/projekt","is_correct":true,"rationale":"„..“ führt eine Ebene nach oben nach /home, von dort nach ben/projekt."},{"text":"/home/anna/ben/projekt","is_correct":false,"rationale":"Das wäre der relative Pfad ohne „..“."},{"text":"/ben/projekt","is_correct":false,"rationale":"Das wäre ein absoluter Pfad ab der Wurzel."},{"text":"/home/anna/../projekt","is_correct":false,"rationale":"Das ist kein gültiges Ergebnis, denn „..“ wird aufgelöst, und ben fehlt."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -13706,12 +13707,12 @@ values (
   'b-rechte',
   'single',
   'Eine neue Mitarbeiterin in der Buchhaltung soll auf den Ordner „Rechnungen“ zugreifen können.',
-  'Wie vergibt man die Rechte am besten?',
+  'Wie vergibst du die Rechte am besten?',
   'Minimalprinzip und Gruppenrechte: Jede Person bekommt über ihre Rolle genau die Rechte, die sie braucht.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Sie wird Mitglied der Gruppe Buchhaltung, die die nötigen Rechte hat.","is_correct":true,"rationale":"Rechte an Gruppen erleichtern Verwaltung und Kontrolle."},{"text":"Sie erhält Vollzugriff direkt auf den Ordner.","is_correct":false,"rationale":"Mehr Rechte als nötig und schwer nachzuhalten."},{"text":"Sie bekommt das Administratorkonto.","is_correct":false,"rationale":"Verstößt grob gegen das Minimalprinzip."},{"text":"Sie nutzt das Konto ihrer Vorgängerin.","is_correct":false,"rationale":"Geteilte Konten machen Handlungen nicht mehr zuordenbar."}]}'::jsonb,
+  '{"choices":[{"text":"Sie wird Mitglied der Gruppe Buchhaltung, die die nötigen Rechte hat.","is_correct":true,"rationale":"Rechte an Gruppen erleichtern Verwaltung und Kontrolle."},{"text":"Sie erhält Vollzugriff direkt auf den Ordner.","is_correct":false,"rationale":"Das sind mehr Rechte als nötig, und Einzelrechte sind schwer nachzuhalten."},{"text":"Sie bekommt das Administratorkonto.","is_correct":false,"rationale":"Das verstößt grob gegen das Minimalprinzip."},{"text":"Sie nutzt das Konto ihrer Vorgängerin.","is_correct":false,"rationale":"Geteilte Konten machen Handlungen nicht mehr zuordenbar."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -13734,9 +13735,9 @@ values (
   'betriebssysteme',
   'b-rechte',
   'single',
-  'Auf einen Ordner gilt die Freigabeberechtigung „Lesen“ und die NTFS-Berechtigung „Ändern“.',
+  'Für einen Ordner gelten die Freigabeberechtigung „Lesen“ und die NTFS-Berechtigung „Ändern“.',
   'Welche Rechte hat ein Benutzer beim Zugriff über das Netzwerk?',
-  'Freigabe- und NTFS-Rechte werden kombiniert: wirksam ist immer die restriktivere Berechtigung.',
+  'Freigabe- und NTFS-Rechte werden kombiniert. Wirksam ist immer die restriktivere Berechtigung.',
   2,
   '{}',
   null,
@@ -13996,8 +13997,8 @@ values (
   'b-cli',
   'ordering',
   null,
-  'In welcher Reihenfolge grenzt man einen Netzwerkfehler von innen nach außen ein?',
-  'Erst die eigene Konfiguration, dann das lokale Netz, dann das Routing ins Internet, zuletzt die Namensauflösung.',
+  'In welcher Reihenfolge grenzt du einen Netzwerkfehler von innen nach außen ein?',
+  'Du prüfst erst die eigene Konfiguration, dann das lokale Netz, dann das Routing ins Internet und zuletzt die Namensauflösung.',
   2,
   '{}',
   null,
@@ -14026,7 +14027,7 @@ values (
   'single',
   'ipconfig zeigt bei einem Arbeitsplatz-PC die Adresse 169.254.23.7 mit der Maske 255.255.0.0 und kein Standardgateway.',
   'Was ist die wahrscheinlichste Ursache?',
-  'Eine 169.254er-Adresse ohne Gateway heißt: DHCP hat nicht geantwortet. Kabel, Switchport, VLAN und DHCP-Server prüfen, dann ipconfig /renew.',
+  'Eine 169.254er-Adresse ohne Gateway heißt: DHCP hat nicht geantwortet. Prüfe Kabel, Switchport, VLAN und DHCP-Server und fordere dann mit ipconfig /renew eine neue Adresse an.',
   2,
   '{}',
   null,
@@ -14142,7 +14143,7 @@ values (
   'single',
   'Ein Webserver antwortet nicht auf ping, die Webseite lässt sich im Browser aber problemlos öffnen.',
   'Was ist die wahrscheinlichste Erklärung?',
-  'Kein ping heißt nicht offline. Dienste prüft man gezielt am Port, z. B. mit Test-NetConnection server -Port 443.',
+  'Kein ping heißt nicht, dass der Server offline ist. Dienste prüfst du gezielt am Port, z. B. mit Test-NetConnection server -Port 443.',
   2,
   '{}',
   null,
@@ -14200,11 +14201,11 @@ values (
   'multiple',
   null,
   'Welche Maßnahmen gehören zur Härtung eines Servers?',
-  'Härtung verkleinert die Angriffsfläche: weniger Dienste, sichere Zugänge, aktuelle Software, restriktive Rechte.',
+  'Härtung verkleinert die Angriffsfläche durch weniger Dienste, sichere Zugänge, aktuelle Software und restriktive Rechte.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Nicht benötigte Dienste deaktivieren","is_correct":true,"rationale":"Jeder laufende Dienst ist ein mögliches Angriffsziel."},{"text":"Standardpasswörter ändern","is_correct":true,"rationale":"Standardpasswörter sind öffentlich bekannt."},{"text":"Sicherheitsupdates zeitnah einspielen","is_correct":true,"rationale":"Schließt bekannte Lücken."},{"text":"Alle Ports in der Firewall öffnen, um Probleme zu vermeiden","is_correct":false,"rationale":"Genau das vergrößert die Angriffsfläche."},{"text":"Allen Benutzern Administratorrechte geben","is_correct":false,"rationale":"Verstößt gegen das Minimalprinzip."}]}'::jsonb,
+  '{"choices":[{"text":"Nicht benötigte Dienste deaktivieren","is_correct":true,"rationale":"Jeder laufende Dienst ist ein mögliches Angriffsziel."},{"text":"Standardpasswörter ändern","is_correct":true,"rationale":"Standardpasswörter sind öffentlich bekannt."},{"text":"Sicherheitsupdates zeitnah einspielen","is_correct":true,"rationale":"Das schließt bekannte Lücken."},{"text":"Alle Ports in der Firewall öffnen, um Probleme zu vermeiden","is_correct":false,"rationale":"Genau das vergrößert die Angriffsfläche."},{"text":"Allen Benutzern Administratorrechte geben","is_correct":false,"rationale":"Das verstößt gegen das Minimalprinzip."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -14320,7 +14321,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Den PC vom übrigen Netz abschotten und die Ablösung planen","is_correct":true,"rationale":"Ohne Updates bleibt jede neue Lücke offen; Isolation begrenzt das Risiko."},{"text":"Nichts tun, solange die Maschine läuft","is_correct":false,"rationale":"Das Risiko wächst mit jeder neu entdeckten Lücke."},{"text":"Den PC direkt ins Internet stellen, damit er Updates sucht","is_correct":false,"rationale":"Es gibt keine Updates mehr. So vergrößert sich nur die Angriffsfläche."},{"text":"Den Virenschutz deinstallieren, um Leistung zu sparen","is_correct":false,"rationale":"Schwächt den Schutz zusätzlich."}]}'::jsonb,
+  '{"choices":[{"text":"Den PC vom übrigen Netz abschotten und die Ablösung planen","is_correct":true,"rationale":"Ohne Updates bleibt jede neue Lücke offen; Isolation begrenzt das Risiko."},{"text":"Nichts tun, solange die Maschine läuft","is_correct":false,"rationale":"Das Risiko wächst mit jeder neu entdeckten Lücke."},{"text":"Den PC direkt ins Internet stellen, damit er Updates sucht","is_correct":false,"rationale":"Es gibt keine Updates mehr. So vergrößert sich nur die Angriffsfläche."},{"text":"Den Virenschutz deinstallieren, um Leistung zu sparen","is_correct":false,"rationale":"Das schwächt den Schutz zusätzlich."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -14374,11 +14375,11 @@ values (
   'multiple',
   null,
   'Welche Maßnahmen härten den SSH-Zugang eines Linux-Servers?',
-  'Sicherer SSH-Zugang: kein direkter root-Login, Schlüssel statt Passwort, persönliche Konten, aktuelle Software.',
+  'Ein sicherer SSH-Zugang kommt ohne direkten root-Login aus und setzt auf Schlüssel statt Passwort, persönliche Konten und aktuelle Software.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Anmeldung als root direkt per SSH verbieten","is_correct":true,"rationale":"Angreifer kennen den Namen root; persönliche Konten mit sudo sind sicherer."},{"text":"Anmeldung mit Schlüsselpaar statt Passwort","is_correct":true,"rationale":"Schlüssel lassen sich nicht erraten."},{"text":"Den SSH-Server aktuell halten","is_correct":true,"rationale":"Schließt bekannte Lücken."},{"text":"Zusätzlich Telnet auf Port 23 anbieten","is_correct":false,"rationale":"Telnet überträgt alles im Klartext."},{"text":"Ein einfaches gemeinsames Passwort für alle Admins","is_correct":false,"rationale":"Leicht zu erraten und nicht einer Person zuordenbar."}]}'::jsonb,
+  '{"choices":[{"text":"Anmeldung als root direkt per SSH verbieten","is_correct":true,"rationale":"Angreifer kennen den Namen root; persönliche Konten mit sudo sind sicherer."},{"text":"Anmeldung mit Schlüsselpaar statt Passwort","is_correct":true,"rationale":"Schlüssel lassen sich nicht erraten."},{"text":"Den SSH-Server aktuell halten","is_correct":true,"rationale":"Das schließt bekannte Lücken."},{"text":"Zusätzlich Telnet auf Port 23 anbieten","is_correct":false,"rationale":"Telnet überträgt alles im Klartext."},{"text":"Ein einfaches gemeinsames Passwort für alle Admins","is_correct":false,"rationale":"Leicht zu erraten und nicht einer Person zuordenbar."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -14432,7 +14433,7 @@ values (
   'matching',
   null,
   'Welches System unterstützt die Aufgabe am besten?',
-  'ERP: gesamtes Unternehmen. SCM: Lieferkette. CRM: Kundenbeziehungen.',
+  'ERP deckt das gesamte Unternehmen ab, SCM die Lieferkette und CRM die Kundenbeziehungen.',
   2,
   '{}',
   null,
@@ -14519,7 +14520,7 @@ values (
   'matching',
   null,
   'Zu welchem Bereich des CRM gehört die Tätigkeit?',
-  'Operativ: Tagesgeschäft mit dem Kunden. Analytisch: Auswertung der Kundendaten. Kommunikativ: Steuerung und Bündelung der Kontaktkanäle.',
+  'Operatives CRM ist das Tagesgeschäft mit dem Kunden, analytisches CRM wertet die Kundendaten aus, kommunikatives CRM steuert und bündelt die Kontaktkanäle.',
   3,
   '{}',
   null,
@@ -14664,7 +14665,7 @@ values (
   'matching',
   null,
   'Auf welche Art von Software trifft die Aussage zu?',
-  'Standardsoftware: günstig, schnell verfügbar, vom Hersteller gepflegt. Individualsoftware: passgenau und selbstbestimmt, aber teuer und erst nach der Entwicklung verfügbar.',
+  'Standardsoftware ist günstig, schnell verfügbar und wird vom Hersteller gepflegt. Individualsoftware ist passgenau und selbstbestimmt, aber teuer und erst nach der Entwicklung verfügbar.',
   2,
   '{}',
   null,
@@ -14697,7 +14698,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Anpassen von Standardsoftware über Einstellungen, ohne den Programmcode zu ändern","is_correct":true,"rationale":"Bleibt bei Updates erhalten."},{"text":"Neuentwicklung einer Software für einen Kunden","is_correct":false,"rationale":"Das ist Individualentwicklung."},{"text":"Verkauf von Software an Kunden","is_correct":false,"rationale":"Das ist Vertrieb."},{"text":"Deinstallation nicht benötigter Programme","is_correct":false,"rationale":"Das ist Teil der Härtung."}]}'::jsonb,
+  '{"choices":[{"text":"Anpassen von Standardsoftware über Einstellungen, ohne den Programmcode zu ändern","is_correct":true,"rationale":"Solche Anpassungen bleiben bei Updates erhalten."},{"text":"Neuentwicklung einer Software für einen Kunden","is_correct":false,"rationale":"Das ist Individualentwicklung."},{"text":"Verkauf von Software an Kunden","is_correct":false,"rationale":"Das ist Vertrieb."},{"text":"Deinstallation nicht benötigter Programme","is_correct":false,"rationale":"Das ist Teil der Härtung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -14726,7 +14727,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Branchensoftware für Zahnarztpraxen","is_correct":true,"rationale":"Auf genau diese Abläufe und Vorgaben zugeschnitten."},{"text":"Eine Individualentwicklung","is_correct":false,"rationale":"Für einen Standardbedarf unnötig teuer."},{"text":"Ein allgemeines Tabellenkalkulationsprogramm","is_correct":false,"rationale":"Deckt Abrechnung und Akten nicht rechtssicher ab."},{"text":"Ein Grafikprogramm","is_correct":false,"rationale":"Passt nicht zum Bedarf."}]}'::jsonb,
+  '{"choices":[{"text":"Branchensoftware für Zahnarztpraxen","is_correct":true,"rationale":"Sie ist auf genau diese Abläufe und Vorgaben zugeschnitten."},{"text":"Eine Individualentwicklung","is_correct":false,"rationale":"Sie wäre für einen Standardbedarf unnötig teuer."},{"text":"Ein allgemeines Tabellenkalkulationsprogramm","is_correct":false,"rationale":"Es deckt Abrechnung und Akten nicht rechtssicher ab."},{"text":"Ein Grafikprogramm","is_correct":false,"rationale":"Es passt nicht zum Bedarf."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -14809,7 +14810,7 @@ values (
   'matching',
   null,
   'Was passiert mit der Anpassung beim nächsten Release-Update der Standardsoftware in der Regel?',
-  'Vorgesehene Einstellungen übersteht jedes Update. Modifikationen am Herstellercode überschreibt das neue Release. Sie müssen neu eingebaut und getestet werden.',
+  'Vorgesehene Einstellungen überstehen jedes Update. Modifikationen am Herstellercode überschreibt das neue Release, sie müssen also neu eingebaut und getestet werden.',
   2,
   '{}',
   null,
@@ -14958,7 +14959,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Concurrent User: gezählt werden gleichzeitige Anmeldungen","is_correct":true,"rationale":"Es reichen 20 Lizenzen."},{"text":"Named User: Jede berechtigte Person braucht eine Lizenz","is_correct":false,"rationale":"Dafür wären 60 Lizenzen nötig."},{"text":"OEM-Lizenz","is_correct":false,"rationale":"Ist an ein Gerät gebunden und passt nicht zum Schichtbetrieb."},{"text":"Einzelplatzlizenz pro Rechner mit Lizenz für alle 60 Personen","is_correct":false,"rationale":"Unnötig viele Lizenzen."}]}'::jsonb,
+  '{"choices":[{"text":"Concurrent User: gezählt werden gleichzeitige Anmeldungen","is_correct":true,"rationale":"Es reichen 20 Lizenzen."},{"text":"Named User: Jede berechtigte Person braucht eine Lizenz","is_correct":false,"rationale":"Dafür wären 60 Lizenzen nötig."},{"text":"OEM-Lizenz","is_correct":false,"rationale":"Sie ist an ein Gerät gebunden und passt nicht zum Schichtbetrieb."},{"text":"Einzelplatzlizenz pro Rechner mit Lizenz für alle 60 Personen","is_correct":false,"rationale":"Das wären unnötig viele Lizenzen."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -15041,7 +15042,7 @@ values (
   'single',
   null,
   'Was erlaubt eine Bibliothek unter der LGPL?',
-  'LGPL: Nutzung als Bibliothek auch in proprietärer Software erlaubt. Wer die Bibliothek selbst verändert und weitergibt, muss diese Änderungen offenlegen.',
+  'Die LGPL erlaubt es, die Bibliothek auch in proprietärer Software zu nutzen. Wer die Bibliothek selbst verändert und weitergibt, muss diese Änderungen offenlegen.',
   3,
   '{}',
   null,
@@ -15127,8 +15128,8 @@ values (
   'an-lizenzen',
   'single',
   'Ein fünf Jahre alter PC wird durch einen neuen ersetzt. Auf dem alten lief Windows mit einer OEM-Lizenz.',
-  'Darf die Lizenz auf den neuen PC übertragen werden?',
-  'OEM-Lizenzen sind günstig, weil sie an ein Gerät gebunden sind. Umziehen lassen sich Voll- oder Volumenlizenzen.',
+  'Darf die Lizenz nach den Lizenzbedingungen des Herstellers auf den neuen PC übertragen werden?',
+  'OEM-Lizenzen sind günstig, weil der Hersteller sie in seinen Lizenzbedingungen an ein Gerät bindet. Ohne Einschränkung umziehen lassen sich Voll- oder Volumenlizenzen.',
   1,
   '{}',
   null,
@@ -15190,7 +15191,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Für personenbezogene Daten fehlt ein Vertrag zur Auftragsverarbeitung, und der Speicherort ist ungeklärt.","is_correct":true,"rationale":"Die DSGVO verlangt geregelte Verarbeitung durch Dienstleister."},{"text":"Online-Whiteboards dürfen grundsätzlich nicht genutzt werden.","is_correct":false,"rationale":"Sie sind erlaubt, wenn ein Vertrag sie regelt."},{"text":"Nichts, solange das Tool kostenlos ist.","is_correct":false,"rationale":"Kosten ändern nichts an den Datenschutzpflichten."},{"text":"Nur die Farbe der Notizen ist nicht einheitlich.","is_correct":false,"rationale":"Kein Datenschutzproblem."}]}'::jsonb,
+  '{"choices":[{"text":"Für personenbezogene Daten fehlt ein Vertrag zur Auftragsverarbeitung, und der Speicherort ist ungeklärt.","is_correct":true,"rationale":"Die DSGVO verlangt geregelte Verarbeitung durch Dienstleister."},{"text":"Online-Whiteboards dürfen grundsätzlich nicht genutzt werden.","is_correct":false,"rationale":"Sie sind erlaubt, wenn ein Vertrag sie regelt."},{"text":"Nichts, solange das Tool kostenlos ist.","is_correct":false,"rationale":"Kosten ändern nichts an den Datenschutzpflichten."},{"text":"Nur die Farbe der Notizen ist nicht einheitlich.","is_correct":false,"rationale":"Das ist kein Datenschutzproblem."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -15273,7 +15274,7 @@ values (
   'single',
   'Ein Vertriebsteam tauscht Angebotsunterlagen über einen privaten Cloudspeicher aus, weil der offizielle Dateiserver von unterwegs nicht erreichbar ist.',
   'Wie nennt man dieses Phänomen?',
-  'Schatten-IT entsteht oft, wenn offizielle Werkzeuge fehlen oder unpraktisch sind. Abhilfe: gute offizielle Lösung, klare Regeln, Aufklärung.',
+  'Schatten-IT entsteht oft, wenn offizielle Werkzeuge fehlen oder unpraktisch sind. Dagegen helfen eine gute offizielle Lösung, klare Regeln und Aufklärung.',
   2,
   '{}',
   null,
@@ -15389,7 +15390,7 @@ values (
   'matching',
   null,
   'Auf welcher OSI-Schicht arbeitet das Gerät bzw. Protokoll?',
-  'Switch: Sicherung (MAC). Router und IP: Vermittlung. TCP/UDP: Transport. HTTP: Anwendung.',
+  'Der Switch arbeitet auf der Sicherungsschicht (MAC-Adressen), Router und IP auf der Vermittlungsschicht, TCP und UDP auf der Transportschicht und HTTP auf der Anwendungsschicht.',
   2,
   '{}',
   null,
@@ -15447,7 +15448,7 @@ values (
   'matching',
   null,
   'Welches Transportprotokoll passt zur Anwendung?',
-  'TCP sichert die Übertragung mit Bestätigungen und erneutem Senden; das ist richtig, wenn alles vollständig ankommen muss. Bei Echtzeitanwendungen zählt geringe Verzögerung mehr als Vollständigkeit. Deshalb UDP.',
+  'TCP sichert die Übertragung mit Bestätigungen und erneutem Senden. Das ist richtig, wenn alles vollständig ankommen muss. Bei Echtzeitanwendungen zählt geringe Verzögerung mehr als Vollständigkeit, deshalb passt dort UDP.',
   2,
   '{}',
   null,
@@ -15683,7 +15684,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Glasfaser","is_correct":true,"rationale":"Überträgt Licht und ist unempfindlich gegen elektromagnetische Störungen."},{"text":"Ungeschirmtes Cat-5e-Kabel","is_correct":false,"rationale":"Störanfällig in der Nähe starker Motoren."},{"text":"WLAN","is_correct":false,"rationale":"Kann durch Metall und Störquellen stark beeinträchtigt werden."},{"text":"Koaxialkabel eines alten Busnetzes","is_correct":false,"rationale":"Veraltet und für heutige Netze ungeeignet."}]}'::jsonb,
+  '{"choices":[{"text":"Glasfaser","is_correct":true,"rationale":"Sie überträgt Licht und ist unempfindlich gegen elektromagnetische Störungen."},{"text":"Ungeschirmtes Cat-5e-Kabel","is_correct":false,"rationale":"Es ist in der Nähe starker Motoren störanfällig."},{"text":"WLAN","is_correct":false,"rationale":"Es kann durch Metall und Störquellen stark beeinträchtigt werden."},{"text":"Koaxialkabel eines alten Busnetzes","is_correct":false,"rationale":"Es ist veraltet und für heutige Netze ungeeignet."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -15799,7 +15800,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Cat 6A","is_correct":true,"rationale":"10 Gbit/s auf bis zu 100 m."},{"text":"Cat 5e","is_correct":false,"rationale":"Nur 1 Gbit/s."},{"text":"Cat 6","is_correct":false,"rationale":"10 Gbit/s nur bis etwa 55 m."},{"text":"Cat 8","is_correct":false,"rationale":"Schafft mehr, aber nur bis 30 m und ist daher für 80 m ungeeignet."}]}'::jsonb,
+  '{"choices":[{"text":"Cat 6A","is_correct":true,"rationale":"Cat 6A schafft 10 Gbit/s auf bis zu 100 m."},{"text":"Cat 5e","is_correct":false,"rationale":"Cat 5e schafft nur 1 Gbit/s."},{"text":"Cat 6","is_correct":false,"rationale":"Cat 6 schafft 10 Gbit/s nur bis etwa 55 m."},{"text":"Cat 8","is_correct":false,"rationale":"Cat 8 schafft mehr, aber nur bis 30 m, und ist daher für 80 m ungeeignet."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -16060,7 +16061,7 @@ values (
   2,
   '{}',
   null,
-  '{"cloze_text":"Netzadresse: {0}\nBroadcastadresse: {1}","gaps":[{"answers":["10.20.30.128"],"rationale":"Blöcke .96, .128, .160 - 140 liegt ab .128"},{"answers":["10.20.30.159"],"rationale":"eine Adresse vor dem nächsten Block .160"}]}'::jsonb,
+  '{"cloze_text":"Netzadresse: {0}\nBroadcastadresse: {1}","gaps":[{"answers":["10.20.30.128"],"rationale":"Blöcke .96, .128, .160: 140 liegt ab .128"},{"answers":["10.20.30.159"],"rationale":"eine Adresse vor dem nächsten Block .160"}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -16114,7 +16115,7 @@ values (
   'single',
   null,
   'Wie lautet die Broadcastadresse des Netzes, in dem 10.1.77.5/21 liegt?',
-  '/21 = 255.255.248.0, Blockgröße im dritten Oktett 256 - 248 = 8. Blöcke 64, 72, 80 - 77 liegt in 72 bis 79. Netz 10.1.72.0, Broadcast 10.1.79.255.',
+  '/21 = 255.255.248.0, Blockgröße im dritten Oktett 256 - 248 = 8. Die Blöcke beginnen bei 64, 72 und 80, also liegt 77 in 72 bis 79. Netz 10.1.72.0, Broadcast 10.1.79.255.',
   3,
   '{}',
   null,
@@ -16230,7 +16231,7 @@ values (
   'single',
   'Ein PC hat die Adresse 192.168.1.35/28, der Netzwerkdrucker 192.168.1.50/28. Der PC erreicht den Drucker nur, wenn das Standardgateway funktioniert.',
   'Woran liegt das?',
-  'Bei /28 beträgt die Blockgröße 16. PC (.35) liegt in .32 bis .47, der Drucker (.50) in .48 bis .63. Das sind zwei Netze, also Weg über das Gateway.',
+  'Bei /28 beträgt die Blockgröße 16. Der PC (.35) liegt in .32 bis .47, der Drucker (.50) in .48 bis .63. Das sind zwei Netze, also führt der Weg über das Gateway.',
   3,
   '{}',
   null,
@@ -16520,7 +16521,7 @@ values (
   'numeric',
   null,
   'Für wie viele Null-Blöcke steht :: in der Adresse fe80::1:2?',
-  'Eine IPv6-Adresse hat 8 Blöcke. Vorhanden sind fe80, 1 und 2, also 3. Der Doppelpunkt ersetzt 8 - 3 = 5 Null-Blöcke.',
+  'Eine IPv6-Adresse hat 8 Blöcke. Vorhanden sind fe80, 1 und 2, also 3. Der doppelte Doppelpunkt (::) ersetzt 8 - 3 = 5 Null-Blöcke.',
   1,
   '{}',
   null,
@@ -16955,7 +16956,7 @@ values (
   'single',
   'Ein Webserver in der DMZ soll aus dem Internet ausschließlich verschlüsselt erreichbar sein.',
   'Welche Freigabe braucht die Firewall?',
-  'Nur benötigte Ports öffnen: Für HTTPS genügt TCP 443. Oft leitet Port 80 lediglich auf HTTPS um.',
+  'Geöffnet werden nur die benötigten Ports, für HTTPS genügt TCP 443. Oft leitet Port 80 lediglich auf HTTPS um.',
   2,
   '{}',
   null,
@@ -16984,7 +16985,7 @@ values (
   'matching',
   null,
   'Welches Servicemodell liegt vor?',
-  'IaaS: Infrastruktur. PaaS: Plattform. SaaS: fertige Anwendung.',
+  'IaaS liefert die Infrastruktur, PaaS eine Plattform für eigene Anwendungen und SaaS die fertige Anwendung.',
   2,
   '{}',
   null,
@@ -17158,7 +17159,7 @@ values (
   'matching',
   null,
   'Welches Bereitstellungsmodell liegt vor?',
-  'Public: für alle. Private: für ein Unternehmen. Hybrid: Kombination aus beidem. Community: für eine Gruppe mit gemeinsamen Anforderungen.',
+  'Die Public Cloud steht allen offen, die Private Cloud nur einem Unternehmen. Die Hybrid Cloud kombiniert beides, die Community Cloud dient einer Gruppe mit gemeinsamen Anforderungen.',
   2,
   '{}',
   null,
@@ -17307,7 +17308,7 @@ values (
   2,
   '{}',
   null,
-  '{"cloze_text":"Das Pflichtenheft übernimmt die Anforderungen aus dem {0}. Es ergänzt, womit umgesetzt wird (eingesetzte {1}), wie die Teile zusammenspielen (Systemarchitektur und {2}) und woran die Abnahme gemessen wird (konkrete {3}).","gaps":[{"answers":["Lastenheft"],"rationale":"Dort beginnt alles: mit den Anforderungen."},{"answers":["Technologien"],"rationale":"Womit umgesetzt wird, entscheidet der Auftragnehmer."},{"answers":["Schnittstellen"],"rationale":"Sie gehören zum technischen Wie der Lösung."},{"answers":["Testfälle"],"rationale":"Sie machen die Anforderungen prüfbar."}],"word_bank":["Angebote","Budgetvorgaben"]}'::jsonb,
+  '{"cloze_text":"Das Pflichtenheft übernimmt die Anforderungen aus dem {0}. Es ergänzt, womit umgesetzt wird (eingesetzte {1}), wie die Teile zusammenspielen (Systemarchitektur und {2}) und woran die Abnahme gemessen wird (konkrete {3}).","gaps":[{"answers":["Lastenheft"],"rationale":"Dort beginnt alles, nämlich mit den Anforderungen."},{"answers":["Technologien"],"rationale":"Womit umgesetzt wird, entscheidet der Auftragnehmer."},{"answers":["Schnittstellen"],"rationale":"Sie gehören zum technischen Wie der Lösung."},{"answers":["Testfälle"],"rationale":"Sie machen die Anforderungen prüfbar."}],"word_bank":["Angebote","Budgetvorgaben"]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -17336,7 +17337,7 @@ values (
   2,
   '{}',
   null,
-  '{"buckets":["Lastenheft","Pflichtenheft"],"match_items":[{"text":"Heute werden Termine nur telefonisch vergeben.","bucket":0,"rationale":"Ist-Zustand aus Sicht des Auftraggebers."},{"text":"Kunden sollen Termine rund um die Uhr buchen können.","bucket":0,"rationale":"Fachliche Anforderung ohne technische Lösung."},{"text":"Das Budget beträgt höchstens 40.000 €.","bucket":0,"rationale":"Rahmenbedingung des Auftraggebers."},{"text":"Die App wird mit Flutter für Android und iOS entwickelt.","bucket":1,"rationale":"Technologieentscheidung des Auftragnehmers."},{"text":"Die Termine werden per REST-API aus dem Werkstattsystem gelesen.","bucket":1,"rationale":"Schnittstelle: das technische Wie."},{"text":"Testfall 12: Buchung ohne freien Termin wird abgelehnt.","bucket":1,"rationale":"Konkrete Testfälle für die Abnahme stehen im Pflichtenheft."}]}'::jsonb,
+  '{"buckets":["Lastenheft","Pflichtenheft"],"match_items":[{"text":"Heute werden Termine nur telefonisch vergeben.","bucket":0,"rationale":"Ist-Zustand aus Sicht des Auftraggebers."},{"text":"Kunden sollen Termine rund um die Uhr buchen können.","bucket":0,"rationale":"Fachliche Anforderung ohne technische Lösung."},{"text":"Das Budget beträgt höchstens 40.000 €.","bucket":0,"rationale":"Rahmenbedingung des Auftraggebers."},{"text":"Die App wird mit Flutter für Android und iOS entwickelt.","bucket":1,"rationale":"Technologieentscheidung des Auftragnehmers."},{"text":"Die Termine werden per REST-API aus dem Werkstattsystem gelesen.","bucket":1,"rationale":"Die Schnittstelle gehört zum technischen Wie."},{"text":"Testfall 12: Buchung ohne freien Termin wird abgelehnt.","bucket":1,"rationale":"Konkrete Testfälle für die Abnahme stehen im Pflichtenheft."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -17481,7 +17482,7 @@ values (
   1,
   '{}',
   null,
-  '{"choices":[{"text":"Mitarbeitende können einem Ticket einen Screenshot anhängen.","is_correct":true,"rationale":"Das beschreibt eine Tätigkeit des Systems."},{"text":"Die App ist zu 99,5 % im Jahr verfügbar.","is_correct":false,"rationale":"Verfügbarkeit ist eine Qualitätseigenschaft."},{"text":"Die App läuft auf Android ab Version 12.","is_correct":false,"rationale":"Das ist eine Randbedingung zur Plattform."},{"text":"Die Ticketliste lädt in höchstens 2 Sekunden.","is_correct":false,"rationale":"Das beschreibt, wie schnell, also nicht-funktional."}]}'::jsonb,
+  '{"choices":[{"text":"Mitarbeitende können einem Ticket einen Screenshot anhängen.","is_correct":true,"rationale":"Das beschreibt eine Tätigkeit des Systems."},{"text":"Die App ist zu 99,5 % im Jahr verfügbar.","is_correct":false,"rationale":"Verfügbarkeit ist eine Qualitätseigenschaft."},{"text":"Die App läuft auf Android ab Version 12.","is_correct":false,"rationale":"Das ist eine Randbedingung zur Plattform."},{"text":"Die Ticketliste lädt in höchstens 2 Sekunden.","is_correct":false,"rationale":"Das beschreibt, wie schnell das System arbeitet, also nicht-funktional."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -17680,7 +17681,7 @@ values (
   'matching',
   null,
   'Welche Erhebungstechnik passt jeweils am besten?',
-  'Interview: Tiefe mit Rückfragen. Fragebogen: viele Personen. Beobachtung: unbewusste Abläufe. Workshop: mehrere Gruppen einigen sich. Dokumentenanalyse: vorhandene Unterlagen auswerten.',
+  'Das Interview liefert Tiefe durch Rückfragen, der Fragebogen erreicht viele Personen. Die Beobachtung zeigt unbewusste Abläufe, im Workshop einigen sich mehrere Gruppen, und die Dokumentenanalyse wertet vorhandene Unterlagen aus.',
   2,
   '{}',
   null,
@@ -17713,7 +17714,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Sie wird in diesem Release bewusst nicht umgesetzt, bleibt aber dokumentiert.","is_correct":true,"rationale":"Won’t have heißt „this time“: später ist sie wieder möglich."},{"text":"Sie wird endgültig gestrichen und aus der Dokumentation entfernt.","is_correct":false,"rationale":"Sie bleibt ausdrücklich erfasst, nur nicht für diesen Stand."},{"text":"Sie wird umgesetzt, falls am Ende noch Zeit bleibt.","is_correct":false,"rationale":"Das beschreibt „Could have“."},{"text":"Sie ist wichtig, aber nicht kritisch für den Start.","is_correct":false,"rationale":"Das beschreibt „Should have“."}]}'::jsonb,
+  '{"choices":[{"text":"Sie wird in diesem Release bewusst nicht umgesetzt, bleibt aber dokumentiert.","is_correct":true,"rationale":"Won’t have heißt vollständig „Won’t have this time“. Später ist sie wieder möglich."},{"text":"Sie wird endgültig gestrichen und aus der Dokumentation entfernt.","is_correct":false,"rationale":"Sie bleibt ausdrücklich erfasst, nur nicht für diesen Stand."},{"text":"Sie wird umgesetzt, falls am Ende noch Zeit bleibt.","is_correct":false,"rationale":"Das beschreibt „Could have“."},{"text":"Sie ist wichtig, aber nicht kritisch für den Start.","is_correct":false,"rationale":"Das beschreibt „Should have“."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -17736,7 +17737,7 @@ values (
   'anforderungen',
   'af-erhebung',
   'single',
-  'Im Interview beschreiben die Lagerbeschäftigten ihre Arbeit lückenhaft: viele Handgriffe sind Routine und fallen ihnen gar nicht mehr auf.',
+  'Im Interview beschreiben die Lagerbeschäftigten ihre Arbeit lückenhaft, denn viele Handgriffe sind Routine und fallen ihnen gar nicht mehr auf.',
   'Welche Erhebungstechnik ergänzt das Interview hier am besten?',
   'Befragungen liefern nur bewusstes Wissen. Routinen, Umwege und Workarounds zeigt erst die Beobachtung. Deshalb kombiniert man Interview und Beobachtung.',
   2,
@@ -17887,7 +17888,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"«extend»-Pfeil von „Gutschein einlösen“ zu „Bestellung aufgeben“","is_correct":true,"rationale":"Optionale Erweiterung, der Pfeil zeigt auf den Basisfall."},{"text":"«extend»-Pfeil von „Bestellung aufgeben“ zu „Gutschein einlösen“","is_correct":false,"rationale":"Die Richtung ist vertauscht: bei extend zeigt der Pfeil zum Basisfall."},{"text":"«include»-Pfeil von „Bestellung aufgeben“ zu „Gutschein einlösen“","is_correct":false,"rationale":"include hieße, dass bei jeder Bestellung ein Gutschein eingelöst wird."},{"text":"Assoziation zwischen dem Akteur Gutschein und der Bestellung","is_correct":false,"rationale":"Ein Gutschein ist kein Akteur, sondern ein Objekt im Ablauf."}]}'::jsonb,
+  '{"choices":[{"text":"«extend»-Pfeil von „Gutschein einlösen“ zu „Bestellung aufgeben“","is_correct":true,"rationale":"Optionale Erweiterung, der Pfeil zeigt auf den Basisfall."},{"text":"«extend»-Pfeil von „Bestellung aufgeben“ zu „Gutschein einlösen“","is_correct":false,"rationale":"Die Richtung ist vertauscht. Bei extend zeigt der Pfeil zum Basisfall."},{"text":"«include»-Pfeil von „Bestellung aufgeben“ zu „Gutschein einlösen“","is_correct":false,"rationale":"include hieße, dass bei jeder Bestellung ein Gutschein eingelöst wird."},{"text":"Assoziation zwischen dem Akteur Gutschein und der Bestellung","is_correct":false,"rationale":"Ein Gutschein ist kein Akteur, sondern ein Objekt im Ablauf."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -18119,7 +18120,7 @@ values (
   2,
   '{}',
   null,
-  '{"buckets":["Aggregation","Komposition"],"match_items":[{"text":"Rechnung - Rechnungsposition","bucket":1,"rationale":"Positionen gibt es nicht ohne ihre Rechnung."},{"text":"Abteilung - Mitarbeiter","bucket":0,"rationale":"Mitarbeitende bleiben, wenn die Abteilung aufgelöst wird."},{"text":"Bestellung - Bestellposition","bucket":1,"rationale":"Eine Bestellposition existiert nur als Teil ihrer Bestellung."},{"text":"Playlist - Song","bucket":0,"rationale":"Der Song existiert weiter, wenn die Playlist gelöscht wird."}]}'::jsonb,
+  '{"buckets":["Aggregation","Komposition"],"match_items":[{"text":"Rechnung und Rechnungsposition","bucket":1,"rationale":"Positionen gibt es nicht ohne ihre Rechnung."},{"text":"Abteilung und Mitarbeiter","bucket":0,"rationale":"Mitarbeitende bleiben, wenn die Abteilung aufgelöst wird."},{"text":"Bestellung und Bestellposition","bucket":1,"rationale":"Eine Bestellposition existiert nur als Teil ihrer Bestellung."},{"text":"Playlist und Song","bucket":0,"rationale":"Der Song existiert weiter, wenn die Playlist gelöscht wird."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -18177,7 +18178,7 @@ values (
   3,
   '{}',
   null,
-  '{"diagram":{"type":"klassen","klassen":[{"name":"Leser","attribute":["- leserNr: int"],"methoden":[]},{"name":"Ausleihe","attribute":["- rueckgabeAm: Date"],"methoden":[]},{"name":"Medium","attribute":["- titel: String"],"methoden":[]}],"beziehungen":[{"von":0,"zu":1,"art":"assoziation","mult_von":"1","mult_zu":"0..5","label":"hat"},{"von":1,"zu":2,"art":"gerichtet","mult_von":"0..*","mult_zu":"1","label":"betrifft"}]},"choices":[{"text":"Ein Leser hat höchstens 5 Ausleihen gleichzeitig.","is_correct":true,"rationale":"Neben Ausleihe steht 0..5."},{"text":"Jede Ausleihe betrifft genau ein Medium.","is_correct":true,"rationale":"Neben Medium steht 1."},{"text":"Ein Medium kann in beliebig vielen Ausleihen vorkommen.","is_correct":true,"rationale":"Neben Ausleihe steht auf dieser Seite 0..*."},{"text":"Jeder Leser muss mindestens eine Ausleihe haben.","is_correct":false,"rationale":"0..5 erlaubt auch keine Ausleihe."},{"text":"Eine Ausleihe kann zu mehreren Lesern gehören.","is_correct":false,"rationale":"Neben Leser steht 1: genau ein Leser je Ausleihe."}]}'::jsonb,
+  '{"diagram":{"type":"klassen","klassen":[{"name":"Leser","attribute":["- leserNr: int"],"methoden":[]},{"name":"Ausleihe","attribute":["- rueckgabeAm: Date"],"methoden":[]},{"name":"Medium","attribute":["- titel: String"],"methoden":[]}],"beziehungen":[{"von":0,"zu":1,"art":"assoziation","mult_von":"1","mult_zu":"0..5","label":"hat"},{"von":1,"zu":2,"art":"gerichtet","mult_von":"0..*","mult_zu":"1","label":"betrifft"}]},"choices":[{"text":"Ein Leser hat höchstens 5 Ausleihen gleichzeitig.","is_correct":true,"rationale":"Neben Ausleihe steht 0..5."},{"text":"Jede Ausleihe betrifft genau ein Medium.","is_correct":true,"rationale":"Neben Medium steht 1."},{"text":"Ein Medium kann in beliebig vielen Ausleihen vorkommen.","is_correct":true,"rationale":"Neben Ausleihe steht auf dieser Seite 0..*."},{"text":"Jeder Leser muss mindestens eine Ausleihe haben.","is_correct":false,"rationale":"0..5 erlaubt auch keine Ausleihe."},{"text":"Eine Ausleihe kann zu mehreren Lesern gehören.","is_correct":false,"rationale":"Neben Leser steht 1, also genau ein Leser je Ausleihe."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -18290,7 +18291,7 @@ values (
   'matching',
   null,
   'Welches Element ist gemeint?',
-  'Start: gefüllter Kreis. Entscheidung: Raute mit Guards, genau ein Weg. Gabelung: Balken, alle Wege parallel. Vereinigung: Balken, wartet auf alle eingehenden Wege.',
+  'Der Startknoten ist ein gefüllter Kreis. Nach der Entscheidung (Raute mit Guards) läuft genau ein Weg weiter. Die Gabelung startet als Balken alle Wege parallel, die Vereinigung wartet als Balken auf alle eingehenden Wege.',
   2,
   '{}',
   null,
@@ -18323,7 +18324,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Ein Betrag von genau 500 wird von keinem Guard abgedeckt.","is_correct":true,"rationale":"Die Guards müssen zusammen alle Fälle abdecken."},{"text":"Guards dürfen keine Vergleichsoperatoren enthalten.","is_correct":false,"rationale":"Vergleiche sind in Guards üblich."},{"text":"Die Guards schließen sich nicht gegenseitig aus.","is_correct":false,"rationale":"Doch: kein Betrag ist zugleich größer und kleiner als 500."},{"text":"Guards gehören in die Raute, nicht an die Kanten.","is_correct":false,"rationale":"Guards stehen an den ausgehenden Kanten."}]}'::jsonb,
+  '{"choices":[{"text":"Ein Betrag von genau 500 wird von keinem Guard abgedeckt.","is_correct":true,"rationale":"Die Guards müssen zusammen alle Fälle abdecken."},{"text":"Guards dürfen keine Vergleichsoperatoren enthalten.","is_correct":false,"rationale":"Vergleiche sind in Guards üblich."},{"text":"Die Guards schließen sich nicht gegenseitig aus.","is_correct":false,"rationale":"Doch, denn kein Betrag ist zugleich größer und kleiner als 500."},{"text":"Guards gehören in die Raute, nicht an die Kanten.","is_correct":false,"rationale":"Guards stehen an den ausgehenden Kanten."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -18381,7 +18382,7 @@ values (
   1,
   '{}',
   null,
-  '{"diagram":{"type":"fluss","knoten":[{"label":"Start","form":"start"},{"label":"Bestellwert ermitteln"},{"label":"Wert >= 50 €?","form":"entscheidung","pfeil":"[nein]","seitlich":"[ja] Versand gratis setzen"},{"label":"Versandkosten addieren"},{"label":"Rechnung erstellen"},{"label":"Ende","form":"ende"}]},"choices":[{"text":"Der [ja]-Zweig: Versand gratis setzen","is_correct":true,"rationale":"50 >= 50 ist wahr."},{"text":"Der [nein]-Zweig: Versandkosten addieren","is_correct":false,"rationale":"Das gälte nur, wenn die Bedingung falsch wäre. Bei >= ist 50 eingeschlossen."},{"text":"Beide Zweige nacheinander","is_correct":false,"rationale":"Nach einer Entscheidung läuft genau ein Weg weiter."},{"text":"Keiner: der Ablauf bleibt stehen","is_correct":false,"rationale":"Die Guards [ja] und [nein] decken alle Fälle ab."}]}'::jsonb,
+  '{"diagram":{"type":"fluss","knoten":[{"label":"Start","form":"start"},{"label":"Bestellwert ermitteln"},{"label":"Wert >= 50 €?","form":"entscheidung","pfeil":"[nein]","seitlich":"[ja] Versand gratis setzen"},{"label":"Versandkosten addieren"},{"label":"Rechnung erstellen"},{"label":"Ende","form":"ende"}]},"choices":[{"text":"Der [ja]-Zweig: Versand gratis setzen","is_correct":true,"rationale":"50 >= 50 ist wahr."},{"text":"Der [nein]-Zweig: Versandkosten addieren","is_correct":false,"rationale":"Das gälte nur, wenn die Bedingung falsch wäre. Bei >= ist 50 eingeschlossen."},{"text":"Beide Zweige nacheinander","is_correct":false,"rationale":"Nach einer Entscheidung läuft genau ein Weg weiter."},{"text":"Keiner, der Ablauf bleibt stehen","is_correct":false,"rationale":"Die Guards [ja] und [nein] decken alle Fälle ab."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -18439,7 +18440,7 @@ values (
   2,
   '{}',
   null,
-  '{"cloze_text":"Bedingungen an den Kanten stehen in eckigen Klammern und heißen {0}. Nach einer {1} läuft genau ein Weg weiter, nach einer {2} laufen alle Wege parallel. Wer eine Aktion ausführt, zeigen {3}. Eine Schleife entsteht aus einer Entscheidung und einer {4}.","gaps":[{"answers":["Guards"],"rationale":"Sie steuern, welcher Weg genommen wird."},{"answers":["Entscheidung"],"rationale":"Die Raute: genau ein Weg."},{"answers":["Gabelung"],"rationale":"Der Balken: alle Wege gleichzeitig."},{"answers":["Swimlanes"],"rationale":"Jede Bahn steht für eine Rolle oder Abteilung."},{"answers":["Rückkante"],"rationale":"Eine eigene Schleifenform gibt es nicht."}],"word_bank":["Vereinigung","Endknoten","Akteure"]}'::jsonb,
+  '{"cloze_text":"Bedingungen an den Kanten stehen in eckigen Klammern und heißen {0}. Nach einer {1} läuft genau ein Weg weiter, nach einer {2} laufen alle Wege parallel. Wer eine Aktion ausführt, zeigen {3}. Eine Schleife entsteht aus einer Entscheidung und einer {4}.","gaps":[{"answers":["Guards"],"rationale":"Sie steuern, welcher Weg genommen wird."},{"answers":["Entscheidung"],"rationale":"Nach der Raute läuft genau ein Weg weiter."},{"answers":["Gabelung"],"rationale":"Am Balken starten alle Wege gleichzeitig."},{"answers":["Swimlanes"],"rationale":"Jede Bahn steht für eine Rolle oder Abteilung."},{"answers":["Rückkante"],"rationale":"Eine eigene Schleifenform gibt es nicht."}],"word_bank":["Vereinigung","Endknoten","Akteure"]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -18464,7 +18465,7 @@ values (
   'single',
   'Aktivitätsdiagramm an einer Supermarktkasse.',
   'Welcher Kontrollstruktur entspricht der Teil mit „Artikel scannen“?',
-  'Die Aktion steht vor der Entscheidung, die über die Rückkante zurückführt. Also läuft der Rumpf mindestens einmal: das Muster einer fußgesteuerten Schleife (WIEDERHOLE … BIS keine Artikel mehr).',
+  'Die Aktion steht vor der Entscheidung, die über die Rückkante zurückführt. Der Rumpf läuft also mindestens einmal. Das ist das Muster einer fußgesteuerten Schleife (WIEDERHOLE … BIS keine Artikel mehr).',
   3,
   '{}',
   null,
@@ -18493,7 +18494,7 @@ values (
   'matching',
   null,
   'Welcher Datentyp passt am besten?',
-  'Ganze Stückzahlen: int. Kommazahlen: double. Ja/Nein: boolean. Ein einzelnes Zeichen: char. PLZ und Telefonnummer: String, weil nicht gerechnet wird und führende Nullen und Sonderzeichen erhalten bleiben müssen.',
+  'Ganze Stückzahlen sind int, Kommazahlen double, Ja/Nein-Werte boolean und ein einzelnes Zeichen char. PLZ und Telefonnummer sind String, weil mit ihnen nicht gerechnet wird und führende Nullen und Sonderzeichen erhalten bleiben müssen.',
   2,
   '{}',
   null,
@@ -18673,7 +18674,7 @@ values (
   3,
   '{}',
   null,
-  '{"cloze_text":"String s = \"5\" + 3 + 4;     // s = \"{0}\"\nString t = \"5\" + (3 + 4);   // t = \"{1}\"\nint u = 5 + 3 + 4;          // u = {2}","gaps":[{"answers":["534"],"numeric":true,"rationale":"Von links nach rechts: \"5\" + 3 ergibt \"53\", dann \"53\" + 4 ergibt \"534\"."},{"answers":["57"],"numeric":true,"rationale":"Die Klammer zuerst: 3 + 4 = 7, dann \"5\" + 7."},{"answers":["12"],"numeric":true,"rationale":"Nur Zahlen: hier wird addiert."}],"mono":true}'::jsonb,
+  '{"cloze_text":"String s = \"5\" + 3 + 4;     // s = \"{0}\"\nString t = \"5\" + (3 + 4);   // t = \"{1}\"\nint u = 5 + 3 + 4;          // u = {2}","gaps":[{"answers":["534"],"numeric":true,"rationale":"Von links nach rechts: \"5\" + 3 ergibt \"53\", dann \"53\" + 4 ergibt \"534\"."},{"answers":["57"],"numeric":true,"rationale":"Die Klammer zuerst: 3 + 4 = 7, dann \"5\" + 7."},{"answers":["12"],"numeric":true,"rationale":"Hier stehen nur Zahlen, also wird addiert."}],"mono":true}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -18703,7 +18704,7 @@ int i = 3;',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"int x = (int) d;","is_correct":true,"rationale":"Der Cast schneidet die Nachkommastellen ab: x = 9."},{"text":"byte b = (byte) 200;","is_correct":true,"rationale":"byte reicht nur bis 127: der Wert läuft über und wird -56."},{"text":"double y = i;","is_correct":false,"rationale":"Erweiternde Umwandlung: aus 3 wird 3.0, nichts geht verloren."},{"text":"long l = i;","is_correct":false,"rationale":"long ist größer als int, die Zahl passt vollständig hinein."}]}'::jsonb,
+  '{"choices":[{"text":"int x = (int) d;","is_correct":true,"rationale":"Der Cast schneidet die Nachkommastellen ab: x = 9."},{"text":"byte b = (byte) 200;","is_correct":true,"rationale":"byte reicht nur bis 127. Der Wert läuft über und wird zu -56."},{"text":"double y = i;","is_correct":false,"rationale":"Die Umwandlung ist erweiternd: Aus 3 wird 3.0, nichts geht verloren."},{"text":"long l = i;","is_correct":false,"rationale":"long ist größer als int, die Zahl passt vollständig hinein."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -18788,7 +18789,7 @@ values (
   'matching',
   null,
   'Welche Kontrollstruktur passt?',
-  'Eine einmalige Bedingung ist eine Verzweigung. Kann der Rumpf null Mal laufen: kopfgesteuert. Muss er mindestens einmal laufen: fußgesteuert. Steht die Anzahl fest: Zählschleife.',
+  'Eine einmalige Bedingung ist eine Verzweigung. Darf der Rumpf auch gar nicht laufen, passt die kopfgesteuerte Schleife. Muss er mindestens einmal laufen, passt die fußgesteuerte. Steht die Anzahl vorher fest, nimmst du die Zählschleife.',
   2,
   '{}',
   null,
@@ -18951,7 +18952,7 @@ BIS x > 100',
   3,
   '{}',
   null,
-  '{"choices":[{"text":"do { x = x * 2; } while (x <= 100);","is_correct":true,"rationale":"Fußgesteuert, und die Abbruchbedingung x > 100 wird zur Laufbedingung x <= 100."},{"text":"do { x = x * 2; } while (x > 100);","is_correct":false,"rationale":"Die Bedingung wurde nicht umgekehrt: die Schleife liefe genau im falschen Fall weiter."},{"text":"do { x = x * 2; } while (x < 100);","is_correct":false,"rationale":"Bei x = 100 würde diese Schleife enden, WIEDERHOLE … BIS aber weiterlaufen, weil 100 > 100 falsch ist."},{"text":"while (x <= 100) { x = x * 2; }","is_correct":false,"rationale":"Kopfgesteuert: Bei einem Startwert über 100 liefe der Rumpf gar nicht, beim Original einmal."}]}'::jsonb,
+  '{"choices":[{"text":"do { x = x * 2; } while (x <= 100);","is_correct":true,"rationale":"Fußgesteuert, und die Abbruchbedingung x > 100 wird zur Laufbedingung x <= 100."},{"text":"do { x = x * 2; } while (x > 100);","is_correct":false,"rationale":"Die Bedingung wurde nicht umgekehrt. Die Schleife liefe genau im falschen Fall weiter."},{"text":"do { x = x * 2; } while (x < 100);","is_correct":false,"rationale":"Bei x = 100 würde diese Schleife enden, WIEDERHOLE … BIS aber weiterlaufen, weil 100 > 100 falsch ist."},{"text":"while (x <= 100) { x = x * 2; }","is_correct":false,"rationale":"Kopfgesteuert: Bei einem Startwert über 100 liefe der Rumpf gar nicht, beim Original einmal."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -19525,7 +19526,7 @@ values (
   'cloze',
   'Im Ticketsystem werden zwei Tickets angelegt, danach wird eines geschlossen. Neue Tickets sind offen.',
   'Vervollständige die Aussagen zum Code.',
-  'Klasse = Bauplan, Objekt = Exemplar mit eigenem Zustand und eigener Identität. Methoden beschreiben das Verhalten und ändern den Zustand genau des Objekts, auf dem sie aufgerufen werden: t2 bleibt offen.',
+  'Die Klasse ist der Bauplan, ein Objekt ein Exemplar mit eigenem Zustand und eigener Identität. Methoden beschreiben das Verhalten und ändern den Zustand genau des Objekts, auf dem sie aufgerufen werden. Deshalb bleibt t2 offen.',
   2,
   '{}',
   null,
@@ -19552,7 +19553,7 @@ values (
   'objektorientierung',
   'oo-grundbegriffe',
   'table',
-  'Aus einem Personalverwaltungssystem:',
+  'Die Klasse stammt aus einem Personalverwaltungssystem.',
   'Lies das Klassendiagramm und fülle die Tabelle aus.',
   'Das Klassendiagramm zeigt den Bauplan: Attribute im mittleren, Methoden im unteren Abschnitt. Die Klasse hat drei Attribute, alle private (-). setStunden erwartet h: int, getName liefert einen String.',
   1,
@@ -19587,7 +19588,7 @@ values (
   1,
   '{}',
   null,
-  '{"choices":[{"text":"schuhgroesse","is_correct":true,"rationale":"Für das Ausleihen von Medien spielt sie keine Rolle: Abstraktion lässt sie weg."},{"text":"leserNr","is_correct":false,"rationale":"Sie identifiziert den Leser bei jeder Ausleihe."},{"text":"name","is_correct":false,"rationale":"Wird für Mahnungen und den Ausweis gebraucht."},{"text":"email","is_correct":false,"rationale":"Wird für Erinnerungen an die Rückgabe gebraucht."}]}'::jsonb,
+  '{"choices":[{"text":"schuhgroesse","is_correct":true,"rationale":"Für das Ausleihen von Medien spielt sie keine Rolle, deshalb lässt die Abstraktion sie weg."},{"text":"leserNr","is_correct":false,"rationale":"Sie identifiziert den Leser bei jeder Ausleihe."},{"text":"name","is_correct":false,"rationale":"Wird für Mahnungen und den Ausweis gebraucht."},{"text":"email","is_correct":false,"rationale":"Wird für Erinnerungen an die Rückgabe gebraucht."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -19795,7 +19796,7 @@ values (
   2,
   '{}',
   null,
-  '{"diagram":{"type":"klassen","klassen":[{"name":"Artikel","attribute":["- artikelNr: String","- bestand: int"],"methoden":["+ getBestand(): int","+ einlagern(menge: int): void","+ auslagern(menge: int): boolean"]}],"beziehungen":[]},"choices":[{"text":"a.einlagern(10);","is_correct":true,"rationale":"einlagern ist public und darf von außen aufgerufen werden."},{"text":"a.bestand = 10;","is_correct":false,"rationale":"bestand ist private: Zugriff nur innerhalb von Artikel."},{"text":"a.bestand++;","is_correct":false,"rationale":"Auch das Erhöhen ist ein direkter Zugriff auf das private Attribut."},{"text":"String nr = a.artikelNr;","is_correct":false,"rationale":"artikelNr ist private, und einen Getter dafür gibt es nicht."}]}'::jsonb,
+  '{"diagram":{"type":"klassen","klassen":[{"name":"Artikel","attribute":["- artikelNr: String","- bestand: int"],"methoden":["+ getBestand(): int","+ einlagern(menge: int): void","+ auslagern(menge: int): boolean"]}],"beziehungen":[]},"choices":[{"text":"a.einlagern(10);","is_correct":true,"rationale":"einlagern ist public und darf von außen aufgerufen werden."},{"text":"a.bestand = 10;","is_correct":false,"rationale":"bestand ist private und nur innerhalb von Artikel zugreifbar."},{"text":"a.bestand++;","is_correct":false,"rationale":"Auch das Erhöhen ist ein direkter Zugriff auf das private Attribut."},{"text":"String nr = a.artikelNr;","is_correct":false,"rationale":"artikelNr ist private, und einen Getter dafür gibt es nicht."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -19946,7 +19947,7 @@ values (
   3,
   '{}',
   null,
-  '{"choices":[{"text":"Kunde(String vorname)","is_correct":true,"rationale":"Gleiche Parameterliste wie Kunde(String name). Nur der Parametername unterscheidet sich."},{"text":"Kunde()","is_correct":false,"rationale":"Keine Parameter: diese Liste gibt es noch nicht."},{"text":"Kunde(int nr)","is_correct":false,"rationale":"Ein int-Parameter ist eine neue Parameterliste."},{"text":"Kunde(int nr, String name)","is_correct":false,"rationale":"Andere Reihenfolge der Typen: erlaubt."}]}'::jsonb,
+  '{"choices":[{"text":"Kunde(String vorname)","is_correct":true,"rationale":"Gleiche Parameterliste wie Kunde(String name). Nur der Parametername unterscheidet sich."},{"text":"Kunde()","is_correct":false,"rationale":"Eine leere Parameterliste gibt es noch nicht."},{"text":"Kunde(int nr)","is_correct":false,"rationale":"Ein int-Parameter ist eine neue Parameterliste."},{"text":"Kunde(int nr, String name)","is_correct":false,"rationale":"Die Typen stehen in anderer Reihenfolge, das ist erlaubt."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -19975,7 +19976,7 @@ b.gutschreiben(50);
 Punktekonto c = new Punktekonto(100);
 c.gutschreiben(20);',
   'Welchen Wert liefert danach a.getPunkte()? Der Konstruktor setzt den Startwert, gutschreiben addiert.',
-  'b = a kopiert nur die Referenz: a und b zeigen auf dasselbe Objekt. 100 + 50 = 150. c ist ein eigenes Objekt mit new, seine 120 Punkte berühren a nicht. a.getPunkte() liefert 150.',
+  'b = a kopiert nur die Referenz, a und b zeigen also auf dasselbe Objekt: 100 + 50 = 150. c ist ein eigenes, mit new erzeugtes Objekt, seine 120 Punkte berühren a nicht. a.getPunkte() liefert 150.',
   2,
   '{}',
   null,
@@ -20015,7 +20016,7 @@ Kunde k3 = k1;
 Kunde k4 = new Kunde();
 Kunde k5 = new Kunde();',
   'Welchen Wert hat Kunde.anzahl am Ende?',
-  'Der Konstruktor läuft nur bei new: k1, k2, k4 und k5, also viermal. k3 = k1 kopiert nur die Referenz und erzeugt kein Objekt. Da anzahl static ist, gibt es den Zähler nur einmal: 4.',
+  'Der Konstruktor läuft nur bei new: k1, k2, k4 und k5, also viermal. k3 = k1 kopiert nur die Referenz und erzeugt kein Objekt. Da anzahl static ist, gibt es den Zähler nur einmal, und er steht am Ende auf 4.',
   2,
   '{}',
   null,
@@ -20196,7 +20197,7 @@ values (
   'matching',
   'Für die Kundendatenbank eines Webshops werden Begriffe aus dem Fachkonzept eingeordnet.',
   'Handelt es sich um eine Entität, einen Entitätstyp oder ein Attribut?',
-  'Entität = konkretes Exemplar, Entitätstyp = Menge gleichartiger Entitäten, Attribut = Eigenschaft. Die Beziehung verbindet Entitätstypen miteinander.',
+  'Eine Entität ist ein konkretes Exemplar, ein Entitätstyp die Menge gleichartiger Entitäten und ein Attribut eine Eigenschaft. Die Beziehung verbindet Entitätstypen miteinander.',
   1,
   '{}',
   null,
@@ -20225,7 +20226,7 @@ values (
   'pairs',
   'In der Prüfung wird das ER-Modell in der Chen-Notation gezeichnet.',
   'Ordne jedem Symbol der Chen-Notation seine Bedeutung zu.',
-  'Chen-Notation: Rechteck = Entitätstyp, Raute = Beziehung, Ellipse = Attribut, Unterstreichung = Schlüsselattribut. Die Kardinalitäten 1, n und m stehen an den Linien zwischen Entitätstyp und Raute.',
+  'In der Chen-Notation steht das Rechteck für den Entitätstyp, die Raute für die Beziehung und die Ellipse für das Attribut. Schlüsselattribute sind unterstrichen. Die Kardinalitäten 1, n und m stehen an den Linien zwischen Entitätstyp und Raute.',
   1,
   '{}',
   null,
@@ -20258,7 +20259,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Patient","is_correct":true,"rationale":"Zu Patienten werden eigene Daten gespeichert."},{"text":"Geburtsdatum","is_correct":false,"rationale":"Eine Eigenschaft des Patienten, also ein Attribut."},{"text":"Arzt","is_correct":true,"rationale":"Zu Ärztinnen und Ärzten wird die Fachrichtung gespeichert."},{"text":"Fachrichtung","is_correct":false,"rationale":"Eine Eigenschaft des Arztes, also ein Attribut."},{"text":"Krankenkasse","is_correct":true,"rationale":"Die Kasse hat eigene Attribute wie Name und Kassennummer."},{"text":"ist versichert bei","is_correct":false,"rationale":"Das verbindet Patient und Krankenkasse, also eine Beziehung."},{"text":"Kassennummer","is_correct":false,"rationale":"Schlüsselattribut der Krankenkasse."}]}'::jsonb,
+  '{"choices":[{"text":"Patient","is_correct":true,"rationale":"Zu Patienten werden eigene Daten gespeichert."},{"text":"Geburtsdatum","is_correct":false,"rationale":"Eine Eigenschaft des Patienten, also ein Attribut."},{"text":"Arzt","is_correct":true,"rationale":"Zu Ärztinnen und Ärzten wird die Fachrichtung gespeichert."},{"text":"Fachrichtung","is_correct":false,"rationale":"Eine Eigenschaft des Arztes, also ein Attribut."},{"text":"Krankenkasse","is_correct":true,"rationale":"Die Kasse hat eigene Attribute wie Name und Kassennummer."},{"text":"ist versichert bei","is_correct":false,"rationale":"Das verbindet Patient und Krankenkasse, ist also eine Beziehung."},{"text":"Kassennummer","is_correct":false,"rationale":"Schlüsselattribut der Krankenkasse."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -20312,7 +20313,7 @@ values (
   'matching',
   null,
   'Um welche Art von Attribut handelt es sich?',
-  'Zusammengesetzte Attribute werden in Teile zerlegt, mehrwertige als eigener Entitätstyp ausgelagert, abgeleitete Werte berechnet statt gespeichert.',
+  'Zusammengesetzte Attribute werden in ihre Teile zerlegt und mehrwertige in einen eigenen Entitätstyp ausgelagert. Abgeleitete Werte werden berechnet statt gespeichert.',
   2,
   '{}',
   null,
@@ -20341,7 +20342,7 @@ values (
   'table',
   'Das fertige ER-Modell eines Webshops wird in ein relationales Modell überführt.',
   'Gib an, was aus dem jeweiligen Element des ER-Modells wird.',
-  'Entitätstyp -> Tabelle, Attribut -> Spalte, Entität -> Zeile, Schlüsselattribut -> Primärschlüssel. Beziehungen werden je nach Kardinalität umgesetzt: 1:n über einen Fremdschlüssel auf der n-Seite, n:m über eine Zwischentabelle. Fremdschlüssel entstehen erst im relationalen Modell.',
+  'Aus dem Entitätstyp wird eine Tabelle, aus dem Attribut eine Spalte, aus der einzelnen Entität eine Zeile und aus dem Schlüsselattribut der Primärschlüssel. Beziehungen werden je nach Kardinalität umgesetzt: 1:n über einen Fremdschlüssel auf der n-Seite, n:m über eine Zwischentabelle. Fremdschlüssel entstehen erst im relationalen Modell.',
   2,
   '{}',
   null,
@@ -20374,7 +20375,7 @@ values (
   3,
   '{}',
   null,
-  '{"choices":[{"text":"Als Attribut der Beziehung „leiht“","is_correct":true,"rationale":"Das Datum beschreibt die einzelne Ausleihe, also die Verbindung von Kunde und Fahrrad."},{"text":"Als Attribut von Kunde","is_correct":false,"rationale":"Ein Kunde leiht an vielen Tagen. Ein einzelnes Datum beim Kunden reicht nicht."},{"text":"Als Attribut von Fahrrad","is_correct":false,"rationale":"Ein Fahrrad wird an vielen Tagen verliehen. Ein Datum beim Rad wäre überschrieben."},{"text":"Als eigener Entitätstyp „Datum“","is_correct":false,"rationale":"Zu einem Datum werden keine eigenen Eigenschaften gespeichert."}]}'::jsonb,
+  '{"choices":[{"text":"Als Attribut der Beziehung „leiht“","is_correct":true,"rationale":"Das Datum beschreibt die einzelne Ausleihe, also die Verbindung von Kunde und Fahrrad."},{"text":"Als Attribut von Kunde","is_correct":false,"rationale":"Ein Kunde leiht an vielen Tagen. Ein einzelnes Datum beim Kunden reicht nicht."},{"text":"Als Attribut von Fahrrad","is_correct":false,"rationale":"Ein Fahrrad wird an vielen Tagen verliehen. Ein Datum beim Rad würde jedes Mal überschrieben."},{"text":"Als eigener Entitätstyp „Datum“","is_correct":false,"rationale":"Zu einem Datum werden keine eigenen Eigenschaften gespeichert."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -20399,11 +20400,11 @@ values (
   'matching',
   null,
   'Welche Kardinalität liegt vor?',
-  'Immer beide Richtungen lesen: höchstens einer auf beiden Seiten = 1:1, einer auf einer Seite und viele auf der anderen = 1:n, viele auf beiden Seiten = n:m.',
+  'Lies immer beide Richtungen. Höchstens einer auf beiden Seiten ergibt 1:1, einer auf der einen und viele auf der anderen Seite 1:n, viele auf beiden Seiten n:m.',
   2,
   '{}',
   null,
-  '{"buckets":["1:1","1:n","n:m"],"match_items":[{"text":"Mitarbeiter - Dienstwagen (jeder hat höchstens einen Wagen, jeder Wagen gehört einer Person)","bucket":0,"rationale":""},{"text":"Abteilung - Mitarbeiter (jeder arbeitet in genau einer Abteilung)","bucket":1,"rationale":""},{"text":"Kunde - Rechnung (jede Rechnung geht an genau einen Kunden)","bucket":1,"rationale":""},{"text":"Schüler - Kurs (jeder belegt mehrere Kurse, jeder Kurs hat mehrere Schüler)","bucket":2,"rationale":""},{"text":"Bestellung - Artikel (eine Bestellung enthält viele Artikel, ein Artikel steckt in vielen Bestellungen)","bucket":2,"rationale":""}]}'::jsonb,
+  '{"buckets":["1:1","1:n","n:m"],"match_items":[{"text":"Mitarbeiter und Dienstwagen (jeder hat höchstens einen Wagen, jeder Wagen gehört einer Person)","bucket":0,"rationale":""},{"text":"Abteilung und Mitarbeiter (jeder arbeitet in genau einer Abteilung)","bucket":1,"rationale":""},{"text":"Kunde und Rechnung (jede Rechnung geht an genau einen Kunden)","bucket":1,"rationale":""},{"text":"Schüler und Kurs (jeder belegt mehrere Kurse, jeder Kurs hat mehrere Schüler)","bucket":2,"rationale":""},{"text":"Bestellung und Artikel (eine Bestellung enthält viele Artikel, ein Artikel steckt in vielen Bestellungen)","bucket":2,"rationale":""}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -20484,9 +20485,9 @@ values (
   'datenmodellierung',
   'dm-kardinalitaet',
   'numeric',
-  'Ein Datenmodell hat die Entitätstypen Kunde, Bestellung und Artikel. Kunde - Bestellung ist 1:n, Bestellung - Artikel ist n:m.',
+  'Ein Datenmodell hat die Entitätstypen Kunde, Bestellung und Artikel. Kunde zu Bestellung ist 1:n, Bestellung zu Artikel ist n:m.',
   'Wie viele Tabellen entstehen im relationalen Modell mindestens?',
-  'Jeder Entitätstyp wird eine Tabelle: 3. Die 1:n-Beziehung braucht keine eigene Tabelle (Fremdschlüssel KundenNr in Bestellung). Die n:m-Beziehung braucht eine Zwischentabelle: 3 + 1 = 4.',
+  'Jeder Entitätstyp wird zu einer Tabelle, das sind 3. Die 1:n-Beziehung braucht keine eigene Tabelle (Fremdschlüssel KundenNr in Bestellung). Die n:m-Beziehung braucht eine Zwischentabelle: 3 + 1 = 4.',
   2,
   '{}',
   null,
@@ -20513,9 +20514,9 @@ values (
   'datenmodellierung',
   'dm-kardinalitaet',
   'numeric',
-  'Ein Schulmodell hat die Entitätstypen Lehrer, Klasse, Schüler und Fach. Klasse - Schüler ist 1:n, Lehrer - Klasse (Klassenleitung) ist 1:n, Lehrer - Fach ist n:m.',
+  'Ein Schulmodell hat die Entitätstypen Lehrer, Klasse, Schüler und Fach. Klasse zu Schüler ist 1:n, Lehrer zu Klasse (Klassenleitung) ist 1:n, Lehrer zu Fach ist n:m.',
   'Wie viele Tabellen entstehen im relationalen Modell mindestens?',
-  'Vier Entitätstypen ergeben 4 Tabellen. Die beiden 1:n-Beziehungen werden über Fremdschlüssel umgesetzt (KlassenNr in Schüler, LehrerNr in Klasse). Nur Lehrer - Fach (n:m) braucht eine Zwischentabelle: 4 + 1 = 5.',
+  'Vier Entitätstypen ergeben 4 Tabellen. Die beiden 1:n-Beziehungen werden über Fremdschlüssel umgesetzt (KlassenNr in Schüler, LehrerNr in Klasse). Nur die n:m-Beziehung zwischen Lehrer und Fach braucht eine Zwischentabelle: 4 + 1 = 5.',
   2,
   '{}',
   null,
@@ -20544,11 +20545,11 @@ values (
   'single',
   null,
   'Welche Umsetzung im relationalen Modell passt zum Diagramm?',
-  'Abteilung - Mitarbeiter (1:n): AbtNr wandert als Fremdschlüssel in Mitarbeiter. Mitarbeiter - Projekt (n:m): Zwischentabelle mit dem zusammengesetzten Schlüssel PersNr + ProjNr.',
+  'Abteilung und Mitarbeiter stehen 1:n zueinander, also wandert AbtNr als Fremdschlüssel in Mitarbeiter. Mitarbeiter und Projekt stehen n:m zueinander und brauchen eine Zwischentabelle mit dem zusammengesetzten Schlüssel PersNr + ProjNr.',
   2,
   '{}',
   null,
-  '{"diagram":{"type":"erm","entitaeten":[{"name":"Abteilung","attribute":["AbtNr","Name"],"schluessel":["AbtNr"]},{"name":"Mitarbeiter","attribute":["PersNr","Name"],"schluessel":["PersNr"]},{"name":"Projekt","attribute":["ProjNr","Titel"],"schluessel":["ProjNr"]}],"beziehungen":[{"a":"Abteilung","name":"beschäftigt","b":"Mitarbeiter","kard_a":"1","kard_b":"n"},{"a":"Mitarbeiter","name":"arbeitet mit","b":"Projekt","kard_a":"n","kard_b":"m"}]},"choices":[{"text":"AbtNr als Fremdschlüssel in Mitarbeiter, dazu eine Zwischentabelle mit PersNr und ProjNr","is_correct":true,"rationale":"1:n über Fremdschlüssel auf der n-Seite, n:m über eine Zwischentabelle."},{"text":"PersNr als Fremdschlüssel in Abteilung, ProjNr als Fremdschlüssel in Mitarbeiter","is_correct":false,"rationale":"Beides auf der falschen Seite bzw. ohne Zwischentabelle. Ein Mitarbeiter könnte nur ein Projekt haben."},{"text":"Je eine Zwischentabelle für beide Beziehungen","is_correct":false,"rationale":"Für die 1:n-Beziehung ist keine Zwischentabelle nötig."},{"text":"ProjNr als Fremdschlüssel in Mitarbeiter und PersNr als Fremdschlüssel in Projekt","is_correct":false,"rationale":"Einzelne Fremdschlüsselspalten können keine n:m-Beziehung abbilden."}]}'::jsonb,
+  '{"diagram":{"type":"erm","entitaeten":[{"name":"Abteilung","attribute":["AbtNr","Name"],"schluessel":["AbtNr"]},{"name":"Mitarbeiter","attribute":["PersNr","Name"],"schluessel":["PersNr"]},{"name":"Projekt","attribute":["ProjNr","Titel"],"schluessel":["ProjNr"]}],"beziehungen":[{"a":"Abteilung","name":"beschäftigt","b":"Mitarbeiter","kard_a":"1","kard_b":"n"},{"a":"Mitarbeiter","name":"arbeitet mit","b":"Projekt","kard_a":"n","kard_b":"m"}]},"choices":[{"text":"AbtNr als Fremdschlüssel in Mitarbeiter, dazu eine Zwischentabelle mit PersNr und ProjNr","is_correct":true,"rationale":"1:n über Fremdschlüssel auf der n-Seite, n:m über eine Zwischentabelle."},{"text":"PersNr als Fremdschlüssel in Abteilung, ProjNr als Fremdschlüssel in Mitarbeiter","is_correct":false,"rationale":"PersNr steht auf der falschen Seite, und für n:m fehlt die Zwischentabelle. Ein Mitarbeiter könnte nur ein Projekt haben."},{"text":"Je eine Zwischentabelle für beide Beziehungen","is_correct":false,"rationale":"Für die 1:n-Beziehung ist keine Zwischentabelle nötig."},{"text":"ProjNr als Fremdschlüssel in Mitarbeiter und PersNr als Fremdschlüssel in Projekt","is_correct":false,"rationale":"Einzelne Fremdschlüsselspalten können keine n:m-Beziehung abbilden."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -20631,7 +20632,7 @@ values (
   'open',
   'Beim Entwurf einer neuen Tabelle Mitglied muss ein Primärschlüssel festgelegt werden.',
   'Nenne drei Eigenschaften, die ein Primärschlüssel haben muss oder haben sollte.',
-  'Je Nennung 1 Punkt, höchstens 3. Eindeutig, nie leer, stabil, dazu möglichst kurz. Der Primärschlüssel darf zusammengesetzt sein und taucht als Fremdschlüssel in anderen Tabellen auf.',
+  'Jede richtige Nennung bringt 1 Punkt, höchstens 3. Gefragt sind: eindeutig, nie leer, stabil und möglichst kurz. Der Primärschlüssel darf zusammengesetzt sein und taucht als Fremdschlüssel in anderen Tabellen auf.',
   2,
   '{}',
   null,
@@ -20689,7 +20690,7 @@ values (
   'single',
   'Die Tabelle Bestellung hat den Fremdschlüssel KundenNr, der auf die Tabelle Kunde verweist. Referenzielle Integrität ist aktiv, eine Löschweitergabe ist nicht eingerichtet.',
   'Was passiert, wenn Kunde 10457 gelöscht werden soll, zu dem noch Bestellungen existieren?',
-  'Referenzielle Integrität: Jeder Fremdschlüssel verweist auf einen existierenden Primärschlüssel. Ohne Löschweitergabe wird das Löschen eines noch referenzierten Datensatzes verhindert.',
+  'Referenzielle Integrität bedeutet, dass jeder Fremdschlüssel auf einen existierenden Primärschlüssel. Ohne Löschweitergabe wird das Löschen eines noch referenzierten Datensatzes verhindert.',
   2,
   '{}',
   null,
@@ -20776,7 +20777,7 @@ values (
   'single',
   'Die Tabelle Kunde enthält die Primärschlüssel K1, K2 und K3. Die Tabelle Bestellung hat den Fremdschlüssel KundenNr. Referenzielle Integrität ist aktiv.',
   'Welcher Wert wird beim Anlegen einer neuen Bestellung in der Spalte KundenNr abgelehnt?',
-  'Referenzielle Integrität: Jeder Fremdschlüsselwert muss als Primärschlüssel in der referenzierten Tabelle vorhanden sein. Wiederholungen sind erlaubt.',
+  'Referenzielle Integrität bedeutet: Jeder Fremdschlüsselwert muss als Primärschlüssel in der referenzierten Tabelle vorhanden sein. Wiederholungen sind erlaubt.',
   1,
   '{}',
   null,
@@ -20983,7 +20984,7 @@ values (
   1,
   '{}',
   null,
-  '{"choices":[{"text":"K1 Brandt","is_correct":false,"rationale":"Genau ein Wert im Feld Telefon, also atomar."},{"text":"K2 Yilmaz","is_correct":true,"rationale":"Zwei Telefonnummern in einer Zelle: der Wert ist nicht atomar."},{"text":"K3 Nowak","is_correct":false,"rationale":"Genau ein Wert im Feld Telefon, also atomar."},{"text":"K4 Peters","is_correct":true,"rationale":"Auch hier stehen zwei Nummern in einer Zelle."}],"table":[["KundenNr","Name","Telefon"],["K1","Brandt","0561 5550111"],["K2","Yilmaz","0221 5550123, 0170 5550199"],["K3","Nowak","0661 5550145"],["K4","Peters","0551 5550167 und 0551 5550168"]]}'::jsonb,
+  '{"choices":[{"text":"K1 Brandt","is_correct":false,"rationale":"Genau ein Wert im Feld Telefon, also atomar."},{"text":"K2 Yilmaz","is_correct":true,"rationale":"In einer Zelle stehen zwei Telefonnummern, der Wert ist also nicht atomar."},{"text":"K3 Nowak","is_correct":false,"rationale":"Genau ein Wert im Feld Telefon, also atomar."},{"text":"K4 Peters","is_correct":true,"rationale":"Auch hier stehen zwei Nummern in einer Zelle."}],"table":[["KundenNr","Name","Telefon"],["K1","Brandt","0561 5550111"],["K2","Yilmaz","0221 5550123, 0170 5550199"],["K3","Nowak","0661 5550145"],["K4","Peters","0551 5550167 und 0551 5550168"]]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -21037,7 +21038,7 @@ values (
   'numeric',
   'Tabelle Buchung (TeilnNr, KursNr, TeilnName, TeilnOrt, Kurstitel, DozentNr, DozentName, Buchungsdatum). Primärschlüssel: TeilnNr + KursNr. Jeder Kurs hat genau einen Dozenten. Alle Werte sind atomar.',
   'Wie viele Tabellen entstehen, wenn die Tabelle in die 3NF gebracht wird?',
-  '2NF: TeilnName, TeilnOrt hängen nur von TeilnNr ab -> Teilnehmer. Kurstitel, DozentNr, DozentName nur von KursNr -> Kurs. Buchungsdatum hängt vom ganzen Schlüssel ab -> Buchung. 3NF: In Kurs gilt KursNr -> DozentNr -> DozentName (transitiv) -> Dozent auslagern. Ergebnis: Teilnehmer, Kurs, Dozent, Buchung = 4 Tabellen.',
+  '2NF: TeilnName und TeilnOrt hängen nur von TeilnNr ab und wandern in Teilnehmer. Kurstitel, DozentNr und DozentName hängen nur von KursNr ab und wandern in Kurs. Das Buchungsdatum hängt vom ganzen Schlüssel ab und bleibt in Buchung. 3NF: In Kurs gilt KursNr -> DozentNr -> DozentName (transitiv), also wird Dozent ausgelagert. Ergebnis: Teilnehmer, Kurs, Dozent und Buchung, also 4 Tabellen.',
   3,
   '{}',
   null,
@@ -21066,7 +21067,7 @@ values (
   'cloze',
   'Eine Tabelle ist in der 1NF und hat einen Primärschlüssel aus nur einer Spalte.',
   'Ergänze die Beurteilung.',
-  'Ein Attribut kann nicht von einem Teil eines einspaltigen Schlüssels abhängen. Die 2NF ist dann automatisch erfüllt. Transitive Abhängigkeiten (über ein anderes Nichtschlüsselattribut) sind trotzdem möglich. Die 3NF muss geprüft werden.',
+  'Ein Attribut kann nicht von einem Teil eines einspaltigen Schlüssels abhängen. Die 2NF ist dann automatisch erfüllt. Transitive Abhängigkeiten (über ein anderes Nichtschlüsselattribut) sind trotzdem möglich, deshalb muss die 3NF geprüft werden.',
   2,
   '{}',
   null,
@@ -21095,7 +21096,7 @@ values (
   'matching',
   'URL: https://portal.example.org:8080/kunden/profil?id=42#adresse',
   'Ordne jeden Teil der URL seiner Bezeichnung zu.',
-  'Schema vor ://, Host bis zum Doppelpunkt, Port danach, Pfad ab /, Query hinter ?, Fragment hinter #.',
+  'Das Schema steht vor ://, der Host reicht bis zum Doppelpunkt, danach folgt der Port. Der Pfad beginnt mit /, die Query steht hinter ? und das Fragment hinter #.',
   2,
   '{}',
   null,
@@ -21182,7 +21183,7 @@ values (
   'multiple',
   'URL: https://intranet.firma.example/hilfe?thema=vpn&sprache=de',
   'Welche Aussagen sind richtig?',
-  'Host = intranet.firma.example (Subdomain, Domain, TLD). Pfad /hilfe, Query mit zwei Parametern, Standardport 443.',
+  'Der Host ist intranet.firma.example (Subdomain, Domain, TLD). Der Pfad ist /hilfe, die Query hat zwei Parameter, und ohne Portangabe gilt bei https der Standardport 443.',
   2,
   '{}',
   null,
@@ -21211,7 +21212,7 @@ values (
   'single',
   'Eine E-Mail enthält den Link https://sparkasse.de.kontoservice.example/login.',
   'Zu welcher Domain gehört der Server tatsächlich?',
-  'Die registrierte Domain steht direkt vor der TLD, ganz rechts im Hostnamen. Alles links davon sind Subdomains, die der Inhaber beliebig wählen kann. Ein typischer Phishing-Trick.',
+  'Die registrierte Domain steht direkt vor der TLD, ganz rechts im Hostnamen. Alles links davon sind Subdomains, die der Inhaber beliebig wählen kann. Das ist ein typischer Phishing-Trick.',
   2,
   '{}',
   null,
@@ -21327,11 +21328,11 @@ values (
   'single',
   'Ein Azubi ist im Intranet angemeldet und ruft eine Seite der Personalabteilung auf, für die er keine Berechtigung hat.',
   'Welchen Statuscode liefert der Server korrekterweise?',
-  '401 = Anmeldung fehlt oder ist fehlgeschlagen. 403 = angemeldet, aber ohne Berechtigung.',
+  '401 bedeutet, dass die Anmeldung fehlt oder fehlgeschlagen ist. 403 bedeutet: angemeldet, aber ohne Berechtigung.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"403 Forbidden","is_correct":true,"rationale":"Der Nutzer ist bekannt, der Zugriff wird aber verweigert."},{"text":"401 Unauthorized","is_correct":false,"rationale":"Das gilt, wenn keine oder eine fehlgeschlagene Anmeldung vorliegt."},{"text":"404 Not Found","is_correct":false,"rationale":"Die Seite existiert ja, sie ist nur gesperrt."},{"text":"500 Internal Server Error","is_correct":false,"rationale":"Der Server arbeitet korrekt, es gibt keinen Programmfehler."}]}'::jsonb,
+  '{"choices":[{"text":"403 Forbidden","is_correct":true,"rationale":"Der Nutzer ist bekannt, der Zugriff wird aber verweigert."},{"text":"401 Unauthorized","is_correct":false,"rationale":"Das gilt, wenn die Anmeldung fehlt oder fehlgeschlagen ist."},{"text":"404 Not Found","is_correct":false,"rationale":"Die Seite existiert ja, sie ist nur gesperrt."},{"text":"500 Internal Server Error","is_correct":false,"rationale":"Der Server arbeitet korrekt, es gibt keinen Programmfehler."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -21447,7 +21448,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"301 Moved Permanently","is_correct":true,"rationale":"Dauerhafte Umleitung, die neue Adresse steht im Header Location."},{"text":"302 Found","is_correct":false,"rationale":"Das meldet eine nur vorübergehende Umleitung."},{"text":"404 Not Found","is_correct":false,"rationale":"Dann landet der Besucher auf einer Fehlerseite."},{"text":"200 OK","is_correct":false,"rationale":"Das würde die alte Seite normal ausliefern, ohne Umleitung."}]}'::jsonb,
+  '{"choices":[{"text":"301 Moved Permanently","is_correct":true,"rationale":"Das ist die dauerhafte Umleitung. Die neue Adresse steht im Header Location."},{"text":"302 Found","is_correct":false,"rationale":"Das meldet eine nur vorübergehende Umleitung."},{"text":"404 Not Found","is_correct":false,"rationale":"Dann landet der Besucher auf einer Fehlerseite."},{"text":"200 OK","is_correct":false,"rationale":"Das würde die alte Seite normal ausliefern, ohne Umleitung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -21646,7 +21647,7 @@ values (
   'matching',
   null,
   'In welchem Schritt des Seitenaufrufs liegt der Fehler?',
-  'Namensauflösung scheitert -> DNS. Zertifikatsprobleme zeigen sich beim TLS-Handshake. Statuscodes stammen aus der HTTP-Antwort, die Verbindung stand also bereits.',
+  'Scheitert die Namensauflösung, liegt der Fehler beim DNS. Zertifikatsprobleme zeigen sich beim TLS-Handshake. Statuscodes stammen aus der HTTP-Antwort, die Verbindung stand also bereits.',
   2,
   '{}',
   null,
@@ -21994,7 +21995,7 @@ values (
   'matching',
   null,
   'Zu welchem WCAG-Prinzip gehört die Maßnahme?',
-  'Wahrnehmbar: Inhalte über mehr als einen Sinn. Bedienbar: ohne Maus nutzbar. Verständlich: klare Sprache und Hilfen. Robust: technisch sauber für Hilfsmittel.',
+  'Wahrnehmbar heißt, dass Inhalte über mehr als einen Sinn erfassbar sind. Bedienbar heißt ohne Maus nutzbar, verständlich heißt klare Sprache und Hilfen, robust heißt technisch sauber für Hilfsmittel.',
   2,
   '{}',
   null,
@@ -22052,7 +22053,7 @@ values (
   'marking',
   'Für den Relaunch einer Website liegt eine Liste mit Gestaltungsvorschlägen vor. Einige davon würden die Barrierefreiheit verschlechtern.',
   'Markiere alle Vorschläge, die die Barrierefreiheit verschlechtern.',
-  'Barrierefreiheit heißt: Inhalte mit mehreren Sinnen erfassbar, ohne Maus bedienbar und gut lesbar. Information nie nur über Farbe oder als Bild vermitteln, Funktionen nie nur für die Maus anbieten.',
+  'Barrierefrei heißt: Inhalte sind mit mehreren Sinnen erfassbar, ohne Maus bedienbar und gut lesbar. Vermittle Informationen nie nur über Farbe oder als Bild und biete Funktionen nie nur für die Maus an.',
   2,
   '{}',
   null,
@@ -22110,7 +22111,7 @@ values (
   'single',
   null,
   'Welches Kontrastverhältnis verlangt WCAG-Stufe AA mindestens für normalen Fließtext?',
-  'WCAG AA: 4,5:1 für normalen Text, 3:1 für großen Text (ab 18 pt bzw. 14 pt fett). AAA verlangt 7:1.',
+  'WCAG AA verlangt 4,5:1 für normalen Text und 3:1 für großen Text (ab 18 pt bzw. 14 pt fett). AAA verlangt 7:1.',
   1,
   '{}',
   null,
@@ -22168,7 +22169,7 @@ values (
   'single',
   'Ein Azubi arbeitet an der Website einer Bundesbehörde.',
   'Welche Vorschrift regelt die Barrierefreiheit dieser Website?',
-  'Öffentliche Stellen des Bundes: BITV 2.0 (Länder haben eigene Regeln). Private Anbieter von z. B. Online-Shops: BFSG seit 28.06.2025.',
+  'Für öffentliche Stellen des Bundes gilt die BITV 2.0 (die Länder haben eigene Regeln). Für private Anbieter, etwa von Online-Shops, gilt seit dem 28.06.2025 das BFSG.',
   1,
   '{}',
   null,
@@ -22404,7 +22405,7 @@ values (
   3,
   '{}',
   null,
-  '{"choices":[{"text":"1110 1100","is_correct":true,"rationale":"20 = 0001 0100, umgekehrt 1110 1011, plus 1 = 1110 1100. Probe: -128 + 64 + 32 + 8 + 4 = -20."},{"text":"1110 1011","is_correct":false,"rationale":"Das ist nur das Einerkomplement: die + 1 fehlt."},{"text":"1001 0100","is_correct":false,"rationale":"Das ist Vorzeichen + Betrag, nicht das Zweierkomplement."},{"text":"0001 0100","is_correct":false,"rationale":"Das ist +20."}]}'::jsonb,
+  '{"choices":[{"text":"1110 1100","is_correct":true,"rationale":"20 = 0001 0100, umgekehrt 1110 1011, plus 1 = 1110 1100. Probe: -128 + 64 + 32 + 8 + 4 = -20."},{"text":"1110 1011","is_correct":false,"rationale":"Das ist nur das Einerkomplement, die Addition von 1 fehlt."},{"text":"1001 0100","is_correct":false,"rationale":"Das ist Vorzeichen + Betrag, nicht das Zweierkomplement."},{"text":"0001 0100","is_correct":false,"rationale":"Das ist +20."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -22491,7 +22492,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"1000 0001","is_correct":true,"rationale":"107 + 22 = 129 = 128 + 1."},{"text":"0111 1101","is_correct":false,"rationale":"Das ist 125. Beim Übertrag ist ein Fehler passiert."},{"text":"1000 0010","is_correct":false,"rationale":"Das ist 130."},{"text":"0111 0001","is_correct":false,"rationale":"Das ist 113. Überträge wurden vergessen."}]}'::jsonb,
+  '{"choices":[{"text":"1000 0001","is_correct":true,"rationale":"107 + 22 = 129 = 128 + 1."},{"text":"0111 1101","is_correct":false,"rationale":"Das ist 125. Hier wurden die Überträge weggelassen."},{"text":"1000 0010","is_correct":false,"rationale":"Das ist 130."},{"text":"0111 0001","is_correct":false,"rationale":"Das ist 113 und damit zu wenig, richtig sind 129."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -22748,7 +22749,7 @@ values (
   'matching',
   null,
   'Wie viele Byte braucht das Zeichen in UTF-8?',
-  'Bis U+007F 1 Byte, bis U+07FF 2 Byte, bis U+FFFF 3 Byte, darüber 4 Byte.',
+  'Bis U+007F reicht 1 Byte, bis U+07FF sind es 2 Byte, bis U+FFFF 3 Byte und darüber 4 Byte.',
   2,
   '{}',
   null,
@@ -22980,7 +22981,7 @@ values (
   'numeric',
   'Eine Überwachungskamera speichert unkomprimierte Einzelbilder mit 1920 × 1080 Pixeln und 24 Bit Farbtiefe auf eine 32-GB-Karte (1 GB = 1.000.000.000 Byte).',
   'Wie viele vollständige Bilder passen auf die Karte?',
-  'Ein Bild: 1920 × 1080 × 3 Byte = 6.220.800 Byte. 32.000.000.000 / 6.220.800 ≈ 5.144,03. Nur vollständige Bilder zählen -> abrunden auf 5.144.',
+  'Ein Bild: 1920 × 1080 × 3 Byte = 6.220.800 Byte. 32.000.000.000 / 6.220.800 ≈ 5.144,03. Nur vollständige Bilder zählen, also abrunden auf 5.144.',
   3,
   '{}',
   null,
@@ -23241,7 +23242,7 @@ values (
   'numeric',
   'Eine Videodatei von 8 GB (1 GB = 1.000.000.000 Byte) wird über einen Anschluss mit 250 Mbit/s Download und 40 Mbit/s Upload auf einen Cloudspeicher hochgeladen. Overhead bleibt unberücksichtigt.',
   'Wie viele Minuten dauert der Upload? (auf eine Nachkommastelle)',
-  'Beim Hochladen zählt der Upload. 8 GB × 8 = 64.000 Mbit. 64.000 / 40 Mbit/s = 1.600 s. 1.600 / 60 ≈ 26,7 min.',
+  'Beim Hochladen zählt die Upload-Rate. 8 GB × 8 = 64.000 Mbit. 64.000 / 40 Mbit/s = 1.600 s. 1.600 / 60 ≈ 26,7 min.',
   2,
   '{}',
   null,
@@ -23299,7 +23300,7 @@ values (
   'ordering',
   'In vier Angeboten wird die Geschwindigkeit unterschiedlich angegeben: mal in Bit, mal in Byte pro Sekunde.',
   'Ordne die Datenraten von der niedrigsten zur höchsten.',
-  'Zum Vergleichen alles in Mbit/s umrechnen: MB/s mal 8, Gbit/s mal 1.000. 110 MB/s = 880 Mbit/s, 120 MB/s = 960 Mbit/s, 1 Gbit/s = 1.000 Mbit/s. Reihenfolge: 800 < 880 < 960 < 1.000 Mbit/s.',
+  'Rechne zum Vergleichen alles in Mbit/s um: MB/s mal 8, Gbit/s mal 1.000. 110 MB/s = 880 Mbit/s, 120 MB/s = 960 Mbit/s, 1 Gbit/s = 1.000 Mbit/s. Reihenfolge: 800 < 880 < 960 < 1.000 Mbit/s.',
   2,
   '{}',
   null,
@@ -23419,7 +23420,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"SVG","is_correct":true,"rationale":"Als Vektorgrafik lässt sich das Logo ohne Qualitätsverlust beliebig skalieren."},{"text":"JPEG","is_correct":false,"rationale":"Rasterformat mit Artefakten an harten Kanten und beim Vergrößern pixelig."},{"text":"PNG","is_correct":false,"rationale":"Verlustfrei, aber ein Rasterformat. Bei starker Vergrößerung pixelig."},{"text":"BMP","is_correct":false,"rationale":"Unkomprimiertes Rasterformat, groß und nicht skalierbar."}]}'::jsonb,
+  '{"choices":[{"text":"SVG","is_correct":true,"rationale":"Als Vektorgrafik lässt sich das Logo ohne Qualitätsverlust beliebig skalieren."},{"text":"JPEG","is_correct":false,"rationale":"JPEG ist ein Rasterformat, zeigt Artefakte an harten Kanten und wird beim Vergrößern pixelig."},{"text":"PNG","is_correct":false,"rationale":"PNG ist zwar verlustfrei, aber ein Rasterformat und wird bei starker Vergrößerung pixelig."},{"text":"BMP","is_correct":false,"rationale":"BMP ist ein unkomprimiertes Rasterformat, also groß und beim Vergrößern pixelig."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -23473,7 +23474,7 @@ values (
   'numeric',
   'Eine Bildzeile besteht aus 10 weißen, 3 schwarzen und 4 weißen Pixeln: WWWWWWWWWWBBBWWWW. Sie wird mit Lauflängenkodierung als Anzahl + Zeichen gespeichert.',
   'Aus wie vielen Zeichen besteht das Ergebnis?',
-  'Folgen: 10 W, 3 B, 4 W -> 10W3B4W. Das sind 3 + 2 + 2 = 7 Zeichen statt 17.',
+  'Die Folgen sind 10 W, 3 B und 4 W, kodiert also 10W3B4W. Das sind 3 + 2 + 2 = 7 Zeichen statt 17.',
   2,
   '{}',
   null,
@@ -23531,7 +23532,7 @@ values (
   'matching',
   null,
   'Welches Format ist für den Zweck am besten geeignet?',
-  'Fotos: JPEG. Schrift, harte Kanten und Transparenz im Raster: PNG. Beliebig skalierbare Logos: SVG. Verlustfreies Audio: FLAC.',
+  'Fotos gehören in JPEG, Schrift, harte Kanten und Transparenz im Raster in PNG. Beliebig skalierbare Logos speicherst du als SVG, verlustfreies Audio als FLAC.',
   2,
   '{}',
   null,
@@ -23589,7 +23590,7 @@ values (
   'matching',
   null,
   'Welche Art des maschinellen Lernens liegt vor?',
-  'Überwacht: Trainingsdaten mit richtiger Antwort. Unüberwacht: Muster in Daten ohne Label finden. Bestärkend: Lernen durch Belohnung für gute Aktionen.',
+  'Überwachtes Lernen nutzt Trainingsdaten mit richtiger Antwort. Unüberwachtes Lernen findet Muster in Daten ohne Label. Bestärkendes Lernen belohnt gute Aktionen.',
   2,
   '{}',
   null,
@@ -23734,7 +23735,7 @@ values (
   'matching',
   null,
   'Um welche Art von Aufgabe handelt es sich?',
-  'Klassifikation liefert eine Kategorie, Regression einen Zahlenwert, beides überwachtes Lernen. Clustering findet Gruppen in Daten ohne Label (unüberwacht).',
+  'Klassifikation liefert eine Kategorie, Regression einen Zahlenwert. Beides ist überwachtes Lernen. Clustering findet Gruppen in Daten ohne Label (unüberwacht).',
   2,
   '{}',
   null,
@@ -23763,7 +23764,7 @@ values (
   'single',
   'Ein Modell erkennt 99 % der Trainingsbeispiele richtig, bei neuen Testdaten aber nur 70 %.',
   'Welches Problem liegt am wahrscheinlichsten vor?',
-  'Großer Abstand zwischen Trainings- und Testergebnis = Overfitting. Abhilfe: mehr und vielfältigere Daten, einfacheres Modell, kürzer trainieren.',
+  'Ein großer Abstand zwischen Trainings- und Testergebnis spricht für Overfitting. Dagegen helfen mehr und vielfältigere Daten, ein einfacheres Modell oder kürzeres Training.',
   2,
   '{}',
   null,
@@ -23792,7 +23793,7 @@ values (
   'ordering',
   null,
   'Bringe die Schritte zur Entwicklung eines ML-Modells in die richtige Reihenfolge.',
-  'Ohne gute Daten kein gutes Modell: erst sammeln und aufbereiten, dann aufteilen, trainieren, mit ungesehenen Daten bewerten und erst danach einsetzen.',
+  'Ohne gute Daten gibt es kein gutes Modell. Deshalb erst sammeln und aufbereiten, dann aufteilen, trainieren, mit ungesehenen Daten bewerten und erst danach einsetzen.',
   2,
   '{}',
   null,
@@ -23941,7 +23942,7 @@ values (
   1,
   '{}',
   null,
-  '{"choices":[{"text":"Den Code lesen und mit Tests und Grenzfällen prüfen","is_correct":true,"rationale":"Kompilieren heißt nur: syntaktisch korrekt, nicht fachlich richtig oder sicher."},{"text":"Den Code direkt in die Produktivumgebung übernehmen","is_correct":false,"rationale":"Ungetesteter Code kann Fehler und Sicherheitslücken enthalten."},{"text":"Den Assistenten fragen, ob der Code richtig ist, und bei „Ja“ übernehmen","is_correct":false,"rationale":"Die Selbstauskunft des Modells ersetzt keine Prüfung."},{"text":"Den Code verwerfen, weil KI-Code grundsätzlich unbrauchbar ist","is_correct":false,"rationale":"Das ist überzogen. Geprüft kann er sehr hilfreich sein."}]}'::jsonb,
+  '{"choices":[{"text":"Den Code lesen und mit Tests und Grenzfällen prüfen","is_correct":true,"rationale":"Dass der Code kompiliert, heißt nur, dass er syntaktisch korrekt ist, nicht fachlich richtig oder sicher."},{"text":"Den Code direkt in die Produktivumgebung übernehmen","is_correct":false,"rationale":"Ungetesteter Code kann Fehler und Sicherheitslücken enthalten."},{"text":"Den Assistenten fragen, ob der Code richtig ist, und bei „Ja“ übernehmen","is_correct":false,"rationale":"Die Selbstauskunft des Modells ersetzt keine Prüfung."},{"text":"Den Code verwerfen, weil KI-Code grundsätzlich unbrauchbar ist","is_correct":false,"rationale":"Das ist überzogen. Geprüft kann er sehr hilfreich sein."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -23966,11 +23967,11 @@ values (
   'single',
   null,
   'Was bedeutet „Few-Shot-Prompting“?',
-  'Zero-Shot: Aufgabe ohne Beispiel. Few-Shot: mit einigen Beispielen, damit das Modell das gewünschte Muster erkennt.',
+  'Bei Zero-Shot bekommt das Modell die Aufgabe ohne Beispiel, bei Few-Shot mit einigen Beispielen, damit es das gewünschte Muster erkennt.',
   1,
   '{}',
   null,
-  '{"choices":[{"text":"Dem Modell ein paar Beispiele für die gewünschte Antwort mitgeben","is_correct":true,"rationale":"Die Beispiele zeigen Stil und Format, das Modell ahmt sie nach."},{"text":"Möglichst wenige Wörter im Prompt verwenden","is_correct":false,"rationale":"Kurz ist nicht gemeint, es geht um Beispiele."},{"text":"Die Frage mehrmals hintereinander stellen","is_correct":false,"rationale":"Das ist Wiederholen, keine Prompt-Technik."},{"text":"Das Modell nur wenige Male am Tag nutzen","is_correct":false,"rationale":"Mit der Nutzungshäufigkeit hat der Begriff nichts zu tun."}]}'::jsonb,
+  '{"choices":[{"text":"Dem Modell ein paar Beispiele für die gewünschte Antwort mitgeben","is_correct":true,"rationale":"Die Beispiele zeigen Stil und Format, das Modell ahmt sie nach."},{"text":"Möglichst wenige Wörter im Prompt verwenden","is_correct":false,"rationale":"Gemeint ist nicht die Kürze, es geht um Beispiele."},{"text":"Die Frage mehrmals hintereinander stellen","is_correct":false,"rationale":"Das ist Wiederholen, keine Prompt-Technik."},{"text":"Das Modell nur wenige Male am Tag nutzen","is_correct":false,"rationale":"Mit der Nutzungshäufigkeit hat der Begriff nichts zu tun."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -23995,11 +23996,11 @@ values (
   'open',
   'Ein Unternehmen will seinen Mitarbeitenden ein Sprachmodell für die tägliche Arbeit bereitstellen.',
   'Nenne drei Maßnahmen, die das Unternehmen vor der Einführung treffen sollte.',
-  'Je Nennung 1 Punkt, höchstens 3. Sicherer KI-Einsatz braucht Regeln: freigegebene Werkzeuge, Verträge nach DSGVO, geschultes Personal (der AI Act verlangt ausreichende KI-Kompetenz) und keine unnötigen personenbezogenen Daten.',
+  'Jede richtige Nennung bringt 1 Punkt, höchstens 3. Sicherer KI-Einsatz braucht Regeln: freigegebene Werkzeuge, Verträge nach DSGVO, geschultes Personal (der AI Act verlangt Maßnahmen zur KI-Kompetenz) und keine unnötigen personenbezogenen Daten.',
   2,
   '{}',
   null,
-  '{"points":3,"criteria":[{"text":"Mit dem Anbieter einen Auftragsverarbeitungsvertrag (AVV) schließen","points":1,"keywords":["AVV","Auftragsverarbeitung","Vertrag"]},{"text":"Unternehmenslizenz wählen, bei der Eingaben nicht zum Training genutzt werden","points":1,"keywords":["Unternehmenslizenz","nicht zum Training","Lizenz","freigegebenes Werkzeug"]},{"text":"Mitarbeitende im Umgang mit KI schulen (KI-Kompetenz)","points":1,"keywords":["schulen","Schulung","KI-Kompetenz","unterweisen"]},{"text":"Richtlinie festlegen: welche Daten eingegeben werden dürfen, Ergebnisse immer prüfen","points":1,"keywords":["Richtlinie","Regeln","keine personenbezogenen Daten","Ergebnisse prüfen"]}],"sample_solution":"Zum Beispiel: mit dem Anbieter einen Auftragsverarbeitungsvertrag schließen, eine Unternehmenslizenz wählen, bei der Eingaben nicht zum Training genutzt werden, und die Mitarbeitenden schulen. Dazu gehört eine Richtlinie, welche Daten eingegeben werden dürfen. Private Konten und ungefilterte Kundendaten sind dagegen tabu."}'::jsonb,
+  '{"points":3,"criteria":[{"text":"Mit dem Anbieter einen Auftragsverarbeitungsvertrag (AVV) schließen","points":1,"keywords":["AVV","Auftragsverarbeitung","Vertrag"]},{"text":"Unternehmenslizenz wählen, bei der Eingaben nicht zum Training genutzt werden","points":1,"keywords":["Unternehmenslizenz","nicht zum Training","Lizenz","freigegebenes Werkzeug"]},{"text":"Mitarbeitende im Umgang mit KI schulen (KI-Kompetenz)","points":1,"keywords":["schulen","Schulung","KI-Kompetenz","unterweisen"]},{"text":"Richtlinie festlegen, welche Daten eingegeben werden dürfen und dass Ergebnisse immer geprüft werden","points":1,"keywords":["Richtlinie","Regeln","keine personenbezogenen Daten","Ergebnisse prüfen"]}],"sample_solution":"Zum Beispiel: mit dem Anbieter einen Auftragsverarbeitungsvertrag schließen, eine Unternehmenslizenz wählen, bei der Eingaben nicht zum Training genutzt werden, und die Mitarbeitenden schulen. Dazu gehört eine Richtlinie, welche Daten eingegeben werden dürfen. Private Konten und ungefilterte Kundendaten sind dagegen tabu."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -24053,11 +24054,11 @@ values (
   'single',
   null,
   'Was verlangt die EU-KI-Verordnung seit dem 2. Februar 2025 von Unternehmen, die KI-Systeme einsetzen?',
-  'Seit 2. Februar 2025 gelten die Verbote des AI Act und die Pflicht zur KI-Kompetenz: Anbieter und Betreiber sorgen dafür, dass ihr Personal ausreichend geschult ist.',
+  'Seit dem 2. Februar 2025 gelten die Verbote des AI Act und die Pflicht zur KI-Kompetenz: Anbieter und Betreiber ergreifen Maßnahmen, etwa Schulungen, damit ihr Personal die nötige KI-Kompetenz aufbaut.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Dass ihr Personal über ausreichende KI-Kompetenz verfügt","is_correct":true,"rationale":"Mitarbeitende sollen Chancen und Risiken der eingesetzten Systeme kennen."},{"text":"Dass jedes KI-System behördlich zugelassen wird","is_correct":false,"rationale":"Eine allgemeine Zulassungspflicht gibt es nicht."},{"text":"Dass nur Open-Source-Modelle verwendet werden","is_correct":false,"rationale":"Die Verordnung schreibt keine Lizenzform vor."},{"text":"Dass KI nur außerhalb der Arbeitszeit genutzt wird","is_correct":false,"rationale":"Das ist frei erfunden."}]}'::jsonb,
+  '{"choices":[{"text":"Maßnahmen, damit ihr Personal KI-Kompetenz aufbaut","is_correct":true,"rationale":"Mitarbeitende sollen Chancen und Risiken der eingesetzten Systeme kennen."},{"text":"Dass jedes KI-System behördlich zugelassen wird","is_correct":false,"rationale":"Eine allgemeine Zulassungspflicht gibt es nicht."},{"text":"Dass nur Open-Source-Modelle verwendet werden","is_correct":false,"rationale":"Die Verordnung schreibt keine Lizenzform vor."},{"text":"Dass KI nur außerhalb der Arbeitszeit genutzt wird","is_correct":false,"rationale":"Das ist frei erfunden."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -24082,7 +24083,7 @@ values (
   'matching',
   null,
   'In welche Risikostufe der EU-KI-Verordnung fällt das System?',
-  'Unannehmbar: verboten. Hoch: strenge Pflichten wie Risikomanagement und menschliche Aufsicht. Begrenzt: Transparenzpflicht. Minimal: keine besonderen Pflichten.',
+  'Systeme mit unannehmbarem Risiko sind verboten. Hohes Risiko bringt strenge Pflichten wie Risikomanagement und menschliche Aufsicht. Bei begrenztem Risiko gilt eine Transparenzpflicht, bei minimalem Risiko gibt es keine besonderen Pflichten.',
   2,
   '{}',
   null,
@@ -24111,7 +24112,7 @@ values (
   'pairs',
   'In der KI-Richtlinie eines Unternehmens werden typische Risiken erklärt.',
   'Ordne jedem Begriff die passende Erklärung zu.',
-  'Halluzinationen sind gefährlich, weil sie flüssig und plausibel klingen, ohne Absicht des Modells, es berechnet nur Wahrscheinlichkeiten. Bias stammt aus den Trainingsdaten, Prompt Injection aus manipulierten Eingaben, Deepfakes sind künstlich erzeugte Fälschungen. Fakten, Quellen und Zahlen aus KI-Antworten immer prüfen.',
+  'Halluzinationen sind gefährlich, weil sie flüssig und plausibel klingen. Absicht steckt nicht dahinter, das Modell berechnet nur Wahrscheinlichkeiten. Bias stammt aus den Trainingsdaten, Prompt Injection aus manipulierten Eingaben, Deepfakes sind künstlich erzeugte Fälschungen. Prüfe Fakten, Quellen und Zahlen aus KI-Antworten immer nach.',
   1,
   '{}',
   null,
@@ -24144,7 +24145,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Vor- und Nachname der Kundin","is_correct":true,"rationale":"Personenbezogenes Datum."},{"text":"Beschreibung des Mangels: „springt nach drei Wochen nicht mehr an“","is_correct":false,"rationale":"Ohne Bezug zu einer Person und für die Antwort nötig."},{"text":"Anschrift der Kundin","is_correct":true,"rationale":"Personenbezogenes Datum."},{"text":"Kundennummer","is_correct":true,"rationale":"Über die Kundennummer ist die Person identifizierbar."},{"text":"Bezeichnung des Rasenmähermodells","is_correct":false,"rationale":"Eine Produktangabe ohne Personenbezug."},{"text":"IBAN für die Rückerstattung","is_correct":true,"rationale":"Bankdaten sind personenbezogen und besonders heikel."}]}'::jsonb,
+  '{"choices":[{"text":"Vor- und Nachname der Kundin","is_correct":true,"rationale":"Der Name ist ein personenbezogenes Datum."},{"text":"Beschreibung des Mangels: „springt nach drei Wochen nicht mehr an“","is_correct":false,"rationale":"Die Angabe hat keinen Bezug zu einer Person und wird für die Antwort gebraucht."},{"text":"Anschrift der Kundin","is_correct":true,"rationale":"Die Anschrift ist ein personenbezogenes Datum."},{"text":"Kundennummer","is_correct":true,"rationale":"Über die Kundennummer ist die Person identifizierbar."},{"text":"Bezeichnung des Rasenmähermodells","is_correct":false,"rationale":"Eine Produktangabe ohne Personenbezug."},{"text":"IBAN für die Rückerstattung","is_correct":true,"rationale":"Bankdaten sind personenbezogen und besonders heikel."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -24227,7 +24228,7 @@ values (
   'single',
   'Ein Unternehmen möchte per Kamera und KI die Stimmung seiner Mitarbeitenden am Arbeitsplatz auswerten, um die Leistung zu beurteilen.',
   'Wie ist das nach der EU-KI-Verordnung einzuordnen?',
-  'Seit 2. Februar 2025 verboten sind u. a. Social Scoring und Emotionserkennung am Arbeitsplatz und in Bildungseinrichtungen (Ausnahmen: medizinische oder Sicherheitsgründe).',
+  'Seit dem 2. Februar 2025 sind unter anderem Social Scoring und Emotionserkennung am Arbeitsplatz und in Bildungseinrichtungen verboten. Ausnahmen gibt es nur aus medizinischen oder Sicherheitsgründen.',
   3,
   '{}',
   null,
@@ -24492,7 +24493,7 @@ values (
   'cloze',
   'Im Qualitätshandbuch stehen drei Grundsätze der Qualitätssicherung.',
   'Vervollständige die Grundsätze.',
-  'Qualität entsteht nicht durch eine Endkontrolle: Konstruktive Maßnahmen und frühe statische Prüfungen sparen die teuren späten Fehler. Tests zeigen Fehler, beweisen aber nie Fehlerfreiheit.',
+  'Qualität entsteht nicht erst durch eine Endkontrolle. Konstruktive Maßnahmen und frühe statische Prüfungen ersparen dir die teuren späten Fehler. Tests zeigen Fehler, beweisen aber nie Fehlerfreiheit.',
   2,
   '{}',
   null,
@@ -24554,7 +24555,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Die App startet auf den Dienst-Smartphones in höchstens 3 Sekunden.","is_correct":true,"rationale":"Sie beschreibt, WIE GUT die App arbeitet (Antwortzeit), also nicht funktional."},{"text":"Mitarbeitende können Beginn und Ende ihrer Arbeitszeit buchen.","is_correct":false,"rationale":"Das ist eine Funktion: WAS die App tut."},{"text":"Die App berechnet die Überstunden eines Monats.","is_correct":false,"rationale":"Eine Berechnung ist eine Funktion der App."},{"text":"Vorgesetzte können Urlaubsanträge genehmigen.","is_correct":false,"rationale":"Auch das Genehmigen ist eine Funktion."}]}'::jsonb,
+  '{"choices":[{"text":"Die App startet auf den Dienst-Smartphones in höchstens 3 Sekunden.","is_correct":true,"rationale":"Sie beschreibt, WIE GUT die App arbeitet (Antwortzeit), und ist damit nicht funktional."},{"text":"Mitarbeitende können Beginn und Ende ihrer Arbeitszeit buchen.","is_correct":false,"rationale":"Das ist eine Funktion: WAS die App tut."},{"text":"Die App berechnet die Überstunden eines Monats.","is_correct":false,"rationale":"Eine Berechnung ist eine Funktion der App."},{"text":"Vorgesetzte können Urlaubsanträge genehmigen.","is_correct":false,"rationale":"Auch das Genehmigen ist eine Funktion."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -24729,11 +24730,11 @@ values (
   'matching',
   'Eine Arztpraxis will die Wartezeit am Telefon senken und geht nach dem PDCA-Zyklus vor.',
   'Ordne jeden Schritt der passenden Phase zu.',
-  'Plan: analysieren, Ziel setzen, Maßnahme planen. Do: im Kleinen erproben. Check: Ergebnis gegen das Ziel prüfen. Act: bei Erfolg standardisieren, sonst nachbessern. Dann beginnt der nächste Zyklus.',
+  'In Plan wird analysiert, ein Ziel gesetzt und die Maßnahme geplant. Do erprobt sie im Kleinen, Check prüft das Ergebnis gegen das Ziel. Act macht sie bei Erfolg zum Standard, sonst wird nachgebessert. Dann beginnt der nächste Zyklus.',
   2,
   '{}',
   null,
-  '{"buckets":["Plan","Do","Check","Act"],"match_items":[{"text":"Ziel festlegen: Wartezeit unter 2 Minuten, Maßnahme: Online-Terminbuchung","bucket":0,"rationale":"Ziel mit Kennzahl und geplante Maßnahme gehören in die Planung."},{"text":"Online-Terminbuchung vier Wochen lang für Kontrolltermine anbieten","bucket":1,"rationale":"Die Maßnahme wird im begrenzten Rahmen erprobt."},{"text":"Gemessene Wartezeiten mit dem Ziel vergleichen","bucket":2,"rationale":"Soll-Ist-Vergleich ist die Aufgabe von Check."},{"text":"Online-Buchung für alle Terminarten freigeben","bucket":3,"rationale":"Nach erfolgreichem Check wird die Maßnahme zum Standard."},{"text":"Ursachen für lange Wartezeiten aus der Anrufstatistik ermitteln","bucket":0,"rationale":"Die Analyse des Problems ist Teil der Planung."}]}'::jsonb,
+  '{"buckets":["Plan","Do","Check","Act"],"match_items":[{"text":"Ziel festlegen: Wartezeit unter 2 Minuten, Maßnahme: Online-Terminbuchung","bucket":0,"rationale":"Ziel mit Kennzahl und geplante Maßnahme gehören in die Planung."},{"text":"Online-Terminbuchung vier Wochen lang für Kontrolltermine anbieten","bucket":1,"rationale":"Die Maßnahme wird in begrenztem Rahmen erprobt."},{"text":"Gemessene Wartezeiten mit dem Ziel vergleichen","bucket":2,"rationale":"Der Soll-Ist-Vergleich ist Aufgabe von Check."},{"text":"Online-Buchung für alle Terminarten freigeben","bucket":3,"rationale":"Nach erfolgreichem Check wird die Maßnahme zum Standard."},{"text":"Ursachen für lange Wartezeiten aus der Anrufstatistik ermitteln","bucket":0,"rationale":"Die Analyse des Problems ist Teil der Planung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -24758,7 +24759,7 @@ values (
   'single',
   'Ein Service-Desk hat ein Self-Service-Portal im Pilotbereich getestet. Im Check zeigt sich: Der Anteil der Passwort-Tickets sank nur von 30 % auf 25 %, Ziel waren unter 15 %.',
   'Was ist in der Phase Act jetzt richtig?',
-  'Act hat zwei Ausgänge: Ziel erreicht -> Maßnahme wird Standard. Ziel verfehlt -> Ursachen klären, Maßnahme anpassen, neuer Zyklus. Genau dieses Weiterdrehen macht PDCA zum Werkzeug des KVP.',
+  'Act hat zwei Ausgänge: Ist das Ziel erreicht, wird die Maßnahme zum Standard. Ist es verfehlt, klärst du die Ursachen, passt die Maßnahme an und startest einen neuen Zyklus. Genau dieses Weiterdrehen macht PDCA zum Werkzeug des KVP.',
   2,
   '{}',
   null,
@@ -24790,7 +24791,7 @@ values (
   'Anteil vorher: 240 / 800 = 0,30 = 30 %
 Anteil nachher: 60 / 600 = 0,10 = 10 %
 Differenz: 30 % - 10 % = 20 Prozentpunkte
-Relativ wäre das ein Rückgang um 20 / 30 ≈ 66,7 Prozent. Prozentpunkte und Prozent nicht verwechseln.',
+Relativ wäre das ein Rückgang um 20 / 30 ≈ 66,7 Prozent. Verwechsle Prozentpunkte nicht mit Prozent.',
   2,
   '{}',
   null,
@@ -24823,7 +24824,7 @@ values (
   1,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Viele kleine Verbesserungsschritte statt eines großen Umbruchs","points":2,"keywords":["kleine Schritte","schrittweise","kleine Verbesserungen"]},{"text":"Er läuft fortlaufend weiter: nach jedem Zyklus beginnt der nächste.","points":2,"keywords":["fortlaufend","dauerhaft","ständig","endet nicht","nächster Zyklus"]},{"text":"Die Mitarbeitenden sind beteiligt, weil sie die Schwachstellen im Alltag kennen.","points":2,"keywords":["Mitarbeitende","Mitarbeiter","beteiligt","alle"]},{"text":"Werkzeug ist der PDCA-Zyklus mit messbaren Zielen.","points":2,"keywords":["PDCA","messbar","Kennzahl"]}],"sample_solution":"KVP setzt auf viele kleine Verbesserungen statt auf einen großen Umbruch, und er endet nie: Nach jedem PDCA-Zyklus beginnt der nächste. Beteiligt sind die Mitarbeitenden selbst, weil sie die Schwachstellen ihres Alltags am besten kennen."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Viele kleine Verbesserungsschritte statt eines großen Umbruchs","points":2,"keywords":["kleine Schritte","schrittweise","kleine Verbesserungen"]},{"text":"Er läuft fortlaufend weiter: Nach jedem Zyklus beginnt der nächste.","points":2,"keywords":["fortlaufend","dauerhaft","ständig","endet nicht","nächster Zyklus"]},{"text":"Die Mitarbeitenden sind beteiligt, weil sie die Schwachstellen im Alltag kennen.","points":2,"keywords":["Mitarbeitende","Mitarbeiter","beteiligt","alle"]},{"text":"Werkzeug ist der PDCA-Zyklus mit messbaren Zielen.","points":2,"keywords":["PDCA","messbar","Kennzahl"]}],"sample_solution":"KVP setzt auf viele kleine Verbesserungen statt auf einen großen Umbruch, und er endet nie: Nach jedem PDCA-Zyklus beginnt der nächste. Beteiligt sind die Mitarbeitenden selbst, weil sie die Schwachstellen ihres Alltags am besten kennen."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -24848,7 +24849,7 @@ values (
   'ordering',
   'Ein IT-Service-Desk bekommt auffällig viele Tickets wegen fehlender Druckertreiber.',
   'Bringe die Schritte in die Reihenfolge des PDCA-Zyklus.',
-  'Plan: analysieren, Ziel setzen, Maßnahme planen. Do: im Kleinen erproben. Check: Ergebnis gegen das Ziel messen. Act: bei Erfolg zum Standard machen.',
+  'In Plan wird analysiert, ein Ziel gesetzt und die Maßnahme geplant. Do erprobt sie im Kleinen, Check misst das Ergebnis am Ziel. Act macht sie bei Erfolg zum Standard.',
   2,
   '{}',
   null,
@@ -24910,7 +24911,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Mit einem Stub, der feste Antworten wie „Zahlung erfolgreich“ liefert","is_correct":true,"rationale":"Der Stub ersetzt eine Komponente, die vom Testobjekt aufgerufen wird."},{"text":"Mit einem Testtreiber","is_correct":false,"rationale":"Ein Testtreiber ersetzt den Aufrufer des Testobjekts, nicht die aufgerufene Komponente."},{"text":"Mit einem Regressionstest","is_correct":false,"rationale":"Das ist eine Testart, kein Platzhalter für fehlende Komponenten."},{"text":"Gar nicht: das Modul kann erst nach Fertigstellung aller Teile getestet werden","is_correct":false,"rationale":"Genau dafür gibt es Platzhalter: Komponenten lassen sich früh und isoliert testen."}]}'::jsonb,
+  '{"choices":[{"text":"Mit einem Stub, der feste Antworten wie „Zahlung erfolgreich“ liefert","is_correct":true,"rationale":"Der Stub ersetzt eine Komponente, die vom Testobjekt aufgerufen wird."},{"text":"Mit einem Testtreiber","is_correct":false,"rationale":"Ein Testtreiber ersetzt den Aufrufer des Testobjekts, nicht die aufgerufene Komponente."},{"text":"Mit einem Regressionstest","is_correct":false,"rationale":"Das ist eine Testart, kein Platzhalter für fehlende Komponenten."},{"text":"Gar nicht, das Modul kann erst nach Fertigstellung aller Teile getestet werden","is_correct":false,"rationale":"Genau dafür gibt es Platzhalter. Mit ihnen lassen sich Komponenten früh und isoliert testen."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -24939,7 +24940,7 @@ values (
   2,
   '{}',
   null,
-  '{"buckets":["Komponententest","Integrationstest","Systemtest","Abnahmetest"],"match_items":[{"text":"Ein Entwickler prüft seine Funktion zur Berechnung der Mehrwertsteuer.","bucket":0,"rationale":"Eine einzelne Funktion wird isoliert geprüft."},{"text":"Es wird geprüft, ob der Warenkorb die Daten korrekt an das Bestellmodul übergibt.","bucket":1,"rationale":"Im Fokus steht die Schnittstelle zwischen zwei Komponenten."},{"text":"Das Testteam prüft den kompletten Shop in der Testumgebung gegen das Pflichtenheft.","bucket":2,"rationale":"Gesamtsystem gegen die Spezifikation, in der Verantwortung des Auftragnehmers."},{"text":"Die Kundin prüft den Shop mit echten Artikeldaten und entscheidet über die Annahme.","bucket":3,"rationale":"Der Auftraggeber prüft und entscheidet. Das ist die Abnahme."}]}'::jsonb,
+  '{"buckets":["Komponententest","Integrationstest","Systemtest","Abnahmetest"],"match_items":[{"text":"Ein Entwickler prüft seine Funktion zur Berechnung der Mehrwertsteuer.","bucket":0,"rationale":"Eine einzelne Funktion wird isoliert geprüft."},{"text":"Es wird geprüft, ob der Warenkorb die Daten korrekt an das Bestellmodul übergibt.","bucket":1,"rationale":"Im Fokus steht die Schnittstelle zwischen zwei Komponenten."},{"text":"Das Testteam prüft den kompletten Shop in der Testumgebung gegen das Pflichtenheft.","bucket":2,"rationale":"Das Gesamtsystem wird gegen die Spezifikation geprüft, verantwortlich ist der Auftragnehmer."},{"text":"Die Kundin prüft den Shop mit echten Artikeldaten und entscheidet über die Annahme.","bucket":3,"rationale":"Der Auftraggeber prüft und entscheidet. Das ist die Abnahme."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -25051,7 +25052,7 @@ values (
   'matching',
   'Ein Softwarehaus liefert ein Kundenportal aus. Im Testkonzept sollen Systemtest und Abnahmetest sauber getrennt werden.',
   'Gehört die Aussage zum Systemtest oder zum Abnahmetest?',
-  'Systemtest: Gesamtsystem, gegen die Spezifikation, produktionsnahe Umgebung, Verantwortung beim Auftragnehmer. Abnahmetest: Auftraggeber prüft gegen seine Anforderungen und entscheidet über die Annahme.',
+  'Der Systemtest prüft das Gesamtsystem in einer produktionsnahen Umgebung gegen die Spezifikation, verantwortlich ist der Auftragnehmer. Im Abnahmetest prüft der Auftraggeber gegen seine Anforderungen und entscheidet über die Annahme.',
   2,
   '{}',
   null,
@@ -25090,8 +25091,8 @@ ENDE WENN
 preis = betrag - rabatt + versand',
   'Wie viele Testfälle braucht man mindestens für eine vollständige Zweigüberdeckung?',
   'Zweigüberdeckung heißt: Jeder Ja- und jeder Nein-Zweig wird mindestens einmal durchlaufen. Das sind 4 Zweige, aber ein Testfall deckt je Bedingung einen Zweig ab.
-Testfall 1: betrag = 150, express = wahr -> beide Ja-Zweige.
-Testfall 2: betrag = 50, express = falsch -> beide Nein-Zweige.
+Testfall 1: betrag = 150, express = wahr (beide Ja-Zweige).
+Testfall 2: betrag = 50, express = falsch (beide Nein-Zweige).
 Also 2 Testfälle. Für Anweisungsüberdeckung genügt schon Testfall 1. Alle 4 Kombinationen wären erst für eine Pfadüberdeckung nötig.',
   3,
   '{}',
@@ -25121,7 +25122,7 @@ values (
   'matching',
   'Ein Team plant, welche Tests eines Webshops automatisiert werden und welche weiter von Hand laufen.',
   'Sollte der Test eher automatisiert oder eher manuell durchgeführt werden?',
-  'Automatisierung rechnet sich über die Wiederholung: hoher Aufwand beim Erstellen, danach fast kostenlos. Manuelle Tests sind stark, wo menschliches Urteil gefragt ist, etwa bei Bedienbarkeit oder beim freien Erkunden.',
+  'Automatisierung rechnet sich über die Wiederholung: Das Erstellen ist aufwendig, jeder weitere Lauf kostet fast nichts. Manuelle Tests sind stark, wo menschliches Urteil gefragt ist, etwa bei Bedienbarkeit oder beim freien Erkunden.',
   2,
   '{}',
   null,
@@ -25220,7 +25221,7 @@ Es gibt genau einen Testfall: betrag = 150.',
   'Die Abfrage hat 2 Zweige: ja und nein.
 Mit betrag = 150 wird nur der Ja-Zweig durchlaufen: 1 von 2.
 Zweigüberdeckung = 1 / 2 × 100 % = 50 %.
-Die Anweisungsüberdeckung liegt dagegen schon bei 100 %, weil alle Anweisungen liefen, denn der leere Nein-Zweig enthält keine Anweisung.',
+Die Anweisungsüberdeckung liegt dagegen schon bei 100 %: Alle Anweisungen wurden ausgeführt, denn der leere Nein-Zweig enthält keine.',
   2,
   '{}',
   null,
@@ -25278,7 +25279,7 @@ values (
   'ordering',
   null,
   'Bringe die Schritte der testgetriebenen Entwicklung (TDD) in die richtige Reihenfolge.',
-  'TDD dreht die übliche Reihenfolge um: erst der Test, dann der Code. Der kurze Kreislauf Red - Green - Refactor wiederholt sich für jede kleine Funktion.',
+  'TDD dreht die übliche Reihenfolge um: erst der Test, dann der Code. Der kurze Kreislauf aus Red, Green und Refactor wiederholt sich für jede kleine Funktion.',
   2,
   '{}',
   null,
@@ -25671,7 +25672,7 @@ values (
   'Endekriterien: mindestens 95 % der Testfälle bestanden, kein kritischer Fehler offen.
 Stand heute: 97 % bestanden, ein kritischer Fehler (Datenverlust beim Speichern) ist offen.',
   'Wie ist der Teststand zu bewerten?',
-  'Endekriterien werden vor dem Test messbar festgelegt und gelten gemeinsam. Solange ein kritischer Fehler offen ist, ist der Test nicht beendet. Erst Korrektur, dann Nachtest und Regressionstest.',
+  'Endekriterien werden vor dem Test messbar festgelegt und gelten gemeinsam. Solange ein kritischer Fehler offen ist, ist der Test nicht beendet. Erst kommt die Korrektur, dann folgen Nachtest und Regressionstest.',
   2,
   '{}',
   null,
@@ -25700,7 +25701,7 @@ values (
   'open',
   'Im Systemtest eines Kundenportals stürzt der PDF-Export ab. Der Tester soll den Fehler so melden, dass die Entwicklung ihn ohne Rückfrage nachstellen kann.',
   'Nenne vier Angaben einer guten Fehlermeldung. (4 P.)',
-  'Je Nennung 1 Punkt, höchstens 4. Schuldzuweisungen gehören nicht hinein. Eine Fehlermeldung muss so genau sein, dass die Entwicklung den Fehler nachstellen kann: ID und Titel, Schritte, Soll und Ist, Umgebung und Version, Fehlerklasse und Priorität, Status.',
+  'Je Nennung 1 Punkt, höchstens 4. Eine Fehlermeldung muss so genau sein, dass die Entwicklung den Fehler nachstellen kann: Kennung und Titel, Schritte, Soll und Ist, Umgebung und Version, Fehlerklasse und Priorität, Status. Schuldzuweisungen gehören nicht hinein.',
   2,
   '{}',
   null,
@@ -25758,11 +25759,11 @@ values (
   'matching',
   null,
   'Welches Schutzziel ist durch den Vorfall verletzt?',
-  'Gesehen -> Vertraulichkeit, verändert -> Integrität, nicht erreichbar -> Verfügbarkeit.',
+  'Sieht jemand Daten unbefugt, ist die Vertraulichkeit verletzt. Werden Daten verändert, trifft es die Integrität, und ist ein Dienst nicht erreichbar, die Verfügbarkeit.',
   2,
   '{}',
   null,
-  '{"buckets":["Vertraulichkeit","Integrität","Verfügbarkeit"],"match_items":[{"text":"Ein Azubi öffnet die Gehaltsliste in einem für alle freigegebenen Ordner","bucket":0,"rationale":"Unbefugte Einsicht. Die Daten selbst bleiben unverändert und verfügbar."},{"text":"Ein Angreifer ändert die IBAN in einer Rechnungsvorlage","bucket":1,"rationale":"Die Daten wurden unbemerkt verfälscht."},{"text":"Der Webshop ist nach einem Stromausfall drei Stunden nicht erreichbar","bucket":2,"rationale":"Der Dienst ist nicht nutzbar, als er gebraucht wird."},{"text":"Ein Übertragungsfehler verfälscht Messwerte in der Datenbank","bucket":1,"rationale":"Die Daten sind nicht mehr korrekt. Auch ohne Angreifer ist die Integrität verletzt."},{"text":"Ein Mitarbeiter fotografiert Kundendaten vom Bildschirm und verkauft sie","bucket":0,"rationale":"Die Daten gelangen an Unbefugte."}]}'::jsonb,
+  '{"buckets":["Vertraulichkeit","Integrität","Verfügbarkeit"],"match_items":[{"text":"Ein Azubi öffnet die Gehaltsliste in einem für alle freigegebenen Ordner","bucket":0,"rationale":"Hier sieht jemand Daten, die nicht für ihn bestimmt sind. Verändert wird dabei nichts."},{"text":"Ein Angreifer ändert die IBAN in einer Rechnungsvorlage","bucket":1,"rationale":"Die Daten wurden unbemerkt verfälscht."},{"text":"Der Webshop ist nach einem Stromausfall drei Stunden nicht erreichbar","bucket":2,"rationale":"Der Dienst ist nicht nutzbar, wenn er gebraucht wird."},{"text":"Ein Übertragungsfehler verfälscht Messwerte in der Datenbank","bucket":1,"rationale":"Die Daten sind nicht mehr korrekt. Auch ohne Angreifer ist die Integrität verletzt."},{"text":"Ein Mitarbeiter fotografiert Kundendaten vom Bildschirm und verkauft sie","bucket":0,"rationale":"Die Daten gelangen an Unbefugte."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -25849,7 +25850,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Unterbrechungsfreie Stromversorgung (USV)","is_correct":true,"rationale":"Überbrückt Stromausfälle. Die Systeme bleiben erreichbar."},{"text":"Verschlüsselung der Festplatten","is_correct":false,"rationale":"Schützt vor unbefugtem Lesen: Vertraulichkeit."},{"text":"Zweite Internetleitung über einen anderen Anbieter","is_correct":true,"rationale":"Redundanz: Fällt eine Leitung aus, übernimmt die andere."},{"text":"Tägliche Datensicherung mit Wiederherstellungstest","is_correct":true,"rationale":"Nach einem Datenverlust sind die Daten schnell wieder nutzbar."},{"text":"Digitale Signatur für ausgehende Rechnungen","is_correct":false,"rationale":"Sichert Integrität und Authentizität."},{"text":"Zugriffsrechte nach dem Minimalprinzip","is_correct":false,"rationale":"Begrenzt, wer Daten sehen und ändern darf, schützt also vor allem die Vertraulichkeit."},{"text":"Klimaanlage mit Ersatzgerät im Serverraum","is_correct":true,"rationale":"Verhindert Ausfälle durch Überhitzung."}]}'::jsonb,
+  '{"choices":[{"text":"Unterbrechungsfreie Stromversorgung (USV)","is_correct":true,"rationale":"Sie überbrückt Stromausfälle, die Systeme bleiben erreichbar."},{"text":"Verschlüsselung der Festplatten","is_correct":false,"rationale":"Sie schützt vor unbefugtem Lesen, also die Vertraulichkeit."},{"text":"Zweite Internetleitung über einen anderen Anbieter","is_correct":true,"rationale":"Fällt eine Leitung aus, übernimmt die andere (Redundanz)."},{"text":"Tägliche Datensicherung mit Wiederherstellungstest","is_correct":true,"rationale":"Nach einem Datenverlust sind die Daten schnell wieder nutzbar."},{"text":"Digitale Signatur für ausgehende Rechnungen","is_correct":false,"rationale":"Sie sichert Integrität und Authentizität, nicht die Verfügbarkeit."},{"text":"Zugriffsrechte nach dem Minimalprinzip","is_correct":false,"rationale":"Begrenzt, wer Daten sehen und ändern darf, schützt also vor allem die Vertraulichkeit."},{"text":"Klimaanlage mit Ersatzgerät im Serverraum","is_correct":true,"rationale":"Verhindert Ausfälle durch Überhitzung."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -25961,11 +25962,11 @@ values (
   'matching',
   null,
   'Welche Art von Schadsoftware wird beschrieben?',
-  'Virus: braucht eine Wirtsdatei. Wurm: verbreitet sich selbstständig über das Netz. Trojaner: tarnt sich als nützliches Programm.',
+  'Ein Virus braucht eine Wirtsdatei, ein Wurm verbreitet sich selbstständig über das Netz, und ein Trojaner tarnt sich als nützliches Programm.',
   2,
   '{}',
   null,
-  '{"buckets":["Virus","Wurm","Trojaner"],"match_items":[{"text":"Hängt sich an eine ausführbare Datei und wird aktiv, wenn diese gestartet wird","bucket":0,"rationale":"Die Wirtsdatei ist das Kennzeichen des Virus."},{"text":"Nutzt eine Lücke in einem Netzwerkdienst und befällt selbstständig weitere Rechner","bucket":1,"rationale":"Selbstständige Verbreitung über das Netz kennzeichnet den Wurm."},{"text":"Kostenloses PDF-Werkzeug, das nach der Installation heimlich eine Hintertür öffnet","bucket":2,"rationale":"Getarnt als nützliches Programm und vom Nutzer selbst installiert."},{"text":"Verbreitet sich ohne jedes Zutun der Nutzer im gesamten Firmennetz","bucket":1,"rationale":"Kein Wirt, keine Nutzeraktion: ein Wurm."}]}'::jsonb,
+  '{"buckets":["Virus","Wurm","Trojaner"],"match_items":[{"text":"Hängt sich an eine ausführbare Datei und wird aktiv, wenn diese gestartet wird","bucket":0,"rationale":"Die Wirtsdatei ist das Kennzeichen des Virus."},{"text":"Nutzt eine Lücke in einem Netzwerkdienst und befällt selbstständig weitere Rechner","bucket":1,"rationale":"Selbstständige Verbreitung über das Netz kennzeichnet den Wurm."},{"text":"Kostenloses PDF-Werkzeug, das nach der Installation heimlich eine Hintertür öffnet","bucket":2,"rationale":"Es tarnt sich als nützliches Programm und wird vom Nutzer selbst installiert."},{"text":"Verbreitet sich ohne jedes Zutun der Nutzer im gesamten Firmennetz","bucket":1,"rationale":"Er braucht weder Wirtsdatei noch Nutzeraktion, also ist es ein Wurm."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -26019,7 +26020,7 @@ values (
   'single',
   'Eine Kollegin bemerkt, dass auf ihrem PC gerade Dateien umbenannt und unlesbar werden.',
   'Was sollte sie als Erstes tun?',
-  'Bei Ransomware zählt jede Minute: Netzverbindung trennen, damit sich die Verschlüsselung nicht ausbreitet, und den Vorfall sofort melden.',
+  'Bei Ransomware zählt jede Minute. Trenne die Netzverbindung, damit sich die Verschlüsselung nicht ausbreitet, und melde den Vorfall sofort.',
   2,
   '{}',
   null,
@@ -26048,7 +26049,7 @@ values (
   'cloze',
   null,
   'Ergänze die Aussagen zum Schutz vor Schadsoftware.',
-  'Signaturen erkennen bekannte Schadsoftware, die Heuristik (Verhaltensanalyse) auch unbekannte. Beides ersetzt keine Updates: Sie schließen die Lücken, über die Würmer und Exploits eindringen. Gegen Ransomware hilft am Ende nur eine getrennt aufbewahrte Sicherung.',
+  'Signaturen erkennen bekannte Schadsoftware, die Heuristik (Verhaltensanalyse) auch unbekannte. Beides ersetzt keine Updates, denn erst sie schließen die Lücken, über die Würmer und Exploits eindringen. Gegen Ransomware hilft am Ende nur eine getrennt aufbewahrte Sicherung.',
   2,
   '{}',
   null,
@@ -26077,7 +26078,7 @@ values (
   'single',
   'Bei einer Analyse wird auf einem Server ein Programm entdeckt, das mit Administratorrechten läuft und seine eigenen Dateien und Prozesse vor dem Task-Manager und dem Virenscanner verbirgt.',
   'Um welche Art von Schadsoftware handelt es sich?',
-  'Kennzeichen eines Rootkits ist die Tarnung: Es verbirgt Dateien, Prozesse und Netzverbindungen, oft mit höchsten Rechten. Entfernen ist schwierig, meist wird das System neu aufgesetzt.',
+  'Kennzeichen eines Rootkits ist die Tarnung: Es verbirgt Dateien, Prozesse und Netzverbindungen, oft mit höchsten Rechten. Es lässt sich nur schwer entfernen, meist wird das System neu aufgesetzt.',
   1,
   '{}',
   null,
@@ -26106,7 +26107,7 @@ values (
   'multiple',
   'Eine Anwaltskanzlei mit 15 Arbeitsplätzen will sich nach einem Ransomware-Fall bei einer befreundeten Kanzlei besser schützen.',
   'Welche Maßnahmen helfen wirksam gegen Ransomware?',
-  'Gegen Ransomware wirkt die Kombination: Infektionswege schließen (Updates, Makros blockieren), Schaden begrenzen (keine Adminrechte) und eine Sicherung, die die Schadsoftware nicht erreichen kann.',
+  'Gegen Ransomware wirkt nur die Kombination: Infektionswege schließen (Updates, Makros blockieren), den Schaden begrenzen (keine Adminrechte) und eine Sicherung bereithalten, die die Schadsoftware nicht erreichen kann.',
   2,
   '{}',
   null,
@@ -26197,7 +26198,7 @@ values (
   2,
   '{}',
   null,
-  '{"buckets":["Vishing","Tailgating","CEO-Fraud","DDoS"],"match_items":[{"text":"Ein angeblicher Support-Mitarbeiter ruft an und verlangt Fernzugriff auf den PC","bucket":0,"rationale":"Social Engineering per Telefon."},{"text":"Eine Person mit Kartons in den Händen folgt Mitarbeitenden durch die gesicherte Tür","bucket":1,"rationale":"Sie nutzt die Zutrittsberechtigung anderer aus."},{"text":"Der angebliche Geschäftsführer fordert per Mail eine eilige, vertrauliche Überweisung","bucket":2,"rationale":"Autorität, Zeitdruck und Geheimhaltung, typisch für CEO-Fraud."},{"text":"Tausende gekaperte Rechner legen den Webshop mit Anfragen lahm","bucket":3,"rationale":"Überlastung aus vielen Quellen, meist einem Botnetz."}]}'::jsonb,
+  '{"buckets":["Vishing","Tailgating","CEO-Fraud","DDoS"],"match_items":[{"text":"Ein angeblicher Support-Mitarbeiter ruft an und verlangt Fernzugriff auf den PC","bucket":0,"rationale":"Vishing ist Social Engineering per Telefon."},{"text":"Eine Person mit Kartons in den Händen folgt Mitarbeitenden durch die gesicherte Tür","bucket":1,"rationale":"Sie nutzt die Zutrittsberechtigung anderer aus."},{"text":"Der angebliche Geschäftsführer fordert per Mail eine eilige, vertrauliche Überweisung","bucket":2,"rationale":"Autorität, Zeitdruck und Geheimhaltung sind typisch für CEO-Fraud."},{"text":"Tausende gekaperte Rechner legen den Webshop mit Anfragen lahm","bucket":3,"rationale":"Der Dienst wird aus vielen Quellen überlastet, meist aus einem Botnetz."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -26222,7 +26223,7 @@ values (
   'multiple',
   'Eine Mail von service@sparkasse-kontosicherheit.info beginnt mit „Sehr geehrter Kunde“ und droht: „Ihr Konto wird in 24 Stunden gesperrt.“ Der Link zeigt „www.sparkasse.de“ an, führt beim Überfahren mit der Maus aber zu einer ganz anderen Adresse. Dort sollen die Online-Banking-Zugangsdaten eingegeben werden. Die Mail trägt das Logo der Sparkasse.',
   'Welche Merkmale weisen auf Phishing hin?',
-  'Typische Merkmale: fremde Absenderdomain, Druck und Drohung, abweichendes Linkziel und die Bitte um Zugangsdaten. Ein Logo sagt nichts über die Echtheit.',
+  'Typische Merkmale sind eine fremde Absenderdomain, Druck und Drohung, ein abweichendes Linkziel und die Bitte um Zugangsdaten. Ein Logo sagt nichts über die Echtheit.',
   2,
   '{}',
   null,
@@ -26251,7 +26252,7 @@ values (
   'single',
   'Im offenen WLAN eines Cafés leitet ein Angreifer den Datenverkehr der anderen Gäste unbemerkt über seinen Laptop und liest mit.',
   'Um welchen Angriff handelt es sich?',
-  'Beim Man-in-the-Middle-Angriff schaltet sich der Angreifer zwischen zwei Kommunikationspartner. Schutz bietet eine Ende-zu-Ende-Verschlüsselung wie TLS mit Zertifikatsprüfung.',
+  'Beim Man-in-the-Middle-Angriff schaltet sich der Angreifer zwischen zwei Kommunikationspartner. Schutz bietet eine verschlüsselte Verbindung mit Zertifikatsprüfung, etwa TLS (HTTPS) oder ein VPN.',
   2,
   '{}',
   null,
@@ -26396,7 +26397,7 @@ values (
   'single',
   'Im Gästebuch der Firmenwebsite trägt jemand einen Beitrag mit eingebettetem Skriptcode ein. Jeder Besucher, der das Gästebuch öffnet, führt das Skript unbemerkt im eigenen Browser aus.',
   'Um welchen Angriff handelt es sich?',
-  'XSS entsteht, wenn eine Webanwendung Eingaben ungeprüft wieder ausgibt. Schutz: Eingaben prüfen und Ausgaben maskieren, damit Skriptcode als Text angezeigt statt ausgeführt wird.',
+  'XSS entsteht, wenn eine Webanwendung Eingaben ungeprüft wieder ausgibt. Davor schützt, Eingaben zu prüfen und Ausgaben zu maskieren, damit Skriptcode als Text angezeigt statt ausgeführt wird.',
   2,
   '{}',
   null,
@@ -26425,7 +26426,7 @@ values (
   'single',
   'Auf einem Server laufen drei Anwendungen. Ihr Schutzbedarf für die Vertraulichkeit: Wiki „normal“, Personalverwaltung „hoch“, Kantinenplan „normal“. Kumulations- und Verteilungseffekt spielen keine Rolle.',
   'Welchen Schutzbedarf hat der Server für die Vertraulichkeit?',
-  'Maximumprinzip: Das IT-System erbt den höchsten Schutzbedarf der Anwendungen, die darauf laufen. Hier „hoch“ von der Personalverwaltung.',
+  'Nach dem Maximumprinzip erbt das IT-System den höchsten Schutzbedarf der Anwendungen, die darauf laufen. Hier ist das „hoch“ von der Personalverwaltung.',
   2,
   '{}',
   null,
@@ -26454,7 +26455,7 @@ values (
   'matching',
   null,
   'Welche Regel der Schutzbedarfsfeststellung wird angewendet?',
-  'Maximumprinzip: höchster Wert gilt. Kumulation: viele kleine Schäden erhöhen den Schutzbedarf. Verteilung: Redundanz kann ihn für ein einzelnes System senken.',
+  'Beim Maximumprinzip gilt der höchste Wert. Beim Kumulationseffekt erhöhen viele kleine Schäden zusammen den Schutzbedarf, beim Verteilungseffekt kann Redundanz ihn für ein einzelnes System senken.',
   2,
   '{}',
   null,
@@ -26511,7 +26512,7 @@ values (
   'sz-schutzbedarf',
   'multiple',
   null,
-  'Welche der folgenden sind Schadensszenarien, die das BSI für die Schutzbedarfsfeststellung vorsieht?',
+  'Welche Schadensszenarien sieht das BSI für die Schutzbedarfsfeststellung vor?',
   'Das BSI nennt sechs Schadensszenarien, darunter Rechtsverstöße, Beeinträchtigung der Unversehrtheit, negative Innen- oder Außenwirkung und finanzielle Auswirkungen.',
   2,
   '{}',
@@ -26777,7 +26778,7 @@ values (
   'matching',
   null,
   'Welches System wird beschrieben?',
-  'Paketfilter: einzelne Pakete nach Kopfdaten. Stateful Inspection: zusätzlich Verbindungszustand. Application-Level-Gateway: Inhalte auf Schicht 7. IPS: erkennt und blockiert Angriffe.',
+  'Der Paketfilter prüft einzelne Pakete nach ihren Kopfdaten, Stateful Inspection kennt zusätzlich den Verbindungszustand. Ein Application-Level-Gateway prüft die Inhalte auf Schicht 7, und ein IPS erkennt und blockiert Angriffe.',
   2,
   '{}',
   null,
@@ -26806,7 +26807,7 @@ values (
   'single',
   'Die Skizze zeigt das Netz eines kleinen Onlinehändlers: Eine einzige Firewall trennt Internet, DMZ und LAN.',
   'Welchen Nachteil hat diese einstufige DMZ gegenüber einer zweistufigen?',
-  'Die einstufige DMZ ist günstig und einfach, aber die einzige Firewall ist ein Single Point of Failure. Bei der zweistufigen DMZ muss ein Angreifer zwei Firewalls überwinden.',
+  'Die einstufige DMZ ist günstig und einfach, aber die ganze Sicherheit hängt an einer einzigen Firewall. Bei der zweistufigen DMZ muss ein Angreifer zwei Firewalls überwinden.',
   2,
   '{}',
   null,
@@ -26893,7 +26894,7 @@ values (
   'numeric',
   'Sonntags läuft eine Vollsicherung, von Montag bis Freitag jeden Abend eine inkrementelle Sicherung, jede auf ein eigenes Band. Am Donnerstagmittag fällt der Server aus.',
   'Wie viele Bänder werden benötigt, um den letzten gesicherten Stand wiederherzustellen?',
-  'Letzte Sicherung war Mittwochabend. Benötigt werden die Vollsicherung vom Sonntag und alle Inkremente seitdem: Montag, Dienstag, Mittwoch. 1 + 3 = 4 Bänder.',
+  'Die letzte Sicherung lief am Mittwochabend. Benötigt werden die Vollsicherung vom Sonntag und alle Inkremente seitdem: Montag, Dienstag, Mittwoch. 1 + 3 = 4 Bänder.',
   2,
   '{}',
   null,
@@ -27038,7 +27039,7 @@ values (
   'pairs',
   null,
   'Ordne den Generationen im Großvater-Vater-Sohn-Prinzip die Sicherung zu.',
-  'Großvater-Vater-Sohn: tägliche Sicherungen (Sohn) werden schnell überschrieben, wöchentliche (Vater) länger und monatliche (Großvater) am längsten aufbewahrt.',
+  'Beim Großvater-Vater-Sohn-Prinzip werden tägliche Sicherungen (Sohn) schnell überschrieben, wöchentliche (Vater) länger und monatliche (Großvater) am längsten aufbewahrt.',
   1,
   '{}',
   null,
@@ -27067,7 +27068,7 @@ values (
   'table',
   null,
   'Ergänze den Vergleich der drei Sicherungsarten.',
-  'Differenziell: alle Änderungen seit der letzten Vollsicherung, wächst täglich, Wiederherstellung mit Voll + letzter Differenz. Inkrementell: nur Änderungen seit der letzten Sicherung, kleinster Speicherbedarf, Wiederherstellung mit Voll + allen Inkrementen in der richtigen Reihenfolge.',
+  'Die differenzielle Sicherung enthält alle Änderungen seit der letzten Vollsicherung, wächst also täglich und braucht zur Wiederherstellung nur Voll + letzte Differenz. Die inkrementelle sichert nur die Änderungen seit der letzten Sicherung, braucht am wenigsten Speicher, aber zur Wiederherstellung Voll + alle Inkremente in der richtigen Reihenfolge.',
   2,
   '{}',
   null,
@@ -27100,7 +27101,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"WPA3-Personal","is_correct":true,"rationale":"Aktuellster Standard, schützt dank SAE vor Offline-Wörterbuchangriffen."},{"text":"WPA2 mit AES","is_correct":false,"rationale":"Gilt als Minimum, ist aber nicht der aktuelle Stand, wenn alle Geräte WPA3 können."},{"text":"WPA2 mit TKIP","is_correct":false,"rationale":"TKIP ist veraltet und gilt als unsicher."},{"text":"WEP","is_correct":false,"rationale":"WEP ist seit Jahren gebrochen."}]}'::jsonb,
+  '{"choices":[{"text":"WPA3-Personal","is_correct":true,"rationale":"Das ist der aktuelle Standard. Dank SAE schützt er vor Offline-Wörterbuchangriffen."},{"text":"WPA2 mit AES","is_correct":false,"rationale":"Das gilt als Minimum, ist aber nicht der aktuelle Stand, wenn alle Geräte WPA3 können."},{"text":"WPA2 mit TKIP","is_correct":false,"rationale":"TKIP ist veraltet und gilt als unsicher."},{"text":"WEP","is_correct":false,"rationale":"WEP ist seit Jahren gebrochen."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -27124,7 +27125,7 @@ values (
   'sm-wlan',
   'open',
   'Eine Arztpraxis betreibt ein WLAN für die Praxisgeräte und möchte Patienten im Wartezimmer Internet anbieten.',
-  'Nenne vier Maßnahmen, die die Sicherheit des WLAN wirksam erhöhen. (4 P.)',
+  'Nenne vier Maßnahmen, die die Sicherheit des WLANs wirksam erhöhen. (4 P.)',
   'Je Nennung 1 Punkt, höchstens 4 Punkte. Nicht gewertet werden Scheinmaßnahmen wie das Verstecken der SSID oder ein MAC-Filter, denn beides lässt sich leicht umgehen.',
   2,
   '{}',
@@ -27154,11 +27155,11 @@ values (
   'matching',
   null,
   'Welche Rolle bei der Anmeldung nach 802.1X hat das jeweilige Gerät?',
-  'Supplicant: Endgerät. Authenticator: Access Point oder Switch. Authentication Server: meist ein RADIUS-Server.',
+  'Der Supplicant ist das Endgerät, der Authenticator der Access Point oder Switch und der Authentication Server meist ein RADIUS-Server.',
   2,
   '{}',
   null,
-  '{"buckets":["Supplicant","Authenticator","Authentication Server"],"match_items":[{"text":"Notebook einer Mitarbeiterin","bucket":0,"rationale":"Das Endgerät, das Zugang möchte."},{"text":"Access Point im Großraumbüro","bucket":1,"rationale":"Er vermittelt die Anmeldung und gibt den Zugang frei."},{"text":"RADIUS-Server im Rechenzentrum","bucket":2,"rationale":"Er prüft die Zugangsdaten und entscheidet."},{"text":"Firmen-Smartphone mit Gerätezertifikat","bucket":0,"rationale":"Auch das Smartphone ist ein Endgerät."}]}'::jsonb,
+  '{"buckets":["Supplicant","Authenticator","Authentication Server"],"match_items":[{"text":"Notebook einer Mitarbeiterin","bucket":0,"rationale":"Es ist das Endgerät, das Zugang möchte."},{"text":"Access Point im Großraumbüro","bucket":1,"rationale":"Er vermittelt die Anmeldung und gibt den Zugang frei."},{"text":"RADIUS-Server im Rechenzentrum","bucket":2,"rationale":"Er prüft die Zugangsdaten und entscheidet."},{"text":"Firmen-Smartphone mit Gerätezertifikat","bucket":0,"rationale":"Auch das Smartphone ist ein Endgerät."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -27212,7 +27213,7 @@ values (
   'single',
   'Eine Firma mit 60 Beschäftigten nutzt WPA2-Personal mit einem gemeinsamen WLAN-Passwort. Ein Mitarbeiter verlässt das Unternehmen im Streit.',
   'Was ist jetzt nötig, und wie wäre es mit WPA2- oder WPA3-Enterprise?',
-  'WPA-Personal nutzt ein gemeinsames Passwort, das nur durch Ändern auf allen Geräten widerrufen werden kann. WPA-Enterprise prüft über 802.1X und RADIUS persönliche Zugangsdaten. Ein einzelnes Konto lässt sich sperren.',
+  'WPA-Personal nutzt ein gemeinsames Passwort, das nur durch Ändern auf allen Geräten widerrufen werden kann. WPA-Enterprise prüft über 802.1X und RADIUS persönliche Zugangsdaten, sodass sich ein einzelnes Konto sperren lässt.',
   2,
   '{}',
   null,
@@ -27274,7 +27275,7 @@ values (
   2,
   '{}',
   null,
-  '{"diagram":{"type":"netz","knoten":[{"id":"inet","label":"Internet","typ":"internet","x":2.0,"y":0.0},{"id":"fw","label":"Router/Firewall","typ":"firewall","x":2.0,"y":1.2},{"id":"sw","label":"Switch","typ":"switch_","x":2.0,"y":2.4},{"id":"srv","label":"Praxisserver","typ":"server","x":0.6,"y":3.8},{"id":"ap","label":"Access Point","typ":"accessPoint","x":3.4,"y":3.6},{"id":"nb","label":"Praxis-Notebook","typ":"laptop","x":1.0,"y":5.6},{"id":"gast","label":"Gast-Handy","typ":"smartphone","x":3.5,"y":5.6}],"verbindungen":[{"a":"inet","b":"fw"},{"a":"fw","b":"sw"},{"a":"sw","b":"srv"},{"a":"sw","b":"ap","label":"VLAN 10 + 20"},{"a":"ap","b":"nb","funk":true},{"a":"ap","b":"gast","funk":true}],"zonen":[{"label":"VLAN 10 intern","x0":0.0,"y0":3.2,"x1":2.6,"y1":6.0},{"label":"VLAN 20 Gäste","x0":2.8,"y0":5.0,"x1":4.0,"y1":6.0}]},"choices":[{"text":"VLAN 20 -> Internet erlauben, VLAN 20 -> VLAN 10 verbieten","is_correct":true,"rationale":"Gäste kommen ins Internet, aber nie an den Praxisserver."},{"text":"VLAN 20 -> VLAN 10 erlauben, damit Gäste drucken können","is_correct":false,"rationale":"Damit stünde das interne Netz mit den Patientendaten für fremde Geräte offen."},{"text":"VLAN 20 komplett sperren, auch ins Internet","is_correct":false,"rationale":"Dann wäre das Gastnetz nutzlos."},{"text":"Keine Regel nötig, weil die SSIDs verschieden heißen","is_correct":false,"rationale":"Erst die Firewall-Regel zwischen den VLANs trennt die Netze wirksam."}]}'::jsonb,
+  '{"diagram":{"type":"netz","knoten":[{"id":"inet","label":"Internet","typ":"internet","x":2.0,"y":0.0},{"id":"fw","label":"Router/Firewall","typ":"firewall","x":2.0,"y":1.2},{"id":"sw","label":"Switch","typ":"switch_","x":2.0,"y":2.4},{"id":"srv","label":"Praxisserver","typ":"server","x":0.6,"y":3.8},{"id":"ap","label":"Access Point","typ":"accessPoint","x":3.4,"y":3.6},{"id":"nb","label":"Praxis-Notebook","typ":"laptop","x":1.0,"y":5.6},{"id":"gast","label":"Gast-Handy","typ":"smartphone","x":3.5,"y":5.6}],"verbindungen":[{"a":"inet","b":"fw"},{"a":"fw","b":"sw"},{"a":"sw","b":"srv"},{"a":"sw","b":"ap","label":"VLAN 10 + 20"},{"a":"ap","b":"nb","funk":true},{"a":"ap","b":"gast","funk":true}],"zonen":[{"label":"VLAN 10 intern","x0":0.0,"y0":3.2,"x1":2.6,"y1":6.0},{"label":"VLAN 20 Gäste","x0":2.8,"y0":5.0,"x1":3.9,"y1":6.0}]},"choices":[{"text":"VLAN 20 -> Internet erlauben, VLAN 20 -> VLAN 10 verbieten","is_correct":true,"rationale":"Gäste kommen ins Internet, aber nie an den Praxisserver."},{"text":"VLAN 20 -> VLAN 10 erlauben, damit Gäste drucken können","is_correct":false,"rationale":"Damit stünde das interne Netz mit den Patientendaten für fremde Geräte offen."},{"text":"VLAN 20 komplett sperren, auch ins Internet","is_correct":false,"rationale":"Dann wäre das Gastnetz nutzlos."},{"text":"Keine Regel nötig, weil die SSIDs verschieden heißen","is_correct":false,"rationale":"Erst die Firewall-Regel zwischen den VLANs trennt die Netze wirksam."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -27299,11 +27300,11 @@ values (
   'matching',
   null,
   'Um welche Art der Kontrolle handelt es sich?',
-  'Zutritt: Räume und Gebäude. Zugang: Nutzung von IT-Systemen. Zugriff: Rechte auf bestimmte Daten und Funktionen.',
+  'Zutritt betrifft Räume und Gebäude, Zugang die Nutzung von IT-Systemen und Zugriff die Rechte an bestimmten Daten und Funktionen.',
   2,
   '{}',
   null,
-  '{"buckets":["Zutritt","Zugang","Zugriff"],"match_items":[{"text":"Chipkartenleser an der Tür zum Serverraum","bucket":0,"rationale":"Schützt einen Raum."},{"text":"Anmeldung am Notebook mit Passwort und Fingerabdruck","bucket":1,"rationale":"Schützt die Nutzung des IT-Systems."},{"text":"Nur die Personalabteilung darf den Ordner „Gehälter“ öffnen","bucket":2,"rationale":"Regelt Rechte auf bestimmte Daten."},{"text":"Besuchende werden am Empfang registriert und begleitet","bucket":0,"rationale":"Kontrolliert das Betreten des Gebäudes."},{"text":"Leserecht, aber kein Schreibrecht auf die Preisliste","bucket":2,"rationale":"Regelt, was mit bestimmten Daten erlaubt ist."}]}'::jsonb,
+  '{"buckets":["Zutritt","Zugang","Zugriff"],"match_items":[{"text":"Chipkartenleser an der Tür zum Serverraum","bucket":0,"rationale":"Er schützt einen Raum."},{"text":"Anmeldung am Notebook mit Passwort und Fingerabdruck","bucket":1,"rationale":"Sie schützt die Nutzung des IT-Systems."},{"text":"Nur die Personalabteilung darf den Ordner „Gehälter“ öffnen","bucket":2,"rationale":"Das regelt die Rechte an bestimmten Daten."},{"text":"Besuchende werden am Empfang registriert und begleitet","bucket":0,"rationale":"So wird das Betreten des Gebäudes kontrolliert."},{"text":"Leserecht, aber kein Schreibrecht auf die Preisliste","bucket":2,"rationale":"Das regelt, was mit bestimmten Daten erlaubt ist."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -27332,7 +27333,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Rolle „Vertrieb“ entziehen und Rolle „Buchhaltung“ zuordnen","is_correct":true,"rationale":"So hat er genau die Rechte, die er für die neue Aufgabe braucht."},{"text":"Rolle „Buchhaltung“ zusätzlich zuordnen und „Vertrieb“ behalten","is_correct":false,"rationale":"Rechte würden sich anhäufen, ein Verstoß gegen das Minimalprinzip."},{"text":"Ihm Administratorrechte geben, damit er überall Zugriff hat","is_correct":false,"rationale":"Weit mehr Rechte als nötig und ein hohes Risiko."},{"text":"Ihn vorerst das Konto einer Kollegin aus der Buchhaltung mitbenutzen lassen","is_correct":false,"rationale":"Geteilte Konten verhindern Nachvollziehbarkeit und verletzen die Zugangskontrolle."}]}'::jsonb,
+  '{"choices":[{"text":"Rolle „Vertrieb“ entziehen und Rolle „Buchhaltung“ zuordnen","is_correct":true,"rationale":"So hat er genau die Rechte, die er für die neue Aufgabe braucht."},{"text":"Rolle „Buchhaltung“ zusätzlich zuordnen und „Vertrieb“ behalten","is_correct":false,"rationale":"So häufen sich Rechte an, und das verstößt gegen das Minimalprinzip."},{"text":"Ihm Administratorrechte geben, damit er überall Zugriff hat","is_correct":false,"rationale":"Das wären weit mehr Rechte als nötig und ein hohes Risiko."},{"text":"Ihn vorerst das Konto einer Kollegin aus der Buchhaltung mitbenutzen lassen","is_correct":false,"rationale":"Geteilte Konten verhindern Nachvollziehbarkeit und verletzen die Zugangskontrolle."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -27444,7 +27445,7 @@ values (
   'matching',
   null,
   'Welches Zugriffsmodell wird beschrieben?',
-  'DAC: Besitzer vergibt Rechte. MAC: System erzwingt Sicherheitsstufen. RBAC: Rechte hängen an Rollen, das übliche Modell in Unternehmen.',
+  'Bei DAC vergibt der Besitzer die Rechte, bei MAC erzwingt das System Sicherheitsstufen. Bei RBAC hängen die Rechte an Rollen, das ist das übliche Modell in Unternehmen.',
   2,
   '{}',
   null,
@@ -27477,7 +27478,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Der Vertrieb hat auf die Preisliste nur Leserecht.","is_correct":false,"rationale":"Mehr als Lesen braucht der Vertrieb für seine Aufgabe nicht."},{"text":"Alle Azubis haben Adminrechte, damit sie Software selbst installieren können.","is_correct":true,"rationale":"Weit mehr Rechte als nötig und eine offene Tür für Schadsoftware."},{"text":"Administratoren nutzen für E-Mail und Internet ein normales Konto.","is_correct":false,"rationale":"Adminrechte gibt es nur für Verwaltungsaufgaben."},{"text":"Die Buchhaltung nutzt ein gemeinsames Konto mit allen Rechten.","is_correct":true,"rationale":"Geteilte Konten bündeln Rechte und machen Aktionen unzurechenbar."},{"text":"Eine Mitarbeiterin hat nach dem Wechsel in den Einkauf weiter Zugriff auf die Personalakten.","is_correct":true,"rationale":"Rechte der alten Rolle müssen entzogen werden."},{"text":"Das Konto eines ausgeschiedenen Mitarbeiters wurde am letzten Arbeitstag gesperrt.","is_correct":false,"rationale":"Nicht mehr benötigte Konten werden sofort gesperrt."}]}'::jsonb,
+  '{"choices":[{"text":"Der Vertrieb hat auf die Preisliste nur Leserecht.","is_correct":false,"rationale":"Mehr als Lesen braucht der Vertrieb für seine Aufgabe nicht."},{"text":"Alle Azubis haben Adminrechte, damit sie Software selbst installieren können.","is_correct":true,"rationale":"Das sind weit mehr Rechte als nötig und eine offene Tür für Schadsoftware."},{"text":"Administratoren nutzen für E-Mail und Internet ein normales Konto.","is_correct":false,"rationale":"Adminrechte gibt es nur für Verwaltungsaufgaben."},{"text":"Die Buchhaltung nutzt ein gemeinsames Konto mit allen Rechten.","is_correct":true,"rationale":"Geteilte Konten bündeln Rechte und machen Aktionen unzurechenbar."},{"text":"Eine Mitarbeiterin hat nach dem Wechsel in den Einkauf weiter Zugriff auf die Personalakten.","is_correct":true,"rationale":"Rechte der alten Rolle müssen entzogen werden."},{"text":"Das Konto eines ausgeschiedenen Mitarbeiters wurde am letzten Arbeitstag gesperrt.","is_correct":false,"rationale":"Nicht mehr benötigte Konten werden sofort gesperrt."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -27560,7 +27561,7 @@ values (
   'multiple',
   null,
   'Welche Aussagen zur symmetrischen Verschlüsselung sind richtig?',
-  'Symmetrisch heißt: ein gemeinsamer Schlüssel, sehr schnell, aber mit dem Problem, ihn sicher zu übergeben.',
+  'Symmetrische Verfahren nutzen einen gemeinsamen Schlüssel und sind sehr schnell. Ihr Problem ist, diesen Schlüssel sicher zu übergeben.',
   2,
   '{}',
   null,
@@ -27647,7 +27648,7 @@ values (
   'single',
   'Eine Nachricht wurde mit der Caesar-Verschiebung um 3 Stellen verschlüsselt. Der Geheimtext lautet FDHVDU.',
   'Wie lautet der Klartext?',
-  'Bei symmetrischen Verfahren entschlüsselt derselbe Schlüssel: Caesar mit Schlüssel 3 verschiebt beim Entschlüsseln jeden Buchstaben um 3 Stellen zurück. FDHVDU wird so zu CAESAR.',
+  'Bei symmetrischen Verfahren wird mit demselben Schlüssel ver- und entschlüsselt. Caesar mit Schlüssel 3 verschiebt beim Entschlüsseln jeden Buchstaben um 3 Stellen zurück. FDHVDU wird so zu CAESAR.',
   1,
   '{}',
   null,
@@ -27738,7 +27739,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Mit Bens öffentlichem Schlüssel","is_correct":true,"rationale":"Dann kann nur Ben sie mit seinem privaten Schlüssel entschlüsseln."},{"text":"Mit Annas privatem Schlüssel","is_correct":false,"rationale":"Das wäre eine Signatur. Jeder könnte sie mit Annas öffentlichem Schlüssel lesen."},{"text":"Mit Annas öffentlichem Schlüssel","is_correct":false,"rationale":"Dann könnte nur Anna selbst die Nachricht entschlüsseln."},{"text":"Mit Bens privatem Schlüssel","is_correct":false,"rationale":"Den kennt nur Ben: Anna hat ihn nicht."}]}'::jsonb,
+  '{"choices":[{"text":"Mit Bens öffentlichem Schlüssel","is_correct":true,"rationale":"Dann kann nur Ben sie mit seinem privaten Schlüssel entschlüsseln."},{"text":"Mit Annas privatem Schlüssel","is_correct":false,"rationale":"Das wäre eine Signatur. Jeder könnte sie mit Annas öffentlichem Schlüssel lesen."},{"text":"Mit Annas öffentlichem Schlüssel","is_correct":false,"rationale":"Dann könnte nur Anna selbst die Nachricht entschlüsseln."},{"text":"Mit Bens privatem Schlüssel","is_correct":false,"rationale":"Den kennt nur Ben, Anna hat ihn nicht."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -27763,11 +27764,11 @@ values (
   'matching',
   null,
   'Welcher Schlüssel wird für den jeweiligen Schritt benutzt?',
-  'Verschlüsseln: öffentlich beim Empfänger, entschlüsseln mit dessen privatem Schlüssel. Signieren: privat beim Absender, prüfen mit dessen öffentlichem Schlüssel.',
+  'Verschlüsselt wird mit dem öffentlichen Schlüssel des Empfängers, entschlüsselt mit dessen privatem Schlüssel. Signiert wird mit dem privaten Schlüssel des Absenders, geprüft mit dessen öffentlichem Schlüssel.',
   2,
   '{}',
   null,
-  '{"buckets":["öffentlicher Schlüssel des Absenders","privater Schlüssel des Absenders","öffentlicher Schlüssel des Empfängers","privater Schlüssel des Empfängers"],"match_items":[{"text":"Signatur prüfen","bucket":0,"rationale":"Jeder kann prüfen. Dafür genügt der öffentliche Schlüssel des Absenders."},{"text":"Signatur erstellen","bucket":1,"rationale":"Nur der Absender besitzt seinen privaten Schlüssel. Deshalb beweist die Signatur die Herkunft."},{"text":"Nachricht verschlüsseln","bucket":2,"rationale":"Mit dem öffentlichen Schlüssel des Empfängers kann jeder verschlüsseln."},{"text":"Nachricht entschlüsseln","bucket":3,"rationale":"Nur der Empfänger kann mit seinem privaten Schlüssel entschlüsseln."}]}'::jsonb,
+  '{"buckets":["öffentlicher Schlüssel des Absenders","privater Schlüssel des Absenders","öffentlicher Schlüssel des Empfängers","privater Schlüssel des Empfängers"],"match_items":[{"text":"Signatur prüfen","bucket":0,"rationale":"Prüfen kann jeder, dafür genügt der öffentliche Schlüssel des Absenders."},{"text":"Signatur erstellen","bucket":1,"rationale":"Nur der Absender besitzt seinen privaten Schlüssel. Deshalb beweist die Signatur die Herkunft."},{"text":"Nachricht verschlüsseln","bucket":2,"rationale":"Mit dem öffentlichen Schlüssel des Empfängers kann jeder verschlüsseln."},{"text":"Nachricht entschlüsseln","bucket":3,"rationale":"Nur der Empfänger kann mit seinem privaten Schlüssel entschlüsseln."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -27879,11 +27880,11 @@ values (
   'multiple',
   'Anna schickt Ben ein Angebot. Es soll signiert sein, damit Ben die Herkunft prüfen kann, und verschlüsselt, damit niemand sonst es lesen kann.',
   'Welche Schlüssel verwendet Anna?',
-  'Signieren: eigener privater Schlüssel des Absenders. Verschlüsseln: öffentlicher Schlüssel des Empfängers. Ben entschlüsselt mit seinem privaten Schlüssel und prüft die Signatur mit Annas öffentlichem.',
+  'Signiert wird mit dem eigenen privaten Schlüssel, verschlüsselt mit dem öffentlichen Schlüssel des Empfängers. Ben entschlüsselt mit seinem privaten Schlüssel und prüft die Signatur mit Annas öffentlichem.',
   3,
   '{}',
   null,
-  '{"choices":[{"text":"Ihren eigenen privaten Schlüssel","is_correct":true,"rationale":"Damit erstellt sie die Signatur."},{"text":"Bens öffentlichen Schlüssel","is_correct":true,"rationale":"Damit verschlüsselt sie das Angebot, sodass nur Ben es entschlüsseln kann."},{"text":"Bens privaten Schlüssel","is_correct":false,"rationale":"Den besitzt nur Ben."},{"text":"Ihren eigenen öffentlichen Schlüssel","is_correct":false,"rationale":"Damit verschlüsselt könnte nur Anna selbst die Nachricht lesen."},{"text":"Einen gemeinsamen Schlüssel, den sie Ben in derselben Mail schickt","is_correct":false,"rationale":"Wer die Mail mitliest, hätte den Schlüssel gleich mit."}]}'::jsonb,
+  '{"choices":[{"text":"Ihren eigenen privaten Schlüssel","is_correct":true,"rationale":"Damit erstellt sie die Signatur."},{"text":"Bens öffentlichen Schlüssel","is_correct":true,"rationale":"Damit verschlüsselt sie das Angebot, sodass nur Ben es entschlüsseln kann."},{"text":"Bens privaten Schlüssel","is_correct":false,"rationale":"Den besitzt nur Ben."},{"text":"Ihren eigenen öffentlichen Schlüssel","is_correct":false,"rationale":"Was damit verschlüsselt ist, könnte nur Anna selbst lesen."},{"text":"Einen gemeinsamen Schlüssel, den sie Ben in derselben Mail schickt","is_correct":false,"rationale":"Wer die Mail mitliest, hätte den Schlüssel gleich mit."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -27908,7 +27909,7 @@ values (
   'matching',
   null,
   'Gehört die Angabe zu symmetrischen oder asymmetrischen Verfahren?',
-  'Symmetrisch: AES, 3DES, ein gemeinsamer Schlüssel je Paar, n × (n - 1) / 2. Asymmetrisch: RSA, ECC, ein Schlüsselpaar je Person, 2 × n.',
+  'Symmetrisch sind AES und 3DES. Jedes Paar teilt sich einen Schlüssel, das ergibt n × (n - 1) / 2. Asymmetrisch sind RSA und ECC. Jede Person hat ein Schlüsselpaar, das ergibt 2 × n.',
   2,
   '{}',
   null,
@@ -28231,7 +28232,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Mit Argon2 und einem zufälligen Salt je Konto hashen","is_correct":true,"rationale":"Salt verhindert vorberechnete Tabellen, das langsame Verfahren bremst massenhaftes Ausprobieren."},{"text":"Mit AES verschlüsseln","is_correct":false,"rationale":"Verschlüsseltes lässt sich mit dem Schlüssel zurückholen. Wird er gestohlen, liegen alle Passwörter offen."},{"text":"Mit MD5 hashen","is_correct":false,"rationale":"MD5 ist veraltet und extrem schnell zu berechnen."},{"text":"Mit SHA-256 ohne Salt hashen","is_correct":false,"rationale":"Gleiche Passwörter ergeben gleiche Hashes, und SHA-256 ist für Passwörter zu schnell."}]}'::jsonb,
+  '{"choices":[{"text":"Mit Argon2 und einem zufälligen Salt je Konto hashen","is_correct":true,"rationale":"Der Salt macht vorberechnete Tabellen nutzlos, das langsame Verfahren bremst massenhaftes Ausprobieren."},{"text":"Mit AES verschlüsseln","is_correct":false,"rationale":"Verschlüsseltes lässt sich mit dem Schlüssel zurückholen. Wird er gestohlen, liegen alle Passwörter offen."},{"text":"Mit MD5 hashen","is_correct":false,"rationale":"MD5 ist veraltet und extrem schnell zu berechnen."},{"text":"Mit SHA-256 ohne Salt hashen","is_correct":false,"rationale":"Gleiche Passwörter ergeben gleiche Hashes, und SHA-256 ist für Passwörter zu schnell."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -28401,7 +28402,7 @@ values (
   'matching',
   null,
   'Ist die Kombination eine echte Zwei-Faktor-Authentifizierung?',
-  'Echte Zwei-Faktor-Authentifizierung kombiniert zwei verschiedene Kategorien: Wissen, Besitz, Biometrie. Zwei Nachweise aus derselben Kategorie, etwa Passwort und Sicherheitsfrage, fallen demselben Angriff zum Opfer.',
+  'Echte Zwei-Faktor-Authentifizierung kombiniert zwei der drei Kategorien Wissen, Besitz und Biometrie. Zwei Nachweise aus derselben Kategorie, etwa Passwort und Sicherheitsfrage, fallen demselben Angriff zum Opfer.',
   2,
   '{}',
   null,
@@ -28492,7 +28493,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Lieber eine lange Passphrase und das Passwort nur bei Verdacht auf Kompromittierung ändern","is_correct":true,"rationale":"Das BSI empfiehlt keinen anlasslosen Zwangswechsel mehr, Länge bringt viel Sicherheit."},{"text":"Passwörter alle 90 Tage zwangsweise wechseln","is_correct":false,"rationale":"Anlassloser Wechsel führt zu schwachen, abgewandelten Passwörtern und wird nicht mehr empfohlen."},{"text":"Ein einziges starkes Passwort für alle Dienste nutzen","is_correct":false,"rationale":"Wird ein Dienst gehackt, sind alle anderen Konten mitbetroffen."},{"text":"Acht Zeichen reichen immer, wenn ein Sonderzeichen dabei ist","is_correct":false,"rationale":"Kurze Passwörter bleiben auch mit Sonderzeichen angreifbar: Länge wirkt stärker."}]}'::jsonb,
+  '{"choices":[{"text":"Lieber eine lange Passphrase und das Passwort nur bei Verdacht auf Kompromittierung ändern","is_correct":true,"rationale":"Das BSI empfiehlt keinen anlasslosen Zwangswechsel mehr, Länge bringt viel Sicherheit."},{"text":"Passwörter alle 90 Tage zwangsweise wechseln","is_correct":false,"rationale":"Anlassloser Wechsel führt zu schwachen, abgewandelten Passwörtern und wird nicht mehr empfohlen."},{"text":"Ein einziges starkes Passwort für alle Dienste nutzen","is_correct":false,"rationale":"Wird ein Dienst gehackt, sind alle anderen Konten mitbetroffen."},{"text":"Acht Zeichen reichen immer, wenn ein Sonderzeichen dabei ist","is_correct":false,"rationale":"Kurze Passwörter bleiben auch mit Sonderzeichen angreifbar. Länge bringt mehr als Sonderzeichen."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -28749,11 +28750,11 @@ values (
   'single',
   'Ein Softwarehaus hat 45 Beschäftigte. 22 davon arbeiten in Entwicklung, Support und Vertrieb täglich am PC mit Kundendaten. 23 arbeiten in der Hardware-Montage ohne Zugriff auf personenbezogene Daten. Besondere Risiken bestehen nicht.',
   'Muss das Unternehmen einen Datenschutzbeauftragten benennen?',
-  'Nach § 38 BDSG ist ein DSB zu benennen, wenn in der Regel mindestens 20 Personen ständig mit der automatisierten Verarbeitung personenbezogener Daten beschäftigt sind. Gezählt werden nur diese Personen: hier 22.',
+  'Nach § 38 BDSG ist ein DSB zu benennen, wenn in der Regel mindestens 20 Personen ständig mit der automatisierten Verarbeitung personenbezogener Daten beschäftigt sind. Gezählt werden nur diese Personen, hier also 22.',
   3,
   '{}',
   null,
-  '{"choices":[{"text":"Ja, weil mindestens 20 Personen ständig mit der automatisierten Verarbeitung personenbezogener Daten beschäftigt sind","is_correct":true,"rationale":"22 ≥ 20. Die Schwelle aus § 38 BDSG ist erreicht."},{"text":"Nein, weil weniger als die Hälfte der Beschäftigten mit Daten arbeitet","is_correct":false,"rationale":"Es kommt nicht auf den Anteil an, sondern auf die absolute Zahl von mindestens 20."},{"text":"Ja, weil das Unternehmen mehr als 20 Beschäftigte hat","is_correct":false,"rationale":"Die Begründung stimmt nicht: Maßgeblich sind nur die Personen, die ständig personenbezogene Daten verarbeiten."},{"text":"Nein, Softwarehäuser sind grundsätzlich ausgenommen","is_correct":false,"rationale":"Eine solche Ausnahme gibt es nicht."}]}'::jsonb,
+  '{"choices":[{"text":"Ja, weil mindestens 20 Personen ständig mit der automatisierten Verarbeitung personenbezogener Daten beschäftigt sind","is_correct":true,"rationale":"22 sind mehr als 20, die Schwelle aus § 38 BDSG ist also erreicht."},{"text":"Nein, weil weniger als die Hälfte der Beschäftigten mit Daten arbeitet","is_correct":false,"rationale":"Es kommt nicht auf den Anteil an, sondern auf die absolute Zahl von mindestens 20."},{"text":"Ja, weil das Unternehmen mehr als 20 Beschäftigte hat","is_correct":false,"rationale":"Die Begründung stimmt nicht: Maßgeblich sind nur die Personen, die ständig personenbezogene Daten verarbeiten."},{"text":"Nein, Softwarehäuser sind grundsätzlich ausgenommen","is_correct":false,"rationale":"Eine solche Ausnahme gibt es nicht."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -28807,7 +28808,7 @@ values (
   'single',
   'Eine Firma lässt die monatliche Lohnabrechnung von einem externen Dienstleister erstellen. Dieser erhält dafür die Personaldaten und arbeitet nur nach Vorgaben der Firma.',
   'Was muss die Firma vor der Übergabe der Daten abschließen?',
-  'Wer Daten im Auftrag verarbeiten lässt, bleibt Verantwortlicher und muss mit dem Auftragsverarbeiter einen AV-Vertrag schließen: Weisungsbindung, TOM, Unterauftragnehmer, Löschung am Ende.',
+  'Wer Daten im Auftrag verarbeiten lässt, bleibt Verantwortlicher und muss mit dem Auftragsverarbeiter einen AV-Vertrag schließen. Er regelt unter anderem Weisungsbindung, TOM, Unterauftragnehmer und die Löschung am Ende.',
   2,
   '{}',
   null,
@@ -28923,7 +28924,7 @@ values (
   'cloze',
   null,
   'Ergänze die Voraussetzungen einer wirksamen Einwilligung.',
-  'Eine wirksame Einwilligung ist freiwillig, informiert, eindeutig (aktives Ankreuzen) und jederzeit widerrufbar. Der Widerruf wirkt nur für die Zukunft. Die bisherige Verarbeitung bleibt rechtmäßig. Er muss so einfach sein wie die Erteilung.',
+  'Eine wirksame Einwilligung ist freiwillig, informiert, eindeutig (aktives Ankreuzen) und jederzeit widerrufbar. Der Widerruf wirkt nur für die Zukunft, die bisherige Verarbeitung bleibt rechtmäßig. Außerdem muss er so einfach sein wie die Erteilung.',
   2,
   '{}',
   null,
@@ -29010,7 +29011,7 @@ values (
   'numeric',
   'Ein Konzern mit 2 Mrd. € weltweitem Jahresumsatz verarbeitet Kundendaten ohne Rechtsgrundlage.',
   'Wie hoch ist das höchstmögliche Bußgeld in Mio. €?',
-  'Verstöße gegen die Rechtsgrundlagen fallen unter den oberen Rahmen: bis 20 Mio. € oder 4 % des weltweiten Jahresumsatzes, je nachdem, welcher Betrag höher ist. 4 % × 2.000 Mio. € = 80 Mio. € > 20 Mio. € -> 80 Mio. €.',
+  'Verstöße gegen die Rechtsgrundlagen fallen unter den oberen Rahmen: bis 20 Mio. € oder 4 % des weltweiten Jahresumsatzes, je nachdem, welcher Betrag höher ist. 4 % × 2.000 Mio. € = 80 Mio. €. Das ist mehr als 20 Mio. €, also gilt die Obergrenze von 80 Mio. €.',
   2,
   '{}',
   null,
@@ -29217,7 +29218,7 @@ values (
   3,
   '{}',
   null,
-  '{"choices":[{"text":"Das Recht, keiner rein automatisierten Entscheidung unterworfen zu werden, und das Eingreifen eines Menschen zu verlangen (Art. 22)","is_correct":true,"rationale":"Entscheidungen mit rechtlicher oder ähnlich erheblicher Wirkung dürfen nicht allein ein Algorithmus treffen: Ausnahmen gelten nur mit Schutzmaßnahmen."},{"text":"Das Recht auf Datenübertragbarkeit (Art. 20)","is_correct":false,"rationale":"Es dient dem Anbieterwechsel, nicht der Überprüfung einer Entscheidung."},{"text":"Das Recht auf Berichtigung (Art. 16)","is_correct":false,"rationale":"Es setzt falsche Daten voraus, nicht eine automatisierte Entscheidung."},{"text":"Kein Recht, weil die Bank frei entscheiden darf","is_correct":false,"rationale":"Die Bank darf ablehnen, aber nicht ohne Weiteres allein per Algorithmus."}]}'::jsonb,
+  '{"choices":[{"text":"Das Recht, keiner rein automatisierten Entscheidung unterworfen zu werden und das Eingreifen eines Menschen zu verlangen (Art. 22)","is_correct":true,"rationale":"Entscheidungen mit rechtlicher oder ähnlich erheblicher Wirkung darf nicht allein ein Algorithmus treffen. Ausnahmen gelten nur mit Schutzmaßnahmen."},{"text":"Das Recht auf Datenübertragbarkeit (Art. 20)","is_correct":false,"rationale":"Es dient dem Anbieterwechsel, nicht der Überprüfung einer Entscheidung."},{"text":"Das Recht auf Berichtigung (Art. 16)","is_correct":false,"rationale":"Es setzt falsche Daten voraus, nicht eine automatisierte Entscheidung."},{"text":"Kein Recht, weil die Bank frei entscheiden darf","is_correct":false,"rationale":"Die Bank darf ablehnen, aber nicht ohne Weiteres allein per Algorithmus."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -29420,7 +29421,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Die Testdaten anonymisieren oder künstliche Testdaten erzeugen","is_correct":true,"rationale":"So enthält das weniger geschützte Testsystem keine echten personenbezogenen Daten."},{"text":"Die Kopie unverändert nutzen, weil sie im eigenen Haus bleibt","is_correct":false,"rationale":"Die Nutzung echter Kundendaten für Tests ist eine Zweckänderung und das Testsystem meist schlechter geschützt."},{"text":"Nur die Spalte „Name“ löschen","is_correct":false,"rationale":"Über Adresse, E-Mail oder Kundennummer bleiben die Kunden identifizierbar."},{"text":"Die Kopie mit AES verschlüsseln und so testen","is_correct":false,"rationale":"Zum Testen muss sie entschlüsselt werden. Der Personenbezug bleibt."}]}'::jsonb,
+  '{"choices":[{"text":"Die Testdaten anonymisieren oder künstliche Testdaten erzeugen","is_correct":true,"rationale":"So enthält das weniger geschützte Testsystem keine echten personenbezogenen Daten."},{"text":"Die Kopie unverändert nutzen, weil sie im eigenen Haus bleibt","is_correct":false,"rationale":"Die Nutzung echter Kundendaten für Tests ist eine Zweckänderung, und das Testsystem ist meist schlechter geschützt."},{"text":"Nur die Spalte „Name“ löschen","is_correct":false,"rationale":"Über Adresse, E-Mail oder Kundennummer bleiben die Kunden identifizierbar."},{"text":"Die Kopie mit AES verschlüsseln und so testen","is_correct":false,"rationale":"Zum Testen muss sie entschlüsselt werden. Der Personenbezug bleibt."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -29503,7 +29504,7 @@ values (
   'single',
   'Eine Kundendatenbank wird vollständig mit AES-256 verschlüsselt, bevor sie an einen Dienstleister geht. Der Schlüssel bleibt beim Unternehmen.',
   'Sind die Daten für das Unternehmen dadurch anonym?',
-  'Anonym sind Daten nur, wenn sich der Personenbezug mit keinen vernünftigen Mitteln mehr herstellen lässt. Verschlüsselte Daten sind mit dem Schlüssel wieder lesbar. Sie bleiben personenbezogen.',
+  'Anonym sind Daten nur, wenn sich der Personenbezug mit keinen vernünftigen Mitteln mehr herstellen lässt. Verschlüsselte Daten sind mit dem Schlüssel wieder lesbar und bleiben deshalb personenbezogen.',
   2,
   '{}',
   null,
@@ -29532,7 +29533,7 @@ values (
   'matching',
   null,
   'Ordne jede Maßnahme dem klassischen Kontrollziel zu.',
-  'Zutritt: Räume. Zugang: Systeme. Zugriff: Daten. Weitergabe: Übertragung. Eingabe: Nachvollziehbarkeit von Änderungen. Verfügbarkeit: Schutz vor Verlust.',
+  'Zutritt betrifft Räume, Zugang die Systeme und Zugriff die Daten. Die Weitergabekontrolle schützt die Übertragung, die Eingabekontrolle macht Änderungen nachvollziehbar, und die Verfügbarkeitskontrolle schützt vor Verlust.',
   2,
   '{}',
   null,
@@ -29735,7 +29736,7 @@ values (
   'single',
   'Ein Systemhaus verschickt seinen Frühjahrskatalog mit Preisen an alle Kunden. Eine Arztpraxis bestellt daraufhin per E-Mail drei Notebooks zum Katalogpreis. Das Systemhaus bestätigt den Auftrag am nächsten Tag.',
   'Welche Erklärung ist hier der Antrag?',
-  'Katalog = Aufforderung zum Antrag. Bestellung = Antrag. Auftragsbestätigung = Annahme. Mit der Annahme ist der Kaufvertrag geschlossen.',
+  'Der Katalog ist nur eine Aufforderung zum Antrag. Der Antrag ist die Bestellung, die Auftragsbestätigung ist die Annahme. Mit der Annahme ist der Kaufvertrag geschlossen.',
   2,
   '{}',
   null,
@@ -29822,7 +29823,7 @@ values (
   'single',
   'Ein Onlineshop zeigt ein Notebook wegen eines Eingabefehlers für 89 € statt 899 €. Ein Kunde bestellt sofort. Er erhält eine automatische E-Mail: „Vielen Dank, wir haben Ihre Bestellung erhalten.“',
   'Ist damit ein Kaufvertrag zustande gekommen?',
-  'Artikelseite = Aufforderung zum Antrag, Bestellung = Antrag, Eingangsbestätigung = nur Zugangsbestätigung (§ 312i BGB). Erst eine Auftrags- oder Versandbestätigung wäre die Annahme. Hätte der Shop angenommen, könnte er wegen des Eingabefehlers (Erklärungsirrtum) unverzüglich anfechten.',
+  'Die Artikelseite ist nur eine Aufforderung zum Antrag, die Bestellung ist der Antrag, und die Eingangsbestätigung bestätigt bloß den Zugang (§ 312i BGB). Erst eine Auftrags- oder Versandbestätigung wäre die Annahme. Hätte der Shop angenommen, könnte er wegen des Eingabefehlers (Erklärungsirrtum) unverzüglich anfechten.',
   2,
   '{}',
   null,
@@ -29855,7 +29856,7 @@ values (
   2,
   '{}',
   null,
-  '{"buckets":["nichtig","anfechtbar","wirksam"],"match_items":[{"text":"Zwei Personen verkaufen ein Grundstück per Handschlag, ohne Notar.","bucket":0,"rationale":"Die gesetzlich vorgeschriebene notarielle Form fehlt (§ 125 BGB)."},{"text":"Ein Kunde kauft Monitore und stellt später fest, dass er sie gar nicht braucht.","bucket":2,"rationale":"Motivirrtum: kein Anfechtungsgrund, der Vertrag bleibt wirksam."},{"text":"Ein Systemhaus hat intern falsch kalkuliert und merkt, dass der vereinbarte Preis zu niedrig ist.","bucket":2,"rationale":"Ein interner Kalkulationsirrtum ist ein Motivirrtum und berechtigt nicht zur Anfechtung."},{"text":"Ein 6-jähriges Kind kauft ein Videospiel für 60 €.","bucket":0,"rationale":"Unter 7 Jahren geschäftsunfähig, deshalb ist die Erklärung ist nichtig (§ 105 BGB)."},{"text":"Ein Verkäufer verschweigt bewusst einen reparierten Wasserschaden am Server.","bucket":1,"rationale":"Arglistige Täuschung nach § 123 BGB: anfechtbar innerhalb eines Jahres ab Entdeckung."},{"text":"Ein Händler tippt im Angebot 1.000 statt 100 Stück.","bucket":1,"rationale":"Erklärungsirrtum nach § 119 Abs. 1 BGB: unverzüglich anfechtbar."}]}'::jsonb,
+  '{"buckets":["nichtig","anfechtbar","wirksam"],"match_items":[{"text":"Zwei Personen verkaufen ein Grundstück per Handschlag, ohne Notar.","bucket":0,"rationale":"Die gesetzlich vorgeschriebene notarielle Form fehlt (§ 125 BGB)."},{"text":"Ein Kunde kauft Monitore und stellt später fest, dass er sie gar nicht braucht.","bucket":2,"rationale":"Ein Motivirrtum ist kein Anfechtungsgrund, der Vertrag bleibt wirksam."},{"text":"Ein Systemhaus hat intern falsch kalkuliert und merkt, dass der vereinbarte Preis zu niedrig ist.","bucket":2,"rationale":"Ein interner Kalkulationsirrtum ist ein Motivirrtum und berechtigt nicht zur Anfechtung."},{"text":"Ein 6-jähriges Kind kauft ein Videospiel für 60 €.","bucket":0,"rationale":"Unter 7 Jahren ist man geschäftsunfähig, deshalb ist die Erklärung nichtig (§ 105 BGB)."},{"text":"Ein Verkäufer verschweigt bewusst einen reparierten Wasserschaden am Server.","bucket":1,"rationale":"Arglistige Täuschung nach § 123 BGB: anfechtbar innerhalb eines Jahres ab Entdeckung."},{"text":"Ein Händler tippt im Angebot 1.000 statt 100 Stück.","bucket":1,"rationale":"Erklärungsirrtum nach § 119 Abs. 1 BGB: unverzüglich anfechtbar."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -29913,7 +29914,7 @@ values (
   3,
   '{}',
   null,
-  '{"choices":[{"text":"Unverzüglich die Anfechtung wegen Erklärungsirrtums erklären","is_correct":true,"rationale":"Ein Zahlendreher ist ein Erklärungsirrtum (§ 119 Abs. 1 BGB). Angefochten werden muss ohne schuldhaftes Zögern (§ 121 BGB)."},{"text":"Nichts. Der Vertrag ist wegen des falschen Preises automatisch nichtig","is_correct":false,"rationale":"Ein Irrtum macht den Vertrag nur anfechtbar. Ohne Anfechtung bleibt er wirksam."},{"text":"Sich ein Jahr Zeit lassen und dann anfechten","is_correct":false,"rationale":"Die Jahresfrist gilt nur bei arglistiger Täuschung und Drohung."},{"text":"Den Vertrag innerhalb von 14 Tagen widerrufen","is_correct":false,"rationale":"Ein Widerrufsrecht hat nur der Verbraucher im Fernabsatz, nicht der verkaufende Unternehmer."}]}'::jsonb,
+  '{"choices":[{"text":"Unverzüglich die Anfechtung wegen Erklärungsirrtums erklären","is_correct":true,"rationale":"Ein Zahlendreher ist ein Erklärungsirrtum (§ 119 Abs. 1 BGB). Angefochten werden muss ohne schuldhaftes Zögern (§ 121 BGB)."},{"text":"Nichts. Der Vertrag ist wegen des falschen Preises automatisch nichtig","is_correct":false,"rationale":"Ein Irrtum macht den Vertrag nur anfechtbar. Ohne Anfechtung bleibt er wirksam."},{"text":"Sich ein Jahr Zeit lassen und dann anfechten","is_correct":false,"rationale":"Die Jahresfrist gilt nur bei arglistiger Täuschung und Drohung."},{"text":"Den Vertrag innerhalb von 14 Tagen widerrufen","is_correct":false,"rationale":"Ein Widerrufsrecht hat nur ein Verbraucher, etwa im Fernabsatz, nicht der verkaufende Unternehmer."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -29938,7 +29939,7 @@ values (
   'single',
   'Die Skizze zeigt den Schriftverkehr zwischen einem Händler und einem Kunden.',
   'Mit welcher Erklärung kommt der Vertrag zustande?',
-  'Verspätete Annahme = neuer Antrag (§ 150 Abs. 1 BGB). Deshalb ist hier die Bestellung vom 05.05. der Antrag und die Auftragsbestätigung die Annahme. Hätte der Kunde bis 30.04. bestellt, wäre schon die Bestellung die Annahme gewesen.',
+  'Eine verspätete Annahme gilt als neuer Antrag (§ 150 Abs. 1 BGB). Deshalb ist hier die Bestellung vom 05.05. der Antrag und die Auftragsbestätigung die Annahme. Hätte der Kunde bis 30.04. bestellt, wäre schon die Bestellung die Annahme gewesen.',
   2,
   '{}',
   null,
@@ -29967,7 +29968,7 @@ values (
   'matching',
   null,
   'Ordne jede Vereinbarung der passenden Vertragsart zu.',
-  'Eigentum oder dauerhafte Überlassung -> Kauf. Erfolg geschuldet -> Werk. Tätigkeit geschuldet -> Dienst. Gebrauch auf Zeit gegen Entgelt -> Miete.',
+  'Frag dich, was geschuldet wird: Eigentum oder dauerhafte Überlassung spricht für Kauf, ein Erfolg für den Werkvertrag, die bloße Tätigkeit für den Dienstvertrag und Gebrauch auf Zeit gegen Entgelt für Miete.',
   2,
   '{}',
   null,
@@ -29996,7 +29997,7 @@ values (
   'single',
   'Ein Softwarehaus bucht eine freiberufliche Entwicklerin: „Unterstützung des Entwicklungsteams, 40 Stunden pro Woche, Abrechnung nach geleisteten Stunden.“ Ein bestimmtes Ergebnis wird nicht vereinbart.',
   'Welche Vertragsart liegt vor?',
-  'Entscheidend ist, was geschuldet wird: Hier nur die Arbeitsleistung, kein Ergebnis. Deshalb Dienstvertrag, ohne Abnahme, vergütet nach Stunden.',
+  'Entscheidend ist, was geschuldet wird. Hier ist es nur die Arbeitsleistung, kein Ergebnis. Deshalb liegt ein Dienstvertrag vor: ohne Abnahme, vergütet nach Stunden.',
   2,
   '{}',
   null,
@@ -30054,7 +30055,7 @@ values (
   'cloze',
   null,
   'Ergänze die Aussagen zum Werkvertrag.',
-  'Werkvertrag: Erfolg geschuldet, Abnahme, Vergütung bei Abnahme, Nacherfüllung nach Wahl des Unternehmers. Wird nur Tätigkeit geschuldet, ist es ein Dienstvertrag; wird eine bewegliche Sache hergestellt und geliefert, gilt Kaufrecht.',
+  'Beim Werkvertrag ist ein Erfolg geschuldet. Die Vergütung wird mit der Abnahme fällig, und über die Art der Nacherfüllung entscheidet der Unternehmer. Wird nur Tätigkeit geschuldet, ist es ein Dienstvertrag; wird eine bewegliche Sache hergestellt und geliefert, gilt Kaufrecht.',
   2,
   '{}',
   null,
@@ -30083,7 +30084,7 @@ values (
   'matching',
   null,
   'Ordne jede Vereinbarung der passenden Vertragsart zu.',
-  'Leihe = Gebrauch unentgeltlich. Pacht = Gebrauch und Erträge gegen Entgelt. Darlehen = Geld oder vertretbare Sachen auf Zeit. Leasing = vom Leasinggeber finanzierte Gebrauchsüberlassung, nicht eigens im BGB geregelt.',
+  'Bei der Leihe ist der Gebrauch unentgeltlich. Die Pacht umfasst Gebrauch und Erträge gegen Entgelt. Beim Darlehen gibt es Geld oder vertretbare Sachen auf Zeit. Leasing ist eine vom Leasinggeber finanzierte Gebrauchsüberlassung und im BGB nicht eigens geregelt.',
   2,
   '{}',
   null,
@@ -30344,7 +30345,7 @@ values (
   'single',
   'Ein SLA sieht eine Servicezeit von Montag bis Freitag, 8 bis 18 Uhr vor und eine Reaktionszeit von 2 Stunden. Die Reaktionszeit zählt nur innerhalb der Servicezeit. Eine Störung wird am Freitag um 17:30 Uhr gemeldet.',
   'Bis wann muss der Dienstleister spätestens reagieren?',
-  'Reaktionszeit wird nur in der Servicezeit gezählt: Freitag 17:30 bis 18:00 = 30 min, Rest 120 - 30 = 90 min ab Montag 8:00 -> Montag 9:30 Uhr.',
+  'Die Reaktionszeit zählt nur in der Servicezeit. Am Freitag laufen von 17:30 bis 18:00 Uhr 30 min. Der Rest von 120 min − 30 min = 90 min läuft ab Montag 8:00 Uhr, also bis Montag 9:30 Uhr.',
   2,
   '{}',
   null,
@@ -30518,7 +30519,7 @@ values (
   'matching',
   'Ein IT-Dienstleister betreibt den Webshop eines Kunden.',
   'Um welche Art von Vereinbarung handelt es sich jeweils?',
-  'SLA = Dienstleister ↔ Kunde. OLA = zwischen internen Einheiten des Dienstleisters. UC = Dienstleister ↔ externer Lieferant. OLA und UC müssen strengere Werte haben als das SLA, damit es gehalten werden kann.',
+  'Ein SLA schließt der Dienstleister mit dem Kunden. Ein OLA gilt zwischen internen Einheiten des Dienstleisters, ein UC (Underpinning Contract) zwischen Dienstleister und externem Lieferanten. OLA und UC müssen strengere Werte haben als das SLA, damit es gehalten werden kann.',
   2,
   '{}',
   null,
@@ -30634,11 +30635,11 @@ values (
   'single',
   'Die Prioritätsmatrix eines Service Desks kombiniert Auswirkung (hoch, mittel, niedrig) und Dringlichkeit (hoch, mittel, niedrig) zu P1 bis P5: hoch/hoch = P1, mittel/mittel = P3, niedrig/niedrig = P5. Der Drucker einer Abteilung mit 15 Personen fällt aus. Im Nachbarflur steht ein Ausweichdrucker, die Druckaufträge sind nicht zeitkritisch.',
   'Welche Priorität bekommt das Ticket?',
-  'In der 3×3-Matrix steigt die Nummer mit jeder Stufe, die Auswirkung oder Dringlichkeit niedriger ist: hoch/hoch P1, mittel/mittel P3, mittel/niedrig P4, niedrig/niedrig P5. Hier: Auswirkung mittel, Dringlichkeit niedrig -> P4.',
+  'In der 3×3-Matrix steigt die Nummer mit jeder Stufe, die Auswirkung oder Dringlichkeit niedriger ist: hoch/hoch P1, mittel/mittel P3, mittel/niedrig P4, niedrig/niedrig P5. Hier ist die Auswirkung mittel und die Dringlichkeit niedrig, das ergibt P4.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"P4","is_correct":true,"rationale":"Eine Abteilung ist betroffen (Auswirkung mittel), es gibt eine Ausweichmöglichkeit und keine Eile (Dringlichkeit niedrig) -> mittel × niedrig = P4."},{"text":"P2","is_correct":false,"rationale":"P2 wäre hoch × mittel oder mittel × hoch; dafür fehlt die Dringlichkeit."},{"text":"P3","is_correct":false,"rationale":"P3 wäre mittel × mittel. Durch den Ausweichdrucker ist die Dringlichkeit aber niedrig."},{"text":"P5","is_correct":false,"rationale":"P5 wäre niedrig × niedrig. Mit 15 Personen ist mehr als ein Einzelner betroffen."}]}'::jsonb,
+  '{"choices":[{"text":"P4","is_correct":true,"rationale":"Eine Abteilung ist betroffen (Auswirkung mittel), es gibt eine Ausweichmöglichkeit und keine Eile (Dringlichkeit niedrig). Mittel × niedrig ergibt P4."},{"text":"P2","is_correct":false,"rationale":"P2 wäre hoch × mittel oder mittel × hoch; dafür fehlt die Dringlichkeit."},{"text":"P3","is_correct":false,"rationale":"P3 wäre mittel × mittel. Durch den Ausweichdrucker ist die Dringlichkeit aber niedrig."},{"text":"P5","is_correct":false,"rationale":"P5 wäre niedrig × niedrig. Mit 15 Personen ist mehr als ein Einzelner betroffen."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -30663,7 +30664,7 @@ values (
   'ordering',
   'Eine Anwenderin ruft beim Service Desk an: Ihr ERP-Client meldet beim Start einen Datenbankfehler.',
   'Bringe die Bearbeitung des Tickets in die richtige Reihenfolge.',
-  'Erfassen, kategorisieren und priorisieren macht der 1st Level. Kann er nicht lösen, eskaliert er funktional. Das Ticket bleibt offen und behält seine Historie. Geschlossen wird erst nach bestätigter Lösung.',
+  'Der 1st Level erfasst, kategorisiert und priorisiert das Ticket. Kann er die Störung nicht lösen, eskaliert er funktional. Das Ticket bleibt offen und behält seine Historie. Geschlossen wird erst nach bestätigter Lösung.',
   1,
   '{}',
   null,
@@ -30692,7 +30693,7 @@ values (
   'matching',
   null,
   'Welches Support-Level ist jeweils zuständig?',
-  'Level 0: Self-Service. 1st Level: Service Desk mit Standardlösungen. 2nd Level: interne Fachspezialisten. 3rd Level: Hersteller oder Entwicklung, wenn das Produkt selbst geändert werden muss.',
+  'Level 0 ist der Self-Service. Im 1st Level arbeitet der Service Desk mit Standardlösungen, im 2nd Level sitzen interne Fachspezialisten. Der 3rd Level ist der Hersteller oder die Entwicklung und kommt ins Spiel, wenn das Produkt selbst geändert werden muss.',
   1,
   '{}',
   null,
@@ -30779,7 +30780,7 @@ values (
   'matching',
   null,
   'Ordne jeden Vorgang dem passenden ITIL-Begriff zu.',
-  'Incident = Störung, schnell wiederherstellen. Problem = Ursache finden. Change = kontrollierte Änderung. Service Request = Standardanfrage ohne Störung.',
+  'Ein Incident ist eine Störung, bei der der Service schnell wiederhergestellt werden muss. Beim Problem geht es um die Ursache, beim Change um eine kontrollierte Änderung. Ein Service Request ist eine Standardanfrage ohne Störung.',
   2,
   '{}',
   null,
@@ -30899,7 +30900,7 @@ values (
   2,
   '{}',
   null,
-  '{"buckets":["Standard Change","Normal Change","Emergency Change"],"match_items":[{"text":"Sofort einen Sicherheitspatch für eine aktiv ausgenutzte Lücke einspielen","bucket":2,"rationale":"Muss sofort passieren, also beschleunigte Genehmigung."},{"text":"Ein Standard-Notebook für eine neue Mitarbeiterin nach Checkliste einrichten","bucket":0,"rationale":"Häufig, risikoarm, vorab genehmigt."},{"text":"Eine neue Firewall-Architektur einführen","bucket":1,"rationale":"Größere geplante Änderung mit Bewertung."},{"text":"Das ERP-System auf einen neuen Datenbankserver migrieren","bucket":1,"rationale":"Geplant, riskant: muss einzeln bewertet und genehmigt werden."},{"text":"Die monatlich freigegebenen Updates der Virenschutz-Signaturen einspielen","bucket":0,"rationale":"Wiederkehrend und vorab freigegeben."}]}'::jsonb,
+  '{"buckets":["Standard Change","Normal Change","Emergency Change"],"match_items":[{"text":"Sofort einen Sicherheitspatch für eine aktiv ausgenutzte Lücke einspielen","bucket":2,"rationale":"Muss sofort passieren, also beschleunigte Genehmigung."},{"text":"Ein Standard-Notebook für eine neue Mitarbeiterin nach Checkliste einrichten","bucket":0,"rationale":"Häufig, risikoarm, vorab genehmigt."},{"text":"Eine neue Firewall-Architektur einführen","bucket":1,"rationale":"Größere geplante Änderung mit Bewertung."},{"text":"Das ERP-System auf einen neuen Datenbankserver migrieren","bucket":1,"rationale":"Geplant, aber riskant. Sie muss einzeln bewertet und genehmigt werden."},{"text":"Die monatlich freigegebenen Updates der Virenschutz-Signaturen einspielen","bucket":0,"rationale":"Wiederkehrend und vorab freigegeben."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -31127,7 +31128,7 @@ values (
   'numeric',
   'Ein Privatkunde zahlt die Rechnung eines Computerladens über 2.920 € 60 Tage zu spät. Nimm für diese Aufgabe einen Basiszinssatz von 1,5 % an.',
   'Wie hoch sind die Verzugszinsen? (Zins = Betrag × Satz × Tage / 365, auf Cent runden)',
-  'Ein Verbraucher ist beteiligt -> 1,5 % + 5 Prozentpunkte = 6,5 %. Zins = 2.920 € × 0,065 × 60 / 365 = 189,80 € × 60 / 365 = 11.388 € / 365 = 31,20 €. Eine 40-€-Pauschale gibt es gegenüber Verbrauchern nicht.',
+  'Weil ein Verbraucher beteiligt ist, gilt: 1,5 % + 5 Prozentpunkte = 6,5 %. Zins = 2.920 € × 0,065 × 60 / 365 = 189,80 € × 60 / 365 = 11.388 € / 365 = 31,20 €. Eine 40-€-Pauschale gibt es gegenüber Verbrauchern nicht.',
   2,
   '{}',
   null,
@@ -31156,11 +31157,11 @@ values (
   'single',
   'Ein Systemhaus schickt einem Maschinenbauunternehmen eine sofort fällige Rechnung, die am 1. Juni zugeht. Im Vertrag ist kein Zahlungstermin vereinbart, und das Systemhaus mahnt nicht.',
   'Ab wann ist das Unternehmen spätestens im Zahlungsverzug?',
-  'Nach § 286 Abs. 3 BGB kommt der Schuldner einer Geldforderung spätestens in Verzug, wenn er nicht innerhalb von 30 Tagen nach Fälligkeit und Zugang der Rechnung zahlt. Da ein Unternehmen zahlt, ist kein Hinweis in der Rechnung nötig. Zugang 1. Juni -> Fristende 1. Juli -> Verzug ab 2. Juli.',
+  'Nach § 286 Abs. 3 BGB kommt der Schuldner einer Entgeltforderung spätestens in Verzug, wenn er nicht innerhalb von 30 Tagen nach Fälligkeit und Zugang der Rechnung zahlt. Da ein Unternehmen zahlt, ist kein Hinweis in der Rechnung nötig. Die Rechnung geht am 1. Juni zu, die Frist endet am 1. Juli, der Verzug beginnt am 2. Juli.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Ab dem 2. Juli","is_correct":true,"rationale":"Die 30-Tage-Frist läuft vom 2. Juni bis zum 1. Juli. Ab dem 2. Juli ist das Unternehmen in Verzug."},{"text":"Ab dem 2. Juni","is_correct":false,"rationale":"Ohne Mahnung oder vereinbarten Termin tritt Verzug nicht schon am Tag nach Zugang ein."},{"text":"Ab dem 1. August","is_correct":false,"rationale":"Die Frist beträgt 30 Tage, nicht zwei Monate."},{"text":"Gar nicht, solange nicht gemahnt wurde","is_correct":false,"rationale":"Für Geldforderungen gilt die 30-Tage-Regel auch ohne Mahnung (§ 286 Abs. 3 BGB)."}]}'::jsonb,
+  '{"choices":[{"text":"Ab dem 2. Juli","is_correct":true,"rationale":"Die 30-Tage-Frist läuft vom 2. Juni bis zum 1. Juli. Ab dem 2. Juli ist das Unternehmen in Verzug."},{"text":"Ab dem 2. Juni","is_correct":false,"rationale":"Ohne Mahnung oder vereinbarten Termin tritt Verzug nicht schon am Tag nach Zugang ein."},{"text":"Ab dem 1. August","is_correct":false,"rationale":"Die Frist beträgt 30 Tage, nicht zwei Monate."},{"text":"Gar nicht, solange nicht gemahnt wurde","is_correct":false,"rationale":"Für Entgeltforderungen gilt die 30-Tage-Regel auch ohne Mahnung (§ 286 Abs. 3 BGB)."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -31214,7 +31215,7 @@ values (
   'matching',
   null,
   'Ordne jeden Mangel nach seiner Erkennbarkeit ein.',
-  'Offen: sofort erkennbar. Versteckt: zeigt sich erst später. Arglistig verschwiegen: Der Verkäufer kannte den Mangel und hat ihn bewusst nicht offengelegt.',
+  'Ein offener Mangel ist sofort erkennbar, ein versteckter zeigt sich erst später. Arglistig verschwiegen ist ein Mangel, den der Verkäufer kannte und bewusst nicht offengelegt hat.',
   2,
   '{}',
   null,
@@ -31272,7 +31273,7 @@ values (
   'matching',
   null,
   'Gehört das Merkmal zur Gewährleistung oder zur Garantie?',
-  'Gewährleistung ist gesetzlich, richtet sich gegen den Verkäufer und läuft bei neuen Sachen 2 Jahre. Die Garantie ist freiwillig und kommt zusätzlich hinzu. Beim Handelskauf gilt außerdem die unverzügliche Rügepflicht nach § 377 HGB.',
+  'Gewährleistung ist gesetzlich, richtet sich gegen den Verkäufer und läuft bei neuen Sachen 2 Jahre. Die Garantie ist freiwillig und kommt hinzu. Beim Handelskauf gilt außerdem die unverzügliche Rügepflicht nach § 377 HGB.',
   2,
   '{}',
   null,
@@ -31330,11 +31331,11 @@ values (
   'matching',
   null,
   'Ordne jeden Fall der passenden Mangelart zu.',
-  'Sachmangel: vereinbarte oder übliche Beschaffenheit fehlt (§ 434 BGB). Montagemangel: fehlerhafte Montage oder Montageanleitung. Falsch- und Zuweniglieferung stehen einem Sachmangel gleich. Rechtsmangel: Dritte haben Rechte an der Sache (§ 435 BGB).',
+  'Ein Sachmangel liegt vor, wenn die vereinbarte oder übliche Beschaffenheit fehlt (§ 434 BGB). Beim Montagemangel ist die Montage oder die Montageanleitung fehlerhaft. Auch Falsch- und Zuweniglieferung gelten als Sachmangel. Beim Rechtsmangel haben Dritte Rechte an der Sache (§ 435 BGB).',
   2,
   '{}',
   null,
-  '{"buckets":["Sachmangel (Beschaffenheit)","Montagemangel","Falsch- oder Zuweniglieferung","Rechtsmangel"],"match_items":[{"text":"Eine Office-Suite wird mit einem gefälschten Lizenzschlüssel verkauft.","bucket":3,"rationale":"Der Rechteinhaber kann die Nutzung untersagen: Recht eines Dritten."},{"text":"Ein Notebook hat 8 statt der vereinbarten 16 GB RAM.","bucket":0,"rationale":"Die vereinbarte Beschaffenheit fehlt."},{"text":"Statt Druckermodell A wird Modell B geliefert.","bucket":2,"rationale":"Eine andere als die geschuldete Sache."},{"text":"Der Techniker des Verkäufers baut die Netzwerkkarte falsch ein, der Server startet nicht.","bucket":1,"rationale":"Unsachgemäße Montage durch den Verkäufer."},{"text":"Beworben sind 10 Stunden Akkulaufzeit, tatsächlich sind es 3.","bucket":0,"rationale":"Die Sache hält nicht, was die Werbung verspricht: objektive Anforderung verfehlt."},{"text":"Statt 10 Switches werden 8 geliefert.","bucket":2,"rationale":"Zu geringe Menge."}]}'::jsonb,
+  '{"buckets":["Sachmangel (Beschaffenheit)","Montagemangel","Falsch- oder Zuweniglieferung","Rechtsmangel"],"match_items":[{"text":"Eine Office-Suite wird mit einem gefälschten Lizenzschlüssel verkauft.","bucket":3,"rationale":"Der Rechteinhaber kann die Nutzung untersagen: Recht eines Dritten."},{"text":"Ein Notebook hat 8 statt der vereinbarten 16 GB RAM.","bucket":0,"rationale":"Die vereinbarte Beschaffenheit fehlt."},{"text":"Statt Druckermodell A wird Modell B geliefert.","bucket":2,"rationale":"Eine andere als die geschuldete Sache."},{"text":"Der Techniker des Verkäufers baut die Netzwerkkarte falsch ein, der Server startet nicht.","bucket":1,"rationale":"Unsachgemäße Montage durch den Verkäufer."},{"text":"Beworben sind 10 Stunden Akkulaufzeit, tatsächlich sind es 3.","bucket":0,"rationale":"Die Sache hält nicht, was die Werbung verspricht. Damit verfehlt sie die objektiven Anforderungen."},{"text":"Statt 10 Switches werden 8 geliefert.","bucket":2,"rationale":"Zu geringe Menge."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -31388,7 +31389,7 @@ values (
   'multiple',
   'Eine Privatperson kauft bei einem Elektronikhändler ein neues Smartphone.',
   'Welche Aussagen sind richtig?',
-  'Verbrauchsgüterkauf: 2 Jahre Gewährleistung, Beweislastumkehr im ersten Jahr, Update-Pflicht bei digitalen Elementen, kein Ausschluss per AGB. Eine Herstellergarantie ist freiwillig und kommt zusätzlich hinzu und verkürzt die Gewährleistung nicht.',
+  'Verbrauchsgüterkauf: 2 Jahre Gewährleistung, Beweislastumkehr im ersten Jahr, Update-Pflicht bei digitalen Elementen, kein Ausschluss per AGB. Eine Herstellergarantie ist freiwillig. Sie kommt hinzu und verkürzt die Gewährleistung nicht.',
   2,
   '{}',
   null,
@@ -31852,11 +31853,11 @@ values (
   'matching',
   null,
   'Welche Ursache steckt hinter der Aussage?',
-  'Nicht wissen -> informieren. Nicht können -> schulen. Nicht wollen -> beteiligen, Vorteile zeigen. Nicht dürfen -> Befugnisse und Rahmen klären.',
+  'Zu jeder Ursache gehört eine Maßnahme: Wer nicht weiß, wird informiert. Wer nicht kann, wird geschult. Wer nicht will, wird beteiligt und sieht die Vorteile. Wer nicht darf, braucht geklärte Befugnisse.',
   2,
   '{}',
   null,
-  '{"buckets":["nicht wissen","nicht können","nicht wollen","nicht dürfen"],"match_items":[{"text":"„Mir hat niemand erklärt, warum wir überhaupt wechseln.“","bucket":0,"rationale":"Es fehlt Information."},{"text":"„Ich finde mich in der neuen Oberfläche einfach nicht zurecht.“","bucket":1,"rationale":"Es fehlen Fähigkeiten: Schulung hilft."},{"text":"„Ich würde Tickets gern selbst schließen, habe aber keine Berechtigung dazu.“","bucket":3,"rationale":"Es fehlt die Befugnis."},{"text":"„Meine Excel-Liste gebe ich nicht auf, egal was das neue System kann.“","bucket":2,"rationale":"Es fehlt die Bereitschaft."}]}'::jsonb,
+  '{"buckets":["nicht wissen","nicht können","nicht wollen","nicht dürfen"],"match_items":[{"text":"„Mir hat niemand erklärt, warum wir überhaupt wechseln.“","bucket":0,"rationale":"Es fehlt Information."},{"text":"„Ich finde mich in der neuen Oberfläche einfach nicht zurecht.“","bucket":1,"rationale":"Es fehlen Fähigkeiten, hier hilft eine Schulung."},{"text":"„Ich würde Tickets gern selbst schließen, habe aber keine Berechtigung dazu.“","bucket":3,"rationale":"Es fehlt die Befugnis."},{"text":"„Meine Excel-Liste gebe ich nicht auf, egal was das neue System kann.“","bucket":2,"rationale":"Es fehlt die Bereitschaft."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -31968,7 +31969,7 @@ values (
   'table',
   'Bei der Einführung eines neuen ERP-Systems äußern sich vier Mitarbeitende.',
   'Bestimme zu jeder Aussage die Ursache des Widerstands und die passende Maßnahme.',
-  'Widerstand ist ein Signal, das man entschlüsseln muss: Nicht wissen -> informieren. Nicht können -> schulen. Nicht wollen -> beteiligen, Vorteile zeigen. Nicht dürfen -> Befugnisse und Rahmen klären. Anordnung und Sanktion sind das letzte Mittel.',
+  'Widerstand ist ein Signal, das man entschlüsseln muss. Wer nicht weiß, wird informiert. Wer nicht kann, wird geschult. Wer nicht will, wird beteiligt und sieht die Vorteile. Wer nicht darf, braucht geklärte Befugnisse. Anordnung und Sanktion sind das letzte Mittel.',
   1,
   '{}',
   null,
@@ -32055,7 +32056,7 @@ values (
   'ordering',
   'Im Service Desk dauert das Anlegen neuer Benutzerkonten zu lange.',
   'Bringe die Schritte des PDCA-Zyklus in die richtige Reihenfolge.',
-  'Plan: Ursache und Ziel festlegen. Do: im kleinen Rahmen ausprobieren. Check: Ergebnis messen. Act: Erfolgreiches standardisieren und weiter verbessern.',
+  'In Plan legst du Ursache und Ziel fest, in Do probierst du die Lösung im kleinen Rahmen aus. In Check misst du das Ergebnis, in Act wird Erfolgreiches zum Standard und der nächste Zyklus beginnt.',
   2,
   '{}',
   null,
@@ -32233,7 +32234,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Eine solche Umstellung hat das Autohaus noch nie durchgeführt.","is_correct":true,"rationale":"Einmaligkeit bzw. Neuartigkeit, also das Kernmerkmal eines Projekts."},{"text":"Die Telefonanlage wird an jedem Werktag von 7 bis 18 Uhr genutzt.","is_correct":false,"rationale":"Beschreibt den laufenden Betrieb, kein Merkmal des Vorhabens."},{"text":"Am 30.09. müssen alle 42 Nebenstellen umgestellt sein.","is_correct":true,"rationale":"Klares Ziel mit festem Endtermin, also zeitliche Begrenzung."},{"text":"Für das Vorhaben stehen 18.000 € und 25 Personentage bereit.","is_correct":true,"rationale":"Begrenzte finanzielle und personelle Ressourcen."},{"text":"Der Support setzt jede Woche vergessene Mailbox-PINs zurück.","is_correct":false,"rationale":"Wiederkehrende Routine, also eine Linienaufgabe."},{"text":"IT, Verkauf und Werkstatt bilden für die Dauer der Umstellung ein eigenes Team mit Projektleiterin.","is_correct":true,"rationale":"Projektspezifische Organisation auf Zeit."},{"text":"Der Vertrag mit dem bisherigen Anbieter läuft seit 2015.","is_correct":false,"rationale":"Eine Information zur Ausgangslage, kein Projektmerkmal."}],"points":4}'::jsonb,
+  '{"choices":[{"text":"Eine solche Umstellung hat das Autohaus noch nie durchgeführt.","is_correct":true,"rationale":"Einmaligkeit bzw. Neuartigkeit, also das Kernmerkmal eines Projekts."},{"text":"Die Telefonanlage wird an jedem Werktag von 7 bis 18 Uhr genutzt.","is_correct":false,"rationale":"Das beschreibt den laufenden Betrieb und ist kein Merkmal des Vorhabens."},{"text":"Am 30.09. müssen alle 42 Nebenstellen umgestellt sein.","is_correct":true,"rationale":"Klares Ziel mit festem Endtermin, also zeitliche Begrenzung."},{"text":"Für das Vorhaben stehen 18.000 € und 25 Personentage bereit.","is_correct":true,"rationale":"Begrenzte finanzielle und personelle Ressourcen."},{"text":"Der Support setzt jede Woche vergessene Mailbox-PINs zurück.","is_correct":false,"rationale":"Wiederkehrende Routine, also eine Linienaufgabe."},{"text":"IT, Verkauf und Werkstatt bilden für die Dauer der Umstellung ein eigenes Team mit Projektleiterin.","is_correct":true,"rationale":"Projektspezifische Organisation auf Zeit."},{"text":"Der Vertrag mit dem bisherigen Anbieter läuft seit 2015.","is_correct":false,"rationale":"Eine Information zur Ausgangslage, kein Projektmerkmal."}],"points":4}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -32287,7 +32288,7 @@ values (
   'table',
   'Die IT-Abteilung der Spedition Vogt listet ihre Vorhaben für das nächste Quartal auf.',
   'Ordne jedes Vorhaben ein und wähle das Merkmal, das den Ausschlag gibt.',
-  'Die Softwareeinführung und der Serverraum-Umzug sind einmalig und haben einen Endtermin, also Projekte. Backup-Kontrolle und Gerätebetreuung wiederholen sich bzw. laufen dauerhaft, also Linienaufgaben. Ein Meilenstein ist ein Zeitpunkt, kein Vorhaben.',
+  'Die Softwareeinführung und der Serverraum-Umzug sind einmalig und haben einen Endtermin, es sind also Projekte. Backup-Kontrolle und Gerätebetreuung wiederholen sich oder laufen dauerhaft und sind deshalb Linienaufgaben. Ein Meilenstein ist ein Zeitpunkt, kein Vorhaben.',
   1,
   '{}',
   null,
@@ -32345,7 +32346,7 @@ values (
   'cloze',
   'Projekt „Neue Kassen“ bei Kornblum: 36 Kassen, Budget 54.000 €, Fertigstellung bis 30.06. Im Mai verlangt die Geschäftsführung zusätzlich Selbstbedienungskassen in vier Filialen.',
   'Ergänze die Auswertung nach dem magischen Dreieck.',
-  'Leistung, Zeit und Kosten hängen zusammen: Wächst die Leistung, muss eine andere Ecke nachgeben: Mehr Kosten oder ein späterer Termin. Sonst sinkt die Qualität. Gegen Scope Creep helfen Nicht-Ziele und ein formales Änderungsverfahren.',
+  'Leistung, Zeit und Kosten hängen zusammen. Wächst die Leistung, muss eine andere Ecke nachgeben: Die Kosten steigen oder der Termin rückt nach hinten. Sonst sinkt die Qualität. Gegen Scope Creep helfen Nicht-Ziele und ein formales Änderungsverfahren.',
   2,
   '{}',
   null,
@@ -32410,7 +32411,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Ab 01.09. werden 100 % der Bestellungen im neuen System erfasst.","is_correct":true,"rationale":"Kennzahl (100 %) und Termin (01.09.) sind genannt."},{"text":"Die Bestellung soll deutlich einfacher werden.","is_correct":false,"rationale":"Weder Messgröße noch Termin."},{"text":"Bis 30.11. sinkt die Fehlerquote bei Bestellungen von 6 % auf höchstens 2 %.","is_correct":true,"rationale":"Messbar über die Fehlerquote und terminiert."},{"text":"Wir führen eine Bestell-App ein.","is_correct":false,"rationale":"Eine Maßnahme: Sie beschreibt den Weg, keinen prüfbaren Zustand."},{"text":"Die Lieferanten sollen möglichst bald angebunden sein.","is_correct":false,"rationale":"„Möglichst bald“ ist kein Termin, eine Kennzahl fehlt."},{"text":"Bis 15.10. sind alle 24 Mitarbeitenden der Küche geschult.","is_correct":true,"rationale":"Anzahl und Datum machen das Ziel prüfbar."},{"text":"Bis 31.12. ist das Bestellwesen spürbar schneller.","is_correct":false,"rationale":"Terminiert, aber „spürbar schneller“ lässt sich nicht messen."}],"points":3}'::jsonb,
+  '{"choices":[{"text":"Ab 01.09. werden 100 % der Bestellungen im neuen System erfasst.","is_correct":true,"rationale":"Kennzahl (100 %) und Termin (01.09.) sind genannt."},{"text":"Die Bestellung soll deutlich einfacher werden.","is_correct":false,"rationale":"Es fehlen Messgröße und Termin."},{"text":"Bis 30.11. sinkt die Fehlerquote bei Bestellungen von 6 % auf höchstens 2 %.","is_correct":true,"rationale":"Messbar über die Fehlerquote und terminiert."},{"text":"Wir führen eine Bestell-App ein.","is_correct":false,"rationale":"Das ist eine Maßnahme. Sie beschreibt den Weg, keinen prüfbaren Zustand."},{"text":"Die Lieferanten sollen möglichst bald angebunden sein.","is_correct":false,"rationale":"„Möglichst bald“ ist kein Termin, eine Kennzahl fehlt."},{"text":"Bis 15.10. sind alle 24 Mitarbeitenden der Küche geschult.","is_correct":true,"rationale":"Anzahl und Datum machen das Ziel prüfbar."},{"text":"Bis 31.12. ist das Bestellwesen spürbar schneller.","is_correct":false,"rationale":"Terminiert, aber „spürbar schneller“ lässt sich nicht messen."}],"points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -32439,7 +32440,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":5,"criteria":[{"text":"Matrix-Projektorganisation","points":1,"keywords":["Matrix"]},{"text":"Die Fachleute arbeiten nur anteilig (40 %) mit und bleiben in ihren Abteilungen: Das Team wird nicht aus der Linie herausgelöst.","points":2,"keywords":["anteilig","40 %","bleiben in der Linie","Teilzeit","Abteilung","nicht herausgelöst"]},{"text":"Die Projektleiterin braucht fachliche Weisungsbefugnis; in der Stabs-/Einflussorganisation hätte sie keine.","points":2,"keywords":["fachliche Weisung","Weisungsbefugnis","durchsetzen","verbindlich"]},{"text":"Eine reine Projektorganisation wäre zu aufwendig, weil die Abteilungen die Fachleute weiter brauchen.","points":2,"keywords":["reine Projektorganisation","zu aufwendig","herauslösen","Vollzeit"]}],"sample_solution":"Es passt die Matrix-Projektorganisation. Die sechs Fachleute arbeiten nur zu 40 % mit und bleiben in ihren Abteilungen; eine reine Projektorganisation, die sie ganz herauslöst, wäre zu aufwendig. Zugleich braucht die Projektleiterin fachliche Weisungsbefugnis, um Aufgaben und Termine verbindlich vorzugeben. Die hätte sie in der Stabs-/Einflussorganisation nicht."}'::jsonb,
+  '{"points":5,"criteria":[{"text":"Matrix-Projektorganisation","points":1,"keywords":["Matrix"]},{"text":"Die Fachleute arbeiten nur anteilig (40 %) mit und bleiben in ihren Abteilungen, das Team wird also nicht aus der Linie herausgelöst.","points":2,"keywords":["anteilig","40 %","bleiben in der Linie","Teilzeit","Abteilung","nicht herausgelöst"]},{"text":"Die Projektleiterin braucht fachliche Weisungsbefugnis; in der Stabs-/Einflussorganisation hätte sie keine.","points":2,"keywords":["fachliche Weisung","Weisungsbefugnis","durchsetzen","verbindlich"]},{"text":"Eine reine Projektorganisation wäre zu aufwendig, weil die Abteilungen die Fachleute weiter brauchen.","points":2,"keywords":["reine Projektorganisation","zu aufwendig","herauslösen","Vollzeit"]}],"sample_solution":"Es passt die Matrix-Projektorganisation. Die sechs Fachleute arbeiten nur zu 40 % mit und bleiben in ihren Abteilungen; eine reine Projektorganisation, die sie ganz herauslöst, wäre zu aufwendig. Zugleich braucht die Projektleiterin fachliche Weisungsbefugnis, um Aufgaben und Termine verbindlich vorzugeben. Die hätte sie in der Stabs-/Einflussorganisation nicht."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -32464,7 +32465,7 @@ values (
   'cloze',
   'Die Personalabteilung der Hartwig Maschinenbau GmbH beschreibt für das Intranet, wie sich die drei Formen der Projektorganisation unterscheiden.',
   'Setze die passenden Begriffe ein.',
-  'Rein: volle Befugnis, Team herausgelöst. Matrix: fachlich die Projektleitung, disziplinarisch die Linie. Stab/Einfluss: keine Weisungsbefugnis, nur Koordination.',
+  'Reine Projektorganisation: volle Befugnis, das Team ist herausgelöst. Matrix: Die Projektleitung führt fachlich, die Linie disziplinarisch. Stab/Einfluss: keine Weisungsbefugnis, die Projektleitung koordiniert nur.',
   2,
   '{}',
   null,
@@ -32497,7 +32498,7 @@ values (
   2,
   '{}',
   null,
-  '{"buckets":["Reine Projektorganisation","Matrix-Organisation","Stabs-/Einflussorganisation"],"match_items":[{"text":"Vier Kolleginnen überarbeiten in fünf Wochen nebenbei die Vorlagen im Intranet; ein Koordinator hält die Fäden zusammen.","bucket":2,"rationale":"Klein, kurz, nebenbei: Eine koordinierende Stelle ohne Weisungsbefugnis genügt."},{"text":"Zwölf Beschäftigte werden für zwei Jahre freigestellt, um ein neues Rechenzentrum aufzubauen.","bucket":0,"rationale":"Groß, lang, in Vollzeit: Das Team wird aus der Linie herausgelöst."},{"text":"Eine Netzwerkadministratorin arbeitet zu 30 % im Projekt „WLAN-Ausbau“ und zu 70 % weiter im Betrieb.","bucket":1,"rationale":"Anteilige Mitarbeit mit zwei Vorgesetzten ist typisch für die Matrix."},{"text":"Die Projektleitung entscheidet auch über Urlaub und Beurteilung der Teammitglieder.","bucket":0,"rationale":"Disziplinarische Befugnis hat die Projektleitung nur in der reinen Projektorganisation."},{"text":"Die Projektleitung kann nur empfehlen; entschieden wird in den Fachabteilungen.","bucket":2,"rationale":"Keine Weisungsbefugnis. Das ist ein Kennzeichen der Einflussorganisation."},{"text":"Über die Arbeitsinhalte bestimmt die Projektleitung, über Gehalt und Urlaub der Abteilungsleiter.","bucket":1,"rationale":"Geteilte Weisungsbefugnis: fachlich das Projekt, disziplinarisch die Linie."}],"points":3}'::jsonb,
+  '{"buckets":["Reine Projektorganisation","Matrix-Organisation","Stabs-/Einflussorganisation"],"match_items":[{"text":"Vier Kolleginnen überarbeiten in fünf Wochen nebenbei die Vorlagen im Intranet; ein Koordinator hält die Fäden zusammen.","bucket":2,"rationale":"Klein, kurz, nebenbei: Eine koordinierende Stelle ohne Weisungsbefugnis genügt."},{"text":"Zwölf Beschäftigte werden für zwei Jahre freigestellt, um ein neues Rechenzentrum aufzubauen.","bucket":0,"rationale":"Groß, lang, in Vollzeit: Das Team wird aus der Linie herausgelöst."},{"text":"Eine Netzwerkadministratorin arbeitet zu 30 % im Projekt „WLAN-Ausbau“ und zu 70 % weiter im Betrieb.","bucket":1,"rationale":"Anteilige Mitarbeit mit zwei Vorgesetzten ist typisch für die Matrix."},{"text":"Die Projektleitung entscheidet auch über Urlaub und Beurteilung der Teammitglieder.","bucket":0,"rationale":"Disziplinarische Befugnis hat die Projektleitung nur in der reinen Projektorganisation."},{"text":"Die Projektleitung kann nur empfehlen; entschieden wird in den Fachabteilungen.","bucket":2,"rationale":"Fehlende Weisungsbefugnis ist das Kennzeichen der Einflussorganisation."},{"text":"Über die Arbeitsinhalte bestimmt die Projektleitung, über Gehalt und Urlaub der Abteilungsleiter.","bucket":1,"rationale":"Geteilte Weisungsbefugnis: fachlich das Projekt, disziplinarisch die Linie."}],"points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -32526,7 +32527,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Vorteil: klare Zuständigkeit: Die Projektleitung hat die volle Weisungsbefugnis","points":1,"keywords":["Weisungsbefugnis","klare Zuständigkeit","ein Vorgesetzter","klare Verantwortung","Entscheidungswege"]},{"text":"Vorteil: volle Konzentration des Teams auf das Projekt, schnelle Entscheidungen","points":1,"keywords":["Konzentration","Fokus","Vollzeit","schnelle Entscheidungen","schnell"]},{"text":"Vorteil: hohe Identifikation des Teams mit dem Projekt","points":1,"keywords":["Identifikation","Motivation","Teamgeist","Zusammenhalt"]},{"text":"Nachteil: hoher Aufwand und hohe Kosten, weil die Personen in ihren Abteilungen fehlen","points":1,"keywords":["teuer","Kosten","Aufwand","fehlen in der Abteilung","Ersatz"]},{"text":"Nachteil: Rückkehrproblem: Nach Projektende müssen alle wieder in die Linie eingegliedert werden","points":1,"keywords":["Rückkehr","Wiedereingliederung","nach Projektende","zurück in die Linie","eingliedern"]},{"text":"Nachteil: schwankende Auslastung: Spezialisten sind zeitweise nicht voll beschäftigt","points":1,"keywords":["Auslastung","Leerlauf","nicht ausgelastet","unterfordert"]}],"sample_solution":"Vorteile: Die Projektleitung hat die volle Weisungsbefugnis, die Zuständigkeiten sind klar; das Team konzentriert sich ganz auf das Projekt und identifiziert sich damit. Nachteile: Die Form ist teuer, weil die Personen in ihren Abteilungen fehlen; nach Projektende müssen alle wieder eingegliedert werden (Rückkehrproblem)."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Vorteil: klare Zuständigkeit, weil die Projektleitung die volle Weisungsbefugnis hat","points":1,"keywords":["Weisungsbefugnis","klare Zuständigkeit","ein Vorgesetzter","klare Verantwortung","Entscheidungswege"]},{"text":"Vorteil: volle Konzentration des Teams auf das Projekt, schnelle Entscheidungen","points":1,"keywords":["Konzentration","Fokus","Vollzeit","schnelle Entscheidungen","schnell"]},{"text":"Vorteil: hohe Identifikation des Teams mit dem Projekt","points":1,"keywords":["Identifikation","Motivation","Teamgeist","Zusammenhalt"]},{"text":"Nachteil: hoher Aufwand und hohe Kosten, weil die Personen in ihren Abteilungen fehlen","points":1,"keywords":["teuer","Kosten","Aufwand","fehlen in der Abteilung","Ersatz"]},{"text":"Nachteil: Rückkehrproblem, denn nach Projektende müssen alle wieder in die Linie eingegliedert werden","points":1,"keywords":["Rückkehr","Wiedereingliederung","nach Projektende","zurück in die Linie","eingliedern"]},{"text":"Nachteil: schwankende Auslastung, weil Spezialisten zeitweise nicht voll beschäftigt sind","points":1,"keywords":["Auslastung","Leerlauf","nicht ausgelastet","unterfordert"]}],"sample_solution":"Vorteile: Die Projektleitung hat die volle Weisungsbefugnis, die Zuständigkeiten sind klar; das Team konzentriert sich ganz auf das Projekt und identifiziert sich damit. Nachteile: Die Form ist teuer, weil die Personen in ihren Abteilungen fehlen; nach Projektende müssen alle wieder eingegliedert werden (Rückkehrproblem)."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -32584,7 +32585,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Er entscheidet über Änderungen am Projektrahmen: Budget, Endtermin oder Umfang.","points":2,"keywords":["Budget","Umfang","Änderung","Rahmen","Endtermin"]},{"text":"Er ist Eskalationsinstanz: Er entscheidet Probleme und Konflikte, die die Projektleitung nicht selbst lösen kann.","points":2,"keywords":["Eskalation","eskaliert","Konflikt","nicht selbst lösen"]},{"text":"Er nimmt die Statusberichte entgegen, überwacht den Fortschritt und gibt Meilensteine bzw. Phasen frei.","points":2,"keywords":["Statusbericht","Meilenstein","Freigabe","überwacht","kontrolliert","Fortschritt"]},{"text":"Er unterstützt die Projektleitung, z. B. indem er Personal aus den Abteilungen bereitstellt.","points":2,"keywords":["Ressourcen","unterstützt","bereitstellen","Rückendeckung","Personal"]}],"sample_solution":"Der Lenkungsausschuss entscheidet über Änderungen am Projektrahmen, also über Budget, Endtermin und Umfang. Er ist außerdem die Eskalationsinstanz für Probleme, die die Projektleitung nicht selbst lösen kann, nimmt die Statusberichte entgegen und gibt Meilensteine frei."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Er entscheidet über Änderungen am Projektrahmen: Budget, Endtermin oder Umfang.","points":2,"keywords":["Budget","Umfang","Änderung","Rahmen","Endtermin"]},{"text":"Er ist Eskalationsinstanz und entscheidet bei Problemen und Konflikten, die die Projektleitung nicht selbst lösen kann.","points":2,"keywords":["Eskalation","eskaliert","Konflikt","nicht selbst lösen"]},{"text":"Er nimmt die Statusberichte entgegen, überwacht den Fortschritt und gibt Meilensteine bzw. Phasen frei.","points":2,"keywords":["Statusbericht","Meilenstein","Freigabe","überwacht","kontrolliert","Fortschritt"]},{"text":"Er unterstützt die Projektleitung, z. B. indem er Personal aus den Abteilungen bereitstellt.","points":2,"keywords":["Ressourcen","unterstützt","bereitstellen","Rückendeckung","Personal"]}],"sample_solution":"Der Lenkungsausschuss entscheidet über Änderungen am Projektrahmen, also über Budget, Endtermin und Umfang. Er ist außerdem die Eskalationsinstanz für Probleme, die die Projektleitung nicht selbst lösen kann, nimmt die Statusberichte entgegen und gibt Meilensteine frei."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -32609,7 +32610,7 @@ values (
   'marking',
   'Projektleiter Jonas Weber steuert die Erneuerung des WLAN im Hotel Seeblick (Budget 40.000 €, Endtermin 31.05.). In dieser Woche stehen mehrere Entscheidungen an.',
   'Markiere alle Entscheidungen, die nicht er, sondern Lenkungsausschuss oder Auftraggeber treffen.',
-  'Die Projektleitung plant und steuert innerhalb des Auftrags. Budget, Endtermin und Umfang bilden den Rahmen. Änderungen daran entscheidet der Lenkungsausschuss; die Abnahme erklärt der Auftraggeber.',
+  'Die Projektleitung plant und steuert innerhalb des Auftrags. Budget, Endtermin und Umfang bilden den Rahmen. Über Änderungen daran entscheidet der Lenkungsausschuss; die Abnahme erklärt der Auftraggeber.',
   2,
   '{}',
   null,
@@ -32700,7 +32701,7 @@ values (
   'open',
   'Bei der Elektro Wenzel GmbH sollen 25 Monteure ihre Arbeitszeiten künftig per App statt auf Papier erfassen. Mehrere Monteure äußern Bedenken („Kontrolle“, „zu kompliziert“).',
   'Beschreibe zwei Maßnahmen, mit denen die Projektleitung die Akzeptanz bei den Monteuren erhöht.',
-  'Je Maßnahme 2 Punkte (Maßnahme und kurze Ausführung), höchstens 4 Punkte. Grundsatz: Betroffene zu Beteiligten machen. Geringer Einfluss, hohes Interesse heißt mindestens „informieren“.',
+  'Je Maßnahme 2 Punkte (Maßnahme und kurze Ausführung), höchstens 4 Punkte. Der Grundsatz lautet: Betroffene zu Beteiligten machen. Wer wenig Einfluss, aber hohes Interesse hat, wird mindestens informiert.',
   2,
   '{}',
   null,
@@ -32912,7 +32913,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":5,"criteria":[{"text":"Vorgehensmodell: Scrum","points":1,"keywords":["Scrum","agil"]},{"text":"Die Anforderungen sind unklar und werden sich ändern. In Scrum wird das Product Backlog laufend neu geordnet.","points":2,"keywords":["unklar","ändern","grobe Ideen","nicht fest","Anforderungen"]},{"text":"Die Kundin ist regelmäßig verfügbar und kann im Sprint Review Rückmeldung geben.","points":2,"keywords":["Rückmeldung","Feedback","verfügbar","Sprint Review","alle zwei Wochen"]},{"text":"Früher Nutzen: Nach jedem Sprint entsteht ein nutzbares Increment, erste Funktionen gehen früh online.","points":2,"keywords":["früh","Increment","Inkrement","Teilergebnis","nutzbar"]},{"text":"Festes Monatsbudget bei offenem Umfang passt zu Scrum: Zeit und Kosten stehen fest, der Umfang ergibt sich.","points":2,"keywords":["Budget","Umfang variabel","Umfang offen","Kosten fest"]}],"sample_solution":"Scrum. Die Anforderungen sind erst grob bekannt und werden sich durch das Ausprobieren ändern; ein Pflichtenheft für den Wasserfall lässt sich so nicht schreiben. Die Vertriebsmitarbeiterin kann alle zwei Wochen Rückmeldung geben. Das passt zu zweiwöchigen Sprints mit Sprint Review. Außerdem liefert jeder Sprint ein nutzbares Increment, sodass erste Funktionen früh online gehen."}'::jsonb,
+  '{"points":5,"criteria":[{"text":"Vorgehensmodell: Scrum","points":1,"keywords":["Scrum","agil"]},{"text":"Die Anforderungen sind unklar und werden sich ändern. In Scrum wird das Product Backlog laufend neu geordnet.","points":2,"keywords":["unklar","ändern","grobe Ideen","nicht fest","Anforderungen"]},{"text":"Die Kundin ist regelmäßig verfügbar und kann im Sprint Review Rückmeldung geben.","points":2,"keywords":["Rückmeldung","Feedback","verfügbar","Sprint Review","alle zwei Wochen"]},{"text":"Früher Nutzen: Nach jedem Sprint entsteht ein nutzbares Increment, erste Funktionen gehen früh online.","points":2,"keywords":["früh","Increment","Inkrement","Teilergebnis","nutzbar"]},{"text":"Festes Monatsbudget bei offenem Umfang passt zu Scrum: Zeit und Kosten stehen fest, der Umfang ergibt sich.","points":2,"keywords":["Budget","Umfang variabel","Umfang offen","Kosten fest"]}],"sample_solution":"Es passt Scrum. Die Anforderungen sind erst grob bekannt und werden sich durch das Ausprobieren ändern; ein Pflichtenheft für den Wasserfall lässt sich so nicht schreiben. Die Vertriebsmitarbeiterin kann alle zwei Wochen Rückmeldung geben, das passt zu zweiwöchigen Sprints mit Sprint Review. Außerdem liefert jeder Sprint ein nutzbares Increment, sodass erste Funktionen früh online gehen."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -32995,7 +32996,7 @@ values (
   'marking',
   'Ein international besetztes Entwicklungsteam der Medisoft GmbH hat sich Arbeitsregeln gegeben und an die Bürowand gehängt.',
   'Markiere alle Regeln, die den Werten und Prinzipien des agilen Manifests widersprechen.',
-  'Das Manifest verlangt frühe und regelmäßige Lieferung, Offenheit für Änderungen und funktionierende Software als Fortschrittsmaß. Dokumentation ist nicht verboten: Links vor rechts, nicht links statt rechts.',
+  'Das Manifest verlangt frühe und regelmäßige Lieferung, Offenheit für Änderungen und funktionierende Software als Fortschrittsmaß. Dokumentation ist nicht verboten. Es gilt links vor rechts, nicht links statt rechts.',
   2,
   '{}',
   null,
@@ -33053,7 +33054,7 @@ values (
   'open',
   'Die Webagentur Kliq will agil arbeiten. Der Geschäftsführer bittet dich, dem Team die Grundlage zu erklären: das agile Manifest.',
   'Nenne die vier Werte des agilen Manifests (jeweils die Seite, die höher geschätzt wird).',
-  'Je Wert 1 Punkt. Die rechte Seite bleibt wertvoll. Die linke wird nur höher geschätzt. Das Manifest von 2001 umfasst vier Werte und zwölf Prinzipien.',
+  'Je Wert 1 Punkt. Die rechte Seite bleibt wertvoll, die linke wird nur höher geschätzt. Das Manifest von 2001 umfasst vier Werte und zwölf Prinzipien.',
   1,
   '{}',
   null,
@@ -33082,7 +33083,7 @@ values (
   'table',
   'Das Fintech-Unternehmen Paylane arbeitet mit Scrum. Im englischen Team-Handbuch steht:',
   'Welche Scrum-Verantwortlichkeit gehört jeweils dazu? Vervollständige die Tabelle.',
-  'Maria ordnet das Product Backlog nach Wert, also Product Owner. Tom sorgt für wirksame Events und beseitigt Hindernisse (impediments), also Scrum Master. Ali, Jana und Chen bauen das Produkt, planen ihren Sprint selbst und halten die Definition of Done ein, also Developers.',
+  'Maria ordnet das Product Backlog nach Wert und ist damit Product Owner. Tom sorgt für wirksame Events und beseitigt Hindernisse (impediments), er ist Scrum Master. Ali, Jana und Chen bauen das Produkt, planen ihren Sprint selbst und halten die Definition of Done ein, sie sind die Developers.',
   2,
   '{}',
   null,
@@ -33144,7 +33145,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Sie weisen den Entwicklern täglich ihre Aufgaben zu.","is_correct":true,"rationale":"Die Developers organisieren ihre Arbeit selbst."},{"text":"Sie coachen das Team in Selbstmanagement und interdisziplinärer Zusammenarbeit.","is_correct":false,"rationale":"Kernaufgabe des Scrum Masters."},{"text":"Sie legen fest, welche Funktionen als Nächstes gebaut werden.","is_correct":true,"rationale":"Über Inhalt und Reihenfolge entscheidet der Product Owner."},{"text":"Sie sorgen dafür, dass Hindernisse beseitigt werden.","is_correct":false,"rationale":"Gehört zum Dienst am Scrum Team."},{"text":"Sie sind disziplinarische Führungskraft des Teams und genehmigen Urlaub.","is_correct":true,"rationale":"Im Scrum Team gibt es keine Hierarchie; der Scrum Master ist kein Vorgesetzter."},{"text":"Sie achten darauf, dass alle Scrum-Events stattfinden und die Timebox einhalten.","is_correct":false,"rationale":"So beschreibt es der Scrum Guide."},{"text":"Sie unterstützen den Product Owner mit Techniken für die Backlog-Pflege.","is_correct":false,"rationale":"Der Scrum Master dient auch dem Product Owner."}],"points":3}'::jsonb,
+  '{"choices":[{"text":"Sie weisen den Entwicklern täglich ihre Aufgaben zu.","is_correct":true,"rationale":"Die Developers organisieren ihre Arbeit selbst."},{"text":"Sie coachen das Team in Selbstmanagement und interdisziplinärer Zusammenarbeit.","is_correct":false,"rationale":"Das ist eine Kernaufgabe des Scrum Masters."},{"text":"Sie legen fest, welche Funktionen als Nächstes gebaut werden.","is_correct":true,"rationale":"Über Inhalt und Reihenfolge entscheidet der Product Owner."},{"text":"Sie sorgen dafür, dass Hindernisse beseitigt werden.","is_correct":false,"rationale":"Das gehört zum Dienst am Scrum Team."},{"text":"Sie sind disziplinarische Führungskraft des Teams und genehmigen Urlaub.","is_correct":true,"rationale":"Im Scrum Team gibt es keine Hierarchie; der Scrum Master ist kein Vorgesetzter."},{"text":"Sie achten darauf, dass alle Scrum-Events stattfinden und die Timebox einhalten.","is_correct":false,"rationale":"So beschreibt es der Scrum Guide."},{"text":"Sie unterstützen den Product Owner mit Techniken für die Backlog-Pflege.","is_correct":false,"rationale":"Der Scrum Master dient auch dem Product Owner."}],"points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -33169,11 +33170,11 @@ values (
   'matching',
   'Ein Scrum Team entwickelt die Buchungs-App der Kletterhalle Gipfelglück.',
   'Ordne jeden Punkt dem Artefakt zu, in das er gehört.',
-  'Product Backlog: alle Wünsche, Commitment Produktziel. Sprint Backlog: Sprintziel, ausgewählte Einträge und Plan der Developers. Increment: alles, was die Definition of Done erfüllt.',
+  'Im Product Backlog stehen alle Wünsche, sein Commitment ist das Produktziel. Das Sprint Backlog enthält Sprintziel, ausgewählte Einträge und den Plan der Developers. Zum Increment gehört alles, was die Definition of Done erfüllt.',
   2,
   '{}',
   null,
-  '{"buckets":["Product Backlog","Sprint Backlog","Increment"],"match_items":[{"text":"Wunsch der Hallenleitung nach Gutscheinen, noch nicht geschätzt","bucket":0,"rationale":"Alles, was das Produkt einmal können soll, steht im Product Backlog."},{"text":"Fertig getestete und geprüfte Kursbuchung","bucket":2,"rationale":"Erfüllt die Definition of Done, also Teil des Increments."},{"text":"Aufgabe „Datenbankfeld für Kursleiter anlegen“ für diesen Sprint","bucket":1,"rationale":"Der Plan der Developers für den laufenden Sprint."},{"text":"Produktziel: „Mitglieder buchen jeden Kurs in unter einer Minute“","bucket":0,"rationale":"Das Produktziel ist das Commitment des Product Backlogs."},{"text":"Sprintziel: „Kurse lassen sich online stornieren“","bucket":1,"rationale":"Das Sprintziel ist das Commitment des Sprint Backlogs."},{"text":"Stornofunktion, die alle Tests bestanden hat und dokumentiert ist","bucket":2,"rationale":"Nutzbar und „done“, also gehört zum Increment."}],"points":3}'::jsonb,
+  '{"buckets":["Product Backlog","Sprint Backlog","Increment"],"match_items":[{"text":"Wunsch der Hallenleitung nach Gutscheinen, noch nicht geschätzt","bucket":0,"rationale":"Alles, was das Produkt einmal können soll, steht im Product Backlog."},{"text":"Fertig getestete und geprüfte Kursbuchung","bucket":2,"rationale":"Sie erfüllt die Definition of Done und ist damit Teil des Increments."},{"text":"Aufgabe „Datenbankfeld für Kursleiter anlegen“ für diesen Sprint","bucket":1,"rationale":"Der Plan der Developers für den laufenden Sprint."},{"text":"Produktziel: „Mitglieder buchen jeden Kurs in unter einer Minute“","bucket":0,"rationale":"Das Produktziel ist das Commitment des Product Backlogs."},{"text":"Sprintziel: „Kurse lassen sich online stornieren“","bucket":1,"rationale":"Das Sprintziel ist das Commitment des Sprint Backlogs."},{"text":"Stornofunktion, die alle Tests bestanden hat und dokumentiert ist","bucket":2,"rationale":"Sie ist nutzbar und „done“, gehört also zum Increment."}],"points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -33196,7 +33197,7 @@ values (
   'agil_scrum',
   's-artefakte',
   'open',
-  'Im Sprint Review der Kletterhallen-App fragt die Hallenleitung: „Ihr redet von Akzeptanzkriterien und von der Definition of Done: Ist das nicht dasselbe?“',
+  'Im Sprint Review der Kletterhallen-App fragt die Hallenleitung: „Ihr redet von Akzeptanzkriterien und von der Definition of Done. Ist das nicht dasselbe?“',
   'Erläutere den Unterschied zwischen der Definition of Done und Akzeptanzkriterien.',
   'Je Aspekt 1 Punkt: Geltungsbereich und Inhalt der Definition of Done, Geltungsbereich und Inhalt der Akzeptanzkriterien. Fertig ist eine Story erst, wenn beides erfüllt ist.',
   2,
@@ -33552,7 +33553,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"C und E verweisen gegenseitig aufeinander: Eine Schleife, die sich nicht berechnen lässt.","is_correct":true,"rationale":"C wartet auf E, E wartet auf C: Keiner von beiden könnte je beginnen."},{"text":"A ist fehlerhaft, weil jeder Vorgang einen Vorgänger braucht.","is_correct":false,"rationale":"Jeder Netzplan braucht mindestens einen Startvorgang ohne Vorgänger."},{"text":"F nennt den Vorgänger G, den es in der Liste nicht gibt.","is_correct":true,"rationale":"Ein Vorgänger muss als Vorgang in der Liste stehen."},{"text":"B und D dürfen nicht denselben Vorgänger haben.","is_correct":false,"rationale":"Eine Verzweigung ist erlaubt: B und D können parallel laufen."},{"text":"E ist fehlerhaft, weil ein Vorgang höchstens einen Vorgänger haben darf.","is_correct":false,"rationale":"Mehrere Vorgänger sind erlaubt (Zusammenführung)."}],"table":[["Nr.","Vorgang","Dauer","Vorgänger"],["A","Bedarf klären","2","-"],["B","Display bestellen","5","A"],["C","Wandhalterung montieren","1","E"],["D","Kabel verlegen","2","A"],["E","Display aufhängen","1","B, C"],["F","Konferenzsystem einrichten","2","D, E, G"]],"points":2}'::jsonb,
+  '{"choices":[{"text":"C und E verweisen aufeinander und bilden eine Schleife, die sich nicht berechnen lässt.","is_correct":true,"rationale":"C wartet auf E, E wartet auf C: Keiner von beiden könnte je beginnen."},{"text":"A ist fehlerhaft, weil jeder Vorgang einen Vorgänger braucht.","is_correct":false,"rationale":"Jeder Netzplan braucht mindestens einen Startvorgang ohne Vorgänger."},{"text":"F nennt den Vorgänger G, den es in der Liste nicht gibt.","is_correct":true,"rationale":"Ein Vorgänger muss als Vorgang in der Liste stehen."},{"text":"B und D dürfen nicht denselben Vorgänger haben.","is_correct":false,"rationale":"Eine Verzweigung ist erlaubt: B und D können parallel laufen."},{"text":"E ist fehlerhaft, weil ein Vorgang höchstens einen Vorgänger haben darf.","is_correct":false,"rationale":"Mehrere Vorgänger sind erlaubt (Zusammenführung)."}],"table":[["Nr.","Vorgang","Dauer","Vorgänger"],["A","Bedarf klären","2","-"],["B","Display bestellen","5","A"],["C","Wandhalterung montieren","1","E"],["D","Kabel verlegen","2","A"],["E","Display aufhängen","1","B, C"],["F","Konferenzsystem einrichten","2","D, E, G"]],"points":2}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -33609,7 +33610,7 @@ values (
   'FAZ = größter FEZ der Vorgänger, FEZ = FAZ + Dauer.
 A 0/2, B 2/7, C 2/5, D 7/9, E 5/8.
 F hat zwei Vorgänger: FAZ = max(FEZ D 9; FEZ E 8) = 9, FEZ = 12.
-G 12/14: die Projektdauer beträgt 14 Arbeitstage.',
+G 12/14, die Projektdauer beträgt also 14 Arbeitstage.',
   2,
   '{}',
   null,
@@ -33743,7 +33744,7 @@ values (
 F: 13 / 13 - 2 = 11
 D: SEZ 11, SAZ 7 · E: SEZ 11, SAZ 7
 B: SEZ = SAZ D = 7, SAZ 2 · C: SEZ = SAZ E = 7, SAZ 4
-A: SEZ = min(SAZ B 2; SAZ C 4) = 2, SAZ 0: Die Probe stimmt.',
+A: SEZ = min(SAZ B 2; SAZ C 4) = 2, SAZ 0. Die Probe stimmt.',
   2,
   '{}',
   null,
@@ -33778,7 +33779,7 @@ D: SEZ = SAZ F = 12, SAZ 12 - 5 = 7
 E: SEZ = SAZ F = 12, SAZ 12 - 3 = 9
 B: SEZ = SAZ D = 7, SAZ 7 - 4 = 3
 C: SEZ = SAZ E = 9, SAZ 9 - 2 = 7
-A: SEZ = min(SAZ B 3; SAZ C 7) = 3, SAZ 3 - 3 = 0: Die Probe stimmt.',
+A: SEZ = min(SAZ B 3; SAZ C 7) = 3, SAZ 3 - 3 = 0. Die Probe stimmt.',
   2,
   '{}',
   null,
@@ -33958,7 +33959,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Vorgang A","is_correct":true,"rationale":"GP = SAZ - FAZ = 0 - 0 = 0 → kritisch."},{"text":"Vorgang B","is_correct":false,"rationale":"GP = 3 - 2 = 1 → eine Stunde Puffer."},{"text":"Vorgang C","is_correct":true,"rationale":"GP = 2 - 2 = 0 → kritisch."},{"text":"Vorgang D","is_correct":false,"rationale":"GP = 7 - 6 = 1."},{"text":"Vorgang E","is_correct":true,"rationale":"GP = 8 - 8 = 0 → kritisch."},{"text":"Vorgang F","is_correct":false,"rationale":"GP = 9 - 8 = 1."},{"text":"Vorgang G","is_correct":true,"rationale":"GP = 10 - 10 = 0 → kritisch."},{"text":"Vorgang H","is_correct":true,"rationale":"GP = 14 - 14 = 0 → kritisch."}],"table":[["Nr.","Dauer","FAZ","FEZ","SAZ","SEZ"],["A","2","0","2","0","2"],["B","4","2","6","3","7"],["C","6","2","8","2","8"],["D","3","6","9","7","10"],["E","2","8","10","8","10"],["F","5","8","13","9","14"],["G","4","10","14","10","14"],["H","1","14","15","14","15"]],"points":3}'::jsonb,
+  '{"choices":[{"text":"Vorgang A","is_correct":true,"rationale":"GP = SAZ - FAZ = 0 - 0 = 0, also kritisch."},{"text":"Vorgang B","is_correct":false,"rationale":"GP = 3 - 2 = 1, also eine Stunde Puffer."},{"text":"Vorgang C","is_correct":true,"rationale":"GP = 2 - 2 = 0, also kritisch."},{"text":"Vorgang D","is_correct":false,"rationale":"GP = 7 - 6 = 1."},{"text":"Vorgang E","is_correct":true,"rationale":"GP = 8 - 8 = 0, also kritisch."},{"text":"Vorgang F","is_correct":false,"rationale":"GP = 9 - 8 = 1."},{"text":"Vorgang G","is_correct":true,"rationale":"GP = 10 - 10 = 0, also kritisch."},{"text":"Vorgang H","is_correct":true,"rationale":"GP = 14 - 14 = 0, also kritisch."}],"table":[["Nr.","Dauer","FAZ","FEZ","SAZ","SEZ"],["A","2","0","2","0","2"],["B","4","2","6","3","7"],["C","6","2","8","2","8"],["D","3","6","9","7","10"],["E","2","8","10","8","10"],["F","5","8","13","9","14"],["G","4","10","14","10","14"],["H","1","14","15","14","15"]],"points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -34045,7 +34046,7 @@ values (
   'Werte den Netzplan aus.',
   'Vorher: A - B - D - F = 4 + 7 + 3 + 2 = 16 (kritisch), A - C - E - F = 4 + 5 + 4 + 2 = 15.
 Nachher: A - B - D - F = 4 + 4 + 3 + 2 = 13, A - C - E - F = 15.
-Der kritische Pfad wandert: Von 3 Tagen Verkürzung bleibt nur 1 Tag Gewinn. Nach jeder Verkürzung neu rechnen.',
+Der kritische Pfad wandert: Von 3 Tagen Verkürzung bleibt nur 1 Tag Gewinn. Rechne deshalb nach jeder Verkürzung neu.',
   3,
   '{}',
   null,
@@ -34075,7 +34076,7 @@ values (
   'Das Architekturbüro Linde führt ein Dokumentenmanagementsystem ein. Dauer in Arbeitstagen, Start bei 0. Es gilt: GP = SAZ - FAZ, FP = kleinster FAZ der Nachfolger - FEZ.',
   'Berechne den Netzplan vollständig und bestimme so den kritischen Pfad.',
   'Vorwärts (FAZ/FEZ): A 0/3, B 3/5, C 3/8, D max(5; 8) = 8/10, E 3/7, F max(10; 7) = 10/13, G 13/15.
-Rückwärts (SAZ/SEZ): G 13/15, F 10/13, D 8/10, E 6/10, C 3/8, B 6/8, A min(6; 3; 6) = 3 → 0/3.
+Rückwärts (SAZ/SEZ): G 13/15, F 10/13, D 8/10, E 6/10, C 3/8, B 6/8, A min(6; 3; 6) = 3, also 0/3.
 GP: B 3, E 3, alle anderen 0. FP: B 8 - 5 = 3, E 10 - 7 = 3.
 Kritischer Pfad: A - C - D - F - G mit 3 + 5 + 2 + 3 + 2 = 15 Arbeitstagen.',
   3,
@@ -34106,7 +34107,7 @@ values (
   'open',
   'Die Nordlicht IT GmbH richtet für eine Grundschule ein WLAN in 14 Klassenräumen ein. Bevor Termine festgelegt werden, erstellt die Projektleiterin einen Projektstrukturplan (PSP).',
   'Erläutere zwei Gründe, warum vor der Terminplanung ein Projektstrukturplan erstellt wird. (4 P.)',
-  'Je Grund 2 Punkte (Aussage plus kurze Ausführung), höchstens 4 Punkte. Der PSP beantwortet die Frage WAS: Erst danach folgen Dauer, Reihenfolge und Termine.',
+  'Je Grund 2 Punkte (Aussage plus kurze Ausführung), höchstens 4 Punkte. Der PSP beantwortet die Frage, WAS zu tun ist. Erst danach folgen Dauer, Reihenfolge und Termine.',
   2,
   '{}',
   null,
@@ -34168,7 +34169,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"1 Beschaffung","is_correct":false,"rationale":"Eine Teilaufgabe, also gehört in den PSP."},{"text":"1.1 Angebote einholen","is_correct":false,"rationale":"Ein Arbeitspaket unter der Teilaufgabe Beschaffung."},{"text":"1.2 Liefertermin: 14. März","is_correct":true,"rationale":"Ein Termin gehört in den Terminplan, nicht in den PSP."},{"text":"2 Installation","is_correct":false,"rationale":"Eine Teilaufgabe, also gehört in den PSP."},{"text":"2.1 Image erstellen","is_correct":false,"rationale":"Ein Arbeitspaket mit prüfbarem Ergebnis."},{"text":"2.2 Image erst nach Abschluss von 1.1 verteilen","is_correct":true,"rationale":"Eine Abhängigkeit zwischen Vorgängen zeigt erst der Netzplan."},{"text":"3.1 Anwender einweisen","is_correct":false,"rationale":"Ein Arbeitspaket der Übergabe."},{"text":"3.2 Meilenstein „Rollout abgeschlossen“","is_correct":true,"rationale":"Meilensteine sind Ereignisse des Terminplans, keine Arbeitspakete."}],"points":3}'::jsonb,
+  '{"choices":[{"text":"1 Beschaffung","is_correct":false,"rationale":"Eine Teilaufgabe, sie gehört also in den PSP."},{"text":"1.1 Angebote einholen","is_correct":false,"rationale":"Ein Arbeitspaket unter der Teilaufgabe Beschaffung."},{"text":"1.2 Liefertermin: 14. März","is_correct":true,"rationale":"Ein Termin gehört in den Terminplan, nicht in den PSP."},{"text":"2 Installation","is_correct":false,"rationale":"Eine Teilaufgabe, sie gehört also in den PSP."},{"text":"2.1 Image erstellen","is_correct":false,"rationale":"Ein Arbeitspaket mit prüfbarem Ergebnis."},{"text":"2.2 Image erst nach Abschluss von 1.1 verteilen","is_correct":true,"rationale":"Eine Abhängigkeit zwischen Vorgängen zeigt erst der Netzplan."},{"text":"3.1 Anwender einweisen","is_correct":false,"rationale":"Ein Arbeitspaket der Übergabe."},{"text":"3.2 Meilenstein „Rollout abgeschlossen“","is_correct":true,"rationale":"Meilensteine sind Ereignisse des Terminplans, keine Arbeitspakete."}],"points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -34193,7 +34194,7 @@ values (
   'table',
   'Die Stadtwerke Ahrensfeld stellen ihre Telefonanlage um. Das Gantt-Diagramm zeigt die Planung in Arbeitstagen. Vorgang D kann erst beginnen, wenn B und C abgeschlossen sind.',
   'Lies die gesuchten Werte aus dem Diagramm ab. (5 P.)',
-  'Der Meilenstein „Anlage live“ liegt bei 12, also dauert das Projekt 12 Tage. B läuft von 3 bis 8. C endet bei 3 + 2 = 5, sein Nachfolger D beginnt erst bei 8: Puffer 8 - 5 = 3 Tage. Zwischen 3 und 5 laufen B und C parallel. Nur C liegt nicht auf dem kritischen Pfad und darf sich verspäten.',
+  'Der Meilenstein „Anlage live“ liegt bei 12, also dauert das Projekt 12 Tage. B läuft von 3 bis 8. C endet bei 3 + 2 = 5, sein Nachfolger D beginnt erst bei 8. Das ergibt 8 - 5 = 3 Tage Puffer. Zwischen 3 und 5 laufen B und C parallel. Nur C liegt nicht auf dem kritischen Pfad und darf sich verspäten.',
   2,
   '{}',
   null,
@@ -34222,7 +34223,7 @@ values (
   'cloze',
   'Für die Einrichtung eines Schulungsraums liegt eine Vorgangsliste vor. Daraus soll ein Gantt-Diagramm entstehen. Alle Vorgänge beginnen so früh wie möglich, das Projekt startet bei Zeitpunkt 0.',
   'Ermittle die Werte, die du für das Zeichnen der Balken brauchst. (6 P.)',
-  'A läuft von 0 bis 3. B: 3 bis 7, C: 3 bis 5. D braucht B und C und startet beim späteren Ende, also bei 7, und endet bei 12. E läuft von 12 bis 14: Das Projekt dauert 14 Tage. C ist schon bei 5 fertig, D beginnt erst bei 7: 2 Tage Puffer.',
+  'A läuft von 0 bis 3, B von 3 bis 7 und C von 3 bis 5. D braucht B und C, startet also beim späteren Ende bei 7 und endet bei 12. E läuft von 12 bis 14, das Projekt dauert also 14 Tage. C ist schon bei 5 fertig, D beginnt erst bei 7. Das sind 2 Tage Puffer.',
   2,
   '{}',
   null,
@@ -34404,7 +34405,7 @@ values (
   'table',
   'Die Brenner Maschinenbau GmbH zieht ihre Postfächer auf einen neuen Mailserver um. Im Risikoregister stehen drei Einträge.',
   'Ordne jedem Risiko die Risikoart und einen passenden Frühwarnindikator zu. (6 P.)',
-  'Eingeordnet wird nach der Ursache: Lieferverzug gefährdet den Zeitplan (terminlich), der Ausfall einer Schlüsselperson ist personell, die Datenübernahme technisch. Ein Frühwarnindikator ist ein beobachtbares Anzeichen, dass das Risiko wahrscheinlicher wird.',
+  'Eingeordnet wird nach der Ursache: Lieferverzug gefährdet den Zeitplan (terminlich), der Ausfall einer Schlüsselperson ist personell, die Datenübernahme technisch. Ein Frühwarnindikator ist ein beobachtbares Anzeichen dafür, dass das Risiko wahrscheinlicher wird.',
   2,
   '{}',
   null,
@@ -34433,7 +34434,7 @@ values (
   'open',
   'Eine Bäckereikette mit 12 Filialen führt eine digitale Zeiterfassung mit Terminals in jeder Filiale ein. Im Kick-off sollen Risiken gesammelt werden.',
   'Nenne vier Risiken unterschiedlicher Art, die in diesem Projekt auftreten können. (4 P.)',
-  'Je Risiko 1 Punkt, höchstens 4. Wer systematisch nach Risikoarten sucht, technisch, personell, terminlich, rechtlich, wirtschaftlich -, übersieht weniger.',
+  'Je Risiko 1 Punkt, höchstens 4. Wer systematisch nach Risikoarten sucht (technisch, personell, terminlich, rechtlich, wirtschaftlich), übersieht weniger.',
   2,
   '{}',
   null,
@@ -34460,7 +34461,7 @@ values (
   'risikomanagement',
   'r-prozess',
   'cloze',
-  'Im Risikoregister soll ein Risiko nach dem Muster „Ursache - Ereignis - Auswirkung“ beschrieben werden.',
+  'Im Risikoregister soll ein Risiko nach dem Muster „Ursache, Ereignis, Auswirkung“ beschrieben werden.',
   'Setze die drei Bausteine an die richtige Stelle. (3 P.)',
   'Ein gut beschriebenes Risiko nennt Ursache, Ereignis und Auswirkung: „Weil nur ein Admin die Firewall kennt, könnte die Umstellung bei seinem Ausfall stocken, sodass sich der Go-live verschiebt.“ Erst so lassen sich Wahrscheinlichkeit und Schaden schätzen.',
   2,
@@ -34524,7 +34525,7 @@ values (
 R1: 0,20 × 30.000 € = 6.000 €
 R2: 0,05 × 200.000 € = 10.000 €
 R3: 0,60 × 4.000 € = 2.400 €
-Rangfolge: R2, R1, R3: das unwahrscheinlichste Risiko steht vorn, das wahrscheinlichste hinten.',
+Rangfolge: R2, R1, R3. Das unwahrscheinlichste Risiko steht also vorn, das wahrscheinlichste hinten.',
   2,
   '{}',
   null,
@@ -34553,7 +34554,7 @@ values (
   'marking',
   'In einer 3×3-Risikomatrix werden Wahrscheinlichkeit (W) und Auswirkung (A) mit 1 bis 3 bewertet. Kennzahl = W × A. Kennzahl 1 bis 2: grün, 3 bis 4: gelb, 6 bis 9: rot.',
   'Markiere alle Risiken, die falsch eingeordnet wurden. (3 P.)',
-  'Kennzahl = Wahrscheinlichkeit × Auswirkung. R2: 2 (grün), R4: 6 (rot), R6: 3 (gelb) sind falsch eingeordnet. Die Kennzahl 5 kann in einer 3×3-Matrix nicht vorkommen, deshalb beginnt Rot bei 6.',
+  'Kennzahl = Wahrscheinlichkeit × Auswirkung. Falsch eingeordnet sind R2 (Kennzahl 2, grün), R4 (6, rot) und R6 (3, gelb). Die Kennzahl 5 kann in einer 3×3-Matrix nicht vorkommen, deshalb beginnt Rot bei 6.',
   2,
   '{}',
   null,
@@ -34582,7 +34583,7 @@ values (
   'cloze',
   'Die Klimaanlage im Serverraum fällt mit einer Wahrscheinlichkeit von 15 % aus. Der Schaden läge bei 80.000 €. Ein zweites Klimagerät für 5.000 € würde die Wahrscheinlichkeit auf 5 % senken.',
   'Prüfe rechnerisch, ob sich das zweite Klimagerät lohnt. (5 P.)',
-  'Vorher: 0,15 × 80.000 € = 12.000 €. Nachher: 0,05 × 80.000 € = 4.000 €. Die Maßnahme senkt den Risikowert um 8.000 € und kostet 5.000 €: Es bleibt ein Vorteil von 3.000 €, sie lohnt sich.',
+  'Vorher: 0,15 × 80.000 € = 12.000 €. Nachher: 0,05 × 80.000 € = 4.000 €. Die Maßnahme senkt den Risikowert um 8.000 € und kostet 5.000 €. Es bleibt ein Vorteil von 3.000 €, sie lohnt sich also.',
   2,
   '{}',
   null,
@@ -34669,7 +34670,7 @@ values (
   'table',
   'Ein Systemhaus stellt bei einem Kunden die Warenwirtschaft um. Für vier Risiken wurden Maßnahmen geplant.',
   'Gib zu jeder Maßnahme die Strategie an und, wo gefragt, worauf sie wirkt. (7 P.)',
-  'Die Probe senkt die Wahrscheinlichkeit eines Fehlschlags, der Ersatzserver begrenzt den Schaden: Beides ist Vermindern. Die Versicherung ändert nur, wer zahlt (Übertragen). Wer auf die Beta-Version verzichtet, beseitigt die Ursache (Vermeiden).',
+  'Die Probe senkt die Wahrscheinlichkeit eines Fehlschlags, der Ersatzserver begrenzt den Schaden. Beides ist Vermindern. Die Versicherung ändert nur, wer zahlt (Übertragen). Wer auf die Beta-Version verzichtet, beseitigt die Ursache (Vermeiden).',
   2,
   '{}',
   null,
@@ -34796,7 +34797,7 @@ values (
   'Lizenzen: A 6 × 40 € × 12 = 2.880 €, B 6 × 55 € × 12 = 3.960 €
 Entgangener Umsatz: A 6 × 2 Tage × 8 h × 75 € = 7.200 €, B 6 × 1 Tag × 8 h × 75 € = 3.600 €
 Summe: A 2.880 + 1.600 + 7.200 = 11.680 €, B 3.960 + 800 + 3.600 = 8.360 €
-Trotz teurerer Lizenz ist B um 3.320 € günstiger: Der entgangene Umsatz entscheidet.',
+Trotz teurerer Lizenz ist B um 3.320 € günstiger, weil der entgangene Umsatz den Ausschlag gibt.',
   2,
   '{}',
   null,
@@ -34829,7 +34830,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Rabatt: 10 % von 4.000 € = 400 €","is_correct":false,"rationale":"Richtig gerechnet."},{"text":"Zieleinkaufspreis: 4.000 € - 400 € = 3.600 €","is_correct":false,"rationale":"Richtig: Listenpreis minus Rabatt."},{"text":"Skonto: 2 % von 4.000 € = 80 €","is_correct":true,"rationale":"Skonto wird vom Zieleinkaufspreis gerechnet: 2 % von 3.600 € = 72 €."},{"text":"Bareinkaufspreis: 3.600 € - 80 € = 3.520 €","is_correct":false,"rationale":"Nur ein Folgefehler: Richtig wären 3.600 € - 72 € = 3.528 €."},{"text":"Fracht: 60 € abzüglich 2 % Skonto = 58,80 €","is_correct":true,"rationale":"Auf Bezugskosten gibt es kein Skonto, also es bleiben 60 €."},{"text":"Bezugspreis: 3.520 € + 58,80 € = 3.578,80 €","is_correct":false,"rationale":"Nur ein Folgefehler: Richtig wären 3.528 € + 60 € = 3.588 €."}],"points":4}'::jsonb,
+  '{"choices":[{"text":"Rabatt: 10 % von 4.000 € = 400 €","is_correct":false,"rationale":"Richtig gerechnet."},{"text":"Zieleinkaufspreis: 4.000 € - 400 € = 3.600 €","is_correct":false,"rationale":"Richtig: Listenpreis minus Rabatt."},{"text":"Skonto: 2 % von 4.000 € = 80 €","is_correct":true,"rationale":"Skonto wird vom Zieleinkaufspreis gerechnet: 2 % von 3.600 € = 72 €."},{"text":"Bareinkaufspreis: 3.600 € - 80 € = 3.520 €","is_correct":false,"rationale":"Nur ein Folgefehler: Richtig wären 3.600 € - 72 € = 3.528 €."},{"text":"Fracht: 60 € abzüglich 2 % Skonto = 58,80 €","is_correct":true,"rationale":"Auf Bezugskosten gibt es kein Skonto, es bleibt also bei 60 €."},{"text":"Bezugspreis: 3.520 € + 58,80 € = 3.578,80 €","is_correct":false,"rationale":"Nur ein Folgefehler: Richtig wären 3.528 € + 60 € = 3.588 €."}],"points":4}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -34856,7 +34857,7 @@ values (
   'Berechne den Überweisungsbetrag (Beträge kaufmännisch auf zwei Nachkommastellen). (4 P.)',
   'Umsatzsteuer: 2.400 € × 0,19 = 456 €
 Brutto: 2.400 € + 456 € = 2.856 €
-Skonto: 2.856 € × 0,02 = 57,12 €. Beim Bezahlen einer Rechnung ist der Bruttobetrag die Basis
+Skonto: 2.856 € × 0,02 = 57,12 €. Beim Bezahlen einer Rechnung ist der Bruttobetrag die Basis.
 Überweisung: 2.856 € - 57,12 € = 2.798,88 €',
   2,
   '{}',
@@ -34890,7 +34891,7 @@ values (
 Rabatt (discount) 5 %: 124 €, Zieleinkaufspreis 2.356 €
 Skonto (cash discount) 2 % von 2.356 €: 47,12 €, Bareinkaufspreis 2.308,88 €
 Versand (shipping): + 45 € = 2.353,88 €
-Der Mengenrabatt gilt, weil 8 Stück mehr als 5 sind.',
+Der Mengenrabatt gilt, weil mindestens 5 Stück bestellt werden.',
   2,
   '{}',
   null,
@@ -34950,7 +34951,7 @@ values (
   'Berechne die gewichteten Punkte und die Nutzwerte beider Anbieter. (8 P.)',
   'A: 0,5 × 8 = 4,0; 0,3 × 5 = 1,5; 0,2 × 7 = 1,4; Nutzwert 6,9
 B: 0,5 × 6 = 3,0; 0,3 × 9 = 2,7; 0,2 × 8 = 1,6; Nutzwert 7,3
-B gewinnt, obwohl A beim wichtigsten Kriterium vorn liegt: Es zählt die Summe.',
+B gewinnt, obwohl A beim wichtigsten Kriterium vorn liegt. Am Ende zählt die Summe.',
   2,
   '{}',
   null,
@@ -34979,7 +34980,7 @@ values (
   'table',
   'Eine Kanzlei vergleicht drei Multifunktionsdrucker mit einer Entscheidungsmatrix ohne Gewichtung. Je Kriterium werden Rangplätze vergeben: Rang 1 für den besten, Rang 3 für den schlechtesten Wert. Es gewinnt das Gerät mit der kleinsten Rangsumme.',
   'Vervollständige die Entscheidungsmatrix und bilde die Rangsummen. (7 P.)',
-  'Bei Kosten ist der kleinste Wert der beste: Kosten je Seite Z (1,2 Cent) Rang 1, X Rang 2, Y Rang 3. Geschwindigkeit und Garantie: der größte Wert ist der beste.
+  'Bei Kosten ist der kleinste Wert der beste. Bei den Kosten je Seite hat also Z (1,2 Cent) Rang 1, X Rang 2 und Y Rang 3. Bei Geschwindigkeit und Garantie ist der größte Wert der beste.
 Rangsummen: X 2 + 2 + 1 + 2 = 7, Y 1 + 3 + 3 + 1 = 8, Z 3 + 1 + 2 + 3 = 9.
 Gewählt wird Gerät X mit der kleinsten Rangsumme.',
   2,
@@ -35014,7 +35015,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Die Gewichtung ist subjektiv: Wer die Gewichte festlegt, beeinflusst das Ergebnis.","points":2,"keywords":["Gewichtung","Gewichte","subjektiv","gewichtet"]},{"text":"Die Punktevergabe beruht auf persönlicher Einschätzung, nicht auf Messung.","points":2,"keywords":["Punktevergabe","Punkte","Einschätzung","Schätzung","Bewertung"]},{"text":"Bei knappen Abständen kann eine kleine Änderung das Ergebnis kippen: Die Zahl täuscht Genauigkeit vor.","points":2,"keywords":["knapp","kippen","Scheingenauigkeit","kleine Änderung","Abstand"]},{"text":"Werden Kriterien oder Gewichte nachträglich angepasst, lässt sich das Ergebnis steuern.","points":2,"keywords":["nachträglich","manipulieren","steuern","anpassen"]}],"sample_solution":"Gewichte und Punkte beruhen auf persönlichen Einschätzungen: Wer sie festlegt, beeinflusst das Ergebnis. Bei einem Abstand von nur 0,2 Punkten kann schon ein leicht anderes Gewicht die Reihenfolge umdrehen: Das Ergebnis wirkt genauer, als es ist."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Die Gewichtung ist subjektiv: Wer die Gewichte festlegt, beeinflusst das Ergebnis.","points":2,"keywords":["Gewichtung","Gewichte","subjektiv","gewichtet"]},{"text":"Die Punktevergabe beruht auf persönlicher Einschätzung, nicht auf Messung.","points":2,"keywords":["Punktevergabe","Punkte","Einschätzung","Schätzung","Bewertung"]},{"text":"Bei knappen Abständen kann eine kleine Änderung das Ergebnis kippen: Die Zahl täuscht Genauigkeit vor.","points":2,"keywords":["knapp","kippen","Scheingenauigkeit","kleine Änderung","Abstand"]},{"text":"Werden Kriterien oder Gewichte nachträglich angepasst, lässt sich das Ergebnis steuern.","points":2,"keywords":["nachträglich","manipulieren","steuern","anpassen"]}],"sample_solution":"Gewichte und Punkte beruhen auf persönlichen Einschätzungen: Wer sie festlegt, beeinflusst das Ergebnis. Bei einem Abstand von nur 0,2 Punkten kann schon ein leicht anderes Gewicht die Reihenfolge umdrehen. Das Ergebnis wirkt also genauer, als es ist."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -35039,7 +35040,7 @@ values (
   'cloze',
   'Für die Auswahl eines Beamers soll eine Entscheidungsmatrix mit Rangplätzen und ohne Gewichtung erstellt werden. Vorgabe: Rang 1 ist der beste Wert.',
   'Vervollständige die Regeln für dieses Verfahren. (4 P.)',
-  'Ohne Gewichtung zählen alle Kriterien gleich: Ränge vergeben, addieren, kleinste Rangsumme gewinnt. Achtung: Lautet die Vorgabe umgekehrt (höchste Punktzahl für den besten Wert), gewinnt die größte Summe. Immer zuerst die Vorgabe lesen.',
+  'Ohne Gewichtung zählen alle Kriterien gleich: Du vergibst Ränge und addierst sie, die kleinste Rangsumme gewinnt. Lautet die Vorgabe umgekehrt (höchste Punktzahl für den besten Wert), gewinnt die größte Summe. Lies deshalb immer zuerst die Vorgabe.',
   2,
   '{}',
   null,
@@ -35101,7 +35102,7 @@ values (
   'Ermittle die kritische Menge und die günstigere Variante. (5 P.)',
   'Gleichsetzen: 6.000 + 5x = 20x, also x = 6.000 / 15 = 400 Vorgänge.
 Bei 250 Vorgängen: Make 6.000 € + 1.250 € = 7.250 €, Buy 250 × 20 € = 5.000 €.
-250 liegt unter der kritischen Menge, also Buy ist um 2.250 € günstiger.',
+250 liegt unter der kritischen Menge, also ist Buy um 2.250 € günstiger.',
   2,
   '{}',
   null,
@@ -35130,11 +35131,11 @@ values (
   'marking',
   'Statt ein Helpdesk-System selbst zu entwickeln, prüft ein Maschinenbauer das Angebot eines Cloud-Anbieters.',
   'Markiere alle Aussagen, die laut Angebot zutreffen. (3 P.)',
-  'Enthalten sind Updates, tägliche Backups und E-Mail-Support. Nicht enthalten: Datenmigration und Schulung vor Ort. Diese Kosten gehören in den Make-or-Buy-Vergleich. Abgerechnet wird jährlich, die Mindestlaufzeit beträgt 12 Monate.',
+  'Enthalten sind Updates, tägliche Backups und E-Mail-Support. Nicht enthalten sind Datenmigration und Schulung vor Ort. Diese Kosten gehören deshalb in den Make-or-Buy-Vergleich. Abgerechnet wird jährlich, die Mindestlaufzeit beträgt 12 Monate.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Die Einrichtung kostet einmalig 400 €.","is_correct":true,"rationale":"„Setup fee: EUR 400 (one-time)“."},{"text":"Die Datenübernahme ist im Preis enthalten.","is_correct":false,"rationale":"„Not included: data migration“."},{"text":"Der Vertrag läuft mindestens 12 Monate.","is_correct":true,"rationale":"„Minimum contract term: 12 months“."},{"text":"Die Rechnung kommt jeden Monat.","is_correct":false,"rationale":"„billed annually“ heißt: jährliche Abrechnung."},{"text":"Tägliche Datensicherungen sind enthalten.","is_correct":true,"rationale":"„Included: ... daily backups“."},{"text":"Schulungen vor Ort sind enthalten.","is_correct":false,"rationale":"„Not included: ... on-site training“."}],"code":"CloudDesk Helpdesk - Offer\nPrice: EUR 29 per agent per month,\n       billed annually\nMinimum contract term: 12 months\nSetup fee: EUR 400 (one-time)\nIncluded: updates, daily backups,\n          e-mail support\nNot included: data migration,\n              on-site training\nHosting: data centre in Frankfurt (EU)","points":3}'::jsonb,
+  '{"choices":[{"text":"Die Einrichtung kostet einmalig 400 €.","is_correct":true,"rationale":"„Setup fee: EUR 400 (one-time)“."},{"text":"Die Datenübernahme ist im Preis enthalten.","is_correct":false,"rationale":"„Not included: data migration“."},{"text":"Der Vertrag läuft mindestens 12 Monate.","is_correct":true,"rationale":"„Minimum contract term: 12 months“."},{"text":"Die Rechnung kommt jeden Monat.","is_correct":false,"rationale":"„billed annually“ heißt, dass jährlich abgerechnet wird."},{"text":"Tägliche Datensicherungen sind enthalten.","is_correct":true,"rationale":"„Included: ... daily backups“."},{"text":"Schulungen vor Ort sind enthalten.","is_correct":false,"rationale":"„Not included: ... on-site training“."}],"code":"CloudDesk Helpdesk - Offer\nPrice: EUR 29 per agent per month,\n       billed annually\nMinimum contract term: 12 months\nSetup fee: EUR 400 (one-time)\nIncluded: updates, daily backups,\n          e-mail support\nNot included: data migration,\n              on-site training\nHosting: data centre in Frankfurt (EU)","points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -35316,7 +35317,7 @@ values (
   'table',
   'Ein Möbelhändler nimmt seinen neuen Webshop ab. Der Auftragnehmer hat nach Pflichtenheft geliefert, bei der Prüfung fallen fünf Punkte auf.',
   'Stufe jede Feststellung ein und gib die Folge für die Abnahme an. (5 P.)',
-  'Wesentliche Mängel (Kernfunktion gestört) berechtigen zur Verweigerung der Abnahme. Unwesentliche Mängel nicht: Sie werden mit Frist im Protokoll vorbehalten. Ein nicht vereinbarter Wunsch ist kein Mangel, sondern ein Änderungsantrag.',
+  'Wesentliche Mängel (Kernfunktion gestört) berechtigen zur Verweigerung der Abnahme. Unwesentliche Mängel tun das nicht. Sie werden mit einer Frist im Protokoll vorbehalten. Ein nicht vereinbarter Wunsch ist kein Mangel, sondern ein Änderungsantrag.',
   2,
   '{}',
   null,
@@ -35374,7 +35375,7 @@ values (
   'cloze',
   'Ein Krankenhaus plant die Einführung eines neuen Dienstplansystems und vergleicht vier Einführungsstrategien.',
   'Setze die passenden Begriffe ein. (4 P.)',
-  'Stichtag (Big Bang): alles auf einmal. Parallelbetrieb: beide Systeme gleichzeitig. Pilotbetrieb: ein Bereich startet komplett, die anderen folgen nach der Auswertung. Stufenweise: Modul für Modul.',
+  'Bei der Stichtagsumstellung (Big Bang) wechselt alles auf einmal. Im Parallelbetrieb laufen beide Systeme gleichzeitig. Im Pilotbetrieb startet ein Bereich komplett, die anderen folgen nach der Auswertung. Stufenweise heißt: Modul für Modul.',
   2,
   '{}',
   null,
@@ -35585,7 +35586,7 @@ values (
   'pairs',
   'Ein Entwicklungsteam wertet sein Projekt aus und nutzt dabei gängige Begriffe der Erfahrungssicherung.',
   'Ordne jedem Begriff seine Bedeutung zu. (5 P.)',
-  'Start - Stop - Continue übersetzt Erfahrungen direkt in Handlungen. Die Retrospektive ist die projektbegleitende Form in Scrum. Wirksam werden Lessons Learned erst, wenn sie zentral und auffindbar abgelegt sind.',
+  '„Start, Stop, Continue“ übersetzt Erfahrungen direkt in Handlungen. Die Retrospektive ist die projektbegleitende Form in Scrum. Wirksam werden Lessons Learned erst, wenn sie zentral und auffindbar abgelegt sind.',
   2,
   '{}',
   null,
@@ -35614,7 +35615,7 @@ values (
   'cloze',
   'Im Workshop soll eine Erfahrung so festgehalten werden, dass ein fremdes Projektteam danach handeln kann.',
   'Baue die Lesson aus Situation, Ursache und Empfehlung zusammen. (3 P.)',
-  'Eine brauchbare Lesson nennt Situation, Ursache und Empfehlung, konkret, ohne Schuldzuweisung und für andere Projekte verständlich. „Die Kommunikation muss besser werden“ wäre zu vage.',
+  'Eine brauchbare Lesson nennt Situation, Ursache und Empfehlung. Sie ist konkret, kommt ohne Schuldzuweisung aus und ist für andere Projekte verständlich. „Die Kommunikation muss besser werden“ wäre zu vage.',
   2,
   '{}',
   null,
@@ -35647,7 +35648,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"grid":[[{"text":"Botschaft"},{"text":"Seite der Nachricht"}],[{"text":"Der Drucker am Empfang druckt nicht."},{"gap":{"answers":["Sachinhalt"],"options":["Sachinhalt","Selbstoffenbarung","Beziehung","Appell"],"rationale":"Eine überprüfbare Tatsache: reine Sachinformation."}}],[{"text":"Ich bin genervt und stehe unter Zeitdruck."},{"gap":{"answers":["Selbstoffenbarung"],"options":["Selbstoffenbarung","Sachinhalt","Beziehung","Appell"],"rationale":"Die Absenderin gibt etwas über sich selbst preis."}}],[{"text":"Auf euren Support kann man sich nicht verlassen."},{"gap":{"answers":["Beziehung"],"options":["Beziehung","Sachinhalt","Selbstoffenbarung","Appell"],"rationale":"Sagt, was sie vom Empfänger hält: „schon wieder“ klingt nach Vorwurf."}}],[{"text":"Kümmert euch sofort darum!"},{"gap":{"answers":["Appell"],"options":["Appell","Sachinhalt","Selbstoffenbarung","Beziehung"],"rationale":"Die Aufforderung, etwas zu tun."}}]]}'::jsonb,
+  '{"points":4,"grid":[[{"text":"Botschaft"},{"text":"Seite der Nachricht"}],[{"text":"Der Drucker am Empfang druckt nicht."},{"gap":{"answers":["Sachinhalt"],"options":["Sachinhalt","Selbstoffenbarung","Beziehung","Appell"],"rationale":"Das ist eine überprüfbare Tatsache, also reine Sachinformation."}}],[{"text":"Ich bin genervt und stehe unter Zeitdruck."},{"gap":{"answers":["Selbstoffenbarung"],"options":["Selbstoffenbarung","Sachinhalt","Beziehung","Appell"],"rationale":"Die Absenderin gibt etwas über sich selbst preis."}}],[{"text":"Auf euren Support kann man sich nicht verlassen."},{"gap":{"answers":["Beziehung"],"options":["Beziehung","Sachinhalt","Selbstoffenbarung","Appell"],"rationale":"Sie zeigt, was sie vom Empfänger hält. Das „schon wieder“ klingt nach Vorwurf."}}],[{"text":"Kümmert euch sofort darum!"},{"gap":{"answers":["Appell"],"options":["Appell","Sachinhalt","Selbstoffenbarung","Beziehung"],"rationale":"Die Aufforderung, etwas zu tun."}}]]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -35676,7 +35677,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Störung im Kanal: Die schlechte Telefonverbindung verfälscht die Nachricht auf dem Weg zur Empfängerin.","points":2,"keywords":["Kanal","Verbindung","Störung","Rauschen","Empfang","gestört"]},{"text":"Kein gemeinsamer Zeichenvorrat: Die Kundin kennt die Fachbegriffe (CMS, Plugin) nicht und kann die Nachricht nicht entschlüsseln.","points":2,"keywords":["Zeichenvorrat","Fachbegriff","Fachsprache","decodieren","entschlüsseln","Fachwort"]},{"text":"Fehlende Rückmeldung: Der Techniker prüft nicht, ob die Nachricht richtig angekommen ist.","points":2,"keywords":["Rückmeldung","Feedback","nachfragen","Rückfrage","Kontrollfrage"]}],"sample_solution":"Erstens ist der Kanal gestört: Durch die schlechte Verbindung kommt nur ein Teil der Nachricht an. Zweitens fehlt ein gemeinsamer Zeichenvorrat: Die Kundin kennt die Fachbegriffe CMS und Plugin nicht und kann die Nachricht deshalb nicht entschlüsseln. Außerdem fehlt die Rückmeldung: Der Techniker fragt nicht nach, ob sie ihn verstanden hat."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Störung im Kanal: Die schlechte Telefonverbindung verfälscht die Nachricht auf dem Weg zur Empfängerin.","points":2,"keywords":["Kanal","Verbindung","Störung","Rauschen","Empfang","gestört"]},{"text":"Kein gemeinsamer Zeichenvorrat: Die Kundin kennt die Fachbegriffe (CMS, Plugin) nicht und kann die Nachricht nicht entschlüsseln.","points":2,"keywords":["Zeichenvorrat","Fachbegriff","Fachsprache","decodieren","entschlüsseln","Fachwort"]},{"text":"Fehlende Rückmeldung: Der Techniker prüft nicht, ob die Nachricht richtig angekommen ist.","points":2,"keywords":["Rückmeldung","Feedback","nachfragen","Rückfrage","Kontrollfrage"]}],"sample_solution":"Erstens ist der Kanal gestört: Durch die schlechte Verbindung kommt nur ein Teil der Nachricht an. Zweitens fehlt ein gemeinsamer Zeichenvorrat: Die Kundin kennt die Fachbegriffe CMS und Plugin nicht und kann die Nachricht deshalb nicht entschlüsseln. Außerdem fehlt die Rückmeldung, denn der Techniker fragt nicht nach, ob sie ihn verstanden hat."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -35701,7 +35702,7 @@ values (
   'cloze',
   'In der IT-Abteilung der Elbtal Logistik AG streiten zwei Administratoren seit Wochen über die Benennung von Servern. Die Teamleiterin vermutet, dass es eigentlich um etwas anderes geht.',
   'Setze die passenden Begriffe nach Watzlawick ein.',
-  'Das 2. Axiom nach Watzlawick: Jede Kommunikation hat einen Inhalts- und einen Beziehungsaspekt, wobei der Beziehungsaspekt den Inhaltsaspekt bestimmt. Solange nur über Servernamen gestritten wird, bleibt der eigentliche Konflikt ungelöst.',
+  'Das 2. Axiom nach Watzlawick lautet: Jede Kommunikation hat einen Inhalts- und einen Beziehungsaspekt, wobei der Beziehungsaspekt den Inhaltsaspekt bestimmt. Solange nur über Servernamen gestritten wird, bleibt der eigentliche Konflikt ungelöst.',
   2,
   '{}',
   null,
@@ -35730,7 +35731,7 @@ values (
   'pairs',
   'Du bereitest bei der Kessler & Brandt IT-Systemhaus GmbH das Erstgespräch mit der Steuerkanzlei Albers & Partner vor und planst den Ablauf.',
   'Ordne jeder Gesprächsphase ihr Ziel zu.',
-  'Jede Phase hat ein eigenes Ziel. Wer die Bedarfsermittlung überspringt, bietet eine Lösung an, die nicht zum Problem passt; ohne Abschluss bleibt offen, wie es weitergeht.',
+  'Jede Phase hat ein eigenes Ziel. Wer die Bedarfsermittlung überspringt, bietet eine Lösung an, die nicht zum Problem passt. Ohne Abschluss bleibt offen, wie es weitergeht.',
   2,
   '{}',
   null,
@@ -35788,7 +35789,7 @@ values (
   'open',
   'Ein Kunde der Pixelhafen Medien GmbH beschwert sich aufgebracht am Telefon: Seine neue Website sei „eine Katastrophe“, die Bestellungen kämen nicht mehr an.',
   'Beschreibe zwei Verhaltensweisen, mit denen du dieses Beschwerdegespräch zielführend führst.',
-  'Je beschriebener Verhaltensweise 2 Punkte, höchstens 4. Bei Beschwerden zuerst die Beziehungsebene beruhigen, dann die Sache klären und verbindlich abschließen.',
+  'Je beschriebener Verhaltensweise 2 Punkte, höchstens 4. Bei Beschwerden beruhigst du zuerst die Beziehungsebene, klärst dann die Sache und schließt verbindlich ab.',
   2,
   '{}',
   null,
@@ -35821,7 +35822,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":5,"cloze_text":"Nach der Begrüßung beginnt die {0}. Du lässt dir zuerst die {1} schildern: „Wie arbeiten Ihre Disponenten heute?“ Danach klärst du {2} wie Budget und Termin. Bevor du eine Lösung vorschlägst, {3} du das Ergebnis und lässt es bestätigen. Die Lösung begründest du mit ihrem {4} für den Kunden.","gaps":[{"answers":["Bedarfsermittlung"],"options":["Bedarfsermittlung","Nachbereitung","Einwandbehandlung"],"rationale":"Hier wird geklärt, was der Kunde braucht."},{"answers":["Ist-Situation"],"options":["Ist-Situation","Lösung","Rechnung"],"rationale":"Wie heute gearbeitet wird."},{"answers":["Rahmenbedingungen"],"options":["Rahmenbedingungen","Einwände","Gesprächsstörer"],"rationale":"Budget, Termin, Nutzerzahl."},{"answers":["fasst zusammen"],"options":["fasst zusammen","verkaufst","bagatellisierst"],"rationale":"Sichert, dass du richtig verstanden hast."},{"answers":["Nutzen"],"options":["Nutzen","Preis","Merkmal"],"rationale":"Merkmal allein überzeugt nicht. Der Nutzen schon."}]}'::jsonb,
+  '{"points":5,"cloze_text":"Nach der Begrüßung beginnt die {0}. Du lässt dir zuerst die {1} schildern: „Wie arbeiten Ihre Disponenten heute?“ Danach klärst du {2} wie Budget und Termin. Bevor du eine Lösung vorschlägst, {3} du das Ergebnis und lässt es bestätigen. Die Lösung begründest du mit ihrem {4} für den Kunden.","gaps":[{"answers":["Bedarfsermittlung"],"options":["Bedarfsermittlung","Nachbereitung","Einwandbehandlung"],"rationale":"Hier wird geklärt, was der Kunde braucht."},{"answers":["Ist-Situation"],"options":["Ist-Situation","Lösung","Rechnung"],"rationale":"Wie heute gearbeitet wird."},{"answers":["Rahmenbedingungen"],"options":["Rahmenbedingungen","Einwände","Gesprächsstörer"],"rationale":"Budget, Termin, Nutzerzahl."},{"answers":["fasst zusammen"],"options":["fasst zusammen","verkaufst","bagatellisierst"],"rationale":"Sichert, dass du richtig verstanden hast."},{"answers":["Nutzen"],"options":["Nutzen","Preis","Merkmal"],"rationale":"Ein Merkmal allein überzeugt nicht, der Nutzen schon."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -35846,7 +35847,7 @@ values (
   'open',
   'Die Kessler & Brandt IT-Systemhaus GmbH hat am Freitag die Postfächer eines englischsprachigen Kunden auf einen neuen Mailserver umgezogen. Am Montag trifft diese E-Mail ein.',
   'Nenne die drei Probleme, die die Kundin in der E-Mail beschreibt.',
-  'Je Nennung 1 Punkt. Vokabeln: shared calendar = gemeinsamer Kalender, attachment = Anhang, out-of-office reply = Abwesenheitsnotiz, twice = zweimal. Geantwortet wird wie in der Prüfung auf Deutsch.',
+  'Je Nennung 1 Punkt. Vokabeln: shared calendar = gemeinsamer Kalender, attachment = Anhang, out-of-office reply = Abwesenheitsnotiz, twice = zweimal. Du antwortest wie in der Prüfung auf Deutsch.',
   2,
   '{}',
   null,
@@ -35875,7 +35876,7 @@ values (
   'open',
   'Bei der Kessler & Brandt IT-Systemhaus GmbH trifft am Montagmorgen die Beschwerde einer Kundin ein. Seit dem Umzug ihrer Postfächer funktionieren drei Dinge nicht mehr.',
   'Beschreibe zwei Schritte, mit denen du professionell auf diese Beschwerde reagierst.',
-  'Je beschriebenem Schritt 2 Punkte, höchstens 4. Beschwerdebehandlung: zuhören, Verständnis zeigen, Sachverhalt klären, Lösung mit Termin anbieten, umsetzen und nachfassen. Wichtig: den Rückrufwunsch (before 4 pm = vor 16 Uhr) einhalten.',
+  'Je beschriebenem Schritt 2 Punkte, höchstens 4. Eine Beschwerde behandelst du so: zuhören, Verständnis zeigen, Sachverhalt klären, Lösung mit Termin anbieten, umsetzen und nachfassen. Halte dabei unbedingt den Rückrufwunsch ein (before 4 pm = vor 16 Uhr).',
   2,
   '{}',
   null,
@@ -35933,7 +35934,7 @@ values (
   'table',
   'Bei der Pixelhafen Medien GmbH führt ein Team aus fünf Personen das neue Ticketsystem ein. Die Projektleiterin notiert über mehrere Wochen ihre Beobachtungen.',
   'Trage zu jeder Beobachtung die Teamphase nach Tuckman und die passende Aufgabe der Leitung ein.',
-  'Forming: Orientierung. Die Leitung gibt Ziele und Struktur vor. Storming: Machtkämpfe. Die Leitung moderiert. Norming: Regeln entstehen. Die Leitung hält sie fest. Performing: Das Team arbeitet eingespielt. Die Leitung gibt Freiraum.',
+  'Im Forming sucht das Team Orientierung, die Leitung gibt Ziele und Struktur vor. Im Storming gibt es Machtkämpfe, die Leitung moderiert. Im Norming entstehen Regeln, die Leitung hält sie fest. Im Performing arbeitet das Team eingespielt, die Leitung gibt Freiraum.',
   2,
   '{}',
   null,
@@ -35962,7 +35963,7 @@ values (
   'open',
   'Für die Anbindung der neuen Lagerhalle stellt die Elbtal Logistik AG ein Projektteam aus sechs Personen zusammen, die sich bisher kaum kennen. Morgen ist das erste Treffen.',
   'Beschreibe zwei Maßnahmen, mit denen die Projektleitung das Team in der Forming-Phase unterstützt.',
-  'Je beschriebener Maßnahme 2 Punkte, höchstens 4. Im Forming sind die Mitglieder höflich, unsicher und abwartend. Die Leitung führt deshalb eng: kennenlernen lassen, Ziele erklären, Aufgaben und Regeln vorgeben.',
+  'Je beschriebener Maßnahme 2 Punkte, höchstens 4. Im Forming sind die Mitglieder höflich, unsicher und abwartend. Die Leitung führt deshalb eng: Sie lässt alle einander kennenlernen, erklärt die Ziele und gibt Aufgaben und Regeln vor.',
   2,
   '{}',
   null,
@@ -35995,7 +35996,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Zwei Kollegen diskutieren lautstark, wer die Netzplanung leiten darf.","is_correct":true,"rationale":"Machtkampf um Rollen: typisch für Storming."},{"text":"Beim ersten Treffen stellen sich alle vor und bleiben zurückhaltend.","is_correct":false,"rationale":"Höflich und abwartend. Das ist Forming."},{"text":"Die vorgeschlagene Aufgabenverteilung wird offen infrage gestellt.","is_correct":true,"rationale":"Zuständigkeiten werden ausgehandelt: Storming."},{"text":"Das Team einigt sich auf feste Regeln für die Dokumentation.","is_correct":false,"rationale":"Gemeinsame Regeln entstehen im Norming."},{"text":"Es bilden sich zwei Lager, die jeweils ihr eigenes Konzept durchsetzen wollen.","is_correct":true,"rationale":"Cliquenbildung und Streit um Ideen: Storming."},{"text":"Jeder kennt seine Aufgabe, Probleme löst das Team selbstständig.","is_correct":false,"rationale":"Eingespielte Zusammenarbeit: Performing."}]}'::jsonb,
+  '{"choices":[{"text":"Zwei Kollegen diskutieren lautstark, wer die Netzplanung leiten darf.","is_correct":true,"rationale":"Ein Machtkampf um Rollen ist typisch für das Storming."},{"text":"Beim ersten Treffen stellen sich alle vor und bleiben zurückhaltend.","is_correct":false,"rationale":"Höflich und abwartend verhält sich ein Team im Forming."},{"text":"Die vorgeschlagene Aufgabenverteilung wird offen infrage gestellt.","is_correct":true,"rationale":"Im Storming werden Zuständigkeiten ausgehandelt."},{"text":"Das Team einigt sich auf feste Regeln für die Dokumentation.","is_correct":false,"rationale":"Gemeinsame Regeln entstehen im Norming."},{"text":"Es bilden sich zwei Lager, die jeweils ihr eigenes Konzept durchsetzen wollen.","is_correct":true,"rationale":"Lagerbildung und Streit um Ideen gehören zum Storming."},{"text":"Jeder kennt seine Aufgabe, Probleme löst das Team selbstständig.","is_correct":false,"rationale":"Eingespielte Zusammenarbeit kennzeichnet das Performing."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -36049,7 +36050,7 @@ values (
   'open',
   'Deine Kollegin in der IT der Elbtal Logistik AG hat in dieser Woche zweimal Handscanner ausgegeben, ohne sie in die Inventarliste einzutragen. Heute wurde deshalb ein Gerät eine Stunde lang gesucht.',
   'Formuliere ein Feedback an die Kollegin nach der WWW-Methode (Wahrnehmung, Wirkung, Wunsch).',
-  'Je Teil 1 Punkt: Wahrnehmung (konkret, ohne „immer“ und ohne Bewertung der Person), Wirkung (was daraus folgte) und Wunsch (was sich ändern soll). Alles als Ich-Botschaft.',
+  'Je Teil 1 Punkt: Wahrnehmung (konkret, ohne „immer“ und ohne Bewertung der Person), Wirkung (was daraus folgte) und Wunsch (was sich ändern soll). Formuliere alles als Ich-Botschaft.',
   2,
   '{}',
   null,
@@ -36076,7 +36077,7 @@ values (
   'teamarbeit',
   'te-feedback',
   'open',
-  'Bei der Pixelhafen Medien GmbH hat ein Entwickler versehentlich die Live-Website eines Kunden überschrieben und den Fehler erst nach zwei Tagen gemeldet, und zwar aus Angst vor Ärger. Die Geschäftsführung will die Fehlerkultur verbessern.',
+  'Bei der Pixelhafen Medien GmbH hat ein Entwickler versehentlich die Live-Website eines Kunden überschrieben und den Fehler erst nach zwei Tagen gemeldet, weil er Angst vor Ärger hatte. Die Geschäftsführung will die Fehlerkultur verbessern.',
   'Erläutere zwei Vorteile einer offenen Fehlerkultur für die Agentur.',
   'Je erläutertem Vorteil 2 Punkte, höchstens 4. In einer guten Fehlerkultur gelten Fehler als Lernchance: Es wird nach Ursachen gefragt, nicht nach Schuldigen. Vertuschte Fehler werden dagegen größer.',
   2,
@@ -36107,7 +36108,7 @@ values (
   'cloze',
   'Zwei Schichtleiter der Elbtal Logistik AG streiten seit Monaten über die Verteilung der Handscanner. Inzwischen suchen beide Verbündete in ihren Teams und reden schlecht übereinander.',
   'Ergänze die Angaben zum Eskalationsmodell nach Glasl.',
-  'Glasl: 9 Stufen in 3 Phasen. Stufe 1-3 (win-win) lösen die Beteiligten noch selbst. Stufe 4-6 (win-lose) brauchen meist einen neutralen Dritten. Stufe 7-9 (lose-lose) lassen sich nur noch durch einen Machteingriff von außen stoppen.',
+  'Glasl unterscheidet 9 Stufen in 3 Phasen. Die Stufen 1 bis 3 (win-win) lösen die Beteiligten noch selbst. Die Stufen 4 bis 6 (win-lose) brauchen meist einen neutralen Dritten. Die Stufen 7 bis 9 (lose-lose) lassen sich nur noch durch einen Machteingriff von außen stoppen.',
   3,
   '{}',
   null,
@@ -36165,11 +36166,11 @@ values (
   'marking',
   'Die Pixelhafen Medien GmbH sucht Verstärkung für die IT-Administration. Der Entwurf der Stellenanzeige enthält die folgenden Formulierungen.',
   'Markiere alle Formulierungen, die gegen das Allgemeine Gleichbehandlungsgesetz (AGG) verstoßen können.',
-  'Das AGG verbietet Benachteiligungen wegen ethnischer Herkunft, Geschlecht, Religion oder Weltanschauung, Behinderung, Alter und sexueller Identität. Stellenanzeigen müssen deshalb neutral formuliert sein; Anforderungen brauchen einen sachlichen Bezug zur Tätigkeit.',
+  'Das AGG verbietet Benachteiligungen wegen ethnischer Herkunft, Geschlecht, Religion oder Weltanschauung, Behinderung, Alter und sexueller Identität. Stellenanzeigen müssen deshalb neutral formuliert sein, und Anforderungen brauchen einen sachlichen Bezug zur Tätigkeit.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"„Höchstalter 30 Jahre“","is_correct":true,"rationale":"Benachteiligung wegen des Alters ohne sachlichen Grund."},{"text":"„Fachinformatiker/in (m/w/d) für Systemintegration“","is_correct":false,"rationale":"Geschlechtsneutral formuliert, die Qualifikation ist eine sachliche Anforderung."},{"text":"„Deutsch als Muttersprache“","is_correct":true,"rationale":"Benachteiligt mittelbar wegen der ethnischen Herkunft: zulässig wäre „sehr gute Deutschkenntnisse“."},{"text":"„Sehr gute Deutschkenntnisse in Wort und Schrift“","is_correct":false,"rationale":"Eine Anforderung der Tätigkeit, die jeder unabhängig von der Herkunft erfüllen kann."},{"text":"„Wir suchen einen belastbaren jungen Mann“","is_correct":true,"rationale":"Benachteiligung wegen Geschlecht und Alter."},{"text":"„Führerschein Klasse B für Kundeneinsätze erforderlich“","is_correct":false,"rationale":"Sachlich durch die Tätigkeit begründet."}]}'::jsonb,
+  '{"choices":[{"text":"„Höchstalter 30 Jahre“","is_correct":true,"rationale":"Benachteiligung wegen des Alters ohne sachlichen Grund."},{"text":"„Fachinformatiker/in (m/w/d) für Systemintegration“","is_correct":false,"rationale":"Geschlechtsneutral formuliert, die Qualifikation ist eine sachliche Anforderung."},{"text":"„Deutsch als Muttersprache“","is_correct":true,"rationale":"Benachteiligt mittelbar wegen der ethnischen Herkunft. Zulässig wäre „sehr gute Deutschkenntnisse“."},{"text":"„Sehr gute Deutschkenntnisse in Wort und Schrift“","is_correct":false,"rationale":"Eine Anforderung der Tätigkeit, die jeder unabhängig von der Herkunft erfüllen kann."},{"text":"„Wir suchen einen belastbaren jungen Mann“","is_correct":true,"rationale":"Benachteiligung wegen Geschlecht und Alter."},{"text":"„Führerschein Klasse B für Kundeneinsätze erforderlich“","is_correct":false,"rationale":"Sachlich durch die Tätigkeit begründet."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -36223,7 +36224,7 @@ values (
   'open',
   'Ein Lieferant der Grünwerk Gartenbedarf GmbH verlangt für 20 Notebooks 5 % mehr als im Vorjahr. Der Einkaufsleiter sagt verärgert: „Entweder der alte Preis oder wir wechseln!“ Du sollst die nächste Verhandlungsrunde nach dem Harvard-Konzept vorbereiten.',
   'Erläutere zwei Prinzipien des Harvard-Konzepts und wie du sie in dieser Verhandlung anwendest.',
-  'Je erläutertem und angewendetem Prinzip 2 Punkte, höchstens 4. Die vier Prinzipien: Menschen und Probleme trennen, Interessen statt Positionen, Optionen zum beiderseitigen Vorteil, neutrale Kriterien. Die Drohung des Einkaufsleiters ist dagegen hartes Feilschen um Positionen.',
+  'Je erläutertem und angewendetem Prinzip 2 Punkte, höchstens 4. Die vier Prinzipien lauten: Menschen und Probleme trennen, Interessen statt Positionen, Optionen zum beiderseitigen Vorteil, neutrale Kriterien. Die Drohung des Einkaufsleiters ist dagegen hartes Feilschen um Positionen.',
   2,
   '{}',
   null,
@@ -36250,9 +36251,9 @@ values (
   'verhandlung',
   've-harvard',
   'numeric',
-  'Die Kessler & Brandt IT-Systemhaus GmbH braucht 50 Monitore. Lieferant B hat verbindlich 180,00 € je Stück angeboten. Das ist die BATNA. Lieferant A, mit dem gerade verhandelt wird, verlangt 200,00 € je Stück. Service und Garantie sind bei beiden gleich.',
+  'Die Kessler & Brandt IT-Systemhaus GmbH braucht 50 Monitore. Lieferant B hat verbindlich 180,00 € je Stück angeboten, das ist die BATNA. Lieferant A, mit dem gerade verhandelt wird, verlangt 200,00 € je Stück. Service und Garantie sind bei beiden gleich.',
   'Berechne, wie viel Prozent Rabatt Lieferant A mindestens geben muss, damit sein Angebot nicht teurer ist als die BATNA.',
-  'BATNA (Lieferant B): 50 × 180 € = 9.000 €. Lieferant A: 50 × 200 € = 10.000 €. Nötiger Nachlass: 10.000 € − 9.000 € = 1.000 €. Rabatt = 1.000 € / 10.000 € × 100 = 10 %. Ein schlechteres Ergebnis als die BATNA lohnt sich nicht. Dann kauft das Systemhaus bei B.',
+  'BATNA (Lieferant B): 50 × 180 € = 9.000 €. Lieferant A: 50 × 200 € = 10.000 €. Nötiger Nachlass: 10.000 € − 9.000 € = 1.000 €. Rabatt = 1.000 € / 10.000 € × 100 = 10 %. Ein schlechteres Ergebnis als die BATNA lohnt sich nicht, dann kauft das Systemhaus lieber bei B.',
   2,
   '{}',
   null,
@@ -36281,7 +36282,7 @@ values (
   'open',
   'Die Kessler & Brandt IT-Systemhaus GmbH hat einem englischsprachigen Kunden ein Managed-Backup für 89 € im Monat angeboten. Die Geschäftsführerin antwortet per E-Mail.',
   'Nenne die drei Einwände, die die Kundin gegen das Angebot hat.',
-  'Je Nennung 1 Punkt. Vokabeln: too expensive = zu teuer, setup = Einrichtung, to disturb = stören, safe = sicher. Jeder Einwand wird einzeln behandelt. Erst nachfragen, dann mit Nutzen argumentieren.',
+  'Je Nennung 1 Punkt. Vokabeln: too expensive = zu teuer, setup = Einrichtung, to disturb = stören, safe = sicher. Behandle jeden Einwand einzeln: erst nachfragen, dann mit dem Nutzen argumentieren.',
   2,
   '{}',
   null,
@@ -36339,7 +36340,7 @@ values (
   'open',
   'Ein Filialleiter der Grünwerk Gartenbedarf GmbH lehnt die neuen Kassen-Tablets ab: „Die sind viel zu kompliziert für meine Leute.“',
   'Beschreibe zwei Methoden der Einwandbehandlung und formuliere jeweils eine passende Antwort.',
-  'Je Methode mit passender Antwort 2 Punkte, höchstens 4. Methoden: Rückfrage (Hintergrund klären), Ja-aber (zustimmen und ergänzen), Bumerang (Einwand wird zum Argument), Referenz (zufriedene Anwender nennen). Nie direkt widersprechen.',
+  'Je Methode mit passender Antwort 2 Punkte, höchstens 4. Zur Wahl stehen Rückfrage (Hintergrund klären), Ja-aber (zustimmen und ergänzen), Bumerang (Einwand wird zum Argument) und Referenz (zufriedene Anwender nennen). Widersprich nie direkt.',
   2,
   '{}',
   null,
@@ -36368,7 +36369,7 @@ values (
   'open',
   'Du sollst der Geschäftsführung der Elbtal Logistik AG in zehn Minuten vorstellen, warum die Disposition neue Arbeitsplatzrechner braucht. Die Zuhörer sind Kaufleute ohne IT-Hintergrund.',
   'Beschreibe zwei Maßnahmen, mit denen du die Präsentation adressatengerecht gestaltest.',
-  'Je beschriebener Maßnahme 2 Punkte, höchstens 4. Adressatengerecht heißt: Sprache, Tiefe und Beispiele an die Zuhörer anpassen. Entscheider brauchen Nutzen, Kosten, Risiken und eine Empfehlung, keine Technikdetails.',
+  'Je beschriebener Maßnahme 2 Punkte, höchstens 4. Adressatengerecht heißt, Sprache, Tiefe und Beispiele an die Zuhörer anzupassen. Entscheider brauchen Nutzen, Kosten, Risiken und eine Empfehlung, keine Technikdetails.',
   2,
   '{}',
   null,
@@ -36426,7 +36427,7 @@ values (
   'matching',
   'Du gliederst für die Kessler & Brandt IT-Systemhaus GmbH die Präsentation des neuen IT-Konzepts vor der Steuerkanzlei Albers & Partner.',
   'Ordne die Bausteine dem richtigen Teil der Präsentation zu.',
-  'Einleitung: Aufmerksamkeit gewinnen, Thema und Ablauf nennen. Hauptteil: Inhalte logisch aufbauen und belegen. Schluss: Kernaussagen zusammenfassen und zum Handeln auffordern.',
+  'In der Einleitung gewinnst du Aufmerksamkeit und nennst Thema und Ablauf. Im Hauptteil baust du die Inhalte logisch auf und belegst sie. Im Schluss fasst du die Kernaussagen zusammen und forderst zum Handeln auf.',
   2,
   '{}',
   null,
@@ -36455,7 +36456,7 @@ values (
   'table',
   'Für die Website eines Kunden sucht die Pixelhafen Medien GmbH Fotos mit Creative-Commons-Lizenz. Die Website dient dem Verkauf, einzelne Fotos sollen zugeschnitten und eingefärbt werden.',
   'Trage für jede Lizenz ein, was erlaubt ist.',
-  'CC-Bausteine: BY = Namensnennung (immer nötig), SA = Weitergabe unter gleicher Lizenz, NC = nicht kommerziell, ND = keine Bearbeitung. Für eine Verkaufs-Website mit bearbeiteten Fotos eignen sich CC BY und, mit der Auflage gleicher Lizenz: CC BY-SA.',
+  'CC-Bausteine: BY = Namensnennung (immer nötig), SA = Weitergabe unter gleicher Lizenz, NC = nicht kommerziell, ND = keine Bearbeitung. Für eine Verkaufs-Website mit bearbeiteten Fotos eignen sich CC BY und, mit der Auflage gleicher Lizenz, CC BY-SA.',
   2,
   '{}',
   null,
@@ -36484,11 +36485,11 @@ values (
   'open',
   'Die Grünwerk Gartenbedarf GmbH sucht ein NAS für die neue Filiale. Bei der Recherche im Mai 2026 findest du diesen Beitrag.',
   'Bewerte die Quelle: Beschreibe zwei Gründe, warum sie als Grundlage für die Kaufentscheidung nicht ausreicht.',
-  'Je beschriebenem Grund 2 Punkte, höchstens 4. Quellen werden nach Aktualität, Urheber, Objektivität, Nachprüfbarkeit und Relevanz bewertet. Herstellerangaben immer mit einer unabhängigen zweiten Quelle abgleichen (most reliable = am zuverlässigsten, independent tests = unabhängige Tests).',
+  'Je beschriebenem Grund 2 Punkte, höchstens 4. Quellen werden nach Aktualität, Urheber, Objektivität, Nachprüfbarkeit und Relevanz bewertet. Gleiche Herstellerangaben immer mit einer unabhängigen zweiten Quelle ab (most reliable = am zuverlässigsten, independent tests = unabhängige Tests).',
   2,
   '{}',
   null,
-  '{"code":"SpeedyNAS Blog - posted 14 March 2019\nAuthor: SpeedyNAS Marketing Team\n\n\"Our SpeedyNAS 400 is the fastest and\nmost reliable storage on the market.\nIndependent tests are not necessary -\ntrust our experience!\"","points":4,"criteria":[{"text":"Objektivität: Der Hersteller schreibt über sein eigenes Produkt und hat ein Verkaufsinteresse.","points":2,"keywords":["Hersteller","objektiv","Verkaufsinteresse","Werbung","Marketing","neutral"]},{"text":"Aktualität: Der Beitrag stammt von 2019 und ist für Hardware veraltet.","points":2,"keywords":["aktuell","veraltet","2019","Aktualität","Datum"]},{"text":"Nachprüfbarkeit: Es gibt keine Belege, unabhängige Tests werden sogar abgelehnt.","points":2,"keywords":["Beleg","nachprüfbar","unabhängig","Nachweis","überprüfen","Tests"]}],"sample_solution":"Die Quelle ist nicht objektiv: Der Text stammt vom Marketing des Herstellers, der sein Produkt verkaufen will. Außerdem ist sie nicht aktuell: Der Beitrag ist von 2019 und damit sieben Jahre alt. Hinzu kommt, dass die Behauptungen nicht belegt sind; unabhängige Tests werden sogar für unnötig erklärt."}'::jsonb,
+  '{"code":"SpeedyNAS Blog - posted 14 March 2019\nAuthor: SpeedyNAS Marketing Team\n\n\"Our SpeedyNAS 400 is the fastest and\nmost reliable storage on the market.\nIndependent tests are not necessary -\ntrust our experience!\"","points":4,"criteria":[{"text":"Objektivität: Der Hersteller schreibt über sein eigenes Produkt und hat ein Verkaufsinteresse.","points":2,"keywords":["Hersteller","objektiv","Verkaufsinteresse","Werbung","Marketing","neutral"]},{"text":"Aktualität: Der Beitrag stammt von 2019 und ist für Hardware veraltet.","points":2,"keywords":["aktuell","veraltet","2019","Aktualität","Datum"]},{"text":"Nachprüfbarkeit: Es gibt keine Belege, unabhängige Tests werden sogar abgelehnt.","points":2,"keywords":["Beleg","nachprüfbar","unabhängig","Nachweis","überprüfen","Tests"]}],"sample_solution":"Die Quelle ist nicht objektiv: Der Text stammt vom Marketing des Herstellers, der sein Produkt verkaufen will. Außerdem ist sie nicht aktuell: Der Beitrag ist von 2019 und damit sieben Jahre alt. Hinzu kommt, dass die Behauptungen nicht belegt sind. Unabhängige Tests werden sogar für unnötig erklärt."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -36517,7 +36518,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Müller, A. (2024): Netzwerke planen. 3. Aufl., Bonn: IT-Verlag.","is_correct":false,"rationale":"Autor, Jahr, Titel, Auflage, Ort und Verlag: vollständig für ein Buch."},{"text":"www.irgendwo.de","is_correct":true,"rationale":"Autor, Titel, genaue URL und Abrufdatum fehlen."},{"text":"BSI (2025): Ransomware - Maßnahmenkatalog. https://www.bsi.bund.de/ransomware, abgerufen am 12.05.2026.","is_correct":false,"rationale":"Herausgeber, Jahr, Titel, URL und Abrufdatum sind genannt."},{"text":"Google-Suche nach „VLAN“","is_correct":true,"rationale":"Eine Suchmaschine ist keine Quelle: angegeben wird die gefundene Seite."},{"text":"Schmidt, T. (2023): VLAN-Grundlagen. https://example.org/vlan","is_correct":true,"rationale":"Bei Internetquellen fehlt hier das Abrufdatum."},{"text":"Eigene Messung der Übertragungsrate am 03.06.2026, Protokoll im Anhang.","is_correct":false,"rationale":"Eine eigene Erhebung ist eine Primärquelle und nachvollziehbar belegt."}]}'::jsonb,
+  '{"choices":[{"text":"Müller, A. (2024): Netzwerke planen. 3. Aufl., Bonn: IT-Verlag.","is_correct":false,"rationale":"Mit Autor, Jahr, Titel, Auflage, Ort und Verlag ist die Angabe für ein Buch vollständig."},{"text":"www.irgendwo.de","is_correct":true,"rationale":"Autor, Titel, genaue URL und Abrufdatum fehlen."},{"text":"BSI (2025): Ransomware: Maßnahmenkatalog. https://www.bsi.bund.de/ransomware, abgerufen am 12.05.2026.","is_correct":false,"rationale":"Herausgeber, Jahr, Titel, URL und Abrufdatum sind genannt."},{"text":"Google-Suche nach „VLAN“","is_correct":true,"rationale":"Eine Suchmaschine ist keine Quelle. Angegeben wird die gefundene Seite."},{"text":"Schmidt, T. (2023): VLAN-Grundlagen. https://example.org/vlan","is_correct":true,"rationale":"Hier fehlt das Abrufdatum, das zu jeder Internetquelle gehört."},{"text":"Eigene Messung der Übertragungsrate am 03.06.2026, Protokoll im Anhang.","is_correct":false,"rationale":"Eine eigene Erhebung ist eine Primärquelle und nachvollziehbar belegt."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -36546,7 +36547,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Pos. 1: 6 Monitor 27 Zoll × 189,00 € = 1.134,00 €, USt 19 %","is_correct":false,"rationale":"Menge, Einzelpreis und Steuersatz stimmen mit der Bestellung überein."},{"text":"Pos. 2: 6 Dockingstation × 139,00 € = 834,00 €, USt 19 %","is_correct":true,"rationale":"Bestellt wurde zu 129,00 €. Der Einzelpreis ist 10,00 € zu hoch."},{"text":"Pos. 3: 15 HDMI-Kabel 2 m × 7,50 € = 112,50 €, USt 19 %","is_correct":true,"rationale":"Bestellt und geliefert wurden 12 Stück, berechnet werden 15."},{"text":"Pos. 4: 2 Fachbuch Netzwerktechnik × 40,00 € = 80,00 €, USt 19 %","is_correct":true,"rationale":"Für Bücher gilt der ermäßigte Steuersatz von 7 %."},{"text":"Pos. 5: Versand frei Haus = 0,00 €","is_correct":false,"rationale":"Frei Haus war vereinbart. Es dürfen keine Versandkosten anfallen."}],"table":[["Bestellung","Menge","Einzelpreis netto","USt"],["Monitor 27 Zoll","6","189,00 €","19 %"],["Dockingstation","6","129,00 €","19 %"],["HDMI-Kabel 2 m","12","7,50 €","19 %"],["Fachbuch Netzwerktechnik","2","40,00 €","7 %"]]}'::jsonb,
+  '{"choices":[{"text":"Pos. 1: 6 Monitor 27 Zoll × 189,00 € = 1.134,00 €, USt 19 %","is_correct":false,"rationale":"Menge, Einzelpreis und Steuersatz stimmen mit der Bestellung überein."},{"text":"Pos. 2: 6 Dockingstation × 139,00 € = 834,00 €, USt 19 %","is_correct":true,"rationale":"Bestellt wurde zu 129,00 €. Der Einzelpreis ist 10,00 € zu hoch."},{"text":"Pos. 3: 15 HDMI-Kabel 2 m × 7,50 € = 112,50 €, USt 19 %","is_correct":true,"rationale":"Bestellt und geliefert wurden 12 Stück, berechnet werden 15."},{"text":"Pos. 4: 2 Fachbuch Netzwerktechnik × 40,00 € = 80,00 €, USt 19 %","is_correct":true,"rationale":"Für Bücher gilt der ermäßigte Steuersatz von 7 %."},{"text":"Pos. 5: Versand frei Haus = 0,00 €","is_correct":false,"rationale":"Frei Haus war vereinbart, deshalb sind 0,00 € Versandkosten richtig."}],"table":[["Bestellung","Menge","Einzelpreis netto","USt"],["Monitor 27 Zoll","6","189,00 €","19 %"],["Dockingstation","6","129,00 €","19 %"],["HDMI-Kabel 2 m","12","7,50 €","19 %"],["Fachbuch Netzwerktechnik","2","40,00 €","7 %"]]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -36658,7 +36659,7 @@ values (
   'open',
   'Auf der Rechnung eines Lieferanten der Pixelhafen Medien GmbH ist unten rechts ein QR-Code mit der Beschriftung „GiroCode“ abgedruckt.',
   'Nenne drei Angaben, die im GiroCode gespeichert sind.',
-  'Je Nennung 1 Punkt, höchstens 3. Der GiroCode ist ein QR-Code mit den Daten einer SEPA-Überweisung. Die Banking-App füllt die Überweisung nach dem Scannen aus: Tippfehler entfallen, und der Lieferant kann die Zahlung über den Verwendungszweck zuordnen.',
+  'Je Nennung 1 Punkt, höchstens 3. Der GiroCode ist ein QR-Code mit den Daten einer SEPA-Überweisung. Die Banking-App füllt die Überweisung nach dem Scannen aus. So entfallen Tippfehler, und der Lieferant kann die Zahlung über den Verwendungszweck zuordnen.',
   2,
   '{}',
   null,
@@ -36691,7 +36692,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Vorteil: schnellere, automatische Verarbeitung ohne Abtippen","points":1,"keywords":["schneller","automatisch","Zeitersparnis","effizient","abtippen"]},{"text":"Vorteil: geringere Kosten für Papier, Druck, Porto und Ablage","points":1,"keywords":["Papier","Porto","Druckkosten","Kostenersparnis"]},{"text":"Vorteil: weniger Erfassungsfehler, kein Medienbruch","points":1,"keywords":["Fehler","Medienbruch","Tippfehler"]},{"text":"Vorteil: Rechnungen sind schnell auffindbar und nachverfolgbar","points":1,"keywords":["auffindbar","nachverfolgen","Archiv","Zugriff","wiederfinden"]},{"text":"Nachteil: Kosten für Software und Einführung","points":1,"keywords":["Anschaffung","Investition","Einführung","Software","Lizenz"]},{"text":"Nachteil: Schulungsaufwand und Vorbehalte der Beschäftigten","points":1,"keywords":["Schulung","schulen","geschult","Vorbehalte","Einarbeitung","Akzeptanz","Umgewöhnung"]},{"text":"Nachteil: Abhängigkeit von der IT und Sicherheitsrisiken","points":1,"keywords":["abhängig","Ausfall","Sicherheitsrisiko","Angriff","Datensicherheit"]}],"sample_solution":"Vorteile: Die Rechnungen werden automatisch eingelesen und dadurch schneller bearbeitet; außerdem entfallen Kosten für Papier, Porto und Ablage. Nachteile: Die Umstellung kostet Geld für Software und Einführung, und die Beschäftigten müssen geschult werden."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Vorteil: schnellere, automatische Verarbeitung ohne Abtippen","points":1,"keywords":["schneller","automatisch","Zeitersparnis","effizient","abtippen"]},{"text":"Vorteil: geringere Kosten für Papier, Druck, Porto und Ablage","points":1,"keywords":["Papier","Porto","Druckkosten","Kostenersparnis"]},{"text":"Vorteil: weniger Erfassungsfehler, kein Medienbruch","points":1,"keywords":["Fehler","Medienbruch","Tippfehler"]},{"text":"Vorteil: Rechnungen sind schnell auffindbar und nachverfolgbar","points":1,"keywords":["auffindbar","nachverfolgen","Archiv","Zugriff","wiederfinden"]},{"text":"Nachteil: Kosten für Software und Einführung","points":1,"keywords":["Anschaffung","Investition","Einführung","Software","Lizenz"]},{"text":"Nachteil: Schulungsaufwand und Vorbehalte der Beschäftigten","points":1,"keywords":["Schulung","schulen","geschult","Vorbehalte","Einarbeitung","Akzeptanz","Umgewöhnung"]},{"text":"Nachteil: Abhängigkeit von der IT und Sicherheitsrisiken","points":1,"keywords":["abhängig","Ausfall","Sicherheitsrisiko","Angriff","Datensicherheit"]}],"sample_solution":"Vorteile: Die Rechnungen werden automatisch eingelesen und dadurch schneller bearbeitet. Außerdem entfallen Kosten für Papier, Porto und Ablage. Nachteile: Die Umstellung kostet Geld für Software und Einführung, und die Beschäftigten müssen geschult werden."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -36778,7 +36779,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Fortlaufende Rechnungsnummer","is_correct":true,"rationale":"Pflichtangabe. Jede Rechnung muss eindeutig sein."},{"text":"Steuernummer oder USt-IdNr. des Systemhauses","is_correct":true,"rationale":"Pflichtangabe des leistenden Unternehmens."},{"text":"Telefonnummer des Sachbearbeiters","is_correct":false,"rationale":"Kundenfreundlich, aber nicht vorgeschrieben."},{"text":"Ausstellungsdatum der Rechnung","is_correct":true,"rationale":"Pflichtangabe."},{"text":"Zeitpunkt der Lieferung oder Leistung","is_correct":true,"rationale":"Pflichtangabe, auch wenn er mit dem Rechnungsdatum übereinstimmt."},{"text":"GiroCode für die Überweisung","is_correct":false,"rationale":"Ein freiwilliger Service für den Kunden."},{"text":"Menge und Bezeichnung der Leistung","is_correct":true,"rationale":"Pflichtangabe. Der Kunde muss prüfen können, was berechnet wird."},{"text":"Steuersatz und Steuerbetrag","is_correct":true,"rationale":"Pflichtangabe, zusammen mit dem Nettobetrag je Steuersatz."},{"text":"Unterschrift der Geschäftsführung","is_correct":false,"rationale":"Rechnungen müssen nicht unterschrieben werden."}],"points":4}'::jsonb,
+  '{"choices":[{"text":"Fortlaufende Rechnungsnummer","is_correct":true,"rationale":"Pflichtangabe, denn jede Rechnung muss eindeutig zuzuordnen sein."},{"text":"Steuernummer oder USt-IdNr. des Systemhauses","is_correct":true,"rationale":"Pflichtangabe des leistenden Unternehmens."},{"text":"Telefonnummer des Sachbearbeiters","is_correct":false,"rationale":"Kundenfreundlich, aber nicht vorgeschrieben."},{"text":"Ausstellungsdatum der Rechnung","is_correct":true,"rationale":"Pflichtangabe."},{"text":"Zeitpunkt der Lieferung oder Leistung","is_correct":true,"rationale":"Pflichtangabe, auch wenn er mit dem Rechnungsdatum übereinstimmt."},{"text":"GiroCode für die Überweisung","is_correct":false,"rationale":"Ein freiwilliger Service für den Kunden."},{"text":"Menge und Bezeichnung der Leistung","is_correct":true,"rationale":"Pflichtangabe, denn der Kunde muss prüfen können, was berechnet wird."},{"text":"Steuersatz und Steuerbetrag","is_correct":true,"rationale":"Pflichtangabe, zusammen mit dem Nettobetrag je Steuersatz."},{"text":"Unterschrift der Geschäftsführung","is_correct":false,"rationale":"Rechnungen müssen nicht unterschrieben werden."}],"points":4}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -36861,7 +36862,7 @@ values (
   'open',
   'Für die Lagerverwaltung nutzt die Elbtal Logistik AG eine Spezialsoftware, die nur ein einziger Hersteller anbietet. Der Hersteller kündigt eine Preiserhöhung von 25 % an.',
   'Erläutere zwei Nachteile, die ein Angebotsmonopol für die Kunden hat.',
-  'Je erläutertem Nachteil 2 Punkte, höchstens 4. Im Monopol steht ein Anbieter vielen Nachfragern gegenüber. Seine Preismacht ist nur durch die Zahlungsbereitschaft der Kunden begrenzt; Wettbewerb als Antrieb für Qualität und Innovation fehlt.',
+  'Je erläutertem Nachteil 2 Punkte, höchstens 4. Im Monopol steht ein Anbieter vielen Nachfragern gegenüber. Seine Preismacht ist nur durch die Zahlungsbereitschaft der Kunden begrenzt, und der Wettbewerb als Antrieb für Qualität und Innovation fehlt.',
   2,
   '{}',
   null,
@@ -36948,11 +36949,11 @@ values (
   'cloze',
   'Eine Mitarbeiterin im Kundenservice der Grünwerk Gartenbedarf GmbH soll künftig mobil arbeiten.',
   'Wähle für jede Lücke den passenden Begriff.',
-  'Bedürfnis (empfundener Mangel) → Bedarf (Bedürfnis mit Kaufkraft) → Nachfrage (Bedarf wird am Markt wirksam). Offener Bedarf wird genannt, latenter Bedarf ist unbewusst: gute Beratung macht ihn sichtbar.',
+  'Bedürfnis (empfundener Mangel) → Bedarf (Bedürfnis mit Kaufkraft) → Nachfrage (Bedarf wird am Markt wirksam). Offener Bedarf wird genannt, latenter Bedarf ist unbewusst. Gute Beratung macht ihn sichtbar.',
   2,
   '{}',
   null,
-  '{"points":4,"cloze_text":"Die Mitarbeiterin empfindet es als Mangel, zu Hause nicht auf das Shopsystem zugreifen zu können. Das ist ein {0}. Die Geschäftsführung stellt 1.200 € je Arbeitsplatz bereit: Mit der Kaufkraft wird daraus {1}. Mit der Bestellung der Notebooks beim Händler entsteht {2}. Dass auch ein VPN-Zugang nötig ist, hat niemand bedacht. Das ist ein {3} Bedarf.","gaps":[{"answers":["Bedürfnis"],"options":["Bedürfnis","Bedarf","Angebot"],"rationale":"Ein empfundener Mangel mit dem Wunsch, ihn zu beheben."},{"answers":["Bedarf"],"options":["Bedarf","Nachfrage","ein Bedürfnis"],"rationale":"Bedürfnis plus Kaufkraft."},{"answers":["Nachfrage"],"options":["Nachfrage","Bedarf","ein Bedürfnis"],"rationale":"Bedarf, der am Markt wirksam wird."},{"answers":["latenter"],"options":["latenter","offener","gesättigter"],"rationale":"Vorhanden, aber dem Kunden nicht bewusst."}]}'::jsonb,
+  '{"points":4,"cloze_text":"Die Mitarbeiterin empfindet es als Mangel, zu Hause nicht auf das Shopsystem zugreifen zu können. Das ist ein {0}. Die Geschäftsführung stellt 1.200 € je Arbeitsplatz bereit. Mit dieser Kaufkraft wird daraus {1}. Mit der Bestellung der Notebooks beim Händler entsteht {2}. Dass auch ein VPN-Zugang nötig ist, hat niemand bedacht. Das ist ein {3} Bedarf.","gaps":[{"answers":["Bedürfnis"],"options":["Bedürfnis","Bedarf","Angebot"],"rationale":"Ein empfundener Mangel mit dem Wunsch, ihn zu beheben."},{"answers":["Bedarf"],"options":["Bedarf","Nachfrage","ein Bedürfnis"],"rationale":"Bedürfnis plus Kaufkraft."},{"answers":["Nachfrage"],"options":["Nachfrage","Bedarf","ein Bedürfnis"],"rationale":"Bedarf, der am Markt wirksam wird."},{"answers":["latenter"],"options":["latenter","offener","gesättigter"],"rationale":"Vorhanden, aber dem Kunden nicht bewusst."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -36977,7 +36978,7 @@ values (
   'table',
   'Die Kessler & Brandt IT-Systemhaus GmbH ermittelt bei mehreren Kunden den Bedarf. Für jede Situation soll die Methode gewählt werden, die am besten passt.',
   'Wähle zu jeder Situation die passende Methode.',
-  'Interview: tief, aber zeitaufwendig. Fragebogen: viele Personen, vergleichbar, keine Rückfragen. Beobachtung: echte Abläufe. Dokumente prüfen: Inventarlisten, Handbücher, Verträge. Workshop: mehrere Abteilungen einigen sich gemeinsam.',
+  'Das Interview geht in die Tiefe, kostet aber Zeit. Der Fragebogen erreicht viele Personen und ist vergleichbar, erlaubt aber keine Rückfragen. Die Beobachtung zeigt echte Abläufe, Dokumente wie Inventarlisten zeigen den Bestand. Im Workshop einigen sich mehrere Abteilungen.',
   2,
   '{}',
   null,
@@ -37035,7 +37036,7 @@ values (
   'table',
   'Die Pixelhafen Medien GmbH ordnet ihre vier Leistungen in die BCG-Matrix ein, um zu entscheiden, wo sie investiert.',
   'Trage für jede Leistung das Feld der Matrix und die passende Strategie ein.',
-  'BCG-Matrix: Question Marks (hohes Wachstum, kleiner Anteil) fördern oder aufgeben, Stars (hoch, groß) investieren, Cash Cows (niedrig, groß) Gewinne abschöpfen, Poor Dogs (niedrig, klein) aufgeben. Die Cash Cows finanzieren die Stars und Question Marks.',
+  'BCG-Matrix: Question Marks (hohes Wachstum, kleiner Anteil) werden gefördert oder aufgegeben, in Stars (hoch, groß) wird investiert, bei Cash Cows (niedrig, groß) schöpft man Gewinne ab, Poor Dogs (niedrig, klein) gibt man auf. Die Cash Cows finanzieren die Stars und Question Marks.',
   3,
   '{}',
   null,
@@ -37064,7 +37065,7 @@ values (
   'open',
   'Die Pixelhafen Medien GmbH bringt ein eigenes Baukastensystem für Websites auf den Markt und diskutiert den Einführungspreis.',
   'Erläutere den Unterschied zwischen der Penetrationsstrategie und der Abschöpfungsstrategie (Skimming).',
-  'Je richtig erläuterter Strategie 2 Punkte. Penetration: niedrig einsteigen, später erhöhen; sinnvoll bei viel Konkurrenz. Abschöpfung: hoch einsteigen, später senken; sinnvoll bei neuartigen Produkten ohne Konkurrenz.',
+  'Je richtig erläuterter Strategie 2 Punkte. Penetration heißt niedrig einsteigen und später erhöhen, das ist sinnvoll bei viel Konkurrenz. Abschöpfung heißt hoch einsteigen und später senken, das ist sinnvoll bei neuartigen Produkten ohne Konkurrenz.',
   2,
   '{}',
   null,
@@ -37122,11 +37123,11 @@ values (
   'open',
   'Die ABC-Analyse der Kessler & Brandt IT-Systemhaus GmbH zeigt: Zwei von fünf Kunden bringen 75 % des Umsatzes, der kleinste Kunde nur 5 %.',
   'Erläutere zwei Schlussfolgerungen, die das Systemhaus aus diesem Ergebnis ziehen kann.',
-  'Je erläuterter Schlussfolgerung 2 Punkte, höchstens 4. Die ABC-Analyse trennt Wichtiges von Unwichtigem: Aufwand dort einsetzen, wo der Wert liegt (A), und dort sparen, wo er gering ist (C).',
+  'Je erläuterter Schlussfolgerung 2 Punkte, höchstens 4. Die ABC-Analyse trennt Wichtiges von Unwichtigem: Setze Aufwand dort ein, wo der Wert liegt (A), und spare dort, wo er gering ist (C).',
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"A-Kunden intensiv und persönlich betreuen, weil sie den Großteil des Umsatzes bringen.","points":2,"keywords":["A-Kunden","intensiv","persönlich","Key Account","bevorzugt"]},{"text":"C-Kunden standardisiert und kostengünstig betreuen, z. B. über Ticketsystem und Standardverträge.","points":2,"keywords":["C-Kunden","standardisiert","kostengünstig","effizient","Ticketsystem"]},{"text":"Abhängigkeit erkennen: Fällt ein A-Kunde weg, fehlt ein großer Teil des Umsatzes. Also weitere Kunden aufbauen.","points":2,"keywords":["abhängig","Risiko","Wegfall","Klumpenrisiko"]},{"text":"B-Kunden gezielt zu A-Kunden entwickeln.","points":2,"keywords":["B-Kunden","entwickeln","ausbauen","Potenzial"]}],"sample_solution":"Die beiden A-Kunden werden besonders intensiv und persönlich betreut, zum Beispiel mit festen Ansprechpartnern, weil an ihnen drei Viertel des Umsatzes hängen. C-Kunden werden dagegen standardisiert und kostengünstig über das Ticketsystem betreut. Zugleich zeigt die Analyse ein Risiko: Der Wegfall eines A-Kunden würde das Systemhaus hart treffen."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"A-Kunden intensiv und persönlich betreuen, weil sie den Großteil des Umsatzes bringen.","points":2,"keywords":["A-Kunden","intensiv","persönlich","Key Account","bevorzugt"]},{"text":"C-Kunden standardisiert und kostengünstig betreuen, z. B. über Ticketsystem und Standardverträge.","points":2,"keywords":["C-Kunden","standardisiert","kostengünstig","effizient","Ticketsystem"]},{"text":"Abhängigkeit erkennen: Fällt ein A-Kunde weg, fehlt ein großer Teil des Umsatzes. Deshalb weitere Kunden aufbauen.","points":2,"keywords":["abhängig","Risiko","Wegfall","Klumpenrisiko"]},{"text":"B-Kunden gezielt zu A-Kunden entwickeln.","points":2,"keywords":["B-Kunden","entwickeln","ausbauen","Potenzial"]}],"sample_solution":"Die beiden A-Kunden werden besonders intensiv und persönlich betreut, zum Beispiel mit festen Ansprechpartnern, weil an ihnen drei Viertel des Umsatzes hängen. C-Kunden werden dagegen standardisiert und kostengünstig über das Ticketsystem betreut. Zugleich zeigt die Analyse ein Risiko: Der Wegfall eines A-Kunden würde das Systemhaus hart treffen."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -37267,7 +37268,7 @@ values (
   'table',
   'Für den Empfang soll ein kompakter PC beschafft werden. Der Händler schickt das englische Datenblatt.',
   'Ergänze die Tabelle mit den Angaben aus dem Datenblatt. Für die Leistung gilt P = U × I.',
-  '12 threads = 12 Threads, max. 64 GB = Höchstausbau, 2x DisplayPort = zwei Ausgänge, „integrated“ = Grafik im Prozessor. Netzteil: P = U × I = 20 V × 6 A = 120 W. Je richtiger Zelle 1 Punkt.',
+  'Im Datenblatt stehen 12 Threads, höchstens 64 GB Arbeitsspeicher und zwei DisplayPort-Ausgänge. „integrated“ bedeutet, dass die Grafik im Prozessor steckt. Für das Netzteil gilt P = U × I = 20 V × 6 A = 120 W. Jede richtige Zelle bringt 1 Punkt.',
   2,
   ARRAY['englisch', 'datenblatt']::text[],
   null,
@@ -37300,7 +37301,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Ursache: Der Arbeitsspeicher ist voll, das System lagert auf den langsamen Datenträger aus","points":2,"keywords":["auslagern","Auslagerung","RAM voll","Arbeitsspeicher voll","Auslagerungsdatei","swap"]},{"text":"Aufrüstung: mehr Arbeitsspeicher einbauen, damit nicht mehr ausgelagert wird","points":2,"keywords":["mehr RAM","mehr Arbeitsspeicher","RAM erweitern","Arbeitsspeicher aufrüsten","16 GB"]},{"text":"Alternativ oder zusätzlich: HDD durch SSD ersetzen, damit Zugriffe schneller werden","points":2,"keywords":["SSD","NVMe","Festplatte ersetzen","HDD tauschen"]}],"sample_solution":"Der Arbeitsspeicher ist nahezu voll. Das Betriebssystem lagert deshalb Speicherseiten auf die Festplatte aus. Daher die dauerhafte Datenträgerlast, während der Prozessor kaum arbeitet. Abhilfe: den Arbeitsspeicher erweitern, z. B. auf 16 GB. Zusätzlich hilft eine SSD statt der HDD."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Ursache: Der Arbeitsspeicher ist voll, das System lagert auf den langsamen Datenträger aus","points":2,"keywords":["auslagern","Auslagerung","RAM voll","Arbeitsspeicher voll","Auslagerungsdatei","swap"]},{"text":"Aufrüstung: mehr Arbeitsspeicher einbauen, damit nicht mehr ausgelagert wird","points":2,"keywords":["mehr RAM","mehr Arbeitsspeicher","RAM erweitern","Arbeitsspeicher aufrüsten","16 GB"]},{"text":"Alternativ oder zusätzlich: HDD durch SSD ersetzen, damit Zugriffe schneller werden","points":2,"keywords":["SSD","NVMe","Festplatte ersetzen","HDD tauschen"]}],"sample_solution":"Der Arbeitsspeicher ist nahezu voll. Das Betriebssystem lagert deshalb Speicherseiten auf die Festplatte aus. Deshalb ist der Datenträger dauerhaft ausgelastet, während der Prozessor kaum arbeitet. Abhilfe schafft mehr Arbeitsspeicher, z. B. 16 GB. Zusätzlich hilft eine SSD statt der HDD."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -37325,11 +37326,11 @@ values (
   'marking',
   'Für die Buchhaltung soll ein leiser, sparsamer Büro-PC mit zwei Monitoren zusammengestellt werden. Ein Kollege hat eine Stückliste entworfen.',
   'Markiere alle Positionen, die für diesen PC ungeeignet sind oder nicht zusammenpassen.',
-  'Zwei Positionen fallen heraus: DDR4-RAM passt nicht auf ein DDR5-Mainboard, und die Gaming-Grafikkarte widerspricht den Zielen leise und sparsam; außerdem würde sie das 300-W-Netzteil überfordern.',
+  'Zwei Positionen fallen heraus: DDR4-RAM passt nicht auf ein DDR5-Mainboard, und die Gaming-Grafikkarte widerspricht den Zielen leise und sparsam. Außerdem würde sie das 300-W-Netzteil überfordern.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Prozessor mit 6 Kernen und integrierter Grafik","is_correct":false,"rationale":"Für Büroarbeit mit zwei Monitoren völlig ausreichend."},{"text":"Mainboard mit DDR5-Steckplätzen und 2 × DisplayPort","is_correct":false,"rationale":"Passt zum Prozessor und bedient beide Monitore."},{"text":"16 GB DDR4-Arbeitsspeicher","is_correct":true,"rationale":"DDR4-Module passen mechanisch und elektrisch nicht in DDR5-Steckplätze."},{"text":"Gaming-Grafikkarte mit 300 W Leistungsaufnahme","is_correct":true,"rationale":"Für Buchhaltung überdimensioniert: teuer, laut und stromhungrig. Die integrierte Grafik reicht."},{"text":"NVMe-SSD mit 500 GB","is_correct":false,"rationale":"Schnell, leise und groß genug für einen Büro-PC."},{"text":"Netzteil 300 W mit 80-PLUS-Gold-Siegel","is_correct":false,"rationale":"Reicht für einen Büro-PC ohne Grafikkarte und arbeitet effizient."}]}'::jsonb,
+  '{"choices":[{"text":"Prozessor mit 6 Kernen und integrierter Grafik","is_correct":false,"rationale":"Für Büroarbeit mit zwei Monitoren völlig ausreichend."},{"text":"Mainboard mit DDR5-Steckplätzen und 2 × DisplayPort","is_correct":false,"rationale":"Passt zum Prozessor und bedient beide Monitore."},{"text":"16 GB DDR4-Arbeitsspeicher","is_correct":true,"rationale":"DDR4-Module passen mechanisch und elektrisch nicht in DDR5-Steckplätze."},{"text":"Gaming-Grafikkarte mit 300 W Leistungsaufnahme","is_correct":true,"rationale":"Für die Buchhaltung überdimensioniert: teuer, laut und stromhungrig. Die integrierte Grafik reicht."},{"text":"NVMe-SSD mit 500 GB","is_correct":false,"rationale":"Schnell, leise und groß genug für einen Büro-PC."},{"text":"Netzteil 300 W mit 80-PLUS-Gold-Siegel","is_correct":false,"rationale":"Reicht für einen Büro-PC ohne Grafikkarte und arbeitet effizient."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -37354,7 +37355,7 @@ values (
   'pairs',
   'Für die Einweisung neuer Auszubildender wird ein Schaubild zum Aufbau eines PCs beschriftet.',
   'Ordne jeder Komponente ihre Aufgabe zu.',
-  'CPU rechnet, RAM hält die Daten laufender Programme, das Mainboard verbindet alles, das Netzteil liefert die Gleichspannungen, das UEFI startet den Rechner.',
+  'Die CPU rechnet, der RAM hält die Daten laufender Programme, das Mainboard verbindet alles, das Netzteil liefert die Gleichspannungen, das UEFI startet den Rechner.',
   1,
   '{}',
   null,
@@ -37470,7 +37471,7 @@ values (
   'table',
   'Für einen Kunden sollst du HDD und NVMe-SSD gegenüberstellen.',
   'Vervollständige den Vergleich.',
-  'Die HDD speichert magnetisch auf rotierenden Scheiben, hängt an SATA und ist pro GB günstig: gut für Archive. Die NVMe-SSD speichert in Flash-Zellen, hängt an PCIe und liest mehrere GB pro Sekunde: ideal als Systemlaufwerk.',
+  'Die HDD speichert magnetisch auf rotierenden Scheiben, hängt an SATA und ist pro GB günstig, also gut für Archive. Die NVMe-SSD speichert in Flash-Zellen, hängt an PCIe und liest mehrere GB pro Sekunde. Damit ist sie ideal als Systemlaufwerk.',
   2,
   '{}',
   null,
@@ -37644,7 +37645,7 @@ values (
   'marking',
   'Das I/O-Panel eines Notebook-Docks hat die folgenden Buchsen. Ein Monitor soll angeschlossen werden.',
   'Markiere alle Buchsen, über die ein Monitor sein Bildsignal erhalten kann.',
-  'Bildsignale liefern HDMI, DisplayPort und USB-C im DisplayPort-Modus bzw. Thunderbolt. RJ45 ist Netzwerk, die Klinke Ton, die Kaltgerätebuchse Strom.',
+  'Bildsignale liefern HDMI, DisplayPort und USB-C im DisplayPort-Modus bzw. Thunderbolt. RJ45 ist für das Netzwerk da, die Klinke für den Ton und die Kaltgerätebuchse für den Strom.',
   2,
   '{}',
   null,
@@ -37789,7 +37790,7 @@ values (
   'table',
   'Ein Kunde möchte wissen, worin sich die drei angebotenen USV-Typen unterscheiden.',
   'Vervollständige den Vergleich der drei USV-Typen.',
-  'Offline- und Line-Interactive-USV schalten bei Ausfall in wenigen Millisekunden um; die Line-Interactive regelt zusätzlich die Spannung. Die Online-USV versorgt die Last dauerhaft über den Wechselrichter (Doppelwandlung), ohne Umschaltzeit, aber teurer.',
+  'Offline- und Line-Interactive-USV schalten bei Ausfall in wenigen Millisekunden um, die Line-Interactive regelt zusätzlich die Spannung. Die Online-USV versorgt die Last dauerhaft über den Wechselrichter (Doppelwandlung). Sie hat deshalb keine Umschaltzeit, ist aber teurer.',
   2,
   '{}',
   null,
@@ -37938,7 +37939,7 @@ values (
   1,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"separater, größerer, höhenverstellbarer Bildschirm","points":1,"keywords":["Monitor","Bildschirm","externer Bildschirm"]},{"text":"externe Tastatur und Maus","points":1,"keywords":["Tastatur","Maus","Eingabegeräte"]},{"text":"höhenverstellbarer Schreibtisch","points":1,"keywords":["Tisch","Schreibtisch","höhenverstellbar"]},{"text":"ergonomischer, verstellbarer Bürostuhl","points":1,"keywords":["Stuhl","Bürostuhl","Rückenlehne"]},{"text":"Bildschirm seitlich zum Fenster aufstellen, Blendung und Spiegelung vermeiden","points":1,"keywords":["Fenster","Blendung","Spiegelung","parallel","seitlich"]},{"text":"Dockingstation oder Notebook-Ständer","points":1,"keywords":["Dockingstation","Dock","Ständer","Notebookständer"]}],"sample_solution":"Ein separater, höhenverstellbarer Bildschirm (Oberkante auf oder leicht unter Augenhöhe), externe Tastatur und Maus, ein höhenverstellbarer Tisch und ein ergonomischer Bürostuhl. Der Bildschirm steht seitlich zum Fenster, damit nichts blendet oder spiegelt."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"separater, größerer, höhenverstellbarer Bildschirm","points":1,"keywords":["Monitor","Bildschirm","externer Bildschirm"]},{"text":"externe Tastatur und Maus","points":1,"keywords":["Tastatur","Maus","Eingabegeräte"]},{"text":"höhenverstellbarer Schreibtisch","points":1,"keywords":["Tisch","Schreibtisch","höhenverstellbar"]},{"text":"ergonomischer, verstellbarer Bürostuhl","points":1,"keywords":["Stuhl","Bürostuhl","Rückenlehne"]},{"text":"Bildschirm seitlich zum Fenster aufstellen, Blendung und Spiegelung vermeiden","points":1,"keywords":["Fenster","Blendung","Spiegelung","parallel","seitlich"]},{"text":"Dockingstation oder Notebook-Ständer","points":1,"keywords":["Dockingstation","Dock","Ständer","Notebookständer"]}],"sample_solution":"Sinnvoll sind ein separater, höhenverstellbarer Bildschirm (Oberkante auf oder leicht unter Augenhöhe), externe Tastatur und Maus, ein höhenverstellbarer Tisch und ein ergonomischer Bürostuhl. Der Bildschirm steht seitlich zum Fenster, damit nichts blendet oder spiegelt."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -38079,7 +38080,7 @@ values (
   'cloze',
   'Der Ressourcenmonitor zeigt für jeden Prozess einen Zustand an.',
   'Vervollständige die Beschreibung der Prozesszustände.',
-  'Drei Zustände: bereit (wartet auf die CPU), rechnend (hat die CPU), blockiert (wartet auf Ein- oder Ausgabe). Der Scheduler teilt die Zeitscheiben zu.',
+  'Ein Prozess kennt drei Zustände: bereit (wartet auf die CPU), rechnend (hat die CPU), blockiert (wartet auf Ein- oder Ausgabe). Der Scheduler teilt die Zeitscheiben zu.',
   2,
   '{}',
   null,
@@ -38166,7 +38167,7 @@ values (
   'table',
   'Für USB-Sticks, einen Windows-Dateiserver und einen Linux-Server muss jeweils ein Dateisystem gewählt werden.',
   'Vervollständige den Vergleich der Dateisysteme.',
-  'FAT32: höchstens 4 GiB je Datei, keine Rechte, kein Journal, dafür überall lesbar. NTFS (Windows) und ext4 (Linux) kennen große Dateien, Zugriffsrechte und Journaling.',
+  'FAT32 erlaubt höchstens 4 GiB je Datei und kennt weder Rechte noch Journal, ist dafür aber überall lesbar. NTFS (Windows) und ext4 (Linux) kennen große Dateien, Zugriffsrechte und Journaling.',
   2,
   '{}',
   null,
@@ -38199,7 +38200,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Die Schnellformatierung legt nur ein neues, leeres Inhaltsverzeichnis an. Die Daten bleiben erhalten und lassen sich wiederherstellen","points":2,"keywords":["wiederherstellen","Inhaltsverzeichnis","Daten bleiben","rekonstruieren","nicht überschrieben"]},{"text":"Datenträger vollständig überschreiben","points":1,"keywords":["überschreiben","Nullen","wipe"]},{"text":"Secure Erase des Herstellers nutzen (vor allem bei SSDs)","points":1,"keywords":["Secure Erase","sicheres Löschen","Herstellerfunktion"]},{"text":"Datenträger physisch vernichten (schreddern)","points":1,"keywords":["vernichten","schreddern","zerstören"]}],"sample_solution":"Bei der Schnellformatierung wird nur ein neues, leeres Dateisystem angelegt; die eigentlichen Daten stehen weiter auf dem Datenträger und lassen sich mit Werkzeugen wiederherstellen. Geeignet sind: den Datenträger vollständig überschreiben, bei SSDs Secure Erase nutzen oder den Datenträger physisch vernichten."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Die Schnellformatierung legt nur ein neues, leeres Inhaltsverzeichnis an. Die Daten bleiben erhalten und lassen sich wiederherstellen","points":2,"keywords":["wiederherstellen","Inhaltsverzeichnis","Daten bleiben","rekonstruieren","nicht überschrieben"]},{"text":"Datenträger vollständig überschreiben","points":1,"keywords":["überschreiben","Nullen","wipe"]},{"text":"Secure Erase des Herstellers nutzen (vor allem bei SSDs)","points":1,"keywords":["Secure Erase","sicheres Löschen","Herstellerfunktion"]},{"text":"Datenträger physisch vernichten (schreddern)","points":1,"keywords":["vernichten","schreddern","zerstören"]}],"sample_solution":"Bei der Schnellformatierung wird nur ein neues, leeres Dateisystem angelegt. Die eigentlichen Daten stehen weiter auf dem Datenträger und lassen sich mit Werkzeugen wiederherstellen. Geeignet ist es, den Datenträger vollständig zu überschreiben, bei SSDs Secure Erase zu nutzen oder den Datenträger physisch zu vernichten."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -38224,7 +38225,7 @@ values (
   'cloze',
   'Eine Datei ist 10.000 Byte groß. Das Dateisystem arbeitet mit einer Clustergröße von 4 KiB (4.096 Byte).',
   'Ermittle die Werte.',
-  '10.000 / 4.096 ≈ 2,44; angefangene Cluster zählen voll, also 3 Cluster. Belegt: 3 × 4.096 = 12.288 Byte. Verschnitt: 12.288 - 10.000 = 2.288 Byte.',
+  '10.000 / 4.096 ≈ 2,44. Angefangene Cluster zählen voll, also sind es 3 Cluster. Belegt: 3 × 4.096 = 12.288 Byte. Verschnitt: 12.288 - 10.000 = 2.288 Byte.',
   2,
   '{}',
   null,
@@ -38282,7 +38283,7 @@ values (
   'cloze',
   'Auf einem Linux-Server zeigt ls -l die folgende Zeile (gekürzt: Rechte, Besitzerin, Gruppe, Name).',
   'Vervollständige die Aussagen zu den Rechten.',
-  'r = 4, w = 2, x = 1. rw-r----- ergibt 6, 4, 0 = 640: Besitzerin liest und schreibt, die Gruppe liest nur. Mit Schreibrecht für die Gruppe: 660. rwxr-xr-x = 7, 5, 5 = 755.',
+  'r = 4, w = 2, x = 1. rw-r----- ergibt 6, 4, 0, also 640: Die Besitzerin liest und schreibt, die Gruppe liest nur. Mit Schreibrecht für die Gruppe wird daraus 660. rwxr-xr-x = 7, 5, 5 = 755.',
   2,
   '{}',
   null,
@@ -38340,7 +38341,7 @@ values (
   'open',
   'In einer kleinen Firma arbeiten alle Beschäftigten mit Administratorrechten, „damit nichts hakt“.',
   'Erläutere, warum nicht alle Beschäftigten Administratorrechte erhalten sollten.',
-  'Bewertung: Grund plus Folge ergeben die volle Punktzahl, höchstens 3 Punkte. Administrative Arbeiten erledigt ein getrenntes Admin-Konto.',
+  'Bewertung: Grund plus Folge ergeben die volle Punktzahl, höchstens 3 Punkte. Für administrative Arbeiten gibt es ein getrenntes Admin-Konto.',
   2,
   '{}',
   null,
@@ -38373,7 +38374,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"-rw-r--r-- root root hosts","is_correct":false,"rationale":"Nur root darf schreiben, alle dürfen lesen: üblich für diese Datei."},{"text":"-rwxrwxrwx root root backup.sh","is_correct":true,"rationale":"Jeder darf das Skript ändern, das root später ausführt."},{"text":"-rw------- anna anna id_ed25519","is_correct":false,"rationale":"Der private Schlüssel ist nur für die Besitzerin lesbar: richtig so."},{"text":"-rw-rw-rw- root root kunden.csv","is_correct":true,"rationale":"Alle Benutzer dürfen die Kundendaten lesen und verändern."},{"text":"drwxr-x--- anna buchhaltung rechnungen","is_correct":false,"rationale":"Nur Besitzerin und Gruppe kommen in den Ordner."}],"mono":true}'::jsonb,
+  '{"choices":[{"text":"-rw-r--r-- root root hosts","is_correct":false,"rationale":"Nur root darf schreiben, alle dürfen lesen. Das ist für diese Datei üblich."},{"text":"-rwxrwxrwx root root backup.sh","is_correct":true,"rationale":"Jeder darf das Skript ändern, das root später ausführt."},{"text":"-rw------- anna anna id_ed25519","is_correct":false,"rationale":"Der private Schlüssel ist nur für die Besitzerin lesbar, so ist es richtig."},{"text":"-rw-rw-rw- root root kunden.csv","is_correct":true,"rationale":"Alle Benutzer dürfen die Kundendaten lesen und verändern."},{"text":"drwxr-x--- anna buchhaltung rechnungen","is_correct":false,"rationale":"Nur Besitzerin und Gruppe kommen in den Ordner."}],"mono":true}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -38431,7 +38432,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Bild ruckelt oder friert ein, weil Pakete fehlen oder zu spät kommen","points":2,"keywords":["ruckeln","ruckelt","einfrieren","friert","Standbild"]},{"text":"Ton kommt verzögert oder abgehackt an, Gesprächspartner fallen sich ins Wort","points":2,"keywords":["Ton","verzögert","abgehackt","Verzögerung","Echo"]},{"text":"Zeitüberschreitungen führen zu Verbindungsabbrüchen","points":2,"keywords":["Abbruch","Abbrüche","Timeout","Zeitüberschreitung","Verbindung bricht"]}],"sample_solution":"Die hohe Antwortzeit verzögert Bild und Ton spürbar; die Gesprächspartner fallen sich ins Wort. Durch den Paketverlust fehlen Teile des Datenstroms: Das Bild ruckelt oder friert ein, der Ton klingt abgehackt. Im schlimmsten Fall bricht die Verbindung nach Zeitüberschreitungen ab."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Bild ruckelt oder friert ein, weil Pakete fehlen oder zu spät kommen","points":2,"keywords":["ruckeln","ruckelt","einfrieren","friert","Standbild"]},{"text":"Ton kommt verzögert oder abgehackt an, Gesprächspartner fallen sich ins Wort","points":2,"keywords":["Ton","verzögert","abgehackt","Verzögerung","Echo"]},{"text":"Zeitüberschreitungen führen zu Verbindungsabbrüchen","points":2,"keywords":["Abbruch","Abbrüche","Timeout","Zeitüberschreitung","Verbindung bricht"]}],"sample_solution":"Die hohe Antwortzeit verzögert Bild und Ton spürbar, sodass sich die Gesprächspartner ins Wort fallen. Durch den Paketverlust fehlen Teile des Datenstroms: Das Bild ruckelt oder friert ein, der Ton klingt abgehackt. Im schlimmsten Fall bricht die Verbindung nach Zeitüberschreitungen ab."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -38485,7 +38486,7 @@ values (
   'table',
   'Für das Wiki der IT-Abteilung entsteht eine Gegenüberstellung der wichtigsten Befehle.',
   'Ergänze die fehlenden Befehle.',
-  'dir → ls, copy → cp, del → rm, tracert → traceroute, ipconfig → ip a. Je richtigem Befehl 1 Punkt.',
+  'dir → ls, copy → cp, del → rm, tracert → traceroute, ipconfig → ip a. Jeder richtige Befehl bringt 1 Punkt.',
   2,
   '{}',
   null,
@@ -38514,7 +38515,7 @@ values (
   'cloze',
   'Die Hilfe des Befehls ping zeigt unter Windows diese Optionen.',
   'Vervollständige die Aussagen anhand der Hilfe.',
-  '„until stopped“ = bis zum Abbruch: -t. „Number of echo requests“ = Anzahl der Anfragen: -n. „Force using IPv6“ = IPv6 erzwingen: -6.',
+  '„until stopped“ bedeutet „bis zum Abbruch“, das ist -t. „Number of echo requests“ ist die Anzahl der Anfragen, also -n. „Force using IPv6“ erzwingt IPv6, also -6.',
   1,
   ARRAY['englisch']::text[],
   null,
@@ -38543,11 +38544,11 @@ values (
   'open',
   'Ein frisch installierter Linux-Server soll als Webserver im Internet erreichbar sein.',
   'Beschreibe drei Maßnahmen, mit denen du den Server vor der Inbetriebnahme härtest.',
-  'Bewertung: 2 Punkte je beschriebener Maßnahme, höchstens 6 Punkte. Härten heißt: die Angriffsfläche verkleinern.',
+  'Bewertung: 2 Punkte je beschriebener Maßnahme, höchstens 6 Punkte. Härten heißt, die Angriffsfläche zu verkleinern.',
   2,
   '{}',
   null,
-  '{"points":6,"criteria":[{"text":"Nicht benötigte Dienste und Programme abschalten oder deinstallieren: weniger Angriffsfläche","points":2,"keywords":["Dienste","deinstallieren","abschalten","deaktivieren"]},{"text":"Alle Sicherheitsupdates einspielen und automatische Updates einrichten","points":2,"keywords":["Update","Patch","aktualisieren"]},{"text":"Firewall einrichten: nur benötigte Ports öffnen","points":2,"keywords":["Firewall","Ports schließen","Port","Paketfilter"]},{"text":"Standardpasswörter ändern, starke Passwörter oder Schlüssel-Anmeldung, kein direkter root-Login","points":2,"keywords":["Passwort","Standardpasswort","root","Schlüssel","SSH-Key"]},{"text":"Rechte nach dem Minimalprinzip vergeben, Dienste mit eingeschränktem Konto betreiben","points":2,"keywords":["Rechte","Minimalprinzip","Least Privilege"]}],"sample_solution":"Nicht benötigte Dienste abschalten oder deinstallieren, damit weniger angreifbar ist. Alle Sicherheitsupdates einspielen und künftige Updates zeitnah installieren. Die Firewall so einstellen, dass nur die benötigten Ports (hier 443, für die Verwaltung 22) offen sind. Außerdem Standardpasswörter ändern und den direkten root-Login per SSH verbieten."}'::jsonb,
+  '{"points":6,"criteria":[{"text":"Nicht benötigte Dienste und Programme abschalten oder deinstallieren: weniger Angriffsfläche","points":2,"keywords":["Dienste","deinstallieren","abschalten","deaktivieren"]},{"text":"Alle Sicherheitsupdates einspielen und automatische Updates einrichten","points":2,"keywords":["Update","Patch","aktualisieren"]},{"text":"Firewall einrichten: nur benötigte Ports öffnen","points":2,"keywords":["Firewall","Ports schließen","Port","Paketfilter"]},{"text":"Standardpasswörter ändern, starke Passwörter oder Schlüssel-Anmeldung, kein direkter root-Login","points":2,"keywords":["Passwort","Standardpasswort","root","Schlüssel","SSH-Key"]},{"text":"Rechte nach dem Minimalprinzip vergeben, Dienste mit eingeschränktem Konto betreiben","points":2,"keywords":["Rechte","Minimalprinzip","Least Privilege"]}],"sample_solution":"Nicht benötigte Dienste abschalten oder deinstallieren, damit die Angriffsfläche kleiner wird. Alle Sicherheitsupdates einspielen und künftige Updates zeitnah installieren. Die Firewall so einstellen, dass nur die benötigten Ports (hier 443, für die Verwaltung 22) offen sind. Außerdem Standardpasswörter ändern und den direkten root-Login per SSH verbieten."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -38862,7 +38863,7 @@ values (
   'table',
   'Eine Planungssoftware soll von 40 Beschäftigten genutzt werden, davon arbeiten höchstens 15 gleichzeitig damit. Installiert wird sie auf 25 PCs. Der Hersteller bietet drei Lizenzmodelle an.',
   'Ermittle je Modell die Anzahl der benötigten Lizenzen und die Kosten.',
-  'Named User: jede berechtigte Person: 40 × 120 € = 4.800 €. Concurrent User: gleichzeitige Nutzung: 15 × 290 € = 4.350 €. Gerätelizenz: je PC: 25 × 180 € = 4.500 €. Am günstigsten ist hier Concurrent User.',
+  'Named User zählt jede berechtigte Person: 40 × 120 € = 4.800 €. Concurrent User zählt die gleichzeitige Nutzung: 15 × 290 € = 4.350 €. Die Gerätelizenz zählt je PC: 25 × 180 € = 4.500 €. Am günstigsten ist hier Concurrent User.',
   2,
   '{}',
   null,
@@ -38982,7 +38983,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":5,"criteria":[{"text":"Datenschutz: personenbezogene Daten liegen bei Anbietern ohne Vertrag zur Auftragsverarbeitung","points":2,"keywords":["Datenschutz","DSGVO","Auftragsverarbeitung","personenbezogen"]},{"text":"Datensicherheit: keine Kontrolle über Zugriffe, Sicherung und Löschung; Firmendaten können abfließen","points":2,"keywords":["Kontrolle","Datenabfluss","Sicherung","Backup","Zugriff"]},{"text":"Daten bleiben beim Ausscheiden von Beschäftigten in deren privaten Konten","points":2,"keywords":["privates Konto","Ausscheiden","private Konten"]},{"text":"Gegenmaßnahme: geprüfte offizielle Werkzeuge bereitstellen, klare Regeln und Schulung","points":1,"keywords":["offizielle","Richtlinie","Regeln","Schulung","bereitstellen","Alternative"]}],"sample_solution":"Die Daten liegen bei Anbietern, mit denen kein Vertrag zur Auftragsverarbeitung besteht, ein Datenschutzverstoß. Die IT hat keine Kontrolle über Zugriffsrechte, Sicherung und Löschung; verlässt jemand die Firma, bleiben die Daten in seinem privaten Konto. Gegenmaßnahme: ein geprüftes, komfortables Werkzeug offiziell bereitstellen und die Nutzung per Richtlinie und Schulung regeln."}'::jsonb,
+  '{"points":5,"criteria":[{"text":"Datenschutz: personenbezogene Daten liegen bei Anbietern ohne Vertrag zur Auftragsverarbeitung","points":2,"keywords":["Datenschutz","DSGVO","Auftragsverarbeitung","personenbezogen"]},{"text":"Datensicherheit: keine Kontrolle über Zugriffe, Sicherung und Löschung; Firmendaten können abfließen","points":2,"keywords":["Kontrolle","Datenabfluss","Sicherung","Backup","Zugriff"]},{"text":"Daten bleiben beim Ausscheiden von Beschäftigten in deren privaten Konten","points":2,"keywords":["privates Konto","Ausscheiden","private Konten"]},{"text":"Gegenmaßnahme: geprüfte offizielle Werkzeuge bereitstellen, klare Regeln und Schulung","points":1,"keywords":["offizielle","Richtlinie","Regeln","Schulung","bereitstellen","Alternative"]}],"sample_solution":"Die Daten liegen bei Anbietern, mit denen kein Vertrag zur Auftragsverarbeitung besteht. Das ist ein Datenschutzverstoß. Die IT hat keine Kontrolle über Zugriffsrechte, Sicherung und Löschung; verlässt jemand die Firma, bleiben die Daten in seinem privaten Konto. Gegenmaßnahme: ein geprüftes, komfortables Werkzeug offiziell bereitstellen und die Nutzung per Richtlinie und Schulung regeln."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -39007,7 +39008,7 @@ values (
   'table',
   'Ein Projektteam arbeitet an drei Standorten. Für jede Situation soll das am besten geeignete Werkzeug festgelegt werden.',
   'Wähle zu jeder Situation das passende Werkzeug.',
-  'Videokonferenz für die gleichzeitige Abstimmung, Wiki für dauerhaftes Wissen, Chat für schnelle Rückfragen, Ticketsystem für nachvollziehbare Vorgänge, gemeinsames Dokument statt vieler Fassungen im E-Mail-Anhang.',
+  'Die Videokonferenz eignet sich für die gleichzeitige Abstimmung, das Wiki für dauerhaftes Wissen, der Chat für schnelle Rückfragen und das Ticketsystem für nachvollziehbare Vorgänge. Ein gemeinsames Dokument ersetzt viele Fassungen im E-Mail-Anhang.',
   1,
   '{}',
   null,
@@ -39036,7 +39037,7 @@ values (
   'cloze',
   'Für das Onboarding neuer Beschäftigter entsteht ein Merkblatt zur Zusammenarbeit.',
   'Vervollständige die Aussagen zur Zusammenarbeit.',
-  'Synchron = gleichzeitig (Telefon, Videokonferenz), asynchron = zeitversetzt (E-Mail, Wiki). Unified Communications bündelt die Kanäle. Verarbeitet ein Anbieter personenbezogene Daten, verlangt die DSGVO einen Vertrag zur Auftragsverarbeitung.',
+  'Synchron heißt gleichzeitig (Telefon, Videokonferenz), asynchron heißt zeitversetzt (E-Mail, Wiki). Unified Communications bündelt die Kanäle. Verarbeitet ein Anbieter personenbezogene Daten, verlangt die DSGVO einen Vertrag zur Auftragsverarbeitung.',
   2,
   '{}',
   null,
@@ -39094,7 +39095,7 @@ values (
   'table',
   'Bei der Fehlersuche hilft es, Adressen und Dateneinheiten den OSI-Schichten zuordnen zu können. Die Zeile für Schicht 7 ist als Beispiel ausgefüllt.',
   'Ergänze die Tabelle.',
-  'Schicht 4 Transport: Ports, Segmente. Schicht 3 Vermittlung: IP-Adressen, Pakete. Schicht 2 Sicherung: MAC-Adressen, Frames. Schicht 1 überträgt nur noch Bits.',
+  'Schicht 4 (Transport) arbeitet mit Ports und Segmenten, Schicht 3 (Vermittlung) mit IP-Adressen und Paketen, Schicht 2 (Sicherung) mit MAC-Adressen und Frames. Schicht 1 überträgt nur noch Bits.',
   2,
   '{}',
   null,
@@ -39210,7 +39211,7 @@ values (
   'table',
   'Für mehrere Geräte soll der kleinste PoE-Standard bestimmt werden, der die benötigte Leistung liefert.',
   'Wähle zu jedem Gerät den kleinsten ausreichenden Standard.',
-  '6 W und 12 W liegen unter 15,4 W: 802.3af genügt. 22 W übersteigt 15,4 W, passt aber in 30 W: 802.3at. 55 W braucht 802.3bt.',
+  '6 W und 12 W liegen unter 15,4 W, also genügt 802.3af. 22 W übersteigt 15,4 W, passt aber in 30 W, also 802.3at. 55 W braucht 802.3bt.',
   2,
   '{}',
   null,
@@ -39243,7 +39244,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Die Dose ist über das Verlegekabel nur mit dem Patchfeld-Port verbunden; dieser ist nicht mit dem Switch verbunden (nicht gepatcht)","points":2,"keywords":["nicht gepatcht","Patchfeld","kein Patchkabel","nicht mit dem Switch verbunden"]},{"text":"Behebung: Patchkabel vom Patchfeld-Port 3.07 zu einem freien Switch-Port stecken (patchen lassen)","points":2,"keywords":["patchen","Patchkabel stecken","Switch-Port","verbinden"]},{"text":"Alternative: eine bereits gepatchte Dose nutzen","points":1,"keywords":["andere Dose","gepatchte Dose","Dose wechseln"]}],"sample_solution":"Die Netzwerkdose ist über das fest verlegte Kabel nur mit dem Port 3.07 des Patchfelds verbunden. Weil dort kein Patchkabel zum Switch steckt, hat die Dose keine Verbindung ins Netz. Sie ist nicht gepatcht. Behebung: Port 3.07 mit einem Patchkabel an einen freien Switch-Port anschließen (lassen) oder den PC an eine gepatchte Dose hängen."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Die Dose ist über das Verlegekabel nur mit dem Patchfeld-Port verbunden; dieser ist nicht mit dem Switch verbunden (nicht gepatcht)","points":2,"keywords":["nicht gepatcht","Patchfeld","kein Patchkabel","nicht mit dem Switch verbunden"]},{"text":"Behebung: Patchkabel vom Patchfeld-Port 3.07 zu einem freien Switch-Port stecken (patchen lassen)","points":2,"keywords":["patchen","Patchkabel stecken","Switch-Port","verbinden"]},{"text":"Alternative: eine bereits gepatchte Dose nutzen","points":1,"keywords":["andere Dose","gepatchte Dose","Dose wechseln"]}],"sample_solution":"Die Netzwerkdose ist über das fest verlegte Kabel nur mit dem Port 3.07 des Patchfelds verbunden. Weil dort kein Patchkabel zum Switch steckt, hat die Dose keine Verbindung ins Netz, sie ist also nicht gepatcht. Zur Behebung wird Port 3.07 mit einem Patchkabel an einen freien Switch-Port angeschlossen, oder der PC kommt an eine gepatchte Dose."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -39272,7 +39273,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Verlegekabel Cat 6A, geschirmt","is_correct":false,"rationale":"10 Gbit/s auf bis zu 100 m: passt."},{"text":"Patchkabel Cat 5e","is_correct":true,"rationale":"Cat 5e schafft nur 1 Gbit/s und bremst die ganze Strecke."},{"text":"Patchfeld Cat 6A, 24 Ports","is_correct":false,"rationale":"Passt zur Kategorie des Kabels."},{"text":"8-Port-Hub als Verteiler im Büro","is_correct":true,"rationale":"Hubs sind veraltet, teilen sich die Bandbreite und schaffen keine 10 Gbit/s."},{"text":"Netzwerkdosen Cat 6A","is_correct":false,"rationale":"Passen zur Kategorie des Kabels."},{"text":"Switch mit 10GBASE-T-Ports","is_correct":false,"rationale":"Liefert die geforderte Datenrate."}]}'::jsonb,
+  '{"choices":[{"text":"Verlegekabel Cat 6A, geschirmt","is_correct":false,"rationale":"Schafft 10 Gbit/s auf bis zu 100 m und passt damit."},{"text":"Patchkabel Cat 5e","is_correct":true,"rationale":"Cat 5e schafft nur 1 Gbit/s und bremst die ganze Strecke."},{"text":"Patchfeld Cat 6A, 24 Ports","is_correct":false,"rationale":"Passt zur Kategorie des Kabels."},{"text":"8-Port-Hub als Verteiler im Büro","is_correct":true,"rationale":"Hubs sind veraltet, teilen sich die Bandbreite und schaffen keine 10 Gbit/s."},{"text":"Netzwerkdosen Cat 6A","is_correct":false,"rationale":"Passen zur Kategorie des Kabels."},{"text":"Switch mit 10GBASE-T-Ports","is_correct":false,"rationale":"Liefert die geforderte Datenrate."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -39297,7 +39298,7 @@ values (
   'cloze',
   'Für den Neubau eines Bürogebäudes wird die Netzwerkverkabelung geplant.',
   'Vervollständige die Aussagen zur strukturierten Verkabelung.',
-  'Primär: zwischen Gebäuden (Glasfaser). Sekundär: zwischen den Etagen. Tertiär: vom Etagenverteiler bis zur Dose: 90 m fest verlegt, mit Patchkabeln zusammen höchstens 100 m.',
+  'Der Primärbereich liegt zwischen Gebäuden (Glasfaser), der Sekundärbereich zwischen den Etagen. Der Tertiärbereich reicht vom Etagenverteiler bis zur Dose: 90 m fest verlegt, mit Patchkabeln zusammen höchstens 100 m.',
   2,
   '{}',
   null,
@@ -39417,7 +39418,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"IPv4-Adresse:    192.168.50.255","is_correct":true,"rationale":"Das ist die Broadcastadresse des Netzes. Sie darf keinem Gerät gehören."},{"text":"Subnetzmaske:    255.255.255.0","is_correct":false,"rationale":"Passt zu /24."},{"text":"Standardgateway: 192.168.5.1","is_correct":true,"rationale":"Liegt in einem anderen Netz: richtig wäre 192.168.50.1."},{"text":"DNS-Server:      192.168.50.10","is_correct":false,"rationale":"Entspricht der Vorgabe."},{"text":"DHCP aktiviert:  Nein","is_correct":false,"rationale":"Die Adresse wurde bewusst von Hand vergeben."}],"mono":true}'::jsonb,
+  '{"choices":[{"text":"IPv4-Adresse:    192.168.50.255","is_correct":true,"rationale":"Das ist die Broadcastadresse des Netzes. Sie darf keinem Gerät gehören."},{"text":"Subnetzmaske:    255.255.255.0","is_correct":false,"rationale":"Passt zu /24."},{"text":"Standardgateway: 192.168.5.1","is_correct":true,"rationale":"Liegt in einem anderen Netz, richtig wäre 192.168.50.1."},{"text":"DNS-Server:      192.168.50.10","is_correct":false,"rationale":"Entspricht der Vorgabe."},{"text":"DHCP aktiviert:  Nein","is_correct":false,"rationale":"Die Adresse wurde bewusst von Hand vergeben."}],"mono":true}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -39732,7 +39733,7 @@ values (
   'table',
   'Am Helpdesk gehen vier Störungsmeldungen ein. Für jede soll festgelegt werden, wie die Vermutung überprüft und wie der Fehler behoben wird.',
   'Wähle zu jeder vermuteten Ursache die passende Überprüfung und Behebung.',
-  'Kabel: Link-LED prüfen, Kabel tauschen. DHCP: ipconfig zeigt 169.254.x.x, dann Server prüfen und Adresse neu anfordern. Dose: mit einem funktionierenden Gerät oder Tester prüfen, patchen lassen. DNS: IP erreichbar, Name nicht, nslookup, dann DNS-Server prüfen. Je Zelle 1 Punkt.',
+  'Kabel: Link-LED prüfen, Kabel tauschen. DHCP: ipconfig zeigt 169.254.x.x, dann Server prüfen und Adresse neu anfordern. Dose: mit einem funktionierenden Gerät oder Tester prüfen, patchen lassen. DNS: Die IP ist erreichbar, der Name nicht. nslookup bestätigt das, dann den DNS-Server prüfen. Jede Zelle bringt 1 Punkt.',
   2,
   ARRAY['fehlersuche']::text[],
   null,
@@ -39848,7 +39849,7 @@ values (
   'cloze',
   'Ein Kunde hat sich an den englischsprachigen Support seines Mailanbieters gewandt und leitet dir den Chat weiter.',
   'Vervollständige die Zusammenfassung für den Kunden.',
-  '„Incoming“ = eingehend: bisher IMAP auf Port 143 ohne Verschlüsselung, künftig IMAP über TLS auf Port 993. „Outgoing“ = ausgehend: Versand per SMTP über Port 587 mit STARTTLS.',
+  '„Incoming“ heißt eingehend: Bisher läuft der Abruf per IMAP auf Port 143 ohne Verschlüsselung, künftig per IMAP über TLS auf Port 993. „Outgoing“ heißt ausgehend: Versendet wird per SMTP über Port 587 mit STARTTLS.',
   2,
   ARRAY['englisch']::text[],
   null,
@@ -39968,7 +39969,7 @@ values (
   1,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Vorteil: keine Anschaffung eigener Hardware, Kosten nach Nutzung","points":1,"keywords":["Investition","Anschaffung","keine Hardware","nach Nutzung"]},{"text":"Vorteil: Speicher lässt sich schnell erweitern oder verkleinern","points":1,"keywords":["skalierbar","Skalierung","erweitern","flexibel"]},{"text":"Vorteil: Wartung, Updates und Ausfallsicherheit übernimmt der Anbieter","points":1,"keywords":["Wartung","Updates","Anbieter kümmert","Verfügbarkeit"]},{"text":"Vorteil: Zugriff von überall","points":1,"keywords":["von überall","ortsunabhängig","mobil"]},{"text":"Nachteil: Abhängigkeit von der Internetverbindung","points":1,"keywords":["Internetverbindung","Internet","offline"]},{"text":"Nachteil: Abhängigkeit vom Anbieter (Lock-in)","points":1,"keywords":["Abhängigkeit","Lock-in","Anbieterwechsel"]},{"text":"Nachteil: Datenschutz, denn Daten liegen außer Haus, Standort und Vertrag müssen geprüft werden","points":1,"keywords":["Datenschutz","DSGVO","außer Haus","Standort"]},{"text":"Nachteil: laufende Kosten können auf Dauer höher sein","points":1,"keywords":["laufende Kosten","monatliche Kosten","auf Dauer teurer"]}],"sample_solution":"Vorteile: keine eigene Hardware und keine hohe Anfangsinvestition; der Speicher wächst nach Bedarf mit, und der Anbieter übernimmt Wartung und Ausfallsicherheit. Nachteile: Ohne Internetverbindung kein Zugriff, Abhängigkeit vom Anbieter, und die Daten liegen außer Haus. Datenschutz und Standort müssen geklärt sein."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Vorteil: keine Anschaffung eigener Hardware, Kosten nach Nutzung","points":1,"keywords":["Investition","Anschaffung","keine Hardware","nach Nutzung"]},{"text":"Vorteil: Speicher lässt sich schnell erweitern oder verkleinern","points":1,"keywords":["skalierbar","Skalierung","erweitern","flexibel"]},{"text":"Vorteil: Wartung, Updates und Ausfallsicherheit übernimmt der Anbieter","points":1,"keywords":["Wartung","Updates","Anbieter kümmert","Verfügbarkeit"]},{"text":"Vorteil: Zugriff von überall","points":1,"keywords":["von überall","ortsunabhängig","mobil"]},{"text":"Nachteil: Abhängigkeit von der Internetverbindung","points":1,"keywords":["Internetverbindung","Internet","offline"]},{"text":"Nachteil: Abhängigkeit vom Anbieter (Lock-in)","points":1,"keywords":["Abhängigkeit","Lock-in","Anbieterwechsel"]},{"text":"Nachteil: Datenschutz, denn Daten liegen außer Haus, Standort und Vertrag müssen geprüft werden","points":1,"keywords":["Datenschutz","DSGVO","außer Haus","Standort"]},{"text":"Nachteil: laufende Kosten können auf Dauer höher sein","points":1,"keywords":["laufende Kosten","monatliche Kosten","auf Dauer teurer"]}],"sample_solution":"Vorteile: keine eigene Hardware und keine hohe Anfangsinvestition; der Speicher wächst nach Bedarf mit, und der Anbieter übernimmt Wartung und Ausfallsicherheit. Nachteile: Ohne Internetverbindung gibt es keinen Zugriff, man ist vom Anbieter abhängig, und die Daten liegen außer Haus. Datenschutz und Standort müssen geklärt sein."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -40022,7 +40023,7 @@ values (
   'cloze',
   'Für Schulungen wird eine virtuelle Maschine gemietet. Sie läuft an 22 Tagen im Monat jeweils 10 Stunden und nutzt 100 GB Speicher.',
   'Ermittle die Kosten für einen Monat.',
-  'Laufzeit: 22 × 10 h = 220 h, × 0,06 € = 13,20 €. Speicher: 100 GB × 0,05 € = 5,00 €. Zusammen 18,20 €. „Pay as you go“ heißt: bezahlt wird nur die tatsächliche Nutzung.',
+  'Laufzeit: 22 × 10 h = 220 h, × 0,06 € = 13,20 €. Speicher: 100 GB × 0,05 € = 5,00 €. Zusammen 18,20 €. „Pay as you go“ heißt, dass nur die tatsächliche Nutzung bezahlt wird.',
   2,
   ARRAY['englisch']::text[],
   null,
@@ -40109,7 +40110,7 @@ values (
   'table',
   'Für eine Projektmappe sollst du Lastenheft und Pflichtenheft gegenüberstellen.',
   'Vervollständige die Tabelle. (4 P.)',
-  'Der Auftraggeber beschreibt im Lastenheft vor der Angebotsphase, was er braucht. Darauf kalkulieren die Anbieter. Nach der Vergabe beschreibt der Auftragnehmer im Pflichtenheft, wie und womit er umsetzt. Das genehmigte Pflichtenheft ist Maßstab der Abnahme.',
+  'Der Auftraggeber beschreibt im Lastenheft vor der Angebotsphase, was er braucht. Auf dieser Grundlage kalkulieren die Anbieter. Nach der Vergabe beschreibt der Auftragnehmer im Pflichtenheft, wie und womit er das umsetzt. Das genehmigte Pflichtenheft ist Maßstab der Abnahme.',
   1,
   '{}',
   null,
@@ -40167,7 +40168,7 @@ values (
   'marking',
   'Ein englischsprachiger Kunde schickt per E-Mail seine Anforderungen an ein Buchungsportal für Besprechungsräume.',
   'Markiere alle nicht-funktionalen Anforderungen. (3 P.)',
-  'Nicht-funktional sind Ladezeit (within two seconds), Verfügbarkeit (available 99.5 %) und Speicherort (servers in the EU). Buchen, Bestätigungsmail und Stornieren beschreiben, was das System tut, also funktional.',
+  'Nicht-funktional sind Ladezeit (within two seconds), Verfügbarkeit (available 99.5 %) und Speicherort (servers in the EU). Buchen, Bestätigungsmail und Stornieren beschreiben dagegen, was das System tut, und sind damit funktional.',
   2,
   '{}',
   null,
@@ -40196,7 +40197,7 @@ values (
   'cloze',
   'Im Lastenheft eines Kundenportals steht: „Das Portal soll schnell und immer erreichbar sein.“ Der Auftragnehmer verlangt eine prüfbare Formulierung.',
   'Ergänze die überarbeiteten Anforderungen. (3 P.)',
-  'Prüfbar ist eine Anforderung nur mit Messgröße, Grenzwert und Bedingungen: 2 Sekunden bei 200 Nutzern, 99,5 % im Jahresmittel. „Schnell“, „angemessen“ oder „fast“ lassen sich bei der Abnahme nicht entscheiden.',
+  'Prüfbar ist eine Anforderung nur mit Messgröße, Grenzwert und Bedingungen: 2 Sekunden bei 200 Nutzern, 99,5 % im Jahresmittel. Ob etwas „schnell“, „angemessen“ oder „fast“ erreicht ist, lässt sich bei der Abnahme nicht entscheiden.',
   1,
   '{}',
   null,
@@ -40254,7 +40255,7 @@ values (
   'table',
   'Für die Einführung einer neuen Kassensoftware in 40 Filialen sollst du Erhebungstechniken vergleichen.',
   'Ordne jeder Technik ihren typischen Vorteil und Nachteil zu. (6 P.)',
-  'Das Interview liefert Tiefe durch Rückfragen, kostet aber viel Zeit je Person. Der Fragebogen erreicht viele, kommt aber oft nicht zurück. Die Beobachtung zeigt Routinen, die niemand erwähnt. Allerdings arbeiten Beobachtete oft anders als sonst.',
+  'Das Interview liefert Tiefe durch Rückfragen, kostet aber viel Zeit je Person. Der Fragebogen erreicht viele, kommt aber oft nicht zurück. Die Beobachtung zeigt Routinen, die niemand erwähnt, allerdings arbeiten Beobachtete oft anders als sonst.',
   2,
   '{}',
   null,
@@ -40341,7 +40342,7 @@ values (
   'cloze',
   'Für die App eines Parkhausbetreibers liegt folgendes Anwendungsfalldiagramm vor.',
   'Ergänze die Aussagen zum Diagramm. (4 P.)',
-  '«include» von „Parkplatz reservieren“ zu „Zahlung durchführen“: Die Zahlung gehört zu jeder Reservierung. „Rechnung anfordern“ erweitert die Reservierung per «extend» nur bei Bedarf, der Pfeil zeigt zum Basisfall. Der Kunde ist mit zwei Fällen assoziiert.',
+  'Der «include»-Pfeil führt von „Parkplatz reservieren“ zu „Zahlung durchführen“, die Zahlung gehört also zu jeder Reservierung. „Rechnung anfordern“ erweitert die Reservierung per «extend» nur bei Bedarf, der Pfeil zeigt zum Basisfall. Der Kunde ist mit zwei Fällen assoziiert.',
   2,
   '{}',
   null,
@@ -40368,7 +40369,7 @@ values (
   'uml_modellierung',
   'u-usecase',
   'open',
-  'Eine Stadtbibliothek plant einen Selbstverbuchungs-Terminal: Leserinnen und Leser leihen Medien aus und geben sie zurück. Bei jeder Ausleihe wird der Leserausweis geprüft. Das Bibliothekspersonal sperrt verlorene Ausweise. Gebühren werden über einen externen Zahlungsdienst beglichen.',
+  'Eine Stadtbibliothek plant ein Selbstverbuchungs-Terminal. Leserinnen und Leser leihen dort Medien aus und geben sie zurück. Bei jeder Ausleihe wird der Leserausweis geprüft. Das Bibliothekspersonal sperrt verlorene Ausweise. Gebühren werden über einen externen Zahlungsdienst beglichen.',
   'Nenne aus der Beschreibung zwei Akteure und drei Anwendungsfälle für ein Anwendungsfalldiagramm. (5 P.)',
   'Je Nennung 1 Punkt, höchstens 2 für Akteure und 3 für Anwendungsfälle. Akteure sind Rollen oder externe Systeme außerhalb der Systemgrenze, Anwendungsfälle werden mit Objekt und Verb benannt.',
   2,
@@ -40403,7 +40404,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"«include»: Der eingebundene Fall wird bei jeder Ausführung des Basisfalls mit ausgeführt","points":2,"keywords":["immer","jeder bestellung","jedes mal","pflicht","zwingend"]},{"text":"«extend»: Die Erweiterung läuft nur unter einer Bedingung / bei Bedarf ab","points":2,"keywords":["optional","bedingung","bei bedarf","nur wenn","manchmal"]}],"sample_solution":"«include»: „Adresse prüfen“ ist fester Bestandteil: bei jeder Bestellung wird die Adresse geprüft. «extend»: „Gutschein einlösen“ erweitert die Bestellung nur unter einer Bedingung, nämlich wenn der Kunde einen Gutschein hat. Die Bestellung ist auch ohne die Erweiterung vollständig."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"«include»: Der eingebundene Fall wird bei jeder Ausführung des Basisfalls mit ausgeführt","points":2,"keywords":["immer","jeder bestellung","jedes mal","pflicht","zwingend"]},{"text":"«extend»: Die Erweiterung läuft nur unter einer Bedingung / bei Bedarf ab","points":2,"keywords":["optional","bedingung","bei bedarf","nur wenn","manchmal"]}],"sample_solution":"«include»: „Adresse prüfen“ ist fester Bestandteil, denn bei jeder Bestellung wird die Adresse geprüft. «extend»: „Gutschein einlösen“ erweitert die Bestellung nur unter einer Bedingung, nämlich wenn der Kunde einen Gutschein hat. Die Bestellung ist auch ohne die Erweiterung vollständig."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -40486,7 +40487,7 @@ values (
   'table',
   'Für ein Personalsystem wird die Klasse Mitarbeiter beschrieben: Jede Person hat einen Namen und eine ganzzahlige Personalnummer. Das Monatsgehalt wird mit Nachkommastellen gespeichert. Alle Attribute sind gekapselt. Die Methode erhoeheGehalt erhält einen Prozentsatz und soll von anderen Klassen aufgerufen werden können, sie liefert nichts zurück.',
   'Trage Sichtbarkeit und Typ für das Klassendiagramm ein. (8 P.)',
-  'Gekapselte Attribute sind private (-). Name: String, Personalnummer: int, Gehalt: double. Die Methode soll von außen aufrufbar sein, also public (+), und liefert nichts zurück: void.',
+  'Gekapselte Attribute sind private (-). Der Name ist ein String, die Personalnummer ein int, das Gehalt ein double. Die Methode soll von außen aufrufbar sein, also public (+). Weil sie nichts zurückliefert, ist ihr Rückgabetyp void.',
   2,
   '{}',
   null,
@@ -40515,7 +40516,7 @@ values (
   'cloze',
   'Aus dem Fachkonzept eines Webshops: Ein Kunde kann beliebig viele Bestellungen aufgeben, auch keine. Jede Bestellung gehört zu genau einem Kunden. Eine Bestellung besteht aus mindestens einer Position. Eine Position gehört zu genau einer Bestellung und wird mit ihr gelöscht.',
   'Wähle die Multiplizitäten und die Beziehungsart. (5 P.)',
-  'Die Multiplizität steht an dem Ende, über das sie etwas aussagt: bei Bestellung 0..* (so viele hat ein Kunde), bei Kunde 1. Positionen gibt es mindestens eine (1..*), sie leben und sterben mit der Bestellung: Komposition, gefüllte Raute am Ganzen.',
+  'Die Multiplizität steht an dem Ende, über das sie etwas aussagt: bei Bestellung 0..* (so viele hat ein Kunde), bei Kunde 1. Positionen gibt es mindestens eine (1..*). Sie leben und sterben mit der Bestellung, das ist eine Komposition mit gefüllter Raute am Ganzen.',
   3,
   '{}',
   null,
@@ -40689,7 +40690,7 @@ values (
   'cloze',
   'Bestellfreigabe in einem Industriebetrieb: Zuerst wird der Betrag ermittelt. Bestellungen ab 1.000 € brauchen eine Freigabe der Abteilungsleitung, kleinere nicht. Danach werden „Ware bestellen“ und „Budget buchen“ gleichzeitig erledigt. Erst wenn beides fertig ist, endet der Ablauf.',
   'Ergänze die Beschreibung des Aktivitätsdiagramms mit den passenden Begriffen. (7 P.)',
-  'Entweder-oder ist eine Entscheidung (Raute) mit Guards in eckigen Klammern: „ab 1.000 €“ heißt [Betrag >= 1000], der Rest [Betrag < 1000]. Gleichzeitiges startet an der Gabelung (Balken) und endet an der Vereinigung, die auf beide Wege wartet.',
+  'Ein Entweder-oder ist eine Entscheidung (Raute) mit Guards in eckigen Klammern: „ab 1.000 €“ heißt [Betrag >= 1000], der Rest [Betrag < 1000]. Gleichzeitige Aktionen starten an der Gabelung (Balken) und enden an der Vereinigung, die auf beide Wege wartet.',
   2,
   '{}',
   null,
@@ -40747,7 +40748,7 @@ values (
   'marking',
   'Im Review eines Aktivitätsdiagramms stehen an fünf Entscheidungen jeweils zwei Bedingungen. Bedingungen müssen sich gegenseitig ausschließen und zusammen alle Fälle abdecken.',
   'Markiere alle fehlerhaften Bedingungspaare. (2 P.)',
-  'Bei [Alter > 18] und [Alter < 18] fehlt der Grenzwert 18. Der Ablauf bliebe stehen. Bei [Note <= 4] und [Note >= 4] trifft für 4 beides zu. Der Weg wäre nicht eindeutig. Richtig sind Paare wie > und <= oder eine Bedingung mit [else].',
+  'Bei [Alter > 18] und [Alter < 18] fehlt der Grenzwert 18, der Ablauf bliebe dort stehen. Bei [Note <= 4] und [Note >= 4] trifft für 4 beides zu, der Weg wäre also nicht eindeutig. Richtig sind Paare wie > und <= oder eine Bedingung mit [else].',
   2,
   '{}',
   null,
@@ -40780,7 +40781,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Entscheidung: Es wird genau einer der ausgehenden Wege genommen, abhängig von einer Bedingung","points":2,"keywords":["genau ein","nur ein weg","bedingung","entweder oder","alternativ"]},{"text":"Gabelung: Alle ausgehenden Wege laufen gleichzeitig / parallel","points":2,"keywords":["parallel","gleichzeitig","alle wege","nebenläufig"]},{"text":"Hier richtig: Gabelung, weil beide Aktionen gleichzeitig ablaufen","points":1,"keywords":["gabelung","balken","fork","teilung"]},{"text":"Parallele Wege werden mit einer Vereinigung (Balken) wieder zusammengeführt","points":1,"keywords":["vereinigung","join","synchronisation","wartet"]}],"sample_solution":"Nach einer Entscheidung (Raute) läuft genau ein Weg weiter. Welcher, bestimmen die Bedingungen an den Kanten. Nach einer Gabelung (Balken) laufen alle Wege parallel. Hier sollen beide Aktionen gleichzeitig ablaufen, also gehört eine Gabelung hin, später eine Vereinigung."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Entscheidung: Es wird genau einer der ausgehenden Wege genommen, abhängig von einer Bedingung","points":2,"keywords":["genau ein","nur ein weg","bedingung","entweder oder","alternativ"]},{"text":"Gabelung: Alle ausgehenden Wege laufen gleichzeitig / parallel","points":2,"keywords":["parallel","gleichzeitig","alle wege","nebenläufig"]},{"text":"Hier richtig: Gabelung, weil beide Aktionen gleichzeitig ablaufen","points":1,"keywords":["gabelung","balken","fork","teilung"]},{"text":"Parallele Wege werden mit einer Vereinigung (Balken) wieder zusammengeführt","points":1,"keywords":["vereinigung","join","synchronisation","wartet"]}],"sample_solution":"Nach einer Entscheidung (Raute) läuft genau ein Weg weiter. Welcher, bestimmen die Bedingungen an den Kanten. Nach einer Gabelung (Balken) laufen alle Wege parallel. Hier sollen beide Aktionen gleichzeitig ablaufen, also gehört hier eine Gabelung hin und später eine Vereinigung."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -40805,7 +40806,7 @@ values (
   'cloze',
   'Aktivitätsdiagramm für Urlaubsanträge in einem Personalportal.',
   'Ergänze die Aussagen zum Diagramm. (4 P.)',
-  'Die Raute ist eine Entscheidung, [ja] und [nein] sind ihre Bedingungen (Guards). 5 >= 5 ist wahr, also gilt der [ja]-Zweig: genehmigen. Aktionen sind nur die abgerundeten Rechtecke. Start, Raute und Ende zählen nicht mit: 4 Aktionen.',
+  'Die Raute ist eine Entscheidung, [ja] und [nein] sind ihre Bedingungen (Guards). 5 >= 5 ist wahr, also gilt der [ja]-Zweig und der Antrag wird genehmigt. Aktionen sind nur die abgerundeten Rechtecke. Start, Raute und Ende zählen nicht mit, es bleiben 4 Aktionen.',
   2,
   '{}',
   null,
@@ -40863,7 +40864,7 @@ values (
   'table',
   'Für die Artikelverwaltung eines Baumarkts werden Variablen angelegt. Du sollst jeweils den passenden Datentyp wählen.',
   'Wähle für jede Variable den Datentyp. (5 P.)',
-  'Ganze Stückzahl: int. Artikelnummer mit Buchstaben und Bindestrich: String. Gewicht mit Nachkommastellen: double. Lieferbar ja/nein: boolean. Ein einzelner Buchstabe: char.',
+  'Eine ganze Stückzahl ist ein int, die Artikelnummer mit Buchstaben und Bindestrich ein String. Das Gewicht mit Nachkommastellen braucht double. Lieferbar oder nicht ist ein boolean, ein einzelner Buchstabe ein char.',
   1,
   '{}',
   null,
@@ -40896,7 +40897,7 @@ values (
   1,
   '{}',
   null,
-  '{"points":2,"criteria":[{"text":"Eine Ganzzahl speichert keine führenden Nullen: aus 01067 wird 1067","points":2,"keywords":["führende null","führenden nullen","null vorne","null am anfang"]},{"text":"Mit Postleitzahlen wird nicht gerechnet. Sie sind Kennzeichen, keine Zahlenwerte","points":1,"keywords":["nicht gerechnet","kein rechnen","kennzeichen","keine rechnung"]},{"text":"Ein String speichert die Zeichenfolge genau so, wie sie eingegeben wurde","points":1,"keywords":["zeichenfolge","zeichenkette","text","unverändert"]}],"sample_solution":"Ein int speichert nur den Zahlenwert, führende Nullen gehen verloren: Aus 01067 wird 1067. Mit einer Postleitzahl wird außerdem nie gerechnet. Sie ist ein Kennzeichen. Ein String speichert die Zeichenfolge unverändert."}'::jsonb,
+  '{"points":2,"criteria":[{"text":"Eine Ganzzahl speichert keine führenden Nullen: aus 01067 wird 1067","points":2,"keywords":["führende null","führenden nullen","null vorne","null am anfang"]},{"text":"Mit Postleitzahlen wird nicht gerechnet. Sie sind Kennzeichen, keine Zahlenwerte","points":1,"keywords":["nicht gerechnet","kein rechnen","kennzeichen","keine rechnung"]},{"text":"Ein String speichert die Zeichenfolge genau so, wie sie eingegeben wurde","points":1,"keywords":["zeichenfolge","zeichenkette","text","unverändert"]}],"sample_solution":"Ein int speichert nur den Zahlenwert, führende Nullen gehen verloren: Aus 01067 wird 1067. Mit einer Postleitzahl wird außerdem nie gerechnet, sie ist ein Kennzeichen. Ein String speichert die Zeichenfolge unverändert."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -40921,7 +40922,7 @@ values (
   'cloze',
   'Ein Java-Programm verteilt 17 Lizenzen auf Teams. Bei zwei int-Werten ist / eine Ganzzahldivision, % liefert den Rest.',
   'Gib die Werte der Variablen an. (3 P.)',
-  'Zwei int-Werte: 17 / 5 = 3 (Ganzzahldivision), der Rest 17 % 5 ist 2. Sobald ein Operand double ist, rechnet Java mit Nachkommastellen: 17 / 2.0 = 8,5.',
+  'Bei zwei int-Werten gilt 17 / 5 = 3 (Ganzzahldivision), der Rest 17 % 5 ist 2. Sobald ein Operand double ist, rechnet Java mit Nachkommastellen: 17 / 2.0 = 8,5.',
   2,
   '{}',
   null,
@@ -40979,7 +40980,7 @@ values (
   'table',
   'Eine Zählschleife läuft rückwärts mit der Schrittweite 3. Du sollst sie mit einem Schreibtischtest prüfen.',
   'Trage für jeden Durchlauf die Werte von i und summe am Ende des Durchlaufs ein. (4 P.)',
-  'i nimmt die Werte 10, 7, 4 und 1 an. summe: 0 + 10 = 10, 10 + 7 = 17, 17 + 4 = 21, 21 + 1 = 22. Danach wäre i = -2, und -2 > 0 ist falsch. Die Schleife endet nach 4 Durchläufen.',
+  'i nimmt die Werte 10, 7, 4 und 1 an. summe: 0 + 10 = 10, 10 + 7 = 17, 17 + 4 = 21, 21 + 1 = 22. Danach wäre i = -2, und -2 > 0 ist falsch. Die Schleife endet also nach 4 Durchläufen.',
   2,
   '{}',
   null,
@@ -41008,7 +41009,7 @@ values (
   'cloze',
   'Vor dem Start eines Updates soll ein Countdown die Zahlen 5, 4, 3, 2, 1 ausgeben, aber die 0 nicht.',
   'Ergänze die Schleife. (3 P.)',
-  'Der Zähler startet bei 5 und wird in jedem Durchlauf um 1 verringert. Die Bedingung i > 0 lässt 5, 4, 3, 2, 1 zu. Bei i = 0 ist 0 > 0 falsch. Die 0 wird nicht mehr ausgegeben.',
+  'Der Zähler startet bei 5 und wird in jedem Durchlauf um 1 verringert. Die Bedingung i > 0 lässt 5, 4, 3, 2, 1 zu. Bei i = 0 ist 0 > 0 falsch, die 0 wird also nicht mehr ausgegeben.',
   1,
   '{}',
   null,
@@ -41066,7 +41067,7 @@ values (
   'marking',
   'Das Programm soll den Durchschnitt von vier Messwerten berechnen. Die Indizes des Arrays beginnen bei 0. Beim Test bricht es mit einem Zugriffsfehler ab.',
   'Markiere die fehlerhafte Zeile. (1 P.)',
-  'Bei n = 4 Elementen sind die Indizes 0 bis 3. FÜR i VON 0 BIS n greift im letzten Durchlauf auf werte[4] zu. Das Element existiert nicht. Richtig ist FÜR i VON 0 BIS n - 1.',
+  'Bei n = 4 Elementen sind die Indizes 0 bis 3. FÜR i VON 0 BIS n greift im letzten Durchlauf auf werte[4] zu, und dieses Element existiert nicht. Richtig ist FÜR i VON 0 BIS n - 1.',
   2,
   '{}',
   null,
@@ -41215,7 +41216,7 @@ values (
   2,
   '{}',
   null,
-  '{"code":"gesamt ← 0\nFÜR i VON 0 BIS n - 1\n  gesamt ← gesamt * gewicht[i]\nENDE FÜR\nAUSGABE gesamt","points":3,"criteria":[{"text":"Fehler: In der Schleife wird multipliziert statt addiert","points":1,"keywords":["multipliziert","multiplikation","mal statt plus","statt addiert"]},{"text":"Folge: Wegen des Startwerts 0 bleibt das Ergebnis immer 0","points":1,"keywords":["immer 0","bleibt 0","bleibt null","startwert 0","null mal"]},{"text":"Korrektur: gesamt ← gesamt + gewicht[i]","points":1,"keywords":["gesamt + gewicht","addieren","plus","+ gewicht[i]"]}],"sample_solution":"In der Schleife wird gesamt mit dem Gewicht multipliziert statt es zu addieren. Da gesamt mit 0 startet, bleibt das Produkt immer 0. Korrekt ist: gesamt ← gesamt + gewicht[i]."}'::jsonb,
+  '{"code":"gesamt ← 0\nFÜR i VON 0 BIS n - 1\n  gesamt ← gesamt * gewicht[i]\nENDE FÜR\nAUSGABE gesamt","points":3,"criteria":[{"text":"Fehler: In der Schleife wird multipliziert statt addiert","points":1,"keywords":["multipliziert","multiplikation","mal statt plus","statt addiert"]},{"text":"Folge: Wegen des Startwerts 0 bleibt das Ergebnis immer 0","points":1,"keywords":["immer 0","bleibt 0","bleibt null","startwert 0","null mal"]},{"text":"Korrektur: gesamt ← gesamt + gewicht[i]","points":1,"keywords":["gesamt + gewicht","addieren","plus","+ gewicht[i]"]}],"sample_solution":"In der Schleife wird gesamt mit dem Gewicht multipliziert, statt es zu addieren. Da gesamt mit 0 startet, bleibt das Produkt immer 0. Korrekt ist: gesamt ← gesamt + gewicht[i]."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -41414,7 +41415,7 @@ values (
   'table',
   'Ein Lagerprogramm ermittelt, wie viele Stück insgesamt nachbestellt werden müssen, damit jeder Artikel wieder den Sollbestand erreicht.',
   'Führe einen Schreibtischtest durch: Trage ein, ob die Bedingung zutrifft, und den Wert von fehl am Ende jedes Durchlaufs. (8 P.)',
-  'i = 0: 12 < 5 falsch. i = 1: 5 < 5 ist falsch. Der Grenzwert zählt bei < nicht mit. i = 2: 8 < 5 falsch. i = 3: 3 < 5 wahr, fehl = 0 + 5 - 3 = 2. i = 4: 0 < 5 wahr, fehl = 2 + 5 - 0 = 7. Ausgabe: 7.',
+  'i = 0: 12 < 5 falsch. i = 1: 5 < 5 ist falsch, denn der Grenzwert zählt bei < nicht mit. i = 2: 8 < 5 falsch. i = 3: 3 < 5 wahr, fehl = 0 + 5 - 3 = 2. i = 4: 0 < 5 wahr, fehl = 2 + 5 - 0 = 7. Ausgabe: 7.',
   2,
   '{}',
   null,
@@ -41472,7 +41473,7 @@ values (
   'table',
   'Ein Händler stuft Kunden nach Jahresumsatz (in €) und Dauer der Kundenbeziehung (in Jahren) ein.',
   'Gib für jeden Aufruf den Rückgabewert an. (8 P.)',
-  'stufe(5000, 4): 5000 > 5000 ist falsch, 5000 > 1000 wahr: „Bronze“. Die Jahre spielen hier keine Rolle. stufe(5001, 3): wahr, 3 >= 3 wahr: „Gold“. stufe(8000, 2): wahr, 2 >= 3 falsch: „Silber“. stufe(1000, 10): beide Umsatzbedingungen falsch: „Basis“.',
+  'stufe(5000, 4): 5000 > 5000 ist falsch, 5000 > 1000 wahr: „Bronze“. Die Jahre spielen hier keine Rolle. stufe(5001, 3): 5001 > 5000 wahr, 3 >= 3 wahr: „Gold“. stufe(8000, 2): 8000 > 5000 wahr, 2 >= 3 falsch: „Silber“. stufe(1000, 10): beide Umsatzbedingungen falsch: „Basis“.',
   3,
   '{}',
   null,
@@ -41820,7 +41821,7 @@ values (
   'table',
   'Die Klasse Thermostat kapselt das Attribut temperatur (aktuell 20). Der Setter setTemperatur(t) übernimmt den Wert nur, wenn t zwischen 16 und 26 liegt, jeweils einschließlich. Die Aufrufe erfolgen nacheinander.',
   'Trage für jeden Aufruf ein, ob der Wert übernommen wird und welchen Wert temperatur danach hat. (5 P.)',
-  '22 liegt im Bereich: 22. 27 ist zu hoch: bleibt 22. 26 ist die obere Grenze und eingeschlossen: 26. 15 ist zu niedrig: bleibt 26. 16 ist die untere Grenze und eingeschlossen: 16. Abgelehnte Werte lösen keinen Compilerfehler aus. Der Setter ignoriert sie nur.',
+  '22 liegt im Bereich: 22. 27 ist zu hoch: bleibt 22. 26 ist die obere Grenze und eingeschlossen: 26. 15 ist zu niedrig: bleibt 26. 16 ist die untere Grenze und eingeschlossen: 16. Abgelehnte Werte lösen keinen Compilerfehler aus, der Setter ignoriert sie einfach.',
   2,
   '{}',
   null,
@@ -41876,7 +41877,7 @@ values (
   'objektorientierung',
   'oo-konstruktor',
   'table',
-  'Der Konstruktor von Konto setzt den Startbetrag, einzahlen(b) addiert b. Zuerst werden zwei Objekte erzeugt: Konto a = new Konto(100); Konto b = new Konto(40); Danach folgen vier Anweisungen.',
+  'Der Konstruktor von Konto setzt den Startbetrag, einzahlen(betrag) addiert den Betrag. Zuerst werden zwei Objekte erzeugt: Konto a = new Konto(100); Konto b = new Konto(40); Danach folgen vier Anweisungen.',
   'Trage nach jeder Anweisung ein, welchen Wert a.getStand() und b.getStand() liefern. (8 P.)',
   'c = a kopiert nur die Referenz: a und c zeigen auf dasselbe Objekt, also wirkt c.einzahlen(50) auch auf a (150). Nach b = c zeigt auch b auf dieses Objekt (150). b.einzahlen(10) ändert es auf 160, für a, b und c. Das Objekt mit 40 ist nicht mehr erreichbar.',
   3,
@@ -41936,7 +41937,7 @@ values (
   'pairs',
   'Ein Java-Programm arbeitet mit Objekten der Klasse Kunde. Du erklärst einer neuen Kollegin die Zeilen.',
   'Ordne jeder Zeile die passende Beschreibung zu. (4 P.)',
-  'new erzeugt ein Objekt und ruft den Konstruktor auf. Eine Zuweisung wie k2 = k kopiert nur die Referenz. Beide Variablen zeigen auf dasselbe Objekt. this.name ist das Attribut, name der Parameter. Getter lesen, Setter ändern den Wert.',
+  'new erzeugt ein Objekt und ruft den Konstruktor auf. Eine Zuweisung wie k2 = k kopiert nur die Referenz, danach zeigen beide Variablen auf dasselbe Objekt. this.name ist das Attribut, name der Parameter. Getter lesen, Setter ändern den Wert.',
   2,
   '{}',
   null,
@@ -41994,7 +41995,7 @@ values (
   'cloze',
   'Die Grünwerk Gartenbedarf GmbH hat für ihren Webshop das folgende ER-Modell in Chen-Notation erstellt.',
   'Ergänze die Aussagen zum ER-Modell.',
-  'Chen-Notation lesen: Rechtecke sind Entitätstypen, die Raute ist die Beziehung, unterstrichen ist der Primärschlüssel. Die Kardinalität liest man immer in beide Richtungen: Ein Kunde gibt n Bestellungen auf, eine Bestellung gehört zu 1 Kunden (1:n). Bestellung und Artikel stehen in einer n:m-Beziehung.',
+  'So liest du die Chen-Notation: Rechtecke sind Entitätstypen, die Raute ist die Beziehung, und der Primärschlüssel ist unterstrichen. Die Kardinalität liest du immer in beide Richtungen: Ein Kunde gibt n Bestellungen auf, eine Bestellung gehört zu 1 Kunden (1:n). Bestellung und Artikel stehen in einer n:m-Beziehung.',
   2,
   '{}',
   null,
@@ -42023,7 +42024,7 @@ values (
   'open',
   'Im Lager der Elbtal Logistik AG werden Artikel auf Lagerplätzen eingelagert. Ein Artikel kann auf mehreren Lagerplätzen liegen, auf einem Lagerplatz können mehrere Artikel liegen. Ein Kollege möchte das Attribut „Menge“ beim Entitätstyp Artikel eintragen.',
   'Erläutere, warum das Attribut „Menge“ an die Beziehung zwischen Artikel und Lagerplatz gehört und nicht an den Entitätstyp Artikel.',
-  'Je Aspekt 2 Punkte: Abhängigkeit von beiden Entitäten und die Folge eines falschen Eintrags. Andere fachlich richtige Formulierungen zählen ebenso. Bei der Umsetzung in Tabellen landet die Menge in der Zwischentabelle.',
+  'Je 2 Punkte gibt es für die Abhängigkeit von beiden Entitäten und für die Folge eines falschen Eintrags. Andere fachlich richtige Formulierungen zählen ebenso. Bei der Umsetzung in Tabellen landet die Menge in der Zwischentabelle.',
   2,
   '{}',
   null,
@@ -42081,7 +42082,7 @@ values (
   'open',
   'In einem englischsprachigen Handbuch zur Datenmodellierung steht der folgende Abschnitt.',
   'Beschreibe auf Deutsch anhand des Textes, was eine Entität und was eine Beziehung ist. Gib außerdem an, warum das Modell laut Text zuerst mit dem Kunden besprochen wird.',
-  'Geantwortet wird auf Deutsch und mit Bezug zum Text: je 1 Punkt für Entität und Beziehung, 2 Punkte für den Grund (Fehler sind früh günstig zu beheben). Eine wörtliche Übersetzung ist nicht nötig, Stichworte genügen.',
+  'Du antwortest auf Deutsch und mit Bezug zum Text. Für Entität und Beziehung gibt es je 1 Punkt, für den Grund 2 Punkte (Fehler sind früh günstig zu beheben). Eine wörtliche Übersetzung ist nicht nötig, Stichworte genügen.',
   2,
   ARRAY['englisch']::text[],
   null,
@@ -42142,11 +42143,11 @@ values (
 - An einem Projekt arbeiten mehrere Mitarbeiter, ein Mitarbeiter arbeitet an mehreren Projekten.
 - Jeder Mitarbeiter hat höchstens einen Firmenlaptop, jeder Laptop ist genau einem Mitarbeiter zugeteilt.',
   'Ergänze die Kardinalitäten der drei Beziehungen.',
-  'Jede Regel in beide Richtungen lesen. Kunde - Projekt: ein Kunde hat viele Projekte, ein Projekt genau einen Kunden -> 1:n. Mitarbeiter - Projekt: viele auf beiden Seiten -> n:m. Mitarbeiter - Laptop: höchstens einer auf beiden Seiten -> 1:1.',
+  'Lies jede Regel in beide Richtungen. Kunde und Projekt: Ein Kunde hat viele Projekte, ein Projekt genau einen Kunden, also 1:n. Mitarbeiter und Projekt: viele auf beiden Seiten, also n:m. Mitarbeiter und Laptop: höchstens einer auf beiden Seiten, also 1:1.',
   2,
   '{}',
   null,
-  '{"diagram":{"type":"erm","entitaeten":[{"name":"Kunde","attribute":[],"schluessel":[]},{"name":"Projekt","attribute":[],"schluessel":[]},{"name":"Mitarbeiter","attribute":[],"schluessel":[]},{"name":"Laptop","attribute":[],"schluessel":[]}],"beziehungen":[{"a":"Kunde","name":"beauftragt","b":"Projekt","kard_a":"?","kard_b":"?"},{"a":"Mitarbeiter","name":"arbeitet an","b":"Projekt","kard_a":"?","kard_b":"?"},{"a":"Mitarbeiter","name":"nutzt","b":"Laptop","kard_a":"?","kard_b":"?"}]},"points":3,"cloze_text":"Kunde - Projekt: {0}\nMitarbeiter - Projekt: {1}\nMitarbeiter - Laptop: {2}","gaps":[{"answers":["1:n"],"options":["1:n","n:1","n:m","1:1"],"rationale":"Ein Kunde, viele Projekte. Die 1 steht beim Kunden."},{"answers":["n:m"],"options":["n:m","1:n","n:1","1:1"],"rationale":"Viele Mitarbeiter je Projekt und viele Projekte je Mitarbeiter."},{"answers":["1:1"],"options":["1:1","1:n","n:1","n:m"],"rationale":"Auf beiden Seiten höchstens einer."}]}'::jsonb,
+  '{"diagram":{"type":"erm","entitaeten":[{"name":"Kunde","attribute":[],"schluessel":[]},{"name":"Projekt","attribute":[],"schluessel":[]},{"name":"Mitarbeiter","attribute":[],"schluessel":[]},{"name":"Laptop","attribute":[],"schluessel":[]}],"beziehungen":[{"a":"Kunde","name":"beauftragt","b":"Projekt","kard_a":"?","kard_b":"?"},{"a":"Mitarbeiter","name":"arbeitet an","b":"Projekt","kard_a":"?","kard_b":"?"},{"a":"Mitarbeiter","name":"nutzt","b":"Laptop","kard_a":"?","kard_b":"?"}]},"points":3,"cloze_text":"Kunde und Projekt: {0}\nMitarbeiter und Projekt: {1}\nMitarbeiter und Laptop: {2}","gaps":[{"answers":["1:n"],"options":["1:n","n:1","n:m","1:1"],"rationale":"Ein Kunde, viele Projekte. Die 1 steht beim Kunden."},{"answers":["n:m"],"options":["n:m","1:n","n:1","1:1"],"rationale":"Viele Mitarbeiter je Projekt und viele Projekte je Mitarbeiter."},{"answers":["1:1"],"options":["1:1","1:n","n:1","n:m"],"rationale":"Auf beiden Seiten höchstens einer."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -42287,7 +42288,7 @@ values (
   'table',
   'Das ER-Modell der Personalverwaltung der Elbtal Logistik AG liegt vor.',
   'Lies das Diagramm in beide Richtungen und vervollständige die Aussagen.',
-  'Die Zahl an einer Entität sagt, wie viele davon zu EINER Entität der Gegenseite gehören. 1 bei Abteilung: ein Mitarbeiter hat eine Abteilung. n bei Mitarbeiter: eine Abteilung hat viele Mitarbeiter. n und m: auf beiden Seiten viele.',
+  'Die Zahl an einer Entität sagt, wie viele davon zu EINER Entität der Gegenseite gehören. Die 1 bei Abteilung heißt: Ein Mitarbeiter hat eine Abteilung. Das n bei Mitarbeiter heißt: Eine Abteilung hat viele Mitarbeiter. Bei n und m stehen auf beiden Seiten viele.',
   2,
   '{}',
   null,
@@ -42374,7 +42375,7 @@ values (
   'open',
   'Die Steuerkanzlei Albers & Partner fragt, wozu die Tabellen Mandant (MandantNr, Name) und Vorgang (VorgangNr, Betreff, MandantNr) Schlüssel brauchen.',
   'Beschreibe am Beispiel die Aufgabe des Primärschlüssels und die Aufgabe des Fremdschlüssels.',
-  'Je Schlüssel 2 Punkte: Aussage plus Bezug zum Beispiel. Primärschlüssel = eindeutige Identifikation, Fremdschlüssel = Verweis auf den Primärschlüssel einer anderen Tabelle. Stichworte genügen.',
+  'Je Schlüssel gibt es 2 Punkte für die Aussage mit Bezug zum Beispiel. Der Primärschlüssel identifiziert eindeutig, der Fremdschlüssel verweist auf den Primärschlüssel einer anderen Tabelle. Stichworte genügen.',
   1,
   '{}',
   null,
@@ -42403,7 +42404,7 @@ values (
   'marking',
   'In einer englischen Fachzeitschrift steht ein kurzer Beitrag über relationale Datenbanken.',
   'Markiere alle Aussagen, die sich dem Text entnehmen lassen.',
-  'Der Text nennt vier Aussagen: Primärschlüssel eindeutig und nie leer, oft eine vom System vergebene Nummer (weil sich Namen und E-Mail-Adressen ändern), Fremdschlüssel speichert den Primärschlüssel einer anderen Tabelle, die Verknüpfung vermeidet doppelte Speicherung. Nur werten, was wirklich im Text steht.',
+  'Der Text macht vier Aussagen: Der Primärschlüssel ist eindeutig und nie leer. Oft ist er eine vom System vergebene Nummer, weil sich Namen und E-Mail-Adressen ändern. Der Fremdschlüssel speichert den Primärschlüssel einer anderen Tabelle. Die Verknüpfung vermeidet doppelte Speicherung. Gewertet wird nur, was wirklich im Text steht.',
   2,
   ARRAY['englisch']::text[],
   null,
@@ -42432,7 +42433,7 @@ values (
   'cloze',
   'Du ergänzt das Glossar im Wiki der IT-Abteilung um den Eintrag „Schlüssel in relationalen Datenbanken“.',
   'Setze die passenden Begriffe ein.',
-  'Primärschlüssel = eindeutige Identifikation, Fremdschlüssel = Verweis auf einen Primärschlüssel. Ein zusammengesetzter Schlüssel besteht aus mehreren Spalten, ein künstlicher Schlüssel (Surrogatschlüssel) hat keine fachliche Bedeutung. Die referenzielle Integrität verhindert Verweise ins Leere.',
+  'Der Primärschlüssel identifiziert eindeutig, der Fremdschlüssel verweist auf einen Primärschlüssel. Ein zusammengesetzter Schlüssel besteht aus mehreren Spalten, ein künstlicher Schlüssel (Surrogatschlüssel) hat keine fachliche Bedeutung. Die referenzielle Integrität verhindert Verweise ins Leere.',
   1,
   '{}',
   null,
@@ -42494,7 +42495,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":3,"criteria":[{"text":"Referenzielle Integrität: Die 14 Lieferungen würden sonst auf einen nicht mehr vorhandenen Lieferanten verweisen (verwaiste Datensätze).","points":2,"keywords":["referenzielle Integrität","verwaist","ins Leere","nicht mehr vorhanden","Fremdschlüssel"]},{"text":"Möglichkeit: Lieferanten als inaktiv kennzeichnen, statt ihn zu löschen.","points":1,"keywords":["inaktiv","deaktivieren","sperren","Kennzeichen","archivieren"]},{"text":"Möglichkeit: zuerst die abhängigen Lieferungen löschen oder umhängen bzw. Löschweitergabe einrichten.","points":1,"keywords":["Löschweitergabe","kaskadierend","Kaskade","zuerst die Lieferungen","abhängigen Datensätze"]}],"sample_solution":"Die referenzielle Integrität verlangt, dass jeder Fremdschlüsselwert als Primärschlüssel existiert. Würde der Lieferant gelöscht, verwiesen die 14 Lieferungen auf einen Lieferanten, den es nicht mehr gibt. Stattdessen kann der Lieferant als inaktiv gekennzeichnet werden; alternativ müssten zuerst die abhängigen Lieferungen gelöscht oder eine Löschweitergabe eingerichtet werden, was hier wegen der Aufbewahrung der Belege kaum sinnvoll ist."}'::jsonb,
+  '{"points":3,"criteria":[{"text":"Referenzielle Integrität: Die 14 Lieferungen würden sonst auf einen nicht mehr vorhandenen Lieferanten verweisen (verwaiste Datensätze).","points":2,"keywords":["referenzielle Integrität","verwaist","ins Leere","nicht mehr vorhanden","Fremdschlüssel"]},{"text":"Möglichkeit: Lieferanten als inaktiv kennzeichnen, statt ihn zu löschen.","points":1,"keywords":["inaktiv","deaktivieren","sperren","Kennzeichen","archivieren"]},{"text":"Möglichkeit: zuerst die abhängigen Lieferungen löschen oder umhängen bzw. Löschweitergabe einrichten.","points":1,"keywords":["Löschweitergabe","kaskadierend","Kaskade","zuerst die Lieferungen","abhängigen Datensätze"]}],"sample_solution":"Die referenzielle Integrität verlangt, dass jeder Fremdschlüsselwert als Primärschlüssel existiert. Würde der Lieferant gelöscht, verwiesen die 14 Lieferungen auf einen Lieferanten, den es nicht mehr gibt. Stattdessen kann der Lieferant als inaktiv gekennzeichnet werden. Alternativ müssten zuerst die abhängigen Lieferungen gelöscht oder eine Löschweitergabe eingerichtet werden. Das ist hier kaum sinnvoll, weil die Belege aufbewahrt werden müssen."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -42519,7 +42520,7 @@ values (
   'marking',
   'Die Grünwerk Gartenbedarf GmbH führt ihre Bestellungen bisher in einer einzigen Tabelle. Die Kundin Yilmaz (K2) zieht von Kassel nach Köln um.',
   'Markiere alle Zeilen, in denen der Ort geändert werden muss, damit die Daten widerspruchsfrei bleiben.',
-  'Der Ort der Kundin ist redundant in drei Zeilen gespeichert. Wird nur eine davon geändert, widersprechen sich die Daten: eine Änderungsanomalie. In normalisierter Form stünde der Ort genau einmal in einer Tabelle Kunde.',
+  'Der Ort der Kundin ist redundant in drei Zeilen gespeichert. Wird nur eine davon geändert, widersprechen sich die Daten. Das ist eine Änderungsanomalie. In normalisierter Form stünde der Ort genau einmal in einer Tabelle Kunde.',
   1,
   '{}',
   null,
@@ -42548,7 +42549,7 @@ values (
   'open',
   'Die Pixelhafen Medien GmbH verwaltet Kundenprojekte bisher in einer Tabellenkalkulation. Der Auszug zeigt drei Zeilen.',
   'Erkläre anhand der Tabelle den Begriff Redundanz und beschreibe ein Problem, das dadurch entstehen kann.',
-  '2 Punkte für die Erklärung (mehrfach gespeicherte gleiche Information), 2 Punkte für ein beschriebenes Problem. Verlangt ist ein Problem, die Liste nennt zwei, gewertet wird bis zur Höchstpunktzahl von 4.',
+  '2 Punkte für die Erklärung (mehrfach gespeicherte gleiche Information), 2 Punkte für ein beschriebenes Problem. Verlangt ist ein Problem, die Liste nennt zwei. Gewertet wird bis zur Höchstpunktzahl von 4.',
   2,
   '{}',
   null,
@@ -42577,7 +42578,7 @@ values (
   'cloze',
   'Die Tabelle Kurstermin der Kessler & Brandt IT-Systemhaus GmbH hat die Spalten KursNr, TeilnehmerNr, Kurstitel, Teilnehmername, RaumNr und Raumgröße. Primärschlüssel ist KursNr + TeilnehmerNr. Der Kurstitel hängt nur von der KursNr ab; jeder Kurs findet in genau einem Raum statt, die Raumgröße hängt von der RaumNr ab. Alle Werte sind atomar.',
   'Ergänze die Beurteilung der Tabelle.',
-  '1NF: atomare Werte. 2NF: Kein Nichtschlüsselattribut hängt nur von einem Teil eines zusammengesetzten Schlüssels ab (partielle Abhängigkeit). 3NF: Kein Nichtschlüsselattribut hängt über ein anderes Nichtschlüsselattribut vom Schlüssel ab (transitive Abhängigkeit). Kurstitel und Raumdaten werden in eigene Tabellen ausgelagert.',
+  '1NF: Alle Werte sind atomar. 2NF: Kein Nichtschlüsselattribut hängt nur von einem Teil eines zusammengesetzten Schlüssels ab (partielle Abhängigkeit). 3NF: Kein Nichtschlüsselattribut hängt über ein anderes Nichtschlüsselattribut vom Schlüssel ab (transitive Abhängigkeit). Kurstitel und Raumdaten werden in eigene Tabellen ausgelagert.',
   3,
   '{}',
   null,
@@ -42635,7 +42636,7 @@ values (
   'table',
   'Die Grünwerk Gartenbedarf GmbH testet eine neue Version ihres Webshops. Im Testprotokoll steht diese Adresse: https://shop.gruenwerk.example:8443/artikel/liste?kat=rasen#top',
   'Zerlege die URL: Trage zu jedem Bestandteil den Wert aus der Adresse ein.',
-  'Aufbau: Schema://Host:Port/Pfad?Query#Fragment. Das Schema steht vor ://, der Host reicht bis zum Doppelpunkt, danach folgt der Port. Der Pfad beginnt mit /, die Query hinter ?, das Fragment hinter #.',
+  'Eine URL ist so aufgebaut: Schema://Host:Port/Pfad?Query#Fragment. Das Schema steht vor ://, der Host reicht bis zum Doppelpunkt, danach folgt der Port. Der Pfad beginnt mit /, die Query steht hinter ?, das Fragment hinter #.',
   2,
   '{}',
   null,
@@ -42664,7 +42665,7 @@ values (
   'pairs',
   'Ein neuer Kollege im Kundenservice soll Fehlermeldungen mit URL besser einordnen können.',
   'Ordne jedem Bestandteil einer URL seine Aufgabe zu.',
-  'Schema = Protokoll (http, https), Host = Server, Port = Dienst (ohne Angabe 80 bzw. 443), Pfad = Ressource, Query = Parameter als name=wert, Fragment = Stelle in der Seite. Es wird nicht an den Server geschickt.',
+  'Das Schema nennt das Protokoll (http, https), der Host den Server und der Port den Dienst (ohne Angabe 80 bzw. 443). Der Pfad benennt die Ressource, die Query übergibt Parameter als name=wert. Das Fragment bezeichnet eine Stelle in der Seite und wird nicht an den Server geschickt.',
   1,
   '{}',
   null,
@@ -42722,7 +42723,7 @@ values (
   'cloze',
   'Die Seite https://www.pixelhafen.example/kunden/projekte/liste.html enthält mehrere Links.',
   'Gib an, welche Adresse der Browser beim Klick auf den jeweiligen Link aufruft.',
-  'Relative Adressen werden vom Ordner der aktuellen Seite aus aufgelöst: Dateiname allein = gleicher Ordner, ../ = eine Ebene höher, führender / = ab der Wurzel. Schema und Host (https://www.pixelhafen.example) bleiben jeweils erhalten.',
+  'Relative Adressen werden vom Ordner der aktuellen Seite aus aufgelöst: Ein Dateiname allein bleibt im gleichen Ordner, ../ geht eine Ebene höher, ein führender / beginnt an der Wurzel. Schema und Host (https://www.pixelhafen.example) bleiben jeweils erhalten.',
   2,
   '{}',
   null,
@@ -42867,7 +42868,7 @@ values (
   'ordering',
   'Eine Kundin ruft im Grünwerk-Webshop die Seite https://shop.gruenwerk.example/angebote auf. Die Seite ist dynamisch: Die aktuellen Angebote stehen in einer Datenbank.',
   'Bringe die Schritte vom Absenden der Adresse bis zur fertigen Seite in die richtige Reihenfolge.',
-  'Name -> IP (DNS) -> Verbindung (TCP) -> Verschlüsselung (TLS) -> Anfrage (HTTP). Bei einer dynamischen Seite erzeugt ein Programm auf dem Server das HTML erst jetzt aus den Daten der Datenbank. Der Browser erhält nur das fertige HTML und stellt es dar.',
+  'Erst wird der Name zur IP-Adresse aufgelöst (DNS), dann folgen Verbindung (TCP), Verschlüsselung (TLS) und Anfrage (HTTP). Bei einer dynamischen Seite erzeugt ein Programm auf dem Server das HTML erst jetzt aus den Daten der Datenbank. Der Browser erhält nur das fertige HTML und stellt es dar.',
   2,
   '{}',
   null,
@@ -42896,7 +42897,7 @@ values (
   'open',
   'Die Pixelhafen Medien GmbH berät einen Handwerksbetrieb, der bisher eine statische Website hat. Der Betrieb möchte künftig Referenzen selbst pflegen und einen Kundenbereich mit Anmeldung anbieten.',
   'Erläutere den Unterschied zwischen einer statischen und einer dynamischen Website.',
-  'Je Seite des Vergleichs 2 Punkte: statisch = fertige Dateien, gleicher Inhalt für alle; dynamisch = beim Aufruf serverseitig erzeugt, oft aus einer Datenbank, nutzer- oder eingabeabhängig. Für Kundenbereich und selbst gepflegte Referenzen braucht der Betrieb eine dynamische Website.',
+  'Je Seite des Vergleichs gibt es 2 Punkte. Statisch heißt: fertige Dateien, gleicher Inhalt für alle. Dynamisch heißt: beim Aufruf serverseitig erzeugt, oft aus einer Datenbank, abhängig von Nutzer oder Eingabe. Für Kundenbereich und selbst gepflegte Referenzen braucht der Betrieb eine dynamische Website.',
   2,
   '{}',
   null,
@@ -42983,7 +42984,7 @@ values (
   'marking',
   'Eine Auszubildende der Pixelhafen Medien GmbH hat eine Angebotsseite geschrieben. Der Browser zeigt die Seite fehlerhaft an. Du prüfst den Quelltext.',
   'Markiere alle Zeilen, die einen Syntaxfehler enthalten.',
-  'Drei Fehler: falsch geschriebenes End-Tag (</titel>), nicht zusammenpassende Tags (<h1> ... </h2>) und ein Attributwert ohne schließendes Anführungszeichen. Elemente bestehen aus Start-Tag, Inhalt und passendem End-Tag; Attribute stehen als name="wert" im Start-Tag.',
+  'Die Seite enthält drei Fehler: ein falsch geschriebenes End-Tag (</titel>), nicht zusammenpassende Tags (<h1> ... </h2>) und einen Attributwert ohne schließendes Anführungszeichen. Elemente bestehen aus Start-Tag, Inhalt und passendem End-Tag; Attribute stehen als name="wert" im Start-Tag.',
   2,
   '{}',
   null,
@@ -43128,7 +43129,7 @@ values (
   'marking',
   'Vor der Freigabe prüfst du einen Ausschnitt der Bestellseite auf Barrierefreiheit.',
   'Markiere alle Zeilen, die gegen Regeln der Barrierefreiheit verstoßen.',
-  'Vier Verstöße: fehlender Alt-Text, Eingabefeld ohne label, nichtssagender Linktext und zu geringer Kontrast. Barrierefrei heißt: Inhalte haben eine Textalternative, Felder eine verknüpfte Beschriftung, Links ein erkennbares Ziel und Texte genug Kontrast.',
+  'Es sind vier Verstöße: ein fehlender Alt-Text, ein Eingabefeld ohne label, ein nichtssagender Linktext und zu geringer Kontrast. Barrierefrei heißt: Inhalte haben eine Textalternative, Felder eine verknüpfte Beschriftung, Links ein erkennbares Ziel und Texte genug Kontrast.',
   2,
   '{}',
   null,
@@ -43157,7 +43158,7 @@ values (
   'cloze',
   'Für das Pflichtenheft des Webshop-Relaunchs fasst du die Anforderungen an die Barrierefreiheit zusammen.',
   'Setze die passenden Begriffe ein.',
-  'Das Barrierefreiheitsstärkungsgesetz (BFSG) verpflichtet seit 28.06.2025 viele private Anbieter. Die WCAG nennen vier Prinzipien. Typische Maßnahmen: Alternativtexte, Tastaturbedienung, Untertitel, ausreichender Kontrast. Die BITV 2.0 gilt für öffentliche Stellen des Bundes.',
+  'Das Barrierefreiheitsstärkungsgesetz (BFSG) verpflichtet seit dem 28.06.2025 viele private Anbieter. Die WCAG nennen vier Prinzipien. Typische Maßnahmen sind Alternativtexte, Tastaturbedienung, Untertitel und ausreichender Kontrast. Die BITV 2.0 gilt für öffentliche Stellen des Bundes.',
   2,
   '{}',
   null,
@@ -43215,7 +43216,7 @@ values (
   'cloze',
   'Ein Messgerät liefert zwei Statusbytes A und B, die ausgewertet werden sollen.',
   'Ermittle die Werte der beiden Bytes.',
-  'Stellenwerte eines Bytes: 128 64 32 16 8 4 2 1. A = 128 + 32 + 16 + 4 + 2 = 182, B = 64 + 8 + 4 + 1 = 77. Für Hex je vier Bit zusammenfassen: 1011 0110 = B6, 0100 1101 = 4D. 182 + 77 = 259. Das passt nicht mehr in 8 Bit (höchstens 255).',
+  'Stellenwerte eines Bytes: 128 64 32 16 8 4 2 1. A = 128 + 32 + 16 + 4 + 2 = 182, B = 64 + 8 + 4 + 1 = 77. Für Hex fasst du je vier Bit zusammen: 1011 0110 = B6, 0100 1101 = 4D. 182 + 77 = 259. Das passt nicht mehr in 8 Bit (höchstens 255).',
   2,
   '{}',
   null,
@@ -43244,7 +43245,7 @@ values (
   'table',
   'Für die Nummerierung von Lagerplätzen, Geräten und Farben soll geklärt werden, wie viele Werte sich mit einer bestimmten Anzahl Bit darstellen lassen. Die erste Zeile ist als Muster ausgefüllt.',
   'Ergänze die Tabelle.',
-  'Mit n Bit gibt es 2^n verschiedene Werte. Weil die Zählung bei 0 beginnt, ist der größte Wert 2^n - 1: 8 Bit -> 256 Werte, 0 bis 255; 10 Bit -> 1.024 Werte, 0 bis 1.023; 16 Bit -> 65.536 Werte, 0 bis 65.535.',
+  'Mit n Bit gibt es 2^n verschiedene Werte. Weil die Zählung bei 0 beginnt, ist der größte Wert 2^n - 1. 8 Bit ergeben 256 Werte (0 bis 255), 10 Bit 1.024 Werte (0 bis 1.023) und 16 Bit 65.536 Werte (0 bis 65.535).',
   2,
   '{}',
   null,
@@ -43418,7 +43419,7 @@ values (
   'cloze',
   'Im Lager der Elbtal Logistik AG werden Lieferscheine gescannt und archiviert. Rund um die Uhr fallen im Durchschnitt 22 Lieferscheine pro Stunde an, ein Scan ist 96 kB groß (1 kB = 1.000 Byte, 1 KiB = 1.024 Byte). Das Archivsystem verringert den Speicherbedarf durch Kompression um 25 %. Ein Jahr hat 365 Tage.',
   'Ermittle schrittweise den Speicherbedarf. Runde nur das Endergebnis auf zwei Nachkommastellen.',
-  '22 × 24 = 528 Lieferscheine pro Tag. 528 × 96 kB = 50.688 kB = 50.688.000 Byte; / 1.024 = 49.500 KiB. × 365 = 18.067.500 KiB pro Jahr. / 1.024 / 1.024 = 17,23 GiB. „Um 25 % verringern“ heißt, es bleiben 75 %: 17,23 × 0,75 ≈ 12,92 GiB. Fallen: kB ist dezimal, KiB binär, und „um 25 %“ ergibt den Faktor 0,75.',
+  '22 × 24 = 528 Lieferscheine pro Tag. 528 × 96 kB = 50.688 kB = 50.688.000 Byte; / 1.024 = 49.500 KiB. × 365 = 18.067.500 KiB pro Jahr. / 1.024 / 1.024 = 17,23 GiB. „Um 25 % verringern“ heißt, es bleiben 75 %: 17,23 × 0,75 ≈ 12,92 GiB. Achte auf die Fallen: kB ist dezimal, KiB binär, und „um 25 %“ ergibt den Faktor 0,75.',
   3,
   '{}',
   null,
@@ -43476,7 +43477,7 @@ values (
   'cloze',
   'Die Hotline der Kessler & Brandt IT-Systemhaus GmbH zeichnet mit Einwilligung der Kunden Gespräche zu Schulungszwecken auf: 16 kHz Abtastrate, 16 Bit, Mono, unkomprimiert. Ein Gespräch dauert im Schnitt 4 Minuten, pro Tag werden 150 Gespräche aufgezeichnet. Es gilt 1 MB = 1.000.000 Byte und 1 MiB = 1.024² Byte.',
   'Berechne den Speicherbedarf. Runde den letzten Wert auf zwei Nachkommastellen.',
-  'Audio: Abtastrate × Bittiefe × Kanäle × Sekunden. 16.000 × 16 × 1 × 240 s = 61.440.000 Bit; / 8 = 7.680.000 Byte = 7,68 MB je Gespräch. × 150 = 1.152 MB pro Tag = 1.152.000.000 Byte. / 1.048.576 ≈ 1.098,63 MiB.',
+  'Bei Audio gilt: Abtastrate × Bittiefe × Kanäle × Sekunden. 16.000 × 16 × 1 × 240 s = 61.440.000 Bit; / 8 = 7.680.000 Byte = 7,68 MB je Gespräch. × 150 = 1.152 MB pro Tag = 1.152.000.000 Byte. / 1.048.576 ≈ 1.098,63 MiB.',
   2,
   '{}',
   null,
@@ -43505,7 +43506,7 @@ values (
   'cloze',
   'Die Elbtal Logistik AG plant für den Außenbereich 8 Kameras. Jede Kamera liefert 2.560 × 1.440 Pixel mit 24 Bit Farbtiefe und 20 Bildern pro Sekunde. Der Videocodec komprimiert den Datenstrom auf 2 % der unkomprimierten Datenrate. Die Aufnahmen aller Kameras sollen 7 Tage (168 Stunden) gespeichert werden. Es gilt 1 Mbit = 1.000.000 Bit und 1 TiB = 1.024⁴ Byte.',
   'Berechne Datenrate und Speicherbedarf. Rechne in den Folgeschritten mit dem gerundeten Wert weiter.',
-  '2.560 × 1.440 × 24 Bit × 20 Bilder/s = 1.769.472.000 Bit/s ≈ 1.769,5 Mbit/s. Auf 2 %: × 0,02 = 35,39 -> 36 Mbit/s. Speicher: 8 × 36.000.000 Bit/s × 3.600 s × 168 h = 174.182.400.000.000 Bit; / 8 = 21.772.800.000.000 Byte; / 1.024⁴ ≈ 19,80 TiB -> 20 TiB. Aufrunden, weil der Speicher reichen muss. Fallen: Bit in Byte (/ 8), Stunden in Sekunden, Mbit dezimal, TiB binär.',
+  '2.560 × 1.440 × 24 Bit × 20 Bilder/s = 1.769.472.000 Bit/s ≈ 1.769,5 Mbit/s. Auf 2 %: × 0,02 = 35,39 -> 36 Mbit/s. Speicher: 8 × 36.000.000 Bit/s × 3.600 s × 168 h = 174.182.400.000.000 Bit; / 8 = 21.772.800.000.000 Byte; / 1.024⁴ ≈ 19,80 TiB -> 20 TiB. Aufrunden, weil der Speicher reichen muss. Achte auf die Fallen: Bit in Byte (/ 8), Stunden in Sekunden, Mbit dezimal, TiB binär.',
   3,
   '{}',
   null,
@@ -43534,7 +43535,7 @@ values (
   'marking',
   'Ein Auszubildender der Pixelhafen Medien GmbH berechnet die Größe eines unkomprimierten Screenshots (1.920 × 1.080 Pixel, 24 Bit Farbtiefe) in MiB. Jede Zeile rechnet mit dem richtigen Ergebnis der Vorzeile weiter. Du prüfst den Rechenweg.',
   'Markiere alle Zeilen, die einen Fehler enthalten.',
-  'Richtig: 1.920 × 1.080 × 24 = 49.766.400 Bit; / 8 = 6.220.800 Byte; / 1.024 = 6.075 KiB; / 1.024 ≈ 5,93 MiB. Die beiden klassischen Fehler: Bit und Byte verwechselt (Faktor 8) sowie dezimale und binäre Vorsätze gemischt (1.000 statt 1.024).',
+  'Richtig ist: 1.920 × 1.080 × 24 = 49.766.400 Bit; / 8 = 6.220.800 Byte; / 1.024 = 6.075 KiB; / 1.024 ≈ 5,93 MiB. Hier stecken die beiden klassischen Fehler: Bit und Byte verwechselt (Faktor 8) sowie dezimale und binäre Vorsätze gemischt (1.000 statt 1.024).',
   2,
   '{}',
   null,
@@ -43621,7 +43622,7 @@ values (
   'cloze',
   'Die Kessler & Brandt IT-Systemhaus GmbH sichert für die Steuerkanzlei Albers & Partner nachts 72 GB (1 GB = 1.000.000.000 Byte) in ein Rechenzentrum. Der Anschluss der Kanzlei bietet 100 Mbit/s im Download und 25 Mbit/s im Upload. Durch Protokoll-Overhead steigt die zu übertragende Datenmenge um 10 %.',
   'Berechne schrittweise die Dauer der Sicherung. Runde den letzten Wert auf zwei Nachkommastellen.',
-  '72 GB = 72.000 MB; × 8 = 576.000 Mbit. Mit 10 % Overhead: × 1,1 = 633.600 Mbit. Die Sicherung wird hochgeladen, also zählt die Upload-Rate: 633.600 / 25 Mbit/s = 25.344 s. / 3.600 = 7,04 Stunden. Fallen: Byte in Bit umrechnen (× 8) und Upload statt Download verwenden.',
+  '72 GB = 72.000 MB; × 8 = 576.000 Mbit. Mit 10 % Overhead: × 1,1 = 633.600 Mbit. Die Sicherung wird hochgeladen, also zählt die Upload-Rate: 633.600 / 25 Mbit/s = 25.344 s. / 3.600 = 7,04 Stunden. Achte auf die Fallen: Byte in Bit umrechnen (× 8) und mit der Upload-Rate statt der Download-Rate rechnen.',
   2,
   '{}',
   null,
@@ -43708,7 +43709,7 @@ values (
   'marking',
   'Die Filiale Göttingen soll eine 3-GB-Datei (1 GB = 1.000 MB) in die Zentrale hochladen. Der Anschluss der Filiale hat 100 Mbit/s im Download und 20 Mbit/s im Upload. Ein Kollege hat die Dauer berechnet; du prüfst seinen Rechenweg.',
   'Markiere alle Zeilen, die einen Fehler enthalten.',
-  'Richtig: 3 GB = 24.000 Mbit; beim Hochladen gilt die Upload-Rate; Dauer = Datenmenge / Datenrate = 24.000 / 20 = 1.200 s = 20 min. Die Fehler: Download- statt Upload-Rate und die verdrehte Formel.',
+  'Richtig ist: 3 GB = 24.000 Mbit, und beim Hochladen gilt die Upload-Rate. Dauer = Datenmenge / Datenrate = 24.000 / 20 = 1.200 s = 20 min. Die Fehler sind die Download- statt der Upload-Rate und die verdrehte Formel.',
   2,
   '{}',
   null,
@@ -44201,7 +44202,7 @@ values (
   'pairs',
   'Für die KI-Richtlinie der Pixelhafen Medien GmbH ordnest du jedem Risiko eine Gegenmaßnahme zu.',
   'Ordne jedem Risiko die passende Gegenmaßnahme zu.',
-  'Halluzinationen fängt nur die Prüfung der Fakten ab. Gegen Bias helfen ausgewogene Daten und Kontrollen je Gruppe. Vertrauliche und personenbezogene Daten gehören nicht in öffentliche Werkzeuge. Gegen Prompt Injection begrenzt man, was der Assistent tun darf. Und am Ende entscheidet ein Mensch.',
+  'Halluzinationen fängt nur die Prüfung der Fakten ab. Gegen Bias helfen ausgewogene Daten und Kontrollen je Gruppe. Vertrauliche und personenbezogene Daten gehören nicht in öffentliche Werkzeuge. Gegen Prompt Injection begrenzt man, was der Assistent tun darf. Am Ende entscheidet immer ein Mensch.',
   2,
   '{}',
   null,
@@ -44259,7 +44260,7 @@ values (
   'pairs',
   'Ein Softwarehaus überarbeitet sein Qualitätshandbuch. Im Glossar sollen sechs Grundbegriffe der Qualitätssicherung erklärt werden.',
   'Ordne jedem Begriff die passende Erklärung zu. (6 P.)',
-  'Konstruktiv beugt vor (Richtlinien, Schulung), analytisch prüft nach (Review, Test). Statisch heißt ohne, dynamisch mit Ausführung. Verifikation: richtig gebaut? Validierung: das Richtige gebaut?',
+  'Konstruktive QS beugt vor (Richtlinien, Schulung), analytische prüft nach (Review, Test). Statisch heißt ohne, dynamisch mit Ausführung des Programms. Die Verifikation fragt: Ist es richtig gebaut? Die Validierung fragt: Ist das Richtige gebaut?',
   2,
   '{}',
   null,
@@ -44286,15 +44287,15 @@ values (
   'qualitaetsmanagement',
   'qm-grundlagen',
   'cloze',
-  'In einem Projekt kostet die Korrektur eines Anforderungsfehlers in der Anforderungsphase 40 €. Nach der Zehnerregel verzehnfachen sich die Kosten mit jeder weiteren Phase. Drei solcher Fehler werden erst im Systemtest gefunden (zwei Phasen später), ein weiterer erst im Betrieb (drei Phasen später).',
+  'In einem Projekt kostet die Korrektur eines Anforderungsfehlers in der Anforderungsphase 40 €. Nach der Zehnerregel verzehnfachen sich die Kosten mit jeder weiteren Phase (Anforderung, Entwurf, Implementierung, Test, Betrieb). Drei solcher Fehler werden erst im Test gefunden (drei Phasen später), ein weiterer erst im Betrieb (vier Phasen später).',
   'Berechne die Fehlerkosten nach der Zehnerregel. (5 P.)',
-  'Zwei Phasen später: 40 € × 10² = 4.000 € je Fehler, für drei Fehler 12.000 €.
-Drei Phasen später: 40 € × 10³ = 40.000 €.
-Summe: 52.000 €, gegenüber 4 × 40 € = 160 € bei früher Entdeckung. Deshalb lohnen sich Reviews der Anforderungen.',
+  'Drei Phasen später: 40 € × 10³ = 40.000 € je Fehler, für drei Fehler 120.000 €.
+Vier Phasen später: 40 € × 10⁴ = 400.000 €.
+Zusammen sind das 520.000 €. Bei sofortiger Entdeckung wären es nur 4 × 40 € = 160 € gewesen. Deshalb lohnen sich Reviews der Anforderungen.',
   2,
   '{}',
   null,
-  '{"points":5,"cloze_text":"Kosten je Fehler im Systemtest: {0} €\nKosten der drei Fehler im Systemtest: {1} €\nKosten des Fehlers im Betrieb: {2} €\nFehlerkosten insgesamt: {3} €\nKosten, wenn alle vier Fehler sofort entdeckt worden wären: {4} €","gaps":[{"answers":["4000"],"numeric":true,"rationale":"40 € × 10 × 10."},{"answers":["12000"],"numeric":true,"rationale":"3 × 4.000 €."},{"answers":["40000"],"numeric":true,"rationale":"40 € × 10 × 10 × 10."},{"answers":["52000"],"numeric":true,"rationale":"12.000 € + 40.000 €."},{"answers":["160"],"numeric":true,"rationale":"4 × 40 €."}]}'::jsonb,
+  '{"points":5,"cloze_text":"Kosten je Fehler im Test: {0} €\nKosten der drei Fehler im Test: {1} €\nKosten des Fehlers im Betrieb: {2} €\nFehlerkosten insgesamt: {3} €\nKosten, wenn alle vier Fehler sofort entdeckt worden wären: {4} €","gaps":[{"answers":["40000"],"numeric":true,"rationale":"40 € × 10 × 10 × 10."},{"answers":["120000"],"numeric":true,"rationale":"3 × 40.000 €."},{"answers":["400000"],"numeric":true,"rationale":"40 € × 10 × 10 × 10 × 10."},{"answers":["520000"],"numeric":true,"rationale":"120.000 € + 400.000 €."},{"answers":["160"],"numeric":true,"rationale":"4 × 40 €."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -44348,7 +44349,7 @@ values (
   'table',
   'Im Lastenheft für ein Kundenportal stehen vier Anforderungen. Vor der Übernahme ins Pflichtenheft wird geprüft, welcher Art sie sind und ob sie messbar formuliert sind.',
   'Ordne jede Anforderung ein und beurteile, ob sie prüfbar ist. (4 P.)',
-  'Antwortzeit, Bedienbarkeit und Erreichbarkeit beschreiben, WIE GUT das Portal arbeitet, also nicht funktional. Der PDF-Download ist eine Funktion und lässt sich eindeutig testen (vorhanden oder nicht). „Benutzerfreundlich“ und „möglichst immer“ haben keinen Zielwert; besser: „Verfügbarkeit mindestens 99,5 % im Monat“.',
+  'Antwortzeit, Bedienbarkeit und Erreichbarkeit beschreiben, WIE GUT das Portal arbeitet, sie sind also nicht funktional. Der PDF-Download ist eine Funktion und lässt sich eindeutig testen (vorhanden oder nicht). „Benutzerfreundlich“ und „möglichst immer“ haben keinen Zielwert. Besser wäre zum Beispiel „Verfügbarkeit mindestens 99,5 % im Monat“.',
   2,
   '{}',
   null,
@@ -44464,9 +44465,9 @@ values (
   'qualitaetsmanagement',
   'qm-pdca',
   'table',
-  'Die Hotline eines Systemhauses will mehr Anfragen beim ersten Kontakt lösen. Ziel: Erstlösungsquote mindestens 50 %. Vor der Maßnahme (Wissensdatenbank für die Hotline) wurden 120 von 400 Tickets beim ersten Kontakt gelöst, in der Pilotphase 198 von 360.',
+  'Die Hotline eines Systemhauses will mehr Anfragen beim ersten Kontakt lösen. Das Ziel ist eine Erstlösungsquote von mindestens 50 %. Vor der Maßnahme (Wissensdatenbank für die Hotline) wurden 120 von 400 Tickets beim ersten Kontakt gelöst, in der Pilotphase 198 von 360.',
   'Werte die Pilotphase für die Phase Check aus. (5 P.)',
-  'Vorher: 120 / 400 = 30 %. Pilot: 198 / 360 = 55 %. Veränderung: 55 - 30 = 25 Prozentpunkte. 55 % liegt über dem Ziel von 50 %. In Act wird die Wissensdatenbank für die ganze Hotline verbindlich eingeführt.',
+  'Vorher: 120 / 400 = 30 %. Pilot: 198 / 360 = 55 %. Veränderung: 55 - 30 = 25 Prozentpunkte. 55 % liegen über dem Ziel von 50 %, es ist also erreicht. In der Phase Act wird die Wissensdatenbank deshalb für die ganze Hotline verbindlich eingeführt.',
   2,
   '{}',
   null,
@@ -44495,7 +44496,7 @@ values (
   'cloze',
   'Ein IT-Dienstleister beschreibt in seinem Qualitätshandbuch, wie Verbesserungen ablaufen.',
   'Setze die Phasen des PDCA-Zyklus an die richtige Stelle. (4 P.)',
-  'Plan (analysieren, Ziel, Maßnahme) - Do (im Kleinen erproben) - Check (Soll-Ist-Vergleich) - Act (standardisieren oder nachbessern). Danach beginnt der nächste Zyklus.',
+  'Die Reihenfolge lautet Plan (analysieren, Ziel setzen, Maßnahme planen), Do (im Kleinen erproben), Check (Soll und Ist vergleichen), Act (standardisieren oder nachbessern). Danach beginnt der nächste Zyklus.',
   2,
   '{}',
   null,
@@ -44671,7 +44672,7 @@ values (
   'testen',
   'ts-verfahren',
   'cloze',
-  'Für die Funktion gibt es die Testfälle T1 (gewicht 2, express falsch) und T4 (gewicht 8, express wahr). Jede der beiden Abfragen hat einen Ja- und einen Nein-Zweig.',
+  'Für die Funktion versand gibt es die Testfälle T1 (gewicht 2, express falsch) und T4 (gewicht 8, express wahr). Jede der beiden Abfragen hat einen Ja- und einen Nein-Zweig.',
   'Bestimme die Überdeckung durch die Testfälle. (4 P.)',
   'T1 nimmt bei beiden Abfragen den Nein-Zweig: 2 von 4 Zweigen = 50 %. T4 nimmt beide Ja-Zweige, zusammen 100 % Zweigüberdeckung. T4 allein führt jede Anweisung aus (100 % Anweisungsüberdeckung), deckt aber nur die Hälfte der Zweige ab.',
   2,
@@ -44702,7 +44703,7 @@ values (
   'pairs',
   'In der Testschulung eines Softwarehauses werden die Begriffe der Testverfahren wiederholt.',
   'Ordne jedem Begriff die passende Erklärung zu. (6 P.)',
-  'Black-Box: von außen, nach Spezifikation (Äquivalenzklassen, Grenzwerte). White-Box: mit Blick in den Code (Anweisungs- und Zweigüberdeckung). Zweigüberdeckung ist strenger als Anweisungsüberdeckung.',
+  'Der Black-Box-Test prüft von außen nach der Spezifikation (Äquivalenzklassen, Grenzwerte), der White-Box-Test mit Blick in den Code (Anweisungs- und Zweigüberdeckung). Die Zweigüberdeckung ist strenger als die Anweisungsüberdeckung.',
   2,
   '{}',
   null,
@@ -44731,11 +44732,11 @@ values (
   'open',
   'Ein Entwicklungsteam diskutiert, ob für ein Abrechnungsmodul Black-Box- oder White-Box-Tests wichtiger sind.',
   'Beschreibe je einen Vorteil des Black-Box-Tests und des White-Box-Tests. (4 P.)',
-  'Je Vorteil 2 Punkte. Die Verfahren ergänzen sich: Black-Box findet, was fehlt oder falsch verstanden wurde; White-Box findet, was im Code nie getestet wurde.',
+  'Je Vorteil 2 Punkte. Die Verfahren ergänzen sich: Der Black-Box-Test findet, was fehlt oder falsch verstanden wurde, der White-Box-Test findet, was im Code nie getestet wurde.',
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Black-Box: prüft aus Sicht der Anforderungen, unabhängig von der Umsetzung und findet auch fehlende oder falsch verstandene Funktionen.","points":2,"keywords":["Anforderungen","Spezifikation","Anwendersicht","unabhängig","fehlende Funktionen"]},{"text":"White-Box: nutzt die Kenntnis des Codes und deckt nicht durchlaufene Zweige und Anweisungen auf, die Überdeckung ist messbar.","points":2,"keywords":["Zweige","Pfade","Überdeckung","Codekenntnis","Struktur","toter Code"]}],"sample_solution":"Der Black-Box-Test prüft das Verhalten gegen die Anforderungen, ohne den Code zu kennen. So fallen auch fehlende Funktionen auf. Der White-Box-Test nutzt die Kenntnis des Codes und stellt sicher, dass jeder Zweig mindestens einmal durchlaufen wird; die Überdeckung lässt sich messen."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Black-Box: prüft aus Sicht der Anforderungen, unabhängig von der Umsetzung, und findet auch fehlende oder falsch verstandene Funktionen.","points":2,"keywords":["Anforderungen","Spezifikation","Anwendersicht","unabhängig","fehlende Funktionen"]},{"text":"White-Box: nutzt die Kenntnis des Codes und deckt nicht durchlaufene Zweige und Anweisungen auf, die Überdeckung ist messbar.","points":2,"keywords":["Zweige","Pfade","Überdeckung","Codekenntnis","Struktur","toter Code"]}],"sample_solution":"Der Black-Box-Test prüft das Verhalten gegen die Anforderungen, ohne den Code zu kennen. So fallen auch fehlende Funktionen auf. Der White-Box-Test nutzt die Kenntnis des Codes und stellt sicher, dass jeder Zweig mindestens einmal durchlaufen wird; die Überdeckung lässt sich messen."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -44760,7 +44761,7 @@ values (
   'table',
   'Im Urlaubsantrag eines Personalportals wird die Zahl der Urlaubstage als ganze Zahl eingegeben. Erlaubt sind 1 bis 30 Tage.',
   'Bilde die Äquivalenzklassen und trage die Grenzwerte ein. (5 P.)',
-  'Drei Klassen: zu klein (ungültig), 1 bis 30 (gültig), zu groß (ungültig). Die Grenzwertanalyse testet die Werte direkt an den Übergängen: 0 und 1 sowie 30 und 31. Dort entstehen typische Fehler wie > statt >=.',
+  'Es gibt drei Klassen: zu klein (ungültig), 1 bis 30 (gültig), zu groß (ungültig). Die Grenzwertanalyse testet die Werte direkt an den Übergängen: 0 und 1 sowie 30 und 31. Dort entstehen typische Fehler wie > statt >=.',
   2,
   '{}',
   null,
@@ -44823,7 +44824,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"TF1: Eingabe 18, Soll: angenommen","is_correct":false,"rationale":"18 ist die untere Grenze und gültig."},{"text":"TF2: Eingabe 17, Soll: angenommen","is_correct":true,"rationale":"17 liegt unter der Grenze und muss abgelehnt werden."},{"text":"TF3: Eingabe 67, Soll: abgelehnt","is_correct":true,"rationale":"67 ist die obere Grenze und noch gültig."},{"text":"TF4: Eingabe 68, Soll: abgelehnt","is_correct":false,"rationale":"68 liegt über der Grenze. Richtig."},{"text":"TF5: Eingabe „abc“, Soll: Fehlermeldung","is_correct":false,"rationale":"Ein sinnvoller Negativtest für nicht numerische Eingaben."},{"text":"TF6: Eingabe 40, Soll: nicht angegeben","is_correct":true,"rationale":"Ohne erwartetes Ergebnis lässt sich nicht entscheiden, ob der Test bestanden ist."}],"points":3}'::jsonb,
+  '{"choices":[{"text":"TF1: Eingabe 18, Soll: angenommen","is_correct":false,"rationale":"18 ist die untere Grenze und gültig."},{"text":"TF2: Eingabe 17, Soll: angenommen","is_correct":true,"rationale":"17 liegt unter der Grenze und muss abgelehnt werden."},{"text":"TF3: Eingabe 67, Soll: abgelehnt","is_correct":true,"rationale":"67 ist die obere Grenze und noch gültig."},{"text":"TF4: Eingabe 68, Soll: abgelehnt","is_correct":false,"rationale":"68 liegt über der Grenze, die Ablehnung ist also richtig."},{"text":"TF5: Eingabe „abc“, Soll: Fehlermeldung","is_correct":false,"rationale":"Ein sinnvoller Negativtest für nicht numerische Eingaben."},{"text":"TF6: Eingabe 40, Soll: nicht angegeben","is_correct":true,"rationale":"Ohne erwartetes Ergebnis lässt sich nicht entscheiden, ob der Test bestanden ist."}],"points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -44877,7 +44878,7 @@ values (
   'table',
   'Im Testprotokoll eines Bestellformulars sind Soll- und Ist-Ergebnisse eingetragen. Die Spalte „Ergebnis“ fehlt noch. Bei TF-05 war der Mailserver der Testumgebung nicht erreichbar.',
   'Bewerte jeden Testfall. (5 P.)',
-  'Bestanden ist ein Testfall nur, wenn Ist und Soll übereinstimmen (TF-01, TF-03). Bei TF-02 und TF-04 weicht das Ist ab: fehlgeschlagen, es folgt eine Fehlermeldung. TF-05 konnte nicht ausgeführt werden. Er ist blockiert und wird nachgeholt, er zählt nicht als bestanden.',
+  'Bestanden ist ein Testfall nur, wenn Ist und Soll übereinstimmen (TF-01, TF-03). Bei TF-02 und TF-04 weicht das Ist vom Soll ab. Beide sind fehlgeschlagen und bekommen eine Fehlermeldung. TF-05 konnte nicht ausgeführt werden. Er ist blockiert, wird nachgeholt und zählt bis dahin nicht als bestanden.',
   2,
   '{}',
   null,
@@ -44906,7 +44907,7 @@ values (
   'cloze',
   'Im Systemtest eines Kundenportals waren 80 Testfälle geplant. 75 wurden durchgeführt, davon 66 bestanden. Endekriterium: Mindestens 95 % der durchgeführten Testfälle sind bestanden.',
   'Werte den Teststand aus. (4 P.)',
-  'Durchführungsquote: 75 / 80 = 93,75 %. Bestehensquote: 66 / 75 = 88 %. Fehlgeschlagen: 75 - 66 = 9. Mit 88 % ist das Endekriterium von 95 % verfehlt. Die Fehler werden behoben, nachgetestet, und die fünf offenen Testfälle werden nachgeholt.',
+  'Durchführungsquote: 75 / 80 = 93,75 %. Bestehensquote: 66 / 75 = 88 %. Fehlgeschlagen: 75 - 66 = 9. Mit 88 % ist das Endekriterium von 95 % verfehlt. Die Fehler werden behoben und nachgetestet, die fünf offenen Testfälle werden nachgeholt.',
   2,
   '{}',
   null,
@@ -44935,11 +44936,11 @@ values (
   'marking',
   'Ein Team nutzt drei Fehlerklassen: kritisch (Absturz, Datenverlust oder Hauptfunktion ohne Umgehung blockiert), schwer (Funktion gestört, Umgehung möglich), kosmetisch (optischer Mangel).',
   'Markiere alle falsch eingestuften Fehlermeldungen. (3 P.)',
-  'Die Fehlerklasse richtet sich nach der Auswirkung: Datenverlust, Absturz und blockierte Hauptfunktionen sind kritisch; gestörte Funktionen mit Umgehung schwer; optische Mängel kosmetisch. Die Priorität (wie dringend) wird getrennt davon festgelegt.',
+  'Die Fehlerklasse richtet sich nach der Auswirkung: Datenverlust, Absturz und blockierte Hauptfunktionen sind kritisch, gestörte Funktionen mit Umgehung schwer und optische Mängel kosmetisch. Die Priorität (wie dringend der Fehler behoben wird) wird getrennt davon festgelegt.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"F-11: Tippfehler im Menüpunkt „Einstelungen“: kosmetisch","is_correct":false,"rationale":"Ein optischer Mangel ohne Einfluss auf die Funktion."},{"text":"F-12: Beim Speichern gehen Kundendaten verloren: kosmetisch","is_correct":true,"rationale":"Datenverlust ist ein kritischer Fehler."},{"text":"F-13: Export gelingt nur über einen Umweg: schwer","is_correct":false,"rationale":"Funktion gestört, Umgehung möglich: schwer."},{"text":"F-14: Logo um zwei Pixel verschoben: kritisch","is_correct":true,"rationale":"Ein optischer Mangel ist kosmetisch."},{"text":"F-15: Anwendung stürzt beim Start ab: kritisch","is_correct":false,"rationale":"Ein Absturz ist kritisch."},{"text":"F-16: Bestellen ist ohne Umgehung unmöglich: schwer","is_correct":true,"rationale":"Hauptfunktion ohne Umgehung blockiert: kritisch."}],"points":3}'::jsonb,
+  '{"choices":[{"text":"F-11: Tippfehler im Menüpunkt „Einstelungen“: kosmetisch","is_correct":false,"rationale":"Ein optischer Mangel ohne Einfluss auf die Funktion."},{"text":"F-12: Beim Speichern gehen Kundendaten verloren: kosmetisch","is_correct":true,"rationale":"Datenverlust ist ein kritischer Fehler."},{"text":"F-13: Export gelingt nur über einen Umweg: schwer","is_correct":false,"rationale":"Die Funktion ist gestört, eine Umgehung ist aber möglich. Das ist ein schwerer Fehler."},{"text":"F-14: Logo um zwei Pixel verschoben: kritisch","is_correct":true,"rationale":"Ein optischer Mangel ist kosmetisch."},{"text":"F-15: Anwendung stürzt beim Start ab: kritisch","is_correct":false,"rationale":"Ein Absturz ist kritisch."},{"text":"F-16: Bestellen ist ohne Umgehung unmöglich: schwer","is_correct":true,"rationale":"Eine Hauptfunktion ist ohne Umgehung blockiert. Das ist ein kritischer Fehler."}],"points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -44964,7 +44965,7 @@ values (
   'pairs',
   'Für das Qualitätshandbuch werden die Dokumente und Schritte rund um die Testdurchführung beschrieben.',
   'Ordne jedem Begriff seine Aufgabe zu. (6 P.)',
-  'Vor dem Test: Testkonzept und Testfälle. Bei der Durchführung: Testprotokoll, bei Abweichungen eine Fehlermeldung. Nach der Korrektur: Nachtest des betroffenen Testfalls und Regressionstest der übrigen Funktionen.',
+  'Vor dem Test entstehen das Testkonzept und die Testfälle. Bei der Durchführung wird das Testprotokoll geführt, bei Abweichungen kommt eine Fehlermeldung dazu. Nach der Korrektur folgen der Nachtest des betroffenen Testfalls und der Regressionstest der übrigen Funktionen.',
   2,
   '{}',
   null,
@@ -45080,11 +45081,11 @@ values (
   'marking',
   'Die IT-Abteilung der Elbtal Logistik AG führt eine Liste der Sicherheitsvorfälle des letzten Quartals.',
   'Markiere alle Vorfälle, bei denen die Integrität von Daten verletzt wurde.',
-  'Integrität heißt: Daten sind vollständig und unverändert. Verletzt wird sie durch jede unbemerkte oder unbefugte Veränderung, durch Angreifer, Programmfehler oder technische Störungen. Mitlesen betrifft die Vertraulichkeit, Ausfälle die Verfügbarkeit.',
+  'Integrität heißt: Daten sind vollständig und unverändert. Verletzt wird sie durch jede unbemerkte oder unbefugte Veränderung, egal ob durch Angreifer, Programmfehler oder technische Störungen. Mitlesen betrifft die Vertraulichkeit, Ausfälle die Verfügbarkeit.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Ein Skript überschreibt Lagerbestände mit falschen Mengen","is_correct":true,"rationale":"Die Daten sind nicht mehr korrekt: Integrität verletzt."},{"text":"Das Lagerverwaltungssystem ist nach einem Stromausfall zwei Stunden nicht erreichbar","is_correct":false,"rationale":"Die Daten sind unverändert, aber nicht nutzbar: Verfügbarkeit."},{"text":"Ein Angreifer ändert die Lieferadresse in einem Frachtauftrag","is_correct":true,"rationale":"Unbefugte Veränderung von Daten: Integrität verletzt."},{"text":"Ein Besucher fotografiert die Tourenplanung am Bildschirm","is_correct":false,"rationale":"Unbefugte Kenntnisnahme: Vertraulichkeit."},{"text":"Ein defektes Kabel verfälscht übertragene Scannerdaten unbemerkt","is_correct":true,"rationale":"Auch ohne Angreifer gilt: verfälschte Daten verletzen die Integrität."},{"text":"Ein Notebook mit unverschlüsselten Personaldaten wird gestohlen","is_correct":false,"rationale":"Die Daten gelangen an Unbefugte: Vertraulichkeit."}],"points":3}'::jsonb,
+  '{"choices":[{"text":"Ein Skript überschreibt Lagerbestände mit falschen Mengen","is_correct":true,"rationale":"Die Daten sind nicht mehr korrekt, die Integrität ist verletzt."},{"text":"Das Lagerverwaltungssystem ist nach einem Stromausfall zwei Stunden nicht erreichbar","is_correct":false,"rationale":"Die Daten sind unverändert, aber nicht nutzbar. Das betrifft die Verfügbarkeit."},{"text":"Ein Angreifer ändert die Lieferadresse in einem Frachtauftrag","is_correct":true,"rationale":"Die Daten wurden unbefugt verändert, die Integrität ist verletzt."},{"text":"Ein Besucher fotografiert die Tourenplanung am Bildschirm","is_correct":false,"rationale":"Ein Unbefugter sieht die Daten. Das betrifft die Vertraulichkeit."},{"text":"Ein defektes Kabel verfälscht übertragene Scannerdaten unbemerkt","is_correct":true,"rationale":"Auch ohne Angreifer gilt: Verfälschte Daten verletzen die Integrität."},{"text":"Ein Notebook mit unverschlüsselten Personaldaten wird gestohlen","is_correct":false,"rationale":"Die Daten gelangen an Unbefugte. Das betrifft die Vertraulichkeit."}],"points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -45109,7 +45110,7 @@ values (
   'cloze',
   'Für eine Schulung der Mitarbeitenden bereitest du eine Übersicht über Arten von Schadsoftware vor.',
   'Ergänze die Übersicht mit den passenden Fachbegriffen.',
-  'Virus: braucht eine Wirtsdatei. Wurm: verbreitet sich selbstständig über Netze. Trojaner: getarnte Schadfunktion. Ransomware: verschlüsselt und erpresst. Spyware späht aus, ein Rootkit versteckt Schadsoftware im System, Adware blendet Werbung ein.',
+  'Ein Virus braucht eine Wirtsdatei, ein Wurm verbreitet sich selbstständig über Netze. Ein Trojaner tarnt seine Schadfunktion, Ransomware verschlüsselt und erpresst. Die übrigen Begriffe passen nicht: Spyware späht aus, ein Rootkit versteckt Schadsoftware im System, Adware blendet Werbung ein.',
   2,
   '{}',
   null,
@@ -45142,7 +45143,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Bekannte Sicherheitslücken bleiben offen und können von Angreifern oder Schadsoftware ausgenutzt werden","points":2,"keywords":["Sicherheitslücke","Schwachstelle","ausnutzen","Angreifer","Exploit"]},{"text":"Schadsoftware kann sich im Netz ausbreiten: Folge sind Datenverlust, Datenabfluss oder Betriebsausfall","points":2,"keywords":["Schadsoftware","Ransomware","Datenverlust","Ausfall","Malware"]},{"text":"Programmfehler werden nicht behoben, die Software läuft instabil oder fehlerhaft","points":2,"keywords":["Fehler","Bug","instabil","Absturz"]},{"text":"Herstellersupport und Kompatibilität gehen verloren; der Betrieb entspricht nicht mehr dem Stand der Technik (Haftung, Datenschutz)","points":2,"keywords":["Support","Kompatibilität","Stand der Technik","Haftung","DSGVO"]}],"sample_solution":"Ohne Updates bleiben bekannte Sicherheitslücken offen. Angreifer können sie gezielt ausnutzen, etwa um Ransomware einzuschleusen, mit Datenverlust und Stillstand der Kassen als Folge. Außerdem bleiben Programmfehler bestehen, und der Betrieb entspricht nicht mehr dem Stand der Technik."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Bekannte Sicherheitslücken bleiben offen und können von Angreifern oder Schadsoftware ausgenutzt werden","points":2,"keywords":["Sicherheitslücke","Schwachstelle","ausnutzen","Angreifer","Exploit"]},{"text":"Schadsoftware kann sich im Netz ausbreiten. Die Folge sind Datenverlust, Datenabfluss oder Betriebsausfall","points":2,"keywords":["Schadsoftware","Ransomware","Datenverlust","Ausfall","Malware"]},{"text":"Programmfehler werden nicht behoben, die Software läuft instabil oder fehlerhaft","points":2,"keywords":["Fehler","Bug","instabil","Absturz"]},{"text":"Herstellersupport und Kompatibilität gehen verloren; der Betrieb entspricht nicht mehr dem Stand der Technik (Haftung, Datenschutz)","points":2,"keywords":["Support","Kompatibilität","Stand der Technik","Haftung","DSGVO"]}],"sample_solution":"Ohne Updates bleiben bekannte Sicherheitslücken offen. Angreifer können sie gezielt ausnutzen, etwa um Ransomware einzuschleusen, mit Datenverlust und Stillstand der Kassen als Folge. Außerdem bleiben Programmfehler bestehen, und der Betrieb entspricht nicht mehr dem Stand der Technik."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -45196,7 +45197,7 @@ values (
   'ordering',
   'Auf dem PC einer Sachbearbeiterin erscheint eine Lösegeldforderung, mehrere Dateien auf dem Netzlaufwerk lassen sich nicht mehr öffnen.',
   'Bringe die Schritte der Vorfallsbehandlung in eine sinnvolle Reihenfolge.',
-  'Zuerst wird die Ausbreitung gestoppt (Netz trennen) und der Vorfall gemeldet. Danach wird der Umfang ermittelt. Erst auf bereinigten oder neu aufgesetzten Systemen werden die Daten zurückgespielt. Sonst wird die Sicherung gleich wieder verschlüsselt. Am Ende steht die Auswertung.',
+  'Zuerst wird die Ausbreitung gestoppt (Netz trennen) und der Vorfall gemeldet. Danach wird der Umfang ermittelt. Erst auf bereinigten oder neu aufgesetzten Systemen werden die Daten zurückgespielt, sonst werden sie gleich wieder verschlüsselt. Am Ende steht die Auswertung.',
   2,
   '{}',
   null,
@@ -45225,11 +45226,11 @@ values (
   'marking',
   'Eine Mitarbeiterin aus dem Einkauf der Grünwerk Gartenbedarf GmbH leitet dir eine E-Mail weiter, die ihr merkwürdig vorkommt. Das Unternehmen ist Kunde der Nordbank.',
   'Markiere alle Zeilen der E-Mail, die auf einen Phishing-Versuch hindeuten.',
-  'Typische Phishing-Merkmale: gefälschte Absenderdomain, Zeitdruck und Drohungen, unpersönliche Anrede, Aufforderung zur Eingabe von Zugangsdaten über einen Link auf eine fremde Seite und ausführbare Anhänge mit getarnter Endung.',
+  'Typische Phishing-Merkmale sind eine gefälschte Absenderdomain, Zeitdruck und Drohungen, eine unpersönliche Anrede, die Aufforderung, Zugangsdaten über einen Link auf einer fremden Seite einzugeben, und ausführbare Anhänge mit getarnter Endung.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Von: Nordbank Service <sicherheit@n0rdbank-kunden.example>","is_correct":true,"rationale":"Die Domain ist nachgeahmt (Null statt o, fremder Zusatz)."},{"text":"Betreff: DRINGEND: Ihr Konto wird in 24 Stunden gesperrt","is_correct":true,"rationale":"Zeitdruck und Drohung sind typische Mittel des Social Engineering."},{"text":"Sehr geehrter Kunde,","is_correct":true,"rationale":"Unpersönliche Anrede. Die echte Bank kennt den Namen."},{"text":"unser System wurde in der vergangenen Woche aktualisiert.","is_correct":false,"rationale":"Eine neutrale Information ohne Aufforderung und für sich kein Merkmal."},{"text":"Bestätigen Sie Ihre PIN und TAN unter http://nordbank.kunden-login.example","is_correct":true,"rationale":"Banken fragen nie per Mail nach PIN und TAN; der Link führt auf eine fremde Domain und ist unverschlüsselt."},{"text":"Anhang: Sicherheitsformular.pdf.exe","is_correct":true,"rationale":"Doppelte Dateiendung, in Wahrheit also ein ausführbares Programm."},{"text":"Mit freundlichen Grüßen","is_correct":false,"rationale":"Eine übliche Grußformel sagt nichts über die Echtheit aus."}],"points":5}'::jsonb,
+  '{"choices":[{"text":"Von: Nordbank Service <sicherheit@n0rdbank-kunden.example>","is_correct":true,"rationale":"Die Domain ist nachgeahmt (Null statt o, fremder Zusatz)."},{"text":"Betreff: DRINGEND: Ihr Konto wird in 24 Stunden gesperrt","is_correct":true,"rationale":"Zeitdruck und Drohung sind typische Mittel des Social Engineering."},{"text":"Sehr geehrter Kunde,","is_correct":true,"rationale":"Die Anrede ist unpersönlich, die echte Bank kennt den Namen."},{"text":"unser System wurde in der vergangenen Woche aktualisiert.","is_correct":false,"rationale":"Eine neutrale Information ohne Aufforderung, für sich genommen kein Merkmal."},{"text":"Bestätigen Sie Ihre PIN und TAN unter http://nordbank.kunden-login.example","is_correct":true,"rationale":"Banken fragen nie per Mail nach PIN und TAN; der Link führt auf eine fremde Domain und ist unverschlüsselt."},{"text":"Anhang: Sicherheitsformular.pdf.exe","is_correct":true,"rationale":"Doppelte Dateiendung, in Wahrheit also ein ausführbares Programm."},{"text":"Mit freundlichen Grüßen","is_correct":false,"rationale":"Eine übliche Grußformel sagt nichts über die Echtheit aus."}],"points":5}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -45316,7 +45317,7 @@ Dateiserver: Mandantenakten mit Steuerdaten, ein Ausfall von einem Arbeitstag is
 Website: nur öffentliche Informationen, ein Ausfall von mehreren Tagen ist verkraftbar.
 Telefonanlage: keine gespeicherten Mandantendaten, muss innerhalb einer Stunde wieder laufen.',
   'Ergänze für jedes System den Schutzbedarf nach den Regeln der Kanzlei.',
-  'Der Schutzbedarf wird je Schutzziel getrennt bestimmt. Dateiserver: Berufsgeheimnis -> Vertraulichkeit sehr hoch, ein Tag Ausfall tragbar -> Verfügbarkeit hoch. Website: beides normal. Telefonanlage: Vertraulichkeit normal, aber Verfügbarkeit sehr hoch.',
+  'Der Schutzbedarf wird je Schutzziel getrennt bestimmt. Beim Dateiserver macht das Berufsgeheimnis die Vertraulichkeit sehr hoch. Weil ein Tag Ausfall tragbar ist, ist die Verfügbarkeit hoch. Bei der Website ist beides normal. Bei der Telefonanlage ist die Vertraulichkeit normal, die Verfügbarkeit aber sehr hoch.',
   2,
   '{}',
   null,
@@ -45432,11 +45433,11 @@ values (
   'marking',
   'Sicherheitsrichtlinie: Aus dem Internet ist nur HTTPS zum Webserver in der DMZ erlaubt. Aus dem Internet und aus der DMZ dürfen keine Verbindungen ins LAN aufgebaut werden. Bei der Prüfung der Firewall findest du folgendes Regelwerk.',
   'Markiere alle Regeln, die gegen die Richtlinie verstoßen.',
-  'Regel 2 öffnet das LAN nach außen, Regel 4 erlaubt neben HTTPS auch RDP zum Webserver, Regel 5 hebt die Trennung zwischen DMZ und LAN auf. Wird der Webserver übernommen, stünde dem Angreifer sonst das ganze LAN offen.',
+  'Regel 2 öffnet das LAN nach außen, Regel 4 erlaubt neben HTTPS auch RDP zum Webserver, Regel 5 hebt die Trennung zwischen DMZ und LAN auf. Wird der Webserver übernommen, steht dem Angreifer durch Regel 5 das ganze LAN offen.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"1 ALLOW Internet -> DMZ-Web  tcp/443","is_correct":false,"rationale":"HTTPS zum Webserver ist ausdrücklich erlaubt."},{"text":"2 ALLOW Internet -> LAN-File tcp/445","is_correct":true,"rationale":"Dateifreigaben aus dem Internet ins LAN: ein klarer Verstoß."},{"text":"3 ALLOW LAN      -> Internet tcp/80,443","is_correct":false,"rationale":"Surfen aus dem LAN verbietet die Richtlinie nicht."},{"text":"4 ALLOW Internet -> DMZ-Web  tcp/3389","is_correct":true,"rationale":"Fernwartung (RDP) aus dem Internet ist nicht vorgesehen, sondern nur HTTPS."},{"text":"5 ALLOW DMZ-Web  -> LAN      any","is_correct":true,"rationale":"Die DMZ darf keine Verbindungen ins LAN aufbauen."},{"text":"6 DENY  any      -> any      any","is_correct":false,"rationale":"Default Deny am Ende ist richtig."}],"points":3,"mono":true}'::jsonb,
+  '{"choices":[{"text":"1 ALLOW Internet -> DMZ-Web  tcp/443","is_correct":false,"rationale":"HTTPS zum Webserver ist ausdrücklich erlaubt."},{"text":"2 ALLOW Internet -> LAN-File tcp/445","is_correct":true,"rationale":"Dateifreigaben aus dem Internet ins LAN sind ein klarer Verstoß."},{"text":"3 ALLOW LAN      -> Internet tcp/80,443","is_correct":false,"rationale":"Surfen aus dem LAN verbietet die Richtlinie nicht."},{"text":"4 ALLOW Internet -> DMZ-Web  tcp/3389","is_correct":true,"rationale":"Fernwartung (RDP) aus dem Internet ist nicht vorgesehen, erlaubt ist nur HTTPS."},{"text":"5 ALLOW DMZ-Web  -> LAN      any","is_correct":true,"rationale":"Die DMZ darf keine Verbindungen ins LAN aufbauen."},{"text":"6 DENY  any      -> any      any","is_correct":false,"rationale":"Default Deny am Ende ist richtig."}],"points":3,"mono":true}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -45461,7 +45462,7 @@ values (
   'open',
   'Die Grünwerk Gartenbedarf GmbH betreibt ihren Webshop auf einem eigenen Server. Er soll in einer DMZ stehen.',
   'Erläutere den Zweck einer DMZ. (4 P.)',
-  'Je Aspekt 2 Punkte, höchstens 4 Punkte: Trennung öffentlicher Server vom internen Netz und der Schutz des LAN, falls ein Server übernommen wird. Andere fachlich richtige Antworten zählen ebenfalls.',
+  'Je Aspekt 2 Punkte, höchstens 4 Punkte. Erwartet werden vor allem die Trennung öffentlicher Server vom internen Netz und der Schutz des LAN, falls ein Server übernommen wird. Andere fachlich richtige Antworten zählen ebenfalls.',
   2,
   '{}',
   null,
@@ -45490,7 +45491,7 @@ values (
   'table',
   'Am Sonntag läuft eine Vollsicherung mit 200 GB. Von Montag bis Donnerstag werden täglich 10 GB jeweils anderer Dateien geändert und abends gesichert. Verglichen werden zwei Verfahren. Am Freitagmorgen fällt der Server aus.',
   'Ergänze die Größe der täglichen Sicherung in GB und die Anzahl der Sicherungen, die für die Wiederherstellung nötig sind.',
-  'Differenziell: immer alle Änderungen seit der letzten Vollsicherung: 10, 20, 30, 40 GB. Zurückgespielt werden nur die Vollsicherung und die letzte differenzielle (2). Inkrementell: nur die Änderungen seit der letzten Sicherung, jeweils 10 GB. Zurückgespielt werden die Vollsicherung und alle vier Inkremente (5).',
+  'Differenziell werden immer alle Änderungen seit der letzten Vollsicherung gesichert, also 10, 20, 30 und 40 GB. Zurückgespielt werden nur die Vollsicherung und die letzte differenzielle (2). Inkrementell werden nur die Änderungen seit der letzten Sicherung gesichert, jeweils 10 GB. Zurückgespielt werden die Vollsicherung und alle vier Inkremente (5).',
   2,
   '{}',
   null,
@@ -45519,7 +45520,7 @@ values (
   'open',
   'Die Pixelhafen Medien GmbH sichert ihre Projektdaten bisher jede Nacht vollständig. Das dauert inzwischen zu lange. Zur Wahl stehen eine differenzielle und eine inkrementelle Sicherung an den Werktagen.',
   'Beschreibe zwei Unterschiede zwischen differenzieller und inkrementeller Sicherung. (4 P.)',
-  'Je Unterschied 2 Punkte, höchstens 4 Punkte. Wichtig ist der Vergleich beider Verfahren, nicht nur die Beschreibung eines. Andere fachlich richtige Antworten zählen ebenfalls.',
+  'Je Unterschied 2 Punkte, höchstens 4 Punkte. Es kommt auf den Vergleich beider Verfahren an. Nur eines zu beschreiben reicht nicht. Andere fachlich richtige Antworten zählen ebenfalls.',
   2,
   '{}',
   null,
@@ -45606,11 +45607,11 @@ values (
   'marking',
   'In der neuen Filiale der Grünwerk Gartenbedarf GmbH hat ein Dienstleister einen Access Point eingerichtet. Du prüfst die Konfiguration.',
   'Markiere alle unsicheren Einstellungen.',
-  'Unsicher sind: veraltete Verschlüsselung (WPA/TKIP), ein schwacher Schlüssel, aktiviertes WPS mit PIN, Standardzugangsdaten für die Verwaltung und eine unverschlüsselte Fernwartung aus dem Internet. Ein eigener Netzname, aktuelle Firmware und ein getrenntes Gastnetz sind in Ordnung.',
+  'Unsicher sind die veraltete Verschlüsselung (WPA/TKIP), der schwache Schlüssel, das aktivierte WPS mit PIN, die Standardzugangsdaten für die Verwaltung und die unverschlüsselte Fernwartung aus dem Internet. Ein eigener Netzname, aktuelle Firmware und ein getrenntes Gastnetz sind in Ordnung.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"SSID:           Filiale-Buero","is_correct":false,"rationale":"Der Netzname ist kein Sicherheitsmerkmal."},{"text":"Verschlüsselung:  WPA (TKIP)","is_correct":true,"rationale":"WPA mit TKIP ist veraltet: Stand der Technik ist WPA3, mindestens WPA2 mit AES."},{"text":"WLAN-Schlüssel:  12345678","is_correct":true,"rationale":"Kurz und in jeder Passwortliste enthalten, also per Wörterbuchangriff sofort gefunden."},{"text":"WPS (PIN):      aktiviert","is_correct":true,"rationale":"Die WPS-PIN lässt sich in wenigen Stunden durchprobieren."},{"text":"Admin-Login:    admin / admin","is_correct":true,"rationale":"Standardzugangsdaten stehen im Handbuch und in Listen im Internet."},{"text":"Firmware:       aktuell, Auto-Update an","is_correct":false,"rationale":"Aktuelle Firmware schließt bekannte Lücken."},{"text":"Gastnetz:       eigenes VLAN, kein LAN-Zugriff","is_correct":false,"rationale":"Gäste vom internen Netz zu trennen ist richtig."},{"text":"Fernwartung:    aus dem Internet, HTTP","is_correct":true,"rationale":"Die Verwaltung ist von außen erreichbar und unverschlüsselt."}],"points":5,"mono":true}'::jsonb,
+  '{"choices":[{"text":"SSID:           Filiale-Buero","is_correct":false,"rationale":"Der Netzname ist kein Sicherheitsmerkmal."},{"text":"Verschlüsselung:  WPA (TKIP)","is_correct":true,"rationale":"WPA mit TKIP ist veraltet. Stand der Technik ist WPA3, mindestens aber WPA2 mit AES."},{"text":"WLAN-Schlüssel:  12345678","is_correct":true,"rationale":"Kurz und in jeder Passwortliste enthalten, also per Wörterbuchangriff sofort gefunden."},{"text":"WPS (PIN):      aktiviert","is_correct":true,"rationale":"Die WPS-PIN lässt sich in wenigen Stunden durchprobieren."},{"text":"Admin-Login:    admin / admin","is_correct":true,"rationale":"Standardzugangsdaten stehen im Handbuch und in Listen im Internet."},{"text":"Firmware:       aktuell, Auto-Update an","is_correct":false,"rationale":"Aktuelle Firmware schließt bekannte Lücken."},{"text":"Gastnetz:       eigenes VLAN, kein LAN-Zugriff","is_correct":false,"rationale":"Gäste vom internen Netz zu trennen ist richtig."},{"text":"Fernwartung:    aus dem Internet, HTTP","is_correct":true,"rationale":"Die Verwaltung ist von außen erreichbar und unverschlüsselt."}],"points":5,"mono":true}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -45664,7 +45665,7 @@ values (
   'cloze',
   'Für ein Angebot an die Steuerkanzlei Albers & Partner beschreibst du die Absicherung des neuen WLAN.',
   'Ergänze den Text.',
-  'WPA2/WPA3-Personal: ein gemeinsamer Schlüssel (PSK) für alle. WPA3 handelt ihn per SAE aus. Im Enterprise-Modus meldet sich jede Person einzeln nach 802.1X an, und ein RADIUS-Server prüft die Zugangsdaten. Beim Ausscheiden muss kein gemeinsamer Schlüssel getauscht werden.',
+  'Bei WPA2- und WPA3-Personal gibt es einen gemeinsamen Schlüssel (PSK) für alle. WPA3 sichert die Anmeldung damit per SAE ab. Im Enterprise-Modus meldet sich jede Person einzeln nach 802.1X an, und ein RADIUS-Server prüft die Zugangsdaten. Beim Ausscheiden muss kein gemeinsamer Schlüssel getauscht werden.',
   2,
   '{}',
   null,
@@ -45722,11 +45723,11 @@ values (
   'marking',
   'Die Pixelhafen Medien GmbH mietet einen Linux-Server für Kundenprojekte. Vor der Inbetriebnahme prüfst du den Zustand des Systems.',
   'Markiere alle Einträge, die bei der Härtung des Servers geändert werden müssen.',
-  'Härtung heißt: Angriffsfläche verkleinern. Unverschlüsselte und ungenutzte Dienste (Telnet, FTP) abschalten, die direkte root-Anmeldung sperren und überflüssige Konten entfernen. Schlüsselanmeldung, automatische Sicherheitsupdates und eine restriktive Firewall sind richtig.',
+  'Härtung heißt, die Angriffsfläche zu verkleinern: unverschlüsselte und ungenutzte Dienste (Telnet, FTP) abschalten, die direkte root-Anmeldung sperren und überflüssige Konten entfernen. Schlüsselanmeldung, automatische Sicherheitsupdates und eine restriktive Firewall sind richtig.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"telnet:  aktiv (Port 23)","is_correct":true,"rationale":"Telnet überträgt alles im Klartext: abschalten und SSH nutzen."},{"text":"ssh:     PermitRootLogin yes","is_correct":true,"rationale":"Direkte Anmeldung als root verbieten, mit eigenem Konto anmelden."},{"text":"ssh:     Anmeldung nur mit Schlüssel","is_correct":false,"rationale":"Schlüsselanmeldung ist sicherer als Passwörter."},{"text":"konto:   gast, aktiv, ohne Passwort","is_correct":true,"rationale":"Nicht benötigte Konten entfernen, kein Konto ohne Passwort."},{"text":"updates: Sicherheitsupdates automatisch","is_correct":false,"rationale":"Zeitnahe Updates gehören zur Härtung."},{"text":"ftp:     aktiv, wird nicht genutzt","is_correct":true,"rationale":"Nicht benötigte Dienste abschalten, zudem ist FTP unverschlüsselt."},{"text":"firewall: nur 22 und 443 offen","is_correct":false,"rationale":"Nur die benötigten Ports sind geöffnet."}],"points":4,"mono":true}'::jsonb,
+  '{"choices":[{"text":"telnet:  aktiv (Port 23)","is_correct":true,"rationale":"Telnet überträgt alles im Klartext, also abschalten und SSH nutzen."},{"text":"ssh:     PermitRootLogin yes","is_correct":true,"rationale":"Direkte Anmeldung als root verbieten, mit eigenem Konto anmelden."},{"text":"ssh:     Anmeldung nur mit Schlüssel","is_correct":false,"rationale":"Schlüsselanmeldung ist sicherer als Passwörter."},{"text":"konto:   gast, aktiv, ohne Passwort","is_correct":true,"rationale":"Nicht benötigte Konten entfernen, kein Konto ohne Passwort."},{"text":"updates: Sicherheitsupdates automatisch","is_correct":false,"rationale":"Zeitnahe Updates gehören zur Härtung."},{"text":"ftp:     aktiv, wird nicht genutzt","is_correct":true,"rationale":"Nicht benötigte Dienste abschalten, zudem ist FTP unverschlüsselt."},{"text":"firewall: nur 22 und 443 offen","is_correct":false,"rationale":"Nur die benötigten Ports sind geöffnet."}],"points":4,"mono":true}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -45751,7 +45752,7 @@ values (
   'table',
   'In der Steuerkanzlei Albers & Partner gilt das Minimalprinzip. Die Lohnsachbearbeitung pflegt die Dateien im Ordner „Lohn“. Briefvorlagen im Ordner „Vorlagen“ werden von allen genutzt, aber nur von der Kanzleileitung geändert. Auszubildende arbeiten nicht an Lohnmandaten.',
   'Ergänze die Berechtigungsmatrix.',
-  'Minimalprinzip: Jede Rolle erhält nur die Rechte, die sie für ihre Aufgaben braucht. Die Lohnsachbearbeitung schreibt im Ordner „Lohn“, Auszubildende haben dort keinen Zugriff. Vorlagen dürfen beide nur lesen, weil nur die Kanzleileitung sie ändert.',
+  'Nach dem Minimalprinzip erhält jede Rolle nur die Rechte, die sie für ihre Aufgaben braucht. Die Lohnsachbearbeitung schreibt im Ordner „Lohn“, Auszubildende haben dort keinen Zugriff. Vorlagen dürfen beide nur lesen, weil nur die Kanzleileitung sie ändert.',
   2,
   '{}',
   null,
@@ -45807,9 +45808,9 @@ values (
   'kryptographie_auth',
   'kr-symmetrisch',
   'table',
-  'In einem Team soll jede Person mit jeder anderen vertraulich kommunizieren können. Verglichen wird die Zahl der nötigen Schlüssel: symmetrisch braucht jedes Paar einen eigenen Schlüssel, n × (n - 1) / 2; asymmetrisch hat jede Person ein Schlüsselpaar, 2 × n.',
+  'In einem Team soll jede Person mit jeder anderen vertraulich kommunizieren können. Verglichen wird die Zahl der nötigen Schlüssel. Symmetrisch braucht jedes Paar einen eigenen Schlüssel, zusammen n × (n - 1) / 2. Asymmetrisch hat jede Person ein Schlüsselpaar, zusammen 2 × n Schlüssel.',
   'Berechne die Anzahl der Schlüssel und ergänze die Tabelle.',
-  'Symmetrisch: n × (n - 1) / 2, also 10 × 9 / 2 = 45 und 20 × 19 / 2 = 190. Asymmetrisch: 2 × n, also 20 und 40. Die Zahl der symmetrischen Schlüssel wächst quadratisch. Ein Grund für asymmetrische und hybride Verfahren.',
+  'Symmetrisch: n × (n - 1) / 2, also 10 × 9 / 2 = 45 und 20 × 19 / 2 = 190. Asymmetrisch: 2 × n, also 20 und 40. Die Zahl der symmetrischen Schlüssel wächst quadratisch, ein Grund für asymmetrische und hybride Verfahren.',
   2,
   '{}',
   null,
@@ -45871,7 +45872,7 @@ values (
   2,
   '{}',
   null,
-  '{"criteria":[{"text":"Problem: Beide Seiten brauchen denselben geheimen Schlüssel. Wer die E-Mail abfängt, erhält Geheimtext und Schlüssel zugleich und kann alles lesen","points":2,"keywords":["derselbe Schlüssel","abfangen","mitlesen","Schlüsselaustausch","gleicher Weg","gleichen Kanal"]},{"text":"Lösung: Schlüssel über einen zweiten Kanal übermitteln (Telefon, persönlich) oder asymmetrisch bzw. hybrid verschlüsseln","points":1,"keywords":["zweiter Kanal","Telefon","persönlich","asymmetrisch","hybrid","öffentlichen Schlüssel"]}],"sample_solution":"Bei symmetrischer Verschlüsselung brauchen Absender und Empfänger denselben geheimen Schlüssel. Steht das Passwort in derselben E-Mail wie das Archiv, bekommt ein Angreifer, der die E-Mail mitliest, beides. Die Verschlüsselung ist wirkungslos. Lösung: das Passwort über einen anderen Kanal mitteilen (z. B. telefonisch) oder ein asymmetrisches bzw. hybrides Verfahren nutzen, bei dem kein geheimer Schlüssel übertragen werden muss."}'::jsonb,
+  '{"criteria":[{"text":"Problem: Beide Seiten brauchen denselben geheimen Schlüssel. Wer die E-Mail abfängt, erhält Geheimtext und Schlüssel zugleich und kann alles lesen","points":2,"keywords":["derselbe Schlüssel","abfangen","mitlesen","Schlüsselaustausch","gleicher Weg","gleichen Kanal"]},{"text":"Lösung: Schlüssel über einen zweiten Kanal übermitteln (Telefon, persönlich) oder asymmetrisch bzw. hybrid verschlüsseln","points":1,"keywords":["zweiter Kanal","Telefon","persönlich","asymmetrisch","hybrid","öffentlichen Schlüssel"]}],"sample_solution":"Bei symmetrischer Verschlüsselung brauchen Absender und Empfänger denselben geheimen Schlüssel. Steht das Passwort in derselben E-Mail wie das Archiv, bekommt ein Angreifer, der die E-Mail mitliest, beides, und die Verschlüsselung ist wirkungslos. Besser ist es, das Passwort über einen anderen Kanal mitzuteilen (z. B. telefonisch) oder ein asymmetrisches bzw. hybrides Verfahren zu nutzen, bei dem kein geheimer Schlüssel übertragen werden muss."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -45954,7 +45955,7 @@ values (
   'cloze',
   'Frau Albers (Senderin) schickt Herrn Yilmaz (Empfänger) eine vertrauliche Nachricht. Beide besitzen je einen privaten und einen öffentlichen Schlüssel.',
   'Wähle für jeden Schritt den richtigen Schlüssel bzw. das erreichte Schutzziel.',
-  'Verschlüsseln: öffentlicher Schlüssel des Empfängers. Entschlüsseln: privater Schlüssel des Empfängers. Die Schlüssel der Senderin spielen hier keine Rolle. Sie kämen erst bei einer Signatur ins Spiel. Schutzziel ist die Vertraulichkeit.',
+  'Verschlüsselt wird mit dem öffentlichen Schlüssel des Empfängers, entschlüsselt mit seinem privaten. Die Schlüssel der Senderin spielen hier keine Rolle, sie kämen erst bei einer Signatur ins Spiel. Schutzziel ist die Vertraulichkeit.',
   2,
   '{}',
   null,
@@ -45987,7 +45988,7 @@ values (
   2,
   '{}',
   null,
-  '{"diagram":{"type":"sequenz","teilnehmer":["Einkauf","Lieferant"],"nachrichten":[{"von":0,"an":1,"text":"Zertifikat (öff. Schlüssel)"},{"von":0,"an":1,"text":"Bestellung + Signatur"}]},"ordered_items":["Der Einkauf bildet den Hashwert der Bestellung","Der Einkauf verschlüsselt den Hashwert mit seinem privaten Schlüssel. Das ist die Signatur","Der Einkauf sendet Bestellung und Signatur","Der Lieferant entschlüsselt die Signatur mit dem öffentlichen Schlüssel des Einkaufs","Der Lieferant vergleicht das Ergebnis mit dem Hashwert, den er selbst aus der Bestellung berechnet"],"points":4}'::jsonb,
+  '{"diagram":{"type":"sequenz","teilnehmer":["Einkauf","Lieferant"],"nachrichten":[{"von":0,"an":1,"text":"Zertifikat (öff. Schlüssel)"},{"von":0,"an":1,"text":"Bestellung + Signatur"}]},"ordered_items":["Der Einkauf bildet den Hashwert der Bestellung","Der Einkauf verschlüsselt den Hashwert mit seinem privaten Schlüssel, das ergibt die Signatur","Der Einkauf sendet Bestellung und Signatur","Der Lieferant entschlüsselt die Signatur mit dem öffentlichen Schlüssel des Einkaufs","Der Lieferant vergleicht das Ergebnis mit dem Hashwert, den er selbst aus der Bestellung berechnet"],"points":4}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -46186,7 +46187,7 @@ values (
   'table',
   null,
   'Ergänze den Vergleich der beiden Verschlüsselungsarten.',
-  'Symmetrisch: ein gemeinsamer geheimer Schlüssel, schnell, Beispiel AES. Asymmetrisch: Schlüsselpaar aus privatem und öffentlichem Schlüssel, deutlich langsamer, Beispiel RSA. SHA-256 ist ein Hashverfahren und verschlüsselt nicht.',
+  'Symmetrische Verfahren nutzen einen gemeinsamen geheimen Schlüssel und sind schnell, Beispiel AES. Asymmetrische Verfahren nutzen ein Schlüsselpaar aus privatem und öffentlichem Schlüssel und sind deutlich langsamer, Beispiel RSA. SHA-256 ist ein Hashverfahren und verschlüsselt nicht.',
   2,
   '{}',
   null,
@@ -46389,7 +46390,7 @@ values (
   'table',
   'Die Elbtal Logistik AG überlegt, wie die Anmeldung an den Handscannern aussehen soll. Verglichen wird, wie viele Kombinationen ein Angreifer höchstens durchprobieren müsste.',
   'Berechne die Anzahl der möglichen Kombinationen und ergänze die Tabelle. Gib die Zahlen ohne Tausenderpunkt ein.',
-  'Anzahl = Zeichenvorrat hoch Länge. 10^6 = 1.000.000. 26^4 = 26 × 26 × 26 × 26 = 456.976. 26^5 = 456.976 × 26 = 11.881.376. Ein Zeichen mehr vervielfacht die Zahl um den ganzen Zeichenvorrat: Länge wirkt stärker als ein etwas größerer Zeichensatz.',
+  'Anzahl = Zeichenvorrat hoch Länge. 10^6 = 1.000.000. 26^4 = 26 × 26 × 26 × 26 = 456.976. 26^5 = 456.976 × 26 = 11.881.376. Jedes weitere Zeichen multipliziert die Zahl mit dem ganzen Zeichenvorrat. Die Länge wirkt deshalb stärker als ein etwas größerer Zeichensatz.',
   2,
   '{}',
   null,
@@ -46476,7 +46477,7 @@ values (
   'cloze',
   'Die Anmeldung am VPN-Portal wird um einen Einmalcode aus einer Authenticator-App (TOTP) ergänzt.',
   'Ergänze die Beschreibung des Verfahrens.',
-  'TOTP = Time-based One-Time Password: App und Server berechnen aus dem gemeinsamen Geheimnis und der Uhrzeit denselben Code, der meist 30 Sekunden gilt. Passwort = Wissen, Smartphone mit App = Besitz, zusammen also eine echte Zwei-Faktor-Authentifizierung.',
+  'TOTP steht für Time-based One-Time Password. App und Server berechnen aus dem gemeinsamen Geheimnis und der Uhrzeit denselben Code, der meist 30 Sekunden gilt. Das Passwort ist Wissen, das Smartphone mit der App Besitz, zusammen also eine echte Zwei-Faktor-Authentifizierung.',
   2,
   '{}',
   null,
@@ -46795,7 +46796,7 @@ values (
   'cloze',
   'Bei der Pixelhafen Medien GmbH geht ein Auskunftsersuchen eines ehemaligen Kunden ein.',
   'Ergänze die Regeln für die Bearbeitung.',
-  'Auskunft nach Art. 15 DSGVO. Frist nach Art. 12 DSGVO: unverzüglich, spätestens innerhalb eines Monats, verlängerbar um zwei weitere Monate. Die Auskunft ist unentgeltlich. Die 72 Stunden gehören zur Meldung von Datenpannen, nicht zu den Betroffenenrechten.',
+  'Das Auskunftsrecht steht in Art. 15 DSGVO, die Frist in Art. 12 DSGVO: unverzüglich, spätestens innerhalb eines Monats, verlängerbar um zwei weitere Monate. Die Auskunft ist unentgeltlich. Die 72 Stunden gehören zur Meldung von Datenpannen, nicht zu den Betroffenenrechten.',
   2,
   '{}',
   null,
@@ -46824,7 +46825,7 @@ values (
   'ordering',
   'Ein früherer Bewerber verlangt von der Elbtal Logistik AG Auskunft über die zu ihm gespeicherten Daten.',
   'Bringe die Schritte der Bearbeitung in eine sinnvolle Reihenfolge.',
-  'Mit dem Eingang beginnt die Monatsfrist. Erst nach der Identitätsprüfung werden die Daten zusammengetragen. Sonst könnten Unbefugte Auskünfte erschleichen. Die Auskunft enthält neben den Daten auch Zwecke, Empfänger und Speicherdauer. Am Ende wird der Vorgang dokumentiert (Rechenschaftspflicht).',
+  'Mit dem Eingang beginnt die Monatsfrist. Erst nach der Identitätsprüfung werden die Daten zusammengetragen, sonst könnten sich Unbefugte Auskünfte erschleichen. Die Auskunft enthält neben den Daten auch Zwecke, Empfänger und Speicherdauer. Am Ende wird der Vorgang dokumentiert (Rechenschaftspflicht).',
   2,
   '{}',
   null,
@@ -46886,7 +46887,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Vor- und Nachname","is_correct":true,"rationale":"Identifiziert die Person unmittelbar."},{"text":"Altersgruppe (z. B. 30-39 Jahre)","is_correct":false,"rationale":"Vergröbert, die Angabe trifft auf sehr viele Personen zu."},{"text":"E-Mail-Adresse","is_correct":true,"rationale":"Eindeutige Kennung einer Person."},{"text":"Kundennummer","is_correct":true,"rationale":"Über die Kundendatei lässt sie sich wieder einer Person zuordnen. Es ist nur ein Pseudonym."},{"text":"Bundesland","is_correct":false,"rationale":"Grobe Region ohne Bezug zu einer einzelnen Person."},{"text":"Bestellmonat","is_correct":false,"rationale":"Kein Merkmal, das eine Person bestimmt."},{"text":"Telefonnummer","is_correct":true,"rationale":"Eindeutige Kennung einer Person."},{"text":"Warengruppe der bestellten Artikel","is_correct":false,"rationale":"Sagt nichts über die Identität aus."}],"points":4}'::jsonb,
+  '{"choices":[{"text":"Vor- und Nachname","is_correct":true,"rationale":"Identifiziert die Person unmittelbar."},{"text":"Altersgruppe (z. B. 30-39 Jahre)","is_correct":false,"rationale":"Die Angabe ist vergröbert und trifft auf sehr viele Personen zu."},{"text":"E-Mail-Adresse","is_correct":true,"rationale":"Eindeutige Kennung einer Person."},{"text":"Kundennummer","is_correct":true,"rationale":"Über die Kundendatei lässt sie sich wieder einer Person zuordnen, sie ist also nur ein Pseudonym."},{"text":"Bundesland","is_correct":false,"rationale":"Grobe Region ohne Bezug zu einer einzelnen Person."},{"text":"Bestellmonat","is_correct":false,"rationale":"Kein Merkmal, das eine Person bestimmt."},{"text":"Telefonnummer","is_correct":true,"rationale":"Eindeutige Kennung einer Person."},{"text":"Warengruppe der bestellten Artikel","is_correct":false,"rationale":"Sagt nichts über die Identität aus."}],"points":4}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -46915,7 +46916,7 @@ values (
   2,
   '{}',
   null,
-  '{"criteria":[{"text":"Anonymisierung: Der Personenbezug wird dauerhaft entfernt und lässt sich nicht wiederherstellen. Die DSGVO gilt für diese Daten nicht mehr","points":2,"keywords":["dauerhaft","nicht wiederherstellbar","kein Personenbezug","nicht mehr zuordnen","unumkehrbar"]},{"text":"Pseudonymisierung: Merkmale werden durch ein Kennzeichen ersetzt; mit getrennt aufbewahrten Zusatzinformationen ist die Zuordnung möglich. Die Daten bleiben personenbezogen, die DSGVO gilt weiter","points":2,"keywords":["Kennzeichen","Zuordnungstabelle","Zusatzinformation","weiterhin personenbezogen","umkehrbar","Kennung"]}],"sample_solution":"Bei der Anonymisierung wird der Personenbezug so entfernt, dass niemand die Daten mehr einer Person zuordnen kann. Anonyme Daten fallen nicht unter die DSGVO. Bei der Pseudonymisierung werden identifizierende Merkmale durch ein Kennzeichen ersetzt; die Zuordnung ist mit getrennt aufbewahrten Zusatzinformationen weiterhin möglich. Pseudonyme Daten bleiben personenbezogen, die DSGVO gilt in vollem Umfang. Das Risiko ist aber geringer."}'::jsonb,
+  '{"criteria":[{"text":"Anonymisierung: Der Personenbezug wird dauerhaft entfernt und lässt sich nicht wiederherstellen. Die DSGVO gilt für diese Daten nicht mehr","points":2,"keywords":["dauerhaft","nicht wiederherstellbar","kein Personenbezug","nicht mehr zuordnen","unumkehrbar"]},{"text":"Pseudonymisierung: Merkmale werden durch ein Kennzeichen ersetzt; mit getrennt aufbewahrten Zusatzinformationen ist die Zuordnung möglich. Die Daten bleiben personenbezogen, die DSGVO gilt weiter","points":2,"keywords":["Kennzeichen","Zuordnungstabelle","Zusatzinformation","weiterhin personenbezogen","umkehrbar","Kennung"]}],"sample_solution":"Bei der Anonymisierung wird der Personenbezug so entfernt, dass niemand die Daten mehr einer Person zuordnen kann. Anonyme Daten fallen nicht unter die DSGVO. Bei der Pseudonymisierung werden identifizierende Merkmale durch ein Kennzeichen ersetzt; die Zuordnung ist mit getrennt aufbewahrten Zusatzinformationen weiterhin möglich. Pseudonyme Daten bleiben personenbezogen, die DSGVO gilt in vollem Umfang. Nur das Risiko für die Betroffenen sinkt."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -46940,7 +46941,7 @@ values (
   'cloze',
   'Eine Krankenkasse wertet Abrechnungsdaten aus. Im ersten Schritt ersetzt sie die Versichertennummer durch eine zufällige Kennung und bewahrt die Zuordnungsliste getrennt auf. Für den Jahresbericht bildet sie später nur noch Summen je Altersgruppe und Region.',
   'Ergänze die Einordnung der beiden Schritte.',
-  'Kennung plus getrennt aufbewahrte Zuordnungsliste = Pseudonymisierung. Die Daten bleiben personenbezogen. Zusammengefasste Werte (Aggregation) ohne Rückschluss auf Einzelne sind anonym. Für sie gilt die DSGVO nicht. Zu kleine Gruppen können allerdings wieder auf Einzelne schließen lassen.',
+  'Eine Kennung mit getrennt aufbewahrter Zuordnungsliste ist eine Pseudonymisierung, die Daten bleiben personenbezogen. Zusammengefasste Werte (Aggregation) ohne Rückschluss auf Einzelne sind anonym, für sie gilt die DSGVO nicht. Zu kleine Gruppen können allerdings wieder auf Einzelne schließen lassen.',
   2,
   '{}',
   null,
@@ -46969,7 +46970,7 @@ values (
   'table',
   'Für das Verzeichnis der technischen und organisatorischen Maßnahmen der Steuerkanzlei Albers & Partner ordnest du vorhandene Maßnahmen ein.',
   'Ergänze für jede Maßnahme die Art und das Kontrollziel, dem sie vor allem dient.',
-  'Zutritt = räumlich (Gebäude, Serverraum), Zugang = Nutzung des Systems (Anmeldung), Zugriff = Rechte auf bestimmte Daten. Technische Maßnahmen wirken durch Geräte oder Software, organisatorische durch Regeln und Anweisungen.',
+  'Zutritt betrifft die Räume (Gebäude, Serverraum), Zugang die Nutzung des Systems (Anmeldung) und Zugriff die Rechte auf bestimmte Daten. Technische Maßnahmen wirken durch Geräte oder Software, organisatorische durch Regeln und Anweisungen.',
   2,
   '{}',
   null,
@@ -46998,7 +46999,7 @@ values (
   'open',
   'Einem Mitarbeiter der Steuerkanzlei Albers & Partner wird im Zug das Notebook gestohlen. Auf der unverschlüsselten Festplatte liegen Steuerunterlagen von rund 40 Mandanten.',
   'Beschreibe zwei Pflichten, die die Kanzlei nach der DSGVO nun erfüllen muss. (4 P.)',
-  'Je Pflicht 2 Punkte, höchstens 4 Punkte. Wäre die Festplatte verschlüsselt gewesen, bestünde voraussichtlich kein Risiko: Meldung und Benachrichtigung könnten dann entfallen.',
+  'Je Pflicht 2 Punkte, höchstens 4 Punkte. Wäre die Festplatte verschlüsselt gewesen, bestünde voraussichtlich kein Risiko. Meldung und Benachrichtigung könnten dann entfallen.',
   2,
   '{}',
   null,
@@ -47085,7 +47086,7 @@ values (
   'marking',
   'Bei einer Begehung des Serverraums der Pixelhafen Medien GmbH notierst du deine Beobachtungen.',
   'Markiere alle Beobachtungen, die einen Mangel darstellen.',
-  'Mängel sind: offene Tür (Zutritt), Sicherungen im selben Raum (keine räumliche Trennung), offen sichtbares Passwort (Zugang) und Brandlast. Protokollierter Zutritt, USV-Test und Temperaturalarm sind wirksame Maßnahmen.',
+  'Mängel sind die offene Tür (Zutritt), die Sicherungen im selben Raum (keine räumliche Trennung), das offen sichtbare Passwort (Zugang) und die Brandlast. Protokollierter Zutritt, USV-Test und Temperaturalarm sind wirksame Maßnahmen.',
   2,
   '{}',
   null,
@@ -47114,7 +47115,7 @@ values (
   'table',
   'Ein Systemhaus beschafft für eine Steuerkanzlei 18 Notebooks. In der Akte liegt der Schriftverkehr mit dem Lieferanten.',
   'Ordne jedem Vorgang seine rechtliche Bedeutung zu und gib an, mit welchem Vorgang der Kaufvertrag zustande kommt.',
-  'Anfrage = unverbindlich. Angebot an einen bestimmten Kunden = Antrag, hier befristet bis 19.03. Die Bestellung vom 21.03. kommt zu spät und ist deshalb ein neuer Antrag (§ 150 Abs. 1 BGB). Mit der Auftragsbestätigung vom 22.03. nimmt der Lieferant an. Erst jetzt besteht der Vertrag.',
+  'Die Anfrage ist unverbindlich. Das Angebot an einen bestimmten Kunden ist ein Antrag, hier befristet bis 19.03. Die Bestellung vom 21.03. kommt zu spät und ist deshalb ein neuer Antrag (§ 150 Abs. 1 BGB). Mit der Auftragsbestätigung vom 22.03. nimmt der Lieferant an. Erst jetzt besteht der Vertrag.',
   2,
   '{}',
   null,
@@ -47143,11 +47144,11 @@ values (
   'open',
   'Ein Vertriebsmitarbeiter vertippt sich im Angebot beim Preis. Die Auszubildende meint: „Dann ist der Vertrag doch sowieso nichtig.“',
   'Erläutere den Unterschied zwischen einem nichtigen und einem anfechtbaren Rechtsgeschäft und nenne je ein Beispiel.',
-  'Je Erläuterung 2 Punkte, je passendes Beispiel 1 Punkt. Andere richtige Beispiele werden ebenfalls gewertet. Wichtig ist die Abgrenzung: nichtig wirkt von selbst, anfechtbar braucht eine Erklärung.',
+  'Je Erläuterung 2 Punkte, je passendes Beispiel 1 Punkt. Andere richtige Beispiele werden ebenfalls gewertet. Achte auf die Abgrenzung: Die Nichtigkeit tritt von selbst ein, die Anfechtung muss erklärt werden.',
   2,
   '{}',
   null,
-  '{"points":6,"criteria":[{"text":"Nichtig: von Anfang an unwirksam, ohne dass jemand etwas erklären muss","points":2,"keywords":["von Anfang an","unwirksam","automatisch","ohne Erklärung"]},{"text":"Anfechtbar: zunächst wirksam; erst die Anfechtungserklärung macht es rückwirkend nichtig","points":2,"keywords":["zunächst wirksam","Anfechtung","rückwirkend","erklären","gültig bis"]},{"text":"Beispiel nichtig: Geschäft eines Geschäftsunfähigen, Formmangel, Schein- oder Scherzgeschäft, Gesetzes- oder Sittenverstoß","points":1,"keywords":["geschäftsunfähig","Formmangel","Scheingeschäft","Scherz","sittenwidrig","Kind"]},{"text":"Beispiel anfechtbar: Erklärungsirrtum (Tippfehler), Inhalts- oder Eigenschaftsirrtum, arglistige Täuschung, Drohung","points":1,"keywords":["Irrtum","Tippfehler","vertippt","Täuschung","Drohung"]}],"sample_solution":"Ein nichtiges Rechtsgeschäft ist von Anfang an unwirksam, zum Beispiel der Kauf eines sechsjährigen Kindes oder ein Grundstückskauf ohne Notar. Ein anfechtbares Rechtsgeschäft ist zunächst wirksam. Erst wenn der Berechtigte die Anfechtung erklärt, wird es rückwirkend nichtig, zum Beispiel beim Tippfehler im Preis (Erklärungsirrtum) oder bei arglistiger Täuschung. Der Vertrag aus der Situation ist also nicht automatisch nichtig, sondern muss unverzüglich angefochten werden."}'::jsonb,
+  '{"points":6,"criteria":[{"text":"Nichtig: von Anfang an unwirksam, ohne dass jemand etwas erklären muss","points":2,"keywords":["von Anfang an","unwirksam","automatisch","ohne Erklärung"]},{"text":"Anfechtbar: zunächst wirksam; erst die Anfechtungserklärung macht es rückwirkend nichtig","points":2,"keywords":["zunächst wirksam","Anfechtung","rückwirkend","erklären","gültig bis"]},{"text":"Beispiel nichtig: Geschäft eines Geschäftsunfähigen, Formmangel, Schein- oder Scherzgeschäft, Gesetzes- oder Sittenverstoß","points":1,"keywords":["geschäftsunfähig","Formmangel","Scheingeschäft","Scherz","sittenwidrig","Kind"]},{"text":"Beispiel anfechtbar: Erklärungsirrtum (Tippfehler), Inhalts- oder Eigenschaftsirrtum, arglistige Täuschung, Drohung","points":1,"keywords":["Irrtum","Tippfehler","vertippt","Täuschung","Drohung"]}],"sample_solution":"Ein nichtiges Rechtsgeschäft ist von Anfang an unwirksam, zum Beispiel ein Kauf, den ein sechsjähriges Kind abschließt, oder ein Grundstückskauf ohne Notar. Ein anfechtbares Rechtsgeschäft ist zunächst wirksam. Erst wenn der Berechtigte die Anfechtung erklärt, wird es rückwirkend nichtig, zum Beispiel beim Tippfehler im Preis (Erklärungsirrtum) oder bei arglistiger Täuschung. Der Vertrag aus der Situation ist also nicht automatisch nichtig, sondern muss unverzüglich angefochten werden."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -47321,7 +47322,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Der Auftragnehmer schuldet eine lauffähige Lagerverwaltung gemäß Pflichtenheft.","is_correct":true,"rationale":"Ein bestimmter Erfolg ist geschuldet. Das Kennzeichen des Werkvertrags (§ 631 BGB)."},{"text":"Abgerechnet wird monatlich nach geleisteten Stunden zu 95 € je Stunde.","is_correct":false,"rationale":"Vergütung nach Zeit ohne Erfolgsbezug spricht für einen Dienstvertrag."},{"text":"Der Festpreis von 48.000 € wird mit der Abnahme fällig.","is_correct":true,"rationale":"Fälligkeit mit Abnahme ist typisch für den Werkvertrag (§ 641 BGB)."},{"text":"Der Auftragnehmer stellt zwei Entwickler zur Unterstützung des Teams bereit.","is_correct":false,"rationale":"Geschuldet ist nur Arbeitsleistung, kein Ergebnis: Dienstvertrag."},{"text":"Der Auftraggeber nimmt die Software nach bestandenem Abnahmetest ab.","is_correct":true,"rationale":"Eine Abnahme gibt es nur beim Werkvertrag (§ 640 BGB)."},{"text":"Mängel beseitigt der Auftragnehmer innerhalb der Gewährleistungsfrist kostenlos.","is_correct":true,"rationale":"Mängelrechte setzen einen geschuldeten Erfolg voraus."}],"points":4}'::jsonb,
+  '{"choices":[{"text":"Der Auftragnehmer schuldet eine lauffähige Lagerverwaltung gemäß Pflichtenheft.","is_correct":true,"rationale":"Geschuldet ist ein bestimmter Erfolg, das Kennzeichen des Werkvertrags (§ 631 BGB)."},{"text":"Abgerechnet wird monatlich nach geleisteten Stunden zu 95 € je Stunde.","is_correct":false,"rationale":"Vergütung nach Zeit ohne Erfolgsbezug spricht für einen Dienstvertrag."},{"text":"Der Festpreis von 48.000 € wird mit der Abnahme fällig.","is_correct":true,"rationale":"Fälligkeit mit Abnahme ist typisch für den Werkvertrag (§ 641 BGB)."},{"text":"Der Auftragnehmer stellt zwei Entwickler zur Unterstützung des Teams bereit.","is_correct":false,"rationale":"Geschuldet ist nur Arbeitsleistung, kein Ergebnis. Das spricht für einen Dienstvertrag."},{"text":"Der Auftraggeber nimmt die Software nach bestandenem Abnahmetest ab.","is_correct":true,"rationale":"Die Abnahme als Billigung des Ergebnisses gehört zum Werkvertrag (§ 640 BGB), der Dienstvertrag kennt sie nicht."},{"text":"Mängel beseitigt der Auftragnehmer innerhalb der Gewährleistungsfrist kostenlos.","is_correct":true,"rationale":"Mängelrechte setzen einen geschuldeten Erfolg voraus."}],"points":4}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -47379,7 +47380,7 @@ values (
   2,
   ARRAY['englisch']::text[],
   null,
-  '{"choices":[{"text":"Die Agentur installiert die Software auf 18 Arbeitsplätzen.","is_correct":true,"rationale":"Nr. 2 erlaubt bis zu 20 Geräte."},{"text":"Die Agentur verkauft die Lizenz an ein befreundetes Unternehmen weiter.","is_correct":false,"rationale":"Nr. 1: „non-transferable“. Die Lizenz ist nicht übertragbar."},{"text":"Ein Administrator legt eine Sicherungskopie für das Archiv an.","is_correct":true,"rationale":"Nr. 3 erlaubt eine Sicherungskopie."},{"text":"Eine Entwicklerin dekompiliert das Programm und passt es an.","is_correct":false,"rationale":"Nr. 4 verbietet Ändern und Dekompilieren."},{"text":"Der Hersteller vergibt dieselbe Software auch an andere Kunden.","is_correct":true,"rationale":"Nr. 1: „non-exclusive“. Ein einfaches Nutzungsrecht, der Hersteller darf weitere Lizenzen vergeben."},{"text":"Die Agentur nutzt die Software im 14. Monat ohne Verlängerung weiter.","is_correct":false,"rationale":"Nr. 5: Die Lizenz endet nach 12 Monaten automatisch."}],"code":"SOFTWARE LICENCE (excerpt)\n1. The licensee is granted a non-exclusive, non-transferable\n   right to use the software.\n2. The software may be installed on up to 20 devices.\n3. One backup copy may be made for archival purposes.\n4. The licensee must not modify, decompile or redistribute\n   the software.\n5. The licence is valid for 12 months and ends automatically\n   unless it is renewed.","points":3}'::jsonb,
+  '{"choices":[{"text":"Die Agentur installiert die Software auf 18 Arbeitsplätzen.","is_correct":true,"rationale":"Nr. 2 erlaubt bis zu 20 Geräte."},{"text":"Die Agentur verkauft die Lizenz an ein befreundetes Unternehmen weiter.","is_correct":false,"rationale":"Nr. 1 nennt die Lizenz „non-transferable“, sie ist also nicht übertragbar."},{"text":"Ein Administrator legt eine Sicherungskopie für das Archiv an.","is_correct":true,"rationale":"Nr. 3 erlaubt eine Sicherungskopie."},{"text":"Eine Entwicklerin dekompiliert das Programm und passt es an.","is_correct":false,"rationale":"Nr. 4 verbietet Ändern und Dekompilieren."},{"text":"Der Hersteller vergibt dieselbe Software auch an andere Kunden.","is_correct":true,"rationale":"„Non-exclusive“ (Nr. 1) bedeutet ein einfaches Nutzungsrecht. Der Hersteller darf also weitere Lizenzen vergeben."},{"text":"Die Agentur nutzt die Software im 14. Monat ohne Verlängerung weiter.","is_correct":false,"rationale":"Nr. 5: Die Lizenz endet nach 12 Monaten automatisch."}],"code":"SOFTWARE LICENCE (excerpt)\n1. The licensee is granted a non-exclusive, non-transferable\n   right to use the software.\n2. The software may be installed on up to 20 devices.\n3. One backup copy may be made for archival purposes.\n4. The licensee must not modify, decompile or redistribute\n   the software.\n5. The licence is valid for 12 months and ends automatically\n   unless it is renewed.","points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -47491,7 +47492,7 @@ values (
   'table',
   'Eine Agentur prüft das Angebot eines Anbieters für ein gehostetes Ticketsystem. Der Vertrag enthält folgenden Auszug.',
   'Werte den Auszug aus und ergänze die Tabelle.',
-  'Servicezeit: 20 × 10 h = 200 h. Zulässiger Ausfall: 200 h × 0,5 % = 1 h = 60 min. Zeiten laufen nur in der Servicezeit: Reaktion 17:45 + 30 min = 15 min am Freitag und 15 min am Montag -> 08:15 Uhr. Lösung: 15:00 bis 18:00 Uhr sind 3 h, die vierte Stunde endet Mittwoch 09:00 Uhr. Angekündigte Wartung zählt nicht als Ausfall.',
+  'Servicezeit: 20 × 10 h = 200 h. Zulässiger Ausfall: 200 h × 0,5 % = 1 h = 60 min. Zeiten laufen nur in der Servicezeit: Von den 30 Minuten Reaktionszeit laufen 15 am Freitag (17:45 bis 18:00 Uhr) und 15 am Montag, also bis 08:15 Uhr. Bei der Lösungszeit sind 15:00 bis 18:00 Uhr 3 h, die vierte Stunde endet am Mittwoch um 09:00 Uhr. Angekündigte Wartung zählt nicht als Ausfall.',
   3,
   ARRAY['englisch']::text[],
   null,
@@ -47756,7 +47757,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"09:02 Ticket angelegt, Kategorie Netzwerk, Priorität 2","is_correct":false,"rationale":"Erfassen, kategorisieren und priorisieren ist Aufgabe des 1st Level."},{"text":"09:10 1st Level prüft die Wissensdatenbank: keine Lösung","is_correct":false,"rationale":"Erst bekannte Lösungen prüfen: richtig."},{"text":"09:15 Ticket geschlossen; Anwender soll sich neu beim 2nd Level melden","is_correct":true,"rationale":"Ein ungelöstes Ticket wird nie geschlossen, sondern mit seiner Historie weitergegeben."},{"text":"09:40 2nd Level fragt alle Angaben neu ab; im Ticket steht nichts","is_correct":true,"rationale":"Die bisherigen Schritte hätten dokumentiert werden müssen."},{"text":"10:30 2nd Level findet defekten Switch-Port und patcht um","is_correct":false,"rationale":"Fachliche Analyse und Lösung im 2nd Level."},{"text":"10:35 Ticket geschlossen, ohne Rückmeldung des Anwenders","is_correct":true,"rationale":"Geschlossen wird erst, wenn der Anwender die Lösung bestätigt hat."}],"points":3,"mono":true}'::jsonb,
+  '{"choices":[{"text":"09:02 Ticket angelegt, Kategorie Netzwerk, Priorität 2","is_correct":false,"rationale":"Erfassen, kategorisieren und priorisieren ist Aufgabe des 1st Level."},{"text":"09:10 1st Level prüft die Wissensdatenbank: keine Lösung","is_correct":false,"rationale":"Richtig, zuerst werden bekannte Lösungen geprüft."},{"text":"09:15 Ticket geschlossen; Anwender soll sich neu beim 2nd Level melden","is_correct":true,"rationale":"Ein ungelöstes Ticket wird nie geschlossen, sondern mit seiner Historie weitergegeben."},{"text":"09:40 2nd Level fragt alle Angaben neu ab; im Ticket steht nichts","is_correct":true,"rationale":"Die bisherigen Schritte hätten dokumentiert werden müssen."},{"text":"10:30 2nd Level findet defekten Switch-Port und patcht um","is_correct":false,"rationale":"Fachliche Analyse und Lösung im 2nd Level."},{"text":"10:35 Ticket geschlossen, ohne Rückmeldung des Anwenders","is_correct":true,"rationale":"Geschlossen wird erst, wenn der Anwender die Lösung bestätigt hat."}],"points":3,"mono":true}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -47781,7 +47782,7 @@ values (
   'table',
   'In der IT-Abteilung eines Onlinehändlers gehen an einem Tag vier Vorgänge ein.',
   'Ordne jedem Vorgang den ITIL-Begriff und das Ziel zu.',
-  'Incident = Störung, Ziel schnelle Wiederherstellung. Problem = Ursache hinter (wiederkehrenden) Störungen. Change = geplante Änderung, die bewertet und genehmigt wird. Service Request = Standardanfrage, bei der nichts kaputt ist.',
+  'Ein Incident ist eine Störung, das Ziel ist die schnelle Wiederherstellung. Ein Problem ist die Ursache hinter (wiederkehrenden) Störungen. Ein Change ist eine geplante Änderung, die bewertet und genehmigt wird. Ein Service Request ist eine Standardanfrage, bei der nichts kaputt ist.',
   2,
   '{}',
   null,
@@ -47814,7 +47815,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Incident Management stellt den Service so schnell wie möglich wieder her, auch mit einem Workaround","points":2,"keywords":["wiederherstellen","schnell","Workaround","Störung beheben","Neustart"]},{"text":"Problem Management sucht und beseitigt die Ursache, damit die Störung nicht wieder auftritt","points":2,"keywords":["Ursache","dauerhaft","Known Error","nicht wieder","Analyse"]}],"sample_solution":"Das Incident Management soll den Service so schnell wie möglich wiederherstellen. Hier durch den Neustart der App als Workaround. Die Ursache bleibt dabei bestehen. Das Problem Management untersucht, warum die App abstürzt, dokumentiert die Ursache als Known Error und sorgt für eine dauerhafte Lösung, die als Change eingeführt wird."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Incident Management stellt den Service so schnell wie möglich wieder her, auch mit einem Workaround","points":2,"keywords":["wiederherstellen","schnell","Workaround","Störung beheben","Neustart"]},{"text":"Problem Management sucht und beseitigt die Ursache, damit die Störung nicht wieder auftritt","points":2,"keywords":["Ursache","dauerhaft","Known Error","nicht wieder","Analyse"]}],"sample_solution":"Das Incident Management soll den Service so schnell wie möglich wiederherstellen, hier durch den Neustart der App als Workaround. Die Ursache bleibt dabei bestehen. Das Problem Management untersucht, warum die App abstürzt, dokumentiert die Ursache als Known Error und sorgt für eine dauerhafte Lösung, die als Change eingeführt wird."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -47930,7 +47931,7 @@ values (
   3,
   ARRAY['englisch']::text[],
   null,
-  '{"code":"Subject: Delay of your order no. 4417\n\nDear customer,\nwe regret to inform you that the 18 notebooks you\nordered could not be shipped on 2 March as confirmed.\nOur own supplier has not delivered the devices to us\nyet. We expect to ship in about four weeks.\nWe apologise for the inconvenience.\n\nKind regards\nNordBit Distribution","points":6,"criteria":[{"text":"Verzug liegt vor: Der Termin 2. März ist nach dem Kalender bestimmt, eine Mahnung ist deshalb nicht nötig","points":2,"keywords":["Kalender","ohne Mahnung","keine Mahnung","fester Termin","Mahnung entbehrlich"]},{"text":"Der Distributor hat die Verspätung zu vertreten; dass sein Vorlieferant nicht liefert, entlastet ihn nicht","points":2,"keywords":["vertreten","Verschulden","Vorlieferant","Beschaffungsrisiko","entlastet nicht"]},{"text":"Recht: weiter auf Lieferung bestehen und Ersatz des Verzögerungsschadens verlangen (z. B. Kosten für Leihgeräte)","points":2,"keywords":["Lieferung bestehen","Verzögerungsschaden","Verzugsschaden","Leihgeräte","Erfüllung"]},{"text":"Recht: angemessene Nachfrist setzen und nach erfolglosem Ablauf vom Vertrag zurücktreten","points":2,"keywords":["Nachfrist","Rücktritt","zurücktreten"]},{"text":"Recht: nach erfolgloser Nachfrist Schadensersatz statt der Leistung verlangen (z. B. Mehrkosten eines Deckungskaufs)","points":2,"keywords":["Schadensersatz statt","Deckungskauf","Mehrkosten","Ersatzkauf"]}],"sample_solution":"Der Distributor ist in Verzug: Die Lieferung war am 2. März fällig, der Termin ist kalendermäßig bestimmt, also braucht es keine Mahnung (§ 286 Abs. 2 Nr. 1 BGB). Dass der eigene Lieferant nicht geliefert hat, entlastet ihn in der Regel nicht. Er trägt das Beschaffungsrisiko. Das Systemhaus kann weiter Lieferung verlangen und den Verzögerungsschaden ersetzt verlangen, etwa die Kosten für Leihgeräte. Es kann außerdem eine angemessene Nachfrist setzen und nach deren erfolglosem Ablauf zurücktreten und Schadensersatz statt der Leistung verlangen, etwa die Mehrkosten eines Deckungskaufs."}'::jsonb,
+  '{"code":"Subject: Delay of your order no. 4417\n\nDear customer,\nwe regret to inform you that the 18 notebooks you\nordered could not be shipped on 2 March as confirmed.\nOur own supplier has not delivered the devices to us\nyet. We expect to ship in about four weeks.\nWe apologise for the inconvenience.\n\nKind regards\nNordBit Distribution","points":6,"criteria":[{"text":"Verzug liegt vor: Der Termin 2. März ist nach dem Kalender bestimmt, eine Mahnung ist deshalb nicht nötig","points":2,"keywords":["Kalender","ohne Mahnung","keine Mahnung","fester Termin","Mahnung entbehrlich"]},{"text":"Der Distributor hat die Verspätung zu vertreten; dass sein Vorlieferant nicht liefert, entlastet ihn nicht","points":2,"keywords":["vertreten","Verschulden","Vorlieferant","Beschaffungsrisiko","entlastet nicht"]},{"text":"Recht: weiter auf Lieferung bestehen und Ersatz des Verzögerungsschadens verlangen (z. B. Kosten für Leihgeräte)","points":2,"keywords":["Lieferung bestehen","Verzögerungsschaden","Verzugsschaden","Leihgeräte","Erfüllung"]},{"text":"Recht: angemessene Nachfrist setzen und nach erfolglosem Ablauf vom Vertrag zurücktreten","points":2,"keywords":["Nachfrist","Rücktritt","zurücktreten"]},{"text":"Recht: nach erfolgloser Nachfrist Schadensersatz statt der Leistung verlangen (z. B. Mehrkosten eines Deckungskaufs)","points":2,"keywords":["Schadensersatz statt","Deckungskauf","Mehrkosten","Ersatzkauf"]}],"sample_solution":"Der Distributor ist in Verzug: Die Lieferung war am 2. März fällig, der Termin ist kalendermäßig bestimmt, also braucht es keine Mahnung (§ 286 Abs. 2 Nr. 1 BGB). Dass der eigene Lieferant nicht geliefert hat, entlastet ihn in der Regel nicht, denn er trägt das Beschaffungsrisiko. Das Systemhaus kann weiter auf Lieferung bestehen und Ersatz des Verzögerungsschadens verlangen, etwa die Kosten für Leihgeräte. Es kann außerdem eine angemessene Nachfrist setzen und nach deren erfolglosem Ablauf zurücktreten und Schadensersatz statt der Leistung verlangen, etwa die Mehrkosten eines Deckungskaufs."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -47955,7 +47956,7 @@ values (
   'cloze',
   'Ein Systemhaus hat einem Handwerksbetrieb 7.300 € in Rechnung gestellt. Der Betrieb ist seit 60 Tagen im Zahlungsverzug. Nimm für diese Aufgabe einen Basiszinssatz von 2 % an und rechne mit 365 Tagen im Jahr.',
   'Berechne die Forderungen aus dem Zahlungsverzug.',
-  'Unter Unternehmen: Basiszinssatz + 9 Prozentpunkte = 2 % + 9 = 11 %. Jahreszinsen: 7.300 € × 0,11 = 803 €. Für 60 Tage: 803 € × 60 / 365 = 132 €. Dazu die Pauschale von 40 €: 132 € + 40 € = 172 €. Wäre ein Verbraucher beteiligt, wären es nur 5 Prozentpunkte und keine Pauschale.',
+  'Unter Unternehmen: Basiszinssatz + 9 Prozentpunkte = 2 % + 9 = 11 %. Jahreszinsen: 7.300 € × 0,11 = 803 €. Für 60 Tage: 803 € × 60 / 365 = 132 €. Dazu die Pauschale von 40 €: 132 € + 40 € = 172 €. Wäre der Schuldner ein Verbraucher, wären es nur 5 Prozentpunkte und keine Pauschale.',
   2,
   '{}',
   null,
@@ -47984,7 +47985,7 @@ values (
   'marking',
   'Ein Handwerksbetrieb (Unternehmer) hat eine Rechnung über 4.800 € nicht bezahlt. Im Vertrag ist als Zahlungstermin der 16. Mai vereinbart, heute ist der 30. Mai. Ein Auszubildender hat eine Mahnung entworfen.',
   'Markiere alle Sätze der Mahnung, die fachlich falsch oder ungeeignet sind.',
-  'Bei einem vertraglich vereinbarten Kalendertermin tritt Verzug ohne Mahnung ein. Hier ab dem 17. Mai. Unter Unternehmern betragen die Verzugszinsen 9 Prozentpunkte über dem Basiszinssatz, dazu kommt die Pauschale von 40 €. Eine Mahnung fordert bestimmt und mit Datum zur Zahlung auf.',
+  'Bei einem vertraglich vereinbarten Kalendertermin tritt Verzug ohne Mahnung ein, hier ab dem 17. Mai. Unter Unternehmern betragen die Verzugszinsen 9 Prozentpunkte über dem Basiszinssatz, dazu kommt die Pauschale von 40 €. Eine Mahnung fordert bestimmt und mit Datum zur Zahlung auf.',
   2,
   '{}',
   null,
@@ -48046,7 +48047,7 @@ values (
   3,
   '{}',
   null,
-  '{"points":5,"grid":[[{"text":"Fall"},{"text":"Beurteilung"}],[{"text":"Vereinbart ist „Lieferung am 12. Mai“. Am 13. Mai ist nichts da."},{"gap":{"answers":["Verzug ohne Mahnung"],"options":["Verzug ohne Mahnung","Verzug erst nach Mahnung","kein Verzug (nicht zu vertreten)"],"rationale":"Termin nach dem Kalender bestimmt (§ 286 Abs. 2 Nr. 1 BGB)."}}],[{"text":"Vereinbart ist „Lieferung so bald wie möglich“."},{"gap":{"answers":["Verzug erst nach Mahnung"],"options":["Verzug erst nach Mahnung","Verzug ohne Mahnung","kein Verzug (nicht zu vertreten)"],"rationale":"Kein bestimmter Termin. Der Käufer muss mahnen."}}],[{"text":"Der Lieferant schreibt: „Wir werden endgültig nicht liefern.“"},{"gap":{"answers":["Verzug ohne Mahnung"],"options":["Verzug ohne Mahnung","Verzug erst nach Mahnung","kein Verzug (nicht zu vertreten)"],"rationale":"Ernsthafte und endgültige Verweigerung (§ 286 Abs. 2 Nr. 3 BGB)."}}],[{"text":"Vereinbart ist „Lieferung 10 Tage nach Abruf“. Abruf war am 3. Juni, am 14. Juni ist nichts da."},{"gap":{"answers":["Verzug ohne Mahnung"],"options":["Verzug ohne Mahnung","Verzug erst nach Mahnung","kein Verzug (nicht zu vertreten)"],"rationale":"Die Frist lässt sich ab dem Abruf nach dem Kalender berechnen (§ 286 Abs. 2 Nr. 2 BGB)."}}],[{"text":"Termin 12. Mai; ein unvorhersehbares Hochwasser sperrt das Lager des Lieferanten."},{"gap":{"answers":["kein Verzug (nicht zu vertreten)"],"options":["kein Verzug (nicht zu vertreten)","Verzug ohne Mahnung","Verzug erst nach Mahnung"],"rationale":"Ohne Vertretenmüssen kein Verzug (§ 286 Abs. 4 BGB)."}}]]}'::jsonb,
+  '{"points":5,"grid":[[{"text":"Fall"},{"text":"Beurteilung"}],[{"text":"Vereinbart ist „Lieferung am 12. Mai“. Am 13. Mai ist nichts da."},{"gap":{"answers":["Verzug ohne Mahnung"],"options":["Verzug ohne Mahnung","Verzug erst nach Mahnung","kein Verzug (nicht zu vertreten)"],"rationale":"Termin nach dem Kalender bestimmt (§ 286 Abs. 2 Nr. 1 BGB)."}}],[{"text":"Vereinbart ist „Lieferung so bald wie möglich“."},{"gap":{"answers":["Verzug erst nach Mahnung"],"options":["Verzug erst nach Mahnung","Verzug ohne Mahnung","kein Verzug (nicht zu vertreten)"],"rationale":"Es gibt keinen bestimmten Termin, der Käufer muss also mahnen."}}],[{"text":"Der Lieferant schreibt: „Wir werden endgültig nicht liefern.“"},{"gap":{"answers":["Verzug ohne Mahnung"],"options":["Verzug ohne Mahnung","Verzug erst nach Mahnung","kein Verzug (nicht zu vertreten)"],"rationale":"Ernsthafte und endgültige Verweigerung (§ 286 Abs. 2 Nr. 3 BGB)."}}],[{"text":"Vereinbart ist „Lieferung 10 Tage nach Abruf“. Abruf war am 3. Juni, am 14. Juni ist nichts da."},{"gap":{"answers":["Verzug ohne Mahnung"],"options":["Verzug ohne Mahnung","Verzug erst nach Mahnung","kein Verzug (nicht zu vertreten)"],"rationale":"Die Frist lässt sich ab dem Abruf nach dem Kalender berechnen (§ 286 Abs. 2 Nr. 2 BGB)."}}],[{"text":"Termin 12. Mai; ein unvorhersehbares Hochwasser sperrt das Lager des Lieferanten."},{"gap":{"answers":["kein Verzug (nicht zu vertreten)"],"options":["kein Verzug (nicht zu vertreten)","Verzug ohne Mahnung","Verzug erst nach Mahnung"],"rationale":"Ohne Vertretenmüssen kein Verzug (§ 286 Abs. 4 BGB)."}}]]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -48191,7 +48192,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Ein Notebook hat 8 GB statt der vereinbarten 16 GB Arbeitsspeicher.","is_correct":true,"rationale":"Die vereinbarte Beschaffenheit fehlt."},{"text":"Dem Kunden gefällt die Gehäusefarbe nach zwei Wochen nicht mehr.","is_correct":false,"rationale":"Geliefert wurde, was vereinbart war: Reue ist kein Mangel."},{"text":"Die Montageanleitung des Serverschranks ist fehlerhaft, der Aufbau misslingt.","is_correct":true,"rationale":"Eine mangelhafte Montageanleitung ist ein Sachmangel."},{"text":"Der Akku hält nach drei Jahren normaler Nutzung spürbar kürzer.","is_correct":false,"rationale":"Gewöhnlicher Verschleiß nach Gefahrübergang ist kein Mangel."},{"text":"Statt 10 Switches werden 8 geliefert.","is_correct":true,"rationale":"Die vereinbarte Menge gehört zur Beschaffenheit. Eine Zuweniglieferung ist deshalb ein Sachmangel (§ 434 Abs. 2 BGB)."},{"text":"Der Kunde lässt den Monitor beim Auspacken fallen, das Display reißt.","is_correct":false,"rationale":"Der Schaden entstand nach der Übergabe durch den Käufer selbst."}],"points":3}'::jsonb,
+  '{"choices":[{"text":"Ein Notebook hat 8 GB statt der vereinbarten 16 GB Arbeitsspeicher.","is_correct":true,"rationale":"Die vereinbarte Beschaffenheit fehlt."},{"text":"Dem Kunden gefällt die Gehäusefarbe nach zwei Wochen nicht mehr.","is_correct":false,"rationale":"Geliefert wurde, was vereinbart war. Reue ist kein Mangel."},{"text":"Die Montageanleitung des Serverschranks ist fehlerhaft, der Aufbau misslingt.","is_correct":true,"rationale":"Eine mangelhafte Montageanleitung ist ein Sachmangel."},{"text":"Der Akku hält nach drei Jahren normaler Nutzung spürbar kürzer.","is_correct":false,"rationale":"Gewöhnlicher Verschleiß nach Gefahrübergang ist kein Mangel."},{"text":"Statt 10 Switches werden 8 geliefert.","is_correct":true,"rationale":"Die vereinbarte Menge gehört zur Beschaffenheit. Eine Zuweniglieferung ist deshalb ein Sachmangel (§ 434 Abs. 2 BGB)."},{"text":"Der Kunde lässt den Monitor beim Auspacken fallen, das Display reißt.","is_correct":false,"rationale":"Der Schaden entstand nach der Übergabe durch den Käufer selbst."}],"points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -48361,7 +48362,7 @@ values (
   'ordering',
   'Ein Logistikunternehmen ersetzt Kommissionierlisten auf Papier durch Handscanner.',
   'Bringe die Maßnahmen in die Reihenfolge, die dem Modell von Lewin entspricht.',
-  'Unfreezing: Gründe erklären und Betroffene beteiligen. Moving: pilotieren, schulen, in Betrieb nehmen. Refreezing: den Rückweg nehmen und das Neue zum Standard machen.',
+  'Unfreezing: Gründe erklären und Betroffene beteiligen. Moving: pilotieren, schulen, in Betrieb nehmen. Refreezing: den Rückweg versperren und das Neue zum Standard machen.',
   2,
   '{}',
   null,
@@ -48423,7 +48424,7 @@ values (
   2,
   '{}',
   null,
-  '{"points":4,"criteria":[{"text":"Sofortumstellung, Vorteil: kurze Umstellung, keine Doppelarbeit, geringe Kosten","points":1,"keywords":["keine Doppelarbeit","schnell","kurz","günstig","geringe Kosten","klarer Schnitt"]},{"text":"Sofortumstellung, Nachteil: hohes Risiko: Fehler treffen sofort den ganzen Betrieb, kein Rückfall auf das alte System","points":1,"keywords":["Risiko","kein Rückfall","Ausfall","Stillstand","Druck","Störungen"]},{"text":"Parallelbetrieb, Vorteil: Sicherheit. Das alte System steht als Rückfall bereit, Ergebnisse lassen sich vergleichen","points":1,"keywords":["Sicherheit","Rückfall","vergleichen","Absicherung","geringes Risiko"]},{"text":"Parallelbetrieb, Nachteil: doppelte Datenpflege, höhere Kosten und Belastung der Beschäftigten","points":1,"keywords":["doppelt","Doppelarbeit","Mehraufwand","Kosten","Belastung"]}],"sample_solution":"Sofortumstellung: Vorteil ist die kurze Umstellung ohne Doppelarbeit und mit geringen Kosten; Nachteil ist das hohe Risiko, weil Fehler sofort den ganzen Betrieb treffen und es keinen Rückfall gibt. Parallelbetrieb: Vorteil ist die Sicherheit, denn das alte System läuft weiter und die Ergebnisse lassen sich vergleichen; Nachteil sind doppelte Datenpflege, höhere Kosten und die Mehrbelastung der Beschäftigten."}'::jsonb,
+  '{"points":4,"criteria":[{"text":"Sofortumstellung, Vorteil: kurze Umstellung, keine Doppelarbeit, geringe Kosten","points":1,"keywords":["keine Doppelarbeit","schnell","kurz","günstig","geringe Kosten","klarer Schnitt"]},{"text":"Sofortumstellung, Nachteil: hohes Risiko, weil Fehler sofort den ganzen Betrieb treffen und kein Rückfall auf das alte System möglich ist","points":1,"keywords":["Risiko","kein Rückfall","Ausfall","Stillstand","Druck","Störungen"]},{"text":"Parallelbetrieb, Vorteil: Sicherheit, weil das alte System als Rückfall bereitsteht und sich die Ergebnisse vergleichen lassen","points":1,"keywords":["Sicherheit","Rückfall","vergleichen","Absicherung","geringes Risiko"]},{"text":"Parallelbetrieb, Nachteil: doppelte Datenpflege, höhere Kosten und Belastung der Beschäftigten","points":1,"keywords":["doppelt","Doppelarbeit","Mehraufwand","Kosten","Belastung"]}],"sample_solution":"Sofortumstellung: Vorteil ist die kurze Umstellung ohne Doppelarbeit und mit geringen Kosten; Nachteil ist das hohe Risiko, weil Fehler sofort den ganzen Betrieb treffen und es keinen Rückfall gibt. Parallelbetrieb: Vorteil ist die Sicherheit, denn das alte System läuft weiter und die Ergebnisse lassen sich vergleichen; Nachteil sind doppelte Datenpflege, höhere Kosten und die Mehrbelastung der Beschäftigten."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -48452,7 +48453,7 @@ values (
   2,
   ARRAY['englisch']::text[],
   null,
-  '{"buckets":["Unfreezing","Moving","Refreezing"],"match_items":[{"text":"Praxisnahe Schulungen anbieten","bucket":1,"rationale":"„hands-on training“ während der Einführung."},{"text":"Gründe früh und ehrlich erklären","bucket":0,"rationale":"„explain the reasons early and honestly“ schafft Einsicht."},{"text":"Das alte System abschalten","bucket":2,"rationale":"„switch off the old one“ nimmt den Rückweg."},{"text":"Künftige Nutzer bei den Anforderungen beteiligen","bucket":0,"rationale":"„involve the future users“: Beteiligung vor der Umstellung."},{"text":"Key-User als Ansprechpartner benennen","bucket":1,"rationale":"„name key users“: Begleitung während der Umstellung."},{"text":"Arbeitsanweisungen aktualisieren","bucket":2,"rationale":"„update the work instructions“. Das Neue wird Standard."}],"code":"Rolling out new software is not only a technical task.\nPeople need to understand why the old way of working\nhas to change. Explain the reasons early and honestly,\nand involve the future users when requirements are\ncollected. During the rollout, offer hands-on training\nand name key users who can answer questions on the\nspot. Once the new system is live, switch off the old\none and update the work instructions, otherwise staff\nwill quietly slide back into old habits.","points":3}'::jsonb,
+  '{"buckets":["Unfreezing","Moving","Refreezing"],"match_items":[{"text":"Praxisnahe Schulungen anbieten","bucket":1,"rationale":"„hands-on training“ während der Einführung."},{"text":"Gründe früh und ehrlich erklären","bucket":0,"rationale":"„explain the reasons early and honestly“ schafft Einsicht."},{"text":"Das alte System abschalten","bucket":2,"rationale":"„switch off the old one“ versperrt den Rückweg."},{"text":"Künftige Nutzer bei den Anforderungen beteiligen","bucket":0,"rationale":"„involve the future users“: Beteiligung vor der Umstellung."},{"text":"Key-User als Ansprechpartner benennen","bucket":1,"rationale":"„name key users“: Begleitung während der Umstellung."},{"text":"Arbeitsanweisungen aktualisieren","bucket":2,"rationale":"„update the work instructions“: Das Neue wird zum Standard."}],"code":"Rolling out new software is not only a technical task.\nPeople need to understand why the old way of working\nhas to change. Explain the reasons early and honestly,\nand involve the future users when requirements are\ncollected. During the rollout, offer hands-on training\nand name key users who can answer questions on the\nspot. Once the new system is live, switch off the old\none and update the work instructions, otherwise staff\nwill quietly slide back into old habits.","points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -48539,7 +48540,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"„Das haben wir schon immer mit Listen gemacht, und es hat funktioniert.“","is_correct":true,"rationale":"Offener Widerspruch, also verbal und aktiv."},{"text":"„Können wir die Schulung auf zwei Termine legen, damit die Schicht besetzt bleibt?“","is_correct":false,"rationale":"Ein konstruktiver Vorschlag zur Umsetzung."},{"text":"„Das betrifft doch eher die Verwaltung, bei uns ist das nicht so wichtig.“","is_correct":true,"rationale":"Ausweichen und Bagatellisieren, also verbal und passiv."},{"text":"„Ich habe gehört, mit den Scannern sollen nur Stellen gestrichen werden.“","is_correct":true,"rationale":"Gerüchte und Unruhe: Aufregung."},{"text":"„Ich würde die Scanner gern im Pilot testen.“","is_correct":false,"rationale":"Bereitschaft zur Mitarbeit, kein Widerstand."},{"text":"Mehrere Beschäftigte schweigen die ganze Besprechung über und schauen auf ihr Handy.","is_correct":true,"rationale":"Lustlosigkeit und Rückzug, also nonverbal und passiv. Schweigen ist keine Zustimmung."}],"points":4}'::jsonb,
+  '{"choices":[{"text":"„Das haben wir schon immer mit Listen gemacht, und es hat funktioniert.“","is_correct":true,"rationale":"Offener Widerspruch, also verbal und aktiv."},{"text":"„Können wir die Schulung auf zwei Termine legen, damit die Schicht besetzt bleibt?“","is_correct":false,"rationale":"Ein konstruktiver Vorschlag zur Umsetzung."},{"text":"„Das betrifft doch eher die Verwaltung, bei uns ist das nicht so wichtig.“","is_correct":true,"rationale":"Ausweichen und Bagatellisieren, also verbal und passiv."},{"text":"„Ich habe gehört, mit den Scannern sollen nur Stellen gestrichen werden.“","is_correct":true,"rationale":"Gerüchte und Unruhe sind ein Zeichen von Aufregung."},{"text":"„Ich würde die Scanner gern im Pilot testen.“","is_correct":false,"rationale":"Bereitschaft zur Mitarbeit, kein Widerstand."},{"text":"Mehrere Beschäftigte schweigen die ganze Besprechung über und schauen auf ihr Handy.","is_correct":true,"rationale":"Lustlosigkeit und Rückzug, also nonverbal und passiv. Schweigen ist keine Zustimmung."}],"points":4}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -48709,11 +48710,11 @@ values (
   'marking',
   'In einem Kaizen-Workshop wird der Ablauf „neues Benutzerkonto anlegen“ Schritt für Schritt aufgeschrieben.',
   'Markiere alle Schritte, die Verschwendung (Muda) darstellen.',
-  'Verschwendung ist alles, was Aufwand kostet, aber keinen Wert für den Kunden schafft: Transport, Wartezeit, Doppelerfassung, Fehler und Nacharbeit. Würde der Portalantrag direkt digital freigegeben und übernommen, entfielen vier der sechs Schritte.',
+  'Verschwendung ist alles, was Aufwand kostet, aber keinen Wert für den Kunden schafft: Transport, Wartezeit, Doppelerfassung, Fehler und Nacharbeit. Würde der Portalantrag direkt digital freigegeben und übernommen, entfielen Ausdruck, Hauspost und Abtippen, und Wartezeit und Tippfehler würden seltener.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":"Die Fachabteilung füllt den Antrag im Portal aus.","is_correct":false,"rationale":"Notwendiger Schritt. Hier entsteht der Auftrag."},{"text":"Der Antrag wird ausgedruckt und per Hauspost zur IT gebracht.","is_correct":true,"rationale":"Unnötiger Transport und Medienbruch."},{"text":"Die IT tippt die Daten vom Ausdruck erneut ab.","is_correct":true,"rationale":"Doppelerfassung: Überbearbeitung."},{"text":"Der Antrag liegt drei Tage zur Unterschrift bei der Teamleitung.","is_correct":true,"rationale":"Wartezeit ohne Wertschöpfung."},{"text":"Die IT legt das Konto an und vergibt die Rechte laut Rollenprofil.","is_correct":false,"rationale":"Der eigentliche wertschöpfende Schritt."},{"text":"Wegen eines Tippfehlers im Namen muss das Konto neu angelegt werden.","is_correct":true,"rationale":"Fehler mit Nacharbeit."}],"points":4}'::jsonb,
+  '{"choices":[{"text":"Die Fachabteilung füllt den Antrag im Portal aus.","is_correct":false,"rationale":"Notwendiger Schritt, denn hier entsteht der Auftrag."},{"text":"Der Antrag wird ausgedruckt und per Hauspost zur IT gebracht.","is_correct":true,"rationale":"Unnötiger Transport und Medienbruch."},{"text":"Die IT tippt die Daten vom Ausdruck erneut ab.","is_correct":true,"rationale":"Doppelerfassung, also Überbearbeitung."},{"text":"Der Antrag liegt drei Tage zur Unterschrift bei der Teamleitung.","is_correct":true,"rationale":"Wartezeit ohne Wertschöpfung."},{"text":"Die IT legt das Konto an und vergibt die Rechte laut Rollenprofil.","is_correct":false,"rationale":"Der eigentliche wertschöpfende Schritt."},{"text":"Wegen eines Tippfehlers im Namen muss das Konto neu angelegt werden.","is_correct":true,"rationale":"Fehler mit Nacharbeit."}],"points":4}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -48738,7 +48739,7 @@ values (
   'open',
   null,
   'Die Erneuerung der Kanzlei-IT wird als Projekt geführt. Nenne vier Merkmale, die ein Projekt kennzeichnen.',
-  'Je Nennung 1 Punkt, höchstens 4 Punkte. Stichworte genügen; überzählige Nennungen werden nicht gewertet.',
+  'Für jede Nennung gibt es 1 Punkt, höchstens 4 Punkte. Stichworte genügen, überzählige Nennungen werden nicht gewertet.',
   1,
   '{}',
   null,
@@ -48767,11 +48768,11 @@ values (
   'cloze',
   'Das Projektziel soll SMART formuliert werden: „Bis 30.06. arbeiten alle 18 Beschäftigten an den neuen Arbeitsplätzen; die Kanzlei ist dabei höchstens zwei Arbeitstage nicht arbeitsfähig.“',
   'Ergänze die Bedeutung der vier Buchstaben (deutsche oder englische Begriffe).',
-  'SMART: spezifisch, messbar, attraktiv bzw. akzeptiert, realistisch, terminiert. Auch die englischen Begriffe (measurable, achievable, realistic bzw. relevant, time-bound) werden gewertet, 1 Punkt je Begriff.',
+  'SMART steht für spezifisch, messbar, attraktiv bzw. akzeptiert, realistisch und terminiert. Auch die englischen Begriffe (measurable, achievable, realistic bzw. relevant, time-bound) werden gewertet. Je Begriff gibt es 1 Punkt.',
   1,
   '{}',
   null,
-  '{"case_id":"f-a01p-systemhaus","points":4,"cloze_text":"S = spezifisch\nM = {0}\nA = {1}\nR = {2}\nT = {3}","gaps":[{"answers":["messbar","measurable"],"rationale":"Kennzahlen wie „18 Beschäftigte“ und „zwei Arbeitstage“."},{"answers":["attraktiv","akzeptiert","akzeptabel","aktiv beeinflussbar","anspruchsvoll","ausführbar","erreichbar","achievable","attainable","accepted","attractive"],"rationale":"Das Ziel wird von den Beteiligten mitgetragen."},{"answers":["realistisch","realistic","relevant","realisierbar","reasonable"],"rationale":"Mit den vorhandenen Mitteln erreichbar."},{"answers":["terminiert","terminierbar","termingebunden","terminlich festgelegt","time-bound","timely","timed"],"rationale":"Ein Datum wie „bis 30.06.“."}]}'::jsonb,
+  '{"case_id":"f-a01p-systemhaus","points":4,"cloze_text":"S = spezifisch\nM = {0}\nA = {1}\nR = {2}\nT = {3}","gaps":[{"answers":["messbar","measurable"],"rationale":"Kennzahlen wie „18 Beschäftigte“ und „zwei Arbeitstage“ machen das Ziel prüfbar."},{"answers":["attraktiv","akzeptiert","akzeptabel","aktiv beeinflussbar","anspruchsvoll","ausführbar","erreichbar","achievable","attainable","accepted","attractive"],"rationale":"Das Ziel wird von den Beteiligten mitgetragen."},{"answers":["realistisch","realistic","relevant","realisierbar","reasonable"],"rationale":"Das Ziel ist mit den vorhandenen Mitteln erreichbar."},{"answers":["terminiert","terminierbar","termingebunden","terminlich festgelegt","time-bound","timely","timed"],"rationale":"Ein Datum wie „bis 30.06.“ legt den Termin fest."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -48951,7 +48952,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a01p-handel","points":3,"criteria":[{"text":"Geschäftsführung: gibt Budget und Eröffnungstermin vor und entscheidet über Änderungen.","points":1,"keywords":["Geschäftsführung","Geschäftsleitung","Auftraggeber"]},{"text":"Filialleitung und Beschäftigte der Filiale: müssen mit Kassen und Systemen arbeiten. Ihre Akzeptanz und Schulung entscheiden über den Start.","points":1,"keywords":["Filialleitung","Mitarbeiter","Mitarbeitende","Beschäftigte","Verkäufer","Anwender"]},{"text":"Internetanbieter und Lieferanten (Möbel, Kassen): Ihre Liefertermine bestimmen den Zeitplan.","points":1,"keywords":["Provider","Internetanbieter","Lieferant","Ladenbauer","Dienstleister"]},{"text":"Vermieter des Ladenlokals: muss baulichen Änderungen wie der Verkabelung zustimmen.","points":1,"keywords":["Vermieter","Eigentümer","Hausverwaltung"]},{"text":"Fachabteilungen der Zentrale (Einkauf, Ladenbau, Buchhaltung): stellen Personal und Anforderungen.","points":1,"keywords":["Einkauf","Ladenbau","Buchhaltung","Fachabteilung","Zentrale"]},{"text":"Kundinnen und Kunden: erwarten eine pünktliche Eröffnung und funktionierende Kassen.","points":1,"keywords":["Kunden","Kundinnen","Käufer"]}],"sample_solution":"Geschäftsführung: gibt Budget und Eröffnungstermin vor. Filialleitung und Beschäftigte: müssen mit den Kassen arbeiten, ihre Akzeptanz und Schulung entscheiden über einen reibungslosen Start. Internetanbieter und Lieferanten: Ihre Liefertermine bestimmen den Zeitplan."}'::jsonb,
+  '{"case_id":"f-a01p-handel","points":3,"criteria":[{"text":"Geschäftsführung: gibt Budget und Eröffnungstermin vor und entscheidet über Änderungen.","points":1,"keywords":["Geschäftsführung","Geschäftsleitung","Auftraggeber"]},{"text":"Filialleitung und Beschäftigte der Filiale: müssen mit Kassen und Systemen arbeiten. Ihre Akzeptanz und Schulung entscheiden über den Start.","points":1,"keywords":["Filialleitung","Mitarbeiter","Mitarbeitende","Beschäftigte","Verkäufer","Anwender"]},{"text":"Internetanbieter und Lieferanten (Möbel, Kassen): Ihre Liefertermine bestimmen den Zeitplan.","points":1,"keywords":["Provider","Internetanbieter","Lieferant","Ladenbauer","Dienstleister"]},{"text":"Vermieter des Ladenlokals: muss baulichen Änderungen wie der Verkabelung zustimmen.","points":1,"keywords":["Vermieter","Eigentümer","Hausverwaltung"]},{"text":"Fachabteilungen der Zentrale (Einkauf, Ladenbau, Buchhaltung): stellen Personal und Anforderungen.","points":1,"keywords":["Einkauf","Ladenbau","Buchhaltung","Fachabteilung","Zentrale"]},{"text":"Kundinnen und Kunden: erwarten eine pünktliche Eröffnung und funktionierende Kassen.","points":1,"keywords":["Kunden","Kundinnen","Käufer"]}],"sample_solution":"Die Geschäftsführung gibt Budget und Eröffnungstermin vor. Filialleitung und Beschäftigte müssen mit den Kassen arbeiten, ihre Akzeptanz und Schulung entscheiden über einen reibungslosen Start. Die Liefertermine von Internetanbieter und Lieferanten bestimmen den Zeitplan."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -48974,13 +48975,13 @@ values (
   'netzplan',
   'n-rueckwaerts',
   'marking',
-  'Vorgangsliste der Filialeröffnung (Dauer in Arbeitstagen) und der Netzplan des Kollegen. In drei Vorgängen stehen falsche Werte.',
+  'Du siehst die Vorgangsliste der Filialeröffnung (Dauer in Arbeitstagen) und den Netzplan des Kollegen. Bei drei Vorgängen stehen falsche Werte.',
   'Rechne den Netzplan nach und markiere die drei Vorgänge mit fehlerhaften Werten.',
   'Fehlerhaft sind C (SAZ), D (GP) und E (FAZ und FEZ). Bei E wurde der kleinere statt des größeren FEZ der Vorgänger übernommen. Je gefundenem Vorgang 1 Punkt.',
   3,
   '{}',
   null,
-  '{"choices":[{"text":"Vorgang A","is_correct":false,"rationale":"Startvorgang: 0/3, rückwärts 0/3, GP 0, also richtig."},{"text":"Vorgang B","is_correct":false,"rationale":"3/13, rückwärts 3/13, GP 0, also richtig."},{"text":"Vorgang C","is_correct":true,"rationale":"SEZ = SAZ von E = 12 stimmt, aber SAZ = 12 - 6 = 6, nicht 5."},{"text":"Vorgang D","is_correct":true,"rationale":"GP = SAZ - FAZ = 8 - 3 = 5, nicht 4."},{"text":"Vorgang E","is_correct":true,"rationale":"FAZ = max(FEZ C 9; FEZ D 7) = 9, nicht 7; FEZ = 9 + 3 = 12."},{"text":"Vorgang F","is_correct":false,"rationale":"FAZ = max(FEZ B 13; FEZ D 7) = 13, FEZ 15, GP 0, also richtig."},{"text":"Vorgang G","is_correct":false,"rationale":"FAZ = max(FEZ E 12; FEZ F 15) = 15, FEZ 17, also richtig."}],"table":[["Nr.","Vorgang","Dauer","Vorgänger"],["A","Filialplanung abschließen","3","-"],["B","Internetanschluss bereitstellen","10","A"],["C","Ladenmöbel liefern und aufbauen","6","A"],["D","Netzwerk verkabeln","4","A"],["E","Kassen und PCs installieren","3","C, D"],["F","Anbindung an die Zentrale einrichten","2","B, D"],["G","Gesamttest und Schulung","2","E, F"]],"code":"Netzplan des Kollegen (Tage, Start bei 0)\nGP = SAZ - FAZ\n\nVg  D  Vorg.  FAZ FEZ  SAZ SEZ  GP\nA   3  -        0   3    0   3   0\nB  10  A        3  13    3  13   0\nC   6  A        3   9    5  12   3\nD   4  A        3   7    8  12   4\nE   3  C, D     7  10   12  15   3\nF   2  B, D    13  15   13  15   0\nG   2  E, F    15  17   15  17   0","case_id":"f-a01p-handel","points":3}'::jsonb,
+  '{"choices":[{"text":"Vorgang A","is_correct":false,"rationale":"Startvorgang: 0/3, rückwärts 0/3, GP 0, also richtig."},{"text":"Vorgang B","is_correct":false,"rationale":"3/13, rückwärts 3/13, GP 0, also richtig."},{"text":"Vorgang C","is_correct":true,"rationale":"SEZ = SAZ von E = 12 stimmt, aber SAZ = 12 - 6 = 6, nicht 5."},{"text":"Vorgang D","is_correct":true,"rationale":"GP = SAZ - FAZ = 8 - 3 = 5, nicht 4."},{"text":"Vorgang E","is_correct":true,"rationale":"FAZ = max(FEZ C 9; FEZ D 7) = 9, nicht 7. Damit ist FEZ = 9 + 3 = 12."},{"text":"Vorgang F","is_correct":false,"rationale":"FAZ = max(FEZ B 13; FEZ D 7) = 13, FEZ 15, GP 0, also richtig."},{"text":"Vorgang G","is_correct":false,"rationale":"FAZ = max(FEZ E 12; FEZ F 15) = 15, FEZ 17, also richtig."}],"table":[["Nr.","Vorgang","Dauer","Vorgänger"],["A","Filialplanung abschließen","3","-"],["B","Internetanschluss bereitstellen","10","A"],["C","Ladenmöbel liefern und aufbauen","6","A"],["D","Netzwerk verkabeln","4","A"],["E","Kassen und PCs installieren","3","C, D"],["F","Anbindung an die Zentrale einrichten","2","B, D"],["G","Gesamttest und Schulung","2","E, F"]],"code":"Netzplan des Kollegen (Tage, Start bei 0)\nGP = SAZ - FAZ\n\nVg  D  Vorg.  FAZ FEZ  SAZ SEZ  GP\nA   3  -        0   3    0   3   0\nB  10  A        3  13    3  13   0\nC   6  A        3   9    5  12   3\nD   4  A        3   7    8  12   4\nE   3  C, D     7  10   12  15   3\nF   2  B, D    13  15   13  15   0\nG   2  E, F    15  17   15  17   0","case_id":"f-a01p-handel","points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -49011,7 +49012,7 @@ GP: C 3, D 5, E 3, alle anderen 0.',
   3,
   '{}',
   null,
-  '{"table":[["Nr.","Vorgang","Dauer","Vorgänger"],["A","Filialplanung abschließen","3","-"],["B","Internetanschluss bereitstellen","10","A"],["C","Ladenmöbel liefern und aufbauen","6","A"],["D","Netzwerk verkabeln","4","A"],["E","Kassen und PCs installieren","3","C, D"],["F","Anbindung an die Zentrale einrichten","2","B, D"],["G","Gesamttest und Schulung","2","E, F"]],"code":"Netzplan des Kollegen (Tage, Start bei 0)\nGP = SAZ - FAZ\n\nVg  D  Vorg.  FAZ FEZ  SAZ SEZ  GP\nA   3  -        0   3    0   3   0\nB  10  A        3  13    3  13   0\nC   6  A        3   9    5  12   3\nD   4  A        3   7    8  12   4\nE   3  C, D     7  10   12  15   3\nF   2  B, D    13  15   13  15   0\nG   2  E, F    15  17   15  17   0","case_id":"f-a01p-handel","points":4,"cloze_text":"Vorgang C: SAZ = {0}\nVorgang D: GP = {1}\nVorgang E: FAZ = {2}, FEZ = {3}\nVorgang F: SAZ = {4}","gaps":[{"answers":["6"],"numeric":true,"rationale":"SEZ 12 - Dauer 6 = 6"},{"answers":["5"],"numeric":true,"rationale":"SAZ 8 - FAZ 3 = 5"},{"answers":["9"],"numeric":true,"rationale":"max(FEZ C 9; FEZ D 7) = 9"},{"answers":["12"],"numeric":true,"rationale":"9 + 3 = 12"},{"answers":["13"],"numeric":true,"rationale":"SEZ 15 - Dauer 2 = 13: Der Wert des Kollegen stimmt."}]}'::jsonb,
+  '{"table":[["Nr.","Vorgang","Dauer","Vorgänger"],["A","Filialplanung abschließen","3","-"],["B","Internetanschluss bereitstellen","10","A"],["C","Ladenmöbel liefern und aufbauen","6","A"],["D","Netzwerk verkabeln","4","A"],["E","Kassen und PCs installieren","3","C, D"],["F","Anbindung an die Zentrale einrichten","2","B, D"],["G","Gesamttest und Schulung","2","E, F"]],"code":"Netzplan des Kollegen (Tage, Start bei 0)\nGP = SAZ - FAZ\n\nVg  D  Vorg.  FAZ FEZ  SAZ SEZ  GP\nA   3  -        0   3    0   3   0\nB  10  A        3  13    3  13   0\nC   6  A        3   9    5  12   3\nD   4  A        3   7    8  12   4\nE   3  C, D     7  10   12  15   3\nF   2  B, D    13  15   13  15   0\nG   2  E, F    15  17   15  17   0","case_id":"f-a01p-handel","points":4,"cloze_text":"Vorgang C: SAZ = {0}\nVorgang D: GP = {1}\nVorgang E: FAZ = {2}, FEZ = {3}\nVorgang F: SAZ = {4}","gaps":[{"answers":["6"],"numeric":true,"rationale":"SEZ 12 - Dauer 6 = 6"},{"answers":["5"],"numeric":true,"rationale":"SAZ 8 - FAZ 3 = 5"},{"answers":["9"],"numeric":true,"rationale":"max(FEZ C 9; FEZ D 7) = 9"},{"answers":["12"],"numeric":true,"rationale":"9 + 3 = 12"},{"answers":["13"],"numeric":true,"rationale":"SEZ 15 - Dauer 2 = 13, der Wert des Kollegen stimmt also."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -49036,7 +49037,7 @@ values (
   'cloze',
   null,
   'Werte den berichtigten Netzplan aus.',
-  'Der längste Weg ist A - B - F - G mit 3 + 10 + 2 + 2 = 17 Arbeitstagen; seine Vorgänge haben den Gesamtpuffer 0. A - C - E - G dauert 14, A - D - E - G 12 und A - D - F - G 11 Tage. D hat mit 5 Tagen den größten Gesamtpuffer.',
+  'Der längste Weg ist A - B - F - G mit 3 + 10 + 2 + 2 = 17 Arbeitstagen. Seine Vorgänge haben den Gesamtpuffer 0. A - C - E - G dauert 14, A - D - E - G 12 und A - D - F - G 11 Tage. D hat mit 5 Tagen den größten Gesamtpuffer.',
   2,
   '{}',
   null,
@@ -49129,7 +49130,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a01p-agentur","points":5,"criteria":[{"text":"Vorgehensmodell: Scrum","points":1,"keywords":["Scrum","agil"]},{"text":"Die Anforderungen sind erst grob bekannt und werden sich ändern; ein vollständiges Pflichtenheft ist vorab nicht möglich.","points":2,"keywords":["unklar","grob","ändern","Anforderungen","nicht fest"]},{"text":"Die Pilotkunden geben alle zwei Wochen Rückmeldung. Das passt zu Sprints mit Sprint Review.","points":2,"keywords":["Rückmeldung","Feedback","Pilotkunden","Sprint Review","alle zwei Wochen"]},{"text":"Erste Funktionen sollen früh nutzbar sein: Jeder Sprint liefert ein nutzbares Increment.","points":2,"keywords":["früh","Increment","Inkrement","Teilergebnis","nutzbar"]},{"text":"Festes Monatsbudget bei offenem Umfang: In Scrum stehen Zeit und Kosten fest, der Umfang ergibt sich.","points":2,"keywords":["Budget","Umfang offen","Umfang variabel","Kosten fest"]}],"sample_solution":"Scrum. Die Anforderungen sind erst grob bekannt und werden sich mit den Rückmeldungen ändern. Ein vollständiges Pflichtenheft ließe sich nicht schreiben. Die Pilotkunden können alle zwei Wochen Rückmeldung geben, was zu zweiwöchigen Sprints mit Sprint Review passt. Zudem entsteht nach jedem Sprint ein nutzbares Increment."}'::jsonb,
+  '{"case_id":"f-a01p-agentur","points":5,"criteria":[{"text":"Vorgehensmodell: Scrum","points":1,"keywords":["Scrum","agil"]},{"text":"Die Anforderungen sind erst grob bekannt und werden sich ändern; ein vollständiges Pflichtenheft ist vorab nicht möglich.","points":2,"keywords":["unklar","grob","ändern","Anforderungen","nicht fest"]},{"text":"Die Pilotkunden geben alle zwei Wochen Rückmeldung. Das passt zu Sprints mit Sprint Review.","points":2,"keywords":["Rückmeldung","Feedback","Pilotkunden","Sprint Review","alle zwei Wochen"]},{"text":"Erste Funktionen sollen früh nutzbar sein: Jeder Sprint liefert ein nutzbares Increment.","points":2,"keywords":["früh","Increment","Inkrement","Teilergebnis","nutzbar"]},{"text":"Festes Monatsbudget bei offenem Umfang: In Scrum stehen Zeit und Kosten fest, der Umfang ergibt sich.","points":2,"keywords":["Budget","Umfang offen","Umfang variabel","Kosten fest"]}],"sample_solution":"Scrum passt besser. Die Anforderungen sind erst grob bekannt und werden sich mit den Rückmeldungen ändern, ein vollständiges Pflichtenheft ließe sich vorab nicht schreiben. Die Pilotkunden können alle zwei Wochen Rückmeldung geben, was zu zweiwöchigen Sprints mit Sprint Review passt. Zudem entsteht nach jedem Sprint ein nutzbares Increment."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -49154,7 +49155,7 @@ values (
   'table',
   'Das Team arbeitet mit einem Freelancer aus Dublin zusammen und hält seine Regeln deshalb auf Englisch fest:',
   'Ordne jedem Absatz das beschriebene Scrum-Event zu.',
-  'Absatz 1: tägliche Abstimmung der Developers über die nächsten 24 Stunden: Daily Scrum. Absatz 2: Increment zeigen, Feedback der Kunden: Sprint Review. Absatz 3: Zusammenarbeit verbessern, nur das Team: Retrospektive. Absatz 4: Sprintziel (sprint goal) und Auswahl der Einträge: Sprint Planning.',
+  'Absatz 1 beschreibt die tägliche Abstimmung der Developers über die nächsten 24 Stunden, also das Daily Scrum. In Absatz 2 zeigt das Team das Increment und holt Feedback der Kunden ein (Sprint Review). In Absatz 3 bespricht das Team unter sich, wie es besser zusammenarbeitet (Sprint Retrospective). Absatz 4 nennt das Sprintziel (sprint goal) und die Auswahl der Einträge, also das Sprint Planning.',
   2,
   '{}',
   null,
@@ -49272,7 +49273,7 @@ values (
   'open',
   'Ein Pilotkunde sagt im Sprint Review: „Unsere Sachbearbeiter wollen im Portal sehen, wie weit ihre Anfrage ist. Dann müssen sie nicht mehr bei euch anrufen.“',
   'Formuliere daraus eine User Story nach dem üblichen Muster.',
-  'Je Bestandteil 1 Punkt: Rolle, Ziel, Nutzen. Muster: „Als <Rolle> möchte ich <Ziel>, damit <Nutzen>“.',
+  'Für jeden Bestandteil (Rolle, Ziel, Nutzen) gibt es 1 Punkt. Das Muster lautet: „Als <Rolle> möchte ich <Ziel>, damit <Nutzen>“.',
   2,
   '{}',
   null,
@@ -49301,11 +49302,11 @@ values (
   'open',
   null,
   'Nenne drei Vorteile, die kurze Sprints mit einem Sprint Review für die Agentur und ihre Pilotkunden haben.',
-  'Je Nennung 1 Punkt, höchstens 3 Punkte. „Scrum ist schneller“ ist kein gültiger Vorteil. Scrum ist flexibler, nicht automatisch schneller.',
+  'Je Nennung 1 Punkt, höchstens 3 Punkte. „Scrum ist schneller“ zählt nicht als Vorteil, denn Scrum ist flexibler, aber nicht automatisch schneller.',
   2,
   '{}',
   null,
-  '{"case_id":"f-a01p-agentur","points":3,"criteria":[{"text":"Frühe Rückmeldung: Fehlentwicklungen werden nach spätestens einem Sprint erkannt.","points":1,"keywords":["Rückmeldung","Feedback","Fehlentwicklung","früh erkannt"]},{"text":"Früh nutzbare Teilergebnisse: Nach jedem Sprint liegt ein Increment vor.","points":1,"keywords":["Increment","Inkrement","Teilergebnis","früh nutzbar","nutzbar"]},{"text":"Änderungswünsche lassen sich im nächsten Sprint berücksichtigen.","points":1,"keywords":["Änderungen","Änderungswünsche","flexibel","anpassen","neu priorisieren"]},{"text":"Der Fortschritt ist für alle sichtbar (Transparenz).","points":1,"keywords":["Transparenz","transparent","Fortschritt","sichtbar"]},{"text":"Geringeres Risiko, am Bedarf vorbeizuentwickeln; höhere Zufriedenheit der Kunden.","points":1,"keywords":["Risiko","Zufriedenheit","Akzeptanz","Bedarf"]}],"sample_solution":"Die Pilotkunden geben früh Rückmeldung, sodass Fehlentwicklungen nach spätestens einem Sprint auffallen. Nach jedem Sprint liegt ein nutzbares Teilergebnis vor. Änderungswünsche können schon im nächsten Sprint berücksichtigt werden; außerdem ist der Fortschritt für alle sichtbar."}'::jsonb,
+  '{"case_id":"f-a01p-agentur","points":3,"criteria":[{"text":"Frühe Rückmeldung: Fehlentwicklungen werden nach spätestens einem Sprint erkannt.","points":1,"keywords":["Rückmeldung","Feedback","Fehlentwicklung","früh erkannt"]},{"text":"Früh nutzbare Teilergebnisse: Nach jedem Sprint liegt ein Increment vor.","points":1,"keywords":["Increment","Inkrement","Teilergebnis","früh nutzbar","nutzbar"]},{"text":"Änderungswünsche lassen sich im nächsten Sprint berücksichtigen.","points":1,"keywords":["Änderungen","Änderungswünsche","flexibel","anpassen","neu priorisieren"]},{"text":"Der Fortschritt ist für alle sichtbar (Transparenz).","points":1,"keywords":["Transparenz","transparent","Fortschritt","sichtbar"]},{"text":"Geringeres Risiko, am Bedarf vorbeizuentwickeln; höhere Zufriedenheit der Kunden.","points":1,"keywords":["Risiko","Zufriedenheit","Akzeptanz","Bedarf"]}],"sample_solution":"Die Pilotkunden geben früh Rückmeldung, sodass Fehlentwicklungen nach spätestens einem Sprint auffallen. Nach jedem Sprint liegt ein nutzbares Teilergebnis vor. Änderungswünsche lassen sich schon im nächsten Sprint berücksichtigen. Außerdem ist der Fortschritt für alle sichtbar."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -49334,7 +49335,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a01p-logistik","points":4,"criteria":[{"text":"Nicht messbar: „gutes WLAN“ ist keine Kennzahl; es fehlt ein prüfbarer Wert, z. B. Signalstärke von mindestens -67 dBm an allen Regalplätzen.","points":2,"keywords":["messbar","Kennzahl","Messgröße","messen","nicht prüfbar"]},{"text":"Nicht terminiert: „möglichst schnell“ ist kein Datum; es fehlt ein Endtermin.","points":2,"keywords":["terminiert","Termin","Datum","Zeitpunkt","Frist","möglichst schnell"]},{"text":"Nicht spezifisch: Es bleibt offen, was genau geliefert wird (Glasfaseranbindung, Zahl der Access Points, Zahl der Scanner).","points":2,"keywords":["spezifisch","ungenau","unklar","konkret","eindeutig"]}],"sample_solution":"Das Ziel ist nicht messbar: „Gutes WLAN“ lässt sich nicht prüfen, es fehlt eine Kennzahl wie eine Mindest-Signalstärke an allen Regalplätzen. Es ist nicht terminiert: „Möglichst schnell“ nennt kein Datum. SMART wäre etwa: „Bis 30.09. ist die Halle per Glasfaser angebunden; alle 40 Handscanner buchen an jedem Regalplatz ohne Verbindungsabbruch.“"}'::jsonb,
+  '{"case_id":"f-a01p-logistik","points":4,"criteria":[{"text":"Nicht messbar: „gutes WLAN“ ist keine Kennzahl; es fehlt ein prüfbarer Wert, z. B. Signalstärke von mindestens -67 dBm an allen Regalplätzen.","points":2,"keywords":["messbar","Kennzahl","Messgröße","messen","nicht prüfbar"]},{"text":"Nicht terminiert: „möglichst schnell“ ist kein Datum; es fehlt ein Endtermin.","points":2,"keywords":["terminiert","Termin","Datum","Zeitpunkt","Frist","möglichst schnell"]},{"text":"Nicht spezifisch: Es bleibt offen, was genau geliefert wird (Glasfaseranbindung, Zahl der Access Points, Zahl der Scanner).","points":2,"keywords":["spezifisch","ungenau","unklar","konkret","eindeutig"]}],"sample_solution":"Das Ziel ist nicht messbar: „Gutes WLAN“ lässt sich nicht prüfen, es fehlt eine Kennzahl wie eine Mindest-Signalstärke an allen Regalplätzen. Es ist außerdem nicht terminiert, denn „möglichst schnell“ nennt kein Datum. SMART wäre etwa: „Bis 30.09. ist die Halle per Glasfaser angebunden; alle 40 Handscanner buchen an jedem Regalplatz ohne Verbindungsabbruch.“"}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -49392,7 +49393,7 @@ values (
   'cloze',
   null,
   'Werte deinen Netzplan aus.',
-  'Kritisch sind die Vorgänge mit Gesamtpuffer 0: A, B, D, F und G. Der Weg A - B - D - F - G dauert 2 + 8 + 3 + 2 + 1 = 16 Arbeitstage; A - C - E - F - G nur 14.',
+  'Kritisch sind die Vorgänge mit Gesamtpuffer 0: A, B, D, F und G. Der Weg A - B - D - F - G dauert 2 + 8 + 3 + 2 + 1 = 16 Arbeitstage, der Weg A - C - E - F - G nur 14.',
   2,
   '{}',
   null,
@@ -49454,7 +49455,7 @@ values (
 - Lagerpersonal der drei Schichten: arbeitet täglich mit den Scannern, entscheidet aber nichts
 - Pächter der Kantine: von der neuen Halle nicht betroffen',
   'Wähle für jede Gruppe die passende Strategie.',
-  'Stakeholder-Matrix: hoher Einfluss und hohes Interesse → eng einbinden; hoher Einfluss, geringes Interesse → zufriedenstellen; geringer Einfluss, hohes Interesse → informieren; beides gering → beobachten.',
+  'Die Stakeholder-Matrix gibt die Strategie vor: Wer viel Einfluss und großes Interesse hat, wird eng eingebunden. Bei hohem Einfluss und geringem Interesse stellst du zufrieden, bei geringem Einfluss und hohem Interesse informierst du. Ist beides gering, genügt es zu beobachten.',
   2,
   '{}',
   null,
@@ -49483,7 +49484,7 @@ values (
   'table',
   null,
   'Ordne jede Tätigkeit des Projekts der Projektphase nach DIN 69901 zu.',
-  'Initialisierung: Projektauftrag. Definition: Ziele und Anforderungen. Planung: Struktur-, Ablauf- und Terminplan, hier der Netzplan. Steuerung: Soll-Ist-Vergleich und Statusberichte. Abschluss: Abnahme, Abschlussbericht, Lessons Learned.',
+  'In der Initialisierung entsteht der Projektauftrag, in der Definition werden Ziele und Anforderungen festgelegt. Zur Planung gehören Struktur-, Ablauf- und Terminplan, hier also der Netzplan. Die Steuerung arbeitet mit Soll-Ist-Vergleich und Statusberichten. Der Abschluss umfasst Abnahme, Abschlussbericht und Lessons Learned.',
   1,
   '{}',
   null,
@@ -49512,8 +49513,8 @@ values (
   'table',
   null,
   'Die Kanzlei entscheidet nach Scantempo, Einzug, Wartungskosten und Preis. Je Kriterium erhält das beste Gerät 3 Punkte, das schlechteste 1 Punkt. Vervollständige die Entscheidungsmatrix und bilde die Summen. (6 P.)',
-  'Einzug: 100 Blatt ist am besten (3), 80 Blatt (2), 50 Blatt (1). Bei Wartung und Preis ist der kleinste Wert der beste: Aktiv 3000 erhält je 3 Punkte, DocuJet S je 1 Punkt.
-Summen: ScanPro 40 2 + 1 + 2 + 2 = 7, DocuJet S 3 + 3 + 1 + 1 = 8, Aktiv 3000 1 + 2 + 3 + 3 = 9.
+  'Beim Einzug sind 100 Blatt am besten (3 Punkte), es folgen 80 Blatt (2) und 50 Blatt (1). Bei Wartung und Preis ist der kleinste Wert der beste: Aktiv 3000 erhält je 3 Punkte, DocuJet S je 1 Punkt.
+Summen: ScanPro 40: 2 + 1 + 2 + 2 = 7, DocuJet S: 3 + 3 + 1 + 1 = 8, Aktiv 3000: 1 + 2 + 3 + 3 = 9.
 Auflösung und Schnittstellen stehen in der Datentabelle, gehören aber nicht zu den vier Kriterien.',
   2,
   '{}',
@@ -49605,11 +49606,11 @@ values (
   'open',
   'Der Scanner wird ins Kanzleinetz eingebunden und verschickt Scans per E-Mail. Das Handbuch enthält Hinweise zur sicheren Einrichtung.',
   'Nenne vier Sicherheitsmaßnahmen, die der Hersteller empfiehlt. (4 P.)',
-  'Im Text stehen fünf Maßnahmen, vier werden verlangt, also je Nennung 1 Punkt. Geantwortet wird auf Deutsch, Stichworte genügen.',
+  'Im Text stehen fünf Maßnahmen, verlangt sind vier. Jede Nennung bringt 1 Punkt. Du antwortest auf Deutsch, Stichworte genügen.',
   2,
   '{}',
   null,
-  '{"code":"SECURE SETUP\nBefore first use, change the default\nadministrator password. Enable encrypted\ntransmission (TLS) for scan-to-e-mail.\nRestrict scan-to-folder destinations to\napproved network shares. Install firmware\nupdates as soon as they are released.\nActivate automatic deletion of scanned\nimages from the internal memory after\neach job.","case_id":"f-a01w-systemhaus","points":4,"criteria":[{"text":"Das Standard-Administratorpasswort vor der ersten Nutzung ändern","points":1,"keywords":["Passwort","Kennwort","Standardpasswort"]},{"text":"Verschlüsselte Übertragung (TLS) für Scan-to-E-Mail aktivieren","points":1,"keywords":["verschlüsselt","Verschlüsselung","TLS"]},{"text":"Scan-Ziele auf freigegebene Netzlaufwerke beschränken","points":1,"keywords":["Netzlaufwerk","Freigaben","Ordner","Ziele beschränken","einschränken"]},{"text":"Firmware-Updates sofort nach Erscheinen installieren","points":1,"keywords":["Firmware","Update","Aktualisierung"]},{"text":"Scans nach jedem Auftrag automatisch aus dem internen Speicher löschen","points":1,"keywords":["löschen","Löschung","interner Speicher"]}],"sample_solution":"Standardpasswort des Administrators ändern, verschlüsselte Übertragung (TLS) für Scan-to-E-Mail einschalten, Scan-Ziele auf freigegebene Netzlaufwerke beschränken, Firmware-Updates zeitnah einspielen. Außerdem: Scans nach jedem Auftrag automatisch aus dem Gerätespeicher löschen."}'::jsonb,
+  '{"code":"SECURE SETUP\nBefore first use, change the default\nadministrator password. Enable encrypted\ntransmission (TLS) for scan-to-e-mail.\nRestrict scan-to-folder destinations to\napproved network shares. Install firmware\nupdates as soon as they are released.\nActivate automatic deletion of scanned\nimages from the internal memory after\neach job.","case_id":"f-a01w-systemhaus","points":4,"criteria":[{"text":"Das Standard-Administratorpasswort vor der ersten Nutzung ändern","points":1,"keywords":["Passwort","Kennwort","Standardpasswort"]},{"text":"Verschlüsselte Übertragung (TLS) für Scan-to-E-Mail aktivieren","points":1,"keywords":["verschlüsselt","Verschlüsselung","TLS"]},{"text":"Scan-Ziele auf freigegebene Netzlaufwerke beschränken","points":1,"keywords":["Netzlaufwerk","Freigaben","Ordner","Ziele beschränken","einschränken"]},{"text":"Firmware-Updates sofort nach Erscheinen installieren","points":1,"keywords":["Firmware","Update","Aktualisierung"]},{"text":"Scans nach jedem Auftrag automatisch aus dem internen Speicher löschen","points":1,"keywords":["löschen","Löschung","interner Speicher"]}],"sample_solution":"Standardpasswort des Administrators ändern, verschlüsselte Übertragung (TLS) für Scan-to-E-Mail einschalten, Scan-Ziele auf freigegebene Netzlaufwerke beschränken, Firmware-Updates zeitnah einspielen. Außerdem sollten Scans nach jedem Auftrag automatisch aus dem Gerätespeicher gelöscht werden."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -49634,11 +49635,11 @@ values (
   'open',
   null,
   'Erläutere einen Nachteil einer Entscheidungsmatrix, die ohne Gewichtung arbeitet. (3 P.)',
-  'Nachteil 2 Punkte, Folge 1 Punkt. Im Beispiel gewinnt das langsamste Gerät, weil Preis und Wartung genauso viel zählen wie das Scantempo.',
+  'Der Nachteil bringt 2 Punkte, die Folge 1 Punkt. Im Beispiel gewinnt das langsamste Gerät, weil Preis und Wartung genauso viel zählen wie das Scantempo.',
   2,
   '{}',
   null,
-  '{"case_id":"f-a01w-systemhaus","points":3,"criteria":[{"text":"Alle Kriterien zählen gleich viel, obwohl sie für die Kanzlei unterschiedlich wichtig sein können.","points":2,"keywords":["gleich wichtig","gleich viel","gleich gewichtet","Gewichtung fehlt","unterschiedlich wichtig"]},{"text":"Die Größe der Unterschiede geht verloren: Ein knapper und ein deutlicher Vorsprung geben dieselben Punkte.","points":2,"keywords":["Abstand","Abstände","knapp","wie groß","Unterschied"]},{"text":"Folge: Die Entscheidung kann am tatsächlichen Bedarf vorbeigehen.","points":1,"keywords":["Bedarf","falsche Entscheidung","anderes Ergebnis","verfälscht"]}],"sample_solution":"Ohne Gewichtung zählt jedes Kriterium gleich viel. Ist der Kanzlei zum Beispiel das Scantempo viel wichtiger als der Preis, bildet die Matrix das nicht ab. Die Entscheidung kann deshalb am tatsächlichen Bedarf vorbeigehen."}'::jsonb,
+  '{"case_id":"f-a01w-systemhaus","points":3,"criteria":[{"text":"Alle Kriterien zählen gleich viel, obwohl sie für die Kanzlei unterschiedlich wichtig sein können.","points":2,"keywords":["gleich wichtig","gleich viel","gleich gewichtet","Gewichtung fehlt","unterschiedlich wichtig"]},{"text":"Die Größe der Unterschiede geht verloren: Ein knapper und ein deutlicher Vorsprung geben dieselben Punkte.","points":2,"keywords":["Abstand","Abstände","knapp","wie groß","Unterschied"]},{"text":"Dadurch kann die Entscheidung am tatsächlichen Bedarf vorbeigehen.","points":1,"keywords":["Bedarf","falsche Entscheidung","anderes Ergebnis","verfälscht"]}],"sample_solution":"Ohne Gewichtung zählt jedes Kriterium gleich viel. Ist der Kanzlei zum Beispiel das Scantempo viel wichtiger als der Preis, bildet die Matrix das nicht ab. Die Entscheidung kann deshalb am tatsächlichen Bedarf vorbeigehen."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -49664,7 +49665,7 @@ values (
   'Die Rechnung für den Aktiv 3000 lautet über 864,00 € netto zuzüglich 19 % Umsatzsteuer. Zahlungsbedingung: 2 % Skonto bei Zahlung innerhalb von 10 Tagen.',
   'Berechne den Überweisungsbetrag bei Zahlung mit Skonto (kaufmännisch auf zwei Nachkommastellen). (3 P.)',
   'Umsatzsteuer: 864 € × 0,19 = 164,16 €, brutto 1.028,16 €
-Skonto: 1.028,16 € × 0,02 = 20,5632 €, gerundet 20,56 €; Basis ist der Bruttobetrag
+Skonto: 1.028,16 € × 0,02 = 20,5632 €, gerundet 20,56 € (Basis ist der Bruttobetrag)
 Überweisung: 1.028,16 € - 20,56 € = 1.007,60 €',
   2,
   '{}',
@@ -49694,7 +49695,7 @@ values (
   'open',
   null,
   'Beschreibe zwei Risiken bei Beschaffung oder Einführung des Scanners und je eine passende Gegenmaßnahme. (4 P.)',
-  'Je Risiko mit Maßnahme 2 Punkte, höchstens 4. Andere sinnvolle Risiken sind möglich. Entscheidend ist, dass die Maßnahme zum Risiko passt.',
+  'Jedes Risiko mit Maßnahme bringt 2 Punkte, höchstens 4. Andere sinnvolle Risiken sind möglich. Entscheidend ist, dass die Maßnahme zum Risiko passt.',
   2,
   '{}',
   null,
@@ -49754,7 +49755,7 @@ values (
   'open',
   null,
   'Nenne drei Gründe, aus denen sich ein Unternehmen für einen teureren Lieferanten entscheiden kann. (3 P.)',
-  'Je Nennung 1 Punkt, höchstens 3. Der Bezugspreis ist nur der quantitative Teil des Angebotsvergleichs. Qualitative Kriterien können ihn überstimmen.',
+  'Jede Nennung bringt 1 Punkt, höchstens 3. Der Bezugspreis ist nur der quantitative Teil des Angebotsvergleichs. Qualitative Kriterien können ihn überstimmen.',
   2,
   '{}',
   null,
@@ -49783,7 +49784,7 @@ values (
   'open',
   'Alternativ bietet die Hausbank Leasing an: 20 Notebooks für 27,50 € je Gerät und Monat, Laufzeit 36 Monate, mit Kaufoption am Vertragsende.',
   'Beschreibe das Grundprinzip des Leasings und erkläre, wer während der Laufzeit Eigentümer und wer Besitzer der Notebooks ist. (4 P.)',
-  'Grundprinzip 2 Punkte, Eigentümer und Besitzer je 1 Punkt. Eigentum ist die rechtliche Herrschaft über die Sache, Besitz die tatsächliche.',
+  'Das Grundprinzip bringt 2 Punkte, Eigentümer und Besitzer je 1 Punkt. Eigentum ist die rechtliche Herrschaft über die Sache, Besitz die tatsächliche.',
   2,
   '{}',
   null,
@@ -49815,7 +49816,7 @@ values (
   'Leasing: 20 × 27,50 € × 36 Monate = 19.800,00 €
 Kauf: 16.903,04 € (Bürowelt24)
 Mehrkosten des Leasings: 19.800,00 € - 16.903,04 € = 2.896,96 €
-Mit dem Ersatzwert 16.900,00 € ergeben sich 2.900,00 €; auch das wird gewertet.',
+Mit dem Ersatzwert 16.900,00 € ergeben sich 2.900,00 €. Auch dieses Ergebnis wird gewertet.',
   2,
   '{}',
   null,
@@ -49844,11 +49845,11 @@ values (
   'open',
   null,
   'Nenne drei Vorteile, die das Leasing für Grünwerk trotz der höheren Gesamtkosten hat. (3 P.)',
-  'Je Nennung 1 Punkt, höchstens 3. Dem stehen die höheren Gesamtkosten und die feste Bindung über die Laufzeit gegenüber.',
+  'Jede Nennung bringt 1 Punkt, höchstens 3. Dem stehen die höheren Gesamtkosten und die feste Bindung über die Laufzeit gegenüber.',
   2,
   '{}',
   null,
-  '{"case_id":"f-a01w-handel","points":3,"criteria":[{"text":"Die Liquidität bleibt erhalten: keine hohe Anfangsinvestition","points":1,"keywords":["Liquidität","Anfangsinvestition","kein Kapital","Eigenkapital","flüssige Mittel"]},{"text":"Gleichbleibende, planbare monatliche Raten","points":1,"keywords":["planbar","kalkulierbar","gleichbleibend","feste Raten"]},{"text":"Nach der Laufzeit können aktuelle Geräte geleast werden","points":1,"keywords":["aktuelle Geräte","neue Geräte","Technikwechsel","modern","austauschen"]},{"text":"Der Kreditspielraum bei der Bank wird geschont","points":1,"keywords":["Kreditspielraum","Kreditlinie","Kredit"]},{"text":"Die Raten sind als Betriebsausgaben absetzbar","points":1,"keywords":["Betriebsausgabe","steuerlich","absetzbar"]}],"sample_solution":"Die Liquidität bleibt erhalten, weil keine hohe Anfangsinvestition anfällt. Die monatlichen Raten sind gleichbleibend und gut planbar. Nach 36 Monaten können aktuelle Geräte geleast werden."}'::jsonb,
+  '{"case_id":"f-a01w-handel","points":3,"criteria":[{"text":"Die Liquidität bleibt erhalten, weil keine hohe Anfangsinvestition anfällt","points":1,"keywords":["Liquidität","Anfangsinvestition","kein Kapital","Eigenkapital","flüssige Mittel"]},{"text":"Gleichbleibende, planbare monatliche Raten","points":1,"keywords":["planbar","kalkulierbar","gleichbleibend","feste Raten"]},{"text":"Nach der Laufzeit können aktuelle Geräte geleast werden","points":1,"keywords":["aktuelle Geräte","neue Geräte","Technikwechsel","modern","austauschen"]},{"text":"Der Kreditspielraum bei der Bank wird geschont","points":1,"keywords":["Kreditspielraum","Kreditlinie","Kredit"]},{"text":"Die Raten sind als Betriebsausgaben absetzbar","points":1,"keywords":["Betriebsausgabe","steuerlich","absetzbar"]}],"sample_solution":"Die Liquidität bleibt erhalten, weil keine hohe Anfangsinvestition anfällt. Die monatlichen Raten sind gleichbleibend und gut planbar. Nach 36 Monaten können aktuelle Geräte geleast werden."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -49998,11 +49999,11 @@ values (
   'open',
   'Der Hersteller von TicketBase beschreibt den Leistungsumfang auf Englisch.',
   'Nenne vier Leistungen, die in der Lizenzgebühr enthalten sind. (4 P.)',
-  'Je Nennung 1 Punkt, höchstens 4. Nicht enthalten sind Installation vor Ort, Datenübernahme und individuelle Schulung. Diese Kosten kommen im Vergleich dazu.',
+  'Jede Nennung bringt 1 Punkt, höchstens 4. Nicht enthalten sind Installation vor Ort, Datenübernahme und individuelle Schulung. Diese Kosten kommen im Vergleich noch hinzu.',
   2,
   '{}',
   null,
-  '{"code":"TicketBase Business - what you get\nIncluded in the licence fee:\n- unlimited tickets and customer contacts\n- software updates during the contract term\n- e-mail support on working days,\n  response within 8 hours\n- one remote onboarding session (2 hours)\n- mobile app for agents\nNot included: on-site installation,\ndata migration, individual training","case_id":"f-a01w-agentur","points":4,"criteria":[{"text":"Unbegrenzte Zahl von Tickets und Kundenkontakten","points":1,"keywords":["unbegrenzt","unbeschränkt","beliebig viele"]},{"text":"Software-Updates während der Vertragslaufzeit","points":1,"keywords":["Update","Updates","Aktualisierung"]},{"text":"E-Mail-Support an Werktagen mit Antwort innerhalb von 8 Stunden","points":1,"keywords":["Support","E-Mail","Werktagen","8 Stunden"]},{"text":"Eine Einführung per Fernsitzung (2 Stunden)","points":1,"keywords":["Einführung","Onboarding","Fernsitzung","remote","Einweisung"]},{"text":"Mobile App für die Bearbeiter","points":1,"keywords":["App","mobil","Smartphone"]}],"sample_solution":"Enthalten sind: unbegrenzt viele Tickets und Kundenkontakte, Software-Updates während der Vertragslaufzeit, E-Mail-Support an Werktagen (Antwort innerhalb von 8 Stunden) und eine zweistündige Einführung per Fernsitzung. Außerdem eine mobile App."}'::jsonb,
+  '{"code":"TicketBase Business - what you get\nIncluded in the licence fee:\n- unlimited tickets and customer contacts\n- software updates during the contract term\n- e-mail support on working days,\n  response within 8 hours\n- one remote onboarding session (2 hours)\n- mobile app for agents\nNot included: on-site installation,\ndata migration, individual training","case_id":"f-a01w-agentur","points":4,"criteria":[{"text":"Unbegrenzte Zahl von Tickets und Kundenkontakten","points":1,"keywords":["unbegrenzt","unbeschränkt","beliebig viele"]},{"text":"Software-Updates während der Vertragslaufzeit","points":1,"keywords":["Update","Updates","Aktualisierung"]},{"text":"E-Mail-Support an Werktagen mit Antwort innerhalb von 8 Stunden","points":1,"keywords":["Support","E-Mail","Werktagen","8 Stunden"]},{"text":"Eine Einführung per Fernsitzung (2 Stunden)","points":1,"keywords":["Einführung","Onboarding","Fernsitzung","remote","Einweisung"]},{"text":"Mobile App für die Bearbeiter","points":1,"keywords":["App","mobil","Smartphone"]}],"sample_solution":"Enthalten sind unbegrenzt viele Tickets und Kundenkontakte, Software-Updates während der Vertragslaufzeit, E-Mail-Support an Werktagen (Antwort innerhalb von 8 Stunden) und eine zweistündige Einführung per Fernsitzung. Dazu kommt eine mobile App."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -50060,7 +50061,7 @@ values (
   'open',
   null,
   'Pixelhafen hat 12 Nutzer. Begründe mit zwei Argumenten, ob die Agentur das Ticketsystem selbst entwickeln oder kaufen sollte. (4 P.)',
-  'Je Argument 2 Punkte, höchstens 4. Eine begründete Entscheidung für die Eigenentwicklung (etwa wegen sehr spezieller Abläufe) wäre ebenfalls zu werten. Die Rechnung spricht hier aber klar für den Kauf.',
+  'Jedes Argument bringt 2 Punkte, höchstens 4. Eine begründete Entscheidung für die Eigenentwicklung (etwa wegen sehr spezieller Abläufe) wäre ebenfalls zu werten. Die Rechnung spricht hier aber klar für den Kauf.',
   2,
   '{}',
   null,
@@ -50157,7 +50158,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a01w-logistik","points":2,"criteria":[{"text":"Den Auftrag erhält LagerTec.","points":1,"keywords":["LagerTec","Lager Tec","Lagertech"]},{"text":"LagerTec hat mit 70 Punkten die höchste gewichtete Summe, trotz des höchsten Preises; nur LagerTec und HandyScan liefern vor dem Hallenstart.","points":1,"keywords":["70","höchste Summe","meisten Punkte","Lieferzeit","rechtzeitig"]}],"sample_solution":"LagerTec. Das Angebot erreicht mit 70 Punkten die höchste gewichtete Summe, obwohl es das teuerste ist. Außerdem liefert LagerTec in einer Woche und damit rechtzeitig vor dem Start der Halle."}'::jsonb,
+  '{"case_id":"f-a01w-logistik","points":2,"criteria":[{"text":"Den Auftrag erhält LagerTec.","points":1,"keywords":["LagerTec","Lager Tec","Lagertech"]},{"text":"LagerTec hat trotz des höchsten Preises mit 70 Punkten die höchste gewichtete Summe. Außerdem liefern nur LagerTec und HandyScan vor dem Hallenstart.","points":1,"keywords":["70","höchste Summe","meisten Punkte","Lieferzeit","rechtzeitig"]}],"sample_solution":"LagerTec. Das Angebot erreicht mit 70 Punkten die höchste gewichtete Summe, obwohl es das teuerste ist. Außerdem liefert LagerTec in einer Woche und damit rechtzeitig vor dem Start der Halle."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -50245,11 +50246,11 @@ values (
   'open',
   null,
   'Beschreibe zwei Risiken bei der Einführung der Handscanner und je eine geeignete Gegenmaßnahme. (4 P.)',
-  'Je Risiko mit passender Maßnahme 2 Punkte, höchstens 4. Andere sinnvolle Risiken sind möglich.',
+  'Jedes Risiko mit passender Maßnahme bringt 2 Punkte, höchstens 4. Andere sinnvolle Risiken sind möglich.',
   2,
   '{}',
   null,
-  '{"case_id":"f-a01w-logistik","points":4,"criteria":[{"text":"Lieferverzug zum Hallenstart: festen Liefertermin mit Vertragsstrafe vereinbaren oder übergangsweise mit Papierlisten arbeiten","points":2,"keywords":["Lieferverzug","Lieferung","verspätet","Vertragsstrafe","Liefertermin"]},{"text":"Geräte fallen im Schichtbetrieb aus: Ersatzgeräte vorhalten, Wartungsvertrag mit schnellem Austausch","points":2,"keywords":["Ausfall","defekt","Ersatzgeräte","Austausch","Wartungsvertrag"]},{"text":"Akkus halten keine Schicht durch: Wechselakkus und Ladestationen bereitstellen","points":2,"keywords":["Akku","Wechselakku","Ladestation","Laufzeit"]},{"text":"Lücken im WLAN der Halle: Funkausleuchtung vor dem Start messen und Access Points ergänzen","points":2,"keywords":["WLAN","Funkabdeckung","Ausleuchtung","Access Point","Empfang"]},{"text":"Beschäftigte kommen mit den Geräten nicht zurecht: Schulung in allen Schichten","points":2,"keywords":["Schulung","Einweisung","Akzeptanz","Bedienfehler"]}],"sample_solution":"Risiko 1: Scanner fallen im Schichtbetrieb aus und die Einlagerung stockt. Maßnahme: Ersatzgeräte vorhalten und einen Wartungsvertrag mit Austausch am nächsten Werktag abschließen. Risiko 2: Das WLAN der neuen Halle hat Funklücken. Maßnahme: Ausleuchtung vor dem Start messen und Access Points ergänzen."}'::jsonb,
+  '{"case_id":"f-a01w-logistik","points":4,"criteria":[{"text":"Lieferverzug zum Hallenstart: festen Liefertermin mit Vertragsstrafe vereinbaren oder übergangsweise mit Papierlisten arbeiten","points":2,"keywords":["Lieferverzug","Lieferung","verspätet","Vertragsstrafe","Liefertermin"]},{"text":"Geräte fallen im Schichtbetrieb aus: Ersatzgeräte vorhalten und Wartungsvertrag mit schnellem Austausch abschließen","points":2,"keywords":["Ausfall","defekt","Ersatzgeräte","Austausch","Wartungsvertrag"]},{"text":"Akkus halten keine Schicht durch: Wechselakkus und Ladestationen bereitstellen","points":2,"keywords":["Akku","Wechselakku","Ladestation","Laufzeit"]},{"text":"Lücken im WLAN der Halle: Funkausleuchtung vor dem Start messen und Access Points ergänzen","points":2,"keywords":["WLAN","Funkabdeckung","Ausleuchtung","Access Point","Empfang"]},{"text":"Beschäftigte kommen mit den Geräten nicht zurecht: Schulung in allen Schichten","points":2,"keywords":["Schulung","Einweisung","Akzeptanz","Bedienfehler"]}],"sample_solution":"Risiko 1: Scanner fallen im Schichtbetrieb aus und die Einlagerung stockt. Maßnahme: Ersatzgeräte vorhalten und einen Wartungsvertrag mit Austausch am nächsten Werktag abschließen. Risiko 2: Das WLAN der neuen Halle hat Funklücken. Maßnahme: Ausleuchtung vor dem Start messen und Access Points ergänzen."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -50336,7 +50337,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a02-systemhaus","points":4,"cloze_text":"Beim Leasing erhält die Kanzlei gegen eine monatliche Rate ein zeitlich begrenztes {0} an den Notebooks. Eigentümer der Geräte bleibt der {1}, Besitzer ist der {2}. Rechtlich wird Leasing im Kern wie ein {3} behandelt.","gaps":[{"answers":["Nutzungsrecht"],"options":["Nutzungsrecht","Eigentumsrecht","Rückgaberecht"],"rationale":"Leasing = Gebrauch auf Zeit gegen Entgelt."},{"answers":["Leasinggeber"],"options":["Leasinggeber","Leasingnehmer","Hersteller"],"rationale":"Ihm gehören die Geräte."},{"answers":["Leasingnehmer"],"options":["Leasingnehmer","Leasinggeber","Lieferant"],"rationale":"Er hat die Geräte in seiner tatsächlichen Gewalt und nutzt sie."},{"answers":["Mietvertrag"],"options":["Mietvertrag","Kaufvertrag","Werkvertrag"],"rationale":"Leasing ist im BGB nicht eigens geregelt."}]}'::jsonb,
+  '{"case_id":"f-a02-systemhaus","points":4,"cloze_text":"Beim Leasing erhält die Kanzlei gegen eine monatliche Rate ein zeitlich begrenztes {0} an den Notebooks. Eigentümer der Geräte bleibt der {1}, Besitzer ist der {2}. Rechtlich wird Leasing im Kern wie ein {3} behandelt.","gaps":[{"answers":["Nutzungsrecht"],"options":["Nutzungsrecht","Eigentumsrecht","Rückgaberecht"],"rationale":"Leasing heißt: Gebrauch auf Zeit gegen Entgelt."},{"answers":["Leasinggeber"],"options":["Leasinggeber","Leasingnehmer","Hersteller"],"rationale":"Ihm gehören die Geräte."},{"answers":["Leasingnehmer"],"options":["Leasingnehmer","Leasinggeber","Lieferant"],"rationale":"Er hat die Geräte in seiner tatsächlichen Gewalt und nutzt sie."},{"answers":["Mietvertrag"],"options":["Mietvertrag","Kaufvertrag","Werkvertrag"],"rationale":"Leasing ist im BGB nicht eigens geregelt."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -50390,11 +50391,11 @@ values (
   'open',
   'Obwohl das Leasing in der Summe teurer ist, zeigt die Kanzlei Interesse daran.',
   'Nenne drei Vorteile des Leasings gegenüber dem Kauf.',
-  'Je Nennung 1 Punkt, höchstens 3. Vorteile des Leasings: Liquidität bleibt erhalten, Eigenkapital und Kreditspielraum werden geschont, planbare Raten, regelmäßiger Technikwechsel, steuerliche Vorteile.',
+  'Je Nennung 1 Punkt, höchstens 3. Leasing erhält die Liquidität und schont Eigenkapital und Kreditspielraum. Dazu kommen planbare Raten, ein regelmäßiger Technikwechsel und steuerliche Vorteile.',
   2,
   '{}',
   null,
-  '{"case_id":"f-a02-systemhaus","points":3,"criteria":[{"text":"Die Liquidität bleibt erhalten, weil kein hoher Kaufpreis auf einmal anfällt.","points":1,"keywords":["Liquidität","flüssig","zahlungsfähig","auf einmal"]},{"text":"Eigenkapital und Kreditspielraum werden geschont.","points":1,"keywords":["Eigenkapital","Kredit","Kreditrahmen"]},{"text":"Gleichbleibende Raten sind gut planbar.","points":1,"keywords":["planbar","gleichbleibend","feste Raten","kalkulierbar"]},{"text":"Nach der Laufzeit können neue Geräte geleast werden. Die Technik bleibt aktuell.","points":1,"keywords":["aktuell","neue Geräte","Technikwechsel","neueste","modern"]},{"text":"Leasingraten sind als Betriebsausgaben steuerlich absetzbar.","points":1,"keywords":["steuerlich","Betriebsausgabe","absetzbar","Steuer"]}],"sample_solution":"Beim Leasing bleibt die Liquidität erhalten, weil die Kanzlei nicht rund 15.000 € auf einmal zahlen muss. Die gleichbleibenden Raten sind gut planbar. Nach 36 Monaten kann sie auf neue Geräte wechseln, die Technik bleibt aktuell."}'::jsonb,
+  '{"case_id":"f-a02-systemhaus","points":3,"criteria":[{"text":"Die Liquidität bleibt erhalten, weil kein hoher Kaufpreis auf einmal anfällt.","points":1,"keywords":["Liquidität","flüssig","zahlungsfähig","auf einmal"]},{"text":"Eigenkapital und Kreditspielraum werden geschont.","points":1,"keywords":["Eigenkapital","Kredit","Kreditrahmen"]},{"text":"Gleichbleibende Raten sind gut planbar.","points":1,"keywords":["planbar","gleichbleibend","feste Raten","kalkulierbar"]},{"text":"Nach der Laufzeit können neue Geräte geleast werden. Die Technik bleibt aktuell.","points":1,"keywords":["aktuell","neue Geräte","Technikwechsel","neueste","modern"]},{"text":"Leasingraten sind als Betriebsausgaben steuerlich absetzbar.","points":1,"keywords":["steuerlich","Betriebsausgabe","absetzbar","Steuer"]}],"sample_solution":"Beim Leasing bleibt die Liquidität erhalten, weil die Kanzlei nicht rund 15.000 € auf einmal zahlen muss. Die gleichbleibenden Raten sind gut planbar. Nach 36 Monaten kann sie auf neue Geräte wechseln, sodass die Technik aktuell bleibt."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -50423,7 +50424,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a02-systemhaus","points":2,"criteria":[{"text":"Am Ende der Laufzeit kann die Kanzlei die Notebooks kaufen. Sie muss es aber nicht.","points":1,"keywords":["Ende der Laufzeit","Vertragsende","kaufen","übernehmen","erwerben"]},{"text":"Der Kaufpreis ist der vereinbarte Restwert; mit dem Kauf wird die Kanzlei Eigentümerin.","points":1,"keywords":["Restwert","Eigentümer","Eigentum","Buchwert"]}],"sample_solution":"Die Kaufoption gibt der Kanzlei das Recht, die Notebooks am Ende der Laufzeit zum vereinbarten Restwert zu kaufen. Nutzt sie die Option, wird sie Eigentümerin; andernfalls gibt sie die Geräte zurück."}'::jsonb,
+  '{"case_id":"f-a02-systemhaus","points":2,"criteria":[{"text":"Am Ende der Laufzeit kann die Kanzlei die Notebooks kaufen, muss es aber nicht.","points":1,"keywords":["Ende der Laufzeit","Vertragsende","kaufen","übernehmen","erwerben"]},{"text":"Der Kaufpreis ist der vereinbarte Restwert; mit dem Kauf wird die Kanzlei Eigentümerin.","points":1,"keywords":["Restwert","Eigentümer","Eigentum","Buchwert"]}],"sample_solution":"Die Kaufoption gibt der Kanzlei das Recht, die Notebooks am Ende der Laufzeit zum vereinbarten Restwert zu kaufen. Nutzt sie die Option, wird sie Eigentümerin; andernfalls gibt sie die Geräte zurück."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -50481,7 +50482,7 @@ values (
   2,
   '{}',
   null,
-  '{"code":"Kassentechnik Weser GmbH, Hameln\nRechnung Nr. 2026-0815 vom 14.04.2026\nIhre Bestellung vom 07.04.2026\nLieferung am 13.04.2026\n\n4 Bondrucker      x 185,00 €   740,00 €\n4 Kassenschublade x  92,50 €   370,00 €\n   Netto zu 19 %             1.110,00 €\n   + 19 % USt                  210,90 €\n2 Fachbuch Kasse  x  30,00 €    60,00 €\n   Netto zu 7 %                 60,00 €\n   + 7 % USt                     4,20 €\nRechnungsbetrag               1.385,10 €\n\nZahlbar bis 14.05.2026 ohne Abzug,\nbis 24.04.2026 abzüglich 2 % Skonto.\n[GiroCode]","case_id":"f-a02-handel","points":6,"criteria":[{"text":"Artikel: Stimmen die berechneten Artikel mit Bestellung und Lieferschein überein?","points":2,"keywords":["Artikel","Bezeichnung","Ware","Produkt"]},{"text":"Menge: Wurde nur berechnet, was bestellt und geliefert wurde?","points":2,"keywords":["Menge","Stückzahl","Anzahl","Lieferschein"]},{"text":"Einzelpreis: Entspricht er der Bestellung bzw. dem Angebot?","points":2,"keywords":["Einzelpreis","Preis","Stückpreis","Rabatt"]},{"text":"Steuersatz: 19 % für Geräte, 7 % für das Fachbuch?","points":2,"keywords":["Steuersatz","Umsatzsteuer","Mehrwertsteuer","19 %","7 %"]},{"text":"Rechnerische Richtigkeit: Menge × Einzelpreis und Summen nachrechnen.","points":2,"keywords":["nachrechnen","rechnerisch","Summe","Gesamtpreis","multiplizieren"]}],"sample_solution":"Ich vergleiche je Position die Menge mit Bestellung und Lieferschein (4 Bondrucker, 4 Kassenschubladen, 2 Bücher). Ich prüfe, ob die Einzelpreise der Bestellung entsprechen. Und ich kontrolliere den Steuersatz: 19 % für die Geräte, 7 % für das Fachbuch."}'::jsonb,
+  '{"code":"Kassentechnik Weser GmbH, Hameln\nRechnung Nr. 2026-0815 vom 14.04.2026\nIhre Bestellung vom 07.04.2026\nLieferung am 13.04.2026\n\n4 Bondrucker      x 185,00 €   740,00 €\n4 Kassenschublade x  92,50 €   370,00 €\n   Netto zu 19 %             1.110,00 €\n   + 19 % USt                  210,90 €\n2 Fachbuch Kasse  x  30,00 €    60,00 €\n   Netto zu 7 %                 60,00 €\n   + 7 % USt                     4,20 €\nRechnungsbetrag               1.385,10 €\n\nZahlbar bis 14.05.2026 ohne Abzug,\nbis 24.04.2026 abzüglich 2 % Skonto.\n[GiroCode]","case_id":"f-a02-handel","points":6,"criteria":[{"text":"Artikel: Stimmen die berechneten Artikel mit Bestellung und Lieferschein überein?","points":2,"keywords":["Artikel","Bezeichnung","Ware","Produkt"]},{"text":"Menge: Wurde nur berechnet, was bestellt und geliefert wurde?","points":2,"keywords":["Menge","Stückzahl","Anzahl","Lieferschein"]},{"text":"Einzelpreis: Entspricht er der Bestellung bzw. dem Angebot?","points":2,"keywords":["Einzelpreis","Preis","Stückpreis","Rabatt"]},{"text":"Steuersatz: 19 % für Geräte, 7 % für das Fachbuch?","points":2,"keywords":["Steuersatz","Umsatzsteuer","Mehrwertsteuer","19 %","7 %"]},{"text":"Rechnerische Richtigkeit: Menge × Einzelpreis und Summen nachrechnen.","points":2,"keywords":["nachrechnen","rechnerisch","Summe","Gesamtpreis","multiplizieren"]}],"sample_solution":"Ich vergleiche je Position die Menge mit Bestellung und Lieferschein (4 Bondrucker, 4 Kassenschubladen, 2 Bücher). Ich prüfe, ob die Einzelpreise der Bestellung entsprechen. Außerdem kontrolliere ich den Steuersatz: 19 % für die Geräte, 7 % für das Fachbuch."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -50568,7 +50569,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a02-handel","points":2,"criteria":[{"text":"Name des Zahlungsempfängers","points":1,"keywords":["Empfänger","Name","Kontoinhaber"]},{"text":"IBAN des Empfängers","points":1,"keywords":["IBAN","Kontonummer","Bankverbindung"]},{"text":"BIC der Bank","points":1,"keywords":["BIC","Bankleitzahl","SWIFT"]},{"text":"Betrag der Überweisung","points":1,"keywords":["Betrag","Summe","Rechnungsbetrag"]},{"text":"Verwendungszweck","points":1,"keywords":["Verwendungszweck","Rechnungsnummer","Zweck"]}],"sample_solution":"Der GiroCode enthält die Daten einer SEPA-Überweisung, zum Beispiel die IBAN des Empfängers und den Betrag. Außerdem: Name des Empfängers, BIC und Verwendungszweck."}'::jsonb,
+  '{"case_id":"f-a02-handel","points":2,"criteria":[{"text":"Name des Zahlungsempfängers","points":1,"keywords":["Empfänger","Name","Kontoinhaber"]},{"text":"IBAN des Empfängers","points":1,"keywords":["IBAN","Kontonummer","Bankverbindung"]},{"text":"BIC der Bank","points":1,"keywords":["BIC","Bankleitzahl","SWIFT"]},{"text":"Betrag der Überweisung","points":1,"keywords":["Betrag","Summe","Rechnungsbetrag"]},{"text":"Verwendungszweck","points":1,"keywords":["Verwendungszweck","Rechnungsnummer","Zweck"]}],"sample_solution":"Der GiroCode enthält die Daten einer SEPA-Überweisung, zum Beispiel die IBAN des Empfängers und den Betrag. Außerdem stehen darin der Name des Empfängers, die BIC und der Verwendungszweck."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -50593,7 +50594,7 @@ values (
   'marking',
   'Die Buchhaltung überlegt, Rechnungen künftig nur noch per GiroCode zu bezahlen.',
   'Markiere alle Aussagen zum GiroCode, die zutreffen.',
-  'Erleichterungen durch den GiroCode: kein Abtippen, fehlerfreie Übernahme der Daten, bessere Zuordnung des Zahlungseingangs. Freigabe und Rechnungsprüfung bleiben nötig; wer Skonto abzieht, passt den Betrag in der App an.',
+  'Der GiroCode erspart das Abtippen, übernimmt die Daten fehlerfrei und erleichtert die Zuordnung des Zahlungseingangs. Freigabe und Rechnungsprüfung bleiben nötig. Wer Skonto abzieht, passt den Betrag in der App an.',
   2,
   '{}',
   null,
@@ -50626,7 +50627,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a02-handel","points":2,"criteria":[{"text":"Angst um den eigenen Arbeitsplatz","points":1,"keywords":["Arbeitsplatz","Jobverlust","überflüssig","Stelle"]},{"text":"Angst vor Überforderung durch die neue Software","points":1,"keywords":["Überforderung","überfordert","zu kompliziert"]},{"text":"Festhalten an gewohnten Abläufen","points":1,"keywords":["Gewohnheit","gewohnt","Routine","bewährt"]},{"text":"Sorge vor mehr Kontrolle und Leistungsdruck","points":1,"keywords":["Kontrolle","Leistungsdruck","Überwachung"]},{"text":"Fehlende Information über Gründe und Nutzen","points":1,"keywords":["Information","nicht informiert","Unwissenheit","unklar"]}],"sample_solution":"Mögliche Ursachen sind die Angst, durch die Automatisierung den Arbeitsplatz zu verlieren, und die Sorge, mit der neuen Software überfordert zu sein. Weitere: Festhalten an Routinen, Angst vor Kontrolle, fehlende Information."}'::jsonb,
+  '{"case_id":"f-a02-handel","points":2,"criteria":[{"text":"Angst um den eigenen Arbeitsplatz","points":1,"keywords":["Arbeitsplatz","Jobverlust","überflüssig","Stelle"]},{"text":"Angst vor Überforderung durch die neue Software","points":1,"keywords":["Überforderung","überfordert","zu kompliziert"]},{"text":"Festhalten an gewohnten Abläufen","points":1,"keywords":["Gewohnheit","gewohnt","Routine","bewährt"]},{"text":"Sorge vor mehr Kontrolle und Leistungsdruck","points":1,"keywords":["Kontrolle","Leistungsdruck","Überwachung"]},{"text":"Fehlende Information über Gründe und Nutzen","points":1,"keywords":["Information","nicht informiert","Unwissenheit","unklar"]}],"sample_solution":"Mögliche Ursachen sind die Angst, durch die Automatisierung den Arbeitsplatz zu verlieren, und die Sorge, mit der neuen Software überfordert zu sein. Weitere Ursachen sind das Festhalten an Routinen, die Angst vor Kontrolle und fehlende Information."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -50713,7 +50714,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a02-agentur","points":4,"criteria":[{"text":"Nur ein Meldeweg (E-Mail an ein Sammelpostfach): Meldungen gehen leicht unter, es gibt keine Eingangsbestätigung.","points":2,"keywords":["E-Mail","Meldeweg","Sammelpostfach","nur per Mail"]},{"text":"Verwaltung von Hand in einer Tabellenkalkulation: fehleranfällig, unübersichtlich, kein Status für den Kunden.","points":2,"keywords":["Tabellenkalkulation","von Hand","manuell","Excel","fehleranfällig"]},{"text":"Aufgaben werden nur einmal pro Woche verteilt: Dringende Störungen bleiben tagelang liegen.","points":2,"keywords":["einmal pro Woche","wöchentlich","Wartezeit","Priorisierung"]},{"text":"Eingeschränkte Servicezeiten (Mo-Fr 9-15 Uhr): Außerhalb dieser Zeiten erreicht der Kunde niemanden.","points":2,"keywords":["Servicezeit","Erreichbarkeit","erreichbar","15 Uhr"]}],"sample_solution":"Erstens werden die Aufgaben nur einmal pro Woche verteilt. Eine dringende Störung kann also tagelang liegen bleiben. Zweitens werden die Meldungen von Hand in eine Tabelle übertragen: Das ist fehleranfällig, und weder Kunde noch Team sehen den aktuellen Status."}'::jsonb,
+  '{"case_id":"f-a02-agentur","points":4,"criteria":[{"text":"Nur ein Meldeweg (E-Mail an ein Sammelpostfach): Meldungen gehen leicht unter, es gibt keine Eingangsbestätigung.","points":2,"keywords":["E-Mail","Meldeweg","Sammelpostfach","nur per Mail"]},{"text":"Verwaltung von Hand in einer Tabellenkalkulation: fehleranfällig, unübersichtlich, kein Status für den Kunden.","points":2,"keywords":["Tabellenkalkulation","von Hand","manuell","Excel","fehleranfällig"]},{"text":"Aufgaben werden nur einmal pro Woche verteilt: Dringende Störungen bleiben tagelang liegen.","points":2,"keywords":["einmal pro Woche","wöchentlich","Wartezeit","Priorisierung"]},{"text":"Eingeschränkte Servicezeiten (Mo-Fr 9-15 Uhr): Außerhalb dieser Zeiten erreicht der Kunde niemanden.","points":2,"keywords":["Servicezeit","Erreichbarkeit","erreichbar","15 Uhr"]}],"sample_solution":"Erstens werden die Aufgaben nur einmal pro Woche verteilt. Eine dringende Störung kann also tagelang liegen bleiben. Zweitens werden die Meldungen von Hand in eine Tabelle übertragen. Das ist fehleranfällig, und weder Kunde noch Team sehen den aktuellen Status."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -50738,11 +50739,11 @@ values (
   'open',
   null,
   'Nenne zwei Maßnahmen, mit denen die Agentur ihre Servicequalität verbessern kann.',
-  'Je Nennung 1 Punkt, höchstens 2. Servicequalität steigt durch schnelle, nachvollziehbare und verlässliche Bearbeitung: Ticketsystem, SLA, längere Erreichbarkeit, Kundenfeedback.',
+  'Je Nennung 1 Punkt, höchstens 2. Die Servicequalität steigt, wenn Anfragen schnell, nachvollziehbar und verlässlich bearbeitet werden. Dazu tragen Ticketsystem, SLA, längere Erreichbarkeit und Kundenfeedback bei.',
   2,
   '{}',
   null,
-  '{"case_id":"f-a02-agentur","points":2,"criteria":[{"text":"Ticketsystem mit automatischer Eingangsbestätigung und Statusanzeige","points":1,"keywords":["Ticketsystem","Eingangsbestätigung","Status","Portal"]},{"text":"Feste Reaktionszeiten vereinbaren (SLA)","points":1,"keywords":["SLA","Reaktionszeit","Service Level"]},{"text":"Servicezeiten ausweiten","points":1,"keywords":["Servicezeit","Erreichbarkeit","länger erreichbar","Hotline"]},{"text":"Kundenzufriedenheit regelmäßig abfragen","points":1,"keywords":["Kundenfeedback","Zufriedenheit","Umfrage","Befragung"]},{"text":"Tickets täglich priorisieren und verteilen","points":1,"keywords":["täglich","priorisieren","Priorität"]},{"text":"Wissensdatenbank bzw. FAQ für häufige Fragen","points":1,"keywords":["Wissensdatenbank","FAQ","Selbsthilfe"]}],"sample_solution":"Zum Beispiel ein Ticketsystem mit automatischer Eingangsbestätigung und vereinbarte Reaktionszeiten (SLA). Weitere: längere Servicezeiten, tägliche Priorisierung, Kundenbefragungen, Wissensdatenbank."}'::jsonb,
+  '{"case_id":"f-a02-agentur","points":2,"criteria":[{"text":"Ticketsystem mit automatischer Eingangsbestätigung und Statusanzeige","points":1,"keywords":["Ticketsystem","Eingangsbestätigung","Status","Portal"]},{"text":"Feste Reaktionszeiten vereinbaren (SLA)","points":1,"keywords":["SLA","Reaktionszeit","Service Level"]},{"text":"Servicezeiten ausweiten","points":1,"keywords":["Servicezeit","Erreichbarkeit","länger erreichbar","Hotline"]},{"text":"Kundenzufriedenheit regelmäßig abfragen","points":1,"keywords":["Kundenfeedback","Zufriedenheit","Umfrage","Befragung"]},{"text":"Tickets täglich priorisieren und verteilen","points":1,"keywords":["täglich","priorisieren","Priorität"]},{"text":"Wissensdatenbank bzw. FAQ für häufige Fragen","points":1,"keywords":["Wissensdatenbank","FAQ","Selbsthilfe"]}],"sample_solution":"Geeignet sind zum Beispiel ein Ticketsystem mit automatischer Eingangsbestätigung und vereinbarte Reaktionszeiten (SLA). Auch längere Servicezeiten, eine tägliche Priorisierung, Kundenbefragungen oder eine Wissensdatenbank helfen."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -50796,7 +50797,7 @@ values (
   'cloze',
   'In einem englischen Fachblog findest du Hinweise zur Ticketbearbeitung.',
   'Ergänze die beiden Risiken, die der Text nennt.',
-  'Zu langsam: „customers who wait for days often move to a competitor“: Kunden wandern zur Konkurrenz ab. Zu schnell: „leads to wrong solutions and extra work“: falsche Lösungen und zusätzliche Arbeit.',
+  'Zu langsam: „customers who wait for days often move to a competitor“ heißt, dass Kunden zur Konkurrenz abwandern. Zu schnell: „leads to wrong solutions and extra work“ bedeutet falsche Lösungen und zusätzliche Arbeit.',
   2,
   '{}',
   null,
@@ -51026,9 +51027,9 @@ values (
   'praesentation',
   'pr-angebot',
   'open',
-  'L3 bietet an, Rechnungen künftig nur noch als E-Rechnung zu schicken. Die Buchhaltung der Elbtal Logistik AG arbeitet bisher mit Papierrechnungen.',
-  'Nenne zwei Vorteile und zwei Nachteile digitaler Rechnungen für die Elbtal Logistik AG.',
-  'Je Nennung 1 Punkt, höchstens 4. Vorteile: Effizienz, Kostenersparnis, weniger Fehler, schneller Zugriff. Nachteile: Anfangsinvestition, Schulungsaufwand, Sicherheitsrisiken und Abhängigkeit von der IT.',
+  'L3 kündigt an, Rechnungen künftig nur noch als E-Rechnung zu schicken. Empfangen können muss die Elbtal Logistik AG solche Rechnungen seit 2025, ihre Buchhaltung arbeitet aber bisher überwiegend mit Papier.',
+  'Nenne zwei Vorteile und zwei Nachteile der E-Rechnung für die Elbtal Logistik AG.',
+  'Je Nennung 1 Punkt, höchstens 4. Vorteile sind Effizienz, Kostenersparnis, weniger Fehler und schneller Zugriff. Nachteile sind die Anfangsinvestition, der Schulungsaufwand, Sicherheitsrisiken und die Abhängigkeit von der IT.',
   2,
   '{}',
   null,
@@ -51057,7 +51058,7 @@ values (
   'open',
   'Du stellst das Ergebnis des Angebotsvergleichs der Leitung der Disposition in fünf Minuten vor. Die Zuhörer sind keine IT-Fachleute.',
   'Beschreibe zwei Punkte, die du bei dieser Präsentation beachtest, damit sie adressatengerecht ist.',
-  'Je beschriebenem Punkt 2 Punkte, höchstens 4. Adressatengerecht präsentieren heißt: Nutzen statt Technik, verständliche Sprache, Zahlen visualisieren und eine klare Empfehlung geben.',
+  'Je beschriebenem Punkt 2 Punkte, höchstens 4. Adressatengerecht präsentieren heißt, den Nutzen statt der Technik zu zeigen, verständlich zu sprechen, Zahlen zu visualisieren und eine klare Empfehlung zu geben.',
   2,
   '{}',
   null,
@@ -51086,7 +51087,7 @@ values (
   'table',
   'Die Geräte werden mit einer Entscheidungsmatrix verglichen: Je Kriterium erhält das beste Gerät Rang 3, das schlechteste Rang 1. Das Gerät mit der höchsten Summe wird gewählt.',
   'Vervollständige die Entscheidungsmatrix und bilde die Summen.',
-  'Bei Tempo ist der größte Wert der beste, bei Wartung und Preis der kleinste. Scannen: C 3, B 2, A 1. Wartung: B 3, A 2, C 1. Preis: A 3, C 2, B 1. Summen: A 7, B 9, C 8. Gewählt wird Gerät B.',
+  'Beim Tempo ist der größte Wert der beste, bei Wartung und Preis der kleinste. Scannen: C 3, B 2, A 1. Wartung: B 3, A 2, C 1. Preis: A 3, C 2, B 1. Summen: A 7, B 9, C 8. Gewählt wird Gerät B.',
   2,
   '{}',
   null,
@@ -51144,7 +51145,7 @@ values (
   'pairs',
   'An der Rückseite des Geräts sitzen vier Buchsen. Das Handbuch beschreibt sie nur in Worten.',
   'Ordne jeder Beschreibung den Namen des Anschlusses zu.',
-  'RJ45 nimmt das Netzwerkkabel auf, USB-A und USB-C dienen dem direkten Anschluss an einen PC oder einem USB-Stick, in die Kaltgerätebuchse kommt das 230-V-Netzkabel. Je Zuordnung 1 Punkt.',
+  'RJ45 nimmt das Netzwerkkabel auf. Über USB-A und USB-C wird ein PC direkt angeschlossen oder ein USB-Stick eingesteckt. In die Kaltgerätebuchse kommt das 230-V-Netzkabel. Je Zuordnung 1 Punkt.',
   2,
   '{}',
   null,
@@ -51173,7 +51174,7 @@ values (
   'cloze',
   'Das Gerät kommt ins Netz 192.168.40.0/26. Der Router hat als Gateway die letzte nutzbare Adresse des Netzes, das Multifunktionsgerät (MFG) soll die vorletzte nutzbare Adresse erhalten.',
   'Trage die IPv4-Konfiguration des Geräts ein.',
-  '/26 = 64 Adressen: Netz 192.168.40.0, Broadcast 192.168.40.63. Letzte nutzbare Adresse .62 (Gateway), vorletzte .61 (Gerät). Maske 255.255.255.192.',
+  'Ein /26-Netz hat 64 Adressen: Netzadresse 192.168.40.0, Broadcast 192.168.40.63. Die letzte nutzbare Adresse .62 bekommt das Gateway, die vorletzte .61 das Gerät. Die Maske lautet 255.255.255.192.',
   2,
   '{}',
   null,
@@ -51289,7 +51290,7 @@ values (
   'cloze',
   'Der Dateiserver der Kanzlei hat die Adresse 192.168.75.140/25.',
   'Ermittle die Werte des Subnetzes.',
-  '/25: Maske 255.255.255.128, Blockgröße 128, 2⁷ - 2 = 126 nutzbare Adressen. Die 140 liegt im oberen Teilnetz: Netz 192.168.75.128, Broadcast 192.168.75.255. Je Wert 1 Punkt.',
+  'Bei /25 lautet die Maske 255.255.255.128, die Blockgröße ist 128, und es gibt 2⁷ - 2 = 126 nutzbare Adressen. Die 140 liegt im oberen Teilnetz, also ist 192.168.75.128 die Netzadresse und 192.168.75.255 der Broadcast. Je Wert 1 Punkt.',
   2,
   '{}',
   null,
@@ -51318,7 +51319,7 @@ values (
   'table',
   'Vier Arbeitsplätze melden „kein Netz“. Für jede vermutete Ursache soll festgelegt werden, wie sie überprüft und wie der Fehler behoben wird.',
   'Gib zu jeder vermuteten Ursache eine Überprüfung und eine Behebung an.',
-  'Kabel: Link-LED prüfen, Kabel tauschen. Adresse: mit ipconfig prüfen, richtige Adresse zuweisen. Dose: mit funktionierendem Gerät oder Tester prüfen, patchen lassen. DNS: ping auf den Namen und nslookup, dann den DNS-Server prüfen. Je Zelle 1 Punkt.',
+  'Ein defektes Kabel verrät die dunkle Link-LED, du tauschst es. Eine falsche Adresse zeigt ipconfig, du weist die richtige zu. Eine ungepatchte Dose prüfst du mit einem funktionierenden Gerät oder Tester und lässt sie patchen. Bei gestörter Namensauflösung helfen ping auf den Namen und nslookup, danach prüfst du den DNS-Server. Je Zelle 1 Punkt.',
   2,
   ARRAY['fehlersuche']::text[],
   null,
@@ -51380,7 +51381,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a03n-systemhaus","points":3,"criteria":[{"text":"Dual Stack: Geräte und Router erhalten eine IPv4- und eine IPv6-Adresse und nutzen je nach Ziel das passende Protokoll","points":3,"keywords":["Dual Stack","Dual-Stack","beide Adressen","beide Protokolle","parallel"]},{"text":"Tunneling: IPv6-Pakete werden in IPv4-Pakete gekapselt und durch das IPv4-Netz transportiert (z. B. 6to4)","points":3,"keywords":["Tunnel","Tunneling","6to4","gekapselt","verpackt"]}],"sample_solution":"Dual Stack: Arbeitsplätze, Router und, soweit möglich, Server erhalten sowohl eine IPv4- als auch eine IPv6-Adresse. Die Kanzleisoftware wird weiter über IPv4 angesprochen, Ziele mit IPv6 über IPv6. Alternativ Tunneling: IPv6-Pakete werden in IPv4-Pakete verpackt und am Tunnelende wieder ausgepackt."}'::jsonb,
+  '{"case_id":"f-a03n-systemhaus","points":3,"criteria":[{"text":"Dual Stack: Geräte und Router erhalten eine IPv4- und eine IPv6-Adresse und nutzen je nach Ziel das passende Protokoll","points":3,"keywords":["Dual Stack","Dual-Stack","beide Adressen","beide Protokolle","parallel"]},{"text":"Tunneling: IPv6-Pakete werden in IPv4-Pakete gekapselt und durch das IPv4-Netz transportiert (z. B. 6to4)","points":3,"keywords":["Tunnel","Tunneling","6to4","gekapselt","verpackt"]}],"sample_solution":"Bei Dual Stack erhalten Arbeitsplätze, Router und, soweit möglich, Server sowohl eine IPv4- als auch eine IPv6-Adresse. Die Kanzleisoftware wird weiter über IPv4 angesprochen, Ziele mit IPv6 über IPv6. Eine Alternative ist Tunneling: IPv6-Pakete werden in IPv4-Pakete verpackt und am Tunnelende wieder ausgepackt."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -51554,7 +51555,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a03h-handel","points":3,"criteria":[{"text":"Ein USB-Port liefert deutlich weniger als 4,8 A (USB-A 0,5 bis 0,9 A, USB-C ohne Power Delivery bis 3 A)","points":1,"keywords":["0,9 A","0,5 A","3 A","zu wenig Strom","liefert nicht"]},{"text":"Folge: Unterversorgung. Das Terminal startet neu oder fällt aus; weitere USB-Geräte verschärfen das","points":1,"keywords":["instabil","Unterversorgung","Neustart","fällt aus","überlastet"]},{"text":"Empfehlung: das mitgelieferte Netzteil verwenden (ggf. Steckdosen nachrüsten)","points":1,"keywords":["Netzteil","Steckdose","eigene Stromversorgung"]}],"sample_solution":"Das Terminal braucht bei 5 V rund 4,8 A. Ein USB-A-Port liefert nur 0,5 bis 0,9 A, selbst USB-C ohne Power Delivery höchstens 3 A, und am Kassen-PC hängen weitere USB-Geräte. Das Terminal ist unterversorgt, startet neu oder fällt aus. Empfehlung: das mitgelieferte Netzteil nutzen und dafür Steckdosen nachrüsten."}'::jsonb,
+  '{"case_id":"f-a03h-handel","points":3,"criteria":[{"text":"Ein USB-Port liefert deutlich weniger als 4,8 A (USB-A 0,5 bis 0,9 A, USB-C ohne Power Delivery bis 3 A)","points":1,"keywords":["0,9 A","0,5 A","3 A","zu wenig Strom","liefert nicht"]},{"text":"Folge: Unterversorgung. Das Terminal startet neu oder fällt aus; weitere USB-Geräte verschärfen das","points":1,"keywords":["instabil","Unterversorgung","Neustart","fällt aus","überlastet"]},{"text":"Empfehlung: das mitgelieferte Netzteil verwenden (ggf. Steckdosen nachrüsten)","points":1,"keywords":["Netzteil","Steckdose","eigene Stromversorgung"]}],"sample_solution":"Das Terminal braucht bei 5 V rund 4,8 A. Ein USB-A-Port liefert nur 0,5 bis 0,9 A, selbst USB-C ohne Power Delivery höchstens 3 A, und am Kassen-PC hängen weitere USB-Geräte. Das Terminal ist unterversorgt, startet neu oder fällt aus. Besser ist es, das mitgelieferte Netzteil zu nutzen und dafür Steckdosen nachzurüsten."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -51608,7 +51609,7 @@ values (
   'cloze',
   'Das Terminal der Kasse 1 erhält eine feste Adresse: die letzte mögliche Hostadresse des Filialnetzes 10.44.2.0/24.',
   'Trage die IPv4-Konfiguration des Terminals ein.',
-  '/24: Maske 255.255.255.0, Hostadressen .1 bis .254, Broadcast .255. Letzte mögliche Adresse 10.44.2.254; Gateway ist der Router mit 10.44.2.1. Je Wert 1 Punkt.',
+  'Bei /24 lautet die Maske 255.255.255.0, die Hostadressen reichen von .1 bis .254, Broadcast ist .255. Die letzte mögliche Adresse ist also 10.44.2.254, das Gateway ist der Router mit 10.44.2.1. Je Wert 1 Punkt.',
   2,
   '{}',
   null,
@@ -51811,7 +51812,7 @@ values (
   'table',
   'Für die Einrichtung der Mailprogramme wird eine Übersicht der verschlüsselten Zugänge gebraucht.',
   'Ergänze Protokoll und Port.',
-  'Abgerufen wird verschlüsselt per IMAPS auf Port 993, versendet per SMTP (Mailprogramme liefern über Port 587 mit STARTTLS ein). Je Zelle 1 Punkt.',
+  'Abgerufen wird verschlüsselt per IMAPS auf Port 993. Versendet wird per SMTP, Mailprogramme liefern dabei über Port 587 mit STARTTLS ein. Je Zelle 1 Punkt.',
   2,
   '{}',
   null,
@@ -51840,7 +51841,7 @@ values (
   'cloze',
   'Mobile Geräte, die sich mit der Zentrale verbinden, erhalten Adressen aus einem eigenen Subnetz. Ein Notebook hat die Adresse 10.20.64.75/26.',
   'Ermittle die Werte dieses Subnetzes.',
-  '/26: Maske 255.255.255.192, Blockgröße 64, 62 nutzbare Adressen. Die 75 liegt im Block 64 bis 127: Netz 10.20.64.64, Broadcast 10.20.64.127, erste nutzbare Adresse 10.20.64.65. Je Wert 1 Punkt.',
+  'Bei /26 lautet die Maske 255.255.255.192, die Blockgröße ist 64, nutzbar sind 62 Adressen. Die 75 liegt im Block 64 bis 127. Daraus folgen Netz 10.20.64.64, Broadcast 10.20.64.127 und die erste nutzbare Adresse 10.20.64.65. Je Wert 1 Punkt.',
   2,
   '{}',
   null,
@@ -51898,7 +51899,7 @@ values (
   'marking',
   'Eine Mitarbeiterin klagt im Homeoffice über stockende Videokonferenzen. Sie schickt die Auswertung von drei Ping-Läufen.',
   'Markiere alle auffälligen Zeilen.',
-  'Auffällig sind die Werte zum Konferenzserver: hoher Mittelwert, großes Maximum und Paketverlust. Folge sind ruckelnde Bilder, abgehackter Ton und Abbrüche. Heimnetz und Mailserver sind unauffällig.',
+  'Auffällig sind die Werte zum Konferenzserver: hoher Mittelwert, großes Maximum und Paketverlust. Die Folge sind ruckelnde Bilder, abgehackter Ton und Abbrüche. Heimnetz und Mailserver sind unauffällig.',
   2,
   '{}',
   null,
@@ -52018,7 +52019,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a03h-agentur","points":1,"criteria":[{"text":"weniger Kabel zum PC, aufgeräumter Arbeitsplatz","points":1,"keywords":["weniger Kabel","aufgeräumt","Kabelsalat","ein Kabel"]},{"text":"nur ein Bildausgang am PC wird belegt","points":1,"keywords":["ein Ausgang","nur ein Anschluss","einen Ausgang"]}],"sample_solution":"Zum PC führt nur ein Kabel: Der Arbeitsplatz bleibt aufgeräumt, und am PC wird nur ein Bildausgang belegt."}'::jsonb,
+  '{"case_id":"f-a03h-agentur","points":1,"criteria":[{"text":"weniger Kabel zum PC, aufgeräumter Arbeitsplatz","points":1,"keywords":["weniger Kabel","aufgeräumt","Kabelsalat","ein Kabel"]},{"text":"nur ein Bildausgang am PC wird belegt","points":1,"keywords":["ein Ausgang","nur ein Anschluss","einen Ausgang"]}],"sample_solution":"Zum PC führt nur ein Kabel. Der Arbeitsplatz bleibt dadurch aufgeräumt, und am PC wird nur ein Bildausgang belegt."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -52134,7 +52135,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a03h-agentur","points":4,"criteria":[{"text":"separater, größerer, höhenverstellbarer Bildschirm","points":1,"keywords":["Monitor","Bildschirm","externer Bildschirm"]},{"text":"externe Tastatur und Maus","points":1,"keywords":["Tastatur","Maus","Eingabegeräte"]},{"text":"höhenverstellbarer, ausreichend großer Schreibtisch","points":1,"keywords":["Tisch","Schreibtisch","höhenverstellbar"]},{"text":"ergonomischer, verstellbarer Bürostuhl","points":1,"keywords":["Stuhl","Bürostuhl","Rückenlehne"]},{"text":"mehrere Bildschirme bzw. hohe Auflösung für die Grafikarbeit","points":1,"keywords":["mehrere Bildschirme","Auflösung","zweiter Monitor"]},{"text":"Dockingstation oder Notebook-Ständer","points":1,"keywords":["Dockingstation","Dock","Ständer"]}],"sample_solution":"Ein separater, größerer und höhenverstellbarer Bildschirm, externe Tastatur und Maus, ein höhenverstellbarer Schreibtisch und ein ergonomischer Bürostuhl. Für die Grafikarbeit zusätzlich mehrere Bildschirme mit hoher Auflösung."}'::jsonb,
+  '{"case_id":"f-a03h-agentur","points":4,"criteria":[{"text":"separater, größerer, höhenverstellbarer Bildschirm","points":1,"keywords":["Monitor","Bildschirm","externer Bildschirm"]},{"text":"externe Tastatur und Maus","points":1,"keywords":["Tastatur","Maus","Eingabegeräte"]},{"text":"höhenverstellbarer, ausreichend großer Schreibtisch","points":1,"keywords":["Tisch","Schreibtisch","höhenverstellbar"]},{"text":"ergonomischer, verstellbarer Bürostuhl","points":1,"keywords":["Stuhl","Bürostuhl","Rückenlehne"]},{"text":"mehrere Bildschirme bzw. hohe Auflösung für die Grafikarbeit","points":1,"keywords":["mehrere Bildschirme","Auflösung","zweiter Monitor"]},{"text":"Dockingstation oder Notebook-Ständer","points":1,"keywords":["Dockingstation","Dock","Ständer"]}],"sample_solution":"Sinnvoll sind ein separater, größerer und höhenverstellbarer Bildschirm, externe Tastatur und Maus, ein höhenverstellbarer Schreibtisch und ein ergonomischer Bürostuhl. Für die Grafikarbeit helfen zusätzlich mehrere Bildschirme mit hoher Auflösung."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -52217,7 +52218,7 @@ values (
   'table',
   'Die Fehlersuche folgt dem OSI-Modell. Die Zeile für Schicht 4 ist als Beispiel ausgefüllt.',
   'Benenne die Schichten und ordne jeder Schicht den passenden Begriff zu.',
-  'Schicht 7 Anwendung: DHCP ist ein Anwendungsprotokoll. Schicht 3 Vermittlung: IP-Adressen. Schicht 2 Sicherung: MAC-Adressen. Schicht 1 Bitübertragung: Buchsen, Kabel, Signale. Je Zeile 1 Punkt.',
+  'Auf Schicht 7 (Anwendung) arbeitet DHCP als Anwendungsprotokoll. Schicht 3 (Vermittlung) adressiert mit IP-Adressen, Schicht 2 (Sicherung) mit MAC-Adressen. Zu Schicht 1 (Bitübertragung) gehören Buchsen, Kabel und Signale. Je Zeile 1 Punkt.',
   2,
   '{}',
   null,
@@ -52246,7 +52247,7 @@ values (
   'cloze',
   'ipconfig /all zeigt am Support-PC die folgende Ausgabe.',
   'Ermittle aus der Ausgabe die Werte des Subnetzes.',
-  'Maske 255.255.255.224 = /27, Blockgröße 256 - 224 = 32, 30 nutzbare Adressen. Blöcke: 64, 96, 128; die 108 liegt im Block 96 bis 127. Netz 10.30.5.96, Broadcast 10.30.5.127, letzte nutzbare Adresse 10.30.5.126. Je Wert 1 Punkt.',
+  'Die Maske 255.255.255.224 entspricht /27, die Blockgröße ist 256 - 224 = 32, nutzbar sind 30 Adressen. Die Blöcke beginnen bei 64, 96 und 128, die 108 liegt also im Block 96 bis 127. Daraus folgen Netz 10.30.5.96, Broadcast 10.30.5.127 und die letzte nutzbare Adresse 10.30.5.126. Je Wert 1 Punkt.',
   2,
   '{}',
   null,
@@ -52391,7 +52392,7 @@ values (
   'table',
   'Für die Firewall vor dem Ticketserver werden die benötigten Standardports dokumentiert.',
   'Ergänze die Ports.',
-  'HTTPS 443, SSH 22, IMAPS 993. Alle übrigen Ports bleiben in der Firewall geschlossen. Je Port 1 Punkt.',
+  'HTTPS nutzt Port 443, SSH Port 22 und IMAPS Port 993. Alle übrigen Ports bleiben in der Firewall geschlossen. Je Port 1 Punkt.',
   2,
   '{}',
   null,
@@ -52424,7 +52425,7 @@ values (
   2,
   ARRAY['englisch', 'datenblatt']::text[],
   null,
-  '{"code":"Dome Camera DC-8 - Datasheet\nResolution: 2560 x 1440, 25 fps\nNight vision: infrared LEDs\nPower consumption:\n  camera only           6 W\n  with infrared        11 W\n  with IR and heater   21 W\nPower supply: PoE, 48 V\nSetup: no default password","case_id":"f-a03h-logistik","points":4,"criteria":[{"text":"Bei der Einrichtung muss ein eigenes, sicheres Passwort gesetzt werden","points":2,"keywords":["eigenes Passwort","Passwort setzen","Passwort vergeben","neues Passwort"]},{"text":"Die Geräte des Herstellers teilen sich kein bekanntes Passwort. Angreifer können sich nicht mit Standarddaten anmelden","points":2,"keywords":["kein bekanntes Passwort","nicht alle Geräte","Angreifer","Standardpasswort"]},{"text":"Ohne gesetztes Passwort ist kein Zugriff auf die Kamera möglich; das Passwort muss dokumentiert werden","points":2,"keywords":["kein Zugriff","dokumentieren","Passwortverwaltung"]}],"sample_solution":"Die Kamera wird ohne voreingestelltes Passwort geliefert. Bei der ersten Anmeldung muss deshalb ein eigenes, sicheres Passwort vergeben und dokumentiert werden; vorher ist kein Zugriff möglich. Vorteil: Es gibt kein Passwort, das alle Geräte des Herstellers teilen und das Angreifer aus dem Handbuch kennen."}'::jsonb,
+  '{"code":"Dome Camera DC-8 - Datasheet\nResolution: 2560 x 1440, 25 fps\nNight vision: infrared LEDs\nPower consumption:\n  camera only           6 W\n  with infrared        11 W\n  with IR and heater   21 W\nPower supply: PoE, 48 V\nSetup: no default password","case_id":"f-a03h-logistik","points":4,"criteria":[{"text":"Bei der Einrichtung muss ein eigenes, sicheres Passwort gesetzt werden","points":2,"keywords":["eigenes Passwort","Passwort setzen","Passwort vergeben","neues Passwort"]},{"text":"Die Geräte des Herstellers teilen sich kein bekanntes Passwort. Angreifer können sich nicht mit Standarddaten anmelden","points":2,"keywords":["kein bekanntes Passwort","nicht alle Geräte","Angreifer","Standardpasswort"]},{"text":"Ohne gesetztes Passwort ist kein Zugriff auf die Kamera möglich; das Passwort muss dokumentiert werden","points":2,"keywords":["kein Zugriff","dokumentieren","Passwortverwaltung"]}],"sample_solution":"Die Kamera wird ohne voreingestelltes Passwort geliefert. Bei der ersten Anmeldung muss deshalb ein eigenes, sicheres Passwort vergeben und dokumentiert werden; vorher ist kein Zugriff möglich. Das hat einen Vorteil: Es gibt kein Passwort, das alle Geräte des Herstellers teilen und das Angreifer aus dem Handbuch kennen."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -52652,7 +52653,7 @@ values (
   'cloze',
   'Im Subnetz der Handscanner ist der Router das Gateway mit der ersten nutzbaren Adresse. Der Access Point erhält die vorletzte nutzbare Adresse dieses Subnetzes.',
   'Trage die IPv4-Konfiguration des Access Points ein.',
-  'Subnetz 10.50.8.64/26: Hosts .65 bis .126, Broadcast .127. Vorletzte nutzbare Adresse 10.50.8.125, Maske 255.255.255.192, Gateway 10.50.8.65. Je Wert 1 Punkt.',
+  'Im Subnetz 10.50.8.64/26 reichen die Hosts von .65 bis .126, Broadcast ist .127. Die vorletzte nutzbare Adresse ist 10.50.8.125, die Maske 255.255.255.192 und das Gateway 10.50.8.65. Je Wert 1 Punkt.',
   2,
   '{}',
   null,
@@ -52685,7 +52686,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a03n-logistik","points":3,"criteria":[{"text":"Dose 5 ist am Patchfeld nicht mit dem Switch verbunden (nicht gepatcht)","points":2,"keywords":["nicht gepatcht","nicht mit dem Switch verbunden","kein Patchkabel","nicht verbunden"]},{"text":"Lösung: Port 5 per Patchkabel mit einem freien Switch-Port verbinden oder Dose 6 nutzen","points":1,"keywords":["patchen","Patchkabel","Dose 6","Switch-Port"]}],"sample_solution":"PC und Kabel sind in Ordnung, denn an Dose 6 funktioniert alles. Dose 5 endet im Verteilerschrank am Patchfeld-Port 5, der nicht per Patchkabel mit dem Switch verbunden ist. Die Dose ist nicht gepatcht. Lösung: Port 5 an einen freien Switch-Port patchen oder den PC an Dose 6 betreiben."}'::jsonb,
+  '{"case_id":"f-a03n-logistik","points":3,"criteria":[{"text":"Dose 5 ist am Patchfeld nicht mit dem Switch verbunden (nicht gepatcht)","points":2,"keywords":["nicht gepatcht","nicht mit dem Switch verbunden","kein Patchkabel","nicht verbunden"]},{"text":"Lösung: Port 5 per Patchkabel mit einem freien Switch-Port verbinden oder Dose 6 nutzen","points":1,"keywords":["patchen","Patchkabel","Dose 6","Switch-Port"]}],"sample_solution":"PC und Kabel sind in Ordnung, denn an Dose 6 funktioniert alles. Dose 5 endet im Verteilerschrank am Patchfeld-Port 5, der nicht per Patchkabel mit dem Switch verbunden ist. Die Dose ist also nicht gepatcht. Als Lösung wird Port 5 an einen freien Switch-Port gepatcht oder der PC an Dose 6 betrieben."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -52710,7 +52711,7 @@ values (
   'cloze',
   'Das IPv6-Netz der Halle lautet 2001:db8:5a0:1c::/64. Die ersten 48 Bit sind das Standortpräfix des Unternehmens, die nächsten 16 Bit die Subnetz-ID.',
   'Ergänze die Angaben.',
-  'Ausgeschrieben hat jeder Block vier Hex-Ziffern: 2001:0db8:05a0 (48 Bit) und 001c (16 Bit). Mit 16 Bit lassen sich 2¹⁶ = 65.536 Subnetze bilden. Die Geräteadresse: 2001:db8:5a0:1c::20. Je Wert 1 Punkt.',
+  'Ausgeschrieben hat jeder Block vier Hex-Ziffern: 2001:0db8:05a0 (48 Bit) und 001c (16 Bit). Mit 16 Bit lassen sich 2¹⁶ = 65.536 Subnetze bilden. Die Geräteadresse lautet 2001:db8:5a0:1c::20. Je Wert 1 Punkt.',
   2,
   '{}',
   null,
@@ -52855,7 +52856,7 @@ values (
   'cloze',
   'Ein Einsatz hat ein Datum (als Text), eine Dauer in ganzen Minuten, die Angabe, ob er vor Ort stattfand, und einen Stundensatz mit Nachkommastellen. Die Attribute sind von außen nicht direkt zugreifbar. Die Methode berechneKosten ist bereits eingetragen.',
   'Ergänze das UML-Klassendiagramm. (5 P.)',
-  'Der Klassenname Einsatz steht oben. Attribute haben die Form „Sichtbarkeit Name: Typ“. Nicht zugreifbar von außen heißt private (-). Ganze Minuten: int, vor Ort ja/nein: boolean, Stundensatz mit Komma: double.',
+  'Der Klassenname Einsatz steht oben. Attribute haben die Form „Sichtbarkeit Name: Typ“. Von außen nicht zugreifbar bedeutet private (-). Ganze Minuten sind int, die Angabe „vor Ort“ (ja oder nein) ist boolean, der Stundensatz mit Nachkommastellen double.',
   2,
   '{}',
   null,
@@ -52884,7 +52885,7 @@ values (
   'table',
   'Die Monatsabrechnung wird mit drei Einsätzen getestet. Der Stundensatz beträgt 90 €, für Einsätze vor Ort kommt eine Anfahrtspauschale von 40 € hinzu. Liegt die Summe über 500 €, gibt es 10 % Rabatt.',
   'Führe einen Schreibtischtest durch: Berechne die Kosten je Einsatz, die Summe nach der Schleife und die Ausgabe (in €). (9 P.)',
-  'i = 0: 120 / 60 × 90 = 180, plus 40 Anfahrt = 220. i = 1: 60 / 60 × 90 = 90, nicht vor Ort. i = 2: 100 / 60 × 90 = 150, plus 40 = 190. Summe: 220 + 90 + 190 = 500. 500 > 500 ist falsch, also kein Rabatt, Ausgabe 500.',
+  'i = 0: 120 / 60 × 90 = 180, plus 40 Anfahrt = 220. i = 1: 60 / 60 × 90 = 90, nicht vor Ort. i = 2: 100 / 60 × 90 = 150, plus 40 = 190. Summe: 220 + 90 + 190 = 500. Weil 500 > 500 falsch ist, gibt es keinen Rabatt. Die Ausgabe ist 500.',
   3,
   '{}',
   null,
@@ -52917,7 +52918,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"summe ← 0","is_correct":false,"rationale":"Der Startwert einer Summe ist richtig 0."},{"text":"FÜR i VON 0 BIS n - 1","is_correct":false,"rationale":"Alle n Einsätze werden durchlaufen."},{"text":"  summe ← minuten[i]","is_correct":true,"rationale":"Die Summe wird überschrieben statt erhöht. Am Ende steht nur der letzte Wert darin."},{"text":"ENDE FÜR","is_correct":false,"rationale":"Schließt die Schleife."},{"text":"schnitt ← summe / n","is_correct":false,"rationale":"Geteilt wird richtig nach der Schleife."},{"text":"AUSGABE schnitt","is_correct":false,"rationale":"Die Ausgabe ist in Ordnung."}],"case_id":"f-a04e-systemhaus","points":2,"mono":true}'::jsonb,
+  '{"choices":[{"text":"summe ← 0","is_correct":false,"rationale":"Der Startwert 0 ist für eine Summe richtig."},{"text":"FÜR i VON 0 BIS n - 1","is_correct":false,"rationale":"Alle n Einsätze werden durchlaufen."},{"text":"  summe ← minuten[i]","is_correct":true,"rationale":"Die Summe wird überschrieben statt erhöht. Am Ende steht nur der letzte Wert darin."},{"text":"ENDE FÜR","is_correct":false,"rationale":"Schließt die Schleife."},{"text":"schnitt ← summe / n","is_correct":false,"rationale":"Geteilt wird erst nach der Schleife, das ist richtig."},{"text":"AUSGABE schnitt","is_correct":false,"rationale":"Die Ausgabe ist in Ordnung."}],"case_id":"f-a04e-systemhaus","points":2,"mono":true}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -53116,7 +53117,7 @@ values (
   'table',
   'Der Pseudocode zur Filialauswertung wird mit den Umsätzen aus der Tabelle getestet.',
   'Führe einen Schreibtischtest durch: Trage die Werte von count und gap nach jeder Filiale ein. (6 P.)',
-  'Kassel: 24500 < 20000 ist falsch. Fulda: 20000 < 20000 ist falsch. Der Grenzwert zählt bei < nicht. Marburg: wahr, count = 1, gap = 20000 - 18200 = 1800. Göttingen: wahr, count = 2, gap = 1800 + 3500 = 5300. Ausgegeben werden Marburg und Göttingen, dann 2 und 5300.',
+  'Kassel: 24500 < 20000 ist falsch. Fulda: 20000 < 20000 ist ebenfalls falsch, denn der Grenzwert zählt bei < nicht mit. Marburg: wahr, count = 1, gap = 20000 - 18200 = 1800. Göttingen: wahr, count = 2, gap = 1800 + 3500 = 5300. Ausgegeben werden Marburg und Göttingen, dann 2 und 5300.',
   2,
   '{}',
   null,
@@ -53174,7 +53175,7 @@ values (
   'cloze',
   'Die fehlerhafte Zeile „anzahl ← 1“ soll korrigiert werden. Testdaten: bestand = [3, 9, 2, 1], mindest = 5.',
   'Korrigiere die Zeile und gib die Ausgaben vor und nach der Korrektur an. (3 P.)',
-  'Korrekt ist anzahl ← anzahl + 1. Unter dem Mindestbestand 5 liegen die Bestände 3, 2 und 1, aber die 9 nicht. Der fehlerhafte Code gibt 1 aus, der korrigierte 3.',
+  'Korrekt ist anzahl ← anzahl + 1. Unter dem Mindestbestand 5 liegen die Bestände 3, 2 und 1, die 9 dagegen nicht. Der fehlerhafte Code gibt 1 aus, der korrigierte 3.',
   2,
   '{}',
   null,
@@ -53232,7 +53233,7 @@ values (
   'table',
   'Die Funktion stuft ein Ticket nach seinem Alter in Stunden (std), dem Kundentyp (premium) und der Zahl offener Tickets im Team (offen) ein.',
   'Gib für jeden Aufruf den Rückgabewert an. (6 P.)',
-  'bewerte(48, wahr, 3): 48 > 48 ist falsch, premium wahr, 48 > 24 wahr: „heute lösen“. bewerte(24, falsch, 10): nicht premium, 10 >= 10 wahr: „später“. bewerte(24, wahr, 12): premium, 24 > 24 ist falsch: „bevorzugt“. Offen wird hier nicht geprüft.',
+  'bewerte(48, wahr, 3): 48 > 48 ist falsch, premium wahr, 48 > 24 wahr: „heute lösen“. bewerte(24, falsch, 10): nicht premium, 10 >= 10 wahr: „später“. bewerte(24, wahr, 12): premium, 24 > 24 ist falsch: „bevorzugt“. Der Wert von offen wird in diesem Zweig gar nicht geprüft.',
   3,
   '{}',
   null,
@@ -53323,7 +53324,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a04e-agentur","points":2,"criteria":[{"text":"Wiederverwendbarkeit von Klassen","points":1,"keywords":["wiederverwendbarkeit","wiederverwendung","wiederverwendbar","mehrfach nutzen"]},{"text":"Bessere Wartbarkeit","points":1,"keywords":["wartbarkeit","wartbar","übersichtlich","pflege"]},{"text":"Leichtere Erweiterbarkeit","points":1,"keywords":["erweiterbarkeit","erweiterbar","erweitern","ergänzen"]},{"text":"Kapselung der Daten","points":1,"keywords":["kapselung","datenkapselung","geschützt","zugriffsschutz"]}],"sample_solution":"Zum Beispiel Wiederverwendbarkeit und Wartbarkeit. Ebenfalls richtig: Erweiterbarkeit, Kapselung der Daten."}'::jsonb,
+  '{"case_id":"f-a04e-agentur","points":2,"criteria":[{"text":"Wiederverwendbarkeit von Klassen","points":1,"keywords":["wiederverwendbarkeit","wiederverwendung","wiederverwendbar","mehrfach nutzen"]},{"text":"Bessere Wartbarkeit","points":1,"keywords":["wartbarkeit","wartbar","übersichtlich","pflege"]},{"text":"Leichtere Erweiterbarkeit","points":1,"keywords":["erweiterbarkeit","erweiterbar","erweitern","ergänzen"]},{"text":"Kapselung der Daten","points":1,"keywords":["kapselung","datenkapselung","geschützt","zugriffsschutz"]}],"sample_solution":"Zum Beispiel Wiederverwendbarkeit und Wartbarkeit. Ebenfalls richtig sind Erweiterbarkeit und die Kapselung der Daten."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -53381,7 +53382,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a04e-logistik","points":2,"criteria":[{"text":"Wiederverwendbarkeit von Klassen","points":1,"keywords":["wiederverwendbarkeit","wiederverwendung","wiederverwendbar","mehrfach nutzen"]},{"text":"Bessere Wartbarkeit","points":1,"keywords":["wartbarkeit","wartbar","übersichtlich","pflege"]},{"text":"Leichtere Erweiterbarkeit","points":1,"keywords":["erweiterbarkeit","erweiterbar","erweitern","ergänzen"]},{"text":"Kapselung der Daten","points":1,"keywords":["kapselung","datenkapselung","geschützt","zugriffsschutz"]}],"sample_solution":"Zum Beispiel Wiederverwendbarkeit und Erweiterbarkeit. Ebenfalls richtig: Wartbarkeit, Kapselung der Daten."}'::jsonb,
+  '{"case_id":"f-a04e-logistik","points":2,"criteria":[{"text":"Wiederverwendbarkeit von Klassen","points":1,"keywords":["wiederverwendbarkeit","wiederverwendung","wiederverwendbar","mehrfach nutzen"]},{"text":"Bessere Wartbarkeit","points":1,"keywords":["wartbarkeit","wartbar","übersichtlich","pflege"]},{"text":"Leichtere Erweiterbarkeit","points":1,"keywords":["erweiterbarkeit","erweiterbar","erweitern","ergänzen"]},{"text":"Kapselung der Daten","points":1,"keywords":["kapselung","datenkapselung","geschützt","zugriffsschutz"]}],"sample_solution":"Zum Beispiel Wiederverwendbarkeit und Erweiterbarkeit. Ebenfalls richtig sind Wartbarkeit und die Kapselung der Daten."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -53406,7 +53407,7 @@ values (
   'cloze',
   'Eine Palette hat eine Kennung als Text, ein Gewicht in Kilogramm mit Nachkommastellen, die Angabe, ob sie gekühlt gelagert wird, und die Zahl der bisherigen Lagertage. Alle Attribute sind von außen nicht direkt zugreifbar. Die Methode berechneGebuehr ist bereits eingetragen.',
   'Ergänze das UML-Klassendiagramm. (5 P.)',
-  'Der Klassenname Palette steht oben. Kennung als Text: String. Gewicht mit Nachkommastellen: double. Anzahl der Lagertage: int. Nicht von außen zugreifbar heißt private, notiert mit -.',
+  'Der Klassenname Palette steht oben. Die Kennung ist Text, also String. Das Gewicht hat Nachkommastellen (double), die Zahl der Lagertage ist ganzzahlig (int). Von außen nicht zugreifbar bedeutet private, notiert mit -.',
   2,
   '{}',
   null,
@@ -53435,7 +53436,7 @@ values (
   'table',
   'Die Gebührenberechnung wird mit drei Paletten getestet: P1 mit 620 kg, gekühlt; P2 mit 500 kg, ungekühlt; P3 mit 480 kg, gekühlt.',
   'Führe einen Schreibtischtest durch: Berechne die Gebühr je Palette und die Ausgabe (in €). (10 P.)',
-  'P1: 6,00 + 2,50 (620 > 500) + 4,50 (gekühlt) = 13,00. P2: 500 > 500 ist falsch, ungekühlt: 6,00. P3: 480 > 500 falsch, gekühlt: 6,00 + 4,50 = 10,50. Summe 29,50 >= 25, also 29,50 × 0,9 = 26,55. Je Palette 2 Punkte, 4 Punkte für die Ausgabe.',
+  'P1: 6,00 + 2,50 (620 > 500) + 4,50 (gekühlt) = 13,00. P2: 500 > 500 ist falsch und die Palette ist ungekühlt, also 6,00. P3: 480 > 500 ist falsch, aber gekühlt: 6,00 + 4,50 = 10,50. Die Summe 29,50 ist mindestens 25, also 29,50 × 0,9 = 26,55. Je Palette 2 Punkte, 4 Punkte für die Ausgabe.',
   3,
   '{}',
   null,
@@ -53551,7 +53552,7 @@ values (
   'open',
   'Im Entwurf gibt es die Klasse Projekt mit den Attributen titel und budgetStunden. Aktuell betreut die Agentur 14 Kundenprojekte.',
   'Erläutere den Unterschied zwischen einer Klasse und einem Objekt anhand dieses Beispiels. (4 P.)',
-  'Je Begriff 2 Punkte: 1 für die Erklärung, 1 für den Bezug zum Beispiel. Kurz: Klasse = Bauplan, Objekt = Exemplar mit eigenem Zustand.',
+  'Je Begriff 2 Punkte: 1 für die Erklärung, 1 für den Bezug zum Beispiel. Kurz gesagt ist die Klasse der Bauplan und das Objekt ein Exemplar mit eigenem Zustand.',
   2,
   '{}',
   null,
@@ -53580,7 +53581,7 @@ values (
   'table',
   'Die Klasse Projekt erhält einen Titel als Text und ein Stundenbudget als ganze Zahl. Beide Attribute sind gekapselt. Die Methode bucheStunden erhält eine Stundenzahl mit Nachkommastellen, soll von anderen Klassen aufgerufen werden können und liefert nichts zurück.',
   'Trage Sichtbarkeit und Typ für das UML-Klassendiagramm ein. (6 P.)',
-  'Gekapselte Attribute sind private (-): titel als String, budgetStunden als int. Die Methode ist von außen aufrufbar, also public (+), und liefert nichts zurück: void.',
+  'Gekapselte Attribute sind private (-): titel als String, budgetStunden als int. Die Methode ist von außen aufrufbar, also public (+), und liefert nichts zurück, daher void.',
   2,
   '{}',
   null,
@@ -53642,7 +53643,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"summe ← 0","is_correct":false,"rationale":"Die Summe startet richtig bei 0."},{"text":"FÜR i VON 0 BIS n - 1","is_correct":false,"rationale":"Alle Buchungen werden durchlaufen."},{"text":"  summe ← summe + stunden[i]","is_correct":false,"rationale":"So wird richtig aufsummiert."},{"text":"ENDE FÜR","is_correct":false,"rationale":"Schließt die Schleife."},{"text":"WENN summe < budget DANN","is_correct":true,"rationale":"Der Vergleich ist vertauscht: gewarnt wird, wenn die Summe unter dem Budget liegt."},{"text":"  AUSGABE \"Budget überschritten\"","is_correct":false,"rationale":"Der Text passt zur Aufgabe."},{"text":"ENDE WENN","is_correct":false,"rationale":"Schließt die Verzweigung."}],"case_id":"f-a04e-agentur2","points":2,"mono":true}'::jsonb,
+  '{"choices":[{"text":"summe ← 0","is_correct":false,"rationale":"Die Summe startet richtig bei 0."},{"text":"FÜR i VON 0 BIS n - 1","is_correct":false,"rationale":"Alle Buchungen werden durchlaufen."},{"text":"  summe ← summe + stunden[i]","is_correct":false,"rationale":"So wird richtig aufsummiert."},{"text":"ENDE FÜR","is_correct":false,"rationale":"Schließt die Schleife."},{"text":"WENN summe < budget DANN","is_correct":true,"rationale":"Der Vergleich ist vertauscht: Gewarnt wird, wenn die Summe unter dem Budget liegt."},{"text":"  AUSGABE \"Budget überschritten\"","is_correct":false,"rationale":"Der Text passt zur Aufgabe."},{"text":"ENDE WENN","is_correct":false,"rationale":"Schließt die Verzweigung."}],"case_id":"f-a04e-agentur2","points":2,"mono":true}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -53671,7 +53672,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a04e-agentur2","points":3,"criteria":[{"text":"Fehler: Der Vergleichsoperator ist vertauscht (< statt >)","points":1,"keywords":["vertauscht","vergleichsoperator","falscher vergleich","kleiner statt größer","falsches zeichen"]},{"text":"Folge: Die Summe 35 ist nicht kleiner als 30, deshalb erscheint keine Warnung (bzw. es würde bei unterschrittenem Budget gewarnt)","points":1,"keywords":["keine warnung","35","unter dem budget","nicht kleiner","bedingung falsch"]},{"text":"Korrektur: WENN summe > budget DANN","points":1,"keywords":["summe > budget","> budget","größer als budget","größer als das budget"]}],"sample_solution":"Der Vergleichsoperator ist vertauscht: summe < budget ist nur wahr, wenn das Budget noch nicht erreicht ist. Hier ist die Summe 35, und 35 < 30 ist falsch. Es erscheint keine Warnung. Korrekt ist: WENN summe > budget DANN."}'::jsonb,
+  '{"case_id":"f-a04e-agentur2","points":3,"criteria":[{"text":"Fehler: Der Vergleichsoperator ist vertauscht (< statt >)","points":1,"keywords":["vertauscht","vergleichsoperator","falscher vergleich","kleiner statt größer","falsches zeichen"]},{"text":"Folge: Die Summe 35 ist nicht kleiner als 30, deshalb erscheint keine Warnung (bzw. es würde bei unterschrittenem Budget gewarnt)","points":1,"keywords":["keine warnung","35","unter dem budget","nicht kleiner","bedingung falsch"]},{"text":"Korrektur: WENN summe > budget DANN","points":1,"keywords":["summe > budget","> budget","größer als budget","größer als das budget"]}],"sample_solution":"Der Vergleichsoperator ist vertauscht: summe < budget ist nur wahr, wenn das Budget noch nicht erreicht ist. Hier ist die Summe 35, und 35 < 30 ist falsch, deshalb erscheint keine Warnung. Korrekt ist: WENN summe > budget DANN."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -53725,7 +53726,7 @@ values (
   'table',
   'Ein neues Bonuskonto startet mit 0 Punkten. gutschreiben(p) addiert p nur, wenn p > 0 ist. einloesen(p) zieht p nur ab, wenn p <= punkte ist. Die Aufrufe erfolgen nacheinander auf demselben Objekt k.',
   'Trage nach jedem Aufruf den Wert des Attributs punkte ein. (4 P.)',
-  'gutschreiben(120): 0 + 120 = 120. einloesen(150): 150 <= 120 ist falsch, abgelehnt, bleibt 120. gutschreiben(-20): -20 > 0 ist falsch, bleibt 120. einloesen(120): 120 <= 120 ist wahr, 120 - 120 = 0.',
+  'gutschreiben(120): 0 + 120 = 120. einloesen(150): 150 <= 120 ist falsch, der Aufruf wird abgelehnt, es bleibt bei 120. gutschreiben(-20): -20 > 0 ist falsch, es bleibt bei 120. einloesen(120): 120 <= 120 ist wahr, 120 - 120 = 0.',
   2,
   '{}',
   null,
@@ -53754,7 +53755,7 @@ values (
   'table',
   'Je volle 10 € Umsatz gibt es einen Punkt, ab 100 € Umsatz je Einkauf die doppelte Punktzahl. DIV liefert das ganzzahlige Ergebnis einer Division.',
   'Führe einen Schreibtischtest durch: Trage für jeden Durchlauf p und punkte am Ende des Durchlaufs ein. (6 P.)',
-  'i = 0: 45 DIV 10 = 4, punkte = 4. i = 1: 100 DIV 10 = 10, 100 >= 100 ist wahr, p = 20, punkte = 24. i = 2: 99 DIV 10 = 9, 99 >= 100 falsch, punkte = 33. i = 3: 250 DIV 10 = 25, verdoppelt 50, punkte = 83. Ausgabe: 83.',
+  'i = 0: 45 DIV 10 = 4, punkte = 4. i = 1: 100 DIV 10 = 10, 100 >= 100 ist wahr, p = 20, punkte = 24. i = 2: 99 DIV 10 = 9, 99 >= 100 ist falsch, punkte = 33. i = 3: 250 DIV 10 = 25, verdoppelt auf 50, punkte = 83. Ausgabe: 83.',
   2,
   '{}',
   null,
@@ -53783,7 +53784,7 @@ values (
   'cloze',
   'Aus dem Fachkonzept: Jeder Kunde besitzt genau ein Bonuskonto, jedes Bonuskonto gehört zu genau einem Kunden. Zu einem Bonuskonto gehören beliebig viele Buchungen, auch keine. Eine Buchung gehört zu genau einem Bonuskonto und wird mit ihm gelöscht.',
   'Wähle die Multiplizitäten und die Beziehungsart für das UML-Klassendiagramm. (5 P.)',
-  'Kunde und Bonuskonto stehen 1 zu 1. Ein Bonuskonto hat 0..* Buchungen, jede Buchung gehört zu genau 1 Bonuskonto. Weil die Buchungen mit dem Konto gelöscht werden, ist es eine Komposition, also gefüllte Raute am Ganzen.',
+  'Kunde und Bonuskonto stehen im Verhältnis 1 zu 1. Ein Bonuskonto hat 0..* Buchungen, jede Buchung gehört zu genau 1 Bonuskonto. Weil die Buchungen mit dem Konto gelöscht werden, ist es eine Komposition mit gefüllter Raute am Ganzen.',
   2,
   '{}',
   null,
@@ -53899,7 +53900,7 @@ values (
   'open',
   'Zur Einarbeitung hast du einen Abschnitt aus einem englischen Fachbuch über Datenbanken erhalten.',
   'Beschreibe auf Deutsch anhand des Textes die Aufgabe des Primärschlüssels und einen Vorteil verknüpfter Tabellen.',
-  '2 Punkte für die Aufgabe des Primärschlüssels, 2 Punkte für einen Vorteil. Der Text nennt zwei (Speicherplatz, keine widersprüchlichen Daten). Geantwortet wird auf Deutsch und mit Bezug zum Text.',
+  'Für die Aufgabe des Primärschlüssels gibt es 2 Punkte, für einen Vorteil ebenfalls 2. Der Text nennt zwei Vorteile (Speicherplatz, keine widersprüchlichen Daten). Antworte auf Deutsch und mit Bezug zum Text.',
   2,
   ARRAY['englisch']::text[],
   null,
@@ -53960,7 +53961,7 @@ values (
   'cloze',
   'Es gelten weiter die Regeln der Geräteverwaltung: Ein Mitarbeiter nutzt mehrere Geräte, ein Gerät kann von mehreren Mitarbeitern genutzt werden. Jedes Gerät stammt von genau einem Lieferanten, ein Lieferant liefert viele Geräte.',
   'Ergänze die Kardinalitäten und die Folge für die Tabellen.',
-  'Mitarbeiter - Gerät ist n:m (viele auf beiden Seiten) und wird über eine Zwischentabelle umgesetzt. Gerät - Lieferant ist n:1: Viele Geräte stammen von einem Lieferanten; hier genügt der Fremdschlüssel LieferantNr in der Tabelle Gerät.',
+  'Mitarbeiter - Gerät ist n:m (viele auf beiden Seiten) und wird über eine Zwischentabelle umgesetzt. Gerät - Lieferant ist n:1, denn viele Geräte stammen von einem Lieferanten. Hier genügt der Fremdschlüssel LieferantNr in der Tabelle Gerät.',
   2,
   '{}',
   null,
@@ -54018,7 +54019,7 @@ values (
   'cloze',
   'Die Kanzlei scannt Belege an 4 Scanplätzen. An jedem Platz werden 8 Stunden am Tag im Durchschnitt 9 Belege pro Stunde gescannt. Ein Scan ist 310 kB groß (1 kB = 1.000 Byte, 1 KiB = 1.024 Byte).',
   'Ermittle den Speicherbedarf pro Tag. Runde auf volle KiB auf.',
-  '4 Plätze × 8 h × 9 Belege = 288 Belege pro Tag (1 Punkt). 288 × 310 kB = 89.280 kB = 89.280.000 Byte; / 1.024 = 87.187,5 -> 87.188 KiB (2 Punkte). Kern der Aufgabe: kB ist dezimal (1.000), KiB binär (1.024).',
+  '4 Plätze × 8 h × 9 Belege = 288 Belege pro Tag (1 Punkt). 288 × 310 kB = 89.280 kB = 89.280.000 Byte; / 1.024 = 87.187,5 -> 87.188 KiB (2 Punkte). Achte auf die Einheiten: kB ist dezimal (1.000), KiB binär (1.024).',
   2,
   '{}',
   null,
@@ -54109,7 +54110,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a04d-systemhaus","points":4,"criteria":[{"text":"Zeitersparnis: Das Abtippen entfällt, Belege werden schneller verarbeitet.","points":2,"keywords":["Zeitersparnis","schneller","Zeit","Abtippen entfällt"]},{"text":"Weniger Fehler: Tippfehler und Zahlendreher beim manuellen Erfassen werden vermieden.","points":2,"keywords":["weniger Fehler","Tippfehler","Zahlendreher","Fehlerquote"]},{"text":"Entlastung: Mitarbeitende haben mehr Zeit für anspruchsvolle Aufgaben; niedrigere Kosten.","points":2,"keywords":["Entlastung","Routine","Kosten","anspruchsvolle Aufgaben"]},{"text":"Lernendes System: Es erkennt Muster und wird mit jeder Korrektur besser; mehr Belege sind ohne zusätzliches Personal möglich.","points":2,"keywords":["Muster","lernt","skalierbar","ohne zusätzliches Personal"]}],"sample_solution":"Erstens spart die automatische Erkennung Zeit: Datum, Betrag und Absender müssen nicht mehr abgetippt werden. Zweitens sinkt die Fehlerquote, weil Tippfehler und Zahlendreher entfallen. Weitere Argumente: Die Mitarbeitenden werden von Routinearbeit entlastet, das System lernt aus Korrekturen und bewältigt mehr Belege ohne zusätzliches Personal."}'::jsonb,
+  '{"case_id":"f-a04d-systemhaus","points":4,"criteria":[{"text":"Zeitersparnis: Das Abtippen entfällt, Belege werden schneller verarbeitet.","points":2,"keywords":["Zeitersparnis","schneller","Zeit","Abtippen entfällt"]},{"text":"Weniger Fehler: Tippfehler und Zahlendreher beim manuellen Erfassen werden vermieden.","points":2,"keywords":["weniger Fehler","Tippfehler","Zahlendreher","Fehlerquote"]},{"text":"Entlastung: Mitarbeitende haben mehr Zeit für anspruchsvolle Aufgaben, und die Kosten sinken.","points":2,"keywords":["Entlastung","Routine","Kosten","anspruchsvolle Aufgaben"]},{"text":"Lernendes System: Es erkennt Muster und wird mit jeder Korrektur besser; mehr Belege sind ohne zusätzliches Personal möglich.","points":2,"keywords":["Muster","lernt","skalierbar","ohne zusätzliches Personal"]}],"sample_solution":"Erstens spart die automatische Erkennung Zeit: Datum, Betrag und Absender müssen nicht mehr abgetippt werden. Zweitens sinkt die Fehlerquote, weil Tippfehler und Zahlendreher entfallen. Weitere Argumente: Die Mitarbeitenden werden von Routinearbeit entlastet, das System lernt aus Korrekturen und bewältigt mehr Belege ohne zusätzliches Personal."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -54134,7 +54135,7 @@ values (
   'open',
   'Die Filialseiten mit Öffnungszeiten und Angeboten sind bisher statisch. Die Geschäftsleitung fragt, was eine dynamische Website davon unterscheidet.',
   'Erläutere den Unterschied zwischen einer statischen und einer dynamischen Website.',
-  'Für die volle Punktzahl müssen beide Seiten des Vergleichs erkennbar sein: statisch = feste Dateien, gleicher Inhalt; dynamisch = beim Aufruf serverseitig erzeugt, nutzer- oder eingabeabhängig.',
+  'Für die volle Punktzahl müssen beide Seiten des Vergleichs erkennbar sein. Statisch heißt: feste Dateien, gleicher Inhalt für alle. Dynamisch heißt: beim Aufruf auf dem Server erzeugt, abhängig von Nutzer oder Eingabe.',
   2,
   '{}',
   null,
@@ -54192,7 +54193,7 @@ values (
   'table',
   'Die neue Filialseite ist unter dieser Adresse erreichbar: https://www.gruenwerk.example/filialen/goettingen?tag=samstag#anfahrt',
   'Trage die Bestandteile der URL ein. Gib beim Port den Wert an, den der Browser verwendet.',
-  'Je Zelle ein halber Punkt. Aufbau: Schema://Host:Port/Pfad?Query#Fragment. Fehlt der Port, nimmt der Browser den Standardport des Schemas: bei https ist das 443.',
+  'Je Zelle ein halber Punkt. Aufbau: Schema://Host:Port/Pfad?Query#Fragment. Fehlt der Port, nimmt der Browser den Standardport des Schemas, bei https ist das 443.',
   2,
   '{}',
   null,
@@ -54221,7 +54222,7 @@ values (
   'open',
   'Die Filialen führen ihre Bestände bisher in einer Tabellenkalkulation. In jeder Artikelzeile stehen auch Name und Telefonnummer des Lieferanten.',
   'Erkläre anhand der Tabelle den Begriff Redundanz.',
-  '2 Punkte für die Erklärung mit Bezug zur Tabelle: dieselbe Information ist mehrfach vorhanden.',
+  '2 Punkte gibt es für die Erklärung mit Bezug zur Tabelle: Dieselbe Information ist mehrfach vorhanden.',
   1,
   '{}',
   null,
@@ -54250,7 +54251,7 @@ values (
   'open',
   'In der Bestandstabelle der Filialen stehen Name und Telefonnummer des Lieferanten Hortex in jeder seiner drei Artikelzeilen.',
   'Beschreibe ein Problem, das durch diese redundante Speicherung entstehen kann.',
-  '2 Punkte für ein beschriebenes Problem. Am häufigsten genannt: Inkonsistenz durch unvollständige Änderungen. Auch Speicher- und Pflegeaufwand oder die Löschanomalie zählen.',
+  '2 Punkte für ein beschriebenes Problem. Am häufigsten wird die Inkonsistenz durch unvollständige Änderungen genannt. Auch Speicher- und Pflegeaufwand oder die Löschanomalie zählen.',
   2,
   '{}',
   null,
@@ -54337,7 +54338,7 @@ values (
   'marking',
   'Für die Pflege der Filialseiten soll ein Redaktionssystem eingesetzt werden. In der englischen Produktbeschreibung steht:',
   'Markiere alle Aussagen, die sich dem Text entnehmen lassen.',
-  'Je richtig entnommener Aussage 1 Punkt. Der Text beschreibt eine dynamische Website: Inhalte in der Datenbank, Seitenaufbau beim Aufruf aus Vorlage (template) und Inhalt, Pflege ohne Programmierkenntnisse, und regelmäßige Updates als Schutz vor Angriffen.',
+  'Je richtig entnommener Aussage 1 Punkt. Der Text beschreibt eine dynamische Website: Inhalte in der Datenbank, Seitenaufbau beim Aufruf aus Vorlage (template) und Inhalt, Pflege ohne Programmierkenntnisse und regelmäßige Updates als Schutz vor Angriffen.',
   2,
   ARRAY['englisch']::text[],
   null,
@@ -54395,7 +54396,7 @@ values (
   'open',
   'Zwei Beschäftigte im Support befürchten, der KI-Assistent mache ihre Arbeit überflüssig.',
   'Erläutere einen Vorteil, den der KI-Assistent für die Beschäftigten im Support hat.',
-  '2 Punkte für einen erläuterten Vorteil (Aussage plus Folge). Typisch: Entlastung von Routine, mehr Zeit für anspruchsvolle Aufgaben, weniger Fehler.',
+  '2 Punkte für einen erläuterten Vorteil (Aussage plus Folge). Typisch sind die Entlastung von Routine, mehr Zeit für anspruchsvolle Aufgaben und weniger Fehler.',
   1,
   '{}',
   null,
@@ -54453,11 +54454,11 @@ values (
   'open',
   'Der KI-Assistent wird von einem externen Anbieter als Cloud-Dienst betrieben. Die Tickets enthalten Namen, E-Mail-Adressen und teils Zugangsdaten der Kunden.',
   'Beschreibe zwei Risiken, die beim Einsatz des KI-Assistenten zu beachten sind.',
-  'Je beschriebenem Risiko 2 Punkte, verlangt sind zwei. Gegenmaßnahmen: Auftragsverarbeitungsvertrag, sensible Daten vor der Verarbeitung entfernen, jede Antwort vor dem Versand prüfen.',
+  'Je beschriebenem Risiko 2 Punkte, verlangt sind zwei. Dagegen helfen ein Auftragsverarbeitungsvertrag, das Entfernen sensibler Daten vor der Verarbeitung und die Prüfung jeder Antwort vor dem Versand.',
   2,
   '{}',
   null,
-  '{"case_id":"f-a04d-agentur","points":4,"criteria":[{"text":"Datenschutz und Vertraulichkeit: Personenbezogene Daten und Zugangsdaten gelangen zum externen Anbieter.","points":2,"keywords":["Datenschutz","personenbezogen","DSGVO","vertraulich","Zugangsdaten"]},{"text":"Falsche Vorschläge (Halluzinationen): Der Assistent formuliert überzeugend klingende, aber falsche Antworten.","points":2,"keywords":["Halluzination","falsche Antwort","falsche Vorschläge","erfunden","fehlerhaft"]},{"text":"Blindes Vertrauen: Beschäftigte übernehmen Vorschläge ungeprüft.","points":2,"keywords":["ungeprüft","blind","verlassen sich","ohne Prüfung"]},{"text":"Abhängigkeit vom Anbieter: Ausfall des Dienstes, Preiserhöhungen.","points":2,"keywords":["Abhängigkeit","Ausfall","Anbieter","Preiserhöhung"]}],"sample_solution":"Risiko 1: Die Tickets enthalten personenbezogene Daten und Zugangsdaten, die bei der Verarbeitung zum externen Anbieter gelangen. Ohne Vertrag und Schutzmaßnahmen ein Datenschutzverstoß. Risiko 2: Der Assistent kann überzeugend klingende, aber falsche Lösungen vorschlagen; werden sie ungeprüft übernommen, erhalten Kunden falsche Auskünfte."}'::jsonb,
+  '{"case_id":"f-a04d-agentur","points":4,"criteria":[{"text":"Datenschutz und Vertraulichkeit: Personenbezogene Daten und Zugangsdaten gelangen zum externen Anbieter.","points":2,"keywords":["Datenschutz","personenbezogen","DSGVO","vertraulich","Zugangsdaten"]},{"text":"Falsche Vorschläge (Halluzinationen): Der Assistent formuliert überzeugend klingende, aber falsche Antworten.","points":2,"keywords":["Halluzination","falsche Antwort","falsche Vorschläge","erfunden","fehlerhaft"]},{"text":"Blindes Vertrauen: Beschäftigte übernehmen Vorschläge ungeprüft.","points":2,"keywords":["ungeprüft","blind","verlassen sich","ohne Prüfung"]},{"text":"Abhängigkeit vom Anbieter: Ausfall des Dienstes, Preiserhöhungen.","points":2,"keywords":["Abhängigkeit","Ausfall","Anbieter","Preiserhöhung"]}],"sample_solution":"Risiko 1: Die Tickets enthalten personenbezogene Daten und Zugangsdaten, die bei der Verarbeitung zum externen Anbieter gelangen. Ohne Vertrag und Schutzmaßnahmen ist das ein Datenschutzverstoß. Risiko 2: Der Assistent kann überzeugend klingende, aber falsche Lösungen vorschlagen; werden sie ungeprüft übernommen, erhalten Kunden falsche Auskünfte."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -54513,7 +54514,7 @@ values (
   'matching',
   'Im Ticketsystem eröffnen Kunden Tickets, Mitarbeiter bearbeiten sie. Zu jeder Bearbeitung eines Tickets durch einen Mitarbeiter wird die aufgewendete Zeit erfasst.',
   'Ordne jedes Attribut dem Element des ER-Modells zu, an dem es eingetragen wird.',
-  'Je richtig zugeordnetem Attribut ein halber Punkt. Die aufgewendete Zeit gehört an die Beziehung: Sie gilt für genau einen Mitarbeiter an genau einem Ticket. Das Eröffnungsdatum gibt es je Ticket nur einmal und bleibt beim Ticket.',
+  'Je richtig zugeordnetem Attribut ein halber Punkt. Die aufgewendete Zeit gehört an die Beziehung: Sie gilt für genau einen Mitarbeiter an genau einem Ticket. Das Eröffnungsdatum gibt es je Ticket nur einmal, es bleibt deshalb beim Ticket.',
   3,
   '{}',
   null,
@@ -54542,7 +54543,7 @@ values (
   'open',
   'Der Anbieter beschreibt seinen Assistenten in der englischen Produktinformation so:',
   'Beschreibe auf Deutsch anhand des Textes, welche Aufgabe der KI-Assistent übernimmt und welche Aufgabe bei den Beschäftigten bleibt.',
-  '2 Punkte für die Aufgabe des Assistenten (vorschlagen), 2 Punkte für die Aufgabe der Beschäftigten (prüfen und entscheiden). Geantwortet wird auf Deutsch, Stichworte mit Textbezug genügen.',
+  '2 Punkte für die Aufgabe des Assistenten (vorschlagen), 2 Punkte für die Aufgabe der Beschäftigten (prüfen und entscheiden). Antworte auf Deutsch, Stichworte mit Textbezug genügen.',
   2,
   ARRAY['englisch']::text[],
   null,
@@ -54571,7 +54572,7 @@ values (
   'table',
   'Der Hersteller liefert zu den Kameras dieses Datenblatt.',
   'Entnimm dem Datenblatt die folgenden Werte.',
-  'Je Wert 1 Punkt. Frame rate = Bildrate (12 fps = 12 Bilder pro Sekunde), colour depth = Farbtiefe, night vision up to 30 m = Nachtsicht bis 30 Meter. „No local storage“: Die Kamera speichert nicht selbst. Die Aufnahmen müssen auf den Server.',
+  'Je Wert 1 Punkt. Frame rate = Bildrate (12 fps = 12 Bilder pro Sekunde), colour depth = Farbtiefe, night vision up to 30 m = Nachtsicht bis 30 Meter. „No local storage“ heißt: Die Kamera speichert nicht selbst, die Aufnahmen müssen auf den Server.',
   1,
   ARRAY['englisch']::text[],
   null,
@@ -54629,7 +54630,7 @@ values (
   'cloze',
   'Die Aufnahmen aller 10 Kameras sollen 96 Stunden lang gespeichert werden. Rechne mit der in der vorigen Teilaufgabe ermittelten Datenrate je Kamera; falls du dort kein Ergebnis hast, rechne mit 26 Mbit/s. Es gilt 1 TiB = 1.024⁴ Byte.',
   'Berechne den Speicherbedarf. Runde auf volle TiB auf.',
-  '10 × 24 = 240 Mbit/s (1 Punkt). 240.000.000 Bit/s × 3.600 s × 96 h = 82.944.000.000.000 Bit; / 8 = 10.368.000.000.000 Byte; / 1.024⁴ ≈ 9,43 TiB -> aufgerundet 10 TiB (4 Punkte). Mit dem Ersatzwert 26 Mbit/s: 10,22 -> 11 TiB. Aufgerundet wird, weil der Speicher reichen muss.',
+  '10 × 24 = 240 Mbit/s (1 Punkt). 240.000.000 Bit/s × 3.600 s/h × 96 h =82.944.000.000.000 Bit; / 8 = 10.368.000.000.000 Byte; / 1.024⁴ ≈ 9,43 TiB -> aufgerundet 10 TiB (4 Punkte). Mit dem Ersatzwert 26 Mbit/s: 10,22 -> 11 TiB. Aufgerundet wird, weil der Speicher reichen muss.',
   3,
   '{}',
   null,
@@ -54658,7 +54659,7 @@ values (
   'matching',
   'In einer Datenbank soll festgehalten werden, welche Kamera welche Lagerzone erfasst. Eine Kamera erfasst mehrere Lagerzonen, eine Lagerzone wird von mehreren Kameras erfasst. Zu jeder Zuordnung werden die Blickrichtung und das Datum der Einrichtung gespeichert.',
   'Ergänze das ER-Diagramm: Ordne jedes Attribut dem richtigen Element zu.',
-  'Je richtig zugeordnetem Attribut ein halber Punkt. Blickrichtung und Einrichtungsdatum beschreiben die Kombination aus Kamera und Zone. Sie gehören an die Beziehung, nicht an eine der beiden Entitäten.',
+  'Je richtig zugeordnetem Attribut ein halber Punkt. Blickrichtung und Einrichtungsdatum beschreiben die Kombination aus Kamera und Zone. Deshalb gehören sie an die Beziehung, nicht an eine der beiden Entitäten.',
   3,
   '{}',
   null,
@@ -54720,7 +54721,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a04d-logistik","points":3,"criteria":[{"text":"Die KI erkennt ankommende LKW bzw. deren Kennzeichen automatisch in den Bildern.","points":1,"keywords":["erkennt","Kennzeichen","Kennzeichenerkennung","Bilderkennung","automatisch"]},{"text":"Die Ankunft wird der passenden Lieferung bzw. Bestellung zugeordnet und mit Datum und Uhrzeit erfasst.","points":1,"keywords":["zuordnen","zugeordnet","Lieferung","Bestellung","Uhrzeit"]},{"text":"Nutzen: Dem LKW wird automatisch eine freie Rampe zugewiesen, Wartezeiten sinken, Personal wird rechtzeitig informiert.","points":1,"keywords":["Rampe","zuweisen","Wartezeit","informiert","freie"]}],"sample_solution":"Eine KI-gestützte Bilderkennung liest das Kennzeichen eines ankommenden LKW, ordnet es der angekündigten Lieferung zu und erfasst Datum und Uhrzeit der Ankunft. Das System weist dem LKW automatisch eine freie Rampe zu und informiert das Lagerpersonal. Wartezeiten sinken."}'::jsonb,
+  '{"case_id":"f-a04d-logistik","points":3,"criteria":[{"text":"Die KI erkennt ankommende LKW bzw. deren Kennzeichen automatisch in den Bildern.","points":1,"keywords":["erkennt","Kennzeichen","Kennzeichenerkennung","Bilderkennung","automatisch"]},{"text":"Die Ankunft wird der passenden Lieferung bzw. Bestellung zugeordnet und mit Datum und Uhrzeit erfasst.","points":1,"keywords":["zuordnen","zugeordnet","Lieferung","Bestellung","Uhrzeit"]},{"text":"Nutzen: Dem LKW wird automatisch eine freie Rampe zugewiesen, Wartezeiten sinken, Personal wird rechtzeitig informiert.","points":1,"keywords":["Rampe","zuweisen","Wartezeit","informiert","freie"]}],"sample_solution":"Eine KI-gestützte Bilderkennung liest das Kennzeichen eines ankommenden LKW, ordnet es der angekündigten Lieferung zu und erfasst Datum und Uhrzeit der Ankunft. Das System weist dem LKW automatisch eine freie Rampe zu und informiert das Lagerpersonal. So sinken die Wartezeiten."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -54745,7 +54746,7 @@ values (
   'open',
   'Die KI zur Kennzeichenerkennung wurde nur mit Bildern bei Tageslicht trainiert. Die Halle wird aber im Dreischichtbetrieb rund um die Uhr angefahren.',
   'Beschreibe ein Risiko, das sich daraus für den Einsatz der KI ergibt.',
-  '2 Punkte für ein beschriebenes Risiko: Einseitige Trainingsdaten führen zu Fehlern unter Bedingungen, die das Modell nicht kennt. Deshalb mit Daten aus allen Schichten trainieren und die Ergebnisse überwachen.',
+  '2 Punkte für ein beschriebenes Risiko: Einseitige Trainingsdaten führen zu Fehlern unter Bedingungen, die das Modell nicht kennt. Deshalb braucht das Training Daten aus allen Schichten, und die Ergebnisse müssen überwacht werden.',
   2,
   '{}',
   null,
@@ -54774,7 +54775,7 @@ values (
   'open',
   'Bisher gleichen Sachbearbeiter jeden Lieferschein von Hand mit der Bestellung ab. Eine KI soll die gescannten Lieferscheine auslesen und Abweichungen melden.',
   'Beschreibe zwei Argumente, die für die KI-gestützte Prüfung der Lieferscheine sprechen.',
-  'Je beschriebenem Argument 2 Punkte, verlangt sind zwei. Typisch: Zeitersparnis, weniger Fehler, Kostenreduktion, Mustererkennung, Skalierbarkeit.',
+  'Je beschriebenem Argument 2 Punkte, verlangt sind zwei. Typisch sind Zeitersparnis, weniger Fehler, Kostenreduktion, Mustererkennung und Skalierbarkeit.',
   2,
   '{}',
   null,
@@ -54894,7 +54895,7 @@ values (
   2,
   ARRAY['englisch']::text[],
   null,
-  '{"code":"Redundancy means that the same\ninformation is stored more\nthan once. In the old\nspreadsheet the address of a\nsupplier appears in every\ndelivery row. If the address\nchanges, every row must be\nupdated; if one row is\nforgotten, the data becomes\ninconsistent. Storing each\nsupplier only once in a\nseparate table solves this\nproblem.","case_id":"f-a04d-logistik2","points":4,"criteria":[{"text":"Redundanz: Dieselbe Information ist mehrfach gespeichert (die Lieferantenadresse in jeder Lieferzeile).","points":1,"keywords":["mehrfach","mehr als einmal","doppelt","mehrmals"]},{"text":"Problem: Bei einer Adressänderung müssen alle Zeilen angepasst werden; wird eine vergessen, sind die Daten widersprüchlich.","points":2,"keywords":["alle Zeilen","vergessen","widersprüchlich","inkonsistent","Inkonsistenz"]},{"text":"Lösung: Jeden Lieferanten nur einmal in einer eigenen Tabelle speichern.","points":1,"keywords":["eigene Tabelle","separate Tabelle","nur einmal","eigenen Tabelle"]}],"sample_solution":"Redundanz heißt, dass dieselbe Information mehrfach gespeichert ist, hier die Lieferantenadresse in jeder Lieferzeile. Ändert sich die Adresse, müssen alle Zeilen angepasst werden; wird eine vergessen, werden die Daten widersprüchlich. Die Lösung: jeden Lieferanten nur einmal in einer eigenen Tabelle speichern."}'::jsonb,
+  '{"code":"Redundancy means that the same\ninformation is stored more\nthan once. In the old\nspreadsheet the address of a\nsupplier appears in every\ndelivery row. If the address\nchanges, every row must be\nupdated; if one row is\nforgotten, the data becomes\ninconsistent. Storing each\nsupplier only once in a\nseparate table solves this\nproblem.","case_id":"f-a04d-logistik2","points":4,"criteria":[{"text":"Redundanz: Dieselbe Information ist mehrfach gespeichert (die Lieferantenadresse in jeder Lieferzeile).","points":1,"keywords":["mehrfach","mehr als einmal","doppelt","mehrmals"]},{"text":"Problem: Bei einer Adressänderung müssen alle Zeilen angepasst werden; wird eine vergessen, sind die Daten widersprüchlich.","points":2,"keywords":["alle Zeilen","vergessen","widersprüchlich","inkonsistent","Inkonsistenz"]},{"text":"Lösung: Jeden Lieferanten nur einmal in einer eigenen Tabelle speichern.","points":1,"keywords":["eigene Tabelle","separate Tabelle","nur einmal","eigenen Tabelle"]}],"sample_solution":"Redundanz heißt, dass dieselbe Information mehrfach gespeichert ist, hier die Lieferantenadresse in jeder Lieferzeile. Ändert sich die Adresse, müssen alle Zeilen angepasst werden; wird eine vergessen, werden die Daten widersprüchlich. Die Lösung ist, jeden Lieferanten nur einmal in einer eigenen Tabelle zu speichern."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -54919,7 +54920,7 @@ values (
   'table',
   'Ein Lieferschein enthält mehrere Artikel, ein Artikel kommt auf vielen Lieferscheinen vor. Im ER-Modell gibt es die Entitätstypen Lieferschein und Artikel sowie die Beziehung „enthält“.',
   'Gib für jedes Attribut an, wo es im ER-Modell eingetragen wird.',
-  'Je Attribut ein halber Punkt. Menge und Chargennummer gelten für einen Artikel auf einem bestimmten Lieferschein. Sie gehören an die Beziehung. Lieferdatum und Fahrer beschreiben den Lieferschein, Bezeichnung und Stückgewicht den Artikel.',
+  'Je Attribut ein halber Punkt. Menge und Chargennummer gelten für einen Artikel auf einem bestimmten Lieferschein und gehören deshalb an die Beziehung. Lieferdatum und Fahrer beschreiben den Lieferschein, Bezeichnung und Stückgewicht den Artikel.',
   3,
   '{}',
   null,
@@ -54977,7 +54978,7 @@ values (
   'open',
   'Die gescannten Lieferscheine müssen als Nachweis mehrere Jahre aufbewahrt werden. Ein Kollege schlägt vor, sie zum Platzsparen stark verlustbehaftet zu komprimieren.',
   'Erläutere, warum für die Lieferscheine eine verlustfreie Kompression gewählt werden sollte.',
-  'Für die volle Punktzahl gehören zwei Gedanken zusammen: verlustfrei = exakt wiederherstellbar, und Belege müssen als Nachweis unverändert lesbar bleiben. Verlustbehaftet passt zu Fotos, Musik und Video.',
+  'Für die volle Punktzahl gehören zwei Gedanken zusammen: Verlustfrei heißt exakt wiederherstellbar, und Belege müssen als Nachweis unverändert lesbar bleiben. Verlustbehaftet passt zu Fotos, Musik und Video.',
   2,
   '{}',
   null,
@@ -55006,11 +55007,11 @@ values (
   'open',
   'Das Portal ist ausschließlich über HTTPS erreichbar. Ein Partner der Kanzlei fragt, was das den Mandanten bringt.',
   'Beschreibe zwei Vorteile von HTTPS gegenüber HTTP für das Mandantenportal.',
-  'Je beschriebenem Vorteil 2 Punkte, verlangt sind zwei: Vertraulichkeit, Authentizität des Servers, Integrität.',
+  'Je beschriebenem Vorteil 2 Punkte, verlangt sind zwei. Infrage kommen Vertraulichkeit, Authentizität des Servers und Integrität.',
   2,
   '{}',
   null,
-  '{"case_id":"f-a04d-systemhaus2","points":4,"criteria":[{"text":"Vertraulichkeit: Anmeldedaten und Dokumente werden verschlüsselt übertragen und können nicht mitgelesen werden.","points":2,"keywords":["verschlüsselt","Verschlüsselung","mitlesen","Vertraulichkeit"]},{"text":"Authentizität: Der Server weist sich per Zertifikat aus. Mandanten sind mit dem echten Portal verbunden.","points":2,"keywords":["Zertifikat","Authentizität","echte","Identität"]},{"text":"Integrität: Daten können unterwegs nicht unbemerkt verändert werden.","points":2,"keywords":["Integrität","verändert","manipuliert","Manipulation"]}],"sample_solution":"HTTPS überträgt die Daten TLS-verschlüsselt: Anmeldedaten und Steuerunterlagen können unterwegs nicht mitgelesen werden. Außerdem weist sich der Server mit einem Zertifikat aus, sodass Mandanten sicher sind, mit dem echten Portal verbunden zu sein. Zusätzlich lassen sich die Daten nicht unbemerkt verändern."}'::jsonb,
+  '{"case_id":"f-a04d-systemhaus2","points":4,"criteria":[{"text":"Vertraulichkeit: Anmeldedaten und Dokumente werden verschlüsselt übertragen und können nicht mitgelesen werden.","points":2,"keywords":["verschlüsselt","Verschlüsselung","mitlesen","Vertraulichkeit"]},{"text":"Authentizität: Der Server weist sich per Zertifikat aus, Mandanten sind also sicher mit dem echten Portal verbunden.","points":2,"keywords":["Zertifikat","Authentizität","echte","Identität"]},{"text":"Integrität: Daten können unterwegs nicht unbemerkt verändert werden.","points":2,"keywords":["Integrität","verändert","manipuliert","Manipulation"]}],"sample_solution":"HTTPS überträgt die Daten TLS-verschlüsselt: Anmeldedaten und Steuerunterlagen können unterwegs nicht mitgelesen werden. Außerdem weist sich der Server mit einem Zertifikat aus, sodass Mandanten sicher sind, mit dem echten Portal verbunden zu sein. Zusätzlich lassen sich die Daten nicht unbemerkt verändern."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -55064,7 +55065,7 @@ values (
   'table',
   'Im Testprotokoll des Portals sind drei Situationen beschrieben, in denen der Server mit einem Fehlercode antwortet.',
   'Wähle den HTTP-Statuscode, der zur Situation passt.',
-  'Je Zeile 1 Punkt. 403 Forbidden: angemeldet, aber ohne Berechtigung. 404 Not Found: Die Ressource gibt es nicht. 500 Internal Server Error: Fehler im Programm auf dem Server. 4xx = Fehler in der Anfrage, 5xx = Fehler beim Server.',
+  'Je Zeile 1 Punkt. 403 Forbidden: angemeldet, aber ohne Berechtigung. 404 Not Found: Die Ressource gibt es nicht. 500 Internal Server Error: Fehler im Programm auf dem Server. Merke dir: 4xx steht für Fehler in der Anfrage, 5xx für Fehler beim Server.',
   2,
   '{}',
   null,
@@ -55208,8 +55209,8 @@ values (
   'ts-testfaelle',
   'table',
   null,
-  'Bilde die Äquivalenzklassen für den Bestellwert: Gib an, ob die Klasse gültig ist, und nenne das Soll-Ergebnis. (6 P.)',
-  'Fünf Klassen: zwei ungültige (unter 1, über 5.000) mit Fehlermeldung und drei gültige mit je eigenem Verhalten: 4,90 €, 2,90 € und 0,00 €. Aus jeder Klasse genügt ein Repräsentant, etwa -5, 20, 120, 800 und 6.000.',
+  'Vervollständige die Äquivalenzklassen für den Bestellwert: Gib je Klasse an, ob sie gültig ist, und nenne das Soll-Ergebnis. (6 P.)',
+  'Es gibt fünf Klassen: zwei ungültige (unter 1 und über 5.000) mit Fehlermeldung und drei gültige mit jeweils eigenem Ergebnis (4,90 €, 2,90 € und 0,00 €). Aus jeder Klasse genügt ein Repräsentant, etwa -5, 20, 120, 800 und 6.000.',
   2,
   '{}',
   null,
@@ -55274,7 +55275,7 @@ versand(201): keine Bedingung trifft zu, Rückgabe 0.',
   2,
   '{}',
   null,
-  '{"code":" 1 funktion versand(wert)\n 2   WENN wert < 1 ODER wert > 5000 DANN\n 3     RÜCKGABE \"Fehler\"\n 4   ENDE WENN\n 5   WENN wert < 50 DANN\n 6     RÜCKGABE 4.90\n 7   ENDE WENN\n 8   WENN wert <= 200 DANN\n 9     RÜCKGABE 2.90\n10   ENDE WENN\n11   RÜCKGABE 0","case_id":"f-a05-agentur","points":4,"cloze_text":"versand(49) liefert {0}\nversand(50) liefert {1}\nversand(200) liefert {2}\nversand(201) liefert {3}","gaps":[{"answers":["4.9"],"numeric":true,"tolerance":0.001,"rationale":"49 < 50 ist wahr."},{"answers":["2.9"],"numeric":true,"tolerance":0.001,"rationale":"50 < 50 falsch, 50 <= 200 wahr."},{"answers":["2.9"],"numeric":true,"tolerance":0.001,"rationale":"200 <= 200 ist wahr."},{"answers":["0"],"numeric":true,"rationale":"Keine Bedingung trifft zu."}]}'::jsonb,
+  '{"code":" 1 funktion versand(wert)\n 2   WENN wert < 1 ODER wert > 5000 DANN\n 3     RÜCKGABE \"Fehler\"\n 4   ENDE WENN\n 5   WENN wert < 50 DANN\n 6     RÜCKGABE 4.90\n 7   ENDE WENN\n 8   WENN wert <= 200 DANN\n 9     RÜCKGABE 2.90\n10   ENDE WENN\n11   RÜCKGABE 0","case_id":"f-a05-agentur","points":4,"cloze_text":"versand(49) liefert {0}\nversand(50) liefert {1}\nversand(200) liefert {2}\nversand(201) liefert {3}","gaps":[{"answers":["4.9"],"numeric":true,"tolerance":0.001,"rationale":"49 < 50 ist wahr."},{"answers":["2.9"],"numeric":true,"tolerance":0.001,"rationale":"50 < 50 ist falsch, 50 <= 200 ist wahr."},{"answers":["2.9"],"numeric":true,"tolerance":0.001,"rationale":"200 <= 200 ist wahr."},{"answers":["0"],"numeric":true,"rationale":"Keine Bedingung trifft zu."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -55299,11 +55300,11 @@ values (
   'marking',
   'Der Test mit dem Bestellwert 200 liefert 2,90 € statt 0,00 €.',
   'Markiere die Zeile, die den Fehler verursacht. (2 P.)',
-  'In Zeile 8 steht <= statt <. Dadurch fällt der Bestellwert 200 noch in die Klasse „50 bis 199“. Korrektur: WENN wert < 200 DANN. Wie im Lösungsbogen: 1 Punkt für die Fundstelle, 1 Punkt für den richtigen Operator.',
+  'In Zeile 8 steht <= statt <. Dadurch fällt der Bestellwert 200 noch in die Klasse „50 bis 199“. Richtig wäre: WENN wert < 200 DANN. In der Prüfung gibt es dafür 1 Punkt für die Fundstelle und 1 Punkt für den richtigen Operator.',
   2,
   '{}',
   null,
-  '{"choices":[{"text":" 2   WENN wert < 1 ODER wert > 5000 DANN","is_correct":false,"rationale":"Die Prüfung auf ungültige Werte stimmt mit der Vorgabe überein."},{"text":" 5   WENN wert < 50 DANN","is_correct":false,"rationale":"Richtig: „unter 50 €“ schließt 50 aus."},{"text":" 6     RÜCKGABE 4.90","is_correct":false,"rationale":"Der Betrag entspricht der Vorgabe."},{"text":" 8   WENN wert <= 200 DANN","is_correct":true,"rationale":"Richtig wäre wert < 200 (oder wert <= 199). Ab 200 € ist der Versand kostenlos."},{"text":" 9     RÜCKGABE 2.90","is_correct":false,"rationale":"Der Betrag entspricht der Vorgabe."},{"text":"11   RÜCKGABE 0","is_correct":false,"rationale":"Kostenloser Versand ist hier richtig."}],"code":" 1 funktion versand(wert)\n 2   WENN wert < 1 ODER wert > 5000 DANN\n 3     RÜCKGABE \"Fehler\"\n 4   ENDE WENN\n 5   WENN wert < 50 DANN\n 6     RÜCKGABE 4.90\n 7   ENDE WENN\n 8   WENN wert <= 200 DANN\n 9     RÜCKGABE 2.90\n10   ENDE WENN\n11   RÜCKGABE 0","case_id":"f-a05-agentur","points":2,"mono":true}'::jsonb,
+  '{"choices":[{"text":" 2   WENN wert < 1 ODER wert > 5000 DANN","is_correct":false,"rationale":"Die Prüfung auf ungültige Werte stimmt mit der Vorgabe überein."},{"text":" 5   WENN wert < 50 DANN","is_correct":false,"rationale":"Die Bedingung stimmt, denn „unter 50 €“ schließt 50 aus."},{"text":" 6     RÜCKGABE 4.90","is_correct":false,"rationale":"Der Betrag entspricht der Vorgabe."},{"text":" 8   WENN wert <= 200 DANN","is_correct":true,"rationale":"Richtig wäre wert < 200 (oder wert <= 199). Ab 200 € ist der Versand kostenlos."},{"text":" 9     RÜCKGABE 2.90","is_correct":false,"rationale":"Der Betrag entspricht der Vorgabe."},{"text":"11   RÜCKGABE 0","is_correct":false,"rationale":"Kostenloser Versand ist hier richtig."}],"code":" 1 funktion versand(wert)\n 2   WENN wert < 1 ODER wert > 5000 DANN\n 3     RÜCKGABE \"Fehler\"\n 4   ENDE WENN\n 5   WENN wert < 50 DANN\n 6     RÜCKGABE 4.90\n 7   ENDE WENN\n 8   WENN wert <= 200 DANN\n 9     RÜCKGABE 2.90\n10   ENDE WENN\n11   RÜCKGABE 0","case_id":"f-a05-agentur","points":2,"mono":true}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -55328,7 +55329,7 @@ values (
   'open',
   null,
   'Erläutere, warum zusätzlich zu den Repräsentanten der Äquivalenzklassen auch die Grenzwerte getestet werden. Beziehe dich auf den gefundenen Fehler. (4 P.)',
-  'Je Aspekt 2 Punkte. Äquivalenzklassen sorgen dafür, dass jeder Fall einmal vorkommt, die Grenzwertanalyse prüft gezielt die Übergänge.',
+  'Je Aspekt 2 Punkte. Äquivalenzklassen sorgen dafür, dass jeder Fall einmal vorkommt, und die Grenzwertanalyse prüft gezielt die Übergänge.',
   2,
   '{}',
   null,
@@ -55473,11 +55474,11 @@ values (
   'matching',
   'Bei der Abnahme werden fünf Feststellungen notiert.',
   'Stufe jede Feststellung ein. (4 P.)',
-  'Wesentlich sind Mängel, die die vereinbarte Nutzung verhindern oder verfälschen (Buchung von 120 und von 0). Schreibfehler und ein leiser Ton sind unwesentlich. Die Statistik war nicht vereinbart. Sie ist kein Mangel, sondern ein neuer Wunsch.',
+  'Wesentlich sind Mängel, die die vereinbarte Nutzung verhindern oder verfälschen (Buchung von 120 und von 0). Schreibfehler und ein leiser Ton sind unwesentlich. Die Statistik war nicht vereinbart und ist deshalb kein Mangel, sondern ein neuer Wunsch.',
   2,
   '{}',
   null,
-  '{"buckets":["wesentlicher Mangel","unwesentlicher Mangel","kein Mangel (neuer Wunsch)"],"match_items":[{"text":"Im Menü steht „Wareineingang“ statt „Wareneingang“.","bucket":1,"rationale":"Ein Schreibfehler stört die Nutzung nicht."},{"text":"Eine volle Palette mit 120 Kartons lässt sich nicht buchen.","bucket":0,"rationale":"Eine zugesicherte Kernfunktion fehlt."},{"text":"Die Schichtleitung wünscht sich zusätzlich eine Statistik je Schicht.","bucket":2,"rationale":"Nicht im Pflichtenheft vereinbart, also ein Änderungsantrag."},{"text":"Die Menge 0 wird als Wareneingang gebucht.","bucket":0,"rationale":"Falsche Bestände im Lager: die Kernfunktion arbeitet fehlerhaft."},{"text":"Der Bestätigungston ist leise, die Buchung funktioniert.","bucket":1,"rationale":"Kleine Beeinträchtigung, die Funktion ist gegeben."}],"case_id":"f-a05-logistik","points":4}'::jsonb,
+  '{"buckets":["wesentlicher Mangel","unwesentlicher Mangel","kein Mangel (neuer Wunsch)"],"match_items":[{"text":"Im Menü steht „Wareineingang“ statt „Wareneingang“.","bucket":1,"rationale":"Ein Schreibfehler stört die Nutzung nicht."},{"text":"Eine volle Palette mit 120 Kartons lässt sich nicht buchen.","bucket":0,"rationale":"Eine zugesicherte Kernfunktion fehlt."},{"text":"Die Schichtleitung wünscht sich zusätzlich eine Statistik je Schicht.","bucket":2,"rationale":"Nicht im Pflichtenheft vereinbart, also ein Änderungsantrag."},{"text":"Die Menge 0 wird als Wareneingang gebucht.","bucket":0,"rationale":"Das führt zu falschen Beständen im Lager, die Kernfunktion arbeitet fehlerhaft."},{"text":"Der Bestätigungston ist leise, die Buchung funktioniert.","bucket":1,"rationale":"Kleine Beeinträchtigung, die Funktion ist gegeben."}],"case_id":"f-a05-logistik","points":4}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -55502,7 +55503,7 @@ values (
   'open',
   null,
   'Begründe, ob Elbtal die Abnahme erklären sollte, und beschreibe das weitere Vorgehen. (4 P.)',
-  'Je Aspekt 2 Punkte, höchstens 4. Wegen unwesentlicher Mängel dürfte die Abnahme nicht verweigert werden. Sie würden nur mit Vorbehalt ins Protokoll aufgenommen.',
+  'Je Aspekt 2 Punkte, höchstens 4. Wegen unwesentlicher Mängel allein dürfte Elbtal die Abnahme nicht verweigern. Solche Mängel werden nur mit Vorbehalt ins Protokoll aufgenommen.',
   2,
   '{}',
   null,
@@ -55535,7 +55536,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a05-logistik","points":3,"criteria":[{"text":"Schritte und Eingaben, mit denen sich der Fehler nachstellen lässt (Menge 120)","points":1,"keywords":["Schritte","Eingabe","nachstellen","reproduzieren"]},{"text":"Soll- und Ist-Ergebnis","points":1,"keywords":["Soll","Ist-Ergebnis","erwartet","tatsächlich"]},{"text":"Testumgebung: App-Version und Scannermodell","points":1,"keywords":["Version","Umgebung","Scannermodell","Gerät"]},{"text":"Fehlerklasse und Priorität","points":1,"keywords":["Fehlerklasse","Priorität","Schwere"]},{"text":"Kennung, Titel, Datum und Name des Testers","points":1,"keywords":["Kennung","Titel","Datum","Tester","Nummer"]}],"sample_solution":"Die Schritte zum Nachstellen (Palette scannen, Menge 120 eingeben), das Soll-Ergebnis „gebucht“ und das Ist-Ergebnis „Fehlermeldung“ sowie die Testumgebung mit App-Version und Scannermodell. Dazu gehören außerdem Fehlerklasse und Priorität."}'::jsonb,
+  '{"case_id":"f-a05-logistik","points":3,"criteria":[{"text":"Schritte und Eingaben, mit denen sich der Fehler nachstellen lässt (Menge 120)","points":1,"keywords":["Schritte","Eingabe","nachstellen","reproduzieren"]},{"text":"Soll- und Ist-Ergebnis","points":1,"keywords":["Soll","Ist-Ergebnis","erwartet","tatsächlich"]},{"text":"Testumgebung: App-Version und Scannermodell","points":1,"keywords":["Version","Umgebung","Scannermodell","Gerät"]},{"text":"Fehlerklasse und Priorität","points":1,"keywords":["Fehlerklasse","Priorität","Schwere"]},{"text":"Kennung, Titel, Datum und Name des Testers","points":1,"keywords":["Kennung","Titel","Datum","Tester","Nummer"]}],"sample_solution":"In die Meldung gehören die Schritte zum Nachstellen (Palette scannen, Menge 120 eingeben), das Soll-Ergebnis „gebucht“ und das Ist-Ergebnis „Fehlermeldung“ sowie die Testumgebung mit App-Version und Scannermodell. Richtig sind außerdem Fehlerklasse und Priorität."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -55705,7 +55706,7 @@ values (
   'cloze',
   null,
   'Ergänze das erreichte Schutzziel sowie je einen Vorteil und einen Nachteil der asymmetrischen gegenüber der symmetrischen Verschlüsselung.',
-  'Verschlüsselung schützt die Vertraulichkeit. Asymmetrisch muss kein geheimer Schlüssel über einen sicheren Kanal ausgetauscht werden. Der öffentliche darf jedem bekannt sein. Dafür ist das Verfahren rechenaufwendiger und langsamer.',
+  'Verschlüsselung schützt die Vertraulichkeit. Beim asymmetrischen Verfahren muss kein geheimer Schlüssel über einen sicheren Kanal ausgetauscht werden, denn der öffentliche Schlüssel darf jedem bekannt sein. Dafür ist das Verfahren rechenaufwendiger und langsamer.',
   2,
   '{}',
   null,
@@ -55879,7 +55880,7 @@ values (
   'table',
   null,
   'Für die Anmeldung an den Kassen werden drei Methoden verglichen. Ergänze die Tabelle; die Zeile „Fingerabdruck“ dient als Muster.',
-  'Wissen (Passwort): braucht keine Hardware, kann aber verraten, ausgespäht oder erraten werden. Besitz (Chipkarte): nicht erratbar, ein Verlust fällt auf. Sie kann aber gestohlen und missbraucht werden. Je Zelle 1 Punkt.',
+  'Ein Passwort (Wissen) braucht keine Hardware, kann aber verraten, ausgespäht oder erraten werden. Eine Chipkarte (Besitz) lässt sich nicht erraten, und ihr Verlust fällt auf. Sie kann aber gestohlen und missbraucht werden. Je Zelle 1 Punkt.',
   2,
   '{}',
   null,
@@ -55912,7 +55913,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a06-handel","points":2,"criteria":[{"text":"Seit der Fertigung bekannt gewordene Sicherheitslücken werden geschlossen. Das Gerät ist gegen Angriffe gehärtet","points":2,"keywords":["Sicherheitslücke","Schwachstelle","Angriff","härten","schließen"]},{"text":"Fehler der Auslieferungsversion werden behoben, das Gerät läuft stabiler","points":2,"keywords":["Fehler","Bug","beheben","stabil"]},{"text":"Die Software wird an aktuelle Anforderungen angepasst (neue Funktionen, Vorgaben, Kompatibilität)","points":2,"keywords":["Anforderungen","Funktionen","Kompatibilität","Vorgaben","anpassen"]}],"sample_solution":"Seit der Fertigung sind acht Monate vergangen. In dieser Zeit wurden Sicherheitslücken bekannt und vom Hersteller behoben. Erst das Update schließt diese Lücken, sodass das Terminal nicht mit bekannten Schwachstellen ans Netz geht."}'::jsonb,
+  '{"case_id":"f-a06-handel","points":2,"criteria":[{"text":"Seit der Fertigung bekannt gewordene Sicherheitslücken werden geschlossen, das Gerät ist damit gegen Angriffe gehärtet","points":2,"keywords":["Sicherheitslücke","Schwachstelle","Angriff","härten","schließen"]},{"text":"Fehler der Auslieferungsversion werden behoben, das Gerät läuft stabiler","points":2,"keywords":["Fehler","Bug","beheben","stabil"]},{"text":"Die Software wird an aktuelle Anforderungen angepasst (neue Funktionen, Vorgaben, Kompatibilität)","points":2,"keywords":["Anforderungen","Funktionen","Kompatibilität","Vorgaben","anpassen"]}],"sample_solution":"Seit der Fertigung sind acht Monate vergangen. In dieser Zeit wurden Sicherheitslücken bekannt und vom Hersteller behoben. Erst das Update schließt diese Lücken, sodass das Terminal nicht mit bekannten Schwachstellen ans Netz geht."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -56198,7 +56199,7 @@ values (
   'table',
   'Im Ticketsystem gibt es drei Rollen. Kunden sehen und kommentieren nur ihre eigenen Tickets. Support-Mitarbeitende bearbeiten alle Tickets. Benutzerkonten verwalten ausschließlich die Administratoren.',
   'Ergänze die Berechtigungen nach dem Minimalprinzip.',
-  'Minimalprinzip: Jede Rolle erhält nur die Rechte, die sie für ihre Aufgabe braucht. Kunden sehen nur eigene Tickets, der Support alle. Die Kontenverwaltung bleibt den Administratoren vorbehalten, denn auch der Support braucht sie nicht.',
+  'Nach dem Minimalprinzip erhält jede Rolle nur die Rechte, die sie für ihre Aufgabe braucht. Kunden sehen nur eigene Tickets, der Support alle. Die Kontenverwaltung bleibt den Administratoren vorbehalten, denn auch der Support braucht sie nicht.',
   2,
   '{}',
   null,
@@ -56289,7 +56290,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a06-agentur","points":2,"criteria":[{"text":"Schulungen und Hilfen anbieten, damit alle das System sicher bedienen können","points":2,"keywords":["Schulung","Training","einweisen","Anleitung","Hilfe"]},{"text":"Betroffene beteiligen: Rückmeldungen einholen und Abläufe im System gemeinsam anpassen","points":2,"keywords":["beteiligen","einbeziehen","Rückmeldung","Feedback","mitgestalten"]},{"text":"Nutzen und Ziele offen kommunizieren, etwa keine verlorenen Anfragen und Vertretung im Urlaub","points":2,"keywords":["Nutzen","Vorteile","kommunizieren","informieren","erklären"]},{"text":"Ansprechpersonen im Team benennen (Key-User), die bei Fragen helfen","points":2,"keywords":["Key-User","Ansprechperson","Ansprechpartner","Multiplikator"]}],"sample_solution":"Die Agentur kann die Mitarbeitenden schulen und ihnen den Nutzen zeigen, zum Beispiel dass keine Anfrage mehr verloren geht und Kolleginnen im Urlaub vertreten werden können. Sinnvoll ist auch, Rückmeldungen einzuholen und das System daraufhin anzupassen: Beteiligung wirkt nachhaltiger als Druck."}'::jsonb,
+  '{"case_id":"f-a06-agentur","points":2,"criteria":[{"text":"Schulungen und Hilfen anbieten, damit alle das System sicher bedienen können","points":2,"keywords":["Schulung","Training","einweisen","Anleitung","Hilfe"]},{"text":"Betroffene beteiligen: Rückmeldungen einholen und Abläufe im System gemeinsam anpassen","points":2,"keywords":["beteiligen","einbeziehen","Rückmeldung","Feedback","mitgestalten"]},{"text":"Nutzen und Ziele offen kommunizieren, etwa keine verlorenen Anfragen und Vertretung im Urlaub","points":2,"keywords":["Nutzen","Vorteile","kommunizieren","informieren","erklären"]},{"text":"Ansprechpersonen im Team benennen (Key-User), die bei Fragen helfen","points":2,"keywords":["Key-User","Ansprechperson","Ansprechpartner","Multiplikator"]}],"sample_solution":"Die Agentur kann die Mitarbeitenden schulen und ihnen den Nutzen zeigen, zum Beispiel dass keine Anfrage mehr verloren geht und Kolleginnen im Urlaub vertreten werden können. Sinnvoll ist auch, Rückmeldungen einzuholen und das System daraufhin anzupassen, denn Beteiligung wirkt nachhaltiger als Druck."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -56347,7 +56348,7 @@ values (
   2,
   ARRAY['englisch']::text[],
   null,
-  '{"code":"NETWORK CAMERA NC-420 - SECURITY FEATURES\n\n- No default passwords: a password must be set\n  during first setup\n- Encrypted video stream (TLS 1.3)\n- Signed firmware with automatic update check\n- Login is locked for 10 minutes after 5 failed\n  attempts","case_id":"f-a06-logistik","points":4,"criteria":[{"text":"Bei der Ersteinrichtung muss für jede Kamera ein eigenes Passwort gesetzt werden, das der Passwortrichtlinie entspricht","points":2,"keywords":["eigenes Passwort","Passwort setzen","Passwort vergeben","Ersteinrichtung","festlegen"]},{"text":"Es gibt kein bei allen Geräten gleiches, öffentlich bekanntes Passwort: Angriffe mit Listen von Standardpasswörtern laufen ins Leere","points":2,"keywords":["öffentlich bekannt","bei allen Geräten","Standardpasswort","Listen","nicht dasselbe"]},{"text":"Ohne gesetztes Passwort ist kein Zugang möglich; die Passwörter müssen sicher dokumentiert werden (z. B. Passwortmanager)","points":2,"keywords":["kein Zugang","Passwortmanager","dokumentieren","nicht nutzbar","verwalten"]}],"sample_solution":"Die Kamera wird ohne voreingestelltes Passwort ausgeliefert. Erstens muss bei der Ersteinrichtung jeder Kamera ein eigenes, regelkonformes Passwort vergeben werden. Ohne dieses ist kein Zugang möglich. Zweitens teilen sich nicht alle Geräte des Herstellers dasselbe, öffentlich bekannte Passwort; Angreifer können die Kameras nicht mit Listen von Standardpasswörtern übernehmen."}'::jsonb,
+  '{"code":"NETWORK CAMERA NC-420 - SECURITY FEATURES\n\n- No default passwords: a password must be set\n  during first setup\n- Encrypted video stream (TLS 1.3)\n- Signed firmware with automatic update check\n- Login is locked for 10 minutes after 5 failed\n  attempts","case_id":"f-a06-logistik","points":4,"criteria":[{"text":"Bei der Ersteinrichtung muss für jede Kamera ein eigenes Passwort gesetzt werden, das der Passwortrichtlinie entspricht","points":2,"keywords":["eigenes Passwort","Passwort setzen","Passwort vergeben","Ersteinrichtung","festlegen"]},{"text":"Es gibt kein bei allen Geräten gleiches, öffentlich bekanntes Passwort: Angriffe mit Listen von Standardpasswörtern laufen ins Leere","points":2,"keywords":["öffentlich bekannt","bei allen Geräten","Standardpasswort","Listen","nicht dasselbe"]},{"text":"Ohne gesetztes Passwort ist kein Zugang möglich; die Passwörter müssen sicher dokumentiert werden (z. B. Passwortmanager)","points":2,"keywords":["kein Zugang","Passwortmanager","dokumentieren","nicht nutzbar","verwalten"]}],"sample_solution":"Die Kamera wird ohne voreingestelltes Passwort ausgeliefert. Erstens muss bei der Ersteinrichtung jeder Kamera ein eigenes, regelkonformes Passwort vergeben werden, sonst ist kein Zugang möglich. Zweitens teilen sich nicht alle Geräte des Herstellers dasselbe, öffentlich bekannte Passwort; Angreifer können die Kameras nicht mit Listen von Standardpasswörtern übernehmen."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -56488,7 +56489,7 @@ values (
   'open',
   'In der Belegschaft regt sich Widerstand: Viele befürchten, die Kameras dienten dazu, ihr Arbeitstempo zu überwachen.',
   'Beschreibe zwei Maßnahmen, mit denen die Unternehmensleitung die Akzeptanz der Kameras erhöhen kann. (4 P.)',
-  'Je Maßnahme 2 Punkte, höchstens 4 Punkte. Widerstand entsteht hier aus Sorge: Information und Beteiligung wirken besser als Anordnung. Andere fachlich richtige Antworten zählen ebenfalls.',
+  'Je Maßnahme 2 Punkte, höchstens 4 Punkte. Der Widerstand entsteht hier aus Sorge, deshalb wirken Information und Beteiligung besser als eine Anordnung. Andere fachlich richtige Antworten zählen ebenfalls.',
   2,
   '{}',
   null,
@@ -56575,7 +56576,7 @@ values (
   'table',
   'Für die Schutzbedarfsfeststellung gelten die Kategorien der Tabelle. Zu den Anwendungen ist bekannt: Ein Bekanntwerden von Mandantenakten würde gegen das Berufsgeheimnis verstoßen und die Existenz der Kanzlei gefährden. Fällt das Lohnprogramm zum Monatsende länger als zwei Tage aus, entsteht ein beträchtlicher Schaden. Fehler auf der Website sind schnell korrigiert und kaum von Bedeutung.',
   'Ergänze Kategorie und Begründung. Die erste Zeile dient als Muster.',
-  'Der Schutzbedarf richtet sich nach dem möglichen Schaden: Mandantenakten/Vertraulichkeit sehr hoch (Berufsgeheimnis, Existenz gefährdet), Lohnprogramm/Verfügbarkeit hoch (beträchtlicher Schaden bei längerem Ausfall), Website/Integrität normal (Schaden begrenzt). Je Zelle 1 Punkt.',
+  'Der Schutzbedarf richtet sich nach dem möglichen Schaden. Bei den Mandantenakten ist die Vertraulichkeit sehr hoch einzustufen (Berufsgeheimnis, Existenz gefährdet), beim Lohnprogramm die Verfügbarkeit hoch (beträchtlicher Schaden bei längerem Ausfall) und bei der Website die Integrität normal (Schaden begrenzt). Je Zelle 1 Punkt.',
   2,
   '{}',
   null,
@@ -56690,8 +56691,8 @@ values (
   'sm-backup',
   'numeric',
   null,
-  'Berechne, wie viel Speicherplatz die Vollsicherung und die vier differenziellen Sicherungen einer Woche zusammen belegen.',
-  'Vollsicherung 300 GB + differenzielle Sicherungen 20 + 40 + 60 + 80 = 200 GB. Zusammen 300 GB + 200 GB = 500 GB.',
+  'Der neue Sicherungsplan sieht freitags eine Vollsicherung mit 300 GB und von Montag bis Donnerstag je eine differenzielle Sicherung vor; täglich ändern sich 20 GB jeweils anderer Dateien. Berechne, wie viel Speicherplatz die Vollsicherung und die vier differenziellen Sicherungen einer Woche zusammen belegen.',
+  'Jede differenzielle Sicherung enthält alle Änderungen seit der Vollsicherung: 20 + 40 + 60 + 80 = 200 GB. Mit der Vollsicherung sind das 300 GB + 200 GB = 500 GB.',
   2,
   '{}',
   null,
@@ -56724,7 +56725,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a06-logistik2","points":3,"criteria":[{"text":"Rechtsgrundlage: Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO); die Nennung von § 26 BDSG wird ebenfalls gewertet","points":1,"keywords":["Arbeitsvertrag","Vertrag","lit. b","§ 26","Beschäftigungsverhältnis"]},{"text":"Begründung: Ohne diese Daten lässt sich der Schichtbetrieb nicht planen. Die Verarbeitung ist für die Durchführung des Arbeitsverhältnisses erforderlich, eine Einwilligung ist nicht nötig","points":2,"keywords":["erforderlich","notwendig","Schichtplanung","keine Einwilligung","Durchführung"]}],"sample_solution":"Rechtsgrundlage ist die Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO). Die Daten sind erforderlich, um den Dreischichtbetrieb zu planen und die Beschäftigten zu erreichen. Eine Einwilligung ist dafür nicht nötig. In Lehrbüchern und älteren Lösungen wird oft § 26 BDSG genannt; ob dessen allgemeine Regel nach einem Urteil des Europäischen Gerichtshofs von 2023 noch anwendbar ist, ist umstritten. Sicher ist die Stütze auf die DSGVO."}'::jsonb,
+  '{"case_id":"f-a06-logistik2","points":3,"criteria":[{"text":"Rechtsgrundlage: Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO); die Nennung von § 26 BDSG wird ebenfalls gewertet","points":1,"keywords":["Arbeitsvertrag","Vertrag","lit. b","§ 26","Beschäftigungsverhältnis"]},{"text":"Begründung: Ohne diese Daten lässt sich der Schichtbetrieb nicht planen. Die Verarbeitung ist für die Durchführung des Arbeitsverhältnisses erforderlich, eine Einwilligung ist nicht nötig","points":2,"keywords":["erforderlich","notwendig","Schichtplanung","keine Einwilligung","Durchführung"]}],"sample_solution":"Rechtsgrundlage ist die Erfüllung des Arbeitsvertrags (Art. 6 Abs. 1 lit. b DSGVO). Die Daten sind erforderlich, um den Dreischichtbetrieb zu planen und die Beschäftigten zu erreichen. Eine Einwilligung ist dafür nicht nötig. In Lehrbüchern und älteren Lösungen wird oft § 26 BDSG genannt; ob dessen allgemeine Regel nach einem Urteil des Europäischen Gerichtshofs von 2023 noch anwendbar ist, ist umstritten. Auf der sicheren Seite bist du mit der DSGVO."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -56749,7 +56750,7 @@ values (
   'table',
   null,
   'Ergänze für jeden Bereich eine geeignete technisch-organisatorische Maßnahme. Die erste Zeile dient als Muster.',
-  'Anmeldung: Mehr-Faktor-Authentifizierung. Kommunikation: verschlüsselter VPN-Tunnel. Unterwegs: Blickschutzfolie gegen Mitlesen. Transport: verschlossene Behälter bzw. verschlüsselte Datenträger. Je Zeile 1 Punkt.',
+  'Für die Anmeldung eignet sich eine Mehr-Faktor-Authentifizierung, für die Kommunikation ein verschlüsselter VPN-Tunnel. Unterwegs schützt die Blickschutzfolie vor dem Mitlesen, beim Transport ein verschlossener Behälter oder ein verschlüsselter Datenträger. Je Zeile 1 Punkt.',
   2,
   '{}',
   null,
@@ -56807,7 +56808,7 @@ values (
   'open',
   null,
   'Beschreibe, was die Schutzziele Vertraulichkeit und Integrität bezogen auf die Daten der verschlüsselten SSD bedeuten. (4 P.)',
-  'Je Schutzziel 2 Punkte: Vertraulichkeit = nur Befugte können lesen, Integrität = unbefugte Änderungen werden verhindert oder erkannt.',
+  'Je Schutzziel 2 Punkte. Vertraulichkeit heißt, dass nur Befugte die Daten lesen können. Integrität heißt, dass unbefugte Änderungen verhindert oder erkannt werden.',
   2,
   '{}',
   null,
@@ -56956,7 +56957,7 @@ values (
   2,
   '{}',
   null,
-  '{"table":[["Datum","Vorgang"],["03.02.","Anfrage von Kessler & Brandt beim Distributor"],["05.02.","Angebot des Distributors, gültig bis 19.02."],["12.02.","Bestellung zu den Bedingungen des Angebots"],["13.02.","Auftragsbestätigung, Liefertermin 2. März"]],"case_id":"f-a07-systemhaus","points":2,"criteria":[{"text":"Der Vertrag ist am 12.02. zustande gekommen","points":1,"keywords":["12.02","12. Februar","Bestellung"]},{"text":"Begründung: Das Angebot ist der Antrag, die fristgerechte Bestellung zu unveränderten Bedingungen die Annahme","points":1,"keywords":["Antrag","Annahme","Willenserklärungen","fristgerecht","innerhalb der Frist"]}],"sample_solution":"Der Kaufvertrag ist am 12.02. zustande gekommen. Das Angebot vom 05.02. ist der Antrag; die Bestellung vom 12.02. erfolgt innerhalb der Frist und ohne Änderungen und ist damit die Annahme. Die Auftragsbestätigung vom 13.02. bestätigt den Vertrag nur noch, die Anfrage vom 03.02. war unverbindlich."}'::jsonb,
+  '{"table":[["Datum","Vorgang"],["03.02.","Anfrage von Kessler & Brandt beim Distributor"],["05.02.","Angebot des Distributors, gültig bis 19.02."],["12.02.","Bestellung zu den Bedingungen des Angebots"],["13.02.","Auftragsbestätigung, Liefertermin 2. März"]],"case_id":"f-a07-systemhaus","points":2,"criteria":[{"text":"Der Vertrag ist am 12.02. zustande gekommen","points":1,"keywords":["12.02","12. Februar","Bestellung"]},{"text":"Begründung: Das Angebot ist der Antrag, die fristgerechte Bestellung zu unveränderten Bedingungen die Annahme","points":1,"keywords":["Antrag","Annahme","Willenserklärungen","fristgerecht","innerhalb der Frist"]}],"sample_solution":"Der Kaufvertrag ist am 12.02. zustande gekommen. Das Angebot vom 05.02. ist der Antrag. Die Bestellung vom 12.02. geht innerhalb der Frist und ohne Änderungen ein und ist damit die Annahme. Die Auftragsbestätigung vom 13.02. bestätigt den Vertrag nur noch, die Anfrage vom 03.02. war unverbindlich."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -57010,7 +57011,7 @@ values (
   'cloze',
   'Am 6. März sind die Notebooks noch nicht eingetroffen. Der Distributor nennt als Grund einen Engpass bei seinem Vorlieferanten.',
   'Prüfe, ob sich der Distributor im Lieferungsverzug befindet. Ergänze dazu den Text.',
-  'Verzug nach § 286 BGB: Fälligkeit, Mahnung oder deren Entbehrlichkeit (hier Kalendertermin, Abs. 2 Nr. 1) und Vertretenmüssen (Abs. 4). Der Verkäufer trägt in der Regel das Beschaffungsrisiko. Die Nachfrist gehört nicht zu den Voraussetzungen des Verzugs, sondern erst zu Rücktritt und Schadensersatz statt der Leistung.',
+  'Verzug nach § 286 BGB hat drei Voraussetzungen: Die Leistung ist fällig, es wurde gemahnt oder die Mahnung ist entbehrlich (hier wegen des Kalendertermins, Abs. 2 Nr. 1), und der Schuldner hat die Verspätung zu vertreten (Abs. 4). Der Verkäufer trägt in der Regel das Beschaffungsrisiko. Die Nachfrist gehört nicht zu den Voraussetzungen des Verzugs, sondern erst zu Rücktritt und Schadensersatz statt der Leistung.',
   2,
   '{}',
   null,
@@ -57101,7 +57102,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a07-systemhaus","points":4,"grid":[[{"text":"Kennzahl"},{"text":"Wert"}],[{"text":"Servicezeit im Monat (in Stunden)"},{"gap":{"answers":["210"],"numeric":true,"unit":"h","rationale":"21 Tage × 10 h"}}],[{"text":"Höchstens zulässiger Ausfall (in Minuten)"},{"gap":{"answers":["126"],"numeric":true,"unit":"min","rationale":"210 h × 0,01 = 2,1 h"}}],[{"text":"Erreichte Verfügbarkeit (in Prozent)"},{"gap":{"answers":["98"],"numeric":true,"unit":"%","rationale":"(210 − 4,2) / 210"}}],[{"text":"SLA eingehalten?"},{"gap":{"answers":["nein"],"options":["nein","ja","nicht feststellbar"],"rationale":"98 % liegt unter den zugesagten 99 %."}}]]}'::jsonb,
+  '{"case_id":"f-a07-systemhaus","points":4,"grid":[[{"text":"Kennzahl"},{"text":"Wert"}],[{"text":"Servicezeit im Monat (in Stunden)"},{"gap":{"answers":["210"],"numeric":true,"unit":"h","rationale":"21 Tage × 10 h"}}],[{"text":"Höchstens zulässiger Ausfall (in Minuten)"},{"gap":{"answers":["126"],"numeric":true,"unit":"min","rationale":"210 h × 0,01 = 2,1 h"}}],[{"text":"Erreichte Verfügbarkeit (in Prozent)"},{"gap":{"answers":["98"],"numeric":true,"unit":"%","rationale":"(210 − 4,2) / 210"}}],[{"text":"SLA eingehalten?"},{"gap":{"answers":["nein"],"options":["nein","ja","nicht feststellbar"],"rationale":"98 % liegen unter den zugesagten 99 %."}}]]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -57126,7 +57127,7 @@ values (
   'open',
   'Zur Vorbereitung der Einführung der digitalen Akte liest die Kanzleileitung einen englischen Fachbeitrag.',
   'Benenne drei Gründe für Widerstand gegen neue Software, die der Text anführt.',
-  'Je Nennung 1 Punkt, höchstens 3 Punkte. Gewertet wird nur, was im Text steht; geantwortet wird auf Deutsch und sinngemäß, nicht wörtlich übersetzt.',
+  'Je Nennung 1 Punkt, höchstens 3 Punkte. Gewertet wird nur, was im Text steht. Antworte auf Deutsch und sinngemäß, eine wörtliche Übersetzung ist nicht nötig.',
   2,
   ARRAY['englisch']::text[],
   null,
@@ -57155,7 +57156,7 @@ values (
   'open',
   'Die Kanzlei überlegt, Papierakte und digitale Akte drei Monate lang parallel zu führen, statt zum Umzugstermin sofort umzustellen.',
   'Beschreibe einen Nachteil des Parallelbetriebs gegenüber der Sofortumstellung.',
-  '2 Punkte für einen beschriebenen Nachteil (nennen und kurz ausführen). Der Vorteil des Parallelbetriebs (die Sicherheit durch den Rückfall auf das alte Verfahren) war nicht gefragt.',
+  '2 Punkte für einen beschriebenen Nachteil (nennen und kurz ausführen). Nach dem Vorteil des Parallelbetriebs, der Sicherheit durch den Rückfall auf das alte Verfahren, war nicht gefragt.',
   2,
   '{}',
   null,
@@ -57275,7 +57276,7 @@ values (
   2,
   '{}',
   null,
-  '{"case_id":"f-a07-handel","points":2,"criteria":[{"text":"Empfehlung: Werkvertrag","points":1,"keywords":["Werkvertrag","Werksvertrag","Festpreis mit Abnahme"]},{"text":"Begründung: Beim Werkvertrag wird ein Erfolg (funktionierende Schnittstelle) geschuldet, beim Dienstvertrag nur die Tätigkeit","points":1,"keywords":["Erfolg","Ergebnis","funktionierend","Abnahme","Gewährleistung","nur Tätigkeit"]}],"sample_solution":"Geeigneter ist der Werkvertrag: Das Softwarehaus schuldet dann eine funktionierende Schnittstelle, also einen Erfolg. Vergütung wird erst mit der Abnahme fällig, und bei Fehlern hat Grünwerk Mängelrechte. Beim Dienstvertrag wäre nur die Tätigkeit geschuldet und jede Stunde zu bezahlen, auch wenn die Schnittstelle nicht funktioniert."}'::jsonb,
+  '{"case_id":"f-a07-handel","points":2,"criteria":[{"text":"Empfehlung: Werkvertrag","points":1,"keywords":["Werkvertrag","Werksvertrag","Festpreis mit Abnahme"]},{"text":"Begründung: Beim Werkvertrag wird ein Erfolg (funktionierende Schnittstelle) geschuldet, beim Dienstvertrag nur die Tätigkeit","points":1,"keywords":["Erfolg","Ergebnis","funktionierend","Abnahme","Gewährleistung","nur Tätigkeit"]}],"sample_solution":"Geeigneter ist der Werkvertrag: Das Softwarehaus schuldet dann eine funktionierende Schnittstelle, also einen Erfolg. Die Vergütung wird erst mit der Abnahme fällig, und bei Fehlern hat Grünwerk Mängelrechte. Beim Dienstvertrag wäre nur die Tätigkeit geschuldet und jede Stunde zu bezahlen, auch wenn die Schnittstelle nicht funktioniert."}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -57300,7 +57301,7 @@ values (
   'table',
   'Ein Gartenbaubetrieb (Unternehmer) hat bei Grünwerk Ware für 5.840 € bezogen und zahlt 45 Tage nach Eintritt des Verzugs. Nimm einen Basiszinssatz von 2 % an und rechne mit 365 Tagen im Jahr.',
   'Berechne die Ansprüche der Grünwerk GmbH aus dem Zahlungsverzug.',
-  'Kein Verbraucher beteiligt: 2 % + 9 Prozentpunkte = 11 % (§ 288 Abs. 2 BGB). Zinsen: 5.840 € × 0,11 = 642,40 € im Jahr; × 45 / 365 = 79,20 €. Dazu die Pauschale von 40 €: zusammen 119,20 €.',
+  'Weil kein Verbraucher beteiligt ist, gilt: 2 % + 9 Prozentpunkte = 11 % (§ 288 Abs. 2 BGB). Zinsen im Jahr: 5.840 € × 0,11 = 642,40 €. Für 45 Tage: 642,40 € × 45 / 365 = 79,20 €. Mit der Pauschale von 40 € sind es zusammen 119,20 €.',
   2,
   '{}',
   null,
@@ -57387,7 +57388,7 @@ values (
   'open',
   'Das neue Kassensystem läuft zunächst nur in der Filiale Göttingen. Die drei anderen Filialen folgen erst ein Vierteljahr später.',
   'Erläutere einen Vorteil dieses Vorgehens (Pilotbetrieb).',
-  '2 Punkte für einen erläuterten Vorteil (Aussage plus Folge). Nachteil des Piloten: Die übrigen Filialen profitieren erst später, und zeitweise sind zwei Systeme zu betreuen.',
+  '2 Punkte für einen erläuterten Vorteil (Aussage plus Folge). Der Pilot hat auch einen Nachteil: Die übrigen Filialen profitieren erst später, und zeitweise sind zwei Systeme zu betreuen.',
   2,
   '{}',
   null,
@@ -57416,7 +57417,7 @@ values (
   'table',
   null,
   'Ordne den drei Vereinbarungen die Vertragsart und die Vorschrift des BGB zu.',
-  'Software as a Service ist Gebrauchsüberlassung auf Zeit gegen Entgelt, also Miete (§ 535 BGB). Die Schnittstelle zum Festpreis ist ein geschuldeter Erfolg: Werkvertrag (§ 631 BGB). Die Beratung nach Stunden ist bloße Tätigkeit: Dienstvertrag (§ 611 BGB).',
+  'Software as a Service ist Gebrauchsüberlassung auf Zeit gegen Entgelt, also Miete (§ 535 BGB). Bei der Schnittstelle zum Festpreis ist ein Erfolg geschuldet, das ist ein Werkvertrag (§ 631 BGB). Bei der Beratung nach Stunden ist nur die Tätigkeit geschuldet, das ist ein Dienstvertrag (§ 611 BGB).',
   2,
   '{}',
   null,
@@ -57503,7 +57504,7 @@ values (
   'open',
   'Das Softwarehaus meldet die Schnittstelle als fertig. Die Administratoren testen sie und wollen sie abnehmen.',
   'Nenne drei Rechtsfolgen, die die Abnahme der Schnittstelle auslöst.',
-  'Je Nennung 1 Punkt, höchstens 3 Punkte. Deshalb gehören festgestellte Mängel mit Frist in das Abnahmeprotokoll.',
+  'Je Nennung 1 Punkt, höchstens 3 Punkte. Weil Rechte wegen bekannter Mängel ohne Vorbehalt verloren gehen, gehören festgestellte Mängel mit Frist in das Abnahmeprotokoll.',
   2,
   '{}',
   null,
@@ -57536,7 +57537,7 @@ values (
   2,
   '{}',
   null,
-  '{"choices":[{"text":"„Meine Kunden schreiben mir direkt, das hat immer funktioniert.“","is_correct":true,"rationale":"Offener Widerspruch gegen die Veränderung."},{"text":"„Wie sehe ich im Ticketsystem, welche Anfragen zu meinem Projekt gehören?“","is_correct":false,"rationale":"Sachliche Frage zur Nutzung: Interesse, kein Widerstand."},{"text":"Ein Projektleiter wechselt jedes Mal das Thema, sobald es um den Starttermin geht.","is_correct":true,"rationale":"Ausweichen, also verbal und passiv."},{"text":"Auf dem Flur heißt es, das System diene nur dazu, Antwortzeiten zu überwachen.","is_correct":true,"rationale":"Gerüchte und Unruhe: Aufregung."},{"text":"„Ich würde gern in der Testphase mitmachen.“","is_correct":false,"rationale":"Bereitschaft zur Beteiligung."},{"text":"Zwei Kolleginnen sagen nichts und erscheinen nicht zur angesetzten Schulung.","is_correct":true,"rationale":"Rückzug und Lustlosigkeit, also verdeckter Widerstand."}],"case_id":"f-a07-agentur","points":3}'::jsonb,
+  '{"choices":[{"text":"„Meine Kunden schreiben mir direkt, das hat immer funktioniert.“","is_correct":true,"rationale":"Offener Widerspruch gegen die Veränderung."},{"text":"„Wie sehe ich im Ticketsystem, welche Anfragen zu meinem Projekt gehören?“","is_correct":false,"rationale":"Eine sachliche Frage zur Nutzung zeigt Interesse, keinen Widerstand."},{"text":"Ein Projektleiter wechselt jedes Mal das Thema, sobald es um den Starttermin geht.","is_correct":true,"rationale":"Das ist Ausweichen, also verbaler und passiver Widerstand."},{"text":"Auf dem Flur heißt es, das System diene nur dazu, Antwortzeiten zu überwachen.","is_correct":true,"rationale":"Gerüchte und Unruhe zeigen Widerstand in Form von Aufregung."},{"text":"„Ich würde gern in der Testphase mitmachen.“","is_correct":false,"rationale":"Bereitschaft zur Beteiligung."},{"text":"Zwei Kolleginnen sagen nichts und erscheinen nicht zur angesetzten Schulung.","is_correct":true,"rationale":"Rückzug und Lustlosigkeit, also verdeckter Widerstand."}],"case_id":"f-a07-agentur","points":3}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -57619,7 +57620,7 @@ values (
   'open',
   null,
   'Prüfe, ob sich der Händler am 20. April im Lieferungsverzug befindet. Begründe dein Ergebnis.',
-  '1 Punkt Fälligkeit, 2 Punkte Entbehrlichkeit der Mahnung mit Begründung, 1 Punkt Vertretenmüssen und Ergebnis. Das Vertrösten am Telefon ändert nichts am Verzug.',
+  '1 Punkt für die Fälligkeit, 2 Punkte für die Entbehrlichkeit der Mahnung mit Begründung, 1 Punkt für Vertretenmüssen und Ergebnis. Das Vertrösten am Telefon ändert nichts am Verzug.',
   2,
   '{}',
   null,
@@ -57706,7 +57707,7 @@ values (
   'table',
   'Für die Scanner gilt intern ein SLA. Auswirkung hoch = ganze Halle, mittel = eine Schicht oder Abteilung, niedrig = einzelne Person. Dringlichkeit hoch = die Arbeit steht still, mittel = Arbeit eingeschränkt möglich, niedrig = Ersatzgerät vorhanden.',
   'Bestimme für jede Störung die Priorität und die Reaktionszeit laut Matrix.',
-  'WLAN-Ausfall: ganze Halle (hoch), Arbeit steht still (hoch) = P1, 15 min. Einzelner Scanner mit Ersatzgerät: niedrig/niedrig = P5, 24 h. Verzögerte Synchronisation in einer Schicht: mittel/mittel = P3, 4 h.',
+  'Der WLAN-Ausfall trifft die ganze Halle (hoch) und die Arbeit steht still (hoch), also P1 mit 15 min. Der einzelne Scanner betrifft eine Person (niedrig) und es gibt Ersatzgeräte (niedrig), also P5 mit 24 h. Die verzögerte Synchronisation betrifft eine Schicht (mittel) und schränkt die Arbeit ein (mittel), also P3 mit 4 h.',
   2,
   '{}',
   null,
@@ -57764,7 +57765,7 @@ values (
   'open',
   null,
   'Beschreibe einen Nachteil der Sofortumstellung für den Dreischichtbetrieb im Lager.',
-  '2 Punkte für einen beschriebenen Nachteil (nennen und auf den Betrieb beziehen). Gefragt war ein Nachteil: Vorteile wie die kurze Umstellungsdauer bringen keine Punkte.',
+  '2 Punkte für einen beschriebenen Nachteil (nennen und auf den Betrieb beziehen). Gefragt war ein Nachteil, Vorteile wie die kurze Umstellungsdauer bringen deshalb keine Punkte.',
   2,
   '{}',
   null,
@@ -57910,7 +57911,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-org-06', 'projektorganisation', 'p-organisation', 'Welche Befugnis hat die Projektleitung in der Stabs- bzw. Einflussorganisation?', 'Kein Weisungsrecht: Sie plant, koordiniert, berät und berichtet; entscheiden tut die Linie.', 'Billig und zahnlos, also das Gegenstück zur reinen Projektorganisation.', '{}', 5)
+values ('c-org-06', 'projektorganisation', 'p-organisation', 'Welche Befugnis hat die Projektleitung in der Stabs- bzw. Einflussorganisation?', 'Kein Weisungsrecht: Sie plant, koordiniert, berät und berichtet. Die Entscheidungen trifft die Linie.', 'Billig und zahnlos, also das Gegenstück zur reinen Projektorganisation.', '{}', 5)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -58027,7 +58028,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-org-15', 'projektorganisation', 'p-rollen', 'Welche Tätigkeit wird der Projektleitung in Prüfungen gern fälschlich zugeschrieben?', 'Selbst programmieren oder installieren. Die Projektleitung plant, steuert, kontrolliert, führt und berichtet. Umgesetzt wird vom Team.', null, '{}', 14)
+values ('c-org-15', 'projektorganisation', 'p-rollen', 'Welche Tätigkeit wird der Projektleitung in Prüfungen gern fälschlich zugeschrieben?', 'Selbst programmieren oder installieren. Die Projektleitung plant, steuert, kontrolliert, führt und berichtet. Die Umsetzung übernimmt das Team.', null, '{}', 14)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -58508,7 +58509,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-np-09', 'netzplan', 'n-vorwaerts', 'Wie liest du die Projektdauer am Netzplan ab?', 'Der größte FEZ im gesamten Plan, also gleichbedeutend mit der Länge des kritischen Pfads.', null, '{}', 51)
+values ('c-np-09', 'netzplan', 'n-vorwaerts', 'Wie liest du die Projektdauer am Netzplan ab?', 'Am größten FEZ im gesamten Plan. Er entspricht der Länge des kritischen Pfads.', null, '{}', 51)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -58534,7 +58535,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-np-11', 'netzplan', 'n-puffer', 'Was bedeutet GP > 0 bei FP = 0?', 'Der Vorgang hat Luft bis zum Projektende, nimmt sie aber vollständig dem Nachfolger weg.', 'Der Lieblingsfall der Prüfer, weil er den Unterschied der Puffer erzwingt.', '{}', 53)
+values ('c-np-11', 'netzplan', 'n-puffer', 'Was bedeutet GP > 0 bei FP = 0?', 'Der Vorgang hat Luft bis zum Projektende. Jede Verschiebung verzögert aber den frühesten Start eines Nachfolgers.', 'Der Lieblingsfall der Prüfer, weil er den Unterschied der Puffer erzwingt.', '{}', 53)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -58599,7 +58600,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-tp-01', 'terminplanung', 't-psp', 'Was ist ein Projektstrukturplan (PSP)?', 'Hierarchische Zerlegung des Projekts in Teilaufgaben und Arbeitspakete, also die Grundlage jeder weiteren Planung.', 'Beantwortet das WAS, noch nicht das WANN.', '{}', 58)
+values ('c-tp-01', 'terminplanung', 't-psp', 'Was ist ein Projektstrukturplan (PSP)?', 'Hierarchische Zerlegung des Projekts in Teilaufgaben und Arbeitspakete. Er ist die Grundlage jeder weiteren Planung.', 'Beantwortet das WAS, noch nicht das WANN.', '{}', 58)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -58742,7 +58743,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-tp-12', 'terminplanung', 't-ressourcen', 'Was zeigt ein Ressourcenhistogramm?', 'Die Auslastung einer Ressource über die Zeit: Es macht Überlastspitzen sichtbar.', null, '{}', 69)
+values ('c-tp-12', 'terminplanung', 't-ressourcen', 'Was zeigt ein Ressourcenhistogramm?', 'Die Auslastung einer Ressource über die Zeit. So werden Überlastspitzen sichtbar.', null, '{}', 69)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -58768,7 +58769,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-tp-14', 'terminplanung', 't-gantt', 'Was ist ein Soll-Ist-Vergleich?', 'Gegenüberstellung von geplanten und tatsächlichen Werten bei Terminen, Kosten und Leistung, also die Grundlage jeder Steuerung.', null, '{}', 71)
+values ('c-tp-14', 'terminplanung', 't-gantt', 'Was ist ein Soll-Ist-Vergleich?', 'Gegenüberstellung von geplanten und tatsächlichen Werten bei Terminen, Kosten und Leistung. Er ist die Grundlage jeder Steuerung.', null, '{}', 71)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -58924,7 +58925,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-ri-12', 'risikomanagement', 'r-prozess', 'Nenne die Schritte des Risikomanagements.', 'Identifizieren, bewerten, Maßnahmen festlegen, überwachen, und zwar laufend, nicht einmalig zu Projektbeginn.', null, '{}', 83)
+values ('c-ri-12', 'risikomanagement', 'r-prozess', 'Nenne die Schritte des Risikomanagements.', 'Identifizieren, bewerten, Maßnahmen festlegen, überwachen. Das läuft ständig weiter, nicht nur einmal zu Projektbeginn.', null, '{}', 83)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -59210,7 +59211,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-ab-07', 'projektabschluss', 'a-bericht', 'Was ist die Nachkalkulation?', 'Die Gegenüberstellung der geplanten und tatsächlichen Kosten nach Projektende, also die Grundlage besserer Schätzungen.', null, '{}', 105)
+values ('c-ab-07', 'projektabschluss', 'a-bericht', 'Was ist die Nachkalkulation?', 'Die Gegenüberstellung der geplanten und tatsächlichen Kosten nach Projektende. Sie ist die Grundlage besserer Schätzungen.', null, '{}', 105)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -59223,7 +59224,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-ab-08', 'projektabschluss', 'a-lessons', 'Warum finden Lessons Learned ohne Schuldzuweisung statt?', 'Sobald Schuldzuweisungen drohen, sagt niemand mehr, was wirklich schieflief und die Sitzung ist wertlos.', null, '{}', 106)
+values ('c-ab-08', 'projektabschluss', 'a-lessons', 'Warum finden Lessons Learned ohne Schuldzuweisung statt?', 'Sobald Schuldzuweisungen drohen, sagt niemand mehr, was wirklich schieflief, und die Sitzung ist wertlos.', null, '{}', 106)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -59262,7 +59263,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('c-ab-11', 'projektabschluss', 'a-abnahme', 'Was gehört zur Teamauflösung, und wann findet sie statt?', 'Rückführung in die Linie, Feedback und Würdigung der Leistung, aber erst nach Abschlussbericht und Lessons Learned.', null, '{}', 109)
+values ('c-ab-11', 'projektabschluss', 'a-abnahme', 'Was gehört zur Teamauflösung, und wann findet sie statt?', 'Rückführung in die Linie, Feedback und Würdigung der Leistung. Sie steht am Schluss, nach Abschlussbericht und Lessons Learned.', null, '{}', 109)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -59483,7 +59484,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-pz-1', 'projektorganisation', 'p-ziele', 'Welche drei Zielarten unterscheidest du bei Projektzielen?', 'Sachziel (Leistung und Qualität), Terminziel, Kostenziel: Die drei Ecken des magischen Dreiecks.', null, '{}', 126)
+values ('k-pz-1', 'projektorganisation', 'p-ziele', 'Welche drei Zielarten unterscheidest du bei Projektzielen?', 'Sachziel (Leistung und Qualität), Terminziel, Kostenziel. Das sind die drei Ecken des magischen Dreiecks.', null, '{}', 126)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -59782,7 +59783,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-po-11', 'projektorganisation', 'p-organisation', 'Ist „Urlaub genehmigen“ eine fachliche oder eine disziplinarische Weisung?', 'Disziplinarisch: wie Beurteilung, Gehalt und Abmahnung. Fachlich sind Aufgaben, Termine und Qualität.', null, '{}', 149)
+values ('k-po-11', 'projektorganisation', 'p-organisation', 'Ist „Urlaub genehmigen“ eine fachliche oder eine disziplinarische Weisung?', 'Disziplinarisch, genau wie Beurteilung, Gehalt und Abmahnung. Fachlich sind Aufgaben, Termine und Qualität.', null, '{}', 149)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -60133,7 +60134,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ps-10', 'projektorganisation', 'p-stakeholder', 'Betriebsrat: Einfluss 4, Interesse 2 (ab 3 gilt hoch). Wie ordnest du ihn ein?', 'Zufriedenstellen: hoher Einfluss, geringes Interesse: Kurz und regelmäßig informieren, vor Entscheidungen abstimmen.', null, '{}', 176)
+values ('k-ps-10', 'projektorganisation', 'p-stakeholder', 'Betriebsrat: Einfluss 4, Interesse 2 (ab 3 gilt hoch). Wie ordnest du ihn ein?', 'Zufriedenstellen (hoher Einfluss, geringes Interesse): kurz und regelmäßig informieren, vor Entscheidungen abstimmen.', null, '{}', 176)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -60354,7 +60355,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-vw-1', 'vorgehensmodelle', 'v-wasserfall', 'Was unterscheidet Lastenheft und Pflichtenheft?', 'Lastenheft: vom Auftraggeber: WAS und WOFÜR. Pflichtenheft: vom Auftragnehmer: WIE und WOMIT.', null, '{}', 193)
+values ('k-vw-1', 'vorgehensmodelle', 'v-wasserfall', 'Was unterscheidet Lastenheft und Pflichtenheft?', 'Lastenheft: vom Auftraggeber, beschreibt WAS und WOFÜR. Pflichtenheft: vom Auftragnehmer, beschreibt WIE und WOMIT.', null, '{}', 193)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -60588,7 +60589,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-va-8', 'vorgehensmodelle', 'v-auswahl', 'Nenne ein Beispiel für inkrementelles Vorgehen.', 'Webshop: Sprint 1 liefert die Produktliste, Sprint 2 den Warenkorb: Das Produkt wächst Stück für Stück.', null, '{}', 211)
+values ('k-va-8', 'vorgehensmodelle', 'v-auswahl', 'Nenne ein Beispiel für inkrementelles Vorgehen.', 'Webshop: Sprint 1 liefert die Produktliste, Sprint 2 den Warenkorb. Das Produkt wächst Stück für Stück.', null, '{}', 211)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -60666,7 +60667,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-sm-2', 'agil_scrum', 's-manifest', 'Individuen und Interaktionen ...', '... sind wichtiger als Prozesse und Werkzeuge.', null, '{}', 217)
+values ('k-sm-2', 'agil_scrum', 's-manifest', 'Ergänze den agilen Wert: Individuen und Interaktionen ...', '... sind wichtiger als Prozesse und Werkzeuge.', null, '{}', 217)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -60679,7 +60680,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-sm-3', 'agil_scrum', 's-manifest', 'Reagieren auf Veränderung ...', '... ist wichtiger als das Befolgen eines Plans.', 'Pläne bleiben wichtig. Sie werden nur angepasst, wenn sich die Lage ändert.', '{}', 218)
+values ('k-sm-3', 'agil_scrum', 's-manifest', 'Ergänze den agilen Wert: Reagieren auf Veränderung ...', '... ist wichtiger als das Befolgen eines Plans.', 'Pläne bleiben wichtig. Sie werden nur angepasst, wenn sich die Lage ändert.', '{}', 218)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -60705,7 +60706,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-sm-5', 'agil_scrum', 's-manifest', 'Zusammenarbeit mit dem Kunden ...', '... ist wichtiger als Vertragsverhandlung.', null, '{}', 220)
+values ('k-sm-5', 'agil_scrum', 's-manifest', 'Ergänze den agilen Wert: Zusammenarbeit mit dem Kunden ...', '... ist wichtiger als Vertragsverhandlung.', null, '{}', 220)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -60978,7 +60979,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-sr-9', 'agil_scrum', 's-rollen', 'Der Vertrieb will mitten im Sprint eine neue Funktion. Wer ist zuständig?', 'Der Product Owner: nimmt den Wunsch ins Product Backlog auf und ordnet ihn ein. Der laufende Sprint bleibt geschützt.', null, '{}', 241)
+values ('k-sr-9', 'agil_scrum', 's-rollen', 'Der Vertrieb will mitten im Sprint eine neue Funktion. Wer ist zuständig?', 'Der Product Owner. Er nimmt den Wunsch ins Product Backlog auf und ordnet ihn ein. Der laufende Sprint bleibt geschützt.', null, '{}', 241)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -60991,7 +60992,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-sr-10', 'agil_scrum', 's-rollen', 'Wer übernimmt in Scrum die Aufgaben der klassischen Projektleitung?', 'Niemand allein: Priorisieren der Product Owner, Arbeit einteilen die Developers, Hindernisse beseitigen der Scrum Master.', null, '{}', 242)
+values ('k-sr-10', 'agil_scrum', 's-rollen', 'Wer übernimmt in Scrum die Aufgaben der klassischen Projektleitung?', 'Niemand allein. Der Product Owner priorisiert, die Developers teilen die Arbeit ein, der Scrum Master beseitigt Hindernisse.', null, '{}', 242)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -61602,7 +61603,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-st-12', 'agil_scrum', 's-stories', 'Velocity 22 Story Points, im Backlog noch 150 Story Points. Wie viele Sprints noch?', '150 / 22 = 6,82 → aufgerundet 7 Sprints.', null, '{}', 289)
+values ('k-st-12', 'agil_scrum', 's-stories', 'Velocity 22 Story Points, im Backlog noch 150 Story Points. Wie viele Sprints noch?', '150 / 22 ≈ 6,82 → aufgerundet 7 Sprints.', null, '{}', 289)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -61914,7 +61915,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-nv-7', 'netzplan', 'n-vorwaerts', 'D folgt auf B (FEZ 5) und C (FEZ 7). Wie lautet der FAZ von D?', 'FAZ D = max(5; 7) = 7 - D wartet auf den letzten Vorgänger.', null, '{}', 313)
+values ('k-nv-7', 'netzplan', 'n-vorwaerts', 'D folgt auf B (FEZ 5) und C (FEZ 7). Wie lautet der FAZ von D?', 'FAZ D = max(5; 7) = 7. D wartet auf den letzten Vorgänger.', null, '{}', 313)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -62356,7 +62357,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-nk-1', 'netzplan', 'n-kritisch', 'Was unterscheidet Crashing und Fast Tracking?', 'Crashing: mehr Ressourcen auf kritische Vorgänge: Kostet Geld. Fast Tracking: kritische Vorgänge teilweise parallel: Erhöht das Risiko.', null, '{}', 347)
+values ('k-nk-1', 'netzplan', 'n-kritisch', 'Was unterscheidet Crashing und Fast Tracking?', 'Crashing: mehr Ressourcen auf kritische Vorgänge, das kostet Geld. Fast Tracking: kritische Vorgänge teilweise parallel, das erhöht das Risiko.', null, '{}', 347)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -62447,7 +62448,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-nk-8', 'netzplan', 'n-kritisch', 'Dauer 15, zweitlängster Weg 14. Ein kritischer Vorgang wird um 2 Tage kürzer. Neue Dauer?', '14 Tage: Nur 1 Tag gewonnen, weil jetzt der andere Weg kritisch ist.', null, '{}', 354)
+values ('k-nk-8', 'netzplan', 'n-kritisch', 'Dauer 15, zweitlängster Weg 14. Ein Vorgang nur auf dem kritischen Weg wird 2 Tage kürzer. Neue Dauer?', '14 Tage: Nur 1 Tag gewonnen, weil jetzt der andere Weg kritisch ist.', null, '{}', 354)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -62512,7 +62513,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-tp-1', 'terminplanung', 't-psp', 'Nach welchen Prinzipien kannst du einen PSP gliedern?', 'Objektorientiert (Bestandteile), funktionsorientiert (Tätigkeiten), phasenorientiert (Projektphasen), oder gemischt.', null, '{}', 359)
+values ('k-tp-1', 'terminplanung', 't-psp', 'Nach welchen Prinzipien kannst du einen PSP gliedern?', 'Objektorientiert (Bestandteile), funktionsorientiert (Tätigkeiten), phasenorientiert (Projektphasen) oder gemischt.', null, '{}', 359)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -62551,7 +62552,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-tp-4', 'terminplanung', 't-psp', 'Was bedeutet der PSP-Code 2.1.3?', 'Teilaufgabe 2, darin Teilaufgabe 1, darin Arbeitspaket 3: also ein Element auf Ebene 3.', null, '{}', 362)
+values ('k-tp-4', 'terminplanung', 't-psp', 'Was bedeutet der PSP-Code 2.1.3?', 'Teilaufgabe 2, darin Teilaufgabe 1, darin Arbeitspaket 3. Drei Stellen bedeuten: ein Element auf Ebene 3.', null, '{}', 362)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -63071,7 +63072,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-tr-18', 'terminplanung', 't-ressourcen', 'Kapazität 40 h pro Woche, in KW 2 sind 56 h verplant. Wie groß ist die Überlast?', '56 h - 40 h = 16 Stunden: Arbeit im Puffer verschieben oder umverteilen.', null, '{}', 402)
+values ('k-tr-18', 'terminplanung', 't-ressourcen', 'Kapazität 40 h pro Woche, in KW 2 sind 56 h verplant. Wie groß ist die Überlast?', '56 h - 40 h = 16 Stunden. Abhilfe: Arbeit im Puffer verschieben oder umverteilen.', null, '{}', 402)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -63110,7 +63111,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-rp-3', 'risikomanagement', 'r-prozess', 'Wie beschreibst du ein Risiko vollständig?', 'Ursache - Ereignis - Auswirkung: „Weil ..., könnte ..., sodass ...“.', null, '{}', 405)
+values ('k-rp-3', 'risikomanagement', 'r-prozess', 'Wie beschreibst du ein Risiko vollständig?', 'Mit Ursache, Ereignis und Auswirkung: „Weil ..., könnte ..., sodass ...“.', null, '{}', 405)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -63123,7 +63124,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-rp-4', 'risikomanagement', 'r-prozess', 'Was ist ein Frühwarnindikator?', 'Beobachtbares Zeichen, dass ein Risiko wahrscheinlicher wird, z. B. Lieferant bestätigt den Termin nicht.', null, '{}', 406)
+values ('k-rp-4', 'risikomanagement', 'r-prozess', 'Was ist ein Frühwarnindikator?', 'Ein beobachtbares Zeichen, dass ein Risiko wahrscheinlicher wird, z. B. wenn der Lieferant den Termin nicht bestätigt.', null, '{}', 406)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -63175,7 +63176,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-rp-8', 'risikomanagement', 'r-prozess', '„Der Server ist ausgefallen.“: Risiko oder Problem?', 'Ein Problem: bereits eingetreten, es wird sofort gelöst, nicht bewertet. Risiken stehen in der Möglichkeitsform.', null, '{}', 410)
+values ('k-rp-8', 'risikomanagement', 'r-prozess', '„Der Server ist ausgefallen.“: Risiko oder Problem?', 'Ein Problem: Es ist bereits eingetreten und wird sofort gelöst, nicht bewertet. Risiken stehen in der Möglichkeitsform.', null, '{}', 410)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -63409,7 +63410,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-rb-12', 'risikomanagement', 'r-bewertung', 'Wie deutest du einen Risikowert von 10.000 €?', 'Als Erwartungswert: Über viele gleichartige Projekte kostet das Risiko im Schnitt 10.000 €, aber kein sicherer Schaden.', null, '{}', 428)
+values ('k-rb-12', 'risikomanagement', 'r-bewertung', 'Wie deutest du einen Risikowert von 10.000 €?', 'Als Erwartungswert: Über viele gleichartige Projekte kostet das Risiko im Schnitt 10.000 €. Ein sicherer Schaden ist das nicht.', null, '{}', 428)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -63786,7 +63787,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-wn-2', 'pm_wirtschaftlichkeit', 'w-nutzwert', 'Was ist ein K.-o.-Kriterium?', 'Mussanforderung, die jede Alternative erfüllen muss. Wer sie verfehlt, scheidet vor der Nutzwertberechnung aus.', null, '{}', 457)
+values ('k-wn-2', 'pm_wirtschaftlichkeit', 'w-nutzwert', 'Was ist ein K.-o.-Kriterium?', 'Eine Muss-Anforderung, die jede Alternative erfüllen muss. Wer sie verfehlt, scheidet vor der Nutzwertberechnung aus.', null, '{}', 457)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -64306,7 +64307,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-wb-13', 'pm_wirtschaftlichkeit', 'w-breakeven', 'Was sagt eine kurze Amortisationsdauer aus?', 'Die Investition ist schnell zurückgeflossen. Das Risiko der Investition ist geringer.', null, '{}', 497)
+values ('k-wb-13', 'pm_wirtschaftlichkeit', 'w-breakeven', 'Was sagt eine kurze Amortisationsdauer aus?', 'Das eingesetzte Geld fließt schnell zurück. Damit ist das Risiko der Investition geringer.', null, '{}', 497)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -64475,7 +64476,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-aa-9', 'projektabschluss', 'a-abnahme', 'Wann gilt ein Werk als fiktiv abgenommen?', 'Wenn der Besteller eine angemessene Abnahmefrist verstreichen lässt, ohne die Abnahme unter Angabe eines Mangels zu verweigern (§ 640 Abs. 2 BGB).', null, '{}', 510)
+values ('k-aa-9', 'projektabschluss', 'a-abnahme', 'Wann gilt ein Werk als fiktiv abgenommen?', 'Wenn der Besteller eine vom Unternehmer nach Fertigstellung gesetzte angemessene Frist verstreichen lässt, ohne die Abnahme unter Angabe mindestens eines Mangels zu verweigern (§ 640 Abs. 2 BGB).', null, '{}', 510)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -64488,7 +64489,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-aa-10', 'projektabschluss', 'a-abnahme', 'Welcher Paragraph regelt die Abnahme beim Werkvertrag?', '§ 640 BGB: der Besteller ist verpflichtet, das vertragsgemäß hergestellte Werk abzunehmen.', null, '{}', 511)
+values ('k-aa-10', 'projektabschluss', 'a-abnahme', 'Welcher Paragraph regelt die Abnahme beim Werkvertrag?', '§ 640 BGB: Der Besteller ist verpflichtet, das vertragsgemäß hergestellte Werk abzunehmen.', null, '{}', 511)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -64540,7 +64541,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-aa-14', 'projektabschluss', 'a-abnahme', 'Warum gehören bekannte Mängel ins Abnahmeprotokoll?', 'Wer trotz bekanntem Mangel ohne Vorbehalt abnimmt, verliert Rechte wie Nacherfüllung, Rücktritt und Minderung (§ 640 Abs. 3 BGB).', null, '{}', 515)
+values ('k-aa-14', 'projektabschluss', 'a-abnahme', 'Warum gehören bekannte Mängel ins Abnahmeprotokoll?', 'Wer trotz bekannten Mangels ohne Vorbehalt abnimmt, verliert Rechte wie Nacherfüllung, Rücktritt und Minderung (§ 640 Abs. 3 BGB).', null, '{}', 515)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -64657,7 +64658,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ab-9', 'projektabschluss', 'a-bericht', 'Was bedeutet eine negative Kostenabweichung?', 'Es wurde weniger ausgegeben als geplant, also das Budget wurde unterschritten.', null, '{}', 524)
+values ('k-ab-9', 'projektabschluss', 'a-bericht', 'Was bedeutet eine negative Kostenabweichung?', 'Es wurde weniger ausgegeben als geplant, das Budget wurde also unterschritten.', null, '{}', 524)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -64735,7 +64736,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ll-1', 'projektabschluss', 'a-lessons', 'Was fragt die Methode Start - Stop - Continue?', 'Start: Was neu anfangen? Stop: Was lassen? Continue: Was beibehalten?', null, '{}', 530)
+values ('k-ll-1', 'projektabschluss', 'a-lessons', 'Was fragt die Methode Start, Stop, Continue?', 'Start: Was neu anfangen? Stop: Was lassen? Continue: Was beibehalten?', null, '{}', 530)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -64826,7 +64827,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ll-8', 'projektabschluss', 'a-lessons', 'Warum ist „Die Kommunikation verbessern“ keine gute Lesson?', 'Sie ist zu vage, es folgt keine Handlung daraus. Besser: Situation, Ursache und konkrete Empfehlung nennen.', null, '{}', 537)
+values ('k-ll-8', 'projektabschluss', 'a-lessons', 'Warum ist „Die Kommunikation verbessern“ keine gute Lesson?', 'Sie ist zu vage, daraus folgt keine Handlung. Besser: Situation, Ursache und konkrete Empfehlung nennen.', null, '{}', 537)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -65086,7 +65087,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-km-18', 'kommunikation', 'k-modelle', 'Was besagt Watzlawicks viertes Axiom (digital und analog)?', 'Kommunikation läuft digital (Worte) und analog (Körpersprache, Tonfall) zugleich: z. B. „Gern“ mit genervtem Blick.', null, '{}', 557)
+values ('k-km-18', 'kommunikation', 'k-modelle', 'Was besagt Watzlawicks viertes Axiom (digital und analog)?', 'Kommunikation läuft digital (Worte) und analog (Körpersprache, Tonfall) zugleich. Beispiel: ein „Gern“ mit genervtem Blick.', null, '{}', 557)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -65138,7 +65139,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-kg-15', 'kommunikation', 'k-gespraech', 'Wie ist eine Ich-Botschaft aufgebaut?', 'Beobachtung - Wirkung auf mich - Wunsch: „Ich verliere den Faden, wenn ich unterbrochen werde. Lass mich bitte ausreden.“', null, '{}', 561)
+values ('k-kg-15', 'kommunikation', 'k-gespraech', 'Wie ist eine Ich-Botschaft aufgebaut?', 'Beobachtung, Wirkung auf mich, Wunsch: „Ich verliere den Faden, wenn ich unterbrochen werde. Lass mich bitte ausreden.“', null, '{}', 561)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -65268,7 +65269,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-kk-7', 'kommunikation', 'k-kunde', 'Wie gehst du mit einem Kunden vom Typ „Besserwisser“ um?', 'Sein Wissen anerkennen, sachlich-fachlich bleiben, nicht um Recht streiten.', null, '{}', 571)
+values ('k-kk-7', 'kommunikation', 'k-kunde', 'Wie gehst du mit einem Kunden vom Typ „Besserwisser“ um?', 'Sein Wissen anerkennen, sachlich bleiben, nicht um Recht streiten.', null, '{}', 571)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -65541,7 +65542,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-tt-7', 'teamarbeit', 'te-phasen', 'Wann fällt ein Team in frühere Phasen zurück?', 'Wenn Mitglieder dazukommen oder gehen oder sich die Ziele ändern: oft zurück ins Storming.', null, '{}', 592)
+values ('k-tt-7', 'teamarbeit', 'te-phasen', 'Wann fällt ein Team in frühere Phasen zurück?', 'Wenn Mitglieder dazukommen oder gehen oder sich die Ziele ändern. Oft geht es dann zurück ins Storming.', null, '{}', 592)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -65762,7 +65763,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-tf-4', 'teamarbeit', 'te-feedback', 'Woran erkennst du eine gute Fehlerkultur?', 'Fehler werden offen angesprochen, gefragt wird nach der Ursache statt nach dem Schuldigen, ohne Angst vor Strafe.', null, '{}', 609)
+values ('k-tf-4', 'teamarbeit', 'te-feedback', 'Woran erkennst du eine gute Fehlerkultur?', 'Fehler werden ohne Angst vor Strafe offen angesprochen. Gefragt wird nach der Ursache, nicht nach dem Schuldigen.', null, '{}', 609)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -65801,7 +65802,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-tf-7', 'teamarbeit', 'te-feedback', 'Wie ist Feedback nach der Sandwich-Methode aufgebaut?', 'Die Kritik liegt zwischen zwei ehrlichen, konkreten Lobaussagen: Lob - Kritik - Lob.', null, '{}', 612)
+values ('k-tf-7', 'teamarbeit', 'te-feedback', 'Wie ist Feedback nach der Sandwich-Methode aufgebaut?', 'Die Kritik liegt zwischen zwei ehrlichen, konkreten Lobaussagen: Lob, Kritik, Lob.', null, '{}', 612)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -65996,7 +65997,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-tk-2', 'teamarbeit', 'te-konflikte', 'Was ist ein Konsens?', 'Eine gemeinsam erarbeitete Lösung, bei der beide Seiten gewinnen. Die nachhaltigste Konfliktlösung.', null, '{}', 627)
+values ('k-tk-2', 'teamarbeit', 'te-konflikte', 'Was ist ein Konsens?', 'Eine gemeinsam erarbeitete Lösung, bei der beide Seiten gewinnen. Er ist die nachhaltigste Konfliktlösung.', null, '{}', 627)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -66568,7 +66569,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ve-7', 'verhandlung', 've-einwaende', 'Wie nennst du einen Preis nach der Sandwich-Methode?', 'Zwischen zwei Nutzenaussagen: Nutzen - Preis - Nutzen. So steht der Preis nie allein.', null, '{}', 671)
+values ('k-ve-7', 'verhandlung', 've-einwaende', 'Wie nennst du einen Preis nach der Sandwich-Methode?', 'Zwischen zwei Nutzenaussagen: Nutzen, Preis, Nutzen. So steht der Preis nie allein.', null, '{}', 671)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -66594,7 +66595,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ve-9', 'verhandlung', 've-einwaende', 'Was unterscheidet Überzeugen von Überreden?', 'Überzeugen: mit nachvollziehbaren Argumenten zu einer eigenen Entscheidung führen. Überreden: drängen, und der Kunde bereut den Kauf oft.', null, '{}', 673)
+values ('k-ve-9', 'verhandlung', 've-einwaende', 'Was unterscheidet Überzeugen von Überreden?', 'Überzeugen: mit nachvollziehbaren Argumenten zu einer eigenen Entscheidung führen. Überreden: drängen, sodass der Kunde den Kauf oft bereut.', null, '{}', 673)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -66633,7 +66634,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ve-12', 'verhandlung', 've-einwaende', 'Wie funktioniert die Umformulierungsmethode?', 'Den Einwand in eine Frage verwandeln: aus „zu teuer“ wird „Sie möchten also wissen, ob sich die Investition lohnt?“', null, '{}', 676)
+values ('k-ve-12', 'verhandlung', 've-einwaende', 'Wie funktioniert die Umformulierungsmethode?', 'Den Einwand in eine Frage verwandeln: Aus „zu teuer“ wird „Sie möchten also wissen, ob sich die Investition lohnt?“', null, '{}', 676)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -66698,7 +66699,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ve-17', 'verhandlung', 've-einwaende', '„Ich muss erst noch mal drüber schlafen.“ Wie reagierst du?', 'Vermutlich ein Vorwand: mit einer Rückfrage den wahren Grund erfragen, z. B. „Was ist für Sie noch offen?“', null, '{}', 681)
+values ('k-ve-17', 'verhandlung', 've-einwaende', '„Ich muss erst noch mal drüber schlafen.“ Wie reagierst du?', 'Das ist vermutlich ein Vorwand. Erfrage den wahren Grund, z. B. „Was ist für Sie noch offen?“', null, '{}', 681)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -66906,7 +66907,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-pp-14', 'praesentation', 'pr-praesentation', 'Was interessiert Geschäftsführung und Anwender jeweils an einer neuen Software?', 'Geschäftsführung: Kosten, Nutzen, Risiko, kurz, mit Entscheidung. Anwender: Bedienung und Zeitersparnis, mit Vorführung.', null, '{}', 697)
+values ('k-pp-14', 'praesentation', 'pr-praesentation', 'Was interessiert Geschäftsführung und Anwender jeweils an einer neuen Software?', 'Geschäftsführung: Kosten, Nutzen und Risiko, kurz und mit Entscheidungsvorlage. Anwender: Bedienung und Zeitersparnis, mit Vorführung.', null, '{}', 697)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -66984,7 +66985,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-pp-20', 'praesentation', 'pr-praesentation', 'Was tust du, wenn du eine Frage aus dem Publikum nicht beantworten kannst?', 'Ehrlich sagen und zusagen, die Antwort nachzureichen, statt zu raten.', null, '{}', 703)
+values ('k-pp-20', 'praesentation', 'pr-praesentation', 'Was tust du, wenn du eine Frage aus dem Publikum nicht beantworten kannst?', 'Das offen zugeben und anbieten, die Antwort nachzureichen, statt zu raten.', null, '{}', 703)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -67114,7 +67115,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-pq-8', 'praesentation', 'pr-quellen', 'Was ist der Unterschied zwischen direktem und indirektem Zitat?', 'Direkt: wörtlich in Anführungszeichen. Indirekt: sinngemäß in eigenen Worten mit „vgl.“ Beide mit Quelle.', null, '{}', 713)
+values ('k-pq-8', 'praesentation', 'pr-quellen', 'Was ist der Unterschied zwischen direktem und indirektem Zitat?', 'Direkt: wörtlich in Anführungszeichen. Indirekt: sinngemäß in eigenen Worten, mit „vgl.“ gekennzeichnet. Beide brauchen eine Quellenangabe.', null, '{}', 713)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -67556,7 +67557,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-pa-22', 'praesentation', 'pr-angebot', 'Welche drei Belege gleichst du bei der Rechnungsprüfung ab?', 'Bestellung, Lieferschein und Rechnung: bezahlt wird erst, wenn alle drei übereinstimmen.', null, '{}', 747)
+values ('k-pa-22', 'praesentation', 'pr-angebot', 'Welche drei Belege gleichst du bei der Rechnungsprüfung ab?', 'Bestellung, Lieferschein und Rechnung. Bezahlt wird erst, wenn alle drei übereinstimmen.', null, '{}', 747)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -67803,7 +67804,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mm-9', 'markt_marketing', 'm-markt', 'Was ist der Gleichgewichtspreis?', 'Der Preis, bei dem angebotene und nachgefragte Menge gleich sind. Der Schnittpunkt von Angebots- und Nachfragekurve.', null, '{}', 766)
+values ('k-mm-9', 'markt_marketing', 'm-markt', 'Was ist der Gleichgewichtspreis?', 'Der Preis, bei dem angebotene und nachgefragte Menge gleich sind. Er liegt im Schnittpunkt von Angebots- und Nachfragekurve.', null, '{}', 766)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -67868,7 +67869,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mm-14', 'markt_marketing', 'm-markt', 'Eigener Umsatz 320.000 €, Marktvolumen 4 Mio. €, Potenzial 5 Mio. €. Wie hoch ist der Marktanteil?', '320.000 € / 4.000.000 € × 100 = 8 %: gemessen am Volumen, nicht am Potenzial.', null, '{}', 771)
+values ('k-mm-14', 'markt_marketing', 'm-markt', 'Eigener Umsatz 320.000 €, Marktvolumen 4 Mio. €, Potenzial 5 Mio. €. Wie hoch ist der Marktanteil?', '320.000 € / 4.000.000 € × 100 = 8 %. Gemessen wird am Volumen, nicht am Potenzial.', null, '{}', 771)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -67881,7 +67882,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mm-15', 'markt_marketing', 'm-markt', 'Marktvolumen 4 Mio. €, Marktpotenzial 5 Mio. €. Wie hoch ist der Sättigungsgrad?', '4 Mio. € / 5 Mio. € × 100 = 80 % - 20 % des Potenzials sind noch unerschlossen.', null, '{}', 772)
+values ('k-mm-15', 'markt_marketing', 'm-markt', 'Marktvolumen 4 Mio. €, Marktpotenzial 5 Mio. €. Wie hoch ist der Sättigungsgrad?', '4 Mio. € / 5 Mio. € × 100 = 80 %. Die übrigen 20 % des Potenzials sind noch unerschlossen.', null, '{}', 772)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -68050,7 +68051,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mb-6', 'markt_marketing', 'm-bedarf', 'Was unterscheidet Defizit- und Wachstumsbedürfnisse nach Maslow?', 'Stufe 1 bis 4 sind Defizitbedürfnisse. Fehlen sie, entsteht Unzufriedenheit. Die Selbstverwirklichung ist ein Wachstumsbedürfnis.', null, '{}', 785)
+values ('k-mb-6', 'markt_marketing', 'm-bedarf', 'Was unterscheidet Defizit- und Wachstumsbedürfnisse nach Maslow?', 'Stufe 1 bis 4 sind Defizitbedürfnisse. Bleiben sie unerfüllt, entsteht Unzufriedenheit. Die Selbstverwirklichung ist ein Wachstumsbedürfnis.', null, '{}', 785)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -68154,7 +68155,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mb-14', 'markt_marketing', 'm-bedarf', 'Ein Kunde sagt: „Wir wollen modern auftreten.“ Welche Maslow-Stufe steckt dahinter?', 'Wertschätzung (Stufe 4), passende Argumente: hochwertige Geräte, gutes Design.', null, '{}', 793)
+values ('k-mb-14', 'markt_marketing', 'm-bedarf', 'Ein Kunde sagt: „Wir wollen modern auftreten.“ Welche Maslow-Stufe steckt dahinter?', 'Wertschätzung (Stufe 4). Passende Argumente: hochwertige Geräte, gutes Design.', null, '{}', 793)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -68271,7 +68272,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mk-5', 'markt_marketing', 'm-marketing', 'Was ist die Penetrationsstrategie?', 'Niedriger Einstiegspreis, um schnell Marktanteile zu gewinnen, später wird der Preis erhöht.', null, '{}', 802)
+values ('k-mk-5', 'markt_marketing', 'm-marketing', 'Was ist die Penetrationsstrategie?', 'Niedriger Einstiegspreis, um schnell Marktanteile zu gewinnen. Später wird der Preis erhöht.', null, '{}', 802)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -68284,7 +68285,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mk-6', 'markt_marketing', 'm-marketing', 'Was ist die Abschöpfungsstrategie (Skimming)?', 'Hoher Einstiegspreis für frühe Käufer, später wird der Preis schrittweise gesenkt.', null, '{}', 803)
+values ('k-mk-6', 'markt_marketing', 'm-marketing', 'Was ist die Abschöpfungsstrategie (Skimming)?', 'Hoher Einstiegspreis für frühe Käufer. Später wird der Preis schrittweise gesenkt.', null, '{}', 803)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -68375,7 +68376,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mk-13', 'markt_marketing', 'm-marketing', 'Was unterscheidet direkten und indirekten Vertrieb?', 'Direkt: Der Hersteller verkauft selbst (Onlineshop, Außendienst). Indirekt: Händler oder Systemhaus dazwischen. Mehr Reichweite, weniger Marge.', null, '{}', 810)
+values ('k-mk-13', 'markt_marketing', 'm-marketing', 'Was unterscheidet direkten und indirekten Vertrieb?', 'Direkt: Der Hersteller verkauft selbst (Onlineshop, Außendienst). Indirekt: über Händler oder Systemhaus. Das bringt mehr Reichweite, aber weniger Marge.', null, '{}', 810)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -68427,7 +68428,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mk-17', 'markt_marketing', 'm-marketing', '„Jetzt 30 Tage kostenlos testen“: welche AIDA-Stufe ist das?', 'Action: eine konkrete Aufforderung zum Handeln.', null, '{}', 814)
+values ('k-mk-17', 'markt_marketing', 'm-marketing', '„Jetzt 30 Tage kostenlos testen“: Welche AIDA-Stufe ist das?', 'Action: eine konkrete Aufforderung zum Handeln.', null, '{}', 814)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -68440,7 +68441,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mk-18', 'markt_marketing', 'm-marketing', 'Was ist eine Cash Cow in der BCG-Matrix?', 'Ein Produkt mit hohem relativem Marktanteil in einem kaum wachsenden Markt. Es finanziert die anderen; Gewinne abschöpfen.', null, '{}', 815)
+values ('k-mk-18', 'markt_marketing', 'm-marketing', 'Was ist eine Cash Cow in der BCG-Matrix?', 'Ein Produkt mit hohem relativem Marktanteil in einem kaum wachsenden Markt. Es finanziert die anderen Produkte, seine Gewinne werden abgeschöpft.', null, '{}', 815)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -68687,7 +68688,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ma-6', 'markt_marketing', 'm-abc', 'Wie berechnest du den Jahresverbrauchswert eines Artikels?', 'Jahresmenge × Preis je Stück. Die Grundlage der ABC-Analyse im Einkauf.', null, '{}', 834)
+values ('k-ma-6', 'markt_marketing', 'm-abc', 'Wie berechnest du den Jahresverbrauchswert eines Artikels?', 'Jahresmenge × Preis je Stück. Er ist die Grundlage der ABC-Analyse im Einkauf.', null, '{}', 834)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -68843,7 +68844,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ma-18', 'markt_marketing', 'm-abc', 'Wo liegen typische Klassengrenzen der ABC-Analyse?', 'Sie sind nicht genormt: typisch A bis ca. 75-80 %, B bis ca. 90-95 % kumuliert, C der Rest, in Aufgaben meist vorgegeben.', null, '{}', 846)
+values ('k-ma-18', 'markt_marketing', 'm-abc', 'Wo liegen typische Klassengrenzen der ABC-Analyse?', 'Sie sind nicht genormt. Typisch: A bis ca. 75-80 %, B bis ca. 90-95 % kumuliert, C der Rest. In Aufgaben sind sie meist vorgegeben.', null, '{}', 846)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -68947,7 +68948,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mr-7', 'markt_marketing', 'm-rechtsformen', 'Was bedeutet in der OHG: unbeschränkt, unmittelbar, solidarisch haften?', 'Unbeschränkt: mit dem Privatvermögen. Unmittelbar: der Gläubiger geht direkt zum Gesellschafter. Solidarisch: jeder für die ganze Schuld.', null, '{}', 854)
+values ('k-mr-7', 'markt_marketing', 'm-rechtsformen', 'Was bedeutet in der OHG: unbeschränkt, unmittelbar, solidarisch haften?', 'Unbeschränkt: mit dem Privatvermögen. Unmittelbar: Der Gläubiger geht direkt zum Gesellschafter. Solidarisch: Jeder haftet für die ganze Schuld.', null, '{}', 854)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -69038,7 +69039,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mr-14', 'markt_marketing', 'm-rechtsformen', 'Welche Rechte hat ein Kommanditist?', 'Kontrollrechte (z. B. Einsicht in den Jahresabschluss) und ein Widerspruchsrecht bei außergewöhnlichen Geschäften, keine Geschäftsführung.', null, '{}', 861)
+values ('k-mr-14', 'markt_marketing', 'm-rechtsformen', 'Welche Rechte hat ein Kommanditist?', 'Kontrollrechte (z. B. Einsicht in den Jahresabschluss). Außergewöhnlichen Geschäften muss er zustimmen (§ 164 HGB). Die Geschäfte führt er nicht.', null, '{}', 861)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -69376,7 +69377,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-hk-15', 'hardware', 'h-komponenten', 'Was ist ECC-RAM, und wo wird er eingesetzt?', 'Arbeitsspeicher, der Bitfehler erkennt und korrigiert, Standard in Servern.', null, '{}', 887)
+values ('k-hk-15', 'hardware', 'h-komponenten', 'Was ist ECC-RAM, und wo wird er eingesetzt?', 'Arbeitsspeicher, der Bitfehler erkennt und korrigiert. Er ist Standard in Servern.', null, '{}', 887)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -69545,7 +69546,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-hk-4', 'hardware', 'h-komponenten', 'Was ist UEFI?', 'Moderne Firmware als Nachfolger des BIOS: unterstützt GPT, große Datenträger und Secure Boot.', null, '{}', 900)
+values ('k-hk-4', 'hardware', 'h-komponenten', 'Was ist UEFI?', 'Moderne Firmware als Nachfolger des BIOS. Sie unterstützt GPT, große Datenträger und Secure Boot.', null, '{}', 900)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -69597,7 +69598,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-hs-5', 'hardware', 'h-speicher', 'Wie ist die Speicherhierarchie von schnell nach langsam aufgebaut?', 'Register - Cache - RAM - SSD - HDD - Band: nach unten langsamer, günstiger und größer.', null, '{}', 904)
+values ('k-hs-5', 'hardware', 'h-speicher', 'Wie ist die Speicherhierarchie von schnell nach langsam aufgebaut?', 'Register, Cache, RAM, SSD, HDD, Band. Nach unten wird es langsamer, günstiger und größer.', null, '{}', 904)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -69844,7 +69845,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-hs-18', 'hardware', 'h-speicher', 'Ein Server braucht 1.000 GB, plus 30 % Wachstum und 20 % Reserve. Wie groß mindestens?', '1.000 GB × 1,3 × 1,2 = 1.560 GB: gewählt wird die nächste handelsübliche Größe, z. B. 2 TB.', null, '{}', 923)
+values ('k-hs-18', 'hardware', 'h-speicher', 'Ein Server braucht 1.000 GB, plus 30 % Wachstum und 20 % Reserve. Wie groß mindestens?', '1.000 GB × 1,3 × 1,2 = 1.560 GB. Gewählt wird die nächste handelsübliche Größe, z. B. 2 TB.', null, '{}', 923)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -69974,7 +69975,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-hi-6', 'hardware', 'h-schnittstellen', 'Mit welcher Formel berechnest du die Übertragungszeit einer Datei?', 'Zeit (s) = Datenmenge in Bit / Datenrate in Bit/s: vorher Byte × 8 rechnen.', null, '{}', 933)
+values ('k-hi-6', 'hardware', 'h-schnittstellen', 'Mit welcher Formel berechnest du die Übertragungszeit einer Datei?', 'Zeit (s) = Datenmenge in Bit / Datenrate in Bit/s. Vorher Byte × 8 rechnen.', null, '{}', 933)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -70039,7 +70040,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-hi-17', 'hardware', 'h-schnittstellen', 'Welche Datenrate braucht 4K mit 60 Hz und 24 Bit unkomprimiert?', '3840 × 2160 × 24 Bit × 60 ≈ 11,94 Gbit/s: HDMI 2.0 (18 Gbit/s) reicht.', null, '{}', 938)
+values ('k-hi-17', 'hardware', 'h-schnittstellen', 'Welche Datenrate braucht 4K mit 60 Hz und 24 Bit unkomprimiert?', '3840 × 2160 × 24 Bit × 60 ≈ 11,94 Gbit/s. HDMI 2.0 (18 Gbit/s) reicht.', null, '{}', 938)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -70143,7 +70144,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-hi-4', 'hardware', 'h-schnittstellen', 'Welche Stärke hat ein IPS-Panel?', 'Gute Farbwiedergabe und stabile Blickwinkel: verbreitet bei Büro- und Grafikmonitoren.', null, '{}', 946)
+values ('k-hi-4', 'hardware', 'h-schnittstellen', 'Welche Stärke hat ein IPS-Panel?', 'Gute Farbwiedergabe und stabile Blickwinkel, deshalb verbreitet bei Büro- und Grafikmonitoren.', null, '{}', 946)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -70169,7 +70170,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-hi-31', 'hardware', 'h-schnittstellen', 'Was gibt die Reaktionszeit eines Monitors an?', 'Wie schnell ein Pixel umschaltet, in ms: kurze Zeiten vermeiden Schlieren bei Bewegung.', null, '{}', 948)
+values ('k-hi-31', 'hardware', 'h-schnittstellen', 'Was gibt die Reaktionszeit eines Monitors an?', 'Wie schnell ein Pixel umschaltet (in ms). Kurze Zeiten vermeiden Schlieren bei Bewegung.', null, '{}', 948)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -70390,7 +70391,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-hu-12', 'hardware', 'h-usv', 'Geräte: 850 W, 20 % Reserve, Leistungsfaktor 0,8. Wie viel VA braucht die USV?', '850 W × 1,2 = 1.020 W; 1.020 W / 0,8 = 1.275 VA: gewählt wird z. B. eine 1.500-VA-USV.', null, '{}', 965)
+values ('k-hu-12', 'hardware', 'h-usv', 'Geräte: 850 W, 20 % Reserve, Leistungsfaktor 0,8. Wie viel VA braucht die USV?', '850 W × 1,2 = 1.020 W; 1.020 W / 0,8 = 1.275 VA. Gewählt wird z. B. eine 1.500-VA-USV.', null, '{}', 965)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -70416,7 +70417,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-hu-4', 'hardware', 'h-usv', 'Was ist die Überbrückungszeit einer USV?', 'Wie lange der Akku die Last versorgt: mindestens lang genug für ein geordnetes Herunterfahren.', null, '{}', 967)
+values ('k-hu-4', 'hardware', 'h-usv', 'Was ist die Überbrückungszeit einer USV?', 'Wie lange der Akku die Last versorgt. Sie muss mindestens für ein geordnetes Herunterfahren reichen.', null, '{}', 967)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -70897,7 +70898,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ba-3', 'betriebssysteme', 'b-aufgaben', 'Was ist der Kernel?', 'Der Kern des Betriebssystems: läuft im Kernelmodus mit vollem Zugriff auf die Hardware.', null, '{}', 1004)
+values ('k-ba-3', 'betriebssysteme', 'b-aufgaben', 'Was ist der Kernel?', 'Der Kern des Betriebssystems. Er läuft im Kernelmodus mit vollem Zugriff auf die Hardware.', null, '{}', 1004)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -71508,7 +71509,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-br-11', 'betriebssysteme', 'b-rechte', 'Wofür ist ein Dienstkonto gedacht?', 'Für Dienste und Programme, nicht für Menschen; sie haben nur die nötigen Rechte.', null, '{}', 1051)
+values ('k-br-11', 'betriebssysteme', 'b-rechte', 'Wofür ist ein Dienstkonto gedacht?', 'Für Dienste und Programme, nicht für Menschen. Es hat nur die nötigen Rechte.', null, '{}', 1051)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -71768,7 +71769,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-br-4', 'betriebssysteme', 'b-rechte', 'Welche Rechte gelten beim Netzzugriff auf eine Windows-Freigabe?', 'Freigabe- und NTFS-Rechte zugleich: wirksam ist die strengere von beiden.', null, '{}', 1071)
+values ('k-br-4', 'betriebssysteme', 'b-rechte', 'Welche Rechte gelten beim Netzzugriff auf eine Windows-Freigabe?', 'Freigabe- und NTFS-Rechte zugleich. Wirksam ist die strengere von beiden.', null, '{}', 1071)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -71781,7 +71782,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-br-19', 'betriebssysteme', 'b-rechte', 'Freigabe „Ändern“, NTFS „Lesen“: Was darf ein Nutzer über das Netzwerk?', 'Nur lesen: beim Netzzugriff gilt die strengere der beiden Berechtigungen.', null, '{}', 1072)
+values ('k-br-19', 'betriebssysteme', 'b-rechte', 'Freigabe „Ändern“, NTFS „Lesen“: Was darf ein Nutzer über das Netzwerk?', 'Nur lesen, denn beim Netzzugriff gilt die strengere der beiden Berechtigungen.', null, '{}', 1072)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -71794,7 +71795,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-br-20', 'betriebssysteme', 'b-rechte', 'Welche Rechte gelten, wenn jemand direkt am Server auf einen Ordner zugreift?', 'Nur die NTFS-Rechte: Freigaberechte wirken ausschließlich beim Zugriff über das Netzwerk.', null, '{}', 1073)
+values ('k-br-20', 'betriebssysteme', 'b-rechte', 'Welche Rechte gelten, wenn jemand direkt am Server auf einen Ordner zugreift?', 'Nur die NTFS-Rechte. Freigaberechte wirken ausschließlich beim Zugriff über das Netzwerk.', null, '{}', 1073)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -72535,7 +72536,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-au-16', 'anwendungssysteme', 'an-unternehmen', 'Was sind Dateninseln?', 'Jede Abteilung pflegt eigene Daten: doppelt und widersprüchlich. Integrierte Systeme lösen genau das.', null, '{}', 1130)
+values ('k-au-16', 'anwendungssysteme', 'an-unternehmen', 'Was sind Dateninseln?', 'Jede Abteilung pflegt eigene Daten, oft doppelt und widersprüchlich. Integrierte Systeme lösen genau das.', null, '{}', 1130)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -72925,7 +72926,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-as-5', 'anwendungssysteme', 'an-software', 'Was ist eine Modifikation von Standardsoftware?', 'Eine Änderung am Programmcode des Herstellers, geht bei Updates oft verloren.', null, '{}', 1160)
+values ('k-as-5', 'anwendungssysteme', 'an-software', 'Was ist eine Modifikation von Standardsoftware?', 'Eine Änderung am Programmcode des Herstellers. Sie geht bei Updates oft verloren.', null, '{}', 1160)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -73029,7 +73030,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-as-16', 'anwendungssysteme', 'an-software', 'Wie berechnest du den Nutzwert einer Alternative?', 'Je Kriterium Gewicht × Punkte, dann alle Produkte addieren. Die höchste Summe gewinnt.', null, '{}', 1168)
+values ('k-as-16', 'anwendungssysteme', 'an-software', 'Wie berechnest du den Nutzwert einer Alternative?', 'Je Kriterium Gewicht × Punkte, dann alle Teilwerte addieren. Die höchste Summe gewinnt.', null, '{}', 1168)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -73289,7 +73290,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-al-27', 'anwendungssysteme', 'an-lizenzen', 'Der PC mit OEM-Lizenz wird ersetzt. Was gilt für die Lizenz?', 'Sie bleibt an das alte Gerät gebunden. Für den neuen PC braucht es eine Voll- oder Volumenlizenz.', null, '{}', 1188)
+values ('k-al-27', 'anwendungssysteme', 'an-lizenzen', 'Der PC mit OEM-Lizenz wird ersetzt. Was gilt für die Lizenz?', 'Laut Lizenzbedingungen des Herstellers bleibt sie an das alte Gerät gebunden. Für den neuen PC planst du eine eigene Lizenz ein.', null, '{}', 1188)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74017,7 +74018,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-no-25', 'netzwerke', 'nw-modelle', 'Welche Dienste nutzen typischerweise TCP?', 'Web (HTTP, HTTPS), E-Mail und Dateiübertragung: überall, wo nichts verloren gehen darf.', null, '{}', 1244)
+values ('k-no-25', 'netzwerke', 'nw-modelle', 'Welche Dienste nutzen typischerweise TCP?', 'Web (HTTP, HTTPS), E-Mail und Dateiübertragung, also überall, wo nichts verloren gehen darf.', null, '{}', 1244)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74030,7 +74031,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-no-6', 'netzwerke', 'nw-modelle', 'Wie läuft der TCP-Drei-Wege-Handshake ab?', 'SYN - SYN-ACK - ACK, danach steht die Verbindung.', null, '{}', 1245)
+values ('k-no-6', 'netzwerke', 'nw-modelle', 'Wie läuft der TCP-Drei-Wege-Handshake ab?', 'SYN, SYN-ACK, ACK. Danach steht die Verbindung.', null, '{}', 1245)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74225,7 +74226,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ng-56', 'netzwerke', 'nw-geraete', 'Was ist in Prüfungsfragen mit „Router“ gemeint: anders als beim Heimrouter?', 'Nur die Funktion auf Schicht 3: Netze verbinden und Pakete weiterleiten. Der Heimrouter ist zusätzlich Modem, Switch, Access Point, DHCP-Server und Firewall.', null, '{}', 1260)
+values ('k-ng-56', 'netzwerke', 'nw-geraete', 'Was ist in Prüfungsfragen mit „Router“ gemeint, anders als beim Heimrouter?', 'Nur die Funktion auf Schicht 3: Netze verbinden und Pakete weiterleiten. Der Heimrouter ist zusätzlich Modem, Switch, Access Point, DHCP-Server und Firewall.', null, '{}', 1260)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74654,7 +74655,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ng-52', 'netzwerke', 'nw-geraete', 'Ein Access Point braucht 18 W über PoE. Welcher Standard ist mindestens nötig?', '802.3at (PoE+) - 18 W liegen über 15,4 W (af), aber unter 30 W.', null, '{}', 1293)
+values ('k-ng-52', 'netzwerke', 'nw-geraete', 'Ein Access Point braucht 18 W über PoE. Welcher Standard ist mindestens nötig?', '802.3at (PoE+), denn 18 W liegen über 15,4 W (af), aber unter 30 W.', null, '{}', 1293)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74875,7 +74876,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n4-5', 'netzwerke', 'nw-ipv4', 'Wie viele Hosts hat ein /30-Netz, und wofür nutzt man es?', '255.255.255.252 - 2 nutzbare Hosts, typisch für Punkt-zu-Punkt-Verbindungen zwischen Routern.', null, '{}', 1310)
+values ('k-n4-5', 'netzwerke', 'nw-ipv4', 'Wie viele Hosts hat ein /30-Netz, und wofür nutzt man es?', '2 nutzbare Hosts (Maske 255.255.255.252), typisch für Punkt-zu-Punkt-Verbindungen zwischen Routern.', null, '{}', 1310)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -74914,7 +74915,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n4-24', 'netzwerke', 'nw-ipv4', 'Mit welcher Formel berechnest du die Anzahl der Subnetze?', '2^geliehene Bits: z. B. ergeben 3 geliehene Bits 8 Subnetze.', null, '{}', 1313)
+values ('k-n4-24', 'netzwerke', 'nw-ipv4', 'Mit welcher Formel berechnest du die Anzahl der Subnetze?', '2^(geliehene Bits). 3 geliehene Bits ergeben z. B. 8 Subnetze.', null, '{}', 1313)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -75330,7 +75331,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-n6-18', 'netzwerke', 'nw-ipv6', 'Welches Präfix hat ein IPv6-Subnetz im LAN fast immer?', '/64 - 64 Bit Präfix und 64 Bit Interface-ID.', null, '{}', 1345)
+values ('k-n6-18', 'netzwerke', 'nw-ipv6', 'Welches Präfix hat ein IPv6-Subnetz im LAN fast immer?', '/64, also 64 Bit Präfix und 64 Bit Interface-ID.', null, '{}', 1345)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -76435,7 +76436,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-nc-28', 'netzwerke', 'nw-cloud', 'Welche Rolle hat ein Cloud-Anbieter, der personenbezogene Daten verarbeitet?', 'Er ist Auftragsverarbeiter: nötig ist ein Vertrag nach Art. 28 DSGVO; verantwortlich bleibt das Unternehmen.', null, '{}', 1430)
+values ('k-nc-28', 'netzwerke', 'nw-cloud', 'Welche Rolle hat ein Cloud-Anbieter, der personenbezogene Daten verarbeitet?', 'Er ist Auftragsverarbeiter. Nötig ist ein Vertrag nach Art. 28 DSGVO, verantwortlich bleibt das Unternehmen.', null, '{}', 1430)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -76461,7 +76462,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-nc-29', 'netzwerke', 'nw-cloud', 'Was ist Vendor Lock-in, und wie beugst du vor?', 'Abhängigkeit von einem Anbieter: vorbeugen mit Ausstiegsstrategie und exportierbaren Daten.', null, '{}', 1432)
+values ('k-nc-29', 'netzwerke', 'nw-cloud', 'Was ist Vendor Lock-in, und wie beugst du vor?', 'Die Abhängigkeit von einem Anbieter. Du beugst vor mit Ausstiegsstrategie und exportierbaren Daten.', null, '{}', 1432)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -77085,7 +77086,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-fe-4', 'anforderungen', 'af-erhebung', 'Wofür steht MoSCoW?', 'Must have, Should have, Could have, Won’t have (this time), Priorisierung von Anforderungen.', null, '{}', 1480)
+values ('k-fe-4', 'anforderungen', 'af-erhebung', 'Wofür steht MoSCoW?', 'Must have, Should have, Could have, Won’t have (this time). Damit priorisierst du Anforderungen.', null, '{}', 1480)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -77254,7 +77255,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-fe-17', 'anforderungen', 'af-erhebung', 'Was bedeutet „verfolgbar“ bei einer Anforderung?', 'Sie hat eine eindeutige Nummer und eine bekannte Quelle, so lässt sie sich bis zum Test nachverfolgen.', null, '{}', 1493)
+values ('k-fe-17', 'anforderungen', 'af-erhebung', 'Was bedeutet „verfolgbar“ bei einer Anforderung?', 'Sie hat eine eindeutige Nummer und eine bekannte Quelle. So lässt sie sich bis zum Test nachverfolgen.', null, '{}', 1493)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -77527,7 +77528,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-uk-3', 'uml_modellierung', 'u-klassen', 'Was ist eine Aggregation und wie wird sie gezeichnet?', 'Leere Raute am Ganzen: das Teil kann ohne das Ganze existieren (Abteilung - Mitarbeiter).', null, '{}', 1514)
+values ('k-uk-3', 'uml_modellierung', 'u-klassen', 'Was ist eine Aggregation und wie wird sie gezeichnet?', 'Leere Raute am Ganzen: Das Teil kann ohne das Ganze existieren (Abteilung und Mitarbeiter).', null, '{}', 1514)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -77540,7 +77541,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-uk-4', 'uml_modellierung', 'u-klassen', 'Was ist eine Komposition und wie wird sie gezeichnet?', 'Gefüllte Raute am Ganzen: das Teil existiert nur mit dem Ganzen (Rechnung - Position).', null, '{}', 1515)
+values ('k-uk-4', 'uml_modellierung', 'u-klassen', 'Was ist eine Komposition und wie wird sie gezeichnet?', 'Gefüllte Raute am Ganzen: Das Teil existiert nur mit dem Ganzen (Rechnung und Position).', null, '{}', 1515)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -77579,7 +77580,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-uk-7', 'uml_modellierung', 'u-klassen', 'An welchem Ende einer Beziehung steht die Multiplizität?', 'Am anderen Ende der Linie: Kunde 1 --- 0..* Bestellung heißt „ein Kunde hat 0..* Bestellungen“.', null, '{}', 1518)
+values ('k-uk-7', 'uml_modellierung', 'u-klassen', 'An welchem Ende einer Beziehung steht die Multiplizität?', 'Am gegenüberliegenden Ende, bei der Zielklasse: Kunde 1 --- 0..* Bestellung heißt „ein Kunde hat 0..* Bestellungen“.', null, '{}', 1518)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -77800,7 +77801,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ua-2', 'uml_modellierung', 'u-aktivitaet', 'Wie funktioniert eine Entscheidung im Aktivitätsdiagramm?', 'Raute mit einem Eingang und mehreren Ausgängen: genau ein Weg wird genommen, gesteuert über Guards [ ].', null, '{}', 1535)
+values ('k-ua-2', 'uml_modellierung', 'u-aktivitaet', 'Wie funktioniert eine Entscheidung im Aktivitätsdiagramm?', 'Raute mit einem Eingang und mehreren Ausgängen: Genau ein Weg wird genommen, gesteuert über Guards [ ].', null, '{}', 1535)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -77826,7 +77827,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ua-4', 'uml_modellierung', 'u-aktivitaet', 'Was zeigt eine Swimlane?', 'Einen Aktivitätsbereich je Rolle oder Abteilung, also, wer eine Aktion ausführt.', null, '{}', 1537)
+values ('k-ua-4', 'uml_modellierung', 'u-aktivitaet', 'Was zeigt eine Swimlane?', 'Einen Bereich je Rolle oder Abteilung. So ist erkennbar, wer eine Aktion ausführt.', null, '{}', 1537)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -77904,7 +77905,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ua-10', 'uml_modellierung', 'u-aktivitaet', 'Warum sind die Guards [Betrag > 500] und [Betrag < 500] fehlerhaft?', 'Bei genau 500 trifft keiner zu. Guards müssen alle Fälle abdecken. Richtig wäre [Betrag <= 500].', null, '{}', 1543)
+values ('k-ua-10', 'uml_modellierung', 'u-aktivitaet', 'Warum sind die Guards [Betrag > 500] und [Betrag < 500] fehlerhaft?', 'Bei genau 500 trifft keiner zu. Guards müssen alle Fälle abdecken. Richtig wäre als zweiter Guard [Betrag <= 500].', null, '{}', 1543)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -78229,7 +78230,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-pd-19', 'programmierlogik', 'pl-datentypen', 'Was ergibt "5" + 3 in Java?', '"53": ist ein Operand ein String, wird verkettet statt gerechnet.', null, '{}', 1568)
+values ('k-pd-19', 'programmierlogik', 'pl-datentypen', 'Was ergibt "5" + 3 in Java?', '"53": Ist ein Operand ein String, wird verkettet statt gerechnet.', null, '{}', 1568)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -78281,7 +78282,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-pk-1', 'programmierlogik', 'pl-kontrollstrukturen', 'Was kennzeichnet eine kopfgesteuerte Schleife?', 'Sie prüft vor jedem Durchlauf (while), und läuft eventuell gar nicht.', null, '{}', 1572)
+values ('k-pk-1', 'programmierlogik', 'pl-kontrollstrukturen', 'Was kennzeichnet eine kopfgesteuerte Schleife?', 'Sie prüft vor jedem Durchlauf (while) und läuft eventuell gar nicht.', null, '{}', 1572)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -78294,7 +78295,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-pk-2', 'programmierlogik', 'pl-kontrollstrukturen', 'Was kennzeichnet eine fußgesteuerte Schleife?', 'Sie prüft nach jedem Durchlauf (do-while), und läuft mindestens einmal.', null, '{}', 1573)
+values ('k-pk-2', 'programmierlogik', 'pl-kontrollstrukturen', 'Was kennzeichnet eine fußgesteuerte Schleife?', 'Sie prüft nach jedem Durchlauf (do-while) und läuft mindestens einmal.', null, '{}', 1573)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -78450,7 +78451,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-pk-14', 'programmierlogik', 'pl-kontrollstrukturen', 'int x = 20; while (x < 10) { x++; }. Wie oft läuft der Rumpf?', '0-mal, kopfgesteuert: 20 < 10 ist schon vor dem ersten Durchlauf falsch.', null, '{}', 1585)
+values ('k-pk-14', 'programmierlogik', 'pl-kontrollstrukturen', 'int x = 20; while (x < 10) { x++; }. Wie oft läuft der Rumpf?', '0-mal. Die Schleife ist kopfgesteuert, und 20 < 10 ist schon vor dem ersten Durchlauf falsch.', null, '{}', 1585)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -78554,7 +78555,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-pk-22', 'programmierlogik', 'pl-kontrollstrukturen', 'Welchen Wert hat wahr ODER wahr UND falsch?', 'wahr, UND zuerst: wahr UND falsch = falsch, dann wahr ODER falsch = wahr.', null, '{}', 1593)
+values ('k-pk-22', 'programmierlogik', 'pl-kontrollstrukturen', 'Welchen Wert hat wahr ODER wahr UND falsch?', 'wahr. UND wird zuerst ausgewertet: wahr UND falsch = falsch, dann wahr ODER falsch = wahr.', null, '{}', 1593)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -78658,7 +78659,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-pc-9', 'programmierlogik', 'pl-pseudocode', 'Woran erkennst du im Pseudocode, was zu einem Block gehört?', 'An der Einrückung, und jeder Block wird geschlossen, z. B. mit ENDE WENN oder ENDE FÜR.', null, '{}', 1601)
+values ('k-pc-9', 'programmierlogik', 'pl-pseudocode', 'Woran erkennst du im Pseudocode, was zu einem Block gehört?', 'An der Einrückung. Außerdem wird jeder Block geschlossen, z. B. mit ENDE WENN oder ENDE FÜR.', null, '{}', 1601)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -79022,7 +79023,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-pt-19', 'programmierlogik', 'pl-schreibtischtest', 'SOLANGE i < 3: i ← i + 1, summe ← summe + werte[i] (Start i = 0). Was ist falsch?', 'i wird zu früh erhöht: werte[0] wird übersprungen, werte[3] gibt es nicht. Erst addieren, dann erhöhen.', null, '{}', 1629)
+values ('k-pt-19', 'programmierlogik', 'pl-schreibtischtest', 'werte hat 3 Elemente, Start i = 0. SOLANGE i < 3: i ← i + 1, summe ← summe + werte[i]. Was ist falsch?', 'i wird zu früh erhöht: werte[0] wird übersprungen, werte[3] gibt es nicht. Erst addieren, dann erhöhen.', null, '{}', 1629)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -79087,7 +79088,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-og-4', 'objektorientierung', 'oo-grundbegriffe', 'Was bedeutet die Identität eines Objekts?', 'Jedes Objekt ist eigenständig, auch zwei Objekte mit gleichen Attributwerten sind zwei verschiedene Objekte.', null, '{}', 1634)
+values ('k-og-4', 'objektorientierung', 'oo-grundbegriffe', 'Was bedeutet die Identität eines Objekts?', 'Jedes Objekt ist eigenständig. Auch zwei Objekte mit gleichen Attributwerten sind zwei verschiedene Objekte.', null, '{}', 1634)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -79178,7 +79179,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-og-11', 'objektorientierung', 'oo-grundbegriffe', 't1 und t2 sind Tickets. Was passiert mit t2, wenn t1.schliessen() aufgerufen wird?', 'Nichts, denn jedes Objekt hat seinen eigenen Zustand, nur t1 ändert sich.', null, '{}', 1641)
+values ('k-og-11', 'objektorientierung', 'oo-grundbegriffe', 't1 und t2 sind Tickets. Was passiert mit t2, wenn t1.schliessen() aufgerufen wird?', 'Nichts. Jedes Objekt hat seinen eigenen Zustand, also ändert sich nur t1.', null, '{}', 1641)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -79243,7 +79244,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-og-16', 'objektorientierung', 'oo-grundbegriffe', 'Nenne zwei Vorteile der objektorientierten Programmierung.', 'z. B. Wiederverwendbarkeit von Klassen und bessere Wartbarkeit durch Kapselung; die Objekte entsprechen der realen Welt.', null, '{}', 1646)
+values ('k-og-16', 'objektorientierung', 'oo-grundbegriffe', 'Nenne zwei Vorteile der objektorientierten Programmierung.', 'Z. B. Wiederverwendbarkeit von Klassen und bessere Wartbarkeit durch Kapselung. Außerdem bilden Objekte die reale Welt nach.', null, '{}', 1646)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -79451,7 +79452,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ok-14', 'objektorientierung', 'oo-kapselung', 'Welche Sichtbarkeit bekommen Hilfsmethoden, die nur intern gebraucht werden?', 'private: sie sind ein internes Detail und gehören nicht zur Schnittstelle.', null, '{}', 1662)
+values ('k-ok-14', 'objektorientierung', 'oo-kapselung', 'Welche Sichtbarkeit bekommen Hilfsmethoden, die nur intern gebraucht werden?', 'private: Sie sind ein internes Detail und gehören nicht zur Schnittstelle.', null, '{}', 1662)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -79477,7 +79478,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ok-16', 'objektorientierung', 'oo-kapselung', 'Wovor schützt private, und wovor nicht?', 'Es schützt vor falscher Verwendung im Code, verschlüsselt aber keine Daten.', null, '{}', 1664)
+values ('k-ok-16', 'objektorientierung', 'oo-kapselung', 'Wovor schützt private und wovor nicht?', 'Es schützt vor falscher Verwendung im Code, verschlüsselt aber keine Daten.', null, '{}', 1664)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -79750,7 +79751,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-oc-18', 'objektorientierung', 'oo-konstruktor', 'static zaehler (Start 0) wird in jedem Konstruktor erhöht. Wert nach drei new Ticket()?', '3, denn das Klassenattribut gibt es nur einmal, alle Objekte erhöhen denselben Zähler.', null, '{}', 1685)
+values ('k-oc-18', 'objektorientierung', 'oo-konstruktor', 'static zaehler (Start 0) wird in jedem Konstruktor erhöht. Wert nach drei new Ticket()?', '3, denn das Klassenattribut gibt es nur einmal. Alle Objekte erhöhen denselben Zähler.', null, '{}', 1685)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -79828,7 +79829,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-de-4', 'datenmodellierung', 'dm-erm', 'Wo trägst du ein Attribut ein, das zu zwei Entitätstypen gemeinsam gehört?', 'An die Beziehung, z. B. „Menge“ an der Beziehung Bestellung „enthält“ Artikel.', null, '{}', 1691)
+values ('k-de-4', 'datenmodellierung', 'dm-erm', 'Wo trägst du ein Attribut ein, das zu zwei Entitätstypen gemeinsam gehört?', 'An der Beziehung, z. B. „Menge“ an der Beziehung Bestellung „enthält“ Artikel.', null, '{}', 1691)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -80036,7 +80037,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-dk-1', 'datenmodellierung', 'dm-kardinalitaet', 'Nenne ein typisches Beispiel für eine 1:n-Beziehung.', 'Abteilung - Mitarbeiter: Eine Abteilung hat viele Mitarbeiter, jeder gehört zu genau einer Abteilung.', null, '{}', 1707)
+values ('k-dk-1', 'datenmodellierung', 'dm-kardinalitaet', 'Nenne ein typisches Beispiel für eine 1:n-Beziehung.', 'Abteilung und Mitarbeiter: Eine Abteilung hat viele Mitarbeiter, jeder gehört zu genau einer Abteilung.', null, '{}', 1707)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -80049,7 +80050,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-dk-2', 'datenmodellierung', 'dm-kardinalitaet', 'Wie löst du eine n:m-Beziehung im relationalen Modell auf?', 'Über eine Zwischentabelle mit den Primärschlüsseln beider Seiten als Fremdschlüssel -> zwei 1:n-Beziehungen.', null, '{}', 1708)
+values ('k-dk-2', 'datenmodellierung', 'dm-kardinalitaet', 'Wie löst du eine n:m-Beziehung im relationalen Modell auf?', 'Über eine Zwischentabelle mit den Primärschlüsseln beider Seiten als Fremdschlüssel. So entstehen zwei 1:n-Beziehungen.', null, '{}', 1708)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -80140,7 +80141,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-dk-9', 'datenmodellierung', 'dm-kardinalitaet', 'Nenne ein Beispiel für eine 1:1-Beziehung.', 'Mitarbeiter - Dienstwagen, wenn jeder höchstens einen Wagen hat und jeder Wagen genau einer Person gehört.', null, '{}', 1715)
+values ('k-dk-9', 'datenmodellierung', 'dm-kardinalitaet', 'Nenne ein Beispiel für eine 1:1-Beziehung.', 'Mitarbeiter und Dienstwagen, wenn jeder höchstens einen Wagen hat und jeder Wagen genau einer Person gehört.', null, '{}', 1715)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -80153,7 +80154,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-dk-10', 'datenmodellierung', 'dm-kardinalitaet', 'Nenne ein Beispiel für eine n:m-Beziehung.', 'Bestellung - Artikel: Eine Bestellung enthält viele Artikel, ein Artikel steckt in vielen Bestellungen.', null, '{}', 1716)
+values ('k-dk-10', 'datenmodellierung', 'dm-kardinalitaet', 'Nenne ein Beispiel für eine n:m-Beziehung.', 'Bestellung und Artikel: Eine Bestellung enthält viele Artikel, ein Artikel steckt in vielen Bestellungen.', null, '{}', 1716)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -80192,7 +80193,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-dk-13', 'datenmodellierung', 'dm-kardinalitaet', 'Wie viele Tabellen entstehen aus 3 Entitätstypen mit einer 1:n- und einer n:m-Beziehung?', '4: drei Tabellen für die Entitätstypen + 1 Zwischentabelle für n:m. Für 1:n reicht ein Fremdschlüssel.', null, '{}', 1719)
+values ('k-dk-13', 'datenmodellierung', 'dm-kardinalitaet', 'Wie viele Tabellen entstehen aus 3 Entitätstypen mit einer 1:n- und einer n:m-Beziehung?', '4: 3 Tabellen für die Entitätstypen + 1 Zwischentabelle für n:m. Für 1:n reicht ein Fremdschlüssel.', null, '{}', 1719)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -81297,7 +81298,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-wh-16', 'web_internet', 'wi-http', 'Was bedeutet Statuscode 500?', 'Internal Server Error: Das Serverprogramm ist bei der Verarbeitung abgestürzt bzw. fehlerhaft.', null, '{}', 1804)
+values ('k-wh-16', 'web_internet', 'wi-http', 'Was bedeutet Statuscode 500?', 'Internal Server Error: Im Serverprogramm ist bei der Verarbeitung ein Fehler aufgetreten.', null, '{}', 1804)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -81375,7 +81376,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-wh-22', 'web_internet', 'wi-http', 'Was sagt das Schloss-Symbol im Browser aus?', 'Nur: Die Verbindung ist verschlüsselt und das Zertifikat passt zum Hostnamen. Ob die Seite seriös ist, zeigt erst die Domain.', null, '{}', 1810)
+values ('k-wh-22', 'web_internet', 'wi-http', 'Was sagt das Schloss-Symbol im Browser aus?', 'Nur, dass die Verbindung verschlüsselt ist und das Zertifikat zum Hostnamen passt. Ob die Seite seriös ist, zeigt erst die Domain.', null, '{}', 1810)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -81908,7 +81909,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-wt-16', 'web_internet', 'wi-html', 'Was sind semantische HTML-Elemente?', 'Elemente, die die Rolle eines Bereichs benennen, z. B. header, nav, main, footer, div und span sind neutral.', null, '{}', 1851)
+values ('k-wt-16', 'web_internet', 'wi-html', 'Was sind semantische HTML-Elemente?', 'Elemente, die die Rolle eines Bereichs benennen, z. B. header, nav, main, footer. div und span sind dagegen neutral.', null, '{}', 1851)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -83429,7 +83430,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mu-4', 'multimedia_daten', 'md-uebertragung', 'Welche Datenrate zählt beim Cloud-Backup?', 'Die Upload-Rate, denn sie ist meist deutlich kleiner als die Download-Rate, z. B. 250/40 Mbit/s.', null, '{}', 1968)
+values ('k-mu-4', 'multimedia_daten', 'md-uebertragung', 'Welche Datenrate zählt beim Cloud-Backup?', 'Die Upload-Rate, weil die Daten hochgeladen werden. Sie ist meist deutlich kleiner als die Download-Rate, z. B. 250/40 Mbit/s.', null, '{}', 1968)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -83559,7 +83560,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mu-14', 'multimedia_daten', 'md-uebertragung', 'Wie lange dauert der Upload von 600 MB mit 40 Mbit/s?', '600 × 8 = 4.800 Mbit; 4.800 / 40 = 120 s = 2 min.', null, '{}', 1978)
+values ('k-mu-14', 'multimedia_daten', 'md-uebertragung', 'Wie lange dauert der Upload von 600 MB mit 40 Mbit/s?', '600 MB × 8 = 4.800 Mbit; 4.800 / 40 = 120 s = 2 min.', null, '{}', 1978)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -83572,7 +83573,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mu-15', 'multimedia_daten', 'md-uebertragung', 'Welche Upload-Rate brauchst du für 30 GB in einer Stunde?', '30 × 8 = 240.000 Mbit; 240.000 / 3.600 s ≈ 66,7 Mbit/s.', null, '{}', 1979)
+values ('k-mu-15', 'multimedia_daten', 'md-uebertragung', 'Welche Upload-Rate brauchst du für 30 GB in einer Stunde?', '30 GB × 8 = 240 Gbit = 240.000 Mbit; 240.000 / 3.600 s ≈ 66,7 Mbit/s.', null, '{}', 1979)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -83585,7 +83586,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-mu-16', 'multimedia_daten', 'md-uebertragung', 'Welche Datenrate braucht ein Stream mit 1,8 GB pro Stunde?', '1,8 × 8 = 14.400 Mbit; 14.400 / 3.600 s = 4 Mbit/s.', null, '{}', 1980)
+values ('k-mu-16', 'multimedia_daten', 'md-uebertragung', 'Welche Datenrate braucht ein Stream mit 1,8 GB pro Stunde?', '1,8 GB × 8 = 14,4 Gbit = 14.400 Mbit; 14.400 / 3.600 s = 4 Mbit/s.', null, '{}', 1980)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -84352,7 +84353,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ie-1', 'ki_grundlagen', 'ki-einsatz', 'Aus welchen Bausteinen besteht ein guter Prompt?', 'Rolle, Kontext, Aufgabe, Format und und bei Bedarf Beispiele.', null, '{}', 2039)
+values ('k-ie-1', 'ki_grundlagen', 'ki-einsatz', 'Aus welchen Bausteinen besteht ein guter Prompt?', 'Rolle, Kontext, Aufgabe, Format und bei Bedarf Beispiele.', null, '{}', 2039)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -84417,7 +84418,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ie-6', 'ki_grundlagen', 'ki-einsatz', 'Was verlangt die KI-Verordnung seit 2.2.2025 zur KI-Kompetenz?', 'Wer KI-Systeme anbietet oder einsetzt, sorgt dafür, dass das Personal ausreichend geschult ist.', null, '{}', 2044)
+values ('k-ie-6', 'ki_grundlagen', 'ki-einsatz', 'Was verlangt die KI-Verordnung seit dem 2.2.2025 zur KI-Kompetenz?', 'Wer KI-Systeme anbietet oder einsetzt, ergreift Maßnahmen, damit das Personal die nötige KI-Kompetenz aufbaut, etwa Schulungen.', null, '{}', 2044)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -84820,7 +84821,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ir-12', 'ki_grundlagen', 'ki-grenzen', 'Was ist ein Deepfake?', 'Täuschend echt gefälschtes Bild, Video oder Stimme, z. B. die Stimme des Chefs fordert eine Überweisung.', null, '{}', 2075)
+values ('k-ir-12', 'ki_grundlagen', 'ki-grenzen', 'Was ist ein Deepfake?', 'Täuschend echt gefälschte Bilder, Videos oder Stimmen, z. B. fordert die Stimme des Chefs eine Überweisung.', null, '{}', 2075)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -84911,7 +84912,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ir-19', 'ki_grundlagen', 'ki-grenzen', 'Wonach richtet sich die Risikoklasse im AI Act?', 'Nach dem Einsatzzweck, nicht nach der Technik: Dasselbe Modell ist im Kundenchat begrenzt, bei der Bewerberauswahl hoch.', null, '{}', 2082)
+values ('k-ir-19', 'ki_grundlagen', 'ki-grenzen', 'Wonach richtet sich die Risikoklasse im AI Act?', 'Nach dem Einsatzzweck, nicht nach der Technik: Dasselbe Modell hat im Kundenchat begrenztes, bei der Bewerberauswahl hohes Risiko.', null, '{}', 2082)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -84989,7 +84990,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ir-25', 'ki_grundlagen', 'ki-grenzen', 'Wie steht es in Deutschland um den Urheberrechtsschutz reiner KI-Erzeugnisse?', 'In der Regel nicht, ohne menschlichen schöpferischen Beitrag. Die Ausgabe kann aber fremde Werke verletzen.', null, '{}', 2088)
+values ('k-ir-25', 'ki_grundlagen', 'ki-grenzen', 'Wie steht es in Deutschland um den Urheberrechtsschutz reiner KI-Erzeugnisse?', 'In der Regel besteht keiner, weil der menschliche schöpferische Beitrag fehlt. Die Ausgabe kann aber fremde Werke verletzen.', null, '{}', 2088)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -85171,7 +85172,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-qg-14', 'qualitaetsmanagement', 'qm-grundlagen', 'Welchen Vorteil haben statische Prüfungen gegenüber Tests?', 'Sie gehen schon mit Anforderungen und Entwürfen, bevor Code existiert. Fehler werden früh und billig gefunden.', null, '{}', 2102)
+values ('k-qg-14', 'qualitaetsmanagement', 'qm-grundlagen', 'Welchen Vorteil haben statische Prüfungen gegenüber Tests?', 'Sie sind schon bei Anforderungen und Entwürfen möglich, bevor Code existiert. Fehler werden früh und billig gefunden.', null, '{}', 2102)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -85184,7 +85185,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-qg-15', 'qualitaetsmanagement', 'qm-grundlagen', 'Ein Anforderungsfehler kostet früh 10 €. Was kostet er nach der Zehnerregel beim Kunden?', '10 € × 10 × 10 × 10 = 10.000 € (Anforderung, Entwurf, Test, Betrieb).', null, '{}', 2103)
+values ('k-qg-15', 'qualitaetsmanagement', 'qm-grundlagen', 'Ein Anforderungsfehler kostet früh 10 €. Was kostet er nach der Zehnerregel beim Kunden?', '10 € × 10⁴ = 100.000 €, denn es liegen vier Phasen dazwischen (Anforderung, Entwurf, Implementierung, Test, Betrieb).', null, '{}', 2103)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -85197,7 +85198,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-qg-16', 'qualitaetsmanagement', 'qm-grundlagen', '6 Anforderungsfehler kosten früh je 10 €. Was kosten sie, wenn erst im Test gefunden?', 'Zwei Phasen später: 10 € × 100 = 1.000 € je Fehler; 6 × 1.000 € = 6.000 €.', null, '{}', 2104)
+values ('k-qg-16', 'qualitaetsmanagement', 'qm-grundlagen', '6 Anforderungsfehler kosten früh je 10 €. Was kosten sie, wenn sie erst im Test auffallen?', 'Drei Phasen später (Entwurf, Implementierung, Test): 10 € × 1.000 = 10.000 € je Fehler; 6 × 10.000 € = 60.000 €.', null, '{}', 2104)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -85249,7 +85250,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-qg-20', 'qualitaetsmanagement', 'qm-grundlagen', 'Warum reicht Qualitätssicherung erst am Projektende nicht?', 'Fehler werden dann spät und teuer gefunden; Qualität lässt sich nicht „hineintesten“. Reviews gehen schon bei Anforderung und Entwurf.', null, '{}', 2108)
+values ('k-qg-20', 'qualitaetsmanagement', 'qm-grundlagen', 'Warum reicht Qualitätssicherung erst am Projektende nicht?', 'Fehler werden dann spät und teuer gefunden; Qualität lässt sich nicht „hineintesten“. Reviews sind schon bei Anforderung und Entwurf möglich.', null, '{}', 2108)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -85509,7 +85510,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-qp-12', 'qualitaetsmanagement', 'qm-pdca', 'In welcher PDCA-Phase läuft ein Pilotbetrieb in einer Abteilung?', 'In „Do“: die Maßnahme wird im kleinen Rahmen erprobt.', null, '{}', 2128)
+values ('k-qp-12', 'qualitaetsmanagement', 'qm-pdca', 'In welcher PDCA-Phase läuft ein Pilotbetrieb in einer Abteilung?', 'In „Do“: Die Maßnahme wird im kleinen Rahmen erprobt.', null, '{}', 2128)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -85691,7 +85692,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ss-5', 'testen', 'ts-stufen', 'Was ist ein Regressionstest?', 'Wiederholt bestandene Tests nach einer Änderung, um Nebenwirkungen zu finden.', null, '{}', 2142)
+values ('k-ss-5', 'testen', 'ts-stufen', 'Was ist ein Regressionstest?', 'Bereits bestandene Tests werden nach einer Änderung wiederholt, um Nebenwirkungen zu finden.', null, '{}', 2142)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -86055,7 +86056,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-sv-10', 'testen', 'ts-verfahren', 'Welche Überdeckung ist stärker: Anweisungs- oder Zweigüberdeckung?', 'Zweigüberdeckung: wer sie erreicht, hat auch volle Anweisungsüberdeckung, aber nicht umgekehrt.', null, '{}', 2170)
+values ('k-sv-10', 'testen', 'ts-verfahren', 'Welche Überdeckung ist stärker: Anweisungs- oder Zweigüberdeckung?', 'Zweigüberdeckung: Wer sie erreicht, hat auch volle Anweisungsüberdeckung. Umgekehrt gilt das nicht.', null, '{}', 2170)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -86198,7 +86199,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-sv-21', 'testen', 'ts-verfahren', 'Was ist ein Unit-Test?', 'Automatisierter Komponententest: Code ruft eine einzelne Funktion auf und prüft das Ergebnis; läuft bei jedem Build.', null, '{}', 2181)
+values ('k-sv-21', 'testen', 'ts-verfahren', 'Was ist ein Unit-Test?', 'Automatisierter Komponententest: Testcode ruft eine einzelne Funktion auf und prüft das Ergebnis. Er läuft bei jedem Build.', null, '{}', 2181)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -86445,7 +86446,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-sf-16', 'testen', 'ts-testfaelle', 'Welchem Codefehler entspricht eine falsch gelesene Grenze?', '> statt >= (oder umgekehrt): alle Grenzwerte verschieben sich um eins.', null, '{}', 2200)
+values ('k-sf-16', 'testen', 'ts-testfaelle', 'Welchem Codefehler entspricht eine falsch gelesene Grenze?', '> statt >= (oder umgekehrt): Die Grenze verschiebt sich um eins.', null, '{}', 2200)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -86718,7 +86719,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-sp-13', 'testen', 'ts-protokoll', 'Welche Fehlerklasse hat ein falsch berechneter Rechnungsbetrag?', '„Schwer“: eine wichtige Funktion liefert falsche Ergebnisse.', null, '{}', 2221)
+values ('k-sp-13', 'testen', 'ts-protokoll', 'Welche Fehlerklasse hat ein falsch berechneter Rechnungsbetrag?', '„Schwer“: Eine wichtige Funktion liefert falsche Ergebnisse.', null, '{}', 2221)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -86809,7 +86810,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-sp-20', 'testen', 'ts-protokoll', 'Ein Testfall kann wegen eines Ausfalls der Testumgebung nicht laufen. Welches Ergebnis?', '„Blockiert“: der Test war nicht durchführbar; das ist kein Fehler des Testobjekts.', null, '{}', 2228)
+values ('k-sp-20', 'testen', 'ts-protokoll', 'Ein Testfall kann wegen eines Ausfalls der Testumgebung nicht laufen. Welches Ergebnis?', '„Blockiert“: Der Test war nicht durchführbar. Das ist kein Fehler des Testobjekts.', null, '{}', 2228)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -87251,7 +87252,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-zm-10', 'schutzziele_bedrohungen', 'sz-schadsoftware', 'Was bezeichnet der Begriff Malware?', 'Oberbegriff für jede Software mit unerwünschten oder schädlichen Funktionen, geordnet nach Verbreitungsweg und Schadfunktion.', null, '{}', 2262)
+values ('k-zm-10', 'schutzziele_bedrohungen', 'sz-schadsoftware', 'Was bezeichnet der Begriff Malware?', 'Oberbegriff für jede Software mit unerwünschten oder schädlichen Funktionen. Die Arten unterscheidet man nach Verbreitungsweg und Schadfunktion.', null, '{}', 2262)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -87615,7 +87616,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-za-16', 'schutzziele_bedrohungen', 'sz-angriffe', 'Was unterscheidet einen Brute-Force- von einem Wörterbuchangriff?', 'Brute Force probiert alle Kombinationen durch, der Wörterbuchangriff nur Listen gängiger Passwörter. Schutz: lange, ungewöhnliche Passwörter, Sperre.', null, '{}', 2290)
+values ('k-za-16', 'schutzziele_bedrohungen', 'sz-angriffe', 'Was unterscheidet einen Brute-Force- von einem Wörterbuchangriff?', 'Brute Force probiert alle Kombinationen durch, der Wörterbuchangriff nur Listen gängiger Passwörter. Schutz: lange, ungewöhnliche Passwörter, Sperre nach Fehlversuchen.', null, '{}', 2290)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -87628,7 +87629,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-za-17', 'schutzziele_bedrohungen', 'sz-angriffe', 'Was ist Password Spraying?', 'Ein häufiges Passwort wird bei sehr vielen Konten probiert. So greifen Sperren nach Fehlversuchen kaum. Schutz: Sperrlisten, MFA.', null, '{}', 2291)
+values ('k-za-17', 'schutzziele_bedrohungen', 'sz-angriffe', 'Was ist Password Spraying?', 'Ein häufiges Passwort wird bei sehr vielen Konten probiert. So greifen Sperren nach Fehlversuchen kaum. Schutz: Sperrliste für gängige Passwörter, MFA.', null, '{}', 2291)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -87745,7 +87746,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-za-29', 'schutzziele_bedrohungen', 'sz-angriffe', 'Wie schützt du dich gegen Man-in-the-Middle-Angriffe?', 'Verschlüsselung mit Zertifikatsprüfung (HTTPS, VPN), und Zertifikatswarnungen im Browser nie einfach wegklicken.', null, '{}', 2300)
+values ('k-za-29', 'schutzziele_bedrohungen', 'sz-angriffe', 'Wie schützt du dich gegen Man-in-the-Middle-Angriffe?', 'Verschlüsselung mit Zertifikatsprüfung (HTTPS, VPN). Zertifikatswarnungen im Browser nie einfach wegklicken.', null, '{}', 2300)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -87979,7 +87980,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-zb-16', 'schutzziele_bedrohungen', 'sz-schutzbedarf', 'Wann ist nach IT-Grundschutz eine zusätzliche Risikoanalyse nötig?', 'Für Zielobjekte mit hohem oder sehr hohem Schutzbedarf, und wenn kein passender Baustein existiert.', null, '{}', 2318)
+values ('k-zb-16', 'schutzziele_bedrohungen', 'sz-schutzbedarf', 'Wann ist nach IT-Grundschutz eine zusätzliche Risikoanalyse nötig?', 'Bei Zielobjekten mit hohem oder sehr hohem Schutzbedarf und immer dann, wenn kein passender Baustein existiert.', null, '{}', 2318)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -88057,7 +88058,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-zb-22', 'schutzziele_bedrohungen', 'sz-schutzbedarf', 'Was unterscheidet einen Notfall von einer Krise?', 'Ein Notfall lässt sich mit vorbereiteten Notfallplänen bewältigen. Bei einer Krise greifen die Pläne nicht mehr. Ein Krisenstab entscheidet.', null, '{}', 2324)
+values ('k-zb-22', 'schutzziele_bedrohungen', 'sz-schutzbedarf', 'Was unterscheidet einen Notfall von einer Krise?', 'Ein Notfall lässt sich mit vorbereiteten Notfallplänen bewältigen. Bei einer Krise greifen die Pläne nicht mehr, dann entscheidet ein Krisenstab.', null, '{}', 2324)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -88330,7 +88331,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-yf-20', 'sicherheitsmassnahmen', 'sm-firewall', 'Was unterscheidet eine einstufige von einer zweistufigen DMZ?', 'Einstufig: eine Firewall mit drei Netzen, günstig, aber fällt sie, liegt alles offen. Zweistufig: äußere und innere Firewall, zwei Hürden.', null, '{}', 2345)
+values ('k-yf-20', 'sicherheitsmassnahmen', 'sm-firewall', 'Was unterscheidet eine einstufige von einer zweistufigen DMZ?', 'Einstufig: eine Firewall mit drei Netzen, günstig, aber wird sie überwunden, liegt alles offen. Zweistufig: äußere und innere Firewall, zwei Hürden.', null, '{}', 2345)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -88551,7 +88552,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-yb-12', 'sicherheitsmassnahmen', 'sm-backup', 'Sonntags voll, Mo bis Do inkrementell, Ausfall am Freitag: Welche Sicherungen spielst du ein?', 'Voll (So) + Mo + Di + Mi + Do = 5 Sicherungen. Fehlt eine, fehlt ein ganzer Tag.', null, '{}', 2362)
+values ('k-yb-12', 'sicherheitsmassnahmen', 'sm-backup', 'Sonntags voll, Mo bis Do inkrementell, Ausfall am Freitag: Welche Sicherungen spielst du ein?', 'Voll (So) + Mo + Di + Mi + Do = 5 Sicherungen. Fehlt ein Inkrement, fehlen die Änderungen dieses Tages.', null, '{}', 2362)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -88694,7 +88695,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-yw-1', 'sicherheitsmassnahmen', 'sm-wlan', 'Warum darfst du WEP und WPA mit TKIP nicht mehr verwenden?', 'Beide sind gebrochen bzw. veraltet: Mindeststandard ist WPA2 mit AES, besser WPA3.', null, '{}', 2373)
+values ('k-yw-1', 'sicherheitsmassnahmen', 'sm-wlan', 'Warum darfst du WEP und WPA mit TKIP nicht mehr verwenden?', 'Beide sind gebrochen bzw. veraltet. Mindeststandard ist WPA2 mit AES, besser WPA3.', null, '{}', 2373)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -88811,7 +88812,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-yw-10', 'sicherheitsmassnahmen', 'sm-wlan', 'Wofür steht SAE bei WPA3?', 'Simultaneous Authentication of Equals. Ein Anmeldeverfahren, bei dem das Passwort nicht offline durchprobiert werden kann.', null, '{}', 2382)
+values ('k-yw-10', 'sicherheitsmassnahmen', 'sm-wlan', 'Wofür steht SAE bei WPA3?', 'Simultaneous Authentication of Equals: ein Anmeldeverfahren, bei dem das Passwort nicht offline durchprobiert werden kann.', null, '{}', 2382)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -89214,7 +89215,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-yz-20', 'sicherheitsmassnahmen', 'sm-zugriff', 'Tim hat die Rollen „Azubi“ (Preise: kein Recht) und „Vertrieb“ (Preise: lesen). Was darf er bei Preise?', 'Lesen. Die Rechte mehrerer Rollen addieren sich.', null, '{}', 2413)
+values ('k-yz-20', 'sicherheitsmassnahmen', 'sm-zugriff', 'Tim hat die Rollen „Azubi“ (Preise: kein Recht) und „Vertrieb“ (Preise: lesen). Was darf er bei den Preisen?', 'Lesen. Die Rechte mehrerer Rollen addieren sich.', null, '{}', 2413)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -89266,7 +89267,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-cs-2', 'kryptographie_auth', 'kr-symmetrisch', 'Welche Schlüssellängen bietet AES?', '128, 192 oder 256 Bit: AES ist der aktuelle Standard für symmetrische Verschlüsselung.', null, '{}', 2417)
+values ('k-cs-2', 'kryptographie_auth', 'kr-symmetrisch', 'Welche Schlüssellängen bietet AES?', '128, 192 oder 256 Bit. AES ist der aktuelle Standard für symmetrische Verschlüsselung.', null, '{}', 2417)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -89656,7 +89657,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ca-13', 'kryptographie_auth', 'kr-asymmetrisch', 'Welche Schlüssellänge wird für RSA heute mindestens empfohlen?', 'Mindestens 3.000 Bit: ECC kommt mit etwa 250 Bit aus.', null, '{}', 2447)
+values ('k-ca-13', 'kryptographie_auth', 'kr-asymmetrisch', 'Welche Schlüssellänge wird für RSA heute mindestens empfohlen?', 'Mindestens 3.000 Bit. ECC kommt für dieselbe Sicherheit mit etwa 250 Bit aus.', null, '{}', 2447)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -89864,7 +89865,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ch-9', 'kryptographie_auth', 'kr-hybrid', 'Warum kombinieren hybride Verfahren beide Verschlüsselungsarten?', 'Symmetrisch ist schnell, braucht aber sicheren Schlüsseltausch. Asymmetrisch löst den Tausch, ist aber langsam. Kombiniert sind beide schnell und bequem.', null, '{}', 2463)
+values ('k-ch-9', 'kryptographie_auth', 'kr-hybrid', 'Warum kombinieren hybride Verfahren beide Verschlüsselungsarten?', 'Symmetrisch ist schnell, braucht aber sicheren Schlüsseltausch. Asymmetrisch löst den Tausch, ist aber langsam. Zusammen ergibt das ein schnelles und bequemes Verfahren.', null, '{}', 2463)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -89994,7 +89995,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ch-19', 'kryptographie_auth', 'kr-hybrid', 'Wofür eignen sich selbstsignierte Zertifikate?', 'Nur für Tests oder interne Systeme mit eigener, verteilter Firmen-CA. Keine CA bürgt dafür, deshalb warnt der Browser.', null, '{}', 2473)
+values ('k-ch-19', 'kryptographie_auth', 'kr-hybrid', 'Wofür eignen sich selbstsignierte Zertifikate?', 'Nur für Tests oder interne Systeme. Keine vertrauenswürdige CA bürgt dafür, deshalb warnt der Browser.', null, '{}', 2473)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -90046,7 +90047,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ch-23', 'kryptographie_auth', 'kr-hybrid', 'Was macht STARTTLS bei E-Mails?', 'Es schaltet eine zunächst unverschlüsselte Verbindung, z. B. SMTP, auf TLS um: Transportverschlüsselung, keine Ende-zu-Ende-Verschlüsselung.', null, '{}', 2477)
+values ('k-ch-23', 'kryptographie_auth', 'kr-hybrid', 'Was macht STARTTLS bei E-Mails?', 'Es schaltet eine zunächst unverschlüsselte Verbindung, z. B. SMTP, auf TLS um. Das ist Transportverschlüsselung, keine Ende-zu-Ende-Verschlüsselung.', null, '{}', 2477)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -90319,7 +90320,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-cx-20', 'kryptographie_auth', 'kr-hash', 'Warum signiert man den Hashwert statt des ganzen Dokuments?', 'Der Hashwert ist kurz und fest lang. Das geht schneller, und jede Änderung am Dokument fällt trotzdem auf.', null, '{}', 2498)
+values ('k-cx-20', 'kryptographie_auth', 'kr-hash', 'Warum signiert man den Hashwert statt des ganzen Dokuments?', 'Der Hashwert ist kurz und hat eine feste Länge. Das geht schneller, und jede Änderung am Dokument fällt trotzdem auf.', null, '{}', 2498)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -91294,7 +91295,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-xs-21', 'datenschutz', 'ds-grundsaetze', 'Warum ist ein vorangekreuztes Kästchen keine wirksame Einwilligung?', 'Die Einwilligung verlangt eine unmissverständliche, aktive Handlung: Schweigen oder Voreinstellungen genügen nicht.', null, '{}', 2573)
+values ('k-xs-21', 'datenschutz', 'ds-grundsaetze', 'Warum ist ein vorangekreuztes Kästchen keine wirksame Einwilligung?', 'Die Einwilligung verlangt eine unmissverständliche, aktive Handlung. Schweigen oder Voreinstellungen genügen nicht.', null, '{}', 2573)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -91346,7 +91347,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-xs-25', 'datenschutz', 'ds-grundsaetze', 'Wann ist eine Datenschutz-Folgenabschätzung (Art. 35 DSGVO) nötig?', 'Vorab, wenn eine Verarbeitung voraussichtlich ein hohes Risiko hat, z. B. umfangreiche Videoüberwachung öffentlicher Bereiche.', null, '{}', 2577)
+values ('k-xs-25', 'datenschutz', 'ds-grundsaetze', 'Wann ist eine Datenschutz-Folgenabschätzung (Art. 35 DSGVO) nötig?', 'Vorab, wenn eine Verarbeitung voraussichtlich ein hohes Risiko für die Betroffenen mit sich bringt, z. B. umfangreiche Videoüberwachung öffentlicher Bereiche.', null, '{}', 2577)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -91463,7 +91464,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-xr-4', 'datenschutz', 'ds-rechte', 'Wie schnell muss der Verantwortliche auf eine Betroffenenanfrage antworten?', 'Unverzüglich, spätestens nach einem Monat, in komplexen Fällen um zwei Monate verlängerbar (Art. 12 Abs. 3).', null, '{}', 2586)
+values ('k-xr-4', 'datenschutz', 'ds-rechte', 'Wie schnell muss der Verantwortliche auf eine Betroffenenanfrage antworten?', 'Unverzüglich, spätestens innerhalb eines Monats, in komplexen Fällen um zwei Monate verlängerbar (Art. 12 Abs. 3).', null, '{}', 2586)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -91606,7 +91607,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-xr-15', 'datenschutz', 'ds-rechte', '„Keine Werbung mehr per Post!“ Welches Recht macht der Kunde geltend?', 'Das Widerspruchsrecht nach Art. 21 DSGVO, das gegen Direktwerbung ohne Begründung.', null, '{}', 2597)
+values ('k-xr-15', 'datenschutz', 'ds-rechte', '„Keine Werbung mehr per Post!“ Welches Recht macht der Kunde geltend?', 'Das Widerspruchsrecht nach Art. 21 DSGVO. Gegen Direktwerbung gilt es jederzeit und ohne Begründung.', null, '{}', 2597)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -92087,7 +92088,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-xt-7', 'datenschutz', 'ds-tom', 'Wann müssen Betroffene über eine Datenpanne benachrichtigt werden (Art. 34)?', 'Unverzüglich, wenn die Datenpanne voraussichtlich ein hohes Risiko für ihre Rechte und Freiheiten hat.', null, '{}', 2634)
+values ('k-xt-7', 'datenschutz', 'ds-tom', 'Wann müssen Betroffene über eine Datenpanne benachrichtigt werden (Art. 34)?', 'Unverzüglich, wenn die Datenpanne voraussichtlich ein hohes Risiko für ihre Rechte und Freiheiten zur Folge hat.', null, '{}', 2634)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -92100,7 +92101,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-xt-8', 'datenschutz', 'ds-tom', 'Wie bewertest du ein Risiko für die Auswahl der TOM?', 'Risiko = Eintrittswahrscheinlichkeit × Schadenshöhe: Art. 32 verlangt Maßnahmen angemessen zum Risiko.', null, '{}', 2635)
+values ('k-xt-8', 'datenschutz', 'ds-tom', 'Wie bewertest du ein Risiko für die Auswahl der TOM?', 'Risiko = Eintrittswahrscheinlichkeit × Schadenshöhe. Art. 32 verlangt Maßnahmen, die dem Risiko angemessen sind.', null, '{}', 2635)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -92412,7 +92413,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-vz-7', 'vertraege', 'vt-zustandekommen', 'Was ist der Unterschied zwischen nichtig und anfechtbar?', 'Nichtig: von Anfang an unwirksam. Anfechtbar: wirksam, bis die Anfechtung erklärt ist. Dann rückwirkend nichtig (§ 142 BGB).', null, '{}', 2659)
+values ('k-vz-7', 'vertraege', 'vt-zustandekommen', 'Was ist der Unterschied zwischen nichtig und anfechtbar?', 'Nichtig: von Anfang an unwirksam. Anfechtbar: wirksam, bis die Anfechtung erklärt ist, dann rückwirkend nichtig (§ 142 BGB).', null, '{}', 2659)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -92451,7 +92452,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-vz-10', 'vertraege', 'vt-zustandekommen', 'Was bedeutet „schwebend unwirksam“?', 'Vertrag eines beschränkt Geschäftsfähigen ohne Zustimmung: Er wird erst mit der Genehmigung der Eltern wirksam (§ 108 BGB).', null, '{}', 2662)
+values ('k-vz-10', 'vertraege', 'vt-zustandekommen', 'Was bedeutet „schwebend unwirksam“?', 'Der Vertrag eines beschränkt Geschäftsfähigen ohne Einwilligung wird erst mit der Genehmigung der Eltern wirksam (§ 108 BGB).', null, '{}', 2662)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -92529,7 +92530,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-vz-16', 'vertraege', 'vt-zustandekommen', 'Welche Wirkung hat die automatische Eingangsbestätigung im Webshop?', 'Meist nicht: Sie bestätigt nur den Eingang (§ 312i BGB). Annahme ist z. B. die Auftragsbestätigung oder der Versand.', 'Es kommt auf den Wortlaut an: „Wir nehmen Ihre Bestellung an“ wäre eine Annahme.', '{}', 2668)
+values ('k-vz-16', 'vertraege', 'vt-zustandekommen', 'Welche Wirkung hat die automatische Eingangsbestätigung im Webshop?', 'Meist noch keine Annahme: Sie bestätigt nur den Eingang (§ 312i BGB). Annahme ist z. B. die Auftragsbestätigung oder der Versand.', 'Es kommt auf den Wortlaut an: „Wir nehmen Ihre Bestellung an“ wäre eine Annahme.', '{}', 2668)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -94050,7 +94051,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-lt-14', 'sla_service', 'sla-itil', 'Wofür steht CAB?', 'Change Advisory Board. Ein Gremium, das Changes bewertet und bei der Genehmigung berät.', null, '{}', 2785)
+values ('k-lt-14', 'sla_service', 'sla-itil', 'Wofür steht CAB?', 'Change Advisory Board: ein Gremium, das Changes bewertet und bei der Genehmigung berät.', null, '{}', 2785)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -94128,7 +94129,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-lt-20', 'sla_service', 'sla-itil', 'Der Mailserver soll auf eine neue Version aktualisiert werden: Welche ITIL-Kategorie?', 'Change, als Normal Change bewertet und genehmigt. Er ist eine geplante Änderung an einem Service.', null, '{}', 2791)
+values ('k-lt-20', 'sla_service', 'sla-itil', 'Der Mailserver soll auf eine neue Version aktualisiert werden: Welche ITIL-Kategorie?', 'Change: eine geplante Änderung an einem Service. Als Normal Change wird sie einzeln bewertet und genehmigt.', null, '{}', 2791)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -94362,7 +94363,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-gv-14', 'leistungsstoerungen', 'ls-verzug', 'Warum braucht der Käufer bei „Lieferung Mitte März“ eine Mahnung?', 'Der Termin ist nicht kalendermäßig bestimmt: Verzug tritt erst mit der Mahnung ein.', null, '{}', 2809)
+values ('k-gv-14', 'leistungsstoerungen', 'ls-verzug', 'Warum braucht der Käufer bei „Lieferung ca. Mitte März“ eine Mahnung?', 'Der Termin ist nicht kalendermäßig bestimmt, deshalb tritt Verzug erst mit der Mahnung ein.', null, '{}', 2809)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -94427,7 +94428,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-gv-19', 'leistungsstoerungen', 'ls-verzug', 'Was unterscheidet relatives und absolutes Fixgeschäft?', 'Relativ: Termin wesentlich, Rücktritt ohne Nachfrist. Absolut: Spätere Leistung ist sinnlos (Techniker für den Messetag). Das ist Unmöglichkeit.', null, '{}', 2814)
+values ('k-gv-19', 'leistungsstoerungen', 'ls-verzug', 'Was unterscheidet relatives und absolutes Fixgeschäft?', 'Relativ: Termin wesentlich, Rücktritt ohne Nachfrist. Absolut: Spätere Leistung ist sinnlos (Techniker für den Messetag), es liegt Unmöglichkeit vor.', null, '{}', 2814)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -94791,7 +94792,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-gm-21', 'leistungsstoerungen', 'ls-maengel', 'Auf wie lange darf die Gewährleistung für gebrauchte Sachen an Verbraucher verkürzt werden?', 'Auf 1 Jahr. Unter Unternehmen kann sie weiter beschränkt werden, nie bei Arglist.', null, '{}', 2842)
+values ('k-gm-21', 'leistungsstoerungen', 'ls-maengel', 'Auf wie lange darf die Gewährleistung für gebrauchte Sachen an Verbraucher verkürzt werden?', 'Auf 1 Jahr, aber nur mit ausdrücklicher, gesonderter Vereinbarung (§ 476 Abs. 2 BGB). Unter Unternehmen kann sie weiter beschränkt werden, nie bei Arglist.', null, '{}', 2842)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -94804,7 +94805,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-gm-22', 'leistungsstoerungen', 'ls-maengel', 'Was ist die Selbstvornahme?', 'Werkvertrag: Der Besteller beseitigt den Mangel nach erfolgloser Frist selbst und verlangt die Kosten ersetzt (§ 637 BGB).', null, '{}', 2843)
+values ('k-gm-22', 'leistungsstoerungen', 'ls-maengel', 'Was ist die Selbstvornahme?', 'Beim Werkvertrag beseitigt der Besteller den Mangel nach erfolgloser Frist selbst und verlangt Ersatz der Kosten (§ 637 BGB).', null, '{}', 2843)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -94817,7 +94818,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-gm-23', 'leistungsstoerungen', 'ls-maengel', 'Worin unterscheiden sich die Mängelrechte bei Kauf und Werk?', 'Wahl der Nacherfüllung: Käufer bzw. Unternehmer. Selbstvornahme nur beim Werk. Verjährung ab Übergabe bzw. ab Abnahme.', null, '{}', 2844)
+values ('k-gm-23', 'leistungsstoerungen', 'ls-maengel', 'Worin unterscheiden sich die Mängelrechte bei Kauf und Werk?', 'Die Nacherfüllung wählt beim Kauf der Käufer, beim Werk der Unternehmer. Selbstvornahme gibt es nur beim Werk. Verjährung ab Ablieferung bzw. ab Abnahme.', null, '{}', 2844)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -94856,7 +94857,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ga-2', 'leistungsstoerungen', 'ls-abnahme', 'Wann gilt ein Werk als fiktiv abgenommen?', 'Wenn der Besteller eine gesetzte angemessene Frist verstreichen lässt, ohne unter Angabe eines Mangels zu verweigern (§ 640 Abs. 2 BGB).', null, '{}', 2847)
+values ('k-ga-2', 'leistungsstoerungen', 'ls-abnahme', 'Wann gilt ein Werk als fiktiv abgenommen?', 'Wenn der Unternehmer nach Fertigstellung eine angemessene Frist setzt und der Besteller die Abnahme nicht unter Angabe mindestens eines Mangels verweigert (§ 640 Abs. 2 BGB).', null, '{}', 2847)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -94895,7 +94896,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ga-5', 'leistungsstoerungen', 'ls-abnahme', 'Was ist die Abnahme nach § 640 BGB?', 'Billigung des Werks als im Wesentlichen vertragsgemäß: Pflicht des Bestellers, wenn das Werk vertragsgemäß ist.', null, '{}', 2850)
+values ('k-ga-5', 'leistungsstoerungen', 'ls-abnahme', 'Was ist die Abnahme nach § 640 BGB?', 'Billigung des Werks als im Wesentlichen vertragsgemäß. Der Besteller ist dazu verpflichtet, wenn das Werk vertragsgemäß ist.', null, '{}', 2850)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -95623,7 +95624,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ck-3', 'change_management', 'cm-kaizen', 'Wofür steht PDCA?', 'Plan, Do, Check, Act. Der Zyklus, mit dem jeder KVP-Schritt durchlaufen wird.', null, '{}', 2906)
+values ('k-ck-3', 'change_management', 'cm-kaizen', 'Wofür steht PDCA?', 'Plan, Do, Check, Act: der Zyklus, mit dem jeder KVP-Schritt durchlaufen wird.', null, '{}', 2906)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -95636,7 +95637,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-ck-4', 'change_management', 'cm-kaizen', 'Was ist Business Process Reengineering?', 'Radikale, grundlegende Neugestaltung von Prozessen: Gegenentwurf zu Kaizen.', null, '{}', 2907)
+values ('k-ck-4', 'change_management', 'cm-kaizen', 'Was ist Business Process Reengineering?', 'Radikale, grundlegende Neugestaltung von Prozessen, der Gegenentwurf zu Kaizen.', null, '{}', 2907)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -95857,7 +95858,7 @@ on conflict (id) do update set
 
 insert into public.ap1_theory
   (id, topic_id, title, lead, points, merksatz, read_seconds, sort_order)
-values ('th-org-2', 'projektorganisation', 'Drei Organisationsformen in einer Minute', 'Die Frage ist immer dieselbe: Wie viel Macht hat die Projektleitung gegenüber der Linie?', ARRAY['Reine Projektorganisation: Team komplett aus der Linie gelöst, Projektleitung hat volle Weisungsbefugnis. Schnell, aber teuer und nach Projektende gibt es ein Rückkehrproblem.', 'Matrix: Weisungsbefugnis geteilt (fachlich beim Projekt, disziplinarisch in der Linie). Flexibel, aber Dauerkonflikt um Prioritäten.', 'Stabs-/Einflussorganisation: Projektleitung koordiniert nur, ohne Weisungsrecht. Billig, aber zahnlos.']::text[], 'Viel Macht = viel Aufwand. Die Matrix ist der Kompromiss und deshalb der Normalfall.', 45, 1)
+values ('th-org-2', 'projektorganisation', 'Drei Organisationsformen in einer Minute', 'Die Frage ist immer dieselbe: Wie viel Macht hat die Projektleitung gegenüber der Linie?', ARRAY['Reine Projektorganisation: Team komplett aus der Linie gelöst, Projektleitung hat volle Weisungsbefugnis. Schnell, aber teuer, und nach Projektende gibt es ein Rückkehrproblem.', 'Matrix: Weisungsbefugnis geteilt (fachlich beim Projekt, disziplinarisch in der Linie). Flexibel, aber Dauerkonflikt um Prioritäten.', 'Stabs-/Einflussorganisation: Projektleitung koordiniert nur, ohne Weisungsrecht. Billig, aber zahnlos.']::text[], 'Viel Macht = viel Aufwand. Die Matrix ist der Kompromiss und deshalb der Normalfall.', 45, 1)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   title = excluded.title,
@@ -95905,7 +95906,7 @@ on conflict (id) do update set
 
 insert into public.ap1_theory
   (id, topic_id, title, lead, points, merksatz, read_seconds, sort_order)
-values ('th-np-2', 'netzplan', 'GP oder FP? Der Unterschied in 20 Sekunden', 'Beide Puffer sagen, wie viel Luft ein Vorgang hat. Bis wohin, ist aber verschieden.', ARRAY['Gesamtpuffer: Verschiebung ohne das PROJEKTENDE zu gefährden. Kann aber den Nachfolger nach hinten drücken.', 'Freier Puffer: Verschiebung ohne den frühesten Start des NACHFOLGERS anzutasten. Merkt sonst niemand.', 'Es gilt immer FP <= GP.', 'Auf dem kritischen Pfad sind beide null.', 'Typischer Fall: GP = 2, FP = 0. Luft bis zum Projektende vorhanden, aber nur, indem man sie dem Nachfolger wegnimmt.']::text[], 'GP schaut aufs Projektende, FP schaut auf den Nachbarn.', 45, 5)
+values ('th-np-2', 'netzplan', 'GP oder FP? Der Unterschied in 20 Sekunden', 'Beide Puffer sagen, wie viel Luft ein Vorgang hat. Sie unterscheiden sich darin, bis wohin diese Luft reicht.', ARRAY['Gesamtpuffer: Verschiebung, ohne das PROJEKTENDE zu gefährden. Sie kann aber den Nachfolger nach hinten drücken.', 'Freier Puffer: Verschiebung, ohne den frühesten Start des NACHFOLGERS anzutasten. Sie fällt sonst niemandem auf.', 'Es gilt immer FP <= GP.', 'Auf dem kritischen Pfad sind beide null.', 'Typischer Fall: GP = 2, FP = 0. Luft bis zum Projektende vorhanden, aber nur, indem man sie dem Nachfolger wegnimmt.']::text[], 'GP schaut aufs Projektende, FP schaut auf den Nachbarn.', 45, 5)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   title = excluded.title,

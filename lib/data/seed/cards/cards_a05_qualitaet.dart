@@ -86,19 +86,19 @@ final List<Flashcard> cardsA05 = [
     'k-qg-14',
     'qm-grundlagen',
     'Welchen Vorteil haben statische Prüfungen gegenüber Tests?',
-    'Sie gehen schon mit Anforderungen und Entwürfen, bevor Code existiert. Fehler werden früh und billig gefunden.',
+    'Sie sind schon bei Anforderungen und Entwürfen möglich, bevor Code existiert. Fehler werden früh und billig gefunden.',
   ),
   karte(
     'k-qg-15',
     'qm-grundlagen',
     'Ein Anforderungsfehler kostet früh 10 €. Was kostet er nach der Zehnerregel beim Kunden?',
-    '10 € × 10 × 10 × 10 = 10.000 € (Anforderung, Entwurf, Test, Betrieb).',
+    '10 € × 10⁴ = 100.000 €, denn es liegen vier Phasen dazwischen (Anforderung, Entwurf, Implementierung, Test, Betrieb).',
   ),
   karte(
     'k-qg-16',
     'qm-grundlagen',
-    '6 Anforderungsfehler kosten früh je 10 €. Was kosten sie, wenn erst im Test gefunden?',
-    'Zwei Phasen später: 10 € × 100 = 1.000 € je Fehler; 6 × 1.000 € = 6.000 €.',
+    '6 Anforderungsfehler kosten früh je 10 €. Was kosten sie, wenn sie erst im Test auffallen?',
+    'Drei Phasen später (Entwurf, Implementierung, Test): 10 € × 1.000 = 10.000 € je Fehler; 6 × 10.000 € = 60.000 €.',
   ),
   karte(
     'k-qg-17',
@@ -122,7 +122,7 @@ final List<Flashcard> cardsA05 = [
     'k-qg-20',
     'qm-grundlagen',
     'Warum reicht Qualitätssicherung erst am Projektende nicht?',
-    'Fehler werden dann spät und teuer gefunden; Qualität lässt sich nicht „hineintesten“. Reviews gehen schon bei Anforderung und Entwurf.',
+    'Fehler werden dann spät und teuer gefunden; Qualität lässt sich nicht „hineintesten“. Reviews sind schon bei Anforderung und Entwurf möglich.',
   ),
   karte(
     'k-qg-21',
@@ -246,7 +246,7 @@ final List<Flashcard> cardsA05 = [
     'k-qp-12',
     'qm-pdca',
     'In welcher PDCA-Phase läuft ein Pilotbetrieb in einer Abteilung?',
-    'In „Do“: die Maßnahme wird im kleinen Rahmen erprobt.',
+    'In „Do“: Die Maßnahme wird im kleinen Rahmen erprobt.',
   ),
   karte(
     'k-qp-13',
@@ -333,7 +333,7 @@ final List<Flashcard> cardsA05 = [
     'k-ss-5',
     'ts-stufen',
     'Was ist ein Regressionstest?',
-    'Wiederholt bestandene Tests nach einer Änderung, um Nebenwirkungen zu finden.',
+    'Bereits bestandene Tests werden nach einer Änderung wiederholt, um Nebenwirkungen zu finden.',
   ),
   karte(
     'k-ss-6',
@@ -503,7 +503,7 @@ final List<Flashcard> cardsA05 = [
     'k-sv-10',
     'ts-verfahren',
     'Welche Überdeckung ist stärker: Anweisungs- oder Zweigüberdeckung?',
-    'Zweigüberdeckung: wer sie erreicht, hat auch volle Anweisungsüberdeckung, aber nicht umgekehrt.',
+    'Zweigüberdeckung: Wer sie erreicht, hat auch volle Anweisungsüberdeckung. Umgekehrt gilt das nicht.',
   ),
   karte(
     'k-sv-11',
@@ -569,7 +569,7 @@ final List<Flashcard> cardsA05 = [
     'k-sv-21',
     'ts-verfahren',
     'Was ist ein Unit-Test?',
-    'Automatisierter Komponententest: Code ruft eine einzelne Funktion auf und prüft das Ergebnis; läuft bei jedem Build.',
+    'Automatisierter Komponententest: Testcode ruft eine einzelne Funktion auf und prüft das Ergebnis. Er läuft bei jedem Build.',
   ),
   karte(
     'k-sv-22',
@@ -686,7 +686,7 @@ final List<Flashcard> cardsA05 = [
     'k-sf-16',
     'ts-testfaelle',
     'Welchem Codefehler entspricht eine falsch gelesene Grenze?',
-    '> statt >= (oder umgekehrt): alle Grenzwerte verschieben sich um eins.',
+    '> statt >= (oder umgekehrt): Die Grenze verschiebt sich um eins.',
   ),
   karte(
     'k-sf-17',
@@ -815,7 +815,7 @@ final List<Flashcard> cardsA05 = [
     'k-sp-13',
     'ts-protokoll',
     'Welche Fehlerklasse hat ein falsch berechneter Rechnungsbetrag?',
-    '„Schwer“: eine wichtige Funktion liefert falsche Ergebnisse.',
+    '„Schwer“: Eine wichtige Funktion liefert falsche Ergebnisse.',
   ),
   karte(
     'k-sp-14',
@@ -857,7 +857,7 @@ final List<Flashcard> cardsA05 = [
     'k-sp-20',
     'ts-protokoll',
     'Ein Testfall kann wegen eines Ausfalls der Testumgebung nicht laufen. Welches Ergebnis?',
-    '„Blockiert“: der Test war nicht durchführbar; das ist kein Fehler des Testobjekts.',
+    '„Blockiert“: Der Test war nicht durchführbar. Das ist kein Fehler des Testobjekts.',
   ),
   karte(
     'k-sp-21',

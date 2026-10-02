@@ -44,7 +44,7 @@ final List<ExamCase> casesA07 = [
           ),
         ],
         loesung:
-            'Der Kaufvertrag ist am 12.02. zustande gekommen. Das Angebot vom 05.02. ist der Antrag; die Bestellung vom 12.02. erfolgt innerhalb der Frist und ohne Änderungen und ist damit die Annahme. Die Auftragsbestätigung vom 13.02. bestätigt den Vertrag nur noch, die Anfrage vom 03.02. war unverbindlich.',
+            'Der Kaufvertrag ist am 12.02. zustande gekommen. Das Angebot vom 05.02. ist der Antrag. Die Bestellung vom 12.02. geht innerhalb der Frist und ohne Änderungen ein und ist damit die Annahme. Die Auftragsbestätigung vom 13.02. bestätigt den Vertrag nur noch, die Anfrage vom 03.02. war unverbindlich.',
         explanation:
             '1 Punkt für den Zeitpunkt, 1 Punkt für die Begründung mit Antrag und Annahme. Wäre die Bestellung erst nach dem 19.02. eingegangen, wäre sie ein neuer Antrag gewesen und erst die Auftragsbestätigung die Annahme.',
         punkte: 2,
@@ -119,7 +119,7 @@ final List<ExamCase> casesA07 = [
         ],
         wortbank: ['Abnahme', 'Nachfrist', 'verjährt', 'Rüge'],
         explanation:
-            'Verzug nach § 286 BGB: Fälligkeit, Mahnung oder deren Entbehrlichkeit (hier Kalendertermin, Abs. 2 Nr. 1) und Vertretenmüssen (Abs. 4). Der Verkäufer trägt in der Regel das Beschaffungsrisiko. Die Nachfrist gehört nicht zu den Voraussetzungen des Verzugs, sondern erst zu Rücktritt und Schadensersatz statt der Leistung.',
+            'Verzug nach § 286 BGB hat drei Voraussetzungen: Die Leistung ist fällig, es wurde gemahnt oder die Mahnung ist entbehrlich (hier wegen des Kalendertermins, Abs. 2 Nr. 1), und der Schuldner hat die Verspätung zu vertreten (Abs. 4). Der Verkäufer trägt in der Regel das Beschaffungsrisiko. Die Nachfrist gehört nicht zu den Voraussetzungen des Verzugs, sondern erst zu Rücktritt und Schadensersatz statt der Leistung.',
         punkte: 4,
       ),
       freitext(
@@ -199,7 +199,7 @@ final List<ExamCase> casesA07 = [
             wahl('nein', [
               'ja',
               'nicht feststellbar',
-            ], '98 % liegt unter den zugesagten 99 %.'),
+            ], '98 % liegen unter den zugesagten 99 %.'),
           ],
         ],
         explanation:
@@ -258,7 +258,7 @@ final List<ExamCase> casesA07 = [
         loesung:
             'Der Text nennt: Angst vor dem Verlust des Arbeitsplatzes durch Automatisierung, Sorge, das neue Werkzeug nicht zu beherrschen, fehlende Einsicht, warum ein bewährter Ablauf geändert werden soll, und den Verdacht, das System werde zur Überwachung der Arbeit genutzt.',
         explanation:
-            'Je Nennung 1 Punkt, höchstens 3 Punkte. Gewertet wird nur, was im Text steht; geantwortet wird auf Deutsch und sinngemäß, nicht wörtlich übersetzt.',
+            'Je Nennung 1 Punkt, höchstens 3 Punkte. Gewertet wird nur, was im Text steht. Antworte auf Deutsch und sinngemäß, eine wörtliche Übersetzung ist nicht nötig.',
         punkte: 3,
         tags: ['englisch'],
       ),
@@ -301,7 +301,7 @@ final List<ExamCase> casesA07 = [
         loesung:
             'Beim Parallelbetrieb muss jeder Vorgang sowohl in der Papierakte als auch in der digitalen Akte gepflegt werden. Das bedeutet doppelte Arbeit und höhere Kosten und kann zu abweichenden Datenständen führen. Außerdem bleiben die Beschäftigten leichter bei der gewohnten Papierakte.',
         explanation:
-            '2 Punkte für einen beschriebenen Nachteil (nennen und kurz ausführen). Der Vorteil des Parallelbetriebs (die Sicherheit durch den Rückfall auf das alte Verfahren) war nicht gefragt.',
+            '2 Punkte für einen beschriebenen Nachteil (nennen und kurz ausführen). Nach dem Vorteil des Parallelbetriebs, der Sicherheit durch den Rückfall auf das alte Verfahren, war nicht gefragt.',
         punkte: 2,
       ),
     ],
@@ -418,7 +418,7 @@ final List<ExamCase> casesA07 = [
           ),
         ],
         loesung:
-            'Geeigneter ist der Werkvertrag: Das Softwarehaus schuldet dann eine funktionierende Schnittstelle, also einen Erfolg. Vergütung wird erst mit der Abnahme fällig, und bei Fehlern hat Grünwerk Mängelrechte. Beim Dienstvertrag wäre nur die Tätigkeit geschuldet und jede Stunde zu bezahlen, auch wenn die Schnittstelle nicht funktioniert.',
+            'Geeigneter ist der Werkvertrag: Das Softwarehaus schuldet dann eine funktionierende Schnittstelle, also einen Erfolg. Die Vergütung wird erst mit der Abnahme fällig, und bei Fehlern hat Grünwerk Mängelrechte. Beim Dienstvertrag wäre nur die Tätigkeit geschuldet und jede Stunde zu bezahlen, auch wenn die Schnittstelle nicht funktioniert.',
         explanation:
             '1 Punkt für die Empfehlung, 1 Punkt für die Begründung über den geschuldeten Erfolg.',
         punkte: 2,
@@ -460,7 +460,7 @@ final List<ExamCase> casesA07 = [
           ],
         ],
         explanation:
-            'Kein Verbraucher beteiligt: 2 % + 9 Prozentpunkte = 11 % (§ 288 Abs. 2 BGB). Zinsen: 5.840 € × 0,11 = 642,40 € im Jahr; × 45 / 365 = 79,20 €. Dazu die Pauschale von 40 €: zusammen 119,20 €.',
+            'Weil kein Verbraucher beteiligt ist, gilt: 2 % + 9 Prozentpunkte = 11 % (§ 288 Abs. 2 BGB). Zinsen im Jahr: 5.840 € × 0,11 = 642,40 €. Für 45 Tage: 642,40 € × 45 / 365 = 79,20 €. Mit der Pauschale von 40 € sind es zusammen 119,20 €.',
         punkte: 4,
       ),
       freitext(
@@ -605,7 +605,7 @@ final List<ExamCase> casesA07 = [
         loesung:
             'Im Pilotbetrieb treffen Fehler und Kinderkrankheiten nur die Filiale Göttingen; die anderen Filialen verkaufen ungestört weiter. Die Erfahrungen aus dem Piloten können genutzt werden, um das System und die Schulungen zu verbessern, bevor die übrigen Filialen umgestellt werden.',
         explanation:
-            '2 Punkte für einen erläuterten Vorteil (Aussage plus Folge). Nachteil des Piloten: Die übrigen Filialen profitieren erst später, und zeitweise sind zwei Systeme zu betreuen.',
+            '2 Punkte für einen erläuterten Vorteil (Aussage plus Folge). Der Pilot hat auch einen Nachteil: Die übrigen Filialen profitieren erst später, und zeitweise sind zwei Systeme zu betreuen.',
         punkte: 2,
       ),
     ],
@@ -656,7 +656,7 @@ final List<ExamCase> casesA07 = [
           ],
         ],
         explanation:
-            'Software as a Service ist Gebrauchsüberlassung auf Zeit gegen Entgelt, also Miete (§ 535 BGB). Die Schnittstelle zum Festpreis ist ein geschuldeter Erfolg: Werkvertrag (§ 631 BGB). Die Beratung nach Stunden ist bloße Tätigkeit: Dienstvertrag (§ 611 BGB).',
+            'Software as a Service ist Gebrauchsüberlassung auf Zeit gegen Entgelt, also Miete (§ 535 BGB). Bei der Schnittstelle zum Festpreis ist ein Erfolg geschuldet, das ist ein Werkvertrag (§ 631 BGB). Bei der Beratung nach Stunden ist nur die Tätigkeit geschuldet, das ist ein Dienstvertrag (§ 611 BGB).',
         punkte: 6,
       ),
       lueckentext(
@@ -780,7 +780,7 @@ final List<ExamCase> casesA07 = [
         loesung:
             'Mit der Abnahme wird die Vergütung fällig, die Verjährungsfrist für Mängelansprüche beginnt, die Gefahr geht auf die Agentur über und die Beweislast kehrt sich um: Künftig muss die Agentur beweisen, dass ein Mangel vorliegt. Bekannte Mängel muss sie sich im Protokoll vorbehalten.',
         explanation:
-            'Je Nennung 1 Punkt, höchstens 3 Punkte. Deshalb gehören festgestellte Mängel mit Frist in das Abnahmeprotokoll.',
+            'Je Nennung 1 Punkt, höchstens 3 Punkte. Weil Rechte wegen bekannter Mängel ohne Vorbehalt verloren gehen, gehören festgestellte Mängel mit Frist in das Abnahmeprotokoll.',
         punkte: 3,
       ),
       markieren(
@@ -797,15 +797,15 @@ final List<ExamCase> casesA07 = [
           ),
           nein(
             '„Wie sehe ich im Ticketsystem, welche Anfragen zu meinem Projekt gehören?“',
-            'Sachliche Frage zur Nutzung: Interesse, kein Widerstand.',
+            'Eine sachliche Frage zur Nutzung zeigt Interesse, keinen Widerstand.',
           ),
           ja(
             'Ein Projektleiter wechselt jedes Mal das Thema, sobald es um den Starttermin geht.',
-            'Ausweichen, also verbal und passiv.',
+            'Das ist Ausweichen, also verbaler und passiver Widerstand.',
           ),
           ja(
             'Auf dem Flur heißt es, das System diene nur dazu, Antwortzeiten zu überwachen.',
-            'Gerüchte und Unruhe: Aufregung.',
+            'Gerüchte und Unruhe zeigen Widerstand in Form von Aufregung.',
           ),
           nein(
             '„Ich würde gern in der Testphase mitmachen.“',
@@ -964,7 +964,7 @@ final List<ExamCase> casesA07 = [
         loesung:
             'Ja, der Händler ist in Verzug. Die Lieferung war am 15. April fällig und ist nicht erfolgt. Eine Mahnung ist nicht nötig, weil der Termin nach dem Kalender bestimmt ist (§ 286 Abs. 2 Nr. 1 BGB). Dass der Händler die Verspätung nicht zu vertreten hätte, ist nicht ersichtlich; sein Verschulden wird vermutet. Verzug besteht daher seit dem 16. April.',
         explanation:
-            '1 Punkt Fälligkeit, 2 Punkte Entbehrlichkeit der Mahnung mit Begründung, 1 Punkt Vertretenmüssen und Ergebnis. Das Vertrösten am Telefon ändert nichts am Verzug.',
+            '1 Punkt für die Fälligkeit, 2 Punkte für die Entbehrlichkeit der Mahnung mit Begründung, 1 Punkt für Vertretenmüssen und Ergebnis. Das Vertrösten am Telefon ändert nichts am Verzug.',
         punkte: 4,
       ),
       reihenfolge(
@@ -1028,7 +1028,7 @@ final List<ExamCase> casesA07 = [
           ],
         ],
         explanation:
-            'WLAN-Ausfall: ganze Halle (hoch), Arbeit steht still (hoch) = P1, 15 min. Einzelner Scanner mit Ersatzgerät: niedrig/niedrig = P5, 24 h. Verzögerte Synchronisation in einer Schicht: mittel/mittel = P3, 4 h.',
+            'Der WLAN-Ausfall trifft die ganze Halle (hoch) und die Arbeit steht still (hoch), also P1 mit 15 min. Der einzelne Scanner betrifft eine Person (niedrig) und es gibt Ersatzgeräte (niedrig), also P5 mit 24 h. Die verzögerte Synchronisation betrifft eine Schicht (mittel) und schränkt die Arbeit ein (mittel), also P3 mit 4 h.',
         punkte: 5,
       ),
       freitext(
@@ -1109,7 +1109,7 @@ final List<ExamCase> casesA07 = [
         loesung:
             'Bei der Sofortumstellung gibt es keinen Rückfall auf die Papierlisten. Störungen des neuen Systems treffen den Betrieb daher sofort und in allen drei Schichten. Im schlimmsten Fall stehen Kommissionierung und Verladung. Außerdem müssen alle Beschäftigten vom ersten Tag an sicher mit den Scannern umgehen können, was den Druck erhöht.',
         explanation:
-            '2 Punkte für einen beschriebenen Nachteil (nennen und auf den Betrieb beziehen). Gefragt war ein Nachteil: Vorteile wie die kurze Umstellungsdauer bringen keine Punkte.',
+            '2 Punkte für einen beschriebenen Nachteil (nennen und auf den Betrieb beziehen). Gefragt war ein Nachteil, Vorteile wie die kurze Umstellungsdauer bringen deshalb keine Punkte.',
         punkte: 2,
       ),
       freitext(

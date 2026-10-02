@@ -136,11 +136,12 @@ class NuggetCard extends StatelessWidget {
             ? _Steps(n.points, color: color)
             : _Bullets(n.points, color: color),
       ],
-      if (n.ergebnis != null) ...[
-        SizedBox(height: n.points.isEmpty ? Gap.l : Gap.xs),
-        _Ergebnis(n.ergebnis!),
+      if (n.ergebnis != null) ...[gap, _Ergebnis(n.ergebnis!)],
+      // Ist der Schritt selbst ein Merksatz, steht das Etikett schon oben.
+      if (n.merksatz != null) ...[
+        gap,
+        _Merksatz(n.merksatz!, showLabel: n.kind != NuggetKind.merksatz),
       ],
-      if (n.merksatz != null) ...[gap, _Merksatz(n.merksatz!)],
       if (action != null) ...[
         gap,
         Divider(color: context.c.border),
@@ -809,8 +810,12 @@ class _Ergebnis extends StatelessWidget {
 }
 
 class _Merksatz extends StatelessWidget {
-  const _Merksatz(this.text);
+  const _Merksatz(this.text, {this.showLabel = true});
   final String text;
+
+  /// Überschrift „Merksatz“ im Kasten - entfällt, wenn sie schon als
+  /// Etikett über dem Schritt steht.
+  final bool showLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -832,8 +837,10 @@ class _Merksatz extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _SectionLabel('Merksatz', color: c.flame),
-                const SizedBox(height: 2),
+                if (showLabel) ...[
+                  _SectionLabel('Merksatz', color: c.flame),
+                  const SizedBox(height: 2),
+                ],
                 HyphenText(
                   text,
                   style: context.text.bodyMedium?.copyWith(

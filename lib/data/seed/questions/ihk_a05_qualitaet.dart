@@ -21,32 +21,32 @@ final List<Question> ihkA05 = [
       paar('Validierung', 'Prüfung gegen den Bedarf des Kunden'),
     ],
     explanation:
-        'Konstruktiv beugt vor (Richtlinien, Schulung), analytisch prüft nach (Review, Test). Statisch heißt ohne, dynamisch mit Ausführung. Verifikation: richtig gebaut? Validierung: das Richtige gebaut?',
+        'Konstruktive QS beugt vor (Richtlinien, Schulung), analytische prüft nach (Review, Test). Statisch heißt ohne, dynamisch mit Ausführung des Programms. Die Verifikation fragt: Ist es richtig gebaut? Die Validierung fragt: Ist das Richtige gebaut?',
   ),
   lueckentext(
     'i5-qg-2',
     'qm-grundlagen',
     scenario:
-        'In einem Projekt kostet die Korrektur eines Anforderungsfehlers in der Anforderungsphase 40 €. Nach der Zehnerregel verzehnfachen sich die Kosten mit jeder weiteren Phase. Drei solcher Fehler werden erst im Systemtest gefunden (zwei Phasen später), ein weiterer erst im Betrieb (drei Phasen später).',
+        'In einem Projekt kostet die Korrektur eines Anforderungsfehlers in der Anforderungsphase 40 €. Nach der Zehnerregel verzehnfachen sich die Kosten mit jeder weiteren Phase (Anforderung, Entwurf, Implementierung, Test, Betrieb). Drei solcher Fehler werden erst im Test gefunden (drei Phasen später), ein weiterer erst im Betrieb (vier Phasen später).',
     prompt: 'Berechne die Fehlerkosten nach der Zehnerregel. (5 P.)',
     punkte: 5,
     text:
-        'Kosten je Fehler im Systemtest: {0} €\n'
-        'Kosten der drei Fehler im Systemtest: {1} €\n'
+        'Kosten je Fehler im Test: {0} €\n'
+        'Kosten der drei Fehler im Test: {1} €\n'
         'Kosten des Fehlers im Betrieb: {2} €\n'
         'Fehlerkosten insgesamt: {3} €\n'
         'Kosten, wenn alle vier Fehler sofort entdeckt worden wären: {4} €',
     luecken: [
-      zahl(4000, rationale: '40 € × 10 × 10.'),
-      zahl(12000, rationale: '3 × 4.000 €.'),
       zahl(40000, rationale: '40 € × 10 × 10 × 10.'),
-      zahl(52000, rationale: '12.000 € + 40.000 €.'),
+      zahl(120000, rationale: '3 × 40.000 €.'),
+      zahl(400000, rationale: '40 € × 10 × 10 × 10 × 10.'),
+      zahl(520000, rationale: '120.000 € + 400.000 €.'),
       zahl(160, rationale: '4 × 40 €.'),
     ],
     explanation:
-        'Zwei Phasen später: 40 € × 10² = 4.000 € je Fehler, für drei Fehler 12.000 €.\n'
-        'Drei Phasen später: 40 € × 10³ = 40.000 €.\n'
-        'Summe: 52.000 €, gegenüber 4 × 40 € = 160 € bei früher Entdeckung. Deshalb lohnen sich Reviews der Anforderungen.',
+        'Drei Phasen später: 40 € × 10³ = 40.000 € je Fehler, für drei Fehler 120.000 €.\n'
+        'Vier Phasen später: 40 € × 10⁴ = 400.000 €.\n'
+        'Zusammen sind das 520.000 €. Bei sofortiger Entdeckung wären es nur 4 × 40 € = 160 € gewesen. Deshalb lohnen sich Reviews der Anforderungen.',
   ),
   freitext(
     'i5-qg-3',
@@ -119,7 +119,7 @@ final List<Question> ihkA05 = [
       ],
     ],
     explanation:
-        'Antwortzeit, Bedienbarkeit und Erreichbarkeit beschreiben, WIE GUT das Portal arbeitet, also nicht funktional. Der PDF-Download ist eine Funktion und lässt sich eindeutig testen (vorhanden oder nicht). „Benutzerfreundlich“ und „möglichst immer“ haben keinen Zielwert; besser: „Verfügbarkeit mindestens 99,5 % im Monat“.',
+        'Antwortzeit, Bedienbarkeit und Erreichbarkeit beschreiben, WIE GUT das Portal arbeitet, sie sind also nicht funktional. Der PDF-Download ist eine Funktion und lässt sich eindeutig testen (vorhanden oder nicht). „Benutzerfreundlich“ und „möglichst immer“ haben keinen Zielwert. Besser wäre zum Beispiel „Verfügbarkeit mindestens 99,5 % im Monat“.',
   ),
   lueckentext(
     'i5-qe-2',
@@ -209,7 +209,7 @@ final List<Question> ihkA05 = [
     'i5-qp-1',
     'qm-pdca',
     scenario:
-        'Die Hotline eines Systemhauses will mehr Anfragen beim ersten Kontakt lösen. Ziel: Erstlösungsquote mindestens 50 %. Vor der Maßnahme (Wissensdatenbank für die Hotline) wurden 120 von 400 Tickets beim ersten Kontakt gelöst, in der Pilotphase 198 von 360.',
+        'Die Hotline eines Systemhauses will mehr Anfragen beim ersten Kontakt lösen. Das Ziel ist eine Erstlösungsquote von mindestens 50 %. Vor der Maßnahme (Wissensdatenbank für die Hotline) wurden 120 von 400 Tickets beim ersten Kontakt gelöst, in der Pilotphase 198 von 360.',
     prompt: 'Werte die Pilotphase für die Phase Check aus. (5 P.)',
     punkte: 5,
     zeilen: [
@@ -230,7 +230,7 @@ final List<Question> ihkA05 = [
       ],
     ],
     explanation:
-        'Vorher: 120 / 400 = 30 %. Pilot: 198 / 360 = 55 %. Veränderung: 55 - 30 = 25 Prozentpunkte. 55 % liegt über dem Ziel von 50 %. In Act wird die Wissensdatenbank für die ganze Hotline verbindlich eingeführt.',
+        'Vorher: 120 / 400 = 30 %. Pilot: 198 / 360 = 55 %. Veränderung: 55 - 30 = 25 Prozentpunkte. 55 % liegen über dem Ziel von 50 %, es ist also erreicht. In der Phase Act wird die Wissensdatenbank deshalb für die ganze Hotline verbindlich eingeführt.',
   ),
   lueckentext(
     'i5-qp-2',
@@ -252,7 +252,7 @@ final List<Question> ihkA05 = [
     ],
     wortbank: ['Test', 'Review'],
     explanation:
-        'Plan (analysieren, Ziel, Maßnahme) - Do (im Kleinen erproben) - Check (Soll-Ist-Vergleich) - Act (standardisieren oder nachbessern). Danach beginnt der nächste Zyklus.',
+        'Die Reihenfolge lautet Plan (analysieren, Ziel setzen, Maßnahme planen), Do (im Kleinen erproben), Check (Soll und Ist vergleichen), Act (standardisieren oder nachbessern). Danach beginnt der nächste Zyklus.',
   ),
   freitext(
     'i5-qp-3',
@@ -431,7 +431,7 @@ final List<Question> ihkA05 = [
     'i5-sv-2',
     'ts-verfahren',
     scenario:
-        'Für die Funktion gibt es die Testfälle T1 (gewicht 2, express falsch) und T4 (gewicht 8, express wahr). Jede der beiden Abfragen hat einen Ja- und einen Nein-Zweig.',
+        'Für die Funktion versand gibt es die Testfälle T1 (gewicht 2, express falsch) und T4 (gewicht 8, express wahr). Jede der beiden Abfragen hat einen Ja- und einen Nein-Zweig.',
     code:
         'funktion versand(gewicht, express)\n'
         '  preis = 4\n'
@@ -473,7 +473,7 @@ final List<Question> ihkA05 = [
       paar('Anweisungsüberdeckung', 'Jede Anweisung mindestens einmal'),
     ],
     explanation:
-        'Black-Box: von außen, nach Spezifikation (Äquivalenzklassen, Grenzwerte). White-Box: mit Blick in den Code (Anweisungs- und Zweigüberdeckung). Zweigüberdeckung ist strenger als Anweisungsüberdeckung.',
+        'Der Black-Box-Test prüft von außen nach der Spezifikation (Äquivalenzklassen, Grenzwerte), der White-Box-Test mit Blick in den Code (Anweisungs- und Zweigüberdeckung). Die Zweigüberdeckung ist strenger als die Anweisungsüberdeckung.',
   ),
   freitext(
     'i5-sv-4',
@@ -485,7 +485,7 @@ final List<Question> ihkA05 = [
     punkte: 4,
     kriterien: [
       krit(
-        'Black-Box: prüft aus Sicht der Anforderungen, unabhängig von der Umsetzung und findet auch fehlende oder falsch verstandene Funktionen.',
+        'Black-Box: prüft aus Sicht der Anforderungen, unabhängig von der Umsetzung, und findet auch fehlende oder falsch verstandene Funktionen.',
         punkte: 2,
         stichwoerter: [
           'Anforderungen',
@@ -511,7 +511,7 @@ final List<Question> ihkA05 = [
     loesung:
         'Der Black-Box-Test prüft das Verhalten gegen die Anforderungen, ohne den Code zu kennen. So fallen auch fehlende Funktionen auf. Der White-Box-Test nutzt die Kenntnis des Codes und stellt sicher, dass jeder Zweig mindestens einmal durchlaufen wird; die Überdeckung lässt sich messen.',
     explanation:
-        'Je Vorteil 2 Punkte. Die Verfahren ergänzen sich: Black-Box findet, was fehlt oder falsch verstanden wurde; White-Box findet, was im Code nie getestet wurde.',
+        'Je Vorteil 2 Punkte. Die Verfahren ergänzen sich: Der Black-Box-Test findet, was fehlt oder falsch verstanden wurde, der White-Box-Test findet, was im Code nie getestet wurde.',
   ),
 
   // ====================================================== Testfälle entwerfen
@@ -544,7 +544,7 @@ final List<Question> ihkA05 = [
       ],
     ],
     explanation:
-        'Drei Klassen: zu klein (ungültig), 1 bis 30 (gültig), zu groß (ungültig). Die Grenzwertanalyse testet die Werte direkt an den Übergängen: 0 und 1 sowie 30 und 31. Dort entstehen typische Fehler wie > statt >=.',
+        'Es gibt drei Klassen: zu klein (ungültig), 1 bis 30 (gültig), zu groß (ungültig). Die Grenzwertanalyse testet die Werte direkt an den Übergängen: 0 und 1 sowie 30 und 31. Dort entstehen typische Fehler wie > statt >=.',
   ),
   tabelle(
     'i5-sf-2',
@@ -604,7 +604,7 @@ final List<Question> ihkA05 = [
       ),
       nein(
         'TF4: Eingabe 68, Soll: abgelehnt',
-        '68 liegt über der Grenze. Richtig.',
+        '68 liegt über der Grenze, die Ablehnung ist also richtig.',
       ),
       nein(
         'TF5: Eingabe „abc“, Soll: Fehlermeldung',
@@ -700,7 +700,7 @@ final List<Question> ihkA05 = [
       ],
     ],
     explanation:
-        'Bestanden ist ein Testfall nur, wenn Ist und Soll übereinstimmen (TF-01, TF-03). Bei TF-02 und TF-04 weicht das Ist ab: fehlgeschlagen, es folgt eine Fehlermeldung. TF-05 konnte nicht ausgeführt werden. Er ist blockiert und wird nachgeholt, er zählt nicht als bestanden.',
+        'Bestanden ist ein Testfall nur, wenn Ist und Soll übereinstimmen (TF-01, TF-03). Bei TF-02 und TF-04 weicht das Ist vom Soll ab. Beide sind fehlgeschlagen und bekommen eine Fehlermeldung. TF-05 konnte nicht ausgeführt werden. Er ist blockiert, wird nachgeholt und zählt bis dahin nicht als bestanden.',
   ),
   lueckentext(
     'i5-sp-2',
@@ -721,7 +721,7 @@ final List<Question> ihkA05 = [
       wahl('nicht erfüllt', ['erfüllt', 'nicht prüfbar']),
     ],
     explanation:
-        'Durchführungsquote: 75 / 80 = 93,75 %. Bestehensquote: 66 / 75 = 88 %. Fehlgeschlagen: 75 - 66 = 9. Mit 88 % ist das Endekriterium von 95 % verfehlt. Die Fehler werden behoben, nachgetestet, und die fünf offenen Testfälle werden nachgeholt.',
+        'Durchführungsquote: 75 / 80 = 93,75 %. Bestehensquote: 66 / 75 = 88 %. Fehlgeschlagen: 75 - 66 = 9. Mit 88 % ist das Endekriterium von 95 % verfehlt. Die Fehler werden behoben und nachgetestet, die fünf offenen Testfälle werden nachgeholt.',
   ),
   markieren(
     'i5-sp-3',
@@ -741,7 +741,7 @@ final List<Question> ihkA05 = [
       ),
       nein(
         'F-13: Export gelingt nur über einen Umweg: schwer',
-        'Funktion gestört, Umgehung möglich: schwer.',
+        'Die Funktion ist gestört, eine Umgehung ist aber möglich. Das ist ein schwerer Fehler.',
       ),
       ja(
         'F-14: Logo um zwei Pixel verschoben: kritisch',
@@ -753,11 +753,11 @@ final List<Question> ihkA05 = [
       ),
       ja(
         'F-16: Bestellen ist ohne Umgehung unmöglich: schwer',
-        'Hauptfunktion ohne Umgehung blockiert: kritisch.',
+        'Eine Hauptfunktion ist ohne Umgehung blockiert. Das ist ein kritischer Fehler.',
       ),
     ],
     explanation:
-        'Die Fehlerklasse richtet sich nach der Auswirkung: Datenverlust, Absturz und blockierte Hauptfunktionen sind kritisch; gestörte Funktionen mit Umgehung schwer; optische Mängel kosmetisch. Die Priorität (wie dringend) wird getrennt davon festgelegt.',
+        'Die Fehlerklasse richtet sich nach der Auswirkung: Datenverlust, Absturz und blockierte Hauptfunktionen sind kritisch, gestörte Funktionen mit Umgehung schwer und optische Mängel kosmetisch. Die Priorität (wie dringend der Fehler behoben wird) wird getrennt davon festgelegt.',
   ),
   paare(
     'i5-sp-4',
@@ -775,6 +775,6 @@ final List<Question> ihkA05 = [
       paar('Regressionstest', 'Sucht Nebenwirkungen der Korrektur'),
     ],
     explanation:
-        'Vor dem Test: Testkonzept und Testfälle. Bei der Durchführung: Testprotokoll, bei Abweichungen eine Fehlermeldung. Nach der Korrektur: Nachtest des betroffenen Testfalls und Regressionstest der übrigen Funktionen.',
+        'Vor dem Test entstehen das Testkonzept und die Testfälle. Bei der Durchführung wird das Testprotokoll geführt, bei Abweichungen kommt eine Fehlermeldung dazu. Nach der Korrektur folgen der Nachtest des betroffenen Testfalls und der Regressionstest der übrigen Funktionen.',
   ),
 ];

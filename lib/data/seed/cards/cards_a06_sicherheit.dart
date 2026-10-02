@@ -186,7 +186,7 @@ final List<Flashcard> cardsA06Sicherheit = [
     'k-zm-10',
     'sz-schadsoftware',
     'Was bezeichnet der Begriff Malware?',
-    'Oberbegriff für jede Software mit unerwünschten oder schädlichen Funktionen, geordnet nach Verbreitungsweg und Schadfunktion.',
+    'Oberbegriff für jede Software mit unerwünschten oder schädlichen Funktionen. Die Arten unterscheidet man nach Verbreitungsweg und Schadfunktion.',
   ),
   karte(
     'k-zm-11',
@@ -357,13 +357,13 @@ final List<Flashcard> cardsA06Sicherheit = [
     'k-za-16',
     'sz-angriffe',
     'Was unterscheidet einen Brute-Force- von einem Wörterbuchangriff?',
-    'Brute Force probiert alle Kombinationen durch, der Wörterbuchangriff nur Listen gängiger Passwörter. Schutz: lange, ungewöhnliche Passwörter, Sperre.',
+    'Brute Force probiert alle Kombinationen durch, der Wörterbuchangriff nur Listen gängiger Passwörter. Schutz: lange, ungewöhnliche Passwörter, Sperre nach Fehlversuchen.',
   ),
   karte(
     'k-za-17',
     'sz-angriffe',
     'Was ist Password Spraying?',
-    'Ein häufiges Passwort wird bei sehr vielen Konten probiert. So greifen Sperren nach Fehlversuchen kaum. Schutz: Sperrlisten, MFA.',
+    'Ein häufiges Passwort wird bei sehr vielen Konten probiert. So greifen Sperren nach Fehlversuchen kaum. Schutz: Sperrliste für gängige Passwörter, MFA.',
   ),
   karte(
     'k-za-18',
@@ -417,7 +417,7 @@ final List<Flashcard> cardsA06Sicherheit = [
     'k-za-29',
     'sz-angriffe',
     'Wie schützt du dich gegen Man-in-the-Middle-Angriffe?',
-    'Verschlüsselung mit Zertifikatsprüfung (HTTPS, VPN), und Zertifikatswarnungen im Browser nie einfach wegklicken.',
+    'Verschlüsselung mit Zertifikatsprüfung (HTTPS, VPN). Zertifikatswarnungen im Browser nie einfach wegklicken.',
   ),
   karte(
     'k-za-30',
@@ -527,7 +527,7 @@ final List<Flashcard> cardsA06Sicherheit = [
     'k-zb-16',
     'sz-schutzbedarf',
     'Wann ist nach IT-Grundschutz eine zusätzliche Risikoanalyse nötig?',
-    'Für Zielobjekte mit hohem oder sehr hohem Schutzbedarf, und wenn kein passender Baustein existiert.',
+    'Bei Zielobjekten mit hohem oder sehr hohem Schutzbedarf und immer dann, wenn kein passender Baustein existiert.',
   ),
   karte(
     'k-zb-17',
@@ -563,7 +563,7 @@ final List<Flashcard> cardsA06Sicherheit = [
     'k-zb-22',
     'sz-schutzbedarf',
     'Was unterscheidet einen Notfall von einer Krise?',
-    'Ein Notfall lässt sich mit vorbereiteten Notfallplänen bewältigen. Bei einer Krise greifen die Pläne nicht mehr. Ein Krisenstab entscheidet.',
+    'Ein Notfall lässt sich mit vorbereiteten Notfallplänen bewältigen. Bei einer Krise greifen die Pläne nicht mehr, dann entscheidet ein Krisenstab.',
   ),
   karte(
     'k-zb-23',
@@ -691,7 +691,7 @@ final List<Flashcard> cardsA06Sicherheit = [
     'k-yf-20',
     'sm-firewall',
     'Was unterscheidet eine einstufige von einer zweistufigen DMZ?',
-    'Einstufig: eine Firewall mit drei Netzen, günstig, aber fällt sie, liegt alles offen. Zweistufig: äußere und innere Firewall, zwei Hürden.',
+    'Einstufig: eine Firewall mit drei Netzen, günstig, aber wird sie überwunden, liegt alles offen. Zweistufig: äußere und innere Firewall, zwei Hürden.',
   ),
   karte(
     'k-yf-21',
@@ -795,7 +795,7 @@ final List<Flashcard> cardsA06Sicherheit = [
     'k-yb-12',
     'sm-backup',
     'Sonntags voll, Mo bis Do inkrementell, Ausfall am Freitag: Welche Sicherungen spielst du ein?',
-    'Voll (So) + Mo + Di + Mi + Do = 5 Sicherungen. Fehlt eine, fehlt ein ganzer Tag.',
+    'Voll (So) + Mo + Di + Mi + Do = 5 Sicherungen. Fehlt ein Inkrement, fehlen die Änderungen dieses Tages.',
   ),
   karte(
     'k-yb-13',
@@ -863,7 +863,7 @@ final List<Flashcard> cardsA06Sicherheit = [
     'k-yw-1',
     'sm-wlan',
     'Warum darfst du WEP und WPA mit TKIP nicht mehr verwenden?',
-    'Beide sind gebrochen bzw. veraltet: Mindeststandard ist WPA2 mit AES, besser WPA3.',
+    'Beide sind gebrochen bzw. veraltet. Mindeststandard ist WPA2 mit AES, besser WPA3.',
   ),
   karte(
     'k-yw-2',
@@ -917,7 +917,7 @@ final List<Flashcard> cardsA06Sicherheit = [
     'k-yw-10',
     'sm-wlan',
     'Wofür steht SAE bei WPA3?',
-    'Simultaneous Authentication of Equals. Ein Anmeldeverfahren, bei dem das Passwort nicht offline durchprobiert werden kann.',
+    'Simultaneous Authentication of Equals: ein Anmeldeverfahren, bei dem das Passwort nicht offline durchprobiert werden kann.',
   ),
   karte(
     'k-yw-11',
@@ -1104,7 +1104,7 @@ final List<Flashcard> cardsA06Sicherheit = [
   karte(
     'k-yz-20',
     'sm-zugriff',
-    'Tim hat die Rollen „Azubi“ (Preise: kein Recht) und „Vertrieb“ (Preise: lesen). Was darf er bei Preise?',
+    'Tim hat die Rollen „Azubi“ (Preise: kein Recht) und „Vertrieb“ (Preise: lesen). Was darf er bei den Preisen?',
     'Lesen. Die Rechte mehrerer Rollen addieren sich.',
   ),
   karte(

@@ -61,7 +61,7 @@ final List<Question> ihkA07 = [
       ],
     ],
     explanation:
-        'Anfrage = unverbindlich. Angebot an einen bestimmten Kunden = Antrag, hier befristet bis 19.03. Die Bestellung vom 21.03. kommt zu spät und ist deshalb ein neuer Antrag (§ 150 Abs. 1 BGB). Mit der Auftragsbestätigung vom 22.03. nimmt der Lieferant an. Erst jetzt besteht der Vertrag.',
+        'Die Anfrage ist unverbindlich. Das Angebot an einen bestimmten Kunden ist ein Antrag, hier befristet bis 19.03. Die Bestellung vom 21.03. kommt zu spät und ist deshalb ein neuer Antrag (§ 150 Abs. 1 BGB). Mit der Auftragsbestätigung vom 22.03. nimmt der Lieferant an. Erst jetzt besteht der Vertrag.',
     punkte: 5,
   ),
   freitext(
@@ -116,9 +116,9 @@ final List<Question> ihkA07 = [
       ),
     ],
     loesung:
-        'Ein nichtiges Rechtsgeschäft ist von Anfang an unwirksam, zum Beispiel der Kauf eines sechsjährigen Kindes oder ein Grundstückskauf ohne Notar. Ein anfechtbares Rechtsgeschäft ist zunächst wirksam. Erst wenn der Berechtigte die Anfechtung erklärt, wird es rückwirkend nichtig, zum Beispiel beim Tippfehler im Preis (Erklärungsirrtum) oder bei arglistiger Täuschung. Der Vertrag aus der Situation ist also nicht automatisch nichtig, sondern muss unverzüglich angefochten werden.',
+        'Ein nichtiges Rechtsgeschäft ist von Anfang an unwirksam, zum Beispiel ein Kauf, den ein sechsjähriges Kind abschließt, oder ein Grundstückskauf ohne Notar. Ein anfechtbares Rechtsgeschäft ist zunächst wirksam. Erst wenn der Berechtigte die Anfechtung erklärt, wird es rückwirkend nichtig, zum Beispiel beim Tippfehler im Preis (Erklärungsirrtum) oder bei arglistiger Täuschung. Der Vertrag aus der Situation ist also nicht automatisch nichtig, sondern muss unverzüglich angefochten werden.',
     explanation:
-        'Je Erläuterung 2 Punkte, je passendes Beispiel 1 Punkt. Andere richtige Beispiele werden ebenfalls gewertet. Wichtig ist die Abgrenzung: nichtig wirkt von selbst, anfechtbar braucht eine Erklärung.',
+        'Je Erläuterung 2 Punkte, je passendes Beispiel 1 Punkt. Andere richtige Beispiele werden ebenfalls gewertet. Achte auf die Abgrenzung: Die Nichtigkeit tritt von selbst ein, die Anfechtung muss erklärt werden.',
     punkte: 6,
   ),
   lueckentext(
@@ -292,7 +292,7 @@ final List<Question> ihkA07 = [
     zeilen: [
       ja(
         'Der Auftragnehmer schuldet eine lauffähige Lagerverwaltung gemäß Pflichtenheft.',
-        'Ein bestimmter Erfolg ist geschuldet. Das Kennzeichen des Werkvertrags (§ 631 BGB).',
+        'Geschuldet ist ein bestimmter Erfolg, das Kennzeichen des Werkvertrags (§ 631 BGB).',
       ),
       nein(
         'Abgerechnet wird monatlich nach geleisteten Stunden zu 95 € je Stunde.',
@@ -304,11 +304,11 @@ final List<Question> ihkA07 = [
       ),
       nein(
         'Der Auftragnehmer stellt zwei Entwickler zur Unterstützung des Teams bereit.',
-        'Geschuldet ist nur Arbeitsleistung, kein Ergebnis: Dienstvertrag.',
+        'Geschuldet ist nur Arbeitsleistung, kein Ergebnis. Das spricht für einen Dienstvertrag.',
       ),
       ja(
         'Der Auftraggeber nimmt die Software nach bestandenem Abnahmetest ab.',
-        'Eine Abnahme gibt es nur beim Werkvertrag (§ 640 BGB).',
+        'Die Abnahme als Billigung des Ergebnisses gehört zum Werkvertrag (§ 640 BGB), der Dienstvertrag kennt sie nicht.',
       ),
       ja(
         'Mängel beseitigt der Auftragnehmer innerhalb der Gewährleistungsfrist kostenlos.',
@@ -357,7 +357,7 @@ final List<Question> ihkA07 = [
       ),
       nein(
         'Die Agentur verkauft die Lizenz an ein befreundetes Unternehmen weiter.',
-        'Nr. 1: „non-transferable“. Die Lizenz ist nicht übertragbar.',
+        'Nr. 1 nennt die Lizenz „non-transferable“, sie ist also nicht übertragbar.',
       ),
       ja(
         'Ein Administrator legt eine Sicherungskopie für das Archiv an.',
@@ -369,7 +369,7 @@ final List<Question> ihkA07 = [
       ),
       ja(
         'Der Hersteller vergibt dieselbe Software auch an andere Kunden.',
-        'Nr. 1: „non-exclusive“. Ein einfaches Nutzungsrecht, der Hersteller darf weitere Lizenzen vergeben.',
+        '„Non-exclusive“ (Nr. 1) bedeutet ein einfaches Nutzungsrecht. Der Hersteller darf also weitere Lizenzen vergeben.',
       ),
       nein(
         'Die Agentur nutzt die Software im 14. Monat ohne Verlängerung weiter.',
@@ -572,7 +572,7 @@ final List<Question> ihkA07 = [
       ],
     ],
     explanation:
-        'Servicezeit: 20 × 10 h = 200 h. Zulässiger Ausfall: 200 h × 0,5 % = 1 h = 60 min. Zeiten laufen nur in der Servicezeit: Reaktion 17:45 + 30 min = 15 min am Freitag und 15 min am Montag -> 08:15 Uhr. Lösung: 15:00 bis 18:00 Uhr sind 3 h, die vierte Stunde endet Mittwoch 09:00 Uhr. Angekündigte Wartung zählt nicht als Ausfall.',
+        'Servicezeit: 20 × 10 h = 200 h. Zulässiger Ausfall: 200 h × 0,5 % = 1 h = 60 min. Zeiten laufen nur in der Servicezeit: Von den 30 Minuten Reaktionszeit laufen 15 am Freitag (17:45 bis 18:00 Uhr) und 15 am Montag, also bis 08:15 Uhr. Bei der Lösungszeit sind 15:00 bis 18:00 Uhr 3 h, die vierte Stunde endet am Mittwoch um 09:00 Uhr. Angekündigte Wartung zählt nicht als Ausfall.',
     punkte: 5,
     difficulty: 3,
     tags: ['englisch'],
@@ -881,7 +881,7 @@ final List<Question> ihkA07 = [
       ),
       nein(
         '09:10 1st Level prüft die Wissensdatenbank: keine Lösung',
-        'Erst bekannte Lösungen prüfen: richtig.',
+        'Richtig, zuerst werden bekannte Lösungen geprüft.',
       ),
       ja(
         '09:15 Ticket geschlossen; Anwender soll sich neu beim 2nd Level melden',
@@ -953,7 +953,7 @@ final List<Question> ihkA07 = [
       ],
     ],
     explanation:
-        'Incident = Störung, Ziel schnelle Wiederherstellung. Problem = Ursache hinter (wiederkehrenden) Störungen. Change = geplante Änderung, die bewertet und genehmigt wird. Service Request = Standardanfrage, bei der nichts kaputt ist.',
+        'Ein Incident ist eine Störung, das Ziel ist die schnelle Wiederherstellung. Ein Problem ist die Ursache hinter (wiederkehrenden) Störungen. Ein Change ist eine geplante Änderung, die bewertet und genehmigt wird. Ein Service Request ist eine Standardanfrage, bei der nichts kaputt ist.',
     punkte: 4,
   ),
   freitext(
@@ -988,7 +988,7 @@ final List<Question> ihkA07 = [
       ),
     ],
     loesung:
-        'Das Incident Management soll den Service so schnell wie möglich wiederherstellen. Hier durch den Neustart der App als Workaround. Die Ursache bleibt dabei bestehen. Das Problem Management untersucht, warum die App abstürzt, dokumentiert die Ursache als Known Error und sorgt für eine dauerhafte Lösung, die als Change eingeführt wird.',
+        'Das Incident Management soll den Service so schnell wie möglich wiederherstellen, hier durch den Neustart der App als Workaround. Die Ursache bleibt dabei bestehen. Das Problem Management untersucht, warum die App abstürzt, dokumentiert die Ursache als Known Error und sorgt für eine dauerhafte Lösung, die als Change eingeführt wird.',
     explanation:
         'Je Erläuterung 2 Punkte. Merkhilfe: Incident = Symptom schnell beheben, Problem = Ursache finden. Gehäufte gleichartige Incidents sind der typische Anlass, ein Problem zu eröffnen.',
     punkte: 4,
@@ -1120,7 +1120,7 @@ final List<Question> ihkA07 = [
       ),
     ],
     loesung:
-        'Der Distributor ist in Verzug: Die Lieferung war am 2. März fällig, der Termin ist kalendermäßig bestimmt, also braucht es keine Mahnung (§ 286 Abs. 2 Nr. 1 BGB). Dass der eigene Lieferant nicht geliefert hat, entlastet ihn in der Regel nicht. Er trägt das Beschaffungsrisiko. Das Systemhaus kann weiter Lieferung verlangen und den Verzögerungsschaden ersetzt verlangen, etwa die Kosten für Leihgeräte. Es kann außerdem eine angemessene Nachfrist setzen und nach deren erfolglosem Ablauf zurücktreten und Schadensersatz statt der Leistung verlangen, etwa die Mehrkosten eines Deckungskaufs.',
+        'Der Distributor ist in Verzug: Die Lieferung war am 2. März fällig, der Termin ist kalendermäßig bestimmt, also braucht es keine Mahnung (§ 286 Abs. 2 Nr. 1 BGB). Dass der eigene Lieferant nicht geliefert hat, entlastet ihn in der Regel nicht, denn er trägt das Beschaffungsrisiko. Das Systemhaus kann weiter auf Lieferung bestehen und Ersatz des Verzögerungsschadens verlangen, etwa die Kosten für Leihgeräte. Es kann außerdem eine angemessene Nachfrist setzen und nach deren erfolglosem Ablauf zurücktreten und Schadensersatz statt der Leistung verlangen, etwa die Mehrkosten eines Deckungskaufs.',
     explanation:
         'Prüfung des Verzugs bis zu 2 Punkte, je beschriebenes Recht 2 Punkte, höchstens 6 Punkte. Die angekündigten „four weeks“ ändern am Verzug nichts. Sie sind nur eine Information.',
     punkte: 6,
@@ -1150,7 +1150,7 @@ final List<Question> ihkA07 = [
     ],
     mono: true,
     explanation:
-        'Unter Unternehmen: Basiszinssatz + 9 Prozentpunkte = 2 % + 9 = 11 %. Jahreszinsen: 7.300 € × 0,11 = 803 €. Für 60 Tage: 803 € × 60 / 365 = 132 €. Dazu die Pauschale von 40 €: 132 € + 40 € = 172 €. Wäre ein Verbraucher beteiligt, wären es nur 5 Prozentpunkte und keine Pauschale.',
+        'Unter Unternehmen: Basiszinssatz + 9 Prozentpunkte = 2 % + 9 = 11 %. Jahreszinsen: 7.300 € × 0,11 = 803 €. Für 60 Tage: 803 € × 60 / 365 = 132 €. Dazu die Pauschale von 40 €: 132 € + 40 € = 172 €. Wäre der Schuldner ein Verbraucher, wären es nur 5 Prozentpunkte und keine Pauschale.',
     punkte: 6,
   ),
   markieren(
@@ -1187,7 +1187,7 @@ final List<Question> ihkA07 = [
       ),
     ],
     explanation:
-        'Bei einem vertraglich vereinbarten Kalendertermin tritt Verzug ohne Mahnung ein. Hier ab dem 17. Mai. Unter Unternehmern betragen die Verzugszinsen 9 Prozentpunkte über dem Basiszinssatz, dazu kommt die Pauschale von 40 €. Eine Mahnung fordert bestimmt und mit Datum zur Zahlung auf.',
+        'Bei einem vertraglich vereinbarten Kalendertermin tritt Verzug ohne Mahnung ein, hier ab dem 17. Mai. Unter Unternehmern betragen die Verzugszinsen 9 Prozentpunkte über dem Basiszinssatz, dazu kommt die Pauschale von 40 €. Eine Mahnung fordert bestimmt und mit Datum zur Zahlung auf.',
     punkte: 3,
   ),
   reihenfolge(
@@ -1230,7 +1230,7 @@ final List<Question> ihkA07 = [
         wahl(
           'Verzug erst nach Mahnung',
           ['Verzug ohne Mahnung', 'kein Verzug (nicht zu vertreten)'],
-          'Kein bestimmter Termin. Der Käufer muss mahnen.',
+          'Es gibt keinen bestimmten Termin, der Käufer muss also mahnen.',
         ),
       ],
       [
@@ -1415,7 +1415,7 @@ final List<Question> ihkA07 = [
       ),
       nein(
         'Dem Kunden gefällt die Gehäusefarbe nach zwei Wochen nicht mehr.',
-        'Geliefert wurde, was vereinbart war: Reue ist kein Mangel.',
+        'Geliefert wurde, was vereinbart war. Reue ist kein Mangel.',
       ),
       ja(
         'Die Montageanleitung des Serverschranks ist fehlerhaft, der Aufbau misslingt.',
@@ -1616,7 +1616,7 @@ final List<Question> ihkA07 = [
       'Papierlisten werden nicht mehr gedruckt, der neue Ablauf steht in der Arbeitsanweisung.',
     ],
     explanation:
-        'Unfreezing: Gründe erklären und Betroffene beteiligen. Moving: pilotieren, schulen, in Betrieb nehmen. Refreezing: den Rückweg nehmen und das Neue zum Standard machen.',
+        'Unfreezing: Gründe erklären und Betroffene beteiligen. Moving: pilotieren, schulen, in Betrieb nehmen. Refreezing: den Rückweg versperren und das Neue zum Standard machen.',
     punkte: 3,
   ),
   tabelle(
@@ -1705,7 +1705,7 @@ final List<Question> ihkA07 = [
         ],
       ),
       krit(
-        'Sofortumstellung, Nachteil: hohes Risiko: Fehler treffen sofort den ganzen Betrieb, kein Rückfall auf das alte System',
+        'Sofortumstellung, Nachteil: hohes Risiko, weil Fehler sofort den ganzen Betrieb treffen und kein Rückfall auf das alte System möglich ist',
         stichwoerter: [
           'Risiko',
           'kein Rückfall',
@@ -1716,7 +1716,7 @@ final List<Question> ihkA07 = [
         ],
       ),
       krit(
-        'Parallelbetrieb, Vorteil: Sicherheit. Das alte System steht als Rückfall bereit, Ergebnisse lassen sich vergleichen',
+        'Parallelbetrieb, Vorteil: Sicherheit, weil das alte System als Rückfall bereitsteht und sich die Ergebnisse vergleichen lassen',
         stichwoerter: [
           'Sicherheit',
           'Rückfall',
@@ -1773,7 +1773,7 @@ final List<Question> ihkA07 = [
       zu(
         'Das alte System abschalten',
         2,
-        '„switch off the old one“ nimmt den Rückweg.',
+        '„switch off the old one“ versperrt den Rückweg.',
       ),
       zu(
         'Künftige Nutzer bei den Anforderungen beteiligen',
@@ -1788,7 +1788,7 @@ final List<Question> ihkA07 = [
       zu(
         'Arbeitsanweisungen aktualisieren',
         2,
-        '„update the work instructions“. Das Neue wird Standard.',
+        '„update the work instructions“: Das Neue wird zum Standard.',
       ),
     ],
     explanation:
@@ -1912,7 +1912,7 @@ final List<Question> ihkA07 = [
       ),
       ja(
         '„Ich habe gehört, mit den Scannern sollen nur Stellen gestrichen werden.“',
-        'Gerüchte und Unruhe: Aufregung.',
+        'Gerüchte und Unruhe sind ein Zeichen von Aufregung.',
       ),
       nein(
         '„Ich würde die Scanner gern im Pilot testen.“',
@@ -2125,7 +2125,7 @@ final List<Question> ihkA07 = [
     zeilen: [
       nein(
         'Die Fachabteilung füllt den Antrag im Portal aus.',
-        'Notwendiger Schritt. Hier entsteht der Auftrag.',
+        'Notwendiger Schritt, denn hier entsteht der Auftrag.',
       ),
       ja(
         'Der Antrag wird ausgedruckt und per Hauspost zur IT gebracht.',
@@ -2133,7 +2133,7 @@ final List<Question> ihkA07 = [
       ),
       ja(
         'Die IT tippt die Daten vom Ausdruck erneut ab.',
-        'Doppelerfassung: Überbearbeitung.',
+        'Doppelerfassung, also Überbearbeitung.',
       ),
       ja(
         'Der Antrag liegt drei Tage zur Unterschrift bei der Teamleitung.',
@@ -2149,7 +2149,7 @@ final List<Question> ihkA07 = [
       ),
     ],
     explanation:
-        'Verschwendung ist alles, was Aufwand kostet, aber keinen Wert für den Kunden schafft: Transport, Wartezeit, Doppelerfassung, Fehler und Nacharbeit. Würde der Portalantrag direkt digital freigegeben und übernommen, entfielen vier der sechs Schritte.',
+        'Verschwendung ist alles, was Aufwand kostet, aber keinen Wert für den Kunden schafft: Transport, Wartezeit, Doppelerfassung, Fehler und Nacharbeit. Würde der Portalantrag direkt digital freigegeben und übernommen, entfielen Ausdruck, Hauspost und Abtippen, und Wartezeit und Tippfehler würden seltener.',
     punkte: 4,
   ),
 ];

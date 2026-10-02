@@ -1,5 +1,6 @@
 import 'package:ap1_trainer/widgets/hyphenation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'support/fonts.dart';
@@ -21,7 +22,7 @@ void main() {
       );
       expect(
         show(hyphenate('Anordnungsbeziehungen')),
-        'Anord-nungs-be-zie-hun-gen',
+        'An-ord-nungs-be-zie-hun-gen',
       );
       expect(
         show(hyphenate('Kapitalgesellschaften')),
@@ -34,6 +35,105 @@ void main() {
         show(hyphenate('Anschaffungsauszahlung')),
         'An-schaf-fungs-aus-zah-lung',
       );
+    });
+
+    test('„st“ wird getrennt, wenn kein Wortteil damit beginnt', () {
+      // Früher „Mu-sterlösung“ - „st“ galt als untrennbar.
+      expect(show(hyphenate('Musterlösung')), 'Mus-ter-lö-sung');
+      expect(show(hyphenate('Karteikasten')), 'Kar-tei-kas-ten');
+      expect(show(hyphenate('Fensterplatz')), 'Fens-ter-platz');
+      expect(show(hyphenate('Lastenheftes')), 'Las-ten-hef-tes');
+      expect(show(hyphenate('Betriebssystem')), 'Be-triebs-sys-tem');
+      expect(show(hyphenate('Dienstleistung')), 'Dienst-leis-tung');
+      expect(show(hyphenate('Administrator')), 'Ad-mi-nis-tra-tor');
+      expect(show(hyphenate('Industriebetrieb')), 'In-dus-trie-be-trieb');
+    });
+
+    test('„st“ bleibt zusammen, wo ein Wortteil damit beginnt', () {
+      expect(show(hyphenate('Kostenstelle')), 'Kos-ten-stelle');
+      expect(show(hyphenate('Bestandteilen')), 'Be-stand-tei-len');
+      expect(show(hyphenate('Verständlichkeit')), 'Ver-ständ-lich-keit');
+      expect(show(hyphenate('Wiederherstellung')), 'Wie-der-her-stel-lung');
+      expect(show(hyphenate('Selbstständigkeit')), 'Selbst-stän-dig-keit');
+      expect(show(hyphenate('Infrastruktur')), 'In-fra-struk-tur');
+      expect(show(hyphenate('Bestätigungsmail')), 'Be-stä-ti-gungs-mail');
+      // Kein „Stab“ in der Tabelle, kein „Start“ in den Testarten.
+      expect(show(hyphenate('Ausgangstabelle')), 'Aus-gangs-ta-belle');
+      expect(show(hyphenate('Testartenübersicht')), 'Test-ar-ten-über-sicht');
+      expect(show(hyphenate('Mindestabstand')), 'Min-dest-ab-stand');
+    });
+
+    test('„ck“, „ch“ und „sch“ werden nie geteilt', () {
+      expect(show(hyphenate('Zuckerfabriken')), 'Zu-cker-fa-bri-ken');
+      expect(show(hyphenate('Testabdeckung')), 'Test-ab-de-ckung');
+      // Früher „Entwic-klung“ und „Stüc-kliste“.
+      expect(
+        show(hyphenate('Entwicklungsumgebung')),
+        'Ent-wick-lungs-um-ge-bung',
+      );
+      expect(
+        show(hyphenate('Stücklistenauflösung')),
+        'Stück-lis-ten-auf-lö-sung',
+      );
+      expect(show(hyphenate('Wirtschaftlichkeit')), 'Wirt-schaft-lich-keit');
+      expect(show(hyphenate('Verschlüsselung')), 'Ver-schlüs-se-lung');
+      expect(show(hyphenate('Netzplantechnik')), 'Netz-plan-tech-nik');
+      expect(show(hyphenate('Menschlichkeit')), 'Mensch-lich-keit');
+    });
+
+    test('Zusammensetzungen werden an der Wortfuge getrennt', () {
+      expect(show(hyphenate('Datenübertragung')), 'Da-ten-über-tra-gung');
+      expect(
+        show(hyphenate('Auftragsverarbeitung')),
+        'Auf-trags-ver-ar-bei-tung',
+      );
+      expect(
+        show(hyphenate('Datenschutzbeauftragter')),
+        'Da-ten-schutz-be-auf-trag-ter',
+      );
+      expect(show(hyphenate('Abschlussprüfung')), 'Ab-schluss-prü-fung');
+      expect(show(hyphenate('Integritätsprüfung')), 'In-te-gri-täts-prü-fung');
+      expect(show(hyphenate('Gesprächspartner')), 'Ge-sprächs-part-ner');
+      expect(
+        show(hyphenate('Netzwerkkomponenten')),
+        'Netz-werk-kom-po-nen-ten',
+      );
+      expect(show(hyphenate('Nutzwertanalyse')), 'Nutz-wert-ana-lyse');
+      expect(show(hyphenate('Voraussetzungen')), 'Vor-aus-set-zun-gen');
+      expect(show(hyphenate('Verpflichtungen')), 'Ver-pflich-tun-gen');
+      expect(show(hyphenate('Transportschicht')), 'Trans-port-schicht');
+      expect(show(hyphenate('Echtzeitsystem')), 'Echt-zeit-sys-tem');
+      expect(show(hyphenate('Guthabenkonto')), 'Gut-ha-ben-konto');
+      expect(show(hyphenate('Projektrahmen')), 'Pro-jekt-rah-men');
+      expect(show(hyphenate('Namensauflösung')), 'Na-mens-auf-lö-sung');
+      // Wörter, die nur zufällig einen Stamm enthalten.
+      expect(show(hyphenate('Prüfverfahren')), 'Prüf-ver-fah-ren');
+      expect(show(hyphenate('Kleinbetrieb')), 'Klein-be-trieb');
+      expect(show(hyphenate('Allgemeinheit')), 'All-ge-mein-heit');
+      expect(show(hyphenate('ausgeglichen')), 'aus-ge-gli-chen');
+      expect(show(hyphenate('Subtraktionen')), 'Sub-trak-tio-nen');
+    });
+
+    test('kein einzelner Buchstabe wird abgetrennt', () {
+      const words = [
+        'Anordnungsbeziehungen',
+        'Echtzeitsystem',
+        'Anforderungsanalyse',
+        'Identitätsprüfung',
+        'Energieeffizienz',
+        'Übertragungsgeschwindigkeit',
+        'Organisationsprojekt',
+        'Urheberrechtsgesetz',
+      ];
+      for (final word in words) {
+        final parts = show(hyphenate(word)).split('-');
+        expect(parts.join(), word);
+        expect(
+          parts.every((p) => p.length >= 2),
+          isTrue,
+          reason: parts.join('-'),
+        );
+      }
     });
 
     test('kurze Wörter und normale Sätze bleiben unverändert', () {
@@ -88,6 +188,143 @@ void main() {
       // Bei schmaler Breite wird tatsächlich getrennt.
       if (width <= 160) expect(painted, contains('-$kZeroWidthSpace'));
       expect(ro.plainText, text);
+    }
+  });
+
+  testWidgets('gesperrte Wörter stehen ohne Umbruch wie in einem Text', (
+    tester,
+  ) async {
+    // Früher bekam jede unsichtbare Trennstelle die Sperrung noch einmal:
+    // „PRÄSEN TIEREN & BERATEN“ hatte mitten im Wort eine Lücke.
+    const labels = [
+      'PRÄSENTIEREN & BERATEN',
+      'PROJEKTGRUNDLAGEN & ORGANISATION',
+      'Wirtschaftlichkeitsbetrachtung',
+      'Lessons-Learned-Workshop',
+    ];
+    for (final label in labels) {
+      for (final spacing in [0.0, 1.1, 3.0]) {
+        for (final scale in [1.0, 1.3]) {
+          final style = TextStyle(
+            fontFamily: 'Inter',
+            fontSize: 11,
+            fontWeight: FontWeight.w600,
+            letterSpacing: spacing,
+          );
+          await tester.pumpWidget(
+            MaterialApp(
+              home: MediaQuery(
+                data: MediaQueryData(textScaler: TextScaler.linear(scale)),
+                child: Material(
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        HyphenText(label, style: style),
+                        Text(label, style: style),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+          final where = '„$label“, Sperrung $spacing, Schrift $scale';
+          final ro = tester.renderObject<RenderHyphenText>(
+            find.byType(HyphenText),
+          );
+          final plain = tester.renderObject<RenderParagraph>(
+            find.descendant(
+              of: find.byType(Text),
+              matching: find.byType(RichText),
+            ),
+          );
+          expect(ro.size.width, closeTo(plain.size.width, 0.01), reason: where);
+          expect(
+            ro.getMaxIntrinsicWidth(double.infinity),
+            closeTo(plain.getMaxIntrinsicWidth(double.infinity), 0.01),
+            reason: where,
+          );
+          final origins = ro.debugGlyphOrigins;
+          expect(origins, hasLength(label.length), reason: where);
+          for (var i = 0; i < label.length; i++) {
+            final box = plain.getBoxesForSelection(
+              TextSelection(baseOffset: i, extentOffset: i + 1),
+            );
+            expect(
+              origins[i].dx,
+              closeTo(box.first.left, 0.01),
+              reason: '$where, Zeichen $i („${label[i]}“)',
+            );
+          }
+        }
+      }
+    }
+  });
+
+  testWidgets('Sperrung: Strich am Zeilenende, keine Lücke im Wort', (
+    tester,
+  ) async {
+    const label = 'PROJEKTGRUNDLAGEN & ORGANISATION, PRÄSENTIEREN & BERATEN';
+    const style = TextStyle(
+      fontFamily: 'Inter',
+      fontSize: 11,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 1.1,
+    );
+    for (var width = 60.0; width <= 330; width += 9) {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Material(
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: SizedBox(
+                width: width,
+                child: const HyphenText(label, style: style),
+              ),
+            ),
+          ),
+        ),
+      );
+      final ro = tester.renderObject<RenderHyphenText>(find.byType(HyphenText));
+      final where = '$width px: ${show(ro.debugPainted)}';
+      expect(
+        ro.debugDashesAtLineEnds,
+        isTrue,
+        reason: 'Strich in Zeile $where',
+      );
+      expect(ro.debugUndashedBreaks, 0, reason: 'ohne Strich $where');
+      expect(ro.plainText, label);
+      // Innerhalb einer Zeile folgt jedes Zeichen im Abstand seiner eigenen
+      // Breite plus Sperrung - an einer Trennstelle darf nichts dazukommen.
+      final painted = ro.debugPainted
+          .replaceAll(String.fromCharCode(0xAD), '')
+          .replaceAll(String.fromCharCode(0x2060), '')
+          .replaceAll(kZeroWidthSpace, '');
+      final origins = ro.debugGlyphOrigins;
+      expect(origins, hasLength(painted.length), reason: where);
+      for (var i = 0; i < painted.length - 1; i++) {
+        if (origins[i + 1].dy != origins[i].dy) continue;
+        // Vorschub des Zeichens: Breite des Paars minus Breite des zweiten.
+        double measure(String t) {
+          final p = TextPainter(
+            text: TextSpan(text: t, style: style),
+            textDirection: TextDirection.ltr,
+          )..layout();
+          final w = p.width;
+          p.dispose();
+          return w;
+        }
+
+        final advance =
+            measure(painted.substring(i, i + 2)) - measure(painted[i + 1]);
+        expect(
+          origins[i + 1].dx - origins[i].dx,
+          closeTo(advance, 0.05),
+          reason: 'Lücke nach Zeichen $i („${painted[i]}“) bei $where',
+        );
+      }
     }
   });
 

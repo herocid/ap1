@@ -44,7 +44,7 @@ final List<Flashcard> cardsA07 = [
     'k-vz-7',
     'vt-zustandekommen',
     'Was ist der Unterschied zwischen nichtig und anfechtbar?',
-    'Nichtig: von Anfang an unwirksam. Anfechtbar: wirksam, bis die Anfechtung erklärt ist. Dann rückwirkend nichtig (§ 142 BGB).',
+    'Nichtig: von Anfang an unwirksam. Anfechtbar: wirksam, bis die Anfechtung erklärt ist, dann rückwirkend nichtig (§ 142 BGB).',
   ),
   karte(
     'k-vz-8',
@@ -62,7 +62,7 @@ final List<Flashcard> cardsA07 = [
     'k-vz-10',
     'vt-zustandekommen',
     'Was bedeutet „schwebend unwirksam“?',
-    'Vertrag eines beschränkt Geschäftsfähigen ohne Zustimmung: Er wird erst mit der Genehmigung der Eltern wirksam (§ 108 BGB).',
+    'Der Vertrag eines beschränkt Geschäftsfähigen ohne Einwilligung wird erst mit der Genehmigung der Eltern wirksam (§ 108 BGB).',
   ),
   karte(
     'k-vz-11',
@@ -98,7 +98,7 @@ final List<Flashcard> cardsA07 = [
     'k-vz-16',
     'vt-zustandekommen',
     'Welche Wirkung hat die automatische Eingangsbestätigung im Webshop?',
-    'Meist nicht: Sie bestätigt nur den Eingang (§ 312i BGB). Annahme ist z. B. die Auftragsbestätigung oder der Versand.',
+    'Meist noch keine Annahme: Sie bestätigt nur den Eingang (§ 312i BGB). Annahme ist z. B. die Auftragsbestätigung oder der Versand.',
     'Es kommt auf den Wortlaut an: „Wir nehmen Ihre Bestellung an“ wäre eine Annahme.',
   ),
   karte(
@@ -816,7 +816,7 @@ final List<Flashcard> cardsA07 = [
     'k-lt-14',
     'sla-itil',
     'Wofür steht CAB?',
-    'Change Advisory Board. Ein Gremium, das Changes bewertet und bei der Genehmigung berät.',
+    'Change Advisory Board: ein Gremium, das Changes bewertet und bei der Genehmigung berät.',
   ),
   karte(
     'k-lt-15',
@@ -852,7 +852,7 @@ final List<Flashcard> cardsA07 = [
     'k-lt-20',
     'sla-itil',
     'Der Mailserver soll auf eine neue Version aktualisiert werden: Welche ITIL-Kategorie?',
-    'Change, als Normal Change bewertet und genehmigt. Er ist eine geplante Änderung an einem Service.',
+    'Change: eine geplante Änderung an einem Service. Als Normal Change wird sie einzeln bewertet und genehmigt.',
   ),
   karte(
     'k-lt-21',
@@ -962,8 +962,8 @@ final List<Flashcard> cardsA07 = [
   karte(
     'k-gv-14',
     'ls-verzug',
-    'Warum braucht der Käufer bei „Lieferung Mitte März“ eine Mahnung?',
-    'Der Termin ist nicht kalendermäßig bestimmt: Verzug tritt erst mit der Mahnung ein.',
+    'Warum braucht der Käufer bei „Lieferung ca. Mitte März“ eine Mahnung?',
+    'Der Termin ist nicht kalendermäßig bestimmt, deshalb tritt Verzug erst mit der Mahnung ein.',
   ),
   karte(
     'k-gv-15',
@@ -993,7 +993,7 @@ final List<Flashcard> cardsA07 = [
     'k-gv-19',
     'ls-verzug',
     'Was unterscheidet relatives und absolutes Fixgeschäft?',
-    'Relativ: Termin wesentlich, Rücktritt ohne Nachfrist. Absolut: Spätere Leistung ist sinnlos (Techniker für den Messetag). Das ist Unmöglichkeit.',
+    'Relativ: Termin wesentlich, Rücktritt ohne Nachfrist. Absolut: Spätere Leistung ist sinnlos (Techniker für den Messetag), es liegt Unmöglichkeit vor.',
   ),
   karte(
     'k-gv-20',
@@ -1164,19 +1164,19 @@ final List<Flashcard> cardsA07 = [
     'k-gm-21',
     'ls-maengel',
     'Auf wie lange darf die Gewährleistung für gebrauchte Sachen an Verbraucher verkürzt werden?',
-    'Auf 1 Jahr. Unter Unternehmen kann sie weiter beschränkt werden, nie bei Arglist.',
+    'Auf 1 Jahr, aber nur mit ausdrücklicher, gesonderter Vereinbarung (§ 476 Abs. 2 BGB). Unter Unternehmen kann sie weiter beschränkt werden, nie bei Arglist.',
   ),
   karte(
     'k-gm-22',
     'ls-maengel',
     'Was ist die Selbstvornahme?',
-    'Werkvertrag: Der Besteller beseitigt den Mangel nach erfolgloser Frist selbst und verlangt die Kosten ersetzt (§ 637 BGB).',
+    'Beim Werkvertrag beseitigt der Besteller den Mangel nach erfolgloser Frist selbst und verlangt Ersatz der Kosten (§ 637 BGB).',
   ),
   karte(
     'k-gm-23',
     'ls-maengel',
     'Worin unterscheiden sich die Mängelrechte bei Kauf und Werk?',
-    'Wahl der Nacherfüllung: Käufer bzw. Unternehmer. Selbstvornahme nur beim Werk. Verjährung ab Übergabe bzw. ab Abnahme.',
+    'Die Nacherfüllung wählt beim Kauf der Käufer, beim Werk der Unternehmer. Selbstvornahme gibt es nur beim Werk. Verjährung ab Ablieferung bzw. ab Abnahme.',
   ),
   karte(
     'k-gm-24',
@@ -1196,7 +1196,7 @@ final List<Flashcard> cardsA07 = [
     'k-ga-2',
     'ls-abnahme',
     'Wann gilt ein Werk als fiktiv abgenommen?',
-    'Wenn der Besteller eine gesetzte angemessene Frist verstreichen lässt, ohne unter Angabe eines Mangels zu verweigern (§ 640 Abs. 2 BGB).',
+    'Wenn der Unternehmer nach Fertigstellung eine angemessene Frist setzt und der Besteller die Abnahme nicht unter Angabe mindestens eines Mangels verweigert (§ 640 Abs. 2 BGB).',
   ),
   karte(
     'k-ga-3',
@@ -1214,7 +1214,7 @@ final List<Flashcard> cardsA07 = [
     'k-ga-5',
     'ls-abnahme',
     'Was ist die Abnahme nach § 640 BGB?',
-    'Billigung des Werks als im Wesentlichen vertragsgemäß: Pflicht des Bestellers, wenn das Werk vertragsgemäß ist.',
+    'Billigung des Werks als im Wesentlichen vertragsgemäß. Der Besteller ist dazu verpflichtet, wenn das Werk vertragsgemäß ist.',
   ),
   karte(
     'k-ga-6',
@@ -1556,13 +1556,13 @@ final List<Flashcard> cardsA07 = [
     'k-ck-3',
     'cm-kaizen',
     'Wofür steht PDCA?',
-    'Plan, Do, Check, Act. Der Zyklus, mit dem jeder KVP-Schritt durchlaufen wird.',
+    'Plan, Do, Check, Act: der Zyklus, mit dem jeder KVP-Schritt durchlaufen wird.',
   ),
   karte(
     'k-ck-4',
     'cm-kaizen',
     'Was ist Business Process Reengineering?',
-    'Radikale, grundlegende Neugestaltung von Prozessen: Gegenentwurf zu Kaizen.',
+    'Radikale, grundlegende Neugestaltung von Prozessen, der Gegenentwurf zu Kaizen.',
   ),
   karte(
     'k-ck-5',

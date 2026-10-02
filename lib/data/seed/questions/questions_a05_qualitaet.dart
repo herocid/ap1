@@ -167,7 +167,7 @@ final List<Question> questionsA05 = [
       ], 'Statisch heißt gerade: ohne Ausführung.'),
     ],
     explanation:
-        'Qualität entsteht nicht durch eine Endkontrolle: Konstruktive Maßnahmen und frühe statische Prüfungen sparen die teuren späten Fehler. Tests zeigen Fehler, beweisen aber nie Fehlerfreiheit.',
+        'Qualität entsteht nicht erst durch eine Endkontrolle. Konstruktive Maßnahmen und frühe statische Prüfungen ersparen dir die teuren späten Fehler. Tests zeigen Fehler, beweisen aber nie Fehlerfreiheit.',
   ),
 
   // ================================================== Qualitätsanforderungen
@@ -221,7 +221,7 @@ final List<Question> questionsA05 = [
     choices: [
       ja(
         'Die App startet auf den Dienst-Smartphones in höchstens 3 Sekunden.',
-        'Sie beschreibt, WIE GUT die App arbeitet (Antwortzeit), also nicht funktional.',
+        'Sie beschreibt, WIE GUT die App arbeitet (Antwortzeit), und ist damit nicht funktional.',
       ),
       nein(
         'Mitarbeitende können Beginn und Ende ihrer Arbeitszeit buchen.',
@@ -372,12 +372,12 @@ final List<Question> questionsA05 = [
       zu(
         'Online-Terminbuchung vier Wochen lang für Kontrolltermine anbieten',
         1,
-        'Die Maßnahme wird im begrenzten Rahmen erprobt.',
+        'Die Maßnahme wird in begrenztem Rahmen erprobt.',
       ),
       zu(
         'Gemessene Wartezeiten mit dem Ziel vergleichen',
         2,
-        'Soll-Ist-Vergleich ist die Aufgabe von Check.',
+        'Der Soll-Ist-Vergleich ist Aufgabe von Check.',
       ),
       zu(
         'Online-Buchung für alle Terminarten freigeben',
@@ -391,7 +391,7 @@ final List<Question> questionsA05 = [
       ),
     ],
     explanation:
-        'Plan: analysieren, Ziel setzen, Maßnahme planen. Do: im Kleinen erproben. Check: Ergebnis gegen das Ziel prüfen. Act: bei Erfolg standardisieren, sonst nachbessern. Dann beginnt der nächste Zyklus.',
+        'In Plan wird analysiert, ein Ziel gesetzt und die Maßnahme geplant. Do erprobt sie im Kleinen, Check prüft das Ergebnis gegen das Ziel. Act macht sie bei Erfolg zum Standard, sonst wird nachgebessert. Dann beginnt der nächste Zyklus.',
   ),
   einfach(
     'a5-qp-2',
@@ -418,7 +418,7 @@ final List<Question> questionsA05 = [
       ),
     ],
     explanation:
-        'Act hat zwei Ausgänge: Ziel erreicht -> Maßnahme wird Standard. Ziel verfehlt -> Ursachen klären, Maßnahme anpassen, neuer Zyklus. Genau dieses Weiterdrehen macht PDCA zum Werkzeug des KVP.',
+        'Act hat zwei Ausgänge: Ist das Ziel erreicht, wird die Maßnahme zum Standard. Ist es verfehlt, klärst du die Ursachen, passt die Maßnahme an und startest einen neuen Zyklus. Genau dieses Weiterdrehen macht PDCA zum Werkzeug des KVP.',
   ),
   rechnen(
     'a5-qp-3',
@@ -433,7 +433,7 @@ final List<Question> questionsA05 = [
         'Anteil vorher: 240 / 800 = 0,30 = 30 %\n'
         'Anteil nachher: 60 / 600 = 0,10 = 10 %\n'
         'Differenz: 30 % - 10 % = 20 Prozentpunkte\n'
-        'Relativ wäre das ein Rückgang um 20 / 30 ≈ 66,7 Prozent. Prozentpunkte und Prozent nicht verwechseln.',
+        'Relativ wäre das ein Rückgang um 20 / 30 ≈ 66,7 Prozent. Verwechsle Prozentpunkte nicht mit Prozent.',
   ),
   freitext(
     'a5-qp-4',
@@ -453,7 +453,7 @@ final List<Question> questionsA05 = [
         ],
       ),
       krit(
-        'Er läuft fortlaufend weiter: nach jedem Zyklus beginnt der nächste.',
+        'Er läuft fortlaufend weiter: Nach jedem Zyklus beginnt der nächste.',
         punkte: 2,
         stichwoerter: [
           'fortlaufend',
@@ -493,7 +493,7 @@ final List<Question> questionsA05 = [
       'Treiberverteilung für alle Abteilungen verbindlich einführen und dokumentieren',
     ],
     explanation:
-        'Plan: analysieren, Ziel setzen, Maßnahme planen. Do: im Kleinen erproben. Check: Ergebnis gegen das Ziel messen. Act: bei Erfolg zum Standard machen.',
+        'In Plan wird analysiert, ein Ziel gesetzt und die Maßnahme geplant. Do erprobt sie im Kleinen, Check misst das Ergebnis am Ziel. Act macht sie bei Erfolg zum Standard.',
   ),
   lueckentext(
     'a5-qp-6',
@@ -538,8 +538,8 @@ final List<Question> questionsA05 = [
         'Das ist eine Testart, kein Platzhalter für fehlende Komponenten.',
       ),
       nein(
-        'Gar nicht: das Modul kann erst nach Fertigstellung aller Teile getestet werden',
-        'Genau dafür gibt es Platzhalter: Komponenten lassen sich früh und isoliert testen.',
+        'Gar nicht, das Modul kann erst nach Fertigstellung aller Teile getestet werden',
+        'Genau dafür gibt es Platzhalter. Mit ihnen lassen sich Komponenten früh und isoliert testen.',
       ),
     ],
     explanation:
@@ -569,7 +569,7 @@ final List<Question> questionsA05 = [
       zu(
         'Das Testteam prüft den kompletten Shop in der Testumgebung gegen das Pflichtenheft.',
         2,
-        'Gesamtsystem gegen die Spezifikation, in der Verantwortung des Auftragnehmers.',
+        'Das Gesamtsystem wird gegen die Spezifikation geprüft, verantwortlich ist der Auftragnehmer.',
       ),
       zu(
         'Die Kundin prüft den Shop mit echten Artikeldaten und entscheidet über die Annahme.',
@@ -695,7 +695,7 @@ final List<Question> questionsA05 = [
       ),
     ],
     explanation:
-        'Systemtest: Gesamtsystem, gegen die Spezifikation, produktionsnahe Umgebung, Verantwortung beim Auftragnehmer. Abnahmetest: Auftraggeber prüft gegen seine Anforderungen und entscheidet über die Annahme.',
+        'Der Systemtest prüft das Gesamtsystem in einer produktionsnahen Umgebung gegen die Spezifikation, verantwortlich ist der Auftragnehmer. Im Abnahmetest prüft der Auftraggeber gegen seine Anforderungen und entscheidet über die Annahme.',
   ),
 
   // ================================================ Black-Box und White-Box
@@ -720,8 +720,8 @@ final List<Question> questionsA05 = [
     difficulty: 3,
     explanation:
         'Zweigüberdeckung heißt: Jeder Ja- und jeder Nein-Zweig wird mindestens einmal durchlaufen. Das sind 4 Zweige, aber ein Testfall deckt je Bedingung einen Zweig ab.\n'
-        'Testfall 1: betrag = 150, express = wahr -> beide Ja-Zweige.\n'
-        'Testfall 2: betrag = 50, express = falsch -> beide Nein-Zweige.\n'
+        'Testfall 1: betrag = 150, express = wahr (beide Ja-Zweige).\n'
+        'Testfall 2: betrag = 50, express = falsch (beide Nein-Zweige).\n'
         'Also 2 Testfälle. Für Anweisungsüberdeckung genügt schon Testfall 1. Alle 4 Kombinationen wären erst für eine Pfadüberdeckung nötig.',
   ),
   zuordnen(
@@ -765,7 +765,7 @@ final List<Question> questionsA05 = [
       ),
     ],
     explanation:
-        'Automatisierung rechnet sich über die Wiederholung: hoher Aufwand beim Erstellen, danach fast kostenlos. Manuelle Tests sind stark, wo menschliches Urteil gefragt ist, etwa bei Bedienbarkeit oder beim freien Erkunden.',
+        'Automatisierung rechnet sich über die Wiederholung: Das Erstellen ist aufwendig, jeder weitere Lauf kostet fast nichts. Manuelle Tests sind stark, wo menschliches Urteil gefragt ist, etwa bei Bedienbarkeit oder beim freien Erkunden.',
   ),
   rechnen(
     'a5-sv-3',
@@ -812,7 +812,7 @@ final List<Question> questionsA05 = [
         'Die Abfrage hat 2 Zweige: ja und nein.\n'
         'Mit betrag = 150 wird nur der Ja-Zweig durchlaufen: 1 von 2.\n'
         'Zweigüberdeckung = 1 / 2 × 100 % = 50 %.\n'
-        'Die Anweisungsüberdeckung liegt dagegen schon bei 100 %, weil alle Anweisungen liefen, denn der leere Nein-Zweig enthält keine Anweisung.',
+        'Die Anweisungsüberdeckung liegt dagegen schon bei 100 %: Alle Anweisungen wurden ausgeführt, denn der leere Nein-Zweig enthält keine.',
   ),
   zuordnen(
     'a5-sv-6',
@@ -865,7 +865,7 @@ final List<Question> questionsA05 = [
       'Den Code aufräumen, ohne dass der Test fehlschlägt (Refactor)',
     ],
     explanation:
-        'TDD dreht die übliche Reihenfolge um: erst der Test, dann der Code. Der kurze Kreislauf Red - Green - Refactor wiederholt sich für jede kleine Funktion.',
+        'TDD dreht die übliche Reihenfolge um: erst der Test, dann der Code. Der kurze Kreislauf aus Red, Green und Refactor wiederholt sich für jede kleine Funktion.',
   ),
 
   // ====================================================== Testfälle entwerfen
@@ -1175,7 +1175,7 @@ final List<Question> questionsA05 = [
       ),
     ],
     explanation:
-        'Endekriterien werden vor dem Test messbar festgelegt und gelten gemeinsam. Solange ein kritischer Fehler offen ist, ist der Test nicht beendet. Erst Korrektur, dann Nachtest und Regressionstest.',
+        'Endekriterien werden vor dem Test messbar festgelegt und gelten gemeinsam. Solange ein kritischer Fehler offen ist, ist der Test nicht beendet. Erst kommt die Korrektur, dann folgen Nachtest und Regressionstest.',
   ),
   freitext(
     'a5-sp-6',
@@ -1213,7 +1213,7 @@ final List<Question> questionsA05 = [
     loesung:
         'Kennung und Titel, die Schritte zum Nachstellen, Soll- und Ist-Ergebnis sowie Testumgebung und Softwareversion. Dazu kommen Fehlerklasse, Priorität und Status.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 4. Schuldzuweisungen gehören nicht hinein. Eine Fehlermeldung muss so genau sein, dass die Entwicklung den Fehler nachstellen kann: ID und Titel, Schritte, Soll und Ist, Umgebung und Version, Fehlerklasse und Priorität, Status.',
+        'Je Nennung 1 Punkt, höchstens 4. Eine Fehlermeldung muss so genau sein, dass die Entwicklung den Fehler nachstellen kann: Kennung und Titel, Schritte, Soll und Ist, Umgebung und Version, Fehlerklasse und Priorität, Status. Schuldzuweisungen gehören nicht hinein.',
   ),
   reihenfolge(
     'a5-sp-7',

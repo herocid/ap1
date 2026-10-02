@@ -62,7 +62,7 @@ final List<Question> questionsA06Krypto = [
       ),
     ],
     explanation:
-        'Symmetrisch heißt: ein gemeinsamer Schlüssel, sehr schnell, aber mit dem Problem, ihn sicher zu übergeben.',
+        'Symmetrische Verfahren nutzen einen gemeinsamen Schlüssel und sind sehr schnell. Ihr Problem ist, diesen Schlüssel sicher zu übergeben.',
   ),
   einfach(
     'a6-cs-4',
@@ -123,7 +123,7 @@ final List<Question> questionsA06Krypto = [
     ],
     difficulty: 1,
     explanation:
-        'Bei symmetrischen Verfahren entschlüsselt derselbe Schlüssel: Caesar mit Schlüssel 3 verschiebt beim Entschlüsseln jeden Buchstaben um 3 Stellen zurück. FDHVDU wird so zu CAESAR.',
+        'Bei symmetrischen Verfahren wird mit demselben Schlüssel ver- und entschlüsselt. Caesar mit Schlüssel 3 verschiebt beim Entschlüsseln jeden Buchstaben um 3 Stellen zurück. FDHVDU wird so zu CAESAR.',
   ),
   rechnen(
     'a6-cs-7',
@@ -195,7 +195,7 @@ final List<Question> questionsA06Krypto = [
       ),
       nein(
         'Mit Bens privatem Schlüssel',
-        'Den kennt nur Ben: Anna hat ihn nicht.',
+        'Den kennt nur Ben, Anna hat ihn nicht.',
       ),
     ],
     explanation:
@@ -215,7 +215,7 @@ final List<Question> questionsA06Krypto = [
       zu(
         'Signatur prüfen',
         0,
-        'Jeder kann prüfen. Dafür genügt der öffentliche Schlüssel des Absenders.',
+        'Prüfen kann jeder, dafür genügt der öffentliche Schlüssel des Absenders.',
       ),
       zu(
         'Signatur erstellen',
@@ -234,7 +234,7 @@ final List<Question> questionsA06Krypto = [
       ),
     ],
     explanation:
-        'Verschlüsseln: öffentlich beim Empfänger, entschlüsseln mit dessen privatem Schlüssel. Signieren: privat beim Absender, prüfen mit dessen öffentlichem Schlüssel.',
+        'Verschlüsselt wird mit dem öffentlichen Schlüssel des Empfängers, entschlüsselt mit dessen privatem Schlüssel. Signiert wird mit dem privaten Schlüssel des Absenders, geprüft mit dessen öffentlichem Schlüssel.',
   ),
   rechnen(
     'a6-ca-3',
@@ -307,7 +307,7 @@ final List<Question> questionsA06Krypto = [
       nein('Bens privaten Schlüssel', 'Den besitzt nur Ben.'),
       nein(
         'Ihren eigenen öffentlichen Schlüssel',
-        'Damit verschlüsselt könnte nur Anna selbst die Nachricht lesen.',
+        'Was damit verschlüsselt ist, könnte nur Anna selbst lesen.',
       ),
       nein(
         'Einen gemeinsamen Schlüssel, den sie Ben in derselben Mail schickt',
@@ -316,7 +316,7 @@ final List<Question> questionsA06Krypto = [
     ],
     difficulty: 3,
     explanation:
-        'Signieren: eigener privater Schlüssel des Absenders. Verschlüsseln: öffentlicher Schlüssel des Empfängers. Ben entschlüsselt mit seinem privaten Schlüssel und prüft die Signatur mit Annas öffentlichem.',
+        'Signiert wird mit dem eigenen privaten Schlüssel, verschlüsselt mit dem öffentlichen Schlüssel des Empfängers. Ben entschlüsselt mit seinem privaten Schlüssel und prüft die Signatur mit Annas öffentlichem.',
   ),
   zuordnen(
     'a6-ca-7',
@@ -348,7 +348,7 @@ final List<Question> questionsA06Krypto = [
       ),
     ],
     explanation:
-        'Symmetrisch: AES, 3DES, ein gemeinsamer Schlüssel je Paar, n × (n - 1) / 2. Asymmetrisch: RSA, ECC, ein Schlüsselpaar je Person, 2 × n.',
+        'Symmetrisch sind AES und 3DES. Jedes Paar teilt sich einen Schlüssel, das ergibt n × (n - 1) / 2. Asymmetrisch sind RSA und ECC. Jede Person hat ein Schlüsselpaar, das ergibt 2 × n.',
   ),
 
   // ============================================= Hybride Verfahren und Zertifikate
@@ -600,7 +600,7 @@ final List<Question> questionsA06Krypto = [
     choices: [
       ja(
         'Mit Argon2 und einem zufälligen Salt je Konto hashen',
-        'Salt verhindert vorberechnete Tabellen, das langsame Verfahren bremst massenhaftes Ausprobieren.',
+        'Der Salt macht vorberechnete Tabellen nutzlos, das langsame Verfahren bremst massenhaftes Ausprobieren.',
       ),
       nein(
         'Mit AES verschlüsseln',
@@ -743,7 +743,7 @@ final List<Question> questionsA06Krypto = [
       zu('PIN + Passwort', 1, 'Zweimal Wissen.'),
     ],
     explanation:
-        'Echte Zwei-Faktor-Authentifizierung kombiniert zwei verschiedene Kategorien: Wissen, Besitz, Biometrie. Zwei Nachweise aus derselben Kategorie, etwa Passwort und Sicherheitsfrage, fallen demselben Angriff zum Opfer.',
+        'Echte Zwei-Faktor-Authentifizierung kombiniert zwei der drei Kategorien Wissen, Besitz und Biometrie. Zwei Nachweise aus derselben Kategorie, etwa Passwort und Sicherheitsfrage, fallen demselben Angriff zum Opfer.',
   ),
   zuordnen(
     'a6-cz-2',
@@ -798,7 +798,7 @@ final List<Question> questionsA06Krypto = [
       ),
       nein(
         'Acht Zeichen reichen immer, wenn ein Sonderzeichen dabei ist',
-        'Kurze Passwörter bleiben auch mit Sonderzeichen angreifbar: Länge wirkt stärker.',
+        'Kurze Passwörter bleiben auch mit Sonderzeichen angreifbar. Länge bringt mehr als Sonderzeichen.',
       ),
     ],
     explanation:
@@ -1030,7 +1030,7 @@ final List<Question> questionsA06Krypto = [
     choices: [
       ja(
         'Ja, weil mindestens 20 Personen ständig mit der automatisierten Verarbeitung personenbezogener Daten beschäftigt sind',
-        '22 ≥ 20. Die Schwelle aus § 38 BDSG ist erreicht.',
+        '22 sind mehr als 20, die Schwelle aus § 38 BDSG ist also erreicht.',
       ),
       nein(
         'Nein, weil weniger als die Hälfte der Beschäftigten mit Daten arbeitet',
@@ -1047,7 +1047,7 @@ final List<Question> questionsA06Krypto = [
     ],
     difficulty: 3,
     explanation:
-        'Nach § 38 BDSG ist ein DSB zu benennen, wenn in der Regel mindestens 20 Personen ständig mit der automatisierten Verarbeitung personenbezogener Daten beschäftigt sind. Gezählt werden nur diese Personen: hier 22.',
+        'Nach § 38 BDSG ist ein DSB zu benennen, wenn in der Regel mindestens 20 Personen ständig mit der automatisierten Verarbeitung personenbezogener Daten beschäftigt sind. Gezählt werden nur diese Personen, hier also 22.',
   ),
   zuordnen(
     'a6-xg-6',
@@ -1104,7 +1104,7 @@ final List<Question> questionsA06Krypto = [
       ),
     ],
     explanation:
-        'Wer Daten im Auftrag verarbeiten lässt, bleibt Verantwortlicher und muss mit dem Auftragsverarbeiter einen AV-Vertrag schließen: Weisungsbindung, TOM, Unterauftragnehmer, Löschung am Ende.',
+        'Wer Daten im Auftrag verarbeiten lässt, bleibt Verantwortlicher und muss mit dem Auftragsverarbeiter einen AV-Vertrag schließen. Er regelt unter anderem Weisungsbindung, TOM, Unterauftragnehmer und die Löschung am Ende.',
   ),
   lueckentext(
     'a6-xg-8',
@@ -1207,7 +1207,7 @@ final List<Question> questionsA06Krypto = [
       ]),
     ],
     explanation:
-        'Eine wirksame Einwilligung ist freiwillig, informiert, eindeutig (aktives Ankreuzen) und jederzeit widerrufbar. Der Widerruf wirkt nur für die Zukunft. Die bisherige Verarbeitung bleibt rechtmäßig. Er muss so einfach sein wie die Erteilung.',
+        'Eine wirksame Einwilligung ist freiwillig, informiert, eindeutig (aktives Ankreuzen) und jederzeit widerrufbar. Der Widerruf wirkt nur für die Zukunft, die bisherige Verarbeitung bleibt rechtmäßig. Außerdem muss er so einfach sein wie die Erteilung.',
   ),
   einfach(
     'a6-xs-4',
@@ -1279,7 +1279,7 @@ final List<Question> questionsA06Krypto = [
     unit: 'Mio. €',
     difficulty: 2,
     explanation:
-        'Verstöße gegen die Rechtsgrundlagen fallen unter den oberen Rahmen: bis 20 Mio. € oder 4 % des weltweiten Jahresumsatzes, je nachdem, welcher Betrag höher ist. 4 % × 2.000 Mio. € = 80 Mio. € > 20 Mio. € -> 80 Mio. €.',
+        'Verstöße gegen die Rechtsgrundlagen fallen unter den oberen Rahmen: bis 20 Mio. € oder 4 % des weltweiten Jahresumsatzes, je nachdem, welcher Betrag höher ist. 4 % × 2.000 Mio. € = 80 Mio. €. Das ist mehr als 20 Mio. €, also gilt die Obergrenze von 80 Mio. €.',
   ),
   einfach(
     'a6-xs-7',
@@ -1441,8 +1441,8 @@ final List<Question> questionsA06Krypto = [
     prompt: 'Welches Recht kann der Antragsteller geltend machen?',
     choices: [
       ja(
-        'Das Recht, keiner rein automatisierten Entscheidung unterworfen zu werden, und das Eingreifen eines Menschen zu verlangen (Art. 22)',
-        'Entscheidungen mit rechtlicher oder ähnlich erheblicher Wirkung dürfen nicht allein ein Algorithmus treffen: Ausnahmen gelten nur mit Schutzmaßnahmen.',
+        'Das Recht, keiner rein automatisierten Entscheidung unterworfen zu werden und das Eingreifen eines Menschen zu verlangen (Art. 22)',
+        'Entscheidungen mit rechtlicher oder ähnlich erheblicher Wirkung darf nicht allein ein Algorithmus treffen. Ausnahmen gelten nur mit Schutzmaßnahmen.',
       ),
       nein(
         'Das Recht auf Datenübertragbarkeit (Art. 20)',
@@ -1656,7 +1656,7 @@ final List<Question> questionsA06Krypto = [
       ),
       nein(
         'Die Kopie unverändert nutzen, weil sie im eigenen Haus bleibt',
-        'Die Nutzung echter Kundendaten für Tests ist eine Zweckänderung und das Testsystem meist schlechter geschützt.',
+        'Die Nutzung echter Kundendaten für Tests ist eine Zweckänderung, und das Testsystem ist meist schlechter geschützt.',
       ),
       nein(
         'Nur die Spalte „Name“ löschen',
@@ -1753,7 +1753,7 @@ final List<Question> questionsA06Krypto = [
       ),
     ],
     explanation:
-        'Anonym sind Daten nur, wenn sich der Personenbezug mit keinen vernünftigen Mitteln mehr herstellen lässt. Verschlüsselte Daten sind mit dem Schlüssel wieder lesbar. Sie bleiben personenbezogen.',
+        'Anonym sind Daten nur, wenn sich der Personenbezug mit keinen vernünftigen Mitteln mehr herstellen lässt. Verschlüsselte Daten sind mit dem Schlüssel wieder lesbar und bleiben deshalb personenbezogen.',
   ),
 
   // =============================== Technische und organisatorische Maßnahmen
@@ -1802,7 +1802,7 @@ final List<Question> questionsA06Krypto = [
       ),
     ],
     explanation:
-        'Zutritt: Räume. Zugang: Systeme. Zugriff: Daten. Weitergabe: Übertragung. Eingabe: Nachvollziehbarkeit von Änderungen. Verfügbarkeit: Schutz vor Verlust.',
+        'Zutritt betrifft Räume, Zugang die Systeme und Zugriff die Daten. Die Weitergabekontrolle schützt die Übertragung, die Eingabekontrolle macht Änderungen nachvollziehbar, und die Verfügbarkeitskontrolle schützt vor Verlust.',
   ),
   zuordnen(
     'a6-xt-2',

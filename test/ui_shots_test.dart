@@ -272,6 +272,81 @@ void main() {
     });
   }
 
+  // Journey, Lektion und Prüfungslauf: die Wege, die keine Reiter sind.
+  for (final dark in [false, true]) {
+    for (final v in const [
+      ('412', Size(412, 915), 1.0),
+      ('320', Size(320, 568), 1.3),
+    ]) {
+      final variant =
+          '${v.$1}_${dark ? 'dunkel' : 'hell'}_${(v.$3 * 100).round()}';
+
+      Future<void> frames(WidgetTester tester, [int n = 12]) async {
+        for (var i = 0; i < n; i++) {
+          await tester.pump(const Duration(milliseconds: 100));
+        }
+      }
+
+      testWidgets('Journey und Lektion $variant', (tester) async {
+        final c = await boot(
+          tester,
+          size: v.$2,
+          scale: v.$3,
+          dark: dark,
+          withData: true,
+        );
+        c.read(routerProvider).go('/journey');
+        await tester.pumpAndSettle();
+        await save(tester, 'journey_$variant');
+        c.read(routerProvider).go('/lektion/p-begriff');
+        await tester.pumpAndSettle();
+        await save(tester, 'lektion_0_$variant');
+        // Der Hauptknopf unten heißt je Schritt anders ("Los geht’s",
+        // "Weiter" ...), deshalb über den Typ statt über den Text.
+        for (var i = 1; i <= 11; i++) {
+          final next = find.byType(FilledButton);
+          if (next.evaluate().isEmpty) break;
+          await tester.tap(next.last);
+          await tester.pumpAndSettle();
+          await save(tester, 'lektion_${i}_$variant');
+        }
+        expect(tester.takeException(), isNull);
+      });
+
+      testWidgets('Prüfungslauf $variant', (tester) async {
+        final c = await boot(tester, size: v.$2, scale: v.$3, dark: dark);
+        c.read(routerProvider).go('/pruefung');
+        await tester.pumpAndSettle();
+        await save(tester, 'pruefung_start_$variant');
+        final start = find.text('Volle Prüfung starten');
+        await tester.ensureVisible(start.first);
+        await frames(tester, 4);
+        await tester.tap(start.first);
+        await frames(tester);
+        await save(tester, 'pruefung_deckblatt_$variant');
+        final begin = find.text('Beginnen (die Zeit läuft)');
+        await tester.ensureVisible(begin.first);
+        await frames(tester, 4);
+        await tester.tap(begin.first);
+        await frames(tester, 15);
+        await save(tester, 'pruefung_lauf_0_$variant');
+        for (var i = 1; i <= 3; i++) {
+          final next = find.text('Weiter');
+          if (next.evaluate().isEmpty) break;
+          await tester.ensureVisible(next.first);
+          await frames(tester, 4);
+          await tester.tap(next.first);
+          await frames(tester);
+          await save(tester, 'pruefung_lauf_${i}_$variant');
+        }
+        tester.takeException();
+        // Der Countdown läuft als Timer - vor Testende abräumen.
+        await tester.pumpWidget(const SizedBox());
+        c.dispose();
+      });
+    }
+  }
+
   testWidgets('Einführung 320 hell', (tester) async {
     final c = await boot(
       tester,

@@ -544,7 +544,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
     ),
     points: [
       'Mitlesen verletzt die Vertraulichkeit, Verändern die Integrität.',
-      'Schutz: Ende-zu-Ende-Verschlüsselung mit Zertifikatsprüfung (HTTPS, VPN).',
+      'Schutz: verschlüsselte Verbindung mit Zertifikatsprüfung (HTTPS, VPN).',
       'Zertifikatswarnungen im Browser nie einfach wegklicken. Sie sind oft das einzige Anzeichen.',
     ],
   ),
@@ -1478,7 +1478,7 @@ final List<Nugget> nuggetsA06Sicherheit = [
       ],
       zonen: [
         NetzZone('VLAN 10 intern', 0, 3.2, 2.6, 6),
-        NetzZone('VLAN 20 Gäste', 2.8, 5.0, 4, 6),
+        NetzZone('VLAN 20 Gäste', 2.8, 5.0, 3.9, 6),
       ],
     ),
     points: [

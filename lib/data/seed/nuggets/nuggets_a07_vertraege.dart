@@ -1339,11 +1339,11 @@ final List<Nugget> nuggetsA07 = [
     'n-gv-4',
     'ls-verzug',
     'Ablauf beim Lieferungsverzug',
-    'Ist nur „Mitte März“ vereinbart, ist der Termin nicht kalendermäßig bestimmt. Der Käufer muss mahnen und für Rücktritt oder Schadensersatz statt der Leistung zusätzlich eine Nachfrist setzen.',
+    'Ist nur „ca. Mitte März“ vereinbart, ist der Termin nicht kalendermäßig bestimmt. Der Käufer muss mahnen und für Rücktritt oder Schadensersatz statt der Leistung zusätzlich eine Nachfrist setzen.',
     SequenzDiagramm(
       ['Käufer', 'Verkäufer'],
       [
-        Nachricht(0, 1, 'Bestellung, Lieferung Mitte März'),
+        Nachricht(0, 1, 'Bestellung, Lieferung ca. Mitte März'),
         Nachricht(0, 1, 'Mahnung: Verzug beginnt'),
         Nachricht(0, 1, 'Nachfrist bis 10.04.'),
         Nachricht(1, 0, 'keine Lieferung', antwort: true),
@@ -1443,7 +1443,7 @@ final List<Nugget> nuggetsA07 = [
     'n-gv-10',
     'ls-verzug',
     'Die 30-Tage-Regel',
-    'Auch ohne Mahnung kommt der Schuldner einer Geldforderung spätestens in Verzug, wenn er nicht innerhalb von 30 Tagen nach Fälligkeit und Zugang der Rechnung zahlt (§ 286 Abs. 3 BGB). Verbraucher nur, wenn die Rechnung darauf hinweist.',
+    'Auch ohne Mahnung kommt der Schuldner einer Entgeltforderung spätestens in Verzug, wenn er nicht innerhalb von 30 Tagen nach Fälligkeit und Zugang der Rechnung zahlt (§ 286 Abs. 3 BGB). Verbraucher nur, wenn die Rechnung darauf hinweist.',
     GanttDiagramm([
       GanttVorgang('Rechnung fällig, zugegangen', 0, 0),
       GanttVorgang('30 Tage Zahlungsfrist', 0, 30),
@@ -1490,7 +1490,7 @@ final List<Nugget> nuggetsA07 = [
     'Verzugszinsen liegen 5 bzw. 9 Prozentpunkte über dem Basiszinssatz. Bei 2 % Basiszins sind das 7 % bzw. 11 %, nicht 2 % × 1,05. Die drei Mahnungen, die man aus dem Alltag kennt, brauchst du übrigens nicht, denn eine einzige genügt.',
     points: [
       'Ein Zahlungsziel, das der Verkäufer nur einseitig auf die Rechnung schreibt, ersetzt keine Mahnung',
-      'Die 30-Tage-Regel gilt nur für Geldforderungen, nicht für den Lieferungsverzug',
+      'Die 30-Tage-Regel gilt nur für Entgeltforderungen, nicht für den Lieferungsverzug',
       'Für den Rücktritt kommt es auf die Nachfrist an, nicht auf die Zahl der Mahnungen',
     ],
   ),
