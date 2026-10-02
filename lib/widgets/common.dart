@@ -102,6 +102,7 @@ class TileIcon extends StatelessWidget {
     this.tone = TileTone.brand,
     this.enabled = true,
     this.size = kTileIconSize,
+    this.accent,
   });
 
   static const double kTileIconSize = 44;
@@ -111,9 +112,12 @@ class TileIcon extends StatelessWidget {
   final bool enabled;
   final double size;
 
+  /// Eigene Farben (Vordergrund, Fläche) statt [tone], z. B. Bereichsakzent.
+  final (Color, Color)? accent;
+
   @override
   Widget build(BuildContext context) {
-    final (fg, bg) = tone.colors(context);
+    final (fg, bg) = accent ?? tone.colors(context);
     return Container(
       width: size,
       height: size,
@@ -259,10 +263,14 @@ class ProgressTile extends StatelessWidget {
     this.tone = TileTone.brand,
     this.onTap,
     this.enabled = true,
+    this.accent,
   });
 
   final IconData icon;
   final String title;
+
+  /// Eigene Symbolfarben (Vordergrund, Fläche), z. B. Bereichsakzent.
+  final (Color, Color)? accent;
 
   /// Kleine Zeile über dem Titel, z. B. „BEREICH 01“.
   final String? overline;
@@ -298,7 +306,7 @@ class ProgressTile extends StatelessWidget {
       ),
       child: Row(
         children: [
-          TileIcon(icon: icon, tone: tone, enabled: enabled),
+          TileIcon(icon: icon, tone: tone, enabled: enabled, accent: accent),
           const SizedBox(width: Gap.m),
           Expanded(
             child: Column(

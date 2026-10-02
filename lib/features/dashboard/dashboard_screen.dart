@@ -558,6 +558,7 @@ class _ResumeCard extends StatelessWidget {
     this.progressLabel,
     this.trailingIcon = Icons.play_circle_fill_rounded,
     this.hyphenate = false,
+    this.accent,
   });
 
   final IconData icon;
@@ -571,6 +572,9 @@ class _ResumeCard extends StatelessWidget {
 
   /// Titel mit Silbentrennung (Lektionstitel) statt nur wortweise umbrechen.
   final bool hyphenate;
+
+  /// Eigene Symbolfarben, z. B. Akzent des empfohlenen Bereichs.
+  final (Color, Color)? accent;
   final VoidCallback onTap;
 
   @override
@@ -624,7 +628,7 @@ class _ResumeCard extends StatelessWidget {
           Row(
             children: [
               if (!tight) ...[
-                TileIcon(icon: icon, tone: tone),
+                TileIcon(icon: icon, tone: tone, accent: accent),
                 const SizedBox(width: Gap.m),
               ],
               Expanded(child: texts),
@@ -812,6 +816,7 @@ class _SessionAreas extends ConsumerWidget {
         _ResumeCard(
           icon: recommended.icon,
           tone: TileTone.brand,
+          accent: recommended.accent.tile(context),
           label: 'Empfohlen · Bereich ${recommended.number}',
           title: recommended.title,
           progress: recLessons.isEmpty ? 0 : recDone / recLessons.length,
@@ -836,7 +841,11 @@ class _SessionAreas extends ConsumerWidget {
                       minimumSize: const Size(0, 48),
                       padding: const EdgeInsets.symmetric(horizontal: Gap.m),
                     ),
-                    icon: Icon(area.icon, size: 18),
+                    icon: Icon(
+                      area.icon,
+                      size: 18,
+                      color: area.accent.fg(context),
+                    ),
                     label: Text('Bereich ${area.number}'),
                     onPressed: () =>
                         context.push('/session-bereich/${area.id}'),

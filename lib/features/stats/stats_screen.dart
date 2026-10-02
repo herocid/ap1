@@ -500,6 +500,7 @@ class _JourneyPanel extends ConsumerWidget {
               final n = areaLessons.where((l) => done.contains(l.id)).length;
               return ProgressTile(
                 icon: area.icon,
+                accent: area.accent.tile(context),
                 tone: TileTone.flame,
                 overline: 'BEREICH ${area.number}',
                 title: area.title,
@@ -766,6 +767,7 @@ class _CardStatsPanel extends ConsumerWidget {
               final acc = deck.accuracy(areaCards);
               return ProgressTile(
                 icon: area.icon,
+                accent: area.accent.tile(context),
                 overline: 'BEREICH ${area.number}',
                 title: area.title,
                 progress: deck.mastery(areaCards),

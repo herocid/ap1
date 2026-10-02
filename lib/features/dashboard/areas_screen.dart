@@ -121,7 +121,7 @@ class _AreaCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TileIcon(icon: area.icon),
+          TileIcon(icon: area.icon, accent: area.accent.tile(context)),
           const SizedBox(width: Gap.m),
           Expanded(
             child: Column(
@@ -135,7 +135,7 @@ class _AreaCard extends StatelessWidget {
                       child: Text(
                         'BEREICH ${area.number}',
                         style: context.text.labelSmall?.copyWith(
-                          color: context.c.textMuted,
+                          color: area.accent.fg(context),
                           letterSpacing: 1,
                         ),
                       ),

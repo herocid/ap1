@@ -145,7 +145,11 @@ class _TopicTile extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TileIcon(icon: topic.icon, enabled: hasContent),
+                TileIcon(
+                  icon: topic.icon,
+                  enabled: hasContent,
+                  accent: ExamAreas.byId(topic.areaId).accent.tile(context),
+                ),
                 const SizedBox(width: Gap.m),
                 Expanded(
                   child: Column(
