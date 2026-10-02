@@ -68,6 +68,9 @@ class AppTheme {
           bodyColor: scheme.onSurface,
           displayColor: scheme.onSurface,
         )
+        // Laufweite überall ausdrücklich gesetzt: Sonst mischt ThemeData die
+        // Material-Vorgaben für Roboto dazu (Fließtext +0,25 bis +0,5), und
+        // Inter wirkt gesperrt. Versalien-Labels sperren an Ort und Stelle.
         .copyWith(
           displaySmall: TextStyle(
             fontFamily: kFontSans,
@@ -95,6 +98,7 @@ class AppTheme {
             fontSize: 16,
             height: 1.35,
             fontWeight: FontWeight.w600,
+            letterSpacing: -0.1,
             color: scheme.onSurface,
           ),
           // Bisher kam titleSmall/bodySmall aus der Material-Typografie
@@ -104,36 +108,46 @@ class AppTheme {
             fontSize: 14.5,
             height: 1.35,
             fontWeight: FontWeight.w600,
+            letterSpacing: 0,
             color: scheme.onSurface,
           ),
           bodyLarge: TextStyle(
             fontFamily: kFontSans,
             fontSize: 16,
             height: 1.55,
+            letterSpacing: -0.1,
             color: scheme.onSurface,
           ),
           bodyMedium: TextStyle(
             fontFamily: kFontSans,
             fontSize: 14.5,
             height: 1.55,
+            letterSpacing: 0,
             color: scheme.onSurface,
           ),
           bodySmall: TextStyle(
             fontFamily: kFontSans,
             fontSize: 13,
             height: 1.4,
+            letterSpacing: 0,
             color: scheme.onSurface,
           ),
           labelLarge: const TextStyle(
             fontFamily: kFontSans,
             fontSize: 15,
             fontWeight: FontWeight.w600,
+            letterSpacing: 0,
+          ),
+          // Nur die Laufweite: Größe und Gewicht bleiben wie in Material 3.
+          labelMedium: baseText.labelMedium?.copyWith(
+            fontFamily: kFontSans,
+            letterSpacing: 0,
           ),
           labelSmall: const TextStyle(
             fontFamily: kFontSans,
             fontSize: 11.5,
             fontWeight: FontWeight.w600,
-            letterSpacing: 0.4,
+            letterSpacing: 0,
           ),
         );
 
@@ -338,7 +352,7 @@ class AppType {
         fontFamily: kFontSans,
         fontSize: 12,
         height: 16 / 12,
-        letterSpacing: 0.1,
+        letterSpacing: 0,
         fontWeight: selected ? FontWeight.w700 : FontWeight.w600,
         color: color,
       );

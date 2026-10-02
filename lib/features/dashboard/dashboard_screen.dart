@@ -78,23 +78,13 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
       dueCards: dueCards,
     );
 
-    final today = Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        _TodayCard(
-          done: todayCount,
-          goal: goal,
-          onStart: () => SessionLauncher.practice(context, ref),
-        ),
-        if (mistakes > 0) ...[
-          const SizedBox(height: Gap.s),
-          _MistakeBanner(
-            count: mistakes,
-            onTap: () =>
-                SessionLauncher.practice(context, ref, mistakesOnly: true),
-          ),
-        ],
-      ],
+    final today = _TodayCard(
+      done: todayCount,
+      goal: goal,
+      mistakes: mistakes,
+      onStart: () => SessionLauncher.practice(context, ref),
+      onMistakes: () =>
+          SessionLauncher.practice(context, ref, mistakesOnly: true),
     );
     final inProgress = ref.watch(lessonInProgressProvider);
     final resumeLesson = inProgress == null
@@ -221,7 +211,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                       action: 'Quiz',
                       onAction: () => context.go('/quiz'),
                     ),
-                    ActionTile(
+                    _QuickTile(
                       icon: Icons.bolt_rounded,
                       tone: TileTone.flame,
                       title: 'Kurztest',
@@ -231,7 +221,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                       onTap: () => SessionLauncher.kurztest(context, ref),
                     ),
                     const SizedBox(height: Gap.s),
-                    ActionTile(
+                    _QuickTile(
                       icon: Icons.timer_rounded,
                       tone: TileTone.info,
                       // Zwei Wörter statt eines langen: passt auch auf 320 px
@@ -287,13 +277,15 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
             'hier alles funktioniert.',
       );
     }
+    // Wie viele Fehler offen sind, steht in der Zielkarte direkt darunter -
+    // Bit sagt deshalb, warum sich das Wiederholen lohnt.
     if (mistakes >= 5) {
       return (
         mood: MascotMood.think,
-        title: 'Zweite Chance',
+        title: 'Fehler sind Lernstoff',
         text:
-            '$mistakes Aufgaben warten im Fehlerspeicher. Wer sie jetzt '
-            'wiederholt, macht sie in der Prüfung nicht noch mal falsch.',
+            'Was du erst falsch hattest und beim zweiten Mal richtig löst, '
+            'bleibt besonders gut hängen.',
       );
     }
     if (dueCards >= 10) {
@@ -305,13 +297,24 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
             'dauert nur ein paar Minuten.',
       );
     }
+    // Der Zählerstand steht schon in der Zielkarte; Bit nennt ihn nur kurz
+    // vor dem Ziel.
     final left = goal - todayCount;
+    if (todayCount > 0 && left <= 3) {
+      return (
+        mood: MascotMood.happy,
+        title: 'Fast geschafft!',
+        text:
+            'Nur noch $left ${left == 1 ? "Aufgabe" : "Aufgaben"}, dann '
+            'ist dein Tagesziel erreicht.',
+      );
+    }
     return (
       mood: MascotMood.happy,
       title: todayCount == 0 ? 'Schön, dass du da bist.' : 'Weiter so!',
       text:
-          'Noch $left ${left == 1 ? "Aufgabe" : "Aufgaben"} bis zu deinem '
-          'Tagesziel.',
+          'Jeden Tag eine kurze Runde bringt mehr als ein langer Abend '
+          'kurz vor der Prüfung.',
     );
   }
 }
@@ -349,52 +352,69 @@ class _SectionTitle extends StatelessWidget {
   }
 }
 
+/// Wenig Platz für Text: schmales Handy oder große Schrift. Dann rücken die
+/// Karten der Startseite zusammen (kleines Symbol in der Kopfzeile statt
+/// eigener Spalte, Balken über die volle Breite).
+bool _isTight(BuildContext context) {
+  final mq = MediaQuery.of(context);
+  return mq.size.width < 360 || mq.textScaler.scale(100) > 115;
+}
+
 /// Die wichtigste Karte der App: was heute zu tun ist, und ein Knopf dafür.
+///
+/// Als einzige Karte vollflächig in Markenblau - so ist auf einen Blick klar,
+/// wo es losgeht. Die offenen Fehler stehen als ruhige Zeile mit in der Karte
+/// statt als eigene Kachel darunter.
 class _TodayCard extends StatelessWidget {
   const _TodayCard({
     required this.done,
     required this.goal,
+    required this.mistakes,
     required this.onStart,
+    required this.onMistakes,
   });
 
   final int done;
   final int goal;
+  final int mistakes;
   final VoidCallback onStart;
+  final VoidCallback onMistakes;
+
+  // Fläche in beiden Modi das dunkle Markenblau: weiße Schrift erreicht
+  // darauf 5,6:1, das helle Dunkelmodus-Blau wäre als Fläche zu grell.
+  static const _bg = AppColors.brand;
+  static const _fg = Colors.white;
 
   @override
   Widget build(BuildContext context) {
     final reached = done >= goal;
     final share = goal == 0 ? 0.0 : (done / goal).clamp(0.0, 1.0);
-    final c = context.c;
+    final tight = _isTight(context);
+    final soft = _fg.withValues(alpha: 0.92);
+    final pad = tight ? Gap.l : Gap.xl;
 
     return AppCard(
-      padding: const EdgeInsets.all(Gap.xl),
+      color: _bg,
+      borderColor: _bg,
+      // Die Fehlerzeile bringt unten eigene Luft mit.
+      padding: EdgeInsets.fromLTRB(pad, pad, pad, mistakes > 0 ? Gap.s : pad),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              if (reached) ...[
+                const Icon(Icons.check_circle_rounded, size: 20, color: _fg),
+                const SizedBox(width: Gap.s),
+              ],
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      reached ? 'Tagesziel erreicht' : 'Heutiges Ziel',
-                      style: context.text.titleMedium,
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      'Gemischte Runde: erst deine Fehler, dann die '
-                      'schwächsten Themen.',
-                      style: context.text.bodyMedium?.copyWith(
-                        color: c.textMuted,
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  reached ? 'Tagesziel erreicht' : 'Heutiges Ziel',
+                  style: context.text.titleMedium?.copyWith(color: _fg),
                 ),
               ),
-              const SizedBox(width: Gap.l),
+              const SizedBox(width: Gap.m),
               Text.rich(
                 TextSpan(
                   children: [
@@ -403,29 +423,44 @@ class _TodayCard extends StatelessWidget {
                       style: AppType.numeric(
                         size: 28,
                         weight: FontWeight.w700,
-                        color: reached ? c.success : context.scheme.onSurface,
+                        color: _fg,
                       ),
                     ),
                     TextSpan(
                       text: ' / $goal',
-                      style: AppType.numeric(size: 15, color: c.textMuted),
+                      style: AppType.numeric(size: 15, color: soft),
                     ),
                   ],
                 ),
+                maxLines: 1,
+                softWrap: false,
               ),
             ],
           ),
-          const SizedBox(height: Gap.l),
+          const SizedBox(height: Gap.m),
+          // Oranger Fortschritt in der hellen Stufe - die dunkle hebt sich
+          // vom Blau nicht ab.
           AnimatedBar(
             value: share,
             minHeight: 8,
-            color: reached ? c.success : c.flame,
+            color: reached ? _fg : AppColors.flameDark,
+            backgroundColor: _fg.withValues(alpha: 0.24),
           ),
-          const SizedBox(height: Gap.xl),
+          const SizedBox(height: Gap.m),
+          Text(
+            'Gemischte Runde: erst deine Fehler, dann die '
+            'schwächsten Themen.',
+            style: context.text.bodyMedium?.copyWith(color: soft),
+          ),
+          const SizedBox(height: Gap.l),
           SizedBox(
             width: double.infinity,
             child: FilledButton.icon(
               onPressed: onStart,
+              style: FilledButton.styleFrom(
+                backgroundColor: _fg,
+                foregroundColor: _bg,
+              ),
               icon: const Icon(Icons.play_arrow_rounded),
               label: Text(
                 reached
@@ -436,29 +471,200 @@ class _TodayCard extends StatelessWidget {
               ),
             ),
           ),
+          if (mistakes > 0) ...[
+            const SizedBox(height: Gap.xs),
+            _MistakeRow(count: mistakes, onTap: onMistakes),
+          ],
         ],
       ),
     );
   }
 }
 
-class _MistakeBanner extends StatelessWidget {
-  const _MistakeBanner({required this.count, required this.onTap});
+/// Zweiter Einstieg in der Zielkarte: nur den Fehlerspeicher wiederholen.
+class _MistakeRow extends StatelessWidget {
+  const _MistakeRow({required this.count, required this.onTap});
 
   final int count;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return ActionTile(
-      icon: Icons.replay_rounded,
-      tone: TileTone.danger,
-      title: 'Fehler wiederholen',
-      subtitle: count == 1
-          ? '1 Aufgabe wartet auf eine zweite Chance'
-          : '$count Aufgaben warten auf eine zweite Chance',
-      badge: '$count',
+    const fg = _TodayCard._fg;
+    return Semantics(
+      button: true,
+      label: count == 1 ? '1 offener Fehler' : '$count offene Fehler',
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(Radii.m),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 48),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: Gap.xs),
+            child: Row(
+              children: [
+                const Icon(Icons.replay_rounded, size: 20, color: fg),
+                const SizedBox(width: Gap.s),
+                Expanded(
+                  child: Text(
+                    'Fehler wiederholen',
+                    style: context.text.labelLarge?.copyWith(color: fg),
+                  ),
+                ),
+                const SizedBox(width: Gap.s),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: Gap.s,
+                    vertical: 3,
+                  ),
+                  decoration: BoxDecoration(
+                    color: fg.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(Radii.pill),
+                  ),
+                  child: Text(
+                    '$count',
+                    maxLines: 1,
+                    softWrap: false,
+                    style: AppType.numeric(size: 12, color: fg),
+                  ),
+                ),
+                const SizedBox(width: Gap.xs),
+                const Icon(Icons.chevron_right, color: fg),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Ruhige Karte mit Symbol, Zeile darüber, Titel und Fortschritt - für
+/// Journey, Karteikasten und die empfohlene Session.
+///
+/// Normal steht das Symbol als Quadrat links und der Zähler neben dem Balken.
+/// Bei wenig Platz ([_isTight]) wandert das Symbol klein in die Kopfzeile,
+/// der Balken läuft über die volle Breite und der Zähler steht darunter - so
+/// bleibt dem Titel die ganze Breite und nichts bricht mitten im Zähler um.
+class _ResumeCard extends StatelessWidget {
+  const _ResumeCard({
+    required this.icon,
+    required this.tone,
+    required this.label,
+    required this.title,
+    required this.onTap,
+    this.subtitle,
+    this.progress,
+    this.progressLabel,
+    this.trailingIcon = Icons.play_circle_fill_rounded,
+    this.hyphenate = false,
+  });
+
+  final IconData icon;
+  final TileTone tone;
+  final String label;
+  final String title;
+  final String? subtitle;
+  final double? progress;
+  final String? progressLabel;
+  final IconData trailingIcon;
+
+  /// Titel mit Silbentrennung (Lektionstitel) statt nur wortweise umbrechen.
+  final bool hyphenate;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.c;
+    final tight = _isTight(context);
+    final (fg, _) = tone.colors(context);
+    final muted = context.text.labelSmall?.copyWith(color: c.textMuted);
+    final isPlay = trailingIcon == Icons.play_circle_fill_rounded;
+
+    final labelText = Text(label, style: muted);
+    final texts = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (tight)
+          Row(
+            children: [
+              Icon(icon, size: 16, color: fg),
+              const SizedBox(width: Gap.xs + 2),
+              Expanded(child: labelText),
+            ],
+          )
+        else
+          labelText,
+        const SizedBox(height: 2),
+        if (hyphenate)
+          HyphenText(title, style: context.text.titleMedium)
+        else
+          WordSafeText(title, style: context.text.titleMedium),
+        if (subtitle != null) ...[
+          const SizedBox(height: 2),
+          Text(subtitle!, style: muted),
+        ],
+      ],
+    );
+    final counter = progressLabel == null
+        ? null
+        : Text(
+            progressLabel!,
+            maxLines: 1,
+            softWrap: false,
+            style: AppType.numeric(size: 12, color: c.textMuted),
+          );
+
+    return AppCard(
       onTap: onTap,
+      padding: const EdgeInsets.all(Gap.l),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              if (!tight) ...[
+                TileIcon(icon: icon, tone: tone),
+                const SizedBox(width: Gap.m),
+              ],
+              Expanded(child: texts),
+              const SizedBox(width: Gap.s),
+              Icon(
+                trailingIcon,
+                size: isPlay ? 34 : 24,
+                color: isPlay
+                    ? (tone == TileTone.flame ? context.scheme.primary : fg)
+                    : c.textMuted,
+              ),
+            ],
+          ),
+          if (progress != null) ...[
+            const SizedBox(height: Gap.m),
+            if (tight) ...[
+              AnimatedBar(value: progress!, minHeight: 5, color: fg),
+              if (counter != null) ...[
+                const SizedBox(height: Gap.xs + 2),
+                counter,
+              ],
+            ] else
+              Row(
+                children: [
+                  Expanded(
+                    child: AnimatedBar(
+                      value: progress!,
+                      minHeight: 5,
+                      color: fg,
+                    ),
+                  ),
+                  if (counter != null) ...[
+                    const SizedBox(width: Gap.m),
+                    counter,
+                  ],
+                ],
+              ),
+          ],
+        ],
+      ),
     );
   }
 }
@@ -485,83 +691,20 @@ class _JourneyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final topic = Topics.byId(lesson.topicId);
     final share = total == 0 ? 0.0 : done / total;
-    return AppCard(
+    return _ResumeCard(
+      icon: Icons.route_outlined,
+      tone: TileTone.flame,
+      label: step > 0
+          ? 'Journey · Schritt $step von $stepCount'
+          : done == 0
+          ? 'Journey · Erste Lektion'
+          : 'Journey · Nächste Lektion',
+      title: lesson.title,
+      hyphenate: true,
+      subtitle: topic.title,
+      progress: share,
+      progressLabel: '$done / $total Lektionen',
       onTap: () => context.push('/lektion/${lesson.id}'),
-      padding: const EdgeInsets.all(Gap.l),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Container(
-                width: 44,
-                height: 44,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: context.c.flameBg,
-                  borderRadius: BorderRadius.circular(Radii.m),
-                ),
-                child: Icon(
-                  Icons.route_outlined,
-                  size: 22,
-                  color: context.c.flame,
-                ),
-              ),
-              const SizedBox(width: Gap.m),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      step > 0
-                          ? 'Journey · Schritt $step von $stepCount'
-                          : done == 0
-                          ? 'Journey · Erste Lektion'
-                          : 'Journey · Nächste Lektion',
-                      style: context.text.labelSmall?.copyWith(
-                        color: context.c.textMuted,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    HyphenText(lesson.title, style: context.text.titleMedium),
-                    const SizedBox(height: 2),
-                    Text(
-                      topic.title,
-                      style: context.text.labelSmall?.copyWith(
-                        color: context.c.textMuted,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Icon(
-                Icons.play_circle_fill_rounded,
-                size: 34,
-                color: context.scheme.primary,
-              ),
-            ],
-          ),
-          const SizedBox(height: Gap.m),
-          Row(
-            children: [
-              Expanded(
-                child: AnimatedBar(
-                  value: share,
-                  minHeight: 5,
-                  color: context.c.flame,
-                ),
-              ),
-              const SizedBox(width: Gap.m),
-              Flexible(
-                child: Text(
-                  '$done / $total Lektionen',
-                  style: AppType.numeric(size: 12, color: context.c.textMuted),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
     );
   }
 }
@@ -666,12 +809,14 @@ class _SessionAreas extends ConsumerWidget {
             ),
           ),
         ),
-        ProgressTile(
+        _ResumeCard(
           icon: recommended.icon,
-          overline: 'EMPFOHLEN · BEREICH ${recommended.number}',
+          tone: TileTone.brand,
+          label: 'Empfohlen · Bereich ${recommended.number}',
           title: recommended.title,
           progress: recLessons.isEmpty ? 0 : recDone / recLessons.length,
-          progressLabel: '$recDone/${recLessons.length}',
+          progressLabel: '$recDone / ${recLessons.length} Lektionen',
+          trailingIcon: Icons.chevron_right,
           onTap: () => context.push('/session-bereich/${recommended.id}'),
         ),
         const SizedBox(height: Gap.m),
@@ -753,65 +898,86 @@ class _CardsResumeCard extends ConsumerWidget {
       onTap = () => CardLaunch.randomMix(context, ref);
     }
 
-    return AppCard(
+    return _ResumeCard(
+      icon: Icons.style_rounded,
+      tone: TileTone.success,
+      label: label,
+      title: title,
+      progress: progress,
+      progressLabel: progress == null
+          ? null
+          : activeRun
+          ? '${run.knownCount} / ${run.total}'
+          : '${(progress * 100).round()} % sicher',
       onTap: onTap,
-      padding: const EdgeInsets.all(Gap.l),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              const TileIcon(icon: Icons.style_rounded, tone: TileTone.success),
-              const SizedBox(width: Gap.m),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      label,
-                      style: context.text.labelSmall?.copyWith(
-                        color: context.c.textMuted,
+    );
+  }
+}
+
+/// Schnellstart-Kachel. Normal eine [ActionTile]; bei wenig Platz
+/// ([_isTight]) steht das Symbol klein vor dem Titel, damit der Untertitel
+/// die volle Breite bekommt und nicht über vier Zeilen läuft.
+class _QuickTile extends StatelessWidget {
+  const _QuickTile({
+    required this.icon,
+    required this.tone,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+  });
+
+  final IconData icon;
+  final TileTone tone;
+  final String title;
+  final String subtitle;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    if (!_isTight(context)) {
+      return ActionTile(
+        icon: icon,
+        tone: tone,
+        title: title,
+        subtitle: subtitle,
+        onTap: onTap,
+      );
+    }
+    final (fg, _) = tone.colors(context);
+    return Semantics(
+      button: true,
+      child: AppCard(
+        onTap: onTap,
+        padding: const EdgeInsets.fromLTRB(Gap.l, Gap.m, Gap.m, Gap.m),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(icon, size: 20, color: fg),
+                      const SizedBox(width: Gap.s),
+                      Expanded(
+                        child: Text(title, style: context.text.titleMedium),
                       ),
-                    ),
-                    const SizedBox(height: 2),
-                    WordSafeText(title, style: context.text.titleMedium),
-                  ],
-                ),
-              ),
-              Icon(
-                Icons.play_circle_fill_rounded,
-                size: 34,
-                color: context.c.success,
-              ),
-            ],
-          ),
-          if (progress != null) ...[
-            const SizedBox(height: Gap.m),
-            Row(
-              children: [
-                Expanded(
-                  child: AnimatedBar(
-                    value: progress,
-                    minHeight: 5,
-                    color: context.c.success,
+                    ],
                   ),
-                ),
-                const SizedBox(width: Gap.m),
-                Flexible(
-                  child: Text(
-                    activeRun
-                        ? '${run.knownCount} / ${run.total}'
-                        : '${(progress * 100).round()} % sicher',
-                    style: AppType.numeric(
-                      size: 12,
+                  const SizedBox(height: 2),
+                  Text(
+                    subtitle,
+                    style: context.text.bodySmall?.copyWith(
                       color: context.c.textMuted,
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
+            const SizedBox(width: Gap.xs),
+            Icon(Icons.chevron_right, color: context.c.textMuted),
           ],
-        ],
+        ),
       ),
     );
   }

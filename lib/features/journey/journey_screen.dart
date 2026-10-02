@@ -137,7 +137,7 @@ class _ProgressHero extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: Gap.m),
-          AnimatedBar(value: share, minHeight: 6, color: c.flame),
+          AnimatedBar(value: share, minHeight: 6, color: c.flameFill),
           if (next != null) ...[
             const SizedBox(height: Gap.xl),
             Text(

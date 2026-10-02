@@ -15,6 +15,7 @@ import '../../state/providers.dart';
 import '../../widgets/common.dart';
 import '../../widgets/feedback_fx.dart';
 import '../../widgets/mascot.dart';
+import 'card_back_text.dart';
 import 'card_launch.dart';
 
 /// Wie eine Karteikarten-Runde ihre Karten auswählt.
@@ -875,7 +876,8 @@ class _CardBack extends StatelessWidget {
           const SizedBox(height: Gap.m),
           Divider(color: context.c.border),
           const SizedBox(height: Gap.m),
-          Text(card.back, style: context.text.bodyLarge),
+          // Lange Antworten gegliedert statt als Textwand, Inhalt unverändert.
+          CardBackText(card.back),
           if (card.hint != null) ...[
             const SizedBox(height: Gap.l),
             NoteBox(tone: NoteTone.info, child: Text(card.hint!)),

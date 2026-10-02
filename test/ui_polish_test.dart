@@ -3,6 +3,7 @@ import 'package:ap1_trainer/core/theme/app_theme.dart';
 import 'package:ap1_trainer/data/models/flashcard.dart';
 import 'package:ap1_trainer/data/models/profile.dart';
 import 'package:ap1_trainer/data/repositories/local_store.dart';
+import 'package:ap1_trainer/features/cards/card_back_text.dart';
 import 'package:ap1_trainer/features/shell/app_shell.dart';
 import 'package:ap1_trainer/main.dart';
 import 'package:ap1_trainer/state/providers.dart';
@@ -219,10 +220,26 @@ void main() {
         await tester.pumpAndSettle();
         expect(tester.takeException(), isNull);
 
-        // Der ganze Text steht in einem Absatz ohne Zeilenlimit.
-        final back = tester.renderObject<RenderParagraph>(find.text(longBack));
-        expect(back.didExceedMaxLines, isFalse);
-        expect(back.maxLines, isNull);
+        // Die Rückseite ist in Absätze gegliedert: keiner hat ein Zeilenlimit
+        // und zusammen ergeben sie wieder den ganzen Text.
+        final parts = tester
+            .renderObjectList<RenderParagraph>(
+              find.descendant(
+                of: find.byType(CardBackText),
+                matching: find.byType(RichText),
+              ),
+            )
+            .toList();
+        expect(parts, isNotEmpty);
+        for (final p in parts) {
+          expect(p.didExceedMaxLines, isFalse);
+          expect(p.maxLines, isNull);
+        }
+        String squash(String s) => s.replaceAll(RegExp(r'\s+'), '');
+        expect(
+          squash(parts.map((p) => p.text.toPlainText()).join()),
+          squash(longBack),
+        );
 
         // Bis ans Ende scrollbar, der Hinweis darunter erreichbar.
         await tester.scrollUntilVisible(

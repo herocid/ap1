@@ -324,7 +324,7 @@ class LessonProgress extends StatelessWidget {
                 duration: const Duration(milliseconds: 250),
                 height: 4,
                 decoration: BoxDecoration(
-                  color: i < done ? c.flame : c.surfaceAlt,
+                  color: i < done ? c.flameFill : c.surfaceAlt,
                   borderRadius: BorderRadius.circular(Radii.pill),
                 ),
               ),

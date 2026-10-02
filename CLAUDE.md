@@ -35,6 +35,15 @@ $env:Path = "C:\Users\Student\develop\flutter\bin;C:\Program Files\Git\cmd;C:\Pr
   Marke, Orange als Komplementärfarbe für Motivation (Streak, Ziel), Google-Grün/-Rot für
   richtig/falsch, Petrol für Hinweise. Keine Verläufe. Design modern (Material 3);
   Store-Qualität: keine abgeschnittenen Texte, keine Überläufe.
+- Orange hat zwei Rollen: `flame` (dunkler, für Text und Icons) und `flameFill` (kräftig,
+  nur für Balken und Flächen). Fließtext hat Laufweite 0, nur Versalien-Labels sind gesperrt.
+- Startseite: Das Tagesziel ist die einzige vollflächig blaue Karte (`_TodayCard`), „Fehler
+  wiederholen“ steht als Zeile darin. Bits Tipp wiederholt keine Zahlen aus den Karten.
+- Kartenrückseiten werden nur in der Anzeige gegliedert (`card_back_format.dart`: Stichwörter,
+  Rechenwege, „Beispiel:“/„Merke:“), die Kartentexte bleiben unverändert.
+- Statistik zeigt ohne Daten Einstiege statt Nullen (`stats_empty.dart`).
+- Silbentrennung (`lib/widgets/hyphenation.dart`) ist regelbasiert mit Stammlisten: „st“ wird
+  getrennt, „ck“ nie; falsch getrennte Zusammensetzungen über die Stammlisten nachziehen.
 - Maskottchen **Bit** (`lib/widgets/mascot.dart`), ein kleiner Roboter; führt in der
   Einführung (`/einfuehrung`) durch die App und gibt auf Start-, Quiz- und Ergebnisseite Tipps.
 - Tabs: Start · Journey (lernen) · Quiz (abgefragt werden) · Karten · Statistik - kein

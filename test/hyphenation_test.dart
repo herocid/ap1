@@ -21,7 +21,7 @@ void main() {
       );
       expect(
         show(hyphenate('Anordnungsbeziehungen')),
-        'Anord-nungs-be-zie-hun-gen',
+        'An-ord-nungs-be-zie-hun-gen',
       );
       expect(
         show(hyphenate('Kapitalgesellschaften')),
@@ -34,6 +34,105 @@ void main() {
         show(hyphenate('Anschaffungsauszahlung')),
         'An-schaf-fungs-aus-zah-lung',
       );
+    });
+
+    test('„st“ wird getrennt, wenn kein Wortteil damit beginnt', () {
+      // Früher „Mu-sterlösung“ - „st“ galt als untrennbar.
+      expect(show(hyphenate('Musterlösung')), 'Mus-ter-lö-sung');
+      expect(show(hyphenate('Karteikasten')), 'Kar-tei-kas-ten');
+      expect(show(hyphenate('Fensterplatz')), 'Fens-ter-platz');
+      expect(show(hyphenate('Lastenheftes')), 'Las-ten-hef-tes');
+      expect(show(hyphenate('Betriebssystem')), 'Be-triebs-sys-tem');
+      expect(show(hyphenate('Dienstleistung')), 'Dienst-leis-tung');
+      expect(show(hyphenate('Administrator')), 'Ad-mi-nis-tra-tor');
+      expect(show(hyphenate('Industriebetrieb')), 'In-dus-trie-be-trieb');
+    });
+
+    test('„st“ bleibt zusammen, wo ein Wortteil damit beginnt', () {
+      expect(show(hyphenate('Kostenstelle')), 'Kos-ten-stelle');
+      expect(show(hyphenate('Bestandteilen')), 'Be-stand-tei-len');
+      expect(show(hyphenate('Verständlichkeit')), 'Ver-ständ-lich-keit');
+      expect(show(hyphenate('Wiederherstellung')), 'Wie-der-her-stel-lung');
+      expect(show(hyphenate('Selbstständigkeit')), 'Selbst-stän-dig-keit');
+      expect(show(hyphenate('Infrastruktur')), 'In-fra-struk-tur');
+      expect(show(hyphenate('Bestätigungsmail')), 'Be-stä-ti-gungs-mail');
+      // Kein „Stab“ in der Tabelle, kein „Start“ in den Testarten.
+      expect(show(hyphenate('Ausgangstabelle')), 'Aus-gangs-ta-belle');
+      expect(show(hyphenate('Testartenübersicht')), 'Test-ar-ten-über-sicht');
+      expect(show(hyphenate('Mindestabstand')), 'Min-dest-ab-stand');
+    });
+
+    test('„ck“, „ch“ und „sch“ werden nie geteilt', () {
+      expect(show(hyphenate('Zuckerfabriken')), 'Zu-cker-fa-bri-ken');
+      expect(show(hyphenate('Testabdeckung')), 'Test-ab-de-ckung');
+      // Früher „Entwic-klung“ und „Stüc-kliste“.
+      expect(
+        show(hyphenate('Entwicklungsumgebung')),
+        'Ent-wick-lungs-um-ge-bung',
+      );
+      expect(
+        show(hyphenate('Stücklistenauflösung')),
+        'Stück-lis-ten-auf-lö-sung',
+      );
+      expect(show(hyphenate('Wirtschaftlichkeit')), 'Wirt-schaft-lich-keit');
+      expect(show(hyphenate('Verschlüsselung')), 'Ver-schlüs-se-lung');
+      expect(show(hyphenate('Netzplantechnik')), 'Netz-plan-tech-nik');
+      expect(show(hyphenate('Menschlichkeit')), 'Mensch-lich-keit');
+    });
+
+    test('Zusammensetzungen werden an der Wortfuge getrennt', () {
+      expect(show(hyphenate('Datenübertragung')), 'Da-ten-über-tra-gung');
+      expect(
+        show(hyphenate('Auftragsverarbeitung')),
+        'Auf-trags-ver-ar-bei-tung',
+      );
+      expect(
+        show(hyphenate('Datenschutzbeauftragter')),
+        'Da-ten-schutz-be-auf-trag-ter',
+      );
+      expect(show(hyphenate('Abschlussprüfung')), 'Ab-schluss-prü-fung');
+      expect(show(hyphenate('Integritätsprüfung')), 'In-te-gri-täts-prü-fung');
+      expect(show(hyphenate('Gesprächspartner')), 'Ge-sprächs-part-ner');
+      expect(
+        show(hyphenate('Netzwerkkomponenten')),
+        'Netz-werk-kom-po-nen-ten',
+      );
+      expect(show(hyphenate('Nutzwertanalyse')), 'Nutz-wert-ana-lyse');
+      expect(show(hyphenate('Voraussetzungen')), 'Vor-aus-set-zun-gen');
+      expect(show(hyphenate('Verpflichtungen')), 'Ver-pflich-tun-gen');
+      expect(show(hyphenate('Transportschicht')), 'Trans-port-schicht');
+      expect(show(hyphenate('Echtzeitsystem')), 'Echt-zeit-sys-tem');
+      expect(show(hyphenate('Guthabenkonto')), 'Gut-ha-ben-konto');
+      expect(show(hyphenate('Projektrahmen')), 'Pro-jekt-rah-men');
+      expect(show(hyphenate('Namensauflösung')), 'Na-mens-auf-lö-sung');
+      // Wörter, die nur zufällig einen Stamm enthalten.
+      expect(show(hyphenate('Prüfverfahren')), 'Prüf-ver-fah-ren');
+      expect(show(hyphenate('Kleinbetrieb')), 'Klein-be-trieb');
+      expect(show(hyphenate('Allgemeinheit')), 'All-ge-mein-heit');
+      expect(show(hyphenate('ausgeglichen')), 'aus-ge-gli-chen');
+      expect(show(hyphenate('Subtraktionen')), 'Sub-trak-tio-nen');
+    });
+
+    test('kein einzelner Buchstabe wird abgetrennt', () {
+      const words = [
+        'Anordnungsbeziehungen',
+        'Echtzeitsystem',
+        'Anforderungsanalyse',
+        'Identitätsprüfung',
+        'Energieeffizienz',
+        'Übertragungsgeschwindigkeit',
+        'Organisationsprojekt',
+        'Urheberrechtsgesetz',
+      ];
+      for (final word in words) {
+        final parts = show(hyphenate(word)).split('-');
+        expect(parts.join(), word);
+        expect(
+          parts.every((p) => p.length >= 2),
+          isTrue,
+          reason: parts.join('-'),
+        );
+      }
     });
 
     test('kurze Wörter und normale Sätze bleiben unverändert', () {

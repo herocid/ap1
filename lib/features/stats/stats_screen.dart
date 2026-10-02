@@ -19,6 +19,7 @@ import '../../widgets/achievement_badge.dart';
 import '../../widgets/common.dart';
 import '../../widgets/feedback_fx.dart';
 import '../../widgets/mascot.dart';
+import 'stats_empty.dart';
 
 /// Statistik in der Reihenfolge, in der man sie liest:
 ///
@@ -40,14 +41,21 @@ class StatsScreen extends ConsumerWidget {
     final deck = ref.watch(deckProvider);
     final lessonsDone = ref.watch(journeyProvider).length;
 
-    final tip =
-        progress.history.isEmpty && deck.cards.isEmpty && lessonsDone == 0
+    // Ganz leer: noch keine Aufgabe, keine Karte, keine Lektion (auch keine
+    // angefangene). Dann ersetzen drei Einstiege die leeren Abschnitte.
+    final empty =
+        progress.history.isEmpty &&
+        deck.cards.isEmpty &&
+        lessonsDone == 0 &&
+        ref.watch(lessonInProgressProvider) == null;
+
+    final tip = empty
         ? (
-            mood: MascotMood.think,
+            mood: MascotMood.wave,
             title: 'Hier entsteht dein Lernbild',
             text:
                 'Sobald du lernst, siehst du hier, was sitzt und wo es hakt. '
-                'Starte mit einer Lektion oder ein paar Karten.',
+                'Such dir unten einen Einstieg aus.',
           )
         : problems.isNotEmpty
         ? (
@@ -57,6 +65,16 @@ class StatsScreen extends ConsumerWidget {
                 '„${problems.first.topic.title}“ hakt noch am meisten. '
                 'Tipp das Thema bei den Problemthemen an, dann stelle ich dir '
                 'die passende Übung zusammen.',
+          )
+        // Teilweise leer: „alles sitzt“ wäre zu viel gesagt, solange Quiz
+        // oder Karten noch gar keine Daten liefern.
+        : progress.history.isEmpty || deck.cards.isEmpty
+        ? (
+            mood: MascotMood.happy,
+            title: 'Guter Anfang',
+            text:
+                'Ein Teil deiner Statistik ist noch leer. Die Knöpfe unten '
+                'starten direkt die passende Runde.',
           )
         : (
             mood: MascotMood.cheer,
@@ -77,13 +95,17 @@ class StatsScreen extends ConsumerWidget {
               children: [
                 MascotSays(mood: tip.mood, title: tip.title, text: tip.text),
                 const SizedBox(height: Gap.xl),
-                const _CardStatsPanel(),
-                const SizedBox(height: Gap.xxl),
-                _QuizPanel(progress: progress),
-                const SizedBox(height: Gap.xxl),
-                _ProblemTopicsPanel(problems: problems),
-                const SizedBox(height: Gap.xxl),
-                const _JourneyPanel(),
+                if (empty)
+                  const StatsFirstSteps()
+                else ...[
+                  const _CardStatsPanel(),
+                  const SizedBox(height: Gap.xxl),
+                  _QuizPanel(progress: progress),
+                  const SizedBox(height: Gap.xxl),
+                  _ProblemTopicsPanel(problems: problems),
+                  const SizedBox(height: Gap.xxl),
+                  const _JourneyPanel(),
+                ],
                 const SizedBox(height: Gap.xxl),
                 const SectionHeader(
                   'Abzeichen',
@@ -124,37 +146,42 @@ class _QuizPanel extends ConsumerWidget {
           'Quiz',
           subtitle: 'Wie du bei Aufgaben und Prüfungsfragen abschneidest.',
         ),
-        StatTileRow(
-          children: [
-            StatTile(
-              icon: Icons.checklist_rtl,
-              value: '${progress.totalAnswered}',
-              label: 'Aufgaben',
-              color: context.c.success,
-            ),
-            StatTile(
-              icon: Icons.track_changes,
-              value: quote == null ? '–' : '${(quote * 100).round()} %',
-              label: 'Trefferquote',
-            ),
-            StatTile(
-              icon: Icons.local_fire_department,
-              value: '${progress.streak}',
-              label: progress.streak == 1 ? 'Tag Serie' : 'Tage Serie',
-              color: context.c.flame,
-            ),
-          ],
-        ),
-        const SizedBox(height: Gap.l),
-        if (history.isEmpty)
-          const NoteBox(
-            tone: NoteTone.info,
-            child: Text(
-              'Noch keine Quizrunde gespielt. Starte im Tab „Quiz“ einen '
-              'Kurztest. Nach zehn Aufgaben siehst du hier deine Stärken.',
-            ),
+        // Ohne Antworten stünden hier nur Nullen und ein Strich - dann lieber
+        // eine Einladung mit direktem Start.
+        if (quote == null)
+          StatsInvite(
+            icon: Icons.bolt_rounded,
+            tone: TileTone.flame,
+            title: 'Noch keine Aufgabe gelöst',
+            text:
+                'Nach deiner ersten Runde siehst du hier Trefferquote, Serie '
+                'und Prüfungsreife je Thema.',
+            actionLabel: 'Kurztest starten',
+            onAction: () => StatsStart.quiz(context, ref),
           )
         else ...[
+          StatTileRow(
+            children: [
+              StatTile(
+                icon: Icons.checklist_rtl,
+                value: '${progress.totalAnswered}',
+                label: 'Aufgaben',
+                color: context.c.success,
+              ),
+              StatTile(
+                icon: Icons.track_changes,
+                value: '${(quote * 100).round()} %',
+                label: 'Trefferquote',
+              ),
+              StatTile(
+                icon: Icons.local_fire_department,
+                value: '${progress.streak}',
+                label: progress.streak == 1 ? 'Tag Serie' : 'Tage Serie',
+                color: context.c.flame,
+              ),
+            ],
+          ),
+          const SizedBox(height: Gap.l),
           AppCard(
             padding: const EdgeInsets.all(Gap.l),
             child: Column(
@@ -397,6 +424,29 @@ class _JourneyPanel extends ConsumerWidget {
         ? null
         : Subtopics.byId(inProgress.lessonId);
 
+    // Noch keine Lektion geschafft oder angefangen: Einladung statt sieben
+    // Bereichskacheln mit 0 %.
+    if (doneCount == 0 && open == null) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SectionHeader(
+            'Journey',
+            subtitle: 'Dein Lernweg durch alle sieben Prüfungsbereiche.',
+          ),
+          StatsInvite(
+            icon: Icons.route_outlined,
+            title: 'Noch keine Lektion gelernt',
+            text:
+                'Mit der ersten Lektion beginnt dein Lernweg. Hier siehst du '
+                'dann, wie weit du in jedem Bereich bist.',
+            actionLabel: 'Erste Lektion starten',
+            onAction: () => StatsStart.lesson(context, ref),
+          ),
+        ],
+      );
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -581,6 +631,32 @@ class _CardStatsPanel extends ConsumerWidget {
     final days = activity.lastDays(14);
     final maxDay = days.fold<int>(1, (m, e) => math.max(m, e));
 
+    // Noch keine Karte beantwortet: Einladung statt „0 von … sitzen“, einem
+    // Strich bei der Trefferquote und sieben Bereichen mit 0 %.
+    if (deck.cards.isEmpty &&
+        activity.totalReviews == 0 &&
+        (run == null || run.total == 0)) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SectionHeader(
+            'Karteikarten',
+            subtitle: 'Wie sicher deine Karten sitzen und wie oft du übst.',
+          ),
+          StatsInvite(
+            icon: Icons.style_outlined,
+            tone: TileTone.success,
+            title: 'Noch keine Karte geübt',
+            text:
+                'Nach deiner ersten Runde siehst du hier, wie viele Karten '
+                'schon sitzen.',
+            actionLabel: 'Zehn Karten üben',
+            onAction: () => StatsStart.cards(context, ref),
+          ),
+        ],
+      );
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -644,7 +720,7 @@ class _CardStatsPanel extends ConsumerWidget {
                   child: _ActivityChart(
                     values: days,
                     max: maxDay,
-                    barColor: context.c.flame,
+                    barColor: context.c.flameFill,
                     trackColor: context.c.surfaceAlt,
                     unit: 'Karten',
                   ),
