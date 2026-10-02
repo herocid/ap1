@@ -27,26 +27,26 @@ final List<Question> ihkA05 = [
     'i5-qg-2',
     'qm-grundlagen',
     scenario:
-        'In einem Projekt kostet die Korrektur eines Anforderungsfehlers in der Anforderungsphase 40 €. Nach der Zehnerregel verzehnfachen sich die Kosten mit jeder weiteren Phase. Drei solcher Fehler werden erst im Systemtest gefunden (zwei Phasen später), ein weiterer erst im Betrieb (drei Phasen später).',
+        'In einem Projekt kostet die Korrektur eines Anforderungsfehlers in der Anforderungsphase 40 €. Nach der Zehnerregel verzehnfachen sich die Kosten mit jeder weiteren Phase (Anforderung, Entwurf, Implementierung, Test, Betrieb). Drei solcher Fehler werden erst im Test gefunden (drei Phasen später), ein weiterer erst im Betrieb (vier Phasen später).',
     prompt: 'Berechne die Fehlerkosten nach der Zehnerregel. (5 P.)',
     punkte: 5,
     text:
-        'Kosten je Fehler im Systemtest: {0} €\n'
-        'Kosten der drei Fehler im Systemtest: {1} €\n'
+        'Kosten je Fehler im Test: {0} €\n'
+        'Kosten der drei Fehler im Test: {1} €\n'
         'Kosten des Fehlers im Betrieb: {2} €\n'
         'Fehlerkosten insgesamt: {3} €\n'
         'Kosten, wenn alle vier Fehler sofort entdeckt worden wären: {4} €',
     luecken: [
-      zahl(4000, rationale: '40 € × 10 × 10.'),
-      zahl(12000, rationale: '3 × 4.000 €.'),
       zahl(40000, rationale: '40 € × 10 × 10 × 10.'),
-      zahl(52000, rationale: '12.000 € + 40.000 €.'),
+      zahl(120000, rationale: '3 × 40.000 €.'),
+      zahl(400000, rationale: '40 € × 10 × 10 × 10 × 10.'),
+      zahl(520000, rationale: '120.000 € + 400.000 €.'),
       zahl(160, rationale: '4 × 40 €.'),
     ],
     explanation:
-        'Zwei Phasen später: 40 € × 10² = 4.000 € je Fehler, für drei Fehler 12.000 €.\n'
-        'Drei Phasen später: 40 € × 10³ = 40.000 €.\n'
-        'Zusammen sind das 52.000 €. Bei sofortiger Entdeckung wären es nur 4 × 40 € = 160 € gewesen. Deshalb lohnen sich Reviews der Anforderungen.',
+        'Drei Phasen später: 40 € × 10³ = 40.000 € je Fehler, für drei Fehler 120.000 €.\n'
+        'Vier Phasen später: 40 € × 10⁴ = 400.000 €.\n'
+        'Zusammen sind das 520.000 €. Bei sofortiger Entdeckung wären es nur 4 × 40 € = 160 € gewesen. Deshalb lohnen sich Reviews der Anforderungen.',
   ),
   freitext(
     'i5-qg-3',

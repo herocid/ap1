@@ -15128,8 +15128,8 @@ values (
   'an-lizenzen',
   'single',
   'Ein fünf Jahre alter PC wird durch einen neuen ersetzt. Auf dem alten lief Windows mit einer OEM-Lizenz.',
-  'Darf die Lizenz auf den neuen PC übertragen werden?',
-  'OEM-Lizenzen sind günstig, weil sie an ein Gerät gebunden sind. Umziehen lassen sich Voll- oder Volumenlizenzen.',
+  'Darf die Lizenz nach den Lizenzbedingungen des Herstellers auf den neuen PC übertragen werden?',
+  'OEM-Lizenzen sind günstig, weil der Hersteller sie in seinen Lizenzbedingungen an ein Gerät bindet. Ohne Einschränkung umziehen lassen sich Voll- oder Volumenlizenzen.',
   1,
   '{}',
   null,
@@ -44287,15 +44287,15 @@ values (
   'qualitaetsmanagement',
   'qm-grundlagen',
   'cloze',
-  'In einem Projekt kostet die Korrektur eines Anforderungsfehlers in der Anforderungsphase 40 €. Nach der Zehnerregel verzehnfachen sich die Kosten mit jeder weiteren Phase. Drei solcher Fehler werden erst im Systemtest gefunden (zwei Phasen später), ein weiterer erst im Betrieb (drei Phasen später).',
+  'In einem Projekt kostet die Korrektur eines Anforderungsfehlers in der Anforderungsphase 40 €. Nach der Zehnerregel verzehnfachen sich die Kosten mit jeder weiteren Phase (Anforderung, Entwurf, Implementierung, Test, Betrieb). Drei solcher Fehler werden erst im Test gefunden (drei Phasen später), ein weiterer erst im Betrieb (vier Phasen später).',
   'Berechne die Fehlerkosten nach der Zehnerregel. (5 P.)',
-  'Zwei Phasen später: 40 € × 10² = 4.000 € je Fehler, für drei Fehler 12.000 €.
-Drei Phasen später: 40 € × 10³ = 40.000 €.
-Zusammen sind das 52.000 €. Bei sofortiger Entdeckung wären es nur 4 × 40 € = 160 € gewesen. Deshalb lohnen sich Reviews der Anforderungen.',
+  'Drei Phasen später: 40 € × 10³ = 40.000 € je Fehler, für drei Fehler 120.000 €.
+Vier Phasen später: 40 € × 10⁴ = 400.000 €.
+Zusammen sind das 520.000 €. Bei sofortiger Entdeckung wären es nur 4 × 40 € = 160 € gewesen. Deshalb lohnen sich Reviews der Anforderungen.',
   2,
   '{}',
   null,
-  '{"points":5,"cloze_text":"Kosten je Fehler im Systemtest: {0} €\nKosten der drei Fehler im Systemtest: {1} €\nKosten des Fehlers im Betrieb: {2} €\nFehlerkosten insgesamt: {3} €\nKosten, wenn alle vier Fehler sofort entdeckt worden wären: {4} €","gaps":[{"answers":["4000"],"numeric":true,"rationale":"40 € × 10 × 10."},{"answers":["12000"],"numeric":true,"rationale":"3 × 4.000 €."},{"answers":["40000"],"numeric":true,"rationale":"40 € × 10 × 10 × 10."},{"answers":["52000"],"numeric":true,"rationale":"12.000 € + 40.000 €."},{"answers":["160"],"numeric":true,"rationale":"4 × 40 €."}]}'::jsonb,
+  '{"points":5,"cloze_text":"Kosten je Fehler im Test: {0} €\nKosten der drei Fehler im Test: {1} €\nKosten des Fehlers im Betrieb: {2} €\nFehlerkosten insgesamt: {3} €\nKosten, wenn alle vier Fehler sofort entdeckt worden wären: {4} €","gaps":[{"answers":["40000"],"numeric":true,"rationale":"40 € × 10 × 10 × 10."},{"answers":["120000"],"numeric":true,"rationale":"3 × 40.000 €."},{"answers":["400000"],"numeric":true,"rationale":"40 € × 10 × 10 × 10 × 10."},{"answers":["520000"],"numeric":true,"rationale":"120.000 € + 400.000 €."},{"answers":["160"],"numeric":true,"rationale":"4 × 40 €."}]}'::jsonb,
   'current'
 )
 on conflict (id) do update set
@@ -51027,8 +51027,8 @@ values (
   'praesentation',
   'pr-angebot',
   'open',
-  'L3 bietet an, Rechnungen künftig nur noch als E-Rechnung zu schicken. Die Buchhaltung der Elbtal Logistik AG arbeitet bisher mit Papierrechnungen.',
-  'Nenne zwei Vorteile und zwei Nachteile digitaler Rechnungen für die Elbtal Logistik AG.',
+  'L3 kündigt an, Rechnungen künftig nur noch als E-Rechnung zu schicken. Empfangen können muss die Elbtal Logistik AG solche Rechnungen seit 2025, ihre Buchhaltung arbeitet aber bisher überwiegend mit Papier.',
+  'Nenne zwei Vorteile und zwei Nachteile der E-Rechnung für die Elbtal Logistik AG.',
   'Je Nennung 1 Punkt, höchstens 4. Vorteile sind Effizienz, Kostenersparnis, weniger Fehler und schneller Zugriff. Nachteile sind die Anfangsinvestition, der Schulungsaufwand, Sicherheitsrisiken und die Abhängigkeit von der IT.',
   2,
   '{}',
@@ -73290,7 +73290,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-al-27', 'anwendungssysteme', 'an-lizenzen', 'Der PC mit OEM-Lizenz wird ersetzt. Was gilt für die Lizenz?', 'Sie bleibt an das alte Gerät gebunden. Für den neuen PC braucht es eine Voll- oder Volumenlizenz.', null, '{}', 1188)
+values ('k-al-27', 'anwendungssysteme', 'an-lizenzen', 'Der PC mit OEM-Lizenz wird ersetzt. Was gilt für die Lizenz?', 'Laut Lizenzbedingungen des Herstellers bleibt sie an das alte Gerät gebunden. Für den neuen PC planst du eine eigene Lizenz ein.', null, '{}', 1188)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -85185,7 +85185,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-qg-15', 'qualitaetsmanagement', 'qm-grundlagen', 'Ein Anforderungsfehler kostet früh 10 €. Was kostet er nach der Zehnerregel beim Kunden?', '10 € × 10 × 10 × 10 = 10.000 € (Anforderung, Entwurf, Test, Betrieb).', null, '{}', 2103)
+values ('k-qg-15', 'qualitaetsmanagement', 'qm-grundlagen', 'Ein Anforderungsfehler kostet früh 10 €. Was kostet er nach der Zehnerregel beim Kunden?', '10 € × 10⁴ = 100.000 €, denn es liegen vier Phasen dazwischen (Anforderung, Entwurf, Implementierung, Test, Betrieb).', null, '{}', 2103)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,
@@ -85198,7 +85198,7 @@ on conflict (id) do update set
 
 insert into public.ap1_flashcards
   (id, topic_id, subtopic_id, front, back, hint, tags, sort_order)
-values ('k-qg-16', 'qualitaetsmanagement', 'qm-grundlagen', '6 Anforderungsfehler kosten früh je 10 €. Was kosten sie, wenn sie erst im Test auffallen?', 'Zwei Phasen später: 10 € × 100 = 1.000 € je Fehler; 6 × 1.000 € = 6.000 €.', null, '{}', 2104)
+values ('k-qg-16', 'qualitaetsmanagement', 'qm-grundlagen', '6 Anforderungsfehler kosten früh je 10 €. Was kosten sie, wenn sie erst im Test auffallen?', 'Drei Phasen später (Entwurf, Implementierung, Test): 10 € × 1.000 = 10.000 € je Fehler; 6 × 10.000 € = 60.000 €.', null, '{}', 2104)
 on conflict (id) do update set
   topic_id = excluded.topic_id,
   subtopic_id = excluded.subtopic_id,

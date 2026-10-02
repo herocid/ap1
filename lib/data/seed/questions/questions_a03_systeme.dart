@@ -2170,7 +2170,8 @@ final List<Question> questionsA03 = [
     'an-lizenzen',
     scenario:
         'Ein fünf Jahre alter PC wird durch einen neuen ersetzt. Auf dem alten lief Windows mit einer OEM-Lizenz.',
-    prompt: 'Darf die Lizenz auf den neuen PC übertragen werden?',
+    prompt:
+        'Darf die Lizenz nach den Lizenzbedingungen des Herstellers auf den neuen PC übertragen werden?',
     choices: [
       ja(
         'Nein, die OEM-Lizenz ist an das Gerät gebunden, mit dem sie verkauft wurde.',
@@ -2190,7 +2191,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     explanation:
-        'OEM-Lizenzen sind günstig, weil sie an ein Gerät gebunden sind. Umziehen lassen sich Voll- oder Volumenlizenzen.',
+        'OEM-Lizenzen sind günstig, weil der Hersteller sie in seinen Lizenzbedingungen an ein Gerät bindet. Ohne Einschränkung umziehen lassen sich Voll- oder Volumenlizenzen.',
     difficulty: 1,
   ),
 

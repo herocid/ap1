@@ -1087,9 +1087,9 @@ final List<ExamCase> casesA02 = [
         'f-a02-logistik-f',
         'pr-angebot',
         scenario:
-            'L3 bietet an, Rechnungen künftig nur noch als E-Rechnung zu schicken. Die Buchhaltung der Elbtal Logistik AG arbeitet bisher mit Papierrechnungen.',
+            'L3 kündigt an, Rechnungen künftig nur noch als E-Rechnung zu schicken. Empfangen können muss die Elbtal Logistik AG solche Rechnungen seit 2025, ihre Buchhaltung arbeitet aber bisher überwiegend mit Papier.',
         prompt:
-            'Nenne zwei Vorteile und zwei Nachteile digitaler Rechnungen für die Elbtal Logistik AG.',
+            'Nenne zwei Vorteile und zwei Nachteile der E-Rechnung für die Elbtal Logistik AG.',
         kriterien: [
           krit(
             'Vorteil: schnellere, automatische Verarbeitung ohne Abtippen',

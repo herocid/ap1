@@ -553,7 +553,7 @@ final List<Nugget> nuggetsA03Netze = [
     'n-al2-12',
     'an-lizenzen',
     'Die OEM-Lizenz zieht nicht um',
-    'Eine OEM-Lizenz ist an das Gerät gebunden, mit dem sie verkauft wurde. Wird der PC ersetzt, darf die Lizenz nicht einfach auf den neuen übertragen werden. Dafür braucht es eine Voll- oder Volumenlizenz.',
+    'Eine OEM-Lizenz ist nach den Lizenzbedingungen des Herstellers an das Gerät gebunden, mit dem sie verkauft wurde. Wird der PC ersetzt, zieht sie laut diesen Bedingungen nicht mit um. Plane für den neuen PC deshalb eine eigene Lizenz ein, etwa eine Voll- oder Volumenlizenz.',
   ),
   merke(
     'n-al2-13',

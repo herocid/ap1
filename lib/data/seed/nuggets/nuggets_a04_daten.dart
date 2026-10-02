@@ -1069,11 +1069,12 @@ final List<Nugget> nuggetsA04Daten = [
     'n-wh-8',
     'wi-http',
     'Durchgespielt: ein Server-Log lesen',
-    'Eine Kundin meldet Probleme im Webshop. Das Log des Webservers zeigt ihre letzten fünf Anfragen. Wo liegt jeweils das Problem?',
+    'Eine Kundin meldet Probleme im Webshop. Das Log des Webservers zeigt ihre letzten sechs Anfragen. Wo liegt jeweils das Problem?',
     table: [
       ['Anfrage', 'Code'],
       ['GET /login', '200'],
       ['POST /login', '401'],
+      ['POST /login', '200'],
       ['GET /admin', '403'],
       ['GET /bilder/logo.png', '404'],
       ['POST /bestellung', '500'],
@@ -1081,6 +1082,7 @@ final List<Nugget> nuggetsA04Daten = [
     schritte: [
       '200: Die Login-Seite wurde korrekt ausgeliefert',
       '401: Anmeldung fehlgeschlagen, etwa ein falsches Passwort',
+      '200: Der zweite Versuch gelingt, die Kundin ist angemeldet',
       '403: Sie ist nun bekannt, darf den Admin-Bereich aber nicht sehen, und das ist richtig so',
       '404: Das Logo fehlt auf dem Server oder der Pfad im HTML ist falsch',
       '500: Beim Anlegen der Bestellung ist das Serverprogramm abgestürzt',
@@ -3231,8 +3233,12 @@ final List<Nugget> nuggetsA04Daten = [
         '2. August 2025',
         'Pflichten für KI-Modelle mit allgemeinem Verwendungszweck',
       ],
+      ['2. August 2026', 'die meisten übrigen Regeln, etwa Transparenz'],
+      ['2. Dezember 2027', 'Pflichten für eigenständige Hochrisiko-Systeme'],
     ],
-    points: ['Pflichten für Hochrisiko-Systeme greifen erst später'],
+    points: [
+      'Die Hochrisiko-Pflichten wurden 2026 verschoben, ursprünglich sollten sie ab August 2026 gelten',
+    ],
   ),
   vergleich(
     'n-ir-10',

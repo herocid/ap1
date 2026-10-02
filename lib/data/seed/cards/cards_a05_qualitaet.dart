@@ -92,13 +92,13 @@ final List<Flashcard> cardsA05 = [
     'k-qg-15',
     'qm-grundlagen',
     'Ein Anforderungsfehler kostet früh 10 €. Was kostet er nach der Zehnerregel beim Kunden?',
-    '10 € × 10 × 10 × 10 = 10.000 € (Anforderung, Entwurf, Test, Betrieb).',
+    '10 € × 10⁴ = 100.000 €, denn es liegen vier Phasen dazwischen (Anforderung, Entwurf, Implementierung, Test, Betrieb).',
   ),
   karte(
     'k-qg-16',
     'qm-grundlagen',
     '6 Anforderungsfehler kosten früh je 10 €. Was kosten sie, wenn sie erst im Test auffallen?',
-    'Zwei Phasen später: 10 € × 100 = 1.000 € je Fehler; 6 × 1.000 € = 6.000 €.',
+    'Drei Phasen später (Entwurf, Implementierung, Test): 10 € × 1.000 = 10.000 € je Fehler; 6 × 10.000 € = 60.000 €.',
   ),
   karte(
     'k-qg-17',

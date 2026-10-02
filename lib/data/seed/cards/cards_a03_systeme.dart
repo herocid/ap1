@@ -1899,7 +1899,7 @@ final List<Flashcard> cardsA03 = [
     'k-al-27',
     'an-lizenzen',
     'Der PC mit OEM-Lizenz wird ersetzt. Was gilt für die Lizenz?',
-    'Sie bleibt an das alte Gerät gebunden. Für den neuen PC braucht es eine Voll- oder Volumenlizenz.',
+    'Laut Lizenzbedingungen des Herstellers bleibt sie an das alte Gerät gebunden. Für den neuen PC planst du eine eigene Lizenz ein.',
   ),
   karte(
     'k-al-20',
