@@ -175,6 +175,17 @@ void main() {
 
           expect(find.text('VOLLE PRÜFUNG'), findsOneWidget);
           await check(tester, 'pruefung_ergebnis_$tag');
+          // Punkte je Bereich mit schwächstem Thema und Bit.
+          await tester.ensureVisible(find.text('Deine Punkte je Bereich'));
+          await frames(tester, 4);
+          expect(
+            find.text('Hier hast du die meisten Punkte verloren:'),
+            findsOneWidget,
+          );
+          await check(tester, 'pruefung_bereiche_$tag');
+          await tester.ensureVisible(find.text('Dieses Thema üben'));
+          await frames(tester, 4);
+          await check(tester, 'pruefung_bereiche_knopf_$tag');
           // Durchsicht aufklappen.
           await tester.ensureVisible(find.byType(ExpansionTile).first);
           await frames(tester, 4);
