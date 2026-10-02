@@ -148,7 +148,17 @@ Stand 01.10.2026 (Quiz/Prüfung): rund 1.600 Aufgaben plus rund 290 Teilaufgaben
 Fallaufgaben (11 je Modellunternehmen); Auswahlanteil je Bereich 17-29 % (vorher 47-68 %).
 Rechtsangaben der neuen Aufgaben gegen Gesetzestexte geprüft.
 
-## Offen (Stand 01.10.2026)
+## Offen (Stand 02.10.2026)
+
+Inhalte:
+- Karten und Aufgaben sprachlich glätten: Die Lernschritte und die Oberfläche sind
+  überarbeitet (natürlich formuliert, ohne Gedankenstriche); Karten, Aufgaben und
+  Fallaufgaben sind bisher nur von Gedankenstrichen befreit, nicht Satz für Satz geglättet.
+  Keine Skripte für Ersetzungen (haben beim ersten Durchgang Fehler erzeugt), krit-Stichwörter
+  und Rechnungen nicht anfassen.
+- Fachliche Zweitprüfung: Bisher gab es nur Stichproben. Ein gründlicher Durchgang über alle
+  Rechenaufgaben und Rechtsangaben je Bereich ist nötig, weil die Inhalte ohne
+  Entwurfskennzeichnung live sind.
 
 Quiz/Prüfung:
 - Abzeichen „Ernstfall bestanden“/„Note 1“ (`achievements.dart`) rechnen noch mit dem
