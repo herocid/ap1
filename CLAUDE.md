@@ -174,8 +174,13 @@ Quiz/Prüfung:
   ungewichteten Mittel statt mit Punkten und zählen auch halbe Prüfungen.
 - Ausgangssituation einer Fallaufgabe ist im Quiz aufgeklappt sehr lang (Unternehmen +
   Situation); im Prüfungslauf zeigt `QuestionView` Punkte doppelt zur Kopfzeile.
-- Blitzrunde (60 Sekunden) nicht gebaut; KI-Bewertung von Freitext bewusst nicht (Kosten,
-  Server, online) - nur auf Wunsch des Nutzers.
+- Blitzrunde (60 Sekunden) wird nicht gebaut (Entscheidung des Nutzers, 02.10.2026);
+  KI-Bewertung von Freitext bewusst nicht (Kosten, Server, online) - nur auf Wunsch des
+  Nutzers.
+- Bewertung (`question_parts.dart`): Kurze Stichwörter bis 4 Zeichen zählen nur als ganzes
+  Wort, mit Endung oder am Ende einer Zusammensetzung („Java“ trifft nicht „JavaScript“),
+  Füllwörter wie „nicht“ zählen nie. Eingabelücken vergleichen ohne Leerzeichen, mit
+  vereinheitlichten Operatoren (≥ wie >=) und ohne äußere eckige Klammern.
 
 Store-Vorbereitung (Nutzer legt die Konten bei Google/Apple selbst an):
 - Android: Release-Signatur einrichten (build.gradle signiert Release noch mit Debug-Key),

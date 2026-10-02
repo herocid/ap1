@@ -84,8 +84,22 @@ class Blank {
             candidates.any((v) => (v - w).abs() <= tolerance + 1e-9);
       });
     }
-    final n = normalizeAnswer(input);
-    return answers.any((a) => normalizeAnswer(a) == n);
+    final n = _loose(input);
+    return answers.any((a) => _loose(a) == n);
+  }
+
+  /// Vergleichsform für getippte Texte: Leerzeichen, die Schreibweise von
+  /// Vergleichsoperatoren (≥ statt >=) und die eckigen Klammern einer
+  /// Bedingung spielen keine Rolle.
+  static String _loose(String s) {
+    var t = normalizeAnswer(s);
+    const ops = {'≥': '>=', '≤': '<=', '≠': '!=', '=>': '>=', '=<': '<='};
+    ops.forEach((k, v) => t = t.replaceAll(k, v));
+    t = t.replaceAll(RegExp(r'\s+'), '');
+    if (t.length > 2 && t.startsWith('[') && t.endsWith(']')) {
+      t = t.substring(1, t.length - 1);
+    }
+    return t;
   }
 
   static String _fmt(num v) =>
@@ -153,7 +167,20 @@ class Criterion {
     final words = n.split(RegExp(r'[^a-z0-9]+')).where((w) => w.isNotEmpty);
     return keywords.any((k) {
       final key = normalizeAnswer(k);
-      if (key.isEmpty) return false;
+      // Füllwörter wie "nicht" stehen in fast jeder Antwort und sagen nichts.
+      if (key.isEmpty || _fillers.contains(key)) return false;
+      if (_shortWord.hasMatch(key)) {
+        // Kurze Stichwörter (Java, TCP, 443) nur als ganzes Wort, mit Endung
+        // ("Tests") oder am Ende einer Zusammensetzung ("Abnahmetest") -
+        // sonst träfe "Java" auch "JavaScript". Zahlen nur exakt.
+        if (RegExp(r'\d').hasMatch(key)) return words.contains(key);
+        return words.any((w) {
+          final at = w.lastIndexOf(key);
+          return at >= 0 &&
+              (at + key.length == w.length ||
+                  _endings.contains(w.substring(at + key.length)));
+        });
+      }
       if (n.contains(key)) return true;
       // Jedes Wort des Stichworts muss sich in der Antwort wiederfinden.
       final tokens = key
@@ -164,6 +191,34 @@ class Criterion {
           tokens.every((t) => words.any((w) => _similar(w, t)));
     });
   }
+
+  static final _shortWord = RegExp(r'^[a-z0-9]{1,4}$');
+  static const _endings = {'s', 'n', 'e', 'en', 'es', 'er'};
+  static const _fillers = {
+    'nicht',
+    'kein',
+    'keine',
+    'und',
+    'oder',
+    'aber',
+    'auch',
+    'nur',
+    'der',
+    'die',
+    'das',
+    'ein',
+    'eine',
+    'ist',
+    'sind',
+    'wird',
+    'mit',
+    'ohne',
+    'zu',
+    'wer',
+    'was',
+    'wie',
+    'man',
+  };
 
   static bool _similar(String word, String token) {
     if (word == token) return true;
