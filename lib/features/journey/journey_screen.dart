@@ -213,7 +213,7 @@ class _AreaHeader extends ConsumerWidget {
               Text(
                 'BEREICH ${area.number}',
                 style: context.text.labelSmall?.copyWith(
-                  color: context.c.textMuted,
+                  color: area.accent.fg(context),
                   letterSpacing: 1.2,
                 ),
               ),
@@ -287,6 +287,9 @@ class _TopicSectionState extends ConsumerState<_TopicSection> {
                     TileIcon(
                       icon: complete ? Icons.check_rounded : topic.icon,
                       tone: complete ? TileTone.success : TileTone.brand,
+                      accent: complete
+                          ? null
+                          : ExamAreas.byId(topic.areaId).accent.tile(context),
                     ),
                     const SizedBox(width: Gap.m),
                     Expanded(

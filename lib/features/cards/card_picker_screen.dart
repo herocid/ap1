@@ -209,7 +209,7 @@ class _AreaBlock extends StatelessWidget {
             'Bereich ${area.number} · $total Karten'
             '${n > 0 && !all ? ' · $n gewählt' : ''}',
             style: context.text.labelSmall?.copyWith(
-              color: context.c.textMuted,
+              color: area.accent.fg(context),
             ),
           ),
           children: [

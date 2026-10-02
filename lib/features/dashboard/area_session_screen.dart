@@ -236,7 +236,7 @@ class _AreaSessionScreenState extends ConsumerState<AreaSessionScreen> {
                 Text(
                   'BEREICH ${area.number}',
                   style: context.text.labelSmall?.copyWith(
-                    color: context.c.textMuted,
+                    color: area.accent.fg(context),
                     letterSpacing: 1.2,
                   ),
                 ),

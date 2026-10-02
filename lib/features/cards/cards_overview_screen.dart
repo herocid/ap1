@@ -479,6 +479,7 @@ class _AreaCardRow extends ConsumerWidget {
       padding: const EdgeInsets.only(bottom: Gap.s),
       child: ProgressTile(
         icon: area.icon,
+        accent: area.accent.tile(context),
         overline: 'BEREICH ${area.number}',
         title: area.title,
         enabled: areaCards.isNotEmpty,

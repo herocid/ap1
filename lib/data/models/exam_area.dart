@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/app_colors.dart';
+
 /// Die sieben Bereiche des IHK-Prüfungskatalogs für die AP1 der IT-Berufe
 /// (2. überarbeitete Auflage, erstmals angewendet im Frühjahr 2025).
 ///
@@ -109,4 +111,10 @@ class ExamAreas {
   static final Map<String, ExamArea> map = {for (final a in all) a.id: a};
 
   static ExamArea byId(String id) => map[id] ?? projekte;
+}
+
+/// Akzentfarbe je Bereich, z. B. `area.accent.fg(context)`.
+extension ExamAreaAccent on ExamArea {
+  AreaAccent get accent =>
+      AppColors.areaAccents[id] ?? AppColors.areaAccents['a01']!;
 }
