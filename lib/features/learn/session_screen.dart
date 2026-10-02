@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
+import '../../core/util/haptics.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -294,9 +295,7 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
             controller.check();
             final grade = ref.read(sessionProvider)?.current.grade;
             if (grade != null) {
-              grade.isCorrect
-                  ? HapticFeedback.lightImpact()
-                  : HapticFeedback.mediumImpact();
+              grade.isCorrect ? AppHaptics.correct() : AppHaptics.wrong();
             }
             _scrollToTop();
           },

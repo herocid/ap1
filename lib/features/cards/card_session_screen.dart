@@ -1,7 +1,8 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
+import '../../core/util/haptics.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -191,7 +192,7 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
     if (_mode == CardMode.run) {
       ref.read(cardRunProvider.notifier).answer(card.id, knewIt: knewIt);
     }
-    HapticFeedback.selectionClick();
+    knewIt ? AppHaptics.correct() : AppHaptics.wrong();
     _knewStreak = knewIt ? _knewStreak + 1 : 0;
     if (_knewStreak == 5 || _knewStreak == 10) _bitCheers(_knewStreak);
     final wasFinished = _finished;
@@ -392,7 +393,10 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
                     key: ValueKey('${card.id}-$_pos'),
                     card: card,
                     revealed: _revealed,
-                    onTap: () => setState(() => _revealed = true),
+                    onTap: () {
+                      AppHaptics.flip();
+                      setState(() => _revealed = true);
+                    },
                   ),
                 ],
               ),
@@ -448,7 +452,10 @@ class _CardSessionScreenState extends ConsumerState<CardSessionScreen> {
                           key: const ValueKey('umdrehen'),
                           width: double.infinity,
                           child: FilledButton.icon(
-                            onPressed: () => setState(() => _revealed = true),
+                            onPressed: () {
+                              AppHaptics.flip();
+                              setState(() => _revealed = true);
+                            },
                             icon: const Icon(Icons.flip_to_back),
                             label: const Text('Umdrehen'),
                           ),

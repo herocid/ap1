@@ -1,8 +1,8 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
+import '../../core/util/haptics.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
@@ -121,7 +121,7 @@ class _ClozeQuestionViewState extends State<ClozeQuestionView> {
 
   void _tapBankGap(int gap) {
     if (widget.revealed) return;
-    HapticFeedback.selectionClick();
+    AppHaptics.select();
     if (_map.containsKey(gap)) {
       _set(gap, null);
       setState(() => _active = gap);
@@ -132,7 +132,7 @@ class _ClozeQuestionViewState extends State<ClozeQuestionView> {
 
   void _tapChip(String word, bool used) {
     if (widget.revealed) return;
-    HapticFeedback.selectionClick();
+    AppHaptics.select();
     if (used) {
       // Benutzten Begriff zurücknehmen.
       final from = _bankGaps.lastWhere(

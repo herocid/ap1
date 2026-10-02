@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import '../../core/util/haptics.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -261,7 +263,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                 ref.read(journeyProvider.notifier).complete(lesson.id);
                 if (isNew) Celebration.show(context);
                 ref.read(resumeProvider.notifier).lessonDone(lesson.id);
-                HapticFeedback.lightImpact();
+                if (!isNew) AppHaptics.select();
               } else if (!ref.read(journeyProvider).contains(lesson.id)) {
                 ref.read(resumeProvider.notifier).lessonAt(lesson.id, p);
               }

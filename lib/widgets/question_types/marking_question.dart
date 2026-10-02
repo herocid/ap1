@@ -1,8 +1,8 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
+import '../../core/util/haptics.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
@@ -39,7 +39,7 @@ class MarkingQuestionView extends StatelessWidget {
 
   void _toggle(int i) {
     if (revealed) return;
-    HapticFeedback.selectionClick();
+    AppHaptics.select();
     final next = <int>{..._selected};
     next.contains(i) ? next.remove(i) : next.add(i);
     onChanged(next.isEmpty ? null : next);

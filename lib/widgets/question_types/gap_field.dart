@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../core/util/haptics.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
@@ -191,7 +192,7 @@ class _GapFieldState extends State<GapField> {
   }
 
   Future<void> _pick() async {
-    HapticFeedback.selectionClick();
+    AppHaptics.select();
     final picked = await showGapOptions(
       context,
       title: widget.title,

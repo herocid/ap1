@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
+import '../../core/util/haptics.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
@@ -87,7 +87,7 @@ class _PairsQuestionViewState extends State<PairsQuestionView> {
 
   void _tapLeft(int left) {
     if (widget.revealed) return;
-    HapticFeedback.selectionClick();
+    AppHaptics.select();
     if (_activeRight != null) return _connect(left, _activeRight!);
     if (_map.containsKey(left)) {
       // Erneutes Antippen löst das Paar; die linke Seite bleibt gewählt.
@@ -100,7 +100,7 @@ class _PairsQuestionViewState extends State<PairsQuestionView> {
 
   void _tapRight(int right) {
     if (widget.revealed) return;
-    HapticFeedback.selectionClick();
+    AppHaptics.select();
     if (_activeLeft != null) return _connect(_activeLeft!, right);
     final owner = _leftOf(right);
     if (owner != null) {

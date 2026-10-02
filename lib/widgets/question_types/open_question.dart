@@ -1,8 +1,8 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
+import '../../core/util/haptics.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
@@ -87,7 +87,7 @@ class _OpenQuestionViewState extends State<OpenQuestionView> {
   Set<int> get _checked => _answer?.checked ?? _suggested;
 
   void _toggle(int i) {
-    HapticFeedback.selectionClick();
+    AppHaptics.select();
     final next = {..._checked};
     next.contains(i) ? next.remove(i) : next.add(i);
     widget.onChanged(OpenAnswer(text: _answer?.text ?? '', checked: next));

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
+import '../../core/util/haptics.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
@@ -64,7 +64,7 @@ class NumericKeypad extends StatelessWidget {
                 _Key(
                   label: k,
                   onTap: () {
-                    HapticFeedback.selectionClick();
+                    AppHaptics.select();
                     switch (k) {
                       case 'DEL':
                         onBackspace();

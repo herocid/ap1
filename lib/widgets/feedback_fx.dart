@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../core/theme/app_colors.dart';
+import '../core/util/haptics.dart';
 
 /// Grafisches Feedback: Puls bei richtig, Wackeln bei falsch, Konfetti für
 /// Meilensteine, mitlaufende Zahlen. Alles respektiert „Animationen
@@ -164,6 +165,7 @@ class Celebration {
   const Celebration._();
 
   static void show(BuildContext context) {
+    AppHaptics.milestone();
     if (_reduced(context)) return;
     final overlay = Overlay.maybeOf(context, rootOverlay: true);
     if (overlay == null) return;
