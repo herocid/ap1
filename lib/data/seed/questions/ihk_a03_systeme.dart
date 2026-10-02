@@ -36,7 +36,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 5,
     explanation:
-        '12 threads = 12 Threads, max. 64 GB = Höchstausbau, 2x DisplayPort = zwei Ausgänge, „integrated“ = Grafik im Prozessor. Netzteil: P = U × I = 20 V × 6 A = 120 W. Je richtiger Zelle 1 Punkt.',
+        'Im Datenblatt stehen 12 Threads, höchstens 64 GB Arbeitsspeicher und zwei DisplayPort-Ausgänge. „integrated“ bedeutet, dass die Grafik im Prozessor steckt. Für das Netzteil gilt P = U × I = 20 V × 6 A = 120 W. Jede richtige Zelle bringt 1 Punkt.',
     tags: ['englisch', 'datenblatt'],
   ),
   freitext(
@@ -78,7 +78,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     loesung:
-        'Der Arbeitsspeicher ist nahezu voll. Das Betriebssystem lagert deshalb Speicherseiten auf die Festplatte aus. Daher die dauerhafte Datenträgerlast, während der Prozessor kaum arbeitet. Abhilfe: den Arbeitsspeicher erweitern, z. B. auf 16 GB. Zusätzlich hilft eine SSD statt der HDD.',
+        'Der Arbeitsspeicher ist nahezu voll. Das Betriebssystem lagert deshalb Speicherseiten auf die Festplatte aus. Deshalb ist der Datenträger dauerhaft ausgelastet, während der Prozessor kaum arbeitet. Abhilfe schafft mehr Arbeitsspeicher, z. B. 16 GB. Zusätzlich hilft eine SSD statt der HDD.',
     explanation:
         'Bewertung: 2 Punkte für die Ursache (voller RAM, Auslagerung), 2 Punkte für eine passende Aufrüstung, höchstens 4 Punkte. Eine schnellere CPU hilft nicht, denn sie ist nur zu 20 % ausgelastet.',
   ),
@@ -104,7 +104,7 @@ final List<Question> ihkA03 = [
       ),
       ja(
         'Gaming-Grafikkarte mit 300 W Leistungsaufnahme',
-        'Für Buchhaltung überdimensioniert: teuer, laut und stromhungrig. Die integrierte Grafik reicht.',
+        'Für die Buchhaltung überdimensioniert: teuer, laut und stromhungrig. Die integrierte Grafik reicht.',
       ),
       nein(
         'NVMe-SSD mit 500 GB',
@@ -116,7 +116,7 @@ final List<Question> ihkA03 = [
       ),
     ],
     explanation:
-        'Zwei Positionen fallen heraus: DDR4-RAM passt nicht auf ein DDR5-Mainboard, und die Gaming-Grafikkarte widerspricht den Zielen leise und sparsam; außerdem würde sie das 300-W-Netzteil überfordern.',
+        'Zwei Positionen fallen heraus: DDR4-RAM passt nicht auf ein DDR5-Mainboard, und die Gaming-Grafikkarte widerspricht den Zielen leise und sparsam. Außerdem würde sie das 300-W-Netzteil überfordern.',
   ),
   paare(
     'i3-hk-4',
@@ -132,7 +132,7 @@ final List<Question> ihkA03 = [
       paar('UEFI', 'prüft Hardware, startet Bootloader'),
     ],
     explanation:
-        'CPU rechnet, RAM hält die Daten laufender Programme, das Mainboard verbindet alles, das Netzteil liefert die Gleichspannungen, das UEFI startet den Rechner.',
+        'Die CPU rechnet, der RAM hält die Daten laufender Programme, das Mainboard verbindet alles, das Netzteil liefert die Gleichspannungen, das UEFI startet den Rechner.',
     difficulty: 1,
   ),
 
@@ -221,7 +221,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     explanation:
-        'Die HDD speichert magnetisch auf rotierenden Scheiben, hängt an SATA und ist pro GB günstig: gut für Archive. Die NVMe-SSD speichert in Flash-Zellen, hängt an PCIe und liest mehrere GB pro Sekunde: ideal als Systemlaufwerk.',
+        'Die HDD speichert magnetisch auf rotierenden Scheiben, hängt an SATA und ist pro GB günstig, also gut für Archive. Die NVMe-SSD speichert in Flash-Zellen, hängt an PCIe und liest mehrere GB pro Sekunde. Damit ist sie ideal als Systemlaufwerk.',
   ),
   freitext(
     'i3-hs-5',
@@ -399,7 +399,7 @@ final List<Question> ihkA03 = [
       nein('Kaltgerätebuchse', 'Hier steckt das Stromkabel.'),
     ],
     explanation:
-        'Bildsignale liefern HDMI, DisplayPort und USB-C im DisplayPort-Modus bzw. Thunderbolt. RJ45 ist Netzwerk, die Klinke Ton, die Kaltgerätebuchse Strom.',
+        'Bildsignale liefern HDMI, DisplayPort und USB-C im DisplayPort-Modus bzw. Thunderbolt. RJ45 ist für das Netzwerk da, die Klinke für den Ton und die Kaltgerätebuchse für den Strom.',
   ),
   lueckentext(
     'i3-hi-6',
@@ -536,7 +536,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     explanation:
-        'Offline- und Line-Interactive-USV schalten bei Ausfall in wenigen Millisekunden um; die Line-Interactive regelt zusätzlich die Spannung. Die Online-USV versorgt die Last dauerhaft über den Wechselrichter (Doppelwandlung), ohne Umschaltzeit, aber teurer.',
+        'Offline- und Line-Interactive-USV schalten bei Ausfall in wenigen Millisekunden um, die Line-Interactive regelt zusätzlich die Spannung. Die Online-USV versorgt die Last dauerhaft über den Wechselrichter (Doppelwandlung). Sie hat deshalb keine Umschaltzeit, ist aber teurer.',
   ),
   freitext(
     'i3-hu-4',
@@ -671,7 +671,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     loesung:
-        'Ein separater, höhenverstellbarer Bildschirm (Oberkante auf oder leicht unter Augenhöhe), externe Tastatur und Maus, ein höhenverstellbarer Tisch und ein ergonomischer Bürostuhl. Der Bildschirm steht seitlich zum Fenster, damit nichts blendet oder spiegelt.',
+        'Sinnvoll sind ein separater, höhenverstellbarer Bildschirm (Oberkante auf oder leicht unter Augenhöhe), externe Tastatur und Maus, ein höhenverstellbarer Tisch und ein ergonomischer Bürostuhl. Der Bildschirm steht seitlich zum Fenster, damit nichts blendet oder spiegelt.',
     explanation:
         'Bewertung: je Nennung 1 Punkt, höchstens 4 Punkte. Ein Notebook allein ist kein Dauerarbeitsplatz: Bildschirm und Tastatur lassen sich nicht getrennt einstellen.',
     difficulty: 1,
@@ -844,7 +844,7 @@ final List<Question> ihkA03 = [
     wortbank: ['beendet', 'Treiber', 'Bootloader'],
     punkte: 4,
     explanation:
-        'Drei Zustände: bereit (wartet auf die CPU), rechnend (hat die CPU), blockiert (wartet auf Ein- oder Ausgabe). Der Scheduler teilt die Zeitscheiben zu.',
+        'Ein Prozess kennt drei Zustände: bereit (wartet auf die CPU), rechnend (hat die CPU), blockiert (wartet auf Ein- oder Ausgabe). Der Scheduler teilt die Zeitscheiben zu.',
   ),
   paare(
     'i3-ba-3',
@@ -937,7 +937,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     explanation:
-        'FAT32: höchstens 4 GiB je Datei, keine Rechte, kein Journal, dafür überall lesbar. NTFS (Windows) und ext4 (Linux) kennen große Dateien, Zugriffsrechte und Journaling.',
+        'FAT32 erlaubt höchstens 4 GiB je Datei und kennt weder Rechte noch Journal, ist dafür aber überall lesbar. NTFS (Windows) und ext4 (Linux) kennen große Dateien, Zugriffsrechte und Journaling.',
   ),
   freitext(
     'i3-bd-2',
@@ -977,7 +977,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     loesung:
-        'Bei der Schnellformatierung wird nur ein neues, leeres Dateisystem angelegt; die eigentlichen Daten stehen weiter auf dem Datenträger und lassen sich mit Werkzeugen wiederherstellen. Geeignet sind: den Datenträger vollständig überschreiben, bei SSDs Secure Erase nutzen oder den Datenträger physisch vernichten.',
+        'Bei der Schnellformatierung wird nur ein neues, leeres Dateisystem angelegt. Die eigentlichen Daten stehen weiter auf dem Datenträger und lassen sich mit Werkzeugen wiederherstellen. Geeignet ist es, den Datenträger vollständig zu überschreiben, bei SSDs Secure Erase zu nutzen oder den Datenträger physisch zu vernichten.',
     explanation:
         'Bewertung: 2 Punkte für die Erläuterung, je 1 Punkt für ein geeignetes Verfahren, höchstens 4 Punkte.',
   ),
@@ -998,7 +998,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 3,
     explanation:
-        '10.000 / 4.096 ≈ 2,44; angefangene Cluster zählen voll, also 3 Cluster. Belegt: 3 × 4.096 = 12.288 Byte. Verschnitt: 12.288 - 10.000 = 2.288 Byte.',
+        '10.000 / 4.096 ≈ 2,44. Angefangene Cluster zählen voll, also sind es 3 Cluster. Belegt: 3 × 4.096 = 12.288 Byte. Verschnitt: 12.288 - 10.000 = 2.288 Byte.',
   ),
   paare(
     'i3-bd-4',
@@ -1038,7 +1038,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     explanation:
-        'r = 4, w = 2, x = 1. rw-r----- ergibt 6, 4, 0 = 640: Besitzerin liest und schreibt, die Gruppe liest nur. Mit Schreibrecht für die Gruppe: 660. rwxr-xr-x = 7, 5, 5 = 755.',
+        'r = 4, w = 2, x = 1. rw-r----- ergibt 6, 4, 0, also 640: Die Besitzerin liest und schreibt, die Gruppe liest nur. Mit Schreibrecht für die Gruppe wird daraus 660. rwxr-xr-x = 7, 5, 5 = 755.',
   ),
   tabelle(
     'i3-br-2',
@@ -1117,7 +1117,7 @@ final List<Question> ihkA03 = [
     loesung:
         'Nach dem Prinzip der minimalen Rechte erhält jeder nur die Rechte, die er für seine Arbeit braucht. Mit Administratorrechten könnte Schadsoftware, die ein Benutzer versehentlich startet, sich im ganzen System einnisten. Außerdem könnten Benutzer Schutzfunktionen abschalten oder Einstellungen verändern.',
     explanation:
-        'Bewertung: Grund plus Folge ergeben die volle Punktzahl, höchstens 3 Punkte. Administrative Arbeiten erledigt ein getrenntes Admin-Konto.',
+        'Bewertung: Grund plus Folge ergeben die volle Punktzahl, höchstens 3 Punkte. Für administrative Arbeiten gibt es ein getrenntes Admin-Konto.',
   ),
   markieren(
     'i3-br-4',
@@ -1129,7 +1129,7 @@ final List<Question> ihkA03 = [
     zeilen: [
       nein(
         '-rw-r--r-- root root hosts',
-        'Nur root darf schreiben, alle dürfen lesen: üblich für diese Datei.',
+        'Nur root darf schreiben, alle dürfen lesen. Das ist für diese Datei üblich.',
       ),
       ja(
         '-rwxrwxrwx root root backup.sh',
@@ -1137,7 +1137,7 @@ final List<Question> ihkA03 = [
       ),
       nein(
         '-rw------- anna anna id_ed25519',
-        'Der private Schlüssel ist nur für die Besitzerin lesbar: richtig so.',
+        'Der private Schlüssel ist nur für die Besitzerin lesbar, so ist es richtig.',
       ),
       ja(
         '-rw-rw-rw- root root kunden.csv',
@@ -1216,7 +1216,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     loesung:
-        'Die hohe Antwortzeit verzögert Bild und Ton spürbar; die Gesprächspartner fallen sich ins Wort. Durch den Paketverlust fehlen Teile des Datenstroms: Das Bild ruckelt oder friert ein, der Ton klingt abgehackt. Im schlimmsten Fall bricht die Verbindung nach Zeitüberschreitungen ab.',
+        'Die hohe Antwortzeit verzögert Bild und Ton spürbar, sodass sich die Gesprächspartner ins Wort fallen. Durch den Paketverlust fehlen Teile des Datenstroms: Das Bild ruckelt oder friert ein, der Ton klingt abgehackt. Im schlimmsten Fall bricht die Verbindung nach Zeitüberschreitungen ab.',
     explanation:
         'Bewertung: 2 Punkte je beschriebenem Problem, höchstens 4 Punkte. Für Echtzeitanwendungen sind niedrige, gleichmäßige Antwortzeiten und 0 % Verlust wichtig.',
   ),
@@ -1272,7 +1272,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 5,
     explanation:
-        'dir → ls, copy → cp, del → rm, tracert → traceroute, ipconfig → ip a. Je richtigem Befehl 1 Punkt.',
+        'dir → ls, copy → cp, del → rm, tracert → traceroute, ipconfig → ip a. Jeder richtige Befehl bringt 1 Punkt.',
   ),
   lueckentext(
     'i3-bc-5',
@@ -1298,7 +1298,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 3,
     explanation:
-        '„until stopped“ = bis zum Abbruch: -t. „Number of echo requests“ = Anzahl der Anfragen: -n. „Force using IPv6“ = IPv6 erzwingen: -6.',
+        '„until stopped“ bedeutet „bis zum Abbruch“, das ist -t. „Number of echo requests“ ist die Anzahl der Anfragen, also -n. „Force using IPv6“ erzwingt IPv6, also -6.',
     tags: ['englisch'],
     difficulty: 1,
   ),
@@ -1351,9 +1351,9 @@ final List<Question> ihkA03 = [
     ],
     punkte: 6,
     loesung:
-        'Nicht benötigte Dienste abschalten oder deinstallieren, damit weniger angreifbar ist. Alle Sicherheitsupdates einspielen und künftige Updates zeitnah installieren. Die Firewall so einstellen, dass nur die benötigten Ports (hier 443, für die Verwaltung 22) offen sind. Außerdem Standardpasswörter ändern und den direkten root-Login per SSH verbieten.',
+        'Nicht benötigte Dienste abschalten oder deinstallieren, damit die Angriffsfläche kleiner wird. Alle Sicherheitsupdates einspielen und künftige Updates zeitnah installieren. Die Firewall so einstellen, dass nur die benötigten Ports (hier 443, für die Verwaltung 22) offen sind. Außerdem Standardpasswörter ändern und den direkten root-Login per SSH verbieten.',
     explanation:
-        'Bewertung: 2 Punkte je beschriebener Maßnahme, höchstens 6 Punkte. Härten heißt: die Angriffsfläche verkleinern.',
+        'Bewertung: 2 Punkte je beschriebener Maßnahme, höchstens 6 Punkte. Härten heißt, die Angriffsfläche zu verkleinern.',
   ),
   markieren(
     'i3-bh-2',
@@ -1687,7 +1687,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 6,
     explanation:
-        'Named User: jede berechtigte Person: 40 × 120 € = 4.800 €. Concurrent User: gleichzeitige Nutzung: 15 × 290 € = 4.350 €. Gerätelizenz: je PC: 25 × 180 € = 4.500 €. Am günstigsten ist hier Concurrent User.',
+        'Named User zählt jede berechtigte Person: 40 × 120 € = 4.800 €. Concurrent User zählt die gleichzeitige Nutzung: 15 × 290 € = 4.350 €. Die Gerätelizenz zählt je PC: 25 × 180 € = 4.500 €. Am günstigsten ist hier Concurrent User.',
   ),
   freitext(
     'i3-al-2',
@@ -1840,7 +1840,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 5,
     loesung:
-        'Die Daten liegen bei Anbietern, mit denen kein Vertrag zur Auftragsverarbeitung besteht, ein Datenschutzverstoß. Die IT hat keine Kontrolle über Zugriffsrechte, Sicherung und Löschung; verlässt jemand die Firma, bleiben die Daten in seinem privaten Konto. Gegenmaßnahme: ein geprüftes, komfortables Werkzeug offiziell bereitstellen und die Nutzung per Richtlinie und Schulung regeln.',
+        'Die Daten liegen bei Anbietern, mit denen kein Vertrag zur Auftragsverarbeitung besteht. Das ist ein Datenschutzverstoß. Die IT hat keine Kontrolle über Zugriffsrechte, Sicherung und Löschung; verlässt jemand die Firma, bleiben die Daten in seinem privaten Konto. Gegenmaßnahme: ein geprüftes, komfortables Werkzeug offiziell bereitstellen und die Nutzung per Richtlinie und Schulung regeln.',
     explanation:
         'Bewertung: 2 Punkte je erläutertem Risiko, 1 Punkt für die Gegenmaßnahme, höchstens 5 Punkte.',
   ),
@@ -1879,7 +1879,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 5,
     explanation:
-        'Videokonferenz für die gleichzeitige Abstimmung, Wiki für dauerhaftes Wissen, Chat für schnelle Rückfragen, Ticketsystem für nachvollziehbare Vorgänge, gemeinsames Dokument statt vieler Fassungen im E-Mail-Anhang.',
+        'Die Videokonferenz eignet sich für die gleichzeitige Abstimmung, das Wiki für dauerhaftes Wissen, der Chat für schnelle Rückfragen und das Ticketsystem für nachvollziehbare Vorgänge. Ein gemeinsames Dokument ersetzt viele Fassungen im E-Mail-Anhang.',
     difficulty: 1,
   ),
   lueckentext(
@@ -1902,7 +1902,7 @@ final List<Question> ihkA03 = [
     wortbank: ['Schatten-IT', 'Lizenzprüfung', 'Customizing'],
     punkte: 4,
     explanation:
-        'Synchron = gleichzeitig (Telefon, Videokonferenz), asynchron = zeitversetzt (E-Mail, Wiki). Unified Communications bündelt die Kanäle. Verarbeitet ein Anbieter personenbezogene Daten, verlangt die DSGVO einen Vertrag zur Auftragsverarbeitung.',
+        'Synchron heißt gleichzeitig (Telefon, Videokonferenz), asynchron heißt zeitversetzt (E-Mail, Wiki). Unified Communications bündelt die Kanäle. Verarbeitet ein Anbieter personenbezogene Daten, verlangt die DSGVO einen Vertrag zur Auftragsverarbeitung.',
   ),
 
   // ============================================================ OSI und TCP/IP
@@ -1951,7 +1951,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 6,
     explanation:
-        'Schicht 4 Transport: Ports, Segmente. Schicht 3 Vermittlung: IP-Adressen, Pakete. Schicht 2 Sicherung: MAC-Adressen, Frames. Schicht 1 überträgt nur noch Bits.',
+        'Schicht 4 (Transport) arbeitet mit Ports und Segmenten, Schicht 3 (Vermittlung) mit IP-Adressen und Paketen, Schicht 2 (Sicherung) mit MAC-Adressen und Frames. Schicht 1 überträgt nur noch Bits.',
   ),
   freitext(
     'i3-no-3',
@@ -2077,7 +2077,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     explanation:
-        '6 W und 12 W liegen unter 15,4 W: 802.3af genügt. 22 W übersteigt 15,4 W, passt aber in 30 W: 802.3at. 55 W braucht 802.3bt.',
+        '6 W und 12 W liegen unter 15,4 W, also genügt 802.3af. 22 W übersteigt 15,4 W, passt aber in 30 W, also 802.3at. 55 W braucht 802.3bt.',
   ),
   freitext(
     'i3-ng-3',
@@ -2114,7 +2114,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     loesung:
-        'Die Netzwerkdose ist über das fest verlegte Kabel nur mit dem Port 3.07 des Patchfelds verbunden. Weil dort kein Patchkabel zum Switch steckt, hat die Dose keine Verbindung ins Netz. Sie ist nicht gepatcht. Behebung: Port 3.07 mit einem Patchkabel an einen freien Switch-Port anschließen (lassen) oder den PC an eine gepatchte Dose hängen.',
+        'Die Netzwerkdose ist über das fest verlegte Kabel nur mit dem Port 3.07 des Patchfelds verbunden. Weil dort kein Patchkabel zum Switch steckt, hat die Dose keine Verbindung ins Netz, sie ist also nicht gepatcht. Zur Behebung wird Port 3.07 mit einem Patchkabel an einen freien Switch-Port angeschlossen, oder der PC kommt an eine gepatchte Dose.',
     explanation:
         'Bewertung: 2 Punkte für die Ursache, 2 Punkte für die Behebung, höchstens 4 Punkte.',
   ),
@@ -2128,7 +2128,7 @@ final List<Question> ihkA03 = [
     zeilen: [
       nein(
         'Verlegekabel Cat 6A, geschirmt',
-        '10 Gbit/s auf bis zu 100 m: passt.',
+        'Schafft 10 Gbit/s auf bis zu 100 m und passt damit.',
       ),
       ja(
         'Patchkabel Cat 5e',
@@ -2165,7 +2165,7 @@ final List<Question> ihkA03 = [
     wortbank: ['55 m', 'Server', 'Router'],
     punkte: 4,
     explanation:
-        'Primär: zwischen Gebäuden (Glasfaser). Sekundär: zwischen den Etagen. Tertiär: vom Etagenverteiler bis zur Dose: 90 m fest verlegt, mit Patchkabeln zusammen höchstens 100 m.',
+        'Der Primärbereich liegt zwischen Gebäuden (Glasfaser), der Sekundärbereich zwischen den Etagen. Der Tertiärbereich reicht vom Etagenverteiler bis zur Dose: 90 m fest verlegt, mit Patchkabeln zusammen höchstens 100 m.',
   ),
 
   // =========================================================== IPv4 und Subnetting
@@ -2268,7 +2268,7 @@ final List<Question> ihkA03 = [
       nein('Subnetzmaske:    255.255.255.0', 'Passt zu /24.'),
       ja(
         'Standardgateway: 192.168.5.1',
-        'Liegt in einem anderen Netz: richtig wäre 192.168.50.1.',
+        'Liegt in einem anderen Netz, richtig wäre 192.168.50.1.',
       ),
       nein('DNS-Server:      192.168.50.10', 'Entspricht der Vorgabe.'),
       nein(
@@ -2656,7 +2656,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 8,
     explanation:
-        'Kabel: Link-LED prüfen, Kabel tauschen. DHCP: ipconfig zeigt 169.254.x.x, dann Server prüfen und Adresse neu anfordern. Dose: mit einem funktionierenden Gerät oder Tester prüfen, patchen lassen. DNS: IP erreichbar, Name nicht, nslookup, dann DNS-Server prüfen. Je Zelle 1 Punkt.',
+        'Kabel: Link-LED prüfen, Kabel tauschen. DHCP: ipconfig zeigt 169.254.x.x, dann Server prüfen und Adresse neu anfordern. Dose: mit einem funktionierenden Gerät oder Tester prüfen, patchen lassen. DNS: Die IP ist erreichbar, der Name nicht. nslookup bestätigt das, dann den DNS-Server prüfen. Jede Zelle bringt 1 Punkt.',
     tags: ['fehlersuche'],
   ),
   freitext(
@@ -2770,7 +2770,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 5,
     explanation:
-        '„Incoming“ = eingehend: bisher IMAP auf Port 143 ohne Verschlüsselung, künftig IMAP über TLS auf Port 993. „Outgoing“ = ausgehend: Versand per SMTP über Port 587 mit STARTTLS.',
+        '„Incoming“ heißt eingehend: Bisher läuft der Abruf per IMAP auf Port 143 ohne Verschlüsselung, künftig per IMAP über TLS auf Port 993. „Outgoing“ heißt ausgehend: Versendet wird per SMTP über Port 587 mit STARTTLS.',
     tags: ['englisch'],
   ),
   markieren(
@@ -2910,7 +2910,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     loesung:
-        'Vorteile: keine eigene Hardware und keine hohe Anfangsinvestition; der Speicher wächst nach Bedarf mit, und der Anbieter übernimmt Wartung und Ausfallsicherheit. Nachteile: Ohne Internetverbindung kein Zugriff, Abhängigkeit vom Anbieter, und die Daten liegen außer Haus. Datenschutz und Standort müssen geklärt sein.',
+        'Vorteile: keine eigene Hardware und keine hohe Anfangsinvestition; der Speicher wächst nach Bedarf mit, und der Anbieter übernimmt Wartung und Ausfallsicherheit. Nachteile: Ohne Internetverbindung gibt es keinen Zugriff, man ist vom Anbieter abhängig, und die Daten liegen außer Haus. Datenschutz und Standort müssen geklärt sein.',
     explanation:
         'Bewertung: je Nennung 1 Punkt, höchstens 4 Punkte (je zwei Vorteile und Nachteile).',
     difficulty: 1,
@@ -2954,7 +2954,7 @@ final List<Question> ihkA03 = [
     ],
     punkte: 4,
     explanation:
-        'Laufzeit: 22 × 10 h = 220 h, × 0,06 € = 13,20 €. Speicher: 100 GB × 0,05 € = 5,00 €. Zusammen 18,20 €. „Pay as you go“ heißt: bezahlt wird nur die tatsächliche Nutzung.',
+        'Laufzeit: 22 × 10 h = 220 h, × 0,06 € = 13,20 €. Speicher: 100 GB × 0,05 € = 5,00 €. Zusammen 18,20 €. „Pay as you go“ heißt, dass nur die tatsächliche Nutzung bezahlt wird.',
     tags: ['englisch'],
   ),
 ];

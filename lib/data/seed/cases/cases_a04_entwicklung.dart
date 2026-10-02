@@ -85,7 +85,7 @@ final List<ExamCase> casesA04Entwicklung = [
           wahl('double', ['int', 'String', 'boolean'], 'Kommazahl.'),
         ],
         explanation:
-            'Der Klassenname Einsatz steht oben. Attribute haben die Form „Sichtbarkeit Name: Typ“. Nicht zugreifbar von außen heißt private (-). Ganze Minuten: int, vor Ort ja/nein: boolean, Stundensatz mit Komma: double.',
+            'Der Klassenname Einsatz steht oben. Attribute haben die Form „Sichtbarkeit Name: Typ“. Von außen nicht zugreifbar bedeutet private (-). Ganze Minuten sind int, die Angabe „vor Ort“ (ja oder nein) ist boolean, der Stundensatz mit Nachkommastellen double.',
         punkte: 5,
       ),
       tabelle(
@@ -120,7 +120,7 @@ AUSGABE summe''',
           ['Ausgabe', zahl(500, toleranz: 0.005)],
         ],
         explanation:
-            'i = 0: 120 / 60 × 90 = 180, plus 40 Anfahrt = 220. i = 1: 60 / 60 × 90 = 90, nicht vor Ort. i = 2: 100 / 60 × 90 = 150, plus 40 = 190. Summe: 220 + 90 + 190 = 500. 500 > 500 ist falsch, also kein Rabatt, Ausgabe 500.',
+            'i = 0: 120 / 60 × 90 = 180, plus 40 Anfahrt = 220. i = 1: 60 / 60 × 90 = 90, nicht vor Ort. i = 2: 100 / 60 × 90 = 150, plus 40 = 190. Summe: 220 + 90 + 190 = 500. Weil 500 > 500 falsch ist, gibt es keinen Rabatt. Die Ausgabe ist 500.',
         punkte: 9,
         difficulty: 3,
       ),
@@ -132,7 +132,7 @@ AUSGABE summe''',
         prompt: 'Markiere die fehlerhafte Zeile. (2 P.)',
         mono: true,
         zeilen: [
-          nein('summe ← 0', 'Der Startwert einer Summe ist richtig 0.'),
+          nein('summe ← 0', 'Der Startwert 0 ist für eine Summe richtig.'),
           nein('FÜR i VON 0 BIS n - 1', 'Alle n Einsätze werden durchlaufen.'),
           ja(
             '  summe ← minuten[i]',
@@ -141,7 +141,7 @@ AUSGABE summe''',
           nein('ENDE FÜR', 'Schließt die Schleife.'),
           nein(
             'schnitt ← summe / n',
-            'Geteilt wird richtig nach der Schleife.',
+            'Geteilt wird erst nach der Schleife, das ist richtig.',
           ),
           nein('AUSGABE schnitt', 'Die Ausgabe ist in Ordnung.'),
         ],
@@ -413,7 +413,7 @@ print count, gap''',
           ['Göttingen', '16500', zahl(2), zahl(5300)],
         ],
         explanation:
-            'Kassel: 24500 < 20000 ist falsch. Fulda: 20000 < 20000 ist falsch. Der Grenzwert zählt bei < nicht. Marburg: wahr, count = 1, gap = 20000 - 18200 = 1800. Göttingen: wahr, count = 2, gap = 1800 + 3500 = 5300. Ausgegeben werden Marburg und Göttingen, dann 2 und 5300.',
+            'Kassel: 24500 < 20000 ist falsch. Fulda: 20000 < 20000 ist ebenfalls falsch, denn der Grenzwert zählt bei < nicht mit. Marburg: wahr, count = 1, gap = 20000 - 18200 = 1800. Göttingen: wahr, count = 2, gap = 1800 + 3500 = 5300. Ausgegeben werden Marburg und Göttingen, dann 2 und 5300.',
         punkte: 6,
       ),
       freitext(
@@ -485,7 +485,7 @@ AUSGABE anzahl''',
           zahl(3, rationale: '3, 2 und 1 liegen unter 5.'),
         ],
         explanation:
-            'Korrekt ist anzahl ← anzahl + 1. Unter dem Mindestbestand 5 liegen die Bestände 3, 2 und 1, aber die 9 nicht. Der fehlerhafte Code gibt 1 aus, der korrigierte 3.',
+            'Korrekt ist anzahl ← anzahl + 1. Unter dem Mindestbestand 5 liegen die Bestände 3, 2 und 1, die 9 dagegen nicht. Der fehlerhafte Code gibt 1 aus, der korrigierte 3.',
         punkte: 3,
       ),
     ],
@@ -578,7 +578,7 @@ ENDE FUNKTION''',
           ],
         ],
         explanation:
-            'bewerte(48, wahr, 3): 48 > 48 ist falsch, premium wahr, 48 > 24 wahr: „heute lösen“. bewerte(24, falsch, 10): nicht premium, 10 >= 10 wahr: „später“. bewerte(24, wahr, 12): premium, 24 > 24 ist falsch: „bevorzugt“. Offen wird hier nicht geprüft.',
+            'bewerte(48, wahr, 3): 48 > 48 ist falsch, premium wahr, 48 > 24 wahr: „heute lösen“. bewerte(24, falsch, 10): nicht premium, 10 >= 10 wahr: „später“. bewerte(24, wahr, 12): premium, 24 > 24 ist falsch: „bevorzugt“. Der Wert von offen wird in diesem Zweig gar nicht geprüft.',
         punkte: 6,
         difficulty: 3,
       ),
@@ -695,7 +695,7 @@ AUSGABE anz''',
           ),
         ],
         loesung:
-            'Zum Beispiel Wiederverwendbarkeit und Wartbarkeit. Ebenfalls richtig: Erweiterbarkeit, Kapselung der Daten.',
+            'Zum Beispiel Wiederverwendbarkeit und Wartbarkeit. Ebenfalls richtig sind Erweiterbarkeit und die Kapselung der Daten.',
         explanation:
             'Je Nennung 1 Punkt, höchstens 2. Stichworte genügen; andere fachlich richtige Vorteile werden ebenfalls gewertet.',
       ),
@@ -800,7 +800,7 @@ AUSGABE anz''',
           ),
         ],
         loesung:
-            'Zum Beispiel Wiederverwendbarkeit und Erweiterbarkeit. Ebenfalls richtig: Wartbarkeit, Kapselung der Daten.',
+            'Zum Beispiel Wiederverwendbarkeit und Erweiterbarkeit. Ebenfalls richtig sind Wartbarkeit und die Kapselung der Daten.',
         explanation:
             'Je Nennung 1 Punkt, höchstens 2. Stichworte genügen; andere fachlich richtige Vorteile werden ebenfalls gewertet.',
       ),
@@ -821,7 +821,7 @@ AUSGABE anz''',
           wahl('int', ['double', 'String', 'boolean'], 'Ganze Tage.'),
         ],
         explanation:
-            'Der Klassenname Palette steht oben. Kennung als Text: String. Gewicht mit Nachkommastellen: double. Anzahl der Lagertage: int. Nicht von außen zugreifbar heißt private, notiert mit -.',
+            'Der Klassenname Palette steht oben. Die Kennung ist Text, also String. Das Gewicht hat Nachkommastellen (double), die Zahl der Lagertage ist ganzzahlig (int). Von außen nicht zugreifbar bedeutet private, notiert mit -.',
         punkte: 5,
       ),
       tabelle(
@@ -858,7 +858,7 @@ print total''',
           ['Ausgabe', zahl(26.55, toleranz: 0.005)],
         ],
         explanation:
-            'P1: 6,00 + 2,50 (620 > 500) + 4,50 (gekühlt) = 13,00. P2: 500 > 500 ist falsch, ungekühlt: 6,00. P3: 480 > 500 falsch, gekühlt: 6,00 + 4,50 = 10,50. Summe 29,50 >= 25, also 29,50 × 0,9 = 26,55. Je Palette 2 Punkte, 4 Punkte für die Ausgabe.',
+            'P1: 6,00 + 2,50 (620 > 500) + 4,50 (gekühlt) = 13,00. P2: 500 > 500 ist falsch und die Palette ist ungekühlt, also 6,00. P3: 480 > 500 ist falsch, aber gekühlt: 6,00 + 4,50 = 10,50. Die Summe 29,50 ist mindestens 25, also 29,50 × 0,9 = 26,55. Je Palette 2 Punkte, 4 Punkte für die Ausgabe.',
         punkte: 10,
         difficulty: 3,
       ),
@@ -990,7 +990,7 @@ print total''',
         loesung:
             'Die Klasse Projekt ist der Bauplan: Sie legt fest, dass jedes Projekt einen Titel und ein Stundenbudget hat. Ein Objekt ist ein konkretes Projekt mit eigenen Werten, zum Beispiel titel = „Relaunch Stadtwerke“ und budgetStunden = 120. Aus der einen Klasse entstehen hier 14 Objekte.',
         explanation:
-            'Je Begriff 2 Punkte: 1 für die Erklärung, 1 für den Bezug zum Beispiel. Kurz: Klasse = Bauplan, Objekt = Exemplar mit eigenem Zustand.',
+            'Je Begriff 2 Punkte: 1 für die Erklärung, 1 für den Bezug zum Beispiel. Kurz gesagt ist die Klasse der Bauplan und das Objekt ein Exemplar mit eigenem Zustand.',
       ),
       tabelle(
         'f-a04e-agentur2-b',
@@ -1018,7 +1018,7 @@ print total''',
           ],
         ],
         explanation:
-            'Gekapselte Attribute sind private (-): titel als String, budgetStunden als int. Die Methode ist von außen aufrufbar, also public (+), und liefert nichts zurück: void.',
+            'Gekapselte Attribute sind private (-): titel als String, budgetStunden als int. Die Methode ist von außen aufrufbar, also public (+), und liefert nichts zurück, daher void.',
         punkte: 6,
       ),
       tabelle(
@@ -1064,7 +1064,7 @@ AUSGABE ueber''',
           nein('ENDE FÜR', 'Schließt die Schleife.'),
           ja(
             'WENN summe < budget DANN',
-            'Der Vergleich ist vertauscht: gewarnt wird, wenn die Summe unter dem Budget liegt.',
+            'Der Vergleich ist vertauscht: Gewarnt wird, wenn die Summe unter dem Budget liegt.',
           ),
           nein(
             '  AUSGABE "Budget überschritten"',
@@ -1115,7 +1115,7 @@ AUSGABE ueber''',
           ),
         ],
         loesung:
-            'Der Vergleichsoperator ist vertauscht: summe < budget ist nur wahr, wenn das Budget noch nicht erreicht ist. Hier ist die Summe 35, und 35 < 30 ist falsch. Es erscheint keine Warnung. Korrekt ist: WENN summe > budget DANN.',
+            'Der Vergleichsoperator ist vertauscht: summe < budget ist nur wahr, wenn das Budget noch nicht erreicht ist. Hier ist die Summe 35, und 35 < 30 ist falsch, deshalb erscheint keine Warnung. Korrekt ist: WENN summe > budget DANN.',
         explanation:
             'Je 1 Punkt für die Fundstelle (Vergleichsoperator), die Auswirkung (Warnung bleibt aus) und die korrigierte Zeile.',
       ),
@@ -1164,7 +1164,7 @@ AUSGABE betrag''',
           ['k.einloesen(120)', zahl(0)],
         ],
         explanation:
-            'gutschreiben(120): 0 + 120 = 120. einloesen(150): 150 <= 120 ist falsch, abgelehnt, bleibt 120. gutschreiben(-20): -20 > 0 ist falsch, bleibt 120. einloesen(120): 120 <= 120 ist wahr, 120 - 120 = 0.',
+            'gutschreiben(120): 0 + 120 = 120. einloesen(150): 150 <= 120 ist falsch, der Aufruf wird abgelehnt, es bleibt bei 120. gutschreiben(-20): -20 > 0 ist falsch, es bleibt bei 120. einloesen(120): 120 <= 120 ist wahr, 120 - 120 = 0.',
         punkte: 4,
       ),
       tabelle(
@@ -1192,7 +1192,7 @@ AUSGABE punkte''',
           ['3', '250', zahl(50), zahl(83)],
         ],
         explanation:
-            'i = 0: 45 DIV 10 = 4, punkte = 4. i = 1: 100 DIV 10 = 10, 100 >= 100 ist wahr, p = 20, punkte = 24. i = 2: 99 DIV 10 = 9, 99 >= 100 falsch, punkte = 33. i = 3: 250 DIV 10 = 25, verdoppelt 50, punkte = 83. Ausgabe: 83.',
+            'i = 0: 45 DIV 10 = 4, punkte = 4. i = 1: 100 DIV 10 = 10, 100 >= 100 ist wahr, p = 20, punkte = 24. i = 2: 99 DIV 10 = 9, 99 >= 100 ist falsch, punkte = 33. i = 3: 250 DIV 10 = 25, verdoppelt auf 50, punkte = 83. Ausgabe: 83.',
         punkte: 6,
       ),
       lueckentext(
@@ -1220,7 +1220,7 @@ AUSGABE punkte''',
           ], 'Die Buchung existiert nicht ohne ihr Bonuskonto.'),
         ],
         explanation:
-            'Kunde und Bonuskonto stehen 1 zu 1. Ein Bonuskonto hat 0..* Buchungen, jede Buchung gehört zu genau 1 Bonuskonto. Weil die Buchungen mit dem Konto gelöscht werden, ist es eine Komposition, also gefüllte Raute am Ganzen.',
+            'Kunde und Bonuskonto stehen im Verhältnis 1 zu 1. Ein Bonuskonto hat 0..* Buchungen, jede Buchung gehört zu genau 1 Bonuskonto. Weil die Buchungen mit dem Konto gelöscht werden, ist es eine Komposition mit gefüllter Raute am Ganzen.',
         punkte: 5,
       ),
       freitext(

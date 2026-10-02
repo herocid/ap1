@@ -2367,7 +2367,7 @@ final List<Nugget> nuggetsA04Daten = [
     ],
     ergebnis: '20 TiB',
     merksatz:
-        'Vier Stolperstellen: Bit in Byte (/ 8), Zeit in Sekunden, Mbit dezimal, TiB binär, und am Ende aufrunden.',
+        'Fünf Stolperstellen: Bit in Byte (/ 8), Zeit in Sekunden, Mbit dezimal, TiB binär und am Ende aufrunden.',
   ),
   falle(
     'n-md-12',
@@ -3056,7 +3056,7 @@ final List<Nugget> nuggetsA04Daten = [
     'n-ie-8',
     'ki-einsatz',
     'KI sicher im Unternehmen einsetzen',
-    'Unternehmen regeln den KI-Einsatz meist in einer Richtlinie: welche Werkzeuge erlaubt sind und welche Daten hinein dürfen. Seit Februar 2025 verlangt die EU-KI-Verordnung außerdem, dass Mitarbeitende, die KI einsetzen, ausreichend geschult sind (KI-Kompetenz).',
+    'Unternehmen regeln den KI-Einsatz meist in einer Richtlinie: welche Werkzeuge erlaubt sind und welche Daten hinein dürfen. Seit Februar 2025 verlangt die EU-KI-Verordnung außerdem Maßnahmen, damit Mitarbeitende, die KI einsetzen, die nötige KI-Kompetenz aufbauen, etwa durch Schulungen.',
     points: [
       'Unternehmenslizenz statt privatem Konto',
       'Auftragsverarbeitungsvertrag (AVV) nach DSGVO mit dem Anbieter',

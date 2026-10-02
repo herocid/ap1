@@ -39,8 +39,8 @@ final List<ExamCase> casesA01Planung = [
           ['Summe', zahl(7), zahl(8), zahl(9)],
         ],
         explanation:
-            'Einzug: 100 Blatt ist am besten (3), 80 Blatt (2), 50 Blatt (1). Bei Wartung und Preis ist der kleinste Wert der beste: Aktiv 3000 erhält je 3 Punkte, DocuJet S je 1 Punkt.\n'
-            'Summen: ScanPro 40 2 + 1 + 2 + 2 = 7, DocuJet S 3 + 3 + 1 + 1 = 8, Aktiv 3000 1 + 2 + 3 + 3 = 9.\n'
+            'Beim Einzug sind 100 Blatt am besten (3 Punkte), es folgen 80 Blatt (2) und 50 Blatt (1). Bei Wartung und Preis ist der kleinste Wert der beste: Aktiv 3000 erhält je 3 Punkte, DocuJet S je 1 Punkt.\n'
+            'Summen: ScanPro 40: 2 + 1 + 2 + 2 = 7, DocuJet S: 3 + 3 + 1 + 1 = 8, Aktiv 3000: 1 + 2 + 3 + 3 = 9.\n'
             'Auflösung und Schnittstellen stehen in der Datentabelle, gehören aber nicht zu den vier Kriterien.',
       ),
       lueckentext(
@@ -123,9 +123,9 @@ final List<ExamCase> casesA01Planung = [
           ),
         ],
         loesung:
-            'Standardpasswort des Administrators ändern, verschlüsselte Übertragung (TLS) für Scan-to-E-Mail einschalten, Scan-Ziele auf freigegebene Netzlaufwerke beschränken, Firmware-Updates zeitnah einspielen. Außerdem: Scans nach jedem Auftrag automatisch aus dem Gerätespeicher löschen.',
+            'Standardpasswort des Administrators ändern, verschlüsselte Übertragung (TLS) für Scan-to-E-Mail einschalten, Scan-Ziele auf freigegebene Netzlaufwerke beschränken, Firmware-Updates zeitnah einspielen. Außerdem sollten Scans nach jedem Auftrag automatisch aus dem Gerätespeicher gelöscht werden.',
         explanation:
-            'Im Text stehen fünf Maßnahmen, vier werden verlangt, also je Nennung 1 Punkt. Geantwortet wird auf Deutsch, Stichworte genügen.',
+            'Im Text stehen fünf Maßnahmen, verlangt sind vier. Jede Nennung bringt 1 Punkt. Du antwortest auf Deutsch, Stichworte genügen.',
       ),
       freitext(
         'f-a01w-systemhaus-e',
@@ -157,7 +157,7 @@ final List<ExamCase> casesA01Planung = [
             ],
           ),
           krit(
-            'Folge: Die Entscheidung kann am tatsächlichen Bedarf vorbeigehen.',
+            'Dadurch kann die Entscheidung am tatsächlichen Bedarf vorbeigehen.',
             stichwoerter: [
               'Bedarf',
               'falsche Entscheidung',
@@ -169,7 +169,7 @@ final List<ExamCase> casesA01Planung = [
         loesung:
             'Ohne Gewichtung zählt jedes Kriterium gleich viel. Ist der Kanzlei zum Beispiel das Scantempo viel wichtiger als der Preis, bildet die Matrix das nicht ab. Die Entscheidung kann deshalb am tatsächlichen Bedarf vorbeigehen.',
         explanation:
-            'Nachteil 2 Punkte, Folge 1 Punkt. Im Beispiel gewinnt das langsamste Gerät, weil Preis und Wartung genauso viel zählen wie das Scantempo.',
+            'Der Nachteil bringt 2 Punkte, die Folge 1 Punkt. Im Beispiel gewinnt das langsamste Gerät, weil Preis und Wartung genauso viel zählen wie das Scantempo.',
       ),
       lueckentext(
         'f-a01w-systemhaus-f',
@@ -190,7 +190,7 @@ final List<ExamCase> casesA01Planung = [
         ],
         explanation:
             'Umsatzsteuer: 864 € × 0,19 = 164,16 €, brutto 1.028,16 €\n'
-            'Skonto: 1.028,16 € × 0,02 = 20,5632 €, gerundet 20,56 €; Basis ist der Bruttobetrag\n'
+            'Skonto: 1.028,16 € × 0,02 = 20,5632 €, gerundet 20,56 € (Basis ist der Bruttobetrag)\n'
             'Überweisung: 1.028,16 € - 20,56 € = 1.007,60 €',
       ),
       freitext(
@@ -252,7 +252,7 @@ final List<ExamCase> casesA01Planung = [
         loesung:
             'Risiko 1: Der Scanner wird nicht rechtzeitig zum Umzug geliefert. Maßnahme: verbindlichen Liefertermin vereinbaren und ein Leihgerät einplanen. Risiko 2: Der einzige Scanner fällt aus und der Posteingang staut sich. Maßnahme: Wartungsvertrag mit Austauschgerät abschließen.',
         explanation:
-            'Je Risiko mit Maßnahme 2 Punkte, höchstens 4. Andere sinnvolle Risiken sind möglich. Entscheidend ist, dass die Maßnahme zum Risiko passt.',
+            'Jedes Risiko mit Maßnahme bringt 2 Punkte, höchstens 4. Andere sinnvolle Risiken sind möglich. Entscheidend ist, dass die Maßnahme zum Risiko passt.',
       ),
     ],
   ),
@@ -366,7 +366,7 @@ final List<ExamCase> casesA01Planung = [
         loesung:
             'Zum Beispiel: kürzere Lieferzeit, besserer Service bei Störungen und längere Garantie. Auch Zuverlässigkeit, Qualität der Geräte oder günstigere Zahlungsbedingungen können den Ausschlag geben.',
         explanation:
-            'Je Nennung 1 Punkt, höchstens 3. Der Bezugspreis ist nur der quantitative Teil des Angebotsvergleichs. Qualitative Kriterien können ihn überstimmen.',
+            'Jede Nennung bringt 1 Punkt, höchstens 3. Der Bezugspreis ist nur der quantitative Teil des Angebotsvergleichs. Qualitative Kriterien können ihn überstimmen.',
       ),
       freitext(
         'f-a01w-handel-c',
@@ -401,7 +401,7 @@ final List<ExamCase> casesA01Planung = [
         loesung:
             'Beim Leasing überlässt der Leasinggeber die Notebooks für eine fest vereinbarte Laufzeit gegen monatliche Raten zur Nutzung. Eigentümer bleibt der Leasinggeber (die Bank), Besitzer ist der Leasingnehmer Grünwerk, der die Geräte tatsächlich in Händen hat.',
         explanation:
-            'Grundprinzip 2 Punkte, Eigentümer und Besitzer je 1 Punkt. Eigentum ist die rechtliche Herrschaft über die Sache, Besitz die tatsächliche.',
+            'Das Grundprinzip bringt 2 Punkte, Eigentümer und Besitzer je 1 Punkt. Eigentum ist die rechtliche Herrschaft über die Sache, Besitz die tatsächliche.',
       ),
       rechnen(
         'f-a01w-handel-d',
@@ -418,7 +418,7 @@ final List<ExamCase> casesA01Planung = [
             'Leasing: 20 × 27,50 € × 36 Monate = 19.800,00 €\n'
             'Kauf: 16.903,04 € (Bürowelt24)\n'
             'Mehrkosten des Leasings: 19.800,00 € - 16.903,04 € = 2.896,96 €\n'
-            'Mit dem Ersatzwert 16.900,00 € ergeben sich 2.900,00 €; auch das wird gewertet.',
+            'Mit dem Ersatzwert 16.900,00 € ergeben sich 2.900,00 €. Auch dieses Ergebnis wird gewertet.',
       ),
       freitext(
         'f-a01w-handel-e',
@@ -428,7 +428,7 @@ final List<ExamCase> casesA01Planung = [
         punkte: 3,
         kriterien: [
           krit(
-            'Die Liquidität bleibt erhalten: keine hohe Anfangsinvestition',
+            'Die Liquidität bleibt erhalten, weil keine hohe Anfangsinvestition anfällt',
             stichwoerter: [
               'Liquidität',
               'Anfangsinvestition',
@@ -468,7 +468,7 @@ final List<ExamCase> casesA01Planung = [
         loesung:
             'Die Liquidität bleibt erhalten, weil keine hohe Anfangsinvestition anfällt. Die monatlichen Raten sind gleichbleibend und gut planbar. Nach 36 Monaten können aktuelle Geräte geleast werden.',
         explanation:
-            'Je Nennung 1 Punkt, höchstens 3. Dem stehen die höheren Gesamtkosten und die feste Bindung über die Laufzeit gegenüber.',
+            'Jede Nennung bringt 1 Punkt, höchstens 3. Dem stehen die höheren Gesamtkosten und die feste Bindung über die Laufzeit gegenüber.',
       ),
       lueckentext(
         'f-a01w-handel-f',
@@ -629,9 +629,9 @@ final List<ExamCase> casesA01Planung = [
           ),
         ],
         loesung:
-            'Enthalten sind: unbegrenzt viele Tickets und Kundenkontakte, Software-Updates während der Vertragslaufzeit, E-Mail-Support an Werktagen (Antwort innerhalb von 8 Stunden) und eine zweistündige Einführung per Fernsitzung. Außerdem eine mobile App.',
+            'Enthalten sind unbegrenzt viele Tickets und Kundenkontakte, Software-Updates während der Vertragslaufzeit, E-Mail-Support an Werktagen (Antwort innerhalb von 8 Stunden) und eine zweistündige Einführung per Fernsitzung. Dazu kommt eine mobile App.',
         explanation:
-            'Je Nennung 1 Punkt, höchstens 4. Nicht enthalten sind Installation vor Ort, Datenübernahme und individuelle Schulung. Diese Kosten kommen im Vergleich dazu.',
+            'Jede Nennung bringt 1 Punkt, höchstens 4. Nicht enthalten sind Installation vor Ort, Datenübernahme und individuelle Schulung. Diese Kosten kommen im Vergleich noch hinzu.',
       ),
       lueckentext(
         'f-a01w-agentur-e',
@@ -705,7 +705,7 @@ final List<ExamCase> casesA01Planung = [
         loesung:
             'Die Agentur sollte kaufen. Mit 12 Nutzern liegt sie weit unter dem Gleichstand von 50 Nutzern: Der Kauf kostet 12 × 180 € = 2.160 € im Jahr, die Eigenentwicklung 9.000 €. Außerdem würden 400 Entwicklerstunden für bezahlte Kundenprojekte fehlen.',
         explanation:
-            'Je Argument 2 Punkte, höchstens 4. Eine begründete Entscheidung für die Eigenentwicklung (etwa wegen sehr spezieller Abläufe) wäre ebenfalls zu werten. Die Rechnung spricht hier aber klar für den Kauf.',
+            'Jedes Argument bringt 2 Punkte, höchstens 4. Eine begründete Entscheidung für die Eigenentwicklung (etwa wegen sehr spezieller Abläufe) wäre ebenfalls zu werten. Die Rechnung spricht hier aber klar für den Kauf.',
       ),
     ],
   ),
@@ -799,7 +799,7 @@ final List<ExamCase> casesA01Planung = [
             stichwoerter: ['LagerTec', 'Lager Tec', 'Lagertech'],
           ),
           krit(
-            'LagerTec hat mit 70 Punkten die höchste gewichtete Summe, trotz des höchsten Preises; nur LagerTec und HandyScan liefern vor dem Hallenstart.',
+            'LagerTec hat trotz des höchsten Preises mit 70 Punkten die höchste gewichtete Summe. Außerdem liefern nur LagerTec und HandyScan vor dem Hallenstart.',
             stichwoerter: [
               '70',
               'höchste Summe',
@@ -865,7 +865,7 @@ final List<ExamCase> casesA01Planung = [
             ],
           ),
           krit(
-            'Geräte fallen im Schichtbetrieb aus: Ersatzgeräte vorhalten, Wartungsvertrag mit schnellem Austausch',
+            'Geräte fallen im Schichtbetrieb aus: Ersatzgeräte vorhalten und Wartungsvertrag mit schnellem Austausch abschließen',
             punkte: 2,
             stichwoerter: [
               'Ausfall',
@@ -905,7 +905,7 @@ final List<ExamCase> casesA01Planung = [
         loesung:
             'Risiko 1: Scanner fallen im Schichtbetrieb aus und die Einlagerung stockt. Maßnahme: Ersatzgeräte vorhalten und einen Wartungsvertrag mit Austausch am nächsten Werktag abschließen. Risiko 2: Das WLAN der neuen Halle hat Funklücken. Maßnahme: Ausleuchtung vor dem Start messen und Access Points ergänzen.',
         explanation:
-            'Je Risiko mit passender Maßnahme 2 Punkte, höchstens 4. Andere sinnvolle Risiken sind möglich.',
+            'Jedes Risiko mit passender Maßnahme bringt 2 Punkte, höchstens 4. Andere sinnvolle Risiken sind möglich.',
       ),
     ],
   ),

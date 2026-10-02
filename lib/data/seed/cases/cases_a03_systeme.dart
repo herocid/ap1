@@ -38,7 +38,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 6,
         explanation:
-            'Bei Tempo ist der größte Wert der beste, bei Wartung und Preis der kleinste. Scannen: C 3, B 2, A 1. Wartung: B 3, A 2, C 1. Preis: A 3, C 2, B 1. Summen: A 7, B 9, C 8. Gewählt wird Gerät B.',
+            'Beim Tempo ist der größte Wert der beste, bei Wartung und Preis der kleinste. Scannen: C 3, B 2, A 1. Wartung: B 3, A 2, C 1. Preis: A 3, C 2, B 1. Summen: A 7, B 9, C 8. Gewählt wird Gerät B.',
       ),
       rechnen(
         'f-a03h-systemhaus-b',
@@ -67,7 +67,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 4,
         explanation:
-            'RJ45 nimmt das Netzwerkkabel auf, USB-A und USB-C dienen dem direkten Anschluss an einen PC oder einem USB-Stick, in die Kaltgerätebuchse kommt das 230-V-Netzkabel. Je Zuordnung 1 Punkt.',
+            'RJ45 nimmt das Netzwerkkabel auf. Über USB-A und USB-C wird ein PC direkt angeschlossen oder ein USB-Stick eingesteckt. In die Kaltgerätebuchse kommt das 230-V-Netzkabel. Je Zuordnung 1 Punkt.',
       ),
       lueckentext(
         'f-a03h-systemhaus-d',
@@ -99,7 +99,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 3,
         explanation:
-            '/26 = 64 Adressen: Netz 192.168.40.0, Broadcast 192.168.40.63. Letzte nutzbare Adresse .62 (Gateway), vorletzte .61 (Gerät). Maske 255.255.255.192.',
+            'Ein /26-Netz hat 64 Adressen: Netzadresse 192.168.40.0, Broadcast 192.168.40.63. Die letzte nutzbare Adresse .62 bekommt das Gateway, die vorletzte .61 das Gerät. Die Maske lautet 255.255.255.192.',
       ),
       freitext(
         'f-a03h-systemhaus-e',
@@ -246,7 +246,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 4,
         explanation:
-            '/25: Maske 255.255.255.128, Blockgröße 128, 2⁷ - 2 = 126 nutzbare Adressen. Die 140 liegt im oberen Teilnetz: Netz 192.168.75.128, Broadcast 192.168.75.255. Je Wert 1 Punkt.',
+            'Bei /25 lautet die Maske 255.255.255.128, die Blockgröße ist 128, und es gibt 2⁷ - 2 = 126 nutzbare Adressen. Die 140 liegt im oberen Teilnetz, also ist 192.168.75.128 die Netzadresse und 192.168.75.255 der Broadcast. Je Wert 1 Punkt.',
       ),
       tabelle(
         'f-a03n-systemhaus-b',
@@ -301,7 +301,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 8,
         explanation:
-            'Kabel: Link-LED prüfen, Kabel tauschen. Adresse: mit ipconfig prüfen, richtige Adresse zuweisen. Dose: mit funktionierendem Gerät oder Tester prüfen, patchen lassen. DNS: ping auf den Namen und nslookup, dann den DNS-Server prüfen. Je Zelle 1 Punkt.',
+            'Ein defektes Kabel verrät die dunkle Link-LED, du tauschst es. Eine falsche Adresse zeigt ipconfig, du weist die richtige zu. Eine ungepatchte Dose prüfst du mit einem funktionierenden Gerät oder Tester und lässt sie patchen. Bei gestörter Namensauflösung helfen ping auf den Namen und nslookup, danach prüfst du den DNS-Server. Je Zelle 1 Punkt.',
         tags: ['fehlersuche'],
       ),
       freitext(
@@ -376,7 +376,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 3,
         loesung:
-            'Dual Stack: Arbeitsplätze, Router und, soweit möglich, Server erhalten sowohl eine IPv4- als auch eine IPv6-Adresse. Die Kanzleisoftware wird weiter über IPv4 angesprochen, Ziele mit IPv6 über IPv6. Alternativ Tunneling: IPv6-Pakete werden in IPv4-Pakete verpackt und am Tunnelende wieder ausgepackt.',
+            'Bei Dual Stack erhalten Arbeitsplätze, Router und, soweit möglich, Server sowohl eine IPv4- als auch eine IPv6-Adresse. Die Kanzleisoftware wird weiter über IPv4 angesprochen, Ziele mit IPv6 über IPv6. Eine Alternative ist Tunneling: IPv6-Pakete werden in IPv4-Pakete verpackt und am Tunnelende wieder ausgepackt.',
         explanation:
             'Bewertung: Eine erläuterte Möglichkeit ergibt 3 Punkte (Dual Stack oder Tunneling).',
       ),
@@ -561,7 +561,7 @@ final List<ExamCase> casesA03 = [
           ),
         ],
         loesung:
-            'Das Terminal braucht bei 5 V rund 4,8 A. Ein USB-A-Port liefert nur 0,5 bis 0,9 A, selbst USB-C ohne Power Delivery höchstens 3 A, und am Kassen-PC hängen weitere USB-Geräte. Das Terminal ist unterversorgt, startet neu oder fällt aus. Empfehlung: das mitgelieferte Netzteil nutzen und dafür Steckdosen nachrüsten.',
+            'Das Terminal braucht bei 5 V rund 4,8 A. Ein USB-A-Port liefert nur 0,5 bis 0,9 A, selbst USB-C ohne Power Delivery höchstens 3 A, und am Kassen-PC hängen weitere USB-Geräte. Das Terminal ist unterversorgt, startet neu oder fällt aus. Besser ist es, das mitgelieferte Netzteil zu nutzen und dafür Steckdosen nachzurüsten.',
         punkte: 3,
         explanation:
             'Bewertung: 2 Punkte für die Begründung (Port liefert zu wenig, Versorgung instabil), 1 Punkt für die Empfehlung.',
@@ -634,7 +634,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 3,
         explanation:
-            '/24: Maske 255.255.255.0, Hostadressen .1 bis .254, Broadcast .255. Letzte mögliche Adresse 10.44.2.254; Gateway ist der Router mit 10.44.2.1. Je Wert 1 Punkt.',
+            'Bei /24 lautet die Maske 255.255.255.0, die Hostadressen reichen von .1 bis .254, Broadcast ist .255. Die letzte mögliche Adresse ist also 10.44.2.254, das Gateway ist der Router mit 10.44.2.1. Je Wert 1 Punkt.',
       ),
       freitext(
         'f-a03h-handel-f',
@@ -850,7 +850,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 4,
         explanation:
-            'Abgerufen wird verschlüsselt per IMAPS auf Port 993, versendet per SMTP (Mailprogramme liefern über Port 587 mit STARTTLS ein). Je Zelle 1 Punkt.',
+            'Abgerufen wird verschlüsselt per IMAPS auf Port 993. Versendet wird per SMTP, Mailprogramme liefern dabei über Port 587 mit STARTTLS ein. Je Zelle 1 Punkt.',
       ),
       lueckentext(
         'f-a03n-handel-e',
@@ -873,7 +873,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 5,
         explanation:
-            '/26: Maske 255.255.255.192, Blockgröße 64, 62 nutzbare Adressen. Die 75 liegt im Block 64 bis 127: Netz 10.20.64.64, Broadcast 10.20.64.127, erste nutzbare Adresse 10.20.64.65. Je Wert 1 Punkt.',
+            'Bei /26 lautet die Maske 255.255.255.192, die Blockgröße ist 64, nutzbar sind 62 Adressen. Die 75 liegt im Block 64 bis 127. Daraus folgen Netz 10.20.64.64, Broadcast 10.20.64.127 und die erste nutzbare Adresse 10.20.64.65. Je Wert 1 Punkt.',
       ),
       freitext(
         'f-a03n-handel-f',
@@ -932,7 +932,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 3,
         explanation:
-            'Auffällig sind die Werte zum Konferenzserver: hoher Mittelwert, großes Maximum und Paketverlust. Folge sind ruckelnde Bilder, abgehackter Ton und Abbrüche. Heimnetz und Mailserver sind unauffällig.',
+            'Auffällig sind die Werte zum Konferenzserver: hoher Mittelwert, großes Maximum und Paketverlust. Die Folge sind ruckelnde Bilder, abgehackter Ton und Abbrüche. Heimnetz und Mailserver sind unauffällig.',
       ),
       freitext(
         'f-a03n-handel-h',
@@ -1068,7 +1068,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 1,
         loesung:
-            'Zum PC führt nur ein Kabel: Der Arbeitsplatz bleibt aufgeräumt, und am PC wird nur ein Bildausgang belegt.',
+            'Zum PC führt nur ein Kabel. Der Arbeitsplatz bleibt dadurch aufgeräumt, und am PC wird nur ein Bildausgang belegt.',
         explanation: 'Bewertung: Eine richtige Nennung ergibt 1 Punkt.',
       ),
       freitext(
@@ -1182,7 +1182,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 4,
         loesung:
-            'Ein separater, größerer und höhenverstellbarer Bildschirm, externe Tastatur und Maus, ein höhenverstellbarer Schreibtisch und ein ergonomischer Bürostuhl. Für die Grafikarbeit zusätzlich mehrere Bildschirme mit hoher Auflösung.',
+            'Sinnvoll sind ein separater, größerer und höhenverstellbarer Bildschirm, externe Tastatur und Maus, ein höhenverstellbarer Schreibtisch und ein ergonomischer Bürostuhl. Für die Grafikarbeit helfen zusätzlich mehrere Bildschirme mit hoher Auflösung.',
         explanation: 'Bewertung: je Nennung 1 Punkt, höchstens 4 Punkte.',
       ),
       freitext(
@@ -1283,7 +1283,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 4,
         explanation:
-            'Schicht 7 Anwendung: DHCP ist ein Anwendungsprotokoll. Schicht 3 Vermittlung: IP-Adressen. Schicht 2 Sicherung: MAC-Adressen. Schicht 1 Bitübertragung: Buchsen, Kabel, Signale. Je Zeile 1 Punkt.',
+            'Auf Schicht 7 (Anwendung) arbeitet DHCP als Anwendungsprotokoll. Schicht 3 (Vermittlung) adressiert mit IP-Adressen, Schicht 2 (Sicherung) mit MAC-Adressen. Zu Schicht 1 (Bitübertragung) gehören Buchsen, Kabel und Signale. Je Zeile 1 Punkt.',
       ),
       lueckentext(
         'f-a03n-agentur-c',
@@ -1314,7 +1314,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 5,
         explanation:
-            'Maske 255.255.255.224 = /27, Blockgröße 256 - 224 = 32, 30 nutzbare Adressen. Blöcke: 64, 96, 128; die 108 liegt im Block 96 bis 127. Netz 10.30.5.96, Broadcast 10.30.5.127, letzte nutzbare Adresse 10.30.5.126. Je Wert 1 Punkt.',
+            'Die Maske 255.255.255.224 entspricht /27, die Blockgröße ist 256 - 224 = 32, nutzbar sind 30 Adressen. Die Blöcke beginnen bei 64, 96 und 128, die 108 liegt also im Block 96 bis 127. Daraus folgen Netz 10.30.5.96, Broadcast 10.30.5.127 und die letzte nutzbare Adresse 10.30.5.126. Je Wert 1 Punkt.',
       ),
       freitext(
         'f-a03n-agentur-d',
@@ -1457,7 +1457,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 3,
         explanation:
-            'HTTPS 443, SSH 22, IMAPS 993. Alle übrigen Ports bleiben in der Firewall geschlossen. Je Port 1 Punkt.',
+            'HTTPS nutzt Port 443, SSH Port 22 und IMAPS Port 993. Alle übrigen Ports bleiben in der Firewall geschlossen. Je Port 1 Punkt.',
       ),
     ],
   ),
@@ -1519,7 +1519,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 4,
         loesung:
-            'Die Kamera wird ohne voreingestelltes Passwort geliefert. Bei der ersten Anmeldung muss deshalb ein eigenes, sicheres Passwort vergeben und dokumentiert werden; vorher ist kein Zugriff möglich. Vorteil: Es gibt kein Passwort, das alle Geräte des Herstellers teilen und das Angreifer aus dem Handbuch kennen.',
+            'Die Kamera wird ohne voreingestelltes Passwort geliefert. Bei der ersten Anmeldung muss deshalb ein eigenes, sicheres Passwort vergeben und dokumentiert werden; vorher ist kein Zugriff möglich. Das hat einen Vorteil: Es gibt kein Passwort, das alle Geräte des Herstellers teilen und das Angreifer aus dem Handbuch kennen.',
         explanation:
             'Bewertung: 2 Punkte je beschriebener Konsequenz, höchstens 4 Punkte.',
         tags: ['englisch', 'datenblatt'],
@@ -1718,7 +1718,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 3,
         explanation:
-            'Subnetz 10.50.8.64/26: Hosts .65 bis .126, Broadcast .127. Vorletzte nutzbare Adresse 10.50.8.125, Maske 255.255.255.192, Gateway 10.50.8.65. Je Wert 1 Punkt.',
+            'Im Subnetz 10.50.8.64/26 reichen die Hosts von .65 bis .126, Broadcast ist .127. Die vorletzte nutzbare Adresse ist 10.50.8.125, die Maske 255.255.255.192 und das Gateway 10.50.8.65. Je Wert 1 Punkt.',
       ),
       freitext(
         'f-a03n-logistik-c',
@@ -1743,7 +1743,7 @@ final List<ExamCase> casesA03 = [
           ),
         ],
         loesung:
-            'PC und Kabel sind in Ordnung, denn an Dose 6 funktioniert alles. Dose 5 endet im Verteilerschrank am Patchfeld-Port 5, der nicht per Patchkabel mit dem Switch verbunden ist. Die Dose ist nicht gepatcht. Lösung: Port 5 an einen freien Switch-Port patchen oder den PC an Dose 6 betreiben.',
+            'PC und Kabel sind in Ordnung, denn an Dose 6 funktioniert alles. Dose 5 endet im Verteilerschrank am Patchfeld-Port 5, der nicht per Patchkabel mit dem Switch verbunden ist. Die Dose ist also nicht gepatcht. Als Lösung wird Port 5 an einen freien Switch-Port gepatcht oder der PC an Dose 6 betrieben.',
         punkte: 3,
         explanation:
             'Bewertung: 2 Punkte für die Ursache, 1 Punkt für die Lösung.',
@@ -1767,7 +1767,7 @@ final List<ExamCase> casesA03 = [
         ],
         punkte: 4,
         explanation:
-            'Ausgeschrieben hat jeder Block vier Hex-Ziffern: 2001:0db8:05a0 (48 Bit) und 001c (16 Bit). Mit 16 Bit lassen sich 2¹⁶ = 65.536 Subnetze bilden. Die Geräteadresse: 2001:db8:5a0:1c::20. Je Wert 1 Punkt.',
+            'Ausgeschrieben hat jeder Block vier Hex-Ziffern: 2001:0db8:05a0 (48 Bit) und 001c (16 Bit). Mit 16 Bit lassen sich 2¹⁶ = 65.536 Subnetze bilden. Die Geräteadresse lautet 2001:db8:5a0:1c::20. Je Wert 1 Punkt.',
       ),
       freitext(
         'f-a03n-logistik-e',

@@ -59,7 +59,7 @@ final List<Question> questionsA01Planung = [
       ),
     ],
     explanation:
-        'Objektorientiert: Bestandteile des Ergebnisses. Funktionsorientiert: Tätigkeiten. Phasenorientiert: Projektphasen.',
+        'Objektorientiert gliedert nach Bestandteilen des Ergebnisses, funktionsorientiert nach Tätigkeiten und phasenorientiert nach Projektphasen.',
   ),
   freitext(
     'a1-tp-3',
@@ -134,7 +134,7 @@ final List<Question> questionsA01Planung = [
       nein('3.2', 'Das wäre das zweite Element unter Teilaufgabe 3.'),
       nein(
         '2.0.3',
-        'Jede Ebene bekommt genau eine Stelle. Eine Null dazwischen gibt es nicht.',
+        'Jede Ebene bekommt genau eine Zahl. Eine Null dazwischen gibt es nicht.',
       ),
       nein('3', 'Das wäre eine eigene Teilaufgabe auf Ebene 1.'),
     ],
@@ -212,7 +212,7 @@ final List<Question> questionsA01Planung = [
     'a1-tg-2',
     't-gantt',
     scenario:
-        'Gleicher Plan wie zuvor: A 0-2, B 2-4, C 2-5, D 5-7 (braucht B und C), E 7-8.',
+        'Der Plan für einen Serverumzug: A 0-2, B 2-4, C 2-5, D 5-7 (braucht B und C), E 7-8.',
     skizze: const GanttDiagramm([
       GanttVorgang('A Umzug planen', 0, 2, kritisch: true),
       GanttVorgang('B Rack aufbauen', 2, 2),
@@ -229,11 +229,11 @@ final List<Question> questionsA01Planung = [
       ),
       nein(
         'B, 2 Tage',
-        'D startet bei 5, B endet bei 4: der Abstand ist 1 Tag, nicht 2.',
+        'D startet bei 5, B endet bei 4. Der Abstand beträgt also 1 Tag, nicht 2.',
       ),
       nein(
         'C, 1 Tag',
-        'C endet genau bei 5, wenn D beginnt, also C liegt auf dem kritischen Pfad.',
+        'C endet genau bei 5, wenn D beginnt. C liegt also auf dem kritischen Pfad.',
       ),
       nein(
         'Kein Vorgang hat Puffer',
@@ -322,7 +322,7 @@ final List<Question> questionsA01Planung = [
     choices: [
       ja(
         'Die Prognosen waren unsicher, die Planung hat stark geschwankt.',
-        'Ein Zickzack zeigt instabile Schätzungen, also ein Warnsignal für die Planungsqualität.',
+        'Ein Zickzack zeigt instabile Schätzungen und ist ein Warnsignal für die Planungsqualität.',
       ),
       nein(
         'Das Projekt war gut geplant, weil der Termin am Ende stimmt.',
@@ -338,7 +338,7 @@ final List<Question> questionsA01Planung = [
       ),
     ],
     explanation:
-        'MTA-Lesehilfe: waagerecht = Termin hält, steigend = Verzug, fallend = früher fertig, Zickzack = unsichere Planung. Die MTA zeigt den Trend, nicht die Ursache.',
+        'So liest du die MTA: Eine waagerechte Linie heißt, der Termin hält, eine steigende Verzug, eine fallende früher fertig. Zickzack steht für unsichere Planung. Die MTA zeigt den Trend, nicht die Ursache.',
   ),
   reihenfolge(
     'a1-tg-6',
@@ -393,7 +393,7 @@ final List<Question> questionsA01Planung = [
       paar('Kapazität', 'Verfügbare Personentage im Zeitraum'),
     ],
     explanation:
-        'Aufwand = Arbeitsmenge (PT), Dauer = Kalenderzeit (AT). Mehr Personen senken die Dauer, nicht den Aufwand. Die Kapazität ergibt sich aus Arbeitstagen mal Verfügbarkeit.',
+        'Aufwand = Arbeitsmenge (PT), Dauer = Zeitspanne (AT). Mehr Personen senken die Dauer, nicht den Aufwand. Die Kapazität ergibt sich aus Arbeitstagen mal Verfügbarkeit.',
   ),
   rechnen(
     'a1-tr-3',
@@ -410,7 +410,7 @@ final List<Question> questionsA01Planung = [
         'Ben: 21 AT × 0,5 = 10,5 PT\n'
         'Can: (21 - 6) AT × 0,8 = 15 × 0,8 = 12,0 PT\n'
         'Summe: 21,0 + 10,5 + 12,0 = 43,5 PT\n'
-        'Wichtig: erst die Urlaubstage abziehen, dann mit der Verfügbarkeit multiplizieren.',
+        'Ziehe erst die Urlaubstage ab und multipliziere dann mit der Verfügbarkeit.',
   ),
   rechnen(
     'a1-tr-4',
@@ -458,7 +458,7 @@ final List<Question> questionsA01Planung = [
       ),
       ja(
         'Für KW 12 externe Unterstützung einkaufen',
-        'Zusätzliche Kapazität löst den Engpass, aber kostet aber Geld.',
+        'Zusätzliche Kapazität löst den Engpass, kostet aber Geld.',
       ),
       nein(
         'Die Überlast ignorieren, weil sie nur eine Woche dauert',
@@ -513,7 +513,7 @@ final List<Question> questionsA01Planung = [
       'Risiken überwachen',
     ],
     explanation:
-        'Ein Kreislauf: Nach dem Überwachen beginnt die Identifikation neuer Risiken von vorn.',
+        'Das Risikomanagement ist ein Kreislauf: Nach dem Überwachen beginnt die Identifikation neuer Risiken von vorn.',
   ),
   markieren(
     'a1-rp-2',
@@ -728,7 +728,7 @@ final List<Question> questionsA01Planung = [
       ),
     ],
     loesung:
-        'Ein Frühwarnindikator ist ein beobachtbares Anzeichen dafür, dass ein Risiko wahrscheinlicher wird. So kann die vorbereitete Maßnahme rechtzeitig gestartet werden. Beispiel: Der Lieferant bestätigt den Liefertermin nicht: Hinweis auf drohenden Lieferverzug.',
+        'Ein Frühwarnindikator ist ein beobachtbares Anzeichen dafür, dass ein Risiko wahrscheinlicher wird. So kann die vorbereitete Maßnahme rechtzeitig gestartet werden. Beispiel: Der Lieferant bestätigt den Liefertermin nicht, was auf einen drohenden Lieferverzug hinweist.',
     explanation:
         'Zweck 2 Punkte, Beispiel 1 Punkt. Beim Überwachen beobachtet der Risikoeigner die Frühwarnindikatoren; schlagen sie an, wird die geplante Maßnahme ausgelöst.',
   ),
@@ -840,12 +840,12 @@ final List<Question> questionsA01Planung = [
       ),
       nein(
         'Beide können ignoriert werden, weil ihr Risikowert klein ist.',
-        'Auch kleine Risikowerte werden bewusst behandelt, B könnte existenzgefährdend sein.',
+        'Auch kleine Risikowerte werden bewusst behandelt. B könnte sogar die Existenz gefährden.',
       ),
     ],
     difficulty: 3,
     explanation:
-        'A: 0,50 × 4.000 € = 2.000 €. B: 0,02 × 100.000 € = 2.000 €. Die Rechnung macht beide gleich: Hier zeigt sich die Schwäche des Risikowerts: Seltene, aber schwere Risiken muss man gesondert betrachten.',
+        'A: 0,50 × 4.000 € = 2.000 €. B: 0,02 × 100.000 € = 2.000 €. Rechnerisch sind beide gleich. Hier zeigt sich die Schwäche des Risikowerts: Seltene, aber schwere Risiken muss man gesondert betrachten.',
   ),
   rechnen(
     'a1-rb-7',
@@ -872,7 +872,7 @@ final List<Question> questionsA01Planung = [
         'Das Team verzichtet auf ein neues, noch unerprobtes Framework und nutzt stattdessen das bewährte.',
     prompt: 'Welche Risikostrategie wird angewendet?',
     choices: [
-      ja('Vermeiden', 'Die riskante Ursache wird nicht eingegangen.'),
+      ja('Vermeiden', 'Die riskante Ursache entfällt ganz.'),
       nein(
         'Vermindern',
         'Dann würde man das neue Framework nutzen, aber z. B. mit Schulung absichern.',
@@ -924,7 +924,7 @@ final List<Question> questionsA01Planung = [
       ),
     ],
     explanation:
-        'Testfrage: Kann das Risiko danach noch eintreten? Nein -> vermeiden. Ja, aber seltener oder milder -> vermindern. Ja, aber ein Dritter trägt die Folgen -> übertragen. Ja, und man trägt es bewusst -> akzeptieren.',
+        'Frage dich: Kann das Risiko danach noch eintreten? Wenn nein, wird es vermieden. Tritt es seltener oder milder ein, wird es vermindert. Trägt ein Dritter die Folgen, wird es übertragen. Trägt man es bewusst selbst, wird es akzeptiert.',
   ),
   lueckentext(
     'a1-rs-3',
@@ -1172,7 +1172,7 @@ final List<Question> questionsA01Planung = [
     ],
     difficulty: 1,
     explanation:
-        'Vorkalkulation (vorher, für Angebot und Budget), Mitkalkulation (während, zur Steuerung), Nachkalkulation (danach, zum Abgleich mit den echten Kosten und als Lernquelle).',
+        'Die Vorkalkulation entsteht vor dem Projekt für Angebot und Budget, die Mitkalkulation dient währenddessen der Steuerung. Die Nachkalkulation gleicht danach mit den echten Kosten ab und ist eine Lernquelle.',
   ),
 
   // ============================================================ Nutzwertanalyse
@@ -1306,7 +1306,7 @@ final List<Question> questionsA01Planung = [
       ),
       nein(
         'Keiner, die Analyse muss neu gemacht werden',
-        'Zwei Anbieter erfüllen das Muss-Kriterium, also die Entscheidung ist möglich.',
+        'Zwei Anbieter erfüllen das Muss-Kriterium, die Entscheidung ist also möglich.',
       ),
     ],
     explanation:
@@ -1381,7 +1381,7 @@ final List<Question> questionsA01Planung = [
         'Gleichsetzen: 9.000 + 15x = 45x\n'
         '9.000 = 30x\n'
         'x = 9.000 / 30 = 300 Stück\n'
-        'Probe: make 9.000 € + 300 × 15 € = 13.500 €, buy 300 × 45 € = 13.500 €.\n'
+        'Probe: Eigenfertigung 9.000 € + 300 × 15 € = 13.500 €, Fremdbezug 300 × 45 € = 13.500 €.\n'
         'Darunter ist der Fremdbezug günstiger, darüber die Eigenfertigung.',
   ),
   rechnen(
@@ -1397,7 +1397,7 @@ final List<Question> questionsA01Planung = [
         'Kauf: 18.000 € + 3 × 3.000 € = 27.000 €\n'
         'SaaS: 700 € × 36 Monate = 25.200 €\n'
         'Differenz: 27.000 € - 25.200 € = 1.800 € zugunsten von SaaS.\n'
-        'Wichtig: Monatspreise auf dieselbe Nutzungsdauer hochrechnen.',
+        'Rechne Monatspreise immer auf dieselbe Nutzungsdauer hoch.',
   ),
   einfach(
     'a1-wm-5',
@@ -1472,7 +1472,7 @@ final List<Question> questionsA01Planung = [
       ),
     ],
     explanation:
-        'Make: Kernkompetenz, sehr spezielle Anforderungen, Unabhängigkeit, vorhandenes Know-how. Buy: Zeitdruck, fehlendes Know-how, ausgereifte Standardprodukte, geringere Entwicklungskosten.',
+        'Für Make sprechen Kernkompetenz, sehr spezielle Anforderungen, Unabhängigkeit und vorhandenes Know-how. Für Buy sprechen Zeitdruck, fehlendes Know-how, ausgereifte Standardprodukte und geringere Entwicklungskosten.',
   ),
   paare(
     'a1-wm-7',
@@ -1602,7 +1602,7 @@ final List<Question> questionsA01Planung = [
       ),
     ],
     explanation:
-        'Break-even-Menge: 10.000 € / (50 € - 30 €) = 500 Stück. Links davon Verlust, rechts Gewinn; der senkrechte Abstand zwischen Erlös- und Kostengerade ist der Gewinn bzw. Verlust.',
+        'Break-even-Menge: 10.000 € / (50 € - 30 €) = 500 Stück. Links davon entsteht Verlust, rechts Gewinn. Der senkrechte Abstand zwischen Erlös- und Kostengerade ist der Gewinn bzw. Verlust.',
   ),
 
   // ============================================================ Abnahme und Übergabe
@@ -1632,7 +1632,7 @@ final List<Question> questionsA01Planung = [
       ),
     ],
     loesung:
-        'Bei der Abnahme wird das Ergebnis gegen die vereinbarten Anforderungen geprüft. „Schnell“ hat keinen Zielwert. Ob das Kriterium erfüllt ist, bleibt Ansichtssache. Mit „Antwortzeit höchstens 2 s“ lässt sich eindeutig entscheiden, und Streit bei der Abnahme wird vermieden.',
+        'Bei der Abnahme wird das Ergebnis gegen die vereinbarten Anforderungen geprüft. „Schnell“ hat keinen Zielwert, deshalb bleibt Ansichtssache, ob das Kriterium erfüllt ist. Mit „Antwortzeit höchstens 2 s“ lässt sich eindeutig entscheiden, und Streit bei der Abnahme wird vermieden.',
     explanation:
         'Je Grund 2 Punkte, höchstens 4. Abgenommen wird gegen vereinbarte Kriterien. Deshalb müssen Anforderungen und Abnahmekriterien vorher prüfbar formuliert sein.',
   ),
@@ -1662,7 +1662,7 @@ final List<Question> questionsA01Planung = [
       ),
     ],
     explanation:
-        'Sachlich: Ergebnis. Wirtschaftlich: Kosten und Budget. Personell: Team und Menschen.',
+        'Sachlich geht es um das Ergebnis, wirtschaftlich um Kosten und Budget, personell um das Team und die Menschen.',
   ),
   mehrfach(
     'a1-aa-3',
@@ -1692,7 +1692,7 @@ final List<Question> questionsA01Planung = [
     ],
     difficulty: 3,
     explanation:
-        'Die Abnahme (§ 640 BGB) ist ein rechtlicher Wendepunkt: Vergütung fällig, Gefahrübergang, Umkehr der Beweislast, Beginn der Verjährung der Mängelansprüche. Deshalb wird sie sorgfältig protokolliert.',
+        'Die Abnahme (§ 640 BGB) ist ein rechtlicher Wendepunkt: Die Vergütung wird fällig, die Gefahr geht über, die Beweislast kehrt sich um und die Verjährung der Mängelansprüche beginnt. Deshalb wird sie sorgfältig protokolliert.',
   ),
   einfach(
     'a1-aa-4',
@@ -1703,7 +1703,7 @@ final List<Question> questionsA01Planung = [
     choices: [
       ja(
         'Abnehmen und den Tippfehler als Mangel mit Frist ins Protokoll aufnehmen',
-        'Unwesentlicher Mangel: Abnahme unter Vorbehalt, der Mangel wird festgehalten.',
+        'Der Mangel ist unwesentlich. Deshalb wird unter Vorbehalt abgenommen und der Mangel festgehalten.',
       ),
       nein(
         'Die Abnahme verweigern, bis alles fehlerfrei ist',
@@ -1793,7 +1793,7 @@ final List<Question> questionsA01Planung = [
       ),
     ],
     explanation:
-        'Stichtag: schnell, aber riskant. Parallelbetrieb: sicher, aber doppelter Aufwand. Stufenweise: Modul für Modul. Pilot: ein Bereich startet komplett, die übrigen folgen nach der Auswertung.',
+        'Der Stichtag ist schnell, aber riskant. Der Parallelbetrieb ist sicher, kostet aber doppelten Aufwand. Stufenweise heißt Modul für Modul. Beim Pilotbetrieb startet ein Bereich komplett, die übrigen folgen nach der Auswertung.',
   ),
   einfach(
     'a1-aa-7',
@@ -1972,7 +1972,7 @@ final List<Question> questionsA01Planung = [
     choices: [
       ja(
         'Schuldzuweisungen verhindern offene Beiträge. Es geht um Ursachen und Verbesserungen.',
-        'Wer Angst vor Schuld hat, schweigt und die wichtigsten Erkenntnisse gehen verloren.',
+        'Wer Schuldzuweisungen fürchtet, schweigt, und die wichtigsten Erkenntnisse gehen verloren.',
       ),
       nein(
         'Nichts, Verantwortliche müssen benannt werden.',
@@ -2003,13 +2003,13 @@ final List<Question> questionsA01Planung = [
       'Dokumentieren und zugänglich machen',
     ],
     explanation:
-        'Aus gesammelten Erfahrungen werden über die Ursachenanalyse konkrete Empfehlungen und die müssen für andere auffindbar abgelegt werden.',
+        'Aus gesammelten Erfahrungen werden über die Ursachenanalyse konkrete Empfehlungen. Diese müssen so abgelegt werden, dass andere sie finden.',
   ),
   zuordnen(
     'a1-al-3',
     'a-lessons',
     scenario:
-        'Im Lessons-Learned-Workshop werden Erfahrungen nach Start - Stop - Continue sortiert: neu einführen, was gefehlt hat; abschaffen, was geschadet hat; beibehalten, was sich bewährt hat.',
+        'Im Lessons-Learned-Workshop werden Erfahrungen nach Start, Stop, Continue sortiert: neu einführen, was gefehlt hat; abschaffen, was geschadet hat; beibehalten, was sich bewährt hat.',
     prompt: 'Ordne jede Praxis der passenden Kategorie zu.',
     buckets: ['Start', 'Stop', 'Continue'],
     items: [
@@ -2045,7 +2045,7 @@ final List<Question> questionsA01Planung = [
       ),
     ],
     explanation:
-        'Start - Stop - Continue übersetzt Erfahrungen direkt in Handlungen. Wichtig: Auch Erfolge (Continue) werden gesammelt, nicht nur Fehler.',
+        'Start, Stop, Continue übersetzt Erfahrungen direkt in Handlungen. Gesammelt werden dabei auch Erfolge (Continue), nicht nur Fehler.',
   ),
   markieren(
     'a1-al-4',
@@ -2174,6 +2174,6 @@ final List<Question> questionsA01Planung = [
     ],
     difficulty: 1,
     explanation:
-        'Lessons Learned gehören zeitnah ans Projektende; projektbegleitend nach Phasen und Meilensteinen (in Scrum nach jedem Sprint als Retrospektive) nutzen sie schon dem laufenden Projekt.',
+        'Lessons Learned gehören zeitnah ans Projektende. Wer sie zusätzlich nach Phasen und Meilensteinen sammelt (in Scrum nach jedem Sprint als Retrospektive), hilft schon dem laufenden Projekt.',
   ),
 ];

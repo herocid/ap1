@@ -1387,7 +1387,7 @@ final List<Nugget> nuggetsA03Netze = [
     'In welchem Netz liegt 192.168.10.77/26? Bestimme Netzadresse, ersten und letzten Host, Broadcast und Anzahl nutzbarer Hosts.',
     schritte: [
       'Maske: /26 = 255.255.255.192, Blockgröße 256 - 192 = 64',
-      'Netze beginnen bei .0, .64, .128, .192 - 77 liegt im Block ab .64',
+      'Netze beginnen bei .0, .64, .128, .192. Die 77 liegt im Block ab .64',
       'Netzadresse: 192.168.10.64',
       'Broadcast: nächster Block minus 1 = 192.168.10.127',
       'Hosts: .65 bis .126, also 2⁶ - 2 = 62',
@@ -1399,7 +1399,7 @@ final List<Nugget> nuggetsA03Netze = [
       ['letzter Host', '192.168.10.126'],
       ['Broadcast', '192.168.10.127'],
     ],
-    ergebnis: 'Netz .64, Hosts .65 bis .126, Broadcast .127 - 62 Hosts',
+    ergebnis: 'Netz .64, Hosts .65 bis .126, Broadcast .127, also 62 Hosts',
   ),
   beispiel(
     'n-n4-8',
@@ -1449,7 +1449,7 @@ final List<Nugget> nuggetsA03Netze = [
       ['7', '.192', '.193 - .222', '.223'],
       ['8', '.224', '.225 - .254', '.255'],
     ],
-    ergebnis: '/27 - 8 Subnetze mit je 30 Hosts',
+    ergebnis: '/27: 8 Subnetze mit je 30 Hosts',
   ),
   beispiel(
     'n-n4-10',

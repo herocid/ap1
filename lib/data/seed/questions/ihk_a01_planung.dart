@@ -56,7 +56,7 @@ final List<Question> ihkA01Planung = [
     loesung:
         'Der PSP zerlegt das Projekt vollständig in Teilaufgaben und Arbeitspakete, sodass keine Aufgabe vergessen wird. Außerdem ist er die Grundlage für alles Weitere: Aufwand, Kosten und Termine lassen sich erst je Arbeitspaket verlässlich schätzen.',
     explanation:
-        'Je Grund 2 Punkte (Aussage plus kurze Ausführung), höchstens 4 Punkte. Der PSP beantwortet die Frage WAS: Erst danach folgen Dauer, Reihenfolge und Termine.',
+        'Je Grund 2 Punkte (Aussage plus kurze Ausführung), höchstens 4 Punkte. Der PSP beantwortet die Frage, WAS zu tun ist. Erst danach folgen Dauer, Reihenfolge und Termine.',
   ),
   tabelle(
     'i1-tp-2',
@@ -109,7 +109,7 @@ final List<Question> ihkA01Planung = [
         'Markiere alle Einträge, die nicht in einen Projektstrukturplan gehören. (3 P.)',
     punkte: 3,
     zeilen: [
-      nein('1 Beschaffung', 'Eine Teilaufgabe, also gehört in den PSP.'),
+      nein('1 Beschaffung', 'Eine Teilaufgabe, sie gehört also in den PSP.'),
       nein(
         '1.1 Angebote einholen',
         'Ein Arbeitspaket unter der Teilaufgabe Beschaffung.',
@@ -118,7 +118,7 @@ final List<Question> ihkA01Planung = [
         '1.2 Liefertermin: 14. März',
         'Ein Termin gehört in den Terminplan, nicht in den PSP.',
       ),
-      nein('2 Installation', 'Eine Teilaufgabe, also gehört in den PSP.'),
+      nein('2 Installation', 'Eine Teilaufgabe, sie gehört also in den PSP.'),
       nein('2.1 Image erstellen', 'Ein Arbeitspaket mit prüfbarem Ergebnis.'),
       ja(
         '2.2 Image erst nach Abschluss von 1.1 verteilen',
@@ -162,7 +162,7 @@ final List<Question> ihkA01Planung = [
       ],
     ],
     explanation:
-        'Der Meilenstein „Anlage live“ liegt bei 12, also dauert das Projekt 12 Tage. B läuft von 3 bis 8. C endet bei 3 + 2 = 5, sein Nachfolger D beginnt erst bei 8: Puffer 8 - 5 = 3 Tage. Zwischen 3 und 5 laufen B und C parallel. Nur C liegt nicht auf dem kritischen Pfad und darf sich verspäten.',
+        'Der Meilenstein „Anlage live“ liegt bei 12, also dauert das Projekt 12 Tage. B läuft von 3 bis 8. C endet bei 3 + 2 = 5, sein Nachfolger D beginnt erst bei 8. Das ergibt 8 - 5 = 3 Tage Puffer. Zwischen 3 und 5 laufen B und C parallel. Nur C liegt nicht auf dem kritischen Pfad und darf sich verspäten.',
   ),
   lueckentext(
     'i1-tg-2',
@@ -194,7 +194,7 @@ final List<Question> ihkA01Planung = [
       zahl(2, rationale: 'D beginnt bei 7, C endet bei 5: 7 - 5 = 2.'),
     ],
     explanation:
-        'A läuft von 0 bis 3. B: 3 bis 7, C: 3 bis 5. D braucht B und C und startet beim späteren Ende, also bei 7, und endet bei 12. E läuft von 12 bis 14: Das Projekt dauert 14 Tage. C ist schon bei 5 fertig, D beginnt erst bei 7: 2 Tage Puffer.',
+        'A läuft von 0 bis 3, B von 3 bis 7 und C von 3 bis 5. D braucht B und C, startet also beim späteren Ende bei 7 und endet bei 12. E läuft von 12 bis 14, das Projekt dauert also 14 Tage. C ist schon bei 5 fertig, D beginnt erst bei 7. Das sind 2 Tage Puffer.',
   ),
   freitext(
     'i1-tg-3',
@@ -396,7 +396,7 @@ final List<Question> ihkA01Planung = [
       ],
     ],
     explanation:
-        'Eingeordnet wird nach der Ursache: Lieferverzug gefährdet den Zeitplan (terminlich), der Ausfall einer Schlüsselperson ist personell, die Datenübernahme technisch. Ein Frühwarnindikator ist ein beobachtbares Anzeichen, dass das Risiko wahrscheinlicher wird.',
+        'Eingeordnet wird nach der Ursache: Lieferverzug gefährdet den Zeitplan (terminlich), der Ausfall einer Schlüsselperson ist personell, die Datenübernahme technisch. Ein Frühwarnindikator ist ein beobachtbares Anzeichen dafür, dass das Risiko wahrscheinlicher wird.',
   ),
   freitext(
     'i1-rp-2',
@@ -449,13 +449,13 @@ final List<Question> ihkA01Planung = [
     loesung:
         'Technisch: Die Terminals arbeiten nicht mit der Lohnsoftware zusammen. Personell: Die Belegschaft lehnt die Zeiterfassung ab. Terminlich: Die Terminals kommen verspätet. Rechtlich: Der Betriebsrat wurde nicht beteiligt oder der Datenschutz wird verletzt.',
     explanation:
-        'Je Risiko 1 Punkt, höchstens 4. Wer systematisch nach Risikoarten sucht, technisch, personell, terminlich, rechtlich, wirtschaftlich -, übersieht weniger.',
+        'Je Risiko 1 Punkt, höchstens 4. Wer systematisch nach Risikoarten sucht (technisch, personell, terminlich, rechtlich, wirtschaftlich), übersieht weniger.',
   ),
   lueckentext(
     'i1-rp-3',
     'r-prozess',
     scenario:
-        'Im Risikoregister soll ein Risiko nach dem Muster „Ursache - Ereignis - Auswirkung“ beschrieben werden.',
+        'Im Risikoregister soll ein Risiko nach dem Muster „Ursache, Ereignis, Auswirkung“ beschrieben werden.',
     prompt: 'Setze die drei Bausteine an die richtige Stelle. (3 P.)',
     punkte: 3,
     text: 'Weil {0}, könnte {1}, sodass {2}.',
@@ -519,7 +519,7 @@ final List<Question> ihkA01Planung = [
         'R1: 0,20 × 30.000 € = 6.000 €\n'
         'R2: 0,05 × 200.000 € = 10.000 €\n'
         'R3: 0,60 × 4.000 € = 2.400 €\n'
-        'Rangfolge: R2, R1, R3: das unwahrscheinlichste Risiko steht vorn, das wahrscheinlichste hinten.',
+        'Rangfolge: R2, R1, R3. Das unwahrscheinlichste Risiko steht also vorn, das wahrscheinlichste hinten.',
   ),
   markieren(
     'i1-rb-2',
@@ -537,7 +537,7 @@ final List<Question> ihkA01Planung = [
       ja('R6: W 1, A 3: grün', '1 × 3 = 3, das ist gelb.'),
     ],
     explanation:
-        'Kennzahl = Wahrscheinlichkeit × Auswirkung. R2: 2 (grün), R4: 6 (rot), R6: 3 (gelb) sind falsch eingeordnet. Die Kennzahl 5 kann in einer 3×3-Matrix nicht vorkommen, deshalb beginnt Rot bei 6.',
+        'Kennzahl = Wahrscheinlichkeit × Auswirkung. Falsch eingeordnet sind R2 (Kennzahl 2, grün), R4 (6, rot) und R6 (3, gelb). Die Kennzahl 5 kann in einer 3×3-Matrix nicht vorkommen, deshalb beginnt Rot bei 6.',
   ),
   lueckentext(
     'i1-rb-3',
@@ -560,7 +560,7 @@ final List<Question> ihkA01Planung = [
       wahl('lohnt sich', ['lohnt sich nicht', 'ändert nichts am Risiko']),
     ],
     explanation:
-        'Vorher: 0,15 × 80.000 € = 12.000 €. Nachher: 0,05 × 80.000 € = 4.000 €. Die Maßnahme senkt den Risikowert um 8.000 € und kostet 5.000 €: Es bleibt ein Vorteil von 3.000 €, sie lohnt sich.',
+        'Vorher: 0,15 × 80.000 € = 12.000 €. Nachher: 0,05 × 80.000 € = 4.000 €. Die Maßnahme senkt den Risikowert um 8.000 € und kostet 5.000 €. Es bleibt ein Vorteil von 3.000 €, sie lohnt sich also.',
   ),
   freitext(
     'i1-rb-4',
@@ -659,7 +659,7 @@ final List<Question> ihkA01Planung = [
       ],
     ],
     explanation:
-        'Die Probe senkt die Wahrscheinlichkeit eines Fehlschlags, der Ersatzserver begrenzt den Schaden: Beides ist Vermindern. Die Versicherung ändert nur, wer zahlt (Übertragen). Wer auf die Beta-Version verzichtet, beseitigt die Ursache (Vermeiden).',
+        'Die Probe senkt die Wahrscheinlichkeit eines Fehlschlags, der Ersatzserver begrenzt den Schaden. Beides ist Vermindern. Die Versicherung ändert nur, wer zahlt (Übertragen). Wer auf die Beta-Version verzichtet, beseitigt die Ursache (Vermeiden).',
   ),
   freitext(
     'i1-rs-3',
@@ -799,7 +799,7 @@ final List<Question> ihkA01Planung = [
         'Lizenzen: A 6 × 40 € × 12 = 2.880 €, B 6 × 55 € × 12 = 3.960 €\n'
         'Entgangener Umsatz: A 6 × 2 Tage × 8 h × 75 € = 7.200 €, B 6 × 1 Tag × 8 h × 75 € = 3.600 €\n'
         'Summe: A 2.880 + 1.600 + 7.200 = 11.680 €, B 3.960 + 800 + 3.600 = 8.360 €\n'
-        'Trotz teurerer Lizenz ist B um 3.320 € günstiger: Der entgangene Umsatz entscheidet.',
+        'Trotz teurerer Lizenz ist B um 3.320 € günstiger, weil der entgangene Umsatz den Ausschlag gibt.',
   ),
   markieren(
     'i1-wk-4',
@@ -825,7 +825,7 @@ final List<Question> ihkA01Planung = [
       ),
       ja(
         'Fracht: 60 € abzüglich 2 % Skonto = 58,80 €',
-        'Auf Bezugskosten gibt es kein Skonto, also es bleiben 60 €.',
+        'Auf Bezugskosten gibt es kein Skonto, es bleibt also bei 60 €.',
       ),
       nein(
         'Bezugspreis: 3.520 € + 58,80 € = 3.578,80 €',
@@ -857,7 +857,7 @@ final List<Question> ihkA01Planung = [
     explanation:
         'Umsatzsteuer: 2.400 € × 0,19 = 456 €\n'
         'Brutto: 2.400 € + 456 € = 2.856 €\n'
-        'Skonto: 2.856 € × 0,02 = 57,12 €. Beim Bezahlen einer Rechnung ist der Bruttobetrag die Basis\n'
+        'Skonto: 2.856 € × 0,02 = 57,12 €. Beim Bezahlen einer Rechnung ist der Bruttobetrag die Basis.\n'
         'Überweisung: 2.856 € - 57,12 € = 2.798,88 €',
   ),
   lueckentext(
@@ -901,7 +901,7 @@ final List<Question> ihkA01Planung = [
         'Rabatt (discount) 5 %: 124 €, Zieleinkaufspreis 2.356 €\n'
         'Skonto (cash discount) 2 % von 2.356 €: 47,12 €, Bareinkaufspreis 2.308,88 €\n'
         'Versand (shipping): + 45 € = 2.353,88 €\n'
-        'Der Mengenrabatt gilt, weil 8 Stück mehr als 5 sind.',
+        'Der Mengenrabatt gilt, weil mindestens 5 Stück bestellt werden.',
   ),
   freitext(
     'i1-wk-7',
@@ -992,7 +992,7 @@ final List<Question> ihkA01Planung = [
     explanation:
         'A: 0,5 × 8 = 4,0; 0,3 × 5 = 1,5; 0,2 × 7 = 1,4; Nutzwert 6,9\n'
         'B: 0,5 × 6 = 3,0; 0,3 × 9 = 2,7; 0,2 × 8 = 1,6; Nutzwert 7,3\n'
-        'B gewinnt, obwohl A beim wichtigsten Kriterium vorn liegt: Es zählt die Summe.',
+        'B gewinnt, obwohl A beim wichtigsten Kriterium vorn liegt. Am Ende zählt die Summe.',
   ),
   tabelle(
     'i1-wn-2',
@@ -1018,7 +1018,7 @@ final List<Question> ihkA01Planung = [
       ['Rangsumme', zahl(7), zahl(8), zahl(9)],
     ],
     explanation:
-        'Bei Kosten ist der kleinste Wert der beste: Kosten je Seite Z (1,2 Cent) Rang 1, X Rang 2, Y Rang 3. Geschwindigkeit und Garantie: der größte Wert ist der beste.\n'
+        'Bei Kosten ist der kleinste Wert der beste. Bei den Kosten je Seite hat also Z (1,2 Cent) Rang 1, X Rang 2 und Y Rang 3. Bei Geschwindigkeit und Garantie ist der größte Wert der beste.\n'
         'Rangsummen: X 2 + 2 + 1 + 2 = 7, Y 1 + 3 + 3 + 1 = 8, Z 3 + 1 + 2 + 3 = 9.\n'
         'Gewählt wird Gerät X mit der kleinsten Rangsumme.',
   ),
@@ -1065,7 +1065,7 @@ final List<Question> ihkA01Planung = [
       ),
     ],
     loesung:
-        'Gewichte und Punkte beruhen auf persönlichen Einschätzungen: Wer sie festlegt, beeinflusst das Ergebnis. Bei einem Abstand von nur 0,2 Punkten kann schon ein leicht anderes Gewicht die Reihenfolge umdrehen: Das Ergebnis wirkt genauer, als es ist.',
+        'Gewichte und Punkte beruhen auf persönlichen Einschätzungen: Wer sie festlegt, beeinflusst das Ergebnis. Bei einem Abstand von nur 0,2 Punkten kann schon ein leicht anderes Gewicht die Reihenfolge umdrehen. Das Ergebnis wirkt also genauer, als es ist.',
     explanation:
         'Je Schwäche 2 Punkte, höchstens 4. Die Nutzwertanalyse macht eine Entscheidung nachvollziehbar, nicht objektiv. Deshalb werden Kriterien und Gewichte festgelegt, bevor die Angebote bekannt sind.',
   ),
@@ -1094,7 +1094,7 @@ final List<Question> ihkA01Planung = [
       ], 'Rang 1 ist am besten, also gewinnt die kleinste Summe.'),
     ],
     explanation:
-        'Ohne Gewichtung zählen alle Kriterien gleich: Ränge vergeben, addieren, kleinste Rangsumme gewinnt. Achtung: Lautet die Vorgabe umgekehrt (höchste Punktzahl für den besten Wert), gewinnt die größte Summe. Immer zuerst die Vorgabe lesen.',
+        'Ohne Gewichtung zählen alle Kriterien gleich: Du vergibst Ränge und addierst sie, die kleinste Rangsumme gewinnt. Lautet die Vorgabe umgekehrt (höchste Punktzahl für den besten Wert), gewinnt die größte Summe. Lies deshalb immer zuerst die Vorgabe.',
   ),
 
   // ================================================================== Make or Buy
@@ -1145,7 +1145,7 @@ final List<Question> ihkA01Planung = [
     explanation:
         'Gleichsetzen: 6.000 + 5x = 20x, also x = 6.000 / 15 = 400 Vorgänge.\n'
         'Bei 250 Vorgängen: Make 6.000 € + 1.250 € = 7.250 €, Buy 250 × 20 € = 5.000 €.\n'
-        '250 liegt unter der kritischen Menge, also Buy ist um 2.250 € günstiger.',
+        '250 liegt unter der kritischen Menge, also ist Buy um 2.250 € günstiger.',
   ),
   markieren(
     'i1-wm-3',
@@ -1180,7 +1180,7 @@ final List<Question> ihkA01Planung = [
       ),
       nein(
         'Die Rechnung kommt jeden Monat.',
-        '„billed annually“ heißt: jährliche Abrechnung.',
+        '„billed annually“ heißt, dass jährlich abgerechnet wird.',
       ),
       ja(
         'Tägliche Datensicherungen sind enthalten.',
@@ -1192,7 +1192,7 @@ final List<Question> ihkA01Planung = [
       ),
     ],
     explanation:
-        'Enthalten sind Updates, tägliche Backups und E-Mail-Support. Nicht enthalten: Datenmigration und Schulung vor Ort. Diese Kosten gehören in den Make-or-Buy-Vergleich. Abgerechnet wird jährlich, die Mindestlaufzeit beträgt 12 Monate.',
+        'Enthalten sind Updates, tägliche Backups und E-Mail-Support. Nicht enthalten sind Datenmigration und Schulung vor Ort. Diese Kosten gehören deshalb in den Make-or-Buy-Vergleich. Abgerechnet wird jährlich, die Mindestlaufzeit beträgt 12 Monate.',
   ),
   rechnen(
     'i1-wm-4',
@@ -1386,7 +1386,7 @@ final List<Question> ihkA01Planung = [
       ],
     ],
     explanation:
-        'Wesentliche Mängel (Kernfunktion gestört) berechtigen zur Verweigerung der Abnahme. Unwesentliche Mängel nicht: Sie werden mit Frist im Protokoll vorbehalten. Ein nicht vereinbarter Wunsch ist kein Mangel, sondern ein Änderungsantrag.',
+        'Wesentliche Mängel (Kernfunktion gestört) berechtigen zur Verweigerung der Abnahme. Unwesentliche Mängel tun das nicht. Sie werden mit einer Frist im Protokoll vorbehalten. Ein nicht vereinbarter Wunsch ist kein Mangel, sondern ein Änderungsantrag.',
   ),
   freitext(
     'i1-aa-2',
@@ -1444,7 +1444,7 @@ final List<Question> ihkA01Planung = [
     ],
     wortbank: ['Probeabnahme', 'Testbetrieb'],
     explanation:
-        'Stichtag (Big Bang): alles auf einmal. Parallelbetrieb: beide Systeme gleichzeitig. Pilotbetrieb: ein Bereich startet komplett, die anderen folgen nach der Auswertung. Stufenweise: Modul für Modul.',
+        'Bei der Stichtagsumstellung (Big Bang) wechselt alles auf einmal. Im Parallelbetrieb laufen beide Systeme gleichzeitig. Im Pilotbetrieb startet ein Bereich komplett, die anderen folgen nach der Auswertung. Stufenweise heißt: Modul für Modul.',
   ),
   reihenfolge(
     'i1-aa-4',
@@ -1648,7 +1648,7 @@ final List<Question> ihkA01Planung = [
       paar('Wissensdatenbank', 'Erfahrungen zentral ablegen'),
     ],
     explanation:
-        'Start - Stop - Continue übersetzt Erfahrungen direkt in Handlungen. Die Retrospektive ist die projektbegleitende Form in Scrum. Wirksam werden Lessons Learned erst, wenn sie zentral und auffindbar abgelegt sind.',
+        '„Start, Stop, Continue“ übersetzt Erfahrungen direkt in Handlungen. Die Retrospektive ist die projektbegleitende Form in Scrum. Wirksam werden Lessons Learned erst, wenn sie zentral und auffindbar abgelegt sind.',
   ),
   lueckentext(
     'i1-al-3',
@@ -1682,6 +1682,6 @@ final List<Question> ihkA01Planung = [
       ),
     ],
     explanation:
-        'Eine brauchbare Lesson nennt Situation, Ursache und Empfehlung, konkret, ohne Schuldzuweisung und für andere Projekte verständlich. „Die Kommunikation muss besser werden“ wäre zu vage.',
+        'Eine brauchbare Lesson nennt Situation, Ursache und Empfehlung. Sie ist konkret, kommt ohne Schuldzuweisung aus und ist für andere Projekte verständlich. „Die Kommunikation muss besser werden“ wäre zu vage.',
   ),
 ];

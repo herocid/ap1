@@ -32,7 +32,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Katalog = Aufforderung zum Antrag. Bestellung = Antrag. Auftragsbestätigung = Annahme. Mit der Annahme ist der Kaufvertrag geschlossen.',
+        'Der Katalog ist nur eine Aufforderung zum Antrag. Der Antrag ist die Bestellung, die Auftragsbestätigung ist die Annahme. Mit der Annahme ist der Kaufvertrag geschlossen.',
   ),
   zuordnen(
     'a7-vz-2',
@@ -161,7 +161,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Artikelseite = Aufforderung zum Antrag, Bestellung = Antrag, Eingangsbestätigung = nur Zugangsbestätigung (§ 312i BGB). Erst eine Auftrags- oder Versandbestätigung wäre die Annahme. Hätte der Shop angenommen, könnte er wegen des Eingabefehlers (Erklärungsirrtum) unverzüglich anfechten.',
+        'Die Artikelseite ist nur eine Aufforderung zum Antrag, die Bestellung ist der Antrag, und die Eingangsbestätigung bestätigt bloß den Zugang (§ 312i BGB). Erst eine Auftrags- oder Versandbestätigung wäre die Annahme. Hätte der Shop angenommen, könnte er wegen des Eingabefehlers (Erklärungsirrtum) unverzüglich anfechten.',
     difficulty: 2,
   ),
   zuordnen(
@@ -178,7 +178,7 @@ final List<Question> questionsA07 = [
       zu(
         'Ein Kunde kauft Monitore und stellt später fest, dass er sie gar nicht braucht.',
         2,
-        'Motivirrtum: kein Anfechtungsgrund, der Vertrag bleibt wirksam.',
+        'Ein Motivirrtum ist kein Anfechtungsgrund, der Vertrag bleibt wirksam.',
       ),
       zu(
         'Ein Systemhaus hat intern falsch kalkuliert und merkt, dass der vereinbarte Preis zu niedrig ist.',
@@ -188,7 +188,7 @@ final List<Question> questionsA07 = [
       zu(
         'Ein 6-jähriges Kind kauft ein Videospiel für 60 €.',
         0,
-        'Unter 7 Jahren geschäftsunfähig, deshalb ist die Erklärung ist nichtig (§ 105 BGB).',
+        'Unter 7 Jahren ist man geschäftsunfähig, deshalb ist die Erklärung nichtig (§ 105 BGB).',
       ),
       zu(
         'Ein Verkäufer verschweigt bewusst einen reparierten Wasserschaden am Server.',
@@ -263,7 +263,7 @@ final List<Question> questionsA07 = [
       ),
       nein(
         'Den Vertrag innerhalb von 14 Tagen widerrufen',
-        'Ein Widerrufsrecht hat nur der Verbraucher im Fernabsatz, nicht der verkaufende Unternehmer.',
+        'Ein Widerrufsrecht hat nur ein Verbraucher, etwa im Fernabsatz, nicht der verkaufende Unternehmer.',
       ),
     ],
     explanation:
@@ -303,7 +303,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Verspätete Annahme = neuer Antrag (§ 150 Abs. 1 BGB). Deshalb ist hier die Bestellung vom 05.05. der Antrag und die Auftragsbestätigung die Annahme. Hätte der Kunde bis 30.04. bestellt, wäre schon die Bestellung die Annahme gewesen.',
+        'Eine verspätete Annahme gilt als neuer Antrag (§ 150 Abs. 1 BGB). Deshalb ist hier die Bestellung vom 05.05. der Antrag und die Auftragsbestätigung die Annahme. Hätte der Kunde bis 30.04. bestellt, wäre schon die Bestellung die Annahme gewesen.',
     difficulty: 2,
   ),
 
@@ -346,7 +346,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Eigentum oder dauerhafte Überlassung -> Kauf. Erfolg geschuldet -> Werk. Tätigkeit geschuldet -> Dienst. Gebrauch auf Zeit gegen Entgelt -> Miete.',
+        'Frag dich, was geschuldet wird: Eigentum oder dauerhafte Überlassung spricht für Kauf, ein Erfolg für den Werkvertrag, die bloße Tätigkeit für den Dienstvertrag und Gebrauch auf Zeit gegen Entgelt für Miete.',
   ),
   einfach(
     'a7-vy-2',
@@ -370,7 +370,7 @@ final List<Question> questionsA07 = [
       nein('Kaufvertrag', 'Es wird keine Sache übereignet.'),
     ],
     explanation:
-        'Entscheidend ist, was geschuldet wird: Hier nur die Arbeitsleistung, kein Ergebnis. Deshalb Dienstvertrag, ohne Abnahme, vergütet nach Stunden.',
+        'Entscheidend ist, was geschuldet wird. Hier ist es nur die Arbeitsleistung, kein Ergebnis. Deshalb liegt ein Dienstvertrag vor: ohne Abnahme, vergütet nach Stunden.',
   ),
 
   einfach(
@@ -426,7 +426,7 @@ final List<Question> questionsA07 = [
       ], 'Werklieferungsvertrag nach § 650 BGB.'),
     ],
     explanation:
-        'Werkvertrag: Erfolg geschuldet, Abnahme, Vergütung bei Abnahme, Nacherfüllung nach Wahl des Unternehmers. Wird nur Tätigkeit geschuldet, ist es ein Dienstvertrag; wird eine bewegliche Sache hergestellt und geliefert, gilt Kaufrecht.',
+        'Beim Werkvertrag ist ein Erfolg geschuldet. Die Vergütung wird mit der Abnahme fällig, und über die Art der Nacherfüllung entscheidet der Unternehmer. Wird nur Tätigkeit geschuldet, ist es ein Dienstvertrag; wird eine bewegliche Sache hergestellt und geliefert, gilt Kaufrecht.',
     difficulty: 2,
   ),
   zuordnen(
@@ -462,7 +462,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Leihe = Gebrauch unentgeltlich. Pacht = Gebrauch und Erträge gegen Entgelt. Darlehen = Geld oder vertretbare Sachen auf Zeit. Leasing = vom Leasinggeber finanzierte Gebrauchsüberlassung, nicht eigens im BGB geregelt.',
+        'Bei der Leihe ist der Gebrauch unentgeltlich. Die Pacht umfasst Gebrauch und Erträge gegen Entgelt. Beim Darlehen gibt es Geld oder vertretbare Sachen auf Zeit. Leasing ist eine vom Leasinggeber finanzierte Gebrauchsüberlassung und im BGB nicht eigens geregelt.',
     difficulty: 2,
   ),
   einfach(
@@ -715,7 +715,7 @@ final List<Question> questionsA07 = [
       nein('Samstag, 9:30 Uhr', 'Samstag gehört nicht zur Servicezeit.'),
     ],
     explanation:
-        'Reaktionszeit wird nur in der Servicezeit gezählt: Freitag 17:30 bis 18:00 = 30 min, Rest 120 - 30 = 90 min ab Montag 8:00 -> Montag 9:30 Uhr.',
+        'Die Reaktionszeit zählt nur in der Servicezeit. Am Freitag laufen von 17:30 bis 18:00 Uhr 30 min. Der Rest von 120 min − 30 min = 90 min läuft ab Montag 8:00 Uhr, also bis Montag 9:30 Uhr.',
   ),
 
   rechnen(
@@ -833,7 +833,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'SLA = Dienstleister ↔ Kunde. OLA = zwischen internen Einheiten des Dienstleisters. UC = Dienstleister ↔ externer Lieferant. OLA und UC müssen strengere Werte haben als das SLA, damit es gehalten werden kann.',
+        'Ein SLA schließt der Dienstleister mit dem Kunden. Ein OLA gilt zwischen internen Einheiten des Dienstleisters, ein UC (Underpinning Contract) zwischen Dienstleister und externem Lieferanten. OLA und UC müssen strengere Werte haben als das SLA, damit es gehalten werden kann.',
     difficulty: 2,
   ),
 
@@ -915,7 +915,7 @@ final List<Question> questionsA07 = [
     choices: [
       ja(
         'P4',
-        'Eine Abteilung ist betroffen (Auswirkung mittel), es gibt eine Ausweichmöglichkeit und keine Eile (Dringlichkeit niedrig) -> mittel × niedrig = P4.',
+        'Eine Abteilung ist betroffen (Auswirkung mittel), es gibt eine Ausweichmöglichkeit und keine Eile (Dringlichkeit niedrig). Mittel × niedrig ergibt P4.',
       ),
       nein(
         'P2',
@@ -931,7 +931,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'In der 3×3-Matrix steigt die Nummer mit jeder Stufe, die Auswirkung oder Dringlichkeit niedriger ist: hoch/hoch P1, mittel/mittel P3, mittel/niedrig P4, niedrig/niedrig P5. Hier: Auswirkung mittel, Dringlichkeit niedrig -> P4.',
+        'In der 3×3-Matrix steigt die Nummer mit jeder Stufe, die Auswirkung oder Dringlichkeit niedriger ist: hoch/hoch P1, mittel/mittel P3, mittel/niedrig P4, niedrig/niedrig P5. Hier ist die Auswirkung mittel und die Dringlichkeit niedrig, das ergibt P4.',
     difficulty: 2,
   ),
   reihenfolge(
@@ -949,7 +949,7 @@ final List<Question> questionsA07 = [
       'Lösung von der Anwenderin bestätigen lassen und Ticket schließen',
     ],
     explanation:
-        'Erfassen, kategorisieren und priorisieren macht der 1st Level. Kann er nicht lösen, eskaliert er funktional. Das Ticket bleibt offen und behält seine Historie. Geschlossen wird erst nach bestätigter Lösung.',
+        'Der 1st Level erfasst, kategorisiert und priorisiert das Ticket. Kann er die Störung nicht lösen, eskaliert er funktional. Das Ticket bleibt offen und behält seine Historie. Geschlossen wird erst nach bestätigter Lösung.',
     difficulty: 1,
   ),
   zuordnen(
@@ -990,7 +990,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Level 0: Self-Service. 1st Level: Service Desk mit Standardlösungen. 2nd Level: interne Fachspezialisten. 3rd Level: Hersteller oder Entwicklung, wenn das Produkt selbst geändert werden muss.',
+        'Level 0 ist der Self-Service. Im 1st Level arbeitet der Service Desk mit Standardlösungen, im 2nd Level sitzen interne Fachspezialisten. Der 3rd Level ist der Hersteller oder die Entwicklung und kommt ins Spiel, wenn das Produkt selbst geändert werden muss.',
     difficulty: 1,
   ),
   rechnen(
@@ -1060,7 +1060,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Incident = Störung, schnell wiederherstellen. Problem = Ursache finden. Change = kontrollierte Änderung. Service Request = Standardanfrage ohne Störung.',
+        'Ein Incident ist eine Störung, bei der der Service schnell wiederhergestellt werden muss. Beim Problem geht es um die Ursache, beim Change um eine kontrollierte Änderung. Ein Service Request ist eine Standardanfrage ohne Störung.',
   ),
   paare(
     'a7-lt-2',
@@ -1143,7 +1143,7 @@ final List<Question> questionsA07 = [
       zu(
         'Das ERP-System auf einen neuen Datenbankserver migrieren',
         1,
-        'Geplant, riskant: muss einzeln bewertet und genehmigt werden.',
+        'Geplant, aber riskant. Sie muss einzeln bewertet und genehmigt werden.',
       ),
       zu(
         'Die monatlich freigegebenen Updates der Virenschutz-Signaturen einspielen',
@@ -1362,7 +1362,7 @@ final List<Question> questionsA07 = [
     tolerance: 0.01,
     unit: '€',
     explanation:
-        'Ein Verbraucher ist beteiligt -> 1,5 % + 5 Prozentpunkte = 6,5 %. Zins = 2.920 € × 0,065 × 60 / 365 = 189,80 € × 60 / 365 = 11.388 € / 365 = 31,20 €. Eine 40-€-Pauschale gibt es gegenüber Verbrauchern nicht.',
+        'Weil ein Verbraucher beteiligt ist, gilt: 1,5 % + 5 Prozentpunkte = 6,5 %. Zins = 2.920 € × 0,065 × 60 / 365 = 189,80 € × 60 / 365 = 11.388 € / 365 = 31,20 €. Eine 40-€-Pauschale gibt es gegenüber Verbrauchern nicht.',
     difficulty: 2,
   ),
   einfach(
@@ -1383,11 +1383,11 @@ final List<Question> questionsA07 = [
       nein('Ab dem 1. August', 'Die Frist beträgt 30 Tage, nicht zwei Monate.'),
       nein(
         'Gar nicht, solange nicht gemahnt wurde',
-        'Für Geldforderungen gilt die 30-Tage-Regel auch ohne Mahnung (§ 286 Abs. 3 BGB).',
+        'Für Entgeltforderungen gilt die 30-Tage-Regel auch ohne Mahnung (§ 286 Abs. 3 BGB).',
       ),
     ],
     explanation:
-        'Nach § 286 Abs. 3 BGB kommt der Schuldner einer Geldforderung spätestens in Verzug, wenn er nicht innerhalb von 30 Tagen nach Fälligkeit und Zugang der Rechnung zahlt. Da ein Unternehmen zahlt, ist kein Hinweis in der Rechnung nötig. Zugang 1. Juni -> Fristende 1. Juli -> Verzug ab 2. Juli.',
+        'Nach § 286 Abs. 3 BGB kommt der Schuldner einer Entgeltforderung spätestens in Verzug, wenn er nicht innerhalb von 30 Tagen nach Fälligkeit und Zugang der Rechnung zahlt. Da ein Unternehmen zahlt, ist kein Hinweis in der Rechnung nötig. Die Rechnung geht am 1. Juni zu, die Frist endet am 1. Juli, der Verzug beginnt am 2. Juli.',
     difficulty: 2,
   ),
   einfach(
@@ -1452,7 +1452,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Offen: sofort erkennbar. Versteckt: zeigt sich erst später. Arglistig verschwiegen: Der Verkäufer kannte den Mangel und hat ihn bewusst nicht offengelegt.',
+        'Ein offener Mangel ist sofort erkennbar, ein versteckter zeigt sich erst später. Arglistig verschwiegen ist ein Mangel, den der Verkäufer kannte und bewusst nicht offengelegt hat.',
   ),
   einfach(
     'a7-gm-2',
@@ -1519,7 +1519,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Gewährleistung ist gesetzlich, richtet sich gegen den Verkäufer und läuft bei neuen Sachen 2 Jahre. Die Garantie ist freiwillig und kommt zusätzlich hinzu. Beim Handelskauf gilt außerdem die unverzügliche Rügepflicht nach § 377 HGB.',
+        'Gewährleistung ist gesetzlich, richtet sich gegen den Verkäufer und läuft bei neuen Sachen 2 Jahre. Die Garantie ist freiwillig und kommt hinzu. Beim Handelskauf gilt außerdem die unverzügliche Rügepflicht nach § 377 HGB.',
   ),
 
   rechnen(
@@ -1568,12 +1568,12 @@ final List<Question> questionsA07 = [
       zu(
         'Beworben sind 10 Stunden Akkulaufzeit, tatsächlich sind es 3.',
         0,
-        'Die Sache hält nicht, was die Werbung verspricht: objektive Anforderung verfehlt.',
+        'Die Sache hält nicht, was die Werbung verspricht. Damit verfehlt sie die objektiven Anforderungen.',
       ),
       zu('Statt 10 Switches werden 8 geliefert.', 2, 'Zu geringe Menge.'),
     ],
     explanation:
-        'Sachmangel: vereinbarte oder übliche Beschaffenheit fehlt (§ 434 BGB). Montagemangel: fehlerhafte Montage oder Montageanleitung. Falsch- und Zuweniglieferung stehen einem Sachmangel gleich. Rechtsmangel: Dritte haben Rechte an der Sache (§ 435 BGB).',
+        'Ein Sachmangel liegt vor, wenn die vereinbarte oder übliche Beschaffenheit fehlt (§ 434 BGB). Beim Montagemangel ist die Montage oder die Montageanleitung fehlerhaft. Auch Falsch- und Zuweniglieferung gelten als Sachmangel. Beim Rechtsmangel haben Dritte Rechte an der Sache (§ 435 BGB).',
     difficulty: 2,
   ),
   reihenfolge(
@@ -1621,7 +1621,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Verbrauchsgüterkauf: 2 Jahre Gewährleistung, Beweislastumkehr im ersten Jahr, Update-Pflicht bei digitalen Elementen, kein Ausschluss per AGB. Eine Herstellergarantie ist freiwillig und kommt zusätzlich hinzu und verkürzt die Gewährleistung nicht.',
+        'Verbrauchsgüterkauf: 2 Jahre Gewährleistung, Beweislastumkehr im ersten Jahr, Update-Pflicht bei digitalen Elementen, kein Ausschluss per AGB. Eine Herstellergarantie ist freiwillig. Sie kommt hinzu und verkürzt die Gewährleistung nicht.',
     difficulty: 2,
   ),
   einfach(
@@ -2032,7 +2032,7 @@ final List<Question> questionsA07 = [
       zu(
         '„Ich finde mich in der neuen Oberfläche einfach nicht zurecht.“',
         1,
-        'Es fehlen Fähigkeiten: Schulung hilft.',
+        'Es fehlen Fähigkeiten, hier hilft eine Schulung.',
       ),
       zu(
         '„Ich würde Tickets gern selbst schließen, habe aber keine Berechtigung dazu.“',
@@ -2046,7 +2046,7 @@ final List<Question> questionsA07 = [
       ),
     ],
     explanation:
-        'Nicht wissen -> informieren. Nicht können -> schulen. Nicht wollen -> beteiligen, Vorteile zeigen. Nicht dürfen -> Befugnisse und Rahmen klären.',
+        'Zu jeder Ursache gehört eine Maßnahme: Wer nicht weiß, wird informiert. Wer nicht kann, wird geschult. Wer nicht will, wird beteiligt und sieht die Vorteile. Wer nicht darf, braucht geklärte Befugnisse.',
   ),
   einfach(
     'a7-cw-2',
@@ -2172,7 +2172,7 @@ final List<Question> questionsA07 = [
       ],
     ],
     explanation:
-        'Widerstand ist ein Signal, das man entschlüsseln muss: Nicht wissen -> informieren. Nicht können -> schulen. Nicht wollen -> beteiligen, Vorteile zeigen. Nicht dürfen -> Befugnisse und Rahmen klären. Anordnung und Sanktion sind das letzte Mittel.',
+        'Widerstand ist ein Signal, das man entschlüsseln muss. Wer nicht weiß, wird informiert. Wer nicht kann, wird geschult. Wer nicht will, wird beteiligt und sieht die Vorteile. Wer nicht darf, braucht geklärte Befugnisse. Anordnung und Sanktion sind das letzte Mittel.',
     punkte: 4,
     difficulty: 1,
   ),
@@ -2251,7 +2251,7 @@ final List<Question> questionsA07 = [
     ],
     hint: 'Plan, Do, Check, Act',
     explanation:
-        'Plan: Ursache und Ziel festlegen. Do: im kleinen Rahmen ausprobieren. Check: Ergebnis messen. Act: Erfolgreiches standardisieren und weiter verbessern.',
+        'In Plan legst du Ursache und Ziel fest, in Do probierst du die Lösung im kleinen Rahmen aus. In Check misst du das Ergebnis, in Act wird Erfolgreiches zum Standard und der nächste Zyklus beginnt.',
   ),
   zuordnen(
     'a7-ck-3',

@@ -14,7 +14,7 @@ final List<Question> questionsA06Sicherheit = [
       zu(
         'Ein Azubi öffnet die Gehaltsliste in einem für alle freigegebenen Ordner',
         0,
-        'Unbefugte Einsicht. Die Daten selbst bleiben unverändert und verfügbar.',
+        'Hier sieht jemand Daten, die nicht für ihn bestimmt sind. Verändert wird dabei nichts.',
       ),
       zu(
         'Ein Angreifer ändert die IBAN in einer Rechnungsvorlage',
@@ -24,7 +24,7 @@ final List<Question> questionsA06Sicherheit = [
       zu(
         'Der Webshop ist nach einem Stromausfall drei Stunden nicht erreichbar',
         2,
-        'Der Dienst ist nicht nutzbar, als er gebraucht wird.',
+        'Der Dienst ist nicht nutzbar, wenn er gebraucht wird.',
       ),
       zu(
         'Ein Übertragungsfehler verfälscht Messwerte in der Datenbank',
@@ -38,7 +38,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
     ],
     explanation:
-        'Gesehen -> Vertraulichkeit, verändert -> Integrität, nicht erreichbar -> Verfügbarkeit.',
+        'Sieht jemand Daten unbefugt, ist die Vertraulichkeit verletzt. Werden Daten verändert, trifft es die Integrität, und ist ein Dienst nicht erreichbar, die Verfügbarkeit.',
   ),
   rechnen(
     'a6-zz-2',
@@ -90,15 +90,15 @@ final List<Question> questionsA06Sicherheit = [
     zeilen: [
       ja(
         'Unterbrechungsfreie Stromversorgung (USV)',
-        'Überbrückt Stromausfälle. Die Systeme bleiben erreichbar.',
+        'Sie überbrückt Stromausfälle, die Systeme bleiben erreichbar.',
       ),
       nein(
         'Verschlüsselung der Festplatten',
-        'Schützt vor unbefugtem Lesen: Vertraulichkeit.',
+        'Sie schützt vor unbefugtem Lesen, also die Vertraulichkeit.',
       ),
       ja(
         'Zweite Internetleitung über einen anderen Anbieter',
-        'Redundanz: Fällt eine Leitung aus, übernimmt die andere.',
+        'Fällt eine Leitung aus, übernimmt die andere (Redundanz).',
       ),
       ja(
         'Tägliche Datensicherung mit Wiederherstellungstest',
@@ -106,7 +106,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
       nein(
         'Digitale Signatur für ausgehende Rechnungen',
-        'Sichert Integrität und Authentizität.',
+        'Sie sichert Integrität und Authentizität, nicht die Verfügbarkeit.',
       ),
       nein(
         'Zugriffsrechte nach dem Minimalprinzip',
@@ -210,16 +210,16 @@ final List<Question> questionsA06Sicherheit = [
       zu(
         'Kostenloses PDF-Werkzeug, das nach der Installation heimlich eine Hintertür öffnet',
         2,
-        'Getarnt als nützliches Programm und vom Nutzer selbst installiert.',
+        'Es tarnt sich als nützliches Programm und wird vom Nutzer selbst installiert.',
       ),
       zu(
         'Verbreitet sich ohne jedes Zutun der Nutzer im gesamten Firmennetz',
         1,
-        'Kein Wirt, keine Nutzeraktion: ein Wurm.',
+        'Er braucht weder Wirtsdatei noch Nutzeraktion, also ist es ein Wurm.',
       ),
     ],
     explanation:
-        'Virus: braucht eine Wirtsdatei. Wurm: verbreitet sich selbstständig über das Netz. Trojaner: tarnt sich als nützliches Programm.',
+        'Ein Virus braucht eine Wirtsdatei, ein Wurm verbreitet sich selbstständig über das Netz, und ein Trojaner tarnt sich als nützliches Programm.',
   ),
   einfach(
     'a6-zm-2',
@@ -273,7 +273,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
     ],
     explanation:
-        'Bei Ransomware zählt jede Minute: Netzverbindung trennen, damit sich die Verschlüsselung nicht ausbreitet, und den Vorfall sofort melden.',
+        'Bei Ransomware zählt jede Minute. Trenne die Netzverbindung, damit sich die Verschlüsselung nicht ausbreitet, und melde den Vorfall sofort.',
   ),
   lueckentext(
     'a6-zm-4',
@@ -289,7 +289,7 @@ final List<Question> questionsA06Sicherheit = [
       wahl('Datensicherung', ['Firewall-Regel', 'Bildschirmsperre']),
     ],
     explanation:
-        'Signaturen erkennen bekannte Schadsoftware, die Heuristik (Verhaltensanalyse) auch unbekannte. Beides ersetzt keine Updates: Sie schließen die Lücken, über die Würmer und Exploits eindringen. Gegen Ransomware hilft am Ende nur eine getrennt aufbewahrte Sicherung.',
+        'Signaturen erkennen bekannte Schadsoftware, die Heuristik (Verhaltensanalyse) auch unbekannte. Beides ersetzt keine Updates, denn erst sie schließen die Lücken, über die Würmer und Exploits eindringen. Gegen Ransomware hilft am Ende nur eine getrennt aufbewahrte Sicherung.',
   ),
   einfach(
     'a6-zm-5',
@@ -317,7 +317,7 @@ final List<Question> questionsA06Sicherheit = [
     ],
     difficulty: 1,
     explanation:
-        'Kennzeichen eines Rootkits ist die Tarnung: Es verbirgt Dateien, Prozesse und Netzverbindungen, oft mit höchsten Rechten. Entfernen ist schwierig, meist wird das System neu aufgesetzt.',
+        'Kennzeichen eines Rootkits ist die Tarnung: Es verbirgt Dateien, Prozesse und Netzverbindungen, oft mit höchsten Rechten. Es lässt sich nur schwer entfernen, meist wird das System neu aufgesetzt.',
   ),
   mehrfach(
     'a6-zm-6',
@@ -352,7 +352,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
     ],
     explanation:
-        'Gegen Ransomware wirkt die Kombination: Infektionswege schließen (Updates, Makros blockieren), Schaden begrenzen (keine Adminrechte) und eine Sicherung, die die Schadsoftware nicht erreichen kann.',
+        'Gegen Ransomware wirkt nur die Kombination: Infektionswege schließen (Updates, Makros blockieren), den Schaden begrenzen (keine Adminrechte) und eine Sicherung bereithalten, die die Schadsoftware nicht erreichen kann.',
   ),
   zuordnen(
     'a6-zm-7',
@@ -432,7 +432,7 @@ final List<Question> questionsA06Sicherheit = [
       zu(
         'Ein angeblicher Support-Mitarbeiter ruft an und verlangt Fernzugriff auf den PC',
         0,
-        'Social Engineering per Telefon.',
+        'Vishing ist Social Engineering per Telefon.',
       ),
       zu(
         'Eine Person mit Kartons in den Händen folgt Mitarbeitenden durch die gesicherte Tür',
@@ -442,12 +442,12 @@ final List<Question> questionsA06Sicherheit = [
       zu(
         'Der angebliche Geschäftsführer fordert per Mail eine eilige, vertrauliche Überweisung',
         2,
-        'Autorität, Zeitdruck und Geheimhaltung, typisch für CEO-Fraud.',
+        'Autorität, Zeitdruck und Geheimhaltung sind typisch für CEO-Fraud.',
       ),
       zu(
         'Tausende gekaperte Rechner legen den Webshop mit Anfragen lahm',
         3,
-        'Überlastung aus vielen Quellen, meist einem Botnetz.',
+        'Der Dienst wird aus vielen Quellen überlastet, meist aus einem Botnetz.',
       ),
     ],
     explanation:
@@ -482,7 +482,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
     ],
     explanation:
-        'Typische Merkmale: fremde Absenderdomain, Druck und Drohung, abweichendes Linkziel und die Bitte um Zugangsdaten. Ein Logo sagt nichts über die Echtheit.',
+        'Typische Merkmale sind eine fremde Absenderdomain, Druck und Drohung, ein abweichendes Linkziel und die Bitte um Zugangsdaten. Ein Logo sagt nichts über die Echtheit.',
   ),
   einfach(
     'a6-za-3',
@@ -509,7 +509,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
     ],
     explanation:
-        'Beim Man-in-the-Middle-Angriff schaltet sich der Angreifer zwischen zwei Kommunikationspartner. Schutz bietet eine Ende-zu-Ende-Verschlüsselung wie TLS mit Zertifikatsprüfung.',
+        'Beim Man-in-the-Middle-Angriff schaltet sich der Angreifer zwischen zwei Kommunikationspartner. Schutz bietet eine verschlüsselte Verbindung mit Zertifikatsprüfung, etwa TLS (HTTPS) oder ein VPN.',
   ),
   freitext(
     'a6-za-4',
@@ -676,7 +676,7 @@ final List<Question> questionsA06Sicherheit = [
       nein('Brute Force', 'Dabei werden Passwörter durchprobiert.'),
     ],
     explanation:
-        'XSS entsteht, wenn eine Webanwendung Eingaben ungeprüft wieder ausgibt. Schutz: Eingaben prüfen und Ausgaben maskieren, damit Skriptcode als Text angezeigt statt ausgeführt wird.',
+        'XSS entsteht, wenn eine Webanwendung Eingaben ungeprüft wieder ausgibt. Davor schützt, Eingaben zu prüfen und Ausgaben zu maskieren, damit Skriptcode als Text angezeigt statt ausgeführt wird.',
   ),
 
   // ====================================================== Schutzbedarf und IT-Grundschutz
@@ -705,7 +705,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
     ],
     explanation:
-        'Maximumprinzip: Das IT-System erbt den höchsten Schutzbedarf der Anwendungen, die darauf laufen. Hier „hoch“ von der Personalverwaltung.',
+        'Nach dem Maximumprinzip erbt das IT-System den höchsten Schutzbedarf der Anwendungen, die darauf laufen. Hier ist das „hoch“ von der Personalverwaltung.',
   ),
   zuordnen(
     'a6-zb-2',
@@ -730,7 +730,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
     ],
     explanation:
-        'Maximumprinzip: höchster Wert gilt. Kumulation: viele kleine Schäden erhöhen den Schutzbedarf. Verteilung: Redundanz kann ihn für ein einzelnes System senken.',
+        'Beim Maximumprinzip gilt der höchste Wert. Beim Kumulationseffekt erhöhen viele kleine Schäden zusammen den Schutzbedarf, beim Verteilungseffekt kann Redundanz ihn für ein einzelnes System senken.',
   ),
   reihenfolge(
     'a6-zb-3',
@@ -744,7 +744,7 @@ final List<Question> questionsA06Sicherheit = [
     'a6-zb-4',
     'sz-schutzbedarf',
     prompt:
-        'Welche der folgenden sind Schadensszenarien, die das BSI für die Schutzbedarfsfeststellung vorsieht?',
+        'Welche Schadensszenarien sieht das BSI für die Schutzbedarfsfeststellung vor?',
     choices: [
       ja(
         'Verstoß gegen Gesetze, Vorschriften oder Verträge',
@@ -981,7 +981,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
     ],
     explanation:
-        'Paketfilter: einzelne Pakete nach Kopfdaten. Stateful Inspection: zusätzlich Verbindungszustand. Application-Level-Gateway: Inhalte auf Schicht 7. IPS: erkennt und blockiert Angriffe.',
+        'Der Paketfilter prüft einzelne Pakete nach ihren Kopfdaten, Stateful Inspection kennt zusätzlich den Verbindungszustand. Ein Application-Level-Gateway prüft die Inhalte auf Schicht 7, und ein IPS erkennt und blockiert Angriffe.',
   ),
   einfach(
     'a6-yf-7',
@@ -1027,7 +1027,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
     ],
     explanation:
-        'Die einstufige DMZ ist günstig und einfach, aber die einzige Firewall ist ein Single Point of Failure. Bei der zweistufigen DMZ muss ein Angreifer zwei Firewalls überwinden.',
+        'Die einstufige DMZ ist günstig und einfach, aber die ganze Sicherheit hängt an einer einzigen Firewall. Bei der zweistufigen DMZ muss ein Angreifer zwei Firewalls überwinden.',
   ),
   einfach(
     'a6-yf-8',
@@ -1080,7 +1080,7 @@ final List<Question> questionsA06Sicherheit = [
     answer: 4,
     unit: 'Bänder',
     explanation:
-        'Letzte Sicherung war Mittwochabend. Benötigt werden die Vollsicherung vom Sonntag und alle Inkremente seitdem: Montag, Dienstag, Mittwoch. 1 + 3 = 4 Bänder.',
+        'Die letzte Sicherung lief am Mittwochabend. Benötigt werden die Vollsicherung vom Sonntag und alle Inkremente seitdem: Montag, Dienstag, Mittwoch. 1 + 3 = 4 Bänder.',
   ),
   lueckentext(
     'a6-yb-3',
@@ -1163,7 +1163,7 @@ final List<Question> questionsA06Sicherheit = [
     ],
     difficulty: 1,
     explanation:
-        'Großvater-Vater-Sohn: tägliche Sicherungen (Sohn) werden schnell überschrieben, wöchentliche (Vater) länger und monatliche (Großvater) am längsten aufbewahrt.',
+        'Beim Großvater-Vater-Sohn-Prinzip werden tägliche Sicherungen (Sohn) schnell überschrieben, wöchentliche (Vater) länger und monatliche (Großvater) am längsten aufbewahrt.',
   ),
   tabelle(
     'a6-yb-8',
@@ -1203,7 +1203,7 @@ final List<Question> questionsA06Sicherheit = [
       ],
     ],
     explanation:
-        'Differenziell: alle Änderungen seit der letzten Vollsicherung, wächst täglich, Wiederherstellung mit Voll + letzter Differenz. Inkrementell: nur Änderungen seit der letzten Sicherung, kleinster Speicherbedarf, Wiederherstellung mit Voll + allen Inkrementen in der richtigen Reihenfolge.',
+        'Die differenzielle Sicherung enthält alle Änderungen seit der letzten Vollsicherung, wächst also täglich und braucht zur Wiederherstellung nur Voll + letzte Differenz. Die inkrementelle sichert nur die Änderungen seit der letzten Sicherung, braucht am wenigsten Speicher, aber zur Wiederherstellung Voll + alle Inkremente in der richtigen Reihenfolge.',
   ),
 
   // ================================================================ Sicheres WLAN
@@ -1216,11 +1216,11 @@ final List<Question> questionsA06Sicherheit = [
     choices: [
       ja(
         'WPA3-Personal',
-        'Aktuellster Standard, schützt dank SAE vor Offline-Wörterbuchangriffen.',
+        'Das ist der aktuelle Standard. Dank SAE schützt er vor Offline-Wörterbuchangriffen.',
       ),
       nein(
         'WPA2 mit AES',
-        'Gilt als Minimum, ist aber nicht der aktuelle Stand, wenn alle Geräte WPA3 können.',
+        'Das gilt als Minimum, ist aber nicht der aktuelle Stand, wenn alle Geräte WPA3 können.',
       ),
       nein('WPA2 mit TKIP', 'TKIP ist veraltet und gilt als unsicher.'),
       nein('WEP', 'WEP ist seit Jahren gebrochen.'),
@@ -1234,7 +1234,7 @@ final List<Question> questionsA06Sicherheit = [
     scenario:
         'Eine Arztpraxis betreibt ein WLAN für die Praxisgeräte und möchte Patienten im Wartezimmer Internet anbieten.',
     prompt:
-        'Nenne vier Maßnahmen, die die Sicherheit des WLAN wirksam erhöhen. (4 P.)',
+        'Nenne vier Maßnahmen, die die Sicherheit des WLANs wirksam erhöhen. (4 P.)',
     kriterien: [
       krit(
         'Aktuelle Verschlüsselung einsetzen: WPA3, mindestens WPA2 mit AES',
@@ -1290,7 +1290,11 @@ final List<Question> questionsA06Sicherheit = [
         'Welche Rolle bei der Anmeldung nach 802.1X hat das jeweilige Gerät?',
     buckets: ['Supplicant', 'Authenticator', 'Authentication Server'],
     items: [
-      zu('Notebook einer Mitarbeiterin', 0, 'Das Endgerät, das Zugang möchte.'),
+      zu(
+        'Notebook einer Mitarbeiterin',
+        0,
+        'Es ist das Endgerät, das Zugang möchte.',
+      ),
       zu(
         'Access Point im Großraumbüro',
         1,
@@ -1308,7 +1312,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
     ],
     explanation:
-        'Supplicant: Endgerät. Authenticator: Access Point oder Switch. Authentication Server: meist ein RADIUS-Server.',
+        'Der Supplicant ist das Endgerät, der Authenticator der Access Point oder Switch und der Authentication Server meist ein RADIUS-Server.',
   ),
   rechnen(
     'a6-yw-4',
@@ -1348,7 +1352,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
     ],
     explanation:
-        'WPA-Personal nutzt ein gemeinsames Passwort, das nur durch Ändern auf allen Geräten widerrufen werden kann. WPA-Enterprise prüft über 802.1X und RADIUS persönliche Zugangsdaten. Ein einzelnes Konto lässt sich sperren.',
+        'WPA-Personal nutzt ein gemeinsames Passwort, das nur durch Ändern auf allen Geräten widerrufen werden kann. WPA-Enterprise prüft über 802.1X und RADIUS persönliche Zugangsdaten, sodass sich ein einzelnes Konto sperren lässt.',
   ),
   paare(
     'a6-yw-6',
@@ -1389,7 +1393,7 @@ final List<Question> questionsA06Sicherheit = [
       ],
       zonen: [
         NetzZone('VLAN 10 intern', 0, 3.2, 2.6, 6),
-        NetzZone('VLAN 20 Gäste', 2.8, 5.0, 4, 6),
+        NetzZone('VLAN 20 Gäste', 2.8, 5.0, 3.9, 6),
       ],
     ),
     prompt: 'Welche Firewall-Regeln sind für das Gast-VLAN richtig?',
@@ -1422,30 +1426,34 @@ final List<Question> questionsA06Sicherheit = [
     prompt: 'Um welche Art der Kontrolle handelt es sich?',
     buckets: ['Zutritt', 'Zugang', 'Zugriff'],
     items: [
-      zu('Chipkartenleser an der Tür zum Serverraum', 0, 'Schützt einen Raum.'),
+      zu(
+        'Chipkartenleser an der Tür zum Serverraum',
+        0,
+        'Er schützt einen Raum.',
+      ),
       zu(
         'Anmeldung am Notebook mit Passwort und Fingerabdruck',
         1,
-        'Schützt die Nutzung des IT-Systems.',
+        'Sie schützt die Nutzung des IT-Systems.',
       ),
       zu(
         'Nur die Personalabteilung darf den Ordner „Gehälter“ öffnen',
         2,
-        'Regelt Rechte auf bestimmte Daten.',
+        'Das regelt die Rechte an bestimmten Daten.',
       ),
       zu(
         'Besuchende werden am Empfang registriert und begleitet',
         0,
-        'Kontrolliert das Betreten des Gebäudes.',
+        'So wird das Betreten des Gebäudes kontrolliert.',
       ),
       zu(
         'Leserecht, aber kein Schreibrecht auf die Preisliste',
         2,
-        'Regelt, was mit bestimmten Daten erlaubt ist.',
+        'Das regelt, was mit bestimmten Daten erlaubt ist.',
       ),
     ],
     explanation:
-        'Zutritt: Räume und Gebäude. Zugang: Nutzung von IT-Systemen. Zugriff: Rechte auf bestimmte Daten und Funktionen.',
+        'Zutritt betrifft Räume und Gebäude, Zugang die Nutzung von IT-Systemen und Zugriff die Rechte an bestimmten Daten und Funktionen.',
   ),
   einfach(
     'a6-yz-2',
@@ -1460,11 +1468,11 @@ final List<Question> questionsA06Sicherheit = [
       ),
       nein(
         'Rolle „Buchhaltung“ zusätzlich zuordnen und „Vertrieb“ behalten',
-        'Rechte würden sich anhäufen, ein Verstoß gegen das Minimalprinzip.',
+        'So häufen sich Rechte an, und das verstößt gegen das Minimalprinzip.',
       ),
       nein(
         'Ihm Administratorrechte geben, damit er überall Zugriff hat',
-        'Weit mehr Rechte als nötig und ein hohes Risiko.',
+        'Das wären weit mehr Rechte als nötig und ein hohes Risiko.',
       ),
       nein(
         'Ihn vorerst das Konto einer Kollegin aus der Buchhaltung mitbenutzen lassen',
@@ -1596,7 +1604,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
     ],
     explanation:
-        'DAC: Besitzer vergibt Rechte. MAC: System erzwingt Sicherheitsstufen. RBAC: Rechte hängen an Rollen, das übliche Modell in Unternehmen.',
+        'Bei DAC vergibt der Besitzer die Rechte, bei MAC erzwingt das System Sicherheitsstufen. Bei RBAC hängen die Rechte an Rollen, das ist das übliche Modell in Unternehmen.',
   ),
   markieren(
     'a6-yz-7',
@@ -1612,7 +1620,7 @@ final List<Question> questionsA06Sicherheit = [
       ),
       ja(
         'Alle Azubis haben Adminrechte, damit sie Software selbst installieren können.',
-        'Weit mehr Rechte als nötig und eine offene Tür für Schadsoftware.',
+        'Das sind weit mehr Rechte als nötig und eine offene Tür für Schadsoftware.',
       ),
       nein(
         'Administratoren nutzen für E-Mail und Internet ein normales Konto.',

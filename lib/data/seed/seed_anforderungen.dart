@@ -15,14 +15,14 @@ final List<Question> seedAnforderungen = [
     kind: QuestionKind.matching,
     difficulty: 1,
     tags: ['lastenheft', 'pflichtenheft'],
-    prompt:
-        'Ordne jede Aussage dem richtigen Dokument zu. (Nach DIN 69901-5)',
+    prompt: 'Ordne jede Aussage dem richtigen Dokument zu. (Nach DIN 69901-5)',
     buckets: ['Lastenheft', 'Pflichtenheft'],
     matchItems: const [
       MatchItem(
         text: 'Wird vom Auftraggeber erstellt.',
         bucket: 0,
-        rationale: 'Merksatz: Der Auftraggeber lädt dem Auftragnehmer die Last auf.',
+        rationale:
+            'Merksatz: Der Auftraggeber lädt dem Auftragnehmer die Last auf.',
       ),
       MatchItem(
         text: 'Wird vom Auftragnehmer erstellt.',
@@ -30,24 +30,29 @@ final List<Question> seedAnforderungen = [
         rationale: 'Der Auftragnehmer beschreibt, wie er die Pflicht erfüllt.',
       ),
       MatchItem(
-        text: 'Beschreibt das WAS und WOFÜR, also die Gesamtheit der Anforderungen.',
+        text:
+            'Beschreibt das WAS und WOFÜR, also die Gesamtheit der Anforderungen.',
         bucket: 0,
         rationale: 'Das Lastenheft ist bewusst lösungsneutral formuliert.',
       ),
       MatchItem(
-        text: 'Beschreibt das WIE und WOMIT, also die konkrete technische Umsetzung.',
+        text:
+            'Beschreibt das WIE und WOMIT, also die konkrete technische Umsetzung.',
         bucket: 1,
-        rationale: 'Erst im Pflichtenheft werden Technologien, Schnittstellen und Architektur festgelegt.',
+        rationale:
+            'Erst im Pflichtenheft werden Technologien, Schnittstellen und Architektur festgelegt.',
       ),
       MatchItem(
         text: 'Ist Grundlage für die Ausschreibung und den Angebotsvergleich.',
         bucket: 0,
-        rationale: 'Alle Anbieter bekommen dasselbe Lastenheft, denn nur so sind Angebote vergleichbar.',
+        rationale:
+            'Alle Anbieter bekommen dasselbe Lastenheft, denn nur so sind Angebote vergleichbar.',
       ),
       MatchItem(
         text: 'Wird vom Auftraggeber genehmigt und ist Grundlage der Abnahme.',
         bucket: 1,
-        rationale: 'Das genehmigte Pflichtenheft ist der vertragliche Maßstab, gegen den abgenommen wird.',
+        rationale:
+            'Das genehmigte Pflichtenheft ist der vertragliche Maßstab, gegen den abgenommen wird.',
       ),
     ],
     explanation:
@@ -78,22 +83,28 @@ final List<Question> seedAnforderungen = [
       MatchItem(
         text: 'Die Suchanfrage muss in unter 2 Sekunden beantwortet werden.',
         bucket: 1,
-        rationale: 'Performance ist eine Qualitätseigenschaft, kein Funktionsumfang.',
+        rationale:
+            'Performance ist eine Qualitätseigenschaft, kein Funktionsumfang.',
       ),
       MatchItem(
-        text: 'Benutzer müssen sich mit Zwei-Faktor-Authentifizierung anmelden können.',
+        text:
+            'Benutzer müssen sich mit Zwei-Faktor-Authentifizierung anmelden können.',
         bucket: 0,
-        rationale: 'Die Anmeldung mit 2FA ist eine Funktion, die das System bereitstellen muss.',
+        rationale:
+            'Die Anmeldung mit 2FA ist eine Funktion, die das System bereitstellen muss.',
       ),
       MatchItem(
         text: 'Die Anwendung muss zu 99,5 % im Jahr verfügbar sein.',
         bucket: 1,
-        rationale: 'Verfügbarkeit ist eine klassische nicht-funktionale Anforderung.',
+        rationale:
+            'Verfügbarkeit ist eine klassische nicht-funktionale Anforderung.',
       ),
       MatchItem(
-        text: 'Die Oberfläche muss der BITV 2.0 für Barrierefreiheit entsprechen.',
+        text:
+            'Die Oberfläche muss der BITV 2.0 für Barrierefreiheit entsprechen.',
         bucket: 1,
-        rationale: 'Eine Randbedingung bzw. Qualitätsanforderung, denn sie beschreibt keine einzelne Funktion.',
+        rationale:
+            'Eine Randbedingung bzw. Qualitätsanforderung, denn sie beschreibt keine einzelne Funktion.',
       ),
       MatchItem(
         text: 'Administratoren können Benutzerkonten sperren und entsperren.',
@@ -119,30 +130,44 @@ final List<Question> seedAnforderungen = [
     scenario:
         'Der Entwurf eines Lastenhefts für ein Ticketsystem enthält die '
         'folgenden Anforderungen.',
-    prompt:
-        'Markiere alle Anforderungen, die NICHT gut formuliert sind.',
+    prompt: 'Markiere alle Anforderungen, die NICHT gut formuliert sind.',
     zeilen: [
-      ja('Das System soll benutzerfreundlich sein.',
-          'Nicht prüfbar: Niemand kann entscheiden, ob das erfüllt ist.'),
-      nein('Die Suche liefert bei 10.000 Tickets ein Ergebnis in höchstens 2 Sekunden.',
-          'Eindeutig und messbar.'),
-      ja('Das System muss schnell reagieren.',
-          'Ohne Messwert mehrdeutig, denn "schnell" versteht jeder anders.'),
-      nein('Tickets können als PDF exportiert werden.',
-          'Eine klare, prüfbare Fähigkeit des Systems.'),
-      ja('Das System wird mit MySQL 8 und PHP umgesetzt.',
-          'Nimmt die technische Lösung vorweg. Das WIE gehört ins Pflichtenheft.'),
-      ja('Jeder Nutzer sieht alle Tickets. Kundentickets sieht nur das zuständige Team.',
-          'Die beiden Sätze widersprechen sich.'),
-      nein('Nach fünf Fehlversuchen wird das Benutzerkonto für 15 Minuten gesperrt.',
-          'Vollständig, eindeutig und testbar.'),
+      ja(
+        'Das System soll benutzerfreundlich sein.',
+        'Nicht prüfbar: Niemand kann entscheiden, ob das erfüllt ist.',
+      ),
+      nein(
+        'Die Suche liefert bei 10.000 Tickets ein Ergebnis in höchstens 2 Sekunden.',
+        'Eindeutig und messbar.',
+      ),
+      ja(
+        'Das System muss schnell reagieren.',
+        'Ohne Messwert mehrdeutig, denn "schnell" versteht jeder anders.',
+      ),
+      nein(
+        'Tickets können als PDF exportiert werden.',
+        'Eine klare, prüfbare Fähigkeit des Systems.',
+      ),
+      ja(
+        'Das System wird mit MySQL 8 und PHP umgesetzt.',
+        'Nimmt die technische Lösung vorweg. Das WIE gehört ins Pflichtenheft.',
+      ),
+      ja(
+        'Jeder Nutzer sieht alle Tickets. Kundentickets sieht nur das zuständige Team.',
+        'Die beiden Sätze widersprechen sich.',
+      ),
+      nein(
+        'Nach fünf Fehlversuchen wird das Benutzerkonto für 15 Minuten gesperrt.',
+        'Vollständig, eindeutig und testbar.',
+      ),
     ],
     explanation:
         'Merkhilfe für Anforderungsqualität: eindeutig, vollständig, '
         'widerspruchsfrei, prüfbar, notwendig, verständlich, priorisiert. '
-        'Eine vorweggenommene Lösung schließt bessere Alternativen aus, und '
-        'Vagheit ist keine Flexibilität; die erreicht man über Prioritäten. '
-        'Priorisierung erfolgt oft nach MoSCoW: Must have, Should have, '
+        'Eine vorweggenommene Lösung schließt bessere Alternativen aus. '
+        'Vage Formulierungen schaffen auch keine Flexibilität, die erreichst '
+        'du über Prioritäten. '
+        'Priorisiert wird oft nach MoSCoW: Must have, Should have, '
         'Could have, Won’t have (this time).',
   ),
 
@@ -158,14 +183,26 @@ final List<Question> seedAnforderungen = [
         'Kunde zwei kleinere Mängel fest, die den Betrieb nicht verhindern.',
     prompt: 'Was ist die übliche und rechtlich sinnvolle Vorgehensweise?',
     choices: [
-      _c('Abnahme unter Vorbehalt: Mängel werden protokolliert und mit Frist zur Beseitigung vereinbart.', true,
-          'Richtig. Die Abnahme unter Vorbehalt hält die Mängelrechte aufrecht und blockiert trotzdem nicht den Produktivstart.'),
-      _c('Vollständige Verweigerung der Abnahme bis alle Mängel beseitigt sind.', false,
-          'Bei unwesentlichen Mängeln ist die Verweigerung in der Regel unzulässig (vgl. Werkvertragsrecht) und schadet dem Kunden selbst, weil der Nutzen ausbleibt.'),
-      _c('Vorbehaltlose Abnahme, die Mängel werden formlos per E-Mail gemeldet.', false,
-          'Gefährlich: Mit der vorbehaltlosen Abnahme verliert der Kunde bei bekannten Mängeln Nacherfüllung, Minderung und Rücktritt. Nur Schadensersatz bleibt.'),
-      _c('Die Abnahme entfällt, weil die Software bereits läuft.', false,
-          'Die Abnahme ist ein formaler Rechtsakt mit erheblichen Folgen (Gefahrübergang, Fälligkeit der Vergütung, Beginn der Gewährleistung). Sie entfällt nicht durch Nutzung. Im Gegenteil kann Nutzung als konkludente Abnahme gelten.'),
+      _c(
+        'Abnahme unter Vorbehalt: Mängel werden protokolliert und mit Frist zur Beseitigung vereinbart.',
+        true,
+        'Richtig. Die Abnahme unter Vorbehalt hält die Mängelrechte aufrecht und blockiert trotzdem nicht den Produktivstart.',
+      ),
+      _c(
+        'Vollständige Verweigerung der Abnahme, bis alle Mängel beseitigt sind.',
+        false,
+        'Bei unwesentlichen Mängeln ist die Verweigerung in der Regel unzulässig (vgl. Werkvertragsrecht) und schadet dem Kunden selbst, weil der Nutzen ausbleibt.',
+      ),
+      _c(
+        'Vorbehaltlose Abnahme, die Mängel werden formlos per E-Mail gemeldet.',
+        false,
+        'Gefährlich: Mit der vorbehaltlosen Abnahme verliert der Kunde bei bekannten Mängeln Nacherfüllung, Minderung und Rücktritt. Nur Schadensersatz bleibt.',
+      ),
+      _c(
+        'Die Abnahme entfällt, weil die Software bereits läuft.',
+        false,
+        'Die Abnahme ist ein formaler Rechtsakt mit erheblichen Folgen (Gefahrübergang, Fälligkeit der Vergütung, Beginn der Gewährleistung). Sie entfällt nicht durch Nutzung. Im Gegenteil: Die Nutzung kann sogar als konkludente Abnahme gelten.',
+      ),
     ],
     explanation:
         'Was an der Abnahme hängt: Fälligkeit der Vergütung, Gefahrübergang, '
@@ -214,14 +251,26 @@ final List<Question> seedAnforderungen = [
         'mehrfach direkt um "kleine Zusatzfunktionen". Der Termin ist unverändert.',
     prompt: 'Wie sollte die Projektleitung darauf reagieren?',
     choices: [
-      _c('Jede Änderung über einen definierten Change-Request-Prozess mit Aufwands- und Terminbewertung führen.', true,
-          'Richtig. Änderungen sind nicht verboten. Sie müssen nur bewertet und entschieden werden, statt still im Hintergrund zu passieren.'),
-      _c('Die Zusatzwünsche ablehnen, weil das Pflichtenheft unterschrieben ist.', false,
-          'Pauschale Ablehnung ist praxisfern und beschädigt die Zusammenarbeit. Anforderungen ändern sich. Das Problem ist der unkontrollierte Weg, nicht die Änderung selbst.'),
-      _c('Die Wünsche kurzfristig mit umsetzen, solange sie klein sind.', false,
-          'Genau so entsteht Scope Creep: viele kleine, nie bewertete Erweiterungen sprengen am Ende Termin und Budget, und niemand kann hinterher sagen, warum.'),
-      _c('Die Entscheidung dem Entwickler überlassen, der den Aufwand am besten einschätzen kann.', false,
-          'Der Entwickler kann den Aufwand schätzen, aber nicht über Umfang, Budget und Termin entscheiden. Das ist eine Projektleitungs- bzw. Auftraggeberentscheidung.'),
+      _c(
+        'Jede Änderung über einen definierten Change-Request-Prozess mit Aufwands- und Terminbewertung führen.',
+        true,
+        'Richtig. Änderungen sind nicht verboten. Sie müssen nur bewertet und entschieden werden, statt still im Hintergrund zu passieren.',
+      ),
+      _c(
+        'Die Zusatzwünsche ablehnen, weil das Pflichtenheft unterschrieben ist.',
+        false,
+        'Pauschale Ablehnung ist praxisfern und beschädigt die Zusammenarbeit. Anforderungen ändern sich. Das Problem ist der unkontrollierte Weg, nicht die Änderung selbst.',
+      ),
+      _c(
+        'Die Wünsche kurzfristig mit umsetzen, solange sie klein sind.',
+        false,
+        'Genau so entsteht Scope Creep: Viele kleine, nie bewertete Erweiterungen sprengen am Ende Termin und Budget, und niemand kann hinterher sagen, warum.',
+      ),
+      _c(
+        'Die Entscheidung dem Entwickler überlassen, der den Aufwand am besten einschätzen kann.',
+        false,
+        'Der Entwickler kann den Aufwand schätzen, aber nicht über Umfang, Budget und Termin entscheiden. Das ist eine Projektleitungs- bzw. Auftraggeberentscheidung.',
+      ),
     ],
     explanation:
         'Change-Request-Prozess: Antrag erfassen -> Auswirkung auf Zeit, '
@@ -260,8 +309,8 @@ final List<Question> seedAnforderungen = [
         'Preis:           0,15 x 2 = 0,30\n'
         'Gesamtnutzwert = 1,60 + 0,75 + 1,00 + 0,30 = 3,65\n\n'
         'Kontrolle: Die Gewichtungen müssen in Summe 100 % ergeben, sonst ist '
-        'das Ergebnis nicht vergleichbar. Und der Nutzwert kann nie über dem '
-        'Maximum der Skala (hier 5) liegen.',
+        'das Ergebnis nicht vergleichbar. Außerdem kann der Nutzwert nie über '
+        'dem Maximum der Skala (hier 5) liegen.',
   ),
 
   reihenfolge(
@@ -273,7 +322,8 @@ final List<Question> seedAnforderungen = [
         'Für ein neues Ticketsystem liegen drei Angebote vor. Neben dem Preis '
         'sollen Bedienbarkeit, Support und Zukunftssicherheit in die '
         'Entscheidung einfließen.',
-    prompt: 'Bringe die Schritte der Nutzwertanalyse in die richtige Reihenfolge.',
+    prompt:
+        'Bringe die Schritte der Nutzwertanalyse in die richtige Reihenfolge.',
     hint: 'Vom Kriterium zur Entscheidung',
     items: [
       'Bewertungskriterien festlegen',
@@ -292,8 +342,8 @@ final List<Question> seedAnforderungen = [
         '6. höchster Nutzwert gewinnt.\n'
         'Schwäche, nach der gern gefragt wird: Gewichtung und Bewertung sind '
         'subjektiv. Wer das Ergebnis vorher kennt, kann es über die '
-        'Gewichtung herbeiführen. Deshalb Kriterien VOR dem Blick auf die '
-        'Angebote festlegen.',
+        'Gewichtung herbeiführen. Lege die Kriterien deshalb fest, BEVOR du '
+        'die Angebote ansiehst.',
   ),
 
   Question(
@@ -315,11 +365,11 @@ final List<Question> seedAnforderungen = [
     explanation:
         'Amortisationsdauer = Investitionssumme / jährlicher Rückfluss\n'
         '= 48.000 Euro / 15.000 Euro pro Jahr = 3,2 Jahre\n\n'
-        'In Worten: nach rund 3 Jahren und 2-3 Monaten hat sich die Anschaffung '
-        'bezahlt gemacht. Achtung bei Aufgaben, in denen zusätzlich laufende '
-        'Kosten der neuen Lösung genannt werden. Dann muss man erst den '
-        'NETTO-Rückfluss bilden (Einsparung minus neue laufende Kosten) und '
-        'erst damit rechnen.',
+        'Anders gesagt: Nach rund 3 Jahren und 2 bis 3 Monaten hat sich die '
+        'Anschaffung bezahlt gemacht. Achte auf Aufgaben, die zusätzlich '
+        'laufende Kosten der neuen Lösung nennen. Dann bildest du zuerst den '
+        'NETTO-Rückfluss (Einsparung minus neue laufende Kosten) und rechnest '
+        'erst damit.',
   ),
 
   Question(
@@ -364,27 +414,50 @@ final List<Question> seedAnforderungen = [
         'Für eine Serverbeschaffung wird eine TCO-Betrachtung (Total Cost of '
         'Ownership) aufgestellt.',
     prompt: 'Ordne jede Position dem Abschnitt der TCO-Betrachtung zu.',
-    buckets: ['Anschaffung', 'Laufender Betrieb', 'Außerbetriebnahme', 'Kein Teil der TCO'],
+    buckets: [
+      'Anschaffung',
+      'Laufender Betrieb',
+      'Außerbetriebnahme',
+      'Kein Teil der TCO',
+    ],
     items: [
-      zu('Strom- und Klimatisierungskosten', 1,
-          'Laufende Betriebskosten sind bei Servern oft höher als der Kaufpreis.'),
-      zu('Kaufpreis der Hardware', 0,
-          'Der offensichtliche Teil, meist der kleinere.'),
-      zu('Umsatz, der mit dem neuen System erzielt wird', 3,
-          'TCO betrachtet ausschließlich Kosten. Erträge gehören in eine ROI-Rechnung.'),
-      zu('Jährliche Lizenz- und Wartungsverträge', 1,
-          'Wiederkehrende Kosten, die sich über fünf Jahre erheblich summieren.'),
-      zu('Datenmigration auf das Nachfolgesystem und Entsorgung', 2,
-          'Der oft vergessene letzte Lebenszyklusabschnitt.'),
-      zu('Installation und Einrichtung im Serverraum', 0,
-          'Einmalige Kosten bei der Beschaffung.'),
+      zu(
+        'Strom- und Klimatisierungskosten',
+        1,
+        'Laufende Betriebskosten sind bei Servern oft höher als der Kaufpreis.',
+      ),
+      zu(
+        'Kaufpreis der Hardware',
+        0,
+        'Der offensichtliche Teil, meist der kleinere.',
+      ),
+      zu(
+        'Umsatz, der mit dem neuen System erzielt wird',
+        3,
+        'TCO betrachtet ausschließlich Kosten. Erträge gehören in eine ROI-Rechnung.',
+      ),
+      zu(
+        'Jährliche Lizenz- und Wartungsverträge',
+        1,
+        'Wiederkehrende Kosten, die sich über fünf Jahre erheblich summieren.',
+      ),
+      zu(
+        'Datenmigration auf das Nachfolgesystem und Entsorgung',
+        2,
+        'Der oft vergessene letzte Lebenszyklusabschnitt.',
+      ),
+      zu(
+        'Installation und Einrichtung im Serverraum',
+        0,
+        'Einmalige Kosten bei der Beschaffung.',
+      ),
     ],
     explanation:
         'TCO betrachtet den gesamten Lebenszyklus: Beschaffung, Betrieb, '
         'Wartung, Schulung, Ausfallkosten, Außerbetriebnahme. Der Sinn ist, '
         'das billigste Angebot vom günstigsten zu unterscheiden. '
-        'Wichtig zur Abgrenzung: TCO = nur Kosten. ROI und '
-        'Wirtschaftlichkeitsrechnung = Kosten UND Nutzen.',
+        'Halte auseinander: Die TCO erfasst nur Kosten, ROI und '
+        'Wirtschaftlichkeitsrechnung betrachten Kosten UND Nutzen.',
   ),
 
   // --------------------------------------------------------- Qualität/Risiko
@@ -423,34 +496,44 @@ final List<Question> seedAnforderungen = [
     buckets: ['Vermeiden', 'Vermindern', 'Überwälzen', 'Akzeptieren'],
     matchItems: const [
       MatchItem(
-        text: 'Auf den Einsatz einer unausgereiften Technologie wird verzichtet.',
+        text:
+            'Auf den Einsatz einer unausgereiften Technologie wird verzichtet.',
         bucket: 0,
-        rationale: 'Die Ursache wird komplett beseitigt; die Eintrittswahrscheinlichkeit sinkt auf null.',
+        rationale:
+            'Die Ursache wird komplett beseitigt; die Eintrittswahrscheinlichkeit sinkt auf null.',
       ),
       MatchItem(
-        text: 'Zusätzliche Code-Reviews und automatisierte Tests werden eingeführt.',
+        text:
+            'Zusätzliche Code-Reviews und automatisierte Tests werden eingeführt.',
         bucket: 1,
-        rationale: 'Die Eintrittswahrscheinlichkeit sinkt, das Risiko bleibt aber grundsätzlich bestehen.',
+        rationale:
+            'Die Eintrittswahrscheinlichkeit sinkt, das Risiko bleibt aber grundsätzlich bestehen.',
       ),
       MatchItem(
         text: 'Eine Betriebshaftpflichtversicherung wird abgeschlossen.',
         bucket: 2,
-        rationale: 'Der finanzielle Schaden geht auf einen Dritten über, also klassisches Überwälzen.',
+        rationale:
+            'Der finanzielle Schaden geht auf einen Dritten über, also klassisches Überwälzen.',
       ),
       MatchItem(
-        text: 'Die Entwicklung wird an einen Dienstleister mit Festpreis vergeben.',
+        text:
+            'Die Entwicklung wird an einen Dienstleister mit Festpreis vergeben.',
         bucket: 2,
         rationale: 'Das Kostenrisiko trägt beim Festpreis der Auftragnehmer.',
       ),
       MatchItem(
-        text: 'Ein Restrisiko mit sehr geringem Schadenswert wird bewusst in Kauf genommen und dokumentiert.',
+        text:
+            'Ein Restrisiko mit sehr geringem Schadenswert wird bewusst in Kauf genommen und dokumentiert.',
         bucket: 3,
-        rationale: 'Akzeptieren ist eine legitime Strategie. Entscheidend ist, dass es bewusst und dokumentiert geschieht.',
+        rationale:
+            'Akzeptieren ist eine legitime Strategie. Entscheidend ist, dass es bewusst und dokumentiert geschieht.',
       ),
       MatchItem(
-        text: 'Ein Backup-Rechenzentrum wird bereitgehalten, um die Ausfalldauer zu begrenzen.',
+        text:
+            'Ein Backup-Rechenzentrum wird bereitgehalten, um die Ausfalldauer zu begrenzen.',
         bucket: 1,
-        rationale: 'Die Auswirkung wird reduziert. Das Risiko selbst bleibt bestehen, also Vermindern, nicht Vermeiden.',
+        rationale:
+            'Die Auswirkung wird reduziert. Das Risiko selbst bleibt bestehen, also Vermindern, nicht Vermeiden.',
       ),
     ],
     explanation:
@@ -475,33 +558,49 @@ final List<Question> seedAnforderungen = [
       ['Maßnahme', 'Einordnung'],
       [
         'Verbindliche Coding-Standards und Styleguides',
-        wahl('konstruktiv', ['analytisch', 'keine QS-Maßnahme'],
-            'Verhindert Fehler von vornherein.'),
+        wahl('konstruktiv', [
+          'analytisch',
+          'keine QS-Maßnahme',
+        ], 'Verhindert Fehler von vornherein.'),
       ],
       [
         'Modul- und Integrationstests',
-        wahl('analytisch', ['konstruktiv', 'keine QS-Maßnahme'],
-            'Tests finden vorhandene Fehler, sie verhindern sie nicht.'),
+        wahl(
+          'analytisch',
+          ['konstruktiv', 'keine QS-Maßnahme'],
+          'Tests finden vorhandene Fehler, sie verhindern sie nicht.',
+        ),
       ],
       [
         'Schulung der Entwickler vor Projektbeginn',
-        wahl('konstruktiv', ['analytisch', 'keine QS-Maßnahme'],
-            'Qualifikation ist eine klassische vorbeugende Maßnahme.'),
+        wahl(
+          'konstruktiv',
+          ['analytisch', 'keine QS-Maßnahme'],
+          'Qualifikation ist eine klassische vorbeugende Maßnahme.',
+        ),
       ],
       [
         'Code-Review nach Fertigstellung eines Moduls',
-        wahl('analytisch', ['konstruktiv', 'keine QS-Maßnahme'],
-            'Ein bereits erstelltes Artefakt wird geprüft.'),
+        wahl('analytisch', [
+          'konstruktiv',
+          'keine QS-Maßnahme',
+        ], 'Ein bereits erstelltes Artefakt wird geprüft.'),
       ],
       [
         'Einsatz erprobter Frameworks und Entwurfsmuster',
-        wahl('konstruktiv', ['analytisch', 'keine QS-Maßnahme'],
-            'Das Rad nicht neu erfinden heißt, dessen Fehler nicht neu zu machen.'),
+        wahl(
+          'konstruktiv',
+          ['analytisch', 'keine QS-Maßnahme'],
+          'Wer das Rad nicht neu erfindet, macht auch dessen Fehler nicht neu.',
+        ),
       ],
       [
         'Überstunden in der Woche vor dem Release anordnen',
-        wahl('keine QS-Maßnahme', ['konstruktiv', 'analytisch'],
-            'Mehr Arbeitszeit verhindert und findet keine Fehler. Unter Zeitdruck entstehen eher neue.'),
+        wahl(
+          'keine QS-Maßnahme',
+          ['konstruktiv', 'analytisch'],
+          'Mehr Arbeitszeit verhindert und findet keine Fehler. Unter Zeitdruck entstehen eher neue.',
+        ),
       ],
     ],
     explanation:
@@ -529,14 +628,26 @@ final List<Question> seedAnforderungen = [
         '(z. B. vollständiger Datenverlust ohne Backup).',
     prompt: 'Wie ist mit einem solchen Risiko umzugehen?',
     choices: [
-      _c('Es muss trotz geringer Wahrscheinlichkeit behandelt werden, weil der Schaden untragbar wäre.', true,
-          'Richtig. Bei existenzbedrohenden Schäden greift die reine Erwartungswertlogik nicht mehr. Ein Schaden, den man nicht überlebt, darf nicht eintreten.'),
-      _c('Es kann akzeptiert werden, weil der Risikowert rechnerisch niedrig ist.', false,
-          'Genau der Denkfehler. Ein rechnerisch kleiner Erwartungswert hilft nicht, wenn der Einzelfall das Unternehmen beendet.'),
-      _c('Es ist nachrangig gegenüber Risiken mit mittlerer Wahrscheinlichkeit und mittlerem Schaden.', false,
-          'Falsch. Bei gleicher Rechengröße hat das Risiko mit dem katastrophalen Schadenspotenzial Vorrang.'),
-      _c('Es gehört nicht in das Risikoregister, weil es unwahrscheinlich ist.', false,
-          'Ins Register gehören alle identifizierten Risiken. Erst die Bewertung entscheidet über Maßnahmen.'),
+      _c(
+        'Es muss trotz geringer Wahrscheinlichkeit behandelt werden, weil der Schaden untragbar wäre.',
+        true,
+        'Richtig. Bei existenzbedrohenden Schäden greift die reine Erwartungswertlogik nicht mehr. Ein Schaden, den man nicht überlebt, darf nicht eintreten.',
+      ),
+      _c(
+        'Es kann akzeptiert werden, weil der Risikowert rechnerisch niedrig ist.',
+        false,
+        'Genau der Denkfehler. Ein rechnerisch kleiner Erwartungswert hilft nicht, wenn der Einzelfall das Unternehmen beendet.',
+      ),
+      _c(
+        'Es ist nachrangig gegenüber Risiken mit mittlerer Wahrscheinlichkeit und mittlerem Schaden.',
+        false,
+        'Falsch. Bei gleicher Rechengröße hat das Risiko mit dem katastrophalen Schadenspotenzial Vorrang.',
+      ),
+      _c(
+        'Es gehört nicht in das Risikoregister, weil es unwahrscheinlich ist.',
+        false,
+        'Ins Register gehören alle identifizierten Risiken. Erst die Bewertung entscheidet über Maßnahmen.',
+      ),
     ],
     explanation:
         'Die Risikomatrix (Wahrscheinlichkeit x Auswirkung) hat eine '
@@ -558,14 +669,26 @@ final List<Question> seedAnforderungen = [
     tags: ['lessons_learned'],
     prompt: 'Was ist das Ziel einer Lessons-Learned-Sitzung?',
     choices: [
-      _c('Erfahrungen systematisch sichern, damit künftige Projekte davon profitieren.', true,
-          'Richtig. Der Wert entsteht erst dadurch, dass die Erkenntnisse dokumentiert und in der Organisation verfügbar gemacht werden.'),
-      _c('Die Verantwortlichen für Fehler im Projekt benennen.', false,
-          'Genau das Gegenteil. Sobald Schuldzuweisungen drohen, sagt niemand mehr, was wirklich schieflief, und die Sitzung ist wertlos.'),
-      _c('Die Abnahme des Projektergebnisses durch den Kunden.', false,
-          'Die Abnahme ist ein eigener, vorgelagerter Schritt.'),
-      _c('Die Schlussrechnung für den Kunden erstellen.', false,
-          'Das ist kaufmännischer Projektabschluss, nicht Erfahrungssicherung.'),
+      _c(
+        'Erfahrungen systematisch sichern, damit künftige Projekte davon profitieren.',
+        true,
+        'Richtig. Der Wert entsteht erst dadurch, dass die Erkenntnisse dokumentiert und in der Organisation verfügbar gemacht werden.',
+      ),
+      _c(
+        'Die Verantwortlichen für Fehler im Projekt benennen.',
+        false,
+        'Genau das Gegenteil. Sobald Schuldzuweisungen drohen, sagt niemand mehr, was wirklich schieflief, und die Sitzung ist wertlos.',
+      ),
+      _c(
+        'Die Abnahme des Projektergebnisses durch den Kunden.',
+        false,
+        'Die Abnahme ist ein eigener, vorgelagerter Schritt.',
+      ),
+      _c(
+        'Die Schlussrechnung für den Kunden erstellen.',
+        false,
+        'Das ist kaufmännischer Projektabschluss, nicht Erfahrungssicherung.',
+      ),
     ],
     explanation:
         'Lessons Learned funktionieren nur unter drei Bedingungen: zeitnah '
@@ -585,18 +708,40 @@ final List<Question> seedAnforderungen = [
         'Projektleitung schreibt den Projektabschlussbericht.',
     prompt: 'Nenne vier Inhalte eines Projektabschlussberichts.',
     kriterien: [
-      krit('Soll-Ist-Vergleich von Terminen, Kosten und Leistungsumfang',
-          stichwoerter: ['Soll-Ist', 'Vergleich', 'Abweichungen', 'Kosten', 'Termine']),
-      krit('Zielerreichungsgrad bezogen auf den Projektauftrag',
-          stichwoerter: ['Zielerreichung', 'Ziele erreicht', 'Projektauftrag']),
-      krit('Lessons Learned und Verbesserungsvorschläge',
-          stichwoerter: ['Lessons Learned', 'Erfahrungen', 'Verbesserungsvorschläge']),
-      krit('Übergabe an Betrieb bzw. Linie mit benannten Verantwortlichen',
-          stichwoerter: ['Übergabe', 'Betrieb', 'Linie', 'Verantwortliche']),
-      krit('Offene Punkte und Restrisiken',
-          stichwoerter: ['offene Punkte', 'Restarbeiten', 'Restrisiken']),
-      krit('Kurzbeschreibung von Projektverlauf und Ergebnis',
-          stichwoerter: ['Projektverlauf', 'Ergebnis', 'Zusammenfassung']),
+      krit(
+        'Soll-Ist-Vergleich von Terminen, Kosten und Leistungsumfang',
+        stichwoerter: [
+          'Soll-Ist',
+          'Vergleich',
+          'Abweichungen',
+          'Kosten',
+          'Termine',
+        ],
+      ),
+      krit(
+        'Zielerreichungsgrad bezogen auf den Projektauftrag',
+        stichwoerter: ['Zielerreichung', 'Ziele erreicht', 'Projektauftrag'],
+      ),
+      krit(
+        'Lessons Learned und Verbesserungsvorschläge',
+        stichwoerter: [
+          'Lessons Learned',
+          'Erfahrungen',
+          'Verbesserungsvorschläge',
+        ],
+      ),
+      krit(
+        'Übergabe an Betrieb bzw. Linie mit benannten Verantwortlichen',
+        stichwoerter: ['Übergabe', 'Betrieb', 'Linie', 'Verantwortliche'],
+      ),
+      krit(
+        'Offene Punkte und Restrisiken',
+        stichwoerter: ['offene Punkte', 'Restarbeiten', 'Restrisiken'],
+      ),
+      krit(
+        'Kurzbeschreibung von Projektverlauf und Ergebnis',
+        stichwoerter: ['Projektverlauf', 'Ergebnis', 'Zusammenfassung'],
+      ),
     ],
     loesung:
         'Soll-Ist-Vergleich von Terminen, Kosten und Leistungsumfang, '
@@ -622,7 +767,8 @@ final List<Question> seedAnforderungen = [
     kind: QuestionKind.ordering,
     difficulty: 2,
     tags: ['projektabschluss'],
-    prompt: 'Bringe die Schritte des Projektabschlusses in eine sinnvolle Reihenfolge.',
+    prompt:
+        'Bringe die Schritte des Projektabschlusses in eine sinnvolle Reihenfolge.',
     orderingHint: 'Vom ersten bis zum letzten Schritt',
     orderedItems: const [
       'Restarbeiten abschließen und Projektergebnis fertigstellen',

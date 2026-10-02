@@ -28,7 +28,7 @@ final List<ExamCase> casesA05 = [
         'f-a05-agentur-a',
         'ts-testfaelle',
         prompt:
-            'Bilde die Äquivalenzklassen für den Bestellwert: Gib an, ob die Klasse gültig ist, und nenne das Soll-Ergebnis. (6 P.)',
+            'Vervollständige die Äquivalenzklassen für den Bestellwert: Gib je Klasse an, ob sie gültig ist, und nenne das Soll-Ergebnis. (6 P.)',
         punkte: 6,
         zeilen: [
           ['Bestellwert', 'Klasse', 'Soll-Ergebnis'],
@@ -59,7 +59,7 @@ final List<ExamCase> casesA05 = [
           ],
         ],
         explanation:
-            'Fünf Klassen: zwei ungültige (unter 1, über 5.000) mit Fehlermeldung und drei gültige mit je eigenem Verhalten: 4,90 €, 2,90 € und 0,00 €. Aus jeder Klasse genügt ein Repräsentant, etwa -5, 20, 120, 800 und 6.000.',
+            'Es gibt fünf Klassen: zwei ungültige (unter 1 und über 5.000) mit Fehlermeldung und drei gültige mit jeweils eigenem Ergebnis (4,90 €, 2,90 € und 0,00 €). Aus jeder Klasse genügt ein Repräsentant, etwa -5, 20, 120, 800 und 6.000.',
       ),
       tabelle(
         'f-a05-agentur-b',
@@ -95,7 +95,7 @@ final List<ExamCase> casesA05 = [
           zahl(
             2.9,
             toleranz: 0.001,
-            rationale: '50 < 50 falsch, 50 <= 200 wahr.',
+            rationale: '50 < 50 ist falsch, 50 <= 200 ist wahr.',
           ),
           zahl(2.9, toleranz: 0.001, rationale: '200 <= 200 ist wahr.'),
           zahl(0, rationale: 'Keine Bedingung trifft zu.'),
@@ -122,7 +122,7 @@ final List<ExamCase> casesA05 = [
           ),
           nein(
             ' 5   WENN wert < 50 DANN',
-            'Richtig: „unter 50 €“ schließt 50 aus.',
+            'Die Bedingung stimmt, denn „unter 50 €“ schließt 50 aus.',
           ),
           nein(' 6     RÜCKGABE 4.90', 'Der Betrag entspricht der Vorgabe.'),
           ja(
@@ -133,7 +133,7 @@ final List<ExamCase> casesA05 = [
           nein('11   RÜCKGABE 0', 'Kostenloser Versand ist hier richtig.'),
         ],
         explanation:
-            'In Zeile 8 steht <= statt <. Dadurch fällt der Bestellwert 200 noch in die Klasse „50 bis 199“. Korrektur: WENN wert < 200 DANN. Wie im Lösungsbogen: 1 Punkt für die Fundstelle, 1 Punkt für den richtigen Operator.',
+            'In Zeile 8 steht <= statt <. Dadurch fällt der Bestellwert 200 noch in die Klasse „50 bis 199“. Richtig wäre: WENN wert < 200 DANN. In der Prüfung gibt es dafür 1 Punkt für die Fundstelle und 1 Punkt für den richtigen Operator.',
       ),
       freitext(
         'f-a05-agentur-e',
@@ -169,7 +169,7 @@ final List<ExamCase> casesA05 = [
         loesung:
             'An den Klassengrenzen entstehen besonders häufig Fehler, etwa durch einen falschen Vergleichsoperator. Im Beispiel liefern Repräsentanten wie 120 € und 800 € richtige Ergebnisse. Erst der Grenzwert 200 € zeigt, dass im Code <= statt < steht.',
         explanation:
-            'Je Aspekt 2 Punkte. Äquivalenzklassen sorgen dafür, dass jeder Fall einmal vorkommt, die Grenzwertanalyse prüft gezielt die Übergänge.',
+            'Je Aspekt 2 Punkte. Äquivalenzklassen sorgen dafür, dass jeder Fall einmal vorkommt, und die Grenzwertanalyse prüft gezielt die Übergänge.',
       ),
       lueckentext(
         'f-a05-agentur-f',
@@ -328,7 +328,7 @@ final List<ExamCase> casesA05 = [
           zu(
             'Die Menge 0 wird als Wareneingang gebucht.',
             0,
-            'Falsche Bestände im Lager: die Kernfunktion arbeitet fehlerhaft.',
+            'Das führt zu falschen Beständen im Lager, die Kernfunktion arbeitet fehlerhaft.',
           ),
           zu(
             'Der Bestätigungston ist leise, die Buchung funktioniert.',
@@ -337,7 +337,7 @@ final List<ExamCase> casesA05 = [
           ),
         ],
         explanation:
-            'Wesentlich sind Mängel, die die vereinbarte Nutzung verhindern oder verfälschen (Buchung von 120 und von 0). Schreibfehler und ein leiser Ton sind unwesentlich. Die Statistik war nicht vereinbart. Sie ist kein Mangel, sondern ein neuer Wunsch.',
+            'Wesentlich sind Mängel, die die vereinbarte Nutzung verhindern oder verfälschen (Buchung von 120 und von 0). Schreibfehler und ein leiser Ton sind unwesentlich. Die Statistik war nicht vereinbart und ist deshalb kein Mangel, sondern ein neuer Wunsch.',
       ),
       freitext(
         'f-a05-logistik-d',
@@ -383,7 +383,7 @@ final List<ExamCase> casesA05 = [
         loesung:
             'Elbtal sollte die Abnahme verweigern, weil mit den beiden Buchungsfehlern wesentliche Mängel vorliegen. Die Mängel werden im Abnahmeprotokoll festgehalten und dem Softwarehaus wird eine Frist zur Nachbesserung gesetzt. Nach der Korrektur wird erneut getestet und ein neuer Abnahmetermin vereinbart.',
         explanation:
-            'Je Aspekt 2 Punkte, höchstens 4. Wegen unwesentlicher Mängel dürfte die Abnahme nicht verweigert werden. Sie würden nur mit Vorbehalt ins Protokoll aufgenommen.',
+            'Je Aspekt 2 Punkte, höchstens 4. Wegen unwesentlicher Mängel allein dürfte Elbtal die Abnahme nicht verweigern. Solche Mängel werden nur mit Vorbehalt ins Protokoll aufgenommen.',
       ),
       freitext(
         'f-a05-logistik-e',
@@ -419,7 +419,7 @@ final List<ExamCase> casesA05 = [
           ),
         ],
         loesung:
-            'Die Schritte zum Nachstellen (Palette scannen, Menge 120 eingeben), das Soll-Ergebnis „gebucht“ und das Ist-Ergebnis „Fehlermeldung“ sowie die Testumgebung mit App-Version und Scannermodell. Dazu gehören außerdem Fehlerklasse und Priorität.',
+            'In die Meldung gehören die Schritte zum Nachstellen (Palette scannen, Menge 120 eingeben), das Soll-Ergebnis „gebucht“ und das Ist-Ergebnis „Fehlermeldung“ sowie die Testumgebung mit App-Version und Scannermodell. Richtig sind außerdem Fehlerklasse und Priorität.',
         explanation:
             'Je Nennung 1 Punkt, höchstens 3. Eine Fehlermeldung muss so genau sein, dass die Entwicklung den Fehler ohne Rückfrage nachstellen kann.',
       ),

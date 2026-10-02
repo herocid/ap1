@@ -105,7 +105,7 @@ final List<Flashcard> cardsA02 = [
     'k-km-18',
     'k-modelle',
     'Was besagt Watzlawicks viertes Axiom (digital und analog)?',
-    'Kommunikation läuft digital (Worte) und analog (Körpersprache, Tonfall) zugleich: z. B. „Gern“ mit genervtem Blick.',
+    'Kommunikation läuft digital (Worte) und analog (Körpersprache, Tonfall) zugleich. Beispiel: ein „Gern“ mit genervtem Blick.',
   ),
   karte(
     'k-km-19',
@@ -131,7 +131,7 @@ final List<Flashcard> cardsA02 = [
     'k-kg-15',
     'k-gespraech',
     'Wie ist eine Ich-Botschaft aufgebaut?',
-    'Beobachtung - Wirkung auf mich - Wunsch: „Ich verliere den Faden, wenn ich unterbrochen werde. Lass mich bitte ausreden.“',
+    'Beobachtung, Wirkung auf mich, Wunsch: „Ich verliere den Faden, wenn ich unterbrochen werde. Lass mich bitte ausreden.“',
   ),
   karte(
     'k-kg-16',
@@ -193,7 +193,7 @@ final List<Flashcard> cardsA02 = [
     'k-kk-7',
     'k-kunde',
     'Wie gehst du mit einem Kunden vom Typ „Besserwisser“ um?',
-    'Sein Wissen anerkennen, sachlich-fachlich bleiben, nicht um Recht streiten.',
+    'Sein Wissen anerkennen, sachlich bleiben, nicht um Recht streiten.',
   ),
   karte(
     'k-kk-8',
@@ -322,7 +322,7 @@ final List<Flashcard> cardsA02 = [
     'k-tt-7',
     'te-phasen',
     'Wann fällt ein Team in frühere Phasen zurück?',
-    'Wenn Mitglieder dazukommen oder gehen oder sich die Ziele ändern: oft zurück ins Storming.',
+    'Wenn Mitglieder dazukommen oder gehen oder sich die Ziele ändern. Oft geht es dann zurück ins Storming.',
   ),
   karte(
     'k-tt-8',
@@ -426,7 +426,7 @@ final List<Flashcard> cardsA02 = [
     'k-tf-4',
     'te-feedback',
     'Woran erkennst du eine gute Fehlerkultur?',
-    'Fehler werden offen angesprochen, gefragt wird nach der Ursache statt nach dem Schuldigen, ohne Angst vor Strafe.',
+    'Fehler werden ohne Angst vor Strafe offen angesprochen. Gefragt wird nach der Ursache, nicht nach dem Schuldigen.',
   ),
   karte(
     'k-tf-5',
@@ -444,7 +444,7 @@ final List<Flashcard> cardsA02 = [
     'k-tf-7',
     'te-feedback',
     'Wie ist Feedback nach der Sandwich-Methode aufgebaut?',
-    'Die Kritik liegt zwischen zwei ehrlichen, konkreten Lobaussagen: Lob - Kritik - Lob.',
+    'Die Kritik liegt zwischen zwei ehrlichen, konkreten Lobaussagen: Lob, Kritik, Lob.',
   ),
   karte(
     'k-tf-8',
@@ -536,7 +536,7 @@ final List<Flashcard> cardsA02 = [
     'k-tk-2',
     'te-konflikte',
     'Was ist ein Konsens?',
-    'Eine gemeinsam erarbeitete Lösung, bei der beide Seiten gewinnen. Die nachhaltigste Konfliktlösung.',
+    'Eine gemeinsam erarbeitete Lösung, bei der beide Seiten gewinnen. Er ist die nachhaltigste Konfliktlösung.',
   ),
   karte(
     'k-tk-3',
@@ -805,7 +805,7 @@ final List<Flashcard> cardsA02 = [
     'k-ve-7',
     've-einwaende',
     'Wie nennst du einen Preis nach der Sandwich-Methode?',
-    'Zwischen zwei Nutzenaussagen: Nutzen - Preis - Nutzen. So steht der Preis nie allein.',
+    'Zwischen zwei Nutzenaussagen: Nutzen, Preis, Nutzen. So steht der Preis nie allein.',
   ),
   karte(
     'k-ve-8',
@@ -817,7 +817,7 @@ final List<Flashcard> cardsA02 = [
     'k-ve-9',
     've-einwaende',
     'Was unterscheidet Überzeugen von Überreden?',
-    'Überzeugen: mit nachvollziehbaren Argumenten zu einer eigenen Entscheidung führen. Überreden: drängen, und der Kunde bereut den Kauf oft.',
+    'Überzeugen: mit nachvollziehbaren Argumenten zu einer eigenen Entscheidung führen. Überreden: drängen, sodass der Kunde den Kauf oft bereut.',
   ),
   karte(
     'k-ve-10',
@@ -835,7 +835,7 @@ final List<Flashcard> cardsA02 = [
     'k-ve-12',
     've-einwaende',
     'Wie funktioniert die Umformulierungsmethode?',
-    'Den Einwand in eine Frage verwandeln: aus „zu teuer“ wird „Sie möchten also wissen, ob sich die Investition lohnt?“',
+    'Den Einwand in eine Frage verwandeln: Aus „zu teuer“ wird „Sie möchten also wissen, ob sich die Investition lohnt?“',
   ),
   karte(
     'k-ve-13',
@@ -865,7 +865,7 @@ final List<Flashcard> cardsA02 = [
     'k-ve-17',
     've-einwaende',
     '„Ich muss erst noch mal drüber schlafen.“ Wie reagierst du?',
-    'Vermutlich ein Vorwand: mit einer Rückfrage den wahren Grund erfragen, z. B. „Was ist für Sie noch offen?“',
+    'Das ist vermutlich ein Vorwand. Erfrage den wahren Grund, z. B. „Was ist für Sie noch offen?“',
   ),
   karte(
     'k-ve-18',
@@ -963,7 +963,7 @@ final List<Flashcard> cardsA02 = [
     'k-pp-14',
     'pr-praesentation',
     'Was interessiert Geschäftsführung und Anwender jeweils an einer neuen Software?',
-    'Geschäftsführung: Kosten, Nutzen, Risiko, kurz, mit Entscheidung. Anwender: Bedienung und Zeitersparnis, mit Vorführung.',
+    'Geschäftsführung: Kosten, Nutzen und Risiko, kurz und mit Entscheidungsvorlage. Anwender: Bedienung und Zeitersparnis, mit Vorführung.',
   ),
   karte(
     'k-pp-15',
@@ -999,7 +999,7 @@ final List<Flashcard> cardsA02 = [
     'k-pp-20',
     'pr-praesentation',
     'Was tust du, wenn du eine Frage aus dem Publikum nicht beantworten kannst?',
-    'Ehrlich sagen und zusagen, die Antwort nachzureichen, statt zu raten.',
+    'Das offen zugeben und anbieten, die Antwort nachzureichen, statt zu raten.',
   ),
   karte(
     'k-pp-21',
@@ -1061,7 +1061,7 @@ final List<Flashcard> cardsA02 = [
     'k-pq-8',
     'pr-quellen',
     'Was ist der Unterschied zwischen direktem und indirektem Zitat?',
-    'Direkt: wörtlich in Anführungszeichen. Indirekt: sinngemäß in eigenen Worten mit „vgl.“ Beide mit Quelle.',
+    'Direkt: wörtlich in Anführungszeichen. Indirekt: sinngemäß in eigenen Worten, mit „vgl.“ gekennzeichnet. Beide brauchen eine Quellenangabe.',
   ),
   karte(
     'k-pq-9',
@@ -1267,7 +1267,7 @@ final List<Flashcard> cardsA02 = [
     'k-pa-22',
     'pr-angebot',
     'Welche drei Belege gleichst du bei der Rechnungsprüfung ab?',
-    'Bestellung, Lieferschein und Rechnung: bezahlt wird erst, wenn alle drei übereinstimmen.',
+    'Bestellung, Lieferschein und Rechnung. Bezahlt wird erst, wenn alle drei übereinstimmen.',
   ),
   karte(
     'k-pa-23',
@@ -1383,7 +1383,7 @@ final List<Flashcard> cardsA02 = [
     'k-mm-9',
     'm-markt',
     'Was ist der Gleichgewichtspreis?',
-    'Der Preis, bei dem angebotene und nachgefragte Menge gleich sind. Der Schnittpunkt von Angebots- und Nachfragekurve.',
+    'Der Preis, bei dem angebotene und nachgefragte Menge gleich sind. Er liegt im Schnittpunkt von Angebots- und Nachfragekurve.',
   ),
   karte(
     'k-mm-10',
@@ -1413,13 +1413,13 @@ final List<Flashcard> cardsA02 = [
     'k-mm-14',
     'm-markt',
     'Eigener Umsatz 320.000 €, Marktvolumen 4 Mio. €, Potenzial 5 Mio. €. Wie hoch ist der Marktanteil?',
-    '320.000 € / 4.000.000 € × 100 = 8 %: gemessen am Volumen, nicht am Potenzial.',
+    '320.000 € / 4.000.000 € × 100 = 8 %. Gemessen wird am Volumen, nicht am Potenzial.',
   ),
   karte(
     'k-mm-15',
     'm-markt',
     'Marktvolumen 4 Mio. €, Marktpotenzial 5 Mio. €. Wie hoch ist der Sättigungsgrad?',
-    '4 Mio. € / 5 Mio. € × 100 = 80 % - 20 % des Potenzials sind noch unerschlossen.',
+    '4 Mio. € / 5 Mio. € × 100 = 80 %. Die übrigen 20 % des Potenzials sind noch unerschlossen.',
   ),
   karte(
     'k-mm-16',
@@ -1499,7 +1499,7 @@ final List<Flashcard> cardsA02 = [
     'k-mb-6',
     'm-bedarf',
     'Was unterscheidet Defizit- und Wachstumsbedürfnisse nach Maslow?',
-    'Stufe 1 bis 4 sind Defizitbedürfnisse. Fehlen sie, entsteht Unzufriedenheit. Die Selbstverwirklichung ist ein Wachstumsbedürfnis.',
+    'Stufe 1 bis 4 sind Defizitbedürfnisse. Bleiben sie unerfüllt, entsteht Unzufriedenheit. Die Selbstverwirklichung ist ein Wachstumsbedürfnis.',
   ),
   karte(
     'k-mb-7',
@@ -1547,7 +1547,7 @@ final List<Flashcard> cardsA02 = [
     'k-mb-14',
     'm-bedarf',
     'Ein Kunde sagt: „Wir wollen modern auftreten.“ Welche Maslow-Stufe steckt dahinter?',
-    'Wertschätzung (Stufe 4), passende Argumente: hochwertige Geräte, gutes Design.',
+    'Wertschätzung (Stufe 4). Passende Argumente: hochwertige Geräte, gutes Design.',
   ),
   karte(
     'k-mb-15',
@@ -1603,13 +1603,13 @@ final List<Flashcard> cardsA02 = [
     'k-mk-5',
     'm-marketing',
     'Was ist die Penetrationsstrategie?',
-    'Niedriger Einstiegspreis, um schnell Marktanteile zu gewinnen, später wird der Preis erhöht.',
+    'Niedriger Einstiegspreis, um schnell Marktanteile zu gewinnen. Später wird der Preis erhöht.',
   ),
   karte(
     'k-mk-6',
     'm-marketing',
     'Was ist die Abschöpfungsstrategie (Skimming)?',
-    'Hoher Einstiegspreis für frühe Käufer, später wird der Preis schrittweise gesenkt.',
+    'Hoher Einstiegspreis für frühe Käufer. Später wird der Preis schrittweise gesenkt.',
   ),
   karte(
     'k-mk-7',
@@ -1651,7 +1651,7 @@ final List<Flashcard> cardsA02 = [
     'k-mk-13',
     'm-marketing',
     'Was unterscheidet direkten und indirekten Vertrieb?',
-    'Direkt: Der Hersteller verkauft selbst (Onlineshop, Außendienst). Indirekt: Händler oder Systemhaus dazwischen. Mehr Reichweite, weniger Marge.',
+    'Direkt: Der Hersteller verkauft selbst (Onlineshop, Außendienst). Indirekt: über Händler oder Systemhaus. Das bringt mehr Reichweite, aber weniger Marge.',
   ),
   karte(
     'k-mk-14',
@@ -1674,14 +1674,14 @@ final List<Flashcard> cardsA02 = [
   karte(
     'k-mk-17',
     'm-marketing',
-    '„Jetzt 30 Tage kostenlos testen“: welche AIDA-Stufe ist das?',
+    '„Jetzt 30 Tage kostenlos testen“: Welche AIDA-Stufe ist das?',
     'Action: eine konkrete Aufforderung zum Handeln.',
   ),
   karte(
     'k-mk-18',
     'm-marketing',
     'Was ist eine Cash Cow in der BCG-Matrix?',
-    'Ein Produkt mit hohem relativem Marktanteil in einem kaum wachsenden Markt. Es finanziert die anderen; Gewinne abschöpfen.',
+    'Ein Produkt mit hohem relativem Marktanteil in einem kaum wachsenden Markt. Es finanziert die anderen Produkte, seine Gewinne werden abgeschöpft.',
   ),
   karte(
     'k-mk-19',
@@ -1797,7 +1797,7 @@ final List<Flashcard> cardsA02 = [
     'k-ma-6',
     'm-abc',
     'Wie berechnest du den Jahresverbrauchswert eines Artikels?',
-    'Jahresmenge × Preis je Stück. Die Grundlage der ABC-Analyse im Einkauf.',
+    'Jahresmenge × Preis je Stück. Er ist die Grundlage der ABC-Analyse im Einkauf.',
   ),
   karte(
     'k-ma-7',
@@ -1869,7 +1869,7 @@ final List<Flashcard> cardsA02 = [
     'k-ma-18',
     'm-abc',
     'Wo liegen typische Klassengrenzen der ABC-Analyse?',
-    'Sie sind nicht genormt: typisch A bis ca. 75-80 %, B bis ca. 90-95 % kumuliert, C der Rest, in Aufgaben meist vorgegeben.',
+    'Sie sind nicht genormt. Typisch: A bis ca. 75-80 %, B bis ca. 90-95 % kumuliert, C der Rest. In Aufgaben sind sie meist vorgegeben.',
   ),
   karte(
     'k-ma-19',
@@ -1919,7 +1919,7 @@ final List<Flashcard> cardsA02 = [
     'k-mr-7',
     'm-rechtsformen',
     'Was bedeutet in der OHG: unbeschränkt, unmittelbar, solidarisch haften?',
-    'Unbeschränkt: mit dem Privatvermögen. Unmittelbar: der Gläubiger geht direkt zum Gesellschafter. Solidarisch: jeder für die ganze Schuld.',
+    'Unbeschränkt: mit dem Privatvermögen. Unmittelbar: Der Gläubiger geht direkt zum Gesellschafter. Solidarisch: Jeder haftet für die ganze Schuld.',
   ),
   karte(
     'k-mr-8',
@@ -1962,7 +1962,7 @@ final List<Flashcard> cardsA02 = [
     'k-mr-14',
     'm-rechtsformen',
     'Welche Rechte hat ein Kommanditist?',
-    'Kontrollrechte (z. B. Einsicht in den Jahresabschluss) und ein Widerspruchsrecht bei außergewöhnlichen Geschäften, keine Geschäftsführung.',
+    'Kontrollrechte (z. B. Einsicht in den Jahresabschluss). Außergewöhnlichen Geschäften muss er zustimmen (§ 164 HGB). Die Geschäfte führt er nicht.',
   ),
   karte(
     'k-mr-15',

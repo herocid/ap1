@@ -12,7 +12,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-tp-1',
     't-psp',
     'Nach welchen Prinzipien kannst du einen PSP gliedern?',
-    'Objektorientiert (Bestandteile), funktionsorientiert (Tätigkeiten), phasenorientiert (Projektphasen), oder gemischt.',
+    'Objektorientiert (Bestandteile), funktionsorientiert (Tätigkeiten), phasenorientiert (Projektphasen) oder gemischt.',
   ),
   karte(
     'k-tp-2',
@@ -30,7 +30,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-tp-4',
     't-psp',
     'Was bedeutet der PSP-Code 2.1.3?',
-    'Teilaufgabe 2, darin Teilaufgabe 1, darin Arbeitspaket 3: also ein Element auf Ebene 3.',
+    'Teilaufgabe 2, darin Teilaufgabe 1, darin Arbeitspaket 3. Drei Stellen bedeuten: ein Element auf Ebene 3.',
   ),
   karte(
     'k-tp-5',
@@ -275,7 +275,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-tr-18',
     't-ressourcen',
     'Kapazität 40 h pro Woche, in KW 2 sind 56 h verplant. Wie groß ist die Überlast?',
-    '56 h - 40 h = 16 Stunden: Arbeit im Puffer verschieben oder umverteilen.',
+    '56 h - 40 h = 16 Stunden. Abhilfe: Arbeit im Puffer verschieben oder umverteilen.',
   ),
 
   // Der Risikomanagement-Prozess
@@ -295,13 +295,13 @@ final List<Flashcard> cardsA01Planung = [
     'k-rp-3',
     'r-prozess',
     'Wie beschreibst du ein Risiko vollständig?',
-    'Ursache - Ereignis - Auswirkung: „Weil ..., könnte ..., sodass ...“.',
+    'Mit Ursache, Ereignis und Auswirkung: „Weil ..., könnte ..., sodass ...“.',
   ),
   karte(
     'k-rp-4',
     'r-prozess',
     'Was ist ein Frühwarnindikator?',
-    'Beobachtbares Zeichen, dass ein Risiko wahrscheinlicher wird, z. B. Lieferant bestätigt den Termin nicht.',
+    'Ein beobachtbares Zeichen, dass ein Risiko wahrscheinlicher wird, z. B. wenn der Lieferant den Termin nicht bestätigt.',
   ),
   karte(
     'k-rp-5',
@@ -325,7 +325,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-rp-8',
     'r-prozess',
     '„Der Server ist ausgefallen.“: Risiko oder Problem?',
-    'Ein Problem: bereits eingetreten, es wird sofort gelöst, nicht bewertet. Risiken stehen in der Möglichkeitsform.',
+    'Ein Problem: Es ist bereits eingetreten und wird sofort gelöst, nicht bewertet. Risiken stehen in der Möglichkeitsform.',
   ),
   karte(
     'k-rp-9',
@@ -435,7 +435,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-rb-12',
     'r-bewertung',
     'Wie deutest du einen Risikowert von 10.000 €?',
-    'Als Erwartungswert: Über viele gleichartige Projekte kostet das Risiko im Schnitt 10.000 €, aber kein sicherer Schaden.',
+    'Als Erwartungswert: Über viele gleichartige Projekte kostet das Risiko im Schnitt 10.000 €. Ein sicherer Schaden ist das nicht.',
   ),
   karte(
     'k-rb-13',
@@ -615,7 +615,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-wn-2',
     'w-nutzwert',
     'Was ist ein K.-o.-Kriterium?',
-    'Mussanforderung, die jede Alternative erfüllen muss. Wer sie verfehlt, scheidet vor der Nutzwertberechnung aus.',
+    'Eine Muss-Anforderung, die jede Alternative erfüllen muss. Wer sie verfehlt, scheidet vor der Nutzwertberechnung aus.',
   ),
   karte(
     'k-wn-3',
@@ -861,7 +861,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-wb-13',
     'w-breakeven',
     'Was sagt eine kurze Amortisationsdauer aus?',
-    'Die Investition ist schnell zurückgeflossen. Das Risiko der Investition ist geringer.',
+    'Das eingesetzte Geld fließt schnell zurück. Damit ist das Risiko der Investition geringer.',
   ),
   karte(
     'k-wb-14',
@@ -941,13 +941,13 @@ final List<Flashcard> cardsA01Planung = [
     'k-aa-9',
     'a-abnahme',
     'Wann gilt ein Werk als fiktiv abgenommen?',
-    'Wenn der Besteller eine angemessene Abnahmefrist verstreichen lässt, ohne die Abnahme unter Angabe eines Mangels zu verweigern (§ 640 Abs. 2 BGB).',
+    'Wenn der Besteller eine vom Unternehmer nach Fertigstellung gesetzte angemessene Frist verstreichen lässt, ohne die Abnahme unter Angabe mindestens eines Mangels zu verweigern (§ 640 Abs. 2 BGB).',
   ),
   karte(
     'k-aa-10',
     'a-abnahme',
     'Welcher Paragraph regelt die Abnahme beim Werkvertrag?',
-    '§ 640 BGB: der Besteller ist verpflichtet, das vertragsgemäß hergestellte Werk abzunehmen.',
+    '§ 640 BGB: Der Besteller ist verpflichtet, das vertragsgemäß hergestellte Werk abzunehmen.',
   ),
   karte(
     'k-aa-11',
@@ -971,7 +971,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-aa-14',
     'a-abnahme',
     'Warum gehören bekannte Mängel ins Abnahmeprotokoll?',
-    'Wer trotz bekanntem Mangel ohne Vorbehalt abnimmt, verliert Rechte wie Nacherfüllung, Rücktritt und Minderung (§ 640 Abs. 3 BGB).',
+    'Wer trotz bekannten Mangels ohne Vorbehalt abnimmt, verliert Rechte wie Nacherfüllung, Rücktritt und Minderung (§ 640 Abs. 3 BGB).',
   ),
 
   // Abschlussbericht und Soll-Ist
@@ -1027,7 +1027,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-ab-9',
     'a-bericht',
     'Was bedeutet eine negative Kostenabweichung?',
-    'Es wurde weniger ausgegeben als geplant, also das Budget wurde unterschritten.',
+    'Es wurde weniger ausgegeben als geplant, das Budget wurde also unterschritten.',
   ),
   karte(
     'k-ab-10',
@@ -1064,7 +1064,7 @@ final List<Flashcard> cardsA01Planung = [
   karte(
     'k-ll-1',
     'a-lessons',
-    'Was fragt die Methode Start - Stop - Continue?',
+    'Was fragt die Methode Start, Stop, Continue?',
     'Start: Was neu anfangen? Stop: Was lassen? Continue: Was beibehalten?',
   ),
   karte(
@@ -1107,7 +1107,7 @@ final List<Flashcard> cardsA01Planung = [
     'k-ll-8',
     'a-lessons',
     'Warum ist „Die Kommunikation verbessern“ keine gute Lesson?',
-    'Sie ist zu vage, es folgt keine Handlung daraus. Besser: Situation, Ursache und konkrete Empfehlung nennen.',
+    'Sie ist zu vage, daraus folgt keine Handlung. Besser: Situation, Ursache und konkrete Empfehlung nennen.',
   ),
   karte(
     'k-ll-9',

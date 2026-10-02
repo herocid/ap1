@@ -30,7 +30,7 @@ final List<TheorySnack> seedTheory = [
         'gegenüber der Linie?',
     points: [
       'Reine Projektorganisation: Team komplett aus der Linie gelöst, '
-          'Projektleitung hat volle Weisungsbefugnis. Schnell, aber teuer und '
+          'Projektleitung hat volle Weisungsbefugnis. Schnell, aber teuer, und '
           'nach Projektende gibt es ein Rückkehrproblem.',
       'Matrix: Weisungsbefugnis geteilt (fachlich beim Projekt, '
           'disziplinarisch in der Linie). Flexibel, aber Dauerkonflikt um '
@@ -116,13 +116,13 @@ final List<TheorySnack> seedTheory = [
     topicId: 'netzplan',
     title: 'GP oder FP? Der Unterschied in 20 Sekunden',
     lead:
-        'Beide Puffer sagen, wie viel Luft ein Vorgang hat. Bis wohin, '
-        'ist aber verschieden.',
+        'Beide Puffer sagen, wie viel Luft ein Vorgang hat. Sie '
+        'unterscheiden sich darin, bis wohin diese Luft reicht.',
     points: [
-      'Gesamtpuffer: Verschiebung ohne das PROJEKTENDE zu gefährden. '
-          'Kann aber den Nachfolger nach hinten drücken.',
-      'Freier Puffer: Verschiebung ohne den frühesten Start des NACHFOLGERS '
-          'anzutasten. Merkt sonst niemand.',
+      'Gesamtpuffer: Verschiebung, ohne das PROJEKTENDE zu gefährden. '
+          'Sie kann aber den Nachfolger nach hinten drücken.',
+      'Freier Puffer: Verschiebung, ohne den frühesten Start des NACHFOLGERS '
+          'anzutasten. Sie fällt sonst niemandem auf.',
       'Es gilt immer FP <= GP.',
       'Auf dem kritischen Pfad sind beide null.',
       'Typischer Fall: GP = 2, FP = 0. Luft bis zum Projektende vorhanden, '

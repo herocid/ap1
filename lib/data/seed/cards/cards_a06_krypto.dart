@@ -14,7 +14,7 @@ final List<Flashcard> cardsA06Krypto = [
     'k-cs-2',
     'kr-symmetrisch',
     'Welche Schlüssellängen bietet AES?',
-    '128, 192 oder 256 Bit: AES ist der aktuelle Standard für symmetrische Verschlüsselung.',
+    '128, 192 oder 256 Bit. AES ist der aktuelle Standard für symmetrische Verschlüsselung.',
   ),
   karte(
     'k-cs-3',
@@ -196,7 +196,7 @@ final List<Flashcard> cardsA06Krypto = [
     'k-ca-13',
     'kr-asymmetrisch',
     'Welche Schlüssellänge wird für RSA heute mindestens empfohlen?',
-    'Mindestens 3.000 Bit: ECC kommt mit etwa 250 Bit aus.',
+    'Mindestens 3.000 Bit. ECC kommt für dieselbe Sicherheit mit etwa 250 Bit aus.',
   ),
   karte(
     'k-ca-14',
@@ -295,7 +295,7 @@ final List<Flashcard> cardsA06Krypto = [
     'k-ch-9',
     'kr-hybrid',
     'Warum kombinieren hybride Verfahren beide Verschlüsselungsarten?',
-    'Symmetrisch ist schnell, braucht aber sicheren Schlüsseltausch. Asymmetrisch löst den Tausch, ist aber langsam. Kombiniert sind beide schnell und bequem.',
+    'Symmetrisch ist schnell, braucht aber sicheren Schlüsseltausch. Asymmetrisch löst den Tausch, ist aber langsam. Zusammen ergibt das ein schnelles und bequemes Verfahren.',
   ),
   karte(
     'k-ch-10',
@@ -355,7 +355,7 @@ final List<Flashcard> cardsA06Krypto = [
     'k-ch-19',
     'kr-hybrid',
     'Wofür eignen sich selbstsignierte Zertifikate?',
-    'Nur für Tests oder interne Systeme mit eigener, verteilter Firmen-CA. Keine CA bürgt dafür, deshalb warnt der Browser.',
+    'Nur für Tests oder interne Systeme. Keine vertrauenswürdige CA bürgt dafür, deshalb warnt der Browser.',
   ),
   karte(
     'k-ch-20',
@@ -379,7 +379,7 @@ final List<Flashcard> cardsA06Krypto = [
     'k-ch-23',
     'kr-hybrid',
     'Was macht STARTTLS bei E-Mails?',
-    'Es schaltet eine zunächst unverschlüsselte Verbindung, z. B. SMTP, auf TLS um: Transportverschlüsselung, keine Ende-zu-Ende-Verschlüsselung.',
+    'Es schaltet eine zunächst unverschlüsselte Verbindung, z. B. SMTP, auf TLS um. Das ist Transportverschlüsselung, keine Ende-zu-Ende-Verschlüsselung.',
   ),
   karte(
     'k-ch-25',
@@ -507,7 +507,7 @@ final List<Flashcard> cardsA06Krypto = [
     'k-cx-20',
     'kr-hash',
     'Warum signiert man den Hashwert statt des ganzen Dokuments?',
-    'Der Hashwert ist kurz und fest lang. Das geht schneller, und jede Änderung am Dokument fällt trotzdem auf.',
+    'Der Hashwert ist kurz und hat eine feste Länge. Das geht schneller, und jede Änderung am Dokument fällt trotzdem auf.',
   ),
   karte(
     'k-cx-21',
@@ -964,7 +964,7 @@ final List<Flashcard> cardsA06Krypto = [
     'k-xs-21',
     'ds-grundsaetze',
     'Warum ist ein vorangekreuztes Kästchen keine wirksame Einwilligung?',
-    'Die Einwilligung verlangt eine unmissverständliche, aktive Handlung: Schweigen oder Voreinstellungen genügen nicht.',
+    'Die Einwilligung verlangt eine unmissverständliche, aktive Handlung. Schweigen oder Voreinstellungen genügen nicht.',
   ),
   karte(
     'k-xs-22',
@@ -988,7 +988,7 @@ final List<Flashcard> cardsA06Krypto = [
     'k-xs-25',
     'ds-grundsaetze',
     'Wann ist eine Datenschutz-Folgenabschätzung (Art. 35 DSGVO) nötig?',
-    'Vorab, wenn eine Verarbeitung voraussichtlich ein hohes Risiko hat, z. B. umfangreiche Videoüberwachung öffentlicher Bereiche.',
+    'Vorab, wenn eine Verarbeitung voraussichtlich ein hohes Risiko für die Betroffenen mit sich bringt, z. B. umfangreiche Videoüberwachung öffentlicher Bereiche.',
   ),
   karte(
     'k-xs-26',
@@ -1044,7 +1044,7 @@ final List<Flashcard> cardsA06Krypto = [
     'k-xr-4',
     'ds-rechte',
     'Wie schnell muss der Verantwortliche auf eine Betroffenenanfrage antworten?',
-    'Unverzüglich, spätestens nach einem Monat, in komplexen Fällen um zwei Monate verlängerbar (Art. 12 Abs. 3).',
+    'Unverzüglich, spätestens innerhalb eines Monats, in komplexen Fällen um zwei Monate verlängerbar (Art. 12 Abs. 3).',
   ),
   karte(
     'k-xr-5',
@@ -1110,7 +1110,7 @@ final List<Flashcard> cardsA06Krypto = [
     'k-xr-15',
     'ds-rechte',
     '„Keine Werbung mehr per Post!“ Welches Recht macht der Kunde geltend?',
-    'Das Widerspruchsrecht nach Art. 21 DSGVO, das gegen Direktwerbung ohne Begründung.',
+    'Das Widerspruchsrecht nach Art. 21 DSGVO. Gegen Direktwerbung gilt es jederzeit und ohne Begründung.',
   ),
   karte(
     'k-xr-16',
@@ -1336,13 +1336,13 @@ final List<Flashcard> cardsA06Krypto = [
     'k-xt-7',
     'ds-tom',
     'Wann müssen Betroffene über eine Datenpanne benachrichtigt werden (Art. 34)?',
-    'Unverzüglich, wenn die Datenpanne voraussichtlich ein hohes Risiko für ihre Rechte und Freiheiten hat.',
+    'Unverzüglich, wenn die Datenpanne voraussichtlich ein hohes Risiko für ihre Rechte und Freiheiten zur Folge hat.',
   ),
   karte(
     'k-xt-8',
     'ds-tom',
     'Wie bewertest du ein Risiko für die Auswahl der TOM?',
-    'Risiko = Eintrittswahrscheinlichkeit × Schadenshöhe: Art. 32 verlangt Maßnahmen angemessen zum Risiko.',
+    'Risiko = Eintrittswahrscheinlichkeit × Schadenshöhe. Art. 32 verlangt Maßnahmen, die dem Risiko angemessen sind.',
   ),
   karte(
     'k-xt-9',

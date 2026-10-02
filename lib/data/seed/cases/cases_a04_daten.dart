@@ -70,7 +70,7 @@ final List<ExamCase> casesA04Daten = [
         loesung:
             'Der Primärschlüssel ist eine Spalte, deren Wert genau einen Datensatz einer Tabelle identifiziert. Durch die Verknüpfung über Fremdschlüssel wird jede Information nur einmal gespeichert; das spart Speicherplatz und verhindert widersprüchliche Daten.',
         explanation:
-            '2 Punkte für die Aufgabe des Primärschlüssels, 2 Punkte für einen Vorteil. Der Text nennt zwei (Speicherplatz, keine widersprüchlichen Daten). Geantwortet wird auf Deutsch und mit Bezug zum Text.',
+            'Für die Aufgabe des Primärschlüssels gibt es 2 Punkte, für einen Vorteil ebenfalls 2. Der Text nennt zwei Vorteile (Speicherplatz, keine widersprüchlichen Daten). Antworte auf Deutsch und mit Bezug zum Text.',
         punkte: 4,
         tags: ['englisch'],
       ),
@@ -142,7 +142,7 @@ final List<ExamCase> casesA04Daten = [
           ], 'Nur n:m-Beziehungen brauchen eine Zwischentabelle.'),
         ],
         explanation:
-            'Mitarbeiter - Gerät ist n:m (viele auf beiden Seiten) und wird über eine Zwischentabelle umgesetzt. Gerät - Lieferant ist n:1: Viele Geräte stammen von einem Lieferanten; hier genügt der Fremdschlüssel LieferantNr in der Tabelle Gerät.',
+            'Mitarbeiter - Gerät ist n:m (viele auf beiden Seiten) und wird über eine Zwischentabelle umgesetzt. Gerät - Lieferant ist n:1, denn viele Geräte stammen von einem Lieferanten. Hier genügt der Fremdschlüssel LieferantNr in der Tabelle Gerät.',
         punkte: 3,
       ),
       markieren(
@@ -187,7 +187,7 @@ final List<ExamCase> casesA04Daten = [
           zahl(87188, toleranz: 0.5, rationale: '288 × 310 × 1.000 / 1.024.'),
         ],
         explanation:
-            '4 Plätze × 8 h × 9 Belege = 288 Belege pro Tag (1 Punkt). 288 × 310 kB = 89.280 kB = 89.280.000 Byte; / 1.024 = 87.187,5 -> 87.188 KiB (2 Punkte). Kern der Aufgabe: kB ist dezimal (1.000), KiB binär (1.024).',
+            '4 Plätze × 8 h × 9 Belege = 288 Belege pro Tag (1 Punkt). 288 × 310 kB = 89.280 kB = 89.280.000 Byte; / 1.024 = 87.187,5 -> 87.188 KiB (2 Punkte). Achte auf die Einheiten: kB ist dezimal (1.000), KiB binär (1.024).',
         punkte: 3,
       ),
       lueckentext(
@@ -256,7 +256,7 @@ final List<ExamCase> casesA04Daten = [
             ],
           ),
           krit(
-            'Entlastung: Mitarbeitende haben mehr Zeit für anspruchsvolle Aufgaben; niedrigere Kosten.',
+            'Entlastung: Mitarbeitende haben mehr Zeit für anspruchsvolle Aufgaben, und die Kosten sinken.',
             punkte: 2,
             stichwoerter: [
               'Entlastung',
@@ -327,7 +327,7 @@ final List<ExamCase> casesA04Daten = [
         loesung:
             'Eine statische Website besteht aus fertigen Dateien, die der Server unverändert ausliefert. Alle Besucher sehen dasselbe. Eine dynamische Website wird bei jedem Aufruf von einem Programm auf dem Server erzeugt, meist aus einer Datenbank. Ihr Inhalt kann vom Nutzer oder von Eingaben abhängen und über ein Redaktionssystem gepflegt werden.',
         explanation:
-            'Für die volle Punktzahl müssen beide Seiten des Vergleichs erkennbar sein: statisch = feste Dateien, gleicher Inhalt; dynamisch = beim Aufruf serverseitig erzeugt, nutzer- oder eingabeabhängig.',
+            'Für die volle Punktzahl müssen beide Seiten des Vergleichs erkennbar sein. Statisch heißt: feste Dateien, gleicher Inhalt für alle. Dynamisch heißt: beim Aufruf auf dem Server erzeugt, abhängig von Nutzer oder Eingabe.',
         punkte: 3,
       ),
       freitext(
@@ -402,7 +402,7 @@ final List<ExamCase> casesA04Daten = [
           ],
         ],
         explanation:
-            'Je Zelle ein halber Punkt. Aufbau: Schema://Host:Port/Pfad?Query#Fragment. Fehlt der Port, nimmt der Browser den Standardport des Schemas: bei https ist das 443.',
+            'Je Zelle ein halber Punkt. Aufbau: Schema://Host:Port/Pfad?Query#Fragment. Fehlt der Port, nimmt der Browser den Standardport des Schemas, bei https ist das 443.',
         punkte: 3,
       ),
       freitext(
@@ -427,7 +427,7 @@ final List<ExamCase> casesA04Daten = [
         loesung:
             'Redundanz bedeutet, dass dieselbe Information mehrfach gespeichert ist. Hier stehen Name und Telefonnummer des Lieferanten Hortex in jeder Artikelzeile.',
         explanation:
-            '2 Punkte für die Erklärung mit Bezug zur Tabelle: dieselbe Information ist mehrfach vorhanden.',
+            '2 Punkte gibt es für die Erklärung mit Bezug zur Tabelle: Dieselbe Information ist mehrfach vorhanden.',
         punkte: 2,
         difficulty: 1,
       ),
@@ -469,7 +469,7 @@ final List<ExamCase> casesA04Daten = [
         loesung:
             'Ändert sich die Telefonnummer des Lieferanten, muss sie in allen drei Zeilen angepasst werden. Wird eine Zeile vergessen, widersprechen sich die Daten (Inkonsistenz, Änderungsanomalie). Außerdem steigen Speicherbedarf und Pflegeaufwand.',
         explanation:
-            '2 Punkte für ein beschriebenes Problem. Am häufigsten genannt: Inkonsistenz durch unvollständige Änderungen. Auch Speicher- und Pflegeaufwand oder die Löschanomalie zählen.',
+            '2 Punkte für ein beschriebenes Problem. Am häufigsten wird die Inkonsistenz durch unvollständige Änderungen genannt. Auch Speicher- und Pflegeaufwand oder die Löschanomalie zählen.',
         punkte: 2,
       ),
       lueckentext(
@@ -566,7 +566,7 @@ final List<ExamCase> casesA04Daten = [
           ),
         ],
         explanation:
-            'Je richtig entnommener Aussage 1 Punkt. Der Text beschreibt eine dynamische Website: Inhalte in der Datenbank, Seitenaufbau beim Aufruf aus Vorlage (template) und Inhalt, Pflege ohne Programmierkenntnisse, und regelmäßige Updates als Schutz vor Angriffen.',
+            'Je richtig entnommener Aussage 1 Punkt. Der Text beschreibt eine dynamische Website: Inhalte in der Datenbank, Seitenaufbau beim Aufruf aus Vorlage (template) und Inhalt, Pflege ohne Programmierkenntnisse und regelmäßige Updates als Schutz vor Angriffen.',
         punkte: 4,
         tags: ['englisch'],
       ),
@@ -666,7 +666,7 @@ final List<ExamCase> casesA04Daten = [
         loesung:
             'Der Assistent nimmt den Beschäftigten Routinearbeit wie das Vorsortieren und Zusammenfassen ab. Dadurch bleibt mehr Zeit für anspruchsvolle Kundenanfragen; die Entscheidung trifft weiterhin der Mensch.',
         explanation:
-            '2 Punkte für einen erläuterten Vorteil (Aussage plus Folge). Typisch: Entlastung von Routine, mehr Zeit für anspruchsvolle Aufgaben, weniger Fehler.',
+            '2 Punkte für einen erläuterten Vorteil (Aussage plus Folge). Typisch sind die Entlastung von Routine, mehr Zeit für anspruchsvolle Aufgaben und weniger Fehler.',
         punkte: 2,
         difficulty: 1,
       ),
@@ -742,9 +742,9 @@ final List<ExamCase> casesA04Daten = [
           ),
         ],
         loesung:
-            'Risiko 1: Die Tickets enthalten personenbezogene Daten und Zugangsdaten, die bei der Verarbeitung zum externen Anbieter gelangen. Ohne Vertrag und Schutzmaßnahmen ein Datenschutzverstoß. Risiko 2: Der Assistent kann überzeugend klingende, aber falsche Lösungen vorschlagen; werden sie ungeprüft übernommen, erhalten Kunden falsche Auskünfte.',
+            'Risiko 1: Die Tickets enthalten personenbezogene Daten und Zugangsdaten, die bei der Verarbeitung zum externen Anbieter gelangen. Ohne Vertrag und Schutzmaßnahmen ist das ein Datenschutzverstoß. Risiko 2: Der Assistent kann überzeugend klingende, aber falsche Lösungen vorschlagen; werden sie ungeprüft übernommen, erhalten Kunden falsche Auskünfte.',
         explanation:
-            'Je beschriebenem Risiko 2 Punkte, verlangt sind zwei. Gegenmaßnahmen: Auftragsverarbeitungsvertrag, sensible Daten vor der Verarbeitung entfernen, jede Antwort vor dem Versand prüfen.',
+            'Je beschriebenem Risiko 2 Punkte, verlangt sind zwei. Dagegen helfen ein Auftragsverarbeitungsvertrag, das Entfernen sensibler Daten vor der Verarbeitung und die Prüfung jeder Antwort vor dem Versand.',
         punkte: 4,
       ),
       lueckentext(
@@ -805,7 +805,7 @@ final List<ExamCase> casesA04Daten = [
           zu('Abteilung', 2, 'Eigenschaft des Mitarbeiters.'),
         ],
         explanation:
-            'Je richtig zugeordnetem Attribut ein halber Punkt. Die aufgewendete Zeit gehört an die Beziehung: Sie gilt für genau einen Mitarbeiter an genau einem Ticket. Das Eröffnungsdatum gibt es je Ticket nur einmal und bleibt beim Ticket.',
+            'Je richtig zugeordnetem Attribut ein halber Punkt. Die aufgewendete Zeit gehört an die Beziehung: Sie gilt für genau einen Mitarbeiter an genau einem Ticket. Das Eröffnungsdatum gibt es je Ticket nur einmal, es bleibt deshalb beim Ticket.',
         punkte: 4,
         difficulty: 3,
       ),
@@ -866,7 +866,7 @@ final List<ExamCase> casesA04Daten = [
         loesung:
             'Der KI-Assistent liest jedes neue Ticket und schlägt eine Kategorie und eine Priorität vor. Er ersetzt das Team nicht: Ein Mitarbeiter prüft jeden Vorschlag und trifft die endgültige Entscheidung. Aus korrigierten Tickets lernt der Assistent dazu; Kundennamen sollen vor dem Training entfernt werden.',
         explanation:
-            '2 Punkte für die Aufgabe des Assistenten (vorschlagen), 2 Punkte für die Aufgabe der Beschäftigten (prüfen und entscheiden). Geantwortet wird auf Deutsch, Stichworte mit Textbezug genügen.',
+            '2 Punkte für die Aufgabe des Assistenten (vorschlagen), 2 Punkte für die Aufgabe der Beschäftigten (prüfen und entscheiden). Antworte auf Deutsch, Stichworte mit Textbezug genügen.',
         punkte: 4,
         tags: ['englisch'],
       ),
@@ -907,7 +907,7 @@ final List<ExamCase> casesA04Daten = [
           ['Reichweite der Nachtsicht in Metern', zahl(30)],
         ],
         explanation:
-            'Je Wert 1 Punkt. Frame rate = Bildrate (12 fps = 12 Bilder pro Sekunde), colour depth = Farbtiefe, night vision up to 30 m = Nachtsicht bis 30 Meter. „No local storage“: Die Kamera speichert nicht selbst. Die Aufnahmen müssen auf den Server.',
+            'Je Wert 1 Punkt. Frame rate = Bildrate (12 fps = 12 Bilder pro Sekunde), colour depth = Farbtiefe, night vision up to 30 m = Nachtsicht bis 30 Meter. „No local storage“ heißt: Die Kamera speichert nicht selbst, die Aufnahmen müssen auf den Server.',
         punkte: 3,
         difficulty: 1,
         tags: ['englisch'],
@@ -957,7 +957,7 @@ final List<ExamCase> casesA04Daten = [
           ),
         ],
         explanation:
-            '10 × 24 = 240 Mbit/s (1 Punkt). 240.000.000 Bit/s × 3.600 s × 96 h = 82.944.000.000.000 Bit; / 8 = 10.368.000.000.000 Byte; / 1.024⁴ ≈ 9,43 TiB -> aufgerundet 10 TiB (4 Punkte). Mit dem Ersatzwert 26 Mbit/s: 10,22 -> 11 TiB. Aufgerundet wird, weil der Speicher reichen muss.',
+            '10 × 24 = 240 Mbit/s (1 Punkt). 240.000.000 Bit/s × 3.600 s/h × 96 h =82.944.000.000.000 Bit; / 8 = 10.368.000.000.000 Byte; / 1.024⁴ ≈ 9,43 TiB -> aufgerundet 10 TiB (4 Punkte). Mit dem Ersatzwert 26 Mbit/s: 10,22 -> 11 TiB. Aufgerundet wird, weil der Speicher reichen muss.',
         punkte: 5,
         difficulty: 3,
       ),
@@ -994,7 +994,7 @@ final List<ExamCase> casesA04Daten = [
           zu('Bezeichnung der Zone', 1, 'Eigenschaft der Lagerzone.'),
         ],
         explanation:
-            'Je richtig zugeordnetem Attribut ein halber Punkt. Blickrichtung und Einrichtungsdatum beschreiben die Kombination aus Kamera und Zone. Sie gehören an die Beziehung, nicht an eine der beiden Entitäten.',
+            'Je richtig zugeordnetem Attribut ein halber Punkt. Blickrichtung und Einrichtungsdatum beschreiben die Kombination aus Kamera und Zone. Deshalb gehören sie an die Beziehung, nicht an eine der beiden Entitäten.',
         punkte: 4,
         difficulty: 3,
       ),
@@ -1063,7 +1063,7 @@ final List<ExamCase> casesA04Daten = [
           ),
         ],
         loesung:
-            'Eine KI-gestützte Bilderkennung liest das Kennzeichen eines ankommenden LKW, ordnet es der angekündigten Lieferung zu und erfasst Datum und Uhrzeit der Ankunft. Das System weist dem LKW automatisch eine freie Rampe zu und informiert das Lagerpersonal. Wartezeiten sinken.',
+            'Eine KI-gestützte Bilderkennung liest das Kennzeichen eines ankommenden LKW, ordnet es der angekündigten Lieferung zu und erfasst Datum und Uhrzeit der Ankunft. Das System weist dem LKW automatisch eine freie Rampe zu und informiert das Lagerpersonal. So sinken die Wartezeiten.',
         explanation:
             '3 Punkte für eine nachvollziehbar erläuterte Möglichkeit: Was erkennt die KI, was geschieht mit der Information, welcher Nutzen entsteht. Andere sinnvolle Lösungen (z. B. freie Stellplätze zählen, Beladung dokumentieren) zählen ebenso.',
         punkte: 3,
@@ -1103,7 +1103,7 @@ final List<ExamCase> casesA04Daten = [
         loesung:
             'Weil Nachtaufnahmen im Training fehlten, erkennt die KI Kennzeichen bei Dunkelheit unzuverlässig. LKW werden dann falsch oder gar nicht zugeordnet; ohne Kontrolle durch Menschen entstehen Fehler und Verzögerungen an den Rampen.',
         explanation:
-            '2 Punkte für ein beschriebenes Risiko: Einseitige Trainingsdaten führen zu Fehlern unter Bedingungen, die das Modell nicht kennt. Deshalb mit Daten aus allen Schichten trainieren und die Ergebnisse überwachen.',
+            '2 Punkte für ein beschriebenes Risiko: Einseitige Trainingsdaten führen zu Fehlern unter Bedingungen, die das Modell nicht kennt. Deshalb braucht das Training Daten aus allen Schichten, und die Ergebnisse müssen überwacht werden.',
         punkte: 2,
       ),
     ],
@@ -1160,7 +1160,7 @@ final List<ExamCase> casesA04Daten = [
         loesung:
             'Erstens spart die KI Zeit: Jeder Lieferschein ist in Sekunden geprüft, der Wareneingang kann schneller gebucht werden. Zweitens sinkt die Fehlerquote, weil Abweichungen bei Menge oder Artikel zuverlässig auffallen. Außerdem lernt das System die Formulare der Lieferanten und bewältigt mehr Belege ohne zusätzliches Personal.',
         explanation:
-            'Je beschriebenem Argument 2 Punkte, verlangt sind zwei. Typisch: Zeitersparnis, weniger Fehler, Kostenreduktion, Mustererkennung, Skalierbarkeit.',
+            'Je beschriebenem Argument 2 Punkte, verlangt sind zwei. Typisch sind Zeitersparnis, weniger Fehler, Kostenreduktion, Mustererkennung und Skalierbarkeit.',
         punkte: 4,
       ),
       lueckentext(
@@ -1272,7 +1272,7 @@ final List<ExamCase> casesA04Daten = [
           ),
         ],
         loesung:
-            'Redundanz heißt, dass dieselbe Information mehrfach gespeichert ist, hier die Lieferantenadresse in jeder Lieferzeile. Ändert sich die Adresse, müssen alle Zeilen angepasst werden; wird eine vergessen, werden die Daten widersprüchlich. Die Lösung: jeden Lieferanten nur einmal in einer eigenen Tabelle speichern.',
+            'Redundanz heißt, dass dieselbe Information mehrfach gespeichert ist, hier die Lieferantenadresse in jeder Lieferzeile. Ändert sich die Adresse, müssen alle Zeilen angepasst werden; wird eine vergessen, werden die Daten widersprüchlich. Die Lösung ist, jeden Lieferanten nur einmal in einer eigenen Tabelle zu speichern.',
         explanation:
             '1 Punkt für den Begriff, 2 Punkte für das Problem (unvollständige Änderung führt zu Inkonsistenz), 1 Punkt für die Lösung. „Spreadsheet“ ist die Tabellenkalkulation, „supplier“ der Lieferant.',
         punkte: 4,
@@ -1313,7 +1313,7 @@ final List<ExamCase> casesA04Daten = [
           ],
         ],
         explanation:
-            'Je Attribut ein halber Punkt. Menge und Chargennummer gelten für einen Artikel auf einem bestimmten Lieferschein. Sie gehören an die Beziehung. Lieferdatum und Fahrer beschreiben den Lieferschein, Bezeichnung und Stückgewicht den Artikel.',
+            'Je Attribut ein halber Punkt. Menge und Chargennummer gelten für einen Artikel auf einem bestimmten Lieferschein und gehören deshalb an die Beziehung. Lieferdatum und Fahrer beschreiben den Lieferschein, Bezeichnung und Stückgewicht den Artikel.',
         punkte: 3,
         difficulty: 3,
       ),
@@ -1375,7 +1375,7 @@ final List<ExamCase> casesA04Daten = [
         loesung:
             'Bei verlustfreier Kompression lässt sich das Original exakt wiederherstellen. Eine verlustbehaftete Kompression entfernt Details endgültig; kleine Schrift, Zahlen oder Stempel können dadurch unleserlich werden. Da die Lieferscheine als Nachweis dienen, müssen sie unverändert und lesbar bleiben.',
         explanation:
-            'Für die volle Punktzahl gehören zwei Gedanken zusammen: verlustfrei = exakt wiederherstellbar, und Belege müssen als Nachweis unverändert lesbar bleiben. Verlustbehaftet passt zu Fotos, Musik und Video.',
+            'Für die volle Punktzahl gehören zwei Gedanken zusammen: Verlustfrei heißt exakt wiederherstellbar, und Belege müssen als Nachweis unverändert lesbar bleiben. Verlustbehaftet passt zu Fotos, Musik und Video.',
         punkte: 3,
       ),
     ],
@@ -1409,7 +1409,7 @@ final List<ExamCase> casesA04Daten = [
             ],
           ),
           krit(
-            'Authentizität: Der Server weist sich per Zertifikat aus. Mandanten sind mit dem echten Portal verbunden.',
+            'Authentizität: Der Server weist sich per Zertifikat aus, Mandanten sind also sicher mit dem echten Portal verbunden.',
             punkte: 2,
             stichwoerter: ['Zertifikat', 'Authentizität', 'echte', 'Identität'],
           ),
@@ -1427,7 +1427,7 @@ final List<ExamCase> casesA04Daten = [
         loesung:
             'HTTPS überträgt die Daten TLS-verschlüsselt: Anmeldedaten und Steuerunterlagen können unterwegs nicht mitgelesen werden. Außerdem weist sich der Server mit einem Zertifikat aus, sodass Mandanten sicher sind, mit dem echten Portal verbunden zu sein. Zusätzlich lassen sich die Daten nicht unbemerkt verändern.',
         explanation:
-            'Je beschriebenem Vorteil 2 Punkte, verlangt sind zwei: Vertraulichkeit, Authentizität des Servers, Integrität.',
+            'Je beschriebenem Vorteil 2 Punkte, verlangt sind zwei. Infrage kommen Vertraulichkeit, Authentizität des Servers und Integrität.',
         punkte: 4,
       ),
       reihenfolge(
@@ -1471,7 +1471,7 @@ final List<ExamCase> casesA04Daten = [
           ],
         ],
         explanation:
-            'Je Zeile 1 Punkt. 403 Forbidden: angemeldet, aber ohne Berechtigung. 404 Not Found: Die Ressource gibt es nicht. 500 Internal Server Error: Fehler im Programm auf dem Server. 4xx = Fehler in der Anfrage, 5xx = Fehler beim Server.',
+            'Je Zeile 1 Punkt. 403 Forbidden: angemeldet, aber ohne Berechtigung. 404 Not Found: Die Ressource gibt es nicht. 500 Internal Server Error: Fehler im Programm auf dem Server. Merke dir: 4xx steht für Fehler in der Anfrage, 5xx für Fehler beim Server.',
         punkte: 3,
       ),
       markieren(

@@ -49,7 +49,7 @@ final List<Question> questionsA04Daten = [
       zu('Preis', 2, 'Eine Eigenschaft eines Artikels.'),
     ],
     explanation:
-        'Entität = konkretes Exemplar, Entitätstyp = Menge gleichartiger Entitäten, Attribut = Eigenschaft. Die Beziehung verbindet Entitätstypen miteinander.',
+        'Eine Entität ist ein konkretes Exemplar, ein Entitätstyp die Menge gleichartiger Entitäten und ein Attribut eine Eigenschaft. Die Beziehung verbindet Entitätstypen miteinander.',
     difficulty: 1,
   ),
   paare(
@@ -66,7 +66,7 @@ final List<Question> questionsA04Daten = [
       paar('1, n, m an der Linie', 'Kardinalität'),
     ],
     explanation:
-        'Chen-Notation: Rechteck = Entitätstyp, Raute = Beziehung, Ellipse = Attribut, Unterstreichung = Schlüsselattribut. Die Kardinalitäten 1, n und m stehen an den Linien zwischen Entitätstyp und Raute.',
+        'In der Chen-Notation steht das Rechteck für den Entitätstyp, die Raute für die Beziehung und die Ellipse für das Attribut. Schlüsselattribute sind unterstrichen. Die Kardinalitäten 1, n und m stehen an den Linien zwischen Entitätstyp und Raute.',
     difficulty: 1,
   ),
   markieren(
@@ -89,7 +89,7 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'ist versichert bei',
-        'Das verbindet Patient und Krankenkasse, also eine Beziehung.',
+        'Das verbindet Patient und Krankenkasse, ist also eine Beziehung.',
       ),
       nein('Kassennummer', 'Schlüsselattribut der Krankenkasse.'),
     ],
@@ -152,7 +152,7 @@ final List<Question> questionsA04Daten = [
       zu('Rechnungssumme, berechnet aus den Positionen', 2),
     ],
     explanation:
-        'Zusammengesetzte Attribute werden in Teile zerlegt, mehrwertige als eigener Entitätstyp ausgelagert, abgeleitete Werte berechnet statt gespeichert.',
+        'Zusammengesetzte Attribute werden in ihre Teile zerlegt und mehrwertige in einen eigenen Entitätstyp ausgelagert. Abgeleitete Werte werden berechnet statt gespeichert.',
   ),
   tabelle(
     'a4-de-7',
@@ -194,7 +194,7 @@ final List<Question> questionsA04Daten = [
       ],
     ],
     explanation:
-        'Entitätstyp -> Tabelle, Attribut -> Spalte, Entität -> Zeile, Schlüsselattribut -> Primärschlüssel. Beziehungen werden je nach Kardinalität umgesetzt: 1:n über einen Fremdschlüssel auf der n-Seite, n:m über eine Zwischentabelle. Fremdschlüssel entstehen erst im relationalen Modell.',
+        'Aus dem Entitätstyp wird eine Tabelle, aus dem Attribut eine Spalte, aus der einzelnen Entität eine Zeile und aus dem Schlüsselattribut der Primärschlüssel. Beziehungen werden je nach Kardinalität umgesetzt: 1:n über einen Fremdschlüssel auf der n-Seite, n:m über eine Zwischentabelle. Fremdschlüssel entstehen erst im relationalen Modell.',
   ),
   einfach(
     'a4-de-8',
@@ -213,7 +213,7 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'Als Attribut von Fahrrad',
-        'Ein Fahrrad wird an vielen Tagen verliehen. Ein Datum beim Rad wäre überschrieben.',
+        'Ein Fahrrad wird an vielen Tagen verliehen. Ein Datum beim Rad würde jedes Mal überschrieben.',
       ),
       nein(
         'Als eigener Entitätstyp „Datum“',
@@ -233,25 +233,25 @@ final List<Question> questionsA04Daten = [
     buckets: ['1:1', '1:n', 'n:m'],
     items: [
       zu(
-        'Mitarbeiter - Dienstwagen (jeder hat höchstens einen Wagen, jeder Wagen gehört einer Person)',
+        'Mitarbeiter und Dienstwagen (jeder hat höchstens einen Wagen, jeder Wagen gehört einer Person)',
         0,
       ),
       zu(
-        'Abteilung - Mitarbeiter (jeder arbeitet in genau einer Abteilung)',
+        'Abteilung und Mitarbeiter (jeder arbeitet in genau einer Abteilung)',
         1,
       ),
-      zu('Kunde - Rechnung (jede Rechnung geht an genau einen Kunden)', 1),
+      zu('Kunde und Rechnung (jede Rechnung geht an genau einen Kunden)', 1),
       zu(
-        'Schüler - Kurs (jeder belegt mehrere Kurse, jeder Kurs hat mehrere Schüler)',
+        'Schüler und Kurs (jeder belegt mehrere Kurse, jeder Kurs hat mehrere Schüler)',
         2,
       ),
       zu(
-        'Bestellung - Artikel (eine Bestellung enthält viele Artikel, ein Artikel steckt in vielen Bestellungen)',
+        'Bestellung und Artikel (eine Bestellung enthält viele Artikel, ein Artikel steckt in vielen Bestellungen)',
         2,
       ),
     ],
     explanation:
-        'Immer beide Richtungen lesen: höchstens einer auf beiden Seiten = 1:1, einer auf einer Seite und viele auf der anderen = 1:n, viele auf beiden Seiten = n:m.',
+        'Lies immer beide Richtungen. Höchstens einer auf beiden Seiten ergibt 1:1, einer auf der einen und viele auf der anderen Seite 1:n, viele auf beiden Seiten n:m.',
   ),
   einfach(
     'a4-dk-2',
@@ -312,24 +312,24 @@ final List<Question> questionsA04Daten = [
     'a4-dk-4',
     'dm-kardinalitaet',
     scenario:
-        'Ein Datenmodell hat die Entitätstypen Kunde, Bestellung und Artikel. Kunde - Bestellung ist 1:n, Bestellung - Artikel ist n:m.',
+        'Ein Datenmodell hat die Entitätstypen Kunde, Bestellung und Artikel. Kunde zu Bestellung ist 1:n, Bestellung zu Artikel ist n:m.',
     prompt: 'Wie viele Tabellen entstehen im relationalen Modell mindestens?',
     answer: 4,
     unit: 'Tabellen',
     explanation:
-        'Jeder Entitätstyp wird eine Tabelle: 3. Die 1:n-Beziehung braucht keine eigene Tabelle (Fremdschlüssel KundenNr in Bestellung). Die n:m-Beziehung braucht eine Zwischentabelle: 3 + 1 = 4.',
+        'Jeder Entitätstyp wird zu einer Tabelle, das sind 3. Die 1:n-Beziehung braucht keine eigene Tabelle (Fremdschlüssel KundenNr in Bestellung). Die n:m-Beziehung braucht eine Zwischentabelle: 3 + 1 = 4.',
   ),
 
   rechnen(
     'a4-dk-5',
     'dm-kardinalitaet',
     scenario:
-        'Ein Schulmodell hat die Entitätstypen Lehrer, Klasse, Schüler und Fach. Klasse - Schüler ist 1:n, Lehrer - Klasse (Klassenleitung) ist 1:n, Lehrer - Fach ist n:m.',
+        'Ein Schulmodell hat die Entitätstypen Lehrer, Klasse, Schüler und Fach. Klasse zu Schüler ist 1:n, Lehrer zu Klasse (Klassenleitung) ist 1:n, Lehrer zu Fach ist n:m.',
     prompt: 'Wie viele Tabellen entstehen im relationalen Modell mindestens?',
     answer: 5,
     unit: 'Tabellen',
     explanation:
-        'Vier Entitätstypen ergeben 4 Tabellen. Die beiden 1:n-Beziehungen werden über Fremdschlüssel umgesetzt (KlassenNr in Schüler, LehrerNr in Klasse). Nur Lehrer - Fach (n:m) braucht eine Zwischentabelle: 4 + 1 = 5.',
+        'Vier Entitätstypen ergeben 4 Tabellen. Die beiden 1:n-Beziehungen werden über Fremdschlüssel umgesetzt (KlassenNr in Schüler, LehrerNr in Klasse). Nur die n:m-Beziehung zwischen Lehrer und Fach braucht eine Zwischentabelle: 4 + 1 = 5.',
   ),
   einfach(
     'a4-dk-6',
@@ -365,7 +365,7 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'PersNr als Fremdschlüssel in Abteilung, ProjNr als Fremdschlüssel in Mitarbeiter',
-        'Beides auf der falschen Seite bzw. ohne Zwischentabelle. Ein Mitarbeiter könnte nur ein Projekt haben.',
+        'PersNr steht auf der falschen Seite, und für n:m fehlt die Zwischentabelle. Ein Mitarbeiter könnte nur ein Projekt haben.',
       ),
       nein(
         'Je eine Zwischentabelle für beide Beziehungen',
@@ -377,7 +377,7 @@ final List<Question> questionsA04Daten = [
       ),
     ],
     explanation:
-        'Abteilung - Mitarbeiter (1:n): AbtNr wandert als Fremdschlüssel in Mitarbeiter. Mitarbeiter - Projekt (n:m): Zwischentabelle mit dem zusammengesetzten Schlüssel PersNr + ProjNr.',
+        'Abteilung und Mitarbeiter stehen 1:n zueinander, also wandert AbtNr als Fremdschlüssel in Mitarbeiter. Mitarbeiter und Projekt stehen n:m zueinander und brauchen eine Zwischentabelle mit dem zusammengesetzten Schlüssel PersNr + ProjNr.',
   ),
   zuordnen(
     'a4-dk-7',
@@ -461,7 +461,7 @@ final List<Question> questionsA04Daten = [
     loesung:
         'Ein Primärschlüssel ist eindeutig (jeder Wert kommt nur einmal vor), nie leer und stabil (der Wert ändert sich nicht). Außerdem sollte er möglichst kurz sein. Eine fachliche Bedeutung braucht er nicht. Künstliche Schlüssel sind oft die bessere Wahl.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 3. Eindeutig, nie leer, stabil, dazu möglichst kurz. Der Primärschlüssel darf zusammengesetzt sein und taucht als Fremdschlüssel in anderen Tabellen auf.',
+        'Jede richtige Nennung bringt 1 Punkt, höchstens 3. Gefragt sind: eindeutig, nie leer, stabil und möglichst kurz. Der Primärschlüssel darf zusammengesetzt sein und taucht als Fremdschlüssel in anderen Tabellen auf.',
     punkte: 3,
   ),
   einfach(
@@ -517,7 +517,7 @@ final List<Question> questionsA04Daten = [
       ),
     ],
     explanation:
-        'Referenzielle Integrität: Jeder Fremdschlüssel verweist auf einen existierenden Primärschlüssel. Ohne Löschweitergabe wird das Löschen eines noch referenzierten Datensatzes verhindert.',
+        'Referenzielle Integrität bedeutet, dass jeder Fremdschlüssel auf einen existierenden Primärschlüssel. Ohne Löschweitergabe wird das Löschen eines noch referenzierten Datensatzes verhindert.',
   ),
   zuordnen(
     'a4-dl-4',
@@ -578,7 +578,7 @@ final List<Question> questionsA04Daten = [
       nein('K3', 'K3 existiert als Primärschlüssel in Kunde.'),
     ],
     explanation:
-        'Referenzielle Integrität: Jeder Fremdschlüsselwert muss als Primärschlüssel in der referenzierten Tabelle vorhanden sein. Wiederholungen sind erlaubt.',
+        'Referenzielle Integrität bedeutet: Jeder Fremdschlüsselwert muss als Primärschlüssel in der referenzierten Tabelle vorhanden sein. Wiederholungen sind erlaubt.',
     difficulty: 1,
   ),
   einfach(
@@ -733,7 +733,7 @@ final List<Question> questionsA04Daten = [
       nein('K1 Brandt', 'Genau ein Wert im Feld Telefon, also atomar.'),
       ja(
         'K2 Yilmaz',
-        'Zwei Telefonnummern in einer Zelle: der Wert ist nicht atomar.',
+        'In einer Zelle stehen zwei Telefonnummern, der Wert ist also nicht atomar.',
       ),
       nein('K3 Nowak', 'Genau ein Wert im Feld Telefon, also atomar.'),
       ja('K4 Peters', 'Auch hier stehen zwei Nummern in einer Zelle.'),
@@ -768,7 +768,7 @@ final List<Question> questionsA04Daten = [
     unit: 'Tabellen',
     difficulty: 3,
     explanation:
-        '2NF: TeilnName, TeilnOrt hängen nur von TeilnNr ab -> Teilnehmer. Kurstitel, DozentNr, DozentName nur von KursNr -> Kurs. Buchungsdatum hängt vom ganzen Schlüssel ab -> Buchung. 3NF: In Kurs gilt KursNr -> DozentNr -> DozentName (transitiv) -> Dozent auslagern. Ergebnis: Teilnehmer, Kurs, Dozent, Buchung = 4 Tabellen.',
+        '2NF: TeilnName und TeilnOrt hängen nur von TeilnNr ab und wandern in Teilnehmer. Kurstitel, DozentNr und DozentName hängen nur von KursNr ab und wandern in Kurs. Das Buchungsdatum hängt vom ganzen Schlüssel ab und bleibt in Buchung. 3NF: In Kurs gilt KursNr -> DozentNr -> DozentName (transitiv), also wird Dozent ausgelagert. Ergebnis: Teilnehmer, Kurs, Dozent und Buchung, also 4 Tabellen.',
   ),
   lueckentext(
     'a4-dn-8',
@@ -787,7 +787,7 @@ final List<Question> questionsA04Daten = [
       wahl('transitive', ['partielle', 'zusammengesetzte']),
     ],
     explanation:
-        'Ein Attribut kann nicht von einem Teil eines einspaltigen Schlüssels abhängen. Die 2NF ist dann automatisch erfüllt. Transitive Abhängigkeiten (über ein anderes Nichtschlüsselattribut) sind trotzdem möglich. Die 3NF muss geprüft werden.',
+        'Ein Attribut kann nicht von einem Teil eines einspaltigen Schlüssels abhängen. Die 2NF ist dann automatisch erfüllt. Transitive Abhängigkeiten (über ein anderes Nichtschlüsselattribut) sind trotzdem möglich, deshalb muss die 3NF geprüft werden.',
   ),
 
   // ============================================================ Aufbau einer URL
@@ -807,7 +807,7 @@ final List<Question> questionsA04Daten = [
       zu('adresse', 5),
     ],
     explanation:
-        'Schema vor ://, Host bis zum Doppelpunkt, Port danach, Pfad ab /, Query hinter ?, Fragment hinter #.',
+        'Das Schema steht vor ://, der Host reicht bis zum Doppelpunkt, danach folgt der Port. Der Pfad beginnt mit /, die Query steht hinter ? und das Fragment hinter #.',
   ),
   einfach(
     'a4-wu-2',
@@ -877,7 +877,7 @@ final List<Question> questionsA04Daten = [
       ),
     ],
     explanation:
-        'Host = intranet.firma.example (Subdomain, Domain, TLD). Pfad /hilfe, Query mit zwei Parametern, Standardport 443.',
+        'Der Host ist intranet.firma.example (Subdomain, Domain, TLD). Der Pfad ist /hilfe, die Query hat zwei Parameter, und ohne Portangabe gilt bei https der Standardport 443.',
   ),
 
   einfach(
@@ -902,7 +902,7 @@ final List<Question> questionsA04Daten = [
       nein('login', 'login ist der Pfad, nicht die Domain.'),
     ],
     explanation:
-        'Die registrierte Domain steht direkt vor der TLD, ganz rechts im Hostnamen. Alles links davon sind Subdomains, die der Inhaber beliebig wählen kann. Ein typischer Phishing-Trick.',
+        'Die registrierte Domain steht direkt vor der TLD, ganz rechts im Hostnamen. Alles links davon sind Subdomains, die der Inhaber beliebig wählen kann. Das ist ein typischer Phishing-Trick.',
   ),
   einfach(
     'a4-wu-6',
@@ -986,7 +986,7 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         '401 Unauthorized',
-        'Das gilt, wenn keine oder eine fehlgeschlagene Anmeldung vorliegt.',
+        'Das gilt, wenn die Anmeldung fehlt oder fehlgeschlagen ist.',
       ),
       nein('404 Not Found', 'Die Seite existiert ja, sie ist nur gesperrt.'),
       nein(
@@ -995,7 +995,7 @@ final List<Question> questionsA04Daten = [
       ),
     ],
     explanation:
-        '401 = Anmeldung fehlt oder ist fehlgeschlagen. 403 = angemeldet, aber ohne Berechtigung.',
+        '401 bedeutet, dass die Anmeldung fehlt oder fehlgeschlagen ist. 403 bedeutet: angemeldet, aber ohne Berechtigung.',
   ),
   zuordnen(
     'a4-wh-3',
@@ -1059,7 +1059,7 @@ final List<Question> questionsA04Daten = [
     choices: [
       ja(
         '301 Moved Permanently',
-        'Dauerhafte Umleitung, die neue Adresse steht im Header Location.',
+        'Das ist die dauerhafte Umleitung. Die neue Adresse steht im Header Location.',
       ),
       nein('302 Found', 'Das meldet eine nur vorübergehende Umleitung.'),
       nein('404 Not Found', 'Dann landet der Besucher auf einer Fehlerseite.'),
@@ -1204,7 +1204,7 @@ final List<Question> questionsA04Daten = [
       zu('Statuscode 500', 2),
     ],
     explanation:
-        'Namensauflösung scheitert -> DNS. Zertifikatsprobleme zeigen sich beim TLS-Handshake. Statuscodes stammen aus der HTTP-Antwort, die Verbindung stand also bereits.',
+        'Scheitert die Namensauflösung, liegt der Fehler beim DNS. Zertifikatsprobleme zeigen sich beim TLS-Handshake. Statuscodes stammen aus der HTTP-Antwort, die Verbindung stand also bereits.',
   ),
   reihenfolge(
     'a4-wa-6',
@@ -1434,7 +1434,7 @@ final List<Question> questionsA04Daten = [
       zu('Sauberes, valides HTML, das Screenreader zuverlässig auswerten', 3),
     ],
     explanation:
-        'Wahrnehmbar: Inhalte über mehr als einen Sinn. Bedienbar: ohne Maus nutzbar. Verständlich: klare Sprache und Hilfen. Robust: technisch sauber für Hilfsmittel.',
+        'Wahrnehmbar heißt, dass Inhalte über mehr als einen Sinn erfassbar sind. Bedienbar heißt ohne Maus nutzbar, verständlich heißt klare Sprache und Hilfen, robust heißt technisch sauber für Hilfsmittel.',
   ),
   einfach(
     'a4-wf-2',
@@ -1498,7 +1498,7 @@ final List<Question> questionsA04Daten = [
       ),
     ],
     explanation:
-        'Barrierefreiheit heißt: Inhalte mit mehreren Sinnen erfassbar, ohne Maus bedienbar und gut lesbar. Information nie nur über Farbe oder als Bild vermitteln, Funktionen nie nur für die Maus anbieten.',
+        'Barrierefrei heißt: Inhalte sind mit mehreren Sinnen erfassbar, ohne Maus bedienbar und gut lesbar. Vermittle Informationen nie nur über Farbe oder als Bild und biete Funktionen nie nur für die Maus an.',
   ),
   einfach(
     'a4-wf-4',
@@ -1535,7 +1535,7 @@ final List<Question> questionsA04Daten = [
       nein('21:1', 'Das ist der höchstmögliche Kontrast, Schwarz auf Weiß.'),
     ],
     explanation:
-        'WCAG AA: 4,5:1 für normalen Text, 3:1 für großen Text (ab 18 pt bzw. 14 pt fett). AAA verlangt 7:1.',
+        'WCAG AA verlangt 4,5:1 für normalen Text und 3:1 für großen Text (ab 18 pt bzw. 14 pt fett). AAA verlangt 7:1.',
     difficulty: 1,
   ),
   einfach(
@@ -1586,7 +1586,7 @@ final List<Question> questionsA04Daten = [
       ),
     ],
     explanation:
-        'Öffentliche Stellen des Bundes: BITV 2.0 (Länder haben eigene Regeln). Private Anbieter von z. B. Online-Shops: BFSG seit 28.06.2025.',
+        'Für öffentliche Stellen des Bundes gilt die BITV 2.0 (die Länder haben eigene Regeln). Für private Anbieter, etwa von Online-Shops, gilt seit dem 28.06.2025 das BFSG.',
     difficulty: 1,
   ),
   zuordnen(
@@ -1693,7 +1693,10 @@ final List<Question> questionsA04Daten = [
         '1110 1100',
         '20 = 0001 0100, umgekehrt 1110 1011, plus 1 = 1110 1100. Probe: -128 + 64 + 32 + 8 + 4 = -20.',
       ),
-      nein('1110 1011', 'Das ist nur das Einerkomplement: die + 1 fehlt.'),
+      nein(
+        '1110 1011',
+        'Das ist nur das Einerkomplement, die Addition von 1 fehlt.',
+      ),
       nein(
         '1001 0100',
         'Das ist Vorzeichen + Betrag, nicht das Zweierkomplement.',
@@ -1729,9 +1732,9 @@ final List<Question> questionsA04Daten = [
     prompt: 'Welches Ergebnis hat die Addition 0110 1011 + 0001 0110?',
     choices: [
       ja('1000 0001', '107 + 22 = 129 = 128 + 1.'),
-      nein('0111 1101', 'Das ist 125. Beim Übertrag ist ein Fehler passiert.'),
+      nein('0111 1101', 'Das ist 125. Hier wurden die Überträge weggelassen.'),
       nein('1000 0010', 'Das ist 130.'),
-      nein('0111 0001', 'Das ist 113. Überträge wurden vergessen.'),
+      nein('0111 0001', 'Das ist 113 und damit zu wenig, richtig sind 129.'),
     ],
     explanation:
         'Probe dezimal: 0110 1011 = 64 + 32 + 8 + 2 + 1 = 107, 0001 0110 = 16 + 4 + 2 = 22. 107 + 22 = 129 = 1000 0001. Binär gilt 1 + 1 = 0 mit Übertrag 1.',
@@ -1881,7 +1884,7 @@ final List<Question> questionsA04Daten = [
       zu('Emoji (U+1F600)', 3),
     ],
     explanation:
-        'Bis U+007F 1 Byte, bis U+07FF 2 Byte, bis U+FFFF 3 Byte, darüber 4 Byte.',
+        'Bis U+007F reicht 1 Byte, bis U+07FF sind es 2 Byte, bis U+FFFF 3 Byte und darüber 4 Byte.',
   ),
 
   // ======================================================= Datenmengen berechnen
@@ -1983,7 +1986,7 @@ final List<Question> questionsA04Daten = [
     unit: 'Bilder',
     difficulty: 3,
     explanation:
-        'Ein Bild: 1920 × 1080 × 3 Byte = 6.220.800 Byte. 32.000.000.000 / 6.220.800 ≈ 5.144,03. Nur vollständige Bilder zählen -> abrunden auf 5.144.',
+        'Ein Bild: 1920 × 1080 × 3 Byte = 6.220.800 Byte. 32.000.000.000 / 6.220.800 ≈ 5.144,03. Nur vollständige Bilder zählen, also abrunden auf 5.144.',
   ),
   tabelle(
     'a4-md-9',
@@ -2114,7 +2117,7 @@ final List<Question> questionsA04Daten = [
     tolerance: 0.05,
     unit: 'min',
     explanation:
-        'Beim Hochladen zählt der Upload. 8 GB × 8 = 64.000 Mbit. 64.000 / 40 Mbit/s = 1.600 s. 1.600 / 60 ≈ 26,7 min.',
+        'Beim Hochladen zählt die Upload-Rate. 8 GB × 8 = 64.000 Mbit. 64.000 / 40 Mbit/s = 1.600 s. 1.600 / 60 ≈ 26,7 min.',
   ),
   rechnen(
     'a4-mu-8',
@@ -2135,7 +2138,7 @@ final List<Question> questionsA04Daten = [
     prompt: 'Ordne die Datenraten von der niedrigsten zur höchsten.',
     items: ['800 Mbit/s', '110 MB/s', '120 MB/s', '1 Gbit/s'],
     explanation:
-        'Zum Vergleichen alles in Mbit/s umrechnen: MB/s mal 8, Gbit/s mal 1.000. 110 MB/s = 880 Mbit/s, 120 MB/s = 960 Mbit/s, 1 Gbit/s = 1.000 Mbit/s. Reihenfolge: 800 < 880 < 960 < 1.000 Mbit/s.',
+        'Rechne zum Vergleichen alles in Mbit/s um: MB/s mal 8, Gbit/s mal 1.000. 110 MB/s = 880 Mbit/s, 120 MB/s = 960 Mbit/s, 1 Gbit/s = 1.000 Mbit/s. Reihenfolge: 800 < 880 < 960 < 1.000 Mbit/s.',
   ),
 
   // =================================================== Kompression und Formate
@@ -2204,13 +2207,16 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'JPEG',
-        'Rasterformat mit Artefakten an harten Kanten und beim Vergrößern pixelig.',
+        'JPEG ist ein Rasterformat, zeigt Artefakte an harten Kanten und wird beim Vergrößern pixelig.',
       ),
       nein(
         'PNG',
-        'Verlustfrei, aber ein Rasterformat. Bei starker Vergrößerung pixelig.',
+        'PNG ist zwar verlustfrei, aber ein Rasterformat und wird bei starker Vergrößerung pixelig.',
       ),
-      nein('BMP', 'Unkomprimiertes Rasterformat, groß und nicht skalierbar.'),
+      nein(
+        'BMP',
+        'BMP ist ein unkomprimiertes Rasterformat, also groß und beim Vergrößern pixelig.',
+      ),
     ],
     explanation:
         'Logos, Icons und Diagramme gehören in ein Vektorformat wie SVG. Rasterformate eignen sich für Fotos.',
@@ -2236,7 +2242,7 @@ final List<Question> questionsA04Daten = [
     answer: 7,
     unit: 'Zeichen',
     explanation:
-        'Folgen: 10 W, 3 B, 4 W -> 10W3B4W. Das sind 3 + 2 + 2 = 7 Zeichen statt 17.',
+        'Die Folgen sind 10 W, 3 B und 4 W, kodiert also 10W3B4W. Das sind 3 + 2 + 2 = 7 Zeichen statt 17.',
   ),
   rechnen(
     'a4-mx-7',
@@ -2263,7 +2269,7 @@ final List<Question> questionsA04Daten = [
       zu('Konzertmitschnitt ohne Qualitätsverlust archivieren', 3),
     ],
     explanation:
-        'Fotos: JPEG. Schrift, harte Kanten und Transparenz im Raster: PNG. Beliebig skalierbare Logos: SVG. Verlustfreies Audio: FLAC.',
+        'Fotos gehören in JPEG, Schrift, harte Kanten und Transparenz im Raster in PNG. Beliebig skalierbare Logos speicherst du als SVG, verlustfreies Audio als FLAC.',
   ),
   zuordnen(
     'a4-mx-9',
@@ -2306,7 +2312,7 @@ final List<Question> questionsA04Daten = [
       zu('Ein Roboterarm erhält Punkte, wenn er ein Teil richtig greift', 2),
     ],
     explanation:
-        'Überwacht: Trainingsdaten mit richtiger Antwort. Unüberwacht: Muster in Daten ohne Label finden. Bestärkend: Lernen durch Belohnung für gute Aktionen.',
+        'Überwachtes Lernen nutzt Trainingsdaten mit richtiger Antwort. Unüberwachtes Lernen findet Muster in Daten ohne Label. Bestärkendes Lernen belohnt gute Aktionen.',
   ),
   einfach(
     'a4-ig-2',
@@ -2409,7 +2415,7 @@ final List<Question> questionsA04Daten = [
       ),
     ],
     explanation:
-        'Klassifikation liefert eine Kategorie, Regression einen Zahlenwert, beides überwachtes Lernen. Clustering findet Gruppen in Daten ohne Label (unüberwacht).',
+        'Klassifikation liefert eine Kategorie, Regression einen Zahlenwert. Beides ist überwachtes Lernen. Clustering findet Gruppen in Daten ohne Label (unüberwacht).',
   ),
   einfach(
     'a4-ig-7',
@@ -2436,7 +2442,7 @@ final List<Question> questionsA04Daten = [
       ),
     ],
     explanation:
-        'Großer Abstand zwischen Trainings- und Testergebnis = Overfitting. Abhilfe: mehr und vielfältigere Daten, einfacheres Modell, kürzer trainieren.',
+        'Ein großer Abstand zwischen Trainings- und Testergebnis spricht für Overfitting. Dagegen helfen mehr und vielfältigere Daten, ein einfacheres Modell oder kürzeres Training.',
   ),
   reihenfolge(
     'a4-ig-8',
@@ -2452,7 +2458,7 @@ final List<Question> questionsA04Daten = [
       'Modell einsetzen und überwachen',
     ],
     explanation:
-        'Ohne gute Daten kein gutes Modell: erst sammeln und aufbereiten, dann aufteilen, trainieren, mit ungesehenen Daten bewerten und erst danach einsetzen.',
+        'Ohne gute Daten gibt es kein gutes Modell. Deshalb erst sammeln und aufbereiten, dann aufteilen, trainieren, mit ungesehenen Daten bewerten und erst danach einsetzen.',
   ),
   einfach(
     'a4-ig-9',
@@ -2550,7 +2556,7 @@ final List<Question> questionsA04Daten = [
     choices: [
       ja(
         'Den Code lesen und mit Tests und Grenzfällen prüfen',
-        'Kompilieren heißt nur: syntaktisch korrekt, nicht fachlich richtig oder sicher.',
+        'Dass der Code kompiliert, heißt nur, dass er syntaktisch korrekt ist, nicht fachlich richtig oder sicher.',
       ),
       nein(
         'Den Code direkt in die Produktivumgebung übernehmen',
@@ -2581,7 +2587,7 @@ final List<Question> questionsA04Daten = [
       ),
       nein(
         'Möglichst wenige Wörter im Prompt verwenden',
-        'Kurz ist nicht gemeint, es geht um Beispiele.',
+        'Gemeint ist nicht die Kürze, es geht um Beispiele.',
       ),
       nein(
         'Die Frage mehrmals hintereinander stellen',
@@ -2593,7 +2599,7 @@ final List<Question> questionsA04Daten = [
       ),
     ],
     explanation:
-        'Zero-Shot: Aufgabe ohne Beispiel. Few-Shot: mit einigen Beispielen, damit das Modell das gewünschte Muster erkennt.',
+        'Bei Zero-Shot bekommt das Modell die Aufgabe ohne Beispiel, bei Few-Shot mit einigen Beispielen, damit es das gewünschte Muster erkennt.',
     difficulty: 1,
   ),
   freitext(
@@ -2622,7 +2628,7 @@ final List<Question> questionsA04Daten = [
         stichwoerter: ['schulen', 'Schulung', 'KI-Kompetenz', 'unterweisen'],
       ),
       krit(
-        'Richtlinie festlegen: welche Daten eingegeben werden dürfen, Ergebnisse immer prüfen',
+        'Richtlinie festlegen, welche Daten eingegeben werden dürfen und dass Ergebnisse immer geprüft werden',
         stichwoerter: [
           'Richtlinie',
           'Regeln',
@@ -2634,7 +2640,7 @@ final List<Question> questionsA04Daten = [
     loesung:
         'Zum Beispiel: mit dem Anbieter einen Auftragsverarbeitungsvertrag schließen, eine Unternehmenslizenz wählen, bei der Eingaben nicht zum Training genutzt werden, und die Mitarbeitenden schulen. Dazu gehört eine Richtlinie, welche Daten eingegeben werden dürfen. Private Konten und ungefilterte Kundendaten sind dagegen tabu.',
     explanation:
-        'Je Nennung 1 Punkt, höchstens 3. Sicherer KI-Einsatz braucht Regeln: freigegebene Werkzeuge, Verträge nach DSGVO, geschultes Personal (der AI Act verlangt ausreichende KI-Kompetenz) und keine unnötigen personenbezogenen Daten.',
+        'Jede richtige Nennung bringt 1 Punkt, höchstens 3. Sicherer KI-Einsatz braucht Regeln: freigegebene Werkzeuge, Verträge nach DSGVO, geschultes Personal (der AI Act verlangt Maßnahmen zur KI-Kompetenz) und keine unnötigen personenbezogenen Daten.',
     punkte: 3,
   ),
   zuordnen(
@@ -2659,7 +2665,7 @@ final List<Question> questionsA04Daten = [
         'Was verlangt die EU-KI-Verordnung seit dem 2. Februar 2025 von Unternehmen, die KI-Systeme einsetzen?',
     choices: [
       ja(
-        'Dass ihr Personal über ausreichende KI-Kompetenz verfügt',
+        'Maßnahmen, damit ihr Personal KI-Kompetenz aufbaut',
         'Mitarbeitende sollen Chancen und Risiken der eingesetzten Systeme kennen.',
       ),
       nein(
@@ -2676,7 +2682,7 @@ final List<Question> questionsA04Daten = [
       ),
     ],
     explanation:
-        'Seit 2. Februar 2025 gelten die Verbote des AI Act und die Pflicht zur KI-Kompetenz: Anbieter und Betreiber sorgen dafür, dass ihr Personal ausreichend geschult ist.',
+        'Seit dem 2. Februar 2025 gelten die Verbote des AI Act und die Pflicht zur KI-Kompetenz: Anbieter und Betreiber ergreifen Maßnahmen, etwa Schulungen, damit ihr Personal die nötige KI-Kompetenz aufbaut.',
   ),
 
   // ================================================= Grenzen, Risiken und Recht
@@ -2698,7 +2704,7 @@ final List<Question> questionsA04Daten = [
       zu('Spamfilter im Mailprogramm', 3),
     ],
     explanation:
-        'Unannehmbar: verboten. Hoch: strenge Pflichten wie Risikomanagement und menschliche Aufsicht. Begrenzt: Transparenzpflicht. Minimal: keine besonderen Pflichten.',
+        'Systeme mit unannehmbarem Risiko sind verboten. Hohes Risiko bringt strenge Pflichten wie Risikomanagement und menschliche Aufsicht. Bei begrenztem Risiko gilt eine Transparenzpflicht, bei minimalem Risiko gibt es keine besonderen Pflichten.',
   ),
   paare(
     'a4-ir-2',
@@ -2713,7 +2719,7 @@ final List<Question> questionsA04Daten = [
       paar('Deepfake', 'täuschend echt gefälschtes Bild, Video oder Audio'),
     ],
     explanation:
-        'Halluzinationen sind gefährlich, weil sie flüssig und plausibel klingen, ohne Absicht des Modells, es berechnet nur Wahrscheinlichkeiten. Bias stammt aus den Trainingsdaten, Prompt Injection aus manipulierten Eingaben, Deepfakes sind künstlich erzeugte Fälschungen. Fakten, Quellen und Zahlen aus KI-Antworten immer prüfen.',
+        'Halluzinationen sind gefährlich, weil sie flüssig und plausibel klingen. Absicht steckt nicht dahinter, das Modell berechnet nur Wahrscheinlichkeiten. Bias stammt aus den Trainingsdaten, Prompt Injection aus manipulierten Eingaben, Deepfakes sind künstlich erzeugte Fälschungen. Prüfe Fakten, Quellen und Zahlen aus KI-Antworten immer nach.',
     difficulty: 1,
   ),
   markieren(
@@ -2724,12 +2730,18 @@ final List<Question> questionsA04Daten = [
     prompt:
         'Markiere alle Angaben, die er vor der Eingabe aus dem Beschwerdetext entfernen muss.',
     zeilen: [
-      ja('Vor- und Nachname der Kundin', 'Personenbezogenes Datum.'),
+      ja(
+        'Vor- und Nachname der Kundin',
+        'Der Name ist ein personenbezogenes Datum.',
+      ),
       nein(
         'Beschreibung des Mangels: „springt nach drei Wochen nicht mehr an“',
-        'Ohne Bezug zu einer Person und für die Antwort nötig.',
+        'Die Angabe hat keinen Bezug zu einer Person und wird für die Antwort gebraucht.',
       ),
-      ja('Anschrift der Kundin', 'Personenbezogenes Datum.'),
+      ja(
+        'Anschrift der Kundin',
+        'Die Anschrift ist ein personenbezogenes Datum.',
+      ),
       ja(
         'Kundennummer',
         'Über die Kundennummer ist die Person identifizierbar.',
@@ -2824,7 +2836,7 @@ final List<Question> questionsA04Daten = [
       ),
     ],
     explanation:
-        'Seit 2. Februar 2025 verboten sind u. a. Social Scoring und Emotionserkennung am Arbeitsplatz und in Bildungseinrichtungen (Ausnahmen: medizinische oder Sicherheitsgründe).',
+        'Seit dem 2. Februar 2025 sind unter anderem Social Scoring und Emotionserkennung am Arbeitsplatz und in Bildungseinrichtungen verboten. Ausnahmen gibt es nur aus medizinischen oder Sicherheitsgründen.',
     difficulty: 3,
   ),
   lueckentext(

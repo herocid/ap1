@@ -34,7 +34,7 @@ final List<Question> questionsA03 = [
         'Eine bessere Grafikkarte',
         'Die Grafik spielt bei Büroarbeit kaum eine Rolle.',
       ),
-      nein('Ein größerer Monitor', 'Ändert nichts an der Rechenleistung.'),
+      nein('Ein größerer Monitor', 'Er ändert nichts an der Rechenleistung.'),
       nein(
         'Ein stärkeres Netzteil',
         'Die Stromversorgung ist nicht der Engpass.',
@@ -70,7 +70,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     explanation:
-        'UEFI ist moderne Firmware: große Datenträger, grafische Oberfläche, Secure Boot.',
+        'UEFI ist moderne Firmware. Sie unterstützt große Datenträger und bietet eine grafische Oberfläche und Secure Boot.',
   ),
   einfach(
     'a3-hk-4',
@@ -167,7 +167,7 @@ final List<Question> questionsA03 = [
       paar('Ein-/Ausgabewerk', 'tauscht Daten mit der Außenwelt'),
     ],
     explanation:
-        'Von Neumann: Steuerwerk und Rechenwerk (zusammen die CPU), ein gemeinsamer Speicher für Programme und Daten, Ein-/Ausgabewerk und Bussystem. Das Betriebssystem gehört nicht dazu, es ist Software.',
+        'Zur Von-Neumann-Architektur gehören Steuerwerk und Rechenwerk (zusammen die CPU), ein gemeinsamer Speicher für Programme und Daten, das Ein-/Ausgabewerk und das Bussystem. Das Betriebssystem gehört nicht dazu, es ist Software.',
   ),
 
   // ======================================================= Speicher: HDD und SSD
@@ -191,16 +191,19 @@ final List<Question> questionsA03 = [
     choices: [
       ja(
         'NVMe-SSD',
-        'Schnell, stoßfest und stromsparend: ideal für ein mobiles Gerät.',
+        'Sie ist schnell, stoßfest und stromsparend, also ideal für ein mobiles Gerät.',
       ),
       nein(
         '3,5-Zoll-HDD',
-        'Passt nicht ins Notebook, ist stoßempfindlich und langsam.',
+        'Sie passt nicht ins Notebook und ist stoßempfindlich und langsam.',
       ),
-      nein('Bandlaufwerk', 'Für Archivierung, nicht für den Arbeitsbetrieb.'),
+      nein(
+        'Bandlaufwerk',
+        'Es dient der Archivierung, nicht dem Arbeitsbetrieb.',
+      ),
       nein(
         'USB-Stick als Systemlaufwerk',
-        'Zu langsam und unzuverlässig als Hauptdatenträger.',
+        'Als Hauptdatenträger ist er zu langsam und unzuverlässig.',
       ),
     ],
     explanation:
@@ -220,7 +223,7 @@ final List<Question> questionsA03 = [
       zu('Als NVMe-Variante mehrere GB/s über PCIe', 1),
     ],
     explanation:
-        'SSD: schnell, robust, lautlos, aber mit begrenzter Schreibmenge (TBW). HDD: mechanisch und stoßempfindlich, dafür günstig pro GB.',
+        'Die SSD ist schnell, robust und lautlos, verträgt aber nur eine begrenzte Schreibmenge (TBW). Die HDD arbeitet mechanisch und ist stoßempfindlich, dafür günstig pro GB.',
   ),
   rechnen(
     'a3-hs-4',
@@ -265,12 +268,12 @@ final List<Question> questionsA03 = [
     'a3-hs-7',
     'h-speicher',
     scenario:
-        'Ein Kunde hat eine M.2-SSD eingebaut und wundert sich, dass sie nur etwa 550 MB/s liest; im Test eines Kollegen waren es 7.000 MB/s.',
+        'Ein Kunde hat eine M.2-SSD eingebaut und wundert sich, dass sie nur etwa 550 MB/s liest. Im Test eines Kollegen waren es 7.000 MB/s.',
     prompt: 'Was ist die wahrscheinlichste Erklärung?',
     choices: [
       ja(
         'Es ist eine M.2-SSD mit SATA-Anbindung statt NVMe.',
-        'M.2 ist nur die Bauform; SATA begrenzt auf rund 550 MB/s.',
+        'M.2 ist nur die Bauform, und SATA begrenzt auf rund 550 MB/s.',
       ),
       nein(
         'M.2-SSDs sind grundsätzlich auf 550 MB/s begrenzt.',
@@ -379,19 +382,19 @@ final List<Question> questionsA03 = [
     choices: [
       ja(
         'Monochrom-Laserdrucker',
-        'Günstige Kosten pro Seite und hohe Geschwindigkeit bei viel Text.',
+        'Er druckt viel Text schnell und zu niedrigen Kosten pro Seite.',
       ),
       nein(
         'Fotodrucker mit sechs Tintenfarben',
-        'Für Fotos gebaut, bei Text teuer pro Seite.',
+        'Er ist für Fotos gebaut und bei Text teuer pro Seite.',
       ),
       nein(
         'Tintenstrahl-Multifunktionsgerät für den Heimgebrauch',
-        'Für geringe Druckvolumen ausgelegt.',
+        'Es ist für geringe Druckvolumen ausgelegt.',
       ),
       nein(
         'Nadeldrucker',
-        'Nur noch für Durchschläge relevant, laut und langsam.',
+        'Er wird nur noch für Durchschläge gebraucht und ist laut und langsam.',
       ),
     ],
     explanation:
@@ -442,8 +445,11 @@ final List<Question> questionsA03 = [
     choices: [
       ja('HDMI 2.1', 'Mit 48 Gbit/s schafft HDMI 2.1 4K mit 120 Hz.'),
       nein('HDMI 2.0', 'Mit 18 Gbit/s reicht HDMI 2.0 für 4K nur bis 60 Hz.'),
-      nein('VGA', 'Analog und veraltet; für 4K ungeeignet.'),
-      nein('DVI-D', 'Mit rund 8 Gbit/s zu langsam und ohne Tonübertragung.'),
+      nein('VGA', 'VGA ist analog, veraltet und für 4K ungeeignet.'),
+      nein(
+        'DVI-D',
+        'DVI-D ist mit rund 8 Gbit/s zu langsam und überträgt keinen Ton.',
+      ),
     ],
     explanation:
         'Für 4K mit 120 Hz braucht es rund 24 Gbit/s Nutzdaten. Das schaffen HDMI 2.1 oder DisplayPort ab 1.4 mit Kompression, nicht aber HDMI 2.0.',
@@ -586,7 +592,7 @@ final List<Question> questionsA03 = [
       ),
       nein(
         'Ein Heizlüfter im Serverraum',
-        'Hohe Dauerlast, nicht geschäftskritisch.',
+        'Er zieht dauerhaft viel Strom und ist nicht geschäftskritisch.',
       ),
     ],
     explanation:
@@ -642,16 +648,16 @@ final List<Question> questionsA03 = [
       ),
       ja(
         'Geräte automatisch in den Energiesparmodus versetzen',
-        'Senkt den Verbrauch in Pausen.',
+        'Das senkt den Verbrauch in Pausen.',
       ),
-      ja('Altgeräte fachgerecht recyceln', 'Schont Ressourcen und Umwelt.'),
+      ja('Altgeräte fachgerecht recyceln', 'Das schont Ressourcen und Umwelt.'),
       nein(
         'Alle Geräte jedes Jahr ersetzen',
-        'Die Herstellung verbraucht viel Energie; lange Nutzung ist nachhaltiger.',
+        'Die Herstellung verbraucht viel Energie, deshalb ist lange Nutzung nachhaltiger.',
       ),
       nein(
         'Bildschirmschoner mit Animation dauerhaft laufen lassen',
-        'Verbraucht unnötig Strom.',
+        'Das verbraucht unnötig Strom.',
       ),
     ],
     explanation:
@@ -750,7 +756,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     explanation:
-        'Monitor parallel zum Fenster, auf oder leicht unter Augenhöhe, 50 bis 70 cm entfernt, 500 Lux und mindestens 20 °C.',
+        'Die Blickrichtung verläuft parallel zum Fenster, die Oberkante des Monitors liegt auf oder leicht unter Augenhöhe, der Abstand beträgt 50 bis 70 cm. Dazu kommen mindestens 500 Lux und mindestens 20 °C.',
   ),
   paare(
     'a3-ha-8',
@@ -773,7 +779,7 @@ final List<Question> questionsA03 = [
     'a3-ha-9',
     'h-arbeitsplatz',
     scenario: '40 alte Büro-PCs mit Festplatten sollen ausgemustert werden.',
-    prompt: 'Wie geht man richtig vor?',
+    prompt: 'Wie gehst du richtig vor?',
     choices: [
       ja(
         'Datenträger sicher löschen oder vernichten, dann über einen zertifizierten Entsorger recyceln',
@@ -846,7 +852,7 @@ final List<Question> questionsA03 = [
     loesung:
         'Ein Prozess ist ein laufendes Programm mit eigenem, geschütztem Speicherbereich. Ein Thread ist ein Ausführungsstrang innerhalb eines Prozesses; mehrere Threads eines Prozesses teilen sich dessen Speicher und arbeiten auf denselben Daten.',
     explanation:
-        'Prozess: laufendes Programm mit eigenem Speicherbereich. Thread: Ausführungsstrang innerhalb eines Prozesses. Bewertung: je Begriff 1 Punkt.',
+        'Ein Prozess ist ein laufendes Programm mit eigenem Speicherbereich, ein Thread ein Ausführungsstrang innerhalb eines Prozesses. Bewertung: je Begriff 1 Punkt.',
   ),
   freitext(
     'a3-ba-3',
@@ -872,7 +878,7 @@ final List<Question> questionsA03 = [
     ],
     punkte: 2,
     loesung:
-        'Ein Gerätetreiber ist ein Programm, das zwischen dem Betriebssystem und einem bestimmten Gerät übersetzt: Er kennt die Befehle der Hardware und stellt dem System einheitliche Funktionen bereit. Ohne Treiber kann das Betriebssystem das Gerät nicht ansprechen. Daher die Meldung.',
+        'Ein Gerätetreiber ist ein Programm, das zwischen dem Betriebssystem und einem bestimmten Gerät übersetzt: Er kennt die Befehle der Hardware und stellt dem System einheitliche Funktionen bereit. Ohne Treiber kann das Betriebssystem das Gerät nicht ansprechen, daher die Meldung.',
     explanation:
         'Treiber sind die Brücke zwischen dem allgemeinen Betriebssystem und einem konkreten Gerät. Bewertung: höchstens 2 Punkte.',
   ),
@@ -988,13 +994,13 @@ final List<Question> questionsA03 = [
     choices: [
       ja(
         'exFAT',
-        'Unterstützt große Dateien und ist unter Windows und macOS lesbar und schreibbar.',
+        'exFAT unterstützt große Dateien und ist unter Windows und macOS lesbar und schreibbar.',
       ),
       nein(
         'FAT32',
         'Dateien über 4 GB sind nicht möglich, und genau daran scheitert der Vorgang.',
       ),
-      nein('ext4', 'Wird von Windows und macOS nicht direkt unterstützt.'),
+      nein('ext4', 'ext4 wird von Windows und macOS nicht direkt unterstützt.'),
       nein(
         'NTFS',
         'macOS kann NTFS standardmäßig nur lesen, nicht beschreiben.',
@@ -1015,7 +1021,7 @@ final List<Question> questionsA03 = [
       zu('Dateiserver-Freigabe mit NTFS-Rechten', 0),
     ],
     explanation:
-        'NTFS für Windows mit Rechten, ext4 für Linux, exFAT für austauschbare Datenträger.',
+        'NTFS passt zu Windows mit Berechtigungen, ext4 zu Linux und exFAT zu austauschbaren Datenträgern.',
   ),
   freitext(
     'a3-bd-3',
@@ -1069,7 +1075,7 @@ final List<Question> questionsA03 = [
       nein('/ben/projekt', 'Das wäre ein absoluter Pfad ab der Wurzel.'),
       nein(
         '/home/anna/../projekt',
-        'Kein gültiges Ergebnis, denn „..“ wird aufgelöst, und ben fehlt.',
+        'Das ist kein gültiges Ergebnis, denn „..“ wird aufgelöst, und ben fehlt.',
       ),
     ],
     explanation:
@@ -1167,7 +1173,7 @@ final List<Question> questionsA03 = [
     'b-rechte',
     scenario:
         'Eine neue Mitarbeiterin in der Buchhaltung soll auf den Ordner „Rechnungen“ zugreifen können.',
-    prompt: 'Wie vergibt man die Rechte am besten?',
+    prompt: 'Wie vergibst du die Rechte am besten?',
     choices: [
       ja(
         'Sie wird Mitglied der Gruppe Buchhaltung, die die nötigen Rechte hat.',
@@ -1175,11 +1181,11 @@ final List<Question> questionsA03 = [
       ),
       nein(
         'Sie erhält Vollzugriff direkt auf den Ordner.',
-        'Mehr Rechte als nötig und schwer nachzuhalten.',
+        'Das sind mehr Rechte als nötig, und Einzelrechte sind schwer nachzuhalten.',
       ),
       nein(
         'Sie bekommt das Administratorkonto.',
-        'Verstößt grob gegen das Minimalprinzip.',
+        'Das verstößt grob gegen das Minimalprinzip.',
       ),
       nein(
         'Sie nutzt das Konto ihrer Vorgängerin.',
@@ -1193,7 +1199,7 @@ final List<Question> questionsA03 = [
     'a3-br-3',
     'b-rechte',
     scenario:
-        'Auf einen Ordner gilt die Freigabeberechtigung „Lesen“ und die NTFS-Berechtigung „Ändern“.',
+        'Für einen Ordner gelten die Freigabeberechtigung „Lesen“ und die NTFS-Berechtigung „Ändern“.',
     prompt: 'Welche Rechte hat ein Benutzer beim Zugriff über das Netzwerk?',
     choices: [
       ja(
@@ -1208,7 +1214,7 @@ final List<Question> questionsA03 = [
       nein('Kein Zugriff', 'Beide Berechtigungen erlauben mindestens Lesen.'),
     ],
     explanation:
-        'Freigabe- und NTFS-Rechte werden kombiniert: wirksam ist immer die restriktivere Berechtigung.',
+        'Freigabe- und NTFS-Rechte werden kombiniert. Wirksam ist immer die restriktivere Berechtigung.',
   ),
   rechnen(
     'a3-br-4',
@@ -1346,7 +1352,7 @@ final List<Question> questionsA03 = [
     'a3-bc-3',
     'b-cli',
     prompt:
-        'In welcher Reihenfolge grenzt man einen Netzwerkfehler von innen nach außen ein?',
+        'In welcher Reihenfolge grenzt du einen Netzwerkfehler von innen nach außen ein?',
     items: [
       'ipconfig: eigene IP-Konfiguration prüfen',
       'ping auf das Standardgateway',
@@ -1354,7 +1360,7 @@ final List<Question> questionsA03 = [
       'nslookup bzw. ping auf einen Namen',
     ],
     explanation:
-        'Erst die eigene Konfiguration, dann das lokale Netz, dann das Routing ins Internet, zuletzt die Namensauflösung.',
+        'Du prüfst erst die eigene Konfiguration, dann das lokale Netz, dann das Routing ins Internet und zuletzt die Namensauflösung.',
   ),
   einfach(
     'a3-bc-4',
@@ -1381,7 +1387,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     explanation:
-        'Eine 169.254er-Adresse ohne Gateway heißt: DHCP hat nicht geantwortet. Kabel, Switchport, VLAN und DHCP-Server prüfen, dann ipconfig /renew.',
+        'Eine 169.254er-Adresse ohne Gateway heißt: DHCP hat nicht geantwortet. Prüfe Kabel, Switchport, VLAN und DHCP-Server und fordere dann mit ipconfig /renew eine neue Adresse an.',
   ),
   zuordnen(
     'a3-bc-5',
@@ -1458,7 +1464,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     explanation:
-        'Kein ping heißt nicht offline. Dienste prüft man gezielt am Port, z. B. mit Test-NetConnection server -Port 443.',
+        'Kein ping heißt nicht, dass der Server offline ist. Dienste prüfst du gezielt am Port, z. B. mit Test-NetConnection server -Port 443.',
   ),
   mehrfach(
     'a3-bc-9',
@@ -1506,18 +1512,21 @@ final List<Question> questionsA03 = [
         'Standardpasswörter ändern',
         'Standardpasswörter sind öffentlich bekannt.',
       ),
-      ja('Sicherheitsupdates zeitnah einspielen', 'Schließt bekannte Lücken.'),
+      ja(
+        'Sicherheitsupdates zeitnah einspielen',
+        'Das schließt bekannte Lücken.',
+      ),
       nein(
         'Alle Ports in der Firewall öffnen, um Probleme zu vermeiden',
         'Genau das vergrößert die Angriffsfläche.',
       ),
       nein(
         'Allen Benutzern Administratorrechte geben',
-        'Verstößt gegen das Minimalprinzip.',
+        'Das verstößt gegen das Minimalprinzip.',
       ),
     ],
     explanation:
-        'Härtung verkleinert die Angriffsfläche: weniger Dienste, sichere Zugänge, aktuelle Software, restriktive Rechte.',
+        'Härtung verkleinert die Angriffsfläche durch weniger Dienste, sichere Zugänge, aktuelle Software und restriktive Rechte.',
   ),
   freitext(
     'a3-bh-2',
@@ -1605,7 +1614,7 @@ final List<Question> questionsA03 = [
       ),
       nein(
         'Den Virenschutz deinstallieren, um Leistung zu sparen',
-        'Schwächt den Schutz zusätzlich.',
+        'Das schwächt den Schutz zusätzlich.',
       ),
     ],
     explanation:
@@ -1651,7 +1660,7 @@ final List<Question> questionsA03 = [
         'Anmeldung mit Schlüsselpaar statt Passwort',
         'Schlüssel lassen sich nicht erraten.',
       ),
-      ja('Den SSH-Server aktuell halten', 'Schließt bekannte Lücken.'),
+      ja('Den SSH-Server aktuell halten', 'Das schließt bekannte Lücken.'),
       nein(
         'Zusätzlich Telnet auf Port 23 anbieten',
         'Telnet überträgt alles im Klartext.',
@@ -1662,7 +1671,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     explanation:
-        'Sicherer SSH-Zugang: kein direkter root-Login, Schlüssel statt Passwort, persönliche Konten, aktuelle Software.',
+        'Ein sicherer SSH-Zugang kommt ohne direkten root-Login aus und setzt auf Schlüssel statt Passwort, persönliche Konten und aktuelle Software.',
   ),
   einfach(
     'a3-bh-8',
@@ -1704,7 +1713,7 @@ final List<Question> questionsA03 = [
       zu('Transportwege und Lagerbestände entlang der Lieferkette planen', 1),
     ],
     explanation:
-        'ERP: gesamtes Unternehmen. SCM: Lieferkette. CRM: Kundenbeziehungen.',
+        'ERP deckt das gesamte Unternehmen ab, SCM die Lieferkette und CRM die Kundenbeziehungen.',
   ),
   einfach(
     'a3-au-2',
@@ -1766,7 +1775,7 @@ final List<Question> questionsA03 = [
       zu('Ein Angebot für einen Kunden erstellen', 0),
     ],
     explanation:
-        'Operativ: Tagesgeschäft mit dem Kunden. Analytisch: Auswertung der Kundendaten. Kommunikativ: Steuerung und Bündelung der Kontaktkanäle.',
+        'Operatives CRM ist das Tagesgeschäft mit dem Kunden, analytisches CRM wertet die Kundendaten aus, kommunikatives CRM steuert und bündelt die Kontaktkanäle.',
     difficulty: 3,
   ),
   zuordnen(
@@ -1864,7 +1873,7 @@ final List<Question> questionsA03 = [
       zu('Updates für alle Kunden kommen vom Hersteller', 0),
     ],
     explanation:
-        'Standardsoftware: günstig, schnell verfügbar, vom Hersteller gepflegt. Individualsoftware: passgenau und selbstbestimmt, aber teuer und erst nach der Entwicklung verfügbar.',
+        'Standardsoftware ist günstig, schnell verfügbar und wird vom Hersteller gepflegt. Individualsoftware ist passgenau und selbstbestimmt, aber teuer und erst nach der Entwicklung verfügbar.',
   ),
   einfach(
     'a3-as-2',
@@ -1873,7 +1882,7 @@ final List<Question> questionsA03 = [
     choices: [
       ja(
         'Anpassen von Standardsoftware über Einstellungen, ohne den Programmcode zu ändern',
-        'Bleibt bei Updates erhalten.',
+        'Solche Anpassungen bleiben bei Updates erhalten.',
       ),
       nein(
         'Neuentwicklung einer Software für einen Kunden',
@@ -1897,17 +1906,17 @@ final List<Question> questionsA03 = [
     choices: [
       ja(
         'Branchensoftware für Zahnarztpraxen',
-        'Auf genau diese Abläufe und Vorgaben zugeschnitten.',
+        'Sie ist auf genau diese Abläufe und Vorgaben zugeschnitten.',
       ),
       nein(
         'Eine Individualentwicklung',
-        'Für einen Standardbedarf unnötig teuer.',
+        'Sie wäre für einen Standardbedarf unnötig teuer.',
       ),
       nein(
         'Ein allgemeines Tabellenkalkulationsprogramm',
-        'Deckt Abrechnung und Akten nicht rechtssicher ab.',
+        'Es deckt Abrechnung und Akten nicht rechtssicher ab.',
       ),
-      nein('Ein Grafikprogramm', 'Passt nicht zum Bedarf.'),
+      nein('Ein Grafikprogramm', 'Es passt nicht zum Bedarf.'),
     ],
     explanation:
         'Branchensoftware verbindet den Preisvorteil von Standardsoftware mit branchenspezifischen Funktionen.',
@@ -1947,7 +1956,7 @@ final List<Question> questionsA03 = [
       zu('Direkt im Quellcode umgeschriebene Preisberechnung', 1),
     ],
     explanation:
-        'Vorgesehene Einstellungen übersteht jedes Update. Modifikationen am Herstellercode überschreibt das neue Release. Sie müssen neu eingebaut und getestet werden.',
+        'Vorgesehene Einstellungen überstehen jedes Update. Modifikationen am Herstellercode überschreibt das neue Release, sie müssen also neu eingebaut und getestet werden.',
   ),
   reihenfolge(
     'a3-as-7',
@@ -2041,11 +2050,11 @@ final List<Question> questionsA03 = [
       ),
       nein(
         'OEM-Lizenz',
-        'Ist an ein Gerät gebunden und passt nicht zum Schichtbetrieb.',
+        'Sie ist an ein Gerät gebunden und passt nicht zum Schichtbetrieb.',
       ),
       nein(
         'Einzelplatzlizenz pro Rechner mit Lizenz für alle 60 Personen',
-        'Unnötig viele Lizenzen.',
+        'Das wären unnötig viele Lizenzen.',
       ),
     ],
     explanation:
@@ -2097,7 +2106,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     explanation:
-        'LGPL: Nutzung als Bibliothek auch in proprietärer Software erlaubt. Wer die Bibliothek selbst verändert und weitergibt, muss diese Änderungen offenlegen.',
+        'Die LGPL erlaubt es, die Bibliothek auch in proprietärer Software zu nutzen. Wer die Bibliothek selbst verändert und weitergibt, muss diese Änderungen offenlegen.',
     difficulty: 3,
   ),
   einfach(
@@ -2221,7 +2230,7 @@ final List<Question> questionsA03 = [
       ),
       nein(
         'Nur die Farbe der Notizen ist nicht einheitlich.',
-        'Kein Datenschutzproblem.',
+        'Das ist kein Datenschutzproblem.',
       ),
     ],
     explanation:
@@ -2304,7 +2313,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     explanation:
-        'Schatten-IT entsteht oft, wenn offizielle Werkzeuge fehlen oder unpraktisch sind. Abhilfe: gute offizielle Lösung, klare Regeln, Aufklärung.',
+        'Schatten-IT entsteht oft, wenn offizielle Werkzeuge fehlen oder unpraktisch sind. Dagegen helfen eine gute offizielle Lösung, klare Regeln und Aufklärung.',
   ),
   mehrfach(
     'a3-ak-6',
@@ -2401,7 +2410,7 @@ final List<Question> questionsA03 = [
       zu('UDP', 2),
     ],
     explanation:
-        'Switch: Sicherung (MAC). Router und IP: Vermittlung. TCP/UDP: Transport. HTTP: Anwendung.',
+        'Der Switch arbeitet auf der Sicherungsschicht (MAC-Adressen), Router und IP auf der Vermittlungsschicht, TCP und UDP auf der Transportschicht und HTTP auf der Anwendungsschicht.',
   ),
   reihenfolge(
     'a3-no-2',
@@ -2446,7 +2455,7 @@ final List<Question> questionsA03 = [
       zu('Datei herunterladen', 0, 'Fehlende Teile werden erneut gesendet.'),
     ],
     explanation:
-        'TCP sichert die Übertragung mit Bestätigungen und erneutem Senden; das ist richtig, wenn alles vollständig ankommen muss. Bei Echtzeitanwendungen zählt geringe Verzögerung mehr als Vollständigkeit. Deshalb UDP.',
+        'TCP sichert die Übertragung mit Bestätigungen und erneutem Senden. Das ist richtig, wenn alles vollständig ankommen muss. Bei Echtzeitanwendungen zählt geringe Verzögerung mehr als Vollständigkeit, deshalb passt dort UDP.',
   ),
   reihenfolge(
     'a3-no-4',
@@ -2572,19 +2581,19 @@ final List<Question> questionsA03 = [
     choices: [
       ja(
         'Glasfaser',
-        'Überträgt Licht und ist unempfindlich gegen elektromagnetische Störungen.',
+        'Sie überträgt Licht und ist unempfindlich gegen elektromagnetische Störungen.',
       ),
       nein(
         'Ungeschirmtes Cat-5e-Kabel',
-        'Störanfällig in der Nähe starker Motoren.',
+        'Es ist in der Nähe starker Motoren störanfällig.',
       ),
       nein(
         'WLAN',
-        'Kann durch Metall und Störquellen stark beeinträchtigt werden.',
+        'Es kann durch Metall und Störquellen stark beeinträchtigt werden.',
       ),
       nein(
         'Koaxialkabel eines alten Busnetzes',
-        'Veraltet und für heutige Netze ungeeignet.',
+        'Es ist veraltet und für heutige Netze ungeeignet.',
       ),
     ],
     explanation:
@@ -2667,12 +2676,12 @@ final List<Question> questionsA03 = [
     prompt:
         'Welches Kabel ist die kleinste Kategorie, die das zuverlässig schafft?',
     choices: [
-      ja('Cat 6A', '10 Gbit/s auf bis zu 100 m.'),
-      nein('Cat 5e', 'Nur 1 Gbit/s.'),
-      nein('Cat 6', '10 Gbit/s nur bis etwa 55 m.'),
+      ja('Cat 6A', 'Cat 6A schafft 10 Gbit/s auf bis zu 100 m.'),
+      nein('Cat 5e', 'Cat 5e schafft nur 1 Gbit/s.'),
+      nein('Cat 6', 'Cat 6 schafft 10 Gbit/s nur bis etwa 55 m.'),
       nein(
         'Cat 8',
-        'Schafft mehr, aber nur bis 30 m und ist daher für 80 m ungeeignet.',
+        'Cat 8 schafft mehr, aber nur bis 30 m, und ist daher für 80 m ungeeignet.',
       ),
     ],
     explanation:
@@ -2824,7 +2833,7 @@ final List<Question> questionsA03 = [
         'Netzadresse: {0}\n'
         'Broadcastadresse: {1}',
     luecken: [
-      wort(['10.20.30.128'], 'Blöcke .96, .128, .160 - 140 liegt ab .128'),
+      wort(['10.20.30.128'], 'Blöcke .96, .128, .160: 140 liegt ab .128'),
       wort(['10.20.30.159'], 'eine Adresse vor dem nächsten Block .160'),
     ],
     explanation:
@@ -2857,7 +2866,7 @@ final List<Question> questionsA03 = [
       nein('10.1.80.255', '80 gehört bereits zum nächsten Block.'),
     ],
     explanation:
-        '/21 = 255.255.248.0, Blockgröße im dritten Oktett 256 - 248 = 8. Blöcke 64, 72, 80 - 77 liegt in 72 bis 79. Netz 10.1.72.0, Broadcast 10.1.79.255.',
+        '/21 = 255.255.248.0, Blockgröße im dritten Oktett 256 - 248 = 8. Die Blöcke beginnen bei 64, 72 und 80, also liegt 77 in 72 bis 79. Netz 10.1.72.0, Broadcast 10.1.79.255.',
     difficulty: 3,
   ),
   lueckentext(
@@ -2923,7 +2932,7 @@ final List<Question> questionsA03 = [
       nein('Die Maske /28 erlaubt nur 2 Hosts.', '/28 hat 14 nutzbare Hosts.'),
     ],
     explanation:
-        'Bei /28 beträgt die Blockgröße 16. PC (.35) liegt in .32 bis .47, der Drucker (.50) in .48 bis .63. Das sind zwei Netze, also Weg über das Gateway.',
+        'Bei /28 beträgt die Blockgröße 16. Der PC (.35) liegt in .32 bis .47, der Drucker (.50) in .48 bis .63. Das sind zwei Netze, also führt der Weg über das Gateway.',
     difficulty: 3,
   ),
   rechnen(
@@ -3083,7 +3092,7 @@ final List<Question> questionsA03 = [
     answer: 5,
     unit: 'Blöcke',
     explanation:
-        'Eine IPv6-Adresse hat 8 Blöcke. Vorhanden sind fe80, 1 und 2, also 3. Der Doppelpunkt ersetzt 8 - 3 = 5 Null-Blöcke.',
+        'Eine IPv6-Adresse hat 8 Blöcke. Vorhanden sind fe80, 1 und 2, also 3. Der doppelte Doppelpunkt (::) ersetzt 8 - 3 = 5 Null-Blöcke.',
     difficulty: 1,
   ),
   einfach(
@@ -3377,7 +3386,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     explanation:
-        'Nur benötigte Ports öffnen: Für HTTPS genügt TCP 443. Oft leitet Port 80 lediglich auf HTTPS um.',
+        'Geöffnet werden nur die benötigten Ports, für HTTPS genügt TCP 443. Oft leitet Port 80 lediglich auf HTTPS um.',
   ),
 
   // =============================================== Cloud und Virtualisierung
@@ -3400,7 +3409,7 @@ final List<Question> questionsA03 = [
       zu('Ein CRM-System als Online-Dienst abonnieren', 2),
     ],
     explanation:
-        'IaaS: Infrastruktur. PaaS: Plattform. SaaS: fertige Anwendung.',
+        'IaaS liefert die Infrastruktur, PaaS eine Plattform für eigene Anwendungen und SaaS die fertige Anwendung.',
   ),
   zuordnen(
     'a3-nc-2',
@@ -3497,7 +3506,7 @@ final List<Question> questionsA03 = [
       ),
     ],
     explanation:
-        'Public: für alle. Private: für ein Unternehmen. Hybrid: Kombination aus beidem. Community: für eine Gruppe mit gemeinsamen Anforderungen.',
+        'Die Public Cloud steht allen offen, die Private Cloud nur einem Unternehmen. Die Hybrid Cloud kombiniert beides, die Community Cloud dient einer Gruppe mit gemeinsamen Anforderungen.',
   ),
   einfach(
     'a3-nc-8',

@@ -46,15 +46,17 @@ final List<Question> seedQsService = [
         'die Anforderungen {3} formuliert sind.',
     luecken: [
       wort(['Grad'], 'Qualität ist relativ, nicht absolut.'),
-      wort(['Anforderungen'], 'Nicht die technisch bestmögliche Ausführung zählt.'),
+      wort([
+        'Anforderungen',
+      ], 'Nicht die technisch bestmögliche Ausführung zählt.'),
       wort(['Kunde'], 'Seine Anforderungen sind der Maßstab.'),
       wort(['prüfbar'], '"Benutzerfreundlich" allein lässt sich nicht prüfen.'),
     ],
     wortbank: ['Preis', 'Fehler', 'Hersteller', 'allgemein'],
     explanation:
-        'Qualität = Erfüllungsgrad der Anforderungen. Daraus folgt eine '
-        'praktische Konsequenz: Ohne prüfbar formulierte Anforderungen kann '
-        'man Qualität gar nicht feststellen. Deshalb hängen '
+        'Qualität ist der Grad, in dem die Anforderungen erfüllt sind. '
+        'Praktisch heißt das: Ohne prüfbar formulierte Anforderungen lässt '
+        'sich Qualität gar nicht feststellen. Deshalb hängen '
         'Anforderungsanalyse und Qualitätssicherung unmittelbar zusammen, '
         'und deshalb ist eine unprüfbare Anforderung wie "benutzerfreundlich" '
         'ein Qualitätsproblem, bevor die erste Zeile Code geschrieben ist. '
@@ -77,12 +79,14 @@ final List<Question> seedQsService = [
       MatchItem(
         text: 'Verbindlicher Styleguide für die Programmierung',
         bucket: 0,
-        rationale: 'Eine Vorgabe, die bestimmte Fehler gar nicht erst entstehen lässt.',
+        rationale:
+            'Eine Vorgabe, die bestimmte Fehler gar nicht erst entstehen lässt.',
       ),
       MatchItem(
         text: 'Code-Review eines fertigen Moduls',
         bucket: 1,
-        rationale: 'Ein bereits erstelltes Artefakt wird geprüft, also analytisch.',
+        rationale:
+            'Ein bereits erstelltes Artefakt wird geprüft, also analytisch.',
       ),
       MatchItem(
         text: 'Schulung der Entwickler vor Projektbeginn',
@@ -97,7 +101,8 @@ final List<Question> seedQsService = [
       MatchItem(
         text: 'Einsatz eines erprobten Frameworks statt Eigenentwicklung',
         bucket: 0,
-        rationale: 'Das Rad nicht neu erfinden heißt, dessen Fehler nicht neu zu machen.',
+        rationale:
+            'Das Rad nicht neu erfinden heißt, dessen Fehler nicht neu zu machen.',
       ),
       MatchItem(
         text: 'Abnahmetest durch den Auftraggeber',
@@ -106,9 +111,10 @@ final List<Question> seedQsService = [
       ),
     ],
     explanation:
-        'Trennlinie: KONSTRUKTIV = vorher, verhindert Fehler (Standards, '
-        'Methoden, Werkzeuge, Schulung, Templates). ANALYTISCH = nachher, '
-        'findet Fehler (Test, Review, Inspektion, Audit).\n'
+        'KONSTRUKTIVE Maßnahmen greifen vorher und verhindern Fehler '
+        '(Standards, Methoden, Werkzeuge, Schulung, Templates). ANALYTISCHE '
+        'greifen nachher und finden Fehler (Test, Review, Inspektion, '
+        'Audit).\n'
         'Merksatz: Der Test findet den Fehler, der Standard verhindert ihn. '
         'Wirtschaftlich ist konstruktive QS fast immer überlegen (siehe '
         'Rule of Ten).',
@@ -123,31 +129,54 @@ final List<Question> seedQsService = [
         'Ein Team startet ein Projekt und legt seine Qualitätsziele fest.',
     prompt: 'Nenne vier Festlegungen, die in die Qualitätsplanung gehören.',
     kriterien: [
-      krit('Qualitätsmerkmale, die gemessen werden, mit ihren Zielwerten',
-          stichwoerter: ['Qualitätsmerkmale', 'Zielwert', 'Kennzahl', 'Messgröße']),
-      krit('Prüfmaßnahmen und ihre Zeitpunkte (Prüfplan)',
-          stichwoerter: ['Prüfmaßnahmen', 'Prüfplan', 'Tests', 'Reviews', 'wann geprüft']),
-      krit('Verantwortliche für die Qualitätssicherung',
-          stichwoerter: ['Verantwortliche', 'Verantwortung', 'zuständig', 'wer']),
-      krit('Abnahmekriterien bzw. Definition of Done',
-          stichwoerter: ['Abnahmekriterien', 'Definition of Done', 'fertig']),
-      krit('Standards, Methoden und Werkzeuge',
-          stichwoerter: ['Standards', 'Methoden', 'Werkzeuge', 'Richtlinien']),
-      krit('Dokumentation der Prüfergebnisse',
-          stichwoerter: ['Dokumentation', 'Protokoll', 'Nachweis']),
+      krit(
+        'Qualitätsmerkmale, die gemessen werden, mit ihren Zielwerten',
+        stichwoerter: [
+          'Qualitätsmerkmale',
+          'Zielwert',
+          'Kennzahl',
+          'Messgröße',
+        ],
+      ),
+      krit(
+        'Prüfmaßnahmen und ihre Zeitpunkte (Prüfplan)',
+        stichwoerter: [
+          'Prüfmaßnahmen',
+          'Prüfplan',
+          'Tests',
+          'Reviews',
+          'wann geprüft',
+        ],
+      ),
+      krit(
+        'Verantwortliche für die Qualitätssicherung',
+        stichwoerter: ['Verantwortliche', 'Verantwortung', 'zuständig', 'wer'],
+      ),
+      krit(
+        'Abnahmekriterien bzw. Definition of Done',
+        stichwoerter: ['Abnahmekriterien', 'Definition of Done', 'fertig'],
+      ),
+      krit(
+        'Standards, Methoden und Werkzeuge',
+        stichwoerter: ['Standards', 'Methoden', 'Werkzeuge', 'Richtlinien'],
+      ),
+      krit(
+        'Dokumentation der Prüfergebnisse',
+        stichwoerter: ['Dokumentation', 'Protokoll', 'Nachweis'],
+      ),
     ],
     loesung:
         'Welche Qualitätsmerkmale mit welchem Zielwert gemessen werden, '
         'welche Prüfmaßnahmen wann stattfinden (Prüfplan), wer für die '
         'Qualitätssicherung verantwortlich ist und wann etwas als fertig gilt '
-        '(Abnahmekriterien bzw. Definition of Done). Dazu: Standards und '
-        'Werkzeuge, Dokumentation der Prüfergebnisse.',
+        '(Abnahmekriterien bzw. Definition of Done). Dazu kommen Standards '
+        'und Werkzeuge sowie die Dokumentation der Prüfergebnisse.',
     explanation:
         'Je Nennung 1 Punkt, höchstens 4 Punkte. Qualitätsplanung '
         'beantwortet vier Fragen: Was wird gemessen? Welcher Zielwert gilt? '
         'Wann und wie wird geprüft? Wer ist verantwortlich?\n'
-        'Nicht geplant werden eine Anzahl erwarteter Fehler oder der Code '
-        'der Testfälle. Der häufigste Fehler in der Praxis ist, '
+        'Nicht in die Qualitätsplanung gehören eine Anzahl erwarteter Fehler '
+        'oder der Code der Testfälle. Der häufigste Fehler in der Praxis ist, '
         'Qualitätsziele nur qualitativ zu formulieren ("hohe Performance"). '
         'Ohne Zahl ist das keine Planung, sondern ein Wunsch.',
     punkte: 4,
@@ -174,13 +203,14 @@ final List<Question> seedQsService = [
     explanation:
         'Die vier Teststufen bauen aufeinander auf: Je höher die Stufe, '
         'desto größer der Prüfgegenstand und desto näher am Kunden.\n'
-        '- Modultest: entwickelt meist der Programmierer selbst.\n'
+        '- Modultest: schreibt meist die Person, die auch den Code '
+        'entwickelt hat.\n'
         '- Integrationstest: prüft Schnittstellen zwischen Komponenten.\n'
         '- Systemtest: prüft das Gesamtsystem gegen die Spezifikation, in '
         'einer möglichst produktionsähnlichen Testumgebung.\n'
         '- Abnahmetest: prüft gegen die Anforderungen des Auftraggebers, '
         'in dessen Verantwortung.\n'
-        'Systemtest und Abnahmetest werden gern verwechselt: der Systemtest '
+        'Systemtest und Abnahmetest werden gern verwechselt: Der Systemtest '
         'ist Sache des Auftragnehmers, der Abnahmetest die des Auftraggebers.',
   ),
 
@@ -195,34 +225,42 @@ final List<Question> seedQsService = [
     buckets: ['Black-Box', 'White-Box'],
     matchItems: const [
       MatchItem(
-        text: 'Der Tester kennt den Quellcode nicht und prüft nur Eingabe und Ausgabe.',
+        text:
+            'Der Tester kennt den Quellcode nicht und prüft nur Eingabe und Ausgabe.',
         bucket: 0,
-        rationale: 'Genau die Definition: die innere Struktur bleibt eine schwarze Kiste.',
+        rationale:
+            'Das ist genau die Definition: Die innere Struktur bleibt eine schwarze Kiste.',
       ),
       MatchItem(
-        text: 'Die Testfälle werden so gewählt, dass jeder Programmzweig einmal durchlaufen wird.',
+        text:
+            'Die Testfälle werden so gewählt, dass jeder Programmzweig einmal durchlaufen wird.',
         bucket: 1,
-        rationale: 'Zweigabdeckung setzt Kenntnis des Codes voraus, also White-Box.',
+        rationale:
+            'Zweigabdeckung setzt Kenntnis des Codes voraus, also White-Box.',
       ),
       MatchItem(
-        text: 'Grundlage sind ausschließlich die Anforderungen aus dem Pflichtenheft.',
+        text:
+            'Grundlage sind ausschließlich die Anforderungen aus dem Pflichtenheft.',
         bucket: 0,
         rationale: 'Anforderungsbasiertes Testen ohne Blick in den Code.',
       ),
       MatchItem(
-        text: 'Der Entwickler prüft seine eigene Schleifenlogik mit Grenzwerten für den Zähler.',
+        text:
+            'Der Entwickler prüft seine eigene Schleifenlogik mit Grenzwerten für den Zähler.',
         bucket: 1,
-        rationale: 'Die Logik im Inneren wird gezielt adressiert.',
+        rationale: 'Hier wird gezielt die Logik im Inneren des Codes geprüft.',
       ),
       MatchItem(
         text: 'Der Abnahmetest durch den Fachbereich.',
         bucket: 0,
-        rationale: 'Der Fachbereich testet fachlich gegen die Anforderungen, nicht gegen den Code.',
+        rationale:
+            'Der Fachbereich testet fachlich gegen die Anforderungen, nicht gegen den Code.',
       ),
       MatchItem(
         text: 'Code-Coverage wird als Kennzahl erhoben.',
         bucket: 1,
-        rationale: 'Überdeckungsmaße beziehen sich zwangsläufig auf den Quellcode.',
+        rationale:
+            'Überdeckungsmaße beziehen sich zwangsläufig auf den Quellcode.',
       ),
     ],
     explanation:
@@ -250,20 +288,24 @@ final List<Question> seedQsService = [
         'mit dem Urteil bestanden oder nicht bestanden.',
     luecken: [
       wort(['Kennung'], 'Testfall-Nummer oder -Bezeichnung.'),
-      wort(['Vorbedingung'], 'Ohne definierten Startzustand ist der Test nicht reproduzierbar.'),
+      wort([
+        'Vorbedingung',
+      ], 'Ohne definierten Startzustand ist der Test nicht reproduzierbar.'),
       wort(['Eingabedaten'], '"Irgendeine gültige Eingabe" ist kein Testfall.'),
-      wort(['Soll-Ergebnis'], 'Ohne erwartetes Ergebnis kann ein Test nicht fehlschlagen.'),
+      wort([
+        'Soll-Ergebnis',
+      ], 'Ohne erwartetes Ergebnis kann ein Test nicht fehlschlagen.'),
       wort(['Ist-Ergebnis'], 'Das tatsächliche Ergebnis der Durchführung.'),
     ],
     wortbank: ['Fehlerursache', 'Entwicklername', 'Behebungsdauer'],
     explanation:
-        'Ein Testfall besteht aus: Kennung, Vorbedingung, Eingabe, erwartetes '
-        'Ergebnis und nach der Durchführung zusätzlich dem tatsächlichen '
-        'Ergebnis sowie dem Urteil bestanden/nicht bestanden. Erst das '
-        'zusammen ergibt das Testprotokoll.\n'
+        'Ein Testfall besteht aus Kennung, Vorbedingung, Eingabedaten und '
+        'Soll-Ergebnis. Nach der Durchführung kommen das Ist-Ergebnis und '
+        'das Urteil bestanden/nicht bestanden hinzu. Erst das zusammen '
+        'ergibt das Testprotokoll.\n'
         'Nicht hinein gehören der Name eines "Schuldigen" oder die Dauer der '
-        'Fehlerbehebung. Der häufigste Fehler in Prüfungsaufgaben: das '
-        'Soll-Ergebnis vergessen. Ein Test ohne Soll-Ergebnis kann nicht '
+        'Fehlerbehebung. Der häufigste Fehler in Prüfungsaufgaben ist, das '
+        'Soll-Ergebnis zu vergessen. Ein Test ohne Soll-Ergebnis kann nicht '
         'fehlschlagen und ist damit wertlos.',
   ),
 
@@ -280,14 +322,26 @@ final List<Question> seedQsService = [
         'Variablenwerte.',
     prompt: 'Wie heißt dieses Verfahren?',
     choices: [
-      _c('Schreibtischtest', true,
-          'Richtig. Der Code wird ohne Ausführung manuell nachvollzogen, ein klassisches Prüfungsthema.'),
-      _c('Regressionstest', false,
-          'Falsch. Ein Regressionstest prüft nach einer Änderung, ob bisher funktionierende Teile noch laufen.'),
-      _c('Integrationstest', false,
-          'Falsch. Der Integrationstest prüft das Zusammenspiel mehrerer Komponenten, nicht eine einzelne Anweisungsfolge.'),
-      _c('Lasttest', false,
-          'Falsch. Ein Lasttest prüft das Verhalten unter hoher Beanspruchung.'),
+      _c(
+        'Schreibtischtest',
+        true,
+        'Richtig. Der Code wird ohne Ausführung manuell nachvollzogen, ein klassisches Prüfungsthema.',
+      ),
+      _c(
+        'Regressionstest',
+        false,
+        'Falsch. Ein Regressionstest prüft nach einer Änderung, ob bisher funktionierende Teile noch laufen.',
+      ),
+      _c(
+        'Integrationstest',
+        false,
+        'Falsch. Der Integrationstest prüft das Zusammenspiel mehrerer Komponenten, nicht eine einzelne Anweisungsfolge.',
+      ),
+      _c(
+        'Lasttest',
+        false,
+        'Falsch. Ein Lasttest prüft das Verhalten unter hoher Beanspruchung.',
+      ),
     ],
     explanation:
         'Der Schreibtischtest (auch Trockentest) ist '
@@ -311,14 +365,26 @@ final List<Question> seedQsService = [
         'plötzlich der Export nicht mehr, der vorher lief.',
     prompt: 'Welche Testart hätte das verhindern können?',
     choices: [
-      _c('Regressionstest', true,
-          'Richtig. Der Regressionstest wiederholt bereits bestandene Tests, um genau solche Nebenwirkungen zu entdecken.'),
-      _c('Abnahmetest', false,
-          'Der Abnahmetest findet am Ende beim Kunden statt. Dann ist der Schaden schon da.'),
-      _c('Lasttest', false,
-          'Ein Lasttest prüft Verhalten unter Last, nicht die fachliche Korrektheit nach Änderungen.'),
-      _c('Usability-Test', false,
-          'Der prüft die Bedienbarkeit, nicht die Funktion.'),
+      _c(
+        'Regressionstest',
+        true,
+        'Richtig. Der Regressionstest wiederholt bereits bestandene Tests, um genau solche Nebenwirkungen zu entdecken.',
+      ),
+      _c(
+        'Abnahmetest',
+        false,
+        'Der Abnahmetest findet am Ende beim Kunden statt. Dann ist der Schaden schon da.',
+      ),
+      _c(
+        'Lasttest',
+        false,
+        'Ein Lasttest prüft Verhalten unter Last, nicht die fachliche Korrektheit nach Änderungen.',
+      ),
+      _c(
+        'Usability-Test',
+        false,
+        'Ein Usability-Test prüft die Bedienbarkeit, nicht die Funktion.',
+      ),
     ],
     explanation:
         'Regression heißt Rückschritt: Eine Änderung macht etwas kaputt, '
@@ -341,32 +407,40 @@ final List<Question> seedQsService = [
     buckets: ['Kaufvertrag', 'Werkvertrag', 'Dienstvertrag'],
     matchItems: const [
       MatchItem(
-        text: 'Geschuldet wird ein konkreter Erfolg, zum Beispiel eine fertige, abnahmefähige Software.',
+        text:
+            'Geschuldet wird ein konkreter Erfolg, zum Beispiel eine fertige, abnahmefähige Software.',
         bucket: 1,
-        rationale: 'Erfolg geschuldet = Werkvertrag. Deshalb gibt es hier eine Abnahme.',
+        rationale:
+            'Wird ein Erfolg geschuldet, ist es ein Werkvertrag. Deshalb gibt es hier eine Abnahme.',
       ),
       MatchItem(
-        text: 'Geschuldet wird die Tätigkeit als solche, nicht ein bestimmtes Ergebnis.',
+        text:
+            'Geschuldet wird die Tätigkeit als solche, nicht ein bestimmtes Ergebnis.',
         bucket: 2,
-        rationale: 'Dienstvertrag: bezahlt wird die geleistete Arbeit, etwa bei Beratung oder Personalgestellung.',
+        rationale:
+            'Dienstvertrag: bezahlt wird die geleistete Arbeit, etwa bei Beratung oder Personalgestellung.',
       ),
       MatchItem(
         text: 'Übereignung einer Sache gegen Zahlung des Kaufpreises.',
         bucket: 0,
-        rationale: 'Der klassische Kaufvertrag, zum Beispiel beim Hardwareeinkauf.',
+        rationale:
+            'Der klassische Kaufvertrag, zum Beispiel beim Hardwareeinkauf.',
       ),
       MatchItem(
         text: 'Die Vergütung wird mit der Abnahme fällig.',
         bucket: 1,
-        rationale: 'Typisch für den Werkvertrag: ohne Abnahme keine Fälligkeit.',
+        rationale:
+            'Typisch für den Werkvertrag: ohne Abnahme keine Fälligkeit.',
       ),
       MatchItem(
-        text: 'Ein externer Administrator wird stundenweise für Support bereitgestellt.',
+        text:
+            'Ein externer Administrator wird stundenweise für Support bereitgestellt.',
         bucket: 2,
         rationale: 'Bereitgestellt wird Arbeitszeit, kein definiertes Werk.',
       ),
       MatchItem(
-        text: 'Gewährleistung richtet sich nach dem Zustand der gelieferten Sache bei Gefahrübergang.',
+        text:
+            'Gewährleistung richtet sich nach dem Zustand der gelieferten Sache bei Gefahrübergang.',
         bucket: 0,
         rationale: 'Sachmangelhaftung des Kaufrechts.',
       ),
@@ -396,13 +470,16 @@ final List<Question> seedQsService = [
       paar('Volumenlizenz', 'viele Lizenzen in einem Vertrag'),
       paar('Software-Abonnement (SaaS)', 'Nutzungsrecht nur für die Laufzeit'),
       paar('Freeware', 'kostenlos, Quellcode meist geschlossen'),
-      paar('Copyleft-Lizenz (z. B. GPL)', 'Änderungen unter gleicher Lizenz weitergeben'),
+      paar(
+        'Copyleft-Lizenz (z. B. GPL)',
+        'Änderungen unter gleicher Lizenz weitergeben',
+      ),
     ],
     explanation:
-        'Vier Begriffe sauber trennen:\n'
-        '- Freeware: kostenlos, Quellcode geschlossen.\n'
+        'Halte vier Begriffe sauber auseinander:\n'
+        '- Freeware: kostenlos, Quellcode meist geschlossen.\n'
         '- Open Source: Quellcode offen, oft mit Pflichten (Copyleft).\n'
-        '- Proprietär: kostenpflichtig, Quellcode geschlossen.\n'
+        '- Proprietär: meist kostenpflichtig, Quellcode geschlossen.\n'
         '- SaaS/Abo: Nutzungsrecht auf Zeit, Betrieb beim Anbieter.\n'
         'Lizenzmodelle nach Zählweise: pro Gerät, pro benanntem Nutzer, '
         'pro gleichzeitigem Nutzer (concurrent), pro CPU/Core, '
@@ -422,15 +499,26 @@ final List<Question> seedQsService = [
         'Skript, das dort produktiv eingesetzt wird.',
     prompt: 'Wie ist die urheberrechtliche Lage in Deutschland?',
     choices: [
-      _c('Die Urheberin bleibt sie selbst, die Nutzungsrechte liegen aber beim Arbeitgeber.',
-          true,
-          'Richtig. Das Urheberrecht ist in Deutschland nicht übertragbar; übertragen werden nur Nutzungsrechte, bei Arbeitnehmern regelmäßig automatisch an den Arbeitgeber.'),
-      _c('Der Arbeitgeber wird automatisch Urheber der Software.', false,
-          'Falsch. Urheber kann nur eine natürliche Person sein, und das Urheberrecht selbst ist nicht übertragbar.'),
-      _c('Die Auszubildende kann die Nutzung jederzeit untersagen.', false,
-          'Falsch. Für im Arbeitsverhältnis geschaffene Software erwirbt der Arbeitgeber die Nutzungsrechte.'),
-      _c('Software ist urheberrechtlich nicht geschützt, nur patentierbar.', false,
-          'Falsch. Computerprogramme sind ausdrücklich urheberrechtlich geschützt. Reine Software ist in Europa umgekehrt kaum patentierbar.'),
+      _c(
+        'Die Urheberin bleibt sie selbst, die Nutzungsrechte liegen aber beim Arbeitgeber.',
+        true,
+        'Richtig. Das Urheberrecht ist in Deutschland nicht übertragbar; übertragen werden nur Nutzungsrechte, bei Arbeitnehmern regelmäßig automatisch an den Arbeitgeber.',
+      ),
+      _c(
+        'Der Arbeitgeber wird automatisch Urheber der Software.',
+        false,
+        'Falsch. Urheber kann nur eine natürliche Person sein, und das Urheberrecht selbst ist nicht übertragbar.',
+      ),
+      _c(
+        'Die Auszubildende kann die Nutzung jederzeit untersagen.',
+        false,
+        'Falsch. Für im Arbeitsverhältnis geschaffene Software erwirbt der Arbeitgeber die Nutzungsrechte.',
+      ),
+      _c(
+        'Software ist urheberrechtlich nicht geschützt, nur patentierbar.',
+        false,
+        'Falsch. Computerprogramme sind ausdrücklich urheberrechtlich geschützt. Reine Software ist in Europa umgekehrt kaum patentierbar.',
+      ),
     ],
     explanation:
         'Kern des deutschen Urheberrechts: Urheber ist immer die natürliche '
@@ -454,22 +542,53 @@ final List<Question> seedQsService = [
         'Nenne fünf Punkte, die ein IT-Dienstleistungsvertrag mindestens '
         'regeln sollte.',
     kriterien: [
-      krit('Leistungsbeschreibung bzw. Verweis auf das Pflichtenheft',
-          stichwoerter: ['Leistungsbeschreibung', 'Leistung', 'Pflichtenheft', 'Umfang']),
-      krit('Vergütung und Zahlungsbedingungen',
-          stichwoerter: ['Vergütung', 'Preis', 'Zahlungsbedingungen', 'Zahlungsziel']),
-      krit('Termine und Fristen',
-          stichwoerter: ['Termine', 'Fristen', 'Liefertermin', 'Zeitplan']),
-      krit('Gewährleistung und Haftung',
-          stichwoerter: ['Gewährleistung', 'Haftung', 'Mängel']),
-      krit('Datenschutz und Vertraulichkeit',
-          stichwoerter: ['Datenschutz', 'Vertraulichkeit', 'Geheimhaltung', 'Auftragsverarbeitung']),
-      krit('Mitwirkungspflichten des Auftraggebers',
-          stichwoerter: ['Mitwirkung', 'Mitwirkungspflichten', 'Ansprechpartner']),
-      krit('Abnahme der Leistung',
-          stichwoerter: ['Abnahme', 'Abnahmekriterien', 'Abnahmetest']),
-      krit('Laufzeit und Kündigung',
-          stichwoerter: ['Laufzeit', 'Kündigung', 'Vertragsdauer']),
+      krit(
+        'Leistungsbeschreibung bzw. Verweis auf das Pflichtenheft',
+        stichwoerter: [
+          'Leistungsbeschreibung',
+          'Leistung',
+          'Pflichtenheft',
+          'Umfang',
+        ],
+      ),
+      krit(
+        'Vergütung und Zahlungsbedingungen',
+        stichwoerter: [
+          'Vergütung',
+          'Preis',
+          'Zahlungsbedingungen',
+          'Zahlungsziel',
+        ],
+      ),
+      krit(
+        'Termine und Fristen',
+        stichwoerter: ['Termine', 'Fristen', 'Liefertermin', 'Zeitplan'],
+      ),
+      krit(
+        'Gewährleistung und Haftung',
+        stichwoerter: ['Gewährleistung', 'Haftung', 'Mängel'],
+      ),
+      krit(
+        'Datenschutz und Vertraulichkeit',
+        stichwoerter: [
+          'Datenschutz',
+          'Vertraulichkeit',
+          'Geheimhaltung',
+          'Auftragsverarbeitung',
+        ],
+      ),
+      krit(
+        'Mitwirkungspflichten des Auftraggebers',
+        stichwoerter: ['Mitwirkung', 'Mitwirkungspflichten', 'Ansprechpartner'],
+      ),
+      krit(
+        'Abnahme der Leistung',
+        stichwoerter: ['Abnahme', 'Abnahmekriterien', 'Abnahmetest'],
+      ),
+      krit(
+        'Laufzeit und Kündigung',
+        stichwoerter: ['Laufzeit', 'Kündigung', 'Vertragsdauer'],
+      ),
     ],
     loesung:
         'Vertragsparteien, Leistungsbeschreibung, Vergütung und '
@@ -503,8 +622,8 @@ final List<Question> seedQsService = [
       paar('Vertragsstrafe', 'Folge, wenn Werte verfehlt werden'),
     ],
     explanation:
-        'Ein SLA macht Servicequalität messbar und einklagbar. Die vier '
-        'Größen, die man auseinanderhalten muss:\n'
+        'Ein SLA macht Servicequalität messbar und einklagbar. Diese vier '
+        'Größen musst du auseinanderhalten:\n'
         '- Servicezeit: wann der Service überhaupt erbracht wird (z. B. '
         'Mo-Fr 8-18 Uhr).\n'
         '- Verfügbarkeit: Anteil der Servicezeit ohne Störung.\n'
@@ -555,14 +674,26 @@ final List<Question> seedQsService = [
         'Standardlösungen und kann sie nicht beheben.',
     prompt: 'Was passiert als Nächstes im mehrstufigen Support?',
     choices: [
-      _c('Eskalation an den 2nd-Level-Support mit dokumentiertem Ticket', true,
-          'Richtig. Der 1st Level nimmt auf, klassifiziert und löst Standardfälle; alles andere geht dokumentiert weiter nach oben.'),
-      _c('Das Ticket wird geschlossen, der Anwender meldet sich neu.', false,
-          'Falsch. Ein ungelöstes Ticket wird nie geschlossen. Der Vorgang und seine Historie müssen erhalten bleiben.'),
-      _c('Direkte Weitergabe an den Hersteller (3rd Level).', false,
-          'Falsch. Die Stufen werden der Reihe nach durchlaufen. Der 3rd Level ist der Hersteller bzw. die Entwicklung und wird erst eingeschaltet, wenn der 2nd Level nicht weiterkommt.'),
-      _c('Der Anwender erhält Administratorrechte, um es selbst zu lösen.', false,
-          'Falsch und sicherheitstechnisch fatal. Rechteausweitung ist keine Supportmaßnahme.'),
+      _c(
+        'Eskalation an den 2nd-Level-Support mit dokumentiertem Ticket',
+        true,
+        'Richtig. Der 1st Level nimmt auf, klassifiziert und löst Standardfälle; alles andere geht dokumentiert weiter nach oben.',
+      ),
+      _c(
+        'Das Ticket wird geschlossen, der Anwender meldet sich neu.',
+        false,
+        'Falsch. Ein ungelöstes Ticket wird nie geschlossen. Der Vorgang und seine Historie müssen erhalten bleiben.',
+      ),
+      _c(
+        'Direkte Weitergabe an den Hersteller (3rd Level).',
+        false,
+        'Falsch. Die Stufen werden der Reihe nach durchlaufen. Der 3rd Level ist der Hersteller bzw. die Entwicklung und wird erst eingeschaltet, wenn der 2nd Level nicht weiterkommt.',
+      ),
+      _c(
+        'Der Anwender erhält Administratorrechte, um es selbst zu lösen.',
+        false,
+        'Falsch und sicherheitstechnisch fatal. Rechteausweitung ist keine Supportmaßnahme.',
+      ),
     ],
     explanation:
         'Die Supportstufen:\n'
@@ -587,15 +718,26 @@ final List<Question> seedQsService = [
         'Ein Lieferant hat eine Serverlieferung für den 1. Oktober fest '
         'zugesagt. Am 10. Oktober ist nichts geliefert. Der Kunde hat bisher '
         'nicht gemahnt.',
-    prompt:
-        'Erläutere, ob sich der Lieferant im Lieferungsverzug befindet.',
+    prompt: 'Erläutere, ob sich der Lieferant im Lieferungsverzug befindet.',
     kriterien: [
-      krit('Die Lieferung ist seit dem 1. Oktober fällig und nicht erfolgt',
-          stichwoerter: ['fällig', 'Fälligkeit', 'nicht geliefert']),
-      krit('Eine Mahnung ist nicht nötig, weil der Termin nach dem Kalender bestimmt ist',
-          stichwoerter: ['Kalender', 'keine Mahnung', 'ohne Mahnung', 'fester Termin', 'entbehrlich']),
-      krit('Der Lieferant hat die Verspätung zu vertreten - er ist also in Verzug',
-          stichwoerter: ['vertreten', 'Verschulden', 'in Verzug']),
+      krit(
+        'Die Lieferung ist seit dem 1. Oktober fällig und nicht erfolgt',
+        stichwoerter: ['fällig', 'Fälligkeit', 'nicht geliefert'],
+      ),
+      krit(
+        'Eine Mahnung ist nicht nötig, weil der Termin nach dem Kalender bestimmt ist',
+        stichwoerter: [
+          'Kalender',
+          'keine Mahnung',
+          'ohne Mahnung',
+          'fester Termin',
+          'entbehrlich',
+        ],
+      ),
+      krit(
+        'Der Lieferant hat die Verspätung zu vertreten, er ist also in Verzug',
+        stichwoerter: ['vertreten', 'Verschulden', 'in Verzug'],
+      ),
     ],
     loesung:
         'Ja. Die Lieferung war am 1. Oktober fällig und ist ausgeblieben. '
@@ -611,8 +753,9 @@ final List<Question> seedQsService = [
         'Schuldner die Leistung ernsthaft und endgültig verweigert. Drei '
         'Mahnungen sind ein Mythos aus der Praxis.\n'
         'Beim ZAHLUNGSverzug gilt zusätzlich: Spätestens 30 Tage nach '
-        'Zugang einer Rechnung tritt Verzug auch ohne Mahnung ein, bei '
-        'Verbrauchern nur, wenn darauf hingewiesen wurde.',
+        'Fälligkeit und Zugang einer Rechnung tritt Verzug auch ohne Mahnung '
+        'ein, bei Verbrauchern nur, wenn in der Rechnung darauf hingewiesen '
+        'wurde (§ 286 Abs. 3 BGB).',
     punkte: 3,
   ),
 
@@ -631,31 +774,43 @@ final List<Question> seedQsService = [
         'Was muss der Kunde grundsätzlich tun, bevor er den Fehler von einer '
         'anderen Firma beheben lässt, die Vergütung mindert oder zurücktritt?',
     choices: [
-      _c('Der Agentur eine angemessene Frist zur Nacherfüllung setzen', true,
-          'Die Nacherfüllung hat Vorrang. Erst wenn die Frist erfolglos '
-          'verstreicht, stehen Selbstvornahme, Minderung, Rücktritt und '
-          'Schadensersatz offen.'),
-      _c('Nichts. Er kann sofort eine andere Firma beauftragen und der '
-          'Agentur die Kosten in Rechnung stellen', false,
-          'Ohne erfolglose Frist zur Nacherfüllung riskiert er, auf den '
-          'Kosten der Selbstvornahme sitzen zu bleiben.'),
-      _c('Erst Selbstvornahme versuchen, danach mindern, zuletzt '
-          'Schadensersatz verlangen', false,
-          'Nach gescheiterter Nacherfüllung gibt es keine feste Reihenfolge: '
-          'Selbstvornahme, Minderung oder Rücktritt und Schadensersatz stehen '
-          'nebeneinander, Schadensersatz lässt sich auch mit dem Rücktritt '
-          'verbinden.'),
-      _c('Die Agentur dreimal schriftlich mahnen', false,
-          'Drei Mahnungen verlangt das Gesetz nicht. Entscheidend ist eine '
-          'Frist zur Nacherfüllung.'),
+      _c(
+        'Der Agentur eine angemessene Frist zur Nacherfüllung setzen',
+        true,
+        'Die Nacherfüllung hat Vorrang. Erst wenn die Frist erfolglos '
+            'verstreicht, stehen Selbstvornahme, Minderung, Rücktritt und '
+            'Schadensersatz offen.',
+      ),
+      _c(
+        'Nichts. Er kann sofort eine andere Firma beauftragen und der '
+            'Agentur die Kosten in Rechnung stellen',
+        false,
+        'Ohne erfolglose Frist zur Nacherfüllung riskiert er, auf den '
+            'Kosten der Selbstvornahme sitzen zu bleiben.',
+      ),
+      _c(
+        'Erst Selbstvornahme versuchen, danach mindern, zuletzt '
+            'Schadensersatz verlangen',
+        false,
+        'Nach gescheiterter Nacherfüllung gibt es keine feste Reihenfolge: '
+            'Selbstvornahme, Minderung oder Rücktritt und Schadensersatz stehen '
+            'nebeneinander, Schadensersatz lässt sich auch mit dem Rücktritt '
+            'verbinden.',
+      ),
+      _c(
+        'Die Agentur dreimal schriftlich mahnen',
+        false,
+        'Drei Mahnungen verlangt das Gesetz nicht. Entscheidend ist eine '
+            'Frist zur Nacherfüllung.',
+      ),
     ],
     explanation:
         'Beim Werkvertrag hat die Nacherfüllung Vorrang (§ 634 BGB): Der '
         'Unternehmer darf den Mangel zuerst selbst beseitigen und wählt dabei '
         'zwischen Nachbesserung und Neuherstellung. Erst nach erfolglosem '
         'Fristablauf kann der Besteller den Mangel selbst beseitigen lassen '
-        'und Kostenersatz verlangen, die Vergütung mindern oder zurücktreten '
-        '- und zusätzlich Schadensersatz fordern, wenn der Unternehmer den '
+        'und Kostenersatz verlangen, die Vergütung mindern oder zurücktreten. '
+        'Zusätzlich kann er Schadensersatz fordern, wenn der Unternehmer den '
         'Mangel zu vertreten hat. Deshalb gehört in jede Mangelanzeige eine '
         'konkrete Frist.',
   ),
@@ -673,20 +828,34 @@ final List<Question> seedQsService = [
         'Markiere alle Einträge, die so nicht in das Protokoll gehören oder '
         'unvollständig sind.',
     zeilen: [
-      nein('Abnahme am 14. Juni im Lager des Auftraggebers; anwesend: die Projektleiter beider Seiten',
-          'Datum, Ort und Beteiligte gehören hinein.'),
-      nein('Gegenstand: Lagerverwaltungssoftware gemäß Pflichtenheft Version 2.1',
-          'Abgenommen wird gegen ein definiertes Soll, und der Verweis stellt das her.'),
-      ja('Mangel: Etikettendruck fehlerhaft. Wird bei Gelegenheit behoben.',
-          'Es fehlt eine Frist zur Beseitigung.'),
-      ja('Erklärung: Die Abnahme erfolgt ohne Vorbehalt.',
-          'Bei einem bekannten Mangel muss der Vorbehalt erklärt werden, sonst gehen Nacherfüllung, Selbstvornahme, Rücktritt und Minderung dafür verloren (§ 640 Abs. 3 BGB).'),
-      ja('Interne Kalkulation des Auftragnehmers: 310 Stunden zu 62 €',
-          'Die Kalkulation ist ein Geschäftsgeheimnis und hat im Protokoll nichts zu suchen.'),
-      nein('Geprüft wurden die 24 Testfälle des Abnahmetestplans, 23 davon bestanden.',
-          'Das Ergebnis des Abnahmetests gehört ins Protokoll.'),
-      ja('Unterschrift: nur Auftragnehmer',
-          'Erst die Unterschriften beider Vertragsparteien machen das Protokoll zum Nachweis.'),
+      nein(
+        'Abnahme am 14. Juni im Lager des Auftraggebers; anwesend: die Projektleiter beider Seiten',
+        'Datum, Ort und Beteiligte gehören hinein.',
+      ),
+      nein(
+        'Gegenstand: Lagerverwaltungssoftware gemäß Pflichtenheft Version 2.1',
+        'Abgenommen wird gegen ein definiertes Soll, und der Verweis stellt das her.',
+      ),
+      ja(
+        'Mangel: Etikettendruck fehlerhaft. Wird bei Gelegenheit behoben.',
+        'Es fehlt eine Frist zur Beseitigung.',
+      ),
+      ja(
+        'Erklärung: Die Abnahme erfolgt ohne Vorbehalt.',
+        'Bei einem bekannten Mangel muss der Vorbehalt erklärt werden, sonst gehen Nacherfüllung, Selbstvornahme, Rücktritt und Minderung dafür verloren (§ 640 Abs. 3 BGB).',
+      ),
+      ja(
+        'Interne Kalkulation des Auftragnehmers: 310 Stunden zu 62 €',
+        'Die Kalkulation ist ein Geschäftsgeheimnis und hat im Protokoll nichts zu suchen.',
+      ),
+      nein(
+        'Geprüft wurden die 24 Testfälle des Abnahmetestplans, 23 davon bestanden.',
+        'Das Ergebnis des Abnahmetests gehört ins Protokoll.',
+      ),
+      ja(
+        'Unterschrift: nur Auftragnehmer',
+        'Erst die Unterschriften beider Vertragsparteien machen das Protokoll zum Nachweis.',
+      ),
     ],
     explanation:
         'In das Protokoll gehören: Datum, Ort, Beteiligte, Gegenstand mit '
@@ -708,7 +877,8 @@ final List<Question> seedQsService = [
     kind: QuestionKind.ordering,
     difficulty: 2,
     tags: ['lewin'],
-    prompt: 'Bringe die drei Phasen des Lewin-Modells in die richtige Reihenfolge.',
+    prompt:
+        'Bringe die drei Phasen des Lewin-Modells in die richtige Reihenfolge.',
     orderingHint: 'Von der Vorbereitung zur Verankerung',
     orderedItems: const [
       'Unfreeze (Auftauen): Veränderungsbedarf verdeutlichen, Widerstände ansprechen',
@@ -735,26 +905,49 @@ final List<Question> seedQsService = [
     scenario:
         'Bei der Einführung eines neuen Ticketsystems weigern sich mehrere '
         'erfahrene Mitarbeitende, das System zu nutzen.',
-    prompt: 'Nenne vier Maßnahmen, die geeignet sind, den Widerstand abzubauen.',
+    prompt:
+        'Nenne vier Maßnahmen, die geeignet sind, den Widerstand abzubauen.',
     kriterien: [
-      krit('Betroffene frühzeitig einbeziehen und ihre Erfahrung in die Gestaltung einfließen lassen',
-          stichwoerter: ['einbeziehen', 'beteiligen', 'mitgestalten', 'Erfahrung nutzen']),
-      krit('Den Nutzen für die tägliche Arbeit konkret erklären',
-          stichwoerter: ['Nutzen', 'erklären', 'informieren', 'Vorteile']),
-      krit('Schulungen anbieten',
-          stichwoerter: ['Schulung', 'schulen', 'Training']),
-      krit('In der Umstellungsphase begleiten und Ansprechpartner benennen',
-          stichwoerter: ['begleiten', 'Ansprechpartner', 'Unterstützung', 'Support']),
-      krit('Erfahrene Mitarbeitende als Multiplikatoren bzw. Key-User gewinnen',
-          stichwoerter: ['Multiplikator', 'Key-User', 'Vorbild']),
-      krit('Erste Erfolge sichtbar machen',
-          stichwoerter: ['Erfolge', 'sichtbar', 'Kennzahlen']),
+      krit(
+        'Betroffene frühzeitig einbeziehen und ihre Erfahrung in die Gestaltung einfließen lassen',
+        stichwoerter: [
+          'einbeziehen',
+          'beteiligen',
+          'mitgestalten',
+          'Erfahrung nutzen',
+        ],
+      ),
+      krit(
+        'Den Nutzen für die tägliche Arbeit konkret erklären',
+        stichwoerter: ['Nutzen', 'erklären', 'informieren', 'Vorteile'],
+      ),
+      krit(
+        'Schulungen anbieten',
+        stichwoerter: ['Schulung', 'schulen', 'Training'],
+      ),
+      krit(
+        'In der Umstellungsphase begleiten und Ansprechpartner benennen',
+        stichwoerter: [
+          'begleiten',
+          'Ansprechpartner',
+          'Unterstützung',
+          'Support',
+        ],
+      ),
+      krit(
+        'Erfahrene Mitarbeitende als Multiplikatoren bzw. Key-User gewinnen',
+        stichwoerter: ['Multiplikator', 'Key-User', 'Vorbild'],
+      ),
+      krit(
+        'Erste Erfolge sichtbar machen',
+        stichwoerter: ['Erfolge', 'sichtbar', 'Kennzahlen'],
+      ),
     ],
     loesung:
         'Die Betroffenen früh einbeziehen, den Nutzen für die tägliche '
         'Arbeit erklären, schulen, in der Umstellungsphase begleiten und '
-        'erfahrene Mitarbeitende als Multiplikatoren gewinnen. Später: '
-        'Erfolge sichtbar machen.',
+        'erfahrene Mitarbeitende als Multiplikatoren gewinnen. Später hilft '
+        'es, Erfolge sichtbar zu machen.',
     explanation:
         'Je Nennung 1 Punkt, höchstens 4 Punkte. Widerstand ist kein Defekt '
         'der Mitarbeitenden, sondern eine Information: Er zeigt, dass Sinn, '
@@ -782,10 +975,16 @@ final List<Question> seedQsService = [
         'Neugestaltung eines Prozesses, heißt {4}.',
     luecken: [
       wort(['Besseren']),
-      wort(['kleinen'], 'Die Summe vieler kleiner Schritte, nicht der eine große Wurf.'),
-      wort(['allen'], 'Vorschläge kommen von denen, die die Arbeit täglich machen.'),
+      wort([
+        'kleinen',
+      ], 'Die Summe vieler kleiner Schritte, nicht der eine große Wurf.'),
+      wort([
+        'allen',
+      ], 'Vorschläge kommen von denen, die die Arbeit täglich machen.'),
       wort(['PDCA-Zyklus'], 'Plan, Do, Check, Act.'),
-      wort(['Reengineering'], 'Business Process Reengineering: revolutionär statt evolutionär.'),
+      wort([
+        'Reengineering',
+      ], 'Business Process Reengineering: revolutionär statt evolutionär.'),
     ],
     wortbank: ['großen', 'Führungskräften', 'Netzplan', 'Schlechteren'],
     explanation:
@@ -795,7 +994,8 @@ final List<Question> seedQsService = [
         'Standardisierung des Erreichten und Wiederholung.\n'
         'Der Zusammenhang zum PDCA-Zyklus ist direkt: PDCA ist das Werkzeug, '
         'mit dem jeder einzelne Kaizen-Schritt durchlaufen wird.\n'
-        'Abgrenzung für die Prüfung: Kaizen = viele kleine Schritte, '
-        'evolutionär. Reengineering = ein großer Schnitt, revolutionär.',
+        'Für die Prüfung grenzt du so ab: Kaizen verbessert evolutionär in '
+        'vielen kleinen Schritten, Reengineering revolutionär mit einem '
+        'großen Schnitt.',
   ),
 ];

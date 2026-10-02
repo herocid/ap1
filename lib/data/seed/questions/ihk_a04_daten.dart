@@ -92,7 +92,7 @@ final List<Question> ihkA04Daten = [
       wahl('n:m', ['1:n', '1:1'], 'Auf beiden Seiten steht „viele“.'),
     ],
     explanation:
-        'Chen-Notation lesen: Rechtecke sind Entitätstypen, die Raute ist die Beziehung, unterstrichen ist der Primärschlüssel. Die Kardinalität liest man immer in beide Richtungen: Ein Kunde gibt n Bestellungen auf, eine Bestellung gehört zu 1 Kunden (1:n). Bestellung und Artikel stehen in einer n:m-Beziehung.',
+        'So liest du die Chen-Notation: Rechtecke sind Entitätstypen, die Raute ist die Beziehung, und der Primärschlüssel ist unterstrichen. Die Kardinalität liest du immer in beide Richtungen: Ein Kunde gibt n Bestellungen auf, eine Bestellung gehört zu 1 Kunden (1:n). Bestellung und Artikel stehen in einer n:m-Beziehung.',
     punkte: 5,
   ),
   freitext(
@@ -129,7 +129,7 @@ final List<Question> ihkA04Daten = [
     loesung:
         'Die Menge ist keine Eigenschaft des Artikels allein: Derselbe Artikel liegt auf mehreren Lagerplätzen in unterschiedlicher Stückzahl. Die Menge gehört deshalb zur Kombination aus Artikel und Lagerplatz, also an die Beziehung. Stünde sie beim Artikel, gäbe es nur einen einzigen Wert, und die Bestände der einzelnen Plätze ließen sich nicht festhalten.',
     explanation:
-        'Je Aspekt 2 Punkte: Abhängigkeit von beiden Entitäten und die Folge eines falschen Eintrags. Andere fachlich richtige Formulierungen zählen ebenso. Bei der Umsetzung in Tabellen landet die Menge in der Zwischentabelle.',
+        'Je 2 Punkte gibt es für die Abhängigkeit von beiden Entitäten und für die Folge eines falschen Eintrags. Andere fachlich richtige Formulierungen zählen ebenso. Bei der Umsetzung in Tabellen landet die Menge in der Zwischentabelle.',
     punkte: 4,
   ),
   markieren(
@@ -214,7 +214,7 @@ final List<Question> ihkA04Daten = [
     loesung:
         'Eine Entität ist ein reales Objekt, etwa ein bestimmter Kunde oder ein Produkt. Eine Beziehung verbindet zwei Entitäten miteinander, zum Beispiel gibt ein Kunde eine Bestellung auf. Das Modell wird zuerst mit dem Kunden besprochen, weil sich Fehler in dieser frühen Phase noch mit wenig Aufwand beheben lassen.',
     explanation:
-        'Geantwortet wird auf Deutsch und mit Bezug zum Text: je 1 Punkt für Entität und Beziehung, 2 Punkte für den Grund (Fehler sind früh günstig zu beheben). Eine wörtliche Übersetzung ist nicht nötig, Stichworte genügen.',
+        'Du antwortest auf Deutsch und mit Bezug zum Text. Für Entität und Beziehung gibt es je 1 Punkt, für den Grund 2 Punkte (Fehler sind früh günstig zu beheben). Eine wörtliche Übersetzung ist nicht nötig, Stichworte genügen.',
     punkte: 4,
     tags: ['englisch'],
   ),
@@ -261,9 +261,9 @@ final List<Question> ihkA04Daten = [
     ),
     prompt: 'Ergänze die Kardinalitäten der drei Beziehungen.',
     text:
-        'Kunde - Projekt: {0}\n'
-        'Mitarbeiter - Projekt: {1}\n'
-        'Mitarbeiter - Laptop: {2}',
+        'Kunde und Projekt: {0}\n'
+        'Mitarbeiter und Projekt: {1}\n'
+        'Mitarbeiter und Laptop: {2}',
     luecken: [
       wahl('1:n', [
         'n:1',
@@ -278,7 +278,7 @@ final List<Question> ihkA04Daten = [
       wahl('1:1', ['1:n', 'n:1', 'n:m'], 'Auf beiden Seiten höchstens einer.'),
     ],
     explanation:
-        'Jede Regel in beide Richtungen lesen. Kunde - Projekt: ein Kunde hat viele Projekte, ein Projekt genau einen Kunden -> 1:n. Mitarbeiter - Projekt: viele auf beiden Seiten -> n:m. Mitarbeiter - Laptop: höchstens einer auf beiden Seiten -> 1:1.',
+        'Lies jede Regel in beide Richtungen. Kunde und Projekt: Ein Kunde hat viele Projekte, ein Projekt genau einen Kunden, also 1:n. Mitarbeiter und Projekt: viele auf beiden Seiten, also n:m. Mitarbeiter und Laptop: höchstens einer auf beiden Seiten, also 1:1.',
     punkte: 3,
   ),
   tabelle(
@@ -468,7 +468,7 @@ final List<Question> ihkA04Daten = [
       ],
     ],
     explanation:
-        'Die Zahl an einer Entität sagt, wie viele davon zu EINER Entität der Gegenseite gehören. 1 bei Abteilung: ein Mitarbeiter hat eine Abteilung. n bei Mitarbeiter: eine Abteilung hat viele Mitarbeiter. n und m: auf beiden Seiten viele.',
+        'Die Zahl an einer Entität sagt, wie viele davon zu EINER Entität der Gegenseite gehören. Die 1 bei Abteilung heißt: Ein Mitarbeiter hat eine Abteilung. Das n bei Mitarbeiter heißt: Eine Abteilung hat viele Mitarbeiter. Bei n und m stehen auf beiden Seiten viele.',
     punkte: 4,
   ),
 
@@ -575,7 +575,7 @@ final List<Question> ihkA04Daten = [
     loesung:
         'Der Primärschlüssel identifiziert jeden Datensatz einer Tabelle eindeutig: Über die MandantNr wird genau ein Mandant, über die VorgangNr genau ein Vorgang angesprochen. Der Fremdschlüssel MandantNr in der Tabelle Vorgang verweist auf den Primärschlüssel der Tabelle Mandant und verknüpft so jeden Vorgang mit seinem Mandanten.',
     explanation:
-        'Je Schlüssel 2 Punkte: Aussage plus Bezug zum Beispiel. Primärschlüssel = eindeutige Identifikation, Fremdschlüssel = Verweis auf den Primärschlüssel einer anderen Tabelle. Stichworte genügen.',
+        'Je Schlüssel gibt es 2 Punkte für die Aussage mit Bezug zum Beispiel. Der Primärschlüssel identifiziert eindeutig, der Fremdschlüssel verweist auf den Primärschlüssel einer anderen Tabelle. Stichworte genügen.',
     punkte: 4,
     difficulty: 1,
   ),
@@ -629,7 +629,7 @@ final List<Question> ihkA04Daten = [
       ),
     ],
     explanation:
-        'Der Text nennt vier Aussagen: Primärschlüssel eindeutig und nie leer, oft eine vom System vergebene Nummer (weil sich Namen und E-Mail-Adressen ändern), Fremdschlüssel speichert den Primärschlüssel einer anderen Tabelle, die Verknüpfung vermeidet doppelte Speicherung. Nur werten, was wirklich im Text steht.',
+        'Der Text macht vier Aussagen: Der Primärschlüssel ist eindeutig und nie leer. Oft ist er eine vom System vergebene Nummer, weil sich Namen und E-Mail-Adressen ändern. Der Fremdschlüssel speichert den Primärschlüssel einer anderen Tabelle. Die Verknüpfung vermeidet doppelte Speicherung. Gewertet wird nur, was wirklich im Text steht.',
     punkte: 4,
     tags: ['englisch'],
   ),
@@ -654,7 +654,7 @@ final List<Question> ihkA04Daten = [
     ],
     wortbank: ['Alternativschlüssel', 'Redundanz', 'atomar', 'natürlicher'],
     explanation:
-        'Primärschlüssel = eindeutige Identifikation, Fremdschlüssel = Verweis auf einen Primärschlüssel. Ein zusammengesetzter Schlüssel besteht aus mehreren Spalten, ein künstlicher Schlüssel (Surrogatschlüssel) hat keine fachliche Bedeutung. Die referenzielle Integrität verhindert Verweise ins Leere.',
+        'Der Primärschlüssel identifiziert eindeutig, der Fremdschlüssel verweist auf einen Primärschlüssel. Ein zusammengesetzter Schlüssel besteht aus mehreren Spalten, ein künstlicher Schlüssel (Surrogatschlüssel) hat keine fachliche Bedeutung. Die referenzielle Integrität verhindert Verweise ins Leere.',
     punkte: 5,
     difficulty: 1,
   ),
@@ -734,7 +734,7 @@ final List<Question> ihkA04Daten = [
       ),
     ],
     loesung:
-        'Die referenzielle Integrität verlangt, dass jeder Fremdschlüsselwert als Primärschlüssel existiert. Würde der Lieferant gelöscht, verwiesen die 14 Lieferungen auf einen Lieferanten, den es nicht mehr gibt. Stattdessen kann der Lieferant als inaktiv gekennzeichnet werden; alternativ müssten zuerst die abhängigen Lieferungen gelöscht oder eine Löschweitergabe eingerichtet werden, was hier wegen der Aufbewahrung der Belege kaum sinnvoll ist.',
+        'Die referenzielle Integrität verlangt, dass jeder Fremdschlüsselwert als Primärschlüssel existiert. Würde der Lieferant gelöscht, verwiesen die 14 Lieferungen auf einen Lieferanten, den es nicht mehr gibt. Stattdessen kann der Lieferant als inaktiv gekennzeichnet werden. Alternativ müssten zuerst die abhängigen Lieferungen gelöscht oder eine Löschweitergabe eingerichtet werden. Das ist hier kaum sinnvoll, weil die Belege aufbewahrt werden müssen.',
     explanation:
         '2 Punkte für die Begründung über die referenzielle Integrität, 1 Punkt für eine genannte Möglichkeit. Verlangt ist nur eine, die Lösungsliste ist länger. In der Praxis werden Stammdaten mit abhängigen Belegen deaktiviert statt gelöscht.',
     punkte: 3,
@@ -769,7 +769,7 @@ final List<Question> ihkA04Daten = [
       ja('Zeile 6', 'Bestellung der Kundin Yilmaz (K2).'),
     ],
     explanation:
-        'Der Ort der Kundin ist redundant in drei Zeilen gespeichert. Wird nur eine davon geändert, widersprechen sich die Daten: eine Änderungsanomalie. In normalisierter Form stünde der Ort genau einmal in einer Tabelle Kunde.',
+        'Der Ort der Kundin ist redundant in drei Zeilen gespeichert. Wird nur eine davon geändert, widersprechen sich die Daten. Das ist eine Änderungsanomalie. In normalisierter Form stünde der Ort genau einmal in einer Tabelle Kunde.',
     punkte: 3,
     difficulty: 1,
   ),
@@ -824,7 +824,7 @@ final List<Question> ihkA04Daten = [
     loesung:
         'Redundanz bedeutet, dass dieselbe Information mehrfach gespeichert ist. Hier stehen Name und Telefonnummer der Bäckerei Krume in jeder Projektzeile. Ändert sich die Telefonnummer und wird sie nur in einer Zeile angepasst, widersprechen sich die Daten (Inkonsistenz, Änderungsanomalie). Außerdem kostet die Mehrfachspeicherung Speicherplatz und Pflegeaufwand.',
     explanation:
-        '2 Punkte für die Erklärung (mehrfach gespeicherte gleiche Information), 2 Punkte für ein beschriebenes Problem. Verlangt ist ein Problem, die Liste nennt zwei, gewertet wird bis zur Höchstpunktzahl von 4.',
+        '2 Punkte für die Erklärung (mehrfach gespeicherte gleiche Information), 2 Punkte für ein beschriebenes Problem. Verlangt ist ein Problem, die Liste nennt zwei. Gewertet wird bis zur Höchstpunktzahl von 4.',
     punkte: 4,
   ),
   lueckentext(
@@ -845,7 +845,7 @@ final List<Question> ihkA04Daten = [
       wahl('3NF', ['1NF', '2NF']),
     ],
     explanation:
-        '1NF: atomare Werte. 2NF: Kein Nichtschlüsselattribut hängt nur von einem Teil eines zusammengesetzten Schlüssels ab (partielle Abhängigkeit). 3NF: Kein Nichtschlüsselattribut hängt über ein anderes Nichtschlüsselattribut vom Schlüssel ab (transitive Abhängigkeit). Kurstitel und Raumdaten werden in eigene Tabellen ausgelagert.',
+        '1NF: Alle Werte sind atomar. 2NF: Kein Nichtschlüsselattribut hängt nur von einem Teil eines zusammengesetzten Schlüssels ab (partielle Abhängigkeit). 3NF: Kein Nichtschlüsselattribut hängt über ein anderes Nichtschlüsselattribut vom Schlüssel ab (transitive Abhängigkeit). Kurstitel und Raumdaten werden in eigene Tabellen ausgelagert.',
     punkte: 5,
     difficulty: 3,
   ),
@@ -937,7 +937,7 @@ final List<Question> ihkA04Daten = [
       ],
     ],
     explanation:
-        'Aufbau: Schema://Host:Port/Pfad?Query#Fragment. Das Schema steht vor ://, der Host reicht bis zum Doppelpunkt, danach folgt der Port. Der Pfad beginnt mit /, die Query hinter ?, das Fragment hinter #.',
+        'Eine URL ist so aufgebaut: Schema://Host:Port/Pfad?Query#Fragment. Das Schema steht vor ://, der Host reicht bis zum Doppelpunkt, danach folgt der Port. Der Pfad beginnt mit /, die Query steht hinter ?, das Fragment hinter #.',
     punkte: 6,
   ),
   paare(
@@ -955,7 +955,7 @@ final List<Question> ihkA04Daten = [
       paar('Fragment', 'Sprungziel innerhalb der Seite'),
     ],
     explanation:
-        'Schema = Protokoll (http, https), Host = Server, Port = Dienst (ohne Angabe 80 bzw. 443), Pfad = Ressource, Query = Parameter als name=wert, Fragment = Stelle in der Seite. Es wird nicht an den Server geschickt.',
+        'Das Schema nennt das Protokoll (http, https), der Host den Server und der Port den Dienst (ohne Angabe 80 bzw. 443). Der Pfad benennt die Ressource, die Query übergibt Parameter als name=wert. Das Fragment bezeichnet eine Stelle in der Seite und wird nicht an den Server geschickt.',
     punkte: 3,
     difficulty: 1,
   ),
@@ -1026,7 +1026,7 @@ final List<Question> ihkA04Daten = [
       ], 'Ein führender / beginnt an der Wurzel des Servers.'),
     ],
     explanation:
-        'Relative Adressen werden vom Ordner der aktuellen Seite aus aufgelöst: Dateiname allein = gleicher Ordner, ../ = eine Ebene höher, führender / = ab der Wurzel. Schema und Host (https://www.pixelhafen.example) bleiben jeweils erhalten.',
+        'Relative Adressen werden vom Ordner der aktuellen Seite aus aufgelöst: Ein Dateiname allein bleibt im gleichen Ordner, ../ geht eine Ebene höher, ein führender / beginnt an der Wurzel. Schema und Host (https://www.pixelhafen.example) bleiben jeweils erhalten.',
     punkte: 3,
   ),
 
@@ -1230,7 +1230,7 @@ final List<Question> ihkA04Daten = [
       'Browser rendert die Seite und lädt Bilder und CSS nach',
     ],
     explanation:
-        'Name -> IP (DNS) -> Verbindung (TCP) -> Verschlüsselung (TLS) -> Anfrage (HTTP). Bei einer dynamischen Seite erzeugt ein Programm auf dem Server das HTML erst jetzt aus den Daten der Datenbank. Der Browser erhält nur das fertige HTML und stellt es dar.',
+        'Erst wird der Name zur IP-Adresse aufgelöst (DNS), dann folgen Verbindung (TCP), Verschlüsselung (TLS) und Anfrage (HTTP). Bei einer dynamischen Seite erzeugt ein Programm auf dem Server das HTML erst jetzt aus den Daten der Datenbank. Der Browser erhält nur das fertige HTML und stellt es dar.',
     punkte: 4,
   ),
   freitext(
@@ -1268,7 +1268,7 @@ final List<Question> ihkA04Daten = [
     loesung:
         'Bei einer statischen Website liegen fertige HTML-Dateien auf dem Server und werden unverändert ausgeliefert. Jeder Besucher sieht dasselbe, Änderungen erfordern das Bearbeiten der Dateien. Bei einer dynamischen Website erzeugt ein Programm auf dem Server die Seite bei jedem Aufruf neu, meist aus einer Datenbank. Der Inhalt kann vom angemeldeten Nutzer oder von Eingaben abhängen und lässt sich über ein Redaktionssystem (CMS) pflegen.',
     explanation:
-        'Je Seite des Vergleichs 2 Punkte: statisch = fertige Dateien, gleicher Inhalt für alle; dynamisch = beim Aufruf serverseitig erzeugt, oft aus einer Datenbank, nutzer- oder eingabeabhängig. Für Kundenbereich und selbst gepflegte Referenzen braucht der Betrieb eine dynamische Website.',
+        'Je Seite des Vergleichs gibt es 2 Punkte. Statisch heißt: fertige Dateien, gleicher Inhalt für alle. Dynamisch heißt: beim Aufruf serverseitig erzeugt, oft aus einer Datenbank, abhängig von Nutzer oder Eingabe. Für Kundenbereich und selbst gepflegte Referenzen braucht der Betrieb eine dynamische Website.',
     punkte: 4,
   ),
   zuordnen(
@@ -1371,7 +1371,7 @@ final List<Question> ihkA04Daten = [
     ],
     mono: true,
     explanation:
-        'Drei Fehler: falsch geschriebenes End-Tag (</titel>), nicht zusammenpassende Tags (<h1> ... </h2>) und ein Attributwert ohne schließendes Anführungszeichen. Elemente bestehen aus Start-Tag, Inhalt und passendem End-Tag; Attribute stehen als name="wert" im Start-Tag.',
+        'Die Seite enthält drei Fehler: ein falsch geschriebenes End-Tag (</titel>), nicht zusammenpassende Tags (<h1> ... </h2>) und einen Attributwert ohne schließendes Anführungszeichen. Elemente bestehen aus Start-Tag, Inhalt und passendem End-Tag; Attribute stehen als name="wert" im Start-Tag.',
     punkte: 3,
   ),
   lueckentext(
@@ -1580,7 +1580,7 @@ final List<Question> ihkA04Daten = [
     ],
     mono: true,
     explanation:
-        'Vier Verstöße: fehlender Alt-Text, Eingabefeld ohne label, nichtssagender Linktext und zu geringer Kontrast. Barrierefrei heißt: Inhalte haben eine Textalternative, Felder eine verknüpfte Beschriftung, Links ein erkennbares Ziel und Texte genug Kontrast.',
+        'Es sind vier Verstöße: ein fehlender Alt-Text, ein Eingabefeld ohne label, ein nichtssagender Linktext und zu geringer Kontrast. Barrierefrei heißt: Inhalte haben eine Textalternative, Felder eine verknüpfte Beschriftung, Links ein erkennbares Ziel und Texte genug Kontrast.',
     punkte: 4,
   ),
   lueckentext(
@@ -1604,7 +1604,7 @@ final List<Question> ihkA04Daten = [
     ],
     wortbank: ['DSGVO', 'BITV', 'Platzhalter', 'Farbe'],
     explanation:
-        'Das Barrierefreiheitsstärkungsgesetz (BFSG) verpflichtet seit 28.06.2025 viele private Anbieter. Die WCAG nennen vier Prinzipien. Typische Maßnahmen: Alternativtexte, Tastaturbedienung, Untertitel, ausreichender Kontrast. Die BITV 2.0 gilt für öffentliche Stellen des Bundes.',
+        'Das Barrierefreiheitsstärkungsgesetz (BFSG) verpflichtet seit dem 28.06.2025 viele private Anbieter. Die WCAG nennen vier Prinzipien. Typische Maßnahmen sind Alternativtexte, Tastaturbedienung, Untertitel und ausreichender Kontrast. Die BITV 2.0 gilt für öffentliche Stellen des Bundes.',
     punkte: 5,
   ),
 
@@ -1661,7 +1661,7 @@ final List<Question> ihkA04Daten = [
       zahl(259, rationale: '182 + 77.'),
     ],
     explanation:
-        'Stellenwerte eines Bytes: 128 64 32 16 8 4 2 1. A = 128 + 32 + 16 + 4 + 2 = 182, B = 64 + 8 + 4 + 1 = 77. Für Hex je vier Bit zusammenfassen: 1011 0110 = B6, 0100 1101 = 4D. 182 + 77 = 259. Das passt nicht mehr in 8 Bit (höchstens 255).',
+        'Stellenwerte eines Bytes: 128 64 32 16 8 4 2 1. A = 128 + 32 + 16 + 4 + 2 = 182, B = 64 + 8 + 4 + 1 = 77. Für Hex fasst du je vier Bit zusammen: 1011 0110 = B6, 0100 1101 = 4D. 182 + 77 = 259. Das passt nicht mehr in 8 Bit (höchstens 255).',
     punkte: 5,
   ),
   tabelle(
@@ -1678,7 +1678,7 @@ final List<Question> ihkA04Daten = [
       ['16', zahl(65536), zahl(65535)],
     ],
     explanation:
-        'Mit n Bit gibt es 2^n verschiedene Werte. Weil die Zählung bei 0 beginnt, ist der größte Wert 2^n - 1: 8 Bit -> 256 Werte, 0 bis 255; 10 Bit -> 1.024 Werte, 0 bis 1.023; 16 Bit -> 65.536 Werte, 0 bis 65.535.',
+        'Mit n Bit gibt es 2^n verschiedene Werte. Weil die Zählung bei 0 beginnt, ist der größte Wert 2^n - 1. 8 Bit ergeben 256 Werte (0 bis 255), 10 Bit 1.024 Werte (0 bis 1.023) und 16 Bit 65.536 Werte (0 bis 65.535).',
     punkte: 3,
   ),
   markieren(
@@ -1830,7 +1830,7 @@ final List<Question> ihkA04Daten = [
       ),
     ],
     explanation:
-        '22 × 24 = 528 Lieferscheine pro Tag. 528 × 96 kB = 50.688 kB = 50.688.000 Byte; / 1.024 = 49.500 KiB. × 365 = 18.067.500 KiB pro Jahr. / 1.024 / 1.024 = 17,23 GiB. „Um 25 % verringern“ heißt, es bleiben 75 %: 17,23 × 0,75 ≈ 12,92 GiB. Fallen: kB ist dezimal, KiB binär, und „um 25 %“ ergibt den Faktor 0,75.',
+        '22 × 24 = 528 Lieferscheine pro Tag. 528 × 96 kB = 50.688 kB = 50.688.000 Byte; / 1.024 = 49.500 KiB. × 365 = 18.067.500 KiB pro Jahr. / 1.024 / 1.024 = 17,23 GiB. „Um 25 % verringern“ heißt, es bleiben 75 %: 17,23 × 0,75 ≈ 12,92 GiB. Achte auf die Fallen: kB ist dezimal, KiB binär, und „um 25 %“ ergibt den Faktor 0,75.',
     punkte: 6,
     difficulty: 3,
   ),
@@ -1869,7 +1869,7 @@ final List<Question> ihkA04Daten = [
       zahl(1098.63, toleranz: 0.01, rationale: '1.152.000.000 / 1.024².'),
     ],
     explanation:
-        'Audio: Abtastrate × Bittiefe × Kanäle × Sekunden. 16.000 × 16 × 1 × 240 s = 61.440.000 Bit; / 8 = 7.680.000 Byte = 7,68 MB je Gespräch. × 150 = 1.152 MB pro Tag = 1.152.000.000 Byte. / 1.048.576 ≈ 1.098,63 MiB.',
+        'Bei Audio gilt: Abtastrate × Bittiefe × Kanäle × Sekunden. 16.000 × 16 × 1 × 240 s = 61.440.000 Bit; / 8 = 7.680.000 Byte = 7,68 MB je Gespräch. × 150 = 1.152 MB pro Tag = 1.152.000.000 Byte. / 1.048.576 ≈ 1.098,63 MiB.',
     punkte: 4,
   ),
   lueckentext(
@@ -1893,7 +1893,7 @@ final List<Question> ihkA04Daten = [
       zahl(20, rationale: '19,80 TiB -> aufrunden.'),
     ],
     explanation:
-        '2.560 × 1.440 × 24 Bit × 20 Bilder/s = 1.769.472.000 Bit/s ≈ 1.769,5 Mbit/s. Auf 2 %: × 0,02 = 35,39 -> 36 Mbit/s. Speicher: 8 × 36.000.000 Bit/s × 3.600 s × 168 h = 174.182.400.000.000 Bit; / 8 = 21.772.800.000.000 Byte; / 1.024⁴ ≈ 19,80 TiB -> 20 TiB. Aufrunden, weil der Speicher reichen muss. Fallen: Bit in Byte (/ 8), Stunden in Sekunden, Mbit dezimal, TiB binär.',
+        '2.560 × 1.440 × 24 Bit × 20 Bilder/s = 1.769.472.000 Bit/s ≈ 1.769,5 Mbit/s. Auf 2 %: × 0,02 = 35,39 -> 36 Mbit/s. Speicher: 8 × 36.000.000 Bit/s × 3.600 s × 168 h = 174.182.400.000.000 Bit; / 8 = 21.772.800.000.000 Byte; / 1.024⁴ ≈ 19,80 TiB -> 20 TiB. Aufrunden, weil der Speicher reichen muss. Achte auf die Fallen: Bit in Byte (/ 8), Stunden in Sekunden, Mbit dezimal, TiB binär.',
     punkte: 7,
     difficulty: 3,
   ),
@@ -1921,7 +1921,7 @@ final List<Question> ihkA04Daten = [
     ],
     mono: true,
     explanation:
-        'Richtig: 1.920 × 1.080 × 24 = 49.766.400 Bit; / 8 = 6.220.800 Byte; / 1.024 = 6.075 KiB; / 1.024 ≈ 5,93 MiB. Die beiden klassischen Fehler: Bit und Byte verwechselt (Faktor 8) sowie dezimale und binäre Vorsätze gemischt (1.000 statt 1.024).',
+        'Richtig ist: 1.920 × 1.080 × 24 = 49.766.400 Bit; / 8 = 6.220.800 Byte; / 1.024 = 6.075 KiB; / 1.024 ≈ 5,93 MiB. Hier stecken die beiden klassischen Fehler: Bit und Byte verwechselt (Faktor 8) sowie dezimale und binäre Vorsätze gemischt (1.000 statt 1.024).',
     punkte: 4,
   ),
   tabelle(
@@ -1977,7 +1977,7 @@ final List<Question> ihkA04Daten = [
       zahl(7.04, toleranz: 0.01, rationale: '25.344 / 3.600.'),
     ],
     explanation:
-        '72 GB = 72.000 MB; × 8 = 576.000 Mbit. Mit 10 % Overhead: × 1,1 = 633.600 Mbit. Die Sicherung wird hochgeladen, also zählt die Upload-Rate: 633.600 / 25 Mbit/s = 25.344 s. / 3.600 = 7,04 Stunden. Fallen: Byte in Bit umrechnen (× 8) und Upload statt Download verwenden.',
+        '72 GB = 72.000 MB; × 8 = 576.000 Mbit. Mit 10 % Overhead: × 1,1 = 633.600 Mbit. Die Sicherung wird hochgeladen, also zählt die Upload-Rate: 633.600 / 25 Mbit/s = 25.344 s. / 3.600 = 7,04 Stunden. Achte auf die Fallen: Byte in Bit umrechnen (× 8) und mit der Upload-Rate statt der Download-Rate rechnen.',
     punkte: 5,
   ),
   lueckentext(
@@ -2060,7 +2060,7 @@ final List<Question> ihkA04Daten = [
     ],
     mono: true,
     explanation:
-        'Richtig: 3 GB = 24.000 Mbit; beim Hochladen gilt die Upload-Rate; Dauer = Datenmenge / Datenrate = 24.000 / 20 = 1.200 s = 20 min. Die Fehler: Download- statt Upload-Rate und die verdrehte Formel.',
+        'Richtig ist: 3 GB = 24.000 Mbit, und beim Hochladen gilt die Upload-Rate. Dauer = Datenmenge / Datenrate = 24.000 / 20 = 1.200 s = 20 min. Die Fehler sind die Download- statt der Upload-Rate und die verdrehte Formel.',
     punkte: 3,
   ),
   freitext(
@@ -2741,7 +2741,7 @@ final List<Question> ihkA04Daten = [
       paar('blindes Vertrauen', 'Mensch trifft die Entscheidung'),
     ],
     explanation:
-        'Halluzinationen fängt nur die Prüfung der Fakten ab. Gegen Bias helfen ausgewogene Daten und Kontrollen je Gruppe. Vertrauliche und personenbezogene Daten gehören nicht in öffentliche Werkzeuge. Gegen Prompt Injection begrenzt man, was der Assistent tun darf. Und am Ende entscheidet ein Mensch.',
+        'Halluzinationen fängt nur die Prüfung der Fakten ab. Gegen Bias helfen ausgewogene Daten und Kontrollen je Gruppe. Vertrauliche und personenbezogene Daten gehören nicht in öffentliche Werkzeuge. Gegen Prompt Injection begrenzt man, was der Assistent tun darf. Am Ende entscheidet immer ein Mensch.',
     punkte: 3,
   ),
   freitext(
