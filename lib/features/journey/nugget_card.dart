@@ -21,7 +21,7 @@ import '../../widgets/hyphenation.dart';
     NuggetKind.ablauf => (Icons.format_list_numbered, c.info),
     NuggetKind.formel => (Icons.functions, context.scheme.primary),
     NuggetKind.merksatz => (Icons.push_pin_outlined, c.flame),
-    NuggetKind.fehlerfalle => (Icons.report_outlined, c.danger),
+    NuggetKind.fehlerfalle => (Icons.report_outlined, c.flame),
     NuggetKind.beispiel => (Icons.calculate_outlined, c.success),
     NuggetKind.skizze => (Icons.schema_outlined, c.info),
   };
@@ -58,7 +58,7 @@ class NuggetCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final n = nugget;
-    final (icon, color) = nuggetStyle(context, n.kind);
+    final (_, color) = nuggetStyle(context, n.kind);
     final isBeispiel = n.kind == NuggetKind.beispiel;
     final bodyStyle = context.text.bodyMedium?.copyWith(
       color: context.scheme.onSurface,
@@ -79,7 +79,12 @@ class NuggetCard extends StatelessWidget {
                 runSpacing: Gap.xs,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  _KindBadge(label: n.kind.label, icon: icon, color: color),
+                  _KindLabel(
+                    label: n.kind == NuggetKind.fehlerfalle
+                        ? 'Achtung · ${n.kind.label}'
+                        : n.kind.label,
+                    color: color,
+                  ),
                   if (showTopic)
                     Text(
                       Topics.byId(n.topicId).title,
@@ -101,7 +106,7 @@ class NuggetCard extends StatelessWidget {
                   ),
                 )
               else if (isBeispiel)
-                _Panel(
+                _Labeled(
                   label: 'Aufgabe',
                   child: HyphenText(n.body, style: bodyStyle),
                 )
@@ -125,12 +130,12 @@ class NuggetCard extends StatelessWidget {
         gap,
         NuggetTable(n.table!),
       ],
-      if (n.code != null) ...[gap, CodeBlock(n.code!, accent: color)],
+      if (n.code != null) ...[gap, CodeBlock(n.code!)],
       if (n.points.isNotEmpty) ...[
         gap,
         if (isBeispiel) ...[
-          _SectionLabel('Lösungsweg', color: color),
-          const SizedBox(height: Gap.m),
+          _SectionLabel('Lösungsweg'),
+          const SizedBox(height: Gap.s),
         ],
         n.kind == NuggetKind.ablauf || isBeispiel
             ? _Steps(n.points, color: color)
@@ -152,42 +157,21 @@ class NuggetCard extends StatelessWidget {
   }
 }
 
-/// Getöntes Etikett mit der Art des Schritts („BEISPIEL“, „SKIZZE“ …).
-class _KindBadge extends StatelessWidget {
-  const _KindBadge({
-    required this.label,
-    required this.icon,
-    required this.color,
-  });
+/// Art des Schritts als kleines farbiges Wort („BEISPIEL“, „SKIZZE“ …).
+class _KindLabel extends StatelessWidget {
+  const _KindLabel({required this.label, required this.color});
 
   final String label;
-  final IconData icon;
   final Color color;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(Gap.s, 3, Gap.s + 2, 3),
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.12),
-        borderRadius: BorderRadius.circular(Radii.pill),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 14, color: color),
-          const SizedBox(width: Gap.xs),
-          Flexible(
-            child: Text(
-              label.toUpperCase(),
-              style: context.text.labelSmall?.copyWith(
-                color: color,
-                letterSpacing: 0.9,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ),
-        ],
+    return Text(
+      label.toUpperCase(),
+      style: context.text.labelSmall?.copyWith(
+        color: color,
+        letterSpacing: 1.1,
+        fontWeight: FontWeight.w700,
       ),
     );
   }
@@ -211,30 +195,22 @@ class _SectionLabel extends StatelessWidget {
   }
 }
 
-/// Abgesetzter Kasten mit Überschrift, z. B. die Aufgabe eines Beispiels.
-class _Panel extends StatelessWidget {
-  const _Panel({required this.label, required this.child});
+/// Absatz mit kleiner Überschrift, z. B. die Aufgabe eines Beispiels.
+class _Labeled extends StatelessWidget {
+  const _Labeled({required this.label, required this.child});
 
   final String label;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(Gap.m + 2),
-      decoration: BoxDecoration(
-        color: context.c.surfaceAlt,
-        borderRadius: BorderRadius.circular(Radii.m),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _SectionLabel(label),
-          const SizedBox(height: Gap.xs),
-          child,
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _SectionLabel(label),
+        const SizedBox(height: Gap.xs),
+        child,
+      ],
     );
   }
 }
@@ -303,7 +279,7 @@ class _Bullets extends StatelessWidget {
   }
 }
 
-/// Nummerierte Schritte mit Verbindungslinie - für Abläufe und Lösungswege.
+/// Nummerierte Schritte mit schlichten Ziffern - für Abläufe und Lösungswege.
 class _Steps extends StatelessWidget {
   const _Steps(this.points, {required this.color});
   final List<String> points;
@@ -312,62 +288,33 @@ class _Steps extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scaler = MediaQuery.textScalerOf(context);
-    final dot = math.max(26.0, scaler.scale(12.5) + 12);
     final style = context.text.bodyMedium;
-    // Erste Textzeile mittig zur Nummer ausrichten.
-    final lineHeight =
-        scaler.scale(style?.fontSize ?? 14.5) * (style?.height ?? 1.55);
+    final numberWidth = math.max(22.0, scaler.scale(14.5) * 1.5);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         for (var i = 0; i < points.length; i++)
-          IntrinsicHeight(
+          Padding(
+            padding: EdgeInsets.only(
+              bottom: i < points.length - 1 ? Gap.s + 2 : 0,
+            ),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: dot,
-                  child: Column(
-                    children: [
-                      Container(
-                        width: dot,
-                        height: dot,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: color.withValues(alpha: 0.13),
-                        ),
-                        child: Text(
-                          '${i + 1}',
-                          style: AppType.numeric(
-                            size: 12.5,
-                            weight: FontWeight.w700,
-                            color: color,
-                          ).copyWith(height: 1),
-                        ),
-                      ),
-                      if (i < points.length - 1)
-                        Expanded(
-                          child: Container(
-                            width: 2,
-                            margin: const EdgeInsets.symmetric(vertical: 3),
-                            color: color.withValues(alpha: 0.22),
-                          ),
-                        ),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: Gap.m),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                      top: math.max(0, (dot - lineHeight) / 2),
-                      bottom: i < points.length - 1 ? Gap.m : 0,
+                  width: numberWidth,
+                  child: Text(
+                    '${i + 1}.',
+                    style: style?.copyWith(
+                      color: color,
+                      fontWeight: FontWeight.w700,
+                      fontFeatures: const [FontFeature.tabularFigures()],
                     ),
-                    child: HyphenText(points[i], style: style),
                   ),
                 ),
+                const SizedBox(width: Gap.xs),
+                Expanded(child: HyphenText(points[i], style: style)),
               ],
             ),
           ),
@@ -629,7 +576,7 @@ class CodeBlock extends StatelessWidget {
 
   static const _base = 13.5;
   static const _minScale = 0.6;
-  static const _padL = Gap.m + 2 + 3;
+  static const _padL = Gap.m + 2;
   static const _padR = Gap.m;
 
   @override
@@ -708,16 +655,8 @@ class CodeBlock extends StatelessWidget {
           borderRadius: BorderRadius.circular(Radii.m),
           child: Container(
             width: double.infinity,
-            padding: const EdgeInsets.fromLTRB(_padL - 3, Gap.m, _padR, Gap.m),
-            decoration: BoxDecoration(
-              color: context.c.surfaceAlt,
-              border: Border(
-                left: BorderSide(
-                  color: accent ?? context.scheme.primary,
-                  width: 3,
-                ),
-              ),
-            ),
+            padding: const EdgeInsets.fromLTRB(_padL, Gap.m, _padR, Gap.m),
+            color: context.c.surfaceAlt,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -764,43 +703,29 @@ class CodeBlock extends StatelessWidget {
   );
 }
 
+/// Ergebnis als fette Zeile unter einer dünnen Linie, ohne Kasten.
 class _Ergebnis extends StatelessWidget {
   const _Ergebnis(this.text);
   final String text;
 
   @override
   Widget build(BuildContext context) {
-    final c = context.c;
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(Gap.l),
+      padding: const EdgeInsets.only(top: Gap.m),
       decoration: BoxDecoration(
-        color: c.successBg,
-        borderRadius: BorderRadius.circular(Radii.m),
-        border: Border.all(
-          color: c.success.withValues(alpha: 0.45),
-          width: 1.5,
-        ),
+        border: Border(top: BorderSide(color: context.c.border)),
       ),
-      child: Row(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.check_circle_rounded, size: 22, color: c.success),
-          const SizedBox(width: Gap.m),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _SectionLabel('Ergebnis', color: c.success),
-                const SizedBox(height: 2),
-                HyphenText(
-                  text,
-                  style: context.text.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w700,
-                    color: context.scheme.onSurface,
-                  ),
-                ),
-              ],
+          const _SectionLabel('Ergebnis'),
+          const SizedBox(height: 2),
+          HyphenText(
+            text,
+            style: context.text.titleMedium?.copyWith(
+              fontWeight: FontWeight.w700,
+              color: context.scheme.onSurface,
             ),
           ),
         ],
@@ -809,12 +734,13 @@ class _Ergebnis extends StatelessWidget {
   }
 }
 
+/// Merksatz im Zitat-Stil: Linie links, etwas größere Schrift.
 class _Merksatz extends StatelessWidget {
   const _Merksatz(this.text, {this.showLabel = true});
   final String text;
 
-  /// Überschrift „Merksatz“ im Kasten - entfällt, wenn sie schon als
-  /// Etikett über dem Schritt steht.
+  /// Überschrift „Merksatz“ - entfällt, wenn sie schon als Etikett über
+  /// dem Schritt steht.
   final bool showLabel;
 
   @override
@@ -822,33 +748,23 @@ class _Merksatz extends StatelessWidget {
     final c = context.c;
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(Gap.l),
+      padding: const EdgeInsets.fromLTRB(Gap.l, 2, 0, 2),
       decoration: BoxDecoration(
-        color: c.flameBg,
-        borderRadius: BorderRadius.circular(Radii.m),
-        border: Border.all(color: c.flame.withValues(alpha: 0.35)),
+        border: Border(left: BorderSide(color: c.flame, width: 2)),
       ),
-      child: Row(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.push_pin_outlined, size: 18, color: c.flame),
-          const SizedBox(width: Gap.m),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (showLabel) ...[
-                  _SectionLabel('Merksatz', color: c.flame),
-                  const SizedBox(height: 2),
-                ],
-                HyphenText(
-                  text,
-                  style: context.text.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: context.scheme.onSurface,
-                  ),
-                ),
-              ],
+          if (showLabel) ...[
+            _SectionLabel('Merksatz', color: c.flame),
+            const SizedBox(height: Gap.xs),
+          ],
+          HyphenText(
+            text,
+            style: context.text.titleMedium?.copyWith(
+              fontWeight: FontWeight.w500,
+              height: 1.45,
+              color: context.scheme.onSurface,
             ),
           ),
         ],

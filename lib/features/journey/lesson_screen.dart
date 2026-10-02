@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -508,7 +510,8 @@ class _Intro extends StatelessWidget {
                 if (i > 0)
                   Divider(
                     height: 1,
-                    indent: Gap.l + 32,
+                    indent: Gap.l,
+                    endIndent: Gap.l,
                     color: context.c.border,
                   ),
                 _StepRow(
@@ -539,7 +542,8 @@ class _StepRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final (icon, color) = nuggetStyle(context, nugget.kind);
+    final scaler = MediaQuery.textScalerOf(context);
+    final numberWidth = math.max(28.0, scaler.scale(15) * 1.6);
     return InkWell(
       onTap: onTap,
       child: ConstrainedBox(
@@ -550,29 +554,32 @@ class _StepRow extends StatelessWidget {
             vertical: Gap.s + 2,
           ),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                width: 32,
-                height: 32,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(Radii.s),
+              // Laufende Nummer statt Symbol: ruhig und typografisch.
+              SizedBox(
+                width: numberWidth,
+                child: Text(
+                  number.toString().padLeft(2, '0'),
+                  style: AppType.numeric(
+                    size: 15,
+                    weight: FontWeight.w600,
+                    color: context.c.textMuted,
+                  ),
                 ),
-                child: Icon(icon, size: 17, color: color),
               ),
-              const SizedBox(width: Gap.m),
+              const SizedBox(width: Gap.s),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    HyphenText(nugget.title, style: context.text.bodyMedium),
                     Text(
-                      '$number · ${nugget.kind.label}',
+                      nugget.kind.label,
                       style: context.text.labelSmall?.copyWith(
                         color: context.c.textMuted,
                       ),
                     ),
-                    HyphenText(nugget.title, style: context.text.bodyMedium),
                   ],
                 ),
               ),
