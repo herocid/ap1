@@ -43,10 +43,6 @@
       box-sizing: border-box; background: #0B63CE; color: #FFFFFF;
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       transition: opacity .35s ease, transform .35s ease; overflow: hidden; }
-    #splash::before, #splash::after { content: ""; position: absolute; border-radius: 50%;
-      background: rgba(255, 255, 255, .06); }
-    #splash::before { width: 120vmax; height: 120vmax; top: -70vmax; right: -50vmax; }
-    #splash::after { width: 90vmax; height: 90vmax; bottom: -60vmax; left: -40vmax; }
     #splash > * { position: relative; }
     #splash.done { opacity: 0; transform: scale(1.03); pointer-events: none; }
     #splash .logo { width: clamp(120px, 34vmin, 220px); height: auto;
@@ -70,7 +66,6 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, .18); }
     @media (prefers-color-scheme: dark) {
       #splash { background: #0D1321; }
-      #splash::before, #splash::after { background: rgba(111, 168, 255, .08); }
       #splash .bit span { background: #172033; color: #EEF2F8; }
     }
     @media (prefers-reduced-motion: reduce) {

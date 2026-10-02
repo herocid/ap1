@@ -92,7 +92,11 @@ void main() {
 
             final bar = find.byType(AppNavigationBar);
             expect(bar, findsOneWidget);
-            final barRect = tester.getRect(bar);
+            // Gemessen wird die Reiterreihe innerhalb der schwebenden Leiste
+            // (ohne Außenabstand und SafeArea).
+            final barRect = tester.getRect(
+              find.descendant(of: bar, matching: find.byType(Row)).first,
+            );
             final itemWidth = barRect.width / labels.length;
             expect(
               barRect.height,
@@ -160,7 +164,7 @@ void main() {
       }
     }
 
-    testWidgets('aktiver Reiter behält sein Symbol in Markenfarbe', (
+    testWidgets('aktiver Reiter behält sein Symbol auf Markenfarbe', (
       tester,
     ) async {
       final c = await pumpApp(tester, size: const Size(375, 800), scale: 1);
@@ -171,7 +175,8 @@ void main() {
         find.descendant(of: bar, matching: find.byIcon(Icons.quiz_outlined)),
       );
       final ctx = tester.element(bar);
-      expect(active.color, Theme.of(ctx).colorScheme.primary);
+      // Weißes Symbol auf gefülltem Feld in Markenfarbe.
+      expect(active.color, Theme.of(ctx).colorScheme.onPrimary);
       expect(
         find.descendant(of: bar, matching: find.byIcon(Icons.quiz_outlined)),
         findsOneWidget,
