@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import 'page_transitions.dart';
+
 import '../features/cards/card_picker_screen.dart';
 import '../features/cards/card_session_screen.dart';
 import '../features/cards/cards_overview_screen.dart';
@@ -41,81 +43,100 @@ final routerProvider = Provider<GoRouter>((ref) {
     routes: [
       GoRoute(
         path: '/onboarding',
-        builder: (context, state) => const OnboardingScreen(),
+        pageBuilder: (context, state) =>
+            fadeSlidePage(state: state, child: const OnboardingScreen()),
       ),
       // Session, Ergebnis und Simulation liegen über der Shell: während
       // einer Runde soll die Navigationsleiste nicht ablenken.
       GoRoute(
         path: '/session',
         parentNavigatorKey: _rootKey,
-        builder: (context, state) => const SessionScreen(),
+        pageBuilder: (context, state) =>
+            fadeSlidePage(state: state, child: const SessionScreen()),
       ),
       GoRoute(
         path: '/ergebnis',
         parentNavigatorKey: _rootKey,
-        builder: (context, state) => const ResultScreen(),
+        pageBuilder: (context, state) =>
+            fadeSlidePage(state: state, child: const ResultScreen()),
       ),
       GoRoute(
         path: '/pruefung',
         parentNavigatorKey: _rootKey,
-        builder: (context, state) => const ExamIntroScreen(),
+        pageBuilder: (context, state) =>
+            fadeSlidePage(state: state, child: const ExamIntroScreen()),
       ),
       // Laufender Prüfungsbogen: Deckblatt, Aufgaben, Selbstbewertung.
       GoRoute(
         path: '/pruefung-lauf',
         parentNavigatorKey: _rootKey,
-        builder: (context, state) => const ExamRunScreen(),
+        pageBuilder: (context, state) =>
+            fadeSlidePage(state: state, child: const ExamRunScreen()),
       ),
       GoRoute(
         path: '/karten-lernen',
         parentNavigatorKey: _rootKey,
-        builder: (context, state) => CardSessionScreen(
-          args: state.extra as CardSessionArgs? ?? const CardSessionArgs(),
+        pageBuilder: (context, state) => fadeSlidePage(
+          state: state,
+          child: CardSessionScreen(
+            args: state.extra as CardSessionArgs? ?? const CardSessionArgs(),
+          ),
         ),
       ),
       GoRoute(
         path: '/karten-auswahl',
         parentNavigatorKey: _rootKey,
-        builder: (context, state) => const CardPickerScreen(),
+        pageBuilder: (context, state) =>
+            fadeSlidePage(state: state, child: const CardPickerScreen()),
       ),
       GoRoute(
         path: '/bereich/:areaId',
         parentNavigatorKey: _rootKey,
-        builder: (context, state) =>
-            AreaDetailScreen(areaId: state.pathParameters['areaId']!),
+        pageBuilder: (context, state) => fadeSlidePage(
+          state: state,
+          child: AreaDetailScreen(areaId: state.pathParameters['areaId']!),
+        ),
       ),
       // Session zu einem Themengebiet: Lernen, Karteikarten, Quiz.
       GoRoute(
         path: '/session-bereich/:areaId',
         parentNavigatorKey: _rootKey,
-        builder: (context, state) =>
-            AreaSessionScreen(areaId: state.pathParameters['areaId']!),
+        pageBuilder: (context, state) => fadeSlidePage(
+          state: state,
+          child: AreaSessionScreen(areaId: state.pathParameters['areaId']!),
+        ),
       ),
       GoRoute(
         path: '/katalog-aenderungen',
         parentNavigatorKey: _rootKey,
-        builder: (context, state) => const CatalogChangesScreen(),
+        pageBuilder: (context, state) =>
+            fadeSlidePage(state: state, child: const CatalogChangesScreen()),
       ),
       GoRoute(
         path: '/themen',
         parentNavigatorKey: _rootKey,
-        builder: (context, state) => const AreasScreen(),
+        pageBuilder: (context, state) =>
+            fadeSlidePage(state: state, child: const AreasScreen()),
       ),
       GoRoute(
         path: '/einfuehrung',
         parentNavigatorKey: _rootKey,
-        builder: (context, state) => const TutorialScreen(),
+        pageBuilder: (context, state) =>
+            fadeSlidePage(state: state, child: const TutorialScreen()),
       ),
       GoRoute(
         path: '/einstellungen',
         parentNavigatorKey: _rootKey,
-        builder: (context, state) => const SettingsScreen(),
+        pageBuilder: (context, state) =>
+            fadeSlidePage(state: state, child: const SettingsScreen()),
       ),
       GoRoute(
         path: '/lektion/:id',
         parentNavigatorKey: _rootKey,
-        builder: (context, state) =>
-            LessonScreen(lessonId: state.pathParameters['id']!),
+        pageBuilder: (context, state) => fadeSlidePage(
+          state: state,
+          child: LessonScreen(lessonId: state.pathParameters['id']!),
+        ),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, shell) => AppShell(navigationShell: shell),
