@@ -62,7 +62,8 @@ $env:Path = "C:\Users\Student\develop\flutter\bin;C:\Program Files\Git\cmd;C:\Pr
   verschiedenen Bereichen, 100 Punkte, 90 Minuten, IHK-Notenschlüssel, Freitext mit
   Selbstbewertung nach Kriterien (Stichworterkennung ist nur ein Vorschlag, offline).
 - 20 Abzeichen (`Achievement` in `progress.dart`, Auswertung in
-  `lib/core/util/achievements.dart`), stehen oben in der Statistik. Die Namen der ersten
+  `lib/core/util/achievements.dart`), stehen ganz unten in der Statistik. Prüfungs-Abzeichen
+  rechnen mit Punkten und nur vollen Prüfungen. Die Namen der ersten
   sieben Enum-Werte sind gespeichert und dürfen sich nicht ändern.
 - `test/screens_layout_test.dart` rendert alle Screens auf 320/375/412 px mit 100 % und
   130 % Schrift - neue Screens dort eintragen.
@@ -142,11 +143,31 @@ Stand 01.10.2026 (Karteikarten): rund 3.020 Karten (mind. 15 je Lektion, meist 1
 Vorderseiten als Fragen nach Best Practice überarbeitet; neu abgedeckt u. a. Aufwandsschätzung,
 Unternehmensziele, Aufbauorganisation, strukturierte Verkabelung, Such-/Sortieralgorithmen,
 Sequenz-/Zustandsdiagramm, IEEE 754, JSON/XML/CSV, ISMS/BCM, NIS2, E-Mail-Sicherheit, MDM/BYOD
-(nur als Karten, ohne eigene Journey-Lektion - Katalogzugehörigkeit noch prüfen).
+(nur als Karten). Nach Abgleich mit dem Katalog 2025 wurden Karten zu nicht enthaltenen
+Themen entfernt (Delphi/Function Points, IEEE 754, JSON/XML/CSV, Sequenz-/Zustandsdiagramm,
+Such-/Sortieralgorithmen, NIS2, SPF/DKIM/DMARC, MDM/BYOD, strukturierte Verkabelung) sowie
+gestrichene (Fragetechniken, Eisberg, Audit, ISO-25010-Merkmale); jetzt 2.923 Karten.
+Lektionen „Qualitätsanforderungen“ (05) und „Kundengespräch“ (02) auf den Katalog gekürzt.
 
 Stand 01.10.2026 (Quiz/Prüfung): rund 1.600 Aufgaben plus rund 290 Teilaufgaben in 44
 Fallaufgaben (11 je Modellunternehmen); Auswahlanteil je Bereich 17-29 % (vorher 47-68 %).
 Rechtsangaben der neuen Aufgaben gegen Gesetzestexte geprüft.
+
+## Design-Ausbau (Plan, Stand 02.10.2026)
+
+Schritt für Schritt umsetzen, nach jedem Schritt testen, pushen und dem Nutzer berichten
+(er behält sein Nutzungslimit im Blick).
+
+1. Look: Plus Jakarta Sans (OFL) für Überschriften und große Zahlen, Inter bleibt für
+   Fließtext; große Kernzahlen (48-56 px); weiche Schatten statt grauer Rahmen in `AppCard`;
+   Akzentfarbe je Bereich (7 Töne aus der Blau-Orange-Familie, keine Verläufe);
+   Dunkelmodus vertiefen (tieferes Blau-Schwarz, leuchtende Akzente).
+2. Bewegung: zentrales Haptik-System (Auswahl, richtig, falsch, Meilenstein); weiche
+   Seitenübergänge für alle Routen; Lektion wächst aus der Kachel (Hero-Animation).
+3. Funktionen: Auswertung der Prüfungssimulation je Bereich (Balken, „hier die meisten
+   Punkte verloren“, Training starten); persönliche Begrüßung nach Tageszeit mit
+   Restminuten bis zum Tagesziel.
+4. Bit: mehr Präsenz (Tipps und Motivation je Bereich), ggf. Neugestaltung der Figur.
 
 ## Offen (Stand 02.10.2026)
 
@@ -161,12 +182,9 @@ Inhalte:
   Entwurfskennzeichnung live sind.
 
 Quiz/Prüfung:
-- Abzeichen „Ernstfall bestanden“/„Note 1“ (`achievements.dart`) rechnen noch mit dem
-  ungewichteten Mittel statt mit Punkten und zählen auch halbe Prüfungen.
 - Ausgangssituation einer Fallaufgabe ist im Quiz aufgeklappt sehr lang (Unternehmen +
-  Situation); im Prüfungslauf zeigt `QuestionView` Punkte doppelt zur Kopfzeile.
-- Blitzrunde (60 Sekunden) nicht gebaut; KI-Bewertung von Freitext bewusst nicht (Kosten,
-  Server, online) - nur auf Wunsch des Nutzers.
+  Situation).
+- KI-Bewertung von Freitext bewusst nicht (Kosten, Server, online) - nur auf Wunsch des Nutzers.
 
 Store-Vorbereitung (Nutzer legt die Konten bei Google/Apple selbst an):
 - Android: Release-Signatur einrichten (build.gradle signiert Release noch mit Debug-Key),
@@ -178,14 +196,9 @@ Store-Vorbereitung (Nutzer legt die Konten bei Google/Apple selbst an):
   Screenshots. Name „AP1 Coach“ in Stores und DPMA/EUIPO auf Verfügbarkeit prüfen.
 
 App:
-- Zeichnungen auf 320-px-Handys mit 130 % Schrift (Use Case, Netzskizze, Balken mit langen
-  Labels) - Geometrietest prüft bei 130 % erst ab 256 px; 11 Netzskizzen scrollen unter
-  ca. 340 px seitlich (Knoten enger setzen), lange Gantt-Diagramme ebenfalls.
-- Echte Push-Erinnerungen (Einstellung existiert, Benachrichtigung fehlt).
-- Dunkelmodus der Screens aus Journey/Start/Aufgaben durchsehen.
-- Katalogthemen ohne eigene Lektion prüfen (von den Inhalts-Agenten gemeldet):
-  Sortier-/Suchalgorithmen, Sequenz-/Zustandsdiagramm, IEEE 754, JSON/XML/CSV,
-  strukturierte Verkabelung, MDM/BYOD, ISMS/Notfallmanagement, E-Mail-Sicherheit, NIS2,
-  Unternehmensziele, betriebliche Aufbauorganisation, Aufwandsschätzung.
+- Lern-Erinnerungen (`lib/core/notifications/`) sind gebaut, aber noch nicht auf echtem
+  Android/iOS-Gerät getestet (Berechtigungsdialog, Symbol in der Statusleiste).
+- Diagramme in Extremfällen (Use Case, Fluss, ERM bei 236 px und 130 % Schrift).
+- Kein Crash-Reporting, kein „Fehler melden“-Knopf.
 - Supabase-Projekt ist pausiert; die Live-App nutzt es nicht (kein Anon-Key in Vercel).
   Nach dem Fortsetzen die Seed-Datei einmal im SQL-Editor ausführen.
