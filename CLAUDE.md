@@ -178,6 +178,14 @@ Schritt für Schritt umsetzen, nach jedem Schritt testen, pushen und dem Nutzer 
    Restminuten bis zum Tagesziel.
 4. Bit: mehr Präsenz (Tipps und Motivation je Bereich), ggf. Neugestaltung der Figur.
 
+Erledigt (02.10.2026): Plus Jakarta Sans für Überschriften/große Zahlen, Kernzahlen 52 px,
+`AppCard` mit Schatten statt Rahmen, Material-Tönung aus, Akzentfarbe je Bereich
+(`AppColors.areaAccents`, `area.accent`), tieferer Dunkelmodus, neue schwebende
+Navigationsleiste, ruhige `NoteBox` (Farbstrich statt getöntem Kasten), redaktionelle
+Lernschritt-Karten, nummerierte Schrittliste, Haptik-System (`AppHaptics`), weiche
+Seitenübergänge (`page_transitions.dart`), Prüfungsauswertung je Bereich.
+Offen: Hero-Animation Lektion, persönliche Begrüßung, Bit-Ausbau.
+
 ## Offen (Stand 02.10.2026)
 
 Inhalte:

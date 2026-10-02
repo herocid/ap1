@@ -105,12 +105,14 @@ class NuggetCard extends StatelessWidget {
                     color: context.c.textMuted,
                   ),
                 )
-              else if (isBeispiel)
+              else if (isBeispiel) ...[
+                // Etwas Luft, damit das Etikett nicht an der Überschrift klebt.
+                const SizedBox(height: Gap.s),
                 _Labeled(
                   label: 'Aufgabe',
                   child: HyphenText(n.body, style: bodyStyle),
-                )
-              else
+                ),
+              ] else
                 HyphenText(n.body, style: bodyStyle),
               if (!compact) ..._details(context, color),
             ],
