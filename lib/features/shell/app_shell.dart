@@ -60,6 +60,20 @@ class AppShell extends StatelessWidget {
               selectedIndex: navigationShell.currentIndex,
               onDestinationSelected: _onTap,
               labelType: NavigationRailLabelType.all,
+              backgroundColor: context.scheme.surface,
+              indicatorColor: context.scheme.primary,
+              indicatorShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Radii.m),
+              ),
+              selectedIconTheme: IconThemeData(
+                color: context.scheme.onPrimary,
+                size: 24,
+              ),
+              unselectedIconTheme: IconThemeData(
+                color: context.scheme.onSurfaceVariant,
+                size: 24,
+              ),
+              minWidth: 88,
               leading: const Padding(
                 padding: EdgeInsets.only(top: Gap.s, bottom: Gap.xl),
                 child: AppLogo(size: 40),
@@ -102,9 +116,11 @@ class AppShell extends StatelessWidget {
 /// * Alle Labels sind einzeilig und gleich groß. Reicht der Platz für das
 ///   längste nicht, wird die Schrift für alle gemeinsam so weit reduziert,
 ///   dass es passt ([fittingTextScaler]) - nie abgeschnitten, nie umbrochen.
-/// * Aktiv: Pille in Markenfarbe hinter dem gefüllten Symbol, Label fett
-///   in Markenfarbe. Die Pille wächst beim Wechsel aus der Mitte auf.
-/// * Die Leiste steht über dem System-Gestenbereich (SafeArea).
+/// * Aktiv: gefülltes, abgerundetes Feld in Markenfarbe hinter dem Symbol
+///   (Symbol weiß), Label fett in Markenfarbe. Das Feld blendet beim
+///   Wechsel weich ein und wächst leicht auf.
+/// * Die Leiste schwebt als abgerundete Fläche mit weichem Schatten und
+///   Abstand zum Rand über dem System-Gestenbereich (SafeArea).
 ///
 /// [onSelected] null zeigt die Leiste nur an (Vorschau in der Einführung).
 class AppNavigationBar extends StatelessWidget {
@@ -123,8 +139,8 @@ class AppNavigationBar extends StatelessWidget {
   /// Mit Fläche, oberer Trennlinie und SafeArea - aus für die Vorschau.
   final bool framed;
 
-  /// Breite der Pille hinter dem Symbol.
-  static const double indicatorWidth = 56;
+  /// Breite des Feldes hinter dem Symbol.
+  static const double indicatorWidth = 52;
   static const double indicatorHeight = 32;
 
   /// Seitlicher Mindestabstand eines Labels zur Reitergrenze.
@@ -174,16 +190,43 @@ class AppNavigationBar extends StatelessWidget {
 
     if (!framed) return bar;
 
-    return Material(
-      color: context.scheme.surface,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          border: Border(top: BorderSide(color: context.c.border)),
+    final dark = Theme.of(context).brightness == Brightness.dark;
+    return SafeArea(
+      top: false,
+      minimum: const EdgeInsets.only(bottom: Gap.s),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(Gap.m, 0, Gap.m, Gap.xs),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: context.scheme.surface,
+            borderRadius: BorderRadius.circular(barRadius),
+            border: Border.all(color: context.c.border),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: dark ? 0.45 : 0.10),
+                blurRadius: 24,
+                offset: const Offset(0, 8),
+              ),
+              BoxShadow(
+                color: Colors.black.withValues(alpha: dark ? 0.25 : 0.04),
+                blurRadius: 4,
+                offset: const Offset(0, 1),
+              ),
+            ],
+          ),
+          child: Material(
+            type: MaterialType.transparency,
+            borderRadius: BorderRadius.circular(barRadius),
+            clipBehavior: Clip.antiAlias,
+            child: bar,
+          ),
         ),
-        child: SafeArea(top: false, child: bar),
       ),
     );
   }
+
+  /// Eckenradius der schwebenden Leiste.
+  static const double barRadius = 24;
 }
 
 class _NavItem extends StatefulWidget {
@@ -219,11 +262,16 @@ class _NavItemState extends State<_NavItem> {
     final scheme = context.scheme;
     final selected = widget.selected;
     final fg = selected ? scheme.primary : scheme.onSurfaceVariant;
+    final iconColor = selected ? scheme.onPrimary : scheme.onSurfaceVariant;
     final reduce = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
-    final duration = reduce ? Duration.zero : const Duration(milliseconds: 220);
+    // In der Vorschau (Einführung, ohne onTap) ohne Überblendung: Auf einer
+    // Seite, die gerade ins Bild wischt, steht der Ticker still.
+    final duration = reduce || widget.onTap == null
+        ? Duration.zero
+        : const Duration(milliseconds: 240);
 
     // Rückmeldung beim Drücken, Überfahren und Tastaturfokus: eine leichte
-    // Tönung in der Pillenform statt einer Ripple über den ganzen Reiter.
+    // Tönung in der Feldform statt einer Ripple über den ganzen Reiter.
     final overlay = _pressed
         ? 0.12
         : (_hovered || _focused)
@@ -231,7 +279,7 @@ class _NavItemState extends State<_NavItem> {
         : 0.0;
 
     final content = Padding(
-      padding: const EdgeInsets.only(top: Gap.m, bottom: Gap.l),
+      padding: const EdgeInsets.symmetric(vertical: Gap.m),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -246,13 +294,13 @@ class _NavItemState extends State<_NavItem> {
                   duration: duration,
                   curve: Curves.easeOutCubic,
                   builder: (context, t, _) => Transform.scale(
-                    scaleX: 0.5 + 0.5 * t,
+                    scale: 0.7 + 0.3 * t,
                     child: Opacity(
-                      opacity: t,
+                      opacity: t.clamp(0.0, 1.0),
                       child: DecoratedBox(
                         decoration: BoxDecoration(
-                          color: scheme.primaryContainer,
-                          borderRadius: BorderRadius.circular(Radii.pill),
+                          color: scheme.primary,
+                          borderRadius: BorderRadius.circular(Radii.m),
                         ),
                         child: const SizedBox.expand(),
                       ),
@@ -263,7 +311,7 @@ class _NavItemState extends State<_NavItem> {
                   DecoratedBox(
                     decoration: BoxDecoration(
                       color: scheme.onSurface.withValues(alpha: overlay),
-                      borderRadius: BorderRadius.circular(Radii.pill),
+                      borderRadius: BorderRadius.circular(Radii.m),
                     ),
                     child: const SizedBox.expand(),
                   ),
@@ -276,7 +324,7 @@ class _NavItemState extends State<_NavItem> {
                         ? widget.destination.active
                         : widget.destination.icon,
                     size: 24,
-                    color: fg,
+                    color: iconColor,
                   )
                 else
                   AnimatedSwitcher(
@@ -287,7 +335,7 @@ class _NavItemState extends State<_NavItem> {
                           : widget.destination.icon,
                       key: ValueKey(selected),
                       size: 24,
-                      color: fg,
+                      color: iconColor,
                     ),
                   ),
               ],
