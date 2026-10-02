@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 
 bool _loaded = false;
 
-/// Lädt die echten App-Schriften (Inter, JetBrains Mono) und die
+/// Lädt die echten App-Schriften (Inter, Plus Jakarta Sans, JetBrains Mono) und die
 /// Material-Symbole in die Testumgebung.
 ///
 /// Ohne das rendert `flutter test` jeden Buchstaben als gleich breites
@@ -30,6 +30,11 @@ Future<void> loadAppFonts() async {
     'assets/fonts/Inter-Medium.ttf',
     'assets/fonts/Inter-SemiBold.ttf',
     'assets/fonts/Inter-Bold.ttf',
+  ]);
+  await load('PlusJakartaSans', [
+    'assets/fonts/PlusJakartaSans-SemiBold.ttf',
+    'assets/fonts/PlusJakartaSans-Bold.ttf',
+    'assets/fonts/PlusJakartaSans-ExtraBold.ttf',
   ]);
   await load('JetBrainsMono', [
     'assets/fonts/JetBrainsMono-Regular.ttf',

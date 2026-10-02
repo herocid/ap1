@@ -8,6 +8,9 @@ import 'app_spacing.dart';
 const String kFontSans = 'Inter';
 const String kFontMono = 'JetBrainsMono';
 
+/// Überschriften und große Kernzahlen: Plus Jakarta Sans (SIL OFL).
+const String kFontDisplay = 'PlusJakartaSans';
+
 /// Das Theme ist bewusst leise: wenig Schatten, keine Verläufe in der Fläche,
 /// hoher Textkontrast. Die einzigen kräftigen Farbflächen sind Fortschritt,
 /// Streak und Feedback - also genau dort, wo die Aufmerksamkeit hin soll.
@@ -72,29 +75,47 @@ class AppTheme {
         // Material-Vorgaben für Roboto dazu (Fließtext +0,25 bis +0,5), und
         // Inter wirkt gesperrt. Versalien-Labels sperren an Ort und Stelle.
         .copyWith(
+          displayLarge: baseText.displayLarge?.copyWith(
+            fontFamily: kFontDisplay,
+            color: scheme.onSurface,
+          ),
+          displayMedium: baseText.displayMedium?.copyWith(
+            fontFamily: kFontDisplay,
+            color: scheme.onSurface,
+          ),
+          headlineLarge: baseText.headlineLarge?.copyWith(
+            fontFamily: kFontDisplay,
+            fontWeight: FontWeight.w700,
+            color: scheme.onSurface,
+          ),
+          headlineMedium: baseText.headlineMedium?.copyWith(
+            fontFamily: kFontDisplay,
+            fontWeight: FontWeight.w700,
+            color: scheme.onSurface,
+          ),
           displaySmall: TextStyle(
-            fontFamily: kFontSans,
+            fontFamily: kFontDisplay,
             fontSize: 34,
             fontWeight: FontWeight.w700,
             letterSpacing: -0.8,
             color: scheme.onSurface,
           ),
           headlineSmall: TextStyle(
-            fontFamily: kFontSans,
+            fontFamily: kFontDisplay,
             fontSize: 24,
             fontWeight: FontWeight.w700,
             letterSpacing: -0.4,
             color: scheme.onSurface,
           ),
           titleLarge: TextStyle(
-            fontFamily: kFontSans,
+            fontFamily: kFontDisplay,
             fontSize: 20,
             fontWeight: FontWeight.w600,
             letterSpacing: -0.2,
             color: scheme.onSurface,
           ),
           titleMedium: TextStyle(
-            fontFamily: kFontSans,
+            fontFamily: kFontDisplay,
             fontSize: 16,
             height: 1.35,
             fontWeight: FontWeight.w600,
@@ -104,7 +125,7 @@ class AppTheme {
           // Bisher kam titleSmall/bodySmall aus der Material-Typografie
           // (Roboto-Metriken, w500) - jetzt passend zur restlichen Skala.
           titleSmall: TextStyle(
-            fontFamily: kFontSans,
+            fontFamily: kFontDisplay,
             fontSize: 14.5,
             height: 1.35,
             fontWeight: FontWeight.w600,
@@ -157,6 +178,10 @@ class AppTheme {
       useMaterial3: true,
       fontFamily: kFontSans,
       brightness: brightness,
+      // Dezenter, klassischer Ripple statt des körnigen InkSparkle.
+      splashFactory: InkRipple.splashFactory,
+      splashColor: scheme.primary.withValues(alpha: 0.06),
+      highlightColor: scheme.primary.withValues(alpha: 0.04),
       colorScheme: scheme,
       scaffoldBackgroundColor: isDark ? AppColors.darkBg : AppColors.lightBg,
       textTheme: textTheme,
@@ -255,6 +280,7 @@ class AppTheme {
         surfaceTintColor: Colors.transparent,
         indicatorColor: scheme.primaryContainer,
         elevation: 0,
+        shadowColor: Colors.transparent,
         height: 80,
         labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         labelTextStyle: WidgetStateProperty.resolveWith(
@@ -310,6 +336,18 @@ class AppTheme {
           borderRadius: BorderRadius.circular(Radii.l),
         ),
       ),
+      popupMenuTheme: PopupMenuThemeData(
+        color: scheme.surface,
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Radii.m),
+        ),
+      ),
+      menuTheme: const MenuThemeData(
+        style: MenuStyle(
+          surfaceTintColor: WidgetStatePropertyAll(Colors.transparent),
+        ),
+      ),
       snackBarTheme: SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
@@ -337,7 +375,8 @@ class AppType {
     FontWeight weight = FontWeight.w600,
     Color? color,
   }) => TextStyle(
-    fontFamily: kFontSans,
+    // Große Zahlen in der Display-Schrift, kleine bleiben Inter.
+    fontFamily: size >= 24 ? kFontDisplay : kFontSans,
     fontSize: size,
     fontWeight: weight,
     color: color,

@@ -79,7 +79,7 @@ class CardsOverviewScreen extends ConsumerWidget {
                           letterSpacing: 1,
                         ),
                       ),
-                      const SizedBox(height: Gap.xs),
+                      const SizedBox(height: Gap.s),
                       // Zahl und Aussage in einer Zeile, Aufschlüsselung
                       // darunter über die volle Breite.
                       Row(
@@ -88,8 +88,8 @@ class CardsOverviewScreen extends ConsumerWidget {
                           AnimatedCount(
                             due,
                             style: AppType.numeric(
-                              size: 34,
-                              weight: FontWeight.w700,
+                              size: 52,
+                              weight: FontWeight.w800,
                               color: due == 0
                                   ? context.c.success
                                   : context.scheme.primary,
@@ -108,7 +108,7 @@ class CardsOverviewScreen extends ConsumerWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: Gap.xs),
+                      const SizedBox(height: Gap.m),
                       Text(
                         due == 0
                             ? 'Morgen legt dir der Kasten die nächsten Karten '
