@@ -64,7 +64,16 @@ class _CardPickerScreenState extends ConsumerState<CardPickerScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const BitTip(BitSpot.picker),
+                // Genau ein Bereich gewählt: Bit gibt einen Prüfungstipp dazu.
+                if (_topics.isNotEmpty &&
+                    _topics.map((t) => Topics.byId(t).areaId).toSet().length ==
+                        1)
+                  BitTip.area(
+                    Topics.byId(_topics.first).areaId,
+                    key: ValueKey(Topics.byId(_topics.first).areaId),
+                  )
+                else
+                  const BitTip(BitSpot.picker),
                 const SizedBox(height: Gap.l),
                 for (final area in ExamAreas.all) ...[
                   _AreaBlock(

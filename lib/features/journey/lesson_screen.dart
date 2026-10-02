@@ -10,6 +10,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
+import '../../data/models/exam_area.dart';
 import '../../data/models/nugget.dart';
 import '../../data/models/subtopic.dart';
 import '../../data/models/topic.dart';
@@ -501,6 +502,8 @@ class _Intro extends StatelessWidget {
         ),
         const SizedBox(height: Gap.l),
         NoteBox(title: 'Lernziel', child: HyphenText(lesson.goal)),
+        const SizedBox(height: Gap.l),
+        BitTip.area(topic.areaId, mood: MascotMood.happy),
         const SizedBox(height: Gap.xl),
         Text('Das erwartet dich', style: context.text.titleMedium),
         const SizedBox(height: Gap.s),
@@ -597,6 +600,22 @@ class _StepRow extends StatelessWidget {
 /// Abschluss: Glückwunsch, das Wichtigste in Kürze und die nächste
 /// Lektion. Kein Quiz, keine Karten - die Journey ist zum Lernen da.
 class _Finish extends ConsumerWidget {
+  /// Bits Satz an Meilensteinen eines Bereichs, sonst null.
+  String? _milestone(List<Subtopic> lessons, Set<String> done) {
+    final area = Topics.byId(lesson.topicId).areaId;
+    final inArea = lessons
+        .where((l) => Topics.byId(l.topicId).areaId == area)
+        .toList();
+    final n = inArea.where((l) => done.contains(l.id)).length;
+    final number = ExamAreas.byId(area).number;
+    if (n == inArea.length) return 'Bereich $number komplett. Klasse!';
+    if (n == 1) return 'Erste Lektion in Bereich $number geschafft!';
+    if (n * 2 == inArea.length || n * 2 == inArea.length + 1) {
+      return 'Halbzeit in Bereich $number!';
+    }
+    return null;
+  }
+
   const _Finish({required this.lesson, required this.steps});
 
   final Subtopic lesson;
@@ -659,7 +678,7 @@ class _Finish extends ConsumerWidget {
           BitSpot.lesson,
           title: following == null
               ? 'Journey komplett. Wahnsinn!'
-              : 'Stark, Lektion geschafft!',
+              : _milestone(lessons, done) ?? 'Stark, Lektion geschafft!',
           mood: MascotMood.cheer,
         ),
         if (keyPoints.isNotEmpty) ...[

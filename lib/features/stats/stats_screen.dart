@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../widgets/bit_tips.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
@@ -379,7 +380,7 @@ class _ProblemTopicsPanel extends ConsumerWidget {
               'darin unter 70 % liegst (ab drei Antworten oder Karten).',
             ),
           )
-        else
+        else ...[
           for (final p in problems.take(6)) ...[
             ProgressTile(
               icon: p.topic.icon,
@@ -401,6 +402,16 @@ class _ProblemTopicsPanel extends ConsumerWidget {
             ),
             const SizedBox(height: Gap.s),
           ],
+          // Bit gibt einen Prüfungstipp zum Bereich des schwächsten Themas.
+          const SizedBox(height: Gap.s),
+          BitTip.area(
+            problems.first.topic.areaId,
+            key: ValueKey(problems.first.topic.areaId),
+            title:
+                'Tipp für Bereich '
+                '${ExamAreas.byId(problems.first.topic.areaId).number}',
+          ),
+        ],
       ],
     );
   }

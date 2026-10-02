@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../widgets/bit_tips.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_theme.dart';
@@ -76,6 +77,8 @@ class AreaDetailScreen extends ConsumerWidget {
                       ),
                     ),
                   ),
+                const SizedBox(height: Gap.l),
+                BitTip.area(areaId),
                 const SizedBox(height: Gap.xl),
                 const SectionHeader('Themen'),
                 for (final t in topics) ...[

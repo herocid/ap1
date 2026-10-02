@@ -250,7 +250,7 @@ class _AreaSessionScreenState extends ConsumerState<AreaSessionScreen> {
                   ),
                 ),
                 const SizedBox(height: Gap.l),
-                const BitTip(BitSpot.session),
+                BitTip.area(widget.areaId),
                 const SizedBox(height: Gap.xl),
 
                 // ------------------------------------------------ Thema

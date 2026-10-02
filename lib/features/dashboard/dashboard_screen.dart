@@ -76,6 +76,8 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
       goal: goal,
       mistakes: mistakes,
       dueCards: dueCards,
+      streak: progress.streak,
+      lastActive: progress.lastActiveDay,
     );
 
     final today = _TodayCard(
@@ -260,7 +262,39 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
     required int goal,
     required int mistakes,
     required int dueCards,
+    int streak = 0,
+    DateTime? lastActive,
   }) {
+    // Nach einer langen Pause zuerst willkommen heißen, ohne Vorwurf.
+    if (todayCount == 0 && lastActive != null) {
+      final now = DateTime.now();
+      final away = DateTime(now.year, now.month, now.day)
+          .difference(
+            DateTime(lastActive.year, lastActive.month, lastActive.day),
+          )
+          .inDays;
+      if (away >= 7) {
+        return (
+          mood: MascotMood.wave,
+          title: 'Schön, dass du wieder da bist!',
+          text:
+              'Fang mit einer kurzen Runde an. Was du schon gelernt hast, '
+              'kommt schneller zurück, als du denkst.',
+        );
+      }
+    }
+    // Volle Wochen in Serie feiert Bit einmal am Tag mit.
+    if (streak >= 7 && streak % 7 == 0 && todayCount > 0) {
+      return (
+        mood: MascotMood.cheer,
+        title: streak == 7
+            ? '7 Tage in Folge!'
+            : '${streak ~/ 7} Wochen in Folge!',
+        text:
+            'Genau diese Regelmäßigkeit macht den Unterschied in der '
+            'Prüfung. Bleib dran.',
+      );
+    }
     if (todayCount >= goal && goal > 0) {
       return (
         mood: MascotMood.cheer,
