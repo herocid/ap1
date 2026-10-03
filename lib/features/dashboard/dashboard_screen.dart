@@ -12,6 +12,7 @@ import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
 import '../../widgets/feedback_fx.dart';
+import '../../widgets/glyphs.dart';
 import '../../widgets/hyphenation.dart';
 import '../../widgets/mascot.dart';
 import '../cards/card_launch.dart';
@@ -620,16 +621,7 @@ class _ResumeCard extends StatelessWidget {
     final texts = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (tight)
-          Row(
-            children: [
-              Icon(icon, size: 16, color: fg),
-              const SizedBox(width: Gap.xs + 2),
-              Expanded(child: labelText),
-            ],
-          )
-        else
-          labelText,
+        labelText,
         const SizedBox(height: 2),
         if (hyphenate)
           HyphenText(title, style: context.text.titleMedium)
@@ -658,8 +650,18 @@ class _ResumeCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              if (!tight) ...[
-                TileIcon(icon: icon, tone: tone),
+              // Statt Symbol in getöntem Quadrat: ein Ring mit dem
+              // Fortschritt, der zeigt, wie weit du bist.
+              if (!tight && progress != null) ...[
+                _ProgressRing(
+                  value: progress!,
+                  color: fg,
+                  glyph: switch (icon) {
+                    Icons.route_outlined => GlyphKind.journey,
+                    Icons.style_rounded => GlyphKind.cards,
+                    _ => null,
+                  },
+                ),
                 const SizedBox(width: Gap.m),
               ],
               Expanded(child: texts),
@@ -1152,6 +1154,55 @@ class _QuickTile extends StatelessWidget {
             Icon(Icons.chevron_right, color: context.c.textMuted),
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// Fortschrittsring statt Symbol im getönten Quadrat.
+class _ProgressRing extends StatelessWidget {
+  const _ProgressRing({
+    required this.value,
+    required this.color,
+    required this.glyph,
+  });
+
+  final double value;
+  final Color color;
+  final GlyphKind? glyph;
+
+  @override
+  Widget build(BuildContext context) {
+    final pct = (value * 100).round();
+    return SizedBox.square(
+      dimension: 48,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          SizedBox.expand(
+            child: CircularProgressIndicator(
+              value: value.clamp(0.0, 1.0),
+              strokeWidth: 4,
+              strokeCap: StrokeCap.round,
+              color: color,
+              backgroundColor: context.c.surfaceAlt,
+            ),
+          ),
+          if (glyph != null)
+            AppGlyph(
+              glyph!,
+              size: 28,
+              color: color,
+              accent: AppColors.flameFill,
+            )
+          else
+            Text(
+              '$pct%',
+              maxLines: 1,
+              textScaler: TextScaler.noScaling,
+              style: AppType.numeric(size: 12, color: context.scheme.onSurface),
+            ),
+        ],
       ),
     );
   }

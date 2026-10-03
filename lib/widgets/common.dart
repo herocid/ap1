@@ -6,6 +6,7 @@ import '../core/theme/app_colors.dart';
 import '../core/theme/app_spacing.dart';
 import '../core/theme/app_theme.dart';
 import 'feedback_fx.dart';
+import 'glyphs.dart';
 import 'hyphenation.dart';
 import 'mascot.dart';
 
@@ -927,38 +928,29 @@ class StreakChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.c;
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: Gap.m, vertical: 7),
-      decoration: BoxDecoration(
-        color: days > 0 ? c.flameBg : c.surfaceAlt,
-        borderRadius: BorderRadius.circular(Radii.pill),
-        border: Border.all(
-          color: days > 0 ? c.flame.withValues(alpha: 0.35) : c.border,
-        ),
-      ),
+    // Rein typografisch statt Flammen-Symbol in getönter Pille: große Zahl,
+    // daneben klein „Tag in Folge“. Heute schon gelernt: Zahl in Orange.
+    final color = days > 0 && activeToday ? c.flame : c.textMuted;
+    return Semantics(
+      label: '$days ${days == 1 ? 'Tag' : 'Tage'} in Folge gelernt',
+      excludeSemantics: true,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            activeToday
-                ? Icons.local_fire_department
-                : Icons.local_fire_department_outlined,
-            size: 17,
-            color: days > 0 ? c.flame : c.textMuted,
+          AppGlyph(
+            GlyphKind.flame,
+            size: 22,
+            color: color,
+            accent: days > 0 && activeToday ? AppColors.flameFill : c.border,
           ),
-          const SizedBox(width: 5),
+          const SizedBox(width: 4),
+          Text('$days', style: AppType.numeric(size: 26, color: color)),
+          const SizedBox(width: 6),
           Text(
-            '$days',
-            style: AppType.numeric(
-              size: 14,
-              color: days > 0 ? c.flame : c.textMuted,
-            ),
-          ),
-          const SizedBox(width: 3),
-          Text(
-            days == 1 ? 'Tag' : 'Tage',
+            '${days == 1 ? 'Tag' : 'Tage'}\nin Folge',
             style: context.text.labelSmall?.copyWith(
-              color: days > 0 ? c.flame : c.textMuted,
+              color: c.textMuted,
+              height: 1.15,
             ),
           ),
         ],
