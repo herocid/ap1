@@ -107,7 +107,8 @@ void main() {
           setView(tester, size, scale);
           await pumpApp(tester, route);
           expect(tester.takeException(), isNull);
-          expect(cut(tester), isEmpty);
+          // Die Startseite hat den Bereichs-Slider, der seitlich scrollt.
+          expect(cut(tester, horizontal: route == '/'), isEmpty);
         });
       }
     }

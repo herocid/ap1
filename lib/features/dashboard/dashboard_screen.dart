@@ -592,9 +592,7 @@ class _ResumeCard extends StatelessWidget {
     this.subtitle,
     this.progress,
     this.progressLabel,
-    this.trailingIcon = Icons.play_circle_fill_rounded,
     this.hyphenate = false,
-    this.accent,
   });
 
   final IconData icon;
@@ -604,13 +602,11 @@ class _ResumeCard extends StatelessWidget {
   final String? subtitle;
   final double? progress;
   final String? progressLabel;
-  final IconData trailingIcon;
 
   /// Titel mit Silbentrennung (Lektionstitel) statt nur wortweise umbrechen.
   final bool hyphenate;
 
   /// Eigene Symbolfarben, z. B. Akzent des empfohlenen Bereichs.
-  final (Color, Color)? accent;
   final VoidCallback onTap;
 
   @override
@@ -619,7 +615,6 @@ class _ResumeCard extends StatelessWidget {
     final tight = _isTight(context);
     final (fg, _) = tone.colors(context);
     final muted = context.text.labelSmall?.copyWith(color: c.textMuted);
-    final isPlay = trailingIcon == Icons.play_circle_fill_rounded;
 
     final labelText = Text(label, style: muted);
     final texts = Column(
@@ -664,17 +659,15 @@ class _ResumeCard extends StatelessWidget {
           Row(
             children: [
               if (!tight) ...[
-                TileIcon(icon: icon, tone: tone, accent: accent),
+                TileIcon(icon: icon, tone: tone),
                 const SizedBox(width: Gap.m),
               ],
               Expanded(child: texts),
               const SizedBox(width: Gap.s),
               Icon(
-                trailingIcon,
-                size: isPlay ? 34 : 24,
-                color: isPlay
-                    ? (tone == TileTone.flame ? context.scheme.primary : fg)
-                    : c.textMuted,
+                Icons.play_circle_fill_rounded,
+                size: 34,
+                color: tone == TileTone.flame ? context.scheme.primary : fg,
               ),
             ],
           ),
@@ -855,8 +848,6 @@ class _SessionAreas extends ConsumerWidget {
             .where((a) => byArea[a.id]!.any((l) => !done.contains(l.id)))
             .firstOrNull ??
         ExamAreas.all.first;
-    final recLessons = byArea[recommended.id]!;
-    final recDone = recLessons.where((l) => done.contains(l.id)).length;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -872,53 +863,168 @@ class _SessionAreas extends ConsumerWidget {
             ),
           ),
         ),
-        _ResumeCard(
-          icon: recommended.icon,
-          tone: TileTone.brand,
-          accent: recommended.accent.tile(context),
-          label: 'Empfohlen · Bereich ${recommended.number}',
-          title: recommended.title,
-          progress: recLessons.isEmpty ? 0 : recDone / recLessons.length,
-          progressLabel: '$recDone / ${recLessons.length} Lektionen',
-          trailingIcon: Icons.chevron_right,
-          onTap: () => context.push('/session-bereich/${recommended.id}'),
-        ),
-        const SizedBox(height: Gap.m),
-        // Die anderen Bereiche als kompakte Knöpfe statt sieben großer
-        // Kacheln - die Startseite bleibt kurz, jeder Bereich ist einen
-        // Tipp entfernt.
-        Wrap(
-          spacing: Gap.s,
-          runSpacing: Gap.s,
-          children: [
-            for (final area in ExamAreas.all)
-              if (area.id != recommended.id)
-                Tooltip(
-                  message: area.title,
-                  child: OutlinedButton.icon(
-                    style: OutlinedButton.styleFrom(
-                      minimumSize: const Size(0, 48),
-                      padding: const EdgeInsets.symmetric(horizontal: Gap.m),
-                    ),
-                    icon: Icon(
-                      area.icon,
-                      size: 18,
-                      color: area.accent.fg(context),
-                    ),
-                    label: Text('Bereich ${area.number}'),
-                    onPressed: () =>
-                        context.push('/session-bereich/${area.id}'),
-                  ),
-                ),
-          ],
+        // Slider mit fast quadratischen Kacheln, der empfohlene Bereich
+        // zuerst. Höhe wächst mit der Systemschrift, damit nichts abreißt.
+        LayoutBuilder(
+          builder: (context, box) {
+            final ts = MediaQuery.textScalerOf(context);
+            final width = (box.maxWidth * 0.46).clamp(148.0, 180.0);
+            final height = 100 + ts.scale(16) + ts.scale(20) * 4 + ts.scale(28);
+            final order = [
+              recommended,
+              for (final a in ExamAreas.all)
+                if (a.id != recommended.id) a,
+            ];
+            return SizedBox(
+              height: height,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                clipBehavior: Clip.none,
+                itemCount: order.length,
+                separatorBuilder: (_, _) => const SizedBox(width: Gap.m),
+                itemBuilder: (context, i) {
+                  final area = order[i];
+                  final lessons = byArea[area.id]!;
+                  final d = lessons.where((l) => done.contains(l.id)).length;
+                  return _AreaSlide(
+                    area: area,
+                    width: width,
+                    recommended: i == 0,
+                    progress: lessons.isEmpty ? 0 : d / lessons.length,
+                    progressLabel: '$d / ${lessons.length} Lektionen',
+                    onTap: () => context.push('/session-bereich/${area.id}'),
+                  );
+                },
+              ),
+            );
+          },
         ),
       ],
     );
   }
 }
 
-/// Karteikasten fortsetzen: laufender Durchlauf, sonst was heute dran ist,
-/// sonst die zuletzt gestartete Runde.
+/// Eine Kachel im Bereichs-Slider: Farbfläche mit Symbol oben, darunter
+/// Nummer, Titel und Fortschritt.
+class _AreaSlide extends StatelessWidget {
+  const _AreaSlide({
+    required this.area,
+    required this.width,
+    required this.recommended,
+    required this.progress,
+    required this.progressLabel,
+    required this.onTap,
+  });
+
+  final ExamArea area;
+  final double width;
+  final bool recommended;
+  final double progress;
+  final String progressLabel;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final fg = area.accent.fg(context);
+    final bg = area.accent.bg(context);
+    return SizedBox(
+      width: width,
+      child: AppCard(
+        padding: EdgeInsets.zero,
+        onTap: onTap,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              height: 76,
+              decoration: BoxDecoration(
+                color: bg,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(Radii.l),
+                ),
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                    left: Gap.m,
+                    bottom: Gap.s,
+                    child: Icon(area.icon, size: 30, color: fg),
+                  ),
+                  if (recommended)
+                    Positioned(
+                      right: Gap.s,
+                      top: Gap.s,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: Gap.s,
+                          vertical: 2,
+                        ),
+                        decoration: BoxDecoration(
+                          color: context.scheme.surface,
+                          borderRadius: BorderRadius.circular(99),
+                        ),
+                        child: Text(
+                          'Empfohlen',
+                          maxLines: 1,
+                          style: context.text.labelSmall?.copyWith(
+                            fontWeight: FontWeight.w700,
+                            color: context.scheme.primary,
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(Gap.m, Gap.s, Gap.m, Gap.m),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Bereich ${area.number}',
+                      maxLines: 1,
+                      style: context.text.labelSmall?.copyWith(
+                        color: context.c.textMuted,
+                      ),
+                    ),
+                    Expanded(
+                      child: HyphenText(
+                        area.title,
+                        style: context.text.titleSmall?.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(99),
+                      child: LinearProgressIndicator(
+                        value: progress,
+                        minHeight: 4,
+                        color: fg,
+                        backgroundColor: bg,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      progressLabel,
+                      maxLines: 1,
+                      style: context.text.labelSmall?.copyWith(
+                        color: context.c.textMuted,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class _CardsResumeCard extends ConsumerWidget {
   const _CardsResumeCard();
 

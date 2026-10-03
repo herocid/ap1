@@ -167,7 +167,6 @@ class AppNavigationBar extends StatelessWidget {
           maxScale: maxTextScale,
         );
         final indW = (itemWidth - 2 * labelInset).clamp(0.0, indicatorWidth);
-        final reduce = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
         final row = Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -185,32 +184,7 @@ class AppNavigationBar extends StatelessWidget {
               ),
           ],
         );
-        // Eine Pille, die zum aktiven Reiter gleitet, statt fünf Felder, die
-        // ein- und ausblenden: Der Wechsel wirkt wie eine Bewegung.
-        final dark = Theme.of(context).brightness == Brightness.dark;
-        return Stack(
-          children: [
-            AnimatedPositioned(
-              duration: reduce || onSelected == null
-                  ? Duration.zero
-                  : const Duration(milliseconds: 320),
-              curve: Curves.easeOutBack,
-              left: itemWidth * selectedIndex + (itemWidth - indW) / 2,
-              top: Gap.m,
-              width: indW,
-              height: indicatorHeight,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: context.scheme.primary.withValues(
-                    alpha: dark ? 0.26 : 0.12,
-                  ),
-                  borderRadius: BorderRadius.circular(indicatorHeight / 2),
-                ),
-              ),
-            ),
-            row,
-          ],
-        );
+        return row;
       },
     );
 

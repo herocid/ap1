@@ -185,6 +185,7 @@ Navigationsleiste, ruhige `NoteBox` (Farbstrich statt getöntem Kasten), redakti
 Lernschritt-Karten, nummerierte Schrittliste, Haptik-System (`AppHaptics`), weiche
 Seitenübergänge (`page_transitions.dart`), Prüfungsauswertung je Bereich.
 Bit-Ausbau erledigt: Figur neu gezeichnet (7 Stimmungen inkl. `proud`/`sleepy`, Blinzeln/Schweben nur mit `Mascot.idleAnimations`), Sprechblase mit Schatten, Tipps je Bereich (`BitTips.forArea`, `BitTip.area`) und Meilenstein-Meldungen.
+Navigation (03.10.): volle Breite bündig unten wie bei Too Good To Go, aktiver Reiter nur farbig (keine Pille). Startseite: Sessions nach Themengebiet als seitlicher Slider mit fast quadratischen Kacheln (`_AreaSlide`), empfohlener Bereich zuerst.
 Offen: Hero-Animation Lektion, persönliche Begrüßung.
 
 ## Offen (Stand 02.10.2026)
