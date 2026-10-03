@@ -222,8 +222,9 @@ class MascotPainter extends CustomPainter {
     // Glanzkante oben am Kopf.
     final sheen = Colors.white.withValues(alpha: dark ? 0.16 : 0.2);
     final accent = dark ? AppColors.flameDark : AppColors.flameFill;
-    const screen = Color(0xFF0D2140);
-    const glow = Color(0xFFEAF4FF);
+    // Helles Gesicht mit dunklen Zügen: Augen und Mund sind gut lesbar.
+    const screen = Color(0xFFFFFFFF);
+    const glow = Color(0xFF0D2140);
     final cheekC = accent.withValues(alpha: 0.75);
 
     final fill = Paint()..isAntiAlias = true;
