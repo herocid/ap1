@@ -12,7 +12,6 @@ import '../../data/models/topic.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
 import '../../widgets/feedback_fx.dart';
-import '../../widgets/glyphs.dart';
 import '../../widgets/hyphenation.dart';
 import '../../widgets/mascot.dart';
 import '../cards/card_launch.dart';
@@ -653,15 +652,7 @@ class _ResumeCard extends StatelessWidget {
               // Statt Symbol in getöntem Quadrat: ein Ring mit dem
               // Fortschritt, der zeigt, wie weit du bist.
               if (!tight && progress != null) ...[
-                _ProgressRing(
-                  value: progress!,
-                  color: fg,
-                  glyph: switch (icon) {
-                    Icons.route_outlined => GlyphKind.journey,
-                    Icons.style_rounded => GlyphKind.cards,
-                    _ => null,
-                  },
-                ),
+                _ProgressRing(value: progress!, color: fg, icon: icon),
                 const SizedBox(width: Gap.m),
               ],
               Expanded(child: texts),
@@ -1075,7 +1066,7 @@ class _CardsResumeCard extends ConsumerWidget {
     }
 
     return _ResumeCard(
-      icon: Icons.style_rounded,
+      icon: Icons.style_outlined,
       tone: TileTone.success,
       label: label,
       title: title,
@@ -1164,16 +1155,15 @@ class _ProgressRing extends StatelessWidget {
   const _ProgressRing({
     required this.value,
     required this.color,
-    required this.glyph,
+    required this.icon,
   });
 
   final double value;
   final Color color;
-  final GlyphKind? glyph;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
-    final pct = (value * 100).round();
     return SizedBox.square(
       dimension: 48,
       child: Stack(
@@ -1188,20 +1178,7 @@ class _ProgressRing extends StatelessWidget {
               backgroundColor: context.c.surfaceAlt,
             ),
           ),
-          if (glyph != null)
-            AppGlyph(
-              glyph!,
-              size: 28,
-              color: color,
-              accent: AppColors.flameFill,
-            )
-          else
-            Text(
-              '$pct%',
-              maxLines: 1,
-              textScaler: TextScaler.noScaling,
-              style: AppType.numeric(size: 12, color: context.scheme.onSurface),
-            ),
+          Icon(icon, size: 22, color: color),
         ],
       ),
     );

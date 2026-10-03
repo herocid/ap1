@@ -6,7 +6,6 @@ import '../core/theme/app_colors.dart';
 import '../core/theme/app_spacing.dart';
 import '../core/theme/app_theme.dart';
 import 'feedback_fx.dart';
-import 'glyphs.dart';
 import 'hyphenation.dart';
 import 'mascot.dart';
 
@@ -937,11 +936,12 @@ class StreakChip extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          AppGlyph(
-            GlyphKind.flame,
+          Icon(
+            activeToday
+                ? Icons.local_fire_department_rounded
+                : Icons.local_fire_department_outlined,
             size: 22,
             color: color,
-            accent: days > 0 && activeToday ? AppColors.flameFill : c.border,
           ),
           const SizedBox(width: 4),
           Text('$days', style: AppType.numeric(size: 26, color: color)),
